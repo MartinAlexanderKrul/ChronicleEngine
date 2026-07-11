@@ -2,7 +2,7 @@
 
 # Development Workflow
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 **Status:** Active Development Workflow
 
 ---
@@ -16,6 +16,30 @@ It exists to give the repository a stable, canonical workflow reference for cont
 For the session-oriented opening and closing format used by AI collaborators, see:
 
 `docs/AI_SESSION_TEMPLATE.md`
+
+---
+
+# Version Evolution & Validation Lifecycle
+
+Chronicle Engine develops one engine version at a time, and every version follows the same lifecycle. This section is the operational implementation of the governance policy defined in `engine/001_ENGINE_DECISIONS.md` Decision 048 (Version Evolution and Validation Lifecycle). Decision 048 establishes that these stages and gates are mandatory; this document defines how they are carried out.
+
+The lifecycle stages are:
+
+1. **Planning** — identify the version's goal and the capabilities it must deliver, scoped against the roadmap.
+2. **ADR Design** — draft the architectural decisions required to deliver those capabilities.
+3. **ADR Approval (Architecture Freeze)** — accept the decisions. At this point the version's architectural basis is frozen: later work within the version is implementation and refinement, not new foundational architecture.
+4. **Implementation** — write the Rules, Data Model, Runtime, and template changes the accepted decisions require.
+5. **Consistency Audit** — reconcile terminology and cross-document references so the Manifest, Rules, Decisions, Data Model, Runtime, Glossary, Roadmap, and Changelog agree.
+6. **Capability Validation** — validate the version's capabilities against accepted non-canonical fixtures, confirming the abstractions resolve the required cases without shortcuts.
+7. **Prototype Campaign** — play a deliberately small campaign that exercises the version's mechanics, validating the engine through use rather than architecture.
+8. **Engine Postmortem** — capture gameplay findings: which abstractions were natural, which created friction, and which changes are refinements versus genuine architectural gaps.
+9. **Next Version Planning** — begins only after the postmortem is complete and its required refinements are incorporated.
+
+A version is not considered complete until its Capability Validation, Prototype Campaign, and Engine Postmortem are finished and the required refinements have been incorporated.
+
+Each stage that accepts a decision, modifies a Rules section, or corrects the Manifest records a Changelog entry per Decision 040.
+
+The per-session workflow below operates within these stages: any given development session implements one or more steps of the current stage.
 
 ---
 

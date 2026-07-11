@@ -4,7 +4,7 @@
 
 **File:** `012_ENGINE_RUNTIME.md`
 **Status:** Workshop Draft
-**Engine Version:** 0.1.4
+**Engine Version:** 0.1.5
 **Layer:** Engine (000–099)
 
 ---

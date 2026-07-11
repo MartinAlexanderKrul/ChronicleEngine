@@ -4,7 +4,7 @@
 
 **File:** `templates/000_TEMPLATE_CONVENTIONS.md`
 **Status:** Active
-**Engine Version:** 0.1.4
+**Engine Version:** 0.1.5
 **Governed by:** `engine/011_ENGINE_DATA_MODEL.md`
 
 ---

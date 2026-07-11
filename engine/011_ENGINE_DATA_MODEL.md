@@ -4,7 +4,7 @@
 
 **File:** `011_ENGINE_DATA_MODEL.md`
 **Status:** Workshop Draft
-**Engine Version:** 0.1.4
+**Engine Version:** 0.1.5
 **Data Model Version:** 0.1.1
 **Layer:** Engine (000–099)
 

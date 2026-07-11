@@ -8,6 +8,31 @@
 
 ---
 
+# In Development — Target: Version 0.2.0 (Knowledge & Civilization)
+
+Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
+
+## 2026-07-11 — Knowledge & Civilization Architecture
+
+**Decisions:** Added Decision 046 (Civilizational Knowledge State and Propagation) and Decision 047 (Knowledge Custody, Continuity, and Rediscovery), refining Decision 031
+**Rules:** Revised Section 8 (Research & Knowledge) with the Knowledge Subject / Knowledge State distinction, non-linear propagation, institutional mediation, transmission, loss, passive extinction, and rediscovery
+**Glossary:** Added Knowledge Subject, Knowledge State, Knowledge Lifecycle, Rediscovery, Passive Extinction, Preservation Quality, Transmission Reach, and related knowledge terminology
+**Roadmap:** Restructured Version 0.2 into capability milestones (0.2.1–0.2.5); added Prototype Alpha — Engine Validation Campaign and Engine Postmortem as this milestone's validation gates
+**Engine Version:** Unchanged; remains 0.1.5 until the 0.2.0 validation gates are complete
+
+---
+
+# Version 0.1.5 (Foundation Release)
+
+## 2026-07-11 — Version Evolution & Validation Lifecycle
+
+**Decisions:** Added Decision 048 (Version Evolution and Validation Lifecycle)
+**Docs:** Added the Version Evolution & Validation Lifecycle section to `docs/DEVELOPMENT_WORKFLOW.md` as the canonical operational implementation of Decision 048; document version set to 1.2
+**Roadmap:** Added the Development Lifecycle section referencing Decision 048; reframed Version 0.2 by lifecycle stage; updated Current Sprint, Current Dependencies, and Release Criteria
+**Foundation:** Closed the Foundation line (0.1.0–0.1.5) and set the Engine Version to 0.1.5 (Foundation Release); the foundational engine architecture is frozen as the stable substrate for every capability version
+
+---
+
 # Version 0.1.4 (Foundation Stabilization)
 
 ## 2026-07-11 - Repository Consistency and Governance Synchronization

@@ -2,7 +2,7 @@
 
 ## Engine Specification
 
-**Engine Version:** 0.1.4
+**Engine Version:** 0.1.5
 **Status:** Workshop Draft  
 **Engine Type:** Persistent Historical Simulation  
 **Simulation Model:** World-First  

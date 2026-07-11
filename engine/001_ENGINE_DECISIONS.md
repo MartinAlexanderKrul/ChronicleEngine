@@ -2156,6 +2156,59 @@ Version 0.2 capability validation must include non-canonical fixtures that prove
 
 ---
 
+## Decision 048 — Version Evolution and Validation Lifecycle
+
+**Status:** Accepted
+**Date:** 2026-07-11
+**Related Sections:** `docs/DEVELOPMENT_WORKFLOW.md`; `002_ENGINE_ROADMAP.md`; `docs/PROJECT_CONTEXT.md`; `docs/AI_SESSION_TEMPLATE.md`; Decision 040
+
+### Context
+
+Through Version 0.1 and the Version 0.2 knowledge work, Chronicle Engine advanced almost entirely through architecture: decisions, rules, data model, runtime, and templates. No completed version had yet been exercised through actual gameplay. The repository documented planning and implementation, but not validation, playtesting, or the incorporation of gameplay findings. Without a governing policy, the engine could continue accumulating architecture indefinitely without ever proving that its abstractions sustain a coherent campaign, and each version's notion of "complete" was left implicit and inconsistent.
+
+### Decision
+
+Every engine version follows a single, mandatory development lifecycle:
+
+1. Planning
+2. ADR Design
+3. ADR Approval — the Architecture Freeze for that version; accepted decisions become the fixed architectural basis for implementation.
+4. Implementation
+5. Consistency Audit — terminology and cross-document reconciliation.
+6. Capability Validation — non-canonical validation of the version's capabilities against accepted fixtures.
+7. Prototype Campaign — validation of the version through actual gameplay.
+8. Engine Postmortem — capture of gameplay findings and required refinements.
+9. Next Version Planning — begins only after the postmortem is complete and its required refinements are incorporated.
+
+A version is **not complete** until its Capability Validation, Prototype Campaign, and Engine Postmortem are finished and the required refinements have been incorporated.
+
+Architecture Freeze fixes a version's architectural basis at ADR Approval. Subsequent work within that version is implementation and refinement, not new foundational architecture. Genuinely new foundational architecture belongs to a later version's Planning and ADR Design.
+
+This decision establishes the governance policy only. It does not restate the operational procedure. The canonical operational implementation of the lifecycle lives in `docs/DEVELOPMENT_WORKFLOW.md`. `002_ENGINE_ROADMAP.md` references the lifecycle and shows where the current version sits within it; it does not redefine it.
+
+### Rationale
+
+Separating governance policy (this decision) from operational procedure (`docs/DEVELOPMENT_WORKFLOW.md`) follows the same single-source-of-truth discipline already applied between the Rules, the Data Model, and the Runtime. Making the Prototype Campaign and Engine Postmortem mandatory gates, rather than optional follow-up, is what forces the engine to be validated by play rather than by architecture alone — directly answering the risk that Chronicle Engine develops abstractions that are internally consistent but unusable in practice, the failure mode the Mictian case study was written to prevent.
+
+### Consequences
+
+`docs/DEVELOPMENT_WORKFLOW.md` gains a Version Evolution & Validation Lifecycle section defining the stages operationally, alongside its existing session workflow.
+
+`002_ENGINE_ROADMAP.md` gains a Development Lifecycle section that references this decision, reframes Version 0.2 by lifecycle stage, and adds Prototype Alpha — Engine Validation Campaign and Engine Postmortem as milestones and required validation gates before Version 0.3.
+
+Version 0.3 — and every subsequent version — may not begin planning until the prior version's Prototype Campaign and Engine Postmortem are complete and their refinements incorporated.
+
+This decision is process governance and introduces no new engine simulation mechanics.
+
+### Alternatives Considered
+
+- Leaving the lifecycle implicit and continuing to advance through architecture. Rejected: allows indefinite architecture with no gameplay validation.
+- Defining the full lifecycle procedure inside this decision. Rejected: duplicates the operational workflow; `docs/DEVELOPMENT_WORKFLOW.md` is the single operational source.
+- Defining the lifecycle only in the roadmap. Rejected: the roadmap tracks planned work and milestone state; a durable governance policy belongs in the decision record.
+- Making the Prototype Campaign and Postmortem optional. Rejected: optional validation is what allowed the engine to reach this point without ever being played.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

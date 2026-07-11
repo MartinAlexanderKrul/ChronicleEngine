@@ -2,22 +2,23 @@
 
 # Engine Roadmap
 
-**Engine Version:** 0.1.4
+**Engine Version:** 0.1.5 (Foundation Release)
+**Development Target:** Version 0.2.0 — Knowledge & Civilization
 **Status:** Active Development
 
 # Current Sprint
 
 Goal:
 
-Architecture Freeze is complete. Version 0.2 is now focused on implementing civilization-scale knowledge continuity through the existing engine.
+Version 0.2 architecture and implementation are complete (Decisions 046–047; Rules Section 8). Version 0.2 is now at the Capability Validation gate of the development lifecycle, after which the engine enters its first Prototype Campaign.
 
 Current Task:
 
-Formalize Version 0.2 in the roadmap, Decisions 046-047, and Research & Knowledge rules without introducing new simulation subsystems.
+Complete Capability Validation (0.2.5) against the formal non-canonical acceptance fixtures, then mark Version 0.2 Complete and transition into Prototype Alpha — Engine Validation Campaign.
 
 Next Review:
 
-Version 0.2 terminology audit and capability validation against the formal non-canonical acceptance fixtures.
+Prototype Alpha readiness once Version 0.2 is marked complete.
 
 ---
 
@@ -48,24 +49,66 @@ New systems should emerge from existing abstractions instead of introducing unre
 
 ---
 
+# Development Lifecycle
+
+Chronicle Engine follows a single, repeatable lifecycle for every engine version. Architecture is no longer developed indefinitely: each version advances through design, implementation, validation, playtesting, and postmortem before the next version is planned.
+
+```text
+Planning
+   v
+ADR Design
+   v
+ADR Approval  (Architecture Freeze)
+   v
+Implementation
+   v
+Consistency Audit
+   v
+Capability Validation
+   v
+Prototype Campaign
+   v
+Engine Postmortem
+   v
+Next Version Planning
+```
+
+A version is not complete until its Capability Validation, Prototype Campaign, and Engine Postmortem are finished and required refinements are incorporated.
+
+This lifecycle is governed by `001_ENGINE_DECISIONS.md` Decision 048 (Version Evolution and Validation Lifecycle) and operationally defined in `docs/DEVELOPMENT_WORKFLOW.md`. This roadmap applies the lifecycle and shows where the current version sits within it; it does not redefine it.
+
+---
+
 # Current Milestone
 
-## Version 0.2 - Knowledge & Civilization
+## Version 0.2 - Knowledge & Civilization (Development Target: Engine Version 0.2.0)
 
-Status: **Active**
+Status: **In Validation**
 
-Chronicle Engine's next milestone is to model knowledge as a persistent historical force rather than a binary possession or global unlock.
+Version 0.2.0 is the development target for the first capability milestone built on the Foundation, which is complete and frozen at 0.1.5 (the current Engine Version). It models knowledge as a persistent historical force rather than a binary possession or global unlock. Its architecture and implementation are complete; it is now at the Capability Validation gate of the development lifecycle. The Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete (Decision 048).
 
 ### Goal
 
 Civilization-scale knowledge continuity without a global technology tree or universal unlock model.
 
-### Current Focus
+### Lifecycle Position
 
-- Formalize the Knowledge Subject / Knowledge State distinction
-- Define institutional mediation, custody, and preservation without assigning institutions ownership of objective truth
-- Define non-linear transmission, restriction, loss, fragmentation, and rediscovery
-- Validate the model through formal non-canonical capability fixtures
+Version 0.2 has advanced through the development lifecycle as follows:
+
+- [x] Planning
+- [x] Decision 046 — Civilizational Knowledge State and Propagation
+- [x] ADR Review & Approval
+- [x] Rules Implementation (Section 8 — Knowledge Subject / Knowledge State, non-linear propagation)
+- [x] Terminology / Consistency Audit (Glossary knowledge terminology)
+- [x] Decision 047 — Knowledge Custody, Continuity, and Rediscovery
+- [x] ADR Review & Approval
+- [x] Rules Implementation (Section 8 — custody, transmission, loss, passive extinction, rediscovery)
+- [ ] Capability Validation (0.2.5) — current gate
+- [ ] Version 0.2 Complete
+
+After Version 0.2 Complete, the engine enters Prototype Alpha — Engine Validation Campaign, then the Engine Postmortem, before Version 0.3 planning begins.
+
+The five capability milestones (0.2.1–0.2.5) are specified in full under Planned Milestones → Version 0.2 below.
 
 ### Exclusions
 
@@ -77,13 +120,13 @@ Civilization-scale knowledge continuity without a global technology tree or univ
 - Research-point currencies
 - Detailed institutional bureaucracy
 
-### Remaining
+---
 
-- [ ] 0.2.1 Knowledge State Model
-- [ ] 0.2.2 Institutional Knowledge Systems
-- [ ] 0.2.3 Transmission and Diffusion
-- [ ] 0.2.4 Loss, Fragmentation, and Rediscovery
-- [ ] 0.2.5 Capability Validation
+# Foundation — Complete and Frozen (0.1.0–0.1.5)
+
+The Foundation line built the reusable engine substrate: Rules, Data Model, Runtime, Persistent Objects, Canonical Records, templates, and — at 0.1.5 — the Version Evolution & Validation Lifecycle (Decision 048). The foundational architecture is now frozen. Every capability version, beginning with Version 0.2.0, builds on it without redesigning it.
+
+The milestones below record how the Foundation was built.
 
 ---
 
@@ -409,7 +452,105 @@ Completion criteria:
 
 ---
 
+## Prototype Alpha — Engine Validation Campaign
+
+Status: **Planned** — validation gate; begins after Version 0.2 Complete
+
+Prototype Alpha is not an engine-feature milestone. It introduces no new engine systems and no new foundational abstractions. Its purpose is to validate the completed Version 0.2 implementation through the Prototype Campaign stage of the development lifecycle.
+
+### Purpose
+
+Prototype Alpha validates the engine through play rather than through architecture. Its objective is to prove that the existing engine can sustain a coherent campaign without introducing new foundational abstractions.
+
+### Scope
+
+A deliberately small prototype world, optimized for engineering validation rather than storytelling:
+
+- one region,
+- one settlement or small city,
+- one university or equivalent institution,
+- one religious institution,
+- one guild,
+- 10–20 important NPCs,
+- 1–3 Knowledge Subjects,
+- approximately 5–10 gameplay sessions,
+- approximately 10–20 in-world years.
+
+### Validation Goals
+
+The campaign should exercise:
+
+- Runtime,
+- Persistent Objects,
+- Canonical Records,
+- Knowledge Subjects,
+- Knowledge States,
+- Institutions,
+- Historical Persistence,
+- Save / Restore,
+- Canon Promotion,
+- Context Loading,
+- repository workflow.
+
+### Deliverables
+
+- Prototype world,
+- Prototype campaign,
+- Session reports,
+- Engine issue log,
+- Architecture observations,
+- Engine improvement backlog.
+
+### Success Criteria
+
+Prototype Alpha succeeds if:
+
+- a complete campaign can be played,
+- no new foundational abstractions are required,
+- existing abstractions feel natural during play,
+- repository workflow remains practical,
+- discovered improvements are primarily refinements rather than architectural redesigns.
+
+### Failure Criteria
+
+Prototype Alpha fails if gameplay repeatedly exposes:
+
+- missing foundational abstractions,
+- contradictions between Rules, Runtime, and Data Model,
+- impractical repository workflows,
+- runtime context becoming unmanageable,
+- inability to preserve historical continuity using existing mechanics.
+
+---
+
+## Engine Postmortem
+
+Status: **Planned** — validation gate; begins after Prototype Alpha
+
+The Engine Postmortem is a mandatory milestone that captures the lessons of Prototype Alpha before Version 0.3 begins.
+
+The postmortem evaluates:
+
+- which assumptions proved correct,
+- which abstractions were difficult to use,
+- which rules created friction,
+- which workflows need improvement,
+- which changes are refinements versus genuine architectural gaps.
+
+Its output is the set of required engine refinements that must be incorporated before Version 0.3 planning begins.
+
+---
+
 ## Version 0.3 - Governance & Society
+
+Status: **Blocked** — awaiting Version 0.2 completion, Prototype Alpha, and the Engine Postmortem
+
+Per the development lifecycle (Decision 048), Version 0.3 planning begins only after all of the following validation gates are satisfied:
+
+1. Version 0.2 implementation is complete.
+2. Prototype Alpha — Engine Validation Campaign has been played.
+3. The Engine Postmortem has been completed.
+4. Required engine refinements identified by the postmortem have been incorporated.
 
 Focus:
 
@@ -715,7 +856,7 @@ Current architectural debt:
 
 # Current Dependencies
 
-Version 0.2 - Knowledge & Civilization is active. Its dependencies are Research & Knowledge (Section 8), Institutions & Organizations (Section 9), Historical Persistence (Section 12), Decisions 031-038, and the Version 0.2 decisions that formalize the Knowledge Subject / Knowledge State model and continuity rules.
+Version 0.2 - Knowledge & Civilization is at the Capability Validation gate. Its dependencies are Research & Knowledge (Section 8), Institutions & Organizations (Section 9), Historical Persistence (Section 12), Decisions 031-038, and Decisions 046-047, which formalize the Knowledge Subject / Knowledge State model and continuity rules. Once Capability Validation completes, Prototype Alpha — Engine Validation Campaign and the Engine Postmortem are the required validation gates before Version 0.3 planning (Decision 048).
 
 ---
 
@@ -727,6 +868,7 @@ Version 1.0 may be declared when:
 - Terminology is stable.
 - Repository governance is complete.
 - No major architectural duplication remains.
+- Each engine version has passed its Prototype Campaign and Engine Postmortem gates (Decision 048).
 - The engine successfully supports a complete campaign from beginning to end without requiring structural redesign.
 
 Version 1.0 does **not** require the first world to be complete.

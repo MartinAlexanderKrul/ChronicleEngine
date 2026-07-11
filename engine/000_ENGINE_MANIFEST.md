@@ -2,7 +2,7 @@
 
 ## Engine Manifest
 
-**Engine Version:** 0.1.4
+**Engine Version:** 0.1.5
 **Status:** Workshop Draft  
 **Project Type:** Persistent Historical Simulation Engine  
 **Simulation Model:** World-First  
@@ -277,7 +277,7 @@ Changes to one component should not require version changes to unrelated compone
 
 | Component | Version |
 |-----------|---------|
-| Engine | 0.1.4 |
+| Engine | 0.1.5 |
 | Data Model | 0.1.1 |
 | World | 0.9 |
 | Campaign | Not Created |
@@ -295,14 +295,20 @@ Changes to one component should not require version changes to unrelated compone
 
 # Current Development Phase
 
-The project is currently focused on completing the engine specification.
+Chronicle Engine develops one version at a time through the standard development lifecycle (`001_ENGINE_DECISIONS.md` Decision 048; `docs/DEVELOPMENT_WORKFLOW.md`). The Engine Version represents the most recent completed release, not work in progress.
+
+**Current Engine Version:** 0.1.5 (Foundation Release)
+**Current Development Target:** Version 0.2.0 — Knowledge & Civilization
+**Current Milestone:** Version 0.2 Capability Validation
+
+The Foundation line (0.1.0–0.1.5) is complete and frozen; Version 0.2.0 is the first capability milestone built on it.
 
 Current priority:
 
-1. Foundation Stabilization complete.
-2. Architecture Freeze complete.
-3. Implement Version 0.2 knowledge continuity.
-4. Finalize the first official world.
+1. Complete Version 0.2 Capability Validation.
+2. Run Prototype Alpha — Engine Validation Campaign and the Engine Postmortem.
+3. Incorporate any required refinements.
+4. Advance the Engine Version to 0.2.0 once the above are complete; Version 0.3 planning begins only then (Decision 048).
 
 ---
 

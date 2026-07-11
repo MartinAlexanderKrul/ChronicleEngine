@@ -20,7 +20,7 @@ This document defines the core rules governing the Chronicle Engine.
 
 Its purpose is to establish a consistent simulation framework that remains stable across all campaigns. Rather than telling a predetermined story, the engine simulates a living world that evolves through the interactions of individuals, institutions, cultures, economies, natural forces, and chance.
 
-Campaign-specific content—including characters, inventories, kingdoms, historical events, quests, and discoveries—is stored separately in the canonical ledgers.
+Campaign-specific content—including characters, inventories, kingdoms, historical events, tracked objectives, and discoveries—is stored separately in the canonical ledgers.
 
 Unless explicitly revised through a new engine version, the rules defined in this document remain immutable throughout gameplay.
 
@@ -957,7 +957,7 @@ Examples include:
 - combat,
 - investigations,
 - local economy,
-- active quests,
+- active objectives,
 - immediate travel.
 
 These systems are simulated with maximum detail.
@@ -2823,3 +2823,445 @@ Individual resources maintain:
 - history.
 
 A generic resource may become an individual resource through historically significant use or association.
+
+# 8. Research & Knowledge
+
+Research and knowledge are part of the same persistent historical simulation as politics, trade, institutions, and conflict.
+
+Knowledge does not appear instantly or spread universally without cause.
+
+New understanding emerges through observation, interpretation, experiment, instruction, recordkeeping, institutional support, and time.
+
+Research may advance the world, fail, stall, mislead, be suppressed, or be rediscovered generations later.
+
+---
+
+## 8.1 Research Principles
+
+Research follows these principles:
+
+1. Knowledge must have an origin.
+2. Claims are not automatically true because they are written, taught, or widely believed.
+3. Discovery and validation are separate processes.
+4. Publication and adoption are separate processes.
+5. Institutions strongly influence what knowledge survives, spreads, or disappears.
+6. Research consumes time, resources, and opportunity.
+7. Failure may still produce evidence, method improvement, or new questions.
+8. Lost knowledge may return through rediscovery rather than retroactive invention.
+
+---
+
+## 8.2 Research Lifecycle
+
+Research and knowledge normally move through a lifecycle.
+
+Not every case follows every step cleanly, but the engine should distinguish them conceptually.
+
+### Observation
+
+A phenomenon, anomaly, pattern, testimony, artifact, or result is noticed.
+
+Observation may be:
+
+- accurate,
+- incomplete,
+- biased,
+- fabricated,
+- misunderstood.
+
+---
+
+### Hypothesis
+
+An explanation, theory, suspicion, or working model is proposed.
+
+Different observers may produce competing hypotheses from the same evidence.
+
+---
+
+### Investigation and Experiment
+
+The claim is examined through:
+
+- testing,
+- repetition,
+- comparison,
+- field research,
+- archival study,
+- witness examination,
+- magical inquiry,
+- practical application.
+
+The method used must remain consistent with available tools, conditions, and prior knowledge.
+
+---
+
+### Validation
+
+Evidence may support, weaken, complicate, or overturn a claim.
+
+Validation is contextual rather than absolute.
+
+A conclusion may be:
+
+- locally validated,
+- institutionally accepted,
+- publicly disputed,
+- later disproven,
+- impossible to confirm with current means.
+
+---
+
+### Recording
+
+If preserved, research enters records such as:
+
+- notes,
+- ledgers,
+- diagrams,
+- letters,
+- reports,
+- archives,
+- instructional texts,
+- restricted repositories.
+
+Unrecorded knowledge remains vulnerable to loss through death, secrecy, or memory failure.
+
+---
+
+### Publication or Restriction
+
+Knowledge may be:
+
+- openly published,
+- privately taught,
+- institutionally archived,
+- legally restricted,
+- ritually guarded,
+- censored,
+- deliberately destroyed.
+
+The engine should not assume that every validated discovery becomes public.
+
+---
+
+### Adoption, Rejection, or Suppression
+
+After publication or retention, knowledge may be:
+
+- adopted in practice,
+- resisted,
+- ignored,
+- politicized,
+- monopolized,
+- suppressed,
+- fragmented into local traditions.
+
+Adoption depends on more than truth alone.
+
+It may be shaped by:
+
+- institutional authority,
+- cost,
+- danger,
+- doctrine,
+- prestige,
+- material incentives,
+- legal systems,
+- cultural resistance.
+
+---
+
+### Loss and Rediscovery
+
+Knowledge may disappear through:
+
+- death,
+- war,
+- disaster,
+- censorship,
+- institutional collapse,
+- language drift,
+- material decay,
+- deliberate concealment.
+
+Lost knowledge may later be rediscovered through surviving evidence, ruins, archives, oral tradition, or repeated observation.
+
+---
+
+## 8.3 Research Inputs
+
+Research depends on established circumstances.
+
+Important inputs may include:
+
+- prior knowledge,
+- relevant capability,
+- time,
+- tools,
+- materials,
+- evidence,
+- environment,
+- collaborators,
+- institutional support,
+- funding,
+- access to archives,
+- political permission,
+- secrecy,
+- risk tolerance.
+
+Research quality should emerge from these conditions rather than arbitrary progression rewards.
+
+---
+
+## 8.4 Research Time
+
+Research is normally a long-term activity rather than an instant action.
+
+It may require:
+
+- hours for review or simple testing,
+- days for investigation,
+- weeks or months for sustained experimentation,
+- years for major theoretical or technical advances.
+
+Research may be interrupted by:
+
+- war,
+- injury,
+- loss of materials,
+- political intervention,
+- institutional reassignment,
+- conflicting obligations,
+- failed results,
+- dangerous side effects.
+
+Partial progress should persist whenever reasonable.
+
+---
+
+## 8.5 Uncertainty and Resolution
+
+Not every research step requires a roll.
+
+Automatic progress may occur when:
+
+- the task is routine for the researcher,
+- the evidence already clearly supports the conclusion,
+- sufficient time guarantees the result,
+- the work is primarily transcription, preservation, or repetition.
+
+Uncertain research should use the normal action-resolution system when outcomes depend on contested interpretation, unreliable evidence, risky testing, scarce time, or difficult conditions.
+
+Failure should rarely mean "nothing happens."
+
+Failure may instead produce:
+
+- incorrect conclusions,
+- ambiguous evidence,
+- procedural improvement,
+- wasted resources,
+- dangerous consequences,
+- new questions,
+- partial progress,
+- information about why the method failed.
+
+---
+
+## 8.6 Evidence and Reliability
+
+Evidence varies in quality.
+
+Examples include:
+
+- direct observation,
+- repeated experiment,
+- surviving documents,
+- witness testimony,
+- material remains,
+- institutional records,
+- magical traces,
+- rumor,
+- propaganda.
+
+Evidence may be:
+
+- strong,
+- weak,
+- forged,
+- partial,
+- contaminated,
+- outdated,
+- politically filtered.
+
+The engine should distinguish between having evidence and having certainty.
+
+---
+
+## 8.7 Research and Knowledge Layers
+
+Research interacts with the existing layers of truth.
+
+### Objective Reality
+
+What is actually true remains unchanged by mistaken conclusions.
+
+---
+
+### Character Knowledge
+
+Researchers and witnesses may know more, less, or something different from what is objectively true.
+
+---
+
+### Institutional Knowledge
+
+Organizations may preserve, standardize, censor, monopolize, or distort knowledge.
+
+---
+
+### Public Knowledge
+
+Widely repeated conclusions may spread before they are well validated.
+
+---
+
+### Myth and Belief
+
+Research may challenge myth, reinforce it, reinterpret it, or itself become mythologized.
+
+---
+
+## 8.8 Institutions and Research
+
+Institutions strongly affect research outcomes.
+
+They may provide:
+
+- archives,
+- laboratories,
+- funding,
+- apprentices,
+- peer review,
+- legitimacy,
+- distribution networks,
+- legal protection.
+
+They may also create obstacles through:
+
+- censorship,
+- dogma,
+- secrecy,
+- monopoly,
+- political pressure,
+- bureaucratic inertia,
+- fear of consequences.
+
+Research should therefore be shaped not only by individual brilliance but also by institutional context.
+
+---
+
+## 8.9 Dangerous and Restricted Knowledge
+
+Some knowledge may be dangerous because of:
+
+- physical harm,
+- social destabilization,
+- legal prohibition,
+- military value,
+- religious taboo,
+- magical corruption,
+- existential risk.
+
+Dangerous knowledge may prompt:
+
+- secrecy,
+- state control,
+- institutional restriction,
+- factional conflict,
+- selective teaching,
+- destruction of evidence,
+- covert research.
+
+Restriction does not prove falsehood.
+
+Openness does not prove safety.
+
+---
+
+## 8.10 Knowledge Transmission
+
+Knowledge spreads through transmission rather than instant global availability.
+
+Transmission may occur through:
+
+- direct teaching,
+- apprenticeship,
+- copied texts,
+- lectures,
+- rumors,
+- diplomacy,
+- trade,
+- espionage,
+- migration,
+- conquest,
+- religious missions,
+- recovered archives.
+
+Transmission may alter the content being transmitted through simplification, mistranslation, ideology, secrecy, or deliberate revision.
+
+---
+
+## 8.11 Research Outcomes
+
+Meaningful research may produce outcomes such as:
+
+- new practical methods,
+- revised theories,
+- false but influential conclusions,
+- improved tools,
+- institutional reform,
+- restricted archives,
+- political conflict,
+- technological diffusion,
+- cultural controversy,
+- historical reinterpretation.
+
+Not all important research produces immediate practical benefit.
+
+Some discoveries matter primarily because they reshape what later generations believe is possible or true.
+
+---
+
+## 8.12 Rediscovery and Historical Recovery
+
+Rediscovery is a normal part of historical simulation.
+
+Knowledge may return through:
+
+- excavation,
+- translation,
+- comparison of fragmented records,
+- reconstruction from practice,
+- repeated natural observation,
+- inherited oral traditions,
+- recovery of restricted archives.
+
+Rediscovery should preserve continuity with the earlier existence of that knowledge.
+
+It is not the same as inventing the same idea in a historical vacuum.
+
+---
+
+## 8.13 Research Summary
+
+When resolving research, determine:
+
+1. What is being investigated.
+2. What evidence already exists.
+3. Who has access to the work.
+4. What tools, capability, and time are available.
+5. What institutions help or obstruct the work.
+6. Whether uncertainty requires action resolution.
+7. What result is recorded, transmitted, restricted, or lost.
+8. How the outcome changes later knowledge, practice, or history.

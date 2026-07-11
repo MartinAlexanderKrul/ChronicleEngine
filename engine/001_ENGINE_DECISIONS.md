@@ -1171,6 +1171,58 @@ A campaign may still maintain an objective log for usability.
 
 ---
 
+## Decision 031 — Research and Knowledge Evolve Through Lifecycle
+
+**Status:** Accepted  
+**Related Sections:** `010_ENGINE_RULES.md` — Section 8
+
+### Context
+
+Long-running simulation requires knowledge to emerge, spread, stagnate, disappear, and return through historical processes rather than appearing instantly as a binary unlock.
+
+The engine must support observation, experiment, publication, institutional custody, suppression, and rediscovery without collapsing all discovery into a single moment of revelation.
+
+### Decision
+
+Research and knowledge follow an explicit lifecycle.
+
+At minimum, the engine distinguishes:
+
+1. Observation
+2. Hypothesis
+3. Experiment or investigation
+4. Validation or failure
+5. Recording
+6. Publication or restricted retention
+7. Adoption, rejection, suppression, or loss
+8. Rediscovery where applicable
+
+### Rationale
+
+This supports:
+
+- gradual scientific and magical development,
+- incomplete or contested discoveries,
+- institutional control of knowledge,
+- durable historical continuity,
+- rediscovery after collapse or suppression.
+
+### Consequences
+
+Discoveries should rarely behave like instantaneous permanent global unlocks.
+
+Knowledge may remain local, restricted, forgotten, disputed, or misapplied.
+
+Research depends on time, tools, evidence, capability, and institutional conditions.
+
+### Alternatives Considered
+
+- Instant discovery model.
+- Binary known/unknown knowledge state.
+- Knowledge acquisition only through player-facing revelations.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:
@@ -1188,14 +1240,6 @@ Determine whether every meaningfully evolving object should use a shared Persist
 **Status:** Proposed
 
 Define creation, growth, governance, assets, military arms, internal drift, division, decline, collapse, and legacy for institutions.
-
----
-
-## Decision P003 — Research and Knowledge Lifecycle
-
-**Status:** Proposed
-
-Define observation, hypothesis, experiment, validation, publication, institutional adoption, suppression, archival survival, and rediscovery.
 
 ---
 
@@ -1228,6 +1272,16 @@ Define machine state, human-readable ledgers, version compatibility, restoration
 **Status:** Proposed
 
 Define the relationship between ledgers, chronicles, historical documents, session summaries, and machine-readable saves so that canon, evidence, and retrospective interpretation do not collapse into a single document type.
+
+---
+
+# Superseded Proposed Decisions
+
+## Decision P003 — Research and Knowledge Lifecycle
+
+**Status:** Superseded
+
+Superseded by Decision 031.
 
 ---
 

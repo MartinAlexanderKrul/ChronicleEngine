@@ -600,7 +600,140 @@ Verification requires evidence.
 
 ---
 
-## 2.8 Contradictions
+## 2.8 Canonical Record Architecture
+
+Chronicle Engine separates record types by role, scope, authority, and provenance.
+
+Records are not interchangeable.
+
+A record may preserve information without becoming the highest authority for that information.
+
+The engine recognizes the following core record roles.
+
+### Explicit Gameplay Rulings
+
+Explicit rulings are agreed corrections, clarifications, or resolutions made during play.
+
+They have the highest canon priority because they represent conscious agreement about how an ambiguity or contradiction is resolved.
+
+Rulings should be propagated into affected canonical ledgers when practical.
+
+---
+
+### Gameplay Transcript
+
+The gameplay transcript records what actually occurred during play.
+
+It protects lived events from being overwritten by later summaries, ledgers, or interpretation.
+
+When a transcript and a later summary conflict, the transcript controls unless an explicit ruling changes it.
+
+---
+
+### Canonical Ledgers
+
+Canonical ledgers are structured state records.
+
+They preserve durable facts such as:
+
+- location,
+- possession,
+- ownership,
+- relationships,
+- obligations,
+- injuries,
+- institutional state,
+- world state,
+- campaign state.
+
+Ledgers may exist at world, campaign, institution, or other scoped levels.
+
+Ledger scope determines which facts a ledger is responsible for preserving.
+
+All canonical ledgers occupy the ledger tier of the canon hierarchy.
+
+If two ledgers conflict, the engine should first determine whether they describe different scopes.
+
+If they describe the same fact, the contradiction must be resolved explicitly rather than hidden by document location.
+
+---
+
+### Historical Documents and Sources
+
+Historical documents and sources are in-world evidence.
+
+They may include:
+
+- chronicles,
+- biographies,
+- memoirs,
+- treatises,
+- legal records,
+- religious texts,
+- propaganda,
+- rumors,
+- archives.
+
+The existence, contents, authorship, and provenance of a historical source may be canon.
+
+The claims inside that source are not automatically objective truth.
+
+Historical sources may be accurate, incomplete, biased, forged, censored, misunderstood, or contradictory.
+
+---
+
+### Campaign Chronicles
+
+Campaign chronicles preserve important campaign events in durable narrative form.
+
+They are useful for continuity, memory, and later historical interpretation.
+
+They do not outrank explicit rulings, gameplay transcripts, or canonical ledgers when resolving canon.
+
+A campaign chronicle may become an in-world historical source if the simulation establishes who wrote it, when it was preserved, and how later people can access it.
+
+---
+
+### Session Summaries
+
+Session summaries are reference artifacts.
+
+They help participants remember what happened, but they are lower authority than rulings, transcripts, and canonical ledgers.
+
+Session summaries should not introduce new canon unless the new information is also accepted through the canon hierarchy.
+
+---
+
+### Machine-Readable Saves
+
+Machine-readable saves preserve restorable simulation state.
+
+They are implementation artifacts, not narrative or historical documents.
+
+Until Save State Architecture is fully defined, saves must not silently override explicit rulings, gameplay transcripts, or canonical ledgers.
+
+Save restoration should preserve canon rather than create a competing canon source.
+
+---
+
+### Record Updates and Provenance
+
+When a record is updated, the engine should preserve enough provenance to explain why the change was made.
+
+Important updates should identify:
+
+- affected record,
+- source of the change,
+- scope of the change,
+- time of the represented event,
+- time of the record update,
+- unresolved uncertainty where applicable.
+
+This prevents later reconstruction from confusing objective events, recordkeeping, interpretation, and implementation state.
+
+---
+
+## 2.9 Contradictions
 
 When contradictions are discovered:
 
@@ -614,7 +747,7 @@ Contradictions should never be ignored or silently overwritten.
 
 ---
 
-## 2.9 Canon Preservation
+## 2.10 Canon Preservation
 
 The engine should preserve established facts whenever possible.
 

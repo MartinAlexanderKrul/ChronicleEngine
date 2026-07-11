@@ -13,11 +13,11 @@ Complete Version 0.1 Engine Foundation.
 
 Current Task:
 
-Architecture Review for Canonical Record Architecture
+Architecture Review for Institutions & Organizations
 
 Next Review:
 
-Canonical Record Architecture readiness and dependency review (v0.1)
+Institutions & Organizations readiness and dependency review (v0.1)
 
 ---
 
@@ -68,12 +68,12 @@ Status: **In Progress**
   - [x] Conflict, Combat, Injury & Death
   - [x] Resources & Ownership
   - [x] Research & Knowledge
+  - [x] Canonical Record Architecture
 - [x] Engine Glossary
 - [x] World Bible (Asterra)
 
 ### Remaining
 
-- [ ] Canonical Record Architecture
 - [ ] Institutions & Organizations
 - [ ] Politics & Governance
 - [ ] Magic Framework
@@ -279,7 +279,7 @@ while preserving canonical relationships between them.
 
 ## Canonical Record Architecture
 
-Status: Active Review
+Status: Accepted
 
 Purpose:
 
@@ -293,7 +293,9 @@ This architecture must clarify which records are:
 - convenience summaries,
 - machine persistence.
 
-This should be resolved before Historical Persistence or Save State Architecture are formalized.
+This has been resolved before Historical Persistence or Save State Architecture are formalized.
+
+Integrated through `001_ENGINE_DECISIONS.md` Decision 032 and `010_ENGINE_RULES.md` Section 2.8.
 
 ---
 
@@ -302,7 +304,6 @@ This should be resolved before Historical Persistence or Save State Architecture
 Current architectural debt:
 
 - Finalize Persistent Entity abstraction.
-- Resolve Canonical Record Architecture before Historical Persistence or Save State Architecture.
 - Remove remaining terminology drift.
 - Eliminate duplicated definitions through cross-references.
 - Stabilize repository governance.
@@ -314,18 +315,22 @@ Current architectural debt:
 
 # Current Dependencies
 
-The current Canonical Record Architecture milestone depends on the following existing engine work:
+The current Institutions & Organizations milestone depends on the following existing engine work:
 
 - `001_ENGINE_DECISIONS.md`
-  - Decision P007 - Canonical Record Architecture
+  - Decision P001 - Persistent Entity Abstraction
+  - Decision P002 - Institution Lifecycle Model
+  - Decision 032 - Canonical Record Architecture
 - `010_ENGINE_RULES.md`
+  - Section 1 - Engine Laws
   - Section 2 - Canon, Knowledge & Truth
   - Section 3 - Time & World Simulation
+  - Section 5 - Living Characters
   - Section 8 - Research & Knowledge
 - `020_ENGINE_GLOSSARY.md`
-  - terminology normalization for canon, records, sources, ledgers, chronicles, saves, and summaries
+  - terminology normalization for institutions, persistence, knowledge, resources, ownership, records, and objectives
 
-Before Historical Persistence or Save State Architecture are written, Canonical Record Architecture should be resolved to avoid duplicated authority, record-type collapse, or accidental canon stored in the wrong document class.
+Before Institutions & Organizations is written, it should be checked against Persistent Entity, Resources & Ownership, Research & Knowledge, and Canonical Record Architecture to avoid creating a one-off organization model that later conflicts with governments, guilds, churches, armies, or universities.
 
 ---
 

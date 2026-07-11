@@ -196,16 +196,22 @@ They are implementation details rather than player-facing documentation.
 
 # Canon Hierarchy
 
-When conflicting information exists, the following priority applies:
+Canonical priority is defined by `010_ENGINE_RULES.md` Section 2.
+
+Manifest summary:
 
 1. Explicit rulings made during gameplay
 2. Gameplay transcript
-3. Canonical campaign ledgers
-4. Canonical world files
-5. Historical documents
-6. Session summaries
-7. Reasonable inference
-8. Newly generated information
+3. Canonical ledger files
+4. Session summaries
+5. Reasonable inference
+6. Newly generated information
+
+World, campaign, institution, and other scoped ledgers all belong to the canonical ledger tier.
+
+Their scope determines which facts they preserve.
+
+Historical documents are in-world evidence and interpretation. Their existence, contents, authorship, and provenance may be canon, but their claims do not automatically outrank ledgers or become objective truth.
 
 Lower-priority sources may never silently replace higher-priority canon.
 

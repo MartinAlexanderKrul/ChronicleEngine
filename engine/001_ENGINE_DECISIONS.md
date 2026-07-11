@@ -1223,6 +1223,71 @@ Research depends on time, tools, evidence, capability, and institutional conditi
 
 ---
 
+## Decision 032 - Canonical Record Architecture
+
+**Status:** Accepted  
+**Related Sections:** `010_ENGINE_RULES.md` - Sections 2 and 8
+
+### Context
+
+Chronicle Engine uses many record-like artifacts: gameplay transcripts, rulings, canonical ledgers, campaign chronicles, historical documents, session summaries, and machine-readable saves.
+
+Without a formal architecture, these artifacts can collapse into one another.
+
+That would make it unclear whether a document is authoritative state, in-world evidence, later interpretation, convenience summary, or persistence data.
+
+### Decision
+
+The engine distinguishes record types by role, scope, authority, and provenance.
+
+At minimum, the engine recognizes:
+
+1. Explicit gameplay rulings.
+2. Gameplay transcripts.
+3. Canonical ledger files.
+4. Historical documents and sources.
+5. Campaign chronicles.
+6. Session summaries.
+7. Machine-readable saves.
+
+These records are not interchangeable.
+
+Only records with authority under the canon hierarchy may establish or override canon.
+
+Historical documents and sources may preserve evidence, belief, propaganda, error, or interpretation without becoming objective truth.
+
+Machine-readable saves preserve restorable state but do not outrank the canon hierarchy.
+
+### Rationale
+
+This preserves the separation between:
+
+- what objectively happened,
+- what was recorded,
+- what is currently authoritative,
+- what people inside the world believe,
+- what later historians can reconstruct,
+- what the implementation uses to restore simulation state.
+
+It also prevents historical persistence and save architecture from storing canon in the wrong document class.
+
+### Consequences
+
+Future historical persistence rules must define how in-world sources are generated without making them automatically authoritative.
+
+Future save-state rules must define machine restoration without allowing saves to silently override rulings, transcripts, or canonical ledgers.
+
+Canonical ledgers remain the structured human-readable state records, but they must preserve provenance when they incorporate facts from transcripts, rulings, or historical sources.
+
+### Alternatives Considered
+
+- Treat every durable document as equally canonical.
+- Treat machine-readable saves as the highest authority.
+- Treat historical documents as objective summaries of the past.
+- Leave record authority implicit.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:
@@ -1267,14 +1332,6 @@ Define machine state, human-readable ledgers, version compatibility, restoration
 
 ---
 
-## Decision P007 — Canonical Record Architecture
-
-**Status:** Proposed
-
-Define the relationship between ledgers, chronicles, historical documents, session summaries, and machine-readable saves so that canon, evidence, and retrospective interpretation do not collapse into a single document type.
-
----
-
 # Superseded Proposed Decisions
 
 ## Decision P003 — Research and Knowledge Lifecycle
@@ -1282,6 +1339,14 @@ Define the relationship between ledgers, chronicles, historical documents, sessi
 **Status:** Superseded
 
 Superseded by Decision 031.
+
+---
+
+## Decision P007 — Canonical Record Architecture
+
+**Status:** Superseded
+
+Superseded by Decision 032.
 
 ---
 

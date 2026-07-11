@@ -1,9 +1,9 @@
 # Chronicle Engine
 
-## Prototype Alpha — Engine Improvement Backlog
+## Prototype Alpha - Engine Improvement Backlog
 
 **Status:** Active
-**Layer:** Design Retrospective / Validation (400–499) — non-canonical
+**Layer:** Design Retrospective / Validation (400-499) - non-canonical
 **See:** `420_PROTOTYPE_PLAN.md`
 
 ---
@@ -25,7 +25,7 @@ Each item is classified as a **refinement** (adjustment within the accepted arch
 
 # Backlog
 
-## PA-001 — Public and Cultural Knowledge-State Holders
+## PA-001 - Public and Cultural Knowledge-State Holders
 
 **Status:** Observe During Prototype
 **Severity:** Low
@@ -39,7 +39,7 @@ Do not introduce a new Persistent Entity type without evidence from play.
 
 ---
 
-## PA-002 — Location Granularity
+## PA-002 - Location Granularity
 
 **Status:** Observe During Prototype
 **Severity:** Low
@@ -49,9 +49,11 @@ Resource location currently references Halden rather than the specific guildhall
 
 Validate whether settlement-level location is sufficient for campaign continuity or whether institution premises, buildings, or containers need a clearer structural representation. Do not add a building subsystem now.
 
+**Reinforced (campaign generation):** carried personal inventory - Ilse's instrument case (`ENT-000019`) and letter (`ENT-000020`) - also uses settlement-level location with possession by the character, because a Character is not a Place or container per the resource `location` field. The "on person" case strengthens this item.
+
 ---
 
-## PA-003 — Institution Asset Index Versus Resource Ownership
+## PA-003 - Institution Asset Index Versus Resource Ownership
 
 **Status:** Review During Prototype
 **Severity:** Medium
@@ -59,7 +61,7 @@ Validate whether settlement-level location is sufficient for campaign continuity
 
 The Glaziers' Guild lists a Resource as an institutional asset while the Resource object separately records the Guild as owner.
 
-This is consistent but duplicates the same fact — a single-source-of-truth risk.
+This is consistent but duplicates the same fact - a single-source-of-truth risk.
 
 Validate whether institution asset lists should be:
 - derived indexes,
@@ -67,3 +69,15 @@ Validate whether institution asset lists should be:
 - or separate operational holdings with clearly distinct semantics.
 
 Resource ownership should remain the authoritative ownership source unless play demonstrates otherwise. The likely long-term rule: resource ownership is authoritative on the Resource object; institution asset lists are derived references or indexes, not separate ownership declarations.
+
+---
+
+## PA-004 - Operational Ledgers Own No Persistent Objects
+
+**Status:** Observe During Prototype
+**Severity:** Low
+**Source:** Prototype Alpha campaign generation
+
+The objectives, changelog, and current-state ledgers (`140`, `170`, `180`) are Canonical Records that carry a `REC-` identifier and universal block but own no persistent objects (`subjects: []`). The "a ledger is a Canonical Record with subjects" model fits entity-holding ledgers cleanly but is awkward for purely operational or narrative ledgers.
+
+Validate whether operational ledgers should be persistent objects at all, or whether a lighter non-owning document class is warranted. Do not change the model yet.

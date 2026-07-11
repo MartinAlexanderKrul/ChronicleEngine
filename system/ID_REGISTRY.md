@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000017 |
-| Record | `REC-` | Canonical Record | REC-000008 |
-| Event | `EVT-` | Event | EVT-000007 |
-| Relationship | `REL-` | Relationship | REL-000015 |
+| Entity | `ENT-` | Persistent Entity | ENT-000020 |
+| Record | `REC-` | Canonical Record | REC-000016 |
+| Event | `EVT-` | Event | EVT-000008 |
+| Relationship | `REL-` | Relationship | REL-000018 |
 
 ---
 
@@ -41,6 +41,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000001 – REC-000008 | Record | Verra ledgers: places, notable figures, knowledge subjects, resources, three institution ledgers, seed events |
 | EVT-000001 – EVT-000007 | Event | Verra seed events: four foundings, fever validation, fever condemnation, rivermason decline |
 | REL-000001 – REL-000015 | Relationship | Verra: 9 Knowledge States, 1 governance, 5 membership |
+| ENT-000018 – ENT-000020 | Entity | Campaign Prototype Alpha (`campaigns/prototype_alpha/`): Ilse Varn, instrument case, letter of introduction |
+| REC-000009 – REC-000016 | Record | Prototype Alpha campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180) |
+| EVT-000008 | Event | Ilse arrives in Halden (campaign start) |
+| REL-000016 – REL-000018 | Relationship | Prototype Alpha: Ilse/Corvane introduction; Ilse's marsh-fever and tempered-glass Knowledge States |
 
 ---
 

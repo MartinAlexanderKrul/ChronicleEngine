@@ -1,9 +1,9 @@
 # Chronicle Engine
 
-## Prototype Alpha — Architecture Observations
+## Prototype Alpha - Architecture Observations
 
 **Status:** Active
-**Layer:** Design Retrospective / Validation (400–499) — non-canonical
+**Layer:** Design Retrospective / Validation (400-499) - non-canonical
 **See:** `420_PROTOTYPE_PLAN.md`
 
 ---
@@ -18,4 +18,10 @@ These are narrative observations. Discrete, actionable problems belong in the En
 
 # Observations
 
-_None recorded yet. Entries are added as sessions are played._
+## Knowledge-State Typing Is Currently Informal
+
+**Source:** Verra world and Prototype Alpha campaign generation
+
+Knowledge States are currently modelled as relationships using `type: knowledge-state`. This works with the existing engine and campaign initialization, but it sits outside the relationship examples currently named in the template vocabulary, such as membership, governance, diplomacy, personal, and rivalry.
+
+This is recorded here as an observation rather than an engine change request. Prototype Alpha should test whether this remains a harmless naming convenience in play, or whether it creates practical ambiguity when authoring, validating, or reasoning about relationship records. No model change should be made before play evidence exists.

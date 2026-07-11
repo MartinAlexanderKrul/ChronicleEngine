@@ -49,7 +49,7 @@ It does **not** define any specific setting, campaign, character, or storyline.
 
 Because this document is still a workshop draft, not every scoped domain has been fully specified yet.
 
-Historical record generation and save/session architecture remain core engine domains that must eventually be formalized here or in explicitly subordinate engine documents. Institutions and organizations are formalized in Section 9. Political entities, governance, law, and diplomacy are formalized in Section 10, excluding population, economic, trade, infrastructure, and logistics simulation, which remain reserved for future engine work. Magic and other supernatural phenomena are formalized in Section 11 as a minimal extension contract; the specific magic system of any world remains world-layer content.
+Save/session architecture remains a core engine domain that must eventually be formalized here or in an explicitly subordinate engine document. Institutions and organizations are formalized in Section 9. Political entities, governance, law, and diplomacy are formalized in Section 10, excluding population, economic, trade, infrastructure, and logistics simulation, which remain reserved for future engine work. Magic and other supernatural phenomena are formalized in Section 11 as a minimal extension contract; the specific magic system of any world remains world-layer content. Historical persistence is formalized in Section 12.
 
 World or campaign files may extend these areas only in ways that do not silently redefine accepted engine behavior.
 
@@ -3691,6 +3691,8 @@ Legacy may include:
 
 An institution's legacy is preserved through the Canonical Record Architecture (Section 2.8): its own ledger records its authoritative final state, while chronicles, treatises, and other historical documents about it remain evidence rather than automatic truth.
 
+This is a specific application of the general Legacy rule for persistent entities defined in Section 12.4.
+
 ---
 
 ## 9.14 Institution Lifecycle Summary
@@ -3901,3 +3903,85 @@ When resolving a supernatural action or development, determine:
 5. Whether uncertainty requires normal action resolution (Section 4).
 6. What social, institutional, or knowledge consequences follow.
 7. Whether the outcome remains consistent with previously established rules for this phenomenon.
+
+# 12. Historical Persistence
+
+Historical persistence describes how simulation state becomes a durable historical record, and how that record relates to the sources it was drawn from.
+
+This section builds on the Canonical Record Architecture (Section 2.8), Event Importance (Section 3.5), Persistent Entities (Section 3.10), and Resources & Ownership (Section 7). It does not introduce a new persistent-entity mechanic or record class.
+
+---
+
+## 12.1 Historical Documents as Resources
+
+A historical document is an Individual Resource (Section 7.12), typically also a Knowledge Asset (Section 7.2).
+
+Its continuity is governed by existing mechanics: Storage (Section 7.8) for where it is kept, Loss and Destruction (Section 7.10) for how it may disappear, Rediscovery (Section 8.12) for how it may return, and Historical Interpretation (Section 2.6) for how its claims are read and disputed over time.
+
+---
+
+## 12.2 Generation and Provenance
+
+A historical document is authored from simulation state through the Recording and Publication stages already defined for knowledge (Section 8.2).
+
+Generating a historical document never deletes, downgrades, or replaces the higher-authority source it was drawn from. A ruling, transcript, or canonical ledger remains canon at its existing tier in the canon hierarchy (Section 2.1) regardless of how many historical documents are later written about the event it records.
+
+Every historical document should identify, where established:
+
+- its author or origin, even if anonymous, collective, or disputed,
+- the time of the event it describes,
+- the time of its own recording,
+- its scope,
+- unresolved uncertainty.
+
+This applies the provenance requirement already defined for record updates generally (Section 2.8) to the specific case of historical document generation.
+
+---
+
+## 12.3 Promotion from Campaign Chronicle
+
+A campaign chronicle begins campaign-scoped, tracked alongside other campaign records.
+
+It may be promoted to a world-layer historical document using the Promotion mechanic already defined for persistent entities (Section 3.10), once the simulation establishes who wrote it, when it was preserved, and how later people in the world can access it.
+
+Until promoted, a campaign chronicle remains a campaign-scoped reference artifact under the canon hierarchy (Section 2.8) and is not treated as in-world evidence accessible to characters outside that campaign.
+
+---
+
+## 12.4 Legacy
+
+Any persistent entity's historical continuity may be preserved through historical documents written about it, whether the entity remains active or has ended.
+
+Such documents remain evidence under the Canonical Record Architecture (Section 2.8). They do not become the entity's authoritative record; the entity's own ledger, where one exists, retains that role.
+
+This generalizes the Legacy rule already defined for institutions (Section 9.13) to every persistent entity type.
+
+---
+
+## 12.5 Document Variety
+
+The engine does not enforce a fixed set of historical document subtypes.
+
+Archives, chronicles, biographies, memoirs, treatises, myths, propaganda, and legal records are common examples, not required categories. A world or campaign may use, combine, or extend these freely.
+
+---
+
+## 12.6 Multiplicity and Compression
+
+Multiple historical documents about the same event or entity may coexist without requiring reconciliation, consistent with Historical Interpretation (Section 2.6). The engine does not need to select a single correct account among conflicting historical sources.
+
+Later summarization must never become the only surviving record of an event. When a chronicle, session summary, or other convenience record is produced, the higher-authority source it was drawn from — ruling, transcript, or ledger — remains the canonical record and must not be discarded on the assumption that the summary has superseded it.
+
+---
+
+## 12.7 Historical Persistence Summary
+
+When generating or evaluating a historical document, determine:
+
+1. What simulation state or event it is drawn from, and that source's place in the canon hierarchy.
+2. Its author or origin, and the time of recording versus the time of the event.
+3. Whether it is campaign-scoped or has been promoted to a world-layer record.
+4. Which persistent entity, if any, it concerns, and whether an authoritative ledger exists for that entity.
+5. Its reliability, per Evidence and Reliability (Section 8.6) and Historical Interpretation (Section 2.6).
+6. Whether it coexists with other, possibly conflicting, accounts.
+7. That its existence has not caused any higher-authority source to be discarded or downgraded.

@@ -512,6 +512,14 @@ It is usually assigned to the player character's immediate environment and other
 
 ---
 
+## Promotion
+
+The process by which a generic, aggregated, or campaign-scoped subject gains independent Persistent Entity status, or is elevated to world-layer record responsibility, because its continued individual identity has become historically, mechanically, or narratively significant.
+
+Promotion does not require deleting or renaming the subject's prior record; it extends record responsibility rather than replacing it.
+
+---
+
 ## Publication
 
 The act of making knowledge available beyond its original discoverer or holder through teaching, copying, speech, archives, institutions, or other transmission.

@@ -1566,17 +1566,82 @@ Generalizing Section 6.18 instead of writing a parallel rule closes the exact du
 
 ---
 
+## Decision 038 — Historical Persistence
+
+**Status:** Accepted  
+**Date:** 2026-07-11  
+**Related Sections:** Decision 032, Decision 033, Decision 034, Decision 035, Decision 037, `010_ENGINE_RULES.md` — Sections 2.6, 2.8, 3.5, 3.10, 7.2, 7.8, 7.10, 7.12, 8.2, 8.12, 9.13
+
+### Context
+
+Decision P005 asked how chronicles, treatises, myths, legal records, memoirs, propaganda, and campaign chronicles emerge from simulation state. Review found that a historical document requires no new Persistent Entity type or record class — it is an Individual Resource (Section 7.12) and typically a Knowledge Asset (Section 7.2), already governed by Storage, Loss and Destruction, Rediscovery, and Historical Interpretation (Sections 7.8, 7.10, 8.12, 2.6). The remaining gaps were: an explicit generation/provenance process, a placement fix for the Manifest's historical layer (currently top-level rather than world-scoped, inconsistent with the fix already made for institutions in Decision 034), generalizing the institution-specific Legacy rule (Section 9.13) to all persistent entities, and an explicit rule against the "historical compression" failure documented in the Mictian case study, where summaries silently replaced preserved history.
+
+### Decision
+
+**Generation and Provenance**
+
+A historical document is authored from simulation state through the same Recording and Publication stages already defined for knowledge (Section 8.2). Generating a historical document never deletes, downgrades, or replaces the higher-authority source it was drawn from; the source (ruling, transcript, or ledger) remains canon at its existing tier regardless of how many historical documents are later written about it.
+
+Every historical document should identify, where established:
+
+- its author or origin, even if anonymous, collective, or disputed,
+- the time of the event it describes,
+- the time of its own recording,
+- its scope,
+- unresolved uncertainty.
+
+This generalizes the provenance requirement already stated for record updates (Section 2.8) to the specific case of historical document generation.
+
+**Promotion from Campaign Chronicle**
+
+A campaign chronicle begins campaign-scoped. It may be promoted to a world-layer historical document using the Promotion mechanic already defined for persistent entities (Section 3.10) once the simulation establishes who wrote it, when it was preserved, and how later people can access it — the same condition Decision 032 already placed on this transition, now named explicitly as Promotion.
+
+**Repository Placement**
+
+Historical documents reside within the World layer, under a dedicated sub-path:
+
+```
+worlds/<world>/historical/<document-slug>.md
+```
+
+This corrects the Manifest's repository tree, which currently lists `historical/` as a top-level directory. Historical documents are inherently in-world evidence (Decision 032) and are therefore always world-scoped, consistent with the institution ledger placement established in Decision 034.
+
+**Legacy Generalization**
+
+The Legacy rule already defined for institutions (Section 9.13) is generalized to every persistent entity. Any persistent entity's historical continuity may be preserved through historical documents about it after its active existence ends or while it remains active. Such documents remain evidence under the Canonical Record Architecture (Section 2.8); they do not become the entity's authoritative record. Section 9.13 becomes a specific application of this general rule rather than an institution-only exception.
+
+**No Closed Document Taxonomy**
+
+The engine does not enforce a fixed set of historical document subtypes. Archive, Chronicle, Biography, Memoir, Treatise, Myth, Propaganda, and Legal Record, as already listed in the Manifest, remain descriptive examples rather than required categories.
+
+**Multiplicity**
+
+Multiple historical documents about the same event or entity may coexist without requiring reconciliation, consistent with Section 2.6. The engine does not need to select a single correct account among conflicting historical sources.
+
+### Rationale
+
+Every element reuses an existing mechanic — Individual Resources, Knowledge Assets, Promotion, the provenance clause already in Section 2.8, and Historical Interpretation — rather than introducing a document-generation subsystem. Generalizing Section 9.13 rather than leaving it institution-only avoids exactly the kind of duplication risk closed in Decisions 034 and 037. The explicit anti-compression rule directly answers the Mictian case study's documented failure, which was the original motivation for this entire engine domain.
+
+### Consequences
+
+`010_ENGINE_RULES.md` gains Section 12 — Historical Persistence. Section 9.13 is cross-referenced to Section 12.4 rather than rewritten.
+
+`000_ENGINE_MANIFEST.md` repository architecture is corrected to nest `historical/` under `worlds/<world>/`.
+
+`002_ENGINE_ROADMAP.md`'s Version 0.1 checklist marks Historical Persistence complete. The Version 0.5 — Historical Simulation planned milestone should be understood similarly to Version 0.4: Libraries and Archives are achievable today through existing Institution and Resource mechanics without new engine work, and Retrospective Ages / Historical Periodization remain the primary genuinely new work for that milestone.
+
+### Alternatives Considered
+
+- Defining Historical Document as its own Persistent Entity Type. Rejected: duplicates Individual Resource and Knowledge Asset mechanics already defined.
+- Defining a closed taxonomy of historical document subtypes with distinct rules per type. Rejected: premature complexity — the existing examples are sufficient without enforcement.
+- Leaving Section 9.13 as institution-specific and writing a parallel Legacy rule for other entity types. Rejected: same duplication risk already closed in Decisions 034 and 037.
+- Formalizing Retrospective Ages / Historical Periodization now. Deferred: Version 0.5 scope, not part of this architecture review.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:
-
-## Decision P005 — Historical Source Generation
-
-**Status:** Proposed
-
-Define how chronicles, treatises, myths, legal records, memoirs, propaganda, and campaign chronicles emerge from simulation state.
-
----
 
 ## Decision P006 — Save-State Architecture
 
@@ -1625,6 +1690,14 @@ Superseded by Decision 035.
 **Status:** Superseded
 
 Superseded by Decision 037.
+
+---
+
+## Decision P005 — Historical Source Generation
+
+**Status:** Superseded
+
+Superseded by Decision 038.
 
 ---
 

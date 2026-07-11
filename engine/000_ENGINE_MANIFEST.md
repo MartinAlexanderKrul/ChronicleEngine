@@ -67,6 +67,10 @@ ChronicleEngine/
 │       │   └── <institution>/
 │       │       ├── 250_INSTITUTION_LEDGER.md
 │       │       ├── ...
+│       ├── historical/
+│       │   └── <document>/
+│       │       ├── 300_HISTORICAL_DOCUMENT.md
+│       │       ├── ...
 │
 ├── campaigns/
 │   └── <campaign>/
@@ -83,8 +87,6 @@ ChronicleEngine/
 ├── docs/
 │   └── 400_CASE_STUDIES/
 │       └── 401_MICTIAN_CAMPAIGN.md
-│
-├── historical/
 │
 ├── saves/
 │

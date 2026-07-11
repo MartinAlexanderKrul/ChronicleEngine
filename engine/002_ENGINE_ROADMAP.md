@@ -13,11 +13,11 @@ Complete Version 0.1 Engine Foundation.
 
 Current Task:
 
-Architecture Review for Historical Persistence
+Architecture Review for Save State Architecture
 
 Next Review:
 
-Historical Persistence readiness and dependency review (v0.1)
+Save State Architecture readiness and dependency review (v0.1)
 
 ---
 
@@ -73,12 +73,12 @@ Status: **In Progress**
   - [x] Institutions & Organizations
   - [x] Politics & Governance
   - [x] Magic Framework
+  - [x] Historical Persistence
 - [x] Engine Glossary
 - [x] World Bible (Asterra)
 
 ### Remaining
 
-- [ ] Historical Persistence
 - [ ] Save State Architecture
 - [ ] Engine Changelog
 
@@ -143,15 +143,14 @@ Ensure magic extends the simulation instead of replacing it.
 
 ## Version 0.5 - Historical Simulation
 
-Focus:
+Status: **Partially Rescoped**
 
-- Historical documents
-- Libraries
-- Archives
-- Myths
-- Biographies
-- Retrospective Ages
-- Historical interpretation
+Historical documents, myths, biographies, archives, and historical interpretation are substantially closed at the engine layer by `001_ENGINE_DECISIONS.md` Decision 038 and `010_ENGINE_RULES.md` Section 12 — a historical document is an Individual Resource/Knowledge Asset with no dedicated mechanic required, and Libraries/Archives are achievable today as Institutions holding such resources (Section 9.6), without new engine work.
+
+Remaining genuinely new focus:
+
+- Retrospective Ages / Historical Periodization — not yet formalized; World Bible §8 demonstrates the concept narratively but no engine mechanic exists
+- World-layer authoring of Asterra's historical documents and myths against Section 12
 
 Goal:
 
@@ -321,20 +320,33 @@ Integrated through `001_ENGINE_DECISIONS.md` Decision 037 and `010_ENGINE_RULES.
 
 ## Historical Source Model
 
-Status: Planned
+Status: Accepted
 
-Differentiate:
+Historical Documents as Resources
 
-- Archive
-- Chronicle
-- Biography
-- Memoir
-- Treatise
-- Myth
-- Propaganda
-- Legal Record
+v
 
-while preserving canonical relationships between them.
+Generation and Provenance
+
+v
+
+Promotion from Campaign Chronicle
+
+v
+
+Legacy (generalized to all Persistent Entities)
+
+v
+
+Document Variety (no closed taxonomy)
+
+v
+
+Multiplicity and Compression
+
+Deliberately reuses Individual Resources, Knowledge Assets, and Promotion rather than introducing a document-generation subsystem. Archive, Chronicle, Biography, Memoir, Treatise, Myth, Propaganda, and Legal Record remain descriptive examples, not enforced categories.
+
+Integrated through `001_ENGINE_DECISIONS.md` Decision 038 and `010_ENGINE_RULES.md` Section 12.
 
 ---
 
@@ -375,22 +387,22 @@ Current architectural debt:
 
 # Current Dependencies
 
-The current Historical Persistence milestone depends on the following existing engine work:
+The current Save State Architecture milestone depends on the following existing engine work:
 
 - `001_ENGINE_DECISIONS.md`
+  - Decision P006 - Save-State Architecture
   - Decision 032 - Canonical Record Architecture
-  - Decision 033 - Persistent Entity Abstraction
-  - Decision 004 - Canon Hierarchy
-  - Decision 005 - Separate Objective Reality from Knowledge and Belief
+  - Decision 029 - Engine Versioning Is Separate from World Versioning
+  - Decision 028 - Stable Semantic File Numbering
+  - Decision 038 - Historical Persistence
 - `010_ENGINE_RULES.md`
-  - Section 2 - Canon, Knowledge & Truth
-  - Section 3.5 - Event Importance
-  - Section 9.13 - Legacy
-  - Section 10.6 - Treaties and Agreements
-- `020_ENGINE_GLOSSARY.md`
-  - Historical Document, Historical Event, Historical Source, Archived Event, Mythic Event
+  - Section 2.8 - Canonical Record Architecture (Machine-Readable Saves)
+  - Section 3.10 - Persistent Entities (record responsibility)
+- `000_ENGINE_MANIFEST.md`
+  - Save Layer (900-999)
+  - Versioning table (Engine, World, Campaign, Save)
 
-Before Historical Persistence is written, it should be checked against the Canonical Record Architecture (Decision 032, Section 2.8) and the Event Importance categories (Section 3.5) already defined, to avoid creating a document-generation model that duplicates the existing record-role and event-classification vocabulary rather than building on it.
+Before Save State Architecture is written, it should be checked against the existing Machine-Readable Saves record role (Section 2.8, which already states saves are implementation artifacts that must not silently override rulings, transcripts, or ledgers) and against every ledger-scope decision made so far (institution, historical, campaign, world) to ensure save/restore procedures cover all of them rather than only the original campaign ledgers.
 
 ---
 

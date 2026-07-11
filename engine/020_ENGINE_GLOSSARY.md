@@ -414,6 +414,8 @@ An implementation artifact used to preserve and restore simulation state.
 
 Machine-readable saves support continuity but do not outrank the canon hierarchy.
 
+Implemented as a Save Checkpoint accompanied by a Save Manifest.
+
 ---
 
 ## Method
@@ -583,6 +585,22 @@ Rediscovery is historical recovery, not retroactive invention.
 Any tangible or intangible asset that can be owned, possessed, consumed, transferred, created, destroyed, inherited, or preserved.
 
 Resources include property, equipment, consumables, wealth, knowledge assets, and organizational assets.
+
+---
+
+## Save Checkpoint
+
+A campaign-scoped, immutable copy of a campaign's canonical Markdown ledgers as they stood at a specific moment, accompanied by a Save Manifest.
+
+A save checkpoint preserves actual canonical ledger content rather than a compiled or derived representation of it. Once created, it does not change.
+
+---
+
+## Save Manifest
+
+A short metadata document accompanying a Save Checkpoint, recording save identity, scope, versions, lineage, included ledgers, compatibility status, and a restoration entry point.
+
+A save manifest never duplicates ledger content.
 
 ---
 

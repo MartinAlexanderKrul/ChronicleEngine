@@ -13,11 +13,11 @@ Complete Version 0.1 Engine Foundation.
 
 Current Task:
 
-Architecture Review for Save State Architecture
+Architecture Review for Engine Changelog
 
 Next Review:
 
-Save State Architecture readiness and dependency review (v0.1)
+Engine Changelog readiness and dependency review (v0.1)
 
 ---
 
@@ -74,12 +74,12 @@ Status: **In Progress**
   - [x] Politics & Governance
   - [x] Magic Framework
   - [x] Historical Persistence
+  - [x] Save State Architecture
 - [x] Engine Glossary
 - [x] World Bible (Asterra)
 
 ### Remaining
 
-- [ ] Save State Architecture
 - [ ] Engine Changelog
 
 ---
@@ -160,13 +160,14 @@ Allow history itself to become part of gameplay.
 
 ## Version 0.6 - Persistence
 
-Focus:
+Status: **Partially Rescoped**
 
-- Save architecture
-- Campaign migration
-- World migration
-- Version compatibility
-- Long-term continuity
+Save architecture and basic version-compatibility recording are closed by `001_ENGINE_DECISIONS.md` Decision 039 and `010_ENGINE_RULES.md` Section 13 — saves are ledger checkpoints with manifests, not a new format, and restoration is already defined.
+
+Remaining genuinely new focus:
+
+- Campaign migration and world migration procedures for reconciling version mismatches, deferred by Decision 039
+- Long-term continuity across many campaigns and checkpoints within one persistent world
 
 Goal:
 
@@ -350,6 +351,30 @@ Integrated through `001_ENGINE_DECISIONS.md` Decision 038 and `010_ENGINE_RULES.
 
 ---
 
+## Save State Architecture
+
+Status: Accepted
+
+Ledger-as-Save (checkpoint of canonical Markdown ledgers)
+
+v
+
+Save Manifest (metadata only)
+
+v
+
+Restoration Procedure
+
+v
+
+Version Compatibility (recording and mismatch detection only)
+
+Deliberately avoids a compiled or derived save format. Migration procedures remain reserved for Version 0.6 - Persistence.
+
+Integrated through `001_ENGINE_DECISIONS.md` Decision 039 and `010_ENGINE_RULES.md` Section 13.
+
+---
+
 ## Canonical Record Architecture
 
 Status: Accepted
@@ -387,22 +412,18 @@ Current architectural debt:
 
 # Current Dependencies
 
-The current Save State Architecture milestone depends on the following existing engine work:
+The current Engine Changelog milestone depends on the following existing engine work:
 
 - `001_ENGINE_DECISIONS.md`
-  - Decision P006 - Save-State Architecture
-  - Decision 032 - Canonical Record Architecture
-  - Decision 029 - Engine Versioning Is Separate from World Versioning
-  - Decision 028 - Stable Semantic File Numbering
-  - Decision 038 - Historical Persistence
-- `010_ENGINE_RULES.md`
-  - Section 2.8 - Canonical Record Architecture (Machine-Readable Saves)
-  - Section 3.10 - Persistent Entities (record responsibility)
+  - Revision Policy (references the engine changelog for superseded decisions)
+  - Every Accepted and Superseded decision recorded so far (001-039, plus superseded P001-P007)
 - `000_ENGINE_MANIFEST.md`
-  - Save Layer (900-999)
-  - Versioning table (Engine, World, Campaign, Save)
+  - Engine Layer (000-099), which reserves `030_ENGINE_CHANGELOG.md`
+  - Current Versions table
+- `002_ENGINE_ROADMAP.md`
+  - Version 0.1 - Engine Foundation completion history
 
-Before Save State Architecture is written, it should be checked against the existing Machine-Readable Saves record role (Section 2.8, which already states saves are implementation artifacts that must not silently override rulings, transcripts, or ledgers) and against every ledger-scope decision made so far (institution, historical, campaign, world) to ensure save/restore procedures cover all of them rather than only the original campaign ledgers.
+Before Engine Changelog is written, it should be checked against the Revision Policy already stated in `001_ENGINE_DECISIONS.md` (mark superseded, reference the new decision, explain migration impact, update rules, record the change in the changelog) to ensure the changelog format supports that exact workflow rather than duplicating decision history in a different shape.
 
 ---
 

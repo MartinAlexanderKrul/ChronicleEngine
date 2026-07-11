@@ -82,13 +82,24 @@ ChronicleEngine/
 │       ├── 150_ARMIES_AND_ORGANIZATIONS.md
 │       ├── 160_CAMPAIGN_CHRONICLE.md
 │       ├── 170_CHANGELOG.md
-│       └── 180_CURRENT_STATE.md
+│       ├── 180_CURRENT_STATE.md
+│       │
+│       └── saves/
+│           └── 900_CHECKPOINT_<NNNN>/
+│               ├── 900_SAVE_MANIFEST.md
+│               ├── 100_CHARACTER_SHEET.md
+│               ├── 110_WORLD_LEDGER.md
+│               ├── 120_INVENTORY_AND_OWNERSHIP.md
+│               ├── 130_NPCS_AND_FACTIONS.md
+│               ├── 140_OBJECTIVES.md
+│               ├── 150_ARMIES_AND_ORGANIZATIONS.md
+│               ├── 160_CAMPAIGN_CHRONICLE.md
+│               ├── 170_CHANGELOG.md
+│               └── 180_CURRENT_STATE.md
 │
 ├── docs/
 │   └── 400_CASE_STUDIES/
 │       └── 401_MICTIAN_CAMPAIGN.md
-│
-├── saves/
 │
 └── templates/
 ```
@@ -245,7 +256,7 @@ Changes to one component should not require version changes to unrelated compone
 | Engine | 0.1.0 |
 | World | 0.9 |
 | Campaign | Not Created |
-| Save Format | Not Defined |
+| Save Format | 0.1.0 |
 
 ---
 

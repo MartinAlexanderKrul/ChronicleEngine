@@ -49,7 +49,7 @@ It does **not** define any specific setting, campaign, character, or storyline.
 
 Because this document is still a workshop draft, not every scoped domain has been fully specified yet.
 
-Save/session architecture remains a core engine domain that must eventually be formalized here or in an explicitly subordinate engine document. Institutions and organizations are formalized in Section 9. Political entities, governance, law, and diplomacy are formalized in Section 10, excluding population, economic, trade, infrastructure, and logistics simulation, which remain reserved for future engine work. Magic and other supernatural phenomena are formalized in Section 11 as a minimal extension contract; the specific magic system of any world remains world-layer content. Historical persistence is formalized in Section 12.
+Institutions and organizations are formalized in Section 9. Political entities, governance, law, and diplomacy are formalized in Section 10, excluding population, economic, trade, infrastructure, and logistics simulation, which remain reserved for future engine work. Magic and other supernatural phenomena are formalized in Section 11 as a minimal extension contract; the specific magic system of any world remains world-layer content. Historical persistence is formalized in Section 12. Save state architecture is formalized in Section 13, excluding automatic migration, which remains reserved for future engine work.
 
 World or campaign files may extend these areas only in ways that do not silently redefine accepted engine behavior.
 
@@ -711,9 +711,11 @@ Machine-readable saves preserve restorable simulation state.
 
 They are implementation artifacts, not narrative or historical documents.
 
-Until Save State Architecture is fully defined, saves must not silently override explicit rulings, gameplay transcripts, or canonical ledgers.
+Saves must not silently override explicit rulings, gameplay transcripts, or canonical ledgers.
 
 Save restoration should preserve canon rather than create a competing canon source.
+
+The full save architecture, including checkpoint structure, manifests, and restoration procedure, is defined in Section 13.
 
 ---
 
@@ -3985,3 +3987,97 @@ When generating or evaluating a historical document, determine:
 5. Its reliability, per Evidence and Reliability (Section 8.6) and Historical Interpretation (Section 2.6).
 6. Whether it coexists with other, possibly conflicting, accounts.
 7. That its existence has not caused any higher-authority source to be discarded or downgraded.
+
+# 13. Save State Architecture
+
+Chronicle Engine has no runtime process holding simulation state in memory. Canonical state already lives entirely in the Markdown ledgers defined elsewhere in this specification, preserved under version control. Save state architecture defines how that state is checkpointed and restored, not a new state representation.
+
+This section builds on the Canonical Record Architecture (Section 2.8) and Persistent Entities' record responsibility (Section 3.10). It does not introduce a compiled or derived save format.
+
+---
+
+## 13.1 Ledger-as-Save
+
+A save is a campaign-scoped, immutable checkpoint: a full copy of that campaign's canonical Markdown ledgers as they stood at a specific moment, accompanied by a save manifest.
+
+A save contains no compiled or derived representation of state. It preserves the actual canonical ledger content as it existed at the checkpoint, avoiding a second representation of the same truth.
+
+---
+
+## 13.2 Checkpoints and Current State
+
+The current-state ledger (Section 12 and campaign layer conventions) is the live, continuously mutable operational record for a campaign: where the character is now, what is currently active, and what remains unresolved.
+
+A save checkpoint is a distinct, immutable historical capture of that ledger and every other included ledger, taken at a specific moment. A checkpoint answers what was canonical at that point, which versions applied, what state can be restored, and which checkpoint a later branch originated from.
+
+Once created, a checkpoint must not change. The current-state ledger continues to evolve between checkpoints.
+
+---
+
+## 13.3 Save Manifest
+
+Each checkpoint includes a save manifest containing, at minimum:
+
+- save identity, including a checkpoint type and creation time,
+- scope, including world, campaign, and character,
+- versions, including Engine, World, Campaign Schema, and Save Format,
+- lineage, including parent save, canonical continuation status, and branch name,
+- the list of included ledgers,
+- compatibility status and any warnings,
+- a restoration entry point.
+
+The manifest contains metadata only. It never duplicates ledger content.
+
+---
+
+## 13.4 Restoration
+
+Resuming a campaign follows a defined procedure:
+
+1. Read the campaign's latest canonical save manifest.
+2. Verify Engine, World, Campaign, and Save Format versions.
+3. Read the current-state ledger.
+4. Read the Character Sheet and active Objective ledger.
+5. Read other ledgers required by the current situation.
+6. Identify version mismatches, unresolved contradictions, or incomplete state.
+7. Present a restoration summary before continuing gameplay.
+
+Restoration does not require reading every campaign file in full. The manifest and current-state ledger identify what is relevant; other ledgers are consulted as the situation requires.
+
+---
+
+## 13.5 Version Compatibility
+
+Save manifests record Engine, World, Campaign Schema, and Save Format versions, per Decision 029, along with a compatibility status.
+
+Version mismatches are surfaced explicitly during restoration. This section does not define automatic migration; reconciling a mismatch is handled explicitly when it arises, not resolved silently.
+
+---
+
+## 13.6 Deferred Scope
+
+The following remain reserved for future persistence work rather than part of this architecture:
+
+- automatic migrations,
+- binary or structured serialization formats,
+- append-only event logs,
+- checksums,
+- deterministic random-state restoration,
+- automated branching tools,
+- compiled machine-readable indexes.
+
+These become relevant only if Chronicle Engine gains an actual runtime or companion application beyond its current document-driven form.
+
+---
+
+## 13.7 Save State Summary
+
+When creating or restoring a save, determine:
+
+1. Which campaign, and which ledgers, are in scope.
+2. The current Engine, World, and Campaign versions, recorded in the manifest.
+3. Whether this is a new checkpoint or a restoration of an existing one.
+4. For a new checkpoint: its lineage, parent save, and branch.
+5. For a restoration: whether recorded versions match current versions, and what to do if they do not.
+6. What the restoration entry point identifies as immediately relevant.
+7. Whether any contradiction or incomplete state must be surfaced before play continues.

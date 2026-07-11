@@ -1639,17 +1639,110 @@ Every element reuses an existing mechanic — Individual Resources, Knowledge As
 
 ---
 
+## Decision 039 — Save State Architecture
+
+**Status:** Accepted  
+**Date:** 2026-07-11  
+**Related Sections:** Decision 032, Decision 028, Decision 029, Decision 038, `010_ENGINE_RULES.md` — Sections 2.8, 3.10, `000_ENGINE_MANIFEST.md` — Repository Architecture, Versioning
+
+### Context
+
+Decision P006 asked how machine state, human-readable ledgers, version compatibility, restoration procedures, and the boundary between save data and canonical records should be defined. Chronicle Engine has no runtime process holding state in memory; canonical state already lives entirely in Markdown ledgers under version control. Review found that a compiled save format would duplicate state already held in canonical ledgers, recreating exactly the synchronization and authority risk the engine's architecture already avoids elsewhere (Decision 032). The `saves/` directory was also placed at the repository top level in the Manifest, inconsistent with the campaign- and world-scoped placement fixes already made for institutions (Decision 034) and historical documents (Decision 038). Session restoration was undefined: `docs/AI_SESSION_TEMPLATE.md`'s Mandatory Session Start procedure covers only engine-level documents, with no defined path for resuming an in-progress campaign.
+
+### Decision
+
+**Ledger-as-Save**
+
+A save is a campaign-scoped, immutable checkpoint consisting of a full copy of that campaign's canonical Markdown ledgers as they stood at a specific moment, accompanied by a lightweight save manifest containing identity, scope, version, lineage, and restoration metadata. A save contains no compiled or derived representation of state; it preserves the actual canonical ledger content.
+
+**Placement**
+
+Saves reside within the Campaign layer, under a dedicated sub-path:
+
+```
+campaigns/<campaign>/saves/900_CHECKPOINT_<NNNN>/
+    900_SAVE_MANIFEST.md
+    100_CHARACTER_SHEET.md
+    110_WORLD_LEDGER.md
+    120_INVENTORY_AND_OWNERSHIP.md
+    130_NPCS_AND_FACTIONS.md
+    140_OBJECTIVES.md
+    150_ARMIES_AND_ORGANIZATIONS.md
+    160_CAMPAIGN_CHRONICLE.md
+    170_CHANGELOG.md
+    180_CURRENT_STATE.md
+```
+
+This corrects the Manifest's repository tree, which previously listed `saves/` as a top-level directory.
+
+**Relationship to 180_CURRENT_STATE.md**
+
+`180_CURRENT_STATE.md` is the live, continuously mutable operational ledger: where the character is now, what is active, what the next session must know immediately, and which processes, threats, and objectives remain unresolved.
+
+A save checkpoint is an immutable historical capture of that ledger, and every other included ledger, at a specific moment: what was canonical at that point, which versions applied, what state can be restored, and which checkpoint a later branch originated from. Once created, a checkpoint must not change.
+
+**Save Manifest**
+
+Each checkpoint includes a save manifest containing, at minimum:
+
+- save identity, including a checkpoint type and creation time,
+- scope, including world, campaign, and character,
+- versions, including Engine, World, Campaign Schema, and Save Format,
+- lineage, including parent save, canonical continuation status, and branch name,
+- the list of included ledgers,
+- compatibility status and any warnings,
+- a restoration entry point.
+
+The manifest contains metadata only. It never duplicates ledger content.
+
+**Restoration**
+
+Restoring a campaign follows a defined procedure, added to `docs/AI_SESSION_TEMPLATE.md` as a campaign-specific branch of session start:
+
+1. Read the campaign's latest canonical save manifest.
+2. Verify Engine, World, Campaign, and Save Format versions.
+3. Read `180_CURRENT_STATE.md`.
+4. Read the Character Sheet and active Objective ledger.
+5. Read other ledgers required by the current situation.
+6. Identify version mismatches, unresolved contradictions, or incomplete state.
+7. Present a restoration summary before continuing gameplay.
+
+Restoration does not require reading every campaign file in full at every session start. The manifest and `180_CURRENT_STATE.md` identify what is relevant; other ledgers are consulted as the situation requires.
+
+**Version Compatibility**
+
+Save manifests record Engine, World, Campaign Schema, and Save Format versions per Decision 029, and a compatibility status. Version mismatches are surfaced explicitly during restoration rather than resolved automatically. Migration procedures for reconciling mismatched versions are out of scope for this decision.
+
+**Deferred**
+
+The following remain out of scope, reserved for later persistence work once Chronicle Engine has an actual runtime or companion application: automatic migrations, JSON or other binary serialization, append-only event logs, checksums, deterministic random-state restoration, automated branching tools, and compiled machine-readable indexes.
+
+### Rationale
+
+A compiled save format would create a second representation of canonical state, reintroducing the exact synchronization and authority risk the Canonical Record Architecture (Decision 032) already exists to prevent, and the exact "inventory drift" and "rule drift" failures documented in the Mictian case study. Ledger-as-save instead reuses the repository's existing Markdown ledgers and versioning as the save mechanism itself, requiring no new format or translation layer. Making session restoration an explicit, scoped procedure, rather than requiring a full re-read of every file, keeps the engine usable in practice without sacrificing the consistency principles established elsewhere.
+
+### Consequences
+
+`010_ENGINE_RULES.md` gains Section 13 — Save State Architecture. Section 2.8's Machine-Readable Saves subsection is cross-referenced to Section 13 rather than rewritten.
+
+`000_ENGINE_MANIFEST.md` repository architecture is corrected to nest `saves/` under `campaigns/<campaign>/`, and the Current Versions table's Save Format entry is updated from Not Defined to 0.1.0.
+
+`docs/AI_SESSION_TEMPLATE.md` gains a "Resuming an Existing Campaign" procedure alongside the existing Mandatory Session Start sequence.
+
+`002_ENGINE_ROADMAP.md`'s Version 0.1 checklist marks Save State Architecture complete. The Version 0.6 — Persistence planned milestone retains campaign migration, world migration, and full version-compatibility resolution as its own scope; this decision defines only compatibility recording and mismatch detection.
+
+### Alternatives Considered
+
+- A compiled, derived save format distinct from the canonical ledgers. Rejected: duplicates canonical state, recreating the synchronization and authority risk Decision 032 already exists to prevent.
+- Automatic version migration at restoration time. Deferred: Version 0.6 scope; this decision only requires mismatches to be surfaced, not resolved.
+- Requiring a full read of every campaign file at every session start. Rejected: unnecessary given the manifest and `180_CURRENT_STATE.md` already identify what's relevant.
+- Treating `180_CURRENT_STATE.md` and a save checkpoint as the same artifact. Rejected: conflates a continuously mutable operational ledger with an immutable historical capture, losing the ability to answer what was canonical at a given checkpoint.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:
-
-## Decision P006 — Save-State Architecture
-
-**Status:** Proposed
-
-Define machine state, human-readable ledgers, version compatibility, restoration procedures, and the boundary between save data and canonical records.
-
----
 
 # Superseded Proposed Decisions
 
@@ -1698,6 +1791,14 @@ Superseded by Decision 037.
 **Status:** Superseded
 
 Superseded by Decision 038.
+
+---
+
+## Decision P006 — Save-State Architecture
+
+**Status:** Superseded
+
+Superseded by Decision 039.
 
 ---
 

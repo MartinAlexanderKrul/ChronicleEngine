@@ -65,6 +65,26 @@ Do not recommend architecture changes or implementation work until this reading 
 
 ---
 
+# Resuming an Existing Campaign
+
+This section applies when a session begins gameplay within an existing campaign, rather than engine development work.
+
+When resuming a campaign:
+
+1. Read the campaign's latest canonical `900_SAVE_MANIFEST.md`.
+2. Verify Engine, World, Campaign, and Save Format versions.
+3. Read `180_CURRENT_STATE.md`.
+4. Read the Character Sheet and active Objective ledger.
+5. Read other ledgers required by the current situation.
+6. Identify version mismatches, unresolved contradictions, or incomplete state.
+7. Present a restoration summary before continuing gameplay.
+
+Do not read every campaign file in full at every session start. The manifest and `180_CURRENT_STATE.md` identify what is relevant; consult other ledgers only as the situation requires.
+
+Defined in full in `010_ENGINE_RULES.md` Section 13 — Save State Architecture.
+
+---
+
 # Standard Development Workflow
 
 Every session should follow this sequence.

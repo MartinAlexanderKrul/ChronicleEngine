@@ -1389,6 +1389,8 @@ Historical documents about an institution (charters, treatises, propaganda) rema
 
 Both resolutions extend existing, accepted mechanics rather than introducing new ones.
 
+
+
 Institution Typing reuses the Promotion mechanic already defined for generic subjects becoming persistent entities (Rules §3.10), rather than defining a separate creation process for military organizations. It also avoids duplicating lifecycle and continuity logic across four Types when two Types (Institution, Settlement/Kingdom) plus one reused mechanic (Promotion) are sufficient.
 
 Institution Ledger Scope reuses the same Promotion mechanic to decide when an institution graduates from a campaign-local record to a world-layer record, avoiding both premature file creation for minor organizations and an undefined gap for institutions that must persist beyond the campaign that created them, consistent with Design Philosophy 1.5 ("Institutions Outlive Individuals").
@@ -1411,18 +1413,58 @@ Future governance (Version 0.3) and civilizational conflict work (Rules §6.1.1)
 
 ---
 
+## Decision 035 — Institution Lifecycle Model
+
+**Status:** Accepted  
+**Date:** 2026-07-11  
+**Related Sections:** `010_ENGINE_RULES.md` - Section 9; Decision 034, Decision 033, Decision 032, Decision 022
+
+### Context
+
+Decision 034 resolved how the Institution Persistent Entity Type relates to sibling concepts and where its records live, but did not define the lifecycle of an institution itself: how it forms, is governed, holds assets, drifts internally, divides or transforms, declines, and leaves legacy. The Institutions & Organizations milestone requires this model before governments, guilds, churches, universities, trade compacts, and military institutions can be simulated consistently.
+
+### Decision
+
+The engine defines an Institution Lifecycle Model built entirely on mechanics already accepted elsewhere in the engine, rather than introducing a parallel lifecycle vocabulary:
+
+1. Founding — deliberate (charter, decree, ritual) or promoted (§3.10 Promotion), entering the emerging lifecycle status.
+2. Governance — leadership and decision-making structure, part of current state, changeable without loss of identity.
+3. Membership — Relationships (§3.10, §5.6) between the institution and living characters, not ownership.
+4. Doctrine and Goals — part of current state; core doctrine persists while expression evolves, analogous to Decision 016 personality traits.
+5. Institutional Assets — governed entirely by Resources & Ownership (§7) and Decision 022; institutions own resources independently of members.
+6. Military Arms — per Decision 034, either an asset within current state or an independently promoted Military Institution.
+7. Institutions and Knowledge — governed by Research & Knowledge §8.8; an institution's stance toward knowledge is doctrine, not a separate system.
+8. Internal Drift and Factionalism — resolved through ordinary action resolution and causality (§4, §3.13).
+9. Division, Merger, and Transformation — governed entirely by the existing Transformation and Succession rules (§3.10); successor institutions record what they inherit and what they do not.
+10. Decline — a lifecycle status shift, traceable to established causes.
+11. Collapse — resolved through the existing End States (§3.10): dissolved, destroyed, absorbed, abandoned, or transformed into a successor.
+12. Legacy — resolved through the existing archived, forgotten, or mythologized end states, preserved through the Canonical Record Architecture (§2.8).
+
+The full model is specified in `010_ENGINE_RULES.md` Section 9.
+
+### Rationale
+
+Every stage of the model reuses an existing accepted mechanic rather than introducing a second lifecycle taxonomy, directly addressing the duplication risk identified during the Institutions & Organizations architecture review. This keeps the model reusable across governments, guilds, churches, universities, trade compacts, and military institutions without creating domain-specific exceptions.
+
+### Consequences
+
+`010_ENGINE_RULES.md` gains Section 9 - Institutions & Organizations.
+
+`002_ENGINE_ROADMAP.md`'s Version 0.1 - Engine Foundation checklist marks Institutions & Organizations complete.
+
+Future Politics & Governance, Magic Framework, and Historical Persistence work should treat institutions, including governments and religious orders, through this model rather than redefining institutional behavior.
+
+### Alternatives Considered
+
+- Defining a dedicated institution lifecycle vocabulary (Foundation, Growth, Division, Transformation, Decline, Legacy) separate from the Persistent Entity lifecycle status and end-state vocabulary. Rejected: creates two overlapping taxonomies requiring future reconciliation.
+- Modeling military arms with dedicated combat-readiness mechanics distinct from ordinary institutional assets. Deferred: combat-specific detail belongs to Conflict, Combat, Injury & Death (§6) and Politics & Governance, not the lifecycle model itself.
+- Modeling institutional doctrine as a numeric alignment or ideology score. Rejected: conflicts with Decision 026 (psychological and social values normally hidden) and Decision 014 (capabilities instead of attributes).
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:
-
-## Decision P002 — Institution Lifecycle Model
-
-**Status:** Proposed  
-**Depends On:** Decision 034 — Institution Typing and Ledger Scope
-
-Define creation, growth, governance, assets, military arms, internal drift, division, decline, collapse, and legacy for institutions.
-
----
 
 ## Decision P004 — Magic as World Extension
 
@@ -1471,6 +1513,14 @@ Superseded by Decision 031.
 **Status:** Superseded
 
 Superseded by Decision 032.
+
+---
+
+## Decision P002 — Institution Lifecycle Model
+
+**Status:** Superseded
+
+Superseded by Decision 035.
 
 ---
 

@@ -13,11 +13,11 @@ Complete Version 0.1 Engine Foundation.
 
 Current Task:
 
-Architecture Review for Institutions & Organizations
+Architecture Review for Politics & Governance
 
 Next Review:
 
-Institutions & Organizations readiness and dependency review (v0.1)
+Politics & Governance readiness and dependency review (v0.1)
 
 ---
 
@@ -70,12 +70,12 @@ Status: **In Progress**
   - [x] Research & Knowledge
   - [x] Canonical Record Architecture
   - [x] Persistent Entity Abstraction
+  - [x] Institutions & Organizations
 - [x] Engine Glossary
 - [x] World Bible (Asterra)
 
 ### Remaining
 
-- [ ] Institutions & Organizations
 - [ ] Politics & Governance
 - [ ] Magic Framework
 - [ ] Historical Persistence
@@ -235,7 +235,7 @@ Historical significance
 
 ## Institution Lifecycle
 
-Status: Planned
+Status: Accepted
 
 Foundation
 
@@ -258,6 +258,8 @@ Decline
 v
 
 Legacy
+
+Integrated through `001_ENGINE_DECISIONS.md` Decision 035 and `010_ENGINE_RULES.md` Section 9.
 
 ---
 
@@ -317,23 +319,24 @@ Current architectural debt:
 
 # Current Dependencies
 
-The current Institutions & Organizations milestone depends on the following existing engine work:
+The current Politics & Governance milestone depends on the following existing engine work:
 
 - `001_ENGINE_DECISIONS.md`
   - Decision 033 - Persistent Entity Abstraction
   - Decision 034 - Institution Typing and Ledger Scope
-  - Decision P002 - Institution Lifecycle Model
+  - Decision 035 - Institution Lifecycle Model
   - Decision 032 - Canonical Record Architecture
 - `010_ENGINE_RULES.md`
   - Section 1 - Engine Laws
   - Section 2 - Canon, Knowledge & Truth
   - Section 3 - Time & World Simulation
   - Section 5 - Living Characters
-  - Section 8 - Research & Knowledge
+  - Section 6 - Conflict, Combat, Injury & Death
+  - Section 9 - Institutions & Organizations
 - `020_ENGINE_GLOSSARY.md`
-  - terminology normalization for institutions, persistence, knowledge, resources, ownership, records, and objectives
+  - terminology normalization for institutions, governance, persistence, knowledge, resources, ownership, records, and objectives
 
-Before Institutions & Organizations is written, it should be checked against Persistent Entity, Resources & Ownership, Research & Knowledge, and Canonical Record Architecture to avoid creating a one-off organization model that later conflicts with governments, guilds, churches, armies, or universities.
+Before Politics & Governance is written, it should be checked against the Institution Lifecycle Model (Section 9), Persistent Entity, Resources & Ownership, and Canonical Record Architecture to avoid creating a one-off governance model that treats kingdoms, governments, or armies inconsistently with the typing already established in Decision 034.
 
 ---
 

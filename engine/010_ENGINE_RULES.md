@@ -48,7 +48,7 @@ It does **not** define any specific setting, campaign, character, or storyline.
 
 Because this document is still a workshop draft, not every scoped domain has been fully specified yet.
 
-Institutions and governance, research lifecycle, historical record generation, magic extension boundaries, and save/session architecture remain core engine domains that must eventually be formalized here or in explicitly subordinate engine documents.
+Governance, historical record generation, magic extension boundaries, and save/session architecture remain core engine domains that must eventually be formalized here or in explicitly subordinate engine documents. Institutions and organizations are formalized in Section 9.
 
 World or campaign files may extend these areas only in ways that do not silently redefine accepted engine behavior.
 
@@ -3511,3 +3511,195 @@ When resolving research, determine:
 6. Whether uncertainty requires action resolution.
 7. What result is recorded, transmitted, restricted, or lost.
 8. How the outcome changes later knowledge, practice, or history.
+
+# 9. Institutions & Organizations
+
+Institutions are persistent entities representing organized structures with leadership, doctrine or goals, membership, and internal governance. They provide the durable structures through which individuals accomplish what no single lifetime could achieve alone.
+
+Institutions follow the Persistent Entity requirements defined in Section 3.10 and the typing established in Decision 034. This section defines institution-specific behavior for founding, governance, assets, membership, drift, transformation, decline, and legacy.
+
+It does not introduce a separate lifecycle vocabulary. Every stage below resolves through a mechanic already defined elsewhere in this specification.
+
+---
+
+## 9.1 Institution Identity
+
+Every institution maintains the Persistent Entity requirements: identity, type, scope, current state, lifecycle status, relationships, historical continuity, and record responsibility.
+
+For institutions specifically:
+
+- Identity includes its name, founding act or origin, and any prior names or successor lineage.
+- Type is Institution, bounded from Settlement, Kingdom, and Army as established in Decision 034.
+- Scope may be personal, local, regional, or civilizational.
+- Record responsibility begins campaign-scoped and is promoted to a world-layer institution ledger when the institution becomes relevant beyond its founding campaign, per Decision 034.
+
+---
+
+## 9.2 Founding
+
+An institution enters existence through one of two paths.
+
+### Deliberate Founding
+
+A charter, decree, ritual, or formal agreement establishes the institution directly, with an identifiable founder or founding body, a stated purpose, and an initial governance structure.
+
+### Promotion
+
+An informal or temporary structure, such as a militia, a study circle, or a trading partnership, gains independent institutional identity through the Promotion mechanic defined in Section 3.10, once it accumulates leadership, assets, reputation, relationships, or historical significance beyond its original occasion.
+
+Both paths begin at the emerging lifecycle status and transition to active once the institution demonstrates sustained governance and activity.
+
+---
+
+## 9.3 Governance
+
+Every institution has a governance structure describing who holds authority and how decisions are made.
+
+Examples include:
+
+- single leadership, such as a guildmaster or an abbot,
+- collective leadership, such as a council or a chapter,
+- hierarchical leadership, with ranks and delegated authority,
+- hereditary or elected succession,
+- distributed or informal authority, such as a loose confederation.
+
+Governance structure is part of an institution's current state. It may change through succession, reform, coup, election, or crisis without ending the institution's identity, using the same Transformation mechanic that governs other persistent-entity change (Section 3.10).
+
+---
+
+## 9.4 Membership
+
+Membership connects living characters to an institution through Relationships (Section 3.10, Section 5.6), not through ownership or possession. An institution does not own its members.
+
+Each membership relationship may carry:
+
+- rank or role,
+- trust, loyalty, or resentment, tracked qualitatively per Decision 026,
+- obligations owed in both directions,
+- conditions of entry and exit.
+
+Membership may be formal, such as oaths, contracts, or ordination, or informal, such as long association or shared purpose. A character may hold membership in multiple institutions simultaneously, including institutions with conflicting obligations.
+
+---
+
+## 9.5 Doctrine and Goals
+
+An institution's doctrine, purpose, or goals are part of its current state.
+
+Core doctrine tends to remain recognizable over long periods, similar to how a character's core personality traits remain stable while their expression evolves (Decision 016). A church's founding tenets, a guild's founding craft, or a government's founding mandate may persist for generations even as specific policies, leadership, and practices change substantially around them.
+
+Doctrine may drift through internal debate, factionalism, external pressure, leadership change, or crisis. Drift is tracked as a change to current state rather than through a separate mechanic.
+
+---
+
+## 9.6 Institutional Assets
+
+Institutions may own resources independently of their members, per Decision 022 and Resources & Ownership (Section 7).
+
+Institutional assets use the existing Resource Categories (Section 7.2), most commonly Organizational Assets such as charters, contracts, archives, and production facilities, alongside Property, Currency and Wealth, and Knowledge Assets held in the institution's name rather than any individual member's.
+
+Transfers, losses, and destruction of institutional assets follow the same rules as any other resource (Section 7.9, Section 7.10): they require origin, cause, and updated ownership records. An institution's decline or collapse does not cause its assets to vanish; they must be transferred, seized, abandoned, or destroyed through an identifiable cause.
+
+---
+
+## 9.7 Military Arms
+
+Per Decision 034, a military force is not a separate Persistent Entity Type. It exists in one of two forms:
+
+- as part of an institution's current state, an asset or capability the institution can raise, deploy, or disband without ending the institution, or
+- as an independent Institution of subtype Military Institution, linked to its parent or patron institution through a Relationship, once it has been promoted per Section 3.10.
+
+A standing army raised and commanded entirely by a government remains that government's asset. A mercenary company, chivalric order, or military brotherhood that survives its original patron, develops its own leadership succession, and accumulates its own reputation and rivals has been promoted to its own institution.
+
+---
+
+## 9.8 Institutions and Knowledge
+
+Institutions interact with the Research & Knowledge lifecycle as described in Section 8.8: they may provide archives, laboratories, funding, apprenticeship, peer review, legitimacy, and distribution networks, or obstruct research through censorship, dogma, secrecy, monopoly, or bureaucratic inertia.
+
+An institution's stance toward specific knowledge domains is part of its current state and doctrine, not a separate knowledge-tracking system.
+
+---
+
+## 9.9 Internal Drift and Factionalism
+
+Institutions do not remain internally uniform. Over time, an institution may develop internal factions with competing interpretations of its doctrine, goals, or leadership.
+
+Internal drift may lead to:
+
+- reform from within,
+- suppression of a faction,
+- schism, resolved through Division (Section 9.10),
+- gradual doctrinal change without formal rupture.
+
+Internal drift is resolved using the same action-resolution and causality principles (Section 4, Section 3.13) that govern any other simulated development. It should never occur simply to create incident; it should emerge from established tensions, leadership decisions, external pressure, or unresolved disputes.
+
+---
+
+## 9.10 Division, Merger, and Transformation
+
+Institutions may divide, merge, reorganize, or otherwise transform without losing identity, using the Transformation and Succession rules already defined for persistent entities (Section 3.10).
+
+When an institution divides:
+
+- each resulting institution should record what it inherited, such as assets, doctrine, membership, and legitimacy claims, and what it did not,
+- disputed inheritance, such as rival claimants to the same name, doctrine, or assets, may remain unresolved rather than requiring an immediate authoritative answer,
+- the original institution's identity may continue in one successor, be split across several, or end entirely in favor of new successor institutions.
+
+When institutions merge, the same principle applies in reverse: the resulting institution records what it absorbed and what prior identities, obligations, or rivalries it inherited.
+
+---
+
+## 9.11 Decline
+
+An institution's lifecycle status may shift to declining when it loses members, resources, legitimacy, relevance, or capacity, without immediately ending.
+
+Decline may result from:
+
+- internal drift left unresolved,
+- loss of patronage, funding, or membership,
+- competition from rival institutions,
+- external suppression or conquest,
+- doctrinal irrelevance following external change,
+- leadership failure.
+
+A declining institution may recover, stabilize as a smaller or weaker version of itself, or continue toward dissolution. Decline should be traceable to established causes (Section 3.13), never imposed simply to close a narrative thread.
+
+---
+
+## 9.12 Collapse and End States
+
+An institution's active existence ends through one of the End States already defined for persistent entities (Section 3.10): dissolved, destroyed, absorbed, abandoned, or transformed into a successor entity.
+
+Ending an institution does not delete its records. Its assets, obligations, and claims must be accounted for through Transfer or Loss (Section 7.9, Section 7.10) rather than silently disappearing.
+
+---
+
+## 9.13 Legacy
+
+An ended institution may remain historically relevant through the remaining Persistent Entity end states: archived, forgotten, or mythologized (Section 3.10).
+
+Legacy may include:
+
+- surviving records, charters, or archives, treated as Historical Documents (Section 2.8),
+- successor institutions that claim continuity or descent,
+- former members, doctrines, or practices that persist independently of the institution itself,
+- ruins, disputed claims, or unresolved obligations inherited by others.
+
+An institution's legacy is preserved through the Canonical Record Architecture (Section 2.8): its own ledger records its authoritative final state, while chronicles, treatises, and other historical documents about it remain evidence rather than automatic truth.
+
+---
+
+## 9.14 Institution Lifecycle Summary
+
+When resolving an institution's development, determine:
+
+1. Its founding path and current lifecycle status.
+2. Its governance structure and how authority is currently held.
+3. Its membership relationships and any conflicting obligations.
+4. Its doctrine or goals, and whether they are drifting.
+5. Its assets and their ownership, per Resources & Ownership.
+6. Whether any military arm is an asset or an independent institution.
+7. Whether internal drift, division, merger, or transformation is occurring.
+8. Whether decline, collapse, or an end state applies.
+9. What legacy, if any, persists after its active existence ends.

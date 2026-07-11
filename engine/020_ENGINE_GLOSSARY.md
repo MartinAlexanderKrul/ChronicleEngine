@@ -210,6 +210,12 @@ Current categories include Immediate, Archived, Historical, and Mythic.
 
 ---
 
+## Founding
+
+The act or process by which an institution enters existence, either through a deliberate charter, decree, or ritual, or through Promotion of an existing informal or temporary structure to independent institutional identity.
+
+---
+
 ## Global Simulation
 
 The broadest and most abstract simulation layer.
@@ -225,6 +231,14 @@ Only developments with lasting significance are typically expanded into fuller h
 The record of events that occurred during play.
 
 The gameplay transcript protects lived events from being overwritten by later summaries, chronicles, or convenience records.
+
+---
+
+## Governance Structure
+
+The leadership and decision-making arrangement of an institution, such as single, collective, hierarchical, hereditary, elected, or informal authority.
+
+Governance structure is part of an institution's current state and may change without ending its identity.
 
 ---
 
@@ -280,7 +294,17 @@ A persistent organized structure that can outlive its founders and current membe
 
 Institutions may possess leadership, resources, goals, doctrine, knowledge, internal tensions, and historical continuity.
 
-Examples include guilds, churches, governments, universities, and trade compacts.
+Examples include guilds, churches, governments, universities, trade compacts, and military organizations with independent institutional identity.
+
+Institution is a Persistent Entity Type, bounded from Settlement, Kingdom, and Army per Decision 034.
+
+---
+
+## Internal Drift
+
+Gradual change within an institution's doctrine, goals, leadership, or membership, arising from factionalism, external pressure, or unresolved disputes rather than a single defining event.
+
+Internal drift may lead to reform, suppression of a faction, schism, or continued gradual change without formal rupture.
 
 ---
 
@@ -338,6 +362,14 @@ Not every ledger is equally authoritative; authority depends on its place in the
 
 ---
 
+## Legacy
+
+What remains of a persistent entity's influence after its active existence ends, including surviving records, successor entities, inherited obligations, and cultural memory.
+
+Legacy is preserved through the Canonical Record Architecture rather than requiring the entity to remain active.
+
+---
+
 ## Machine-Readable Save
 
 An implementation artifact used to preserve and restore simulation state.
@@ -351,6 +383,14 @@ Machine-readable saves support continuity but do not outrank the canon hierarchy
 How an actor attempts to achieve an objective or intent.
 
 Multiple methods may pursue the same intent.
+
+---
+
+## Military Institution
+
+An institution whose defining organizational purpose is armed force, distinguished from an ordinary military asset by independent leadership succession, doctrine, reputation, and continuity beyond any single patron.
+
+A military force that has not been promoted to this status remains part of its parent institution's current state.
 
 ---
 

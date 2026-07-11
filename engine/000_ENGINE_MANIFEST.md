@@ -63,6 +63,10 @@ ChronicleEngine/
 │   └── <world>/
 │       ├── 200_WORLD_BIBLE.md
 │       ├── ...
+│       ├── institutions/
+│       │   └── <institution>/
+│       │       ├── 250_INSTITUTION_LEDGER.md
+│       │       ├── ...
 │
 ├── campaigns/
 │   └── <campaign>/

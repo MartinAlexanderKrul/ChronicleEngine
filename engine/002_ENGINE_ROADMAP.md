@@ -321,6 +321,7 @@ The current Institutions & Organizations milestone depends on the following exis
 
 - `001_ENGINE_DECISIONS.md`
   - Decision 033 - Persistent Entity Abstraction
+  - Decision 034 - Institution Typing and Ledger Scope
   - Decision P002 - Institution Lifecycle Model
   - Decision 032 - Canonical Record Architecture
 - `010_ENGINE_RULES.md`

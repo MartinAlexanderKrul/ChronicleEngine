@@ -1351,13 +1351,74 @@ Domain sections remain responsible for domain-specific behavior.
 
 ---
 
+## Decision 034 — Institution Typing and Ledger Scope
+
+**Status:** Accepted  
+**Date:** 2026-07-11  
+**Related Sections:** Decision 033, Decision 032, Decision 028, `010_ENGINE_RULES.md` — Section 3.10, `000_ENGINE_MANIFEST.md` — Repository Architecture, `020_ENGINE_GLOSSARY.md` — Institution
+
+### Context
+
+The Institutions & Organizations milestone requires drafting an Institution Lifecycle Model (Decision P002). Before that model can be written, two questions needed to be resolved: how the Institution Persistent Entity Type relates to sibling concepts already named elsewhere in the repository — settlements, kingdoms, and armies — and where an institution's canonical record lives once its continuity outlives a single campaign. Decision 032 already names "institution" as a valid canonical-ledger scope, but Decision 028's semantic numbering ranges define no file convention for it.
+
+### Decision
+
+This decision defines two related resolutions.
+
+**Institution Typing**
+
+Institution is the Persistent Entity Type for organized structures characterized by leadership, doctrine or goals, membership, and internal governance. This includes governments, guilds, churches, universities, trade compacts, and military organizations that possess independent institutional identity.
+
+Settlement and Kingdom form a distinct Persistent Entity Type representing territory and population continuity rather than governing structure. A kingdom's ruling apparatus is an Institution (its government). The kingdom or settlement as territory-and-population is tracked separately. Which institution currently governs which territory is expressed as a Relationship between the two entities, not as shared identity.
+
+Army is not a separate top-level Persistent Entity Type. A military force is either part of an Institution's current state (an asset or capability) until it demonstrates independent continuity, or an Institution in its own right (subtype: Military Institution) once it gains independent leadership succession, doctrine, reputation, and rivals. This reuses the Promotion to Persistent Entity mechanic already defined in Rules §3.10.
+
+**Institution Ledger Scope**
+
+Institution-scoped canonical ledgers reside within the World layer, under a dedicated sub-path:
+
+```
+worlds/<world>/institutions/<institution-slug>/250_INSTITUTION_LEDGER.md
+```
+
+An institution's record responsibility begins campaign-scoped, tracked alongside other local factions in that campaign's organization file. It is promoted to a world-layer institution ledger when the institution becomes relevant beyond the campaign that created it, using the same Promotion mechanic described in Rules §3.10.
+
+Historical documents about an institution (charters, treatises, propaganda) remain governed by the Historical layer (300–399) as evidence per Decision 032. They do not substitute for the institution's own ledger.
+
+### Rationale
+
+Both resolutions extend existing, accepted mechanics rather than introducing new ones.
+
+Institution Typing reuses the Promotion mechanic already defined for generic subjects becoming persistent entities (Rules §3.10), rather than defining a separate creation process for military organizations. It also avoids duplicating lifecycle and continuity logic across four Types when two Types (Institution, Settlement/Kingdom) plus one reused mechanic (Promotion) are sufficient.
+
+Institution Ledger Scope reuses the same Promotion mechanic to decide when an institution graduates from a campaign-local record to a world-layer record, avoiding both premature file creation for minor organizations and an undefined gap for institutions that must persist beyond the campaign that created them, consistent with Design Philosophy 1.5 ("Institutions Outlive Individuals").
+
+### Consequences
+
+Decision P002 may proceed scoped to a single Persistent Entity Type (Institution), with Settlement/Kingdom and Army handled through existing Relationship and Promotion mechanics rather than parallel lifecycle specifications.
+
+`000_ENGINE_MANIFEST.md` repository architecture must be updated to include the `worlds/<world>/institutions/` sub-path.
+
+`002_ENGINE_ROADMAP.md` Current Dependencies for the Institutions & Organizations milestone must reference this decision.
+
+Future governance (Version 0.3) and civilizational conflict work (Rules §6.1.1) should treat kingdoms/settlements and their governing institutions as related but distinct entities when specifying territory, government, and army interactions.
+
+### Alternatives Considered
+
+- Treating Army, Settlement, and Kingdom as independent Persistent Entity Types with their own lifecycle rules. Rejected: duplicates lifecycle and promotion logic already defined for Institution.
+- Assigning institutions a new top-level semantic numbering range outside 200–299. Rejected: Decision 032 already frames institution ledgers as a scope nested within, not parallel to, world scope.
+- Creating a world-layer institution ledger immediately at founding, regardless of campaign relevance. Rejected: produces file sprawl for minor, campaign-local organizations before they are historically significant.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:
 
 ## Decision P002 — Institution Lifecycle Model
 
-**Status:** Proposed
+**Status:** Proposed  
+**Depends On:** Decision 034 — Institution Typing and Ledger Scope
 
 Define creation, growth, governance, assets, military arms, internal drift, division, decline, collapse, and legacy for institutions.
 

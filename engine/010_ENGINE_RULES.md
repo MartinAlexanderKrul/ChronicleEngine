@@ -49,7 +49,7 @@ It does **not** define any specific setting, campaign, character, or storyline.
 
 Because this document is still a workshop draft, not every scoped domain has been fully specified yet.
 
-Historical record generation, magic extension boundaries, and save/session architecture remain core engine domains that must eventually be formalized here or in explicitly subordinate engine documents. Institutions and organizations are formalized in Section 9. Political entities, governance, law, and diplomacy are formalized in Section 10, excluding population, economic, trade, infrastructure, and logistics simulation, which remain reserved for future engine work.
+Historical record generation and save/session architecture remain core engine domains that must eventually be formalized here or in explicitly subordinate engine documents. Institutions and organizations are formalized in Section 9. Political entities, governance, law, and diplomacy are formalized in Section 10, excluding population, economic, trade, infrastructure, and logistics simulation, which remain reserved for future engine work. Magic and other supernatural phenomena are formalized in Section 11 as a minimal extension contract; the specific magic system of any world remains world-layer content.
 
 World or campaign files may extend these areas only in ways that do not silently redefine accepted engine behavior.
 
@@ -2673,6 +2673,8 @@ If such phenomena are possible, they must have:
 
 Death must not become trivial merely because supernatural restoration exists.
 
+This is a specific application of the general Supernatural Phenomena Contract defined in Section 11.2.
+
 ---
 
 ## 6.19 Conflict Resolution Summary
@@ -3831,3 +3833,71 @@ When resolving a political or governance development, determine:
 6. Any treaties whose terms are relevant, and whether they align with recorded relationship state.
 7. Whether conflict resolution (Section 6) applies.
 8. How the outcome changes governance relationships, legitimacy, law, or diplomatic state.
+
+# 11. Magic & Supernatural Phenomena
+
+Chronicle Engine does not define a magic system. Per Decision 027, engine-level rules remain independent of any specific setting, and magic is inherently a setting-specific phenomenon.
+
+This section defines the minimum a world must establish before magic, miracles, curses, resurrection, or any other supernatural phenomenon may function within it. It does not define what that phenomenon is, how it feels, or what it costs. Those remain world-layer content.
+
+---
+
+## 11.1 World Extension Principle
+
+Supernatural phenomena are not assumed to exist in any world.
+
+They exist only if the world establishes them through discoverable mechanics (Law VI — Discovery), in world-layer documents such as a World Bible.
+
+The engine may reference the existence of such systems generically. It may never define their specific rules, costs, or mechanics on the engine's behalf.
+
+---
+
+## 11.2 Supernatural Phenomena Contract
+
+Any world-established supernatural phenomenon, whether magical, religious, or otherwise, must define:
+
+- a source or origin, even if that origin is itself unknown or disputed within the world,
+- what access requires, such as talent, training, materials, ritual, or institutional sanction,
+- consistent costs and limitations,
+- meaningful risk proportional to the power of the effect,
+- how the phenomenon is discovered, taught, and transmitted,
+- its social and institutional consequences.
+
+This generalizes the requirement already established for resurrection and survival beyond death (Section 6.18) to every world-declared supernatural phenomenon, rather than treating resurrection as a special case.
+
+---
+
+## 11.3 Integration with Existing Mechanics
+
+Magic and other supernatural phenomena do not require dedicated engine mechanics. They are expressed through systems already defined elsewhere in this specification:
+
+- Magical orders, schools, and religious institutions are Institutions (Section 9).
+- Enchanted or supernatural artifacts are Individual Resources (Section 7.12).
+- Spells, rituals, and supernatural knowledge are Knowledge Assets (Section 7.2), governed by the Research & Knowledge lifecycle (Section 8).
+- Active magical or supernatural effects are part of Character State (Section 5.2); magical exhaustion is tracked alongside other exhaustion (Section 6.10).
+- Magical advantages and disadvantages are ordinary Modifiers (Section 4.4).
+- Supernatural knowledge follows the same Layers of Truth (Section 2.2) as any other knowledge and is not exempt from Discovery (Section 2.5).
+
+The engine defines no spell lists, magic schools, or universal resource pool for magical power, consistent with the engine's rejection of universal point pools elsewhere (Decision 012, Decision 013, Decision 018).
+
+---
+
+## 11.4 Consistency
+
+Once a world establishes a supernatural system's rules, costs, and limitations, they may not silently change.
+
+An unexplained change to established supernatural rules is a contradiction and must be resolved explicitly (Section 2.9), consistent with Law I — Consistency and Decision 003 — Consistency Before Drama.
+
+---
+
+## 11.5 Magic and Supernatural Phenomena Summary
+
+When resolving a supernatural action or development, determine:
+
+1. Whether the world has established this phenomenon as existing.
+2. Its declared source, access requirements, costs, and limitations.
+3. Whether the acting character or institution can plausibly meet those requirements.
+4. What risk applies, proportional to the effect.
+5. Whether uncertainty requires normal action resolution (Section 4).
+6. What social, institutional, or knowledge consequences follow.
+7. Whether the outcome remains consistent with previously established rules for this phenomenon.

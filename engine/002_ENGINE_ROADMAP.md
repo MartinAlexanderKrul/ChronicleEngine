@@ -13,11 +13,11 @@ Complete Version 0.1 Engine Foundation.
 
 Current Task:
 
-Architecture Review for Magic Framework
+Architecture Review for Historical Persistence
 
 Next Review:
 
-Magic Framework readiness and dependency review (v0.1)
+Historical Persistence readiness and dependency review (v0.1)
 
 ---
 
@@ -72,12 +72,12 @@ Status: **In Progress**
   - [x] Persistent Entity Abstraction
   - [x] Institutions & Organizations
   - [x] Politics & Governance
+  - [x] Magic Framework
 - [x] Engine Glossary
 - [x] World Bible (Asterra)
 
 ### Remaining
 
-- [ ] Magic Framework
 - [ ] Historical Persistence
 - [ ] Save State Architecture
 - [ ] Engine Changelog
@@ -126,14 +126,14 @@ Support believable civilizations without requiring direct player control.
 
 ## Version 0.4 - Magic Framework
 
-Focus:
+Status: **Rescoped**
 
-- Engine-level magic abstraction
-- World extension model
-- Costs
-- Limitations
-- Discoverability
-- Magical research
+The engine-level portion of this milestone — abstraction, world extension model, cost/limitation/discoverability contract, and magical research — is substantially closed by `001_ENGINE_DECISIONS.md` Decision 037 and `010_ENGINE_RULES.md` Section 11. Magical research already runs through the existing Research & Knowledge lifecycle (Section 8) and required no separate mechanic.
+
+Remaining focus is world-layer authoring rather than engine work:
+
+- Expanding Asterra's Weave system in `worlds/asterra/200_WORLD_BIBLE.md` against the Supernatural Phenomena Contract (Section 11.2)
+- Any world-specific magic content for future worlds
 
 Goal:
 
@@ -295,6 +295,30 @@ Integrated through `001_ENGINE_DECISIONS.md` Decision 036 and `010_ENGINE_RULES.
 
 ---
 
+## Supernatural Phenomena Contract
+
+Status: Accepted
+
+World Extension Principle
+
+v
+
+Contract Declaration (source, access, cost, limitation, risk, discoverability, consequence)
+
+v
+
+Integration with Existing Mechanics
+
+v
+
+Consistency
+
+Deliberately minimal by design: the engine defines only the contract a world must satisfy. Any specific magic or supernatural system, including Asterra's Weave, remains world-layer content.
+
+Integrated through `001_ENGINE_DECISIONS.md` Decision 037 and `010_ENGINE_RULES.md` Section 11.
+
+---
+
 ## Historical Source Model
 
 Status: Planned
@@ -351,21 +375,22 @@ Current architectural debt:
 
 # Current Dependencies
 
-The current Magic Framework milestone depends on the following existing engine work:
+The current Historical Persistence milestone depends on the following existing engine work:
 
 - `001_ENGINE_DECISIONS.md`
-  - Decision P004 - Magic as World Extension
-  - Decision 027 - Engine and World Are Separate Layers
+  - Decision 032 - Canonical Record Architecture
   - Decision 033 - Persistent Entity Abstraction
-  - Decision 031 - Research and Knowledge Evolve Through Lifecycle
+  - Decision 004 - Canon Hierarchy
+  - Decision 005 - Separate Objective Reality from Knowledge and Belief
 - `010_ENGINE_RULES.md`
-  - Section 1 - Engine Laws
   - Section 2 - Canon, Knowledge & Truth
-  - Section 8 - Research & Knowledge
-- `worlds/asterra/200_WORLD_BIBLE.md`
-  - Section 3 - The Weave and Magic
+  - Section 3.5 - Event Importance
+  - Section 9.13 - Legacy
+  - Section 10.6 - Treaties and Agreements
+- `020_ENGINE_GLOSSARY.md`
+  - Historical Document, Historical Event, Historical Source, Archived Event, Mythic Event
 
-Before Magic Framework is written, it should be checked against Research & Knowledge (Section 8), Decision 027 (engine/world separation), and the Weave as already described in the World Bible, to avoid defining engine-level magic mechanics that duplicate the research lifecycle or that quietly encode Asterra-specific assumptions into the engine layer.
+Before Historical Persistence is written, it should be checked against the Canonical Record Architecture (Decision 032, Section 2.8) and the Event Importance categories (Section 3.5) already defined, to avoid creating a document-generation model that duplicates the existing record-role and event-classification vocabulary rather than building on it.
 
 ---
 

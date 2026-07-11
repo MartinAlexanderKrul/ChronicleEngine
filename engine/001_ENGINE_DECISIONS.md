@@ -1519,17 +1519,56 @@ Future Civilizational Conflict work (Section 6.1.1) and Version 0.3 governance w
 
 ---
 
+## Decision 037 — Magic as World Extension
+
+**Status:** Accepted  
+**Date:** 2026-07-11  
+**Related Sections:** Decision 027, Decision 003, Decision 012, Decision 013, Decision 018, `010_ENGINE_RULES.md` — Sections 2.2, 2.5, 2.9, 4.4, 5.2, 6.10, 6.18, 7.2, 7.12, 8, 9
+
+### Context
+
+Decision P004 asked how setting-specific supernatural rules extend the engine without contaminating engine-level logic or allowing unexplained rule drift during play — the same "Rule Drift" failure documented in the Mictian case study. Review found that most magic-adjacent behavior already has a home in existing mechanics: magical research already follows the Research & Knowledge lifecycle (Section 8, which explicitly includes "magical" research), magical items and knowledge already fit existing Resource Categories (Section 7.2, 7.12), magical effects already fit Character State and Modifiers (Section 5.2, 6.10, 4.4), and Section 6.18 already contains almost the exact contract needed — narrowly scoped to resurrection alone. Per explicit direction, the engine-layer scope is kept deliberately minimal: the actual magic system of any world, including Asterra's Weave, remains entirely world-layer content.
+
+### Decision
+
+The engine defines a Supernatural Phenomena Contract that any world must satisfy to introduce magic or other supernatural phenomena, generalizing the existing resurrection rule (Section 6.18) rather than duplicating it under a different name.
+
+Any world-established supernatural phenomenon must define:
+
+1. Existence — not assumed; established only through the world's discoverable mechanics (Law VI).
+2. Source — a declared origin, even if that origin is itself unknown or disputed within the world.
+3. Access — what access requires: talent, training, materials, ritual, institutional sanction, or similar.
+4. Cost and limitation — consistent and established; the engine does not define what they are, only that they must exist and remain stable absent an in-world cause for change.
+5. Risk — proportional to the power of the effect.
+6. Discoverability — governed by the existing Layers of Truth (Section 2.2) and Research & Knowledge lifecycle (Section 8); not exempt from Discovery (Section 2.5).
+7. Social and institutional consequences — expressed through existing Institution, Relationship, and Reputation mechanics.
+8. Consistency — once established, a system's rules, costs, and limitations may not silently change; unexplained change is a contradiction (Section 2.9).
+
+The engine defines no spell lists, magic schools, or universal magical resource pool. Existing mechanics already accommodate magic-specific content: Institutions (Section 9) for magical orders and schools, Individual Resources (Section 7.12) for artifacts, Knowledge Assets (Section 7.2) for spellbooks and spells, Character State and Exhaustion (Section 5.2, 6.10) for active effects and magical depletion, and Modifiers (Section 4.4) for magical advantages and disadvantages.
+
+### Rationale
+
+Generalizing Section 6.18 instead of writing a parallel rule closes the exact duplication risk Decision P004 was written to prevent — without this, resurrection would have an explicit consistency contract while blessings, curses, and enchantments (Section 5.8) would not, despite being the same category of thing. Rejecting a universal magical resource pool keeps this decision consistent with Decisions 012, 013, and 018. Deferring all specific magic content to the world layer directly satisfies Decision 027 and the explicit direction to keep the magic system world-specific.
+
+### Consequences
+
+`010_ENGINE_RULES.md` gains Section 11 — Magic & Supernatural Phenomena. Section 6.18 is cross-referenced to Section 11.2 rather than rewritten, preserving its existing accepted text.
+
+`worlds/asterra/200_WORLD_BIBLE.md` Section 3 (The Weave and Magic) already substantially satisfies this contract — declared origin (acknowledged as unknown), access requirements, costs and limitations, and fragmented institutional knowledge are all already present. No changes to the World Bible are required by this decision.
+
+`002_ENGINE_ROADMAP.md`'s Version 0.1 checklist marks Magic Framework complete. The Version 0.4 — Magic Framework planned milestone should be understood as now primarily world-layer authoring work rather than engine work, since its stated focus items are substantially closed at the engine layer by this decision.
+
+### Alternatives Considered
+
+- Defining a generic engine-level magic mechanic (spell points, tiers, schools) usable by any world. Rejected per explicit direction to keep magic world-specific, with the engine defining only the minimal contract.
+- Leaving Section 6.18 as the only supernatural contract, without generalizing it. Rejected: leaves other supernatural phenomena without an equivalent consistency requirement.
+- Modeling magical knowledge through a dedicated Magic Knowledge Layer distinct from the existing five Layers of Truth. Rejected: duplicates Section 2.2 without cause.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:
-
-## Decision P004 — Magic as World Extension
-
-**Status:** Proposed
-
-Determine how setting-specific supernatural rules extend the engine without contaminating engine-level logic or allowing unexplained rule drift during play.
-
----
 
 ## Decision P005 — Historical Source Generation
 
@@ -1578,6 +1617,14 @@ Superseded by Decision 032.
 **Status:** Superseded
 
 Superseded by Decision 035.
+
+---
+
+## Decision P004 — Magic as World Extension
+
+**Status:** Superseded
+
+Superseded by Decision 037.
 
 ---
 

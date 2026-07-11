@@ -614,6 +614,14 @@ Also called a Kingdom when its scope is a sovereign or quasi-sovereign territory
 
 ---
 
+## Supernatural Phenomenon
+
+Magic, miracle, curse, resurrection, or any other world-established capability that exceeds ordinary physical explanation.
+
+A supernatural phenomenon may exist only if a world establishes it through discoverable mechanics, and must define a source, access requirements, costs, limitations, risks, and social and institutional consequences.
+
+---
+
 ## Suppression
 
 The restriction, concealment, destruction, censorship, or controlled retention of knowledge by individuals, institutions, or social systems.

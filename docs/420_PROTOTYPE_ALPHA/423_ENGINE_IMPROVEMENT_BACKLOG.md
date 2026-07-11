@@ -25,4 +25,45 @@ Each item is classified as a **refinement** (adjustment within the accepted arch
 
 # Backlog
 
-_Empty. Items are added as issues and observations accumulate._
+## PA-001 — Public and Cultural Knowledge-State Holders
+
+**Status:** Observe During Prototype
+**Severity:** Low
+**Source:** Verra canonical world generation
+
+Knowledge States require an Entity ID for the holder. Public and cultural states were attached to the Halden Settlement entity as a population proxy.
+
+Validate during play whether settlement-level representation is sufficient or whether a reusable model for populations, communities, traditions, or publics is required. This may become awkward when several social groups within one settlement disagree, a religion spans multiple settlements, a cultural tradition survives without a current institution, or the "public" is fragmented by class, language, profession, or region.
+
+Do not introduce a new Persistent Entity type without evidence from play.
+
+---
+
+## PA-002 — Location Granularity
+
+**Status:** Observe During Prototype
+**Severity:** Low
+**Source:** Verra canonical world generation
+
+Resource location currently references Halden rather than the specific guildhall or storage location. Settlement-level location loses the distinction between settlement, institution premises, building, room, and container.
+
+Validate whether settlement-level location is sufficient for campaign continuity or whether institution premises, buildings, or containers need a clearer structural representation. Do not add a building subsystem now.
+
+---
+
+## PA-003 — Institution Asset Index Versus Resource Ownership
+
+**Status:** Review During Prototype
+**Severity:** Medium
+**Source:** Verra canonical world generation
+
+The Glaziers' Guild lists a Resource as an institutional asset while the Resource object separately records the Guild as owner.
+
+This is consistent but duplicates the same fact — a single-source-of-truth risk.
+
+Validate whether institution asset lists should be:
+- derived indexes,
+- non-authoritative references,
+- or separate operational holdings with clearly distinct semantics.
+
+Resource ownership should remain the authoritative ownership source unless play demonstrates otherwise. The likely long-term rule: resource ownership is authoritative on the Resource object; institution asset lists are derived references or indexes, not separate ownership declarations.

@@ -2017,6 +2017,145 @@ Phase 2 ledger templates and any world-authoring of Asterra remain future work.
 
 ---
 
+## Decision 046 - Civilizational Knowledge State and Propagation
+
+**Status:** Accepted
+**Date:** 2026-07-11
+**Related Sections:** Decision 031, Decision 032, Decision 033, Decision 035, `010_ENGINE_RULES.md` - Section 8
+
+### Context
+
+Decision 031 established that research and knowledge follow a lifecycle, but Version 0.2 requires a more historically realistic model at civilization scale. The engine must distinguish the thing being known from what different holders know, believe, possess, validate, apply, or dispute about it. Without that distinction, knowledge collapses into a binary unlock state or a global technology tree, contradicting the project's world-first historical model.
+
+The existing foundation already provides the abstractions needed to avoid a new subsystem: Persistent Objects, Canonical Records, Relationships, Institutions, the Runtime promotion model, and the accepted research lifecycle. The unresolved question was how to formalize holder-specific divergence and propagation without turning diffusion into a mandatory linear ladder.
+
+### Decision
+
+The engine distinguishes **Knowledge Subject** from **Knowledge State**.
+
+**Normative principle:** **Knowledge Subjects persist. Knowledge States change.**
+
+A **Knowledge Subject** is the actual claim, technique, theory, discovery, practice, method, doctrine, or knowledge domain whose continuity may matter historically.
+
+A **Knowledge State** is holder-specific: what a particular character, institution, public, or cultural tradition knows, believes, understands, validates, possesses, applies, restricts, preserves, or misrepresents about that subject.
+
+One Knowledge Subject may have many divergent Knowledge States at the same time. Different holders may:
+
+- possess the same text but understand it differently,
+- validate the same claim under different standards,
+- apply a technique without understanding its theory,
+- preserve fragments while losing the whole,
+- dispute, suppress, or mythologize the same subject.
+
+Propagation is not a universal unlock and not a mandatory local-to-world ladder. Reach descriptors such as local, institutional, regional, or world-spanning may describe distribution, but they are not required stages. Instead, holder-specific Knowledge States are described through independent qualitative dimensions, including:
+
+- access,
+- possession,
+- understanding,
+- validation,
+- acceptance,
+- application,
+- transmission reach,
+- restriction,
+- preservation quality.
+
+The research lifecycle remains real, but it now applies with this distinction in view: the lifecycle describes how a Knowledge Subject originates, is examined, recorded, transmitted, restricted, adopted, lost, or rediscovered, while Knowledge States describe what specific holders currently make of that subject.
+
+### Rationale
+
+This model increases historical realism without introducing a new engine subsystem. Real civilizations do not advance because "the world" learns something once. Knowledge spreads unevenly, remains partial, is institutionalized or suppressed, and survives through records, practices, and traditions with varying fidelity. Reusing the existing abstractions keeps Version 0.2 aligned with the engine's preference for strengthening accepted mechanics rather than expanding them.
+
+### Consequences
+
+`010_ENGINE_RULES.md` Section 8 is revised so that Research & Knowledge owns the distinction between Knowledge Subject and Knowledge State, plus the non-linear propagation model.
+
+`002_ENGINE_ROADMAP.md` Version 0.2 is restructured around capability milestones rather than file creation, with explicit exclusion of technology trees, research-point currencies, and new economy/governance subsystems.
+
+`020_ENGINE_GLOSSARY.md` gains the terminology required to keep the new knowledge model single-sourced and unambiguous.
+
+Decision 031 remains accepted and is refined rather than replaced: the lifecycle still stands, but it is now understood through the Knowledge Subject / Knowledge State distinction.
+
+### Alternatives Considered
+
+- Binary known/unknown knowledge. Rejected: cannot represent disagreement, partial custody, fragmented practice, or contested validation.
+- Global technology tree or universal unlock model. Rejected: contradicts the historical simulation goal and collapses holder-specific continuity.
+- Mandatory diffusion ladder from local to world. Rejected: useful as description, false as a universal rule.
+
+---
+
+## Decision 047 - Knowledge Custody, Continuity, and Rediscovery
+
+**Status:** Accepted
+**Date:** 2026-07-11
+**Related Sections:** Decision 046, Decision 032, Decision 035, Decision 038, `010_ENGINE_RULES.md` - Sections 8, 9, 12
+
+### Context
+
+Once Knowledge Subject and Knowledge State are separated, the next unresolved problem is continuity: how knowledge survives or disappears through archives, practitioners, institutions, records, suppression, and rediscovery. Historical realism requires custody, access control, validation authority, and preservation quality to matter without allowing any institution to own objective truth merely because it holds records or controls a gate.
+
+The foundation already contains the needed mechanisms: Canonical Records for durable state, Institutions for custody and mediation, Resources & Ownership for records and materials, Historical Persistence for surviving evidence, and the Runtime's promotion model for making new canon durable. The remaining task was to define how these existing mechanics relate.
+
+### Decision
+
+The engine distinguishes the following, and must not conflate them:
+
+- **objective reality** - what is actually true,
+- **custody of records or materials** - who currently holds or preserves the relevant artifact, archive, notes, or tools,
+- **control of access** - who can inspect, copy, learn, or use the subject,
+- **validation authority** - who can meaningfully certify, legitimize, or reject a claim within a given context,
+- **claimed intellectual ownership** - who asserts control, monopoly, or authorship,
+- **holder Knowledge State** - what a specific holder actually knows, believes, understands, or applies.
+
+Institutional custody does not imply ownership of truth. Holding an archive, relic, manual, or restricted manuscript may improve preservation quality or influence access, but the institution's claim remains distinct from objective reality and from what other holders know.
+
+Knowledge continuity may persist through:
+
+- living practitioners,
+- apprenticeships and traditions,
+- records and archives,
+- restricted repositories,
+- institutional memory,
+- public custom,
+- mythologized fragments,
+- recovered artifacts or texts.
+
+Knowledge may be lost or fragmented through:
+
+- death,
+- failure to transmit,
+- censorship,
+- institutional collapse,
+- language drift,
+- material decay,
+- deliberate concealment,
+- selective preservation of only partial forms.
+
+The engine recognizes **passive extinction** as a real historical outcome: a technique, method, or practice may disappear because the final knowledgeable practitioners die without successfully transmitting it, even if rumors, degraded notes, or distorted public memory remain.
+
+Rediscovery is recovery of an earlier Knowledge Subject through surviving traces, records, practices, ruins, or renewed observation. It is not retroactive invention. The recovered Knowledge State may differ sharply from the earlier one in fidelity, scope, or application depending on preservation quality and fragmentation.
+
+### Rationale
+
+This decision makes knowledge historically durable without inventing an archive subsystem, a bureaucracy simulator, or a second truth model. It strengthens the existing engine by clarifying how records, institutions, and historical evidence affect continuity while preserving the canon architecture's distinction between evidence and objective reality.
+
+### Consequences
+
+`010_ENGINE_RULES.md` Section 8 defines custody, institutional mediation, transmission, loss, passive extinction, and rediscovery in terms of existing engine mechanics.
+
+Section 9 continues to govern institutions, but institutions are treated as mediators, custodians, gatekeepers, patrons, censors, and validators rather than owners of truth.
+
+Section 12 remains the home for historical persistence, but its relationship to rediscovery is tightened through Section 8's continuity model.
+
+Version 0.2 capability validation must include non-canonical fixtures that prove the engine can represent suppression, monopoly, divergence, cultural memory, rediscovery, and passive extinction without shortcuts.
+
+### Alternatives Considered
+
+- Treating institutional custody as equivalent to truth. Rejected: contradicts the canon hierarchy and historical realism.
+- Treating knowledge loss as requiring destruction of every surviving trace. Rejected: many historical losses leave fragments, myths, or degraded evidence behind.
+- Adding a dedicated archive or bureaucracy subsystem. Rejected: existing Resources, Institutions, Canonical Records, and Historical Persistence already express the needed behavior.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

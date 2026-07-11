@@ -9,15 +9,15 @@
 
 Goal:
 
-Foundation Stabilization is complete. Repository architecture is synchronized and ready for Architecture Freeze review and Version 0.2 scoping.
+Architecture Freeze is complete. Version 0.2 is now focused on implementing civilization-scale knowledge continuity through the existing engine.
 
 Current Task:
 
-None - awaiting Architecture Freeze confirmation and Version 0.2 scoping.
+Formalize Version 0.2 in the roadmap, Decisions 046-047, and Research & Knowledge rules without introducing new simulation subsystems.
 
 Next Review:
 
-Architecture Freeze review and Version 0.2 - Knowledge & Civilization scoping, when initiated.
+Version 0.2 terminology audit and capability validation against the formal non-canonical acceptance fixtures.
 
 ---
 
@@ -50,25 +50,40 @@ New systems should emerge from existing abstractions instead of introducing unre
 
 # Current Milestone
 
-## Foundation Stabilization
+## Version 0.2 - Knowledge & Civilization
 
-Status: **Complete**
+Status: **Active**
 
-A post-hardening synchronization milestone focused on repository consistency, governance, and authority alignment rather than new engine mechanics.
+Chronicle Engine's next milestone is to model knowledge as a persistent historical force rather than a binary possession or global unlock.
 
-### Completed
+### Goal
 
-- [x] Normalized Engine version metadata to a single current Engine version across the repository
-- [x] Confirmed the canonical structural scope taxonomy in `011_ENGINE_DATA_MODEL.md` as `personal | local | regional | world | historical`
-- [x] Aligned Rules, Glossary, Runtime references, and Templates to the Data Model's scope ownership
-- [x] Removed speculative save-manifest identifier language in favor of existing world/campaign names or repository paths
-- [x] Collapsed the duplicated simulation model so Rules Section 1 remains authoritative and Section 3.3 cross-references it
-- [x] Refreshed README, INDEX, PROJECT_CONTEXT, CONTRIBUTING, DEVELOPMENT_WORKFLOW, and AI startup guidance to reflect the current architecture
-- [x] Repaired stale roadmap, changelog, and repository-status summaries introduced before stabilization
+Civilization-scale knowledge continuity without a global technology tree or universal unlock model.
+
+### Current Focus
+
+- Formalize the Knowledge Subject / Knowledge State distinction
+- Define institutional mediation, custody, and preservation without assigning institutions ownership of objective truth
+- Define non-linear transmission, restriction, loss, fragmentation, and rediscovery
+- Validate the model through formal non-canonical capability fixtures
+
+### Exclusions
+
+- Population simulation
+- Economy or logistics systems
+- New governance subsystems
+- World-specific magic rules
+- Technology trees
+- Research-point currencies
+- Detailed institutional bureaucracy
 
 ### Remaining
 
-All Foundation Stabilization items complete.
+- [ ] 0.2.1 Knowledge State Model
+- [ ] 0.2.2 Institutional Knowledge Systems
+- [ ] 0.2.3 Transmission and Diffusion
+- [ ] 0.2.4 Loss, Fragmentation, and Rediscovery
+- [ ] 0.2.5 Capability Validation
 
 ---
 
@@ -143,20 +158,254 @@ All Version 0.1 items complete.
 
 ## Version 0.2 - Knowledge & Civilization
 
+### Version 0.2 Vision
+
+Version 0.2 exists to simulate a historical truth: civilizations do not advance because the world unlocks a stage, but because knowledge is discovered, preserved, misunderstood, validated, restricted, transmitted, lost, and rediscovered unevenly across people, institutions, records, and generations.
+
+Its purpose is to make knowledge behave as a historical force whose continuity matters independently of any one holder.
+
+### Version 0.2 Success Statement
+
+Version 0.2 is complete when Chronicle Engine can model knowledge as a persistent historical force rather than a binary possession.
+
+Knowledge should be able to:
+
+- originate,
+- diverge,
+- be validated,
+- be disputed,
+- be restricted,
+- be preserved,
+- be forgotten,
+- be rediscovered,
+- and continue across generations,
+
+without requiring a global technology tree, universal unlock system, or additional economy, governance, or world-specific simulation subsystems.
+
+### Foundation
+
+Version 0.2 must strengthen the existing engine rather than expand it. If a mechanic increases historical realism and can be expressed through existing Persistent Objects, Canonical Records, Relationships, Institutions, the Runtime, and the Knowledge State model, that approach is preferred over introducing a new subsystem.
+
 Focus:
 
-- Civilization-scale research lifecycle
-- Discovery system expansion
-- Knowledge propagation between people and institutions
-- Institutions
-- Universities
-- Guilds
-- Religious organizations
+- Civilization-scale knowledge continuity
+- Knowledge Subject and Knowledge State distinction
+- Institutional knowledge systems
+- Non-linear propagation and diffusion
+- Restriction, fragmentation, and preservation
+- Rediscovery and passive extinction
 - Cultural memory
 
 Goal:
 
 Extend the foundational Research & Knowledge rules from Version 0.1 into civilization-scale historical development.
+
+### Capability Milestones
+
+#### 0.2.1 Knowledge State Model
+
+Capability delivered:
+
+- Holder-specific Knowledge States about shared Knowledge Subjects
+- The normative principle: Knowledge Subjects persist. Knowledge States change.
+- Qualitative state dimensions instead of binary unlocks
+
+Dependencies:
+
+- Decision 031
+- Decision 032
+- Decision 033
+- `010_ENGINE_RULES.md` Section 8
+- `011_ENGINE_DATA_MODEL.md`
+- `012_ENGINE_RUNTIME.md`
+
+Affected rules:
+
+- Section 8
+- Supporting cross-references in Sections 2, 7, and 12
+
+ADR impact:
+
+- Decision 046
+
+Acceptance fixtures:
+
+- University validates a finding while religious authorities restrict it
+- Two regions inherit diverged versions of the same subject
+- Discovery spreads through institutions and records rather than instant global canon
+
+Explicit exclusions:
+
+- No technology tree
+- No research-point currency
+- No mandatory local-to-world progression ladder
+
+Completion criteria:
+
+- One Knowledge Subject may have multiple divergent Knowledge States
+- The rules distinguish truth, custody, validation, and holder state
+- The model remains inside existing abstractions
+
+#### 0.2.2 Institutional Knowledge Systems
+
+Capability delivered:
+
+- Institutional mediation of access, custody, validation, preservation, censorship, and monopoly without granting institutions ownership of objective truth
+
+Dependencies:
+
+- Decision 034
+- Decision 035
+- Decision 036
+- Decision 038
+- Rules Sections 8, 9, and 12
+
+Affected rules:
+
+- Sections 8 and 9
+- Supporting cross-references in Sections 7 and 12
+
+ADR impact:
+
+- Decision 047
+
+Acceptance fixtures:
+
+- Guild monopolizes a practical technique without making its theory public
+- Dangerous manuscript is archived, suppressed, then rediscovered
+- University validates a finding while religious authorities restrict it
+
+Explicit exclusions:
+
+- No bureaucracy simulator
+- No new institutional stat subsystem
+
+Completion criteria:
+
+- Institutions can preserve, restrict, validate, and suppress knowledge through existing mechanics
+- Custody remains distinct from truth and holder understanding
+
+#### 0.2.3 Transmission and Diffusion
+
+Capability delivered:
+
+- Non-linear spread of knowledge through transmission paths, distortion, delay, and selective adoption
+
+Dependencies:
+
+- Decision 046
+- Section 8.10
+- Existing institution, relationship, and canon-layer mechanics
+
+Affected rules:
+
+- Section 8
+- Supporting cross-references in Sections 2, 9, 10, and 12
+
+ADR impact:
+
+- Decision 046
+
+Acceptance fixtures:
+
+- Two regions inherit diverged versions of the same knowledge through transmission drift
+- Discovery spreads historically through institutions and records rather than instant global canon
+
+Explicit exclusions:
+
+- No map-wide diffusion engine
+- No economy or trade subsystem added to justify spread
+
+Completion criteria:
+
+- Transmission is pathway-based rather than globally unlocked
+- Reach remains descriptive rather than a mandatory progression stage
+
+#### 0.2.4 Loss, Fragmentation, and Rediscovery
+
+Capability delivered:
+
+- Knowledge continuity through degradation, fragmentation, suppression, passive extinction, and rediscovery
+
+Dependencies:
+
+- Decision 038
+- Rules Sections 7, 8, 9, and 12
+- Existing resource, archive, and historical-persistence mechanics
+
+Affected rules:
+
+- Sections 8 and 12
+- Supporting cross-references in Sections 7 and 9
+
+ADR impact:
+
+- Decision 047
+
+Acceptance fixtures:
+
+- Dangerous magical manuscript is archived, suppressed, then rediscovered later
+- Civilization benefits from cultural memory of a lost practice without full understanding
+- A technique disappears because the final knowledgeable practitioners die without transmitting it
+
+Explicit exclusions:
+
+- No separate archaeology subsystem
+- No historical periodization work
+
+Completion criteria:
+
+- Loss does not require total erasure of all traces
+- Rediscovery preserves continuity with the earlier Knowledge Subject
+- Passive extinction is a valid historical outcome
+
+#### 0.2.5 Capability Validation
+
+Capability delivered:
+
+- Formal non-canonical validation of the Version 0.2 model against the accepted capability fixtures
+
+Dependencies:
+
+- Decisions 046 and 047
+- Revised Rules Section 8
+- Frozen foundation documents
+
+Affected rules:
+
+- No new owning section; validates the integrated result across Sections 8, 9, and 12
+
+ADR impact:
+
+- No new ADRs; confirms sufficiency of Decisions 046 and 047
+
+Acceptance fixtures:
+
+1. A university validates a finding while religious authorities restrict it.
+2. A guild monopolizes a practical technique without making its theory public.
+3. A dangerous magical manuscript is archived, suppressed, then rediscovered later.
+4. Two regions inherit diverged versions of the same knowledge through transmission drift.
+5. A civilization benefits from cultural memory of a lost practice without fully understanding it.
+6. A discovery spreads historically through institutions and records, not instant global canon.
+7. A technique disappears because the final knowledgeable practitioners die without transmitting it.
+
+Each fixture defines:
+
+- starting state,
+- relevant entities and records,
+- required engine capability,
+- prohibited shortcuts,
+- expected durable outcome.
+
+Explicit exclusions:
+
+- Fixtures are validation artifacts, not canonical world content
+- Fixtures must not become substitute system definitions
+
+Completion criteria:
+
+- All seven fixtures can be resolved without contradiction
+- No fixture requires a technology tree, research currency, population model, economy/logistics subsystem, governance expansion, or world-specific magic rules
 
 ---
 
@@ -256,35 +505,33 @@ Integrated through `001_ENGINE_DECISIONS.md` Decision 033 and `010_ENGINE_RULES.
 
 ---
 
-## Knowledge Lifecycle
+## Civilizational Knowledge State and Propagation
 
-Status: Planned
+Status: Accepted
 
-Observation
-
-v
-
-Hypothesis
+Knowledge Subject persists
 
 v
 
-Experiment
+Holder-specific Knowledge States diverge
 
 v
 
-Validation
+Institutions mediate custody, access, and validation
 
 v
 
-Publication
+Transmission spreads unevenly through people, records, and institutions
 
 v
 
-Adoption
+Loss, fragmentation, and passive extinction remain possible
 
 v
 
-Historical significance
+Rediscovery restores continuity without retroactive invention
+
+Integrated through `001_ENGINE_DECISIONS.md` Decisions 046 and 047 and `010_ENGINE_RULES.md` Section 8.
 
 ---
 
@@ -468,9 +715,7 @@ Current architectural debt:
 
 # Current Dependencies
 
-No active task. Version 0.1 - Engine Foundation is complete, and the changelog (`030_ENGINE_CHANGELOG.md`) now indexes Decisions 001-045 plus the Foundation Stabilization synchronization pass.
-
-When Version 0.2 - Knowledge & Civilization is initiated, its dependencies should be drawn from Research & Knowledge (Section 8), Institutions & Organizations (Section 9), and the Knowledge Lifecycle Future Architecture entry below, consistent with the roadmap's stated focus: civilization-scale research lifecycle, discovery system expansion, knowledge propagation, universities, guilds, religious organizations, and cultural memory.
+Version 0.2 - Knowledge & Civilization is active. Its dependencies are Research & Knowledge (Section 8), Institutions & Organizations (Section 9), Historical Persistence (Section 12), Decisions 031-038, and the Version 0.2 decisions that formalize the Knowledge Subject / Knowledge State model and continuity rules.
 
 ---
 

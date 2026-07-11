@@ -300,8 +300,8 @@ The project is currently focused on completing the engine specification.
 Current priority:
 
 1. Foundation Stabilization complete.
-2. Architecture Freeze pending final verification.
-3. Begin Version 0.2 scoping.
+2. Architecture Freeze complete.
+3. Implement Version 0.2 knowledge continuity.
 4. Finalize the first official world.
 
 ---

@@ -422,7 +422,7 @@ Investigation may be scholarly, political, legal, magical, archaeological, or pe
 
 ## Institutional Knowledge
 
-Knowledge preserved, controlled, or transmitted by an organization rather than by one individual alone.
+The holder-specific Knowledge State maintained by an organization rather than by one individual alone.
 
 It may be more durable than personal memory while still remaining incomplete, restricted, politicized, or outdated.
 
@@ -456,6 +456,8 @@ A resource whose value lies primarily in information rather than only in physica
 
 Examples include maps, journals, blueprints, research, and legal records.
 
+A Knowledge Asset may preserve, describe, or transmit a Knowledge Subject, but it is not identical to the subject itself.
+
 ---
 
 ## Knowledge Layer
@@ -468,7 +470,23 @@ Current engine knowledge layers include Objective Reality, Character Knowledge, 
 
 ## Knowledge Lifecycle
 
-The process by which knowledge is observed, hypothesized, investigated, validated, recorded, published, adopted, suppressed, lost, or rediscovered over time.
+The process by which a Knowledge Subject is observed, hypothesized, investigated, validated, recorded, published, adopted, suppressed, lost, or rediscovered over time, while different holders maintain different Knowledge States about it.
+
+---
+
+## Knowledge State
+
+The holder-specific condition of what a character, institution, public, or cultural tradition knows, believes, understands, validates, possesses, applies, restricts, preserves, or misrepresents about a Knowledge Subject.
+
+Knowledge States change over time and may diverge sharply between holders of the same subject.
+
+---
+
+## Knowledge Subject
+
+The actual claim, technique, theory, discovery, practice, method, doctrine, or knowledge domain whose continuity may matter historically.
+
+Knowledge Subjects persist even while the Knowledge States associated with them change.
 
 ---
 
@@ -690,7 +708,7 @@ Provenance may include creator, ownership history, modifications, cultural signi
 
 ## Public Knowledge
 
-Information generally accepted by a society, culture, or population.
+A widely distributed or commonly repeated Knowledge State held by a society, culture, or population.
 
 Public Knowledge may still be false, outdated, incomplete, or propagandized.
 
@@ -732,9 +750,33 @@ Research may be theoretical, practical, experimental, archival, magical, or fiel
 
 ## Rediscovery
 
-The recovery of knowledge, methods, or evidence that once existed but was lost, suppressed, forgotten, fragmented, or misunderstood.
+The recovery of a Knowledge Subject that once existed but was lost, suppressed, forgotten, fragmented, or misunderstood.
 
 Rediscovery is historical recovery, not retroactive invention.
+
+---
+
+## Passive Extinction
+
+The disappearance of a technique, method, or practice because its final knowledgeable practitioners die without successfully transmitting it.
+
+Passive extinction may occur even when fragments, rumors, degraded notes, or distorted public memory remain.
+
+---
+
+## Preservation Quality
+
+The qualitative fidelity, completeness, and usability with which a Knowledge Subject survives in records, materials, institutions, or traditions.
+
+High preservation quality improves the chance of accurate transmission or rediscovery; low preservation quality increases distortion, fragmentation, or practical loss.
+
+---
+
+## Transmission Reach
+
+The qualitative breadth of how far a Knowledge State has spread between holders, institutions, traditions, or regions.
+
+Transmission Reach is descriptive rather than a mandatory progression stage.
 
 ---
 
@@ -896,9 +938,11 @@ A treaty's existence and text may be canon; its claims do not override the canon
 
 ## Validation
 
-The process by which a claim, theory, method, or discovery is sufficiently supported to be treated as reliable within a given context.
+The process by which a claim, theory, method, or discovery is treated as sufficiently supported within a given context.
 
 Validation may remain local, contested, conditional, or later overturned.
+
+Validation does not by itself determine objective truth.
 
 ---
 

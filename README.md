@@ -160,8 +160,9 @@ Chronicle Engine prioritizes:
 Current focus:
 
 - Foundation Stabilization complete.
-- Architecture Freeze pending final verification.
-- Preparing Version 0.2 scoping.
+- Architecture Freeze complete.
+- Implementing Version 0.2 knowledge continuity.
+- Preparing Version 0.2 capability validation.
 
 See:
 

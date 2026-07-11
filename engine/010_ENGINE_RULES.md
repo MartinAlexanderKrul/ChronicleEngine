@@ -3030,17 +3030,48 @@ Research may advance the world, fail, stall, mislead, be suppressed, or be redis
 Research follows these principles:
 
 1. Knowledge must have an origin.
-2. Claims are not automatically true because they are written, taught, or widely believed.
-3. Discovery and validation are separate processes.
-4. Publication and adoption are separate processes.
-5. Institutions strongly influence what knowledge survives, spreads, or disappears.
-6. Research consumes time, resources, and opportunity.
-7. Failure may still produce evidence, method improvement, or new questions.
-8. Lost knowledge may return through rediscovery rather than retroactive invention.
+2. Knowledge Subjects persist. Knowledge States change.
+3. Claims are not automatically true because they are written, taught, or widely believed.
+4. Discovery and validation are separate processes.
+5. Possession, understanding, validation, acceptance, and application are separate conditions.
+6. Institutions strongly influence what knowledge survives, spreads, or disappears.
+7. Research consumes time, resources, and opportunity.
+8. Failure may still produce evidence, method improvement, or new questions.
+9. Lost knowledge may return through rediscovery rather than retroactive invention.
 
 ---
 
-## 8.2 Research Lifecycle
+## 8.2 Knowledge Subjects, Knowledge States, and Research Lifecycle
+
+Chronicle Engine distinguishes **Knowledge Subject** from **Knowledge State**.
+
+A **Knowledge Subject** is the actual claim, technique, theory, discovery, practice, method, doctrine, or knowledge domain whose continuity may matter historically.
+
+A **Knowledge State** is holder-specific: what a specific character, institution, public, or cultural tradition knows, believes, understands, validates, possesses, applies, restricts, preserves, or misrepresents about that subject.
+
+One Knowledge Subject may have many divergent Knowledge States at the same time.
+
+Different holders may:
+
+- possess the same text but interpret it differently,
+- validate the same claim under different standards,
+- apply a practice without understanding its theory,
+- preserve fragments while losing the whole,
+- suppress a subject publicly while cultivating it privately.
+
+Knowledge State should therefore be described through independent qualitative dimensions such as:
+
+- access,
+- possession,
+- understanding,
+- validation,
+- acceptance,
+- application,
+- transmission reach,
+- restriction,
+- preservation quality.
+
+These are not mandatory progression stages and must not be treated as a technology ladder. A subject may be widely possessed but poorly understood, institutionally validated but publicly disputed, locally practiced but not recorded, or preserved in archives while absent from living use.
 
 Research and knowledge normally move through a lifecycle.
 
@@ -3091,6 +3122,8 @@ Evidence may support, weaken, complicate, or overturn a claim.
 
 Validation is contextual rather than absolute.
 
+Validation belongs to a holder, institution, or tradition, not to objective reality itself.
+
 A conclusion may be:
 
 - locally validated,
@@ -3116,6 +3149,8 @@ If preserved, research enters records such as:
 
 Unrecorded knowledge remains vulnerable to loss through death, secrecy, or memory failure.
 
+Recording may preserve a subject even when holder understanding remains partial, disputed, or distorted.
+
 ---
 
 ### Publication or Restriction
@@ -3131,6 +3166,8 @@ Knowledge may be:
 - deliberately destroyed.
 
 The engine should not assume that every validated discovery becomes public.
+
+Custody of a record, material, or archive does not imply ownership of objective truth.
 
 ---
 
@@ -3166,6 +3203,7 @@ It may be shaped by:
 Knowledge may disappear through:
 
 - death,
+- failure to transmit,
 - war,
 - disaster,
 - censorship,
@@ -3175,6 +3213,8 @@ Knowledge may disappear through:
 - deliberate concealment.
 
 Lost knowledge may later be rediscovered through surviving evidence, ruins, archives, oral tradition, or repeated observation.
+
+A technique or practice may also vanish through **passive extinction** when its final knowledgeable practitioners die without successfully transmitting it.
 
 ---
 
@@ -3287,7 +3327,7 @@ The engine should distinguish between having evidence and having certainty.
 
 ---
 
-## 8.7 Research and Knowledge Layers
+## 8.7 Research, Knowledge Layers, and Holder States
 
 Research interacts with the existing layers of truth.
 
@@ -3305,13 +3345,13 @@ Researchers and witnesses may know more, less, or something different from what 
 
 ### Institutional Knowledge
 
-Organizations may preserve, standardize, censor, monopolize, or distort knowledge.
+Organizations may preserve, standardize, censor, monopolize, validate, or distort holder-specific Knowledge States about a subject.
 
 ---
 
 ### Public Knowledge
 
-Widely repeated conclusions may spread before they are well validated.
+Widely repeated conclusions may spread before they are well validated, or may remain publicly disputed despite institutional validation.
 
 ---
 
@@ -3321,7 +3361,7 @@ Research may challenge myth, reinforce it, reinterpret it, or itself become myth
 
 ---
 
-## 8.8 Institutions and Research
+## 8.8 Institutional Knowledge Systems
 
 Institutions strongly affect research outcomes.
 
@@ -3347,6 +3387,17 @@ They may also create obstacles through:
 - fear of consequences.
 
 Research should therefore be shaped not only by individual brilliance but also by institutional context.
+
+Institutions may interact with knowledge in several distinct ways that must not be conflated:
+
+- **custody** of records, tools, artifacts, or archives,
+- **control of access** to those records or materials,
+- **validation authority** within a given scholarly, legal, religious, or practical context,
+- **claimed intellectual ownership** or monopoly,
+- **holder Knowledge State** - what the institution itself currently preserves, teaches, permits, or suppresses,
+- **objective reality** - what is actually true regardless of any institutional claim.
+
+Institutional custody does not imply ownership of truth. Holding the archive, licensing the craft, or guarding the manuscript may shape preservation quality and access, but it does not make the institution automatically correct.
 
 ---
 
@@ -3378,7 +3429,7 @@ Openness does not prove safety.
 
 ---
 
-## 8.10 Knowledge Transmission
+## 8.10 Transmission and Diffusion
 
 Knowledge spreads through transmission rather than instant global availability.
 
@@ -3397,7 +3448,19 @@ Transmission may occur through:
 - religious missions,
 - recovered archives.
 
-Transmission may alter the content being transmitted through simplification, mistranslation, ideology, secrecy, or deliberate revision.
+Transmission may alter the content being transmitted through simplification, mistranslation, ideology, secrecy, deliberate revision, or partial custody of the underlying records.
+
+Transmission is not a mandatory ladder from local to regional to world knowledge.
+
+Reach descriptors such as local, institutional, regional, or world-spanning may describe how far a holder's Knowledge State has spread, but they are descriptive rather than required stages.
+
+Knowledge may:
+
+- spread widely but shallowly,
+- remain narrow but highly validated,
+- move between institutions while remaining absent from the public,
+- survive in practice while disappearing from theory,
+- fracture into divergent traditions across regions.
 
 ---
 
@@ -3422,9 +3485,20 @@ Some discoveries matter primarily because they reshape what later generations be
 
 ---
 
-## 8.12 Rediscovery and Historical Recovery
+## 8.12 Loss, Fragmentation, and Rediscovery
 
-Rediscovery is a normal part of historical simulation.
+Rediscovery is a normal part of historical simulation, but it is only one possible outcome of knowledge loss.
+
+Knowledge may persist in degraded or partial form rather than as a cleanly preserved whole.
+
+Important states include:
+
+- active transmission,
+- restricted preservation,
+- fragmented continuity,
+- mythologized survival,
+- passive extinction,
+- later rediscovery.
 
 Knowledge may return through:
 
@@ -3436,7 +3510,15 @@ Knowledge may return through:
 - inherited oral traditions,
 - recovery of restricted archives.
 
-Rediscovery should preserve continuity with the earlier existence of that knowledge.
+Preservation quality matters. A rediscovered subject may return:
+
+- accurately,
+- partially,
+- with distorted explanation,
+- with preserved practice but lost theory,
+- with theory preserved but practice no longer reproducible.
+
+Rediscovery should preserve continuity with the earlier existence of that Knowledge Subject.
 
 It is not the same as inventing the same idea in a historical vacuum.
 
@@ -3447,13 +3529,15 @@ It is not the same as inventing the same idea in a historical vacuum.
 When resolving research, determine:
 
 1. What is being investigated.
-2. What evidence already exists.
-3. Who has access to the work.
-4. What tools, capability, and time are available.
-5. What institutions help or obstruct the work.
-6. Whether uncertainty requires action resolution.
-7. What result is recorded, transmitted, restricted, or lost.
-8. How the outcome changes later knowledge, practice, or history.
+2. What the relevant Knowledge Subject actually is.
+3. Which holders currently maintain what Knowledge States about it.
+4. What evidence already exists.
+5. Who has access to the work or its records.
+6. What tools, capability, and time are available.
+7. What institutions help, validate, preserve, restrict, or obstruct the work.
+8. Whether uncertainty requires action resolution.
+9. What result is recorded, transmitted, restricted, fragmented, extinguished, or lost.
+10. How the outcome changes later knowledge, practice, or history.
 
 # 9. Institutions & Organizations
 

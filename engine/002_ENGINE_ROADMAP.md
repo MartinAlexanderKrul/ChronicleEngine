@@ -13,11 +13,11 @@ Complete Version 0.1 Engine Foundation.
 
 Current Task:
 
-Architecture Review for Politics & Governance
+Architecture Review for Magic Framework
 
 Next Review:
 
-Politics & Governance readiness and dependency review (v0.1)
+Magic Framework readiness and dependency review (v0.1)
 
 ---
 
@@ -71,12 +71,12 @@ Status: **In Progress**
   - [x] Canonical Record Architecture
   - [x] Persistent Entity Abstraction
   - [x] Institutions & Organizations
+  - [x] Politics & Governance
 - [x] Engine Glossary
 - [x] World Bible (Asterra)
 
 ### Remaining
 
-- [ ] Politics & Governance
 - [ ] Magic Framework
 - [ ] Historical Persistence
 - [ ] Save State Architecture
@@ -263,6 +263,38 @@ Integrated through `001_ENGINE_DECISIONS.md` Decision 035 and `010_ENGINE_RULES.
 
 ---
 
+## Political Entities & Governance
+
+Status: Accepted
+
+Settlement/Kingdom Typing
+
+v
+
+Governance as Relationship
+
+v
+
+Legitimacy
+
+v
+
+Law
+
+v
+
+Diplomacy
+
+v
+
+Treaties
+
+Population, Economy, Trade, Infrastructure, and Logistics remain out of scope, reserved for Version 0.3 - Governance & Society.
+
+Integrated through `001_ENGINE_DECISIONS.md` Decision 036 and `010_ENGINE_RULES.md` Section 10.
+
+---
+
 ## Historical Source Model
 
 Status: Planned
@@ -319,24 +351,21 @@ Current architectural debt:
 
 # Current Dependencies
 
-The current Politics & Governance milestone depends on the following existing engine work:
+The current Magic Framework milestone depends on the following existing engine work:
 
 - `001_ENGINE_DECISIONS.md`
+  - Decision P004 - Magic as World Extension
+  - Decision 027 - Engine and World Are Separate Layers
   - Decision 033 - Persistent Entity Abstraction
-  - Decision 034 - Institution Typing and Ledger Scope
-  - Decision 035 - Institution Lifecycle Model
-  - Decision 032 - Canonical Record Architecture
+  - Decision 031 - Research and Knowledge Evolve Through Lifecycle
 - `010_ENGINE_RULES.md`
   - Section 1 - Engine Laws
   - Section 2 - Canon, Knowledge & Truth
-  - Section 3 - Time & World Simulation
-  - Section 5 - Living Characters
-  - Section 6 - Conflict, Combat, Injury & Death
-  - Section 9 - Institutions & Organizations
-- `020_ENGINE_GLOSSARY.md`
-  - terminology normalization for institutions, governance, persistence, knowledge, resources, ownership, records, and objectives
+  - Section 8 - Research & Knowledge
+- `worlds/asterra/200_WORLD_BIBLE.md`
+  - Section 3 - The Weave and Magic
 
-Before Politics & Governance is written, it should be checked against the Institution Lifecycle Model (Section 9), Persistent Entity, Resources & Ownership, and Canonical Record Architecture to avoid creating a one-off governance model that treats kingdoms, governments, or armies inconsistently with the typing already established in Decision 034.
+Before Magic Framework is written, it should be checked against Research & Knowledge (Section 8), Decision 027 (engine/world separation), and the Weave as already described in the World Bible, to avoid defining engine-level magic mechanics that duplicate the research lifecycle or that quietly encode Asterra-specific assumptions into the engine layer.
 
 ---
 

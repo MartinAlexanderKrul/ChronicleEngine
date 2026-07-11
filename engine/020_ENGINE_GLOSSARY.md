@@ -168,6 +168,14 @@ It belongs to the repository's design-retrospective layer rather than the engine
 
 ---
 
+## Diplomacy
+
+The process by which institutions, and institutions and settlements or kingdoms, negotiate, ally, contest, or conflict with one another.
+
+Diplomacy uses the Relationships mechanic defined for persistent entities, expressed through a standard quality vocabulary such as Allied, Rival, or Hostile.
+
+---
+
 ## Discovery
 
 The process by which previously unknown information becomes known through interaction, observation, investigation, experimentation, records, or similar means.
@@ -231,6 +239,14 @@ Only developments with lasting significance are typically expanded into fuller h
 The record of events that occurred during play.
 
 The gameplay transcript protects lived events from being overwritten by later summaries, chronicles, or convenience records.
+
+---
+
+## Governance
+
+The exercise of authority by one or more institutions over a settlement or kingdom.
+
+Governance is expressed as a Relationship rather than as a possession or fixed field, and may be shared, contested, or absent.
 
 ---
 
@@ -332,6 +348,12 @@ Intent is evaluated before method during action resolution.
 
 ---
 
+## Kingdom
+
+See Settlement.
+
+---
+
 ## Knowledge Asset
 
 A resource whose value lies primarily in information rather than only in physical substance.
@@ -354,6 +376,14 @@ The process by which knowledge is observed, hypothesized, investigated, validate
 
 ---
 
+## Law
+
+Codified doctrine held by a governing institution, treated as a Knowledge Asset whose content, spread, and authority follow the same rules as other institutional knowledge.
+
+A law's existence and text may be canon; its claims of jurisdiction or justice are not automatically true.
+
+---
+
 ## Ledger
 
 A structured record used to preserve durable state, transactions, holdings, or other canonical information over time.
@@ -367,6 +397,14 @@ Not every ledger is equally authoritative; authority depends on its place in the
 What remains of a persistent entity's influence after its active existence ends, including surviving records, successor entities, inherited obligations, and cultural memory.
 
 Legacy is preserved through the Canonical Record Architecture rather than requiring the entity to remain active.
+
+---
+
+## Legitimacy
+
+The degree to which a governing claim is recognized by those it claims to govern, by rival claimants, and by other institutions.
+
+Legitimacy is tracked qualitatively and belongs to a specific governance relationship rather than to an institution or territory alone.
 
 ---
 
@@ -566,6 +604,16 @@ Session summaries are helpful reference artifacts, not the top authority source.
 
 ---
 
+## Settlement
+
+A Persistent Entity Type representing territory and population continuity, distinct from Institution.
+
+A settlement's current state includes territorial extent, an aggregate population figure, and prevailing conditions such as prosperity or unrest, tracked qualitatively.
+
+Also called a Kingdom when its scope is a sovereign or quasi-sovereign territory.
+
+---
+
 ## Suppression
 
 The restriction, concealment, destruction, censorship, or controlled retention of knowledge by individuals, institutions, or social systems.
@@ -609,6 +657,14 @@ Tracked objectives replace the need for a dedicated quest mechanic.
 A change in possession, ownership, or both for a resource.
 
 Transfers should update the relevant canonical records.
+
+---
+
+## Treaty
+
+A Knowledge Asset or Historical Document recording the terms of a diplomatic or governance relationship.
+
+A treaty's existence and text may be canon; its claims do not override the canonical relationship state recorded in the relevant ledgers.
 
 ---
 

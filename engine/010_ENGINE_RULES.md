@@ -39,6 +39,7 @@ This specification governs:
 - Economy and trade
 - Reputation
 - Institutions and factions
+- Politics, governance, law, and diplomacy
 - Research and discovery
 - Magic framework
 - Historical persistence
@@ -48,7 +49,7 @@ It does **not** define any specific setting, campaign, character, or storyline.
 
 Because this document is still a workshop draft, not every scoped domain has been fully specified yet.
 
-Governance, historical record generation, magic extension boundaries, and save/session architecture remain core engine domains that must eventually be formalized here or in explicitly subordinate engine documents. Institutions and organizations are formalized in Section 9.
+Historical record generation, magic extension boundaries, and save/session architecture remain core engine domains that must eventually be formalized here or in explicitly subordinate engine documents. Institutions and organizations are formalized in Section 9. Political entities, governance, law, and diplomacy are formalized in Section 10, excluding population, economic, trade, infrastructure, and logistics simulation, which remain reserved for future engine work.
 
 World or campaign files may extend these areas only in ways that do not silently redefine accepted engine behavior.
 
@@ -3703,3 +3704,130 @@ When resolving an institution's development, determine:
 7. Whether internal drift, division, merger, or transformation is occurring.
 8. Whether decline, collapse, or an end state applies.
 9. What legacy, if any, persists after its active existence ends.
+
+# 10. Politics & Governance
+
+Politics and governance describe how institutions claim, exercise, contest, and lose authority over territory and population, and how they relate to one another through law and diplomacy.
+
+This section builds on Institutions & Organizations (Section 9), Persistent Entities (Section 3.10), and Resources & Ownership (Section 7). It does not introduce a new persistent-entity mechanic; it applies existing mechanics to territory, authority, law, and inter-institutional relations.
+
+Detailed population dynamics, economic systems, trade networks, infrastructure, and logistics are out of scope for this section and remain reserved for future engine work.
+
+---
+
+## 10.1 Settlement and Kingdom
+
+Settlement and Kingdom are a Persistent Entity Type representing territory and population continuity, distinct from Institution (Decision 034).
+
+Every Settlement/Kingdom maintains the Persistent Entity requirements (Section 3.10): identity, type, scope, current state, lifecycle status, relationships, historical continuity, and record responsibility.
+
+Current state for a Settlement/Kingdom typically includes:
+
+- territorial extent and notable features,
+- an aggregate population figure,
+- prevailing conditions such as prosperity, unrest, or crisis, tracked qualitatively per Decision 026.
+
+Individual named residents are Living Characters (Section 5) related to the settlement. They are not separately modeled as population units. A settlement's aggregate population may produce named characters through ordinary play and simulation, without a dedicated promotion pipeline.
+
+---
+
+## 10.2 Governance as Relationship
+
+Governance is expressed as a Relationship between one or more Institutions and a Settlement/Kingdom (Section 3.10), not as a field owned by either entity.
+
+A territory may have:
+
+- a single governing institution,
+- multiple institutions sharing or dividing authority,
+- multiple institutions actively contesting authority,
+- no institution currently exercising effective control.
+
+Each governance relationship carries a quality describing the nature of the claim, such as:
+
+- Ruling
+- Contesting
+- Advisory
+- Occupying
+- Exiled
+
+Governance relationships may change through succession, conquest, reform, revolution, or negotiation, using the same Transformation mechanic that governs other persistent-entity change (Section 3.10) and the same causality principle (Section 3.13): governance changes should be traceable to established causes.
+
+---
+
+## 10.3 Legitimacy
+
+Legitimacy is the degree to which a governing claim is recognized by those it claims to govern, by rival claimants, and by other institutions.
+
+Legitimacy is tracked qualitatively, consistent with Decision 026 and the morale-band pattern already established in Section 6.11. Suggested bands:
+
+- Unquestioned
+- Accepted
+- Contested
+- Rejected
+
+Legitimacy belongs to a specific governance relationship, not to the institution or the territory alone. The same institution may be Unquestioned in one territory and Rejected in another. Legitimacy may change through conquest, succession disputes, misrule, reform, propaganda, or the actions of rival claimants, and should shift only for traceable reasons.
+
+---
+
+## 10.4 Law
+
+Law is not a separate Persistent Entity Type or record class.
+
+Codified law is a Knowledge Asset (Section 7.2), held and maintained by a governing Institution. A law's content and enforcement priorities are part of that institution's doctrine (Section 9.5).
+
+Law follows the existing Research & Knowledge lifecycle where relevant: legal codes may be drafted, contested, revised, published, restricted, or lost, and may spread between institutions and territories through Knowledge Transmission (Section 8.10), including diplomacy, conquest, and scholarly exchange.
+
+A law's existence and text may be canon. Its claims of jurisdiction, justice, or precedent are not automatically true, and may be disputed, unevenly enforced, or superseded, consistent with Decision 032.
+
+---
+
+## 10.5 Diplomacy
+
+Diplomatic relationships between institutions, and between institutions and settlements or kingdoms, use the Relationships mechanic already defined for persistent entities (Section 3.10).
+
+Diplomatic relationships use a standard quality vocabulary:
+
+- Allied
+- Vassal
+- Tributary
+- Rival
+- Hostile
+- Neutral
+- Occupied
+
+These qualities may combine with the relationship-specific detail already available to any persistent-entity relationship, such as shared history, obligations, and trust.
+
+Diplomatic action, including negotiation, coercion, alliance-building, and espionage, is resolved through the ordinary action-resolution system (Section 4), including Opposed Actions (Section 4.9) when institutions actively work against one another.
+
+---
+
+## 10.6 Treaties and Agreements
+
+A treaty is the Knowledge Asset or Historical Document recording the terms of a diplomatic or governance relationship.
+
+A treaty's existence and text may be canon. Its claims do not override the canonical relationship state recorded in the relevant ledgers; when a treaty's claimed terms and the recorded relationship state conflict, the contradiction should be resolved explicitly (Section 2.9) rather than assumed.
+
+Treaties may be broken, reinterpreted, renegotiated, or lapse, changing the underlying relationship rather than the historical record of the treaty itself.
+
+---
+
+## 10.7 Conflict Between Political Entities
+
+War, rebellion, and armed contest between institutions or over a settlement's governance follow the existing Conflict, Combat, Injury & Death rules (Section 6), including Conflict Scale (Section 6.1.1) for group, strategic, and civilizational engagements.
+
+A governance relationship's quality may shift to Contesting, Occupying, or end entirely as a direct consequence of conflict outcomes, recorded through the same Transformation mechanic used for other persistent-entity change (Section 3.10).
+
+---
+
+## 10.8 Politics and Governance Summary
+
+When resolving a political or governance development, determine:
+
+1. Which Settlement/Kingdom or Institution entities are involved.
+2. The current governance relationships over any relevant territory, and their qualities.
+3. The legitimacy of each relevant governing claim.
+4. Any law bearing on the situation, and which institution maintains it.
+5. Any diplomatic relationships between the institutions involved, and their qualities.
+6. Any treaties whose terms are relevant, and whether they align with recorded relationship state.
+7. Whether conflict resolution (Section 6) applies.
+8. How the outcome changes governance relationships, legitimacy, law, or diplomatic state.

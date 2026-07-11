@@ -1462,6 +1462,63 @@ Future Politics & Governance, Magic Framework, and Historical Persistence work s
 
 ---
 
+## Decision 036 — Political Entities and Governance Scope
+
+**Status:** Accepted  
+**Date:** 2026-07-11  
+**Related Sections:** Decision 034, Decision 033, Decision 032, Decision 026, `010_ENGINE_RULES.md` — Sections 3.10, 4.9, 5.6, 6.11, 7.2, 8.10, 9
+
+### Context
+
+Politics & Governance is the current v0.1 roadmap task. Decision 034 established Settlement/Kingdom as a Persistent Entity Type sibling to Institution but did not define its fields. The World Bible (Asterra, Section 4) confirms that governance is many-to-one — a single territory may be governed, contested, or shared by multiple institutions, as with the Republic of Meris — rather than one government per kingdom. Four further questions needed resolution before rule text: how Settlement/Kingdom is defined, how legitimacy is modeled, how law is classified, and how diplomatic relationships are expressed, without duplicating mechanics already accepted for Institutions, Resources, Knowledge, and Persistent Entities.
+
+### Decision
+
+This decision defines four related resolutions, scoped deliberately to the v0.1 foundational layer. Population, Economy, Trade, Infrastructure, and Logistics simulation remain out of scope, reserved for Version 0.3 — Governance & Society.
+
+**Settlement/Kingdom Typing**
+
+Settlement and Kingdom are a single Persistent Entity Type representing territory and population continuity, distinct from Institution (Decision 034). A Settlement/Kingdom entity's current state includes territory extent, an aggregate population figure, and its prevailing conditions such as prosperity or unrest, tracked qualitatively per Decision 026. Individual named residents are ordinary Living Characters (Section 5) related to the settlement, not separately modeled population units. Detailed population dynamics — growth, migration, demographic modeling — are deferred to Version 0.3.
+
+**Governance as Relationship**
+
+Governance is expressed as a Relationship between one or more Institutions and a Settlement/Kingdom, not as a field owned by either entity. A territory may have a single governing institution, multiple institutions sharing or contesting authority, or no institution currently exercising effective control. Relationship qualities such as ruling, contesting, advisory, occupying, or exiled describe the nature of each institution's claim.
+
+**Legitimacy**
+
+Legitimacy is the degree to which a governing claim is recognized, tracked qualitatively rather than numerically, consistent with Decision 026 and the existing morale-band pattern (Section 6.11). Suggested bands: Unquestioned, Accepted, Contested, Rejected. Legitimacy is a property of a specific governance Relationship, not of the institution or territory alone — the same institution may be Unquestioned in one territory and Rejected in another.
+
+**Law**
+
+Law is not a new Persistent Entity Type or record class. Codified law is a Knowledge Asset (Section 7.2) held by a governing Institution; its content and authority are part of that institution's doctrine (Section 9.5); its spread, reform, and loss follow the existing Research & Knowledge and Knowledge Transmission rules (Section 8, Section 8.10). A law's existence and text may be canon; its claims of jurisdiction or justice are not automatically true, per Decision 032.
+
+**Diplomacy**
+
+Diplomatic relationships between institutions, and between institutions and settlements or kingdoms, use the existing Relationships mechanic (Section 3.10), extended with a standard quality vocabulary: Allied, Vassal, Tributary, Rival, Hostile, Neutral, and Occupied. Treaties are Knowledge Assets or Historical Documents recording the terms of a relationship; a treaty's existence and text may be canon, but its claims do not override the canonical relationship state recorded in the relevant ledgers.
+
+### Rationale
+
+Every resolution reuses a mechanic already accepted elsewhere — Persistent Entity typing and Relationships (Decision 033), the qualitative-banding pattern already used for morale and hidden social values (Decision 026, Section 6.11), Resources & Ownership's Knowledge Assets (Section 7.2), and Research & Knowledge's transmission rules (Section 8.10) — rather than introducing parallel systems for governance, law, or diplomacy.
+
+Scoping out Population, Economy, Trade, Infrastructure, and Logistics keeps this decision aligned with the roadmap's own separation between the v0.1 foundational stub and the Version 0.3 — Governance & Society milestone, avoiding front-running work that has not yet had its own architecture review.
+
+### Consequences
+
+`010_ENGINE_RULES.md` gains Section 10 — Politics & Governance, defining Settlement/Kingdom, governance relationships, legitimacy, law, and diplomacy in full.
+
+`002_ENGINE_ROADMAP.md`'s Version 0.1 checklist marks Politics & Governance complete; Version 0.3 — Governance & Society retains Population, Economy, Trade, Infrastructure, and Logistics as its own scope.
+
+Future Civilizational Conflict work (Section 6.1.1) and Version 0.3 governance work should build on Settlement/Kingdom and governance Relationships rather than redefining territory or authority.
+
+### Alternatives Considered
+
+- Modeling one government institution per kingdom as a required field. Rejected: contradicted by the World Bible's own Republic of Meris, which is governed by multiple competing institutions.
+- Modeling legitimacy as a numeric score exposed to the player. Rejected: conflicts with Decision 026.
+- Modeling law as its own Persistent Entity Type. Rejected: duplicates Knowledge Asset and Doctrine mechanics already defined.
+- Including Population, Economy, Trade, Infrastructure, and Logistics in this decision. Rejected: these are explicitly scoped to Version 0.3 in the roadmap and were not part of this architecture review.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

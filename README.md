@@ -1,0 +1,195 @@
+# Chronicle Engine
+
+> *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
+
+---
+
+## Overview
+
+Chronicle Engine is a software architecture project for building AI-driven historical simulations.
+
+Unlike traditional RPG systems, Chronicle Engine does not generate stories through predefined plots or scripted encounters.
+
+Instead, it simulates persistent worlds whose history emerges naturally from the interaction of:
+
+- Individuals
+- Institutions
+- Cultures
+- Economies
+- Politics
+- Discovery
+- Environment
+- Chance
+
+The player is not the center of the world.
+
+The player becomes part of its history.
+
+---
+
+# Project Goals
+
+Chronicle Engine is designed to support:
+
+- Multiple worlds
+- Multiple campaigns
+- Multiple generations of characters
+- Persistent historical continuity
+- Emergent progression
+- Long-form simulation
+- AI-assisted roleplaying
+
+The engine is world-agnostic and can support fantasy, science fiction, historical, or entirely original settings.
+
+---
+
+# Repository Structure
+
+```text
+ChronicleEngine/
+
+├── engine/         Core engine specification
+├── worlds/         World definitions
+├── campaigns/      Individual campaigns
+├── docs/           Project documentation
+├── templates/      Reusable templates
+├── saves/          Save-state architecture
+├── README.md
+└── LICENSE
+```
+
+---
+
+# Where to Start
+
+If you are new to the project, read the documents in the following order.
+
+## Development
+
+1. docs/PROJECT_CONTEXT.md
+2. docs/DEVELOPMENT_WORKFLOW.md
+3. docs/AI_SESSION_TEMPLATE.md
+4. docs/CONTRIBUTING.md
+
+---
+
+## Engine
+
+1. engine/000_ENGINE_MANIFEST.md
+2. engine/001_ENGINE_DECISIONS.md
+3. engine/002_ENGINE_ROADMAP.md
+4. engine/010_ENGINE_RULES.md
+
+---
+
+## World
+
+1. worlds/asterra/200_WORLD_BIBLE.md
+
+---
+
+## Case Studies
+
+1. docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md
+
+Case studies document the observations that inspired Chronicle Engine.
+
+They are not part of the engine specification.
+
+---
+
+# Repository Philosophy
+
+The repository is the single source of truth.
+
+Conversation history is temporary.
+
+Architectural knowledge belongs in documentation.
+
+When important design decisions are made, they should be recorded inside the repository rather than relying on conversational memory.
+
+---
+
+# Development Workflow
+
+Every development session follows the workflow defined in:
+
+```
+docs/DEVELOPMENT_WORKFLOW.md
+```
+
+In summary:
+
+1. Review the repository.
+2. Review the roadmap.
+3. Perform an architecture review.
+4. Discuss design.
+5. Implement changes.
+6. Review affected documents.
+7. Commit changes.
+
+---
+
+# Core Principles
+
+Chronicle Engine prioritizes:
+
+- Historical simulation over scripted narrative.
+- World-first design over protagonist-centric design.
+- Emergent progression over predefined classes.
+- Consistency over convenience.
+- Causality over spectacle.
+- Long-term maintainability over short-term features.
+
+---
+
+# Current Status
+
+**Engine Version:** 0.1.0
+
+Current focus:
+
+- Finalizing the Engine Specification.
+- Completing the remaining engine systems.
+- Preparing the first fully playable world.
+
+See:
+
+```
+engine/002_ENGINE_ROADMAP.md
+```
+
+for current milestones.
+
+---
+
+# Contributing
+
+Please read:
+
+```
+docs/CONTRIBUTING.md
+```
+
+before proposing architectural changes.
+
+Chronicle Engine follows a documentation-first development process.
+
+Major architectural changes should:
+
+- respect existing ADRs,
+- avoid duplicated concepts,
+- preserve engine/world separation,
+- improve long-term maintainability.
+
+---
+
+# License
+
+Private development project.
+
+The engine specification and supporting documentation are currently under active development.
+
+---
+
+> **"History is not written for the player. The player becomes part of history."**

@@ -4,7 +4,7 @@
 
 **File:** `templates/000_TEMPLATE_CONVENTIONS.md`
 **Status:** Active
-**Engine Version:** 0.1.3
+**Engine Version:** 0.1.4
 **Governed by:** `engine/011_ENGINE_DATA_MODEL.md`
 
 ---
@@ -41,7 +41,7 @@ Every persistent object — Entity, Canonical Record, Event, or Relationship —
 ```yaml
 id: <generated: ENT-XXXXXX | REC-XXXXXX | EVT-XXXXXX | REL-XXXXXX>
 canonical_record: <required: REC-XXXXXX>   # self, for a Canonical Record
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -78,6 +78,8 @@ canonical_state:
 ```
 
 `canonical_state` holds the entity's present authoritative attributes (`011` Section 7.1). Its fields are the type's extension and are defined by each object template. Historical evidence is not stored here; it lives in other records that reference this entity (`011` Section 7.2).
+
+This is the canonical structural entity-scope set. Terms such as `institutional` and `civilizational` may appear in descriptive prose elsewhere, but templates must not use them as scope values unless the Data Model is revised.
 
 ---
 

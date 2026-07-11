@@ -5,7 +5,7 @@ A Persistent Entity of type Discovery/Knowledge: a body of knowledge, discovery,
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -14,7 +14,7 @@ provenance:
   uncertainty: <optional: unresolved uncertainty>
 type: Discovery/Knowledge
 subtype: <optional: e.g. technique, theory, law, invention>
-scope: <required: personal | local | institutional | regional | world | historical>
+scope: <required: personal | local | regional | world | historical>
 lifecycle: <required: emerging | active | transforming | declining | forgotten | archived | mythologized>
 aliases:
   - name: <required: name>

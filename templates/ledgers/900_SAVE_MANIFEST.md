@@ -14,7 +14,7 @@ A filled manifest must contain no placeholder tokens.
 ```yaml
 id: <generated: REC-XXXXXX>
 canonical_record: <generated: same as id>
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: active
 provenance:
   source: <required: EVT-XXXXXX of the checkpoint>
@@ -34,13 +34,13 @@ save_identity:
   checkpoint_type: <required: e.g. manual | milestone | session-close>
   created: <generated: creation time>
 scope:
-  world: <required: world identifier>
-  campaign: <required: campaign identifier>
+  world: <required: world name or repository path, e.g. worlds/asterra>
+  campaign: <required: campaign name or repository path, e.g. campaigns/<campaign>>
   character: <required: ENT-XXXXXX of the player character>
 versions:
-  engine: <required: e.g. 0.1.3>
+  engine: <required: e.g. 0.1.4>
   world: <required: world version>
-  campaign_schema: <required: Data Model version, e.g. 0.1.0>
+  campaign_schema: <required: Data Model version, e.g. 0.1.1>
   save_format: <required: e.g. 0.1.0>
 lineage:
   parent_save: <optional: REC-XXXXXX of the checkpoint this branched from>

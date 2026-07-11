@@ -5,7 +5,7 @@ A specialization of the Persistent Object (`REL-`): a first-class link between e
 ```yaml
 id: <generated: REL-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>

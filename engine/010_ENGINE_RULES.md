@@ -2,7 +2,7 @@
 
 ## Engine Specification
 
-**Engine Version:** 0.1.0  
+**Engine Version:** 0.1.4
 **Status:** Workshop Draft  
 **Engine Type:** Persistent Historical Simulation  
 **Simulation Model:** World-First  
@@ -818,59 +818,11 @@ This sequence should remain consistent throughout every campaign.
 
 ## 3.3 World Simulation Layers
 
-The world operates simultaneously at three levels of detail.
+Chronicle Engine uses the three world simulation levels already defined in Section 1: Active Simulation, Regional Simulation, and Global Simulation.
 
-### Active Simulation
+Section 1 is the authoritative definition of that model.
 
-The player's immediate surroundings.
-
-Simulated in full detail.
-
-Examples include:
-
-- dialogue,
-- combat,
-- investigations,
-- local markets,
-- exploration,
-- negotiations.
-
----
-
-### Regional Simulation
-
-Areas capable of affecting the player within the foreseeable future.
-
-Simulated using summarized events.
-
-Examples include:
-
-- political appointments,
-- merchant caravans,
-- military movements,
-- local famines,
-- university projects,
-- diplomatic negotiations.
-
----
-
-### Global Simulation
-
-The remainder of the known world.
-
-Simulated abstractly.
-
-Only developments with lasting significance become historical events.
-
-Examples include:
-
-- wars,
-- dynastic succession,
-- technological breakthroughs,
-- major discoveries,
-- religious reforms,
-- institutional collapse,
-- climate events.
+This section applies those same levels to time advancement, simulation priority, and scope management rather than redefining them.
 
 ---
 
@@ -1076,7 +1028,9 @@ Generic or low-importance things may remain aggregated until individual continui
 
 Every persistent entity maintains a defined set of structural fields: identity, type, scope, current state, lifecycle status, relationships, historical continuity, and record responsibility. Their authoritative structure — including stable identifiers, aliases, and the single Canonical Record that owns each entity's state — is defined in `011_ENGINE_DATA_MODEL.md` (Sections 2, 4, and 5). This section defines what those fields mean for simulation.
 
-Scope is the level at which an entity matters: personal, local, institutional, regional, world, or historical.
+Scope is the level at which an entity matters: personal, local, regional, world, or historical, as structurally defined in `011_ENGINE_DATA_MODEL.md` (Section 4.1).
+
+Terms such as institutional reach or civilizational influence describe behavior, reach, or historical significance. They do not create additional scope values.
 
 Lifecycle status describes whether the entity is emerging, active, transforming, declining, dormant, dissolved, destroyed, or remembered only through records.
 
@@ -3519,7 +3473,7 @@ For institutions specifically:
 
 - Identity includes its name, founding act or origin, and any prior names or successor lineage.
 - Type is Institution, bounded from Settlement, Kingdom, and Army as established in Decision 034.
-- Scope may be personal, local, regional, or civilizational.
+- Scope may be personal, local, regional, or world, depending on how far the institution's continuity and relevance extend.
 - Record responsibility begins campaign-scoped and is promoted to a world-layer institution ledger when the institution becomes relevant beyond its founding campaign, per Decision 034.
 
 ---
@@ -3990,7 +3944,7 @@ A save contains no compiled or derived representation of state. It preserves the
 
 ## 13.2 Checkpoints and Current State
 
-The current-state ledger (Section 12 and campaign layer conventions) is the live, continuously mutable operational record for a campaign: where the character is now, what is currently active, and what remains unresolved.
+The current-state ledger (`180_CURRENT_STATE.md`, per campaign-layer conventions) is the live, continuously mutable operational record for a campaign: where the character is now, what is currently active, and what remains unresolved.
 
 A save checkpoint is a distinct, immutable historical capture of that ledger and every other included ledger, taken at a specific moment. A checkpoint answers what was canonical at that point, which versions applied, what state can be restored, and which checkpoint a later branch originated from.
 

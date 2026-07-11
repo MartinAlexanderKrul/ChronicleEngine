@@ -4,8 +4,8 @@
 
 **File:** `011_ENGINE_DATA_MODEL.md`
 **Status:** Workshop Draft
-**Engine Version:** 0.1.2
-**Data Model Version:** 0.1.0
+**Engine Version:** 0.1.4
+**Data Model Version:** 0.1.1
 **Layer:** Engine (000–099)
 
 ---
@@ -192,6 +192,10 @@ Relationships references to Relationship objects (Section 10)
 ```
 
 The universal `Canonical Record` field (Section 2.1) is the entity's record responsibility: the one ledger record that owns its authoritative state.
+
+This five-value set is the canonical structural entity-scope taxonomy.
+
+Terms such as `institutional` and `civilizational` may still appear elsewhere in the repository as behavioral, descriptive, or historical language, but they are not additional structural scope values.
 
 ## 4.2 Type and Subtype
 

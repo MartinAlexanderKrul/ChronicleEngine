@@ -2,7 +2,7 @@
 
 ## Engine Manifest
 
-**Engine Version:** 0.1.3  
+**Engine Version:** 0.1.4
 **Status:** Workshop Draft  
 **Project Type:** Persistent Historical Simulation Engine  
 **Simulation Model:** World-First  
@@ -277,8 +277,8 @@ Changes to one component should not require version changes to unrelated compone
 
 | Component | Version |
 |-----------|---------|
-| Engine | 0.1.3 |
-| Data Model | 0.1.0 |
+| Engine | 0.1.4 |
+| Data Model | 0.1.1 |
 | World | 0.9 |
 | Campaign | Not Created |
 | Save Format | 0.1.0 |
@@ -299,10 +299,10 @@ The project is currently focused on completing the engine specification.
 
 Current priority:
 
-1. Complete the Engine Rules.
-2. Stabilize the engine architecture.
-3. Finalize the first official world.
-4. Begin the first campaign.
+1. Complete Foundation Stabilization.
+2. Confirm Architecture Freeze readiness.
+3. Begin Version 0.2 scoping.
+4. Finalize the first official world.
 
 ---
 

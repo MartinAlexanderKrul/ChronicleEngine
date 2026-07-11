@@ -2,7 +2,7 @@
 
 # Development Workflow
 
-**Document Version:** 1.0  
+**Document Version:** 1.1
 **Status:** Active Development Workflow
 
 ---
@@ -47,6 +47,9 @@ Before any architecture recommendation, implementation, or document edit, read t
 8. `engine/010_ENGINE_RULES.md`
 9. `engine/011_ENGINE_DATA_MODEL.md`
 10. `engine/012_ENGINE_RUNTIME.md`
+11. `engine/020_ENGINE_GLOSSARY.md`
+12. `engine/030_ENGINE_CHANGELOG.md`
+13. `templates/000_TEMPLATE_CONVENTIONS.md`
 
 If a new session begins without this review, stop and complete the reading pass before proposing changes.
 
@@ -66,6 +69,9 @@ Start with:
 - `engine/010_ENGINE_RULES.md`
 - `engine/011_ENGINE_DATA_MODEL.md`
 - `engine/012_ENGINE_RUNTIME.md`
+- `engine/020_ENGINE_GLOSSARY.md`
+- `engine/030_ENGINE_CHANGELOG.md`
+- `templates/000_TEMPLATE_CONVENTIONS.md`
 
 Review additional world, campaign, historical, or case-study documents when the current task depends on them.
 

@@ -2,7 +2,7 @@
 
 # AI Development Session Template
 
-**Document Version:** 1.1  
+**Document Version:** 1.2
 **Status:** Active Development Workflow  
 **Runtime Profile:** Large Language Model
 
@@ -65,6 +65,9 @@ At the beginning of every new session, read these files first in this exact orde
 8. `engine/010_ENGINE_RULES.md`
 9. `engine/011_ENGINE_DATA_MODEL.md`
 10. `engine/012_ENGINE_RUNTIME.md`
+11. `engine/020_ENGINE_GLOSSARY.md`
+12. `engine/030_ENGINE_CHANGELOG.md`
+13. `templates/000_TEMPLATE_CONVENTIONS.md`
 
 Do not recommend architecture changes or implementation work until this reading pass is complete.
 
@@ -110,6 +113,9 @@ Review:
 - 010_ENGINE_RULES.md
 - 011_ENGINE_DATA_MODEL.md
 - 012_ENGINE_RUNTIME.md
+- 020_ENGINE_GLOSSARY.md
+- 030_ENGINE_CHANGELOG.md
+- templates/000_TEMPLATE_CONVENTIONS.md
 
 When relevant also review:
 

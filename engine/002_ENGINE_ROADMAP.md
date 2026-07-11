@@ -2,22 +2,22 @@
 
 # Engine Roadmap
 
-**Engine Version:** 0.1.3  
+**Engine Version:** 0.1.4
 **Status:** Active Development
 
 # Current Sprint
 
 Goal:
 
-Foundation Hardening is complete. Awaiting direction on Version 0.2 - Knowledge & Civilization.
+Foundation Stabilization is complete. Repository architecture is synchronized and ready for Architecture Freeze review and Version 0.2 scoping.
 
 Current Task:
 
-None — awaiting scoping decision for Version 0.2. Phase 2 ledger templates (the remaining campaign, world, and historical ledgers) may be completed alongside 0.2 as they are needed.
+None - awaiting Architecture Freeze confirmation and Version 0.2 scoping.
 
 Next Review:
 
-Version 0.2 - Knowledge & Civilization scoping, when initiated.
+Architecture Freeze review and Version 0.2 - Knowledge & Civilization scoping, when initiated.
 
 ---
 
@@ -50,6 +50,28 @@ New systems should emerge from existing abstractions instead of introducing unre
 
 # Current Milestone
 
+## Foundation Stabilization
+
+Status: **Complete**
+
+A post-hardening synchronization milestone focused on repository consistency, governance, and authority alignment rather than new engine mechanics.
+
+### Completed
+
+- [x] Normalized Engine version metadata to a single current Engine version across the repository
+- [x] Confirmed the canonical structural scope taxonomy in `011_ENGINE_DATA_MODEL.md` as `personal | local | regional | world | historical`
+- [x] Aligned Rules, Glossary, Runtime references, and Templates to the Data Model's scope ownership
+- [x] Removed speculative save-manifest identifier language in favor of existing world/campaign names or repository paths
+- [x] Collapsed the duplicated simulation model so Rules Section 1 remains authoritative and Section 3.3 cross-references it
+- [x] Refreshed README, INDEX, PROJECT_CONTEXT, CONTRIBUTING, DEVELOPMENT_WORKFLOW, and AI startup guidance to reflect the current architecture
+- [x] Repaired stale roadmap, changelog, and repository-status summaries introduced before stabilization
+
+### Remaining
+
+All Foundation Stabilization items complete.
+
+---
+
 ## Foundation Hardening
 
 Status: **Complete**
@@ -58,26 +80,26 @@ A pre-0.2 milestone that strengthens the engine's architecture rather than addin
 
 ### Completed
 
-- [x] Runtime Model — `012_ENGINE_RUNTIME.md`; Decision 041 (Runtime Model), Decision 042 (Durable Canon and Promotion Obligation)
+- [x] Runtime Model - `012_ENGINE_RUNTIME.md`; Decision 041 (Runtime Model), Decision 042 (Durable Canon and Promotion Obligation)
   - [x] Separated *what is true* (Rules) from *how the engine operates* (Runtime)
   - [x] Defined the Runtime as substrate-independent, with the Interpreter as a component
   - [x] Resolved the repository-vs-transcript canon contradiction via the precedence/durability split and mandatory Canon Promotion
-- [x] Data Model — `011_ENGINE_DATA_MODEL.md`, `system/ID_REGISTRY.md`; Decision 043 (Persistent Object and Data Model Structural Contract), Decision 044 (Stable Entity Identity)
+- [x] Data Model - `011_ENGINE_DATA_MODEL.md`, `system/ID_REGISTRY.md`; Decision 043 (Persistent Object and Data Model Structural Contract), Decision 044 (Stable Entity Identity)
   - [x] Persistent Object root abstraction with Entity, Record, Event, Relationship specializations
   - [x] Semantic-free identifiers with the repository-level registry and its allocation invariants
   - [x] Single-Canonical-Record invariant; Canonical State versus Historical Evidence
   - [x] Stable entity identity: aliases and the identity-continuity graph resolving the nine identity cases
-  - [x] Relocated structural enumerations from Rules §3.10 and §2.8; repointed the Runtime
-- [x] Ledger Templates (Phase 1) — `templates/`; Decision 045 (Ledger Template System)
+  - [x] Relocated structural enumerations from Rules Section 3.10 and Section 2.8; repointed the Runtime
+- [x] Ledger Templates (Phase 1) - `templates/`; Decision 045 (Ledger Template System)
   - [x] Template conventions; the fenced-YAML Object Block; the atom-and-container model
   - [x] Core Object Block templates for every specialization and entity type
   - [x] `100_CHARACTER_SHEET`, `130_NPCS_AND_FACTIONS`, `900_SAVE_MANIFEST` ledgers
-  - [x] Deliberately-invalid placeholders with validation rejection (`011` §12.3)
+  - [x] Deliberately-invalid placeholders with validation rejection (`011` Section 12.3)
   - [x] One non-canonical instantiated Character example
 
 ### Remaining
 
-- [ ] Ledger Templates (Phase 2) — remaining campaign, world, and historical ledgers; completed as needed, may run alongside Version 0.2
+- [ ] Ledger Templates (Phase 2) - remaining campaign, world, and historical ledgers; completed as needed, may run alongside Version 0.2
 - [ ] Terminology and doc-graph cleanup carried in Technical Debt (below)
 
 ---
@@ -161,7 +183,7 @@ Support believable civilizations without requiring direct player control.
 
 Status: **Rescoped**
 
-The engine-level portion of this milestone — abstraction, world extension model, cost/limitation/discoverability contract, and magical research — is substantially closed by `001_ENGINE_DECISIONS.md` Decision 037 and `010_ENGINE_RULES.md` Section 11. Magical research already runs through the existing Research & Knowledge lifecycle (Section 8) and required no separate mechanic.
+The engine-level portion of this milestone - abstraction, world extension model, cost/limitation/discoverability contract, and magical research - is substantially closed by `001_ENGINE_DECISIONS.md` Decision 037 and `010_ENGINE_RULES.md` Section 11. Magical research already runs through the existing Research & Knowledge lifecycle (Section 8) and required no separate mechanic.
 
 Remaining focus is world-layer authoring rather than engine work:
 
@@ -178,11 +200,11 @@ Ensure magic extends the simulation instead of replacing it.
 
 Status: **Partially Rescoped**
 
-Historical documents, myths, biographies, archives, and historical interpretation are substantially closed at the engine layer by `001_ENGINE_DECISIONS.md` Decision 038 and `010_ENGINE_RULES.md` Section 12 — a historical document is an Individual Resource/Knowledge Asset with no dedicated mechanic required, and Libraries/Archives are achievable today as Institutions holding such resources (Section 9.6), without new engine work.
+Historical documents, myths, biographies, archives, and historical interpretation are substantially closed at the engine layer by `001_ENGINE_DECISIONS.md` Decision 038 and `010_ENGINE_RULES.md` Section 12 - a historical document is an Individual Resource/Knowledge Asset with no dedicated mechanic required, and Libraries/Archives are achievable today as Institutions holding such resources (Section 9.6), without new engine work.
 
 Remaining genuinely new focus:
 
-- Retrospective Ages / Historical Periodization — not yet formalized; World Bible §8 demonstrates the concept narratively but no engine mechanic exists
+- Retrospective Ages / Historical Periodization - not yet formalized; World Bible Section 8 demonstrates the concept narratively but no engine mechanic exists
 - World-layer authoring of Asterra's historical documents and myths against Section 12
 
 Goal:
@@ -195,7 +217,7 @@ Allow history itself to become part of gameplay.
 
 Status: **Partially Rescoped**
 
-Save architecture and basic version-compatibility recording are closed by `001_ENGINE_DECISIONS.md` Decision 039 and `010_ENGINE_RULES.md` Section 13 — saves are ledger checkpoints with manifests, not a new format, and restoration is already defined.
+Save architecture and basic version-compatibility recording are closed by `001_ENGINE_DECISIONS.md` Decision 039 and `010_ENGINE_RULES.md` Section 13 - saves are ledger checkpoints with manifests, not a new format, and restoration is already defined.
 
 Remaining genuinely new focus:
 
@@ -436,7 +458,6 @@ Current architectural debt:
 
 - Remove remaining terminology drift.
 - Eliminate duplicated definitions through cross-references.
-- Reconcile the duplicated three-level simulation model: "World Simulation Levels" (Rules §1) and "World Simulation Layers" (Rules §3.3) define the same Active/Regional/Global model twice, with a "Levels"/"Layers" split.
 - Create or de-reference `003_DESIGN_PRINCIPLES.md`, referenced as an authority by the Manifest and README but not yet present.
 - Stabilize repository governance.
 - Reconcile canon hierarchy wording between Manifest, Decisions, and Rules. *(Partially addressed by Decision 042: precedence vs. durability separated; promotion made mandatory.)*
@@ -447,7 +468,7 @@ Current architectural debt:
 
 # Current Dependencies
 
-No active task. Version 0.1 - Engine Foundation is complete, including its own changelog (`030_ENGINE_CHANGELOG.md`), which now indexes the full arc of Decisions 001-040.
+No active task. Version 0.1 - Engine Foundation is complete, and the changelog (`030_ENGINE_CHANGELOG.md`) now indexes Decisions 001-045 plus the Foundation Stabilization synchronization pass.
 
 When Version 0.2 - Knowledge & Civilization is initiated, its dependencies should be drawn from Research & Knowledge (Section 8), Institutions & Organizations (Section 9), and the Knowledge Lifecycle Future Architecture entry below, consistent with the roadmap's stated focus: civilization-scale research lifecycle, discovery system expansion, knowledge propagation, universities, guilds, religious organizations, and cultural memory.
 

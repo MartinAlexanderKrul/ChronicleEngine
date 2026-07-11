@@ -634,6 +634,8 @@ Not every object is a persistent entity; generic or low-importance things may re
 
 Structurally, a Persistent Entity is one specialization of the Persistent Object, identified by an `ENT-` identifier. Its structure is defined in `011_ENGINE_DATA_MODEL.md`, Section 4; its simulation behavior in `010_ENGINE_RULES.md`, Section 3.10.
 
+Its canonical structural scope taxonomy is `personal`, `local`, `regional`, `world`, or `historical`. Terms such as `institutional` and `civilizational` may still describe behavior or reach, but they are not additional structural scope values.
+
 ---
 
 ## Persistent Object
@@ -774,6 +776,8 @@ A short metadata document accompanying a Save Checkpoint, recording save identit
 
 A save manifest never duplicates ledger content.
 
+Its scope fields use existing names or repository paths for the world and campaign, plus the player character's `ENT-` identifier. The manifest does not require separate World IDs or Campaign IDs.
+
 ---
 
 ## Save Version
@@ -816,7 +820,7 @@ A Persistent Entity Type representing territory and population continuity, disti
 
 A settlement's current state includes territorial extent, an aggregate population figure, and prevailing conditions such as prosperity or unrest, tracked qualitatively.
 
-Also called a Kingdom when its scope is a sovereign or quasi-sovereign territory.
+Also called a Kingdom when its role is a sovereign or quasi-sovereign territory.
 
 ---
 

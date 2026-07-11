@@ -8,6 +8,20 @@
 
 ---
 
+# Version 0.1.4 (Foundation Stabilization)
+
+## 2026-07-11 - Repository Consistency and Governance Synchronization
+
+**Decisions:** none
+**Rules:** Removed duplicated simulation-model definition in Section 3.3 by making Section 1 authoritative; aligned structural scope references to the Data Model; corrected the current-state ledger reference in the save architecture
+**Data Model:** Declared the canonical structural scope taxonomy as `personal | local | regional | world | historical`; Data Model Version set to 0.1.1
+**Runtime:** Removed stale "future extraction" wording and synchronized Runtime references to the current architecture
+**Templates:** Updated template schema versions to 0.1.1; aligned scope fields to the Data Model; changed save-manifest scope references from speculative identifiers to existing world/campaign names or repository paths
+**Docs:** Updated README, INDEX, PROJECT_CONTEXT, CONTRIBUTING, DEVELOPMENT_WORKFLOW, and AI startup guidance to reflect Rules, Data Model, Runtime, Templates, Glossary, and Changelog authority relationships
+**Manifest/Roadmap/Glossary:** Normalized Engine Version to 0.1.4; synchronized roadmap and glossary terminology with the stabilized architecture
+
+---
+
 # Version 0.1.3 (Foundation Hardening)
 
 ## 2026-07-11 — Ledger Templates (Phase 1)

@@ -5,7 +5,7 @@ A Persistent Entity of type Character. Structure: `011_ENGINE_DATA_MODEL.md` Sec
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>

@@ -48,15 +48,14 @@ The engine is world-agnostic and can support fantasy, science fiction, historica
 ```text
 ChronicleEngine/
 
-├── engine/         Core engine specification
-├── worlds/         World definitions
-├── campaigns/      Individual campaigns
-├── docs/           Project documentation
-├── templates/      Reusable templates
-├── saves/          Save-state architecture
-├── system/         Repository-level infrastructure (ID registry)
-├── README.md
-└── LICENSE
+|- engine/         Core engine specification
+|- worlds/         World definitions
+|- campaigns/      Individual campaigns and their save checkpoints
+|- docs/           Project documentation
+|- templates/      Template conventions and reusable ledger/object skeletons
+|- system/         Repository-level infrastructure (ID registry)
+|- README.md
+\- LICENSE
 ```
 
 ---
@@ -82,6 +81,14 @@ If you are new to the project, read the documents in the following order.
 4. engine/010_ENGINE_RULES.md
 5. engine/011_ENGINE_DATA_MODEL.md
 6. engine/012_ENGINE_RUNTIME.md
+
+---
+
+## Reference
+
+1. engine/020_ENGINE_GLOSSARY.md
+2. engine/030_ENGINE_CHANGELOG.md
+3. templates/000_TEMPLATE_CONVENTIONS.md
 
 ---
 
@@ -148,13 +155,13 @@ Chronicle Engine prioritizes:
 
 # Current Status
 
-**Engine Version:** 0.1.0
+**Engine Version:** 0.1.4
 
 Current focus:
 
-- Finalizing the Engine Specification.
-- Completing the remaining engine systems.
-- Preparing the first fully playable world.
+- Completing Foundation Stabilization.
+- Confirming readiness for an Architecture Freeze.
+- Preparing Version 0.2 scoping.
 
 See:
 

@@ -14,7 +14,7 @@ Add one Object Block per entity. Copy the Character block for each NPC and the I
 ```yaml
 id: <generated: REC-XXXXXX>
 canonical_record: <generated: same as id>
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: active
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -36,7 +36,7 @@ One Character Object Block per NPC (see `templates/objects/character.md`).
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX of this ledger>
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -70,7 +70,7 @@ One Institution Object Block per faction (see `templates/objects/institution.md`
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX of this ledger>
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -79,7 +79,7 @@ provenance:
   uncertainty: <optional: unresolved uncertainty>
 type: Institution
 subtype: <optional: e.g. Military Institution — §9.7, Decision 034>
-scope: <required: local | regional | civilizational>
+scope: <required: local | regional | world>
 lifecycle: <required: emerging | active | transforming | declining | dissolved | destroyed | absorbed | mythologized | archived>
 aliases:
   - name: <required: name>

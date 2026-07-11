@@ -4,7 +4,7 @@
 
 **File:** `012_ENGINE_RUNTIME.md`
 **Status:** Workshop Draft
-**Engine Version:** 0.1.2
+**Engine Version:** 0.1.4
 **Layer:** Engine (000–099)
 
 ---
@@ -25,7 +25,7 @@ The Engine Rules (`010_ENGINE_RULES.md`) define *what is true*. This document de
 
 This document is **normative** for runtime behavior. It states obligations that any runtime must uphold. It delegates procedure — reading order, working-set heuristics, session report formats, substrate-specific technique — to operational **Runtime Profiles** (see Section 0.4).
 
-This document **references, but does not restate,** the Engine Rules and the data-model concepts they contain (Persistent Entity, Canonical Record, Relationships). Where it names such a concept, it names the concept and its current location. It never redefines it. When those concepts are later extracted into `011_ENGINE_DATA_MODEL.md`, the references in this document repoint without changing meaning.
+This document **references, but does not restate,** the Engine Rules and the Data Model. Where it names a behavioral or structural concept, it names that concept and its owning document. It never redefines it.
 
 ---
 

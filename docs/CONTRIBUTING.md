@@ -6,10 +6,19 @@ This project is developed as a software architecture specification rather than a
 
 Please read the following documents before making significant changes:
 
-1. 000_ENGINE_MANIFEST.md
-2. 001_ENGINE_DECISIONS.md
-3. 002_ENGINE_ROADMAP.md
-4. 010_ENGINE_RULES.md
+1. README.md
+2. docs/INDEX.md
+3. docs/PROJECT_CONTEXT.md
+4. docs/AI_SESSION_TEMPLATE.md
+5. engine/000_ENGINE_MANIFEST.md
+6. engine/001_ENGINE_DECISIONS.md
+7. engine/002_ENGINE_ROADMAP.md
+8. engine/010_ENGINE_RULES.md
+9. engine/011_ENGINE_DATA_MODEL.md
+10. engine/012_ENGINE_RUNTIME.md
+11. engine/020_ENGINE_GLOSSARY.md
+12. engine/030_ENGINE_CHANGELOG.md
+13. templates/000_TEMPLATE_CONVENTIONS.md
 
 ---
 
@@ -47,9 +56,13 @@ Every concept should have one authoritative definition.
 Examples:
 
 - Rules belong in Engine Rules.
+- Structure belongs in the Data Model.
+- Execution obligations belong in the Runtime.
 - Rationale belongs in Engine Decisions.
 - Future work belongs in the Roadmap.
 - Terminology belongs in the Glossary.
+- Template shape belongs in Template Conventions.
+- Historical indexing of completed architectural work belongs in the Changelog.
 - Repository structure belongs in the Manifest.
 
 Other documents should reference these definitions instead of repeating them.

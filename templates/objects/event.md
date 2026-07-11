@@ -5,7 +5,7 @@ A specialization of the Persistent Object (`EVT-`): a timed, immutable fact. Pro
 ```yaml
 id: <generated: EVT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>   # the record that first recorded this event
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: active                              # events are immutable; status does not change
 provenance:
   source: <required: ruling | transcript | EVT-XXXXXX>

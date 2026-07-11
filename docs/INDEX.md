@@ -23,11 +23,16 @@ Every new session should begin by reading the files below before proposing chang
 ### Reference
 
 11. engine/020_ENGINE_GLOSSARY.md
+12. engine/030_ENGINE_CHANGELOG.md
+
+### Templates
+
+13. templates/000_TEMPLATE_CONVENTIONS.md
 
 ### Worlds
 
-12. worlds/asterra/200_WORLD_BIBLE.md
+14. worlds/asterra/200_WORLD_BIBLE.md
 
 ### Case Studies
 
-13. docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md
+15. docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md

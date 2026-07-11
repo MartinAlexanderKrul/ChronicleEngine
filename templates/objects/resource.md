@@ -5,7 +5,7 @@ A Persistent Entity of type Resource: an **individual** resource with persistent
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>

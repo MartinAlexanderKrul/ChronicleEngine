@@ -7,7 +7,7 @@ Every ledger file carries a Canonical Record block as its own object.
 ```yaml
 id: <generated: REC-XXXXXX>
 canonical_record: <generated: same as id — a record is its own authority>
-schema_version: "0.1.0"
+schema_version: "0.1.1"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>

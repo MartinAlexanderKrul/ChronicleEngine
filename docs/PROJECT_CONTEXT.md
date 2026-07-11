@@ -2,7 +2,7 @@
 
 # Project Context
 
-**Document Version:** 1.0  
+**Document Version:** 1.1
 **Status:** Active  
 **Audience:** Human contributors and AI collaborators
 
@@ -89,17 +89,23 @@ AI should not silently introduce new mechanics or alter established rules.
 
 Priority of documentation:
 
-1. Engine Rules
-2. Engine Decisions
-3. Manifest
-4. Roadmap
-5. Design Principles
-6. World Documentation
-7. Campaign Documentation
-8. Historical Documents
-9. Project Context
+1. Engine Rules - behavioral truth
+2. Engine Data Model - structural contract
+3. Engine Runtime - execution obligations
+4. Engine Decisions - accepted architectural reasoning
+5. Engine Manifest - repository architecture and version overview
+6. Engine Roadmap - planned work and milestone state
+7. Engine Glossary - terminology normalization
+8. Templates - non-canonical structural instantiation
+9. Engine Changelog - historical index of architectural work
+10. World Documentation
+11. Campaign Documentation
+12. Historical Documents
+13. Project Documentation
 
 If inconsistencies are discovered, they should be resolved explicitly rather than ignored.
+
+Concern ownership is more important than a single linear order. Rules own behavior. The Data Model owns structure. The Runtime owns execution obligations. Templates instantiate structure but do not define canon.
 
 ---
 

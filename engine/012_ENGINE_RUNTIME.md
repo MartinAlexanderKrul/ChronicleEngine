@@ -4,7 +4,7 @@
 
 **File:** `012_ENGINE_RUNTIME.md`
 **Status:** Workshop Draft
-**Engine Version:** 0.1.1
+**Engine Version:** 0.1.2
 **Layer:** Engine (000–099)
 
 ---
@@ -100,11 +100,11 @@ The current profile is the large-language-model profile. Its session procedure i
 
 ## 0.5 Relationship to the Data Model
 
-The Runtime operates on data whose structure is defined by the engine's data-model concepts: the Persistent Entity (Rules Section 3.10), the Canonical Record Architecture (Rules Section 2.8), and Relationships (Rules Section 3.10, Section 5.6).
+The Runtime operates on data whose structure is defined by `011_ENGINE_DATA_MODEL.md`: the Persistent Object and its specializations (Persistent Entity, Canonical Record, Event, Relationship), stable identifiers, the single-Canonical-Record invariant, references by identifier, and the identity-continuity graph.
 
-The Runtime **uses** these concepts. It does not define them. It does not define entity identifiers, ledger schemas, or record formats. Those are data-model concerns, reserved for `011_ENGINE_DATA_MODEL.md`.
+The Runtime **uses** this structure. It does not define it. It does not define identifiers, ledger schemas, or record formats — those are data-model concerns, owned by `011`. Behavioral meaning is owned by the Engine Rules; structural form is owned by the Data Model; this document references both and restates neither.
 
-Until that document exists, these concepts live within the Engine Rules, and this document references them there. Ledger templates and stable entity identity derive from the data model and are out of scope here.
+Ledger templates derive from the Data Model and are out of scope here.
 
 ---
 
@@ -257,9 +257,10 @@ The **Mutation** component is the write side: how the Runtime changes canon. Mut
 
 When an event changes state, the Runtime:
 
-1. determines the affected ledgers by scope (Rules Section 2.8),
-2. writes the change with **provenance** — its source, its scope, the time of the represented event, the time of the record update, and any unresolved uncertainty (Rules Section 2.8, Record Updates and Provenance),
-3. does not overwrite higher-tier canon silently (Rules Section 2.10).
+1. determines the affected records by scope, resolving each object through its identifier and its single Canonical Record (`011_ENGINE_DATA_MODEL.md`, Sections 2.3, 3),
+2. when creating a new persistent object, mints its identifier through the registry in the same atomic change (`011_ENGINE_DATA_MODEL.md`, Section 1; `system/ID_REGISTRY.md`),
+3. writes the change with **provenance** — its source, scope, event time, record time, and any unresolved uncertainty (Rules Section 2.8; envelope structure in `011_ENGINE_DATA_MODEL.md`, Section 8.2),
+4. does not overwrite higher-tier canon silently (Rules Section 2.10).
 
 ## 5.2 Mutation Constraints
 

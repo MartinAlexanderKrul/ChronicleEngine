@@ -45,7 +45,8 @@ Before any architecture recommendation, implementation, or document edit, read t
 6. `engine/001_ENGINE_DECISIONS.md`
 7. `engine/002_ENGINE_ROADMAP.md`
 8. `engine/010_ENGINE_RULES.md`
-9. `engine/012_ENGINE_RUNTIME.md`
+9. `engine/011_ENGINE_DATA_MODEL.md`
+10. `engine/012_ENGINE_RUNTIME.md`
 
 If a new session begins without this review, stop and complete the reading pass before proposing changes.
 
@@ -63,6 +64,7 @@ Start with:
 - `engine/001_ENGINE_DECISIONS.md`
 - `engine/002_ENGINE_ROADMAP.md`
 - `engine/010_ENGINE_RULES.md`
+- `engine/011_ENGINE_DATA_MODEL.md`
 - `engine/012_ENGINE_RUNTIME.md`
 
 Review additional world, campaign, historical, or case-study documents when the current task depends on them.

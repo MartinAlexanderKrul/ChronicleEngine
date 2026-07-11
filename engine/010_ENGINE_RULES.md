@@ -725,18 +725,11 @@ The full save architecture, including checkpoint structure, manifests, and resto
 
 ### Record Updates and Provenance
 
-When a record is updated, the engine should preserve enough provenance to explain why the change was made.
-
-Important updates should identify:
-
-- affected record,
-- source of the change,
-- scope of the change,
-- time of the represented event,
-- time of the record update,
-- unresolved uncertainty where applicable.
+When a record is updated, the engine should preserve enough provenance to explain why the change was made: the affected record, the source of the change, its scope, the time of the represented event, the time of the record update, and any unresolved uncertainty. The authoritative structure of this provenance envelope is defined in `011_ENGINE_DATA_MODEL.md` (Section 8.2).
 
 This prevents later reconstruction from confusing objective events, recordkeeping, interpretation, and implementation state.
+
+Each persistent object has exactly one authoritative canonical record that owns its state; other records may describe or reference it as evidence but are not authoritative for it (`011_ENGINE_DATA_MODEL.md`, Section 2.3).
 
 ---
 
@@ -1081,32 +1074,19 @@ Generic or low-importance things may remain aggregated until individual continui
 
 ### Persistent Entity Requirements
 
-Every persistent entity should maintain:
+Every persistent entity maintains a defined set of structural fields: identity, type, scope, current state, lifecycle status, relationships, historical continuity, and record responsibility. Their authoritative structure — including stable identifiers, aliases, and the single Canonical Record that owns each entity's state — is defined in `011_ENGINE_DATA_MODEL.md` (Sections 2, 4, and 5). This section defines what those fields mean for simulation.
 
-- identity,
-- type,
-- scope,
-- current state,
-- lifecycle status,
-- relationships,
-- historical continuity,
-- record responsibility.
-
-Identity distinguishes the entity from other entities.
-
-Type identifies what kind of entity it is.
-
-Scope defines the level at which it matters: personal, local, institutional, regional, world, or historical.
-
-Current state records its present condition, location, capabilities, holdings, knowledge, obligations, or other relevant facts.
+Scope is the level at which an entity matters: personal, local, institutional, regional, world, or historical.
 
 Lifecycle status describes whether the entity is emerging, active, transforming, declining, dormant, dissolved, destroyed, or remembered only through records.
 
-Relationships connect the entity to people, institutions, places, resources, knowledge, obligations, rivals, patrons, successors, or predecessors.
+Current state records the entity's present condition, location, capabilities, holdings, knowledge, obligations, or other relevant facts. It is the entity's canonical state, held in its one Canonical Record (`011_ENGINE_DATA_MODEL.md`, Section 7).
 
-Historical continuity preserves how the entity changed over time.
+Relationships connect the entity to people, institutions, places, resources, knowledge, obligations, rivals, patrons, successors, or predecessors, and are modelled as first-class objects (`011_ENGINE_DATA_MODEL.md`, Section 10).
 
-Record responsibility identifies which canonical ledgers or records preserve its authoritative state.
+Historical continuity preserves how the entity changed over time, retained as historical evidence rather than a second authoritative state (`011_ENGINE_DATA_MODEL.md`, Section 7).
+
+Record responsibility identifies the canonical record that preserves the entity's authoritative state; every entity has exactly one (`011_ENGINE_DATA_MODEL.md`, Section 2.3).
 
 ### Promotion to Persistent Entity
 
@@ -3042,7 +3022,7 @@ Resources influence history, and history influences the value of resources.
 
 ## 7.12 Resource Identity
 
-Resources exist at different levels of historical significance.
+Resources exist at different levels of historical significance. The structural basis of this distinction — generic and aggregated resources tracked as quantities without identifiers, versus individual resources that are Persistent Entities with stable identifiers — is defined in `011_ENGINE_DATA_MODEL.md` (Section 11). This section defines what that distinction means for simulation.
 
 ### Generic Resources
 

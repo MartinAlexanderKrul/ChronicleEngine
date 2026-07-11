@@ -2,7 +2,7 @@
 
 ## Engine Manifest
 
-**Engine Version:** 0.1.1  
+**Engine Version:** 0.1.2  
 **Status:** Workshop Draft  
 **Project Type:** Persistent Historical Simulation Engine  
 **Simulation Model:** World-First  
@@ -56,10 +56,13 @@ ChronicleEngine/
 │   ├── 002_ENGINE_ROADMAP.md
 │   ├── 003_DESIGN_PRINCIPLES.md
 │   ├── 010_ENGINE_RULES.md
-│   ├── 011_ENGINE_DATA_MODEL.md   (reserved)
+│   ├── 011_ENGINE_DATA_MODEL.md
 │   ├── 012_ENGINE_RUNTIME.md
 │   ├── 020_ENGINE_GLOSSARY.md
 │   └── 030_ENGINE_CHANGELOG.md
+│
+├── system/
+│   └── ID_REGISTRY.md
 │
 ├── worlds/
 │   └── <world>/
@@ -118,7 +121,7 @@ Contains:
 
 - engine philosophy,
 - immutable rules,
-- the data model (reserved: `011_ENGINE_DATA_MODEL.md`),
+- the data model (`011_ENGINE_DATA_MODEL.md`),
 - the runtime model (`012_ENGINE_RUNTIME.md`),
 - architectural decisions,
 - terminology,
@@ -128,10 +131,14 @@ Contains:
 The Engine Layer separates three concerns that must not be conflated:
 
 - **`010_ENGINE_RULES.md`** defines *what is true* — the world model and simulation behavior.
-- **`011_ENGINE_DATA_MODEL.md`** (reserved) will define *how truth is structured* — Persistent Entity, Canonical Record, entity identity, relationships, and schemas.
+- **`011_ENGINE_DATA_MODEL.md`** defines *how truth is structured* — the Persistent Object and its specializations, stable identifiers, the single-Canonical-Record invariant, references, and schemas.
 - **`012_ENGINE_RUNTIME.md`** defines *how the engine operates* — how a runtime loads, resolves, infers, mutates, promotes, and persists state.
 
+The Data Model is the **most stable layer** of the architecture: everything references its identifiers and structures, so it changes least often and is amended most conservatively. Stability is not authority — the Data Model is authoritative on structure and subordinate to the Rules on behavior.
+
 The Runtime is substrate-independent. Substrate-specific procedure lives in operational **Runtime Profiles** under `docs/`, not in the Engine Layer. The current large-language-model profile's session procedure is `docs/AI_SESSION_TEMPLATE.md`.
+
+Persistent-object identifiers are allocated by the repository-level registry at `system/ID_REGISTRY.md`, governed by `011_ENGINE_DATA_MODEL.md`.
 
 The Engine Layer must remain independent of any specific setting.
 
@@ -253,6 +260,7 @@ Engine, worlds, campaigns, and saves are versioned independently.
 | Component | Purpose |
 |-----------|---------|
 | Engine Version | Simulation rules |
+| Data Model Version | Structural schema compatibility |
 | World Version | Setting canon |
 | Campaign Version | Character progression |
 | Save Version | Machine compatibility |
@@ -265,7 +273,8 @@ Changes to one component should not require version changes to unrelated compone
 
 | Component | Version |
 |-----------|---------|
-| Engine | 0.1.1 |
+| Engine | 0.1.2 |
+| Data Model | 0.1.0 |
 | World | 0.9 |
 | Campaign | Not Created |
 | Save Format | 0.1.0 |
@@ -298,6 +307,8 @@ Current priority:
 This document defines the overall architecture of Chronicle Engine.
 
 Behavioral rules belong in **010_ENGINE_RULES.md**.
+
+Structural definitions — identity, record shape, and references — belong in **011_ENGINE_DATA_MODEL.md**.
 
 Runtime behavior — how the engine is executed — belongs in **012_ENGINE_RUNTIME.md**.
 

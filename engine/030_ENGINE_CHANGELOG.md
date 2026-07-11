@@ -8,6 +8,20 @@
 
 ---
 
+# Version 0.1.2 (Foundation Hardening)
+
+## 2026-07-11 — Data Model
+
+**Decisions:** Added Decision 043 (Persistent Object and Data Model Structural Contract); Decision 044 (Stable Entity Identity); refined Decisions 022, 024, 025, 032, 033
+**Rules:** Relocated the Persistent Entity structural fields (Section 3.10) and the provenance envelope (Section 2.8) to `011`, retaining behavior and adding references; Section 2.8 gained the single-Canonical-Record statement; Section 7.12 references `011` for the identifier-versus-quantity basis
+**Runtime:** Repointed `012` data-model references from the Rules to `011`; added identifier minting to the mutation write path
+**Files:** Created `011_ENGINE_DATA_MODEL.md` and `system/ID_REGISTRY.md`
+**Manifest:** Activated `011` and added `system/ID_REGISTRY.md` to the repository tree; described the Rules / Data Model / Runtime separation and the most-stable-layer expectation; Engine Version set to 0.1.2; added Data Model Version 0.1.0
+**Glossary:** Added Persistent Object, Identifier, ID Registry, Identity-Continuity Graph, Alias, Canonical State, Historical Evidence, Event, Relationship; updated Persistent Entity
+**Roadmap:** Data Model complete under Foundation Hardening; ledger templates are the next task
+
+---
+
 # Version 0.1.1 (Foundation Hardening)
 
 ## 2026-07-11 — Runtime Model

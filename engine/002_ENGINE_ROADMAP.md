@@ -2,7 +2,7 @@
 
 # Engine Roadmap
 
-**Engine Version:** 0.1.1  
+**Engine Version:** 0.1.2  
 **Status:** Active Development
 
 # Current Sprint
@@ -13,11 +13,11 @@ Foundation Hardening — strengthen the engine's architecture before Version 0.2
 
 Current Task:
 
-Runtime Model (`012_ENGINE_RUNTIME.md`) is complete. Next: the Data Model (`011_ENGINE_DATA_MODEL.md`) — extract Persistent Entity and Canonical Record from the Rules, and define entity identity, relationships, and ledger schemas.
+Runtime Model (`012_ENGINE_RUNTIME.md`) and Data Model (`011_ENGINE_DATA_MODEL.md`) are complete. Next: ledger templates that instantiate the Data Model.
 
 Next Review:
 
-Data Model scoping, then Version 0.2 - Knowledge & Civilization scoping.
+Ledger templates scoping, then Version 0.2 - Knowledge & Civilization scoping.
 
 ---
 
@@ -62,10 +62,15 @@ A pre-0.2 milestone that strengthens the engine's architecture rather than addin
   - [x] Separated *what is true* (Rules) from *how the engine operates* (Runtime)
   - [x] Defined the Runtime as substrate-independent, with the Interpreter as a component
   - [x] Resolved the repository-vs-transcript canon contradiction via the precedence/durability split and mandatory Canon Promotion
+- [x] Data Model — `011_ENGINE_DATA_MODEL.md`, `system/ID_REGISTRY.md`; Decision 043 (Persistent Object and Data Model Structural Contract), Decision 044 (Stable Entity Identity)
+  - [x] Persistent Object root abstraction with Entity, Record, Event, Relationship specializations
+  - [x] Semantic-free identifiers with the repository-level registry and its allocation invariants
+  - [x] Single-Canonical-Record invariant; Canonical State versus Historical Evidence
+  - [x] Stable entity identity: aliases and the identity-continuity graph resolving the nine identity cases
+  - [x] Relocated structural enumerations from Rules §3.10 and §2.8; repointed the Runtime
 
 ### Remaining
 
-- [ ] Data Model — `011_ENGINE_DATA_MODEL.md`: extract Persistent Entity (Rules §3.10) and Canonical Record Architecture (Rules §2.8) from the Rules; define stable entity identity, relationships, and schemas
 - [ ] Ledger templates — derived from the accepted Data Model, not before it
 - [ ] Terminology and doc-graph cleanup carried in Technical Debt (below)
 

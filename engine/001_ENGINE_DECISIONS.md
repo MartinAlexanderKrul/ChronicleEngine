@@ -859,7 +859,8 @@ Surrender, retreat, panic, discipline, and fanaticism become ordinary outcomes.
 ## Decision 022 — Ownership and Possession Are Separate
 
 **Status:** Accepted  
-**Related Sections:** `010_ENGINE_RULES.md` — Section 7
+**Related Sections:** `010_ENGINE_RULES.md` — Section 7  
+**Refined by:** Decision 043 (ownership and possession are typed identifier references in `011`)
 
 ### Context
 
@@ -926,7 +927,8 @@ The engine must track relevant storage locations, transfers, consumption, and de
 ## Decision 024 — Generic and Individual Resource Identity
 
 **Status:** Accepted  
-**Related Sections:** `010_ENGINE_RULES.md` — Section 7
+**Related Sections:** `010_ENGINE_RULES.md` — Section 7  
+**Refined by:** Decision 043 (identifier-versus-quantity structural basis in `011`)
 
 ### Context
 
@@ -962,7 +964,8 @@ Ordinary objects may become individual resources through historically significan
 ## Decision 025 — Provenance Is Part of Significant Resource State
 
 **Status:** Accepted  
-**Related Sections:** `010_ENGINE_RULES.md` — Section 7
+**Related Sections:** `010_ENGINE_RULES.md` — Section 7  
+**Refined by:** Decision 043 (provenance envelope structure in `011`)
 
 ### Context
 
@@ -1228,7 +1231,7 @@ Research depends on time, tools, evidence, capability, and institutional conditi
 
 **Status:** Accepted  
 **Related Sections:** `010_ENGINE_RULES.md` - Sections 2 and 8  
-**Refined by:** Decision 042 (mandatory promotion; transcript is a precedence tier, not a durability tier)
+**Refined by:** Decision 042 (mandatory promotion; transcript is a precedence tier, not a durability tier); Decision 043 (provenance envelope structure and the single-Canonical-Record invariant defined in `011`)
 
 ### Context
 
@@ -1293,7 +1296,8 @@ Canonical ledgers remain the structured human-readable state records, but they m
 ## Decision 033 - Persistent Entity Abstraction
 
 **Status:** Accepted  
-**Related Sections:** `010_ENGINE_RULES.md` - Sections 3, 5, 7, and 8
+**Related Sections:** `010_ENGINE_RULES.md` - Sections 3, 5, 7, and 8  
+**Refined by:** Decision 043 (Persistent Entity is a specialization of Persistent Object; structure defined in `011`); Decision 044 (stable entity identity)
 
 ### Context
 
@@ -1876,6 +1880,95 @@ The promotion barrier is defined operationally in `012_ENGINE_RUNTIME.md` (Sessi
 - Declare the repository authoritative and the transcript merely advisory. Rejected: would let a stale ledger override what just happened at the table.
 - Leave promotion best-effort ("when practical"). Rejected: this is exactly what allowed canon to live only in a volatile transcript.
 - Merge this into Decision 041. Rejected: the runtime model and the canon-durability refinement are distinct questions and are kept separately traceable.
+
+---
+
+## Decision 043 — Persistent Object and Data Model Structural Contract
+
+**Status:** Accepted
+**Date:** 2026-07-11
+**Related Sections:** `011_ENGINE_DATA_MODEL.md`; `system/ID_REGISTRY.md`; `010_ENGINE_RULES.md` — Sections 2.8, 3.10, 7.12; `012_ENGINE_RUNTIME.md`; Decision 044
+
+### Context
+
+The Foundation Hardening review found that the engine relied on structural concepts — Persistent Entity, Canonical Record, provenance, generic-versus-individual resources — that were defined only as prose inside the behavioral Rules, with no identifier scheme, no referential model, and no structural contract for ledgers, templates, or tooling to depend on. The Runtime (Decision 041) was written to reference a data model that did not yet exist. Structure and behavior were entangled in the same document, and the missing stable-identity abstraction (identified in the review) had no home.
+
+### Decision
+
+Establish a dedicated engine-layer document, `011_ENGINE_DATA_MODEL.md`, defining the stable structural contract, separate from the behavioral Rules and the execution Runtime.
+
+Introduce **Persistent Object** as the root structural abstraction: anything with a stable identifier that persists and carries provenance. It has exactly four direct specializations, and the hierarchy is two levels deep: **Persistent Entity** (`ENT-`), **Canonical Record** (`REC-`), **Event** (`EVT-`), and **Relationship** (`REL-`). The universal fields — identifier, the one Canonical Record, provenance envelope, schema version, status — are defined once on the root.
+
+Adopt semantic-free, kind-prefixed identifiers (`ENT-000173`), globally unique per kind, immutable, and never reused, allocated monotonically by a repository-level registry at `system/ID_REGISTRY.md` under four invariants: atomic allocation-with-creation, mandatory registration, no reuse, and branch reconciliation before merge. All references between objects are by identifier, never by name.
+
+Establish the invariant that **every persistent object has exactly one authoritative Canonical Record** that owns its state, with base cases for records, events, and relationships, and atomic transfer of record responsibility.
+
+Reframe an object's temporal model as **Canonical State versus Historical Evidence**: a single authoritative present truth in the one Canonical Record, and non-authoritative records about the past, rather than two kinds of state. No append-only event log is mandated.
+
+Declare the Data Model the **most stable layer** of the architecture, authoritative on structure, subordinate to the Rules on behavior.
+
+The structural distinction between generic/aggregated and individual/promoted resources, record and schema versioning, validation constraints, and the domain-extension mechanism are defined here. Behavior remains in the Rules; execution remains in the Runtime; templates instantiate this structure and are deferred to the next task.
+
+### Rationale
+
+Separating structure from behavior gives ledgers, templates, and future tooling a stable contract to depend on, and completes the three-way split — Rules define truth, the Data Model structures it, the Runtime operates on it. The Persistent Object root removes duplication: identity, state ownership, provenance, and schema versioning are defined once rather than repeated across entities, records, events, and relationships. Semantic-free identifiers with reference-by-identifier are the structural fix for the stable-identity problem and for the fragility of name-based resolution. The single-Canonical-Record invariant makes "which record owns this fact" deterministic. The Canonical-State/Historical-Evidence framing aligns the temporal model with the canon hierarchy and durability model (Decision 042) and avoids mandating an event log the persistence architecture has deferred.
+
+### Consequences
+
+`011_ENGINE_DATA_MODEL.md` and `system/ID_REGISTRY.md` are created. The Manifest, Glossary, Roadmap, and Changelog are updated.
+
+The structural enumerations in Rules Section 3.10 (Persistent Entity requirements) and Section 2.8 (provenance fields) are relocated to `011` as the authoritative structure; those Rules sections retain their behavior and reference `011`. Section 7.12 references `011` for the identifier-versus-quantity basis.
+
+`012_ENGINE_RUNTIME.md` repoints its data-model references from the Rules to `011`.
+
+Engine Version advances to 0.1.2; Data Model Version is 0.1.0, recorded as the Campaign Schema version in the save manifest.
+
+Ledger templates derive from this document and remain the next Foundation Hardening task, deliberately not created here.
+
+### Alternatives Considered
+
+- Keep structural concepts inside `010_ENGINE_RULES.md`. Rejected: entangles structure with behavior and gives dependents no stable contract.
+- Define entities, records, events, and relationships as independent siblings without a root. Rejected: duplicates identifier, provenance, and state-ownership fields across all four.
+- Adopt UUIDs or distributed identifier allocation. Rejected for 0.1.2: unnecessary for a document substrate; readable monotonic identifiers with branch reconciliation are preferred. Recorded as a known limitation instead.
+- Allow multiple authoritative records per object. Rejected: reintroduces the ambiguity the Canonical Record invariant removes.
+
+---
+
+## Decision 044 — Stable Entity Identity
+
+**Status:** Accepted
+**Date:** 2026-07-11
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` — Sections 5, 6; `010_ENGINE_RULES.md` — Section 3.10; Decision 033; Decision 043
+
+### Context
+
+Rules Section 3.10 requires that a persistent entity's identity survive renaming, transformation, and succession, and that identity uncertainty be preserved rather than forced. It gave no structural means to do so. An entity that is renamed, disguised, legally reclassified, merged, divided, transformed, destroyed, mythologized, or rediscovered under a different name had no defined way to retain identity, and a name-based runtime would lose or confuse identity across these changes.
+
+### Decision
+
+Define stable entity identity structurally, as a specialization of Persistent Object identity, with three pieces:
+
+1. An entity's identity is its opaque `ENT-` identifier — never a name, type, or legal status.
+2. Names are **aliases**: time-scoped, provenance-bearing records with a quality (current, former, cover, legal, mythic, posthumous). Attribute changes — rename, disguise, reclassification — change aliases or attributes, not identity.
+3. Lifecycle continuity is an **identity-continuity graph**: a closed set of typed links between identifiers (transforms-from, succeeds, splits-from, merges-from, emerges-from, possibly-same-as), each carrying provenance and a certainty qualifier (asserted, disputed, believed, false-claim).
+
+Two identifiers are never silently collapsed. When canon confirms that two identifiers denote the same entity, reconciliation is an explicit, provenance-bearing Event. Uncertain identity is represented as a disputed link, not forced into a merge.
+
+### Rationale
+
+An opaque immutable identifier makes rename, disguise, and reclassification free, because they touch attributes rather than identity. Modelling continuity as a certainty-qualified graph expresses Rules Section 3.10's "preserve the uncertainty" principle structurally, and handles all nine identity cases without ever deleting a record or silently merging identities — consistent with the Runtime's no-silent-canon rule (Decision 041).
+
+### Consequences
+
+`011_ENGINE_DATA_MODEL.md` Sections 5 and 6 define aliases and the identity-continuity graph. Rules Section 3.10 retains its behavioral prose (transformation, succession, end states) and references `011` for the identity structure.
+
+Decision 033 is refined: the Persistent Entity is now one specialization of the Persistent Object, and its identity is defined structurally here.
+
+### Alternatives Considered
+
+- Use the entity's name or a name-plus-type key as identity. Rejected: breaks on rename, disguise, and reclassification, and invites name-based confusion.
+- Reassign identifiers on transformation or succession. Rejected: destroys continuity, which is the property Section 3.10 requires.
+- Force a single answer when identity continuity is uncertain. Rejected: contradicts Section 3.10 and erases real in-world ambiguity.
 
 ---
 

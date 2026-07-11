@@ -50,6 +50,14 @@ Adoption may be partial, regional, delayed, resisted, or reversed.
 
 ---
 
+## Alias
+
+A time-scoped, provenance-bearing name record on a Persistent Entity, carrying a quality such as current, former, cover, legal, mythic, or posthumous.
+
+An entity's identity is its identifier, never a name; aliases change while identity does not. Defined in `011_ENGINE_DATA_MODEL.md`, Section 5.
+
+---
+
 ## Archived Event
 
 An event preserved through records rather than only living memory.
@@ -123,6 +131,14 @@ Canon Promotion occurs at every promotion barrier: each save checkpoint, and ses
 The reproducibility standard the Runtime provides: given the same loaded canon, the same rules, and the same resolved die results, the Runtime produces state consistent with that canon and never contradicts it.
 
 Canon-determinism is distinct from output-determinism; exact narration and detail the engine leaves unspecified may vary between runs. Reproducibility is anchored to the repository, not the substrate. Defined in `012_ENGINE_RUNTIME.md`, Section 7.
+
+---
+
+## Canonical State
+
+The single authoritative present truth of a persistent object, held in its one Canonical Record; mutable and versioned.
+
+Canonical state is what is true now. It is distinct from Historical Evidence, which records the past without being authoritative. Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.
 
 ---
 
@@ -242,6 +258,14 @@ It is separate from world, campaign, and save versions.
 
 ---
 
+## Event
+
+A specialization of the Persistent Object (`EVT-`): a timed, immutable fact — something that happened at a point in simulated time.
+
+Mutations, transfers, transformations, promotions, and rulings are recorded as Events; provenance points at Event identifiers. An Event's historical importance is classified by Event Importance. Defined in `011_ENGINE_DATA_MODEL.md`, Section 2.4.
+
+---
+
 ## Event Importance
 
 The classification of how lasting or culturally significant an event is within the simulation.
@@ -304,6 +328,14 @@ An event that remains significant beyond its immediate moment and becomes part o
 
 ---
 
+## Historical Evidence
+
+Records about a persistent object's past — superseded record versions, chronicles, historical documents, and myths — which are evidence rather than authoritative state.
+
+Historical evidence may be biased, incomplete, forged, or contradictory. When canonical state is updated, the superseded version becomes historical evidence. Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.
+
+---
+
 ## Historical Importance
 
 The degree to which a person, event, institution, or resource matters to long-term continuity, recordkeeping, memory, or later interpretation.
@@ -325,6 +357,30 @@ Stories emerge from historical development instead of replacing it.
 Any surviving record, testimony, artifact, archive, chronicle, treatise, rumor, or document that can inform later understanding of past events.
 
 A historical source is evidence, not automatically objective truth.
+
+---
+
+## ID Registry
+
+The repository-level record at `system/ID_REGISTRY.md` holding the monotonic high-water mark for each identifier kind.
+
+Identifiers are allocated by advancing the registry under four invariants: atomic allocation-with-creation, mandatory registration, no reuse, and branch reconciliation before merge. Defined in `011_ENGINE_DATA_MODEL.md`, Section 1.
+
+---
+
+## Identifier
+
+The stable, semantic-free handle for a persistent object, in one of four kinds: `ENT-` (entity), `REC-` (record), `EVT-` (event), `REL-` (relationship).
+
+Identifiers are opaque, immutable, globally unique per kind, and never reused. All references between objects are by identifier, never by name. Defined in `011_ENGINE_DATA_MODEL.md`, Section 1.
+
+---
+
+## Identity-Continuity Graph
+
+The graph of typed links between entity identifiers that models continuity across lifecycle change: transforms-from, succeeds, splits-from, merges-from, emerges-from, and possibly-same-as.
+
+Each link carries provenance and a certainty qualifier (asserted, disputed, believed, false-claim). Two identifiers are never silently collapsed. Defined in `011_ENGINE_DATA_MODEL.md`, Section 6.
 
 ---
 
@@ -560,6 +616,16 @@ A persistent entity maintains identity, type, scope, current state, lifecycle st
 
 Not every object is a persistent entity; generic or low-importance things may remain aggregated until individual continuity becomes important.
 
+Structurally, a Persistent Entity is one specialization of the Persistent Object, identified by an `ENT-` identifier. Its structure is defined in `011_ENGINE_DATA_MODEL.md`, Section 4; its simulation behavior in `010_ENGINE_RULES.md`, Section 3.10.
+
+---
+
+## Persistent Object
+
+The root structural abstraction: anything with a stable identifier that persists across time and carries provenance.
+
+Its universal fields — identifier, the one authoritative Canonical Record, provenance, schema version, and status — are defined once on the root. It has four direct specializations: Persistent Entity (`ENT-`), Canonical Record (`REC-`), Event (`EVT-`), and Relationship (`REL-`). Defined in `011_ENGINE_DATA_MODEL.md`, Section 2.
+
 ---
 
 ## Possession
@@ -627,6 +693,14 @@ The architectural purpose a record serves in the engine.
 Examples include authoritative canon, in-world evidence, retrospective interpretation, reference summary, and machine persistence.
 
 Record role determines how a document should be used when resolving contradictions or reconstructing history.
+
+---
+
+## Relationship
+
+A specialization of the Persistent Object (`REL-`): a first-class link between exactly two entities, with a type, qualities, and its own state and history.
+
+Membership, governance, legitimacy, and diplomacy are modelled as relationships; entities reference relationship identifiers rather than duplicating relationship state. The structure is defined in `011_ENGINE_DATA_MODEL.md`, Section 10; the meaning of each relationship type in the relevant `010_ENGINE_RULES.md` domain section.
 
 ---
 

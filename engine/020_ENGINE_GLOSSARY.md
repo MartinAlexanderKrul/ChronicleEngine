@@ -412,7 +412,9 @@ Ownership is distinct from possession.
 
 A meaningfully evolving thing whose identity continues across time and whose state can change through simulation.
 
-Characters are already treated this way in the rules, while the fully generalized engine abstraction remains a pending architectural decision.
+A persistent entity maintains identity, type, scope, current state, lifecycle status, relationships, historical continuity, and record responsibility.
+
+Not every object is a persistent entity; generic or low-importance things may remain aggregated until individual continuity becomes important.
 
 ---
 

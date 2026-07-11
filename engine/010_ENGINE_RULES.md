@@ -1052,7 +1052,120 @@ Unchanged systems remain unchanged.
 
 ---
 
-## 3.10 Persistence
+## 3.10 Persistent Entities
+
+A persistent entity is any meaningfully evolving subject whose identity continues across time and whose state can change through simulation.
+
+Persistent entities provide a shared continuity model for different domains.
+
+They do not replace domain-specific rules.
+
+Characters remain governed by Living Characters.
+
+Resources remain governed by Resources & Ownership.
+
+Research remains governed by Research & Knowledge.
+
+Institutions, governments, armies, settlements, religions, discoveries, technologies, and artifacts may use the same continuity model when their individual history matters.
+
+Not every object is a persistent entity.
+
+Generic or low-importance things may remain aggregated until individual continuity becomes historically, mechanically, or narratively significant.
+
+### Persistent Entity Requirements
+
+Every persistent entity should maintain:
+
+- identity,
+- type,
+- scope,
+- current state,
+- lifecycle status,
+- relationships,
+- historical continuity,
+- record responsibility.
+
+Identity distinguishes the entity from other entities.
+
+Type identifies what kind of entity it is.
+
+Scope defines the level at which it matters: personal, local, institutional, regional, world, or historical.
+
+Current state records its present condition, location, capabilities, holdings, knowledge, obligations, or other relevant facts.
+
+Lifecycle status describes whether the entity is emerging, active, transforming, declining, dormant, dissolved, destroyed, or remembered only through records.
+
+Relationships connect the entity to people, institutions, places, resources, knowledge, obligations, rivals, patrons, successors, or predecessors.
+
+Historical continuity preserves how the entity changed over time.
+
+Record responsibility identifies which canonical ledgers or records preserve its authoritative state.
+
+### Promotion to Persistent Entity
+
+An aggregated subject should become a persistent entity when continued individual identity becomes important.
+
+Promotion may occur because the subject:
+
+- affects future simulation,
+- accumulates relationships,
+- gains provenance,
+- becomes historically important,
+- becomes politically or economically consequential,
+- becomes the focus of active play,
+- is preserved by records,
+- is transformed by a major event.
+
+Examples:
+
+A common sword may become a persistent entity after being used in a historically important assassination.
+
+A minor study circle may become a persistent entity after founding a durable school of thought.
+
+A temporary militia may become a persistent entity after surviving long enough to gain leadership, assets, reputation, and enemies.
+
+### Persistence Without Exhaustive Detail
+
+Persistent entities do not require equal simulation detail.
+
+Simulation priority determines how much detail is active at any moment.
+
+A persistent entity may remain abstract while distant or inactive, then become detailed when it affects play or history.
+
+The engine should preserve continuity without expanding every entity into full active simulation.
+
+### Transformation and Succession
+
+Persistent entities may change without losing identity.
+
+They may be renamed, reorganized, damaged, merged, divided, inherited, reformed, corrupted, displaced, hidden, revived, or remembered incorrectly.
+
+When identity continuity is uncertain, the engine should preserve the uncertainty rather than force a clean answer.
+
+Successor entities should record what they inherit and what they do not.
+
+### End States
+
+A persistent entity may end as an active force while remaining historically relevant.
+
+Possible end states include:
+
+- dissolved,
+- destroyed,
+- absorbed,
+- abandoned,
+- forgotten,
+- mythologized,
+- archived,
+- transformed into a successor entity.
+
+Ending an entity does not require deleting its records.
+
+Inactive entities may continue to matter through memory, provenance, claims, ruins, legal continuity, inherited obligations, or rediscovery.
+
+---
+
+## 3.11 Persistence
 
 The world has no predefined ending.
 
@@ -1070,7 +1183,7 @@ The world itself continues until explicitly replaced by a new world version.
 
 ---
 
-## 3.11 Simulation Priority
+## 3.12 Simulation Priority
 
 The engine allocates simulation detail according to relevance rather than equality.
 
@@ -1094,32 +1207,6 @@ Examples include:
 - immediate travel.
 
 These systems are simulated with maximum detail.
-
-## 3.12 Causality
-
-Every meaningful event should have a traceable cause.
-
-Major developments should emerge from one or more of the following:
-
-- decisions made by individuals,
-- institutional objectives,
-- political tensions,
-- economic pressures,
-- discoveries,
-- environmental conditions,
-- military conflict,
-- cultural change,
-- chance.
-
-Important historical events should, whenever practical, be explainable through an identifiable chain of preceding events.
-
-The simulation favors causality over coincidence.
-
-Coincidence may begin stories.
-
-Causality sustains them.
-
----
 
 ### Secondary Priority
 
@@ -1194,6 +1281,32 @@ This preserves computational efficiency while maintaining the illusion of a livi
 Events may occur anywhere.
 
 Detail is generated where it matters.
+
+---
+
+## 3.13 Causality
+
+Every meaningful event should have a traceable cause.
+
+Major developments should emerge from one or more of the following:
+
+- decisions made by individuals,
+- institutional objectives,
+- political tensions,
+- economic pressures,
+- discoveries,
+- environmental conditions,
+- military conflict,
+- cultural change,
+- chance.
+
+Important historical events should, whenever practical, be explainable through an identifiable chain of preceding events.
+
+The simulation favors causality over coincidence.
+
+Coincidence may begin stories.
+
+Causality sustains them.
 
 # 4. Action Resolution
 

@@ -69,6 +69,7 @@ Status: **In Progress**
   - [x] Resources & Ownership
   - [x] Research & Knowledge
   - [x] Canonical Record Architecture
+  - [x] Persistent Entity Abstraction
 - [x] Engine Glossary
 - [x] World Bible (Asterra)
 
@@ -180,7 +181,7 @@ The following abstractions have been identified but are not yet finalized.
 
 ## Persistent Entity
 
-Status: Planned
+Status: Accepted
 
 Purpose:
 
@@ -195,6 +196,8 @@ Provide a common lifecycle model for:
 - religions,
 - discoveries,
 - technologies.
+
+Integrated through `001_ENGINE_DECISIONS.md` Decision 033 and `010_ENGINE_RULES.md` Section 3.10.
 
 ---
 
@@ -303,7 +306,6 @@ Integrated through `001_ENGINE_DECISIONS.md` Decision 032 and `010_ENGINE_RULES.
 
 Current architectural debt:
 
-- Finalize Persistent Entity abstraction.
 - Remove remaining terminology drift.
 - Eliminate duplicated definitions through cross-references.
 - Stabilize repository governance.
@@ -318,7 +320,7 @@ Current architectural debt:
 The current Institutions & Organizations milestone depends on the following existing engine work:
 
 - `001_ENGINE_DECISIONS.md`
-  - Decision P001 - Persistent Entity Abstraction
+  - Decision 033 - Persistent Entity Abstraction
   - Decision P002 - Institution Lifecycle Model
   - Decision 032 - Canonical Record Architecture
 - `010_ENGINE_RULES.md`

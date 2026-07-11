@@ -1288,17 +1288,72 @@ Canonical ledgers remain the structured human-readable state records, but they m
 
 ---
 
+## Decision 033 - Persistent Entity Abstraction
+
+**Status:** Accepted  
+**Related Sections:** `010_ENGINE_RULES.md` - Sections 3, 5, 7, and 8
+
+### Context
+
+Chronicle Engine already treats characters, historically important resources, institutions, settlements, kingdoms, religions, discoveries, and technologies as things that can retain identity while changing over time.
+
+Without a shared abstraction, each domain would need to redefine identity, state, lifecycle, continuity, records, provenance, and historical importance separately.
+
+That would create duplicated mechanics and make future institution, governance, magic, and persistence systems harder to align.
+
+### Decision
+
+The engine recognizes Persistent Entity as a general abstraction for any meaningfully evolving subject whose identity continues across time and whose state can change through simulation.
+
+A persistent entity must have:
+
+1. Identity.
+2. Type.
+3. Scope.
+4. Current state.
+5. Lifecycle status.
+6. Relationships.
+7. Historical continuity.
+8. Record responsibility.
+
+Not every object in the world is a persistent entity.
+
+Generic or low-importance things may remain aggregated until simulation makes individual continuity meaningful.
+
+### Rationale
+
+This gives future systems a common foundation without forcing all domains into the same mechanics.
+
+Characters can remain characters, institutions can remain institutions, and artifacts can remain resources, while sharing a basic continuity model.
+
+The abstraction supports:
+
+- institutions that outlive founders,
+- resources that gain historical identity,
+- discoveries that spread, disappear, or return,
+- settlements and kingdoms that transform over time,
+- records that preserve state without duplicating domain rules.
+
+### Consequences
+
+Future institution, governance, historical persistence, and save-state rules should build on Persistent Entity rather than inventing separate continuity models.
+
+Persistent Entity defines shared continuity requirements, not a complete universal stat block.
+
+Domain sections remain responsible for domain-specific behavior.
+
+### Alternatives Considered
+
+- Define identity separately in every domain.
+- Treat only characters as persistent entities.
+- Treat every object as a fully tracked persistent entity.
+- Delay the abstraction until after institutions.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:
-
-## Decision P001 — Persistent Entity Abstraction
-
-**Status:** Proposed
-
-Determine whether every meaningfully evolving object should use a shared Persistent Entity model.
-
----
 
 ## Decision P002 — Institution Lifecycle Model
 
@@ -1333,6 +1388,14 @@ Define machine state, human-readable ledgers, version compatibility, restoration
 ---
 
 # Superseded Proposed Decisions
+
+## Decision P001 — Persistent Entity Abstraction
+
+**Status:** Superseded
+
+Superseded by Decision 033.
+
+---
 
 ## Decision P003 — Research and Knowledge Lifecycle
 

@@ -1740,6 +1740,55 @@ A compiled save format would create a second representation of canonical state, 
 
 ---
 
+## Decision 040 — Engine Changelog Format
+
+**Status:** Accepted  
+**Date:** 2026-07-11  
+**Related Sections:** Decision 032, Decision 039, Revision Policy (this document), `030_ENGINE_CHANGELOG.md`
+
+### Context
+
+The Revision Policy in this document already requires recording every decision supersession in the engine changelog, but the changelog file itself did not yet exist, and its format, scope, and triggering conditions were undefined. Review found the same duplication risk already resolved in Decision 039: a changelog that restates decision rationale would create a second representation of the same truth as the permanent decision record, which is never deleted per this document's own Revision Policy.
+
+### Decision
+
+`030_ENGINE_CHANGELOG.md` is a reverse-chronological index of engine changes. Each entry is a pointer, not a restatement: it names the decisions, rules sections, manifest changes, and other files affected by a unit of work, without repeating their content.
+
+Entries are triggered by:
+
+- any decision reaching Accepted status, whether new or superseding a prior decision,
+- any new or modified Rules section,
+- any correction to the Manifest's repository architecture or versioning tables.
+
+Supersession, the only trigger explicitly named in the Revision Policy, remains mandatory; the other two triggers extend it to match the Manifest's stated purpose for this file ("version history") without contradicting the policy.
+
+Entries are grouped by unit of work, typically a completed roadmap task, not by individual decision or raw date, mirroring the Roadmap's own Completed checklist.
+
+Because Engine Version has remained 0.1.0 throughout the entire Version 0.1 - Engine Foundation milestone, all backfilled and current entries are grouped under a single 0.1.0 (Workshop Draft) heading. A new version heading is added only when the Engine Version itself changes.
+
+The changelog is backfilled from the existing git history for `engine/`, covering the full Version 0.1 development arc from initial structure through Save State Architecture, rather than starting empty from the date of this decision.
+
+### Rationale
+
+Restating decision content in the changelog would duplicate the permanent record already preserved in `001_ENGINE_DECISIONS.md`, the same risk rejected for saves in Decision 039. Grouping by unit of work rather than by decision number keeps the changelog scannable and aligned with how the Roadmap already tracks progress. Backfilling from git history gives the changelog immediate value as an index of how Version 0.1 was actually built, rather than an empty file that only matters going forward.
+
+### Consequences
+
+`030_ENGINE_CHANGELOG.md` is created, populated with entries for the full Version 0.1 arc to date.
+
+`002_ENGINE_ROADMAP.md`'s Version 0.1 checklist marks Engine Changelog complete, closing Version 0.1 - Engine Foundation entirely.
+
+Future decisions and rules sections should add a changelog entry as part of the same unit of work that introduces them, consistent with Revision Policy step 5.
+
+### Alternatives Considered
+
+- Restating each decision's context and rationale in the changelog. Rejected: duplicates the permanent decision record.
+- Recording only supersessions, per the Revision Policy's literal minimum. Rejected: would omit net-new decisions (034, 036) that were not supersessions, undercutting the Manifest's stated "version history" purpose for this file.
+- Starting the changelog empty from today. Rejected: produces a changelog with no coverage of the milestone it claims to close.
+- One entry per individual decision rather than per unit of work. Rejected: less scannable, and misaligned with how the Roadmap already reports progress.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

@@ -9,15 +9,15 @@
 
 Goal:
 
-Complete Version 0.1 Engine Foundation.
+Version 0.1 - Engine Foundation is complete. Awaiting direction on Version 0.2 - Knowledge & Civilization.
 
 Current Task:
 
-Architecture Review for Engine Changelog
+None — awaiting scoping decision for Version 0.2
 
 Next Review:
 
-Engine Changelog readiness and dependency review (v0.1)
+Version 0.2 - Knowledge & Civilization scoping, when initiated
 
 ---
 
@@ -52,7 +52,7 @@ New systems should emerge from existing abstractions instead of introducing unre
 
 ## Version 0.1 - Engine Foundation
 
-Status: **In Progress**
+Status: **Complete**
 
 ### Completed
 
@@ -76,11 +76,12 @@ Status: **In Progress**
   - [x] Historical Persistence
   - [x] Save State Architecture
 - [x] Engine Glossary
+- [x] Engine Changelog
 - [x] World Bible (Asterra)
 
 ### Remaining
 
-- [ ] Engine Changelog
+All Version 0.1 items complete.
 
 ---
 
@@ -412,18 +413,9 @@ Current architectural debt:
 
 # Current Dependencies
 
-The current Engine Changelog milestone depends on the following existing engine work:
+No active task. Version 0.1 - Engine Foundation is complete, including its own changelog (`030_ENGINE_CHANGELOG.md`), which now indexes the full arc of Decisions 001-040.
 
-- `001_ENGINE_DECISIONS.md`
-  - Revision Policy (references the engine changelog for superseded decisions)
-  - Every Accepted and Superseded decision recorded so far (001-039, plus superseded P001-P007)
-- `000_ENGINE_MANIFEST.md`
-  - Engine Layer (000-099), which reserves `030_ENGINE_CHANGELOG.md`
-  - Current Versions table
-- `002_ENGINE_ROADMAP.md`
-  - Version 0.1 - Engine Foundation completion history
-
-Before Engine Changelog is written, it should be checked against the Revision Policy already stated in `001_ENGINE_DECISIONS.md` (mark superseded, reference the new decision, explain migration impact, update rules, record the change in the changelog) to ensure the changelog format supports that exact workflow rather than duplicating decision history in a different shape.
+When Version 0.2 - Knowledge & Civilization is initiated, its dependencies should be drawn from Research & Knowledge (Section 8), Institutions & Organizations (Section 9), and the Knowledge Lifecycle Future Architecture entry below, consistent with the roadmap's stated focus: civilization-scale research lifecycle, discovery system expansion, knowledge propagation, universities, guilds, religious organizations, and cultural memory.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Version 0.2 Capability Validation — Overview
 
-**Status:** In Progress (roadmap milestone 0.2.5)
+**Status:** Accepted (roadmap milestone 0.2.5 complete)
 **Development Target:** Version 0.2.0 — Knowledge & Civilization
 **Layer:** Design Retrospective / Validation (400–499)
 **Canonicity:** Non-canonical validation artifacts
@@ -87,4 +87,4 @@ All seven fixtures resolve without a prohibited shortcut and without a new found
 
 # Relationship to the Roadmap and Decision 048
 
-Authoring these fixtures and their resolutions is the Capability Validation stage of the development lifecycle (Decision 048). The walkthroughs are the author's validation assertions. Milestone 0.2.5 remains open — and Version 0.2.0 remains an unstamped development target — until these fixtures are reviewed and accepted, after which the engine proceeds to Prototype Alpha — Engine Validation Campaign.
+These fixtures and their resolutions are the Capability Validation stage of the development lifecycle (Decision 048). They have been reviewed and accepted; milestone 0.2.5 is complete. Version 0.2.0 remains an unstamped development target until Prototype Alpha — Engine Validation Campaign and the Engine Postmortem are also complete (Decision 048). The engine now proceeds to Prototype Alpha.

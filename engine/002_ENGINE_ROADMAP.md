@@ -10,15 +10,15 @@
 
 Goal:
 
-Version 0.2 architecture and implementation are complete (Decisions 046–047; Rules Section 8). The Capability Validation fixtures are authored and resolve without contradiction; milestone 0.2.5 is **Complete (Pending Acceptance)** while the fixtures are reviewed.
+Version 0.2 architecture, implementation, and Capability Validation are complete and accepted (Decisions 046–047; Rules Section 8; milestone 0.2.5). The engine now enters its first Prototype Campaign — Prototype Alpha — to validate Version 0.2 through gameplay before the version can be marked complete.
 
 Current Task:
 
-Review and accept the seven capability-validation fixtures in `docs/410_CAPABILITY_VALIDATION/`. On acceptance, mark 0.2.5 complete; the engine then proceeds to Prototype Alpha — Engine Validation Campaign.
+Set up Prototype Alpha — Engine Validation Campaign: a deliberately small prototype world and campaign that exercise the Version 0.2 knowledge model and the wider engine.
 
 Next Review:
 
-Prototype Alpha readiness once Capability Validation is accepted.
+Prototype Alpha scope and world/campaign scaffolding.
 
 ---
 
@@ -85,7 +85,7 @@ This lifecycle is governed by `001_ENGINE_DECISIONS.md` Decision 048 (Version Ev
 
 Status: **In Validation**
 
-Version 0.2.0 is the development target for the first capability milestone built on the Foundation, which is complete and frozen at 0.1.5 (the current Engine Version). It models knowledge as a persistent historical force rather than a binary possession or global unlock. Its architecture and implementation are complete; it is now at the Capability Validation gate of the development lifecycle. The Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete (Decision 048).
+Version 0.2.0 is the development target for the first capability milestone built on the Foundation, which is complete and frozen at 0.1.5 (the current Engine Version). It models knowledge as a persistent historical force rather than a binary possession or global unlock. Its architecture, implementation, and Capability Validation are complete; it is now at the Prototype Alpha gate of the development lifecycle. The Engine Version advances to 0.2.0 only after Prototype Alpha and the Engine Postmortem are also complete (Decision 048).
 
 ### Goal
 
@@ -103,10 +103,12 @@ Version 0.2 has advanced through the development lifecycle as follows:
 - [x] Decision 047 — Knowledge Custody, Continuity, and Rediscovery
 - [x] ADR Review & Approval
 - [x] Rules Implementation (Section 8 — custody, transmission, loss, passive extinction, rediscovery)
-- [~] Capability Validation (0.2.5) — Complete (Pending Acceptance); fixtures authored in `docs/410_CAPABILITY_VALIDATION/`, awaiting review
+- [x] Capability Validation (0.2.5) — accepted; fixtures in `docs/410_CAPABILITY_VALIDATION/`
+- [ ] Prototype Alpha — Engine Validation Campaign — current gate
+- [ ] Engine Postmortem
 - [ ] Version 0.2 Complete
 
-After Version 0.2 Complete, the engine enters Prototype Alpha — Engine Validation Campaign, then the Engine Postmortem, before Version 0.3 planning begins.
+Prototype Alpha and the Engine Postmortem are the remaining validation gates. Version 0.2 is marked complete — and the Engine Version advances to 0.2.0 — only after both are finished and any required refinements are incorporated. Version 0.3 planning begins after that (Decision 048).
 
 The five capability milestones (0.2.1–0.2.5) are specified in full under Planned Milestones → Version 0.2 below.
 
@@ -456,7 +458,7 @@ Completion criteria:
 
 ## Prototype Alpha — Engine Validation Campaign
 
-Status: **Planned** — validation gate; begins after Version 0.2 Complete
+Status: **Active** — current validation gate; follows accepted Capability Validation
 
 Prototype Alpha is not an engine-feature milestone. It introduces no new engine systems and no new foundational abstractions. Its purpose is to validate the completed Version 0.2 implementation through the Prototype Campaign stage of the development lifecycle.
 

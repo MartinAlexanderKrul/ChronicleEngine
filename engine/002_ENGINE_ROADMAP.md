@@ -2,22 +2,22 @@
 
 # Engine Roadmap
 
-**Engine Version:** 0.1.2  
+**Engine Version:** 0.1.3  
 **Status:** Active Development
 
 # Current Sprint
 
 Goal:
 
-Foundation Hardening — strengthen the engine's architecture before Version 0.2 gameplay systems begin.
+Foundation Hardening is complete. Awaiting direction on Version 0.2 - Knowledge & Civilization.
 
 Current Task:
 
-Runtime Model (`012_ENGINE_RUNTIME.md`) and Data Model (`011_ENGINE_DATA_MODEL.md`) are complete. Next: ledger templates that instantiate the Data Model.
+None — awaiting scoping decision for Version 0.2. Phase 2 ledger templates (the remaining campaign, world, and historical ledgers) may be completed alongside 0.2 as they are needed.
 
 Next Review:
 
-Ledger templates scoping, then Version 0.2 - Knowledge & Civilization scoping.
+Version 0.2 - Knowledge & Civilization scoping, when initiated.
 
 ---
 
@@ -52,7 +52,7 @@ New systems should emerge from existing abstractions instead of introducing unre
 
 ## Foundation Hardening
 
-Status: **In Progress**
+Status: **Complete**
 
 A pre-0.2 milestone that strengthens the engine's architecture rather than adding gameplay systems. It arose from the Foundation Hardening architecture review, which found the runtime under-specified and identified missing data-model abstractions.
 
@@ -68,10 +68,16 @@ A pre-0.2 milestone that strengthens the engine's architecture rather than addin
   - [x] Single-Canonical-Record invariant; Canonical State versus Historical Evidence
   - [x] Stable entity identity: aliases and the identity-continuity graph resolving the nine identity cases
   - [x] Relocated structural enumerations from Rules §3.10 and §2.8; repointed the Runtime
+- [x] Ledger Templates (Phase 1) — `templates/`; Decision 045 (Ledger Template System)
+  - [x] Template conventions; the fenced-YAML Object Block; the atom-and-container model
+  - [x] Core Object Block templates for every specialization and entity type
+  - [x] `100_CHARACTER_SHEET`, `130_NPCS_AND_FACTIONS`, `900_SAVE_MANIFEST` ledgers
+  - [x] Deliberately-invalid placeholders with validation rejection (`011` §12.3)
+  - [x] One non-canonical instantiated Character example
 
 ### Remaining
 
-- [ ] Ledger templates — derived from the accepted Data Model, not before it
+- [ ] Ledger Templates (Phase 2) — remaining campaign, world, and historical ledgers; completed as needed, may run alongside Version 0.2
 - [ ] Terminology and doc-graph cleanup carried in Technical Debt (below)
 
 ---

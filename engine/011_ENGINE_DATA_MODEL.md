@@ -392,6 +392,8 @@ Every record declares the Data Model version it conforms to (Section 2.1). The D
 
 A conforming repository satisfies the referential-integrity invariants (Section 3.1) and the registry invariants (Section 1.4): every referenced identifier exists and is registered, every required field is present, no record is orphaned, and no identifier is reused or silently collapsed. These are invariants the Runtime checks; they are not a formal schema language.
 
+A conforming canonical file also contains **no unresolved template placeholder tokens**. A filled world or campaign file holds real identifiers and values only; the placeholder tokens used by templates (`ENT-XXXXXX`, `REC-XXXXXX`, `EVT-XXXXXX`, `REL-XXXXXX`, `<required: …>`, `<optional: …>`, `<generated: …>`) must not appear in a canonical file. The template conventions are defined in `templates/000_TEMPLATE_CONVENTIONS.md`.
+
 ## 12.4 Migration
 
 The Data Model defines the compatibility contract: records are schema-tagged, and the Runtime surfaces version mismatches on restoration (`012_ENGINE_RUNTIME.md`, Section 6.2). Automatic migration is deferred to Version 0.6 — Persistence (Rules Section 13.6). Reconciling a schema mismatch is handled explicitly when it arises, not silently.

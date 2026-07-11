@@ -488,6 +488,14 @@ Not every ledger is equally authoritative; authority depends on its place in the
 
 ---
 
+## Ledger Template
+
+A Canonical Record template that composes one or more Object Blocks into a fillable ledger file.
+
+A single-object ledger contains one Object Block; a multi-object ledger contains several under Markdown headings. Ledger templates are a non-canonical instantiation layer under `templates/`, governed by `011_ENGINE_DATA_MODEL.md`. Defined in `templates/000_TEMPLATE_CONVENTIONS.md`.
+
+---
+
 ## Legacy
 
 What remains of a persistent entity's influence after its active existence ends, including surviving records, successor entities, inherited obligations, and cultural memory.
@@ -557,6 +565,14 @@ Myth influences behavior regardless of factual accuracy.
 ## Mythic Event
 
 An event transformed by culture, religion, legend, propaganda, or later retelling into a form that may differ from objective reality while retaining influence.
+
+---
+
+## Object Block
+
+The single on-page representation of a persistent object: a fenced YAML block inside Markdown.
+
+The universal Persistent Object block is minimal (identifier, canonical record, schema version, status, provenance); the Persistent Entity extension adds type, scope, aliases, relationships, identity links, and canonical state. Object Blocks compose into Ledger Templates. Defined in `templates/000_TEMPLATE_CONVENTIONS.md`.
 
 ---
 

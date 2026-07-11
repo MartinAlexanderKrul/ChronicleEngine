@@ -1972,6 +1972,51 @@ Decision 033 is refined: the Persistent Entity is now one specialization of the 
 
 ---
 
+## Decision 045 — Ledger Template System
+
+**Status:** Accepted
+**Date:** 2026-07-11
+**Related Sections:** `templates/`; `011_ENGINE_DATA_MODEL.md`; `010_ENGINE_RULES.md`; `012_ENGINE_RUNTIME.md`; Decision 028; Decision 043
+
+### Context
+
+With the Data Model accepted (Decision 043), the engine needed concrete artifacts that instantiate its structure so that world and campaign files have a consistent shape to fill, and so referential integrity can be validated. The Manifest reserved an empty `templates/` directory. The open questions were the representation of a persistent object on the page, how single-object and multi-object ledgers relate, where templates live, and how an unfilled skeleton is prevented from being mistaken for real state.
+
+### Decision
+
+Establish a **ledger template system** as a non-canonical instantiation layer under `templates/`, conforming to the Data Model.
+
+Represent every persistent object as an **Object Block**: a fenced YAML block inside Markdown. This is the single representation; YAML frontmatter is not used, and a single-object ledger simply contains one Object Block. A **Ledger Template** is a Canonical Record that composes one or more Object Blocks under Markdown headings — the atom-and-container model.
+
+Keep the universal Persistent Object block minimal — identifier, canonical record, schema version, status, provenance — with entity-only fields (type, scope, aliases, relationships, identity links, canonical state) living in the Persistent Entity extension.
+
+Use deliberately invalid placeholder tokens (`ENT-XXXXXX`, `REC-XXXXXX`, `EVT-XXXXXX`, `REL-XXXXXX`, `<required: …>`, `<optional: …>`, `<generated: …>`). Validation rejects any canonical file that still contains an unresolved placeholder token (`011` Section 12.3).
+
+Use the directory layout `templates/{objects,ledgers,examples}/` plus `000_TEMPLATE_CONVENTIONS.md`. The directory is named `objects/`, not `entities/`, because Events, Relationships, and Canonical Records are persistent objects but not persistent entities.
+
+Phase 1 delivers the conventions document, the core Object Block templates, the `100_CHARACTER_SHEET`, `130_NPCS_AND_FACTIONS`, and `900_SAVE_MANIFEST` ledgers, and one non-canonical instantiated Character example. The remaining campaign, world, and historical ledger templates are Phase 2.
+
+### Rationale
+
+A single on-page representation removes ambiguity for both human and interpreter authors, and the Object-Block/Ledger-Template split lets one block definition serve single-object and multi-object ledgers without duplication. Keeping the universal block minimal honors the Persistent Object hierarchy: non-entity objects do not carry entity fields. Deliberately invalid placeholders make an unfilled template detectable, so validation can distinguish a skeleton from real state. Delivering Phase 1 only validates the format end to end before mechanically repeating it across every ledger.
+
+### Consequences
+
+`templates/000_TEMPLATE_CONVENTIONS.md`, the `templates/objects/` block templates, the Phase 1 `templates/ledgers/` files, and a `templates/examples/` fixture are created. `011` Section 12.3 gains the placeholder-rejection constraint. The Manifest, Roadmap, Glossary, and Changelog are updated.
+
+Engine Version advances to 0.1.3, closing the Foundation Hardening milestone. Data Model Version remains 0.1.0: templates instantiate the existing schema without changing it.
+
+Phase 2 ledger templates and any world-authoring of Asterra remain future work.
+
+### Alternatives Considered
+
+- YAML frontmatter for single-object files and inline blocks for multi-object files. Rejected: two representations for the same object; a single-object ledger with one Object Block is simpler.
+- Put entity fields on every Object Block. Rejected: records, events, and relationships are not entities and must not carry entity fields.
+- Valid-looking placeholders. Rejected: an unfilled skeleton could pass as real state; invalid tokens make templates detectable by validation.
+- Deliver all ledger templates at once. Rejected: Phase 1 proves the format before repeating it; the rest is mechanical.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

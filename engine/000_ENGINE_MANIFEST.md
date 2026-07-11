@@ -2,7 +2,7 @@
 
 ## Engine Manifest
 
-**Engine Version:** 0.1.2  
+**Engine Version:** 0.1.3  
 **Status:** Workshop Draft  
 **Project Type:** Persistent Historical Simulation Engine  
 **Simulation Model:** World-First  
@@ -107,6 +107,10 @@ ChronicleEngine/
 │       └── 401_MICTIAN_CAMPAIGN.md
 │
 └── templates/
+    ├── 000_TEMPLATE_CONVENTIONS.md
+    ├── objects/
+    ├── ledgers/
+    └── examples/
 ```
 
 ---
@@ -273,7 +277,7 @@ Changes to one component should not require version changes to unrelated compone
 
 | Component | Version |
 |-----------|---------|
-| Engine | 0.1.2 |
+| Engine | 0.1.3 |
 | Data Model | 0.1.0 |
 | World | 0.9 |
 | Campaign | Not Created |
@@ -311,6 +315,8 @@ Behavioral rules belong in **010_ENGINE_RULES.md**.
 Structural definitions — identity, record shape, and references — belong in **011_ENGINE_DATA_MODEL.md**.
 
 Runtime behavior — how the engine is executed — belongs in **012_ENGINE_RUNTIME.md**.
+
+Template instantiation of that structure — the fillable skeletons world and campaign files copy — belongs in **`templates/`**, a non-canonical instantiation layer governed by the Data Model. See `templates/000_TEMPLATE_CONVENTIONS.md`.
 
 Architectural reasoning belongs in **001_ENGINE_DECISIONS.md**.
 

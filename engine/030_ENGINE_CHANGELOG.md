@@ -8,6 +8,20 @@
 
 ---
 
+# Version 0.1.3 (Foundation Hardening)
+
+## 2026-07-11 — Ledger Templates (Phase 1)
+
+**Decisions:** Added Decision 045 (Ledger Template System)
+**Rules:** none
+**Data Model:** Added the placeholder-rejection validation constraint (`011` Section 12.3); Data Model Version unchanged at 0.1.0
+**Files:** Created `templates/000_TEMPLATE_CONVENTIONS.md`; `templates/objects/` block templates (Character, Institution, Settlement/Kingdom, Resource, Place, Discovery/Knowledge, Canonical Record, Event, Relationship); `templates/ledgers/` (`100_CHARACTER_SHEET`, `130_NPCS_AND_FACTIONS`, `900_SAVE_MANIFEST`); `templates/examples/character_example.md`
+**Manifest:** Expanded the `templates/` tree; noted the template layer under Document Authority; Engine Version set to 0.1.3
+**Glossary:** Added Object Block, Ledger Template
+**Roadmap:** Ledger Templates Phase 1 complete; Foundation Hardening milestone complete; Phase 2 templates deferred
+
+---
+
 # Version 0.1.2 (Foundation Hardening)
 
 ## 2026-07-11 — Data Model

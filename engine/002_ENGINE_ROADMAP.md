@@ -10,15 +10,15 @@
 
 Goal:
 
-Version 0.2 architecture and implementation are complete (Decisions 046–047; Rules Section 8). Version 0.2 is now at the Capability Validation gate of the development lifecycle, after which the engine enters its first Prototype Campaign.
+Version 0.2 architecture and implementation are complete (Decisions 046–047; Rules Section 8). The Capability Validation fixtures are authored and resolve without contradiction; milestone 0.2.5 is **Complete (Pending Acceptance)** while the fixtures are reviewed.
 
 Current Task:
 
-Complete Capability Validation (0.2.5) against the formal non-canonical acceptance fixtures, then mark Version 0.2 Complete and transition into Prototype Alpha — Engine Validation Campaign.
+Review and accept the seven capability-validation fixtures in `docs/410_CAPABILITY_VALIDATION/`. On acceptance, mark 0.2.5 complete; the engine then proceeds to Prototype Alpha — Engine Validation Campaign.
 
 Next Review:
 
-Prototype Alpha readiness once Version 0.2 is marked complete.
+Prototype Alpha readiness once Capability Validation is accepted.
 
 ---
 
@@ -103,7 +103,7 @@ Version 0.2 has advanced through the development lifecycle as follows:
 - [x] Decision 047 — Knowledge Custody, Continuity, and Rediscovery
 - [x] ADR Review & Approval
 - [x] Rules Implementation (Section 8 — custody, transmission, loss, passive extinction, rediscovery)
-- [ ] Capability Validation (0.2.5) — current gate
+- [~] Capability Validation (0.2.5) — Complete (Pending Acceptance); fixtures authored in `docs/410_CAPABILITY_VALIDATION/`, awaiting review
 - [ ] Version 0.2 Complete
 
 After Version 0.2 Complete, the engine enters Prototype Alpha — Engine Validation Campaign, then the Engine Postmortem, before Version 0.3 planning begins.
@@ -403,6 +403,8 @@ Completion criteria:
 - Passive extinction is a valid historical outcome
 
 #### 0.2.5 Capability Validation
+
+**Status:** Complete (Pending Acceptance) — the seven fixtures are authored in `docs/410_CAPABILITY_VALIDATION/` and resolve without contradiction; awaiting review before 0.2.5 is marked complete.
 
 Capability delivered:
 

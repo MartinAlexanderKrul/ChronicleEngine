@@ -402,6 +402,8 @@ The engine must never silently replace established canon with newly generated co
 
 When a contradiction is discovered, it should be resolved explicitly before gameplay continues.
 
+This hierarchy is a **precedence** order — which source controls when sources conflict during play. It is not a **durability** order. The gameplay transcript outranks a ledger in flight because it reflects what just happened, but the transcript is volatile and does not persist. Durable canon lives only in the repository, reached through promotion. The two axes, and the promotion obligation that bridges them, are defined in `012_ENGINE_RUNTIME.md` (Sections 4–5) and Section 2.8.
+
 ---
 
 ## 2.2 Layers of Truth
@@ -617,7 +619,7 @@ Explicit rulings are agreed corrections, clarifications, or resolutions made dur
 
 They have the highest canon priority because they represent conscious agreement about how an ambiguity or contradiction is resolved.
 
-Rulings should be propagated into affected canonical ledgers when practical.
+Rulings must be promoted into affected canonical ledgers by the next promotion barrier — each save checkpoint, and session close. A ruling that governs canon must not remain recorded only in the transcript once a session closes. Promotion is defined in `012_ENGINE_RUNTIME.md` (Section 5).
 
 ---
 
@@ -628,6 +630,8 @@ The gameplay transcript records what actually occurred during play.
 It protects lived events from being overwritten by later summaries, ledgers, or interpretation.
 
 When a transcript and a later summary conflict, the transcript controls unless an explicit ruling changes it.
+
+The transcript is a precedence tier, not a durability tier. It is volatile and does not persist between sessions. Canon-bearing transcript events must be promoted into durable ledgers by the next promotion barrier; until promoted, they are a pending write, not preserved canon (`012_ENGINE_RUNTIME.md`, Section 5).
 
 ---
 

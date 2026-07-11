@@ -79,6 +79,7 @@ If you are new to the project, read the documents in the following order.
 2. engine/001_ENGINE_DECISIONS.md
 3. engine/002_ENGINE_ROADMAP.md
 4. engine/010_ENGINE_RULES.md
+5. engine/012_ENGINE_RUNTIME.md
 
 ---
 

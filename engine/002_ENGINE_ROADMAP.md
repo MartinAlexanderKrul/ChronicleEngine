@@ -2,22 +2,22 @@
 
 # Engine Roadmap
 
-**Engine Version:** 0.1.0  
+**Engine Version:** 0.1.1  
 **Status:** Active Development
 
 # Current Sprint
 
 Goal:
 
-Version 0.1 - Engine Foundation is complete. Awaiting direction on Version 0.2 - Knowledge & Civilization.
+Foundation Hardening — strengthen the engine's architecture before Version 0.2 gameplay systems begin.
 
 Current Task:
 
-None — awaiting scoping decision for Version 0.2
+Runtime Model (`012_ENGINE_RUNTIME.md`) is complete. Next: the Data Model (`011_ENGINE_DATA_MODEL.md`) — extract Persistent Entity and Canonical Record from the Rules, and define entity identity, relationships, and ledger schemas.
 
 Next Review:
 
-Version 0.2 - Knowledge & Civilization scoping, when initiated
+Data Model scoping, then Version 0.2 - Knowledge & Civilization scoping.
 
 ---
 
@@ -49,6 +49,27 @@ New systems should emerge from existing abstractions instead of introducing unre
 ---
 
 # Current Milestone
+
+## Foundation Hardening
+
+Status: **In Progress**
+
+A pre-0.2 milestone that strengthens the engine's architecture rather than adding gameplay systems. It arose from the Foundation Hardening architecture review, which found the runtime under-specified and identified missing data-model abstractions.
+
+### Completed
+
+- [x] Runtime Model — `012_ENGINE_RUNTIME.md`; Decision 041 (Runtime Model), Decision 042 (Durable Canon and Promotion Obligation)
+  - [x] Separated *what is true* (Rules) from *how the engine operates* (Runtime)
+  - [x] Defined the Runtime as substrate-independent, with the Interpreter as a component
+  - [x] Resolved the repository-vs-transcript canon contradiction via the precedence/durability split and mandatory Canon Promotion
+
+### Remaining
+
+- [ ] Data Model — `011_ENGINE_DATA_MODEL.md`: extract Persistent Entity (Rules §3.10) and Canonical Record Architecture (Rules §2.8) from the Rules; define stable entity identity, relationships, and schemas
+- [ ] Ledger templates — derived from the accepted Data Model, not before it
+- [ ] Terminology and doc-graph cleanup carried in Technical Debt (below)
+
+---
 
 ## Version 0.1 - Engine Foundation
 
@@ -404,8 +425,10 @@ Current architectural debt:
 
 - Remove remaining terminology drift.
 - Eliminate duplicated definitions through cross-references.
+- Reconcile the duplicated three-level simulation model: "World Simulation Levels" (Rules §1) and "World Simulation Layers" (Rules §3.3) define the same Active/Regional/Global model twice, with a "Levels"/"Layers" split.
+- Create or de-reference `003_DESIGN_PRINCIPLES.md`, referenced as an authority by the Manifest and README but not yet present.
 - Stabilize repository governance.
-- Reconcile canon hierarchy wording between Manifest, Decisions, and Rules.
+- Reconcile canon hierarchy wording between Manifest, Decisions, and Rules. *(Partially addressed by Decision 042: precedence vs. durability separated; promotion made mandatory.)*
 - Define version compatibility model.
 - Complete missing governance documents.
 

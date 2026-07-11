@@ -2,7 +2,7 @@
 
 ## Engine Manifest
 
-**Engine Version:** 0.1.0  
+**Engine Version:** 0.1.1  
 **Status:** Workshop Draft  
 **Project Type:** Persistent Historical Simulation Engine  
 **Simulation Model:** World-First  
@@ -56,6 +56,8 @@ ChronicleEngine/
 │   ├── 002_ENGINE_ROADMAP.md
 │   ├── 003_DESIGN_PRINCIPLES.md
 │   ├── 010_ENGINE_RULES.md
+│   ├── 011_ENGINE_DATA_MODEL.md   (reserved)
+│   ├── 012_ENGINE_RUNTIME.md
 │   ├── 020_ENGINE_GLOSSARY.md
 │   └── 030_ENGINE_CHANGELOG.md
 │
@@ -116,10 +118,20 @@ Contains:
 
 - engine philosophy,
 - immutable rules,
+- the data model (reserved: `011_ENGINE_DATA_MODEL.md`),
+- the runtime model (`012_ENGINE_RUNTIME.md`),
 - architectural decisions,
 - terminology,
 - roadmap,
 - version history.
+
+The Engine Layer separates three concerns that must not be conflated:
+
+- **`010_ENGINE_RULES.md`** defines *what is true* — the world model and simulation behavior.
+- **`011_ENGINE_DATA_MODEL.md`** (reserved) will define *how truth is structured* — Persistent Entity, Canonical Record, entity identity, relationships, and schemas.
+- **`012_ENGINE_RUNTIME.md`** defines *how the engine operates* — how a runtime loads, resolves, infers, mutates, promotes, and persists state.
+
+The Runtime is substrate-independent. Substrate-specific procedure lives in operational **Runtime Profiles** under `docs/`, not in the Engine Layer. The current large-language-model profile's session procedure is `docs/AI_SESSION_TEMPLATE.md`.
 
 The Engine Layer must remain independent of any specific setting.
 
@@ -253,7 +265,7 @@ Changes to one component should not require version changes to unrelated compone
 
 | Component | Version |
 |-----------|---------|
-| Engine | 0.1.0 |
+| Engine | 0.1.1 |
 | World | 0.9 |
 | Campaign | Not Created |
 | Save Format | 0.1.0 |
@@ -286,6 +298,8 @@ Current priority:
 This document defines the overall architecture of Chronicle Engine.
 
 Behavioral rules belong in **010_ENGINE_RULES.md**.
+
+Runtime behavior — how the engine is executed — belongs in **012_ENGINE_RUNTIME.md**.
 
 Architectural reasoning belongs in **001_ENGINE_DECISIONS.md**.
 

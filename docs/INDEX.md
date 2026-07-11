@@ -17,15 +17,16 @@ Every new session should begin by reading the files below before proposing chang
 6. engine/001_ENGINE_DECISIONS.md
 7. engine/002_ENGINE_ROADMAP.md
 8. engine/010_ENGINE_RULES.md
+9. engine/012_ENGINE_RUNTIME.md
 
 ### Reference
 
-9. engine/020_ENGINE_GLOSSARY.md
+10. engine/020_ENGINE_GLOSSARY.md
 
 ### Worlds
 
-10. worlds/asterra/200_WORLD_BIBLE.md
+11. worlds/asterra/200_WORLD_BIBLE.md
 
 ### Case Studies
 
-11. docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md
+12. docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md

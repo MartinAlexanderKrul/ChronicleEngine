@@ -220,7 +220,8 @@ The engine must:
 ## Decision 004 — Canon Hierarchy
 
 **Status:** Accepted  
-**Related Sections:** `010_ENGINE_RULES.md` — Section 2
+**Related Sections:** `010_ENGINE_RULES.md` — Section 2  
+**Refined by:** Decision 042 (the hierarchy is a precedence order, not a durability order)
 
 ### Context
 
@@ -1226,7 +1227,8 @@ Research depends on time, tools, evidence, capability, and institutional conditi
 ## Decision 032 - Canonical Record Architecture
 
 **Status:** Accepted  
-**Related Sections:** `010_ENGINE_RULES.md` - Sections 2 and 8
+**Related Sections:** `010_ENGINE_RULES.md` - Sections 2 and 8  
+**Refined by:** Decision 042 (mandatory promotion; transcript is a precedence tier, not a durability tier)
 
 ### Context
 
@@ -1786,6 +1788,94 @@ Future decisions and rules sections should add a changelog entry as part of the 
 - Recording only supersessions, per the Revision Policy's literal minimum. Rejected: would omit net-new decisions (034, 036) that were not supersessions, undercutting the Manifest's stated "version history" purpose for this file.
 - Starting the changelog empty from today. Rejected: produces a changelog with no coverage of the milestone it claims to close.
 - One entry per individual decision rather than per unit of work. Rejected: less scannable, and misaligned with how the Roadmap already reports progress.
+
+---
+
+## Decision 041 — Runtime Model
+
+**Status:** Accepted
+**Date:** 2026-07-11
+**Related Sections:** `012_ENGINE_RUNTIME.md`; `010_ENGINE_RULES.md` — Sections 2, 3, 4, 13; Decision 027; Decision 042
+
+### Context
+
+The engine specification defined *what is true* (the Engine Rules) but never defined *how the engine is executed*. Execution behavior — how the interpreter loads state, resolves canon, infers, mutates ledgers, and manages a session — was scattered implicitly across the Rules and `docs/AI_SESSION_TEMPLATE.md`, and much of it was written from the perspective of an AI executor. The Foundation Hardening architecture review found this to be the single most significant gap: the runtime is the most important component of the system, and it was the least specified. Because the executor is currently a large language model, there was also a risk of binding the specification permanently to that substrate.
+
+### Decision
+
+Introduce the **Runtime** as a first-class architectural concept, documented in a new engine-layer document, `012_ENGINE_RUNTIME.md`.
+
+The Runtime is the model by which Chronicle Engine is executed. It is defined as a substrate-independent abstraction: it may be realized by a large language model, a local model, a native application, or a dedicated server. The **Interpreter** is a replaceable component *within* the Runtime, not the Runtime itself.
+
+The Runtime is composed of components: Interpreter, Session, Context, Canon, Mutation, and Persistence. It sits in the execution chain `Player → Runtime → Engine → World → Campaign → History`, as the seam between the Player (actor) and the Engine (substance).
+
+The document is normative for runtime behavior. Substrate-specific procedure is delegated to operational **Runtime Profiles** under `docs/`; the current large-language-model profile's session procedure is `docs/AI_SESSION_TEMPLATE.md`. The document references, but does not restate, the Engine Rules and the data-model concepts they contain.
+
+`011_ENGINE_DATA_MODEL.md` is reserved for the engine's data-model concerns (Persistent Entity, Canonical Record, entity identity, Relationships, schemas). The Runtime uses those concepts; it does not define them. Ledger templates and stable entity identity are reassigned to that reserved document and deferred.
+
+### Rationale
+
+Separating *what is true* (Rules) from *how the engine operates* (Runtime) gives the project a clean, durable top-level cut that a new contributor can understand immediately. Defining the Runtime against a substrate-independent abstraction, with the Interpreter as a component, prevents the specification from being permanently coupled to LLM execution. Delegating substrate technique to Runtime Profiles keeps the normative core stable while allowing operational guidance to evolve. Reserving `011` for the data model completes the three-way separation — Rules define truth, the Data Model structures it, the Runtime operates on it — and gives the previously-identified missing entity-identity abstraction a proper home.
+
+### Consequences
+
+`012_ENGINE_RUNTIME.md` is created and added to the mandatory reading order and the Manifest's Engine Components.
+
+`docs/AI_SESSION_TEMPLATE.md` is reframed as the large-language-model Runtime Profile's session procedure.
+
+`011_ENGINE_DATA_MODEL.md` is reserved. Extracting Persistent Entity and Canonical Record from the Rules into that document, and defining entity identity and ledger schemas, becomes the next Foundation Hardening task. Ledger templates are deferred until the data model is accepted.
+
+Engine Version advances to 0.1.1, establishing the Foundation Hardening line ahead of Version 0.2 gameplay work.
+
+### Alternatives Considered
+
+- Fold the runtime model into `010_ENGINE_RULES.md` as a new section. Rejected: bloats an already-large file and blurs the *what is true* / *how it operates* separation.
+- Name the document an Interpreter or Execution contract. Rejected: "execution" is procedural and "interpreter" is substrate-specific; the artifact is the broader runtime specification, and the interpreter is one component of it.
+- Keep execution guidance operational-only, in `docs/`. Rejected: core execution obligations (grounding, promotion, canon-determinism, mutation constraints) are normative and engine-independent, and belong in the engine layer.
+
+---
+
+## Decision 042 — Durable Canon and Promotion Obligation
+
+**Status:** Accepted
+**Date:** 2026-07-11
+**Related Sections:** `012_ENGINE_RUNTIME.md` — Sections 4, 5, 6; `010_ENGINE_RULES.md` — Sections 2.1, 2.8; Decision 004; Decision 032
+
+### Context
+
+The repository contained a genuine architectural contradiction. `README.md` and `docs/PROJECT_CONTEXT.md` assert that the repository is the single source of truth and that conversation history is temporary. Yet the canon hierarchy (Rules Section 2.1, Decision 004) places the gameplay transcript above canonical ledgers. The transcript lives in the volatile session, not the repository. As stated, the highest-authority canon could exist only outside the repository, and could be lost at session end — contradicting the claim that the repository is authoritative. Rules Section 2.8 already directed that rulings "should be propagated into affected canonical ledgers when practical," but "when practical" was too weak to guarantee the repository actually held the canon.
+
+### Decision
+
+Separate two axes that the canon hierarchy conflated:
+
+- **Precedence** (in flight): when sources conflict *during play*, the canon hierarchy order controls. The transcript outranks a ledger because it reflects what just happened; the ledger may be stale. This order is unchanged.
+- **Durability** (at rest): the repository is the sole system of record *between sessions*. The transcript is not a durability tier; it does not persist.
+
+Reconcile the two axes with a mandatory **Promotion** obligation: canon-bearing transcript facts and explicit rulings must be written into durable ledgers, with provenance, by the next promotion barrier — each checkpoint, and session close. Until promoted, an in-session fact is a pending write, not preserved canon. After promotion, the ledger holds the fact and the transcript becomes historical evidence of how it was established.
+
+This tightens Rules Section 2.8's "propagate when practical" into a mandatory barrier and refines the framing of Section 2.1 and Decision 004 from a single order into two distinct axes bridged by promotion.
+
+### Rationale
+
+The contradiction dissolves once precedence and durability are recognized as different questions. "The repository is the single source of truth" is true at rest; "the transcript outranks ledgers" is true in flight; promotion is the bridge between them, analogous to flushing an uncommitted write to a durable store. Making promotion mandatory rather than best-effort is what actually guarantees the repository holds the canon it is claimed to hold.
+
+### Consequences
+
+Rules Section 2.1 gains a clarification that the hierarchy is a precedence order, not a durability order, with a pointer to the Runtime.
+
+Rules Section 2.8 is tightened: rulings and canon-bearing transcript events must be promoted by the next promotion barrier; the transcript is identified as a precedence tier, not a durability tier.
+
+Decision 004 and Decision 032 remain Accepted and are refined by this decision; they are cross-referenced accordingly rather than superseded, as their substance stands.
+
+The promotion barrier is defined operationally in `012_ENGINE_RUNTIME.md` (Session close and checkpoints) and aligns with the Save State Architecture (Rules Section 13).
+
+### Alternatives Considered
+
+- Demote the transcript below ledgers in the canon hierarchy. Rejected: the transcript legitimately outranks a stale ledger in flight; the problem was durability, not precedence.
+- Declare the repository authoritative and the transcript merely advisory. Rejected: would let a stale ledger override what just happened at the table.
+- Leave promotion best-effort ("when practical"). Rejected: this is exactly what allowed canon to live only in a volatile transcript.
+- Merge this into Decision 041. Rejected: the runtime model and the canon-durability refinement are distinct questions and are kept separately traceable.
 
 ---
 

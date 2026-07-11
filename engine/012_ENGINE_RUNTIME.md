@@ -1,0 +1,376 @@
+# Chronicle Engine
+
+## Engine Runtime
+
+**File:** `012_ENGINE_RUNTIME.md`
+**Status:** Workshop Draft
+**Engine Version:** 0.1.1
+**Layer:** Engine (000–099)
+
+---
+
+The Runtime is responsible for executing Chronicle Engine.
+
+The Runtime does not define the world.
+
+The Runtime applies the Engine Rules to the current repository state in order to advance the simulation.
+
+---
+
+# Purpose
+
+This document defines the **Runtime**: the model by which Chronicle Engine is executed.
+
+The Engine Rules (`010_ENGINE_RULES.md`) define *what is true*. This document defines *how the engine operates* on that truth. The two are deliberately separate documents so that the world model and the execution model may evolve independently.
+
+This document is **normative** for runtime behavior. It states obligations that any runtime must uphold. It delegates procedure — reading order, working-set heuristics, session report formats, substrate-specific technique — to operational **Runtime Profiles** (see Section 0.4).
+
+This document **references, but does not restate,** the Engine Rules and the data-model concepts they contain (Persistent Entity, Canonical Record, Relationships). Where it names such a concept, it names the concept and its current location. It never redefines it. When those concepts are later extracted into `011_ENGINE_DATA_MODEL.md`, the references in this document repoint without changing meaning.
+
+---
+
+# Position in the Engine
+
+Chronicle Engine is executed through the following chain:
+
+```text
+Player → Runtime → Engine → World → Campaign → History
+```
+
+The left of this chain is **actors**: the Player, and the Runtime that executes on the Player's behalf. The right of this chain is **substance**: the Engine Rules, the World that instantiates them, the Campaign played within that World, and the History it produces.
+
+The Runtime is the **seam** between the two. The Player never acts on the Engine, World, Campaign, or History directly. Every interaction passes through the Runtime, which applies the Engine Rules to the repository and returns the result.
+
+This is the execution view of the architecture. It complements, and does not replace, the data-dependency view defined in the Manifest (Engine → World → Campaign → Historical → Save).
+
+---
+
+# 0. The Runtime Model
+
+## 0.1 Substrate Independence
+
+A **Runtime** is any system capable of executing Chronicle Engine against a repository.
+
+The Runtime is defined as an abstraction, independent of the substrate that implements it. A Runtime may be realized by a large language model, a local model, a native application, or a dedicated server. The specification is written against the Runtime, never against a substrate.
+
+Any obligation that only makes sense for one substrate is not a Runtime obligation. It is substrate guidance and belongs in a Runtime Profile (Section 0.4), not in this document.
+
+---
+
+## 0.2 Runtime Invariants
+
+Every Runtime, on any substrate, must uphold four invariants. All later sections are elaborations of these.
+
+1. **Grounding.** All asserted state derives only from canon loaded from the repository. The Runtime does not treat memory of prior sessions, or unstated assumption, as canon.
+2. **No silent canon.** Nothing durable is authored without provenance. The Runtime never replaces established canon with newly generated content silently (Section 2.10 of the Rules).
+3. **Promotion.** Canon established during a session must reach the repository. In-session canon that has not been written to a durable ledger is not preserved (Section 5, Section 6).
+4. **Canon-determinism.** Given the same loaded canon, the same rules, and the same resolved die results, the Runtime produces state consistent with that canon and never contradicts it (Section 7).
+
+---
+
+## 0.3 Runtime Components
+
+The Runtime is composed of the following components. This document is organized around them.
+
+```text
+Runtime
+  ├─ Interpreter    the active execution agent
+  ├─ Session        the bounded unit of execution
+  ├─ Context        the loaded working set
+  ├─ Canon          resolution: lookup and precedence (read side)
+  ├─ Mutation       state writes and promotion (write side)
+  └─ Persistence    the durable repository (system of record)
+```
+
+The Interpreter executes within a Session. The Session loads a Context. The Interpreter resolves facts through Canon and produces changes through Mutation. Mutation writes to Persistence. No component holds durable state except Persistence.
+
+The Interpreter is a **replaceable component**. In the current era it is realized by a large language model. The Interpreter's obligations are defined so that a different implementation could satisfy the same contract without changing the rest of the model.
+
+---
+
+## 0.4 Runtime Profiles
+
+A **Runtime Profile** is operational guidance for executing the Runtime on a specific substrate.
+
+Profiles are not part of this normative document. They live in `docs/` and may evolve freely. A profile specifies technique — how a given substrate boots, budgets its working memory, sequences its reads, and formats its reports — without altering any obligation defined here.
+
+The current profile is the large-language-model profile. Its session procedure is defined in `docs/AI_SESSION_TEMPLATE.md`. A future native or server Runtime would ship its own profile without modifying this document.
+
+---
+
+## 0.5 Relationship to the Data Model
+
+The Runtime operates on data whose structure is defined by the engine's data-model concepts: the Persistent Entity (Rules Section 3.10), the Canonical Record Architecture (Rules Section 2.8), and Relationships (Rules Section 3.10, Section 5.6).
+
+The Runtime **uses** these concepts. It does not define them. It does not define entity identifiers, ledger schemas, or record formats. Those are data-model concerns, reserved for `011_ENGINE_DATA_MODEL.md`.
+
+Until that document exists, these concepts live within the Engine Rules, and this document references them there. Ledger templates and stable entity identity derive from the data model and are out of scope here.
+
+---
+
+# 1. Interpreter
+
+The Interpreter is the active execution agent: the component that reads Player intent, resolves actions, applies the Engine Rules, and decides what changes to record.
+
+The Interpreter authors and reads canon. It does not own canon. Canon is owned by the repository (Section 6).
+
+## 1.1 Interpreter Responsibilities
+
+The Interpreter must:
+
+- execute faithfully within the Engine Laws and Rules,
+- ground every asserted fact in loaded canon (Invariant 1),
+- surface uncertainty rather than conceal it,
+- never author durable canon without provenance (Invariant 2),
+- respect the boundary between what it may infer and what it must not (Section 1.2).
+
+## 1.2 Interpreter Modes
+
+The Interpreter operates in one of two modes, and must not confuse them.
+
+- **Interpreter mode** executes a world and campaign: it advances the simulation. This document governs Interpreter mode.
+- **Architect mode** develops the engine itself: it edits the specification. Architect mode is governed by `docs/PROJECT_CONTEXT.md` and the development workflow, not by this document.
+
+The mode determines what the Runtime is permitted to change. In Interpreter mode, the Runtime changes world, campaign, and historical state. It does not change engine rules.
+
+## 1.3 Inference Boundaries
+
+The Interpreter fills gaps by inference, within limits.
+
+The Interpreter **may** generate detail that is not yet established, when that detail is consistent with existing canon. Such detail enters at the lowest tier of the canon hierarchy ("newly generated information," Rules Section 2.1).
+
+The Interpreter **must not**:
+
+- contradict any higher-tier canon (Rules Section 2.10),
+- silently elevate inference to established fact.
+
+Inferred detail is **provisional**. It carries no durability until it is either promoted (Section 5) or discarded. Provisional detail that is never promoted does not survive the session.
+
+## 1.4 Ambiguity Handling
+
+When canon does not settle a question, the Interpreter first classifies the ambiguity, because the two classes resolve oppositely.
+
+- **Unknown in-world.** The world has not revealed the fact. The Interpreter resolves this through Discovery (Rules Section 2.5, Law VI) or preserves the uncertainty deliberately (Rules Section 3.10). It does not force a clean answer.
+- **Unspecified by the engine.** The rules do not cover the situation. The Interpreter resolves this by inference within Section 1.3. If the gap is material and inference is unsafe, the Interpreter requests an explicit ruling rather than guessing.
+
+## 1.5 Action Resolution Responsibilities
+
+When resolving an action, the Interpreter applies Action Resolution (Rules Section 4). This document does not restate that procedure. It states the Interpreter's obligations in applying it:
+
+- determine whether uncertainty exists before invoking resolution (Rules Section 4.2),
+- honor Intent Before Method (Rules Section 4.0),
+- respect the die: a resolved roll and its result band are not re-rolled or reinterpreted to fit a preferred narrative (Law VII — Fairness),
+- record the consequences through Mutation (Section 5).
+
+---
+
+# 2. Session
+
+A **Session** is a bounded unit of execution. It has a start and a close, and it is the boundary at which durable canon is committed.
+
+No canon is durable merely because it exists within a Session. A Session is transient. Durability is a property of Persistence (Section 6), reached through Promotion (Section 5).
+
+## 2.1 Session Start
+
+At the start of a Session, before advancing the simulation, the Interpreter must establish current durable state from the repository. This is the grounding obligation (Invariant 1) applied to session boundaries.
+
+The Interpreter reads the current state from Persistence and loads the Context it needs (Section 3). It does not resume from memory of a prior session.
+
+The operational procedure for session start — which files to read, in what order — is defined by the active Runtime Profile.
+
+## 2.2 Session Close
+
+At the close of a Session, the Interpreter must execute the **promotion barrier**: all canon established during the Session that has not yet been written to a durable ledger is promoted (Section 5).
+
+The promotion barrier is mandatory. A Session must not close leaving canon-bearing facts recorded only in the transcript.
+
+Checkpoints (Rules Section 13.2) are additional promotion barriers within a Session.
+
+The operational procedure for session close — including the session report — is defined by the active Runtime Profile.
+
+---
+
+# 3. Context
+
+The **Context** is the working set: the canon a Runtime has loaded and can currently operate on. It is the Runtime's working memory.
+
+The Context is not canon. It is a loaded view of canon. Canon is owned by Persistence (Section 6).
+
+## 3.1 The Working Set
+
+A Runtime does not load the entire repository to act. It loads a **working set**: the canon relevant to the current situation.
+
+The working set is assembled from:
+
+- a **boot set** — the engine documents and top-level state required to establish grounding, and
+- **scope-responsible ledgers** — the ledgers that own the facts currently in play (Rules Section 2.8).
+
+Which ledgers to load, and how much, is guided by Simulation Priority (Rules Section 3.12): the same relevance that governs how much of the world is simulated also governs how much is loaded into Context. The save manifest (Rules Section 13.3) identifies what is relevant on restoration.
+
+The specific loading strategy is operational and defined by the active Runtime Profile.
+
+## 3.2 Minimal and Missing Context
+
+The Runtime must distinguish two situations that look alike but resolve oppositely.
+
+- **Not loaded.** The canon exists in the repository but is not in the current Context. The Runtime loads the scope-responsible ledger, or requests it. It must not fabricate durable canon to cover the gap.
+- **Not established.** The canon does not exist. The Runtime treats this as ambiguity (Section 1.4): it may infer within boundaries, or preserve the uncertainty.
+
+Under context pressure, when a required ledger cannot be loaded, the Runtime may operate **provisionally**, but must flag its output as ungrounded and pending reconciliation. Provisional output must not be promoted as established canon until it is grounded.
+
+---
+
+# 4. Canon
+
+The **Canon** component is the read side of resolution: how the Runtime determines what is true. It applies the canon rules defined in Rules Section 2. This document does not restate them.
+
+## 4.1 Canon Lookup
+
+To resolve a fact, the Runtime:
+
+1. identifies the fact required,
+2. identifies the **scope-responsible ledger** that owns it (Rules Section 2.8),
+3. applies the canon hierarchy (Rules Section 2.1) only when sources conflict,
+4. if the fact is absent, hands off to inference boundaries (Section 1.3).
+
+Scope determines *which record owns a fact*. Precedence determines *which record wins when records disagree*. These are distinct questions and must not be conflated.
+
+## 4.2 Precedence and Durability Are Distinct
+
+The canon hierarchy (Rules Section 2.1) orders sources by **precedence**: which source controls when sources conflict *during play*. By that order, an explicit ruling or the gameplay transcript outranks a canonical ledger, because it reflects what was just agreed or what just happened, and the ledger may be stale.
+
+Precedence is not durability.
+
+**Durability** is a separate axis: which record is authoritative *between sessions*. On that axis, the repository is the sole system of record. The transcript is not a durability tier. It is volatile, and it does not persist.
+
+These two axes are reconciled by Promotion (Section 5). A high-precedence transcript fact governs play in flight, and becomes durable canon only when promoted into a ledger. Until then it is a pending write, not preserved canon.
+
+This resolves the apparent conflict between "the repository is the single source of truth" and the canon hierarchy placing the transcript above ledgers. The first statement is true at rest. The second is true in flight. Promotion is the bridge.
+
+---
+
+# 5. Mutation
+
+The **Mutation** component is the write side: how the Runtime changes canon. Mutation is the only path by which state becomes durable.
+
+## 5.1 The Write Path
+
+When an event changes state, the Runtime:
+
+1. determines the affected ledgers by scope (Rules Section 2.8),
+2. writes the change with **provenance** — its source, its scope, the time of the represented event, the time of the record update, and any unresolved uncertainty (Rules Section 2.8, Record Updates and Provenance),
+3. does not overwrite higher-tier canon silently (Rules Section 2.10).
+
+## 5.2 Mutation Constraints
+
+- **Causality.** A mutation must have a cause (Law II). State does not appear or disappear without an identifiable reason (Rules Section 7.11).
+- **Immutability.** Records defined as immutable must not be mutated: save checkpoints (Rules Section 13.2) and superseded decisions (`001_ENGINE_DECISIONS.md`, Revision Policy).
+- **Consistency.** A mutation must leave canon cross-reference-consistent. It must not leave a relationship, succession, or reference pointing at a record it did not also update.
+
+## 5.3 Promotion
+
+**Canon Promotion** — referred to as *promotion* throughout this document — is the mandatory act of writing in-session canon (explicit rulings and canon-bearing transcript events) into durable ledgers, with provenance.
+
+This is distinct from **Persistent Entity Promotion** (Rules Section 3.10), which elevates an aggregated subject to independent entity status. Both elevate something to a more durable standing, but they are different mechanics on different subjects and must not be conflated.
+
+Promotion occurs:
+
+- at each checkpoint,
+- at session close (the promotion barrier, Section 2.2),
+- opportunistically, when an in-session fact becomes load-bearing for continued play.
+
+What must be promoted is canon: facts that establish or change state. What need not be promoted is narrative color that establishes no canon.
+
+Before promotion, a transcript fact is a **pending write**. After promotion, the ledger holds the fact — with provenance pointing at the ruling or transcript that established it — and the transcript becomes historical evidence of how that canon was established, not the canon itself.
+
+Promotion is the mechanism that satisfies Invariant 3 and reconciles the precedence and durability axes (Section 4.2).
+
+---
+
+# 6. Persistence
+
+**Persistence** is the durable substrate: the repository and everything version-controlled within it.
+
+The repository is the sole system of record. All durable canon lives here. A fact that is not in the repository, after a promotion barrier, is not preserved.
+
+## 6.1 Persistence and Saves
+
+A save is an immutable checkpoint of canonical ledgers (Rules Section 13). Persistence aligns with the Save State Architecture:
+
+- checkpoints are immutable once written (Rules Section 13.2),
+- the save manifest carries metadata only, not duplicated ledger content (Rules Section 13.3),
+- restoration reads from Persistence to reconstruct Context (Section 3), following Rules Section 13.4.
+
+## 6.2 Version Compatibility
+
+Persistence records Engine, World, Campaign, and Save Format versions (Rules Section 13.5). The Runtime surfaces version mismatches explicitly on restoration. This document defines no automatic migration; reconciling a mismatch is handled explicitly when it arises (Rules Section 13.6).
+
+---
+
+# 7. Determinism and Reproducibility
+
+The Runtime provides **canon-determinism**, not output-determinism.
+
+- **Required — canon-determinism.** Given the same loaded canon, the same rules, and the same resolved die results, the Runtime produces state consistent with that canon and never contradicts established facts. Replaying from the same ledgers and the same rulings reproduces the same canonical state.
+- **Not required, and not achievable — output-determinism.** The exact prose of narration, and the exact inference of detail the engine leaves unspecified, may vary between runs. This variation is expected and is not a defect.
+
+Randomness in the simulation is owned by the die (Rules Section 4.5), not by Interpreter judgment. The Interpreter must not substitute its own preference for a resolved roll.
+
+Reproducibility is anchored to the repository, not to the substrate. Two different substrates executing the same repository must reach the same canonical state, even though their narration differs.
+
+---
+
+# 8. Error and Contradiction Handling
+
+The Runtime detects, classifies, and resolves contradictions rather than proceeding past them. It applies Rules Section 2.9. This document states the Runtime's obligations in doing so.
+
+## 8.1 Procedure
+
+1. **Detect and pause.** Pause affected resolution when a contradiction is found (Rules Section 2.9).
+2. **Classify.** Determine the kind of error:
+   - a transcription or recording error,
+   - a genuine conflict between canon sources,
+   - an engine gap (unspecified situation, Section 1.4),
+   - a load or version error (Section 8.2).
+3. **Resolve** by precedence (Section 4), for canon conflicts.
+4. **Record** the resolution with provenance (Section 5.1).
+5. **Escalate** when unresolvable: surface the contradiction and request a ruling. The Runtime does not proceed on a guess.
+
+## 8.2 Execution-Specific Errors
+
+Beyond canon conflicts, the Runtime handles errors arising from execution itself:
+
+- **Missing ledger** — a scope-responsible ledger does not exist. Treat as Section 3.2 (not loaded vs. not established).
+- **Stale load** — the Context no longer reflects Persistence. Reload before asserting.
+- **Broken cross-reference** — a record points at a record that does not exist. Flag and resolve; do not silently repair by invention.
+- **Version mismatch** — recorded versions differ from current versions (Section 6.2). Surface explicitly on restoration.
+
+---
+
+# Runtime Execution Summary
+
+When executing Chronicle Engine, the Runtime:
+
+1. Establishes grounding from Persistence at session start (Section 2.1).
+2. Loads a working set into Context, guided by Simulation Priority and the save manifest (Section 3).
+3. Resolves facts through Canon, distinguishing scope from precedence (Section 4).
+4. Infers only within boundaries, holding inference provisional (Section 1.3).
+5. Applies Action Resolution faithfully, respecting the die (Section 1.5).
+6. Records changes through Mutation, with provenance and consistency (Section 5).
+7. Promotes in-session canon to durable ledgers at every promotion barrier (Section 5.3).
+8. Detects and resolves contradictions rather than proceeding past them (Section 8).
+9. Commits all pending canon to Persistence at session close (Section 2.2).
+
+---
+
+# Document Authority
+
+This document defines the Runtime: how Chronicle Engine is executed.
+
+It is normative for runtime behavior and subordinate to the Engine Rules where they overlap. If this document conflicts with the Engine Rules, the Engine Rules take precedence until the discrepancy is resolved through the formal revision process.
+
+It references the Engine Rules and the data-model concepts they contain. It does not restate or redefine them.
+
+Operational procedure and substrate-specific technique belong in Runtime Profiles under `docs/`, not in this document.
+
+The architectural reasoning behind this document is recorded in `001_ENGINE_DECISIONS.md`, Decision 041 (Runtime Model) and Decision 042 (Durable Canon and Promotion Obligation).

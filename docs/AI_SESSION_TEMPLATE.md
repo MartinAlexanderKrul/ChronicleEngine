@@ -2,8 +2,9 @@
 
 # AI Development Session Template
 
-**Document Version:** 1.0  
-**Status:** Active Development Workflow
+**Document Version:** 1.1  
+**Status:** Active Development Workflow  
+**Runtime Profile:** Large Language Model
 
 ---
 
@@ -14,6 +15,8 @@ This document defines the standard workflow for every Chronicle Engine developme
 It exists to ensure that development remains consistent, architecture-first, and aligned with the long-term vision of the project.
 
 This is **not** part of the engine specification.
+
+This document is also the **large-language-model Runtime Profile**: the operational session procedure for executing Chronicle Engine on an LLM substrate. The normative runtime model it operationalizes is defined in `engine/012_ENGINE_RUNTIME.md`. Where this document specifies technique — reading order, what to load, how to open and close a session — it is implementing that runtime model for this substrate. Runtime obligations (grounding, promotion, canon-determinism) are normative and defined in `012_ENGINE_RUNTIME.md`; this document must not contradict them.
 
 ---
 
@@ -60,6 +63,7 @@ At the beginning of every new session, read these files first in this exact orde
 6. `engine/001_ENGINE_DECISIONS.md`
 7. `engine/002_ENGINE_ROADMAP.md`
 8. `engine/010_ENGINE_RULES.md`
+9. `engine/012_ENGINE_RUNTIME.md`
 
 Do not recommend architecture changes or implementation work until this reading pass is complete.
 
@@ -103,6 +107,7 @@ Review:
 - 001_ENGINE_DECISIONS.md
 - 002_ENGINE_ROADMAP.md
 - 010_ENGINE_RULES.md
+- 012_ENGINE_RUNTIME.md
 
 When relevant also review:
 

@@ -8,6 +8,20 @@
 
 ---
 
+# Version 0.1.1 (Foundation Hardening)
+
+## 2026-07-11 — Runtime Model
+
+**Decisions:** Added Decision 041 (Runtime Model); Decision 042 (Durable Canon and Promotion Obligation), refining Decision 004 and Decision 032
+**Rules:** Clarified Section 2.1 (canon hierarchy is a precedence order, not a durability order); tightened Section 2.8 (mandatory Canon Promotion; transcript is a precedence tier, not a durability tier)
+**Files:** Created `012_ENGINE_RUNTIME.md`
+**Manifest:** Added `012_ENGINE_RUNTIME.md` and reserved `011_ENGINE_DATA_MODEL.md` to Engine Components and the repository tree; described the Rules / Data Model / Runtime separation and Runtime Profiles; Engine Version set to 0.1.1
+**Glossary:** Added Runtime, Runtime Profile, Interpreter, Session, Context, Working Set, Canon, Mutation, Persistence, Durable Canon, Pending Canon, Canon Promotion, Canon-Determinism, Substrate; disambiguated Promotion
+**Docs:** Reframed `docs/AI_SESSION_TEMPLATE.md` as the large-language-model Runtime Profile; added `012` to mandatory reading order in README, INDEX, DEVELOPMENT_WORKFLOW, AI_SESSION_TEMPLATE
+**Roadmap:** Opened the Foundation Hardening milestone; Runtime Model complete; Data Model reserved as the next task
+
+---
+
 # Version 0.1.0 (Workshop Draft)
 
 ## 2026-07-11 — Engine Changelog

@@ -110,6 +110,22 @@ It prevents authoritative state, in-world evidence, retrospective interpretation
 
 ---
 
+## Canon Promotion
+
+The runtime act of writing in-session canon — explicit rulings and canon-bearing gameplay-transcript events — into durable ledgers, with provenance, so that it persists in the repository.
+
+Canon Promotion occurs at every promotion barrier: each save checkpoint, and session close. Until promoted, in-session canon is Pending Canon, not Durable Canon. This is distinct from Persistent Entity Promotion (see Promotion). Defined in `012_ENGINE_RUNTIME.md`, Section 5.
+
+---
+
+## Canon-Determinism
+
+The reproducibility standard the Runtime provides: given the same loaded canon, the same rules, and the same resolved die results, the Runtime produces state consistent with that canon and never contradicts it.
+
+Canon-determinism is distinct from output-determinism; exact narration and detail the engine leaves unspecified may vary between runs. Reproducibility is anchored to the repository, not the substrate. Defined in `012_ENGINE_RUNTIME.md`, Section 7.
+
+---
+
 ## Capability
 
 A demonstrated area of practical competence.
@@ -160,6 +176,14 @@ Contradictions must be identified and resolved explicitly rather than ignored.
 
 ---
 
+## Context
+
+A Runtime component: the working set of canon currently loaded and available for execution. The Context is a loaded view of canon, not canon itself; durable canon is owned by Persistence.
+
+See Working Set. Defined in `012_ENGINE_RUNTIME.md`, Section 3.
+
+---
+
 ## Design Retrospective
 
 A non-canonical document explaining how earlier projects, campaigns, or failures influenced Chronicle Engine architecture.
@@ -183,6 +207,14 @@ The process by which previously unknown information becomes known through intera
 Discovery changes knowledge state.
 
 It does not retroactively change objective reality.
+
+---
+
+## Durable Canon
+
+Canon that persists between sessions because it has been written to the repository.
+
+Durability is distinct from precedence: the repository is the sole system of record at rest, while the gameplay transcript may hold higher precedence in flight until promoted. See Canon Promotion, Pending Canon. Defined in `012_ENGINE_RUNTIME.md`, Sections 4–6.
 
 ---
 
@@ -348,6 +380,14 @@ Intent is evaluated before method during action resolution.
 
 ---
 
+## Interpreter
+
+The Runtime component that actively executes the simulation: it reads Player intent, resolves actions, applies the Engine Rules, and decides what changes to record.
+
+The Interpreter is a replaceable component of the Runtime, currently realized by a large language model. It authors and reads canon but does not own it; canon is owned by the repository. Defined in `012_ENGINE_RUNTIME.md`, Section 1.
+
+---
+
 ## Kingdom
 
 See Settlement.
@@ -434,6 +474,14 @@ A military force that has not been promoted to this status remains part of its p
 
 ---
 
+## Mutation
+
+The Runtime component and act by which state is changed and made durable: writing a change to the scope-responsible ledgers with provenance, under causality and consistency constraints.
+
+Mutation is the only path by which state becomes durable canon. Defined in `012_ENGINE_RUNTIME.md`, Section 5.
+
+---
+
 ## Observation
 
 The initial noticing, recording, or recognition of a phenomenon, pattern, event, or anomaly.
@@ -488,6 +536,22 @@ Ownership is distinct from possession.
 
 ---
 
+## Pending Canon
+
+An in-session fact — a ruling or canon-bearing gameplay-transcript event — that has not yet been promoted into a durable ledger.
+
+Pending canon governs play in flight but is not preserved until promoted by the next promotion barrier. See Canon Promotion, Durable Canon. Defined in `012_ENGINE_RUNTIME.md`, Section 5.
+
+---
+
+## Persistence
+
+The Runtime component representing the durable substrate: the version-controlled repository, which is the sole system of record for canon at rest.
+
+Save checkpoints are immutable captures of Persistence. Defined in `012_ENGINE_RUNTIME.md`, Section 6.
+
+---
+
 ## Persistent Entity
 
 A meaningfully evolving thing whose identity continues across time and whose state can change through simulation.
@@ -519,6 +583,8 @@ It is usually assigned to the player character's immediate environment and other
 The process by which a generic, aggregated, or campaign-scoped subject gains independent Persistent Entity status, or is elevated to world-layer record responsibility, because its continued individual identity has become historically, mechanically, or narratively significant.
 
 Promotion does not require deleting or renaming the subject's prior record; it extends record responsibility rather than replacing it.
+
+This is *Persistent Entity Promotion*. It is distinct from **Canon Promotion**, the runtime act of writing in-session canon into durable ledgers. The two are different mechanics on different subjects.
 
 ---
 
@@ -588,6 +654,22 @@ Resources include property, equipment, consumables, wealth, knowledge assets, an
 
 ---
 
+## Runtime
+
+The model by which Chronicle Engine is executed: any system capable of applying the Engine Rules to the current repository state in order to advance the simulation.
+
+The Runtime is substrate-independent — it may be realized by a large language model, a local model, a native application, or a dedicated server — and is composed of the Interpreter, Session, Context, Canon, Mutation, and Persistence components. In the execution chain `Player → Runtime → Engine → World → Campaign → History`, it is the seam between the Player and the Engine. Defined in `012_ENGINE_RUNTIME.md`.
+
+---
+
+## Runtime Profile
+
+Operational guidance for executing the Runtime on a specific substrate, held under `docs/` rather than in the engine specification.
+
+A profile specifies technique — how a substrate boots, loads, and sequences a session — without altering runtime obligations. The current large-language-model profile's session procedure is `docs/AI_SESSION_TEMPLATE.md`. Defined in `012_ENGINE_RUNTIME.md`, Section 0.4.
+
+---
+
 ## Save Checkpoint
 
 A campaign-scoped, immutable copy of a campaign's canonical Markdown ledgers as they stood at a specific moment, accompanied by a Save Manifest.
@@ -622,6 +704,14 @@ It includes self-conception such as fears, ambitions, ideals, beliefs, and perce
 
 ---
 
+## Session
+
+A Runtime component: a bounded unit of execution with a start and a close.
+
+A Session is transient and holds no durable canon; it is the boundary at which pending canon is committed to Persistence through Canon Promotion. Session close and save checkpoints are promotion barriers. Defined in `012_ENGINE_RUNTIME.md`, Section 2.
+
+---
+
 ## Session Summary
 
 A retrospective summary of play that may preserve useful information but does not outrank higher-priority canonical records.
@@ -637,6 +727,14 @@ A Persistent Entity Type representing territory and population continuity, disti
 A settlement's current state includes territorial extent, an aggregate population figure, and prevailing conditions such as prosperity or unrest, tracked qualitatively.
 
 Also called a Kingdom when its scope is a sovereign or quasi-sovereign territory.
+
+---
+
+## Substrate
+
+The underlying system that realizes a Runtime — for example a large language model, a local model, a native application, or a dedicated server.
+
+The engine specification is written against the Runtime abstraction, never against a substrate; substrate-specific guidance lives in Runtime Profiles. Defined in `012_ENGINE_RUNTIME.md`, Section 0.1.
 
 ---
 
@@ -707,6 +805,14 @@ A treaty's existence and text may be canon; its claims do not override the canon
 The process by which a claim, theory, method, or discovery is sufficiently supported to be treated as reliable within a given context.
 
 Validation may remain local, contested, conditional, or later overturned.
+
+---
+
+## Working Set
+
+The subset of repository canon a Runtime loads to execute the current situation: a boot set for grounding, plus the scope-responsible ledgers in play.
+
+The working set is assembled by relevance — guided by Simulation Priority and the save manifest — rather than by loading the entire repository. See Context. Defined in `012_ENGINE_RUNTIME.md`, Section 3.
 
 ---
 

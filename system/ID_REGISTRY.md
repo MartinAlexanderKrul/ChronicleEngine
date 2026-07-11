@@ -24,10 +24,23 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | none |
-| Record | `REC-` | Canonical Record | none |
-| Event | `EVT-` | Event | none |
-| Relationship | `REL-` | Relationship | none |
+| Entity | `ENT-` | Persistent Entity | ENT-000017 |
+| Record | `REC-` | Canonical Record | REC-000008 |
+| Event | `EVT-` | Event | EVT-000007 |
+| Relationship | `REL-` | Relationship | REL-000015 |
+
+---
+
+# Allocation Log
+
+Allocations are recorded per unit of work for traceability. The high-water marks above are the authoritative counters; this log explains what consumed each range.
+
+| Range | Kind | Consumed by |
+|-------|------|-------------|
+| ENT-000001 – ENT-000017 | Entity | Prototype world Verra (`worlds/verra/`): 2 places, 3 institutions, 6 figures, 3 Knowledge Subjects, 3 resources |
+| REC-000001 – REC-000008 | Record | Verra ledgers: places, notable figures, knowledge subjects, resources, three institution ledgers, seed events |
+| EVT-000001 – EVT-000007 | Event | Verra seed events: four foundings, fever validation, fever condemnation, rivermason decline |
+| REL-000001 – REL-000015 | Relationship | Verra: 9 Knowledge States, 1 governance, 5 membership |
 
 ---
 

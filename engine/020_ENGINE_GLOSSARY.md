@@ -74,11 +74,19 @@ Automatic execution is distinct from a Player Decision Point: it does not requir
 
 ---
 
+## Beat Budget
+
+The interaction-cadence rule that each Runtime response normally consumes one Player Intent and ends at the next Player Decision Point, may contain any number of involuntary world reactions, and must not consume more than one player opportunity.
+
+The Beat Budget is the operative expression of the governing agency rule and is cleaner than any word limit. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
+
+---
+
 ## Cadence Mode
 
-One of the four interaction-pacing modes the Gameplay Runtime Profile selects by the density of meaningful player choices and by uncertainty: Beat, Scene, Transition, and Montage, coarsening as agency thins.
+One of the four interaction-pacing modes the Gameplay Runtime Profile selects by temporal compression and uncertainty: Beat, Scene, Transition, and Montage, coarsening as more world and time are compressed into one response.
 
-Cadence modes are operational profile guidance, not an engine mechanic. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
+Cadence modes govern temporal compression paired with high Narrative Richness; they do not change the Beat Budget, and every mode resolves at exactly one Player Decision Point. Operational profile guidance, not an engine mechanic. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
 
 ---
 
@@ -213,6 +221,14 @@ Contradictions must be identified and resolved explicitly rather than ignored.
 A Runtime component: the working set of canon currently loaded and available for execution. The Context is a loaded view of canon, not canon itself; durable canon is owned by Persistence.
 
 See Working Set. Defined in `012_ENGINE_RUNTIME.md`, Section 3.
+
+---
+
+## Decision Density
+
+The number of player opportunities a Runtime response consumes.
+
+Decision Density should remain low — ideally one per response — and is independent of Narrative Richness, which should remain high. Conflating the two is the cadence failure the Beat Budget corrects. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
 
 ---
 
@@ -468,6 +484,14 @@ The Interpreter is a replaceable component of the Runtime, currently realized by
 
 ---
 
+## Involuntary World Reaction
+
+Something the world or its NPCs do that requires no player choice — a passer-by's greeting, bells ringing, an NPC continuing their own activity.
+
+Involuntary world reactions are unlimited within a Runtime response and are what make a beat feel alive; they are distinct from a player opportunity, of which a response resolves at most one. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence).
+
+---
+
 ## Kingdom
 
 See Settlement.
@@ -618,6 +642,14 @@ Narrative momentum keeps play from fragmenting into per-sentence stops while sti
 
 ---
 
+## Narrative Richness
+
+The sensory and characterful detail within the current beat — smells, sounds, architecture, expressions, NPC voice — which the Runtime should keep high.
+
+Narrative Richness is independent of Decision Density: a response may be maximally rich while consuming exactly one player opportunity. Rich description enriches the current beat; it is not a licence to advance the story. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
+
+---
+
 ## Object Block
 
 The single on-page representation of a persistent object: a fenced YAML block inside Markdown.
@@ -700,7 +732,7 @@ Its universal fields — identifier, the one authoritative Canonical Record, pro
 
 A juncture at which a decision within the Player Intent Domain could materially change the direction, stakes, or outcome of the simulation, and at which the Runtime must yield control to the player.
 
-A juncture is not a Player Decision Point merely because an NPC spoke or the character moved; it is one when the player's choice could meaningfully change the simulation. Defined in `012_ENGINE_RUNTIME.md`, Section 1.6, and operationalized in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`.
+Most basically, a Player Decision Point is reached when the declared intent has been carried to completion and continuing would require a new intent the player has not given — even when the next step seems obvious, because plausible is not the same as chosen. A juncture is not a Player Decision Point merely because an NPC spoke or the character moved. Defined in `012_ENGINE_RUNTIME.md`, Section 1.6, and operationalized in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`.
 
 ---
 
@@ -709,6 +741,14 @@ A juncture is not a Player Decision Point merely because an NPC spoke or the cha
 The set of volitional decisions authored only by the player: whether and how the character acts, what the character says, and whether the character trusts, consents, discloses, or refuses.
 
 Only the player may author intent within this domain; the Runtime resolves its consequences but never authors the intent itself. A declared intent is not yet canon — canon is the resolved outcome the simulation produces from it. Defined in `012_ENGINE_RUNTIME.md`, Section 1.6; see Decision 050.
+
+---
+
+## Player Opportunity
+
+Any point where the player would reasonably expect to choose, ask, or redirect what the character does — whether momentous or minor.
+
+A Runtime response resolves at most one player opportunity, the one at which it yields, in contrast to involuntary world reactions, which are unlimited. Player opportunities are broader than materially consequential decisions: asking about the town or detouring to a library counts. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
 
 ---
 

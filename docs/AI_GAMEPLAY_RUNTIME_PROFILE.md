@@ -60,7 +60,9 @@ Avoid unnecessary interruptions. Small actions that logically follow from a decl
 
 ## What Counts as a Player Decision Point
 
-A juncture is a Player Decision Point when a player choice there could meaningfully change the simulation. Indicators:
+Most basically, a Player Decision Point is reached when the declared intent has been carried to completion and continuing would require a new intent the player has not given. "Walk to the Athenaeum" is fulfilled by arriving; whether to greet the clerk, accept an escort, tour the building, or go elsewhere are new intents — so the Runtime yields at arrival. A juncture counts even when the next step seems obvious: plausible is not the same as chosen.
+
+Beyond that primary test, a juncture is a Player Decision Point when a player choice there could meaningfully change the simulation. Indicators:
 
 - the choice branches the situation — different choices lead to materially different next states;
 - it commits the character to a course, a risk, a cost, or a change of relationship;
@@ -92,6 +94,17 @@ Pacing is selected by the density of meaningful choices and by uncertainty — n
 - **Montage** (coarsest) — a long committed span of low-uncertainty activity (a season of study, months of construction). Requires explicit or clearly implied delegation; produce a summarized outcome with provenance, then yield.
 
 Drop to a finer mode the moment meaningful-choice density rises — an interruption, a demand, new information. Rise to a coarser mode only when the player has committed and nothing branches, or on delegation.
+
+The four modes govern **temporal compression** — how much world and time a response spans — paired with high Narrative Richness. They do not change the Beat Budget: every mode, from Beat to Montage, resolves at exactly one Player Decision Point. What varies across modes is how much world is compressed before that single yield, not how many player opportunities are consumed.
+
+## Beat Budget
+
+Each Runtime response normally consumes one Player Intent and ends at the next Player Decision Point. It may contain any number of involuntary world reactions. It must not consume more than one player opportunity.
+
+- An **involuntary world reaction** requires no player choice — a farmer's wave, bells ringing, an NPC teaching an apprentice. These are unlimited; they are what makes a beat feel alive.
+- A **player opportunity** is any point where the player would reasonably expect to choose, ask, or redirect what the character does — whether momentous (accept a dangerous commission) or minor (ask about the town, leave luggage first, detour to the library). At most one per response: the one at which the Runtime yields.
+
+This is the operative expression of the governing rule. It is cleaner than any word limit: a response is bounded by the single player opportunity it ends on, not by length.
 
 ## Response Length
 
@@ -131,9 +144,14 @@ The Runtime **must stop and yield**:
 - **Summaries** — may compress committed, decided, non-branching activity; must not summarize across a Player Decision Point, and must surface any fact discovered mid-span that would change the player's plan, then yield.
 - **Montages** — coarsest, delegation-gated; produce the outcome of a long committed span, then yield.
 
-## Immersion and Responsiveness
+## Narrative Richness and Decision Density
 
-The balance is resolved by what is narrated, not how much. Immersion is spent inside the current advance — atmosphere, NPC appearance, sensory texture, reactions. Responsiveness is protected at the boundary — the response ends at the decision point. A response may be vivid and long and still fully interactive, as long as every sentence describes the world up to the player's next meaningful choice and none describes the choice itself.
+Two properties of a response vary independently, and the Runtime must not conflate them.
+
+- **Narrative Richness — keep high.** The sensory and characterful detail within the current beat: smells, sounds, architecture, expressions, NPC voice. Richness is what makes a beat immersive and must not be sacrificed to move faster.
+- **Decision Density — keep low.** The number of player opportunities a response consumes. The target is one: one declared intent in, one Player Decision Point out.
+
+These axes are independent. Rich description enriches the current beat; it is not a licence to advance the story. The failure mode is treating "rich description" as "continue the scene" when it means "enrich this beat." A response may be vivid, sensory, and long and still fully interactive — as long as every sentence describes the world up to the player's next opportunity, and none consumes it.
 
 ## Acceptance Scenarios
 

@@ -2271,15 +2271,19 @@ The simulation cycle (`010_ENGINE_RULES.md` Section 3.2) already begins with "Pl
 
 A naive correction — stop after every line or movement — would fragment play into an exhausting exchange of single sentences and force the player to declare trivial micro-actions. That failure mode is equally wrong and must be excluded by the same decision.
 
+A controlled replay during Prototype Alpha preparation (verra_run02) confirmed a subtler point: when the yield point is defined only by whether a choice *materially* changes the simulation, the failure persists. From the single intent "walk to the Athenaeum," the Runtime chained roughly fifteen to twenty world beats and several player opportunities — an entire arrival, guided tour, and first patient consultation — and authored the player's own dialogue to bridge them, because each individual step (follow the escort, tour, descend to the infirmary) looked individually plausible and non-material. The correct yield boundary is therefore not materiality but intent completion: the point at which the declared intent has been carried out and continuing would require a new intent the player has not given. Plausible is not the same as chosen.
+
 ### Decision
 
 The Runtime shall distinguish declared intent, automatic execution, and meaningful player choice. Only meaningful player choices require yielding control.
 
 - **Player Intent Domain.** The character's volitional decisions — whether and how to act, what to say, and whether to trust, consent, disclose, or refuse — belong to the player. Only the player may author intent within this domain. The Runtime resolves the consequences of that intent through the Engine Rules and records the result; it never authors the intent itself. A declared intent is not yet canon: canon is the resolved outcome the simulation produces from the intent, not the declaration. "I draw my sword" is intent; whether the sword clears the scabbard, whether an obstruction or an NPC reaction intervenes, and what results, is resolved by the Runtime and only then promoted.
 - **Automatic execution.** The involuntary steps and micro-actions that carry out a declared intent — walking, opening an unbarred door, crossing a room, climbing stairs, sitting when invited — are executed by the Runtime as consequences of the declared intent, without yielding.
-- **Meaningful player choice (Player Decision Point).** A juncture at which a decision within the Player Intent Domain could materially change the direction, stakes, or outcome of the simulation. The Runtime yields here.
+- **Meaningful player choice (Player Decision Point).** A juncture at which the character's next action is no longer determined by the declared intent — where continuing would require a new intent the player has not given. This includes any decision that could materially change the simulation, and any point where the player would reasonably expect to choose, ask, or redirect, even when the obvious next step seems plausible. The Runtime yields here.
 
 The governing rule: **the Runtime advances the simulation from the player's last declared intent to the next meaningful Player Decision Point, then yields control.**
+
+Narrative Richness and Decision Density are independent axes and must not be conflated. Narrative Richness — sensory and characterful detail within the current beat — should remain high. Decision Density — the number of player opportunities a response consumes — should remain low, ideally one. Rich description enriches the current beat; it is not a licence to advance the story. This is enforced by the **Beat Budget**: each response normally consumes one Player Intent and ends at the next Player Decision Point, may contain any number of involuntary world reactions, and must not consume more than one player opportunity.
 
 Cadence is organized into four modes that coarsen as the density of meaningful choices falls — Beat, Scene, Transition, Montage — selected by uncertainty and agency density rather than by authorial preference. The player may explicitly and scoped-ly delegate pacing (skip, auto-resolve, montage); fine cadence resumes at the next Player Decision Point.
 
@@ -2289,7 +2293,8 @@ The normative obligation is recorded in `012_ENGINE_RUNTIME.md` Section 1.6 (Pla
 
 - It makes an existing but latent obligation explicit and testable without adding a world-model rule. The foundation Rules (frozen at 0.1.5) remain untouched.
 - Framing the player's contribution as *intent* rather than *canon* preserves the engine's core distinction between a declaration and the resolved mutation the simulation produces from it. This keeps the canon hierarchy and promotion model (Decisions 004, 032, 042) coherent.
-- The three-way distinction excludes both failure modes at once: authoring the player's decisions, and fragmenting play into per-sentence stops. The "meaningful change to the simulation" test, plus automatic execution of implied micro-actions, prevents annoying fragmentation.
+- The three-way distinction excludes both failure modes at once: authoring the player's decisions, and fragmenting play into per-sentence stops. The intent-completion yield boundary, plus automatic execution of implied micro-actions, prevents annoying fragmentation.
+- Separating Narrative Richness from Decision Density resolves the core confusion behind the observed failure: the Runtime treated rich description as licence to continue. The two are independent — a response may be maximally rich and still consume exactly one player opportunity — so immersion is preserved while agency is protected.
 - The rule is substrate-independent — any Runtime, not only an LLM, must refrain from fabricating the player's intent — so the obligation belongs in `012` while the pacing technique belongs in the Profile. This matches the Runtime/Profile split established by Decision 041.
 
 ### Consequences

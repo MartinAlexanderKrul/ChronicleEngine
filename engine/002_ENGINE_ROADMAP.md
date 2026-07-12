@@ -514,7 +514,7 @@ The campaign should exercise:
 - [x] First-session boot without a save manifest
 - [x] Prototype Alpha startup configuration and spoiler-safe player briefing
 - [x] Player Agency Contract and Interaction Cadence (Decision 050) — refinement from Prototype Alpha preparation
-- [x] Persistence preflight and promotion reconciliation hardening — refinement from Prototype Alpha preparation
+- [x] Persistence preflight, checkpoint persistence, and promotion reconciliation hardening — refinement from Prototype Alpha preparation
 - [ ] Engine Readiness Review
 - [ ] Session 1 and first checkpoint
 

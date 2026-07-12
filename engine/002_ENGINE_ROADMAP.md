@@ -881,9 +881,9 @@ Integrated through `001_ENGINE_DECISIONS.md` Decision 051 and `docs/AI_GAMEPLAY_
 
 Current architectural debt:
 
+- ✓ Create `003_DESIGN_PRINCIPLES.md` — completed 2026-07-12
 - Remove remaining terminology drift.
 - Eliminate duplicated definitions through cross-references.
-- Create or de-reference `003_DESIGN_PRINCIPLES.md`, referenced as an authority by the Manifest and README but not yet present.
 - Stabilize repository governance.
 - Reconcile canon hierarchy wording between Manifest, Decisions, and Rules. *(Partially addressed by Decision 042: precedence vs. durability separated; promotion made mandatory.)*
 - Define version compatibility model.

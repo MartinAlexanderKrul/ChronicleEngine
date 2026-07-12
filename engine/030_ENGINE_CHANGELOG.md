@@ -12,6 +12,35 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-12 — Substrate-Neutral Gameplay Manual
+
+**Start Guide:** Rewrote `docs/GAMEPLAY_START_GUIDE.md` as a generic manual for any AI that can read and write the repository files, removing the ChatGPT + Project + Google Drive framing. "Prepare the AI Project" and the Google-Drive/Git sync section become "File Access and Persistence," distinguishing native file access (reads/writes just work) from indirect access (connector, synced folder, uploads) where a write-capability check applies; the AI Project Instructions and First Session prompts, the Relay Workflow, and Troubleshooting are all genericized (no Drive/ChatGPT/Codex/Project Source references). The scratch/canary path moves from `.tmp.driveupload/preflight/` to the gitignored `.tmp/preflight/`. Document version set to 2.0
+**Runtime Profiles:** Genericized the persistence sections of `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` — Persistence Preflight, Session Persistence State, the Save Algorithm, and Write-Side Failure Handling now speak of the AI's file access and attempted writes rather than a connector; native file access skips the preflight, indirect access verifies by attempting a write, and the canary path is `.tmp/preflight/`. Gameplay mechanics unchanged. Document version set to 1.15
+**Repository:** Added `.tmp/` to `.gitignore` for the generic scratch path
+**Context:** The engine ran on ChatGPT + Google Drive, then Claude/Haiku with a directory; the manual is now substrate-neutral and usable with any AI plus a directory of files
+**Rules/Data Model/Decisions:** Unchanged — documentation/operational genericization only
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
+## 2026-07-12 — Design Principles Formalization
+
+**Engine Layer:** Created `003_DESIGN_PRINCIPLES.md` — formalizes the foundational design philosophy that was previously distributed across Engine Rules (Section 0–1), Project Context, and the README. Consolidates the 8 Engine Laws, Core Design Principles (world-first, simulation-over-narrative, emergent progression, reusable architecture, etc.), Development Philosophy, and Design Tradeoff priorities into a single authoritative document per the Manifest's Document Authority section.
+
+**Manifest:** Updated `000_ENGINE_MANIFEST.md` Engine Layer component list to explicitly mention Design Principles. Manifest's Document Authority section already referenced the file correctly.
+
+**Roadmap:** Marked "Create or de-reference `003_DESIGN_PRINCIPLES.md`" as complete in Technical Debt section.
+
+**Context:** Architectural cleanup; Design Principles was referenced as an authority source by the Manifest and README but did not exist; listed as technical debt in the Roadmap.
+
+**Engine/World/Campaign/Rules:** Unchanged — this is documentation consolidation, not a rule or mechanic change.
+
+**Rationale:** Clarity before Version 0.3 planning. The design philosophy is the foundation against which all architectural decisions are evaluated; formalizing it in one place reduces ambiguity and makes the design rationale explicit for future contributors.
+
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-12 — Out-of-Character Play and Roll Presentation Modes
 
 **Runtime Profiles / Start Guide:** A Claude/Haiku Session 1 test rejected chaotic player-authored violence partly on the grounds that it was out of character — conflating divergence from disposition with contradiction of canon. Added "Out of Character Is Not a Contradiction" to `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Failure Behavior) and a matching clause to both resident gates in `docs/GAMEPLAY_START_GUIDE.md`: the player may steer the protagonist against their established disposition (Pre-Authored Protagonist; Decision 016; Law III), and such a choice is grounded emergent play resolved by the die and answered by consequence, never refused as "out of character"; only contradictions of established fact (an item absent from inventory such as the non-canonical dagger, being where the character cannot be, an unestablished capability) are blocked, and the Runtime quarantines just that fact rather than rejecting the session. Separately split roll presentation into a minimal play tag (`🎲 d100: 80 — failure`, with an optional short reason) versus a testing/debug breakdown (difficulty, modifiers, bands) shown only on explicit request. Profile version 1.14; Guide version 1.9

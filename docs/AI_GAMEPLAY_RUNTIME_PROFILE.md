@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.14
+**Document Version:** 1.15
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -257,34 +257,35 @@ If the startup artifact is absent, derive only what canonical campaign state est
 
 # Persistence Preflight
 
-Before canonical play, verify that the active persistence surface can:
+Before canonical play, verify that the AI can persist canon to the repository files. It must be able to:
 
 - read the current repository state,
 - **create new files and directories** — the immutable checkpoint directory and its files under `campaigns/<campaign>/saves/`,
-- **write through to existing canonical ledgers** — promote canon into the live ledgers (Current State, relationships, chronicle, changelog) by making each target file hold its new full content, addressed by resolved handle or canonical path, preserving everything except the intended change,
-- preserve repository paths and file formats,
-- make completed writes visible to the repository synchronization workflow.
+- **write through to existing canonical ledgers** — promote canon into the live ledgers (Current State, relationships, chronicle, changelog) by making each target file hold its new full content, preserving everything except the intended change,
+- preserve repository paths and file formats.
 
-Create-new and write-through are two distinct capabilities, and a surface may offer one without the other. Creating a new file does not prove the surface can rewrite an existing ledger's content. The checkpoint barrier needs both: the immutable checkpoint files are create-new, while Canon Promotion into the live ledgers is write-through — rewriting the target file's full content by resolved handle, path replacement, or re-creation at its canonical path. Write-through does **not** require a patch or edit-arbitrary-Markdown operation; resolve the target's handle through repository discovery and replace its content. Verify both against the actual canonical target files before opening the scene.
+With **native file access**, all of this works directly and needs no separate check; proceed. The verification below applies when file access is **indirect** — a connector, a synced folder, or uploaded files — where read access does not prove write access.
 
-Indexed search or synchronized read access does not by itself prove write capability. Uncertainty about connector internals — missing file handles, an unknown edit operation — is not a failure: resolve it by attempting the canary, not by refusing. **A survey of the exposed tool list is not a write-capability test, even when the survey feels complete.** Observing that the connector offers, for example, folder creation but no operation literally named "create file" or "edit Markdown" does not establish that writing is impossible. Connectors expose file writes under many names — upload, add file, create document, put, save, or re-upload/replace an existing file — and a surface that can create folders but shows no obvious create-file verb is a common false negative. Enumerating operations and reporting their absence proves nothing about write capability; only an attempted write against the canary does. Stop before opening the scene, or classify the run as a non-canonical dry run, only when an actual write attempt fails. Do not allow a canonical session to begin when its Promotion Barrier cannot write durable state, and do not defer this discovery to the first checkpoint.
+Create-new and write-through are two distinct capabilities, and an indirect surface may offer one without the other. Creating a new file does not prove the surface can rewrite an existing ledger's content. The checkpoint barrier needs both: the immutable checkpoint files are create-new, while Canon Promotion into the live ledgers is write-through — rewriting the target file's full content by path or re-creation at its canonical path. Write-through does **not** require a line-level patch operation; replace the file's content. Verify both against the actual canonical target files before opening the scene.
 
-When project instructions identify a connected writable project source as the active repository, treat that source as the intended persistence surface. Do not ask the player to prove repository availability after the campaign path has been supplied. If the player corrects repository access with "in the source of this project, everything is connected and set up" or equivalent, rerun source discovery against the connected project source before reporting a blocker. Attempt the configured canary writes directly, then continue only if the canary writes can be read back from the same source.
+Read access alone does not prove write capability, and inspecting the available tools does not test it. **A survey of the tool list is not a write-capability test, even when it feels complete.** File writes appear under many names — write, save, upload, put, replace, create document — and the absence of an obvious "write file" or "edit" verb is a common false negative. Enumerating operations and reporting their absence proves nothing; only an attempted write proves capability. Resolve uncertainty by attempting the write, not by refusing. Stop before opening the scene, or classify the run as a non-canonical dry run, only when an actual write attempt fails. Do not allow a canonical session to begin when its Promotion Barrier cannot write durable state, and do not defer this discovery to the first checkpoint.
 
-Use a disposable preflight canary for write verification, and exercise **both** capabilities. Create a Markdown canary and a checkpoint-directory canary under the repository's gitignored `.tmp.driveupload/preflight/<campaign>/` path or an equivalent gitignored operational path — this proves create-new. Then, using the handle just created, **attempt to write new content to that canary** with whatever update, replace, or re-upload operation the connector exposes, and read the change back — this proves write-through. Attempt the operation; do not conclude from the tool surface that no such operation exists. Do not create tracked preflight files inside the campaign ledger directory, and do not modify canonical ledgers during preflight.
+When the setup identifies the repository files as available and writable, treat them as the intended persistence surface. Do not ask the player to prove the files are available after the campaign path has been supplied, and do not make the player correct you before you attempt to read or write. Read the files and attempt the canary write directly; continue only if the canary can be read back.
 
-After both canary operations succeed, report the verified persistence surface and continue startup. Only an actual attempt tells you write-through failed: if a real attempt to rewrite the canary errors, is denied, or fails read-back, or if checkpoint-directory creation fails, the surface cannot support Canon Promotion — stop before canonical play or classify the run as a non-canonical dry run. The absence of an edit-in-place operation is not itself a failure when content can be replaced by handle or re-created at its path. A successful canary proves operational write capability for startup; actual Canon Promotion is still performed only at checkpoint or session close.
+Use a disposable preflight canary for write verification, and exercise **both** capabilities. Create a canary file and a checkpoint-style directory under the gitignored `.tmp/preflight/<campaign>/` path or an equivalent gitignored operational path — this proves create-new. Then **rewrite that canary's content** with whatever write operation is available and read the change back — this proves write-through. Attempt the operation; do not conclude from the tool surface that no such operation exists. Do not create tracked preflight files inside the campaign ledger directory, and do not modify canonical ledgers during preflight.
 
-If direct canonical play remains blocked after source discovery and canary write attempts, the Runtime may still perform onboarding-only preparation when it can read all required campaign files. It may present the spoiler-safe introduction and answer questions, but it must not open a canonical scene. Gameplay beyond onboarding must be explicitly labeled non-canonical unless another authorized writer promotes the exact accepted changes into the repository and creates the checkpoint.
+After both canary operations succeed, report the verified persistence surface and continue startup. Only an actual attempt tells you write-through failed: if a real attempt to rewrite the canary errors, is denied, or fails read-back, or if checkpoint-directory creation fails, the surface cannot support Canon Promotion — stop before canonical play or classify the run as a non-canonical dry run. The absence of an edit-in-place operation is not itself a failure when content can be replaced by rewriting or re-creating the file. A successful canary proves operational write capability for startup; actual Canon Promotion is still performed only at checkpoint or session close.
 
-When the repository is mirrored across several services, require one exclusive writer during gameplay. Concurrent edits create stale-load and conflict risks and must be reconciled before play.
+If direct canonical play remains blocked after read and write attempts, the Runtime may still perform onboarding-only preparation when it can read all required campaign files. It may present the spoiler-safe introduction and answer questions, but it must not open a canonical scene. Gameplay beyond onboarding must be explicitly labeled non-canonical unless another authorized writer promotes the exact accepted changes into the repository and creates the checkpoint (Relay Workflow).
+
+When the repository is mirrored across several locations or synced services, require one exclusive writer during gameplay. Concurrent edits create stale-load and conflict risks and must be reconciled before play.
 
 ## Session Persistence State
 
 Repository write capability is a session property, tracked as one of three states:
 
-- **Unestablished** — no successful write yet this session. Resolve by a capability check (the canary), not by refusal, and not by inspecting the tool list. Enumerating the connector's operations and finding none obviously named for file writes does not move this state to Failed; only an attempted write that actually errors does.
-- **Established** — at least one actual write has succeeded this session: the preflight canary (create, write-through, and read-back), a prior successful checkpoint, or any prior canonical ledger update. Once established, the repository is treated as writable for the remainder of the session. The Runtime does not re-derive capability from abstract reasoning about the connector, and does not downgrade this state on uncertainty.
+- **Unestablished** — no successful write yet this session. Resolve by a capability check (the canary), not by refusal, and not by inspecting the tool list. Inspecting the available tools and finding none obviously named for file writes does not move this state to Failed; only an attempted write that actually errors does.
+- **Established** — at least one actual write has succeeded this session: the preflight canary (create, write-through, and read-back), a prior successful checkpoint, or any prior canonical ledger update. Once established, the repository is treated as writable for the remainder of the session. The Runtime does not re-derive capability from abstract reasoning about its file access, and does not downgrade this state on uncertainty.
 - **Failed** — an actual write operation returned an error. Only an actual failure sets this state; subsequent canonical writes use the fallback path until a later attempt succeeds.
 
 Read or search access alone never establishes write capability, and abstract doubt never demotes an established state.
@@ -480,7 +481,7 @@ Any player request to save, checkpoint, or record progress — however phrased, 
 
 On a checkpoint request or session close, in this order:
 
-1. **Promotion Barrier first (unchanged).** Run Canon Reconciliation at Promotion. If an unreconcilable contradiction exists, reject the mutation, record a Rejected Simulation, and write nothing. The barrier runs before any write, so contradictory canon never reaches the connector.
+1. **Promotion Barrier first (unchanged).** Run Canon Reconciliation at Promotion. If an unreconcilable contradiction exists, reject the mutation, record a Rejected Simulation, and write nothing. The barrier runs before any write, so contradictory canon never reaches the repository.
 2. **Ensure capability.** If write capability is Unestablished, run a capability check (the canary) now.
 3. **Determine the complete target set, then attempt the canonical update.** A checkpoint is not a single-ledger write. First enumerate every promotion target the session touched (Gameplay Close, step 3: Current State, objectives, relationships, inventory, knowledge, chronicle, changelog, and the save manifest as applicable). Then write the immutable checkpoint files and write through to **every** target — rewriting each target file's full content by resolved handle or path, each with provenance. Resolve any missing handle through repository discovery rather than refusing. Updating one scope-responsible ledger — for example the NPCs and Factions ledger — while leaving Current State, the chronicle, the changelog, and the save manifest unwritten is a **partial checkpoint**, not a save.
 4. **Read-back verification.** Reload the written checkpoint files and **every** targeted ledger from the repository — not from Context — and confirm the intended changes and their provenance are present in each. A target that did not receive its intended change is an unwritten target, even when other targets succeeded.
@@ -492,9 +493,9 @@ On a checkpoint request or session close, in this order:
 
 Distinguish these. Only the first four prevent persistence; the last never does:
 
-- **Actual connector failure** — a write, create, or update operation returns an error, times out, or the connection drops. → fallback (Runtime Checkpoint Report).
-- **Permission denial** — the connector reports the operation is not authorized. → fallback; report it as permission, not uncertainty.
-- **Repository validation failure** — the write would produce an invalid ledger (a deliberately-invalid placeholder, a broken reference, a registry violation). → do not write; report the validation failure. This is a Runtime-side rejection, distinct from a connector failure.
+- **Actual write failure** — a write, create, or update operation returns an error, times out, or file access is lost. → fallback (Runtime Checkpoint Report).
+- **Permission denial** — the file system or host reports the operation is not authorized. → fallback; report it as permission, not uncertainty.
+- **Repository validation failure** — the write would produce an invalid ledger (a deliberately-invalid placeholder, a broken reference, a registry violation). → do not write; report the validation failure. This is a Runtime-side rejection, distinct from a write failure.
 - **Canonical contradiction** — handled by the Promotion Barrier at step 1; the repository is unchanged and a Rejected Simulation is recorded. Unchanged by this section.
 - **Runtime uncertainty** — not knowing whether an edit is possible, or lacking a file handle. This is **not** a failure. Resolve it by attempting the operation. It is never grounds to refuse when capability is established, nor to skip an attempt a capability check can settle.
 

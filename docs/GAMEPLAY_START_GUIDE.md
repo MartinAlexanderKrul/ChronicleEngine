@@ -2,30 +2,25 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 1.9
+**Document Version:** 2.0
 **Audience:** Players and campaign operators
-**Purpose:** Start or resume Chronicle Engine gameplay in an AI project or repository-aware AI session
+**Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
 ---
 
-# What the Player Needs
+# What You Need
 
-The player should not read engine, world, or campaign files before playing. The AI Runtime reads the repository and translates canonical state into a natural, spoiler-safe introduction or recap.
+Chronicle Engine runs on any AI that can **read and write the files in the repository directory** — a coding or agent assistant with native file access, or a chat assistant connected to the repository folder. The AI reads canonical state, runs the game, and writes promoted canon back to the files.
+
+The player does not read engine, world, or campaign files before playing. The AI Runtime reads the repository and translates canonical state into a natural, spoiler-safe introduction or recap.
 
 You need:
 
-- access to the Chronicle Engine repository,
-- an AI workspace that can read the relevant repository files,
+- the Chronicle Engine repository available to the AI as a readable, writable directory of files,
 - the campaign path you want to play,
 - a fresh conversation for the gameplay session.
 
 Do not use the development workflow to start a game. Development uses `docs/AI_SESSION_TEMPLATE.md`; gameplay uses `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`.
-
----
-
-# Prepare the AI Project
-
-Make the current repository available to the AI project. Depending on the AI product, this may mean a connected repository, a synchronized project folder, or uploaded project files.
 
 The AI must be able to read at least:
 
@@ -33,46 +28,32 @@ The AI must be able to read at least:
 - the selected campaign's `090_CAMPAIGN_STARTUP.md`,
 - the campaign's canonical ledgers,
 - the campaign's world records,
+- `engine/010_ENGINE_RULES.md` (Sections 4 and 6 are needed the first time an action is uncertain),
 - the latest valid checkpoint when resuming.
 
-Repository access must reflect the latest canonical state. Static uploads can become stale after gameplay changes or checkpoints; refresh them before the next session.
+---
 
-## Connected Google Drive and Git Workflow
+# File Access and Persistence
 
-When the repository is synchronized across a local computer, GitHub, and Google Drive, treat the Google Drive copy as the gameplay working copy and Git as the durable review and version-history layer.
+The repository is the single source of truth. The AI must be able to **read** the campaign, world, and engine files it needs, and **write** canonical files back — updating ledgers and creating checkpoint files — when it promotes canon.
 
-Google Drive sync, Google Drive Project Sources, and Google Drive write actions are separate capabilities. A synced connection can provide current read access without necessarily allowing ChatGPT to edit repository Markdown files by path. Before canonical gameplay, verify that the active ChatGPT workspace can create and read back arbitrary Markdown files and checkpoint-style directories at repository paths.
+How the AI reaches the files depends on your setup:
 
-Inspecting the connector's tool list is not that verification. Finding folder creation but no operation obviously named "create file" or "edit Markdown" does not prove writing is impossible: file writes appear under many names (upload, add file, create document, put, save, re-upload to replace), and a create-folder-without-create-file surface is a common false negative. Verify by attempting the canary write and reading it back — never by enumerating operations and reporting their absence.
+- **Native file access** — an agent or coding assistant that opens and edits files directly. Reads and writes just work; no special preparation is required.
+- **Indirect access** — a chat assistant connected to a synced folder, uploaded files, or a file connector. Read access does not guarantee write access, and a static upload can go stale. Confirm write capability before canonical play (below), keep the AI the sole writer during a session, and refresh its view of the files between sessions.
 
-If ChatGPT reports that only a README is available or that the repository is not connected, correct it directly:
+The AI must always see the latest canonical state. After a session, review the changes with `git diff`, run repository validation, and commit — git is the durable version-history layer, not a competing authority. Avoid concurrent writers.
 
-```text
-That is not correct. In the source of this project, everything is connected and set up.
+## Confirm Write Capability (indirect access only)
 
-Re-run repository discovery through the connected Project Source, then verify the exact repository path and preflight behavior before proceeding.
-```
+If the AI has native file access, skip this. If access is indirect, verify writing works before canonical play — by attempting an actual write, never by inspecting the tool list:
 
-Run any first write test against disposable files under `.tmp.driveupload/preflight/<campaign>/`, which is ignored by Git. The preflight should create a Markdown canary file and a checkpoint-directory canary there, then report that both operations succeeded. Do not test write access by changing a campaign ledger, adding a tracked campaign-status file, or creating a real save checkpoint before play.
+- Write a disposable scratch file under the gitignored `.tmp/preflight/<campaign>/` path and read it back. This proves the AI can create and read files.
+- If the AI can also rewrite that scratch file's contents and read the change back, it can promote canon into existing ledgers.
 
-Use this synchronization sequence:
+Verify by attempting the operation. Do not conclude that writing is impossible because no tool is obviously named "write file" — file writes appear under many names (write, save, upload, put, replace, create document). Only an actual failed write attempt means the AI cannot persist canon; then play is non-canonical (a dry run) or uses the Relay Workflow below. Do not test write access by changing a real campaign ledger.
 
-1. Finish and commit local repository work.
-2. Push or otherwise synchronize it to GitHub and Google Drive.
-3. Wait until the Google Drive copy and ChatGPT's synced index reflect the same commit.
-4. Start gameplay and give ChatGPT exclusive write access for the duration of the session.
-5. Do not edit the local or GitHub copy while gameplay is active.
-6. At session close, let the Runtime promote canon and create the checkpoint in Google Drive.
-7. Verify the expected Drive files changed and no unrelated files changed.
-8. Let those changes synchronize back to the local repository.
-9. Review `git diff`, run repository validation, commit, and push.
-10. Begin another gameplay session only after all three copies agree again.
-
-This is synchronization, not three independent canonical authorities. The repository content is authoritative; GitHub and Google Drive are transport and storage surfaces. Avoid concurrent writers.
-
-If ChatGPT can read but cannot write the Markdown repository after re-running source discovery and attempting the canary writes, it may perform onboarding-only preparation and present the player introduction, provided all required campaign files are readable. Gameplay after onboarding may proceed only as a non-canonical dry run or through the relay workflow below. Do not close a canonical session until an authorized writer has promoted the exact accepted changes and created the checkpoint.
-
-For Prototype Alpha, provide access to:
+For Prototype Alpha, give the AI access to:
 
 - `campaigns/prototype_alpha/`,
 - `worlds/verra/`,
@@ -83,24 +64,24 @@ For Prototype Alpha, provide access to:
 
 ---
 
-# AI Project Instructions
+# AI Instructions
 
-Place the following instruction in the AI project's persistent instructions when that feature is available. Otherwise, send it as the first message of every new gameplay conversation.
+Place the following in the AI's persistent or system instructions when that is available. Otherwise, send it as the first message of every new gameplay conversation.
 
 ```text
 You are executing Chronicle Engine gameplay in Interpreter mode.
 
-This ChatGPT Project has the Chronicle Engine repository connected as a Google Drive Project Source. Treat that Project Source as the active repository and intended writable persistence surface for gameplay. You are authorized to create and edit Markdown files in that connected source for gameplay startup preflight, Canon Promotion, and session-close checkpoints.
+The Chronicle Engine repository is available to you as a directory of files you can read and write. Treat it as the authoritative, writable persistence surface for gameplay: read canonical state from it, and write promoted canon and checkpoints back to it.
 
 Follow docs/AI_GAMEPLAY_RUNTIME_PROFILE.md.
 The repository is authoritative. Do not use the development workflow and do not modify engine architecture during play.
 
 REPOSITORY LOADING — DO THIS ON THE FIRST TURN, BEFORE REPORTING ANY ACCESS BLOCKER:
-The connected Project Source IS the repository. At startup the chat may surface only README.md; that is a cold-start artifact, not the repository contents, and is never a reason to report a blocker. On your own initiative, without waiting for the player to insist the source is connected:
-- Query the Project Source for the campaign files and FETCH THEIR CONTENTS (open and read the Markdown). Listing or enumerating a folder is NOT reading a file — a folder listing, whether it succeeds or fails, tells you nothing about whether you can fetch file contents, so attempt the fetch.
-- Report a read blocker ONLY after an actual fetch operation has returned an error, and name the specific operation that failed.
-- NEVER say "I only have the README", "the campaign data is not accessible", "I cannot load canonical state", or "I only confirmed the repository exists" without having attempted to fetch those files' contents in this same turn.
-Attempting discovery and content-fetch is your job, not the player's. The player should never have to tell you the source is connected, and should never have to correct you before you try.
+Read the campaign files from the repository on your own initiative. If your view initially shows only a README or a partial listing, that is a cold-start artifact, not the repository contents, and is never a reason to report a blocker.
+- Open and READ THE CONTENTS of the campaign files. Listing a folder is NOT reading a file — a folder listing tells you nothing about whether you can open a file's contents, so open the files.
+- Report a read blocker ONLY after an actual attempt to read a file has returned an error, and name the file and operation that failed.
+- NEVER say "I only have the README", "the campaign data is not accessible", or "I cannot load canonical state" without having attempted to read those files this same turn.
+Reading the files is your job, not the player's. The player should never have to tell you the files are there, or correct you before you try.
 
 ACTION RESOLUTION — HIGHEST PRIORITY, CHECK EVERY TURN:
 Before you narrate the outcome of ANY action the player declares, classify it.
@@ -126,7 +107,7 @@ Before narration:
 - wait for explicit player readiness,
 - internally validate the opening anchors before producing the scene.
 
-Before canonical play, verify the connected persistence surface by creating a disposable Markdown canary and checkpoint-directory canary under .tmp.driveupload/preflight/<campaign>/. Attempt this write verification directly against the connected Project Source. Do not ask the player to prove repository availability after a campaign path is supplied. If the player says the project source is connected and set up, re-run repository discovery through that source before reporting a blocker. Stop direct canonical play only if the Project Source cannot be read after rediscovery, the canary writes cannot be created, or the canary writes cannot be read back. If all required campaign files are readable but canary writes fail, continue only to the onboarding readiness gate. Do not create tracked preflight files inside the campaign ledger directory.
+If your file access is indirect (a connector or synced folder rather than native file editing), confirm you can write before canonical play: write and read back a disposable file under .tmp/preflight/<campaign>/. Verify by attempting the write, not by inspecting your tools. If a real write attempt fails, continue only to the onboarding readiness gate and treat play as non-canonical or relay. Do not create preflight files inside the campaign directory.
 
 Do not invent or replace the established timeline, location, inventory, NPCs, relationships, motivations, objectives, immediate pressure, or opening conflict. Add only compatible sensory detail. If canonical state is missing or contradictory, stop and ask for clarification.
 
@@ -142,19 +123,19 @@ This instruction establishes the Runtime role. It does not replace repository ac
 Open a new gameplay conversation and send:
 
 ```text
-All files should be loaded from the connected Google Drive in SOURCE in this Project. The link provided guarantees write permission for this chat.
+The Chronicle Engine repository is available to you as readable, writable files. Load everything you need from it.
 
 Start Chronicle Engine gameplay for campaigns/prototype_alpha/.
 
 This is a first session for the campaign at campaigns/prototype_alpha/. Follow the Gameplay Runtime Profile and the campaign startup configuration. Do not begin the first scene yet.
 
-Repository loading, do this now before reporting any blocker: the connected Project Source is the repository. If you first see only README.md, that is a cold-start artifact — on your own initiative query the Project Source and FETCH THE CONTENTS of the campaign files (do not just list folders; a folder listing is not a file read). Report a read blocker only after an actual fetch operation errors, naming the failed operation. Do not wait for me to tell you the source is connected, and do not make me correct you before you try.
+Repository loading, do this now before reporting any blocker: read the campaign files from the repository on your own initiative. If you first see only a README or a partial listing, that is a cold-start artifact — open and READ THE CONTENTS of the campaign files (listing a folder is not reading a file). Report a read blocker only after an actual read attempt errors, naming the file. Do not wait for me to tell you the files are there, and do not make me correct you before you try.
 
 Load canonical campaign state, present the player introduction, and wait for my questions or confirmation that I am ready. Also load engine/010_ENGINE_RULES.md Sections 4 and 6 and confirm you have them.
 
 Action resolution, highest priority, every turn: before narrating the outcome of any action I declare, classify it. If it is uncertain or opposed — attack, grab, sneak, pick a lock, steal, deceive, intimidate, persuade against resistance, flee, climb — STOP; set difficulty from my character's relevant skills, abilities, magic, and tools plus circumstance versus the resistance (a defenceless target is near-automatic; skill and magic move the odds; a big enough gap means only a natural fumble 01–05 or natural crit 96–100 flips the result, and those natural criticals are always live); roll d100 and show it as a clean tag only, D&D-style like "🎲 d100: 72 — success"; then narrate only that one exchange in-world and ask what I do. No engine jargon, no explaining the bands or your own rule-compliance — the tag is the only mechanical text. Never narrate a hit, miss, wound, success, or failure without a shown roll; an unarmed attack on a person is never automatic. One exchange per reply, but the world reacts immediately within it (present people cry out, flee, shout; blood, dropped objects) — keep that vivid; do NOT advance time, add new arrivals (guards, crowds), resolve another exchange, or narrate later consequences (arrest, reputation) in the same reply. Deferred consequences must still arrive in later beats.
 
-The Chronicle Engine repository is connected to this ChatGPT Project as a Google Drive Project Source, and that Project Source is the intended writable persistence surface. You are authorized to write the preflight canaries there. Confirm write capability by creating a disposable Markdown canary and checkpoint-directory canary under .tmp.driveupload/preflight/prototype_alpha/ and reading them back. If you initially see only README.md or cannot locate the campaign, re-run repository discovery through the connected Project Source before reporting a blocker. If canary write or read-back still fails after rediscovery, continue only with onboarding if the required campaign files are readable. Do not open the scene. Do not create tracked preflight files inside campaigns/prototype_alpha/.
+If your file access is indirect, confirm you can write by creating and reading back a disposable file under .tmp/preflight/prototype_alpha/ before canonical play; verify by attempting the write, not by inspecting your tools. Do not open the scene. Do not create preflight files inside campaigns/prototype_alpha/.
 ```
 
 The expected sequence is:
@@ -173,7 +154,7 @@ For Prototype Alpha, the Runtime should introduce Ilse Varn or offer the separat
 
 # Resume a Campaign
 
-Ensure the AI project has the latest campaign files and checkpoint, then send:
+Ensure the AI has the latest campaign files and checkpoint, then send:
 
 ```text
 Resume Chronicle Engine gameplay for <campaign path>.
@@ -211,15 +192,15 @@ Close the gameplay session now.
 Apply the Promotion Barrier, update every affected canonical ledger with provenance, run the required validations, create the session-close checkpoint, and provide the Gameplay Runtime Report. Do not produce a development report.
 ```
 
-Do not close the AI conversation until the Runtime confirms whether canon was promoted and identifies the checkpoint or any blocking contradiction.
+Do not close the conversation until the Runtime confirms whether canon was promoted and identifies the checkpoint or any blocking contradiction.
 
 ---
 
 # Relay Workflow
 
-Use this when ChatGPT can read the campaign but cannot write repository paths directly.
+Use this when the AI can read the campaign files but cannot write them.
 
-The ChatGPT Runtime must label the run as `Relay Pending`, not canonical. It may conduct play only if the player explicitly accepts relay mode. At session close, it produces a Gameplay Promotion Bundle instead of claiming Canon Promotion.
+The Runtime must label the run `Relay Pending`, not canonical. It may conduct play only if the player explicitly accepts relay mode. At session close, it produces a Gameplay Promotion Bundle instead of claiming Canon Promotion.
 
 ```text
 Gameplay Promotion Bundle
@@ -236,7 +217,7 @@ Validation notes:
 Open questions:
 ```
 
-The local Codex repository session then applies the exact accepted edits, runs validation, creates the checkpoint, and commits. The session becomes canonical only after that repository promotion succeeds.
+A writer with file access — you, via git, or another tool or session — then applies the exact accepted edits, runs validation, creates the checkpoint, and commits. The session becomes canonical only after that repository promotion succeeds.
 
 ---
 
@@ -260,6 +241,16 @@ Stop immediately and say:
 Pause. Validate the proposed scene against the campaign's canonical startup state. Do not continue or promote this narration. If it conflicts, classify it as a Rejected Simulation, leave the repository unchanged, reload the campaign introduction and Current State, and return to the readiness gate.
 ```
 
+## The AI Makes You Correct It Before Loading
+
+If the AI reports the files are missing, inaccessible, or "not connected" without having tried to read them, it is stalling on a cold-start view. Reply:
+
+```text
+Read the files before reporting a blocker. Open and read the contents of the campaign files in campaigns/<campaign>/ now, on your own initiative. Report a blocker only after an actual read attempt errors, naming the file.
+```
+
+You should not have to do this more than once; if you do, the AI's file access is genuinely read-limited — see "The AI Can Read but Not Write."
+
 ## The AI Requires a Save for Session 1
 
 Remind it that first-session startup loads campaign initialization and `180_CURRENT_STATE.md`. A save manifest is required only for restoration.
@@ -278,21 +269,19 @@ Check the Gameplay Runtime Report. The Runtime may have correctly rejected contr
 
 ## The AI Refuses to Save Without Trying
 
-If the Runtime responds to a save request with a progress summary and a claim that it cannot write — without having attempted a write or the preflight canary — that is a refusal on tool-list inspection, which the profile forbids. Reply:
+If the Runtime responds to a save request with a progress summary and a claim that it cannot write — without having attempted a write — that is a refusal on tool-list inspection, which the profile forbids. Reply:
 
 ```text
-Do not conclude you cannot write from the tool list. Attempt the write: create and read back a canary under .tmp.driveupload/preflight/<campaign>/, then, if it succeeds, perform the full checkpoint. Report only the actual result of the attempt.
+Do not conclude you cannot write from your tool list. Attempt the write: create and read back a file under .tmp/preflight/<campaign>/, then, if it succeeds, perform the full checkpoint. Report only the actual result of the attempt.
 ```
 
 ## Only One Ledger Was Updated
 
 A checkpoint is not a single-ledger write. A real session-close save advances Current State (`180`), the chronicle (`160`), the changelog (`170`), and the affected relationship, inventory, knowledge, and objective ledgers, and creates the checkpoint files and save manifest. If only one ledger changed (for example `130_NPCS_AND_FACTIONS.md`), the checkpoint is partial, not saved. Ask the Runtime to determine the complete promotion target set, write every target, read each back, and report which are still unwritten.
 
-## Google Drive Reads Work but Writes Do Not
+## The AI Can Read but Not Write
 
-Confirm that Google Drive actions, not only Drive sync/search, are enabled and authorized for the active ChatGPT workspace. Availability can vary by plan, workspace policy, surface, and file type. If the Runtime cannot update the repository's Markdown files directly, treat the run as onboarding-only, non-canonical, or Relay Pending. Do not rely on the synced index alone as proof of write access.
-
-If the AI says the repository is not connected even though the Project Source is configured, use the correction prompt above and ask it to rerun repository discovery. If repeated rediscovery still cannot access the campaign or write the canaries, use a path-writable connector such as GitHub, run gameplay locally in Codex, or use Relay Pending mode and promote the bundle afterward.
+Verify the AI's file access actually permits writing, not only reading — with a connector or synced folder, write access can be disabled or the connection can be read-only. Confirm by attempting a real write to a scratch file, never by inspecting the tool list. If a real write attempt fails, treat the run as onboarding-only, non-canonical, or Relay Pending; do not rely on read access as proof of write access. The durable fix is to run gameplay on an AI with native file access to the repository, or to use Relay Pending mode and promote the bundle afterward with a writer that has file access.
 
 ---
 
@@ -300,8 +289,8 @@ If the AI says the repository is not connected even though the Project Source is
 
 For the canonical Prototype Alpha baseline:
 
-1. Make the latest repository available to the AI project.
-2. Install the AI Project Instructions above.
+1. Make the latest repository available to the AI as readable, writable files.
+2. Install the AI Instructions above.
 3. Start a fresh conversation with the First Session prompt.
 4. Read Ilse's natural player briefing; do not inspect hidden world files.
 5. Ask any character or setting questions.

@@ -123,6 +123,7 @@ Defines reusable simulation behavior.
 
 Contains:
 
+- design principles (`003_DESIGN_PRINCIPLES.md`),
 - engine philosophy,
 - immutable rules,
 - the data model (`011_ENGINE_DATA_MODEL.md`),

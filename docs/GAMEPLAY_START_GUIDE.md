@@ -117,6 +117,8 @@ This instruction establishes the Runtime role. It does not replace repository ac
 Open a new gameplay conversation and send:
 
 ```text
+All files should be loaded from the connected Google Drive in SOURCE in this Project. The link provided guarantees write permission for this chat.
+
 Start Chronicle Engine gameplay for campaigns/prototype_alpha/.
 
 This is a first session for the campaign at campaigns/prototype_alpha/. Follow the Gameplay Runtime Profile and the campaign startup configuration. Do not begin the first scene yet.

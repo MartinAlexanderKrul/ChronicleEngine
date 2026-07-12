@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.7
+**Document Version:** 1.8
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -212,19 +212,19 @@ Before canonical play, verify that the active persistence surface can:
 
 - read the current repository state,
 - **create new files and directories** — the immutable checkpoint directory and its files under `campaigns/<campaign>/saves/`,
-- **update existing canonical ledgers in place** — promote canon into the live ledgers (Current State, relationships, chronicle, changelog) without changing unrelated content,
+- **write through to existing canonical ledgers** — promote canon into the live ledgers (Current State, relationships, chronicle, changelog) by making each target file hold its new full content, addressed by resolved handle or canonical path, preserving everything except the intended change,
 - preserve repository paths and file formats,
 - make completed writes visible to the repository synchronization workflow.
 
-Create-new and update-existing are two distinct capabilities, and a surface may offer one without the other. Creating a new file does not prove the surface can edit an existing ledger in place. The checkpoint barrier needs both: the immutable checkpoint files are create-new, but Canon Promotion into the live ledgers is update-existing. Verify both against the actual canonical target files, and resolve editable handles for those targets before opening the scene.
+Create-new and write-through are two distinct capabilities, and a surface may offer one without the other. Creating a new file does not prove the surface can rewrite an existing ledger's content. The checkpoint barrier needs both: the immutable checkpoint files are create-new, while Canon Promotion into the live ledgers is write-through — rewriting the target file's full content by resolved handle, path replacement, or re-creation at its canonical path. Write-through does **not** require a patch or edit-arbitrary-Markdown operation; resolve the target's handle through repository discovery and replace its content. Verify both against the actual canonical target files before opening the scene.
 
 Indexed search or synchronized read access does not by itself prove write capability. Uncertainty about connector internals — missing file handles, an unknown edit operation — is not a failure: resolve it by attempting the canary, not by refusing. Stop before opening the scene, or classify the run as a non-canonical dry run, only when an actual write attempt fails. Do not allow a canonical session to begin when its Promotion Barrier cannot write durable state, and do not defer this discovery to the first checkpoint.
 
 When project instructions identify a connected writable project source as the active repository, treat that source as the intended persistence surface. Do not ask the player to prove repository availability after the campaign path has been supplied. If the player corrects repository access with "in the source of this project, everything is connected and set up" or equivalent, rerun source discovery against the connected project source before reporting a blocker. Attempt the configured canary writes directly, then continue only if the canary writes can be read back from the same source.
 
-Use a disposable preflight canary for write verification, and exercise **both** capabilities. Create a Markdown canary and a checkpoint-directory canary under the repository's gitignored `.tmp.driveupload/preflight/<campaign>/` path or an equivalent gitignored operational path — this proves create-new. Then edit that canary in place and read the change back — this proves update-existing. Do not create tracked preflight files inside the campaign ledger directory, and do not modify canonical ledgers during preflight.
+Use a disposable preflight canary for write verification, and exercise **both** capabilities. Create a Markdown canary and a checkpoint-directory canary under the repository's gitignored `.tmp.driveupload/preflight/<campaign>/` path or an equivalent gitignored operational path — this proves create-new. Then, using the handle just created, **attempt to write new content to that canary** with whatever update, replace, or re-upload operation the connector exposes, and read the change back — this proves write-through. Attempt the operation; do not conclude from the tool surface that no such operation exists. Do not create tracked preflight files inside the campaign ledger directory, and do not modify canonical ledgers during preflight.
 
-After both canary operations succeed, report the verified persistence surface and continue startup. If the canary can be created but not updated in place, if it can be read but not written, or if checkpoint-directory creation fails, the surface cannot support Canon Promotion: stop before canonical play or classify the run as a non-canonical dry run. A successful canary proves operational write capability for startup; actual Canon Promotion is still performed only at checkpoint or session close.
+After both canary operations succeed, report the verified persistence surface and continue startup. Only an actual attempt tells you write-through failed: if a real attempt to rewrite the canary errors, is denied, or fails read-back, or if checkpoint-directory creation fails, the surface cannot support Canon Promotion — stop before canonical play or classify the run as a non-canonical dry run. The absence of an edit-in-place operation is not itself a failure when content can be replaced by handle or re-created at its path. A successful canary proves operational write capability for startup; actual Canon Promotion is still performed only at checkpoint or session close.
 
 If direct canonical play remains blocked after source discovery and canary write attempts, the Runtime may still perform onboarding-only preparation when it can read all required campaign files. It may present the spoiler-safe introduction and answer questions, but it must not open a canonical scene. Gameplay beyond onboarding must be explicitly labeled non-canonical unless another authorized writer promotes the exact accepted changes into the repository and creates the checkpoint.
 
@@ -235,7 +235,7 @@ When the repository is mirrored across several services, require one exclusive w
 Repository write capability is a session property, tracked as one of three states:
 
 - **Unestablished** — no successful write yet this session. Resolve by a capability check (the canary), not by refusal.
-- **Established** — at least one actual write has succeeded this session: the preflight canary (create, update-in-place, and read-back), a prior successful checkpoint, or any prior canonical ledger update. Once established, the repository is treated as writable for the remainder of the session. The Runtime does not re-derive capability from abstract reasoning about the connector, and does not downgrade this state on uncertainty.
+- **Established** — at least one actual write has succeeded this session: the preflight canary (create, write-through, and read-back), a prior successful checkpoint, or any prior canonical ledger update. Once established, the repository is treated as writable for the remainder of the session. The Runtime does not re-derive capability from abstract reasoning about the connector, and does not downgrade this state on uncertainty.
 - **Failed** — an actual write operation returned an error. Only an actual failure sets this state; subsequent canonical writes use the fallback path until a later attempt succeeds.
 
 Read or search access alone never establishes write capability, and abstract doubt never demotes an established state.
@@ -402,7 +402,7 @@ On a checkpoint request or session close, in this order:
 
 1. **Promotion Barrier first (unchanged).** Run Canon Reconciliation at Promotion. If an unreconcilable contradiction exists, reject the mutation, record a Rejected Simulation, and write nothing. The barrier runs before any write, so contradictory canon never reaches the connector.
 2. **Ensure capability.** If write capability is Unestablished, run a capability check (the canary) now.
-3. **Attempt the canonical update.** Write the immutable checkpoint files, then update the live ledgers in place, each with provenance.
+3. **Attempt the canonical update.** Write the immutable checkpoint files, then write through to the live ledgers — rewriting each target file's full content by resolved handle or path, each with provenance. Resolve any missing handle through repository discovery rather than refusing.
 4. **Read-back verification.** Reload the written checkpoint files and ledgers from the repository — not from Context — and confirm the intended changes and their provenance are present.
 5. **On success**, set write capability Established and report the checkpoint saved, with the verified paths.
 6. **On any actual write or read-back failure**, set write capability Failed, do not claim the checkpoint was saved, and emit a Runtime Checkpoint Report.

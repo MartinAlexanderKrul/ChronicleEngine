@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.5
+**Document Version:** 1.6
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -211,18 +211,20 @@ If the startup artifact is absent, derive only what canonical campaign state est
 Before canonical play, verify that the active persistence surface can:
 
 - read the current repository state,
-- update the required Markdown ledgers without changing unrelated content,
-- create checkpoint directories and files,
+- **create new files and directories** — the immutable checkpoint directory and its files under `campaigns/<campaign>/saves/`,
+- **update existing canonical ledgers in place** — promote canon into the live ledgers (Current State, relationships, chronicle, changelog) without changing unrelated content,
 - preserve repository paths and file formats,
 - make completed writes visible to the repository synchronization workflow.
 
-Indexed search or synchronized read access does not by itself prove write capability. If write access is unavailable or uncertain, stop before opening the scene or explicitly classify the run as a non-canonical dry run. Do not allow a canonical session to begin when its Promotion Barrier cannot write durable state.
+Create-new and update-existing are two distinct capabilities, and a surface may offer one without the other. Creating a new file does not prove the surface can edit an existing ledger in place. The checkpoint barrier needs both: the immutable checkpoint files are create-new, but Canon Promotion into the live ledgers is update-existing. Verify both against the actual canonical target files, and resolve editable handles for those targets before opening the scene.
+
+Indexed search or synchronized read access does not by itself prove write capability. If either capability is unavailable or uncertain, stop before opening the scene or explicitly classify the run as a non-canonical dry run. Do not allow a canonical session to begin when its Promotion Barrier cannot write durable state, and do not defer this discovery to the first checkpoint.
 
 When project instructions identify a connected writable project source as the active repository, treat that source as the intended persistence surface. Do not ask the player to prove repository availability after the campaign path has been supplied. If the player corrects repository access with "in the source of this project, everything is connected and set up" or equivalent, rerun source discovery against the connected project source before reporting a blocker. Attempt the configured canary writes directly, then continue only if the canary writes can be read back from the same source.
 
-Use a disposable preflight canary for write verification. Create a Markdown canary and a checkpoint-directory canary under the repository's gitignored `.tmp.driveupload/preflight/<campaign>/` path or an equivalent gitignored operational path. Do not create tracked preflight files inside the campaign ledger directory, and do not modify canonical ledgers during preflight.
+Use a disposable preflight canary for write verification, and exercise **both** capabilities. Create a Markdown canary and a checkpoint-directory canary under the repository's gitignored `.tmp.driveupload/preflight/<campaign>/` path or an equivalent gitignored operational path — this proves create-new. Then edit that canary in place and read the change back — this proves update-existing. Do not create tracked preflight files inside the campaign ledger directory, and do not modify canonical ledgers during preflight.
 
-After the canary write succeeds, report the verified persistence surface and continue startup. If the canary can be read but not written, or if checkpoint-directory creation fails, stop before canonical play. A successful canary proves operational write capability for startup; actual Canon Promotion is still performed only at checkpoint or session close.
+After both canary operations succeed, report the verified persistence surface and continue startup. If the canary can be created but not updated in place, if it can be read but not written, or if checkpoint-directory creation fails, the surface cannot support Canon Promotion: stop before canonical play or classify the run as a non-canonical dry run. A successful canary proves operational write capability for startup; actual Canon Promotion is still performed only at checkpoint or session close.
 
 If direct canonical play remains blocked after source discovery and canary write attempts, the Runtime may still perform onboarding-only preparation when it can read all required campaign files. It may present the spoiler-safe introduction and answer questions, but it must not open a canonical scene. Gameplay beyond onboarding must be explicitly labeled non-canonical unless another authorized writer promotes the exact accepted changes into the repository and creates the checkpoint.
 
@@ -368,10 +370,22 @@ Do not include ADR status, architecture changes, roadmap progress, technical deb
 
 ---
 
+# Canon Reconciliation at Promotion
+
+Promotion is not all-or-nothing, and **not established is not the same as contradiction.** At each promotion barrier, classify every not-yet-canon fact and handle it accordingly:
+
+- **Grounded progression** — a fact that advances an established thread: a canonical NPC finally met in person, a known objective moved forward, a recorded relationship changing state. Promote it into the scope-responsible ledger with provenance.
+- **Newly generated but consistent** — detail the Runtime introduced that does not contradict any higher-tier canon. It is legitimate canon at the lowest tier (Rules Section 2.1; `012` Sections 1.3, 8.3). Promote it with provenance. If it is **load-bearing named canon** — a new named figure, place, institution, or rank that materially extends the world — flag it for a ruling before promoting, rather than either accepting or discarding it silently. Filling a field the canon left unspecified (for example, adding a given name to a surname-only figure) is a fill, recorded as an alias update with provenance — not a rename and not a contradiction.
+- **Contradiction** — a fact that conflicts with higher-tier canon. Reconcile it explicitly (Rules Section 2.9), quarantining only the specific conflicting fact, not the surrounding session.
+
+Promote the grounded and consistent work; flag the load-bearing new canon; reconcile only the true conflicts. Do not discard an otherwise grounded session because it also produced unestablished-but-consistent detail.
+
+---
+
 # Failure Behavior
 
 When information is missing, distinguish not loaded from not established. Load the scope-responsible source before inferring. If a fact remains unestablished, keep it unknown or ask only when a player choice is required.
 
 If sources conflict, pause affected startup or play. Never choose silently, repair by invention, or expose hidden material while explaining the conflict.
 
-When proposed or completed play contradicts canonical startup state and cannot be promoted, classify it as a **Rejected Simulation**. A Rejected Simulation is non-canonical and causes no mutation, but remains useful validation evidence. Record why it was rejected and which safeguard prevented canon corruption. Do not describe it as merely discarded, and do not number it as a canonical session.
+When proposed or completed play **contradicts** canonical startup state in a way that cannot be reconciled, classify it as a **Rejected Simulation**. This is reserved for genuine, unreconcilable contradiction of the session's core — not for merely unestablished detail, which is handled by Canon Reconciliation at Promotion above. A single invented name or a minor unestablished NPC is reconciled or flagged, not grounds to reject an otherwise grounded session. A Rejected Simulation is non-canonical and causes no mutation, but remains useful validation evidence. Record why it was rejected and which safeguard prevented canon corruption. Do not describe it as merely discarded, and do not number it as a canonical session.

@@ -360,6 +360,10 @@ Beyond canon conflicts, the Runtime handles errors arising from execution itself
 - **Broken cross-reference** — a record points at a record that does not exist. Flag and resolve; do not silently repair by invention.
 - **Version mismatch** — recorded versions differ from current versions (Section 6.2). Surface explicitly on restoration.
 
+## 8.3 Unestablished Is Not Contradiction
+
+A fact absent from loaded canon is not, by that absence, a contradiction. Newly generated detail that is consistent with higher-tier canon is promotable at the lowest tier with provenance (Section 1.3; Rules Section 2.1); only a fact that conflicts with higher-tier canon triggers contradiction handling (Section 8.1). The Runtime does not discard grounded work because it also produced unestablished-but-consistent detail: it promotes what is consistent, reconciles what conflicts, and, for load-bearing new canon, requests a ruling rather than silently accepting or rejecting it. Operational classification at the promotion barrier is defined by the active Runtime Profile.
+
 ---
 
 # Runtime Execution Summary

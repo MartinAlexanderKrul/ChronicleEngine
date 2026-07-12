@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.0
+**Document Version:** 1.4
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -53,6 +53,30 @@ If the startup artifact is absent, derive only what canonical campaign state est
 
 ---
 
+# Persistence Preflight
+
+Before canonical play, verify that the active persistence surface can:
+
+- read the current repository state,
+- update the required Markdown ledgers without changing unrelated content,
+- create checkpoint directories and files,
+- preserve repository paths and file formats,
+- make completed writes visible to the repository synchronization workflow.
+
+Indexed search or synchronized read access does not by itself prove write capability. If write access is unavailable or uncertain, stop before opening the scene or explicitly classify the run as a non-canonical dry run. Do not allow a canonical session to begin when its Promotion Barrier cannot write durable state.
+
+When project instructions identify a connected writable project source as the active repository, treat that source as the intended persistence surface. Do not ask the player to prove repository availability after the campaign path has been supplied. If the player corrects repository access with "in the source of this project, everything is connected and set up" or equivalent, rerun source discovery against the connected project source before reporting a blocker. Attempt the configured canary writes directly, then continue only if the canary writes can be read back from the same source.
+
+Use a disposable preflight canary for write verification. Create a Markdown canary and a checkpoint-directory canary under the repository's gitignored `.tmp.driveupload/preflight/<campaign>/` path or an equivalent gitignored operational path. Do not create tracked preflight files inside the campaign ledger directory, and do not modify canonical ledgers during preflight.
+
+After the canary write succeeds, report the verified persistence surface and continue startup. If the canary can be read but not written, or if checkpoint-directory creation fails, stop before canonical play. A successful canary proves operational write capability for startup; actual Canon Promotion is still performed only at checkpoint or session close.
+
+If direct canonical play remains blocked after source discovery and canary write attempts, the Runtime may still perform onboarding-only preparation when it can read all required campaign files. It may present the spoiler-safe introduction and answer questions, but it must not open a canonical scene. Gameplay beyond onboarding must be explicitly labeled non-canonical unless another authorized writer promotes the exact accepted changes into the repository and creates the checkpoint.
+
+When the repository is mirrored across several services, require one exclusive writer during gameplay. Concurrent edits create stale-load and conflict risks and must be reconciled before play.
+
+---
+
 # First-Session Boot
 
 A first session does not require a save manifest.
@@ -69,6 +93,29 @@ For an initialized campaign with no checkpoint:
 8. Open the first scene only after the player confirms readiness.
 
 Missing first-session saves are expected, not errors. Create the first checkpoint at the first checkpoint request or session close.
+
+---
+
+# Opening Anchor Contract
+
+After the player confirms readiness and before producing scene narration, perform an internal Opening Anchor Validation against canonical campaign state.
+
+Internally verify:
+
+- time and chronology,
+- exact starting location,
+- protagonist identity and condition,
+- inventory and credentials,
+- established relationships and known NPCs,
+- immediate objectives and motivations,
+- immediate pressure and opening conflict,
+- character knowledge and information boundaries.
+
+Compare the proposed opening scene against those anchors before presenting it. The opening must not introduce or replace artifacts, inventory, NPCs, motivations, timeline facts, historical events, relationships, locations, or conflicts unless they follow directly from loaded canon or the player's declared actions.
+
+Additional sensory detail is allowed only when it is compatible with canon, establishes no unsupported setup, and does not imply hidden truth. When an anchor is missing, contradictory, or unclear, ask the player or request a ruling before narration.
+
+This validation is internal. Do not present an anchor checklist or status screen to the player. Reflect the verified facts naturally through immersive narration while preserving their exact substance.
 
 ---
 
@@ -173,3 +220,5 @@ Do not include ADR status, architecture changes, roadmap progress, technical deb
 When information is missing, distinguish not loaded from not established. Load the scope-responsible source before inferring. If a fact remains unestablished, keep it unknown or ask only when a player choice is required.
 
 If sources conflict, pause affected startup or play. Never choose silently, repair by invention, or expose hidden material while explaining the conflict.
+
+When proposed or completed play contradicts canonical startup state and cannot be promoted, classify it as a **Rejected Simulation**. A Rejected Simulation is non-canonical and causes no mutation, but remains useful validation evidence. Record why it was rejected and which safeguard prevented canon corruption. Do not describe it as merely discarded, and do not number it as a canonical session.

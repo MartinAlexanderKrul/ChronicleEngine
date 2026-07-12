@@ -73,6 +73,8 @@ If you are new to the project, read the documents in the following order.
 
 For gameplay, use `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`. The Runtime reads campaign state and presents a spoiler-safe introduction; players do not need to read repository files.
 
+For setup instructions and ready-to-use AI Project prompts, see `docs/GAMEPLAY_START_GUIDE.md`.
+
 ---
 
 ## Engine

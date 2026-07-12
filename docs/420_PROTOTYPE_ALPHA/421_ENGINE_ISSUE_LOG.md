@@ -25,4 +25,6 @@ Each issue is triaged as a **refinement** (a fix within the current architecture
 
 # Issues
 
-_None logged yet. Entries are added as sessions are played._
+| ID | Session | Area (Rules/Runtime/Data Model/Workflow) | Description | Class (refinement/gap) | Status |
+|----|---------|------------------------------------------|-------------|------------------------|--------|
+| PA-I001 | Rejected Simulation 001 | Runtime Profile | First-session narration was generated without anchoring to canonical campaign state. It replaced Ilse's equipment and introduction, changed the timeline and opening conflict, and introduced unsupported artifacts. The Promotion Barrier correctly prevented mutation. | refinement | Profile corrected; verify on Session 1 restart |

@@ -47,4 +47,35 @@ Next session hook:
 
 # Reports
 
-_No sessions played yet._
+## Rejected Simulation 001 - Ungrounded Opening
+
+Date attempted (real): 2026-07-12
+Canonical in-world span: none
+Classification: Rejected Simulation; non-canonical validation evidence
+
+Summary:
+- The Runtime opened a scene without grounding narration in the initialized Prototype Alpha campaign.
+- The scene changed Ilse's equipment, replaced her letter of introduction, altered the timeline and opening conflict, and introduced unsupported artifacts.
+- At the Promotion Barrier, the Runtime detected the divergence and refused to write it into canonical ledgers.
+
+Mechanics exercised:
+- Canon consistency checking
+- Promotion Barrier
+- No-silent-mutation protection
+- First-session context loading and opening narration
+
+Canon produced / promoted:
+- None.
+- Repository status remained unchanged.
+
+Issues logged:
+- PA-I001 - first-session narration lacked an internal Opening Anchor Validation.
+
+Observations:
+- The Promotion Barrier successfully protected canonical state.
+- Divergent play is retained as a Rejected Simulation rather than treated as a canonical session or merely discarded.
+
+Next canonical session:
+- Restart Session 1 through the player briefing and readiness gate.
+- Internally validate time, location, inventory, relationships, objectives, and immediate pressure before immersive narration.
+- Do not invent additional setup.

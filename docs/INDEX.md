@@ -15,6 +15,8 @@ Every new session should begin by reading the files below before proposing chang
 
 Use `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` to start or resume a campaign. Players do not need to read repository files before play.
 
+Setup manual and AI Project prompts: `docs/GAMEPLAY_START_GUIDE.md`.
+
 ### Architecture
 
 5. engine/000_ENGINE_MANIFEST.md

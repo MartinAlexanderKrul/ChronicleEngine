@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 1.4
+**Document Version:** 1.5
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay in an AI project or repository-aware AI session
 
@@ -95,8 +95,19 @@ This ChatGPT Project has the Chronicle Engine repository connected as a Google D
 Follow docs/AI_GAMEPLAY_RUNTIME_PROFILE.md.
 The repository is authoritative. Do not use the development workflow and do not modify engine architecture during play.
 
+ACTION RESOLUTION — HIGHEST PRIORITY, CHECK EVERY TURN:
+Before you narrate the outcome of ANY action the player declares, classify it.
+- Certain / trivial (walking, opening an unlocked door, presenting a letter, ordinary talk): narrate directly.
+- Uncertain OR opposed — the outcome is in doubt, it resists another person's will, or it carries real stakes (attack, grab, shove, sneak, pick a lock, steal, deceive, intimidate, persuade against resistance, flee a pursuer, climb something hard): you MUST, in this exact order:
+  1. STOP. Do not state or imply whether it succeeds.
+  2. Roll d100 and SHOW the number in your reply.
+  3. Apply the result band from engine/010_ENGINE_RULES.md Section 4 (combat also Section 6). Load that file now if it is not already loaded.
+  4. Narrate ONLY the outcome that die roll produced, for this ONE exchange, then stop and ask what the character does.
+You may NEVER narrate a hit, a miss, a wound, a success, or a failure for an uncertain action without a shown d100 in that same reply. An unarmed attack on a person is never automatic — it is a combat action and requires the roll. One exchange per reply; do not summon crowds, guards, or consequences beyond the single rolled exchange. This rule overrides the impulse to keep the prose flowing.
+
 Before narration:
 - load the selected campaign startup configuration and canonical state,
+- load engine/010_ENGINE_RULES.md Sections 4 and 6 (action resolution and combat) and confirm you have them, so the d100 is available the first time an action is uncertain,
 - distinguish first-session initialization from checkpoint restoration,
 - present a natural spoiler-safe introduction or recap,
 - answer clarification questions,
@@ -125,7 +136,9 @@ Start Chronicle Engine gameplay for campaigns/prototype_alpha/.
 
 This is a first session for the campaign at campaigns/prototype_alpha/. Follow the Gameplay Runtime Profile and the campaign startup configuration. Do not begin the first scene yet.
 
-Load canonical campaign state, present the player introduction, and wait for my questions or confirmation that I am ready.
+Load canonical campaign state, present the player introduction, and wait for my questions or confirmation that I am ready. Also load engine/010_ENGINE_RULES.md Sections 4 and 6 and confirm you have them.
+
+Action resolution, highest priority, every turn: before narrating the outcome of any action I declare, classify it. If it is uncertain or opposed — attack, grab, sneak, pick a lock, steal, deceive, intimidate, persuade against resistance, flee, climb — STOP, roll d100 and show the number, apply the Section 4 result band (combat also Section 6), then narrate only that one rolled exchange and ask what I do. Never narrate a hit, miss, wound, success, or failure for an uncertain action without a shown d100. An unarmed attack on a person is never automatic.
 
 The Chronicle Engine repository is connected to this ChatGPT Project as a Google Drive Project Source, and that Project Source is the intended writable persistence surface. You are authorized to write the preflight canaries there. Confirm write capability by creating a disposable Markdown canary and checkpoint-directory canary under .tmp.driveupload/preflight/prototype_alpha/ and reading them back. If you initially see only README.md or cannot locate the campaign, re-run repository discovery through the connected Project Source before reporting a blocker. If canary write or read-back still fails after rediscovery, continue only with onboarding if the required campaign files are readable. Do not open the scene. Do not create tracked preflight files inside campaigns/prototype_alpha/.
 ```

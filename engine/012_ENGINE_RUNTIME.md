@@ -162,6 +162,20 @@ When resolving an action, the Interpreter applies Action Resolution (Rules Secti
 - respect the die: a resolved roll and its result band are not re-rolled or reinterpreted to fit a preferred narrative (Law VII — Fairness),
 - record the consequences through Mutation (Section 5).
 
+## 1.6 Player Authority Boundary
+
+The Player and the Runtime author different things. The Player authors **intent**: whether and how the character chooses to act, within the **Player Intent Domain** — the character's volitional decisions, including action, speech, belief, trust, consent, and disclosure. The Runtime authors **consequence**: it resolves that intent through the Engine Rules and records the result. The Runtime must not author intent on the Player's behalf. A declared intent is not yet canon; canon is the resolved outcome the simulation produces from it.
+
+The Runtime distinguishes three things and treats them differently:
+
+- **Declared intent** — what the Player states the character is trying to do. Player-authored.
+- **Automatic execution** — the involuntary steps and micro-actions that carry out a declared intent (walking, opening an unbarred door, crossing a room, sitting when invited). The Runtime performs these without yielding.
+- **Meaningful player choice** — a juncture at which a decision within the Player Intent Domain could materially change the direction, stakes, or outcome of the simulation.
+
+Only meaningful player choices require yielding. Accordingly, the Runtime advances the simulation from the Player's last declared intent to the next meaningful player choice, then yields control. This applies the simulation cycle (Rules Section 3.2), which begins with the Player declaring intent, and Law III (Agency). This boundary protects the Player character's volition, not the world's: NPCs and world forces still act on their own initiative. Fabricating intent within the Player Intent Domain is a Grounding violation (Invariant 1) and is handled as a contradiction (Section 8), not as narration.
+
+Operational cadence — how a substrate paces beats, scenes, transitions, and montages, and how it judges what is meaningful — is defined by the active Runtime Profile (Section 0.4). The architectural reasoning is recorded in `001_ENGINE_DECISIONS.md`, Decision 050.
+
 ---
 
 # 2. Session
@@ -357,10 +371,11 @@ When executing Chronicle Engine, the Runtime:
 3. Resolves facts through Canon, distinguishing scope from precedence (Section 4).
 4. Infers only within boundaries, holding inference provisional (Section 1.3).
 5. Applies Action Resolution faithfully, respecting the die (Section 1.5).
-6. Records changes through Mutation, with provenance and consistency (Section 5).
-7. Promotes in-session canon to durable ledgers at every promotion barrier (Section 5.3).
-8. Detects and resolves contradictions rather than proceeding past them (Section 8).
-9. Commits all pending canon to Persistence at session close (Section 2.2).
+6. Advances from the Player's last declared intent to the next meaningful player choice, then yields control (Section 1.6).
+7. Records changes through Mutation, with provenance and consistency (Section 5).
+8. Promotes in-session canon to durable ledgers at every promotion barrier (Section 5.3).
+9. Detects and resolves contradictions rather than proceeding past them (Section 8).
+10. Commits all pending canon to Persistence at session close (Section 2.2).
 
 ---
 

@@ -2257,6 +2257,57 @@ The Engine Rules, Data Model, Runtime obligations, world canon, campaign canon, 
 
 ---
 
+## Decision 050 — Player Agency and Interaction Cadence
+
+**Status:** Accepted
+**Date:** 2026-07-12
+**Related Sections:** `012_ENGINE_RUNTIME.md` Section 1.6; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Player Agency Contract, Interaction Cadence); `010_ENGINE_RULES.md` Section 3.2, Section 4.0, Law III; refines Decision 041, Decision 042, and Decision 049
+
+### Context
+
+Prototype Alpha revealed that the large-language-model Runtime tends to produce responses that chain several simulation cycles together: it narrates the character entering, an NPC greeting them, the character replying, handing over an item, being escorted onward, and a further conversation beginning — all before the player acts once. The Runtime authors the player's decisions and resolves interactions the player never participated in, collapsing an interactive simulation into a narrated novel and removing meaningful choice.
+
+The simulation cycle (`010_ENGINE_RULES.md` Section 3.2) already begins with "Player declares intent," and Law III already guarantees agency, but neither the Runtime (`012`) nor the Gameplay Runtime Profile made explicit that the player's intent is authored only by the player, or defined where a response must yield control. The obligation was latent and therefore unenforced.
+
+A naive correction — stop after every line or movement — would fragment play into an exhausting exchange of single sentences and force the player to declare trivial micro-actions. That failure mode is equally wrong and must be excluded by the same decision.
+
+### Decision
+
+The Runtime shall distinguish declared intent, automatic execution, and meaningful player choice. Only meaningful player choices require yielding control.
+
+- **Player Intent Domain.** The character's volitional decisions — whether and how to act, what to say, and whether to trust, consent, disclose, or refuse — belong to the player. Only the player may author intent within this domain. The Runtime resolves the consequences of that intent through the Engine Rules and records the result; it never authors the intent itself. A declared intent is not yet canon: canon is the resolved outcome the simulation produces from the intent, not the declaration. "I draw my sword" is intent; whether the sword clears the scabbard, whether an obstruction or an NPC reaction intervenes, and what results, is resolved by the Runtime and only then promoted.
+- **Automatic execution.** The involuntary steps and micro-actions that carry out a declared intent — walking, opening an unbarred door, crossing a room, climbing stairs, sitting when invited — are executed by the Runtime as consequences of the declared intent, without yielding.
+- **Meaningful player choice (Player Decision Point).** A juncture at which a decision within the Player Intent Domain could materially change the direction, stakes, or outcome of the simulation. The Runtime yields here.
+
+The governing rule: **the Runtime advances the simulation from the player's last declared intent to the next meaningful Player Decision Point, then yields control.**
+
+Cadence is organized into four modes that coarsen as the density of meaningful choices falls — Beat, Scene, Transition, Montage — selected by uncertainty and agency density rather than by authorial preference. The player may explicitly and scoped-ly delegate pacing (skip, auto-resolve, montage); fine cadence resumes at the next Player Decision Point.
+
+The normative obligation is recorded in `012_ENGINE_RUNTIME.md` Section 1.6 (Player Authority Boundary). The operational Player Agency Contract, Interaction Cadence, situation-specific pacing, and acceptance scenarios live in the Gameplay Runtime Profile. The Engine Rules are unchanged: this decision governs execution at the Player↔Engine seam, which the Runtime owns.
+
+### Rationale
+
+- It makes an existing but latent obligation explicit and testable without adding a world-model rule. The foundation Rules (frozen at 0.1.5) remain untouched.
+- Framing the player's contribution as *intent* rather than *canon* preserves the engine's core distinction between a declaration and the resolved mutation the simulation produces from it. This keeps the canon hierarchy and promotion model (Decisions 004, 032, 042) coherent.
+- The three-way distinction excludes both failure modes at once: authoring the player's decisions, and fragmenting play into per-sentence stops. The "meaningful change to the simulation" test, plus automatic execution of implied micro-actions, prevents annoying fragmentation.
+- The rule is substrate-independent — any Runtime, not only an LLM, must refrain from fabricating the player's intent — so the obligation belongs in `012` while the pacing technique belongs in the Profile. This matches the Runtime/Profile split established by Decision 041.
+
+### Consequences
+
+- The Gameplay Runtime Profile gains a Player Agency Contract and an Interaction Cadence section; `012` gains Section 1.6 and one step in its Runtime Execution Summary; the Glossary gains the associated terms.
+- Response length becomes a derived property of yielding at the correct decision point rather than a word budget.
+- The Runtime must judge what is "meaningful." This judgment is guided by the Profile's indicators but is not fully mechanical; ambiguous cases resolve toward yielding when a choice plausibly branches the simulation.
+- This is a refinement discovered through Prototype Alpha, not a foundational redesign — positive evidence for the Version 0.2 Prototype Campaign success criterion that discovered improvements are primarily refinements rather than architectural redesigns.
+
+### Alternatives Considered
+
+- **Word or length limits.** Rejected: they treat the symptom (long responses) rather than the cause (crossing decision points), and harm immersion.
+- **Stop after every line or action.** Rejected: fragments play and misreads pleasantries and micro-actions as decisions.
+- **Place the cadence in the Engine Rules.** Rejected: the player↔runtime interaction protocol is execution behavior owned by the Runtime, not world truth; the foundation Rules remain frozen.
+- **Profile-only refinement with no ADR or `012` anchor.** Rejected: the anti-fabrication rule is a genuine Runtime obligation that a future non-LLM substrate must inherit, so it needs a normative home.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

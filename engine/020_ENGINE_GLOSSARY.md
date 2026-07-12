@@ -66,6 +66,22 @@ Archived events remain recoverable through documents, ledgers, orders, correspon
 
 ---
 
+## Automatic Execution
+
+The involuntary steps and micro-actions that carry out a declared player intent — such as walking, opening an unbarred door, crossing a room, or sitting when invited — which the Runtime performs without yielding control.
+
+Automatic execution is distinct from a Player Decision Point: it does not require the player to decide anything. Defined in `012_ENGINE_RUNTIME.md`, Section 1.6.
+
+---
+
+## Cadence Mode
+
+One of the four interaction-pacing modes the Gameplay Runtime Profile selects by the density of meaningful player choices and by uncertainty: Beat, Scene, Transition, and Montage, coarsening as agency thins.
+
+Cadence modes are operational profile guidance, not an engine mechanic. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
+
+---
+
 ## Campaign
 
 One character-centered play history within a persistent world.
@@ -197,6 +213,14 @@ Contradictions must be identified and resolved explicitly rather than ignored.
 A Runtime component: the working set of canon currently loaded and available for execution. The Context is a loaded view of canon, not canon itself; durable canon is owned by Persistence.
 
 See Working Set. Defined in `012_ENGINE_RUNTIME.md`, Section 3.
+
+---
+
+## Delegation
+
+An explicit, scoped instruction by which the player hands pacing back to the Runtime — for example "skip to the city," "auto-resolve the errand," or "narrate the rest of this conversation."
+
+Delegation is the only path by which the Runtime may skip meaningful interactions; fine cadence resumes at the next Player Decision Point. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Player Agency Contract).
 
 ---
 
@@ -586,6 +610,14 @@ An event transformed by culture, religion, legend, propaganda, or later retellin
 
 ---
 
+## Narrative Momentum
+
+The Gameplay Runtime Profile principle that the Runtime should avoid unnecessary interruptions: small actions that logically follow from a declared intent are narrated as involuntary consequences rather than surfaced as choices.
+
+Narrative momentum keeps play from fragmenting into per-sentence stops while still yielding at every meaningful Player Decision Point. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Player Agency Contract).
+
+---
+
 ## Object Block
 
 The single on-page representation of a persistent object: a fenced YAML block inside Markdown.
@@ -661,6 +693,22 @@ Its canonical structural scope taxonomy is `personal`, `local`, `regional`, `wor
 The root structural abstraction: anything with a stable identifier that persists across time and carries provenance.
 
 Its universal fields — identifier, the one authoritative Canonical Record, provenance, schema version, and status — are defined once on the root. It has four direct specializations: Persistent Entity (`ENT-`), Canonical Record (`REC-`), Event (`EVT-`), and Relationship (`REL-`). Defined in `011_ENGINE_DATA_MODEL.md`, Section 2.
+
+---
+
+## Player Decision Point
+
+A juncture at which a decision within the Player Intent Domain could materially change the direction, stakes, or outcome of the simulation, and at which the Runtime must yield control to the player.
+
+A juncture is not a Player Decision Point merely because an NPC spoke or the character moved; it is one when the player's choice could meaningfully change the simulation. Defined in `012_ENGINE_RUNTIME.md`, Section 1.6, and operationalized in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`.
+
+---
+
+## Player Intent Domain
+
+The set of volitional decisions authored only by the player: whether and how the character acts, what the character says, and whether the character trusts, consents, discloses, or refuses.
+
+Only the player may author intent within this domain; the Runtime resolves its consequences but never authors the intent itself. A declared intent is not yet canon — canon is the resolved outcome the simulation produces from it. Defined in `012_ENGINE_RUNTIME.md`, Section 1.6; see Decision 050.
 
 ---
 
@@ -981,6 +1029,14 @@ The simulation must remain coherent even if no single player character remains a
 The version identifier for a specific world's canonical setting state.
 
 It is tracked separately from engine, campaign, and save versions.
+
+---
+
+## Yield
+
+The Runtime act of ending a response at a Player Decision Point and returning control to the player, rather than continuing to advance the simulation.
+
+The governing cadence rule is that the Runtime advances from the player's last declared intent to the next meaningful Player Decision Point, then yields. Defined in `012_ENGINE_RUNTIME.md`, Section 1.6; see Decision 050.
 
 ---
 

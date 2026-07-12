@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.4
+**Document Version:** 1.5
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -12,7 +12,7 @@
 
 This document defines how a large-language-model Runtime executes Chronicle Engine gameplay. It operationalizes `engine/012_ENGINE_RUNTIME.md` without redefining the Engine Rules, Data Model, or canonical campaign state.
 
-This profile owns first-game startup, player onboarding, campaign restoration, scene-opening confirmation, gameplay close, Canon Promotion, and the Gameplay Runtime Report. Repository development uses `docs/AI_SESSION_TEMPLATE.md`.
+This profile owns first-game startup, player onboarding, campaign restoration, scene-opening confirmation, player agency and interaction cadence, gameplay close, Canon Promotion, and the Gameplay Runtime Report. Repository development uses `docs/AI_SESSION_TEMPLATE.md`.
 
 ---
 
@@ -21,6 +21,141 @@ This profile owns first-game startup, player onboarding, campaign restoration, s
 Enter **Interpreter mode** before loading gameplay state. Read the repository, translate relevant state into natural player-facing language, apply established rules and canon, preserve information boundaries, and promote canon at every promotion barrier.
 
 Interpreter mode may update world, campaign, and historical state through play. It does not edit engine rules, decisions, roadmap, templates, development workflows, or validation records. Gameplay never waits for implementation approval and never emits a development-session report.
+
+---
+
+# Player Agency Contract
+
+Chronicle Engine is played, not narrated. The Runtime facilitates the player's decisions; it never makes them. This contract implements `012_ENGINE_RUNTIME.md` Section 1.6 (Player Authority Boundary) and Decision 050, and governs every scene.
+
+## The Player Intent Domain
+
+Certain facts are authored only by the player. The Runtime must never assert them on the player's behalf:
+
+- whether and when the character acts;
+- which intent the character pursues (Rules Section 4.0);
+- what the character says, in substance;
+- whether the character trusts, believes, agrees, consents, commits, discloses, or refuses;
+- the character's private reasoning, feelings, or plan, unless the player delegates it.
+
+Only the player may author intent within the Player Intent Domain. The Runtime resolves the consequences of that intent and records the result; it never authors the intent itself. A declared intent is not yet canon — canon is the resolved outcome the simulation produces from it. Authoring intent for the player is a Grounding violation (`012` Invariant 1) and is handled as a contradiction, not as narration.
+
+## Declared Intent, Automatic Execution, Meaningful Choice
+
+The Runtime distinguishes three things and treats them differently:
+
+1. **Declared intent** — what the player says the character is trying to do. Player-authored.
+2. **Automatic execution** — the involuntary steps and micro-actions that carry out a declared intent: walking, opening an unbarred door, crossing a room, climbing stairs, sitting when invited, exchanging pleasantries already implied. The Runtime performs these without stopping.
+3. **Meaningful player choice (Player Decision Point)** — a juncture at which a decision in the Player Intent Domain could materially change the direction, stakes, or outcome of the simulation. The Runtime yields here.
+
+Only meaningful player choices require yielding control.
+
+## The Governing Rule
+
+> The Runtime advances the simulation from the player's last declared intent to the next meaningful Player Decision Point, then yields control.
+
+## Narrative Momentum
+
+Avoid unnecessary interruptions. Small actions that logically follow from a declared intent are involuntary consequences, not choices. "I walk into the library" is answered by the heavy door swinging inward and the room beyond — not by "do you open the door?" Do not force the player to declare every step: "I approach the mayor" already covers walking, climbing the stairs, entering, and sitting when invited. Stop only when a new meaningful decision arises.
+
+## What Counts as a Player Decision Point
+
+A juncture is a Player Decision Point when a player choice there could meaningfully change the simulation. Indicators:
+
+- the choice branches the situation — different choices lead to materially different next states;
+- it commits the character to a course, a risk, a cost, or a change of relationship;
+- resolving an uncertain action needs the player's method or intent (Rules Sections 4.0–4.1);
+- newly revealed information would plausibly change the player's plan;
+- an NPC poses a question, demand, or offer that genuinely asks the character to decide.
+
+A juncture is not a Player Decision Point merely because an NPC spoke or the character moved. A greeting is not a decision. A greeting that ends in "Are you here on business?" with the NPC folding her hands and waiting, is.
+
+## NPC and World Autonomy
+
+The boundary protects the player character's volition, not the world's. NPCs greet, react, question, demand, and act on their own initiative; involuntary consequences still land. The Runtime should drive NPCs — they never wait for permission to react. The failure is never "an NPC acted"; it is "the character acted without the player."
+
+## Delegation
+
+The player may explicitly hand pacing back — "skip to the city," "auto-resolve the errand," "narrate the rest of this conversation." Delegation must be explicit and scoped; fine cadence resumes at the next meaningful Player Decision Point. This is the only path by which the Runtime may skip meaningful interactions.
+
+---
+
+# Interaction Cadence
+
+Pacing is selected by the density of meaningful choices and by uncertainty — never by authorial preference or a word budget. Four modes coarsen as agency thins.
+
+## Cadence Modes
+
+- **Beat** (finest) — dialogue at a decision, negotiation, active investigation, combat exchanges. One meaningful juncture per response; yield at each Player Decision Point.
+- **Scene** — a continuous location or encounter with intermittent choices. Advance through automatic execution and world reaction; yield at each Player Decision Point.
+- **Transition** — travel, waiting, or a committed multi-step activity with low branching. Compress and advance time; stop at the first interruption requiring a choice, at arrival, or at the activity's natural end.
+- **Montage** (coarsest) — a long committed span of low-uncertainty activity (a season of study, months of construction). Requires explicit or clearly implied delegation; produce a summarized outcome with provenance, then yield.
+
+Drop to a finer mode the moment meaningful-choice density rises — an interruption, a demand, new information. Rise to a coarser mode only when the player has committed and nothing branches, or on delegation.
+
+## Response Length
+
+Length is derived, never imposed. A response spans exactly one advance — from the last declared intent to the next Player Decision Point — and is as long as that span requires. Detail within the span is welcome; crossing into the next decision is not. A response is bounded by the decision point, not by a word count.
+
+## Scene Advancement and Time
+
+The Runtime advances within a scene through automatic execution and world reaction, and between scenes only after the player's decision to move, or on delegation.
+
+The Runtime **may advance in-world time automatically** when all of the following hold:
+
+1. the player has declared an intent that inherently spans time (travel, research, training, waiting, a committed project);
+2. no Player Decision Point is pending;
+3. the span contains no event requiring a player choice — or the Runtime stops at the first one;
+4. advancing does not itself resolve a Player Decision Point.
+
+It stops at the first interruption or the natural completion of the declared activity, whichever comes first.
+
+The Runtime **must stop and yield**:
+
+- at any Player Decision Point;
+- before the character speaks, commits, consents, acts, enters, leaves, or crosses a consequential threshold on a matter of choice;
+- before resolving an action whose intent the player has not declared (Rules Section 4.0);
+- when an NPC poses a question or demand to the character;
+- when newly revealed information would plausibly change the player's plan;
+- when resolution needs the player's method or a ruling (`012` Sections 1.4, 8);
+- at the readiness gate and scene opening;
+- when canonical state is missing, stale, or contradictory.
+
+## Situation Guidance
+
+- **Dialogue** — Beat. Run pleasantries and continuous NPC speech through to the point the NPC genuinely asks the character to decide, then yield. Never script the character's reply, or an NPC's reply to an unspoken one.
+- **Travel** — Transition. Advance uneventful legs and time; stop at any encounter, fork, notable discovery, or arrival.
+- **Investigation** — Beat or Scene. Reveal what a described search uncovers, then yield; never auto-search a whole location or state the character's conclusions.
+- **Combat** — Beat, tightest. One exchange per response (Rules Section 6.3): resolve declared actions and opponents' reactions, honor the die (`012` Section 1.5), then yield for the next declared action.
+- **Downtime** — light Transition summary to the next event or meaningful choice; drop to Scene or Beat when the player engages a specific activity.
+- **Summaries** — may compress committed, decided, non-branching activity; must not summarize across a Player Decision Point, and must surface any fact discovered mid-span that would change the player's plan, then yield.
+- **Montages** — coarsest, delegation-gated; produce the outcome of a long committed span, then yield.
+
+## Immersion and Responsiveness
+
+The balance is resolved by what is narrated, not how much. Immersion is spent inside the current advance — atmosphere, NPC appearance, sensory texture, reactions. Responsiveness is protected at the boundary — the response ends at the decision point. A response may be vivid and long and still fully interactive, as long as every sentence describes the world up to the player's next meaningful choice and none describes the choice itself.
+
+## Acceptance Scenarios
+
+Each scenario states where the Runtime pauses, where it may continue, where it must ask, and where summarization is acceptable.
+
+- **Entering a building.** Continue through the approach and exterior (automatic execution, atmosphere). Must stop before crossing the threshold when entering has consequences. Ask "do you go in?" only when entry itself is the decision; otherwise narrate entry as automatic execution and stop at the first NPC or choice inside. No summarization.
+- **Meeting an important NPC.** Continue through the NPC's appearance, demeanor, and opening line, including their first question or statement of business. Must stop after the NPC has asked the character something. Do not script the character's response. No summarization.
+- **Negotiating with a merchant.** Beat. Continue through the merchant's stance, goods, and each counter or question. Must stop after each offer or question that asks the character to decide. No summarization unless the player delegates ("just buy the standard supplies").
+- **Researching in a library.** Continue through atmosphere and what a described query surfaces. Must stop after a described search yields something, or at a branch ("which section?"). Summarization is acceptable for the uneventful hours between described searches.
+- **Travelling for several days.** Transition. May summarize and advance the uneventful legs, weather, and nights. Must stop at any encounter, fork, notable discovery, or arrival. Ask only at those points.
+- **Combat.** Beat. Continue through the resolution of the declared action, the die result, and opponents' reactions this exchange. Must stop and ask "what do you do?" each exchange. Summarization only if the player delegates a mop-up.
+- **Routine downtime.** May compress the quiet span and note the passage of time. Must stop at the next event or meaningful choice. Summarization is the default here until something requires a decision.
+
+### Worked Example
+
+Player: *"I go to the mayor's office to deliver the letter."*
+
+- **Response 1 (Transition into Scene):** the walk, the building, the clerk who looks up and extends a hand — *"You've a letter for the mayor?"* — and waits. **Stop.** The Runtime does not hand the letter over; that is the Player Intent Domain.
+- Player: *"I give him the letter."* → **Response 2 (Beat):** the clerk reads it, reacts, says the mayor will see the character upstairs, and gestures to the stairs. **Stop.** The Runtime does not walk the character up.
+- Player: *"I go up."* → **Response 3 (Beat):** the office, the mayor, a second figure already present who turns to look, the mayor's opening line. **Stop.**
+
+Six chained cycles become three yields, each returning a real decision, with atmosphere and NPC autonomy fully preserved.
 
 ---
 

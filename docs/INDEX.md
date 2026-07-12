@@ -11,6 +11,10 @@ Every new session should begin by reading the files below before proposing chang
 3. docs/AI_SESSION_TEMPLATE.md
 4. docs/CONTRIBUTING.md
 
+### Gameplay
+
+Use `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` to start or resume a campaign. Players do not need to read repository files before play.
+
 ### Architecture
 
 5. engine/000_ENGINE_MANIFEST.md
@@ -28,6 +32,8 @@ Every new session should begin by reading the files below before proposing chang
 ### Templates
 
 13. templates/000_TEMPLATE_CONVENTIONS.md
+
+Campaign startup and player-briefing templates are under `templates/campaign/` and `templates/derived/`.
 
 ### Worlds
 

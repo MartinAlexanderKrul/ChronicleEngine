@@ -14,11 +14,11 @@ Version 0.2 architecture, implementation, and Capability Validation are complete
 
 Current Task:
 
-Set up Prototype Alpha — Engine Validation Campaign: a deliberately small prototype world and campaign that exercise the Version 0.2 knowledge model and the wider engine.
+Complete the Prototype Alpha Engine Readiness Review, then begin Session 1 through the Gameplay Runtime Profile.
 
 Next Review:
 
-Prototype Alpha scope and world/campaign scaffolding.
+Gameplay startup, onboarding, first-session boot, and close procedures are implemented. The next review is read-only readiness validation before play.
 
 ---
 
@@ -504,6 +504,17 @@ The campaign should exercise:
 - Engine issue log,
 - Architecture observations,
 - Engine improvement backlog.
+- Gameplay Runtime Profile and first-game onboarding.
+
+### Readiness
+
+- [x] Canonical Verra world
+- [x] Canonical Prototype Alpha campaign baseline
+- [x] Development and Gameplay Runtime Profile separation (Decision 049)
+- [x] First-session boot without a save manifest
+- [x] Prototype Alpha startup configuration and spoiler-safe player briefing
+- [ ] Engine Readiness Review
+- [ ] Session 1 and first checkpoint
 
 ### Success Criteria
 

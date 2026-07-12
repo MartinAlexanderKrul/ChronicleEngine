@@ -155,7 +155,9 @@ Prototype Alpha fails if gameplay repeatedly exposes:
 # Build Sequence
 
 - [x] Prototype Alpha plan and tracking artifacts (this document; 421–424)
-- [ ] Prototype world — World Bible, three institution ledgers, three Knowledge Subjects, NPC roster (`worlds/verra/`)
-- [ ] Prototype campaign — character sheet and starting ledgers (`campaigns/prototype_alpha/`)
+- [x] Prototype world — World Bible, three institution ledgers, three Knowledge Subjects, NPC roster (`worlds/verra/`)
+- [x] Prototype campaign — character sheet and starting ledgers (`campaigns/prototype_alpha/`)
+- [x] Gameplay Runtime Profile and first-game player onboarding (Decision 049)
+- [ ] Engine Readiness Review
 - [ ] Session 1 and first session report
 - [ ] Continue sessions; log issues; produce the input to the Engine Postmortem

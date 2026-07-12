@@ -130,3 +130,15 @@ templates/
 The directory is named `objects/`, not `entities/`, because Events, Relationships, and Canonical Records are persistent objects but not persistent entities.
 
 Files under `examples/` are non-canonical. They demonstrate a filled template end to end and are never part of any world or campaign.
+
+---
+
+# 8. Operational and Derived Templates
+
+Not every template instantiates a Persistent Object.
+
+Files under `templates/campaign/` define non-canonical operational configuration, such as campaign startup policy. Files under `templates/derived/` define non-canonical presentation artifacts generated from canonical sources, such as player briefings.
+
+These artifacts carry no `ENT-`, `REC-`, `EVT-`, or `REL-` identifier. They must identify their authority status, reference rather than duplicate canonical ownership, and never establish world truth or campaign state.
+
+A derived artifact is disposable. When its canonical sources change, are missing, or conflict with it, the Runtime ignores or regenerates the artifact from current canon.

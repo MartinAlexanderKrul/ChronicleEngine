@@ -1798,6 +1798,7 @@ Future decisions and rules sections should add a changelog entry as part of the 
 ## Decision 041 — Runtime Model
 
 **Status:** Accepted
+**Refined by:** Decision 049 (separate Development and Gameplay Runtime Profiles for the LLM substrate)
 **Date:** 2026-07-11
 **Related Sections:** `012_ENGINE_RUNTIME.md`; `010_ENGINE_RULES.md` — Sections 2, 3, 4, 13; Decision 027; Decision 042
 
@@ -2206,6 +2207,53 @@ This decision is process governance and introduces no new engine simulation mech
 - Defining the full lifecycle procedure inside this decision. Rejected: duplicates the operational workflow; `docs/DEVELOPMENT_WORKFLOW.md` is the single operational source.
 - Defining the lifecycle only in the roadmap. Rejected: the roadmap tracks planned work and milestone state; a durable governance policy belongs in the decision record.
 - Making the Prototype Campaign and Postmortem optional. Rejected: optional validation is what allowed the engine to reach this point without ever being played.
+
+---
+
+## Decision 049 - Separate Development and Gameplay Runtime Profiles
+
+**Status:** Accepted
+**Date:** 2026-07-12
+**Related Sections:** Decision 039; Decision 041; Decision 042; `012_ENGINE_RUNTIME.md`; `docs/AI_SESSION_TEMPLATE.md`; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`; `templates/campaign/090_CAMPAIGN_STARTUP.md`; `templates/derived/095_PLAYER_BRIEFING.md`
+
+### Context
+
+Decision 041 delegated substrate-specific execution to Runtime Profiles but identified one LLM session document for both repository development and campaign execution. Prototype Alpha exposed the resulting ambiguity: the document assigned Architect responsibilities, required development approval and reporting, and described resumed gameplay through a save manifest, but did not define a first-session path, player onboarding, an Interpreter role, a scene-opening confirmation gate, or gameplay-specific close behavior.
+
+The campaign contained enough canonical state to introduce its protagonist safely, yet the Runtime presented operational state rather than a natural RPG introduction. Requiring players to read repository files would violate the Runtime's purpose and the engine's information boundaries. Making introductions canonical would create a second source of truth.
+
+### Decision
+
+Separate LLM operational guidance into two Runtime Profiles:
+
+- `docs/AI_SESSION_TEMPLATE.md` is the **Development Runtime Profile**. It governs Architect-mode repository work and never advances gameplay.
+- `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` is the **Gameplay Runtime Profile**. It governs Interpreter-mode startup, onboarding, restoration, confirmation, play, Canon Promotion, checkpoints, and gameplay reporting. It never edits engine architecture.
+
+Campaigns may provide `090_CAMPAIGN_STARTUP.md`, a non-canonical operational configuration declaring the protagonist policy (`pre-authored`, `custom`, `either`, or `emergent`), canonical source paths, initialization state, customization boundaries, and confirmation requirements.
+
+Campaigns may provide `095_PLAYER_BRIEFING.md`, a non-canonical derived presentation artifact generated from canonical campaign state. It carries no Persistent Object identifier, establishes no canon, and is discarded or regenerated whenever stale, missing, contradictory, or unsupported.
+
+A first session boots from campaign initialization and `180_CURRENT_STATE.md`; it does not require a save manifest. A resumed session restores from the latest valid checkpoint. Both paths stop at a readiness gate before scene opening.
+
+Custom-character choices remain provisional until player confirmation. Canonical initialization and identifier allocation occur atomically after confirmation. A prepared baseline marked for preservation is instantiated separately rather than overwritten.
+
+### Rationale
+
+The split applies Decision 041's existing Runtime Profile abstraction instead of adding a new engine subsystem. The Runtime already delegates session procedure to profiles, and the Rules already define agency, knowledge boundaries, canon, saves, and promotion. Operational startup configuration and derived presentation fill the practical gap while preserving one canonical source of truth.
+
+### Consequences
+
+Gameplay no longer inherits Architect-mode approval gates or development reports. First-session startup is distinct from checkpoint restoration. New, returning, and takeover players receive different levels of briefing. Pre-authored, custom, and emergent protagonists share one startup framework.
+
+The Engine Rules, Data Model, Runtime obligations, world canon, campaign canon, identifier registry, and save format are unchanged.
+
+### Alternatives Considered
+
+- Expand the existing mixed profile. Rejected: it preserves ambiguous Architect and Interpreter authority.
+- Put onboarding prose in the Engine Rules. Rejected: tone and LLM procedure are substrate-specific.
+- Make the player briefing a Canonical Record. Rejected: derived presentation would become a competing source of canon.
+- Require a save for Session 1. Rejected: no checkpoint exists before initialized state has been played and promoted.
+- Require all campaigns to use a pre-authored protagonist. Rejected: custom and emergent campaigns are first-class use cases.
 
 ---
 

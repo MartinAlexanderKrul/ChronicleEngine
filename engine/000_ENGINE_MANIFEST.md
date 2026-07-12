@@ -140,7 +140,7 @@ The Engine Layer separates three concerns that must not be conflated:
 
 The Data Model is the **most stable layer** of the architecture: everything references its identifiers and structures, so it changes least often and is amended most conservatively. Stability is not authority — the Data Model is authoritative on structure and subordinate to the Rules on behavior.
 
-The Runtime is substrate-independent. Substrate-specific procedure lives in operational **Runtime Profiles** under `docs/`, not in the Engine Layer. The current large-language-model profile's session procedure is `docs/AI_SESSION_TEMPLATE.md`.
+The Runtime is substrate-independent. Substrate-specific procedure lives in operational **Runtime Profiles** under `docs/`, not in the Engine Layer. Large-language-model execution uses `docs/AI_SESSION_TEMPLATE.md` for Architect-mode development and `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` for Interpreter-mode gameplay (Decision 049).
 
 Persistent-object identifiers are allocated by the repository-level registry at `system/ID_REGISTRY.md`, governed by `011_ENGINE_DATA_MODEL.md`.
 
@@ -184,6 +184,8 @@ Tracks:
 A campaign never modifies engine rules.
 
 Campaigns modify world state only through simulated historical events.
+
+Campaigns may contain non-canonical operational and presentation artifacts. `090_CAMPAIGN_STARTUP.md` declares startup policy; `095_PLAYER_BRIEFING.md` is a disposable, derived, spoiler-safe presentation. Neither owns canon nor carries a Persistent Object identifier.
 
 ---
 

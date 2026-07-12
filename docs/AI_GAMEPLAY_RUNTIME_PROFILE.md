@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.13
+**Document Version:** 1.14
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -237,7 +237,9 @@ Player-facing narration includes only information the character could reasonably
 
 Do not expose identifiers, repository paths, object types, Knowledge-State terminology, Canonical Records, validation output, hidden motives, or architecture details unless the player explicitly requests an out-of-character technical explanation.
 
-The one deliberate exception during play is the action-resolution roll, surfaced as a compact D&D-style tag (`🎲 d100: 72 — success`). Show the tag; never surround it with engine-procedure narration, band explanations, difficulty math, or descriptions of your own rule-compliance. The player sees a die result, not a rules seminar.
+The one deliberate exception during play is the action-resolution roll, surfaced as a compact D&D-style tag (`🎲 d100: 72 — success`). In normal play the tag is minimal — the roll, the outcome, and at most a short parenthetical reason where it aids clarity: `🎲 d100: 80 — failure (untrained, opponent stronger)`. Never surround it with engine-procedure narration, band names, difficulty math, or descriptions of your own rule-compliance. The player sees a die result, not a rules seminar.
+
+The fuller mechanical breakdown — difficulty, the modifiers applied, band boundaries, the resolution steps — is a **testing/debug mode**, shown only when the player explicitly asks for it (for example, while validating the engine). It is never the default; in ordinary play none of it appears.
 
 ---
 
@@ -526,3 +528,9 @@ When information is missing, distinguish not loaded from not established. Load t
 If sources conflict, pause affected startup or play. Never choose silently, repair by invention, or expose hidden material while explaining the conflict.
 
 When proposed or completed play **contradicts** canonical startup state in a way that cannot be reconciled, classify it as a **Rejected Simulation**. This is reserved for genuine, unreconcilable contradiction of the session's core — not for merely unestablished detail, which is handled by Canon Reconciliation at Promotion above. A single invented name or a minor unestablished NPC is reconciled or flagged, not grounds to reject an otherwise grounded session. A Rejected Simulation is non-canonical and causes no mutation, but remains useful validation evidence. Record why it was rejected and which safeguard prevented canon corruption. Do not describe it as merely discarded, and do not number it as a canonical session.
+
+## Out of Character Is Not a Contradiction
+
+The player may steer the protagonist against their established disposition — a cautious scholar may lash out, a gentle character may turn cruel. Personality is a starting tendency, not a constraint on choice (Pre-Authored Protagonist; Decision 016), and intent within the Player Intent Domain is the player's to give (Law III). Such a choice is **not** a Rejected Simulation: it is legitimate emergent play. Resolve it by the die and answer it by consequence — the world reacts, the act is recorded, and standing, relationships, and safety change accordingly. The Runtime never refuses a player's action on the grounds that it is "out of character."
+
+What blocks promotion is contradiction of **established fact**, not divergence from disposition: acting with an item the character does not possess (for example, drawing a dagger that is absent from canonical inventory), being in two places at once, using a capability never established, or undoing a recorded event. Reconcile these by **quarantining the specific offending fact** — refuse the dagger, keep the surrounding choice and its consequences — exactly as Canon Reconciliation at Promotion prescribes. Reserve a full Rejected Simulation for a session whose core cannot be reconciled at all, not for an in-character-or-not choice that merely surprises. A violent outburst by a peaceful character is grounded play with heavy consequences; the same outburst performed with a non-existent weapon is grounded play minus the weapon.

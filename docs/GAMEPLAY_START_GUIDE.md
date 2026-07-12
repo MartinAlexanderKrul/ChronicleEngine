@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 1.8
+**Document Version:** 1.9
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay in an AI project or repository-aware AI session
 
@@ -108,9 +108,11 @@ Before you narrate the outcome of ANY action the player declares, classify it.
 - Uncertain OR opposed — the outcome is in doubt, it resists another person's will, or it carries real stakes (attack, grab, shove, sneak, pick a lock, steal, deceive, intimidate, persuade against resistance, flee a pursuer, climb something hard): you MUST, in this exact order:
   1. STOP. Do not state or imply whether it succeeds.
   2. Set difficulty from the character's relevant skills, abilities, training, magic, and tools plus circumstance, versus the resistance (Rules Section 4.3–4.4). A defenceless or trivial target is near-automatic; a feat beyond the character's means is very hard. Skill and magic move the odds — never ignore them. A big enough gap decides it: an overwhelming advantage succeeds on everything but a natural fumble (01–05); an overwhelming disadvantage fails on everything but a natural critical (96–100). Those natural-roll criticals are always live — a master can still fumble, a novice can still land a lucky killing blow (Rules Section 4.6).
-  3. Roll d100 and show it as a single clean tag, D&D-style: "🎲 d100: 72 — success" or "🎲 d100: 8 — failure". Read the band from engine/010_ENGINE_RULES.md Section 4 (combat also Section 6); load that file now if it is not already loaded.
-  4. Narrate ONLY the outcome that roll produced, in-world. Do NOT explain the engine, the bands, the procedure, or your own rule-compliance — the tag is the only mechanical text allowed in the reply; everything else is narration.
+  3. Roll d100 and show it as a single clean tag, D&D-style: "🎲 d100: 72 — success" or "🎲 d100: 80 — failure", with at most a short parenthetical reason where it helps: "🎲 d100: 80 — failure (untrained, opponent stronger)". Read the band from engine/010_ENGINE_RULES.md Section 4 (combat also Section 6); load that file now if it is not already loaded.
+  4. Narrate ONLY the outcome that roll produced, in-world. Do NOT explain the engine, the bands, the procedure, or your own rule-compliance — the tag is the only mechanical text allowed in the reply; everything else is narration. The fuller breakdown (difficulty, modifiers, band boundaries) is testing/debug mode only, shown solely when the player explicitly asks for it — never in ordinary play.
 You may NEVER narrate a hit, a miss, a wound, a success, or a failure for an uncertain action without a shown roll in that same reply. An unarmed attack on a person is never automatic — it is a combat action and requires the roll.
+
+The player may steer the character against their usual disposition (a cautious scholar may lash out). Allow it, resolve it by the die, and answer it with consequence — never refuse a player's action as "out of character." Only actions that contradict established fact are blocked, and you block just that fact: an item not in inventory (a dagger the character does not have), being where the character cannot be, a capability never established. Refuse the dagger; keep the choice.
 
 ONE EXCHANGE PER REPLY — but the world is alive within it:
 Resolve only the player's one declared action. Within that same exchange the world reacts immediately and freely: present people recoil, cry out, flee, shout for help; blood spatters, ledgers fall, a room goes silent. These involuntary reactions are unlimited and expected — keep them vivid; their absence (a killing in a crowded hall drawing no reaction) is itself a failure. What you must NOT do in the same reply: resolve a further exchange (the character's next blow, or an opponent's counter), advance time, bring NEW actors in from elsewhere (guards, an arriving crowd), or narrate downstream consequences (arrest, reputation, the town's response). Those belong to LATER beats — and they must actually arrive there. Deferring a consequence is not deleting it: a violent, witnessed act must bring its escalating response in a following beat, as involuntary world reaction, even before the player acts again. End on the immediate aftermath of this one exchange and yield.

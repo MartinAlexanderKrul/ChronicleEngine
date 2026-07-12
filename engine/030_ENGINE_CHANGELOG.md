@@ -12,6 +12,15 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-12 — Out-of-Character Play and Roll Presentation Modes
+
+**Runtime Profiles / Start Guide:** A Claude/Haiku Session 1 test rejected chaotic player-authored violence partly on the grounds that it was out of character — conflating divergence from disposition with contradiction of canon. Added "Out of Character Is Not a Contradiction" to `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Failure Behavior) and a matching clause to both resident gates in `docs/GAMEPLAY_START_GUIDE.md`: the player may steer the protagonist against their established disposition (Pre-Authored Protagonist; Decision 016; Law III), and such a choice is grounded emergent play resolved by the die and answered by consequence, never refused as "out of character"; only contradictions of established fact (an item absent from inventory such as the non-canonical dagger, being where the character cannot be, an unestablished capability) are blocked, and the Runtime quarantines just that fact rather than rejecting the session. Separately split roll presentation into a minimal play tag (`🎲 d100: 80 — failure`, with an optional short reason) versus a testing/debug breakdown (difficulty, modifiers, bands) shown only on explicit request. Profile version 1.14; Guide version 1.9
+**Context:** Prototype Alpha — Claude/Haiku Session 1 export (Issue Log PA-I008); the dagger rejection was correct, the personality-based rejection was not
+**Runtime/Rules:** Unchanged — clarifies Law III (Agency), Decision 016 (Personality Traits Evolve in Expression), and the existing Rejected Simulation / Canon Reconciliation boundary; no mechanic change
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-12 — Modifier Application and Critical Tails
 
 **Decisions:** Added Decision 052 (Modifier Application and Always-Live Critical Tails) — specifies how difficulty and modifiers reach the d100 and defines natural-roll criticals that no modifier can remove

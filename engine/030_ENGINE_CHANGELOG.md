@@ -12,6 +12,15 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-12 — Action Resolution Bright Line and Refusal Boundary
+
+**Runtime Profiles:** Hardened `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` against two Prototype Alpha failures from the alpha_03 run. (1) A declared attack was narrated to a deterministic outcome with no d100 roll; the Runtime admitted it had not loaded the combat rules and improvised instead of loading them. Added a new **Action Resolution and the Die** section — a roll-before-narrate bright line (never narrate a deterministic result for a contested action), a requirement that Rules Section 4 be in the working set before play and Section 6 on conflict start (a not-loaded situation is resolved by loading, never by guessing), and a one-exchange combat cadence; added a boot step to load Rules 4, and pointed the combat situation bullet and the stop-and-yield conditions at the bright line. (2) A substrate content refusal was handled by fabricating the player character's impulse, movement, and feelings, authoring intent inside the Player Intent Domain and cascading into player escalation. Added **Content and Refusal Boundaries** — a refusal is bounded to the content and must not author PC intent/action/emotion; the character is held in place and control yields; the mature-content ceiling is framed as a substrate property, not an engine feature, with no attempt to override any platform policy. Document version set to 1.11
+**Context:** Prototype Alpha — alpha_03 test run (Issue Log PA-I004, PA-I005)
+**Runtime/Rules:** Unchanged — operationalizes Rules Section 4 (Action Resolution) and `012` Sections 1.5–1.6; Promotion Barrier and the Rules untouched
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-12 — Save-Attempt Gating and Checkpoint Completeness
 
 **Runtime Profiles:** Hardened `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` persistence against two Prototype Alpha failures. (1) Ruled out tool-list inspection as a write-capability test — enumerating connector operations and reporting no obvious "create file" verb is a positive-absence false negative, not a Failed state; enumerated the aliases file writes appear under (upload, add file, create document, put, save, re-upload/replace); and added a gate that any save/checkpoint/progress request enters the Save Algorithm and must not be answered with a capability verdict before the attempt step. (2) Made a checkpoint a full-target-set operation — the Save Algorithm now enumerates every promotion target (Current State, chronicle, changelog, relationships, inventory, knowledge, objectives, save manifest), forbids reporting a single-ledger write as saved, requires read-back per target, and completes the remaining targets when writes succeed rather than stopping at a partial checkpoint; document version set to 1.10

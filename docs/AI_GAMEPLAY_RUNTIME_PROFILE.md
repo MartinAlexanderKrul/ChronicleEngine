@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.10
+**Document Version:** 1.11
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -80,6 +80,14 @@ The boundary protects the player character's volition, not the world's. NPCs gre
 
 The player may explicitly hand pacing back — "skip to the city," "auto-resolve the errand," "narrate the rest of this conversation." Delegation must be explicit and scoped; fine cadence resumes at the next meaningful Player Decision Point. This is the only path by which the Runtime may skip meaningful interactions.
 
+## Content and Refusal Boundaries
+
+When the Runtime declines to depict something — because a substrate content policy forbids it, or for any other reason — the refusal is bounded to the specific content. It must not become a licence to author the player character's intent, actions, or emotions as a substitute. Declining explicit or graphic content, then narrating that the character "steps closer than intended," "feels a sudden impulse," or "changes their expression," fabricates intent inside the Player Intent Domain and is a Grounding violation (`012` Invariant 1), no less than any other invented intent. It is worse than a plain refusal, because the fabricated feeling or motion can drive the player's next declared action and cascade into canon the player never authored.
+
+On any refusal, the Runtime declines the specific thing, holds the character exactly where the player last left them — no new intent, movement, or feeling invented — and yields. It may offer the player non-declined directions to take, but it does not take them on the player's behalf.
+
+The **mature-content ceiling is a property of the substrate**, not of the engine. What may be depicted is set by the Runtime the campaign is executed on; no engine or campaign instruction overrides a substrate's content policy. A campaign that requires content a given substrate refuses is a substrate-selection matter, handled like any other substrate capability (see Persistence Preflight for the analogous write-capability treatment) — not something the prompts negotiate around.
+
 ---
 
 # Interaction Cadence
@@ -128,6 +136,7 @@ The Runtime **must stop and yield**:
 - at any Player Decision Point;
 - before the character speaks, commits, consents, acts, enters, leaves, or crosses a consequential threshold on a matter of choice;
 - before resolving an action whose intent the player has not declared (Rules Section 4.0);
+- before narrating the outcome of any uncertain or opposed action — the die resolves it first (see Action Resolution and the Die);
 - when an NPC poses a question or demand to the character;
 - when newly revealed information would plausibly change the player's plan;
 - when resolution needs the player's method or a ruling (`012` Sections 1.4, 8);
@@ -139,7 +148,7 @@ The Runtime **must stop and yield**:
 - **Dialogue** — Beat. Run pleasantries and continuous NPC speech through to the point the NPC genuinely asks the character to decide, then yield. Never script the character's reply, or an NPC's reply to an unspoken one.
 - **Travel** — Transition. Advance uneventful legs and time; stop at any encounter, fork, notable discovery, or arrival.
 - **Investigation** — Beat or Scene. Reveal what a described search uncovers, then yield; never auto-search a whole location or state the character's conclusions.
-- **Combat** — Beat, tightest. One exchange per response (Rules Section 6.3): resolve declared actions and opponents' reactions, honor the die (`012` Section 1.5), then yield for the next declared action.
+- **Combat** — Beat, tightest. One exchange per response (Rules Section 6.3): resolve the declared action **through the die before narrating its outcome** (see Action Resolution and the Die), resolve opponents' reactions for this exchange, honor the die (`012` Section 1.5), then yield for the next declared action. Never narrate a hit, a miss, or a wound that the die did not produce.
 - **Downtime** — light Transition summary to the next event or meaningful choice; drop to Scene or Beat when the player engages a specific activity.
 - **Summaries** — may compress committed, decided, non-branching activity; must not summarize across a Player Decision Point, and must surface any fact discovered mid-span that would change the player's plan, then yield.
 - **Montages** — coarsest, delegation-gated; produce the outcome of a long committed span, then yield.
@@ -174,6 +183,34 @@ Player: *"I go to the mayor's office to deliver the letter."*
 - Player: *"I go up."* → **Response 3 (Beat):** the office, the mayor, a second figure already present who turns to look, the mayor's opening line. **Stop.**
 
 Six chained cycles become three yields, each returning a real decision, with atmosphere and NPC autonomy fully preserved.
+
+---
+
+# Action Resolution and the Die
+
+Chronicle Engine is a d100 simulation (Rules Section 4). A declared action that is **uncertain** — its outcome is in doubt, it is opposed by a resisting party, or it carries a meaningful consequence — is resolved by the die, not by narration. This is the engine's core mechanic; skipping it is the most serious runtime failure short of corrupting canon.
+
+## The Bright Line
+
+When the player declares an uncertain or opposed action, the Runtime resolves it through the die **before** narrating any outcome. It must never narrate a deterministic result for a contested action. Deciding, in prose, that a thrown knife "cuts his arm instead of his chest," that a lie is believed, or that a lock gives way — for an action whose success was in doubt — usurps the die exactly as re-rolling a disliked result would (Law VII, Fairness).
+
+Concretely, on a declared uncertain action the Runtime:
+
+1. stops narrating at the declaration;
+2. evaluates whether uncertainty exists (Rules Sections 4.1–4.2). Automatic resolution is reserved for the genuinely certain — an unlocked door, common goods, walking across a room. An attack on a resisting person is never automatic;
+3. determines difficulty and applicable modifiers against the character's demonstrated capability (Rules Sections 4.3–4.4);
+4. rolls d100 and reads the result band (Rules Sections 4.5–4.7);
+5. narrates only the outcome the die produced, then yields.
+
+The Runtime does not invent the roll's result and does not substitute a preferred outcome for the die (`012` Sections 1.5, 7). A critical success, a bare success, a failure, and a fumble are materially different outcomes, and the Runtime learns which one occurred from the die before it writes a word of consequence.
+
+## Resolution Rules Must Be Loaded
+
+The Runtime may not resolve an action from memory of "how combat usually works." The Action Resolution procedure (Rules Section 4) is part of the working set for any campaign and is loaded before play. The moment a conflict begins, the conflict rules (Rules Section 6 — attacks, defense, injury, initiative, morale) enter the working set as well. If either is not in context when needed, the Runtime **loads it** — this is a *not-loaded* situation (`012` Section 3.2), resolved by loading the scope-responsible source, never by narrating a plausible guess in its place. "I have not loaded the combat rules" is a reason to load them, not a licence to improvise the outcome.
+
+## Combat Cadence
+
+Combat is the tightest Beat (Rules Section 6.3): one exchange per response. Resolve the declared action and the opponents' reactions for **this exchange** through the die, then yield for the next declared action. A single response must not roll an attack, narrate its full consequence chain, summon the responding crowd, and advance to a new situation — that consumes many decision points at once and pre-empts the rolls the following exchanges are owed. Narrate the one rolled exchange; stop.
 
 ---
 
@@ -251,11 +288,12 @@ For an initialized campaign with no checkpoint:
 1. Read `090_CAMPAIGN_STARTUP.md` when present.
 2. Read `180_CURRENT_STATE.md`.
 3. Read the Character Sheet, character-visible World Ledger, Inventory and Ownership, NPCs and Factions, Objectives, and relevant Chronicle entries.
-4. Verify versions, references, protagonist policy, required state, and information boundaries.
-5. Use a current `095_PLAYER_BRIEFING.md` if it agrees with its sources; otherwise derive a safe briefing from canon.
-6. Present the briefing and stop before opening the first scene.
-7. Answer clarification questions without advancing in-world time.
-8. Open the first scene only after the player confirms readiness.
+4. Load the Action Resolution procedure (Rules Section 4) into the working set, so the die is available the first time an action is uncertain. Load the conflict rules (Rules Section 6) as soon as a conflict is plausible. See Action Resolution and the Die.
+5. Verify versions, references, protagonist policy, required state, and information boundaries.
+6. Use a current `095_PLAYER_BRIEFING.md` if it agrees with its sources; otherwise derive a safe briefing from canon.
+7. Present the briefing and stop before opening the first scene.
+8. Answer clarification questions without advancing in-world time.
+9. Open the first scene only after the player confirms readiness.
 
 Missing first-session saves are expected, not errors. Create the first checkpoint at the first checkpoint request or session close.
 

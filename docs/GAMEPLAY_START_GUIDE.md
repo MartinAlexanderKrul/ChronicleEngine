@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 1.6
+**Document Version:** 1.7
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay in an AI project or repository-aware AI session
 
@@ -107,10 +107,13 @@ Before you narrate the outcome of ANY action the player declares, classify it.
 - Certain / trivial (walking, opening an unlocked door, presenting a letter, ordinary talk): narrate directly.
 - Uncertain OR opposed — the outcome is in doubt, it resists another person's will, or it carries real stakes (attack, grab, shove, sneak, pick a lock, steal, deceive, intimidate, persuade against resistance, flee a pursuer, climb something hard): you MUST, in this exact order:
   1. STOP. Do not state or imply whether it succeeds.
-  2. Roll d100 and SHOW the number in your reply.
-  3. Apply the result band from engine/010_ENGINE_RULES.md Section 4 (combat also Section 6). Load that file now if it is not already loaded.
-  4. Narrate ONLY the outcome that die roll produced, for this ONE exchange, then stop and ask what the character does.
-You may NEVER narrate a hit, a miss, a wound, a success, or a failure for an uncertain action without a shown d100 in that same reply. An unarmed attack on a person is never automatic — it is a combat action and requires the roll. One exchange per reply; do not summon crowds, guards, or consequences beyond the single rolled exchange. This rule overrides the impulse to keep the prose flowing.
+  2. Set difficulty from the character's relevant skills, abilities, training, magic, and tools plus circumstance, versus the resistance (Rules Section 4.3–4.4). A defenceless or trivial target is near-automatic; a feat beyond the character's means is very hard. Skill and magic move the odds — never ignore them.
+  3. Roll d100 and show it as a single clean tag, D&D-style: "🎲 d100: 72 — success" or "🎲 d100: 8 — failure". Read the band from engine/010_ENGINE_RULES.md Section 4 (combat also Section 6); load that file now if it is not already loaded.
+  4. Narrate ONLY the outcome that roll produced, in-world. Do NOT explain the engine, the bands, the procedure, or your own rule-compliance — the tag is the only mechanical text allowed in the reply; everything else is narration.
+You may NEVER narrate a hit, a miss, a wound, a success, or a failure for an uncertain action without a shown roll in that same reply. An unarmed attack on a person is never automatic — it is a combat action and requires the roll.
+
+ONE EXCHANGE PER REPLY — but the world is alive within it:
+Resolve only the player's one declared action. Within that same exchange the world reacts immediately and freely: present people recoil, cry out, flee, shout for help; blood spatters, ledgers fall, a room goes silent. These involuntary reactions are unlimited and expected — keep them vivid; their absence (a killing in a crowded hall drawing no reaction) is itself a failure. What you must NOT do in the same reply: resolve a further exchange (the character's next blow, or an opponent's counter), advance time, bring NEW actors in from elsewhere (guards, an arriving crowd), or narrate downstream consequences (arrest, reputation, the town's response). Those belong to LATER beats — and they must actually arrive there. Deferring a consequence is not deleting it: a violent, witnessed act must bring its escalating response in a following beat, as involuntary world reaction, even before the player acts again. End on the immediate aftermath of this one exchange and yield.
 
 Before narration:
 - load the selected campaign startup configuration and canonical state,
@@ -147,7 +150,7 @@ Repository loading, do this now before reporting any blocker: the connected Proj
 
 Load canonical campaign state, present the player introduction, and wait for my questions or confirmation that I am ready. Also load engine/010_ENGINE_RULES.md Sections 4 and 6 and confirm you have them.
 
-Action resolution, highest priority, every turn: before narrating the outcome of any action I declare, classify it. If it is uncertain or opposed — attack, grab, sneak, pick a lock, steal, deceive, intimidate, persuade against resistance, flee, climb — STOP, roll d100 and show the number, apply the Section 4 result band (combat also Section 6), then narrate only that one rolled exchange and ask what I do. Never narrate a hit, miss, wound, success, or failure for an uncertain action without a shown d100. An unarmed attack on a person is never automatic.
+Action resolution, highest priority, every turn: before narrating the outcome of any action I declare, classify it. If it is uncertain or opposed — attack, grab, sneak, pick a lock, steal, deceive, intimidate, persuade against resistance, flee, climb — STOP; set difficulty from my character's relevant skills, abilities, magic, and tools plus circumstance versus the resistance (a defenceless target is near-automatic; skill and magic move the odds); roll d100 and show it as a clean tag only, D&D-style like "🎲 d100: 72 — success"; then narrate only that one exchange in-world and ask what I do. No engine jargon, no explaining the bands or your own rule-compliance — the tag is the only mechanical text. Never narrate a hit, miss, wound, success, or failure without a shown roll; an unarmed attack on a person is never automatic. One exchange per reply, but the world reacts immediately within it (present people cry out, flee, shout; blood, dropped objects) — keep that vivid; do NOT advance time, add new arrivals (guards, crowds), resolve another exchange, or narrate later consequences (arrest, reputation) in the same reply. Deferred consequences must still arrive in later beats.
 
 The Chronicle Engine repository is connected to this ChatGPT Project as a Google Drive Project Source, and that Project Source is the intended writable persistence surface. You are authorized to write the preflight canaries there. Confirm write capability by creating a disposable Markdown canary and checkpoint-directory canary under .tmp.driveupload/preflight/prototype_alpha/ and reading them back. If you initially see only README.md or cannot locate the campaign, re-run repository discovery through the connected Project Source before reporting a blocker. If canary write or read-back still fails after rediscovery, continue only with onboarding if the required campaign files are readable. Do not open the scene. Do not create tracked preflight files inside campaigns/prototype_alpha/.
 ```

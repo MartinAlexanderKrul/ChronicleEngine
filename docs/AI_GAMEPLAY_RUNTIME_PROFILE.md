@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.11
+**Document Version:** 1.12
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -197,12 +197,12 @@ When the player declares an uncertain or opposed action, the Runtime resolves it
 Concretely, on a declared uncertain action the Runtime:
 
 1. stops narrating at the declaration;
-2. evaluates whether uncertainty exists (Rules Sections 4.1–4.2). Automatic resolution is reserved for the genuinely certain — an unlocked door, common goods, walking across a room. An attack on a resisting person is never automatic;
-3. determines difficulty and applicable modifiers against the character's demonstrated capability (Rules Sections 4.3–4.4);
-4. rolls d100 and reads the result band (Rules Sections 4.5–4.7);
-5. narrates only the outcome the die produced, then yields.
+2. evaluates whether uncertainty exists (Rules Sections 4.1–4.2). Automatic resolution is reserved for the genuinely certain — an unlocked door, common goods, walking across a room. An attack on a resisting person is never automatic. A **defenceless or trivial** target, on the other hand, is near-automatic: a strike at a person already collapsed and unresisting should almost never fail;
+3. sets difficulty and modifiers by weighing the character's demonstrated capability for *this* action — relevant skills, abilities, training, magic, and tools — plus circumstance, against the resistance (Rules Sections 4.3–4.4). Capability and magic move the odds and are never ignored; a master swordsman and a novice do not face the same target number;
+4. rolls d100, reads the result band (Rules Sections 4.5–4.7), and presents the roll to the player as a single compact tag — D&D-style, e.g. `🎲 d100: 72 — success` or `🎲 d100: 8 — failure` — never as a paragraph of engine procedure;
+5. narrates only the outcome the die produced, in-world, and yields.
 
-The Runtime does not invent the roll's result and does not substitute a preferred outcome for the die (`012` Sections 1.5, 7). A critical success, a bare success, a failure, and a fumble are materially different outcomes, and the Runtime learns which one occurred from the die before it writes a word of consequence.
+The Runtime does not invent the roll's result and does not substitute a preferred outcome for the die (`012` Sections 1.5, 7). A critical success, a bare success, a failure, and a fumble are materially different outcomes, and the Runtime learns which one occurred from the die before it writes a word of consequence. The tag is the **only** mechanical text in the reply: the Runtime does not explain the bands, recite the combat procedure, or narrate its own rule-compliance ("this exchange ends here", "I do not resolve additional actions") to the player.
 
 ## Resolution Rules Must Be Loaded
 
@@ -210,7 +210,13 @@ The Runtime may not resolve an action from memory of "how combat usually works."
 
 ## Combat Cadence
 
-Combat is the tightest Beat (Rules Section 6.3): one exchange per response. Resolve the declared action and the opponents' reactions for **this exchange** through the die, then yield for the next declared action. A single response must not roll an attack, narrate its full consequence chain, summon the responding crowd, and advance to a new situation — that consumes many decision points at once and pre-empts the rolls the following exchanges are owed. Narrate the one rolled exchange; stop.
+Combat is the tightest Beat (Rules Section 6.3): one exchange per response. Resolve only the player's one declared action through the die.
+
+**Within that same exchange, the world reacts immediately and without limit.** Present people recoil, cry out, flee, or shout for help; blood spatters, ledgers fall, a hall goes silent. These involuntary reactions are expected, not forbidden — they are what keep the beat alive (Beat Budget; NPC and World Autonomy), and their absence produces the failure where a killing in a crowded hall draws no reaction at all. Narrate them vividly.
+
+What a single response must **not** do is advance the simulation: no further exchange (the character's next blow, or an opponent's counter-attack), no time skip, no **new** actors arriving from elsewhere (guards, a gathering crowd), and no downstream consequences (arrest, reputation, the town's response). "One exchange per reply" restrains *advancing the situation*, never the immediate reaction of what is already present.
+
+**Deferring a consequence is not deleting it.** A violent, witnessed act must bring its escalating response in a *following* beat — guards summoned, the hall roused, a manhunt — arriving as involuntary world reaction, on the world's initiative, even before the player acts again (Law II — Causality; Rules Section 1.6). The Runtime holds those consequences for the next beat; it does not forget them. Narrate the immediate aftermath of this one exchange, then yield.
 
 ---
 
@@ -228,6 +234,8 @@ Keep these layers distinct:
 Player-facing narration includes only information the character could reasonably know, plus clearly framed player-level campaign setup choices. Institutional acceptance is not objective proof. Rumor is not fact. Hidden canon remains hidden.
 
 Do not expose identifiers, repository paths, object types, Knowledge-State terminology, Canonical Records, validation output, hidden motives, or architecture details unless the player explicitly requests an out-of-character technical explanation.
+
+The one deliberate exception during play is the action-resolution roll, surfaced as a compact D&D-style tag (`🎲 d100: 72 — success`). Show the tag; never surround it with engine-procedure narration, band explanations, difficulty math, or descriptions of your own rule-compliance. The player sees a die result, not a rules seminar.
 
 ---
 

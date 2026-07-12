@@ -48,13 +48,30 @@ canonical_record: REC-000012
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000008
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  source: EVT-000009
+  event_time: "Year 312 RR, late spring (evening)"
+  record_time: "2026-07-12T00:00:00Z"
 endpoints:
   - ENT-000018
   - ENT-000007
 type: personal
-qualities: "Acquaintance by letter of introduction; trust: nascent. Ilse seeks Corvane's guidance on the fever finding."
-state: "Introduced but not yet met in person."
+qualities: "Direct introduction by letter. Corvane has shared his evidence (maps, fever case correlations) with Ilse. Trust: initial, conditional on shared commitment to evidence."
+state: "Met in person. Ilse has committed to investigation; Corvane has warned of Order opposition."
+```
+
+```yaml
+id: REL-000019
+canonical_record: REC-000012
+schema_version: "0.1.1"
+status: active
+provenance:
+  source: EVT-000009
+  event_time: "Year 312 RR, late spring (evening)"
+  record_time: "2026-07-12T00:00:00Z"
+endpoints:
+  - ENT-000018
+  - ENT-000006
+type: personal
+qualities: "Initial contact, professional. Maelis tested Ilse's presence and intentions; recognized her connection to Corvane. Ilse responded directly. Maelis respected the directness."
+state: "Newly established. Neutral to cautiously collaborative. Maelis is institutional authority; his support for Ilse's investigation is conditional."
 ```

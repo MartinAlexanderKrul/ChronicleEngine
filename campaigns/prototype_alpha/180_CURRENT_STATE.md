@@ -32,14 +32,16 @@ subjects: []
 ## Protagonist
 
 - Ilse Varn (`ENT-000018`) — recently licensed physician-scholar, outsider, no local standing.
-- Location: Halden (`ENT-000002`), arriving at the Athenaeum (`ENT-000003`).
-- Condition: sound, travel-worn.
+- Location: Halden (`ENT-000002`), Athenaeum study (Corvane's quarters, `ENT-000003`).
+- Condition: sound, travel-worn. Mentally engaged, committed to investigation.
+- Provenance: Session EVT-000009 (first session play)
 
 ## Knowledge Posture
 
-- Marsh-fever finding (`ENT-000013`): Ilse's state is **provisional and unformed** (`REL-000017`) — she knows the claim and the dispute, not the evidence. **Objective truth of the claim is not established** and is not recorded as settled anywhere.
+- Marsh-fever finding (`ENT-000013`): Ilse's state is **witnessed but unconfirmed** (`REL-000017-updated`) — she has now seen Corvane's maps, noted the water-source correlation, and has access to the *Observations* manuscript. Her own view remains unformed, but she possesses the evidentiary material. **Objective truth of the claim is not established** and is not recorded as settled anywhere.
 - Tempered glass (`ENT-000012`): awareness-only (`REL-000018`).
 - Rivermason's mortar (`ENT-000014`): unknown to Ilse.
+- Fever cases in river ward: directly confirmed (EVT-000009). At least two confirmed cases as of late spring 15th.
 
 ## Active Objectives
 

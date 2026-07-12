@@ -55,15 +55,15 @@ canonical_record: REC-000010
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000008
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  source: EVT-000009
+  event_time: "Year 312 RR, late spring (evening)"
+  record_time: "2026-07-12T00:00:00Z"
 endpoints:
   - ENT-000018
   - ENT-000013
 type: knowledge-state
-qualities: "Access: public and second-hand. Understanding: partial. Validation: none (unformed). Acceptance: undecided. Application: none yet. Ilse knows the claim and the public dispute, not the evidence."
-state: "An outsider's provisional awareness; her own view is not yet formed."
+qualities: "Access: direct (Corvane's maps and *Observations* manuscript). Understanding: substantial but incomplete. Validation: examining evidence firsthand. Acceptance: undecided. Application: none yet. Ilse has witnessed the evidentiary pattern (water-source correlation) and has access to the full *Observations*, but her own conclusion remains unformed."
+state: "Scholar's active investigation state; evidence witnessed, methodology understood, conclusion pending independent analysis."
 ```
 
 ```yaml

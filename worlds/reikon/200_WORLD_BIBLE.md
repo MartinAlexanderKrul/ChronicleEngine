@@ -32,6 +32,21 @@ A generation later, the world has organized itself around both facts. States lic
 
 ---
 
+# Timeline
+
+| Year | Event |
+|------|-------|
+| **0 AR** | The **Rupture**: the first Rifts open; the first people Awaken |
+| **3 AR** | The **Hunters' Authority** is chartered to license and grade the Awakened |
+| **9 AR** | The **Meridian Guild** incorporates; the core trade becomes a business |
+| **12 AR** | The **Aurology Institute** is founded to study the Ledger empirically |
+| **18 AR** | A devastating collapse hardens the **Vigil of the Rupture** into a mass movement |
+| **31 AR** *(now)* | The **Danesmoor collapse**; the Institute's deep-Rift discovery; the Kessler Rift deepens |
+
+Events are recorded as canon in `260_SEED_EVENTS.md`.
+
+---
+
 # The Ledger (the System)
 
 Only the **Awakened** bear a Ledger — perhaps one person in a few thousand. To its bearer alone it shows a **Grade** (overall rank), a spread of **Aspects** (Power, Reflex, Focus, Presence, and the like), **Marks** (learned skills and techniques), and a **Progression** track — the diegetic "experience" that fills as they grow. When a bearer has genuinely advanced, the Ledger announces it: a felt, luminous **Ascension** — the "level-up." Everyone else — the **Dormant** — sees nothing and gains nothing.
@@ -69,6 +84,8 @@ In short: to its people, Reikon is a world of Grades, stats, and level-ups. To t
 
 The Authority grades licensed hunters on an original scale — **Grade V** (newly Awakened) up through **Grade I** (national-threat capable) — assessed from demonstrated deeds, not from the Ledger's private numbers alone. A rare few defy the scale and are classed **Anomalous**: Ledger pages with no clear ceiling, whose bearers can outgrow their origins entirely. An Anomalous awakening is the classic litRPG "a nobody who can rise without limit" — a generic archetype, to be given original execution in the campaign layer, with no fixed signature power assumed here.
 
+The full ladder, along with Aspects, Marks, Classes, the Rift lifecycle, and the core economy, is detailed in `205_THE_LEDGER.md`.
+
 ---
 
 # The Institutions (sketch)
@@ -88,21 +105,22 @@ Rift activity around the seat-of-play city of **Verholt** has been climbing for 
 
 ---
 
-# Planned Ledgers (to create on instantiation)
+# Ledger Index
 
-Identifiers are allocated from `system/ID_REGISTRY.md` only when Reikon is instantiated as canonical; none are minted by this draft.
+All ledgers below exist as **drafts**, using draft-local `D-` identifier tokens. Real identifiers are allocated from `system/ID_REGISTRY.md` only when Reikon is instantiated as canonical; none are minted by this draft.
 
 | Ledger | Contents |
 |--------|----------|
-| `210_PLACES.md` | Reikon's region; the city of Verholt; an active Rift and a collapse site |
-| `220_NOTABLE_FIGURES.md` | Institutional heads; a rival hunter; a black-market fixer; the protagonist's first mentor |
-| `230_KNOWLEDGE_SUBJECTS.md` | **The nature of the Ledger and the Rupture** (disputed); a forbidden Class; the forging of Grades |
-| `240_RESOURCES.md` | A forged license; a Marked relic; a deep-Rift core the Institute recovered |
+| `205_THE_LEDGER.md` | System reference — Grades, Aspects, Marks, Classes, Rifts, cores (narrative lore) |
+| `210_PLACES.md` | The Aldish Republic; Verholt; the Kessler Rift; the Danesmoor collapse; Authority jurisdiction |
+| `220_NOTABLE_FIGURES.md` | Seven figures — the four institution heads, a rival hunter, a fixer, the protagonist's mentor |
+| `230_KNOWLEDGE_SUBJECTS.md` | The nature of the Ledger and the Rupture (disputed); the forbidden Warden Class; the forging of Grades |
+| `240_RESOURCES.md` | A forged license; a Marked relic; the Institute's deep-Rift core |
 | `institutions/hunters-authority/250_INSTITUTION_LEDGER.md` | The Hunters' Authority |
 | `institutions/meridian-guild/250_INSTITUTION_LEDGER.md` | The Meridian Guild |
 | `institutions/aurology-institute/250_INSTITUTION_LEDGER.md` | The Aurology Institute |
 | `institutions/vigil-of-the-rupture/250_INSTITUTION_LEDGER.md` | The Vigil of the Rupture |
-| `260_SEED_EVENTS.md` | The Rupture; the founding of the Authority and the guilds; the recent collapses; the Institute's discovery |
+| `260_SEED_EVENTS.md` | The Rupture; the four foundings; the Danesmoor collapse; the Institute's discovery |
 
 ---
 

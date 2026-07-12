@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.9
+**Document Version:** 1.10
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -218,7 +218,7 @@ Before canonical play, verify that the active persistence surface can:
 
 Create-new and write-through are two distinct capabilities, and a surface may offer one without the other. Creating a new file does not prove the surface can rewrite an existing ledger's content. The checkpoint barrier needs both: the immutable checkpoint files are create-new, while Canon Promotion into the live ledgers is write-through — rewriting the target file's full content by resolved handle, path replacement, or re-creation at its canonical path. Write-through does **not** require a patch or edit-arbitrary-Markdown operation; resolve the target's handle through repository discovery and replace its content. Verify both against the actual canonical target files before opening the scene.
 
-Indexed search or synchronized read access does not by itself prove write capability. Uncertainty about connector internals — missing file handles, an unknown edit operation — is not a failure: resolve it by attempting the canary, not by refusing. Stop before opening the scene, or classify the run as a non-canonical dry run, only when an actual write attempt fails. Do not allow a canonical session to begin when its Promotion Barrier cannot write durable state, and do not defer this discovery to the first checkpoint.
+Indexed search or synchronized read access does not by itself prove write capability. Uncertainty about connector internals — missing file handles, an unknown edit operation — is not a failure: resolve it by attempting the canary, not by refusing. **A survey of the exposed tool list is not a write-capability test, even when the survey feels complete.** Observing that the connector offers, for example, folder creation but no operation literally named "create file" or "edit Markdown" does not establish that writing is impossible. Connectors expose file writes under many names — upload, add file, create document, put, save, or re-upload/replace an existing file — and a surface that can create folders but shows no obvious create-file verb is a common false negative. Enumerating operations and reporting their absence proves nothing about write capability; only an attempted write against the canary does. Stop before opening the scene, or classify the run as a non-canonical dry run, only when an actual write attempt fails. Do not allow a canonical session to begin when its Promotion Barrier cannot write durable state, and do not defer this discovery to the first checkpoint.
 
 When project instructions identify a connected writable project source as the active repository, treat that source as the intended persistence surface. Do not ask the player to prove repository availability after the campaign path has been supplied. If the player corrects repository access with "in the source of this project, everything is connected and set up" or equivalent, rerun source discovery against the connected project source before reporting a blocker. Attempt the configured canary writes directly, then continue only if the canary writes can be read back from the same source.
 
@@ -234,7 +234,7 @@ When the repository is mirrored across several services, require one exclusive w
 
 Repository write capability is a session property, tracked as one of three states:
 
-- **Unestablished** — no successful write yet this session. Resolve by a capability check (the canary), not by refusal.
+- **Unestablished** — no successful write yet this session. Resolve by a capability check (the canary), not by refusal, and not by inspecting the tool list. Enumerating the connector's operations and finding none obviously named for file writes does not move this state to Failed; only an attempted write that actually errors does.
 - **Established** — at least one actual write has succeeded this session: the preflight canary (create, write-through, and read-back), a prior successful checkpoint, or any prior canonical ledger update. Once established, the repository is treated as writable for the remainder of the session. The Runtime does not re-derive capability from abstract reasoning about the connector, and does not downgrade this state on uncertainty.
 - **Failed** — an actual write operation returned an error. Only an actual failure sets this state; subsequent canonical writes use the fallback path until a later attempt succeeds.
 
@@ -424,16 +424,19 @@ Promote the grounded and consistent work; flag the load-bearing new canon; recon
 
 A checkpoint is written by attempting the actual repository operation and reacting to the actual result — never refused on abstract uncertainty. It requires Established Write Capability (see Session Persistence State) or a capability check.
 
+Any player request to save, checkpoint, or record progress — however phrased, and whenever in the session it arrives — enters the Save Algorithm below. The Runtime must not answer such a request with a verdict on whether saving is possible before it has reached the attempt step. It may summarize the canonical progress, but that summary accompanies the attempted write; it never substitutes for it. Producing a progress summary together with a claim that the write cannot be performed — without having attempted the write or a capability check — is the specific failure this section exists to prevent.
+
 ## Save Algorithm
 
 On a checkpoint request or session close, in this order:
 
 1. **Promotion Barrier first (unchanged).** Run Canon Reconciliation at Promotion. If an unreconcilable contradiction exists, reject the mutation, record a Rejected Simulation, and write nothing. The barrier runs before any write, so contradictory canon never reaches the connector.
 2. **Ensure capability.** If write capability is Unestablished, run a capability check (the canary) now.
-3. **Attempt the canonical update.** Write the immutable checkpoint files, then write through to the live ledgers — rewriting each target file's full content by resolved handle or path, each with provenance. Resolve any missing handle through repository discovery rather than refusing.
-4. **Read-back verification.** Reload the written checkpoint files and ledgers from the repository — not from Context — and confirm the intended changes and their provenance are present.
-5. **On success**, set write capability Established and report the checkpoint saved, with the verified paths.
-6. **On any actual write or read-back failure**, set write capability Failed, do not claim the checkpoint was saved, and emit a Runtime Checkpoint Report.
+3. **Determine the complete target set, then attempt the canonical update.** A checkpoint is not a single-ledger write. First enumerate every promotion target the session touched (Gameplay Close, step 3: Current State, objectives, relationships, inventory, knowledge, chronicle, changelog, and the save manifest as applicable). Then write the immutable checkpoint files and write through to **every** target — rewriting each target file's full content by resolved handle or path, each with provenance. Resolve any missing handle through repository discovery rather than refusing. Updating one scope-responsible ledger — for example the NPCs and Factions ledger — while leaving Current State, the chronicle, the changelog, and the save manifest unwritten is a **partial checkpoint**, not a save.
+4. **Read-back verification.** Reload the written checkpoint files and **every** targeted ledger from the repository — not from Context — and confirm the intended changes and their provenance are present in each. A target that did not receive its intended change is an unwritten target, even when other targets succeeded.
+5. **On success** — the whole target set written and verified — set write capability Established and report the checkpoint saved, with the verified paths.
+6. **On an incomplete target set with no failure** — some targets written, none errored, others not yet attempted — capability is Established (writing demonstrably works), so this is not a stopping point: complete the remaining targets and re-verify before reporting. Never report a checkpoint saved while any target in the set is unwritten.
+7. **On any actual write or read-back failure**, set write capability Failed only when no write has ever succeeded this session and an attempt just errored — otherwise leave it Established — do not claim the checkpoint was saved, and emit a Runtime Checkpoint Report naming the written and the unwritten targets.
 
 ## Write-Side Failure Handling
 
@@ -449,8 +452,8 @@ Distinguish these. Only the first four prevent persistence; the last never does:
 
 Two symmetric invariants:
 
-- **Never report a checkpoint saved unless read-back verification confirms it** (honesty; `012` Invariants 2 and 3).
-- **Never report that a checkpoint cannot be saved without first attempting the write**, when write capability is established.
+- **Never report a checkpoint saved unless read-back verification confirms it** (honesty; `012` Invariants 2 and 3). The confirmation must cover the whole promotion target set, not a single ledger; a partial write is reported as partial, never as saved.
+- **Never report that a checkpoint cannot be saved without first attempting the write**, when write capability is established — and never on the strength of a tool-list inspection when it is not, since only an attempted write settles capability.
 
 On success, the Gameplay Runtime Report records the checkpoint and its verified paths. On an actual failure, emit a **Runtime Checkpoint Report** — a non-canonical artifact capturing the exact canonical state that was to be written, so an authorized writer can synchronize it into the repository later. It never claims the repository was updated.
 

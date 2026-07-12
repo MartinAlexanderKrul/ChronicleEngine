@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 1.3
+**Document Version:** 1.4
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay in an AI project or repository-aware AI session
 
@@ -42,6 +42,8 @@ Repository access must reflect the latest canonical state. Static uploads can be
 When the repository is synchronized across a local computer, GitHub, and Google Drive, treat the Google Drive copy as the gameplay working copy and Git as the durable review and version-history layer.
 
 Google Drive sync, Google Drive Project Sources, and Google Drive write actions are separate capabilities. A synced connection can provide current read access without necessarily allowing ChatGPT to edit repository Markdown files by path. Before canonical gameplay, verify that the active ChatGPT workspace can create and read back arbitrary Markdown files and checkpoint-style directories at repository paths.
+
+Inspecting the connector's tool list is not that verification. Finding folder creation but no operation obviously named "create file" or "edit Markdown" does not prove writing is impossible: file writes appear under many names (upload, add file, create document, put, save, re-upload to replace), and a create-folder-without-create-file surface is a common false negative. Verify by attempting the canary write and reading it back — never by enumerating operations and reporting their absence.
 
 If ChatGPT reports that only a README is available or that the repository is not connected, correct it directly:
 
@@ -246,6 +248,18 @@ Do not ask the AI to choose whichever version seems best. It must block scene op
 ## The Repository Was Not Updated
 
 Check the Gameplay Runtime Report. The Runtime may have correctly rejected contradictory play, encountered a validation blocker, or lacked write access. Never assume chat narration became durable canon merely because it occurred.
+
+## The AI Refuses to Save Without Trying
+
+If the Runtime responds to a save request with a progress summary and a claim that it cannot write — without having attempted a write or the preflight canary — that is a refusal on tool-list inspection, which the profile forbids. Reply:
+
+```text
+Do not conclude you cannot write from the tool list. Attempt the write: create and read back a canary under .tmp.driveupload/preflight/<campaign>/, then, if it succeeds, perform the full checkpoint. Report only the actual result of the attempt.
+```
+
+## Only One Ledger Was Updated
+
+A checkpoint is not a single-ledger write. A real session-close save advances Current State (`180`), the chronicle (`160`), the changelog (`170`), and the affected relationship, inventory, knowledge, and objective ledgers, and creates the checkpoint files and save manifest. If only one ledger changed (for example `130_NPCS_AND_FACTIONS.md`), the checkpoint is partial, not saved. Ask the Runtime to determine the complete promotion target set, write every target, read each back, and report which are still unwritten.
 
 ## Google Drive Reads Work but Writes Do Not
 

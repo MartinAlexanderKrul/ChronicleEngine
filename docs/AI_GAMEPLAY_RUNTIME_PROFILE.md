@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.12
+**Document Version:** 1.13
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -203,6 +203,8 @@ Concretely, on a declared uncertain action the Runtime:
 5. narrates only the outcome the die produced, in-world, and yields.
 
 The Runtime does not invent the roll's result and does not substitute a preferred outcome for the die (`012` Sections 1.5, 7). A critical success, a bare success, a failure, and a fumble are materially different outcomes, and the Runtime learns which one occurred from the die before it writes a word of consequence. The tag is the **only** mechanical text in the reply: the Runtime does not explain the bands, recite the combat procedure, or narrate its own rule-compliance ("this exchange ends here", "I do not resolve additional actions") to the player.
+
+**Capability decides lopsided contests; chance keeps them live.** A large enough advantage makes success the ordinary result — only a natural fumble (01–05) still fails; a large enough disadvantage makes failure the ordinary result — only a natural critical (96–100) still lands. These natural-roll critical tails are always live and can never be modified away (Rules Section 4.6; Decision 052): a master fumbles on a natural 01–05, and a novice fells a master on a natural 96–100. Between the tails, the character's demonstrated capability — skill, training, magic, tools — versus the difficulty and resistance shifts the effective result, so a master and a novice never face the same odds.
 
 ## Resolution Rules Must Be Loaded
 

@@ -2363,6 +2363,44 @@ Progression is surfaced in three layers, with a strict boundary between represen
 
 ---
 
+## Decision 052 — Modifier Application and Always-Live Critical Tails
+
+**Status:** Accepted
+**Date:** 2026-07-12
+**Related Sections:** `010_ENGINE_RULES.md` Section 4 (4.3, 4.4, 4.6, 4.9); Decisions 010, 011, 014; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Action Resolution and the Die)
+
+### Context
+
+Section 4.6 defined result bands over the raw d100 and named difficulty (4.3) and modifiers (4.4) as concepts, but never specified how they change a roll. In play (Prototype Alpha, alpha_04) this produced two faults: the Runtime read the bare roll against the bands and ignored capability entirely — a defenceless target resolved as an ordinary opposed exchange — and a large skill gap had no mechanical expression, so a master and a novice faced the same odds. The demand is that demonstrated capability decide lopsided contests while chance still keeps them live at the extremes.
+
+### Decision
+
+Two rules govern how capability meets the die.
+
+1. **Modifier application.** Bands read the *effective* result. The engine forms a net modifier from the acting party's demonstrated capability (skill, training, magic, tools) and circumstances, against the difficulty and any opposed party's resistance, and shifts the roll by it before reading the band. Large capability gaps compress outcomes: an overwhelming advantage makes success the ordinary result, an overwhelming disadvantage makes failure the ordinary result. The roll still sets the margin and the degree.
+
+2. **Always-live critical tails.** Regardless of modifiers, a natural (unmodified) roll of **01–05** is a critical failure and **96–100** a critical success. The tails are read from the natural roll and cannot be modified away. A master still fumbles on a natural 01–05; a novice still lands a decisive blow on a master on a natural 96–100.
+
+### Rationale
+
+- Makes demonstrated capability decisive in lopsided contests, which is what Capabilities Instead of Attributes (Decision 014) and emergent progression imply, without introducing levels or fixed target numbers.
+- Preserves Fairness (Law VII): no advantage guarantees success and no disadvantage guarantees failure, so every contest stays live.
+- Extends Decisions 010 (d100) and 011 (Degrees of Success) rather than replacing them; the bands and graded outcomes are unchanged — only how a roll reaches a band is now specified.
+
+### Consequences
+
+- `010_ENGINE_RULES.md` Section 4.6 gains "Applying Difficulty and Modifiers" and "Critical Tails Are Always Live."
+- The Runtime must assess difficulty and modifiers from the character's skills, abilities, and magic before rolling, and read criticals from the natural roll. `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` and the resident gameplay gates reference this.
+- Degrees of success (4.7) and opposed actions (4.9) are unchanged; the net modifier is simply how an opposed comparison and difficulty enter the roll.
+
+### Alternatives Considered
+
+- **Roll-under target numbers (skill as the target).** A common d100 form, but it would replace the engine's roll-high band ladder (4.6) and Decision 011's degree language; rejected to avoid re-specifying the whole resolution surface.
+- **No critical tails (pure modified result).** Rejected: a large enough modifier would make success or failure certain, removing chance from lopsided contests and violating Fairness.
+- **Fixed ±N band-step per capability tier.** Rejected as arbitrary balancing (4.4 forbids modifiers that do not arise from established circumstances).
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

@@ -1569,6 +1569,23 @@ Legendary success never violates established physical or magical rules.
 
 ---
 
+### Applying Difficulty and Modifiers
+
+The bands above interpret the **effective result**, not the bare roll. Before reading a roll, the engine forms a net modifier: the acting party's demonstrated capability for this action — skill, training, magic, tools — and any favorable circumstances count in its favor; the difficulty (Section 4.3), the resistance of an opposed party (Section 4.9), and unfavorable circumstances count against it. This net modifier shifts the roll up or down, and the shifted result is read against the bands.
+
+Capability gaps therefore compress outcomes. When one party vastly outmatches the task or the opponent, the net modifier is large enough that nearly every roll resolves as success — a master acting against a novice succeeds as a matter of course, not by luck. When a party is vastly outmatched, nearly every roll resolves as failure. The roll still decides the margin and the degree of success, but a sufficiently large gap makes the ordinary outcome a foregone conclusion. Modifiers arise from established circumstances, never from arbitrary balancing (Section 4.4).
+
+### Critical Tails Are Always Live
+
+Two outcomes are read from the **natural, unmodified roll**, and no modifier can remove them:
+
+- a natural **01–05** is a critical failure — a fumble,
+- a natural **96–100** is a critical success.
+
+However lopsided the matchup, these tails remain in play. A master swordsman still fumbles on a natural 01–05; a novice still lands a decisive blow against a master on a natural 96–100. This preserves fairness (Law VII) and keeps every contest live: no advantage guarantees success and no disadvantage guarantees failure. Outside the tails, the effective result — the roll adjusted by the net modifier — determines the band.
+
+---
+
 ## 4.7 Degrees of Success
 
 The engine should prefer degrees of success rather than binary outcomes.

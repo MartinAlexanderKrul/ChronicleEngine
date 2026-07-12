@@ -12,6 +12,17 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-12 — Modifier Application and Critical Tails
+
+**Decisions:** Added Decision 052 (Modifier Application and Always-Live Critical Tails) — specifies how difficulty and modifiers reach the d100 and defines natural-roll criticals that no modifier can remove
+**Rules:** `010_ENGINE_RULES.md` Section 4.6 gains "Applying Difficulty and Modifiers" (bands read the effective result; the acting party's demonstrated capability, magic, and circumstances net against difficulty and opposed resistance to shift the roll; large gaps compress outcomes) and "Critical Tails Are Always Live" (a natural 01–05 always fumbles, a natural 96–100 always crits, regardless of modifiers) — closes the gap where 4.6 interpreted the raw roll with no rule for how skill changed it
+**Runtime Profiles / Start Guide:** `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Action Resolution and the Die) and both resident gates in `docs/GAMEPLAY_START_GUIDE.md` now state that a large capability gap makes success or failure the ordinary result while the natural-roll critical tails stay live — a master fumbles on 01–05, a novice fells a master on 96–100; document versions set to Profile 1.13, Guide 1.8
+**Context:** Prototype Alpha alpha_04 — a defenceless target resolved as an ordinary opposed exchange and a master and novice faced identical odds, because 4.6 defined bands on the raw roll with no modifier mechanic (Issue Log PA-I007)
+**Rules/Data Model:** Bands (4.6), degrees of success (4.7), and opposed actions (4.9) are otherwise unchanged; extends Decisions 010 and 011 rather than replacing them
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-12 — Living-World Exchange and Clean Roll Presentation
 
 **Runtime Profiles / Start Guide:** With the d100 gate confirmed working in the alpha_04 test (visible rolls, one exchange per reply, chained attacks correctly refused), two follow-on failures surfaced. (1) The "one exchange per reply; do not summon crowds, guards, or consequences" clause overcorrected into a dead world — a killing in a crowded hall drew no reaction — contradicting the Beat Budget (involuntary reactions are unlimited) and Law II Causality. Rewrote the rule in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Combat Cadence) and both resident gates in `docs/GAMEPLAY_START_GUIDE.md`: unlimited immediate in-exchange world reaction is expected and kept vivid, while only *simulation advance* is barred (further exchanges, new actors arriving, time skips, downstream consequences), with the rider that deferred consequences must actually arrive in following beats. (2) Engine mechanics leaked into narration ("falls into the engine's high-success band", "this exchange ends here; I do not resolve additional actions") and rolls were mapped raw-to-band with no difficulty assessment. The visible roll is now a compact D&D-style tag (`🎲 d100: 72 — success`) and the sole permitted mechanical text — no procedure or compliance narration (Information Boundary) — and difficulty/modifiers must weigh the character's skills, abilities, and magic, with defenceless or trivial targets near-automatic. Profile version 1.12; Guide version 1.7

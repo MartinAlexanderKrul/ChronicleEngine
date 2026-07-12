@@ -857,6 +857,26 @@ Integrated through `001_ENGINE_DECISIONS.md` Decision 032 and `010_ENGINE_RULES.
 
 ---
 
+## Progression Surfacing
+
+Status: Accepted
+
+Emergent capability (Decisions 012–014)
+
+v
+
+Derived Progression View — XP, per-capability tiers, and an overall character level as a non-canonical readout of emergent growth
+
+v
+
+World Diegetic System — a world may make levels in-world-real via the Supernatural Phenomena Contract (deferred world authoring)
+
+A presentation layer over the emergent model, not a mechanic: the view never affects resolution or growth, and a level-up only surfaces an advance that already occurred in canon.
+
+Integrated through `001_ENGINE_DECISIONS.md` Decision 051 and `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Progression Surfacing).
+
+---
+
 # Technical Debt
 
 Current architectural debt:

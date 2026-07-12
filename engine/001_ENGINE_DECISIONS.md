@@ -2313,6 +2313,56 @@ The normative obligation is recorded in `012_ENGINE_RUNTIME.md` Section 1.6 (Pla
 
 ---
 
+## Decision 051 — Progression Surfacing
+
+**Status:** Accepted
+**Date:** 2026-07-12
+**Related Sections:** `010_ENGINE_RULES.md` Sections 4, 5, 11; Decisions 012, 013, 014, 026, 037, 049; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Progression Surfacing)
+
+### Context
+
+Emergent progression — Decision 012 (No Character Levels), Decision 013 (No Experience Points), and Decision 014 (Capabilities Instead of Attributes) — is a defining commitment of the engine. But it can feel intangible in play: a player may be unsure whether the character is actually improving. Traditional XP and levels were deliberately rejected (Rejected 001, Rejected 002) because *as mechanics* they compress lived growth into an abstract number and reward accumulation over demonstrated capability.
+
+The demand behind XP and levels is legibility of progress, not the mechanic itself. That demand can be met without reintroducing the rejected mechanic, provided the numbers are a *view* of emergent growth rather than a *source* of it.
+
+### Decision
+
+Progression is surfaced in three layers, with a strict boundary between representation and mechanics.
+
+1. **Core progression (unchanged, authoritative).** Growth and resolution remain governed solely by emergent capability (Decisions 012–014; Rules Sections 4 and 5). This decision does not supersede them; it reaffirms them.
+
+2. **Derived Progression View (general, all worlds).** The Runtime may surface emergent growth to the player as experience (XP) and levels, as a **derived, non-canonical, out-of-character readout** computed from canonical state on request. It comprises:
+   - **per-capability tiers** — a qualitative label for the standing each demonstrated capability has reached through use (for example novice, apprentice, competent, expert, master);
+   - **an overall character level** — a coarse descriptive summary derived from the aggregate of capabilities, knowledge, influence, reputation, and consequence; a readout of standing, not a power score;
+   - **an experience log** — a tally of meaningful growth events (things done, learned, survived), rendered from the Events and provenance already in canon.
+   A "level-up" is the surfacing of an emergent advance that has *already occurred* in canon; it grants nothing.
+
+3. **World Diegetic System (world-specific, litRPG).** A world may make a leveling System in-world-real by declaring it under the Supernatural Phenomena Contract (Decision 037; Rules Section 11), with its source, access, cost, limitation, risk, discoverability, and consequence. Even then, resolution and growth remain governed by Sections 4 and 5; the System is the world's *representation* of them, not a replacement resolver. This layer is world-authoring content and is not built by this decision.
+
+**Bright line (all layers).** The view reads from emergent state; it never writes power back. XP is never a currency spent to gain capability. A level or tier is never a modifier, prerequisite, or gate on action resolution. Growth occurs first in canon and is then surfaced — never the reverse. The Derived Progression View carries no Persistent Object identifier, establishes no canon, and is regenerated from canonical state like any other derived presentation (Decision 049).
+
+### Rationale
+
+- It satisfies the real need — legible, rewarding progression — while leaving the engine's identity and Decisions 012–014 intact.
+- Framing XP and levels as a derived view computed from emergent state applies a discipline the engine already uses: the player briefing is a derived view of canon (Decision 049), and canon is the resolved outcome rather than the input.
+- Because it is a presentation layer that changes nothing about how the engine simulates, it is a refinement rather than new foundational architecture, and does not disturb the Architecture Freeze (Decision 048).
+- Reserving the aggressive litRPG experience to the world layer keeps a genre-specific representation out of the reusable engine while still enabling it through the existing Supernatural Phenomena Contract.
+
+### Consequences
+
+- `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` gains a Progression Surfacing section defining how the derived view is computed and presented; the Glossary gains Derived Progression View and Diegetic System.
+- The Engine Rules, the Data Model, and the Manifest's emergent-progression identity are unchanged: XP and levels are a view, not the progression model.
+- Future work must not let the view acquire mechanical weight. Any proposal to make XP or levels drive resolution or growth is a supersession of Decisions 012–014 and requires its own ADR.
+- The litRPG world remains a separate world-authoring effort under Section 11.
+
+### Alternatives Considered
+
+- **XP and levels as an engine mechanic or a player-selectable mode.** Rejected: forks resolution and growth into two models, supersedes Decisions 012–014, and breaks the frozen foundation.
+- **Improving emergent surfacing without the XP/level vocabulary.** Viable, but does not give players the concrete "level-up" reward they asked for; the derived view delivers that within the same guardrails.
+- **Building the litRPG System into the engine core.** Rejected: it is genre-specific world content; the Supernatural Phenomena Contract already supports it at the world layer.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

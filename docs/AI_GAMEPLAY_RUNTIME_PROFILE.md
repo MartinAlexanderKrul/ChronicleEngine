@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.8
+**Document Version:** 1.9
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -343,6 +343,34 @@ Give a new player taking over an existing character the full spoiler-safe charac
 - **Can I use my own name?** Yes, when customization permits; it remains a fictional identity.
 - **Can I change this character?** Explain the declared customization boundary and consequences before mutation.
 - **Can I create someone entirely different?** Use the custom path when allowed; otherwise offer a separate campaign instance instead of rewriting established canon.
+
+---
+
+# Progression Surfacing
+
+Growth in Chronicle Engine is emergent (Rules Section 5); it is never driven by experience points or levels (Decisions 012–014). The Runtime may nonetheless surface that growth to the player as XP and levels, as a **derived, out-of-character view** — a lens over emergent state, never a mechanic (Decision 051).
+
+## What the view contains
+
+- **Per-capability tiers** — a qualitative standing for each demonstrated capability: novice, apprentice, competent, expert, master, or world-appropriate labels. The tier names the standing a capability has actually reached through use (Rules Section 5.3), nothing more.
+- **Overall character level** — a coarse descriptive summary derived from the aggregate of capabilities, knowledge, influence, reputation, and consequence. It is a readout of standing, not a power score.
+- **Experience log** — a tally of meaningful growth events (things done, learned, survived), rendered from the Events and provenance already in canon. It is a record, not a currency.
+
+## How it is derived
+
+Compute the view from canonical state at the moment of surfacing. Do not maintain a separate authoritative XP counter or level that could drift from canon. The view is regenerated on demand, carries no Persistent Object identifier, and establishes no canon — like the player briefing. If canon has not advanced, the view does not advance.
+
+## When to surface it
+
+- On an out-of-character player request — "show my progress", "status", "how am I improving".
+- As a **level-up moment**: when emergent growth has demonstrably crossed a tier — a capability advanced through repeated successful practice, a new mastery established, influence meaningfully expanded — the Runtime may announce it ("Surgery has advanced to Expert"). The advance has already happened in canon; the announcement surfaces it. Never announce a level-up in order to grant an advance.
+
+## Guardrails
+
+- The view never affects resolution. A tier or level is never a modifier, prerequisite, or gate; action resolution uses intent, circumstance, and the die (Rules Section 4) against demonstrated capability, exactly as before.
+- XP is never spent. It is a log, not a resource; nothing is purchased with it.
+- Growth precedes surfacing, never the reverse.
+- In a world without a diegetic System, the view is meta: the character does not perceive levels in-world, and NPCs never act on them. A world may make levels diegetically real only through the Supernatural Phenomena Contract (Rules Section 11; Decision 051), which is world-authoring content.
 
 ---
 

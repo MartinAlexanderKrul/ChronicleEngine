@@ -240,11 +240,27 @@ Delegation is the only path by which the Runtime may skip meaningful interaction
 
 ---
 
+## Derived Progression View
+
+A non-canonical, out-of-character readout that surfaces emergent growth to the player as experience and levels: per-capability tiers, an overall character level, and a log of meaningful growth events.
+
+The view is computed from canonical state on request, carries no canon and no identifier, and never affects action resolution or growth. XP and levels are a lens over the emergent model (Decisions 012–014), never a mechanic. Defined in Decision 051 and `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Progression Surfacing).
+
+---
+
 ## Design Retrospective
 
 A non-canonical document explaining how earlier projects, campaigns, or failures influenced Chronicle Engine architecture.
 
 It belongs to the repository's design-retrospective layer rather than the engine, world, campaign, or historical layers.
+
+---
+
+## Diegetic System
+
+A world-established, in-world-real leveling or experience system — for example a litRPG "System" — declared as a supernatural phenomenon under the Supernatural Phenomena Contract (Rules Section 11).
+
+Unlike the meta Derived Progression View, a Diegetic System's levels and numbers are real within the fiction and perceivable by characters; but resolution and growth still follow Rules Sections 4 and 5 — the System represents them, it does not replace them. World-authoring content. Defined in Decision 051.
 
 ---
 

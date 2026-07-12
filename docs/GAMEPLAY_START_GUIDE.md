@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 1.5
+**Document Version:** 1.6
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay in an AI project or repository-aware AI session
 
@@ -95,6 +95,13 @@ This ChatGPT Project has the Chronicle Engine repository connected as a Google D
 Follow docs/AI_GAMEPLAY_RUNTIME_PROFILE.md.
 The repository is authoritative. Do not use the development workflow and do not modify engine architecture during play.
 
+REPOSITORY LOADING — DO THIS ON THE FIRST TURN, BEFORE REPORTING ANY ACCESS BLOCKER:
+The connected Project Source IS the repository. At startup the chat may surface only README.md; that is a cold-start artifact, not the repository contents, and is never a reason to report a blocker. On your own initiative, without waiting for the player to insist the source is connected:
+- Query the Project Source for the campaign files and FETCH THEIR CONTENTS (open and read the Markdown). Listing or enumerating a folder is NOT reading a file — a folder listing, whether it succeeds or fails, tells you nothing about whether you can fetch file contents, so attempt the fetch.
+- Report a read blocker ONLY after an actual fetch operation has returned an error, and name the specific operation that failed.
+- NEVER say "I only have the README", "the campaign data is not accessible", "I cannot load canonical state", or "I only confirmed the repository exists" without having attempted to fetch those files' contents in this same turn.
+Attempting discovery and content-fetch is your job, not the player's. The player should never have to tell you the source is connected, and should never have to correct you before you try.
+
 ACTION RESOLUTION — HIGHEST PRIORITY, CHECK EVERY TURN:
 Before you narrate the outcome of ANY action the player declares, classify it.
 - Certain / trivial (walking, opening an unlocked door, presenting a letter, ordinary talk): narrate directly.
@@ -135,6 +142,8 @@ All files should be loaded from the connected Google Drive in SOURCE in this Pro
 Start Chronicle Engine gameplay for campaigns/prototype_alpha/.
 
 This is a first session for the campaign at campaigns/prototype_alpha/. Follow the Gameplay Runtime Profile and the campaign startup configuration. Do not begin the first scene yet.
+
+Repository loading, do this now before reporting any blocker: the connected Project Source is the repository. If you first see only README.md, that is a cold-start artifact — on your own initiative query the Project Source and FETCH THE CONTENTS of the campaign files (do not just list folders; a folder listing is not a file read). Report a read blocker only after an actual fetch operation errors, naming the failed operation. Do not wait for me to tell you the source is connected, and do not make me correct you before you try.
 
 Load canonical campaign state, present the player introduction, and wait for my questions or confirmation that I am ready. Also load engine/010_ENGINE_RULES.md Sections 4 and 6 and confirm you have them.
 

@@ -12,6 +12,20 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-13 — Prototype Alpha Operational Refinements (Modifier Application, Time-Progression, Relationship Capture)
+
+**Start Guide:** Clarified d100 modifier application procedure in resident ACTION RESOLUTION gate. Added explicit steps: (1) Assess difficulty and net modifier, (2) Roll d100, (3) Apply net modifier to raw roll to get effective roll, (4) Read band from effective roll, (5) Show compact roll tag. This closes the gap identified in Session 1 Extended where modifiers were calculated but not consistently applied before band-reading (Session 1, roll 2 sequence). Document version set to 2.1
+
+**Runtime Profile:** (1) Clarified d100 procedure in "Action Resolution and the Die" section with explicit modifier-application steps; (2) Added "Single-Action Time-Skips vs. Multi-Day Skips" subsection to distinguish one-night sleep (automatic time-skip within declared action) from multi-day compression (requires explicit player delegation); (3) Added relationship-evolution capture guidance in Gameplay Close (step 3) to explicitly track qualitative NPC relationship changes—compassion, mentorship, risk-taking, stance shifts—with updated provenance and event ID. Document version set to 1.16
+
+**Context:** Prototype Alpha Session 1 Extended exposed three operational gaps caught and self-corrected during play. Formalizing these prevents repeats.
+
+**Rules/Data Model/Decisions:** Unchanged — operational clarification only. Decision 052 (Modifier Application and Always-Live Critical Tails) remains the authoritative design; this entry operationalizes it.
+
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-12 — Substrate-Neutral Gameplay Manual
 
 **Start Guide:** Rewrote `docs/GAMEPLAY_START_GUIDE.md` as a generic manual for any AI that can read and write the repository files, removing the ChatGPT + Project + Google Drive framing. "Prepare the AI Project" and the Google-Drive/Git sync section become "File Access and Persistence," distinguishing native file access (reads/writes just work) from indirect access (connector, synced folder, uploads) where a write-capability check applies; the AI Project Instructions and First Session prompts, the Relay Workflow, and Troubleshooting are all genericized (no Drive/ChatGPT/Codex/Project Source references). The scratch/canary path moves from `.tmp.driveupload/preflight/` to the gitignored `.tmp/preflight/`. Document version set to 2.0

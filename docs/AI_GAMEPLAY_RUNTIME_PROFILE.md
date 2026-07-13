@@ -131,6 +131,13 @@ The Runtime **may advance in-world time automatically** when all of the followin
 
 It stops at the first interruption or the natural completion of the declared activity, whichever comes first.
 
+**Single-Action Time-Skips vs. Multi-Day Skips:**
+
+- **Single-action time-skip** ("I sleep for the night", "I wait at the tavern", "I study the manuscript"): The Runtime may narrate the passing of that single action (sleep, waiting, study) and then present the state when it completes — next morning, after an hour, later that evening. One time-block per action. A natural event (someone arriving, a sound, a discovery) may interrupt; the Runtime yields at the interruption.
+- **Multi-day time compression** ("let a week pass while I rest", "skip to when I've recovered", "fast-forward to the fever peak"): This requires explicit player delegation (player says "let a week pass" or "narrate the recovery") or is clearly implied in context ("I sleep" after days of interrupted rest suggests deep sleep and some recovery). Without clear delegation, the Runtime should advance one sleep, one day, or one scene-span at a time.
+
+The distinction preserves player agency: a single night's sleep is automatic progression within the declared action; a week's worth of unseen recovery requires the player's permission to compress. When unsure, stop and offer the choice: "Will you spend days here resting, or move on?"
+
 The Runtime **must stop and yield**:
 
 - at any Player Decision Point;
@@ -198,13 +205,17 @@ Concretely, on a declared uncertain action the Runtime:
 
 1. stops narrating at the declaration;
 2. evaluates whether uncertainty exists (Rules Sections 4.1–4.2). Automatic resolution is reserved for the genuinely certain — an unlocked door, common goods, walking across a room. An attack on a resisting person is never automatic. A **defenceless or trivial** target, on the other hand, is near-automatic: a strike at a person already collapsed and unresisting should almost never fail;
-3. sets difficulty and modifiers by weighing the character's demonstrated capability for *this* action — relevant skills, abilities, training, magic, and tools — plus circumstance, against the resistance (Rules Sections 4.3–4.4). Capability and magic move the odds and are never ignored; a master swordsman and a novice do not face the same target number;
-4. rolls d100, reads the result band (Rules Sections 4.5–4.7), and presents the roll to the player as a single compact tag — D&D-style, e.g. `🎲 d100: 72 — success` or `🎲 d100: 8 — failure` — never as a paragraph of engine procedure;
-5. narrates only the outcome the die produced, in-world, and yields.
+3. assesses difficulty and net modifier:
+   - Difficulty (Rules Sections 4.3–4.4): the resistance the action faces. A defenceless target is near-automatic; a feat beyond the character's means is very hard.
+   - Net modifier: the character's demonstrated capability for *this* action — relevant skills, abilities, training, magic, and tools — plus circumstance, weighed against the resistance. Capability and magic move the odds and are never ignored; a master swordsman and a novice do not face the same odds. Large gaps compress outcomes: an overwhelming advantage (+2 to +3) makes success the ordinary result; an overwhelming disadvantage (-2 to -3) makes failure the ordinary result (Rules Section 4.6). Natural-roll critical tails (01–05 fumble, 96–100 critical) are always live and can never be modified away (Decision 052).
+4. rolls d100;
+5. applies the net modifier to the raw roll to calculate the effective roll (e.g., raw 44 with disadvantage -2 = effective 42);
+6. reads the result band from the effective roll (Rules Sections 4.5–4.7) and presents the roll to the player as a single compact tag — D&D-style, e.g. `🎲 d100: 72 — success` or `🎲 d100: 8 — failure` — never as a paragraph of engine procedure;
+7. narrates only the outcome the die produced, in-world, and yields.
 
 The Runtime does not invent the roll's result and does not substitute a preferred outcome for the die (`012` Sections 1.5, 7). A critical success, a bare success, a failure, and a fumble are materially different outcomes, and the Runtime learns which one occurred from the die before it writes a word of consequence. The tag is the **only** mechanical text in the reply: the Runtime does not explain the bands, recite the combat procedure, or narrate its own rule-compliance ("this exchange ends here", "I do not resolve additional actions") to the player.
 
-**Capability decides lopsided contests; chance keeps them live.** A large enough advantage makes success the ordinary result — only a natural fumble (01–05) still fails; a large enough disadvantage makes failure the ordinary result — only a natural critical (96–100) still lands. These natural-roll critical tails are always live and can never be modified away (Rules Section 4.6; Decision 052): a master fumbles on a natural 01–05, and a novice fells a master on a natural 96–100. Between the tails, the character's demonstrated capability — skill, training, magic, tools — versus the difficulty and resistance shifts the effective result, so a master and a novice never face the same odds.
+**Capability decides lopsided contests; chance keeps them live.** Apply the net modifier to the raw roll before reading the band. When the gap is extreme (overwhelming advantage or disadvantage), the modifier compresses the outcome: a master with a +3 bonus against a helpless target rolls effectively 41+ (almost always success, band 41–60+); a novice with a -3 penalty against a trained opponent rolls effectively -40 to 10 (almost always failure, band 01–20). But the natural-roll critical tails (01–05 fumble, 96–100 critical) are always live and are never modified away (Rules Section 4.6; Decision 052): a master fumbles on a natural 01–05 despite bonuses, and a novice crits on a natural 96–100 despite penalties. These tails stay live for fairness — extraordinary luck and catastrophic failure remain possible, even when one side dominates. Between the tails, the character's demonstrated capability — skill, training, magic, tools — versus the difficulty shifts the effective result through modifiers, so a master and a novice never face the same odds.
 
 ## Resolution Rules Must Be Loaded
 
@@ -437,7 +448,7 @@ No scene begins, die is rolled, NPC acts, or in-world time advances before expli
 
 1. Resolve or explicitly leave open any in-flight action.
 2. Promote every canon-bearing ruling and transcript event into scope-responsible ledgers with provenance.
-3. Update Current State, objectives, relationships, inventory, knowledge, chronicle, and world state as required.
+3. Update Current State, objectives, relationships, inventory, knowledge, chronicle, and world state as required. **For relationships specifically:** capture not only new relationships created during play, but also qualitative evolution of existing relationships. If an NPC showed compassion, provided mentorship, took a risk for the character, or changed their stance, the relationship's `qualities` and `state` fields should advance to reflect it, with updated provenance and event ID.
 4. Validate references, ownership, registry state, placeholders, campaign-world references, and Knowledge States.
 5. Create an immutable session-close checkpoint and save manifest (Checkpoint Persistence).
 6. Produce the Gameplay Runtime Report.

@@ -1,0 +1,92 @@
+save_manifest:
+  checkpoint_id: "SAVE-20260713-S1EXT-004"
+  session_number: 1
+  session_phase: "extended"
+  session_outcome: "TERMINAL"
+  save_time: "2026-07-13T00:00:00Z"
+  campaign: "Prototype Alpha"
+  world: "Verra"
+  engine_version: "0.1.5"
+  
+campaign_date: "Year 312 RR, late spring (day 17, execution)"
+
+events_at_checkpoint:
+  - "EVT-000009 (Session One Checkpoint, complete)"
+  - "EVT-000010 (Crisis Cascade, complete)"
+  - "EVT-000011 (Interlude, complete)"
+  - "EVT-000012 (Commitment Decision and Double-Agent Strategy, complete)"
+  - "EVT-000013 (Final Spiral: Assault, Detention, Trial, Execution, complete)"
+
+protagonist:
+  entity_id: "ENT-000018"
+  name: "Ilse Varn"
+  status: "DECEASED"
+  death_location: "Halden, public square, gallows"
+  death_date: "Year 312 RR, late spring, Day 17"
+  death_cause: "Execution by hanging"
+  condition: "Dead; disengaged from legal process; no final words; witnessed by hundreds"
+
+ledgers_updated:
+  - file: "100_CHARACTER_SHEET.md"
+    change: "Character status updated to deceased; all capabilities terminated; historical note added"
+    record_id: "REC-000009"
+    status: "verified"
+  
+  - file: "180_CURRENT_STATE.md"
+    change: "Protagonist status: deceased; location: gallows; campaign resolution noted; unresolved threads recorded"
+    record_id: "REC-000016"
+    status: "verified"
+  
+  - file: "140_OBJECTIVES.md"
+    change: "All three objectives marked closed/failed; OBJ-1 failed (no Athenaeum footing); OBJ-2 completed but unacted (conclusion reached, no application); OBJ-3 inverted (eliminated instead of managed)"
+    subjects: ["OBJ-1", "OBJ-2", "OBJ-3"]
+    record_id: "REC-000013"
+    status: "verified"
+  
+  - file: "130_NPCS_AND_FACTIONS.md"
+    change: "All relationships marked terminated; Corvane and Maelis unaware of Ilse's execution (presumed); Solenne alive; institutional conflict unaffected by Ilse's death"
+    record_id: "REC-000012"
+    status: "verified"
+  
+  - file: "160_CAMPAIGN_CHRONICLE.md"
+    change: "EVT-000013 added: assault, detention, trial, execution; campaign instantiation closed; all pressures remain unresolved"
+    record_id: "REC-000014"
+    status: "verified"
+  
+  - file: "170_CHANGELOG.md"
+    change: "Final checkpoint entry with campaign termination, death, and unresolved threads noted"
+    record_id: "REC-000015"
+    status: "verified"
+
+key_events:
+  - "Day 13 midday: Ilse assaulted guard in hospice anteroom"
+  - "Day 13 midday: Ilse claimed Prelate authorized security test (bluff failed)"
+  - "Day 13 midday: Ilse threatened guard's position"
+  - "Day 13 midday: Ilse attacked Solenne directly (partial success with cost)"
+  - "Day 13: Fingers broken by guards in enforcement"
+  - "Days 13-16: Detained in hospice cells; deliberate sickness as protest"
+  - "Day 17 morning: Offered continued service with confinement; refused"
+  - "Day 17 afternoon: Transferred to city jail"
+  - "Day 17 afternoon: Magistrate hearing; immediate conviction"
+  - "Day 17 midday: Public execution by hanging in merchant square"
+
+canonical_validation:
+  status: "CANONICAL"
+  write_capability: "Established (multiple successful writes)"
+  player_agency_preserved: true
+  world_reactions_recorded: true
+  consequences_deferred: false
+  decision_point_resolved: true
+  campaign_outcome: "TERMINAL — Protagonist deceased"
+
+unresolved_campaign_threads:
+  - "Corvane's fever research remains suppressed by Order"
+  - "Athenaeum-Order institutional conflict continues"
+  - "Fever outbreak in river ward unresolved (last confirmed: 13+ cases on Day 13)"
+  - "Maelis's future at Athenaeum uncertain"
+  - "Objective truth of fever transmission remains unknown in canon"
+
+next_step: "Campaign instantiation closed. No continuation of this baseline. New protagonist or campaign branch would require fresh initialization."
+
+world_state_live: false
+campaign_state: CLOSED

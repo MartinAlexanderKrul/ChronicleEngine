@@ -180,3 +180,47 @@ With this personal conclusion grounded in her own investigation, she commits ful
 Ilse's knowledge state on the marsh-fever advances from "witnessed but undecided" to **"accepted and decided"** through independent verification.
 
 The commitment is made. The strategy is set. The risk is substantial.
+
+---
+
+## EVT-000013 — Ilse's Final Spiral: Assault, Detention, Trial, Execution
+
+```yaml
+id: EVT-000013
+canonical_record: REC-000014
+schema_version: "0.1.1"
+status: active
+provenance:
+  source: EVT-000013-session-play
+  event_time: "Year 312 RR, late spring (days 13-17)"
+  record_time: "2026-07-13T00:00:00Z"
+kind: sequence
+importance: terminal
+participants:
+  - ENT-000018
+  - ENT-000008
+  - ENT-000006
+description: "Ilse's double-agent position at the Order's hospice unraveled within hours. She assaulted a guard in the anteroom, lied about authorization, threatened the guard's position, and attacked Solenne. She refused recovery options and legal clemency. She was convicted and executed publicly."
+```
+
+**Day 13, Midday — Hospice Anteroom, Assault**
+
+Ilse, waiting for a Prelate's summons, attacked a guard and claimed the Prelate had authorized a security test. The bluff failed. She was detained and escorted to Solenne. When confronted, she stated she disliked the guard and would kill her.
+
+Solenne called for her arrest.
+
+**Days 13-16 — Detention and Trial**
+
+Ilse resisted arrest, struck guards, fought restraint. Her fingers were broken as enforcement. She spent four days in the hospice detention cells, weakened and isolated. When offered continued service with confinement, she refused. Solenne delivered her to the city guard.
+
+The magistrate's hearing lasted minutes. Conviction was immediate. Sentence: execution by hanging. Public square, three days hence.
+
+**Day 17 — Public Square, Execution**
+
+Ilse was led to the gallows. Hundreds witnessed. She made no defense, no plea, no final words. She disengaged from the process entirely. The rope took her life at midday.
+
+**Campaign Status: CLOSED**
+
+This instantiation of Prototype Alpha—the baseline campaign with Ilse Varn as protagonist—has concluded with the protagonist's death. The double-agent strategy lasted less than one day before exposure. Escape and legal options were available but refused. All subsequent events cascaded from her choice to assault Solenne rather than manage the situation through deception or negotiation.
+
+The fever finding remains unresolved in Halden. The Athenaeum-Order conflict continues. Corvane's research is suppressed. The campaign's opening pressures (fever outbreak, institutional conflict, political tension) persist without the player character's agency to affect them.

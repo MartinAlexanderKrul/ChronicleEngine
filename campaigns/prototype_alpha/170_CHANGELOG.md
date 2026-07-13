@@ -30,3 +30,18 @@ Prototype Alpha campaign created in the Verra world. Protagonist Ilse Varn (`ENT
 
 **Year 312 RR, late spring (evening) — Session One Checkpoint (EVT-000009).**
 Ilse entered the Athenaeum, studied the forbidden *Observations* manuscript, met Rector Maelis and Fellow Corvane. Knowledge State `REL-000017` (marsh-fever) advanced from "provisional and unformed" to "witnessed but unconfirmed"—Ilse now possesses direct access to Corvane's evidentiary maps and the full manuscript. Relationships established: `REL-000016` (Corvane) upgraded from "introduced by letter" to "met in person, actively collaborating"; `REL-000019` (Maelis) created, neutral to cautiously collaborative. Objective `OBJ-1` progressing (accessed Athenaeum); `OBJ-2` actively underway (studying evidence); `OBJ-3` now under tension (visibly associated with forbidden research). Current location: Corvane's study, Athenaeum. Fever cases confirmed (at least 2) in river ward. Maelis warned that Order will know of Ilse's presence within 1-2 days.
+
+**Year 312 RR, late spring (days 2-8) — Extended Session Checkpoint (EVT-000010 and EVT-000011).**
+Session continued beyond checkpoint 1. Ilse experienced emotional crisis cascade on Day 2 (self-harm, attempted violence toward Maelis three times, psychological break). All violence failed; she was subdued by guards and moved to infirmary for care rather than punishment. Maelis granted one week for rest and reflection before demanding final commitment answer.
+
+During the week (Days 2-8): Fever cases escalated from 2 to 7+ confirmed. Athenaeum faced increasing Order pressure. Order sent formal recruitment letter (Day 6) offering Ilse safety, income, lodging—contingent on abandoning research and Corvane. Ilse read the letter (Day 8) without yet answering.
+
+Current state: Ilse physically recovered, mentally clear. At genuine decision point: Order safety vs. Athenaeum principle. No decision yet made. Corvane awaits her answer. Location: Athenaeum infirmary. Condition: Ready to decide. EVT-000012 (Ilse's commitment decision) pending.
+
+**Ledgers Updated for Extended Checkpoint:**
+- 120_INVENTORY_AND_OWNERSHIP.md: Letter now archived on Corvane's desk
+- 140_OBJECTIVES.md: OBJ-1, OBJ-2, OBJ-3 all updated with extended session status
+- 130_NPCS_AND_FACTIONS.md: REL-000016 (Corvane) and REL-000019 (Maelis) updated with crisis and interlude events
+- 110_WORLD_LEDGER.md: REL-000017 (fever knowledge state) updated with escalation and time to process
+- 160_CAMPAIGN_CHRONICLE.md: EVT-000010 and EVT-000011 added to narrative
+- 180_CURRENT_STATE.md: Protagonist location and condition updated

@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000020 |
-| Record | `REC-` | Canonical Record | REC-000017 |
-| Event | `EVT-` | Event | EVT-000013 |
-| Relationship | `REL-` | Relationship | REL-000019 |
+| Entity | `ENT-` | Persistent Entity | ENT-000022 |
+| Record | `REC-` | Canonical Record | REC-000025 |
+| Event | `EVT-` | Event | EVT-000014 |
+| Relationship | `REL-` | Relationship | REL-000023 |
 
 ---
 
@@ -50,6 +50,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000012 | Event | Prototype Alpha session 2 (Checkpoint 3): Ilse's commitment decision and double-agent strategy; independent field investigation; marsh-fever Knowledge State accepted |
 | EVT-000013 | Event | Prototype Alpha session 2 (Checkpoint 4): Ilse's final spiral — assault on Solenne, detention, refusal, trial, public execution; campaign termination on protagonist death |
 | REC-000017 | Record | Verra world Historical Layer: `worlds/verra/300_HALDEN_RECENT_HISTORY.md` — the Varn affair, the marsh-fever outbreak, and institutional aftermath, promoted to world canon on Prototype Alpha's close (campaign→world promotion) |
+| ENT-000021 - ENT-000022 | Entity | Campaign Prototype Beta (`campaigns/prototype_beta/`): Kael Travis, Kael's serviceable sword |
+| REC-000018 - REC-000025 | Record | Prototype Beta campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180) |
+| EVT-000014 | Event | Kael Travis arrives in Halden (Prototype Beta campaign start) |
+| REL-000020 - REL-000023 | Relationship | Prototype Beta: Kael's starting Knowledge States and Order exposure relationship |
 
 ---
 

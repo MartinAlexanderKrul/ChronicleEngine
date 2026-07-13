@@ -12,6 +12,18 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-13 — Checkpoint Gate: Reserved-Marker Consumption Advances the High-Water Mark
+
+**Start Guide / Runtime Profile:** Clarified the checkpoint-completeness gate in both resident layers of `docs/GAMEPLAY_START_GUIDE.md` and the Save Algorithm (step 3) of `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`: registry allocation means **advancing the kind's high-water mark**, not merely mentioning the identifier. Consuming an id the registry lists only as a reserved/pending forward marker is a real allocation — advance the high-water mark to it and reclassify it from reserved to consumed. An id present only as a reserved note, with the high-water mark still behind it, is not yet allocated, and leaving it that way makes the next checkpoint allocate the same number and collide (never-reuse violation, Data Model Invariant 3). Start Guide 2.4; Profile 1.19.
+
+**Context:** Prototype Alpha Session 2 / Checkpoint 3 (commit `6e7db51`). CP3 promoted `EVT-000012` from the reserved forward marker (added by the 2026-07-13 reconciliation) to a real, structured event, but did not update `system/ID_REGISTRY.md` — the Event high-water mark stayed at `EVT-000011`. Because the registry is the authoritative allocation counter, the next event allocation would have reissued `EVT-000012` and collided. Root cause: the engine saw the id already "mentioned" in the registry and concluded no registry work was needed, missing that a reserved marker being consumed requires advancing the high-water mark. The checkpoint-completeness gate fired correctly otherwise — CP3 wrote six ledgers plus a manifest with read-back, a clean pass versus CP2's silent single write.
+
+**Rules/Data Model/Decisions:** Unchanged — operationalizes the registry allocation procedure and never-reuse invariant (Data Model Section 1; Decision 044); no mechanic change.
+
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-13 — Campaign Restart Semantics and Baseline Checkpoint
 
 **Decisions:** Added Decision 053 (Campaign Restart and World-Line Forking) — distinguishes a **redo** (in-place reset: restore baseline, protagonist keeps her identifier, discarded identifiers are retired and never reused, registry high-water mark is not rolled back) from a **fork** (parallel world-line: a new campaign instance whose "same" character is a distinct persistent entity, since two divergent canonical histories cannot be one record under the single-Canonical-Record invariant). Establishes that every campaign should carry a first-class baseline checkpoint so restart-from-beginning is a restore, not git archaeology.

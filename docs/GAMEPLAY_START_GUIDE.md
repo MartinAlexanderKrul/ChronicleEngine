@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.3
+**Document Version:** 2.4
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -128,7 +128,7 @@ At every checkpoint and session close, apply Canon Promotion and the gameplay cl
 CHECKPOINT COMPLETENESS — A CHECKPOINT IS NOT ONE FILE, AND "SAVED" REQUIRES READ-BACK:
 Before you tell the player anything is saved or promoted to canon:
 1. Enumerate EVERY target the session touched: Current State (180), chronicle (160), changelog (170), NPCs/relationships (130), objectives (140), world ledger / knowledge states (110), inventory (120) if it changed, the ID registry (system/ID_REGISTRY.md) for any new ENT/REC/EVT/REL, and the save manifest.
-2. Write ALL of them, each with provenance. Any new identifier used in a ledger MUST first be allocated in the ID registry and defined in its owning ledger — never write a ledger that references an EVT/REL/ENT id that is not registered and defined, or you create a dangling reference.
+2. Write ALL of them, each with provenance. Any new identifier used in a ledger MUST first be allocated in the ID registry and defined in its owning ledger — never write a ledger that references an EVT/REL/ENT id that is not registered and defined, or you create a dangling reference. Allocation means ADVANCING that kind's high-water mark in the registry, not just mentioning the id. If the id was previously noted as a reserved/pending forward marker, consuming it now means advancing the high-water mark to it and reclassifying it as consumed — leaving the high-water mark behind a now-real id makes the NEXT checkpoint allocate the same number and collide.
 3. Read each target BACK from the repository — not from memory or this conversation — and confirm the intended change is actually present.
 4. Only if EVERY target verifies may you report the checkpoint saved or "promoted to canon." If any target is unwritten, report a PARTIAL checkpoint and name the unwritten targets. NEVER stamp "promoted to canon" on a partial write.
 5. The save manifest's list of updated ledgers must contain ONLY files you actually wrote and read back this checkpoint. Do not list a ledger you meant to write but didn't — a manifest that claims writes it never made is the specific failure this gate exists to prevent.

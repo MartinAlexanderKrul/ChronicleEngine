@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000022 |
+| Entity | `ENT-` | Persistent Entity | ENT-000029 |
 | Record | `REC-` | Canonical Record | REC-000025 |
-| Event | `EVT-` | Event | EVT-000014 |
-| Relationship | `REL-` | Relationship | REL-000023 |
+| Event | `EVT-` | Event | EVT-000017 |
+| Relationship | `REL-` | Relationship | REL-000028 |
 
 ---
 
@@ -54,6 +54,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000018 - REC-000025 | Record | Prototype Beta campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180) |
 | EVT-000014 | Event | Kael Travis arrives in Halden (Prototype Beta campaign start) |
 | REL-000020 - REL-000023 | Relationship | Prototype Beta: Kael's starting Knowledge States and Order exposure relationship |
+| ENT-000023 - ENT-000029 | Entity | Prototype Beta checkpoint 0001: Tollen Var, Sister Avel, Brant, Edrin Vale, Lysa Vale, unidentified wrong-stair man, Caldus |
+| EVT-000015 - EVT-000017 | Event | Prototype Beta checkpoint 0001: first job search and Tollen altercation; Order hiring and lower-passage briefing; first watch, wrong-stair alert, fever-door incident, and contamination response |
+| REL-000024 - REL-000028 | Relationship | Prototype Beta checkpoint 0001: Order day-hire/security relationship, Kael's working contacts with Avel and Brant, Edrin/Lysa family connection, and Kael's fever-contact exposure state |
 
 ---
 

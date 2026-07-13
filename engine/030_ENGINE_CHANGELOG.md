@@ -12,6 +12,22 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-13 — Campaign Restart Semantics and Baseline Checkpoint
+
+**Decisions:** Added Decision 053 (Campaign Restart and World-Line Forking) — distinguishes a **redo** (in-place reset: restore baseline, protagonist keeps her identifier, discarded identifiers are retired and never reused, registry high-water mark is not rolled back) from a **fork** (parallel world-line: a new campaign instance whose "same" character is a distinct persistent entity, since two divergent canonical histories cannot be one record under the single-Canonical-Record invariant). Establishes that every campaign should carry a first-class baseline checkpoint so restart-from-beginning is a restore, not git archaeology.
+
+**Campaign (Prototype Alpha):** Created `campaigns/prototype_alpha/saves/900_CHECKPOINT_0000/` — a self-contained baseline snapshot (full pre-play copies of the eight canonical ledgers, captured from the pre-play commit `390e4d7`, plus `900_SAVE_MANIFEST.md`). This realizes the Manifest's documented Save Layer pattern and gives the campaign a clean restore point.
+
+**Context:** Follow-on from the identifier-registry question during Prototype Alpha review — "what happens if I restart the campaign with the same character?" The identity model (semantic-free global IDs, never-reuse, single-Canonical-Record, stable identity) implied an answer but had not stated it; Decision 053 records it.
+
+**Known debt flagged (not resolved):** save-layer location/format drift — documented `saves/900_CHECKPOINT_<NNNN>/` (full copies) vs the session-1 flat `.saves/*.yaml` manifest-only files vs an empty `checkpoints/` placeholder. Decision 053 uses the documented location; reconciling the existing session checkpoints is deferred to Version 0.6 (Persistence).
+
+**Rules/Data Model/Manifest:** Unchanged — Decision 053 operationalizes existing invariants (Data Model Section 1 never-reuse; Decisions 043, 044) rather than adding a mechanic.
+
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-13 — Resident Checkpoint-Completeness Gate
 
 **Start Guide:** Added a resident CHECKPOINT COMPLETENESS gate to `docs/GAMEPLAY_START_GUIDE.md` — in the AI Project Instructions block and the "End a Session" close prompt. Before reporting anything saved or promoted to canon, the Runtime must enumerate every target (Current State, chronicle, changelog, NPCs/relationships, objectives, world/knowledge, inventory if changed, the ID registry for any new ENT/REC/EVT/REL, and the save manifest), write all of them with provenance, read each back from the repository, and only then report success; any unwritten target makes it a PARTIAL checkpoint that must be named, never stamped "promoted to canon." The save manifest's updated-ledger list must contain only files actually written and read back. Document version set to 2.3

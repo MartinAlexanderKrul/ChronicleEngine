@@ -2401,6 +2401,50 @@ Two rules govern how capability meets the die.
 
 ---
 
+## Decision 053 — Campaign Restart and World-Line Forking
+
+**Status:** Accepted
+**Date:** 2026-07-13
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Section 1 (identifiers; never-reuse Invariant 3); Decision 043 (single-Canonical-Record invariant); Decision 044 (Stable Entity Identity); Decision 039 and `010_ENGINE_RULES.md` Section 13 (save architecture); `000_ENGINE_MANIFEST.md` Save Layer
+
+### Context
+
+Prototype Alpha raised a practical question the identity model had not yet answered explicitly: what happens when a player wants to restart a campaign from the beginning with the same character? The engine uses semantic-free, globally unique, never-reused identifiers (Data Model Section 1), a single-Canonical-Record invariant (Decision 043), and stable entity identity independent of name (Decision 044). "Restart" touches all three, and without a ruling a runtime might do the wrong thing — reset the identifier counter and reuse retired IDs, or treat a divergent replay as the same entity holding contradictory canon.
+
+A second gap surfaced alongside it: the campaign had no baseline checkpoint to restart *from*. Restarting meant recovering pre-play ledgers from git history rather than restoring a first-class save.
+
+### Decision
+
+"Restart" is two distinct operations, and they are governed differently.
+
+1. **Redo (in-place reset).** The same campaign is reset to its baseline and replayed. The protagonist keeps her identifier — identity is stable and independent of play history (Decision 044). The discarded play history's identifiers (events, new relationships) are **retired, never reclaimed** (Data Model Invariant 3): the registry high-water mark is **not** rolled back, so new play allocates fresh identifiers and can never collide with the retired timeline. A redo restores the campaign's baseline checkpoint.
+
+2. **Fork (parallel world-line).** The original run is kept and an alternative is explored from the same starting point. This is a **new campaign instance**. The "same" character is narratively identical (same baseline definition, same name) but is a **distinct persistent entity with its own identifier**, because two divergent canonical histories cannot be one record under the single-Canonical-Record invariant (Decision 043) — one entity cannot simultaneously hold "met Corvane" and "never met Corvane" as canon. The shared origin is expressible through the identity-continuity graph (Decision 044).
+
+3. **Baseline checkpoint.** Every campaign should carry a first-class baseline checkpoint (an initialization snapshot, e.g. `saves/900_CHECKPOINT_0000/`) so that restart-from-beginning is a restore operation, not git archaeology.
+
+### Rationale
+
+- Preserves never-reuse (Data Model Invariant 3): a redo cannot reclaim retired identifiers, so a discarded timeline and its replacement never share an ID.
+- Preserves the single-Canonical-Record invariant (Decision 043): a fork is a new entity, so no record ever holds contradictory canonical state.
+- Keeps identity stable across a redo (Decision 044): the character is the same person; only the history resets.
+- The repository-level (not per-campaign) registry makes both operations safe by construction — retirement and forking both rely on one monotonic identity space. A per-campaign registry would tempt counter resets and reuse, and would smuggle scope into identifiers (Data Model Section 1.2).
+
+### Consequences
+
+- A campaign carries a baseline checkpoint; Prototype Alpha gains `campaigns/prototype_alpha/saves/900_CHECKPOINT_0000/` (full pre-play ledger copies plus manifest).
+- Redo restore procedure: copy baseline ledgers over the live ledgers; do not roll back the registry; the first new event continues from the high-water mark.
+- Fork procedure reuses the existing "separate campaign instance" path (`docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, custom-character initialization) and allocates a new protagonist entity sharing the baseline definition.
+- **Known debt (not resolved here):** the save layer has location/format drift — the Manifest documents `saves/900_CHECKPOINT_<NNNN>/` with full ledger copies, while the session-1 checkpoints used flat `.saves/*.yaml` manifest-only files and an empty `checkpoints/` placeholder exists. This decision uses the documented location; reconciling the existing session checkpoints and blessing a single form is deferred to the save-architecture cleanup (Version 0.6 — Persistence).
+
+### Alternatives Considered
+
+- **Reuse identifiers on redo (roll back the registry counter).** Rejected: violates never-reuse (Invariant 3) and creates two different events sharing one identifier across timelines — exactly the ambiguity semantic-free identity prevents.
+- **Treat the forked character as the same entity.** Rejected: violates the single-Canonical-Record invariant; one entity cannot hold two contradictory canonical histories.
+- **Per-campaign registries to make restart trivial.** Rejected: breaks cross-scope references (a campaign constantly references world entities) and smuggles scope into identifiers (Data Model Section 1.2). Reserved-range allocation within the one global registry remains the sanctioned concurrency escape hatch.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

@@ -86,7 +86,7 @@ Validate whether operational ledgers should be persistent objects at all, or whe
 
 ## PA-005 - Resident-Layer Enforcement of Runtime Invariants
 
-**Status:** Decide at Postmortem
+**Status:** Implemented — Decision 055 / Invariant Enforcement Points and the Resident Runtime Layer (2026-07-13)
 **Severity:** High
 **Source:** Issues PA-I004, PA-I009, PA-I010, PA-I012, PA-I014; Architecture Observation "Critical Invariants Must Be Enforced at the Resident Layer"
 
@@ -96,7 +96,9 @@ Proposed changes for the postmortem to weigh:
 - `012_ENGINE_RUNTIME.md`: add an explicit obligation that each of the four Runtime Invariants (Section 0.2) name its enforcement point — the moment and layer at which it is checked — rather than being assumed to hold because it is documented.
 - Runtime Profiles: formally distinguish a **resident** layer (always in-context, enforced every turn) from **fetched reference** material, and require that grounding, action-resolution, promotion, and canon-determinism checks live in the resident layer.
 
-Class: refinement (architectural). Candidate for a new Engine Decision at the postmortem. This is substrate-shaping guidance and applies to any runtime, not only the LLM profile.
+**Resolution (2026-07-13):** Accepted as Decision 055 and implemented in `012_ENGINE_RUNTIME.md`: Section 0.2 now names an enforcement point (moment and layer) for each of the four Runtime Invariants, and Section 0.4 requires every Runtime Profile to distinguish a resident layer (always in-context, applied per turn) from fetched reference material, with grounding, action-resolution, promotion-obligation awareness, and canon-determinism sited in the resident layer or a mechanical barrier (Section 5.4). Decision 054's validation barrier is classified as the first mechanical enforcement point under this decision.
+
+Class: refinement (architectural), implemented as a required pre-0.3 change. This is substrate-shaping guidance and applies to any runtime, not only the LLM profile.
 
 ---
 

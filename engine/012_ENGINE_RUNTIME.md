@@ -66,6 +66,23 @@ Every Runtime, on any substrate, must uphold four invariants. All later sections
 3. **Promotion.** Canon established during a session must reach the repository. In-session canon that has not been written to a durable ledger is not preserved (Section 5, Section 6).
 4. **Canon-determinism.** Given the same loaded canon, the same rules, and the same resolved die results, the Runtime produces state consistent with that canon and never contradicts it (Section 7).
 
+### Enforcement Points
+
+An invariant is not upheld because it is documented; it is upheld only if a named enforcement point checks it at the moment it can be violated. Every invariant must declare its enforcement point — the moment it is checked and the layer that checks it (Decision 055). An enforcement point is one of three classes:
+
+- **Resident per-turn** — applied every turn from always-in-context instruction, at the moment intent is resolved.
+- **Mechanical barrier** — a deterministic check that fails the operation (Section 5.4, Decision 054).
+- **Deferred barrier** — checked at a durability boundary such as a checkpoint or session close.
+
+| Invariant | Moment checked | Enforcement layer |
+|-----------|----------------|-------------------|
+| Grounding | Before asserting any state, each turn | Resident per-turn |
+| No silent canon | When durable canon is authored | Resident per-turn, backed by the mechanical barrier (Section 5.4) |
+| Promotion | At each durability boundary; obligation tracked per turn | Deferred barrier (Sections 2.2, 5.3), with resident promotion-obligation tracking |
+| Canon-determinism | When state is written | Resident per-turn, backed by the mechanical barrier (Section 5.4) |
+
+This obligation is substrate-general: any substrate whose default execution can diverge from an invariant must site enforcement at the point of divergence. A substrate that provably cannot violate an invariant records that as its enforcement point.
+
 ---
 
 ## 0.3 Runtime Components
@@ -95,6 +112,10 @@ A **Runtime Profile** is operational guidance for executing the Runtime on a spe
 Profiles are not part of this normative document. They live in `docs/` and may evolve freely. A profile specifies technique — how a given substrate boots, budgets its working memory, sequences its reads, and formats its reports — without altering any obligation defined here.
 
 The current profile is the large-language-model profile. Its session procedure is defined in `docs/AI_SESSION_TEMPLATE.md`. A future native or server Runtime would ship its own profile without modifying this document.
+
+### Resident and Fetched Layers
+
+A Runtime Profile must distinguish a **resident layer** — instruction that is always in context and applied every turn — from **fetched reference** material consulted on demand. Grounding, action-resolution, promotion-obligation awareness, and canon-determinism enforcement must live in the resident layer, or in a mechanical barrier (Section 5.4). Fetched material may elaborate a resident invariant but must never be the sole carrier of one. This requirement follows from Decision 055: on a substrate whose per-turn default competes with its guardrails, a guardrail that is only fetched effectively does not fire.
 
 ---
 

@@ -2499,6 +2499,54 @@ The registry remains authoritative rather than being silently derived from ledge
 
 ---
 
+## Decision 055 - Invariant Enforcement Points and the Resident Runtime Layer
+
+**Status:** Accepted
+**Date:** 2026-07-13
+**Related Sections:** `012_ENGINE_RUNTIME.md` Sections 0.2, 0.4, 1.1, 5.3, 5.4; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`; `docs/AI_SESSION_TEMPLATE.md`; Decisions 048 and 054; Prototype Alpha item PA-005 / Architecture Observation "Critical Invariants Must Be Enforced at the Resident Layer"
+
+### Context
+
+Prototype Alpha produced four separate invariant failures (issues PA-I004, PA-I009, PA-I010, PA-I012, and the narrower PA-I014) that shared one exact shape: the governing rule was correct and already written, but it lived only in the fetched Runtime Profile, or in a barrier that runs later (promotion / session close), and so it did not fire at the moment the action was taken. On a large-language-model substrate, per-turn behaviour is governed by the resident instruction and the model's narrative default; a rule read once into a large context, or a check deferred to session close, loses to the turn-by-turn default.
+
+This is the dominant architectural finding of the prototype. It is not four bugs; it is one property of any substrate whose default behaviour competes with its guardrails. The four Runtime Invariants (`012` Section 0.2 — Grounding, No silent canon, Promotion, Canon-determinism) are stated as obligations that every Runtime must uphold, but the document does not say where or when each is checked. An invariant with no named enforcement point is assumed to hold because it is documented — and Prototype Alpha showed that assumption is false on a real substrate. Decision 054 already fixed the narrowest case (registry bookkeeping) by making its enforcement mechanical; this decision generalises the lesson to all four invariants.
+
+### Decision
+
+The Runtime specification is amended so that every Runtime Invariant must declare an **enforcement point**, and every Runtime Profile must distinguish a **resident layer** from **fetched reference**.
+
+1. **Enforcement points (`012` Section 0.2).** Each of the four Runtime Invariants must name its enforcement point: the *moment* it is checked (relative to the action or the durability boundary) and the *layer* that checks it. An invariant is not considered upheld merely because it is documented; it is upheld only if a named point checks it at the moment it can be violated.
+
+2. **Three siting classes.** An enforcement point is one of:
+   - **Resident per-turn** — applied every turn from always-in-context instruction, at the moment intent is resolved. Required for **Grounding** and **Action-resolution** (roll before narrating a contested outcome), which are violated turn-by-turn.
+   - **Mechanical barrier** — a deterministic check that fails the operation (Decision 054). Required where narrated bookkeeping has demonstrably failed at its point (registry / structural repository validity).
+   - **Deferred barrier** — checked at a durability boundary (checkpoint, session close). Permitted for **Promotion** completeness, but the obligation to promote must itself be resident so that pending canon is tracked per turn rather than reconstructed at the barrier.
+
+3. **The resident layer (`012` Section 0.4).** A Runtime Profile must formally designate a resident layer — instruction that is always in context and applied every turn — distinct from fetched reference material consulted on demand. Grounding, action-resolution, promotion-obligation awareness, and canon-determinism enforcement must live in the resident layer (or in a mechanical barrier per class 2). Fetched material may elaborate a resident invariant but may never be the sole carrier of one.
+
+4. **Substrate-general framing.** This is a Runtime obligation, not LLM-specific guidance. Any substrate whose default execution can diverge from an invariant must site that invariant's enforcement at the point of divergence. A substrate that provably cannot violate an invariant may record that as its enforcement point.
+
+### Rationale
+
+The four invariants are the Runtime's entire correctness contract, yet the document stated them without stating where they hold. Prototype Alpha demonstrated that a documented-but-unsited invariant does not fire. Naming an enforcement point per invariant converts each from an aspiration into a checkable property, and forces the profile author to decide — per invariant — whether prose at the moment of action is sufficient, or whether the check must be mechanical. Decision 054 is the precedent: once narrated enforcement had failed three times, the only fix was to move the point, not to rewrite the prose at the old point. This decision makes "identify the enforcement point" a required design step rather than a lesson relearned per version.
+
+### Consequences
+
+- `012_ENGINE_RUNTIME.md` Section 0.2 gains, for each invariant, a named enforcement point (moment and layer). Section 0.4 gains the resident-versus-fetched distinction as a profile obligation.
+- `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` and `docs/AI_SESSION_TEMPLATE.md` must mark which of their contents are resident (per-turn) versus fetched reference, and site grounding and action-resolution in the resident layer.
+- Decision 054's mechanical barrier is retroactively classified as the first mechanical enforcement point under this decision; no change to Decision 054 is required.
+- New Runtime Profiles (for any world or substrate) inherit the obligation to declare enforcement points; this is world-agnostic and unaffected by which world is played.
+- This decision adds no new engine mechanic and no foundational abstraction. It is a refinement of how existing invariants are sited — consistent with Prototype Alpha's success criteria (refinements, not gaps).
+
+### Alternatives Considered
+
+- **Leave the invariants as documented obligations.** Rejected: Prototype Alpha showed documentation without a firing point does not hold on a real substrate.
+- **Make all four invariants mechanical (extend Decision 054 to everything).** Rejected: grounding and action-resolution are semantic judgements at the moment of narration, not structural properties a validator can check post-hoc; their correct point is resident per-turn, not a barrier.
+- **Fix each failure only in the Runtime Profile.** Rejected: that is the status quo that failed. The profile is fetched; siting an invariant there without a resident designation reproduces the original defect.
+- **Defer to Version 0.3.** Rejected: this is a required pre-0.3 postmortem refinement (Decision 048); Version 0.2 cannot be marked complete while its dominant finding is unincorporated.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

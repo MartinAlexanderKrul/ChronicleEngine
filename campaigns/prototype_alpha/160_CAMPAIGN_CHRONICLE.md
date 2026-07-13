@@ -135,3 +135,48 @@ Ilse recovers in the infirmary. Fever cases escalate from 2 to 7+. The Order sen
 At the end of the week, Corvane asks: "Are you still committed to this work?" Ilse has read the Order's letter. She has not yet answered.
 
 Extended session checkpoint saved.
+
+---
+
+## EVT-000012 — Ilse's Commitment Decision: Double-Agent Strategy
+
+```yaml
+id: EVT-000012
+canonical_record: REC-000014
+schema_version: "0.1.1"
+status: active
+provenance:
+  source: EVT-000012-session-play
+  event_time: "Year 312 RR, late spring (evening, day 8)"
+  record_time: "2026-07-13T00:00:00Z"
+kind: decision
+importance: current
+participants:
+  - ENT-000018
+  - ENT-000007
+description: "Ilse, recovered and mentally clear, commits to Corvane's investigation and adopts a double-agent strategy: she will accept the Order's recruitment offer as cover for continued intelligence-gathering and research. She conducts independent field investigation to verify Corvane's evidence before making this commitment. She concludes: tainted water is the fever vector. She will present acceptance to the Order and position herself as their agent while maintaining secret collaboration with Corvane and the Athenaeum."
+```
+
+**Evening, Day 8 — Infirmary, Athenaeum.**
+
+Corvane enters the infirmary and asks directly: "Are you still committed to this work?"
+
+Ilse presents the Order's letter and proposes a strategy: accept their recruitment offer, position herself as their agent gathering intelligence, while maintaining secret collaboration with Corvane. She states this will provide access to Order knowledge, timeline, and enforcement methods that would otherwise be unavailable.
+
+Corvane expresses caution but recognizes the tactical advantage. He agrees.
+
+Before finalizing her decision, Ilse demands access to Corvane's complete evidence. She examines his case notes, maps, and the *Observations* manuscript with a scholar's eye, searching for cherry-picked data, sampling bias, or contradictions. She finds the evidence is methodologically sound within its limits but not absolutely certain—it is suggestive and compelling, not proof.
+
+Unsatisfied with records alone, Ilse insists on field investigation. She takes a borrowed satchel and spends the evening in the river ward, moving through fever-afflicted households, tracing water sources, asking patients where they draw, examining for exceptions to the pattern.
+
+She finds no exceptions.
+
+She locates one case that crosses the line (Thera from the merchant quarter), but traces the source: a sister who worked in the lower ward. Mixed exposure, not a true exception.
+
+She returns to Corvane's study near midnight, certain: **tainted water is the fever vector.**
+
+With this personal conclusion grounded in her own investigation, she commits fully to the double-agent strategy. Corvane formalizes the plan: Ilse will answer the Order's letter affirmatively, will move into their structure, will learn their concerns and methods, and will report back through Maelis as intermediary. The collaboration will appear abandoned but will continue in secret.
+
+Ilse's knowledge state on the marsh-fever advances from "witnessed but undecided" to **"accepted and decided"** through independent verification.
+
+The commitment is made. The strategy is set. The risk is substantial.

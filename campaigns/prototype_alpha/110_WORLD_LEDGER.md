@@ -32,7 +32,7 @@ subjects:
 References into authoritative Verra records. These are pointers, not copies; the cited record remains the sole owner of each fact.
 
 | Fact visible to Ilse | Authoritative record | Ilse's access |
-|----------------------|----------------------|---------------|
+|----------------------|----------------------|------------------|
 | The town of Halden | `ENT-000002` (`worlds/verra/210_PLACES.md`) | Present; direct |
 | The Halden Athenaeum | `ENT-000003` | Public; her destination |
 | The Order of the Ember, and its civic authority | `ENT-000004`, `REL-000010` | Public |
@@ -61,12 +61,13 @@ provenance:
   extended_provenance:
     - EVT-000010
     - EVT-000011
+    - EVT-000012
 endpoints:
   - ENT-000018
   - ENT-000013
 type: knowledge-state
-qualities: "Access: direct (Corvane's maps and *Observations* manuscript, studied in detail; additional fresh manuscript left by Theron on day 4 of interlude). Understanding: substantial but incomplete. Validation: examined evidence firsthand over multiple sessions. Acceptance: undecided. Application: none yet. Ilse has witnessed the evidentiary pattern (water-source correlation with case severity) and has access to full *Observations* manuscript. During week of interlude (days 2-8), fever escalated from 2 to 7+ confirmed cases; she had time to reflect on evidence but has not yet concluded."
-state: "Scholar's active investigation state with time to process; evidence witnessed, methodology understood, conclusion pending independent analysis. Extended session ended with evidence undecided and Corvane asking final commitment question (EVT-000012)."
+qualities: "Access: direct and comprehensive (Corvane's maps, *Observations* manuscript, fresh copies studied multiple times; independent field investigation conducted). Understanding: substantial and grounded in evidence. Validation: examined evidence firsthand (records, conversations, direct field investigation in river ward tracing water sources for 13+ fever cases); searched for exceptions to the pattern; found none. Acceptance: DECIDED. Ilse concludes tainted water is the fever vector based on independently verified evidence. Application: pending; not yet acted on, but will inform medical decisions going forward."
+state: "Physician's independent conclusion: witnessed pattern, tested for exceptions, found none, accepted as professional medical finding. Ilse's conviction is certain; objective reality remains unestablished. She is now positioned to conduct further investigation while appearing to abandon the research (EVT-000012 double-agent commitment). Knowledge State reflects her personal medical certainty, not objective fact."
 ```
 
 ```yaml

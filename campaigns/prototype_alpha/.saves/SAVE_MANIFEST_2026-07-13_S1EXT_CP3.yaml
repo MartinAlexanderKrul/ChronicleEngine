@@ -1,0 +1,76 @@
+save_manifest:
+  checkpoint_id: "SAVE-20260713-S1EXT-003"
+  session_number: 1
+  session_phase: "extended"
+  save_time: "2026-07-13T00:00:00Z"
+  campaign: "Prototype Alpha"
+  world: "Verra"
+  engine_version: "0.1.5"
+  
+campaign_date: "Year 312 RR, late spring (day 8, evening)"
+
+events_at_checkpoint:
+  - "EVT-000009 (Session One Checkpoint, complete)"
+  - "EVT-000010 (Crisis Cascade, complete)"
+  - "EVT-000011 (Interlude, complete)"
+  - "EVT-000012 (Commitment Decision and Double-Agent Strategy, complete)"
+
+protagonist:
+  entity_id: "ENT-000018"
+  name: "Ilse Varn"
+  location: "Halden, Athenaeum infirmary"
+  condition: "Physically recovered; mentally clear; decision made; ready to enter Order's structure"
+
+ledgers_updated:
+  - file: "180_CURRENT_STATE.md"
+    change: "Protagonist condition updated to decision-made; knowledge posture updated to marsh-fever ACCEPTED; strategy section added; next action identified"
+    record_id: "REC-000016"
+    status: "verified"
+  
+  - file: "110_WORLD_LEDGER.md"
+    change: "REL-000017 (fever knowledge state) advanced: witnessed but undecided → ACCEPTED AND DECIDED; grounded in independent field investigation; Ilse's personal conclusion recorded"
+    record_id: "REC-000010"
+    status: "verified"
+  
+  - file: "140_OBJECTIVES.md"
+    change: "All objectives updated with commitment decision; OBJ-3 transformed from avoidance to intelligence-gathering; bifurcation of OBJ-1 noted"
+    subjects: ["OBJ-1", "OBJ-2", "OBJ-3"]
+    record_id: "REC-000013"
+    status: "verified"
+  
+  - file: "130_NPCS_AND_FACTIONS.md"
+    change: "REL-000016 (Corvane) updated with double-agent commitment and operational partnership; REL-000019 (Maelis) updated with protective-intermediary role established"
+    record_id: "REC-000012"
+    status: "verified"
+  
+  - file: "160_CAMPAIGN_CHRONICLE.md"
+    change: "EVT-000012 added: commitment decision, field investigation, double-agent strategy formalized, knowledge state advanced"
+    record_id: "REC-000014"
+    status: "verified"
+  
+  - file: "170_CHANGELOG.md"
+    change: "Extended session checkpoint entry added with full ledger update summary and next-action identification"
+    record_id: "REC-000015"
+    status: "verified"
+
+key_events:
+  - "Corvane asks commitment question; Ilse presents Order's letter and proposes double-agent strategy"
+  - "Ilse examines Corvane's evidence critically, searching for bias; finds methodology sound but not absolute"
+  - "Ilse conducts independent field investigation in river ward (evening, day 8)"
+  - "Traces water sources for 13+ fever cases; searches for exceptions to pattern"
+  - "Finds no exceptions; concludes: tainted water is fever vector"
+  - "Knowledge state REL-000017 advanced from undecided to ACCEPTED"
+  - "Commits to double-agent strategy: accept Order, gather intelligence, maintain secret collaboration"
+  - "Strategy formalized with Corvane; Maelis positioned as intermediary anchor"
+
+canonical_validation:
+  status: "CANONICAL"
+  write_capability: "Established (multiple successful writes)"
+  player_agency_preserved: true
+  world_reactions_recorded: true
+  consequences_deferred: false
+  decision_point_resolved: true
+
+next_event: "Ilse answers Order's recruitment letter; presents herself at Order offices to formalize position"
+next_decision_point: "Order's immediate expectations and operational placement"
+world_state_live: true

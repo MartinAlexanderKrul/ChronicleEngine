@@ -27,37 +27,38 @@ subjects: []
 
 - World: Verra (World Version 0.1, Prototype)
 - Engine: 0.1.5 (Foundation Release); Data Model 0.1.1
-- Campaign date: Year 312 RR, late spring
+- Campaign date: Year 312 RR, late spring (evening, day 8)
 
 ## Protagonist
 
 - Ilse Varn (`ENT-000018`) — recently licensed physician-scholar, outsider, no local standing.
 - Location: Halden (`ENT-000002`), Athenaeum infirmary (guest recovery, `ENT-000003` annex).
-- Condition: Physically recovered. Mentally clear. At critical decision point (EVT-000012 pending).
-- Provenance: Sessions EVT-000009 through EVT-000011 (extended play with interlude)
+- Condition: Physically recovered. Mentally clear. Decision made: accepting Order recruitment offer to position herself as double agent. Commitment to Corvane and independent investigation affirmed.
+- Provenance: Sessions EVT-000009 through EVT-000012 (extended play with interlude, plus commitment decision session)
 
 ## Knowledge Posture
 
-- Marsh-fever finding (`ENT-000013`): Ilse's state is **witnessed but undecided** (REL-000017-extended) — she has seen Corvane's evidentiary maps, studied the *Observations* manuscript, understood the methodology. One week of interlude (days 2-8) has given time to process but not to decide. Her own conclusion remains unformed. **Objective truth of the claim is not established** and is not recorded as settled anywhere.
+- Marsh-fever finding (`ENT-000013`): Ilse's state is **accepted and decided** (REL-000017-extended) — she has seen Corvane's evidentiary maps, studied the *Observations* manuscript, understood the methodology. She conducted independent field investigation in the river ward (evening, day 8), traced water sources for fever patients, searched for exceptions to the pattern. She found none. **Ilse concludes: tainted water is the fever vector.** Her conclusion is grounded in evidence she verified personally as a trained physician. **Objective truth of the claim remains not established**; Ilse's professional conviction is certain, but objective reality is not recorded as settled anywhere.
 - Tempered glass (`ENT-000012`): awareness-only (`REL-000018`).
 - Rivermason's mortar (`ENT-000014`): unknown to Ilse.
-- Fever outbreak: escalated during interlude from 2 to 7+ confirmed cases. Location: river ward, lower town. Expected to continue escalating. Public alarm rising.
-- Order's position: Ilse now understands Order opposes her collaboration with Corvane (read Solenne's letter, day 8 of interlude). Order has made recruitment offer contingent on abandonment of research.
+- Fever outbreak: escalated during interlude from 2 to 7+ confirmed cases. Location: river ward, lower town. Continues to escalate. Public alarm rising.
+- Order's position: Ilse now understands Order opposes Athenaeum's collaboration with Corvane (read Solenne's letter, day 8 of interlude). Order has made recruitment offer contingent on abandonment of research. Ilse has decided to accept the offer as cover for continued double-agent investigation.
 
 ## Active Objectives
 
-See `140_OBJECTIVES.md`: secure a footing at the Athenaeum; investigate the fever finding; avoid provoking the Order.
+See `140_OBJECTIVES.md`: secure a footing at the Athenaeum; investigate the fever finding; manage Order relationship.
 
-## Session-One Pressure
+## Active Strategy
 
-The season's first fever cases are appearing in a poor river ward as Ilse arrives, and the Order has begun pressing the Athenaeum over Corvane's treatise. Ilse's first medical act — whether to advise against the tainted water, acting on the *contested and banned* finding — is immediately consequential. Session one must preserve the distinction between Corvane's claim, the Athenaeum's validation, Ilse's developing belief, public controversy, and objective reality; it must not resolve the fever's cause as objective fact.
+Double-agent positioning: Ilse will present acceptance of Order recruitment (strategy to provide intelligence to Corvane while appearing to abandon the research). Immediate next step: answer Order's letter and present herself at their offices.
 
 ## Open Threads
 
-- Present the letter of introduction; meet Corvane (`REL-000016`) and Rector Maelis.
-- The Athenaeum–Order conflict over the treatise (`ENT-000015`, `EVT-000005`, `EVT-000006`).
-- The river-ward outbreak.
+- Answer the Order's recruitment letter and establish Ilse's position with Solenne.
+- Double-agent operations begin: Ilse learns Order's knowledge, concerns, timeline, enforcement methods.
+- Fever escalation continues; Ilse's first medical decision (whether to advise against lower wells) remains unresolved.
+- Athenaeum and Order conflict over the treatise continues to escalate.
 
 ## Promotion Status
 
-Campaign initialized. No in-session canon pending. First checkpoint (save manifest) is due at session-one close (Runtime Sections 2.2, 5).
+Extended session checkpoint (EVT-000012) ready for promotion. No contradictions. Canon grounded and consistent.

@@ -25,7 +25,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000020 |
-| Record | `REC-` | Canonical Record | REC-000016 |
+| Record | `REC-` | Canonical Record | REC-000017 |
 | Event | `EVT-` | Event | EVT-000013 |
 | Relationship | `REL-` | Relationship | REL-000019 |
 
@@ -49,6 +49,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000019 | Relationship | Prototype Alpha session 1 play: Ilse/Maelis relationship |
 | EVT-000012 | Event | Prototype Alpha session 2 (Checkpoint 3): Ilse's commitment decision and double-agent strategy; independent field investigation; marsh-fever Knowledge State accepted |
 | EVT-000013 | Event | Prototype Alpha session 2 (Checkpoint 4): Ilse's final spiral — assault on Solenne, detention, refusal, trial, public execution; campaign termination on protagonist death |
+| REC-000017 | Record | Verra world Historical Layer: `worlds/verra/300_HALDEN_RECENT_HISTORY.md` — the Varn affair, the marsh-fever outbreak, and institutional aftermath, promoted to world canon on Prototype Alpha's close (campaign→world promotion) |
 
 ---
 

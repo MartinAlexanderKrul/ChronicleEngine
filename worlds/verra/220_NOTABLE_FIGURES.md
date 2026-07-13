@@ -298,3 +298,11 @@ endpoints:
 type: membership
 qualities: "Rank: Master of the Guild."
 ```
+
+---
+
+## Historical / Deceased Figures
+
+This ledger owns the living notable figures above. Figures who have passed into Halden's history are recorded in the Historical Layer, not duplicated here as canonical entities.
+
+- **Ilse Varn** (`ENT-000018`) — an outsider physician publicly executed in Halden in the early summer of Year 312 RR after assaulting Prelate Solenne. Her canonical record is the closed Prototype Alpha campaign; the world's memory of her is held as an in-world historical record in `worlds/verra/300_HALDEN_RECENT_HISTORY.md` (REC-000017). Deceased.

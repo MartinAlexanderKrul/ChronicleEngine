@@ -133,9 +133,15 @@ Class: refinement, but escalating toward a required pre-0.3 change. The enforcem
 
 ## PA-009 - Campaign-to-World Promotion at Campaign Termination
 
-**Status:** Gap — Decide at Postmortem
-**Severity:** High
+**Status:** Reclassified — refinement (mechanism proven; trigger missing). Formalize procedure at Postmortem.
+**Severity:** Medium-High
 **Source:** Issue PA-I017 (Ilse's death / campaign termination, Checkpoint 4)
+
+**Update (2026-07-13):** The promotion was performed manually for Prototype Alpha's close, and it required **no new architecture** — the closed campaign's durable, publicly-known consequences (Ilse's execution, the fever outbreak escalation, the sharpened institutional conflict) were promoted into a world-layer **historical document** (`worlds/verra/300_HALDEN_RECENT_HISTORY.md`, REC-000017) using the existing Historical Persistence mechanism (Decision 038 / Rules Section 12), plus a pointer in `220_NOTABLE_FIGURES.md`. The single-Canonical-Record invariant was respected: Ilse's canonical record stays in the closed campaign; the world holds an in-world historical *document about* her, not a competing entity record. The Information Boundary was respected: only publicly-observable facts were promoted, the fever's true cause was left unestablished, and Ilse's private reasoning was not carried over.
+
+**Conclusion:** this is a **refinement, not a foundational gap.** The abstractions to carry history across campaigns already exist and work. What is missing is only a **trigger** — a defined step at campaign termination that performs this promotion, rather than leaving it to manual action or runtime improvisation.
+
+Proposed change for the postmortem: add a **campaign-termination promotion step** to the Gameplay Close (Runtime Profile), and/or a Runtime obligation, that on campaign close promotes world-affecting, publicly-observable outcomes into world-layer historical records and world-state updates, with provenance to the closing campaign, respecting the Information Boundary (public facts only; disputed questions left unresolved).
 
 The death test exposed the single largest gap in the world-first model. When Ilse died, the campaign closed cleanly at the campaign layer, and the Runtime correctly treated protagonist death as campaign termination. But **nothing was promoted to the world layer.** Ilse's public execution (witnessed by hundreds — now a piece of Halden's history), the escalated fever outbreak, and Corvane's suppression were listed as "threads that persist in Halden canon" but were written nowhere in `worlds/verra/`. A future Verra campaign would have no record that any of it happened.
 

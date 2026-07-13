@@ -12,6 +12,22 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-13 — Campaign→World Promotion on Prototype Alpha Close (Historical Layer First Use)
+
+**World (Verra):** Promoted the closed Prototype Alpha campaign's durable, publicly-known consequences into world canon, so later campaigns in Verra inherit the history. Created `worlds/verra/300_HALDEN_RECENT_HISTORY.md` (REC-000017) — the first use of the Historical Layer (300–399) — an in-world historical record of the Varn affair (Ilse Varn's arrival, entanglement in the Athenaeum–Order dispute, assault on Prelate Solenne, trial, and public execution), the marsh-fever outbreak escalation (to 13+ cases), and the institutional aftermath. Added a pointer to Ilse (`ENT-000018`, deceased) in `220_NOTABLE_FIGURES.md`. Allocated REC-000017 (registry high-water advanced).
+
+**Architecture:** No new architecture was required — this used the existing Historical Persistence mechanism (Decision 038 / Rules Section 12): historical documents are in-world evidence, and a campaign's chronicle promotes into world/historical records. Invariants respected: single-Canonical-Record (Ilse's canonical record stays the closed campaign; the world holds a historical document *about* her, not a competing entity record — Decision 043); and the Information Boundary (only publicly-observable facts promoted; the fever's true cause left unestablished; private campaign reasoning not carried over).
+
+**Context:** Prototype Alpha — issue PA-I017. The death test (Checkpoint 4) closed the campaign but promoted nothing to the world layer, so a second campaign found a Verra with no memory of Ilse. This promotion gives the world its memory and validates the campaign→world path.
+
+**Finding reclassified:** PA-009 downgraded from foundational **gap** to **refinement** — the abstractions to carry history across campaigns already exist and work; only a **trigger** (a defined campaign-termination promotion step) is missing, to be formalized at the Engine Postmortem. This performed the promotion manually; it did not add the automatic step.
+
+**Rules/Data Model/Decisions:** Unchanged — exercises Decision 038 and Section 12; no mechanic or rule change.
+
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-13 — Checkpoint Gate: Reserved-Marker Consumption Advances the High-Water Mark
 
 **Start Guide / Runtime Profile:** Clarified the checkpoint-completeness gate in both resident layers of `docs/GAMEPLAY_START_GUIDE.md` and the Save Algorithm (step 3) of `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`: registry allocation means **advancing the kind's high-water mark**, not merely mentioning the identifier. Consuming an id the registry lists only as a reserved/pending forward marker is a real allocation — advance the high-water mark to it and reclassify it from reserved to consumed. An id present only as a reserved note, with the high-water mark still behind it, is not yet allocated, and leaving it that way makes the next checkpoint allocate the same number and collide (never-reuse violation, Data Model Invariant 3). Start Guide 2.4; Profile 1.19.

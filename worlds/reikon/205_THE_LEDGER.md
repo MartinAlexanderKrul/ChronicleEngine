@@ -9,36 +9,105 @@
 
 # The System Interface
 
-Every Awakened bears a private **System** interface only they can see. It functions as a personal progression tracker, displaying:
+Every Awakened bears a private **System** interface only they can see. It is a mysterious, personal progression tracker that only the hunter themselves can access. The System records:
 
-**Core Display:**
-- **Current Level** — Your rank tier (E through S, or Anomalous)
-- **Experience (XP)** — Numerical XP gained per kill, quest completion, Rift clear, or ordeal survived. Kills show "+50 XP" notifications; bosses grant "+500 XP" or more. XP accumulates toward the next level threshold.
-- **Mana Pool & Reserves** — Current/max mana, depleted by using Abilities, restored by rest or core consumption
-- **Health/Condition** — Your physical state (wounds, exhaustion, status effects)
+- **Current Rank** (E through S, or Anomalous)
+- **Experience (XP)** — Accumulated through defeating monsters, clearing Rifts, and facing real danger
+- **Stats** — Power, Endurance, Speed, Mana Affinity, Perception (improve through leveling)
+- **Mana Pool & Reserves** — Current and maximum mana
+- **Health/Condition** — Physical state (wounds, exhaustion, status effects)
+- **Skills & Marks** — Learned techniques and specializations
+- **Classes/Paths** — Specialized progression paths (unlock as you grow)
+- **Quests** — Main objectives, hidden quests, repeatable work
+- **Inventory** — Carried items, cores, equipment
 
-**Progression & Growth:**
-- **Level Progress Bar** — Visual representation of XP toward next level. When the bar fills, an **Ascension** occurs: you level up, gain Skill Points, and unlock new abilities/paths.
-- **Skill Points** — Earned on each Ascension. You allocate these to upgrade existing Abilities, unlock new Marks, or improve core Stats (Power, Endurance, Speed, Mana Affinity, Perception).
-- **Classes/Paths** — As you progress, new specialized class options unlock (e.g., "Blade Master," "Mana Channeler," "Rift Guardian"). Selecting a class specializes your growth and unlocks unique skills.
-- **Ability Tree** — Your initial Abilities and any unlocked via rare cores. Points can enhance them (increase potency, reduce mana cost, add new effects).
-- **Skill/Mark List** — Learned techniques and specializations. You can equip/active certain Marks before expeditions.
+## Official Rank vs Character Level
 
-**Quest System:**
-- **Main Objectives** — Major Rift expeditions and story-driven goals display as quests with XP and reward values.
-- **Hidden/Secret Quests** — Triggered by specific actions, choices, or conditions (e.g., "Defeat 10 Bruisers without using Abilities"). Reward bonus XP or unlock rare abilities.
-- **Repeatable Quests** — Daily/weekly bounties for standard work (clear solo E-Rift, harvest 5 cores, etc.).
+**Critical distinction:**
 
-**Stat Sheet:**
-- **Power** — Physical and magical damage output
-- **Endurance** — Health pool, stamina, resistance to injury
-- **Speed** — Movement and reaction time
-- **Mana Affinity** — Mana pool size and recovery rate
-- **Perception** — Rift-sensing, trap detection, enemy recognition
+**Official Rank** (E through S):
+- Determined by your mana pool at Awakening
+- Issued by the Hunters' Association
+- **Never changes** — you are locked into your Rank for life
+- What the world sees and certifies (your license)
+
+**Character Level** (1 to ∞):
+- Your personal progression through XP and experience
+- Earned by defeating monsters, clearing Rifts, facing real danger
+- **Grows indefinitely** — no cap
+- Independent of Official Rank
+- Determines your actual power and capability
+
+**Example Progression:**
+- Start: **E-Rank Official** (from mana pool), **Level 1**
+- After first Rift: **E-Rank Official** (unchanged), **Level 5** (gained XP)
+- After many Rifts: **E-Rank Official** (still unchanged), **Level 45** (much stronger)
+- After extensive play: **E-Rank Official** (immutable), **Level 120** (as powerful as S-Rank)
+
+**Mechanical Reality:**
+- Your Level determines your actual stats and power
+- Your Official Rank is what hunters, the Association, and the world believe about you
+- A Level 100 E-Rank hunter is massively more powerful than a newly awakened C-Rank (Level 1)
+- This creates dramatic tension: proving yourself against official expectations
+
+## Accessing Your System: `/system` Command
+
+During play, use `/system` to view your diegetic System interface. The System will display in Solo Leveling style — showing all stats, XP progress, skills, inventory, and status as a window. This is how you check your character's current numbers and progression.
+
+**Example System display:**
+```
+═══════════════════════════════════════════════════════════════
+                    DAEDALUS — SYSTEM INTERFACE
+═══════════════════════════════════════════════════════════════
+Official Rank: E-Rank | Level: 1 | XP: 0/100 | Health: 100/100 | Mana: 13/13
+───────────────────────────────────────────────────────────────
+STATS                           SKILLS
+  Power:        8/20              • Fireball (Lv 1)
+  Endurance:    9/20              • Flame Shield (Lv 1)
+  Speed:        10/20             • Combustion Touch (Lv 1)
+  Mana Affinity: 13/20            • Reinforced Body (Passive)
+  Perception:   14/20             • Endurance Surge (Lv 1)
+                                  
+INVENTORY (6/10)                QUESTS
+  • License (E-Rank)              [MAIN] Clear Warehouse 7 Rift
+  • Sword                         [REPEATABLE] Daily Scout
+  • Potion x3                     [HIDDEN] ???
+  • Rope
+  • 50 cores
+═══════════════════════════════════════════════════════════════
+```
+
+## Progression: Narrative + Mechanical
+
+**During play:**
+- Progression happens narratively. You face challenges, defeat enemies, clear Rifts
+- The story describes your experience and growth in text
+- You don't see "+50 XP" pop-ups; instead: "You felt the System pulse. Growth. When you checked, your XP had increased to 45/100"
+- Leveling happens as a narrative event, not a UI announcement
+
+**Checking status:**
+- Use `/system` to view exact numbers, stats, skill levels, inventory, XP progress
+- This shows your diegetic System interface (how your character perceives their own power)
+- Only you can see it; the world cannot read another's System
+
+**Level Progression (Infinite):**
+- XP thresholds increase per level (Level 1→2: 100 XP; Level 10→11: 500 XP; Level 50→51: 5000 XP, etc.)
+- When you accumulate enough XP, an **Ascension** occurs (narrative event)
+- Each level gains you **Stat Points** to allocate to your five core Stats
+- Each level may unlock new **Skills, Paths, or Abilities**
+- Skills improve through use and leveling
+- **No level cap** — you can level indefinitely
+- As you approach Level 90+, your power approaches S-Rank capability, regardless of your Official Rank
+
+**Official Rank Remains Immutable:**
+- Your E-Rank license never changes
+- But your Level grows infinitely
+- At high levels, you become far more powerful than your Official Rank suggests
+- This creates dramatic potential: the underestimated E-Rank who becomes unstoppable
 
 The Dormant majority have no System and see nothing. No one can read another's System directly; what the world *knows* of a hunter's power is the Authority's **Official Rank** — an assessment, and therefore fallible, contestable, and forgeable.
 
-**Engine Note (Decision 051):** The System's numerical display (XP, stats, levels, quests) is *diegetic information* — how the hunter perceives and tracks their own power. Action resolution remains intent + circumstance + d100 (Rules Section 4). A high Stat or Ability never overrides the die; it functions as an ordinary Modifier. The System informs the hunter's self-perception; it does not bypass Chronicle Engine's emergent simulation.
+**Engine Note (Decision 051):** The System's numerical display (XP, stats, levels) is *diegetic information* — how the hunter perceives and tracks their own power. Action resolution remains intent + circumstance + d100 (Rules Section 4). A high Stat or Ability never overrides the die; it functions as an ordinary Modifier. The System informs the hunter's self-perception; it does not bypass Chronicle Engine's emergent simulation.
 
 ---
 

@@ -10,7 +10,7 @@
 
 ```
 DAEDALUS — E-RANK FIRE SCHOLAR
-Age: 20 | Status: Newly Licensed | Rank: E | XP: 0/500
+Age: 20 | Status: Newly Licensed | Official Rank: E | Level: 1 | XP: 0/100
 
 STATS
   Power:           8/20
@@ -78,7 +78,7 @@ You can:
 ## Campaign Resources
 
 - **World Bible:** `worlds/reikon/200_WORLD_BIBLE.md`
-- **System Reference:** `worlds/reikon/205_THE_SYSTEM_REFERENCE.md`
+- **System Reference:** `worlds/reikon/205_THE_LEDGER.md`
 - **Character Sheet:** `campaigns/reikon_awakening_001/100_CHARACTER_DAEDALUS.md`
 - **Campaign Log:** `campaigns/reikon_awakening_001/050_CAMPAIGN_LOG.md`
 

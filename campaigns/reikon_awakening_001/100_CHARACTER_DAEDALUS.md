@@ -20,56 +20,37 @@
 
 ---
 
-## System Page (Diegetic Interface)
+## System Interface (Use `/system` to view)
 
-**[SYSTEM DISPLAY]**
+Your diegetic System interface tracks your progression. Check it anytime with `/system` to see:
+- Official Rank (immutable), Character Level (grows infinitely), XP progress
+- Health and Mana status
+- All Stats (Power, Endurance, Speed, Mana Affinity, Perception) — increase as you level
+- Skills & Abilities with levels
+- Inventory and equipment
+- Active Quests
 
-```
-═══════════════════════════════════════════════════════════════
-                    DAEDALUS — SYSTEM INTERFACE
-═══════════════════════════════════════════════════════════════
+**Initial System State (when you check `/system`):**
+- Official Rank: E-Rank (Newly Licensed, immutable from mana pool)
+- Character Level: 1 (starts here, grows infinitely)
+- XP Progress: 0 / 100 XP to Level 2
+- Health: 100/100
+- Mana: 13/13 (full)
+- Stats: Power 8, Endurance 9, Speed 10, Mana Affinity 13, Perception 14
+- Skills: Fireball (Lv 1), Flame Shield (Lv 1), Combustion Touch (Lv 1), Reinforced Body (Passive), Endurance Surge (Lv 1)
+- Inventory: License (E-Rank), Sword, Repair Kit, 3x Potions, Rope, 50 cores
 
-PROFILE
-  Rank:              E-Rank (Newly Licensed)
-  Mana Pool:         Medium (E-Rank baseline)
-  Experience:        0 XP / 500 XP to Level D
-  Progress:          [░░░░░░░░░░░░░░░░░░░░] 0%
+---
 
-CORE STATS
-  Power:             8/20
-  Endurance:         9/20
-  Speed:             10/20
-  Mana Affinity:     13/20
-  Perception:        14/20
+## Official Rank vs Character Level
 
-ABILITIES
-  ✓ Mana Control: Fire
-    └─ Fireball (12 mana) — Area damage, burn effect
-    └─ Flame Shield (8 mana/sec) — Protective barrier, reflect heat
-    └─ Combustion Touch (6 mana) — ignite nearby objects
+| Field | Value |
+|-------|-------|
+| **Official Rank** | E-Rank (immutable, from mana pool) |
+| **Character Level** | 1 (starts here, grows infinitely through XP) |
+| **XP Progress** | 0 / 100 XP to Level 2 |
 
-  ✓ Durability Enhancement
-    └─ Reinforced Body — Passive 20% physical damage reduction
-    └─ Endurance Surge (10 mana) — Temporary +30% resistances for 60 sec
-
-SKILLS & MARKS
-  [LOCKED] No Marks learned yet. Unlock through training/mentorship.
-
-QUESTS
-  [MAIN] First E-Rift Expedition — Clear solo E-Rift, harvest cores
-  [HIDDEN] ??? (Unlock through specific actions)
-  [REPEATABLE] Daily Rift Scout — Find and report Rift locations (10 XP/day)
-
-INVENTORY (Starting)
-  └─ Association License (E-Rank)
-  └─ Basic Sword (starting equipment)
-  └─ Repair Kit
-  └─ 3x Mana Recovery Potions (restore 20 mana each)
-  └─ Climbing Rope
-  └─ 50 cores (starting salary advance)
-
-═══════════════════════════════════════════════════════════════
-```
+Your Official Rank (E-Rank) never changes — it's what your Association license says. Your Character Level starts at 1 and grows infinitely as you gain XP from defeating monsters and clearing Rifts. At high levels, you can become far more powerful than your E-Rank suggests.
 
 ---
 
@@ -77,11 +58,13 @@ INVENTORY (Starting)
 
 | Stat | Score | Effect |
 |------|-------|--------|
-| **Power** | 8/20 | Fire spells deal moderate damage. Sword swings inflict normal physical damage. |
-| **Endurance** | 9/20 | Medium health pool (~100 HP equivalent). Resistant to fire, normal to other elements. |
-| **Speed** | 10/20 | Average movement. Not the fastest, not the slowest. Can dodge with practice. |
-| **Mana Affinity** | 13/20 | Strong mana pool for an E-Rank. Fire spells are your strength. |
-| **Perception** | 14/20 | Keen intellect and observation. You notice details others miss. Scholar background shows. |
+| **Power** | 8/20 | Fire spells deal moderate damage. Sword swings inflict normal physical damage. Increases with levels. |
+| **Endurance** | 9/20 | Medium health pool (~100 HP). Resistant to fire, normal to other elements. Increases with levels. |
+| **Speed** | 10/20 | Average movement. Not fastest, not slowest. Can dodge with practice. Increases with levels. |
+| **Mana Affinity** | 13/20 | Strong mana pool for an E-Rank. Fire spells are your strength. Increases with levels. |
+| **Perception** | 14/20 | Keen intellect and observation. You notice details others miss. Scholar background shows. Increases with levels. |
+
+Each level grants **Stat Points** to allocate to these five core stats.
 
 ---
 

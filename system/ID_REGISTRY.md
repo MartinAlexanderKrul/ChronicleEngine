@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000020 |
 | Record | `REC-` | Canonical Record | REC-000016 |
-| Event | `EVT-` | Event | EVT-000012 |
+| Event | `EVT-` | Event | EVT-000013 |
 | Relationship | `REL-` | Relationship | REL-000019 |
 
 ---
@@ -48,6 +48,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000009 – EVT-000011 | Event | Prototype Alpha session 1 play: Athenaeum meeting and commitment (009), day-2 crisis cascade (010), infirmary interlude and Order's offer (011) |
 | REL-000019 | Relationship | Prototype Alpha session 1 play: Ilse/Maelis relationship |
 | EVT-000012 | Event | Prototype Alpha session 2 (Checkpoint 3): Ilse's commitment decision and double-agent strategy; independent field investigation; marsh-fever Knowledge State accepted |
+| EVT-000013 | Event | Prototype Alpha session 2 (Checkpoint 4): Ilse's final spiral — assault on Solenne, detention, refusal, trial, public execution; campaign termination on protagonist death |
 
 ---
 

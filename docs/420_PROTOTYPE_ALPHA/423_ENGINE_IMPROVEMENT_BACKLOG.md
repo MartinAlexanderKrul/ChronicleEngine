@@ -116,15 +116,34 @@ Class: refinement (Agency Contract boundary). No canon corruption observed (obje
 
 ## PA-007 - Registry Maintenance Robustness
 
-**Status:** Review at Postmortem
-**Severity:** Medium-High
-**Source:** Issues PA-I013, PA-I014
+**Status:** Elevated — Decide at Postmortem
+**Severity:** High
+**Source:** Issues PA-I013, PA-I014, **PA-I016** (three consecutive checkpoint recurrences: CP2, CP3, CP4)
 
-Gameplay-generated identifiers were repeatedly left unregistered or under-registered (unallocated IDs from CP1; a stale high-water mark at CP3 that risked a reuse collision). Even after the checkpoint gate named the registry as a target, the high-water step under-fired. The registry is a hand-maintained monotonic counter in Markdown, and the runtime keeps failing to maintain it exactly.
+Gameplay-generated identifiers were repeatedly left unregistered or under-registered: unallocated IDs from CP1; a stale high-water mark at CP3; and again at CP4, where `EVT-000013` was consumed but the registry was not touched at all. This failed **three checkpoints in a row**, including after the resident checkpoint gate explicitly named the registry as a required target and after the gate was clarified to require advancing the high-water mark (Guide 2.4 / Profile 1.19). Each occurrence required an out-of-band manual repair.
 
-Proposed change for the postmortem to weigh: keep the readable Markdown registry but add a mechanical safeguard — a validation step that cross-checks every identifier referenced in campaign ledgers against the registry high-water marks at checkpoint, so an unregistered or reused id is caught before commit rather than by later audit. Consider whether allocation should be verified against actual ledger contents rather than a counter the runtime updates by hand.
+Conclusion from the recurrence: a **narrated instruction to maintain the registry does not work** — this is the resident-layer lesson (PA-005) hitting its limit. When the enforcement point cannot be made reliable by prose at all, it must become **mechanical**. Proposed change for the postmortem:
 
-Class: refinement. Recurring; the enforcement point needs to be mechanical, not narrative (compare PA-005).
+- Add a checkpoint-time **validation step** (not a narration) that scans every identifier referenced in the campaign ledgers, compares them to the registry high-water marks, and **fails the checkpoint** if any referenced id exceeds its high-water mark or is otherwise unallocated. Catch it before commit, not by later audit.
+- Consider deriving the high-water mark from actual ledger contents (max id in use) rather than a counter the runtime updates by hand, so the registry cannot drift behind reality.
+
+Class: refinement, but escalating toward a required pre-0.3 change. The enforcement point must be mechanical, not narrative.
+
+---
+
+## PA-009 - Campaign-to-World Promotion at Campaign Termination
+
+**Status:** Gap — Decide at Postmortem
+**Severity:** High
+**Source:** Issue PA-I017 (Ilse's death / campaign termination, Checkpoint 4)
+
+The death test exposed the single largest gap in the world-first model. When Ilse died, the campaign closed cleanly at the campaign layer, and the Runtime correctly treated protagonist death as campaign termination. But **nothing was promoted to the world layer.** Ilse's public execution (witnessed by hundreds — now a piece of Halden's history), the escalated fever outbreak, and Corvane's suppression were listed as "threads that persist in Halden canon" but were written nowhere in `worlds/verra/`. A future Verra campaign would have no record that any of it happened.
+
+The engine's premise is "campaigns end, characters die, history continues" — but there is currently **no procedure by which a campaign's durable consequences become world or historical canon.** History only "continues" if the world layer actually inherits it. Decision 038 / Rules Section 12 define historical documents as promotable from the campaign chronicle, but nothing triggers or requires that promotion at campaign close.
+
+Proposed change for the postmortem to weigh: define a **campaign-termination promotion step** — when a campaign closes, its world-affecting outcomes (deaths as public events, institutional shifts, unresolved pressures, notable historical occurrences) are promoted into world-state records and/or historical documents in the world layer, with provenance back to the closing campaign. This is what makes multi-generation play in one persistent world real.
+
+Class: **gap** (missing foundational procedure). This is the most important item from the Prototype Campaign and is directly testable by starting a second protagonist in Verra: does the new campaign's world know Ilse was executed?
 
 ---
 

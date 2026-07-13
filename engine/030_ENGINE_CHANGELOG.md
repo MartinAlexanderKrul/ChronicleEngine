@@ -12,6 +12,20 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-13 — Canon Grounding at Narration Time (Player-Declared Facts)
+
+**Start Guide:** Added a resident CANON GROUNDING gate to both always-resident layers of `docs/GAMEPLAY_START_GUIDE.md` — the AI Project Instructions block and the First Session start prompt. Before narrating any item, weapon, tool, skill, ally, or position into a scene because the player's wording assumed it, the Runtime must verify it against loaded canon (inventory ledger, character sheet, Current State) on its own initiative, the instant the action is declared; if the fact is absent it narrates the intent but blocks only the missing fact (the hand comes up empty — no dagger) and never waits for the player to point out the absence. Document version set to 2.2 (also reconciles the header, which had not been bumped for the 2.1 operational-refinements entry below).
+
+**Runtime Profile:** Added the "Intent Is Authored; Facts Are Grounded" subsection to the Player Agency Contract in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` — the player authors intent, the repository authors facts; a declared action's embedded factual claim ("a dagger from my purse") is grounded against canon before it is narrated as real, framed as the read-side twin of the not-loaded rule (`012` Section 3.2). Made explicit that this check fires at narration time on every declared action, not only at the promotion barrier, and linked the Failure Behavior promotion-barrier clause to it as the last line of defence rather than the first. Document version set to 1.17 (reconciles the header, which had not been bumped for the 1.16 operational-refinements entry below).
+
+**Context:** Prototype Alpha Session 1 Extended — the Runtime narrated a player-introduced dagger (absent from canonical inventory ENT-000019/020) into the scene and only retracted it after the player challenged via OOC ("// how can Ilse has dagger?"). Same failure class as the repository-loading bug (fired only after "that is not correct") and the original d100 bug (rule present but not firing per-turn): the refuse-the-dagger rule existed only at the promotion barrier (session close) and as a passive principle, with no per-turn, at-narration-time, proactive check. Fix applies the proven pattern — resident, imperative, check-every-turn, attempt/verify-first.
+
+**Rules/Data Model/Decisions:** Unchanged — operationalizes Grounding (`012` Invariant 1), No Silent Canon (`012` Invariant 2), and the existing established-fact quarantine (Failure Behavior); no mechanic or rule change. Reaffirms Law III (Agency): the player may attempt to draw a dagger, but canon, not phrasing, decides whether one is there.
+
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-13 — Prototype Alpha Operational Refinements (Modifier Application, Time-Progression, Relationship Capture)
 
 **Start Guide:** Clarified d100 modifier application procedure in resident ACTION RESOLUTION gate. Added explicit steps: (1) Assess difficulty and net modifier, (2) Roll d100, (3) Apply net modifier to raw roll to get effective roll, (4) Read band from effective roll, (5) Show compact roll tag. This closes the gap identified in Session 1 Extended where modifiers were calculated but not consistently applied before band-reading (Session 1, roll 2 sequence). Document version set to 2.1

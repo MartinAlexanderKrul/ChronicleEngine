@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.15
+**Document Version:** 1.17
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -39,6 +39,14 @@ Certain facts are authored only by the player. The Runtime must never assert the
 - the character's private reasoning, feelings, or plan, unless the player delegates it.
 
 Only the player may author intent within the Player Intent Domain. The Runtime resolves the consequences of that intent and records the result; it never authors the intent itself. A declared intent is not yet canon — canon is the resolved outcome the simulation produces from it. Authoring intent for the player is a Grounding violation (`012` Invariant 1) and is handled as a contradiction, not as narration.
+
+## Intent Is Authored; Facts Are Grounded
+
+The Player Intent Domain gives the player authority over what the character *tries* — never over what the world *contains*. A declared action commonly bundles both: "I draw my sword" assumes a sword, "I take a dagger from my purse" assumes a dagger, "I pick the lock" assumes the skill. The intent is the player's; the embedded factual claim is the repository's. The Runtime honors the intent and **grounds the fact against loaded canon before it narrates the fact as real** (Grounding, `012` Invariant 1). A player's phrasing cannot add an object, ally, capability, or position to the world — "I take a dagger from my purse" is a *proposed* fact, and canon, not phrasing, decides whether the purse holds a dagger.
+
+This check fires **at narration time, on every declared action** — not only at the promotion barrier. Deferring it to session close lets the fabricated object cascade through the scene first: by then the Runtime has already narrated the character wielding what does not exist, and the correction becomes a retraction rather than a clean refusal. Verify the moment the action is declared, on the Runtime's own initiative, and never require the player to notice the absence first. Grounding a player-declared fact is the read-side twin of the not-loaded rule (`012` Section 3.2): an unverified item is resolved by checking canon, never by narrating it into being.
+
+When the embedded fact is not in canon, quarantine only that fact and keep the intent: the hand reaches into the purse and comes up empty — there is no dagger — and the surrounding choice still resolves (the outburst happens, minus the weapon). This is the same quarantine that Canon Reconciliation at Promotion applies to established-fact contradictions (see Failure Behavior), moved to the moment of play where the object would otherwise first appear.
 
 ## Declared Intent, Automatic Execution, Meaningful Choice
 
@@ -546,3 +554,5 @@ When proposed or completed play **contradicts** canonical startup state in a way
 The player may steer the protagonist against their established disposition — a cautious scholar may lash out, a gentle character may turn cruel. Personality is a starting tendency, not a constraint on choice (Pre-Authored Protagonist; Decision 016), and intent within the Player Intent Domain is the player's to give (Law III). Such a choice is **not** a Rejected Simulation: it is legitimate emergent play. Resolve it by the die and answer it by consequence — the world reacts, the act is recorded, and standing, relationships, and safety change accordingly. The Runtime never refuses a player's action on the grounds that it is "out of character."
 
 What blocks promotion is contradiction of **established fact**, not divergence from disposition: acting with an item the character does not possess (for example, drawing a dagger that is absent from canonical inventory), being in two places at once, using a capability never established, or undoing a recorded event. Reconcile these by **quarantining the specific offending fact** — refuse the dagger, keep the surrounding choice and its consequences — exactly as Canon Reconciliation at Promotion prescribes. Reserve a full Rejected Simulation for a session whose core cannot be reconciled at all, not for an in-character-or-not choice that merely surprises. A violent outburst by a peaceful character is grounded play with heavy consequences; the same outburst performed with a non-existent weapon is grounded play minus the weapon.
+
+The promotion barrier is the **last** line of defence for this, not the first. The same quarantine must fire earlier — at narration time, the instant the action is declared (see Intent Is Authored; Facts Are Grounded, under the Player Agency Contract). Catching an absent item only at session close means the Runtime has already narrated the character wielding it for the whole scene; the barrier then has to unwind fabricated canon instead of a clean refusal. Ground the fact when it is first invoked; let the promotion barrier catch only what slipped through.

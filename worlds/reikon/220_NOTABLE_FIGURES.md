@@ -1,7 +1,7 @@
-# Notable Figures — Reikon (Draft)
+# Notable Figures — Reikon
 
 **Ledger:** Canonical Record (`011` Section 8) holding Reikon's notable Character entities and their institutional memberships.
-**Status:** DRAFT — non-canonical. Identifiers are draft-local tokens (prefixed `D-`) to be replaced by registry-allocated IDs on instantiation.
+**Status:** Active — instantiated as canonical world content (2026-07-13).
 
 All figures are original to Reikon.
 
@@ -10,28 +10,28 @@ All figures are original to Reikon.
 ## Record
 
 ```yaml
-id: D-REC-02
-canonical_record: D-REC-02
+id: REC-000027
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
+status: active
 provenance:
   source: ruling
   event_time: "Year 31 AR"
-  record_time: "2026-07-12T00:00:00Z"
+  record_time: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
-  - D-ENT-11
-  - D-ENT-12
-  - D-ENT-13
-  - D-ENT-14
-  - D-ENT-15
-  - D-ENT-16
-  - D-ENT-17
-  - D-REL-01
-  - D-REL-02
-  - D-REL-03
-  - D-REL-04
+  - ENT-000034
+  - ENT-000035
+  - ENT-000036
+  - ENT-000037
+  - ENT-000038
+  - ENT-000039
+  - ENT-000040
+  - REL-000029
+  - REL-000030
+  - REL-000031
+  - REL-000032
 ```
 
 ---
@@ -39,10 +39,14 @@ subjects:
 ## Director Kest
 
 ```yaml
-id: D-ENT-11
-canonical_record: D-REC-02
+id: ENT-000034
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -50,7 +54,7 @@ aliases:
   - name: "Director Halvard Kest"
     quality: current
 relationships:
-  - D-REL-01
+  - REL-000029
 canonical_state:
   role: "Director of the Hunters' Authority, Verholt bureau."
   capabilities: "Administration; hunter logistics; political survival. A former Grade II hunter, now largely deskbound."
@@ -63,10 +67,14 @@ canonical_state:
 ## Chair Renn
 
 ```yaml
-id: D-ENT-12
-canonical_record: D-REC-02
+id: ENT-000035
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -76,7 +84,7 @@ aliases:
   - name: "Chair Renn"
     quality: current
 relationships:
-  - D-REL-02
+  - REL-000030
 canonical_state:
   role: "Chair of the Meridian Guild, Verholt's dominant hunting company."
   capabilities: "Commerce; core-market control; talent acquisition; leverage."
@@ -89,10 +97,14 @@ canonical_state:
 ## Dr. Vane
 
 ```yaml
-id: D-ENT-13
-canonical_record: D-REC-02
+id: ENT-000036
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -100,12 +112,12 @@ aliases:
   - name: "Dr. Sable Vane"
     quality: current
 relationships:
-  - D-REL-03
+  - REL-000031
 canonical_state:
   role: "Lead researcher of the Aurology Institute."
   capabilities: "Empirical study of the Ledger and Rifts; recordkeeping; careful publication."
   personality: "Rigorous; increasingly alarmed by her own findings."
-  knowledge: "Holds the Institute's recovered deep-Rift core (D-ENT-43) and the finding it implies about the Rupture (D-ENT-31); has not published, and knows the Vigil suspects."
+  knowledge: "Holds the Institute's recovered deep-Rift core (ENT-000050) and the finding it implies about the Rupture (ENT-000045); has not published, and knows the Vigil suspects."
 ```
 
 ---
@@ -113,10 +125,14 @@ canonical_state:
 ## Hierophant Moren
 
 ```yaml
-id: D-ENT-14
-canonical_record: D-REC-02
+id: ENT-000037
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -124,7 +140,7 @@ aliases:
   - name: "Hierophant Moren"
     quality: current
 relationships:
-  - D-REL-04
+  - REL-000032
 canonical_state:
   role: "Verholt voice of the Vigil of the Rupture."
   capabilities: "Preaching; crowd movement; moral pressure on officials."
@@ -137,10 +153,14 @@ canonical_state:
 ## Corin Vask
 
 ```yaml
-id: D-ENT-15
-canonical_record: D-REC-02
+id: ENT-000038
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -159,10 +179,14 @@ canonical_state:
 ## Tallow
 
 ```yaml
-id: D-ENT-16
-canonical_record: D-REC-02
+id: ENT-000039
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -170,7 +194,7 @@ aliases:
   - name: "Tallow"
     quality: cover
 canonical_state:
-  role: "A black-market fixer dealing in unlicensed tutelage, illicit Marks, and forged Grades (D-ENT-33, D-ENT-41)."
+  role: "A black-market fixer dealing in unlicensed tutelage, illicit Marks, and forged Grades (ENT-000047, ENT-000048)."
   capabilities: "Smuggling; document forgery; knowing who owes whom."
   personality: "Genial, amoral, useful."
   knowledge: "Can get a hunter graded up on paper — for a price and a debt."
@@ -181,10 +205,14 @@ canonical_state:
 ## Sergeant Roan
 
 ```yaml
-id: D-ENT-17
-canonical_record: D-REC-02
+id: ENT-000040
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -205,41 +233,57 @@ canonical_state:
 ## Memberships
 
 ```yaml
-id: D-REL-01
-canonical_record: D-REC-02
+id: REL-000029
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
-endpoints: [D-ENT-11, D-ENT-21]
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
+endpoints: [ENT-000034, ENT-000041]
 type: membership
 qualities: "Rank: Director (leadership of the Authority's Verholt bureau)."
 ```
 
 ```yaml
-id: D-REL-02
-canonical_record: D-REC-02
+id: REL-000030
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
-endpoints: [D-ENT-12, D-ENT-22]
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
+endpoints: [ENT-000035, ENT-000042]
 type: membership
 qualities: "Rank: Chair (leadership of the Meridian Guild)."
 ```
 
 ```yaml
-id: D-REL-03
-canonical_record: D-REC-02
+id: REL-000031
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
-endpoints: [D-ENT-13, D-ENT-23]
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
+endpoints: [ENT-000036, ENT-000043]
 type: membership
 qualities: "Rank: Lead researcher of the Aurology Institute."
 ```
 
 ```yaml
-id: D-REL-04
-canonical_record: D-REC-02
+id: REL-000032
+canonical_record: REC-000027
 schema_version: "0.1.1"
-status: draft
-endpoints: [D-ENT-14, D-ENT-24]
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
+endpoints: [ENT-000037, ENT-000044]
 type: membership
 qualities: "Rank: Hierophant (Verholt leadership of the Vigil)."
 ```

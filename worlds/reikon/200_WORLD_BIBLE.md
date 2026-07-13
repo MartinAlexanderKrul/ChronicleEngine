@@ -1,34 +1,26 @@
 # Chronicle Engine
 
-## World Bible — Reikon (Working Draft)
+## World Bible — Reikon
 
-**World Version:** 0.1 (Workshop Draft — litRPG demonstration world)
-**Status:** Draft — not instantiated; identifiers to be allocated on instantiation
+**World Version:** 0.1 (Solo Leveling–inspired contemporary gate-and-hunter world)
+**Status:** Active — instantiated as canonical world content (2026-07-13); ENT-000030–ENT-000050, REC-000026–REC-000034, EVT-000018–EVT-000024, REL-000029–REL-000039
 **Engine Compatibility:** 0.1.5 (Foundation Release); Data Model 0.1.1
-**Progression:** Emergent (Rules Sections 4–5), surfaced diegetically through the Ledger (Decision 051)
+**Progression:** Emergent (Rules Sections 4–5), surfaced diegetically through the System (Decision 051)
 **Genre:** Contemporary "gate-and-hunter" litRPG — an original world in the genre, not based on any existing work
 **Setting Register:** Original-modern (invented nations and cities; no real-world geography)
 **Calendar:** After the Rupture (AR); the present is **Year 31 AR**
 
 ---
 
-# Purpose and Status
-
-Reikon is a **demonstration world** for Decision 051's world-diegetic System layer, in a contemporary gate-and-hunter register: a modern world where a litRPG "System" is real *within the fiction*, yet every action still resolves through Chronicle Engine's ordinary emergent simulation (Rules Sections 4–5). It shows that an aggressive litRPG experience can be delivered **entirely at the world layer**, through the Supernatural Phenomena Contract (Rules Section 11), with no engine change.
-
-Reikon is an **original setting in a shared genre**. It uses only generic genre conventions — rifts that spawn monsters, awakened hunters ranked by tier, hunter guilds, a loot economy, a leveling interface — and no characters, organizations, cosmology, or story from any specific existing work.
-
-This is a **draft**: names, tone, and history are a starting point to revise. The load-bearing content is the Ledger's Section 11 contract and the engine-compliance boundary.
-
-Reikon is **not canonical world content** until instantiated with real identifiers from `system/ID_REGISTRY.md`. The official world remains Asterra; Verra remains the Prototype Alpha validation world.
-
----
-
 # The World
 
-Thirty-one years ago, the **Rupture** tore the first **Rifts** into the sky over a dozen cities at once — unstable portals that breathe monsters into the world and, if left too long, **collapse**, disgorging everything inside at once into the streets. In the same hour, a minority of ordinary people **Awakened**: they gained a private interface, the **Ledger**, and with it the capacity to fight what came through.
+Thirty-one years ago, the **Rupture** tore open the first **Rifts** — pocket dimensions that appeared without warning over a dozen cities at once. In that same hour, a rare minority of ordinary people **Awakened**: they developed supernatural abilities and gained access to the **System**, an enigmatic interface showing their power and growth.
 
-A generation later, the world has organized itself around both facts. States license and grade their Awakened; corporate **guilds** field hunting teams and trade in the **cores** drawn from slain monsters; researchers dissect what the Ledger *is*; and a mass movement insists the Rupture *meant* something and polices what may be learned about it. Ordinary life continues beneath all of it — but every city lives one uncleared Rift away from catastrophe.
+The world learned to adapt. Rifts are cordoned off by local government. Awakened hunters enter these pocket dungeons as expeditions, fight the monsters inside, and close the core to collapse the Rift. Cores — crystalline residues left by monsters and Rifts — became currency, medicine, and industry. Three powers emerged: civilian **Government** (administration and law), the **Hunters' Association** (licensing and ranking the Awakened), and **Guilds** (corporate hunter teams competing for contracts and cores).
+
+Ideological movements exist — the **Vigil of the Rupture** and others — but they hold no institutional power. They shape belief and culture, not policy.
+
+The city of **Verholt** is your seat of play: a thriving hub where hunter expeditions are constantly dispatched, cores trade hands, and the pressure is building. Rift activity has climbed for the past year. Two have already collapsed, killing hundreds. The System — how it works, who can access it, whether legends of its power are real — remains partially mythologized.
 
 ---
 
@@ -107,7 +99,7 @@ Rift activity around the seat-of-play city of **Verholt** has been climbing for 
 
 # Ledger Index
 
-All ledgers below exist as **drafts**, using draft-local `D-` identifier tokens. Real identifiers are allocated from `system/ID_REGISTRY.md` only when Reikon is instantiated as canonical; none are minted by this draft.
+All ledgers below are **instantiated canonical world content**, using real identifiers allocated from `system/ID_REGISTRY.md` (2026-07-13).
 
 | Ledger | Contents |
 |--------|----------|

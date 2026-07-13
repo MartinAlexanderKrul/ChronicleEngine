@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000029 |
-| Record | `REC-` | Canonical Record | REC-000025 |
-| Event | `EVT-` | Event | EVT-000017 |
-| Relationship | `REL-` | Relationship | REL-000028 |
+| Entity | `ENT-` | Persistent Entity | ENT-000050 |
+| Record | `REC-` | Canonical Record | REC-000034 |
+| Event | `EVT-` | Event | EVT-000024 |
+| Relationship | `REL-` | Relationship | REL-000039 |
 
 ---
 
@@ -57,6 +57,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000023 - ENT-000029 | Entity | Prototype Beta checkpoint 0001: Tollen Var, Sister Avel, Brant, Edrin Vale, Lysa Vale, unidentified wrong-stair man, Caldus |
 | EVT-000015 - EVT-000017 | Event | Prototype Beta checkpoint 0001: first job search and Tollen altercation; Order hiring and lower-passage briefing; first watch, wrong-stair alert, fever-door incident, and contamination response |
 | REL-000024 - REL-000028 | Relationship | Prototype Beta checkpoint 0001: Order day-hire/security relationship, Kael's working contacts with Avel and Brant, Edrin/Lysa family connection, and Kael's fever-contact exposure state |
+| ENT-000030 - ENT-000050 | Entity | World Reikon (`worlds/reikon/`) instantiation: 4 places/settlements (Aldish Republic, Verholt, Kessler Rift, Danesmoor collapse), 7 notable figures, 4 institutions (Hunters' Authority, Meridian Guild, Aurology Institute, Vigil of the Rupture), 3 Knowledge Subjects, 3 resources |
+| REC-000026 - REC-000034 | Record | Reikon world ledgers: places, notable figures, knowledge subjects, resources, four institution ledgers, seed events |
+| EVT-000018 - EVT-000024 | Event | Reikon seed events: the Rupture, the Authority charter, Meridian incorporation, Institute founding, Vigil hardening, Danesmoor collapse, Institute deep-Rift recovery |
+| REL-000029 - REL-000039 | Relationship | Reikon: institution governance/jurisdiction and membership relationships, and world-layer Knowledge States over Reikon's Knowledge Subjects |
 
 ---
 

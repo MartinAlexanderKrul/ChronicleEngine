@@ -1,7 +1,7 @@
-# The Ledger — System Reference (Reikon, Draft)
+# The Ledger — System Reference (Reikon)
 
 **Ledger:** World-layer reference lore for Reikon's diegetic System. Narrative reference, not an Object-Block canonical ledger.
-**Status:** DRAFT — non-canonical world reference.
+**Status:** Active — instantiated as canonical world content (2026-07-13).
 
 > **Compliance note (Decision 051).** Everything below is the *world's diegetic representation* of Chronicle Engine's emergent simulation, not a second set of mechanics. Action resolution is always intent + circumstance + d100 (Rules Section 4); growth is always lived (Rules Section 5); every Grade, Aspect, Mark, and number is in-world **information** (Rules Section 2.2) — reflected capability, never granted power. The Ledger *displays*; it never *decides*.
 

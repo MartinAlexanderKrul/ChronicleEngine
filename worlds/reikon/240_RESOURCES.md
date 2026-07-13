@@ -1,27 +1,27 @@
-# Resources — Reikon (Draft)
+# Resources — Reikon
 
 **Ledger:** Canonical Record (`011` Section 8) holding Reikon's notable Individual Resources and Knowledge Assets (Rules Sections 7.2, 7.12).
-**Status:** DRAFT — non-canonical. Identifiers are draft-local tokens (prefixed `D-`) to be replaced by registry-allocated IDs on instantiation.
+**Status:** Active — instantiated as canonical world content (2026-07-13).
 
 ---
 
 ## Record
 
 ```yaml
-id: D-REC-04
-canonical_record: D-REC-04
+id: REC-000029
+canonical_record: REC-000029
 schema_version: "0.1.1"
-status: draft
+status: active
 provenance:
   source: ruling
   event_time: "Year 31 AR"
-  record_time: "2026-07-12T00:00:00Z"
+  record_time: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
-  - D-ENT-41
-  - D-ENT-42
-  - D-ENT-43
+  - ENT-000048
+  - ENT-000049
+  - ENT-000050
 ```
 
 ---
@@ -29,10 +29,14 @@ subjects:
 ## A Forged Hunter License
 
 ```yaml
-id: D-ENT-41
-canonical_record: D-REC-04
+id: ENT-000048
+canonical_record: REC-000029
 schema_version: "0.1.1"
-status: draft
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
 type: Resource
 subtype: individual
 scope: local
@@ -41,8 +45,8 @@ aliases:
   - name: "a forged Grade II license"
     quality: current
 canonical_state:
-  description: "An Authority hunter license reading Grade II, forged by Tallow (D-ENT-16); the bearer's true capability is lower."
-  provenance: "Forged; instance of the forging-of-Grades technique (D-ENT-33)."
+  description: "An Authority hunter license reading Grade II, forged by Tallow (ENT-000039); the bearer's true capability is lower."
+  provenance: "Forged; instance of the forging-of-Grades technique (ENT-000047)."
   significance: "A recorded claim, not objective capability (Rules Section 2.2). It opens doors and contracts — and fails catastrophically the first time a Rift demands the capability it asserts."
 ```
 
@@ -51,10 +55,14 @@ canonical_state:
 ## A Marked Relic
 
 ```yaml
-id: D-ENT-42
-canonical_record: D-REC-04
+id: ENT-000049
+canonical_record: REC-000029
 schema_version: "0.1.1"
-status: draft
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR"
+  record_time: "2026-07-13T00:00:00Z"
 type: Resource
 subtype: individual
 scope: local
@@ -73,14 +81,14 @@ canonical_state:
 ## The Institute's Deep-Rift Core
 
 ```yaml
-id: D-ENT-43
-canonical_record: D-REC-04
+id: ENT-000050
+canonical_record: REC-000029
 schema_version: "0.1.1"
-status: draft
+status: active
 provenance:
-  source: D-EVT-07
+  source: EVT-000024
   event_time: "Year 31 AR"
-  record_time: "2026-07-12T00:00:00Z"
+  record_time: "2026-07-13T00:00:00Z"
 type: Resource
 subtype: individual
 scope: regional
@@ -89,7 +97,7 @@ aliases:
   - name: "the deep-Rift core"
     quality: current
 canonical_state:
-  description: "A core drawn from an unusually deep Rift, recovered by the Aurology Institute (D-EVT-07). Its properties underpin the Institute's contested finding about the Rupture (D-ENT-31, D-REL-10)."
-  custody: "Held by Dr. Vane (D-ENT-13) at the Institute; unpublished; sought by the Vigil, which wants it destroyed, and by the Meridian Guild, which wants it sold."
+  description: "A core drawn from an unusually deep Rift, recovered by the Aurology Institute (EVT-000024). Its properties underpin the Institute's contested finding about the Rupture (ENT-000045, REL-000034)."
+  custody: "Held by Dr. Vane (ENT-000036) at the Institute; unpublished; sought by the Vigil, which wants it destroyed, and by the Meridian Guild, which wants it sold."
   significance: "The object around which the world's central conflict currently turns."
 ```

@@ -74,10 +74,12 @@ aliases:
     quality: current
 canonical_state:
   category: "Document; a letter introducing Ilse to the Halden Athenaeum."
-  condition: Good
+  condition: Good (seal broken, letter read)
   ownership: "ENT-000018 (legal)"
-  possession: "ENT-000018"
-  location: ENT-000002
+  possession: "ENT-000007 (Corvane, archiving)"
+  location: "ENT-000003 (Athenaeum, Corvane's study, desk)"
+  event_archived: "EVT-000009 (presented by Ilse to Corvane)"
+  provenance_chain: "Letter written by Ilse's mentor at Valdis; delivered to Corvane on day 1 evening; now formally archived in Corvane's records"
   provenance_chain: "Written by Ilse's college mentor to introduce her to the Athenaeum (ENT-000003)."
 ```
 

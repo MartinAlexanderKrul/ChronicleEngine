@@ -12,6 +12,20 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-13 — Resident Checkpoint-Completeness Gate
+
+**Start Guide:** Added a resident CHECKPOINT COMPLETENESS gate to `docs/GAMEPLAY_START_GUIDE.md` — in the AI Project Instructions block and the "End a Session" close prompt. Before reporting anything saved or promoted to canon, the Runtime must enumerate every target (Current State, chronicle, changelog, NPCs/relationships, objectives, world/knowledge, inventory if changed, the ID registry for any new ENT/REC/EVT/REL, and the save manifest), write all of them with provenance, read each back from the repository, and only then report success; any unwritten target makes it a PARTIAL checkpoint that must be named, never stamped "promoted to canon." The save manifest's updated-ledger list must contain only files actually written and read back. Document version set to 2.3
+
+**Runtime Profile:** Reinforced the Save Algorithm and Checkpoint Reporting in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` — step 3 now requires new identifiers to be allocated in `system/ID_REGISTRY.md` and defined in their owning ledger, and flags a ledger citing an unregistered/undefined id as a dangling reference and repository-validation failure; Checkpoint Reporting now states the save manifest is a report, not an intention, and its updated-ledger list must be populated from read-back results, never from the intended set. Document version set to 1.18
+
+**Context:** Prototype Alpha — checkpoint 2 (extended session, branch `session-1-checkpoint`) was committed as `canonical_status: PROMOTED TO CANON` but only `180_CURRENT_STATE.md` and the save manifest were written. The manifest claimed the chronicle and changelog held EVT-000010/011 and that relationships were updated; none of that reached the chronicle, changelog, NPCs, objectives, world ledger, or the ID registry. `180_CURRENT_STATE.md` was left citing EVT-000010/011/012 and REL-000017-extended that exist in no ledger or registry (dangling references and phantom IDs). This is the fourth instance of the resident-vs-fetched failure pattern: the Save Algorithm's completeness and read-back discipline lived only in the fetched profile, never in a resident gate, so it did not fire at execution time. The fabricated dagger did not leak into canon — but only because the entire extended narrative failed to promote, taking the legitimate grounded play with it.
+
+**Rules/Data Model/Decisions:** Unchanged — operationalizes Promotion (`012` Invariant 3), No Silent Canon (`012` Invariant 2), the Single-Canonical-Record and registry invariants (Decision 043, Decision 044), and the existing Save Algorithm; no mechanic or rule change. Checkpoint 2 on `session-1-checkpoint` is left as-is for a later gameplay-close reconciliation, per session decision.
+
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-13 — Canon Grounding at Narration Time (Player-Declared Facts)
 
 **Start Guide:** Added a resident CANON GROUNDING gate to both always-resident layers of `docs/GAMEPLAY_START_GUIDE.md` — the AI Project Instructions block and the First Session start prompt. Before narrating any item, weapon, tool, skill, ally, or position into a scene because the player's wording assumed it, the Runtime must verify it against loaded canon (inventory ledger, character sheet, Current State) on its own initiative, the instant the action is declared; if the fact is absent it narrates the intent but blocks only the missing fact (the hand comes up empty — no dagger) and never waits for the player to point out the absence. Document version set to 2.2 (also reconciles the header, which had not been bumped for the 2.1 operational-refinements entry below).

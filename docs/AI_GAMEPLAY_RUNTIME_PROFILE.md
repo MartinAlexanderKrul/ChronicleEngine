@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.17
+**Document Version:** 1.18
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -502,7 +502,7 @@ On a checkpoint request or session close, in this order:
 
 1. **Promotion Barrier first (unchanged).** Run Canon Reconciliation at Promotion. If an unreconcilable contradiction exists, reject the mutation, record a Rejected Simulation, and write nothing. The barrier runs before any write, so contradictory canon never reaches the repository.
 2. **Ensure capability.** If write capability is Unestablished, run a capability check (the canary) now.
-3. **Determine the complete target set, then attempt the canonical update.** A checkpoint is not a single-ledger write. First enumerate every promotion target the session touched (Gameplay Close, step 3: Current State, objectives, relationships, inventory, knowledge, chronicle, changelog, and the save manifest as applicable). Then write the immutable checkpoint files and write through to **every** target — rewriting each target file's full content by resolved handle or path, each with provenance. Resolve any missing handle through repository discovery rather than refusing. Updating one scope-responsible ledger — for example the NPCs and Factions ledger — while leaving Current State, the chronicle, the changelog, and the save manifest unwritten is a **partial checkpoint**, not a save.
+3. **Determine the complete target set, then attempt the canonical update.** A checkpoint is not a single-ledger write. First enumerate every promotion target the session touched (Gameplay Close, step 3: Current State, objectives, relationships, inventory, knowledge, chronicle, changelog, and the save manifest as applicable). Then write the immutable checkpoint files and write through to **every** target — rewriting each target file's full content by resolved handle or path, each with provenance. Resolve any missing handle through repository discovery rather than refusing. Updating one scope-responsible ledger — for example the NPCs and Factions ledger — while leaving Current State, the chronicle, the changelog, and the save manifest unwritten is a **partial checkpoint**, not a save. **Any new identifier introduced this session (a new EVT, REL, ENT, or REC) must be allocated in `system/ID_REGISTRY.md` and defined in its owning ledger as part of the target set.** A ledger that cites an identifier not registered and defined elsewhere is a dangling reference and a repository-validation failure (Write-Side Failure Handling) — writing Current State with an `EVT-` or `REL-` that appears in no chronicle, relationship ledger, or registry is exactly this failure.
 4. **Read-back verification.** Reload the written checkpoint files and **every** targeted ledger from the repository — not from Context — and confirm the intended changes and their provenance are present in each. A target that did not receive its intended change is an unwritten target, even when other targets succeeded.
 5. **On success** — the whole target set written and verified — set write capability Established and report the checkpoint saved, with the verified paths.
 6. **On an incomplete target set with no failure** — some targets written, none errored, others not yet attempted — capability is Established (writing demonstrably works), so this is not a stopping point: complete the remaining targets and re-verify before reporting. Never report a checkpoint saved while any target in the set is unwritten.
@@ -524,6 +524,8 @@ Two symmetric invariants:
 
 - **Never report a checkpoint saved unless read-back verification confirms it** (honesty; `012` Invariants 2 and 3). The confirmation must cover the whole promotion target set, not a single ledger; a partial write is reported as partial, never as saved.
 - **Never report that a checkpoint cannot be saved without first attempting the write**, when write capability is established — and never on the strength of a tool-list inspection when it is not, since only an attempted write settles capability.
+
+The **save manifest is a report, not an intention.** Its list of updated ledgers must name only the targets actually written and read back this checkpoint. A manifest that lists the chronicle and changelog as updated while those files received no write — the manifest asserting a promotion the repository never received — is itself the partial-checkpoint failure in its most misleading form: the durable artifact now lies about what canon exists. Populate the manifest's updated-ledger list from read-back results, never from the set you intended to write.
 
 On success, the Gameplay Runtime Report records the checkpoint and its verified paths. On an actual failure, emit a **Runtime Checkpoint Report** — a non-canonical artifact capturing the exact canonical state that was to be written, so an authorized writer can synchronize it into the repository later. It never claims the repository was updated.
 

@@ -99,11 +99,29 @@ INVENTORY (6/10)                QUESTS
 - **No level cap** — you can level indefinitely
 - As you approach Level 90+, your power approaches S-Rank capability, regardless of your Official Rank
 
-**Official Rank Remains Immutable:**
-- Your E-Rank license never changes
+**Official Rank Remains Immutable (Usually):**
+- Your E-Rank license never changes in normal circumstances
 - But your Level grows infinitely
 - At high levels, you become far more powerful than your Official Rank suggests
 - This creates dramatic potential: the underestimated E-Rank who becomes unstoppable
+
+**Edge Cases: Re-ranking and Re-awakening**
+
+*Re-ranking* (available to all hunters):
+- Any Awakened hunter can request the Association re-test their mana pool anytime
+- Testing is quick and free; no petition or approval process needed
+- If mana pool has grown, the hunter receives a new (higher) Official Rank
+- If unchanged, their Rank stays the same
+- Few hunters bother with re-ranking because they can *sense* their own mana pool and know whether it's changed
+- Most realize they're still the same Rank they were Awakened as
+
+*Re-awakening* (rare but documented):
+- An Awakened person occasionally experiences a second Awakening event
+- The second Awakening suggests a secondary mana pool or dormant power that emerges years later
+- A re-awakened person receives a new System assessment based on their new mana pool at re-awakening
+- Their Official Rank can change to match the new mana pool, potentially much higher than before
+- Documented cases: A handful over 31 years (more common than the System-Bearer legend, but still extraordinary)
+- Creates narrative possibility: a low-Rank hunter who suddenly re-awakens with much higher power
 
 The Dormant majority have no System and see nothing. No one can read another's System directly; what the world *knows* of a hunter's power is the Authority's **Official Rank** — an assessment, and therefore fallible, contestable, and forgeable.
 
@@ -151,7 +169,9 @@ Performance in the E-Rift trial does not change their Rank; it confirms whether 
 
 **Cost to hunter:** Free for Association hunters. Guild-affiliated hunters may pay the Guild a licensing fee in exchange for sponsorship.
 
-**Growth through experience:** A hunter's Rank at certification is their starting point, not their ceiling. Growth comes from **clearing Rifts, facing real danger, and mastering your Abilities through repetition**. Each expedition teaches you. Each Ascension represents genuine growth earned through ordeal. A hunter certified as E-Rank can become D-Rank, then C-Rank, by living through experiences that forge real power. The System surfaces this growth; it doesn't grant it.
+**Growth through experience:** A hunter's Rank at certification is their starting point, not their ceiling. Growth comes from **clearing Rifts, facing real danger, and mastering your Abilities through repetition**. Each expedition teaches you. Each Ascension represents genuine growth earned through ordeal. Your Character Level grows infinitely; your Official Rank stays fixed.
+
+**Re-ranking (formal process):** Any Awakened hunter can request the Association to re-measure their mana pool at any time. The Association will test them. If their mana pool has grown, they receive a new (higher) Official Rank. If unchanged or lower, their Rank stays the same. Few hunters bother requesting re-assessment because they can *feel* their own mana pool and know if it's changed — most sense that they're still the same Rank they always were.
 
 ---
 

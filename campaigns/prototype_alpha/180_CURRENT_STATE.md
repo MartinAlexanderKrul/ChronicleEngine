@@ -32,16 +32,17 @@ subjects: []
 ## Protagonist
 
 - Ilse Varn (`ENT-000018`) — recently licensed physician-scholar, outsider, no local standing.
-- Location: Halden (`ENT-000002`), Athenaeum study (Corvane's quarters, `ENT-000003`).
-- Condition: sound, travel-worn. Mentally engaged, committed to investigation.
-- Provenance: Session EVT-000009 (first session play)
+- Location: Halden (`ENT-000002`), Athenaeum infirmary (guest recovery, `ENT-000003` annex).
+- Condition: Physically recovered. Mentally clear. At critical decision point (EVT-000012 pending).
+- Provenance: Sessions EVT-000009 through EVT-000011 (extended play with interlude)
 
 ## Knowledge Posture
 
-- Marsh-fever finding (`ENT-000013`): Ilse's state is **witnessed but unconfirmed** (`REL-000017-updated`) — she has now seen Corvane's maps, noted the water-source correlation, and has access to the *Observations* manuscript. Her own view remains unformed, but she possesses the evidentiary material. **Objective truth of the claim is not established** and is not recorded as settled anywhere.
+- Marsh-fever finding (`ENT-000013`): Ilse's state is **witnessed but undecided** (REL-000017-extended) — she has seen Corvane's evidentiary maps, studied the *Observations* manuscript, understood the methodology. One week of interlude (days 2-8) has given time to process but not to decide. Her own conclusion remains unformed. **Objective truth of the claim is not established** and is not recorded as settled anywhere.
 - Tempered glass (`ENT-000012`): awareness-only (`REL-000018`).
 - Rivermason's mortar (`ENT-000014`): unknown to Ilse.
-- Fever cases in river ward: directly confirmed (EVT-000009). At least two confirmed cases as of late spring 15th.
+- Fever outbreak: escalated during interlude from 2 to 7+ confirmed cases. Location: river ward, lower town. Expected to continue escalating. Public alarm rising.
+- Order's position: Ilse now understands Order opposes her collaboration with Corvane (read Solenne's letter, day 8 of interlude). Order has made recruitment offer contingent on abandonment of research.
 
 ## Active Objectives
 

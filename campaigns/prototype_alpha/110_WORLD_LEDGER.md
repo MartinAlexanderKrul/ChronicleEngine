@@ -58,12 +58,15 @@ provenance:
   source: EVT-000009
   event_time: "Year 312 RR, late spring (evening)"
   record_time: "2026-07-12T00:00:00Z"
+  extended_provenance:
+    - EVT-000010
+    - EVT-000011
 endpoints:
   - ENT-000018
   - ENT-000013
 type: knowledge-state
-qualities: "Access: direct (Corvane's maps and *Observations* manuscript). Understanding: substantial but incomplete. Validation: examining evidence firsthand. Acceptance: undecided. Application: none yet. Ilse has witnessed the evidentiary pattern (water-source correlation) and has access to the full *Observations*, but her own conclusion remains unformed."
-state: "Scholar's active investigation state; evidence witnessed, methodology understood, conclusion pending independent analysis."
+qualities: "Access: direct (Corvane's maps and *Observations* manuscript, studied in detail; additional fresh manuscript left by Theron on day 4 of interlude). Understanding: substantial but incomplete. Validation: examined evidence firsthand over multiple sessions. Acceptance: undecided. Application: none yet. Ilse has witnessed the evidentiary pattern (water-source correlation with case severity) and has access to full *Observations* manuscript. During week of interlude (days 2-8), fever escalated from 2 to 7+ confirmed cases; she had time to reflect on evidence but has not yet concluded."
+state: "Scholar's active investigation state with time to process; evidence witnessed, methodology understood, conclusion pending independent analysis. Extended session ended with evidence undecided and Corvane asking final commitment question (EVT-000012)."
 ```
 
 ```yaml

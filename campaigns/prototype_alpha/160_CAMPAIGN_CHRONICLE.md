@@ -21,6 +21,8 @@ scope: campaign
 subjects:
   - EVT-000008
   - EVT-000009
+  - EVT-000010
+  - EVT-000011
 ```
 
 ---
@@ -80,4 +82,12 @@ Maelis escorts Ilse to Corvane's study. There, Ilse presents her letter of intro
 
 Two fever cases confirmed in the river ward as of afternoon. More are expected.
 
-Session one ends here. Checkpoint saved.
+**Morning (Day 2) — Crisis Cascade (EVT-000010).**
+After a night's rest, Ilse wakes to the full weight of commitment and experiences an emotional crisis. She strikes her head repeatedly, then makes three separate violent attacks on Rector Maelis. All fail. Guards subdue her. She experiences a psychological break (laughter). Maelis does not punish her; instead, he orders her moved to the Athenaeum infirmary for rest and care rather than detention.
+
+**Days 2–8 — Interlude (EVT-000011).**
+Ilse recovers in the infirmary. Fever cases escalate from 2 to 7+. The Order sends a formal recruitment letter offering lodging, income, and protection—contingent on abandoning Corvane and the Athenaeum. Theron leaves fresh *Observations* manuscript. Maelis visits with gifts and no reproach. Corvane waits.
+
+At the end of the week, Corvane asks: "Are you still committed to this work?" Ilse has read the Order's letter. She has not yet answered.
+
+Extended session checkpoint saved.

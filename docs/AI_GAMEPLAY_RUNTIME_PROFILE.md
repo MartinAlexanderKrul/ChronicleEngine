@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.19
+**Document Version:** 1.20
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -457,9 +457,10 @@ No scene begins, die is rolled, NPC acts, or in-world time advances before expli
 1. Resolve or explicitly leave open any in-flight action.
 2. Promote every canon-bearing ruling and transcript event into scope-responsible ledgers with provenance.
 3. Update Current State, objectives, relationships, inventory, knowledge, chronicle, and world state as required. **For relationships specifically:** capture not only new relationships created during play, but also qualitative evolution of existing relationships. If an NPC showed compassion, provided mentorship, took a risk for the character, or changed their stance, the relationship's `qualities` and `state` fields should advance to reflect it, with updated provenance and event ID.
-4. Validate references, ownership, registry state, placeholders, campaign-world references, and Knowledge States.
-5. Create an immutable session-close checkpoint and save manifest (Checkpoint Persistence).
-6. Produce the Gameplay Runtime Report.
+4. If the campaign terminates, promote its publicly observable, world-affecting consequences into world state or historical records with provenance to the campaign, respecting the Information Boundary. If no world-layer promotion is required, record that conclusion explicitly in the campaign close.
+5. Run the Repository Validation Gate. Validation must pass before checkpoint creation.
+6. Create an immutable session-close checkpoint and save manifest (Checkpoint Persistence).
+7. Produce the Gameplay Runtime Report.
 
 ```text
 Gameplay Runtime Report
@@ -490,6 +491,22 @@ Promote the grounded and consistent work; flag the load-bearing new canon; recon
 
 ---
 
+# Repository Validation Gate
+
+Campaign initialization, every checkpoint, session close, and campaign-termination promotion must pass deterministic repository validation after all live targets have been written and read back. On a native Windows repository, run:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps1
+```
+
+The validator scans live Markdown under `worlds/` and `campaigns/`, excluding save and checkpoint snapshots from live duplicate-definition checks. It verifies registry high-water bounds and allocation-log coverage, unique live object definitions, resolved identifier references, universal Persistent Object fields, Canonical Record references, and placeholder rejection.
+
+The command must exit successfully before the Runtime creates an immutable checkpoint or reports initialization, checkpoint, session close, or promotion as successful. A configured deterministic equivalent may be used on another substrate. An unaided visual review or statement that the files appear consistent is not an equivalent gate.
+
+If validation fails, report the operation as partial, name the validator findings and affected targets, repair the live state when possible, read the repairs back, and rerun validation. Validation failure is not automatically a canonical contradiction and does not discard grounded play. If no deterministic validator can be executed, the operation remains `Relay Pending`; do not claim canonical completion.
+
+---
+
 # Checkpoint Persistence
 
 A checkpoint is written by attempting the actual repository operation and reacting to the actual result — never refused on abstract uncertainty. It requires Established Write Capability (see Session Persistence State) or a capability check.
@@ -502,11 +519,12 @@ On a checkpoint request or session close, in this order:
 
 1. **Promotion Barrier first (unchanged).** Run Canon Reconciliation at Promotion. If an unreconcilable contradiction exists, reject the mutation, record a Rejected Simulation, and write nothing. The barrier runs before any write, so contradictory canon never reaches the repository.
 2. **Ensure capability.** If write capability is Unestablished, run a capability check (the canary) now.
-3. **Determine the complete target set, then attempt the canonical update.** A checkpoint is not a single-ledger write. First enumerate every promotion target the session touched (Gameplay Close, step 3: Current State, objectives, relationships, inventory, knowledge, chronicle, changelog, and the save manifest as applicable). Then write the immutable checkpoint files and write through to **every** target — rewriting each target file's full content by resolved handle or path, each with provenance. Resolve any missing handle through repository discovery rather than refusing. Updating one scope-responsible ledger — for example the NPCs and Factions ledger — while leaving Current State, the chronicle, the changelog, and the save manifest unwritten is a **partial checkpoint**, not a save. **Any new identifier introduced this session (a new EVT, REL, ENT, or REC) must be allocated in `system/ID_REGISTRY.md` and defined in its owning ledger as part of the target set.** A ledger that cites an identifier not registered and defined elsewhere is a dangling reference and a repository-validation failure (Write-Side Failure Handling) — writing Current State with an `EVT-` or `REL-` that appears in no chronicle, relationship ledger, or registry is exactly this failure. **Allocation means advancing that kind's high-water mark, not merely mentioning the identifier.** Consuming an identifier that the registry lists only as a *reserved / pending forward marker* (an id noted for a not-yet-played event) is a real allocation: advance the high-water mark to it and reclassify it in the allocation log from reserved to consumed. An id that appears in the registry only as a reserved note while the high-water mark still sits behind it is **not yet allocated** — leaving it that way makes the next checkpoint allocate the same number again and collide (never-reuse violation, Data Model Invariant 3).
-4. **Read-back verification.** Reload the written checkpoint files and **every** targeted ledger from the repository — not from Context — and confirm the intended changes and their provenance are present in each. A target that did not receive its intended change is an unwritten target, even when other targets succeeded.
-5. **On success** — the whole target set written and verified — set write capability Established and report the checkpoint saved, with the verified paths.
-6. **On an incomplete target set with no failure** — some targets written, none errored, others not yet attempted — capability is Established (writing demonstrably works), so this is not a stopping point: complete the remaining targets and re-verify before reporting. Never report a checkpoint saved while any target in the set is unwritten.
-7. **On any actual write or read-back failure**, set write capability Failed only when no write has ever succeeded this session and an attempt just errored — otherwise leave it Established — do not claim the checkpoint was saved, and emit a Runtime Checkpoint Report naming the written and the unwritten targets.
+3. **Determine the complete live target set, then attempt the canonical update.** A checkpoint is not a single-ledger write. First enumerate every promotion target the session touched: Current State, objectives, relationships, inventory, knowledge, chronicle, changelog, world promotion when applicable, and `system/ID_REGISTRY.md` for new identifiers. Then write through to **every live target**, rewriting each target file's full content by resolved handle or path with provenance. Resolve missing handles through repository discovery rather than refusing. Updating one scope-responsible ledger while leaving Current State, the chronicle, or the changelog unwritten is a **partial checkpoint**, not a save. **Any new identifier introduced this session must be allocated in the registry and defined in its owning ledger as part of the target set.** Allocation means advancing that kind's high-water mark and recording allocation-log coverage, not merely mentioning the identifier. Consuming a reserved or pending identifier is a real allocation and must advance the high-water mark.
+4. **Read-back verification of live targets.** Reload **every** targeted live ledger and the registry when touched from the repository, not from Context, and confirm the intended changes and provenance are present. A target that did not receive its intended change is unwritten even when other targets succeeded.
+5. **Repository Validation Gate.** Run the deterministic validator against the read-back live state. If it fails, do not create the immutable checkpoint and do not claim promotion success. Repair, read back, and rerun when possible; otherwise emit a Runtime Checkpoint Report with the validator findings.
+6. **Create and verify the immutable checkpoint.** Only after live validation passes, create the checkpoint directory, copy the verified canonical ledgers, and create the save manifest from the targets actually written and read back. Read every checkpoint file and the manifest back and verify their contents.
+7. **On success** — the whole live target set written and verified, repository validation passed, and the immutable checkpoint written and verified — set write capability Established and report the checkpoint saved, with the verified paths.
+8. **On an incomplete target set or any actual write, read-back, validation, or checkpoint-creation failure**, do not claim the checkpoint was saved. Leave capability Established when writes have succeeded, name the written and unwritten targets, include validation findings when applicable, and emit a Runtime Checkpoint Report.
 
 ## Write-Side Failure Handling
 
@@ -514,7 +532,7 @@ Distinguish these. Only the first four prevent persistence; the last never does:
 
 - **Actual write failure** — a write, create, or update operation returns an error, times out, or file access is lost. → fallback (Runtime Checkpoint Report).
 - **Permission denial** — the file system or host reports the operation is not authorized. → fallback; report it as permission, not uncertainty.
-- **Repository validation failure** — the write would produce an invalid ledger (a deliberately-invalid placeholder, a broken reference, a registry violation). → do not write; report the validation failure. This is a Runtime-side rejection, distinct from a write failure.
+- **Repository validation failure** — read-back live state fails the deterministic Repository Validation Gate (a deliberately-invalid placeholder, a broken reference, a duplicate definition, missing allocation-log coverage, or a registry violation). → do not create the immutable checkpoint or claim promotion; report, repair, and rerun when possible. This is distinct from a write failure.
 - **Canonical contradiction** — handled by the Promotion Barrier at step 1; the repository is unchanged and a Rejected Simulation is recorded. Unchanged by this section.
 - **Runtime uncertainty** — not knowing whether an edit is possible, or lacking a file handle. This is **not** a failure. Resolve it by attempting the operation. It is never grounds to refuse when capability is established, nor to skip an attempt a capability check can settle.
 
@@ -522,7 +540,7 @@ Distinguish these. Only the first four prevent persistence; the last never does:
 
 Two symmetric invariants:
 
-- **Never report a checkpoint saved unless read-back verification confirms it** (honesty; `012` Invariants 2 and 3). The confirmation must cover the whole promotion target set, not a single ledger; a partial write is reported as partial, never as saved.
+- **Never report a checkpoint saved unless read-back verification and the Repository Validation Gate confirm it** (honesty; `012` Invariants 2 and 3). The confirmation must cover the whole promotion target set, not a single ledger; a partial write or failing validation is reported as partial, never as saved.
 - **Never report that a checkpoint cannot be saved without first attempting the write**, when write capability is established — and never on the strength of a tool-list inspection when it is not, since only an attempted write settles capability.
 
 The **save manifest is a report, not an intention.** Its list of updated ledgers must name only the targets actually written and read back this checkpoint. A manifest that lists the chronicle and changelog as updated while those files received no write — the manifest asserting a promotion the repository never received — is itself the partial-checkpoint failure in its most misleading form: the durable artifact now lies about what canon exists. Populate the manifest's updated-ledger list from read-back results, never from the set you intended to write.

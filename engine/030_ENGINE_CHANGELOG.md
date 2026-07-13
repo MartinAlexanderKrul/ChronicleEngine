@@ -12,6 +12,18 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-13 — Repository Validation Barrier
+
+**Decisions:** Added Decision 054 (Repository Validation Barrier), converting existing Data Model validity constraints into a mandatory deterministic gate after live write/read-back and before immutable checkpoint creation or promotion-success reporting
+**Runtime:** Added `012_ENGINE_RUNTIME.md` Section 5.4; campaign initialization, checkpoints, session close, and campaign-termination promotion now require mechanical repository validation
+**Tooling:** Added `tools/validate_repository.ps1`, checking registry high-water bounds, allocation-log completeness and uniqueness, live object-definition uniqueness, reference resolution, universal Persistent Object fields, Canonical Record references, and unresolved placeholders; immutable save snapshots are excluded from live duplicate-definition checks
+**Runtime Profile / Guide:** Updated the Gameplay Runtime Profile to 1.20 and Gameplay Start Guide to 2.5; live ledgers are now written and read back, validated, and only then copied into an immutable checkpoint
+**Prototype Validation:** Current Prototype Beta state passes: 42 live Markdown files, 84 Persistent Object blocks, 84 unique referenced identifiers; PA-007 marked implemented
+**Roadmap:** Prototype Alpha marked complete; Engine Postmortem is now the current Version 0.2 validation gate
+**Engine Version:** Unchanged; remains 0.1.5 pending completion of the Version 0.2 Engine Postmortem
+
+---
+
 ## 2026-07-13 — Campaign→World Promotion on Prototype Alpha Close (Historical Layer First Use)
 
 **World (Verra):** Promoted the closed Prototype Alpha campaign's durable, publicly-known consequences into world canon, so later campaigns in Verra inherit the history. Created `worlds/verra/300_HALDEN_RECENT_HISTORY.md` (REC-000017) — the first use of the Historical Layer (300–399) — an in-world historical record of the Varn affair (Ilse Varn's arrival, entanglement in the Athenaeum–Order dispute, assault on Prelate Solenne, trial, and public execution), the marsh-fever outbreak escalation (to 13+ cases), and the institutional aftermath. Added a pointer to Ilse (`ENT-000018`, deceased) in `220_NOTABLE_FIGURES.md`. Allocated REC-000017 (registry high-water advanced).
@@ -20,7 +32,7 @@ Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version ad
 
 **Context:** Prototype Alpha — issue PA-I017. The death test (Checkpoint 4) closed the campaign but promoted nothing to the world layer, so a second campaign found a Verra with no memory of Ilse. This promotion gives the world its memory and validates the campaign→world path.
 
-**Finding reclassified:** PA-009 downgraded from foundational **gap** to **refinement** — the abstractions to carry history across campaigns already exist and work; only a **trigger** (a defined campaign-termination promotion step) is missing, to be formalized at the Engine Postmortem. This performed the promotion manually; it did not add the automatic step.
+**Finding reclassified:** PA-009 downgraded from foundational **gap** to **refinement** — the abstractions to carry history across campaigns already exist and work; only a **trigger** (a defined campaign-termination promotion step) was missing. That trigger was subsequently added to Gameplay Close 1.20 as part of the Repository Validation Barrier work.
 
 **Rules/Data Model/Decisions:** Unchanged — exercises Decision 038 and Section 12; no mechanic or rule change.
 

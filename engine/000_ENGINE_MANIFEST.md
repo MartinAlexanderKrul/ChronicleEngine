@@ -64,6 +64,9 @@ ChronicleEngine/
 ├── system/
 │   └── ID_REGISTRY.md
 │
+├── tools/
+│   └── validate_repository.ps1
+│
 ├── worlds/
 │   └── <world>/
 │       ├── 200_WORLD_BIBLE.md
@@ -144,6 +147,8 @@ The Data Model is the **most stable layer** of the architecture: everything refe
 The Runtime is substrate-independent. Substrate-specific procedure lives in operational **Runtime Profiles** under `docs/`, not in the Engine Layer. Large-language-model execution uses `docs/AI_SESSION_TEMPLATE.md` for Architect-mode development and `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` for Interpreter-mode gameplay (Decision 049).
 
 Persistent-object identifiers are allocated by the repository-level registry at `system/ID_REGISTRY.md`, governed by `011_ENGINE_DATA_MODEL.md`.
+
+Repository validation tooling lives under `tools/`. It operationalizes Data Model and Runtime constraints but does not define them; `tools/validate_repository.ps1` is the reference implementation of the Repository Validation Barrier (Decision 054).
 
 The Engine Layer must remain independent of any specific setting.
 

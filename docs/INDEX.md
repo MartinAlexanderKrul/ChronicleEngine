@@ -17,6 +17,8 @@ Use `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` to start or resume a campaign. Players
 
 Setup manual and AI Project prompts: `docs/GAMEPLAY_START_GUIDE.md`.
 
+Formal repository validation gate: `tools/validate_repository.ps1` (Decision 054).
+
 ### Architecture
 
 5. engine/000_ENGINE_MANIFEST.md

@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.4
+**Document Version:** 2.5
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -43,6 +43,14 @@ How the AI reaches the files depends on your setup:
 - **Indirect access** — a chat assistant connected to a synced folder, uploaded files, or a file connector. Read access does not guarantee write access, and a static upload can go stale. Confirm write capability before canonical play (below), keep the AI the sole writer during a session, and refresh its view of the files between sessions.
 
 The AI must always see the latest canonical state. After a session, review the changes with `git diff`, run repository validation, and commit — git is the durable version-history layer, not a competing authority. Avoid concurrent writers.
+
+On Windows, run the formal validation gate from the repository root:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps1
+```
+
+The command must pass after campaign initialization and after live checkpoint writes, before an immutable checkpoint is created or canon promotion is reported as successful.
 
 ## Confirm Write Capability (indirect access only)
 
@@ -127,11 +135,13 @@ At every checkpoint and session close, apply Canon Promotion and the gameplay cl
 
 CHECKPOINT COMPLETENESS — A CHECKPOINT IS NOT ONE FILE, AND "SAVED" REQUIRES READ-BACK:
 Before you tell the player anything is saved or promoted to canon:
-1. Enumerate EVERY target the session touched: Current State (180), chronicle (160), changelog (170), NPCs/relationships (130), objectives (140), world ledger / knowledge states (110), inventory (120) if it changed, the ID registry (system/ID_REGISTRY.md) for any new ENT/REC/EVT/REL, and the save manifest.
-2. Write ALL of them, each with provenance. Any new identifier used in a ledger MUST first be allocated in the ID registry and defined in its owning ledger — never write a ledger that references an EVT/REL/ENT id that is not registered and defined, or you create a dangling reference. Allocation means ADVANCING that kind's high-water mark in the registry, not just mentioning the id. If the id was previously noted as a reserved/pending forward marker, consuming it now means advancing the high-water mark to it and reclassifying it as consumed — leaving the high-water mark behind a now-real id makes the NEXT checkpoint allocate the same number and collide.
-3. Read each target BACK from the repository — not from memory or this conversation — and confirm the intended change is actually present.
-4. Only if EVERY target verifies may you report the checkpoint saved or "promoted to canon." If any target is unwritten, report a PARTIAL checkpoint and name the unwritten targets. NEVER stamp "promoted to canon" on a partial write.
-5. The save manifest's list of updated ledgers must contain ONLY files you actually wrote and read back this checkpoint. Do not list a ledger you meant to write but didn't — a manifest that claims writes it never made is the specific failure this gate exists to prevent.
+1. Enumerate EVERY live target the session touched: Current State (180), chronicle (160), changelog (170), NPCs/relationships (130), objectives (140), world ledger / knowledge states (110), inventory (120) if it changed, world history/state if the campaign ended, and the ID registry (system/ID_REGISTRY.md) for any new ENT/REC/EVT/REL.
+2. Write ALL live targets with provenance. Any new identifier used in a ledger MUST be allocated in the ID registry and defined in its owning ledger. Allocation means ADVANCING that kind's high-water mark and adding allocation-log coverage, not just mentioning the id.
+3. Read each live target BACK from the repository — not from memory or this conversation — and confirm the intended change is actually present.
+4. Run `powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps1`. A visual review is not a substitute. If validation fails, report a PARTIAL checkpoint, repair and rerun when possible, and do not claim promotion success.
+5. Only after validation passes, create the immutable checkpoint and save manifest from the verified live files, then read the checkpoint files back.
+6. Only if EVERY target verifies and repository validation passes may you report the checkpoint saved or "promoted to canon." NEVER stamp "promoted to canon" on a partial write or failed validation.
+7. The save manifest's list of updated ledgers must contain ONLY files you actually wrote and read back this checkpoint. Do not list a ledger you meant to write but didn't.
 ```
 
 This instruction establishes the Runtime role. It does not replace repository access or the active Gameplay Runtime Profile.
@@ -211,7 +221,7 @@ When ready to stop, send:
 ```text
 Close the gameplay session now.
 
-Apply the Promotion Barrier, then run a complete checkpoint: enumerate every affected ledger (Current State, chronicle, changelog, NPCs/relationships, objectives, world/knowledge, inventory if changed), allocate any new IDs in the registry, and write all of them with provenance. Then read every target back from the repository and confirm the changes landed. Only report "promoted to canon" if every target verifies; if any did not, tell me it is a PARTIAL checkpoint and name what is unwritten. The save manifest must list only ledgers you actually wrote and verified. Then provide the Gameplay Runtime Report. Do not produce a development report.
+Apply the Promotion Barrier, then run a complete checkpoint: enumerate every affected live ledger (Current State, chronicle, changelog, NPCs/relationships, objectives, world/knowledge, inventory if changed, and world history/state if the campaign ended), allocate any new IDs in the registry, and write all of them with provenance. Read every live target back, then run `powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps1`. Only after validation passes, create and read back the immutable checkpoint and save manifest. Report "promoted to canon" only if every target verifies and validation passes; otherwise report a PARTIAL checkpoint with the unwritten targets or validator findings. Then provide the Gameplay Runtime Report. Do not produce a development report.
 ```
 
 Do not close the conversation until the Runtime confirms whether canon was promoted and identifies the checkpoint or any blocking contradiction. If it reports a checkpoint saved, it should also be able to name the ledgers it read back to confirm it — a "saved" claim without read-back is the partial-checkpoint failure to watch for.

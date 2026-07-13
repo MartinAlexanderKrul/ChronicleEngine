@@ -2445,6 +2445,60 @@ A second gap surfaced alongside it: the campaign had no baseline checkpoint to r
 
 ---
 
+## Decision 054 - Repository Validation Barrier
+
+**Status:** Accepted
+**Date:** 2026-07-13
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Sections 1.4, 3.1, and 12.3; `012_ENGINE_RUNTIME.md` Section 5.4; `system/ID_REGISTRY.md`; `tools/validate_repository.ps1`; Decisions 042, 043, and 045
+
+### Context
+
+Prototype Alpha exposed three consecutive checkpoint failures in identifier registration. The registry rules, checkpoint checklist, and resident gameplay instructions were already correct, but the Runtime still left identifiers unregistered or left the high-water mark behind live canon. Manual audits repaired each occurrence. Prototype Beta then demonstrated that the same workflow can succeed, but one successful run did not remove the failure mode: checkpoint validity still depended on an interpreter remembering and correctly narrating every structural check.
+
+The Data Model already defines repository validity, and the Runtime already requires promotion and read-back. What was missing was a deterministic enforcement point between writing live canon and declaring that canon valid or creating an immutable checkpoint.
+
+### Decision
+
+Establish a mandatory **Repository Validation Barrier** for every operation that creates or promotes durable canon: campaign initialization, checkpoint creation, session close, campaign-termination promotion, and any commit that claims canonical promotion.
+
+The barrier has two parts:
+
+1. The Runtime determines the complete mutation target set and writes and reads back every live target, including `system/ID_REGISTRY.md` whenever identifiers are allocated.
+2. After read-back and before immutable checkpoint creation or any success claim, a deterministic validator checks the resulting live repository state. Validation failure fails the checkpoint or promotion operation; the Runtime reports the partial state, repairs it when possible, and reruns validation. It never reports "saved" or "promoted to canon" while the gate is failing.
+
+The minimum mechanical contract checks:
+
+- every referenced identifier is at or below its kind's registry high-water mark and covered exactly once by the allocation log,
+- every referenced identifier has one live object definition,
+- no identifier has more than one live definition,
+- every persistent-object block carries the universal required fields and a valid Canonical Record reference,
+- no live canonical file contains unresolved template placeholders.
+
+Live world and campaign state is the validation scope. Immutable save snapshots are excluded from live duplicate-definition checks because they intentionally copy earlier object definitions; checkpoint contents and manifests remain subject to checkpoint read-back and completeness checks. The PowerShell validator in `tools/validate_repository.ps1` is the reference implementation. Another substrate may replace it only with a deterministic implementation of the same contract.
+
+### Rationale
+
+A rule that has failed repeatedly at its enforcement point cannot be made reliable by adding more prose to the same point. The validation barrier converts existing structural invariants into a binary condition the Runtime must satisfy before claiming success. Placing it after live read-back tests what Persistence actually contains, while placing immutable checkpoint creation after the gate prevents invalid live state from being blessed as a checkpoint.
+
+The registry remains authoritative rather than being silently derived from ledger maxima. A high-water mark may legitimately remain ahead of current live definitions because identifiers are never reused after retirement. Mechanical validation therefore checks registry coverage and consistency without rewriting registry history.
+
+### Consequences
+
+- `012_ENGINE_RUNTIME.md` gains the normative Repository Validation Barrier.
+- The Gameplay Runtime Profile and Gameplay Start Guide invoke repository validation during initialization, checkpoint, session close, and campaign termination.
+- `tools/validate_repository.ps1` provides the first executable gate for the document repository.
+- Validation failure is an execution/persistence failure, not automatically a canonical contradiction. The Runtime may repair and revalidate the incomplete mutation without rejecting otherwise grounded play.
+- Later validators may expand the contract, but may not weaken these checks without revising this decision.
+
+### Alternatives Considered
+
+- **Strengthen the checkpoint prose again.** Rejected: three consecutive recurrences showed that narrated bookkeeping is not a reliable enforcement mechanism.
+- **Derive and rewrite high-water marks from the largest identifier found.** Rejected: it loses allocation and retirement history and could move a counter backward, violating never-reuse.
+- **Run validation only before git commit.** Rejected: a gameplay Runtime could already create and report an invalid checkpoint before a later developer audit.
+- **Validate immutable saves as part of live uniqueness.** Rejected: save snapshots intentionally duplicate historical definitions and would create false duplicate-identity failures.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

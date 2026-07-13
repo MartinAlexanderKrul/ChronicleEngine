@@ -300,6 +300,23 @@ Before promotion, a transcript fact is a **pending write**. After promotion, the
 
 Promotion is the mechanism that satisfies Invariant 3 and reconciles the precedence and durability axes (Section 4.2).
 
+## 5.4 Repository Validation Barrier
+
+Every mutation that creates or promotes durable canon must pass the **Repository Validation Barrier** before the Runtime declares it successful. This applies to campaign initialization, checkpoints, session close, campaign-termination promotion, and any equivalent durability boundary.
+
+The barrier runs against Persistence, not Context:
+
+1. determine the complete live mutation target set, including the identifier registry when identifiers are allocated,
+2. write every target and read each one back from Persistence,
+3. run deterministic repository validation against the resulting live state,
+4. only after validation passes, create an immutable checkpoint or report the mutation as saved or promoted.
+
+The validator enforces the structural constraints owned by the Data Model (`011_ENGINE_DATA_MODEL.md`, Sections 1.4, 3.1, and 12.3): registry coverage and high-water bounds, one live definition per referenced identifier, referential integrity, universal Persistent Object fields, Canonical Record references, and placeholder rejection. Immutable save snapshots are excluded from live duplicate-definition checks because they intentionally preserve copied historical state; their contents and manifest are verified through checkpoint completeness and read-back.
+
+A validation failure is an execution error. It fails the checkpoint or promotion claim, but it is not by itself a canonical contradiction and does not erase grounded play. The Runtime reports the incomplete targets, repairs the live mutation when possible, and reruns the barrier. It must not create an immutable checkpoint from failing state or describe that state as successfully promoted.
+
+The validation procedure must be mechanical and deterministic. A Runtime Profile may select the tool appropriate to its substrate, but may not replace the barrier with an interpreter's unaided assertion that the repository appears valid. The architectural reasoning is recorded in Decision 054.
+
 ---
 
 # 6. Persistence
@@ -378,8 +395,9 @@ When executing Chronicle Engine, the Runtime:
 6. Advances from the Player's last declared intent to the next meaningful player choice, then yields control (Section 1.6).
 7. Records changes through Mutation, with provenance and consistency (Section 5).
 8. Promotes in-session canon to durable ledgers at every promotion barrier (Section 5.3).
-9. Detects and resolves contradictions rather than proceeding past them (Section 8).
-10. Commits all pending canon to Persistence at session close (Section 2.2).
+9. Validates the resulting live repository before creating a checkpoint or claiming successful promotion (Section 5.4).
+10. Detects and resolves contradictions rather than proceeding past them (Section 8).
+11. Commits all pending canon to Persistence at session close (Section 2.2).
 
 ---
 
@@ -393,4 +411,4 @@ It references the Engine Rules and the data-model concepts they contain. It does
 
 Operational procedure and substrate-specific technique belong in Runtime Profiles under `docs/`, not in this document.
 
-The architectural reasoning behind this document is recorded in `001_ENGINE_DECISIONS.md`, Decision 041 (Runtime Model) and Decision 042 (Durable Canon and Promotion Obligation).
+The architectural reasoning behind this document is recorded in `001_ENGINE_DECISIONS.md`, Decision 041 (Runtime Model), Decision 042 (Durable Canon and Promotion Obligation), and Decision 054 (Repository Validation Barrier).

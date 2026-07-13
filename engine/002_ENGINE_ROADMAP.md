@@ -10,15 +10,15 @@
 
 Goal:
 
-Version 0.2 architecture, implementation, and Capability Validation are complete and accepted (Decisions 046–047; Rules Section 8; milestone 0.2.5). The engine now enters its first Prototype Campaign — Prototype Alpha — to validate Version 0.2 through gameplay before the version can be marked complete.
+Version 0.2 architecture, implementation, Capability Validation, and Prototype Alpha are complete. The engine is now in the Engine Postmortem, incorporating required gameplay-proven refinements before Version 0.2 can be marked complete.
 
 Current Task:
 
-Complete the Prototype Alpha Engine Readiness Review, then begin Session 1 through the Gameplay Runtime Profile.
+Incorporate required Prototype Alpha postmortem refinements, beginning with the mechanical Repository Validation Barrier (Decision 054).
 
 Next Review:
 
-Gameplay startup, onboarding, first-session boot, and close procedures are implemented. The next review is read-only readiness validation before play.
+Review the remaining Prototype Alpha improvement backlog after validating Decision 054 against Prototype Beta.
 
 ---
 
@@ -85,7 +85,7 @@ This lifecycle is governed by `001_ENGINE_DECISIONS.md` Decision 048 (Version Ev
 
 Status: **In Validation**
 
-Version 0.2.0 is the development target for the first capability milestone built on the Foundation, which is complete and frozen at 0.1.5 (the current Engine Version). It models knowledge as a persistent historical force rather than a binary possession or global unlock. Its architecture, implementation, and Capability Validation are complete; it is now at the Prototype Alpha gate of the development lifecycle. The Engine Version advances to 0.2.0 only after Prototype Alpha and the Engine Postmortem are also complete (Decision 048).
+Version 0.2.0 is the development target for the first capability milestone built on the Foundation, which is complete and frozen at 0.1.5 (the current Engine Version). It models knowledge as a persistent historical force rather than a binary possession or global unlock. Its architecture, implementation, Capability Validation, and Prototype Alpha are complete; it is now at the Engine Postmortem gate. The Engine Version advances to 0.2.0 only after the postmortem and its required refinements are complete (Decision 048).
 
 ### Goal
 
@@ -104,11 +104,11 @@ Version 0.2 has advanced through the development lifecycle as follows:
 - [x] ADR Review & Approval
 - [x] Rules Implementation (Section 8 — custody, transmission, loss, passive extinction, rediscovery)
 - [x] Capability Validation (0.2.5) — accepted; fixtures in `docs/410_CAPABILITY_VALIDATION/`
-- [ ] Prototype Alpha — Engine Validation Campaign — current gate
-- [ ] Engine Postmortem
+- [x] Prototype Alpha — Engine Validation Campaign
+- [ ] Engine Postmortem — current gate
 - [ ] Version 0.2 Complete
 
-Prototype Alpha and the Engine Postmortem are the remaining validation gates. Version 0.2 is marked complete — and the Engine Version advances to 0.2.0 — only after both are finished and any required refinements are incorporated. Version 0.3 planning begins after that (Decision 048).
+The Engine Postmortem is the remaining validation gate. Version 0.2 is marked complete — and the Engine Version advances to 0.2.0 — only after required refinements are incorporated. Version 0.3 planning begins after that (Decision 048).
 
 The five capability milestones (0.2.1–0.2.5) are specified in full under Planned Milestones → Version 0.2 below.
 
@@ -458,7 +458,7 @@ Completion criteria:
 
 ## Prototype Alpha — Engine Validation Campaign
 
-Status: **Active** — current validation gate; follows accepted Capability Validation
+Status: **Complete** — campaign closed on protagonist death; findings captured for the Engine Postmortem
 
 Prototype Alpha is not an engine-feature milestone. It introduces no new engine systems and no new foundational abstractions. Its purpose is to validate the completed Version 0.2 implementation through the Prototype Campaign stage of the development lifecycle.
 
@@ -515,8 +515,9 @@ The campaign should exercise:
 - [x] Prototype Alpha startup configuration and spoiler-safe player briefing
 - [x] Player Agency Contract and Interaction Cadence (Decision 050) — refinement from Prototype Alpha preparation
 - [x] Persistence preflight, checkpoint persistence, and promotion reconciliation hardening — refinement from Prototype Alpha preparation
-- [ ] Engine Readiness Review
-- [ ] Session 1 and first checkpoint
+- [x] Engine Readiness Review
+- [x] Session 1 and first checkpoint
+- [x] Campaign close and campaign-to-world promotion
 
 ### Success Criteria
 
@@ -542,7 +543,7 @@ Prototype Alpha fails if gameplay repeatedly exposes:
 
 ## Engine Postmortem
 
-Status: **Planned** — validation gate; begins after Prototype Alpha
+Status: **Active** — current validation gate; required refinements are being incorporated
 
 The Engine Postmortem is a mandatory milestone that captures the lessons of Prototype Alpha before Version 0.3 begins.
 
@@ -894,7 +895,7 @@ Current architectural debt:
 
 # Current Dependencies
 
-Version 0.2 - Knowledge & Civilization is at the Capability Validation gate. Its dependencies are Research & Knowledge (Section 8), Institutions & Organizations (Section 9), Historical Persistence (Section 12), Decisions 031-038, and Decisions 046-047, which formalize the Knowledge Subject / Knowledge State model and continuity rules. Once Capability Validation completes, Prototype Alpha — Engine Validation Campaign and the Engine Postmortem are the required validation gates before Version 0.3 planning (Decision 048).
+Version 0.2 - Knowledge & Civilization is at the Engine Postmortem gate. Capability Validation and Prototype Alpha are complete. Required gameplay-proven refinements must be incorporated before Version 0.2 completes and Version 0.3 planning begins (Decision 048).
 
 ---
 

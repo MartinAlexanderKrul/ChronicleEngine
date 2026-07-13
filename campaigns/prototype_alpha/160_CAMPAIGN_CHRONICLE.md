@@ -70,6 +70,50 @@ description: "Ilse presents her letter to Corvane at the Athenaeum after a direc
 
 ---
 
+## EVT-000010 — Crisis Cascade
+
+```yaml
+id: EVT-000010
+canonical_record: REC-000014
+schema_version: "0.1.1"
+status: active
+provenance:
+  source: EVT-000010-session-play
+  event_time: "Year 312 RR, late spring (day 2, morning)"
+  record_time: "2026-07-13T00:00:00Z"
+kind: crisis
+importance: archived
+participants:
+  - ENT-000018
+  - ENT-000006
+description: "Waking to the weight of her commitment, Ilse suffers an emotional crisis: she strikes her own head, then attacks Rector Maelis three times, all failing. Guards subdue her and she breaks into laughter. Maelis declines to punish her and orders her moved to the Athenaeum infirmary for rest and care rather than detention."
+```
+
+---
+
+## EVT-000011 — Infirmary Interlude and the Order's Offer
+
+```yaml
+id: EVT-000011
+canonical_record: REC-000014
+schema_version: "0.1.1"
+status: active
+provenance:
+  source: EVT-000011-session-play
+  event_time: "Year 312 RR, late spring (days 2–8)"
+  record_time: "2026-07-13T00:00:00Z"
+kind: interlude
+importance: current
+participants:
+  - ENT-000018
+  - ENT-000006
+  - ENT-000007
+  - ENT-000008
+description: "Over a week in the infirmary Ilse recovers as fever cases in the river ward escalate from two to seven or more. The Order of the Ember, under Prelate Solenne, sends a formal recruitment letter offering lodging, income, and protection contingent on abandoning Corvane and the Athenaeum. Maelis visits without reproach; Corvane waits. At week's end Corvane asks whether she remains committed; Ilse has read the Order's letter but has not yet answered (the pending answer is reserved as EVT-000012)."
+```
+
+---
+
 ## Chronicle
 
 **Year 312 RR, late spring — Arrival.**

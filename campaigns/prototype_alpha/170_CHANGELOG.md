@@ -45,3 +45,6 @@ Current state: Ilse physically recovered, mentally clear. At genuine decision po
 - 110_WORLD_LEDGER.md: REL-000017 (fever knowledge state) updated with escalation and time to process
 - 160_CAMPAIGN_CHRONICLE.md: EVT-000010 and EVT-000011 added to narrative
 - 180_CURRENT_STATE.md: Protagonist location and condition updated
+
+**2026-07-13 — Post-checkpoint integrity reconciliation (out-of-band, not gameplay).**
+A repository-integrity pass reconciled identifiers left unregistered by the session-1 checkpoints. Registered `EVT-000009`, `EVT-000010`, `EVT-000011`, and `REL-000019` in `system/ID_REGISTRY.md` (Event high-water advanced to EVT-000011, Relationship to REL-000019) — these gameplay-generated identifiers had been used across ledgers but never allocated (Decision 044). Promoted `EVT-000010` (crisis cascade) and `EVT-000011` (infirmary interlude) from prose-only mentions to structured Event blocks in `160_CAMPAIGN_CHRONICLE.md`, matching EVT-000008/009 (Decision 043). Documented `EVT-000012` (Ilse's pending commitment decision) as a reserved forward marker in the registry. No campaign state was advanced; this only records what already occurred. Later checkpoints run under the resident checkpoint-completeness gate, which now requires new-ID registration as part of the target set.

@@ -920,6 +920,10 @@ An out-of-character control verb the player issues to the Runtime during a sessi
 
 A runtime command is engine-general (it means the same thing in every world), is recognized at any point including mid-scene, and is a thin dispatcher onto a procedure the Gameplay Runtime Profile already defines; it introduces no new persistence, resolution, or canon mechanic and never waives the dispatched procedure's obligations. Runtime command names are reserved and take precedence over a world's [Diegetic Command](#diegetic-command) of the same name. The one runtime command also documented in the root `README.md` is the bootstrap `/ChronicleEngine`, which must be reachable before the profile is loaded. Defined in the Runtime Command Interface (`docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`) and Decision 056.
 
+## Chat Debug Export
+
+A repository-level, non-canonical transcript of the user-visible current conversation produced by `/export-debug`, including conversation before campaign selection and available even when no game is in progress. Hidden instructions and non-visible internals are excluded. It carries no gameplay-export sufficiency contract, cannot rebuild canon, and is never a save or restoration source. Stored under `exports/debug/`. Distinct from a [Session Export](#session-export), which is campaign-scoped and recovery-capable. Defined by Decision 063 and the Gameplay Runtime Profile.
+
 ---
 
 ## Runtime Profile

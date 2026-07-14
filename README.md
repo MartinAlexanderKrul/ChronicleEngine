@@ -1,5 +1,7 @@
 # Chronicle Engine
 
+**Document Version:** 1.1
+
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 
 ---
@@ -27,15 +29,26 @@ The player becomes part of its history.
 
 ---
 
+<a id="play-chronicle-engine"></a>
+
 # Play Chronicle Engine — the `/ChronicleEngine` command
 
-**To start or resume a game, send `/ChronicleEngine` to an AI that can read and write this repository.** (`/start`, `/game`, `/rpg`, `/chronicle`, and `/chronicles` are aliases and do exactly the same thing. Optionally name a target: `/ChronicleEngine <campaign-path-or-world>`.)
+**To start the engine, send `/ChronicleEngine` to an AI that can read and write this repository.** (`/start`, `/game`, `/rpg`, `/chronicle`, and `/chronicles` are aliases and do exactly the same thing. To start and select in one command, name a target: `/ChronicleEngine <campaign-path-or-world>`.)
 
 `/ChronicleEngine` is the **bootstrap command**. It is documented here, in `README.md`, on purpose: at the start of a conversation an AI may see only this file, so the command that boots the engine must be reachable from this file alone. Every other runtime command (`/save`, `/continue`, `/new`, `/end`, …) is defined once the Gameplay Runtime Profile is loaded; `/ChronicleEngine` is the one that loads it.
 
+After the profile loads, its complete command table is active immediately on the selection screen. A command is never deferred until campaign play, treated as readiness confirmation, or guessed as an in-world action; if it needs a campaign, report that precondition and leave the selection screen unchanged.
+
 ### What the AI must do on `/ChronicleEngine`
 
-You are being asked to run Chronicle Engine gameplay in **Interpreter mode**. The rest of the repository is available to you as readable, writable files even if this conversation began showing only `README.md`. **Read the files below on your own initiative.** Seeing only this README at the start is a cold-start artifact, never a reason to report that the game files are missing — report a blocker only after an actual read attempt on a named file errors.
+You are being asked to start Chronicle Engine in **Interpreter mode**. Before reading any campaign file, parse the bootstrap command itself and apply this gate:
+
+- **No target was supplied** — load only the engine boot set below. Do **not** choose a campaign, read campaign ledgers or checkpoints, restore state, recap a scene, or enter a readiness gate. Render the exact complete catalog in this README, list repository worlds and campaign metadata, ask the player to choose, and stop.
+- **A target was supplied** — after loading the engine boot set, load only that target and follow the profile's campaign startup or restoration procedure.
+
+This **No-Target Gate fires before campaign discovery or restoration**. A recent, active, or sole campaign is never an implicit argument. `/chronicle` alone means “engine selection screen,” never “continue.”
+
+The rest of the repository is available as readable, writable files even if this conversation began showing only `README.md`. **Read the engine files below on your own initiative.** Seeing only this README at the start is a cold-start artifact, never a reason to report that the engine files are missing — report a blocker only after an actual read attempt on a named file errors.
 
 Read, in this order, then follow the loaded procedure:
 
@@ -45,12 +58,37 @@ Read, in this order, then follow the loaded procedure:
 4. **`engine/012_ENGINE_RUNTIME.md`** and **`engine/011_ENGINE_DATA_MODEL.md`** — runtime obligations and the data model (identifiers, ledgers) the validator enforces.
 5. **`tools/validate_repository.ps1`** — the validation gate run before any checkpoint is claimed saved.
 
-Then select what to play and load its state:
+Then select what to play and load its state only when the command named a target or the player subsequently chooses one:
 
 - **A specific campaign** — read `campaigns/<campaign>/090_CAMPAIGN_STARTUP.md`, its canonical ledgers (`100`–`180`), the campaign's world records under `worlds/<world>/`, and, when resuming, the latest checkpoint under `campaigns/<campaign>/saves/`.
-- **No target given (the default)** — present the command menu and a listing of worlds (`worlds/`) and campaigns (`campaigns/`) with each campaign's status and latest checkpoint, then **wait for the player to choose** (`/continue <world|campaign>`, `/new <world>`, or `/load <checkpoint>`). Do **not** auto-load or auto-resume a campaign the player did not choose — presenting the menu and waiting is the whole job here.
+- **No target given (the default)** — start the engine only: present the **complete runtime-command catalog** and a listing of worlds (`worlds/`) and campaigns (`campaigns/`) with each campaign's status and latest checkpoint, then **wait for the player to choose** (`/continue <world|campaign>`, `/new <world>`, or `/load <checkpoint>`). Do **not** load campaign files, auto-load or auto-resume a campaign, begin reconciliation, or enter a readiness gate until the player chooses one — presenting the catalog and selection screen is the whole job here.
 
-Do not open the first scene until you have presented a spoiler-safe introduction or recap and the player has confirmed readiness (the profile's Readiness Gate). As part of that readiness step, **show the player a short menu of available commands** — the runtime commands plus any commands the campaign's world defines (a Reikon campaign lists `/system`) — so they know what they can type. If your file access is indirect, confirm write capability with the preflight canary described in the start guide before canonical play.
+### Exact cold-start command catalog
+
+On no-target bootstrap, render **every row below**. Do not rename, merge, omit, or invent commands or aliases. Only the aliases explicitly written below exist.
+
+| Command | What it does |
+|---------|--------------|
+| `/ChronicleEngine [target]` | Start the engine and show this selection screen; with a named world or campaign, boot directly into it. Aliases: `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`. |
+| `/help [command]` | List this complete catalog, or explain one command. |
+| `/save [label]` | Checkpoint the current campaign. Requires a loaded campaign. |
+| `/end` | Save and close the current campaign session. Alias: `/save-and-quit`. Requires a loaded campaign. |
+| `/continue [world|campaign]` | Resume the named campaign, the latest campaign in a named world, or—without an argument—the most recently played campaign. |
+| `/new <world>` | Start a new campaign in a world. |
+| `/load <checkpoint>` | Restore a specific restorable checkpoint of the current campaign. Requires a loaded campaign. |
+| `/restart` | Destructively reset the current campaign to its baseline after confirmation. Requires a loaded campaign and baseline checkpoint; it is not “reload latest.” |
+| `/branch [name]` | Fork the current campaign at its latest checkpoint. Requires a loaded campaign. |
+| `/worlds` | List available worlds. |
+| `/campaigns [world]` | List campaigns and latest checkpoints, optionally filtered by world. |
+| `/saves` | List checkpoints for the current campaign. Alias: `/checkpoints`. Requires a loaded campaign. |
+| `/export [label]` | Export the current campaign's durable gameplay transcript. Requires a loaded campaign; it is not a save. |
+| `/recap` | Show a spoiler-safe recap. Requires a loaded campaign. |
+| `/status` | Show the out-of-character progression view. Requires a loaded campaign. |
+| `/validate` | Run repository validation. |
+| `/debug` | Toggle full roll-mechanics detail. Off by default. |
+| `/export-debug [label]` | Export the user-visible current chat, including pre-game chat; no campaign required. |
+
+Do not open the first scene until you have presented a spoiler-safe introduction or recap and the player has confirmed readiness (the profile's Readiness Gate). As part of that readiness step, **show the complete runtime-command catalog** plus every command the selected campaign's world defines (a Reikon campaign lists `/system`) — never a remembered or state-filtered subset. If your file access is indirect, confirm write capability with the preflight canary described in the start guide before canonical play.
 
 **For the full copy-paste AI Instructions and exact start prompts, see `docs/GAMEPLAY_START_GUIDE.md`.**
 
@@ -101,7 +139,7 @@ If you are new to the project, read the documents in the following order.
 3. docs/AI_SESSION_TEMPLATE.md
 4. docs/CONTRIBUTING.md
 
-To **play**, send `/ChronicleEngine` (see [Play Chronicle Engine](#play-chronicle-engine--the-chronicleengine-command) above). The Runtime reads campaign state and presents a spoiler-safe introduction; players do not need to read repository files. Gameplay is governed by `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`.
+To **play**, send `/ChronicleEngine` (see [Play Chronicle Engine](#play-chronicle-engine) above). The Runtime reads campaign state and presents a spoiler-safe introduction; players do not need to read repository files. Gameplay is governed by `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`.
 
 For setup instructions and ready-to-use AI Project prompts, see `docs/GAMEPLAY_START_GUIDE.md`.
 

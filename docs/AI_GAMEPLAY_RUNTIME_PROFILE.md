@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.25
+**Document Version:** 1.27
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -277,7 +277,7 @@ Do not expose identifiers, repository paths, object types, Knowledge-State termi
 
 The one deliberate exception during play is the action-resolution roll, surfaced as a compact D&D-style tag (`🎲 d100: 72 — success`). In normal play the tag is minimal — the roll, the outcome, and at most a short parenthetical reason where it aids clarity: `🎲 d100: 80 — failure (untrained, opponent stronger)`. Never surround it with engine-procedure narration, band names, difficulty math, or descriptions of your own rule-compliance. The player sees a die result, not a rules seminar.
 
-The fuller mechanical breakdown — difficulty, the modifiers applied, band boundaries, the resolution steps — is a **testing/debug mode**, shown only when the player explicitly asks for it (for example, while validating the engine). It is never the default; in ordinary play none of it appears.
+The fuller mechanical breakdown — difficulty, the modifiers applied, band boundaries, the resolution steps — is a **testing/debug mode**, shown when the player enables `/debug` or explicitly asks for it while validating the engine. It is never the default; in ordinary play none of it appears.
 
 ---
 
@@ -304,7 +304,7 @@ Resolve a leading-slash token in this order:
 
 ### The Command Table Is Rendered, Not Recalled
 
-**`/help` renders from the Command Table below. It is never answered from memory, paraphrase, or expectation of what a command "probably" does.** A command's effect as described to the player must match this table's row for it; where `/help` shortens a row for readability, it may drop detail but must not change meaning, and must never state the opposite of the dispatched procedure.
+**`/help` renders every row from the Command Table below. It is never answered from memory, paraphrase, state filtering, or expectation of what a command "probably" does.** With no argument, it lists the complete runtime catalog, including aliases and commands that require a campaign; an unavailable command is labelled with its requirement, never omitted. With a command argument, it renders that row in full. A command's effect as described to the player must match its table row; shortening a row may drop detail but never change meaning.
 
 This is the same requirement already placed on a world's diegetic render template (above), applied to the control surface, and for the same reason: given the same table, every Runtime must describe the same interface. A player acts on what `/help` tells them. A misdescribed control verb is not a cosmetic error — it is a player instructed to do the opposite of what they intend.
 
@@ -321,11 +321,10 @@ Each command dispatches to the named procedure. The procedure — not this table
 | Command | Effect | Dispatches to |
 |---------|--------|---------------|
 | `/ChronicleEngine [target]` | **Bootstrap.** Enter Interpreter mode and load the boot set. With **no target** (the default), present the Bootstrap Selection Screen — the command menu plus a worlds/campaigns listing with status and latest checkpoint — then **wait for the player to choose; never auto-load or auto-resume a campaign.** With a campaign path or world name, boot directly into it. Aliases (identical effect): `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`. | Bootstrap Selection Screen → First-Session Boot / Returning Sessions |
-| `/help [command]` | List the runtime commands, or explain one. Out-of-character; no state change. | — |
+| `/help [command]` | With no argument, list **every** runtime command and alias in this table; never state-filter or omit commands. With an argument, explain that command. Out-of-character; no state change. | — |
 | `/save [label]` | Checkpoint now. Optional `label` is recorded in the save manifest's save-identity metadata. | Checkpoint Persistence → Save Algorithm |
 | `/end` | Close the session: promotion barrier, session-close checkpoint, Gameplay Runtime Report. Alias: `/save-and-quit`. | Gameplay Close |
-| `/continue` | Resume the **most recently played** campaign from its latest canonical checkpoint. | Returning and Takeover Sessions (Rules Section 13.4) |
-| `/continue <world>` | Resume the latest checkpoint of the most recently played campaign **in that world**. | Returning and Takeover Sessions (Rules Section 13.4) |
+| `/continue [world|campaign]` | With no argument, resume the **most recently played** campaign from its latest canonical checkpoint. With a world, resume that world's most recently played campaign. With a campaign, resume that campaign. | Returning and Takeover Sessions (Rules Section 13.4) |
 | `/new <world>` | Start a **new campaign instance** in that world. | Emergent Campaign / Custom Protagonist initialization |
 | `/load <checkpoint>` | Restore a **specific earlier** checkpoint of the current campaign. Continuing play from a non-latest checkpoint is a fork (Decision 053). **Refuses a checkpoint recorded as non-restorable** (see Destructive-Command Guards). | Returning Sessions + Fork (Decision 053) |
 | `/restart` | **Destructive.** Redo: reset the current campaign to its **baseline** checkpoint, discarding play since baseline. Keeps the protagonist's identifier; does not roll back the registry (Decision 053). **Requires a baseline checkpoint and explicit confirmation** (see Destructive-Command Guards). Not "reload the latest checkpoint" — that is `/continue`. | Redo (Decision 053) |
@@ -338,6 +337,7 @@ Each command dispatches to the named procedure. The procedure — not this table
 | `/status` | Show the out-of-character **Progression Surfacing** view (derived tiers, level, experience log). Distinct from any world's diegetic `/system`. | Progression Surfacing |
 | `/validate` | Run the Repository Validation Gate on demand and report the result. Out-of-character; no canon change. | Repository Validation Gate |
 | `/debug` | Toggle the testing/debug mechanical breakdown (difficulty, modifiers, band boundaries) described under Information Boundary. Off by default. | Information Boundary (debug mode) |
+| `/export-debug [label]` | Export the **entire user-visible current chat**, including conversation before engine startup and whether or not a campaign is loaded, to `exports/debug/`. This diagnostic transcript is not a gameplay export, establishes no canon, and is never a save. | Chat Debug Export |
 
 The interface is **extensible**: a future runtime command is added here as another dispatcher onto an existing procedure. A command that would require a *new* persistence, resolution, or canon mechanic is out of scope for this table and belongs in the Engine Rules or a Decision first.
 
@@ -345,7 +345,11 @@ The interface is **extensible**: a future runtime command is added here as anoth
 
 `/ChronicleEngine` is distinguished from every other runtime command by *when* it must be recognizable. The rest of this table is available only after this profile is loaded — but this profile is one of the files the player is asking the Runtime to load. `/ChronicleEngine` therefore must be reachable from the one file a cold-start Runtime is guaranteed to see: the root `README.md`. Its definition is duplicated there for exactly this reason, and the two must stay in agreement.
 
-On `/ChronicleEngine`, the Runtime reads the boot set on its own initiative, following the cold-start loading rule: seeing only `README.md` (or a partial listing) at the start of a conversation is a cold-start artifact, not a missing-files condition, and the Runtime reports a load blocker only after an actual read attempt on a named file errors (First-Session Boot; Failure Behavior). The boot set is the profile, the Engine Rules (Sections 4, 6, 13), the Runtime and Data Model documents, the validator, and — once a target is chosen — the selected campaign's startup, ledgers, world records, and latest checkpoint.
+The README also carries an **exact cold-start mirror of every Command Table row**. On a no-target bootstrap, render that mirror rather than composing or paraphrasing a catalog. Command names and aliases are closed: a token not present in the Command Table is not an alias. In particular, `/checkpoint`, `/progress`, `/resume`, `/list`, `/close`, and bare `/start` with campaign-start semantics must never be invented; `/start` is only an alias of `/ChronicleEngine`.
+
+On `/ChronicleEngine`, the Runtime first parses whether the command contains a target, **before reading any campaign file**. With no target, the No-Target Gate prohibits campaign startup, ledger/checkpoint reads, restoration, reconciliation, recap, and readiness work. The Runtime reads only the engine boot set plus repository metadata needed for the selection listing, renders the selection screen, and yields. A recent, active, or sole campaign is never an implicit target.
+
+The Runtime reads the boot set on its own initiative, following the cold-start loading rule: seeing only `README.md` (or a partial listing) at the start of a conversation is a cold-start artifact, not a missing-files condition, and the Runtime reports a load blocker only after an actual read attempt on a named file errors (First-Session Boot; Failure Behavior). The boot set is the profile, the Engine Rules (Sections 4, 6, 13), the Runtime and Data Model documents, and the validator. **Only after a target is explicitly supplied or chosen** may it read the selected campaign's startup, ledgers, world records, and latest checkpoint.
 
 After loading, behavior depends on whether a target was named. **With no target (the default), `/ChronicleEngine` presents the Bootstrap Selection Screen (below) and waits — it never auto-loads a campaign.** Once a target is chosen — named as an argument, or picked from that screen — `/ChronicleEngine` proceeds through Startup Classification, First-Session Boot or Returning Sessions, and the Readiness Gate exactly as a natural-language start prompt would; it opens no scene before the player confirms readiness.
 
@@ -354,7 +358,7 @@ After loading, behavior depends on whether a target was named. **With no target 
 `/ChronicleEngine` with no target does **not** choose a campaign for the player. After loading the boot set, it presents one screen and yields:
 
 1. A brief confirmation that the engine is loaded — not a wall of process narration or version dumps.
-2. The available-commands menu (Command Availability at Session Start): the runtime commands. A world's diegetic commands are **not** shown yet; they appear once a campaign in that world is loaded.
+2. The complete runtime-command catalog, rendered from the README's exact cold-start mirror of this Command Table—not recalled, regrouped, or paraphrased. A world's diegetic commands are **not** shown yet; they appear once a campaign in that world is loaded.
 3. A listing of **worlds** (`worlds/`) and **campaigns** (`campaigns/`). For each campaign, show, spoiler-safe: its world, protagonist (if any), status (not started / in progress / closed or terminal), and latest checkpoint (id and date). This is the combined output of `/worlds`, `/campaigns`, and `/saves`, gathered into one screen.
 4. A prompt to choose: `/continue <world|campaign>` to resume, `/new <world>` to start fresh, or `/load <checkpoint>` for a specific point.
 
@@ -382,14 +386,14 @@ Where a campaign records checkpoint status externally (a save index), the Runtim
 
 ## Command Availability at Session Start
 
-At **every** session start, before the first scene opens, the Runtime presents the available commands once, as a compact out-of-character menu. This is mandatory on every entry path: after `/ChronicleEngine`, at the First-Session Boot briefing, and in the Returning/Takeover recap. A player who has just started, resumed, forked, or restarted must be shown what they can type without having to ask first.
+At **every** session start, before the first scene opens, the Runtime presents the complete command catalog once as an out-of-character menu. This is mandatory on every entry path: after `/ChronicleEngine`, at the First-Session Boot briefing, and in the Returning/Takeover recap. A player who has just started, resumed, forked, or restarted must be shown what they can type without having to ask first.
 
-The menu lists two groups, and only what applies to the current campaign:
+The menu lists two groups:
 
-- **Runtime commands** — the reserved, engine-general verbs from the Command Table. Present the ones useful in the current state (always `/help`, `/save`, `/end`, `/status`, `/recap`; plus `/continue`, `/new`, `/saves`, `/worlds`, `/campaigns` as navigation), and note that `/help` lists the rest.
+- **Runtime commands** — render **every row** in the Command Table, including aliases. Never filter the catalog by current state. If a command requires a loaded campaign or another precondition, show that requirement beside it instead of hiding the command.
 - **World commands** — the diegetic commands the **active campaign's world** declares in its content (for example, a Reikon campaign shows `/system`). A campaign whose world declares no diegetic commands shows only the runtime group. The Runtime reads the world's declared diegetic commands from that world's content; it does not invent commands a world has not defined, and it does not show another world's commands.
 
-Keep the menu short, player-facing, and spoiler-safe: name each command and what it does in plain language, never repository internals. It is shown at the Readiness Gate (or with the recap), advances no in-world time, and does not consume the Beat Budget. Show it once per session start; thereafter `/help` re-displays it on demand. Do not repeat the full menu at the top of every scene.
+Keep each entry concise, player-facing, and spoiler-safe, but completeness takes precedence over brevity. The catalog is shown at the Readiness Gate (or with the recap), advances no in-world time, and does not consume the Beat Budget. Show it once per session start; thereafter `/help` re-displays the same complete catalog on demand. Do not repeat it at the top of every scene.
 
 ---
 
@@ -756,6 +760,18 @@ An export is the **last** line of defence, not the first. Checkpoints remain the
 ## Filing
 
 Name the file `play_export_<NNNN>.md`, numbered by advancing past the highest existing export in the campaign's `exports/` directory (first export is `0001`). An optional `label` argument is recorded in the header and may be slugged into the filename. After writing, read the file back and report its path; if read-back fails, treat it as a write failure per The Bright Line.
+
+---
+
+# Chat Debug Export
+
+`/export-debug [label]` exports the **current conversation**, not campaign state. It is available immediately after bootstrap when no campaign session is active, as well as during play. Its purpose is diagnosis: preserving the exact exchange that led to a command, loading, or interpretation failure.
+
+Capture every **user-visible** user, assistant, runtime, and tool-result message that the substrate exposes, beginning with the earliest visible message in the current conversation and ending with the `/export-debug` request. Preserve order, displayed role, and text verbatim. Do not export hidden system/developer instructions, internal reasoning, credentials, or tool traffic that was not shown to the user. Record the export timestamp, optional label, substrate if known, and whether earlier user-visible conversation content was unavailable to the Runtime. Never claim completeness beyond the chat the substrate actually exposes.
+
+Write Markdown to `exports/debug/chat_debug_<timestamp>.md`; create the directories when needed. This location is repository-level because the chat may precede campaign selection. After writing, read the file back and report its path. If repository writing is unavailable, render or attach the transcript through the substrate and say that no repository file was written.
+
+A Chat Debug Export is diagnostic and non-canonical. It has no opening/closing campaign-state contract, cannot rebuild canon, allocates no identifiers, runs no promotion or validation barrier, and is never accepted by `/load`. `/export` remains the campaign-aware durable gameplay transcript. `/debug` remains the toggle for full roll mechanics.
 
 ---
 

@@ -12,6 +12,21 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-14 — Decision 064: hard no-target gate and exact cold-start catalog
+
+**Evidence:** The first post-Decision-063 `/chronicle` test still restored Prototype Beta, recapped its live scene, and invented `/checkpoint`, `/progress`, `/resume`, `/list`, and `/close` aliases while omitting canonical commands.
+**Bootstrap boundary:** Target parsing now precedes every campaign read. Bare `/ChronicleEngine` or alias may load engine files and selection metadata only; it cannot read campaign state, restore, reconcile, recap, or enter readiness. No active or recent campaign becomes an implicit target.
+**Catalog enforcement:** README now contains the exact cold-start command catalog and a closed-alias rule. No-target bootstrap renders that resident mirror instead of composing a catalog from memory. `/continue [world|campaign]` is reconciled across the table, guide, and selection prompt. `tools/test_runtime_command_catalog.ps1` mechanically rejects row drift among all three catalogs.
+**Documents:** README 1.1; Runtime Profile 1.27; Gameplay Start Guide 2.12; Decision 064.
+
+## 2026-07-14 — Decision 063: complete command catalog and chat debug export
+
+**Evidence:** A live no-argument `/chronicle` run auto-restored Prototype Beta, `/help` omitted canonical commands, and `/export` could not preserve the diagnostic chat because no gameplay session had started.
+**Bootstrap:** No-target `/ChronicleEngine` and aliases now stop at the engine boundary: load the boot set, render the complete command catalog and repository selection screen, and yield without loading campaign files, restoring state, or entering readiness.
+**Command discovery:** `/help` and every session-start catalog render every Runtime Command Table row and alias. State affects whether a command can execute, never whether the player can discover it; unmet requirements are labelled. Active-world commands are appended after campaign selection.
+**Debug/export split:** `/export` remains the campaign-scoped, recovery-capable gameplay transcript from Decision 061. `/export-debug [label]` writes a repository-level diagnostic transcript of the entire user-visible chat to `exports/debug/`, including pre-bootstrap chat and with no campaign required; hidden instructions and non-visible internals are excluded. `/debug` remains the full-roll-mechanics toggle.
+**Documents:** Runtime Profile 1.26; Gameplay Start Guide 2.11; README 1.0; Glossary updated.
+
 ## 2026-07-14 — Decision 062: World Rule Profile document class and placement
 
 **Context:** Decision 059 created the World Rule Profile; nothing said where it lives or what kind of document it is. Reikon's profile sat inside `205_THE_LEDGER.md`, whose header reads "narrative reference, not an Object-Block canonical ledger" while its body declares itself "the authoritative model for Reikon mana." Both claims were true — the header's binary was the error.

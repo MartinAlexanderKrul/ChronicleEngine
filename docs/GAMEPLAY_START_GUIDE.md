@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.10
+**Document Version:** 2.12
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -201,18 +201,17 @@ Do not close the conversation until the Runtime confirms whether canon was promo
 
 # Runtime Commands
 
-Once a session is running, you can drive it with short **runtime commands** instead of retyping a full prompt. These are out-of-character control verbs — the Runtime recognizes them at any point, including mid-scene, and answers them without advancing the story. They are a convenience over the prompts above; the prose prompts remain valid, and each command runs exactly the same procedure.
+Once the engine is loaded, you can drive it with short **runtime commands** instead of retyping a full prompt. These are available on the bootstrap selection screen as well as during a campaign; the Runtime recognizes them immediately, including mid-scene, and answers them without advancing the story. A command whose precondition is not met reports that requirement instead of being ignored or interpreted as play. They are a convenience over the prompts above; the prose prompts remain valid, and each command runs exactly the same procedure.
 
-**You do not have to memorize these.** At the start of every session — whether you began a new campaign, resumed from a checkpoint, forked, or restarted — the Runtime shows you a short menu of the commands available in that campaign, including any world-specific commands (a Reikon campaign, for example, lists `/system`). Type `/help` at any time to see the list again.
+**You do not have to memorize these.** `/ChronicleEngine` with no target starts the engine only and shows the complete catalog below without loading a campaign. At every campaign session start the Runtime shows the same complete runtime catalog plus all commands defined by that campaign's world (a Reikon campaign, for example, adds `/system`). Type `/help` at any time to see the complete list again; commands that need a campaign are labelled, not hidden.
 
 | Command | What it does |
 |---------|--------------|
 | `/ChronicleEngine [target]` | **Start here.** Boots the engine and shows a menu — the available commands plus your worlds and campaigns with each one's status and latest checkpoint — then **waits for you to pick** (it won't auto-load a campaign). Name a campaign or world to jump straight in. Aliases: `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`. Also in the root `README.md` so it works before any other file is loaded. |
-| `/help [command]` | List the commands, or explain one. |
+| `/help [command]` | With no argument, list every runtime command and alias without filtering; with an argument, explain that command. |
 | `/save [label]` | Checkpoint now. An optional label is recorded in the save manifest. |
 | `/end` | Close the session: promote canon, write a session-close checkpoint, print the report. |
-| `/continue` | Resume the campaign you played most recently, from its latest checkpoint. |
-| `/continue <world>` | Resume the latest campaign in that world. |
+| `/continue [world|campaign]` | Resume a named campaign, the latest campaign in a named world, or—without an argument—the campaign played most recently. |
 | `/new <world>` | Start a new campaign in that world. |
 | `/load <checkpoint>` | Restore a specific earlier checkpoint of the current campaign (continuing from it forks a new world-line). Won't load a checkpoint marked non-restorable. |
 | `/restart` | **Destructive — read this one.** Resets the campaign to its **baseline** (its very beginning) and replays from there, discarding everything played since. It is *not* "reload my last save" — that's `/continue`. It asks you to confirm first, and won't run at all if the campaign has no baseline checkpoint. |
@@ -225,8 +224,11 @@ Once a session is running, you can drive it with short **runtime commands** inst
 | `/status` | Your out-of-character progress view (tiers, level, experience log). |
 | `/validate` | Run repository validation and report the result. |
 | `/debug` | Toggle the fuller mechanical breakdown on rolls. Off by default. |
+| `/export-debug [label]` | Export the entire current chat for diagnosis, including messages before the engine started. Works without a loaded game and writes under `exports/debug/`. This is not a campaign export, canon, or a save. |
 
 `/save`, `/end`, `/continue`, and `/new` run the full Save Algorithm, Gameplay Close, and initialization procedures — the same guarantees (promotion barrier, validation gate, read-back, readiness gate) apply whether you invoke them by command or by prompt.
+
+`/export` preserves campaign play with recovery data; `/export-debug` preserves the surrounding chat even when no campaign is loaded.
 
 **Runtime commands are reserved and engine-general** — they mean the same thing in every world. A world may also define its own **diegetic commands**, which are in-fiction and world-specific: Reikon's `/system`, for example, opens a character's in-world System interface. If a world's diegetic command ever shares a name with a runtime command, the runtime command wins. The full specification is in the Gameplay Runtime Profile.
 

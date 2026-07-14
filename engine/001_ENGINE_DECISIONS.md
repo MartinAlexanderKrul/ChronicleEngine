@@ -2869,6 +2869,84 @@ Rules Section 14.3 continues to govern. A profile may replace fictional behavior
 
 ---
 
+## Decision 063 — Complete Command Discovery and Campaign-Independent Chat Debug Export
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** Decision 056 (Runtime Command Interface); Decision 061 (Session Export); `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Runtime Command Interface, Chat Debug Export); `README.md` (bootstrap)
+
+### Context
+
+A live no-argument `/chronicle` run restored Prototype Beta and entered its readiness gate instead of stopping at engine selection. Its later `/help` response omitted commands and improvised descriptions rather than rendering the command table. `/export` correctly found no active gameplay session, but there was no command to preserve the surrounding chat for diagnosis. That diagnostic export needs its own name so `/export` keeps its gameplay guarantee and `/debug` keeps its established roll-detail meaning.
+
+The failures share one boundary problem: engine bootstrap, campaign session, and substrate conversation were treated as one scope. They are three scopes. Bootstrap can exist without campaign selection; the command catalog exists regardless of command availability; and a conversation can be diagnostically valuable without being gameplay.
+
+### Decision
+
+1. **No-argument bootstrap stops at the engine boundary.** `/ChronicleEngine` and its aliases load the engine boot set, render the selection screen, and yield. They do not load campaign files, restore or reconcile campaign state, or begin a campaign readiness gate until the player selects a target. This tightens Decision 056's existing no-auto-load rule at its operational boundary.
+2. **Command discovery is complete, never state-filtered.** The no-argument bootstrap screen, every session-start catalog, and `/help` with no argument render every runtime-command row and alias from the canonical Command Table. Commands whose preconditions are not met remain visible and are labelled with their requirements. An active world's complete diegetic command set is appended after campaign selection. `/help <command>` renders the selected row in full.
+3. **`/export-debug` is the campaign-independent Chat Debug Export.** It exports the entire user-visible current conversation, including pre-bootstrap messages, whether or not a campaign is loaded. Hidden instructions, internal reasoning, credentials, and non-visible tool traffic are excluded. The file is repository-scoped under `exports/debug/`, diagnostic, non-canonical, and never a save or restoration source. It truthfully records any substrate visibility limit.
+4. **`/export` remains campaign-scoped.** It retains Decision 061's gameplay-transcript sufficiency contract and requires a campaign session because it records opening state, resolutions, identifiers, promotions, and closing state. `/export-debug` does not imitate or weaken that contract.
+5. **`/debug` retains its established meaning.** It toggles the fuller mechanical breakdown for rolls and is off by default. The new export command does not alter roll presentation.
+
+### Rationale
+
+- A list intended for discovery cannot hide operations based on state; hiding them makes the interface unknowable precisely when the player needs navigation.
+- Rendering one authoritative table prevents the observed drift between the specified and narrated command behavior.
+- A substrate conversation and a gameplay transcript have different evidentiary purposes. Giving each its own command preserves the recovery guarantees of `/export` while making failed startup interactions exportable.
+- The no-argument bootstrap is an engine entry point, not shorthand for `/continue`; keeping that boundary hard preserves player choice.
+
+### Consequences
+
+- The Gameplay Runtime Profile advances to 1.26, the Gameplay Start Guide to 2.11, and the README receives its first formal document version, 1.0.
+- `README.md` 1.0 explicitly prohibits campaign-file loading and readiness work during no-target bootstrap.
+- Session-start command menus may be longer, but they are deterministic and complete. Concision applies within each row, not by omitting rows.
+- `/export-debug` is added to the Runtime Command Table; `/debug` remains the roll-detail toggle.
+- A new repository-level `exports/debug/` directory may be created at runtime. It is outside canon and campaign validation.
+
+### Alternatives Considered
+
+- **Let `/export` fall back to chat export when no campaign is active.** Rejected: one command would then produce artifacts with incompatible sufficiency and recovery guarantees depending on hidden state.
+- **Keep a compact startup menu and make only `/help` complete.** Rejected: the observed failure began at bootstrap, before the player had a reliable reason to trust or invoke `/help`.
+- **Repurpose `/debug` for chat export.** Rejected: it breaks an established command unnecessarily and makes a diagnostic transcript less discoverable than the explicit `/export-debug` name.
+
+---
+
+## Decision 064 — Cold-Start No-Target Gate and Exact Catalog Mirror
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** Refines Decision 063; `README.md` (Play Chronicle Engine, Exact cold-start command catalog); `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Bootstrap Command, Bootstrap Selection Screen)
+
+### Context
+
+The first live test after Decision 063 still auto-restored Prototype Beta on bare `/chronicle`. It then produced an incomplete, malformed command catalog and invented aliases (`/checkpoint`, `/progress`, `/resume`, `/list`, `/close`) absent from the canonical Command Table. The no-auto-load rule existed, but it fired too late: the bootstrap prose first described starting or resuming gameplay and told the Runtime to load engine and campaign procedure before making the no-target distinction. The catalog rule also required a render from a table available only after profile loading, leaving cold-start output open to paraphrase.
+
+### Decision
+
+1. **Target parsing is the first bootstrap operation.** Before reading any campaign file, the Runtime determines whether `/ChronicleEngine` or its alias contains an explicit target.
+2. **The No-Target Gate is a hard read boundary.** With no target, campaign startup files, ledgers, checkpoints, world state, restoration, reconciliation, recap, and readiness procedures are prohibited. The Runtime may read the engine boot set and repository metadata needed to list worlds and campaigns. It renders the selection screen and yields.
+3. **No campaign is an implicit argument.** Recency, active status, a sole candidate, or prior conversation context never supplies a missing bootstrap target. Bare `/chronicle` is not `/continue`.
+4. **README carries an exact cold-start catalog mirror.** Because README is the cold-start-resident document, it mirrors every Runtime Command Table row in a renderable player-facing table. No-target bootstrap renders this table rather than recalling, regrouping, or paraphrasing commands.
+5. **Command names and aliases are closed.** Only names and aliases explicitly present in the canonical table are valid. The Runtime does not invent convenience aliases. The README mirror and Runtime Command Table must remain synchronized.
+6. **`/continue` syntax is reconciled.** `/continue [world|campaign]` accepts no argument, a world, or a campaign, matching the bootstrap selection prompt and resolution rules.
+
+### Consequences
+
+- README advances to 1.1, Gameplay Runtime Profile to 1.27, and Gameplay Start Guide to 2.12.
+- Cold-start instructions say “start the engine,” not “start or resume a game.” Campaign loading is conditional on an explicit target or later player selection.
+- The README intentionally duplicates the command catalog. This duplication is an enforcement surface required by cold-start residency, not a second source of command semantics; the profile remains canonical and the mirror must match it.
+- `tools/test_runtime_command_catalog.ps1` mechanically compares command rows across the Runtime Profile, README mirror, and Gameplay Start Guide and rejects drift.
+- A no-target response that contains campaign state, a recap, restoration language, or a readiness gate is a failed bootstrap even if it later asks the player whether to continue.
+
+### Alternatives Considered
+
+- **Rely on stronger prose pointing to the profile table.** Rejected by the live test: the Runtime loaded and then improvised rather than rendering.
+- **Remove aliases entirely.** Rejected: the documented bootstrap and checkpoint aliases are useful and not the source of failure; invention beyond the closed set is.
+- **Treat the restored campaign as harmless preloading while waiting for confirmation.** Rejected: reading and presenting campaign state already crosses the player-choice boundary and leaks campaign context into what must be an engine-only screen.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

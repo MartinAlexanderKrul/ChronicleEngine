@@ -11,7 +11,8 @@ A durable, Canonical-Record form of this index is proposed engine work (Nonconfo
 | Checkpoint | Captured | Status | Restorable |
 |------------|----------|--------|------------|
 | `900_CHECKPOINT_001/` | 2026-07-13 | **Quarantined — nonconforming** | **No** |
-| `900_CHECKPOINT_0002/` | 2026-07-14 | Conforming; verified against transcript | **Yes — current restore point** |
+| `900_CHECKPOINT_0002/` | 2026-07-14 | Conforming; verified against Session 1 transcript | Yes — prior restore point |
+| `900_CHECKPOINT_0003/` | 2026-07-14 | Conforming; recovered from owner-supplied raw Session 2 chat | **Yes — current restore point** |
 
 There is **no baseline checkpoint** for this campaign. See below.
 
@@ -33,11 +34,19 @@ Created during Session 1. It is preserved intact as evidence and must not be res
 
 **Why it is kept.** It is the primary evidence that the save layer has no mechanical gate — `tools/validate_repository.ps1` excludes `saves/` entirely — and it is the exhibit for the proposed checkpoint-validation and quarantine work. Deleting it would destroy that evidence while changing nothing: the bytes remain in git history regardless. Nonconforming records are quarantined and explained, not erased (Decision 038; Data Model Section 7.2, which names *forged* as a category of historical evidence).
 
-## `900_CHECKPOINT_0002/` — current restore point
+## `900_CHECKPOINT_0002/` — prior restore point
 
 The first conforming checkpoint for this campaign. Captures verified live state at the pack-leader standoff: Daedalus at Level 1, 36/100 XP, full health and mana, roughly 40–50 metres from the pack leader, with the Warehouse 7 clear in progress.
 
 Manifest `REC-000046`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` and the Rules Section 13.3 minimum. Contains full copies of all eight canonical ledgers. Records no self-assessed validation result.
+
+It remains restorable but is no longer current; continuing from it creates a fork from before the pack-leader combat.
+
+## `900_CHECKPOINT_0003/` — current restore point
+
+Captures the recovered post-pack-leader state under Reikon World Rule Profile 0.2: pack leader dead, surviving Broodlings retreating, Daedalus at Health 60/100, Mana 5/13, and XP 55/100, with his omitted morning physical training recorded as qualitative capability state.
+
+Manifest `REC-000047`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` and the Rules Section 13.3 minimum. Contains full copies of all eight canonical campaign ledgers and records no self-assessed validation result.
 
 ---
 
@@ -49,6 +58,6 @@ Decision 053 requires every campaign to carry a baseline checkpoint (`900_CHECKP
 
 This is sharpened by a defect observed in `../exports/play_export_0002.md`, where the Runtime's improvised `/help` described `/restart` as "Restart from latest checkpoint." The Gameplay Runtime Profile defines it as the opposite — reset the campaign to its baseline. A player trusting that help text on this campaign would invoke an undefined destructive reset.
 
-`/branch` (Fork) and `/load` are unaffected and operate normally against `900_CHECKPOINT_0002/`.
+`/branch` (Fork) and `/load` are unaffected and operate normally against the restorable checkpoints.
 
 Two options remain open and neither has been chosen: reconstruct a baseline from `CHECKPOINT_000.md` plus git history and label it a derived reconstruction, or record that Redo is permanently unavailable for this campaign. Pending owner decision.

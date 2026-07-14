@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.12
+**Document Version:** 2.13
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -224,11 +224,13 @@ Once the engine is loaded, you can drive it with short **runtime commands** inst
 | `/status` | Your out-of-character progress view (tiers, level, experience log). |
 | `/validate` | Run repository validation and report the result. |
 | `/debug` | Toggle the fuller mechanical breakdown on rolls. Off by default. |
-| `/export-debug [label]` | Export the entire current chat for diagnosis, including messages before the engine started. Works without a loaded game and writes under `exports/debug/`. This is not a campaign export, canon, or a save. |
+| `/export-debug [label]` | Export the raw current chat for diagnosis: only `User`/`Assistant` labels and each displayed message exactly as written, with no turn structure, summaries, mechanics tables, or reconstructed state. Works without a loaded game and writes under `exports/debug/`. This is not a campaign export, canon, or a save. |
 
 `/save`, `/end`, `/continue`, and `/new` run the full Save Algorithm, Gameplay Close, and initialization procedures — the same guarantees (promotion barrier, validation gate, read-back, readiness gate) apply whether you invoke them by command or by prompt.
 
 `/export` preserves campaign play with recovery data; `/export-debug` preserves the surrounding chat even when no campaign is loaded.
+
+With `/debug` off, rolls stay inside the story: one compact die tag and narrative consequences. Difficulty calculations, modifier lists, grounding checks, effective-result math, and state-update reports are hidden. Tracked costs, recovery, damage, and XP are still settled after every exchange; hiding mechanics never delays state changes.
 
 **Runtime commands are reserved and engine-general** — they mean the same thing in every world. A world may also define its own **diegetic commands**, which are in-fiction and world-specific: Reikon's `/system`, for example, opens a character's in-world System interface. If a world's diegetic command ever shares a name with a runtime command, the runtime command wins. The full specification is in the Gameplay Runtime Profile.
 

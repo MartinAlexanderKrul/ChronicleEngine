@@ -1,9 +1,9 @@
-# Reikon — World Rule Profile 0.1
+# Reikon — World Rule Profile 0.2
 
 **File:** `worlds/reikon/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
-**Profile Version:** 0.1
+**Profile Version:** 0.2
 **Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Status:** Active
 
@@ -138,6 +138,10 @@ One band per ~20 levels, and Level 90 lands in S — making the world's existing
 - **Rift cores:** consuming a core restores mana quickly (quantity by grade) and is dangerous.
 
 Recovery **does not scale with the pool**. Deep pools take proportionally longer to refill, which is why high-Rank hunters carry potions and low-Rank hunters carry patience.
+
+**Recovery settlement is mandatory after every exchange.** Record the exchange's elapsed fictional seconds and its mode (`resting` or `active`). Add those seconds to `mana_recovery_remainder_seconds`; grant `floor(total / interval)` mana up to maximum, then retain `total mod interval` for the next exchange. The interval is 10 seconds resting or 30 seconds active. Changing mode first settles the old mode's accumulated time, then starts the new interval at zero. At full mana the remainder is zero.
+
+This remainder is canonical Bearer state because without it three ten-second combat exchanges can disagree with one thirty-second exchange. A Runtime never estimates recovery only when `/system` is opened and never waits for the player to ask. It settles recovery before rendering the response and before the next action checks available mana.
 
 ## 3.4 Running Dry
 
@@ -366,6 +370,8 @@ A challenge's XP award rides the same ×2.75 ladder as everything else:
 
 E-grade baselines, as established canon: **Broodling ≈ 6, Swarmer ≈ 8**. Clearing a Rift core awards a larger milestone sum.
 
+**Award timing is immediate.** The exchange that resolves the challenge also adds its XP to canonical in-flight state, checks the threshold, and fires the notification defined in Section 9.5. There is no pending-XP state and no later `/system` reconciliation. If several creatures are resolved by one action, aggregate that action's award and notify once.
+
 Against the threshold curve, grade-appropriate content costs **~11 to ~93 kills per Ascension, averaging ~40**, across the whole span from Level 1 to Level 90 — no runaway and no wall at any Rank.
 
 **The variance is the design, not noise in it.** Within a band the threshold keeps climbing while the award stays flat, so the grind tightens the longer he stays: cheap just after a band crossing, punishing just before the next. The pressure resolves upward. One grade up pays **×2.75** for a **−1 step** — so the moment his own band turns grindy, the arithmetic pushes him toward things that can kill him. That is the world doing the work: he cannot level without real ordeal because staying safe stops paying.
@@ -411,6 +417,9 @@ The System never decides what is true. It may decide **when to say it**.
 
 **Tier 1 — Mandatory.** A pure function of Bearer state. Zero discretion; fires the instant the condition holds.
 
+- Mana spent or recovered → compact current-Mana notice
+- Health lost or restored → compact current-HP notice
+- XP awarded → compact current-XP notice
 - XP threshold crossed → Ascension announcement
 - Quest completed or failed → resolution notice
 - Quest deadline lapsed → notice
@@ -446,11 +455,25 @@ The System is perceptible **only to its Bearer** — always, without exception. 
 
 **The quest is secret; its footprint is not.** If a daily quest puts Daedalus on the docks at dawn, the world sees a man on the docks at dawn. What is hidden is the quest, never its consequences — otherwise the System would become a cloaking device and the world could no longer react to him at all.
 
+## 9.5 Compact State Notifications
+
+For ordinary numeric changes, the System notification is a one-time current-value line rendered **after the narrative consequence**:
+
+```text
+Mana <current>/<maximum>
+HP <current>/<maximum>
+XP <current>/<next threshold>
+```
+
+Render each changed quantity at most once per resolved player action. Show the final settled value only—no arrows, before/after values, equations, costs, recovery-rate explanation, headings, status table, or repeated reminder later in the response. If one action changes Mana, HP, and XP, show three compact lines once each. If elapsed recovery and spending occur within the same action, settle both and show one final Mana line. Waiting or resting across a narrated span likewise produces one final Mana line, not one line per recovery tick.
+
+Warnings, Ascensions, and quest notices retain their declared content because they communicate more than a numeric change. A full `/system` render is separate and never duplicates a notification already emitted in the same response.
+
 ---
 
 # 10. Canonical `/system` Render Template (normative)
 
-`/system` renders **exactly** this structure. The layout is fixed: do not restyle it, rename or reorder sections, add or drop sections, or vary it between sessions or substrates. Only the *values* change as canon advances; the *format* never does.
+`/system` renders **exactly** this structure. The layout is fixed: do not restyle it, rename or reorder sections, add or drop sections, or vary it between sessions or substrates. Only the *values* change as canon advances; the *format* never does. **INVENTORY is mandatory on every render** and is populated from the campaign's live Inventory and Ownership ledger; “inventory unchanged,” a partial item summary, or omission is not a conforming `/system` response.
 
 ```
 ═══════════════════════════════════════════════════════════════
@@ -466,7 +489,7 @@ STATS                           SKILLS & ABILITIES
   Mana Affinity: <n>/20
   Perception:    <n>/20
 ───────────────────────────────────────────────────────────────
-INVENTORY (<used>/<cap>)         QUESTS
+INVENTORY                        QUESTS
   • <item> [x<n>]                 [MAIN] <objective>
   • …                            [SIDE] <objective>
   • <n> cores                    [REPEATABLE] <objective>
@@ -484,15 +507,15 @@ These rules make the window **deterministic**: the same canonical character stat
 2. **Vitals line — fixed field order:** `Official Rank | Level | XP | Health | Mana`. XP is `current / next threshold` per Section 8.1. Health and Mana are `current / max`.
 3. **Condition line is always shown.** With no active effects it reads `Condition: Normal`.
 4. **STATS — fixed order, always five:** Power, Endurance, Speed, Mana Affinity, Perception, each `score/20`.
-5. **SKILLS & ABILITIES** in character-ledger order. Levelled entries show `(Lv <n>)`; passives show `(Passive)`.
-6. **INVENTORY** header shows `(<items used>/<capacity>)`. Ledger order; stacks as `x<n>`; **cores** as the final line. Each canonical item once.
+5. **SKILLS & ABILITIES** combines trained physical/non-System skills from the character's `canonical_state.capabilities.trained_skills` followed by System Abilities in character-ledger order. Trained skills show their qualitative proficiency (for example, `Swordsmanship (Foundational)`); levelled System entries show `(Lv <n>)`; passives show `(Passive)`. Training is never discarded merely because it is not a System Ability.
+6. **INVENTORY** reads the live `120_INVENTORY_AND_OWNERSHIP.md` on every render. Ledger order; stacks as `x<n>`; **cores** as the final line. Each carried canonical item once. Never invent a slot count that the ledger does not define, replace the list with “unchanged,” or omit it because inventory is stored outside the character ledger.
 7. **QUESTS** use fixed tags `[MAIN] [SIDE] [REPEATABLE] [HIDDEN]`, MAIN first. A hidden quest whose content the character does not know renders `???` (Section 9.2).
 8. **Empty sections still render** — a single `—` under the header; never omit a section.
 9. **In-fiction only.** No repository identifiers, object types, engine terms, or validation output ever appear inside the window (Information Boundary; Decision 051).
 
 ## Worked Example — Daedalus at Character Creation
 
-From `campaigns/reikon_awakening_001/100_CHARACTER_SHEET.md`:
+Historical initialization example for Daedalus (not his current campaign state):
 
 ```
 ═══════════════════════════════════════════════════════════════
@@ -508,12 +531,13 @@ STATS                           SKILLS & ABILITIES
   Mana Affinity: 13/20            • Reinforced Body (Passive)
   Perception:    14/20            • Endurance Surge (Lv 1)
 ───────────────────────────────────────────────────────────────
-INVENTORY (6/10)                 QUESTS
+INVENTORY                        QUESTS
   • License (E-Rank)             [MAIN] Clear Warehouse 7 Rift
   • Sword                        [REPEATABLE] Daily Scout
   • Repair Kit                   [HIDDEN] ???
   • Potion x3
   • Rope
+  • Evacuation Stone
   • 50 cores
 ───────────────────────────────────────────────────────────────
 PATHS & MARKS: None yet
@@ -538,6 +562,8 @@ system:
   awakening_health: <n>                     # basis for max_health (7.1)
   awakening_endurance: <n>                  # basis for max_health (7.1)
   current_mana: <n>
+  mana_recovery_mode: <resting|active>
+  mana_recovery_remainder_seconds: <0..29>  # canonical carry between active recovery exchanges
   current_health: <n>
   stats:                                    # hard cap 20 each (4.2)
     power: <n>
@@ -553,8 +579,8 @@ system:
 
 **What is recorded and what is not.**
 
-Recorded: **allocations and Awakening basis values only.** Those are the facts that cannot be recomputed.
+Recorded: **allocations, Awakening basis values, current pools, and the mana-recovery remainder.** Those are the facts that cannot be recomputed from static character state.
 
 Never recorded: `max_mana`, `max_health`, ability `cost`, ability `level`, `magnitude`, `next_threshold`, effective band. Every one is derived from the allocations above and the formulas in this document. Storing any of them creates a second representation that can drift from its source — the exact failure Decision 051 forbids and Section 10 rule 1 restates.
 
-`current_mana` and `current_health` **are** recorded, because they are not derivable: they are the result of play.
+`current_mana`, `mana_recovery_remainder_seconds`, and `current_health` **are** recorded, because they are not derivable: they are the result of play.

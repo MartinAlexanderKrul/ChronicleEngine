@@ -2,7 +2,7 @@
 
 **Class:** Narrative world-layer reference. Not a canonical ledger, not world rule content.
 **Status:** Active — instantiated as canonical world content (2026-07-13).
-**Rules:** `206_WORLD_RULE_PROFILE.md` — Reikon World Rule Profile 0.1
+**Rules:** `206_WORLD_RULE_PROFILE.md` — Reikon World Rule Profile 0.2
 
 ---
 
@@ -378,7 +378,7 @@ Rare cores can be transformed into unique weapons, armor, and ability-enhancing 
 The mechanics are in `206_WORLD_RULE_PROFILE.md`. This is the posture.
 
 - **The System belongs to the Bearer alone.** Never surface it for any other character, and never let another character see, detect, or be shown it. For every hunter but him there is no interface — do not narrate one, and do not let ordinary NPCs speak in levels or XP, because they have neither.
-- **Surface it diegetically and inline** for its Bearer (Decision 057): mana costs and XP gains in-world as they happen, the full window on `/system`, a felt Ascension. Keep it in-fiction — it is his native perception, not an out-of-character dashboard.
+- **Surface it diegetically and inline** for its Bearer (Decision 057): after the narrative, each changed Mana, HP, or XP value appears once in the compact current-value format declared by `206` Section 9.5; the full window appears on `/system`. Keep it in-fiction — it is his native perception, not an out-of-character dashboard.
 - **Let it act on its own initiative**, within its declared triggers (`206` Section 9.3). It is not a passive readout waiting to be opened. Interjecting is a world reaction and costs no player opportunity; putting a choice to him is a Player Decision Point, so yield there. Never author his answer.
 - **It never lies and never resolves an action.** It is honest about him, silent about the world's secrets, and it never decides an uncertain outcome — the die does (`206` Sections 6.1, 9.2).
 - **Compute, never estimate.** Mana, XP, level, pool, and Health are tracked canonical state, and every one of them has a formula. A plausible-looking number is a wrong number.

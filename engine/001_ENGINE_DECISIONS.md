@@ -2947,6 +2947,46 @@ The first live test after Decision 063 still auto-restored Prototype Beta on bar
 
 ---
 
+## Decision 065 — Per-Exchange State Settlement and Literal Diagnostic Export
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Information Boundary, Turn-State Settlement, Chat Debug Export); `worlds/reikon/206_WORLD_RULE_PROFILE.md` 0.2; Decisions 042, 057, 059, 061, 063
+
+### Context
+
+A Reikon continuation exposed seven connected execution failures. `/system` omitted or summarized inventory despite a canonical inventory section. `/export-debug` reconstructed the conversation into turn summaries instead of preserving messages. Mana recovery and XP awards existed as rules but did not fire until the player challenged stale values. Debug-off play still printed intent declarations, grounding checks, difficulty and modifier analysis, and state-update reports. Mana and Health changes were repeated in verbose transition blocks. A wounded opponent was assigned a negative modifier to Daedalus even though the wound helped his intent. Finally, physical training present in the prior transcript had not reached the canonical capability field, so the next session denied that it happened.
+
+These were not seven missing mechanics. They were missing enforcement points between resolution, state, presentation, and promotion.
+
+### Decision
+
+1. **Every resolved exchange has a settlement phase.** Before yielding, the Runtime applies costs and damage, elapsed-time recovery, resolved-challenge rewards, and resulting conditions to in-flight state. The next turn and every diegetic status command read the settled state.
+2. **World profiles may require canonical recovery carry.** Reikon records recovery mode and sub-interval seconds so recovery is invariant to how a Runtime divides one span into responses.
+3. **Rewards are immediate.** Reikon XP is awarded in the exchange that resolves the challenge. There is no pending-XP state and no player prompt is required.
+4. **Debug-off resolution is narrative.** Only a compact die tag may expose mechanics. Intent declarations, grounding checks, difficulty/modifier lists, calculations, result bands, and state-update reports are prohibited outside debug mode; their fictional causes belong in narration.
+5. **Modifier polarity is actor-relative.** Positive helps the acting intent; negative hinders it. An opponent's wound is favorable to the actor. Debug output uses one actor-relative list and performs a polarity check before rolling.
+6. **Reikon numeric notifications are one-shot current values.** After narration, each changed Mana, HP, or XP quantity renders once as `Mana current/max`, `HP current/max`, or `XP current/threshold`. No arrows, equations, tick spam, or repeated status block.
+7. **`/system` inventory is mandatory.** It reads the live Inventory and Ownership ledger and lists each carried item; “inventory unchanged,” a partial summary, or omission is nonconforming.
+8. **`/export-debug` is literal and minimally labelled.** Its file contains only repeated visible role labels and exact displayed message bodies. No metadata, turn structure, summaries, reconstructed mechanics, or final-state section. `/export` retains the structured recovery contract.
+9. **Training is capability state.** Completed physical practice and demonstrated technique are recorded qualitatively in the character's `capabilities`, with event provenance. System XP/Ability levels do not replace ordinary skill development.
+
+### Consequences
+
+- Gameplay Runtime Profile advances to 1.28; Gameplay Start Guide to 2.13; README to 1.2.
+- Reikon World Rule Profile advances to 0.2 and adds deterministic recovery settlement, mandatory reward timing, compact notifications, inventory-complete `/system`, and trained-skill rendering.
+- Daedalus's omitted morning training and supplied pack-leader session are re-promoted into live campaign canon as `EVT-000029` and `EVT-000030`; a conforming Checkpoint 0003 captures the repaired state.
+- `tools/test_reikon_runtime_contract.ps1` checks the settlement, export, notification, inventory, repaired-state, and checkpoint-read-back contracts.
+- Debug export becomes deliberately unsuitable for canon reconstruction. That is the point: `/export-debug` preserves what the user saw; `/export` preserves structured gameplay evidence.
+
+### Alternatives Considered
+
+- **Correct mana and XP only when `/system` opens.** Rejected: subsequent actions may already have resolved against stale resources.
+- **Show before/after arrows for clarity.** Rejected for ordinary System notifications: the player asked for diegetic one-shot current state, and the narrative already carries the cause.
+- **Treat one training session as no capability.** Rejected: it need not grant mastery to be true. Qualitative foundational practice and later demonstrated use are exactly what capability provenance exists to preserve.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

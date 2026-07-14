@@ -922,7 +922,7 @@ A runtime command is engine-general (it means the same thing in every world), is
 
 ## Chat Debug Export
 
-A repository-level, non-canonical transcript of the user-visible current conversation produced by `/export-debug`, including conversation before campaign selection and available even when no game is in progress. Hidden instructions and non-visible internals are excluded. It carries no gameplay-export sufficiency contract, cannot rebuild canon, and is never a save or restoration source. Stored under `exports/debug/`. Distinct from a [Session Export](#session-export), which is campaign-scoped and recovery-capable. Defined by Decision 063 and the Gameplay Runtime Profile.
+A repository-level, non-canonical **raw** transcript of the user-visible current conversation produced by `/export-debug`, including conversation before campaign selection and available even when no game is in progress. Its file contains only visible role labels and exact displayed message bodies—no metadata, turn reconstruction, summaries, mechanics tables, or closing-state report. Hidden instructions and non-visible internals are excluded. It carries no gameplay-export sufficiency contract, cannot rebuild canon, and is never a save or restoration source. Stored under `exports/debug/`. Distinct from a [Session Export](#session-export), which is campaign-scoped, structured, and recovery-capable. Refined by Decision 065 and the Gameplay Runtime Profile.
 
 ---
 

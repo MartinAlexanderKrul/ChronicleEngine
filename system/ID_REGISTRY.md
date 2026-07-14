@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000064 |
-| Record | `REC-` | Canonical Record | REC-000046 |
-| Event | `EVT-` | Event | EVT-000028 |
+| Record | `REC-` | Canonical Record | REC-000047 |
+| Event | `EVT-` | Event | EVT-000030 |
 | Relationship | `REL-` | Relationship | REL-000044 |
 
 ---
@@ -64,10 +64,12 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000051 - ENT-000060 | Entity | Campaign Reikon Awakening (`campaigns/reikon_awakening_001/`), Checkpoint 001: Daedalus (player character), 2x Broodling, 3x Swarmer, and inventory items (license, sword, repair kit, potions, rope, evacuation stone, cores). Defined in the Checkpoint 001 snapshot; see remediation note below |
 | REC-000035 - REC-000037 | Record | Reikon Awakening Checkpoint 001: record identifiers consumed (high-water advanced to REC-000037) for the Session 1 campaign ledgers (chronicle, objectives, inventory ownership). The individual records were not separately defined; the numbers are retired under never-reuse (Invariant 3). See remediation note below |
 | EVT-000025 - EVT-000028 | Event | Reikon Awakening Session 1 gameplay: expedition begin (025), first combat / broodling kills (026), mana recovery and observation (027), swarmer combat (028). Defined in the Checkpoint 001 snapshot; see remediation note below |
+| EVT-000029 - EVT-000030 | Event | Reikon Awakening transcript repair and Session 2 promotion: omitted morning physical training (029), pack-leader combat and resulting state (030) |
 | ENT-000061 - ENT-000064 | Entity | Reikon Awakening live Data Model migration: Dr. Kael Venn, Captain Marissa Thorne, Lysander, and Warehouse 7 E-Rift |
 | REC-000038 - REC-000045 | Record | Reikon Awakening standard live campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180) |
 | REL-000040 - REL-000044 | Relationship | Reikon Awakening: Authority membership, Institute affiliation, and Daedalus's three established contacts |
 | REC-000046 | Record | Reikon Awakening `saves/900_CHECKPOINT_0002/900_SAVE_MANIFEST.md` — the first conforming checkpoint manifest, superseding the quarantined Checkpoint 001 |
+| REC-000047 | Record | Reikon Awakening `saves/900_CHECKPOINT_0003/900_SAVE_MANIFEST.md` — recovered post-pack-leader restore point under World Rule Profile 0.2 |
 
 ---
 

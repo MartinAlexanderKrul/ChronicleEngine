@@ -12,6 +12,15 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-14 — Decision 065: settle every exchange; literal debug export; repair Reikon state
+
+**Evidence:** Owner-supplied `export_debug_reikon_awakening_001.md` and `full_chat_export_reikon_session.md` show stale mana and XP until challenged, mechanical narration with debug off, inverted wound polarity, repeated state blocks, structured reconstruction in `/export-debug`, incomplete `/system` inventory behavior, and forgotten sword training.
+**Runtime:** Profile 1.28 adds resident Turn-State Settlement, actor-relative polarity, and a hard narrative boundary for debug-off rolls. `/export-debug` now emits only visible speaker labels plus exact message bodies; `/export` remains structured.
+**Reikon 0.2:** Recovery mode/remainder is canonical, recovery and XP settle every exchange, Mana/HP/XP notifications show one final current value after narration, `/system` must read and list live inventory, and trained physical skills render alongside System Abilities.
+**Campaign repair:** Promoted omitted morning training as `EVT-000029` and the supplied pack-leader session as `EVT-000030`; Daedalus is at HP 60/100, Mana 5/13, XP 55/100 with a moderate shoulder/collarbone wound, foundational demonstrated Swordsmanship, and the pack leader dead. Checkpoint 0003 becomes the current restore point.
+**Enforcement:** `tools/test_reikon_runtime_contract.ps1` checks the runtime/profile clauses, repaired values, inventory/sword state, and byte identity of every Checkpoint 0003 ledger against live canon.
+**Documents:** README 1.2; Gameplay Start Guide 2.13; Decision 065.
+
 ## 2026-07-14 — Decision 064: hard no-target gate and exact cold-start catalog
 
 **Evidence:** The first post-Decision-063 `/chronicle` test still restored Prototype Beta, recapped its live scene, and invented `/checkpoint`, `/progress`, `/resume`, `/list`, and `/close` aliases while omitting canonical commands.

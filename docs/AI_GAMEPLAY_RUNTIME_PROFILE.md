@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.27
+**Document Version:** 1.28
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -275,9 +275,30 @@ Player-facing narration includes only information the character could reasonably
 
 Do not expose identifiers, repository paths, object types, Knowledge-State terminology, Canonical Records, validation output, hidden motives, or architecture details unless the player explicitly requests an out-of-character technical explanation.
 
-The one deliberate exception during play is the action-resolution roll, surfaced as a compact D&D-style tag (`🎲 d100: 72 — success`). In normal play the tag is minimal — the roll, the outcome, and at most a short parenthetical reason where it aids clarity: `🎲 d100: 80 — failure (untrained, opponent stronger)`. Never surround it with engine-procedure narration, band names, difficulty math, or descriptions of your own rule-compliance. The player sees a die result, not a rules seminar.
+The one deliberate exception during play is the action-resolution roll, surfaced as a compact D&D-style tag (`🎲 d100: 72 — success`). In normal play the tag is minimal — the roll, the outcome, and at most a short **narrative** reason where it aids clarity: `🎲 d100: 80 — failure (the creature catches you off balance)`. Never surround it with engine-procedure narration, band names, difficulty math, modifier lists, inventory/grounding checks, declarations such as "setting difficulty" or "rolling now," or descriptions of rule compliance. Do not print headings such as `Resolution Sequence`, `Difficulty`, `Modifiers for`, `Modifiers against`, `Net modifier`, `Raw roll`, `Effective result`, `Result band`, `Canon state update`, or `Current state update`. Those calculations still happen internally; their fictional causes appear naturally in the narration. The player sees the attempt and its consequences, not a rules seminar.
 
 The fuller mechanical breakdown — difficulty, the modifiers applied, band boundaries, the resolution steps — is a **testing/debug mode**, shown when the player enables `/debug` or explicitly asks for it while validating the engine. It is never the default; in ordinary play none of it appears.
+
+## Modifier Polarity Is Always Actor-Relative
+
+Every resolution establishes one acting intent before composing modifier steps. **Positive steps help that intent succeed; negative steps hinder it.** Classify the circumstance by its effect, not by who possesses it. An opponent who is wounded, slowed, blinded, pinned, or distracted is an advantage to the actor and therefore contributes a **positive** step; hazardous ground under the actor, the actor's wound, or an alert opponent contributes a negative step.
+
+In debug mode, use one actor-relative list (`Effect on <actor>'s intent`) rather than separate "for" and "against" lists whose signs can invert. Before rolling, perform a polarity check: restate each signed circumstance as "this makes the acting intent more/less likely." If the sentence and sign disagree, correct the sign before resolution.
+
+---
+
+# Turn-State Settlement
+
+After every resolved exchange and before yielding, settle all tracked state that changed during that exchange. This is a **resident per-turn obligation**, not work deferred to `/system`, an OOC correction, `/save`, or session close.
+
+1. Apply immediate costs and harm caused by the resolution (spent resources, Health damage, conditions, item use).
+2. Account for the in-world time the narrated exchange consumed. Apply every deterministic time-based rule, including active/resting resource recovery, and carry any sub-interval remainder required by the active world profile.
+3. If the exchange completed training or demonstrated a technique, update qualitative capability/training state now with what was actually practiced or demonstrated. One session may establish familiarity or foundational practice without granting mastery; it is still recorded and can accumulate through later training and use. Physical skills are not discarded because a world also has System Abilities.
+4. If the exchange resolved a challenge, apply its reward now, including XP. A kill, clear, or other completed challenge is never left "not yet updated."
+5. Update the in-flight session state used by the next turn. The next response and `/system` read this settled state, never the opening checkpoint values.
+6. Narrate the fictional outcome, then render any world-declared compact state notifications once, in their declared format.
+
+Checkpointing promotes this already-settled in-flight state; it does not perform the settlement for the first time. If the player has to ask whether mana recovered or XP was earned, the prior exchange failed settlement and must be corrected before play continues.
 
 ---
 
@@ -765,13 +786,25 @@ Name the file `play_export_<NNNN>.md`, numbered by advancing past the highest ex
 
 # Chat Debug Export
 
-`/export-debug [label]` exports the **current conversation**, not campaign state. It is available immediately after bootstrap when no campaign session is active, as well as during play. Its purpose is diagnosis: preserving the exact exchange that led to a command, loading, or interpretation failure.
+`/export-debug [label]` exports the **raw current conversation**, not campaign state. It is available immediately after bootstrap when no campaign session is active, as well as during play. Its purpose is diagnosis: preserving the exact exchange that led to a command, loading, or interpretation failure.
 
-Capture every **user-visible** user, assistant, runtime, and tool-result message that the substrate exposes, beginning with the earliest visible message in the current conversation and ending with the `/export-debug` request. Preserve order, displayed role, and text verbatim. Do not export hidden system/developer instructions, internal reasoning, credentials, or tool traffic that was not shown to the user. Record the export timestamp, optional label, substrate if known, and whether earlier user-visible conversation content was unavailable to the Runtime. Never claim completeness beyond the chat the substrate actually exposes.
+Capture every **user-visible** user and assistant message that the substrate exposes, beginning with the earliest visible message in the current conversation and ending with the `/export-debug` request. Preserve order and message bodies **byte-for-byte where the substrate permits**, including Markdown, tables, code fences, spelling errors, commands, and whitespace. Do not summarize, reconstruct, clean up, regroup, or annotate message contents. Do not turn messages into turns, actions, results, state summaries, resolution tables, final-state sections, or command lists. Do not export hidden system/developer instructions, internal reasoning, credentials, or tool traffic that was not shown to the user.
+
+The file contains only repeated role labels and verbatim bodies:
+
+```text
+**User**
+<exact displayed message body>
+
+**Assistant**
+<exact displayed message body>
+```
+
+Use `**System**` only for a system message that was visibly rendered as a separate chat message to the user. No title, metadata header, timestamp, campaign name, turn number, separator commentary, summary, or closing state appears inside the file. A filename label belongs only in the filename. If earlier user-visible content is unavailable, export the visible suffix without inventing the missing prefix and state the limitation in the command response, outside the file.
 
 Write Markdown to `exports/debug/chat_debug_<timestamp>.md`; create the directories when needed. This location is repository-level because the chat may precede campaign selection. After writing, read the file back and report its path. If repository writing is unavailable, render or attach the transcript through the substrate and say that no repository file was written.
 
-A Chat Debug Export is diagnostic and non-canonical. It has no opening/closing campaign-state contract, cannot rebuild canon, allocates no identifiers, runs no promotion or validation barrier, and is never accepted by `/load`. `/export` remains the campaign-aware durable gameplay transcript. `/debug` remains the toggle for full roll mechanics.
+A Chat Debug Export is diagnostic and non-canonical. It has no opening/closing campaign-state contract, cannot rebuild canon, allocates no identifiers, runs no promotion or validation barrier, and is never accepted by `/load`. `/export` remains the structured, campaign-aware durable gameplay transcript. `/debug` remains the toggle for full roll mechanics. Handling `/export-debug` is out of character, advances no time, and emits no resumed-scene narration after the export acknowledgement.
 
 ---
 

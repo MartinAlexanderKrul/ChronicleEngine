@@ -1,6 +1,6 @@
 # Chronicle Engine
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 
@@ -86,7 +86,7 @@ On no-target bootstrap, render **every row below**. Do not rename, merge, omit, 
 | `/status` | Show the out-of-character progression view. Requires a loaded campaign. |
 | `/validate` | Run repository validation. |
 | `/debug` | Toggle full roll-mechanics detail. Off by default. |
-| `/export-debug [label]` | Export the user-visible current chat, including pre-game chat; no campaign required. |
+| `/export-debug [label]` | Export the raw user-visible current chat with only speaker labels and exact message bodies; no campaign required. |
 
 Do not open the first scene until you have presented a spoiler-safe introduction or recap and the player has confirmed readiness (the profile's Readiness Gate). As part of that readiness step, **show the complete runtime-command catalog** plus every command the selected campaign's world defines (a Reikon campaign lists `/system`) — never a remembered or state-filtered subset. If your file access is indirect, confirm write capability with the preflight canary described in the start guide before canonical play.
 

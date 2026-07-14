@@ -978,7 +978,11 @@ A Session is transient and holds no durable canon; it is the boundary at which p
 
 A formatted, non-canonical transcript of a play session, written to `campaigns/<campaign>/exports/` by the `/export` runtime command.
 
-A session export renders the conversation verbatim, classifying each message by register — Player, Narrator, Player · OOC, Narrator · OOC, System, and Roll — so a reader can tell who spoke and in what capacity. It is a derived artifact like the player briefing: it establishes no canon, mints no identifiers, and does not run the Promotion Barrier or Repository Validation Gate. It is the readable companion to a [Save Checkpoint](#save-checkpoint), which preserves canonical state rather than the conversation. Defined in the Session Export section of `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` and Decision 056.
+A session export renders the conversation verbatim, classifying each message by register — Player, Narrator, Player · OOC, Narrator · OOC, System, and Roll — so a reader can tell who spoke and in what capacity. It also records the session's mechanical effect on canon: the opening state, every resolution in full, every identifier allocated, every promotion, and the closing state.
+
+An export is a **primary** record, not a derived one. Unlike the player briefing or the Progression Surfacing view, a transcript cannot be regenerated from canonical state — it is the record canon was promoted *from*. It is therefore preserved rather than regenerated, and is the durable form of the tier-2 [Gameplay Transcript](#canon-hierarchy) the canon hierarchy already ranks above ledgers (Rules Section 2.1; Decision 042).
+
+It nonetheless **establishes no canon**: it mints no identifiers, runs no Promotion Barrier or Repository Validation Gate, and is never a restoration entry point. Where an export satisfies the sufficiency contract, canonical ledgers may be rebuilt from it by **re-promotion** if every checkpoint has failed — a repair operation that runs the ordinary gates and produces canon the ordinary way, distinct from restoring a [Save Checkpoint](#save-checkpoint). Defined in the Session Export section of `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, Decision 056, and Decision 061 (reclassification and recovery).
 
 ---
 

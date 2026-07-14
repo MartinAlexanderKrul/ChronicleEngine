@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.24
+**Document Version:** 1.25
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -302,6 +302,16 @@ Resolve a leading-slash token in this order:
 2. Otherwise, match it against the **active world's diegetic command table**, if the world defines one. If it matches, treat it as an in-world action.
 3. Otherwise, treat it as an unknown command: do not guess an action, do not narrate it into the scene, and offer `/help`.
 
+### The Command Table Is Rendered, Not Recalled
+
+**`/help` renders from the Command Table below. It is never answered from memory, paraphrase, or expectation of what a command "probably" does.** A command's effect as described to the player must match this table's row for it; where `/help` shortens a row for readability, it may drop detail but must not change meaning, and must never state the opposite of the dispatched procedure.
+
+This is the same requirement already placed on a world's diegetic render template (above), applied to the control surface, and for the same reason: given the same table, every Runtime must describe the same interface. A player acts on what `/help` tells them. A misdescribed control verb is not a cosmetic error — it is a player instructed to do the opposite of what they intend.
+
+This rule exists because it was broken. A Reikon session's `/help` described `/restart` as "Restart from latest checkpoint" — the inverse of its actual effect (Redo: reset to *baseline*, discarding play) — on a campaign that had no baseline to reset to. The table was correct; the Runtime narrated over it. Rendering the table is the enforcement point (Decision 055).
+
+The same holds for the destructive-command guards below: they are part of each command's definition, not optional caution, and `/help` must not present a guarded command as unconditionally available.
+
 This ordering makes the control verbs reliable — `/save` always checkpoints, never triggers world fiction — while leaving each world free to own its own diegetic vocabulary. A runtime command issued mid-scene is answered out-of-character and does not advance in-world time or consume the Beat Budget; the scene resumes exactly where it paused.
 
 ## Command Table
@@ -317,13 +327,13 @@ Each command dispatches to the named procedure. The procedure — not this table
 | `/continue` | Resume the **most recently played** campaign from its latest canonical checkpoint. | Returning and Takeover Sessions (Rules Section 13.4) |
 | `/continue <world>` | Resume the latest checkpoint of the most recently played campaign **in that world**. | Returning and Takeover Sessions (Rules Section 13.4) |
 | `/new <world>` | Start a **new campaign instance** in that world. | Emergent Campaign / Custom Protagonist initialization |
-| `/load <checkpoint>` | Restore a **specific earlier** checkpoint of the current campaign. Continuing play from a non-latest checkpoint is a fork (Decision 053). | Returning Sessions + Fork (Decision 053) |
-| `/restart` | Redo: reset the current campaign to its baseline checkpoint. Keeps the protagonist's identifier; does not roll back the registry (Decision 053). | Redo (Decision 053) |
+| `/load <checkpoint>` | Restore a **specific earlier** checkpoint of the current campaign. Continuing play from a non-latest checkpoint is a fork (Decision 053). **Refuses a checkpoint recorded as non-restorable** (see Destructive-Command Guards). | Returning Sessions + Fork (Decision 053) |
+| `/restart` | **Destructive.** Redo: reset the current campaign to its **baseline** checkpoint, discarding play since baseline. Keeps the protagonist's identifier; does not roll back the registry (Decision 053). **Requires a baseline checkpoint and explicit confirmation** (see Destructive-Command Guards). Not "reload the latest checkpoint" — that is `/continue`. | Redo (Decision 053) |
 | `/branch [name]` | Fork the current campaign at its latest checkpoint into a new parallel instance (Decision 053). | Fork (Decision 053) |
 | `/worlds` | List the worlds available under `worlds/`. Out-of-character; no state change. | Repository discovery |
 | `/campaigns [world]` | List campaigns (optionally filtered to a world) with their latest checkpoint and status. Out-of-character; no state change. | Repository discovery |
 | `/saves` | List the current campaign's checkpoints with labels and creation times. Alias: `/checkpoints`. Out-of-character; no state change. | Repository discovery |
-| `/export [label]` | Write a formatted, non-canonical transcript of the session to `campaigns/<campaign>/exports/`, distinguishing player, narrator, out-of-character, and system messages. Establishes no canon. | Session Export |
+| `/export [label]` | Write the session's **durable gameplay transcript** to `campaigns/<campaign>/exports/`: every message verbatim and classified, plus the opening state, every resolution in full, every identifier allocated, every promotion, and the closing state — sufficient to rebuild canon if every checkpoint fails (Decision 061). Establishes no canon and is not a save. | Session Export |
 | `/recap` | Give a concise, spoiler-safe recap of current state and unresolved pressures. Advances no in-world time. | Returning Sessions recap |
 | `/status` | Show the out-of-character **Progression Surfacing** view (derived tiers, level, experience log). Distinct from any world's diegetic `/system`. | Progression Surfacing |
 | `/validate` | Run the Repository Validation Gate on demand and report the result. Out-of-character; no canon change. | Repository Validation Gate |
@@ -358,6 +368,17 @@ The Runtime must **not** auto-select, auto-resume, or begin restoration, reconci
 - **`/new` confirmation.** `/new` gathers the minimum initialization choices, previews the derived starting state, and writes nothing until the player confirms — the Custom Protagonist / Emergent Campaign rule is unchanged. A `/new` in a world whose canonical baseline must stay intact creates a separate instance rather than overwriting it.
 - **Ambiguous or missing argument.** A command whose argument does not resolve to exactly one target (an unknown world name, a `/load` checkpoint that does not exist, an ambiguous `/continue`) reports the miss and offers the relevant list (`/worlds`, `/campaigns`, `/saves`) — it never silently picks a nearby target.
 - **Version mismatch on resume.** `/continue`, `/load`, and `/restart` surface Engine/World/Campaign/Save-Format version mismatches explicitly on restoration (Rules Section 13.5); they do not migrate silently.
+
+## Destructive-Command Guards
+
+`/restart`, `/load`, and `/branch` overwrite or diverge live canon. Each guard below is part of the command's definition: it is checked **before** any write, and a failed guard fails the command rather than degrading it into a nearby operation.
+
+- **`/restart` requires a baseline.** Redo restores the campaign's baseline checkpoint (Decision 053). If the campaign has no baseline, `/restart` **fails and writes nothing**: report that Redo is unavailable and why, and offer `/load` or `/branch` instead. Never substitute the latest checkpoint for a missing baseline — that silently converts "replay from the start" into "discard recent play," which is a different, unrequested operation.
+- **`/restart` requires confirmation.** It discards play since baseline. State what will be lost — the checkpoints and events superseded, and that their identifiers are retired rather than reclaimed (Data Model Invariant 3) — and write nothing until the player confirms. The confirmation-before-mutation rule applies here exactly as it does to `/new`.
+- **`/load` and `/continue` refuse a non-restorable checkpoint.** A checkpoint recorded as quarantined, superseded, or nonconforming is not a restore candidate. Report why and offer the nearest valid checkpoint; do not restore it "with warnings." A checkpoint that captured a superseded ledger shape is regressive, not merely stale — restoring it overwrites conforming canon with a form that fails validation.
+- **A missing or invalid restore target is never rounded to a nearby one.** This is the Ambiguous-argument rule applied to destructive commands, where the cost of guessing is overwritten canon rather than a wasted turn.
+
+Where a campaign records checkpoint status externally (a save index), the Runtime reads it as part of restoration and honors it. Where no such record exists, a checkpoint that fails the Repository Validation Gate on read-back is treated as non-restorable.
 
 ## Command Availability at Session Start
 
@@ -592,15 +613,43 @@ Do not include ADR status, architecture changes, roadmap progress, technical deb
 
 # Session Export
 
-`/export` writes a human-readable transcript of the current session to a file, formatted so a reader can tell at a glance who was speaking and in what register. It is the readable companion to a checkpoint: a checkpoint preserves canonical *state*, an export preserves the *conversation* that produced it.
+`/export` writes the session's **durable gameplay transcript** to a file: every message verbatim and classified, together with the mechanical record of what the session did to canon. A checkpoint preserves canonical *state*; an export preserves the *play that produced it*, in enough detail to rebuild that state if every checkpoint fails (Decision 061).
 
-## An Export Is Not Canon
+## An Export Is a Primary Record, Not a Derived One
 
-An export is a **derived, non-canonical artifact** — a rendering of the transcript, like the player briefing or the Progression Surfacing view. It establishes no canon, mints no identifiers, and does not run the Promotion Barrier or the Repository Validation Gate. `/export` and `/save` are different acts: exporting does not checkpoint, and checkpointing does not export. A player who wants both issues both.
+An export is a **durable Gameplay Transcript** — the record class Rules Section 2.8 defines — and it is *primary*, not derived.
 
-Because it is not canon, an export is exempt from canonical validation, and the file lives under `campaigns/<campaign>/exports/` — outside the canonical ledger set. Writing it still requires actual write capability: `/export` performs a real file write and reacts to the real result (Session Persistence State). If the write cannot be performed, the Runtime does not silently drop the export — it renders the formatted transcript inline in the reply instead, so the player can copy it, and says the file was not written.
+This distinction is load-bearing. The player briefing and the Progression Surfacing view are derived: each is computed from canonical ledgers and can be regenerated on demand, which is why each is disposable. **A transcript cannot be regenerated from canon.** It is the record canon was promoted *from*, not a rendering of canon. Once the session ends it is unreproducible: unwritten, it is gone. That is why an export is preserved rather than regenerated, and why it is worth capturing completely.
 
-## What Is Captured
+The canon hierarchy already ranks the transcript at tier 2 (Rules Section 2.1), *above* canonical ledgers, because it reflects what actually happened while a ledger may be stale. Decision 042 excluded it from durability only because it was volatile. An export is what removes the volatility.
+
+## The Bright Line
+
+An export is **not canon and not a save.**
+
+- It **establishes no canon by existing.** A transcript fact governs in flight, and becomes durable canon only through Promotion (Decision 042). Writing an export promotes nothing.
+- It **mints no identifiers.** It *records* identifiers the session already allocated.
+- It is **never a restoration entry point.** `/load` restores a checkpoint. Rebuilding from an export is a repair operation (Recovery from an Export, below), not a restore.
+- **`/export` and `/save` are different acts.** Exporting does not checkpoint; checkpointing does not export. A player who wants both issues both.
+- It is **not self-attesting.** An export records what the Runtime *reported* — including validation output — as transcript. It never asserts a verdict of its own. A transcript of a false claim is still an accurate transcript, and must not be silently corrected into a true one.
+
+The file lives under `campaigns/<campaign>/exports/`, outside the canonical ledger set, and is exempt from canonical validation. Writing it still requires actual write capability: `/export` performs a real file write and reacts to the real result (Session Persistence State). If the write cannot be performed, the Runtime does not silently drop the export — it renders the transcript inline in the reply so the player can copy it, and says the file was not written.
+
+## The Sufficiency Contract
+
+An export is **sufficient** when a reader holding only it and the world files could rebuild the campaign's ledgers to the state the session ended in. Message text alone is not sufficient: it shows what was narrated, not the identity graph the session produced. An export therefore captures five things beyond the messages.
+
+1. **Opening state.** What the session began from: the checkpoint or state reference, and the identifiers in play (protagonist, location, active relationships and objectives). Recovery needs a base to apply the session to.
+2. **Every resolution in full.** Not just the die tag — the natural roll, the net modifier steps *and the established circumstances behind them*, the effective result, and the band (Decisions 052, 058). A roll recorded as `d100: 43 — success` cannot be re-derived or audited; a roll recorded with its modifiers can.
+3. **Every identifier allocated,** with the object it names and its owning record. This is what lets recovery reproduce the identity graph instead of inventing a new one.
+4. **Every canon mutation promoted,** with provenance: what changed, in which record, caused by which event.
+5. **Closing state.** The state as of the last turn — the same fields as the opening state.
+
+State recorded in an export is **evidence of what was true at a moment**, not a competing canonical record, and it does not violate the no-duplication rule: Rules Section 13.3 binds the *save manifest*, whose content is derivable from the ledgers stored beside it. An export's value is precisely that its content cannot be re-derived.
+
+Capture these as the session runs, not by reconstruction at export time. An export written from memory at the end of a long session is where fabrication enters.
+
+## What Is Captured — Messages
 
 The export preserves the **whole session verbatim**, not a summary, classifying every message into one of these registers and labelling it. Both sides' out-of-character text is kept, and system/loading messages are kept — nothing is dropped for being "just" OOC or setup.
 
@@ -617,7 +666,7 @@ Runtime commands themselves (`/save`, `/export`, `/system`, …) are preserved a
 
 Write Markdown. Lead with a metadata header, then the classified messages in session order. Keep player and narrator text exact; do not summarize, merge, or reorder turns.
 
-```text
+````text
 # <Campaign> — Session Export <NNNN>
 
 - Campaign: <path>
@@ -625,29 +674,88 @@ Write Markdown. Lead with a metadata header, then the classified messages in ses
 - Exported: <timestamp>
 - Session span: <first turn> → <last turn>
 - Latest checkpoint: <checkpoint id or "none this session">
-- Versions: Engine <…>, World <…>, Campaign <…>
+- Versions: Engine <…>, World <…>, World Rule Profile <… or none>, Campaign Schema <…>
 - Label: <optional label, if given>
 
+## Opening State
+
+```yaml
+opened_from: <checkpoint id, or "live state at <REC->" if no checkpoint>
+protagonist: <ENT->
+location: <ENT->
+active_relationships: [<REL->, …]
+active_objectives: <REC-> 
+registry_at_open: {ENT: <n>, REC: <n>, EVT: <n>, REL: <n>}
+```
+
 ---
+
+<the classified messages, in session order>
 
 **Player** — "What about the merchant escort job?"
 
 **Narrator** — Kael asks after the merchant escort job and is directed toward Tollen Var…
 
-**Player · OOC** — // what is the state of the marsh-fever outbreak?
+**Roll** — 🎲 d100: 30 natural | net −1 step (unfamiliar contact, no standing) | effective 10 | failure
 
-**Narrator · OOC** — // The outbreak is active in the lower river ward; world canon records 13+ confirmed cases…
+**System** — Checkpoint 900_CHECKPOINT_0001 written; validator reported PASS (exit 0).
 
-**Roll** — 🎲 d100: 30 — failure
+---
 
-**System** — Checkpoint 900_CHECKPOINT_0001 written and validated; registry advanced to ENT-000029, REC-000025, EVT-000017, REL-000028.
+## Resolutions
+
+| # | Intent | Natural | Net steps | Established by | Effective | Band | Event |
+|---|--------|---------|-----------|----------------|-----------|------|-------|
+| 1 | Ask after the escort job | 30 | −1 | unfamiliar contact, no standing | 10 | failure | EVT-000015 |
+
+## Identifiers Allocated
+
+| ID | Names | Owning record | Established by |
+|----|-------|---------------|----------------|
+| ENT-000029 | Tollen Var | REC-000021 | EVT-000015 |
+
+## Promotions
+
+| Record | Change | Provenance |
+|--------|--------|------------|
+| REC-000021 | Tollen Var added; hostile after the altercation | EVT-000015 |
+
+## Closing State
+
+```yaml
+protagonist: <ENT->
+location: <ENT->
+condition: <free text; authoritative values in the character sheet>
+registry_at_close: {ENT: <n>, REC: <n>, EVT: <n>, REL: <n>}
+open_pressures: [<…>]
 ```
+````
 
-The role label is the one required element; the surrounding typography (headings, blockquotes, rules) may vary by substrate as long as the six registers stay visually distinct and the text stays verbatim.
+The role label is the one required element of a message line; the surrounding typography (headings, blockquotes, rules) may vary by substrate as long as the six registers stay visually distinct and the text stays verbatim. The five structured sections are required for sufficiency: an export missing them is still a valid transcript, but is **not** a recovery source, and must say so in its header rather than imply completeness it lacks.
+
+Where the session allocated nothing, resolved nothing, or promoted nothing, the corresponding section is present and empty — an absent section is ambiguous between "nothing happened" and "not captured."
+
+## Recovery from an Export
+
+When no valid checkpoint exists — every checkpoint is missing, malformed, or quarantined — canonical ledgers may be **rebuilt from an export**. This is a repair operation, not `/load`, and it is Architect-mode work: it does not advance play.
+
+Recovery is **re-promotion** (Decision 042), and it runs the ordinary gates rather than bypassing them:
+
+1. **Establish the base.** Restore the export's `opened_from` checkpoint if one is valid; otherwise reconstruct the opening state from its Opening State block.
+2. **Re-promote in session order.** Apply the export's Promotions to the scope-responsible ledgers, with provenance pointing at the export as the transcript that established each fact.
+3. **Reuse the attested identifiers.** Objects named in Identifiers Allocated keep those identifiers. This is not a breach of never-reuse (Data Model Invariant 3) — the same object is being restored to the record, not a retired number reissued to a different one. Reconcile the registry so the high-water marks are at or above `registry_at_close`.
+4. **Do not invent what the export does not attest.** Where the export is silent — an identifier it never recorded, a modifier it never captured — the gap is **recorded, not filled**. A reconstruction that guesses is worse than one that admits an omission, because the guess is indistinguishable from evidence afterward.
+5. **Verify against the transcript.** Check the rebuilt state against the export's Closing State and message record. Report every fact that does not reconcile.
+6. **Run the Repository Validation Barrier** (Decision 054) before claiming the rebuild succeeded, exactly as any other durable mutation.
+7. **Record the recovery** in the campaign changelog and the registry, naming the export as the source and listing what could not be recovered.
+
+Recovery is **lossy wherever the export is silent**, and exports written before the sufficiency contract are the common case: `campaigns/reikon_awakening_001/exports/play_export_0001.md` is sufficient to *verify* that campaign's reconstruction but attests no identifiers and no modifiers, so it could not fully rebuild it. Treat an old export as evidence for checking a reconstruction, not as a complete source for one.
+
+An export is the **last** line of defence, not the first. Checkpoints remain the restore mechanism (Decision 039, Rules Section 13). Recovery from an export is what happens when they have already failed — which, on the evidence of Checkpoint 001, is not hypothetical.
 
 ## Filing
 
-Name the file `play_export_<NNNN>.md`, numbered by advancing past the highest existing export in the campaign's `exports/` directory (first export is `0001`). An optional `label` argument is recorded in the header and may be slugged into the filename. After writing, read the file back and report its path; if read-back fails, treat it as a write failure per An Export Is Not Canon.
+Name the file `play_export_<NNNN>.md`, numbered by advancing past the highest existing export in the campaign's `exports/` directory (first export is `0001`). An optional `label` argument is recorded in the header and may be slugged into the filename. After writing, read the file back and report its path; if read-back fails, treat it as a write failure per The Bright Line.
 
 ---
 

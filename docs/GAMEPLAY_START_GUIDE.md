@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.9
+**Document Version:** 2.10
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -214,13 +214,13 @@ Once a session is running, you can drive it with short **runtime commands** inst
 | `/continue` | Resume the campaign you played most recently, from its latest checkpoint. |
 | `/continue <world>` | Resume the latest campaign in that world. |
 | `/new <world>` | Start a new campaign in that world. |
-| `/load <checkpoint>` | Restore a specific earlier checkpoint of the current campaign (continuing from it forks a new world-line). |
-| `/restart` | Reset the current campaign to its baseline and replay. |
+| `/load <checkpoint>` | Restore a specific earlier checkpoint of the current campaign (continuing from it forks a new world-line). Won't load a checkpoint marked non-restorable. |
+| `/restart` | **Destructive — read this one.** Resets the campaign to its **baseline** (its very beginning) and replays from there, discarding everything played since. It is *not* "reload my last save" — that's `/continue`. It asks you to confirm first, and won't run at all if the campaign has no baseline checkpoint. |
 | `/branch [name]` | Fork the current campaign into a parallel world-line at its latest checkpoint. |
 | `/worlds` | List available worlds. |
 | `/campaigns [world]` | List campaigns and their latest checkpoints. |
 | `/saves` | List the current campaign's checkpoints. |
-| `/export [label]` | Save a nicely formatted transcript of the session (player, narrator, out-of-character, and system messages kept distinct). This is a readable log, not a checkpoint — it does not save canon. |
+| `/export [label]` | Write the session's full transcript — every message kept distinct by who said it, plus the rolls, the identifiers created, and what changed. It is not a checkpoint and saves no canon, but it is complete enough to rebuild your campaign from if your checkpoints are ever lost or broken. Use `/save` to save; use `/export` so the session itself is never gone. |
 | `/recap` | Concise, spoiler-safe recap of where you are. |
 | `/status` | Your out-of-character progress view (tiers, level, experience log). |
 | `/validate` | Run repository validation and report the result. |

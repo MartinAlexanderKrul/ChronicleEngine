@@ -2725,6 +2725,73 @@ The Player authors the attempt and the character's interpretation. The Runtime a
 
 ---
 
+## Decision 061 — Session Export as Durable Transcript and Recovery Source
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** Refines Decision 056 (Session Export); Decision 032; Decision 039; Decision 042; Decision 054; `010_ENGINE_RULES.md` Sections 2.1, 2.8, 13; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Session Export, Runtime Command Interface)
+
+### Context
+
+Decision 056 introduced `/export` and classified its output as "a **non-canonical** derived artifact... Like the player briefing and the Progression Surfacing view, it establishes no canon."
+
+That grouping is a category error, and the Reikon Awakening repair exposed it.
+
+The player briefing and the Progression Surfacing view are genuinely derived: each is computed from canonical ledgers and can be regenerated on demand, which is exactly why each is disposable. **A session transcript cannot be regenerated from canon.** It is not an output of canonical state; it is the primary record *from which* canonical state was promoted (Decision 042). Once a session ends its transcript is unreproducible. If it was not written down, it is gone.
+
+The canon hierarchy already ranks it accordingly: the gameplay transcript is tier 2 (Rules Section 2.1), *above* canonical ledgers, because it reflects what actually happened while a ledger may be stale. Decision 042 held that the transcript is a precedence tier but not a durability tier — precisely because it was volatile. An export is what removes the volatility. The transcript's exclusion from durability was an accident of storage, not a property of the record.
+
+Reikon proved the consequence. Its only checkpoint was malformed and unrestorable; its live canon had to be rebuilt from that damaged snapshot, and the rebuild could not be verified because the transcript existed only on the owner's disk, outside the repository — while being cited in `030_ENGINE_CHANGELOG.md` as the evidence for Decision 057. When it was finally committed, it verified the reconstruction on every material fact, and revealed that modifier steps recorded in canon had no attestation in play at all. The strongest evidence the campaign had was the one record the engine had no place to keep.
+
+Separately, the export as specified is **insufficient to reconstruct from**. It captures messages verbatim, but not the identifiers allocated during the session, not the modifiers applied to a roll, and not the state the session opened from. A reader can see what was narrated; they cannot rebuild the identity graph it produced.
+
+### Decision
+
+**1. Reclassification.** A Session Export is a **durable Gameplay Transcript** — the record class Rules Section 2.8 already defines — not a derived artifact. It is a primary source, preserved rather than regenerated. Decision 056's grouping of it with the player briefing and the Progression Surfacing view is corrected.
+
+**2. The bright line is unchanged.** An export is still **not canon and not a save**. It establishes no canon by existing, mints no identifiers, is never a restoration entry point, and `/export` remains distinct from `/save`. Precedence is not durability (Decision 042): a transcript fact governs in flight and becomes durable canon only through Promotion.
+
+**3. Recovery is re-promotion, not restore.** Where no valid checkpoint exists, canonical ledgers may be **rebuilt from an export by re-promoting its content** — the mechanism Decision 042 already defines. This is a repair operation, not a `/load`. It runs the Promotion Barrier and the Repository Validation Barrier (Decision 054) and produces canon the ordinary way, with provenance pointing at the export. `/load` restores a checkpoint; recovery from an export *reconstructs* one.
+
+**4. Identifier fidelity.** Recovery must reproduce the identity graph rather than invent a new one, so an export must record every identifier allocated during the session and the object it names. Recovery reuses those identifiers for those objects. This is **not** a breach of never-reuse (Data Model Invariant 3): the same object is being restored to the record, not a retired number reissued to a different one. Where an export does not attest an identifier, recovery does not guess — it records the gap.
+
+**5. Sufficiency contract.** An export is sufficient for recovery when, in addition to every message verbatim and classified, it captures:
+
+- the **opening state** the session began from — the checkpoint or state reference, and the identifiers in play;
+- every **resolution in full** — the natural roll, the net modifier steps and the established circumstances behind them, the effective result, and the band (Decisions 052, 058) — not merely the die tag;
+- every **identifier allocated**, with the object it names and its owning record;
+- every **canon mutation promoted** during the session, with provenance;
+- the **closing state** as of the last turn.
+
+State recorded in an export is *evidence of what was true at a moment*, not a competing canonical record. The no-duplication rule of Rules Section 13.3 binds the **save manifest**, whose content is derivable from the ledgers stored beside it; it does not bind a primary record whose entire value is that it cannot be re-derived.
+
+**6. Exports are not self-attesting.** An export records what the Runtime *reported*, including validation output, as transcript. It never asserts a verdict of its own. A transcript of a false claim is an accurate transcript.
+
+### Rationale
+
+- It corrects a classification error rather than adding a mechanic. Recovery uses Promotion (Decision 042), the transcript record class (Rules Section 2.8, Decision 032), and the mechanical barrier (Decision 054) — all already accepted.
+- It makes durable the record the canon hierarchy already ranks above ledgers. The transcript was excluded from durability because it was volatile; once an export exists, that reason no longer holds and the ranking should follow.
+- It closes a demonstrated failure. Reikon's canon survived only because a transcript happened to exist on someone's disk. An engine whose first principle is that the repository is the single source of truth cannot depend on that.
+- The bright line holds. The export does not become canon, does not resolve actions, and does not restore. It is evidence sufficient to rebuild canon *through the ordinary gate*.
+
+### Consequences
+
+- `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`: the Session Export section is reclassified and gains the sufficiency contract and a Recovery from Export procedure; the `/export` command-table row is updated.
+- `020_ENGINE_GLOSSARY.md`: **Session Export** is updated.
+- Save architecture is unchanged. Checkpoints remain the restore mechanism (Decision 039, Rules Section 13). An export is the fallback when they fail, not a replacement, and `/save` remains the way to preserve state.
+- Existing exports predate this contract and are **not** retroactively conforming. `campaigns/reikon_awakening_001/exports/play_export_0001.md` is sufficient to *verify* the campaign's reconstruction but not to fully *rebuild* it: it attests no identifiers and no modifiers.
+- Recovery from an export is expected to be **lossy wherever the export is silent**. The gaps are recorded, not filled by inference.
+- Rules, Data Model, and Runtime are unchanged: this is a Runtime Profile contract plus a record-classification correction. Decision 056 remains Accepted and is refined here rather than superseded; its body is unchanged per the immutable-history policy.
+
+### Alternatives Considered
+
+- **Leave the export derived and non-recoverable.** Rejected: it is not derivable, and Reikon demonstrated the cost.
+- **Make the export a save.** Rejected: it would create a second representation of canonical state — the exact risk Decision 039 rejected a compiled save format to avoid. An export is evidence, not state.
+- **Make the export canon.** Rejected: it would let a transcript establish canon without promotion, collapsing the precedence/durability split Decision 042 exists to maintain.
+- **Have recovery mint fresh identifiers.** Rejected: it breaks continuity of the identity graph and would make a recovered campaign a fork of itself (Decision 053), rather than the same campaign restored.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

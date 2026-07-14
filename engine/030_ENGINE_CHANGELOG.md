@@ -12,6 +12,34 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-14 — Session Export as durable transcript and recovery source; command-table rendering and destructive-command guards
+
+**Decisions:** Added **Decision 061** (Session Export as Durable Transcript and Recovery Source), refining Decision 056. Decision 056 classified `/export` output as "a non-canonical **derived** artifact... like the player briefing and the Progression Surfacing view." That is a category error: the briefing and the progression view are computed from canonical ledgers and can be regenerated, whereas **a transcript cannot be regenerated from canon** — it is the primary record canon was promoted *from* (Decision 042), and once the session ends it is unreproducible. An export is reclassified as a durable **Gameplay Transcript** (the record class Rules Section 2.8 already defines), the durable form of the tier-2 record the canon hierarchy already ranks above ledgers.
+
+**The bright line is unchanged.** An export still establishes no canon, mints no identifiers, runs no barrier, is never a restoration entry point, and `/export` remains distinct from `/save`. Where every checkpoint has failed, ledgers may be rebuilt from an export by **re-promotion** — a repair operation that runs the Promotion Barrier and the Repository Validation Barrier and produces canon the ordinary way. `/load` restores a checkpoint; recovery from an export reconstructs one.
+
+**Sufficiency contract:** an export must now capture, beyond every message verbatim and classified, the **opening state**, every **resolution in full** (natural roll, net modifier steps and the circumstances behind them, effective result, band — per Decisions 052 and 058), every **identifier allocated** with the object it names, every **promotion** with provenance, and the **closing state**. Message text alone shows what was narrated, not the identity graph the session produced. Recovery reuses attested identifiers — the same object restored to the record, not a retired number reissued (Data Model Invariant 3) — and records gaps rather than guessing where the export is silent.
+
+**Runtime Profile (1.25):** Session Export section rewritten (primary-not-derived; The Bright Line; the sufficiency contract; the required structured sections; the Recovery from an Export procedure). `/export` command-table row updated.
+
+**Command-table rendering.** Added "The Command Table Is Rendered, Not Recalled": `/help` renders from the Command Table and is never answered from memory or paraphrase; shortening a row may drop detail but never change meaning. This mirrors the requirement already placed on a world's diegetic render template, applied to the control surface, and its enforcement point is the render itself (Decision 055). It exists because it was broken: a Reikon session's `/help` described `/restart` as "Restart from latest checkpoint" — the inverse of its actual effect — on a campaign with no baseline to reset to. The table was correct; the Runtime narrated over it. **No command definition was wrong in the profile, the start guide, or the glossary**; the defect was rendering, not definition.
+
+**Destructive-Command Guards.** Added as part of each command's definition rather than as advice: `/restart` requires a baseline checkpoint and explicit confirmation, and fails rather than substituting the latest checkpoint for a missing baseline (which would silently convert "replay from the start" into "discard recent play"); `/load` and `/continue` refuse a checkpoint recorded as quarantined, superseded, or nonconforming rather than restoring it "with warnings"; an invalid restore target is never rounded to a nearby one. The `/restart` and `/load` table rows carry the guards.
+
+**Start Guide (2.10):** `/restart` marked destructive and described in full player-facing terms ("not 'reload my last save' — that's `/continue`"); `/export` described as complete enough to rebuild a campaign from; `/load` notes it refuses non-restorable checkpoints.
+
+**Glossary:** **Session Export** updated for the primary-record reclassification, the sufficiency contract, and recovery by re-promotion.
+
+**Not retroactive:** existing exports predate the contract. `campaigns/reikon_awakening_001/exports/play_export_0001.md` is sufficient to *verify* that campaign's reconstruction but attests no identifiers and no modifiers, so it could not fully rebuild it. Old exports are evidence for checking a reconstruction, not complete sources for one.
+
+**Rules / Data Model / Runtime:** unchanged. This is a Runtime Profile contract plus a record-classification correction; Decision 056 remains Accepted and is refined rather than superseded (immutable-history policy).
+
+**Validation:** `tools/validate_repository.ps1` PASSES — 59 live files, 178 object blocks, 178 resolved identifiers, exit 0.
+
+**Engine Version:** Unchanged; remains 0.2.0.
+
+---
+
 ## 2026-07-14 — Reikon save-layer repair: transcript committed, reconstruction verified, conforming checkpoint created
 
 **Context:** The Reikon Awakening campaign's only checkpoint was unrestorable, and its live canon — reconstructed from that malformed snapshot on 2026-07-14 — had never been verified against play. Campaign-layer conformance repair in Architect mode; no campaign state was advanced and no simulation was resolved.

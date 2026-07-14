@@ -201,9 +201,9 @@ Each level grants **Stat Points** to allocate to these five core stats.
 - The impossible remains impossible regardless of Rank
 
 **Growth Model:**
-- **Growth comes first, Ascension surfaces it** (Decision 051)
+- **Growth is earned, and the System causes it** — resolved challenge awards XP, and crossing the threshold causes Ascension and its grants (`RKO-OVR-001`, Decision 059)
 - You gain XP by facing real challenge: clearing Rifts, defeating tough monsters, overcoming obstacles
-- When XP fills to 100, you Level Up (Ascension occurs) — the System announces the level-up
+- When XP fills to 100, you Level Up: the Ascension causes the level-up and grants your new capability
 - Leveling unlocks new Ability tiers, Skill Points, and new Class options
 - **Progress:** 36/100 XP; level-up imminent after current expedition completes
 

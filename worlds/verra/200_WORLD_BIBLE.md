@@ -4,7 +4,7 @@
 
 **World Version:** 0.1 (Prototype)
 **Status:** Active — Prototype Alpha validation world
-**Engine Compatibility:** 0.1.5 (Foundation Release); Data Model 0.1.1
+**Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Calendar:** Reach Reckoning (RR); the present is **Year 312 RR**
 
 ---

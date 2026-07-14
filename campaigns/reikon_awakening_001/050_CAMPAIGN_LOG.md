@@ -108,9 +108,9 @@ Daedalus, a 20-year-old scholar from the Aurology Institute, recently Awakened d
 ## Campaign Rules in Effect
 
 - **Resolution:** Intent + Circumstance + d100 (Chronicle Engine Rules Section 4)
-- **Growth:** Lived experience first, Ascension surfaces it (Decisions 051, 057)
+- **Growth:** Earned through resolved challenge; crossing the XP threshold **causes** Ascension and its grants (`RKO-OVR-001`, Decisions 057, 059)
 - **Abilities:** Function as Modifiers, never overrides
-- **System:** Diegetically real and tracked; displays and tracks, never decides — the d100 resolves every action (Decision 057)
+- **System:** Diegetically real and canonical; causes growth and quantifies vitality (`RKO-OVR-001`, `RKO-OVR-002`), but never decides an uncertain action — the d100 resolves every action (Decisions 057, 059)
 - **XP/Leveling:** Reikon diegetic model — XP tracked and surfaced inline, accrued per challenge (Decision 057); Level 1→2 = 100 XP; Character Level is independent of Official Rank
 - **Progression:** Skill Points on Ascension for stat/ability allocation
 

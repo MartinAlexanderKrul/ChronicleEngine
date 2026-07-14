@@ -48,7 +48,7 @@ Read, in this order, then follow the loaded procedure:
 Then select what to play and load its state:
 
 - **A specific campaign** — read `campaigns/<campaign>/090_CAMPAIGN_STARTUP.md`, its canonical ledgers (`100`–`180`), the campaign's world records under `worlds/<world>/`, and, when resuming, the latest checkpoint under `campaigns/<campaign>/saves/`.
-- **No target given** — list the available worlds (`worlds/`) and campaigns (`campaigns/`) and let the player pick, resume the most recently played campaign, or start a new one. This is the same behavior as `/continue` and `/new` once the profile is loaded.
+- **No target given (the default)** — present the command menu and a listing of worlds (`worlds/`) and campaigns (`campaigns/`) with each campaign's status and latest checkpoint, then **wait for the player to choose** (`/continue <world|campaign>`, `/new <world>`, or `/load <checkpoint>`). Do **not** auto-load or auto-resume a campaign the player did not choose — presenting the menu and waiting is the whole job here.
 
 Do not open the first scene until you have presented a spoiler-safe introduction or recap and the player has confirmed readiness (the profile's Readiness Gate). As part of that readiness step, **show the player a short menu of available commands** — the runtime commands plus any commands the campaign's world defines (a Reikon campaign lists `/system`) — so they know what they can type. If your file access is indirect, confirm write capability with the preflight canary described in the start guide before canonical play.
 

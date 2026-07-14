@@ -33,6 +33,16 @@ Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version ad
 
 ---
 
+## 2026-07-14 — Bootstrap Selection Screen: no-arg /ChronicleEngine must not auto-load
+
+**Context:** A live `/chronicle` run auto-loaded Prototype Alpha and dragged the player into a checkpoint-restoration/reconciliation dialog. Root cause: the spec permitted no-argument bootstrap to "resume the most recently played campaign," licensing an auto-load the player never requested.
+**Decision 056:** Point 4 amended — with no argument, `/ChronicleEngine` presents a Bootstrap Selection Screen and waits; it never auto-loads or auto-resumes (that is `/continue`'s job).
+**Runtime Profile (1.23):** Removed the "or resume the most recently played campaign" default from the no-target bootstrap; added a **Bootstrap Selection Screen** subsection — engine-loaded confirmation, the command menu, a worlds/campaigns listing with status and latest checkpoint (combined `/worlds` + `/campaigns` + `/saves`), and a choose-prompt — with an explicit prohibition on auto-selecting, auto-resuming, or starting restoration/reconciliation/readiness before the player names a target.
+**README + Start Guide (2.9):** Updated the `/ChronicleEngine` no-target behavior to "present the menu and wait," matching.
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-14 — Start Guide: AI Instructions block condensed to <8000 chars
 
 **Start Guide (2.8):** Rewrote the resident "AI Instructions" block in `docs/GAMEPLAY_START_GUIDE.md` from ~10,978 to ~6,974 characters (under an 8000-char budget) by merging the action-resolution steps, cutting repeated justifications and redundant examples, and tightening prose. No guardrail dropped: cold-start loading, full action-resolution procedure, out-of-character allowance, canon grounding, one-exchange/enemy-acts/no-frictionless-win, before-narration checklist, indirect-write preflight, and the checkpoint-completeness gate are all preserved.

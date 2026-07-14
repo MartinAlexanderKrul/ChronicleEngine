@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.8
+**Document Version:** 2.9
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -207,7 +207,7 @@ Once a session is running, you can drive it with short **runtime commands** inst
 
 | Command | What it does |
 |---------|--------------|
-| `/ChronicleEngine [target]` | **Start here.** Boot the engine and begin or resume play; optionally name a campaign path or world. Aliases (identical): `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`. Also documented in the root `README.md` so it works before any other file is loaded. |
+| `/ChronicleEngine [target]` | **Start here.** Boots the engine and shows a menu — the available commands plus your worlds and campaigns with each one's status and latest checkpoint — then **waits for you to pick** (it won't auto-load a campaign). Name a campaign or world to jump straight in. Aliases: `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`. Also in the root `README.md` so it works before any other file is loaded. |
 | `/help [command]` | List the commands, or explain one. |
 | `/save [label]` | Checkpoint now. An optional label is recorded in the save manifest. |
 | `/end` | Close the session: promote canon, write a session-close checkpoint, print the report. |

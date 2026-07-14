@@ -194,24 +194,30 @@ Rifts must be cleared by **teams with proper Rank composition:**
 
 ## The System
 
-The **System** is a mysterious interface that appears to every Awakened. To them alone, it shows:
+**Almost nobody has the System.** An Awakened hunter has mana, Abilities, and a certified Rank — and no interface of any kind. They know their own power the way a swordsman knows their arm: by using it. Nothing counts their growth, nothing announces it, and no number tells them what they are. That is the ordinary condition of every hunter in Reikon.
+
+The **System** is a private, luminous interface perceived by a **System Bearer** alone. To them it shows:
 
 - **Rank** — their tier (E through S, with rare **Anomalous** breaking the scale)
 - **Abilities** — the supernatural power(s) they Awakened with, plus any learned techniques (called **Marks**)
 - **Mana reserves** — their capacity before exhaustion
-- **Growth** — a progression measure that climbs as they face real danger and challenge
+- **Growth** — experience that climbs as they face real danger and challenge
 
-When a hunter earns enough XP through resolved combat and ordeal, the System causes an **Ascension** — a felt, luminous milestone that grants progression under `RKO-OVR-001`. You cannot level up without genuine challenge, but the threshold crossing and its grants are causally real.
+It does not merely watch. When its Bearer earns enough XP through resolved combat and ordeal, the System causes an **Ascension** — a felt, luminous milestone that *grants* progression under `RKO-OVR-001`: stat points, unlocks, and a deeper mana pool. You cannot level up without genuine challenge, but the threshold crossing and its grants are causally real.
 
-**Important:** The System shows your actual capability — for you. But your **official Rank** (what the Association certifies, what the Guild knows) is based on testing and assessment, not the System's private readout. These can diverge. A forged Rank, an underestimated hunter, an inflated reputation — all are possible and dangerous.
+**Important:** the System shows its Bearer their actual capability. Their **official Rank** — what the Association certifies, what the Guilds know — is based on testing and assessment instead. These can diverge, and for a Bearer they inevitably will. A forged Rank, an underestimated hunter, an inflated reputation — all are possible and dangerous.
 
 ## Awakening
 
-Awakening is involuntary and rare — roughly 1 per few thousand people. It cannot be chosen, induced, or bought. When it happens, a person wakes with one or more supernatural abilities (strength, speed, magic, healing, Rift-sensing, etc.) and immediate access to the System's interface.
+Awakening is involuntary and rare — roughly 1 per few thousand people. It cannot be chosen, induced, or bought. When it happens, a person wakes with one or more supernatural abilities (strength, speed, magic, healing, Rift-sensing, etc.) and a mana pool that will not change for the rest of their life.
 
-**Most Awakened** have a single ability or a focused set. They Rank from E (newly Awakened, can clear basic dungeons) through S (elite, decades of proven power).
+**Most Awakened** have a single ability or a focused set. They Rank from E (newly Awakened, can clear basic dungeons) through S (elite, decades of proven power). They have no System, no level, and no XP. They grow the slow way — practice, ordeal, and mastery — and get dangerous without ever being told they have.
 
-**The System-Bearer Legend:** Once per generation, maybe less, an Awakened person develops not just one ability but something unprecedented — the **System** becomes a full, multi-domain interface. Growth can span multiple paths; they can theoretically reach heights no single-ability hunter can match. This has happened so rarely (if at all) in 31 years that it's half-mythology. No one knows if a System-Bearer currently exists. If one does, the Association, the Guilds, the Institute, and the Vigil all want to know.
+**The System-Bearer Legend:** once per generation, maybe less, an Awakened is said to wake with something else entirely — an interface that quantifies them and answers back. A Bearer's growth is not merely tracked but *granted*: they can theoretically reach heights no ordinary hunter can match, and their mana pool, alone among the living, **deepens**. This has happened so rarely in 31 years that it is half-mythology. Most hunters consider it a story hunters tell about hunters.
+
+**No one knows whether a System-Bearer currently exists. If one does, the Association, the Guilds, the Institute, and the Vigil all want to know — and none of them want the same thing from the answer.**
+
+*(One does. See `campaigns/reikon_awakening_001/`. The world does not know it, and nothing in world canon records it — the Bearer's own ledger is the only place it is written.)*
 
 ---
 

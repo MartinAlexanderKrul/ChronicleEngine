@@ -52,28 +52,77 @@ Every Awakened bears a private **System** interface only they can see. It is a m
 
 ## Accessing Your System: `/system` Command
 
-During play, use `/system` to view your diegetic System interface. The System will display in Solo Leveling style — showing all stats, XP progress, skills, inventory, and status as a window. This is how you check your character's current numbers and progression.
+During play, use `/system` to view your diegetic System interface. It renders as a fixed **window**, always in the same layout, so it looks the same every session and however the game is run.
 
-**Example System display:**
+### Canonical `/system` Template (normative)
+
+`/system` renders **exactly** this structure. The layout is fixed: do not restyle it, rename or reorder its sections, add or drop sections, or vary it between sessions or substrates. Only the *values* change as canon advances; the *format* never does. This is the world's declared render template for the `/system` diegetic command — every Runtime uses it verbatim.
+
+```
+═══════════════════════════════════════════════════════════════
+                    <NAME> — SYSTEM INTERFACE
+═══════════════════════════════════════════════════════════════
+Official Rank: <R>-Rank | Level: <L> | XP: <cur>/<next> | Health: <hp>/<hpmax> | Mana: <mp>/<mpmax>
+Condition: <Normal, or comma-separated active conditions>
+───────────────────────────────────────────────────────────────
+STATS                           SKILLS & ABILITIES
+  Power:         <n>/20           • <skill> (Lv <n>)   |  (Passive)
+  Endurance:     <n>/20           • …
+  Speed:         <n>/20
+  Mana Affinity: <n>/20
+  Perception:    <n>/20
+───────────────────────────────────────────────────────────────
+INVENTORY (<used>/<cap>)         QUESTS
+  • <item> [x<n>]                 [MAIN] <objective>
+  • …                            [SIDE] <objective>
+  • <n> cores                    [REPEATABLE] <objective>
+                                 [HIDDEN] ???
+───────────────────────────────────────────────────────────────
+PATHS & MARKS: <paths/marks, or "None yet">
+═══════════════════════════════════════════════════════════════
+```
+
+### Rendering Rules
+
+These rules make the window **deterministic**: the same canonical character state produces the same window for every Runtime, on any substrate (this is canon-determinism, `012` Section 7, applied to a fixed display).
+
+1. **Values come only from canonical character state.** Read Official Rank, Level, XP, Health, Mana, the five Stats, Skills/Abilities, Inventory, and Quests from the campaign's canonical ledgers (Character Sheet, Inventory, Objectives). The System *displays*; it never invents or decides (Decision 051). Regenerate the window on demand from canon; never keep a separate counter that could drift.
+2. **Vitals line — fixed field order:** `Official Rank | Level | XP | Health | Mana`. XP is `current / next-level threshold` (Level 1→2 = 100; thresholds rise per level). Health and Mana are `current / max`.
+3. **Condition line is always shown.** With no active effects it reads `Condition: Normal`. Otherwise list active wounds, exhaustion, or status effects, comma-separated.
+4. **STATS — fixed order, always five:** Power, Endurance, Speed, Mana Affinity, Perception, each as `score/20`.
+5. **SKILLS & ABILITIES** are listed in the order they appear in the character ledger. Leveled entries show `(Lv <n>)`; passives show `(Passive)`. This column holds both initial Abilities and learned Skills.
+6. **INVENTORY** header shows `(<items used>/<capacity>)`. List items in ledger order; stacks as `x<n>`; put **cores** as the final inventory line (`<n> cores`). Do not list the License here if it is shown as Rank — list each canonical item once.
+7. **QUESTS** use fixed tag prefixes `[MAIN] [SIDE] [REPEATABLE] [HIDDEN]`, MAIN first. A hidden quest whose content the character does not yet know renders its objective as `???`.
+8. **Empty sections still render.** A column with no entries shows a single `—` under its header; never omit a section to save space.
+9. **In-fiction only.** No repository identifiers, object types, engine terms, or validation output ever appear inside the window — it is what the hunter perceives (Information Boundary; Decision 051).
+
+### Worked Example — Daedalus at Character Creation
+
+From Daedalus's canonical starting state (`campaigns/reikon_awakening_001/100_CHARACTER_DAEDALUS.md`), `/system` must render:
+
 ```
 ═══════════════════════════════════════════════════════════════
                     DAEDALUS — SYSTEM INTERFACE
 ═══════════════════════════════════════════════════════════════
 Official Rank: E-Rank | Level: 1 | XP: 0/100 | Health: 100/100 | Mana: 13/13
+Condition: Normal
 ───────────────────────────────────────────────────────────────
-STATS                           SKILLS
-  Power:        8/20              • Fireball (Lv 1)
-  Endurance:    9/20              • Flame Shield (Lv 1)
-  Speed:        10/20             • Combustion Touch (Lv 1)
+STATS                           SKILLS & ABILITIES
+  Power:         8/20             • Fireball (Lv 1)
+  Endurance:     9/20             • Flame Shield (Lv 1)
+  Speed:         10/20            • Combustion Touch (Lv 1)
   Mana Affinity: 13/20            • Reinforced Body (Passive)
-  Perception:   14/20             • Endurance Surge (Lv 1)
-                                  
-INVENTORY (6/10)                QUESTS
-  • License (E-Rank)              [MAIN] Clear Warehouse 7 Rift
-  • Sword                         [REPEATABLE] Daily Scout
-  • Potion x3                     [HIDDEN] ???
+  Perception:    14/20            • Endurance Surge (Lv 1)
+───────────────────────────────────────────────────────────────
+INVENTORY (6/10)                 QUESTS
+  • License (E-Rank)             [MAIN] Clear Warehouse 7 Rift
+  • Sword                        [REPEATABLE] Daily Scout
+  • Repair Kit                   [HIDDEN] ???
+  • Potion x3
   • Rope
   • 50 cores
+───────────────────────────────────────────────────────────────
+PATHS & MARKS: None yet
 ═══════════════════════════════════════════════════════════════
 ```
 

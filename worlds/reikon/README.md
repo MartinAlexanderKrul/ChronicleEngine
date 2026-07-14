@@ -183,7 +183,7 @@
 **Progression:**
 - Solo Leveling mechanics (XP, stat progression, skill trees)
 - Delivered as narrative text RPG (like Verra campaigns)
-- Accessible via `/system` command (shows Solo Leveling-style interface)
+- Accessible via `/system` command — renders the **Canonical `/system` Template** in `205_THE_LEDGER.md`, a fixed window that every Runtime shows identically from canonical state (same layout every session, on any AI)
 - No intrusive UI notifications during play
 
 ---

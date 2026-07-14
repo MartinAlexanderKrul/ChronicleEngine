@@ -275,6 +275,8 @@ Two kinds of slash token can appear in play, and the Runtime must not confuse th
 - **Runtime commands** — out-of-character, engine-general, defined in this profile. They mean the same thing in every world and every campaign. Their names are **reserved**, including their aliases (`/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles` for `/ChronicleEngine`): a world must not redefine `/save`, `/continue`, `/new`, or any other runtime command or alias as an in-fiction verb.
 - **Diegetic commands** — in-fiction, world-authored, part of a world's content (for example Reikon's `/system`, which opens a character's in-world System interface). A diegetic command is world-authoring content governed by the Supernatural Phenomena Contract (Rules Section 11) when it is diegetically real; it is not part of this profile and varies by world.
 
+  When a world declares a diegetic command, it should also declare that command's **canonical render template** — the fixed layout and the rules for binding it to canonical state (Reikon's is the `/system` template in `worlds/reikon/205_THE_LEDGER.md`). Where a world provides one, the Runtime renders that command **verbatim to the template**, deriving every value from canon and never restyling, reordering, or improvising the layout. This makes a diegetic display deterministic across sessions and substrates — the same canon-determinism the die and ledgers already obey (`012` Section 7), extended to the world's own interface, so every Runtime shows the player the same window.
+
 Resolve a leading-slash token in this order:
 
 1. Match it against the **runtime command table** below. If it matches, execute the runtime command.

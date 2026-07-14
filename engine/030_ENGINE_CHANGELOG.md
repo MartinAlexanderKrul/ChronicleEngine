@@ -12,6 +12,16 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-14 — Canonical `/system` Render Template (Reikon)
+
+**World (Reikon):** Promoted the illustrative `/system` display in `worlds/reikon/205_THE_LEDGER.md` into a **normative Canonical `/system` Template** with deterministic rendering rules (fixed section order, fixed Stats order, data bindings to the Character Sheet / Inventory / Objectives, always-shown Condition line, empty-section handling, in-fiction-only content) plus a worked example bound to Daedalus's canonical state. Given the same canonical character state, every Runtime now renders the same window on any substrate (canon-determinism, `012` Section 7, applied to a fixed display)
+**Runtime Profile:** Generalized the requirement in the Runtime Command Interface (Namespace and Precedence): a world that declares a diegetic command should also declare its canonical render template, and the Runtime renders that command verbatim to the template rather than improvising a layout
+**Glossary:** Extended **Diegetic Command** to note the world-declared render template
+**Rationale:** `/system` was described as "Solo Leveling-style" with an example marked *Example*, so different Runtimes would style it differently; making the template normative fixes the format across all sessions
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-13 — Runtime Command Interface
 
 **Decisions:** Added Decision 056 (Runtime Command Interface), registering a set of out-of-character control verbs (`/ChronicleEngine`, `/save`, `/continue`, `/new`, `/end`, `/restart`, `/branch`, `/load`, `/worlds`, `/campaigns`, `/saves`, `/export`, `/recap`, `/status`, `/validate`, `/help`, `/debug`) as thin dispatchers onto procedures the Gameplay Runtime Profile already defines — no new persistence, resolution, or canon mechanic

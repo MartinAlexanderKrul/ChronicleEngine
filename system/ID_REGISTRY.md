@@ -25,7 +25,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000064 |
-| Record | `REC-` | Canonical Record | REC-000045 |
+| Record | `REC-` | Canonical Record | REC-000046 |
 | Event | `EVT-` | Event | EVT-000028 |
 | Relationship | `REL-` | Relationship | REL-000044 |
 
@@ -67,6 +67,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000061 - ENT-000064 | Entity | Reikon Awakening live Data Model migration: Dr. Kael Venn, Captain Marissa Thorne, Lysander, and Warehouse 7 E-Rift |
 | REC-000038 - REC-000045 | Record | Reikon Awakening standard live campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180) |
 | REL-000040 - REL-000044 | Relationship | Reikon Awakening: Authority membership, Institute affiliation, and Daedalus's three established contacts |
+| REC-000046 | Record | Reikon Awakening `saves/900_CHECKPOINT_0002/900_SAVE_MANIFEST.md` — the first conforming checkpoint manifest, superseding the quarantined Checkpoint 001 |
 
 ---
 
@@ -108,3 +109,11 @@ The Checkpoint 001 gameplay session (commit line `019cffa` / `b840bf2`) left thi
 - **Canon reconstructed in standard live ledgers.** The played Session 1 canon was originally written only into the immutable snapshot and later copied into prose-only live files. The Version 0.2 conformance pass reconstructed it in standard live Canonical Records (`100` through `180`) with fresh record identifiers, proper ownership, and live definitions for the already-allocated campaign objects. The older prose files remain non-canonical historical presentation.
 - **Snapshot object blocks remain malformed and immutable.** The snapshot is unchanged. Its blocks were not imported verbatim; live canon now correctly defines `ENT-000051`–`ENT-000060` and `EVT-000025`–`EVT-000028` under fresh records. `ENT-000052` and `ENT-000053` represent the observed Broodling and Swarmer creature archetypes rather than individual killed creatures.
 - **Phantom record allocations.** `REC-000035`–`REC-000037` are not defined anywhere (not even in the snapshot). The high-water mark was advanced for them without objects being created; under never-reuse the numbers are retired, not reclaimed, and are logged above as consumed.
+
+## Update — reconstruction verified and Checkpoint 001 quarantined (2026-07-14)
+
+The reconstruction recorded above was structurally valid but had never been verified against play, because the Session 1 transcript was not in the repository. It is now committed at `campaigns/reikon_awakening_001/exports/play_export_0001.md`.
+
+**The reconstruction is confirmed faithful.** XP (36/100), kill counts (2 Broodlings, 3 Swarmers), both resolution rolls (43, 61), health, mana, location, inventory, and stats all match the transcript. The XP arithmetic independently confirms Reikon's declared per-challenge award model. The reconstruction also correctly resolved a contradiction inside the transcript itself, which narrates "three Broodlings" at one point where both the scene and the arithmetic establish two. Full audit and logged discrepancies: `campaigns/reikon_awakening_001/exports/README.md`.
+
+**Checkpoint 001 is quarantined as non-restorable**, and superseded by `saves/900_CHECKPOINT_0002/` (manifest `REC-000046`), the first conforming checkpoint for this campaign. The snapshot's bytes are unchanged per Rules Section 13.2; its status is recorded externally in `campaigns/reikon_awakening_001/saves/README.md`. Its manifest additionally misattributes identifiers across scopes — claiming `REC-000025` (Prototype Beta) and `REC-000030`/`REC-000031` (Reikon world) as its own campaign allocations — which is a second, independent account of the same corruption and disagrees with this registry's own record that the checkpoint consumed `REC-000035`–`REC-000037`. Neither account is correct; both are retained as evidence and neither is authoritative over the live ledgers.

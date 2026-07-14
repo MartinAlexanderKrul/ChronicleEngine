@@ -12,6 +12,28 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-14 — Reikon save-layer repair: transcript committed, reconstruction verified, conforming checkpoint created
+
+**Context:** The Reikon Awakening campaign's only checkpoint was unrestorable, and its live canon — reconstructed from that malformed snapshot on 2026-07-14 — had never been verified against play. Campaign-layer conformance repair in Architect mode; no campaign state was advanced and no simulation was resolved.
+
+**Evidence:** Committed the Session 1 gameplay transcript to `campaigns/reikon_awakening_001/exports/play_export_0001.md` verbatim, plus a later four-turn inspection session as `play_export_0002.md`. Both are non-canonical derived artifacts (Decision 056), preserved unedited; provenance and audit live in the sibling `README.md`. This closes the changelog's previously dangling citations to `REIKON_SESSION_001_TRANSCRIPT.md`, which had been cited as evidence for Decisions 057 and the combat-fairness fix while living outside the repository.
+
+**Audit:** The reconstruction is **confirmed faithful** against the transcript on every material fact — XP 36/100, five kills (2 Broodlings + 3 Swarmers), both resolution rolls (43, 61), health, mana, location, inventory, stats. The XP arithmetic independently confirms Reikon's declared per-challenge model, and the reconstruction correctly resolved a contradiction internal to the transcript. Three discrepancies logged without correction: Flame Shield narrated at ~1/10 its declared cost; the enemy's in-flight charge never resolved (the already-closed finding #3, now with primary evidence); and modifier steps `+2`/`+1` recorded in the chronicle with no tier-2 attestation (pre-dispositioned by Decision 058).
+
+**Campaign:** Corrected `180_CURRENT_STATE.md`, which falsely advertised the campaign as "resumable from immutable Checkpoint 001," and scoped it to its Rules Section 13.2 role — removing character, inventory, objective, relationship, and combat-history blocks duplicated from `REC-000038`–`REC-000044`. No state lost; every trimmed fact retains an owning record.
+
+**Saves:** Added `saves/900_CHECKPOINT_0002/` (manifest `REC-000046`), the first conforming Reikon checkpoint: all eight canonical ledgers, hash-verified read-back, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` and the Rules Section 13.3 minimum — the first checkpoint in the repository to use the template shape. `saves/900_CHECKPOINT_001/` is recorded as quarantined and non-restorable in a new external `saves/README.md`; its bytes are unchanged (Rules Section 13.2). Nonconforming records are quarantined and explained, not deleted.
+
+**Findings for the proposed checkpoint-validation work:**
+
+- **The narrated-gate pattern is not confined to the save layer.** Beyond `SAVE_MANIFEST_001.md` self-reporting a validator PASS that never ran, `play_export_0002.md` claims files were "verified and checksummed" (Rules Section 13.6 defers checksums; no such mechanism exists) and its improvised `/help` describes `/restart` as "restart from latest checkpoint" — the inverse of the Gameplay Runtime Profile's definition (Redo to baseline, Decision 053), and destructive on a campaign with no baseline. Where no mechanical gate exists, the Runtime narrates the gate's success.
+- **Identifiers defined only inside a checkpoint are unreferenceable from live canon.** The validator excludes `saves/` from its scan, so it cannot resolve them; citing `REC-000046` from a live ledger failed the gate as a dangling reference. The exclusion does not merely skip checking snapshots — it makes their contents invisible. This bears directly on whether manifests should carry `REC-` identifiers under the current validator contract.
+- **Reikon has no baseline checkpoint** (Decision 053 requires one) and cannot honestly acquire one now. `/restart` (Redo) is unavailable for this campaign; `/branch` and `/load` are unaffected. Open for decision.
+
+**Validation:** `tools/validate_repository.ps1` PASSES — 59 live Markdown files, 178 Persistent Object blocks, 178 resolved identifiers, exit 0. Checkpoint 0002's own contents remain outside the gate's scope by the standing `saves/` exclusion; its conformance rests on construction and hash-verified read-back, not on the validator.
+
+**Engine Version:** Unchanged; remains 0.2.0. No Decision, Rules, Data Model, or Runtime change.
+
 ## 2026-07-14 — Version 0.2 postmortem, modifier contract, and Reikon conformance
 
 **Postmortem:** Added `docs/420_PROTOTYPE_ALPHA/425_ENGINE_POSTMORTEM.md`; accepted the Version 0.2 knowledge architecture, disposed the Prototype Alpha backlog, and closed the release lifecycle.

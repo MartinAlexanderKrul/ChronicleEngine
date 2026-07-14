@@ -55,7 +55,7 @@ Reikon has three kinds of people, and the overrides bind only the third.
 | **The Awakened** (hunters) | yes | **none** | Engine defaults — emergent capability, no levels, no XP (Decisions 012–014) |
 | **The System Bearer** | yes | yes | `RKO-OVR-001` and `RKO-OVR-002` |
 
-There is currently **one** Bearer alive: Daedalus (`ENT-000051`).
+There is currently **one** Bearer alive. Who that is, is campaign canon, not world rule content: this profile binds *the Bearer role*, and each campaign's ledgers name the entity that holds it. A forked world-line has its own Bearer with its own identifier (Decision 053) and inherits this profile unchanged.
 
 This scoping is the point. Reikon is not a world where the engine's progression model is replaced wholesale; it is a world that otherwise obeys the engine and contains exactly one legendary exception. An ordinary Awakened grows the slow way — practice, ordeal, mastery — and nothing counts it.
 
@@ -380,7 +380,7 @@ It makes the anti-farming rule arithmetic rather than exhortation, too. Grinding
 
 The System has state, continuity, and initiative, which look entity-shaped. It is **not** a Persistent Entity, and must not be modeled as one.
 
-- Its **state** is the Bearer's state, held in his `canonical_state` (`ENT-000051`).
+- Its **state** is the Bearer's state, held in his own `canonical_state` on his campaign's character ledger.
 - Its **continuity** is the Bearer's continuity. It has no aliases, no lifecycle, no end states, no relationships of its own.
 - Its **initiative is not agency.** A storm has initiative. An interjection is a world reaction, not an actor's choice.
 

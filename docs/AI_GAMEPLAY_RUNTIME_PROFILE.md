@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.29
+**Document Version:** 1.30
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -312,7 +312,7 @@ Every runtime command still passes through the obligations that govern the proce
 
 Two kinds of slash token can appear in play, and the Runtime must not confuse them:
 
-- **Runtime commands** — out-of-character, engine-general, defined in this profile. They mean the same thing in every world and every campaign. Their names are **reserved**, including their aliases (`/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles` for `/ChronicleEngine`): a world must not redefine `/save`, `/continue`, `/new`, or any other runtime command or alias as an in-fiction verb.
+- **Runtime commands** — out-of-character, engine-general, defined in this profile. They mean the same thing in every world and every campaign. Their names are **reserved**, including `/game`, `/chronicle`, and `/chronicles` for `/ChronicleEngine`, and `/resume` for `/continue`: a world must not redefine `/save`, `/continue`, `/new`, or any other runtime command or alias as an in-fiction verb.
 - **Diegetic commands** — in-fiction, world-authored, part of a world's content (for example Reikon's `/system`, which opens a character's in-world System interface). A diegetic command is world-authoring content governed by the Supernatural Phenomena Contract (Rules Section 11) when it is diegetically real; it is not part of this profile and varies by world.
 
   When a world declares a diegetic command, it should also declare that command's **canonical render template** — the fixed layout and the rules for binding it to canonical state (Reikon's is the `/system` template in `worlds/reikon/206_WORLD_RULE_PROFILE.md`). Where a world provides one, the Runtime renders that command **verbatim to the template**, deriving every value from canon and never restyling, reordering, or improvising the layout. This makes a diegetic display deterministic across sessions and substrates — the same canon-determinism the die and ledgers already obey (`012` Section 7), extended to the world's own interface, so every Runtime shows the player the same window.
@@ -341,11 +341,11 @@ Each command dispatches to the named procedure. The procedure — not this table
 
 | Command | Effect | Dispatches to |
 |---------|--------|---------------|
-| `/ChronicleEngine [target]` | **Bootstrap.** Enter Interpreter mode and load the boot set. With **no target** (the default), present the Bootstrap Selection Screen — the command menu plus a worlds/campaigns listing with status and latest checkpoint — then **wait for the player to choose; never auto-load or auto-resume a campaign.** With a campaign path or world name, boot directly into it. Aliases (identical effect): `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`. | Bootstrap Selection Screen → First-Session Boot / Returning Sessions |
+| `/ChronicleEngine` | **Bootstrap.** Enter Interpreter mode, load the boot set, render the Engine Welcome Page—the complete command menu plus worlds/campaigns with status and latest checkpoint—and yield. Takes no target and never loads, restores, or resumes a campaign. Aliases (identical effect): `/game`, `/chronicle`, `/chronicles`. | Engine Welcome Page |
 | `/help [command]` | With no argument, list **every** runtime command and alias in this table; never state-filter or omit commands. With an argument, explain that command. Out-of-character; no state change. | — |
 | `/save [label]` | Checkpoint now. Optional `label` is recorded in the save manifest's save-identity metadata. | Checkpoint Persistence → Save Algorithm |
 | `/end` | Close the session: promotion barrier, session-close checkpoint, Gameplay Runtime Report. Alias: `/save-and-quit`. | Gameplay Close |
-| `/continue [world|campaign]` | With no argument, resume the **most recently played** campaign from its latest canonical checkpoint. With a world, resume that world's most recently played campaign. With a campaign, resume that campaign. | Returning and Takeover Sessions (Rules Section 13.4) |
+| `/continue [world|campaign]` | With no argument, resume the **most recently played** campaign from its latest canonical checkpoint. With a world, resume that world's most recently played campaign. With a campaign, resume that campaign. Alias: `/resume [world|campaign]`. | Returning and Takeover Sessions (Rules Section 13.4) |
 | `/new <world>` | Start a **new campaign instance** in that world. | Emergent Campaign / Custom Protagonist initialization |
 | `/load <checkpoint>` | Restore a **specific earlier** checkpoint of the current campaign. Continuing play from a non-latest checkpoint is a fork (Decision 053). **Refuses a checkpoint recorded as non-restorable** (see Destructive-Command Guards). | Returning Sessions + Fork (Decision 053) |
 | `/restart` | **Destructive.** Redo: reset the current campaign to its **baseline** checkpoint, discarding play since baseline. Keeps the protagonist's identifier; does not roll back the registry (Decision 053). **Requires a baseline checkpoint and explicit confirmation** (see Destructive-Command Guards). Not "reload the latest checkpoint" — that is `/continue`. | Redo (Decision 053) |
@@ -366,24 +366,24 @@ The interface is **extensible**: a future runtime command is added here as anoth
 
 `/ChronicleEngine` is distinguished from every other runtime command by *when* it must be recognizable. The rest of this table is available only after this profile is loaded — but this profile is one of the files the player is asking the Runtime to load. `/ChronicleEngine` therefore must be reachable from the one file a cold-start Runtime is guaranteed to see: the root `README.md`. Its definition is duplicated there for exactly this reason, and the two must stay in agreement.
 
-The README also carries an **exact cold-start mirror of every Command Table row**. On a no-target bootstrap, render that mirror rather than composing or paraphrasing a catalog. Command names and aliases are closed: a token not present in the Command Table is not an alias. In particular, `/checkpoint`, `/progress`, `/resume`, `/list`, `/close`, and bare `/start` with campaign-start semantics must never be invented; `/start` is only an alias of `/ChronicleEngine`.
+The README also carries an **exact cold-start mirror of every Command Table row**. On bootstrap, render that mirror rather than composing or paraphrasing a catalog. Command names and aliases are closed: a token not present in the Command Table is not an alias. `/resume` is the sole alias of `/continue`; former or invented convenience tokens are not commands.
 
-On `/ChronicleEngine`, the Runtime first parses whether the command contains a target, **before reading any campaign file**. With no target, the No-Target Gate prohibits campaign startup, ledger/checkpoint reads, restoration, reconciliation, recap, and readiness work. The Runtime reads only the engine boot set plus repository metadata needed for the selection listing, renders the selection screen, and yields. A recent, active, or sole campaign is never an implicit target.
+`/ChronicleEngine` has no target parameter. The Runtime must not parse trailing text as a world, campaign, checkpoint, save label, or restoration request. The Bootstrap Gate prohibits campaign startup, ledger/checkpoint reads, restoration, reconciliation, recap, and readiness work. The Runtime reads only the engine boot set plus repository metadata needed for the welcome listing, renders the Engine Welcome Page, and yields. A recent, active, sole, or trailing-text campaign is never an implicit target.
 
-The Runtime reads the boot set on its own initiative, following the cold-start loading rule: seeing only `README.md` (or a partial listing) at the start of a conversation is a cold-start artifact, not a missing-files condition, and the Runtime reports a load blocker only after an actual read attempt on a named file errors (First-Session Boot; Failure Behavior). The boot set is the profile, the Engine Rules (Sections 4, 6, 13), the Runtime and Data Model documents, and the validator. **Only after a target is explicitly supplied or chosen** may it read the selected campaign's startup, ledgers, world records, and latest checkpoint.
+The Runtime reads the boot set on its own initiative, following the cold-start loading rule: seeing only `README.md` (or a partial listing) at the start of a conversation is a cold-start artifact, not a missing-files condition, and the Runtime reports a load blocker only after an actual read attempt on a named file errors (First-Session Boot; Failure Behavior). The boot set is the profile, the Engine Rules (Sections 4, 6, 13), the Runtime and Data Model documents, and the validator. **Only after a later `/continue`, `/resume`, `/new`, or `/load` command selects play** may it read the selected campaign's startup, ledgers, world records, and latest checkpoint.
 
-After loading, behavior depends on whether a target was named. **With no target (the default), `/ChronicleEngine` presents the Bootstrap Selection Screen (below) and waits — it never auto-loads a campaign.** Once a target is chosen — named as an argument, or picked from that screen — `/ChronicleEngine` proceeds through Startup Classification, First-Session Boot or Returning Sessions, and the Readiness Gate exactly as a natural-language start prompt would; it opens no scene before the player confirms readiness.
+After loading, `/ChronicleEngine` always presents the Engine Welcome Page and waits. It never proceeds into Startup Classification, First-Session Boot, Returning Sessions, restoration, or the Readiness Gate. Those procedures begin only when a subsequent campaign command selects play.
 
-### The Bootstrap Selection Screen
+### The Engine Welcome Page
 
-`/ChronicleEngine` with no target does **not** choose a campaign for the player. After loading the boot set, it presents one screen and yields:
+`/ChronicleEngine` and each of its aliases always present one screen and yield:
 
 1. A brief confirmation that the engine is loaded — not a wall of process narration or version dumps.
 2. The complete runtime-command catalog, rendered from the README's exact cold-start mirror of this Command Table—not recalled, regrouped, or paraphrased. A world's diegetic commands are **not** shown yet; they appear once a campaign in that world is loaded.
 3. A listing of **worlds** (`worlds/`) and **campaigns** (`campaigns/`). For each campaign, show, spoiler-safe: its world, protagonist (if any), status (not started / in progress / closed or terminal), and latest checkpoint (id and date). This is the combined output of `/worlds`, `/campaigns`, and `/saves`, gathered into one screen.
-4. A prompt to choose: `/continue <world|campaign>` to resume, `/new <world>` to start fresh, or `/load <checkpoint>` for a specific point.
+4. A prompt to choose: `/continue [world|campaign]` or `/resume [world|campaign]` to resume, `/new <world>` to start fresh, or `/load <checkpoint>` for a specific point.
 
-The Runtime must **not** auto-select, auto-resume, or begin restoration, reconciliation, or a readiness gate for any campaign until the player names one. Auto-loading a campaign the player did not choose — defaulting to the first, or to the most recently played — is the specific failure this screen prevents. To resume the most recently played campaign in one step, the player uses `/continue` with no argument; the bootstrap screen itself never assumes it.
+The Runtime must **not** auto-select, auto-resume, or begin restoration, reconciliation, or a readiness gate for any campaign from the bootstrap command. Auto-loading a campaign—whether inferred from trailing text, the first campaign, or the most recently played—is the specific failure this page prevents. To resume the most recently played campaign, the player uses `/continue` or `/resume` with no argument after the welcome page.
 
 ## Resolution Rules
 
@@ -407,7 +407,7 @@ Where a campaign records checkpoint status externally (a save index), the Runtim
 
 ## Command Availability at Session Start
 
-At **every** session start, before the first scene opens, the Runtime presents the complete command catalog once as an out-of-character menu. This is mandatory on every entry path: after `/ChronicleEngine`, at the First-Session Boot briefing, and in the Returning/Takeover recap. A player who has just started, resumed, forked, or restarted must be shown what they can type without having to ask first.
+At **every** campaign session start, before the first scene opens, the Runtime presents the complete command catalog once as an out-of-character menu. This is mandatory after `/new`, `/continue`, `/resume`, `/load`, `/branch`, or `/restart`, at the First-Session Boot briefing, and in the Returning/Takeover recap. `/ChronicleEngine` itself opens only the Engine Welcome Page, not a campaign session. A player who has just started, resumed, forked, or restarted must be shown what they can type without having to ask first.
 
 The menu lists two groups:
 

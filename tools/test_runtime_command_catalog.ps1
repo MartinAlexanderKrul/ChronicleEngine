@@ -58,11 +58,44 @@ foreach ($comparison in @(
     }
 }
 
-$forbiddenAliases = @('/checkpoint', '/progress', '/resume', '/list', '/close')
+$forbiddenAliases = @('/checkpoint', '/progress', '/list', '/close', '/start', '/rpg')
 $catalogText = (Get-Content -Raw -LiteralPath (Join-Path $root 'README.md'))
 foreach ($alias in $forbiddenAliases) {
     if ([regex]::IsMatch($catalogText, "(?m)^\|[^\r\n]*``$([regex]::Escape($alias))``")) {
         throw "README catalog exposes forbidden invented alias $alias."
+    }
+}
+
+if ($catalogText -match '/ChronicleEngine \[target\]') {
+    throw '/ChronicleEngine still exposes a target parameter.'
+}
+if ($catalogText -notmatch '(?m)^\| `/ChronicleEngine` \|.*Aliases: `/game`, `/chronicle`, `/chronicles`\.') {
+    throw 'README bootstrap aliases do not match the closed alias set.'
+}
+if ($catalogText -notmatch '(?m)^\| `/continue \[world\|campaign\]` \|.*Alias: `/resume \[world\|campaign\]`\.') {
+    throw '/continue does not expose /resume with the same optional selector.'
+}
+
+$profileText = Get-Content -Raw -LiteralPath (Join-Path $root 'docs/AI_GAMEPLAY_RUNTIME_PROFILE.md')
+if ($profileText -notmatch '`/ChronicleEngine` has no target parameter') {
+    throw 'Runtime Profile does not declare the argumentless bootstrap schema.'
+}
+if ($profileText -notmatch 'must not parse trailing text as a world, campaign, checkpoint, save label, or restoration request') {
+    throw 'Runtime Profile does not block trailing bootstrap text from target parsing.'
+}
+if ($profileText -notmatch 'always presents the Engine Welcome Page and waits') {
+    throw 'Runtime Profile does not make the welcome page the invariant bootstrap result.'
+}
+
+$activeCommandDocs = @(
+    'README.md',
+    'docs/AI_GAMEPLAY_RUNTIME_PROFILE.md',
+    'docs/GAMEPLAY_START_GUIDE.md'
+) | ForEach-Object { Get-Content -Raw -LiteralPath (Join-Path $root $_) }
+$activeCommandText = $activeCommandDocs -join "`n"
+foreach ($removed in @('/start', '/rpg')) {
+    if ($activeCommandText -match "``$([regex]::Escape($removed))``") {
+        throw "Removed alias remains in active command documentation: $removed"
     }
 }
 

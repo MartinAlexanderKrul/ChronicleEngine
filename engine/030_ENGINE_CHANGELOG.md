@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-14 — Decision 067: argumentless welcome bootstrap and `/resume`
+
+**Bootstrap:** `/ChronicleEngine` now has no target parameter and always renders the Engine Welcome Page only. Trailing text cannot select a campaign or cross into restoration.
+**Aliases:** Bootstrap aliases are reduced to `/game`, `/chronicle`, and `/chronicles`; `/start` and `/rpg` are removed. `/resume [world|campaign]` becomes the sole alias of `/continue [world|campaign]`.
+**Boundary:** Campaign reads and startup procedures begin only after a later `/continue`, `/resume`, `/new`, or `/load`; bootstrap always yields after the welcome page.
+**Enforcement:** `tools/test_runtime_command_catalog.ps1` checks the argumentless signature, closed bootstrap aliases, resume alias, removed tokens, and three-way catalog synchronization.
+**Documents:** README 1.4; Runtime Profile 1.30; Gameplay Start Guide 2.14; Glossary updated; Decision 067.
+
 ## 2026-07-14 — Decision 066: deterministic Reikon Health recovery
 
 **Gap closed:** Reikon's numeric Health pool had no numeric restoration contract, leaving rest, treatment, potions, interrupted recovery, and maximum-Health changes to improvisation.

@@ -1,6 +1,6 @@
 # Chronicle Engine
 
-**Document Version:** 1.3
+**Document Version:** 1.4
 
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 
@@ -33,7 +33,7 @@ The player becomes part of its history.
 
 # Play Chronicle Engine — the `/ChronicleEngine` command
 
-**To start the engine, send `/ChronicleEngine` to an AI that can read and write this repository.** (`/start`, `/game`, `/rpg`, `/chronicle`, and `/chronicles` are aliases and do exactly the same thing. To start and select in one command, name a target: `/ChronicleEngine <campaign-path-or-world>`.)
+**To start the engine, send `/ChronicleEngine` to an AI that can read and write this repository.** The command takes no target and always renders the Engine Welcome Page only. `/game`, `/chronicle`, and `/chronicles` are its only aliases and have exactly the same argumentless behavior.
 
 `/ChronicleEngine` is the **bootstrap command**. It is documented here, in `README.md`, on purpose: at the start of a conversation an AI may see only this file, so the command that boots the engine must be reachable from this file alone. Every other runtime command (`/save`, `/continue`, `/new`, `/end`, …) is defined once the Gameplay Runtime Profile is loaded; `/ChronicleEngine` is the one that loads it.
 
@@ -41,12 +41,9 @@ After the profile loads, its complete command table is active immediately on the
 
 ### What the AI must do on `/ChronicleEngine`
 
-You are being asked to start Chronicle Engine in **Interpreter mode**. Before reading any campaign file, parse the bootstrap command itself and apply this gate:
+You are being asked to start Chronicle Engine in **Interpreter mode**. `/ChronicleEngine` has an empty argument schema: do not parse, infer, or forward a world, campaign, checkpoint, or label from text following it. Every invocation loads only the engine boot set below, renders the Engine Welcome Page—the exact complete catalog plus repository worlds and campaign metadata—asks the player to choose, and stops.
 
-- **No target was supplied** — load only the engine boot set below. Do **not** choose a campaign, read campaign ledgers or checkpoints, restore state, recap a scene, or enter a readiness gate. Render the exact complete catalog in this README, list repository worlds and campaign metadata, ask the player to choose, and stop.
-- **A target was supplied** — after loading the engine boot set, load only that target and follow the profile's campaign startup or restoration procedure.
-
-This **No-Target Gate fires before campaign discovery or restoration**. A recent, active, or sole campaign is never an implicit argument. `/chronicle` alone means “engine selection screen,” never “continue.”
+This **Bootstrap Gate fires before campaign discovery or restoration**. Do **not** read campaign ledgers or checkpoints, restore state, recap a scene, or enter a readiness gate. A recent, active, sole, or trailing-text campaign is never an implicit bootstrap argument. `/ChronicleEngine`, `/game`, `/chronicle`, and `/chronicles` always mean “Engine Welcome Page,” never “continue.”
 
 The rest of the repository is available as readable, writable files even if this conversation began showing only `README.md`. **Read the engine files below on your own initiative.** Seeing only this README at the start is a cold-start artifact, never a reason to report that the engine files are missing — report a blocker only after an actual read attempt on a named file errors.
 
@@ -58,22 +55,22 @@ Read, in this order, then follow the loaded procedure:
 4. **`engine/012_ENGINE_RUNTIME.md`** and **`engine/011_ENGINE_DATA_MODEL.md`** — runtime obligations and the data model (identifiers, ledgers) the validator enforces.
 5. **`tools/validate_repository.ps1`** — the validation gate run before any checkpoint is claimed saved.
 
-Then select what to play and load its state only when the command named a target or the player subsequently chooses one:
+Then select what to play and load its state only when the player subsequently issues `/continue`, `/resume`, `/new`, or `/load`:
 
 - **A specific campaign** — read `campaigns/<campaign>/090_CAMPAIGN_STARTUP.md`, its canonical ledgers (`100`–`180`), the campaign's world records under `worlds/<world>/`, and, when resuming, the latest checkpoint under `campaigns/<campaign>/saves/`.
-- **No target given (the default)** — start the engine only: present the **complete runtime-command catalog** and a listing of worlds (`worlds/`) and campaigns (`campaigns/`) with each campaign's status and latest checkpoint, then **wait for the player to choose** (`/continue <world|campaign>`, `/new <world>`, or `/load <checkpoint>`). Do **not** load campaign files, auto-load or auto-resume a campaign, begin reconciliation, or enter a readiness gate until the player chooses one — presenting the catalog and selection screen is the whole job here.
+- **Bootstrap always stops here** — present the **complete runtime-command catalog** and a listing of worlds (`worlds/`) and campaigns (`campaigns/`) with each campaign's status and latest checkpoint, then **wait for the player to choose** (`/continue [world|campaign]`, `/resume [world|campaign]`, `/new <world>`, or `/load <checkpoint>`). Do **not** load campaign files, auto-load or auto-resume a campaign, begin reconciliation, or enter a readiness gate until the player chooses one—presenting the Engine Welcome Page is the whole job.
 
 ### Exact cold-start command catalog
 
-On no-target bootstrap, render **every row below**. Do not rename, merge, omit, or invent commands or aliases. Only the aliases explicitly written below exist.
+On bootstrap, render **every row below**. Do not rename, merge, omit, or invent commands or aliases. Only the aliases explicitly written below exist.
 
 | Command | What it does |
 |---------|--------------|
-| `/ChronicleEngine [target]` | Start the engine and show this selection screen; with a named world or campaign, boot directly into it. Aliases: `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`. |
+| `/ChronicleEngine` | Start the engine and render the Engine Welcome Page only. Takes no target and never loads or resumes a campaign. Aliases: `/game`, `/chronicle`, `/chronicles`. |
 | `/help [command]` | List this complete catalog, or explain one command. |
 | `/save [label]` | Checkpoint the current campaign. Requires a loaded campaign. |
 | `/end` | Save and close the current campaign session. Alias: `/save-and-quit`. Requires a loaded campaign. |
-| `/continue [world|campaign]` | Resume the named campaign, the latest campaign in a named world, or—without an argument—the most recently played campaign. |
+| `/continue [world|campaign]` | Resume the named campaign, the latest campaign in a named world, or—without an argument—the most recently played campaign. Alias: `/resume [world|campaign]`. |
 | `/new <world>` | Start a new campaign in a world. |
 | `/load <checkpoint>` | Restore a specific restorable checkpoint of the current campaign. Requires a loaded campaign. |
 | `/restart` | Destructively reset the current campaign to its baseline after confirmation. Requires a loaded campaign and baseline checkpoint; it is not “reload latest.” |

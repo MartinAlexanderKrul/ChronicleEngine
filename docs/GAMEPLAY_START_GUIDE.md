@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.13
+**Document Version:** 2.14
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -203,15 +203,15 @@ Do not close the conversation until the Runtime confirms whether canon was promo
 
 Once the engine is loaded, you can drive it with short **runtime commands** instead of retyping a full prompt. These are available on the bootstrap selection screen as well as during a campaign; the Runtime recognizes them immediately, including mid-scene, and answers them without advancing the story. A command whose precondition is not met reports that requirement instead of being ignored or interpreted as play. They are a convenience over the prompts above; the prose prompts remain valid, and each command runs exactly the same procedure.
 
-**You do not have to memorize these.** `/ChronicleEngine` with no target starts the engine only and shows the complete catalog below without loading a campaign. At every campaign session start the Runtime shows the same complete runtime catalog plus all commands defined by that campaign's world (a Reikon campaign, for example, adds `/system`). Type `/help` at any time to see the complete list again; commands that need a campaign are labelled, not hidden.
+**You do not have to memorize these.** `/ChronicleEngine` takes no target and always starts the engine only, showing the Engine Welcome Page without loading a campaign. At every campaign session start the Runtime shows the same complete runtime catalog plus all commands defined by that campaign's world (a Reikon campaign, for example, adds `/system`). Type `/help` at any time to see the complete list again; commands that need a campaign are labelled, not hidden.
 
 | Command | What it does |
 |---------|--------------|
-| `/ChronicleEngine [target]` | **Start here.** Boots the engine and shows a menu — the available commands plus your worlds and campaigns with each one's status and latest checkpoint — then **waits for you to pick** (it won't auto-load a campaign). Name a campaign or world to jump straight in. Aliases: `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`. Also in the root `README.md` so it works before any other file is loaded. |
+| `/ChronicleEngine` | **Start here.** Boots the engine, shows the Engine Welcome Page—the available commands plus your worlds and campaigns with each one's status and latest checkpoint—and waits. Takes no target and never loads a campaign. Aliases: `/game`, `/chronicle`, `/chronicles`. Also in the root `README.md` so it works before any other file is loaded. |
 | `/help [command]` | With no argument, list every runtime command and alias without filtering; with an argument, explain that command. |
 | `/save [label]` | Checkpoint now. An optional label is recorded in the save manifest. |
 | `/end` | Close the session: promote canon, write a session-close checkpoint, print the report. |
-| `/continue [world|campaign]` | Resume a named campaign, the latest campaign in a named world, or—without an argument—the campaign played most recently. |
+| `/continue [world|campaign]` | Resume a named campaign, the latest campaign in a named world, or—without an argument—the campaign played most recently. Alias: `/resume [world|campaign]`. |
 | `/new <world>` | Start a new campaign in that world. |
 | `/load <checkpoint>` | Restore a specific earlier checkpoint of the current campaign (continuing from it forks a new world-line). Won't load a checkpoint marked non-restorable. |
 | `/restart` | **Destructive — read this one.** Resets the campaign to its **baseline** (its very beginning) and replays from there, discarding everything played since. It is *not* "reload my last save" — that's `/continue`. It asks you to confirm first, and won't run at all if the campaign has no baseline checkpoint. |

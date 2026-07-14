@@ -3024,6 +3024,41 @@ Decision 065 made Health changes settle every exchange but exposed a remaining g
 
 ---
 
+## Decision 067 — Argumentless Welcome Bootstrap and Dedicated Resume Command
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** `README.md` (Play Chronicle Engine, Exact cold-start command catalog); `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Runtime Command Interface, Engine Welcome Page); `docs/GAMEPLAY_START_GUIDE.md` (Runtime Commands); Decisions 056, 063, 064
+
+### Context
+
+The bootstrap signature still exposed `/ChronicleEngine [target]`. Even after the no-target gate was strengthened, that optional label allowed a Runtime to classify text attached to the engine command as a campaign selection and proceed into restoration. The same command therefore meant either “show the engine” or “start play,” leaving the welcome-only boundary dependent on argument parsing. Its broad alias set also included `/start` and `/rpg`, while `/continue`—the actual campaign-resume operation—had no accepted natural-language alias.
+
+### Decision
+
+1. **`/ChronicleEngine` is argumentless.** It always loads the engine boot set, renders the Engine Welcome Page, and yields. It never selects, loads, restores, or resumes a campaign.
+2. **Trailing bootstrap text is not a target.** A Runtime does not parse text after `/ChronicleEngine` or a bootstrap alias as a world, campaign, checkpoint, label, or restoration request. The welcome-only outcome is invariant.
+3. **Bootstrap aliases are closed and reduced.** The only aliases are `/game`, `/chronicle`, and `/chronicles`. `/start` and `/rpg` are removed.
+4. **Campaign restoration belongs only to `/continue`.** `/continue [world|campaign]` resumes the most recently played campaign with no argument, the latest campaign in a named world, or a named campaign.
+5. **`/resume` aliases `/continue`.** It accepts the same optional `[world|campaign]` selector and dispatches to the identical restoration procedure.
+6. **The welcome page is terminal for the bootstrap exchange.** Startup Classification, campaign reads, restoration, reconciliation, recap, readiness, and scene opening begin only after a later `/continue`, `/resume`, `/new`, or `/load` command.
+
+### Consequences
+
+- README advances to 1.4, Gameplay Runtime Profile to 1.30, and Gameplay Start Guide to 2.14.
+- The exact catalog row is `/ChronicleEngine`, not `/ChronicleEngine [target]`.
+- The resume row remains `/continue [world|campaign]` and explicitly carries `/resume [world|campaign]` as its sole alias.
+- `tools/test_runtime_command_catalog.ps1` rejects bootstrap target syntax and removed aliases, and requires the new resume alias in the README mirror while preserving row synchronization across all three catalogs.
+- Decision 056's target-bearing bootstrap and alias list are superseded by this narrower command-surface decision; its cold-start reachability rationale remains accepted.
+
+### Alternatives Considered
+
+- **Keep the optional bootstrap target and strengthen the no-target parser again.** Rejected: the label itself creates the dual behavior the welcome-only command is meant to eliminate.
+- **Make `/start` or `/rpg` resume the latest campaign.** Rejected: ambiguous “start” vocabulary would recreate overlap between engine bootstrap and campaign restoration.
+- **Add `/resume` as a separate procedure.** Rejected: it is semantically identical to `/continue`; an alias preserves one restoration contract.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

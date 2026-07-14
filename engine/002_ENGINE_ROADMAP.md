@@ -641,6 +641,7 @@ Both remain **Accepted**. They are not reopened, reversed, or renumbered: accept
 | Decision | Subject | Class |
 |----------|---------|-------|
 | Decision 069 | Change Classification Gate and Post-Release Change Control | Refinement — completes Decision 048; adds no mechanism |
+| Decision 070 | The resident layer is a separate document | Refinement — sites the obligation `012` Section 0.4 already imposes |
 
 ---
 
@@ -974,7 +975,7 @@ Current architectural debt:
 - Remove remaining terminology drift.
 - Eliminate duplicated definitions through cross-references.
 - Stabilize repository governance. *(Partially addressed by Decision 069: classification is now structural and ownership is mechanically enforced. The remaining gap is that no gate checks the class itself — only that one is recorded.)*
-- **Bootstrap command churn.** Decisions 056, 063, 064, and 067 addressed one boundary across four decisions in a single day, each written after a live test failed its predecessor; Decision 068 repeated the shape for Reikon `/system`. Each decision is individually sound and all gates pass, so nothing is broken. The open question is architectural: the Gameplay Runtime Profile is now 907 lines, revised thirty times, and carries operational contracts that keep failing at execution and getting re-sited. Decision 055 predicts this — a fetched profile cannot be the sole carrier of an obligation — and the response so far has been a mechanical catalog test plus a README mirror that must stay synchronized. Evaluate during Version 0.3 planning whether the profile needs decomposition or a stronger residency model.
+- **Bootstrap command churn.** *(Partially addressed by Decision 070: the resident layer is now its own document, so per-turn obligations are structurally separable from on-demand procedure.)* Decisions 056, 063, 064, and 067 addressed one boundary across four decisions in a single day, each written after a live test failed its predecessor; Decision 068 repeated the shape for Reikon `/system`. Each decision is individually sound and all gates pass, so nothing was broken. Decision 070 removes the structural cause Decision 055 predicted — a fetched profile as sole carrier of a per-turn obligation. What remains open is whether the *command surface itself* is over-specified: five decisions to pin one bootstrap verb suggests the cost sits in the command model, not only in where it was written down. Evaluate during Version 0.3 planning. The split does not by itself prove per-turn compliance improves; the next prototype campaign is the evidence.
 - Reconcile canon hierarchy wording between Manifest, Decisions, and Rules. *(Partially addressed by Decision 042: precedence vs. durability separated; promotion made mandatory.)*
 - Define version compatibility model.
 - Complete missing governance documents.

@@ -145,7 +145,7 @@ The Engine Layer separates three concerns that must not be conflated:
 
 The Data Model is the **most stable layer** of the architecture: everything references its identifiers and structures, so it changes least often and is amended most conservatively. Stability is not authority — the Data Model is authoritative on structure and subordinate to the Rules on behavior.
 
-The Runtime is substrate-independent. Substrate-specific procedure lives in operational **Runtime Profiles** under `docs/`, not in the Engine Layer. Large-language-model execution uses `docs/AI_SESSION_TEMPLATE.md` for Architect-mode development and `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` for Interpreter-mode gameplay (Decision 049).
+The Runtime is substrate-independent. Substrate-specific procedure lives in operational **Runtime Profiles** under `docs/`, not in the Engine Layer. Large-language-model execution uses `docs/AI_SESSION_TEMPLATE.md` for Architect-mode development and, for Interpreter-mode gameplay, a two-layer profile (Decisions 049 and 070): `docs/AI_GAMEPLAY_RESIDENT_CORE.md` is the resident layer, held in context every turn, and `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` is the fetched reference layer. The split is required by `012_ENGINE_RUNTIME.md` Section 0.4 and Decision 055: fetched material may elaborate a resident obligation but never carry one alone.
 
 Persistent-object identifiers are allocated by the repository-level registry at `system/ID_REGISTRY.md`, governed by `011_ENGINE_DATA_MODEL.md`.
 

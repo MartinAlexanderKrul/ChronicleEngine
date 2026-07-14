@@ -12,6 +12,18 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-14 — Decision 070: the resident layer becomes a separate document
+
+**Evidence:** The Gameplay Runtime Profile declared a resident/fetched split in one paragraph at 1.30, then placed the Player Agency Contract, the Action Resolution Bright Line, and Turn-State Settlement in the same 907-line file as the command table, export format, and save algorithm. "Load the resident layer" was not an operation any Runtime could perform. The profile's own history is the symptom: thirty revisions, eleven on release day, four decisions against one bootstrap boundary.
+**Gap closed:** `012` Section 0.4 and Decision 055 require the profile to *distinguish* resident from fetched; it declared the distinction rather than embodying it — the exact defect Decision 055 names, in the document Decision 055 governs.
+**Split:** `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (new, 1.0) holds the per-turn obligations. The Runtime Profile (1.31) keeps startup, commands, exports, checkpoints, and close as fetched reference. The cut followed the boundary the profile already declared; body text moved verbatim, and content conservation was verified against the pre-split file — no obligation rewritten, reclassified, or invented.
+**Boot contract:** README boot list, Gameplay Start Guide access list and AI Instructions block, and the Prototype Alpha / Prototype Beta startup configurations name the resident core first and require it held for the session.
+**Enforcement:** `tools/test_reikon_runtime_contract.ps1` asserts the per-turn clauses against the resident file — a resident rule drifting back into the fetched profile now fails the build — and checks that the profile points at the core.
+**Documents:** README; Gameplay Start Guide; Runtime Profile 1.31; resident core 1.0; Decision 070.
+**Rules / Data Model / Runtime:** Unchanged. Refinement under Decision 069 (sites an existing `012` Section 0.4 obligation); owned by Version 0.3 Planning.
+**Limitation:** The split makes residency possible and its absence visible. It does not prove per-turn compliance improves — the next prototype campaign is the evidence.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-14 — Decision 069: change classification gate and post-0.2 decision reconciliation
 
 **Evidence:** Seventeen decisions (052–068) were accepted since the last roadmap reconciliation and only Decision 053 reached `002_ENGINE_ROADMAP.md`, inside a Technical Debt bullet. Ten landed after the 0.2.0 release and outside the five dispositions named in the Engine Postmortem's refinement table. Every one of them asserted its own class inside its own Alternatives Considered section.

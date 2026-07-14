@@ -15,6 +15,7 @@ function Assert-Contains {
 }
 
 $runtime = 'docs/AI_GAMEPLAY_RUNTIME_PROFILE.md'
+$resident = 'docs/AI_GAMEPLAY_RESIDENT_CORE.md'
 $profile = 'worlds/reikon/206_WORLD_RULE_PROFILE.md'
 $character = 'campaigns/reikon_awakening_001/100_CHARACTER_SHEET.md'
 $inventory = 'campaigns/reikon_awakening_001/120_INVENTORY_AND_OWNERSHIP.md'
@@ -22,10 +23,19 @@ $current = 'campaigns/reikon_awakening_001/180_CURRENT_STATE.md'
 $startup = 'campaigns/reikon_awakening_001/090_CAMPAIGN_STARTUP.md'
 $lore = 'worlds/reikon/205_THE_LEDGER.md'
 
-Assert-Contains $runtime '^# Turn-State Settlement$' 'Missing per-exchange settlement enforcement point.'
-Assert-Contains $runtime 'Modifier Polarity Is Always Actor-Relative' 'Missing actor-relative modifier rule.'
+# Per-turn obligations live in the resident core (Decision 070). Asserting them
+# against the resident file is what keeps the split honest: if a resident rule
+# drifts back into the fetched profile, these fail.
+Assert-Contains $resident '^# Turn-State Settlement$' 'Missing per-exchange settlement enforcement point.'
+Assert-Contains $resident 'Modifier Polarity Is Always Actor-Relative' 'Missing actor-relative modifier rule.'
+Assert-Contains $resident 'Do not print headings such as.*Resolution Sequence' 'Debug-off mechanical narration is not prohibited.'
+
+# Chat Debug Export is invoked on demand and stays in the fetched profile.
 Assert-Contains $runtime 'contains only repeated role labels and verbatim bodies' 'Debug export is not constrained to raw labelled messages.'
-Assert-Contains $runtime 'Do not print headings such as.*Resolution Sequence' 'Debug-off mechanical narration is not prohibited.'
+
+# The fetched profile must point at the resident core, or a session can boot
+# with the command table and no agency contract.
+Assert-Contains $runtime 'docs/AI_GAMEPLAY_RESIDENT_CORE\.md' 'Runtime Profile does not point at the resident core.'
 
 Assert-Contains $profile 'INVENTORY is mandatory on every render' '/system does not require inventory.'
 Assert-Contains $profile '^## 9\.5 Compact State Notifications$' 'Missing one-shot System notification contract.'

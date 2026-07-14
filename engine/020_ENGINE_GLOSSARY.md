@@ -78,7 +78,7 @@ Automatic execution is distinct from a Player Decision Point: it does not requir
 
 The interaction-cadence rule that each Runtime response normally consumes one Player Intent and ends at the next Player Decision Point, may contain any number of involuntary world reactions, and must not consume more than one player opportunity.
 
-The Beat Budget is the operative expression of the governing agency rule and is cleaner than any word limit. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
+The Beat Budget is the operative expression of the governing agency rule and is cleaner than any word limit. Defined in `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Interaction Cadence); see Decision 050.
 
 ---
 
@@ -86,7 +86,7 @@ The Beat Budget is the operative expression of the governing agency rule and is 
 
 One of the four interaction-pacing modes the Gameplay Runtime Profile selects by temporal compression and uncertainty: Beat, Scene, Transition, and Montage, coarsening as more world and time are compressed into one response.
 
-Cadence modes govern temporal compression paired with high Narrative Richness; they do not change the Beat Budget, and every mode resolves at exactly one Player Decision Point. Operational profile guidance, not an engine mechanic. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
+Cadence modes govern temporal compression paired with high Narrative Richness; they do not change the Beat Budget, and every mode resolves at exactly one Player Decision Point. Operational profile guidance, not an engine mechanic. Defined in `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Interaction Cadence); see Decision 050.
 
 ---
 
@@ -228,7 +228,7 @@ See Working Set. Defined in `012_ENGINE_RUNTIME.md`, Section 3.
 
 The number of player opportunities a Runtime response consumes.
 
-Decision Density should remain low — ideally one per response — and is independent of Narrative Richness, which should remain high. Conflating the two is the cadence failure the Beat Budget corrects. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
+Decision Density should remain low — ideally one per response — and is independent of Narrative Richness, which should remain high. Conflating the two is the cadence failure the Beat Budget corrects. Defined in `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Interaction Cadence); see Decision 050.
 
 ---
 
@@ -236,7 +236,7 @@ Decision Density should remain low — ideally one per response — and is indep
 
 An explicit, scoped instruction by which the player hands pacing back to the Runtime — for example "skip to the city," "auto-resolve the errand," or "narrate the rest of this conversation."
 
-Delegation is the only path by which the Runtime may skip meaningful interactions; fine cadence resumes at the next Player Decision Point. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Player Agency Contract).
+Delegation is the only path by which the Runtime may skip meaningful interactions; fine cadence resumes at the next Player Decision Point. Defined in `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Player Agency Contract).
 
 ---
 
@@ -512,7 +512,7 @@ The Interpreter is a replaceable component of the Runtime, currently realized by
 
 Something the world or its NPCs do that requires no player choice — a passer-by's greeting, bells ringing, an NPC continuing their own activity.
 
-Involuntary world reactions are unlimited within a Runtime response and are what make a beat feel alive; they are distinct from a player opportunity, of which a response resolves at most one. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence).
+Involuntary world reactions are unlimited within a Runtime response and are what make a beat feel alive; they are distinct from a player opportunity, of which a response resolves at most one. Defined in `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Interaction Cadence).
 
 ---
 
@@ -668,7 +668,7 @@ An event transformed by culture, religion, legend, propaganda, or later retellin
 
 The Gameplay Runtime Profile principle that the Runtime should avoid unnecessary interruptions: small actions that logically follow from a declared intent are narrated as involuntary consequences rather than surfaced as choices.
 
-Narrative momentum keeps play from fragmenting into per-sentence stops while still yielding at every meaningful Player Decision Point. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Player Agency Contract).
+Narrative momentum keeps play from fragmenting into per-sentence stops while still yielding at every meaningful Player Decision Point. Defined in `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Player Agency Contract).
 
 ---
 
@@ -676,7 +676,7 @@ Narrative momentum keeps play from fragmenting into per-sentence stops while sti
 
 The sensory and characterful detail within the current beat — smells, sounds, architecture, expressions, NPC voice — which the Runtime should keep high.
 
-Narrative Richness is independent of Decision Density: a response may be maximally rich while consuming exactly one player opportunity. Rich description enriches the current beat; it is not a licence to advance the story. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
+Narrative Richness is independent of Decision Density: a response may be maximally rich while consuming exactly one player opportunity. Rich description enriches the current beat; it is not a licence to advance the story. Defined in `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Interaction Cadence); see Decision 050.
 
 ---
 
@@ -778,7 +778,7 @@ Only the player may author intent within this domain; the Runtime resolves its c
 
 Any point where the player would reasonably expect to choose, ask, or redirect what the character does — whether momentous or minor.
 
-A Runtime response resolves at most one player opportunity, the one at which it yields, in contrast to involuntary world reactions, which are unlimited. Player opportunities are broader than materially consequential decisions: asking about the town or detouring to a library counts. Defined in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Interaction Cadence); see Decision 050.
+A Runtime response resolves at most one player opportunity, the one at which it yields, in contrast to involuntary world reactions, which are unlimited. Player opportunities are broader than materially consequential decisions: asking about the town or detouring to a library counts. Defined in `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Interaction Cadence); see Decision 050.
 
 ---
 
@@ -931,6 +931,22 @@ A repository-level, non-canonical **raw** transcript of the user-visible current
 Operational guidance for executing the Runtime on a specific substrate, held under `docs/` rather than in the engine specification.
 
 A profile specifies technique — how a substrate boots, loads, and sequences a session — without altering runtime obligations. The current large-language-model profile's session procedure is `docs/AI_SESSION_TEMPLATE.md`. Defined in `012_ENGINE_RUNTIME.md`, Section 0.4.
+
+Every profile must distinguish a [Resident Layer](#resident-layer) from [Fetched Reference](#resident-layer).
+
+---
+
+<a id="fetched-reference"></a>
+
+## Resident Layer
+
+The part of a Runtime Profile that is always in context and applied every turn, as distinct from **fetched reference** — material consulted on demand when its operation is invoked.
+
+An obligation sited in the resident layer fires at the moment it can be violated; fetched material may elaborate a resident obligation but may never be its sole carrier. The distinction exists because on a substrate whose per-turn default competes with its guardrails, a guardrail that is only fetched effectively does not fire (Decision 055).
+
+For large-language-model gameplay the two layers are two documents: `docs/AI_GAMEPLAY_RESIDENT_CORE.md` is the resident layer, loaded before play and held for the session; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` is the fetched reference layer. They were one file through Profile 1.30, which made residency a declared property rather than a structural one (Decision 070).
+
+Required by `012_ENGINE_RUNTIME.md`, Section 0.4. See Decisions 055 and 070.
 
 ---
 

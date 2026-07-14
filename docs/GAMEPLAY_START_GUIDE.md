@@ -20,10 +20,11 @@ You need:
 - the campaign path you want to play,
 - a fresh conversation for the gameplay session.
 
-Do not use the development workflow to start a game. Development uses `docs/AI_SESSION_TEMPLATE.md`; gameplay uses `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`.
+Do not use the development workflow to start a game. Development uses `docs/AI_SESSION_TEMPLATE.md`; gameplay uses `docs/AI_GAMEPLAY_RESIDENT_CORE.md` plus `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`.
 
 The AI must be able to read at least:
 
+- `docs/AI_GAMEPLAY_RESIDENT_CORE.md` — loaded before play and held for the whole session,
 - `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`,
 - the selected campaign's `090_CAMPAIGN_STARTUP.md`,
 - the campaign's canonical ledgers,
@@ -68,6 +69,7 @@ For Prototype Alpha, give the AI access to:
 - `engine/010_ENGINE_RULES.md`,
 - `engine/011_ENGINE_DATA_MODEL.md`,
 - `engine/012_ENGINE_RUNTIME.md`,
+- `docs/AI_GAMEPLAY_RESIDENT_CORE.md`,
 - `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`.
 
 ---
@@ -77,7 +79,7 @@ For Prototype Alpha, give the AI access to:
 Place the following in the AI's persistent or system instructions when that is available. Otherwise, send it as the first message of every new gameplay conversation.
 
 ```text
-You are executing Chronicle Engine gameplay in Interpreter mode. Follow docs/AI_GAMEPLAY_RUNTIME_PROFILE.md. The repository is the authoritative, writable persistence surface: read canonical state from it, write promoted canon and checkpoints back. Do not use the development workflow or modify engine architecture during play.
+You are executing Chronicle Engine gameplay in Interpreter mode. Load docs/AI_GAMEPLAY_RESIDENT_CORE.md before play and keep it in context every turn — it is the per-turn contract, not reference. Consult docs/AI_GAMEPLAY_RUNTIME_PROFILE.md when its operation is invoked (startup, commands, export, checkpoint, close). The repository is the authoritative, writable persistence surface: read canonical state from it, write promoted canon and checkpoints back. Do not use the development workflow or modify engine architecture during play.
 
 REPOSITORY LOADING — FIRST TURN, BEFORE REPORTING ANY BLOCKER:
 Read the campaign files on your own initiative. A view showing only a README or a partial listing is a cold-start artifact, never a blocker. Listing a folder is not reading a file — open the files. Report a read blocker ONLY after an actual read attempt on a named file errors. Never say "I only have the README" or "canonical state is not accessible" without having tried to read the files this same turn. Loading is your job, not the player's.

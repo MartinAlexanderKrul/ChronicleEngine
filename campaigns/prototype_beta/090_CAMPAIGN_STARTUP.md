@@ -1,7 +1,7 @@
 # Campaign Startup - Prototype Beta
 
 **Authority:** Operational campaign configuration; non-canonical
-**Gameplay Profile:** `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`
+**Gameplay Profile:** `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (resident, held every turn) + `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (fetched)
 
 ---
 

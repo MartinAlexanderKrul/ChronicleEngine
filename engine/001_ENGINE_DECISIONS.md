@@ -3172,6 +3172,56 @@ The tool enforces **ownership**, which is mechanical. It does not adjudicate **c
 
 ---
 
+## Decision 070 — The Resident Layer Is a Separate Document
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** Applies `012_ENGINE_RUNTIME.md` Section 0.4 and Decision 055; `docs/AI_GAMEPLAY_RESIDENT_CORE.md`; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` 1.31; `README.md`; `docs/GAMEPLAY_START_GUIDE.md`; Decisions 049, 069
+
+### Context
+
+Decision 055 established that an obligation carried only by fetched material does not fire on a substrate whose per-turn default competes with its guardrails, and `012` Section 0.4 requires a Runtime Profile to distinguish a resident layer from fetched reference.
+
+The Gameplay Runtime Profile satisfied that requirement with a paragraph. It declared, at Document Version 1.30, that the Player Agency Contract, intent/fact grounding, the Action Resolution Bright Line, the Modifier Step Contract, promotion-obligation awareness, and canon-determinism were "resident per-turn" — and then placed them in the same 907-line file as the command table, the export format, the save algorithm, and the startup variants. The distinction was declared, not embodied. A Runtime could load all 907 lines or none; "load the resident layer" was not an operation anything could perform.
+
+The profile therefore had exactly the defect Decision 055 names, in the document Decision 055 governs. The evidence is the profile's own history: thirty revisions, eleven on the release day, and four decisions (056, 063, 064, 067) against a single bootstrap boundary, each written after a live test failed its predecessor. Each fix added prose to the fetched layer and hoped it would fire.
+
+### Decision
+
+The resident layer is a **separate document**: `docs/AI_GAMEPLAY_RESIDENT_CORE.md`.
+
+1. **It holds only per-turn obligations.** The Player Agency Contract, Interaction Cadence, intent/fact grounding, the Action Resolution Bright Line and Modifier Step Contract, the Information Boundary, modifier polarity, and Turn-State Settlement. These are checked every turn at the moment a fact or outcome would be narrated.
+2. **The profile holds only fetched procedure.** Startup variants, the Runtime Command Interface, Progression Surfacing, exports, canon reconciliation, the validation gate, checkpoints, and gameplay close — consulted when their operation is invoked.
+3. **The resident core is loaded before play and held for the session.** It is not summarized and not consulted on demand. Every boot list — README, the Gameplay Start Guide's AI Instructions block, and campaign startup configuration — names it first.
+4. **The boundary is the one the profile already declared.** No obligation was rewritten, reclassified, or invented. The split was a cut at the line the document's own resident/fetched declaration drew; body text moved verbatim.
+5. **The two documents are one profile.** Fetched material may elaborate a resident obligation and may never be the sole carrier of one — unchanged from Decision 055.
+
+### Rationale
+
+- It converts a declared property into a structural one. Decision 055's lesson is that siting is what makes an invariant fire; a resident layer interleaved with six hundred lines of on-demand procedure is resident in name only.
+- It is the same remedy Decision 054 applied to registry bookkeeping and Decision 064 applied to the command catalog: when prose at a point has repeatedly failed, move the point rather than rewrite the prose.
+- The cut required no design. The profile was already ordered resident-first, and its own Section 0.4 declaration enumerated which sections were resident. The boundary was specified and unenforced, which is precisely the condition Decision 055 predicts.
+- It makes the split testable. `tools/test_reikon_runtime_contract.ps1` now asserts the per-turn obligations against the resident file, so a resident rule that drifts back into the fetched profile fails the build.
+
+### Consequences
+
+- `docs/AI_GAMEPLAY_RESIDENT_CORE.md` is added at Document Version 1.0 (~300 lines). The Runtime Profile drops to ~640 lines and advances to 1.31, restyled as the fetched reference layer.
+- `README.md` boot list, `docs/GAMEPLAY_START_GUIDE.md` (access list and the AI Instructions block), and the Prototype Alpha and Prototype Beta startup configurations name the resident core first.
+- `tools/test_reikon_runtime_contract.ps1` repoints its three per-turn assertions to the resident core and adds a check that the profile points back at it.
+- The Engine Rules, Data Model, and Runtime are unchanged. No obligation was added, removed, or altered; only its location and load contract changed.
+- Under Decision 069's structural test this is a **refinement** — it sites an obligation `012` Section 0.4 already imposes. Its owning milestone is Version 0.3 Planning, as the first disposition of the profile-churn technical debt.
+- This does not by itself guarantee a substrate holds the file resident. It makes holding it resident possible, and makes failing to do so visible in the boot list rather than silent inside a large document.
+
+### Alternatives Considered
+
+- **Leave the declaration and strengthen its wording.** Rejected for the reason Decision 054 gives and this profile's history demonstrates: prose at a failing point does not repair the point. The declaration was already correct and already ignored.
+- **Split by topic rather than by residency** (agency / resolution / persistence / commands). Rejected: it produces tidier documents that answer no architectural question. Residency is the boundary `012` Section 0.4 requires; topic is not.
+- **Compress the profile instead of splitting it.** Rejected: length is a symptom. A 400-line file mixing per-turn contract with on-demand procedure has the same defect as a 900-line one.
+- **Inline the resident core into every campaign's startup file.** Rejected: it duplicates the contract per campaign and guarantees drift — the failure Decision 064's catalog mirror needed a synchronization test to contain. One resident document, referenced everywhere.
+- **Defer to Version 0.3 planning.** Rejected: the split adds no mechanism and changes no obligation, so it is a refinement that may land now under Decision 069, and every session played before it lands runs on a resident layer that is resident in name only.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

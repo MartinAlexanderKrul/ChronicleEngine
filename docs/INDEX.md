@@ -13,7 +13,7 @@ Every new session should begin by reading the files below before proposing chang
 
 ### Gameplay
 
-Use `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` to start or resume a campaign. Players do not need to read repository files before play.
+Use `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (the resident layer, held every turn) with `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (fetched reference) to start or resume a campaign. Players do not need to read repository files before play.
 
 Setup manual and AI Project prompts: `docs/GAMEPLAY_START_GUIDE.md`.
 

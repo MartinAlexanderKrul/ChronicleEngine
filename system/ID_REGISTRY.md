@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000064 |
-| Record | `REC-` | Canonical Record | REC-000048 |
-| Event | `EVT-` | Event | EVT-000030 |
+| Entity | `ENT-` | Persistent Entity | ENT-000065 |
+| Record | `REC-` | Canonical Record | REC-000049 |
+| Event | `EVT-` | Event | EVT-000031 |
 | Relationship | `REL-` | Relationship | REL-000044 |
 
 ---
@@ -71,6 +71,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000046 | Record | Reikon Awakening `saves/900_CHECKPOINT_0002/900_SAVE_MANIFEST.md` — the first conforming checkpoint manifest, superseding the quarantined Checkpoint 001 |
 | REC-000047 | Record | Reikon Awakening `saves/900_CHECKPOINT_0003/900_SAVE_MANIFEST.md` — recovered post-pack-leader restore point under World Rule Profile 0.2 |
 | REC-000048 | Record | Reikon Awakening `saves/900_CHECKPOINT_0004/900_SAVE_MANIFEST.md` — Health-recovery contract migration under World Rule Profile 0.3 |
+| ENT-000065 | Entity | Reikon Awakening Session 2 gameplay: natural scale plate harvested from pack leader during loot phase (EVT-000031) |
+| EVT-000031 | Event | Reikon Awakening Session 2 gameplay: warehouse exploration, basement core-chamber discovery, looting of all creatures (11 cores total), scale plate harvest, and medical treatment at Hunters' Association |
+| REC-000049 | Record | Reikon Awakening `saves/900_CHECKPOINT_0005/900_SAVE_MANIFEST.md` — Session 2 checkpoint after exploration and medical treatment |
 
 ---
 

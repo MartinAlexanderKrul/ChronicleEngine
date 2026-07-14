@@ -182,9 +182,9 @@
 
 **Progression:**
 - Solo Leveling mechanics (XP, stat progression, skill trees)
-- Delivered as narrative text RPG (like Verra campaigns)
-- Accessible via `/system` command — renders the **Canonical `/system` Template** in `205_THE_LEDGER.md`, a fixed window that every Runtime shows identically from canonical state (same layout every session, on any AI)
-- No intrusive UI notifications during play
+- Delivered as a narrative text RPG, but with a **diegetically-real, tracked System** (Decision 057): mana and XP are canonical state, surfaced **inline** in-world as they change (`Mana: 13 → 1/13`, `XP: 12 → 36/100`), and viewable in full via `/system`
+- `/system` renders the **Canonical `/system` Template** in `205_THE_LEDGER.md` — a fixed window every Runtime shows identically from canonical state
+- XP is accrued per challenge, scaled by threat; **the d100 still decides every action** — stats, level, and mana are Modifiers and resources, never overrides (Rules Section 4)
 
 ---
 

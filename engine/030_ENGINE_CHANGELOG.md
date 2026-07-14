@@ -12,6 +12,17 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-14 — World-Scoped Diegetic System: Tracked Resources and Inline Surfacing
+
+**Decisions:** Added Decision 057, refining Decision 051 Layer 3. In a world that declares a diegetic System under the Supernatural Phenomena Contract (Rules Section 11), the System's quantities (mana, XP, stats, level) may be **tracked canonical state**, XP may be accrued from challenges by **world-defined per-challenge values**, and these may be surfaced **inline during play** — a permitted exception to Decision 051 Layer 2's meta/on-request view. The bright line is unchanged: the die still resolves every action; stats/level/mana are Modifiers (Section 4.4) and resources, never overrides or gates. World-scoped; Decisions 012–014 and 051 are not superseded; Decision 051's body is unchanged (immutable-history policy)
+**Runtime Profile:** Progression Surfacing gains the inline diegetic-System exception (When to surface it; Guardrails)
+**World (Reikon):** `205_THE_LEDGER.md` now declares Reikon's System as diegetically real and tracked — updated compliance note (Decisions 051, 057) retaining the bright line, an inline-surfacing progression model, a per-challenge XP model with baseline E-grade values (Broodling ≈ 6, Swarmer ≈ 8) and level thresholds, and a mana-as-tracked-resource model; `worlds/reikon/README.md` updated (replaces the earlier "no UI notifications" framing)
+**Glossary:** Extended **Diegetic System** for the tracked, inline variant
+**Context:** Requested after analysis of the first Reikon session (`REIKON_SESSION_001_TRANSCRIPT.md`), which ran the System as inline mechanical tracking with per-kill XP; the world owner confirmed this is intended for Reikon
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-14 — Canonical `/system` Render Template (Reikon)
 
 **World (Reikon):** Promoted the illustrative `/system` display in `worlds/reikon/205_THE_LEDGER.md` into a **normative Canonical `/system` Template** with deterministic rendering rules (fixed section order, fixed Stats order, data bindings to the Character Sheet / Inventory / Objectives, always-shown Condition line, empty-section handling, in-fiction-only content) plus a worked example bound to Daedalus's canonical state. Given the same canonical character state, every Runtime now renders the same window on any substrate (canon-determinism, `012` Section 7, applied to a fixed display)

@@ -3,7 +3,9 @@
 **Reference:** World-layer lore for Reikon's diegetic System. This is narrative reference, not an Object-Block canonical ledger.
 **Status:** Active — instantiated as canonical world content (2026-07-13).
 
-> **Compliance note (Decision 051).** Everything below is the *world's diegetic representation* of Chronicle Engine's emergent simulation, not a second set of mechanics. Action resolution is always intent + circumstance + d100 (Rules Section 4); growth is always lived (Rules Section 5); every Rank, Ability, and Mark is in-world **information** (Rules Section 2.2) — reflected capability, never granted power. The System *displays*; it never *decides*.
+> **Compliance note (Decisions 051 and 057).** Reikon declares a **diegetically-real System** under the Supernatural Phenomena Contract (Rules Section 11; Decision 051 Layer 3). Its quantities are real in the fiction and **tracked as canonical state**: mana is a magical resource (Character State / magical exhaustion, Rules Sections 5.2, 6.10), and XP is accrued from challenges with per-challenge values this world defines. These may be surfaced **inline during play** and viewed in full with `/system` (Decision 057).
+>
+> **The bright line is absolute.** The System never resolves or overrides an action. Action resolution is always intent + circumstance + d100 (Rules Section 4). Rank, Stats, Abilities, and Level are ordinary **Modifiers** (Rules Section 4.4) — they shift the odds and color how the world treats a hunter, but they never auto-succeed, gate, or replace the die. A mana cost gates whether a cast can be **attempted**; the die decides whether it **works**. XP is never **spent** to buy power or an outcome. The impossible stays impossible (Rules Section 4.2). The System *tracks and displays*; the die *decides*.
 
 ---
 
@@ -126,18 +128,28 @@ PATHS & MARKS: None yet
 ═══════════════════════════════════════════════════════════════
 ```
 
-## Progression: Narrative + Mechanical
+## Progression: Diegetic and Tracked (Decision 057)
+
+Reikon's System is **diegetically real and tracked inline**. Unlike the engine's default meta progression view, the hunter perceives their own numbers as they change, and those numbers are canonical state on the character ledger.
 
 **During play:**
-- Progression happens narratively. You face challenges, defeat enemies, clear Rifts
-- The story describes your experience and growth in text
-- You don't see "+50 XP" pop-ups; instead: "You felt the System pulse. Growth. When you checked, your XP had increased to 45/100"
-- Leveling happens as a narrative event, not a UI announcement
+- The System surfaces changes **inline, in-world**, as they happen — a mana cost as a spell is cast (`Mana: 13 → 1/13`), XP as a threat is overcome (`XP: 12 → 36/100`). This is what the hunter feels and reads, not an out-of-character dashboard.
+- Progression is still **earned**, never granted: the die decides whether a challenge is overcome, and only overcoming it accrues XP. Narrate the moment; let the numbers follow it.
+- **Leveling (Ascension)** is a felt milestone when accrued XP crosses the level threshold — surfaced after the growth, never to grant it.
+
+**XP awards (per-challenge):**
+- XP is accrued from genuine challenge, scaled by threat. A tougher, more coordinated foe is worth more than a weakling.
+- **Baseline E-grade values** (canonical starting model, tunable as world canon): Broodling ≈ 6 XP, Swarmer ≈ 8 XP; harder archetypes and higher-grade monsters scale up from there. Clearing a Rift core awards a larger milestone sum.
+- **Level thresholds:** Level 1→2 = 100 XP, rising per level (see below). Level is independent of Official Rank — leveling never changes your license.
+- Trivial, no-stakes repetition is **not** a farm: rote clears of what no longer challenges the hunter yield little or nothing. The System cannot be gamed without real ordeal.
+
+**Mana (tracked resource):**
+- Mana is a real, tracked reserve. Abilities cost mana to attempt (Fireball 12, Flame Shield 8/sec, Combustion Touch 6, Endurance Surge 10); rest restores it. Running dry means no casting until recovered.
+- A mana cost gates whether a cast can be **attempted** — it never decides the result. The d100 resolves the cast (Rules Section 4); Power and Mana Affinity are Modifiers on that roll, not overrides.
 
 **Checking status:**
-- Use `/system` to view exact numbers, stats, skill levels, inventory, XP progress
-- This shows your diegetic System interface (how your character perceives their own power)
-- Only you can see it; the world cannot read another's System
+- Use `/system` to view the full canonical window — exact stats, skills, inventory, XP progress (the fixed template above).
+- Only you can see it; the world cannot read another's System.
 
 **Level Progression (Infinite):**
 - XP thresholds increase per level (Level 1→2: 100 XP; Level 10→11: 500 XP; Level 50→51: 5000 XP, etc.)
@@ -426,7 +438,7 @@ A crafted item becomes part of a hunter's identity. An artifact made from a B-Ri
 
 # Running the System in Play (note for the Runtime)
 
-- Surface the System **diegetically** and on the player's terms: a hunter may check their own interface, feel an Ascension, or see an official Rank certificate. Keep it in-fiction; it is Reikon's native interface, not an out-of-character dashboard.
-- Announce an Ascension **after** the character has demonstrably grown in canon, never to grant the growth (Decision 051; Progression Surfacing in the Gameplay Runtime Profile).
+- Surface the System **diegetically and inline** (Decision 057): show mana costs and XP gains in-world as they happen, and let a hunter check their full interface with `/system`, feel an Ascension, or see an official Rank certificate. Keep it in-fiction — it is Reikon's native interface, not an out-of-character dashboard. Mana and XP are tracked canonical state on the character ledger; update them in canon as play advances.
+- Award XP from **genuine challenge**, scaled by threat (per the XP model above), and only after the die has resolved the challenge in the hunter's favor. Announce an Ascension **after** the character has demonstrably grown, never to grant the growth (Decisions 051, 057; Progression Surfacing in the Gameplay Runtime Profile).
 - Treat Ranks, Abilities, and Mana as **Modifiers and information**: they color odds and shape how NPCs treat a hunter, but the die and circumstance decide (Rules Section 4). The impossible stays impossible whatever the Rank says (Rules Section 4.2).
 - Let the Rank be **wrong**: forged, inflated, misread, or lagging behind actual growth. A hunter who trusts a number over the world in front of them is making a mistake the world is entitled to punish.

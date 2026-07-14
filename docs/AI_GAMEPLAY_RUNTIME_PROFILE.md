@@ -512,13 +512,14 @@ Compute the view from canonical state at the moment of surfacing. Do not maintai
 
 - On an out-of-character player request — "show my progress", "status", "how am I improving".
 - As a **level-up moment**: when emergent growth has demonstrably crossed a tier — a capability advanced through repeated successful practice, a new mastery established, influence meaningfully expanded — the Runtime may announce it ("Surgery has advanced to Expert"). The advance has already happened in canon; the announcement surfaces it. Never announce a level-up in order to grant an advance.
+- **Inline, in a world with a declared diegetic System (Decision 057).** When the active world declares a diegetic System under the Supernatural Phenomena Contract (Rules Section 11), that world's tracked System quantities — a magical resource such as mana, XP, stats, level — may be surfaced **inline during play, in-world**, as they change (a mana cost as a spell is cast, XP as a threat is overcome), per the world's declared model. This is the world's native interface, not the general meta view above, and it applies only in such a world. The bright line is unchanged: these quantities never resolve or override an action — the die still decides (see Guardrails).
 
 ## Guardrails
 
 - The view never affects resolution. A tier or level is never a modifier, prerequisite, or gate; action resolution uses intent, circumstance, and the die (Rules Section 4) against demonstrated capability, exactly as before.
 - XP is never spent. It is a log, not a resource; nothing is purchased with it.
 - Growth precedes surfacing, never the reverse.
-- In a world without a diegetic System, the view is meta: the character does not perceive levels in-world, and NPCs never act on them. A world may make levels diegetically real only through the Supernatural Phenomena Contract (Rules Section 11; Decision 051), which is world-authoring content.
+- In a world without a diegetic System, the view is meta: the character does not perceive levels in-world, and NPCs never act on them. A world may make levels diegetically real only through the Supernatural Phenomena Contract (Rules Section 11; Decision 051). In such a world its System quantities may be **tracked canonical state** and surfaced **inline** as diegetic information (Decision 057) — but even then they never resolve or override an action; the die decides, and stats/level/mana are Modifiers and resources, never auto-outcomes or gates on the roll (Rules Sections 4, 4.4, 4.2). This is world-authoring content.
 
 ---
 

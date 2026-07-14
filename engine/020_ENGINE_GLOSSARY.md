@@ -268,7 +268,7 @@ Distinct from a [Runtime Command](#runtime-command), which is out-of-character c
 
 A world-established, in-world-real leveling or experience system — for example a litRPG "System" — declared as a supernatural phenomenon under the Supernatural Phenomena Contract (Rules Section 11).
 
-Unlike the meta Derived Progression View, a Diegetic System's levels and numbers are real within the fiction and perceivable by characters; but resolution and growth still follow Rules Sections 4 and 5 — the System represents them, it does not replace them. World-authoring content. Defined in Decision 051.
+Unlike the meta Derived Progression View, a Diegetic System's levels and numbers are real within the fiction and perceivable by characters. Per Decision 057, such a world may maintain its System quantities (mana, XP, stats, level) as **tracked canonical state** on the character ledger, accrue XP from challenges by world-defined per-challenge values, and surface these **inline during play** as diegetic information (Reikon does this). The bright line is unchanged: resolution still follows Rules Sections 4 and 5 — the System *represents and tracks*, it never *decides*; stats, level, and mana are Modifiers (Section 4.4) and resources, never overrides or gates on the die. World-authoring content. Defined in Decisions 051 and 057.
 
 ---
 

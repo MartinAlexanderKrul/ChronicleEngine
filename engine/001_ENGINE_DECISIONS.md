@@ -2597,6 +2597,52 @@ Register a **Runtime Command Interface**: a small set of out-of-character contro
 
 ---
 
+## Decision 057 — World-Scoped Diegetic System: Tracked Resources and Inline Surfacing
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** Decision 051 (Progression Surfacing), Decision 037 (Magic as World Extension), Decisions 012–014; `010_ENGINE_RULES.md` Sections 4, 4.4, 5.2, 6.10, 11; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Progression Surfacing); `worlds/reikon/205_THE_LEDGER.md`
+
+### Context
+
+Reikon is authored as a Solo Leveling-style world in which the System is *diegetically real*: hunters perceive their own mana, XP, stats, and level as concrete in-world quantities. Decision 051 already permits this at the world layer — its Layer 3 ("World Diegetic System, litRPG") makes a leveling System in-world-real when declared under the Supernatural Phenomena Contract (Rules Section 11). But Decision 051's *surfacing* rules were written for the general, non-diegetic case (Layer 2): a derived, out-of-character readout, shown on request, regenerated rather than stored, always growth-first-then-surfaced.
+
+The first Reikon session ran the System the way the world intends — mana tracked to the unit and spent per cast, XP accrued per monster with tougher foes worth more, both surfaced inline as play happened. That is the correct feel for this world, but it sat in tension with Layer 2's meta/on-request surfacing rules. The world owner confirmed this inline, tracked, tallied behavior is intended **for Reikon**. This decision states what a diegetic-System world may do, and the one line it still may not cross.
+
+### Decision
+
+For a world that declares a diegetic System under the Supernatural Phenomena Contract (Rules Section 11), and **only** for such a world:
+
+1. **Tracked System quantities.** The System's numbers may be **canonical tracked state** maintained in the character ledger and accrued through play, not merely a derived on-request readout. Specifically: a magical resource such as **mana** (already sanctioned as Character State and magical exhaustion, Rules Sections 5.2 and 6.10), an **experience (XP)** quantity accrued from challenges with **per-challenge award values the world defines** (a tougher monster is worth more), plus stats and level.
+
+2. **Inline diegetic surfacing.** Because the character perceives their own System, the Runtime **may surface changes to these quantities inline during play** — a mana cost as a spell is cast, XP as a threat is overcome — rendered in-world as the world's native interface. This is a permitted exception to Decision 051 Layer 2's on-request/level-up meta view. The `/system` command still renders the full canonical window (the world's render template).
+
+3. **The bright line still holds — unchanged from Decision 051.** The System never resolves or overrides an action. Action resolution is always intent + circumstance + d100 (Rules Section 4). Stats, rank, and level are ordinary **Modifiers** (Rules Section 4.4), never auto-outcomes, prerequisites, or gates that replace the die. A mana cost may gate whether a cast can be **attempted** (a resource, like any material or tool), but the die decides whether it **succeeds**. XP is never **spent** to purchase capability or a result. The impossible stays impossible (Rules Section 4.2). Growth is still earned through genuine challenge — trivial, no-stakes repetition is not a farm for power.
+
+**Scope.** World-scoped. Worlds that do not declare a diegetic System are unchanged and continue under Decision 051's default Derived Progression View (derived, on-request, regenerated). This does **not** supersede Decisions 012–014 or Decision 051; it refines Decision 051 Layer 3 and is enabled by the mechanism Decision 051 already named.
+
+### Rationale
+
+- Decision 051 explicitly reserved "the aggressive litRPG experience to the world layer." This decision only says concretely what that reservation permits once a world takes it up, so a diegetic-System world need not fight the general-case surfacing rules.
+- Nothing here touches resolution. The die still decides; stats stay Modifiers; XP is never a resolution input. The engine's identity (Decisions 012–014) rejects XP/levels/attributes *as the resolver*, not as diegetic *representation* — exactly the boundary Decision 051 drew and this decision keeps.
+- Mana-as-tracked-resource is already engine-legal: Rules Section 11.3 places active magical effects in Character State and tracks magical exhaustion (Section 6.10), and treats magical advantage as an ordinary Modifier. This decision clarifies that a world may surface that tracking inline; it introduces no new engine mechanic.
+
+### Consequences
+
+- Decision 051 remains Accepted and authoritative for the general case and for the bright line; its body is unchanged per the immutable-history policy. This decision refines its Layer 3 for diegetic-System worlds, and the relationship is recorded here and in `030_ENGINE_CHANGELOG.md`.
+- `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Progression Surfacing) gains a world-scoped exception: in a diegetic-System world, inline surfacing of tracked System quantities is permitted per the world's declared model.
+- `worlds/reikon/205_THE_LEDGER.md` declares Reikon's System under Section 11 as diegetically real, with tracked mana and tallied XP, its per-challenge XP model, and inline surfacing; its Decision-051 compliance note is updated to cite this decision and retain the bright line.
+- `020_ENGINE_GLOSSARY.md` (Diegetic System) is updated to reflect the tracked, inline variant.
+- No change to the Engine Rules, the Data Model, or Decisions 012–014.
+
+### Alternatives Considered
+
+- **Edit Decision 051 in place.** Rejected: 051 is immutable history; its general-case rules and bright line stand. This is a world-scoped refinement, not a supersession.
+- **Let XP/mana/stats modify the die in Reikon (true stat-based resolution).** Rejected: forks resolution into two models and supersedes Decisions 012–014 — not requested and not adopted. Stats remain Modifiers; the die decides.
+- **Make inline surfacing the default for all worlds.** Rejected: the general-case Progression View is deliberately meta and on-request (Decision 051 Layer 2); inline mechanical surfacing is a genre choice reserved to worlds that opt into a diegetic System.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

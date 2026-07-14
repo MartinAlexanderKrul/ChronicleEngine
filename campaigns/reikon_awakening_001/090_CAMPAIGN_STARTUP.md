@@ -24,7 +24,8 @@ required_sources:
   - campaigns/reikon_awakening_001/140_OBJECTIVES.md
   - campaigns/reikon_awakening_001/160_CAMPAIGN_CHRONICLE.md
   - campaigns/reikon_awakening_001/180_CURRENT_STATE.md
-  - worlds/reikon/205_THE_LEDGER.md
+  - worlds/reikon/206_WORLD_RULE_PROFILE.md   # active World Rule Profile (Rules 14.4) -- load before resolving affected state
+  - worlds/reikon/205_THE_LEDGER.md           # System lore; the profile above governs every mechanic
 validation:
   require_confirmation_before_mutation: true
   require_confirmation_before_scene: true

@@ -282,7 +282,7 @@ This power imbalance is foundational: S-Rank hunters are assets the world needs 
 
 Rare **Anomalous** hunters show unlimited potential that breaks the scale — the rarest classification, deeply watched and contested.
 
-The full details on Abilities, Marks, mana, Ascensions, and the Rift ecosystem are in `205_THE_LEDGER.md`.
+The full details on Abilities, Marks, mana, Ascensions, and the Rift ecosystem are in `205_THE_LEDGER.md`. Every mechanic those describe — the pool curve, costs, allocation, resolution, damage, and XP — is governed by `206_WORLD_RULE_PROFILE.md`.
 
 ---
 
@@ -382,7 +382,8 @@ All ledgers below are **instantiated canonical world content**, using real ident
 
 | Ledger | Contents |
 |--------|----------|
-| `205_THE_LEDGER.md` | System mechanics — Ranks, Abilities, Marks, mana, Ascensions, Rift stages, cores |
+| `206_WORLD_RULE_PROFILE.md` | **World Rule Profile 0.1 — authoritative.** Declared overrides; pool, allocation, costs, resolution, damage, XP; the System's behavioral contract; the `/system` template |
+| `205_THE_LEDGER.md` | System lore — Ranks, Abilities, Marks, Rift stages, cores, monsters, economy. Describes; does not govern |
 | `210_PLACES.md` | The Aldish Republic; Verholt; the Kessler Rift; the Danesmoor collapse site; Authority zones |
 | `220_NOTABLE_FIGURES.md` | Seven figures — Association leadership, Guild heads, Institute director, Vigil voice, mentor figures |
 | `230_KNOWLEDGE_SUBJECTS.md` | The nature of Awakening and Rift origin (disputed); the System as enigma; forged Ranks |

@@ -14,20 +14,21 @@
    - Rift mechanics, Ranks, Awakening, hunter casualties
    - Newly Awakened social position, core economy, underground hunting
 
-2. **Read the System Reference:** `205_THE_LEDGER.md`
-   - System interface mechanics (how the diegetic System works)
+2. **Read the World Rule Profile:** `206_WORLD_RULE_PROFILE.md` — authoritative for every mechanic, and required in the working set before resolving affected state (Rules 14.4)
+3. **Read the System Lore:** `205_THE_LEDGER.md`
+   - What the System is, who has it, what it means in the world
    - Monster archetypes and taxonomy
    - Rift loot system (cores, artifacts, equipment)
    - Core crafting and enhancement
    - Rank certification process
    - Team bonds and synergy
 
-3. **Create your character or use provided:** See `campaigns/reikon_awakening_001/100_CHARACTER_DAEDALUS.md` for example
-   - Use `/system` command to view your character sheet (Solo Leveling-style interface)
-   - Progression is narrative-driven but tracked mechanically
+4. **Create your character or use provided:** See `campaigns/reikon_awakening_001/100_CHARACTER_SHEET.md` (`ENT-000051`, Daedalus) for the canonical example
+   - Use `/system` to view the Bearer's interface (Solo Leveling-style window)
+   - Progression is narrative-driven but tracked mechanically, and computed — never estimated
    - XP, stats, skills, and leveling happen through play
 
-4. **Start playing:** Narrative text RPG (like Verra world campaigns)
+5. **Start playing:** Narrative text RPG (like Verra world campaigns)
    - Describe your actions in plain text
    - I respond with consequences and story development
    - No predefined options — you choose what to do
@@ -38,7 +39,8 @@
 
 **Core World Files:**
 - `200_WORLD_BIBLE.md` — Setting, institutions, mechanics, current situation
-- `205_THE_LEDGER.md` — System reference, abilities, monsters, loot, rank system
+- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 0.1 (authoritative).** Declared overrides and every mechanic: pool, allocation, costs, resolution, damage, XP, the System's contract, the `/system` template
+- `205_THE_LEDGER.md` — System lore, abilities, monsters, loot, rank system. Describes; the profile governs
 - `210_PLACES.md` — Geography (Aldish Republic, Verholt, specific locations)
 - `220_NOTABLE_FIGURES.md` — NPCs (Association leaders, Guild heads, Institute director, etc.)
 - `230_KNOWLEDGE_SUBJECTS.md` — Disputed knowledge (Awakening nature, System mystery, forged ranks)
@@ -183,7 +185,7 @@
 **Progression:**
 - Solo Leveling mechanics (XP, stat progression, skill trees)
 - Delivered as a narrative text RPG, but with a **diegetically-real, tracked System** (Decision 057): mana and XP are canonical state, surfaced **inline** in-world as they change (`Mana: 13 → 1/13`, `XP: 12 → 36/100`), and viewable in full via `/system`
-- `/system` renders the **Canonical `/system` Template** in `205_THE_LEDGER.md` — a fixed window every Runtime shows identically from canonical state
+- `/system` renders the **Canonical `/system` Template** in `206_WORLD_RULE_PROFILE.md` — a fixed window every Runtime shows identically from canonical state
 - XP is accrued per challenge, scaled by threat, and causally grants progression; **the d100 still decides every uncertain action** — stats and level establish modifier steps and available methods, never the rolled outcome
 
 ---

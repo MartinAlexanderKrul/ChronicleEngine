@@ -2,7 +2,7 @@
 
 **Class:** Narrative world-layer reference. Not a canonical ledger, not world rule content.
 **Status:** Active — instantiated as canonical world content (2026-07-13).
-**Rules:** `206_WORLD_RULE_PROFILE.md` — Reikon World Rule Profile 0.3
+**Rules:** `206_WORLD_RULE_PROFILE.md` — Reikon World Rule Profile 0.4
 
 ---
 
@@ -275,22 +275,17 @@ Cleared Rift cores and slain monsters leave **cores** — dense, crystalline res
 
 ## Core Pricing and Trade Value
 
-Cores trade at rates by grade. The **Hunters' Association** and **Meridian Guild** maintain official pricing, with regional fluctuation:
+Cores trade at rates by grade, and the **Hunters' Association** and **Meridian Guild** maintain the official posted pricing. **Every number — the core ladder, the vell, posted costs, salaries — is in `206_WORLD_RULE_PROFILE.md` Section 12,** which governs.
 
-| Grade | Core Value | Typical Item Cost | Monthly Salary (Rank) |
-|-------|------------|-------------------|----------------------|
-| **E-core** | 1 unit | Basic sword (10), healing potion (2) | E-Rank: 50 cores/month |
-| **D-core** | 5 units | Quality armor (40), rare herb (3) | D-Rank: 200 cores/month |
-| **C-core** | 25 units | Enchanted weapon (150), rare artifact component | C-Rank: 800 cores/month |
-| **B-core** | 125 units | Master-crafted artifact (600+) | B-Rank: 3000 cores/month |
-| **A-core** | 625 units | Legendary artifact (2000+) | A-Rank: 12000 cores/month |
-| **S-core** | 3125 units | One S-core can fund a small expedition team | S-Rank: 60000 cores/month |
+Two currencies circulate. The Aldish Republic mints the **vell**, and civilian life runs on it: rent, food, ordinary goods. Hunters are paid in **cores**, and cores trade above coin — because a core is not only money. It is feedstock for medicine, industry, and the crafting of Marked relics, so industrial demand sits under its price permanently. Coin has no such floor. That is the whole reason the Association quotes a salary in cores and a landlord quotes rent in vells.
 
-**Conversion to currency:** Where coin exists, 1 core ≈ 1 gold coin. But cores are preferred — tangible, non-inflating, and they feed the industrial economy.
+**Any counter takes a core at three vells.** Any core, any grade, anywhere — the Republic's posted conversion, honored without question. It is flat because the counter is blind: to an ordinary merchant a core is a core, a dense residue of no distinguishable origin, and he is not equipped to know whether it came off a Broodling or off something that killed a B-Rank team. That rate is exactly fair for an E-core, which is what a hunter carries by the fistful. For anything rarer it is a robbery the merchant does not know he is committing.
 
-**Black market variation:** Illegal traders pay 10–20% less for stolen cores but ask no questions. Guild-affiliated buyers offer standard rates but expect loyalty.
+**A core's real worth is its origin, and reading origin is a specialist's trade.** Association core desks, Guild buyers, and the trade stations that keep an appraiser can tell which creature died to leave a given core, and pay its grade. Nobody else can. So a hunter's take is worth what he knows about where to sell it — and handing a core to a specialist is a disclosure as much as a sale, because an appraiser who reads a core learns what it came from, and is under no obligation to keep that to himself. The mechanics are `206` Section 12.3.
 
-These are the **official posted rates**, not a law of nature: prices move with supply, demand, distance, scarcity, politics, and who is desperate (Rejected 005). A hunter far from a Guild office, selling in a hurry, or holding something the Institute wants badly, will not get the table price.
+**Black market variation:** Illegal traders pay 10–20% below appraised value but ask no questions. That gap is the point: **a fence can appraise.** It is what makes him a fence rather than a shopkeeper, and why stolen cores flow to people who ask nothing rather than to people who cannot tell what they are holding. Guild-affiliated buyers offer standard rates but expect loyalty.
+
+Posted rates are **not a law of nature**: prices move with supply, demand, distance, scarcity, politics, and who is desperate (Rejected 005). A hunter far from a Guild office, selling in a hurry, or holding something the Institute wants badly, will not get the table price. Where a price is genuinely contested, the die decides it (`206` Section 12.4).
 
 A **deep-Rift core** is rare and valuable — strange enough to be worth controversy. This is exactly the knot the Aurology Institute, the Vigil, and the Guilds are caught in right now (`240_RESOURCES.md`).
 

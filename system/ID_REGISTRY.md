@@ -24,7 +24,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000065 |
+| Entity | `ENT-` | Persistent Entity | ENT-000066 |
 | Record | `REC-` | Canonical Record | REC-000050 |
 | Event | `EVT-` | Event | EVT-000032 |
 | Relationship | `REL-` | Relationship | REL-000044 |
@@ -76,6 +76,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000049 | Record | Reikon Awakening `saves/900_CHECKPOINT_0005/900_SAVE_MANIFEST.md` — Session 2 checkpoint after exploration and medical treatment |
 | EVT-000032 | Event | Reikon Awakening Session 2 audit: explicit ruling correcting the `EVT-000031` kill-count transcription error (six earlier kills → five; six total: 2 Broodlings, 3 Swarmers, pack leader). Core counts unaffected |
 | REC-000050 | Record | Reikon Awakening `saves/900_CHECKPOINT_0006/900_SAVE_MANIFEST.md` — Session 2 checkpoint after the cross-ledger staleness repair and the `EVT-000032` ruling; supersedes Checkpoint 0005 as the restore point |
+| ENT-000066 | Entity | Reikon Awakening: Daedalus's rented room in Verholt's working quarter, established by ruling alongside Reikon World Rule Profile 0.4 (economy). Grounds him as a Verholt local with lodging independent of Institute and Association |
 
 ---
 

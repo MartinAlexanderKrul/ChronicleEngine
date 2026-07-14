@@ -19,6 +19,8 @@ A durable, Canonical-Record form of this index is proposed engine work (Nonconfo
 
 There is **no baseline checkpoint** for this campaign. See below.
 
+**All checkpoints above record World Rule Profile 0.3; live canon is now 0.4.** This mismatch is surfaced on restore (Rules Section 13.5) and is resolved by **declaring 0.4** — nothing is recalculated. Profile 0.4 only adds Section 12 (Economy), authoring magnitudes that were previously unauthored; no 0.3 rule changed and no ledger value moves. This is unlike the 0.2 → 0.3 Health migration recorded against Checkpoint 0003, which did change how existing Health settled and required real recomputation.
+
 ---
 
 ## `900_CHECKPOINT_0005/` — conforming, superseded by 0006
@@ -73,11 +75,21 @@ Manifest `REC-000047`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` an
 
 It remains immutable and restorable under the World Rule Profile version recorded in its manifest. Continuing from it requires an explicit migration to Profile 0.3 before deterministic Health recovery can settle.
 
-## `900_CHECKPOINT_0004/` — current restore point
+## `900_CHECKPOINT_0004/` — prior restore point, pre-Session-2 fork point
 
 Captures the same post-pack-leader fiction migrated to Reikon World Rule Profile 0.3. Daedalus remains at Health 60/100; his moderate self-stabilized shoulder/collarbone wound has recovery mode `paused`, care `untreated`, and zero fractional recovery units while the active Rift threat continues.
 
 Manifest `REC-000048`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` and the Rules Section 13.3 minimum. Contains full copies of all eight canonical campaign ledgers and records no self-assessed validation result.
+
+It remains restorable but is no longer current: it predates Session 2. Continuing from it forks the campaign from before the warehouse exploration, the basement discovery, and the medical treatment. Prefer `900_CHECKPOINT_0006/`.
+
+## `900_CHECKPOINT_0006/` — current restore point
+
+Captures the Session 2 cross-ledger staleness repair and the `EVT-000032` kill-count ruling: the located-but-unentered basement chamber, the harvested kills, eight holdings carrying one consistent region descriptor, the expedition's suspension for treatment, and a restoration entry point that no longer contradicts itself on location, Mana, remaining creatures, or which checkpoint is latest.
+
+Manifest `REC-000050`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` and the Rules Section 13.3 minimum. Contains full copies of all eight canonical campaign ledgers and records no self-assessed validation result.
+
+This is the checkpoint `/continue` restores. Where it disagrees with `900_CHECKPOINT_0005/`, this one governs; `EVT-000032` rules the kill count at six.
 
 ---
 

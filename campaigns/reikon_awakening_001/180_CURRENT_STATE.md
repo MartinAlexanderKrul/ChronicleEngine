@@ -22,7 +22,7 @@ subjects: []
 
 - Engine: 0.2.0; Data Model: 0.1.1
 - World: Reikon 0.1
-- World Rule Profile: Reikon 0.3 (`RKO-OVR-001`, `RKO-OVR-002`)
+- World Rule Profile: Reikon 0.4 (`RKO-OVR-001`, `RKO-OVR-002`) — 0.4 adds Section 12 (Economy); no 0.3 rule changed and no ledger value recalculated
 - Compatibility: compatible; no version mismatch outstanding
 
 ## Restore Point
@@ -74,7 +74,7 @@ subjects: []
 
 1. **Core location discovered but not reached.** Basement chamber located beneath the deep storage zone, accessed via downward-sloping concrete corridor. Broodling fled into the darkness. The chamber is vast and extends deeper than the surface warehouse structure suggests. Expedition must resume to locate and clear the core itself.
 2. **Remaining population unquantified.** Pack leader confirmed dead; six creature kills confirmed and harvested (`EVT-000032`). Surviving Broodlings broke off and withdrew from the engagement, but where they went is unestablished — whether they hold in the basement chamber or left the Rift is unknown, and earlier blast casualties were never reliably counted. The basement is therefore unscouted and possibly defended.
-3. **Injury recovery in progress.** Daedalus is at 60/100 Health with a treated moderate shoulder/collarbone wound. Health recovery is now `active` under light/rest conditions; care is `treated`. Recovery is deterministic under Profile 0.3. Physical exertion should be minimized for one day.
+3. **Injury recovery in progress.** Daedalus is at 60/100 Health with a treated moderate shoulder/collarbone wound. Health recovery is now `active` under light/rest conditions; care is `treated`. Recovery is deterministic under Profile 0.4 (Health rules unchanged from 0.3). Physical exertion should be minimized for one day.
 4. **Mana economy remains binding.** Active recovery is 1 per 30 seconds and resting recovery 1 per 10 seconds; Fireball costs 12 of a 13 maximum. Current Mana is 7/13. Three mana potions remain unconsumed.
 5. **Rift stability window: six days remaining.** Not yet pressing, but basement chamber exploration must complete within the window.
 6. **The evacuation stone is unused, one use only.** The sole emergency exit from a losing fight.

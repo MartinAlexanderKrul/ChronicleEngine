@@ -25,9 +25,10 @@ canonical_record: REC-000038
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000030
-  event_time: "Year 31 AR, first expedition, pack-leader combat"
-  record_time: "2026-07-14T18:00:00Z"
+  source: EVT-000032
+  event_time: "Year 31 AR, first expedition, post-combat exploration and exit"
+  record_time: "2026-07-14T00:00:00Z"
+  uncertainty: "Residence established by ruling (ENT-000066), not by played event; the landlord and the tenancy's remaining term are unestablished."
 type: Character
 subtype: "System-bearing Awakened hunter"
 scope: personal
@@ -62,9 +63,10 @@ canonical_state:
         sources: [EVT-000029]
   personality: "Ambitious prodigy; confident, observant, eager to prove himself"
   knowledge: "Aurology training; observed Broodling and Swarmer behavior and a correlation between Rift glow and creature movement"
-  situation: "Solo inside Warehouse 7 E-Rift; pack leader defeated, surviving Broodlings retreating, Rift core still ahead"
+  residence: "A rented room in Verholt's working quarter (ENT-000066). A Verholt local of years' standing, not a newcomer: he lived and worked here as an Aurology Institute research assistant before the Awakening, and the room is held on his own coin, independent of Institute and Association alike."
+  situation: "At Hunters' Association headquarters, Verholt, evening, after exiting Warehouse 7. Wound treated by the Association healer; cores and scale plate secured. The Rift is uncleared: its core chamber is located but unentered, and whether any creature remains inside is unestablished (EVT-000032)."
   training_commitment: "Repeat daily: 10 km run, 30 minutes of sword technique, 100 pushups, and one controlled round of each spell"
-  world_rule_profile: "Reikon 0.3"
+  world_rule_profile: "Reikon 0.4"
   active_overrides: "RKO-OVR-001, RKO-OVR-002"
 
 # Domain extension -- Subtype "System-bearing Awakened hunter".

@@ -26,7 +26,7 @@ The index carries only what a player needs in order to **choose**. Everything el
 | World | Version | Status | Live campaigns | Diegetic commands |
 |-------|---------|--------|----------------|-------------------|
 | `worlds/asterra/` | 0.9 | Pre-campaign foundation | 0 | none |
-| `worlds/reikon/` | 0.1 (World Rule Profile 0.3) | Active | 1 | `/system` |
+| `worlds/reikon/` | 0.1 (World Rule Profile 0.4) | Active | 1 | `/system` |
 | `worlds/verra/` | 0.1 (Prototype) | Active | 2 | none |
 
 A world's diegetic commands are shown to the player only once a campaign in that world is loaded, never on the welcome page (Command Availability at Session Start).

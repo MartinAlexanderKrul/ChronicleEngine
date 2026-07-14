@@ -1,11 +1,13 @@
-# Reikon — World Rule Profile 0.3
+# Reikon — World Rule Profile 0.4
 
 **File:** `worlds/reikon/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
-**Profile Version:** 0.3
+**Profile Version:** 0.4
 **Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Status:** Active
+
+**0.4 adds Section 12 (Economy)** — the core unit ladder, the vell and its universal rate, appraisal and the specialist premium, posted costs, and salary — which had no authoritative home. **No 0.3 rule changed and no campaign state changes.** Section 12 is additive: it authors magnitudes that were previously unauthored, so a campaign at Profile 0.3 migrates to 0.4 by declaring the version, with no ledger value recalculated. This is unlike the 0.2 → 0.3 Health migration, which changed how existing Health settled.
 
 ---
 
@@ -81,7 +83,9 @@ Official Rank is a band of pool capacity, measured at Awakening. Bands are conti
 | **S** | 751+ | ~1,200 | 4,715 |
 | **Anomalous** | unmeasurable, unstable, or refuses assessment | — | — |
 
-The band typicals form a geometric ladder of roughly **×2.75 per band**. Every other scale in this profile — pool growth, monster Health, XP awards — rides that same ladder. This is not decoration: it is what keeps a Bearer's progression, the world's threats, and the XP economy in fixed proportion at every Rank.
+The band typicals form a geometric ladder of roughly **×2.75 per band**. Every **capability** scale in this profile — pool growth, monster Health, XP awards — rides that same ladder. This is not decoration: it is what keeps a Bearer's progression, the world's threats, and the XP curve in fixed proportion at every Rank.
+
+**The economy does not ride it.** Core value climbs **×5 per grade** (Section 12.1). That divergence is deliberate: capability scales with what a threat takes to fight, and value scales with what a core can be made into. They are different questions, and forcing them onto one ladder would make a grade's worth an accident of its danger.
 
 ## 3.2 Pool Growth — Bearer Only
 
@@ -649,3 +653,128 @@ Recorded: **allocations, Awakening basis values, current pools, recovery modes/c
 Never recorded: `max_mana`, `max_health`, ability `cost`, ability `level`, `magnitude`, `next_threshold`, effective band. Every one is derived from the allocations above and the formulas in this document. Storing any of them creates a second representation that can drift from its source — the exact failure Decision 051 forbids and Section 10 rule 1 restates.
 
 `current_mana`, `mana_recovery_remainder_seconds`, `current_health`, and the Health-recovery fields **are** recorded, because they are not derivable: they are the result of play.
+
+---
+
+# 12. Economy
+
+Reikon has two media of exchange, and this section is authoritative on both. It exists for the same reason Section 7.3 exists: a Runtime asked to resolve a purchase needs an authored magnitude, or it invents a plausible number and the world's values drift session to session.
+
+## 12.1 The Core Unit — Appraised Value
+
+The **unit** is the appraised value of one E-core. Core grades form a ×5 ladder:
+
+| Grade | Appraised value |
+|-------|-----------------|
+| E-core | 1 unit |
+| D-core | 5 units |
+| C-core | 25 units |
+| B-core | 125 units |
+| A-core | 625 units |
+| S-core | 3125 units |
+
+This is the economy's own ladder and is **deliberately not** the ×2.75 band ladder that Section 3.1 uses for pools, Health, and XP. Threat scales with what it takes to fight; value scales with what a core can be made into. They are different questions and they do not track.
+
+This ladder is what a core is **worth**. It is not what a core **fetches**. Realizing it requires someone who can tell the grades apart (12.3).
+
+Where a ledger says "cores" without a grade — including `120_INVENTORY_AND_OWNERSHIP.md`'s core purse — it means **E-cores**, one unit each. A purse of 61 cores is 61 units.
+
+## 12.2 Coin: the Vell, and the Universal Rate
+
+The Aldish Republic mints the **vell**. It is the civilian currency: wages outside hunting, rent, food, and ordinary goods are priced in vells, and every shop takes them.
+
+**The universal rate is 1 core = 3 vells.** Any core, any grade, anywhere, from any counter that takes cores at all — a provisioner, a tavern, a landlord, a carter. It is the Republic's posted conversion, everyone honors it, and no one asks what the core came from. A hunter with cores and no vells is never stuck and never needs an exchange first.
+
+The rate is **flat because the counter is blind.** To an ordinary merchant a core is a core: a dense crystalline residue of no distinguishable origin, worth taking because industry always buys them. He is not equipped to know whether the thing in his palm came off a Broodling or something that killed a B-Rank team, and he prices accordingly — one flat rate, no questions, no risk to him.
+
+Note what that means, because it is the whole shape of Reikon's economy: **3 vells is exactly par for an E-core** (1 unit = 3 vells). For the core a hunter actually carries by the fistful, the universal rate is honest and there is nothing to resent. Every grade above E, it is a robbery the merchant is not even aware of committing.
+
+Cores still trade above coin and always have, because a core is not only money — it is feedstock for medicine, industry, and the crafting of Marked relics, so industrial demand sits under its price permanently and coin has no such floor. That is why the Association quotes a salary in cores and a landlord quotes rent in vells.
+
+## 12.3 Appraisal and the Specialist Premium
+
+A core carries its **origin** in its structure — which creature died to leave it, and therefore its grade. Reading that origin is a **specialist skill**, and only where someone holds it does a core fetch the ladder in 12.1.
+
+**Who can appraise:** Association core desks, Meridian Guild buyers, dedicated trade stations that keep an appraiser, Institute researchers, and the fences of the gray market. **Who cannot:** everyone else — the general provisioner, the tavern, the landlord, the hunter himself unless canon establishes he learned it.
+
+| Where the core is sold | What it fetches |
+|------------------------|-----------------|
+| Any ordinary counter (unappraised) | **3 vells, flat, whatever its grade** (12.2) |
+| A specialist station (appraised) | Its grade's appraised value (12.1), less the station's spread and whatever else applies (12.4) |
+| A gray-market fence (appraised, no questions) | 10–20% below appraised value |
+
+A fence pays below the desks and above the blind counter, and that gap is the point: **a fence can appraise.** That is what makes him a fence rather than a shopkeeper, and why stolen cores flow to people who ask no questions rather than to people who cannot tell what they are holding.
+
+The consequences are the world's, not the Runtime's to soften. Selling an A-core to a general provisioner is a transaction worth 1875 vells settled for 3, and **nothing warns the seller** — the merchant is not cheating him and does not know. Knowing where to sell is a real advantage, held by hunters with Association standing, Guild contacts, or the sense to ask. A newly licensed hunter has none of that by default.
+
+**Appraisal is information, and information cuts both ways.** An appraiser who reads a core's origin learns what it came from. One who identifies a core from a creature that should not have been in that Rift, at that grade, now knows something the seller may not have wanted known — and is under no obligation to keep it. Handing a core to a specialist is a disclosure as much as a sale.
+
+**Appraisal can be uncertain.** A specialist may misread an unusual core, lowball a hunter he thinks is desperate, or recognize something he was never meant to see. Where the outcome is in doubt or opposed, the die resolves it (12.4).
+
+## 12.4 Posted Rates Are Not Laws
+
+Every number in this section is a **posted rate** — what the Association and the Meridian Guild publish, and what an ordinary transaction in Verholt settles near. None is a law of nature (Rejected 005).
+
+Price moves with supply, demand, distance, scarcity, politics, reputation, urgency, and who is desperate. A hunter far from a Guild office, selling in a hurry, unlicensed, or holding something the Institute wants badly does not get the table price.
+
+The **1 core = 3 vells universal rate is the one exception, and it is a floor rather than a law.** It holds everywhere because it costs the blind counter nothing to honor; it is the price of not needing to know. It is never *beaten* by a blind counter and never needs to be — a hunter who wants more takes the core to someone who can read it (12.3).
+
+When a price is **contested** — haggling, an appraisal, a gray-market sale, an exploitative offer, a buyer who knows you cannot wait — it is an uncertain action and the die resolves it (Rules Section 4; Section 6.1 of this profile). The posted rate is the baseline the roll moves from, never the answer that replaces the roll. When a price is **not** contested — a provisioner selling rope at the posted rate to a customer who can pay, or taking a core at the universal 3 vells — it is in the No-Roll Zone (6.2) and simply resolves.
+
+## 12.5 Posted Costs
+
+A price in **units** may be paid either way, and for E-cores the two are the same money: 1 E-core is 1 unit is 3 vells (12.2). A 2-unit potion costs two E-cores or six vells, and the seller does not care which. Paying a unit price with a *higher*-grade core at a blind counter is the 12.3 mistake — the counter takes it as one core, at 3 vells.
+
+Hunter goods, in units:
+
+| Good | Posted cost |
+|------|-------------|
+| Healing potion (standard; restores 25% of maximum Health, 7.3) | 2 units |
+| Basic sword | 10 units |
+| Rare herb | 3 units |
+| Quality armor | 40 units |
+| Enchanted weapon | 150 units |
+| Master-crafted artifact | 600+ units |
+| Legendary artifact | 2000+ units |
+
+Civilian goods, in vells:
+
+| Good | Posted cost |
+|------|-------------|
+| A day's meals | 1 vell |
+| Rope, candles, lamp oil, ordinary provisioning | 1–3 vells |
+| Tool repair or blade maintenance | 1–2 vells |
+| Set of ordinary clothing | 4 vells |
+
+Lodging in Verholt, per month:
+
+| Lodging | Posted rent | Share of E-Rank base (12.6) |
+|---------|-------------|------------------------------|
+| Modest rented room, working quarter (shared facilities) | 25 vells | 17% |
+| Studio apartment | 40 vells | 27% |
+| Decent apartment | 60 vells | 40% |
+
+Rent is the number that decides how an E-Rank hunter actually lives, so it is stated as a share of base pay rather than left to be worked out. Add roughly 30 vells a month for food. The cheapest room plus food is **37%** of base; a decent apartment plus food is **60%**.
+
+## 12.6 Association Salary by Rank
+
+Monthly base pay, in units, paid in cores (this profile governs Association base pay only; Guild and independent terms are negotiated fiction):
+
+| Rank | Base salary |
+|------|-------------|
+| E | 50 units/month |
+| D | 200 units/month |
+| C | 800 units/month |
+| B | 3000 units/month |
+| A | 12000 units/month |
+| S | 60000 units/month |
+
+This is the salary floor the world bible calls entry-level safety, and the word is **safety**, not comfort. 50 units is 150 vells. A cheap room and food take 37% of that; a decent apartment and food take 60%, leaving roughly 60 vells a month. That keeps potions on his belt (2 units, 6 vells) and buys little else: **quality armor** (40 units, 120 vells) is two months of saving every spare vell, and an **enchanted weapon** (150 units, 450 vells) is seven and a half. A licensed E-Rank hunter survives on base pay. He does not live well on it, and he does not equip himself on it quickly.
+
+That gap is deliberate and it is where the world bible's pressure comes from. An E-Rank hunter who wants a decent apartment, better gear, or both is short every month, and the fixers offering fast money without Association salary caps are offering a solution to an arithmetic problem, not a temptation in the abstract. An unlicensed hunter, paid 20–30% less per expedition with no floor at all, is the person that offer is aimed at.
+
+## 12.7 Unpriced Goods
+
+If a good has no posted cost here, the Runtime **does not invent one**. It rules a price from the nearest posted comparable and the circumstances, states that it is a ruling, and records it — or surfaces the missing rule and asks. This is Section 7.3's clause applied to value: an unauthored magnitude is a gap to be filled deliberately and recorded, never a number to be improvised at the moment of sale and forgotten.
+
+A price established by ruling in play is canon and is promoted like any other established fact.

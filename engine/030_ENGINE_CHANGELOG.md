@@ -12,6 +12,20 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-14 — Decision 069: change classification gate and post-0.2 decision reconciliation
+
+**Evidence:** Seventeen decisions (052–068) were accepted since the last roadmap reconciliation and only Decision 053 reached `002_ENGINE_ROADMAP.md`, inside a Technical Debt bullet. Ten landed after the 0.2.0 release and outside the five dispositions named in the Engine Postmortem's refinement table. Every one of them asserted its own class inside its own Alternatives Considered section.
+**Gap closed:** Decision 048 defined the Architecture Freeze but not who classifies a change or where the judgment is checked. A gate whose subject writes its own verdict is not a gate. Decision 069 makes classification structural — the test reads the diff, not the motivation — and names a mechanical enforcement point at the roadmap, applying Decision 055's own lesson to governance.
+**Class boundary:** Foundational = adds/removes/renumbers a Rules section, changes the Data Model, or introduces a mechanism worlds invoke. Refinement = everything else, explicitly including new normative `012` text that sites or enforces an obligation the engine already carries — the freeze protects the architectural basis, not the execution layer against mandated playtest findings.
+**Reclassification:** Decision 059 (Rules Section 14, World Rule Profiles) and Decision 062 are recorded as **foundational** and owned by Version 0.3. Both remain Accepted and are not reopened or renumbered; only ownership changes. Version 0.3 scope approval must treat Section 14 as inherited architecture.
+**World authoring:** Decisions 057, 066, and 068 are recorded as Reikon world authoring, which per Decision 062 requires no ADR. Left in place as immutable history; future world authoring does not consume engine decision numbers.
+**Roadmap:** Gains the Post-0.2 Decision Record classifying Decisions 049–069, a Foundation block range claim (001–048), a Version 0.3 inherited-architecture note, and a Technical Debt entry recording the four-decision bootstrap churn.
+**Enforcement:** `tools/test_decision_roadmap_sync.ps1` fails the build when an accepted decision is claimed by no milestone. It enforces ownership mechanically; class remains a recorded judgment, deliberately not automated.
+**Documents:** Development Workflow 1.3 (Change Classification); Decision 069; roadmap reconciled.
+**Rules / Data Model / Runtime:** Unchanged. Under its own test this is a refinement, owned by Version 0.3 Planning.
+**Validation:** Repository validation passes; catalog, Reikon contract, and the new sync test pass.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-14 — Decision 068: enforce complete `/system` rendering at command dispatch
 
 **Evidence:** A live `/system` response rendered an invented `THE LEDGER — DAEDALUS` dashboard, omitted INVENTORY/QUESTS/PATHS & MARKS, regrouped the fixed sections, and exposed recovery internals despite the normative Profile Section 10 template.

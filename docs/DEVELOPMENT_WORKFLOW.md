@@ -2,7 +2,7 @@
 
 # Development Workflow
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 **Status:** Active Development Workflow
 
 ---
@@ -40,6 +40,28 @@ A version is not considered complete until its Capability Validation, Prototype 
 Each stage that accepts a decision, modifies a Rules section, or corrects the Manifest records a Changelog entry per Decision 040.
 
 The per-session workflow below operates within these stages: any given development session implements one or more steps of the current stage.
+
+## Change Classification
+
+Every change is either **foundational** or a **refinement**, and the class is decided structurally rather than argued. This is the operational implementation of Decision 069, which completes Decision 048's Architecture Freeze by giving it an external test.
+
+A change is **foundational** if its diff:
+
+- adds, removes, or renumbers a section of `010_ENGINE_RULES.md`; or
+- changes `011_ENGINE_DATA_MODEL.md` in any way; or
+- introduces an engine-general mechanism that a world or campaign may invoke or must satisfy.
+
+Every other change is a **refinement**, including one that writes new normative text into `012_ENGINE_RUNTIME.md` in order to site, enforce, or make explicit an obligation the engine already carries. The freeze protects the architectural basis, not the execution layer against the playtest findings the lifecycle mandates.
+
+The test reads the diff, not the motivation. A change is foundational even when it is small, obvious, correct, and urgently wanted.
+
+Consequences:
+
+- **Foundational changes belong to a version's Planning and ADR Design stage.** They may not land against a released version.
+- **Refinements may land against a released version**, and must name the roadmap milestone that owns them.
+- **A change scoped entirely to one world or campaign is world authoring.** It is recorded in `030_ENGINE_CHANGELOG.md` and the world's own documents, and does not consume an engine decision number (Decisions 062 and 069).
+
+Enforcement is mechanical and lives at the roadmap: `tools/test_decision_roadmap_sync.ps1` fails when an accepted decision is claimed by no milestone. It enforces ownership, not class — its purpose is to make an unclassified decision impossible to leave unnoticed.
 
 ---
 

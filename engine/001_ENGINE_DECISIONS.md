@@ -3096,6 +3096,82 @@ This repeated the enforcement-point pattern behind Decisions 055 and 065: a corr
 
 ---
 
+## Decision 069 — Change Classification Gate and Post-Release Change Control
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** Completes Decision 048 (Version Evolution and Validation Lifecycle); applies Decision 055 (enforcement points) to governance; `002_ENGINE_ROADMAP.md`; `docs/DEVELOPMENT_WORKFLOW.md`; `tools/test_decision_roadmap_sync.ps1`; Decisions 040, 054, 062
+
+### Context
+
+Decision 048 established the development lifecycle and the Architecture Freeze: within a version, later work is "implementation and refinement, not new foundational architecture," and "genuinely new foundational architecture belongs to a later version's Planning and ADR Design." It did not say **who decides which class a change belongs to**, or **where that judgment is checked**.
+
+In practice the classification is asserted by the decision seeking to land, inside its own Alternatives Considered section. Decisions 055, 062, and 068 each argue their own refinement status; Decision 062 explicitly lists "Defer to Version 0.3 planning as new foundational architecture" as an alternative and rejects it. A gate whose subject writes its own verdict is not a gate.
+
+The Version 0.2 record shows the consequence. Seventeen decisions (052–068) have been accepted since the last roadmap reconciliation, and only one of them — Decision 053 — is mentioned in `002_ENGINE_ROADMAP.md`, inside a Technical Debt bullet. Ten landed after Version 0.2 was declared complete and outside the five dispositions the Engine Postmortem's own refinement table names. Among them, Decision 059 added `010_ENGINE_RULES.md` Section 14, an engine-general mechanism permitting a world to replace engine-general behavioral rules — the furthest-reaching change since the Foundation line — under a refinement label, in response to one world's authoring needs.
+
+This is the same shape as the failure Decision 048 was written to prevent, one layer up. Decision 048 stopped the engine from accumulating architecture without gameplay validation. It did not stop the engine from accumulating architecture without milestone ownership. And it is the same shape Decision 055 named at the runtime layer: a correct rule with no named enforcement point does not fire.
+
+### Decision
+
+**1. Classification is structural, not self-declared.**
+
+A change is **foundational** if its diff does any of the following:
+
+- adds, removes, or renumbers a section of `010_ENGINE_RULES.md`;
+- changes `011_ENGINE_DATA_MODEL.md` in any way;
+- introduces an engine-general mechanism that a world or campaign may invoke or must satisfy.
+
+Every other change is a **refinement**.
+
+A change that only **sites, enforces, or makes explicit an obligation the engine already carries** is a refinement, including when it writes new normative text into `012_ENGINE_RUNTIME.md`. Siting enforcement is what the lifecycle's postmortem stage exists to produce (Decision 055 is the type case), so the Runtime is expected to gain enforcement points as a version closes. The Architecture Freeze protects the architectural *basis* — the world model, the structural contract, and the mechanisms worlds build against. It does not freeze the execution layer against the findings of the playtest that the same lifecycle mandates.
+
+The test reads the diff, not the motivation. Why a change is wanted, how urgent it is, which world asked for it, and whether it completes an already-accepted decision are all irrelevant to its class. A change that meets the structural test is foundational even when it is small, obvious, and correct.
+
+Where one mechanism spans several decisions, the mechanism carries the class and every decision that constitutes it shares the owning milestone. A follow-on decision does not become a refinement by virtue of completing a foundational one.
+
+**2. Foundational changes belong to a version's Planning and ADR Design stage.**
+
+They may not land against a released version. This restates Decision 048's freeze and makes it checkable.
+
+**3. Refinements may land against a released version**, and must name the roadmap milestone that owns them.
+
+**4. The engine ADR log records engine-general decisions only.**
+
+A change scoped entirely to one world or campaign is world authoring. Decision 062 already settled this — "Authoring a profile is world content and requires no decision; only changing this convention does" — and it follows from Decision 027's engine/world separation. World authoring is recorded in `030_ENGINE_CHANGELOG.md` and the world's own documents. It does not consume an engine decision number.
+
+**5. Enforcement point: mechanical, at the roadmap.**
+
+Per Decision 055, this decision names where it is checked rather than trusting that it is documented. `tools/test_decision_roadmap_sync.ps1` requires every Accepted decision in `001_ENGINE_DECISIONS.md` to be referenced by number in `002_ENGINE_ROADMAP.md`. A decision that no milestone claims fails the check.
+
+The tool enforces **ownership**, which is mechanical. It does not adjudicate **class**, which is a judgment. Its purpose is to make an unclassified decision impossible to leave unnoticed: the reconciliation that has not happened since Decision 051 becomes a failing test rather than a silent gap.
+
+### Rationale
+
+- It completes Decision 048 rather than amending it. Decision 048 defined the stages and the freeze correctly; the missing piece was an external test for the boundary it drew and a place where the answer is recorded. Nothing about the lifecycle changes.
+- It applies the engine's own dominant architectural finding to the engine's own process. Decision 055 established that an invariant with no enforcement point is assumed to hold and does not; Decision 054 established that when narrated bookkeeping has failed repeatedly, the fix is to move the point rather than rewrite the prose at the old point. Governance had exactly the defect both decisions describe, and gets the same remedy.
+- A structural test resists the pressure that produced the drift. Every one of the ten post-release decisions was individually well-argued and locally correct; the drift came from each being judged on its own merits at the moment it was needed. A test that reads the diff cannot be argued with at that moment.
+- Separating mechanical ownership from judged class keeps the tool honest. Automating the class judgment would produce a checker that is wrong in interesting cases and trusted anyway; automating ownership catches the actual observed failure, which was silence rather than misjudgment.
+
+### Consequences
+
+- `002_ENGINE_ROADMAP.md` gains a Post-0.2 Decision Record reconciling Decisions 052–068 and classifying each. This is the first application of the gate.
+- `tools/test_decision_roadmap_sync.ps1` is added and must pass alongside `tools/validate_repository.ps1` before a release is claimed.
+- `docs/DEVELOPMENT_WORKFLOW.md` records the classification test in the Version Evolution & Validation Lifecycle section.
+- Decision 059's classification is ruled on separately and explicitly; it is the one accepted decision the structural test reclassifies, and it is not disturbed retroactively (see the Post-0.2 Decision Record).
+- Future world authoring does not consume engine decision numbers. Decisions 057, 066, and 068 are world-scoped and predate this rule; they are left in place as immutable history rather than renumbered.
+- This decision adds no engine mechanic, no Rules section, no Data Model change, and no Runtime obligation. Under its own structural test it is a refinement, and it names Version 0.3 Planning as its owning milestone.
+
+### Alternatives Considered
+
+- **Leave classification to each decision's own reasoning.** Rejected: that is the status quo, and it let a new Rules section land against a released version under a refinement label. A subject that writes its own verdict is not gated.
+- **Strengthen Decision 048's prose about the freeze.** Rejected for the reason Decision 054 gives: a rule that has failed at its enforcement point is not repaired by more prose at that point. Decision 048's wording is already clear; it was not the weak part.
+- **Automate the foundational/refinement judgment fully.** Rejected: "introduces an engine-general mechanism" is a judgment a diff parser cannot make reliably, and a checker that is confidently wrong is worse than one whose scope is honest. Ownership is mechanized; class is recorded and reviewed.
+- **Reopen and reclassify Decisions 056–068 retroactively.** Rejected: accepted decisions are immutable history (Revision Policy), and the repository they produced passes every gate. The record is reconciled and the classification is stated going forward; the history is not rewritten.
+- **Defer this to Version 0.3 planning as its own scope item.** Rejected: Version 0.3 planning is the activity this gate exists to protect. Approving a capability scope on an unreconciled record is the specific failure being corrected, so the gate precedes the scope rather than sitting inside it.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

@@ -14,11 +14,17 @@ Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha
 
 Current Task:
 
-Prepare Version 0.3 planning under the lifecycle in Decision 048.
+Approve the Version 0.3 scope under the lifecycle in Decision 048.
+
+Scope approval must account for Rules Section 14 (World Rule Profiles), which is already accepted and implemented and is reclassified as Version 0.3 foundational architecture by the Post-0.2 Decision Record below.
 
 Next Review:
 
 Approve the Version 0.3 scope before any new ADR design or implementation.
+
+Completed since the 0.2.0 release:
+
+- Post-0.2 decision reconciliation and the change-classification gate (Decision 069). Decisions 049–069 are classified and claimed by a milestone; `tools/test_decision_roadmap_sync.ps1` keeps the record honest.
 
 ---
 
@@ -127,6 +133,10 @@ The five capability milestones (0.2.1–0.2.5) are specified in full under Plann
 # Foundation — Complete and Frozen (0.1.0–0.1.5)
 
 The Foundation line built the reusable engine substrate: Rules, Data Model, Runtime, Persistent Objects, Canonical Records, templates, and — at 0.1.5 — the Version Evolution & Validation Lifecycle (Decision 048). The foundational architecture is now frozen. Every capability version, beginning with Version 0.2.0, builds on it without redesigning it.
+
+The Foundation line is a closed block and owns its decisions as a block (Decision 069):
+
+Decisions owned: 001-048
 
 The milestones below record how the Foundation was built.
 
@@ -559,9 +569,86 @@ Its output is the set of required engine refinements that must be incorporated b
 
 ---
 
+## Post-0.2 Decision Record
+
+Status: **Reconciled 2026-07-14** under Decision 069
+
+Every accepted decision must name the milestone that owns it and its class under the structural test in Decision 069. This section is that record for Decisions 049–069, and it is the first application of the gate.
+
+It exists because the record had drifted. Between Decision 051 and Decision 068, seventeen decisions were accepted and only one — Decision 053 — reached this roadmap, inside a Technical Debt bullet. Ten landed after Version 0.2 was declared complete and outside the five dispositions named in the Engine Postmortem's own refinement table. The roadmap is the document that owns milestone state; it had stopped describing the engine.
+
+`tools/test_decision_roadmap_sync.ps1` now fails the build when an accepted decision is claimed by no milestone.
+
+### Version 0.2 — Prototype Alpha preparation and play
+
+| Decision | Subject | Class |
+|----------|---------|-------|
+| Decision 049 | Development / Gameplay Runtime Profile separation | Refinement — applies Decision 041's existing profile abstraction |
+| Decision 050 | Player Agency and Interaction Cadence | Refinement — sites the latent Law III / Section 3.2 obligation |
+| Decision 051 | Progression Surfacing | Refinement — presentation layer over Decisions 012–014; no mechanic |
+| Decision 052 | Modifier application and always-live critical tails | Refinement — specifies existing Rules Section 4.6 |
+| Decision 053 | Campaign restart and world-line forking | Refinement — applies existing identity invariants |
+
+### Version 0.2 — Engine Postmortem required refinements
+
+These are the dispositions the postmortem itself mandated. Decision 048 requires them to be incorporated before the version closes, so they land within the version by design.
+
+| Decision | Subject | Class |
+|----------|---------|-------|
+| Decision 054 | Repository Validation Barrier (PA-007) | Refinement — mechanical enforcement point |
+| Decision 055 | Invariant enforcement points and the resident layer (PA-005) | Refinement — sites existing invariants |
+| Decision 058 | Modifier step scale and effective result | Refinement — specifies existing Rules Sections 4.4 / 4.6 |
+| Decision 060 | Uncertain world-fact arbitration (PA-006) | Refinement — refines Decision 050's boundary |
+
+### Version 0.2 — Post-release refinements
+
+Accepted after the 0.2.0 release. Each is operational: it changes how the engine is executed, presented, or recorded, and none adds a Rules section, a Data Model change, or a mechanism a world builds against.
+
+| Decision | Subject | Class |
+|----------|---------|-------|
+| Decision 056 | Runtime Command Interface | Refinement — thin dispatchers over existing procedures |
+| Decision 061 | Session Export as durable transcript and recovery source | Refinement — record reclassification |
+| Decision 063 | Complete command discovery; chat debug export | Refinement — operational boundary |
+| Decision 064 | Cold-start no-target gate and exact catalog mirror | Refinement — operational boundary |
+| Decision 065 | Per-exchange state settlement; literal diagnostic export | Refinement — settlement enforcement point |
+| Decision 067 | Argumentless welcome bootstrap; `/resume` | Refinement — command surface |
+
+Decisions 056, 063, 064, and 067 address one boundary — the bootstrap command — across four decisions, each written after a live test failed the previous one. The pattern is recorded in Technical Debt below rather than reopened here.
+
+### World authoring — no engine decision required
+
+Scoped entirely to Reikon: campaign startup, world profile, world lore, and the world's own regression tests. Decision 062 already established that world authoring requires no ADR, and Decision 069 point 4 makes that explicit. These three predate the rule and are left in place as immutable history rather than renumbered; future world authoring is recorded in `030_ENGINE_CHANGELOG.md` and the world's documents.
+
+| Decision | Subject | Class |
+|----------|---------|-------|
+| Decision 057 | World-scoped diegetic System: tracked resources, inline surfacing | World authoring (Reikon) |
+| Decision 066 | Deterministic Health recovery in Reikon | World authoring (Reikon) |
+| Decision 068 | Command-local conformance gate for Reikon `/system` | World authoring (Reikon) |
+
+### Reclassified — foundational
+
+| Decision | Subject | Class |
+|----------|---------|-------|
+| Decision 059 | Declared World Rule Profiles (Rules Section 14) | **Foundational** — owned by Version 0.3 |
+| Decision 062 | World Rule Profile document class and placement (Rules Section 14.5) | **Foundational** — same mechanism as Decision 059 |
+
+Decision 059 added `010_ENGINE_RULES.md` Section 14, an engine-general mechanism permitting a world to replace engine-general behavioral rules. It meets the structural test on two counts: it adds a Rules section, and it introduces a mechanism worlds invoke. It is the furthest-reaching architectural change since the Foundation line, and it landed against a released version under a refinement label, in response to one world's authoring needs. Decision 062 completes the same mechanism and carries the same class.
+
+Both remain **Accepted**. They are not reopened, reversed, or renumbered: accepted decisions are immutable history, the repository they produced passes every gate, and Reikon is authored against them. What changes is ownership — Section 14 is now recorded as Version 0.3 architecture that arrived early, and Version 0.3 scope approval must account for it as existing architecture rather than plan around a blank space. See Version 0.3 below.
+
+### Version 0.3 — Planning
+
+| Decision | Subject | Class |
+|----------|---------|-------|
+| Decision 069 | Change Classification Gate and Post-Release Change Control | Refinement — completes Decision 048; adds no mechanism |
+
+---
+
 ## Version 0.3 - Governance & Society
 
 Status: **Planning Unblocked** — Version 0.2 and all validation gates are complete; scope approval is next
+
+**Inherited architecture.** Rules Section 14 (World Rule Profiles) is already accepted and implemented via Decisions 059 and 062, and is reclassified as Version 0.3 foundational architecture by the Post-0.2 Decision Record above. Scope approval must treat it as an existing constraint rather than a blank space: Version 0.3 is Governance & Society, Section 14 is a governance mechanism for worlds, and the two must be reconciled deliberately rather than discovered later. Reikon is its only client and declares two overrides against it.
 
 Per the development lifecycle (Decision 048), Version 0.3 planning begins only after all of the following validation gates are satisfied:
 
@@ -883,9 +970,11 @@ Integrated through `001_ENGINE_DECISIONS.md` Decision 051 and `docs/AI_GAMEPLAY_
 Current architectural debt:
 
 - ✓ Create `003_DESIGN_PRINCIPLES.md` — completed 2026-07-12
+- ✓ Reconcile the decision record with the roadmap; gate change classification — completed 2026-07-14 (Decision 069)
 - Remove remaining terminology drift.
 - Eliminate duplicated definitions through cross-references.
-- Stabilize repository governance.
+- Stabilize repository governance. *(Partially addressed by Decision 069: classification is now structural and ownership is mechanically enforced. The remaining gap is that no gate checks the class itself — only that one is recorded.)*
+- **Bootstrap command churn.** Decisions 056, 063, 064, and 067 addressed one boundary across four decisions in a single day, each written after a live test failed its predecessor; Decision 068 repeated the shape for Reikon `/system`. Each decision is individually sound and all gates pass, so nothing is broken. The open question is architectural: the Gameplay Runtime Profile is now 907 lines, revised thirty times, and carries operational contracts that keep failing at execution and getting re-sited. Decision 055 predicts this — a fetched profile cannot be the sole carrier of an obligation — and the response so far has been a mechanical catalog test plus a README mirror that must stay synchronized. Evaluate during Version 0.3 planning whether the profile needs decomposition or a stronger residency model.
 - Reconcile canon hierarchy wording between Manifest, Decisions, and Rules. *(Partially addressed by Decision 042: precedence vs. durability separated; promotion made mandatory.)*
 - Define version compatibility model.
 - Complete missing governance documents.

@@ -17,7 +17,9 @@ Use `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (the resident layer, held every turn) wi
 
 Setup manual and AI Project prompts: `docs/GAMEPLAY_START_GUIDE.md`.
 
-Formal repository validation gate: `tools/validate_repository.ps1` (Decision 054).
+Repository inventory: `system/WORLDS_AND_CAMPAIGNS.md` (Decision 071) — every world and campaign, with status and latest checkpoint. It is the rendered source for the Engine Welcome Page listing; the listing is never composed from memory or from the example paths in the README and start guide.
+
+Formal repository validation gate: `tools/validate_repository.ps1` (Decision 054). It also enforces index coverage: a live campaign or world with no row fails the build (Decision 071).
 
 Governance gate: `tools/test_decision_roadmap_sync.ps1` (Decision 069) — every accepted decision must be claimed by a roadmap milestone. Change classification is defined in `docs/DEVELOPMENT_WORKFLOW.md`.
 
@@ -43,6 +45,8 @@ Governance gate: `tools/test_decision_roadmap_sync.ps1` (Decision 069) — every
 Campaign startup and player-briefing templates are under `templates/campaign/` and `templates/derived/`.
 
 ### Worlds
+
+For the current inventory of worlds and campaigns, read `system/WORLDS_AND_CAMPAIGNS.md` rather than inferring it from the lists in this file.
 
 15. worlds/asterra/200_WORLD_BIBLE.md
 16. worlds/verra/200_WORLD_BIBLE.md

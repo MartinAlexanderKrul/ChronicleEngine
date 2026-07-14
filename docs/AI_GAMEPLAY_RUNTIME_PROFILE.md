@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.31
+**Document Version:** 1.32
 **Status:** Active Gameplay Workflow — Fetched Reference Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -105,7 +105,7 @@ The README also carries an **exact cold-start mirror of every Command Table row*
 
 `/ChronicleEngine` has no target parameter. The Runtime must not parse trailing text as a world, campaign, checkpoint, save label, or restoration request. The Bootstrap Gate prohibits campaign startup, ledger/checkpoint reads, restoration, reconciliation, recap, and readiness work. The Runtime reads only the engine boot set plus repository metadata needed for the welcome listing, renders the Engine Welcome Page, and yields. A recent, active, sole, or trailing-text campaign is never an implicit target.
 
-The Runtime reads the boot set on its own initiative, following the cold-start loading rule: seeing only `README.md` (or a partial listing) at the start of a conversation is a cold-start artifact, not a missing-files condition, and the Runtime reports a load blocker only after an actual read attempt on a named file errors (First-Session Boot; Failure Behavior). The boot set is the profile, the Engine Rules (Sections 4, 6, 13), the Runtime and Data Model documents, and the validator. **Only after a later `/continue`, `/resume`, `/new`, or `/load` command selects play** may it read the selected campaign's startup, ledgers, world records, and latest checkpoint.
+The Runtime reads the boot set on its own initiative, following the cold-start loading rule: seeing only `README.md` (or a partial listing) at the start of a conversation is a cold-start artifact, not a missing-files condition, and the Runtime reports a load blocker only after an actual read attempt on a named file errors (First-Session Boot; Failure Behavior). The boot set is the profile, the Engine Rules (Sections 4, 6, 13), the Runtime and Data Model documents, the validator, and `system/WORLDS_AND_CAMPAIGNS.md` (the rendered source for the welcome listing). **Only after a later `/continue`, `/resume`, `/new`, or `/load` command selects play** may it read the selected campaign's startup, ledgers, world records, and latest checkpoint.
 
 After loading, `/ChronicleEngine` always presents the Engine Welcome Page and waits. It never proceeds into Startup Classification, First-Session Boot, Returning Sessions, restoration, or the Readiness Gate. Those procedures begin only when a subsequent campaign command selects play.
 
@@ -115,14 +115,24 @@ After loading, `/ChronicleEngine` always presents the Engine Welcome Page and wa
 
 1. A brief confirmation that the engine is loaded — not a wall of process narration or version dumps.
 2. The complete runtime-command catalog, rendered from the README's exact cold-start mirror of this Command Table—not recalled, regrouped, or paraphrased. A world's diegetic commands are **not** shown yet; they appear once a campaign in that world is loaded.
-3. A listing of **worlds** (`worlds/`) and **campaigns** (`campaigns/`). For each campaign, show, spoiler-safe: its world, protagonist (if any), status (not started / in progress / closed or terminal), and latest checkpoint (id and date). This is the combined output of `/worlds`, `/campaigns`, and `/saves`, gathered into one screen.
+3. A listing of **worlds** and **campaigns**, rendered from `system/WORLDS_AND_CAMPAIGNS.md` (see The Listing Is Rendered, Not Recalled). For each campaign, show, spoiler-safe: its world, protagonist (if any), status (not started / in progress / closed or terminal), and latest checkpoint (id and date). This is the combined output of `/worlds`, `/campaigns`, and `/saves`, gathered into one screen.
 4. A prompt to choose: `/continue [world|campaign]` or `/resume [world|campaign]` to resume, `/new <world>` to start fresh, or `/load <checkpoint>` for a specific point.
 
 The Runtime must **not** auto-select, auto-resume, or begin restoration, reconciliation, or a readiness gate for any campaign from the bootstrap command. Auto-loading a campaign—whether inferred from trailing text, the first campaign, or the most recently played—is the specific failure this page prevents. To resume the most recently played campaign, the player uses `/continue` or `/resume` with no argument after the welcome page.
 
+### The Listing Is Rendered, Not Recalled
+
+**The worlds-and-campaigns listing is rendered from `system/WORLDS_AND_CAMPAIGNS.md`. It is never composed from memory, from the example paths in the bootstrap documents, or from whichever campaigns happen to be in context.** Render every row the index carries; a world or campaign it lists is never omitted for seeming inactive, stale, or uninteresting.
+
+This is the same requirement the Command Table already carries (Decision 064), applied to the other half of the same screen, and for the same reason: given the same repository, every Runtime must show the player the same inventory. The index is part of the boot set (README, item 7) precisely so that "list the campaigns" is an operation a Runtime performs against a file rather than a directory read it may skip (Decision 071).
+
+This rule exists because it was broken. A bootstrap reported the repository loaded and listed Prototype Alpha and Beta under Verra — while `campaigns/reikon_awakening_001/`, complete and six checkpoints deep, was absent. The campaign was fine; the listing had no source. Every concrete path in the README and the start guide names Prototype Alpha and Verra as examples, so a Runtime that did not enumerate `campaigns/` reproduced the examples and reported them as the inventory. Directory enumeration is still correct and still permitted — but it is the thing that failed, so the index, not the enumeration, is the enforcement point (Decision 055: an obligation carried only by instructions does not reliably fire).
+
+The index is **non-canonical** and holds no state. It records what exists and where, so a player can choose; the campaign's own ledgers govern everything else, and where the two disagree the ledgers win. `tools/validate_repository.ps1` fails when a live campaign or a world has no row, when a row names a directory or checkpoint that does not exist, or when the index is missing — so the listing cannot silently drift out of coverage. The gate cannot check whether a row's status or protagonist is still true; keeping those current is the writer's obligation at the promotion barrier, and the index is part of the checkpoint's live target set whenever the latest checkpoint changes.
+
 ## Resolution Rules
 
-- **"Most recently played" (`/continue`, no world).** Resolve deterministically by the latest checkpoint's creation time recorded in save manifests (Rules Section 13.3), across all campaigns — not by filesystem modification time. When two campaigns tie or no manifest timestamp is available, list the candidates with `/campaigns` and ask the player which to resume rather than guessing.
+- **"Most recently played" (`/continue`, no world).** Resolve deterministically by the latest checkpoint's creation time recorded in save manifests (Rules Section 13.3), across all campaigns — not by filesystem modification time. `system/WORLDS_AND_CAMPAIGNS.md` carries those timestamps for comparison; the manifests remain authoritative. When two campaigns tie or no manifest timestamp is available, list the candidates with `/campaigns` and ask the player which to resume rather than guessing.
 - **Latest checkpoint of a campaign.** Always the campaign's latest *canonical* checkpoint, located per the restoration procedure (Rules Section 13.4). The command references the checkpoint by that procedure and does not hard-code a save-directory form, so it is unaffected by save-layer location drift (Decision 053, Known debt).
 - **No checkpoint yet.** `/continue` on a campaign that is initialized but has no checkpoint falls through to First-Session Boot, not an error. `/continue` naming a world with no campaigns offers `/new <world>`.
 - **`/new` confirmation.** `/new` gathers the minimum initialization choices, previews the derived starting state, and writes nothing until the player confirms — the Custom Protagonist / Emergent Campaign rule is unchanged. A `/new` in a world whose canonical baseline must stay intact creates a separate instance rather than overwriting it.

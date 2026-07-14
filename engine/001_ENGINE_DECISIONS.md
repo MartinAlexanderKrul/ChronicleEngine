@@ -3222,6 +3222,67 @@ The resident layer is a **separate document**: `docs/AI_GAMEPLAY_RESIDENT_CORE.m
 
 ---
 
+## Decision 071 — The Worlds and Campaigns Index
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** Applies Decision 055 (enforcement points) and Decision 064 (rendered catalog) to the Engine Welcome Page listing established by Decision 067; `system/WORLDS_AND_CAMPAIGNS.md`; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` 1.32; `README.md` 1.5; `docs/GAMEPLAY_START_GUIDE.md` 2.15; `tools/validate_repository.ps1`; Decisions 040, 054, 069
+
+### Context
+
+The Engine Welcome Page (Decision 067) renders two things: the runtime-command catalog and a listing of the repository's worlds and campaigns with each campaign's status and latest checkpoint.
+
+Decision 064 gave the first half a rendered source. The command table is duplicated into `README.md` as an exact cold-start mirror, and `tools/test_runtime_command_catalog.ps1` keeps the copies synchronized, precisely so `/help` cannot be answered from memory. The profile states the principle as a section heading: "The Command Table Is Rendered, Not Recalled."
+
+The second half had no source. The profile asked for "a listing of **worlds** (`worlds/`) and **campaigns** (`campaigns/`)" — a directory enumeration, carried by instruction and nothing else. No file names the repository's inventory, and no gate notices when the listing is wrong.
+
+The failure this predicts occurred. A bootstrap reported the repository loaded and rendered a welcome page listing Prototype Alpha and Prototype Beta under Verra. `campaigns/reikon_awakening_001/` — complete, committed, six checkpoints deep, and by the manifest timestamps the **most recently played campaign in the repository** — was absent, along with `worlds/reikon/`. The campaign was not broken, not stale, and not misconfigured. Nothing had looked for it.
+
+The mechanism is worth naming precisely, because the Runtime was not malfunctioning in any way a reader would notice. Its campaign details were accurate: it read ledgers correctly once pointed at them. It simply never enumerated `campaigns/`, and fell back on the only concrete inventory available to it — the example paths in the bootstrap documents, which name `campaigns/prototype_alpha/` and `worlds/verra/` throughout the README boot instructions, the start guide's access list, the first-session prompt, and the Prototype Alpha Quick Start. It recalled the examples and reported them as the inventory. The README's own "Where to Start" world list, which named only Asterra, had been stale since Verra and Reikon were added and contradicted nothing.
+
+This is Decision 055's finding in the one place Decision 064 did not reach: an obligation carried only by instruction does not fire. A player cannot type `/continue reikon_awakening_001` for a campaign the welcome page never showed them.
+
+### Decision
+
+**1. `system/WORLDS_AND_CAMPAIGNS.md` is the rendered source** for the welcome page's worlds-and-campaigns listing, for `/worlds` and `/campaigns`, and for the timestamp comparison `/continue` uses to resolve "most recently played."
+
+**2. It is part of the boot set.** The README boot list names it, so listing the repository's campaigns is an operation performed against a file rather than a directory read a Runtime may skip.
+
+**3. Render every row; never recall the listing.** Not from memory, not from the example paths in the bootstrap documents, not from whichever campaigns happen to be in context. A world or campaign the index lists is never omitted for seeming inactive or stale. Directory enumeration remains correct and permitted — but it is the thing that failed, so the index is the enforcement point.
+
+**4. The index is non-canonical and holds no state.** It records what exists and where, so a player can choose. The campaign's own ledgers govern everything else, and where the two disagree the ledgers win. It carries no identifier and appears in no canon hierarchy, like the player briefing and the Progression Surfacing view.
+
+**5. Enforcement point: `tools/validate_repository.ps1`.** Per Decision 055, this decision names where it is checked. The gate fails when a live campaign or a world has no row, when a row names a directory or checkpoint that does not exist, or when the index is missing.
+
+The gate proves every world and campaign is **listed** and that each row **resolves**. It deliberately does not adjudicate whether a row's status, protagonist, or timestamp is still true — that is a judgment, and automating it would produce a checker that is wrong in interesting cases and trusted anyway. Keeping those current is the writer's obligation at the promotion barrier, which is why the index joins the checkpoint's live target set whenever the latest checkpoint changes.
+
+### Rationale
+
+- It applies the remedy Decision 064 already validated on the other half of the same screen. The command catalog stopped drifting when it gained a rendered source and a synchronization test; the listing had neither.
+- It is the shape `system/ID_REGISTRY.md` already establishes: a repository-level index that campaigns must appear in, maintained by the writer, enforced mechanically. The engine has one of these and it works. This is the second, one level up — campaigns rather than identifiers.
+- The failure was invisible without a gate. A welcome page listing two of three campaigns looks exactly like a welcome page listing three of three. Nothing errored, no validation failed, and the report read as a clean load. Only a player who knew the campaign existed could detect it — which is what happened.
+- Prose at the failing point does not repair the point (Decision 054). The instruction to enumerate `campaigns/` was already there, was correct, and was not followed.
+
+### Consequences
+
+- `system/WORLDS_AND_CAMPAIGNS.md` is added: all three worlds and all three campaigns, each with world, protagonist, status, latest checkpoint, and capture time. It sits beside `ID_REGISTRY.md`, outside the validator's `worlds/`+`campaigns/` canon scan, so it is not mistaken for live canon.
+- `tools/validate_repository.ps1` gains the coverage gate. `tools/test_validate_repository.ps1` gains the `unindexed_campaign` fixture reproducing the observed failure, and its assertions move from exit code to specific messages — under the exit-code-only form, deleting the coverage check left the suite green, because the fixture still failed for other reasons.
+- The Runtime Profile (1.32) gains "The Listing Is Rendered, Not Recalled" and points the welcome page at the index. `README.md` (1.5) adds the index as boot-set item 7, states that every campaign path in it is an example and never the inventory, and lists all three worlds where it had listed only Asterra. `docs/GAMEPLAY_START_GUIDE.md` (2.15) adds the index to its access list and a troubleshooting entry for the symptom.
+- Adding, forking, closing, or checkpointing a campaign, and adding a world, now update the index in the same change. This is a real cost, paid at the promotion barrier, and it is the cost of the listing being true.
+- **Class under Decision 069: refinement — mechanical enforcement point. Owning milestone: Version 0.3 — Planning.** The structural test: it adds no Rules section, changes no Data Model text, and introduces no mechanism a world or campaign invokes or builds against. The index is a registry the writer maintains, not an abstraction campaigns are authored against; it imposes no contract on campaign content and a campaign cannot call it. The coverage check enforces an obligation the engine already carries — Decision 067's welcome page must list every world and campaign — which is the same class as Decision 054, whose required-ledger check likewise fails a nonconforming campaign without being a mechanism campaigns invoke.
+- The index does not by itself guarantee a Runtime renders it. It makes rendering possible, makes a missing campaign a failing build rather than a silent omission, and removes the stale examples that supplied the wrong answer. Whether substrates render it is evidence the next campaign start provides.
+
+### Alternatives Considered
+
+- **Mirror the listing into `README.md`, as Decision 064 does for the command table.** Rejected. The command table is static; the listing carries checkpoint identifiers and timestamps that change at every save. A README mirror would churn on every session and become the stale copy — reintroducing, in the file a cold-start Runtime trusts most, exactly the drift that caused this failure. The README's role here is reachability, not duplication: it names the index in the boot set, and the dynamic data lives in one place.
+- **Keep directory enumeration and strengthen the instruction.** Rejected for the reason Decision 054 gives and this failure demonstrates: the instruction was already correct and already unfollowed. This is the fourth decision against the bootstrap boundary (with 056, 063, 064, 067), and the three that worked moved the enforcement point rather than rewriting the prose at it.
+- **Generate the index from the filesystem at validation time and fail on any difference.** Rejected for now. It would remove the maintenance cost, but status, protagonist, and the spoiler-safe framing are judgments not derivable from the directory tree, and a generator that fabricated them would be authoritative and wrong. Recorded as a candidate for Version 0.3 rather than settled here.
+- **Per-campaign index files discovered by enumeration.** Rejected: it reintroduces the enumeration that failed, and the welcome page needs one screen, not N files.
+- **Treat it as foundational and defer to Version 0.3 ADR design.** Rejected on the structural test — it introduces no mechanism worlds or campaigns build against — and on the evidence: every session started before it lands can silently fail to offer a campaign that exists. Decision 070 landed on the same reasoning as the first disposition of the same technical debt.
+- **Fix only the stale README world list and the Prototype Alpha examples.** Rejected: it removes this instance of the wrong answer without giving the listing a source. The next campaign added would be invisible again, and nothing would fail.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

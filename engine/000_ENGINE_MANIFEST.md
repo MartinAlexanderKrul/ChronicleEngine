@@ -62,7 +62,8 @@ ChronicleEngine/
 │   └── 030_ENGINE_CHANGELOG.md
 │
 ├── system/
-│   └── ID_REGISTRY.md
+│   ├── ID_REGISTRY.md
+│   └── WORLDS_AND_CAMPAIGNS.md
 │
 ├── tools/
 │   └── validate_repository.ps1
@@ -148,6 +149,8 @@ The Data Model is the **most stable layer** of the architecture: everything refe
 The Runtime is substrate-independent. Substrate-specific procedure lives in operational **Runtime Profiles** under `docs/`, not in the Engine Layer. Large-language-model execution uses `docs/AI_SESSION_TEMPLATE.md` for Architect-mode development and, for Interpreter-mode gameplay, a two-layer profile (Decisions 049 and 070): `docs/AI_GAMEPLAY_RESIDENT_CORE.md` is the resident layer, held in context every turn, and `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` is the fetched reference layer. The split is required by `012_ENGINE_RUNTIME.md` Section 0.4 and Decision 055: fetched material may elaborate a resident obligation but never carry one alone.
 
 Persistent-object identifiers are allocated by the repository-level registry at `system/ID_REGISTRY.md`, governed by `011_ENGINE_DATA_MODEL.md`.
+
+The repository's worlds and campaigns are indexed at `system/WORLDS_AND_CAMPAIGNS.md`, the rendered source for the Engine Welcome Page listing (Decision 071). It is operational and non-canonical: it records what exists and where so a player can choose, holds no canonical state, carries no identifier, and is subordinate to the campaign ledgers it points at.
 
 Repository validation tooling lives under `tools/`. It operationalizes Data Model and Runtime constraints but does not define them; `tools/validate_repository.ps1` is the reference implementation of the Repository Validation Barrier (Decision 054).
 

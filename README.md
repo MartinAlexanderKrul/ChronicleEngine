@@ -1,6 +1,6 @@
 # Chronicle Engine
 
-**Document Version:** 1.4
+**Document Version:** 1.5
 
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 
@@ -55,11 +55,14 @@ Read, in this order, then follow the loaded procedure:
 4. **`engine/010_ENGINE_RULES.md`** — engine rules; load **Sections 4 and 6** (action resolution and combat) before the first uncertain action, and **Section 13** (saves) for checkpoint/restore.
 5. **`engine/012_ENGINE_RUNTIME.md`** and **`engine/011_ENGINE_DATA_MODEL.md`** — runtime obligations and the data model (identifiers, ledgers) the validator enforces.
 6. **`tools/validate_repository.ps1`** — the validation gate run before any checkpoint is claimed saved.
+7. **`system/WORLDS_AND_CAMPAIGNS.md`** — the index of every world and campaign. This is the **rendered source** for the welcome page's listing; render its rows rather than composing a list from memory or from the example paths in these documents.
 
 Then select what to play and load its state only when the player subsequently issues `/continue`, `/resume`, `/new`, or `/load`:
 
 - **A specific campaign** — read `campaigns/<campaign>/090_CAMPAIGN_STARTUP.md`, its canonical ledgers (`100`–`180`), the campaign's world records under `worlds/<world>/`, and, when resuming, the latest checkpoint under `campaigns/<campaign>/saves/`.
-- **Bootstrap always stops here** — present the **complete runtime-command catalog** and a listing of worlds (`worlds/`) and campaigns (`campaigns/`) with each campaign's status and latest checkpoint, then **wait for the player to choose** (`/continue [world|campaign]`, `/resume [world|campaign]`, `/new <world>`, or `/load <checkpoint>`). Do **not** load campaign files, auto-load or auto-resume a campaign, begin reconciliation, or enter a readiness gate until the player chooses one—presenting the Engine Welcome Page is the whole job.
+- **Bootstrap always stops here** — present the **complete runtime-command catalog** and the worlds-and-campaigns listing **rendered from `system/WORLDS_AND_CAMPAIGNS.md`**, then **wait for the player to choose** (`/continue [world|campaign]`, `/resume [world|campaign]`, `/new <world>`, or `/load <checkpoint>`). Do **not** load campaign files, auto-load or auto-resume a campaign, begin reconciliation, or enter a readiness gate until the player chooses one—presenting the Engine Welcome Page is the whole job.
+
+Every campaign path named anywhere in this file or in the start guide — `campaigns/prototype_alpha/`, `worlds/verra/` — is an **example**, never the repository's inventory. The inventory is the index, and only the index. A campaign absent from the welcome page because the listing was recalled instead of rendered is a startup failure, not a missing campaign.
 
 ### Exact cold-start command catalog
 
@@ -118,7 +121,7 @@ ChronicleEngine/
 |- campaigns/      Individual campaigns and their save checkpoints
 |- docs/           Project documentation
 |- templates/      Template conventions and reusable ledger/object skeletons
-|- system/         Repository-level infrastructure (ID registry)
+|- system/         Repository-level infrastructure (ID registry, worlds/campaigns index)
 |- tools/          Deterministic repository validation
 |- README.md
 \- LICENSE
@@ -168,9 +171,19 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps
 
 ---
 
-## World
+## Worlds and Campaigns
+
+For the current inventory — every world and campaign, with status and latest checkpoint — see:
+
+```
+system/WORLDS_AND_CAMPAIGNS.md
+```
+
+World bibles:
 
 1. worlds/asterra/200_WORLD_BIBLE.md
+2. worlds/reikon/200_WORLD_BIBLE.md
+3. worlds/verra/200_WORLD_BIBLE.md
 
 ---
 

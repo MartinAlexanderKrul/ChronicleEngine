@@ -194,6 +194,84 @@ if (Test-Path -LiteralPath $campaignsRoot -PathType Container) {
     }
 }
 
+# The Engine Welcome Page renders its worlds-and-campaigns listing from
+# system/WORLDS_AND_CAMPAIGNS.md. A campaign missing from that index is invisible
+# at startup even when it is complete and committed, so coverage is mechanical.
+# This proves every world and campaign is listed and that each row resolves; it
+# cannot know whether a row's status or protagonist is still true.
+$indexPath = Join-Path $root "system/WORLDS_AND_CAMPAIGNS.md"
+if (-not (Test-Path -LiteralPath $indexPath -PathType Leaf)) {
+    Add-Failure "Missing worlds and campaigns index: system/WORLDS_AND_CAMPAIGNS.md"
+} else {
+    $indexText = Get-Content -Raw -LiteralPath $indexPath
+
+    $indexedWorlds = @{}
+    $worldRowPattern = '(?m)^\|\s*`worlds/([^/`]+)/`\s*\|'
+    foreach ($match in [regex]::Matches($indexText, $worldRowPattern)) {
+        $name = $match.Groups[1].Value
+        if ($indexedWorlds.ContainsKey($name)) {
+            Add-Failure "system/WORLDS_AND_CAMPAIGNS.md lists world worlds/$name/ more than once."
+            continue
+        }
+        $indexedWorlds[$name] = $true
+
+        if (-not (Test-Path -LiteralPath (Join-Path $root "worlds/$name") -PathType Container)) {
+            Add-Failure "system/WORLDS_AND_CAMPAIGNS.md lists worlds/$name/, which does not exist."
+        }
+    }
+
+    $worldsRoot = Join-Path $root "worlds"
+    if (Test-Path -LiteralPath $worldsRoot -PathType Container) {
+        foreach ($worldDirectory in Get-ChildItem -LiteralPath $worldsRoot -Directory) {
+            if (-not $indexedWorlds.ContainsKey($worldDirectory.Name)) {
+                Add-Failure "worlds/$($worldDirectory.Name)/ has no row in system/WORLDS_AND_CAMPAIGNS.md; it would not appear on the Engine Welcome Page."
+            }
+        }
+    }
+
+    $indexedCampaigns = @{}
+    $campaignRowPattern = '(?m)^\|\s*`campaigns/([^/`]+)/`\s*\|\s*`worlds/([^/`]+)/`\s*\|[^|]*\|[^|]*\|\s*(?:`([^`]+)`|none)\s*\|'
+    foreach ($match in [regex]::Matches($indexText, $campaignRowPattern)) {
+        $name = $match.Groups[1].Value
+        if ($indexedCampaigns.ContainsKey($name)) {
+            Add-Failure "system/WORLDS_AND_CAMPAIGNS.md lists campaign campaigns/$name/ more than once."
+            continue
+        }
+        $indexedCampaigns[$name] = $true
+
+        if (-not (Test-Path -LiteralPath (Join-Path $root "campaigns/$name") -PathType Container)) {
+            Add-Failure "system/WORLDS_AND_CAMPAIGNS.md lists campaigns/$name/, which does not exist."
+            continue
+        }
+
+        $worldName = $match.Groups[2].Value
+        if (-not (Test-Path -LiteralPath (Join-Path $root "worlds/$worldName") -PathType Container)) {
+            Add-Failure "system/WORLDS_AND_CAMPAIGNS.md gives campaigns/$name/ the world worlds/$worldName/, which does not exist."
+        }
+
+        if ($match.Groups[3].Success) {
+            $checkpoint = $match.Groups[3].Value
+            $checkpointPath = Join-Path $root "campaigns/$name/saves/$checkpoint"
+            if (-not (Test-Path -LiteralPath $checkpointPath -PathType Container)) {
+                Add-Failure "system/WORLDS_AND_CAMPAIGNS.md gives campaigns/$name/ the latest checkpoint $checkpoint, which is absent from campaigns/$name/saves/."
+            }
+        }
+    }
+
+    if (Test-Path -LiteralPath $campaignsRoot -PathType Container) {
+        foreach ($campaignDirectory in Get-ChildItem -LiteralPath $campaignsRoot -Directory) {
+            $entryPoint = Join-Path $campaignDirectory.FullName "180_CURRENT_STATE.md"
+            if (-not (Test-Path -LiteralPath $entryPoint -PathType Leaf)) {
+                continue
+            }
+
+            if (-not $indexedCampaigns.ContainsKey($campaignDirectory.Name)) {
+                Add-Failure "campaigns/$($campaignDirectory.Name)/ is a live campaign but has no row in system/WORLDS_AND_CAMPAIGNS.md; it would not appear on the Engine Welcome Page."
+            }
+        }
+    }
+}
+
 $definitions = @{}
 $references = [System.Collections.Generic.List[object]]::new()
 $objectCount = 0

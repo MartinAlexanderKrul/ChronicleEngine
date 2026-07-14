@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.14
+**Document Version:** 2.15
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -26,6 +26,7 @@ The AI must be able to read at least:
 
 - `docs/AI_GAMEPLAY_RESIDENT_CORE.md` — loaded before play and held for the whole session,
 - `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`,
+- `system/WORLDS_AND_CAMPAIGNS.md` — the index of every world and campaign, rendered on the welcome page,
 - the selected campaign's `090_CAMPAIGN_STARTUP.md`,
 - the campaign's canonical ledgers,
 - the campaign's world records,
@@ -218,8 +219,8 @@ Once the engine is loaded, you can drive it with short **runtime commands** inst
 | `/load <checkpoint>` | Restore a specific earlier checkpoint of the current campaign (continuing from it forks a new world-line). Won't load a checkpoint marked non-restorable. |
 | `/restart` | **Destructive — read this one.** Resets the campaign to its **baseline** (its very beginning) and replays from there, discarding everything played since. It is *not* "reload my last save" — that's `/continue`. It asks you to confirm first, and won't run at all if the campaign has no baseline checkpoint. |
 | `/branch [name]` | Fork the current campaign into a parallel world-line at its latest checkpoint. |
-| `/worlds` | List available worlds. |
-| `/campaigns [world]` | List campaigns and their latest checkpoints. |
+| `/worlds` | List available worlds, from the repository's index. |
+| `/campaigns [world]` | List campaigns and their latest checkpoints, from the repository's index. |
 | `/saves` | List the current campaign's checkpoints. |
 | `/export [label]` | Write the session's full transcript — every message kept distinct by who said it, plus the rolls, the identifiers created, and what changed. It is not a checkpoint and saves no canon, but it is complete enough to rebuild your campaign from if your checkpoints are ever lost or broken. Use `/save` to save; use `/export` so the session itself is never gone. |
 | `/recap` | Concise, spoiler-safe recap of where you are. |
@@ -296,6 +297,16 @@ You should not have to do this more than once; if you do, the AI's file access i
 ## The AI Requires a Save for Session 1
 
 Remind it that first-session startup loads campaign initialization and `180_CURRENT_STATE.md`. A save manifest is required only for restoration.
+
+## A Campaign Is Missing from the Welcome Page
+
+The engine starts, but a campaign you know exists is not listed — or the listing shows only Prototype Alpha and Beta, the examples used throughout this guide. The campaign is almost certainly fine. The listing is rendered from `system/WORLDS_AND_CAMPAIGNS.md`, and the Runtime either did not read it or composed a list from memory instead. Reply:
+
+```text
+Render the worlds-and-campaigns listing from system/WORLDS_AND_CAMPAIGNS.md. Read that file now and show every row it contains. Do not compose the listing from memory or from the example paths in the README or start guide.
+```
+
+If the campaign is genuinely absent from the index, that is the bug — add its row and run `tools/validate_repository.ps1`, which fails when a live campaign has no row.
 
 ## The AI Shows IDs or Engine Terminology
 

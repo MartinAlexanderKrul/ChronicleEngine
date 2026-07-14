@@ -14,13 +14,13 @@ Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha
 
 Current Task:
 
-Approve the Version 0.3 scope under the lifecycle in Decision 048.
+Approve or reject the Version 0.3 scope proposal under the lifecycle in Decision 048.
 
-Scope approval must account for Rules Section 14 (World Rule Profiles), which is already accepted and implemented and is reclassified as Version 0.3 foundational architecture by the Post-0.2 Decision Record below.
+A scope proposal is on the table: **Version 0.3 — Runtime & Persistence Hardening**, which would replace Governance & Society at 0.3 and move it to 0.4. It is **proposed, not accepted**. Its argument, its capability milestones, and the argument against it are recorded in the Version 0.3 section below.
 
 Next Review:
 
-Approve the Version 0.3 scope before any new ADR design or implementation.
+Scope approval. No ADR may be designed or implemented against Version 0.3 until the scope is approved (Decision 048).
 
 Completed since the 0.2.0 release:
 
@@ -645,18 +645,92 @@ Both remain **Accepted**. They are not reopened, reversed, or renumbered: accept
 
 ---
 
-## Version 0.3 - Governance & Society
+## Version 0.3 — Runtime & Persistence Hardening
 
-Status: **Planning Unblocked** — Version 0.2 and all validation gates are complete; scope approval is next
+Status: **PROPOSED — awaiting scope approval.** Nothing below is accepted. Decision 048 Planning stage output; no ADR may be drafted against it until the scope is approved.
 
-**Inherited architecture.** Rules Section 14 (World Rule Profiles) is already accepted and implemented via Decisions 059 and 062, and is reclassified as Version 0.3 foundational architecture by the Post-0.2 Decision Record above. Scope approval must treat it as an existing constraint rather than a blank space: Version 0.3 is Governance & Society, Section 14 is a governance mechanism for worlds, and the two must be reconciled deliberately rather than discovered later. Reikon is its only client and declares two overrides against it.
+Per the development lifecycle (Decision 048), Version 0.3 planning is unblocked: Version 0.2 implementation, Prototype Alpha, the Engine Postmortem, and the required refinements are all complete.
 
-Per the development lifecycle (Decision 048), Version 0.3 planning begins only after all of the following validation gates are satisfied:
+This proposal **replaces Governance & Society as Version 0.3** and moves it to Version 0.4. That is the substance of the proposal, and the reason for it is evidence rather than preference.
 
-1. Version 0.2 implementation is complete.
-2. Prototype Alpha — Engine Validation Campaign has been played.
-3. The Engine Postmortem has been completed.
-4. Required engine refinements identified by the postmortem have been incorporated.
+### Why this version
+
+The engine's simulation model is validated. Its execution and persistence layer is not. The Engine Postmortem states it directly:
+
+> The failures were enforcement and authoring-contract failures, not failures of the Persistent Object, Canonical Record, Knowledge Subject, Knowledge State, or world-first models.
+
+Everything since agrees:
+
+- Of the decisions accepted after the 0.2.0 release, roughly ten are runtime, command, profile, or export work. None is a knowledge-model correction.
+- Reikon's only checkpoint was malformed and unrestorable; its live canon had to be rebuilt from a damaged snapshot, and the rebuild could only be verified because a transcript happened to exist on the owner's disk (Decision 061).
+- Save-layer location/format drift has been open since Decision 053 and is parked in Version 0.6, three versions away. It has already drawn blood.
+- Rules Section 14 has exactly one client, no freeze point, and save compatibility depends on its version — while the changelog itself notes it "needs a freeze point before its version can be trusted for save compatibility under Decision 059."
+- One bootstrap verb consumed four decisions in a day. Decision 070 removed the structural cause; whether the command surface is over-specified is unanswered.
+
+Building eight new simulation domains on a persistence layer that cannot reliably restore its own checkpoints inverts the engine's own priority order (`docs/AI_SESSION_TEMPLATE.md`: architectural consistency and long-term maintainability above simulation depth).
+
+**Precedent:** Foundation Hardening was exactly this shape — a milestone between capability versions that strengthened the architecture rather than adding gameplay systems. It is how the Foundation reached a state worth freezing.
+
+### Goal
+
+The engine can be executed and restored reliably by any conforming Runtime, and a world can declare overrides against a frozen, versioned contract.
+
+### Proposed Capability Milestones
+
+#### 0.3.1 Save Layer Unification
+
+Pulls PA-008 forward from Version 0.6.
+
+- Bless one checkpoint form and migrate existing checkpoints. Resolve the documented `saves/900_CHECKPOINT_<NNNN>/` (full ledger copies) versus flat `.saves/*.yaml` (manifest-only) versus the empty `checkpoints/` placeholder drift.
+- Acceptance: every existing checkpoint either restores or is explicitly quarantined as non-restorable; the Reikon Checkpoint 0001 failure class is covered by a regression fixture.
+- Excludes: campaign and world migration procedures, which remain Version 0.6.
+
+#### 0.3.2 World Rule Profile Consolidation and Freeze
+
+Owns the inherited architecture. Rules Section 14 arrived via Decisions 059 and 062 against a released version and is classified foundational by the Post-0.2 Decision Record above.
+
+- Freeze the Section 14 override contract; define profile versioning and its save-compatibility rule.
+- Reikon 0.3 becomes the first frozen profile and the conformance fixture.
+- Acceptance: a save records the applicable profile version, and a mismatch is surfaced explicitly on restoration rather than silently resolved (Rules Section 13.6).
+
+#### 0.3.3 Runtime Command Surface Settlement
+
+- Reduce the command *model*, not only its documentation. Target: adding or changing a command requires no ADR.
+- Acceptance: the catalog synchronization test still passes, and the command surface survives a prototype campaign without a new decision.
+- The smallest and least certain of the three. If evidence does not support it at ADR Design, it should be dropped rather than padded.
+
+#### 0.3.4 Capability Validation and Prototype Campaign
+
+Per Decision 048. The prototype must exercise save, restore, branch, restart, and a world-profile mismatch — not a knowledge scenario, which Version 0.2 already validated.
+
+### Exclusions
+
+- Governments, laws, diplomacy, population, economy, trade, infrastructure, logistics — Version 0.4.
+- Any new simulation domain or world-model abstraction.
+- Campaign and world migration procedures (Version 0.6).
+- Population/community entity types. The postmortem found settlement and institution proxies sufficient and recorded that no play evidence justifies a new entity type (PA-001).
+
+### Completion Criteria
+
+- Every checkpoint in the repository restores or is explicitly quarantined.
+- A world profile is versioned and frozen, and save compatibility against it is enforced.
+- The prototype campaign completes without requiring a new foundational abstraction.
+
+### Consequences If Approved
+
+- Governance & Society moves from Version 0.3 to Version 0.4 unchanged in scope.
+- Version 0.6 — Persistence loses PA-008 and retains migration and multi-campaign continuity.
+- Magic Framework and Historical Simulation already record their engine work as substantially closed and their remainder as world-layer authoring. They hold version numbers for engine work that no longer exists. Recommend reclassifying both as world-authoring backlog rather than engine versions — a separate decision, not part of this scope.
+
+### The Argument Against This Proposal
+
+Recorded because it is real, not to be dismissed. A hardening version delivers no player-visible capability, and a project can hide in hardening indefinitely — which is part of why Decision 048 exists. Two consecutive non-capability efforts would be a warning sign. The counter is that 0.3.4 forces a prototype campaign, and the completion criteria are binary and externally checkable rather than a matter of judgment. If the alternative is preferred, the narrow capability version is Population alone — but PA-001 records that even that lacks play evidence today.
+
+---
+
+## Version 0.4 - Governance & Society
+
+Status: **Proposed** — moved from Version 0.3 by the Version 0.3 scope proposal above; scope itself unchanged and unapproved
 
 Focus:
 
@@ -673,11 +747,13 @@ Goal:
 
 Support believable civilizations without requiring direct player control.
 
+Note: this focus list spans eight domains, several of which (economy, trade, logistics) Version 0.2 explicitly excluded as separate subsystems. Version 0.2 delivered one capability across a full lifecycle. Scoping this version will likely require splitting it; that is a planning problem for its own Planning stage, not a reason to hold it at 0.3.
+
 ---
 
-## Version 0.4 - Magic Framework
+## Version 0.4 - Magic Framework *(number contested)*
 
-Status: **Rescoped**
+Status: **Rescoped** — **numbering pending.** The Version 0.3 scope proposal above moves Governance & Society into 0.4. If that proposal is approved, this milestone and the two below shift by one, or are reclassified as world-authoring backlog per that proposal's Consequences. The collision is left visible rather than pre-resolved, because renumbering accepted milestones on an unapproved proposal would be exactly the drift Decision 069 exists to stop.
 
 The engine-level portion of this milestone - abstraction, world extension model, cost/limitation/discoverability contract, and magical research - is substantially closed by `001_ENGINE_DECISIONS.md` Decision 037 and `010_ENGINE_RULES.md` Section 11. Magical research already runs through the existing Research & Knowledge lifecycle (Section 8) and required no separate mechanic.
 
@@ -986,6 +1062,8 @@ Current architectural debt:
 # Current Dependencies
 
 Version 0.2 - Knowledge & Civilization is complete. Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements are complete. Version 0.3 planning is unblocked (Decision 048).
+
+Version 0.3 is blocked on scope approval only. A proposal — Runtime & Persistence Hardening — awaits a decision; see Version 0.3 below. Nothing downstream of it is renumbered until that approval lands.
 
 ---
 

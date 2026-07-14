@@ -12,6 +12,25 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-14 — Decision 062: World Rule Profile document class and placement
+
+**Context:** Decision 059 created the World Rule Profile; nothing said where it lives or what kind of document it is. Reikon's profile sat inside `205_THE_LEDGER.md`, whose header reads "narrative reference, not an Object-Block canonical ledger" while its body declares itself "the authoritative model for Reikon mana." Both claims were true — the header's binary was the error.
+**Decisions:** Added Decision 062. Names **world rule content** as a third world-layer document class: authoritative on behavior, owning no Persistent Object, carrying no identifier — the world-layer peer of `010_ENGINE_RULES.md`, identifier-free for the same reason. Fixes placement at `worlds/<world>/206_WORLD_RULE_PROFILE.md`, one per world; forbids sharing a file with lore; and routes override-created entity state through the Data Model's existing Section 4.3 extension mechanism.
+**Rules:** Added Section 14.5 (Placement and Document Class). Sections 14.1–14.4 unchanged, so existing references to the override contract and the non-overridable boundary remain valid.
+**Manifest:** World layer records `206_WORLD_RULE_PROFILE.md` and the world-rule-content class.
+**Templates:** `000_TEMPLATE_CONVENTIONS.md` gains Section 9 — a profile instantiates no Object Block and is never regenerated; the state an override creates is a typed domain extension.
+**Glossary:** **World Rule Content** added; **World Rule Profile** updated with placement.
+**Data Model:** Unchanged; no schema version increment. Section 4.3 already provides the extension mechanism.
+**Class:** Refinement under Decision 048 — sites an artifact Decision 059 already created; adds no mechanism and no engine capability. Same class as Decision 055.
+
+## 2026-07-14 — Validator: exports excluded from live canon
+
+**Context:** Decision 061 reclassified the Session Export as a durable Gameplay Transcript and requires it to record every identifier allocated during a session, including sessions whose canon was never promoted. The validator scanned `campaigns/**/*.md` excluding only saves, so exports were scanned as live canon.
+**Failure modes closed:** an export recording an allocation as `id: ENT-NNNNNN` would register as a live definition and collide with the real ledger; and recovery-from-export — the case Decision 061 exists for — would fail validation precisely because the export's identifiers have no live definition yet.
+**Tooling:** `tools/validate_repository.ps1` excludes `exports/` alongside `saves`, `.saves`, and `checkpoints`. Exports are evidence, not state (Decision 061 point 2): they establish no canon, mint no identifiers, and run no validation gate.
+**Validation result:** 59 → 55 live Markdown files (the four export documents); 178 object blocks and 178 identifiers unchanged. Regression tests pass.
+**Engine Version:** Unchanged.
+
 ## 2026-07-14 — Reikon: the System is Bearer-only; mana model declared (world authoring)
 
 **Context:** The first Reikon session's game log exposed a mana model that was being played but never declared — the recovery rate existed only in campaign prose, Flame Shield's declared cost made it unusable, potions restored 20 into a 13-point pool, and physical exertion drained mana under no rule at all. Recovery ladders were narrated rather than computed, drifting in both directions before landing on "full." World-layer authoring; no engine change.

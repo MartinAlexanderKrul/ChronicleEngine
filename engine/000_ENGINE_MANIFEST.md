@@ -70,6 +70,7 @@ ChronicleEngine/
 ├── worlds/
 │   └── <world>/
 │       ├── 200_WORLD_BIBLE.md
+│       ├── 206_WORLD_RULE_PROFILE.md    (optional; declared overrides)
 │       ├── ...
 │       ├── institutions/
 │       │   └── <institution>/
@@ -170,6 +171,8 @@ Contains:
 - baseline world state.
 
 A world may support multiple campaigns.
+
+A world may also declare a **World Rule Profile** (`206_WORLD_RULE_PROFILE.md`), replacing engine-general behavioral rules within an explicit scope (Rules Section 14; Decisions 059 and 062). It is *world rule content*: authoritative on behavior, holding no Persistent Object state and carrying no identifier, as the Engine Rules are. It may not override Persistent Object structure, canon authority, Runtime invariants, or the save and validation barriers (Rules Section 14.3).
 
 ---
 

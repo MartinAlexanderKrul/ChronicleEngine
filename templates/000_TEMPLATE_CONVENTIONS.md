@@ -142,3 +142,15 @@ Files under `templates/campaign/` define non-canonical operational configuration
 These artifacts carry no `ENT-`, `REC-`, `EVT-`, or `REL-` identifier. They must identify their authority status, reference rather than duplicate canonical ownership, and never establish world truth or campaign state.
 
 A derived artifact is disposable. When its canonical sources change, are missing, or conflict with it, the Runtime ignores or regenerates the artifact from current canon.
+
+---
+
+# 9. World Rule Content
+
+A **World Rule Profile** (`worlds/<world>/206_WORLD_RULE_PROFILE.md`) is neither a ledger nor a derived artifact. It is **world rule content**: authoritative on behavior within its declared scope, carrying no identifier and owning no Persistent Object — the world-layer peer of `010_ENGINE_RULES.md` (Rules Section 14.5, Decision 062).
+
+It is therefore not a template concern in the sense of Sections 1–7: it instantiates no Object Block and has no placeholder contract.
+
+What *is* a template concern is the state an override creates. Where a profile declares state on an entity, that state is a typed domain extension block keyed by the entity's Type or Subtype (`011` Section 4.3), added to the Persistent Entity extension (Section 3). The profile owns the extension's content; the world's ledger template owns its layout; the Data Model owns only the mechanism.
+
+A world rule profile is **not** disposable and is never regenerated. Unlike a derived artifact, nothing can recompute it: it is authored policy.

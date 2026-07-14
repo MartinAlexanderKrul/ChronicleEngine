@@ -2792,6 +2792,83 @@ State recorded in an export is *evidence of what was true at a moment*, not a co
 
 ---
 
+## Decision 062 — World Rule Profile Document Class and Placement
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** Completes Decision 059 (Declared World Rule Profiles); `010_ENGINE_RULES.md` Section 14; `011_ENGINE_DATA_MODEL.md` Sections 2.3, 4.3; Decisions 027, 028, 032, 043, 045; `templates/000_TEMPLATE_CONVENTIONS.md`
+
+### Context
+
+Decision 059 established that a world may declare a World Rule Profile replacing engine-general behavioral rules, and Rules Section 14 defined the override contract. Neither said where a profile lives or what kind of document it is. Reikon, the only world to declare one, put its profile inside `worlds/reikon/205_THE_LEDGER.md` — a file whose own header reads "narrative reference, not an Object-Block canonical ledger" while its body states "this section is the authoritative model for Reikon mana — its pool, its costs, and its recovery."
+
+Both statements are true, which is the tell: the header offers a false dichotomy. The repository recognizes Object-Block canonical ledgers (state) and non-canonical derived or narrative artifacts (presentation). A World Rule Profile is neither. It is authoritative on behavior within its declared scope, and it holds no Persistent Object state at all.
+
+Rules Section 14.2 already says so — "The profile is world-authoring policy, not a Persistent Object" — but with no document class to belong to, the most powerful governance artifact a world can author had nowhere to live except inside a lore file, unvalidatable and self-contradicting.
+
+A second gap sat behind it. Section 14 permits a world to replace behavioral rules, and those rules routinely create per-character state (an allocation, a tracked quantity). Nothing said how that state attaches to an entity without amending the Data Model — the layer the architecture requires to change least.
+
+### Decision
+
+**1. World rule content is a document class.**
+
+The repository recognizes a third world-layer document class alongside canonical ledgers and narrative or derived artifacts:
+
+- **Canonical ledger** — owns Persistent Object state. Carries a `REC-` identifier and Object Blocks.
+- **World rule content** — authoritative on *behavior* within a declared scope. Carries **no identifier** and owns no Persistent Object.
+- **Narrative or derived artifact** — establishes nothing. Non-canonical, disposable or illustrative.
+
+World rule content is the world-layer peer of `010_ENGINE_RULES.md`, which is likewise authoritative and likewise identifier-free. Rules are not state. This ratifies Rules Section 14.2 rather than amending it.
+
+**2. Placement and file convention.**
+
+A world's declared World Rule Profile resides at:
+
+```
+worlds/<world>/206_WORLD_RULE_PROFILE.md
+```
+
+One profile file per world, within the World layer's 200–299 range (Decision 028). A world that declares no profile has no such file and runs engine defaults; absence is meaningful and is not a validation failure.
+
+**3. Separation from lore.**
+
+World rule content and narrative content must not share a file. A file that declares overrides is a profile; a file that describes the setting is lore. Lore may reference the profile; it may not restate its numbers, and where it does, the profile governs.
+
+**4. Per-character state created under an override uses the Data Model's existing extension mechanism.**
+
+State that an override causes to exist on an entity is carried as a typed domain extension block keyed by the entity's Type or Subtype (`011_ENGINE_DATA_MODEL.md` Section 4.3). The profile owns the extension's *content*; a world ledger template owns its *layout*; the Data Model owns only the mechanism. No Data Model change, and no schema version increment, is required for a world to declare an override that creates entity state.
+
+**5. What the profile may not do is unchanged.**
+
+Rules Section 14.3 continues to govern. A profile may replace fictional behavior. It may not touch Persistent Object structure or registry allocation, Canonical Record authority, provenance, referential integrity, Runtime invariants, or save, restoration, and validation barriers. This decision gives the profile a home; it does not widen its reach.
+
+### Rationale
+
+- It resolves a self-contradiction by naming what the file already is, rather than forcing it into a class it does not fit. The header's binary was the error, not either of its claims.
+- A profile's identifier-free status is not an exception to be explained away — it follows from the profile being rules. The Engine Rules carry no `REC-` identifier for the same reason. The parallel is exact and makes Section 14.2 legible rather than surprising.
+- Decision 045 established `templates/` as a non-canonical instantiation layer and Decision 032 separated record classes by role; this decision applies the same discipline one layer out, to world-layer documents, which had only an implicit two-way split.
+- Routing override-created state through Data Model Section 4.3 keeps the most stable layer stable. Section 4.3 was written for exactly this — additive, typed, optional extensions whose content belongs to a domain — so a world gains arbitrary declared state without touching `011`.
+- Separating the profile from lore is what makes the profile validatable in principle and reviewable in practice. A reviewer can read one file and know every way a world departs from the engine.
+
+### Consequences
+
+- `010_ENGINE_RULES.md` gains Section 14.5 (Placement and Document Class). Sections 14.1–14.4 are unchanged, so existing references to the override contract and the non-overridable boundary remain valid.
+- `templates/000_TEMPLATE_CONVENTIONS.md` Section 8 records world rule content alongside the operational and derived template classes.
+- `000_ENGINE_MANIFEST.md` repository architecture includes `206_WORLD_RULE_PROFILE.md` in the world layer.
+- Reikon is the first client: its profile moves from `205_THE_LEDGER.md` to `worlds/reikon/206_WORLD_RULE_PROFILE.md`, and 205 reverts to lore. No other world is affected.
+- Future worlds inherit the convention without an ADR of their own. Authoring a profile is world content and requires no decision; only changing this convention does.
+- This decision is a refinement under Decision 048, in the same class as Decision 055: it sites an artifact an accepted decision already created, and adds no mechanism. It introduces no new engine capability and no new simulation behavior.
+
+### Alternatives Considered
+
+- **Give the profile a `REC-` identifier and Object Blocks.** Rejected: it contradicts Rules Section 14.2 and miscategorizes rules as state. A record owning no subject is precedented (PA-004), but the profile owns nothing *because it is not a record* — the identifier would be ceremony, and it would invite the profile to accrete state that belongs in ledgers.
+- **Leave the profile inside the world's existing lore file with a corrected header.** Rejected: the header contradiction is a symptom. One file cannot be both non-authoritative narrative and the authoritative source for a world's rules, and future worlds would each re-litigate where their profile goes.
+- **Define a new Persistent Entity Type or extend the Data Model for override-created state.** Rejected: Section 4.3 already provides the mechanism, and amending the closed Type set for one world's genre is exactly what Decision 027 forbids.
+- **Bundle this convention with the first world's numbers in one decision.** Rejected: that is how Decision 059 arrived — a general mechanism shaped by one world's genre, with no way to tell which parts were reusable. The convention is engine-general; the numbers are world authoring; they are kept separate.
+- **Defer to Version 0.3 planning as new foundational architecture.** Rejected: it completes an accepted decision rather than adding one, matching Decision 055's precedent. Deferring would leave Decision 059's artifact homeless for a full version while worlds author against it.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

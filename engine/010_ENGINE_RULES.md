@@ -4164,3 +4164,13 @@ A profile may replace fictional behavior, including progression, injury, resourc
 ## 14.4 Runtime Loading
 
 Before resolving an affected action or restoring affected state, the Runtime loads the world's profile into the working set. Campaign startup and save compatibility metadata record its version. If the profile is missing, ambiguous, or incompatible with stored state, the Runtime stops at the readiness gate rather than guessing.
+
+## 14.5 Placement and Document Class
+
+A world's declared profile resides at `worlds/<world>/206_WORLD_RULE_PROFILE.md`, one per world. It is **world rule content**: authoritative on behavior within its declared scope, carrying no identifier and owning no Persistent Object — as the Engine Rules are authoritative and identifier-free, and for the same reason. Rules are not state (Decision 062).
+
+World rule content and narrative content do not share a file. Lore may reference the profile; where lore restates a profile value, the profile governs.
+
+A world that declares no profile has no such file and runs engine defaults. Absence is meaningful, not a validation failure.
+
+State that an override causes to exist on an entity is carried as a typed domain extension block keyed by the entity's Type or Subtype (`011_ENGINE_DATA_MODEL.md` Section 4.3). The profile owns the extension's content; a world ledger template owns its layout. Declaring an override that creates entity state requires no Data Model change and no schema version increment.

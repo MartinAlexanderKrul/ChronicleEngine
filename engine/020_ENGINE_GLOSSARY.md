@@ -1102,7 +1102,17 @@ Characters, campaigns, institutions, discoveries, and civilizations exist within
 
 ## World Rule Profile
 
-A versioned world-authored contract that explicitly replaces selected engine-general behavioral simulation rules for a declared scope. It cannot replace Data Model, canon, Runtime invariant, save-integrity, or validation contracts. Defined in Rules Section 14 and Decision 059.
+A versioned world-authored contract that explicitly replaces selected engine-general behavioral simulation rules for a declared scope. It cannot replace Data Model, canon, Runtime invariant, save-integrity, or validation contracts.
+
+A profile is **world rule content** (see below), residing at `worlds/<world>/206_WORLD_RULE_PROFILE.md`, one per world. Defined in Rules Section 14 and Decisions 059 and 062.
+
+---
+
+## World Rule Content
+
+The world-layer document class that is authoritative on *behavior* within a declared scope while owning no Persistent Object and carrying no identifier — the world-layer peer of `010_ENGINE_RULES.md`, and identifier-free for the same reason: rules are not state.
+
+Distinct from a **canonical ledger** (owns Persistent Object state; carries a `REC-` identifier) and from a **narrative or derived artifact** (establishes nothing; non-canonical). The World Rule Profile is the only instance of this class. Defined in Rules Section 14.5 and Decision 062.
 
 ---
 

@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-14 — Decision 068: enforce complete `/system` rendering at command dispatch
+
+**Evidence:** A live `/system` response rendered an invented `THE LEDGER — DAEDALUS` dashboard, omitted INVENTORY/QUESTS/PATHS & MARKS, regrouped the fixed sections, and exposed recovery internals despite the normative Profile Section 10 template.
+**Enforcement:** Reikon Awakening startup 1.1 registers `/system` with mandatory reads of Character, Inventory, Objectives, and the authoritative template; a pre-send gate rejects missing sections, missing carried objects, alternate titles/headings, and partial panels.
+**Conflict removal:** Reikon lore now states that “The Ledger” is not a window title, and the world README removes style-comparison wording that invited free-form restyling.
+**Versioning:** Reikon Profile remains 0.3 because the template itself is unchanged; this moves its enforcement point to command execution. No canon or checkpoint changes.
+**Validation:** `tools/test_reikon_runtime_contract.ps1` checks the new command-local gate and the exact observed failure class.
+
 ## 2026-07-14 — Decision 067: argumentless welcome bootstrap and `/resume`
 
 **Bootstrap:** `/ChronicleEngine` now has no target parameter and always renders the Engine Welcome Page only. Trailing text cannot select a campaign or cross into restoration.

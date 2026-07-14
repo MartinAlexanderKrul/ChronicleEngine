@@ -122,7 +122,7 @@ Neither is free, and the world is entitled to press on the seam.
 
 `/system` renders the Bearer's interface as a fixed window, identical every session and on any substrate. It is a **diegetic command** (Decision 056) — an in-world verb, distinct from the reserved runtime commands.
 
-The normative render template, its rendering rules, and a worked example are in `206_WORLD_RULE_PROFILE.md` Section 10. Only the Bearer can open it; the world cannot read another's System, and for all but one person there is nothing to read.
+The normative render template, its rendering rules, and a worked example are in `206_WORLD_RULE_PROFILE.md` Section 10. Only the Bearer can open it; the world cannot read another's System, and for all but one person there is nothing to read. **The title of this lore file, “The Ledger,” is not a `/system` window title or layout.** Never render `THE LEDGER — <NAME>` or compose a new dashboard from this prose; dispatch to Section 10 exactly.
 
 ## Ascension
 

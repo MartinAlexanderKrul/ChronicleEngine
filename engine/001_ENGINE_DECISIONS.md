@@ -3059,6 +3059,43 @@ The bootstrap signature still exposed `/ChronicleEngine [target]`. Even after th
 
 ---
 
+## Decision 068 — Command-Local Conformance Gate for Reikon `/system`
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** `campaigns/reikon_awakening_001/090_CAMPAIGN_STARTUP.md`; `worlds/reikon/206_WORLD_RULE_PROFILE.md` 0.3 Section 10; `worlds/reikon/205_THE_LEDGER.md`; Decisions 051, 055, 056, 065
+
+### Context
+
+A live `/system` test ignored the already-normative Section 10 template and composed an alternate `THE LEDGER — DAEDALUS` dashboard. It omitted INVENTORY, QUESTS, and PATHS & MARKS; renamed and regrouped the fixed sections; and exposed recovery internals. The underlying campaign inventory was complete and the profile explicitly required it. The failure occurred because the render contract existed only in the world profile while command execution remained free-form, and nearby lore wording (“The Ledger,” “Solo Leveling-style window”) supplied a tempting alternate presentation.
+
+This repeated the enforcement-point pattern behind Decisions 055 and 065: a correct passive rule did not fire at the instant its command was rendered.
+
+### Decision
+
+1. **Campaign startup registers `/system` explicitly.** Its dispatcher points to Reikon Profile Section 10 and declares the character, live Inventory and Ownership ledger, and Objectives ledger as mandatory reads.
+2. **A pre-render gate fires before composition.** `/system` cannot be answered from conversation memory, Current State, the character sheet alone, or lore prose.
+3. **The template is exact.** The Runtime binds values without renaming, reordering, combining, adding, or dropping sections. `THE LEDGER — <NAME>` and the observed alternate heading set are explicitly nonconforming.
+4. **Inventory completeness is checked before send.** Every active object possessed by the protagonist must appear exactly once in ledger order, stack quantities must render, and cores remain last.
+5. **Every fixed section is checked before send.** STATS, SKILLS & ABILITIES, INVENTORY, QUESTS, and PATHS & MARKS must all appear, including empty sections. A failing draft is discarded and rerendered; it is never sent as a partial panel.
+6. **Lore cannot define layout.** “The Ledger” is the lore file's title, not the System window's title. Style-comparison language is removed from the active world README.
+7. **Read failure is explicit.** If a mandatory source cannot be read, the Runtime reports the blocker rather than fabricating a partial display.
+
+### Consequences
+
+- Reikon Awakening startup advances to 1.1 and carries a resident `/system` dispatcher and pre-send conformance gate.
+- Reikon World Rule Profile remains 0.3 because its canonical template and mechanics do not change; this decision moves enforcement to command execution.
+- Reikon lore and README are clarified without changing world canon or campaign state; no checkpoint migration is required.
+- `tools/test_reikon_runtime_contract.ps1` requires the command-local gate, inventory read, complete fixed-section check, partial-output prohibition, and explicit rejection of the observed alternate title.
+
+### Alternatives Considered
+
+- **Repeat that inventory is mandatory inside Section 10.** Rejected: that exact rule already existed and the live test still bypassed it.
+- **Duplicate the entire template in campaign startup.** Rejected: two full templates can drift. Startup dispatches to the one authoritative template and owns only the execution gate.
+- **Accept alternate layouts if they contain the same values.** Rejected: the observed alternate did not contain the same values, and variable layouts defeat the established canon-deterministic display contract.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

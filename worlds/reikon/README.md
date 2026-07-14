@@ -24,7 +24,7 @@
    - Team bonds and synergy
 
 4. **Create your character or use provided:** See `campaigns/reikon_awakening_001/100_CHARACTER_SHEET.md` (`ENT-000051`, Daedalus) for the canonical example
-   - Use `/system` to view the Bearer's interface (Solo Leveling-style window)
+   - Use `/system` to view the Bearer's fixed canonical interface
    - Progression is narrative-driven but tracked mechanically, and computed — never estimated
    - XP, stats, skills, and leveling happen through play
 
@@ -66,13 +66,13 @@
 
 **Narrative First:**
 - Everything unfolds as story text (like Verra campaigns)
-- No UI pop-ups or numerical notifications
-- Progression is described naturally: "You felt the System pulse. Growth. When you checked, your XP had increased."
+- Only the compact notifications and fixed `/system` window declared by `206_WORLD_RULE_PROFILE.md` interrupt prose
+- Progression is described naturally, followed by the one-time canonical state notification when its trigger fires
 
 **Check Status Anytime:**
 - Use `/system` command to view your diegetic System interface
 - Shows: Rank, XP progress, Health, Mana, all Stats, Skills, Inventory, Quests
-- Displays in Solo Leveling style (clean, organized stat window)
+- Displays only the fixed Section 10 template; “The Ledger” is lore, not an alternate window style
 - Only you can see your System; others cannot
 
 ### Progression Model

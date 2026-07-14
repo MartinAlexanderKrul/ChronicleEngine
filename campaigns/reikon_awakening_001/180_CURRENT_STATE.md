@@ -1,4 +1,31 @@
-# Current State — Reikon Awakening
+# Current State — Reikon Awakening 001
+
+**Canonical entry point.** Detailed character, inventory, relationship, objective, and event state is owned by the standard live ledgers alongside this file.
+
+## Record
+
+```yaml
+id: REC-000045
+canonical_record: REC-000045
+schema_version: "0.1.1"
+status: active
+provenance:
+  source: EVT-000028
+  event_time: "Year 31 AR, first expedition, mid-clear"
+  record_time: "2026-07-14T00:00:00Z"
+role: canonical ledger
+scope: campaign
+subjects: []
+```
+
+## Bindings and Compatibility
+
+- Engine: 0.2.0; Data Model: 0.1.1
+- World: Reikon 0.1
+- World Rule Profile: Reikon 0.1 (`RKO-OVR-001`, `RKO-OVR-002`)
+- Campaign state: resumable from immutable Checkpoint 001, with live canon reconstructed after that checkpoint
+
+---
 
 **Campaign:** Reikon Awakening (Session 001)  
 **Player Character:** Daedalus (E-Rank Fire Scholar)  
@@ -153,7 +180,7 @@ TRAINING COMMITMENT ACTIVE
 
 ## Version & Provenance
 
-- **Engine Version:** 0.1.5
+- **Engine Version:** 0.2.0
 - **World Version:** 0.1 (Reikon)
 - **Campaign Schema:** 0.1.1
 - **Current State Schema Version:** 0.1.1

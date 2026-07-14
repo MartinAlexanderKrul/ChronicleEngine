@@ -1,5 +1,7 @@
 # Daedalus — Awakened Hunter (Reikon) — Session 1 Update
 
+> **Legacy non-canonical presentation.** The authoritative character state is `100_CHARACTER_SHEET.md` (`REC-000038`). This file is retained for historical readability and must not be updated as a second source of truth.
+
 **Campaign:** Reikon Awakening (Session 001)  
 **Status:** In Expedition (Solo, Warehouse 7 E-Rift)  
 **Awakening Date:** Year 31 AR (recent)  

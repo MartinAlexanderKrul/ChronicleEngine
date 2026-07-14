@@ -4,7 +4,7 @@
 
 **File:** `003_DESIGN_PRINCIPLES.md`  
 **Status:** Active  
-**Engine Version:** 0.1.5  
+**Engine Version:** 0.2.0
 **Layer:** Engine (000–099)
 
 ---

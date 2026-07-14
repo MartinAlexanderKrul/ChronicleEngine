@@ -1,5 +1,7 @@
 # Reikon Awakening Campaign Log
 
+> **Legacy non-canonical presentation.** Authoritative events and current state are in `160_CAMPAIGN_CHRONICLE.md` and `180_CURRENT_STATE.md`. This file is retained as the original prose log and must not be updated as a second source of truth.
+
 **Campaign:** Reikon Awakening (Session 001)  
 **Player Character:** Daedalus (E-Rank Fire Scholar)  
 **Start Date:** 2026-07-13  

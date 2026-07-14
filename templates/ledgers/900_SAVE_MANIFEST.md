@@ -38,8 +38,9 @@ scope:
   campaign: <required: campaign name or repository path, e.g. campaigns/<campaign>>
   character: <required: ENT-XXXXXX of the player character>
 versions:
-  engine: <required: e.g. 0.1.5>
+  engine: <required: e.g. 0.2.0>
   world: <required: world version>
+  world_rule_profile: <optional: exact profile name and version when active>
   campaign_schema: <required: Data Model version, e.g. 0.1.1>
   save_format: <required: e.g. 0.1.0>
 lineage:

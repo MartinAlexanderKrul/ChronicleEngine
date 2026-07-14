@@ -41,6 +41,8 @@ lifecycle: active
 aliases:
   - name: "the Hunters' Authority"
     quality: current
+  - name: "the Hunters' Association"
+    quality: current
 relationships:
   - REL-000029
   - REL-000033

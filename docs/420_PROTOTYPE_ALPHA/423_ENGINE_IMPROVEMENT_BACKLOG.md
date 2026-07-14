@@ -2,7 +2,7 @@
 
 ## Prototype Alpha - Engine Improvement Backlog
 
-**Status:** Active
+**Status:** Closed by Version 0.2 postmortem (`425_ENGINE_POSTMORTEM.md`)
 **Layer:** Design Retrospective / Validation (400-499) - non-canonical
 **See:** `420_PROTOTYPE_PLAN.md`
 
@@ -27,7 +27,7 @@ Each item is classified as a **refinement** (adjustment within the accepted arch
 
 ## PA-001 - Public and Cultural Knowledge-State Holders
 
-**Status:** Observe During Prototype
+**Status:** Deferred — population/community modeling; no new entity type justified
 **Severity:** Low
 **Source:** Verra canonical world generation
 
@@ -41,7 +41,7 @@ Do not introduce a new Persistent Entity type without evidence from play.
 
 ## PA-002 - Location Granularity
 
-**Status:** Observe During Prototype
+**Status:** Deferred — existing Place and descriptive containment remain sufficient
 **Severity:** Low
 **Source:** Verra canonical world generation
 
@@ -55,7 +55,7 @@ Validate whether settlement-level location is sufficient for campaign continuity
 
 ## PA-003 - Institution Asset Index Versus Resource Ownership
 
-**Status:** Review During Prototype
+**Status:** Resolved — Resource state owns ownership; institution asset lists are indexes
 **Severity:** Medium
 **Source:** Verra canonical world generation
 
@@ -74,7 +74,7 @@ Resource ownership should remain the authoritative ownership source unless play 
 
 ## PA-004 - Operational Ledgers Own No Persistent Objects
 
-**Status:** Observe During Prototype
+**Status:** Accepted — operational Canonical Records may use `subjects: []`
 **Severity:** Low
 **Source:** Prototype Alpha campaign generation
 
@@ -104,7 +104,7 @@ Class: refinement (architectural), implemented as a required pre-0.3 change. Thi
 
 ## PA-006 - Intent Versus Engine-Arbitrated World-Facts
 
-**Status:** Refine
+**Status:** Implemented — Decision 060 / Uncertain World-Fact Arbitration (2026-07-14)
 **Severity:** Medium
 **Source:** Issue PA-I015
 

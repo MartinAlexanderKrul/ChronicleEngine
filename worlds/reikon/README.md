@@ -2,7 +2,7 @@
 
 **World Status:** Complete and playable  
 **Version:** 0.1 (Solo Leveling-inspired gate-and-hunter world)  
-**Engine Compatibility:** Chronicle Engine 0.1.5 (Foundation Release)  
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.1; Reikon World Rule Profile 0.1
 **Created:** 2026-07-13
 
 ---
@@ -77,7 +77,7 @@
 
 **XP & Leveling:**
 - Gain XP by defeating monsters, clearing Rifts, facing real danger
-- When XP fills (500 XP threshold for next level), an **Ascension** occurs (narrative event)
+- When XP reaches the current threshold (Level 1→2 is 100 XP), an **Ascension** occurs and causes its declared grants
 - Leveling unlocks new skills, paths, and grants Skill Points
 
 **Skill Points:**
@@ -90,7 +90,7 @@
 - Action resolution: Intent + Circumstance + d100 (Rules Section 4)
 - Stats are Modifiers, not overrides
 - The impossible stays impossible (Rules Section 4.2)
-- Growth is lived, not granted (Decision 051)
+- Growth is earned through genuine resolved challenge and granted causally by `RKO-OVR-001`
 
 ---
 
@@ -178,13 +178,13 @@
 - System interface is *diegetic* (in-world information), not a second resolution system
 - Ranks, abilities, and stats are Modifiers, never overrides
 - No power overrules the d100 resolution
-- Growth precedes Ascension (Decision 051)
+- Threshold crossing causes Ascension and its grants (`RKO-OVR-001`, Decision 059)
 
 **Progression:**
 - Solo Leveling mechanics (XP, stat progression, skill trees)
 - Delivered as a narrative text RPG, but with a **diegetically-real, tracked System** (Decision 057): mana and XP are canonical state, surfaced **inline** in-world as they change (`Mana: 13 → 1/13`, `XP: 12 → 36/100`), and viewable in full via `/system`
 - `/system` renders the **Canonical `/system` Template** in `205_THE_LEDGER.md` — a fixed window every Runtime shows identically from canonical state
-- XP is accrued per challenge, scaled by threat; **the d100 still decides every action** — stats, level, and mana are Modifiers and resources, never overrides (Rules Section 4)
+- XP is accrued per challenge, scaled by threat, and causally grants progression; **the d100 still decides every uncertain action** — stats and level establish modifier steps and available methods, never the rolled outcome
 
 ---
 

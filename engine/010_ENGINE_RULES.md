@@ -2,12 +2,12 @@
 
 ## Engine Specification
 
-**Engine Version:** 0.1.5
+**Engine Version:** 0.2.0
 **Status:** Workshop Draft  
 **Engine Type:** Persistent Historical Simulation  
 **Simulation Model:** World-First  
 **Resolution System:** d100  
-**Progression Model:** Emergent; no levels or experience points  
+**Progression Model:** Emergent by default; world profiles may declare replacements
 **Canonical Storage:** Versioned ledgers
 
 ---
@@ -1473,6 +1473,22 @@ Negative:
 
 Modifiers should arise from the world rather than arbitrary balancing.
 
+### Modifier Step Contract
+
+Modifiers are expressed as integer **steps**, not raw percentile points. One modifier step equals **20 percentile points** when calculating the effective result.
+
+| Net steps | Meaning |
+|-----------|---------|
+| `-3` | overwhelming disadvantage |
+| `-2` | major disadvantage |
+| `-1` | meaningful disadvantage |
+| `0` | balanced circumstances |
+| `+1` | meaningful advantage |
+| `+2` | major advantage |
+| `+3` | overwhelming advantage |
+
+The Runtime identifies established favorable and unfavorable factors, nets them into one step value, and caps the ordinary net at `-3` or `+3`. Multiple descriptions of the same underlying fact do not stack. A world may replace this scale only through a declared World Rule Profile (Section 14).
+
 ---
 
 ## 4.5 Rolling
@@ -1570,6 +1586,12 @@ Legendary success never violates established physical or magical rules.
 ---
 
 ### Applying Difficulty and Modifiers
+
+The net modifier is measured in the steps defined in Section 4.4. For a natural roll outside the critical tails, calculate:
+
+`effective result = clamp(natural roll + (20 × net modifier steps), 1, 100)`
+
+Read the clamped effective result against the bands. For example, a natural 44 with `-2` steps becomes an effective 4; a natural 44 with `+2` steps becomes an effective 84.
 
 The bands above interpret the **effective result**, not the bare roll. Before reading a roll, the engine forms a net modifier: the acting party's demonstrated capability for this action — skill, training, magic, tools — and any favorable circumstances count in its favor; the difficulty (Section 4.3), the resistance of an opposed party (Section 4.9), and unfavorable circumstances count against it. This net modifier shifts the roll up or down, and the shifted result is read against the bands.
 
@@ -4120,3 +4142,25 @@ When creating or restoring a save, determine:
 5. For a restoration: whether recorded versions match current versions, and what to do if they do not.
 6. What the restoration entry point identifies as immediately relevant.
 7. Whether any contradiction or incomplete state must be surfaced before play continues.
+
+---
+
+# 14. World Rule Profiles
+
+## 14.1 Purpose and Precedence
+
+A world may intentionally replace an engine-general behavioral simulation rule through a declared **World Rule Profile** (Decision 059). Campaigns inherit their world's active profile. A declared applicable override takes precedence over the engine behavioral default; all undeclared behavior continues to use the engine default. An undeclared conflict is a contradiction, not an override.
+
+## 14.2 Required Override Contract
+
+Each override must declare a stable identifier; the Rules and Decisions replaced or refined; replacement behavior; scope; activation conditions; canonical state and provenance requirements; its authoritative resolution procedure; and interaction with other overrides.
+
+The profile is world-authoring policy, not a Persistent Object. State created under it remains ordinary canonical state owned by scope-responsible records.
+
+## 14.3 Non-Overridable Contracts
+
+A profile may replace fictional behavior, including progression, injury, resources, or supernatural mechanics. It may not override Persistent Object structure or registry allocation; Canonical Record authority, provenance, or referential integrity; Runtime invariants; or save, restoration, and validation barriers. A structural change requires an Engine Decision and Data Model version change.
+
+## 14.4 Runtime Loading
+
+Before resolving an affected action or restoring affected state, the Runtime loads the world's profile into the working set. Campaign startup and save compatibility metadata record its version. If the profile is missing, ambiguous, or incompatible with stored state, the Runtime stops at the readiness gate rather than guessing.

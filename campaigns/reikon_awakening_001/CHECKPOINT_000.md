@@ -1,5 +1,7 @@
 # Checkpoint 000: Daedalus Licensed & Ready
 
+> **Legacy derived baseline, not live canon.** Restore through `180_CURRENT_STATE.md` and the immutable checkpoint under `saves/`.
+
 **Timestamp:** 2026-07-13 (Session 0 Complete)  
 **Location:** Hunters' Association HQ, Verholt  
 **Campaign Time:** Morning, Year 31 AR (first day after licensing)

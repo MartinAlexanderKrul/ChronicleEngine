@@ -19,6 +19,7 @@ It carries no persistent-object identifier. It must not establish world truth, c
 startup_version: "1.0"
 campaign: <required: repository campaign path>
 world: <required: repository world path>
+world_rule_profile: <optional: profile name and version when the world declares overrides>
 protagonist_policy: <required: pre-authored | custom | either | emergent>
 default_protagonist: <optional: character identifier for pre-authored or either>
 initialization_state: <required: uninitialized | initialized-no-save | resumable>
@@ -47,6 +48,7 @@ validation:
 - Use `either` when the player may accept the prepared protagonist or initialize a separate compatible protagonist.
 - Use `emergent` when protagonist, world intersection, and opening situation are established through onboarding.
 - Set `preserve_baseline: true` when customization must create another campaign instance rather than rewrite the prepared campaign.
+- When the world declares a World Rule Profile, record its exact name and version and include the profile source in `required_sources`.
 - List only source ledgers needed to derive startup. The Runtime may load additional scope-responsible records when validation or clarification requires them.
 
 ---

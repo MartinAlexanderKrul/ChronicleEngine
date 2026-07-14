@@ -4,8 +4,8 @@
 
 **World Version:** 0.1 (Solo Leveling–inspired contemporary gate-and-hunter world)
 **Status:** Active — instantiated as canonical world content (2026-07-13); ENT-000030–ENT-000050, REC-000026–REC-000034, EVT-000018–EVT-000024, REL-000029–REL-000039
-**Engine Compatibility:** 0.1.5 (Foundation Release); Data Model 0.1.1
-**Progression:** Emergent (Rules Sections 4–5), surfaced diegetically through the System (Decision 051)
+**Engine Compatibility:** 0.2.0; Data Model 0.1.1; Reikon World Rule Profile 0.1
+**Progression:** Causal diegetic System progression (`RKO-OVR-001`, Decision 059)
 **Genre:** Contemporary "gate-and-hunter" litRPG — an original world in the genre, not based on any existing work
 **Setting Register:** Original-modern (invented nations and cities; no real-world geography)
 **Calendar:** After the Rupture (AR); the present is **Year 31 AR**
@@ -201,7 +201,7 @@ The **System** is a mysterious interface that appears to every Awakened. To them
 - **Mana reserves** — their capacity before exhaustion
 - **Growth** — a progression measure that climbs as they face real danger and challenge
 
-When a hunter has genuinely grown through combat and ordeal, the System announces an **Ascension** — a felt, luminous moment where the page updates with their new Rank or sharpened Abilities. The Ascension is the **signal** of growth already lived, never its cause. You cannot level up without real experience; the page only reflects what you have already become.
+When a hunter earns enough XP through resolved combat and ordeal, the System causes an **Ascension** — a felt, luminous milestone that grants progression under `RKO-OVR-001`. You cannot level up without genuine challenge, but the threshold crossing and its grants are causally real.
 
 **Important:** The System shows your actual capability — for you. But your **official Rank** (what the Association certifies, what the Guild knows) is based on testing and assessment, not the System's private readout. These can diverge. A forged Rank, an underestimated hunter, an inflated reputation — all are possible and dangerous.
 
@@ -215,16 +215,16 @@ Awakening is involuntary and rare — roughly 1 per few thousand people. It cann
 
 ---
 
-# Engine Compliance — The System is a lens, not a resolver (Decision 051)
+# Engine Compliance — World Rule Profile and shared resolution
 
 This boundary keeps Reikon a Chronicle Engine world:
 
-- **The System is the world's diegetic representation of emergent capability, not a second resolution system.** When a character acts, resolution is still intent + circumstance + d100 (Rules Section 4) against demonstrated capability. A high Rank or Ability *reflects* genuine lived capability and functions as an ordinary **Modifier** (Rules Section 4.4) — never an override, gate, or auto-success.
-- **Growth is still lived (Rules Section 5).** Clearing a Rift *is* real combat experience; an Ascension is the System's **display** of that emergent growth (Decision 051), never its cause. Growth precedes the notification — never the reverse.
+- **The System causes capability growth but is not an action resolver.** XP thresholds, Ascensions, point grants, and unlocks are causal under `RKO-OVR-001`. When a character acts, resolution is still intent + circumstance + d100 (Rules Section 4); established Stats and Abilities determine modifier steps and available methods, not the rolled outcome.
+- **System vitality is canonical.** Health and percentage damage reduction operate under `RKO-OVR-002`; wounds, pain, shock, and conditions may coexist with the numeric pool.
 - **Ranks are claims, not objective truth (Rules Section 2.2).** An official Rank or hunter credential can be misread, forged, or wrong. NPCs act on their *beliefs* about a hunter's Rank, which can be mistaken — trusting a forged high Rank can be lethal.
 - **No universal power pool.** Abilities draw on mana reserves (a diegetic tally), not a spendable currency (consistent with Decisions 012, 013, 018; Rules Section 11.3).
 
-In short: to its people, Reikon is a world of Ranks, stats, and Ascensions. To the engine, it is an ordinary emergent simulation wearing a diegetic interface. Both true at once — world-first design.
+In short: Reikon is a world of causal Ranks, stats, Health, and Ascensions, expressed through an explicit World Rule Profile while retaining Chronicle Engine's shared resolution and persistence contracts.
 
 ---
 
@@ -411,4 +411,4 @@ The following features enhance Reikon gameplay but are not required. Add them if
 
 # Engine Boundaries
 
-The System is Reikon's diegetic interface, not a second resolution system. Action resolution and growth remain Chronicle Engine's standard (Rules Sections 4–5). Ranks, Abilities, and System readouts are in-world **information** — they can be wrong, forged, or misleading. The impossible stays impossible regardless of a hunter's Rank.
+The System is Reikon's diegetic interface and a causal progression/vitality system under its World Rule Profile, not a second action-resolution system. Uncertain actions remain governed by Rules Section 4. Official assessments can be wrong, forged, or misleading; canonical System state is real for its bearer.

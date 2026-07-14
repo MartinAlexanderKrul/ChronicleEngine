@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000060 |
-| Record | `REC-` | Canonical Record | REC-000037 |
+| Entity | `ENT-` | Persistent Entity | ENT-000064 |
+| Record | `REC-` | Canonical Record | REC-000045 |
 | Event | `EVT-` | Event | EVT-000028 |
-| Relationship | `REL-` | Relationship | REL-000039 |
+| Relationship | `REL-` | Relationship | REL-000044 |
 
 ---
 
@@ -64,6 +64,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000051 - ENT-000060 | Entity | Campaign Reikon Awakening (`campaigns/reikon_awakening_001/`), Checkpoint 001: Daedalus (player character), 2x Broodling, 3x Swarmer, and inventory items (license, sword, repair kit, potions, rope, evacuation stone, cores). Defined in the Checkpoint 001 snapshot; see remediation note below |
 | REC-000035 - REC-000037 | Record | Reikon Awakening Checkpoint 001: record identifiers consumed (high-water advanced to REC-000037) for the Session 1 campaign ledgers (chronicle, objectives, inventory ownership). The individual records were not separately defined; the numbers are retired under never-reuse (Invariant 3). See remediation note below |
 | EVT-000025 - EVT-000028 | Event | Reikon Awakening Session 1 gameplay: expedition begin (025), first combat / broodling kills (026), mana recovery and observation (027), swarmer combat (028). Defined in the Checkpoint 001 snapshot; see remediation note below |
+| ENT-000061 - ENT-000064 | Entity | Reikon Awakening live Data Model migration: Dr. Kael Venn, Captain Marissa Thorne, Lysander, and Warehouse 7 E-Rift |
+| REC-000038 - REC-000045 | Record | Reikon Awakening standard live campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180) |
+| REL-000040 - REL-000044 | Relationship | Reikon Awakening: Authority membership, Institute affiliation, and Daedalus's three established contacts |
 
 ---
 
@@ -102,6 +105,6 @@ This is a known and accepted limitation of the document-driven form. It is resol
 
 The Checkpoint 001 gameplay session (commit line `019cffa` / `b840bf2`) left this registry and the campaign in an inconsistent state. The allocation-log coverage has been repaired (the three ranges above were relocated into the Allocation Log table from below this section, where they had been appended outside the parsed table and so failed validation). The findings and their resolution:
 
-- **Canon promoted to live ledgers (narrative form).** The played Session 1 canon was originally written **only** into the immutable snapshot `campaigns/reikon_awakening_001/saves/900_CHECKPOINT_001/`, so the checkpoint's "Promoted to Canon" claim was not accurate. Session 1 has since been promoted into the live **narrative** ledgers (`050_CAMPAIGN_LOG.md`, `100_CHARACTER_DAEDALUS.md`, `180_CURRENT_STATE.md`), matching this campaign's authored style. The snapshot's object blocks were **not** carried into live canon because they were malformed (see below); the live ledgers hold the Session-1 state as prose.
-- **Snapshot object blocks were malformed (not promoted as objects).** In the snapshot, the player character `ENT-000051` and the "Broodling" ids `ENT-000052`–`ENT-000053` were never defined as objects (only referenced); the inventory items `ENT-000054`–`ENT-000060` and events `EVT-000025`–`EVT-000028` were defined but pointed `canonical_record` at world/other-campaign records (`REC-000025` is Prototype Beta's; `REC-000030/031` are Reikon world). These were not imported into live canon. The ids remain logged/retired under never-reuse (Invariant 3); a future object-model pass could redefine them properly if desired.
+- **Canon reconstructed in standard live ledgers.** The played Session 1 canon was originally written only into the immutable snapshot and later copied into prose-only live files. The Version 0.2 conformance pass reconstructed it in standard live Canonical Records (`100` through `180`) with fresh record identifiers, proper ownership, and live definitions for the already-allocated campaign objects. The older prose files remain non-canonical historical presentation.
+- **Snapshot object blocks remain malformed and immutable.** The snapshot is unchanged. Its blocks were not imported verbatim; live canon now correctly defines `ENT-000051`–`ENT-000060` and `EVT-000025`–`EVT-000028` under fresh records. `ENT-000052` and `ENT-000053` represent the observed Broodling and Swarmer creature archetypes rather than individual killed creatures.
 - **Phantom record allocations.** `REC-000035`–`REC-000037` are not defined anywhere (not even in the snapshot). The high-water mark was advanced for them without objects being created; under never-reuse the numbers are retired, not reclaimed, and are logged above as consumed.

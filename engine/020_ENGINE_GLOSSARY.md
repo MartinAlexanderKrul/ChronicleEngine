@@ -268,7 +268,7 @@ Distinct from a [Runtime Command](#runtime-command), which is out-of-character c
 
 A world-established, in-world-real leveling or experience system — for example a litRPG "System" — declared as a supernatural phenomenon under the Supernatural Phenomena Contract (Rules Section 11).
 
-Unlike the meta Derived Progression View, a Diegetic System's levels and numbers are real within the fiction and perceivable by characters. Per Decision 057, such a world may maintain its System quantities (mana, XP, stats, level) as **tracked canonical state** on the character ledger, accrue XP from challenges by world-defined per-challenge values, and surface these **inline during play** as diegetic information (Reikon does this). The bright line is unchanged: resolution still follows Rules Sections 4 and 5 — the System *represents and tracks*, it never *decides*; stats, level, and mana are Modifiers (Section 4.4) and resources, never overrides or gates on the die. World-authoring content. Defined in Decisions 051 and 057.
+Unlike the meta Derived Progression View, a Diegetic System's levels and numbers are real within the fiction and perceivable by characters. Decision 057 permits tracked canonical quantities and inline surfacing. A declared World Rule Profile may also make those quantities causally change capability or vitality (Decision 059; Reikon does this). Such causality still does not supply the outcome of an uncertain action: the world's declared resolution contract remains authoritative. World-authoring content. Defined in Decisions 051, 057, and 059.
 
 ---
 
@@ -617,6 +617,12 @@ Implemented as a Save Checkpoint accompanied by a Save Manifest.
 How an actor attempts to achieve an objective or intent.
 
 Multiple methods may pursue the same intent.
+
+---
+
+## Modifier Step
+
+An integer measure of established advantage or disadvantage used by action resolution. One step equals 20 percentile points; ordinary net modifiers are capped from `-3` to `+3`. Natural critical tails are read before modification. Defined in Rules Sections 4.4 and 4.6 and Decision 058.
 
 ---
 
@@ -1087,6 +1093,12 @@ The working set is assembled by relevance — guided by Simulation Priority and 
 The primary persistent entity of the simulation and the broadest continuity container in Chronicle Engine.
 
 Characters, campaigns, institutions, discoveries, and civilizations exist within a world and may end while the world continues.
+
+---
+
+## World Rule Profile
+
+A versioned world-authored contract that explicitly replaces selected engine-general behavioral simulation rules for a declared scope. It cannot replace Data Model, canon, Runtime invariant, save-integrity, or validation contracts. Defined in Rules Section 14 and Decision 059.
 
 ---
 

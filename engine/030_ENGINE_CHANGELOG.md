@@ -8,9 +8,19 @@
 
 ---
 
-# In Development — Target: Version 0.2.0 (Knowledge & Civilization)
+# Version 0.2.0 — Knowledge & Civilization
 
-Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
+Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
+
+## 2026-07-14 — Version 0.2 postmortem, modifier contract, and Reikon conformance
+
+**Postmortem:** Added `docs/420_PROTOTYPE_ALPHA/425_ENGINE_POSTMORTEM.md`; accepted the Version 0.2 knowledge architecture, disposed the Prototype Alpha backlog, and closed the release lifecycle.
+**Decisions:** Added Decision 058 (20-point Modifier Step Contract), Decision 059 (declared World Rule Profiles), and Decision 060 (uncertain world-fact arbitration).
+**Rules/Runtime:** Added the modifier formula and Rules Section 14; clarified the Player/Runtime fact boundary; versioned core engine documents at 0.2.0.
+**Reikon:** Declared causal System progression and numeric vitality as world overrides; reconstructed the live campaign into standard Data Model 0.1.1 ledgers using `REC-000038`–`REC-000045`, defined the previously malformed campaign objects correctly, and preserved the immutable checkpoint unchanged.
+**Validation:** The repository validator now rejects prose-only live campaigns missing the standard Canonical Record ledger set; added an executable regression fixture and test runner.
+**Validation result:** 56 live Markdown files, 178 Persistent Object blocks, 178 resolved identifiers; regression tests pass.
+**Engine Version:** Advanced to 0.2.0.
 
 ## 2026-07-14 — Reikon Awakening: Session 1 promoted to live canon (narrative)
 

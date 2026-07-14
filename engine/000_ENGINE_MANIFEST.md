@@ -2,12 +2,12 @@
 
 ## Engine Manifest
 
-**Engine Version:** 0.1.5
+**Engine Version:** 0.2.0
 **Status:** Workshop Draft  
 **Project Type:** Persistent Historical Simulation Engine  
 **Simulation Model:** World-First  
 **Action Resolution:** d100  
-**Progression Model:** Emergent (No Levels / No Experience Points)
+**Progression Model:** Emergent by default; declared World Rule Profiles may replace behavioral progression
 
 ---
 
@@ -285,7 +285,7 @@ Changes to one component should not require version changes to unrelated compone
 
 | Component | Version |
 |-----------|---------|
-| Engine | 0.1.5 |
+| Engine | 0.2.0 |
 | Data Model | 0.1.1 |
 | World | 0.9 |
 | Campaign | Not Created |
@@ -305,18 +305,17 @@ Changes to one component should not require version changes to unrelated compone
 
 Chronicle Engine develops one version at a time through the standard development lifecycle (`001_ENGINE_DECISIONS.md` Decision 048; `docs/DEVELOPMENT_WORKFLOW.md`). The Engine Version represents the most recent completed release, not work in progress.
 
-**Current Engine Version:** 0.1.5 (Foundation Release)
-**Current Development Target:** Version 0.2.0 — Knowledge & Civilization
-**Current Milestone:** Version 0.2 Capability Validation
+**Current Engine Version:** 0.2.0 (Knowledge & Civilization)
+**Current Development Target:** Version 0.3 planning
+**Current Milestone:** Scope approval
 
-The Foundation line (0.1.0–0.1.5) is complete and frozen; Version 0.2.0 is the first capability milestone built on it.
+The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 completed Knowledge & Civilization and all lifecycle validation gates.
 
 Current priority:
 
-1. Complete Version 0.2 Capability Validation.
-2. Run Prototype Alpha — Engine Validation Campaign and the Engine Postmortem.
-3. Incorporate any required refinements.
-4. Advance the Engine Version to 0.2.0 once the above are complete; Version 0.3 planning begins only then (Decision 048).
+1. Approve the Version 0.3 scope.
+2. Draft Version 0.3 ADRs.
+3. Freeze architecture before implementation (Decision 048).
 
 ---
 

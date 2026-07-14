@@ -151,6 +151,44 @@ foreach ($directoryName in @("worlds", "campaigns")) {
     }
 }
 
+# A resumable live campaign must use the standard ledger set. This prevents a
+# prose-only campaign from passing merely because it contains no parseable
+# object blocks to validate.
+$campaignsRoot = Join-Path $root "campaigns"
+if (Test-Path -LiteralPath $campaignsRoot -PathType Container) {
+    $requiredCampaignLedgers = @(
+        "100_CHARACTER_SHEET.md",
+        "110_WORLD_LEDGER.md",
+        "120_INVENTORY_AND_OWNERSHIP.md",
+        "130_NPCS_AND_FACTIONS.md",
+        "140_OBJECTIVES.md",
+        "160_CAMPAIGN_CHRONICLE.md",
+        "170_CHANGELOG.md",
+        "180_CURRENT_STATE.md"
+    )
+
+    foreach ($campaignDirectory in Get-ChildItem -LiteralPath $campaignsRoot -Directory) {
+        $entryPoint = Join-Path $campaignDirectory.FullName "180_CURRENT_STATE.md"
+        if (-not (Test-Path -LiteralPath $entryPoint -PathType Leaf)) {
+            continue
+        }
+
+        foreach ($ledgerName in $requiredCampaignLedgers) {
+            $ledgerPath = Join-Path $campaignDirectory.FullName $ledgerName
+            $relativeLedgerPath = Get-RelativePath $ledgerPath
+            if (-not (Test-Path -LiteralPath $ledgerPath -PathType Leaf)) {
+                Add-Failure "$($campaignDirectory.Name) is a live campaign but is missing required ledger $relativeLedgerPath."
+                continue
+            }
+
+            $ledgerText = Get-Content -Raw -LiteralPath $ledgerPath
+            if (-not [regex]::IsMatch($ledgerText, '(?m)^[ \t]*id:[ \t]*REC-\d{6}[ \t]*(?:#.*)?\r?$')) {
+                Add-Failure "$relativeLedgerPath does not define its Canonical Record; prose-only ledgers are not conforming live canon."
+            }
+        }
+    }
+}
+
 $definitions = @{}
 $references = [System.Collections.Generic.List[object]]::new()
 $objectCount = 0

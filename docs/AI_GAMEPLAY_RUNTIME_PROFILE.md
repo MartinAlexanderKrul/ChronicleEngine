@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.23
+**Document Version:** 1.24
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -21,6 +21,15 @@ This profile owns first-game startup, player onboarding, campaign restoration, s
 Enter **Interpreter mode** before loading gameplay state. Read the repository, translate relevant state into natural player-facing language, apply established rules and canon, preserve information boundaries, and promote canon at every promotion barrier.
 
 Interpreter mode may update world, campaign, and historical state through play. It does not edit engine rules, decisions, roadmap, templates, development workflows, or validation records. Gameplay never waits for implementation approval and never emits a development-session report.
+
+## Resident and Fetched Layers
+
+The profile has two execution layers under Runtime Section 0.4 and Decision 055:
+
+- **Resident per-turn layer:** the Player Agency Contract; intent/fact grounding; the Action Resolution Bright Line and Modifier Step Contract; promotion-obligation awareness; canon-determinism; and the rule that an applicable World Rule Profile is loaded before affected resolution. These checks fire on every turn at the point a fact or outcome would be narrated.
+- **Fetched reference layer:** startup variants, command details, worked examples, export formatting, save/checkpoint procedure, and other sections consulted when their operation is invoked. Fetched material elaborates resident obligations but never replaces them.
+
+Mechanical repository validation remains the barrier enforcement point for structural conformance. Promotion completeness remains a deferred barrier, with pending promotion targets tracked by the resident layer.
 
 ---
 
@@ -47,6 +56,8 @@ The Player Intent Domain gives the player authority over what the character *tri
 This check fires **at narration time, on every declared action** — not only at the promotion barrier. Deferring it to session close lets the fabricated object cascade through the scene first: by then the Runtime has already narrated the character wielding what does not exist, and the correction becomes a retraction rather than a clean refusal. Verify the moment the action is declared, on the Runtime's own initiative, and never require the player to notice the absence first. Grounding a player-declared fact is the read-side twin of the not-loaded rule (`012` Section 3.2): an unverified item is resolved by checking canon, never by narrating it into being.
 
 When the embedded fact is not in canon, quarantine only that fact and keep the intent: the hand reaches into the purse and comes up empty — there is no dagger — and the surrounding choice still resolves (the outburst happens, minus the weapon). This is the same quarantine that Canon Reconciliation at Promotion applies to established-fact contradictions (see Failure Behavior), moved to the moment of play where the object would otherwise first appear.
+
+The same boundary applies when the player states an uncertain finding as already settled: “I find no exception,” “the room is empty,” or “this proves the theory.” Preserve the attempted search and the character's interpretation, but arbitrate what exists or is discovered through canon, ruling, or d100 before narrating it as a world-fact. Character certainty may become Character Knowledge without establishing Objective Reality (Decision 060).
 
 ## Declared Intent, Automatic Execution, Meaningful Choice
 
@@ -217,13 +228,13 @@ Concretely, on a declared uncertain action the Runtime:
    - Difficulty (Rules Sections 4.3–4.4): the resistance the action faces. A defenceless target is near-automatic; a feat beyond the character's means is very hard.
    - Net modifier: the character's demonstrated capability for *this* action — relevant skills, abilities, training, magic, and tools — plus circumstance, weighed against the resistance. Capability and magic move the odds and are never ignored; a master swordsman and a novice do not face the same odds. Large gaps compress outcomes: an overwhelming advantage (+2 to +3) makes success the ordinary result; an overwhelming disadvantage (-2 to -3) makes failure the ordinary result (Rules Section 4.6). Natural-roll critical tails (01–05 fumble, 96–100 critical) are always live and can never be modified away (Decision 052).
 4. rolls d100;
-5. applies the net modifier to the raw roll to calculate the effective roll (e.g., raw 44 with disadvantage -2 = effective 42);
+5. applies the Modifier Step Contract (Rules Sections 4.4 and 4.6): one step is 20 percentile points, ordinary net steps are capped at `-3` to `+3`, and the effective result is `clamp(raw + 20 × steps, 1, 100)` (for example, raw 44 with `-2` steps = effective 4);
 6. reads the result band from the effective roll (Rules Sections 4.5–4.7) and presents the roll to the player as a single compact tag — D&D-style, e.g. `🎲 d100: 72 — success` or `🎲 d100: 8 — failure` — never as a paragraph of engine procedure;
 7. narrates only the outcome the die produced, in-world, and yields.
 
 The Runtime does not invent the roll's result and does not substitute a preferred outcome for the die (`012` Sections 1.5, 7). A critical success, a bare success, a failure, and a fumble are materially different outcomes, and the Runtime learns which one occurred from the die before it writes a word of consequence. The tag is the **only** mechanical text in the reply: the Runtime does not explain the bands, recite the combat procedure, or narrate its own rule-compliance ("this exchange ends here", "I do not resolve additional actions") to the player.
 
-**Capability decides lopsided contests; chance keeps them live.** Apply the net modifier to the raw roll before reading the band. When the gap is extreme (overwhelming advantage or disadvantage), the modifier compresses the outcome: a master with a +3 bonus against a helpless target rolls effectively 41+ (almost always success, band 41–60+); a novice with a -3 penalty against a trained opponent rolls effectively -40 to 10 (almost always failure, band 01–20). But the natural-roll critical tails (01–05 fumble, 96–100 critical) are always live and are never modified away (Rules Section 4.6; Decision 052): a master fumbles on a natural 01–05 despite bonuses, and a novice crits on a natural 96–100 despite penalties. These tails stay live for fairness — extraordinary luck and catastrophic failure remain possible, even when one side dominates. Between the tails, the character's demonstrated capability — skill, training, magic, tools — versus the difficulty shifts the effective result through modifiers, so a master and a novice never face the same odds.
+**Capability decides lopsided contests; chance keeps them live.** Apply 20 percentile points per net modifier step before reading the band. When the gap is extreme, `+3` makes every non-fumble natural roll at least an effective 66, while `-3` makes every non-critical natural roll at most an effective 35. But the natural-roll critical tails (01–05 fumble, 96–100 critical) are read first and are never modified away (Rules Section 4.6; Decisions 052 and 058). These tails stay live for fairness — extraordinary luck and catastrophic failure remain possible, even when one side dominates.
 
 ## Resolution Rules Must Be Loaded
 

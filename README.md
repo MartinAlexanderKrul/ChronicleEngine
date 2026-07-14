@@ -195,17 +195,16 @@ Chronicle Engine prioritizes:
 
 # Current Status
 
-**Current Engine Version:** 0.1.5 (Foundation Release)
+**Current Engine Version:** 0.2.0 (Knowledge & Civilization)
 
-**Current Development Target:** Version 0.2.0 — Knowledge & Civilization
+**Current Development Target:** Version 0.3 planning
 
-The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 is the first simulation capability built on it, currently in validation. The Engine Version advances to 0.2.0 only once its validation gates are complete (Decision 048).
+The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 is the first completed simulation capability built on it. Capability Validation, Prototype Alpha, and the Engine Postmortem are complete (Decision 048).
 
 Current focus:
 
-- Version 0.2.0 (Knowledge & Civilization) implemented (Decisions 046–047, Rules Section 8).
-- Completing Version 0.2 Capability Validation.
-- Next: Prototype Alpha — Engine Validation Campaign, then the Engine Postmortem (Decision 048).
+- Version 0.2.0 (Knowledge & Civilization) released.
+- Version 0.3 scope approval and ADR planning are next.
 
 See:
 

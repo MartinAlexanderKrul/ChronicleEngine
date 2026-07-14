@@ -2,10 +2,35 @@
 
 **Reference:** World-layer lore for Reikon's diegetic System. This is narrative reference, not an Object-Block canonical ledger.
 **Status:** Active — instantiated as canonical world content (2026-07-13).
+**World Rule Profile:** Reikon 0.1
 
-> **Compliance note (Decisions 051 and 057).** Reikon declares a **diegetically-real System** under the Supernatural Phenomena Contract (Rules Section 11; Decision 051 Layer 3). Its quantities are real in the fiction and **tracked as canonical state**: mana is a magical resource (Character State / magical exhaustion, Rules Sections 5.2, 6.10), and XP is accrued from challenges with per-challenge values this world defines. These may be surfaced **inline during play** and viewed in full with `/system` (Decision 057).
+---
+
+# Reikon World Rule Profile 0.1
+
+Reikon inherits Chronicle Engine behavior except for the declared overrides below. This profile is authoritative under Rules Section 14 and Decision 059.
+
+## RKO-OVR-001 — Causal System Progression
+
+- **Replaces/refines:** Rules Sections 5.3 and 5.7; Decisions 012, 013, 051, and 057 where they prohibit levels, XP, or the System from causing capability growth.
+- **Scope:** System-bearing Awakened characters in Reikon campaigns.
+- **Activation:** Active while the character bears Reikon's diegetic System.
+- **Replacement:** XP awarded for genuine resolved challenges is causal canonical state. Crossing a threshold causes an Ascension; an Ascension grants allocatable Stat Points and may grant Skill Points or unlock Skills, Paths, and Abilities. Allocated points directly change canonical capability.
+- **State/provenance:** Character ledgers record level, current XP, next threshold, unspent points, allocations, skills, and the event or resolved challenge that awarded XP.
+- **Resolution:** Growth changes capability and therefore modifier steps, prerequisites, and available methods; it never supplies the outcome of an uncertain action. Uncertain actions still use Rules Section 4 and Decision 058.
+
+## RKO-OVR-002 — System Vitality and Damage Reduction
+
+- **Replaces/refines:** Rules Sections 6.8–6.10 and Decision 018 where they reject a universal health-point pool or percentage damage reduction.
+- **Scope:** System-bearing Awakened characters and System-evaluated Rift creatures. Ordinary non-System humans continue to use the engine injury model unless another Reikon rule declares otherwise.
+- **Activation:** Active while the entity has System vitality state.
+- **Replacement:** Health is a canonical current/maximum numeric pool. Damage removes Health after applicable percentage reductions. At zero Health the entity is incapacitated and receives an outcome appropriate to the attack and established fiction; zero does not erase the need to determine death, survival, or transformation. Wounds, pain, shock, exhaustion, and status effects may coexist with Health and can impose modifier steps independently.
+- **State/provenance:** Scope-responsible ledgers record current/max Health, active reduction sources, damage, healing, and consequential conditions with event provenance.
+- **Resolution:** The die resolves whether an uncertain attack or defense succeeds and its result band; established ability and protection determine damage and reduction after that result.
+
+> **Compliance note (Decisions 051, 057, and 059).** Reikon declares a **diegetically-real System** under the Supernatural Phenomena Contract and the World Rule Profile above. Its quantities are real, tracked canonical state and may be surfaced inline during play.
 >
-> **The bright line is absolute.** The System never resolves or overrides an action. Action resolution is always intent + circumstance + d100 (Rules Section 4). Rank, Stats, Abilities, and Level are ordinary **Modifiers** (Rules Section 4.4) — they shift the odds and color how the world treats a hunter, but they never auto-succeed, gate, or replace the die. A mana cost gates whether a cast can be **attempted**; the die decides whether it **works**. XP is never **spent** to buy power or an outcome. The impossible stays impossible (Rules Section 4.2). The System *tracks and displays*; the die *decides*.
+> **The resolution bright line remains.** The System causes growth under `RKO-OVR-001`, but never supplies the outcome of an uncertain action. Rank, Stats, Abilities, and Level establish capability and modifier steps; intent + circumstance + d100 still resolves the attempt. XP is awarded by resolved challenge, never spent to purchase an action outcome.
 
 ---
 
@@ -100,7 +125,7 @@ These rules make the window **deterministic**: the same canonical character stat
 
 ### Worked Example — Daedalus at Character Creation
 
-From Daedalus's canonical starting state (`campaigns/reikon_awakening_001/100_CHARACTER_DAEDALUS.md`), `/system` must render:
+From Daedalus's canonical state (`campaigns/reikon_awakening_001/100_CHARACTER_SHEET.md`), `/system` must render:
 
 ```
 ═══════════════════════════════════════════════════════════════
@@ -134,8 +159,8 @@ Reikon's System is **diegetically real and tracked inline**. Unlike the engine's
 
 **During play:**
 - The System surfaces changes **inline, in-world**, as they happen — a mana cost as a spell is cast (`Mana: 13 → 1/13`), XP as a threat is overcome (`XP: 12 → 36/100`). This is what the hunter feels and reads, not an out-of-character dashboard.
-- Progression is still **earned**, never granted: the die decides whether a challenge is overcome, and only overcoming it accrues XP. Narrate the moment; let the numbers follow it.
-- **Leveling (Ascension)** is a felt milestone when accrued XP crosses the level threshold — surfaced after the growth, never to grant it.
+- Progression is **caused by earned System awards**: the die decides whether a challenge is overcome; overcoming it accrues XP; crossing the threshold causes Ascension and its grants under `RKO-OVR-001`.
+- **Leveling (Ascension)** is a felt, causal milestone. The Runtime records the threshold crossing, granted points or unlocks, and later allocations as canonical state before surfacing them.
 
 **XP awards (per-challenge):**
 - XP is accrued from genuine challenge, scaled by threat. A tougher, more coordinated foe is worth more than a weakling.
@@ -186,7 +211,7 @@ Reikon's System is **diegetically real and tracked inline**. Unlike the engine's
 
 The Dormant majority have no System and see nothing. No one can read another's System directly; what the world *knows* of a hunter's power is the Authority's **Official Rank** — an assessment, and therefore fallible, contestable, and forgeable.
 
-**Engine Note (Decision 051):** The System's numerical display (XP, stats, levels) is *diegetic information* — how the hunter perceives and tracks their own power. Action resolution remains intent + circumstance + d100 (Rules Section 4). A high Stat or Ability never overrides the die; it functions as an ordinary Modifier. The System informs the hunter's self-perception; it does not bypass Chronicle Engine's emergent simulation.
+**Engine Note (Decision 059):** Reikon's System numbers are both diegetic information and causal state under `RKO-OVR-001` and `RKO-OVR-002`. They may grant capability and quantify vitality. They do not replace the d100 outcome of an uncertain action.
 
 ---
 
@@ -286,7 +311,7 @@ Teams that work together repeatedly develop trust, communication, and coordinate
 
 An **Ascension** is the System's announcement that a hunter has genuinely grown through real challenge: a felt, luminous moment where the interface updates with a new Rank, sharpened Abilities, or new Marks available.
 
-Per Decision 051, **growth comes first and the Ascension surfaces it** — never the reverse. Clearing trivial Rifts by rote fills no growth bar; the System cannot be farmed without real ordeal, risk, and challenge. The Ascension is a *signal* of growth already lived, not its *cause*.
+Under `RKO-OVR-001`, resolved genuine challenge awards XP and a threshold crossing **causes Ascension and its grants**. Trivial, no-stakes repetition yields little or no XP, so the System cannot be farmed without real ordeal, risk, and challenge. The Runtime records the causal award and resulting state before surfacing it.
 
 ---
 
@@ -439,6 +464,6 @@ A crafted item becomes part of a hunter's identity. An artifact made from a B-Ri
 # Running the System in Play (note for the Runtime)
 
 - Surface the System **diegetically and inline** (Decision 057): show mana costs and XP gains in-world as they happen, and let a hunter check their full interface with `/system`, feel an Ascension, or see an official Rank certificate. Keep it in-fiction — it is Reikon's native interface, not an out-of-character dashboard. Mana and XP are tracked canonical state on the character ledger; update them in canon as play advances.
-- Award XP from **genuine challenge**, scaled by threat (per the XP model above), and only after the die has resolved the challenge in the hunter's favor. Announce an Ascension **after** the character has demonstrably grown, never to grant the growth (Decisions 051, 057; Progression Surfacing in the Gameplay Runtime Profile).
+- Award XP from **genuine challenge**, scaled by threat, and only after the die has resolved the challenge in the hunter's favor. Under `RKO-OVR-001`, crossing a threshold causes Ascension and its grants; record the resulting canonical state before surfacing it.
 - Treat Ranks, Abilities, and Mana as **Modifiers and information**: they color odds and shape how NPCs treat a hunter, but the die and circumstance decide (Rules Section 4). The impossible stays impossible whatever the Rank says (Rules Section 4.2).
 - Let the Rank be **wrong**: forged, inflated, misread, or lagging behind actual growth. A hunter who trusts a number over the world in front of them is making a mistake the world is entitled to punish.

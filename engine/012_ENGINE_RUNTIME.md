@@ -4,7 +4,7 @@
 
 **File:** `012_ENGINE_RUNTIME.md`
 **Status:** Workshop Draft
-**Engine Version:** 0.1.5
+**Engine Version:** 0.2.0
 **Layer:** Engine (000–099)
 
 ---
@@ -192,6 +192,8 @@ The Runtime distinguishes three things and treats them differently:
 - **Declared intent** — what the Player states the character is trying to do. Player-authored.
 - **Automatic execution** — the involuntary steps and micro-actions that carry out a declared intent (walking, opening an unbarred door, crossing a room, sitting when invited). The Runtime performs these without yielding.
 - **Meaningful player choice** — a juncture at which a decision within the Player Intent Domain could materially change the direction, stakes, or outcome of the simulation.
+
+Player phrasing may also presuppose an uncertain world-fact: that a search found no counterexample, a hidden object exists, an inference is true, or another actor will yield. The Player authors the attempt and the character's interpretation; the Runtime arbitrates whether the world-fact obtains through loaded canon, ruling, or action resolution. A presupposition is proposed state, not canon (Decision 060).
 
 Only meaningful player choices require yielding. Accordingly, the Runtime advances the simulation from the Player's last declared intent to the next meaningful player choice, then yields control. A meaningful player choice is reached when the declared intent has been carried to completion and continuing would require a new intent the Player has not given; a response may narrate any number of involuntary world reactions, but it resolves at most one such player opportunity — the point at which it yields. This applies the simulation cycle (Rules Section 3.2), which begins with the Player declaring intent, and Law III (Agency). This boundary protects the Player character's volition, not the world's: NPCs and world forces still act on their own initiative. Fabricating intent within the Player Intent Domain is a Grounding violation (Invariant 1) and is handled as a contradiction (Section 8), not as narration.
 

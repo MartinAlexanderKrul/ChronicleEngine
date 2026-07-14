@@ -2643,6 +2643,88 @@ For a world that declares a diegetic System under the Supernatural Phenomena Con
 
 ---
 
+## Decision 058 — Modifier Step Scale and Effective Result
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** `010_ENGINE_RULES.md` Sections 4.4 and 4.6; Decision 052; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Action Resolution and the Die)
+
+### Context
+
+The Rules described qualitative modifiers and large capability gaps but did not assign a numeric scale. The Gameplay Runtime Profile consequently used `+2` and `+3` both as overwhelming advantages and, in a worked example, as literal percentile points. Those readings cannot both produce the documented compression of lopsided contests.
+
+### Decision
+
+A modifier is an integer **step**. One step equals **20 percentile points**. Ordinary net modifiers range from `-3` (overwhelming disadvantage) through `0` to `+3` (overwhelming advantage). Established favorable and unfavorable factors are netted once; duplicate descriptions of the same fact do not stack.
+
+For natural rolls outside the critical tails, `effective result = clamp(natural roll + (20 × net steps), 1, 100)`, and the effective result is read against the ordinary result bands. Natural 01–05 and 96–100 are read first and remain unmodified under Decision 052.
+
+### Rationale
+
+Twenty-point steps align one step with one ordinary result band. Three steps create the already-intended near-certainty without deleting the critical tails: at `+3`, every non-fumble roll is at least 66; at `-3`, every non-critical roll is at most 35.
+
+### Consequences
+
+- Rules Sections 4.4 and 4.6 own the normative scale and formula.
+- Runtime Profiles may explain the contract but may not invent another scale.
+- Existing logged Reikon modifiers of `+1` and `+2` are interpreted as steps; immutable historical rolls and narrated outcomes are not rewritten.
+- A world may replace the scale only through a declared World Rule Profile under Decision 059.
+
+---
+
+## Decision 059 — Declared World Rule Profiles
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** `010_ENGINE_RULES.md` Section 14; Decisions 037, 051, and 057; `012_ENGINE_RUNTIME.md` Sections 3 and 4
+
+### Context
+
+Worlds already extend magic and supernatural phenomena, but the engine lacked a formal way for a world to replace an engine-general behavioral rule. Reikon intentionally uses causal levels, XP-awarded growth, stat and skill points, a numeric Health pool, and percentage damage reduction. Treating those mechanics as accidental nonconformance would erase deliberate world design; leaving them as silent contradictions would make restoration and resolution nondeterministic.
+
+### Decision
+
+A world may declare a **World Rule Profile** that replaces engine-general **behavioral simulation rules** within an explicit scope. Every override must name a stable override identifier, the base rules or decisions replaced, its replacement behavior, affected entity or situation scope, activation conditions, state/provenance requirements, and interaction with action resolution.
+
+Overrides are opt-in and inherited by campaigns in that world. An undeclared conflict is still a contradiction. Persistent Object structure and identifiers, Canonical Record ownership, provenance, Runtime invariants, save integrity, and deterministic validation remain non-overridable. A world may replace how its fiction behaves; it may not make canonical state structurally ambiguous or bypass durability controls.
+
+The Runtime loads the active World Rule Profile before resolving affected state. Where a declared override applies, the world rule is authoritative; otherwise the engine default applies.
+
+### Rationale
+
+This makes world variance explicit, reviewable, and restorable without forcing all genres into one behavioral model. The non-overridable boundary preserves interoperability and prevents “world override” from becoming an escape hatch around the Data Model or canon.
+
+### Consequences
+
+- Rules gain Section 14, World Rule Profiles.
+- Reikon declares overrides for System progression and numeric vitality/damage reduction.
+- Decision 057's former bright line is refined for Reikon: its System may cause growth exactly as declared by the Reikon profile, while d100 still resolves uncertain actions.
+- Save and startup material must identify the applicable World Rule Profile version.
+
+---
+
+## Decision 060 — Uncertain World-Fact Arbitration
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** `012_ENGINE_RUNTIME.md` Section 1.6; Decision 050; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Player Agency Contract)
+
+### Context
+
+Prototype Alpha showed that a player can phrase intent as if an uncertain inquiry has already produced a result. Player authority over intent and interpretation does not establish whether a counterexample exists, what a search reveals, or whether an inference is objectively true.
+
+### Decision
+
+The Player authors the attempt and the character's interpretation. The Runtime arbitrates uncertain world-facts through canon, ruling, or d100 before narrating them as obtained. A presupposition embedded in player phrasing is proposed state, not canon. Certain established facts may be acknowledged automatically; uncertain existence, discovery, resistance, and consequence remain Runtime-authored.
+
+### Consequences
+
+- The Runtime and Gameplay Runtime Profile state this boundary explicitly at the point of intent interpretation.
+- A player's certainty may become canonical Character Knowledge or belief without establishing Objective Reality.
+- This refines Decision 050 without changing player authority over volition.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

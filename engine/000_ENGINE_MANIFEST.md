@@ -151,6 +151,8 @@ Persistent-object identifiers are allocated by the repository-level registry at 
 
 Repository validation tooling lives under `tools/`. It operationalizes Data Model and Runtime constraints but does not define them; `tools/validate_repository.ps1` is the reference implementation of the Repository Validation Barrier (Decision 054).
 
+`tools/` also holds governance and conformance gates, which check agreement between documents rather than the validity of canonical state: `tools/test_decision_roadmap_sync.ps1` enforces that every accepted decision is claimed by a roadmap milestone (Decision 069), and the command-catalog and world-contract tests enforce synchronization between documents that intentionally duplicate content. Like the validator, they enforce constraints defined elsewhere and define none of their own.
+
 The Engine Layer must remain independent of any specific setting.
 
 ---

@@ -19,6 +19,8 @@ Setup manual and AI Project prompts: `docs/GAMEPLAY_START_GUIDE.md`.
 
 Formal repository validation gate: `tools/validate_repository.ps1` (Decision 054).
 
+Governance gate: `tools/test_decision_roadmap_sync.ps1` (Decision 069) — every accepted decision must be claimed by a roadmap milestone. Change classification is defined in `docs/DEVELOPMENT_WORKFLOW.md`.
+
 ### Architecture
 
 5. engine/000_ENGINE_MANIFEST.md

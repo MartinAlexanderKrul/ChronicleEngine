@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000050 |
-| Record | `REC-` | Canonical Record | REC-000034 |
-| Event | `EVT-` | Event | EVT-000024 |
+| Entity | `ENT-` | Persistent Entity | ENT-000060 |
+| Record | `REC-` | Canonical Record | REC-000037 |
+| Event | `EVT-` | Event | EVT-000028 |
 | Relationship | `REL-` | Relationship | REL-000039 |
 
 ---
@@ -92,3 +92,7 @@ Identifiers are zero-padded to six digits by current convention (for example `EN
 Because allocation is a monotonic counter in a version-controlled file, two branches developed in parallel can allocate the same identifier before merge.
 
 This is a known and accepted limitation of the document-driven form. It is resolved by Invariant 4 — reconcile before merge — not by abandoning readable monotonic identifiers. Chronicle Engine 0.1.2 deliberately does not adopt UUIDs or distributed allocation. Distributed identity is reconsidered only if the engine gains a concurrent runtime beyond its current form.
+
+| ENT-000051 - ENT-000060 | Entity | Campaign Reikon Awakening (`campaigns/reikon_awakening_001/`), Checkpoint 001: Daedalus (player character), 2x Broodling creatures, 3x Swarmer creatures, 6 inventory items (license, sword, repair kit, potions, rope, evacuation stone, cores) |
+| REC-000035 - REC-000037 | Record | Reikon Awakening Checkpoint 001 campaign ledgers: Session 1 chronicle, objectives, inventory ownership |
+| EVT-000025 - EVT-000028 | Event | Reikon Awakening Session 1 gameplay: expedition begin (025), first combat broodling kills (026), mana recovery and observation (027), swarmer combat (028) |

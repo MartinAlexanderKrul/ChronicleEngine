@@ -4,7 +4,7 @@
 
 **World Version:** 0.1 (Solo Leveling–inspired contemporary gate-and-hunter world)
 **Status:** Active — instantiated as canonical world content (2026-07-13); ENT-000030–ENT-000050, REC-000026–REC-000034, EVT-000018–EVT-000024, REL-000029–REL-000039
-**Engine Compatibility:** 0.2.0; Data Model 0.1.1; Reikon World Rule Profile 0.2
+**Engine Compatibility:** 0.2.0; Data Model 0.1.1; Reikon World Rule Profile 0.3
 **Progression:** Causal diegetic System progression (`RKO-OVR-001`, Decision 059)
 **Genre:** Contemporary "gate-and-hunter" litRPG — an original world in the genre, not based on any existing work
 **Setting Register:** Original-modern (invented nations and cities; no real-world geography)
@@ -382,7 +382,7 @@ All ledgers below are **instantiated canonical world content**, using real ident
 
 | Ledger | Contents |
 |--------|----------|
-| `206_WORLD_RULE_PROFILE.md` | **World Rule Profile 0.2 — authoritative.** Declared overrides; pool, allocation, costs, resolution, damage, XP; per-exchange settlement; compact notifications; the System's behavioral contract; the `/system` template |
+| `206_WORLD_RULE_PROFILE.md` | **World Rule Profile 0.3 — authoritative.** Declared overrides; pool, allocation, costs, resolution, damage, deterministic Health recovery, XP; per-exchange settlement; compact notifications; the System's behavioral contract; the `/system` template |
 | `205_THE_LEDGER.md` | System lore — Ranks, Abilities, Marks, Rift stages, cores, monsters, economy. Describes; does not govern |
 | `210_PLACES.md` | The Aldish Republic; Verholt; the Kessler Rift; the Danesmoor collapse site; Authority zones |
 | `220_NOTABLE_FIGURES.md` | Seven figures — Association leadership, Guild heads, Institute director, Vigil voice, mentor figures |

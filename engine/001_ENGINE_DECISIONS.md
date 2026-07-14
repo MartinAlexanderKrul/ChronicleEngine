@@ -2987,6 +2987,43 @@ These were not seven missing mechanics. They were missing enforcement points bet
 
 ---
 
+## Decision 066 — Deterministic Health Recovery in Reikon
+
+**Status:** Accepted
+**Date:** 2026-07-14
+**Related Sections:** `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Turn-State Settlement); `worlds/reikon/206_WORLD_RULE_PROFILE.md` 0.3 Sections 7.3 and 11; Engine Rules Sections 6.13–6.14; Decisions 057, 059, 061, 065
+
+### Context
+
+Decision 065 made Health changes settle every exchange but exposed a remaining gap: Reikon had a numeric Health pool without a numeric restoration rule. The engine described treatment and recovery qualitatively, while the Reikon profile specified exact mana recovery only. A Runtime therefore knew when to settle HP but not how much to restore after rest, treatment, a potion, Ascension, or interrupted recovery. Inventing a plausible amount would violate canonical state; refusing all restoration would make the Health pool incomplete.
+
+### Decision
+
+1. **Reikon Health recovery is deterministic.** Injury severity, care state, recovery mode, elapsed seconds, and maximum Health select and settle an exact rate after every exchange.
+2. **Fractional progress is canonical.** `health_recovery_remainder_units` preserves sub-HP recovery across exchanges, so equivalent fictional time produces identical Health regardless of response boundaries.
+3. **Recovery has three activity modes.** Safe rest receives the full rate, safe light activity half, and combat, threat, strenuous exertion, or unstable conditions pause natural recovery without erasing accrued progress.
+4. **Care and severity determine the rate.** Untreated, treated, and specialized care have explicit daily percentages for none/minor/moderate/severe/critical injury. Critical recovery requires stabilization and specialized care.
+5. **HP and wounds remain distinct.** Direct or natural HP restoration does not automatically erase an injury, pain, poison, scar, or modifier. Condition changes require their own resolved treatment/recovery outcome.
+6. **A standard healing potion has a magnitude.** A full vial restores 25% of maximum Health, rounded up and capped, while its limited fictional effects do not automatically repair structural injury or clear conditions.
+7. **Unauthored healing cannot be improvised.** Other Abilities, relics, cores, facilities, and techniques restore only an amount declared by their authoritative rule.
+8. **Maximum-Health changes preserve absolute missing Health.** Ascension or Endurance allocation adds capacity without becoming a full heal.
+
+### Consequences
+
+- Reikon World Rule Profile advances to 0.3; Gameplay Runtime Profile to 1.29; README to 1.3. The engine version and Data Model version do not change.
+- Daedalus remains at 60/100 HP. His moderate, self-stabilized wound begins with recovery `paused`, care `untreated`, and zero fractional carry because he is still inside an active Rift threat.
+- Checkpoint 0004 captures the migrated canonical recovery fields. Checkpoint 0003 remains immutable and restorable under Profile 0.2.
+- `tools/test_reikon_runtime_contract.ps1` verifies the formula, potion magnitude, maximum-Health rule, canonical fields, and Checkpoint 0004 byte identity.
+
+### Alternatives Considered
+
+- **Restore a flat HP amount per hour.** Rejected: it becomes negligible as maximum Health scales across Rank bands.
+- **Restore a percentage only at session close or `/system`.** Rejected: the next action could resolve against stale Health, repeating the settlement failure that caused Decision 065.
+- **Let full HP clear every wound.** Rejected: it collapses the engine's injury model into one number and makes fractures, poison, pain, and permanent consequences disappear without a causal treatment outcome.
+- **Fully heal on Ascension.** Rejected: it turns a progression event into an unauthored emergency heal and invites timing exploits.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

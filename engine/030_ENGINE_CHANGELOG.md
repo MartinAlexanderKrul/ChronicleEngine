@@ -12,6 +12,15 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-14 — Decision 066: deterministic Reikon Health recovery
+
+**Gap closed:** Reikon's numeric Health pool had no numeric restoration contract, leaving rest, treatment, potions, interrupted recovery, and maximum-Health changes to improvisation.
+**Reikon 0.3:** Adds severity/care recovery rates, resting/light/paused modes, exact integer per-exchange settlement with canonical fractional carry, a 25%-maximum standard healing potion, explicit HP/wound separation, and missing-Health preservation when maximum Health changes.
+**Runtime:** Profile 1.29 requires declared world formulas for time-based Health recovery and preserves Health where no such formula exists.
+**Campaign migration:** Daedalus remains at HP 60/100; recovery is paused with untreated moderate severity and zero carry during the active Rift threat. Checkpoint 0004 becomes current; Checkpoint 0003 remains immutable.
+**Enforcement:** `tools/test_reikon_runtime_contract.ps1` checks the formula, potion, maximum-Health rule, canonical recovery state, and Checkpoint 0004 read-back.
+**Documents:** README 1.3; Runtime Profile 1.29; Reikon World Rule Profile 0.3; Decision 066.
+
 ## 2026-07-14 — Decision 065: settle every exchange; literal debug export; repair Reikon state
 
 **Evidence:** Owner-supplied `export_debug_reikon_awakening_001.md` and `full_chat_export_reikon_session.md` show stale mana and XP until challenged, mechanical narration with debug off, inverted wound polarity, repeated state blocks, structured reconstruction in `/export-debug`, incomplete `/system` inventory behavior, and forgotten sword training.

@@ -1,9 +1,9 @@
-# Reikon — World Rule Profile 0.2
+# Reikon — World Rule Profile 0.3
 
 **File:** `worlds/reikon/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
-**Profile Version:** 0.2
+**Profile Version:** 0.3
 **Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Status:** Active
 
@@ -342,6 +342,67 @@ Reinforced Body (20%) with Flame Shield (50%) gives `1 − (0.8 × 0.5)` = **60%
 
 This is a hard rule, not a rounding preference. Additive reduction reaches 100% at a finite stack, and 100% is immunity — the "special narrative protection" Law VII forbids. Multiplicative reduction approaches 1 and never arrives.
 
+## 7.3 Health Restoration and Injury Recovery
+
+Health restoration is deterministic tracked state. It is not estimated when `/system` opens and does not occur merely because a response says that time passed. After every exchange, the Runtime settles the elapsed fictional seconds under the current recovery mode and care state before the next action reads Health.
+
+### Natural Recovery Rate
+
+Natural recovery is a percentage of maximum Health per 24 hours. The injury's current canonical severity and care state select the rate:
+
+| Injury severity | Untreated / self-stabilized | Treated | Specialized care |
+|---|---:|---:|---:|
+| None | 100%/day | 100%/day | 100%/day |
+| Minor | 50%/day | 100%/day | 150%/day |
+| Moderate | 20%/day | 50%/day | 100%/day |
+| Severe | 0%/day | 20%/day | 50%/day |
+| Critical | 0%/day | 0%/day | 20%/day, only after stabilization |
+
+`untreated` includes competent first aid that controls immediate bleeding but has not provided professional treatment. `treated` requires a resolved medical treatment appropriate to the injury. `specialized` requires an established clinical, surgical, or magical recovery effect capable of treating that injury type. A fictional label alone never upgrades care.
+
+Recovery mode multiplies the selected rate:
+
+| Mode | Multiplier | Meaning |
+|---|---:|---|
+| `resting` | 1.0× | Sleep, bed rest, or quiet safe recovery |
+| `light` | 0.5× | Safe ordinary movement and non-strenuous activity |
+| `paused` | 0× | Combat, threat, strenuous exertion, unstable condition, or an environment that prevents recovery |
+
+### Exact Settlement
+
+The character extension stores `health_recovery_mode`, `health_recovery_care`, `health_recovery_injury_severity`, and `health_recovery_remainder_units`. Use the table's whole-number daily percentage as `rate` and the mode factor `2` for resting, `1` for light, or `0` for paused:
+
+```text
+total_units = health_recovery_remainder_units
+            + elapsed_seconds × max_health × rate × mode_factor
+hp_restored = floor(total_units / 17,280,000)
+health_recovery_remainder_units = total_units mod 17,280,000
+current_health = min(max_health, current_health + hp_restored)
+```
+
+The fixed denominator is `86,400 seconds × 100 percent × 2`, so the integer formula exactly represents both the full and half-rate modes without floating-point drift. Use integer arithmetic wide enough for the multiplication (at least signed 64-bit). At full Health, set the remainder to zero. A mode, severity, care, or maximum-Health change keeps the accumulated remainder; only reaching full Health clears it. Continued exertion pauses recovery rather than erasing already accumulated fractional progress.
+
+For Daedalus at 100 maximum Health, an untreated moderate wound restores 1 HP per 72 minutes of resting or 144 minutes of light activity. Proper treatment improves that to 1 HP per 28 minutes 48 seconds of resting. At his current combat position the mode is `paused`, so no passive HP restoration occurs until the fiction establishes safe light activity or rest.
+
+### Direct Healing and Treatment
+
+- A standard Reikon healing potion restores `ceil(0.25 × max_health)` Health, capped at maximum, when the full vial is consumed. It controls ordinary bleeding but does not by itself remove a wound, fracture, poison, infection, pain, or action modifier.
+- A healing Ability, relic, core, facility, or technique restores only the amount its authoritative rule declares and pays all declared costs. If no magnitude is authored, it cannot apply numeric HP restoration during play; the Runtime surfaces the missing rule instead of inventing a plausible number.
+- First aid, treatment, and specialized care may change deterioration, care state, or injury severity without restoring immediate HP. Conversely, direct HP restoration does not automatically clear the injury condition.
+- Injury severity changes only through a resolved treatment/recovery outcome supported by elapsed time and care. Reaching maximum Health removes no condition automatically; any remaining pain, impairment, scar, poison, or other consequence stays canonical and may still modify actions.
+- New damage applies immediately and may worsen severity or care requirements. It does not erase fractional recovery carry unless Health reaches maximum after all same-exchange effects settle.
+
+### Maximum-Health Changes
+
+When Ascension or Endurance allocation changes maximum Health, preserve absolute missing Health:
+
+```text
+missing = old_max_health - current_health
+current_health = clamp(new_max_health - missing, 0, new_max_health)
+```
+
+The increase is additional capacity, not a full heal. Render one final `HP current/max` notification if either displayed value changes.
+
 ---
 
 # 8. Experience
@@ -565,6 +626,10 @@ system:
   mana_recovery_mode: <resting|active>
   mana_recovery_remainder_seconds: <0..29>  # canonical carry between active recovery exchanges
   current_health: <n>
+  health_recovery_mode: <resting|light|paused>
+  health_recovery_care: <untreated|treated|specialized>
+  health_recovery_injury_severity: <none|minor|moderate|severe|critical>
+  health_recovery_remainder_units: <0..17279999>
   stats:                                    # hard cap 20 each (4.2)
     power: <n>
     endurance: <n>
@@ -579,8 +644,8 @@ system:
 
 **What is recorded and what is not.**
 
-Recorded: **allocations, Awakening basis values, current pools, and the mana-recovery remainder.** Those are the facts that cannot be recomputed from static character state.
+Recorded: **allocations, Awakening basis values, current pools, recovery modes/care/severity, and fractional recovery remainders.** Those are the facts that cannot be recomputed from static character state.
 
 Never recorded: `max_mana`, `max_health`, ability `cost`, ability `level`, `magnitude`, `next_threshold`, effective band. Every one is derived from the allocations above and the formulas in this document. Storing any of them creates a second representation that can drift from its source — the exact failure Decision 051 forbids and Section 10 rule 1 restates.
 
-`current_mana`, `mana_recovery_remainder_seconds`, and `current_health` **are** recorded, because they are not derivable: they are the result of play.
+`current_mana`, `mana_recovery_remainder_seconds`, `current_health`, and the Health-recovery fields **are** recorded, because they are not derivable: they are the result of play.

@@ -2,7 +2,7 @@
 
 **Class:** Narrative world-layer reference. Not a canonical ledger, not world rule content.
 **Status:** Active — instantiated as canonical world content (2026-07-13).
-**Rules:** `206_WORLD_RULE_PROFILE.md` — Reikon World Rule Profile 0.2
+**Rules:** `206_WORLD_RULE_PROFILE.md` — Reikon World Rule Profile 0.3
 
 ---
 

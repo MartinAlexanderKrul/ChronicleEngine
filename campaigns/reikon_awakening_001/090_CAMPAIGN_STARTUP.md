@@ -6,7 +6,7 @@
 startup_version: "1.0"
 campaign: campaigns/reikon_awakening_001
 world: worlds/reikon
-world_rule_profile: "Reikon 0.2"
+world_rule_profile: "Reikon 0.3"
 protagonist_policy: pre-authored
 default_protagonist: ENT-000051
 initialization_state: resumable

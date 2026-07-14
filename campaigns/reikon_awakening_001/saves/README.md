@@ -12,7 +12,8 @@ A durable, Canonical-Record form of this index is proposed engine work (Nonconfo
 |------------|----------|--------|------------|
 | `900_CHECKPOINT_001/` | 2026-07-13 | **Quarantined — nonconforming** | **No** |
 | `900_CHECKPOINT_0002/` | 2026-07-14 | Conforming; verified against Session 1 transcript | Yes — prior restore point |
-| `900_CHECKPOINT_0003/` | 2026-07-14 | Conforming; recovered from owner-supplied raw Session 2 chat | **Yes — current restore point** |
+| `900_CHECKPOINT_0003/` | 2026-07-14 | Conforming; recovered from owner-supplied raw Session 2 chat | Yes — prior Profile 0.2 restore point |
+| `900_CHECKPOINT_0004/` | 2026-07-14 | Conforming; deterministic Health-recovery migration | **Yes — current restore point** |
 
 There is **no baseline checkpoint** for this campaign. See below.
 
@@ -42,11 +43,19 @@ Manifest `REC-000046`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` an
 
 It remains restorable but is no longer current; continuing from it creates a fork from before the pack-leader combat.
 
-## `900_CHECKPOINT_0003/` — current restore point
+## `900_CHECKPOINT_0003/` — prior Profile 0.2 restore point
 
 Captures the recovered post-pack-leader state under Reikon World Rule Profile 0.2: pack leader dead, surviving Broodlings retreating, Daedalus at Health 60/100, Mana 5/13, and XP 55/100, with his omitted morning physical training recorded as qualitative capability state.
 
 Manifest `REC-000047`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` and the Rules Section 13.3 minimum. Contains full copies of all eight canonical campaign ledgers and records no self-assessed validation result.
+
+It remains immutable and restorable under the World Rule Profile version recorded in its manifest. Continuing from it requires an explicit migration to Profile 0.3 before deterministic Health recovery can settle.
+
+## `900_CHECKPOINT_0004/` — current restore point
+
+Captures the same post-pack-leader fiction migrated to Reikon World Rule Profile 0.3. Daedalus remains at Health 60/100; his moderate self-stabilized shoulder/collarbone wound has recovery mode `paused`, care `untreated`, and zero fractional recovery units while the active Rift threat continues.
+
+Manifest `REC-000048`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` and the Rules Section 13.3 minimum. Contains full copies of all eight canonical campaign ledgers and records no self-assessed validation result.
 
 ---
 

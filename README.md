@@ -1,6 +1,6 @@
 # Chronicle Engine
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 

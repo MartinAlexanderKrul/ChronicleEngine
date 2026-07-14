@@ -2,7 +2,7 @@
 
 **World Status:** Complete and playable  
 **Version:** 0.1 (Solo Leveling-inspired gate-and-hunter world)  
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.1; Reikon World Rule Profile 0.2
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.1; Reikon World Rule Profile 0.3
 **Created:** 2026-07-13
 
 ---
@@ -39,7 +39,7 @@
 
 **Core World Files:**
 - `200_WORLD_BIBLE.md` — Setting, institutions, mechanics, current situation
-- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 0.2 (authoritative).** Declared overrides and every mechanic: pool, allocation, costs, resolution, damage, XP, per-exchange settlement, compact notifications, and the `/system` template
+- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 0.3 (authoritative).** Declared overrides and every mechanic: pool, allocation, costs, resolution, damage, deterministic Health recovery, XP, per-exchange settlement, compact notifications, and the `/system` template
 - `205_THE_LEDGER.md` — System lore, abilities, monsters, loot, rank system. Describes; the profile governs
 - `210_PLACES.md` — Geography (Aldish Republic, Verholt, specific locations)
 - `220_NOTABLE_FIGURES.md` — NPCs (Association leaders, Guild heads, Institute director, etc.)

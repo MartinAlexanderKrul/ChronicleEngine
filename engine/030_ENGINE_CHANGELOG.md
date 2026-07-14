@@ -12,6 +12,16 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-14 — Combat Fairness (enemy acts; no frictionless win) and Reikon XP-threshold fix
+
+**Context:** From the first Reikon session analysis (`REIKON_SESSION_001_TRANSCRIPT.md`), findings #3 and #7. In that session a single Fireball roll wiped out three charging Swarmers with zero damage and zero cost — the enemy's in-progress action never resolved against the character.
+**Runtime Profile (1.22):** Added "The Roll Resolves the Action, Not the Encounter — and the Enemy Acts" to Combat Cadence: one roll settles the declared action, not the whole fight; enemy actions **already in motion** resolve this same exchange (sequenced by initiative, Rules Section 6) and land their consequences; a fresh counter or next-round action still waits for the next beat (consistent with one-exchange-per-reply). Frictionless, zero-risk wins are the special narrative protection the engine forbids (Law VII); capability/Rank/level/mana are Modifiers, never immunity or removal of the enemy's turn (Decision 057 bright line)
+**Start Guide (2.7):** Mirrored the "enemy acts this exchange / no frictionless win" rule into both resident combat blocks so it fires per-turn (Decision 055 — resident-layer enforcement), reconciled with the existing "no further exchange" wording (in-progress action resolves now; fresh action is next beat)
+**Campaign (Reikon):** Fixed a canon contradiction in `campaigns/reikon_awakening_001/100_CHARACTER_DAEDALUS.md` Growth Model — "When XP fills to 500, you Level Up (D-Rank)" replaced with the canonical Level 1→2 = 100 XP threshold, and the Level/Official-Rank conflation corrected (leveling raises Character Level, never the license). Cites Decisions 051, 057. Live ledger only; the immutable checkpoint snapshot is unchanged
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-14 — World-Scoped Diegetic System: Tracked Resources and Inline Surfacing
 
 **Decisions:** Added Decision 057, refining Decision 051 Layer 3. In a world that declares a diegetic System under the Supernatural Phenomena Contract (Rules Section 11), the System's quantities (mana, XP, stats, level) may be **tracked canonical state**, XP may be accrued from challenges by **world-defined per-challenge values**, and these may be surfaced **inline during play** — a permitted exception to Decision 051 Layer 2's meta/on-request view. The bright line is unchanged: the die still resolves every action; stats/level/mana are Modifiers (Section 4.4) and resources, never overrides or gates. World-scoped; Decisions 012–014 and 051 are not superseded; Decision 051's body is unchanged (immutable-history policy)

@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.21
+**Document Version:** 1.22
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -238,6 +238,14 @@ Combat is the tightest Beat (Rules Section 6.3): one exchange per response. Reso
 What a single response must **not** do is advance the simulation: no further exchange (the character's next blow, or an opponent's counter-attack), no time skip, no **new** actors arriving from elsewhere (guards, a gathering crowd), and no downstream consequences (arrest, reputation, the town's response). "One exchange per reply" restrains *advancing the situation*, never the immediate reaction of what is already present.
 
 **Deferring a consequence is not deleting it.** A violent, witnessed act must bring its escalating response in a *following* beat — guards summoned, the hall roused, a manhunt — arriving as involuntary world reaction, on the world's initiative, even before the player acts again (Law II — Causality; Rules Section 1.6). The Runtime holds those consequences for the next beat; it does not forget them. Narrate the immediate aftermath of this one exchange, then yield.
+
+## The Roll Resolves the Action, Not the Encounter — and the Enemy Acts
+
+One roll settles the **declared action's** outcome, not the whole fight's. A single spell may legitimately strike several clustered targets when the player aims for that (an area effect catching a tight formation) — but resolving the player's blow is only half the clash. The enemy actions **already in motion this exchange** resolve too: a charge underway that the blast did not stop still closes, a foe already lunging still bites, attackers already engaging still reach the character. Sequence the clash by initiative (Rules Section 6) and resolve those in-progress threats against the character — by the die when the outcome is uncertain — letting them land their consequences. This is the *single* exchange, not a further one: what still waits for the next beat is the character's *next* blow and any *fresh* enemy action beyond what was already underway (a new assailant, the enemy's next-round attack). Narrate the player's result, **then the world's answer within this clash**, then yield.
+
+The failure this prevents is the frictionless win: a declared attack that erases every threat at once while the character takes no hit, spends nothing, and is never actually endangered. A run of encounters cleared at zero cost and zero risk against genuine threats is a signal that the enemy was never allowed to act — a form of the **special narrative protection the engine forbids** (Emergent Campaign; Law VII — Fairness). Danger is arbitrated by the die and circumstance, never softened by authorial favor.
+
+**Capability and the diegetic System are Modifiers, not immunity.** A high stat, a strong Rank, a full mana pool, or a level advantage shifts the odds on the roll (Rules Section 4.4) and colors how the world reacts — it never makes the character un-hittable, auto-resolves a contested fight, or removes the enemy's turn (Decision 057 bright line). The impossible stays impossible and the dangerous stays dangerous, whatever the numbers say.
 
 ---
 

@@ -162,9 +162,9 @@ You're young, capable, and now Awakened. You believe you can become stronger fas
 - The impossible remains impossible regardless of Rank
 
 **Growth Model:**
-- **Growth comes first, Ascension surfaces it** (Decision 051)
+- **Growth comes first, Ascension surfaces it** (Decisions 051, 057); XP is tracked and surfaced inline in Reikon (`205_THE_LEDGER.md`)
 - You gain XP by facing real challenge: clearing Rifts, defeating tough monsters, overcoming obstacles
-- When XP fills to 500, you Level Up (D-Rank) — the System announces the Ascension
+- When XP fills to 100, you reach **Level 2** — the System surfaces the Ascension. (Level thresholds rise per level. Leveling raises your **Character Level**, never your Official Rank — your E-Rank license is unchanged.)
 - Leveling unlocks new Ability tiers, Skill Points, and new Class options
 
 **Stat Progression:**

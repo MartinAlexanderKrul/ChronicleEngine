@@ -12,6 +12,16 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-14 — Registry Repair: Reikon Awakening Checkpoint 001 allocation-log coverage
+
+**Context:** First Reikon session analysis, finding #4. The pushed Checkpoint 001 failed repository validation with 17 "allocation log does not cover" errors (ENT-000051–060, REC-000035–037, EVT-000025–028).
+**Root cause:** The allocation-log rows for those ranges had been appended **after** the "Known Limitation" section — outside the contiguous `# Allocation Log` table the validator parses (`tools/validate_repository.ps1`, allocation-section regex stops at the next `# ` heading) — so the high-water marks (advanced to ENT-000060 / REC-000037 / EVT-000028) were not covered by the parsed log.
+**Fix:** Relocated the three ranges into the Allocation Log table (no fabrication — the entries already existed, only misfiled). Repository validation now PASSES (47 files, 147 objects).
+**Remaining (documented, not fixed — gameplay-canon decisions):** Added a Remediation Note to `system/ID_REGISTRY.md` recording that (1) the played Session 1 canon lives only in the immutable snapshot `saves/900_CHECKPOINT_001/` and was never promoted to the live campaign ledgers (the "Promoted to Canon" claim was inaccurate), and (2) REC-000035–037 are defined nowhere (phantom allocations; numbers retired under never-reuse).
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-14 — Combat Fairness (enemy acts; no frictionless win) and Reikon XP-threshold fix
 
 **Context:** From the first Reikon session analysis (`REIKON_SESSION_001_TRANSCRIPT.md`), findings #3 and #7. In that session a single Fireball roll wiped out three charging Swarmers with zero damage and zero cost — the enemy's in-progress action never resolved against the character.

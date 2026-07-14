@@ -61,6 +61,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000026 - REC-000034 | Record | Reikon world ledgers: places, notable figures, knowledge subjects, resources, four institution ledgers, seed events |
 | EVT-000018 - EVT-000024 | Event | Reikon seed events: the Rupture, the Authority charter, Meridian incorporation, Institute founding, Vigil hardening, Danesmoor collapse, Institute deep-Rift recovery |
 | REL-000029 - REL-000039 | Relationship | Reikon: institution governance/jurisdiction and membership relationships, and world-layer Knowledge States over Reikon's Knowledge Subjects |
+| ENT-000051 - ENT-000060 | Entity | Campaign Reikon Awakening (`campaigns/reikon_awakening_001/`), Checkpoint 001: Daedalus (player character), 2x Broodling, 3x Swarmer, and inventory items (license, sword, repair kit, potions, rope, evacuation stone, cores). Defined in the Checkpoint 001 snapshot; see remediation note below |
+| REC-000035 - REC-000037 | Record | Reikon Awakening Checkpoint 001: record identifiers consumed (high-water advanced to REC-000037) for the Session 1 campaign ledgers (chronicle, objectives, inventory ownership). The individual records were not separately defined; the numbers are retired under never-reuse (Invariant 3). See remediation note below |
+| EVT-000025 - EVT-000028 | Event | Reikon Awakening Session 1 gameplay: expedition begin (025), first combat / broodling kills (026), mana recovery and observation (027), swarmer combat (028). Defined in the Checkpoint 001 snapshot; see remediation note below |
 
 ---
 
@@ -93,6 +96,11 @@ Because allocation is a monotonic counter in a version-controlled file, two bran
 
 This is a known and accepted limitation of the document-driven form. It is resolved by Invariant 4 — reconcile before merge — not by abandoning readable monotonic identifiers. Chronicle Engine 0.1.2 deliberately does not adopt UUIDs or distributed allocation. Distributed identity is reconsidered only if the engine gains a concurrent runtime beyond its current form.
 
-| ENT-000051 - ENT-000060 | Entity | Campaign Reikon Awakening (`campaigns/reikon_awakening_001/`), Checkpoint 001: Daedalus (player character), 2x Broodling creatures, 3x Swarmer creatures, 6 inventory items (license, sword, repair kit, potions, rope, evacuation stone, cores) |
-| REC-000035 - REC-000037 | Record | Reikon Awakening Checkpoint 001 campaign ledgers: Session 1 chronicle, objectives, inventory ownership |
-| EVT-000025 - EVT-000028 | Event | Reikon Awakening Session 1 gameplay: expedition begin (025), first combat broodling kills (026), mana recovery and observation (027), swarmer combat (028) |
+---
+
+# Remediation Note — Reikon Awakening Checkpoint 001
+
+The Checkpoint 001 gameplay session (commit line `019cffa` / `b840bf2`) left this registry and the campaign in an inconsistent state. Two issues are recorded here for follow-up; the allocation-log coverage itself has been repaired (the three ranges above were relocated into the Allocation Log table from below this section, where they had been appended outside the parsed table and so failed validation).
+
+- **Canon not promoted to live ledgers.** The played Session 1 objects (`ENT-000051`–`ENT-000060`, `EVT-000025`–`EVT-000028`) are defined **only** inside the immutable snapshot `campaigns/reikon_awakening_001/saves/900_CHECKPOINT_001/`. The live campaign directory still holds only pre-play files (`050_CAMPAIGN_LOG.md`, `100_CHARACTER_DAEDALUS.md`, `CHECKPOINT_000.md`); the full live ledgers (`120/140/160/170/180`) were never written. Canon Promotion into the live ledgers did not occur, so the checkpoint's "Promoted to Canon" claim was not accurate. Promoting the snapshot state into the live ledgers is a pending gameplay-canon operation.
+- **Phantom record allocations.** `REC-000035`–`REC-000037` are not defined anywhere in the repository (not even in the snapshot). The high-water mark was advanced for them without objects being created. Under never-reuse (Invariant 3) the numbers are retired, not reclaimed; they are logged above as consumed.

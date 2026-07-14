@@ -13,9 +13,31 @@ A durable, Canonical-Record form of this index is proposed engine work (Nonconfo
 | `900_CHECKPOINT_001/` | 2026-07-13 | **Quarantined — nonconforming** | **No** |
 | `900_CHECKPOINT_0002/` | 2026-07-14 | Conforming; verified against Session 1 transcript | Yes — prior restore point |
 | `900_CHECKPOINT_0003/` | 2026-07-14 | Conforming; recovered from owner-supplied raw Session 2 chat | Yes — prior Profile 0.2 restore point |
-| `900_CHECKPOINT_0004/` | 2026-07-14 | Conforming; deterministic Health-recovery migration | **Yes — current restore point** |
+| `900_CHECKPOINT_0004/` | 2026-07-14 | Conforming; deterministic Health-recovery migration | Yes — pre-Session-2 fork point |
+| `900_CHECKPOINT_0005/` | 2026-07-14 | Conforming but **superseded** — captured stale record state; see below | Yes — not preferred |
+| `900_CHECKPOINT_0006/` | 2026-07-14 | Conforming; Session 2 cross-ledger staleness repair and `EVT-000032` ruling | **Yes — current restore point** |
 
 There is **no baseline checkpoint** for this campaign. See below.
+
+---
+
+## `900_CHECKPOINT_0005/` — conforming, superseded by 0006
+
+Created at the Session 2 checkpoint (commit `4039de3`). It is **restorable and its fiction is sound**; it is not quarantined and it is not a regressive snapshot. It is superseded because it captured a record layer that had drifted out of agreement with the fiction it recorded.
+
+**What is right about it:** all eight snapshot copies are byte-identical to the live ledgers as they stood at capture; the manifest (`REC-000049`) conforms to the Rules Section 13.3 contract with no placeholders; lineage, the included-ledger identifiers, and the restoration entry point are all correct; identifiers were allocated atomically; the repository validation gate passed.
+
+**Why it is superseded:** the promotion barrier reached only the five ledgers the interpreter judged the session to have touched. Three ledgers whose state the session's own events had changed were never opened, and their stale content was captured:
+
+1. `110_WORLD_LEDGER.md` — `ENT-000064` listed Daedalus as an occupant of the Rift he had left, and described the core chamber as "not yet reached" and Broodlings as "retreating" after both had changed.
+2. `120_INVENTORY_AND_OWNERSHIP.md` — seven carried items located in Warehouse 7 while their possessor was across the city; `ENT-000065` missing from the record's `subjects`.
+3. `140_OBJECTIVES.md` — no record of the basement discovery or the expedition's suspension.
+4. `180_CURRENT_STATE.md` — the restoration entry point contradicted itself in four places (warehouse "Immediate environment" against an Association location; Broodlings "remain inside the Rift" against its own Unresolved 2; 5/13 Mana against its own 7/13; Restore Point still naming Checkpoint 0004).
+5. `160_CAMPAIGN_CHRONICLE.md` — `EVT-000031` records "seven cores from six earlier kills" against four corroborating sources establishing five; the Chronicle Position claimed "five Broodlings, one pack leader" for a 2 Broodling / 3 Swarmer / 1 pack leader roster.
+
+**Its bytes are unchanged** per Rules Section 13.2, including the erroneous `EVT-000031` description. Ruling `EVT-000032` corrects the kill count in live canon and governs where the two disagree; `EVT-000031` is retained as evidence of how the error was recorded. Restoring 0005 restores the defects listed above along with the correct fiction. Prefer `900_CHECKPOINT_0006/`.
+
+**Note on the validator:** the gate passed on this state and was right to. Every defect above is staleness or semantic contradiction between ledgers, not structural malformation — the class of error the mechanical barrier does not look for. Recorded against Version 0.3 planning in the roadmap's Technical Debt.
 
 ---
 

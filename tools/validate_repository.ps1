@@ -142,9 +142,14 @@ foreach ($directoryName in @("worlds", "campaigns")) {
         continue
     }
 
+    # Immutable snapshots (saves) and durable transcripts (exports) are excluded from
+    # live canon. Saves intentionally copy earlier object definitions (Decision 054).
+    # Exports are primary evidence, not state: they establish no canon, run no
+    # validation gate, and must record identifiers allocated during a session --
+    # including sessions whose canon was never promoted (Decision 061).
     foreach ($file in Get-ChildItem -LiteralPath $directory -Recurse -File -Filter "*.md") {
         $relativePath = Get-RelativePath $file.FullName
-        if ($relativePath -match '(^|/)(saves|\.saves|checkpoints)(/|$)') {
+        if ($relativePath -match '(^|/)(saves|\.saves|checkpoints|exports)(/|$)') {
             continue
         }
         $canonicalFiles.Add($file)

@@ -33,6 +33,13 @@ Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version ad
 
 ---
 
+## 2026-07-14 — Start Guide: AI Instructions block condensed to <8000 chars
+
+**Start Guide (2.8):** Rewrote the resident "AI Instructions" block in `docs/GAMEPLAY_START_GUIDE.md` from ~10,978 to ~6,974 characters (under an 8000-char budget) by merging the action-resolution steps, cutting repeated justifications and redundant examples, and tightening prose. No guardrail dropped: cold-start loading, full action-resolution procedure, out-of-character allowance, canon grounding, one-exchange/enemy-acts/no-frictionless-win, before-narration checklist, indirect-write preflight, and the checkpoint-completeness gate are all preserved.
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-14 — Combat Fairness (enemy acts; no frictionless win) and Reikon XP-threshold fix
 
 **Context:** From the first Reikon session analysis (`REIKON_SESSION_001_TRANSCRIPT.md`), findings #3 and #7. In that session a single Fireball roll wiped out three charging Swarmers with zero damage and zero cost — the enemy's in-progress action never resolved against the character.

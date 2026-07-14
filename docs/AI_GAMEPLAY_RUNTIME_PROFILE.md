@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.20
+**Document Version:** 1.21
 **Status:** Active Gameplay Workflow
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -12,7 +12,7 @@
 
 This document defines how a large-language-model Runtime executes Chronicle Engine gameplay. It operationalizes `engine/012_ENGINE_RUNTIME.md` without redefining the Engine Rules, Data Model, or canonical campaign state.
 
-This profile owns first-game startup, player onboarding, campaign restoration, scene-opening confirmation, player agency and interaction cadence, gameplay close, Canon Promotion, and the Gameplay Runtime Report. Repository development uses `docs/AI_SESSION_TEMPLATE.md`.
+This profile owns first-game startup, player onboarding, campaign restoration, scene-opening confirmation, player agency and interaction cadence, the Runtime Command Interface, gameplay close, Canon Promotion, and the Gameplay Runtime Report. Repository development uses `docs/AI_SESSION_TEMPLATE.md`.
 
 ---
 
@@ -262,6 +262,82 @@ The fuller mechanical breakdown — difficulty, the modifiers applied, band boun
 
 ---
 
+# Runtime Command Interface
+
+Gameplay is driven by natural language. On top of that, the Runtime registers a small set of **runtime commands** — short, out-of-character control verbs the player may issue at any point in a session, including mid-scene. A runtime command is not a game action. It is an instruction to the Runtime *about the session*: save, resume, start, list, end. Each command is a thin dispatcher onto a procedure this profile already defines; it introduces no new persistence mechanic, no new resolution mechanic, and no new canon. The command interface is convenience over the existing algorithms, not an authority beside them.
+
+Every runtime command still passes through the obligations that govern the procedure it triggers. `/save` runs the full Save Algorithm (promotion barrier, validation gate, immutable checkpoint, read-back) — it never short-circuits to a claim that saving is or is not possible. `/new` and `/continue` still pass through the readiness gate, opening-anchor validation, and (for `/new`) the confirmation-before-mutation rule. A command names *which* procedure to run; it never waives that procedure's guarantees.
+
+## Namespace and Precedence
+
+Two kinds of slash token can appear in play, and the Runtime must not confuse them:
+
+- **Runtime commands** — out-of-character, engine-general, defined in this profile. They mean the same thing in every world and every campaign. Their names are **reserved**, including their aliases (`/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles` for `/ChronicleEngine`): a world must not redefine `/save`, `/continue`, `/new`, or any other runtime command or alias as an in-fiction verb.
+- **Diegetic commands** — in-fiction, world-authored, part of a world's content (for example Reikon's `/system`, which opens a character's in-world System interface). A diegetic command is world-authoring content governed by the Supernatural Phenomena Contract (Rules Section 11) when it is diegetically real; it is not part of this profile and varies by world.
+
+Resolve a leading-slash token in this order:
+
+1. Match it against the **runtime command table** below. If it matches, execute the runtime command.
+2. Otherwise, match it against the **active world's diegetic command table**, if the world defines one. If it matches, treat it as an in-world action.
+3. Otherwise, treat it as an unknown command: do not guess an action, do not narrate it into the scene, and offer `/help`.
+
+This ordering makes the control verbs reliable — `/save` always checkpoints, never triggers world fiction — while leaving each world free to own its own diegetic vocabulary. A runtime command issued mid-scene is answered out-of-character and does not advance in-world time or consume the Beat Budget; the scene resumes exactly where it paused.
+
+## Command Table
+
+Each command dispatches to the named procedure. The procedure — not this table — carries the detailed obligations.
+
+| Command | Effect | Dispatches to |
+|---------|--------|---------------|
+| `/ChronicleEngine [target]` | **Bootstrap.** Enter Interpreter mode, load the boot set, then start or resume play. With no target, list worlds/campaigns or resume the most recently played campaign; with a campaign path or world name, boot into it. Aliases (identical effect): `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`. | First-Session Boot / Returning Sessions |
+| `/help [command]` | List the runtime commands, or explain one. Out-of-character; no state change. | — |
+| `/save [label]` | Checkpoint now. Optional `label` is recorded in the save manifest's save-identity metadata. | Checkpoint Persistence → Save Algorithm |
+| `/end` | Close the session: promotion barrier, session-close checkpoint, Gameplay Runtime Report. Alias: `/save-and-quit`. | Gameplay Close |
+| `/continue` | Resume the **most recently played** campaign from its latest canonical checkpoint. | Returning and Takeover Sessions (Rules Section 13.4) |
+| `/continue <world>` | Resume the latest checkpoint of the most recently played campaign **in that world**. | Returning and Takeover Sessions (Rules Section 13.4) |
+| `/new <world>` | Start a **new campaign instance** in that world. | Emergent Campaign / Custom Protagonist initialization |
+| `/load <checkpoint>` | Restore a **specific earlier** checkpoint of the current campaign. Continuing play from a non-latest checkpoint is a fork (Decision 053). | Returning Sessions + Fork (Decision 053) |
+| `/restart` | Redo: reset the current campaign to its baseline checkpoint. Keeps the protagonist's identifier; does not roll back the registry (Decision 053). | Redo (Decision 053) |
+| `/branch [name]` | Fork the current campaign at its latest checkpoint into a new parallel instance (Decision 053). | Fork (Decision 053) |
+| `/worlds` | List the worlds available under `worlds/`. Out-of-character; no state change. | Repository discovery |
+| `/campaigns [world]` | List campaigns (optionally filtered to a world) with their latest checkpoint and status. Out-of-character; no state change. | Repository discovery |
+| `/saves` | List the current campaign's checkpoints with labels and creation times. Alias: `/checkpoints`. Out-of-character; no state change. | Repository discovery |
+| `/export [label]` | Write a formatted, non-canonical transcript of the session to `campaigns/<campaign>/exports/`, distinguishing player, narrator, out-of-character, and system messages. Establishes no canon. | Session Export |
+| `/recap` | Give a concise, spoiler-safe recap of current state and unresolved pressures. Advances no in-world time. | Returning Sessions recap |
+| `/status` | Show the out-of-character **Progression Surfacing** view (derived tiers, level, experience log). Distinct from any world's diegetic `/system`. | Progression Surfacing |
+| `/validate` | Run the Repository Validation Gate on demand and report the result. Out-of-character; no canon change. | Repository Validation Gate |
+| `/debug` | Toggle the testing/debug mechanical breakdown (difficulty, modifiers, band boundaries) described under Information Boundary. Off by default. | Information Boundary (debug mode) |
+
+The interface is **extensible**: a future runtime command is added here as another dispatcher onto an existing procedure. A command that would require a *new* persistence, resolution, or canon mechanic is out of scope for this table and belongs in the Engine Rules or a Decision first.
+
+### The Bootstrap Command
+
+`/ChronicleEngine` is distinguished from every other runtime command by *when* it must be recognizable. The rest of this table is available only after this profile is loaded — but this profile is one of the files the player is asking the Runtime to load. `/ChronicleEngine` therefore must be reachable from the one file a cold-start Runtime is guaranteed to see: the root `README.md`. Its definition is duplicated there for exactly this reason, and the two must stay in agreement.
+
+On `/ChronicleEngine`, the Runtime reads the boot set on its own initiative, following the cold-start loading rule: seeing only `README.md` (or a partial listing) at the start of a conversation is a cold-start artifact, not a missing-files condition, and the Runtime reports a load blocker only after an actual read attempt on a named file errors (First-Session Boot; Failure Behavior). The boot set is the profile, the Engine Rules (Sections 4, 6, 13), the Runtime and Data Model documents, the validator, and — once a target is chosen — the selected campaign's startup, ledgers, world records, and latest checkpoint. After loading, `/ChronicleEngine` proceeds through Startup Classification, First-Session Boot or Returning Sessions, and the Readiness Gate exactly as a natural-language start prompt would; it opens no scene before the player confirms readiness. Its response presents the available-commands menu (Command Availability at Session Start) as part of that readiness step, so the player sees what they can type immediately after booting.
+
+## Resolution Rules
+
+- **"Most recently played" (`/continue`, no world).** Resolve deterministically by the latest checkpoint's creation time recorded in save manifests (Rules Section 13.3), across all campaigns — not by filesystem modification time. When two campaigns tie or no manifest timestamp is available, list the candidates with `/campaigns` and ask the player which to resume rather than guessing.
+- **Latest checkpoint of a campaign.** Always the campaign's latest *canonical* checkpoint, located per the restoration procedure (Rules Section 13.4). The command references the checkpoint by that procedure and does not hard-code a save-directory form, so it is unaffected by save-layer location drift (Decision 053, Known debt).
+- **No checkpoint yet.** `/continue` on a campaign that is initialized but has no checkpoint falls through to First-Session Boot, not an error. `/continue` naming a world with no campaigns offers `/new <world>`.
+- **`/new` confirmation.** `/new` gathers the minimum initialization choices, previews the derived starting state, and writes nothing until the player confirms — the Custom Protagonist / Emergent Campaign rule is unchanged. A `/new` in a world whose canonical baseline must stay intact creates a separate instance rather than overwriting it.
+- **Ambiguous or missing argument.** A command whose argument does not resolve to exactly one target (an unknown world name, a `/load` checkpoint that does not exist, an ambiguous `/continue`) reports the miss and offers the relevant list (`/worlds`, `/campaigns`, `/saves`) — it never silently picks a nearby target.
+- **Version mismatch on resume.** `/continue`, `/load`, and `/restart` surface Engine/World/Campaign/Save-Format version mismatches explicitly on restoration (Rules Section 13.5); they do not migrate silently.
+
+## Command Availability at Session Start
+
+At **every** session start, before the first scene opens, the Runtime presents the available commands once, as a compact out-of-character menu. This is mandatory on every entry path: after `/ChronicleEngine`, at the First-Session Boot briefing, and in the Returning/Takeover recap. A player who has just started, resumed, forked, or restarted must be shown what they can type without having to ask first.
+
+The menu lists two groups, and only what applies to the current campaign:
+
+- **Runtime commands** — the reserved, engine-general verbs from the Command Table. Present the ones useful in the current state (always `/help`, `/save`, `/end`, `/status`, `/recap`; plus `/continue`, `/new`, `/saves`, `/worlds`, `/campaigns` as navigation), and note that `/help` lists the rest.
+- **World commands** — the diegetic commands the **active campaign's world** declares in its content (for example, a Reikon campaign shows `/system`). A campaign whose world declares no diegetic commands shows only the runtime group. The Runtime reads the world's declared diegetic commands from that world's content; it does not invent commands a world has not defined, and it does not show another world's commands.
+
+Keep the menu short, player-facing, and spoiler-safe: name each command and what it does in plain language, never repository internals. It is shown at the Readiness Gate (or with the recap), advances no in-world time, and does not consume the Beat Budget. Show it once per session start; thereafter `/help` re-displays it on demand. Do not repeat the full menu at the top of every scene.
+
+---
+
 # Startup Classification
 
 Determine three dimensions before presenting gameplay:
@@ -323,7 +399,7 @@ For an initialized campaign with no checkpoint:
 4. Load the Action Resolution procedure (Rules Section 4) into the working set, so the die is available the first time an action is uncertain. Load the conflict rules (Rules Section 6) as soon as a conflict is plausible. See Action Resolution and the Die.
 5. Verify versions, references, protagonist policy, required state, and information boundaries.
 6. Use a current `095_PLAYER_BRIEFING.md` if it agrees with its sources; otherwise derive a safe briefing from canon.
-7. Present the briefing and stop before opening the first scene.
+7. Present the briefing, present the available-commands menu (Command Availability at Session Start), and stop before opening the first scene.
 8. Answer clarification questions without advancing in-world time.
 9. Open the first scene only after the player confirms readiness.
 
@@ -384,7 +460,7 @@ When neither a detailed campaign nor protagonist exists:
 4. Derive and preview the initial campaign state.
 5. Validate and obtain player confirmation.
 6. Write the initial campaign state atomically.
-7. Present the player briefing and wait for readiness.
+7. Present the player briefing and the available-commands menu (Command Availability at Session Start), and wait for readiness.
 
 After initialization, simulation is world-first. Do not create guaranteed destiny, a scripted final arc, special narrative protection, or a predetermined outcome.
 
@@ -400,9 +476,9 @@ When a valid checkpoint exists:
 4. Reconcile the restored checkpoint with the live campaign continuation.
 5. Read current objectives and situation-relevant records.
 
-Give a returning player a concise natural recap, unresolved pressures, and a readiness question. Do not replay character creation or the full introduction.
+Give a returning player a concise natural recap, unresolved pressures, the available-commands menu (Command Availability at Session Start), and a readiness question. Do not replay character creation or the full introduction.
 
-Give a new player taking over an existing character the full spoiler-safe character introduction plus a recap limited to character-known information, current motivations, relationships, and immediate circumstances. Offer a fuller briefing before asking for readiness.
+Give a new player taking over an existing character the full spoiler-safe character introduction plus a recap limited to character-known information, current motivations, relationships, and immediate circumstances, and the available-commands menu. Offer a fuller briefing before asking for readiness.
 
 ---
 
@@ -446,7 +522,7 @@ Compute the view from canonical state at the moment of surfacing. Do not maintai
 
 # Readiness Gate
 
-End onboarding or recap with a direct choice: proceed, ask clarification, request a fuller briefing, or revise permitted setup choices.
+End onboarding or recap with the available-commands menu (Command Availability at Session Start) and a direct choice: proceed, ask clarification, request a fuller briefing, or revise permitted setup choices.
 
 No scene begins, die is rolled, NPC acts, or in-world time advances before explicit player confirmation. Contradictory, missing, stale, or incompatible canonical state blocks scene opening. Report the specific problem and request a ruling when canon precedence cannot resolve it.
 
@@ -476,6 +552,67 @@ Continuity or validation warnings:
 ```
 
 Do not include ADR status, architecture changes, roadmap progress, technical debt, or a recommended implementation task.
+
+---
+
+# Session Export
+
+`/export` writes a human-readable transcript of the current session to a file, formatted so a reader can tell at a glance who was speaking and in what register. It is the readable companion to a checkpoint: a checkpoint preserves canonical *state*, an export preserves the *conversation* that produced it.
+
+## An Export Is Not Canon
+
+An export is a **derived, non-canonical artifact** — a rendering of the transcript, like the player briefing or the Progression Surfacing view. It establishes no canon, mints no identifiers, and does not run the Promotion Barrier or the Repository Validation Gate. `/export` and `/save` are different acts: exporting does not checkpoint, and checkpointing does not export. A player who wants both issues both.
+
+Because it is not canon, an export is exempt from canonical validation, and the file lives under `campaigns/<campaign>/exports/` — outside the canonical ledger set. Writing it still requires actual write capability: `/export` performs a real file write and reacts to the real result (Session Persistence State). If the write cannot be performed, the Runtime does not silently drop the export — it renders the formatted transcript inline in the reply instead, so the player can copy it, and says the file was not written.
+
+## What Is Captured
+
+The export preserves the **whole session verbatim**, not a summary, classifying every message into one of these registers and labelling it. Both sides' out-of-character text is kept, and system/loading messages are kept — nothing is dropped for being "just" OOC or setup.
+
+- **Player** — the player's in-character declarations: intent, action, dialogue.
+- **Narrator** — the Runtime's in-character narration: scene, world, and NPC action.
+- **Player · OOC** — the player's out-of-character text: engine-state queries, testing probes, and control instructions (typically `//`-prefixed, or otherwise clearly out-of-character, e.g. "save progress", "reload the profile").
+- **Narrator · OOC** — the Runtime's out-of-character text: answers to OOC queries, rulings and corrections, and explanations of engine behavior (the `//`-prefixed replies).
+- **System** — runtime and setup messages: bootstrap loading and version confirmations, write-capability/preflight results, runtime-command acknowledgements, checkpoint/save reports, and repository-validation output.
+- **Roll** — the action-resolution die tags (`🎲 d100: NN — result`), preserved exactly as they appeared so the resolution history is auditable.
+
+Runtime commands themselves (`/save`, `/export`, `/system`, …) are preserved as the player issued them and their handling is rendered under **System** (or **Narrator · OOC** for a diegetic command's answer). The classification records how each message actually functioned in the session; it does not rewrite or clean up the text.
+
+## Format
+
+Write Markdown. Lead with a metadata header, then the classified messages in session order. Keep player and narrator text exact; do not summarize, merge, or reorder turns.
+
+```text
+# <Campaign> — Session Export <NNNN>
+
+- Campaign: <path>
+- World: <world>
+- Exported: <timestamp>
+- Session span: <first turn> → <last turn>
+- Latest checkpoint: <checkpoint id or "none this session">
+- Versions: Engine <…>, World <…>, Campaign <…>
+- Label: <optional label, if given>
+
+---
+
+**Player** — "What about the merchant escort job?"
+
+**Narrator** — Kael asks after the merchant escort job and is directed toward Tollen Var…
+
+**Player · OOC** — // what is the state of the marsh-fever outbreak?
+
+**Narrator · OOC** — // The outbreak is active in the lower river ward; world canon records 13+ confirmed cases…
+
+**Roll** — 🎲 d100: 30 — failure
+
+**System** — Checkpoint 900_CHECKPOINT_0001 written and validated; registry advanced to ENT-000029, REC-000025, EVT-000017, REL-000028.
+```
+
+The role label is the one required element; the surrounding typography (headings, blockquotes, rules) may vary by substrate as long as the six registers stay visually distinct and the text stays verbatim.
+
+## Filing
+
+Name the file `play_export_<NNNN>.md`, numbered by advancing past the highest existing export in the campaign's `exports/` directory (first export is `0001`). An optional `label` argument is recorded in the header and may be slugged into the filename. After writing, read the file back and report its path; if read-back fails, treat it as a write failure per An Export Is Not Canon.
 
 ---
 

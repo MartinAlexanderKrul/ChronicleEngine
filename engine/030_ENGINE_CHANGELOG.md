@@ -12,6 +12,21 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-13 — Runtime Command Interface
+
+**Decisions:** Added Decision 056 (Runtime Command Interface), registering a set of out-of-character control verbs (`/ChronicleEngine`, `/save`, `/continue`, `/new`, `/end`, `/restart`, `/branch`, `/load`, `/worlds`, `/campaigns`, `/saves`, `/export`, `/recap`, `/status`, `/validate`, `/help`, `/debug`) as thin dispatchers onto procedures the Gameplay Runtime Profile already defines — no new persistence, resolution, or canon mechanic
+**Bootstrap:** `/ChronicleEngine` (aliases `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`) is the cold-start entry point; because a Runtime may initially see only the root `README.md`, the bootstrap command and its boot file set are documented there so the engine can be loaded from the README alone
+**Runtime Profile:** Added the Runtime Command Interface section to `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (1.21): command table, the Bootstrap Command subsection, dispatch targets, reserved-namespace and precedence rules over world diegetic commands, and resolution rules for "most recently played" and missing/ambiguous arguments; each command inherits its dispatched procedure's obligations (Save Algorithm, Restoration, initialization, Fork/Redo per Decision 053, Progression Surfacing per Decision 051)
+**Session export:** Added `/export` and the Session Export section — a formatted, non-canonical transcript written to `campaigns/<campaign>/exports/` that classifies every message (Player, Narrator, Player · OOC, Narrator · OOC, System, Roll) and keeps both sides' out-of-character text and system/loading messages verbatim; it establishes no canon and runs no promotion/validation barrier, distinct from `/save`. Added a **Session Export** glossary term
+**Command discovery:** Added Command Availability at Session Start — the Runtime presents a compact, spoiler-safe menu of available commands (runtime commands plus the active world's declared diegetic commands, e.g. Reikon's `/system`) at every session start: after `/ChronicleEngine`, at First-Session Boot, and on restoration/fork/restart. Wired into First-Session Boot, Emergent Campaign, Returning and Takeover Sessions, and the Readiness Gate; `/help` re-displays on demand
+**Glossary:** Added **Runtime Command** and **Diegetic Command** to `020_ENGINE_GLOSSARY.md`, cross-linked to the existing Diegetic System term
+**Start Guide:** Added a Runtime Commands reference to `docs/GAMEPLAY_START_GUIDE.md` (2.6); the prose start/resume/close prompts remain valid and authoritative
+**World content:** Clarified in `worlds/reikon/README.md` that `/system` is a diegetic (world-specific) command, distinct from the reserved engine-general runtime commands, and that `/status` (meta progress view) and `/system` (in-world interface) are separate
+**Runtime / Rules / Data Model:** Unchanged — the interface is operational convenience over existing procedures; `012_ENGINE_RUNTIME.md` is not touched
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-13 — Repository Validation Barrier
 
 **Decisions:** Added Decision 054 (Repository Validation Barrier), converting existing Data Model validity constraints into a mandatory deterministic gate after live write/read-back and before immutable checkpoint creation or promotion-success reporting

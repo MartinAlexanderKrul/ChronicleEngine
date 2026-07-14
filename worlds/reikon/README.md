@@ -155,10 +155,14 @@
 6. Progress through leveling, skill growth, Rift expeditions, relationships
 
 **Example Commands During Play:**
-- `/system` — View your diegetic System interface
+- `/system` — View your diegetic System interface (an in-world, Reikon-specific command)
 - Describe your action freely — no predefined options
 - Ask questions about the world
 - Suggest plans or roleplay dialogue
+
+**Diegetic vs. runtime commands:** `/system` is *diegetic* — it belongs to Reikon's fiction and shows the character's in-world System. It is different from the engine's **runtime commands** (`/save`, `/continue`, `/new`, `/end`, `/status`, and the rest), which are out-of-character controls for the session and work the same in every world. See `docs/GAMEPLAY_START_GUIDE.md` for the full list. Note that `/status` (the out-of-character progress view) and `/system` (the in-world interface) are deliberately separate; if a name ever collided, the runtime command would take precedence.
+
+`/system` is Reikon's **declared diegetic command**: when a campaign is set in Reikon, the Runtime includes `/system` in the available-commands menu it shows at the start of every session (alongside the generic runtime commands), so players know it is available.
 
 **Checkpointing:**
 - Create CHECKPOINT_XXX.md files to save character state at key moments

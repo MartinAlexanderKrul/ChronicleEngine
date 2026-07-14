@@ -27,6 +27,35 @@ The player becomes part of its history.
 
 ---
 
+# Play Chronicle Engine — the `/ChronicleEngine` command
+
+**To start or resume a game, send `/ChronicleEngine` to an AI that can read and write this repository.** (`/start`, `/game`, `/rpg`, `/chronicle`, and `/chronicles` are aliases and do exactly the same thing. Optionally name a target: `/ChronicleEngine <campaign-path-or-world>`.)
+
+`/ChronicleEngine` is the **bootstrap command**. It is documented here, in `README.md`, on purpose: at the start of a conversation an AI may see only this file, so the command that boots the engine must be reachable from this file alone. Every other runtime command (`/save`, `/continue`, `/new`, `/end`, …) is defined once the Gameplay Runtime Profile is loaded; `/ChronicleEngine` is the one that loads it.
+
+### What the AI must do on `/ChronicleEngine`
+
+You are being asked to run Chronicle Engine gameplay in **Interpreter mode**. The rest of the repository is available to you as readable, writable files even if this conversation began showing only `README.md`. **Read the files below on your own initiative.** Seeing only this README at the start is a cold-start artifact, never a reason to report that the game files are missing — report a blocker only after an actual read attempt on a named file errors.
+
+Read, in this order, then follow the loaded procedure:
+
+1. **`docs/GAMEPLAY_START_GUIDE.md`** — the setup guide. Its **AI Instructions** block and start/resume prompts are the authoritative bootstrap text; follow them.
+2. **`docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`** — the operational profile that governs every turn of play (player agency, action resolution and the die, the Runtime Command Interface, checkpoints, gameplay close). This is the resident rulebook for the session.
+3. **`engine/010_ENGINE_RULES.md`** — engine rules; load **Sections 4 and 6** (action resolution and combat) before the first uncertain action, and **Section 13** (saves) for checkpoint/restore.
+4. **`engine/012_ENGINE_RUNTIME.md`** and **`engine/011_ENGINE_DATA_MODEL.md`** — runtime obligations and the data model (identifiers, ledgers) the validator enforces.
+5. **`tools/validate_repository.ps1`** — the validation gate run before any checkpoint is claimed saved.
+
+Then select what to play and load its state:
+
+- **A specific campaign** — read `campaigns/<campaign>/090_CAMPAIGN_STARTUP.md`, its canonical ledgers (`100`–`180`), the campaign's world records under `worlds/<world>/`, and, when resuming, the latest checkpoint under `campaigns/<campaign>/saves/`.
+- **No target given** — list the available worlds (`worlds/`) and campaigns (`campaigns/`) and let the player pick, resume the most recently played campaign, or start a new one. This is the same behavior as `/continue` and `/new` once the profile is loaded.
+
+Do not open the first scene until you have presented a spoiler-safe introduction or recap and the player has confirmed readiness (the profile's Readiness Gate). As part of that readiness step, **show the player a short menu of available commands** — the runtime commands plus any commands the campaign's world defines (a Reikon campaign lists `/system`) — so they know what they can type. If your file access is indirect, confirm write capability with the preflight canary described in the start guide before canonical play.
+
+**For the full copy-paste AI Instructions and exact start prompts, see `docs/GAMEPLAY_START_GUIDE.md`.**
+
+---
+
 # Project Goals
 
 Chronicle Engine is designed to support:
@@ -72,7 +101,7 @@ If you are new to the project, read the documents in the following order.
 3. docs/AI_SESSION_TEMPLATE.md
 4. docs/CONTRIBUTING.md
 
-For gameplay, use `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`. The Runtime reads campaign state and presents a spoiler-safe introduction; players do not need to read repository files.
+To **play**, send `/ChronicleEngine` (see [Play Chronicle Engine](#play-chronicle-engine--the-chronicleengine-command) above). The Runtime reads campaign state and presents a spoiler-safe introduction; players do not need to read repository files. Gameplay is governed by `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`.
 
 For setup instructions and ready-to-use AI Project prompts, see `docs/GAMEPLAY_START_GUIDE.md`.
 

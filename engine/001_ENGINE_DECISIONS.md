@@ -2547,6 +2547,56 @@ The four invariants are the Runtime's entire correctness contract, yet the docum
 
 ---
 
+## Decision 056 — Runtime Command Interface
+
+**Status:** Accepted
+**Date:** 2026-07-13
+**Related Sections:** `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Runtime Command Interface); `010_ENGINE_RULES.md` Section 13 (save/restore); `012_ENGINE_RUNTIME.md` Sections 2, 5 (session, mutation); Decision 051 (Progression Surfacing, Diegetic System); Decision 053 (Campaign Restart and World-Line Forking)
+
+### Context
+
+Gameplay has been driven entirely by natural-language prompts. Resuming a campaign meant sending a paragraph ("Resume Chronicle Engine gameplay for `<path>`…"); saving and closing meant another. This works but is verbose, easy to get subtly wrong (a save prompt that omits the read-back clause invites a partial checkpoint), and gives the player no compact, memorable vocabulary for the operations they perform every session.
+
+Separately, Reikon introduced a diegetic `/system` command — an in-fiction, world-authored System interface (Decision 051). That established slash-prefixed commands in play, but only as world content. There was no engine-general notion of a control command, and therefore no rule for what happens when an out-of-character control verb and an in-fiction verb share the `/` prefix.
+
+### Decision
+
+Register a **Runtime Command Interface**: a small set of out-of-character control verbs (`/ChronicleEngine`, `/save`, `/continue`, `/new`, `/end`, `/restart`, `/branch`, `/load`, `/worlds`, `/campaigns`, `/saves`, `/export`, `/recap`, `/status`, `/validate`, `/help`, `/debug`) that the Runtime recognizes at any point in a session.
+
+1. **Thin dispatchers, not a new mechanic.** Each runtime command dispatches onto a procedure the Gameplay Runtime Profile already defines — `/save` onto the Save Algorithm, `/continue` and `/load` onto Restoration (Rules Section 13.4), `/new` and `/branch` onto campaign initialization and Fork (Decision 053), `/restart` onto Redo (Decision 053), `/status` onto Progression Surfacing (Decision 051). A command names which procedure to run and never waives that procedure's obligations (promotion barrier, validation gate, read-back, readiness gate, confirmation-before-mutation).
+
+2. **Operational, not normative.** The interface is substrate-technique and lives in the Runtime Profile under `docs/`, not in `012_ENGINE_RUNTIME.md`. It adds no Runtime obligation and no engine mechanic. A different substrate's profile may expose the same verbs through its own surface.
+
+3. **Reserved namespace and precedence.** A leading-slash token is matched against the runtime command table first, then against the active world's diegetic command table, then treated as unknown (offer `/help`). Runtime command names are reserved; a world must not redefine them as in-fiction verbs. This keeps control verbs reliable across worlds while leaving each world free to own its diegetic vocabulary (Decision 051).
+
+4. **Bootstrap command in `README.md`.** `/ChronicleEngine` (aliases `/start`, `/game`, `/rpg`, `/chronicle`, `/chronicles`, all identical) is the cold-start entry point: it boots the engine and begins or resumes play. Because a Runtime at the start of a conversation may see only the root `README.md`, the bootstrap command — unlike the rest of the table, which is defined in the Runtime Profile the command loads — must be reachable from `README.md` alone. Its definition is therefore duplicated in `README.md`, which enumerates the boot file set (profile, Engine Rules Sections 4/6/13, Runtime and Data Model documents, validator, and the selected campaign's startup, ledgers, world records, and latest checkpoint). The two definitions must stay in agreement.
+
+5. **Command discovery at session start.** The Runtime presents the available commands once at every session start — after `/ChronicleEngine`, at First-Session Boot, and on restoration (new campaign, resume, fork, or restart) — as a compact, spoiler-safe, out-of-character menu at the Readiness Gate. The menu lists the reserved runtime commands and, when the active campaign's world declares diegetic commands, those too (a Reikon campaign shows `/system`; a world with none shows only the runtime group). A player is never left to guess the interface: the commands are surfaced before the first scene, and `/help` re-displays them on demand.
+
+### Rationale
+
+- The operations already exist and are load-bearing; naming them gives players a stable, low-error way to invoke them without re-sending the full procedural prompt each time.
+- Modelling commands as dispatchers, not new behaviour, keeps the correctness contract intact: `/save` is exactly the Save Algorithm, so it inherits every guarantee that prevents a partial or falsely-reported checkpoint.
+- A reserved namespace with explicit precedence is the minimum needed to prevent collision between control verbs and diegetic verbs now that both use `/`.
+
+### Consequences
+
+- `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` gains the Runtime Command Interface section, including a Bootstrap Command subsection for `/ChronicleEngine`, and a Session Export section for `/export` (Document Version 1.21), and lists the interface among the profile's owned concerns.
+- `/export` produces a **non-canonical** derived artifact (a formatted, verbatim session transcript under `campaigns/<campaign>/exports/`, classifying player, narrator, out-of-character, system, and roll messages). Like the player briefing and the Progression Surfacing view, it establishes no canon, mints no identifiers, and runs neither the Promotion Barrier nor the Repository Validation Gate; it is distinct from `/save`, which checkpoints canonical state.
+- `README.md` gains a "Play Chronicle Engine — the `/ChronicleEngine` command" section defining the bootstrap command and the boot file set, so a cold-start Runtime that sees only the README can load the engine.
+- `020_ENGINE_GLOSSARY.md` gains **Runtime Command** and **Diegetic Command**.
+- `docs/GAMEPLAY_START_GUIDE.md` presents the commands as the compact form of its existing start/resume/close prompts; the prose prompts remain valid and authoritative.
+- World content (e.g. Reikon's README) clarifies that `/system` is a diegetic command, distinct from the reserved runtime commands.
+- No change to `012_ENGINE_RUNTIME.md`, the Engine Rules, or the Data Model: the interface is convenience over existing procedures.
+
+### Alternatives Considered
+
+- **Keep only natural-language prompts.** Rejected: verbose and error-prone for the operations performed every session; a mistyped save prompt can drop a required guarantee.
+- **Define the command interface normatively in `012`.** Rejected: commands are substrate-facing technique; `012` is substrate-independent and would be forced to describe a player-facing surface it deliberately abstracts away.
+- **Let each world define its own control commands.** Rejected: control verbs must mean the same thing everywhere; per-world control commands would make `/save` unreliable and reintroduce the collision this decision resolves.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

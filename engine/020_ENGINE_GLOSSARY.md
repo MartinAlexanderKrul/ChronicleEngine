@@ -256,6 +256,14 @@ It belongs to the repository's design-retrospective layer rather than the engine
 
 ---
 
+## Diegetic Command
+
+A slash-prefixed, in-fiction command defined by a world as part of its content — for example Reikon's `/system`, which opens a character's in-world System interface. A diegetic command is world-authoring content, varies by world, and is governed by the Supernatural Phenomena Contract (Rules Section 11) when it is diegetically real.
+
+Distinct from a [Runtime Command](#runtime-command), which is out-of-character control of the session and is engine-general. When a slash token could be either, the runtime command table is matched first; runtime command names are reserved and a world must not redefine them. Defined in the Runtime Command Interface (`docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`) and Decision 056.
+
+---
+
 ## Diegetic System
 
 A world-established, in-world-real leveling or experience system — for example a litRPG "System" — declared as a supernatural phenomenon under the Supernatural Phenomena Contract (Rules Section 11).
@@ -900,6 +908,14 @@ The Runtime is substrate-independent — it may be realized by a large language 
 
 ---
 
+## Runtime Command
+
+An out-of-character control verb the player issues to the Runtime during a session — for example `/save`, `/continue`, `/new`, `/end` — to save, resume, start, list, or close play.
+
+A runtime command is engine-general (it means the same thing in every world), is recognized at any point including mid-scene, and is a thin dispatcher onto a procedure the Gameplay Runtime Profile already defines; it introduces no new persistence, resolution, or canon mechanic and never waives the dispatched procedure's obligations. Runtime command names are reserved and take precedence over a world's [Diegetic Command](#diegetic-command) of the same name. The one runtime command also documented in the root `README.md` is the bootstrap `/ChronicleEngine`, which must be reachable before the profile is loaded. Defined in the Runtime Command Interface (`docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`) and Decision 056.
+
+---
+
 ## Runtime Profile
 
 Operational guidance for executing the Runtime on a specific substrate, held under `docs/` rather than in the engine specification.
@@ -949,6 +965,14 @@ It includes self-conception such as fears, ambitions, ideals, beliefs, and perce
 A Runtime component: a bounded unit of execution with a start and a close.
 
 A Session is transient and holds no durable canon; it is the boundary at which pending canon is committed to Persistence through Canon Promotion. Session close and save checkpoints are promotion barriers. Defined in `012_ENGINE_RUNTIME.md`, Section 2.
+
+---
+
+## Session Export
+
+A formatted, non-canonical transcript of a play session, written to `campaigns/<campaign>/exports/` by the `/export` runtime command.
+
+A session export renders the conversation verbatim, classifying each message by register — Player, Narrator, Player · OOC, Narrator · OOC, System, and Roll — so a reader can tell who spoke and in what capacity. It is a derived artifact like the player briefing: it establishes no canon, mints no identifiers, and does not run the Promotion Barrier or Repository Validation Gate. It is the readable companion to a [Save Checkpoint](#save-checkpoint), which preserves canonical state rather than the conversation. Defined in the Session Export section of `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` and Decision 056.
 
 ---
 

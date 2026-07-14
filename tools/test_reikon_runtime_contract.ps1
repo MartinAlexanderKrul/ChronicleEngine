@@ -55,17 +55,44 @@ Assert-Contains $startup 'THE LEDGER.*not an allowed title' '/system startup gat
 Assert-Contains $startup 'Never send a partial status panel' '/system startup gate does not block incomplete output.'
 Assert-Contains $lore 'title of this lore file.*is not a `/system` window title' 'Reikon lore still permits its file title to steer /system rendering.'
 
-Assert-Contains $character '^  xp: 55\s' 'Recovered XP is missing.'
-Assert-Contains $character '^  current_mana: 5$' 'Recovered Mana is missing.'
-Assert-Contains $character '^  current_health: 60$' 'Recovered Health is missing.'
-Assert-Contains $character '^  health_recovery_mode: paused$' 'Health recovery mode is missing.'
-Assert-Contains $character '^  health_recovery_care: untreated$' 'Health recovery care is missing.'
-Assert-Contains $character '^  health_recovery_injury_severity: moderate$' 'Health recovery severity is missing.'
-Assert-Contains $character '^  health_recovery_remainder_units: 0$' 'Health recovery carry is missing.'
-Assert-Contains $character 'name: Swordsmanship' 'Sword training is missing from capabilities.'
-Assert-Contains $character 'mana_recovery_remainder_seconds: 0' 'Mana recovery carry is missing.'
-Assert-Contains $inventory 'bloodied after pack-leader combat' 'Sword state is missing.'
-Assert-Contains $current 'pack leader (is|lies) dead' 'Recovered encounter state is missing.'
+# --- Repair regression: assert against the IMMUTABLE checkpoint, not live canon ---
+#
+# Decisions 065 and 066 repaired Daedalus's state and captured the result in
+# Checkpoint 0004. These assertions verify that repair still exists.
+#
+# They deliberately read the checkpoint, which is immutable (Rules Section 13.2),
+# rather than the live ledgers, which are supposed to change every session. An
+# earlier revision pinned these values against live canon; that made the test a
+# freeze on the campaign — Session 2 legitimately moved mana 5 -> 7 and health
+# recovery paused/untreated -> active/treated, and the gate failed for it. A
+# conformance test must not forbid play. The repaired values are permanent facts
+# about the checkpoint; they were never permanent facts about the character.
+$cp = 'campaigns/reikon_awakening_001/saves/900_CHECKPOINT_0004'
+$cpCharacter = "$cp/100_CHARACTER_SHEET.md"
+$cpInventory = "$cp/120_INVENTORY_AND_OWNERSHIP.md"
+$cpCurrent = "$cp/180_CURRENT_STATE.md"
+
+Assert-Contains $cpCharacter '^  xp: 55\s' 'Repaired XP missing from Checkpoint 0004.'
+Assert-Contains $cpCharacter '^  current_mana: 5$' 'Repaired Mana missing from Checkpoint 0004.'
+Assert-Contains $cpCharacter '^  current_health: 60$' 'Repaired Health missing from Checkpoint 0004.'
+Assert-Contains $cpCharacter '^  health_recovery_mode: paused$' 'Health recovery mode missing from Checkpoint 0004.'
+Assert-Contains $cpCharacter '^  health_recovery_care: untreated$' 'Health recovery care missing from Checkpoint 0004.'
+Assert-Contains $cpCharacter '^  health_recovery_injury_severity: moderate$' 'Health recovery severity missing from Checkpoint 0004.'
+Assert-Contains $cpCharacter '^  health_recovery_remainder_units: 0$' 'Health recovery carry missing from Checkpoint 0004.'
+Assert-Contains $cpCharacter 'mana_recovery_remainder_seconds: 0' 'Mana recovery carry missing from Checkpoint 0004.'
+Assert-Contains $cpInventory 'bloodied after pack-leader combat' 'Sword state missing from Checkpoint 0004.'
+Assert-Contains $cpCurrent 'pack leader (is|lies) dead' 'Encounter state missing from Checkpoint 0004.'
+
+# --- Live-canon invariants: true of the campaign at any point in its life ---
+#
+# These are structural, not snapshot values. Swordsmanship was promoted as
+# capability by Decision 065 (EVT-000029) and cannot be un-learned by play; the
+# recovery fields must exist on the sheet whatever their current values are.
+Assert-Contains $character 'name: Swordsmanship' 'Sword training lost from live capabilities.'
+Assert-Contains $character '^  health_recovery_mode: \w+$' 'Live sheet lost the health_recovery_mode field.'
+Assert-Contains $character '^  health_recovery_care: \w+$' 'Live sheet lost the health_recovery_care field.'
+Assert-Contains $character '^  health_recovery_remainder_units: \d+$' 'Live sheet lost the health recovery carry field.'
+Assert-Contains $character '^  mana_recovery_remainder_seconds: \d+$' 'Live sheet lost the mana recovery carry field.'
 
 function Get-HealthRecovery {
     param(
@@ -91,16 +118,33 @@ if ([math]::Ceiling(0.25 * 101) -ne 26) { throw 'Healing potion rounding drifted
 $missingHealth = 100 - 60
 if ([math]::Max(0, [math]::Min(105, 105 - $missingHealth)) -ne 65) { throw 'Maximum-Health migration did not preserve missing HP.' }
 
-$liveLedgers = @(
+# --- Checkpoint completeness ---
+#
+# A checkpoint must carry the full ledger set to be restorable (Rules Section
+# 13.2; the Reikon Checkpoint 0001 failure class, Decision 061).
+#
+# This replaces an earlier live-versus-Checkpoint-0004 byte-identity check. That
+# check verified read-back at the moment 0004 was written — a valid one-time
+# verification that was left in place permanently, where it asserted that live
+# canon must equal a fixed checkpoint forever. As a standing gate it meant the
+# campaign could never be played again, and Session 2 duly broke it. Read-back
+# belongs at the save barrier (Runtime Section 5.4), which runs when a checkpoint
+# is created; it cannot be a static test.
+$requiredLedgers = @(
     '100_CHARACTER_SHEET.md', '110_WORLD_LEDGER.md', '120_INVENTORY_AND_OWNERSHIP.md',
     '130_NPCS_AND_FACTIONS.md', '140_OBJECTIVES.md', '160_CAMPAIGN_CHRONICLE.md',
     '170_CHANGELOG.md', '180_CURRENT_STATE.md'
 )
-foreach ($ledger in $liveLedgers) {
-    $live = Join-Path $root "campaigns/reikon_awakening_001/$ledger"
-    $saved = Join-Path $root "campaigns/reikon_awakening_001/saves/900_CHECKPOINT_0004/$ledger"
-    if ((Get-FileHash -Algorithm SHA256 -LiteralPath $live).Hash -ne (Get-FileHash -Algorithm SHA256 -LiteralPath $saved).Hash) {
-        throw "Checkpoint 0004 differs from live ledger: $ledger"
+foreach ($checkpoint in @('900_CHECKPOINT_0004', '900_CHECKPOINT_0005')) {
+    foreach ($ledger in $requiredLedgers) {
+        $saved = Join-Path $root "campaigns/reikon_awakening_001/saves/$checkpoint/$ledger"
+        if (-not (Test-Path -LiteralPath $saved)) {
+            throw "$checkpoint is missing a required ledger: $ledger"
+        }
+    }
+    $manifest = Join-Path $root "campaigns/reikon_awakening_001/saves/$checkpoint/900_SAVE_MANIFEST.md"
+    if (-not (Test-Path -LiteralPath $manifest)) {
+        throw "$checkpoint is missing its save manifest."
     }
 }
 

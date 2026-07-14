@@ -12,6 +12,17 @@
 
 Work completed toward the 0.2.0 release. Per Decision 048, the Engine Version advances to 0.2.0 only after Capability Validation, Prototype Alpha, and the Engine Postmortem are complete and any required refinements are incorporated. The current released Engine Version remains 0.1.5.
 
+## 2026-07-14 — Reikon Awakening: Session 1 promoted to live canon (narrative)
+
+**Context:** Continuation of finding #4. The played Session 1 canon existed only in the immutable snapshot `saves/900_CHECKPOINT_001/`, which was also internally malformed: the player-character object `ENT-000051` and `ENT-000052/053` were never defined (only referenced); inventory/event objects pointed `canonical_record` at world/other-campaign records (`REC-000025` = Prototype Beta; `REC-000030/031` = Reikon world); `REC-000035-037` were unused. A plain copy would have failed validation and corrupted live canon.
+**Decision (owner):** Promote in **narrative** form, matching this campaign's authored style (its live ledgers use prose, not object blocks), rather than reconstructing the object model.
+**Change (campaign `reikon_awakening_001`):** Advanced the live ledgers to post-Session-1 state — replaced `100_CHARACTER_DAEDALUS.md` with the played sheet (Level 1, XP 36/100, inventory incl. Evacuation Stone, pack-leader standoff), added `180_CURRENT_STATE.md`, and updated `050_CAMPAIGN_LOG.md` with the Session-1 expedition log and checkpoint status. Fixed the stale "0 XP / 500 XP to D-Rank" line and aligned the campaign's rules-in-effect with Decision 057. The malformed snapshot object blocks were **not** imported; the affected ids remain logged/retired under never-reuse.
+**Registry:** Updated the Remediation Note in `system/ID_REGISTRY.md` to record the promotion and the malformed-snapshot findings. Repository validation PASSES (48 files).
+**Note:** The immutable snapshot `saves/900_CHECKPOINT_001/` is unchanged (immutable); its object blocks remain malformed but are excluded from live validation.
+**Engine Version:** Unchanged; remains 0.1.5
+
+---
+
 ## 2026-07-14 — Registry Repair: Reikon Awakening Checkpoint 001 allocation-log coverage
 
 **Context:** First Reikon session analysis, finding #4. The pushed Checkpoint 001 failed repository validation with 17 "allocation log does not cover" errors (ENT-000051–060, REC-000035–037, EVT-000025–028).

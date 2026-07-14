@@ -1,9 +1,10 @@
-# Daedalus — Awakened Hunter (Reikon)
+# Daedalus — Awakened Hunter (Reikon) — Session 1 Update
 
 **Campaign:** Reikon Awakening (Session 001)  
-**Status:** Newly Licensed E-Rank  
+**Status:** In Expedition (Solo, Warehouse 7 E-Rift)  
 **Awakening Date:** Year 31 AR (recent)  
-**Character Created:** 2026-07-13
+**Character Created:** 2026-07-13  
+**Last Updated:** 2026-07-13 (Session 1 mid-expedition)
 
 ---
 
@@ -16,39 +17,34 @@
 | **Background** | Scholar/student — was pursuing academic study before Awakening |
 | **Pre-Awakening Occupation** | Research assistant at the Aurology Institute (studying Rifts) |
 | **Personality** | Ambitious Prodigy — young, confident, eager to prove yourself through dangerous work |
-| **Current Status** | Newly Licensed E-Rank Hunter, Hunters' Association |
+| **Current Status** | E-Rank Hunter, Hunters' Association, Solo Expedition (Warehouse 7) |
+| **Combat Experience** | 2 successful d100 combats (5 kills: 2 Broodlings, 3 Swarmers) |
 
 ---
 
-## System Interface (Use `/system` to view)
+## System Interface — LIVE (Session 1 Mid-Expedition)
 
-Your diegetic System interface tracks your progression. Check it anytime with `/system` to see:
-- Official Rank (immutable), Character Level (grows infinitely), XP progress
-- Health and Mana status
-- All Stats (Power, Endurance, Speed, Mana Affinity, Perception) — increase as you level
-- Skills & Abilities with levels
-- Inventory and equipment
-- Active Quests
+Your diegetic System interface now tracks your real progression. Current state (checked via `/system`):
 
-**Initial System State (when you check `/system`):**
+**System State — Live at Checkpoint 001:**
 - Official Rank: E-Rank (Newly Licensed, immutable from mana pool)
 - Character Level: 1 (starts here, grows infinitely)
-- XP Progress: 0 / 100 XP to Level 2
-- Health: 100/100
-- Mana: 13/13 (full)
+- XP Progress: **36 / 100 XP to Level 2** ✓ (36% progress)
+- Health: 100/100 (full, untouched)
+- Mana: 13/13 (full, recently recovered)
 - Stats: Power 8, Endurance 9, Speed 10, Mana Affinity 13, Perception 14
 - Skills: Fireball (Lv 1), Flame Shield (Lv 1), Combustion Touch (Lv 1), Reinforced Body (Passive), Endurance Surge (Lv 1)
-- Inventory: License (E-Rank), Sword, Repair Kit, 3x Potions, Rope, 50 cores
+- Inventory: License (E-Rank), Sword, Repair Kit, 3x Potions, Rope, 50 cores, Evacuation Stone (1 use)
 
 ---
 
-## Official Rank vs Character Level
+## Official Rank vs Character Level — UNCHANGED
 
 | Field | Value |
 |-------|-------|
 | **Official Rank** | E-Rank (immutable, from mana pool) |
 | **Character Level** | 1 (starts here, grows infinitely through XP) |
-| **XP Progress** | 0 / 100 XP to Level 2 |
+| **XP Progress** | 36 / 100 XP to Level 2 |
 
 Your Official Rank (E-Rank) never changes — it's what your Association license says. Your Character Level starts at 1 and grows infinitely as you gain XP from defeating monsters and clearing Rifts. At high levels, you can become far more powerful than your E-Rank suggests.
 
@@ -56,13 +52,13 @@ Your Official Rank (E-Rank) never changes — it's what your Association license
 
 ## Character Stats & Breakdown
 
-| Stat | Score | Effect |
-|------|-------|--------|
-| **Power** | 8/20 | Fire spells deal moderate damage. Sword swings inflict normal physical damage. Increases with levels. |
-| **Endurance** | 9/20 | Medium health pool (~100 HP). Resistant to fire, normal to other elements. Increases with levels. |
-| **Speed** | 10/20 | Average movement. Not fastest, not slowest. Can dodge with practice. Increases with levels. |
-| **Mana Affinity** | 13/20 | Strong mana pool for an E-Rank. Fire spells are your strength. Increases with levels. |
-| **Perception** | 14/20 | Keen intellect and observation. You notice details others miss. Scholar background shows. Increases with levels. |
+| Stat | Score | Effect | Notes |
+|------|-------|--------|-------|
+| **Power** | 8/20 | Fire spells deal moderate damage. Sword swings inflict normal physical damage. Increases with levels. | All fire spells to date have killed targets outright; damage adequate. |
+| **Endurance** | 9/20 | Medium health pool (~100 HP). Resistant to fire, normal to other elements. Increases with levels. | Health untouched in two combats; tactical positioning + mana usage preventing melee damage. |
+| **Speed** | 10/20 | Average movement. Not fastest, not slowest. Can dodge with practice. Increases with levels. | Not yet tested in high-speed scenarios; adequate for exploration and spell casting. |
+| **Mana Affinity** | 13/20 | Strong mana pool for an E-Rank. Fire spells are your strength. Increases with levels. | Mana recovery predictable (1 per 10 sec); spell casting reliable; high Perception allows effective leading/prediction casting. |
+| **Perception** | 14/20 | Keen intellect and observation. You notice details others miss. Scholar background shows. Increases with levels. | Noticed Rift glow correlation with creature movement; environmental details; creature behavior patterns; tactical opportunities. |
 
 Each level grants **Stat Points** to allocate to these five core stats.
 
@@ -72,84 +68,125 @@ Each level grants **Stat Points** to allocate to these five core stats.
 
 ### Primary: Mana Control — Fire
 
-**Initial Abilities:**
-- **Fireball** (12 mana, 2-second cast) — Hurl a sphere of flame at a target. Area damage (20-foot radius). Ignites flammable materials. Moderate burn effect on monsters.
-- **Flame Shield** (8 mana/second to maintain) — Create a barrier of flame around yourself. Reduces incoming damage by 30%. Reflects some heat-based attacks back at enemies.
-- **Combustion Touch** (6 mana per touch) — Touch a target and ignite it internally. Works on objects, weak creatures, or as a finishing move. Requires physical contact.
+**Current Abilities:**
+- **Fireball** (Lv 1) — 12 mana, 2-second cast
+  - Hurl a sphere of flame at a target. Area damage (20-foot radius). Ignites flammable materials. Moderate burn effect on monsters.
+  - **Combat Record:** 2 casts, 2 successful (d100: 43, d100: 61), 5 creatures killed (2 Broodlings, 3 Swarmers)
+  
+- **Flame Shield** (Lv 1) — 8 mana/second to maintain
+  - Create a barrier of flame around yourself. Reduces incoming damage by 30%. Reflects some heat-based attacks back at enemies.
+  - **Combat Record:** 0 casts (not needed yet; tactical positioning prevented melee contact)
+  
+- **Combustion Touch** (Lv 1) — 6 mana per touch
+  - Touch a target and ignite it internally. Works on objects, weak creatures, or as a finishing move. Requires physical contact.
+  - **Combat Record:** 0 casts (ranged spells proven sufficient)
 
 **Scaling:** Your Power stat affects damage. Your Mana Affinity affects spell efficiency (lower mana cost as you grow).
 
 ### Secondary: Durability Enhancement
 
-**Initial Abilities:**
+**Current Abilities:**
 - **Reinforced Body** (Passive) — Your body is naturally toughened. All physical damage reduced by 20% automatically.
-- **Endurance Surge** (10 mana, 60-second duration) — Activate to boost all resistances by 30% temporarily. Useful for tanking big hits.
+  - **Status:** Always active. Not yet tested in melee (tactical positioning prevents damage).
+  
+- **Endurance Surge** (Lv 1) — 10 mana, 60-second duration
+  - Activate to boost all resistances by 30% temporarily. Useful for tanking big hits.
+  - **Combat Record:** 0 casts (not needed yet; no significant pressure received)
 
 **Scaling:** Your Endurance stat affects duration and potency.
 
 ---
 
-## Starting Situation
+## Combat Experience Log — Session 1
 
-**Time:** Morning, Year 31 AR (present day)  
-**Location:** Verholt, Hunters' Association headquarters (Central District)
+**Combat 1: Broodling Pair (Stationary)**
+- Encounter: 2 Broodlings perched on storage crate stack, ~15 meters ahead, stationary
+- Player Action: Cast Fireball
+- d100 Roll: 43 — success
+- Modifier Applied: +2 (high Mana Affinity, stationary targets, easy prediction)
+- Outcome: Both creatures killed outright; crate stack catches fire
+- XP Earned: 12
+- Resources: 12 mana spent (13 → 1), 0 health damage
 
-**Recent Events:**
-- You Awakened 2 weeks ago while researching a Rift at the Institute
-- Fire and Durability manifested during the incident (the research Rift was unstable; you shielded yourself)
-- Institute director recommended you to the Association for licensing
-- You passed the E-Rift trial yesterday (solo, supervised)
-- You are now licensed E-Rank and officially available for assignment
+**Combat 2: Swarmer Pack (Charging)**
+- Encounter: 3 Swarmers (coordinated, mobile), charging from cover
+- Player Action: Cast Fireball with leading arc prediction
+- d100 Roll: 61 — success
+- Modifier Applied: +1 (high Mana Affinity, good tactical prediction)
+- Outcome: All three creatures killed in blast radius; warehouse shelf collapses from force
+- XP Earned: 24
+- Resources: 12 mana spent (13 → 1), 0 health damage
 
-**Your Status:**
-- Newly licensed, unproven in real expeditions
-- Still learning to control your Abilities under pressure
-- Eager and ambitious, but nervous about your first real mission
-- Institute colleagues respect you but wonder if you're ready
-- Association captains see you as a potential talent, but you have no reputation yet
+**Tactical Observations:**
+- Fire magic extremely effective (100% kill rate so far)
+- Tactical mana economy (rested 120 sec for full recovery between combats)
+- Spell timing and positioning critical (leading arc prediction worked)
+- No melee contact required; ranged strategy working well
 
 ---
 
-## Backstory & Motivation
+## Current Situation & Immediate Context
 
-**Why were you a scholar?**
-You were fascinated by the System and Rifts from a young age. The mystery of how they work, where they come from, what the System architect intended — these questions drove you. You enrolled in the Aurology Institute as a research assistant, pursuing formal study of Rift mechanics and the Awakening phenomenon.
+**Location:** Warehouse 7 E-Rift interior, ~40-50 meters from large pack leader creature
 
-**The Awakening:**
-During a field study of an unstable E-Rift, something went wrong. The Rift's core pressure spiked. Mana flooded the area. In that moment, you Awakened — Fire magic and Durability manifested simultaneously, probably as a survival response. You survived; the research team was evacuated. The experience was disorienting but exhilarating.
+**Current Status:**
+- Health: 100/100 (untouched, excellent condition)
+- Mana: 13/13 (full, recently recovered)
+- XP: 36/100 (36% toward Level 2)
+- Inventory: Fully stocked; no consumables used yet
+- Mental State: Confident, focused, observant
 
-**Your Ambition:**
-You're young, capable, and now Awakened. You believe you can become stronger faster than ordinary hunters. You see Rift expeditions as both a path to power and a chance to gather real data about Rift behavior — merging your academic curiosity with hunter work. You're confident, maybe overconfident. You want to prove that a scholar can be a great hunter.
+**Immediate Pressures:**
+1. **Pack leader creature ahead** (~40 meters, large, methodical, stalking)
+2. **Core location unresolved** (must reach deep chamber)
+3. **Remaining monster population** (estimated 10-15 undefeated)
+4. **Rift stability** (6 days remaining before collapse, no immediate time pressure)
+
+**Tactical Assets:**
+- Full mana (13/13)
+- Full health (100/100)
+- 3 unused mana potions (20 mana each)
+- Evacuation stone (1-use emergency extraction)
+- High Perception (tactical advantage: observing environment and creature behavior)
+- Proven fire spell effectiveness
+
+---
+
+## Training Routine Commitment (Personal Discipline)
+
+**Daily Regimen (Starting Day 1):**
+1. 10km run (cardiovascular, mental clarity)
+2. Sword technique drills (30 min, foundational skills)
+3. 100 pushups in sets (physical conditioning, self-knowledge)
+4. One full round of all spells (Combustion Touch, Flame Shield, Fireball) — mana efficiency and control practice
+
+**Status:** Day 1 completed (morning before expedition). Recommitting daily until mastery achieved.
+**Purpose:** Become irreducibly strong; prove readiness; build sustainable capability independent of magic.
 
 ---
 
 ## Relationships & Contacts
 
-| Contact | Relationship | Notes |
-|---------|--------------|-------|
-| **Dr. Kael Venn** | Aurology Institute Director | Recommended you to the Association. Believes in your potential but worries you're rushing into danger. |
-| **Captain Marissa Thorne** | Association Captain (Local) | Your licensing officer. Neutral disposition. Assigns E-Rank expeditions fairly but no favoritism. |
-| **Lysander** | Fellow Scholar at Institute | Your research partner before Awakening. Jealous of your power, respects your intellect. |
+| Contact | Relationship | Status | Last Interaction |
+|---------|--------------|--------|------------------|
+| **Dr. Kael Venn** | Aurology Institute Director | Supportive (recommended to Association) | Pre-expedition (didn't visit before expedition) |
+| **Captain Marissa Thorne** | Association Captain (Local) | Professional, neutral | Morning briefing; approved solo expedition |
+| **Lysander** | Fellow Scholar at Institute | Somewhat jealous, respectful of intellect | Pre-expedition (didn't visit before expedition) |
 
 ---
 
-## First Assignment
+## First Assignment Status
 
 **[HUNTERS' ASSOCIATION DISPATCH]**
 
-**Assignment:** Clear E-Rift (solo or supervised)  
+**Assignment:** Clear E-Rift (solo, chosen by Daedalus)  
 **Location:** Verholt Industrial District, Warehouse 7  
-**Rift Grade:** E-Rank (estimated)  
-**Stability Window:** 6 days remaining  
-**Monsters Inside:** Broodlings (weak, numerous) and Swarmers (coordinated attacks)  
-**Reward:** 50 cores + Association bonus  
-**Briefing:** Standard industrial warehouse Rift. Easy entry, straightforward path to core. Expected time: 4-6 hours inside. Come prepared.
-
-**Association Scout Report:**
-- Rift emerged 1 day ago in warehouse basement
-- No major hazards detected (standard layout expected)
-- Roughly 15-20 weak monsters estimated inside
-- Core location: suspected deep chamber past main storage area
+**Rift Grade:** E-Rank (confirmed by monster composition)  
+**Stability Window:** 6 days remaining ✓  
+**Expedition Status:** IN PROGRESS (mid-expedition checkpoint)  
+**Kills:** 5 / estimated 15-20 total  
+**XP Earned:** 36 / 100 (36% toward Level 2)  
+**Reward Status:** Conditional (completion required)  
 
 ---
 
@@ -158,14 +195,15 @@ You're young, capable, and now Awakened. You believe you can become stronger fas
 **Action Resolution:**
 - All actions resolve via **intent + circumstance + d100** (Rules Section 4)
 - Your Abilities and Stats function as **Modifiers** (not overrides)
-- High mana affinity makes fire spells easier to cast (better odds), not guaranteed hits
+- High Mana Affinity makes fire spells easier to cast (better odds), confirmed in practice
 - The impossible remains impossible regardless of Rank
 
 **Growth Model:**
-- **Growth comes first, Ascension surfaces it** (Decisions 051, 057); XP is tracked and surfaced inline in Reikon (`205_THE_LEDGER.md`)
+- **Growth comes first, Ascension surfaces it** (Decision 051)
 - You gain XP by facing real challenge: clearing Rifts, defeating tough monsters, overcoming obstacles
-- When XP fills to 100, you reach **Level 2** — the System surfaces the Ascension. (Level thresholds rise per level. Leveling raises your **Character Level**, never your Official Rank — your E-Rank license is unchanged.)
+- When XP fills to 100, you Level Up (Ascension occurs) — the System announces the level-up
 - Leveling unlocks new Ability tiers, Skill Points, and new Class options
+- **Progress:** 36/100 XP; level-up imminent after current expedition completes
 
 **Stat Progression:**
 - Each Ascension grants you **Skill Points** to allocate to your 5 core Stats
@@ -174,9 +212,15 @@ You're young, capable, and now Awakened. You believe you can become stronger fas
 
 ---
 
-## Ready for First Expedition
+## Next Session Notes
 
-You are newly licensed, confident, and eager. The Warehouse 7 Rift awaits. Your System interface shows everything. The Association has given you the briefing. 
+- Expedition status: mid-game, pack leader encounter imminent
+- Tactical advantage: full mana, full health, excellent positioning
+- Risk factor: unknown pack leader strength; estimated 10-15 remaining monsters
+- Core location: deep chamber (must navigate there after pack leader encounter)
+- Victory condition: reach core, clear it, Rift collapses, exit
 
-**What's your move?**
+---
 
+**Character Status: READY**  
+**Next Action:** Player decision on pack leader engagement

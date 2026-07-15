@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.32
+**Document Version:** 1.33
 **Status:** Active Gameplay Workflow — Fetched Reference Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -585,11 +585,17 @@ If validation fails, report the operation as partial, name the validator finding
 
 A checkpoint is written by attempting the actual repository operation and reacting to the actual result — never refused on abstract uncertainty. It requires Established Write Capability (see Session Persistence State) or a capability check.
 
-Any player request to save, checkpoint, or record progress — however phrased, and whenever in the session it arrives — enters the Save Algorithm below. The Runtime must not answer such a request with a verdict on whether saving is possible before it has reached the attempt step. It may summarize the canonical progress, but that summary accompanies the attempted write; it never substitutes for it. Producing a progress summary together with a claim that the write cannot be performed — without having attempted the write or a capability check — is the specific failure this section exists to prevent.
+Any player request to save, checkpoint, or record progress — however phrased, and whenever in the session it arrives — enters the Save Algorithm below. The Runtime also enters it automatically when the resident Context-Preservation Watch fires. The Runtime must not answer such a request or trigger with a verdict on whether saving is possible before it has reached the attempt step. It may summarize the canonical progress, but that summary accompanies the attempted write; it never substitutes for it. Producing a progress summary together with a claim that the write cannot be performed — without having attempted the write or a capability check — is the specific failure this section exists to prevent.
+
+## Automatic Context Preservation
+
+The Runtime maintains a session-local counter of resolved player exchanges since the last verified checkpoint. It checks the resident watch after every settled exchange. A host warning, 20%-remaining signal, need to discard prior context, twentieth exchange, or qualifying scene boundary invokes the Save Algorithm immediately with checkpoint type `automatic-context-preservation` and a generated label identifying the trigger. Do not ask the player for confirmation, advance fiction, or consume another player action first. On success, report the checkpoint compactly and reset the counter.
+
+If compaction occurred without a usable warning, stop before resolving the next gameplay instruction. Reload the latest checkpoint and canonical ledgers from Persistence; do not trust the compacted conversation summary as a save. Reconcile post-checkpoint facts only from an exact surviving transcript, export, or equally precise record. If exact recovery is impossible, report the last durable checkpoint and the unverified span instead of inventing continuity. A failed automatic checkpoint uses the same partial-checkpoint report as a failed manual save and suspends canonical play until persistence is repaired.
 
 ## Save Algorithm
 
-On a checkpoint request or session close, in this order:
+On a checkpoint request, session close, or Context-Preservation Barrier, in this order:
 
 1. **Promotion Barrier first (unchanged).** Run Canon Reconciliation at Promotion. If an unreconcilable contradiction exists, reject the mutation, record a Rejected Simulation, and write nothing. The barrier runs before any write, so contradictory canon never reaches the repository.
 2. **Ensure capability.** If write capability is Unestablished, run a capability check (the canary) now.

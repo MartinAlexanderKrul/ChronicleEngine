@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.15
+**Document Version:** 2.16
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -45,6 +45,8 @@ How the AI reaches the files depends on your setup:
 - **Indirect access** — a chat assistant connected to a synced folder, uploaded files, or a file connector. Read access does not guarantee write access, and a static upload can go stale. Confirm write capability before canonical play (below), keep the AI the sole writer during a session, and refresh its view of the files between sessions.
 
 The AI must always see the latest canonical state. After a session, review the changes with `git diff`, run repository validation, and commit — git is the durable version-history layer, not a competing authority. Avoid concurrent writers.
+
+During play, the resident profile enforces automatic context-preservation checkpoints. The AI saves before a reported or detected compaction and, when the host provides no context telemetry, no later than 20 resolved player exchanges since the prior checkpoint (or the first scene boundary after 12). The safeguard requires no player command. If a host compacts without warning, the AI must reload the latest durable checkpoint before continuing and must not treat the compacted summary as canonical storage.
 
 On Windows, run the formal validation gate from the repository root:
 

@@ -39,7 +39,7 @@ A world's diegetic commands are shown to the player only once a campaign in that
 |----------|-------|-------------|--------|-------------------|----------|
 | `campaigns/prototype_alpha/` | `worlds/verra/` | Ilse Varn | Closed — terminal | `900_CHECKPOINT_0000` | 2026-07-13 |
 | `campaigns/prototype_beta/` | `worlds/verra/` | Kael Travis | In progress | `900_CHECKPOINT_0001` | 2026-07-13 |
-| `campaigns/reikon_awakening_001/` | `worlds/reikon/` | Daedalus | In progress | `900_CHECKPOINT_0009` | 2026-07-15 |
+| `campaigns/reikon_awakening_001/` | `worlds/reikon/` | Daedalus | In progress | `900_CHECKPOINT_0011` | 2026-07-15 |
 
 Status vocabulary is the welcome page's: **not started**, **in progress**, **closed or terminal**. `Captured` is the latest checkpoint's `record_time`/`created` from its save manifest — the same timestamp `/continue` uses to resolve "most recently played" (Rules Section 13.3), never filesystem modification time.
 
@@ -49,7 +49,7 @@ These are the caveats a player needs **before** choosing, not campaign state. Ea
 
 - **`campaigns/prototype_alpha/`** — Closed: the campaign reached a terminal outcome and this instantiation will not continue (`180_CURRENT_STATE.md`). Its only checkpoint is the **pre-play baseline**; no session-close checkpoint was ever written, so the latest checkpoint does not reflect the campaign's ending. Continuing in Verra requires `/new` or a branch, not a restore. Its `090_CAMPAIGN_STARTUP.md` still declares `initialization_state: initialized-no-save`, which the ledgers contradict.
 - **`campaigns/prototype_beta/`** — Resumable from `900_CHECKPOINT_0001`. Its `090_CAMPAIGN_STARTUP.md` also still declares `initialization_state: initialized-no-save` against a written checkpoint; the ledgers govern.
-- **`campaigns/reikon_awakening_001/`** — Resumable from `900_CHECKPOINT_0009` after the Warehouse 7 basement clear, with Profile 0.6 recurrent System interventions active and the Rift core still unextracted. This campaign keeps a **save index** at `saves/README.md` recording each checkpoint's status and restorability; read it as part of restoration and honor it (Destructive-Command Guards). `900_CHECKPOINT_001` is quarantined and must not be restored. The campaign has **no baseline checkpoint**, so `/restart` is unavailable and must not be attempted.
+- **`campaigns/reikon_awakening_001/`** — Resumable from `900_CHECKPOINT_0011` after the Warehouse 7 basement clear, with Profile 0.6 recurrent System interventions active and the Rift core still unextracted. This campaign keeps a **save index** at `saves/README.md` recording each checkpoint's status and restorability; read it as part of restoration and honor it (Destructive-Command Guards). `900_CHECKPOINT_001` is quarantined and must not be restored. The campaign has **no baseline checkpoint**, so `/restart` is unavailable and must not be attempted.
 
 ---
 
@@ -65,3 +65,7 @@ Update this index in the **same change** that adds, forks, closes, or checkpoint
 - a campaign row's latest checkpoint names a directory absent from that campaign's `saves/`, and is not `none`.
 
 The gate is mechanical and deliberately narrow. It proves every world and campaign is **listed** and that each row **resolves** — it cannot know whether a row's status, protagonist, or timestamp is still true, and it does not look. Those remain the writer's obligation at the promotion barrier, and the campaign's own ledgers govern wherever this index disagrees.
+
+`tools/test_checkpoint_contract.ps1` closes the one part of that gap which is mechanically checkable: **a row's latest checkpoint must equal the "Latest restorable checkpoint" its campaign's `180_CURRENT_STATE.md` declares.** The two are independent statements of one fact, so drift between them is decidable without knowing which is right — and the test reports both. It also fails when a row points at a checkpoint recorded as quarantined.
+
+This was not hypothetical. Checkpoints 0010 and 0011 were both captured while this index still named 0009, in breach of the Maintenance rule above, and `validate_repository.ps1` passed each time because 0009 still existed. Existence was never the question; currency was.

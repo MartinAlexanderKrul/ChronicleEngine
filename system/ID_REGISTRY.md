@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000077 |
-| Record | `REC-` | Canonical Record | REC-000053 |
-| Event | `EVT-` | Event | EVT-000034 |
+| Entity | `ENT-` | Persistent Entity | ENT-000080 |
+| Record | `REC-` | Canonical Record | REC-000054 |
+| Event | `EVT-` | Event | EVT-000036 |
 | Relationship | `REL-` | Relationship | REL-000047 |
 
 ---
@@ -86,6 +86,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000034 | Event | Reikon Awakening owner ruling and completed Breaker engagement under Profile 0.5: finite life-burn anomaly, basement clear, Ascension, harvest, research, and failed direct core extraction |
 | REC-000052 | Record | Reikon Awakening `saves/900_CHECKPOINT_0008/900_SAVE_MANIFEST.md` — complete owner-approved shared-chat continuation after the finite life-burn anomaly and basement clear |
 | REC-000053 | Record | Reikon Awakening `saves/900_CHECKPOINT_0009/900_SAVE_MANIFEST.md` — Profile 0.6 recurrent-intervention and succession migration; no fictional time elapsed |
+| ENT-000078 – ENT-000080 | Entity | Reikon Awakening `EVT-000035` omission repair: Kalens's address slip (078), the Institute–Vigil tension over deep-Rift study (079), and Marta's core-depth collapse correlation (080) — artifacts and knowledge established by the Institute consultation but not recorded when `EVT-000033` promoted it |
+| EVT-000035 | Event | Reikon Awakening: ruling repairing the `EVT-000033` under-promotion of the Institute consultation — the address slip, the same-day reporting condition on `REL-000045`, the Vigil disclosure, and Marta's hypothesis. No fiction added; no state recalculated |
+| EVT-000036 | Event | Reikon Awakening: ruling that campaign-local Dr. Kael Venn (`ENT-000061`) and world-layer Dr. Sable Vane (`ENT-000036`) are distinct figures despite near-identical names and adjacent Institute roles. No identity link recorded; no state changed |
+| REC-000054 | Record | Reikon Awakening `saves/900_CHECKPOINT_0010/900_SAVE_MANIFEST.md` — omission repair and identity disambiguation (`EVT-000035`, `EVT-000036`); no fictional time elapsed |
 
 ---
 

@@ -45,7 +45,7 @@ provenance:
   source: ruling
   event_time: "Year 31 AR"
   record_time: "2026-07-13T00:00:00Z"
-type: Knowledge/Discovery
+type: Discovery/Knowledge
 scope: world
 lifecycle: active
 aliases:
@@ -70,7 +70,7 @@ provenance:
   source: ruling
   event_time: "Year 31 AR"
   record_time: "2026-07-13T00:00:00Z"
-type: Knowledge/Discovery
+type: Discovery/Knowledge
 scope: regional
 lifecycle: active
 aliases:
@@ -95,7 +95,7 @@ provenance:
   source: ruling
   event_time: "Year 31 AR"
   record_time: "2026-07-13T00:00:00Z"
-type: Knowledge/Discovery
+type: Discovery/Knowledge
 scope: local
 lifecycle: active
 aliases:

@@ -128,7 +128,19 @@ Captures the Checkpoint 0009 fiction exactly, with the record defects that survi
 
 Marta's correlation is recorded as a hypothesis Daedalus was told, not an engine rule; the stability window is unchanged at approximately five days.
 
-Manifest `REC-000054`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers, hash-verified after capture. This is the checkpoint `/continue` restores.
+Manifest `REC-000054`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers, hash-verified after capture.
+
+Checkpoint 0011 supersedes it as the checkpoint `/continue` restores. Restoring 0010 reinstates the Institute director's superseded name, "Dr. Kael Venn", and `EVT-000036`'s unsupported claim that Daedalus had met him. No played fiction differs.
+
+## `900_CHECKPOINT_0011/` — current restore point
+
+Captures the Checkpoint 0010 fiction exactly with one name corrected. **No fictional time elapsed and no value was recalculated.** Daedalus stands in the cleared basement chamber at Level 2, 31/130 XP, 88/105 Health, and 7/14 Mana; the core remains energetically bonded, and Kalens's same-day obligation remains met and unhonoured.
+
+`EVT-000037` corrects `ENT-000061`, the Aurology Institute's director, from "Dr. Kael Venn" to **Dr. Ambrose Teague**, as a recording error under Runtime Section 8.1. The name was authored by the 2026-07-14 Data Model migration and never appeared in a played scene. **No former alias is recorded** — Section 5.1's rename procedure models an in-world rename, which never happened; the director has always been Teague and the record was wrong. The identifier is unchanged. The old string had collided with Dr. Sable Vane (`ENT-000036`) at the same institution and with Kael Travis (`ENT-000021`) in Prototype Beta.
+
+The ruling also corrects `EVT-000036`'s claim that Daedalus had met the director; he has met neither him nor Vane. That event's distinctness finding stands and its bytes are unchanged.
+
+Manifest `REC-000055`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers, hash-verified after capture. This is the checkpoint `/continue` restores.
 
 ---
 

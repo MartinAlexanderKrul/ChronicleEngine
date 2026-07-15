@@ -8,9 +8,9 @@ canonical_record: REC-000038
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: ruling
-  event_time: "Profile 0.6 migration; no fictional time elapsed"
-  record_time: "2026-07-15T10:20:48Z"
+  source: EVT-000033
+  event_time: "Year 31 AR, Warehouse 7 return, basement combat"
+  record_time: "2026-07-15T09:15:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -25,9 +25,9 @@ canonical_record: REC-000038
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: ruling
-  event_time: "Profile 0.6 migration; no fictional time elapsed"
-  record_time: "2026-07-15T10:20:48Z"
+  source: EVT-000033
+  event_time: "Year 31 AR, Warehouse 7 return, basement combat"
+  record_time: "2026-07-15T09:15:00Z"
   uncertainty: "Residence established by ruling (ENT-000066), not by played event; the landlord and the tenancy's remaining term are unestablished."
 type: Character
 subtype: "System-bearing Awakened hunter"
@@ -47,7 +47,7 @@ relationships:
   - REL-000047
 canonical_state:
   location: ENT-000064
-  condition: "Wounded but stable after a healing potion: shoulder wound reopened and redressed; healing burns across chest and forearms; treated rib and shoulder rakes; pain active but bleeding controlled"
+  condition: "Wounded but stable: treated moderate rake injury across left shoulder and collarbone; range of motion substantially improved; no new combat wound at the current anchor"
   capabilities:
     magical: "E-Rank fire scholar; Aurology-trained. System Ability mechanics are carried in the system extension below."
     trained_skills:
@@ -65,11 +65,11 @@ canonical_state:
         training: "Two recorded 100-pushup sessions"
         sources: [EVT-000029, EVT-000033]
   personality: "Ambitious prodigy; confident, observant, eager to prove himself"
-  knowledge: "Aurology training; observed Broodling, Swarmer, pack-leader, and Breaker behavior; mapped Warehouse 7 and fully documented its basement core chamber. Four D-grade Breakers used a coordinated guard formation and are now dead. The metre-tall burgundy core pulses every three seconds, radiates heat, and is energetically integrated with an organic crystalline framework and eight-metre floor pattern. Direct extraction failed. Safe severance methodology, the D-grade anomaly's cause, and the core's relation to Rift stability remain unestablished."
+  knowledge: "Aurology training; observed Broodling and Swarmer behavior and a correlation between Rift glow and creature movement; mapped the Warehouse 7 route; observed an entered basement core chamber containing a suspended deep-red core and four D-grade Breakers in a deliberate guard pattern; one Breaker is confirmed dead and three remain active. Core bonding, mutation, and stability explanations remain hypotheses, not established facts."
   residence: "A rented room in Verholt's working quarter (ENT-000066). A Verholt local of years' standing, not a newcomer: he lived and worked here as an Aurology Institute research assistant before the Awakening, and the room is held on his own coin, independent of Institute and Association alike."
-  situation: "Inside the cleared Warehouse 7 basement core chamber after harvesting four D-cores. The one-combat life-burn anomaly has expired. The core remains suspended and unextracted after a failed physical attempt; Daedalus has completed detailed notes and is considering safe specialist extraction protocol."
+  situation: "Inside the Warehouse 7 basement core chamber on a four-metre ledge. One Breaker sentinel is dead; three Breakers are active below. Daedalus has just spent 12 mana on a failed area Fireball that burned two targets without resolving them. The next attempted Fireball was not promotable because only 11 mana was available; resume before that attempt."
   training_commitment: "Repeat daily: 10 km run, 30 minutes of sword technique, 100 pushups, and one controlled round of each spell"
-  world_rule_profile: "Reikon 0.6"
+  world_rule_profile: "Reikon 0.4"
   active_overrides: "RKO-OVR-001, RKO-OVR-002"
 
 # Domain extension -- Subtype "System-bearing Awakened hunter".
@@ -86,32 +86,30 @@ canonical_state:
 #   20% phys. reduction <- 206 S5, Reinforced Body
 system:
   official_rank: E              # certified at Awakening; not what he is
-  level: 2
-  xp: 31                        # 131 total session-progress XP crossed T(1)=100; 31 carries against T(2)=130
+  level: 1
+  xp: 74                        # against T(1) = 100; +19 for the ledge Breaker
   unspent_points: 0
   awakening_pool: 13
   awakening_health: 100
   awakening_endurance: 9
-  current_mana: 7
+  current_mana: 1
   mana_recovery_mode: active
   mana_recovery_remainder_seconds: 0
-  current_health: 88
-  health_recovery_mode: light
+  current_health: 90
+  health_recovery_mode: paused
   health_recovery_care: treated
   health_recovery_injury_severity: moderate
   health_recovery_remainder_units: 0
-  intervention_silent_checks: 0
-  active_intervention: none
   stats:
     power: 8
     endurance: 9
     speed: 10
-    mana_affinity: 14
+    mana_affinity: 13
     perception: 14
   abilities:
     - name: Fireball
       efficiency: 0
-      strength: 1
+      strength: 0
     - name: Flame Shield
       efficiency: 0
       strength: 0
@@ -127,4 +125,4 @@ system:
 ```
 
 **Derived readout at this state** (computed from the block above; recorded here for review only, never as canon):
-Level 2 with both Ascension points allocated: Mana Affinity 14 and Fireball Strength 1. `max_mana` = 14; `max_health` = 105. The Ascension preserved the then-current 10-HP deficit (90/100 → 95/105); later damage and a 27-Health potion settle the current value at 88/105. Every ability remains Lv 1; Fireball costs 12 at 1.10× magnitude, Flame Shield costs 2/second, Combustion Touch 6, Endurance Surge 10, Reinforced Body 0. Effective band **E** (pool 14). Next threshold `T(2)` = 130. Current state: 31/130 XP, 7/14 Mana, 88/105 HP, active mana recovery with zero carried seconds, and light Health recovery for treated moderate wounds. The owner-authored life-burn anomaly expired when the fourth Breaker died and is not an available Ability. Trained non-System skills: foundational Swordsmanship (two recorded sessions), practiced aerobic conditioning (three recorded 10 km runs), and practiced bodyweight conditioning (two recorded 100-pushup sessions).
+Level 1, so no Ascension has occurred and nothing is allocated. `max_mana` = 13, `max_health` = 100, every ability at Lv 1 (`1 + floor(0/5)`), Fireball 12 / Flame Shield 2-per-second / Combustion Touch 6 / Endurance Surge 10 / Reinforced Body 0. Effective band **E** (pool 13). Next threshold `T(1)` = 100. Current state: 74/100 XP, 1/13 Mana, 90/100 HP, active mana recovery with zero carried seconds, and a treated moderate left-shoulder/collarbone wound. Health recovery is paused during active combat with zero carried recovery units. Trained non-System skills: foundational Swordsmanship (two recorded sessions), practiced aerobic conditioning (three recorded 10 km runs), and practiced bodyweight conditioning (two recorded 100-pushup sessions).

@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-15 — Reikon World Rule Profile 0.6: recurrent interventions and succession
+
+**Owner direction:** the System should interact more often and wants its Bearer strong rather than safe. Profile 0.6 adds a recorded d100 intervention check at daily, Ascension, and anomalous-Rift triggers; a two-silence ceiling; finite one-use techniques; voluntary trial gates; rare compulsory displacement into unknown trial Rifts; and exact persistence requirements for every temporary effect. Trial entry grants nothing—XP still requires resolved challenge. The profile also establishes one living Bearer per world-line and guaranteed eventual succession after death: the dead campaign remains terminal, nothing character-bound transfers, and a later successor is a new character with new identifiers. The System is patient; it does not need the current host to survive.
+
+## 2026-07-15 — Reikon World Rule Profile 0.5: finite System anomaly
+
+**Owner ruling:** Reikon's System may grant its Bearer a singular, explicitly authored opportunity to pay missing Mana with life. Profile 0.5 adds the finite System-anomaly contract to Section 3.4: the event must name the Bearer, eligible Abilities, exact Health-for-Mana rate, start, expiry, and whether Health may reach zero. The exception changes no cost, pool, recovery, reduction, or die result; it expires into the ordinary prohibition and never becomes a reusable Ability or precedent. Reikon Awakening uses the contract once for the Warehouse 7 Breaker engagement (`EVT-000034`) so the owner-approved continuation can be promoted without making routine overcasting legal.
+
 ## 2026-07-14 — Cross-ledger staleness: causes removed, target set derived
 
 Refinement under Decision 069 — sites and sharpens obligations the engine already carries; adds no mechanism, no Rules section, no Data Model change. Owned by Version 0.3 Planning. **No engine decision consumed:** the mechanical gate this debt actually needs is foundational and is deferred, unchanged, to 0.3 ADR design.

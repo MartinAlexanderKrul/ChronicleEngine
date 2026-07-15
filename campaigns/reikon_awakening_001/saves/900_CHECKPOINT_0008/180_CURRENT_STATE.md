@@ -10,9 +10,9 @@ canonical_record: REC-000045
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: ruling
-  event_time: "Profile 0.6 migration; no fictional time elapsed"
-  record_time: "2026-07-15T10:20:48Z"
+  source: EVT-000034
+  event_time: "Year 31 AR, Warehouse 7 basement cleared"
+  record_time: "2026-07-15T09:27:58Z"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -22,15 +22,15 @@ subjects: []
 
 - Engine: 0.2.0; Data Model: 0.1.1
 - World: Reikon 0.1
-- World Rule Profile: Reikon 0.6 (`RKO-OVR-001`, `RKO-OVR-002`) — recurrent intervention and succession contract active; the Warehouse 7 life-burn event remains expired
+- World Rule Profile: Reikon 0.5 (`RKO-OVR-001`, `RKO-OVR-002`) — finite System-anomaly contract added; the Warehouse 7 life-burn event is fully specified by `EVT-000034` and has expired
 - Compatibility: compatible; no version mismatch outstanding
 
 ## Restore Point
 
 **Live canon in this directory is authoritative.** Resume from this ledger.
 
-- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0009/` — Profile 0.6 migration over the complete owner-approved continuation; recurrent interventions and succession are active with no fictional time elapsed.
-- **Prior restorable checkpoint:** `saves/900_CHECKPOINT_0008/` — the same post-combat fiction under Profile 0.5, before recurrent intervention checks and succession were declared.
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0008/` — the complete owner-approved shared-chat continuation under Profile 0.5, after the basement clear, Ascension, harvest, and failed direct core extraction.
+- **Prior restorable checkpoint:** `saves/900_CHECKPOINT_0007/` — the mid-combat Profile 0.4 fork immediately before the finite life-burn anomaly was authored.
 - **Earlier restorable checkpoint:** `saves/900_CHECKPOINT_0004/` — migrates the recovered post-pack-leader state to Reikon World Rule Profile 0.3 with canonical Health-recovery state; the pre-Session-2 fork point.
 - **`saves/900_CHECKPOINT_001/` is NOT restorable.** It is quarantined. It snapshots a superseded pre-migration ledger set, omits three required ledgers, and self-reports a validator PASS that never ran. Restoring it would overwrite conforming canon with the nonconforming shape the 2026-07-14 migration removed. Status and reasoning: `saves/README.md`. The checkpoint's own contents are untouched (Rules Section 13.2).
 - **No baseline checkpoint exists for this campaign.** Decision 053 requires one; it was never captured, and Session 1 is already played, so it cannot be captured honestly now. **`/restart` (Redo) is therefore unavailable** and must not be attempted until a baseline question is resolved. `/branch` (Fork) and `/load` are unaffected.
@@ -69,7 +69,6 @@ subjects: []
 - **Recovery is active.** Mana recovers at the active rate; Health is in light treated recovery. New exertion can interrupt Health recovery.
 - **Ascension is settled.** Level 2, 31/130 XP, Mana Affinity 14, Fireball Strength 1, maximum Mana 14, maximum Health 105.
 - **Training and research state are durable.** Physical-training totals, the three Institute relationships, and detailed chamber notes remain canonical.
-- **The System may intervene again, but the life-burn effect may not.** At declared Profile-0.6 triggers it can issue directives, grant a different finite technique, or create a trial Rift. No active intervention is currently held; the silence counter is zero.
 
 ## Unresolved
 
@@ -83,5 +82,3 @@ subjects: []
 ## Next Session Must Know
 
 Resume after Daedalus's failed direct extraction attempt and subsequent framework study. He is Level 2 at 31/130 XP, 88/105 Health, and 7/14 Mana. All four Breakers are dead and harvested; the core is documented but still energetically bonded. The life-burn anomaly was a single owner-authored System intervention for that combat and has expired permanently—do not offer or infer overcasting. The next decision is whether to leave and report, contact specialists, attempt sealing, rest further, or pursue another properly resolved method.
-
-Profile 0.6 recurrent interventions are now live. The next eligible trigger is checked only under Section 9.6; any resulting temporary skill or trial must be fully specified and promoted. The System seeks growth, not Daedalus's safety, and a lethal outcome is not suppressed merely because he is the current Bearer.

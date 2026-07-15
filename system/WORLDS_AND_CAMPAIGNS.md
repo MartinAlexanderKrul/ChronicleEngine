@@ -26,7 +26,7 @@ The index carries only what a player needs in order to **choose**. Everything el
 | World | Version | Status | Live campaigns | Diegetic commands |
 |-------|---------|--------|----------------|-------------------|
 | `worlds/asterra/` | 0.9 | Pre-campaign foundation | 0 | none |
-| `worlds/reikon/` | 0.1 (World Rule Profile 0.4) | Active | 1 | `/system` |
+| `worlds/reikon/` | 0.1 (World Rule Profile 0.6) | Active | 1 | `/system` |
 | `worlds/verra/` | 0.1 (Prototype) | Active | 2 | none |
 
 A world's diegetic commands are shown to the player only once a campaign in that world is loaded, never on the welcome page (Command Availability at Session Start).
@@ -39,7 +39,7 @@ A world's diegetic commands are shown to the player only once a campaign in that
 |----------|-------|-------------|--------|-------------------|----------|
 | `campaigns/prototype_alpha/` | `worlds/verra/` | Ilse Varn | Closed — terminal | `900_CHECKPOINT_0000` | 2026-07-13 |
 | `campaigns/prototype_beta/` | `worlds/verra/` | Kael Travis | In progress | `900_CHECKPOINT_0001` | 2026-07-13 |
-| `campaigns/reikon_awakening_001/` | `worlds/reikon/` | Daedalus | In progress | `900_CHECKPOINT_0006` | 2026-07-14 |
+| `campaigns/reikon_awakening_001/` | `worlds/reikon/` | Daedalus | In progress | `900_CHECKPOINT_0009` | 2026-07-15 |
 
 Status vocabulary is the welcome page's: **not started**, **in progress**, **closed or terminal**. `Captured` is the latest checkpoint's `record_time`/`created` from its save manifest — the same timestamp `/continue` uses to resolve "most recently played" (Rules Section 13.3), never filesystem modification time.
 
@@ -49,7 +49,7 @@ These are the caveats a player needs **before** choosing, not campaign state. Ea
 
 - **`campaigns/prototype_alpha/`** — Closed: the campaign reached a terminal outcome and this instantiation will not continue (`180_CURRENT_STATE.md`). Its only checkpoint is the **pre-play baseline**; no session-close checkpoint was ever written, so the latest checkpoint does not reflect the campaign's ending. Continuing in Verra requires `/new` or a branch, not a restore. Its `090_CAMPAIGN_STARTUP.md` still declares `initialization_state: initialized-no-save`, which the ledgers contradict.
 - **`campaigns/prototype_beta/`** — Resumable from `900_CHECKPOINT_0001`. Its `090_CAMPAIGN_STARTUP.md` also still declares `initialization_state: initialized-no-save` against a written checkpoint; the ledgers govern.
-- **`campaigns/reikon_awakening_001/`** — Resumable from `900_CHECKPOINT_0006`. This campaign keeps a **save index** at `saves/README.md` recording each checkpoint's status and restorability; read it as part of restoration and honor it (Destructive-Command Guards). `900_CHECKPOINT_001` is quarantined and must not be restored. The campaign has **no baseline checkpoint**, so `/restart` is unavailable and must not be attempted.
+- **`campaigns/reikon_awakening_001/`** — Resumable from `900_CHECKPOINT_0009` after the Warehouse 7 basement clear, with Profile 0.6 recurrent System interventions active and the Rift core still unextracted. This campaign keeps a **save index** at `saves/README.md` recording each checkpoint's status and restorability; read it as part of restoration and honor it (Destructive-Command Guards). `900_CHECKPOINT_001` is quarantined and must not be restored. The campaign has **no baseline checkpoint**, so `/restart` is unavailable and must not be attempted.
 
 ---
 

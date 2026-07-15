@@ -8,9 +8,9 @@ canonical_record: REC-000038
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: ruling
-  event_time: "Profile 0.6 migration; no fictional time elapsed"
-  record_time: "2026-07-15T10:20:48Z"
+  source: EVT-000034
+  event_time: "Year 31 AR, Warehouse 7 basement cleared"
+  record_time: "2026-07-15T09:27:58Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -25,9 +25,9 @@ canonical_record: REC-000038
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: ruling
-  event_time: "Profile 0.6 migration; no fictional time elapsed"
-  record_time: "2026-07-15T10:20:48Z"
+  source: EVT-000034
+  event_time: "Year 31 AR, Warehouse 7 basement cleared"
+  record_time: "2026-07-15T09:27:58Z"
   uncertainty: "Residence established by ruling (ENT-000066), not by played event; the landlord and the tenancy's remaining term are unestablished."
 type: Character
 subtype: "System-bearing Awakened hunter"
@@ -69,7 +69,7 @@ canonical_state:
   residence: "A rented room in Verholt's working quarter (ENT-000066). A Verholt local of years' standing, not a newcomer: he lived and worked here as an Aurology Institute research assistant before the Awakening, and the room is held on his own coin, independent of Institute and Association alike."
   situation: "Inside the cleared Warehouse 7 basement core chamber after harvesting four D-cores. The one-combat life-burn anomaly has expired. The core remains suspended and unextracted after a failed physical attempt; Daedalus has completed detailed notes and is considering safe specialist extraction protocol."
   training_commitment: "Repeat daily: 10 km run, 30 minutes of sword technique, 100 pushups, and one controlled round of each spell"
-  world_rule_profile: "Reikon 0.6"
+  world_rule_profile: "Reikon 0.5"
   active_overrides: "RKO-OVR-001, RKO-OVR-002"
 
 # Domain extension -- Subtype "System-bearing Awakened hunter".
@@ -100,8 +100,6 @@ system:
   health_recovery_care: treated
   health_recovery_injury_severity: moderate
   health_recovery_remainder_units: 0
-  intervention_silent_checks: 0
-  active_intervention: none
   stats:
     power: 8
     endurance: 9

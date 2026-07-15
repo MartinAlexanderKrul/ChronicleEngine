@@ -15,11 +15,14 @@ A durable, Canonical-Record form of this index is proposed engine work (Nonconfo
 | `900_CHECKPOINT_0003/` | 2026-07-14 | Conforming; recovered from owner-supplied raw Session 2 chat | Yes — prior Profile 0.2 restore point |
 | `900_CHECKPOINT_0004/` | 2026-07-14 | Conforming; deterministic Health-recovery migration | Yes — pre-Session-2 fork point |
 | `900_CHECKPOINT_0005/` | 2026-07-14 | Conforming but **superseded** — captured stale record state; see below | Yes — not preferred |
-| `900_CHECKPOINT_0006/` | 2026-07-14 | Conforming; Session 2 cross-ledger staleness repair and `EVT-000032` ruling | **Yes — current restore point** |
+| `900_CHECKPOINT_0006/` | 2026-07-14 | Conforming; Session 2 cross-ledger staleness repair and `EVT-000032` ruling | Yes — prior restore point |
+| `900_CHECKPOINT_0007/` | 2026-07-15 | Conforming; Profile 0.4 mid-combat fork before the owner-authored anomaly | Yes — prior fork point |
+| `900_CHECKPOINT_0008/` | 2026-07-15 | Conforming; complete owner-approved continuation under Profile 0.5 | Yes — prior restore point |
+| `900_CHECKPOINT_0009/` | 2026-07-15 | Conforming; Profile 0.6 recurrent-intervention and succession migration | **Yes — current restore point** |
 
 There is **no baseline checkpoint** for this campaign. See below.
 
-**All checkpoints above record World Rule Profile 0.3; live canon is now 0.4.** This mismatch is surfaced on restore (Rules Section 13.5) and is resolved by **declaring 0.4** — nothing is recalculated. Profile 0.4 only adds Section 12 (Economy), authoring magnitudes that were previously unauthored; no 0.3 rule changed and no ledger value moves. This is unlike the 0.2 → 0.3 Health migration recorded against Checkpoint 0003, which did change how existing Health settled and required real recomputation.
+The conforming lineage records the profile active at each capture: Checkpoint 0002 uses Reikon 0.1, 0003 uses 0.2, 0004–0006 use 0.3, 0007 uses 0.4, 0008 uses 0.5, and live canon plus Checkpoint 0009 use 0.6. Any older-profile mismatch is surfaced on restore under Rules Section 13.5 and migrated in sequence. Profile 0.5 does not retroactively enable life-burning in an older checkpoint; Profile 0.6 likewise begins recurrent checks only after its migration.
 
 ---
 
@@ -83,13 +86,37 @@ Manifest `REC-000048`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` an
 
 It remains restorable but is no longer current: it predates Session 2. Continuing from it forks the campaign from before the warehouse exploration, the basement discovery, and the medical treatment. Prefer `900_CHECKPOINT_0006/`.
 
-## `900_CHECKPOINT_0006/` — current restore point
+## `900_CHECKPOINT_0006/` — prior restore point
 
 Captures the Session 2 cross-ledger staleness repair and the `EVT-000032` kill-count ruling: the located-but-unentered basement chamber, the harvested kills, eight holdings carrying one consistent region descriptor, the expedition's suspension for treatment, and a restoration entry point that no longer contradicts itself on location, Mana, remaining creatures, or which checkpoint is latest.
 
 Manifest `REC-000050`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` and the Rules Section 13.3 minimum. Contains full copies of all eight canonical campaign ledgers and records no self-assessed validation result.
 
-This is the checkpoint `/continue` restores. Where it disagrees with `900_CHECKPOINT_0005/`, this one governs; `EVT-000032` rules the kill count at six.
+This remains restorable as the post-treatment fork point. Checkpoint 0007 supersedes it as the checkpoint `/continue` restores.
+
+## `900_CHECKPOINT_0007/` — prior Profile 0.4 fork
+
+Captures the complete shared-chat continuation only through its last rules-valid exchange. Daedalus is in active combat on the Warehouse 7 basement ledge at Health 90/100, Mana 1/13, Level 1, and XP 74/100. One D-grade Breaker has been killed, three remain active, and the suspended core is visible but unextracted.
+
+Manifest `REC-000051`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains full copies of all eight canonical campaign ledgers. At capture, the next transcript action was deliberately absent because Profile 0.4 had no life-burn exception. The later owner ruling does not alter this immutable snapshot; restoring it returns to the decision point before `EVT-000034`.
+
+This remains a restorable fork point. Checkpoint 0008 supersedes it as the checkpoint `/continue` restores.
+
+## `900_CHECKPOINT_0008/` — prior Profile 0.5 restore point
+
+Captures the complete owner-approved continuation under Reikon Profile 0.5. The finite life-burn anomaly is fully specified in `EVT-000034`, permitted Fireball and Flame Shield to consume missing Mana at 1 Health each for the remainder of that engagement, and expired permanently when the fourth Breaker died.
+
+Daedalus is Level 2 at 31/130 XP, 88/105 Health, and 7/14 Mana. All four Breakers are dead and harvested as four D-cores. His Ascension allocations are Mana Affinity 14 and Fireball Strength 1. The basement core is measured and documented but remains energetically bonded after a failed direct extraction attempt.
+
+Manifest `REC-000052`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers. Checkpoint 0009 supersedes it as the checkpoint `/continue` restores.
+
+## `900_CHECKPOINT_0009/` — current restore point
+
+Captures the same complete post-combat fiction as Checkpoint 0008 with Reikon Profile 0.6 declared. Daedalus still stands in the cleared basement chamber at Level 2, 31/130 XP, 88/105 Health, and 7/14 Mana; no fictional time elapsed and no inventory or objective changed.
+
+Profile 0.6 initializes `intervention_silent_checks: 0` and `active_intervention: none`. Future eligible triggers may produce directives, finite techniques, trial-Rift offers, or rare compulsory displacement. The expired Warehouse 7 life-burn anomaly remains unavailable. Bearer death remains terminal for Daedalus and eventually begins a fresh successor campaign rather than resurrection.
+
+Manifest `REC-000053`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers. This is the checkpoint `/continue` restores.
 
 ---
 

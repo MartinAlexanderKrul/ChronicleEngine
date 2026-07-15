@@ -4,7 +4,7 @@
 
 **World Version:** 0.1 (Solo Leveling–inspired contemporary gate-and-hunter world)
 **Status:** Active — instantiated as canonical world content (2026-07-13); ENT-000030–ENT-000050, REC-000026–REC-000034, EVT-000018–EVT-000024, REL-000029–REL-000039
-**Engine Compatibility:** 0.2.0; Data Model 0.1.1; Reikon World Rule Profile 0.4
+**Engine Compatibility:** 0.2.0; Data Model 0.1.1; Reikon World Rule Profile 0.6
 **Progression:** Causal diegetic System progression (`RKO-OVR-001`, Decision 059)
 **Genre:** Contemporary "gate-and-hunter" litRPG — an original world in the genre, not based on any existing work
 **Setting Register:** Original-modern (invented nations and cities; no real-world geography)
@@ -205,6 +205,8 @@ The **System** is a private, luminous interface perceived by a **System Bearer**
 
 It does not merely watch. When its Bearer earns enough XP through resolved combat and ordeal, the System causes an **Ascension** — a felt, luminous milestone that *grants* progression under `RKO-OVR-001`: stat points, unlocks, and a deeper mana pool. You cannot level up without genuine challenge, but the threshold crossing and its grants are causally real.
 
+The System also intervenes. It may grant a one-use technique, issue a dangerous Objective, open a trial Rift, or—rarely—displace its Bearer into an unknown trial without asking. These interventions never grant victory or free XP; they create ordeals whose outcomes still resolve normally. Its purpose is to produce a stronger Bearer, not to protect the current person carrying it.
+
 **Important:** the System shows its Bearer their actual capability. Their **official Rank** — what the Association certifies, what the Guilds know — is based on testing and assessment instead. These can diverge, and for a Bearer they inevitably will. A forged Rank, an underestimated hunter, an inflated reputation — all are possible and dangerous.
 
 ## Awakening
@@ -214,6 +216,8 @@ Awakening is involuntary and rare — roughly 1 per few thousand people. It cann
 **Most Awakened** have a single ability or a focused set. They Rank from E (newly Awakened, can clear basic dungeons) through S (elite, decades of proven power). They have no System, no level, and no XP. They grow the slow way — practice, ordeal, and mastery — and get dangerous without ever being told they have.
 
 **The System-Bearer Legend:** once per generation, maybe less, an Awakened is said to wake with something else entirely — an interface that quantifies them and answers back. A Bearer's growth is not merely tracked but *granted*: they can theoretically reach heights no ordinary hunter can match, and their mana pool, alone among the living, **deepens**. This has happened so rarely in 31 years that it is half-mythology. Most hunters consider it a story hunters tell about hunters.
+
+Only one living Bearer exists in a world-line at a time. If that Bearer dies, the System does not resurrect them or inherit their strength. It waits through an unknown interval and eventually chooses another person. The successor begins as themselves, with none of the dead Bearer's levels, memories, allocations, or possessions. The System is patient enough to lose a host; mortals are not.
 
 **No one knows whether a System-Bearer currently exists. If one does, the Association, the Guilds, the Institute, and the Vigil all want to know — and none of them want the same thing from the answer.**
 
@@ -382,7 +386,7 @@ All ledgers below are **instantiated canonical world content**, using real ident
 
 | Ledger | Contents |
 |--------|----------|
-| `206_WORLD_RULE_PROFILE.md` | **World Rule Profile 0.4 — authoritative.** Declared overrides; pool, allocation, costs, resolution, damage, deterministic Health recovery, XP, economy; per-exchange settlement; compact notifications; the System's behavioral contract; the `/system` template |
+| `206_WORLD_RULE_PROFILE.md` | **World Rule Profile 0.6 — authoritative.** Declared overrides; pool, allocation, costs, resolution, damage, deterministic Health recovery, XP, economy, finite anomalies, recurrent interventions, trial Rifts, Bearer succession; per-exchange settlement; compact notifications; the System's behavioral contract; the `/system` template |
 | `205_THE_LEDGER.md` | System lore — Ranks, Abilities, Marks, Rift stages, cores, monsters, economy. Describes; does not govern |
 | `210_PLACES.md` | The Aldish Republic; Verholt; the Kessler Rift; the Danesmoor collapse site; Authority zones |
 | `220_NOTABLE_FIGURES.md` | Seven figures — Association leadership, Guild heads, Institute director, Vigil voice, mentor figures |

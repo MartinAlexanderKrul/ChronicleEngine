@@ -2,7 +2,7 @@
 
 **Class:** Narrative world-layer reference. Not a canonical ledger, not world rule content.
 **Status:** Active — instantiated as canonical world content (2026-07-13).
-**Rules:** `206_WORLD_RULE_PROFILE.md` — Reikon World Rule Profile 0.4
+**Rules:** `206_WORLD_RULE_PROFILE.md` — Reikon World Rule Profile 0.6
 
 ---
 
@@ -54,13 +54,21 @@ It surfaces in exactly two ways.
 
 **1. On request.** The Bearer opens it — `/system` — and it renders the canonical window from his current state. This is the passive, reliable case: he asks, it answers.
 
-**2. On its own initiative.** The System appears unbidden. It announces Ascensions, issues **daily quests**, reveals that a **hidden quest** exists, appraises what stands in front of him, or warns him. Sometimes usefully, sometimes at the worst possible time, sometimes in the middle of a conversation he cannot afford to break.
+**2. On its own initiative.** The System appears unbidden. It announces Ascensions, issues **daily quests**, reveals that a **hidden quest** exists, appraises what stands in front of him, warns him, grants a finite technique, or presents a trial Rift. Rarely it does not ask: it takes the Bearer into an unknown trial space and leaves survival to him. Sometimes it is useful, sometimes ruinous, and sometimes it arrives in the middle of a life he cannot afford to interrupt.
 
 The second is the important one. The System is not a menu he checks. It is something that **speaks to him**, and its timing is not his to control.
 
-But its timing is not arbitrary either, and this is the distinction that matters: **the System never decides what is true — it only decides when to say it.** It speaks because a threshold was crossed, a deadline is running out, or something unappraised walked into view. It does not speak because the moment was dramatic. When it interrupts a negotiation he cannot afford to break, that is not caprice; it is the world being indifferent to his convenience.
+Its interventions are random but not arbitrary. Profile 0.6 declares the eligible triggers, probability bands, and silence limit. It does not manufacture a victory or a secret truth; it creates an opportunity or an ordeal and lets the Bearer live with the result.
 
-The trigger conditions are declared in `206_WORLD_RULE_PROFILE.md` Section 9.3.
+The notification triggers are declared in `206_WORLD_RULE_PROFILE.md` Section 9.3; recurrent interventions and trial Rifts are governed by Sections 9.6–9.7.
+
+## What the System Wants
+
+The System wants a Bearer who becomes strong. It does **not** necessarily want this Bearer to remain alive.
+
+That is why its gifts can be cruel. A one-use skill may arrive only inside the fight that consumes it. A trial may be calibrated above his comfort. An unknown Rift may close behind him. These are not failures of the System's purpose: survival proves growth, and death proves that the current vessel was insufficient.
+
+If a Bearer dies, the System waits. Eventually another person Awakens as its Bearer in that world-line. Nothing personal transfers—no levels, allocations, memories, equipment, or earned capability. The System is patient; people are not.
 
 ## What It Will and Will Not Tell Him
 

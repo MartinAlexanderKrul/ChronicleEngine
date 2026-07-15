@@ -8,9 +8,9 @@ canonical_record: REC-000040
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000034
-  event_time: "Year 31 AR, Warehouse 7 basement cleared and harvested"
-  record_time: "2026-07-15T09:27:58Z"
+  source: EVT-000033
+  event_time: "Year 31 AR, Warehouse 7 return, basement combat"
+  record_time: "2026-07-15T09:15:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -26,10 +26,6 @@ subjects:
   - ENT-000068
   - ENT-000069
   - ENT-000070
-  - ENT-000074
-  - ENT-000075
-  - ENT-000076
-  - ENT-000077
 ```
 
 All holdings are possessed by Daedalus (`ENT-000051`) and are carried on his person in the Warehouse 7 E-Rift basement core chamber.
@@ -129,18 +125,16 @@ type: Resource
 subtype: consumable-stack
 scope: personal
 lifecycle: active
-  aliases:
+aliases:
   - name: "Daedalus's mana potions"
     quality: current
 canonical_state:
-  category: "Mana consumables; one sealed 20-mana vial and one open half-vial holding 10 mana"
-  condition: "One sealed; one open and half-full"
+  category: "Consumables; three potions restoring 20 mana each"
+  condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
   location: "Warehouse 7 E-Rift basement core chamber (carried)"
-  quantity: 2
-  total_mana_remaining: 30
-  history: "One vial consumed in two half-doses during the Breaker engagement; half of a second vial consumed before the jump"
+  quantity: 3
 ```
 
 ## Climbing Rope
@@ -265,7 +259,7 @@ type: Resource
 subtype: consumable-stack
 scope: personal
 lifecycle: active
-  aliases:
+aliases:
   - name: "Daedalus's standard healing potions"
     quality: current
 canonical_state:
@@ -274,8 +268,8 @@ canonical_state:
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
   location: "Warehouse 7 E-Rift basement core chamber (carried)"
-  quantity: 1
-  history: "Four purchased for 8 E-cores; one consumed during recovery training and two consumed during the Breaker engagement"
+  quantity: 3
+  history: "Four purchased for 8 E-cores; one consumed during recovery training"
 ```
 
 ## Energy Tonic Stack
@@ -321,7 +315,7 @@ type: Resource
 subtype: medical-consumable
 scope: personal
 lifecycle: active
-  aliases:
+aliases:
   - name: "Amber wound dressing salve"
     quality: current
 canonical_state:
@@ -330,8 +324,7 @@ canonical_state:
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
   location: "Warehouse 7 E-Rift basement core chamber (carried)"
-  uses_remaining: 4
-  history: "Four applications used in total: three during recovery and one after the shoulder wound reopened in the Breaker engagement"
+  uses_remaining: 5
 ```
 
 ## Research Notebook
@@ -358,117 +351,5 @@ canonical_state:
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
   location: "Warehouse 7 E-Rift basement core chamber (carried)"
-  contents: "Route sketch and Institute consultation notes; Breaker formation and behavior; burgundy core dimensions, three-second pulse, thermal emission, crystalline framework, eight-metre floor pattern, failed direct extraction, and the need for specialist severance. Hypotheses are marked unverified."
-```
-
-## Breaker D-Core — Ledge Sentinel
-
-```yaml
-id: ENT-000074
-canonical_record: REC-000040
-schema_version: "0.1.1"
-status: active
-provenance:
-  source: EVT-000034
-  event_time: "Year 31 AR, Warehouse 7 basement harvest"
-  record_time: "2026-07-15T09:27:58Z"
-type: Resource
-subtype: monster-core
-scope: personal
-lifecycle: active
-aliases:
-  - name: "Midnight D-core from the ledge sentinel"
-    quality: current
-canonical_state:
-  category: "Appraised D-grade Rift-creature core; 5 E-core units"
-  condition: Intact
-  appearance: "Dark blue-black, angular, and warm with residual energy"
-  ownership: "ENT-000051 (legal harvest)"
-  possession: ENT-000051
-  location: "Warehouse 7 E-Rift basement core chamber (carried)"
-  quantity: 1
-```
-
-## Breaker D-Core — Flank Guardian
-
-```yaml
-id: ENT-000075
-canonical_record: REC-000040
-schema_version: "0.1.1"
-status: active
-provenance:
-  source: EVT-000034
-  event_time: "Year 31 AR, Warehouse 7 basement harvest"
-  record_time: "2026-07-15T09:27:58Z"
-type: Resource
-subtype: monster-core
-scope: personal
-lifecycle: active
-aliases:
-  - name: "Indigo D-core from the flank guardian"
-    quality: current
-canonical_state:
-  category: "Appraised D-grade Rift-creature core; 5 E-core units"
-  condition: Intact
-  appearance: "Deep indigo and slightly smaller than the ledge sentinel's core"
-  ownership: "ENT-000051 (legal harvest)"
-  possession: ENT-000051
-  location: "Warehouse 7 E-Rift basement core chamber (carried)"
-  quantity: 1
-```
-
-## Breaker D-Core — Climbing Guardian
-
-```yaml
-id: ENT-000076
-canonical_record: REC-000040
-schema_version: "0.1.1"
-status: active
-provenance:
-  source: EVT-000034
-  event_time: "Year 31 AR, Warehouse 7 basement harvest"
-  record_time: "2026-07-15T09:27:58Z"
-type: Resource
-subtype: monster-core
-scope: personal
-lifecycle: active
-aliases:
-  - name: "Violet-black D-core from the climbing guardian"
-    quality: current
-canonical_state:
-  category: "Appraised D-grade Rift-creature core; 5 E-core units"
-  condition: Intact
-  appearance: "Nearly black with faint violet undertones"
-  ownership: "ENT-000051 (legal harvest)"
-  possession: ENT-000051
-  location: "Warehouse 7 E-Rift basement core chamber (carried)"
-  quantity: 1
-```
-
-## Breaker D-Core — Core Guardian
-
-```yaml
-id: ENT-000077
-canonical_record: REC-000040
-schema_version: "0.1.1"
-status: active
-provenance:
-  source: EVT-000034
-  event_time: "Year 31 AR, Warehouse 7 basement harvest"
-  record_time: "2026-07-15T09:27:58Z"
-type: Resource
-subtype: monster-core
-scope: personal
-lifecycle: active
-aliases:
-  - name: "Red-black D-core from the core guardian"
-    quality: current
-canonical_state:
-  category: "Appraised D-grade Rift-creature core; 5 E-core units"
-  condition: Intact
-  appearance: "Largest of the four; near-black with deep red undertones and a distinct residual hum"
-  ownership: "ENT-000051 (legal harvest)"
-  possession: ENT-000051
-  location: "Warehouse 7 E-Rift basement core chamber (carried)"
-  quantity: 1
+  contents: "Route sketch, Institute consultation notes, and observations of the entered basement core chamber; hypotheses are marked as unverified"
 ```

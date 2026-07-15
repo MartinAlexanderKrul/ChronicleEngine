@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000066 |
-| Record | `REC-` | Canonical Record | REC-000050 |
-| Event | `EVT-` | Event | EVT-000032 |
-| Relationship | `REL-` | Relationship | REL-000044 |
+| Entity | `ENT-` | Persistent Entity | ENT-000077 |
+| Record | `REC-` | Canonical Record | REC-000053 |
+| Event | `EVT-` | Event | EVT-000034 |
+| Relationship | `REL-` | Relationship | REL-000047 |
 
 ---
 
@@ -77,6 +77,15 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000032 | Event | Reikon Awakening Session 2 audit: explicit ruling correcting the `EVT-000031` kill-count transcription error (six earlier kills → five; six total: 2 Broodlings, 3 Swarmers, pack leader). Core counts unaffected |
 | REC-000050 | Record | Reikon Awakening `saves/900_CHECKPOINT_0006/900_SAVE_MANIFEST.md` — Session 2 checkpoint after the cross-ledger staleness repair and the `EVT-000032` ruling; supersedes Checkpoint 0005 as the restore point |
 | ENT-000066 | Entity | Reikon Awakening: Daedalus's rented room in Verholt's working quarter, established by ruling alongside Reikon World Rule Profile 0.4 (economy). Grounds him as a Verholt local with lodging independent of Institute and Association |
+| ENT-000067 - ENT-000070 | Entity | Reikon Awakening recovered session: healing-potion stack, energy-tonic stack, wound dressing salve, and research notebook |
+| ENT-000071 - ENT-000073 | Entity | Reikon Awakening recovered session: Dr. Kalens, Dr. Soren, and Marta, the three Institute research contacts directly consulted before returning to Warehouse 7 |
+| REL-000045 - REL-000047 | Relationship | Reikon Awakening recovered session: Daedalus's research relationships with Dr. Kalens, Dr. Soren, and Marta |
+| EVT-000033 | Event | Reikon Awakening recovered session, promoted only through the last rules-valid exchange: recovery, purchases, training, Institute research, basement return, ledge-sentinel kill, XP settlement, and failed Fireball |
+| REC-000051 | Record | Reikon Awakening `saves/900_CHECKPOINT_0007/900_SAVE_MANIFEST.md` — recovered shared-chat continuation at the last rules-valid mid-combat anchor |
+| ENT-000074 - ENT-000077 | Entity | Reikon Awakening complete shared-chat continuation: the four harvested D-grade Breaker cores |
+| EVT-000034 | Event | Reikon Awakening owner ruling and completed Breaker engagement under Profile 0.5: finite life-burn anomaly, basement clear, Ascension, harvest, research, and failed direct core extraction |
+| REC-000052 | Record | Reikon Awakening `saves/900_CHECKPOINT_0008/900_SAVE_MANIFEST.md` — complete owner-approved shared-chat continuation after the finite life-burn anomaly and basement clear |
+| REC-000053 | Record | Reikon Awakening `saves/900_CHECKPOINT_0009/900_SAVE_MANIFEST.md` — Profile 0.6 recurrent-intervention and succession migration; no fictional time elapsed |
 
 ---
 

@@ -12,8 +12,11 @@ This README carries the provenance and audit context. The export files themselve
 |------|---------|----------|
 | `play_export_0001.md` | Session 1 (2026-07-13) | The actual expedition: training, solo commitment, entry into Warehouse 7, both combats, both mana recoveries, pack-leader standoff |
 | `play_export_0002.md` | A later resumption (2026-07-14) | Four turns only: repository load, `/system`, `/help`, `/export`. **No gameplay.** |
+| `session_2_promotion_audit.md` | Recovered continuation (reviewed 2026-07-15) | Redacted evidence audit, original Profile-0.4 stopping point, and the superseding Profile-0.5 owner ruling that preserves the complete continuation; not a raw transcript |
 
 Both files were authored before Decision 056's export register (`[NARRATOR]` / `[PLAYER]` / `[ROLL]` / …) was applied to this campaign. `play_export_0001.md` uses `[Player Action]` / `[Narrative]` headings instead. They are committed in their original form rather than reformatted to the current convention.
+
+`session_2_promotion_audit.md` is a derived audit rather than a chat export. The public source exposed a live credential, so the repository deliberately retains neither the raw conversation nor the credential-bearing message.
 
 ## Naming caveat
 

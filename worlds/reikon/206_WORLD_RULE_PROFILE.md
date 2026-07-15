@@ -1,13 +1,13 @@
-# Reikon — World Rule Profile 0.4
+# Reikon — World Rule Profile 0.6
 
 **File:** `worlds/reikon/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
-**Profile Version:** 0.4
+**Profile Version:** 0.6
 **Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Status:** Active
 
-**0.4 adds Section 12 (Economy)** — the core unit ladder, the vell and its universal rate, appraisal and the specialist premium, posted costs, and salary — which had no authoritative home. **No 0.3 rule changed and no campaign state changes.** Section 12 is additive: it authors magnitudes that were previously unauthored, so a campaign at Profile 0.3 migrates to 0.4 by declaring the version, with no ledger value recalculated. This is unlike the 0.2 → 0.3 Health migration, which changed how existing Health settled.
+**0.6 adds recurrent System interventions and Bearer succession in Sections 9.6–9.7.** The System is a patient world force oriented toward producing a stronger Bearer, not toward keeping the current one safe. At declared triggers it may remain silent, issue a directive, grant a finite technique, open a trial Rift, or rarely displace the Bearer into one. Every boon and trial has exact rules; XP still requires genuine resolved challenge. If the Bearer dies, that campaign ends and the System eventually selects another Bearer in the same world-line. The 0.5 finite-anomaly contract remains unchanged.
 
 ---
 
@@ -150,6 +150,23 @@ This remainder is canonical Bearer state because without it three ten-second com
 ## 3.4 Running Dry
 
 At 0 mana a hunter cannot cast. The exhaustion is real: treat it as a condition imposing modifier steps (Rules Section 6.10), not merely an empty counter.
+
+### Finite System Anomaly — Bearer Only
+
+The System is capable of a singular, campaign-authored intervention that temporarily changes how its Bearer pays an Ability's Mana cost. This is an exception to running dry, not ordinary overcasting.
+
+Such an anomaly exists **only** when the campaign owner explicitly authors it. Its canonical event must state all of the following before dependent play is promoted:
+
+1. the named Bearer;
+2. the eligible Ability or Abilities;
+3. the exact Health-for-Mana conversion rate;
+4. the event or condition that begins the anomaly;
+5. the exact condition that ends it; and
+6. whether spending may reduce Health to zero.
+
+Missing Mana is settled as direct Health loss at the declared rate in the same exchange, after ordinary Ability cost and before recovery. The substitution does not change Ability cost, pool size, recovery, damage reduction, or the die result. It cannot be inferred from drama, attempted because it worked once, or generalized into a character capability. When the authored expiry occurs, Section 3.4's default prohibition resumes immediately.
+
+Without a complete campaign event carrying those six fields, a hunter at insufficient Mana cannot cast.
 
 ---
 
@@ -449,19 +466,20 @@ It makes the anti-farming rule arithmetic rather than exhortation, too. Grinding
 
 ## 9.1 The System Is Not a Persistent Entity
 
-The System has state, continuity, and initiative, which look entity-shaped. It is **not** a Persistent Entity, and must not be modeled as one.
+The System has continuity, initiative, and a directional purpose, which look entity-shaped. It is **not** a Persistent Entity and must not be modeled as one.
 
-- Its **state** is the Bearer's state, held in his own `canonical_state` on his campaign's character ledger.
-- Its **continuity** is the Bearer's continuity. It has no aliases, no lifecycle, no end states, no relationships of its own.
-- Its **initiative is not agency.** A storm has initiative. An interjection is a world reaction, not an actor's choice.
+- Its **active state** is Bearer state, held in the Bearer's `canonical_state` on the campaign character ledger.
+- Its **world-line continuity** is a rule of Reikon: one living Bearer at a time, with succession after death (9.7). It has no aliases, lifecycle block, inventory, relationships, or separately addressable identity.
+- Its **purpose** is directional rather than personal: produce a stronger Bearer. It does not love, hate, bargain for its own survival, or value the present host above a future one.
+- Its **interventions are world reactions.** They act on or address the Bearer without authoring his voluntary choices.
 
 Structurally the question is closed regardless: the Persistent Entity Type set is closed (`011` Section 4.2) and contains nothing it fits, and Rules Section 14.3 forbids a World Rule Profile from touching Persistent Object structure. Reikon could not make the System an entity on its own authority.
 
-**The System is an interface, not an actor. It has timing; it has no volition.** Its output is a function of the Bearer's state and the rules in this document — a pure function with a trigger. Hence the testable property, which is canon-determinism (`012` Section 7) applied to a fixed surface:
+**The System is a rule-governed world force, not an NPC.** Mandatory output remains a pure function of Bearer state. Recurrent interventions introduce a declared random check (9.6); once rolled, the roll and any resulting intervention are promoted so restored canon reproduces the same result. Hence the testable property is:
 
-> **Given the same Bearer state and the same trigger, the System says the same thing.**
+> **Given the same canonical Bearer state, including any recorded intervention result, the System renders the same thing.**
 
-An entity's state changes for its own reasons. The System's never does.
+The System has no freeform off-ledger reasoning. Its changes come only from declared triggers, recorded rolls, owner-authored exceptions, and succession rules.
 
 ## 9.2 Truthfulness and Assertive Domain
 
@@ -508,6 +526,8 @@ It also fits the Runtime spec without strain: Tier 1 content is canon-determinis
 
 **It never authors his decisions.** The System can demand. It cannot decide. Refusal is always available and always has consequences: a daily quest ignored is not a rule broken but a choice made, and the world answers it.
 
+This applies to offers and directives. A compulsory trial displacement is a world event acting on the Bearer, not a decision attributed to him; the Runtime yields before his first voluntary action after arrival.
+
 ## 9.4 Information Boundary
 
 The System is perceptible **only to its Bearer** — always, without exception. It cannot be displayed, shared, demonstrated, or proven. To an onlooker, a Bearer receiving a notification is a man who stopped walking and looked at nothing.
@@ -533,6 +553,47 @@ XP <current>/<next threshold>
 Render each changed quantity at most once per resolved player action. Show the final settled value only—no arrows, before/after values, equations, costs, recovery-rate explanation, headings, status table, or repeated reminder later in the response. If one action changes Mana, HP, and XP, show three compact lines once each. If elapsed recovery and spending occur within the same action, settle both and show one final Mana line. Waiting or resting across a narrated span likewise produces one final Mana line, not one line per recovery tick.
 
 Warnings, Ascensions, and quest notices retain their declared content because they communicate more than a numeric change. A full `/system` render is separate and never duplicates a notification already emitted in the same response.
+
+## 9.6 Recurrent Intervention Check
+
+The System wants ordeal-driven growth and is willing to risk its current Bearer to obtain it. It does not intervene every scene, but it must not disappear from play.
+
+An intervention check occurs once at each eligible trigger:
+
+1. the first safe exchange of a new in-fiction day;
+2. immediately after an Ascension exchange has fully settled; or
+3. first contact with a new Rift grade, a structurally anomalous Rift feature, or a threat above the Bearer's current effective band.
+
+The same circumstance triggers only one check. Never make more than one intervention check in one exchange. Roll d100 and record an intervention only when one occurs:
+
+| d100 | Result |
+|---:|---|
+| 01–60 | Silence; increment `intervention_silent_checks` |
+| 61–75 | Directive, warning, appraisal, or System-issued Objective |
+| 76–88 | Finite technique or one-use skill |
+| 89–97 | Trial Rift gate, summons, or voluntary transfer offer |
+| 98–100 | Compulsory displacement into an unknown trial Rift |
+
+After **two consecutive silent checks**, the next eligible trigger cannot be silent. Roll d40 and add 60 to select from the intervention bands above, then reset `intervention_silent_checks` to zero. Any ordinary intervention also resets the counter to zero. This counter is canonical Bearer state.
+
+Every finite technique must record its source event, exact effect, costs, number of uses or duration, eligible actions, and expiry. It is carried in `active_intervention` while available and removed or archived when spent. It is not an Ability allocation, does not create a permanent skill, and cannot be reconstructed from memory after expiry.
+
+A trial Rift must record its entry point, exit condition, observable environment, and any rule changes the Bearer can truthfully know. Entry grants no XP, level, loot, victory, or protection. Every challenge inside resolves normally and awards XP only when genuinely overcome. A compulsory displacement may change the Bearer's location automatically; it must stop at the first post-arrival Player Decision Point and cannot narrate what he chooses to do there.
+
+An intervention may be beneficial, dangerous, or both. The System's purpose is strength, not fairness and not survival.
+
+## 9.7 Bearer Death and Succession
+
+There is exactly **one living System Bearer per world-line**. The System does not need the current Bearer to survive.
+
+If a Bearer dies:
+
+1. resolve and record the death normally; the campaign becomes terminal under the Engine Rules;
+2. all character-bound System state, levels, XP, allocations, temporary techniques, inventory, and knowledge remain with the dead Bearer and do not transfer;
+3. the world enters a succession interval of unestablished length; and
+4. the System eventually selects a new living Bearer, established as a new character and campaign event with new identifiers.
+
+Selection is guaranteed eventually but is never an automatic resurrection, clone, or continuation of the dead character. The successor may begin anywhere and know nothing about earlier Bearers unless ordinary Discovery establishes that knowledge. The System can therefore expose its current Bearer to lethal trials without contradicting its purpose: it is patient on a scale the host is not.
 
 ---
 
@@ -634,6 +695,8 @@ system:
   health_recovery_care: <untreated|treated|specialized>
   health_recovery_injury_severity: <none|minor|moderate|severe|critical>
   health_recovery_remainder_units: <0..17279999>
+  intervention_silent_checks: <0..2>
+  active_intervention: <none|structured finite intervention state>
   stats:                                    # hard cap 20 each (4.2)
     power: <n>
     endurance: <n>
@@ -648,11 +711,11 @@ system:
 
 **What is recorded and what is not.**
 
-Recorded: **allocations, Awakening basis values, current pools, recovery modes/care/severity, and fractional recovery remainders.** Those are the facts that cannot be recomputed from static character state.
+Recorded: **allocations, Awakening basis values, current pools, recovery modes/care/severity, fractional recovery remainders, the intervention silence counter, and any active finite intervention.** Those are the facts that cannot be recomputed from static character state.
 
 Never recorded: `max_mana`, `max_health`, ability `cost`, ability `level`, `magnitude`, `next_threshold`, effective band. Every one is derived from the allocations above and the formulas in this document. Storing any of them creates a second representation that can drift from its source — the exact failure Decision 051 forbids and Section 10 rule 1 restates.
 
-`current_mana`, `mana_recovery_remainder_seconds`, `current_health`, and the Health-recovery fields **are** recorded, because they are not derivable: they are the result of play.
+`current_mana`, `mana_recovery_remainder_seconds`, `current_health`, the Health-recovery fields, `intervention_silent_checks`, and `active_intervention` **are** recorded because they are not derivable: they are the result of play.
 
 ---
 

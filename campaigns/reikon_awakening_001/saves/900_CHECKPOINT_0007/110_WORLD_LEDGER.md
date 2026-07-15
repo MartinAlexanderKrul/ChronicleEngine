@@ -8,9 +8,9 @@ canonical_record: REC-000039
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000034
-  event_time: "Year 31 AR, Warehouse 7 basement cleared"
-  record_time: "2026-07-15T09:27:58Z"
+  source: EVT-000033
+  event_time: "Year 31 AR, Warehouse 7 return, basement combat"
+  record_time: "2026-07-15T09:15:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -80,10 +80,10 @@ canonical_record: REC-000039
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000034
-  event_time: "Year 31 AR, Warehouse 7 basement cleared"
-  record_time: "2026-07-15T09:27:58Z"
-  uncertainty: "Why D-grade Breakers guarded an E-grade Rift, whether their red-black cores indicate bonding, and the safe energetic-severance method remain unestablished."
+  source: EVT-000033
+  event_time: "Year 31 AR, Warehouse 7 return, basement combat"
+  record_time: "2026-07-15T09:15:00Z"
+  uncertainty: "Why D-grade Breakers guard an E-grade Rift, whether they are bonded to the core, and the correct core-extraction method remain unestablished."
 type: Place
 subtype: "active E-grade Rift interior"
 scope: local
@@ -93,7 +93,7 @@ aliases:
     quality: current
 canonical_state:
   region: "Verholt Industrial District (ENT-000031)"
-  features: "Warehouse pocket interior with collapsed shelving, cracked concrete seeping Rift mana, and blue-green Rift glow. Six harvested creature corpses lie on the upper floor — the pack leader, two Broodlings, and three Swarmers (EVT-000032). A downward-sloping corridor reaches a basement chamber roughly thirty metres across and fifteen metres high. All four D-grade Breakers that guarded it are dead and harvested. A metre-tall burgundy core hangs about two metres above the floor in an organic crystalline framework. It pulses every three seconds, raises nearby temperature by roughly 10–15°C, vibrates in resonance with the framework, and connects to concentric geometric floor patterns extending roughly eight metres. A direct extraction attempt failed; the core remains energetically bonded and unextracted."
+  features: "Warehouse pocket interior with collapsed shelving, cracked concrete seeping Rift mana, and blue-green Rift glow. Six harvested creature corpses lie on the upper floor — the pack leader, two Broodlings, and three Swarmers (EVT-000032). A downward-sloping corridor reaches an entered basement chamber roughly thirty metres across and fifteen metres high. A head-sized deep-red core hangs about two metres above the floor in a crystalline framework. Four D-grade Breakers guarded it in a deliberate formation. The ledge sentinel is dead; below the four-metre ledge, a climbing Breaker is burned and approaching, a flank Breaker is critically burned and thrashing, and an unharmed guardian remains near the core. The core is visible but unextracted."
   # occupants is standing state — controllers, residents, or contained entities
   # (templates/objects/place.md). Nobody resides in or controls a Rift, so this
   # is empty and stays empty whoever is inside it. Daedalus was once listed here

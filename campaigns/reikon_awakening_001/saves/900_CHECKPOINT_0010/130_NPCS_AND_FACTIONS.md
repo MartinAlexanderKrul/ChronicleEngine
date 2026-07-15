@@ -8,9 +8,9 @@ canonical_record: REC-000041
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000037
+  source: EVT-000035
   event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T17:31:04Z"
+  record_time: "2026-07-15T16:44:48Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -40,16 +40,16 @@ canonical_record: REC-000041
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000037
+  source: EVT-000036
   event_time: "Year 31 AR, before expedition"
-  record_time: "2026-07-15T17:31:04Z"
-  uncertainty: "Whether Teague knows Vane, and how the directorship relates to the Institute's lead-researcher post, are unestablished. Teague has never appeared in a played scene; he exists as authored backstory."
+  record_time: "2026-07-15T16:44:48Z"
+  uncertainty: "Whether Venn knows Vane, and how the directorship relates to the Institute's lead-researcher post, are unestablished."
 type: Character
 subtype: academic director
 scope: local
 lifecycle: active
 aliases:
-  - name: "Dr. Ambrose Teague"
+  - name: "Dr. Kael Venn"
     quality: current
 relationships:
   - REL-000042
@@ -58,8 +58,8 @@ canonical_state:
   condition: "No adverse condition established"
   capabilities: "Aurology Institute director; Rift-research leadership"
   personality: "Supportive of Daedalus's potential"
-  situation: "Recommended Daedalus to the Hunters' Authority. Backstory only — Daedalus did not visit him before the expedition and has not met him on screen."
-  disambiguation: "NOT Dr. Sable Vane (ENT-000036), the world-layer lead researcher of the same Institute. Ruled distinct figures by EVT-000036. Teague directs the Institute; Vane leads its research. Do not merge, alias, or conflate them. Daedalus has met neither on screen. This entity was recorded as 'Dr. Kael Venn' until EVT-000037 corrected the name, which had collided with Vane here and with Kael Travis (ENT-000021) in Prototype Beta; that string is a superseded record, not a former name, and no former alias exists."
+  situation: "Recommended Daedalus to the Hunters' Authority"
+  disambiguation: "NOT Dr. Sable Vane (ENT-000036), the world-layer lead researcher of the same Institute. Ruled distinct figures by EVT-000036: Venn directs the Institute, Vane leads its research, and the resemblance of the names is coincidental. Do not merge, alias, or conflate them. Daedalus has met Venn and has never met Vane."
 ```
 
 ```yaml
@@ -235,14 +235,14 @@ canonical_record: REC-000041
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000037
+  source: EVT-000025
   event_time: "Year 31 AR, before expedition"
-  record_time: "2026-07-15T17:31:04Z"
+  record_time: "2026-07-14T00:00:00Z"
 endpoints:
   - ENT-000051
   - ENT-000061
 type: mentorship
-qualities: "Supportive; Teague recommended Daedalus to the Authority"
+qualities: "Supportive; Venn recommended Daedalus to the Authority"
 state: active
 ```
 

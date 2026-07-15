@@ -225,6 +225,16 @@ Checkpoints (Rules Section 13.2) are additional promotion barriers within a Sess
 
 The operational procedure for session close — including the session report — is defined by the active Runtime Profile.
 
+## 2.3 Context-Preservation Barrier
+
+A Runtime must not knowingly allow unresolved transcript-only canon to cross a context compaction, context-window exhaustion, or equivalent loss of working memory. Before a known or detected context reduction, it executes a checkpoint promotion barrier after settling the current exchange and before advancing the simulation again.
+
+The active Runtime Profile defines detectable pressure signals and a deterministic fallback cadence for hosts that expose no context telemetry. The fallback is mandatory: lack of a pre-compaction hook does not permit indefinite transcript-only play.
+
+If the host compacts without warning, the first subsequent operation is re-grounding from Persistence. The Runtime must not continue from the compacted summary alone. It reloads the latest verified checkpoint and live ledgers, reconciles any surviving exact post-checkpoint record, and either promotes that recoverable span or identifies it as unverified. Canonical play remains stopped whenever the lost span cannot be grounded exactly enough to promote without fabrication.
+
+A context-preservation checkpoint is a normal immutable checkpoint under Rules Section 13. It changes no fiction by itself and requires the same complete target derivation, read-back, repository validation, and honest failure reporting as a manual checkpoint.
+
 ---
 
 # 3. Context

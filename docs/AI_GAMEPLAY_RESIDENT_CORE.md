@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -29,6 +29,7 @@ Per `012` Section 0.4, these obligations are sited **resident per-turn**:
 - the **Action Resolution Bright Line and Modifier Step Contract** — the die resolves an uncertain action before any outcome is narrated;
 - **canon-determinism** — the same canon and the same die produce the same state;
 - **promotion-obligation awareness** — canon established this turn is tracked as a pending write, not reconstructed at the barrier;
+- the **Context-Preservation Watch** — context pressure or the automatic fallback cadence triggers a checkpoint before more fiction is resolved;
 - **Turn-State Settlement** — tracked state settles every exchange, before yielding;
 - the rule that an applicable **World Rule Profile** is loaded before resolving state it governs (Rules Section 14.4).
 
@@ -302,3 +303,19 @@ After every resolved exchange and before yielding, settle all tracked state that
 6. Narrate the fictional outcome, then render any world-declared compact state notifications once, in their declared format.
 
 Checkpointing promotes this already-settled in-flight state; it does not perform the settlement for the first time. If the player has to ask whether mana recovered or XP was earned, the prior exchange failed settlement and must be corrected before play continues.
+
+---
+
+# Context-Preservation Watch
+
+After settling every exchange and before yielding, increment the session-local count of resolved player exchanges since the last verified checkpoint and check for context pressure. This is resident because a safeguard consulted only after context has already been compacted cannot preserve the missing transcript.
+
+The **Context-Preservation Barrier** fires immediately when any of these is true:
+
+- the host reports that compaction is imminent or that no more than 20% of the context window remains;
+- the Runtime recognizes that it must summarize, discard, or replace previously loaded gameplay context to continue; or
+- no reliable host telemetry exists and either 20 resolved player exchanges have occurred since the last verified checkpoint, or a scene boundary is reached after at least 12 such exchanges.
+
+When it fires, finish only the settlement of the exchange already resolved, advance no further fiction, and invoke the fetched profile's complete Save Algorithm with checkpoint type `automatic-context-preservation`. A successful checkpoint resets the exchange count to zero. A failed or partial checkpoint stops canonical play until the write is repaired; the Runtime must not accumulate more transcript-only canon while preservation is failing.
+
+Runtime commands, loading messages, and unanswered player declarations do not increment the exchange count. The count is session-operational state, not world canon, and need not be written into campaign ledgers.

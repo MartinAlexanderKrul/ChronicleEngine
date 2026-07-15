@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000077 |
-| Record | `REC-` | Canonical Record | REC-000053 |
-| Event | `EVT-` | Event | EVT-000034 |
+| Entity | `ENT-` | Persistent Entity | ENT-000080 |
+| Record | `REC-` | Canonical Record | REC-000055 |
+| Event | `EVT-` | Event | EVT-000037 |
 | Relationship | `REL-` | Relationship | REL-000047 |
 
 ---
@@ -65,7 +65,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000035 - REC-000037 | Record | Reikon Awakening Checkpoint 001: record identifiers consumed (high-water advanced to REC-000037) for the Session 1 campaign ledgers (chronicle, objectives, inventory ownership). The individual records were not separately defined; the numbers are retired under never-reuse (Invariant 3). See remediation note below |
 | EVT-000025 - EVT-000028 | Event | Reikon Awakening Session 1 gameplay: expedition begin (025), first combat / broodling kills (026), mana recovery and observation (027), swarmer combat (028). Defined in the Checkpoint 001 snapshot; see remediation note below |
 | EVT-000029 - EVT-000030 | Event | Reikon Awakening transcript repair and Session 2 promotion: omitted morning physical training (029), pack-leader combat and resulting state (030) |
-| ENT-000061 - ENT-000064 | Entity | Reikon Awakening live Data Model migration: Dr. Kael Venn, Captain Marissa Thorne, Lysander, and Warehouse 7 E-Rift |
+| ENT-000061 - ENT-000064 | Entity | Reikon Awakening live Data Model migration: the Aurology Institute's director, Captain Marissa Thorne, Lysander, and Warehouse 7 E-Rift. The director was recorded at allocation as "Dr. Kael Venn"; `EVT-000037` corrected the name to **Dr. Ambrose Teague** as a recording error, the string having collided with Dr. Sable Vane (`ENT-000036`) and Kael Travis (`ENT-000021`). Same identifier throughout; no former alias exists |
 | REC-000038 - REC-000045 | Record | Reikon Awakening standard live campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180) |
 | REL-000040 - REL-000044 | Relationship | Reikon Awakening: Authority membership, Institute affiliation, and Daedalus's three established contacts |
 | REC-000046 | Record | Reikon Awakening `saves/900_CHECKPOINT_0002/900_SAVE_MANIFEST.md` — the first conforming checkpoint manifest, superseding the quarantined Checkpoint 001 |
@@ -86,6 +86,12 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000034 | Event | Reikon Awakening owner ruling and completed Breaker engagement under Profile 0.5: finite life-burn anomaly, basement clear, Ascension, harvest, research, and failed direct core extraction |
 | REC-000052 | Record | Reikon Awakening `saves/900_CHECKPOINT_0008/900_SAVE_MANIFEST.md` — complete owner-approved shared-chat continuation after the finite life-burn anomaly and basement clear |
 | REC-000053 | Record | Reikon Awakening `saves/900_CHECKPOINT_0009/900_SAVE_MANIFEST.md` — Profile 0.6 recurrent-intervention and succession migration; no fictional time elapsed |
+| ENT-000078 – ENT-000080 | Entity | Reikon Awakening `EVT-000035` omission repair: Kalens's address slip (078), the Institute–Vigil tension over deep-Rift study (079), and Marta's core-depth collapse correlation (080) — artifacts and knowledge established by the Institute consultation but not recorded when `EVT-000033` promoted it |
+| EVT-000035 | Event | Reikon Awakening: ruling repairing the `EVT-000033` under-promotion of the Institute consultation — the address slip, the same-day reporting condition on `REL-000045`, the Vigil disclosure, and Marta's hypothesis. No fiction added; no state recalculated |
+| EVT-000036 | Event | Reikon Awakening: ruling that campaign-local Dr. Kael Venn (`ENT-000061`) and world-layer Dr. Sable Vane (`ENT-000036`) are distinct figures despite near-identical names and adjacent Institute roles. No identity link recorded; no state changed |
+| REC-000054 | Record | Reikon Awakening `saves/900_CHECKPOINT_0010/900_SAVE_MANIFEST.md` — omission repair and identity disambiguation (`EVT-000035`, `EVT-000036`); no fictional time elapsed |
+| EVT-000037 | Event | Reikon Awakening: ruling correcting `ENT-000061`'s name from "Dr. Kael Venn" to Dr. Ambrose Teague as a recording error, and correcting `EVT-000036`'s unsupported claim that Daedalus had met him. No former alias; identifier unchanged |
+| REC-000055 | Record | Reikon Awakening `saves/900_CHECKPOINT_0011/900_SAVE_MANIFEST.md` — the `EVT-000037` name correction; no fictional time elapsed |
 
 ---
 

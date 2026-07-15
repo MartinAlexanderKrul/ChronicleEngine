@@ -26,7 +26,6 @@ subjects:
   - EVT-000034
   - EVT-000035
   - EVT-000036
-  - EVT-000037
 ```
 
 ## Expedition Begins
@@ -251,25 +250,6 @@ importance: archived
 participants:
   - ENT-000061
 description: "Owner ruling resolving a latent identity ambiguity surfaced by the EVT-000035 audit. Campaign-local Dr. Kael Venn (ENT-000061, 'Aurology Institute director; Rift-research leadership') and world-layer Dr. Sable Vane (ENT-000036, 'Lead researcher of the Aurology Institute') carry near-identical names and adjacent roles at the same institution, and no record related them. The owner rules them DISTINCT FIGURES: Venn directs the Institute, Vane leads its research, and the similarity of their names is coincidental and in-world unremarkable. They are not to be conflated, merged, or treated as aliases of one another. No identity link is recorded, because the engine's closed link set (011_ENGINE_DATA_MODEL.md Section 6) expresses continuity and suspected sameness only and has no distinct-from link; the ruling itself is the record, and ENT-000061 carries a disambiguation note pointing here. Nothing already played changes: Venn's recommendation of Daedalus to the Authority (REL-000042) stands as Venn's, and Daedalus has no established relationship with Vane. The reciprocal note is deliberately not written into ENT-000036, because the Reikon world layer is shared across campaigns and must not reference one campaign's local entities. Consequence for play: Vane's deep-Rift core (ENT-000050) and the finding it implies (ENT-000045) remain unknown to Daedalus, and the Vigil pressure Kalens described (ENT-000079) is adjacent to Vane's storyline without Daedalus having any established route to it."
-```
-
-## Ruling — The Institute Director Is Named Ambrose Teague
-
-```yaml
-id: EVT-000037
-canonical_record: REC-000043
-schema_version: "0.1.1"
-status: active
-provenance:
-  source: ruling
-  event_time: "Year 31 AR, predating the first expedition; no fictional time elapsed"
-  record_time: "2026-07-15T17:31:04Z"
-  uncertainty: "Whether Teague and Vane know each other, and how the Institute's directorship relates to its lead-researcher post, remain unestablished. Teague's given name and manner beyond 'supportive of Daedalus's potential' are unauthored, as they were under the prior name."
-kind: ruling
-importance: archived
-participants:
-  - ENT-000061
-description: "Owner ruling correcting the name of ENT-000061, the Aurology Institute's director, from 'Dr. Kael Venn' to 'Dr. Ambrose Teague'. Classified under Runtime Section 8.1 as a recording error rather than a canon conflict, on the same footing as EVT-000032. The name entered canon through the 2026-07-14 Data Model migration, which authored ENT-000061 as backstory; it was never spoken, written, or referenced in any played scene. The evidence is exhaustive: 'Venn' appears in no transcript in exports/, the Session 1 export names no Institute figure at all, and the legacy sheet records his last interaction as 'Pre-expedition (didn't visit before expedition)'. The name was therefore never established in fiction, only in a record. NO FORMER ALIAS IS RECORDED, and this is the substantive point of the ruling: Data Model Section 5.1's rename procedure — add a current alias, demote the prior to former — models an IN-WORLD rename, a person who changed their name. That never happened here. Recording 'Dr. Kael Venn' as a former alias would assert a fiction that no scene contains and that the owner does not intend. The correct reading is that the director has always been Ambrose Teague and the record was simply wrong, so ENT-000061 carries exactly one current alias. The identifier is unchanged, per Section 5: identity is the ENT- number and never the name. Two defects are cured at once. The name collided on both sides: 'Venn' against world-layer Dr. Sable Vane (ENT-000036) at the same institution, which EVT-000036 had to rule on, and 'Kael' against Kael Travis (ENT-000021), the unrelated protagonist of Prototype Beta — evidence the migration was reusing names without checking the repository. 'Ambrose Teague' collides with no existing figure in either world on initial, ending, or syllable. This ruling also CORRECTS AN ERROR IN EVT-000036, which states in its uncertainty envelope that 'Daedalus has met Venn and has never met Vane'. The first clause is unsupported: Daedalus has met neither, and the legacy sheet says so explicitly. EVT-000036's other findings stand — the two are distinct figures and must not be conflated. EVT-000036 is immutable (011_ENGINE_DATA_MODEL.md Section 2.4); its bytes are unchanged, it is retained as evidence of how the error was recorded, and this ruling governs where the two disagree. Nothing already played changes and no state is recalculated: the directorship, the mentorship quality of REL-000042, and the recommendation to the Authority are untouched and are now Teague's. The legacy non-canonical files 050_CAMPAIGN_LOG.md and 100_CHARACTER_DAEDALUS.md still read 'Dr. Kael Venn' and are deliberately left alone; both declare themselves historical presentation that must not be updated as a second source of truth, and they are now evidence of the superseded name."
 ```
 
 ## Current Chronicle Position

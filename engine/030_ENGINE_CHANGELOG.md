@@ -12,6 +12,10 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-15 — Automatic context-preservation checkpoints
+
+**Runtime safeguard:** Added a normative Context-Preservation Barrier and a resident per-turn watch. A host compaction warning, 20%-remaining signal, or Runtime-detected need to discard context now triggers the complete Save Algorithm before more fiction advances. Hosts without telemetry use a deterministic fallback: checkpoint by 20 resolved player exchanges, or at the first scene boundary after 12. Unexpected compaction forces repository re-grounding and forbids continuation from a lossy summary alone. Automatic checkpoints use the ordinary promotion, read-back, validation, and immutable-save guarantees; failure suspends canonical play rather than accumulating more transcript-only canon. Added `tools/test_context_preservation_contract.ps1` to prevent drift across the normative, resident, fetched, and player-facing layers. Runtime Profile 1.33, Resident Core 1.1, Gameplay Start Guide 2.16; Engine Version unchanged.
+
 ## 2026-07-15 — Reikon World Rule Profile 0.6: recurrent interventions and succession
 
 **Owner direction:** the System should interact more often and wants its Bearer strong rather than safe. Profile 0.6 adds a recorded d100 intervention check at daily, Ascension, and anomalous-Rift triggers; a two-silence ceiling; finite one-use techniques; voluntary trial gates; rare compulsory displacement into unknown trial Rifts; and exact persistence requirements for every temporary effect. Trial entry grants nothing—XP still requires resolved challenge. The profile also establishes one living Bearer per world-line and guaranteed eventual succession after death: the dead campaign remains terminal, nothing character-bound transfers, and a later successor is a new character with new identifiers. The System is patient; it does not need the current host to survive.

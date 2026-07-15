@@ -110,13 +110,37 @@ Daedalus is Level 2 at 31/130 XP, 88/105 Health, and 7/14 Mana. All four Breaker
 
 Manifest `REC-000052`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers. Checkpoint 0009 supersedes it as the checkpoint `/continue` restores.
 
-## `900_CHECKPOINT_0009/` — current restore point
+## `900_CHECKPOINT_0009/` — restorable; superseded
 
 Captures the same complete post-combat fiction as Checkpoint 0008 with Reikon Profile 0.6 declared. Daedalus still stands in the cleared basement chamber at Level 2, 31/130 XP, 88/105 Health, and 7/14 Mana; no fictional time elapsed and no inventory or objective changed.
 
 Profile 0.6 initializes `intervention_silent_checks: 0` and `active_intervention: none`. Future eligible triggers may produce directives, finite techniques, trial-Rift offers, or rare compulsory displacement. The expired Warehouse 7 life-burn anomaly remains unavailable. Bearer death remains terminal for Daedalus and eventually begins a fresh successor campaign rather than resurrection.
 
-Manifest `REC-000053`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers. This is the checkpoint `/continue` restores.
+Manifest `REC-000053`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers.
+
+Checkpoint 0010 supersedes it as the checkpoint `/continue` restores. **The fiction is identical; only the records differ.** Restoring 0009 loses the Institute consultation's artifacts and conditions (`ENT-000078`–`ENT-000080`, and the same-day obligation on `REL-000045`) and reopens the Venn/Vane identity ambiguity. It remains restorable as the pre-repair branch point.
+
+## `900_CHECKPOINT_0010/` — current restore point
+
+Captures the Checkpoint 0009 fiction exactly, with the record defects that survived it repaired. **No fictional time elapsed and no value was recalculated.** Daedalus stands in the cleared basement chamber at Level 2, 31/130 XP, 88/105 Health, and 7/14 Mana; the core remains energetically bonded and unextracted.
+
+`EVT-000035` repairs an under-promotion in `EVT-000033`, which had promoted the Institute consultation as relationships while dropping the artifacts and conditions the same scene established: Kalens's carried address slip (`ENT-000078`), the Institute–Vigil tension over deep-Rift study (`ENT-000079`), Marta's core-depth collapse correlation (`ENT-000080`), the standing same-day reporting obligation now recorded on `REL-000045` as **met and unhonoured**, and a stale `situation` on `ENT-000062`. `EVT-000036` rules Dr. Kael Venn (`ENT-000061`) and Dr. Sable Vane (`ENT-000036`) distinct figures, closing a latent ambiguity that invited a forbidden silent collapse of two identifiers.
+
+Marta's correlation is recorded as a hypothesis Daedalus was told, not an engine rule; the stability window is unchanged at approximately five days.
+
+Manifest `REC-000054`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers, hash-verified after capture.
+
+Checkpoint 0011 supersedes it as the checkpoint `/continue` restores. Restoring 0010 reinstates the Institute director's superseded name, "Dr. Kael Venn", and `EVT-000036`'s unsupported claim that Daedalus had met him. No played fiction differs.
+
+## `900_CHECKPOINT_0011/` — current restore point
+
+Captures the Checkpoint 0010 fiction exactly with one name corrected. **No fictional time elapsed and no value was recalculated.** Daedalus stands in the cleared basement chamber at Level 2, 31/130 XP, 88/105 Health, and 7/14 Mana; the core remains energetically bonded, and Kalens's same-day obligation remains met and unhonoured.
+
+`EVT-000037` corrects `ENT-000061`, the Aurology Institute's director, from "Dr. Kael Venn" to **Dr. Ambrose Teague**, as a recording error under Runtime Section 8.1. The name was authored by the 2026-07-14 Data Model migration and never appeared in a played scene. **No former alias is recorded** — Section 5.1's rename procedure models an in-world rename, which never happened; the director has always been Teague and the record was wrong. The identifier is unchanged. The old string had collided with Dr. Sable Vane (`ENT-000036`) at the same institution and with Kael Travis (`ENT-000021`) in Prototype Beta.
+
+The ruling also corrects `EVT-000036`'s claim that Daedalus had met the director; he has met neither him nor Vane. That event's distinctness finding stands and its bytes are unchanged.
+
+Manifest `REC-000055`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers, hash-verified after capture. This is the checkpoint `/continue` restores.
 
 ---
 

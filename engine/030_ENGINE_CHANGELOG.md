@@ -12,6 +12,31 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-19 — Player-selectable narration length: the `/length` command
+
+Refinement under Decision 069 — adds a player-facing display toggle to the Runtime Command Interface; no Rules section, no Data Model change, and no mechanism a world or campaign invokes. Owned by Version 0.3 Planning; no ADR and no engine decision consumed. Follows the `/debug` and `/status` precedent — a presentation command that never touches canon, resolution, or the die.
+
+**Motivation:** The narration-economy refinement (below) reduces verbosity pressure but sets no length anchor, and the resident core deliberately refuses a word cap — so an unanchored register still defaults long. Rather than impose one register on every player, `/length` lets the player choose it, the same shape as `/debug` letting the player choose mechanical detail.
+**Command:** `/length [short|normal|long]` — `short` (1–2 paragraphs), `normal` (2–3, default), `long` (4–5). No argument reports the current level. Aliases `/narration`, `/verbosity`. Session-local, non-canonical, written to no ledger.
+**Soft register, not a cap (owner choice):** the counts set where narration *starts* and are read every turn; a genuinely irreducible beat may still spill and a bare yield may fall short. This preserves the engine's no-truncation principle while giving the player real control over the default, and it never trims the elevation of the player's own declared action.
+**Surfaces:** the row is added identically to the profile Command Table, the README cold-start mirror, and the Gameplay Start Guide, kept in sync by `tools/test_runtime_command_catalog.ps1` (Decision 064). The resident core's Response Length section defines what each level means for per-turn narration (Decision 070).
+**Command-surface note:** this grows the command surface that the proposed 0.3.3 (Runtime Command Surface Settlement) intends to consolidate. It is added as a clean `/debug`-class toggle requiring no ADR — consistent with 0.3.3's own goal that command changes should not require ADRs — and 0.3.3 may later fold it into a general display-preferences pattern.
+**Documents:** Runtime Profile 1.34, README 1.6, Gameplay Start Guide 2.17, Resident Core 1.3.
+**Validation:** Repository validation, catalog synchronization, validator regression, Reikon contract, context-preservation, and decision/roadmap sync tests all pass.
+**Engine Version:** Unchanged; remains 0.2.0.
+
+## 2026-07-19 — Narration economy and the no-option-menu yield
+
+Refinement under Decision 069 — sites and sharpens obligations the engine already carries in the resident layer; adds no Rules section, no Data Model change, and no mechanism a world or campaign invokes. Owned by Version 0.3 Planning. No engine decision consumed.
+
+**Evidence:** A live run reported the AI Narrator's messages tending too long. The resident core governs decision *density* (one player opportunity per response) but had no counterweight for verbosity *within* a beat: `Narrative Richness` was instructed to "keep high" with no opposing force, and `Response Length` deliberately refuses a word budget. A Runtime following the resident core faithfully therefore produced long beats by design — the cadence design working as written, not a Runtime fault.
+**Not a word budget.** The document's refusal of a word cap is retained deliberately: a cap truncates a legitimately dense beat and pads a thin one. The gap was that richness had no counterweight, not that a limit was missing.
+**Change 1 — richness is selection, not accumulation.** `Narrative Richness` is reframed: the single most telling detail lands harder than an exhaustive inventory of every smell, sound, and sconce, and the catalogue is named as the usual source of an over-long response. The economy is scoped to description of the *world*; it explicitly does **not** trim the Runtime's rendering of the player's *own declared action*, which the narrator still elevates from terse intent into full fiction (that elevation is the value of being narrated, not bloat). This boundary is the disposition of the owner's objection that recapping/elevating sparse player input is a feature.
+**Change 2 — yield on an open situation, not an option menu.** New Interaction Cadence subsection: the Runtime ends a turn on the open situation and stops; it does not break frame to enumerate the player's choices ("You could read the ledger, follow him, or wait"). An out-of-character option menu is both dead weight every turn and a soft nudge into the Player Intent Domain — it frames the choice set rather than authoring intent, and intent belongs to the player's own creativity. The prohibition is narrow: diegetic NPC questions and genuine clarifying forks on ambiguous declared intent are preserved.
+**Documents:** `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Document Version 1.2). No fetched-profile, Rules, Data Model, or Runtime change.
+**Validation:** Repository validation passes. Validator regression, catalog, Reikon contract, context-preservation, and decision/roadmap sync tests pass.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-15 — Automatic context-preservation checkpoints
 
 **Runtime safeguard:** Added a normative Context-Preservation Barrier and a resident per-turn watch. A host compaction warning, 20%-remaining signal, or Runtime-detected need to discard context now triggers the complete Save Algorithm before more fiction advances. Hosts without telemetry use a deterministic fallback: checkpoint by 20 resolved player exchanges, or at the first scene boundary after 12. Unexpected compaction forces repository re-grounding and forbids continuation from a lossy summary alone. Automatic checkpoints use the ordinary promotion, read-back, validation, and immutable-save guarantees; failure suspends canonical play rather than accumulating more transcript-only canon. Added `tools/test_context_preservation_contract.ps1` to prevent drift across the normative, resident, fetched, and player-facing layers. Runtime Profile 1.33, Resident Core 1.1, Gameplay Start Guide 2.16; Engine Version unchanged.

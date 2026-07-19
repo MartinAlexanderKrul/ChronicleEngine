@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.33
+**Document Version:** 1.34
 **Status:** Active Gameplay Workflow — Fetched Reference Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -93,6 +93,7 @@ Each command dispatches to the named procedure. The procedure — not this table
 | `/status` | Show the out-of-character **Progression Surfacing** view (derived tiers, level, experience log). Distinct from any world's diegetic `/system`. | Progression Surfacing |
 | `/validate` | Run the Repository Validation Gate on demand and report the result. Out-of-character; no canon change. | Repository Validation Gate |
 | `/debug` | Toggle the testing/debug mechanical breakdown (difficulty, modifiers, band boundaries) described under Information Boundary. Off by default. | Information Boundary (debug mode) |
+| `/length [short|normal|long]` | Set the **narration length register**: `short` (1–2 paragraphs), `normal` (2–3), or `long` (4–5). With no argument, report the current level. Session-local display preference; the register is a soft default read each turn, never a cap on a genuinely dense beat, and never affects canon, resolution, or the die. Default `normal`. Aliases: `/narration`, `/verbosity`. | Interaction Cadence (Response Length) |
 | `/export-debug [label]` | Export the **entire user-visible current chat**, including conversation before engine startup and whether or not a campaign is loaded, to `exports/debug/`. This diagnostic transcript is not a gameplay export, establishes no canon, and is never a save. | Chat Debug Export |
 
 The interface is **extensible**: a future runtime command is added here as another dispatcher onto an existing procedure. A command that would require a *new* persistence, resolution, or canon mechanic is out of scope for this table and belongs in the Engine Rules or a Decision first.

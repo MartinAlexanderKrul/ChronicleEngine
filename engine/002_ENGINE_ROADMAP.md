@@ -685,7 +685,7 @@ The engine can be executed and restored reliably by any conforming Runtime, and 
 Pulls PA-008 forward from Version 0.6.
 
 - Bless one checkpoint form and migrate existing checkpoints. Resolve the documented `saves/900_CHECKPOINT_<NNNN>/` (full ledger copies) versus flat `.saves/*.yaml` (manifest-only) versus the empty `checkpoints/` placeholder drift.
-- Acceptance: every existing checkpoint either restores or is explicitly quarantined as non-restorable; the Reikon Checkpoint 0001 failure class is covered by a regression fixture.
+- Acceptance: every existing checkpoint restores, or is re-issued into a conforming restorable checkpoint carrying its reconstructed state — no save-point is abandoned; the Reikon Checkpoint 0001 failure class is covered by a regression fixture.
 - Excludes: campaign and world migration procedures, which remain Version 0.6.
 - ADR: Decision 072 — Save Layer Unification (**Proposed**, ADR Design).
 

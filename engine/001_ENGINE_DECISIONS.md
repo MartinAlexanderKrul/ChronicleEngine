@@ -3312,7 +3312,7 @@ Two secondary problems are entangled with the form:
 
 2. **Retire the alternatives.** `.saves/*.yaml` and bare `checkpoints/` placeholders are prohibited. A conforming Runtime writes only the directory form.
 
-3. **Migrate every existing checkpoint.** Each is either (a) confirmed restorable and normalized to the canonical `NNNN` form, or (b) recorded as quarantined and non-restorable, with a reason, in the campaign's external `saves/README.md`. Immutability holds throughout: quarantined bytes are never edited (Rules Section 13.2); quarantine is an external annotation, not a mutation of the snapshot.
+3. **Repair, don't abandon; every save-point stays continuable.** Every existing checkpoint is made continuable. A conforming checkpoint is kept as-is. A nonconforming checkpoint is **re-issued** — a conforming, validated checkpoint carrying its reconstructed state is produced by re-promotion (Decision 061), and the nonconforming original is retained immutably as evidence and marked *superseded by its re-issue*, never "do not restore." **No save-point is ever abandoned:** every point in a campaign's history keeps a restorable checkpoint. Immutability holds throughout — the original's bytes are never edited (Rules Section 13.2); its status is recorded externally in the campaign's `saves/README.md`. True quarantine — a snapshot with no evidence from which to reconstruct — survives only as a genuine last resort, and no current checkpoint requires it.
 
 4. **Save manifests carry no live-registry identifier.** A manifest is checkpoint-local metadata, not a Persistent Object in live canon: it mints no registry identifier, and live ledgers must not reference a manifest by identifier. A checkpoint is referenced from live canon by its ordinal, label, and capture time — never by a `REC-` id trapped inside the excluded `saves/` tree. This resolves the dangling-reference finding and keeps the validator's `saves/` exclusion sound.
 
@@ -3328,7 +3328,7 @@ Two secondary problems are entangled with the form:
 
 - Rules Section 13 gains an explicit canonical-form statement and the numbering rule. This is **foundational under Decision 069** — it changes a Rules section and sets a form campaigns must satisfy — which is appropriate here, because foundational work is exactly what the Version 0.3 ADR Design stage is for.
 - The `checkpoints/` placeholder is removed; any `.saves/*.yaml` is migrated or quarantined.
-- Reikon Checkpoint 0001 remains quarantined; the campaign's later conforming checkpoints stay the restore points.
+- Reikon Checkpoint 0001 is not abandoned: the state it was meant to preserve is already re-issued as conforming Checkpoint 0002 (verified against the Session 1 transcript) and restorable there. The broken original is retained immutably as evidence and relabelled *superseded by 0002*, not *quarantined*; its `saves/README.md` entry is corrected to match.
 - **Out of scope:** campaign and world *migration procedures* for version mismatches, which remain Version 0.6 (Decision 039). This decision unifies checkpoint *form*, not cross-version migration.
 - Owning milestone: **Version 0.3 — 0.3.1 Save Layer Unification.** Class: foundational.
 

@@ -52,12 +52,13 @@ $requiredLedgers = @(
     '180_CURRENT_STATE.md'
 )
 
-# Checkpoints exempt from the completeness contract because they are recorded
-# as quarantined and non-restorable, and their bytes must not be repaired
-# (Rules Section 13.2). They are precisely the checkpoints this test would
+# Nonconforming originals: superseded snapshots kept as evidence, exempt from
+# the completeness contract because their bytes must not be repaired (Rules
+# Section 13.2) and their save-point is restorable from a conforming re-issue
+# instead (Decision 072). They are precisely the checkpoints this test would
 # otherwise demand be fixed -- and fixing them is forbidden. Status and
 # reasoning: the owning campaign's saves/README.md.
-$quarantined = @(
+$supersededOriginals = @(
     'reikon_awakening_001/900_CHECKPOINT_001'
 )
 
@@ -74,7 +75,7 @@ foreach ($campaign in Get-ChildItem -LiteralPath $campaignsRoot -Directory) {
     # ledgers and is discovered only when someone tries to restore it.
     foreach ($checkpoint in Get-ChildItem -LiteralPath $savesRoot -Directory) {
         $key = "$($campaign.Name)/$($checkpoint.Name)"
-        if ($quarantined -contains $key) { continue }
+        if ($supersededOriginals -contains $key) { continue }
 
         $manifest = Join-Path $checkpoint.FullName '900_SAVE_MANIFEST.md'
         if (-not (Test-Path -LiteralPath $manifest -PathType Leaf)) {
@@ -112,9 +113,9 @@ foreach ($campaign in Get-ChildItem -LiteralPath $campaignsRoot -Directory) {
         Add-Failure "system/WORLDS_AND_CAMPAIGNS.md gives campaigns/$($campaign.Name)/ the latest checkpoint '$indexedCheckpoint', but its 180_CURRENT_STATE.md declares '$declaredCheckpoint' as the latest restorable checkpoint. The index's Maintenance rule requires updating it in the same change that checkpoints a campaign."
     }
 
-    # --- Contract 3: the index never points at a quarantined checkpoint ----
-    if ($quarantined -contains "$($campaign.Name)/$indexedCheckpoint") {
-        Add-Failure "system/WORLDS_AND_CAMPAIGNS.md points campaigns/$($campaign.Name)/ at '$indexedCheckpoint', which is recorded as quarantined and must not be restored."
+    # --- Contract 3: the index never points at a superseded original ------
+    if ($supersededOriginals -contains "$($campaign.Name)/$indexedCheckpoint") {
+        Add-Failure "system/WORLDS_AND_CAMPAIGNS.md points campaigns/$($campaign.Name)/ at '$indexedCheckpoint', a superseded nonconforming original that is not a restore target; point it at the conforming re-issue instead."
     }
 }
 

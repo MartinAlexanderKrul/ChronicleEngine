@@ -1,6 +1,6 @@
 # Chronicle Engine
 
-**Document Version:** 1.5
+**Document Version:** 1.6
 
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 
@@ -87,6 +87,7 @@ On bootstrap, render **every row below**. Do not rename, merge, omit, or invent 
 | `/status` | Show the out-of-character progression view. Requires a loaded campaign. |
 | `/validate` | Run repository validation. |
 | `/debug` | Toggle full roll-mechanics detail. Off by default. |
+| `/length [short|normal|long]` | Set how long the narration runs each turn: `short` (1–2 paragraphs), `normal` (2–3), or `long` (4–5). With no argument, report the current level. A display preference only — it changes how much is written, never what happens, and touches no canon. Default `normal`. Aliases: `/narration`, `/verbosity`. |
 | `/export-debug [label]` | Export the raw user-visible current chat with only speaker labels and exact message bodies; no campaign required. |
 
 Do not open the first scene until you have presented a spoiler-safe introduction or recap and the player has confirmed readiness (the profile's Readiness Gate). As part of that readiness step, **show the complete runtime-command catalog** plus every command the selected campaign's world defines (a Reikon campaign lists `/system`) — never a remembered or state-filtered subset. If your file access is indirect, confirm write capability with the preflight canary described in the start guide before canonical play.

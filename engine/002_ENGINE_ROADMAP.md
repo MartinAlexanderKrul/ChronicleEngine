@@ -687,6 +687,7 @@ Pulls PA-008 forward from Version 0.6.
 - Bless one checkpoint form and migrate existing checkpoints. Resolve the documented `saves/900_CHECKPOINT_<NNNN>/` (full ledger copies) versus flat `.saves/*.yaml` (manifest-only) versus the empty `checkpoints/` placeholder drift.
 - Acceptance: every existing checkpoint either restores or is explicitly quarantined as non-restorable; the Reikon Checkpoint 0001 failure class is covered by a regression fixture.
 - Excludes: campaign and world migration procedures, which remain Version 0.6.
+- ADR: Decision 072 — Save Layer Unification (**Proposed**, ADR Design).
 
 #### 0.3.2 Presence and Location Structural Representation
 

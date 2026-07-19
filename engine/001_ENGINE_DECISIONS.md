@@ -3283,6 +3283,64 @@ The gate proves every world and campaign is **listed** and that each row **resol
 
 ---
 
+## Decision 072 — Save Layer Unification
+
+**Status:** Proposed
+**Date:** 2026-07-19
+**Related Sections:** Version 0.3 milestone 0.3.1; `010_ENGINE_RULES.md` Section 13; `012_ENGINE_RUNTIME.md` Sections 5.4, 6.1; `011_ENGINE_DATA_MODEL.md` Section 1 (identifier registry); `templates/ledgers/900_SAVE_MANIFEST.md`; `tools/validate_repository.ps1`, `tools/test_checkpoint_contract.ps1`; pulls forward PA-008; Decisions 039, 053, 054, 061, 069
+
+**ADR Design draft.** Proposed under the Version 0.3 (Runtime & Persistence Hardening) ADR Design stage. Not accepted; no implementation until ADR Approval freezes it (Decision 048).
+
+### Context
+
+Three incompatible checkpoint forms exist in the repository at once:
+
+- the documented `saves/900_CHECKPOINT_<NNNN>/` directory — full copies of the campaign's canonical ledgers plus a `900_SAVE_MANIFEST.md` (Rules Section 13.3);
+- flat `.saves/*.yaml` files written by Reikon's first session — manifest-only, holding no ledger copies;
+- an empty `checkpoints/` placeholder directory that is neither.
+
+The drift has already drawn blood. Reikon's original Checkpoint 001 was malformed and unrestorable; its live canon had to be rebuilt from a damaged snapshot, and the rebuild could be verified only because a gameplay transcript happened to survive on the owner's disk (Decision 061). PA-008 recorded the drift and parked it three versions away in Version 0.6; the accepted Version 0.3 scope pulled it forward, because a persistence layer that cannot reliably restore its own checkpoints is precisely what Runtime & Persistence Hardening exists to fix.
+
+Two secondary problems are entangled with the form:
+
+- **Numbering drift.** `900_CHECKPOINT_001` (three digits) sits beside `900_CHECKPOINT_0002` (four digits) in the same campaign.
+- **Manifest identifiers are unreferenceable.** The validator excludes `saves/` from its scan (Decision 054 and the 2026-07-14 export/exclusion work), so a `REC-` identifier that exists only inside a manifest has no live definition; citing `REC-000046` from a live ledger failed the gate as a dangling reference. The exclusion does not merely skip snapshots — it makes their contents invisible to referential integrity. Whether a save manifest should carry a registry identifier at all is unresolved.
+
+### Decision
+
+1. **Bless one form.** The canonical checkpoint is the `saves/900_CHECKPOINT_<NNNN>/` directory: a complete copy of every canonical ledger the campaign owns plus one `900_SAVE_MANIFEST.md`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md` and Rules Section 13.3. `<NNNN>` is a four-digit, zero-padded, monotonically increasing ordinal, one sequence per campaign.
+
+2. **Retire the alternatives.** `.saves/*.yaml` and bare `checkpoints/` placeholders are prohibited. A conforming Runtime writes only the directory form.
+
+3. **Migrate every existing checkpoint.** Each is either (a) confirmed restorable and normalized to the canonical `NNNN` form, or (b) recorded as quarantined and non-restorable, with a reason, in the campaign's external `saves/README.md`. Immutability holds throughout: quarantined bytes are never edited (Rules Section 13.2); quarantine is an external annotation, not a mutation of the snapshot.
+
+4. **Save manifests carry no live-registry identifier.** A manifest is checkpoint-local metadata, not a Persistent Object in live canon: it mints no registry identifier, and live ledgers must not reference a manifest by identifier. A checkpoint is referenced from live canon by its ordinal, label, and capture time — never by a `REC-` id trapped inside the excluded `saves/` tree. This resolves the dangling-reference finding and keeps the validator's `saves/` exclusion sound.
+
+5. **Enforcement.** Extend `tools/test_checkpoint_contract.ps1` with a fixture reproducing the Reikon Checkpoint 0001 failure class — a manifest self-reporting a validation PASS that never ran (the narrated-gate pattern, Decision 054). The form — directory shape, four-digit ordinal, required ledger set, manifest conformance, and the absence of a live-registry id on the manifest — is checked mechanically. A save that does not conform is not a checkpoint.
+
+### Rationale
+
+- The directory form is already the Rules Section 13 documented shape and already has conforming instances (Reikon Checkpoint 0002+, and the `900_SAVE_MANIFEST` template). Blessing it standardizes on what already works rather than inventing a fourth form.
+- A checkpoint whose restorability is asserted but never mechanically established is the narrated-gate failure Decision 054 named. The remedy is a mechanical form check, not more prose at the failing point — Decision 054's own lesson.
+- Treating the manifest as evidence rather than live canon keeps the validator's `saves/` exclusion coherent, and parallels Decision 061's treatment of exports: snapshots and transcripts establish no live canon and mint no identifiers.
+
+### Consequences
+
+- Rules Section 13 gains an explicit canonical-form statement and the numbering rule. This is **foundational under Decision 069** — it changes a Rules section and sets a form campaigns must satisfy — which is appropriate here, because foundational work is exactly what the Version 0.3 ADR Design stage is for.
+- The `checkpoints/` placeholder is removed; any `.saves/*.yaml` is migrated or quarantined.
+- Reikon Checkpoint 0001 remains quarantined; the campaign's later conforming checkpoints stay the restore points.
+- **Out of scope:** campaign and world *migration procedures* for version mismatches, which remain Version 0.6 (Decision 039). This decision unifies checkpoint *form*, not cross-version migration.
+- Owning milestone: **Version 0.3 — 0.3.1 Save Layer Unification.** Class: foundational.
+
+### Alternatives Considered
+
+- **Bless the flat `.saves/*.yaml` manifest-only form.** Rejected: it stores no ledger copies, so it cannot restore state on its own — it is the form that failed.
+- **Keep multiple forms and let restoration try each in turn.** Rejected: ambiguity at the exact layer Version 0.3 exists to make reliable. "Restoration tries three shapes" is how an unrestorable checkpoint went unnoticed in the first place.
+- **Register manifest identifiers in the live registry.** Rejected: it would require the validator to scan `saves/`, which would then flag every snapshot's copied ledgers as duplicate live definitions — the exact reason the exclusion exists (Decision 054).
+- **Defer to Version 0.6 as PA-008 originally scheduled.** Rejected by the accepted Version 0.3 scope: the persistence layer's inability to restore its own checkpoints is the evidence that motivated Runtime & Persistence Hardening.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

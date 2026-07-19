@@ -698,6 +698,7 @@ Owns the cross-ledger staleness gap the Prototype Alpha checkpoint audits drew b
 - Weigh together with **PA-002 — Location Granularity** (`docs/420_PROTOTYPE_ALPHA/423_ENGINE_IMPROVEMENT_BACKLOG.md`); do not resolve PA-002 as a granularity question alone. Carried inventory having no "on person" representation — a Character is neither a Place nor a container — is the same gap and the exact case that broke here.
 - Acceptance: the Checkpoint 0005 "protagonist in two places" state fails a mechanical gate; a possessor's carried items can be checked against the possessor's location; the Data Model change is versioned and its save-compatibility rule recorded.
 - Excludes: a spatial/coordinate model, map system, or travel geometry. Presence needs one owner and one invariant, not coordinates.
+- ADR: Decision 073 — Presence and Location Structural Representation (**Proposed**, ADR Design).
 
 #### 0.3.3 World Rule Profile Consolidation and Freeze
 

@@ -3341,6 +3341,69 @@ Two secondary problems are entangled with the form:
 
 ---
 
+## Decision 073 — Presence and Location Structural Representation
+
+**Status:** Proposed
+**Date:** 2026-07-19
+**Related Sections:** Version 0.3 milestone 0.3.2; `011_ENGINE_DATA_MODEL.md` Sections 7, 9 (schema 0.1.1 → 0.1.2); `010_ENGINE_RULES.md` Sections 3.10, 13.2; `012_ENGINE_RUNTIME.md` Section 5.4; `templates/ledgers/100_CHARACTER_SHEET.md`, `templates/objects/place.md`; resolves PA-002 (Location Granularity) and the cross-ledger-staleness Technical Debt; Decisions 022, 043, 051, 054, 069
+
+**ADR Design draft.** Proposed under Version 0.3 (Runtime & Persistence Hardening) ADR Design. Not accepted; no implementation until ADR Approval freezes it (Decision 048). **Foundational under Decision 069** — it changes the Data Model.
+
+### Context
+
+Presence — *where an entity is right now* — has no single structural owner, and the redundancy has drawn blood twice. Checkpoint 0005 passed the Repository Validation Barrier with the protagonist recorded as occupying a Rift he had left, seven carried items located in a building he was no longer in, and a restoration entry point that contradicted itself. The Checkpoint 0006 repair then reproduced the defect in the one field it did not reopen.
+
+The cause is not a missing field. It is **too many fields with no designated owner**:
+
+- the Character entity's `canonical_state.location` — structured, required, a typed Location reference (`templates/ledgers/100_CHARACTER_SHEET.md`; Data Model Section 9);
+- `180_CURRENT_STATE.md`, which also holds "where the character is now" as prose (Rules Section 13.2);
+- the character sheet's free-text `canonical_state.situation`, which restates location narratively — the field that went stale at Checkpoint 0006;
+- a Place's `occupants`, read once as presence, which is how a protagonist came to "occupy" a Rift he had left (since disambiguated to standing state, but only as a template comment in `templates/objects/place.md`).
+
+Four representations of one fact, no owner, and a structural validator (Decision 054) that cannot see semantic disagreement between well-formed ledgers. This is the two-representations failure Decision 051 forbids generally, left unaddressed for the one fact that changes every turn.
+
+Two entangled cases sharpen it:
+
+- **PA-002 (Location Granularity).** A Resource's `location` references a settlement rather than a specific premises, and **carried inventory has no representation at all** — a Character is neither a Place nor a container (Section 9 containment points at a container Entity or Resource), so "on person" cannot be expressed. This is exactly what broke at Checkpoint 0005: seven items whose location could not follow their possessor.
+- **Cross-ledger staleness** has no enforcement point because presence is prose in one ledger and structured in another, and nothing can compare them.
+
+### Decision
+
+1. **Presence has exactly one structural owner: the entity's `canonical_state.location`.** Every Persistent Entity's current location is the typed Location reference (Data Model Section 9: a Place `ENT-` id or a region descriptor) held in its single Canonical State (Section 7), and nowhere else. This is presence — distinct from `occupants` (standing state), `possession`, and `ownership`.
+
+2. **No other ledger restates presence; they reference it.** `180_CURRENT_STATE.md` **presents and points at** the protagonist's `canonical_state.location`; it does not own it or restate it as authoritative prose (Rules Section 13.2 amended). The `situation` field is narrative circumstance only and is never the location of record.
+
+3. **`occupants` is standing state, never presence** — elevated from a template comment to a normative Data Model statement: it records controllers, residents, or contained entities, never who is present now.
+
+4. **Carried inventory is presence-by-possession, derived not duplicated.** A carried Resource's `canonical_state.location` takes the form *carried by `<possessor ENT->`* (a new Location form in Section 9); its physical presence is the possessor's `canonical_state.location`, resolved through the possessor rather than stored independently. This resolves PA-002's "on person" case without giving a Character container-hood or adding a building subsystem.
+
+5. **The invariant becomes mechanical.** The Repository Validation Barrier (Runtime Section 5.4; Decision 054) checks: each entity has exactly one current location; no ledger asserts a location for an entity except through that entity's own Canonical Record; and a carried Resource names an existing possessor and asserts no place contradicting the possessor's location. "A character is in exactly one place, and every ledger that says otherwise is stale" is now a gate.
+
+### Rationale
+
+- The owning field already exists and is required; this designates it as sole owner rather than inventing a representation. The net change mostly *removes* competing representations (Decision 051), which is why it is smaller than "add a presence model."
+- It resolves PA-002 as a **representation** question — one owner plus an on-person form — not a **granularity** question. Granularity (settlement vs premises vs room) is unchanged: presence is owned at whatever granularity the world already models. No building subsystem, no coordinates, no travel graph.
+- Presence-by-possession keeps a carried item single-sourced: it moves when its possessor moves, with nothing to update and nothing to drift.
+- It gives the cross-ledger-staleness gate the structured ground truth it lacked, making the check the roadmap named "not implementable against the current model" implementable.
+
+### Consequences
+
+- **Data Model change (foundational; schema 0.1.1 → 0.1.2).** Sections 7 and 9 formalize presence as the single-owner `canonical_state.location`, distinct from occupancy and possession, and add the *carried-by* Location form. A schema increment is mandatory for any Data Model change (Section 12.2) and is recorded as the Campaign Schema version in the save manifest (Section 13.3), so a restored older checkpoint surfaces the mismatch (Section 13.5). This interacts with 0.3.2's save-compatibility work and the World Rule Profile freeze (Decision 072 and milestone 0.3.3).
+- **Rules change (foundational).** Section 13.2: the current-state ledger presents, does not own, location. Section 3.10 cross-reference: location is canonical state on the entity's own record.
+- **One-time migration (0.3.2 scope).** Existing campaigns hold location in `canonical_state.location`, in `180` prose, and in `situation`. Migration makes `canonical_state.location` authoritative, converts `180` to a pointer, and scrubs location from `situation`. This is a structural migration performed under Version 0.3, distinct from the automatic cross-version migration reserved for Version 0.6 (Section 13.6), and is entangled with Decision 072's checkpoint migration; the two should be sequenced together.
+- **Enforcement cost.** The validator gains a presence check; every campaign write carries one more mechanical gate, which is the cost of the invariant being true.
+- Owning milestone: **Version 0.3 — 0.3.2 Presence and Location Structural Representation.** Class: foundational.
+
+### Alternatives Considered
+
+- **Make `180_CURRENT_STATE.md` the structured owner of location.** Rejected: `180` is a per-campaign operational ledger owning no persistent objects (PA-004, `subjects: []`), and only the protagonist has one. Presence must be owned uniformly for every entity — NPCs and resources included — which only each entity's own Canonical State provides.
+- **Give Characters container-hood so containment expresses "on person."** Rejected: it overloads the Place/container model onto an entity that is neither and invites the building/room subsystem PA-002 explicitly defers. Presence-by-possession reuses the possession reference (Decision 022) already in the model.
+- **Add coordinates or a spatial graph.** Rejected: out of scope and unjustified by play. The failure was two representations of one fact, not insufficient granularity.
+- **Leave it in Technical Debt and enforce by prose.** Rejected on Decision 054's own lesson: prose at a failing point does not repair the point. The `occupants` disambiguation is prose today, and prose is why the gate cannot fire. Only a single structured owner makes the check mechanical.
+- **Treat it as a refinement.** Rejected on the structural test (Decision 069): it changes the Data Model, so it is foundational and belongs to 0.3 ADR design, which is where it sits.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

@@ -314,16 +314,16 @@ Changes to one component should not require version changes to unrelated compone
 Chronicle Engine develops one version at a time through the standard development lifecycle (`001_ENGINE_DECISIONS.md` Decision 048; `docs/DEVELOPMENT_WORKFLOW.md`). The Engine Version represents the most recent completed release, not work in progress.
 
 **Current Engine Version:** 0.2.0 (Knowledge & Civilization)
-**Current Development Target:** Version 0.3 planning
-**Current Milestone:** Scope approval
+**Current Development Target:** Version 0.3 — Runtime & Persistence Hardening
+**Current Milestone:** ADR Design
 
-The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 completed Knowledge & Civilization and all lifecycle validation gates.
+The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 completed Knowledge & Civilization and all lifecycle validation gates. The Version 0.3 scope was accepted on 2026-07-19 (Runtime & Persistence Hardening; see `002_ENGINE_ROADMAP.md`).
 
 Current priority:
 
-1. Approve the Version 0.3 scope.
-2. Draft Version 0.3 ADRs.
-3. Freeze architecture before implementation (Decision 048).
+1. Draft the Version 0.3 ADRs (save-layer unification, presence/location representation, World Rule Profile freeze, command-surface settlement).
+2. Freeze architecture before implementation (Decision 048).
+3. Then implement against the accepted decisions.
 
 ---
 

@@ -12,6 +12,19 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-19 — Version 0.3 scope accepted: Runtime & Persistence Hardening
+
+Planning-stage output under Decision 048 — the Version 0.3 scope proposal is accepted and the version advances from Planning to ADR Design. Refinement under Decision 069: this edits planning documents only (roadmap, manifest, README) and adds no Rules section, no Data Model change, and no mechanism a world or campaign invokes. No engine decision number is consumed — scope approval is a roadmap state transition, not an ADR; the ADRs are drafted next, in the ADR Design stage.
+
+**Decision:** Version 0.3 is **Runtime & Persistence Hardening**, not Governance & Society. The engine's simulation model is validated; its execution and persistence layer is not (Engine Postmortem: the failures were enforcement and authoring-contract failures, not model failures). Governance & Society moves to Version 0.4 unchanged in scope.
+**Milestones (0.3.1–0.3.5):** 0.3.1 Save Layer Unification (pulls PA-008 forward from 0.6); **0.3.2 Presence and Location Structural Representation (new — owner decision)**; 0.3.3 World Rule Profile Consolidation and Freeze; 0.3.4 Runtime Command Surface Settlement; 0.3.5 Capability Validation and Prototype Campaign.
+**Presence/location promoted from debt to milestone.** The cross-ledger staleness gap — Checkpoint 0005 recorded the protagonist in a Rift he had left, and the Checkpoint 0006 repair reproduced the defect in the same commit — is foundational under Decision 069 (`011_ENGINE_DATA_MODEL.md` change) and now has a named 0.3 milestone rather than sitting in Technical Debt. Entangled with PA-002 (Location Granularity); the two are to be weighed together at ADR Design, not resolved as a granularity question alone.
+**Numbering left honestly unresolved.** Magic Framework and Historical Simulation still hold 0.4/0.5 and now collide with Governance & Society at 0.4. Per the 0.3 scope's own Consequences, reclassifying them as world-authoring backlog is a separate decision; renumbering them here would exceed this scope, so the collision is left visible (Decision 069 anti-drift).
+**Gate:** No Rules, Data Model, or Runtime change may land until the 0.3 ADRs are drafted and accepted (Architecture Freeze, Decision 048).
+**Documents:** `002_ENGINE_ROADMAP.md` (0.3 accepted; milestones renumbered to five; Consequences applied; Current Sprint and Current Dependencies updated; Governance & Society repositioned to 0.4; cross-ledger-staleness debt repointed to milestone 0.3.2); `000_ENGINE_MANIFEST.md` (Current Development Phase → ADR Design); `README.md` 1.7 (Current Status).
+**Rules / Data Model / Runtime:** Unchanged.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-19 — Player-selectable narration length: the `/length` command
 
 Refinement under Decision 069 — adds a player-facing display toggle to the Runtime Command Interface; no Rules section, no Data Model change, and no mechanism a world or campaign invokes. Owned by Version 0.3 Planning; no ADR and no engine decision consumed. Follows the `/debug` and `/status` precedent — a presentation command that never touches canon, resolution, or the die.

@@ -3404,6 +3404,70 @@ Two entangled cases sharpen it:
 
 ---
 
+## Decision 074 — World Rule Profile Consolidation and Freeze
+
+**Status:** Proposed
+**Date:** 2026-07-19
+**Related Sections:** Version 0.3 milestone 0.3.3; `010_ENGINE_RULES.md` Section 14 (14.1–14.5, new 14.6) and Sections 13.3, 13.5; `012_ENGINE_RUNTIME.md` Section 6.2; `worlds/reikon/206_WORLD_RULE_PROFILE.md`; `templates/ledgers/900_SAVE_MANIFEST.md`; `tools/test_checkpoint_contract.ps1`, `tools/test_reikon_runtime_contract.ps1`; consolidates Decisions 059 and 062 (not reopened); Decisions 048, 053, 054, 069
+
+**ADR Design draft.** Proposed under Version 0.3 (Runtime & Persistence Hardening) ADR Design. Not accepted; no implementation until ADR Approval freezes it (Decision 048). **Foundational under Decision 069** — it changes Rules Section 14 and the Section 13.3 manifest contract. It does not reopen Decisions 059 or 062, which remain Accepted immutable history.
+
+### Context
+
+Rules Section 14 (World Rule Profiles) arrived through Decisions 059 and 062 against a released version and is classified foundational, owned by Version 0.3 (Post-0.2 Decision Record). It has exactly one client, no freeze point, and save compatibility that depends on a version the engine does not stabilize. The Reikon 0.1 changelog said it plainly: the profile "needs a freeze point before its version can be trusted for save compatibility under Decision 059."
+
+The gap is concrete. Reikon's profile is at version 0.6, `Status: Active` — an unfrozen workshop draft. Its checkpoints were captured under six successive profile versions (0002 under 0.1, through 0011 under 0.6), and the current manifest already records one:
+
+```
+world_rule_profile: "Reikon 0.6 (RKO-OVR-001, RKO-OVR-002)"
+```
+
+Three things are missing:
+
+1. **The manifest field is not required and not structured.** Rules Section 13.3's version list names Engine, World, Campaign Schema, and Save Format — not the profile. The profile version is recorded only by template convention, as free text, so nothing can compare it mechanically.
+2. **There is no freeze.** "Reikon 0.6" is mutable. A checkpoint recorded under it has no guarantee that 0.6's behavior will not change beneath it — which is exactly what makes the recorded version untrustworthy for restoration.
+3. **The mismatch check is narrated, not enforced.** Rules Section 14.4 already says the Runtime stops at the readiness gate on an incompatible profile, and `saves/README.md` documents each checkpoint's profile and migration path — but nothing mechanical checks it. It is the narrated-gate pattern (Decision 054) one layer up.
+
+### Decision
+
+1. **Profile version is a required, structured element of the save-compatibility record.** Rules Section 13.3's version block gains **World Rule Profile version** as a required field, in a structured, comparable form (world identifier plus version) alongside Engine, World, Campaign Schema, and Save Format. A world with no profile records that absence, which is meaningful, not a failure (Section 14.5).
+
+2. **Profile versioning and freeze semantics are defined (new Rules Section 14.6).**
+   - A profile declares a version and a **compatibility status**: *workshop draft* (mutable, not save-trustworthy) or *frozen* (immutable behavioral contract at that version).
+   - A **frozen** profile version does not change. Changing any declared override behavior requires a new version. This is what makes a checkpoint's recorded profile version trustworthy on restoration.
+   - A version increment is classified, as the engine's own changes are (Decision 069): **additive** (declare-only, backward-compatible — a restored older checkpoint needs no recomputation) or **migrating** (changes how existing state settles — restoration requires an explicit migration). Reikon already practiced this distinction ad hoc: 0.3→0.4 was declare-only; 0.2→0.3 changed how Health settled.
+   - A workshop-draft profile may still be played, but every checkpoint captured under it carries an explicit *unfrozen — not save-trustworthy* compatibility warning.
+
+3. **The save-compatibility rule is enforced, not narrated.** On restoration the Runtime compares the checkpoint's recorded profile version against the world's current profile version. A mismatch — or a checkpoint recorded under an unfrozen version — is surfaced explicitly and halts at the readiness gate (Rules Sections 14.4, 13.5, 13.6), never silently resolved. A checkpoint contract test asserts that every manifest records a structured profile version (or a structured no-profile marker) and that the world's active profile declares a version and freeze status.
+
+4. **The Section 14 override contract is consolidated and stabilized.** With Reikon exercising 14.2's required-field contract through `RKO-OVR-001` and `RKO-OVR-002`, Sections 14.1–14.5 are confirmed complete and frozen as Version 0.3 architecture; 14.6 adds versioning and freeze. Decisions 059 and 062 are not reopened.
+
+### Rationale
+
+- Save compatibility already depends on the profile version; the only question is whether that dependency is trustworthy and checkable. Making the field required and structured, and the version freezable, closes the gap the changelog named without inventing a mechanism.
+- The additive/migrating distinction is not new — Reikon invented it per-migration under pressure. Formalizing it at the engine level makes every future profile change declare its restoration cost up front.
+- Enforcing the mismatch check mechanically applies Decision 054's lesson to the one place Section 14 left as prose. Reikon's six-version history is the evidence that the check matters: it has already surfaced and migrated five mismatches by hand.
+- Freezing does not slow world authoring. A world keeps a workshop-draft profile while it iterates; freeze is the act that makes its saves durable, exactly as the engine's own per-version freeze does.
+
+### Consequences
+
+- **Rules change (foundational).** Section 13.3 gains the required profile-version field; new Section 14.6 defines versioning, freeze status, the additive/migrating classification, and the enforced mismatch rule. Runtime Section 6.2's version-mismatch surfacing extends to the profile version.
+- **Reikon becomes the first conformance fixture (world authoring, no ADR).** Reikon adopts the structured version field and declares a freeze status for its current version. Freezing Reikon's own content is world authoring (Decision 062) and consumes no engine decision. **The milestone text naming "Reikon 0.3" as the first frozen profile is stale** — Reikon advanced to 0.6 during play; the roadmap milestone is corrected to freeze at the current version.
+- **Interaction with Decisions 072 and 073.** The profile version joins the manifest version block that Decision 072 unifies; sequence together. Decision 073 bumps Data Model 0.1.1→0.1.2, and a profile also declares Data Model compatibility (Reikon's header reads "Data Model 0.1.1"); a checkpoint under schema 0.1.1 restored after 073 lands surfaces the schema mismatch — the same mechanism this decision enforces on the profile axis.
+- **Immutability.** Existing checkpoints already record the profile as free text and cannot be edited (Rules Section 13.2); their profile versions remain documented in `saves/README.md`. The required structured field applies to new checkpoints, as with Decision 072's form migration.
+- **Enforcement cost.** The checkpoint contract test gains a profile-version assertion — one more mechanical gate per checkpoint.
+- Owning milestone: **Version 0.3 — 0.3.3 World Rule Profile Consolidation and Freeze.** Class: foundational.
+
+### Alternatives Considered
+
+- **Leave the profile version as a free-text convention.** Rejected: it is recorded but not comparable, so the mismatch check stays a narration — the exact failure this milestone exists to fix.
+- **Require every profile to reach 1.0 before it can be frozen.** Rejected: the engine itself is pre-1.0 and treats each version as effectively frozen for compatibility. Tying profile freeze to a 1.0 milestone would bar Reikon from durable saves for no structural reason. Freeze is a per-version property, not a maturity gate.
+- **Freeze Section 14 without adding versioning.** Rejected: freezing the contract while leaving the client's version mutable fixes the wrong layer. The untrustworthy thing is the profile version a save records, not the shape of the override contract.
+- **Defer the whole thing to a later version.** Rejected: save compatibility is unreliable now, Reikon has six checkpoints depending on it, and Runtime & Persistence Hardening is the version whose thesis is reliable restoration.
+- **Treat as a refinement.** Rejected on the structural test (Decision 069): it changes Rules Section 14 and the Section 13.3 contract. Foundational, 0.3 ADR design.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

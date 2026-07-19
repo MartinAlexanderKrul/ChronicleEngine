@@ -704,9 +704,10 @@ Owns the cross-ledger staleness gap the Prototype Alpha checkpoint audits drew b
 
 Owns the inherited architecture. Rules Section 14 arrived via Decisions 059 and 062 against a released version and is classified foundational by the Post-0.2 Decision Record above.
 
-- Freeze the Section 14 override contract; define profile versioning and its save-compatibility rule.
-- Reikon 0.3 becomes the first frozen profile and the conformance fixture.
-- Acceptance: a save records the applicable profile version, and a mismatch is surfaced explicitly on restoration rather than silently resolved (Rules Section 13.6).
+- Freeze the Section 14 override contract; define profile versioning, freeze status, and its save-compatibility rule.
+- Reikon's current profile (0.6, presently an unfrozen `Active` draft) becomes the first frozen profile and the conformance fixture. *(The original proposal named "Reikon 0.3"; Reikon advanced to 0.6 during play, so the freeze target is its current version.)*
+- Acceptance: a save records the applicable profile version as a structured field, and a mismatch — or a checkpoint captured under an unfrozen version — is surfaced explicitly on restoration rather than silently resolved (Rules Sections 14.4, 13.6).
+- ADR: Decision 074 — World Rule Profile Consolidation and Freeze (**Proposed**, ADR Design).
 
 #### 0.3.4 Runtime Command Surface Settlement
 

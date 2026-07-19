@@ -3,24 +3,24 @@
 # Engine Roadmap
 
 **Engine Version:** 0.2.0 (Knowledge & Civilization)
-**Development Target:** Version 0.3 planning
-**Status:** Version 0.2 Complete
+**Development Target:** Version 0.3 — Runtime & Persistence Hardening
+**Status:** Version 0.3 scope accepted — ADR Design
 
 # Current Sprint
 
 Goal:
 
-Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha, and the Engine Postmortem are complete. Required refinements have been incorporated and Version 0.3 planning is unblocked.
+Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha, and the Engine Postmortem are complete. The Version 0.3 scope is accepted (2026-07-19): **Runtime & Persistence Hardening**. The version has advanced from Planning to ADR Design.
 
 Current Task:
 
-Approve or reject the Version 0.3 scope proposal under the lifecycle in Decision 048.
+Draft the Version 0.3 ADRs for milestones 0.3.1–0.3.5 (foremost Save Layer Unification and Presence/Location Structural Representation), then take them through ADR Approval (Architecture Freeze) before any implementation (Decision 048).
 
-A scope proposal is on the table: **Version 0.3 — Runtime & Persistence Hardening**, which would replace Governance & Society at 0.3 and move it to 0.4. It is **proposed, not accepted**. Its argument, its capability milestones, and the argument against it are recorded in the Version 0.3 section below.
+The accepted scope replaced Governance & Society at 0.3 and moved it to Version 0.4. Its argument, its five capability milestones, and the recorded argument against it are in the Version 0.3 section below.
 
 Next Review:
 
-Scope approval. No ADR may be designed or implemented against Version 0.3 until the scope is approved (Decision 048).
+ADR Design review. No Rules, Data Model, or Runtime change may land until the 0.3 ADRs are accepted (Decision 048).
 
 Completed since the 0.2.0 release:
 
@@ -650,11 +650,11 @@ Decision 071 is the fifth decision against the bootstrap boundary (with 056, 063
 
 ## Version 0.3 — Runtime & Persistence Hardening
 
-Status: **PROPOSED — awaiting scope approval.** Nothing below is accepted. Decision 048 Planning stage output; no ADR may be drafted against it until the scope is approved.
+Status: **ACCEPTED — Planning complete; in ADR Design.** Scope approved 2026-07-19. No Rules, Data Model, or Runtime change may land until its ADRs are drafted and accepted (Architecture Freeze, Decision 048).
 
-Per the development lifecycle (Decision 048), Version 0.3 planning is unblocked: Version 0.2 implementation, Prototype Alpha, the Engine Postmortem, and the required refinements are all complete.
+Version 0.2 implementation, Prototype Alpha, the Engine Postmortem, and the required refinements are all complete, which is what unblocked this version under the development lifecycle (Decision 048).
 
-This proposal **replaces Governance & Society as Version 0.3** and moves it to Version 0.4. That is the substance of the proposal, and the reason for it is evidence rather than preference.
+This scope **replaces Governance & Society as Version 0.3** and moves it to Version 0.4 (now reflected in the Version 0.4 section below). That is the substance of the decision, and the reason for it is evidence rather than preference.
 
 ### Why this version
 
@@ -685,26 +685,39 @@ The engine can be executed and restored reliably by any conforming Runtime, and 
 Pulls PA-008 forward from Version 0.6.
 
 - Bless one checkpoint form and migrate existing checkpoints. Resolve the documented `saves/900_CHECKPOINT_<NNNN>/` (full ledger copies) versus flat `.saves/*.yaml` (manifest-only) versus the empty `checkpoints/` placeholder drift.
-- Acceptance: every existing checkpoint either restores or is explicitly quarantined as non-restorable; the Reikon Checkpoint 0001 failure class is covered by a regression fixture.
+- Acceptance: every existing checkpoint restores, or is re-issued into a conforming restorable checkpoint carrying its reconstructed state — no save-point is abandoned; the Reikon Checkpoint 0001 failure class is covered by a regression fixture.
 - Excludes: campaign and world migration procedures, which remain Version 0.6.
+- ADR: Decision 072 — Save Layer Unification (**Proposed**, ADR Design).
 
-#### 0.3.2 World Rule Profile Consolidation and Freeze
+#### 0.3.2 Presence and Location Structural Representation
+
+Owns the cross-ledger staleness gap the Prototype Alpha checkpoint audits drew blood on twice: Checkpoint 0005 recorded the protagonist as occupying a Rift he had left, and the Checkpoint 0006 repair reproduced the same defect in the same commit because its mutation target set was judged rather than derived. Foundational under Decision 069 — it changes `011_ENGINE_DATA_MODEL.md` — and therefore could not land against released 0.2.0. Promoted from Technical Debt to a first-class milestone by owner decision (2026-07-19). Full evidence is in the Technical Debt entry "Cross-ledger staleness has no enforcement point."
+
+- Give **presence** — where an entity is *now* — a structured representation with exactly one owning record, so it is comparable rather than prose in `180_CURRENT_STATE.md` (Rules Section 13.2). Keep `occupants` as **standing state** (controllers, residents, contained entities), per the disambiguation already made in `templates/objects/place.md`; presence and occupancy stay distinct.
+- Only once presence has one structured owner can the invariant become mechanical: a character is in exactly one place, and every ledger that says otherwise is stale. Add that check to the Repository Validation Barrier (Rules Section 5.4; Decision 054).
+- Weigh together with **PA-002 — Location Granularity** (`docs/420_PROTOTYPE_ALPHA/423_ENGINE_IMPROVEMENT_BACKLOG.md`); do not resolve PA-002 as a granularity question alone. Carried inventory having no "on person" representation — a Character is neither a Place nor a container — is the same gap and the exact case that broke here.
+- Acceptance: the Checkpoint 0005 "protagonist in two places" state fails a mechanical gate; a possessor's carried items can be checked against the possessor's location; the Data Model change is versioned and its save-compatibility rule recorded.
+- Excludes: a spatial/coordinate model, map system, or travel geometry. Presence needs one owner and one invariant, not coordinates.
+- ADR: Decision 073 — Presence and Location Structural Representation (**Proposed**, ADR Design).
+
+#### 0.3.3 World Rule Profile Consolidation and Freeze
 
 Owns the inherited architecture. Rules Section 14 arrived via Decisions 059 and 062 against a released version and is classified foundational by the Post-0.2 Decision Record above.
 
-- Freeze the Section 14 override contract; define profile versioning and its save-compatibility rule.
-- Reikon 0.3 becomes the first frozen profile and the conformance fixture.
-- Acceptance: a save records the applicable profile version, and a mismatch is surfaced explicitly on restoration rather than silently resolved (Rules Section 13.6).
+- Freeze the Section 14 override contract; define profile versioning, freeze status, and its save-compatibility rule.
+- Reikon's current profile (0.6, presently an unfrozen `Active` draft) becomes the first frozen profile and the conformance fixture. *(The original proposal named "Reikon 0.3"; Reikon advanced to 0.6 during play, so the freeze target is its current version.)*
+- Acceptance: a save records the applicable profile version as a structured field, and a mismatch — or a checkpoint captured under an unfrozen version — is surfaced explicitly on restoration rather than silently resolved (Rules Sections 14.4, 13.6).
+- ADR: Decision 074 — World Rule Profile Consolidation and Freeze (**Proposed**, ADR Design).
 
-#### 0.3.3 Runtime Command Surface Settlement
+#### 0.3.4 Runtime Command Surface Settlement
 
 - Reduce the command *model*, not only its documentation. Target: adding or changing a command requires no ADR.
 - Acceptance: the catalog synchronization test still passes, and the command surface survives a prototype campaign without a new decision.
 - The smallest and least certain of the three. If evidence does not support it at ADR Design, it should be dropped rather than padded.
 
-#### 0.3.4 Capability Validation and Prototype Campaign
+#### 0.3.5 Capability Validation and Prototype Campaign
 
-Per Decision 048. The prototype must exercise save, restore, branch, restart, and a world-profile mismatch — not a knowledge scenario, which Version 0.2 already validated.
+Per Decision 048. The prototype must exercise save, restore, branch, restart, a world-profile mismatch, and a location/presence contradiction being caught by the new gate — not a knowledge scenario, which Version 0.2 already validated.
 
 ### Exclusions
 
@@ -719,11 +732,12 @@ Per Decision 048. The prototype must exercise save, restore, branch, restart, an
 - A world profile is versioned and frozen, and save compatibility against it is enforced.
 - The prototype campaign completes without requiring a new foundational abstraction.
 
-### Consequences If Approved
+### Consequences of Approval (applied 2026-07-19)
 
-- Governance & Society moves from Version 0.3 to Version 0.4 unchanged in scope.
-- Version 0.6 — Persistence loses PA-008 and retains migration and multi-campaign continuity.
-- Magic Framework and Historical Simulation already record their engine work as substantially closed and their remainder as world-layer authoring. They hold version numbers for engine work that no longer exists. Recommend reclassifying both as world-authoring backlog rather than engine versions — a separate decision, not part of this scope.
+- Governance & Society moves from Version 0.3 to Version 0.4 unchanged in scope (reflected in the Version 0.4 section below).
+- Version 0.6 — Persistence loses PA-008 (pulled forward to 0.3.1) and retains migration and multi-campaign continuity.
+- The presence/location structural gap is promoted from Technical Debt to an explicit milestone, 0.3.2 above (owner decision, 2026-07-19), making it a peer deliverable of Save Layer Unification.
+- Magic Framework and Historical Simulation still hold version numbers (0.4, 0.5) for engine work already substantially closed, and now collide with Governance & Society at 0.4. Reclassifying both as world-authoring backlog rather than engine versions remains a **separate decision, not part of this scope**; the collision is left visibly unresolved below rather than renumbered here (Decision 069 anti-drift).
 
 ### The Argument Against This Proposal
 
@@ -733,7 +747,7 @@ Recorded because it is real, not to be dismissed. A hardening version delivers n
 
 ## Version 0.4 - Governance & Society
 
-Status: **Proposed** — moved from Version 0.3 by the Version 0.3 scope proposal above; scope itself unchanged and unapproved
+Status: **Accepted placement, scope unapproved** — moved from Version 0.3 to Version 0.4 by the accepted Version 0.3 scope (2026-07-19); the domain scope itself is unchanged and has not yet passed through its own Planning stage
 
 Focus:
 
@@ -754,9 +768,9 @@ Note: this focus list spans eight domains, several of which (economy, trade, log
 
 ---
 
-## Version 0.4 - Magic Framework *(number contested)*
+## Version 0.4 - Magic Framework *(number collides with Governance & Society; pending reclassification)*
 
-Status: **Rescoped** — **numbering pending.** The Version 0.3 scope proposal above moves Governance & Society into 0.4. If that proposal is approved, this milestone and the two below shift by one, or are reclassified as world-authoring backlog per that proposal's Consequences. The collision is left visible rather than pre-resolved, because renumbering accepted milestones on an unapproved proposal would be exactly the drift Decision 069 exists to stop.
+Status: **Rescoped — numbering unresolved.** The accepted Version 0.3 scope (2026-07-19) moved Governance & Society into 0.4, which now collides with this milestone's number. The collision is left visible rather than pre-resolved: the 0.3 scope's Consequences recommend reclassifying this milestone and Historical Simulation as world-authoring backlog rather than engine versions, and that is a separate decision. Renumbering these milestones as part of the 0.3 approval would exceed its scope and risk the drift Decision 069 exists to stop, so it is deferred to that reclassification decision.
 
 The engine-level portion of this milestone - abstraction, world extension model, cost/limitation/discoverability contract, and magical research - is substantially closed by `001_ENGINE_DECISIONS.md` Decision 037 and `010_ENGINE_RULES.md` Section 11. Magical research already runs through the existing Research & Knowledge lifecycle (Section 8) and required no separate mechanic.
 
@@ -1056,7 +1070,7 @@ Current architectural debt:
 - Stabilize repository governance. *(Partially addressed by Decision 069: classification is now structural and ownership is mechanically enforced. The remaining gap is that no gate checks the class itself — only that one is recorded.)*
 - **Bootstrap command churn.** *(Partially addressed by Decisions 070 and 071: the resident layer is now its own document, and the welcome page's listing now has a rendered source and a gate.)* Decisions 056, 063, 064, and 067 addressed one boundary across four decisions in a single day, each written after a live test failed its predecessor; Decision 068 repeated the shape for Reikon `/system`, and Decision 071 makes six after a live bootstrap omitted an entire campaign. Each decision is individually sound and all gates pass, so nothing was broken. Decision 070 removes the structural cause Decision 055 predicted — a fetched profile as sole carrier of a per-turn obligation. Decision 071 removes the same cause from the other half of the welcome page. What remains open is whether the *command surface itself* is over-specified: six decisions to pin one bootstrap verb suggests the cost sits in the command model, not only in where it was written down. Evaluate during Version 0.3 planning. Neither split proves per-turn or per-boot compliance improves; the next prototype campaign is the evidence.
 - **The worlds-and-campaigns index is maintained by hand.** *(Surfaced by Decision 071. Owned by Version 0.3 planning.)* `tools/validate_repository.ps1` proves every world and campaign is listed and that each row resolves. It cannot prove a row's status, protagonist, or capture timestamp is still true, so those decay silently between promotion barriers — the same class of cross-ledger staleness recorded above, in a file the welcome page trusts. Generating the index from the filesystem would remove the maintenance cost but not the judgment: status, protagonist, and spoiler-safe framing are not derivable from a directory tree, and a generator that fabricated them would be authoritative and wrong. The tractable middle — generate what is derivable (the campaign and world sets, the latest checkpoint and its timestamp from the save manifests) and check the judged fields against the ledgers — is Version 0.3 scope. Two stale `initialization_state: initialized-no-save` declarations in the Prototype startup files, against campaigns that have written checkpoints and in one case have ended, are the standing evidence that operational metadata drifts when nothing reads it.
-- **Cross-ledger staleness has no enforcement point.** *(Surfaced by the Reikon Awakening Session 2 checkpoint audit, 2026-07-14; evidence: commit `4039de3` / `saves/900_CHECKPOINT_0005/`. Owned by Version 0.3 planning.)* The Repository Validation Barrier (Decision 054) passed on a checkpoint in which the world ledger listed the protagonist as occupying a Rift he had left, seven carried items were located in a building their possessor was no longer in, and the restoration entry point contradicted itself on mana, on whether creatures remained in the Rift, and on which checkpoint was latest. The gate was right to pass: every defect was staleness or semantic contradiction *between* ledgers, not structural malformation, and the mechanical contract does not look for it. The cause is that Promotion (Runtime Section 5.3) fixes *when* canon is written but leaves the **mutation target set** to interpreter judgement — a session's events change ledgers the interpreter did not decide it had touched, and nothing checks the difference. This is the Decision 055 shape again (an obligation with no enforcement point holds only by assumption), one layer up from the registry bookkeeping Decision 054 mechanised. The obvious mechanical check — a possessor's carried items must agree with the possessor's location — is **not implementable against the current model**: the protagonist's location lives in `180_CURRENT_STATE.md` as prose, so there is no structured ground truth to compare against. Making it checkable means giving location and occupancy a structural representation, which is `011_ENGINE_DATA_MODEL.md` work and therefore **foundational under Decision 069** — it may not land against released 0.2.0 and belongs in Version 0.3 ADR design. It is entangled with **PA-002 — Location Granularity** (`docs/420_PROTOTYPE_ALPHA/423_ENGINE_IMPROVEMENT_BACKLOG.md`), deferred on the judgement that "existing Place and descriptive containment remain sufficient": sufficient for expressing a location, but they are the reason there is nothing to enforce against. PA-002's own reinforcing case — carried inventory has no "on person" representation because a Character is neither a Place nor a container — is exactly the case that broke here. Weigh the two together during scope approval; do not resolve PA-002 as a granularity question alone.
+- **Cross-ledger staleness has no enforcement point.** *(Surfaced by the Reikon Awakening Session 2 checkpoint audit, 2026-07-14; evidence: commit `4039de3` / `saves/900_CHECKPOINT_0005/`. Now owned by Version 0.3 milestone 0.3.2 — Presence and Location Structural Representation.)* The Repository Validation Barrier (Decision 054) passed on a checkpoint in which the world ledger listed the protagonist as occupying a Rift he had left, seven carried items were located in a building their possessor was no longer in, and the restoration entry point contradicted itself on mana, on whether creatures remained in the Rift, and on which checkpoint was latest. The gate was right to pass: every defect was staleness or semantic contradiction *between* ledgers, not structural malformation, and the mechanical contract does not look for it. The cause is that Promotion (Runtime Section 5.3) fixes *when* canon is written but leaves the **mutation target set** to interpreter judgement — a session's events change ledgers the interpreter did not decide it had touched, and nothing checks the difference. This is the Decision 055 shape again (an obligation with no enforcement point holds only by assumption), one layer up from the registry bookkeeping Decision 054 mechanised. The obvious mechanical check — a possessor's carried items must agree with the possessor's location — is **not implementable against the current model**: the protagonist's location lives in `180_CURRENT_STATE.md` as prose, so there is no structured ground truth to compare against. Making it checkable means giving location and occupancy a structural representation, which is `011_ENGINE_DATA_MODEL.md` work and therefore **foundational under Decision 069** — it may not land against released 0.2.0 and belongs in Version 0.3 ADR design. It is entangled with **PA-002 — Location Granularity** (`docs/420_PROTOTYPE_ALPHA/423_ENGINE_IMPROVEMENT_BACKLOG.md`), deferred on the judgement that "existing Place and descriptive containment remain sufficient": sufficient for expressing a location, but they are the reason there is nothing to enforce against. PA-002's own reinforcing case — carried inventory has no "on person" representation because a Character is neither a Place nor a container — is exactly the case that broke here. Weigh the two together during scope approval; do not resolve PA-002 as a granularity question alone.
 
   **Update 2026-07-14 — the repair did not hold, and the field is overloaded.** Two findings sharpen this entry and both argue the same way.
 
@@ -1074,9 +1088,9 @@ Current architectural debt:
 
 # Current Dependencies
 
-Version 0.2 - Knowledge & Civilization is complete. Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements are complete. Version 0.3 planning is unblocked (Decision 048).
+Version 0.2 - Knowledge & Civilization is complete. Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements are complete.
 
-Version 0.3 is blocked on scope approval only. A proposal — Runtime & Persistence Hardening — awaits a decision; see Version 0.3 below. Nothing downstream of it is renumbered until that approval lands.
+Version 0.3 — Runtime & Persistence Hardening scope is accepted (2026-07-19) and in ADR Design. No Rules, Data Model, or Runtime change may land until its ADRs are drafted and accepted (Architecture Freeze, Decision 048). The next work is drafting the 0.3 ADRs for the five milestones (0.3.1–0.3.5), foremost Save Layer Unification and Presence/Location Structural Representation.
 
 ---
 

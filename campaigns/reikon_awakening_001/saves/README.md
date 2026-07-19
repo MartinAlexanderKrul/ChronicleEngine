@@ -2,7 +2,7 @@
 
 **Authority:** Non-canonical operational index. It records the **status** of each checkpoint; it does not hold canonical state and does not modify any checkpoint. Checkpoint contents are immutable (Rules Section 13.2) and are never edited, annotated, or deleted — including when they are found invalid. Status is recorded here, outside the immutable bytes.
 
-A durable, Canonical-Record form of this index is proposed engine work (Nonconforming Checkpoint Quarantine). This file is the interim operational record for one campaign.
+A durable, Canonical-Record form of this index is proposed engine work (Save Layer Unification, Decision 072). This file is the interim operational record for one campaign.
 
 ---
 
@@ -10,7 +10,7 @@ A durable, Canonical-Record form of this index is proposed engine work (Nonconfo
 
 | Checkpoint | Captured | Status | Restorable |
 |------------|----------|--------|------------|
-| `900_CHECKPOINT_001/` | 2026-07-13 | **Quarantined — nonconforming** | **No** |
+| `900_CHECKPOINT_001/` | 2026-07-13 | **Superseded by 0002 — nonconforming original, kept as evidence** | Its point restores at **0002** |
 | `900_CHECKPOINT_0002/` | 2026-07-14 | Conforming; verified against Session 1 transcript | Yes — prior restore point |
 | `900_CHECKPOINT_0003/` | 2026-07-14 | Conforming; recovered from owner-supplied raw Session 2 chat | Yes — prior Profile 0.2 restore point |
 | `900_CHECKPOINT_0004/` | 2026-07-14 | Conforming; deterministic Health-recovery migration | Yes — pre-Session-2 fork point |
@@ -46,9 +46,9 @@ Created at the Session 2 checkpoint (commit `4039de3`). It is **restorable and i
 
 ---
 
-## `900_CHECKPOINT_001/` — quarantined, do not restore
+## `900_CHECKPOINT_001/` — nonconforming original; restore its point at Checkpoint 0002
 
-Created during Session 1. It is preserved intact as evidence and must not be restored, loaded, or treated as a source of canon.
+Created during Session 1. The Session-1 state it was meant to preserve is reconstructed, verified against the Session 1 transcript, and restorable as conforming Checkpoint 0002 — continuing from that point is done there, so **no save-point is lost**. This original folder is kept intact as evidence and is not itself a restore target: it must not be `/load`-ed or treated as a source of canon, because its bytes are a broken pre-migration copy, for the reasons below.
 
 **Why it is not restorable:**
 
@@ -60,7 +60,7 @@ Created during Session 1. It is preserved intact as evidence and must not be res
 
 **Its canon is not lost.** Everything Session 1 established was reconstructed into the live ledgers on 2026-07-14 and has since been verified against the Session 1 transcript (`../exports/README.md`). The checkpoint holds no canon that live state lacks.
 
-**Why it is kept.** It is the primary evidence that the save layer has no mechanical gate — `tools/validate_repository.ps1` excludes `saves/` entirely — and it is the exhibit for the proposed checkpoint-validation and quarantine work. Deleting it would destroy that evidence while changing nothing: the bytes remain in git history regardless. Nonconforming records are quarantined and explained, not erased (Decision 038; Data Model Section 7.2, which names *forged* as a category of historical evidence).
+**Why it is kept.** It is the primary evidence that the save layer has no mechanical gate — `tools/validate_repository.ps1` excludes `saves/` entirely — and it is the exhibit for the proposed Save Layer Unification work (Decision 072). Deleting it would destroy that evidence while changing nothing: the bytes remain in git history regardless. Nonconforming records are kept as evidence and explained, not erased (Decision 038; Data Model Section 7.2, which names *forged* as a category of historical evidence).
 
 ## `900_CHECKPOINT_0002/` — prior restore point
 

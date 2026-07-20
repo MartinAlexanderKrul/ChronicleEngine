@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000080 |
-| Record | `REC-` | Canonical Record | REC-000055 |
-| Event | `EVT-` | Event | EVT-000037 |
+| Record | `REC-` | Canonical Record | REC-000056 |
+| Event | `EVT-` | Event | EVT-000040 |
 | Relationship | `REL-` | Relationship | REL-000047 |
 
 ---
@@ -92,6 +92,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000054 | Record | Reikon Awakening `saves/900_CHECKPOINT_0010/900_SAVE_MANIFEST.md` — omission repair and identity disambiguation (`EVT-000035`, `EVT-000036`); no fictional time elapsed |
 | EVT-000037 | Event | Reikon Awakening: ruling correcting `ENT-000061`'s name from "Dr. Kael Venn" to Dr. Ambrose Teague as a recording error, and correcting `EVT-000036`'s unsupported claim that Daedalus had met him. No former alias; identifier unchanged |
 | REC-000055 | Record | Reikon Awakening `saves/900_CHECKPOINT_0011/900_SAVE_MANIFEST.md` — the `EVT-000037` name correction; no fictional time elapsed |
+| EVT-000038 | Event | Reikon Awakening: wound treatment, complete Institute data handoff to Kalens/Soren/Marta honoring the `REL-000045` same-day condition, and the Hunters' Authority clear report including the anomalous core |
+| EVT-000039 | Event | Reikon Awakening: night recovery — a light post-injury workout resolved by the die (d100 78, success), followed by a full night's rest settling Health and Mana to maximum under the deterministic recovery formulas |
+| EVT-000040 | Event | Reikon Awakening: Profile 0.6 Section 9.6 recurrent intervention check (first-safe-exchange-of-a-new-day trigger), d100 82, granting the one-use finite technique Emberbrand |
+| REC-000056 | Record | Reikon Awakening `saves/900_CHECKPOINT_0012/900_SAVE_MANIFEST.md` — Institute handoff, Association report, night recovery, and the Emberbrand intervention grant |
 
 ---
 

@@ -18,7 +18,10 @@ A durable, Canonical-Record form of this index is proposed engine work (Save Lay
 | `900_CHECKPOINT_0006/` | 2026-07-14 | Conforming; Session 2 cross-ledger staleness repair and `EVT-000032` ruling | Yes — prior restore point |
 | `900_CHECKPOINT_0007/` | 2026-07-15 | Conforming; Profile 0.4 mid-combat fork before the owner-authored anomaly | Yes — prior fork point |
 | `900_CHECKPOINT_0008/` | 2026-07-15 | Conforming; complete owner-approved continuation under Profile 0.5 | Yes — prior restore point |
-| `900_CHECKPOINT_0009/` | 2026-07-15 | Conforming; Profile 0.6 recurrent-intervention and succession migration | **Yes — current restore point** |
+| `900_CHECKPOINT_0009/` | 2026-07-15 | Conforming; Profile 0.6 recurrent-intervention and succession migration | Yes — superseded |
+| `900_CHECKPOINT_0010/` | 2026-07-15 | Conforming; omission repair and identity disambiguation | Yes — superseded |
+| `900_CHECKPOINT_0011/` | 2026-07-15 | Conforming; Institute director name correction | Yes — superseded |
+| `900_CHECKPOINT_0012/` | 2026-07-20 | Conforming; Institute data handoff, Association report, night recovery, Emberbrand grant | **Yes — current restore point** |
 
 There is **no baseline checkpoint** for this campaign. See below.
 
@@ -132,7 +135,7 @@ Manifest `REC-000054`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. C
 
 Checkpoint 0011 supersedes it as the checkpoint `/continue` restores. Restoring 0010 reinstates the Institute director's superseded name, "Dr. Kael Venn", and `EVT-000036`'s unsupported claim that Daedalus had met him. No played fiction differs.
 
-## `900_CHECKPOINT_0011/` — current restore point
+## `900_CHECKPOINT_0011/` — superseded
 
 Captures the Checkpoint 0010 fiction exactly with one name corrected. **No fictional time elapsed and no value was recalculated.** Daedalus stands in the cleared basement chamber at Level 2, 31/130 XP, 88/105 Health, and 7/14 Mana; the core remains energetically bonded, and Kalens's same-day obligation remains met and unhonoured.
 
@@ -140,7 +143,17 @@ Captures the Checkpoint 0010 fiction exactly with one name corrected. **No ficti
 
 The ruling also corrects `EVT-000036`'s claim that Daedalus had met the director; he has met neither him nor Vane. That event's distinctness finding stands and its bytes are unchanged.
 
-Manifest `REC-000055`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers, hash-verified after capture. This is the checkpoint `/continue` restores.
+Manifest `REC-000055`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers, hash-verified after capture.
+
+Checkpoint 0012 supersedes it as the checkpoint `/continue` restores. Restoring 0011 reinstates the same-day obligation on `REL-000045` as **met and unhonoured** (rather than honoured), reverts Health/Mana to 88/105 and 7/14, loses the Institute's active severance investigation and the Association clear report, and forfeits the Emberbrand intervention. No played fiction from Checkpoint 0011 itself differs — the reversion is entirely about what happened afterward.
+
+## `900_CHECKPOINT_0012/` — current restore point
+
+Captures the following evening's and next dawn's play in full: Daedalus treats his wounds, gives Dr. Kalens the complete basement findings at his home within the standing same-day window, and logs the clear with the Hunters' Authority (`EVT-000038`). A tested light workout (d100 78, success) and a full night's rest settle Health and Mana to maximum under Reikon's deterministic recovery formulas (`EVT-000039`). At dawn, the Profile 0.6 recurrent-intervention check (Section 9.6) fires for the first time since migration — d100 82 — granting the one-use technique **Emberbrand** (`EVT-000040`): the next successful Fireball or Combustion Touch strikes at critical-success force, expiring at the next sunrise if unused.
+
+Daedalus stands at Level 2, 31/130 XP, full 105/105 Health, and full 14/14 Mana in his own rented room. Kalens's same-day obligation on `REL-000045` is now **met and honoured**. One harvested D-core (`ENT-000074`) has passed to Dr. Soren for analysis; the other three remain with Daedalus. The Warehouse 7 core itself is untouched — still bonded, still unextracted, still on its stability clock — and the Institute has not yet reported findings back.
+
+Manifest `REC-000056`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture. This is the checkpoint `/continue` restores.
 
 ---
 

@@ -3468,6 +3468,62 @@ Three things are missing:
 
 ---
 
+## Decision 075 — Command Surface Settlement: No Foundational Change
+
+**Status:** Proposed
+**Date:** 2026-07-20
+**Related Sections:** Version 0.3 milestone 0.3.4; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Runtime Command Interface); `docs/AI_GAMEPLAY_RESIDENT_CORE.md`; `README.md` (cold-start catalog); `tools/test_runtime_command_catalog.ps1`; Decisions 056, 063, 064, 067, 069, 070, 071
+
+**ADR Design draft.** Proposed under Version 0.3 (Runtime & Persistence Hardening) ADR Design. This decision is the assessment the milestone required, and its conclusion is to **drop the structural change rather than make one**. Refinement under Decision 069 — it changes no Rules section, no Data Model, and no command mechanism; it records a classification and closes a milestone.
+
+### Context
+
+Milestone 0.3.4 asked whether the command *model* — not its documentation — is over-specified, and the roadmap set the honest bar: "the smallest and least certain of the three. If evidence does not support it at ADR Design, it should be dropped rather than padded."
+
+The milestone exists because one bootstrap verb consumed six decisions (056, 063, 064, 067 on the argumentless-welcome boundary; 068 on Reikon `/system`; 071 on the listing), and the open question was whether that cost sits in the command surface itself. The evidence says it does not.
+
+### Assessment
+
+1. **The command model is already minimal.** Decision 056 defines commands as **thin dispatchers over procedures that already exist** — `/save` is the Save Algorithm, `/continue` is Restoration — operational and not normative, adding no engine mechanic and living in the Runtime Profile rather than `012`. There is no structural over-specification to remove: the surface is roughly nineteen verbs mapping one-to-one onto operations players perform every session, ordinary for a save/load/branch/export/status control surface.
+
+2. **The churn's causes were residency and listing-source, not surface size.** Decision 070's own analysis names them: the four bootstrap decisions "each added prose to the fetched layer and hoped it would fire," the defect Decision 055 predicts. Decision 070 removed that cause structurally (the resident layer became its own document); Decision 071 removed the same cause on the listing half (the index became a rendered source). The verb churned because an obligation sat only in fetched prose — a *siting* fault, already fixed — not because the command model was wrong.
+
+3. **The "no ADR to change a command" target is already met** for the classes that warrant it. `/length` was added on 2026-07-19 as a clean `/debug`-class display toggle, recorded as a Decision 069 refinement with **no ADR and no decision number consumed**. The mechanism the milestone wanted already works in practice.
+
+### Decision
+
+1. **No foundational change to the command model.** Milestone 0.3.4 delivers no ADR that alters the command surface, its dispatch model, or its namespace. The model (Decision 056) is confirmed as Version 0.3 architecture, unchanged.
+
+2. **Record the command-change classification** — a refinement making explicit what `/length` already practiced, so future command work does not spawn ADRs:
+   - **Refinement (no ADR):** adding or changing a command that is a thin dispatcher over an existing procedure, or a display/preference toggle (the `/debug`, `/length`, `/status` class). It needs only the catalog-synchronization test (`tools/test_runtime_command_catalog.ps1`) and a changelog entry.
+   - **Foundational (ADR required):** a command that introduces new bootstrap semantics, a new mutation or promotion barrier, or a change to the reserved-namespace/precedence rule (Decision 056 point 3).
+
+3. **Empirical verification folds into 0.3.5.** Whether per-boot compliance actually improved is not answerable at a desk — the roadmap already says "the next prototype campaign is the evidence." The 0.3.5 prototype must exercise the command surface (the bootstrap no-target gate; `/save`, `/load`, `/branch`, `/restart`) and confirm it survives without a new decision. Failure there reopens this milestone with evidence in hand.
+
+4. **Milestone 0.3.4 is closed by drop.** It is not renamed to manufacture work, and 0.3.5 is not renumbered.
+
+### Rationale
+
+- The assessment is the deliverable. The roadmap pre-authorized dropping this milestone precisely so it would not be padded into a change the evidence does not support.
+- Confirming Decision 056 unchanged, and naming the change-classification for commands, converts an open question into a closed rule at zero architectural cost — the outcome a settlement should produce when the surface turns out to be sound.
+- Deferring the empirical half to 0.3.5 is not evasion: it is where the roadmap already located the evidence, and 0.3.5 exists to run exactly that prototype.
+
+### Consequences
+
+- Roadmap milestone 0.3.4 is marked assessed and closed without a foundational ADR; its verification is added to 0.3.5's prototype. The bootstrap-churn Technical Debt entry is dispositioned: cause identified (residency/listing-source), removed (Decisions 070/071), residual question empirical (0.3.5).
+- The command-change classification is the command-specific case of Decision 069's change-classification. No document gains a new mechanism.
+- Version 0.3's foundational ADR set is 072, 073, and 074; this decision records the fourth milestone's disposition as a refinement, keeping the milestone honest without padding it.
+- Class under Decision 069: **refinement.** Owning milestone: Version 0.3 — 0.3.4.
+
+### Alternatives Considered
+
+- **Force a structural command-surface reduction.** Rejected: there is nothing over-specified to reduce. The model is already thin dispatchers with a reserved namespace; cutting verbs would remove operations players use, not complexity.
+- **Introduce a command-plugin or registration framework.** Rejected as padding: it adds a mechanism to a surface whose problem was never mechanism. Decision 056 is deliberately convenience-over-procedure, and a framework would re-normativize what `012` keeps substrate-facing.
+- **Keep 0.3.4 open and defer the judgment.** Rejected: the assessment is answerable now, and leaving the milestone open is the indefinite-hardening failure mode Decision 048 exists to prevent — on the one milestone the roadmap pre-authorized dropping.
+- **Elevate the classification to a full ADR-worthy mechanism.** Rejected: it documents existing practice (`/length`) rather than creating a rule, so it is a refinement, consistent with how the classification gate itself (Decision 069) treats such records.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

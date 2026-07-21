@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000081 |
-| Record | `REC-` | Canonical Record | REC-000057 |
-| Event | `EVT-` | Event | EVT-000041 |
+| Entity | `ENT-` | Persistent Entity | ENT-000082 |
+| Record | `REC-` | Canonical Record | REC-000058 |
+| Event | `EVT-` | Event | EVT-000043 |
 | Relationship | `REL-` | Relationship | REL-000047 |
 
 ---
@@ -99,6 +99,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000081 | Entity | Reikon Awakening: Ashgate E-Rift, a new Place — a second, solo-eligible assignment entered while Warehouse 7 sits with the Institute |
 | EVT-000041 | Event | Reikon Awakening: morning training, Warehouse 7 observation-only re-examination (new framework-asymmetry detail), Institute follow-up, declined D-core sale, and the Ashgate E-Rift engagement through the Emberbrand-empowered Fireball; encounter left unresolved |
 | REC-000057 | Record | Reikon Awakening `saves/900_CHECKPOINT_0013/900_SAVE_MANIFEST.md` — the Ashgate assignment and mid-encounter state |
+| ENT-000082 | Entity | Reikon Awakening: the extracted, unappraised Ashgate Rift core, distinct from monster-loot E-cores |
+| EVT-000042 | Event | Reikon Awakening: Ashgate core-chamber mop-up (confirming all nine kills), clean core extraction, and Rift collapse |
+| EVT-000043 | Event | Reikon Awakening: ruling flagging the unauthored Rift-clear milestone XP magnitude (206 Section 8.2) and awarding only confirmed per-kill XP for the Ashgate clear |
+| REC-000058 | Record | Reikon Awakening `saves/900_CHECKPOINT_0014/900_SAVE_MANIFEST.md` — the Ashgate closure and the milestone-XP ruling |
 
 ---
 

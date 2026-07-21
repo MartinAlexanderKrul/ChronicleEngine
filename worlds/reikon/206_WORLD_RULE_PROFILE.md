@@ -1,11 +1,19 @@
-# Reikon — World Rule Profile 0.8
+# Reikon — World Rule Profile 0.9
 
 **File:** `worlds/reikon/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
-**Profile Version:** 0.8
+**Profile Version:** 0.9
 **Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Status:** Active
+
+**0.9 authors the missing Stat payoffs for Power, Speed, and Perception (owner-directed world authoring; Decision 062), closing the gap Section 4.2 recorded under 0.8.** Law VII permits only *off-die magnitude* to be uncapped, so the three formulas split on that line:
+
+- **Power** gains an uncapped, off-die **physical-damage magnitude** (Section 6.4) — the melee counterpart of Ability Strength, and the one of the three that rides the band ladder, so like Endurance's `max_health` it is meaningful without bound.
+- **Speed** and **Perception** each gain a **+1-capped, domain-scoped** die contribution (Section 6.3): Speed on physical-reactive actions, Perception on contested detection. They cap for the same Law VII reason Mana Affinity does, and they bind *disjoint* action domains, so no single roll ever draws more than +1 from Stats.
+- **Perception** additionally gains an off-die awareness unlock (Section 12.3): at 16+ the Bearer appraises cores and reads threat grades himself — otherwise a specialist-only skill.
+
+The honest consequence, recorded rather than hidden: uncapping the stored Stat number (0.8) pays off *without bound* only for **Power and Endurance**; Speed, Perception, and Mana Affinity remain die-capped and bank past their relevant range. This change reads already-stored Stat values and derives at use (Section 11), so it needs no ledger or character-sheet edit; a campaign adopts it as an ordinary profile-version bump at its next readiness gate (Section 14.4).
 
 **0.8 removes the 20-point Stat cap and raises the Ascension point rate to 5 in Sections 4.1–4.2 (`EVT-000045`), applied retroactively.** Stats now grow with no upper bound, the same "never a dead level" philosophy already governing the Mana pool curve (Section 3.2) — but uncapping the stored number does not uncap what it does: Mana Affinity's contribution to modifier steps stays fixed at +1 forever (Section 6.3), because Law VII forbids anything more generous, full stop. Endurance already has a real uncapped payoff (`max_health`, Section 7.1); Power, Speed, and Perception do not, and that gap is recorded rather than invented, under the same discipline Section 12.7 applies to unpriced goods.
 
@@ -192,7 +200,7 @@ One point raises one stat by 1.
 
 - **Endurance** already has a real, uncapped, off-die payoff: it feeds `max_health` (Section 7.1) at every point, forever. Removing its ceiling is immediately meaningful with no further authoring needed.
 - **Mana Affinity's contribution to modifier steps stays fixed at a maximum of +1**, exactly as Section 6.3 already specifies, no matter how high the raw number climbs. That ceiling is not this profile's to move: Section 6.3 exists because anything more generous would walk the net modifier to +3, where the die stops deciding outcomes — which Law VII (Fairness), an Engine Law, forbids outright and no World Rule Profile can override (Rules Section 14.3). Points banked past the die-relevant range are legitimately held but have no further authored effect today.
-- **Power, Speed, and Perception have no formula at all.** Today they matter only through ordinary narrated circumstance (Rules Section 4.4), same as any Awakened without the System. Uncapping their stored value does not by itself give them an indefinite mechanical payoff — that gap is real, and it is recorded rather than invented, under the same discipline Section 12.7 already applies to unpriced goods. A future ruling may author an uncapped, off-die formula for one or more of them.
+- **Power, Speed, and Perception are authored in 0.9.** Power feeds an uncapped, off-die physical-damage magnitude (Section 6.4); Speed and Perception each contribute a +1-capped, domain-scoped die step (Section 6.3), and Perception adds an off-die awareness unlock at 16+ (Section 12.3). Only **Power** — like Endurance — is uncapped-meaningful, because only a band-riding magnitude can be; Speed and Perception cap for the Law VII reason Mana Affinity does, and bank past their relevant range.
 
 ## 4.3 Ability Sub-Stats
 
@@ -299,11 +307,19 @@ Steps compose per Rules Section 4.4 and Decision 058: one step is **20 percentil
 | Source | Contribution |
 |---|---|
 | Band gap (Section 6.2) | −3 … +1 |
-| Mana Affinity | 1–4 → **−1** · 5–15 → **0** · 16+ → **+1** |
+| Domain Stat — whichever the action's type selects (at most one) | 1–4 → **−1** · 5–15 → **0** · 16+ → **+1** |
 | Established circumstance | remainder |
 | **Net** | **capped ±3**; critical tails always live (Decision 052) |
 
-**Allocation buys no steps.** Neither Ability sub-stat touches the die. Mana Affinity contributes at most **+1** across its entire range.
+**Three Stats contribute a die step, each in its own action domain, and never together.** The Domain Stat row is filled by exactly one Stat per roll, selected by the action's type:
+
+- **Mana Affinity** — casting and magical control;
+- **Speed** — physical, time-critical *reactive* actions: dodging, closing or breaking distance, acting first in a contested exchange, flight and pursuit;
+- **Perception** — contested detection: searching, reading intent, spotting an ambush or an anomaly.
+
+The domains are disjoint, so a single roll draws **at most +1 from Stats** — the ±3 net budget is never walked by Stats alone. An action outside all three domains takes no Stat step. Each of the three uses the same band (`1–4 → −1 · 5–15 → 0 · 16+ → +1`) and, like Mana Affinity, banks with no further die effect past 16 (Section 4.2).
+
+**Allocation buys no steps.** Neither Ability sub-stat touches the die. Each domain Stat contributes at most **+1** across its entire range.
 
 That ceiling is deliberate, and it is not stingy. One step is twenty percentile points: maxing Mana Affinity from 13 to 20 permanently turns a 50% action into a 70% one. Anything more generous and a handful of levels would walk the net to +3, where every non-fumble roll lands at 66 or above and the die stops deciding anything — which Law VII (Fairness) forbids and which both Decision 057 and Decision 059 explicitly retained as the line. **This ceiling does not move even though the stored Stat itself is now uncapped (Section 4.2, `EVT-000045`).** The band above 16 reads `16+`, not `16–20`, precisely to make clear that further points keep banking on the character sheet without buying anything further here — they matter elsewhere (Section 4.2) or await a future authored formula, never the die.
 
@@ -324,6 +340,24 @@ damage = band_health(Bearer's effective band)
 So the band supplies the baseline, and **strength is what makes him punch above his band** — which is the Bearer's entire premise.
 
 **A monster needs only a grade, never a stat block.** Its Health is its grade's value in Section 3.1; its baseline damage equals that same value. New creatures are authored by naming their grade. Reikon gains no bestiary and no tactical subsystem (Decision 020).
+
+## 6.5 Physical (Non-Ability) Damage — Power
+
+A physical or weapon strike is not an Ability and costs no Mana. Its damage uses the same structure as Section 6.4, with **Power** filling the magnitude slot Ability Strength holds for casting:
+
+```
+physical_damage = band_health(Bearer's effective band)
+                × physical_ratio                     (strike class, below)
+                × (1 + 0.10 × (power − 10))           (Power magnitude; uncapped, off-die)
+                × band_multiplier(result)             (Section 6.4)
+                × (1 − total_reduction)               (Section 7.2)
+```
+
+- **`physical_ratio` is the strike class:** a competent armed strike is **0.75×**, an unarmed or improvised strike **0.5×**. An exceptional weapon, relic, or Marked blade is established circumstance, authored where it exists — Reikon gains no weapon table (Decision 020).
+- **Power magnitude is measured from a neutral baseline of 10, not from Awakening.** At Power 10 a strike does its class rate; each point above adds 10%, each below subtracts 10%. This keeps the value closed-form from the *current* Stat alone, needing no stored Awakening basis, and it is uncapped and off-die exactly like Ability Strength (Section 4.3).
+- **Physical damage rides the Bearer's own band**, for the identical reason Ability damage does above: anchored anywhere else, high-level Power is worthless against high-grade Health. Power is what lets the sword punch above its band, the way Strength does the spell.
+
+The trade is deliberate: a physical strike is **free but single-target and needs reach or contact**, where casting buys area, range, and burst at a Mana cost. That is what makes a trained fighter's Power a real alternative to spending the pool rather than a strictly worse one — and it is why Daedalus's Swordsmanship now scales instead of staying flavor. Against a same-band monster a competent strike at neutral Power lands ~2 hits; a critical, or invested Power, punches through in one.
 
 ---
 
@@ -711,7 +745,7 @@ system:
   health_recovery_remainder_units: <0..17279999>
   intervention_silent_checks: <0..2>
   active_intervention: <none|structured finite intervention state>
-  stats:                                    # uncapped (4.2); Mana Affinity's die contribution still ceilings at +1 past 16 regardless (6.3)
+  stats:                                    # uncapped values (4.2); die contribution ceilings at +1 for Mana Affinity, Speed, Perception past 16 (6.3); Power feeds off-die physical magnitude (6.5)
     power: <n>
     endurance: <n>
     speed: <n>
@@ -773,6 +807,8 @@ Cores still trade above coin and always have, because a core is not only money �
 A core carries its **origin** in its structure — which creature died to leave it, and therefore its grade. Reading that origin is a **specialist skill**, and only where someone holds it does a core fetch the ladder in 12.1.
 
 **Who can appraise:** Association core desks, Meridian Guild buyers, dedicated trade stations that keep an appraiser, Institute researchers, and the fences of the gray market. **Who cannot:** everyone else — the general provisioner, the tavern, the landlord, the hunter himself unless canon establishes he learned it.
+
+**The Bearer's own path: Perception.** A System Bearer whose **Perception reaches 16** reads a core's origin and a creature or Rift's grade himself — the self-appraisal this section otherwise reserves to specialists, and the off-die half of Perception's payoff (Section 4.2). Below 16 he is like any other hunter: he sees a core, not its grade; he faces a creature, not a known grade. At 16+ an uncontested read is automatic (No-Roll Zone, Section 6.2); a deliberately disguised or anomalous origin is still contested and rolls, with Perception's +1 (Section 6.3). This is knowledge, not power — it tells him what he holds and what he faces, never whether his strike lands (Section 6.1).
 
 | Where the core is sold | What it fetches |
 |------------------------|-----------------|

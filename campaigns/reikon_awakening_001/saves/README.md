@@ -24,11 +24,12 @@ A durable, Canonical-Record form of this index is proposed engine work (Save Lay
 | `900_CHECKPOINT_0012/` | 2026-07-20 | Conforming; Institute data handoff, Association report, night recovery, Emberbrand grant | Yes — superseded |
 | `900_CHECKPOINT_0013/` | 2026-07-21 | Conforming; Ashgate assignment captured mid-encounter, kill status unresolved at capture | Yes — superseded |
 | `900_CHECKPOINT_0014/` | 2026-07-21 | Conforming; Ashgate closure and the Rift-clear milestone XP ruling | Yes — superseded |
-| `900_CHECKPOINT_0015/` | 2026-07-21 | Conforming; milestone-XP formula authored (Profile 0.7), applied retroactively to Ashgate, Ascension to Level 3 | **Yes — current restore point** |
+| `900_CHECKPOINT_0015/` | 2026-07-21 | Conforming; milestone-XP formula authored (Profile 0.7), applied retroactively to Ashgate, Ascension to Level 3 | Yes — superseded |
+| `900_CHECKPOINT_0016/` | 2026-07-21 | Conforming; Stat cap removed and Ascension point rate raised 2 to 5 (Profile 0.8), applied retroactively | **Yes — current restore point** |
 
 There is **no baseline checkpoint** for this campaign. See below.
 
-The conforming lineage records the profile active at each capture: Checkpoint 0002 uses Reikon 0.1, 0003 uses 0.2, 0004–0006 use 0.3, 0007 uses 0.4, 0008 uses 0.5, 0009–0014 use 0.6, and live canon plus Checkpoint 0015 use 0.7. Any older-profile mismatch is surfaced on restore under Rules Section 13.5 and migrated in sequence. Profile 0.5 does not retroactively enable life-burning in an older checkpoint; Profile 0.6 likewise begins recurrent checks only after its migration; Profile 0.7's milestone-XP formula likewise governs only checkpoints at or after its own migration unless a specific retroactive ruling says otherwise (as `EVT-000044` does, for Ashgate alone).
+The conforming lineage records the profile active at each capture: Checkpoint 0002 uses Reikon 0.1, 0003 uses 0.2, 0004–0006 use 0.3, 0007 uses 0.4, 0008 uses 0.5, 0009–0014 use 0.6, 0015 uses 0.7, and live canon plus Checkpoint 0016 use 0.8. Any older-profile mismatch is surfaced on restore under Rules Section 13.5 and migrated in sequence. Profile 0.5 does not retroactively enable life-burning in an older checkpoint; Profile 0.6 likewise begins recurrent checks only after its migration; Profile 0.7's milestone-XP formula and Profile 0.8's uncapped Stats/5-point Ascension rate likewise govern only checkpoints at or after their own migration unless a specific retroactive ruling says otherwise (as `EVT-000044` and `EVT-000045` each do, for their own scope).
 
 ---
 
@@ -180,7 +181,7 @@ Manifest `REC-000058`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. C
 
 Checkpoint 0015 supersedes it as the checkpoint `/continue` restores. Restoring 0014 reverts to Level 2, 85/130 XP, with the milestone-XP gap unfilled and the 2 Ascension allocation points not yet granted. No played fiction from Checkpoint 0014 itself differs — the reversion is entirely about a ruling made afterward.
 
-## `900_CHECKPOINT_0015/` — current restore point
+## `900_CHECKPOINT_0015/`
 
 Captures one ruling promoted since Checkpoint 0014, with no fiction played: `EVT-000044`. The owner settled the gap `EVT-000043` had flagged rather than invented — `worlds/reikon/206_WORLD_RULE_PROFILE.md` Section 8.2 now specifies the Rift-clear milestone as a flat ×10 multiplier on the clearing Rift's grade baseline (World Rule Profile 0.6 → 0.7). Applied retroactively to the Ashgate clear at owner discretion, exactly as `EVT-000043` anticipated: 70 XP (10 × the E-grade baseline of 7) added to Daedalus's confirmed 85, crossing T(2)=130 and firing Ascension to Level 3.
 
@@ -188,7 +189,19 @@ Daedalus stands at Level 3, 25/170 XP, full 110/110 Health (max_health recompute
 
 **Checkpoint 0014 is not rewritten and remains sealed at its own settled state** — this checkpoint adds new canon on top of it rather than recalculating it, per Rules Section 5.2 (Immutability).
 
-Manifest `REC-000059`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture. This is the checkpoint `/continue` restores.
+Manifest `REC-000059`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture.
+
+Checkpoint 0016 supersedes it as the checkpoint `/continue` restores. Restoring 0015 reverts to a 20-point Stat cap and 2 points per Ascension, dropping `unspent_points` from 8 to 2. No played fiction from Checkpoint 0015 itself differs — the reversion is entirely about a ruling made afterward.
+
+## `900_CHECKPOINT_0016/` — current restore point
+
+Captures one ruling promoted since Checkpoint 0015, with no fiction played: `EVT-000045`. Two coupled rulings on `worlds/reikon/206_WORLD_RULE_PROFILE.md` (0.7 → 0.8). **Stats now grow with no upper bound** (Section 4.2) — but Mana Affinity's contribution to modifier steps stays fixed at +1 forever (Section 6.3), protected by Law VII (Fairness), an Engine Law no World Rule Profile can move; Endurance already has a real uncapped payoff via `max_health` (Section 7.1); Power, Speed, and Perception have no formula at all, and that gap is recorded, not invented. **The Ascension point rate rises from 2 to 5** (Section 4.1), grounded in observed pace — each of Daedalus's two Ascensions has read as one major arc for only 2 points, thin against the weight of clearing a whole Rift, and no longer calibrated against a stat cap that no longer exists.
+
+Applied retroactively to both of Daedalus's completed Ascensions: +3 points each, +6 total, on top of the 2 already unspent. Daedalus stands at Level 3, 25/170 XP, full 110/110 Health, low 2/14 Mana, and **8 allocation points unspent**, just outside the closed Ashgate E-Rift — the allocation itself remains an open player decision (Runtime Section 1.6), not made by this ruling.
+
+**Checkpoint 0015 is not rewritten and remains sealed at its own settled state** (2 unspent points) — this checkpoint adds new canon on top of it rather than recalculating it, per Rules Section 5.2 (Immutability).
+
+Manifest `REC-000060`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture. This is the checkpoint `/continue` restores.
 
 ---
 

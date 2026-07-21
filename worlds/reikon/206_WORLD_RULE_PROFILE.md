@@ -1,11 +1,13 @@
-# Reikon — World Rule Profile 0.7
+# Reikon — World Rule Profile 0.8
 
 **File:** `worlds/reikon/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
-**Profile Version:** 0.7
+**Profile Version:** 0.8
 **Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Status:** Active
+
+**0.8 removes the 20-point Stat cap and raises the Ascension point rate to 5 in Sections 4.1–4.2 (`EVT-000045`), applied retroactively.** Stats now grow with no upper bound, the same "never a dead level" philosophy already governing the Mana pool curve (Section 3.2) — but uncapping the stored number does not uncap what it does: Mana Affinity's contribution to modifier steps stays fixed at +1 forever (Section 6.3), because Law VII forbids anything more generous, full stop. Endurance already has a real uncapped payoff (`max_health`, Section 7.1); Power, Speed, and Perception do not, and that gap is recorded rather than invented, under the same discipline Section 12.7 applies to unpriced goods.
 
 **0.7 authors the Rift-clear milestone XP magnitude in Section 8.2 (`EVT-000044`).** Section 8.2 always promised "a larger milestone sum" for clearing a Rift's core but never specified one; `EVT-000043` (Checkpoint 0014) flagged the gap and deliberately withheld an invented number. This revision fills it: the milestone is a flat ×10 multiplier on the clearing Rift's grade baseline, awarded once per Rift clear alongside ordinary per-kill XP. The formula applies prospectively to future clears and, at owner discretion, retroactively to already-played ones without recalculating any sealed checkpoint (Rules Section 5.2; `EVT-000043`'s own terms).
 
@@ -176,19 +178,21 @@ Without a complete campaign event carrying those six fields, a hunter at insuffi
 
 ## 4.1 Points
 
-An Ascension grants **2 allocatable points**. Points come only from levelling — there is no other source.
+An Ascension grants **5 allocatable points** (raised from 2 by ruling `EVT-000045`, applied retroactively to already-completed Ascensions — Rules Section 5.2 governs how a retroactive ruling reaches sealed checkpoints, same terms as `EVT-000044`). Points come only from levelling — there is no other source.
 
 One pool of points serves both Stats and Abilities. That is deliberate: investing in Fireball's efficiency costs Mana Affinity, and the opportunity cost is the design.
 
 ## 4.2 Stats
 
-The five Stats are **Power, Endurance, Speed, Mana Affinity, Perception**, each `n/20`.
+The five Stats are **Power, Endurance, Speed, Mana Affinity, Perception**. Each began at Awakening and grows through allocation with **no upper bound** (ruling `EVT-000045`) — the same "never a dead level" philosophy already governing the Mana pool curve (Section 3.2). A Bearer never runs out of room to keep raising them.
 
-**20 is a hard cap.** No stat exceeds it, ever, by any means.
+One point raises one stat by 1.
 
-One point raises one stat by 1. From Daedalus's opening 54 (8+9+10+13+14), maxing all five costs **46 points — roughly Level 24**.
+**Uncapping the number does not uncap what the number does.** What each point buys past the old ceiling of 20 differs by Stat, and only Reikon's own authored formulas govern that — not the raw number:
 
-The cap is not a limitation to be worked around. Because net modifier steps are capped at ±3 (Rules Section 4.4), stats above 20 could not affect resolution anyway; an uncapped scale would be pure inflation with no mechanical meaning.
+- **Endurance** already has a real, uncapped, off-die payoff: it feeds `max_health` (Section 7.1) at every point, forever. Removing its ceiling is immediately meaningful with no further authoring needed.
+- **Mana Affinity's contribution to modifier steps stays fixed at a maximum of +1**, exactly as Section 6.3 already specifies, no matter how high the raw number climbs. That ceiling is not this profile's to move: Section 6.3 exists because anything more generous would walk the net modifier to +3, where the die stops deciding outcomes — which Law VII (Fairness), an Engine Law, forbids outright and no World Rule Profile can override (Rules Section 14.3). Points banked past the die-relevant range are legitimately held but have no further authored effect today.
+- **Power, Speed, and Perception have no formula at all.** Today they matter only through ordinary narrated circumstance (Rules Section 4.4), same as any Awakened without the System. Uncapping their stored value does not by itself give them an indefinite mechanical payoff — that gap is real, and it is recorded rather than invented, under the same discipline Section 12.7 already applies to unpriced goods. A future ruling may author an uncapped, off-die formula for one or more of them.
 
 ## 4.3 Ability Sub-Stats
 
@@ -295,13 +299,13 @@ Steps compose per Rules Section 4.4 and Decision 058: one step is **20 percentil
 | Source | Contribution |
 |---|---|
 | Band gap (Section 6.2) | −3 … +1 |
-| Mana Affinity | 1–4 → **−1** · 5–15 → **0** · 16–20 → **+1** |
+| Mana Affinity | 1–4 → **−1** · 5–15 → **0** · 16+ → **+1** |
 | Established circumstance | remainder |
 | **Net** | **capped ±3**; critical tails always live (Decision 052) |
 
 **Allocation buys no steps.** Neither Ability sub-stat touches the die. Mana Affinity contributes at most **+1** across its entire range.
 
-That ceiling is deliberate, and it is not stingy. One step is twenty percentile points: maxing Mana Affinity from 13 to 20 permanently turns a 50% action into a 70% one. Anything more generous and a handful of levels would walk the net to +3, where every non-fumble roll lands at 66 or above and the die stops deciding anything — which Law VII (Fairness) forbids and which both Decision 057 and Decision 059 explicitly retained as the line.
+That ceiling is deliberate, and it is not stingy. One step is twenty percentile points: maxing Mana Affinity from 13 to 20 permanently turns a 50% action into a 70% one. Anything more generous and a handful of levels would walk the net to +3, where every non-fumble roll lands at 66 or above and the die stops deciding anything — which Law VII (Fairness) forbids and which both Decision 057 and Decision 059 explicitly retained as the line. **This ceiling does not move even though the stored Stat itself is now uncapped (Section 4.2, `EVT-000045`).** The band above 16 reads `16+`, not `16–20`, precisely to make clear that further points keep banking on the character sheet without buying anything further here — they matter elsewhere (Section 4.2) or await a future authored formula, never the die.
 
 ## 6.4 Damage
 
@@ -707,7 +711,7 @@ system:
   health_recovery_remainder_units: <0..17279999>
   intervention_silent_checks: <0..2>
   active_intervention: <none|structured finite intervention state>
-  stats:                                    # hard cap 20 each (4.2)
+  stats:                                    # uncapped (4.2); Mana Affinity's die contribution still ceilings at +1 past 16 regardless (6.3)
     power: <n>
     endurance: <n>
     speed: <n>

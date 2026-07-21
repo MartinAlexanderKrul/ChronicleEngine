@@ -147,13 +147,23 @@ Manifest `REC-000055`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. C
 
 Checkpoint 0012 supersedes it as the checkpoint `/continue` restores. Restoring 0011 reinstates the same-day obligation on `REL-000045` as **met and unhonoured** (rather than honoured), reverts Health/Mana to 88/105 and 7/14, loses the Institute's active severance investigation and the Association clear report, and forfeits the Emberbrand intervention. No played fiction from Checkpoint 0011 itself differs — the reversion is entirely about what happened afterward.
 
-## `900_CHECKPOINT_0012/` — current restore point
+## `900_CHECKPOINT_0012/`
 
 Captures the following evening's and next dawn's play in full: Daedalus treats his wounds, gives Dr. Kalens the complete basement findings at his home within the standing same-day window, and logs the clear with the Hunters' Authority (`EVT-000038`). A tested light workout (d100 78, success) and a full night's rest settle Health and Mana to maximum under Reikon's deterministic recovery formulas (`EVT-000039`). At dawn, the Profile 0.6 recurrent-intervention check (Section 9.6) fires for the first time since migration — d100 82 — granting the one-use technique **Emberbrand** (`EVT-000040`): the next successful Fireball or Combustion Touch strikes at critical-success force, expiring at the next sunrise if unused.
 
 Daedalus stands at Level 2, 31/130 XP, full 105/105 Health, and full 14/14 Mana in his own rented room. Kalens's same-day obligation on `REL-000045` is now **met and honoured**. One harvested D-core (`ENT-000074`) has passed to Dr. Soren for analysis; the other three remain with Daedalus. The Warehouse 7 core itself is untouched — still bonded, still unextracted, still on its stability clock — and the Institute has not yet reported findings back.
 
-Manifest `REC-000056`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture. This is the checkpoint `/continue` restores.
+Manifest `REC-000056`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture.
+
+Checkpoint 0013 supersedes it as the checkpoint `/continue` restores. Restoring 0012 reverts to full Health/Mana at dawn with Emberbrand unspent, loses the Warehouse 7 observation-only clearance and its new framework-asymmetry finding, loses the declined D-core sale and the follow-up letter to Kalens, and forfeits the entire Ashgate E-Rift assignment (including its two confirmed Broodling kills and 12 XP). No played fiction from Checkpoint 0012 itself differs — the reversion is entirely about what happened afterward.
+
+## `900_CHECKPOINT_0013/` — current restore point
+
+Captures one full in-fiction day (`EVT-000041`): morning training with spellwork deliberately skipped to preserve Emberbrand; Captain Thorne granting Warehouse 7 solo *observation-only* clearance (not extraction) after Daedalus argued the stability window showed no instability signs; a re-examination of the Warehouse 7 core (d100 87, strong success) revealing a new structural asymmetry in the framework at its point of contact with the core; consultations with Kalens, Soren, and Marta (no severance breakthrough yet); a declined D-core sale at the Association appraisal desk (d100 64, success — 15 units offered) followed by a letter to Kalens with the new finding instead; and a second, solo-eligible Ashgate district E-Rift assignment. Inside it: a successful structural read to the core (d100 91), a partial-success surprise sword sweep killing one Broodling and wounding a second while a third fled (d100 58), a legendary finishing blow on the wounded one (d100 100), a successful stealth follow of the fleeing Broodling (d100 76), and a Fireball at critical force via Emberbrand against the assembled cluster (d100 74, +2, effective 100).
+
+Daedalus stands at Level 2, 43/130 XP (two confirmed Broodling kills, 6 XP each), full 105/105 Health, and low 2/14 Mana, inside the Ashgate E-Rift's core chamber. Emberbrand is fully spent (`active_intervention: none`). **The larger Broodling cluster's kill status is not resolved** — several are dead, a few remain visibly moving at the blast's edge — and this checkpoint deliberately captures that as an open encounter rather than a completed clear. The Warehouse 7 core remains untouched, still bonded and unextracted; Daedalus carries three unsold D-cores and holds observation-only clearance there, not extraction authorization.
+
+Manifest `REC-000057`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture. This is the checkpoint `/continue` restores.
 
 ---
 

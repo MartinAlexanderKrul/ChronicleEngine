@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000080 |
-| Record | `REC-` | Canonical Record | REC-000056 |
-| Event | `EVT-` | Event | EVT-000040 |
+| Entity | `ENT-` | Persistent Entity | ENT-000081 |
+| Record | `REC-` | Canonical Record | REC-000057 |
+| Event | `EVT-` | Event | EVT-000041 |
 | Relationship | `REL-` | Relationship | REL-000047 |
 
 ---
@@ -96,6 +96,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000039 | Event | Reikon Awakening: night recovery — a light post-injury workout resolved by the die (d100 78, success), followed by a full night's rest settling Health and Mana to maximum under the deterministic recovery formulas |
 | EVT-000040 | Event | Reikon Awakening: Profile 0.6 Section 9.6 recurrent intervention check (first-safe-exchange-of-a-new-day trigger), d100 82, granting the one-use finite technique Emberbrand |
 | REC-000056 | Record | Reikon Awakening `saves/900_CHECKPOINT_0012/900_SAVE_MANIFEST.md` — Institute handoff, Association report, night recovery, and the Emberbrand intervention grant |
+| ENT-000081 | Entity | Reikon Awakening: Ashgate E-Rift, a new Place — a second, solo-eligible assignment entered while Warehouse 7 sits with the Institute |
+| EVT-000041 | Event | Reikon Awakening: morning training, Warehouse 7 observation-only re-examination (new framework-asymmetry detail), Institute follow-up, declined D-core sale, and the Ashgate E-Rift engagement through the Emberbrand-empowered Fireball; encounter left unresolved |
+| REC-000057 | Record | Reikon Awakening `saves/900_CHECKPOINT_0013/900_SAVE_MANIFEST.md` — the Ashgate assignment and mid-encounter state |
 
 ---
 

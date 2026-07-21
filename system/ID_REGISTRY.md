@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000082 |
-| Record | `REC-` | Canonical Record | REC-000058 |
-| Event | `EVT-` | Event | EVT-000043 |
+| Record | `REC-` | Canonical Record | REC-000059 |
+| Event | `EVT-` | Event | EVT-000044 |
 | Relationship | `REL-` | Relationship | REL-000047 |
 
 ---
@@ -103,6 +103,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000042 | Event | Reikon Awakening: Ashgate core-chamber mop-up (confirming all nine kills), clean core extraction, and Rift collapse |
 | EVT-000043 | Event | Reikon Awakening: ruling flagging the unauthored Rift-clear milestone XP magnitude (206 Section 8.2) and awarding only confirmed per-kill XP for the Ashgate clear |
 | REC-000058 | Record | Reikon Awakening `saves/900_CHECKPOINT_0014/900_SAVE_MANIFEST.md` — the Ashgate closure and the milestone-XP ruling |
+| EVT-000044 | Event | Reikon Awakening: owner ruling authoring the Rift-clear milestone XP formula (World Rule Profile 0.7, Section 8.2, flat ×10 grade-baseline multiplier) and applying it retroactively to the Ashgate clear — 70 milestone XP, moving Daedalus from 85 to 155/130, crossing T(2) into Ascension to Level 3 at 25/170. Also corrects a transcription error on `100_CHARACTER_SHEET.md`'s `situation` field, which read "ten Broodlings"/"Ten E-cores" against nine established everywhere else (checkpoint manifests, changelog, and the XP arithmetic itself) |
+| REC-000059 | Record | Reikon Awakening `saves/900_CHECKPOINT_0015/900_SAVE_MANIFEST.md` — the milestone-XP formula ruling, its retroactive Ashgate application, and the resulting Ascension to Level 3 |
 
 ---
 

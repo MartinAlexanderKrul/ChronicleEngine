@@ -1,11 +1,13 @@
-# Reikon — World Rule Profile 0.6
+# Reikon — World Rule Profile 0.7
 
 **File:** `worlds/reikon/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
-**Profile Version:** 0.6
+**Profile Version:** 0.7
 **Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Status:** Active
+
+**0.7 authors the Rift-clear milestone XP magnitude in Section 8.2 (`EVT-000044`).** Section 8.2 always promised "a larger milestone sum" for clearing a Rift's core but never specified one; `EVT-000043` (Checkpoint 0014) flagged the gap and deliberately withheld an invented number. This revision fills it: the milestone is a flat ×10 multiplier on the clearing Rift's grade baseline, awarded once per Rift clear alongside ordinary per-kill XP. The formula applies prospectively to future clears and, at owner discretion, retroactively to already-played ones without recalculating any sealed checkpoint (Rules Section 5.2; `EVT-000043`'s own terms).
 
 **0.6 adds recurrent System interventions and Bearer succession in Sections 9.6–9.7.** The System is a patient world force oriented toward producing a stronger Bearer, not toward keeping the current one safe. At declared triggers it may remain silent, issue a directive, grant a finite technique, open a trial Rift, or rarely displace the Bearer into one. Every boon and trial has exact rules; XP still requires genuine resolved challenge. If the Bearer dies, that campaign ends and the System eventually selects another Bearer in the same world-line. The 0.5 finite-anomaly contract remains unchanged.
 
@@ -450,7 +452,15 @@ A challenge's XP award rides the same ×2.75 ladder as everything else:
 |---|---|---|---|---|---|---|
 | XP | **~7** | ~19 | ~53 | ~145 | ~400 | ~1,100 |
 
-E-grade baselines, as established canon: **Broodling ≈ 6, Swarmer ≈ 8**. Clearing a Rift core awards a larger milestone sum.
+E-grade baselines, as established canon: **Broodling ≈ 6, Swarmer ≈ 8**. Clearing a Rift core awards a larger milestone sum, specified below.
+
+**Rift-Clear Milestone (established `EVT-000044`).** Clearing a Rift's core — the act that collapses it, not merely killing what guards it — awards a one-time milestone bonus of **×10 the clearing Rift's grade baseline** from the table above, in addition to whatever per-kill XP was earned fighting through it:
+
+| Grade | E | D | C | B | A | S |
+|---|---|---|---|---|---|---|
+| Milestone XP | **70** | 190 | 530 | 1,450 | 4,000 | 11,000 |
+
+The multiplier is flat across grades by design, so it scales automatically as the same ×2.75 ladder that governs everything else in this section moves — no separate table to maintain as new grades come into play. It is awarded once per Rift, at the exchange that resolves the clear (core extraction, collapse, or equivalent), never per kill and never per attempt. A Rift that is abandoned, sealed by someone else, or left uncleared awards no milestone.
 
 **Award timing is immediate.** The exchange that resolves the challenge also adds its XP to canonical in-flight state, checks the threshold, and fires the notification defined in Section 9.5. There is no pending-XP state and no later `/system` reconciliation. If several creatures are resolved by one action, aggregate that action's award and notify once.
 

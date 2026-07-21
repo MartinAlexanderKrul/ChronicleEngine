@@ -23,11 +23,12 @@ A durable, Canonical-Record form of this index is proposed engine work (Save Lay
 | `900_CHECKPOINT_0011/` | 2026-07-15 | Conforming; Institute director name correction | Yes — superseded |
 | `900_CHECKPOINT_0012/` | 2026-07-20 | Conforming; Institute data handoff, Association report, night recovery, Emberbrand grant | Yes — superseded |
 | `900_CHECKPOINT_0013/` | 2026-07-21 | Conforming; Ashgate assignment captured mid-encounter, kill status unresolved at capture | Yes — superseded |
-| `900_CHECKPOINT_0014/` | 2026-07-21 | Conforming; Ashgate closure and the Rift-clear milestone XP ruling | **Yes — current restore point** |
+| `900_CHECKPOINT_0014/` | 2026-07-21 | Conforming; Ashgate closure and the Rift-clear milestone XP ruling | Yes — superseded |
+| `900_CHECKPOINT_0015/` | 2026-07-21 | Conforming; milestone-XP formula authored (Profile 0.7), applied retroactively to Ashgate, Ascension to Level 3 | **Yes — current restore point** |
 
 There is **no baseline checkpoint** for this campaign. See below.
 
-The conforming lineage records the profile active at each capture: Checkpoint 0002 uses Reikon 0.1, 0003 uses 0.2, 0004–0006 use 0.3, 0007 uses 0.4, 0008 uses 0.5, and live canon plus Checkpoint 0009 use 0.6. Any older-profile mismatch is surfaced on restore under Rules Section 13.5 and migrated in sequence. Profile 0.5 does not retroactively enable life-burning in an older checkpoint; Profile 0.6 likewise begins recurrent checks only after its migration.
+The conforming lineage records the profile active at each capture: Checkpoint 0002 uses Reikon 0.1, 0003 uses 0.2, 0004–0006 use 0.3, 0007 uses 0.4, 0008 uses 0.5, 0009–0014 use 0.6, and live canon plus Checkpoint 0015 use 0.7. Any older-profile mismatch is surfaced on restore under Rules Section 13.5 and migrated in sequence. Profile 0.5 does not retroactively enable life-burning in an older checkpoint; Profile 0.6 likewise begins recurrent checks only after its migration; Profile 0.7's milestone-XP formula likewise governs only checkpoints at or after its own migration unless a specific retroactive ruling says otherwise (as `EVT-000044` does, for Ashgate alone).
 
 ---
 
@@ -169,13 +170,25 @@ Manifest `REC-000057`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. C
 
 Checkpoint 0014 supersedes it as the checkpoint `/continue` restores. Restoring 0013 reopens the Ashgate encounter mid-fight — the larger Broodling cluster reverts to unresolved, the core is unextracted, and the Rift is uncollapsed — and reverts XP to 43 with the milestone-XP ruling not yet made. No played fiction from Checkpoint 0013 itself differs; the reversion is entirely about what happened afterward.
 
-## `900_CHECKPOINT_0014/` — current restore point
+## `900_CHECKPOINT_0014/`
 
 Captures the direct continuation of Checkpoint 0013's unresolved encounter (`EVT-000042`, `EVT-000043`). Daedalus mopped up the blast-struck core chamber, finishing three still-stirring Broodlings (d100 61, +2, effective 71, success) to confirm all seven chamber kills — nine Broodlings dead in total across the Ashgate engagement, two in melee and seven in the chamber. Seven more E-cores were harvested (core purse 48 to 55, nine collected total this session). He then extracted the small pale-green Ashgate core cleanly (d100 68, +2, effective 88, success) — no bonding, no resistance — which collapsed the Rift immediately; he cleared the entrance fissure with room to spare (d100 79, +2, effective 99, legendary success) just before it sealed.
 
 Daedalus stands at Level 2, 85/130 XP, full 105/105 Health, and low 2/14 Mana, just outside the now-closed Ashgate E-Rift. **A ruling is recorded rather than an invented number:** Section 8.2's Rift-clear "milestone sum" bonus has no specified magnitude anywhere in canon, so only the confirmed per-kill XP (54, nine Broodlings at 6 each) was awarded, moving XP from 31 to 85. The milestone bonus itself is an open gap awaiting an owner decision. The extracted Ashgate core (`ENT-000082`) is unappraised. Warehouse 7's core remains untouched, still bonded and unextracted; Daedalus carries three unsold D-cores and holds observation-only clearance there, not extraction authorization.
 
-Manifest `REC-000058`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture. This is the checkpoint `/continue` restores.
+Manifest `REC-000058`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture.
+
+Checkpoint 0015 supersedes it as the checkpoint `/continue` restores. Restoring 0014 reverts to Level 2, 85/130 XP, with the milestone-XP gap unfilled and the 2 Ascension allocation points not yet granted. No played fiction from Checkpoint 0014 itself differs — the reversion is entirely about a ruling made afterward.
+
+## `900_CHECKPOINT_0015/` — current restore point
+
+Captures one ruling promoted since Checkpoint 0014, with no fiction played: `EVT-000044`. The owner settled the gap `EVT-000043` had flagged rather than invented — `worlds/reikon/206_WORLD_RULE_PROFILE.md` Section 8.2 now specifies the Rift-clear milestone as a flat ×10 multiplier on the clearing Rift's grade baseline (World Rule Profile 0.6 → 0.7). Applied retroactively to the Ashgate clear at owner discretion, exactly as `EVT-000043` anticipated: 70 XP (10 × the E-grade baseline of 7) added to Daedalus's confirmed 85, crossing T(2)=130 and firing Ascension to Level 3.
+
+Daedalus stands at Level 3, 25/170 XP, full 110/110 Health (max_health recomputed under the unchanged closed-form curve), and low 2/14 Mana (max_mana 15, unaffected by the spent 2/14), just outside the closed Ashgate E-Rift. **2 allocation points from this Ascension are unspent**, deliberately left for Daedalus's player to allocate rather than assigned by this ruling (Runtime Section 1.6). A second, unrelated transcription error was corrected in the same pass: `100_CHARACTER_SHEET.md`'s `situation` field read "ten Broodlings"/"Ten E-cores" against nine established everywhere else in canon.
+
+**Checkpoint 0014 is not rewritten and remains sealed at its own settled state** — this checkpoint adds new canon on top of it rather than recalculating it, per Rules Section 5.2 (Immutability).
+
+Manifest `REC-000059`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture. This is the checkpoint `/continue` restores.
 
 ---
 

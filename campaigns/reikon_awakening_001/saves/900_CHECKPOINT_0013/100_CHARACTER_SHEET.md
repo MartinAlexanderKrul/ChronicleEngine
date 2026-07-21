@@ -8,9 +8,9 @@ canonical_record: REC-000038
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000044
-  event_time: "Year 31 AR, milestone-XP ruling applied retroactively to the Ashgate clear"
-  record_time: "2026-07-21T02:00:00Z"
+  source: EVT-000041
+  event_time: "Year 31 AR, Ashgate E-Rift solo assignment"
+  record_time: "2026-07-21T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -25,10 +25,10 @@ canonical_record: REC-000038
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000044
-  event_time: "Year 31 AR, milestone-XP ruling applied retroactively to the Ashgate clear"
-  record_time: "2026-07-21T02:00:00Z"
-  uncertainty: "Residence established by ruling (ENT-000066), not by played event; the landlord and the tenancy's remaining term are unestablished. Allocation of the 2 points granted by this Ascension is an open player decision, not yet made."
+  source: EVT-000041
+  event_time: "Year 31 AR, Ashgate E-Rift solo assignment"
+  record_time: "2026-07-21T00:00:00Z"
+  uncertainty: "Residence established by ruling (ENT-000066), not by played event; the landlord and the tenancy's remaining term are unestablished. The Ashgate core chamber cluster's full kill status is not yet confirmed — several Broodlings were caught in the Fireball blast and some remain unconfirmed dead versus dying."
 type: Character
 subtype: "System-bearing Awakened hunter"
 scope: personal
@@ -67,9 +67,9 @@ canonical_state:
   personality: "Ambitious prodigy; confident, observant, eager to prove himself"
   knowledge: "Aurology training; observed Broodling, Swarmer, pack-leader, and Breaker behavior; mapped Warehouse 7 and fully documented its basement core chamber. Four D-grade Breakers used a coordinated guard formation and are now dead. The metre-tall burgundy core pulses every three seconds, radiates heat, and is energetically integrated with an organic crystalline framework and eight-metre floor pattern. Direct extraction failed. Safe severance methodology, the D-grade anomaly's cause, and the core's relation to Rift stability remain unestablished."
   residence: "A rented room in Verholt's working quarter (ENT-000066). A Verholt local of years' standing, not a newcomer: he lived and worked here as an Aurology Institute research assistant before the Awakening, and the room is held on his own coin, independent of Institute and Association alike."
-  situation: "Standing just outside the Ashgate silo, the E-Rift fully closed behind him. All nine Broodlings guarding it are confirmed dead and harvested; the small Ashgate core was extracted cleanly and the Rift collapsed as he withdrew, with room to spare. Nine E-cores from the encounter are in his purse alongside the extracted Ashgate core itself, unappraised. Warehouse 7's bonded core remains in Institute hands, still bonded and unextracted, with no severance method reported back yet; Daedalus holds observation-only clearance there, not extraction authorization."
+  situation: "Took a second solo-eligible assignment from the Hunters' Authority dispatch board while Warehouse 7 sits in Institute hands: a low-priority E-Rift in the Ashgate district, three days unclaimed, quiet activity. Entered alone, tracked the mana-density gradient to a core chamber, and engaged a group of Broodlings guarding a small pale-green core. Two Broodlings were killed and harvested in melee; a third fled toward a larger cluster near the core. Daedalus spent the Emberbrand intervention on a Fireball that caught the fleeing Broodling and the full cluster in one critical-force blast — several are confirmed dead, a few still visibly moving at the blast's edge. The chamber is not yet confirmed clear. Warehouse 7's bonded core remains in Institute hands, still bonded and unextracted, with no severance method reported back yet."
   training_commitment: "Repeat daily: 10 km run, 30 minutes of sword technique, 100 pushups, and one controlled round of each spell"
-  world_rule_profile: "Reikon 0.7"
+  world_rule_profile: "Reikon 0.6"
   active_overrides: "RKO-OVR-001, RKO-OVR-002"
 
 # Domain extension -- Subtype "System-bearing Awakened hunter".
@@ -86,22 +86,22 @@ canonical_state:
 #   20% phys. reduction <- 206 S5, Reinforced Body
 system:
   official_rank: E              # certified at Awakening; not what he is
-  level: 3
-  xp: 25                         # 85 + 70 milestone (EVT-000044: 206 S8.2 Rift-clear milestone, x10 the E-grade baseline of 7, applied retroactively to the Ashgate clear) = 155; T(2)=130 crossed, Ascension to Level 3, remainder 25 carried against T(3)=170
-  unspent_points: 2              # granted by this Ascension (206 S4.1); allocation is Daedalus's player decision and is deliberately left open, not spent by this ruling
+  level: 2
+  xp: 43                        # 31 carried + 12 (two confirmed E-grade Broodling kills @ 6 XP each, EVT-000041); T(2)=130 not crossed
+  unspent_points: 0
   awakening_pool: 13
   awakening_health: 100
   awakening_endurance: 9
-  current_mana: 2               # 14 - 12 Fireball cost (EVT-000041); unaffected by this Ascension
+  current_mana: 2               # 14 - 12 Fireball cost (EVT-000041)
   mana_recovery_mode: resting
   mana_recovery_remainder_seconds: 0
-  current_health: 110            # max_health(3,9) = round(100 x 1.05^2) = 110 (206 S7.1); was full at old max 105, missing=0, so full at new max per the Maximum-Health-Changes rule (EVT-000044)
+  current_health: 105
   health_recovery_mode: resting
   health_recovery_care: treated
   health_recovery_injury_severity: none
   health_recovery_remainder_units: 0
   intervention_silent_checks: 0
-  active_intervention: none      # Emberbrand spent: critical-force Fireball landed on the Ashgate cluster (EVT-000041); fully consumed, not merely expired; still none after the Ashgate closure (EVT-000042)
+  active_intervention: none      # Emberbrand spent: critical-force Fireball landed on the Ashgate cluster (EVT-000041); fully consumed, not merely expired
   stats:
     power: 8
     endurance: 9
@@ -127,4 +127,4 @@ system:
 ```
 
 **Derived readout at this state** (computed from the block above; recorded here for review only, never as canon):
-Level 2 with both Ascension points allocated: Mana Affinity 14 and Fireball Strength 1. `max_mana` = 14; `max_health` = 105. Every ability remains Lv 1; Fireball costs 12 at 1.10× magnitude, Flame Shield costs 2/second, Combustion Touch 6, Endurance Surge 10, Reinforced Body 0. Effective band **E** (pool 14). Next threshold `T(2)` = 130. Current state: 85/130 XP, 2/14 Mana, 105/105 HP. The Ashgate encounter is now fully resolved: all ten Broodlings confirmed dead across the engagement (two in melee, seven mopped up post-blast, one already counted among the seven — corrected count below), awarding 6 XP each per Section 8.2's E-grade baseline (54 XP total across the melee-plus-mop-up kills, moving 31 to 85 in total across both confirmed batches). The Ashgate core was extracted cleanly (d100 88) and the Rift closed as Daedalus withdrew (d100 99). Section 8.2 states clearing a Rift core "awards a larger milestone sum" but specifies no exact magnitude anywhere in canon; **that bonus is deliberately not awarded** rather than invented — flagged as an unauthored-magnitude gap pending an owner ruling (`EVT-000043`), the same discipline the Economy section already applies to unpriced goods. Emberbrand remains fully spent (`active_intervention: none`). Trained non-System skills: foundational Swordsmanship (two recorded sessions), practiced aerobic conditioning (three recorded 10 km runs), and practiced bodyweight conditioning (two recorded 100-pushup sessions).
+Level 2 with both Ascension points allocated: Mana Affinity 14 and Fireball Strength 1. `max_mana` = 14; `max_health` = 105. Every ability remains Lv 1; Fireball costs 12 at 1.10× magnitude, Flame Shield costs 2/second, Combustion Touch 6, Endurance Surge 10, Reinforced Body 0. Effective band **E** (pool 14). Next threshold `T(2)` = 130. Current state: 43/130 XP, 2/14 Mana, 105/105 HP. Two Broodlings killed and harvested in Ashgate melee awarded 12 XP immediately (6 each, Section 8.2 E-grade baseline), moving 31 to 43. A single Fireball cast at effective 100 (74 raw, +2 favorable-setup modifier) consumed Emberbrand — the cast lands at critical-success (2.0×) force regardless of an already-strong natural roll — costing the ordinary 12 Mana and dropping current Mana from 14 to 2. Emberbrand is now fully spent, not merely expired; `active_intervention` is cleared to `none`. The Ashgate cluster's kill count is not yet finalized: the blast is confirmed to have killed several Broodlings outright, with a few still moving at its edge, so no further XP is awarded for that cluster until the encounter resolves. Trained non-System skills: foundational Swordsmanship (two recorded sessions), practiced aerobic conditioning (three recorded 10 km runs), and practiced bodyweight conditioning (two recorded 100-pushup sessions).

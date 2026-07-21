@@ -8,9 +8,9 @@ canonical_record: REC-000038
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000044
-  event_time: "Year 31 AR, milestone-XP ruling applied retroactively to the Ashgate clear"
-  record_time: "2026-07-21T02:00:00Z"
+  source: EVT-000043
+  event_time: "Year 31 AR, Ashgate E-Rift closure"
+  record_time: "2026-07-21T01:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -25,10 +25,10 @@ canonical_record: REC-000038
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000044
-  event_time: "Year 31 AR, milestone-XP ruling applied retroactively to the Ashgate clear"
-  record_time: "2026-07-21T02:00:00Z"
-  uncertainty: "Residence established by ruling (ENT-000066), not by played event; the landlord and the tenancy's remaining term are unestablished. Allocation of the 2 points granted by this Ascension is an open player decision, not yet made."
+  source: EVT-000043
+  event_time: "Year 31 AR, Ashgate E-Rift closure"
+  record_time: "2026-07-21T01:00:00Z"
+  uncertainty: "Residence established by ruling (ENT-000066), not by played event; the landlord and the tenancy's remaining term are unestablished. The Rift-clear milestone XP magnitude (206 Section 8.2) is unauthored and not awarded — see EVT-000043."
 type: Character
 subtype: "System-bearing Awakened hunter"
 scope: personal
@@ -67,9 +67,9 @@ canonical_state:
   personality: "Ambitious prodigy; confident, observant, eager to prove himself"
   knowledge: "Aurology training; observed Broodling, Swarmer, pack-leader, and Breaker behavior; mapped Warehouse 7 and fully documented its basement core chamber. Four D-grade Breakers used a coordinated guard formation and are now dead. The metre-tall burgundy core pulses every three seconds, radiates heat, and is energetically integrated with an organic crystalline framework and eight-metre floor pattern. Direct extraction failed. Safe severance methodology, the D-grade anomaly's cause, and the core's relation to Rift stability remain unestablished."
   residence: "A rented room in Verholt's working quarter (ENT-000066). A Verholt local of years' standing, not a newcomer: he lived and worked here as an Aurology Institute research assistant before the Awakening, and the room is held on his own coin, independent of Institute and Association alike."
-  situation: "Standing just outside the Ashgate silo, the E-Rift fully closed behind him. All nine Broodlings guarding it are confirmed dead and harvested; the small Ashgate core was extracted cleanly and the Rift collapsed as he withdrew, with room to spare. Nine E-cores from the encounter are in his purse alongside the extracted Ashgate core itself, unappraised. Warehouse 7's bonded core remains in Institute hands, still bonded and unextracted, with no severance method reported back yet; Daedalus holds observation-only clearance there, not extraction authorization."
+  situation: "Standing just outside the Ashgate silo, the E-Rift fully closed behind him. All ten Broodlings guarding it are confirmed dead and harvested; the small Ashgate core was extracted cleanly and the Rift collapsed as he withdrew, with room to spare. Ten E-cores from the encounter are in his purse alongside the extracted Ashgate core itself, unappraised. Warehouse 7's bonded core remains in Institute hands, still bonded and unextracted, with no severance method reported back yet; Daedalus holds observation-only clearance there, not extraction authorization."
   training_commitment: "Repeat daily: 10 km run, 30 minutes of sword technique, 100 pushups, and one controlled round of each spell"
-  world_rule_profile: "Reikon 0.7"
+  world_rule_profile: "Reikon 0.6"
   active_overrides: "RKO-OVR-001, RKO-OVR-002"
 
 # Domain extension -- Subtype "System-bearing Awakened hunter".
@@ -86,16 +86,16 @@ canonical_state:
 #   20% phys. reduction <- 206 S5, Reinforced Body
 system:
   official_rank: E              # certified at Awakening; not what he is
-  level: 3
-  xp: 25                         # 85 + 70 milestone (EVT-000044: 206 S8.2 Rift-clear milestone, x10 the E-grade baseline of 7, applied retroactively to the Ashgate clear) = 155; T(2)=130 crossed, Ascension to Level 3, remainder 25 carried against T(3)=170
-  unspent_points: 2              # granted by this Ascension (206 S4.1); allocation is Daedalus's player decision and is deliberately left open, not spent by this ruling
+  level: 2
+  xp: 85                        # 43 carried + 42 (seven more confirmed E-grade Broodling kills @ 6 XP each, EVT-000042); T(2)=130 not crossed. Rift-clear milestone bonus (206 S8.2) NOT awarded -- magnitude unauthored, see EVT-000043
+  unspent_points: 0
   awakening_pool: 13
   awakening_health: 100
   awakening_endurance: 9
-  current_mana: 2               # 14 - 12 Fireball cost (EVT-000041); unaffected by this Ascension
+  current_mana: 2               # 14 - 12 Fireball cost (EVT-000041)
   mana_recovery_mode: resting
   mana_recovery_remainder_seconds: 0
-  current_health: 110            # max_health(3,9) = round(100 x 1.05^2) = 110 (206 S7.1); was full at old max 105, missing=0, so full at new max per the Maximum-Health-Changes rule (EVT-000044)
+  current_health: 105
   health_recovery_mode: resting
   health_recovery_care: treated
   health_recovery_injury_severity: none

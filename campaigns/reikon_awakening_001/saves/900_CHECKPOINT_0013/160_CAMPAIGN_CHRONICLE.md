@@ -8,9 +8,9 @@ canonical_record: REC-000043
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000044
-  event_time: "Year 31 AR, milestone-XP ruling applied retroactively to the Ashgate clear"
-  record_time: "2026-07-21T02:00:00Z"
+  source: EVT-000041
+  event_time: "Year 31 AR, Ashgate E-Rift solo assignment"
+  record_time: "2026-07-21T00:00:00Z"
 role: chronicle
 scope: campaign
 subjects:
@@ -31,9 +31,6 @@ subjects:
   - EVT-000039
   - EVT-000040
   - EVT-000041
-  - EVT-000042
-  - EVT-000043
-  - EVT-000044
 ```
 
 ## Expedition Begins
@@ -360,66 +357,8 @@ participants:
 description: "Daedalus ran his full training regimen at dawn — deliberately omitting spellwork to preserve the unused Emberbrand intervention — then added a second run home, showered, and changed into hunter gear. At Hunters' Authority headquarters, Captain Thorne declined to authorize solo re-entry to Warehouse 7 for extraction, but granted solo *observation-only* clearance after Daedalus argued the five-day window (down from the standard seven, two days already elapsed) showed no instability signs (no spawn, no bleed-through). He used that clearance to re-examine the Warehouse 7 core: a Perception-driven second look (d100 87, strong success) revealed the crystalline framework thins and darkens right at its point of contact with the core, growing denser outward — a previously unrecorded structural asymmetry. He reported nothing else new, then consulted Kalens (no severance progress yet; Institute has reached out to the Verholt Athenaeum), Soren (the D-core's fracture lines radiate from a single point, structurally closer to a C-grade guardian core than natural D-grade formation), and Marta (still correlating the three-second pulse interval against one other historical dataset; no conclusion yet). At the Association core desk, an appraiser priced his three remaining D-cores at 5 units each (d100 64, success, clean read) but Daedalus declined the sale on her advice that the Institute wanted first look, and sent Kalens a letter with the new framework-asymmetry detail instead. He then took a second, solo-eligible assignment from the dispatch board: a low-priority E-Rift in Ashgate district, three days unclaimed, reported quiet. Traveling there, he entered alone, used a Perception-driven structural read (d100 91, strong success) to track the Rift's mana-density gradient toward its core, and encountered three Broodlings guarding it. A surprise sweeping sword strike (d100 58, partial success) killed one outright and wounded a second badly while a third fled toward a larger cluster; Daedalus finished the wounded one (d100 100, legendary success) and harvested both cores (2 E-cores, added to the core purse, 46 to 48). He then tracked the fleeing Broodling by stealth (d100 76, success) to a core chamber holding a small pale-green core guarded by a cluster of six or seven more Broodlings. He cast Fireball at the stationary cluster (d100 74, +2 favorable-setup modifier, effective 100, legendary success), spending Emberbrand: the cast landed at critical-success (2.0×) force, catching the fleeing Broodling and the full cluster in one blast. Several are confirmed dead; a few remain visibly moving at the blast's edge. Mana dropped from 14 to 2 (Fireball's ordinary 12-Mana cost). The two confirmed Broodling kills awarded 12 XP immediately (6 each, Section 8.2), moving 31 to 43. The Ashgate encounter is not yet resolved; the chamber is not confirmed clear."
 ```
 
-## Ashgate Chamber Mop-Up, Core Extraction, and Rift Closure
-
-```yaml
-id: EVT-000042
-canonical_record: REC-000043
-schema_version: "0.1.1"
-status: active
-provenance:
-  source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
-  event_time: "Year 31 AR, immediately following the critical-force Fireball"
-  record_time: "2026-07-21T01:00:00Z"
-  uncertainty: "Whether the Ashgate core was bonded or anomalous in any way is now moot but never formally established; its clean extraction weakly suggests it was ordinary."
-kind: mixed
-importance: active
-participants:
-  - ENT-000051
-description: "Daedalus moved through the blast-struck core chamber checking each downed Broodling, finishing three still-stirring survivors with clean sword strokes (d100 61, +2 one-sided-mop-up modifier, effective 71, success). Combined with the fleeing Broodling and the rest of the cluster, the full chamber count resolved to seven Broodlings, all confirmed dead — nine total across the whole Ashgate engagement counting the two from the earlier melee. He harvested seven E-cores from the chamber kills (added to the two already collected; core purse 46 to 55). He then approached the small pale-green core in its alcove and extracted it cleanly (d100 68, +2 no-guardians-no-bonding modifier, effective 88, success) — no resistance, unlike Warehouse 7's core. The extraction triggered immediate Rift collapse; Daedalus withdrew through the passage and out the entrance fissure with room to spare (d100 79, +2 practiced-hunter-known-route modifier, effective 99, legendary success), clearing the seam just before it closed fully behind him. The Ashgate E-Rift is closed. The extracted core (ENT-000082) is unappraised and carried separately from the E-core purse."
-```
-
-## Ruling — Rift-Clear Milestone XP Magnitude Is Unauthored
-
-```yaml
-id: EVT-000043
-canonical_record: REC-000043
-schema_version: "0.1.1"
-status: active
-provenance:
-  source: ruling
-  event_time: "Year 31 AR, Ashgate E-Rift closure"
-  record_time: "2026-07-21T01:00:00Z"
-  uncertainty: "No exact value for the Rift-clear milestone bonus exists anywhere in canon. This ruling does not invent one; it records the gap and defers it to an owner decision."
-kind: ruling
-importance: active
-participants: []
-description: "worlds/reikon/206_WORLD_RULE_PROFILE.md Section 8.2 states that clearing a Rift core awards 'a larger milestone sum' on top of ordinary per-kill XP, but specifies no formula, table, or numeric value anywhere in Reikon's world rule content or the engine layer. Classified as an unauthored-magnitude gap under the same discipline Section 12 (Economy) already applies to unpriced goods: an unauthored magnitude is ruled and recorded, never improvised. Ruling: the Ashgate E-Rift closure (EVT-000042) is awarded only its confirmed per-kill XP — 54 XP from nine E-grade Broodling kills at the established baseline of 6 each (Section 8.2), moving Daedalus from 31 to 85 XP. No milestone bonus is added. This is logged as an open gap for a future owner decision to specify the Rift-clear milestone formula; until then, Rift closures in this campaign award per-kill XP only, and any future ruling on the magnitude may be applied retroactively at the owner's discretion but does not recalculate this checkpoint's already-settled state."
-```
-
-## Ruling — Rift-Clear Milestone XP Formula Authored and Applied
-
-```yaml
-id: EVT-000044
-canonical_record: REC-000043
-schema_version: "0.1.1"
-status: active
-provenance:
-  source: ruling
-  event_time: "Year 31 AR, milestone-XP ruling applied retroactively to the Ashgate clear"
-  record_time: "2026-07-21T02:00:00Z"
-  uncertainty: "Allocation of the 2 points this Ascension grants is an open player decision, not made by this ruling. Whether this formula will be revised before the next grade boundary (D) is untested in play."
-kind: ruling
-importance: active
-participants:
-  - ENT-000051
-description: "The owner settled the gap `EVT-000043` flagged: worlds/reikon/206_WORLD_RULE_PROFILE.md Section 8.2 now specifies the Rift-clear milestone as a flat x10 multiplier on the clearing Rift's grade baseline (World Rule Profile 0.6 to 0.7), awarded once per Rift clear alongside per-kill XP. For an E-grade Rift the milestone is 70 XP (10 x 7). Applied retroactively to the Ashgate clear at owner discretion, per EVT-000043's own terms (a future ruling may apply retroactively without recalculating the sealed checkpoint): 70 XP added to Daedalus's confirmed 85, crossing T(2)=130 and firing Ascension to Level 3 with 25 XP carried against T(3)=170. The Ascension grants 2 allocatable points (206 S4.1), left unspent pending Daedalus's own allocation decision. Recomputed maxima under the unchanged closed-form curves: max_mana(3) = 15 (was 14), max_health(3, End 9) = 110 (was 105); Health was full at the old maximum and is set to full at the new one per the Maximum-Health-Changes rule, with no missing Health to preserve. Separately, this ruling corrects a transcription error found on `100_CHARACTER_SHEET.md`'s `situation` field, which read 'ten Broodlings' and 'Ten E-cores' against nine established consistently everywhere else in canon (both checkpoint manifests, the changelog, and the XP arithmetic itself, 9 x 6 = 54). Classified under Runtime Section 8.1 as a transcription error, not a canon conflict, and corrected to nine. Checkpoint 0014 is unaffected and remains sealed at its own settled 85 XP, Level 2 — this ruling does not rewrite it; it adds new canon on top, as its own terms anticipated."
-```
-
 ## Current Chronicle Position
 
-Daedalus stands just outside the collapsed Ashgate E-Rift, Level 3, 25/170 XP, at full 110/110 Health and 2/14 Mana. The Ashgate assignment is complete: nine Broodlings confirmed dead and harvested, the small pale-green core extracted cleanly, and the Rift fully collapsed behind him. Nine E-cores were added to his purse (46 to 55); the extracted Ashgate core itself is carried separately, unappraised. Emberbrand remains fully spent.
-
-The Rift-clear milestone XP gap is resolved: Section 8.2 now specifies a flat x10 grade-baseline multiplier (World Rule Profile 0.7), and the Ashgate clear was retroactively awarded its 70 XP milestone, crossing the threshold into Level 3. Two allocation points from that Ascension remain unspent, awaiting Daedalus's own decision.
+Daedalus stands at the edge of a small core chamber inside the Ashgate E-Rift, Level 2, 43/130 XP, at 105/105 Health and 2/14 Mana. Two Broodlings are confirmed dead and harvested nearby; a critical-force Fireball has just struck a cluster of roughly seven more (the fleeing third included) near the chamber's small pale-green core — several are confirmed dead, a few still move at the blast's edge. The encounter is not yet resolved. Emberbrand is fully spent.
 
 Separately, the Warehouse 7 bonded core remains unextracted, still in Institute hands for severance research; Daedalus holds solo observation-only clearance there (no extraction authorized) and has three D-cores still in his possession, unsold, with a follow-up letter already sent to Kalens noting a new framework asymmetry at the core's point of contact.

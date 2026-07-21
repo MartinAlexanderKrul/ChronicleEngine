@@ -8,9 +8,9 @@ canonical_record: REC-000039
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000043
-  event_time: "Year 31 AR, Ashgate E-Rift closure"
-  record_time: "2026-07-21T01:00:00Z"
+  source: EVT-000041
+  event_time: "Year 31 AR, Ashgate E-Rift solo assignment"
+  record_time: "2026-07-21T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -206,21 +206,21 @@ canonical_state:
 id: ENT-000081
 canonical_record: REC-000039
 schema_version: "0.1.1"
-status: archived
+status: active
 provenance:
-  source: EVT-000042
-  event_time: "Year 31 AR, Ashgate E-Rift closure"
-  record_time: "2026-07-21T01:00:00Z"
-  uncertainty: "Whether the Ashgate core was bonded, anomalous, or an ordinary E-grade core is now moot — it was extracted cleanly with no resistance, unlike Warehouse 7's core, which weakly suggests it was ordinary, but no formal appraisal has been done."
+  source: EVT-000041
+  event_time: "Year 31 AR, Ashgate E-Rift solo assignment"
+  record_time: "2026-07-21T00:00:00Z"
+  uncertainty: "The full kill status of the Broodling cluster caught in the Fireball blast is not yet confirmed; some remain visibly moving at the blast's edge. Whether the small pale-green core is bonded, anomalous, or an ordinary E-grade core is unestablished."
 type: Place
-subtype: "collapsed E-grade Rift interior"
+subtype: "active E-grade Rift interior"
 scope: local
-lifecycle: closed
+lifecycle: active
 aliases:
   - name: "Ashgate E-Rift"
     quality: current
 canonical_state:
   region: "Ashgate district, an outlying area past Verholt's farmland edge"
-  features: "Collapsed. All nine Broodlings that guarded it are confirmed dead and harvested (two in the entrance-chamber melee, seven in the core chamber, the latter following an Emberbrand-empowered critical Fireball and a subsequent mop-up pass). The small pale-green core was extracted cleanly (d100 88, success) with no bonding or resistance, and the Rift folded in on itself immediately after, collapsing fully before Daedalus cleared the entrance fissure (d100 99, legendary success). The silo above is now just an abandoned building; the fissure is gone. Association records list the clear as complete."
+  features: "A modest fissure in an abandoned grain silo leads to a small pocket interior: an entrance chamber, a single curving passage, and a core chamber holding a fist-sized pale-green core suspended in a simple stone alcove — no elaborate framework, no guardians beyond Broodlings. A mana-density gradient runs from the entrance toward the core. Two Broodlings were killed and harvested near the passage's midpoint; a third fled toward a cluster of six or seven more gathered near the core, joining them before a single Fireball (Emberbrand-empowered, critical force) caught the entire group in one blast. Several are confirmed dead; a few remain visibly moving at the blast's edge. The chamber is not yet confirmed clear. Association records list the Rift as a solo-eligible assignment, quiet activity, roughly three days unclaimed before Daedalus took it; stability window unassessed beyond 'wide, not urgent.'"
   occupants: []
 ```

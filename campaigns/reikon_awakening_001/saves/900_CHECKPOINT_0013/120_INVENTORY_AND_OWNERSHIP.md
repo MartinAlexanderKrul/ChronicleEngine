@@ -8,9 +8,9 @@ canonical_record: REC-000040
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000043
-  event_time: "Year 31 AR, Ashgate E-Rift closure"
-  record_time: "2026-07-21T01:00:00Z"
+  source: EVT-000041
+  event_time: "Year 31 AR, Ashgate E-Rift solo assignment"
+  record_time: "2026-07-21T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -31,10 +31,9 @@ subjects:
   - ENT-000076
   - ENT-000077
   - ENT-000078
-  - ENT-000082
 ```
 
-All holdings are possessed by Daedalus (`ENT-000051`) and are carried on his person, currently in the Ashgate district just outside the collapsed E-Rift, save for the one D-core with Dr. Soren at the Institute.
+All holdings are possessed by Daedalus (`ENT-000051`) and are carried on his person in the Warehouse 7 E-Rift basement core chamber.
 
 Location is recorded as a region descriptor because carried inventory has no structural "on person" representation — the known limitation recorded as PA-002 in `docs/420_PROTOTYPE_ALPHA/423_ENGINE_IMPROVEMENT_BACKLOG.md`. Possession by `ENT-000051` is the authoritative fact; the descriptor follows the possessor.
 
@@ -61,7 +60,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
 ```
 
 ## Basic Sword
@@ -87,7 +86,7 @@ canonical_state:
   condition: "Good; cleaned at the Association, then bloodied by the ledge Breaker"
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
 ```
 
 ## Repair Kit
@@ -113,7 +112,7 @@ canonical_state:
   condition: Good
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
 ```
 
 ## Mana Potion Stack
@@ -139,7 +138,7 @@ canonical_state:
   condition: "One sealed; one open and half-full"
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   quantity: 2
   total_mana_remaining: 30
   history: "One vial consumed in two half-doses during the Breaker engagement; half of a second vial consumed before the jump"
@@ -168,7 +167,7 @@ canonical_state:
   condition: Good
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
 ```
 
 ## Evacuation Stone
@@ -194,7 +193,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   uses_remaining: 1
 ```
 
@@ -206,9 +205,9 @@ canonical_record: REC-000040
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000043
-  event_time: "Year 31 AR, Ashgate E-Rift closure"
-  record_time: "2026-07-21T01:00:00Z"
+  source: EVT-000041
+  event_time: "Year 31 AR, Ashgate E-Rift solo assignment"
+  record_time: "2026-07-21T00:00:00Z"
 type: Resource
 subtype: currency-holding
 scope: personal
@@ -217,12 +216,12 @@ aliases:
   - name: "Daedalus's starting core purse"
     quality: current
 canonical_state:
-  category: "Currency; 61 E-cores before the recovery purchase, minus 15 spent on four healing potions, two energy tonics, and wound dressing salve; plus 9 E-cores harvested from nine Ashgate Broodlings (2 in melee, 7 in the core chamber mop-up)"
+  category: "Currency; 61 E-cores before the recovery purchase, minus 15 spent on four healing potions, two energy tonics, and wound dressing salve; plus 2 E-cores harvested from two Ashgate Broodlings"
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
-  quantity: 55
+  location: "Ashgate district E-Rift interior (carried)"
+  quantity: 48
 ```
 
 ## Natural Scale Plate
@@ -248,7 +247,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   quantity: 1
 ```
 
@@ -275,7 +274,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   quantity: 1
   history: "Four purchased for 8 E-cores; one consumed during recovery training and two consumed during the Breaker engagement"
 ```
@@ -303,7 +302,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   quantity: 1
   history: "Two purchased for 6 E-cores; one consumed before observing the Breaker formation"
 ```
@@ -331,7 +330,7 @@ canonical_state:
   condition: Opened
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   uses_remaining: 4
   history: "Four applications used in total: three during recovery and one after the shoulder wound reopened in the Breaker engagement"
 ```
@@ -359,7 +358,7 @@ canonical_state:
   condition: Good
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   contents: "Route sketch and Institute consultation notes; Breaker formation and behavior; burgundy core dimensions, three-second pulse, thermal emission, crystalline framework, eight-metre floor pattern, failed direct extraction, and the need for specialist severance. Hypotheses are marked unverified. The Institute notes record, per researcher: Kalens's observation checklist and his Vigil caution (ENT-000079), Soren's fracture-pattern theory across fifteen core grades and his request for a deep-core sample, and Marta's core-depth collapse correlation (ENT-000080) — closing with Daedalus's own reflection that he is gathering data now, not only clearing a Rift for pay."
 ```
 
@@ -389,7 +388,7 @@ canonical_state:
   condition: Good
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   contents: "Dr. Kalens's personal residence in Verholt's scholar's quarter, and a standing time window for calling on him there: early evenings, after the Institute closes."
   significance: "The physical token of REL-000045. Kalens wrote it only because Daedalus asked to consult him directly rather than through the Institute's runner, which makes it the artifact of a private channel deliberately chosen over the institutional one — and the means of honouring the same-day condition on an anomalous finding without going through Institute channels the Vigil could observe (ENT-000079)."
 ```
@@ -447,7 +446,7 @@ canonical_state:
   appearance: "Deep indigo and slightly smaller than the ledge sentinel's core"
   ownership: "ENT-000051 (legal harvest)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   quantity: 1
 ```
 
@@ -475,7 +474,7 @@ canonical_state:
   appearance: "Nearly black with faint violet undertones"
   ownership: "ENT-000051 (legal harvest)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   quantity: 1
 ```
 
@@ -503,37 +502,6 @@ canonical_state:
   appearance: "Largest of the four; near-black with deep red undertones and a distinct residual hum"
   ownership: "ENT-000051 (legal harvest)"
   possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
-  quantity: 1
-```
-
----
-
-## Ashgate Rift Core
-
-```yaml
-id: ENT-000082
-canonical_record: REC-000040
-schema_version: "0.1.1"
-status: active
-provenance:
-  source: EVT-000042
-  event_time: "Year 31 AR, Ashgate E-Rift closure"
-  record_time: "2026-07-21T01:00:00Z"
-  uncertainty: "Unappraised. Whether it carries any value beyond an ordinary E-grade Rift core, and whether the Association or Institute has any standing interest in a closed-Rift core specifically, is unestablished."
-type: Resource
-subtype: rift-core
-scope: personal
-lifecycle: active
-aliases:
-  - name: "Ashgate Rift core"
-    quality: current
-canonical_state:
-  category: "Extracted Rift core, distinct from monster-loot E-cores. Pulled cleanly from the Ashgate E-Rift's alcove housing (d100 88, success) with no bonding or resistance, unlike Warehouse 7's anomalous core. Its extraction triggered the Rift's collapse."
-  condition: Intact
-  appearance: "Fist-sized, pale-green, unremarkable in texture or warmth compared to Warehouse 7's burgundy anomaly"
-  ownership: "ENT-000051 (legal harvest, Association-sanctioned solo clear)"
-  possession: ENT-000051
-  location: "Ashgate district, just outside the collapsed E-Rift (carried)"
+  location: "Ashgate district E-Rift interior (carried)"
   quantity: 1
 ```

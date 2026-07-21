@@ -8,9 +8,9 @@ canonical_record: REC-000043
 schema_version: "0.1.1"
 status: active
 provenance:
-  source: EVT-000044
-  event_time: "Year 31 AR, milestone-XP ruling applied retroactively to the Ashgate clear"
-  record_time: "2026-07-21T02:00:00Z"
+  source: EVT-000043
+  event_time: "Year 31 AR, Ashgate E-Rift closure"
+  record_time: "2026-07-21T01:00:00Z"
 role: chronicle
 scope: campaign
 subjects:
@@ -33,7 +33,6 @@ subjects:
   - EVT-000041
   - EVT-000042
   - EVT-000043
-  - EVT-000044
 ```
 
 ## Expedition Begins
@@ -397,29 +396,10 @@ participants: []
 description: "worlds/reikon/206_WORLD_RULE_PROFILE.md Section 8.2 states that clearing a Rift core awards 'a larger milestone sum' on top of ordinary per-kill XP, but specifies no formula, table, or numeric value anywhere in Reikon's world rule content or the engine layer. Classified as an unauthored-magnitude gap under the same discipline Section 12 (Economy) already applies to unpriced goods: an unauthored magnitude is ruled and recorded, never improvised. Ruling: the Ashgate E-Rift closure (EVT-000042) is awarded only its confirmed per-kill XP — 54 XP from nine E-grade Broodling kills at the established baseline of 6 each (Section 8.2), moving Daedalus from 31 to 85 XP. No milestone bonus is added. This is logged as an open gap for a future owner decision to specify the Rift-clear milestone formula; until then, Rift closures in this campaign award per-kill XP only, and any future ruling on the magnitude may be applied retroactively at the owner's discretion but does not recalculate this checkpoint's already-settled state."
 ```
 
-## Ruling — Rift-Clear Milestone XP Formula Authored and Applied
-
-```yaml
-id: EVT-000044
-canonical_record: REC-000043
-schema_version: "0.1.1"
-status: active
-provenance:
-  source: ruling
-  event_time: "Year 31 AR, milestone-XP ruling applied retroactively to the Ashgate clear"
-  record_time: "2026-07-21T02:00:00Z"
-  uncertainty: "Allocation of the 2 points this Ascension grants is an open player decision, not made by this ruling. Whether this formula will be revised before the next grade boundary (D) is untested in play."
-kind: ruling
-importance: active
-participants:
-  - ENT-000051
-description: "The owner settled the gap `EVT-000043` flagged: worlds/reikon/206_WORLD_RULE_PROFILE.md Section 8.2 now specifies the Rift-clear milestone as a flat x10 multiplier on the clearing Rift's grade baseline (World Rule Profile 0.6 to 0.7), awarded once per Rift clear alongside per-kill XP. For an E-grade Rift the milestone is 70 XP (10 x 7). Applied retroactively to the Ashgate clear at owner discretion, per EVT-000043's own terms (a future ruling may apply retroactively without recalculating the sealed checkpoint): 70 XP added to Daedalus's confirmed 85, crossing T(2)=130 and firing Ascension to Level 3 with 25 XP carried against T(3)=170. The Ascension grants 2 allocatable points (206 S4.1), left unspent pending Daedalus's own allocation decision. Recomputed maxima under the unchanged closed-form curves: max_mana(3) = 15 (was 14), max_health(3, End 9) = 110 (was 105); Health was full at the old maximum and is set to full at the new one per the Maximum-Health-Changes rule, with no missing Health to preserve. Separately, this ruling corrects a transcription error found on `100_CHARACTER_SHEET.md`'s `situation` field, which read 'ten Broodlings' and 'Ten E-cores' against nine established consistently everywhere else in canon (both checkpoint manifests, the changelog, and the XP arithmetic itself, 9 x 6 = 54). Classified under Runtime Section 8.1 as a transcription error, not a canon conflict, and corrected to nine. Checkpoint 0014 is unaffected and remains sealed at its own settled 85 XP, Level 2 — this ruling does not rewrite it; it adds new canon on top, as its own terms anticipated."
-```
-
 ## Current Chronicle Position
 
-Daedalus stands just outside the collapsed Ashgate E-Rift, Level 3, 25/170 XP, at full 110/110 Health and 2/14 Mana. The Ashgate assignment is complete: nine Broodlings confirmed dead and harvested, the small pale-green core extracted cleanly, and the Rift fully collapsed behind him. Nine E-cores were added to his purse (46 to 55); the extracted Ashgate core itself is carried separately, unappraised. Emberbrand remains fully spent.
+Daedalus stands just outside the collapsed Ashgate E-Rift, Level 2, 85/130 XP, at full 105/105 Health and 2/14 Mana. The Ashgate assignment is complete: nine Broodlings confirmed dead and harvested, the small pale-green core extracted cleanly, and the Rift fully collapsed behind him. Nine E-cores were added to his purse (46 to 55); the extracted Ashgate core itself is carried separately, unappraised. Emberbrand remains fully spent.
 
-The Rift-clear milestone XP gap is resolved: Section 8.2 now specifies a flat x10 grade-baseline multiplier (World Rule Profile 0.7), and the Ashgate clear was retroactively awarded its 70 XP milestone, crossing the threshold into Level 3. Two allocation points from that Ascension remain unspent, awaiting Daedalus's own decision.
+A ruling gap is flagged and recorded rather than improvised: Section 8.2's Rift-clear milestone XP bonus has no established magnitude anywhere in canon, so only the confirmed per-kill XP was awarded (54 XP, moving 31 to 85); the milestone bonus itself awaits an owner decision.
 
 Separately, the Warehouse 7 bonded core remains unextracted, still in Institute hands for severance research; Daedalus holds solo observation-only clearance there (no extraction authorized) and has three D-cores still in his possession, unsold, with a follow-up letter already sent to Kalens noting a new framework asymmetry at the core's point of contact.

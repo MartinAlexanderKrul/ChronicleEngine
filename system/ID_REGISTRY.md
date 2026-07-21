@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000080 |
-| Record | `REC-` | Canonical Record | REC-000056 |
-| Event | `EVT-` | Event | EVT-000040 |
+| Entity | `ENT-` | Persistent Entity | ENT-000082 |
+| Record | `REC-` | Canonical Record | REC-000059 |
+| Event | `EVT-` | Event | EVT-000044 |
 | Relationship | `REL-` | Relationship | REL-000047 |
 
 ---
@@ -96,6 +96,15 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000039 | Event | Reikon Awakening: night recovery — a light post-injury workout resolved by the die (d100 78, success), followed by a full night's rest settling Health and Mana to maximum under the deterministic recovery formulas |
 | EVT-000040 | Event | Reikon Awakening: Profile 0.6 Section 9.6 recurrent intervention check (first-safe-exchange-of-a-new-day trigger), d100 82, granting the one-use finite technique Emberbrand |
 | REC-000056 | Record | Reikon Awakening `saves/900_CHECKPOINT_0012/900_SAVE_MANIFEST.md` — Institute handoff, Association report, night recovery, and the Emberbrand intervention grant |
+| ENT-000081 | Entity | Reikon Awakening: Ashgate E-Rift, a new Place — a second, solo-eligible assignment entered while Warehouse 7 sits with the Institute |
+| EVT-000041 | Event | Reikon Awakening: morning training, Warehouse 7 observation-only re-examination (new framework-asymmetry detail), Institute follow-up, declined D-core sale, and the Ashgate E-Rift engagement through the Emberbrand-empowered Fireball; encounter left unresolved |
+| REC-000057 | Record | Reikon Awakening `saves/900_CHECKPOINT_0013/900_SAVE_MANIFEST.md` — the Ashgate assignment and mid-encounter state |
+| ENT-000082 | Entity | Reikon Awakening: the extracted, unappraised Ashgate Rift core, distinct from monster-loot E-cores |
+| EVT-000042 | Event | Reikon Awakening: Ashgate core-chamber mop-up (confirming all nine kills), clean core extraction, and Rift collapse |
+| EVT-000043 | Event | Reikon Awakening: ruling flagging the unauthored Rift-clear milestone XP magnitude (206 Section 8.2) and awarding only confirmed per-kill XP for the Ashgate clear |
+| REC-000058 | Record | Reikon Awakening `saves/900_CHECKPOINT_0014/900_SAVE_MANIFEST.md` — the Ashgate closure and the milestone-XP ruling |
+| EVT-000044 | Event | Reikon Awakening: owner ruling authoring the Rift-clear milestone XP formula (World Rule Profile 0.7, Section 8.2, flat ×10 grade-baseline multiplier) and applying it retroactively to the Ashgate clear — 70 milestone XP, moving Daedalus from 85 to 155/130, crossing T(2) into Ascension to Level 3 at 25/170. Also corrects a transcription error on `100_CHARACTER_SHEET.md`'s `situation` field, which read "ten Broodlings"/"Ten E-cores" against nine established everywhere else (checkpoint manifests, changelog, and the XP arithmetic itself) |
+| REC-000059 | Record | Reikon Awakening `saves/900_CHECKPOINT_0015/900_SAVE_MANIFEST.md` — the milestone-XP formula ruling, its retroactive Ashgate application, and the resulting Ascension to Level 3 |
 
 ---
 

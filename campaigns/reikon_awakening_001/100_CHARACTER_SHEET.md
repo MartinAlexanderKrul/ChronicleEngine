@@ -88,14 +88,14 @@ system:
   official_rank: E              # certified at Awakening; not what he is
   level: 3
   xp: 25                         # 85 + 70 milestone (EVT-000044: 206 S8.2 Rift-clear milestone, x10 the E-grade baseline of 7, applied retroactively to the Ashgate clear) = 155; T(2)=130 crossed, Ascension to Level 3, remainder 25 carried against T(3)=170
-  unspent_points: 8              # EVT-000045: Ascension rate raised 2 -> 5 (206 S4.1), applied retroactively to both completed Ascensions (+3 each = +6), on top of the 2 already unspent. Allocation is Daedalus's player decision and remains deliberately open, not spent by this ruling
+  unspent_points: 0              # EVT-000046: player-authored allocation of all 8 points (2 original + 6 retroactive from EVT-000045) — Power +3, Endurance +2, Mana Affinity +1, Perception +1, Fireball Efficiency +1
   awakening_pool: 13
   awakening_health: 100
   awakening_endurance: 9
   current_mana: 2               # 14 - 12 Fireball cost (EVT-000041); unaffected by this Ascension
   mana_recovery_mode: resting
   mana_recovery_remainder_seconds: 0
-  current_health: 110            # max_health(3,9) = round(100 x 1.05^2) = 110 (206 S7.1); was full at old max 105, missing=0, so full at new max per the Maximum-Health-Changes rule (EVT-000044)
+  current_health: 121            # max_health(3,11) = round(100 x 1.05^2 x (1+0.05x(11-9))) = round(100x1.1025x1.10) = 121 (206 S7.1); was full at old max 110, missing=0, so full at new max per the Maximum-Health-Changes rule (EVT-000046)
   health_recovery_mode: resting
   health_recovery_care: treated
   health_recovery_injury_severity: none
@@ -103,14 +103,14 @@ system:
   intervention_silent_checks: 0
   active_intervention: none      # Emberbrand spent: critical-force Fireball landed on the Ashgate cluster (EVT-000041); fully consumed, not merely expired; still none after the Ashgate closure (EVT-000042)
   stats:
-    power: 8
-    endurance: 9
+    power: 11                    # EVT-000046: +3
+    endurance: 11                # EVT-000046: +2
     speed: 10
-    mana_affinity: 14
-    perception: 14
+    mana_affinity: 15            # EVT-000046: +1
+    perception: 15               # EVT-000046: +1
   abilities:
     - name: Fireball
-      efficiency: 0
+      efficiency: 1              # EVT-000046: +1
       strength: 1
     - name: Flame Shield
       efficiency: 0
@@ -126,5 +126,5 @@ system:
       strength: 0
 ```
 
-**Derived readout at this state** (computed from the block above; recorded here for review only, never as canon):
-Level 2 with both Ascension points allocated: Mana Affinity 14 and Fireball Strength 1. `max_mana` = 14; `max_health` = 105. Every ability remains Lv 1; Fireball costs 12 at 1.10× magnitude, Flame Shield costs 2/second, Combustion Touch 6, Endurance Surge 10, Reinforced Body 0. Effective band **E** (pool 14). Next threshold `T(2)` = 130. Current state: 85/130 XP, 2/14 Mana, 105/105 HP. The Ashgate encounter is now fully resolved: all ten Broodlings confirmed dead across the engagement (two in melee, seven mopped up post-blast, one already counted among the seven — corrected count below), awarding 6 XP each per Section 8.2's E-grade baseline (54 XP total across the melee-plus-mop-up kills, moving 31 to 85 in total across both confirmed batches). The Ashgate core was extracted cleanly (d100 88) and the Rift closed as Daedalus withdrew (d100 99). Section 8.2 states clearing a Rift core "awards a larger milestone sum" but specifies no exact magnitude anywhere in canon; **that bonus is deliberately not awarded** rather than invented — flagged as an unauthored-magnitude gap pending an owner ruling (`EVT-000043`), the same discipline the Economy section already applies to unpriced goods. Emberbrand remains fully spent (`active_intervention: none`). Trained non-System skills: foundational Swordsmanship (two recorded sessions), practiced aerobic conditioning (three recorded 10 km runs), and practiced bodyweight conditioning (two recorded 100-pushup sessions).
+**Derived readout at this state** (computed from the block above; recorded here for review only, never as canon; supersedes the stale Level-2 readout previously left here after EVT-000044/EVT-000045 — corrected under EVT-000046):
+Level 3, all 8 unspent points allocated (`EVT-000046`): Power 8→11, Endurance 9→11, Mana Affinity 14→15, Perception 14→15, Fireball Efficiency 0→1 (Strength unchanged at 1). `max_mana` = 15 (unaffected — 206 S3.2 keys off `awakening_pool` and level, not the Mana Affinity stat); `max_health` = 121 (206 S7.1, current Endurance 11 vs. `awakening_endurance` 9). Fireball stays Lv 1 (`floor((1+1)/5)=0`) but its cost drops 12→11; Flame Shield costs 2/second, Combustion Touch 6, Endurance Surge 10, Reinforced Body 0. Effective band **E** (max_mana 15, still within 5–15). Next threshold `T(3)` = 170. Current state: 25/170 XP, 2/15 Mana, 121/121 HP (set to full at the new maximum — was full at the old maximum, per the Maximum-Health-Changes rule). The Ashgate encounter is fully resolved: nine Broodlings confirmed dead across the engagement, awarding 6 XP each (54 XP) plus a 70 XP Rift-clear milestone (`EVT-000044`, 206 S8.2), moving XP from 31 to 155 and crossing `T(2)`=130 into Ascension to Level 3. The Ashgate core was extracted cleanly (d100 88) and the Rift closed as Daedalus withdrew (d100 99). Emberbrand remains fully spent (`active_intervention: none`). Trained non-System skills: foundational Swordsmanship (two recorded sessions), practiced aerobic conditioning (three recorded 10 km runs), and practiced bodyweight conditioning (two recorded 100-pushup sessions).

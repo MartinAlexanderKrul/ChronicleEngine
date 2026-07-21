@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000082 |
 | Record | `REC-` | Canonical Record | REC-000060 |
-| Event | `EVT-` | Event | EVT-000045 |
+| Event | `EVT-` | Event | EVT-000046 |
 | Relationship | `REL-` | Relationship | REL-000047 |
 
 ---
@@ -106,6 +106,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000044 | Event | Reikon Awakening: owner ruling authoring the Rift-clear milestone XP formula (World Rule Profile 0.7, Section 8.2, flat ×10 grade-baseline multiplier) and applying it retroactively to the Ashgate clear — 70 milestone XP, moving Daedalus from 85 to 155/130, crossing T(2) into Ascension to Level 3 at 25/170. Also corrects a transcription error on `100_CHARACTER_SHEET.md`'s `situation` field, which read "ten Broodlings"/"Ten E-cores" against nine established everywhere else (checkpoint manifests, changelog, and the XP arithmetic itself) |
 | REC-000059 | Record | Reikon Awakening `saves/900_CHECKPOINT_0015/900_SAVE_MANIFEST.md` — the milestone-XP formula ruling, its retroactive Ashgate application, and the resulting Ascension to Level 3 |
 | EVT-000045 | Event | Reikon Awakening: owner ruling removing the 20-point Stat cap (World Rule Profile 0.8, Section 4.2 — indefinite growth, Mana Affinity's die contribution unaffected and still capped at +1 per Law VII) and raising the Ascension point rate from 2 to 5 (Section 4.1), applied retroactively to Daedalus's 2 already-completed Ascensions. `unspent_points` moves from 2 to 8 (+3 per Ascension x 2). Power, Speed, and Perception's indefinite-growth payoff has no authored formula and is recorded as an open gap, not invented |
+| EVT-000046 | Event | Reikon Awakening: player allocation of all 8 unspent points from `EVT-000045` — Power +3, Endurance +2, Mana Affinity +1, Perception +1, Fireball Efficiency +1. `unspent_points` 8 to 0; `max_health` 110 to 121; `max_mana` unaffected at 15; Fireball stays Lv 1, cost 12 to 11. Also corrects a stale Level-2 derived readout on `100_CHARACTER_SHEET.md` left over from `EVT-000044`/`EVT-000045` |
 | REC-000060 | Record | Reikon Awakening `saves/900_CHECKPOINT_0016/900_SAVE_MANIFEST.md` — the Stat-cap removal and Ascension-rate ruling |
 
 ---

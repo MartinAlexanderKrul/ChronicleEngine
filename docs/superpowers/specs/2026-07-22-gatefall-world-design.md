@@ -64,6 +64,8 @@ The population pyramid is fixed at 1.0 so "how rare is a hunter?" is never impro
 
 Everything below is authored in `206_WORLD_RULE_PROFILE.md` before play. Numeric magnitudes (XP curves, thresholds, costs, prices) are fixed during profile authoring, governed by one rule: **any magnitude the System can surface in play must be authored — an unauthored magnitude is a profile bug**, the failure class behind Reikon's empty Rifts.
 
+- **Mana pool & health** — the protagonist's mana pool, its growth on level-up, recovery rate, and the authored consequence of running dry; a health model with natural recovery rates, injury severity tiers, and how potions and hospital treatment interact with them. Both fully authored at 1.0 (Reikon's pool/vitality sections prove the shape works — the numbers are Gatefall's own).
+- **Other hunters & parties** — NPC hunters resolve by their fixed rank band (no sheets); authored party rules: standard party contracts (loot splits, liability), which Gate grades legally require a minimum party, and how party members' capability bands interact in a clear. The protagonist's early game happens inside parties of people stronger than he pretends to be — including the classic dungeon-betrayal setup, which needs no special rules, only enforceable contracts and witnesses (or their absence).
 - **Stat window** — Strength, Agility, Vitality, Intelligence, Perception. **Every stat has an authored payoff at 1.0:** stats feed die modifiers in their domains at authored thresholds, and named thresholds unlock capabilities (e.g., high Perception reads a Gate's true grade; high Agility unlocks reaction windows ordinary hunters don't get).
 - **Levels & XP** — XP from kills, quests, and Gate-clear milestones. Level-up grants stat points. Only the protagonist levels; every other hunter is fixed at measured rank.
 - **Daily quest** — a training regimen with a real reward (stat points) and a real penalty: skipping it drops the protagonist into a lethal **penalty zone**. Every in-world day carries stakes.
@@ -116,6 +118,8 @@ World law at 1.0, addressing PT-002, PT-003, PT-001 respectively:
 2. **Grades are assessments, not facts.** A BGM grade carries a stated confidence. On first entry, a low-confidence grade **rolls its true grade on the die**, with a distribution that includes worse-than-assessed. Mis-graded Gates are canonically how low-rank hunters die. Red-gate-style anomalies (no exit until cleared) exist in an authored anomaly table. High Perception removes the uncertainty legitimately by reading the true grade — a stat payoff with teeth.
 3. **Logistics compress to montage, by law.** BGM paperwork, licensing queues, and contract auctions exist in fiction but the profile directs the runtime to compress them by default. Beat-by-beat play is reserved for uncertain, opposed, or consequential action. If a scene has no way to go wrong, it is a sentence, not a session. This is compression, not a drama timer — danger still arises only causally (Consistency Before Drama, Decision 003, is preserved).
 4. **Fully lethal.** The die and the authored threat model decide; protagonist death hard-ends the campaign. Penalty zones can kill. Uncleared Gate timers genuinely lapse into dungeon breaks — standing world pressure the simulation surfaces honestly instead of inventing drama.
+5. **Dungeon variety is authored.** The populated-by-formula law fixes *empty*; an **archetype table** fixes *samey*. Each Gate rolls or is assigned an authored archetype (crypt, hive, flooded mine, overgrown temple, beast den, shattered city…), each carrying one mechanical twist (darkness, water, verticality, swarm behavior, a shrine worth looting) that colors the clear without adding a map subsystem.
+6. **Exposure & re-grading.** An E-rank who performs like a B-rank gets noticed. Authored rules for how anomalies surface (witness reports, appraiser re-measurement requests, guild scouting, media), the BGM/CGA **re-assessment procedure** and the "reawakened" classification it can yield, and what the protagonist can legally refuse. His System is instrument-invisible, but his feats are not — the secrecy game runs on these authored rules, never on OOC rulings.
 
 ---
 
@@ -174,6 +178,10 @@ Every notable figure is authored with all of: a **want** (what they're pursuing)
 - **Notable figures** — the CGA director; the Czech S-rank (national celebrity, political football); Karlov's guildmaster and heir; Horizon Europe's branch chief; Brandhof's and Zenith's Prague operations leads (bible-level entries, promoted to full depth if a campaign engages them); a black-market artifact smuggler moving goods westward.
 - **Seed events** — an Old Town Gate that keeps re-grading upward and nobody will say why; a three-way foreign bidding war (Horizon, Brandhof, Zenith) to buy out or displace Karlov Guild, with the CGA quietly favoring whoever promises to keep the S-rank home.
 
+## The hidden truth (owner-eyes-only)
+
+The world bible ends with a clearly-marked **owner-only section** that the Runtime never reveals directly in play: **why Gates exist, what the System is, why and how it chose its bearer, and where the rising-break-rate arc is heading.** Every mystery surfaced in play must be consistent with this section — clues are foreshadowing of an authored answer, never improvisation. The section also rules on **System origin and succession**: whether the System has had prior bearers and what happens if the current one dies (and if the answer is "death ends everything," that is authored too, not defaulted). Campaign-facing files never reference its contents except through in-world clues.
+
 ## Shared / global
 
 - **Resources (`240_RESOURCES.md`)** — the dual economy: local currency (USD / CZK–EUR) for crystals, cores, contracts, rent; System gold shop-internal; authored prices for both cities and the loot categories of Section 3.
@@ -202,3 +210,4 @@ Every notable figure is authored with all of: a **want** (what they're pursuing)
 3. A campaign can be created in Gatefall in **either Chicago or Prague** without the world needing further authoring for its first sessions.
 4. Every notable figure satisfies the character depth law (want, fear/flaw, secret, live agenda, relationships).
 5. The completeness bar holds: every question class in Section 5b has its answers authored in the files — a first-session read-through can answer money, procedure, law, Gate, System-voice, and common-knowledge questions without a single OOC ruling.
+6. The world bible's owner-only section answers why Gates exist, what the System is, why it chose its bearer, succession on death, and the destination of the break-rate arc.

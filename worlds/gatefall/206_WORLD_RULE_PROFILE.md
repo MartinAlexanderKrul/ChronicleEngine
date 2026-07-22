@@ -270,7 +270,7 @@ Untreated injuries heal on a tiered clock; professional (hospital) treatment **h
 | **Severe** | 1 month | ½ month |
 | **Critical** | 3 months, **with death risk absent treatment** | 6 weeks |
 
-A **Critical** injury left untreated may kill the target before it heals — stabilization is not optional. Healing potions restore Health directly on the schedule authored in the economy (Section 12, per Anchor A7); a potion controls immediate bleeding and restores Health but does not by itself clear a wound's severity, which advances only through elapsed time and care.
+A **Critical** injury left untreated may kill the target before it heals — stabilization is not optional. Healing potions restore Health directly on the schedule authored in the economy (Section 12.5, per Anchor A7); a potion controls immediate bleeding and restores Health but does not by itself clear a wound's severity, which advances only through elapsed time and care.
 
 ## 6.4 Treatment Interaction
 
@@ -643,6 +643,16 @@ The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crysta
 
 **The no-exchange rule.** There is no gold-to-USD or USD-to-gold conversion at any rate. The only bridge between the two economies is the spread between what the shop pays for a crystal and what the same crystal fetches on the licensed market — the Bearer chooses, per crystal, whether it becomes cash or gold, and cannot move value back the other way.
 
+**Consumable effects.** Each consumable the shop sells resolves to a fixed effect, expressed in the same units the rest of the profile uses — the standard-hit baseline of ¼ band health (Section 6.2) for Health, the maximum Mana pool (Section 5) for Mana. The stat elixir's effect is stated inline in the sell table above.
+
+| Consumable | Effect |
+|---|---|
+| **Lesser healing potion** | Restores one standard-hit baseline (¼ band health, Section 6.2) of Health. |
+| **Standard healing potion** | Restores two standard-hit baselines of Health. |
+| **Greater healing potion** | Restores Health to full. |
+| **Lesser mana potion** | Restores 25% of the drinker's maximum Mana (Section 5). |
+| **Antidote** | Clears poisons and venoms of the drinker's band or below. |
+
 ## 12.6 Starting Funds by Background
 
 A campaign sets the Bearer's opening money by background. Prague equivalents are the USD figure **×22** in CZK.
@@ -791,11 +801,13 @@ Ren, mid-day with a streak one short of a stat point:
 ```text
 [SYSTEM] QUESTS
 [DAILY] Training — push-ups 40/100 · sit-ups 100/100 · run 6/10 km   Reward: 10 XP   Deadline: 14 h 12 m   Streak 6/7 → +1 stat point at 7
-[URGENT] Cull the nest below the Red Line platform (3/8 killed)   Reward: 40 XP   Window: this scene
+[URGENT] Cull the nest below the Red Line platform (3/4 killed)   Reward: 40 XP   Window: this scene
 [HIDDEN] ???
 ```
 
-`[HIDDEN]` renders `???` while the Bearer does not know the quest's content (Section 14.2). MAIN/URGENT/DAILY quests show their objectives and counters; hidden quests do not.
+`[HIDDEN]` renders `???` while the Bearer does not know the quest's content (Section 14.2). Daily and urgent quests show their objectives and counters; hidden quests do not.
+
+**Quest capacity and rewards.** The System holds a **default of three concurrent System quests** — the standing daily quest plus up to two others (an urgent offer, a hidden pointer). Intelligence capability unlocks raise that cap (Multitask +1, Analyst +1 further; Section 4.4). Reward sizing is fixed by type: the **daily quest** awards its flat **+10 XP** (Section 3.5); an **urgent quest**, on completion, awards a bonus equal to the **kill XP of the objective it demanded** (Section 3.3), paid on top of the kill XP already earned for the kills themselves; a **hidden quest**, on first clear, awards the **milestone XP of its grade** (Section 3.4). In the panel above, the urgent objective culls four E-grade nest beasts — kill XP `4 × 10 = 40` (Section 3.3) — so its completion bonus is the **40 XP** the line shows, earned in addition to the 40 XP of the four kills.
 
 ## 15.3 `/system skills`
 

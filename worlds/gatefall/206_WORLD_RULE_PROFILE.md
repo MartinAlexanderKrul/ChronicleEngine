@@ -653,6 +653,8 @@ The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crysta
 | **Lesser mana potion** | Restores 25% of the drinker's maximum Mana (Section 5). |
 | **Antidote** | Clears poisons and venoms of the drinker's band or below. |
 
+**Off-shop note — the gray sleep.** The wider world's restorative-alchemy market is separate from this Bearer-only shop (`240_RESOURCES.md`), but its one authored price anchors to the same scale: **arresting** chronic mana saturation — *the gray sleep* (Bible Section 5) — runs about a **greater healing potion's** worth of high-grade restorative a month (≈400 g-equivalent shop-side; on the licensed medical market an **A-crystal-scale sum** across a year — tens of thousands of USD, Section 12.1), while a **full reversal is an elixir-grade intervention** priced accordingly, which is why only guilds and governments pay for a cure.
+
 ## 12.6 Starting Funds by Background
 
 A campaign sets the Bearer's opening money by background. Prague equivalents are the USD figure **×22** in CZK.
@@ -690,6 +692,15 @@ Party size is not only a tactical choice; regulation sets a **legal minimum** by
 The foundation of every party dispute is one fact: **inside an uncleared Gate there are no cameras and no instruments — only testimony.**
 
 A sealed Gate interior admits no recording and no remote monitoring: mana flux blinds instruments, and nothing transmits out of a live instance. What happened inside is established solely by the **testimony** of those who walked out. This is the authored foundation on which betrayal, false report, and disputed-clear plots stand — the profile fixes the fact and adds no further subsystem. Who lived, who died, what dropped, and who struck whom inside an uncleared Gate is, mechanically and legally, whatever the survivors say it was until contradicted by evidence found outside.
+
+## 13.5 Support Types and Party Roles
+
+Party role composition is **descriptive, not a subsystem.** The trade sorts awakened abilities into four working types — **strikers** (damage), **wardens** (barrier/tank), **menders** (healing-touch), and **sensors** (detection/appraisal-adjacent) — but a support-type NPC hunter is resolved exactly like every other NPC: **by rank band** (Section 13.1, Section 2), with no stat sheet, level, or Mana curve. "A licensed C-rank mender" is a complete mechanical description. Only **two** effects are authored, at exactly these magnitudes:
+
+- **A party with a mender** converts **one post-fight injury tier down, per member, per clear**, for injuries at the **mender's band or below**: a Minor injury disappears, a Moderate becomes a Minor, a Severe becomes a Moderate, a Critical becomes a Severe (Section 6.3). It is one tier, once per member, per Gate cleared — not a heal-over-time and not a per-hit effect.
+- **A party with a warden** grants **+1 modifier step on the party's defensive actions taken in formation** (Section 4.3), composing into the net ±3 cap like any other step.
+
+Menders and wardens are rare (Bible Section 3), which is exactly why a party that fields one is meaningfully safer and a party without one pays for the gap in Section 6.3 injuries. Nothing further is authored: strikers and sensors add texture, not a mechanic, and **the Bearer in a party benefits from a mender or a warden exactly as any other member does** — the two effects are properties of the party, not of who is in it.
 
 ---
 

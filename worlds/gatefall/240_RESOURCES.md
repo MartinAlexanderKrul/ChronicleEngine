@@ -36,6 +36,8 @@ The base currency good of the whole trade. Every beast a party kills leaves behi
 
 **Market behavior.** On the licensed market a crystal sells at its posted grade price, no questions asked, through any BGM- or CGA-registered buyer; the sale is logged and the crystal enters the regulated supply. Selling instead to an unlicensed buyer pays a **40% premium** over the licensed price, but is a felony in both jurisdictions — no sale record, no grade audit, and real prosecution risk if caught (`206` Section 12.2). The System shop buys crystals too, but strictly for its own currency, **gold**, which never converts back to money (`206` Section 12.5) — a hunter chooses, per crystal, whether it becomes cash or gold, and cannot move the value the other way.
 
+**Who buys at the licensed window.** The volume buyers behind the posted price are the industrial refiners — chiefly **Cindermark Refining** and **Halcyon Mana-Industrial** — who take crystal as feedstock for the mana-tech and power-storage industries (`200_WORLD_BIBLE.md` Section 4); grade for grade, that industrial appetite is what the price rests on. The black market's +40% is not paid for anonymity alone: it is what unlicensed mana-tech shops and foreign buyers dodging the **export controls on B-and-above crystal** will pay to source feedstock the licensed window would log, tax, or refuse.
+
 **Price table** (`206` Section 12.1, Anchor A7, copied verbatim — licensed market, Chicago USD; Prague pays ≈70% of Chicago, settled CZK/EUR):
 
 | Grade | Licensed price |
@@ -67,7 +69,7 @@ aliases:
     quality: current
 canonical_state:
   description: "The graded family of loot crystals every beast drops on death, one per kill, at the beast's own grade E-S. The base commodity of the licensed market and the sole bridge between USD/CZK and the System's gold."
-  market_behavior: "Licensed sale at posted grade price through any BGM/CGA-registered buyer, logged and regulated; unlicensed sale pays +40% but is a felony in both jurisdictions; the System shop buys crystals for gold only, with no reverse conversion."
+  market_behavior: "Licensed sale at posted grade price through any BGM/CGA-registered buyer, logged and regulated; unlicensed sale pays +40% but is a felony in both jurisdictions; the System shop buys crystals for gold only, with no reverse conversion. Licensed demand is industrial: refiners (Cindermark Refining, Halcyon Mana-Industrial) take crystal as mana-tech and power-storage feedstock; the black-market premium is paid by unlicensed mana-tech and by foreign buyers dodging export controls on B-and-above crystal."
   price_table: "Licensed (Chicago USD, Section 12.1): E $150, D $600, C $2,500, B $11,000, A $50,000, S auction-only; Prague ~70% in CZK/EUR. System shop buy (gold, Section 12.5): E 10 g, D 40 g, C 170 g, B 750 g, A 3,400 g."
 ```
 
@@ -78,6 +80,8 @@ canonical_state:
 Where a crystal is common loot, a core is the trophy: **elites and bosses always drop one core each**, at their own grade, and never common beasts (`206` Section 11.1). A core is worth roughly **2.5×** the same-grade crystal and is the raw material behind gear enchantment, consumable brewing, and the rarer boss-drop tables — the good every appraiser, guild armory, and black-market buyer wants more than crystal volume, because a core is proof a party cleared something dangerous enough to carry an elite or a boss.
 
 **Market behavior.** Cores move through the same two channels as crystals — licensed sale at the derived price, logged and regulated, or an unlicensed buyer's **+40%** premium at felony risk (`206` Section 12.2) — but because cores are rarer and higher-value per unit, they draw closer BGM/CGA scrutiny at the evidence locker, and an undeclared core is the loot-declaration violation regulators chase hardest. The Chicago-to-Prague black-market lane both cities' regulators know exists, and neither has fully closed, runs disproportionately on cores rather than crystal volume.
+
+**Who buys at the licensed window.** At the licensed window cores are bought by guild armories and the **enchanting industry that forges graded gear** from them (`200_WORLD_BIBLE.md` Section 4) — the standing demand that makes a core worth its ~2.5× premium over the same-grade crystal in the first place. The unlicensed +40% is paid by unlicensed enchanters and by foreign buyers who cannot or will not clear a core through a logged, grade-audited sale.
 
 **Price table** (`206` Section 12.1, Anchor A7, copied verbatim — derived at 2.5× the same-grade crystal):
 
@@ -109,7 +113,7 @@ aliases:
     quality: current
 canonical_state:
   description: "The graded family dropped once per elite and once per boss (never common beasts), at their own grade E-S. Raw material for graded gear and System consumables; the loot regulators scrutinize hardest."
-  market_behavior: "Licensed sale at the derived price through a registered buyer, logged and regulated; unlicensed sale pays +40% at felony risk; cores carry the black market's real margin over crystal volume, including the Chicago-Prague smuggling lane."
+  market_behavior: "Licensed sale at the derived price through a registered buyer, logged and regulated; unlicensed sale pays +40% at felony risk; cores carry the black market's real margin over crystal volume, including the Chicago-Prague smuggling lane. Licensed buyers are guild armories and the enchanting industry that forges graded gear from cores; the black-market premium is paid by unlicensed enchanters and foreign buyers avoiding a logged, grade-audited sale."
   price_table: "Derived at ~2.5x the same-grade crystal (Section 12.1): E ~$375, D ~$1,500, C ~$6,250, B ~$27,500, A ~$125,000; S is auction-only, as the crystal it derives from."
 ```
 

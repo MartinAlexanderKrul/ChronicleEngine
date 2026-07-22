@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000098 |
-| Record | `REC-` | Canonical Record | REC-000062 |
+| Entity | `ENT-` | Persistent Entity | ENT-000106 |
+| Record | `REC-` | Canonical Record | REC-000070 |
 | Event | `EVT-` | Event | EVT-000050 |
-| Relationship | `REL-` | Relationship | REL-000048 |
+| Relationship | `REL-` | Relationship | REL-000051 |
 
 ---
 
@@ -120,6 +120,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000061 | Record | Reikon Awakening `saves/900_CHECKPOINT_0017/900_SAVE_MANIFEST.md` — Warehouse 7's resonance resolution and the tannery clear, sequenced after the Stat-cap removal (CP0016) |
 | ENT-000087 - ENT-000098 | Entity | World Gatefall (`worlds/gatefall/`) places ledger: 2 cities (Chicago, Prague) and 10 Places — Chicago: Lakefront Gate Corridor, Red Line Corridor, the Cicero Scar, Horizon Tower, BGM Region V Field Office; Prague: Old Town Gate Cluster, Metro Corridor, the Libeň Scar, Karlov House, CGA Headquarters |
 | REC-000062 | Record | Gatefall world ledger: `worlds/gatefall/210_PLACES.md` |
+| ENT-000099 - ENT-000106 | Entity | World Gatefall institutions: BGM Region V, Horizon Guild, Ironline Guild, Windy City Hunters Coalition, Czech Gate Administration, Karlov Guild, Horizon Guild — Europe, Staroměstská Lodge |
+| REC-000063 - REC-000070 | Record | Gatefall institution ledgers: `worlds/gatefall/institutions/{bgm-region-v,horizon-guild,ironline-guild,windy-city-coalition,czech-gate-administration,karlov-guild,horizon-europe,staromestska-lodge}/250_INSTITUTION_LEDGER.md` |
+| REL-000049 - REL-000051 | Relationship | Gatefall institutions: BGM Region V's governance jurisdiction over Chicago (049), the Czech Gate Administration's governance jurisdiction over Prague (050), and the Horizon Guild — Europe / Karlov Guild rivalry over Prague's foreign-guild siege (051) |
 
 ---
 

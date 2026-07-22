@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000082 |
-| Record | `REC-` | Canonical Record | REC-000059 |
-| Event | `EVT-` | Event | EVT-000044 |
-| Relationship | `REL-` | Relationship | REL-000047 |
+| Entity | `ENT-` | Persistent Entity | ENT-000086 |
+| Record | `REC-` | Canonical Record | REC-000060 |
+| Event | `EVT-` | Event | EVT-000048 |
+| Relationship | `REL-` | Relationship | REL-000048 |
 
 ---
 
@@ -105,6 +105,16 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000058 | Record | Reikon Awakening `saves/900_CHECKPOINT_0014/900_SAVE_MANIFEST.md` — the Ashgate closure and the milestone-XP ruling |
 | EVT-000044 | Event | Reikon Awakening: owner ruling authoring the Rift-clear milestone XP formula (World Rule Profile 0.7, Section 8.2, flat ×10 grade-baseline multiplier) and applying it retroactively to the Ashgate clear — 70 milestone XP, moving Daedalus from 85 to 155/130, crossing T(2) into Ascension to Level 3 at 25/170. Also corrects a transcription error on `100_CHARACTER_SHEET.md`'s `situation` field, which read "ten Broodlings"/"Ten E-cores" against nine established everywhere else (checkpoint manifests, changelog, and the XP arithmetic itself) |
 | REC-000059 | Record | Reikon Awakening `saves/900_CHECKPOINT_0015/900_SAVE_MANIFEST.md` — the milestone-XP formula ruling, its retroactive Ashgate application, and the resulting Ascension to Level 3 |
+| ENT-000083 | Entity | Reikon Awakening: Wren Ashcombe, independent resonance/calibration contractor brought in for Warehouse 7 |
+| REL-000048 | Relationship | Reikon Awakening: Daedalus–Wren Ashcombe, professional contact formed for the Warehouse 7 extraction job |
+| ENT-000084 | Entity | Reikon Awakening: Tannery E-Rift, a second solo-eligible assignment, closed unguarded |
+| ENT-000085 | Entity | Reikon Awakening: the extracted, unappraised tannery Rift core |
+| ENT-000086 | Entity | Reikon Awakening: Daedalus's 24-vell holding from the Ashgate core's sale, a corrected prior omission |
+| EVT-000045 | Event | Reikon Awakening: new-day silent intervention check, Institute joint session, Athenaeum resonance lead, meeting Wren Ashcombe, Association referral and escalation filing, tannery assignment taken |
+| EVT-000046 | Event | Reikon Awakening: Warehouse 7 resonance extraction — Thorne's approved attempt, four passes, successful core extraction, MAIN objective complete, no milestone XP to Daedalus (clearing act was Wren's) |
+| EVT-000047 | Event | Reikon Awakening: tannery-district E-Rift solo clear, no guardians encountered, full milestone XP awarded (clearing act performed by Daedalus himself) |
+| EVT-000048 | Event | Reikon Awakening: ruling flagging Captain Thorne's unauthored assignment-bonus claim, and correcting a prior omission (24 vells from the Ashgate core sale) |
+| REC-000060 | Record | Reikon Awakening `saves/900_CHECKPOINT_0016/900_SAVE_MANIFEST.md` — Warehouse 7's resolution and the tannery clear |
 
 ---
 

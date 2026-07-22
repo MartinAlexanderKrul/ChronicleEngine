@@ -24,7 +24,8 @@ A durable, Canonical-Record form of this index is proposed engine work (Save Lay
 | `900_CHECKPOINT_0012/` | 2026-07-20 | Conforming; Institute data handoff, Association report, night recovery, Emberbrand grant | Yes — superseded |
 | `900_CHECKPOINT_0013/` | 2026-07-21 | Conforming; Ashgate assignment captured mid-encounter, kill status unresolved at capture | Yes — superseded |
 | `900_CHECKPOINT_0014/` | 2026-07-21 | Conforming; Ashgate closure and the Rift-clear milestone XP ruling | Yes — superseded |
-| `900_CHECKPOINT_0015/` | 2026-07-21 | Conforming; milestone-XP formula authored (Profile 0.7), applied retroactively to Ashgate, Ascension to Level 3 | **Yes — current restore point** |
+| `900_CHECKPOINT_0015/` | 2026-07-21 | Conforming; milestone-XP formula authored (Profile 0.7), applied retroactively to Ashgate, Ascension to Level 3 | Yes — superseded |
+| `900_CHECKPOINT_0016/` | 2026-07-22 | Conforming; Warehouse 7 fully resolved, tannery clear, two flagged corrections | **Yes — current restore point** |
 
 There is **no baseline checkpoint** for this campaign. See below.
 
@@ -180,7 +181,7 @@ Manifest `REC-000058`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. C
 
 Checkpoint 0015 supersedes it as the checkpoint `/continue` restores. Restoring 0014 reverts to Level 2, 85/130 XP, with the milestone-XP gap unfilled and the 2 Ascension allocation points not yet granted. No played fiction from Checkpoint 0014 itself differs — the reversion is entirely about a ruling made afterward.
 
-## `900_CHECKPOINT_0015/` — current restore point
+## `900_CHECKPOINT_0015/`
 
 Captures one ruling promoted since Checkpoint 0014, with no fiction played: `EVT-000044`. The owner settled the gap `EVT-000043` had flagged rather than invented — `worlds/reikon/206_WORLD_RULE_PROFILE.md` Section 8.2 now specifies the Rift-clear milestone as a flat ×10 multiplier on the clearing Rift's grade baseline (World Rule Profile 0.6 → 0.7). Applied retroactively to the Ashgate clear at owner discretion, exactly as `EVT-000043` anticipated: 70 XP (10 × the E-grade baseline of 7) added to Daedalus's confirmed 85, crossing T(2)=130 and firing Ascension to Level 3.
 
@@ -188,7 +189,21 @@ Daedalus stands at Level 3, 25/170 XP, full 110/110 Health (max_health recompute
 
 **Checkpoint 0014 is not rewritten and remains sealed at its own settled state** — this checkpoint adds new canon on top of it rather than recalculating it, per Rules Section 5.2 (Immutability).
 
-Manifest `REC-000059`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture. This is the checkpoint `/continue` restores.
+Manifest `REC-000059`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture.
+
+Checkpoint 0016 supersedes it as the checkpoint `/continue` restores. Restoring 0015 reverts Warehouse 7 to unextracted, forfeits the entire resonance-extraction storyline (Wren Ashcombe would need to be met again), reopens the tannery assignment as unplayed, and loses the milestone-XP application to that clear (the 25 XP carried at that point would not yet include the tannery-clear 70). No played fiction from Checkpoint 0015 itself differs — the reversion is entirely about what happened afterward.
+
+## `900_CHECKPOINT_0016/` — current restore point
+
+Captures a full in-fiction day (`EVT-000045`–`EVT-000048`). A new-day recurrent intervention check rolled Silence (d100 20, `intervention_silent_checks` to 1). An Institute joint session confirmed an Athenaeum resonance theory fit the bonded core's data; Daedalus recruited independent contractor Wren Ashcombe (`ENT-000083`, `REL-000048`) through an Association referral, filed a parallel formal escalation request for Warehouse 7, and took a second solo assignment (tannery-district E-Rift, unconfirmed grade). Thorne approved Wren's and Kalens's presence at Warehouse 7 after Daedalus proactively asked rather than assumed his clearance covered it.
+
+Wren's in-person assessment confirmed a narrow but real resonance margin at the framework's thin point. After a direct risk briefing, Thorne approved the attempt with standby positioning. Four resonance passes (one safely aborted mid-tone) fully loosened and extracted the bonded core intact — zero casualties across the entire multi-day Warehouse 7 assignment. **The MAIN objective is complete;** `ENT-000064` (Warehouse 7 E-Rift) is archived/closed. **No milestone XP accrues to Daedalus from this** — the clearing act was Wren's, under specialist terms, not his own. The tannery E-Rift held no guardians at all, but Daedalus performed the clearing act himself (core extraction, Rift collapse), earning the full 70 XP E-grade Rift-clear milestone under `EVT-000044`'s formula — this checkpoint is that formula's first live application to an original clear, distinct from Checkpoint 0015's retroactive application to the already-sealed Ashgate clear. XP moves from 25 to 95. Why the Rift held no guardians is flagged as an open worldbuilding question, not a rule violation.
+
+**Two corrections, not silent overwrites:** Captain Thorne's in-fiction claim of an automatic Association assignment-completion bonus has no backing in Section 12's Economy rules and is flagged as unauthored — no bonus vells added on its account. Separately, a genuine prior omission is fixed: the 24 vells Daedalus received for the Ashgate core's sale were established in play but never written to canon at the time; they're now correctly recorded as `ENT-000086`.
+
+Daedalus stands at Level 3, 95/170 XP, full 110/110 Health, and full 15/15 Mana, just outside the closed tannery E-Rift. **2 Ascension allocation points remain unspent**, a player decision not yet made. He carries the unappraised tannery core (`ENT-000085`), three unsold Warehouse 7 D-cores, 55 E-cores, and 24 vells.
+
+Manifest `REC-000060`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains byte-identical copies of all eight canonical campaign ledgers (save for the expected changelog divergence noted in the manifest), diff-verified after capture. This is the checkpoint `/continue` restores.
 
 ---
 

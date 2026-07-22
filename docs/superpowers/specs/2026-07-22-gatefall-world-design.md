@@ -47,6 +47,8 @@ All expression is original: same mechanical skeleton and genre principles as Sol
 
 **Global layer.** Gates are worldwide. The world bible carries the worldwide Gate landscape, the European authority structure, license reciprocity, and notable foreign powers at foundation depth. Campaign creation chooses Chicago or Prague; other regions get authored if a campaign ever needs them.
 
+**European guild landscape.** EU license reciprocity makes Europe's guild scene transnational: **guild strength scales with home-country size and Gate density.** Large countries (Germany, France, UK) field top-tier national guilds that operate across borders; small countries can't sustain an S-rank-tier domestic guild and import clearance capacity — a standing political tension between sovereignty and safety. The world bible names the major international guilds operating in Europe (each with a one-line identity, home country, and posture), including at minimum: **Brandhof** (German, the continent's largest, engineering-corps culture), **Zenith Group** (British, finance-driven, buys rather than builds), and Horizon Guild's European arm. In Prague all three compete for CGA contracts against local Karlov; internationals get full institution ledgers only when a campaign engages them beyond contract competition.
+
 ## Hunter scale (authored in the world bible)
 
 The population pyramid is fixed at 1.0 so "how rare is a hunter?" is never improvised:
@@ -141,8 +143,8 @@ Every notable figure is authored with all of: a **want** (what they're pursuing)
   - **Karlov Guild** — Prague's dominant guild, family-run, deep city ties, old-fashioned.
   - **Horizon Guild — Europe** — the American major's Prague branch office; resented, well-funded, hiring away local talent (ties the two cities into one world).
   - **Staroměstská Lodge** — the freelancer co-op; likely protagonist starting affiliation for a Prague campaign.
-- **Notable figures** — the CGA director; the Czech S-rank (national celebrity, political football); Karlov's guildmaster and heir; Horizon Europe's branch chief; a black-market artifact smuggler moving goods westward.
-- **Seed events** — an Old Town Gate that keeps re-grading upward and nobody will say why; Horizon Europe maneuvering to buy Karlov Guild out.
+- **Notable figures** — the CGA director; the Czech S-rank (national celebrity, political football); Karlov's guildmaster and heir; Horizon Europe's branch chief; Brandhof's and Zenith's Prague operations leads (bible-level entries, promoted to full depth if a campaign engages them); a black-market artifact smuggler moving goods westward.
+- **Seed events** — an Old Town Gate that keeps re-grading upward and nobody will say why; a three-way foreign bidding war (Horizon, Brandhof, Zenith) to buy out or displace Karlov Guild, with the CGA quietly favoring whoever promises to keep the S-rank home.
 
 ## Shared / global
 

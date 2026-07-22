@@ -8,9 +8,9 @@
 
 # 1. Purpose and goals
 
-Create a new world, **`worlds/gatefall/`**, built on the Solo Leveling framework — the System, awakening, Gates/dungeons, hunter ranks E–S, mana, dungeon breaks, and a protagonist who uniquely levels — set in the real-world USA (home base: Chicago), with a global layer supporting a European-hunter campaign start.
+Create a new world, **`worlds/gatefall/`**, built on the Solo Leveling framework — the System, awakening, Gates/dungeons, hunter ranks E–S, mana, dungeon breaks, and a protagonist who uniquely levels — set in the real world with **two fully-authored start locations at equal depth: Chicago, USA and Prague, Czech Republic**.
 
-Gatefall replaces Reikon as the active Solo Leveling-style world. Reikon is judged a failure on four counts (owner ruling, 2026-07-22): boring gameplay loop, no real danger, weak progression payoff, and flavor that didn't land. Reikon's own playtest backlog (`worlds/reikon/270_PLAYTEST_BACKLOG.md`, PT-001/002/003) diagnosed the first three mechanically. Gatefall's design constraint is that **all three diagnosed failures are fixed as world law at profile 1.0**, not patched later.
+Gatefall replaces Reikon as the active Solo Leveling-style world. Reikon is judged a failure on five counts (owner ruling, 2026-07-22): boring gameplay loop, no real danger, weak progression payoff, flavor that didn't land, and **flat characters**. Reikon's own playtest backlog (`worlds/reikon/270_PLAYTEST_BACKLOG.md`, PT-001/002/003) diagnosed the first three mechanically. Gatefall's design constraint is that **all three diagnosed failures are fixed as world law at profile 1.0**, not patched later.
 
 All expression is original: same mechanical skeleton and genre principles as Solo Leveling, but original names, characters, institutions, and text throughout. No copied text, characters, or plot.
 
@@ -20,7 +20,8 @@ All expression is original: same mechanical skeleton and genre principles as Sol
 |---|---|
 | System fidelity | Full System at 1.0 (stat window, daily quests + penalties, skills, inventory, shop, instant dungeon keys, titles, class quest) |
 | Unique power | Multiple original hidden classes, shadow-army path included; class quest determines what is offered |
-| Home base | Chicago, USA; global layer supports European start |
+| Start locations | Chicago, USA **and** Prague, Czech Republic — both authored at full depth; campaign creation chooses one |
+| Character depth | Every notable figure authored with want, fear, secret, live agenda, and relationships — flat characters are a recorded Reikon failure and a spec violation here |
 | Lethality | Fully lethal — die + authored threat model decide; protagonist death hard-ends the campaign |
 | Reikon fate | Kept as-is, campaign `reikon_awakening_001` marked **dormant** (fully resumable, nothing deleted) |
 | Build approach | Clean-slate full build; reuse engine primitives that work (grade-banded health, grade-baselined damage); no retheme of Reikon's profile |
@@ -42,7 +43,18 @@ All expression is original: same mechanical skeleton and genre principles as Sol
 
 **The protagonist's hook** (campaign-level, the world must support it): the city's notoriously weakest licensed E-rank survives a double-dungeon-style incident and receives the **System** — quests, levels, stats that grow — which no other hunter has and no instrument can detect.
 
-**Global layer.** Gates are worldwide. Europe runs national Gate agencies under an EU coordination body; hunter licenses have international reciprocity. A campaign may start as a European hunter — abroad (region authored at campaign creation) or as a transfer working American contracts. The System works identically everywhere. The world bible carries this layer at foundation depth: worldwide Gate landscape, European authority structure, license reciprocity, notable foreign powers.
+**Prague** is the second home base, authored at the same depth as Chicago. Europe runs national Gate agencies under an EU coordination body (the **European Gate Council**); hunter licenses have international reciprocity. Prague's texture deliberately contrasts with Chicago's: Gates opening inside a UNESCO-protected historic center (clearing without destroying heritage is a legal and tactical constraint), a smaller and scrappier hunter scene where individuals matter sooner, older infrastructure, and a stronger black market feeding artifact smuggling westward. The System works identically everywhere.
+
+**Global layer.** Gates are worldwide. The world bible carries the worldwide Gate landscape, the European authority structure, license reciprocity, and notable foreign powers at foundation depth. Campaign creation chooses Chicago or Prague; other regions get authored if a campaign ever needs them.
+
+## Hunter scale (authored in the world bible)
+
+The population pyramid is fixed at 1.0 so "how rare is a hunter?" is never improvised:
+
+- **Awakening rate:** roughly 1 in 5,000 people (~0.02%) — about 1.6 million awakened worldwide; a minority hold hunter licenses (many awakened take safer work: appraisal, construction, medicine, military).
+- **Rank distribution among licensed hunters:** E 60%, D 22%, C 11%, B 5%, A ~2%. **S-rank is counted in individuals, not percentages** — about 200 worldwide, each a strategic national asset.
+- **United States:** ~66,000 awakened, ~25,000 licensed hunters, **11 S-ranks**. Chicago: ~1,200 licensed hunters, 2 resident S-ranks (Horizon Guild's ace; one BGM federal asset).
+- **Czech Republic:** ~2,100 awakened, ~800 licensed hunters, **1 S-rank** (a national celebrity and political football). Prague: ~350 licensed hunters — small enough that every B-rank is a known name, which is exactly the point of starting there.
 
 ---
 
@@ -59,6 +71,21 @@ Everything below is authored in `206_WORLD_RULE_PROFILE.md` before play. Numeric
 - **Instant dungeons** — looted keys open private solo dungeons: combat/loot runs on demand with no BGM paperwork. The designed antidote to logistics-heavy sessions.
 - **Titles** — earned by feats, each granting an authored passive.
 - **Class quest** — see Section 5.
+
+## Loot
+
+Loot is a first-class subsystem at 1.0, not flavor text. **Every Gate clear yields loot rolled from an authored table keyed to the Gate's grade; the boss always drops something.** Items carry a grade E–S on the same banding as Gates and hunters, so an item's magnitude follows from its grade the way a monster's health does. An item the table can produce but the profile hasn't authored is a profile bug.
+
+Categories at 1.0, each with authored effects, prices (gold and USD where sellable), and grade scaling:
+
+- **Weapons & armor** — graded gear with authored die-facing effects; rare pieces carry one named property (lifedrink, mana-burn, unbreaking). High-grade beast materials (fangs, hide, cores) are the crafting inputs *industry* uses — the protagonist sells materials or commissions gear; no player crafting subsystem.
+- **Potions & elixirs** — healing and mana restoration in grade tiers; antidotes; **elixirs** as rare permanent stat consumables (the shop's late-game gold sink).
+- **Runes** — single-skill teaching stones, consumed on use; the common way combat skills enter circulation. Rune drops are how the world's *other* hunters got their one or two fixed skills — for the protagonist they stack.
+- **Skill books** — rarer, richer than runes: a full skill with a growth path. Class-restricted books exist and are worthless to everyone but him.
+- **Dungeon keys** — instant-dungeon access, graded; the loot that generates more gameplay.
+- **Mana crystals & beast cores** — the economy's spine: sellable for USD on the licensed market (or better prices on the black market, with consequences), or to the shop for gold.
+
+Drop rarity is authored per Gate grade (e.g., an E-Gate yields crystals and maybe a rune; a red-gate anomaly rolls on a table a grade above its assessment). Named uniques exist only as authored items with provenance — no procedurally invented artifacts.
 
 Engine integration: reuse `band_health` per grade and grade-baselined damage (already proven in Reikon's profile). The profile is written in Chronicle Engine terms and governed by engine rules.
 
@@ -89,23 +116,45 @@ Hidden class table at 1.0 — all unique on Earth, each authored with core mecha
 
 ---
 
-# 6. Worldbook content plan (lean but real)
+# 6. Worldbook content plan
 
-- **Places (`210_PLACES.md`)** — Loop/lakefront high-density Gate corridor; an L-line district for low-rank contract work; a permanently quarantined dungeon-break scar (standing mystery and danger zone); guild HQs; BGM Region V office.
-- **Institutions (`institutions/`, 4 ledgers):**
+## Character depth law (fixes the flat-characters failure)
+
+Every notable figure is authored with all of: a **want** (what they're pursuing), a **fear or flaw** (what bends their judgment), a **secret** (something true the world doesn't know), a **live agenda** (what they are doing this month whether or not the protagonist exists), and **relationships** (at least two named ties, at least one crossing an institution boundary). Figures are people in motion, not quest dispensers: their agendas advance in play, and institutions have interior factions that disagree. A figure entry missing any of these is incomplete by spec.
+
+## Chicago
+
+- **Places** — Loop/lakefront high-density Gate corridor; an L-line district for low-rank contract work; a permanently quarantined dungeon-break scar (standing mystery and danger zone); guild HQs; BGM Region V office.
+- **Institutions (4):**
   - **Bureau of Gate Management — Region V** — federal regulator: licensing, grading, contract auctions.
   - **Horizon Guild** — top-tier, publicly traded, S-rank ace.
   - **Ironline Guild** — blue-collar rival, aggressive recruiter of low-ranks.
   - **Windy City Hunters Coalition** — freelancer co-op; likely protagonist starting affiliation.
-- **Notable figures (`220_NOTABLE_FIGURES.md`)** — BGM regional director; each guild's master and ace; a licensed appraiser; a black-market core buyer. No protagonist — that is campaign creation.
-- **Resources (`240_RESOURCES.md`)** — the dual economy: USD (crystals, cores, contracts, rent) and System gold (shop-internal), with authored prices.
-- **Seed events (`260_SEED_EVENTS.md`)** — a mis-graded Gate incident brewing; a guild war over a Gate-rich district auction; a rising dungeon-break rate the BGM is quietly failing to explain (long-arc hook).
+- **Notable figures** — BGM regional director; each guild's master and ace; a licensed appraiser; a black-market core buyer.
+- **Seed events** — a mis-graded Gate incident brewing; a guild war over a Gate-rich district auction.
+
+## Prague (same depth as Chicago)
+
+- **Places** — Old Town / Malá Strana historic-center Gate cluster (UNESCO constraint: heritage-preserving clearance rules that make fights harder and contracts pricier); the metro-tunnel corridor where low-rank contracts live; a quarantined break scar across the Vltava in an outer district; Karlov Guild HQ; the Czech Gate Administration seat.
+- **Institutions (4):**
+  - **Czech Gate Administration (CGA)** — national regulator under the European Gate Council; underfunded, proud, protective of its one S-rank.
+  - **Karlov Guild** — Prague's dominant guild, family-run, deep city ties, old-fashioned.
+  - **Horizon Guild — Europe** — the American major's Prague branch office; resented, well-funded, hiring away local talent (ties the two cities into one world).
+  - **Staroměstská Lodge** — the freelancer co-op; likely protagonist starting affiliation for a Prague campaign.
+- **Notable figures** — the CGA director; the Czech S-rank (national celebrity, political football); Karlov's guildmaster and heir; Horizon Europe's branch chief; a black-market artifact smuggler moving goods westward.
+- **Seed events** — an Old Town Gate that keeps re-grading upward and nobody will say why; Horizon Europe maneuvering to buy Karlov Guild out.
+
+## Shared / global
+
+- **Resources (`240_RESOURCES.md`)** — the dual economy: local currency (USD / CZK–EUR) for crystals, cores, contracts, rent; System gold shop-internal; authored prices for both cities and the loot categories of Section 3.
+- **Seed events (global)** — a rising worldwide dungeon-break rate the authorities are quietly failing to explain (the long-arc hook, visible from either city).
+- **File layout** — `210_PLACES.md`, `220_NOTABLE_FIGURES.md`, and `260_SEED_EVENTS.md` each carry a Chicago section, a Prague section, and (where applicable) a global section; `institutions/` holds all 8 ledgers.
 
 ---
 
 # 7. Repository changes
 
-- New `worlds/gatefall/`: `README.md`, `200_WORLD_BIBLE.md`, `206_WORLD_RULE_PROFILE.md` (the System, 1.0), `210_PLACES.md`, `220_NOTABLE_FIGURES.md`, `240_RESOURCES.md`, `260_SEED_EVENTS.md`, `institutions/` (4 ledgers). File naming and conventions follow the existing world skeleton (Reikon/Verra) and `templates/000_TEMPLATE_CONVENTIONS.md`.
+- New `worlds/gatefall/`: `README.md`, `200_WORLD_BIBLE.md` (including hunter-scale numbers and the global layer), `206_WORLD_RULE_PROFILE.md` (the System incl. loot tables, 1.0), `210_PLACES.md`, `220_NOTABLE_FIGURES.md`, `240_RESOURCES.md`, `260_SEED_EVENTS.md`, `institutions/` (8 ledgers: 4 Chicago, 4 Prague). File naming and conventions follow the existing world skeleton (Reikon/Verra) and `templates/000_TEMPLATE_CONVENTIONS.md`.
 - `system/WORLDS_AND_CAMPAIGNS.md`: add the `worlds/gatefall/` row. Mark `campaigns/reikon_awakening_001/` dormant via its **per-campaign note** (the index's status vocabulary is fixed to *not started / in progress / closed or terminal*, so its status column stays `In progress` and the note records that the campaign is dormant by owner ruling, kept fully resumable). Reikon world files untouched otherwise.
 - `tools/validate_repository.ps1` and `tools/test_checkpoint_contract.ps1` must pass after the change.
 - Any registration the engine requires for new worlds (e.g., `system/ID_REGISTRY.md` identifiers) is included; the implementation plan enumerates these from the engine docs.
@@ -113,11 +162,12 @@ Hidden class table at 1.0 — all unique on Earth, each authored with core mecha
 ## Out of scope
 
 - **Campaign creation** (protagonist, start city, opening incident) — its own step after the world exists.
-- **Deep authoring of European regions** — the world bible carries the global layer; a European start region is authored at campaign creation.
+- **Deep authoring of regions beyond Chicago and Prague** — the world bible carries the global layer; any third region is authored only if a campaign needs it.
 - **Any change to Reikon's world files or engine rules** beyond the index status change above. Engine-general findings (PT-001's runtime-cadence half) remain on the engine backlog; Gatefall works around them at the world-profile level.
 
 ## Success criteria
 
 1. Repository validation passes; the welcome-page index lists Gatefall and shows `reikon_awakening_001` dormant.
-2. The profile contains no unauthored magnitude reachable in ordinary play: every Gate grade yields a concrete threat population; every System feature has authored costs, rewards, and thresholds.
-3. A campaign can be created in Gatefall (Chicago or European start) without the world needing further authoring for its first sessions.
+2. The profile contains no unauthored magnitude reachable in ordinary play: every Gate grade yields a concrete threat population **and a concrete loot roll**; every System feature has authored costs, rewards, and thresholds.
+3. A campaign can be created in Gatefall in **either Chicago or Prague** without the world needing further authoring for its first sessions.
+4. Every notable figure satisfies the character depth law (want, fear/flaw, secret, live agenda, relationships).

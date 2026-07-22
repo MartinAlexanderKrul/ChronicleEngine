@@ -526,22 +526,45 @@ Loot is the material output of a cleared Gate. Crystals and cores drop determini
 
 ## 11.2 The Boss Drop
 
-On the boss kill, in addition to its core, roll the **boss drop** on a d100. The drop's grade is the **Gate's grade** unless a grade bump applies (Section 11.3).
+On the boss kill, in addition to its core, roll the **boss drop** on a d100. The drop's grade is the **Gate's grade** unless a grade bump applies (Section 11.4).
 
 | d100 | Boss drop |
 |---|---|
-| 01–40 | **Weapon or armor piece** at the Gate grade (Section 11.4). |
+| 01–40 | **Weapon or armor piece** at the Gate grade (Section 11.5). |
 | 41–65 | **Rune** — teaches one random authored skill (Section 7.1). |
-| 66–80 | **Potion cache** — 3 potions at the Gate-grade tier (Section 12). |
+| 66–80 | **Potion cache** — 3 potions at the Gate-grade tier (Section 12.5). |
 | 81–90 | **Instant-dungeon key** at the Gate grade (Section 17, authored later). |
-| 91–97 | **Skill book** — from the authored skill-book table (Section 7). |
-| 98–00 | **Elixir** — a permanent +1 to one stat (max 3 lifetime per stat, Section 12). |
+| 91–97 | **Skill book** — from the skill-book table (Section 11.3). |
+| 98–00 | **Elixir** — a permanent +1 to one stat (max 3 lifetime per stat, Section 12.5). |
 
-## 11.3 Red-Gate and Anomaly Grade Bump
+The **potion cache** tier follows the Gate grade: Gate grade **E–D → lesser** potions, **C–B → standard**, **A–S → greater** (the tiers priced in Section 12.5).
+
+## 11.3 The Skill-Book Table
+
+A **skill book** (boss drop 91–97) is rarer than a rune and teaches its skill at the **rank matching the Gate grade it dropped from** — a book from a C-Gate teaches its skill at rank C, above the E/D rune tier. Roll the taught skill on a d10:
+
+| d10 | Skill book teaches |
+|---|---|
+| 1 | **Sprint** (Section 7.3) — movement. |
+| 2 | **Dagger Mastery** (Section 7.3) — passive weapon mastery. |
+| 3 | **Mend** (Section 7.3) — healing. |
+| 4 | **Stone Skin** (Section 7.3) — sustained physical damage reduction. |
+| 5 | **Flash Step** (Section 7.3) — mobility. |
+| 6 | **Keen Sense** (Section 7.3) — detection. |
+| 7 | **Silent Step** (Section 7.3) — stealth. |
+| 8 | **Mana Bolt** (Section 7.3) — ranged attack. |
+| 9 | **Rupture** — Mana **12**: a heavy strike with a **×2.0** skill multiplier on the standard-hit baseline (Section 6.2); the die resolves whether it lands and its degree. |
+| 10 | **Bulwark** — Mana **10**: **50% physical damage reduction** for one exchange; reductions multiply, never add (Section 7.3), so it never reaches immunity. |
+
+Entries 1–8 are the eight starting skills of Section 7.3, taught here at the dropped Gate's grade rather than at the E/D rune tier. **Rupture** and **Bulwark** (entries 9–10) are authored here and enter the ledger with their name, rank (the Gate grade the book dropped from), Mana cost, and effect on the schedule of Section 7.2.
+
+**Class-restricted skill books** exist only as **authored named items with provenance** — usable by no one but the holder of their class, and entering play solely where a file authors them, exactly as the named-uniques rule (Section 11.5) requires.
+
+## 11.4 Red-Gate and Anomaly Grade Bump
 
 **Red gates and anomaly Gates roll loot one grade above the assessment.** A Gate that resolved to any anomaly (Section 9.6) — including a red gate — drops crystals, cores, and boss loot as if it were **one grade higher** than the grade it was assessed at. This is the reward for surviving the elevated danger an anomaly represents.
 
-## 11.4 Item Grades
+## 11.5 Item Grades
 
 Gear carries a grade **E–S**, exactly as monsters do, and **an item's grade sets its damage or protection band exactly as a monster's grade sets its band health** (Section 6.1). A C-grade weapon lands its strikes on the C-band standard-hit baseline (Section 6.2); B-grade armor grants protection scaled to the B band. Grade is the item's complete mechanical description — no per-item stat line is authored beyond grade, type, and any named effect.
 
@@ -654,7 +677,7 @@ Party size is not only a tactical choice; regulation sets a **legal minimum** by
 
 ## 13.4 The Witness Rule
 
-**Inside an uncleared Gate there are no cameras and no instruments — only testimony.**
+The foundation of every party dispute is one fact: **inside an uncleared Gate there are no cameras and no instruments — only testimony.**
 
 A sealed Gate interior admits no recording and no remote monitoring: mana flux blinds instruments, and nothing transmits out of a live instance. What happened inside is established solely by the **testimony** of those who walked out. This is the authored foundation on which betrayal, false report, and disputed-clear plots stand — the profile fixes the fact and adds no further subsystem. Who lived, who died, what dropped, and who struck whom inside an uncleared Gate is, mechanically and legally, whatever the survivors say it was until contradicted by evidence found outside.
 

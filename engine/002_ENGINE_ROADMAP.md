@@ -1085,6 +1085,7 @@ Current architectural debt:
 - Define version compatibility model.
 - Complete missing governance documents.
 - Reconcile save-layer location/format drift — documented `saves/900_CHECKPOINT_<NNNN>/` (full ledger copies) vs the session-1 flat `.saves/*.yaml` manifest-only files vs an empty `checkpoints/` placeholder. Bless a single form and migrate existing checkpoints. *(Surfaced by Decision 053; deferred to Version 0.6 — Persistence.)*
+- **Encounter pacing has no cadence governor.** *(Surfaced by Reikon Awakening play, ~Checkpoints 0013–0016; recorded with two entangled world-authoring gaps in `worlds/reikon/270_PLAYTEST_BACKLOG.md` PT-001–PT-003.)* Long stretches of low-stakes logistics play at full scene detail, with nothing in the resident cadence layer (Decision 050) or Simulation Priority (Rules Section 3.12) governing when to **compress** them or surface the world's standing stakes. Engine-general. The fix is compression plus richer standing stakes — **not** a drama timer: forcing an encounter on a clock would violate Consistency Before Drama (Decision 003) and "no event exists solely because it would be dramatic" (Rules 1.2). A candidate for a future runtime-cadence refinement, evaluated together with the world-authoring gaps (Rift threat model, uncertainty-resolves-benign) that give it honest material.
 
 ---
 

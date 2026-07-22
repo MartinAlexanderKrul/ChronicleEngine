@@ -12,6 +12,37 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-22 — Reikon World Rule Profile 0.10: Rift threat model authored
+
+World authoring (Reikon). No engine decision consumed — Decision 069 point 4 and Decision 062. No Rules, Data Model, or Runtime change. Closes playtest findings PT-002 and PT-003 (`worlds/reikon/270_PLAYTEST_BACKLOG.md`).
+
+**Gap closed:** nothing said a Rift must be populated or its core guarded, so an empty Rift was indistinguishable from an unauthored one (PT-002), and an unconfirmed-grade assignment kept resolving to "fine" (PT-003) — the boredom the playtest reported. 0.10 adds Section 13.
+**Populated by default (13.1):** a Rift of grade G holds a body of grade-G guardians and a core guarded by a grade-G (or G+1) threat. Emptiness becomes an authored, logged exception (13.4) — the Section 12.7 unpriced-goods discipline applied to threat. Warehouse 7's shape is the default, not a lucky one.
+**Unconfirmed grade has teeth (13.2):** an assignment carries an assessed grade *and* a confidence. An unconfirmed Rift's true grade is rolled on d100 at first contact, weighted toward danger (a real chance it is a band harder, a tail into anomalous or +2) rather than defaulted benign — the free-favorable-default Decision 060 guards against, one level up. Perception 16+ (0.9, Section 12.3) lets the Bearer read the true grade himself, converting *unconfirmed* to *confirmed* by capability.
+**Danger stays causal (13.3):** an under-assessed or anomalous Rift is already an intervention trigger (Section 9.6), so the model plugs into the System's existing behavior — no new mechanism, and no drama timer (Decision 003; PT-001). The Warehouse 7 Breakers were this case before it had a name.
+**No subsystem (13.5):** reuses grade + `band_health` (3.1, 6.4), the intervention check (9.6), and the die. No spawn table, no bestiary, no map layer (Decision 020) — the restraint the economy and damage models keep.
+**PT-001 (pacing) gets its honest lever:** populated Rifts and real uncertainty are the standing stakes the simulation can surface, so the boredom is answered by richer content, not a forced-encounter clock.
+**Documents:** Reikon 206 (0.10): header note and new Section 13.
+**Migration:** additive. No 0.9 rule changed; the model governs how Rifts are authored going forward. Nothing recalculated; no campaign state touched (no EVT minted — registry high-water unchanged).
+**Validation:** Repository validation, Reikon contract, and decision/roadmap sync pass.
+**Engine Version:** Unchanged; remains 0.2.0.
+
+## 2026-07-21 — Reikon World Rule Profile 0.9: Power, Speed, and Perception payoffs authored
+
+World authoring (Reikon). No engine decision consumed — Decision 069 point 4 and Decision 062: a change scoped entirely to one world is recorded here and in the world's own documents. No Rules, Data Model, or Runtime change.
+
+**Gap closed:** Section 4.2 recorded under 0.8 that three of the five Stats — Power, Speed, Perception — had no authored payoff and mattered only through narrated circumstance, while Endurance (→ `max_health`) and Mana Affinity (→ a +1-capped die step) did. Uncapping the stored number in 0.8 therefore gave those three nothing to spend growth on. 0.9 authors their formulas.
+**The constraint that shaped it:** Law VII permits only *off-die magnitude* to be uncapped — the reason Mana Affinity ceilings at +1. So the three split on that line rather than all becoming uncapped:
+- **Power → uncapped off-die physical-damage magnitude** (new Section 6.5), the melee counterpart of Ability Strength: `band_health × physical_ratio × (1 + 0.10 × (power − 10)) × band_multiplier × (1 − reduction)`, with `physical_ratio` 0.75× armed / 0.5× unarmed and magnitude measured from a neutral 10 so it stays closed-form from the current Stat with no stored Awakening basis. It rides the Bearer's band for the same reason Ability damage does, and finally makes his Swordsmanship scale.
+- **Speed and Perception → +1-capped, domain-scoped die steps** (Section 6.3): Speed on physical-reactive actions, Perception on contested detection. The Section 6.3 Mana-Affinity row is generalized to a **Domain Stat** row filled by exactly one Stat per roll; the three domains are disjoint, so Stats never contribute more than +1 to a single roll and the ±3 net budget stays safe.
+- **Perception → off-die self-appraisal unlock at 16+** (Section 12.3): the Bearer reads a core's origin and a creature/Rift's grade himself, otherwise specialist-only; uncontested reads resolve in the No-Roll Zone, contested ones roll with Perception's +1.
+**Honest finding, recorded not hidden:** only **Power and Endurance** are uncapped-meaningful, because only a band-riding magnitude can be. Speed, Perception, and Mana Affinity remain die-capped and bank past their relevant range — so 0.8's uncapping fully pays off for only two of the five Stats. Stated in the 0.9 header and Section 4.2 rather than papered over.
+**No campaign state touched.** Derived effects compute at use from already-stored Stat values (Section 11), so no ledger, character sheet, or registry change was made and no campaign event was minted (registry high-water unchanged at `EVT-000045`). Daedalus's banked 3 Power / 1 Perception (`EVT-000046`) become live automatically under the new formulas — Power fully (11 → 1.1× physical magnitude), Perception progressing toward its 16 unlock. The live campaign adopts 0.9 as an ordinary profile-version bump at its next readiness gate (Section 14.4).
+**Migration:** additive. No 0.8 rule changed and no stored value recalculated; the formulas give existing Stats meaning they lacked. Checkpoints under 0.1–0.8 remain restorable and surface the version bump on restore (Sections 14.4, 13.5).
+**Documents:** Reikon 206 (0.9): header note, Section 4.2, Section 6.3, new Section 6.5, Section 12.3, and the Section 11 extension comment.
+**Validation:** Repository validation, Reikon contract, validator regression, catalog, checkpoint contract, and decision/roadmap sync all pass.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-19 — Version 0.3 scope accepted: Runtime & Persistence Hardening
 
 Planning-stage output under Decision 048 — the Version 0.3 scope proposal is accepted and the version advances from Planning to ADR Design. Refinement under Decision 069: this edits planning documents only (roadmap, manifest, README) and adds no Rules section, no Data Model change, and no mechanism a world or campaign invokes. No engine decision number is consumed — scope approval is a roadmap state transition, not an ADR; the ADRs are drafted next, in the ADR Design stage.

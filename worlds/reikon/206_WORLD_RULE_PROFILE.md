@@ -1,11 +1,21 @@
-# Reikon — World Rule Profile 0.8
+# Reikon — World Rule Profile 0.10
 
 **File:** `worlds/reikon/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
-**Profile Version:** 0.8
+**Profile Version:** 0.10
 **Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Status:** Active
+
+**0.10 authors the Rift threat model in Section 13 (owner-directed world authoring; Decision 062), closing playtest findings PT-002 and PT-003 (`worlds/reikon/270_PLAYTEST_BACKLOG.md`).** A Rift is now **populated and its core guarded by default** — emptiness becomes an authored, logged exception, never the absence of authoring (Section 12.7's discipline applied to threat). An assignment carries an **assessed grade and a confidence**, and an unconfirmed Rift's **true grade is arbitrated on the die at first contact** — weighted so it can be a full grade worse — instead of defaulting benign (Decision 060). An under-assessed or anomalous Rift is exactly an existing intervention trigger (Section 9.6), so danger arises *causally*, never on a drama timer (Decision 003; PT-001). It reuses grade and `band_health` (Sections 3.1, 6.4); no bestiary, spawn table, or map subsystem (Decision 020). A Bearer whose Perception reaches 16 reads a Rift's true grade himself (Section 12.3), converting *unconfirmed* to *confirmed* by capability rather than by default.
+
+**0.9 authors the missing Stat payoffs for Power, Speed, and Perception (owner-directed world authoring; Decision 062), closing the gap Section 4.2 recorded under 0.8.** Law VII permits only *off-die magnitude* to be uncapped, so the three formulas split on that line:
+
+- **Power** gains an uncapped, off-die **physical-damage magnitude** (Section 6.4) — the melee counterpart of Ability Strength, and the one of the three that rides the band ladder, so like Endurance's `max_health` it is meaningful without bound.
+- **Speed** and **Perception** each gain a **+1-capped, domain-scoped** die contribution (Section 6.3): Speed on physical-reactive actions, Perception on contested detection. They cap for the same Law VII reason Mana Affinity does, and they bind *disjoint* action domains, so no single roll ever draws more than +1 from Stats.
+- **Perception** additionally gains an off-die awareness unlock (Section 12.3): at 16+ the Bearer appraises cores and reads threat grades himself — otherwise a specialist-only skill.
+
+The honest consequence, recorded rather than hidden: uncapping the stored Stat number (0.8) pays off *without bound* only for **Power and Endurance**; Speed, Perception, and Mana Affinity remain die-capped and bank past their relevant range. This change reads already-stored Stat values and derives at use (Section 11), so it needs no ledger or character-sheet edit; a campaign adopts it as an ordinary profile-version bump at its next readiness gate (Section 14.4).
 
 **0.8 removes the 20-point Stat cap and raises the Ascension point rate to 5 in Sections 4.1–4.2 (`EVT-000045`), applied retroactively.** Stats now grow with no upper bound, the same "never a dead level" philosophy already governing the Mana pool curve (Section 3.2) — but uncapping the stored number does not uncap what it does: Mana Affinity's contribution to modifier steps stays fixed at +1 forever (Section 6.3), because Law VII forbids anything more generous, full stop. Endurance already has a real uncapped payoff (`max_health`, Section 7.1); Power, Speed, and Perception do not, and that gap is recorded rather than invented, under the same discipline Section 12.7 applies to unpriced goods.
 
@@ -192,7 +202,7 @@ One point raises one stat by 1.
 
 - **Endurance** already has a real, uncapped, off-die payoff: it feeds `max_health` (Section 7.1) at every point, forever. Removing its ceiling is immediately meaningful with no further authoring needed.
 - **Mana Affinity's contribution to modifier steps stays fixed at a maximum of +1**, exactly as Section 6.3 already specifies, no matter how high the raw number climbs. That ceiling is not this profile's to move: Section 6.3 exists because anything more generous would walk the net modifier to +3, where the die stops deciding outcomes — which Law VII (Fairness), an Engine Law, forbids outright and no World Rule Profile can override (Rules Section 14.3). Points banked past the die-relevant range are legitimately held but have no further authored effect today.
-- **Power, Speed, and Perception have no formula at all.** Today they matter only through ordinary narrated circumstance (Rules Section 4.4), same as any Awakened without the System. Uncapping their stored value does not by itself give them an indefinite mechanical payoff — that gap is real, and it is recorded rather than invented, under the same discipline Section 12.7 already applies to unpriced goods. A future ruling may author an uncapped, off-die formula for one or more of them.
+- **Power, Speed, and Perception are authored in 0.9.** Power feeds an uncapped, off-die physical-damage magnitude (Section 6.4); Speed and Perception each contribute a +1-capped, domain-scoped die step (Section 6.3), and Perception adds an off-die awareness unlock at 16+ (Section 12.3). Only **Power** — like Endurance — is uncapped-meaningful, because only a band-riding magnitude can be; Speed and Perception cap for the Law VII reason Mana Affinity does, and bank past their relevant range.
 
 ## 4.3 Ability Sub-Stats
 
@@ -299,11 +309,19 @@ Steps compose per Rules Section 4.4 and Decision 058: one step is **20 percentil
 | Source | Contribution |
 |---|---|
 | Band gap (Section 6.2) | −3 … +1 |
-| Mana Affinity | 1–4 → **−1** · 5–15 → **0** · 16+ → **+1** |
+| Domain Stat — whichever the action's type selects (at most one) | 1–4 → **−1** · 5–15 → **0** · 16+ → **+1** |
 | Established circumstance | remainder |
 | **Net** | **capped ±3**; critical tails always live (Decision 052) |
 
-**Allocation buys no steps.** Neither Ability sub-stat touches the die. Mana Affinity contributes at most **+1** across its entire range.
+**Three Stats contribute a die step, each in its own action domain, and never together.** The Domain Stat row is filled by exactly one Stat per roll, selected by the action's type:
+
+- **Mana Affinity** — casting and magical control;
+- **Speed** — physical, time-critical *reactive* actions: dodging, closing or breaking distance, acting first in a contested exchange, flight and pursuit;
+- **Perception** — contested detection: searching, reading intent, spotting an ambush or an anomaly.
+
+The domains are disjoint, so a single roll draws **at most +1 from Stats** — the ±3 net budget is never walked by Stats alone. An action outside all three domains takes no Stat step. Each of the three uses the same band (`1–4 → −1 · 5–15 → 0 · 16+ → +1`) and, like Mana Affinity, banks with no further die effect past 16 (Section 4.2).
+
+**Allocation buys no steps.** Neither Ability sub-stat touches the die. Each domain Stat contributes at most **+1** across its entire range.
 
 That ceiling is deliberate, and it is not stingy. One step is twenty percentile points: maxing Mana Affinity from 13 to 20 permanently turns a 50% action into a 70% one. Anything more generous and a handful of levels would walk the net to +3, where every non-fumble roll lands at 66 or above and the die stops deciding anything — which Law VII (Fairness) forbids and which both Decision 057 and Decision 059 explicitly retained as the line. **This ceiling does not move even though the stored Stat itself is now uncapped (Section 4.2, `EVT-000045`).** The band above 16 reads `16+`, not `16–20`, precisely to make clear that further points keep banking on the character sheet without buying anything further here — they matter elsewhere (Section 4.2) or await a future authored formula, never the die.
 
@@ -324,6 +342,24 @@ damage = band_health(Bearer's effective band)
 So the band supplies the baseline, and **strength is what makes him punch above his band** — which is the Bearer's entire premise.
 
 **A monster needs only a grade, never a stat block.** Its Health is its grade's value in Section 3.1; its baseline damage equals that same value. New creatures are authored by naming their grade. Reikon gains no bestiary and no tactical subsystem (Decision 020).
+
+## 6.5 Physical (Non-Ability) Damage — Power
+
+A physical or weapon strike is not an Ability and costs no Mana. Its damage uses the same structure as Section 6.4, with **Power** filling the magnitude slot Ability Strength holds for casting:
+
+```
+physical_damage = band_health(Bearer's effective band)
+                × physical_ratio                     (strike class, below)
+                × (1 + 0.10 × (power − 10))           (Power magnitude; uncapped, off-die)
+                × band_multiplier(result)             (Section 6.4)
+                × (1 − total_reduction)               (Section 7.2)
+```
+
+- **`physical_ratio` is the strike class:** a competent armed strike is **0.75×**, an unarmed or improvised strike **0.5×**. An exceptional weapon, relic, or Marked blade is established circumstance, authored where it exists — Reikon gains no weapon table (Decision 020).
+- **Power magnitude is measured from a neutral baseline of 10, not from Awakening.** At Power 10 a strike does its class rate; each point above adds 10%, each below subtracts 10%. This keeps the value closed-form from the *current* Stat alone, needing no stored Awakening basis, and it is uncapped and off-die exactly like Ability Strength (Section 4.3).
+- **Physical damage rides the Bearer's own band**, for the identical reason Ability damage does above: anchored anywhere else, high-level Power is worthless against high-grade Health. Power is what lets the sword punch above its band, the way Strength does the spell.
+
+The trade is deliberate: a physical strike is **free but single-target and needs reach or contact**, where casting buys area, range, and burst at a Mana cost. That is what makes a trained fighter's Power a real alternative to spending the pool rather than a strictly worse one — and it is why Daedalus's Swordsmanship now scales instead of staying flavor. Against a same-band monster a competent strike at neutral Power lands ~2 hits; a critical, or invested Power, punches through in one.
 
 ---
 
@@ -711,7 +747,7 @@ system:
   health_recovery_remainder_units: <0..17279999>
   intervention_silent_checks: <0..2>
   active_intervention: <none|structured finite intervention state>
-  stats:                                    # uncapped (4.2); Mana Affinity's die contribution still ceilings at +1 past 16 regardless (6.3)
+  stats:                                    # uncapped values (4.2); die contribution ceilings at +1 for Mana Affinity, Speed, Perception past 16 (6.3); Power feeds off-die physical magnitude (6.5)
     power: <n>
     endurance: <n>
     speed: <n>
@@ -773,6 +809,8 @@ Cores still trade above coin and always have, because a core is not only money �
 A core carries its **origin** in its structure — which creature died to leave it, and therefore its grade. Reading that origin is a **specialist skill**, and only where someone holds it does a core fetch the ladder in 12.1.
 
 **Who can appraise:** Association core desks, Meridian Guild buyers, dedicated trade stations that keep an appraiser, Institute researchers, and the fences of the gray market. **Who cannot:** everyone else — the general provisioner, the tavern, the landlord, the hunter himself unless canon establishes he learned it.
+
+**The Bearer's own path: Perception.** A System Bearer whose **Perception reaches 16** reads a core's origin and a creature or Rift's grade himself — the self-appraisal this section otherwise reserves to specialists, and the off-die half of Perception's payoff (Section 4.2). Below 16 he is like any other hunter: he sees a core, not its grade; he faces a creature, not a known grade. At 16+ an uncontested read is automatic (No-Roll Zone, Section 6.2); a deliberately disguised or anomalous origin is still contested and rolls, with Perception's +1 (Section 6.3). This is knowledge, not power — it tells him what he holds and what he faces, never whether his strike lands (Section 6.1).
 
 | Where the core is sold | What it fetches |
 |------------------------|-----------------|
@@ -855,3 +893,55 @@ That gap is deliberate and it is where the world bible's pressure comes from. An
 If a good has no posted cost here, the Runtime **does not invent one**. It rules a price from the nearest posted comparable and the circumstances, states that it is a ruling, and records it — or surfaces the missing rule and asks. This is Section 7.3's clause applied to value: an unauthored magnitude is a gap to be filled deliberately and recorded, never a number to be improvised at the moment of sale and forgotten.
 
 A price established by ruling in play is canon and is promoted like any other established fact.
+
+---
+
+# 13. Rifts
+
+A Rift is Reikon's unit of content and threat. This section authors what a Rift *contains* and how dangerous it *actually* is, so that "empty Rift" is a finding about the world and never the absence of authoring — the discipline Section 12.7 applies to price, applied to threat (playtest findings PT-002, PT-003).
+
+A Rift has a **grade** (E–S, or Anomalous), the same scale as pools, monsters, and cores (Section 3.1). Its grade sets the grade of what lives in it and what its core is worth.
+
+## 13.1 A Rift Is Populated by Default
+
+A Rift of grade G is populated, and its core is guarded. At minimum it holds:
+
+- a **body of guardians** of grade G — the threats the Bearer fights through (grade-G Health and damage per Section 6.4; a creature needs only its grade);
+- a **core**, the clearing objective (Section 8.2), **guarded** by a stronger single threat at grade G — or **G+1** in a deep or anomalous Rift — the pack leader, the Breaker, the thing between the hunter and the collapse.
+
+The exact roster is authored to the scene the way monster damage is derived from a grade, not read from a spawn table. What is fixed is the **floor: a Rift is never unpopulated, and its core is never unguarded, by default.** Warehouse 7 — guardians, a core, a guardian on it — is the default shape, not a lucky one.
+
+## 13.2 Assessed Grade, Confidence, and True Grade
+
+An assignment carries two things: an **assessed grade** and a **confidence** in that assessment. They are different facts, and the second is usually left implicit — which is the defect. A Rift's **true grade** is what its threats actually are, and it is resolved against the confidence, on the die where it is uncertain (Decision 060 — an uncertain world-fact is arbitrated, never defaulted favorable):
+
+| Confidence | Source | True grade |
+|---|---|---|
+| **Confirmed** | Association-desk re-assessment, a specialist read, a prior clear | = assessed. No roll. |
+| **Assessed** | an ordinary posted assignment | mostly = assessed; roll a narrow ±1 spread |
+| **Unconfirmed** | a fresh report, an unlicensed tip, a first sighting | roll; real spread, weighted so it can be a full grade **worse** |
+
+For an **unconfirmed** Rift, roll d100 at first real contact:
+
+| d100 | True grade |
+|---:|---|
+| 01–15 | assessed **− 1**, or diminished — overrated, partly collapsed, thinned by a prior team. *An authored, logged reason (13.4), never free emptiness.* |
+| 16–65 | **= assessed** |
+| 66–90 | assessed **+ 1** — underrated; the fight is a band harder than posted |
+| 91–100 | assessed **+ 1 with an anomalous feature**, or **+ 2** — a serious under-assessment; triggers the intervention check (Section 9.6) |
+
+The skew is the point: an unconfirmed Rift is *genuinely uncertain and tilted toward danger*, not reliably benign. An **assessed** Rift uses a tighter version of the same table — mostly the middle band, a narrow ±1; a **confirmed** Rift does not roll.
+
+**The Bearer can remove the uncertainty legitimately.** A Bearer whose Perception reaches 16 reads a Rift's true grade himself (Section 12.3), converting *unconfirmed* to *confirmed* for him before he commits — the uncertainty resolved by a capability he earned, not defaulted away.
+
+## 13.3 Anomalies Arise Causally
+
+A Rift whose true grade exceeds its assessment by a full grade, or that carries a structurally anomalous feature, is **anomalous** — and anomalous Rifts are already an intervention-check trigger (Section 9.6: "a new Rift grade, a structurally anomalous Rift feature, or a threat above the Bearer's current effective band"). The threat model therefore plugs into the System's existing behavior rather than adding a mechanism: when an under-assessed Rift turns dangerous, that is exactly when the System stirs, and the danger is **caused** — an assessment that was wrong — never injected on a pacing clock (Decision 003; PT-001). The four D-grade Breakers guarding an E-Rift's core in Warehouse 7 were this case before it had a name.
+
+## 13.4 Emptiness Is an Authored Exception
+
+A Rift is never empty by default. An empty, thinned, or drained Rift requires an authored cause recorded in canon — recently cleared by another team, collapsing or unstable, a decoy or misreport, drained by a prior incursion. "Empty" is then a fact about the world *with a reason*, not the absence of authoring. This is Section 12.7's clause applied to threat: an unauthored population is a gap to be filled deliberately and recorded, never improvised to "nothing here."
+
+## 13.5 No Subsystem
+
+The model reuses what already exists: a grade (Section 3.1), grade-baselined Health and damage (Section 6.4), the intervention check (Section 9.6), and the die (Rules Section 4). A Rift names a grade, a confidence, and a roster authored to the scene within the populated floor. Reikon gains **no spawn table, no encounter or map layer, and no bestiary** (Decision 020) — the same restraint the economy (Section 12) and damage (Section 6.4) models keep. What changes is the default: populated and guarded, with real uncertainty on an unconfirmed grade, instead of silent and safe.

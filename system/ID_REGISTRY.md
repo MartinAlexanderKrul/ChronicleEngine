@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000106 |
-| Record | `REC-` | Canonical Record | REC-000070 |
+| Entity | `ENT-` | Persistent Entity | ENT-000118 |
+| Record | `REC-` | Canonical Record | REC-000071 |
 | Event | `EVT-` | Event | EVT-000050 |
-| Relationship | `REL-` | Relationship | REL-000051 |
+| Relationship | `REL-` | Relationship | REL-000061 |
 
 ---
 
@@ -123,6 +123,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000099 - ENT-000106 | Entity | World Gatefall institutions: BGM Region V, Horizon Guild, Ironline Guild, Windy City Hunters Coalition, Czech Gate Administration, Karlov Guild, Horizon Guild — Europe, Staroměstská Lodge |
 | REC-000063 - REC-000070 | Record | Gatefall institution ledgers: `worlds/gatefall/institutions/{bgm-region-v,horizon-guild,ironline-guild,windy-city-coalition,czech-gate-administration,karlov-guild,horizon-europe,staromestska-lodge}/250_INSTITUTION_LEDGER.md` |
 | REL-000049 - REL-000051 | Relationship | Gatefall institutions: BGM Region V's governance jurisdiction over Chicago (049), the Czech Gate Administration's governance jurisdiction over Prague (050), and the Horizon Guild — Europe / Karlov Guild rivalry over Prague's foreign-guild siege (051) |
+| ENT-000107 - ENT-000118 | Entity | Gatefall notable figures (`worlds/gatefall/220_NOTABLE_FIGURES.md`): 12 Characters under the character depth law — Chicago: BGM Region V director Naomi Okafor (107), Horizon guildmaster Preston Vaughn (108), Horizon S-rank ace Dominic Crane (109), Ironline guildmaster Dee Brannigan (110), BGM appraiser Nell Foss (111), black-market core buyer "Deacon" (112); Prague: CGA director Miloš Beran (113), Czech S-rank Tereza Blažková (114), Karlov guildmaster Vlastimil Karlov (115), Karlov heir Ivana Karlová (116), Horizon Europe branch chief Ondřej Dušek (117), black-market smuggler "Sova" (118) |
+| REC-000071 | Record | Gatefall notable figures ledger: `worlds/gatefall/220_NOTABLE_FIGURES.md` |
+| REL-000052 - REL-000061 | Relationship | Gatefall notable figures: ten membership relationships binding each institution-affiliated figure to its institution (Okafor→BGM 052, Vaughn→Horizon 053, Crane→Horizon 054, Brannigan→Ironline 055, Foss→BGM 056, Beran→CGA 057, Blažková→Karlov 058, Karlov→Karlov 059, Karlová→Karlov 060, Dušek→Horizon Europe 061). The two black-market figures (ENT-000112, ENT-000118) hold no institutional membership by design |
 
 ---
 

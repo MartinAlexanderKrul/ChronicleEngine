@@ -26,6 +26,7 @@ The index carries only what a player needs in order to **choose**. Everything el
 | World | Version | Status | Live campaigns | Diegetic commands |
 |-------|---------|--------|----------------|-------------------|
 | `worlds/asterra/` | 0.9 | Pre-campaign foundation | 0 | none |
+| `worlds/gatefall/` | 0.1 (World Rule Profile 1.0 in authoring) | Pre-campaign foundation | 0 | `/system` |
 | `worlds/reikon/` | 0.1 (World Rule Profile 0.6) | Active | 1 | `/system` |
 | `worlds/verra/` | 0.1 (Prototype) | Active | 2 | none |
 
@@ -50,6 +51,8 @@ These are the caveats a player needs **before** choosing, not campaign state. Ea
 - **`campaigns/prototype_alpha/`** — Closed: the campaign reached a terminal outcome and this instantiation will not continue (`180_CURRENT_STATE.md`). Its only checkpoint is the **pre-play baseline**; no session-close checkpoint was ever written, so the latest checkpoint does not reflect the campaign's ending. Continuing in Verra requires `/new` or a branch, not a restore. Its `090_CAMPAIGN_STARTUP.md` still declares `initialization_state: initialized-no-save`, which the ledgers contradict.
 - **`campaigns/prototype_beta/`** — Resumable from `900_CHECKPOINT_0001`. Its `090_CAMPAIGN_STARTUP.md` also still declares `initialization_state: initialized-no-save` against a written checkpoint; the ledgers govern.
 - **`campaigns/reikon_awakening_001/`** — Resumable from `900_CHECKPOINT_0017`, a clean stopping point at the tannery-district E-Rift site with both of the day's assignments closed: **Warehouse 7 permanently resolved** (independent contractor Wren Ashcombe's matched-resonance extraction of the bonded core, zero casualties — no milestone XP to Daedalus, as the clearing act was hers) and a second, **unguarded tannery E-Rift** cleared by Daedalus's own hand for the full 70 XP Rift-clear milestone (Level 3, 95/170 XP). Stats are uncapped and Ascensions grant 5 points (World Rule Profile 0.8), with all 8 allocation points now spent; Mana Affinity's die contribution still ceilings at +1 (Law VII), and the points banked into Power and Perception have no authored payoff under 0.8 — a recorded gap, addressed by the separate Profile 0.9 authoring adopted at the next readiness gate. Two flagged corrections stand: Captain Thorne's unauthored assignment-bonus claim (Association request pending) and the now-recorded 24 vells from the earlier Ashgate core sale. This campaign keeps a **save index** at `saves/README.md` recording each checkpoint's status and restorability; read it as part of restoration and honor it (Destructive-Command Guards). `900_CHECKPOINT_001` is a superseded nonconforming original — restore its point at Checkpoint 0002, not the original folder. The campaign has **no baseline checkpoint**, so `/restart` is unavailable and must not be attempted.
+
+**Dormant by owner ruling (2026-07-22):** play is paused indefinitely in favor of `worlds/gatefall/`; the campaign remains fully resumable from `900_CHECKPOINT_0017` as described above.
 
 ---
 

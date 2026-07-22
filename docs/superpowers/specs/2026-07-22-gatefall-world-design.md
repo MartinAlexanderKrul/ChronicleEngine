@@ -74,6 +74,21 @@ Everything below is authored in `206_WORLD_RULE_PROFILE.md` before play. Numeric
 - **Titles** — earned by feats, each granting an authored passive.
 - **Class quest** — see Section 5.
 
+## The `/system` command (declared diegetic command)
+
+Gatefall declares `/system` as its diegetic command (listed in the index's diegetic-commands column, shown once a Gatefall campaign is loaded). It keeps Reikon's discipline — **fixed templates authored in the profile, rendered only from canonical state, identical from every Runtime** — and improves on the single-window design with panels matching the System's in-fiction UI:
+
+- `/system` — the status window: name, level, class (or `—`), title equipped, XP bar, Health/Mana, the five stats, unspent points.
+- `/system quests` — active daily / urgent / hidden quests with objectives, rewards, and deadlines.
+- `/system skills` — known skills with rank, mana cost, and growth progress.
+- `/system inventory` — dimensional storage contents with item grades.
+- `/system shop` — the authored stock list at the protagonist's current tier, with gold prices — shopping happens in-window, never as an OOC question.
+- `/system titles` — earned titles and their passives; one equipped.
+- `/system log` — the last N System messages (quest issues, level-ups, warnings), rendered from the authored message templates.
+- **Class panel (post-class-quest)** — each hidden class adds one authored panel (e.g., Shadowbinder: the shadow roster with names, grades, and states; Soulforged Armory: the bound-weapon arsenal).
+
+All panels are read-only views of canonical state; nothing is editable through them, and inline compact notifications (`XP: 40 → 90/300`) remain the in-play surface between window calls. The profile authors every panel template at 1.0, including the class panels.
+
 ## Loot
 
 Loot is a first-class subsystem at 1.0, not flavor text. **Every Gate clear yields loot rolled from an authored table keyed to the Gate's grade; the boss always drops something.** Items carry a grade E–S on the same banding as Gates and hunters, so an item's magnitude follows from its grade the way a monster's health does. An item the table can produce but the profile hasn't authored is a profile bug.
@@ -170,7 +185,7 @@ Every notable figure is authored with all of: a **want** (what they're pursuing)
 # 7. Repository changes
 
 - New `worlds/gatefall/`: `README.md`, `200_WORLD_BIBLE.md` (including hunter-scale numbers and the global layer), `206_WORLD_RULE_PROFILE.md` (the System incl. loot tables, 1.0), `210_PLACES.md`, `220_NOTABLE_FIGURES.md`, `240_RESOURCES.md`, `260_SEED_EVENTS.md`, `institutions/` (8 ledgers: 4 Chicago, 4 Prague). File naming and conventions follow the existing world skeleton (Reikon/Verra) and `templates/000_TEMPLATE_CONVENTIONS.md`.
-- `system/WORLDS_AND_CAMPAIGNS.md`: add the `worlds/gatefall/` row. Mark `campaigns/reikon_awakening_001/` dormant via its **per-campaign note** (the index's status vocabulary is fixed to *not started / in progress / closed or terminal*, so its status column stays `In progress` and the note records that the campaign is dormant by owner ruling, kept fully resumable). Reikon world files untouched otherwise.
+- `system/WORLDS_AND_CAMPAIGNS.md`: add the `worlds/gatefall/` row, declaring `/system` in its diegetic-commands column. Mark `campaigns/reikon_awakening_001/` dormant via its **per-campaign note** (the index's status vocabulary is fixed to *not started / in progress / closed or terminal*, so its status column stays `In progress` and the note records that the campaign is dormant by owner ruling, kept fully resumable). Reikon world files untouched otherwise.
 - `tools/validate_repository.ps1` and `tools/test_checkpoint_contract.ps1` must pass after the change.
 - Any registration the engine requires for new worlds (e.g., `system/ID_REGISTRY.md` identifiers) is included; the implementation plan enumerates these from the engine docs.
 

@@ -5,7 +5,7 @@
 **File:** `worlds/gatefall/200_WORLD_BIBLE.md`
 **Class:** World canon — narrative layer; the World Rule Profile governs mechanics
 **Status:** Active
-**Genre:** Contemporary Gate-and-hunter litRPG — original world on the Solo Leveling framework; no copied names, characters, or text
+**Genre:** Contemporary Gate-and-hunter litRPG — an original gate-and-System world; no names, characters, or text derive from any published work
 **Setting Register:** The real world, ten years after the Gates opened (Chicago, USA and Prague, Czech Republic authored at equal depth)
 **Calendar:** Common-era years. The Gatefall event is **2016**; the present is **2026**.
 

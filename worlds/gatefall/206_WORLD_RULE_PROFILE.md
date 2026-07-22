@@ -140,6 +140,14 @@ XP: 0 → 130/200
 
 During the same fight an E beast lands a standard hit — one E standard-hit baseline, about a quarter of the Bearer's Health (Section 6.2). Because that single hit removes under 50% of his remaining Health and does not drop him below 25% of maximum, it inflicts **no injury** (Section 6.3); he takes the damage and fights on. Every number here is derived from Sections 3.1–3.4, 6.2–6.3, and the population formula; a Runtime resolves the whole clear — kills, XP, level-up, Mana spend, and whether a hit wounds — without a ruling.
 
+## 3.8 Party XP Credit
+
+Most clears are party clears, and the Bearer earns from them on the same genuine-challenge test that governs all XP (Section 3, opening): the die must have been live and the Bearer must have been a real participant in the fight.
+
+- **Kill XP** (Section 3.3) goes to the Bearer for **any kill his live-die actions materially contributed to** — a killing blow, a landed hit, a skill, or a control or setup action the resolved exchange turned on. He need not land the last hit; he must have taken a genuine, resolved part in bringing the creature down. A kill he took no live-die part in awards him nothing, even when an ally in his party made it.
+- **The Gate-clear milestone** (Section 3.4) settles on **any clear the Bearer fought through** — if he was a materially contributing member of the party that killed the boss, the once-per-Gate milestone is his, exactly as it would be on a solo clear. He need not strike the boss's own killing blow.
+- **Pure spectating awards nothing.** A Bearer who stands back and lets a party clear around him has met no genuine challenge (Section 3, opening) and earns neither kill XP nor the milestone. Presence is not participation; the live die is the test.
+
 ---
 
 # 4. Stats
@@ -156,7 +164,9 @@ The Bearer has five stats:
 | **Perception** | Senses and appraisal: detection, reading ambush and anomaly, gauging a Gate's true grade. |
 | **Intelligence** | Mental acuity and System interface: analysis, appraisal of items, concurrent quest capacity. |
 
-An ordinary awakened adult sits at a **baseline of 10 per stat**. The Bearer begins at campaign-creation values (a campaign concern, civilian-range) and raises stats only by spending stat points.
+An ordinary awakened adult sits at a **baseline of 10 per stat**. The Bearer begins at campaign-creation values — the **authored creation array** — and raises stats only by spending stat points thereafter.
+
+**The creation array.** At campaign creation the Bearer's five stats are set from a fixed civilian-range array: **five stats, each in the range 8–12, summing to exactly 50, with none above 12.** The average is the ordinary-adult baseline of 10, and the ±2 spread is the pre-System human variation the protagonist starts with — below the point where any modifier-step contribution or capability unlock (Sections 4.3–4.4) has yet been earned. No creation stat sits above 12: the Bearer opens as a civilian, and every point beyond that spread is growth the System has not yet granted.
 
 ## 4.2 Stat Points
 
@@ -170,6 +180,8 @@ A **modifier step** is one 20-percentile-point adjustment to a d100 resolution, 
 
 At the baseline of 10 the governing stat contributes **+1 step**; at 20, **+2**; at 30, **+3**; fractional remainders below the next full 10 contribute nothing (a stat of 25 gives the same +2 as a stat of 20). Exactly one stat — the one whose domain the action falls in (Section 4.1) — supplies this contribution; an action outside all five domains takes no stat step. This contribution composes with band-gap and circumstance modifiers, and **the engine's net modifier remains capped at ±3** (Decision 058); the die still resolves the outcome. **Stats never replace the roll** — they establish how well the Bearer is positioned, not whether an uncertain action succeeds.
 
+**The band-gap modifier.** When actor and opponent stand in different effective bands (Section 6.1, Section 6.6), the gap feeds the die directly: **−1 modifier step per full band the opponent stands above the actor, and +1 per full band below.** A same-band contest takes no band-gap step; a C actor against an A foe takes **−2**, and a C actor against an E foe takes **+2**. This step composes with the governing-stat step above and any circumstance step into the engine's **net ±3 cap** (Decision 058) — it never bypasses the die. Where Section 18.4 and any other section name a "band-gap modifier" or "band-gap penalty," this is the rule they invoke.
+
 ## 4.4 Capability Unlocks
 
 At **30** and **50** in a stat, the Bearer crosses a **capability unlock**: a named, off-die ability that widens what actions are *possible*, distinct from the modifier-step contribution above. Unlocks are permanent once reached. Each of the five stats has one unlock at 30 and one at 50:
@@ -182,7 +194,7 @@ At **30** and **50** in a stat, the Bearer crosses a **capability unlock**: a na
 | **Vitality** | **Shrug Off** — ignore the effect of minor wounds, continuing to act without their modifier-step penalty. | **Iron Constitution** — suppress the penalty of one serious wound until the scene ends, and halve the onset rate of grade-appropriate environmental hazards. |
 | **Intelligence** | **Multitask** — hold +1 concurrent System quest slot beyond the default. | **Analyst** — hold a further +1 concurrent quest slot, and appraise the full effect of an unidentified rune, skill book, or core before use. |
 
-Perception's two unlocks (Grade-Sight, Deep Sight) turn the Gate-assessment problem into a capability the Bearer can grow past; the world otherwise re-measures a Gate's grade only by instrument survey (Section 9).
+Perception's two unlocks (Grade-Sight, Deep Sight) turn the Gate-assessment problem into a capability the Bearer can grow past; the world otherwise re-measures a Gate's grade only by instrument survey (Section 9). The "own effective band" both unlocks read against is the level ladder of Section 6.6 — Grade-Sight covers Gates at or below that band, Deep Sight one grade above it, so the range climbs each time the ladder does.
 
 ---
 
@@ -225,6 +237,14 @@ Every combatant in Gatefall — the Bearer, every NPC hunter, every monster — 
 
 This is the single vitality quantity the world runs on. `GTF-OVR-002` makes the Bearer's Health a growing tracked pool, but its *scale* is still band health for his effective band — the override governs how his Health is recorded and restored, not a separate numbering system. Damage, healing, and injury are all expressed as fractions of band health, so the world resolves combat in relative terms and needs no per-creature stat block (Decision 020).
 
+**The band health table is canonical.** Each grade's band health is fixed at:
+
+| Band | E | D | C | B | A | S |
+|---|---|---|---|---|---|---|
+| Band health | 40 | 100 | 250 | 600 | 1,500 | 4,000 |
+
+The scale climbs **roughly ×2.5 per grade** — each band about two and a half times the one below — so a hit that is a fixed fraction of the attacker's band lands far harder as the attacker's grade rises. These are the canonical maxima a full-Health combatant of each grade carries. The **E-band 40** is the same figure Section 8.2's `HP: … /40` lines and Ren's `/system` panels (Section 15) already use; those remain correct as E-band readings. The Bearer's own maximum is read from this table for his current effective band (Section 6.6), restored in full on level-up (Section 3.2).
+
 ## 6.2 Damage
 
 A hit's damage is built from the attacker's grade, the skill or strike that lands it, and the quality of the d100 result:
@@ -236,7 +256,7 @@ damage = standard_hit_baseline(attacker's effective grade)   # ¼ of the attacke
        × (1 − total_reduction)                               # applied last, per GTF-OVR-002
 ```
 
-- **Standard-hit baseline.** The baseline of a single ordinary hit is **one-quarter of the attacker's grade band health** (`band_health ÷ 4`). Damage rides the *attacker's* own band: a grade-C attacker's every hit scales to C-band health, a grade-A attacker's to A-band. Because a same-grade target has the same band health, a standard hit at standard success removes about **a quarter of a same-grade foe's Health** — so a matched fight takes roughly four clean hits, and the whole model resolves in relative terms without an authored HP table.
+- **Standard-hit baseline.** The baseline of a single ordinary hit is **one-quarter of the attacker's grade band health** (`band_health ÷ 4`). Damage rides the *attacker's* own band: a grade-C attacker's every hit scales to C-band health, a grade-A attacker's to A-band. Because a same-grade target has the same band health, a standard hit at standard success removes about **a quarter of a same-grade foe's Health** — so a matched fight takes roughly four clean hits, and the whole model resolves in relative terms without an authored HP table. **Cross-band, the baseline is read from the attacker's band on the canonical table (Section 6.1).** Worked one-liner: an E-Bearer with 40 Health (E-band) struck by a Gate boss whose standard-hit baseline rides one band up to D (Section 9.7) takes `¼ × 100 = 25` on a standard hit — 25 removed from his 40, which by Section 6.3 also inflicts an injury (over 50% of remaining Health). The boss's damage rode the D band because its baseline is a quarter of D-band health, not of the Bearer's.
 - **Skill multiplier.** A skill or strike states its damage as a multiplier on the standard-hit baseline (Section 7): an unarmed or improvised strike is **×0.5**, a competent armed strike **×0.75**, and an authored skill carries its own ratio (Mana Bolt **×1.0**, and so on). A multiplier of ×1.0 *is* the standard-hit baseline.
 - **Result multiplier — by degree of success.** The degree of success the d100 yields (Rules Section 4; Decision 011) scales the hit:
 
@@ -261,7 +281,7 @@ Losing Health is not the same as taking a lasting **injury**. A hit inflicts an 
 
 The Runtime assigns the injury's **severity** from the engine's four-tier taxonomy (`010_ENGINE_RULES.md` Section 6.8 — **Minor · Moderate · Severe · Critical**) given the hit's magnitude and the established fiction, and tracks it under the engine injury model (location, type, ongoing effect, treatment). An injury's modifier-step and capability consequences (Rules Section 6.9) persist until it is healed; restoring Health does not by itself clear it.
 
-Untreated injuries heal on a tiered clock; professional (hospital) treatment **halves** the time at every tier:
+Untreated injuries heal on a tiered clock; professional (hospital) treatment **halves** the time at every tier. A healing-touch **mender's** care counts as professional care for this halving, priced as a hired session in Section 12.7:
 
 | Severity | Untreated | Hospital / professional care |
 |---|---|---|
@@ -279,6 +299,35 @@ Direct Health restoration (a potion, a skill, a facility) and severity recovery 
 ## 6.5 Death Is Final
 
 **Death is death.** No resurrection, revival, or reincarnation exists in Gatefall at Profile 1.0. When the Bearer dies, the death is resolved and recorded normally, all System state remains with the dead Bearer and transfers to no one, and **the campaign hard-ends** — it becomes terminal under the Engine Rules. The System is patient on a scale its host is not; that a successor may one day be chosen is a matter for the world's hidden canon, never a continuation of the dead character and never a promise play may rely on. A Bearer who dies in an E-Gate is as dead as one who dies in an S-Gate. A **Critical** injury (Section 6.3) that goes untreated is one of the ordinary roads to that end.
+
+## 6.6 The Effective Band Ladder
+
+The Bearer's **effective band** — the grade band his own capability sits in (Section 6.1) — is set by his **level** on a fixed ladder. It is not his carded rank (which stays E until re-assessed, Section 19) and not a stat; it is the single derived grade the System resolves every band-relative quantity against.
+
+| Level reached | Effective band |
+|---|---|
+| Creation (level 1) | **E** |
+| 10 | **D** |
+| 20 | **C** |
+| 30 | **B** |
+| 40 | **A** |
+| 50 | **S** |
+
+The band advances the instant the level-up that reaches a threshold settles (Section 3.2); between rungs it holds at the last band reached (a level-14 Bearer is D-band, a level-29 Bearer is C-band). The effective band is **canonical derived state**, read from level and never estimated.
+
+The effective band is **normative** for every band-relative quantity the profile resolves for the Bearer:
+
+- **Band health** (Section 6.1) — his Health pool is sized to his effective band on the canonical table.
+- **The standard-hit baseline of his own strikes** (Section 6.2) — ¼ of his effective band's health.
+- **Threat-color designation** (Section 14.6) — every creature is colored against his effective band.
+- **Penalty-zone grade** (Section 8.3) — the sealed instance runs at his effective band.
+- **Class-trial grade** (Section 18.2) — the trial's waves and final foe stand at his effective band.
+- **Instant-dungeon "own band" keys** (Section 17, Section 12.5) — a shop key opens at his effective band.
+- **Grade-Sight / Deep Sight range** (Section 4.4) — read relative to his effective band.
+- **Band-gap modifier** (Section 4.3) — computed from his effective band against the opponent's.
+- **What a Section 19.2 re-measurement reads** — the instrument reads the mana capacity his effective band carries, which is why it reads above his card.
+
+Wherever any of those touch-points names "the Bearer's own band" or "his effective band," it means this ladder.
 
 ---
 
@@ -355,7 +404,7 @@ Each shows `before → current/maximum` (for XP, `current/next threshold`). Rend
 If the 24-hour window closes with the quest incomplete, the System **transfers the Bearer into a penalty zone**: a sealed survival instance he does not choose to enter and cannot leave early.
 
 - **Duration:** a **4-hour survival instance**. The Bearer survives it or dies in it; there is no other exit and no retreat.
-- **Grade:** the instance runs at the **Bearer's own effective band** — it scales with him, so it never stops being dangerous as he grows.
+- **Grade:** the instance runs at the **Bearer's own effective band** (the level ladder, Section 6.6) — it scales with him, so it never stops being dangerous as he grows.
 - **Population:** populated per the standard Gate population formula at the Bearer's effective grade **G**:
 
   ```text
@@ -369,6 +418,8 @@ If the 24-hour window closes with the quest incomplete, the System **transfers t
 - **Exit:** the instance ends and returns the Bearer to the world **only on surviving the full four hours**. Death inside it is death (Section 6.5), and the campaign ends there.
 
 The penalty is deliberately not a fine or a debuff: missing the daily quest drops the Bearer, alone and unrewarded, into a fight at his own band that he did not pick. That is the System being indifferent to his convenience — the daily quest is an order, and refusal has teeth.
+
+**Deferred transfer from inside a sealed instance.** If the 24-hour window closes while the Bearer is inside a **sealed instance** — a red gate (Section 9.6), an instant dungeon (Section 17), or the class trial (Section 18.2) — the penalty transfer **cannot fire** while that seal holds: there is no exit, and the System does not drop him into a second sealed instance atop the first. The failed quest is recorded and the transfer **defers**; the instant the Bearer exits the sealed instance, the penalty-zone transfer **fires immediately**, before the next daily quest issues. The deferral spares him nothing — it only waits for a door.
 
 ---
 
@@ -436,6 +487,11 @@ A **confirmed** Gate is entered at its stated grade. An **unconfirmed** Gate res
 | 93–00 | **Anomaly** — roll on the anomaly table (Section 9.6) |
 
 The Bearer's Perception unlocks (Section 4.4: **Grade-Sight** at 30, **Deep Sight** at 50) convert an unconfirmed reading to confirmed by capability, within their band range, and so bypass this roll.
+
+**The ladder clamps at both ends.** The true-grade roll can point past the ends of the E–S ladder; when it does, it resolves to the nearest real grade rather than an impossible one:
+
+- A result **below E** (a "one grade lower" on an assessed-E Gate) resolves as **E** — there is no sub-E Gate; the remote reading was merely generous, and the interior is a true E.
+- A result **above S** (a "one grade higher" on an assessed-S Gate) resolves as an **S-grade anomaly**: treat that 71–92 outcome as though it had rolled 93–00 and roll on the anomaly table (Section 9.6). There is no supra-S grade, so the excess pressure surfaces as an anomaly instead.
 
 ## 9.6 The Anomaly Table
 
@@ -602,6 +658,9 @@ An unlicensed buyer pays **+40%** over the licensed price but dealing there is a
 |---|---|
 | **E-Gate freelance contract** | $2,000–5,000 (split by party contract, Section 13) |
 | **D-Gate freelance contract** | $8,000–15,000 (split by party contract) |
+| **C-Gate freelance contract** | $30,000–60,000 (split by party contract) |
+| **B-Gate freelance contract** | $130,000–240,000 (split by party contract) |
+| **A-Gate freelance contract** | Negotiated at **national-asset scale** (Section 9.4) — no posted band |
 | **Guild-salaried B-rank** | ≈ **$240,000 / year** |
 
 Prague contract and salary rates run at **≈ 70% of Chicago**, paid in CZK/EUR.
@@ -655,6 +714,8 @@ The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crysta
 
 **Off-shop note — the gray sleep.** The wider world's restorative-alchemy market is separate from this Bearer-only shop (`240_RESOURCES.md`), but its one authored price anchors to the same scale: **arresting** chronic mana saturation — *the gray sleep* (Bible Section 5) — runs about a **greater healing potion's** worth of high-grade restorative a month (≈400 g-equivalent shop-side; on the licensed medical market an **A-crystal-scale sum** across a year — tens of thousands of USD, Section 12.1), while a **full reversal is an elixir-grade intervention** priced accordingly, which is why only guilds and governments pay for a cure.
 
+**Withdrawn goods are ordinary objects.** Once a consumable or item leaves the shop into the world it is an **ordinary physical object** — usable by anyone, transferable to anyone, and traceable to anyone who holds it. The shop's origin neither clings to it nor conceals it: a System-shop healing potion works in an ally's hand exactly as in the Bearer's, and the same potion turning up in a pawnshop, an evidence locker, or a rival's kit is a physical thing with no licensed provenance and no market record — an **exposure thread** (Section 19) leading back toward a Bearer the world cannot otherwise see.
+
 ## 12.6 Starting Funds by Background
 
 A campaign sets the Bearer's opening money by background. Prague equivalents are the USD figure **×22** in CZK.
@@ -664,6 +725,15 @@ A campaign sets the Bearer's opening money by background. Prague equivalents are
 | **Working poor** | $800 | 17,600 CZK |
 | **Stable** | $4,000 | 88,000 CZK |
 | **Guild-family** | $15,000 | 330,000 CZK |
+
+## 12.7 Care Prices — Menders and Hospitals
+
+Restorative care is priced off the same scale as the rest of the economy (licensed prices Section 12.1, cost of living Section 12.4):
+
+- **A mender-for-hire session** — a private healing-touch mender engaged for a clear or an aftercare visit — runs about the **price of a same-grade beast core** (Section 12.1): a C-rank mender's session prices near a C-core, which is why fielding one is a serious cost and why menders are rare enough to bid over (Bible Section 3).
+- **A hospital week** — a week of professional inpatient care at a licensed facility — runs about a **month's local rent** (the shared-apartment figure, Section 12.4): ≈ **$1,400** in Chicago, ≈ **18,000 CZK** in Prague.
+
+**Mender care is professional care.** A mender's healing-touch treatment counts as **professional (hospital-equivalent) care for the injury clock of Section 6.3**, halving an injury's recovery time at every tier exactly as hospital treatment does. This is separate from the **party-mender's one-tier post-fight conversion** (Section 13.5), which a mender grants their party automatically; a hired mender treating a wound outside a party clear applies the Section 6.3 halving instead. The two effects do not stack on the same injury beyond what each section states.
 
 ---
 
@@ -682,6 +752,8 @@ A freelance party runs on a written contract. The standard terms, absent a negot
 - **Split:** the party leader takes a **10% leader's share** off the top; the **remainder is split equally** among all members (leader included in the equal split of the remaining 90%).
 - **Loot declared at exit:** all crystals, cores, and drops are **declared at the Gate exit** and pooled for the split. Undeclared loot taken inside is theft under the contract.
 - **Liability waivers:** members sign a **liability waiver** — a Gate is lethal work, and the contract disclaims the party's and the poster's liability for injury or death inside.
+- **Death of a member:** a dead member's share of the pooled loot passes to their **named beneficiary** — naming one is part of signing the contract, so no share is ever left unassigned. The dead hunter's own effects and license are handled by the beneficiary and the authorities, not folded into the party pool.
+- **Death of the leader:** if the leader dies mid-clear, the **senior surviving license** — the highest-ranked survivor, longest-licensed breaking a tie — assumes the **leader's role and the 10% leader's share** for the remainder of the clear, so the party keeps a decision-maker and the split still resolves cleanly at exit.
 
 ## 13.3 Legal Minimums
 
@@ -769,7 +841,7 @@ Render each changed quantity once per resolved action; if one action resolves se
 
 ## 14.6 Threat-Color Legibility (Designation Colors)
 
-The System colors every creature the Bearer perceives. A **designation color** marks each creature's threat relative to the Bearer's own **effective grade band** (Section 6.1), and it is the single tactical read the System volunteers unprompted. It is exact because it is drawn from the creature's **true grade**, not its BGM/CGA grade card: where the world's grading is wrong (Section 9.5), the color is still right, because the System reads the resolved truth the instruments only estimate.
+The System colors every creature the Bearer perceives. A **designation color** marks each creature's threat relative to the Bearer's own **effective grade band** (Section 6.1, set by the level ladder of Section 6.6), and it is the single tactical read the System volunteers unprompted. It is exact because it is drawn from the creature's **true grade**, not its BGM/CGA grade card: where the world's grading is wrong (Section 9.5), the color is still right, because the System reads the resolved truth the instruments only estimate.
 
 The creature's band relative to the Bearer's effective band sets the color:
 
@@ -787,6 +859,37 @@ The creature's band relative to the Bearer's effective band sets the color:
 - **Against effective band, so the palette shifts as he grows.** The comparison is to the Bearer's **effective** band (Section 6.1) — where his true capability sits — not his carded rank. As he grows (Section 3), the same creature recolors: an A-grade threat that pulsed red at low level cools to orange, then yellow, then white as his effective band climbs toward and past it. The palette is therefore also a growth mirror — the world reading as less lethal exactly as fast as he becomes more so.
 
 **In prose play.** A creature's designation color is stated **inline on first perception** of that creature in a scene — the first time the Bearer sees it, the narration names its color (a "red-designated alpha," a "gray knot of E-beasts") — and is not repeated each exchange unless the Bearer's effective band changes mid-scene (a level-up, Section 3.2) and recolors it. It has no `/system` panel of its own: like the compact lines of Section 14.5, it surfaces only at the moment it becomes true — here, the moment the Bearer's eyes reach a creature the System can already grade.
+
+## 14.7 The Onset Sequence
+
+The System's **first contact** with a new Bearer is a fixed message sequence — the same three beats every time, rendered in the bracketed A10 style (Section 14.5, Section 15). This section authors only the **System's messages**; the in-world incident that precedes attachment is a campaign concern (Section 2) and is not authored here.
+
+1. **Attachment notice** — the initializing handshake and host designation, fired the instant the System attaches.
+2. **Status-window grant** — the STATUS panel (Section 15.1) is granted and rendered once, opening at creation values (level 1, the creation-array stats of Section 4.1, Health 40/40, Mana 20/20).
+3. **First daily quest** — the standing daily quest (Section 8.1) issues at the **next 06:00 local** after attachment, and the daily cycle runs from there.
+
+The worked onset block:
+
+```text
+[SYSTEM] INITIALIZING…
+[SYSTEM] HOST DESIGNATION ACCEPTED — you are the Bearer.
+[SYSTEM] STATUS WINDOW GRANTED. Access via /system.
+
+[SYSTEM] STATUS — <NAME>
+Class: —  ·  Title: —
+Level 1  ·  XP 0/100
+Health 40/40  ·  Mana 20/20  ·  Unspent points 0
+Strength <n> · Agility <n> · Vitality <n> · Perception <n> · Intelligence <n>
+
+— at the next 06:00 local —
+
+[SYSTEM] QUEST ISSUED — DAILY TRAINING
+Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 10 km run 0/10
+Reward: 10 XP · streak 0/7 → +1 stat point at 7
+Warning: failure to complete within 24 h transfers you to a penalty zone.
+```
+
+Every value is read from creation state (Sections 3–5, 4.1): level 1, XP 0/100 (Section 3.1), Health 40/40 (E-band, Section 6.1), Mana 20/20 (`max_mana(1)`, Section 5.1). The stat line fills from the campaign's creation array (Section 4.1). After this sequence the Bearer is an ordinary played character carrying the System, and all further output follows the Tier rules of Section 14.3.
 
 ---
 
@@ -982,7 +1085,7 @@ Every passive is stated in modifier-step or resource terms (Section 4.3, Section
 
 An **instant-dungeon key** — a boss drop (Section 11.2, roll 81–90) or a shop purchase (Section 12.5) — opens a private instance on demand: combat and loot without a contract.
 
-- **Grade.** A key's grade is the **Gate grade it was rolled from**, or, for a shop key, the **Bearer's own band** (Section 12.5). The instance runs at the key's grade.
+- **Grade.** A key's grade is the **Gate grade it was rolled from**, or, for a shop key, the **Bearer's own band** (Section 12.5 — the effective band of the level ladder, Section 6.6). The instance runs at the key's grade.
 - **Opening.** Using a key opens a sealed instance for the Bearer (he may bring a party, but the key is his). It runs **2 hours**, closing at the two-hour mark or on the boss kill, whichever comes first.
 - **Population.** Populated by the standard Gate formula (Section 9.7) at the key's grade G — `3d6` common beasts, `1d2` elites (×2 band health), `1` boss (×4 band health, damage one band up) — and it rolls an archetype on the d8 (Section 10) like any Gate.
 - **Loot.** Drops per Section 11: one crystal per beast, a core from each elite and the boss, and the boss-drop d100. It is a **real clear** — kill XP (Section 3.3) and the Gate-clear milestone (Section 3.4) settle on the boss kill exactly as in a public Gate.
@@ -1001,7 +1104,7 @@ When the Bearer reaches **level 25**, the level-up that crosses into 25 also iss
 
 ## 18.2 The Trial
 
-The class quest is a **sealed instance, fully lethal, with no retreat**: the Bearer enters alone and cannot leave until he clears it or dies (death is final, Section 6.5, and the trial can kill). It is **not a menu**. It is a gauntlet — waves and a final foe at the Bearer's own effective band — and the System tracks **how he fights** across five signals:
+The class quest is a **sealed instance, fully lethal, with no retreat**: the Bearer enters alone and cannot leave until he clears it or dies (death is final, Section 6.5, and the trial can kill). It is **not a menu**. It is a gauntlet — waves and a final foe at the Bearer's own effective band (the level ladder, Section 6.6) — and the System tracks **how he fights** across five signals:
 
 | Signal | What it measures |
 |---|---|
@@ -1027,7 +1130,7 @@ The Bearer chooses one. The choice is permanent; it attaches the class's `/syste
 
 ## 18.4 Shadowbinder — offered for battlefield control
 
-- **Core mechanic.** On defeating a foe, the Bearer may attempt **extraction**: spend the grade-ladder Mana cost and resolve an **Intelligence-governed attempt** on the d100 (an uncertain action, so the die decides, Section 4.3; a foe above the Bearer's band adds a band-gap penalty). On success the corpse rises as a **shadow soldier** retaining its grade band — band health (Section 6.1) and a standard-hit baseline at its grade (Section 6.2).
+- **Core mechanic.** On defeating a foe, the Bearer may attempt **extraction**: spend the grade-ladder Mana cost and resolve an **Intelligence-governed attempt** on the d100 (an uncertain action, so the die decides, Section 4.3; a foe above the Bearer's band adds the band-gap modifier of Section 4.3, −1 step per band above). On success the corpse rises as a **shadow soldier** retaining its grade band — band health (Section 6.1) and a standard-hit baseline at its grade (Section 6.2).
 - **Resource costs.** Extraction costs grade-ladder Mana (E 5 … A 80). A shadow in the field fights for free; **storing** a shadow (dismissing it to shadow) costs nothing, and **re-summoning** a stored shadow costs **½ its extraction cost**. Stored shadows sit in the roster at zero upkeep.
 - **Roster cap = Intelligence ÷ 5** (floor): Intelligence 20 fields 4 shadows, 25 fields 5.
 - **Growth path.** A shadow **levels**: after it lands the killing blow in **10 distinct clears** it advances one grade band (capped at the Bearer's own effective band). Shadows persist across scenes as canonical roster state.
@@ -1162,14 +1265,14 @@ The Bearer's System is instrument-invisible (Section 14.4), but his **feats are 
 
 ## 19.2 The Re-assessment Procedure
 
-BGM (Chicago) and CGA (Prague) run the same procedure: a **mana-capacity re-measurement** against the rank bands. Because the Bearer's pool genuinely grows (Section 5.1), a re-measurement reads **higher than his card** — the instrument does not lie, and it does not see the System.
+BGM (Chicago) and CGA (Prague) run the same procedure: a **mana-capacity re-measurement** against the rank bands. Because the Bearer's pool genuinely grows (Section 5.1), a re-measurement reads toward his **effective band** (the level ladder, Section 6.6) — **higher than his card** — the instrument does not lie, and it does not see the System.
 
 - **Voluntary by default.** A hunter requests re-assessment; the authority schedules and measures. No one is dragged in merely for out-performing his card.
 - **Compulsory when court-ordered.** After a **public incident** — a death, an illegal clear, ability use on a human, or a party dispute escalated to a regulator — a court may **order** re-assessment, and refusal is then itself an offense (Section 19.4).
 
 ## 19.3 The "Reawakened" Classification
 
-The world has exactly **one sanctioned explanation** for a hunter's rank changing: **reawakening** — a rare, documented second Awakening that yields a new, higher assessment. It is the narrow exception to Section 2's rule that rank is fixed at Awakening, defined here and nowhere else. It is the Bearer's **best cover**: measured at a D or C pool behind an E card, "reawakened" accounts for the number without anyone reaching for a System nobody believes exists.
+The world has exactly **one sanctioned explanation** for a hunter's card reading higher than it used to: **reawakening** — a rare, documented **second measurement** that a regulator rules a **correction of a card mismeasured at Awakening**, not a second Awakening and not a rank that moved. The instruments are held infallible about the present, so the only admissible account of a changed number is that the original card was wrong all along and the mismeasurement was there from the start — which is exactly the framing the Bible governs (Bible Section 8). It is the narrow exception to Section 2's rule that rank is fixed at Awakening, defined here and nowhere else. It is the Bearer's **best cover**: measured at a D or C pool behind an E card, "reawakened" accounts for the number as a belated correction, without anyone reaching for a System nobody believes exists.
 
 It is not free. A reawakening is rare enough that claiming one draws the very scrutiny — how, when, witnessed by whom — the Bearer most wants to avoid, and a *pattern* of them is not survivable as a story. Reawakening explains one jump; it cannot explain a curve.
 

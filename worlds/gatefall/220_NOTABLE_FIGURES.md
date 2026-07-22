@@ -193,7 +193,7 @@ canonical_state:
 
 **Fear/Flaw:** She rose on the promise that Ironline treats an E-rank as a colleague, not a line item, and she is quietly making a choice that betrays exactly that promise — telling herself it's protection when it's really possession.
 
-**Secret:** She has clocked an over-performing low-rank on her own boards whose output does not match his card, and instead of flagging him for BGM re-measurement she has been actively *hiding* him from it — keeping him cheap, loyal, and off Horizon's radar. An underranked anomaly is Ironline's dream recruit, and she has decided he is hers before he is anyone's, which is precisely the exposure story the re-grading pipeline exists to surface.
+**Secret:** She has clocked an over-performing low-rank on her own boards whose output does not match his card, and instead of flagging him for BGM re-measurement she has been actively *hiding* him from it — keeping him cheap, loyal, and off Horizon's radar. An underranked anomaly is Ironline's dream recruit, and she has decided he is hers before he is anyone's, which is precisely the exposure story the re-grading pipeline exists to surface. Who this over-performer is is deliberately left open: his identity resolves **at first campaign contact**, when the Runtime binds Brannigan's hidden recruit to whoever the campaign's Bearer — or a suitable underranked NPC — turns out to be. This is an authored deferral, not a blank; the slot exists, and first contact fills it.
 
 **Agenda (this month):** Sign her hidden anomaly to Ironline terms before a Horizon scout or a suspicious party leader gets him re-measured, while fighting a rearguard action against Ironline Capital's push to gut the profit-sharing that makes her recruiting pitch true.
 

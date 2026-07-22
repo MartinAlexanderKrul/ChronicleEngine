@@ -717,7 +717,7 @@ The System never decides what is true. It may decide **when to say it**.
 
 - **Tier 1 — Mandatory (unprompted; a pure function of Bearer state).** Fires the instant the condition holds, with zero discretion:
   - Mana, Health, or XP changes → the matching compact line (Section 14.5);
-  - an XP threshold is crossed → the `LEVEL UP` block (Section 3.7);
+  - an XP threshold is crossed → the `LEVEL UP` block, granting per Section 3.2 (worked example in Section 3.7);
   - the daily quest is issued, completed, or failed → its block (Section 8.1, Section 15.7);
   - the daily window lapses incomplete → the penalty warning, then the transfer notice (Section 15.7);
   - a title is earned → the `TITLE EARNED` block (Section 15.7);
@@ -880,7 +880,7 @@ Ren:
 ```text
 [SYSTEM] TITLES — equipped: Lone Clear
 Lone Clear — +1 modifier step on all actions while no allied hunter shares the Gate   [equipped]
-Centurion — +1 Mana recovered per common beast killed   [—]
+Untouched — +1 modifier step on evasion in the first exchange of every combat   [—]
 ```
 
 ## 15.7 `/system log`
@@ -1124,7 +1124,7 @@ BGM (Chicago) and CGA (Prague) run the same procedure: a **mana-capacity re-meas
 
 ## 19.3 The "Reawakened" Classification
 
-The world has exactly **one sanctioned explanation** for a hunter's rank changing: **reawakening** — a rare, documented second Awakening that yields a new, higher assessment (the ordinary Awakened exception, Section 2). It is the Bearer's **best cover**: measured at a D or C pool behind an E card, "reawakened" accounts for the number without anyone reaching for a System nobody believes exists.
+The world has exactly **one sanctioned explanation** for a hunter's rank changing: **reawakening** — a rare, documented second Awakening that yields a new, higher assessment. It is the narrow exception to Section 2's rule that rank is fixed at Awakening, defined here and nowhere else. It is the Bearer's **best cover**: measured at a D or C pool behind an E card, "reawakened" accounts for the number without anyone reaching for a System nobody believes exists.
 
 It is not free. A reawakening is rare enough that claiming one draws the very scrutiny — how, when, witnessed by whom — the Bearer most wants to avoid, and a *pattern* of them is not survivable as a story. Reawakening explains one jump; it cannot explain a curve.
 

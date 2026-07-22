@@ -39,7 +39,7 @@ Grades everywhere in this world are **E, D, C, B, A, S**, weakest to strongest.
 - **Replaces/refines:** Rules Sections 6.8–6.10 and Decision 018 where they reject a universal health-point pool for a character.
 - **Scope:** The Bearer's Health and Mana. Every other hunter, and every monster, uses the engine's **band health** for its effective grade (Section 6) and the engine injury model; only the Bearer carries a growing Mana pool (Section 5).
 - **Activation:** Active while the character bears Gatefall's System.
-- **Replacement:** The Bearer's Health and Mana are canonical current/maximum numeric pools. Damage removes Health after applicable reductions; casting and skill use remove Mana. At zero Health the Bearer is incapacitated and receives an outcome appropriate to the attack and established fiction — and in Gatefall, where death is final (Section 6.4), zero Health is where a campaign can end.
+- **Replacement:** The Bearer's Health and Mana are canonical current/maximum numeric pools. Damage removes Health after applicable reductions; casting and skill use remove Mana. At zero Health the Bearer is incapacitated and receives an outcome appropriate to the attack and established fiction — and in Gatefall, where death is final (Section 6.5), zero Health is where a campaign can end.
 - **State/provenance:** The Bearer's character ledger records current/maximum Health, current/maximum Mana, active conditions, and the event provenance of each change.
 - **Resolution:** The die resolves whether an uncertain attack or defense succeeds and its result band; established capability and protection then determine damage **after** that result. Vitality never reaches action resolution.
 
@@ -366,7 +366,7 @@ If the 24-hour window closes with the quest incomplete, the System **transfers t
 
   (Section 9 restates this formula as the general rule for all Gates; it is reproduced here because a penalty zone must be fully resolvable from this section alone.)
 - **No loot:** the penalty zone drops **nothing** — no crystals, cores, runes, or currency. Its monsters award ordinary kill XP if the Bearer chooses to fight, but the zone exists to punish, not to pay.
-- **Exit:** the instance ends and returns the Bearer to the world **only on surviving the full four hours**. Death inside it is death (Section 6.4), and the campaign ends there.
+- **Exit:** the instance ends and returns the Bearer to the world **only on surviving the full four hours**. Death inside it is death (Section 6.5), and the campaign ends there.
 
 The penalty is deliberately not a fine or a debuff: missing the daily quest drops the Bearer, alone and unrewarded, into a fight at his own band that he did not pick. That is the System being indifferent to his convenience — the daily quest is an order, and refusal has teeth.
 

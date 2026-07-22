@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000082 |
-| Record | `REC-` | Canonical Record | REC-000060 |
-| Event | `EVT-` | Event | EVT-000046 |
-| Relationship | `REL-` | Relationship | REL-000047 |
+| Entity | `ENT-` | Persistent Entity | ENT-000086 |
+| Record | `REC-` | Canonical Record | REC-000061 |
+| Event | `EVT-` | Event | EVT-000050 |
+| Relationship | `REL-` | Relationship | REL-000048 |
 
 ---
 
@@ -108,6 +108,16 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000045 | Event | Reikon Awakening: owner ruling removing the 20-point Stat cap (World Rule Profile 0.8, Section 4.2 — indefinite growth, Mana Affinity's die contribution unaffected and still capped at +1 per Law VII) and raising the Ascension point rate from 2 to 5 (Section 4.1), applied retroactively to Daedalus's 2 already-completed Ascensions. `unspent_points` moves from 2 to 8 (+3 per Ascension x 2). Power, Speed, and Perception's indefinite-growth payoff has no authored formula and is recorded as an open gap, not invented |
 | EVT-000046 | Event | Reikon Awakening: player allocation of all 8 unspent points from `EVT-000045` — Power +3, Endurance +2, Mana Affinity +1, Perception +1, Fireball Efficiency +1. `unspent_points` 8 to 0; `max_health` 110 to 121; `max_mana` unaffected at 15; Fireball stays Lv 1, cost 12 to 11. Also corrects a stale Level-2 derived readout on `100_CHARACTER_SHEET.md` left over from `EVT-000044`/`EVT-000045` |
 | REC-000060 | Record | Reikon Awakening `saves/900_CHECKPOINT_0016/900_SAVE_MANIFEST.md` — the Stat-cap removal and Ascension-rate ruling |
+| ENT-000083 | Entity | Reikon Awakening: Wren Ashcombe, independent resonance/calibration contractor brought in for Warehouse 7 |
+| ENT-000084 | Entity | Reikon Awakening: Tannery E-Rift, a second solo-eligible assignment, closed unguarded |
+| ENT-000085 | Entity | Reikon Awakening: the extracted, unappraised tannery Rift core |
+| ENT-000086 | Entity | Reikon Awakening: Daedalus's 24-vell holding from the Ashgate core's sale, a corrected prior omission |
+| EVT-000047 | Event | Reikon Awakening: new-day silent intervention check, Institute joint session, Athenaeum resonance lead, meeting Wren Ashcombe, Association referral and escalation filing, tannery assignment taken. **Renumbered from the ashgate world-line's `EVT-000045` during branch reconciliation (Data Model Invariant 4), the ashgate `EVT-000045`–`EVT-000048` block shifted +2 to `EVT-000047`–`EVT-000050` to sequence after main's Stat-cap ruling (`EVT-000045`) and allocation (`EVT-000046`)** |
+| EVT-000048 | Event | Reikon Awakening: Warehouse 7 resonance extraction — Thorne's approved attempt, four passes, successful core extraction, MAIN objective complete, no milestone XP to Daedalus (clearing act was Wren's) |
+| EVT-000049 | Event | Reikon Awakening: tannery-district E-Rift solo clear, no guardians encountered, full milestone XP awarded (clearing act performed by Daedalus himself) |
+| EVT-000050 | Event | Reikon Awakening: ruling flagging Captain Thorne's unauthored assignment-bonus claim, and correcting a prior omission (24 vells from the Ashgate core sale) |
+| REL-000048 | Relationship | Reikon Awakening: Daedalus–Wren Ashcombe, professional contact formed for the Warehouse 7 extraction job |
+| REC-000061 | Record | Reikon Awakening `saves/900_CHECKPOINT_0017/900_SAVE_MANIFEST.md` — Warehouse 7's resonance resolution and the tannery clear, sequenced after the Stat-cap removal (CP0016) |
 
 ---
 

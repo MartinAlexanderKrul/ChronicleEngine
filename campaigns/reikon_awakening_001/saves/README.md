@@ -25,7 +25,8 @@ A durable, Canonical-Record form of this index is proposed engine work (Save Lay
 | `900_CHECKPOINT_0013/` | 2026-07-21 | Conforming; Ashgate assignment captured mid-encounter, kill status unresolved at capture | Yes — superseded |
 | `900_CHECKPOINT_0014/` | 2026-07-21 | Conforming; Ashgate closure and the Rift-clear milestone XP ruling | Yes — superseded |
 | `900_CHECKPOINT_0015/` | 2026-07-21 | Conforming; milestone-XP formula authored (Profile 0.7), applied retroactively to Ashgate, Ascension to Level 3 | Yes — superseded |
-| `900_CHECKPOINT_0016/` | 2026-07-21 | Conforming; Stat cap removed and Ascension point rate raised 2 to 5 (Profile 0.8), applied retroactively | **Yes — current restore point** |
+| `900_CHECKPOINT_0016/` | 2026-07-21 | Conforming; Stat cap removed and Ascension point rate raised 2 to 5 (Profile 0.8), applied retroactively | Yes — prior restore point |
+| `900_CHECKPOINT_0017/` | 2026-07-22 | Conforming; Warehouse 7 resonance resolution and unguarded tannery clear, sequenced after the cap removal (branch reconciliation, Invariant 4) | **Yes — current restore point** |
 
 There is **no baseline checkpoint** for this campaign. See below.
 
@@ -193,7 +194,13 @@ Manifest `REC-000059`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. C
 
 Checkpoint 0016 supersedes it as the checkpoint `/continue` restores. Restoring 0015 reverts to a 20-point Stat cap and 2 points per Ascension, dropping `unspent_points` from 8 to 2. No played fiction from Checkpoint 0015 itself differs — the reversion is entirely about a ruling made afterward.
 
-## `900_CHECKPOINT_0016/` — current restore point
+## `900_CHECKPOINT_0017/` — current restore point
+
+Captures the Warehouse 7 / tannery world-line sequenced after the Stat-cap removal. On the day after `EVT-000045`/`EVT-000046`, a new-day intervention check rolled Silence (`EVT-000047`); Warehouse 7 was permanently resolved by contractor Wren Ashcombe's matched-resonance extraction with zero casualties and no milestone XP to Daedalus (`EVT-000048`); a second, unguarded tannery E-Rift was cleared by Daedalus himself for the full 70 XP milestone, XP 25 → 95 (`EVT-000049`); and a ruling flagged Thorne's unauthored assignment-bonus claim while recording a 24-vell prior omission (`EVT-000050`). Daedalus is Level 3, 95/170 XP, full 121/121 Health and 15/15 Mana, all 8 points allocated.
+
+Manifest `REC-000061`, conforming to `templates/ledgers/900_SAVE_MANIFEST.md`. Contains full copies of all eight canonical ledgers. **Branch reconciliation (Data Model Invariant 4):** these four events were captured on the `checkpoint-0013-ashgate` world-line as `EVT-000045`–`EVT-000048` and renumbered +2 so they sequence after main's cap-removal events; the ashgate original is retained on that branch as history.
+
+## `900_CHECKPOINT_0016/` — prior restore point
 
 Captures one ruling promoted since Checkpoint 0015, with no fiction played: `EVT-000045`. Two coupled rulings on `worlds/reikon/206_WORLD_RULE_PROFILE.md` (0.7 → 0.8). **Stats now grow with no upper bound** (Section 4.2) — but Mana Affinity's contribution to modifier steps stays fixed at +1 forever (Section 6.3), protected by Law VII (Fairness), an Engine Law no World Rule Profile can move; Endurance already has a real uncapped payoff via `max_health` (Section 7.1); Power, Speed, and Perception have no formula at all, and that gap is recorded, not invented. **The Ascension point rate rises from 2 to 5** (Section 4.1), grounded in observed pace — each of Daedalus's two Ascensions has read as one major arc for only 2 points, thin against the weight of clearing a whole Rift, and no longer calibrated against a stat cap that no longer exists.
 

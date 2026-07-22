@@ -26,7 +26,7 @@ The index carries only what a player needs in order to **choose**. Everything el
 | World | Version | Status | Live campaigns | Diegetic commands |
 |-------|---------|--------|----------------|-------------------|
 | `worlds/asterra/` | 0.9 | Pre-campaign foundation | 0 | none |
-| `worlds/gatefall/` | 0.1 (World Rule Profile 1.0 in authoring) | Pre-campaign foundation | 0 | `/system` |
+| `worlds/gatefall/` | 0.1 (World Rule Profile 1.0) | Pre-campaign foundation | 0 | `/system` |
 | `worlds/reikon/` | 0.1 (World Rule Profile 0.6) | Active | 1 | `/system` |
 | `worlds/verra/` | 0.1 (Prototype) | Active | 2 | none |
 

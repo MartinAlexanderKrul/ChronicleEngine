@@ -371,3 +371,291 @@ If the 24-hour window closes with the quest incomplete, the System **transfers t
 The penalty is deliberately not a fine or a debuff: missing the daily quest drops the Bearer, alone and unrewarded, into a fight at his own band that he did not pick. That is the System being indifferent to his convenience — the daily quest is an order, and refusal has teeth.
 
 ---
+
+# 9. Gates
+
+A **Gate** is a breach between the world and a dungeon instance. Every Gate has a grade (E–S), a detection timestamp, an interior archetype (Section 10), and a population (below). This section fixes how a Gate is measured, staffed, resolved, and — if it is left too long — how it breaks.
+
+## 9.1 Spawn Rates
+
+Gates open continuously; the two campaign cities open at very different rates.
+
+| Metro | Gates per week (approx.) |
+|---|---|
+| **Chicago metro** | ≈ **35** |
+| **Prague** | ≈ **8** |
+
+These are aggregate rates across the metro, not a schedule; the Runtime distributes them into the fiction as needed and does not roll a fixed calendar.
+
+## 9.2 Grade Frequency
+
+When a Gate opens, its true grade follows this distribution:
+
+| Grade | E | D | C | B | A | S |
+|---|---|---|---|---|---|---|
+| Frequency | 50% | 25% | 15% | 7% | 2.5% | 0.5% |
+
+Most Gates are E and D; an S-Gate is a once-in-a-long-while, world-news event.
+
+## 9.3 Break Timers
+
+From detection, an uncleared Gate runs a countdown to a **dungeon break** (Section 9.7). Higher-grade Gates break faster — the pressure behind them is greater.
+
+| Grade | E | D | C | B | A | S |
+|---|---|---|---|---|---|---|
+| Days from detection to break | 7 | 6 | 5 | 4 | 3 | 2 |
+
+The timer starts at detection, not at first entry. A Gate cleared before its timer expires closes safely on the boss kill; a Gate whose timer runs out breaks.
+
+## 9.4 Legal Minimum Party
+
+Regulation sets the minimum sanctioned party to legally enter a Gate by grade. Entering under-strength is an offense in both jurisdictions (Section 13).
+
+| Grade | Legal minimum party |
+|---|---|
+| **E–D** | None (a lone licensed hunter may enter) |
+| **C** | 4 licensed hunters |
+| **B** | 8 licensed hunters |
+| **A** | 16 licensed hunters, including at least one A-rank |
+| **S** | National-asset operation (state-directed, not an ordinary contract) |
+
+## 9.5 Confidence and the True Grade
+
+An assessed grade carries a **confidence**:
+
+- **Confirmed** — established by an instrumented survey. The survey drone or licensed surveyor has read the interior; the grade and archetype (Section 10) are known before entry.
+- **Unconfirmed** — a remote reading only (mana-flux magnitude read from outside). The grade is a best estimate and the archetype is unknown.
+
+A **confirmed** Gate is entered at its stated grade. An **unconfirmed** Gate resolves its true grade on the **first entry**, on a d100:
+
+| d100 | True grade |
+|---|---|
+| 01–15 | One grade **lower** than assessed |
+| 16–70 | **As assessed** |
+| 71–92 | One grade **higher** than assessed |
+| 93–00 | **Anomaly** — roll on the anomaly table (Section 9.6) |
+
+The Bearer's Perception unlocks (Section 4.4: **Grade-Sight** at 30, **Deep Sight** at 50) convert an unconfirmed reading to confirmed by capability, within their band range, and so bypass this roll.
+
+## 9.6 The Anomaly Table
+
+A 93–00 on the true-grade roll is an **anomaly**. Roll again on a d100:
+
+| d100 | Anomaly |
+|---|---|
+| 01–50 | **Population one grade above** the assessment (grade as assessed, but populated as the next grade up). |
+| 51–80 | **Red gate** — the Gate seals on entry and cannot be exited until its boss dies; there is no retreat. |
+| 81–95 | **Archetype twist doubled** — the interior archetype's mechanical twist (Section 10) applies at double effect. |
+| 96–00 | **Dungeon-break-in-progress on arrival** — the Gate is already breaking (Section 9.7); its population is pouring out as the party arrives. |
+
+## 9.7 Population
+
+**A Gate is populated by default. Emptiness is an authored exception carrying an in-world cause — and in Gatefall, an empty-looking dungeon is itself a warning sign.**
+
+Every Gate of grade **G** is populated on this formula:
+
+```text
+3d6 common beasts (grade G)
++ 1d2 elites (grade G, ×2 band health)
++ 1 boss (grade G, ×4 band health, damage one band up)
+```
+
+- **Common beasts** have plain grade-G band health (Section 6.1) and award grade-G kill XP (Section 3.3).
+- **Elites** carry **×2** band health and award **×2** kill XP.
+- The **boss** carries **×4** band health, awards **×4** kill XP, and deals damage as if **one band up** (its standard-hit baseline rides the next grade's band, Section 6.2). Killing the boss **clears the Gate** — it collapses the instance and awards the Gate-clear milestone XP (Section 3.4).
+
+An empty or under-populated interior is never a lucky break; it is an authored signal that something has already emptied the Gate — a break in progress, a prior party wiped, or a worse thing feeding. The Runtime treats emptiness as a clue, not an absence.
+
+## 9.8 Dungeon Breaks
+
+If a Gate's break timer (Section 9.3) expires before the Gate is cleared, the Gate **breaks**: its barrier fails and its **remaining population** — every monster not yet killed, boss included — pours out into the surrounding area, where it fights with none of the containment a sealed instance provides. A break is the disaster the whole regulatory apparatus exists to prevent.
+
+Response follows a fixed escalation order by jurisdiction:
+
+| Jurisdiction | Response order |
+|---|---|
+| **Chicago** | BGM **emergency contract** issued → **nearest guild strike team** dispatched under it. |
+| **Prague** | **CGA** mobilizes → **Karlov Guild** or the **nearest international branch** dispatched. |
+
+The remaining-population rule means a Gate broken early (few kills made) is far worse than one broken after a party has fought most of the way through — what pours out is exactly what was left inside.
+
+## 9.9 Worked Example — An Unconfirmed D Reads Worse
+
+A Red Line contract posts an **unconfirmed D-Gate**. Because it is assessed D, no legal minimum applies (Section 9.4) and a small crew takes it.
+
+1. **Confidence → true-grade roll.** Unconfirmed, so the true grade resolves on first entry (Section 9.5). The d100 comes up **84** (71–92): **one grade higher**. The Gate is truly **C**, not D — and a C-Gate legally requires four licensed hunters. The crew is already in an under-strength, illegal entry without knowing it.
+2. **Population.** At grade C the formula (Section 9.7) rolls **3d6 = 11 common C beasts, 1d2 = 2 C elites, 1 C boss** (×4 band health, damage one band up — it hits like a B).
+3. **Archetype.** Unknown on entry because the Gate was unconfirmed (Section 10); it reveals as **Crypt** (d8 = 1) — darkness, so Perception checks to avoid ambush.
+4. **Clear.** The crew fights through and kills the boss; the Gate collapses. Kill XP and the C-Gate milestone (320 XP, Section 3.4) settle on the boss kill.
+5. **Loot roll.** Eleven C-crystals drop (one per beast, Section 11); the two elites and the boss each drop a C-core (three cores). The boss-drop d100 (Section 11) comes up **52** (41–65): a **rune** teaching one authored skill.
+6. **Sale.** At licensed market prices (Section 12): 11 C-crystals × **$2,500 = $27,500**; 3 C-cores at ≈2.5× the C-crystal price (**$6,250** each) = **$18,750**. The clear grosses **≈ $46,250** in sellable crystal and core, plus the rune, which the Bearer keeps to learn a skill rather than sell.
+
+Every step above is resolved from the tables in Sections 9, 11, and 12 — the Runtime took the Gate from posting to sold loot without inventing a single number, and the "easy D" that was really a C is exactly the kind of hazard the confidence rule exists to model.
+
+---
+
+# 10. Dungeon Archetypes
+
+Every Gate has an **archetype** — the character of its interior — fixed when the Gate is instantiated and rolled on a d8. Each archetype carries **one mechanical twist**, stated below in a single rule.
+
+| d8 | Archetype | Mechanical twist |
+|---|---|---|
+| 1 | **Crypt** | Darkness fills the interior: entering combat requires a Perception check to avoid being ambushed, and unlit fighting imposes −1 modifier step on sight-dependent actions. |
+| 2 | **Hive** | Swarming brood: the common-beast count is **doubled** and **no elite is present** (the two 1d2 elite slots are replaced by additional common beasts). |
+| 3 | **Flooded Mine** | Standing water throughout: Strength and Agility actions take −1 modifier step, and going under imposes a drowning risk resolved as an environmental hazard. |
+| 4 | **Overgrown Temple** | A lootable shrine stands in the interior: clearing the Gate grants a **bonus loot roll** (Section 11), but the shrine is guarded by an extra elite. |
+| 5 | **Beast Den** | A second **boss-band alpha** roams alongside the boss — two boss-grade threats (×4 band health, damage one band up) instead of one. |
+| 6 | **Shattered City** | Broken verticality: falls and drops deal **band damage** (a standard-hit baseline at the faller's grade, Section 6.2), and ledges force Agility checks. |
+| 7 | **Ashfield** | Lingering burn hangs in the air: every hour inside forces a Vitality check against a grade-appropriate burn hazard (Section 6.3). |
+| 8 | **Frozen Gallery** | Deep cold saturates the instance: **Mana recovery is halved** inside (Section 5.2), pressuring any Mana-dependent Bearer to clear quickly. |
+
+**When the archetype is known.** The archetype is set at Gate instantiation. On a **confirmed** Gate the surveyors have seen the interior, so the archetype is **named in the assignment** alongside the confirmed grade. On an **unconfirmed** Gate the archetype is **unknown** until first entry, and it reveals as the party crosses the threshold — the same entry that resolves the true grade (Section 9.5).
+
+An **archetype twist doubled** anomaly (Section 9.6, 81–95) applies that single twist at double effect: doubled darkness penalty, doubled swarm, twice the hazard rate, and so on, as fits the archetype.
+
+---
+
+# 11. Loot
+
+Loot is the material output of a cleared Gate. Crystals and cores drop deterministically; the boss drop is rolled. Nothing here is estimated — every drop is read off the rules below.
+
+## 11.1 Crystals and Cores
+
+- **Mana crystals.** Every beast killed drops **one crystal**, of the **beast's own grade**. An E beast drops an E-crystal; a C beast drops a C-crystal. Crystals are the world's base currency good (Section 12).
+- **Beast cores.** **Elites and bosses always drop one core** each, of their grade. A core is worth roughly **2.5× the same-grade crystal** (Section 12) and is the raw material for gear and consumables.
+
+## 11.2 The Boss Drop
+
+On the boss kill, in addition to its core, roll the **boss drop** on a d100. The drop's grade is the **Gate's grade** unless a grade bump applies (Section 11.3).
+
+| d100 | Boss drop |
+|---|---|
+| 01–40 | **Weapon or armor piece** at the Gate grade (Section 11.4). |
+| 41–65 | **Rune** — teaches one random authored skill (Section 7.1). |
+| 66–80 | **Potion cache** — 3 potions at the Gate-grade tier (Section 12). |
+| 81–90 | **Instant-dungeon key** at the Gate grade (Section 17, authored later). |
+| 91–97 | **Skill book** — from the authored skill-book table (Section 7). |
+| 98–00 | **Elixir** — a permanent +1 to one stat (max 3 lifetime per stat, Section 12). |
+
+## 11.3 Red-Gate and Anomaly Grade Bump
+
+**Red gates and anomaly Gates roll loot one grade above the assessment.** A Gate that resolved to any anomaly (Section 9.6) — including a red gate — drops crystals, cores, and boss loot as if it were **one grade higher** than the grade it was assessed at. This is the reward for surviving the elevated danger an anomaly represents.
+
+## 11.4 Item Grades
+
+Gear carries a grade **E–S**, exactly as monsters do, and **an item's grade sets its damage or protection band exactly as a monster's grade sets its band health** (Section 6.1). A C-grade weapon lands its strikes on the C-band standard-hit baseline (Section 6.2); B-grade armor grants protection scaled to the B band. Grade is the item's complete mechanical description — no per-item stat line is authored beyond grade, type, and any named effect.
+
+**Named uniques** exist only as **authored items with provenance** — a specific weapon or artifact written into a world or campaign file with a recorded origin. A boss drop never generates a named unique at random; the boss-drop table yields graded generic gear, and a named unique enters play only where a file authors it.
+
+---
+
+# 12. Economy
+
+Two currencies run in parallel and **never exchange**: ordinary money (USD in Chicago, CZK/EUR in Prague) and the System's **gold**, which exists only inside the System shop. Goods cross between them solely through the shop's buy/sell spread (Section 12.5).
+
+## 12.1 Licensed Market Prices
+
+The regulated market buys crystals and cores at posted rates. Prices are Chicago USD; Prague pays **≈ 70% of Chicago rates**, settled in CZK/EUR.
+
+| Good | Licensed price (Chicago USD) |
+|---|---|
+| **E-crystal** | $150 |
+| **D-crystal** | $600 |
+| **C-crystal** | $2,500 |
+| **B-crystal** | $11,000 |
+| **A-crystal** | $50,000 |
+| **S-crystal** | Auction-only (no posted price) |
+| **Beast core** | ≈ **2.5×** the same-grade crystal |
+
+At 2.5× the crystal, cores derive to ≈ $375 (E), $1,500 (D), $6,250 (C), $27,500 (B), $125,000 (A); the multiplier is authoritative and the figures follow from it.
+
+## 12.2 Black Market
+
+An unlicensed buyer pays **+40%** over the licensed price but dealing there is a **felony** in both jurisdictions, carrying license revocation and prosecution risk. The premium is the price of anonymity — no sale record, no grade audit, no questions about a Gate's legality.
+
+## 12.3 Contract Payouts and Salaries
+
+| Work | Pay (Chicago USD) |
+|---|---|
+| **E-Gate freelance contract** | $2,000–5,000 (split by party contract, Section 13) |
+| **D-Gate freelance contract** | $8,000–15,000 (split by party contract) |
+| **Guild-salaried B-rank** | ≈ **$240,000 / year** |
+
+Prague contract and salary rates run at **≈ 70% of Chicago**, paid in CZK/EUR.
+
+## 12.4 Cost of Living
+
+| Item | Chicago | Prague |
+|---|---|---|
+| **Shared apartment** | $1,400 / month | 18,000 CZK / month |
+
+## 12.5 The System Shop
+
+The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crystals and selling consumables and gear. **USD and gold do not exchange** — the Bearer converts loot to gold only by selling it to the shop, and spends gold only inside it.
+
+**The shop buys crystals (gold):**
+
+| Crystal | Shop buys for |
+|---|---|
+| **E** | 10 g |
+| **D** | 40 g |
+| **C** | 170 g |
+| **B** | 750 g |
+| **A** | 3,400 g |
+
+**The shop sells (gold):**
+
+| Item | Price |
+|---|---|
+| **Lesser healing potion** | 25 g |
+| **Standard healing potion** | 90 g |
+| **Greater healing potion** | 400 g |
+| **Lesser mana potion** | 20 g |
+| **Antidote** | 30 g |
+| **E-grade weapon** | 100 g |
+| **D-grade weapon** | 450 g |
+| **C-grade weapon** | 2,000 g |
+| **Instant-dungeon key** (own band) | 500 g |
+| **Elixir of a stat** (+1 permanent; **max 3 lifetime per stat**) | 5,000 g |
+
+**The no-exchange rule.** There is no gold-to-USD or USD-to-gold conversion at any rate. The only bridge between the two economies is the spread between what the shop pays for a crystal and what the same crystal fetches on the licensed market — the Bearer chooses, per crystal, whether it becomes cash or gold, and cannot move value back the other way.
+
+## 12.6 Starting Funds by Background
+
+A campaign sets the Bearer's opening money by background. Prague equivalents are the USD figure **×22** in CZK.
+
+| Background | Chicago (USD) | Prague (CZK, ×22) |
+|---|---|---|
+| **Working poor** | $800 | 17,600 CZK |
+| **Stable** | $4,000 | 88,000 CZK |
+| **Guild-family** | $15,000 | 330,000 CZK |
+
+---
+
+# 13. Parties and Other Hunters
+
+Most Gates are cleared by parties, and most hunters in the world are ordinary licensed professionals — not Bearers. This section fixes how those hunters resolve mechanically and the standard terms under which a party runs a Gate.
+
+## 13.1 NPC Hunters Resolve by Rank Band
+
+Every NPC hunter is a fixed-rank engine character (Section 2). A hunter's **rank band** is its complete mechanical description: a "licensed B-rank" acts on the B band for band health (Section 6.1), damage (Section 6.2), and modifier steps, and nothing further is authored. No NPC hunter carries a level, a stat sheet, an XP total, or a Mana curve — those belong to the Bearer alone. To resolve an NPC hunter's action, the Runtime uses its band exactly as it uses a monster's grade.
+
+## 13.2 Standard Party Contract Terms
+
+A freelance party runs on a written contract. The standard terms, absent a negotiated exception, are:
+
+- **Split:** the party leader takes a **10% leader's share** off the top; the **remainder is split equally** among all members (leader included in the equal split of the remaining 90%).
+- **Loot declared at exit:** all crystals, cores, and drops are **declared at the Gate exit** and pooled for the split. Undeclared loot taken inside is theft under the contract.
+- **Liability waivers:** members sign a **liability waiver** — a Gate is lethal work, and the contract disclaims the party's and the poster's liability for injury or death inside.
+
+## 13.3 Legal Minimums
+
+Party size is not only a tactical choice; regulation sets a **legal minimum** by Gate grade (Section 9.4): none for E–D, four licensed for C, eight for B, sixteen plus an A-rank for A, and a national-asset operation for S. Entering below the minimum is an offense in both Chicago (BGM) and Prague (CGA) jurisdictions, independent of whether the clear succeeds.
+
+## 13.4 The Witness Rule
+
+**Inside an uncleared Gate there are no cameras and no instruments — only testimony.**
+
+A sealed Gate interior admits no recording and no remote monitoring: mana flux blinds instruments, and nothing transmits out of a live instance. What happened inside is established solely by the **testimony** of those who walked out. This is the authored foundation on which betrayal, false report, and disputed-clear plots stand — the profile fixes the fact and adds no further subsystem. Who lived, who died, what dropped, and who struck whom inside an uncleared Gate is, mechanically and legally, whatever the survivors say it was until contradicted by evidence found outside.
+
+---

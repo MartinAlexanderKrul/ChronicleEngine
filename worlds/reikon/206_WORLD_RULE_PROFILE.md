@@ -1,11 +1,13 @@
-# Reikon — World Rule Profile 0.9
+# Reikon — World Rule Profile 0.10
 
 **File:** `worlds/reikon/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
-**Profile Version:** 0.9
+**Profile Version:** 0.10
 **Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Status:** Active
+
+**0.10 authors the Rift threat model in Section 13 (owner-directed world authoring; Decision 062), closing playtest findings PT-002 and PT-003 (`worlds/reikon/270_PLAYTEST_BACKLOG.md`).** A Rift is now **populated and its core guarded by default** — emptiness becomes an authored, logged exception, never the absence of authoring (Section 12.7's discipline applied to threat). An assignment carries an **assessed grade and a confidence**, and an unconfirmed Rift's **true grade is arbitrated on the die at first contact** — weighted so it can be a full grade worse — instead of defaulting benign (Decision 060). An under-assessed or anomalous Rift is exactly an existing intervention trigger (Section 9.6), so danger arises *causally*, never on a drama timer (Decision 003; PT-001). It reuses grade and `band_health` (Sections 3.1, 6.4); no bestiary, spawn table, or map subsystem (Decision 020). A Bearer whose Perception reaches 16 reads a Rift's true grade himself (Section 12.3), converting *unconfirmed* to *confirmed* by capability rather than by default.
 
 **0.9 authors the missing Stat payoffs for Power, Speed, and Perception (owner-directed world authoring; Decision 062), closing the gap Section 4.2 recorded under 0.8.** Law VII permits only *off-die magnitude* to be uncapped, so the three formulas split on that line:
 
@@ -891,3 +893,55 @@ That gap is deliberate and it is where the world bible's pressure comes from. An
 If a good has no posted cost here, the Runtime **does not invent one**. It rules a price from the nearest posted comparable and the circumstances, states that it is a ruling, and records it — or surfaces the missing rule and asks. This is Section 7.3's clause applied to value: an unauthored magnitude is a gap to be filled deliberately and recorded, never a number to be improvised at the moment of sale and forgotten.
 
 A price established by ruling in play is canon and is promoted like any other established fact.
+
+---
+
+# 13. Rifts
+
+A Rift is Reikon's unit of content and threat. This section authors what a Rift *contains* and how dangerous it *actually* is, so that "empty Rift" is a finding about the world and never the absence of authoring — the discipline Section 12.7 applies to price, applied to threat (playtest findings PT-002, PT-003).
+
+A Rift has a **grade** (E–S, or Anomalous), the same scale as pools, monsters, and cores (Section 3.1). Its grade sets the grade of what lives in it and what its core is worth.
+
+## 13.1 A Rift Is Populated by Default
+
+A Rift of grade G is populated, and its core is guarded. At minimum it holds:
+
+- a **body of guardians** of grade G — the threats the Bearer fights through (grade-G Health and damage per Section 6.4; a creature needs only its grade);
+- a **core**, the clearing objective (Section 8.2), **guarded** by a stronger single threat at grade G — or **G+1** in a deep or anomalous Rift — the pack leader, the Breaker, the thing between the hunter and the collapse.
+
+The exact roster is authored to the scene the way monster damage is derived from a grade, not read from a spawn table. What is fixed is the **floor: a Rift is never unpopulated, and its core is never unguarded, by default.** Warehouse 7 — guardians, a core, a guardian on it — is the default shape, not a lucky one.
+
+## 13.2 Assessed Grade, Confidence, and True Grade
+
+An assignment carries two things: an **assessed grade** and a **confidence** in that assessment. They are different facts, and the second is usually left implicit — which is the defect. A Rift's **true grade** is what its threats actually are, and it is resolved against the confidence, on the die where it is uncertain (Decision 060 — an uncertain world-fact is arbitrated, never defaulted favorable):
+
+| Confidence | Source | True grade |
+|---|---|---|
+| **Confirmed** | Association-desk re-assessment, a specialist read, a prior clear | = assessed. No roll. |
+| **Assessed** | an ordinary posted assignment | mostly = assessed; roll a narrow ±1 spread |
+| **Unconfirmed** | a fresh report, an unlicensed tip, a first sighting | roll; real spread, weighted so it can be a full grade **worse** |
+
+For an **unconfirmed** Rift, roll d100 at first real contact:
+
+| d100 | True grade |
+|---:|---|
+| 01–15 | assessed **− 1**, or diminished — overrated, partly collapsed, thinned by a prior team. *An authored, logged reason (13.4), never free emptiness.* |
+| 16–65 | **= assessed** |
+| 66–90 | assessed **+ 1** — underrated; the fight is a band harder than posted |
+| 91–100 | assessed **+ 1 with an anomalous feature**, or **+ 2** — a serious under-assessment; triggers the intervention check (Section 9.6) |
+
+The skew is the point: an unconfirmed Rift is *genuinely uncertain and tilted toward danger*, not reliably benign. An **assessed** Rift uses a tighter version of the same table — mostly the middle band, a narrow ±1; a **confirmed** Rift does not roll.
+
+**The Bearer can remove the uncertainty legitimately.** A Bearer whose Perception reaches 16 reads a Rift's true grade himself (Section 12.3), converting *unconfirmed* to *confirmed* for him before he commits — the uncertainty resolved by a capability he earned, not defaulted away.
+
+## 13.3 Anomalies Arise Causally
+
+A Rift whose true grade exceeds its assessment by a full grade, or that carries a structurally anomalous feature, is **anomalous** — and anomalous Rifts are already an intervention-check trigger (Section 9.6: "a new Rift grade, a structurally anomalous Rift feature, or a threat above the Bearer's current effective band"). The threat model therefore plugs into the System's existing behavior rather than adding a mechanism: when an under-assessed Rift turns dangerous, that is exactly when the System stirs, and the danger is **caused** — an assessment that was wrong — never injected on a pacing clock (Decision 003; PT-001). The four D-grade Breakers guarding an E-Rift's core in Warehouse 7 were this case before it had a name.
+
+## 13.4 Emptiness Is an Authored Exception
+
+A Rift is never empty by default. An empty, thinned, or drained Rift requires an authored cause recorded in canon — recently cleared by another team, collapsing or unstable, a decoy or misreport, drained by a prior incursion. "Empty" is then a fact about the world *with a reason*, not the absence of authoring. This is Section 12.7's clause applied to threat: an unauthored population is a gap to be filled deliberately and recorded, never improvised to "nothing here."
+
+## 13.5 No Subsystem
+
+The model reuses what already exists: a grade (Section 3.1), grade-baselined Health and damage (Section 6.4), the intervention check (Section 9.6), and the die (Rules Section 4). A Rift names a grade, a confidence, and a roster authored to the scene within the populated floor. Reikon gains **no spawn table, no encounter or map layer, and no bestiary** (Decision 020) — the same restraint the economy (Section 12) and damage (Section 6.4) models keep. What changes is the default: populated and guarded, with real uncertainty on an unconfirmed grade, instead of silent and safe.

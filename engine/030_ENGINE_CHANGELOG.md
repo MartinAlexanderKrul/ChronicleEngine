@@ -12,6 +12,21 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-22 — Reikon World Rule Profile 0.10: Rift threat model authored
+
+World authoring (Reikon). No engine decision consumed — Decision 069 point 4 and Decision 062. No Rules, Data Model, or Runtime change. Closes playtest findings PT-002 and PT-003 (`worlds/reikon/270_PLAYTEST_BACKLOG.md`).
+
+**Gap closed:** nothing said a Rift must be populated or its core guarded, so an empty Rift was indistinguishable from an unauthored one (PT-002), and an unconfirmed-grade assignment kept resolving to "fine" (PT-003) — the boredom the playtest reported. 0.10 adds Section 13.
+**Populated by default (13.1):** a Rift of grade G holds a body of grade-G guardians and a core guarded by a grade-G (or G+1) threat. Emptiness becomes an authored, logged exception (13.4) — the Section 12.7 unpriced-goods discipline applied to threat. Warehouse 7's shape is the default, not a lucky one.
+**Unconfirmed grade has teeth (13.2):** an assignment carries an assessed grade *and* a confidence. An unconfirmed Rift's true grade is rolled on d100 at first contact, weighted toward danger (a real chance it is a band harder, a tail into anomalous or +2) rather than defaulted benign — the free-favorable-default Decision 060 guards against, one level up. Perception 16+ (0.9, Section 12.3) lets the Bearer read the true grade himself, converting *unconfirmed* to *confirmed* by capability.
+**Danger stays causal (13.3):** an under-assessed or anomalous Rift is already an intervention trigger (Section 9.6), so the model plugs into the System's existing behavior — no new mechanism, and no drama timer (Decision 003; PT-001). The Warehouse 7 Breakers were this case before it had a name.
+**No subsystem (13.5):** reuses grade + `band_health` (3.1, 6.4), the intervention check (9.6), and the die. No spawn table, no bestiary, no map layer (Decision 020) — the restraint the economy and damage models keep.
+**PT-001 (pacing) gets its honest lever:** populated Rifts and real uncertainty are the standing stakes the simulation can surface, so the boredom is answered by richer content, not a forced-encounter clock.
+**Documents:** Reikon 206 (0.10): header note and new Section 13.
+**Migration:** additive. No 0.9 rule changed; the model governs how Rifts are authored going forward. Nothing recalculated; no campaign state touched (no EVT minted — registry high-water unchanged).
+**Validation:** Repository validation, Reikon contract, and decision/roadmap sync pass.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-21 — Reikon World Rule Profile 0.9: Power, Speed, and Perception payoffs authored
 
 World authoring (Reikon). No engine decision consumed — Decision 069 point 4 and Decision 062: a change scoped entirely to one world is recorded here and in the world's own documents. No Rules, Data Model, or Runtime change.

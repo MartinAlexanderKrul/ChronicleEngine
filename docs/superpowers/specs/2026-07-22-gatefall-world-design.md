@@ -1,0 +1,123 @@
+# Gatefall — World Design Spec
+
+**File:** `docs/superpowers/specs/2026-07-22-gatefall-world-design.md`
+**Status:** Approved design, pending implementation plan
+**Date:** 2026-07-22
+
+---
+
+# 1. Purpose and goals
+
+Create a new world, **`worlds/gatefall/`**, built on the Solo Leveling framework — the System, awakening, Gates/dungeons, hunter ranks E–S, mana, dungeon breaks, and a protagonist who uniquely levels — set in the real-world USA (home base: Chicago), with a global layer supporting a European-hunter campaign start.
+
+Gatefall replaces Reikon as the active Solo Leveling-style world. Reikon is judged a failure on four counts (owner ruling, 2026-07-22): boring gameplay loop, no real danger, weak progression payoff, and flavor that didn't land. Reikon's own playtest backlog (`worlds/reikon/270_PLAYTEST_BACKLOG.md`, PT-001/002/003) diagnosed the first three mechanically. Gatefall's design constraint is that **all three diagnosed failures are fixed as world law at profile 1.0**, not patched later.
+
+All expression is original: same mechanical skeleton and genre principles as Solo Leveling, but original names, characters, institutions, and text throughout. No copied text, characters, or plot.
+
+## Approved decisions
+
+| Decision | Ruling |
+|---|---|
+| System fidelity | Full System at 1.0 (stat window, daily quests + penalties, skills, inventory, shop, instant dungeon keys, titles, class quest) |
+| Unique power | Multiple original hidden classes, shadow-army path included; class quest determines what is offered |
+| Home base | Chicago, USA; global layer supports European start |
+| Lethality | Fully lethal — die + authored threat model decide; protagonist death hard-ends the campaign |
+| Reikon fate | Kept as-is, campaign `reikon_awakening_001` marked **dormant** (fully resumable, nothing deleted) |
+| Build approach | Clean-slate full build; reuse engine primitives that work (grade-banded health, grade-baselined damage); no retheme of Reikon's profile |
+
+---
+
+# 2. World identity and premise
+
+**The event — Gatefall.** ~10 years before campaign start, Gates began opening worldwide: portals to pocket dungeons populated by magic beasts. Early appearances killed thousands before the rules were understood. Simultaneously, a fraction of humanity **awakened**: mana capacity, superhuman ability, and a fixed measured rank.
+
+**Rules everyone knows.**
+- A Gate left uncleared past its timer causes a **dungeon break** — its population pours out.
+- Awakened rank (E–S) is assessed once by mana measurement and never changes — for everyone except the protagonist.
+- Only awakened can enter Gates. Killing the boss closes the Gate.
+
+**The USA layer.** Gate affairs are federally regulated by the **Bureau of Gate Management (BGM)**: hunter licensing, Gate grading, clearance-contract auctions. Clearing is done by private **guilds** (majors are publicly traded, with drafted S-ranks) and freelance low-rank hunters working E/D-Gate contracts. The world adapted the way the real world adapts: insurance markets, federal regulation, guild capitalism, cable-news coverage of S-rank raids.
+
+**Chicago** is a top-five US Gate city: high Gate density along the lakefront and L corridors, two major guilds, a BGM regional office.
+
+**The protagonist's hook** (campaign-level, the world must support it): the city's notoriously weakest licensed E-rank survives a double-dungeon-style incident and receives the **System** — quests, levels, stats that grow — which no other hunter has and no instrument can detect.
+
+**Global layer.** Gates are worldwide. Europe runs national Gate agencies under an EU coordination body; hunter licenses have international reciprocity. A campaign may start as a European hunter — abroad (region authored at campaign creation) or as a transfer working American contracts. The System works identically everywhere. The world bible carries this layer at foundation depth: worldwide Gate landscape, European authority structure, license reciprocity, notable foreign powers.
+
+---
+
+# 3. The System (full at 1.0)
+
+Everything below is authored in `206_WORLD_RULE_PROFILE.md` before play. Numeric magnitudes (XP curves, thresholds, costs, prices) are fixed during profile authoring, governed by one rule: **any magnitude the System can surface in play must be authored — an unauthored magnitude is a profile bug**, the failure class behind Reikon's empty Rifts.
+
+- **Stat window** — Strength, Agility, Vitality, Intelligence, Perception. **Every stat has an authored payoff at 1.0:** stats feed die modifiers in their domains at authored thresholds, and named thresholds unlock capabilities (e.g., high Perception reads a Gate's true grade; high Agility unlocks reaction windows ordinary hunters don't get).
+- **Levels & XP** — XP from kills, quests, and Gate-clear milestones. Level-up grants stat points. Only the protagonist levels; every other hunter is fixed at measured rank.
+- **Daily quest** — a training regimen with a real reward (stat points) and a real penalty: skipping it drops the protagonist into a lethal **penalty zone**. Every in-world day carries stakes.
+- **Quests** — urgent quests (the System reacts to nearby crises) and hidden quests with first-clear rewards.
+- **Skills** — active and passive. Learned from skill books (dungeon loot) or earned by doing (sustained dagger fighting yields Dagger Mastery). Mana costs and effects authored, never improvised.
+- **Inventory & Shop** — dimensional storage; a shop trading in **System gold** (from selling loot to the shop) for potions, gear, and keys. Parallel to the **USD economy**: mana crystals and cores sell for real money; rent still exists.
+- **Instant dungeons** — looted keys open private solo dungeons: combat/loot runs on demand with no BGM paperwork. The designed antidote to logistics-heavy sessions.
+- **Titles** — earned by feats, each granting an authored passive.
+- **Class quest** — see Section 5.
+
+Engine integration: reuse `band_health` per grade and grade-baselined damage (already proven in Reikon's profile). The profile is written in Chronicle Engine terms and governed by engine rules.
+
+---
+
+# 4. Danger, threat model, and pacing — the anti-Reikon laws
+
+World law at 1.0, addressing PT-002, PT-003, PT-001 respectively:
+
+1. **Every Gate is populated, by law.** A Gate of grade G contains a threat population derived by formula from G — trash beasts, at least one elite, a boss — on the grade-banded health/damage baselines. The simulation cannot improvise "empty"; an empty Gate is an authored anomaly with an in-world cause, and in this world an empty-looking dungeon is a *warning sign* (the double-dungeon lesson). No bestiary, no tactical/map subsystem: a threat needs only a grade, per the existing engine constraint.
+2. **Grades are assessments, not facts.** A BGM grade carries a stated confidence. On first entry, a low-confidence grade **rolls its true grade on the die**, with a distribution that includes worse-than-assessed. Mis-graded Gates are canonically how low-rank hunters die. Red-gate-style anomalies (no exit until cleared) exist in an authored anomaly table. High Perception removes the uncertainty legitimately by reading the true grade — a stat payoff with teeth.
+3. **Logistics compress to montage, by law.** BGM paperwork, licensing queues, and contract auctions exist in fiction but the profile directs the runtime to compress them by default. Beat-by-beat play is reserved for uncertain, opposed, or consequential action. If a scene has no way to go wrong, it is a sentence, not a session. This is compression, not a drama timer — danger still arises only causally (Consistency Before Drama, Decision 003, is preserved).
+4. **Fully lethal.** The die and the authored threat model decide; protagonist death hard-ends the campaign. Penalty zones can kill. Uncleared Gate timers genuinely lapse into dungeon breaks — standing world pressure the simulation surfaces honestly instead of inventing drama.
+
+---
+
+# 5. Class quest and hidden classes
+
+At an authored level threshold, the System issues the **Class Quest**: a brutal solo trial in a sealed instance, fully lethal, no retreat. Not a menu — the trial tracks *how* the protagonist fights (kill efficiency, tactical control, weapon breadth, endurance under pressure, positioning/evasion) and offers classes matching the demonstrated style. **At least two classes are always offered**, preserving real choice.
+
+Hidden class table at 1.0 — all unique on Earth, each authored with core mechanic, costs, growth path, and its own later class-quest evolution chain:
+
+1. **Shadowbinder** *(shadow-army path)* — extract shadows of defeated enemies as permanently loyal soldiers that persist, level, and can be stored and re-summoned. Army command scales with Intelligence. Offered for battlefield control.
+2. **Soulforged Armory** — bind essences of slain foes into weapons; a growing living arsenal where each bound weapon holds one ability of its source creature. Offered for weapon versatility.
+3. **Devourer** — consume beast cores to permanently steal fragments of their power (breath attack, stone-hide, regeneration…), stacking a self-built stat sheet. Offered for raw aggressive efficiency.
+4. **Echo Knight** — record instants of own combat; deploy time-echo copies that replay them. Offered for winning alone against many.
+5. **Riftwalker** — weaponized Gate-space: short-range rift-steps, micro-rifts that cut or redirect attacks, pocket-space ambushes, eventually personal gates for travel and infiltration. Offered for positioning and evasion.
+
+---
+
+# 6. Worldbook content plan (lean but real)
+
+- **Places (`210_PLACES.md`)** — Loop/lakefront high-density Gate corridor; an L-line district for low-rank contract work; a permanently quarantined dungeon-break scar (standing mystery and danger zone); guild HQs; BGM Region V office.
+- **Institutions (`institutions/`, 4 ledgers):**
+  - **Bureau of Gate Management — Region V** — federal regulator: licensing, grading, contract auctions.
+  - **Horizon Guild** — top-tier, publicly traded, S-rank ace.
+  - **Ironline Guild** — blue-collar rival, aggressive recruiter of low-ranks.
+  - **Windy City Hunters Coalition** — freelancer co-op; likely protagonist starting affiliation.
+- **Notable figures (`220_NOTABLE_FIGURES.md`)** — BGM regional director; each guild's master and ace; a licensed appraiser; a black-market core buyer. No protagonist — that is campaign creation.
+- **Resources (`240_RESOURCES.md`)** — the dual economy: USD (crystals, cores, contracts, rent) and System gold (shop-internal), with authored prices.
+- **Seed events (`260_SEED_EVENTS.md`)** — a mis-graded Gate incident brewing; a guild war over a Gate-rich district auction; a rising dungeon-break rate the BGM is quietly failing to explain (long-arc hook).
+
+---
+
+# 7. Repository changes
+
+- New `worlds/gatefall/`: `README.md`, `200_WORLD_BIBLE.md`, `206_WORLD_RULE_PROFILE.md` (the System, 1.0), `210_PLACES.md`, `220_NOTABLE_FIGURES.md`, `240_RESOURCES.md`, `260_SEED_EVENTS.md`, `institutions/` (4 ledgers). File naming and conventions follow the existing world skeleton (Reikon/Verra) and `templates/000_TEMPLATE_CONVENTIONS.md`.
+- `system/WORLDS_AND_CAMPAIGNS.md`: add the `worlds/gatefall/` row. Mark `campaigns/reikon_awakening_001/` dormant via its **per-campaign note** (the index's status vocabulary is fixed to *not started / in progress / closed or terminal*, so its status column stays `In progress` and the note records that the campaign is dormant by owner ruling, kept fully resumable). Reikon world files untouched otherwise.
+- `tools/validate_repository.ps1` and `tools/test_checkpoint_contract.ps1` must pass after the change.
+- Any registration the engine requires for new worlds (e.g., `system/ID_REGISTRY.md` identifiers) is included; the implementation plan enumerates these from the engine docs.
+
+## Out of scope
+
+- **Campaign creation** (protagonist, start city, opening incident) — its own step after the world exists.
+- **Deep authoring of European regions** — the world bible carries the global layer; a European start region is authored at campaign creation.
+- **Any change to Reikon's world files or engine rules** beyond the index status change above. Engine-general findings (PT-001's runtime-cadence half) remain on the engine backlog; Gatefall works around them at the world-profile level.
+
+## Success criteria
+
+1. Repository validation passes; the welcome-page index lists Gatefall and shows `reikon_awakening_001` dormant.
+2. The profile contains no unauthored magnitude reachable in ordinary play: every Gate grade yields a concrete threat population; every System feature has authored costs, rewards, and thresholds.
+3. A campaign can be created in Gatefall (Chicago or European start) without the world needing further authoring for its first sessions.

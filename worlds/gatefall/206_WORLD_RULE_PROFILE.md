@@ -7,7 +7,7 @@
 **Engine Compatibility:** 0.2.0; Data Model 0.1.1
 **Status:** Active
 
-**1.0 authors the System in full — the mechanical law of a Solo Leveling-framework world.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
+**1.0 authors the System in full — the mechanical law of a gate-and-System world of awakened hunters.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
 
 ---
 
@@ -138,7 +138,7 @@ XP: 0 → 100/100
 XP: 0 → 130/200
 ```
 
-Every number here is derived from Sections 3.1–3.4 and the population formula; a Runtime resolves the whole clear without a ruling.
+During the same fight an E beast lands a standard hit — one E standard-hit baseline, about a quarter of the Bearer's Health (Section 6.2). Because that single hit removes under 50% of his remaining Health and does not drop him below 25% of maximum, it inflicts **no injury** (Section 6.3); he takes the damage and fights on. Every number here is derived from Sections 3.1–3.4, 6.2–6.3, and the population formula; a Runtime resolves the whole clear — kills, XP, level-up, Mana spend, and whether a hit wounds — without a ruling.
 
 ---
 
@@ -223,27 +223,62 @@ Mana gates whether a skill can be *attempted*; it never decides the result. The 
 
 Every combatant in Gatefall — the Bearer, every NPC hunter, every monster — has **band health**: the engine's canonical current/maximum Health pool sized to its **effective grade band**. A creature's grade is a complete description of its durability; a "C-grade beast" has C-band health, a "B-rank hunter" has B-band health, and nothing further is authored per creature (Decision 020). The Bearer's effective band is the band his own capability sits in; NPC hunters and monsters use the band of their fixed grade.
 
-This is the single vitality quantity the world runs on. `GTF-OVR-002` makes the Bearer's Health a growing tracked pool, but its *scale* is still band health for his effective band — the override governs how his Health is recorded and restored, not a separate numbering system.
+This is the single vitality quantity the world runs on. `GTF-OVR-002` makes the Bearer's Health a growing tracked pool, but its *scale* is still band health for his effective band — the override governs how his Health is recorded and restored, not a separate numbering system. Damage, healing, and injury are all expressed as fractions of band health, so the world resolves combat in relative terms and needs no per-creature stat block (Decision 020).
 
-## 6.2 Natural Recovery
+## 6.2 Damage
 
-Untreated wounds heal on a tiered clock, as a fraction of the injury's severity cleared over calendar time:
+A hit's damage is built from the attacker's grade, the skill or strike that lands it, and the quality of the d100 result:
 
-| Injury severity | Untreated | Hospital / professional care |
+```text
+damage = standard_hit_baseline(attacker's effective grade)   # ¼ of the attacker's band health
+       × skill_multiplier                                    # the skill or strike ratio (Section 7)
+       × result_multiplier                                   # by degree of success, below
+       × (1 − total_reduction)                               # applied last, per GTF-OVR-002
+```
+
+- **Standard-hit baseline.** The baseline of a single ordinary hit is **one-quarter of the attacker's grade band health** (`band_health ÷ 4`). Damage rides the *attacker's* own band: a grade-C attacker's every hit scales to C-band health, a grade-A attacker's to A-band. Because a same-grade target has the same band health, a standard hit at standard success removes about **a quarter of a same-grade foe's Health** — so a matched fight takes roughly four clean hits, and the whole model resolves in relative terms without an authored HP table.
+- **Skill multiplier.** A skill or strike states its damage as a multiplier on the standard-hit baseline (Section 7): an unarmed or improvised strike is **×0.5**, a competent armed strike **×0.75**, and an authored skill carries its own ratio (Mana Bolt **×1.0**, and so on). A multiplier of ×1.0 *is* the standard-hit baseline.
+- **Result multiplier — by degree of success.** The degree of success the d100 yields (Rules Section 4; Decision 011) scales the hit:
+
+| Degree of success | Name | Multiplier |
 |---|---|---|
-| **Light** | 1 day | ½ day |
-| **Serious** | 1 week | ½ week |
-| **Critical** | 1 month | ½ month |
+| Partial success | graze | ×0.5 |
+| Success | standard | ×1 |
+| Strong success | strong | ×2 |
+| Critical success | critical | ×4 |
 
-Professional medical care **halves** the untreated time at every tier. Healing potions restore Health directly on the schedule authored in the economy (Section 12, per Anchor A7); a potion controls immediate bleeding and restores Health but does not by itself clear a wound's severity, which advances only through elapsed time and care.
+A miss deals no damage. **Critical tails are always live** (Decision 052): a natural critical is a critical hit that no modifier can remove, and a natural fumble lands nothing.
 
-## 6.3 Treatment Interaction
+- **Reductions apply last, and compose with `GTF-OVR-002`.** The die first resolves whether the hit lands and its degree; the multipliers above then set the raw magnitude; and only then is damage removed from Health **after** applicable reductions — exactly the "damage after reductions" order `GTF-OVR-002` declares. Reductions **multiply, never add** (`total_reduction = 1 − Π(1 − rᵢ)`, Section 7), so no stack of protections reaches immunity.
+
+Healing reuses the same unit: a skill that "restores one standard-hit baseline" restores `band_health ÷ 4` Health.
+
+## 6.3 Injuries
+
+Losing Health is not the same as taking a lasting **injury**. A hit inflicts an injury when it is heavy enough to mark the body:
+
+> A single hit that removes **≥ 50% of the target's remaining Health**, **or** drops the target **below 25% of its maximum Health**, inflicts an injury.
+
+The Runtime assigns the injury's **severity** from the engine's four-tier taxonomy (`010_ENGINE_RULES.md` Section 6.8 — **Minor · Moderate · Severe · Critical**) given the hit's magnitude and the established fiction, and tracks it under the engine injury model (location, type, ongoing effect, treatment). An injury's modifier-step and capability consequences (Rules Section 6.9) persist until it is healed; restoring Health does not by itself clear it.
+
+Untreated injuries heal on a tiered clock; professional (hospital) treatment **halves** the time at every tier:
+
+| Severity | Untreated | Hospital / professional care |
+|---|---|---|
+| **Minor** | 1 day | ½ day |
+| **Moderate** | 1 week | ½ week |
+| **Severe** | 1 month | ½ month |
+| **Critical** | 3 months, **with death risk absent treatment** | 6 weeks |
+
+A **Critical** injury left untreated may kill the target before it heals — stabilization is not optional. Healing potions restore Health directly on the schedule authored in the economy (Section 12, per Anchor A7); a potion controls immediate bleeding and restores Health but does not by itself clear a wound's severity, which advances only through elapsed time and care.
+
+## 6.4 Treatment Interaction
 
 Direct Health restoration (a potion, a skill, a facility) and severity recovery are independent: restoring Health to full does not automatically clear an injury condition, and clearing a condition does not automatically restore Health. A fictional label ("bandaged", "rested") never upgrades care on its own; care advances only through a resolved treatment appropriate to the injury. New damage applies immediately and may worsen severity.
 
-## 6.4 Death Is Final
+## 6.5 Death Is Final
 
-**Death is death.** No resurrection, revival, or reincarnation exists in Gatefall at Profile 1.0. When the Bearer dies, the death is resolved and recorded normally, all System state remains with the dead Bearer and transfers to no one, and **the campaign hard-ends** — it becomes terminal under the Engine Rules. The System is patient on a scale its host is not; that a successor may one day be chosen is a matter for the world's hidden canon, never a continuation of the dead character and never a promise play may rely on. A Bearer who dies in an E-Gate is as dead as one who dies in an S-Gate.
+**Death is death.** No resurrection, revival, or reincarnation exists in Gatefall at Profile 1.0. When the Bearer dies, the death is resolved and recorded normally, all System state remains with the dead Bearer and transfers to no one, and **the campaign hard-ends** — it becomes terminal under the Engine Rules. The System is patient on a scale its host is not; that a successor may one day be chosen is a matter for the world's hidden canon, never a continuation of the dead character and never a promise play may rely on. A Bearer who dies in an E-Gate is as dead as one who dies in an S-Gate. A **Critical** injury (Section 6.3) that goes untreated is one of the ordinary roads to that end.
 
 ---
 
@@ -261,7 +296,7 @@ A skill enters the Bearer's ledger by one of three routes, and only these:
 
 ## 7.2 Skill Entries
 
-Every skill entry carries: **name · rank (E–S) · Mana cost · effect**. Effects are expressed as a modifier-step change, a fraction of band health as damage or healing, a damage-reduction fraction, or a stated capability — the same vocabulary the rest of this profile uses, so no skill needs a bespoke subsystem. Active skills cost Mana and are gated by it (Section 5.3); passive skills cost 0 and are always in effect.
+Every skill entry carries: **name · rank (E–S) · Mana cost · effect**. Effects are expressed as a modifier-step change, a multiple of the **standard-hit baseline** for damage or healing (Section 6.2), a damage-reduction fraction, or a stated capability — the same vocabulary the rest of this profile uses, so no skill needs a bespoke subsystem. Active skills cost Mana and are gated by it (Section 5.3); passive skills cost 0 and are always in effect.
 
 ## 7.3 Starting Skill Table
 
@@ -270,13 +305,13 @@ These eight skills are what a rune can teach at E- and D-tier. Costs are in Mana
 | Skill | Rank | Mana cost | Effect |
 |---|---|---|---|
 | **Sprint** | E | 3 | +1 modifier step on movement, pursuit, and distance-closing actions for one exchange. |
-| **Dagger Mastery** | E | Passive | Bladed light-weapon strikes deal 0.75× band health instead of the 0.5× of an improvised strike. |
-| **Mend** | E | 6 | Restore 0.25× the Bearer's band health; controls bleeding but does not clear a wound's severity. |
+| **Dagger Mastery** | E | Passive | Bladed light-weapon strikes deal a **×0.75** skill multiplier on the standard-hit baseline (Section 6.2), up from the ×0.5 of an improvised strike. |
+| **Mend** | E | 6 | Restore Health equal to **one standard-hit baseline** (¼ band health, Section 6.2); controls bleeding but does not clear a wound's severity. |
 | **Stone Skin** | D | 4 | 30% physical damage reduction while sustained; ends when Mana lapses or the Bearer drops it. |
 | **Flash Step** | D | 8 | Close or break line-of-sight distance instantly once, granting +1 modifier step to the follow-up action. |
 | **Keen Sense** | E | 2 | +1 modifier step on detection: spotting ambush, hidden foes, or anomaly for the scene. |
 | **Silent Step** | E | 3 | +1 modifier step on stealth and unseen-approach actions for the scene. |
-| **Mana Bolt** | E | 5 | A ranged bolt dealing 1.0× band health on a hit; the die resolves whether it lands. |
+| **Mana Bolt** | E | 5 | A ranged bolt with a **×1.0** skill multiplier — one standard-hit baseline (Section 6.2) on a standard success; the die resolves whether it lands and its degree. |
 
 Reductions from Stone Skin and any other source **multiply, never add** (`total = 1 − Π(1 − rᵢ)`), so no stack of skills reaches immunity.
 

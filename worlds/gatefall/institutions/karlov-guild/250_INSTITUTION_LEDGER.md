@@ -46,7 +46,7 @@ To keep winning Prague's hardest, most prestigious contracts without selling the
 
 ### Current Tensions
 
-Karlov is under a three-way foreign siege it did not ask for and cannot outspend: Horizon Guild — Europe (ENT-000105) is hiring away its talent city by city, while Brandhof and Zenith Group both circle its clients and contracts with money Karlov has no answer for on paper. Inside the guild, that pressure is exactly what has the Family and the New Contracts Desk at odds — whether Karlov survives this decade by refusing every one of the three, or by finally striking a deal with whichever of them offers the least humiliating terms.
+Karlov is under a three-way foreign siege it did not ask for and cannot outspend: Horizon Guild — Europe (ENT-000105) is hiring away its talent city by city, while Brandhof and Zenith Group both circle its clients and contracts with money Karlov has no answer for on paper. The routine poaching is the visible siege, but the guild's single greatest asset — and the real prize under all three approaches — is its standing contract-by-choice with the nation's one S-rank, Tereza Blažková (ENT-000114), who cannot be compelled and clears under the Karlov name because she chooses to; it is the exception that makes the whole siege worth mounting, since her walking would gut the guild in a single signature. Inside the guild, that pressure is exactly what has the Family and the New Contracts Desk at odds — whether Karlov survives this decade by refusing every one of the three, or by finally striking a deal with whichever of them offers the least humiliating terms.
 
 ```yaml
 id: ENT-000104

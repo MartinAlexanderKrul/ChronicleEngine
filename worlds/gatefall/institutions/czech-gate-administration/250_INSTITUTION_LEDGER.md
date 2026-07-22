@@ -31,7 +31,7 @@ The Czech Gate Administration is the small national agency that grades, licenses
 
 ### Interior Factions
 
-**The Retention Office** — the small, closely guarded liaison desk upstairs whose sole job is managing the national S-rank: which postings they'll take, which guilds they'll be lent to, and how hard to push back when Zenith Group comes calling with money the CGA can never match. It gets first call on whatever discretionary budget exists.
+**The Retention Office** — the small, closely guarded liaison desk upstairs whose sole job is managing the national S-rank: which postings they'll take, and how hard to push back when Zenith Group comes calling with money the CGA can never match. The S-rank cannot be compelled and has chosen a standing contract with Karlov Guild (ENT-000104), which the Office tolerates precisely because it keeps her in the country and gives it a local frame to manage around — any loan-out abroad runs through and with Karlov's cooperation rather than over the guild's head. It gets first call on whatever discretionary budget exists.
 
 **The Grading Corps** — the career licensing and appraisal staff who grade the country's Gates and process its roughly 800 licensed hunters, and who increasingly resent that so much of the agency's limited money and political capital goes to protecting one person while their own understaffed counters run a longer line every year.
 

@@ -725,13 +725,14 @@ It has no freeform off-ledger reasoning. Its outputs come only from declared tri
 
 The System never decides what is true. It may decide **when to say it**.
 
-- **Tier 1 — Mandatory (unprompted; a pure function of Bearer state).** Fires the instant the condition holds, with zero discretion:
+- **Tier 1 — Mandatory (unprompted; a pure function of state the System already holds).** Fires the instant the condition holds, with zero discretion:
   - Mana, Health, or XP changes → the matching compact line (Section 14.5);
   - an XP threshold is crossed → the `LEVEL UP` block, granting per Section 3.2 (worked example in Section 3.7);
   - the daily quest is issued, completed, or failed → its block (Section 8.1, Section 15.7);
   - the daily window lapses incomplete → the penalty warning, then the transfer notice (Section 15.7);
   - a title is earned → the `TITLE EARNED` block (Section 15.7);
-  - a pool crosses a declared danger threshold (e.g., 0 Mana, Section 5.3) → a warning.
+  - a pool crosses a declared danger threshold (e.g., 0 Mana, Section 5.3) → a warning;
+  - a creature of resolved grade (Section 14.4) enters the Bearer's perception → its **designation color** renders inline, red and pulsing for a creature two or more bands above him — the System's only unprompted tactical warning (Section 14.6).
 - **Tier 2 — Permitted (bounded discretion; a declared precondition must hold, the Runtime picks the beat).** Appraisal when an unidentified item or foe enters perception and Intelligence permits it (Section 4.4, Analyst); a hidden-quest pointer within proximity of an undiscovered thing; an urgent-quest offer when a nearby crisis meets its trigger; a danger warning while the condition holds. The Runtime picks the moment; it never picks whether the precondition is met.
 - **Tier 3 — Prohibited.** The System may never fire to supply an uncertain outcome, to describe a world-fact (Section 14.2), to author the Bearer's decision, or **with no declared precondition at all**.
 
@@ -754,6 +755,27 @@ HP: 34 → 21/40
 ```
 
 Render each changed quantity once per resolved action; if one action resolves several monsters, aggregate that action's change and notify once. The bracketed blocks (Section 8.1, Section 15) are reserved for messages that carry more than a number. This is the A10 notification contract, identical to Section 8.2 — the two must never diverge.
+
+## 14.6 Threat-Color Legibility (Designation Colors)
+
+The System colors every creature the Bearer perceives. A **designation color** marks each creature's threat relative to the Bearer's own **effective grade band** (Section 6.1), and it is the single tactical read the System volunteers unprompted. It is exact because it is drawn from the creature's **true grade**, not its BGM/CGA grade card: where the world's grading is wrong (Section 9.5), the color is still right, because the System reads the resolved truth the instruments only estimate.
+
+The creature's band relative to the Bearer's effective band sets the color:
+
+| Creature's band vs. the Bearer's effective band | Designation color |
+|---|---|
+| Two or more bands **beneath** | **gray** |
+| One band **beneath** | **white** |
+| **Same** band | **yellow** |
+| One band **above** | **orange** |
+| Two or more bands **above** | **red** — *pulses* |
+
+- **Red pulses; everything else is steady.** A **red** designation — a creature two or more bands above the Bearer — is the System's **only unprompted tactical warning** (Section 14.3, Tier 1): it pulses to mark a threat that can kill him outright. Gray, white, yellow, and orange render steady and volunteer nothing beyond the color itself.
+- **Derived from true grade; never wrong, never guessed.** The color follows the creature's **true grade**, resolved per Section 9.5 and known to the System per the information boundary (Section 14.4). The System never mis-colors a creature even when its posted grade is a mis-grade — the colors are how the Bearer *experiences* the true-grade resolution Section 9.5 performs on entry. Equally, the System colors nothing whose true grade it does not yet hold: an unconfirmed Gate's population is **uncolored until first entry resolves it** (Section 9.5), because the System asserts no grade it has not been given (Section 14.2). Coloring is a rendering of resolved knowledge, never a preview of it.
+- **Bearer-only, always — an edge and an exposure.** Like every System output the coloring is perceptible to the Bearer alone (Section 14.4). Ordinary hunters see nothing; to a party, the Bearer is a man who glanced at a beast and knew, a beat early, exactly how much it outclassed him. That is a quiet informational edge — and a standing exposure risk (Section 19): a Bearer who backs off a beast his card says he should crush, or holds his ground against one his card says should rout him, is visibly acting on knowledge the world cannot account for.
+- **Against effective band, so the palette shifts as he grows.** The comparison is to the Bearer's **effective** band (Section 6.1) — where his true capability sits — not his carded rank. As he grows (Section 3), the same creature recolors: an A-grade threat that pulsed red at low level cools to orange, then yellow, then white as his effective band climbs toward and past it. The palette is therefore also a growth mirror — the world reading as less lethal exactly as fast as he becomes more so.
+
+**In prose play.** A creature's designation color is stated **inline on first perception** of that creature in a scene — the first time the Bearer sees it, the narration names its color (a "red-designated alpha," a "gray knot of E-beasts") — and is not repeated each exchange unless the Bearer's effective band changes mid-scene (a level-up, Section 3.2) and recolors it. It has no `/system` panel of its own: like the compact lines of Section 14.5, it surfaces only at the moment it becomes true — here, the moment the Bearer's eyes reach a creature the System can already grade.
 
 ---
 

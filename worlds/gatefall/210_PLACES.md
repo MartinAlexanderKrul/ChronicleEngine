@@ -408,3 +408,5 @@ canonical_state:
 # Global
 
 Chicago and Prague are written to run independently — different agencies, different guilds, different pressures — but they are not written as unrelated. Horizon Guild's European arm keeps a Prague branch that is steadily hiring away local talent, the same guild whose Chicago tower anchors the other side of this ledger; it is the one institutional thread the setting deliberately runs between both cities, so that a figure, a contract, or a rumor started in one can plausibly surface in the other. No Place or Settlement/Kingdom entity is allocated to this section; it exists to hold that framing note rather than any object of its own.
+
+One further global reference lives in the World Bible rather than here: **the Jiu Valley Exclusion**, the Romanian region lost to an S-class dungeon break in 2020 and quarantined since (`200_WORLD_BIBLE.md` Section 5). It is authored as world-layer texture — the shared catastrophe every serious hunter can name, and a standing raid-arc destination — and, like this section, is deliberately allocated no Place entity.

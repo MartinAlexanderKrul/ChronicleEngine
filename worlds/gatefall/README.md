@@ -44,10 +44,10 @@ The world is original throughout — original names, characters, institutions, a
 ## File Map
 
 **Core World Files:**
-- `200_WORLD_BIBLE.md` — Setting and narrative canon: the Gatefall event, the rules everyone knows, hunter-scale numbers, the US and European layers, Chicago and Prague at national depth, common knowledge by tier, the System's public (non-)existence, and an owner-only hidden-truth section not for players
+- `200_WORLD_BIBLE.md` — Setting and narrative canon: the Gatefall event, the rules everyone knows, hunter-scale numbers, the World Ranking of S-ranks, the US and European layers, Chicago and Prague at national depth, the Jiu Valley Exclusion (the quarantined catastrophe region abroad), common knowledge by tier, the System's public (non-)existence, and an owner-only hidden-truth section not for players
 - `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.0 (authoritative).** Every mechanic: levels/XP, stats, mana, vitality and injury, skills, the daily quest and penalty zones, Gates, loot, economy, parties, the System's behavioral contract, the `/system` command and its panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-grading, pacing and lethality
 - `210_PLACES.md` — Geography: Chicago (Lakefront Gate Corridor, Red Line Corridor, the Cicero break scar, Horizon Tower, the BGM Region V field office) and Prague (Old Town Gate Cluster, Metro Corridor, the Libeň break scar, Karlov House, CGA headquarters)
-- `220_NOTABLE_FIGURES.md` — Twelve NPCs, six per city, each authored with a want, a fear/flaw, a secret, a live agenda, and named relationships — guild masters, regulators, an S-rank, appraisers, and black-market contacts
+- `220_NOTABLE_FIGURES.md` — Fourteen NPCs — twelve city figures (six per city) plus two world-ranked S-ranks (the highest-ranked American and Brandhof's German ace) — each authored with a want, a fear/flaw, a secret, a live agenda, and named relationships: guild masters, regulators, S-ranks, appraisers, and black-market contacts
 - `240_RESOURCES.md` — The dual economy's material side: mana crystals, beast cores, graded hunter gear, and System-shop consumables, priced by grade
 - `260_SEED_EVENTS.md` — Brewing situations ready to surface in play: a Chicago mis-graded Gate and a guild-war auction, a Prague re-grading mystery and a three-way foreign bidding war for Karlov Guild, and the global rising break-rate hook
 

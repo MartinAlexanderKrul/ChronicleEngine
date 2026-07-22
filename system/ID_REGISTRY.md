@@ -24,7 +24,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000122 |
+| Entity | `ENT-` | Persistent Entity | ENT-000124 |
 | Record | `REC-` | Canonical Record | REC-000073 |
 | Event | `EVT-` | Event | EVT-000055 |
 | Relationship | `REL-` | Relationship | REL-000061 |
@@ -130,6 +130,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000072 | Record | Gatefall resources ledger: `worlds/gatefall/240_RESOURCES.md` |
 | EVT-000051 - EVT-000055 | Event | Gatefall seed events (`worlds/gatefall/260_SEED_EVENTS.md`): the Red Line Reading — an unconfirmed D-Gate reading worse than posted (051); the Auction War — Ironline vs Horizon fought through the clearance-contract auction (052); the Old Town Climb — a Gate re-graded upward twice in one cycle, unexplained (053); the Karlov Tilt — the CGA favoring Karlov Guild over a stronger Horizon Europe bid because it holds Blažková's contract (054); the Steepening Curve — the worldwide break-rate acceleration confirmed at regulator tier and left publicly unexplained (055), consistent with `200_WORLD_BIBLE.md` Section 9 without revealing it |
 | REC-000073 | Record | Gatefall seed events ledger: `worlds/gatefall/260_SEED_EVENTS.md` |
+| ENT-000123 - ENT-000124 | Entity | Gatefall world-ranked S-rank figures appended to `worlds/gatefall/220_NOTABLE_FIGURES.md` (REC-000071): Reid Calloway (123), the highest-ranked American and IGR World Ranking #7, Keystone Guild; Lukas Reinhardt (124), Brandhof's ace and IGR #8, the nearest world-ranked hunter to Prague. Their guilds (Keystone, Brandhof) are bible-level institutions with no entity, so both memberships are prose/canonical_state only and mint no relationship |
 
 ---
 

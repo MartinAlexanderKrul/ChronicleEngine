@@ -3,11 +3,11 @@
 **Ledger:** Canonical Record (`011` Section 8) holding Gatefall's notable Character entities and their institutional memberships.
 **Status:** Active — instantiated as canonical world content (2026-07-22).
 
-Twelve figures — six in Chicago, six in Prague — each authored under the character depth law: every figure is a person mid-story, sitting inside a standing institutional tension and on a side of it, not a role-holder waiting to be queried. Each carries a **Want**, a **Fear/Flaw**, a **Secret**, an **Agenda (this month)**, and **Relationships** by identifier; a paragraph of voice and presence; and an Object Block. Secrets are written to be load-bearing: most connect to the four tensions play can detonate — the three-way foreign siege of Karlov (the Karlov bid), the unpublished break-rate curve (the clock), the exposure and re-grading pipeline, and the black-market flow of cores and artifacts westward out of Prague.
+Fourteen figures — twelve city figures (six in Chicago, six in Prague) and two **world-ranked S-ranks** appended below (the highest-ranked American and Brandhof's German ace) — each authored under the character depth law: every figure is a person mid-story, sitting inside a standing institutional tension and on a side of it, not a role-holder waiting to be queried. Each carries a **Want**, a **Fear/Flaw**, a **Secret**, an **Agenda (this month)**, and **Relationships** by identifier; a paragraph of voice and presence; and an Object Block. Secrets are written to be load-bearing: most connect to the standing tensions play can detonate — the three-way foreign siege of Karlov (the Karlov bid), the unpublished break-rate curve (the clock), the exposure and re-grading pipeline, the black-market flow of cores and artifacts westward out of Prague, and the contested politics of the World Ranking (Bible Section 3).
 
 Clue-adjacent knowledge is carried only at the level of the World Bible's three planted clue-lines (the graveyard brand, the doubling break-rate chart, the audition's second mana signature). No figure holds or hints at the owner-only explanation beneath those clues.
 
-The Brandhof and Zenith Group leadership named in the World Bible remain bible-level and are deliberately allocated no entities here. The two black-market figures hold **no institutional membership** and carry no membership relationship; the statement is explicit in each block.
+The Brandhof and Zenith Group leadership named in the World Bible remain bible-level and are deliberately allocated no entities. The two world-ranked figures below are Brandhof- and Keystone-affiliated hunters, but their guilds are likewise **bible-level institutions with no entity** — each hunter's membership is expressed in canonical_state and prose only, and mints no membership relationship. The two black-market figures similarly hold **no institutional membership** and carry no membership relationship; the statement is explicit in each block.
 
 All figures are original to Gatefall. No real person is depicted.
 
@@ -39,6 +39,8 @@ subjects:
   - ENT-000116
   - ENT-000117
   - ENT-000118
+  - ENT-000123
+  - ENT-000124
   - REL-000052
   - REL-000053
   - REL-000054
@@ -565,9 +567,95 @@ canonical_state:
 
 ---
 
+# World-Ranked
+
+Two world-ranked S-ranks (Bible Section 3), authored at the same depth as the city figures. Neither is resident in Chicago or Prague, but both press on threads that are: the American on Horizon's global ambition and the Crane fading-ace secret and the World Ranking's politics; the German on the three-way foreign siege of Karlov. Their guilds — Keystone (New York) and Brandhof (Frankfurt) — are bible-level institutions with no entity, so each hunter's membership is carried in canonical_state and prose only and mints no relationship.
+
+## Reid Calloway — Keystone Guild (world-ranked, IGR #7)
+
+**Name / rank / role:** Reid Calloway, S-rank, **world-ranked #7** on the International Gate Registry list (Bible Section 3). Ace of Keystone Guild, New York, and the **highest-ranked American hunter** — a household name, the public face of American Gate strength, and one of the eleven S-ranks in the country (distinct from Chicago's two plain-S residents).
+
+**Want:** One undeniable clear — a lead or solo close so unambiguously hard that no agency, rival, or analyst can call his ranking political. He wants to be the American #1 *on the merits*, not by billing.
+
+**Fear/Flaw:** He knows better than any critic that part of his record is soft — federally-assigned marquee clears staged to look harder than they were — and his flaw is that the fear of being exposed as the weakest of the ten drives him toward exactly the reckless headline clears that could kill him or crack the story.
+
+**Secret:** He has been briefed at federal level on the unpublished **break-rate projection** — the same doubling curve the regulators hold — and shown the classified after-action files on the **Jiu Valley Exclusion** (Bible Section 5). He knows the country's S-ranks are being husbanded as a strategic reserve against a date nobody will name, and he knows his own world-ranking is partly a **BGM-managed bluff**, meant to project an American strength the real numbers don't support. He holds no explanation for *why* the curve climbs — only that it does — and he has told no one that the billing he wears is a fiction he is complicit in. He clears to outrun both facts.
+
+**Agenda (this month):** Land a genuine headline clear — pushing his handlers for the hardest contract they will green-light — while managing the BGM's insistence that he take no risk that could cost the country its poster hunter, a tug-of-war the rising break rate sharpens by the week.
+
+**Relationships:** Preston Vaughn (ENT-000108, Horizon Guild) — crossing into a rival American major — who courted Calloway for years as the second-S-rank prize before pivoting his ambition to Blažková, and whom Calloway regards with wary contempt. Dominic Crane (ENT-000109, Horizon Guild) — crossing into another guild and another American S-rank — the Chicago ace who privately measures his own fading edge against Calloway's billing; the two have shared a raid and an unspoken understanding of what it costs to be a number instead of a man, and Calloway is the benchmark that sharpens Crane's fear.
+
+Calloway is louder in public than in a room — the swagger is real on camera and thin off it, a man performing a certainty he audits privately every night. One-to-one he is blunt, quick, and unexpectedly tired, more interested in what you actually cleared than in what your card says, because he of all people knows the two can diverge. A scene with him runs hot and candid until the subject turns to his own ranking, where he goes flat and careful, defending a number he is not sure he earned. He is generous to working hunters and merciless toward the handlers and analysts who made him a symbol — the resentment of a man who suspects he is a marketing asset first and a hunter second.
+
+```yaml
+id: ENT-000123
+canonical_record: REC-000071
+schema_version: "0.1.1"
+status: active
+provenance:
+  source: ruling
+  event_time: "2026-07-22"
+  record_time: "2026-07-22T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Reid Calloway"
+    quality: current
+  - name: "the American #1"
+    quality: current
+canonical_state:
+  role: "S-rank ace of Keystone Guild (New York); world-ranked #7 on the International Gate Registry and the highest-ranked American hunter. Keystone Guild is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
+  capabilities: "S-rank combat; the 'Overrun' escalating force-discipline; national-symbol status and the federal access that comes with it."
+  personality: "Publicly the brand, privately auditing himself; blunt, tired, resentful of his own handlers."
+  knowledge: "Briefed at federal level on the unpublished doubling break-rate projection and the classified Jiu Valley Exclusion after-action files; knows the S-rank corps is husbanded as strategic reserve against a projected date, and that his own world-ranking is partly a BGM-managed bluff. Holds no explanation for why the curve climbs."
+```
+
+---
+
+## Lukas Reinhardt — Brandhof (world-ranked, IGR #8)
+
+**Name / rank / role:** Lukas Reinhardt, S-rank, **world-ranked #8** on the International Gate Registry list (Bible Section 3). Brandhof's flagship ace, based in Frankfurt — the face of the continent's largest guild and the **nearest world-ranked hunter to Prague**, which makes him a standing presence over the Czech siege even when he is not in the city.
+
+**Want:** To make Brandhof — and himself — the name the continent calls when a break goes past containment: the guild that owns the hardest work in Europe, permanently, the way it already owns the disciplined middle.
+
+**Fear/Flaw:** He commanded a containment rotation at the **Jiu Valley Exclusion** and watched an uncontained S-break take ground and hunters faster than doctrine said it could. His flaw is that the memory has hardened into a siege-everything caution that reads as discipline and is partly trauma — he cannot let a Gate be anything but a fortress problem, and it costs him speed and the patience of the hunters under him.
+
+**Secret:** He knows Brandhof's real objective in Prague is **not Tereza Blažková**. While Horizon Europe and Zenith exhaust themselves bidding on the one S-rank, Brandhof intends to let them — and then acquire **Karlov Guild itself**: its municipal relationships, its heritage-clearance doctrine, its century of standing, bought for a fraction once the guild is hollowed by the fight over its hunter. It is a flanking play Reinhardt designed and is quietly executing. Everyone in Prague believes three internationals are three bidders for one hunter; only Reinhardt knows Brandhof is playing a different board — which, if the CGA or Karlov read it in time, collapses the whole approach.
+
+**Agenda (this month):** Keep Brandhof visibly in the Blažková bidding as cover, while advancing the real approach to Karlov's future — probing, through intermediaries, which of Karlov's people would sell and at what price — without Horizon Europe or the CGA reading the feint for what it is.
+
+**Relationships:** Ondřej Dušek (ENT-000117, Horizon Guild — Europe) — crossing into the rival foreign guild — his opposite number in the Prague siege, whom he is content to let believe the two of them are simply competing for the same S-rank. Tereza Blažková (ENT-000114, Karlov Guild) — crossing into Karlov's roster — the hunter Brandhof publicly courts as cover, and whom Reinhardt privately rates the most over-managed talent in Europe.
+
+Reinhardt is precise, courteous, and immovable in the way of an engineer who has costed every outcome and does not enjoy being hurried. He speaks in critical paths and fallback lines, sketches a Gate as a site plan, and treats enthusiasm as a variable to be managed down. A scene with him feels like being briefed by a very good field commander who has decided that caution is a moral position — he is impressive, genuinely expert, and a little cold, and the cold has a source he will not discuss. Ask him about the Jiu and the site-plan manner stops for exactly one beat before he changes the register to logistics.
+
+```yaml
+id: ENT-000124
+canonical_record: REC-000071
+schema_version: "0.1.1"
+status: active
+provenance:
+  source: ruling
+  event_time: "2026-07-22"
+  record_time: "2026-07-22T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Lukas Reinhardt"
+    quality: current
+canonical_state:
+  role: "S-rank ace of Brandhof (Frankfurt); world-ranked #8 on the International Gate Registry and the nearest world-ranked hunter to Prague. Brandhof is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
+  capabilities: "S-rank combat; the 'Bastion' barrier-and-siege discipline; command of Brandhof's methodical clearance doctrine; a containment veteran of the Jiu Valley Exclusion."
+  personality: "Precise, courteous, immovable; a siege-everything caution that is half doctrine and half trauma."
+  knowledge: "Knows Brandhof's true Prague objective is the acquisition of Karlov Guild itself, not the S-rank the three internationals appear to be bidding for; is running the Blažková courtship as a feint."
+```
+
+---
+
 ## Memberships
 
-Ten membership relationships bind the institution-affiliated figures to their institutions. The two black-market figures (ENT-000112 "Deacon"; ENT-000118 "Sova") hold no institutional membership by design and appear in no relationship here.
+Ten membership relationships bind the institution-affiliated figures to their institutions. The two black-market figures (ENT-000112 "Deacon"; ENT-000118 "Sova") hold no institutional membership by design and appear in no relationship here. The two world-ranked figures (ENT-000123 Reid Calloway, Keystone Guild; ENT-000124 Lukas Reinhardt, Brandhof) do belong to guilds, but those guilds are bible-level institutions with no entity, so their memberships are carried in canonical_state and prose only and mint no relationship here either.
 
 ```yaml
 id: REL-000052

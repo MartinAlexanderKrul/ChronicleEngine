@@ -79,6 +79,29 @@ Filled out at national depth:
 
 A licensed hunter is therefore a specific, self-selected minority: the awakened who chose the most dangerous way to use what they have.
 
+## The World Ranking
+
+S-rank is the top of the fixed ladder, but it is not flat. Of the ~200 S-ranks alive, ten are **world-ranked** — individually numbered, one through ten, on a single global list the **International Gate Registry (IGR)** publishes and revises. The IGR is the Geneva-based inter-agency clearinghouse the national agencies and the European Gate Council all feed their verified clearance records into; the World Ranking is its most-read product and, unofficially, the most argued-over document in the profession. A world-ranked hunter is a household name on every continent — a de facto tier above plain S, spoken of the way the last century spoke of heavyweight champions.
+
+**What the number is built on.** The IGR ranks on two measured inputs and nothing else it will admit to: a hunter's **verified clearance record** (grade and difficulty of Gates closed, audited against agency filings) and their **measured output ceiling** (the peak mana throughput the appraisal cells read at assessment). Everything else — reputation, media, a nation's lobbying — is supposed to stay out of it, and everyone knows some of it gets in anyway.
+
+**It is contested, and the contest is political.** Placements are disputed constantly: opaque, militarized states (Russia, China) file almost nothing, so their entries are IGR *estimates* carried under standing objection, suspected by rivals of being either padded or under-read. Agencies lobby for their own nationals. And the American slot is the sorest of all — **no world-ranked hunter has ever held the American #1 billing without dispute**, because the United States has more to prove and a habit of proving it with staged, federally-assigned clears that critics say inflate the record. The list is real, the top handful are genuinely uncontested, and the seams below that are where the arguing lives.
+
+**Below the ten.** An S-rank outside the ten is still off the human scale — a strategic national asset — but is not "world-ranked" and does not carry a number. The Czech Republic's Tereza Blažková (Section 6, `220_NOTABLE_FIGURES.md`) sits somewhere in the low teens on the IGR list: nationally seismic, the single fact Czech Gate policy is built around, and globally a mid-S hunter who has never cracked the ten. The two resident S-ranks of Chicago are likewise plain S, unnumbered, and known worldwide only to the trade.
+
+**The current ten**, as the trade recites them (rank · name · country · guild/affiliation · signature · who they are):
+
+1. **Seo Jae-won** · South Korea · Hanul Guild, Seoul · *Ninth Blade*, a stance-dueling swordsmanship no other S-rank has beaten in single combat · the undisputed world #1, a recluse who clears alone, endorses nothing, and is the one placement no agency contests.
+2. **Kaito Arima** · Japan · Tenryū Association, Osaka · *Thunderfold*, a speed-strike cascade that ends a fight in the opening exchange · the oldest world-ranked hunter still active and the doctrine-author whose training manuals the rest of the world drills from.
+3. **Mikhail Ostrovsky** · Russia · state hunter corps (no guild) · *Deadweight*, a gravity-suppression field that pins a whole chamber to the floor · Russia releases only what flatters him, so the IGR carries his rank under a permanent dispute over an unverifiable clearance record.
+4. **Zhao Wenqing** · China · state Gate service (no publicly traded guild) · *Cinnabar Ward*, a talismanic zoning discipline that turns a dungeon's own geometry against it · China publishes almost nothing, making her placement the IGR's single most-contested estimate — Western agencies quietly believe she is under-ranked.
+5. **Imogen Hart** · United Kingdom · Zenith Group, London · *Arrears*, a mark-and-collect technique that defers a strike's full damage to a moment of her choosing · Zenith's marquee poach, acquired at a fee that reset the S-rank market and the boardroom's proof its chequebook strategy works.
+6. **Camille Aubrac** · France · Lumière Guild, Paris · *Prism Veil*, light-refraction that blinds and scatters a whole pack at once · a telegenic hunter who turned a world ranking into an endorsement empire — admired by the public and resented inside the trade.
+7. **Reid Calloway** · United States · Keystone Guild, New York · *Overrun*, an escalating force-discipline that out-damages anything it can reach · the highest-ranked American and the most disputed name in the ten (full entry in `220_NOTABLE_FIGURES.md`).
+8. **Lukas Reinhardt** · Germany · Brandhof, Frankfurt · *Bastion*, a fortress-summoning barrier-and-siege discipline that walls a break and grinds it down · Brandhof's flagship and the nearest world-ranked hunter to Prague (full entry in `220_NOTABLE_FIGURES.md`).
+9. **Arjun Nair** · India · Ashoka Collective, Mumbai · *Ashfall*, an area-denial of searing motes that attritions a swarm to nothing · rose through the world's largest under-served Gate market and carries a subcontinent's expectations as its first world-ranked hunter.
+10. **Beatriz Fontes** · Brazil · Cruzeiro Guild, São Paulo · *Undertow*, a momentum-reversal grappling discipline that turns a charge into a throw · a São Paulo folk hero whose ranking is a national cause, and the newest name on the list.
+
 ---
 
 # 4. The United States
@@ -111,6 +134,14 @@ The major internationals operating across Europe, one line each:
 **East Asia.** The densest Gate region on Earth and the most mature hunter culture. Japan and South Korea produced early S-ranks and export doctrine, training methods, and gear the rest of the world copies; their agencies are well-funded and their guilds disciplined. China runs a state-controlled model — no publicly traded guilds, hunters as national servants — and publishes almost nothing, which unsettles everyone downwind of its numbers.
 
 **The rest of the world, in brief.** Where states are strong the licensed model holds; where they are weak, Gates go uncleared and breaks are simply endured, and the map of who dies to Gates tracks the map of who was already poor. Russia keeps its hunter strength opaque and militarized. The Gulf states import S-ranks like any other luxury. Across the global south, under-graded Gates and thin agency coverage make the real death toll far higher than the reported one — a quiet scandal the European Gate Council debates and does nothing about.
+
+## The Jiu Valley Exclusion
+
+The one place the whole trade means when it says *the Exclusion* is a river valley in southern Romania. In **2020** an S-Gate opened in the **Jiu Valley** — a dense chain of old mining towns strung along a single road between the mountains — and its timer ran out. The break that followed was the worst single Gate disaster since the Gatefall's own first months: an S-class interior emptied into a valley of a quarter-million people with one way in and one way out, and the evacuation and the containment both failed. The official Romanian and European Gate Council count settled at roughly **31,000 dead**; the hunters who worked the cordon believe the true figure is higher, because the valley was never fully searched. **Multiple S-ranks died in the containment attempts** — thrown at a break already past saving — and the world's count of the living has reflected those losses ever since; the ~200 S-ranks alive today is the number *after* the Jiu.
+
+The valley has been sealed for six years: fenced, patrolled, evacuated of everyone who survived, and worked only by rotating multinational **containment operations** that hold the perimeter and thin what still spills from the wound the Gate left. Nothing has re-grown there that a family could return to. The Exclusion is why break timers are taken seriously in every agency on Earth — the proof, in one valley, of what an S-break does when the clock is allowed to run — and it is why S-ranks are counted and husbanded as strategic assets rather than spent: a nation that loses one cannot simply measure another. Among serious hunters it is the shared wound of the profession. Ask around any guild in Chicago or Prague and someone knew someone who went to the Jiu on a containment rotation and did not come home.
+
+The Exclusion **predates the break rate's visible steepening**; the world reads it as a discrete catastrophe — one Gate, one failed clock, one valley — not as a point on a trend, because in 2020 there was not yet a trend anyone could see. What it left is a permanent fixture of the map and the profession: a place too dangerous to clear and too costly to abandon, held at the perimeter year after year, waiting for a force that could finally go in and close it.
 
 ---
 

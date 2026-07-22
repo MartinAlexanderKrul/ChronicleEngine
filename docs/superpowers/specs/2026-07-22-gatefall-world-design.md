@@ -118,6 +118,19 @@ Hidden class table at 1.0 — all unique on Earth, each authored with core mecha
 
 ---
 
+# 5b. Completeness bar — the no-OOC principle
+
+**Goal: ordinary play never needs an out-of-character question.** Reikon's failure mode generalized: every unauthored fact becomes either an OOC interruption or an improvised (usually favorable) default. Gatefall is authored so the predictable questions of play are answered in the files before the first session. Concretely, the world must pre-answer at least these question classes:
+
+- **Money** — authored price lists: cost of living (rent, food, transit) in both cities; gear and potion prices by grade; contract payouts by Gate grade; crystal/core prices on the licensed market vs. black market; typical starting funds by protagonist background; guild salary/split terms vs. freelance rates.
+- **Procedure & time** — how licensing works and how long it takes; the step-by-step path from Gate detection → grading → auction/assignment → clearance → loot declaration; auction cadence; emergency response order when a break starts. Each authored once as a procedure, so play can montage it.
+- **Law** — what is illegal (unlicensed Gate entry, undeclared loot, black-market sale, ability use on humans), the realistic penalty range, and how enforcement actually behaves in each city.
+- **Gates** — spawn rate per city per week, grade frequency distribution, timer length by grade, what a break looks like by grade, who responds.
+- **The System's voice** — authored message templates (quest issued, quest complete, level up, penalty warning, title granted), the daily quest's exact regimen, rewards, and penalty; the XP curve and level-up stat grant; shop stock list by tier.
+- **Common knowledge** — what an ordinary citizen knows, what a licensed hunter knows, what only regulators/guild masters know. Prevents both "everyone knows everything" and repeated table questions about who can know what.
+
+Two enforcement rules: (1) **the die never replaces a missing fact** — dice resolve uncertainty *within* authored ranges, not the absence of authoring; (2) when play does surface an unanswered question, the answer is **captured as a ruling into the world files in the same session's checkpoint**, so no question is ever asked twice.
+
 # 6. Worldbook content plan
 
 ## Character depth law (fixes the flat-characters failure)
@@ -173,3 +186,4 @@ Every notable figure is authored with all of: a **want** (what they're pursuing)
 2. The profile contains no unauthored magnitude reachable in ordinary play: every Gate grade yields a concrete threat population **and a concrete loot roll**; every System feature has authored costs, rewards, and thresholds.
 3. A campaign can be created in Gatefall in **either Chicago or Prague** without the world needing further authoring for its first sessions.
 4. Every notable figure satisfies the character depth law (want, fear/flaw, secret, live agenda, relationships).
+5. The completeness bar holds: every question class in Section 5b has its answers authored in the files — a first-session read-through can answer money, procedure, law, Gate, System-voice, and common-knowledge questions without a single OOC ruling.

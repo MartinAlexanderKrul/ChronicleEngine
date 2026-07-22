@@ -24,8 +24,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000086 |
-| Record | `REC-` | Canonical Record | REC-000061 |
+| Entity | `ENT-` | Persistent Entity | ENT-000098 |
+| Record | `REC-` | Canonical Record | REC-000062 |
 | Event | `EVT-` | Event | EVT-000050 |
 | Relationship | `REL-` | Relationship | REL-000048 |
 
@@ -118,6 +118,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000050 | Event | Reikon Awakening: ruling flagging Captain Thorne's unauthored assignment-bonus claim, and correcting a prior omission (24 vells from the Ashgate core sale) |
 | REL-000048 | Relationship | Reikon Awakening: Daedalus–Wren Ashcombe, professional contact formed for the Warehouse 7 extraction job |
 | REC-000061 | Record | Reikon Awakening `saves/900_CHECKPOINT_0017/900_SAVE_MANIFEST.md` — Warehouse 7's resonance resolution and the tannery clear, sequenced after the Stat-cap removal (CP0016) |
+| ENT-000087 - ENT-000098 | Entity | World Gatefall (`worlds/gatefall/`) places ledger: 2 cities (Chicago, Prague) and 10 Places — Chicago: Lakefront Gate Corridor, Red Line Corridor, the Cicero Scar, Horizon Tower, BGM Region V Field Office; Prague: Old Town Gate Cluster, Metro Corridor, the Libeň Scar, Karlov House, CGA Headquarters |
+| REC-000062 | Record | Gatefall world ledger: `worlds/gatefall/210_PLACES.md` |
 
 ---
 

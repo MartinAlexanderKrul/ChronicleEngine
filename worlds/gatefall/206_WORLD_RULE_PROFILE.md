@@ -113,7 +113,7 @@ Clearing a Gate — killing its boss, which collapses the Gate — awards a one-
 
 ## 3.5 Daily XP
 
-The daily quest (Section 8) awards, on each completed day, **+10 XP** and a **daily grant of +3 stat points** (offered, not auto-applied — Section 3.9). A **7-consecutive-day streak** additionally delivers a **Weekly Cache** — a reward box of items (Section 8.1). The streak resets on a miss. Full daily-quest, cache, and penalty rules are in Section 8.
+The daily quest (Section 8) awards, on each completed day, **+10 XP** and a **daily grant of +3 stat points and a full Health/Mana restore** (offered, not auto-applied — Section 3.9). A **7-consecutive-day streak** additionally delivers a **Weekly Cache** — a reward box of items (Section 8.1). The streak resets on a miss. Full daily-quest, cache, and penalty rules are in Section 8.
 
 ## 3.6 Award Timing
 
@@ -151,7 +151,7 @@ Most clears are party clears, and the Bearer earns from them on the same genuine
 
 ## 3.9 Grants Are Offered — Accept or Defer
 
-A **grant** is a bundle the System *offers* the Bearer; it is never applied on its own. Two grants exist: the **level-up grant** (+3 stat points and a full Health/Mana restore, Section 3.2) and the **daily-quest completion grant** (+3 stat points, Section 8.1). A Weekly Cache (Section 8.1) is opened by the same accept action.
+A **grant** is a bundle the System *offers* the Bearer; it is never applied on its own. Two grants exist, and both carry the same bundle — **+3 stat points and a full Health/Mana restore**: the **level-up grant** (Section 3.2) and the **daily-quest completion grant** (Section 8.1). A Weekly Cache (Section 8.1) is opened by the same accept action.
 
 The offer renders as a System prompt the Bearer answers:
 
@@ -162,7 +162,7 @@ Accept now, or defer? (accept / defer)
 ```
 
 - **The level and its threshold advance immediately** on crossing (Section 3.6); only the *grant* waits.
-- **Accept** applies the whole bundle at that instant: stat points land in the unspent pool (Section 4.2), and — for a level-up grant — Health and Mana refill to their maxima. A daily grant carries only points, no restore.
+- **Accept** applies the whole bundle at that instant: stat points land in the unspent pool (Section 4.2), and Health and Mana refill to their maxima. Both the level-up grant and the daily grant carry the full restore.
 - **Defer** leaves the grant **pending**; it does not expire. The Bearer may accept a pending grant at any later moment — between exchanges, after the fight, on a quiet night. Multiple pending grants may stack and be accepted together or one at a time.
 - **Why it is a choice, not a formality:** a level-up grant holds a **full heal in reserve**, and accepting mid-fight is a tactical act — a clutch recovery timed to a killing exchange, or held back so a penalty-zone run or a boss's second phase still has it available. Deferring never loses anything; it trades an immediate refill for a heal on the Bearer's own clock.
 - The System never force-applies a grant, never allocates points for the Bearer (allocation is always his, Section 4.2), and never heals him without acceptance. Pending grants appear in the `/system` status panel until claimed.
@@ -398,12 +398,12 @@ Once per in-fiction day the System issues the quest, rendered in a bracketed Sys
 ```text
 [SYSTEM] QUEST ISSUED — DAILY TRAINING
 Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 10 km run 0/10
-Reward: +3 stat points · +10 XP · streak 4/7 → Weekly Cache at 7
+Reward: +3 stat points · full restore · +10 XP · streak 4/7 → Weekly Cache at 7
 Warning: failure to complete within 24 h transfers you to a penalty zone.
 ```
 
 - **The regimen** is fixed: **100 push-ups, 100 sit-ups, and a 10 km run**, completed within a **24-hour window** from issuance.
-- **Reward on completion:** a **daily grant of +3 stat points** (offered under Section 3.9, not auto-applied) and **+10 XP** (Section 3.5), and progress on the **streak**.
+- **Reward on completion:** a **daily grant of +3 stat points and a full Health/Mana restore** (offered under Section 3.9, not auto-applied) and **+10 XP** (Section 3.5), and progress on the **streak**.
 - **Streak → Weekly Cache:** every **7 consecutive completed days** delivers a **Weekly Cache** on the seventh, and again every further seven days. **A single missed day resets the streak to zero.**
 
 Completion is genuine effort, not a checkbox — the objectives are physical work the Bearer must actually do in the fiction. The System tracks progress against each objective (the `0/100` counters advance as the work is done) and resolves the quest as completed or failed at the window's close.
@@ -961,7 +961,7 @@ Strength <n> · Agility <n> · Vitality <n> · Perception <n> · Intelligence <n
 
 [SYSTEM] QUEST ISSUED — DAILY TRAINING
 Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 10 km run 0/10
-Reward: +3 stat points · +10 XP · streak 0/7 → Weekly Cache at 7
+Reward: +3 stat points · full restore · +10 XP · streak 0/7 → Weekly Cache at 7
 Warning: failure to complete within 24 h transfers you to a penalty zone.
 ```
 
@@ -1014,7 +1014,7 @@ Ren, mid-day with a streak one short of a stat point:
 
 ```text
 [SYSTEM] QUESTS
-[DAILY] Training — push-ups 40/100 · sit-ups 100/100 · run 6/10 km   Reward: +3 stat points · 10 XP   Deadline: 14 h 12 m   Streak 6/7 → Weekly Cache at 7
+[DAILY] Training — push-ups 40/100 · sit-ups 100/100 · run 6/10 km   Reward: +3 stat points · full restore · 10 XP   Deadline: 14 h 12 m   Streak 6/7 → Weekly Cache at 7
 [URGENT] Cull the nest below the Red Line platform (3/4 killed)   Reward: 40 XP   Window: this scene
 [HIDDEN] ???
 ```
@@ -1131,7 +1131,7 @@ XP: 0 → 20/300
 [SYSTEM] TITLE EARNED — Lone Clear. +1 modifier step while no allied hunter shares the Gate. Equip via /system titles.
 [SYSTEM] QUEST ISSUED — DAILY TRAINING
 Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 10 km run 0/10
-Reward: +3 stat points · +10 XP · streak 6/7 → Weekly Cache at 7
+Reward: +3 stat points · full restore · +10 XP · streak 6/7 → Weekly Cache at 7
 Warning: failure to complete within 24 h transfers you to a penalty zone.
 ```
 

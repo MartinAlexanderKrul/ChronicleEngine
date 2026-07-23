@@ -103,6 +103,21 @@ Defeating a monster awards XP by the monster's threat grade. **Elite** monsters 
 
 An elite of grade G awards twice the row value; a boss of grade G awards four times it (an E boss = 40, a C elite = 120).
 
+**The underdog bonus.** Killing something stronger than you should be pays for the danger of it. The kill XP above is multiplied by a factor set by how far the slain creature's grade stands **above the Bearer's effective band** (the level ladder, Section 6.6) — the multiplier **doubles for each full grade of gap**:
+
+| Creature's grade vs Bearer's effective band | Kill XP × |
+|---|---|
+| At or below the Bearer's band | ×1 (no bonus) |
+| **+1 grade** above | **×2** |
+| **+2 grades** above | **×4** |
+| **+3 grades** above | **×8** |
+| **+4 grades** above | **×16** |
+| **+5 grades** (an E-band Bearer felling an S) | **×32** |
+
+The factor applies to the creature's full kill value, elite and boss multipliers included, and is computed per creature at the moment of the kill. Worked examples for an **E-band** Bearer: a D common (25) at +1 → `25 × 2 = 50`; a C common (60) at +2 → `60 × 4 = 240`; a D boss (`25 × 4 = 100`) at +1 → `100 × 2 = 200`. A creature **at or below** the Bearer's band carries no bonus — an E-band Bearer killing an E gets the flat 10, and once he reaches C-band the E and D kills that once paid a premium pay only their base.
+
+The bonus is self-limiting: a creature two or more grades above the Bearer hits far above his Health (Section 6.2) and can end him in an exchange, so the largest multipliers are earned at the edge of death — which is the point. It shrinks automatically as the Bearer's effective band climbs, so punching up stays a low-level engine of explosive growth and fades into ordinary kill XP as he becomes the thing others punch up against. The **Gate-clear milestone (Section 3.4) is not affected** — it is fixed by the Gate's grade and paid once, underdog or not.
+
 ## 3.4 Gate-Clear Milestone XP
 
 Clearing a Gate — killing its boss, which collapses the Gate — awards a one-time **milestone** bonus in addition to the per-kill XP earned fighting through it. It is awarded **once per Gate**, on the boss kill, and never per attempt or per re-entry.

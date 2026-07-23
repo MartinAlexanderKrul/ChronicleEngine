@@ -525,9 +525,15 @@ Every Gate of grade **G** is populated on this formula:
 
 An empty or under-populated interior is never a lucky break; it is an authored signal that something has already emptied the Gate — a break in progress, a prior party wiped, or a worse thing feeding. The Runtime treats emptiness as a clue, not an absence.
 
+**The clear window.** Killing the boss does not snuff the instance around the victors — it begins the collapse. From the moment of the boss's death the interior holds stable for **two hours**: the window in which a party loots the dead (Section 11), treats its wounded, and walks out the way it came. Section 13.2's loot-declared-at-exit procedure presumes this window. When it ends, the mouth closes and the interior ceases to exist; anyone still inside is lost with it, and no one has ever come back. The window is two hours at every grade. Ordinary hunters work it by watch and hard-learned habit; the System, which holds Gate state (Section 14.4), surfaces the countdown to its Bearer. A hunter may also exit a standing, uncleared Gate through its mouth at any time — the threshold bars the unawakened inward and beasts outward (Section 9.8), never the awakened out — except inside a red gate (Section 9.6), which seals until the boss dies.
+
 ## 9.8 Dungeon Breaks
 
+While a Gate stands, its barrier contains what lives inside: beasts can no more pass the threshold outward than the unawakened can pass it inward. Only a break dissolves that barrier.
+
 If a Gate's break timer (Section 9.3) expires before the Gate is cleared, the Gate **breaks**: its barrier fails and its **remaining population** — every monster not yet killed, boss included — pours out into the surrounding area, where it fights with none of the containment a sealed instance provides. A break is the disaster the whole regulatory apparatus exists to prevent.
+
+**A break spends the Gate.** The release is one-time: the barrier's failure empties the interior, and the mouth collapses once nothing remains for it to hold. A broken Gate leaves no standing portal, no instance to clear, and nothing to close — what it leaves is its released population loose in the world (the Jiu Valley Exclusion is what that population does afterward, not an open wound still feeding).
 
 Response follows a fixed escalation order by jurisdiction:
 
@@ -545,7 +551,7 @@ A Red Line contract posts an **unconfirmed D-Gate**. Because it is assessed D, n
 1. **Confidence → true-grade roll.** Unconfirmed, so the true grade resolves on first entry (Section 9.5). The d100 comes up **84** (71–92): **one grade higher**. The Gate is truly **C**, not D — and a C-Gate legally requires four licensed hunters. The crew is already in an under-strength, illegal entry without knowing it.
 2. **Population.** At grade C the formula (Section 9.7) rolls **3d6 = 11 common C beasts, 1d2 = 2 C elites, 1 C boss** (×4 band health, damage one band up — it hits like a B).
 3. **Archetype.** Unknown on entry because the Gate was unconfirmed (Section 10); it reveals as **Crypt** (d8 = 1) — darkness, so Perception checks to avoid ambush.
-4. **Clear.** The crew fights through and kills the boss; the Gate collapses. Kill XP and the C-Gate milestone (320 XP, Section 3.4) settle on the boss kill.
+4. **Clear.** The crew fights through and kills the boss; the two-hour clear window (Section 9.7) opens, and they loot and walk out well inside it. Kill XP and the C-Gate milestone (320 XP, Section 3.4) settle on the boss kill.
 5. **Loot roll.** Eleven C-crystals drop (one per beast, Section 11); the two elites and the boss each drop a C-core (three cores). The boss-drop d100 (Section 11) comes up **52** (41–65): a **rune** teaching one authored skill.
 6. **Sale.** At licensed market prices (Section 12): 11 C-crystals × **$2,500 = $27,500**; 3 C-cores at ≈2.5× the C-crystal price (**$6,250** each) = **$18,750**. The clear grosses **≈ $46,250** in sellable crystal and core, plus the rune, which the Bearer keeps to learn a skill rather than sell.
 

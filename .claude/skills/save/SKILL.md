@@ -9,7 +9,7 @@ description: Use when the player types /save or asks in any words to save, check
 
 ## Procedure
 
-1. **Open and follow the authoritative Save Algorithm** — `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, section "Save Algorithm" (8 steps, in order). Execute it from the document, not from memory. Do not invent checkpoint structure: the canonical form is `saves/900_CHECKPOINT_NNNN/` (zero-padded, next number) containing copies of **every canonical campaign ledger — the full 090–180 set, changed or not** (a checkpoint is a complete restorable state, not a diff) — plus `900_SAVE_MANIFEST.md`.
+1. **Open and follow the authoritative Save Algorithm** — `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, section "Save Algorithm" (8 steps, in order). Execute it from the document, not from memory. Do not invent checkpoint structure: the canonical form is `saves/900_CHECKPOINT_NNNN/` (zero-padded, next number) containing copies of **all eight canonical campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180), changed or not** (a checkpoint is a complete restorable state, not a diff) — plus `900_SAVE_MANIFEST.md`. `090`/`095` are operational and derived artifacts, not canon: they stay out of the snapshot. The manifest mints no registry identifier (Decision 072).
 2. **Completion contract.** A checkpoint exists only when ALL of these are true on disk:
    - Every identifier referenced anywhere has a live fenced-YAML Object Block. A registry row or prose mention is a reference, not a definition.
    - Live ledgers updated from the session's **derived** target set (from its events — not from recollection of what changed).

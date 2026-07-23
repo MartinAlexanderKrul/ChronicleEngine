@@ -525,7 +525,9 @@ Every Gate of grade **G** is populated on this formula:
 
 - **Common beasts** have plain grade-G band health (Section 6.1) and award grade-G kill XP (Section 3.3).
 - **Elites** carry **×2** band health and award **×2** kill XP.
-- The **boss** carries **×4** band health, awards **×4** kill XP, and deals damage at **its own grade's baseline** like every other creature of its band (Section 6.2) — a grade is an honest statement of what hits you; a D-Gate's boss hits like a D. Its menace is its endurance, its cunning, and the fact that nothing closes the Gate but its death. Killing the boss **clears the Gate** — it collapses the instance and awards the Gate-clear milestone XP (Section 3.4).
+- The **boss** carries **×4** band health, awards **×4** kill XP, and deals damage at **its own grade's baseline** like every other creature of its band (Section 6.2) — a grade is an honest statement of what hits you; a D-Gate's boss hits like a D. Killing the boss **clears the Gate** — it collapses the instance and awards the Gate-clear milestone XP (Section 3.4).
+
+**A boss fights with a signature.** A boss is never a bigger common. At instantiation it carries one authored **signature method**, consistent with its form and the Gate's archetype — a sweeping tail that threatens everything in its arc, a breath that fills a corridor, a burrowing charge, a coil-and-drown — capable of endangering **several hunters in a single exchange**. Each endangered hunter resolves against it separately (own roll, own damage at the boss's band); the signature multiplies *who is in danger*, never the per-hit number. And a boss is played with the cunning of an apex thing on its own ground: it ambushes, uses terrain, and picks targets — the mender first, the wounded first — rather than trading blows with whoever stands closest. Its menace is reach, endurance, intent, and the fact that nothing closes the Gate but its death; grade honesty holds at every point of contact.
 
 An empty or under-populated interior is never a lucky break; it is an authored signal that something has already emptied the Gate — a break in progress, a prior party wiped, or a worse thing feeding. The Runtime treats emptiness as a clue, not an absence.
 
@@ -749,6 +751,19 @@ Restorative care is priced off the same scale as the rest of the economy (licens
 - **A hospital week** — a week of professional inpatient care at a licensed facility — runs about a **month's local rent** (the shared-apartment figure, Section 12.4): ≈ **$1,400** in Chicago, ≈ **18,000 CZK** in Prague.
 
 **Mender care is professional care.** A mender's healing-touch treatment counts as **professional (hospital-equivalent) care for the injury clock of Section 6.3**, halving an injury's recovery time at every tier exactly as hospital treatment does. This is separate from the **party-mender's one-tier post-fight conversion** (Section 13.5), which a mender grants their party automatically; a hired mender treating a wound outside a party clear applies the Section 6.3 halving instead. The two effects do not stack on the same injury beyond what each section states.
+
+## 12.8 Commissioned Gear and the Artificers
+
+Graded gear is not mined out of Gates whole — it is **forged from what Gates yield**, and the forging is done by **artificers**: awakened whose signature ability (Section 13.6) works mana into matter, rare on the order of menders and paid on the same logic (Bible Sections 3–4). Licensed artificers are the enchanting industry's hands; the great ones are the trade's quiet celebrities, their waitlists a status symbol, and an artificer's mark on a blade is worth more than the steel.
+
+**Commissioning is how a hunter turns his clears into his arsenal:**
+
+- The commissioner **supplies the core** — the core's grade sets the ceiling of the piece's grade (Section 11.5's banding governs the result) — plus any beast materials (hide, fang, scale) the design calls for.
+- The **forging fee** runs about the **market price of a same-grade core** (Section 12.1): commissioning a C-grade blade means a C-core supplied plus ≈ $6,250 in fee. Turnaround is days at E–C grade.
+- **B-grade and above is guild- and state-contract work** — waitlisted, logged, and subject to the export controls of Bible Section 4; a freelancer commissioning at B+ attracts exactly the attention Section 19 describes.
+- A commissioned piece is ordinary graded gear under Section 11.5; **named work by a known artificer trades above every anchor** on the negotiated market, like all gear resale.
+
+There is **no player crafting subsystem**: the Bearer commissions or buys like every other hunter — the forge is someone else's signature.
 
 ---
 

@@ -451,13 +451,15 @@ Most Gates are E and D; an S-Gate is a once-in-a-long-while, world-news event.
 
 ## 9.3 Break Timers
 
-From detection, an uncleared Gate runs a countdown to a **dungeon break** (Section 9.7). Higher-grade Gates break faster — the pressure behind them is greater.
+From detection, an uncleared Gate runs a countdown to a **dungeon break** (Section 9.8). Higher-grade Gates break faster — the pressure behind them is greater.
 
 | Grade | E | D | C | B | A | S |
 |---|---|---|---|---|---|---|
 | Days from detection to break | 7 | 6 | 5 | 4 | 3 | 2 |
 
 The timer starts at detection, not at first entry. A Gate cleared before its timer expires closes safely on the boss kill; a Gate whose timer runs out breaks.
+
+**Why the worst Gates give the least warning.** The timer is not a schedule; it is the barrier failing. A Gate's countdown is read from its mana pressure (the same reading that grades it), and a higher-grade interior strains harder against the barrier that contains it — an E-Gate is a sealed jar, an S-Gate an overpressured boiler. This is the single fact the world's hunter politics is built on: no state can *assemble* an S-response inside two days, so an S-Gate is answered by whoever is already in range — which is why S-ranks are pre-positioned strategic assets counted by name, why the S-rank draft binds them to emergency mobilization, why a state with one S-rank guards where that one sleeps, and why an S-Gate beyond the reach of a standing response becomes a Jiu Valley. An S-Gate response is never "every S-rank in the country"; it is the nearest adequate force plus military containment of whatever the force cannot reach in time.
 
 ## 9.4 Party Minimums — Law and Practice
 

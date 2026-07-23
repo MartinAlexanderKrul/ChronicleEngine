@@ -257,7 +257,7 @@ damage = standard_hit_baseline(attacker's effective grade)   # ¼ of the attacke
        × (1 − total_reduction)                               # applied last, per GTF-OVR-002
 ```
 
-- **Standard-hit baseline.** The baseline of a single ordinary hit is **one-quarter of the attacker's grade band health** (`band_health ÷ 4`). Damage rides the *attacker's* own band: a grade-C attacker's every hit scales to C-band health, a grade-A attacker's to A-band. Because a same-grade target has the same band health, a standard hit at standard success removes about **a quarter of a same-grade foe's Health** — so a matched fight takes roughly four clean hits, and the whole model resolves in relative terms without an authored HP table. **Cross-band, the baseline is read from the attacker's band on the canonical table (Section 6.1).** Worked one-liner: an E-Bearer with 40 Health (E-band) struck by a Gate boss whose standard-hit baseline rides one band up to D (Section 9.7) takes `¼ × 100 = 25` on a standard hit — 25 removed from his 40, which by Section 6.3 also inflicts an injury (over 50% of remaining Health). The boss's damage rode the D band because its baseline is a quarter of D-band health, not of the Bearer's.
+- **Standard-hit baseline.** The baseline of a single ordinary hit is **one-quarter of the attacker's grade band health** (`band_health ÷ 4`). Damage rides the *attacker's* own band: a grade-C attacker's every hit scales to C-band health, a grade-A attacker's to A-band. Because a same-grade target has the same band health, a standard hit at standard success removes about **a quarter of a same-grade foe's Health** — so a matched fight takes roughly four clean hits, and the whole model resolves in relative terms without an authored HP table. **Cross-band, the baseline is read from the attacker's band on the canonical table (Section 6.1).** Worked one-liner: an E-Bearer with 40 Health (E-band) struck by a grade-D beast — say, in a mis-graded Gate — takes `¼ × 100 = 25` on a standard hit — 25 removed from his 40, which by Section 6.3 also inflicts an injury (over 50% of remaining Health). The beast's damage rode the D band because its baseline is a quarter of D-band health, not of the Bearer's.
 - **Skill multiplier.** A skill or strike states its damage as a multiplier on the standard-hit baseline (Section 7): an unarmed or improvised strike is **×0.5**, a competent armed strike **×0.75**, and an authored skill carries its own ratio (Mana Bolt **×1.0**, and so on). A multiplier of ×1.0 *is* the standard-hit baseline.
 - **Result multiplier — by degree of success.** The degree of success the d100 yields (Rules Section 4; Decision 011) scales the hit:
 
@@ -411,7 +411,7 @@ If the 24-hour window closes with the quest incomplete, the System **transfers t
   ```text
   3d6 common beasts (grade G)
   + 1d2 elites (grade G, ×2 band health)
-  + 1 boss (grade G, ×4 band health, damage one band up)
+  + 1 boss (grade G, ×4 band health)
   ```
 
   (Section 9 restates this formula as the general rule for all Gates; it is reproduced here because a penalty zone must be fully resolvable from this section alone.)
@@ -467,13 +467,15 @@ Regulation sets the minimum sanctioned party to legally enter a Gate by grade; t
 
 | Grade | Legal minimum (law) | Posting floor (practice) |
 |---|---|---|
-| **E–D** | None (a lone licensed hunter may enter) | 5 hunters |
-| **C** | 4 licensed hunters | 6–8 |
-| **B** | 8 licensed hunters | 12–16 |
+| **E–D** | None (a lone licensed hunter may enter) | **8** — a strike element of at least 5 plus a harvest element (waiver floor: 5, see below) |
+| **C** | 4 licensed hunters | 10–12, strike and harvest elements both |
+| **B** | 8 licensed hunters | 14–18 |
 | **A** | 16 licensed hunters, including at least one A-rank | 24–32 |
 | **S** | National-asset operation (state-directed, not an ordinary contract) | State-directed |
 
-The gap between the columns is deliberate. The legal floors define the *offense* of reckless endangerment; the posting floors are survival. The population formula (Section 9.7) sets even a true E-Gate at a dozen threats and a boss striking a band up — arithmetic no lone hunter's Health survives on the average roll — and five is the headcount at which a crew can hold a line while the boss is worked and hope to cover the four working types (Section 13.5); above C, working crews field half again to double the legal floor, which is where the posting ranges come from. Hunter insurance is void from the moment a hunter crosses a threshold alone. Solo entry of a populated Gate remains *legal* at grades E–D — as a matter of law, the government does not stop anyone from dying — and is understood by the entire trade as desperation or a death wish; the Lone Clear title (Section 16) is legendary precisely because its feat is one the working world considers suicide. The solo format that actually exists is not a Gate at all: it is the instant dungeon (Section 17), and it belongs to exactly one person on Earth.
+The gap between the columns is deliberate. The legal floors define the *offense* of reckless endangerment; the posting floors are how the trade actually staffs a Gate. The population formula (Section 9.7) sets even a true E-Gate at a dozen threats and a boss — arithmetic no lone hunter's Health survives on the average roll — so a standard posting fields **two elements**: a **strike element** of at least five (a line held while the boss is worked, with a hope of covering the working types, Section 13.5) and a **harvest element** — the crystal-and-core harvesters who strip the clear while the strike element holds it, usually the lowest-rank licensed hunters on the board, paid a harvest share rather than a full split. Harvest work is how most E-ranks actually earn, and how the weakest hunter on any board gets taken along at all.
+
+**The under-strength waiver.** A low-rate E- or D-contract that has sat undersubscribed may post under a signed under-strength waiver at an absolute floor of **five** — no harvest element, everyone doubling roles, every signature acknowledging the risk. Cheap jobs sit, and thin crews take them; the waiver tier is where the trade's casualties concentrate, and everyone signing one knows it. Hunter insurance is void from the moment a hunter crosses a threshold alone. Solo entry of a populated Gate remains *legal* at grades E–D — as a matter of law, the government does not stop anyone from dying — and is understood by the entire trade as desperation or a death wish; the Lone Clear title (Section 16) is legendary precisely because its feat is one the working world considers suicide. The solo format that actually exists is not a Gate at all: it is the instant dungeon (Section 17), and it belongs to exactly one person on Earth.
 
 ## 9.5 Confidence and the True Grade
 
@@ -518,12 +520,12 @@ Every Gate of grade **G** is populated on this formula:
 ```text
 3d6 common beasts (grade G)
 + 1d2 elites (grade G, ×2 band health)
-+ 1 boss (grade G, ×4 band health, damage one band up)
++ 1 boss (grade G, ×4 band health)
 ```
 
 - **Common beasts** have plain grade-G band health (Section 6.1) and award grade-G kill XP (Section 3.3).
 - **Elites** carry **×2** band health and award **×2** kill XP.
-- The **boss** carries **×4** band health, awards **×4** kill XP, and deals damage as if **one band up** (its standard-hit baseline rides the next grade's band, Section 6.2). Killing the boss **clears the Gate** — it collapses the instance and awards the Gate-clear milestone XP (Section 3.4).
+- The **boss** carries **×4** band health, awards **×4** kill XP, and deals damage at **its own grade's baseline** like every other creature of its band (Section 6.2) — a grade is an honest statement of what hits you; a D-Gate's boss hits like a D. Its menace is its endurance, its cunning, and the fact that nothing closes the Gate but its death. Killing the boss **clears the Gate** — it collapses the instance and awards the Gate-clear milestone XP (Section 3.4).
 
 An empty or under-populated interior is never a lucky break; it is an authored signal that something has already emptied the Gate — a break in progress, a prior party wiped, or a worse thing feeding. The Runtime treats emptiness as a clue, not an absence.
 
@@ -553,7 +555,7 @@ The remaining-population rule means a Gate broken early (few kills made) is far 
 A Red Line contract posts an **unconfirmed D-Gate**. Because it is assessed D, no legal minimum applies (Section 9.4) and a small crew takes it.
 
 1. **Confidence → true-grade roll.** Unconfirmed, so the true grade resolves on first entry (Section 9.5). The d100 comes up **84** (71–92): **one grade higher**. The Gate is truly **C**, not D — and a C-Gate legally requires four licensed hunters. The crew is already in an under-strength, illegal entry without knowing it.
-2. **Population.** At grade C the formula (Section 9.7) rolls **3d6 = 11 common C beasts, 1d2 = 2 C elites, 1 C boss** (×4 band health, damage one band up — it hits like a B).
+2. **Population.** At grade C the formula (Section 9.7) rolls **3d6 = 11 common C beasts, 1d2 = 2 C elites, 1 C boss** (×4 band health).
 3. **Archetype.** Unknown on entry because the Gate was unconfirmed (Section 10); it reveals as **Crypt** (d8 = 1) — darkness, so Perception checks to avoid ambush.
 4. **Clear.** The crew fights through and kills the boss; the two-hour clear window (Section 9.7) opens, and they loot and walk out well inside it. Kill XP and the C-Gate milestone (320 XP, Section 3.4) settle on the boss kill.
 5. **Loot roll.** Eleven C-crystals drop (one per beast, Section 11); the two elites and the boss each drop a C-core (three cores). The boss-drop d100 (Section 11) comes up **52** (41–65): a **rune** teaching one authored skill.
@@ -573,7 +575,7 @@ Every Gate has an **archetype** — the character of its interior — fixed when
 | 2 | **Hive** | Swarming brood: the common-beast count is **doubled** and **no elite is present** (the two 1d2 elite slots are replaced by additional common beasts). |
 | 3 | **Flooded Mine** | Standing water throughout: Strength and Agility actions take −1 modifier step, and going under imposes a drowning risk resolved as an environmental hazard. |
 | 4 | **Overgrown Temple** | A lootable shrine stands in the interior: clearing the Gate grants a **bonus loot roll** (Section 11), but the shrine is guarded by an extra elite. |
-| 5 | **Beast Den** | A second **boss-band alpha** roams alongside the boss — two boss-grade threats (×4 band health, damage one band up) instead of one. |
+| 5 | **Beast Den** | A second **boss-band alpha** roams alongside the boss — two boss-grade threats (×4 band health) instead of one. |
 | 6 | **Shattered City** | Broken verticality: falls and drops deal **band damage** (a standard-hit baseline at the faller's grade, Section 6.2), and ledges force Agility checks. |
 | 7 | **Ashfield** | Lingering burn hangs in the air: every hour inside forces a Vitality check against a grade-appropriate burn hazard (Section 6.3). |
 | 8 | **Frozen Gallery** | Deep cold saturates the instance: **Mana recovery is halved** inside (Section 5.2), pressuring any Mana-dependent Bearer to clear quickly. |
@@ -780,12 +782,13 @@ A sealed Gate interior admits no recording and no remote monitoring: mana flux b
 
 ## 13.5 Support Types and Party Roles
 
-Party role composition is **descriptive, not a subsystem.** The trade sorts awakened abilities into four working types — **strikers** (damage), **wardens** (barrier/tank), **menders** (healing-touch), and **sensors** (detection/appraisal-adjacent) — but a support-type NPC hunter is resolved exactly like every other NPC: **by rank band** (Section 13.1, Section 2), with no stat sheet, level, or Mana curve. "A licensed C-rank mender" is a complete mechanical description. Only **two** effects are authored, at exactly these magnitudes:
+Party role composition is **descriptive, not a subsystem.** The trade sorts awakened abilities into five working types — **strikers** (melee damage), **casters** (ranged mana projection — bolts, bursts, area denial; a striker at range, mechanically), **wardens** (barrier/tank), **menders** (healing-touch), and **sensors** (detection/appraisal-adjacent) — but a support-type NPC hunter is resolved exactly like every other NPC: **by rank band** (Section 13.1, Section 2), with no stat sheet, level, or Mana curve. "A licensed C-rank mender" is a complete mechanical description. Only **three** effects are authored, at exactly these magnitudes:
 
-- **A party with a mender** converts **one post-fight injury tier down, per member, per clear**, for injuries at the **mender's band or below**: a Minor injury disappears, a Moderate becomes a Minor, a Severe becomes a Moderate, a Critical becomes a Severe (Section 6.3). It is one tier, once per member, per Gate cleared — not a heal-over-time and not a per-hit effect.
+- **A mender's field-touch** restores Health equal to **one standard-hit baseline of the mender's grade** (¼ of the mender's band health, Sections 6.1–6.2): a D-mender's touch restores 25, a C-mender's 62. A mender can channel **three field-touches per Gate clear**; a touch restores Health only — it does not change an injury's tier or its recovery clock (Sections 6.3, 12.7 govern those). A higher-grade mender is simply a stronger healer; that is the whole skill model, per Section 13.1.
+- **A party with a mender** additionally converts **one post-fight injury tier down, per member, per clear**, for injuries at the **mender's band or below**: a Minor injury disappears, a Moderate becomes a Minor, a Severe becomes a Moderate, a Critical becomes a Severe (Section 6.3). It is one tier, once per member, per Gate cleared.
 - **A party with a warden** grants **+1 modifier step on the party's defensive actions taken in formation** (Section 4.3), composing into the net ±3 cap like any other step.
 
-Menders and wardens are rare (Bible Section 3), which is exactly why a party that fields one is meaningfully safer and a party without one pays for the gap in Section 6.3 injuries. Nothing further is authored: strikers and sensors add texture, not a mechanic, and **the Bearer in a party benefits from a mender or a warden exactly as any other member does** — the two effects are properties of the party, not of who is in it.
+Menders and wardens are rare (Bible Section 3), which is exactly why a party that fields one is meaningfully safer and a party without one pays for the gap in Section 6.3 injuries. Nothing further is authored: strikers, casters, and sensors add texture, not a mechanic — a caster's bolt is a standard hit at its band like anyone else's strike — and **the Bearer in a party benefits from a mender or a warden exactly as any other member does** — the three effects are properties of the party, not of who is in it.
 
 ---
 
@@ -1100,7 +1103,7 @@ An **instant-dungeon key** — a boss drop (Section 11.2, roll 81–90) or a sho
 
 - **Grade.** A key's grade is the **Gate grade it was rolled from**, or, for a shop key, the **Bearer's own band** (Section 12.5 — the effective band of the level ladder, Section 6.6). The instance runs at the key's grade.
 - **Opening.** Using a key opens a sealed instance for the Bearer (he may bring a party, but the key is his). It runs **2 hours**, closing at the two-hour mark or on the boss kill, whichever comes first.
-- **Population.** Populated by the standard Gate formula (Section 9.7) at the key's grade G — `3d6` common beasts, `1d2` elites (×2 band health), `1` boss (×4 band health, damage one band up) — and it rolls an archetype on the d8 (Section 10) like any Gate.
+- **Population.** Populated by the standard Gate formula (Section 9.7) at the key's grade G — `3d6` common beasts, `1d2` elites (×2 band health), `1` boss (×4 band health) — and it rolls an archetype on the d8 (Section 10) like any Gate.
 - **Loot.** Drops per Section 11: one crystal per beast, a core from each elite and the boss, and the boss-drop d100. It is a **real clear** — kill XP (Section 3.3) and the Gate-clear milestone (Section 3.4) settle on the boss kill exactly as in a public Gate.
 - **No timer, no break.** An instant dungeon runs no break countdown (Section 9.3): it is a closed instance keyed to the Bearer, not a breach into the world. An unopened key is inert and never breaks.
 - **No BGM/CGA jurisdiction — legally unregulated space, and this profile says so.** An instant dungeon is not a licensed Gate: it posts no contract, requires no minimum party (Section 9.4), files no loot declaration (Section 13.2), and is invisible to the authorities, because only the Bearer's key opens it and only the Bearer perceives the System (Section 14.4). It is the one clearance the world cannot see, tax, or regulate — which is exactly its value and exactly its risk: a Bearer who dies in an instant dungeon (Section 6.5) dies unwitnessed, with no strike team that can be called.
@@ -1321,5 +1324,9 @@ When play surfaces a question the files do not answer, the answer is **captured 
 ## 20.4 Fully Lethal
 
 **Death is final and the die decides.** The authored threat model (Section 9, Section 18) and the d100 resolve combat; no drama softens a killing result and no plot armor spares the Bearer. Penalty zones (Section 8.3) can kill; red gates (Section 9.6) seal until the boss dies or the Bearer does; an uncleared Gate's timer genuinely lapses into a break (Section 9.8). A Bearer who dies — in an E-Gate, an S-Gate, a penalty zone, an instant dungeon, or the class quest — is dead, his System state transfers to no one (Section 6.5), and the campaign hard-ends. The world's danger is honest: the causal consequence of what is authored, surfaced without flinching and without invention.
+
+## 20.5 Numbers Stay Out of the Fiction
+
+Health totals, damage figures, band tables, modifier steps, XP, and dice results are **Runtime bookkeeping, not world facts.** No character in this world knows what "hit points" are, and none speaks in mechanical vocabulary: a mender reads a wound as a *wound* — "he can't take another hit like that," never "he's at 9 of 40" — a sensor reads presence and pressure, not stat blocks, and a crew leader weighs a fight in blood and odds, not arithmetic. The Runtime surfaces the numeric state **out of character only**: in OOC blocks, tallies, and the debug views the player asks for. The single diegetic exception is the **System itself** — its windows and notifications speak in numbers by design (Sections 14–15), and only its Bearer ever sees them; that asymmetry, one man perceiving the world's hidden arithmetic while everyone around him reads it by feel, is a load-bearing feature of the fiction, not a convenience. An NPC who quotes a number the System would render is a diegesis breach and is corrected like any misstated rule (the `rules` discipline applies).
 
 ---

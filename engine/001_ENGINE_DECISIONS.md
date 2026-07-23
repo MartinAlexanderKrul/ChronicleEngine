@@ -3285,11 +3285,11 @@ The gate proves every world and campaign is **listed** and that each row **resol
 
 ## Decision 072 — Save Layer Unification
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-07-19
 **Related Sections:** Version 0.3 milestone 0.3.1; `010_ENGINE_RULES.md` Section 13; `012_ENGINE_RUNTIME.md` Sections 5.4, 6.1; `011_ENGINE_DATA_MODEL.md` Section 1 (identifier registry); `templates/ledgers/900_SAVE_MANIFEST.md`; `tools/validate_repository.ps1`, `tools/test_checkpoint_contract.ps1`; pulls forward PA-008; Decisions 039, 053, 054, 061, 069
 
-**ADR Design draft.** Proposed under the Version 0.3 (Runtime & Persistence Hardening) ADR Design stage. Not accepted; no implementation until ADR Approval freezes it (Decision 048).
+**Accepted 2026-07-23** at the Version 0.3 (Runtime & Persistence Hardening) ADR Approval — Architecture Freeze (Decision 048). Drafted 2026-07-19 in ADR Design. Implementation may now proceed against this decision.
 
 ### Context
 
@@ -3343,11 +3343,11 @@ Two secondary problems are entangled with the form:
 
 ## Decision 073 — Presence and Location Structural Representation
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-07-19
 **Related Sections:** Version 0.3 milestone 0.3.2; `011_ENGINE_DATA_MODEL.md` Sections 7, 9 (schema 0.1.1 → 0.1.2); `010_ENGINE_RULES.md` Sections 3.10, 13.2; `012_ENGINE_RUNTIME.md` Section 5.4; `templates/ledgers/100_CHARACTER_SHEET.md`, `templates/objects/place.md`; resolves PA-002 (Location Granularity) and the cross-ledger-staleness Technical Debt; Decisions 022, 043, 051, 054, 069
 
-**ADR Design draft.** Proposed under Version 0.3 (Runtime & Persistence Hardening) ADR Design. Not accepted; no implementation until ADR Approval freezes it (Decision 048). **Foundational under Decision 069** — it changes the Data Model.
+**Accepted 2026-07-23** at the Version 0.3 (Runtime & Persistence Hardening) ADR Approval — Architecture Freeze (Decision 048). Drafted 2026-07-19 in ADR Design. **Foundational under Decision 069** — it changes the Data Model. Implementation may now proceed against this decision.
 
 ### Context
 
@@ -3406,11 +3406,11 @@ Two entangled cases sharpen it:
 
 ## Decision 074 — World Rule Profile Consolidation and Freeze
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-07-19
 **Related Sections:** Version 0.3 milestone 0.3.3; `010_ENGINE_RULES.md` Section 14 (14.1–14.5, new 14.6) and Sections 13.3, 13.5; `012_ENGINE_RUNTIME.md` Section 6.2; `worlds/reikon/206_WORLD_RULE_PROFILE.md`; `templates/ledgers/900_SAVE_MANIFEST.md`; `tools/test_checkpoint_contract.ps1`, `tools/test_reikon_runtime_contract.ps1`; consolidates Decisions 059 and 062 (not reopened); Decisions 048, 053, 054, 069
 
-**ADR Design draft.** Proposed under Version 0.3 (Runtime & Persistence Hardening) ADR Design. Not accepted; no implementation until ADR Approval freezes it (Decision 048). **Foundational under Decision 069** — it changes Rules Section 14 and the Section 13.3 manifest contract. It does not reopen Decisions 059 or 062, which remain Accepted immutable history.
+**Accepted 2026-07-23** at the Version 0.3 (Runtime & Persistence Hardening) ADR Approval — Architecture Freeze (Decision 048). Drafted 2026-07-19 in ADR Design. **Foundational under Decision 069** — it changes Rules Section 14 and the Section 13.3 manifest contract. It does not reopen Decisions 059 or 062, which remain Accepted immutable history. Implementation may now proceed against this decision.
 
 ### Context
 
@@ -3470,11 +3470,11 @@ Three things are missing:
 
 ## Decision 075 — Command Surface Settlement: No Foundational Change
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-07-20
 **Related Sections:** Version 0.3 milestone 0.3.4; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Runtime Command Interface); `docs/AI_GAMEPLAY_RESIDENT_CORE.md`; `README.md` (cold-start catalog); `tools/test_runtime_command_catalog.ps1`; Decisions 056, 063, 064, 067, 069, 070, 071
 
-**ADR Design draft.** Proposed under Version 0.3 (Runtime & Persistence Hardening) ADR Design. This decision is the assessment the milestone required, and its conclusion is to **drop the structural change rather than make one**. Refinement under Decision 069 — it changes no Rules section, no Data Model, and no command mechanism; it records a classification and closes a milestone.
+**Accepted 2026-07-23** at the Version 0.3 (Runtime & Persistence Hardening) ADR Approval — Architecture Freeze (Decision 048). Drafted 2026-07-20 in ADR Design. This decision is the assessment the milestone required, and its conclusion is to **drop the structural change rather than make one**. Refinement under Decision 069 — it changes no Rules section, no Data Model, and no command mechanism; it records a classification and closes milestone 0.3.4.
 
 ### Context
 

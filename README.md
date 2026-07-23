@@ -1,6 +1,6 @@
 # Chronicle Engine
 
-**Document Version:** 1.7
+**Document Version:** 1.8
 
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 
@@ -247,14 +247,14 @@ Chronicle Engine prioritizes:
 
 **Current Engine Version:** 0.2.0 (Knowledge & Civilization)
 
-**Current Development Target:** Version 0.3 — Runtime & Persistence Hardening (ADR Design)
+**Current Development Target:** Version 0.3 — Runtime & Persistence Hardening (Implementation)
 
 The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 is the first completed simulation capability built on it. Capability Validation, Prototype Alpha, and the Engine Postmortem are complete (Decision 048).
 
 Current focus:
 
 - Version 0.2.0 (Knowledge & Civilization) released.
-- Version 0.3 scope accepted (2026-07-19): Runtime & Persistence Hardening. Drafting its ADRs is next.
+- Version 0.3 ADRs accepted (2026-07-23): Decisions 072–075, Architecture Freeze complete. Implementation is next, beginning with Save Layer Unification and Presence/Location.
 
 See:
 

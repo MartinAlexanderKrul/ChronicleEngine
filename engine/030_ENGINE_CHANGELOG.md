@@ -12,6 +12,16 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-23 — Version 0.3 ADRs accepted: Architecture Freeze
+
+ADR Approval under Decision 048 — Decisions 072 (Save Layer Unification), 073 (Presence and Location Structural Representation), and 074 (World Rule Profile Consolidation and Freeze) are **Accepted** as the Version 0.3 foundational set; Decision 075 (Command Surface Settlement: No Foundational Change) is **Accepted** as the refinement closing milestone 0.3.4 by drop. The version advances from ADR Design to Implementation. This entry records the status transition only: no Rules, Data Model, Runtime, or template text changed yet — implementation now proceeds against the accepted decisions.
+
+**Set-level consistency confirmed at approval:** the 072/073 one-time migrations are sequenced together; the 073 schema bump (0.1.1 → 0.1.2) and the 074 required profile-version field both land in the manifest version block 072 unifies; restoration mismatch surfacing reads the same on the schema and profile axes (Rules 13.5, 14.4). The stale "Reikon 0.3" freeze target was already corrected in the roadmap's 0.3.3 milestone (freeze at the profile's current version).
+**Implementation order:** 0.3.1 with 0.3.2 (entangled migrations), then 0.3.3; 0.3.4 is closed; 0.3.5 validates the set through the prototype campaign.
+**Documents:** `001_ENGINE_DECISIONS.md` (072–075 Proposed → Accepted); `002_ENGINE_ROADMAP.md` (status, Current Sprint, Version 0.3 section, milestone ADR lines, Current Dependencies); `000_ENGINE_MANIFEST.md` (Current Development Phase → Implementation); `README.md` 1.8 (Current Status).
+**Rules / Data Model / Runtime:** Unchanged.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-22 — Reikon World Rule Profile 0.10: Rift threat model authored
 
 World authoring (Reikon). No engine decision consumed — Decision 069 point 4 and Decision 062. No Rules, Data Model, or Runtime change. Closes playtest findings PT-002 and PT-003 (`worlds/reikon/270_PLAYTEST_BACKLOG.md`).

@@ -4,23 +4,23 @@
 
 **Engine Version:** 0.2.0 (Knowledge & Civilization)
 **Development Target:** Version 0.3 — Runtime & Persistence Hardening
-**Status:** Version 0.3 scope accepted — ADR Design
+**Status:** Version 0.3 ADRs accepted (Architecture Freeze 2026-07-23) — Implementation
 
 # Current Sprint
 
 Goal:
 
-Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha, and the Engine Postmortem are complete. The Version 0.3 scope is accepted (2026-07-19): **Runtime & Persistence Hardening**. The version has advanced from Planning to ADR Design.
+Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha, and the Engine Postmortem are complete. The Version 0.3 scope is accepted (2026-07-19): **Runtime & Persistence Hardening**. Its ADRs were accepted on 2026-07-23 (Architecture Freeze, Decision 048); the version has advanced from ADR Design to Implementation.
 
 Current Task:
 
-The Version 0.3 ADR drafts are complete: Decisions 072 (Save Layer Unification), 073 (Presence and Location), and 074 (World Rule Profile Freeze) are the foundational set, all **Proposed**; Decision 075 assessed 0.3.4 (Command Surface) and closed it by drop. The next step is **ADR Approval (Architecture Freeze)** — accepting 072–074 — before any implementation (Decision 048). No Rules, Data Model, or Runtime change lands until then.
+The Version 0.3 architecture is frozen: Decisions 072 (Save Layer Unification), 073 (Presence and Location), and 074 (World Rule Profile Freeze) — the foundational set — and Decision 075 (Command Surface, milestone 0.3.4 closed by drop) are all **Accepted** as of 2026-07-23. The next step is **Implementation**, beginning with 0.3.1 and 0.3.2, whose one-time migrations are entangled and must be sequenced together (Decisions 072 and 073), then 0.3.3 (Decision 074). Later work within the version is implementation and refinement, not new foundational architecture (Decision 048).
 
 The accepted scope replaced Governance & Society at 0.3 and moved it to Version 0.4. Its argument, its five capability milestones, and the recorded argument against it are in the Version 0.3 section below.
 
 Next Review:
 
-ADR Design review. No Rules, Data Model, or Runtime change may land until the 0.3 ADRs are accepted (Decision 048).
+Implementation review. The 0.3 ADRs are accepted, so Rules, Data Model, and Runtime changes required by Decisions 072–074 may now land; anything beyond them remains frozen (Decision 048).
 
 Completed since the 0.2.0 release:
 
@@ -650,7 +650,7 @@ Decision 071 is the fifth decision against the bootstrap boundary (with 056, 063
 
 ## Version 0.3 — Runtime & Persistence Hardening
 
-Status: **ACCEPTED — Planning complete; in ADR Design.** Scope approved 2026-07-19. No Rules, Data Model, or Runtime change may land until its ADRs are drafted and accepted (Architecture Freeze, Decision 048).
+Status: **ACCEPTED — Architecture frozen 2026-07-23; in Implementation.** Scope approved 2026-07-19; ADRs (Decisions 072–075) accepted 2026-07-23 (Architecture Freeze, Decision 048). Implementation proceeds against the accepted decisions only.
 
 Version 0.2 implementation, Prototype Alpha, the Engine Postmortem, and the required refinements are all complete, which is what unblocked this version under the development lifecycle (Decision 048).
 
@@ -687,7 +687,7 @@ Pulls PA-008 forward from Version 0.6.
 - Bless one checkpoint form and migrate existing checkpoints. Resolve the documented `saves/900_CHECKPOINT_<NNNN>/` (full ledger copies) versus flat `.saves/*.yaml` (manifest-only) versus the empty `checkpoints/` placeholder drift.
 - Acceptance: every existing checkpoint restores, or is re-issued into a conforming restorable checkpoint carrying its reconstructed state — no save-point is abandoned; the Reikon Checkpoint 0001 failure class is covered by a regression fixture.
 - Excludes: campaign and world migration procedures, which remain Version 0.6.
-- ADR: Decision 072 — Save Layer Unification (**Proposed**, ADR Design).
+- ADR: Decision 072 — Save Layer Unification (**Accepted** 2026-07-23).
 
 #### 0.3.2 Presence and Location Structural Representation
 
@@ -698,7 +698,7 @@ Owns the cross-ledger staleness gap the Prototype Alpha checkpoint audits drew b
 - Weigh together with **PA-002 — Location Granularity** (`docs/420_PROTOTYPE_ALPHA/423_ENGINE_IMPROVEMENT_BACKLOG.md`); do not resolve PA-002 as a granularity question alone. Carried inventory having no "on person" representation — a Character is neither a Place nor a container — is the same gap and the exact case that broke here.
 - Acceptance: the Checkpoint 0005 "protagonist in two places" state fails a mechanical gate; a possessor's carried items can be checked against the possessor's location; the Data Model change is versioned and its save-compatibility rule recorded.
 - Excludes: a spatial/coordinate model, map system, or travel geometry. Presence needs one owner and one invariant, not coordinates.
-- ADR: Decision 073 — Presence and Location Structural Representation (**Proposed**, ADR Design).
+- ADR: Decision 073 — Presence and Location Structural Representation (**Accepted** 2026-07-23).
 
 #### 0.3.3 World Rule Profile Consolidation and Freeze
 
@@ -707,7 +707,7 @@ Owns the inherited architecture. Rules Section 14 arrived via Decisions 059 and 
 - Freeze the Section 14 override contract; define profile versioning, freeze status, and its save-compatibility rule.
 - Reikon's current profile (0.6, presently an unfrozen `Active` draft) becomes the first frozen profile and the conformance fixture. *(The original proposal named "Reikon 0.3"; Reikon advanced to 0.6 during play, so the freeze target is its current version.)*
 - Acceptance: a save records the applicable profile version as a structured field, and a mismatch — or a checkpoint captured under an unfrozen version — is surfaced explicitly on restoration rather than silently resolved (Rules Sections 14.4, 13.6).
-- ADR: Decision 074 — World Rule Profile Consolidation and Freeze (**Proposed**, ADR Design).
+- ADR: Decision 074 — World Rule Profile Consolidation and Freeze (**Accepted** 2026-07-23).
 
 #### 0.3.4 Runtime Command Surface Settlement — assessed, closed by drop
 
@@ -715,7 +715,7 @@ Assessed at ADR Design (Decision 075) and **closed without a foundational change
 
 - Deliverable: the command-change classification (Decision 075) — dispatcher/toggle changes are refinements needing no ADR; new bootstrap semantics, mutation barriers, or namespace rules are foundational.
 - Verification folds into 0.3.5: the prototype must exercise the command surface without a new decision.
-- ADR: Decision 075 — Command Surface Settlement: No Foundational Change (**Proposed**, ADR Design).
+- ADR: Decision 075 — Command Surface Settlement: No Foundational Change (**Accepted** 2026-07-23).
 
 #### 0.3.5 Capability Validation and Prototype Campaign
 
@@ -1093,7 +1093,7 @@ Current architectural debt:
 
 Version 0.2 - Knowledge & Civilization is complete. Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements are complete.
 
-Version 0.3 — Runtime & Persistence Hardening scope is accepted (2026-07-19) and in ADR Design. No Rules, Data Model, or Runtime change may land until its ADRs are drafted and accepted (Architecture Freeze, Decision 048). The next work is drafting the 0.3 ADRs for the five milestones (0.3.1–0.3.5), foremost Save Layer Unification and Presence/Location Structural Representation.
+Version 0.3 — Runtime & Persistence Hardening is in Implementation. Its ADRs — Decisions 072, 073, and 074 (foundational) and 075 (refinement; milestone 0.3.4 closed by drop) — were accepted on 2026-07-23 (Architecture Freeze, Decision 048). The next work is implementing Decisions 072 and 073, whose one-time migrations are sequenced together, then Decision 074; anything beyond the accepted set remains frozen.
 
 ---
 

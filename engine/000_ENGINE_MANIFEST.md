@@ -315,15 +315,15 @@ Chronicle Engine develops one version at a time through the standard development
 
 **Current Engine Version:** 0.2.0 (Knowledge & Civilization)
 **Current Development Target:** Version 0.3 — Runtime & Persistence Hardening
-**Current Milestone:** ADR Design
+**Current Milestone:** Implementation
 
-The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 completed Knowledge & Civilization and all lifecycle validation gates. The Version 0.3 scope was accepted on 2026-07-19 (Runtime & Persistence Hardening; see `002_ENGINE_ROADMAP.md`).
+The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 completed Knowledge & Civilization and all lifecycle validation gates. The Version 0.3 scope was accepted on 2026-07-19 and its ADRs — Decisions 072–075 — on 2026-07-23 (Architecture Freeze; see `002_ENGINE_ROADMAP.md`).
 
 Current priority:
 
-1. Draft the Version 0.3 ADRs (save-layer unification, presence/location representation, World Rule Profile freeze, command-surface settlement).
-2. Freeze architecture before implementation (Decision 048).
-3. Then implement against the accepted decisions.
+1. Implement Decisions 072 (Save Layer Unification) and 073 (Presence and Location), sequencing their entangled one-time migrations together.
+2. Implement Decision 074 (World Rule Profile Consolidation and Freeze); Reikon freezes its current profile as the first conformance fixture.
+3. Then the Consistency Audit, Capability Validation, and the 0.3.5 prototype campaign (Decision 048).
 
 ---
 

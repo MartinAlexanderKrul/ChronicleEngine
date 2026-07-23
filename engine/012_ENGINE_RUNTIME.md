@@ -368,7 +368,7 @@ A save is an immutable checkpoint of canonical ledgers (Rules Section 13). Persi
 
 ## 6.2 Version Compatibility
 
-Persistence records Engine, World, Campaign, and Save Format versions (Rules Section 13.5). The Runtime surfaces version mismatches explicitly on restoration. This document defines no automatic migration; reconciling a mismatch is handled explicitly when it arises (Rules Section 13.6).
+Persistence records Engine, World, World Rule Profile, Campaign, and Save Format versions (Rules Sections 13.5, 14.6). The Runtime surfaces version mismatches explicitly on restoration — including a World Rule Profile mismatch or a checkpoint captured under an unfrozen profile version, both of which halt at the readiness gate rather than resolving silently (Rules Section 14.4; Decision 074). This document defines no automatic migration; reconciling a mismatch is handled explicitly when it arises (Rules Section 13.6).
 
 ---
 

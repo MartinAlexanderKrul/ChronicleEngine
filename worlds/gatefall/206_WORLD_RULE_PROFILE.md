@@ -6,6 +6,7 @@
 **Profile Version:** 1.0
 **Engine Compatibility:** 0.2.0; Data Model 0.1.2
 **Status:** Active
+**Compatibility Status:** workshop draft (Rules Section 14.6) — version 1.0 remains mutable while authoring iterates; a checkpoint captured under it carries an explicit *unfrozen — not save-trustworthy* warning. Freezing at the current version is a one-line owner declaration whenever iteration settles.
 
 **1.0 authors the System in full — the mechanical law of a gate-and-System world of awakened hunters.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
 

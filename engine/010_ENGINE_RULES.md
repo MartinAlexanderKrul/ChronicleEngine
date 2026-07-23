@@ -4083,7 +4083,7 @@ Each checkpoint includes a save manifest containing, at minimum:
 
 - save identity, including a checkpoint type and creation time,
 - scope, including world, campaign, and character,
-- versions, including Engine, World, Campaign Schema, and Save Format,
+- versions, including Engine, World, World Rule Profile, Campaign Schema, and Save Format — the World Rule Profile version as a required, structured element (world identifier, version, and freeze status at capture; Section 14.6, Decision 074), with a world that declares no profile recording that absence explicitly (Section 14.5),
 - lineage, including parent save, canonical continuation status, and branch name,
 - the list of included ledgers,
 - compatibility status and any warnings,
@@ -4113,9 +4113,9 @@ Restoration does not require reading every campaign file in full. The manifest a
 
 ## 13.5 Version Compatibility
 
-Save manifests record Engine, World, Campaign Schema, and Save Format versions, per Decision 029, along with a compatibility status.
+Save manifests record Engine, World, Campaign Schema, and Save Format versions, per Decision 029, along with a compatibility status. They also record the applicable World Rule Profile version as a required structured field (Section 13.3; Decision 074).
 
-Version mismatches are surfaced explicitly during restoration. This section does not define automatic migration; reconciling a mismatch is handled explicitly when it arises, not resolved silently.
+Version mismatches are surfaced explicitly during restoration. A World Rule Profile mismatch — or a checkpoint captured under an unfrozen profile version — is surfaced explicitly and halts at the readiness gate (Sections 14.4, 14.6), never silently resolved. This section does not define automatic migration; reconciling a mismatch is handled explicitly when it arises, not resolved silently.
 
 ---
 
@@ -4140,7 +4140,7 @@ These become relevant only if Chronicle Engine gains an actual runtime or compan
 When creating or restoring a save, determine:
 
 1. Which campaign, and which ledgers, are in scope.
-2. The current Engine, World, and Campaign versions, recorded in the manifest.
+2. The current Engine, World, World Rule Profile, and Campaign versions, recorded in the manifest.
 3. Whether this is a new checkpoint or a restoration of an existing one.
 4. For a new checkpoint: its lineage, parent save, and branch.
 5. For a restoration: whether recorded versions match current versions, and what to do if they do not.
@@ -4178,3 +4178,19 @@ World rule content and narrative content do not share a file. Lore may reference
 A world that declares no profile has no such file and runs engine defaults. Absence is meaningful, not a validation failure.
 
 State that an override causes to exist on an entity is carried as a typed domain extension block keyed by the entity's Type or Subtype (`011_ENGINE_DATA_MODEL.md` Section 4.3). The profile owns the extension's content; a world ledger template owns its layout. Declaring an override that creates entity state requires no Data Model change and no schema version increment.
+
+## 14.6 Profile Versioning, Freeze, and Save Compatibility
+
+A World Rule Profile declares a **version** and a **compatibility status** (Decision 074):
+
+- **Workshop draft** — mutable. The profile may still change in place under its current version. A checkpoint captured under a workshop-draft version carries an explicit *unfrozen — not save-trustworthy* compatibility warning: the recorded version does not guarantee that the behavior it names will not change beneath the save.
+- **Frozen** — an immutable behavioral contract at that version. A frozen profile version does not change; changing any declared override behavior requires a new version. Freeze is what makes a checkpoint's recorded profile version trustworthy on restoration.
+
+A profile version increment is classified, as the engine's own changes are (Decision 069):
+
+- **Additive** — declare-only and backward-compatible. A restored older checkpoint needs no recomputation; it adopts the newer version as an ordinary bump at the readiness gate (Section 14.4).
+- **Migrating** — changes how existing state settles. Restoring an older checkpoint requires an explicit migration before play continues.
+
+The save manifest records the applicable profile version as a required, structured element of its version block (Section 13.3): world identifier, version, and freeze status at capture. A world that declares no profile records that absence explicitly — absence is meaningful, not a failure (Section 14.5). On restoration, the Runtime compares the recorded version against the world's current profile version; a mismatch, or a capture under an unfrozen version, is surfaced explicitly and halts at the readiness gate (Sections 13.5, 14.4), never silently resolved.
+
+Freeze is a per-version property, not a maturity gate: a world keeps a workshop-draft profile while it iterates, and freezing is the deliberate act that makes its saves durable — exactly as the engine's own per-version freeze does (Decision 048).

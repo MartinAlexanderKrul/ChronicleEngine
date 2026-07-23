@@ -28,7 +28,14 @@ scope:
 versions:
   engine: <required: e.g. 0.2.0>
   world: <required: world version>
-  world_rule_profile: <optional: exact profile name and version when active>
+  world_rule_profile:
+    world: <required: world name — the profile's owning world>
+    version: <required: profile version at capture, e.g. "0.10">
+    freeze_status: <required: frozen | workshop-draft>
+  # A world that declares no profile records the absence explicitly instead of
+  # the mapping above: `world_rule_profile: none` (Rules Sections 13.3, 14.6).
+  # A workshop-draft capture is unfrozen — not save-trustworthy — and must say
+  # so in compatibility.warnings.
   campaign_schema: <required: Data Model version, e.g. 0.1.2>
   save_format: <required: e.g. 0.1.0>
 lineage:

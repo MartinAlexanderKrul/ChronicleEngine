@@ -106,6 +106,35 @@ function Test-CheckpointContract {
                 if (-not $isOldForm -and $manifestText -match '(?i)validat(or|ion)[^\r\n]{0,60}?(\u2713|\bPASS\b|\bpassed\b)') {
                     $failures.Add("$key manifest self-reports a validation verdict; the Repository Validation Barrier is external and mechanical, and a manifest may never adjudicate its own result (Decisions 054, 072).") | Out-Null
                 }
+
+                # --- Contract 6: structured profile version (Decision 074) --
+                # A manifest captured on or after Decision 074 (2026-07-23)
+                # records the applicable World Rule Profile version as a
+                # required structured element: the world/version/freeze_status
+                # mapping, or an explicit no-profile marker beginning with
+                # 'none'. Manifests captured before it -- old-form REC-bearing
+                # ones and the early id-less baselines alike -- recorded the
+                # profile as free text or not at all and are immutable
+                # (Rules 13.2), so they are exempt; the capture date is itself
+                # immutable manifest content, which makes it the mechanical
+                # discriminator.
+                $createdMatch = [regex]::Match($manifestText, '(?m)^[ \t]*(?:created|record_time):[ \t]*"?(\d{4}-\d{2}-\d{2})')
+                $preDecision074 = $createdMatch.Success -and ([datetime]$createdMatch.Groups[1].Value -lt [datetime]'2026-07-23')
+                if (-not $isOldForm -and -not $preDecision074) {
+                    $profileField = [regex]::Match($manifestText, '(?m)^[ \t]*world_rule_profile:[ \t]*(.*?)[ \t]*\r?$')
+                    if (-not $profileField.Success) {
+                        $failures.Add("$key manifest records no world_rule_profile; the profile version is a required, structured element of the version block (Rules 13.3, 14.6; Decision 074).") | Out-Null
+                    } else {
+                        $profileValue = $profileField.Groups[1].Value.Trim().Trim('"')
+                        if ($profileValue -eq '') {
+                            if ($manifestText -notmatch '(?ms)^[ \t]*world_rule_profile:[ \t]*\r?\n[ \t]+world[ \t]*:[^\r\n]*\r?\n[ \t]+version[ \t]*:[^\r\n]*\r?\n[ \t]+freeze_status[ \t]*:') {
+                                $failures.Add("$key manifest world_rule_profile mapping is not the structured world/version/freeze_status form (Rules 14.6; Decision 074).") | Out-Null
+                            }
+                        } elseif ($profileValue -notmatch '^none') {
+                            $failures.Add("$key manifest world_rule_profile is neither the structured world/version/freeze_status mapping nor an explicit no-profile marker beginning with 'none' (Rules 13.3, 14.6; Decision 074).") | Out-Null
+                        }
+                    }
+                }
             }
 
             foreach ($ledger in $requiredLedgers) {
@@ -145,6 +174,25 @@ function Test-CheckpointContract {
         }
     }
 
+    # --- Contract 7: every declared world profile declares a version and a
+    # freeze status (Rules 14.6; Decision 074). Save compatibility depends on
+    # the profile version, so an undeclared version or freeze status makes
+    # every checkpoint in that world untrustworthy.
+    $worldsRoot = Join-Path $Root 'worlds'
+    if (Test-Path -LiteralPath $worldsRoot -PathType Container) {
+        foreach ($world in Get-ChildItem -LiteralPath $worldsRoot -Directory) {
+            $profilePath = Join-Path $world.FullName '206_WORLD_RULE_PROFILE.md'
+            if (-not (Test-Path -LiteralPath $profilePath -PathType Leaf)) { continue }
+            $profileText = Get-Content -LiteralPath $profilePath -Raw
+            if ($profileText -notmatch '(?m)^\*\*Profile Version:\*\*[ \t]*\S') {
+                $failures.Add("worlds/$($world.Name)/206_WORLD_RULE_PROFILE.md declares no Profile Version; save compatibility depends on it (Rules 14.6; Decision 074).") | Out-Null
+            }
+            if ($profileText -notmatch '(?m)^\*\*Compatibility Status:\*\*[ \t]*(frozen|workshop draft)') {
+                $failures.Add("worlds/$($world.Name)/206_WORLD_RULE_PROFILE.md declares no Compatibility Status (frozen | workshop draft); an undeclared freeze status leaves every recorded profile version untrustworthy (Rules 14.6; Decision 074).") | Out-Null
+            }
+        }
+    }
+
     return ,$failures
 }
 
@@ -180,7 +228,8 @@ $fixtureFailures = Test-CheckpointContract -Root $fixtureRoot -SupersededOrigina
 $expectedNeedles = @(
     'canonical four-digit checkpoint form',
     'self-reports a validation verdict',
-    'omits the required ledger 100_CHARACTER_SHEET.md'
+    'omits the required ledger 100_CHARACTER_SHEET.md',
+    'records no world_rule_profile'
 )
 $fixtureProblems = New-Object System.Collections.Generic.List[string]
 foreach ($needle in $expectedNeedles) {

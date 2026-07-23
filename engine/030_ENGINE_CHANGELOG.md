@@ -12,6 +12,18 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-23 — Decision 074 implemented: World Rule Profile versioning, freeze, and enforced save compatibility
+
+Implementation of Version 0.3 milestone 0.3.3 against accepted Decision 074 (foundational, frozen at ADR Approval); this entry records its landing. With it, all three foundational Version 0.3 decisions are implemented.
+
+**Rules:** new Section 14.6 — a profile declares a version and a **compatibility status** (*workshop draft* mutable and not save-trustworthy | *frozen* an immutable behavioral contract); changing frozen behavior requires a new version, classified **additive** (older checkpoints adopt it at the readiness gate) or **migrating** (explicit migration before play). Section 13.3's version block gains the World Rule Profile version as a **required structured element** (world/version/freeze status, or an explicit `none` for a profile-less world); Sections 13.5/13.7 and Runtime 6.2 extend mismatch surfacing to the profile axis — a mismatch or an unfrozen capture halts at the readiness gate, never silently resolved.
+**Reikon is the first frozen profile** (world authoring, no ADR — Decision 062): 0.10 declares `Compatibility Status: frozen`; behavior changes now require 0.11+. Checkpoints 0002–0017 were captured under unfrozen 0.1–0.8 and surface that warning on restoration (`saves/README.md`). Stale "Profile 0.6" compatibility mentions in the world README, World Bible, and `system/WORLDS_AND_CAMPAIGNS.md` corrected to 0.10 (frozen).
+**Gatefall stays workshop draft by design:** its 1.0 profile is under active in-place iteration, so draft is the factual status; its checkpoints carry the unfrozen warning until the owner freezes it — a one-line declaration whenever authoring settles.
+**Enforcement:** `tools/test_checkpoint_contract.ps1` gains Contract 6 — a manifest captured on or after 2026-07-23 must record the structured profile version or explicit `none`; earlier manifests are immutable free-text history, discriminated by their own immutable capture date — and Contract 7 — every declared world profile must state a Profile Version and a Compatibility Status. The regression fixture also covers the missing-profile-version case.
+**Documents:** Rules 13.3, 13.5, 13.7, new 14.6; Runtime 6.2; `templates/ledgers/900_SAVE_MANIFEST.md`; `worlds/reikon/206_WORLD_RULE_PROFILE.md`, `worlds/reikon/README.md`, `worlds/reikon/200_WORLD_BIBLE.md`; `worlds/gatefall/206_WORLD_RULE_PROFILE.md`; `system/WORLDS_AND_CAMPAIGNS.md`; `campaigns/reikon_awakening_001/saves/README.md`; roadmap; manifest; README 1.10.
+**Validation:** all seven gates pass, including the extended checkpoint contract and its regression fixture.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-23 — Decisions 072 and 073 implemented: canonical checkpoint form and single-owner presence (Data Model 0.1.2)
 
 Implementation-stage work under the accepted Version 0.3 ADRs; milestones 0.3.1 and 0.3.2 land together because their one-time migrations are entangled. Both changes are foundational and were frozen at ADR Approval (below); this entry records their landing.

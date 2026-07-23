@@ -8,7 +8,7 @@ all three.
 ```yaml
 save_identity:
   checkpoint_type: session-close
-  created: "2026-07-13T00:00:00Z"
+  created: "2026-07-24T00:00:00Z"
 scope:
   world: worlds/example_world
   campaign: campaigns/example

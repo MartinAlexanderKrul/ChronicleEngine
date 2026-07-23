@@ -14,7 +14,7 @@ Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha
 
 Current Task:
 
-The Version 0.3 architecture is frozen: Decisions 072–075 are all **Accepted** as of 2026-07-23. Milestones **0.3.1 and 0.3.2 are implemented** (2026-07-23): the canonical checkpoint form is normative (Rules 13.1) and mechanically enforced with a regression fixture for the Checkpoint 001 failure class; presence has a single structural owner (Data Model 0.1.2, Sections 7.1/9.2) enforced by the Repository Validation Barrier; and the entangled one-time migrations are done — every live record is schema 0.1.2, carried inventory uses presence-by-possession, Prototype Alpha's terminal state is re-issued as conforming Checkpoint 0001, and two live stale-location defects the new gate class exists for were found and corrected during the migration itself (`EVT-000057`). The next step is **0.3.3 — implementing Decision 074**. Later work within the version is implementation and refinement, not new foundational architecture (Decision 048).
+The Version 0.3 architecture is frozen: Decisions 072–075 are all **Accepted** as of 2026-07-23. Milestones **0.3.1 and 0.3.2 are implemented** (2026-07-23): the canonical checkpoint form is normative (Rules 13.1) and mechanically enforced with a regression fixture for the Checkpoint 001 failure class; presence has a single structural owner (Data Model 0.1.2, Sections 7.1/9.2) enforced by the Repository Validation Barrier; and the entangled one-time migrations are done — every live record is schema 0.1.2, carried inventory uses presence-by-possession, Prototype Alpha's terminal state is re-issued as conforming Checkpoint 0001, and two live stale-location defects the new gate class exists for were found and corrected during the migration itself (`EVT-000057`). Milestone **0.3.3 is implemented** (2026-07-23): Rules 14.6 defines profile versioning and freeze semantics, the manifest's version block requires a structured profile version, mismatch surfacing extends to the profile axis (Runtime 6.2), Reikon 0.10 is the first frozen profile, and the contract test enforces both the manifest field and the per-world declaration. With 0.3.4 closed by drop (Decision 075), the remaining Version 0.3 work is the **Consistency Audit**, then **0.3.5 — Capability Validation and the Prototype Campaign**. Later work within the version is implementation and refinement, not new foundational architecture (Decision 048).
 
 The accepted scope replaced Governance & Society at 0.3 and moved it to Version 0.4. Its argument, its five capability milestones, and the recorded argument against it are in the Version 0.3 section below.
 
@@ -706,6 +706,8 @@ Owns the cross-ledger staleness gap the Prototype Alpha checkpoint audits drew b
 
 #### 0.3.3 World Rule Profile Consolidation and Freeze
 
+**Status: Implemented 2026-07-23** (Decision 074 accepted and landed; Rules 14.6; Reikon 0.10 frozen as the first conformance fixture; manifest profile field and per-world declaration enforced by `tools/test_checkpoint_contract.ps1`).
+
 Owns the inherited architecture. Rules Section 14 arrived via Decisions 059 and 062 against a released version and is classified foundational by the Post-0.2 Decision Record above.
 
 - Freeze the Section 14 override contract; define profile versioning, freeze status, and its save-compatibility rule.
@@ -1099,7 +1101,7 @@ Current architectural debt:
 
 Version 0.2 - Knowledge & Civilization is complete. Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements are complete.
 
-Version 0.3 — Runtime & Persistence Hardening is in Implementation. Its ADRs — Decisions 072, 073, and 074 (foundational) and 075 (refinement; milestone 0.3.4 closed by drop) — were accepted on 2026-07-23 (Architecture Freeze, Decision 048). The next work is implementing Decisions 072 and 073, whose one-time migrations are sequenced together, then Decision 074; anything beyond the accepted set remains frozen.
+Version 0.3 — Runtime & Persistence Hardening is in Implementation. Its ADRs — Decisions 072, 073, and 074 (foundational) and 075 (refinement; milestone 0.3.4 closed by drop) — were accepted on 2026-07-23 (Architecture Freeze, Decision 048), and all three foundational decisions are implemented as of the same date. The next work is the Consistency Audit, then 0.3.5 — Capability Validation and the Prototype Campaign; anything beyond the accepted set remains frozen.
 
 ---
 

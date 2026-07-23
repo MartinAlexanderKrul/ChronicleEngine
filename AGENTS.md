@@ -4,7 +4,7 @@ Chronicle Engine is a personal historical-simulation RPG that runs *inside* an A
 
 ## Skills
 
-Full agent-skill definitions live in `.agents/skills/` (mirrored from `.claude/skills/`). If your harness supports the Agent Skills format (`SKILL.md` with YAML frontmatter), register them from there. Otherwise, the three contracts below are binding whenever you operate in this repository.
+Full agent-skill definitions live in `.agents/skills/` (mirrored from `.claude/skills/`). If your harness supports the Agent Skills format (`SKILL.md` with YAML frontmatter), register them from there. Otherwise, the four contracts below are binding whenever you operate in this repository.
 
 ### 1. Bootstrap (`/chronicle`) — `.agents/skills/chronicle/SKILL.md`
 
@@ -35,6 +35,15 @@ A save is a set of verified files on disk — never a claim.
   powershell -ExecutionPolicy Bypass -File tools\test_checkpoint_contract.ps1
   ```
 - The word "saved" may appear only after every artifact exists, read-back confirms it, and both validators pass.
+
+### 4. Resolving actions (`/resolve`, `/roll`) — `.agents/skills/resolve/SKILL.md`
+
+A d100 you did not obtain from a tool call does not exist.
+
+- **Every uncertain resolution is an actual rolled tool call** — e.g. `powershell -Command "Get-Random -Minimum 1 -Maximum 101"`. Narrate from the number the tool returned; never type a `🎲`/`d100:` result you chose yourself.
+- **Gate entry is rolls, not narration**: on first entry roll true grade (§9.5 d100), archetype (§10 d8), then population from the §9.7 formula (3d6, 1d2). The sensor's read is flavor over the rolled result, never a substitute.
+- **Damage is the §6.2 formula, shown**: `¼ attacker band health × skill multiplier × degree-of-success × (1 − reductions)`. Monsters and NPCs hit at their **own** band. Track Health as an OOC ledger line every exchange (`30 → 17/40`); a hit that landed is subtracted the same turn.
+- **Numbers live OOC only** (§20.5): the roll, the math, and the HP ledger go in the OOC/`/debug` block; in the fiction a wound is a wound. A **pre-System** protagonist (before his §14.7 onset) has no status window — do not show him one.
 
 ## Repository conventions
 

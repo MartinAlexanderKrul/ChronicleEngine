@@ -86,12 +86,12 @@ Level 1→2 costs **100**, level 2→3 costs **200**, level 3→4 costs **300**,
 
 ## 3.2 The Level-Up Grant
 
-Crossing a threshold is a **level-up**. Each level-up grants:
+Crossing a threshold is a **level-up**. Each level-up **offers a grant** (Section 3.9 — the Bearer accepts or defers it; it is never applied automatically):
 
-- **+3 stat points** (Section 4), allocatable by the Bearer; and
-- **full restoration of Health and Mana** to their new maxima.
+- **+3 stat points** (Section 4), allocatable by the Bearer once the grant is accepted; and
+- **full restoration of Health and Mana** to their new maxima, applied at the moment of acceptance.
 
-There is no other source of stat points except the daily-quest streak (Section 8).
+Stat points come from three sources and nowhere else: the level-up grant (+3), the **daily-quest completion grant (+3, Section 8.1)**, and item/title/skill rewards that state a specific bonus.
 
 ## 3.3 Kill XP by Threat Grade
 
@@ -113,11 +113,11 @@ Clearing a Gate — killing its boss, which collapses the Gate — awards a one-
 
 ## 3.5 Daily XP
 
-The daily quest (Section 8) awards **+10 XP** per completed day, and **+1 stat point per 7 consecutive completed days**; the streak resets on a miss. Full daily-quest and penalty rules are in Section 8.
+The daily quest (Section 8) awards, on each completed day, **+10 XP** and a **daily grant of +3 stat points** (offered, not auto-applied — Section 3.9). A **7-consecutive-day streak** additionally delivers a **Weekly Cache** — a reward box of items (Section 8.1). The streak resets on a miss. Full daily-quest, cache, and penalty rules are in Section 8.
 
 ## 3.6 Award Timing
 
-XP is added the instant the exchange that resolves the challenge settles. The same exchange adds the XP, checks the threshold, applies any level-up (with its grant and full restore), and fires the notification. If one action resolves several monsters, aggregate that action's XP and notify once. There is no pending-XP state and no later reconciliation.
+XP is added the instant the exchange that resolves the challenge settles. The same exchange adds the XP, checks the threshold, registers any level-up, and fires the notification. If one action resolves several monsters, aggregate that action's XP and notify once. There is no pending-XP state and no later reconciliation. **A level-up's *grant* (stat points and full restore), by contrast, is a pending offer** the Bearer accepts or defers under Section 3.9 — the level and its threshold advance immediately, but the grant waits on acceptance.
 
 ## 3.7 Worked Example — A Fresh Bearer Clears an E-Gate
 
@@ -128,14 +128,14 @@ A newly awakened Bearer at **level 1** (XP 0/100, Mana 20/20) enters a confirmed
 - One E boss (×4): `10 × 4 = 40 XP`.
 - E-Gate clear milestone (boss kill, once): `70 XP`.
 
-Total earned in the clear: **230 XP**. Tracking against the thresholds: the first 100 crosses level 1→2 (a level-up — **+3 stat points**, Health and Mana restored to full); the remaining **130** carries toward level 3, whose threshold is 200. The Bearer exits the Gate at **level 2, XP 130/200**, with three unspent stat points and full pools.
+Total earned in the clear: **230 XP**. Tracking against the thresholds: the first 100 crosses level 1→2 (a level-up — its grant of **+3 stat points** and a full Health/Mana restore is now *offered*, Section 3.9); the remaining **130** carries toward level 3, whose threshold is 200. The Bearer is now **level 2, XP 130/200**, with a **pending level-up grant**. If he accepts it mid-fight, he gains three unspent stat points and full pools that instant; if he defers, the grant waits and his pools stay where the fight left them — a real choice, since a banked grant is a full heal held in reserve.
 
 During the fight the Bearer spends Mana on a skill (Section 7); a representative inline notification stream (Section 8 fixes the format) reads:
 
 ```text
 Mana: 20 → 14/20
 XP: 0 → 100/100
-[SYSTEM] LEVEL UP — you are now Level 2. +3 stat points. Health and Mana restored.
+[SYSTEM] LEVEL UP — you are now Level 2. Grant available: +3 stat points · full Health/Mana restore. (accept / defer)
 XP: 0 → 130/200
 ```
 
@@ -148,6 +148,26 @@ Most clears are party clears, and the Bearer earns from them on the same genuine
 - **Kill XP** (Section 3.3) goes to the Bearer for **any kill his live-die actions materially contributed to** — a killing blow, a landed hit, a skill, or a control or setup action the resolved exchange turned on. He need not land the last hit; he must have taken a genuine, resolved part in bringing the creature down. A kill he took no live-die part in awards him nothing, even when an ally in his party made it.
 - **The Gate-clear milestone** (Section 3.4) settles on **any clear the Bearer fought through** — if he was a materially contributing member of the party that killed the boss, the once-per-Gate milestone is his, exactly as it would be on a solo clear. He need not strike the boss's own killing blow.
 - **Pure spectating awards nothing.** A Bearer who stands back and lets a party clear around him has met no genuine challenge (Section 3, opening) and earns neither kill XP nor the milestone. Presence is not participation; the live die is the test.
+
+## 3.9 Grants Are Offered — Accept or Defer
+
+A **grant** is a bundle the System *offers* the Bearer; it is never applied on its own. Two grants exist: the **level-up grant** (+3 stat points and a full Health/Mana restore, Section 3.2) and the **daily-quest completion grant** (+3 stat points, Section 8.1). A Weekly Cache (Section 8.1) is opened by the same accept action.
+
+The offer renders as a System prompt the Bearer answers:
+
+```text
+[SYSTEM] LEVEL UP — you are now Level 2.
+Grant available: +3 stat points · Health and Mana restored to full.
+Accept now, or defer? (accept / defer)
+```
+
+- **The level and its threshold advance immediately** on crossing (Section 3.6); only the *grant* waits.
+- **Accept** applies the whole bundle at that instant: stat points land in the unspent pool (Section 4.2), and — for a level-up grant — Health and Mana refill to their maxima. A daily grant carries only points, no restore.
+- **Defer** leaves the grant **pending**; it does not expire. The Bearer may accept a pending grant at any later moment — between exchanges, after the fight, on a quiet night. Multiple pending grants may stack and be accepted together or one at a time.
+- **Why it is a choice, not a formality:** a level-up grant holds a **full heal in reserve**, and accepting mid-fight is a tactical act — a clutch recovery timed to a killing exchange, or held back so a penalty-zone run or a boss's second phase still has it available. Deferring never loses anything; it trades an immediate refill for a heal on the Bearer's own clock.
+- The System never force-applies a grant, never allocates points for the Bearer (allocation is always his, Section 4.2), and never heals him without acceptance. Pending grants appear in the `/system` status panel until claimed.
+
+Only the Bearer's own System grants work this way; nothing about an NPC hunter changes (Section 13.1).
 
 ---
 
@@ -171,7 +191,7 @@ An ordinary awakened adult sits at a **baseline of 10 per stat**. The Bearer beg
 
 ## 4.2 Stat Points
 
-A **stat point** is the allocatable unit of growth granted by a level-up (+3 each, Section 3.2) and by the daily-quest streak (+1 per 7 consecutive days, Section 8). One stat point raises one stat by **1**. Allocation is permanent canonical capability; there is no respec unless a future authored in-world mechanism adds one with a cost.
+A **stat point** is the allocatable unit of growth. Its sources are the **level-up grant** (+3, Section 3.2) and the **daily-quest completion grant** (+3, Section 8.1) — both offered under Section 3.9 — plus any item, title, or skill that states a specific point bonus. One stat point raises one stat by **1**. Allocation is permanent canonical capability; there is no respec unless a future authored in-world mechanism adds one with a cost. Points from an accepted grant sit in the Bearer's **unspent pool** until he allocates them; allocation may happen any time and is not itself an offer.
 
 ## 4.3 The Modifier-Step Rule
 
@@ -378,15 +398,30 @@ Once per in-fiction day the System issues the quest, rendered in a bracketed Sys
 ```text
 [SYSTEM] QUEST ISSUED — DAILY TRAINING
 Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 10 km run 0/10
-Reward: 10 XP · streak 4/7 → +1 stat point at 7
+Reward: +3 stat points · +10 XP · streak 4/7 → Weekly Cache at 7
 Warning: failure to complete within 24 h transfers you to a penalty zone.
 ```
 
 - **The regimen** is fixed: **100 push-ups, 100 sit-ups, and a 10 km run**, completed within a **24-hour window** from issuance.
-- **Reward on completion:** **+10 XP** (Section 3.5), and progress on the **streak**.
-- **Streak:** each of **7 consecutive completed days** grants, on the seventh, **+1 stat point**; the count then continues, granting another point every further seven days. **A single missed day resets the streak to zero.**
+- **Reward on completion:** a **daily grant of +3 stat points** (offered under Section 3.9, not auto-applied) and **+10 XP** (Section 3.5), and progress on the **streak**.
+- **Streak → Weekly Cache:** every **7 consecutive completed days** delivers a **Weekly Cache** on the seventh, and again every further seven days. **A single missed day resets the streak to zero.**
 
 Completion is genuine effort, not a checkbox — the objectives are physical work the Bearer must actually do in the fiction. The System tracks progress against each objective (the `0/100` counters advance as the work is done) and resolves the quest as completed or failed at the window's close.
+
+### The Weekly Cache
+
+A Weekly Cache is a System reward box — it must be **opened** (accepted, Section 3.9), and on opening it rolls its contents on a d100 at the Bearer's **effective band** (Section 6.6). Items arrive at that band and follow their own sections (potions Section 12.5, runes and skill books Section 11, elixirs Section 12.5's lifetime cap):
+
+| d100 | Weekly Cache yields |
+|---|---|
+| 01–35 | A **potion cache** — 3 potions at the Bearer's band tier (healing/mana mix). |
+| 36–60 | **System gold** — a purse of `500 × band-tier` gold (E=500, D=2,000, C=8,500 …, scaling with the shop's core buy price, Section 12.5). |
+| 61–80 | A **rune** teaching one authored skill (Section 11.3 table) at the Bearer's band. |
+| 81–93 | A piece of **graded gear** at the Bearer's band (Section 11.5). |
+| 94–99 | A **skill book** (Section 11.3) — a fuller technique with a growth path. |
+| 00 | An **elixir** (+1 permanent to one stat, Section 12.5's lifetime cap applies). |
+
+The cache is the Bearer's alone (no other hunter earns one), and a milestone streak — every **28th day** (a fourth consecutive cache) — rolls **twice and keeps the better**. Cache contents are authored here and adjustable by owner ruling; nothing in a cache exceeds what the loot and shop tables already price, so it enriches progression without breaking the economy.
 
 ## 8.2 Inline System Notifications
 
@@ -926,7 +961,7 @@ Strength <n> · Agility <n> · Vitality <n> · Perception <n> · Intelligence <n
 
 [SYSTEM] QUEST ISSUED — DAILY TRAINING
 Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 10 km run 0/10
-Reward: 10 XP · streak 0/7 → +1 stat point at 7
+Reward: +3 stat points · +10 XP · streak 0/7 → Weekly Cache at 7
 Warning: failure to complete within 24 h transfers you to a penalty zone.
 ```
 
@@ -950,19 +985,21 @@ Class: <class or —>  ·  Title: <equipped title or —>
 Level <L>  ·  XP <cur>/<next>
 Health <hp>/<hpmax>  ·  Mana <mp>/<mpmax>  ·  Unspent points <n>
 Strength <n> · Agility <n> · Vitality <n> · Perception <n> · Intelligence <n>
+Pending grants: <none, or a list: "level-up (+3 & full restore), daily (+3)">
 ```
 
-Ren:
+Ren (carrying one deferred level-up grant from his last fight):
 
 ```text
 [SYSTEM] STATUS — REN
 Class: —  ·  Title: Lone Clear
 Level 3  ·  XP 150/300
-Health 40/40  ·  Mana 22/30  ·  Unspent points 1
+Health 31/40  ·  Mana 22/30  ·  Unspent points 1
 Strength 9 · Agility 13 · Vitality 11 · Perception 14 · Intelligence 11
+Pending grants: level-up (+3 stat points & full Health/Mana restore) — accept anytime
 ```
 
-The `Class` line reads `—` until the class quest is completed (Section 15.8, Section 18).
+The `Class` line reads `—` until the class quest is completed (Section 15.8, Section 18). The **Pending grants** line lists any deferred grant (Section 3.9) and reads `none` when there are none; it is how a Bearer sees the full heal he is holding in reserve.
 
 ## 15.2 `/system quests`
 
@@ -977,7 +1014,7 @@ Ren, mid-day with a streak one short of a stat point:
 
 ```text
 [SYSTEM] QUESTS
-[DAILY] Training — push-ups 40/100 · sit-ups 100/100 · run 6/10 km   Reward: 10 XP   Deadline: 14 h 12 m   Streak 6/7 → +1 stat point at 7
+[DAILY] Training — push-ups 40/100 · sit-ups 100/100 · run 6/10 km   Reward: +3 stat points · 10 XP   Deadline: 14 h 12 m   Streak 6/7 → Weekly Cache at 7
 [URGENT] Cull the nest below the Red Line platform (3/4 killed)   Reward: 40 XP   Window: this scene
 [HIDDEN] ???
 ```
@@ -1094,7 +1131,7 @@ XP: 0 → 20/300
 [SYSTEM] TITLE EARNED — Lone Clear. +1 modifier step while no allied hunter shares the Gate. Equip via /system titles.
 [SYSTEM] QUEST ISSUED — DAILY TRAINING
 Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 10 km run 0/10
-Reward: 10 XP · streak 6/7 → +1 stat point at 7
+Reward: +3 stat points · +10 XP · streak 6/7 → Weekly Cache at 7
 Warning: failure to complete within 24 h transfers you to a penalty zone.
 ```
 

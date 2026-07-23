@@ -11,7 +11,7 @@ This is a multi-object ledger of immutable Events (`EVT-`). They are the provena
 ```yaml
 id: REC-000008
 canonical_record: REC-000008
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -36,7 +36,7 @@ subjects:
 ```yaml
 id: EVT-000001
 canonical_record: REC-000008
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -56,7 +56,7 @@ description: "Halden was established at the Verran ford. Its earliest river work
 ```yaml
 id: EVT-000002
 canonical_record: REC-000008
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -76,7 +76,7 @@ description: "The Order of the Ember was established. Over generations it gained
 ```yaml
 id: EVT-000003
 canonical_record: REC-000008
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -96,7 +96,7 @@ description: "The Athenaeum was chartered as a college of natural philosophy, va
 ```yaml
 id: EVT-000004
 canonical_record: REC-000008
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -117,7 +117,7 @@ description: "The Glaziers' Guild was chartered with a monopoly on Halden glassw
 ```yaml
 id: EVT-000005
 canonical_record: REC-000008
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -139,7 +139,7 @@ description: "Fellow Corvane's finding that the marsh-fever spreads through tain
 ```yaml
 id: EVT-000006
 canonical_record: REC-000008
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -160,7 +160,7 @@ description: "The Order of the Ember condemned the marsh-fever finding as heresy
 ```yaml
 id: EVT-000007
 canonical_record: REC-000008
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

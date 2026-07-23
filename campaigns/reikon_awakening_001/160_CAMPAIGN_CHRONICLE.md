@@ -5,7 +5,7 @@
 ```yaml
 id: REC-000043
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000045
@@ -42,7 +42,7 @@ subjects:
 ```yaml
 id: EVT-000025
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: transcript
@@ -61,7 +61,7 @@ description: "Captain Marissa Thorne briefs Daedalus, who accepts a solo E-grade
 ```yaml
 id: EVT-000026
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: transcript
@@ -79,7 +79,7 @@ description: "Daedalus rolls 43 with +2 modifier steps and destroys two stationa
 ```yaml
 id: EVT-000027
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: transcript
@@ -97,7 +97,7 @@ description: "Daedalus rests to recover mana and observes that Rift glow intensi
 ```yaml
 id: EVT-000028
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: transcript
@@ -115,7 +115,7 @@ description: "Daedalus rolls 61 with +1 modifier step and destroys three chargin
 ```yaml
 id: EVT-000029
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: "campaigns/reikon_awakening_001/exports/play_export_0001.md"
@@ -133,7 +133,7 @@ description: "Daedalus completes a 10 km run, thirty minutes of sword forms, one
 ```yaml
 id: EVT-000030
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: "user-supplied raw chat export: full_chat_export_reikon_session.md"
@@ -151,7 +151,7 @@ description: "Daedalus wounds the Warehouse 7 pack leader with Fireball, is rake
 ```yaml
 id: EVT-000031
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: "user-supplied gameplay: /continue session 2"
@@ -169,7 +169,7 @@ description: "Daedalus follows a retreating Broodling downward into the warehous
 ```yaml
 id: EVT-000032
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -187,7 +187,7 @@ description: "Explicit ruling correcting a recording error in EVT-000031, classi
 ```yaml
 id: EVT-000033
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: "owner-supplied full shared-chat transcript, promoted only through the last rules-valid exchange"
@@ -209,7 +209,7 @@ description: "Daedalus bought four healing potions, two energy tonics, and wound
 ```yaml
 id: EVT-000034
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: "owner ruling applied to the complete shared-chat transcript"
@@ -227,7 +227,7 @@ description: "Owner ruling under Reikon Profile 0.5 supersedes EVT-000033's reje
 ```yaml
 id: EVT-000035
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -247,7 +247,7 @@ description: "Explicit ruling repairing an under-promotion in EVT-000033, classi
 ```yaml
 id: EVT-000036
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -266,7 +266,7 @@ description: "Owner ruling resolving a latent identity ambiguity surfaced by the
 ```yaml
 id: EVT-000037
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -285,7 +285,7 @@ description: "Owner ruling correcting the name of ENT-000061, the Aurology Insti
 ```yaml
 id: EVT-000038
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: transcript
@@ -306,7 +306,7 @@ description: "After leaving the basement, Daedalus applied first-aid salve and c
 ```yaml
 id: EVT-000039
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: transcript
@@ -324,7 +324,7 @@ description: "Back in his rented room, Daedalus performed a light bodyweight wor
 ```yaml
 id: EVT-000040
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -343,7 +343,7 @@ description: "Reikon World Rule Profile 0.6 Section 9.6 recurrent intervention c
 ```yaml
 id: EVT-000041
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
@@ -366,7 +366,7 @@ description: "Daedalus ran his full training regimen at dawn — deliberately om
 ```yaml
 id: EVT-000042
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
@@ -385,7 +385,7 @@ description: "Daedalus moved through the blast-struck core chamber checking each
 ```yaml
 id: EVT-000043
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -403,7 +403,7 @@ description: "worlds/reikon/206_WORLD_RULE_PROFILE.md Section 8.2 states that cl
 ```yaml
 id: EVT-000044
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -422,7 +422,7 @@ description: "The owner settled the gap `EVT-000043` flagged: worlds/reikon/206_
 ```yaml
 id: EVT-000045
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -441,7 +441,7 @@ description: "Two coupled owner rulings on worlds/reikon/206_WORLD_RULE_PROFILE.
 ```yaml
 id: EVT-000046
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -459,7 +459,7 @@ description: "Daedalus allocated all 8 unspent Ascension points (2 original + 6 
 ```yaml
 id: EVT-000047
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
@@ -482,7 +482,7 @@ description: "Daedalus woke to the first safe exchange of a new in-fiction day, 
 ```yaml
 id: EVT-000048
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
@@ -503,7 +503,7 @@ description: "At the Warehouse 7 chamber, Wren conducted an in-person assessment
 ```yaml
 id: EVT-000049
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
@@ -522,7 +522,7 @@ description: "Daedalus took the unconfirmed-grade tannery-district E-Rift assign
 ```yaml
 id: EVT-000050
 canonical_record: REC-000043
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -533,6 +533,23 @@ kind: ruling
 importance: active
 participants: []
 description: "In play, Captain Thorne asserted that Association assignments pay an automatic completion bonus, separate from whatever a hunter does with harvested cores, and that Daedalus's Ashgate clear had already triggered one. Checked against worlds/reikon/206_WORLD_RULE_PROFILE.md Section 12 (Economy): the section fully specifies core value scaling, the universal 1-core-to-3-vells conversion rate, appraisal mechanics, and a periodic hunter salary (paid in cores) — but nowhere specifies a distinct per-assignment cash bonus mechanic. Ruling: Thorne's in-fiction claim is flagged as an unauthored assertion, not treated as settled fact, and no bonus vells are added to Daedalus's holdings on its account. Separately, a real omission from an earlier checkpoint is corrected here: Daedalus did sell the appraised Ashgate core for 24 vells (in play, prior session) and this was never written to canonical inventory at the time. That 24-vell holding is now correctly recorded as ENT-000086. The Warehouse 7 assignment's own discretionary bonus, which Thorne separately said would take a day or two to process through the Association, remains genuinely pending and unresolved — no amount has been assigned to it, canonically or otherwise."
+```
+
+## Migration — Presence Ownership Under Decision 073; Two Stale Location Fields Corrected
+
+```yaml
+id: EVT-000057
+canonical_record: REC-000043
+schema_version: "0.1.2"
+status: active
+provenance:
+  source: ruling
+  event_time: "Year 31 AR, at the tannery-district E-Rift site (no fictional time elapsed)"
+  record_time: "2026-07-23T12:00:00Z"
+kind: ruling
+importance: active
+participants: []
+description: "One-time structural migration under Decision 073 (Presence and Location Structural Representation, Version 0.3 milestone 0.3.2). Representation only: no fictional time elapsed and no played fiction differs. The character's canonical_state.location is now the sole owner of presence; 180_CURRENT_STATE.md presents and points at it; the situation field no longer restates location. Two stale fields were corrected in the same pass — exactly the defect class Decision 073 exists to catch: (1) 100_CHARACTER_SHEET.md canonical_state.location read ENT-000066, his rented room, while every other source placed Daedalus at the tannery-district E-Rift site; corrected to the tannery-district descriptor. (2) 180_CURRENT_STATE.md still described the Ashgate Rift core as carried and unappraised against ENT-000082's recorded appraisal and sale (EVT-000050); its presentation prose was corrected. Nineteen carried holdings in 120_INVENTORY_AND_OWNERSHIP.md were converted from the place-plus-(carried) idiom to the carried-by presence-by-possession form (011 Section 9.2); the sold Ashgate core keeps its Association-desk location and the D-core with Dr. Soren keeps its Institute custody location. All live records were bumped to schema 0.1.2 under the same decision."
 ```
 
 ## Current Chronicle Position

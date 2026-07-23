@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000064
 canonical_record: REC-000064
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -51,7 +51,7 @@ Ironline Guild (ENT-000101) has built its entire recruiting pitch around showing
 ```yaml
 id: ENT-000100
 canonical_record: REC-000064
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

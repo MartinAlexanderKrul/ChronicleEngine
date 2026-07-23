@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000029
 canonical_record: REC-000029
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -31,7 +31,7 @@ subjects:
 ```yaml
 id: ENT-000048
 canonical_record: REC-000029
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -57,7 +57,7 @@ canonical_state:
 ```yaml
 id: ENT-000049
 canonical_record: REC-000029
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -83,7 +83,7 @@ canonical_state:
 ```yaml
 id: ENT-000050
 canonical_record: REC-000029
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000024

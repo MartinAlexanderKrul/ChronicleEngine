@@ -14,7 +14,7 @@ Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha
 
 Current Task:
 
-The Version 0.3 architecture is frozen: Decisions 072 (Save Layer Unification), 073 (Presence and Location), and 074 (World Rule Profile Freeze) — the foundational set — and Decision 075 (Command Surface, milestone 0.3.4 closed by drop) are all **Accepted** as of 2026-07-23. The next step is **Implementation**, beginning with 0.3.1 and 0.3.2, whose one-time migrations are entangled and must be sequenced together (Decisions 072 and 073), then 0.3.3 (Decision 074). Later work within the version is implementation and refinement, not new foundational architecture (Decision 048).
+The Version 0.3 architecture is frozen: Decisions 072–075 are all **Accepted** as of 2026-07-23. Milestones **0.3.1 and 0.3.2 are implemented** (2026-07-23): the canonical checkpoint form is normative (Rules 13.1) and mechanically enforced with a regression fixture for the Checkpoint 001 failure class; presence has a single structural owner (Data Model 0.1.2, Sections 7.1/9.2) enforced by the Repository Validation Barrier; and the entangled one-time migrations are done — every live record is schema 0.1.2, carried inventory uses presence-by-possession, Prototype Alpha's terminal state is re-issued as conforming Checkpoint 0001, and two live stale-location defects the new gate class exists for were found and corrected during the migration itself (`EVT-000057`). The next step is **0.3.3 — implementing Decision 074**. Later work within the version is implementation and refinement, not new foundational architecture (Decision 048).
 
 The accepted scope replaced Governance & Society at 0.3 and moved it to Version 0.4. Its argument, its five capability milestones, and the recorded argument against it are in the Version 0.3 section below.
 
@@ -682,6 +682,8 @@ The engine can be executed and restored reliably by any conforming Runtime, and 
 
 #### 0.3.1 Save Layer Unification
 
+**Status: Implemented 2026-07-23** (Decision 072 accepted and landed; regression fixture in `tools/tests/fixtures/nonconforming_checkpoint/`).
+
 Pulls PA-008 forward from Version 0.6.
 
 - Bless one checkpoint form and migrate existing checkpoints. Resolve the documented `saves/900_CHECKPOINT_<NNNN>/` (full ledger copies) versus flat `.saves/*.yaml` (manifest-only) versus the empty `checkpoints/` placeholder drift.
@@ -690,6 +692,8 @@ Pulls PA-008 forward from Version 0.6.
 - ADR: Decision 072 — Save Layer Unification (**Accepted** 2026-07-23).
 
 #### 0.3.2 Presence and Location Structural Representation
+
+**Status: Implemented 2026-07-23** (Decision 073 accepted and landed; Data Model 0.1.2; presence invariants enforced by `tools/validate_repository.ps1`; migration corrected two live stale-location defects, `EVT-000057`).
 
 Owns the cross-ledger staleness gap the Prototype Alpha checkpoint audits drew blood on twice: Checkpoint 0005 recorded the protagonist as occupying a Rift he had left, and the Checkpoint 0006 repair reproduced the same defect in the same commit because its mutation target set was judged rather than derived. Foundational under Decision 069 — it changes `011_ENGINE_DATA_MODEL.md` — and therefore could not land against released 0.2.0. Promoted from Technical Debt to a first-class milestone by owner decision (2026-07-19). Full evidence is in the Technical Debt entry "Cross-ledger staleness has no enforcement point."
 
@@ -1081,10 +1085,12 @@ Current architectural debt:
   Second: `occupants` — the one field that could carry occupancy — **has no single meaning.** `templates/objects/place.md` defined it as "controlling or resident entities"; the world files use it for containment (the Aldish Republic's occupants are its cities); and the Checkpoint 0005 audit read it as presence, which is how a protagonist came to be recorded as occupying a Rift he had left. Three readings, no gate, and a field that only goes stale under one of them. The template now disambiguates it — occupancy is standing state, presence is owned by `180_CURRENT_STATE.md` — which removes the cause but adds no enforcement.
 
   **What this means for 0.3 scope.** The mechanical check remains unimplementable today, and the reason is now precise rather than general: presence has no representation at all, and occupancy has three. No validator can compare a protagonist's location against a Place's occupancy while one is prose and the other is ambiguous. The 0.3 ADR shape is therefore: give **presence** a structural representation with exactly one owner, keep `occupants` as standing state, and only then can the invariant "a character is in exactly one place, and every ledger that says otherwise is stale" become a gate. Until that lands, the derivation rule in the Save Algorithm is the whole defence, and it is enforced by nothing.
+
+  **Disposition (2026-07-23): resolved by Decision 073 / milestone 0.3.2.** Presence now has exactly one structural owner (`canonical_state.location`; Data Model 0.1.2 Sections 7.1 and 9.2), `occupants` is normatively standing state, carried inventory is presence-by-possession, and the Repository Validation Barrier enforces the presence invariants mechanically. The migration itself vindicated the gate class: it found and corrected two live stale-location defects (the protagonist's location field pointing at his rented room against every other source, and 180 prose still describing a sold core as carried — `EVT-000057`). Whether per-turn promotion now keeps presence current is 0.3.5 prototype evidence.
 - Reconcile canon hierarchy wording between Manifest, Decisions, and Rules. *(Partially addressed by Decision 042: precedence vs. durability separated; promotion made mandatory.)*
 - Define version compatibility model.
 - Complete missing governance documents.
-- Reconcile save-layer location/format drift — documented `saves/900_CHECKPOINT_<NNNN>/` (full ledger copies) vs the session-1 flat `.saves/*.yaml` manifest-only files vs an empty `checkpoints/` placeholder. Bless a single form and migrate existing checkpoints. *(Surfaced by Decision 053; deferred to Version 0.6 — Persistence.)*
+- Reconcile save-layer location/format drift — documented `saves/900_CHECKPOINT_<NNNN>/` (full ledger copies) vs the session-1 flat `.saves/*.yaml` manifest-only files vs an empty `checkpoints/` placeholder. Bless a single form and migrate existing checkpoints. *(Surfaced by Decision 053; originally deferred to Version 0.6.)* **Disposition (2026-07-23): resolved by Decision 072 / milestone 0.3.1.** The directory form is normative (Rules 13.1) and mechanically enforced (`tools/test_checkpoint_contract.ps1`, with a regression fixture for the Checkpoint 001 failure class); Prototype Alpha's terminal state is re-issued as conforming Checkpoint 0001 and its `.saves/*.yaml` records are retired as documented evidence (`campaigns/prototype_alpha/saves/README.md`); the `checkpoints/` placeholder is removed.
 - **Encounter pacing has no cadence governor.** *(Surfaced by Reikon Awakening play, ~Checkpoints 0013–0016; recorded with two entangled world-authoring gaps in `worlds/reikon/270_PLAYTEST_BACKLOG.md` PT-001–PT-003.)* Long stretches of low-stakes logistics play at full scene detail, with nothing in the resident cadence layer (Decision 050) or Simulation Priority (Rules Section 3.12) governing when to **compress** them or surface the world's standing stakes. Engine-general. The fix is compression plus richer standing stakes — **not** a drama timer: forcing an encounter on a clock would violate Consistency Before Drama (Decision 003) and "no event exists solely because it would be dramatic" (Rules 1.2). A candidate for a future runtime-cadence refinement, evaluated together with the world-authoring gaps (Rift threat model, uncertainty-resolves-benign) that give it honest material.
 
 ---

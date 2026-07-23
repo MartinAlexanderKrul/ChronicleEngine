@@ -11,7 +11,7 @@ The normative principle (Rules Section 8.1): **Knowledge Subjects persist; Knowl
 ```yaml
 id: REC-000003
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -41,7 +41,7 @@ subjects:
 ```yaml
 id: ENT-000012
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000004
@@ -76,7 +76,7 @@ canonical_state:
 ```yaml
 id: ENT-000013
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000005
@@ -112,7 +112,7 @@ canonical_state:
 ```yaml
 id: ENT-000014
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000001
@@ -145,7 +145,7 @@ canonical_state:
 ```yaml
 id: REL-000001
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000004
@@ -162,7 +162,7 @@ state: "The Guild holds and works the method while keeping its theory unpublishe
 ```yaml
 id: REL-000002
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000004
@@ -179,7 +179,7 @@ state: "Della can work the method but is bound not to teach it outside the Guild
 ```yaml
 id: REL-000003
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000004
@@ -196,7 +196,7 @@ state: "Halden sees the product but not the method."
 ```yaml
 id: REL-000004
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000005
@@ -213,7 +213,7 @@ state: "The Athenaeum treats the finding as validated under its own standard."
 ```yaml
 id: REL-000005
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000005
@@ -230,7 +230,7 @@ state: "Corvane holds the finding in detail and presses to publish it."
 ```yaml
 id: REL-000006
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000006
@@ -247,7 +247,7 @@ state: "The Order holds a rejecting state and restricts the finding; this is cus
 ```yaml
 id: REL-000007
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000006
@@ -264,7 +264,7 @@ state: "Halden is divided over the finding."
 ```yaml
 id: REL-000008
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000007
@@ -281,7 +281,7 @@ state: "Berrec is the last holder, and even his knowledge is now imperfect; pass
 ```yaml
 id: REL-000009
 canonical_record: REC-000003
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000007

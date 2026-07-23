@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000069
 canonical_record: REC-000069
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -52,7 +52,7 @@ Its rivalry with Karlov Guild (ENT-000104) is open and structural — Horizon Eu
 ```yaml
 id: ENT-000105
 canonical_record: REC-000069
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -81,7 +81,7 @@ canonical_state:
 ```yaml
 id: REL-000051
 canonical_record: REC-000069
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

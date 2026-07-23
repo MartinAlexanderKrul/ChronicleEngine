@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000066
 canonical_record: REC-000066
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -51,7 +51,7 @@ Ironline's recruiting machine and Horizon's polish both draw off the Coalition's
 ```yaml
 id: ENT-000102
 canonical_record: REC-000066
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

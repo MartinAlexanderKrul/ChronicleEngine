@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000026
 canonical_record: REC-000026
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -33,7 +33,7 @@ subjects:
 ```yaml
 id: ENT-000030
 canonical_record: REC-000026
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -60,7 +60,7 @@ canonical_state:
 ```yaml
 id: ENT-000031
 canonical_record: REC-000026
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -89,7 +89,7 @@ canonical_state:
 ```yaml
 id: ENT-000032
 canonical_record: REC-000026
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -117,7 +117,7 @@ canonical_state:
 ```yaml
 id: ENT-000033
 canonical_record: REC-000026
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000023
@@ -142,7 +142,7 @@ canonical_state:
 ```yaml
 id: REL-000033
 canonical_record: REC-000026
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000019

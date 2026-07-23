@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000023
 canonical_record: REC-000023
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014
@@ -32,7 +32,7 @@ subjects:
 ```yaml
 id: EVT-000014
 canonical_record: REC-000023
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: confirmed-custom-protagonist-proposal
@@ -64,7 +64,7 @@ No gameplay scene has yet opened.
 ```yaml
 id: EVT-000015
 canonical_record: REC-000023
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: live-play
@@ -86,7 +86,7 @@ Kael asked after a merchant escort job and found Tollen Var at the market exchan
 ```yaml
 id: EVT-000016
 canonical_record: REC-000023
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: live-play
@@ -110,7 +110,7 @@ Kael approached the Order seeking good-paying dangerous work. He accepted lower-
 ```yaml
 id: EVT-000017
 canonical_record: REC-000023
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: live-play

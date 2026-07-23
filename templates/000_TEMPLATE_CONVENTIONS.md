@@ -41,7 +41,7 @@ Every persistent object — Entity, Canonical Record, Event, or Relationship —
 ```yaml
 id: <generated: ENT-XXXXXX | REC-XXXXXX | EVT-XXXXXX | REL-XXXXXX>
 canonical_record: <required: REC-XXXXXX>   # self, for a Canonical Record
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>

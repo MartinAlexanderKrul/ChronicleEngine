@@ -5,7 +5,7 @@
 **File:** `011_ENGINE_DATA_MODEL.md`
 **Status:** Workshop Draft
 **Engine Version:** 0.2.0
-**Data Model Version:** 0.1.1
+**Data Model Version:** 0.1.2
 **Layer:** Engine (000–099)
 
 ---
@@ -297,6 +297,8 @@ An object's past is preserved as evidence, not as a second, replayable state.
 
 This is the structural name for what Rules Section 3.10 calls an entity's *current state*; the two are the same concept.
 
+**Presence has exactly one structural owner: the entity's `canonical_state.location`** (Decision 073). Where an entity is *now* is held as the typed Location reference (Section 9) in its single Canonical State, and nowhere else. No other ledger may restate an entity's presence as authoritative content: a ledger that presents presence — such as a campaign's current-state ledger (Rules Section 13.2) — presents and points at this field without owning it. Presence is distinct from occupancy, possession, and ownership (Section 9.2).
+
 ## 7.2 Historical Evidence
 
 **Historical Evidence** is the body of records *about* an object's past: superseded record versions, campaign chronicles, historical documents, and myths. Historical evidence is not authoritative state. It may be biased, incomplete, forged, or contradictory (Rules Section 2.8, Section 2.6, Decision 042).
@@ -335,7 +337,7 @@ All references below are typed pointers to identifiers (Section 3). None are nam
 ```text
 Ownership     → owner Entity ID, with quality: legal, social, magical, or practical (Rules §7.1)
 Possession    → possessor Entity ID; distinct from ownership (Decision 022)
-Location      → place Entity ID, or a region descriptor
+Location      → place Entity ID, a region descriptor, or carried by <possessor ENT- id> (§9.2)
 Containment   → container Entity or Resource ID; a specialization of location
 Cross-ledger  → an identifier plus the target's record responsibility, so the
                 Runtime knows which Canonical Record to load
@@ -345,9 +347,23 @@ Cross-ledger  → an identifier plus the target's record responsibility, so the
 
 Resource **ownership** (above, Rules Section 7.1) is an entity's right over a resource. The **Canonical Record** of an object (Section 2.3) is the record that owns the object's *state*. These are different relations and use different words deliberately.
 
----
+## 9.2 Presence, Occupancy, and Possession
 
-# 10. Relationships as First-Class Objects
+Three location-shaped relations are distinct, and each has exactly one owner (Decision 073):
+
+```text
+Presence      where an entity is now.  Owned solely by the entity's own
+              canonical_state.location (Section 7.1).
+Occupancy     standing state of a Place: its controlling, resident, or
+              contained entities (occupants).  Never who is present now.
+Possession    which entity holds a resource (Decision 022).
+```
+
+**`occupants` is standing state, never presence.** A Place's `occupants` records controllers, residents, or contained entities. It changes when tenancy, control, or containment changes — never when someone walks in or out. This elevates the disambiguation formerly carried as a template comment (`templates/objects/place.md`) to a normative structural statement.
+
+**Carried inventory is presence-by-possession.** A carried Resource's `canonical_state.location` takes the form `carried by <possessor ENT- id>`, a Location form in its own right. Its physical presence is the possessor's `canonical_state.location`, resolved through the possessor rather than stored independently. A carried-by location names an existing possessor and asserts no place of its own, so it cannot contradict the possessor's location. This expresses "on person" (PA-002) without making a Character a Place or a container.
+
+The invariant these relations establish — a character is in exactly one place, and every ledger that says otherwise is stale — is enumerated in Section 12.3 and enforced through the Repository Validation Barrier (`012_ENGINE_RUNTIME.md`, Section 5.4).
 
 A **Relationship** (`REL-`) is a first-class persistent object, not a field on an entity.
 
@@ -395,6 +411,8 @@ Every record declares the Data Model version it conforms to (Section 2.1). The D
 ## 12.3 Validation Constraints
 
 A conforming repository satisfies the referential-integrity invariants (Section 3.1) and the registry invariants (Section 1.4): every referenced identifier exists and is registered, every required field is present, no record is orphaned, and no identifier is reused or silently collapsed. These are invariants the Runtime checks through the mechanical Repository Validation Barrier (`012_ENGINE_RUNTIME.md`, Section 5.4; Decision 054); they are not a formal schema language.
+
+A conforming repository also satisfies the presence invariants (Section 9.2; Decision 073): every entity holds at most one `canonical_state.location`; a Character entity in a live campaign ledger declares exactly one; and a carried Resource's location uses the `carried by <ENT->` form alone, naming a defined possessor and asserting no additional place.
 
 A conforming canonical file also contains **no unresolved template placeholder tokens**. A filled world or campaign file holds real identifiers and values only; the placeholder tokens used by templates (`ENT-XXXXXX`, `REC-XXXXXX`, `EVT-XXXXXX`, `REL-XXXXXX`, `<required: …>`, `<optional: …>`, `<generated: …>`) must not appear in a canonical file. The template conventions are defined in `templates/000_TEMPLATE_CONVENTIONS.md`.
 

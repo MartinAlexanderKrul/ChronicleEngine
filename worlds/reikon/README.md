@@ -2,7 +2,7 @@
 
 **World Status:** Complete and playable  
 **Version:** 0.1 (Solo Leveling-inspired gate-and-hunter world)  
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.1; Reikon World Rule Profile 0.6
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.2; Reikon World Rule Profile 0.6
 **Created:** 2026-07-13
 
 ---

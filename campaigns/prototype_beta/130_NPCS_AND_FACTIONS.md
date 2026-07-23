@@ -12,7 +12,7 @@ The figures and institutions themselves are world canon (`worlds/verra/220_NOTAB
 ```yaml
 id: REC-000021
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014
@@ -58,7 +58,7 @@ subjects:
 ```yaml
 id: REL-000023
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014
@@ -79,7 +79,7 @@ state: "Potential friction: Kael's choleric temperament and armed trade make Ord
 ```yaml
 id: ENT-000023
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000015
@@ -92,6 +92,7 @@ aliases:
   - name: "Tollen Var"
     quality: current
 canonical_state:
+  location: "ENT-000002 (Halden), market exchange"
   role: "Market-exchange job contact connected to a merchant escort notice."
   kael_contact: "Rejected Kael after Kael declared himself 'the man who kills riots,' then had his account books pushed/scattered by Kael during the altercation."
   attitude_to_kael: "Angry and alarmed."
@@ -100,7 +101,7 @@ canonical_state:
 ```yaml
 id: ENT-000024
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000016
@@ -113,6 +114,7 @@ aliases:
   - name: "Sister Avel"
     quality: current
 canonical_state:
+  location: "ENT-000002 (Halden), Order hospice — responding to the wrong-stair alert"
   role: "Order sister overseeing lower-passage hospice security and contamination discipline."
   kael_contact: "Hired/received Kael for his first night watch, gave instructions, corrected his assumptions, directed washing after fever contact, and is currently responding to the wrong-stair intruder alert."
 ```
@@ -120,7 +122,7 @@ canonical_state:
 ```yaml
 id: ENT-000025
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000016
@@ -133,6 +135,7 @@ aliases:
   - name: "Brant"
     quality: current
 canonical_state:
+  location: "ENT-000002 (Halden), Order hospice lower passage"
   role: "Senior lower-passage door man for the Order hospice."
   description: "Older, thick-armed, scar across one cheek, cudgel at belt; dry manner."
   kael_contact: "First-watch partner. Approved Kael's ugly but correct line-holding during the Vale family appeal; currently returned to the line after checking the wrong-stair report."
@@ -141,7 +144,7 @@ canonical_state:
 ```yaml
 id: ENT-000026
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000017
@@ -154,6 +157,7 @@ aliases:
   - name: "Edrin Vale"
     quality: current
 canonical_state:
+  location: "ENT-000002 (Halden), Order hospice fever room"
   role: "Fever patient behind the marked lower-passage door."
   condition: "Coughing, glassy-eyed, urgent to reach his wife Lysa."
   kael_contact: "Tried to leave the fever room after hearing Lysa. Grabbed Kael's sleeve and coughed near/against him before being forced back by intimidation and the door being secured."
@@ -162,7 +166,7 @@ canonical_state:
 ```yaml
 id: ENT-000027
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000017
@@ -175,6 +179,7 @@ aliases:
   - name: "Lysa Vale"
     quality: current
 canonical_state:
+  location: "ENT-000002 (Halden), Order hospice receiving hall"
   role: "Edrin Vale's wife; came to the receiving line with a shivering boy."
   kael_contact: "Appealed to Kael to see Edrin; Kael repeated Brant's line and refused passage. She remains in the receiving hall, distressed but behind the line."
 ```
@@ -182,7 +187,7 @@ canonical_state:
 ```yaml
 id: ENT-000028
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000017
@@ -195,6 +200,7 @@ aliases:
   - name: "Unidentified wrong-stair man"
     quality: descriptive
 canonical_state:
+  location: "ENT-000002 (Halden), whereabouts unestablished — possibly still inside the Order hospice"
   role: "Hooded man in a dark cloak who came down the wrong stair during Kael's first watch."
   kael_contact: "Claimed he was looking for Sister Avel, looked toward the marked fever door, and withdrew when Brant and Kael ordered him up."
   status: "Not found leaving by the main front hall; Avel believes he may still be inside the house."
@@ -203,7 +209,7 @@ canonical_state:
 ```yaml
 id: ENT-000029
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000017
@@ -216,6 +222,7 @@ aliases:
   - name: "Caldus"
     quality: current
 canonical_state:
+  location: "ENT-000002 (Halden), Order hospice"
   role: "Order man or attendant sent to check the wrong-stair report."
   kael_contact: "Indirect; reported no hooded man found on the upper stair and no main-door exit seen."
 ```
@@ -223,7 +230,7 @@ canonical_state:
 ```yaml
 id: REL-000024
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000016
@@ -240,7 +247,7 @@ state: "Active first watch."
 ```yaml
 id: REL-000025
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000016
@@ -257,7 +264,7 @@ state: "Tense but functional; Avel has seen Kael hold the door and follow washin
 ```yaml
 id: REL-000026
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000016
@@ -274,7 +281,7 @@ state: "Cautious respect after Kael held the family line; Brant remains dry and 
 ```yaml
 id: REL-000027
 canonical_record: REC-000021
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000017

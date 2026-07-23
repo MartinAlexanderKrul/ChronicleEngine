@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000016
 canonical_record: REC-000016
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000008
@@ -26,7 +26,7 @@ subjects: []
 ## Bindings and Versions
 
 - World: Verra (World Version 0.1, Prototype)
-- Engine: 0.1.5 (Foundation Release); Data Model 0.1.1
+- Engine: 0.1.5 (Foundation Release); Data Model 0.1.2
 - Campaign date: Year 312 RR, late spring (Day 17, execution)
 
 ## Protagonist
@@ -51,6 +51,12 @@ The Prototype Alpha campaign has concluded with Ilse Varn's death. The double-ag
 
 **Historical Record:**
 This campaign instantiation is now closed. A new protagonist or campaign branch would require new initialization if play is to continue in Verra/Halden.
+
+## Restore Point
+
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0001/` — the terminal state in the canonical checkpoint form, re-issued 2026-07-23 under Decision 072. Restoring it restores the terminal record for reading or forking, not continuation.
+- **Baseline checkpoint:** `saves/900_CHECKPOINT_0000/` — the pre-play baseline (Decision 053); the `/restart` target.
+- The four `.saves/*.yaml` files are retired pre-unification evidence, not checkpoints; see `saves/README.md`.
 
 ## Promotion Status
 

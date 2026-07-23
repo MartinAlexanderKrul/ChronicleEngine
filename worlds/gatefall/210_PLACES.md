@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000062
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -46,7 +46,7 @@ A hunter working Chicago moves through a stratified economy: Horizon Guild's pub
 ```yaml
 id: ENT-000087
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -76,7 +76,7 @@ A hunter here checks the BGM grading board before anything else — multiple act
 ```yaml
 id: ENT-000089
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -107,7 +107,7 @@ A hunter working the Red Line Corridor is usually here to build a track record o
 ```yaml
 id: ENT-000090
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -138,7 +138,7 @@ A hunter's business here is almost always BGM-contracted survey or containment w
 ```yaml
 id: ENT-000091
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -169,7 +169,7 @@ Above the public floors it stops being public. Contract negotiation suites, the 
 ```yaml
 id: ENT-000092
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -199,7 +199,7 @@ A hunter comes here to get licensed, to get re-graded if a performance review fl
 ```yaml
 id: ENT-000093
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -231,7 +231,7 @@ Karlov Guild sits at the top of the local hierarchy by relationship rather than 
 ```yaml
 id: ENT-000088
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -261,7 +261,7 @@ A clearance in the Old Town Gate Cluster runs slower and more expensive than the
 ```yaml
 id: ENT-000094
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -292,7 +292,7 @@ The tunnel geometry is the corridor's real hazard: evacuation routes are narrowe
 ```yaml
 id: ENT-000095
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -323,7 +323,7 @@ A CGA analyst worked out of a trailer near the Libeň perimeter for the better p
 ```yaml
 id: ENT-000096
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -354,7 +354,7 @@ The guildmaster's rooms and the family archive occupy the upper floor, guild-onl
 ```yaml
 id: ENT-000097
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -384,7 +384,7 @@ What sets the building apart is upstairs: a small, closely guarded liaison offic
 ```yaml
 id: ENT-000098
 canonical_record: REC-000062
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

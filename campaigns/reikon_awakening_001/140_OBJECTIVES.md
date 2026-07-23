@@ -5,7 +5,7 @@
 ```yaml
 id: REC-000042
 canonical_record: REC-000042
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000050

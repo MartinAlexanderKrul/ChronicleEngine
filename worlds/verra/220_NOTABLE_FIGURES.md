@@ -11,7 +11,7 @@ Membership relationships (`REL-000011`–`REL-000015`) are owned here. Knowledge
 ```yaml
 id: REC-000002
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -40,7 +40,7 @@ subjects:
 ```yaml
 id: ENT-000006
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -70,7 +70,7 @@ canonical_state:
 ```yaml
 id: ENT-000007
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -101,7 +101,7 @@ canonical_state:
 ```yaml
 id: ENT-000008
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -131,7 +131,7 @@ canonical_state:
 ```yaml
 id: ENT-000009
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -161,7 +161,7 @@ canonical_state:
 ```yaml
 id: ENT-000010
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -192,7 +192,7 @@ canonical_state:
 ```yaml
 id: ENT-000011
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000007
@@ -222,7 +222,7 @@ canonical_state:
 ```yaml
 id: REL-000011
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000003
@@ -238,7 +238,7 @@ qualities: "Rank: Rector (leadership of the Athenaeum)."
 ```yaml
 id: REL-000012
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000003
@@ -254,7 +254,7 @@ qualities: "Rank: Fellow of the Athenaeum."
 ```yaml
 id: REL-000013
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000002
@@ -270,7 +270,7 @@ qualities: "Rank: Prelate (leadership of the Order)."
 ```yaml
 id: REL-000014
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000004
@@ -286,7 +286,7 @@ qualities: "Rank: Guildmaster (leadership of the Guild)."
 ```yaml
 id: REL-000015
 canonical_record: REC-000002
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000004

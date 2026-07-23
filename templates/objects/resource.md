@@ -5,7 +5,7 @@ A Persistent Entity of type Resource: an **individual** resource with persistent
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -31,7 +31,7 @@ canonical_state:
   condition: <required: Excellent | Good | Worn | Damaged | Broken | Destroyed — §7.4>
   ownership: <required: owner ENT-XXXXXX, with quality legal|social|magical|practical — §7.1>
   possession: <required: possessor ENT-XXXXXX — §7.1>
-  location: <required: place ENT-XXXXXX or container ENT-XXXXXX — §7.8>
+  location: <required: place ENT-XXXXXX, container ENT-XXXXXX, or carried by ENT-XXXXXX — §7.8; carried-by is presence-by-possession (011 §9.2, Decision 073): it names the possessor alone and asserts no place of its own>
   containment: <optional: container ENT-XXXXXX if held inside another object>
   provenance_chain: <optional: creator, prior owners, notable events — §7.5>
 ```

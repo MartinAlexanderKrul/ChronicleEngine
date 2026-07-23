@@ -13,7 +13,7 @@ It is the durable world-layer memory promoted from the **closed Prototype Alpha 
 ```yaml
 id: REC-000017
 canonical_record: REC-000017
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000013

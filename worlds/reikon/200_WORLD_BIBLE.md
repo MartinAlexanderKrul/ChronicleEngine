@@ -4,7 +4,7 @@
 
 **World Version:** 0.1 (Solo Leveling–inspired contemporary gate-and-hunter world)
 **Status:** Active — instantiated as canonical world content (2026-07-13); ENT-000030–ENT-000050, REC-000026–REC-000034, EVT-000018–EVT-000024, REL-000029–REL-000039
-**Engine Compatibility:** 0.2.0; Data Model 0.1.1; Reikon World Rule Profile 0.6
+**Engine Compatibility:** 0.2.0; Data Model 0.1.2; Reikon World Rule Profile 0.6
 **Progression:** Causal diegetic System progression (`RKO-OVR-001`, Decision 059)
 **Genre:** Contemporary "gate-and-hunter" litRPG — an original world in the genre, not based on any existing work
 **Setting Register:** Original-modern (invented nations and cities; no real-world geography)

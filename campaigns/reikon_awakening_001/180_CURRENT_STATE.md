@@ -7,7 +7,7 @@
 ```yaml
 id: REC-000045
 canonical_record: REC-000045
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000050
@@ -20,7 +20,7 @@ subjects: []
 
 ## Bindings and Compatibility
 
-- Engine: 0.2.0; Data Model: 0.1.1
+- Engine: 0.2.0; Data Model: 0.1.2
 - World: Reikon 0.1
 - World Rule Profile: Reikon 0.8 (`RKO-OVR-001`, `RKO-OVR-002`) — recurrent intervention and succession contract active; the Warehouse 7 life-burn event remains expired; Emberbrand (the first recurrent-intervention grant) is spent, not merely expired; Section 8.2's Rift-clear milestone formula is authored; Stats are uncapped (Section 4.2) and Ascension grants 5 points (Section 4.1). *(Profile 0.9/0.10 authoring — Stat payoffs and the Rift threat model — is a separate world-content change adopted at the next readiness gate, Section 14.4.)*
 - Compatibility: compatible; no version mismatch outstanding
@@ -62,7 +62,7 @@ subjects: []
 ## Where Daedalus Is
 
 **Protagonist:** Daedalus (`ENT-000051`)
-**Location:** Tannery district, just outside the now-collapsed E-Rift.
+**Location (of record — `100_CHARACTER_SHEET.md` `canonical_state.location`; this ledger presents, does not own, presence — Decision 073):** Verholt's tannery district, just outside the now-collapsed E-Rift.
 **Condition:** Full 121/121 Health; full 15/15 Mana; Level 3, 95/170 XP; all 8 allocation points spent (`EVT-000046`). Authoritative values in `100_CHARACTER_SHEET.md`.
 **Posture:** Standing at the surface after an unopposed tannery clear — the day's two assignments both closed. Warehouse 7 was resolved earlier by Wren Ashcombe; the tannery E-Rift by his own hand.
 
@@ -70,7 +70,7 @@ subjects: []
 
 - The tannery-district E-Rift is fully collapsed and closed (`ENT-000084`, archived). It held **no guardians at all** — an unopposed clear. Its extracted core (`ENT-000085`) is carried, unappraised.
 - Warehouse 7 is **fully and permanently resolved**: Wren Ashcombe (`ENT-000083`) extracted the bonded core via a matched resonance pulse on a fourth steady pass, zero casualties (`EVT-000048`). Because the clearing act was Wren's, no milestone XP accrued to Daedalus. Warehouse 7 (`ENT-000064`) is archived/closed.
-- Daedalus carries the Ashgate core (unappraised), the tannery core (`ENT-000085`), nine E-cores from the Ashgate clear, and three unsold D-grade Breaker cores; the fourth D-core (`ENT-000074`) remains with Dr. Soren at the Institute.
+- Daedalus carries the tannery core (`ENT-000085`), nine E-cores from the Ashgate clear, and three unsold D-grade Breaker cores; the fourth D-core (`ENT-000074`) remains with Dr. Soren at the Institute. *(The Ashgate Rift core itself was appraised and sold for the recorded 24 vells — `ENT-000082`, archived; `EVT-000050`.)*
 - The 24 vells from the earlier Ashgate core sale, an omission from a prior checkpoint, are now recorded (`ENT-000086`).
 - Emberbrand is fully spent (`active_intervention: none`). The new day's recurrent-intervention check rolled Silence (d100 20); `intervention_silent_checks` is at 1.
 
@@ -89,7 +89,7 @@ subjects: []
 2. **D-grade anomaly unexplained.** Four Breakers guarded an E-grade Warehouse 7 Rift. Soren has one D-core and the framework observations to study; no findings yet.
 3. **Rift stability window: approximately five days from documentation, clock still running.** Marta's hypothesis that deeper cores may collapse their Rifts faster once removed (`ENT-000080`) is not an engine rule; she now has Daedalus's stability data.
 4. **The evacuation stone is unused, one use only.**
-5. **Cores to sell or study.** Three D-grade cores remain unsold (declined the Association's 15-unit appraisal offer); the Ashgate core and the tannery core (`ENT-000085`) are unappraised. No decisions made.
+5. **Cores to sell or study.** Three D-grade cores remain unsold (declined the Association's 15-unit appraisal offer); the tannery core (`ENT-000085`) is unappraised. *(The Ashgate Rift core is already appraised and sold — `ENT-000082`.)* No decisions made.
 6. **Power, Speed, and Perception have no authored uncapped growth formula under Profile 0.8.** `EVT-000046` banked 3 points into Power and 1 into Perception past their old die-relevant range; under 0.8 those points do nothing mechanical — a real gap, flagged not invented. *(Addressed by the separate Profile 0.9 authoring, adopted at the next readiness gate.)*
 7. **Why the tannery Rift held no guardians is unestablished** (`EVT-000049`). No Reikon rule requires a Rift to be guarded, so this is not a contradiction — but it is unexplained. Flagged as an open worldbuilding question (`worlds/reikon/270_PLAYTEST_BACKLOG.md` PT-002).
 

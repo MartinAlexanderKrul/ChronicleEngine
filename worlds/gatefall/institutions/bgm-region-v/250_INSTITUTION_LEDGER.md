@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000063
 canonical_record: REC-000063
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -52,7 +52,7 @@ The office is regulatory, not a combatant in the Ironline–Horizon recruiting w
 ```yaml
 id: ENT-000099
 canonical_record: REC-000063
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -81,7 +81,7 @@ canonical_state:
 ```yaml
 id: REL-000049
 canonical_record: REC-000063
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

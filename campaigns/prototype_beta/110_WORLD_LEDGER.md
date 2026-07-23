@@ -12,7 +12,7 @@ This ledger records what is visible and accessible to the campaign. It reference
 ```yaml
 id: REC-000019
 canonical_record: REC-000019
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014
@@ -30,7 +30,7 @@ subjects:
 ```yaml
 id: REL-000028
 canonical_record: REC-000019
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000017
@@ -72,7 +72,7 @@ Not visible to Kael at start: the Guild's tempering method itself, Corvane's evi
 ```yaml
 id: REL-000020
 canonical_record: REC-000019
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014
@@ -89,7 +89,7 @@ state: "Kael knows the fever dispute exists and that speaking on the forbidden c
 ```yaml
 id: REL-000021
 canonical_record: REC-000019
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014
@@ -106,7 +106,7 @@ state: "Aware of the product, not the method."
 ```yaml
 id: REL-000022
 canonical_record: REC-000019
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014

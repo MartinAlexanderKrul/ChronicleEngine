@@ -5,7 +5,7 @@
 ```yaml
 id: REC-000040
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000050
@@ -45,7 +45,7 @@ Location is recorded as a region descriptor because carried inventory has no str
 ```yaml
 id: ENT-000054
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -63,7 +63,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
 ```
 
 ## Basic Sword
@@ -71,7 +71,7 @@ canonical_state:
 ```yaml
 id: ENT-000055
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000030
@@ -89,7 +89,7 @@ canonical_state:
   condition: "Good; cleaned at the Association, then bloodied by the ledge Breaker"
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
 ```
 
 ## Repair Kit
@@ -97,7 +97,7 @@ canonical_state:
 ```yaml
 id: ENT-000056
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -115,7 +115,7 @@ canonical_state:
   condition: Good
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
 ```
 
 ## Mana Potion Stack
@@ -123,7 +123,7 @@ canonical_state:
 ```yaml
 id: ENT-000057
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -141,7 +141,7 @@ canonical_state:
   condition: "One sealed; one open and half-full"
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   quantity: 2
   total_mana_remaining: 30
   history: "One vial consumed in two half-doses during the Breaker engagement; half of a second vial consumed before the jump"
@@ -152,7 +152,7 @@ canonical_state:
 ```yaml
 id: ENT-000058
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -170,7 +170,7 @@ canonical_state:
   condition: Good
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
 ```
 
 ## Evacuation Stone
@@ -178,7 +178,7 @@ canonical_state:
 ```yaml
 id: ENT-000059
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -196,7 +196,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   uses_remaining: 1
 ```
 
@@ -205,7 +205,7 @@ canonical_state:
 ```yaml
 id: ENT-000060
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000043
@@ -223,7 +223,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   quantity: 55
 ```
 
@@ -232,7 +232,7 @@ canonical_state:
 ```yaml
 id: ENT-000065
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000031
@@ -250,7 +250,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   quantity: 1
 ```
 
@@ -259,7 +259,7 @@ canonical_state:
 ```yaml
 id: ENT-000067
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000033
@@ -277,7 +277,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   quantity: 1
   history: "Four purchased for 8 E-cores; one consumed during recovery training and two consumed during the Breaker engagement"
 ```
@@ -287,7 +287,7 @@ canonical_state:
 ```yaml
 id: ENT-000068
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000033
@@ -305,7 +305,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   quantity: 1
   history: "Two purchased for 6 E-cores; one consumed before observing the Breaker formation"
 ```
@@ -315,7 +315,7 @@ canonical_state:
 ```yaml
 id: ENT-000069
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000033
@@ -333,7 +333,7 @@ canonical_state:
   condition: Opened
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   uses_remaining: 4
   history: "Four applications used in total: three during recovery and one after the shoulder wound reopened in the Breaker engagement"
 ```
@@ -343,7 +343,7 @@ canonical_state:
 ```yaml
 id: ENT-000070
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000033
@@ -361,7 +361,7 @@ canonical_state:
   condition: Good
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   contents: "Route sketch and Institute consultation notes; Breaker formation and behavior; burgundy core dimensions, three-second pulse, thermal emission, crystalline framework, eight-metre floor pattern, failed direct extraction, and the need for specialist severance. Hypotheses are marked unverified. The Institute notes record, per researcher: Kalens's observation checklist and his Vigil caution (ENT-000079), Soren's fracture-pattern theory across fifteen core grades and his request for a deep-core sample, and Marta's core-depth collapse correlation (ENT-000080) — closing with Daedalus's own reflection that he is gathering data now, not only clearing a Rift for pay."
 ```
 
@@ -370,7 +370,7 @@ canonical_state:
 ```yaml
 id: ENT-000078
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000035
@@ -391,7 +391,7 @@ canonical_state:
   condition: Good
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   contents: "Dr. Kalens's personal residence in Verholt's scholar's quarter, and a standing time window for calling on him there: early evenings, after the Institute closes."
   significance: "The physical token of REL-000045. Kalens wrote it only because Daedalus asked to consult him directly rather than through the Institute's runner, which makes it the artifact of a private channel deliberately chosen over the institutional one — and the means of honouring the same-day condition on an anomalous finding without going through Institute channels the Vigil could observe (ENT-000079)."
 ```
@@ -401,7 +401,7 @@ canonical_state:
 ```yaml
 id: ENT-000074
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000038
@@ -430,7 +430,7 @@ canonical_state:
 ```yaml
 id: ENT-000075
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000034
@@ -449,7 +449,7 @@ canonical_state:
   appearance: "Deep indigo and slightly smaller than the ledge sentinel's core"
   ownership: "ENT-000051 (legal harvest)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   quantity: 1
 ```
 
@@ -458,7 +458,7 @@ canonical_state:
 ```yaml
 id: ENT-000076
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000034
@@ -477,7 +477,7 @@ canonical_state:
   appearance: "Nearly black with faint violet undertones"
   ownership: "ENT-000051 (legal harvest)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   quantity: 1
 ```
 
@@ -486,7 +486,7 @@ canonical_state:
 ```yaml
 id: ENT-000077
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000034
@@ -505,7 +505,7 @@ canonical_state:
   appearance: "Largest of the four; near-black with deep red undertones and a distinct residual hum"
   ownership: "ENT-000051 (legal harvest)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   quantity: 1
 ```
 
@@ -516,7 +516,7 @@ canonical_state:
 ```yaml
 id: ENT-000082
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: archived
 provenance:
   source: EVT-000047
@@ -547,7 +547,7 @@ canonical_state:
 ```yaml
 id: ENT-000086
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000047
@@ -566,7 +566,7 @@ canonical_state:
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   quantity: 24
 ```
 
@@ -577,7 +577,7 @@ canonical_state:
 ```yaml
 id: ENT-000085
 canonical_record: REC-000040
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000049
@@ -597,6 +597,6 @@ canonical_state:
   appearance: "Fist-sized, pale amber-yellow, no visible framework or bonding structure"
   ownership: "ENT-000051 (legal harvest, Association-sanctioned solo clear)"
   possession: ENT-000051
-  location: "Tannery district, just outside the collapsed E-Rift (carried)"
+  location: "carried by ENT-000051"
   quantity: 1
 ```

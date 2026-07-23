@@ -15,7 +15,7 @@ The global seed (`EVT-000055`) is written to be consistent with, and never to qu
 ```yaml
 id: REC-000073
 canonical_record: REC-000073
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -40,7 +40,7 @@ A clearance contract BGM Region V posted for a Red Line Corridor detection reads
 ```yaml
 id: EVT-000051
 canonical_record: REC-000073
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -65,7 +65,7 @@ Ironline Guild's recruiting war against Horizon Guild has moved from the hiring 
 ```yaml
 id: EVT-000052
 canonical_record: REC-000073
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -91,7 +91,7 @@ A specific Old Town Gate Cluster detection has been re-graded upward twice withi
 ```yaml
 id: EVT-000053
 canonical_record: REC-000073
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -117,7 +117,7 @@ The CGA has begun favoring Karlov Guild in discretionary contract calls specific
 ```yaml
 id: EVT-000054
 canonical_record: REC-000073
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -144,7 +144,7 @@ Regulators worldwide have quietly confirmed the break rate is not merely climbin
 ```yaml
 id: EVT-000055
 canonical_record: REC-000073
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

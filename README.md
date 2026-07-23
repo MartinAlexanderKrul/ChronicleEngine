@@ -1,6 +1,6 @@
 # Chronicle Engine
 
-**Document Version:** 1.8
+**Document Version:** 1.9
 
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 
@@ -254,7 +254,8 @@ The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 is the
 Current focus:
 
 - Version 0.2.0 (Knowledge & Civilization) released.
-- Version 0.3 ADRs accepted (2026-07-23): Decisions 072–075, Architecture Freeze complete. Implementation is next, beginning with Save Layer Unification and Presence/Location.
+- Version 0.3 ADRs accepted (2026-07-23): Decisions 072–075, Architecture Freeze complete.
+- Milestones 0.3.1 (Save Layer Unification) and 0.3.2 (Presence and Location, Data Model 0.1.2) implemented (2026-07-23). Next: 0.3.3 — World Rule Profile Consolidation and Freeze (Decision 074).
 
 See:
 

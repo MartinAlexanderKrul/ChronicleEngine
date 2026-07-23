@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000020
 canonical_record: REC-000020
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014
@@ -29,7 +29,7 @@ subjects:
 ```yaml
 id: ENT-000022
 canonical_record: REC-000020
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014
@@ -47,7 +47,7 @@ canonical_state:
   condition: Serviceable
   ownership: "ENT-000021 (legal/practical)"
   possession: "ENT-000021"
-  location: ENT-000002
+  location: "carried by ENT-000021"
   provenance_chain: "Kael's own weapon, carried into Halden at campaign start."
 ```
 

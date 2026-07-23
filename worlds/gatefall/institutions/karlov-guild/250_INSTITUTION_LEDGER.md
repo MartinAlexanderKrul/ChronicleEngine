@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000068
 canonical_record: REC-000068
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -51,7 +51,7 @@ Karlov is under a three-way foreign siege it did not ask for and cannot outspend
 ```yaml
 id: ENT-000104
 canonical_record: REC-000068
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

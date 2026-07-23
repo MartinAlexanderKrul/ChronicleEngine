@@ -11,7 +11,7 @@ Each resource is a Knowledge Asset or artifact tied to a Knowledge Subject: the 
 ```yaml
 id: REC-000004
 canonical_record: REC-000004
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -32,7 +32,7 @@ subjects:
 ```yaml
 id: ENT-000015
 canonical_record: REC-000004
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000005
@@ -61,7 +61,7 @@ canonical_state:
 ```yaml
 id: ENT-000016
 canonical_record: REC-000004
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000004
@@ -90,7 +90,7 @@ canonical_state:
 ```yaml
 id: ENT-000017
 canonical_record: REC-000004
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000001

@@ -1034,7 +1034,7 @@ Terms such as institutional reach or civilizational influence describe behavior,
 
 Lifecycle status describes whether the entity is emerging, active, transforming, declining, dormant, dissolved, destroyed, or remembered only through records.
 
-Current state records the entity's present condition, location, capabilities, holdings, knowledge, obligations, or other relevant facts. It is the entity's canonical state, held in its one Canonical Record (`011_ENGINE_DATA_MODEL.md`, Section 7).
+Current state records the entity's present condition, location, capabilities, holdings, knowledge, obligations, or other relevant facts. It is the entity's canonical state, held in its one Canonical Record (`011_ENGINE_DATA_MODEL.md`, Section 7). An entity's current location is canonical state on the entity's own record: presence has exactly one structural owner, the entity's `canonical_state.location`, distinct from a Place's standing `occupants` and from possession (`011_ENGINE_DATA_MODEL.md`, Sections 7.1 and 9.2; Decision 073).
 
 Relationships connect the entity to people, institutions, places, resources, knowledge, obligations, rivals, patrons, successors, or predecessors, and are modelled as first-class objects (`011_ENGINE_DATA_MODEL.md`, Section 10).
 
@@ -4063,11 +4063,13 @@ A save is a campaign-scoped, immutable checkpoint: a full copy of that campaign'
 
 A save contains no compiled or derived representation of state. It preserves the actual canonical ledger content as it existed at the checkpoint, avoiding a second representation of the same truth.
 
+**Canonical checkpoint form (Decision 072).** The one canonical checkpoint form is the directory `saves/900_CHECKPOINT_<NNNN>/` within the owning campaign: a complete copy of every canonical ledger the campaign owns plus exactly one `900_SAVE_MANIFEST.md` conforming to Section 13.3. `<NNNN>` is a four-digit, zero-padded, monotonically increasing ordinal, one sequence per campaign. Manifest-only files, bare placeholder directories, and any other shape are not checkpoints; a conforming Runtime writes only this form. A nonconforming historical snapshot is retained immutably as evidence, re-issued as a conforming checkpoint carrying its reconstructed state where evidence permits, and marked superseded by its re-issue in the campaign's save index — never edited in place, and never abandoned while a restorable re-issue can carry its save-point.
+
 ---
 
 ## 13.2 Checkpoints and Current State
 
-The current-state ledger (`180_CURRENT_STATE.md`, per campaign-layer conventions) is the live, continuously mutable operational record for a campaign: where the character is now, what is currently active, and what remains unresolved.
+The current-state ledger (`180_CURRENT_STATE.md`, per campaign-layer conventions) is the live, continuously mutable operational record for a campaign: what is currently active and what remains unresolved. It **presents and points at** the protagonist's current location; it does not own it. Presence — where an entity is now — is owned solely by the entity's own `canonical_state.location` (`011_ENGINE_DATA_MODEL.md` Sections 7.1 and 9.2; Decision 073), and no ledger may restate it as authoritative prose. A character sheet's `situation` field is narrative circumstance only and is never the location of record.
 
 A save checkpoint is a distinct, immutable historical capture of that ledger and every other included ledger, taken at a specific moment. A checkpoint answers what was canonical at that point, which versions applied, what state can be restored, and which checkpoint a later branch originated from.
 
@@ -4088,6 +4090,8 @@ Each checkpoint includes a save manifest containing, at minimum:
 - a restoration entry point.
 
 The manifest contains metadata only. It never duplicates ledger content.
+
+The manifest is checkpoint-local metadata, not a Persistent Object in live canon: it mints no registry identifier, and live ledgers must not reference a manifest by identifier. A checkpoint is referenced from live canon by its ordinal, label, and capture time (Decision 072). Manifests written before this rule carry their historical identifiers immutably; the rule governs new checkpoints.
 
 ---
 

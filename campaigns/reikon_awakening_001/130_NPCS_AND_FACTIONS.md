@@ -5,7 +5,7 @@
 ```yaml
 id: REC-000041
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000050
@@ -39,7 +39,7 @@ The Hunters' Association is the Hunters' Authority (`ENT-000041`); both names ar
 ```yaml
 id: ENT-000061
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000037
@@ -67,7 +67,7 @@ canonical_state:
 ```yaml
 id: ENT-000062
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -93,7 +93,7 @@ canonical_state:
 ```yaml
 id: ENT-000063
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -119,7 +119,7 @@ canonical_state:
 ```yaml
 id: ENT-000071
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000033
@@ -146,7 +146,7 @@ canonical_state:
 ```yaml
 id: ENT-000072
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000033
@@ -172,7 +172,7 @@ canonical_state:
 ```yaml
 id: ENT-000073
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000033
@@ -202,7 +202,7 @@ canonical_state:
 ```yaml
 id: ENT-000083
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000047
@@ -231,7 +231,7 @@ canonical_state:
 ```yaml
 id: REL-000040
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -248,7 +248,7 @@ state: active
 ```yaml
 id: REL-000041
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -265,7 +265,7 @@ state: active
 ```yaml
 id: REL-000042
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000037
@@ -282,7 +282,7 @@ state: active
 ```yaml
 id: REL-000043
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -299,7 +299,7 @@ state: active
 ```yaml
 id: REL-000044
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000025
@@ -316,7 +316,7 @@ state: active
 ```yaml
 id: REL-000045
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000035
@@ -334,7 +334,7 @@ history: "Formed during the recovery-day consultation (EVT-000033) out of a pre-
 ```yaml
 id: REL-000046
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000033
@@ -351,7 +351,7 @@ state: active
 ```yaml
 id: REL-000047
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000033
@@ -368,7 +368,7 @@ state: active
 ```yaml
 id: REL-000048
 canonical_record: REC-000041
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000047

@@ -294,7 +294,7 @@ Changes to one component should not require version changes to unrelated compone
 | Component | Version |
 |-----------|---------|
 | Engine | 0.2.0 |
-| Data Model | 0.1.1 |
+| Data Model | 0.1.2 |
 | World | 0.9 |
 | Campaign | Not Created |
 | Save Format | 0.1.0 |
@@ -321,9 +321,9 @@ The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 comple
 
 Current priority:
 
-1. Implement Decisions 072 (Save Layer Unification) and 073 (Presence and Location), sequencing their entangled one-time migrations together.
+1. Decisions 072 and 073 are implemented (2026-07-23): the canonical checkpoint form and its contract tests, Data Model 0.1.2 with single-owner presence, and both one-time migrations are done.
 2. Implement Decision 074 (World Rule Profile Consolidation and Freeze); Reikon freezes its current profile as the first conformance fixture.
-3. Then the Consistency Audit, Capability Validation, and the 0.3.5 prototype campaign (Decision 048).
+3. Then the Consistency Audit (glossary terminology for presence, occupancy, presence-by-possession), Capability Validation, and the 0.3.5 prototype campaign (Decision 048).
 
 ---
 

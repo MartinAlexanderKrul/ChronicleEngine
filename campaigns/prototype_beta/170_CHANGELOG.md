@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000024
 canonical_record: REC-000024
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014
@@ -24,6 +24,8 @@ subjects: []
 ---
 
 ## Changes
+
+- **2026-07-23 — Structural migration: presence ownership (Decision 073) and schema 0.1.2.** Representation only; no fictional time elapsed and no state corrected. Kael's carried sword converted to the `carried by ENT-000021` presence-by-possession form (`011` §9.2); his `canonical_state.location` (`ENT-000002`, Halden) remains the location of record at the world's existing granularity; the seven campaign-local Characters in `130` gained the `canonical_state.location` the 0.1.2 contract requires, at their established night-one places (the wrong-stair man's recorded as unestablished — his whereabouts are genuinely open); all live records bumped to schema 0.1.2.
 
 **Year 312 RR, early summer - Campaign initialized.**
 Prototype Beta campaign created in the Verra world as a new campaign instance after the closed Prototype Alpha campaign. Protagonist Kael Travis (`ENT-000021`) established with serviceable sword (`ENT-000022`). Starting Knowledge States recorded: marsh-fever dispute, rumor-only and undecided (`REL-000020`); tempered glass, awareness-only (`REL-000021`); rivermason's mortar, no awareness (`REL-000022`). Starting Order exposure relationship recorded (`REL-000023`). Arrival event `EVT-000014`. No gameplay resolved yet; no checkpoint taken.

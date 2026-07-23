@@ -5,7 +5,7 @@ A Persistent Entity of type Place: a location with continuing identity. Structur
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -29,15 +29,13 @@ identity_links:
 canonical_state:
   region: <required: where the place is, or containing place ENT-XXXXXX>
   features: <required: notable features and present condition>
-  occupants: <optional: ENT-XXXXXX references to controlling, resident, or contained entities — NOT who is standing here now>
+  occupants: <optional: ENT-XXXXXX references to controlling, resident, or contained entities — NOT who is standing here now (011 §9.2)>
 ```
 
 ## `occupants` Is Standing State, Not Presence
 
-`occupants` records who **controls, resides in, or is contained by** a Place. It is standing state that changes when tenancy, control, or containment changes — not when someone walks in or out.
+`occupants` records who **controls, resides in, or is contained by** a Place. It is standing state that changes when tenancy, control, or containment changes — not when someone walks in or out. This is now a normative structural statement, not a template comment: `011_ENGINE_DATA_MODEL.md` Section 9.2 (Decision 073).
 
-**Where a character is right now is never recorded here.** Current location is owned by the campaign's `180_CURRENT_STATE.md` (Rules Section 13.2), and it has exactly one owner. A Place that also tried to track presence would be a second representation of the same fact, drifting from its source the moment a character moved — the failure Decision 051 forbids generally, and the cross-ledger staleness recorded against Version 0.3 planning in the roadmap specifically.
+**Where a character is right now is never recorded here.** Presence is owned solely by the entity's own `canonical_state.location` (`011` Sections 7.1 and 9.2); the campaign's `180_CURRENT_STATE.md` presents and points at it (Rules Section 13.2). A Place that also tried to track presence would be a second representation of the same fact, drifting from its source the moment a character moved — the failure Decision 051 forbids generally, and the one that produced the Checkpoint 0005 staleness incident specifically.
 
-The distinction is what keeps the field from going stale. A protagonist who rents a room is that room's occupant whether he is asleep in it or across the city; he is *never* an occupant of a Rift he walked into, however long he stands there. If a Place's `occupants` needs updating because a character moved, the field is being used wrongly.
-
-This wording is a disambiguation, not a new rule: the field is used across the repository in the containment sense (a republic's occupants are its cities) and in the residency sense, and was read once as presence — which is how a protagonist came to be listed as occupying a Rift he had left. Giving occupancy and location a **structural** representation that a validator could check is Data Model work, foundational under Decision 069, and belongs to Version 0.3 ADR design.
+The distinction is what keeps the field from going stale. A protagonist who rents a room is that room's occupant whether he is asleep in it or across the city; he is *never* an occupant of a Rift he walked into, however long he stands there. If a Place's `occupants` needs updating because a character moved, the field is being used wrongly — and the presence invariant enforced by the Repository Validation Barrier (`012` Section 5.4) now has the structured owner it needs to catch the contradiction.

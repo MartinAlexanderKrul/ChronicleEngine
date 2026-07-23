@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000032
 canonical_record: REC-000032
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000021
@@ -29,7 +29,7 @@ subjects:
 ```yaml
 id: ENT-000043
 canonical_record: REC-000032
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000021

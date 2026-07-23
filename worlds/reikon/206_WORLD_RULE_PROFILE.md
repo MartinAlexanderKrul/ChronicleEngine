@@ -4,7 +4,7 @@
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
 **Profile Version:** 0.10
-**Engine Compatibility:** 0.2.0; Data Model 0.1.1
+**Engine Compatibility:** 0.2.0; Data Model 0.1.2
 **Status:** Active
 
 **0.10 authors the Rift threat model in Section 13 (owner-directed world authoring; Decision 062), closing playtest findings PT-002 and PT-003 (`worlds/reikon/270_PLAYTEST_BACKLOG.md`).** A Rift is now **populated and its core guarded by default** — emptiness becomes an authored, logged exception, never the absence of authoring (Section 12.7's discipline applied to threat). An assignment carries an **assessed grade and a confidence**, and an unconfirmed Rift's **true grade is arbitrated on the die at first contact** — weighted so it can be a full grade worse — instead of defaulting benign (Decision 060). An under-assessed or anomalous Rift is exactly an existing intervention trigger (Section 9.6), so danger arises *causally*, never on a drama timer (Decision 003; PT-001). It reuses grade and `band_health` (Sections 3.1, 6.4); no bestiary, spawn table, or map subsystem (Decision 020). A Bearer whose Perception reaches 16 reads a Rift's true grade himself (Section 12.3), converting *unconfirmed* to *confirmed* by capability rather than by default.

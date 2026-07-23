@@ -11,7 +11,7 @@ It demonstrates a filled `100_CHARACTER_SHEET.md`: every placeholder resolved, u
 ```yaml
 id: REC-000001
 canonical_record: REC-000001
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000001
@@ -30,7 +30,7 @@ subjects:
 ```yaml
 id: ENT-000001
 canonical_record: REC-000001
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000001

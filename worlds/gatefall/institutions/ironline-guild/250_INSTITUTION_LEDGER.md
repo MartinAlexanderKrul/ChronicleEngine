@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000065
 canonical_record: REC-000065
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -51,7 +51,7 @@ The recruiting war against Horizon Guild (ENT-000100) is Ironline's whole strate
 ```yaml
 id: ENT-000101
 canonical_record: REC-000065
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

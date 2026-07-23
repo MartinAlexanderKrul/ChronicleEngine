@@ -5,7 +5,7 @@ A Persistent Entity of type Character. Structure: `011_ENGINE_DATA_MODEL.md` Sec
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -27,10 +27,10 @@ identity_links:
     certainty: <optional: asserted | disputed | believed | false-claim>
     source: <optional: EVT-XXXXXX>
 canonical_state:
-  location: <required: ENT-XXXXXX or region descriptor>       # §5, §3
+  location: <required: ENT-XXXXXX or region descriptor>       # sole owner of presence — 011 §7.1, §9.2 (Decision 073)
   condition: <required: injuries, pain, exhaustion — §6.8, §6.10>
   capabilities: <required: demonstrated competences — §5.3>
   personality: <optional: core traits and current expression — §5.4>
   knowledge: <optional: what this character knows — §5.5>
-  situation: <optional: current objective or circumstance>
+  situation: <optional: current objective or circumstance — narrative only, never the location of record (Decision 073)>
 ```

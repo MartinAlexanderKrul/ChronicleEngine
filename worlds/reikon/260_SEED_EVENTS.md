@@ -12,7 +12,7 @@ Events are immutable once instantiated; other records cite them as `source`.
 ```yaml
 id: REC-000034
 canonical_record: REC-000034
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -37,7 +37,7 @@ subjects:
 ```yaml
 id: EVT-000018
 canonical_record: REC-000034
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -56,7 +56,7 @@ summary: "The first Rifts opened over a dozen cities at once and the first peopl
 ```yaml
 id: EVT-000019
 canonical_record: REC-000034
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -75,7 +75,7 @@ summary: "The Aldish Republic charters the Hunters' Authority to license, grade,
 ```yaml
 id: EVT-000020
 canonical_record: REC-000034
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -94,7 +94,7 @@ summary: "Private hunters incorporate as the Meridian Guild, turning Rift-cleara
 ```yaml
 id: EVT-000021
 canonical_record: REC-000034
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -113,7 +113,7 @@ summary: "Scholars establish the Aurology Institute to study the Ledger and the 
 ```yaml
 id: EVT-000022
 canonical_record: REC-000034
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -132,7 +132,7 @@ summary: "After a devastating collapse, the Vigil of the Rupture coalesces into 
 ```yaml
 id: EVT-000023
 canonical_record: REC-000034
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -151,7 +151,7 @@ summary: "A Rift in the Danesmoor ward collapsed before clearance, overrunning a
 ```yaml
 id: EVT-000024
 canonical_record: REC-000034
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

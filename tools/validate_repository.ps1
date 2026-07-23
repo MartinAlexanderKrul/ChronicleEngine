@@ -332,6 +332,25 @@ foreach ($file in $canonicalFiles) {
         } elseif ($id.StartsWith("REC-") -and $canonicalRecord.Groups[1].Value -ne $id) {
             Add-Failure "$relativePath`:$line Canonical Record $id must reference itself as canonical_record."
         }
+
+        # Presence invariants (Decision 073; 011_ENGINE_DATA_MODEL.md Sections 7.1, 9.2, 12.3).
+        # Presence has exactly one structural owner: the entity's canonical_state.location.
+        $locationLines = [regex]::Matches($block, '(?m)^[ \t]*location[ \t]*:[ \t]*(.*?)[ \t]*\r?$')
+        if ($locationLines.Count -gt 1) {
+            Add-Failure "$relativePath`:$line object $id declares more than one location; presence has exactly one owner (Decision 073)."
+        }
+        foreach ($locationLine in $locationLines) {
+            $locationValue = $locationLine.Groups[1].Value.Trim().Trim('"')
+            if ($locationValue -match 'carried by' -and $locationValue -notmatch '^carried by ENT-\d{6}$') {
+                Add-Failure "$relativePath`:$line object $id has a carried-by location that is not the bare 'carried by ENT-######' form; presence-by-possession names the possessor alone and asserts no place of its own (Decision 073)."
+            }
+        }
+        if ($relativePath -match '^campaigns/' -and
+            [regex]::IsMatch($block, '(?m)^[ \t]*type:[ \t]*Character[ \t]*\r?$') -and
+            [regex]::IsMatch($block, '(?m)^[ \t]*status:[ \t]*active[ \t]*\r?$') -and
+            $locationLines.Count -ne 1) {
+            Add-Failure "$relativePath`:$line active Character $id must declare exactly one canonical_state.location; presence is owned by the entity's own record (Decision 073)."
+        }
     }
 }
 

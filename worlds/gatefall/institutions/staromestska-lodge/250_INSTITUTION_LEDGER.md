@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000070
 canonical_record: REC-000070
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -51,7 +51,7 @@ Horizon Guild — Europe's (ENT-000105) aggressive Prague hiring draws directly 
 ```yaml
 id: ENT-000106
 canonical_record: REC-000070
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

@@ -12,7 +12,7 @@ A Knowledge Subject persists as one subject; different holders keep divergent Kn
 ```yaml
 id: REC-000028
 canonical_record: REC-000028
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -39,7 +39,7 @@ subjects:
 ```yaml
 id: ENT-000045
 canonical_record: REC-000028
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -64,7 +64,7 @@ canonical_state:
 ```yaml
 id: ENT-000046
 canonical_record: REC-000028
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -89,7 +89,7 @@ canonical_state:
 ```yaml
 id: ENT-000047
 canonical_record: REC-000028
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -113,7 +113,7 @@ canonical_state:
 ```yaml
 id: REL-000034
 canonical_record: REC-000028
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -127,7 +127,7 @@ qualities: "Holder: the Aurology Institute (validator). State: empirical and par
 ```yaml
 id: REL-000035
 canonical_record: REC-000028
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -141,7 +141,7 @@ qualities: "Holder: the Vigil of the Rupture (restrictor). State: doctrinal. The
 ```yaml
 id: REL-000036
 canonical_record: REC-000028
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -155,7 +155,7 @@ qualities: "Holder: the Hunters' Authority (pragmatist). State: agnostic-by-poli
 ```yaml
 id: REL-000037
 canonical_record: REC-000028
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -169,7 +169,7 @@ qualities: "Holder: the Verholt public (myth). State: mixed folklore — the Rup
 ```yaml
 id: REL-000038
 canonical_record: REC-000028
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -183,7 +183,7 @@ qualities: "Holder: the Hunters' Authority. State: restriction/custody. Holds th
 ```yaml
 id: REL-000039
 canonical_record: REC-000028
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling

@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000025
 canonical_record: REC-000025
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000014
@@ -26,7 +26,7 @@ subjects: []
 ## Bindings and Versions
 
 - World: Verra (World Version 0.1, Prototype)
-- Engine: 0.1.5 (Foundation Release); Data Model 0.1.1
+- Engine: 0.1.5 (Foundation Release); Data Model 0.1.2
 - Campaign date: Year 312 RR, early summer
 - Campaign state: checkpoint-0001-saved
 

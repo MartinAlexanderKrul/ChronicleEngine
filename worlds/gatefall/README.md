@@ -2,7 +2,7 @@
 
 **World Status:** Complete and playable
 **Version:** 0.1 (World Rule Profile 1.0)
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.1; Gatefall World Rule Profile 1.0
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.2; Gatefall World Rule Profile 1.0
 **Created:** 2026-07-22
 
 ---

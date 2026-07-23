@@ -5,7 +5,7 @@
 ```yaml
 id: REC-000039
 canonical_record: REC-000039
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000050
@@ -29,7 +29,7 @@ subjects:
 ```yaml
 id: ENT-000052
 canonical_record: REC-000039
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000026
@@ -55,7 +55,7 @@ canonical_state:
 ```yaml
 id: ENT-000053
 canonical_record: REC-000039
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000028
@@ -81,7 +81,7 @@ canonical_state:
 ```yaml
 id: ENT-000079
 canonical_record: REC-000039
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000035
@@ -110,7 +110,7 @@ canonical_state:
 ```yaml
 id: ENT-000080
 canonical_record: REC-000039
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: EVT-000035
@@ -141,7 +141,7 @@ canonical_state:
 ```yaml
 id: ENT-000064
 canonical_record: REC-000039
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: archived
 provenance:
   source: EVT-000048
@@ -168,7 +168,7 @@ canonical_state:
 ```yaml
 id: ENT-000066
 canonical_record: REC-000039
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: active
 provenance:
   source: ruling
@@ -201,7 +201,7 @@ canonical_state:
 ```yaml
 id: ENT-000081
 canonical_record: REC-000039
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: archived
 provenance:
   source: EVT-000042
@@ -228,7 +228,7 @@ canonical_state:
 ```yaml
 id: ENT-000084
 canonical_record: REC-000039
-schema_version: "0.1.1"
+schema_version: "0.1.2"
 status: archived
 provenance:
   source: EVT-000049

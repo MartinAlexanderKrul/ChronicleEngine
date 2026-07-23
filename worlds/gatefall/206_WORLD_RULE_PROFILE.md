@@ -470,6 +470,8 @@ Regulation sets the minimum sanctioned party to legally enter a Gate by grade. E
 | **A** | 16 licensed hunters, including at least one A-rank |
 | **S** | National-asset operation (state-directed, not an ordinary contract) |
 
+**The table above is licensing law, not practice.** In practice a Gate is never solo work: the population formula (Section 9.7) sets even a true E-Gate at a dozen threats and a boss striking a band up — arithmetic no lone hunter's Health survives on the average roll. The trade therefore enforces what the law does not: **every posted Gate contract carries a posting minimum of three hunters regardless of grade**; no licensed board — BGM auction, co-op desk, or guild dispatch — accepts a solo bid on an unconfirmed Gate or any Gate assessed D or above; and hunter insurance is void from the moment a hunter crosses a threshold alone. Solo entry of a populated Gate remains *legal* at grades E–D — as a matter of law, the government does not stop anyone from dying — and is understood by the entire trade as desperation or a death wish; the Lone Clear title (Section 16) is legendary precisely because its feat is one the working world considers suicide. The solo format that actually exists is not a Gate at all: it is the instant dungeon (Section 17), and it belongs to exactly one person on Earth.
+
 ## 9.5 Confidence and the True Grade
 
 An assessed grade carries a **confidence**:

@@ -886,6 +886,8 @@ The creature's band relative to the Bearer's effective band sets the color:
 
 The System's **first contact** with a new Bearer is a fixed message sequence — the same three beats every time, rendered in the bracketed A10 style (Section 14.5, Section 15). This section authors only the **System's messages**; the in-world incident that precedes attachment is a campaign concern (Section 2) and is not authored here.
 
+**Onset timing (owner ruling, 2026-07-24).** The incident is a campaign concern; its **pacing is not**. The System attaches within the campaign's opening arc and **no later than the resolution of the protagonist's first genuine fight** — the first scene in which he faces lethal, uncertain combat. The precipitating incident must still arise causally from the fiction in play — a brush with death is the classic crucible; what this ruling bounds is *when*, not *why*. A campaign that resolves its first real fight with the protagonist still bare of the System is out of law. This binds every Gatefall campaign, including any in progress at the time of the ruling.
+
 1. **Attachment notice** — the initializing handshake and host designation, fired the instant the System attaches.
 2. **Status-window grant** — the STATUS panel (Section 15.1) is granted and rendered once, opening at creation values (level 1, the creation-array stats of Section 4.1, Health 40/40, Mana 20/20).
 3. **First daily quest** — the standing daily quest (Section 8.1) issues at the **next 06:00 local** after attachment, and the daily cycle runs from there.

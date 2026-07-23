@@ -37,7 +37,7 @@ subjects:
 
 ### ENT-000126 — Tanya Voss
 
-Crew lead and striker; mid-30s, an experienced Gate clearer with three-plus clears behind her alongside Marcus. She recruited Alexander onto the Red Line Corridor contract after reading him as someone who would commit rather than fold — reputation is "what the desk thinks," she told him, and "fact is what happens in a Gate."
+Crew lead and striker; mid-30s, an experienced Gate clearer with three-plus clears behind her alongside Marcus. She recruited Alexander onto the Red Line Corridor contract after reading him as someone who would commit rather than fold — reputation is "what the desk thinks," she told him, and "fact is what happens in a Gate." Her signature ability is **Keen Edge**: her mana runs along any blade she grips, holding an edge that bites seams plain steel skids off.
 
 ```yaml
 id: ENT-000126
@@ -61,6 +61,7 @@ canonical_state:
   location: ENT-000087
   condition: "Healthy; equipped with a heavier reinforced jacket and shoulder plating than an E-rank starter kit"
   capabilities: "Experienced licensed hunter and crew leader; striker working type; three-plus prior Gate clears with Marcus. Reads people quickly and decisively."
+  signature_ability: "Keen Edge — her mana runs along any blade she grips, holding an edge that bites armor seams plain steel skids off (Profile Section 13.6: method texture, resolved at her band)."
   personality: "Direct, competent, unsentimental. Judges hunters by conduct in a Gate, not by desk reputation. Takes calculated risks on people who show commitment; does not waste time on those she expects to fold."
   situation: "Leading the five-hunter Red Line Corridor clear (unconfirmed D, timer breaking midnight 2026-07-24). Recruited Alexander to fill an open slot after he committed at the Coalition case table, signed the crew contract, and briefed him with Marcus. As of 8:00 AM 2026-07-24 she has the crew assembled at the Gate entrance."
 ```
@@ -89,6 +90,7 @@ canonical_state:
   location: ENT-000087
   condition: "Healthy; no adverse condition established"
   capabilities: "Sensor working type: reads Gate interior layout, population density, and anomalies on entry. Tanya Voss's established clearing partner; better at field triage-by-read than at combat."
+  signature_ability: "Deep Read — he perceives a Gate interior through the mana in its air: layout, population weight, age of a signature, and whether something is watching back (Profile Section 13.6)."
   personality: "Quiet, focused, observes before acting. Takes the measure of new people carefully."
   situation: "Assigned to point for the Red Line Corridor clear, reading the interior on entry. Present at the 2026-07-23 briefing and at the Gate entrance on 2026-07-24. Surname unestablished."
 ```
@@ -117,6 +119,7 @@ canonical_state:
   location: ENT-000087
   condition: "Healthy; equipped with a reinforced steel hammer"
   capabilities: "Striker working type, blunt-force specialty; two-plus years licensed. Holds a line in close combat."
+  signature_ability: "Groundbreak — braced, he cannot be knocked from his feet, and his hammer-blows carry a ground-shock through whatever his stance is planted on (Profile Section 13.6)."
   personality: "Confident, warm, reassuring. Supportive of newer hunters."
   situation: "Crew member for the Red Line Corridor clear and Tanya Voss's brother. Introduced himself to Alexander at the Gate entrance on 2026-07-24 and assured him of support inside."
 ```
@@ -144,7 +147,8 @@ aliases:
 canonical_state:
   location: ENT-000087
   condition: "Healthy; carries a field medical kit"
-  capabilities: "Mender working type: touch-based restorative ability, able to close wounds and restore Health mid-fight — a scarce and valuable gift (~1 in 12 awakened). Six months licensed; twice declined Horizon Guild recruitment to stay independent. Trained for crisis triage."
+  capabilities: "Mender working type: touch-based restorative ability, able to close wounds and restore Health mid-fight — a scarce and valuable gift (~1 in 12 awakened). Six months licensed; twice declined Horizon Guild recruitment to stay independent. Trained for crisis triage. Field-touch magnitudes per Profile Section 13.5."
+  signature_ability: "Mending Touch — her mana closes what it is laid against: flesh knits under her hands, the classic mender manifestation (Profile Section 13.6; magnitudes per Section 13.5)."
   personality: "Calm, focused, prioritizes keeping people alive. Direct about her role and what she expects of the crew."
   situation: "Mender for the Red Line Corridor clear, kept mobile and in reserve during the clear. Introduced herself to Alexander at the Gate entrance on 2026-07-24 and told him to come to her if hurt."
 ```

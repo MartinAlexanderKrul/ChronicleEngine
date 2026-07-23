@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000086 |
-| Record | `REC-` | Canonical Record | REC-000061 |
-| Event | `EVT-` | Event | EVT-000050 |
-| Relationship | `REL-` | Relationship | REL-000048 |
+| Entity | `ENT-` | Persistent Entity | ENT-000124 |
+| Record | `REC-` | Canonical Record | REC-000073 |
+| Event | `EVT-` | Event | EVT-000055 |
+| Relationship | `REL-` | Relationship | REL-000061 |
 
 ---
 
@@ -118,6 +118,19 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000050 | Event | Reikon Awakening: ruling flagging Captain Thorne's unauthored assignment-bonus claim, and correcting a prior omission (24 vells from the Ashgate core sale) |
 | REL-000048 | Relationship | Reikon Awakening: Daedalus–Wren Ashcombe, professional contact formed for the Warehouse 7 extraction job |
 | REC-000061 | Record | Reikon Awakening `saves/900_CHECKPOINT_0017/900_SAVE_MANIFEST.md` — Warehouse 7's resonance resolution and the tannery clear, sequenced after the Stat-cap removal (CP0016) |
+| ENT-000087 - ENT-000098 | Entity | World Gatefall (`worlds/gatefall/`) places ledger: 2 cities (Chicago, Prague) and 10 Places — Chicago: Lakefront Gate Corridor, Red Line Corridor, the Cicero Scar, Horizon Tower, BGM Region V Field Office; Prague: Old Town Gate Cluster, Metro Corridor, the Libeň Scar, Karlov House, CGA Headquarters |
+| REC-000062 | Record | Gatefall world ledger: `worlds/gatefall/210_PLACES.md` |
+| ENT-000099 - ENT-000106 | Entity | World Gatefall institutions: BGM Region V, Horizon Guild, Ironline Guild, Windy City Hunters Coalition, Czech Gate Administration, Karlov Guild, Horizon Guild — Europe, Staroměstská Lodge |
+| REC-000063 - REC-000070 | Record | Gatefall institution ledgers: `worlds/gatefall/institutions/{bgm-region-v,horizon-guild,ironline-guild,windy-city-coalition,czech-gate-administration,karlov-guild,horizon-europe,staromestska-lodge}/250_INSTITUTION_LEDGER.md` |
+| REL-000049 - REL-000051 | Relationship | Gatefall institutions: BGM Region V's governance jurisdiction over Chicago (049), the Czech Gate Administration's governance jurisdiction over Prague (050), and the Horizon Guild — Europe / Karlov Guild rivalry over Prague's foreign-guild siege (051) |
+| ENT-000107 - ENT-000118 | Entity | Gatefall notable figures (`worlds/gatefall/220_NOTABLE_FIGURES.md`): 12 Characters under the character depth law — Chicago: BGM Region V director Naomi Okafor (107), Horizon guildmaster Preston Vaughn (108), Horizon S-rank ace Dominic Crane (109), Ironline guildmaster Dee Brannigan (110), BGM appraiser Nell Foss (111), black-market core buyer "Deacon" (112); Prague: CGA director Miloš Beran (113), Czech S-rank Tereza Blažková (114), Karlov guildmaster Vlastimil Karlov (115), Karlov heir Ivana Karlová (116), Horizon Europe branch chief Ondřej Dušek (117), black-market smuggler "Sova" (118) |
+| REC-000071 | Record | Gatefall notable figures ledger: `worlds/gatefall/220_NOTABLE_FIGURES.md` |
+| REL-000052 - REL-000061 | Relationship | Gatefall notable figures: ten membership relationships binding each institution-affiliated figure to its institution (Okafor→BGM 052, Vaughn→Horizon 053, Crane→Horizon 054, Brannigan→Ironline 055, Foss→BGM 056, Beran→CGA 057, Blažková→Karlov 058, Karlov→Karlov 059, Karlová→Karlov 060, Dušek→Horizon Europe 061). The two black-market figures (ENT-000112, ENT-000118) hold no institutional membership by design |
+| ENT-000119 - ENT-000122 | Entity | Gatefall resources (`worlds/gatefall/240_RESOURCES.md`): 4 world-level Resource entities — mana crystals (119), beast cores (120), graded hunter gear (121), System-shop consumables (122) — each priced from World Rule Profile Sections 11-12 (Anchors A7/A8) |
+| REC-000072 | Record | Gatefall resources ledger: `worlds/gatefall/240_RESOURCES.md` |
+| EVT-000051 - EVT-000055 | Event | Gatefall seed events (`worlds/gatefall/260_SEED_EVENTS.md`): the Red Line Reading — an unconfirmed D-Gate reading worse than posted (051); the Auction War — Ironline vs Horizon fought through the clearance-contract auction (052); the Old Town Climb — a Gate re-graded upward twice in one cycle, unexplained (053); the Karlov Tilt — the CGA favoring Karlov Guild over a stronger Horizon Europe bid because it holds Blažková's contract (054); the Steepening Curve — the worldwide break-rate acceleration confirmed at regulator tier and left publicly unexplained (055), consistent with `200_WORLD_BIBLE.md` Section 9 without revealing it |
+| REC-000073 | Record | Gatefall seed events ledger: `worlds/gatefall/260_SEED_EVENTS.md` |
+| ENT-000123 - ENT-000124 | Entity | Gatefall world-ranked S-rank figures appended to `worlds/gatefall/220_NOTABLE_FIGURES.md` (REC-000071): Reid Calloway (123), the highest-ranked American and IGR World Ranking #7, Keystone Guild; Lukas Reinhardt (124), Brandhof's ace and IGR #8, the nearest world-ranked hunter to Prague. Their guilds (Keystone, Brandhof) are bible-level institutions with no entity, so both memberships are prose/canonical_state only and mint no relationship |
 
 ---
 

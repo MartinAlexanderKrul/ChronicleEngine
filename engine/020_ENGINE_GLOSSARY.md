@@ -164,6 +164,8 @@ The single authoritative present truth of a persistent object, held in its one C
 
 Canonical state is what is true now. It is distinct from Historical Evidence, which records the past without being authoritative. Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.
 
+For a Persistent Entity, canonical state includes `canonical_state.location` — the sole structural owner of the entity's [Presence](#presence) (Section 7.1; Decision 073).
+
 ---
 
 ## Capability
@@ -712,6 +714,14 @@ Objective Reality is the highest layer of truth, even when currently unknown.
 
 ---
 
+## Occupancy
+
+The standing state of a Place: its controlling, resident, or contained entities, recorded in the Place's `occupants` field.
+
+Occupancy changes when tenancy, control, or containment changes — never when someone walks in or out. It is never Presence. Defined in `011_ENGINE_DATA_MODEL.md`, Section 9.2 (Decision 073).
+
+---
+
 ## Ownership
 
 The legal, social, magical, or practical right to a resource.
@@ -787,6 +797,22 @@ A Runtime response resolves at most one player opportunity, the one at which it 
 Current control, custody, or practical holding of a resource.
 
 Possession is distinct from ownership.
+
+---
+
+## Presence
+
+Where an entity is right now.
+
+Presence has exactly one structural owner: the entity's own `canonical_state.location`, a typed Location reference in its single Canonical Record. No other ledger may restate presence as authoritative content; the campaign current-state ledger presents and points at it (Rules Section 13.2). Distinct from Occupancy, Possession, and Ownership. Defined in `011_ENGINE_DATA_MODEL.md`, Sections 7.1 and 9.2 (Decision 073).
+
+---
+
+## Presence-by-Possession
+
+The Location form a carried Individual Resource uses: `carried by <possessor ENT- id>`.
+
+A carried resource's physical presence resolves through its possessor's `canonical_state.location` rather than being stored independently, so it cannot go stale against its possessor and asserts no place of its own. Defined in `011_ENGINE_DATA_MODEL.md`, Section 9.2 (Decision 073).
 
 ---
 
@@ -956,6 +982,8 @@ A campaign-scoped, immutable copy of a campaign's canonical Markdown ledgers as 
 
 A save checkpoint preserves actual canonical ledger content rather than a compiled or derived representation of it. Once created, it does not change.
 
+The one canonical checkpoint form is the `saves/900_CHECKPOINT_<NNNN>/` directory — a complete copy of every canonical ledger the campaign owns plus one Save Manifest, with a four-digit, zero-padded, monotonically increasing ordinal per campaign (Rules Section 13.1; Decision 072). Other shapes are not checkpoints; a nonconforming historical snapshot is retained as evidence and superseded by a conforming re-issue.
+
 ---
 
 ## Save Manifest
@@ -965,6 +993,8 @@ A short metadata document accompanying a Save Checkpoint, recording save identit
 A save manifest never duplicates ledger content.
 
 Its scope fields use existing names or repository paths for the world and campaign, plus the player character's `ENT-` identifier. The manifest does not require separate World IDs or Campaign IDs.
+
+A manifest is checkpoint-local metadata, not a Persistent Object in live canon: it mints no registry identifier, and live canon references a checkpoint by ordinal, label, and capture time (Decision 072). Its version block records the applicable World Rule Profile version as a required structured element — or an explicit `none` for a world that declares no profile (Rules Sections 13.3, 14.6; Decision 074).
 
 ---
 
@@ -1125,6 +1155,8 @@ Characters, campaigns, institutions, discoveries, and civilizations exist within
 A versioned world-authored contract that explicitly replaces selected engine-general behavioral simulation rules for a declared scope. It cannot replace Data Model, canon, Runtime invariant, save-integrity, or validation contracts.
 
 A profile is **world rule content** (see below), residing at `worlds/<world>/206_WORLD_RULE_PROFILE.md`, one per world. Defined in Rules Section 14 and Decisions 059 and 062.
+
+A profile declares a version and a **compatibility status**: *workshop draft* (mutable; a checkpoint captured under it is not save-trustworthy) or *frozen* (an immutable behavioral contract at that version — changing declared behavior requires a new version). Version increments are classified **additive** or **migrating**, and save compatibility against the recorded profile version is enforced on restoration (Rules Section 14.6; Decision 074).
 
 ---
 

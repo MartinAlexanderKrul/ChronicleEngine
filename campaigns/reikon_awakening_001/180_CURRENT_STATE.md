@@ -1,6 +1,6 @@
 # Current State — Reikon Awakening 001
 
-**Canonical entry point.** This ledger holds only what Rules Section 13.2 assigns it: where the protagonist is now, what is active, and what remains unresolved. Character, inventory, relationship, objective, and event state are owned by the standard live ledgers alongside this file and are **not** duplicated here.
+**Canonical entry point.** This ledger holds only what Rules Section 13.2 assigns it: what is active and what remains unresolved, presenting — without owning — the protagonist's location of record (`100_CHARACTER_SHEET.md` `canonical_state.location`; Decision 073). Character, inventory, relationship, objective, and event state are owned by the standard live ledgers alongside this file and are **not** duplicated here.
 
 ## Record
 

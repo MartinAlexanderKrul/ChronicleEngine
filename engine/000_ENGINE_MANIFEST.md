@@ -322,8 +322,8 @@ The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 comple
 Current priority:
 
 1. Decisions 072–074 are implemented (2026-07-23): the canonical checkpoint form, single-owner presence (Data Model 0.1.2), and the World Rule Profile freeze contract (Rules 14.6) with Reikon 0.10 frozen as the first conformance fixture.
-2. Consistency Audit — glossary terminology (presence, occupancy, presence-by-possession, freeze status) and cross-document reconciliation.
-3. Then 0.3.5 — Capability Validation and the Prototype Campaign (Decision 048); milestone 0.3.4 is closed by drop (Decision 075).
+2. The Consistency Audit is complete (2026-07-23): glossary terminology and cross-document references reconciled; PA-002 and PA-008 dispositioned Resolved.
+3. Next: 0.3.5 — Capability Validation and the Prototype Campaign (Decision 048); milestone 0.3.4 is closed by drop (Decision 075).
 
 ---
 

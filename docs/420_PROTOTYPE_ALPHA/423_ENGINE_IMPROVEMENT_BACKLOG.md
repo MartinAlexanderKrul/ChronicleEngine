@@ -41,7 +41,7 @@ Do not introduce a new Persistent Entity type without evidence from play.
 
 ## PA-002 - Location Granularity
 
-**Status:** Deferred — existing Place and descriptive containment remain sufficient
+**Status:** Resolved — Decision 073 / Presence and Location Structural Representation (2026-07-23). Resolved as a representation question, not a granularity one: presence gained a single structural owner (`canonical_state.location`) and the "on person" case is expressed by the carried-by presence-by-possession form (`011` Section 9.2). Granularity itself is unchanged, as this entry's original judgement anticipated.
 **Severity:** Low
 **Source:** Verra canonical world generation
 
@@ -159,7 +159,7 @@ Original classification: **gap** while the trigger was missing. Final classifica
 
 ## PA-008 - Save-Layer Format Unification
 
-**Status:** Deferred (Version 0.6 - Persistence)
+**Status:** Resolved — pulled forward to Version 0.3 milestone 0.3.1 and implemented by Decision 072 / Save Layer Unification (2026-07-23). The `saves/900_CHECKPOINT_<NNNN>/` directory form is blessed and mechanically enforced; the `.saves/*.yaml` records are retired as documented evidence with the terminal state re-issued as conforming Checkpoint 0001; the `checkpoints/` placeholder is removed.
 **Severity:** Low
 **Source:** Decision 053; save-layer drift noted during checkpoint work
 

@@ -12,6 +12,17 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-23 — Version 0.3 Consistency Audit complete
+
+Consistency Audit stage under Decision 048; refinement under Decision 069 — terminology and cross-reference reconciliation only, with no Rules, Data Model, Runtime, or mechanism change and no decision number consumed. Owned by Version 0.3.
+
+**Glossary:** new entries **Presence**, **Occupancy**, and **Presence-by-Possession**; Canonical State names the presence owner; Save Checkpoint records the canonical directory form and four-digit ordinal rule (Decision 072); Save Manifest records the no-registry-identifier rule and the required structured profile version (Decisions 072, 074); World Rule Profile gains the version/compatibility-status and additive/migrating language (Rules 14.6, Decision 074).
+**Stale references corrected:** reikon `180_CURRENT_STATE.md` no longer describes itself as holding "where the protagonist is now" — it presents, without owning, the location of record (Rules 13.2 as amended by Decision 073). Prototype Alpha backlog items **PA-002** and **PA-008** dispositioned **Resolved** (Decisions 073 and 072 respectively).
+**Verified clean:** template conventions carry no conflict with the manifest's removed Record block; no live `(carried)` idiom, `0.1.1` schema tag, or stale profile-version compatibility mention remains outside immutable history (checkpoints, chronicle events, accepted decisions).
+**Documents:** `020_ENGINE_GLOSSARY.md`; `campaigns/reikon_awakening_001/180_CURRENT_STATE.md`; `docs/420_PROTOTYPE_ALPHA/423_ENGINE_IMPROVEMENT_BACKLOG.md`; roadmap; manifest; README 1.11.
+**Validation:** all seven gates pass.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-23 — Decision 074 implemented: World Rule Profile versioning, freeze, and enforced save compatibility
 
 Implementation of Version 0.3 milestone 0.3.3 against accepted Decision 074 (foundational, frozen at ADR Approval); this entry records its landing. With it, all three foundational Version 0.3 decisions are implemented.

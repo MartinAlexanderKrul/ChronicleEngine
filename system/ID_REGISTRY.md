@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000125 |
+| Entity | `ENT-` | Persistent Entity | ENT-000133 |
 | Record | `REC-` | Canonical Record | REC-000081 |
-| Event | `EVT-` | Event | EVT-000057 |
-| Relationship | `REL-` | Relationship | REL-000062 |
+| Event | `EVT-` | Event | EVT-000058 |
+| Relationship | `REL-` | Relationship | REL-000063 |
 
 ---
 
@@ -136,6 +136,13 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000056 | Event | Gatefall: Pendragon campaign-start event: Alexander Pendragon begins his hunting career in Chicago |
 | REL-000062 | Relationship | Gatefall: Pendragon: Alexander's freelancer membership with the Windy City Hunters Coalition |
 | EVT-000057 | Event | Reikon Awakening: Decision 073 presence migration — character location corrected from stale ENT-000066 to the tannery-district descriptor; nineteen carried holdings converted to presence-by-possession; 180 presentation prose corrected |
+| ENT-000126 - ENT-000129 | Entity | Campaign Gatefall: Pendragon Session 1: campaign-local crew members — Tanya Voss (126), Marcus (127), Elias Voss (128), Dr. Sarah Chen (129) — promoted from world-layer institutional figures to campaign-local named figures through direct play interaction |
+| EVT-000058 | Event | Gatefall: Pendragon Session 1: crew assembly and Gate approach (2026-07-23 to 2026-07-24) — Alexander joined Tanya Voss's Red Line Corridor crew, purchased E-grade gear, participated in crew briefing, and assembled at Gate entrance |
+| REL-000063 | Relationship | Gatefall: Pendragon Session 1: Alexander's crew membership in Tanya Voss's Red Line Corridor contract crew (five-hunter crew, equal split) |
+| ENT-000130 | Entity | Campaign Gatefall: Pendragon Session 1: Kesha Morrison, senior coordinator at the Windy City Hunters Coalition desk — witnessed Alexander's crew contract signing and directed him to gear vendors |
+| ENT-000131 | Entity | Campaign Gatefall: Pendragon Session 1: Diane, owner of Ironbound gear shop on Milwaukee Avenue — sold Alexander his E-grade hunting gear and performed custom fitting on gauntlets |
+| ENT-000132 | Entity | Campaign Gatefall: Pendragon Session 1: Cutting Edge, custom E-/D-grade gear shop in Chicago's warehouse district — recommended vendor, not visited |
+| ENT-000133 | Entity | Campaign Gatefall: Pendragon Session 1: Horizon's outfitter on Michigan Avenue, Horizon Guild-affiliated gear shop — recommended vendor, not visited; Alexander chose Ironbound for better pricing |
 
 ---
 

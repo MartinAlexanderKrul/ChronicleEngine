@@ -458,19 +458,19 @@ From detection, an uncleared Gate runs a countdown to a **dungeon break** (Secti
 
 The timer starts at detection, not at first entry. A Gate cleared before its timer expires closes safely on the boss kill; a Gate whose timer runs out breaks.
 
-## 9.4 Legal Minimum Party
+## 9.4 Party Minimums — Law and Practice
 
-Regulation sets the minimum sanctioned party to legally enter a Gate by grade. Entering under-strength is an offense in both jurisdictions (Section 13).
+Regulation sets the minimum sanctioned party to legally enter a Gate by grade; the trade's posting floors sit above the law at every grade. Entering under the **legal minimum** is an offense in both jurisdictions (Section 13). **Posting floors** are enforced by the boards themselves: no licensed board — BGM auction, co-op desk, or guild dispatch — posts a contract below its floor, and none accepts a solo bid on an unconfirmed Gate or any Gate assessed D or above.
 
-| Grade | Legal minimum party |
-|---|---|
-| **E–D** | None (a lone licensed hunter may enter) |
-| **C** | 4 licensed hunters |
-| **B** | 8 licensed hunters |
-| **A** | 16 licensed hunters, including at least one A-rank |
-| **S** | National-asset operation (state-directed, not an ordinary contract) |
+| Grade | Legal minimum (law) | Posting floor (practice) |
+|---|---|---|
+| **E–D** | None (a lone licensed hunter may enter) | 5 hunters |
+| **C** | 4 licensed hunters | 6–8 |
+| **B** | 8 licensed hunters | 12–16 |
+| **A** | 16 licensed hunters, including at least one A-rank | 24–32 |
+| **S** | National-asset operation (state-directed, not an ordinary contract) | State-directed |
 
-**The table above is licensing law, not practice.** In practice a Gate is never solo work: the population formula (Section 9.7) sets even a true E-Gate at a dozen threats and a boss striking a band up — arithmetic no lone hunter's Health survives on the average roll. The trade therefore enforces what the law does not: **every posted E- or D-Gate contract carries a posting minimum of five hunters** — enough to hold a line while the boss is worked, and the headcount at which a crew can hope to cover the four working types (Section 13.5) — while C-and-above contracts post at their legal minimums and working crews typically field half again to double that floor; no licensed board — BGM auction, co-op desk, or guild dispatch — accepts a solo bid on an unconfirmed Gate or any Gate assessed D or above; and hunter insurance is void from the moment a hunter crosses a threshold alone. Solo entry of a populated Gate remains *legal* at grades E–D — as a matter of law, the government does not stop anyone from dying — and is understood by the entire trade as desperation or a death wish; the Lone Clear title (Section 16) is legendary precisely because its feat is one the working world considers suicide. The solo format that actually exists is not a Gate at all: it is the instant dungeon (Section 17), and it belongs to exactly one person on Earth.
+The gap between the columns is deliberate. The legal floors define the *offense* of reckless endangerment; the posting floors are survival. The population formula (Section 9.7) sets even a true E-Gate at a dozen threats and a boss striking a band up — arithmetic no lone hunter's Health survives on the average roll — and five is the headcount at which a crew can hold a line while the boss is worked and hope to cover the four working types (Section 13.5); above C, working crews field half again to double the legal floor, which is where the posting ranges come from. Hunter insurance is void from the moment a hunter crosses a threshold alone. Solo entry of a populated Gate remains *legal* at grades E–D — as a matter of law, the government does not stop anyone from dying — and is understood by the entire trade as desperation or a death wish; the Lone Clear title (Section 16) is legendary precisely because its feat is one the working world considers suicide. The solo format that actually exists is not a Gate at all: it is the instant dungeon (Section 17), and it belongs to exactly one person on Earth.
 
 ## 9.5 Confidence and the True Grade
 

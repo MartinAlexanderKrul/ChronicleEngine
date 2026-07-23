@@ -790,6 +790,12 @@ Party role composition is **descriptive, not a subsystem.** The trade sorts awak
 
 Menders and wardens are rare (Bible Section 3), which is exactly why a party that fields one is meaningfully safer and a party without one pays for the gap in Section 6.3 injuries. Nothing further is authored: strikers, casters, and sensors add texture, not a mechanic — a caster's bolt is a standard hit at its band like anyone else's strike — and **the Bearer in a party benefits from a mender or a warden exactly as any other member does** — the three effects are properties of the party, not of who is in it.
 
+## 13.6 Signature Abilities
+
+Most awakened manifest a **signature ability** at awakening (Bible Sections 2–3): one personal, permanent expression of their mana — a firelance, a stone hide, a ten-meter blink, a healing touch, a field-sense. For an NPC hunter the signature is a **descriptive fact, not a subsystem**: it is named in one sentence in the character's ledger entry, it determines the *method and reach* of what they do — a C-caster's firelance is a C-band standard hit delivered at forty meters; a B-warden's force-wall is Section 13.5's formation step made visible — and it never adds a magnitude beyond the character's band and the three Section 13.5 effects. **Every named NPC hunter introduced in play is given a signature ability in their ledger entry when they are recorded** — a crew of hunters should read like a crew of powers, not a crew of weapons.
+
+Signatures are innate and singular: one per awakening, fixed for life, its expression growing only as its owner's measured rank allows. Runes and skill books (Section 11) add *learned* techniques on top — rare enough that a hunter with two tricks is notable and a hunter with three is a story. The Bearer is the sole exception to all of it: he manifested nothing at awakening — the notorious blank card of the weakest E-rank — and everything he gains, the System governs (Section 7). In a world where every hunter is born as exactly one power, the man who can *accumulate* them is a walking impossibility, and hiding that is the whole game (Section 19).
+
 ---
 
 # 14. The System's Behavioral Contract

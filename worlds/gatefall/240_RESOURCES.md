@@ -68,7 +68,7 @@ aliases:
   - name: "mana crystals"
     quality: current
 canonical_state:
-  description: "The graded family of loot crystals every beast drops on death, one per kill, at the beast's own grade E-S. The base commodity of the licensed market and the sole bridge between USD/CZK and the System's gold."
+  description: "The graded family of mana crystals every clearance produces, at grade E-S. Two sources (`206` Section 11.1): one crystal drops from each beast killed at the beast's grade, but the bulk of a clear's tonnage is MINED from the Gate interior's own crystal deposits (veins seamed through its walls), worked out by a party's harvest element during the clear and lost with the collapsing interior if not extracted in time. Mined and dropped crystals of the same grade are identical goods. The base commodity of the licensed market and the sole bridge between USD/CZK and the System's gold."
   market_behavior: "Licensed sale at posted grade price through any BGM/CGA-registered buyer, logged and regulated; unlicensed sale pays +40% but is a felony in both jurisdictions; the System shop buys crystals for gold only, with no reverse conversion. Licensed demand is industrial: refiners (Cindermark Refining, Halcyon Mana-Industrial) take crystal as mana-tech and power-storage feedstock; the black-market premium is paid by unlicensed mana-tech and by foreign buyers dodging export controls on B-and-above crystal."
   price_table: "Licensed (Chicago USD, Section 12.1): E $150, D $600, C $2,500, B $11,000, A $50,000, S auction-only; Prague ~70% in CZK/EUR. System shop buy (gold, Section 12.5): E 10 g, D 40 g, C 170 g, B 750 g, A 3,400 g."
 ```

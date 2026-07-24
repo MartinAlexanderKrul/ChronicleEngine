@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.3
+**Document Version:** 1.4
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -237,7 +237,7 @@ When the player declares an uncertain or opposed action, the Runtime resolves it
 Concretely, on a declared uncertain action the Runtime:
 
 1. stops narrating at the declaration;
-2. evaluates whether uncertainty exists (Rules Sections 4.1–4.2). Automatic resolution is reserved for the genuinely certain — an unlocked door, common goods, walking across a room. An attack on a resisting person is never automatic. A **defenceless or trivial** target, on the other hand, is near-automatic: a strike at a person already collapsed and unresisting should almost never fail;
+2. evaluates whether uncertainty exists (Rules Sections 4.1–4.2). Before assigning odds, apply any active World Rule Profile's direct capability rules: a declared Stat, resource, prerequisite, reach, or tool may make a method possible or impossible, and may set pools or off-die magnitude. Automatic resolution is reserved for the genuinely certain — an unlocked door, common goods, walking across a room. An attack on a resisting person is never automatic. A **defenceless or trivial** target, on the other hand, is near-automatic: a strike at a person already collapsed and unresisting should almost never fail;
 3. assesses difficulty and net modifier:
    - Difficulty (Rules Sections 4.3–4.4): the resistance the action faces. A defenceless target is near-automatic; a feat beyond the character's means is very hard.
    - Net modifier: the character's demonstrated capability for *this* action — relevant skills, abilities, training, magic, and tools — plus circumstance, weighed against the resistance. Capability and magic move the odds and are never ignored; a master swordsman and a novice do not face the same odds. Large gaps compress outcomes: an overwhelming advantage (+2 to +3) makes success the ordinary result; an overwhelming disadvantage (-2 to -3) makes failure the ordinary result (Rules Section 4.6). Natural-roll critical tails (01–05 fumble, 96–100 critical) are always live and can never be modified away (Decision 052).
@@ -270,7 +270,7 @@ One roll settles the **declared action's** outcome, not the whole fight's. A sin
 
 The failure this prevents is the frictionless win: a declared attack that erases every threat at once while the character takes no hit, spends nothing, and is never actually endangered. A run of encounters cleared at zero cost and zero risk against genuine threats is a signal that the enemy was never allowed to act — a form of the **special narrative protection the engine forbids** (Emergent Campaign; Law VII — Fairness). Danger is arbitrated by the die and circumstance, never softened by authorial favor.
 
-**Capability and the diegetic System are Modifiers, not immunity.** A high stat, a strong Rank, a full mana pool, or a level advantage shifts the odds on the roll (Rules Section 4.4) and colors how the world reacts — it never makes the character un-hittable, auto-resolves a contested fight, or removes the enemy's turn (Decision 057 bright line). The impossible stays impossible and the dangerous stays dangerous, whatever the numbers say.
+**Capability is causal, not immunity.** An active World Rule Profile may make a Stat or System value directly determine possibility, prerequisites, resource pools, costs, reach, or off-die magnitude, and may define how it contributes to the contested roll. Apply that contract exactly and do not flatten every number into a generic bonus. The bright line remains: capability never chooses the outcome of an uncertain contested action, makes the character un-hittable, or removes the enemy's turn (Decision 057). The die resolves the uncertain execution; established capability determines what can be attempted and what the resolved result physically does.
 
 ---
 
@@ -308,7 +308,7 @@ After every resolved exchange and before yielding, settle all tracked state that
 1. Apply immediate costs and harm caused by the resolution (spent resources, Health damage, conditions, item use).
 2. Account for the in-world time the narrated exchange consumed. Apply every deterministic time-based rule, including active/resting resource recovery and Health recovery, and carry any sub-interval remainder required by the active world profile. A Runtime may not invent a recovery rate: it uses the active world's declared formula, and if none exists it preserves current Health until a resolved treatment or healing effect establishes a change.
 3. If the exchange completed training or demonstrated a technique, update qualitative capability/training state now with what was actually practiced or demonstrated. One session may establish familiarity or foundational practice without granting mastery; it is still recorded and can accumulate through later training and use. Physical skills are not discarded because a world also has System Abilities.
-4. If the exchange resolved a challenge, apply its reward now, including XP. A kill, clear, or other completed challenge is never left "not yet updated."
+4. If the exchange resolved a challenge, apply its reward now, including XP. When an active World Rule Profile makes level-up rewards immediate, settle every crossed level and its complete reward package before the next action; never convert it into an acceptance prompt or pending reward. Only rewards the profile explicitly declares deferrable—such as Gatefall's daily rewards—may stack unclaimed. A kill, clear, or other completed challenge is never left "not yet updated."
 5. Update the in-flight session state used by the next turn. The next response and `/system` read this settled state, never the opening checkpoint values.
 6. Narrate the fictional outcome, then render any world-declared compact state notifications once, in their declared format.
 

@@ -1,8 +1,8 @@
 # Gatefall World — Usage Guide
 
 **World Status:** Complete and playable
-**Version:** 0.1 (World Rule Profile 1.3)
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.2; Gatefall World Rule Profile 1.3
+**Version:** 0.1 (World Rule Profile 1.4)
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.2; Gatefall World Rule Profile 1.4
 **Created:** 2026-07-22
 
 ---
@@ -45,7 +45,7 @@ The world is original throughout — original names, characters, institutions, a
 
 **Core World Files:**
 - `200_WORLD_BIBLE.md` — Setting and narrative canon: the Gatefall event, the rules everyone knows, hunter-scale numbers, the World Ranking of S-ranks, the US and European layers, Chicago and Prague at national depth, the Jiu Valley Exclusion (the quarantined catastrophe region abroad), common knowledge by tier, the System's public (non-)existence, and an owner-only hidden-truth section not for players
-- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.3 (authoritative).** Every mechanic: levels/XP, base/effective stats, equipment and item bonuses, mana, vitality and injury, skills, the daily quest and penalty zones, Gates, loot, economy, parties, the System's behavioral contract, the `/system` command and its panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-grading, pacing and lethality
+- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.4 (authoritative).** Every mechanic: levels/XP, causal base/effective stats, equipment power and item bonuses, mana, vitality and injury, skills, the daily quest and penalty zones, Gates, loot, economy, parties, the System's behavioral contract, the `/system` command and its panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-grading, pacing and lethality
 - `210_PLACES.md` — Geography: Chicago (Lakefront Gate Corridor, Red Line Corridor, the Cicero break scar, Horizon Tower, the BGM Region V field office) and Prague (Old Town Gate Cluster, Metro Corridor, the Libeň break scar, Karlov House, CGA headquarters)
 - `220_NOTABLE_FIGURES.md` — Fourteen NPCs — twelve city figures (six per city) plus two world-ranked S-ranks (the highest-ranked American and Brandhof's German ace) — each authored with a want, a fear/flaw, a secret, a live agenda, and named relationships: guild masters, regulators, S-ranks, appraisers, and black-market contacts
 - `240_RESOURCES.md` — The dual economy's material side: mana crystals, beast cores, graded hunter gear, and System-shop consumables, priced by grade
@@ -74,7 +74,7 @@ Gatefall declares **`/system`** as its diegetic command — the profile (Section
 - `/system skills` — known skills with rank, mana cost, and effect
 - `/system equipment` — the nine-slot loadout, complete item lines, effective stats, and total armor reduction
 - `/system inventory` — dimensional storage contents with complete item lines, not grade-only labels
-- `/system shop` — fixed Weapons, Armor, Accessories, Consumables, Runes, Keys, and Sell tabs at the protagonist's unlocked grades, plus six quantity-one System-exclusive Daily Premium offers rotating every morning at 06:00; each grade-bearing premium offer rolls independently and can exceed the protagonist's effective band — shopping happens in-window, never as an out-of-character question
+- `/system shop` — fixed Weapons, Armor, Accessories, Consumables, Runes, Keys, and Sell tabs at the protagonist's unlocked grades, plus six quantity-one System-exclusive Daily Premium offers rotating every morning at 06:00; each grade-bearing premium offer rolls independently and can exceed the protagonist's System tier — shopping happens in-window, never as an out-of-character question
 - `/system titles` — earned titles and their passives; one equipped at a time
 - `/system log` — the last System messages, replayed from the authored templates
 - **A class panel**, once the class quest is completed (`/system shadows`, `/system arsenal`, `/system fragments`, `/system echoes`, or `/system rifts`, depending on the class chosen) — see the profile Section 18
@@ -91,7 +91,7 @@ Every Gate is populated by an authored formula tied to its grade — trash beast
 
 ### Loot and the Economy
 
-Every Gate clear yields crystals, cores, and a rolled boss drop (equipment chassis, rune, potions, an instant-dungeon key, a skill book, or an elixir) — nothing is improvised at the drop. Equipment is causal game state: its grade supplies a stat/protection budget, its chassis assigns the bonuses and combat behavior, and only equipped items apply. The shop's Daily Premium tab separately rolls one expiring, quantity-one offer in each of its six goods categories at 06:00; five independent grade rolls can place its equipment, rune, and key offers above the Bearer's effective band, and these premium models exist nowhere in the normal world's store inventory. Two currencies run in parallel and never exchange: ordinary money (USD in Chicago, CZK/EUR in Prague) for the licensed and black markets, and the System's own gold for the shop. The profile's Sections 11 and 12 author every price, item line, rotation table, drop table, and spread.
+Every Gate clear yields crystals, cores, and a rolled boss drop (equipment chassis, rune, potions, an instant-dungeon key, a skill book, or an elixir) — nothing is improvised at the drop. Equipment is causal game state: its grade supplies a stat/protection budget and weapon power, its chassis assigns the bonuses and combat behavior, and only equipped items apply. A higher-grade weapon adds its authored power to the wielder's own magnitude; it never lends its full grade band, Health, accuracy, or defense. The shop's Daily Premium tab separately rolls one expiring, quantity-one offer in each of its six goods categories at 06:00; five independent grade rolls can place its equipment, rune, and key offers above the Bearer's System tier, and these premium models exist nowhere in the normal world's store inventory. Two currencies run in parallel and never exchange: ordinary money (USD in Chicago, CZK/EUR in Prague) for the licensed and black markets, and the System's own gold for the shop. The profile's Sections 11 and 12 author every price, item line, rotation table, drop table, and spread.
 
 ---
 
@@ -114,7 +114,7 @@ Gatefall has no pre-built example character — the protagonist is **created at 
 - `/system` renders the profile's fixed panel templates from canonical state only — the same state renders the same panel from any Runtime
 
 **Progression:**
-- The protagonist alone levels; XP from kills, quests, and Gate-clear milestones drives level-ups that grant stat points and fully restore Health and Mana
+- The protagonist alone levels; XP from kills, clears, and explicitly authored challenge rewards drives immediate level-ups that raise all five base Stats by 1, grant 5 allocatable points, and fully restore Health and Mana
 - Mana, Health, and XP changes surface inline as compact notifications as they happen; the full picture is always available via `/system`
 
 ---

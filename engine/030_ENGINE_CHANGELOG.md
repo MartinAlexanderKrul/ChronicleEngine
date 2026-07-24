@@ -12,6 +12,17 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-25 — Gatefall World Rule Profile 1.4: causal Stats and wielder-relative equipment (migrating)
+
+Gatefall world authoring under Decision 062, with Gameplay Runtime wording aligned to the already-supported World Rule Profile override boundary; no engine Rules, Data Model, or decision number changed.
+
+**System growth:** Stats now directly govern the Bearer's body and resources: effective Vitality sets maximum Health, effective Intelligence sets maximum Mana, Strength drives physical magnitude, and Agility/Perception/Intelligence/Vitality govern their authored action domains through a relative-stat margin. Level-up effects settle immediately as +1 to all base Stats, +5 allocatable points, and full recovery. Daily training now awards three separate claimable rewards—Ability Points +3, Status Recovery, and a Daily Random Box—with no daily XP. Its consecutive-completion streak remains tracked but purely informational, with no cache, multiplier, or threshold reward. Migration removes historical daily XP by chronological replay, treats previously completed regimens as including squats off-screen, and grants one unopened box per recorded completion.
+
+**Equipment and resolution:** graded weapons gain explicit power E 2 / D 4 / C 7 / B 11 / A 16 / S 22. Power adds to the wielder's own magnitude; a weapon never lends its full grade band, Health, accuracy, or defense. The Runtime applies causal capability first, rolls uncertain contested execution second, and settles off-die magnitude after the result, without double-counting the level-derived System tier.
+
+**Profile version:** frozen **1.3 → 1.4**, classified **migrating** (Rules 14.6, Decision 074). The profile header contains the ten-step migration for XP replay, completed level-ups, historical dailies, pending rewards, weapon power, derived pools, and the `effective_band` → `system_tier` field rename.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-24 — Gatefall World Rule Profile 1.3: aspirational Daily Premium grades (migrating)
 
 World authoring under Decision 062 — no engine Rules, Data Model, or Runtime change, and no decision number consumed.

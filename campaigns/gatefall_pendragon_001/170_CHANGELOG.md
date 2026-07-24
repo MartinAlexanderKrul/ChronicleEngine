@@ -157,3 +157,14 @@ Allocated campaign identifiers in `system/ID_REGISTRY.md` in the same initializa
 - **Current offers:** Spellthread Focus [E] 200 g; Adaptive Watcher Torso [C] 2,400 g; Ascendant Heartward Sigil [D] 720 g; Quicksilver Phial 750 g; Dagger Mastery Rune [E] 2,500 g; Runic Key [D] 4,500 g. All 6/6 remain unpurchased and rotate 2026-07-29 06:00 Chicago.
 - **Ledger updates:** `090` (profile binding 1.3), `100` (profile version and migrated premium cycle), `160` (`EVT-000073`), `170` (this entry), `180` (profile/current offers/promotion status), registry (`EVT-000073`), and worlds/campaigns index. Other campaign ledgers unchanged.
 - **Repository allocation:** Allocated event identifier `EVT-000073`; no entity, record, or relationship identifier minted.
+
+**2026-07-28 - Profile 1.4 Causal-Stats Migration (`EVT-000074`).**
+
+- **Profile adoption:** Live campaign state migrated explicitly from frozen Gatefall Profile 1.3 to frozen Profile 1.4 before the next Ashfield Gate exchange. No fiction or prior result changed; Checkpoint 0010 remains immutable under 1.1.
+- **XP replay:** Daily-quest XP was removed and non-daily awards replayed chronologically: Red Line rewards 140 → Level 2 at 40/200; C-beast kill +240 → Level 3 at **80/300**.
+- **Completed-level growth:** Two completed level-ups added +2 to each base Stat and +4 unspent points. The old pending Level 3 grant settled immediately, adding its original +3 points and full recovery. Current base Stats are 18/14/12/13/12; effective Stats are 18/23/15/13/12; unspent points are 10; derived Health/Mana are full at 60/60 and 24/24.
+- **Daily normalization and pending rewards:** All four completed dailies include 100 squats performed off-screen during the already-recorded exercise periods. Streak 4 remains active but purely record/display state, with no cache or multiplier. Four unopened Daily Random Boxes are pending—one per completion. The one pending old bundle separately became Ability Points +3 and one Status Recovery.
+- **Equipment:** C/E Quickknives gained weapon power 7/2; the current E Spellthread Focus offer gained focus power 2. No item grade, chassis, slot, ownership, condition, price, or purchase flag changed.
+- **State terminology:** `effective_band: E` became `system_tier: E`; tier remains the content/reward bracket and no longer supplies Stats, pools, damage, or a generic modifier.
+- **Ledger updates:** `090`, `100`, `120`, `160`, `170`, and `180`; registry (`EVT-000074`); world profile, resource guide, world README, engine changelog, Runtime documentation, and worlds/campaigns index. `110`, `130`, and `140` unchanged.
+- **Repository allocation:** Allocated event identifier `EVT-000074`; no entity, record, or relationship identifier minted.

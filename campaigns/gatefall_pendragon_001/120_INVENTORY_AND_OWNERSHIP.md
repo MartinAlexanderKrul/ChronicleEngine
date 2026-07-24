@@ -49,7 +49,7 @@ subjects: []
 - Ordinary krav maga training gear (wraps, mouthguard, gym clothes) and a modest personal wardrobe.
 - Standard studio apartment lease in Chicago (rent per Profile Section 12.4, ≈$1,400/month — an ordinary cost of living, not separately tracked as an asset).
 
-System-shop gold (22,520 g), stored potions/antidotes/key, the equipped **C-grade Quickknife** (**Good · main hand · Agility +7 · armed strike ×0.75**), and the current Daily Premium cycle are Bearer state tracked in `100_CHARACTER_SHEET.md`'s `system_state` (Profile Sections 11.5, 12.5, 12.9, 14.1). Profile 1.2 normalization and loadout state were adopted under `EVT-000072`, and the current premium offer grades were migrated under Profile 1.3 in `EVT-000073`; no ownership or provenance changed.
+System-shop gold (22,520 g), stored potions/antidotes/key, the equipped **C-grade Quickknife** (**Good · main hand · Agility +7 · weapon power 7 · armed strike ×0.75**), and the current Daily Premium cycle are Bearer state tracked in `100_CHARACTER_SHEET.md`'s `system_state` (Profile Sections 11.5, 12.5, 12.9, 14.1). Profile 1.2 normalization and loadout state were adopted under `EVT-000072`, the current premium offer grades were migrated under Profile 1.3 in `EVT-000073`, and Profile 1.4 added weapon power under `EVT-000074`; no ownership or provenance changed.
 
 ## Pending Income (not yet received)
 

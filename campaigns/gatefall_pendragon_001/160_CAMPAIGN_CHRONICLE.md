@@ -36,6 +36,7 @@ subjects:
   - EVT-000071
   - EVT-000072
   - EVT-000073
+  - EVT-000074
 ```
 
 ---
@@ -513,4 +514,32 @@ description: "Before the next exchange of the Ashfield Gate fight, the live camp
 The current Daily Premium cycle preserved all six Profile 1.2 models and their wholly-unpurchased state. Five real d100 grade rolls were made against Alexander's E effective band under Section 12.5: Weapon 46 = E; Armor 85 = C; Accessory 74 = D; Rune 23 = E; Key 70 = D. The ungraded Consumable received no grade roll.
 
 The migrated offers are Spellthread Focus [E] (Intelligence +4, active-skill Mana costs -1 minimum 1, 200 g); Adaptive Watcher Torso [C] (Perception +5, physical reduction 11%, 2,400 g); Ascendant Heartward Sigil [D] (Vitality +5, 720 g); Quicksilver Phial (750 g); Dagger Mastery Rune [E] (2,500 g); and Runic Key [D] (D-grade instant dungeon with one guaranteed rolled boss rune, 4,500 g). All 6/6 remain available until 2026-07-29 06:00 Chicago."
+```
+
+## EVT-000074 - Gatefall Profile 1.4 Causal-Stats Migration
+
+```yaml
+id: EVT-000074
+canonical_record: REC-000079
+schema_version: "0.1.2"
+status: active
+provenance:
+  source: owner-approved-profile-migration
+  event_time: "2026-07-28, before the next Ashfield Gate exchange"
+  record_time: "2026-07-28T09:45:03Z"
+type: Event
+kind: rules-migration
+importance: major
+event_time: "2026-07-28"
+participants:
+  - ENT-000125
+description: "Before the next exchange of the Ashfield Gate fight, the live campaign explicitly adopted frozen Gatefall World Rule Profile 1.4 from frozen 1.3. This readiness migration consumed no fictional time and did not re-resolve any prior roll, hit, damage, recovery, XP award, or combat position. The elite remains wounded and active; Priya remains wounded; the boss remains unencountered.
+
+Daily-quest XP was removed and the XP track replayed chronologically from non-daily awards only. The Red Line rewards total 140 XP, producing Level 2 at 40/200; the later C-beast kill adds 240, producing Level 3 at **80/300**. Level 3 therefore remains reached, but the three historical +10 daily ticks no longer remain in the current XP total.
+
+Alexander still has two completed level-ups. The 1.4 automatic growth therefore added +2 to every base Stat: Strength 16→18, Agility 12→14, Vitality 10→12, Perception 11→13, Intelligence 10→12. The increase from the old three-point to the new five-point level entitlement credited +4 unspent points. His pending Level 3 grant then settled immediately, adding its original +3 points and applying its full recovery. With the 3 already unspent, the resulting pool is 10. Equipped bonuses derive effective Stats Strength 18, Agility 23, Vitality 15, Perception 13, Intelligence 12. Maximum Health is `4 × 15 = 60`; maximum Mana is `2 × 12 = 24`. Because the pending level-up recovery settled during migration, both pools filled to 60/60 and 24/24 and ordinary fatigue cleared; no injury existed to change.
+
+All four recorded daily completions remain complete and are established to have included 100 squats performed off-screen during their existing exercise periods; no extra time passed. Their consecutive streak remains 4. The streak will continue to advance on completion and reset on failure but has no cache, multiplier, or other reward. Each completion created one unopened Daily Random Box, so four boxes are pending. The one still-pending 2026-07-28 bundle separately became Ability Points +3 and one Status Recovery; previously settled point/recovery effects remain settled.
+
+The C Quickknife gained weapon power 7 and the E Quickknife weapon power 2, with grade, chassis, ownership, condition, and equipped slots unchanged. The Spellthread Focus [E] premium line gained focus power 2. The level-derived `effective_band: E` field became `system_tier: E`; it now governs content/reward brackets only, while Stats govern Alexander's body, resources, physical magnitude, and relative contested margins."
 ```

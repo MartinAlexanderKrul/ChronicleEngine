@@ -1,14 +1,27 @@
-# Gatefall — World Rule Profile 1.3
+# Gatefall — World Rule Profile 1.4
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.3
+**Profile Version:** 1.4
 **Engine Compatibility:** 0.2.0; Data Model 0.1.2
 **Status:** Active
-**Compatibility Status:** frozen at version 1.3 (Rules Section 14.6, Decision 074), declared 2026-07-24. Version 1.3 is a **migrating** advance over frozen 1.2: Daily Premium equipment, runes, and keys now roll grades independently and may appear above the Bearer's effective band (Section 12.5). An active 1.2 cycle must complete the narrow migration below before play continues. Version 1.2 remains the immutable contract governing play before that migration.
+**Compatibility Status:** frozen at version 1.4 (Rules Section 14.6, Decision 074), declared 2026-07-25. Version 1.4 is a **migrating** advance over frozen 1.3: Stats now cause the body and resources they name; the Bearer's Health, Mana, physical magnitude, and contested positioning derive from effective Stats rather than level-band substitution; weapons add power instead of lending their grade's whole damage band; level-up and daily rewards follow the System's separated growth contract; and the Runtime receives an exact stat-first resolution procedure. An active 1.3 campaign must complete the migration below before play continues. Version 1.3 remains the immutable contract governing play before that migration.
 
-**Required 1.2 → 1.3 migration.** Preserve the current Daily Premium cycle's six item models and purchased flags. For each unpurchased grade-bearing offer — Weapon, Armor, Accessory, Rune, and Key — make a new Section 12.5 grade d100 roll against the Bearer's effective band at the cycle's original rotation. Update the offer's grade, derived item line or effect, and price from that roll. A purchased offer is not rerolled or changed. Record the five rolls and migration acknowledgement in the live ledgers and next promoted checkpoint; no other state changes.
+**Required 1.3 → 1.4 migration.** At the readiness gate, before any further fiction or resolution:
+
+1. Preserve every prior allocation, skill, title, item, equipment slot, condition, injury, current Daily Premium cycle, currency, ownership, provenance, non-daily XP award, and resolved fictional outcome. Profile 1.4 never re-resolves a past action.
+2. Rebuild the Bearer's XP track chronologically from level 1 and XP 0 using every recorded **non-daily** XP award and the thresholds in Section 3.1. Exclude every XP award whose source was daily-quest completion. The rebuilt result replaces stored level/current XP; excess still carries normally.
+3. Let `n = rebuilt level − 1`, the number of level-ups still completed after Step 2. Add `n` to **each base Stat**: Profile 1.4's automatic `+1 all Stats` applies once per completed level. These additions are System growth, not player allocations.
+4. Credit **+2 unspent points per completed level**: the difference between the old three-point level entitlement and Profile 1.4's five-point entitlement. Do not reclaim, move, or reinterpret any point already allocated.
+5. Convert every pending old **level-up grant** for a level still reached under Step 2 immediately: move its original `+3` points into the unspent pool, apply its full Health/Mana recovery after the new maxima are derived, and remove that pending grant. Remove without award any pending grant tied to a level Step 2 no longer reaches. Level-up benefits are immediate under 1.4 and cannot remain banked.
+6. Normalize historical dailies. Every daily recorded complete under the old profile remains complete; its regimen is established to have included **100 squats performed off-screen alongside the recorded exercises**, consuming no additional fictional time. Preserve the current consecutive-completion **streak**. Give the Bearer one pending unopened **Daily Random Box per recorded completed daily**. For an old daily bundle still pending, convert its stat/recovery parts into independently claimable `Ability Points +3` and one **Status Recovery**; its Random Box is already included in the per-completion count. Previously settled stat/recovery effects remain settled. Future dailies award no XP, advance/reset the streak under Section 8.1, and never produce a Weekly Cache.
+7. Give every graded weapon its Section 11.5 **weapon power** equal to the existing weapon-grade stat budget. Preserve its grade, chassis, stat line, premium line, condition, ownership, and equipped/stored state.
+8. Re-derive effective Stats from base plus equipped bonuses. Set `maximum Health = 4 × effective Vitality` and `maximum Mana = 2 × effective Intelligence`. If Step 5 applied a pending level-up recovery, fill both new pools and clear ordinary fatigue; otherwise preserve the old missing amount in each pool (`new current = clamp(new maximum − old missing, 0, new maximum)`). Injury severity never clears from migration or pool restoration.
+9. Rename the level-derived `effective_band` field to `system_tier`. The same level bracket is preserved for content scaling, shop floors, underdog XP, threat colors, and instance generation, but it no longer supplies the Bearer's Health, Mana, damage, or stat modifier.
+10. Re-render `/system`, `/system equipment`, `/system skills`, `/system quests`, and `/system shop`; verify every derived value against Sections 4–8 and 11.5; record the migration event and acknowledgement in the live ledgers and next promoted checkpoint.
+
+**Required 1.2 → 1.3 migration.** Preserve the current Daily Premium cycle's six item models and purchased flags. For each unpurchased grade-bearing offer — Weapon, Armor, Accessory, Rune, and Key — make a new Section 12.5 grade d100 roll against the Bearer's then-current level-derived band (renamed **System tier** in 1.4) at the cycle's original rotation. Update the offer's grade, derived item line or effect, and price from that roll. A purchased offer is not rerolled or changed. Record the five rolls and migration acknowledgement in the live ledgers and next promoted checkpoint; no other state changes.
 
 **Required 1.1 → 1.2 migration.** At the readiness gate, before any fiction or resolution under 1.2:
 
@@ -21,7 +34,7 @@
 
 This migration changes no gold, Health, Mana, XP, base stat, skill, title, injury, ownership, or item provenance. It only makes already-owned gear mechanically complete and records which pieces are equipped.
 
-**1.3 authors the System in full — the mechanical law of a gate-and-System world of awakened hunters.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats, equipment, and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
+**1.4 authors the System in full — the mechanical law of a gate-and-System world of awakened hunters.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats, equipment, and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
 
 ---
 
@@ -44,9 +57,9 @@ Grades everywhere in this world are **E, D, C, B, A, S**, weakest to strongest.
 - **Replaces/refines:** Rules Sections 5.3 and 5.7; Decisions 012, 013, 051, and 057 where they prohibit levels, XP, or a System from causing capability growth.
 - **Scope:** The **Bearer** alone — the single living holder of Gatefall's diegetic System. Not awakened hunters generally: they do not level and nothing counts their growth (Section 2).
 - **Activation:** Active while the character bears Gatefall's System.
-- **Replacement:** Experience (XP) awarded for genuine resolved challenge is causal canonical state. Crossing a threshold causes a **level-up**, which grants allocatable **stat points** and restores Health and Mana in full. A spent stat point directly and permanently changes canonical capability. Skills acquired by rune, skill book, or ratified practice are canonical capability.
+- **Replacement:** Experience (XP) awarded for genuine resolved challenge is causal canonical state. Crossing a threshold causes an immediate **level-up**: every base Stat rises by 1, five allocatable stat points enter the unspent pool, and Health and Mana restore in full. A spent stat point directly and permanently changes canonical capability. Skills acquired by rune, skill book, milestone award, or ratified practice are canonical capability.
 - **State/provenance:** The Bearer's character ledger records level, current XP, next threshold, unspent stat points, every **base** stat and its allocations, the nine equipment slots, the Mana pool maximum, every known skill, and the event or resolved challenge that awarded each XP gain. Item lines live with the owned items; effective stats are derived from base stats plus the equipped lines (Sections 4.1, 11.5, 12.9).
-- **Resolution:** Growth changes capability — and therefore modifier steps, costs, magnitudes, prerequisites, and available methods. **It never supplies the outcome of an uncertain action.** Uncertain actions still resolve on the d100 through Rules Section 4 and Decision 058. A level is never spent to buy a result.
+- **Resolution:** Growth changes capability — and therefore automatic possibility, relative stat margins, costs, magnitudes, prerequisites, and available methods. **It never supplies the outcome of an uncertain contested action.** Uncertain actions still resolve on the d100 through Rules Section 4 and Decision 058. A level is never spent to buy a result, and the level-derived System tier is never a substitute for the Stats that actually govern the Bearer's body.
 
 ## GTF-OVR-002 — System Vitality
 
@@ -55,7 +68,7 @@ Grades everywhere in this world are **E, D, C, B, A, S**, weakest to strongest.
 - **Activation:** Active while the character bears Gatefall's System.
 - **Replacement:** The Bearer's Health and Mana are canonical current/maximum numeric pools. Damage removes Health after applicable reductions; casting and skill use remove Mana. At zero Health the Bearer is incapacitated and receives an outcome appropriate to the attack and established fiction — and in Gatefall, where death is final (Section 6.5), zero Health is where a campaign can end.
 - **State/provenance:** The Bearer's character ledger records current/maximum Health, current/maximum Mana, active conditions, and the event provenance of each change.
-- **Resolution:** The die resolves whether an uncertain attack or defense succeeds and its result band; established capability and protection then determine damage **after** that result. Vitality never reaches action resolution.
+- **Resolution:** The die resolves whether an uncertain attack or defense succeeds and its result band; established capability and protection then determine damage **after** that result. Effective Vitality sets maximum Health and may supply a relative stat margin on endurance, resistance, and hazard actions under Section 4.3; it never decides a contested result without the die.
 
 ## GTF-OVR-003 — Mana-Borne Damage Against Monsters
 
@@ -63,7 +76,7 @@ Grades everywhere in this world are **E, D, C, B, A, S**, weakest to strongest.
 - **Scope:** Damage dealt **to monsters** — the mana-suffused creatures of Gates, dungeon breaks, and the Jiu-class exclusions (Bible Sections 1, 5). It does not touch how humans wound humans, or how a monster wounds anyone; those resolve on the engine default and this profile's band-health model unchanged.
 - **Activation:** Always active in this world.
 - **Replacement:** A monster's body is saturated with mana, and **only damage that itself carries mana lands on it.** Mana-borne damage has exactly two sources:
-  1. an **awakened combatant's** strike, skill, or signature ability — the awakened channels mana through the blow, so a hunter wounds a monster with a bare fist, a plain blade, or a cast alike. This is the whole of Section 6.2's existing multiplier ladder (unarmed ×0.5, armed ×0.75, authored skills), **unchanged for an awakened wielder**; and
+  1. an **awakened combatant's** strike, skill, or signature ability — the awakened channels mana through the blow, so a hunter wounds a monster with a bare fist, a plain blade, or a cast alike. Section 6.2 and the equipped chassis set magnitude (unarmed ×0.5; weapons use their Section 11.5 chassis; authored skills use their own multiplier); and
   2. a **mana-bearing weapon** — graded Gate-forged gear (Section 11.5) and enchanted or named armaments (Section 11.6), which hold their own mana edge.
 
   **Conventional, un-enchanted mundane arms carry no mana and deal no damage to a monster.** Gunpowder firearms and their munitions, mundane blades, explosives, artillery, and ordnance of purely mundane make have a skill multiplier (Section 6.2) of **×0** against a monster: they may knock back, stagger, bind, cordon, or destroy terrain, but they remove **no** Health. This is why a dungeon break is answered by hunters and not by soldiers, why conventional forces can only *contain* a break (Section 9.3; Bible Section 2), and why the world counts its awakened as its only real weapon against the Gates.
@@ -111,14 +124,20 @@ Level 1→2 costs **100**, level 2→3 costs **200**, level 3→4 costs **300**,
 |---|---|---|---|---|---|---|---|---|
 | XP to advance | 100 | 200 | 300 | 400 | 500 | 1,000 | 2,500 | 5,000 |
 
-## 3.2 The Level-Up Grant
+## 3.2 The Level-Up Award
 
-Crossing a threshold is a **level-up**. Each level-up **offers a grant** (Section 3.9 — the Bearer accepts or defers it; it is never applied automatically):
+Crossing a threshold is a **level-up**. It settles immediately in this order:
 
-- **+3 stat points** (Section 4), allocatable by the Bearer once the grant is accepted; and
-- **full restoration of Health and Mana** to their new maxima, applied at the moment of acceptance.
+1. Increase **all five base Stats by +1**.
+2. Add **+5 unspent stat points**, allocatable by the Bearer under Section 4.2.
+3. Re-derive effective Stats and the new Health/Mana maxima.
+4. Restore Health and Mana to those maxima and clear ordinary fatigue. Injury severity remains governed by Section 6.3 and does not clear merely because the pools refill.
 
-Stat points come from three sources and nowhere else: the level-up grant (+3), the **daily-quest completion grant (+3, Section 8.1)**, and item/title/skill rewards that state a specific bonus.
+The System fires the level-up block after all four effects settle. Nothing is offered or banked: a level-up cannot be saved as a later heal. The Bearer chooses only how and when to allocate the five unspent points.
+
+> **Level-up settlement invariant:** every reward caused by crossing an XP threshold applies in that same exchange. The Runtime never asks `accept / defer`, never creates a pending level-up entry, and never lets the Bearer reserve the restoration. If one XP award crosses several thresholds, settle the complete four-step package once for each level in order before play continues.
+
+Allocatable stat points come from the level-up award (+5), the **daily-quest Ability Point reward (+3, Section 8.1)**, and item/title/skill rewards that state a specific point bonus.
 
 ## 3.3 Kill XP by Threat Grade
 
@@ -130,20 +149,20 @@ Defeating a monster awards XP by the monster's threat grade. **Elite** monsters 
 
 An elite of grade G awards twice the row value; a boss of grade G awards four times it (an E boss = 40, a C elite = 120).
 
-**The underdog bonus.** Killing something stronger than you should be pays for the danger of it. The kill XP above is multiplied by a factor set by how far the slain creature's grade stands **above the Bearer's effective band** (the level ladder, Section 6.6) — the multiplier **doubles for each full grade of gap**:
+**The underdog bonus.** Killing something stronger than the System tier prepared the Bearer for pays for the danger of it. The kill XP above is multiplied by how far the slain creature's grade stands **above the Bearer's System tier** (Section 6.6) — the multiplier doubles for each full grade:
 
-| Creature's grade vs Bearer's effective band | Kill XP × |
+| Creature's grade vs Bearer's System tier | Kill XP × |
 |---|---|
-| At or below the Bearer's band | ×1 (no bonus) |
+| At or below the Bearer's System tier | ×1 (no bonus) |
 | **+1 grade** above | **×2** |
 | **+2 grades** above | **×4** |
 | **+3 grades** above | **×8** |
 | **+4 grades** above | **×16** |
-| **+5 grades** (an E-band Bearer felling an S) | **×32** |
+| **+5 grades** (an E-tier Bearer felling an S) | **×32** |
 
-The factor applies to the creature's full kill value, elite and boss multipliers included, and is computed per creature at the moment of the kill. Worked examples for an **E-band** Bearer: a D common (25) at +1 → `25 × 2 = 50`; a C common (60) at +2 → `60 × 4 = 240`; a D boss (`25 × 4 = 100`) at +1 → `100 × 2 = 200`. A creature **at or below** the Bearer's band carries no bonus — an E-band Bearer killing an E gets the flat 10, and once he reaches C-band the E and D kills that once paid a premium pay only their base.
+The factor applies to the creature's full kill value, elite and boss multipliers included, and is computed per creature at the moment of the kill. Worked examples for an **E-tier** Bearer: a D common (25) at +1 → `25 × 2 = 50`; a C common (60) at +2 → `60 × 4 = 240`; a D boss (`25 × 4 = 100`) at +1 → `100 × 2 = 200`. A creature **at or below** the Bearer's System tier carries no bonus — an E-tier Bearer killing an E gets the flat 10, and once he reaches C-tier the E and D kills that once paid a premium pay only their base.
 
-The bonus is self-limiting: a creature two or more grades above the Bearer hits far above his Health (Section 6.2) and can end him in an exchange, so the largest multipliers are earned at the edge of death — which is the point. It shrinks automatically as the Bearer's effective band climbs, so punching up stays a low-level engine of explosive growth and fades into ordinary kill XP as he becomes the thing others punch up against. The **Gate-clear milestone (Section 3.4) is not affected** — it is fixed by the Gate's grade and paid once, underdog or not.
+The bonus is progression-relative, not a second combat modifier. It shrinks as System tier climbs, while the actual danger of the fight remains determined by Stats, equipment, fixed-band enemy magnitude, and the die. The **Gate-clear milestone (Section 3.4) is not affected**.
 
 ## 3.4 Gate-Clear Milestone XP
 
@@ -155,33 +174,33 @@ Clearing a Gate — killing its boss, which collapses the Gate — awards a one-
 
 ## 3.5 Daily XP
 
-The daily quest (Section 8) awards, on each completed day, **+10 XP** and a **daily grant of +3 stat points and a full Health/Mana restore** (offered, not auto-applied — Section 3.9). A **7-consecutive-day streak** additionally delivers a **Weekly Cache** — a reward box of items (Section 8.1). The streak resets on a miss. Full daily-quest, cache, and penalty rules are in Section 8.
+The daily quest awards **no XP**. Its three independently claimable rewards are Ability Points +3, Status Recovery, and a Daily Random Box (Sections 3.9 and 8.1). XP comes from genuine resolved challenge: kills, clears, and authored quest awards that state an XP value. Training grows the Bearer through its direct rewards, not by also advancing the XP threshold.
 
 ## 3.6 Award Timing
 
-XP is added the instant the exchange that resolves the challenge settles. The same exchange adds the XP, checks the threshold, registers any level-up, and fires the notification. If one action resolves several monsters, aggregate that action's XP and notify once. There is no pending-XP state and no later reconciliation. **A level-up's *grant* (stat points and full restore), by contrast, is a pending offer** the Bearer accepts or defers under Section 3.9 — the level and its threshold advance immediately, but the grant waits on acceptance.
+XP is added the instant the exchange that resolves the challenge settles. The same exchange adds the XP, checks the threshold, applies every crossed level-up in sequence under Section 3.2, and fires the notification. If one action resolves several monsters, aggregate that action's XP and notify once. There is no pending-XP or pending-level-up state and no later reconciliation.
 
 ## 3.7 Worked Example — A Fresh Bearer Clears an E-Gate
 
-A newly awakened Bearer at **level 1** (XP 0/100, Mana 20/20) enters a confirmed E-Gate. Its population, rolled on the standard formula (Section 8 restates it; the full Gate rules are Section 9), comes up **10 common E beasts, 1 E elite, 1 E boss**.
+A newly awakened Bearer at **level 1** (XP 0/100, effective Intelligence 10, Mana 20/20) enters a confirmed E-Gate. Its population, rolled on the standard formula (Section 8 restates it; the full Gate rules are Section 9), comes up **10 common E beasts, 1 E elite, 1 E boss**.
 
 - Ten common E kills: `10 × 10 = 100 XP`.
 - One E elite (×2): `10 × 2 = 20 XP`.
 - One E boss (×4): `10 × 4 = 40 XP`.
 - E-Gate clear milestone (boss kill, once): `70 XP`.
 
-Total earned in the clear: **230 XP**. Tracking against the thresholds: the first 100 crosses level 1→2 (a level-up — its grant of **+3 stat points** and a full Health/Mana restore is now *offered*, Section 3.9); the remaining **130** carries toward level 3, whose threshold is 200. The Bearer is now **level 2, XP 130/200**, with a **pending level-up grant**. If he accepts it mid-fight, he gains three unspent stat points and full pools that instant; if he defers, the grant waits and his pools stay where the fight left them — a real choice, since a banked grant is a full heal held in reserve.
+Total earned in the clear: **230 XP**. Tracking against the thresholds: the first 100 crosses level 1→2. The level-up immediately raises all five base Stats by 1, adds **5 unspent points**, re-derives maximum Health and Mana, and restores both pools; the remaining **130** carries toward level 3, whose threshold is 200. The Bearer is now **level 2, XP 130/200**, with five points available for later allocation and no pending level-up reward.
 
 During the fight the Bearer spends Mana on a skill (Section 7); a representative inline notification stream (Section 8 fixes the format) reads:
 
 ```text
 Mana: 20 → 14/20
 XP: 0 → 100/100
-[SYSTEM] LEVEL UP — you are now Level 2. Grant available: +3 stat points · full Health/Mana restore. (accept / defer)
+[SYSTEM] LEVEL UP — Level 2 · all Stats +1 · Ability Points +5 · HP/MP restored.
 XP: 0 → 130/200
 ```
 
-During the same fight an E beast lands a standard hit — one E standard-hit baseline, about a quarter of the Bearer's Health (Section 6.2). Because that single hit removes under 50% of his remaining Health and does not drop him below 25% of maximum, it inflicts **no injury** (Section 6.3); he takes the damage and fights on. Every number here is derived from Sections 3.1–3.4, 6.2–6.3, and the population formula; a Runtime resolves the whole clear — kills, XP, level-up, Mana spend, and whether a hit wounds — without a ruling.
+During the same fight an E beast lands a standard hit — one E fixed-band baseline of 10 before reductions (Section 6.2). Compare that resolved damage with the Bearer's current and maximum Health to apply Section 6.3; do not call it “a quarter of the Bearer's Health,” because the Bearer's pool now derives from Vitality and can be much larger or smaller than the attacker's band baseline. Every number here is derived from Sections 3.1–3.4, 6.2–6.3, and the population formula; a Runtime resolves the whole clear — kills, XP, level-up, Mana spend, and whether a hit wounds — without a ruling.
 
 ## 3.8 Party XP Credit
 
@@ -191,25 +210,25 @@ Most clears are party clears, and the Bearer earns from them on the same genuine
 - **The Gate-clear milestone** (Section 3.4) settles on **any clear the Bearer fought through** — if he was a materially contributing member of the party that killed the boss, the once-per-Gate milestone is his, exactly as it would be on a solo clear. He need not strike the boss's own killing blow.
 - **Pure spectating awards nothing.** A Bearer who stands back and lets a party clear around him has met no genuine challenge (Section 3, opening) and earns neither kill XP nor the milestone. Presence is not participation; the live die is the test.
 
-## 3.9 Grants Are Offered — Accept or Defer
+## 3.9 Daily Rewards Are Independent
 
-A **grant** is a bundle the System *offers* the Bearer; it is never applied on its own. Two grants exist, and both carry the same bundle — **+3 stat points and a full Health/Mana restore**: the **level-up grant** (Section 3.2) and the **daily-quest completion grant** (Section 8.1). A Weekly Cache (Section 8.1) is opened by the same accept action.
+Level-up effects are immediate (Section 3.2). **Only daily-quest rewards may remain pending or stack for later acceptance.** Completing the daily quest creates three separate reward entries:
 
-The offer renders as a System prompt the Bearer answers:
+1. **Ability Points +3** — claiming it adds three points to the unspent pool.
+2. **Status Recovery** — claiming it restores Health and Mana to their current maxima and clears ordinary fatigue; it clears no injury severity.
+3. **Daily Random Box** — opening it makes the real d100 contents roll in Section 8.1 and deposits the result into the dimensional inventory or System gold balance.
+
+The Bearer may claim any, all, or none in any order. Each pending reward does not expire, and multiple days' rewards of the same type stack as separate counted entries. Claiming one never claims the others. This preserves the tactical recovery choice without making level-up growth bankable.
+
+The completion prompt renders:
 
 ```text
-[SYSTEM] LEVEL UP — you are now Level 2.
-Grant available: +3 stat points · Health and Mana restored to full.
-Accept now, or defer? (accept / defer)
+[SYSTEM] DAILY TRAINING COMPLETE.
+Rewards available: Ability Points +3 · Status Recovery · Daily Random Box.
+Claim separately at any time.
 ```
 
-- **The level and its threshold advance immediately** on crossing (Section 3.6); only the *grant* waits.
-- **Accept** applies the whole bundle at that instant: stat points land in the unspent pool (Section 4.2), and Health and Mana refill to their maxima. Both the level-up grant and the daily grant carry the full restore.
-- **Defer** leaves the grant **pending**; it does not expire. The Bearer may accept a pending grant at any later moment — between exchanges, after the fight, on a quiet night. Multiple pending grants may stack and be accepted together or one at a time.
-- **Why it is a choice, not a formality:** a level-up grant holds a **full heal in reserve**, and accepting mid-fight is a tactical act — a clutch recovery timed to a killing exchange, or held back so a penalty-zone run or a boss's second phase still has it available. Deferring never loses anything; it trades an immediate refill for a heal on the Bearer's own clock.
-- The System never force-applies a grant, never allocates points for the Bearer (allocation is always his, Section 4.2), and never heals him without acceptance. Pending grants appear in the `/system` status panel until claimed.
-
-Only the Bearer's own System grants work this way; nothing about an NPC hunter changes (Section 13.1).
+The System never allocates points for the Bearer. Pending daily rewards appear individually in `/system`; a Runtime never compresses them into an ambiguous “grant.” Only the Bearer's System creates these rewards, and nothing about an NPC hunter changes (Section 13.1).
 
 ---
 
@@ -221,15 +240,15 @@ The Bearer has five **base stats**:
 
 | Stat | Governs |
 |---|---|
-| **Strength** | Physical force: melee damage, lifting, grappling, breaking. |
-| **Agility** | Speed and reaction: initiative, evasion, closing or breaking distance, acting first. |
-| **Vitality** | Endurance and resistance: shrugging wounds, surviving hazards, holding out. |
-| **Perception** | Senses and appraisal: detection, reading ambush and anomaly, gauging a Gate's true grade. |
-| **Intelligence** | Mental acuity and System interface: analysis, appraisal of items, concurrent quest capacity. |
+| **Strength** | Physical force and magnitude: unarmed and weapon damage, lifting, grappling, breaking. |
+| **Agility** | Speed and placement: initiative, evasion, weapon accuracy, closing or breaking distance, acting first. |
+| **Vitality** | Bodily capacity: maximum Health, endurance, recovery, resisting wounds and hazards. |
+| **Perception** | Senses and danger-reading: detection, ambushes, concealed motion, anomaly cues. |
+| **Intelligence** | Mana and System control: maximum Mana, Mana recovery, appraisal, analysis, extraction and class capacity. |
 
-An ordinary awakened adult sits at a **baseline of 10 per stat**. The Bearer begins at campaign-creation values — the **authored creation array** — and raises stats only by spending stat points thereafter.
+An ordinary awakened adult sits at a **baseline of 10 per stat**. The Bearer begins at campaign-creation values — the **authored creation array** — and raises base Stats through automatic level growth, permanent allocations, and any authored permanent reward thereafter.
 
-**The creation array.** At campaign creation the Bearer's five stats are set from a fixed civilian-range array: **five stats, each in the range 8–12, summing to exactly 50, with none above 12.** The average is the ordinary-adult baseline of 10, and the ±2 spread is the pre-System human variation the protagonist starts with — below the point where any modifier-step contribution or capability unlock (Sections 4.3–4.4) has yet been earned. No creation stat sits above 12: the Bearer opens as a civilian, and every point beyond that spread is growth the System has not yet granted.
+**The creation array.** At campaign creation the Bearer's five stats are set from a fixed civilian-range array: **five stats, each in the range 8–12, summing to exactly 50, with none above 12.** The average is the ordinary-adult baseline of 10, and the ±2 spread is the pre-System human variation the protagonist starts with. No creation stat sits above 12: the Bearer opens as a civilian, and every point beyond that spread is growth the System has not yet granted.
 
 **Base and effective stats.** Equipment never rewrites a base stat. While an item is equipped, its Section 11.5 bonuses add to the Bearer's base values:
 
@@ -237,35 +256,81 @@ An ordinary awakened adult sits at a **baseline of 10 per stat**. The Bearer beg
 effective_stat = base_stat + sum(bonuses from equipped items)
 ```
 
-The effective value governs actions and modifier steps (Section 4.3), so equipment is causal capability rather than descriptive loot. Unequipping the item removes its contribution immediately. Permanent allocation, elixirs, and grants change the base value instead. Section 4.4 capability unlocks remain progression achievements and therefore read the **base** value only; temporary equipment cannot grant a permanent unlock.
+The effective value governs the Bearer's body, pools, magnitudes, and relative stat margins, so every equipped point is causal capability rather than descriptive loot. Unequipping the item removes its contribution immediately. Permanent allocation, automatic level growth, elixirs, and point rewards change the base value instead.
+
+When equipment changes effective Vitality or Intelligence, re-derive the affected maximum while preserving the pool's **missing amount**, not its percentage:
+
+```text
+new_current = clamp(new_maximum − (old_maximum − old_current), 0, new_maximum)
+```
+
+Equipping capacity is not a heal, and unequipping it is not damage. A separate Status Recovery or level-up may fill the resulting maximum.
 
 ## 4.2 Stat Points
 
-A **stat point** is the allocatable unit of growth. Its sources are the **level-up grant** (+3, Section 3.2) and the **daily-quest completion grant** (+3, Section 8.1) — both offered under Section 3.9 — plus any item, title, or skill that states a specific point bonus. One stat point raises one **base** stat by **1**. Allocation is permanent canonical capability; there is no respec unless a future authored in-world mechanism adds one with a cost. Points from an accepted grant sit in the Bearer's **unspent pool** until he allocates them; allocation may happen any time and is not itself an offer.
+A **stat point** is the allocatable unit of growth. Its sources are the **level-up award** (+5, Section 3.2), the **daily Ability Point reward** (+3, Sections 3.9 and 8.1), plus any item, title, or skill that states a specific point bonus. One stat point raises one **base** stat by **1**. Allocation is permanent canonical capability; there is no respec unless a future authored in-world mechanism adds one with a cost. Awarded points sit in the Bearer's **unspent pool** until he allocates them; allocation may happen any time.
 
-## 4.3 The Modifier-Step Rule
+## 4.3 Stats in Action Resolution
 
 A **modifier step** is one 20-percentile-point adjustment to a d100 resolution, composed under engine rules (Rules Section 4.4; Decision 058). Stats feed the die through exactly one rule:
 
-> **+1 modifier step per full 10 points in the effective stat that governs the action.**
+> **A Stat contributes only through its margin against the resistance actually opposing the method. Baseline against baseline is 0, never a free bonus.**
 
-At an effective value of 10 the governing stat contributes **+1 step**; at 20, **+2**; at 30, **+3**; fractional remainders below the next full 10 contribute nothing (an effective stat of 25 gives the same +2 as 20). Exactly one stat — the one whose domain the action falls in (Section 4.1) — supplies this contribution; an action outside all five domains takes no stat step. This contribution composes with band-gap and circumstance modifiers, and **the engine's net modifier remains capped at ±3** (Decision 058); the die still resolves the outcome. **Stats never replace the roll** — they establish how well the Bearer is positioned, not whether an uncertain action succeeds.
+For a ranked hunter or graded monster without a five-Stat sheet, grade supplies the opposing domain rating:
 
-**The band-gap modifier.** When actor and opponent stand in different effective bands (Section 6.1, Section 6.6), the gap feeds the die directly: **−1 modifier step per full band the opponent stands above the actor, and +1 per full band below.** A same-band contest takes no band-gap step; a C actor against an A foe takes **−2**, and a C actor against an E foe takes **+2**. This step composes with the governing-stat step above and any circumstance step into the engine's **net ±3 cap** (Decision 058) — it never bypasses the die. Where Section 18.4 and any other section name a "band-gap modifier" or "band-gap penalty," this is the rule they invoke.
+| Grade | E | D | C | B | A | S |
+|---|---:|---:|---:|---:|---:|---:|
+| Domain rating | 10 | 20 | 30 | 40 | 50 | 60 |
 
-## 4.4 Capability Unlocks
+For an unranked ordinary adult, use rating **10** unless established capability, injury, age, or condition changes the resistance. A specifically authored character value takes precedence over the reference table.
 
-At **30** and **50** in a **base** stat, the Bearer crosses a **capability unlock**: a named, off-die ability that widens what actions are *possible*, distinct from the modifier-step contribution above. Equipment bonuses do not satisfy these thresholds. Unlocks are permanent once reached. Each of the five stats has one unlock at 30 and one at 50:
+```text
+stat_margin = acting effective Stat − opposing domain rating
+```
+
+| Stat margin | Modifier contribution |
+|---:|---:|
+| −20 or less | −2 steps |
+| −19 to −10 | −1 step |
+| −9 to +9 | 0 steps |
+| +10 to +19 | +1 step |
+| +20 or more | +2 steps |
+
+Exactly one **acting** Stat supplies the margin for one roll. The action's method selects it: Agility places a weapon attack or evasion; Perception detects; Vitality endures; Intelligence appraises or controls a System technique; Strength contests direct force. Strength still supplies physical damage after a hit even when Agility governed whether the weapon landed. A different Stat may govern a later reaction by the opponent.
+
+The stat-margin contribution is capped at ±2 so skill, preparation, equipment effects, wounds, and circumstances retain room inside the engine's ordinary net ±3 cap. Do not also apply a band-gap modifier when the grade-derived domain rating already represents the opponent: that would count the same disparity twice. NPC-versus-NPC actions, where neither side has Stats, continue to use the ordinary rank-band gap under Section 13.1.
+
+**Stats establish possibility before probability.** Before rolling, compare the effective Stat with established reality under Rules Section 4.2:
+
+- if capability clearly guarantees the declared method, resolve it automatically;
+- if the method is physically impossible even with that Stat, resolve automatic failure or offer a possible alternative;
+- if resistance, timing, opposition, or consequence leaves genuine uncertainty, use the margin above and roll.
+
+A high Stat therefore changes what the Bearer can do and how much a landed effect accomplishes; it does not erase the die from a resisting fight. An attack on an active opponent remains uncertain. Lifting a load far beneath demonstrated Strength does not become uncertain merely to display a roll.
+
+**Runtime procedure — mandatory for every Bearer action:**
+
+1. Read intent and method.
+2. Decide automatic success, automatic failure, or uncertainty from the direct Stat effects and established facts.
+3. If uncertain, choose the single acting Stat materially governing the method.
+4. Read the opposing rating, calculate the stat margin once, then add distinct skill, equipment-effect, condition, and circumstance steps.
+5. Cap the ordinary net at ±3, make the real d100 roll, and read its degree.
+6. Apply resource cost and magnitude from Sections 5–7 and 11.5; round only at the final rule-defined step.
+7. Narrate the embodied result without mechanical vocabulary. Render figures only through the Bearer's System or OOC `/debug` under Section 20.5.
+
+## 4.4 Stat-Milestone Skills
+
+At **30** and **50** in a **base** Stat, the System awards a named permanent **milestone skill**. These are Gatefall-specific System rewards, not the Stat's intrinsic effect: the Stat already changes the Bearer's body point by point. Equipment bonuses do not satisfy the thresholds. Each award is recorded in the skill ledger, fires once, and remains after later equipment changes:
 
 | Stat | At 30 | At 50 |
 |---|---|---|
-| **Perception** | **Grade-Sight** — read the true grade of any Gate at or below the Bearer's own effective band, converting an unconfirmed reading to confirmed by capability. | **Deep Sight** — read the true grade of a Gate up to one full grade above the Bearer's band. |
+| **Perception** | **Grade-Sight** — read the true grade of any Gate at or below the Bearer's System tier, converting an unconfirmed reading to confirmed by capability. | **Deep Sight** — read the true grade of a Gate up to one full grade above the Bearer's System tier. |
 | **Agility** | **Pre-empt** — act on an ambush warning before the ambush lands, taking a normal action in the surprise exchange rather than being caught flat. | **Slipstream** — disengage or reposition once per exchange without granting an opponent a reactive strike. |
 | **Strength** | **Overpower** — grapple, pin, or bull-rush a foe up to one band above the Bearer's own. | **Titan's Grip** — overpower or restrain a foe up to two bands above, and wield oversized or two-handed arms one-handed. |
 | **Vitality** | **Shrug Off** — ignore the effect of minor wounds, continuing to act without their modifier-step penalty. | **Iron Constitution** — suppress the penalty of one serious wound until the scene ends, and halve the onset rate of grade-appropriate environmental hazards. |
 | **Intelligence** | **Multitask** — hold +1 concurrent System quest slot beyond the default. | **Analyst** — hold a further +1 concurrent quest slot, and appraise the full effect of an unidentified rune, skill book, or core before use. |
 
-Perception's two unlocks (Grade-Sight, Deep Sight) turn the Gate-assessment problem into a capability the Bearer can grow past; the world otherwise re-measures a Gate's grade only by instrument survey (Section 9). The "own effective band" both unlocks read against is the level ladder of Section 6.6 — Grade-Sight covers Gates at or below that band, Deep Sight one grade above it, so the range climbs each time the ladder does.
+Perception's two milestone skills (Grade-Sight, Deep Sight) turn the Gate-assessment problem into a System technique the Bearer can earn; the world otherwise re-measures a Gate's grade only by instrument survey (Section 9). Their “own tier” reads against the System tier of Section 6.6 — Grade-Sight covers Gates at or below it, Deep Sight one grade above it.
 
 ---
 
@@ -275,21 +340,21 @@ Mana is **tracked canonical Bearer state** (Decision 057): every cost and every 
 
 ## 5.1 The Pool
 
-The Bearer's maximum Mana is a closed-form function of level:
+The Bearer's maximum Mana is the direct expression of effective Intelligence:
 
 ```
-max_mana(L) = 20 + 5 × (L − 1)
+maximum_mana = 2 × effective Intelligence
 ```
 
-Level 1 opens at **20**; each level adds **5** (level 2 = 25, level 5 = 40, level 10 = 65). The formula depends only on level, so any Runtime computes the maximum at any level directly, without replaying prior level-ups. The maximum is canonical state, recorded with the level-up event that caused it.
+Intelligence 10 yields **20 Mana**; Intelligence 20 yields **40**; Intelligence 50 yields **100**. Automatic level growth, allocation, and equipped Intelligence all change the pool because they change effective Intelligence. Apply the missing-amount rule of Section 4.1 whenever the maximum changes outside a level-up or Status Recovery.
 
 ## 5.2 Recovery
 
 - **Active** (moving, fighting, or under threat): **10% of the pool per hour**.
 - **Resting** (safe, still, unpressed): **25% of the pool per hour**.
-- **Level-up**: full restoration, immediately (Section 3.2).
+- **Level-up or claimed Status Recovery**: full restoration, immediately (Sections 3.2 and 3.9).
 
-Recovery is a percentage of the *maximum* pool, so a larger pool refills more total Mana per hour but takes the same wall-clock fraction to top off. Recovery is settled from elapsed fictional time before the next action reads available Mana; a narrated span of rest produces one settled Mana figure, not a tick-by-tick stream.
+Recovery is a percentage of the *maximum* pool, so Intelligence increases both capacity and recovered Mana per hour while the time required to refill the whole pool stays constant. Recovery is settled from elapsed fictional time before the next action reads available Mana; a narrated span of rest produces one settled Mana figure, not a tick-by-tick stream.
 
 ## 5.3 Running Dry
 
@@ -300,35 +365,71 @@ Mana gates whether a skill can be *attempted*; it never decides the result. The 
 
 ---
 
-# 6. Vitality
+# 6. Health, Damage, and Vitality
 
-## 6.1 Band Health
+## 6.1 Health Pools
 
-Every combatant in Gatefall — the Bearer, every NPC hunter, every monster — has **band health**: the engine's canonical current/maximum Health pool sized to its **effective grade band**. A creature's grade is a complete description of its durability; a "C-grade beast" has C-band health, a "B-rank hunter" has B-band health, and nothing further is authored per creature (Decision 020). The Bearer's effective band is the band his own capability sits in; NPC hunters and monsters use the band of their fixed grade.
+NPC hunters and monsters have **band health** sized to their fixed grade. A creature's grade is a complete description of its durability: a C-grade beast has C-band health and a B-rank hunter has B-band health, with nothing further authored per creature (Decision 020).
 
-This is the single vitality quantity the world runs on. `GTF-OVR-002` makes the Bearer's Health a growing tracked pool, but its *scale* is still band health for his effective band — the override governs how his Health is recorded and restored, not a separate numbering system. Damage, healing, and injury are all expressed as fractions of band health, so the world resolves combat in relative terms and needs no per-creature stat block (Decision 020).
+The Bearer is the declared exception. His maximum Health is the direct expression of effective Vitality:
 
-**The band health table is canonical.** Each grade's band health is fixed at:
+```text
+maximum_health = 4 × effective Vitality
+```
+
+Vitality 10 yields **40 Health**; Vitality 20 yields **80**; Vitality 50 yields **200**. Automatic level growth, allocation, and equipped Vitality all change the pool because they change effective Vitality. Apply Section 4.1's missing-amount rule whenever the maximum changes outside a level-up or Status Recovery.
+
+The fixed-band table remains canonical for every NPC hunter and monster:
 
 | Band | E | D | C | B | A | S |
 |---|---|---|---|---|---|---|
 | Band health | 40 | 100 | 250 | 600 | 1,500 | 4,000 |
 
-The scale climbs **roughly ×2.5 per grade** — each band about two and a half times the one below — so a hit that is a fixed fraction of the attacker's band lands far harder as the attacker's grade rises. These are the canonical maxima a full-Health combatant of each grade carries. The **E-band 40** is the same figure Section 8.2's `HP: … /40` lines and Ren's `/system` panels (Section 15) already use; those remain correct as E-band readings. The Bearer's own maximum is read from this table for his current effective band (Section 6.6), restored in full on level-up (Section 3.2).
+The scale climbs roughly ×2.5 per grade, keeping fixed-rank entities resolvable without individual Stat sheets. It never substitutes for the Bearer's effective Vitality.
 
 ## 6.2 Damage
 
-A hit's damage is built from the attacker's grade, the skill or strike that lands it, and the quality of the d100 result:
+A hit's damage is built from the attacker's own magnitude source and the quality of the d100 result.
+
+For a fixed-rank NPC hunter or graded monster:
 
 ```text
-damage = standard_hit_baseline(attacker's effective grade)   # ¼ of the attacker's band health
-       × skill_multiplier                                    # the skill or strike ratio (Section 7)
-       × result_multiplier                                   # by degree of success, below
-       × (1 − total_reduction)                               # applied last, per GTF-OVR-002
+fixed_band_damage = (band_health ÷ 4 + equipped weapon_power)
+                  × chassis_or_skill_multiplier
+                  × result_multiplier
+                  × (1 − total_reduction)
 ```
 
-- **Standard-hit baseline.** The baseline of a single ordinary hit is **one-quarter of the attacker's grade band health** (`band_health ÷ 4`). Damage rides the *attacker's* own band: a grade-C attacker's every hit scales to C-band health, a grade-A attacker's to A-band. Because a same-grade target has the same band health, a standard hit at standard success removes about **a quarter of a same-grade foe's Health** — so a matched fight takes roughly four clean hits, and the whole model resolves in relative terms without an authored HP table. **Cross-band, the baseline is read from the attacker's band on the canonical table (Section 6.1).** Worked one-liner: an E-Bearer with 40 Health (E-band) struck by a grade-D beast — say, in a mis-graded Gate — takes `¼ × 100 = 25` on a standard hit — 25 removed from his 40, which by Section 6.3 also inflicts an injury (over 50% of remaining Health). The beast's damage rode the D band because its baseline is a quarter of D-band health, not of the Bearer's.
-- **Skill multiplier.** A skill or strike states its damage as a multiplier on the standard-hit baseline (Section 7): an unarmed or improvised strike is **×0.5**, a competent armed strike **×0.75**, and an authored skill carries its own ratio (Mana Bolt **×1.0**, and so on). A multiplier of ×1.0 *is* the standard-hit baseline. **Against a monster the multiplier is ×0 unless the attack is mana-borne** — an awakened wielder's strike or a mana-bearing weapon (`GTF-OVR-003`): a mundane gun, blade, or explosive lands nothing on a monster however well the die rolls. The ×0.5/×0.75 strikes above are an awakened combatant's, whose mana rides the blow.
+A monster's ordinary natural attack uses `weapon_power 0` and multiplier ×1 unless its authored signature states another multiplier. A fixed-rank hunter's unarmed strike uses ×0.5; an equipped weapon uses that weapon's chassis and power. This preserves grade-honest monster damage while letting equipment improve a hunter from the hunter's own band rather than replacing it.
+
+For the Bearer's physical strike:
+
+```text
+Bearer_physical_damage = (effective Strength + weapon_power)
+                       × chassis_multiplier
+                       × result_multiplier
+                       × (1 − total_reduction)
+```
+
+An unarmed strike has `weapon_power 0` and chassis ×0.5. A wielded weapon uses only that weapon's power; dual-wielding does not add two weapon-power values to one strike unless a named skill explicitly says it does. Agility normally governs whether the weapon lands (§4.3); Strength governs how hard the landed physical strike hits.
+
+For a Bearer damage or healing skill:
+
+```text
+Bearer_skill_magnitude = (skill_rank_baseline + equipped_focus_power)
+                       × skill_multiplier
+                       × result_multiplier
+```
+
+The rank baselines are Section 7.2's E–S table. Only a Channeling Focus contributes focus power, and only to a damage or healing skill. Intelligence governs the Mana pool and uncertain control; it does not silently multiply every skill's authored magnitude.
+
+An unawakened wielder of a mana-bearing weapon uses ordinary-adult Strength 10 unless established capability says otherwise:
+
+```text
+unawakened_magic_weapon_damage = (10 + weapon_power) × chassis × result × reductions
+```
+
+**Mana-borne gate.** Against a monster, final damage is 0 unless the source carries mana under `GTF-OVR-003`: an awakened combatant's blow or skill, or a mana-bearing weapon. A mundane firearm, blade, or explosive can still produce non-Health fictional effects authored by the resolution.
 - **Result multiplier — by degree of success.** The degree of success the d100 yields (Rules Section 4; Decision 011) scales the hit:
 
 | Degree of success | Name | Multiplier |
@@ -343,7 +444,9 @@ A miss deals no damage. **Critical tails are always live** (Decision 052): a nat
 - **Reductions apply last, and compose with `GTF-OVR-002`.** The die first resolves whether the hit lands and its degree; the multipliers above then set the raw magnitude; and only then is damage removed from Health **after** applicable reductions — exactly the "damage after reductions" order `GTF-OVR-002` declares. Reductions **multiply, never add** (`total_reduction = 1 − Π(1 − rᵢ)`, Section 7), so no stack of protections reaches immunity.
 - **Equipped armor is an authored reduction.** Each equipped armor piece and Guard Shield contributes the reduction for its own grade from Section 11.5. These reductions compose multiplicatively with one another, skills, titles, and circumstances under the same formula above. Stored, carried, broken, or merely owned armor contributes nothing.
 
-Healing reuses the same unit: a skill that "restores one standard-hit baseline" restores `band_health ÷ 4` Health.
+**Final rounding.** Keep precision through every multiplier and reduction, then round the final Health change to the nearest whole number, with `.5` rounding up. A landed damaging hit that remains positive after reductions deals at least 1 Health. Do not round intermediate values.
+
+Healing uses the magnitude source its effect names: a fixed-rank mender uses its band baseline, while a Bearer skill uses its skill-rank baseline and focus power.
 
 ## 6.3 Injuries
 
@@ -370,13 +473,13 @@ Direct Health restoration (a potion, a skill, a facility) and severity recovery 
 
 ## 6.5 Death Is Final
 
-**Death is death.** No resurrection, revival, or reincarnation exists in Gatefall at Profile 1.0. When the Bearer dies, the death is resolved and recorded normally, all System state remains with the dead Bearer and transfers to no one, and **the campaign hard-ends** — it becomes terminal under the Engine Rules. The System is patient on a scale its host is not; that a successor may one day be chosen is a matter for the world's hidden canon, never a continuation of the dead character and never a promise play may rely on. A Bearer who dies in an E-Gate is as dead as one who dies in an S-Gate. A **Critical** injury (Section 6.3) that goes untreated is one of the ordinary roads to that end.
+**Death is death.** No resurrection, revival, or reincarnation exists in Gatefall under this profile. When the Bearer dies, the death is resolved and recorded normally, all System state remains with the dead Bearer and transfers to no one, and **the campaign hard-ends** — it becomes terminal under the Engine Rules. The System is patient on a scale its host is not; that a successor may one day be chosen is a matter for the world's hidden canon, never a continuation of the dead character and never a promise play may rely on. A Bearer who dies in an E-Gate is as dead as one who dies in an S-Gate. A **Critical** injury (Section 6.3) that goes untreated is one of the ordinary roads to that end.
 
-## 6.6 The Effective Band Ladder
+## 6.6 The System Tier Ladder
 
-The Bearer's **effective band** — the grade band his own capability sits in (Section 6.1) — is set by his **level** on a fixed ladder. It is not his carded rank (which stays E until re-assessed, Section 19) and not a stat; it is the single derived grade the System resolves every band-relative quantity against.
+The Bearer's **System tier** is a level-derived content bracket. It is not his carded rank, not a Stat, and not a substitute for his actual body. Stats and equipment determine Health, Mana, physical magnitude, and Bearer-versus-grade margins; System tier only selects the scale of authored content and rewards.
 
-| Level reached | Effective band |
+| Level reached | System tier |
 |---|---|
 | Creation (level 1) | **E** |
 | 10 | **D** |
@@ -385,39 +488,45 @@ The Bearer's **effective band** — the grade band his own capability sits in (S
 | 40 | **A** |
 | 50 | **S** |
 
-The band advances the instant the level-up that reaches a threshold settles (Section 3.2); between rungs it holds at the last band reached (a level-14 Bearer is D-band, a level-29 Bearer is C-band). The effective band is **canonical derived state**, read from level and never estimated.
+The tier advances the instant the level-up that reaches a threshold settles; between rungs it holds at the last tier reached. It is canonical derived state, read from level and never estimated.
 
-The effective band is **normative** for every band-relative quantity the profile resolves for the Bearer:
+System tier governs only:
 
-- **Band health** (Section 6.1) — his Health pool is sized to his effective band on the canonical table.
-- **The standard-hit baseline of his own strikes** (Section 6.2) — ¼ of his effective band's health.
-- **Threat-color designation** (Section 14.6) — every creature is colored against his effective band.
-- **Penalty-zone grade** (Section 8.3) — the sealed instance runs at his effective band.
-- **Class-trial grade** (Section 18.2) — the trial's waves and final foe stand at his effective band.
-- **Instant-dungeon "own band" keys** (Section 17, Section 12.5) — a shop key opens at his effective band.
-- **Grade-Sight / Deep Sight range** (Section 4.4) — read relative to his effective band.
-- **Band-gap modifier** (Section 4.3) — computed from his effective band against the opponent's.
-- **What a Section 19.2 re-measurement reads** — the instrument reads the mana capacity his effective band carries, which is why it reads above his card.
+- **Threat-color designation** (Section 14.6) — every creature is colored against his System tier.
+- **Penalty-zone grade** (Section 8.3) — the sealed instance runs at his System tier.
+- **Class-trial grade** (Section 18.2) — the trial's waves and final foe stand at his System tier.
+- **Instant-dungeon “own-tier” keys** (Section 17, Section 12.5) — a shop key opens at his System tier.
+- **Grade-Sight / Deep Sight range** (Section 4.4) — read relative to his System tier.
+- **Underdog XP and Daily Premium grade floors** (Sections 3.3 and 12.5).
 
-Wherever any of those touch-points names "the Bearer's own band" or "his effective band," it means this ladder.
+Where those content systems say “the Bearer's own tier,” they mean this ladder. They never feed Health, Mana, physical damage, or the Section 4.3 stat margin.
 
 ---
 
 # 7. Skills
 
-A **skill** is a named, canonical capability the Bearer has learned. Skills are the Bearer's active and passive techniques; each carries a name, a rank, a Mana cost (or "passive"), and an effect stated in modifier-step or damage-band terms so a Runtime resolves it without a ruling.
+A **skill** is a named, canonical capability the Bearer has learned. Skills are the Bearer's active and passive techniques; each carries a name, a rank, a Mana cost (or "passive"), and an effect stated in modifier-step, rank-baseline, reduction, resource, or direct-capability terms so a Runtime resolves it without a ruling.
 
 ## 7.1 Acquisition
 
-A skill enters the Bearer's ledger by one of three routes, and only these:
+A skill enters the Bearer's ledger by one of four routes, and only these:
 
 1. **Rune.** A rune dropped as loot (Section 11) teaches one authored skill on use, consumed in the teaching. Runes found at E- and D-tier Gates teach from the starting skill table below.
 2. **Skill book.** A rarer drop teaching a specific authored skill, likewise consumed; skill books can carry skills above the rune tier (the full skill-book table is authored with loot in Section 11).
 3. **Earned by doing.** An approach the Bearer uses **successfully in at least three distinct dangerous scenes** may be **ratified by the System as a skill** — the System recognizes a proven practice and formalizes it. Ratification requires genuine, resolved, at-risk use each time; trivial repetition does not count, and the three scenes must be materially distinct, not one tactic replayed. On ratification the skill is authored into the ledger with a name, rank, cost, and effect at the time it is granted.
+4. **Stat milestone.** Crossing base Stat 30 or 50 awards the exact milestone skill listed in Section 4.4. The trigger, name, and effect are already authored; equipment cannot trigger it.
 
 ## 7.2 Skill Entries
 
-Every skill entry carries: **name · rank (E–S) · Mana cost · effect**. Effects are expressed as a modifier-step change, a multiple of the **standard-hit baseline** for damage or healing (Section 6.2), a damage-reduction fraction, or a stated capability — the same vocabulary the rest of this profile uses, so no skill needs a bespoke subsystem. Active skills cost Mana and are gated by it (Section 5.3); passive skills cost 0 and are always in effect.
+Every skill entry carries: **name · rank (E–S) · Mana cost · effect**. Active skills cost Mana and are gated by it (Section 5.3); passive skills cost 0 and are always in effect.
+
+For a Bearer damage or healing skill, rank supplies its base magnitude:
+
+| Skill rank | E | D | C | B | A | S |
+|---|---:|---:|---:|---:|---:|---:|
+| Rank baseline | 10 | 25 | 62 | 150 | 375 | 1,000 |
+
+The table preserves the fixed-band standard-hit scale while decoupling it from the Bearer's level. A Channeling Focus adds its weapon power to this baseline (Section 11.5). The skill's own multiplier and mastery then apply under Section 6.2. Utility effects remain expressed as a modifier step, duration, reduction, resource change, or stated capability.
 
 ## 7.3 Starting Skill Table
 
@@ -426,13 +535,13 @@ These eight skills are what a rune can teach at E- and D-tier. Costs are in Mana
 | Skill | Rank | Mana cost | Effect |
 |---|---|---|---|
 | **Sprint** | E | 3 | +1 modifier step on movement, pursuit, and distance-closing actions for one exchange. |
-| **Dagger Mastery** | E | Passive | Bladed light-weapon strikes deal a **×0.75** skill multiplier on the standard-hit baseline (Section 6.2), up from the ×0.5 of an improvised strike. |
-| **Mend** | E | 6 | Restore Health equal to **one standard-hit baseline** (¼ band health, Section 6.2); controls bleeding but does not clear a wound's severity. |
+| **Dagger Mastery** | E | Passive | Add **+0.10** to a Quickknife's chassis multiplier (normally ×0.75 → ×0.85). |
+| **Mend** | E | 6 | Restore Health at **×1.0 of the E skill-rank baseline** (10 before mastery/focus); controls bleeding but does not clear a wound's severity. |
 | **Stone Skin** | D | 4 | 30% physical damage reduction while sustained; ends when Mana lapses or the Bearer drops it. |
 | **Flash Step** | D | 8 | Close or break line-of-sight distance instantly once, granting +1 modifier step to the follow-up action. |
 | **Keen Sense** | E | 2 | +1 modifier step on detection: spotting ambush, hidden foes, or anomaly for the scene. |
 | **Silent Step** | E | 3 | +1 modifier step on stealth and unseen-approach actions for the scene. |
-| **Mana Bolt** | E | 5 | A ranged bolt with a **×1.0** skill multiplier — one standard-hit baseline (Section 6.2) on a standard success; the die resolves whether it lands and its degree. |
+| **Mana Bolt** | E | 5 | A ranged bolt at **×1.0 of the E skill-rank baseline** (10 before mastery/focus) on a standard success; Intelligence governs uncertain control and the die resolves whether it lands and its degree. |
 
 Reductions from Stone Skin and any other source **multiply, never add** (`total = 1 − Π(1 − rᵢ)`), so no stack of skills reaches immunity.
 
@@ -445,7 +554,7 @@ A skill is not fixed the day it is learned — it **grows in the Bearer's hands 
 **What each level above Novice improves** — two axes, both closed-form:
 
 - **Magnitude**, by one grade of the skill's own effect per level:
-  - a **damage or healing** skill's multiplier rises **+0.15** (Mana Bolt ×1.0 at Novice → **×1.6 at Master**; Mend heals ¼ band → ~0.4 band at Master);
+  - a **damage or healing** skill's multiplier rises **+0.15** (Mana Bolt ×1.0 at Novice → **×1.6 at Master**; E-rank Mend 10 → 16 before focus at Master);
   - a **reduction** skill's fraction rises **+5 points** (Stone Skin 30% → **50% at Master**);
   - a **modifier-step or utility** skill — already capped at +1 step (Section 4.3) — instead **lengthens**, its effect covering one further exchange per level and reaching the **whole scene at Master**, or widening to one stated additional target.
 - **Mana cost**, **−10% per level** (rounded, minimum 1): a 5-cost skill runs 5 → **3 at Master**; passive skills stay 0.
@@ -466,31 +575,31 @@ Once per in-fiction day the System issues the quest, rendered in a bracketed Sys
 
 ```text
 [SYSTEM] QUEST ISSUED — DAILY TRAINING
-Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 10 km run 0/10
-Reward: +3 stat points · full restore · +10 XP · streak 4/7 → Weekly Cache at 7
+Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 100 squats 0/100 · 10 km run 0/10
+Rewards: Ability Points +3 · Status Recovery · Daily Random Box
 Warning: failure to complete within 24 h transfers you to a penalty zone.
 ```
 
-- **The regimen** is fixed: **100 push-ups, 100 sit-ups, and a 10 km run**, completed within a **24-hour window** from issuance.
-- **Reward on completion:** a **daily grant of +3 stat points and a full Health/Mana restore** (offered under Section 3.9, not auto-applied) and **+10 XP** (Section 3.5), and progress on the **streak**.
-- **Streak → Weekly Cache:** every **7 consecutive completed days** delivers a **Weekly Cache** on the seventh, and again every further seven days. **A single missed day resets the streak to zero.**
+- **The regimen** is fixed: **100 push-ups, 100 sit-ups, 100 squats, and a 10 km run**, completed within a **24-hour window** from issuance.
+- **Rewards on completion:** three independent pending entries — Ability Points +3, Status Recovery, and one Daily Random Box (Section 3.9).
+- The quest awards **no XP**. It tracks a **consecutive-completion streak**: completion advances the streak by 1; failure resets it to 0. The streak is a record and display value only—there is no Weekly Cache, threshold reward, multiplier, or other mechanical benefit. Each completed day already supplies its own box.
 
 Completion is genuine effort, not a checkbox — the objectives are physical work the Bearer must actually do in the fiction. The System tracks progress against each objective (the `0/100` counters advance as the work is done) and resolves the quest as completed or failed at the window's close.
 
-### The Weekly Cache
+### The Daily Random Box
 
-A Weekly Cache is a System reward box — it must be **opened** (accepted, Section 3.9), and on opening it rolls its contents on a d100 at the Bearer's **effective band** (Section 6.6). Items arrive at that band and follow their own sections (potions Section 12.5, runes and skill books Section 11, elixirs Section 12.5's lifetime cap):
+A Daily Random Box is rolled only when the Bearer opens that pending reward. Make one real d100 and tier any graded result to the Bearer's current **System tier** (Section 6.6) at opening. Items follow their own sections:
 
-| d100 | Weekly Cache yields |
+| d100 | Daily Random Box yields |
 |---|---|
-| 01–35 | A **potion cache** — 3 potions at the Bearer's band tier (healing/mana mix). |
-| 36–60 | **System gold** — a purse of `500 × band-tier` gold (E=500, D=2,000, C=8,500 …, scaling with the shop's core buy price, Section 12.5). |
-| 61–80 | A **rune** teaching one authored skill (Section 11.3 table) at the Bearer's band. |
-| 81–93 | A piece of **graded gear** at the Bearer's band (Section 11.5). |
+| 01–35 | A **potion cache** — 3 potions at the Bearer's System tier (healing/mana mix). |
+| 36–60 | **System gold** — a purse at the shop's core-buy value for the Bearer's System tier (E=500, D=2,000, C=8,500, B=35,000, A=150,000, S=650,000; Section 12.5). |
+| 61–80 | A **rune** teaching one authored skill (Section 11.3 table) at the Bearer's System tier. |
+| 81–93 | A piece of **graded gear** at the Bearer's System tier (Section 11.5). |
 | 94–99 | A **skill book** (Section 11.3) — a fuller technique with a growth path. |
-| 00 | An **elixir** (+1 permanent to one stat, Section 12.5's lifetime cap applies). |
+| 100 | An **elixir** (+1 permanent to one stat, Section 12.5's lifetime cap applies). |
 
-The cache is the Bearer's alone (no other hunter earns one), and a milestone streak — every **28th day** (a fourth consecutive cache) — rolls **twice and keeps the better**. Cache contents are authored here and adjustable by owner ruling; nothing in a cache exceeds what the loot and shop tables already price, so it enriches progression without breaking the economy.
+The box is the Bearer's alone and cannot be traded before opening because it is pending System state, not an object. Once opened, its contents are ordinary dimensional-inventory holdings. One completion creates exactly one box; the streak never changes its contents.
 
 ## 8.2 Inline System Notifications
 
@@ -509,8 +618,8 @@ Each shows `before → current/maximum` (for XP, `current/next threshold`). Rend
 If the 24-hour window closes with the quest incomplete, the System **transfers the Bearer into a penalty zone**: a sealed survival instance he does not choose to enter and cannot leave early.
 
 - **Duration:** a **4-hour survival instance**. The Bearer survives it or dies in it; there is no other exit and no retreat.
-- **Grade:** the instance runs at the **Bearer's own effective band** (the level ladder, Section 6.6) — it scales with him, so it never stops being dangerous as he grows.
-- **Population:** populated per the standard Gate population formula at the Bearer's effective grade **G**:
+- **Grade:** the instance runs at the Bearer's **System tier** (Section 6.6) — it scales with progression, so it never stops being dangerous as he grows.
+- **Population:** populated per the standard Gate population formula at the Bearer's System-tier grade **G**:
 
   ```text
   3d6 common beasts (grade G)
@@ -519,11 +628,11 @@ If the 24-hour window closes with the quest incomplete, the System **transfers t
   ```
 
   (Section 9 restates this formula as the general rule for all Gates; it is reproduced here because a penalty zone must be fully resolvable from this section alone.)
-- **XP and leveling are full and normal.** Every kill in the penalty zone awards its ordinary kill XP (Section 3.3) and that XP counts toward leveling exactly as anywhere else: thresholds cross, level-ups register, and their grants (+3 stat points and a full restore) are offered under Section 3.9 in the instance itself. The penalty zone is dangerous, not barren — a Bearer who fights hard climbs out of it stronger, which is the trap's other edge.
+- **XP and leveling are full and normal.** Every kill in the penalty zone awards its ordinary kill XP (Section 3.3) and that XP counts toward leveling exactly as anywhere else: thresholds cross and Section 3.2's immediate level-up effects settle in the instance itself. The penalty zone is dangerous, not barren — a Bearer who fights hard climbs out of it stronger, which is the trap's other edge.
 - **No material loot.** What the zone withholds is *loot*, not growth: it drops **no crystals, cores, runes, gear, keys, or currency**. There is nothing to sell and nothing to carry home — only levels earned in blood. It punishes by making the Bearer pay in risk for XP he could have earned safely by doing his push-ups.
 - **Exit:** the instance ends and returns the Bearer to the world on **surviving the full four hours**, or **early on killing the zone's boss** — a boss kill collapses the instance like any Gate (Section 9.7) and awards the **Gate-clear milestone XP at grade G** (Section 3.4), the one milestone the zone does pay. Death inside it is death (Section 6.5), and the campaign ends there.
 
-The penalty is deliberately not a fine or a debuff: missing the daily quest drops the Bearer, alone, into a fight at his own band that he did not pick. That is the System being indifferent to his convenience — the daily quest is an order, and refusal has teeth. That the teeth also make him stronger is exactly the System's logic: it does not fine failure, it *forces the training the Bearer skipped*, at knifepoint.
+The penalty is deliberately not a fine or a debuff: missing the daily quest drops the Bearer, alone, into a fight at his own System tier that he did not pick. That is the System being indifferent to his convenience — the daily quest is an order, and refusal has teeth. That the teeth also make him stronger is exactly the System's logic: it does not fine failure, it *forces the training the Bearer skipped*, at knifepoint.
 
 **Deferred transfer from inside a sealed instance.** If the 24-hour window closes while the Bearer is inside a **sealed instance** — a red gate (Section 9.6), an instant dungeon (Section 17), or the class trial (Section 18.2) — the penalty transfer **cannot fire** while that seal holds: there is no exit, and the System does not drop him into a second sealed instance atop the first. The failed quest is recorded and the transfer **defers**; the instant the Bearer exits the sealed instance, the penalty-zone transfer **fires immediately**, before the next daily quest issues. The deferral spares him nothing — it only waits for a door.
 
@@ -771,7 +880,7 @@ A **skill book** (boss drop 91–97) is rarer than a rune and teaches its skill 
 | 6 | **Keen Sense** (Section 7.3) — detection. |
 | 7 | **Silent Step** (Section 7.3) — stealth. |
 | 8 | **Mana Bolt** (Section 7.3) — ranged attack. |
-| 9 | **Rupture** — Mana **12**: a heavy strike with a **×2.0** skill multiplier on the standard-hit baseline (Section 6.2); the die resolves whether it lands and its degree. |
+| 9 | **Rupture** — Mana **12**: a heavy strike at **×2.0 of its skill-rank baseline** (Sections 6.2 and 7.2); the die resolves whether it lands and its degree. |
 | 10 | **Bulwark** — Mana **10**: **50% physical damage reduction** for one exchange; reductions multiply, never add (Section 7.3), so it never reaches immunity. |
 
 Entries 1–8 are the eight starting skills of Section 7.3, taught here at the dropped Gate's grade rather than at the E/D rune tier. **Rupture** and **Bulwark** (entries 9–10) are authored here and enter the ledger with their name, rank (the Gate grade the book dropped from), Mana cost, and effect on the schedule of Section 7.2.
@@ -784,17 +893,18 @@ Entries 1–8 are the eight starting skills of Section 7.3, taught here at the d
 
 ## 11.5 Equipment, Grades, and Item Lines
 
-Equipment is mechanically complete only when its line records **name · grade · chassis · slot · stat bonus · combat effect · provenance · condition**. Grade **E–S** sets the magnitude; chassis determines where that magnitude goes. An equipped item applies its line to its wielder. A stored, carried, broken, or merely owned item does not. The Bearer receives both the stat and combat lines. An ordinary hunter has no five-stat sheet (Section 13.1), so the item grants its combat line and protection but does not create or alter stats for that hunter.
+Equipment is mechanically complete only when its line records **name · grade · chassis · slot · stat bonus · weapon power/protection · combat effect · provenance · condition**. Grade **E–S** sets the magnitude; chassis determines where that magnitude goes. An equipped item applies its line to its wielder. A stored, carried, broken, or merely owned item does not. The Bearer receives both the stat and combat lines. An ordinary hunter has no five-stat sheet (Section 13.1), so the item grants weapon power, combat effects, and protection but does not create or alter Stats for that hunter.
 
 **Stat budgets by grade:**
 
 | Grade | E | D | C | B | A | S |
 |---|---:|---:|---:|---:|---:|---:|
 | Weapon stat points | 2 | 4 | 7 | 11 | 16 | 22 |
+| Weapon power | 2 | 4 | 7 | 11 | 16 | 22 |
 | Armor-piece stat points | 1 | 2 | 3 | 5 | 7 | 10 |
 | Accessory stat points | 1 | 2 | 4 | 6 | 9 | 12 |
 
-**Weapon chassis.** “All” assigns the full weapon budget to one stat. A split assigns the stated share, rounding the primary share up and giving the remainder to the secondary stat.
+**Weapon chassis.** “All” assigns the full weapon stat budget to one Stat. A split assigns the stated share, rounding the primary share up and giving the remainder to the secondary Stat. Every damaging weapon also carries its grade's weapon power from the table; a Guard Shield carries no weapon power.
 
 | Chassis | Slot | Stat line | Combat line |
 |---|---|---|---|
@@ -803,10 +913,23 @@ Equipment is mechanically complete only when its line records **name · grade ·
 | **Greatarm** (greatsword/greataxe/maul) | both hands | 75% Strength, 25% Vitality | Armed strike ×1.0; two-handed. |
 | **Reacharm** (spear/polearm) | both hands | 60% Perception, 40% Strength | Armed strike ×0.85; +1 circumstance step to hold distance against a closing foe, within the net ±3 cap. |
 | **Longshot** (bow/crossbow) | both hands | 60% Perception, 40% Agility | Ranged armed strike ×0.75; requires ammunition but carries the weapon's mana. |
-| **Channeling Focus** (wand/staff/orb) | main hand | all Intelligence | Damage and healing skills use the higher of the Bearer's band or focus grade for their standard-hit baseline; it has no mundane strike upgrade. |
+| **Channeling Focus** (wand/staff/orb) | main hand | all Intelligence | Adds its weapon power as **focus power** to Bearer damage/healing skill magnitude (Sections 6.2 and 7.2); it has no mundane strike upgrade. |
 | **Guard Shield** | off hand | all Vitality | Grants the armor reduction of its grade below. |
 
-A graded weapon strike uses the **higher of the Bearer's effective band and the weapon's grade** for its standard-hit baseline; equipment can raise a weak wielder's magnitude but never lower a stronger one. The chassis multiplier then applies under Section 6.2. All graded weapons are mana-bearing — forged from beast cores by artificers (Section 12.8) — and therefore wound monsters under `GTF-OVR-003`.
+A graded weapon never lends its owner the weapon's grade band. For the Bearer, its power adds to effective Strength and the chassis multiplier applies under Section 6.2. For a fixed-rank hunter, power adds to that hunter's band baseline. For an unawakened wielder, power adds to ordinary-adult Strength 10. Accuracy, defense, Health, and resistance remain the wielder's own. All graded weapons are mana-bearing — forged from beast cores by artificers (Section 12.8) — and therefore wound monsters under `GTF-OVR-003`.
+
+Worked example — an E-tier Bearer with Strength 16 and a C Quickknife:
+
+```text
+(Strength 16 + C weapon power 7) × Quickknife 0.75 = 17.25
+standard success → 17 final damage before target reduction
+strong success   → 35
+critical success → 69
+```
+
+The weapon's Agility bonus separately affects placement through Section 4.3. It does not grant C-grade Health, C-grade defense, automatic accuracy, or a C-rank license.
+
+The same C Quickknife in a fixed E-rank hunter's hand deals `(E baseline 10 + power 7) × 0.75 = 12.75 → 13` on a standard success before reduction. In an unawakened adult's hand it uses the same numerical ordinary-adult Strength basis, so it also deals 13 if the d100 attack lands; the weapon supplies the mana edge that can wound a monster, but the wielder still attacks, evades, and survives as an ordinary human. By contrast, lending that wielder the old C-band baseline would have produced about 47 damage and silently granted most of a C-rank's offense; Profile 1.4 explicitly forbids that substitution.
 
 **Armor pieces.** Armor occupies one of five slots: **head · torso · hands · legs · feet**. Its style assigns the entire armor-piece stat budget: **Bastion → Vitality · Titan → Strength · Gale → Agility · Watcher → Perception · Arcanist → Intelligence**. Every style protects equally at the same grade; the choice is which capability it reinforces.
 
@@ -886,7 +1009,7 @@ Prague contract and salary rates run at **≈ 70% of Chicago**, paid in CZK/EUR.
 
 The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crystals and selling consumables, equipment, runes, and keys. It is a **System interface, not a place** — the Bearer opens it with `/system shop` from anywhere, at any time, instantly; there is no storefront to travel to and no hours. A purchase deposits straight into his dimensional inventory (Section 12.9), and a sale is drawn from it, so trading never requires him to be anywhere or carry anything. **USD and gold do not exchange** — the Bearer converts loot to gold only by selling it to the shop, and spends gold only inside it.
 
-**Stock unlock.** Equipment and keys are stocked at every grade **at or below the Bearer's effective band** (Section 6.6). An E-band Bearer sees E stock; reaching D adds D without removing E, through S at level 50. Consumables are always stocked. Skill runes appear when their native rank is at or below the Bearer's band. Stock is fixed and unlimited; there is no refresh timer, random inventory, scarcity roll, or haggle.
+**Stock unlock.** Equipment and keys are stocked at every grade **at or below the Bearer's System tier** (Section 6.6). An E-tier Bearer sees E stock; reaching D adds D without removing E, through S at level 50. Consumables are always stocked. Skill runes appear when their native rank is at or below the System tier. Stock is fixed and unlimited; there is no refresh timer, random inventory, scarcity roll, or haggle.
 
 The unlimited catalogue is separate from the rotating **Daily Premium** stock below.
 
@@ -930,12 +1053,12 @@ The unlimited catalogue is separate from the rotating **Daily Premium** stock be
 
 **The no-exchange rule.** There is no gold-to-USD or USD-to-gold conversion at any rate. The only bridge between the two economies is the spread between what the shop pays for a crystal and what the same crystal fetches on the licensed market — the Bearer chooses, per crystal, whether it becomes cash or gold, and cannot move value back the other way.
 
-**Consumable effects.** Each consumable the shop sells resolves to a fixed effect, expressed in the same units the rest of the profile uses — the standard-hit baseline of ¼ band health (Section 6.2) for Health, the maximum Mana pool (Section 5) for Mana. The stat elixir's effect is stated inline in the sell table above.
+**Consumable effects.** Healing and Mana potions scale with the drinker's own maximum pools, so Vitality and Intelligence remain causal. The stat elixir's effect is stated inline in the sell table above.
 
 | Consumable | Effect |
 |---|---|
-| **Lesser healing potion** | Restores one standard-hit baseline (¼ band health, Section 6.2) of Health. |
-| **Standard healing potion** | Restores two standard-hit baselines of Health. |
+| **Lesser healing potion** | Restores 25% of maximum Health, final amount rounded under Section 6.2. |
+| **Standard healing potion** | Restores 50% of maximum Health, final amount rounded under Section 6.2. |
 | **Greater healing potion** | Restores Health to full. |
 | **Lesser mana potion** | Restores 25% of the drinker's maximum Mana (Section 5). |
 | **Standard mana potion** | Restores 50% of the drinker's maximum Mana. |
@@ -956,22 +1079,22 @@ At **06:00 local time every morning**, the shop replaces its Daily Premium tab w
 
 - At 06:00 the Runtime makes the **twelve real rolls** below — seven model rolls and five independent grade rolls — and records the cycle date, all six complete offers, their prices, and six purchased/unpurchased flags as canonical Bearer state. A Runtime never selects the offers itself.
 - Each offer has **quantity 1**. Buying it marks that category purchased and removes the row until the next rotation. Unbought offers expire at the next 06:00; they are not carried forward or discounted.
-- A later level-up does not re-grade the current cycle. If the System first attaches after 06:00, it generates the current cycle immediately using the Bearer's then-current effective band as each grade roll's floor; it does not reconstruct earlier cycles.
+- A later level-up does not re-grade the current cycle. If the System first attaches after 06:00, it generates the current cycle immediately using the Bearer's then-current System tier as each grade roll's floor; it does not reconstruct earlier cycles.
 - Rotation occurs even while the Bearer sleeps or occupies a sealed instance. The System fires the Tier-1 line: `[SYSTEM] DAILY PREMIUM STOCK ROTATED — 6 offers available.`
 - Once purchased, a premium item is ordinary transferable physical property under the withdrawn-goods rule below, but no world store stocks it and it has no anchored mundane-market price. An unused premium item may be sold back only to the System shop for **25% of its premium purchase price, rounded down**.
 
-For each grade-bearing offer — Weapon, Armor, Accessory, Rune, and Key — make an independent **d100 grade roll** against the Bearer's effective band at rotation:
+For each grade-bearing offer — Weapon, Armor, Accessory, Rune, and Key — make an independent **d100 grade roll** against the Bearer's System tier at rotation:
 
 | d100 | Offer grade |
 |---:|---|
-| 01–50 | Bearer's effective band |
+| 01–50 | Bearer's System tier |
 | 51–80 | +1 grade |
 | 81–93 | +2 grades |
 | 94–98 | +3 grades |
 | 99 | +4 grades |
 | 100 | +5 grades |
 
-Cap every result at **S**. The rolled offer grade determines that offer's stats, protection, effect, and price; it does not change the Bearer's effective band. Consumables are ungraded and receive no grade roll.
+Cap every result at **S**. The rolled offer grade determines that offer's Stats, power, protection, effect, and price; it does not change the Bearer's System tier. Consumables are ungraded and receive no grade roll.
 
 **Premium Weapon — roll d7.** Price: **2×** the offer-grade weapon price.
 
@@ -1078,7 +1201,9 @@ Most Gates are cleared by parties, and most hunters in the world are ordinary li
 
 ## 13.1 NPC Hunters Resolve by Rank Band
 
-Every NPC hunter is a fixed-rank engine character (Section 2). A hunter's **rank band** is its complete mechanical description: a "licensed B-rank" acts on the B band for band health (Section 6.1), damage (Section 6.2), and modifier steps, and nothing further is authored. No NPC hunter carries a level, a stat sheet, an XP total, or a Mana curve — those belong to the Bearer alone. To resolve an NPC hunter's action, the Runtime uses its band exactly as it uses a monster's grade.
+Every NPC hunter is a fixed-rank engine character (Section 2). A hunter's **rank band** is its complete mechanical description: a licensed B-rank acts on the B band for Health and damage, and nothing further is authored. No NPC hunter carries a level, a Stat sheet, an XP total, or a Mana curve.
+
+When neither side is the Bearer, compare their bands for the capability contribution: **+1 step per band the actor stands above the resistance, −1 per band below**, capped inside the engine's net ±3. When the Bearer acts or resists, use Section 4.3's relevant effective Stat against the other party's grade-derived domain rating instead; never apply both systems to one action.
 
 ## 13.2 Standard Party Contract Terms
 
@@ -1170,7 +1295,7 @@ The System never decides what is true. It may decide **when to say it**.
 
 - **Tier 1 — Mandatory (unprompted; a pure function of state the System already holds).** Fires the instant the condition holds, with zero discretion:
   - Mana, Health, or XP changes → the matching compact line (Section 14.5);
-  - an XP threshold is crossed → the `LEVEL UP` block, granting per Section 3.2 (worked example in Section 3.7);
+  - an XP threshold is crossed → first settle every Section 3.2 reward immediately, then show the `LEVEL UP` block (worked example in Section 3.7); never render an acceptance prompt;
   - the daily quest is issued, completed, or failed → its block (Section 8.1, Section 15.7);
   - 06:00 local time arrives → the Daily Premium stock rotates and its compact line fires (Section 12.5);
   - the daily window lapses incomplete → the penalty warning, then the transfer notice (Section 15.7);
@@ -1202,11 +1327,11 @@ Render each changed quantity once per resolved action; if one action resolves se
 
 ## 14.6 Threat-Color Legibility (Designation Colors)
 
-The System colors every creature the Bearer perceives. A **designation color** marks each creature's threat relative to the Bearer's own **effective grade band** (Section 6.1, set by the level ladder of Section 6.6), and it is the single tactical read the System volunteers unprompted. It is exact because it is drawn from the creature's **true grade**, not its BGM/CGA grade card: where the world's grading is wrong (Section 9.5), the color is still right, because the System reads the resolved truth the instruments only estimate.
+The System colors every creature the Bearer perceives. A **designation color** compares the creature's true grade with the Bearer's **System tier** (Section 6.6), and it is the single tactical read the System volunteers unprompted. It is a progression warning, not a substitute for the Bearer's actual Stats or a promised combat outcome.
 
-The creature's band relative to the Bearer's effective band sets the color:
+The creature's band relative to the Bearer's System tier sets the color:
 
-| Creature's band vs. the Bearer's effective band | Designation color |
+| Creature's band vs. the Bearer's System tier | Designation color |
 |---|---|
 | Two or more bands **beneath** | **gray** |
 | One band **beneath** | **white** |
@@ -1217,9 +1342,9 @@ The creature's band relative to the Bearer's effective band sets the color:
 - **Red pulses; everything else is steady.** A **red** designation — a creature two or more bands above the Bearer — is the System's **only unprompted tactical warning** (Section 14.3, Tier 1): it pulses to mark a threat that can kill him outright. Gray, white, yellow, and orange render steady and volunteer nothing beyond the color itself.
 - **Derived from true grade; never wrong, never guessed.** The color follows the creature's **true grade**, resolved per Section 9.5 and known to the System per the information boundary (Section 14.4). The System never mis-colors a creature even when its posted grade is a mis-grade — the colors are how the Bearer *experiences* the true-grade resolution Section 9.5 performs on entry. Equally, the System colors nothing whose true grade it does not yet hold: an unconfirmed Gate's population is **uncolored until first entry resolves it** (Section 9.5), because the System asserts no grade it has not been given (Section 14.2). Coloring is a rendering of resolved knowledge, never a preview of it.
 - **Bearer-only, always — an edge and an exposure.** Like every System output the coloring is perceptible to the Bearer alone (Section 14.4). Ordinary hunters see nothing; to a party, the Bearer is a man who glanced at a beast and knew, a beat early, exactly how much it outclassed him. That is a quiet informational edge — and a standing exposure risk (Section 19): a Bearer who backs off a beast his card says he should crush, or holds his ground against one his card says should rout him, is visibly acting on knowledge the world cannot account for.
-- **Against effective band, so the palette shifts as he grows.** The comparison is to the Bearer's **effective** band (Section 6.1) — where his true capability sits — not his carded rank. As he grows (Section 3), the same creature recolors: an A-grade threat that pulsed red at low level cools to orange, then yellow, then white as his effective band climbs toward and past it. The palette is therefore also a growth mirror — the world reading as less lethal exactly as fast as he becomes more so.
+- **Against System tier, so the palette shifts with progression.** The comparison is not the Bearer's carded rank and does not calculate his chance to win. A specialized or poorly allocated build may overperform or underperform its color; Section 4.3 and the direct Stats settle the real contest.
 
-**In prose play.** A creature's designation color is stated **inline on first perception** of that creature in a scene — the first time the Bearer sees it, the narration names its color (a "red-designated alpha," a "gray knot of E-beasts") — and is not repeated each exchange unless the Bearer's effective band changes mid-scene (a level-up, Section 3.2) and recolors it. It has no `/system` panel of its own: like the compact lines of Section 14.5, it surfaces only at the moment it becomes true — here, the moment the Bearer's eyes reach a creature the System can already grade.
+**In prose play.** A creature's designation color is stated **inline on first perception** of that creature in a scene and is not repeated each exchange unless the Bearer's System tier changes mid-scene and recolors it. It has no `/system` panel of its own.
 
 ## 14.7 The Onset Sequence
 
@@ -1228,7 +1353,7 @@ The System's **first contact** with a new Bearer is a fixed message sequence —
 **Onset timing (owner ruling, 2026-07-24).** The incident is a campaign concern; its **pacing is not**. The System attaches within the campaign's opening arc and **no later than the resolution of the protagonist's first genuine fight** — the first scene in which he faces lethal, uncertain combat. The precipitating incident must still arise causally from the fiction in play — a brush with death is the classic crucible; what this ruling bounds is *when*, not *why*. A campaign that resolves its first real fight with the protagonist still bare of the System is out of law. This binds every Gatefall campaign, including any in progress at the time of the ruling.
 
 1. **Attachment notice** — the initializing handshake and host designation, fired the instant the System attaches.
-2. **Status-window grant** — the STATUS panel (Section 15.1) is granted and rendered once, opening at creation values (level 1, the creation-array stats of Section 4.1, Health 40/40, Mana 20/20).
+2. **Status-window grant** — the STATUS panel (Section 15.1) is granted and rendered once, opening at level 1 with the creation-array Stats and the Health/Mana maxima derived from its Vitality and Intelligence.
 3. **First Daily Premium cycle** — make Section 12.5's twelve real rolls immediately and fire the rotation line; this is the current 06:00-to-06:00 cycle, not an extra cycle.
 4. **First daily quest** — the standing daily quest (Section 8.1) issues at the **next 06:00 local** after attachment, and the daily cycle runs from there.
 
@@ -1242,7 +1367,7 @@ The worked onset block:
 [SYSTEM] STATUS — <NAME>
 Class: —  ·  Title: —
 Level 1  ·  XP 0/100
-Health 40/40  ·  Mana 20/20  ·  Unspent points 0
+Health <4×Vitality>/<same>  ·  Mana <2×Intelligence>/<same>  ·  Unspent points 0
 Strength <n> · Agility <n> · Vitality <n> · Perception <n> · Intelligence <n>
 
 [SYSTEM] DAILY PREMIUM STOCK ROTATED — 6 offers available.
@@ -1250,12 +1375,12 @@ Strength <n> · Agility <n> · Vitality <n> · Perception <n> · Intelligence <n
 — at the next 06:00 local —
 
 [SYSTEM] QUEST ISSUED — DAILY TRAINING
-Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 10 km run 0/10
-Reward: +3 stat points · full restore · +10 XP · streak 0/7 → Weekly Cache at 7
+Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 100 squats 0/100 · 10 km run 0/10
+Rewards: Ability Points +3 · Status Recovery · Daily Random Box
 Warning: failure to complete within 24 h transfers you to a penalty zone.
 ```
 
-Every value is read from creation state (Sections 3–5, 4.1): level 1, XP 0/100 (Section 3.1), Health 40/40 (E-band, Section 6.1), Mana 20/20 (`max_mana(1)`, Section 5.1). The stat line fills from the campaign's creation array (Section 4.1). After this sequence the Bearer is an ordinary played character carrying the System, and all further output follows the Tier rules of Section 14.3.
+Every value is read from creation state (Sections 3–6): level 1, XP 0/100, `Health = 4 × effective Vitality`, and `Mana = 2 × effective Intelligence`. After this sequence the Bearer is an ordinary played character carrying the System, and all further output follows Section 14.3.
 
 ---
 
@@ -1273,7 +1398,7 @@ Gatefall declares **`/system`** as its diegetic command. Its panels are **read-o
 
 Bare **`/system`** always renders the **full window** — every section (identity, vitals, stats, quests, skills, titles, equipment, inventory, gold) inside one framed window (Section 15.1). Focused single-section views and the interactive shop/titles panels remain available as `/system <section>` (Section 15.2), but the default is the whole of the Bearer at once.
 
-**One example Bearer runs through every base panel.** Call him **Ren** — an illustration only, not a canon character: a **level-3**, E-band Bearer with no class yet, mid-run. His canonical state: Level 3, XP 150/300 (threshold L3→4 = 300, Section 3.1); Health 40/40 (E-band health, Section 6.1, the E-band figure Section 8.2 already uses); Mana 22/30 (`max_mana(3) = 20 + 5×2 = 30`, Section 5.1); base Strength 9 · Agility 13 · Vitality 11 · Perception 14 · Intelligence 11; an equipped E Quickknife grants Agility +2, making effective Agility 15; 1 unspent point; skills Mana Bolt, Dagger Mastery, Sprint, Mend (Section 7.3); title **Lone Clear** equipped (Section 16); all six Daily Premium offers unpurchased with 14h12m left in the cycle; inventory and gold as shown.
+**One example Bearer runs through every base panel.** Call him **Ren** — an illustration only, not a canon character: a level-3, E-tier Bearer with no class yet. His creation array was Strength 9 · Agility 11 · Vitality 10 · Perception 10 · Intelligence 10. Two immediate level-ups made the current base Stats Strength 11 · Agility 13 · Vitality 12 · Perception 12 · Intelligence 12; an equipped E Quickknife grants Agility +2 and weapon power 2, making effective Agility 15. He is at XP 150/300, Health 39/48, Mana 18/24, has 10 unspent level-up points, and holds the skills and inventory shown below. One completed daily has all three rewards pending separately.
 
 ## 15.1 `/system` — the Full System Window
 
@@ -1281,7 +1406,7 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 
 ```text
 ╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════╗
-║  <NAME>                       Rank  <band>           ║
+║  <NAME>               Card <rank> · System Tier <tier> ║
 ║  Level  <L>                   Class <class or —>     ║
 ║  XP <cur>/<next>              Title <title or —>     ║
 ╟─ VITALS ─────────────────────────────────────────────╢
@@ -1295,7 +1420,7 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ║  Perception   <base> (+<gear>) = <effective>         ║
 ║  Intelligence <base> (+<gear>) = <effective>         ║
 ║  Unspent points  ● <n>                                ║
-║  Pending grants   <none, or list>                    ║
+║  Pending rewards  <none, or daily reward list>       ║
 ╟─ QUESTS ─────────────────────────────────────────────╢
 ║  <one line per active quest; [HIDDEN] shows ???>     ║
 ╟─ SKILLS ─────────────────────────────────────────────╢
@@ -1313,40 +1438,40 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ╚══════════════════════════════════════════════════════╝
 ```
 
-Ren, mid-run, carrying one deferred level-up grant:
+Ren, mid-run, carrying one completed daily's separate rewards:
 
 ```text
 ╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════╗
-║  REN                          Rank  E-band           ║
+║  REN                    Card E · System Tier E      ║
 ║  Level  3                     Class —                ║
 ║  XP 150/300                   Title  Lone Clear      ║
 ╟─ VITALS ─────────────────────────────────────────────╢
-║  HP   ███████████████░░░░░   31 / 40                 ║
-║  MP   ██████████████░░░░░░   22 / 30                 ║
+║  HP   ████████████████░░░░   39 / 48                 ║
+║  MP   ███████████████░░░░░   18 / 24                 ║
 ║  XP   ██████████░░░░░░░░░░   150 / 300               ║
 ╟─ STATS ──────────────────────────────────────────────╢
-║  Strength       9 (+0) = 9                           ║
+║  Strength      11 (+0) = 11                          ║
 ║  Agility       13 (+2) = 15                          ║
-║  Vitality      11 (+0) = 11                          ║
-║  Perception    14 (+0) = 14                          ║
-║  Intelligence  11 (+0) = 11                          ║
-║  Unspent points  ● 1                                 ║
-║  Pending grants   level-up (+3 & full restore)       ║
+║  Vitality      12 (+0) = 12                          ║
+║  Perception    12 (+0) = 12                          ║
+║  Intelligence  12 (+0) = 12                          ║
+║  Unspent points  ● 10                                ║
+║  Pending rewards  AP +3 · Recovery · Random Box      ║
 ╟─ QUESTS ─────────────────────────────────────────────╢
-║  [DAILY]  Training   Streak 6/7 → Cache   14h12m     ║
-║     push-ups 40/100 · sit-ups 100/100 · run 6/10     ║
+║  [DAILY] Training · streak 4 · next issue in 14h12m   ║
+║     push 40/100 · sit 100/100 · squat 20/100 · run 6/10 ║
 ║  [URGENT] Cull the Red Line nest (3/4)   +40 XP      ║
 ║  [HIDDEN] ???                                        ║
 ╟─ SKILLS ─────────────────────────────────────────────╢
-║  Mana Bolt      [E] M5   ranged ×1.0 baseline        ║
-║  Dagger Mastery [E] pass  light blades ×0.75         ║
+║  Mana Bolt      [E] M5   rank base 10 ×1.0           ║
+║  Dagger Mastery [E] pass  Quickknife +0.10           ║
 ║  Sprint         [E] M3   +1 step movement            ║
-║  Mend           [E] M6   restore ¼ band health       ║
+║  Mend           [E] M5   rank base 10 ×1.0           ║
 ╟─ TITLES  (equipped: Lone Clear) ─────────────────────╢
 ║  ★ Lone Clear    +1 step while alone in a Gate       ║
 ║    Untouched     +1 step evasion, 1st exchange       ║
 ╟─ EQUIPMENT ──────────────────────────────────────────╢
-║  Main  Quickknife [E] · Agility +2 · strike ×0.75    ║
+║  Main  Quickknife [E] · Agility +2 · power 2 · ×0.75 ║
 ║  Off — · Head — · Torso — · Hands — · Legs —         ║
 ║  Feet — · Accessory 1 — · Accessory 2 —              ║
 ║  Physical reduction  0%                              ║
@@ -1360,9 +1485,9 @@ Ren, mid-run, carrying one deferred level-up grant:
 ╚══════════════════════════════════════════════════════╝
 ```
 
-- **Bars** are 20-cell meters filled proportionally to `current/max` (Ren: HP ¾, MP ¾, XP half).
+- **Bars** are 20-cell meters filled proportionally to `current/max` (Ren: HP approximately four-fifths, MP three-quarters, XP half).
 - Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, equipment slots from Section 12.9, inventory from the campaign inventory ledger, and gold from the shop balance. Effective stats and physical reduction are derived from the equipped lines. Nothing is invented at render.
-- **`Pending grants`** shows any deferred grant (Section 3.9) — the full heal held in reserve — and reads `none` when empty.
+- **`Pending rewards`** lists each unclaimed daily Ability Point reward, Status Recovery, and Daily Random Box separately (Section 3.9), and reads `none` when empty. Level-ups never appear here because they settle immediately.
 - The window grows with the Bearer: an empty section still renders its header with `none` beneath it (a fresh Bearer shows `SKILLS — none`, `TITLES — none`), so the shape is constant and the Bearer always sees the whole of himself.
 - **Numbers in the window are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer, and only he sees this window. The Runtime **pads every line to a constant width** so the frame closes as a clean rectangle.
 
@@ -1407,7 +1532,7 @@ An **instant-dungeon key** — a boss drop (Section 11.2, roll 81–90) or a sho
 
 **Instant dungeons are the exception to Section 10's alien-interior law:** a System-made instance looks *made* — cut-stone geometry too regular to be natural, uniform sourceless light, corridors that answer to purpose rather than to any world's weather. Where a Gate's interior is a slice of the beasts' world, an instant dungeon is the System's architecture, and a Bearer learns to know the difference at a glance.
 
-- **Grade.** A key's grade is the **Gate grade it was rolled from**, or, for a shop key, the **Bearer's own band** (Section 12.5 — the effective band of the level ladder, Section 6.6). The instance runs at the key's grade.
+- **Grade.** A key's grade is the Gate grade it was rolled from or the explicit grade bought/rolled in the shop. An “own-tier” key snapshots the Bearer's System tier (Section 6.6) when created. The instance runs at the key's recorded grade and never re-grades later.
 - **Opening.** Using a key opens a sealed instance for the Bearer (he may bring a party, but the key is his). It runs **2 hours**, closing at the two-hour mark or on the boss kill, whichever comes first.
 - **Population.** Populated by the standard Gate formula (Section 9.7) at the key's grade G — `3d6` common beasts, `1d2` elites (×2 band health), `1` boss (×4 band health) — and it rolls an archetype on the d8 (Section 10) like any Gate.
 - **Loot.** Drops per Section 11: one crystal per beast, a core from each elite and the boss, and the boss-drop d100. It is a **real clear** — kill XP (Section 3.3) and the Gate-clear milestone (Section 3.4) settle on the boss kill exactly as in a public Gate.
@@ -1426,7 +1551,7 @@ When the Bearer reaches **level 25**, the level-up that crosses into 25 also iss
 
 ## 18.2 The Trial
 
-The class quest is a **sealed instance, fully lethal, with no retreat**: the Bearer enters alone and cannot leave until he clears it or dies (death is final, Section 6.5, and the trial can kill). It is **not a menu**. It is a gauntlet — waves and a final foe at the Bearer's own effective band (the level ladder, Section 6.6) — and the System tracks **how he fights** across five signals:
+The class quest is a **sealed instance, fully lethal, with no retreat**: the Bearer enters alone and cannot leave until he clears it or dies. It is **not a menu**. It is a gauntlet — waves and a final foe at the Bearer's System tier (Section 6.6) — and the System tracks **how he fights** across five signals:
 
 | Signal | What it measures |
 |---|---|
@@ -1448,13 +1573,13 @@ On survival, the System tallies the five signals and offers the classes matching
 
 The Bearer chooses one. The choice is permanent; it attaches the class's `/system` panel (Section 15.8) and sets the STATUS `Class` line. Each class has a later **evolution quest** — an authored class-quest at **level 50** — that deepens it along its own line.
 
-**Shared grade Mana ladder.** Several classes spend Mana by a target's grade on one ladder — **E 5 · D 10 · C 20 · B 40 · A 80** — sized to the pool (`max_mana` is 140 at level 25 and 265 at level 50, Section 5.1). A same-band foe therefore costs a modest fraction of the pool and a foe bands above costs most of it, so acting on stronger prey is possible but expensive by construction.
+**Shared grade Mana ladder.** Several classes spend Mana by a target's grade on one ladder — **E 5 · D 10 · C 20 · B 40 · A 80**. Because maximum Mana derives from Intelligence (§5.1), class allocation now directly determines how often these effects can be used. A low-Intelligence build may qualify for a class yet lack the pool for its highest-grade target until it invests.
 
 ## 18.4 Shadowbinder — offered for battlefield control
 
 On defeating a foe, the Bearer may raise its shadow. Shadows come in **two classes**, and this is what lets a Shadowbinder end as a general, not a squad leader:
 
-- **Elite shadows** are **named, individually tracked, and level up** — the lieutenants. Extraction is an **Intelligence-governed d100 attempt** (an uncertain action, so the die decides, Section 4.3; a foe above the Bearer's band adds the band-gap modifier, −1 step per band above) costing grade-ladder Mana (E 5 … A 80). On success the foe rises as an elite retaining its grade band — band health (Section 6.1), a standard-hit baseline at its grade (Section 6.2), and a name. **Elite cap = Intelligence ÷ 5** (Int 20 → 4 elites, Int 40 → 8). An elite **levels**: after it lands the killing blow in **10 distinct clears** it advances one grade band (capped at the Bearer's effective band).
+- **Elite shadows** are **named, individually tracked, and level up** — the lieutenants. Extraction is an **Intelligence-governed d100 attempt** costing grade-ladder Mana (E 5 … A 80). Compare effective Intelligence against the corpse grade's Section 4.3 domain rating; do not add a band-gap modifier. On success the foe rises as an elite retaining its grade band — band health (Section 6.1), fixed-band damage (Section 6.2), and a name. **Elite cap = Intelligence ÷ 5** (Int 20 → 4 elites, Int 40 → 8). An elite advances after landing the killing blow in 10 distinct clears, capped at the Bearer's System tier.
 - **The horde** is the **massed, un-named rank-and-file** — not tracked one by one, carried as a **count and grade** (e.g., "180 E · 44 D"). Ordinary defeated common beasts are **swept into the horde in bulk** at a flat **2 Mana each, no per-corpse roll** — the Bearer scoops the fallen as he passes. **Horde cap = Intelligence × 20** (Int 30 → 600), and the Legion evolution lifts it to **no practical cap — an army of thousands.**
 
 **Commanding the horde (closed-form, never per-shadow):** committed to a fight, the horde resolves as **one action per exchange**. It **automatically overruns** trash threats at or below the horde's dominant grade (they are swarmed under, no roll), and against elites and bosses it grants the Bearer's side **+1 modifier step per 100 shadows committed, to the net ±3 cap** (Section 4.3) — the weight of numbers. A hard fight inflicts **attrition**: on a poor exchange, or against a boss, the horde loses a die-scaled fraction of the committed shadows, replenished by extracting the newly slain. Storing/re-summoning elites is free/½-cost as before; the horde is always "on call" and costs nothing at rest.
@@ -1507,7 +1632,7 @@ Boneaxe [E] · Cleave ×1.25 · Mana 4 · from an E ogre-brute
 - **Authored fragment kinds** (which one a core yields is fixed by its source creature's signature):
   - **Breath** — a ×2.0 skill-multiplier attack across all foes in reach; Mana 12.
   - **Stone-Hide** — 30% physical damage reduction while sustained; Mana 4 per exchange (composes multiplicatively, Section 7.3).
-  - **Regeneration** — restore one standard-hit baseline (¼ band health) at the end of each of the next 3 exchanges; Mana 10.
+  - **Regeneration** — restore the D skill-rank baseline (25) at the end of each of the next 3 exchanges; Mana 10.
   - **Venom** — strikes inflict a grade-appropriate poison hazard (Section 6.3); passive on a chosen weapon.
   - **Wings** — flight for a scene (an off-die mobility unlock); Mana 8.
 - **Growth path.** Fragments are permanent; consuming a higher-grade core of the same signature upgrades that fragment's band.
@@ -1524,7 +1649,7 @@ Example — a Devourer at level 25 (cap 5):
 [SYSTEM] FRAGMENTS — 3/5   (cap = level ÷ 5)
 Breath · D · ×2.0 cone across foes in reach · Mana 12 · from a D salamander
 Stone-Hide · C · 30% physical reduction sustained · Mana 4/exchange · from a C golem
-Regeneration · D · ¼ band health for 3 exchanges · Mana 10 · from a D troll
+Regeneration · D · 25 Health for 3 exchanges · Mana 10 · from a D troll
 ```
 
 ## 18.7 Echo Knight — offered for endurance
@@ -1592,7 +1717,13 @@ The Bearer's System is instrument-invisible (Section 14.4), but his **feats are 
 
 ## 19.2 The Re-assessment Procedure
 
-BGM (Chicago) and CGA (Prague) run the same procedure: a **mana-capacity re-measurement** against the rank bands. Because the Bearer's pool genuinely grows (Section 5.1), a re-measurement reads toward his **effective band** (the level ladder, Section 6.6) — **higher than his card** — the instrument does not lie, and it does not see the System.
+BGM (Chicago) and CGA (Prague) run the same procedure: a **mana-capacity re-measurement**. The instrument reads the Bearer's current maximum Mana, not level or System tier:
+
+| Measured maximum Mana | E | D | C | B | A | S |
+|---|---:|---:|---:|---:|---:|---:|
+| Capacity range | 1–39 | 40–59 | 60–79 | 80–99 | 100–119 | 120+ |
+
+Because maximum Mana is `2 × effective Intelligence` (Section 5.1), Intelligence allocation and equipped Intelligence can move the reading. The instrument does not see the System, other Stats, skills, or hidden class; its official result is therefore a mana-capacity classification, not a complete combat verdict.
 
 - **Voluntary by default.** A hunter requests re-assessment; the authority schedules and measures. No one is dragged in merely for out-performing his card.
 - **Compulsory when court-ordered.** After a **public incident** — a death, an illegal clear, ability use on a human, or a party dispute escalated to a regulator — a court may **order** re-assessment, and refusal is then itself an offense (Section 19.4).

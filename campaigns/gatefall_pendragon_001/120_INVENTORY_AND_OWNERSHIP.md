@@ -27,14 +27,14 @@ subjects: []
 
 ### E-Grade Gear (Purchased 2026-07-23, Ironbound)
 
-- **Reinforced Leather Jacket** — E-grade hunter gear, protective jacket with shoulder and rib reinforcement. Purchased from Ironbound for $800. Provides protection without restricting mobility or wrist articulation.
-- **E-Grade Dagger** — E-grade short blade, approximately 18 inches, balanced for close-quarters combat. Purchased from Ironbound for $500. Optimized for krav maga-trained fighters and close-range dungeon work.
-- **Reinforced Gauntlets** — E-grade hand protection with metal knuckles, designed for unarmed and close-combat fighters. Purchased from Ironbound for $600. Provides wrist protection and impact reinforcement.
-- **Shin Guards** — E-grade leg protection. Purchased from Ironbound for $100. Protects against strikes to the lower leg.
+- **Reinforced Leather Jacket [E]** — **Bastion torso armor · Good · Vitality +1 · physical reduction 3%**. Purchased from Ironbound for $800 (`EVT-000058`); equipped on torso. Protective jacket with shoulder and rib reinforcement.
+- **E-Grade Quickknife** — **Quickknife · Good · off hand · Agility +2 · armed strike ×0.75**. Purchased from Ironbound for $500 (`EVT-000058`); equipped off hand. E-grade short blade, approximately 18 inches, balanced for close-quarters combat.
+- **Reinforced Gauntlets [E]** — **Bastion hands armor · Good · Vitality +1 · physical reduction 3%**. Purchased from Ironbound for $600 (`EVT-000058`); equipped on hands. Metal-knuckled hand protection fitted for close combat.
+- **Shin Guards [E]** — **Bastion legs armor · Good · Vitality +1 · physical reduction 3%**. Purchased from Ironbound for $100 (`EVT-000058`); equipped on legs.
 
 ### Boss Drop (Red Line Corridor, 2026-07-24)
 
-- **Armored Greave [E]** — grip-soled, joint-hinged E-grade leg armor salvaged from the Red Line Corridor boss (`EVT-000059`), suited to broken/vertical terrain. Currently in Alexander's physical possession; whether it is his to keep or goes to the pooled split has not been decided by the crew (`EVT-000060`).
+- **Armored Greave [E]** — **Bastion legs armor · Good · Vitality +1 · physical reduction 3%**. Grip-soled, joint-hinged leg armor salvaged from the Red Line Corridor boss (`EVT-000059`), suited to broken/vertical terrain. Stored and **not equipped** because the legs slot is occupied by the Shin Guards; whether it is Alexander's to keep or goes to the pooled split remains undecided (`EVT-000060`).
 
 ### Mining Tool (Purchased 2026-07-25, Ironbound)
 
@@ -49,7 +49,7 @@ subjects: []
 - Ordinary krav maga training gear (wraps, mouthguard, gym clothes) and a modest personal wardrobe.
 - Standard studio apartment lease in Chicago (rent per Profile Section 12.4, ≈$1,400/month — an ordinary cost of living, not separately tracked as an asset).
 
-System-shop gold (22,520 g as of 2026-07-27, after purchasing 10 lesser healing potions and 2 antidotes on 2026-07-26 and a C-grade dagger plus an instant-dungeon key [E-band] on 2026-07-27, from seven undeclared private crystal sales total across both harvest jobs) is Bearer state, not mundane property — tracked in `100_CHARACTER_SHEET.md`'s `system_state`, not here, per World Rule Profile Section 14.1. The purchased potions, antidotes, dagger, and key are likewise tracked there as banked, unwithdrawn shop holdings (Profile Section 12.5/12.9) rather than physical inventory here, since they have not left the shop into the world.
+System-shop gold (22,520 g), stored potions/antidotes/key, the equipped **C-grade Quickknife** (**Good · main hand · Agility +7 · armed strike ×0.75**), and the current Daily Premium cycle are Bearer state tracked in `100_CHARACTER_SHEET.md`'s `system_state` (Profile Sections 11.5, 12.5, 12.9, 14.1). Profile 1.2 normalization and loadout state were adopted under `EVT-000072`, and the current premium offer grades were migrated under Profile 1.3 in `EVT-000073`; no ownership or provenance changed.
 
 ## Pending Income (not yet received)
 

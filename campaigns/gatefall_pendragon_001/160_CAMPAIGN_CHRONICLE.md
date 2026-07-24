@@ -34,6 +34,8 @@ subjects:
   - EVT-000069
   - EVT-000070
   - EVT-000071
+  - EVT-000072
+  - EVT-000073
 ```
 
 ---
@@ -461,4 +463,54 @@ Priya attempted to intercept the elite on that exact read and **fumbled catastro
 Alexander met it dual-wielding both daggers — the old E-grade blade already in hand, the new C-grade dagger summoned into his other hand mid-motion (Owen's second direct, unremarked observation of the trick this clear) — using the calculated timing from his own read: d100 76, net +1, effective 96, critical success. The strike redirected the lunge past both himself and Owen entirely and landed a real, damaging counter along the elite's flank. Damage: 10 (E-band baseline) × 0.75 (armed) × 4 (critical) = 30, against the elite's ×2 C-band health (500) — a real but proportionally modest wound.
 
 The elite is badly hurt but still active and recovering its footing. Priya is pulling herself back up, favoring one side, wounded but fighting. Combat is ongoing; the Gate's boss has not yet been encountered. No further exchange has resolved past this point."
+```
+
+## EVT-000072 - Gatefall Profile 1.2 Readiness Migration
+
+```yaml
+id: EVT-000072
+canonical_record: REC-000079
+schema_version: "0.1.2"
+status: active
+provenance:
+  source: owner-approved-profile-migration
+  event_time: "2026-07-28, before the next Ashfield Gate exchange"
+  record_time: "2026-07-28T09:45:01Z"
+type: Event
+kind: rules-migration
+importance: major
+event_time: "2026-07-28"
+participants:
+  - ENT-000125
+description: "Before the next exchange of the Ashfield Gate fight, the live campaign explicitly adopted frozen Gatefall World Rule Profile 1.2 from frozen 1.1. This was a readiness migration, not fiction: no elapsed time, voluntary action, prior roll, damage, XP, Health, Mana, gold, ownership, provenance, injury, skill, title, or resolved exchange changed.
+
+Every owned graded item was normalized under the profile-header migration and Section 11.5. The old E-grade dagger became an E-grade Quickknife (Agility +2, armed strike ×0.75); the purchased C-grade dagger became a C-grade Quickknife (Agility +7, armed strike ×0.75). The recorded dual-wielding state was preserved with C Quickknife main hand and E Quickknife off hand. The worn reinforced jacket, gauntlets, and shin guards became E-grade Bastion torso/hands/legs armor (Vitality +1 and 3% physical reduction each). The disputed E-grade armored greave became a stored E-grade Bastion legs piece and remains unequipped and ownership-undecided.
+
+Alexander's base stats remain Strength 16, Agility 12, Vitality 10, Perception 11, Intelligence 10. Equipped bonuses derive effective stats Strength 16, Agility 21, Vitality 13, Perception 11, Intelligence 10. The three equipped armor pieces derive total physical reduction `1 − (0.97 × 0.97 × 0.97) = 8.7327%` (display 8.7%). These values govern only subsequent resolutions; nothing already resolved was recalculated.
+
+The current E-band Daily Premium cycle (2026-07-28 06:00 to 2026-07-29 06:00 Chicago) was initialized by seven real rolls: weapon d7=6, armor slot d5=2, armor style d5=4, accessory d5=3, consumable d6=5, rune d10=2, key d6=5. The six unpurchased offers are: Spellthread Focus [E] (200 g), Adaptive Watcher Torso [E] (120 g), Ascendant Heartward Sigil [E] (160 g), Quicksilver Phial (750 g), Dagger Mastery Rune [E] (2,500 g), and Runic Key [E] (1,000 g). All 6/6 remain available until the next 06:00 rotation."
+```
+
+## EVT-000073 - Gatefall Profile 1.3 Daily Premium Grade Migration
+
+```yaml
+id: EVT-000073
+canonical_record: REC-000079
+schema_version: "0.1.2"
+status: active
+provenance:
+  source: owner-approved-profile-migration
+  event_time: "2026-07-28, before the next Ashfield Gate exchange"
+  record_time: "2026-07-28T09:45:02Z"
+type: Event
+kind: rules-migration
+importance: major
+event_time: "2026-07-28"
+participants:
+  - ENT-000125
+description: "Before the next exchange of the Ashfield Gate fight, the live campaign explicitly adopted frozen Gatefall World Rule Profile 1.3 from frozen 1.2. This narrow rules migration consumed no fictional time and changed no action, roll, combat result, equipment, stat, Health, Mana, XP, gold, ownership, or purchase flag.
+
+The current Daily Premium cycle preserved all six Profile 1.2 models and their wholly-unpurchased state. Five real d100 grade rolls were made against Alexander's E effective band under Section 12.5: Weapon 46 = E; Armor 85 = C; Accessory 74 = D; Rune 23 = E; Key 70 = D. The ungraded Consumable received no grade roll.
+
+The migrated offers are Spellthread Focus [E] (Intelligence +4, active-skill Mana costs -1 minimum 1, 200 g); Adaptive Watcher Torso [C] (Perception +5, physical reduction 11%, 2,400 g); Ascendant Heartward Sigil [D] (Vitality +5, 720 g); Quicksilver Phial (750 g); Dagger Mastery Rune [E] (2,500 g); and Runic Key [D] (D-grade instant dungeon with one guaranteed rolled boss rune, 4,500 g). All 6/6 remain available until 2026-07-29 06:00 Chicago."
 ```

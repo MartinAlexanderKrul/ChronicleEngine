@@ -121,19 +121,17 @@ canonical_state:
 
 ## Graded Hunter Gear
 
-Weapons and armor pieces graded E through S exactly as monsters and crystals are — an item's grade sets its damage or protection band precisely as a monster's grade sets its band health (`206` Section 11.5, Section 6.1). Gear enters play two ways: as a **boss drop** (d100 01–40 on the boss-drop table, at the Gate's grade) or as a plain purchase from the System shop's own weapon line, which stops at C-grade. A grade is an item's complete mechanical description — no per-item stat line is authored beyond grade, type, and any named effect. **Named uniques** — a specific weapon or artifact with a recorded origin — exist only where a file authors one with provenance; the boss-drop table never generates one at random. **All graded gear is mana-bearing** — forged from beast cores by artificers (`206` Section 12.8) — which is precisely what makes a graded weapon effective against monsters: it lands mana-borne damage even in an unawakened hand, where a mundane firearm or blade lands nothing (`206` `GTF-OVR-003`). This is the world's only true "magic weapon," and it has no cheap or mundane substitute — the reason gear holds its price.
+Weapons, armor pieces, shields, focuses, and accessories are graded E through S. Under Profile 1.3, grade supplies an exact stat budget and protection magnitude while the item's **chassis** determines its slot, stat allocation, and combat behavior (`206` Section 11.5). A complete item line is therefore game state — not flavor — and equipped bonuses feed the Bearer's effective stats. Gear enters play through a rolled boss-drop chassis or the System shop's fixed catalogue, which unlocks every grade through S as the Bearer's effective band rises. **Named uniques** remain authored one-of-a-kind items with provenance and are never generated randomly. **All graded weapons are mana-bearing**, forged from beast cores by artificers (`206` Section 12.8), and can wound monsters even in an unawakened hand (`206` `GTF-OVR-003`).
 
-**Market behavior.** The open licensed market trades gear informally between guilds, dealers, and freelancers at negotiated prices with no anchored public schedule the way crystals and cores carry one; the only authored gear prices in Gatefall are the System shop's own sell line, which is fixed and universal because it is gold, not money. Stolen or unregistered gear moves through the same underground channels that carry cores and artifacts westward out of Prague, but Gatefall authors no felony premium specific to gear the way it does for crystals and cores (`206` Section 12.2) — gear's black-market risk is provenance risk (a hot weapon with no clean sale record), not a priced spread.
+**Market behavior.** The open licensed market trades gear informally between guilds, dealers, and freelancers at negotiated prices; only the System shop has a fixed schedule. The shop sells all non-unique chassis at unlocked grades and repurchases eligible intact catalogue gear at 25% of its listed price (`206` Section 12.5). At 06:00 each day it also rolls one quantity-one **premium Weapon, Armor, and Accessory** model unavailable as stock from any world store; these expire at the next rotation. Stolen or unregistered gear moves through the same underground channels that carry cores and artifacts westward out of Prague, but Gatefall authors no felony premium specific to gear (`206` Section 12.2) — its black-market risk is provenance risk.
 
 **Price table** (`206` Section 12.5, Anchor A7, copied verbatim — System shop sell line, gold):
 
-| Item | Shop price |
-|---|---|
-| E-grade weapon | 100 g |
-| D-grade weapon | 450 g |
-| C-grade weapon | 2,000 g |
-
-The shop's line stops at C; B-grade and above gear enters play only through boss drops or authored named uniques (`206` Section 11.2, 11.5).
+| Grade | E | D | C | B | A | S |
+|---|---:|---:|---:|---:|---:|---:|
+| Any weapon chassis | 100 g | 450 g | 2,000 g | 9,000 g | 40,000 g | 180,000 g |
+| Any armor piece | 60 g | 270 g | 1,200 g | 5,400 g | 24,000 g | 108,000 g |
+| Any accessory | 80 g | 360 g | 1,600 g | 7,200 g | 32,000 g | 144,000 g |
 
 ```yaml
 id: ENT-000121
@@ -152,18 +150,20 @@ aliases:
   - name: "graded hunter gear"
     quality: current
 canonical_state:
-  description: "Weapons and armor graded E-S, entering play via boss drop (d100 01-40 at Gate grade) or System-shop purchase (E-C only); grade sets damage/protection band exactly as grade sets a monster's band health."
-  market_behavior: "Trades informally on the open licensed market at negotiated, non-anchored prices; the System shop's fixed gold line covers E-C only; underground movement carries provenance risk rather than an authored felony premium. Named uniques enter play only with authored provenance, never at random."
-  price_table: "System shop sell (gold, Section 12.5): E-grade weapon 100 g, D-grade weapon 450 g, C-grade weapon 2,000 g. B and above: boss drop or authored unique only, no fixed price."
+  description: "Weapons, armor, shields, focuses, and accessories graded E-S. Grade supplies the stat/protection magnitude and chassis supplies slot, stat allocation, and combat behavior; equipped lines causally modify the Bearer. Boss drops roll a chassis, while the shop unlocks fixed catalogue grades through S with Bearer progression."
+  market_behavior: "Trades informally on the licensed market at negotiated prices; the System shop has fixed E-S gold schedules and repurchases intact catalogue gear at 25%. Its 06:00 Daily Premium rotation has one quantity-one Weapon, Armor, and Accessory unavailable as world-store stock; each rolls its grade independently and may exceed the Bearer's effective band. Underground movement carries provenance risk rather than an authored felony premium. Named uniques enter play only with authored provenance, never at random."
+  price_table: "System shop sell (gold, Section 12.5), E/D/C/B/A/S: weapons 100/450/2,000/9,000/40,000/180,000 g; armor pieces 60/270/1,200/5,400/24,000/108,000 g; accessories 80/360/1,600/7,200/32,000/144,000 g. Daily Premium equipment costs 2x its rolled offer-grade category price."
 ```
 
 ---
 
 ## System-Shop Consumables
 
-Potions, an antidote, an instant-dungeon key, and a permanent stat elixir — everything the System sells for gold that is not gear. All of it is priced only in the shop's own currency and reachable by no one but the Bearer (`206` Section 2, Section 12.5); the wider world's medical, magical, and dungeon-access economy runs on entirely separate goods and prices the shop never touches. A healing potion restores Health directly on this schedule but does not by itself clear a wound's severity (`206` Section 6.3); an elixir grants a permanent +1 to one stat, capped at **3 lifetime per stat**.
+Healing and Mana potions, antidotes, appraisal scrolls, stabilization seals, graded dungeon keys, selectable skill runes, and permanent stat elixirs make up the shop's non-equipment catalogue. All are priced in gold and reachable only through the Bearer's interface (`206` Sections 2, 12.5). A healing potion restores Health but does not clear injury severity; a stabilization seal suspends a Critical injury's untreated death risk for 24 hours without healing it; an elixir grants permanent +1 to one base stat, capped at **3 lifetime per stat**.
 
-**Market behavior.** Consumables exist exclusively inside the System shop — there is no licensed-market or black-market channel for them at all, because nobody outside the Bearer can see the shop, let alone buy from it. The no-exchange rule applies here as everywhere else in the System's economy: gold spent on a potion or a key can never be recovered as money, and money cannot buy a single one directly (`206` Section 12.5).
+**Market behavior.** These goods originate exclusively in the System shop — there is no licensed-market supply channel because nobody outside the Bearer can see the interface. Once purchased they are transferable physical objects, however, and their unlicensed provenance can become an exposure thread. The shop repurchases an unused consumable, rune, or key at 50% of list price; the gold can never become money (`206` Sections 12.5, 19).
+
+**Daily Premium.** At 06:00 local time the shop rolls six expiring, quantity-one System-exclusive offers — one in every category: Weapon, Armor, Accessory, Consumable, Rune, and Key. Weapon, Armor, Accessory, Rune, and Key each receive an independent d100 grade roll whose floor is the Bearer's effective band and whose result can reach higher grades; Consumables are ungraded. The premium consumables, skill/mastery runes, and loot-modifying instant-dungeon keys have no world-store source at all. Their exact roll tables, effects, prices, expiry, and resale boundary live in `206` Section 12.5.
 
 **Price table** (`206` Section 12.5, Anchor A7, copied verbatim — System shop sell line, gold):
 
@@ -173,9 +173,15 @@ Potions, an antidote, an instant-dungeon key, and a permanent stat elixir — ev
 | Standard healing potion | 90 g |
 | Greater healing potion | 400 g |
 | Lesser mana potion | 20 g |
+| Standard mana potion | 75 g |
+| Greater mana potion | 300 g |
 | Antidote | 30 g |
-| Instant-dungeon key (own band) | 500 g |
-| Elixir of a stat (+1 permanent, max 3 lifetime per stat) | 5,000 g |
+| Appraisal scroll | 60 g |
+| Stabilization seal | 150 g |
+| E-rank selected skill rune | 1,000 g |
+| D-rank selected skill rune | 4,500 g |
+| Instant-dungeon key (E/D/C/B/A/S) | 500 / 2,250 / 10,000 / 45,000 / 200,000 / 900,000 g |
+| Elixir of a stat (+1 permanent base stat, max 3 lifetime per stat) | 5,000 g |
 
 ```yaml
 id: ENT-000122
@@ -194,7 +200,7 @@ aliases:
   - name: "System-shop consumables"
     quality: current
 canonical_state:
-  description: "Potions, antidote, instant-dungeon key, and stat elixir sold by the System shop for gold; reachable only by the Bearer, no other channel exists for any of it."
-  market_behavior: "Exclusive to the System shop; no licensed-market or black-market channel exists for any item in this family. The no-exchange rule holds absolutely: gold spent here is never recovered as money."
-  price_table: "System shop sell (gold, Section 12.5): lesser healing potion 25 g, standard healing potion 90 g, greater healing potion 400 g, lesser mana potion 20 g, antidote 30 g, instant-dungeon key (own band) 500 g, elixir of a stat (+1 permanent, max 3 lifetime per stat) 5,000 g."
+  description: "Healing and Mana potions, antidote, appraisal scroll, stabilization seal, graded key, selectable E/D skill rune, and stat elixir sold by the System shop for gold; the interface is reachable only by the Bearer. A 06:00 Daily Premium rotation guarantees one expiring quantity-one offer in all six shop categories."
+  market_behavior: "Originates exclusively in the System shop but becomes transferable physical property after purchase; unused listed goods resell to the shop at 50%, premium goods at 25% of premium price. Premium models never appear as world-store stock. The no-exchange rule holds: gold never converts to money."
+  price_table: "System shop sell (gold, Section 12.5): healing 25/90/400 g; Mana 20/75/300 g; antidote 30 g; appraisal scroll 60 g; stabilization seal 150 g; E/D skill rune 1,000/4,500 g; E-S keys 500/2,250/10,000/45,000/200,000/900,000 g; stat elixir 5,000 g."
 ```

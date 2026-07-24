@@ -13,9 +13,9 @@ canonical_record: REC-000081
 schema_version: "0.1.2"
 status: active
 provenance:
-  source: EVT-000071
+  source: EVT-000073
   event_time: "2026-07-28"
-  record_time: "2026-07-28T09:45:00Z"
+  record_time: "2026-07-28T09:45:02Z"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -25,21 +25,22 @@ subjects: []
 
 ## Bindings and Versions
 
-- World: Gatefall (World Version 0.1, World Rule Profile 1.1)
+- World: Gatefall (World Version 0.1, World Rule Profile 1.3)
 - Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.2
 - Start city: Chicago
 - Campaign date: **2026-07-28** (inside the Ashfield Gate, mid-combat, Chicago)
 - Campaign state: session-2 in progress; mid-fight inside a Gate that resolved a full grade heavier than posted
-- World Rule Profile: Gatefall **1.1**, frozen 2026-07-24 (Rules Section 14.6, Decision 074) — an **additive** upgrade over frozen 1.0, adding `GTF-OVR-003` (mana-borne damage against monsters: mundane firearms/blades/explosives deal ×0 damage to a monster; only an awakened wielder's strike or a mana-bearing weapon lands). Additive means no recomputation: checkpoints 0001–0009, captured under 1.0, restore under 1.1 unchanged. This checkpoint is the first captured directly under 1.1.
-- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0010/` — captured **mid-combat**; restoring it resumes directly into the fight with the wounded elite still active.
+- World Rule Profile: Gatefall **1.3**, frozen 2026-07-24 (Rules Section 14.6, Decision 074) — explicitly migrated from 1.1→1.2 under `EVT-000072`, then 1.2→1.3 under `EVT-000073`, before the next Ashfield Gate exchange. The second migration preserved the current premium models and purchase flags while independently rolling five offer grades; it changed no fiction or other campaign state.
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0010/` — immutable 1.1 capture from immediately before `EVT-000072`. Restoring it resumes at the same mid-combat anchor and must reapply the explicit 1.1→1.2 and 1.2→1.3 migrations before play. Live ledgers already hold the migrated 1.3 state.
 
 ## Protagonist
 
 - Alexander Pendragon (`ENT-000125`) - 25, mathematician/physicist, krav maga instructor, licensed E-rank hunter (~16 days).
-- Status: Active, **Bearer** (System attached 2026-07-24, `EVT-000059`) — **Level 3**, XP 110/300, Health 40/40, Mana 20/20, 3 unspent stat points (Strength 16, Agility 12, Vitality 10, Perception 11, Intelligence 10), **two** grants banked (a leftover daily-quest grant and the fresh level-up grant, both +3 stat points/full restore, unclaimed), gold 22,520 (undeclared, private), daily-quest streak 4/7. Full detail: `100_CHARACTER_SHEET.md` `system_state`. Perceptible to him alone; unknown to anyone else.
+- Status: Active, **Bearer** (System attached 2026-07-24, `EVT-000059`) — **Level 3**, XP 110/300, Health 40/40, Mana 20/20, 3 unspent stat points; base stats Strength 16 / Agility 12 / Vitality 10 / Perception 11 / Intelligence 10; equipped-effective stats **Strength 16 / Agility 21 / Vitality 13 / Perception 11 / Intelligence 10** (`EVT-000072`); **two** grants banked (a leftover daily-quest grant and the fresh level-up grant, both +3 stat points/full restore, unclaimed); gold 22,520 (undeclared, private); daily-quest streak 4/7. Full detail: `100_CHARACTER_SHEET.md` `system_state`. Perceptible to him alone; unknown to anyone else.
 - Location: Inside the Ashfield Gate (archetype), a Chicago posting, mid-morning 2026-07-28.
 - Condition: Health and Mana full, restored via a claimed grant after taking a near-lethal hit (0/40) fighting a C-grade beast above his own band. No lasting injury.
-- Equipment: four E-grade items bought 2026-07-23, an E-grade armored greave from the Red Line boss drop (split undecided), a resonance chisel bought 2026-07-25, and — banked in the dimensional inventory, private — 10 lesser healing potions, 2 antidotes, a C-grade dagger (now proven in combat, dual-wielded alongside the old E-grade one), and an instant-dungeon key [E-band]; $1,920 cash on hand, ≈$2,313 / ≈$5,700 / ≈$24,663 pending across three prior jobs; active BGM E-rank license. Full detail: `120_INVENTORY_AND_OWNERSHIP.md`.
+- Equipment: **C Quickknife main hand (Agility +7), E Quickknife off hand (Agility +2), E Bastion jacket/gauntlets/shin guards equipped (Vitality +3 total; three multiplicative 3% reductions = 8.7327%, display 8.7%)**. Head, feet, and both accessories empty. The E Bastion armored greave remains stored, unequipped, and ownership-undecided. Also held: resonance chisel, 10 lesser healing potions, 2 antidotes, E instant-dungeon key; $1,920 cash and ≈$2,313 / ≈$5,700 / ≈$24,663 pending across three jobs; active BGM E-rank license. Full detail: `100_CHARACTER_SHEET.md` and `120_INVENTORY_AND_OWNERSHIP.md`.
+- Daily Premium (current cycle, E-band grade floor, rotates 2026-07-29 06:00 Chicago): **6/6 unpurchased** — Spellthread Focus [E] 200 g; Adaptive Watcher Torso [C] 2,400 g; Ascendant Heartward Sigil [D] 720 g; Quicksilver Phial 750 g; Dagger Mastery Rune [E] 2,500 g; Runic Key [D] 4,500 g. Models generated by seven real rolls under `EVT-000072`; five independent grade rolls under `EVT-000073`.
 - Social position: Stable background; freelancer registered with the Windy City Hunters Coalition (`ENT-000102`, `REL-000062`); Red Line crew contract with Tanya Voss (`REL-000063`) closed; harvest-hire standing with a corporate-adjacent contractor (`REL-000064`); **active** fifth-slot membership on striker Priya Okafor's crew (`ENT-000136`, `REL-000065`) — confirmed and underway, mid-Gate.
 - Standing liability: $30,000 tuition debt, $400/month minimum (see `100_CHARACTER_SHEET.md`, `120_INVENTORY_AND_OWNERSHIP.md`).
 - Known disposition risk: coldly analytical and reliably correct in his reads, but hot-headed — trusts that read and moves fast once he's judged someone else to be in the wrong.
@@ -63,4 +64,4 @@ Session 2 in progress, **mid-combat**. Alexander is inside the Ashfield Gate, el
 
 Session 2 in progress — **checkpoint `900_CHECKPOINT_0010` written mid-fight** after the Gate's entry, the first-wave clear, Alexander's first solo kill above his own band and resulting level-up, and the elite's breakthrough and counter, capturing all eight ledgers with a save manifest.
 
-Ledgers promoted this session (`EVT-000070`, `EVT-000071`): `100` (level/XP/unspent-points/pending-grants/daily-quest fields, extensive notes), `110` (unchanged this pass), `120` (unchanged this pass), `130` (Priya's entry updated; Julian, Renata, Owen added; `REL-000065` activated), `140` (OBJ-8 updated to in-progress with full Gate detail), `160` (chronicle `EVT-000070`, `EVT-000071`), `170` (changelog), `180` (this file). Registry advanced: `ENT-000137`, `ENT-000138`, `ENT-000139`, `EVT-000070`, `EVT-000071`. Index (`system/WORLDS_AND_CAMPAIGNS.md`) updated to name the new latest checkpoint.
+Ledgers promoted this session (`EVT-000070`, `EVT-000071`, `EVT-000072`, `EVT-000073`): prior gameplay state remains as captured in Checkpoint 0010; the post-checkpoint migrations updated `090`, `100`, `120`, `160`, `170`, and `180`, leaving `110`, `130`, and `140` unchanged. Registry advanced through `EVT-000073`. The latest restorable checkpoint remains immutable Checkpoint 0010 under Profile 1.1; live ledgers are migrated sequentially through 1.2 to 1.3.

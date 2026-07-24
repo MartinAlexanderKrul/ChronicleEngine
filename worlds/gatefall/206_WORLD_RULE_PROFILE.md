@@ -1,14 +1,27 @@
-# Gatefall — World Rule Profile 1.1
+# Gatefall — World Rule Profile 1.3
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.1
+**Profile Version:** 1.3
 **Engine Compatibility:** 0.2.0; Data Model 0.1.2
 **Status:** Active
-**Compatibility Status:** frozen at version 1.1 (Rules Section 14.6, Decision 074), declared 2026-07-24. Version 1.1 is an **additive** advance over frozen 1.0: it adds `GTF-OVR-003` (mana-borne damage against monsters, Section 1) as a **declare-only** rule and recomputes no existing state, so a checkpoint captured under 1.0 — Gatefall: Pendragon checkpoints 0001–0009 among them — restores under 1.1 **without recomputation**, carrying only an additive-upgrade acknowledgement (Rules Sections 14.4, 13.6). Both versions are **immutable behavioral contracts**: a checkpoint captured under a frozen version is **save-trustworthy**, and changing any declared override, magnitude, or mechanic requires a further **new profile version** — classified *additive* (declare-only, backward-compatible; a restored older checkpoint needs no recomputation) or *migrating* (changes how existing state settles; restoration requires an explicit migration). Version 1.0 was frozen 2026-07-24; checkpoints captured before that freeze, under 1.0 while it was a workshop draft, retain their *unfrozen — not save-trustworthy* warning.
+**Compatibility Status:** frozen at version 1.3 (Rules Section 14.6, Decision 074), declared 2026-07-24. Version 1.3 is a **migrating** advance over frozen 1.2: Daily Premium equipment, runes, and keys now roll grades independently and may appear above the Bearer's effective band (Section 12.5). An active 1.2 cycle must complete the narrow migration below before play continues. Version 1.2 remains the immutable contract governing play before that migration.
 
-**1.0 authors the System in full — the mechanical law of a gate-and-System world of awakened hunters.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
+**Required 1.2 → 1.3 migration.** Preserve the current Daily Premium cycle's six item models and purchased flags. For each unpurchased grade-bearing offer — Weapon, Armor, Accessory, Rune, and Key — make a new Section 12.5 grade d100 roll against the Bearer's effective band at the cycle's original rotation. Update the offer's grade, derived item line or effect, and price from that roll. A purchased offer is not rerolled or changed. Record the five rolls and migration acknowledgement in the live ledgers and next promoted checkpoint; no other state changes.
+
+**Required 1.1 → 1.2 migration.** At the readiness gate, before any fiction or resolution under 1.2:
+
+1. Preserve every owned item's grade, type, provenance, condition, and location.
+2. Normalize each recorded graded weapon to the matching Section 12.5 chassis by its authored type (a recorded dagger becomes a **Quickknife**, a sword a **Longsword**, a greatsword/greataxe a **Greatarm**, a spear/polearm a **Reacharm**, a bow/crossbow a **Longshot**, a wand/staff/focus a **Channeling Focus**, and a shield a **Guard Shield**). A weapon whose type is genuinely absent is unresolved: halt and ask the owner to choose its chassis; do not roll or infer it.
+3. Normalize each recorded armor piece to its recorded slot. If its style is absent, it becomes **Bastion** armor of that slot. If its slot is genuinely absent, halt and ask the owner; do not roll or infer it.
+4. Record the normalized chassis and its derived equipment line from Section 11.5. Do not add, remove, sell, equip, or unequip an item during migration.
+5. Add the nine equipment slots from Section 12.9 to the Bearer's canonical `system_state`. Preserve what the fiction already establishes as worn or wielded; every other owned item remains stored. A two-handed weapon occupies both hand slots.
+6. Initialize the current Daily Premium cycle by making the seven real rolls required by Section 12.5; no missed pre-migration rotation is reconstructed. Re-render `/system`, `/system equipment`, `/system inventory`, and `/system shop`, verify base stats are unchanged, and record the migration acknowledgement in the next promoted checkpoint's manifest.
+
+This migration changes no gold, Health, Mana, XP, base stat, skill, title, injury, ownership, or item provenance. It only makes already-owned gear mechanically complete and records which pieces are equipped.
+
+**1.3 authors the System in full — the mechanical law of a gate-and-System world of awakened hunters.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats, equipment, and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
 
 ---
 
@@ -32,7 +45,7 @@ Grades everywhere in this world are **E, D, C, B, A, S**, weakest to strongest.
 - **Scope:** The **Bearer** alone — the single living holder of Gatefall's diegetic System. Not awakened hunters generally: they do not level and nothing counts their growth (Section 2).
 - **Activation:** Active while the character bears Gatefall's System.
 - **Replacement:** Experience (XP) awarded for genuine resolved challenge is causal canonical state. Crossing a threshold causes a **level-up**, which grants allocatable **stat points** and restores Health and Mana in full. A spent stat point directly and permanently changes canonical capability. Skills acquired by rune, skill book, or ratified practice are canonical capability.
-- **State/provenance:** The Bearer's character ledger records level, current XP, next threshold, unspent stat points, every stat and its allocations, the Mana pool maximum, every known skill, and the event or resolved challenge that awarded each XP gain.
+- **State/provenance:** The Bearer's character ledger records level, current XP, next threshold, unspent stat points, every **base** stat and its allocations, the nine equipment slots, the Mana pool maximum, every known skill, and the event or resolved challenge that awarded each XP gain. Item lines live with the owned items; effective stats are derived from base stats plus the equipped lines (Sections 4.1, 11.5, 12.9).
 - **Resolution:** Growth changes capability — and therefore modifier steps, costs, magnitudes, prerequisites, and available methods. **It never supplies the outcome of an uncertain action.** Uncertain actions still resolve on the d100 through Rules Section 4 and Decision 058. A level is never spent to buy a result.
 
 ## GTF-OVR-002 — System Vitality
@@ -204,7 +217,7 @@ Only the Bearer's own System grants work this way; nothing about an NPC hunter c
 
 ## 4.1 The Five Stats
 
-The Bearer has five stats:
+The Bearer has five **base stats**:
 
 | Stat | Governs |
 |---|---|
@@ -218,23 +231,31 @@ An ordinary awakened adult sits at a **baseline of 10 per stat**. The Bearer beg
 
 **The creation array.** At campaign creation the Bearer's five stats are set from a fixed civilian-range array: **five stats, each in the range 8–12, summing to exactly 50, with none above 12.** The average is the ordinary-adult baseline of 10, and the ±2 spread is the pre-System human variation the protagonist starts with — below the point where any modifier-step contribution or capability unlock (Sections 4.3–4.4) has yet been earned. No creation stat sits above 12: the Bearer opens as a civilian, and every point beyond that spread is growth the System has not yet granted.
 
+**Base and effective stats.** Equipment never rewrites a base stat. While an item is equipped, its Section 11.5 bonuses add to the Bearer's base values:
+
+```text
+effective_stat = base_stat + sum(bonuses from equipped items)
+```
+
+The effective value governs actions and modifier steps (Section 4.3), so equipment is causal capability rather than descriptive loot. Unequipping the item removes its contribution immediately. Permanent allocation, elixirs, and grants change the base value instead. Section 4.4 capability unlocks remain progression achievements and therefore read the **base** value only; temporary equipment cannot grant a permanent unlock.
+
 ## 4.2 Stat Points
 
-A **stat point** is the allocatable unit of growth. Its sources are the **level-up grant** (+3, Section 3.2) and the **daily-quest completion grant** (+3, Section 8.1) — both offered under Section 3.9 — plus any item, title, or skill that states a specific point bonus. One stat point raises one stat by **1**. Allocation is permanent canonical capability; there is no respec unless a future authored in-world mechanism adds one with a cost. Points from an accepted grant sit in the Bearer's **unspent pool** until he allocates them; allocation may happen any time and is not itself an offer.
+A **stat point** is the allocatable unit of growth. Its sources are the **level-up grant** (+3, Section 3.2) and the **daily-quest completion grant** (+3, Section 8.1) — both offered under Section 3.9 — plus any item, title, or skill that states a specific point bonus. One stat point raises one **base** stat by **1**. Allocation is permanent canonical capability; there is no respec unless a future authored in-world mechanism adds one with a cost. Points from an accepted grant sit in the Bearer's **unspent pool** until he allocates them; allocation may happen any time and is not itself an offer.
 
 ## 4.3 The Modifier-Step Rule
 
 A **modifier step** is one 20-percentile-point adjustment to a d100 resolution, composed under engine rules (Rules Section 4.4; Decision 058). Stats feed the die through exactly one rule:
 
-> **+1 modifier step per full 10 points in the stat that governs the action.**
+> **+1 modifier step per full 10 points in the effective stat that governs the action.**
 
-At the baseline of 10 the governing stat contributes **+1 step**; at 20, **+2**; at 30, **+3**; fractional remainders below the next full 10 contribute nothing (a stat of 25 gives the same +2 as a stat of 20). Exactly one stat — the one whose domain the action falls in (Section 4.1) — supplies this contribution; an action outside all five domains takes no stat step. This contribution composes with band-gap and circumstance modifiers, and **the engine's net modifier remains capped at ±3** (Decision 058); the die still resolves the outcome. **Stats never replace the roll** — they establish how well the Bearer is positioned, not whether an uncertain action succeeds.
+At an effective value of 10 the governing stat contributes **+1 step**; at 20, **+2**; at 30, **+3**; fractional remainders below the next full 10 contribute nothing (an effective stat of 25 gives the same +2 as 20). Exactly one stat — the one whose domain the action falls in (Section 4.1) — supplies this contribution; an action outside all five domains takes no stat step. This contribution composes with band-gap and circumstance modifiers, and **the engine's net modifier remains capped at ±3** (Decision 058); the die still resolves the outcome. **Stats never replace the roll** — they establish how well the Bearer is positioned, not whether an uncertain action succeeds.
 
 **The band-gap modifier.** When actor and opponent stand in different effective bands (Section 6.1, Section 6.6), the gap feeds the die directly: **−1 modifier step per full band the opponent stands above the actor, and +1 per full band below.** A same-band contest takes no band-gap step; a C actor against an A foe takes **−2**, and a C actor against an E foe takes **+2**. This step composes with the governing-stat step above and any circumstance step into the engine's **net ±3 cap** (Decision 058) — it never bypasses the die. Where Section 18.4 and any other section name a "band-gap modifier" or "band-gap penalty," this is the rule they invoke.
 
 ## 4.4 Capability Unlocks
 
-At **30** and **50** in a stat, the Bearer crosses a **capability unlock**: a named, off-die ability that widens what actions are *possible*, distinct from the modifier-step contribution above. Unlocks are permanent once reached. Each of the five stats has one unlock at 30 and one at 50:
+At **30** and **50** in a **base** stat, the Bearer crosses a **capability unlock**: a named, off-die ability that widens what actions are *possible*, distinct from the modifier-step contribution above. Equipment bonuses do not satisfy these thresholds. Unlocks are permanent once reached. Each of the five stats has one unlock at 30 and one at 50:
 
 | Stat | At 30 | At 50 |
 |---|---|---|
@@ -320,6 +341,7 @@ damage = standard_hit_baseline(attacker's effective grade)   # ¼ of the attacke
 A miss deals no damage. **Critical tails are always live** (Decision 052): a natural critical is a critical hit that no modifier can remove, and a natural fumble lands nothing.
 
 - **Reductions apply last, and compose with `GTF-OVR-002`.** The die first resolves whether the hit lands and its degree; the multipliers above then set the raw magnitude; and only then is damage removed from Health **after** applicable reductions — exactly the "damage after reductions" order `GTF-OVR-002` declares. Reductions **multiply, never add** (`total_reduction = 1 − Π(1 − rᵢ)`, Section 7), so no stack of protections reaches immunity.
+- **Equipped armor is an authored reduction.** Each equipped armor piece and Guard Shield contributes the reduction for its own grade from Section 11.5. These reductions compose multiplicatively with one another, skills, titles, and circumstances under the same formula above. Stored, carried, broken, or merely owned armor contributes nothing.
 
 Healing reuses the same unit: a skill that "restores one standard-hit baseline" restores `band_health ÷ 4` Health.
 
@@ -705,14 +727,35 @@ On the boss kill, in addition to its core, roll the **boss drop** on a d100. The
 
 | d100 | Boss drop |
 |---|---|
-| 01–40 | **Weapon or armor piece** at the Gate grade (Section 11.5). |
-| 41–65 | **Rune** — teaches one random authored skill (Section 7.1). |
+| 01–40 | **Equipment** at the Gate grade — roll its chassis on the table below (Section 11.5). |
+| 41–65 | **Rune** — roll d8 on the Section 7.3 starting-skill table in listed order; it teaches that authored skill (Section 7.1). |
 | 66–80 | **Potion cache** — 3 potions at the Gate-grade tier (Section 12.5). |
 | 81–90 | **Instant-dungeon key** at the Gate grade (Section 17, authored later). |
 | 91–97 | **Skill book** — from the skill-book table (Section 11.3). |
 | 98–00 | **Elixir** — a permanent +1 to one stat (max 3 lifetime per stat, Section 12.5). |
 
 The **potion cache** tier follows the Gate grade: Gate grade **E–D → lesser** potions, **C–B → standard**, **A–S → greater** (the tiers priced in Section 12.5).
+
+For an **equipment** result, roll d20:
+
+| d20 | Equipment chassis |
+|---|---|
+| 1–2 | Quickknife |
+| 3–4 | Longsword |
+| 5 | Greatarm |
+| 6 | Reacharm |
+| 7 | Longshot |
+| 8 | Channeling Focus |
+| 9 | Guard Shield |
+| 10–14 | Armor piece: roll d5 for slot (head, torso, hands, legs, feet) and d5 for style (Bastion, Titan, Gale, Watcher, Arcanist). |
+| 15 | Hunter's Band |
+| 16 | Quickstep Charm |
+| 17 | Heartward Sigil |
+| 18 | Seer's Lens |
+| 19 | Mindspun Loop |
+| 20 | The player chooses any non-unique chassis in this table. |
+
+Every roll is real under the resolution contract; a Runtime never chooses a favorable item except on the authored 20 result. The result receives the Gate grade (or Section 11.4 bump), and its exact line is then derived from Section 11.5.
 
 ## 11.3 The Skill-Book Table
 
@@ -739,9 +782,43 @@ Entries 1–8 are the eight starting skills of Section 7.3, taught here at the d
 
 **Red gates and anomaly Gates roll loot one grade above the assessment.** A Gate that resolved to any anomaly (Section 9.6) — including a red gate — drops crystals, cores, and boss loot as if it were **one grade higher** than the grade it was assessed at. This is the reward for surviving the elevated danger an anomaly represents.
 
-## 11.5 Item Grades
+## 11.5 Equipment, Grades, and Item Lines
 
-Gear carries a grade **E–S**, exactly as monsters do, and **an item's grade sets its damage or protection band exactly as a monster's grade sets its band health** (Section 6.1). A C-grade weapon lands its strikes on the C-band standard-hit baseline (Section 6.2); B-grade armor grants protection scaled to the B band. Grade is the item's complete mechanical description — no per-item stat line is authored beyond grade, type, and any named effect. **All graded gear is mana-bearing** — forged from beast cores by artificers who work mana into matter (Section 12.8) — so a graded weapon is a **mana weapon**: it lands mana-borne damage on a monster (`GTF-OVR-003`) even in an unawakened hand, which is what separates it from any mundane arm and underwrites its price. This is the "very rare magic weapon" of common talk; there is no cheap version, because there is no mundane version.
+Equipment is mechanically complete only when its line records **name · grade · chassis · slot · stat bonus · combat effect · provenance · condition**. Grade **E–S** sets the magnitude; chassis determines where that magnitude goes. An equipped item applies its line to its wielder. A stored, carried, broken, or merely owned item does not. The Bearer receives both the stat and combat lines. An ordinary hunter has no five-stat sheet (Section 13.1), so the item grants its combat line and protection but does not create or alter stats for that hunter.
+
+**Stat budgets by grade:**
+
+| Grade | E | D | C | B | A | S |
+|---|---:|---:|---:|---:|---:|---:|
+| Weapon stat points | 2 | 4 | 7 | 11 | 16 | 22 |
+| Armor-piece stat points | 1 | 2 | 3 | 5 | 7 | 10 |
+| Accessory stat points | 1 | 2 | 4 | 6 | 9 | 12 |
+
+**Weapon chassis.** “All” assigns the full weapon budget to one stat. A split assigns the stated share, rounding the primary share up and giving the remainder to the secondary stat.
+
+| Chassis | Slot | Stat line | Combat line |
+|---|---|---|---|
+| **Quickknife** (dagger/short blade) | main or off hand | all Agility | Armed strike ×0.75; may be dual-wielded. |
+| **Longsword** (sword/axe/mace) | main hand | all Strength | Armed strike ×0.85. |
+| **Greatarm** (greatsword/greataxe/maul) | both hands | 75% Strength, 25% Vitality | Armed strike ×1.0; two-handed. |
+| **Reacharm** (spear/polearm) | both hands | 60% Perception, 40% Strength | Armed strike ×0.85; +1 circumstance step to hold distance against a closing foe, within the net ±3 cap. |
+| **Longshot** (bow/crossbow) | both hands | 60% Perception, 40% Agility | Ranged armed strike ×0.75; requires ammunition but carries the weapon's mana. |
+| **Channeling Focus** (wand/staff/orb) | main hand | all Intelligence | Damage and healing skills use the higher of the Bearer's band or focus grade for their standard-hit baseline; it has no mundane strike upgrade. |
+| **Guard Shield** | off hand | all Vitality | Grants the armor reduction of its grade below. |
+
+A graded weapon strike uses the **higher of the Bearer's effective band and the weapon's grade** for its standard-hit baseline; equipment can raise a weak wielder's magnitude but never lower a stronger one. The chassis multiplier then applies under Section 6.2. All graded weapons are mana-bearing — forged from beast cores by artificers (Section 12.8) — and therefore wound monsters under `GTF-OVR-003`.
+
+**Armor pieces.** Armor occupies one of five slots: **head · torso · hands · legs · feet**. Its style assigns the entire armor-piece stat budget: **Bastion → Vitality · Titan → Strength · Gale → Agility · Watcher → Perception · Arcanist → Intelligence**. Every style protects equally at the same grade; the choice is which capability it reinforces.
+
+| Armor/Shield grade | E | D | C | B | A | S |
+|---|---:|---:|---:|---:|---:|---:|
+| Physical damage reduction per equipped piece | 3% | 5% | 8% | 12% | 17% | 23% |
+
+Each piece and shield is a separate reduction and reductions multiply under Sections 6.2 and 7.3. Armor has no blanket protection against poison, mental effects, environmental hazards, or a named effect that says it bypasses armor.
+
+**Accessories.** The Bearer has two accessory slots. Each accessory assigns the entire accessory budget to its named stat and has no second passive: **Hunter's Band → Strength · Quickstep Charm → Agility · Heartward Sigil → Vitality · Seer's Lens → Perception · Mindspun Loop → Intelligence**. Two copies may be equipped; both bonuses apply.
+
+**Condition.** Excellent, Good, Worn, and Damaged equipment applies its complete line. Broken or Destroyed equipment applies none. Condition changes only through established fiction and resolved damage; this profile adds no durability-point subsystem.
 
 **Named uniques** exist only as **authored items with provenance** — a specific weapon or artifact written into a world or campaign file with a recorded origin. A boss drop never generates a named unique at random; the boss-drop table yields graded generic gear, and a named unique enters play only where a file authors it.
 
@@ -758,7 +835,7 @@ A handful of legendary items are known to the trade by name — relics with a hi
 | **The Broodmother's Fang** | C | Fang-spear | On a killing blow, restores Mana equal to **one E-band standard-hit baseline (10)**. | Cut from a C-Gate brood-queen and set into a haft; it pays the wielder a little for feeding it. |
 | **Jiu Ash** | A | Greatsword | A-band strikes **ignore one full grade of the target's damage reduction** (reductions apply one band lower, Section 6.2). | Recovered at ruinous cost during a containment operation inside the Jiu Valley Exclusion — one of the few things ever carried out of that valley alive. |
 
-Each is a Section 11.5 graded item (its grade sets its band) plus its one named effect; nothing else is authored. A named artifact is worth far past its grade on any market and is never generated at random — finding one is an authored event.
+Each inherits the matching Section 11.5 chassis and its grade-scaled stat/combat line in addition to the one named effect: Damen Vigil → Guard Shield; Cicero's Quiet → Quickknife; Libeň Needle → Channeling Focus; Karlov's Warrant → Longsword; Broodmother's Fang → Reacharm; Jiu Ash → Greatarm. A named artifact is worth far past its grade on any market and is never generated at random — finding one is an authored event.
 
 ---
 
@@ -807,7 +884,11 @@ Prague contract and salary rates run at **≈ 70% of Chicago**, paid in CZK/EUR.
 
 ## 12.5 The System Shop
 
-The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crystals and selling consumables and gear. It is a **System interface, not a place** — the Bearer opens it with `/system shop` from anywhere, at any time, instantly; there is no storefront to travel to and no hours. A purchase deposits straight into his dimensional inventory (Section 12.9), and a sale is drawn from it, so trading never requires him to be anywhere or carry anything. **USD and gold do not exchange** — the Bearer converts loot to gold only by selling it to the shop, and spends gold only inside it.
+The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crystals and selling consumables, equipment, runes, and keys. It is a **System interface, not a place** — the Bearer opens it with `/system shop` from anywhere, at any time, instantly; there is no storefront to travel to and no hours. A purchase deposits straight into his dimensional inventory (Section 12.9), and a sale is drawn from it, so trading never requires him to be anywhere or carry anything. **USD and gold do not exchange** — the Bearer converts loot to gold only by selling it to the shop, and spends gold only inside it.
+
+**Stock unlock.** Equipment and keys are stocked at every grade **at or below the Bearer's effective band** (Section 6.6). An E-band Bearer sees E stock; reaching D adds D without removing E, through S at level 50. Consumables are always stocked. Skill runes appear when their native rank is at or below the Bearer's band. Stock is fixed and unlimited; there is no refresh timer, random inventory, scarcity roll, or haggle.
+
+The unlimited catalogue is separate from the rotating **Daily Premium** stock below.
 
 **The shop buys crystals (gold):**
 
@@ -819,20 +900,33 @@ The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crysta
 | **B** | 750 g |
 | **A** | 3,400 g |
 
-**The shop sells (gold):**
+**Equipment and key prices (gold):**
+
+| Grade | E | D | C | B | A | S |
+|---|---:|---:|---:|---:|---:|---:|
+| Any weapon chassis | 100 g | 450 g | 2,000 g | 9,000 g | 40,000 g | 180,000 g |
+| Any armor piece | 60 g | 270 g | 1,200 g | 5,400 g | 24,000 g | 108,000 g |
+| Any accessory | 80 g | 360 g | 1,600 g | 7,200 g | 32,000 g | 144,000 g |
+| Instant-dungeon key | 500 g | 2,250 g | 10,000 g | 45,000 g | 200,000 g | 900,000 g |
+
+“Any weapon chassis” means the seven Section 11.5 lines; “any armor piece” means any combination of its five slots and five styles; “any accessory” means the five named stat accessories. The buyer chooses the exact stocked chassis. Purchased keys are fixed at the grade bought — they do not rise with the Bearer later.
+
+**Consumables and runes (gold):**
 
 | Item | Price |
-|---|---|
+|---|---:|
 | **Lesser healing potion** | 25 g |
 | **Standard healing potion** | 90 g |
 | **Greater healing potion** | 400 g |
 | **Lesser mana potion** | 20 g |
+| **Standard mana potion** | 75 g |
+| **Greater mana potion** | 300 g |
 | **Antidote** | 30 g |
-| **E-grade weapon** | 100 g |
-| **D-grade weapon** | 450 g |
-| **C-grade weapon** | 2,000 g |
-| **Instant-dungeon key** (own band) | 500 g |
-| **Elixir of a stat** (+1 permanent; **max 3 lifetime per stat**) | 5,000 g |
+| **Appraisal scroll** | 60 g |
+| **Stabilization seal** | 150 g |
+| **E-rank skill rune** (choose an E-rank skill from Section 7.3) | 1,000 g |
+| **D-rank skill rune** (choose a D-rank skill from Section 7.3) | 4,500 g |
+| **Elixir of a stat** (+1 base stat permanent; **max 3 lifetime per stat**) | 5,000 g |
 
 **The no-exchange rule.** There is no gold-to-USD or USD-to-gold conversion at any rate. The only bridge between the two economies is the spread between what the shop pays for a crystal and what the same crystal fetches on the licensed market — the Bearer chooses, per crystal, whether it becomes cash or gold, and cannot move value back the other way.
 
@@ -844,7 +938,86 @@ The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crysta
 | **Standard healing potion** | Restores two standard-hit baselines of Health. |
 | **Greater healing potion** | Restores Health to full. |
 | **Lesser mana potion** | Restores 25% of the drinker's maximum Mana (Section 5). |
+| **Standard mana potion** | Restores 50% of the drinker's maximum Mana. |
+| **Greater mana potion** | Restores Mana to full. |
 | **Antidote** | Clears poisons and venoms of the drinker's band or below. |
+| **Appraisal scroll** | Consumed to reveal one unidentified item's complete Section 11.5 line, regardless of Intelligence; it does not identify hidden history or an unauthored effect. |
+| **Stabilization seal** | Applied to one Critical injury to suspend its untreated death risk for 24 hours; it restores no Health, clears no severity, and does not replace professional treatment. |
+
+**Skill runes.** A purchased rune teaches the selected Section 7.3 skill at its native rank and is consumed on use, exactly as a dropped rune (Section 7.1). The shop will not sell a rune for a skill the Bearer already knows; mastery and higher-rank versions are earned through use or loot, never bought here.
+
+**Resale.** The shop repurchases an intact equipment item from its own catalogue for **25% of the table price, rounded down**, regardless of where it came from. It repurchases an unused shop consumable, rune, or key for **50% of its listed price, rounded down**. Named artifacts, commissioned gear, broken gear, mundane possessions, cores, and story objects have no automatic shop price; the shop refuses them unless a later authored line says otherwise. Resale withdraws the item permanently and credits gold in the same transaction.
+
+### Daily Premium Stock — System-Exclusive Rotation
+
+At **06:00 local time every morning**, the shop replaces its Daily Premium tab with exactly **six offers: one Weapon, one Armor, one Accessory, one Consumable, one Rune, and one Key**. These are premium System models: they cannot drop from a Gate, be commissioned from an artificer, or appear as stock in any licensed or black-market store. The System shop is their only source.
+
+**Rotation state and timing.**
+
+- At 06:00 the Runtime makes the **twelve real rolls** below — seven model rolls and five independent grade rolls — and records the cycle date, all six complete offers, their prices, and six purchased/unpurchased flags as canonical Bearer state. A Runtime never selects the offers itself.
+- Each offer has **quantity 1**. Buying it marks that category purchased and removes the row until the next rotation. Unbought offers expire at the next 06:00; they are not carried forward or discounted.
+- A later level-up does not re-grade the current cycle. If the System first attaches after 06:00, it generates the current cycle immediately using the Bearer's then-current effective band as each grade roll's floor; it does not reconstruct earlier cycles.
+- Rotation occurs even while the Bearer sleeps or occupies a sealed instance. The System fires the Tier-1 line: `[SYSTEM] DAILY PREMIUM STOCK ROTATED — 6 offers available.`
+- Once purchased, a premium item is ordinary transferable physical property under the withdrawn-goods rule below, but no world store stocks it and it has no anchored mundane-market price. An unused premium item may be sold back only to the System shop for **25% of its premium purchase price, rounded down**.
+
+For each grade-bearing offer — Weapon, Armor, Accessory, Rune, and Key — make an independent **d100 grade roll** against the Bearer's effective band at rotation:
+
+| d100 | Offer grade |
+|---:|---|
+| 01–50 | Bearer's effective band |
+| 51–80 | +1 grade |
+| 81–93 | +2 grades |
+| 94–98 | +3 grades |
+| 99 | +4 grades |
+| 100 | +5 grades |
+
+Cap every result at **S**. The rolled offer grade determines that offer's stats, protection, effect, and price; it does not change the Bearer's effective band. Consumables are ungraded and receive no grade roll.
+
+**Premium Weapon — roll d7.** Price: **2×** the offer-grade weapon price.
+
+| d7 | Offer | Premium line in addition to its normal Section 11.5 line |
+|---|---|---|
+| 1 | **Ghost Quickknife** | +2 further Agility; +1 step on the first attack made unseen in a combat. |
+| 2 | **Execution Longsword** | +2 further Strength; armed strike multiplier +0.10. |
+| 3 | **Colossus Greatarm** | +2 further Strength; armed strike multiplier +0.15. |
+| 4 | **Horizon Reacharm** | +1 further Perception and +1 further Strength; its hold-distance step also applies to protecting one adjacent ally. |
+| 5 | **Farline Longshot** | +1 further Perception and +1 further Agility; ignore one range-derived circumstance penalty step. |
+| 6 | **Spellthread Focus** | +2 further Intelligence; reduce active-skill Mana costs by 1, minimum 1. |
+| 7 | **Aegis Guard Shield** | +2 further Vitality; its own physical reduction is 5 percentage points higher. |
+
+“Multiplier +0.10/+0.15” adds to the chassis multiplier before the result multiplier; it does not change the d100.
+
+**Premium Armor — roll d5 for slot and d5 for style.** The d5 orders are Section 11.2's head/torso/hands/legs/feet and Bastion/Titan/Gale/Watcher/Arcanist lists. Price: **2×** the offer-grade armor-piece price. The result is an **Adaptive** version of that piece: it grants **+2 further points to its style stat** and its own physical reduction is **3 percentage points higher**.
+
+**Premium Accessory — roll d5** in Section 11.2's accessory order. Price: **2×** the offer-grade accessory price. The result is an **Ascendant** version granting **+3 further points** to its named stat.
+
+**Premium Consumable — roll d6.**
+
+| d6 | Offer | Price | Effect |
+|---|---|---:|---|
+| 1 | **Restoration Draught** | 900 g | Restores Health and Mana to full; clears no injury severity. |
+| 2 | **Sovereign Panacea** | 600 g | Clears one poison, venom, or disease regardless of grade; does not reverse an authored permanent condition. |
+| 3 | **Mender's Seal** | 1,200 g | Clears one Minor injury or reduces one Moderate injury to Minor; restores no Health. |
+| 4 | **Ironblood Phial** | 750 g | Grants 30% physical damage reduction for one scene. |
+| 5 | **Quicksilver Phial** | 750 g | Grants +1 modifier step on Agility-governed actions for one scene, within the net ±3 cap. |
+| 6 | **Clarity Phial** | 750 g | Grants +1 modifier step on Intelligence- or Perception-governed appraisal and detection for one scene, within the net ±3 cap. |
+
+**Premium Rune — roll d10** on Section 11.3's skill-book table. The rune teaches the rolled skill at the current offer grade (never below the skill's native E/D rank), is consumed on use, and is not offered if the Bearer already knows that skill; in that case reroll until an unknown skill is produced. If all ten are known, the offer is a **Mastery Rune** instead: consuming it counts as one qualifying dangerous-scene contribution toward the chosen known skill's current mastery level (Section 7.4). Price by offer grade:
+
+| Grade | E | D | C | B | A | S |
+|---|---:|---:|---:|---:|---:|---:|
+| Premium Rune | 2,500 g | 11,250 g | 50,000 g | 225,000 g | 1,000,000 g | 4,500,000 g |
+
+**Premium Key — roll d6.** Price: **2×** the offer-grade instant-dungeon key price. The key otherwise opens a standard Section 17 instance and carries one exclusive loot modifier:
+
+| d6 | Key model | Premium modifier |
+|---|---|---|
+| 1 | **Bounty Key** | The boss makes two independent boss-drop rolls; both drops settle. |
+| 2 | **Crystal Key** | The instance's mined deposit roll is treated as 18 before the grade multiplier. |
+| 3 | **Core Key** | The boss drops one additional same-grade core. |
+| 4 | **Armory Key** | The boss drops one guaranteed equipment result in addition to its normal boss-drop roll; roll the equipment chassis normally. |
+| 5 | **Runic Key** | The boss drops one guaranteed rune result in addition to its normal boss-drop roll; roll the taught skill normally. |
+| 6 | **Alchemist Key** | The boss drops one guaranteed potion cache in addition to its normal boss-drop roll; tier it by Section 11.2. |
 
 **Off-shop note — the gray sleep.** The wider world's restorative-alchemy market is separate from this Bearer-only shop (`240_RESOURCES.md`), but its one authored price anchors to the same scale: **arresting** chronic mana saturation — *the gray sleep* (Bible Section 5) — runs about a **greater healing potion's** worth of high-grade restorative a month (≈400 g-equivalent shop-side; on the licensed medical market an **A-crystal-scale sum** across a year — tens of thousands of USD, Section 12.1), while a **full reversal is an elixir-grade intervention** priced accordingly, which is why only guilds and governments pay for a cure.
 
@@ -886,8 +1059,11 @@ There is **no player crafting subsystem**: the Bearer commissions or buys like e
 
 The Bearer's inventory is not a backpack — it is a **pocket dimension**, a private space only he can reach, and it is his alone (no other hunter on Earth has one; Section 14.1). Every item he owns lives there unless he has chosen to hold or wear it, and the difference between "stored" and "carried" is his to set at any instant.
 
+**Equipment slots are canonical System state.** The Bearer has exactly nine: **main hand · off hand · head · torso · hands · legs · feet · accessory 1 · accessory 2**. A two-handed chassis occupies main and off hand together. One item cannot fill two unrelated slots, and a slot holds at most one item. Only slotted equipment applies its Section 11.5 line; “in hand” and “worn” are the fiction-facing forms of equipped.
+
 - **Weightless and unencumbering.** Stored items impose no weight, bulk, or carrying limit. The Bearer never chooses what to leave behind for lack of hands; a full clear's loot, a spare weapon, a case of potions all sit in the pocket dimension at once, and he walks out unburdened.
 - **Store and withdraw anywhere, instantly, as a free action.** He may send an item to the inventory or call one to his hand from anywhere — a street, a Gate interior, mid-sentence, mid-fight — with a thought. Drawing a blade from nothing to meet an attack is a legitimate action the die still resolves for its outcome, but the *summoning itself* costs no action and no Mana. This is a real tactical edge: he is never disarmed, never out of potions he owns, never caught with the wrong tool.
+- **Equip and swap.** Outside an exchange, any number of slots may be rearranged instantly. During an exchange, the Bearer may change **one item** as a free System operation; putting away one weapon and calling another into the same slot is one change. A two-handed item changes both hand slots as one item. Changing armor under immediate attack does not erase an attack already resolved against the prior loadout. The equipment state used for a roll and its damage is the state established before that roll.
 - **Private and secure.** What is in the pocket dimension cannot be seen, searched, stolen, or confiscated — it is not on his person to find. A licensed inspection, a mugging, a pat-down at a cordon reaches nothing. This is a standing advantage and a standing exposure risk (Section 19): an item summoned from empty air in front of witnesses is as much a giveaway as a status window, because no ordinary hunter can do it.
 - **What it holds.** **Inanimate physical objects** — gear, weapons, armor, consumables, crystals, cores, runes, books, keys, ordinary possessions. It does **not** hold living things (no creature, no person, no plant kept alive), and it is not a bank: **USD/CZK is mundane wallet-and-account money, never a System good** (Section 15, the `/system inventory` panel). System **gold** is likewise not "in" the inventory — it is the shop's internal currency (Section 12.5), shown as a balance, spent only in-window.
 - **Capacity.** No practical limit constrains a campaign — the pocket dimension holds what the Bearer puts in it. (There is no encumbrance subsystem to track; "he stored it" is the whole rule.)
@@ -968,7 +1144,7 @@ The System is the Bearer's interface to his own growth and the world's danger. T
 
 The System has continuity (one Bearer at a time), initiative (it issues the daily quest, opens penalty zones, offers the class quest), and a direction (it grows its Bearer). Those look entity-shaped. It is **not** a Persistent Entity and must not be modeled as one.
 
-- Its **active state is Bearer state** — held in the Bearer's `canonical_state` on the campaign character ledger, nowhere else.
+- Its **active state is Bearer state** — including level progression, equipment slots, gold, and the current Daily Premium cycle — held in the Bearer's `canonical_state` on the campaign character ledger, nowhere else.
 - Its **world-line continuity is a rule of Gatefall** (Section 2): exactly one living Bearer per world-line, no successor while he lives, and **death is final** (Section 6.5) — the dead Bearer's System state transfers to no one. It has no aliases, lifecycle block, inventory, relationships, or separately addressable identity.
 - Its **purpose is directional, not personal**: produce a stronger Bearer. It does not love, hate, bargain for its own survival, or value the present host above the world's danger to him.
 - Its **outputs are world reactions.** They act on or address the Bearer; they never author his voluntary choices.
@@ -996,6 +1172,7 @@ The System never decides what is true. It may decide **when to say it**.
   - Mana, Health, or XP changes → the matching compact line (Section 14.5);
   - an XP threshold is crossed → the `LEVEL UP` block, granting per Section 3.2 (worked example in Section 3.7);
   - the daily quest is issued, completed, or failed → its block (Section 8.1, Section 15.7);
+  - 06:00 local time arrives → the Daily Premium stock rotates and its compact line fires (Section 12.5);
   - the daily window lapses incomplete → the penalty warning, then the transfer notice (Section 15.7);
   - a title is earned → the `TITLE EARNED` block (Section 15.7);
   - a pool crosses a declared danger threshold (e.g., 0 Mana, Section 5.3) → a warning;
@@ -1007,7 +1184,7 @@ The System never decides what is true. It may decide **when to say it**.
 
 ## 14.4 The Information Boundary
 
-The System knows, exactly: **Bearer state** (Section 3–7), **quest state**, and **Gate state once resolved** (a Gate's true grade after Section 9.5 settles it, its population, its break timer). It does **not** know NPC minds, hidden identities, the true grade of an unconfirmed Gate before entry, or anything a die has not yet resolved.
+The System knows, exactly: **Bearer state** (Sections 3–7, 12.5), **quest state**, **its current shop stock**, and **Gate state once resolved** (a Gate's true grade after Section 9.5 settles it, its population, its break timer). It does **not** know NPC minds, hidden identities, the true grade of an unconfirmed Gate before entry, or anything a die has not yet resolved.
 
 It is **perceptible only to its Bearer** — always, without exception. It cannot be displayed, shared, demonstrated, or proven; to an onlooker, a Bearer reading a notification is a man who stopped walking and looked at nothing. **System-issued quests are Bearer-only and therefore unknown to the world** — no NPC, institution, or public holds a Knowledge State about one. The quest is secret; its footprint is not. If the daily quest puts the Bearer on a rooftop at dawn, the world sees a man on a rooftop at dawn.
 
@@ -1046,13 +1223,14 @@ The creature's band relative to the Bearer's effective band sets the color:
 
 ## 14.7 The Onset Sequence
 
-The System's **first contact** with a new Bearer is a fixed message sequence — the same three beats every time, rendered in the bracketed A10 style (Section 14.5, Section 15). This section authors only the **System's messages**; the in-world incident that precedes attachment is a campaign concern (Section 2) and is not authored here.
+The System's **first contact** with a new Bearer is a fixed message sequence — the same four beats every time, rendered in the bracketed A10 style (Section 14.5, Section 15). This section authors only the **System's messages**; the in-world incident that precedes attachment is a campaign concern (Section 2) and is not authored here.
 
 **Onset timing (owner ruling, 2026-07-24).** The incident is a campaign concern; its **pacing is not**. The System attaches within the campaign's opening arc and **no later than the resolution of the protagonist's first genuine fight** — the first scene in which he faces lethal, uncertain combat. The precipitating incident must still arise causally from the fiction in play — a brush with death is the classic crucible; what this ruling bounds is *when*, not *why*. A campaign that resolves its first real fight with the protagonist still bare of the System is out of law. This binds every Gatefall campaign, including any in progress at the time of the ruling.
 
 1. **Attachment notice** — the initializing handshake and host designation, fired the instant the System attaches.
 2. **Status-window grant** — the STATUS panel (Section 15.1) is granted and rendered once, opening at creation values (level 1, the creation-array stats of Section 4.1, Health 40/40, Mana 20/20).
-3. **First daily quest** — the standing daily quest (Section 8.1) issues at the **next 06:00 local** after attachment, and the daily cycle runs from there.
+3. **First Daily Premium cycle** — make Section 12.5's twelve real rolls immediately and fire the rotation line; this is the current 06:00-to-06:00 cycle, not an extra cycle.
+4. **First daily quest** — the standing daily quest (Section 8.1) issues at the **next 06:00 local** after attachment, and the daily cycle runs from there.
 
 The worked onset block:
 
@@ -1066,6 +1244,8 @@ Class: —  ·  Title: —
 Level 1  ·  XP 0/100
 Health 40/40  ·  Mana 20/20  ·  Unspent points 0
 Strength <n> · Agility <n> · Vitality <n> · Perception <n> · Intelligence <n>
+
+[SYSTEM] DAILY PREMIUM STOCK ROTATED — 6 offers available.
 
 — at the next 06:00 local —
 
@@ -1091,13 +1271,13 @@ Gatefall declares **`/system`** as its diegetic command. Its panels are **read-o
 - The **numbers are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer by design, and only he sees this window.
 - The Runtime **fits the frame width to the widest line** and pads the right border to align; the exact width is presentation, the structure and every value are canonical.
 
-Bare **`/system`** always renders the **full window** — every section (identity, vitals, stats, quests, skills, titles, inventory, gold) inside one framed window (Section 15.1). Focused single-section views and the interactive shop/titles panels remain available as `/system <section>` (Section 15.2), but the default is the whole of the Bearer at once.
+Bare **`/system`** always renders the **full window** — every section (identity, vitals, stats, quests, skills, titles, equipment, inventory, gold) inside one framed window (Section 15.1). Focused single-section views and the interactive shop/titles panels remain available as `/system <section>` (Section 15.2), but the default is the whole of the Bearer at once.
 
-**One example Bearer runs through every base panel.** Call him **Ren** — an illustration only, not a canon character: a **level-3**, E-band Bearer with no class yet, mid-run. His canonical state: Level 3, XP 150/300 (threshold L3→4 = 300, Section 3.1); Health 40/40 (E-band health, Section 6.1, the E-band figure Section 8.2 already uses); Mana 22/30 (`max_mana(3) = 20 + 5×2 = 30`, Section 5.1); Strength 9 · Agility 13 · Vitality 11 · Perception 14 · Intelligence 11; 1 unspent point; skills Mana Bolt, Dagger Mastery, Sprint, Mend (Section 7.3); title **Lone Clear** equipped (Section 16); inventory and gold as shown.
+**One example Bearer runs through every base panel.** Call him **Ren** — an illustration only, not a canon character: a **level-3**, E-band Bearer with no class yet, mid-run. His canonical state: Level 3, XP 150/300 (threshold L3→4 = 300, Section 3.1); Health 40/40 (E-band health, Section 6.1, the E-band figure Section 8.2 already uses); Mana 22/30 (`max_mana(3) = 20 + 5×2 = 30`, Section 5.1); base Strength 9 · Agility 13 · Vitality 11 · Perception 14 · Intelligence 11; an equipped E Quickknife grants Agility +2, making effective Agility 15; 1 unspent point; skills Mana Bolt, Dagger Mastery, Sprint, Mend (Section 7.3); title **Lone Clear** equipped (Section 16); all six Daily Premium offers unpurchased with 14h12m left in the cycle; inventory and gold as shown.
 
 ## 15.1 `/system` — the Full System Window
 
-Bare **`/system`** always renders the **entire System window**: identity, vitals, stats, active quests, known skills, earned titles, inventory, and gold — every section stacked inside one framed window, divided by labeled section rules. There is no partial default; the Bearer sees his whole state at once, the way the window hangs in his vision.
+Bare **`/system`** always renders the **entire System window**: identity, vitals, stats, active quests, known skills, earned titles, equipment, inventory, and gold — every section stacked inside one framed window, divided by labeled section rules. There is no partial default; the Bearer sees his whole state at once, the way the window hangs in his vision.
 
 ```text
 ╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════╗
@@ -1109,9 +1289,12 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ║  MP   <bar>   <mp> / <mpmax>                         ║
 ║  XP   <bar>   <cur> / <next>                         ║
 ╟─ STATS ──────────────────────────────────────────────╢
-║  Strength     <n>       Perception     <n>           ║
-║  Agility      <n>       Intelligence   <n>           ║
-║  Vitality     <n>       Unspent points  ● <n>        ║
+║  Strength     <base> (+<gear>) = <effective>         ║
+║  Agility      <base> (+<gear>) = <effective>         ║
+║  Vitality     <base> (+<gear>) = <effective>         ║
+║  Perception   <base> (+<gear>) = <effective>         ║
+║  Intelligence <base> (+<gear>) = <effective>         ║
+║  Unspent points  ● <n>                                ║
 ║  Pending grants   <none, or list>                    ║
 ╟─ QUESTS ─────────────────────────────────────────────╢
 ║  <one line per active quest; [HIDDEN] shows ???>     ║
@@ -1119,10 +1302,14 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ║  <one line per known skill: name [rank] cost eff>    ║
 ╟─ TITLES  (equipped: <title or none>) ────────────────╢
 ║  <one line per earned title; ★ marks equipped>       ║
+╟─ EQUIPMENT ──────────────────────────────────────────╢
+║  <nine slots; item [grade] · bonuses · effect>       ║
+║  Physical reduction  <derived total>                 ║
 ╟─ INVENTORY ──────────────────────────────────────────╢
-║  <items, then crystals and cores>                    ║
+║  <stored items with complete item lines, then loot>  ║
 ╟─ SHOP ───────────────────────────────────────────────╢
 ║  Gold <n> g          ( /system shop to trade )       ║
+║  Daily Premium <available>/6 · rotates <deadline>    ║
 ╚══════════════════════════════════════════════════════╝
 ```
 
@@ -1138,9 +1325,12 @@ Ren, mid-run, carrying one deferred level-up grant:
 ║  MP   ██████████████░░░░░░   22 / 30                 ║
 ║  XP   ██████████░░░░░░░░░░   150 / 300               ║
 ╟─ STATS ──────────────────────────────────────────────╢
-║  Strength      9        Perception     14            ║
-║  Agility      13        Intelligence   11            ║
-║  Vitality     11        Unspent points  ● 1          ║
+║  Strength       9 (+0) = 9                           ║
+║  Agility       13 (+2) = 15                          ║
+║  Vitality      11 (+0) = 11                          ║
+║  Perception    14 (+0) = 14                          ║
+║  Intelligence  11 (+0) = 11                          ║
+║  Unspent points  ● 1                                 ║
 ║  Pending grants   level-up (+3 & full restore)       ║
 ╟─ QUESTS ─────────────────────────────────────────────╢
 ║  [DAILY]  Training   Streak 6/7 → Cache   14h12m     ║
@@ -1155,26 +1345,33 @@ Ren, mid-run, carrying one deferred level-up grant:
 ╟─ TITLES  (equipped: Lone Clear) ─────────────────────╢
 ║  ★ Lone Clear    +1 step while alone in a Gate       ║
 ║    Untouched     +1 step evasion, 1st exchange       ║
+╟─ EQUIPMENT ──────────────────────────────────────────╢
+║  Main  Quickknife [E] · Agility +2 · strike ×0.75    ║
+║  Off — · Head — · Torso — · Hands — · Legs —         ║
+║  Feet — · Accessory 1 — · Accessory 2 —              ║
+║  Physical reduction  0%                              ║
 ╟─ INVENTORY ──────────────────────────────────────────╢
-║  License [E-Rank]     Steel dagger [E]               ║
+║  License [E-Rank]                                    ║
 ║  Lesser healing potion ×3    Dungeon key [E]         ║
 ║  E-crystal ×8         Cores ×2 [E]                   ║
 ╟─ SHOP ───────────────────────────────────────────────╢
 ║  Gold 340 g          ( /system shop to trade )       ║
+║  Daily Premium 6/6 · rotates in 14h12m               ║
 ╚══════════════════════════════════════════════════════╝
 ```
 
 - **Bars** are 20-cell meters filled proportionally to `current/max` (Ren: HP ¾, MP ¾, XP half).
-- Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, inventory from the campaign inventory ledger, gold from the shop balance. Nothing is invented at render.
+- Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, equipment slots from Section 12.9, inventory from the campaign inventory ledger, and gold from the shop balance. Effective stats and physical reduction are derived from the equipped lines. Nothing is invented at render.
 - **`Pending grants`** shows any deferred grant (Section 3.9) — the full heal held in reserve — and reads `none` when empty.
 - The window grows with the Bearer: an empty section still renders its header with `none` beneath it (a fresh Bearer shows `SKILLS — none`, `TITLES — none`), so the shape is constant and the Bearer always sees the whole of himself.
 - **Numbers in the window are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer, and only he sees this window. The Runtime **pads every line to a constant width** so the frame closes as a clean rectangle.
 
 ## 15.2 Focused Views and Interactive Panels
 
-The full window is the default. A Bearer may still call a **single section** for a closer look or to act on it — `/system quests`, `/system skills`, `/system inventory`, `/system titles`, `/system log` — each rendering just that section in its own framed window with the same data. Two of these are **interactive**, not just views:
+The full window is the default. A Bearer may still call a **single section** for a closer look or to act on it — `/system quests`, `/system skills`, `/system equipment`, `/system inventory`, `/system titles`, `/system log` — each rendering just that section in its own framed window with the same data. Three of these are **interactive**, not just views:
 
-- **`/system shop`** (Section 12.5) — the trading window: gold balance, crystal buy rates, and the stock sold at the Bearer's tier. Buying and selling happen here, in-window, never as an out-of-character question. The **no-exchange rule** (Section 12.5) holds: loot becomes gold only by selling it here, never back to USD.
+- **`/system shop`** (Section 12.5) — the trading window: gold balance; BUY tabs for Weapons, Armor, Accessories, Consumables, Runes, and Keys; a **Daily Premium** tab showing its cycle deadline and six quantity-one offers; and a SELL tab for crystals and eligible inventory. Each row renders name, grade, slot, stat bonus/effect, price, and availability. Buying and selling happen here, in-window, never as an out-of-character question. The **no-exchange rule** (Section 12.5) holds: loot becomes gold only by selling it here, never back to USD.
+- **`/system equipment`** — the nine-slot loadout from Section 12.9. Equipping, unequipping, and swapping happen here or directly by thought in the fiction; the panel always re-renders the five effective stats and total physical reduction after a change.
 - **`/system titles`** — equipping is done here (one equipped at a time, Section 16).
 
 A focused view never shows less truth than the full window; it is the same canonical read, framed alone.

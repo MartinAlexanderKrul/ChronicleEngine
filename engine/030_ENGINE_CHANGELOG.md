@@ -12,6 +12,24 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-24 — Gatefall World Rule Profile 1.3: aspirational Daily Premium grades (migrating)
+
+World authoring under Decision 062 — no engine Rules, Data Model, or Runtime change, and no decision number consumed.
+
+**Premium grade rolls:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` Section 12.5 adds five independent d100 grade rolls to every 06:00 Daily Premium cycle. Weapon, Armor, Accessory, Rune, and Key offers use the Bearer's effective band as a floor but may roll up to five grades higher, capped at S; each rolled grade controls that offer's mechanics and price without changing the Bearer's band. Consumables remain ungraded.
+**Profile version:** frozen **1.2 → 1.3**, classified **migrating** (Rules 14.6, Decision 074). An active 1.2 cycle preserves its models and purchased flags, then rolls grades only for its unpurchased grade-bearing offers.
+**Engine Version:** Unchanged; remains 0.2.0.
+
+## 2026-07-24 — Gatefall World Rule Profile 1.2: equipment and System-shop expansion (migrating)
+
+World authoring under Decision 062 — no engine Rules, Data Model, or Runtime change, and no decision number consumed.
+
+**Equipment is state:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` Section 4.1 distinguishes permanent base stats from effective stats (`base + equipped bonuses`). Section 11.5 replaces grade-only gear with complete item lines, nine equipment slots, grade-scaled stat budgets, seven weapon chassis, five armor styles across five slots, five accessories, executable multiplicative armor reductions, item condition, and weapon/focus combat behavior.
+**Shop and loot:** Section 12.5 expands `/system shop` into Weapons, Armor, Accessories, Consumables, Runes, Keys, Daily Premium, and Sell categories. Fixed E–S stock unlocks with the Bearer's effective band; the catalogue adds Mana-potion tiers, appraisal scrolls, stabilization seals, selectable E/D skill runes, graded keys, and bounded resale. At 06:00 local time, Daily Premium makes seven real rolls to guarantee one expiring quantity-one System-exclusive offer in each of the six goods categories. Section 11.2 adds deterministic chassis and rune sub-rolls. Sections 12.9 and 15 make loadout state, swapping, effective stats, armor reduction, and rotating stock visible and executable.
+**Profile version:** frozen **1.1 → 1.2**, classified **migrating** (Rules 14.6, Decision 074). Existing gear acquires new mechanical lines, so older checkpoints and live campaigns must perform the six-step readiness migration written in the profile header before play under 1.2; no campaign ledger is silently rewritten.
+**World resources / guide:** `worlds/gatefall/240_RESOURCES.md` and `worlds/gatefall/README.md` now describe the full catalogue and equipment model.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-24 — Gatefall World Rule Profile 1.1: mana-borne damage against monsters (additive)
 
 World authoring under Decision 062 (world rule content requires no ADR) — no engine Rules, Data Model, or Runtime change, and no decision number consumed. Recorded here and in the world's documents per the roadmap's world-authoring rule.

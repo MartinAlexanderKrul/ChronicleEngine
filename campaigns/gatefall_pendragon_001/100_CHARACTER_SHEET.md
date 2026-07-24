@@ -62,6 +62,8 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
+    profile_version: "1.3"
+    profile_migration_event: EVT-000073
     onset_event: EVT-000059
     onset_time: "2026-07-24, inside the Red Line Corridor Gate, mid-fight against the crew's remaining beasts and the elite"
     class: null
@@ -78,13 +80,40 @@ canonical_state:
       vitality: 10
       perception: 11
       intelligence: 10
+    effective_stats:
+      strength: "16 (base 16 + equipment 0)"
+      agility: "21 (base 12 + equipment 9)"
+      vitality: "13 (base 10 + equipment 3)"
+      perception: "11 (base 11 + equipment 0)"
+      intelligence: "10 (base 10 + equipment 0)"
     effective_band: E
+    equipment:
+      main_hand: "C-grade Quickknife — Good · Agility +7 · armed strike ×0.75 · purchased through the System shop (`EVT-000069`)"
+      off_hand: "E-grade Quickknife — Good · Agility +2 · armed strike ×0.75 · purchased from Ironbound (`EVT-000058`)"
+      head: null
+      torso: "Reinforced Leather Jacket [E] — Bastion torso armor · Good · Vitality +1 · physical reduction 3% · purchased from Ironbound (`EVT-000058`)"
+      hands: "Reinforced Gauntlets [E] — Bastion hands armor · Good · Vitality +1 · physical reduction 3% · purchased from Ironbound (`EVT-000058`)"
+      legs: "Shin Guards [E] — Bastion legs armor · Good · Vitality +1 · physical reduction 3% · purchased from Ironbound (`EVT-000058`)"
+      feet: null
+      accessory_1: null
+      accessory_2: null
+      total_physical_reduction: "8.7327% = 1 - (0.97 × 0.97 × 0.97); display 8.7%"
     gold: 22520
     shop_holdings:
       - "Lesser healing potion x10 (banked, unwithdrawn)"
       - "Antidote x2 (banked, unwithdrawn)"
-      - "C-grade dagger (banked, unwithdrawn)"
       - "Instant-dungeon key [E-band] (banked, unwithdrawn)"
+    daily_premium:
+      cycle: "2026-07-28 06:00 America/Chicago → 2026-07-29 06:00 America/Chicago"
+      generated_by: "Models preserved from Profile 1.2 migration (`EVT-000072`): weapon d7=6, armor-slot d5=2, armor-style d5=4, accessory d5=3, consumable d6=5, rune d10=2, key d6=5. Profile 1.3 grade migration (`EVT-000073`): weapon d100=46 (E), armor d100=85 (C), accessory d100=74 (D), rune d100=23 (E), key d100=70 (D)."
+      purchased: "none; 6/6 available"
+      offers:
+        weapon: "Spellthread Focus [E] · main hand · Intelligence +4 total · damage/healing skills use max(Bearer band, E) baseline · active-skill Mana costs −1 (minimum 1) · 200 g"
+        armor: "Adaptive Watcher Torso [C] · torso · Perception +5 total · physical reduction 11% · 2,400 g"
+        accessory: "Ascendant Heartward Sigil [D] · accessory · Vitality +5 total · 720 g"
+        consumable: "Quicksilver Phial · +1 modifier step on Agility-governed actions for one scene (net ±3 cap) · 750 g"
+        rune: "Dagger Mastery Rune [E] · teaches Dagger Mastery at E rank · 2,500 g"
+        key: "Runic Key [D] · standard D instant dungeon; boss adds one guaranteed rolled rune to its normal boss drop · 4,500 g"
     daily_quest:
       streak: 4
       last_completed: "2026-07-28"

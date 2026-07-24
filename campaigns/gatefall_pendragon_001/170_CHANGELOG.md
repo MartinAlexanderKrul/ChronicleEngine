@@ -141,3 +141,19 @@ Allocated campaign identifiers in `system/ID_REGISTRY.md` in the same initializa
 - **Ledger updates:** `100` (level/XP/unspent-points/pending-grants/daily-quest fields, extensive notes), `130` (Priya's entry updated; Julian, Renata, Owen added; `REL-000065` activated), `140` (OBJ-8 updated to in-progress with full Gate detail), `160` (`EVT-000070`, `EVT-000071` recorded), `180` (location, situation, scene anchor, promotion status).
 - **Repository allocation (2026-07-28):** Allocated entity identifiers `ENT-000137` (Julian), `ENT-000138` (Renata), `ENT-000139` (Owen), and event identifiers `EVT-000070` and `EVT-000071` in `system/ID_REGISTRY.md`.
 - **Checkpoint `900_CHECKPOINT_0010` written mid-combat**, superseding `900_CHECKPOINT_0009` as the latest restorable checkpoint. Restoring it resumes directly into the ongoing fight with the wounded elite.
+
+**2026-07-28 - Profile 1.2 Readiness Migration (`EVT-000072`).**
+
+- **Profile adoption:** Live campaign state migrated explicitly from frozen Gatefall Profile 1.1 to frozen Profile 1.2 before the next Ashfield Gate exchange. No fiction or previously resolved result was changed; Checkpoint 0010 remains immutable under 1.1.
+- **Equipment normalization:** E/C daggers became E/C Quickknives; jacket, gauntlets, shin guards, and the stored disputed greave became E-grade Bastion armor in their recorded slots. Current loadout: C Quickknife main, E Quickknife off, E Bastion torso/hands/legs; all other slots empty. Base stats unchanged; effective stats now Strength 16 / Agility 21 / Vitality 13 / Perception 11 / Intelligence 10. Three 3% armor reductions compose to 8.7327% (display 8.7%).
+- **Daily Premium initialized by real rolls:** d7=6; armor d5=2/d5=4; accessory d5=3; consumable d6=5; rune d10=2; key d6=5. Current offers: Spellthread Focus [E], Adaptive Watcher Torso [E], Ascendant Heartward Sigil [E], Quicksilver Phial, Dagger Mastery Rune [E], Runic Key [E]. All 6/6 unpurchased; rotate 2026-07-29 06:00 Chicago.
+- **Ledger updates:** `090` (profile binding 1.2), `100` (profile version, item lines, equipment slots, effective stats, protection, premium cycle), `120` (owned gear normalized), `160` (`EVT-000072`), `170` (this entry), `180` (profile/readiness/current loadout), registry (`EVT-000072`), and worlds/campaigns index. `110`, `130`, and `140` unchanged.
+- **Repository allocation:** Allocated event identifier `EVT-000072`; no entity, record, or relationship identifier minted.
+
+**2026-07-28 - Profile 1.3 Daily Premium Grade Migration (`EVT-000073`).**
+
+- **Profile adoption:** Live campaign state migrated explicitly from frozen Gatefall Profile 1.2 to frozen Profile 1.3 before the next Ashfield Gate exchange. No fiction, purchase, equipped item, stat, or previously resolved result changed; Checkpoint 0010 remains immutable under 1.1.
+- **Premium models preserved; grades rolled:** The six existing models and all unpurchased flags were preserved. Five real grade rolls against Alexander's E effective band produced Weapon 46 → E, Armor 85 → C, Accessory 74 → D, Rune 23 → E, and Key 70 → D; the Consumable remained ungraded.
+- **Current offers:** Spellthread Focus [E] 200 g; Adaptive Watcher Torso [C] 2,400 g; Ascendant Heartward Sigil [D] 720 g; Quicksilver Phial 750 g; Dagger Mastery Rune [E] 2,500 g; Runic Key [D] 4,500 g. All 6/6 remain unpurchased and rotate 2026-07-29 06:00 Chicago.
+- **Ledger updates:** `090` (profile binding 1.3), `100` (profile version and migrated premium cycle), `160` (`EVT-000073`), `170` (this entry), `180` (profile/current offers/promotion status), registry (`EVT-000073`), and worlds/campaigns index. Other campaign ledgers unchanged.
+- **Repository allocation:** Allocated event identifier `EVT-000073`; no entity, record, or relationship identifier minted.

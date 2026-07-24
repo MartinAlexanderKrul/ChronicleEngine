@@ -731,6 +731,21 @@ Gear carries a grade **E–S**, exactly as monsters do, and **an item's grade se
 
 **Named uniques** exist only as **authored items with provenance** — a specific weapon or artifact written into a world or campaign file with a recorded origin. A boss drop never generates a named unique at random; the boss-drop table yields graded generic gear, and a named unique enters play only where a file authors it.
 
+## 11.6 The Named Artifacts
+
+A handful of legendary items are known to the trade by name — relics with a history, each one-of-a-kind, each carrying a property ordinary graded gear does not. They are the prizes a campaign plants, not random drops: a named artifact enters play only where a file authors it doing so, and there is exactly one of each. The set below is the world's standing legends; a campaign may author more with the same shape (name · grade · type · one named effect in the vocabulary of Section 6.2 · a recorded provenance).
+
+| Artifact | Grade | Type | Named effect (equipped) | Provenance |
+|---|---|---|---|---|
+| **The Damen Vigil** | B | Tower shield | +1 modifier step on any defensive action taken to shield an ally or civilian (to the net ±3 cap, Section 4.3). | Carried by the hunter who held the line at the Damen Avenue Break (Chicago, 2016) until the strike teams came; dug from the rubble, never sold. |
+| **Cicero's Quiet** | C | Dagger | The first strike of a combat, made unseen, adds **+0.5** to its skill multiplier (Section 6.2). | Pulled from the quarantined Cicero Scar by a cordon scavenger; it came out colder than it went in. |
+| **The Libeň Needle** | D | Caster focus | Lowers the Mana cost of the wielder's ranged and caster skills by **2** (minimum 1). | Left on the desk of the analyst's trailer at the Libeň Scar — a working tool that proved to be more. |
+| **Karlov's Warrant** | B | Sword (artificer-marked) | +1 modifier step on the **first exchange** of any combat — a blade balanced past any tolerance. | Forged and marked by a master of the Karlov house; a named artificer's work trades far above anchor (Section 12.8). |
+| **The Broodmother's Fang** | C | Fang-spear | On a killing blow, restores Mana equal to **one E-band standard-hit baseline (10)**. | Cut from a C-Gate brood-queen and set into a haft; it pays the wielder a little for feeding it. |
+| **Jiu Ash** | A | Greatsword | A-band strikes **ignore one full grade of the target's damage reduction** (reductions apply one band lower, Section 6.2). | Recovered at ruinous cost during a containment operation inside the Jiu Valley Exclusion — one of the few things ever carried out of that valley alive. |
+
+Each is a Section 11.5 graded item (its grade sets its band) plus its one named effect; nothing else is authored. A named artifact is worth far past its grade on any market and is never generated at random — finding one is an authored event.
+
 ---
 
 # 12. Economy

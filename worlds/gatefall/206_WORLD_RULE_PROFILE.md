@@ -400,6 +400,24 @@ These eight skills are what a rune can teach at E- and D-tier. Costs are in Mana
 
 Reductions from Stone Skin and any other source **multiply, never add** (`total = 1 − Π(1 − rᵢ)`), so no stack of skills reaches immunity.
 
+## 7.4 Skill Mastery
+
+A skill is not fixed the day it is learned — it **grows in the Bearer's hands with use.** Every skill is held at a **mastery level, 1 through 5** — Novice, Practiced, Adept, Expert, Master — starting at **Novice** when acquired. This is the Bearer's **second growth axis beside stats**: a much-used skill becomes formidable even at a low rank, the way a hunter's signature deepens over a career.
+
+**Advancing.** A skill rises **one mastery level** after it has **materially contributed to the resolution of three distinct dangerous scenes at its current level** — the earned-by-doing rigor of Section 7.1: genuine, resolved, at-risk use each time; trivial repetition does not count, and the three scenes must be materially distinct. Reaching Master therefore takes twelve qualifying scenes across a skill's life. The System advances mastery automatically on the third qualifying scene and fires a Tier-1 notification (`[SYSTEM] SKILL MASTERY — Mana Bolt is now Adept.`).
+
+**What each level above Novice improves** — two axes, both closed-form:
+
+- **Magnitude**, by one grade of the skill's own effect per level:
+  - a **damage or healing** skill's multiplier rises **+0.15** (Mana Bolt ×1.0 at Novice → **×1.6 at Master**; Mend heals ¼ band → ~0.4 band at Master);
+  - a **reduction** skill's fraction rises **+5 points** (Stone Skin 30% → **50% at Master**);
+  - a **modifier-step or utility** skill — already capped at +1 step (Section 4.3) — instead **lengthens**, its effect covering one further exchange per level and reaching the **whole scene at Master**, or widening to one stated additional target.
+- **Mana cost**, **−10% per level** (rounded, minimum 1): a 5-cost skill runs 5 → **3 at Master**; passive skills stay 0.
+
+**Rendering.** The `/system` skills line carries the mastery: `Mana Bolt [E] ★★★★☆ · Mana 4 · ×1.45` (Expert, four of five). Mastery is read from the skill's ledger entry like every other value (Section 15) and is never estimated.
+
+Mastery raises a skill's power, never its **rank** — an E-rank Mana Bolt mastered is still an E-rank skill, just a lethal one. Rank reflects the tier it was learned at (Section 7.1); mastery reflects the hands that carry it.
+
 ---
 
 # 8. The Daily Quest and Penalty Zones
@@ -1208,24 +1226,29 @@ The Bearer chooses one. The choice is permanent; it attaches the class's `/syste
 
 ## 18.4 Shadowbinder — offered for battlefield control
 
-- **Core mechanic.** On defeating a foe, the Bearer may attempt **extraction**: spend the grade-ladder Mana cost and resolve an **Intelligence-governed attempt** on the d100 (an uncertain action, so the die decides, Section 4.3; a foe above the Bearer's band adds the band-gap modifier of Section 4.3, −1 step per band above). On success the corpse rises as a **shadow soldier** retaining its grade band — band health (Section 6.1) and a standard-hit baseline at its grade (Section 6.2).
-- **Resource costs.** Extraction costs grade-ladder Mana (E 5 … A 80). A shadow in the field fights for free; **storing** a shadow (dismissing it to shadow) costs nothing, and **re-summoning** a stored shadow costs **½ its extraction cost**. Stored shadows sit in the roster at zero upkeep.
-- **Roster cap = Intelligence ÷ 5** (floor): Intelligence 20 fields 4 shadows, 25 fields 5.
-- **Growth path.** A shadow **levels**: after it lands the killing blow in **10 distinct clears** it advances one grade band (capped at the Bearer's own effective band). Shadows persist across scenes as canonical roster state.
-- **Evolution quest hook — the Sovereign's Trial (level 50):** extract a **boss-grade** shadow to unlock **Legion** — roster cap rises to Intelligence ÷ 3, and shadows commanded in formation grant +1 modifier step to one coordinated action per exchange.
+On defeating a foe, the Bearer may raise its shadow. Shadows come in **two classes**, and this is what lets a Shadowbinder end as a general, not a squad leader:
+
+- **Elite shadows** are **named, individually tracked, and level up** — the lieutenants. Extraction is an **Intelligence-governed d100 attempt** (an uncertain action, so the die decides, Section 4.3; a foe above the Bearer's band adds the band-gap modifier, −1 step per band above) costing grade-ladder Mana (E 5 … A 80). On success the foe rises as an elite retaining its grade band — band health (Section 6.1), a standard-hit baseline at its grade (Section 6.2), and a name. **Elite cap = Intelligence ÷ 5** (Int 20 → 4 elites, Int 40 → 8). An elite **levels**: after it lands the killing blow in **10 distinct clears** it advances one grade band (capped at the Bearer's effective band).
+- **The horde** is the **massed, un-named rank-and-file** — not tracked one by one, carried as a **count and grade** (e.g., "180 E · 44 D"). Ordinary defeated common beasts are **swept into the horde in bulk** at a flat **2 Mana each, no per-corpse roll** — the Bearer scoops the fallen as he passes. **Horde cap = Intelligence × 20** (Int 30 → 600), and the Legion evolution lifts it to **no practical cap — an army of thousands.**
+
+**Commanding the horde (closed-form, never per-shadow):** committed to a fight, the horde resolves as **one action per exchange**. It **automatically overruns** trash threats at or below the horde's dominant grade (they are swarmed under, no roll), and against elites and bosses it grants the Bearer's side **+1 modifier step per 100 shadows committed, to the net ±3 cap** (Section 4.3) — the weight of numbers. A hard fight inflicts **attrition**: on a poor exchange, or against a boss, the horde loses a die-scaled fraction of the committed shadows, replenished by extracting the newly slain. Storing/re-summoning elites is free/½-cost as before; the horde is always "on call" and costs nothing at rest.
+
+- **Evolution quest hook — the Sovereign's Trial (level 50):** extract a **boss-grade** elite to unlock **Legion** — the horde cap becomes effectively unbounded (thousands), elite cap rises to Intelligence ÷ 3, and the horde in formation grants **+1 modifier step to one coordinated allied action per exchange** on top of its mass bonus.
 
 ```text
-[SYSTEM] SHADOWS — <filled>/<cap>   (cap = Intelligence ÷ 5)
+[SYSTEM] SHADOWS — Elites <filled>/<cap>  ·  Horde <count>
 <name> · <grade> · <Field | Stored> · clears <n>/10 to next band
+Horde: <count by grade>   (cap = Intelligence × 20)
 ```
 
-Example — a Shadowbinder at level 25, Intelligence 20 (cap 4):
+Example — a Shadowbinder at level 25, Intelligence 20 (elite cap 4, horde cap 400):
 
 ```text
-[SYSTEM] SHADOWS — 3/4   (cap = Intelligence ÷ 5)
+[SYSTEM] SHADOWS — Elites 3/4  ·  Horde 224
 Gravecut · D · Field · clears 7/10 to next band
 Hollow · E · Stored · clears 2/10 to next band
 Pale Warden · D · Field · clears 4/10 to next band
+Horde: 180 E · 44 D   (cap 400)
 ```
 
 ## 18.5 Soulforged Armory — offered for weapon breadth

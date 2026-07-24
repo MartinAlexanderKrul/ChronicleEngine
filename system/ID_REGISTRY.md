@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000136 |
-| Record | `REC-` | Canonical Record | REC-000086 |
-| Event | `EVT-` | Event | EVT-000069 |
+| Entity | `ENT-` | Persistent Entity | ENT-000139 |
+| Record | `REC-` | Canonical Record | REC-000087 |
+| Event | `EVT-` | Event | EVT-000071 |
 | Relationship | `REL-` | Relationship | REL-000065 |
 
 ---
@@ -164,6 +164,12 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000065 | Relationship | Gatefall: Pendragon: Alexander's pending crew slot with Priya Okafor's crew, arranged through Kesha Morrison, not yet confirmed or signed |
 | EVT-000069 | Event | Gatefall: Pendragon: rest-day shop purchases (C-grade dagger, instant-dungeon key), private dagger-swap and summon-speed practice, third daily quest (grant deferred), stat allocation (Strength 13→16), and the arranged Priya Okafor crew slot |
 | REC-000086 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0009/900_SAVE_MANIFEST.md` — the rest day, shop purchases, private practice, third daily quest, and the pending Okafor crew slot |
+| ENT-000137 | Entity | Gatefall: Pendragon: Julian, ranged striker on Priya Okafor's crew, carries a graded/mana-bearing shotgun |
+| ENT-000138 | Entity | Gatefall: Pendragon: Renata, sensor/reader on Priya Okafor's crew |
+| ENT-000139 | Entity | Gatefall: Pendragon: Owen, mender on Priya Okafor's crew |
+| EVT-000070 | Event | Gatefall: Pendragon: the Ashfield Gate's entry (true grade C, archetype Ashfield, population rolled), the first wave, and Alexander's first solo kill above his own band (five-exchange fight, a near-lethal hit survived via a claimed grant, resulting Level 2→3) |
+| EVT-000071 | Event | Gatefall: Pendragon: Alexander's read on the elite, Priya's catastrophic fumbled intercept, and Alexander's dual-dagger counter-strike stopping the elite's breakthrough |
+| REC-000087 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0010/900_SAVE_MANIFEST.md` — mid-combat checkpoint after the Ashfield Gate's entry, first-wave clear, Alexander's first kill above his own band, and the elite's breakthrough and counter |
 
 ---
 

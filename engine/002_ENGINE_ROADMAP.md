@@ -4,23 +4,23 @@
 
 **Engine Version:** 0.2.0 (Knowledge & Civilization)
 **Development Target:** Version 0.3 — Runtime & Persistence Hardening
-**Status:** Version 0.3 ADRs accepted (Architecture Freeze 2026-07-23) — Implementation
+**Status:** Version 0.3 Capability Validation in progress — Gatefall: Pendragon designated as the Prototype Campaign
 
 # Current Sprint
 
 Goal:
 
-Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha, and the Engine Postmortem are complete. The Version 0.3 scope is accepted (2026-07-19): **Runtime & Persistence Hardening**. Its ADRs were accepted on 2026-07-23 (Architecture Freeze, Decision 048); the version has advanced from ADR Design to Implementation.
+Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha, and the Engine Postmortem are complete. Version 0.3 — **Runtime & Persistence Hardening** — has completed ADR approval, implementation of Decisions 072–074, and its Consistency Audit. It has advanced to Capability Validation.
 
 Current Task:
 
-The Version 0.3 architecture is frozen: Decisions 072–075 are all **Accepted** as of 2026-07-23. Milestones **0.3.1 and 0.3.2 are implemented** (2026-07-23): the canonical checkpoint form is normative (Rules 13.1) and mechanically enforced with a regression fixture for the Checkpoint 001 failure class; presence has a single structural owner (Data Model 0.1.2, Sections 7.1/9.2) enforced by the Repository Validation Barrier; and the entangled one-time migrations are done — every live record is schema 0.1.2, carried inventory uses presence-by-possession, Prototype Alpha's terminal state is re-issued as conforming Checkpoint 0001, and two live stale-location defects the new gate class exists for were found and corrected during the migration itself (`EVT-000057`). Milestone **0.3.3 is implemented** (2026-07-23): Rules 14.6 defines profile versioning and freeze semantics, the manifest's version block requires a structured profile version, mismatch surfacing extends to the profile axis (Runtime 6.2), Reikon 0.10 is the first frozen profile, and the contract test enforces both the manifest field and the per-world declaration. With 0.3.4 closed by drop (Decision 075) and the **Consistency Audit complete** (2026-07-23: glossary terminology for presence, occupancy, presence-by-possession, checkpoint form, manifest identity, and profile freeze; stale cross-references reconciled; PA-002 and PA-008 dispositioned Resolved), the remaining Version 0.3 work is **0.3.5 — Capability Validation and the Prototype Campaign**. Later work within the version is implementation and refinement, not new foundational architecture (Decision 048).
+The Version 0.3 architecture is frozen: Decisions 072–075 are all **Accepted** as of 2026-07-23. Milestones **0.3.1–0.3.3 are implemented**, 0.3.4 is closed by drop (Decision 075), and the **Consistency Audit is complete**. Milestone **0.3.5 — Capability Validation and the Prototype Campaign is in progress**. Gatefall: Pendragon (`campaigns/gatefall_pendragon_001/`) is the designated live prototype; destructive, contradictory, and compatibility-failure cases remain non-canonical fixtures. The validation plan and evidence matrix live under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`. Later work within the version is validation and refinement, not new foundational architecture (Decision 048).
 
 The accepted scope replaced Governance & Society at 0.3 and moved it to Version 0.4. Its argument, its five capability milestones, and the recorded argument against it are in the Version 0.3 section below.
 
 Next Review:
 
-Implementation review. The 0.3 ADRs are accepted, so Rules, Data Model, and Runtime changes required by Decisions 072–074 may now land; anything beyond them remains frozen (Decision 048).
+Capability Validation review. Evaluate the non-canonical fixtures and Gatefall prototype evidence against `docs/430_RUNTIME_PERSISTENCE_VALIDATION/431_CAPABILITY_MATRIX.md`. A failed case is recorded as a gap; it is not silently converted into new foundational work inside the frozen version.
 
 Completed since the 0.2.0 release:
 
@@ -650,7 +650,7 @@ Decision 071 is the fifth decision against the bootstrap boundary (with 056, 063
 
 ## Version 0.3 — Runtime & Persistence Hardening
 
-Status: **ACCEPTED — Architecture frozen 2026-07-23; in Implementation.** Scope approved 2026-07-19; ADRs (Decisions 072–075) accepted 2026-07-23 (Architecture Freeze, Decision 048). Implementation proceeds against the accepted decisions only.
+Status: **Capability Validation in progress.** Scope approved 2026-07-19; ADRs (Decisions 072–075) accepted 2026-07-23 (Architecture Freeze, Decision 048); Decisions 072–074 implemented and the Consistency Audit complete. Validation proceeds against the accepted architecture only.
 
 Version 0.2 implementation, Prototype Alpha, the Engine Postmortem, and the required refinements are all complete, which is what unblocked this version under the development lifecycle (Decision 048).
 
@@ -725,7 +725,22 @@ Assessed at ADR Design (Decision 075) and **closed without a foundational change
 
 #### 0.3.5 Capability Validation and Prototype Campaign
 
-Per Decision 048. The prototype must exercise save, restore, branch, restart, a world-profile mismatch, a location/presence contradiction being caught by the new gate, and the command surface (bootstrap no-target gate; save/load/branch/restart) surviving without a new decision (Decision 075) — not a knowledge scenario, which Version 0.2 already validated.
+**Status: In Progress (2026-07-24).** Gatefall: Pendragon is the designated live prototype campaign. The validation plan, exact acceptance matrix, failure fixtures, and prototype evidence log live under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`.
+
+Per Decision 048, Capability Validation and the Prototype Campaign remain distinct evidence stages even though this milestone groups them. Non-canonical fixtures exercise failure cases without contaminating live canon; Gatefall play exercises the positive end-to-end path.
+
+The combined evidence must exercise:
+
+- canonical checkpoint creation, complete promotion, and exact named restoration;
+- registry preservation during restoration;
+- single-owner presence and presence-by-possession, including mechanical rejection of invalid structured state;
+- matching, mismatched, unfrozen, and explicitly absent World Rule Profile metadata;
+- argumentless bootstrap and `/save`, `/load`, `/branch`, and `/restart` preserving their existing barriers;
+- branching into a disposable campaign with distinct identity and lineage;
+- restart on that disposable branch without registry rollback or identifier reuse;
+- and completion without a new command decision or foundational abstraction.
+
+Gatefall main remains the canonical continuation. It is never corrupted, restarted, or given a retroactive baseline merely to manufacture evidence. Its lack of a baseline validates the `/restart` precondition; the full restart path is tested on a disposable branch.
 
 ### Exclusions
 
@@ -1101,7 +1116,7 @@ Current architectural debt:
 
 Version 0.2 - Knowledge & Civilization is complete. Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements are complete.
 
-Version 0.3 — Runtime & Persistence Hardening is in Implementation. Its ADRs — Decisions 072, 073, and 074 (foundational) and 075 (refinement; milestone 0.3.4 closed by drop) — were accepted on 2026-07-23 (Architecture Freeze, Decision 048), and all three foundational decisions are implemented as of the same date. The next work is the Consistency Audit, then 0.3.5 — Capability Validation and the Prototype Campaign; anything beyond the accepted set remains frozen.
+Version 0.3 — Runtime & Persistence Hardening is in Capability Validation. Its ADRs — Decisions 072, 073, and 074 (foundational) and 075 (refinement; milestone 0.3.4 closed by drop) — were accepted on 2026-07-23 (Architecture Freeze, Decision 048); all three foundational decisions are implemented and the Consistency Audit is complete. Gatefall: Pendragon is the designated 0.3 prototype, with non-canonical failure fixtures and its evidence matrix under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`. Anything beyond the accepted set remains frozen.
 
 ---
 

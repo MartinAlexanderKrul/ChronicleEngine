@@ -315,7 +315,7 @@ Chronicle Engine develops one version at a time through the standard development
 
 **Current Engine Version:** 0.2.0 (Knowledge & Civilization)
 **Current Development Target:** Version 0.3 — Runtime & Persistence Hardening
-**Current Milestone:** Implementation
+**Current Milestone:** Capability Validation (0.3.5)
 
 The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 completed Knowledge & Civilization and all lifecycle validation gates. The Version 0.3 scope was accepted on 2026-07-19 and its ADRs — Decisions 072–075 — on 2026-07-23 (Architecture Freeze; see `002_ENGINE_ROADMAP.md`).
 
@@ -323,7 +323,7 @@ Current priority:
 
 1. Decisions 072–074 are implemented (2026-07-23): the canonical checkpoint form, single-owner presence (Data Model 0.1.2), and the World Rule Profile freeze contract (Rules 14.6) with Reikon 0.10 frozen as the first conformance fixture.
 2. The Consistency Audit is complete (2026-07-23): glossary terminology and cross-document references reconciled; PA-002 and PA-008 dispositioned Resolved.
-3. Next: 0.3.5 — Capability Validation and the Prototype Campaign (Decision 048); milestone 0.3.4 is closed by drop (Decision 075).
+3. Milestone 0.3.5 is in progress: Gatefall: Pendragon is the designated live Prototype Campaign, with destructive and compatibility-failure cases isolated in non-canonical fixtures under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`.
 
 ---
 

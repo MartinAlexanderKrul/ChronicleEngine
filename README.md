@@ -255,7 +255,7 @@ Chronicle Engine prioritizes:
 
 **Current Engine Version:** 0.2.0 (Knowledge & Civilization)
 
-**Current Development Target:** Version 0.3 — Runtime & Persistence Hardening (Implementation)
+**Current Development Target:** Version 0.3 — Runtime & Persistence Hardening (Capability Validation)
 
 The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 is the first completed simulation capability built on it. Capability Validation, Prototype Alpha, and the Engine Postmortem are complete (Decision 048).
 
@@ -263,7 +263,7 @@ Current focus:
 
 - Version 0.2.0 (Knowledge & Civilization) released.
 - Version 0.3 ADRs accepted (2026-07-23): Decisions 072–075, Architecture Freeze complete.
-- Milestones 0.3.1–0.3.3 implemented (2026-07-23): Save Layer Unification, Presence and Location (Data Model 0.1.2), and World Rule Profile versioning and freeze (Rules 14.6; Reikon 0.10 is the first frozen profile). The Consistency Audit is complete. Next: 0.3.5 — Capability Validation and the Prototype Campaign.
+- Milestones 0.3.1–0.3.3 implemented (2026-07-23): Save Layer Unification, Presence and Location (Data Model 0.1.2), and World Rule Profile versioning and freeze (Rules 14.6; Reikon 0.10 is the first frozen profile). The Consistency Audit is complete. Milestone 0.3.5 is in progress: Gatefall: Pendragon is the live prototype, with unsafe failure cases isolated in `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`.
 
 See:
 

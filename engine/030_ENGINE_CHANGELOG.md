@@ -12,6 +12,16 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-24 — Version 0.3 Capability Validation opened; Gatefall designated as prototype
+
+Capability Validation stage under Decision 048; refinement under Decision 069 — validation artifacts and lifecycle status only, with no Rules, Data Model, Runtime, world-rule, or campaign-canon change and no decision number consumed. Owned by Version 0.3 milestone 0.3.5.
+
+**Prototype designation:** the already-active Gatefall: Pendragon campaign (`campaigns/gatefall_pendragon_001/`) is the Version 0.3 live prototype. Its four canonical-form checkpoints, repeated promotion barriers, Data Model 0.1.2 presence state, and structured workshop-draft profile metadata supply positive-path evidence. No replacement campaign is created merely to repeat that evidence.
+**Safety boundary:** malformed checkpoint, contradictory presence, and profile-compatibility failures use non-canonical fixtures. `/branch` and `/restart` are exercised only on a disposable fork; Gatefall main is never corrupted, restarted, or given a retroactive baseline for validation.
+**Validation suite:** added `docs/430_RUNTIME_PERSISTENCE_VALIDATION/` with an overview, exact capability matrix, Gatefall evidence log, and fixtures for presence failures, profile compatibility, branch/restart identity, and command/named-restore behavior.
+**Lifecycle reconciliation:** Roadmap, Manifest, and README advance the current stage from Implementation to Capability Validation and remove stale text saying the Consistency Audit is next. `docs/INDEX.md` indexes the new suite.
+**Engine Version:** Unchanged; remains 0.2.0 until the Version 0.3 Prototype Campaign and Engine Postmortem gates complete.
+
 ## 2026-07-23 — Version 0.3 Consistency Audit complete
 
 Consistency Audit stage under Decision 048; refinement under Decision 069 — terminology and cross-reference reconciliation only, with no Rules, Data Model, Runtime, or mechanism change and no decision number consumed. Owned by Version 0.3.

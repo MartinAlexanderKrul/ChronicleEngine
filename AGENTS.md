@@ -4,7 +4,7 @@ Chronicle Engine is a personal historical-simulation RPG that runs *inside* an A
 
 ## Skills
 
-Full agent-skill definitions live in `.agents/skills/` (mirrored from `.claude/skills/`). If your harness supports the Agent Skills format (`SKILL.md` with YAML frontmatter), register them from there. Otherwise, the four contracts below are binding whenever you operate in this repository.
+Full agent-skill definitions live in `.agents/skills/` (mirrored from `.claude/skills/`). If your harness supports the Agent Skills format (`SKILL.md` with YAML frontmatter), register them from there. Otherwise, the five contracts below are binding whenever you operate in this repository.
 
 ### 1. Bootstrap (`/chronicle`) — `.agents/skills/chronicle/SKILL.md`
 
@@ -44,6 +44,15 @@ A d100 you did not obtain from a tool call does not exist.
 - **Gate entry is rolls, not narration**: on first entry roll true grade (§9.5 d100), archetype (§10 d8), then population from the §9.7 formula (3d6, 1d2). The sensor's read is flavor over the rolled result, never a substitute.
 - **Damage is the §6.2 formula, shown**: `¼ attacker band health × skill multiplier × degree-of-success × (1 − reductions)`. Monsters and NPCs hit at their **own** band. Track Health as an OOC ledger line every exchange (`30 → 17/40`); a hit that landed is subtracted the same turn.
 - **Numbers live OOC only** (§20.5): the roll, the math, and the HP ledger go in the OOC/`/debug` block; in the fiction a wound is a wound. A **pre-System** protagonist (before his §14.7 onset) has no status window — do not show him one.
+
+### 5. NPC knowledge (`/npc`) — `.agents/skills/npc-knowledge/SKILL.md`
+
+An NPC knows a fact only if the fiction gave *that NPC* a channel to it — your omniscience as narrator is not the character's.
+
+- Before any NPC line, run the **channel test**: the NPC may use a fact only if it was **present**, was **told** (through an in-fiction channel), has authored **records** access, or it is **common knowledge** (bible §7 tiers). Otherwise the NPC does not know it — narrate it asking, guessing, or not mentioning the thing.
+- **The player is the authority on what's private.** If they say an NPC couldn't know something, stop, accept it, and re-narrate from the NPC's real knowledge; never invent a channel after the fact to justify the slip.
+- **Convenience is the metagaming engine.** Reaching for a fact because it moves the plot where you want (send them to a shop, etc.) is the failure. Find an in-fiction reason or drop the beat.
+- Instances of the same rule: the System is invisible to all but its Bearer (§14.4); numbers are OOC (§20.5); what happened inside an uncleared Gate is known only to those who walked out (§13.4).
 
 ## Repository conventions
 

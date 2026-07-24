@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000133 |
+| Entity | `ENT-` | Persistent Entity | ENT-000135 |
 | Record | `REC-` | Canonical Record | REC-000081 |
-| Event | `EVT-` | Event | EVT-000062 |
-| Relationship | `REL-` | Relationship | REL-000063 |
+| Event | `EVT-` | Event | EVT-000064 |
+| Relationship | `REL-` | Relationship | REL-000064 |
 
 ---
 
@@ -147,6 +147,11 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000060 | Event | Gatefall: Pendragon Session 1 continued (2026-07-24 to 2026-07-25): Gate exit and loot split (mined crystals, beast/core drops, boss-drop armored greave, standard contract split filed), Alexander's rest, the System's first daily quest issued and completed (2026-07-25), and a Coalition visit reviewing the job board with Kesha Morrison. No new entities, records, or relationships minted |
 | EVT-000061 | Event | Gatefall: Pendragon: the rail-yard D-grade Gate contract posted on the Windy City Hunters Coalition board, one open harvest-element slot, filed for 2026-07-26 07:00 — named to Alexander by Kesha Morrison, not yet accepted or declined |
 | EVT-000062 | Event | Gatefall: Pendragon: ruling correcting `EVT-000060`'s overstatement that Alexander's E-card bars him from all C-grade work — per world-rule amendment `d53114b`, the card only caps strike/combat contracts at C-grade+; harvest/support work is not rank-gated. No fiction, XP, item, or relationship state changed |
+| ENT-000134 | Entity | Gatefall: Pendragon: Ada Reyes, logistics coordinator for a corporate-adjacent contractor, ran the Cicero Scar C-grade harvest job |
+| ENT-000135 | Entity | Gatefall: Pendragon: Dale, logistics coordinator for the same contractor, running the Frozen Gallery C-grade harvest job |
+| REL-000064 | Relationship | Gatefall: Pendragon: Alexander's harvest-hire standing with the corporate-adjacent contractor (per-job support labor, not peer-crew membership) |
+| EVT-000063 | Event | Gatefall: Pendragon: the Cicero Scar C-grade harvest job (2026-07-25) — chisel purchase, full mining roll sequence (8 crystals mined, 7 declared, 1 sold privately for 170 gold), stat-point allocation, and the harvest-share correction to ≈$5,700 |
+| EVT-000064 | Event | Gatefall: Pendragon: second daily quest (completed, grant unaccepted) and the start of the Frozen Gallery C-grade harvest job (2026-07-26) — archetype and population rolled, Gate entered, no mining resolved yet |
 
 ---
 

@@ -1,12 +1,12 @@
-# Gatefall — World Rule Profile 1.0
+# Gatefall — World Rule Profile 1.1
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.0
+**Profile Version:** 1.1
 **Engine Compatibility:** 0.2.0; Data Model 0.1.2
 **Status:** Active
-**Compatibility Status:** frozen at version 1.0 (Rules Section 14.6, Decision 074), declared 2026-07-24. Version 1.0 is now an **immutable behavioral contract**: a checkpoint captured under it is **save-trustworthy**, and changing any declared override, magnitude, or mechanic requires a **new profile version** — classified *additive* (declare-only, backward-compatible; a restored older checkpoint needs no recomputation) or *migrating* (changes how existing state settles; restoration requires an explicit migration). Checkpoints captured **before** this freeze, under 1.0 while it was a workshop draft, retain their *unfrozen — not save-trustworthy* warning; the first checkpoint captured after this declaration is the campaign's first trustworthy restore point.
+**Compatibility Status:** frozen at version 1.1 (Rules Section 14.6, Decision 074), declared 2026-07-24. Version 1.1 is an **additive** advance over frozen 1.0: it adds `GTF-OVR-003` (mana-borne damage against monsters, Section 1) as a **declare-only** rule and recomputes no existing state, so a checkpoint captured under 1.0 — Gatefall: Pendragon checkpoints 0001–0009 among them — restores under 1.1 **without recomputation**, carrying only an additive-upgrade acknowledgement (Rules Sections 14.4, 13.6). Both versions are **immutable behavioral contracts**: a checkpoint captured under a frozen version is **save-trustworthy**, and changing any declared override, magnitude, or mechanic requires a further **new profile version** — classified *additive* (declare-only, backward-compatible; a restored older checkpoint needs no recomputation) or *migrating* (changes how existing state settles; restoration requires an explicit migration). Version 1.0 was frozen 2026-07-24; checkpoints captured before that freeze, under 1.0 while it was a workshop draft, retain their *unfrozen — not save-trustworthy* warning.
 
 **1.0 authors the System in full — the mechanical law of a gate-and-System world of awakened hunters.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
 
@@ -44,9 +44,23 @@ Grades everywhere in this world are **E, D, C, B, A, S**, weakest to strongest.
 - **State/provenance:** The Bearer's character ledger records current/maximum Health, current/maximum Mana, active conditions, and the event provenance of each change.
 - **Resolution:** The die resolves whether an uncertain attack or defense succeeds and its result band; established capability and protection then determine damage **after** that result. Vitality never reaches action resolution.
 
+## GTF-OVR-003 — Mana-Borne Damage Against Monsters
+
+- **Replaces/refines:** Rules Section 6 (Conflict, Combat, Injury) and the engine default that any sufficiently forceful weapon can wound any target. Operationalized by this profile's Section 6.2 damage model.
+- **Scope:** Damage dealt **to monsters** — the mana-suffused creatures of Gates, dungeon breaks, and the Jiu-class exclusions (Bible Sections 1, 5). It does not touch how humans wound humans, or how a monster wounds anyone; those resolve on the engine default and this profile's band-health model unchanged.
+- **Activation:** Always active in this world.
+- **Replacement:** A monster's body is saturated with mana, and **only damage that itself carries mana lands on it.** Mana-borne damage has exactly two sources:
+  1. an **awakened combatant's** strike, skill, or signature ability — the awakened channels mana through the blow, so a hunter wounds a monster with a bare fist, a plain blade, or a cast alike. This is the whole of Section 6.2's existing multiplier ladder (unarmed ×0.5, armed ×0.75, authored skills), **unchanged for an awakened wielder**; and
+  2. a **mana-bearing weapon** — graded Gate-forged gear (Section 11.5) and enchanted or named armaments (Section 11.6), which hold their own mana edge.
+
+  **Conventional, un-enchanted mundane arms carry no mana and deal no damage to a monster.** Gunpowder firearms and their munitions, mundane blades, explosives, artillery, and ordnance of purely mundane make have a skill multiplier (Section 6.2) of **×0** against a monster: they may knock back, stagger, bind, cordon, or destroy terrain, but they remove **no** Health. This is why a dungeon break is answered by hunters and not by soldiers, why conventional forces can only *contain* a break (Section 9.3; Bible Section 2), and why the world counts its awakened as its only real weapon against the Gates.
+- **The magic-weapon exception.** A true **magic weapon** — any mana-bearing armament (graded or enchanted, Section 11.5–11.6) — lets **even an unawakened wielder** land mana-borne damage on a monster, because the mana is the weapon's, not the wielder's. Such weapons are **very rare and correspondingly valuable**: graded gear is forged from beast cores in small numbers by artificers (Section 12.8), named uniques are one-of-a-kind (Section 11.6), and nothing mundane substitutes. For the unawakened — 4,999 of every 5,000 people (Bible Section 3) — a magic weapon is the *only* way to personally harm a monster, and almost none will ever hold one.
+- **State/provenance:** No new tracked state. Whether an attack is mana-borne is read at resolution from its source — the wielder's awakened status (campaign canon) and the weapon's grade or enchantment (Section 11.5–11.6) — exactly as skill multipliers already are.
+- **Resolution:** The die still resolves whether an attack lands and its degree (Rules Section 4; Decision 058). This override only sets the **skill multiplier to ×0 for a mundane-source attack against a monster**, so a landed mundane hit removes no Health. It never touches the roll, and it changes nothing about awakened-versus-monster, monster-versus-anyone, or human-versus-human combat.
+
 ## Interaction
 
-`GTF-OVR-001` and `GTF-OVR-002` are independent and compose without conflict. Progression (001) sets the capability values that vitality (002) consumes. Neither touches the die.
+`GTF-OVR-001`, `GTF-OVR-002`, and `GTF-OVR-003` are independent and compose without conflict. Progression (001) sets the capability values that vitality (002) consumes; damage-source (003) gates *whether* an attack against a monster carries mana at all, before 002's band health ever reads the hit. None of the three touches the die.
 
 ---
 
@@ -293,7 +307,7 @@ damage = standard_hit_baseline(attacker's effective grade)   # ¼ of the attacke
 ```
 
 - **Standard-hit baseline.** The baseline of a single ordinary hit is **one-quarter of the attacker's grade band health** (`band_health ÷ 4`). Damage rides the *attacker's* own band: a grade-C attacker's every hit scales to C-band health, a grade-A attacker's to A-band. Because a same-grade target has the same band health, a standard hit at standard success removes about **a quarter of a same-grade foe's Health** — so a matched fight takes roughly four clean hits, and the whole model resolves in relative terms without an authored HP table. **Cross-band, the baseline is read from the attacker's band on the canonical table (Section 6.1).** Worked one-liner: an E-Bearer with 40 Health (E-band) struck by a grade-D beast — say, in a mis-graded Gate — takes `¼ × 100 = 25` on a standard hit — 25 removed from his 40, which by Section 6.3 also inflicts an injury (over 50% of remaining Health). The beast's damage rode the D band because its baseline is a quarter of D-band health, not of the Bearer's.
-- **Skill multiplier.** A skill or strike states its damage as a multiplier on the standard-hit baseline (Section 7): an unarmed or improvised strike is **×0.5**, a competent armed strike **×0.75**, and an authored skill carries its own ratio (Mana Bolt **×1.0**, and so on). A multiplier of ×1.0 *is* the standard-hit baseline.
+- **Skill multiplier.** A skill or strike states its damage as a multiplier on the standard-hit baseline (Section 7): an unarmed or improvised strike is **×0.5**, a competent armed strike **×0.75**, and an authored skill carries its own ratio (Mana Bolt **×1.0**, and so on). A multiplier of ×1.0 *is* the standard-hit baseline. **Against a monster the multiplier is ×0 unless the attack is mana-borne** — an awakened wielder's strike or a mana-bearing weapon (`GTF-OVR-003`): a mundane gun, blade, or explosive lands nothing on a monster however well the die rolls. The ×0.5/×0.75 strikes above are an awakened combatant's, whose mana rides the blow.
 - **Result multiplier — by degree of success.** The degree of success the d100 yields (Rules Section 4; Decision 011) scales the hit:
 
 | Degree of success | Name | Multiplier |
@@ -528,7 +542,7 @@ From detection, an uncleared Gate runs a countdown to a **dungeon break** (Secti
 
 The timer starts at detection, not at first entry. A Gate cleared before its timer expires closes safely on the boss kill; a Gate whose timer runs out breaks.
 
-**Why the worst Gates give the least warning.** The timer is not a schedule; it is the barrier failing. A Gate's countdown is read from its mana pressure (the same reading that grades it), and a higher-grade interior strains harder against the barrier that contains it — an E-Gate is a sealed jar, an S-Gate an overpressured boiler. This is the single fact the world's hunter politics is built on: no state can *assemble* an S-response inside two days, so an S-Gate is answered by whoever is already in range — which is why S-ranks are pre-positioned strategic assets counted by name, why the S-rank draft binds them to emergency mobilization, why a state with one S-rank guards where that one sleeps, and why an S-Gate beyond the reach of a standing response becomes a Jiu Valley. An S-Gate response is never "every S-rank in the country"; it is the nearest adequate force plus military containment of whatever the force cannot reach in time.
+**Why the worst Gates give the least warning.** The timer is not a schedule; it is the barrier failing. A Gate's countdown is read from its mana pressure (the same reading that grades it), and a higher-grade interior strains harder against the barrier that contains it — an E-Gate is a sealed jar, an S-Gate an overpressured boiler. This is the single fact the world's hunter politics is built on: no state can *assemble* an S-response inside two days, so an S-Gate is answered by whoever is already in range — which is why S-ranks are pre-positioned strategic assets counted by name, why the S-rank draft binds them to emergency mobilization, why a state with one S-rank guards where that one sleeps, and why an S-Gate beyond the reach of a standing response becomes a Jiu Valley. An S-Gate response is never "every S-rank in the country"; it is the nearest adequate force plus **military containment** — cordon, evacuation, and holding the perimeter, since conventional arms cannot *kill* what a break releases (`GTF-OVR-003`) — of whatever the force cannot reach in time.
 
 ## 9.4 Party Minimums — Law and Practice
 
@@ -727,7 +741,7 @@ Entries 1–8 are the eight starting skills of Section 7.3, taught here at the d
 
 ## 11.5 Item Grades
 
-Gear carries a grade **E–S**, exactly as monsters do, and **an item's grade sets its damage or protection band exactly as a monster's grade sets its band health** (Section 6.1). A C-grade weapon lands its strikes on the C-band standard-hit baseline (Section 6.2); B-grade armor grants protection scaled to the B band. Grade is the item's complete mechanical description — no per-item stat line is authored beyond grade, type, and any named effect.
+Gear carries a grade **E–S**, exactly as monsters do, and **an item's grade sets its damage or protection band exactly as a monster's grade sets its band health** (Section 6.1). A C-grade weapon lands its strikes on the C-band standard-hit baseline (Section 6.2); B-grade armor grants protection scaled to the B band. Grade is the item's complete mechanical description — no per-item stat line is authored beyond grade, type, and any named effect. **All graded gear is mana-bearing** — forged from beast cores by artificers who work mana into matter (Section 12.8) — so a graded weapon is a **mana weapon**: it lands mana-borne damage on a monster (`GTF-OVR-003`) even in an unawakened hand, which is what separates it from any mundane arm and underwrites its price. This is the "very rare magic weapon" of common talk; there is no cheap version, because there is no mundane version.
 
 **Named uniques** exist only as **authored items with provenance** — a specific weapon or artifact written into a world or campaign file with a recorded origin. A boss drop never generates a named unique at random; the boss-drop table yields graded generic gear, and a named unique enters play only where a file authors it.
 

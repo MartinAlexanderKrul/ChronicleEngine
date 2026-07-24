@@ -12,6 +12,15 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-24 — Gatefall World Rule Profile 1.1: mana-borne damage against monsters (additive)
+
+World authoring under Decision 062 (world rule content requires no ADR) — no engine Rules, Data Model, or Runtime change, and no decision number consumed. Recorded here and in the world's documents per the roadmap's world-authoring rule.
+
+**World rule:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` adds `GTF-OVR-003` (mana-borne damage against monsters): a monster takes damage only from mana — an awakened combatant's strike/skill or a mana-bearing weapon — so conventional un-enchanted arms (gunpowder firearms, mundane blades, explosives, artillery) resolve at a ×0 skill multiplier against monsters and only cordon or contain. A rare "magic weapon" (any graded/enchanted, therefore mana-bearing, armament) lets even an unawakened wielder harm a monster. Section 6.2 (damage), Section 9.3 (S-Gate containment), and Section 11.5 (graded gear is mana-bearing) updated to reference it.
+**Profile version:** frozen **1.0 → 1.1**, classified **additive** (Rules 14.6, Decision 074): declare-only, recomputes no existing state, so checkpoints 0001–0009 restore under 1.1 without recomputation, carrying an additive-upgrade acknowledgement only.
+**World bible / resources:** `200_WORLD_BIBLE.md` Section 2 adds the public fact ("only mana kills a monster"); `240_RESOURCES.md` Graded Hunter Gear records that graded gear is the world's mana weapon.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-24 — Version 0.3 Capability Validation opened; Gatefall designated as prototype
 
 Capability Validation stage under Decision 048; refinement under Decision 069 — validation artifacts and lifecycle status only, with no Rules, Data Model, Runtime, world-rule, or campaign-canon change and no decision number consumed. Owned by Version 0.3 milestone 0.3.5.

@@ -62,9 +62,11 @@ Filled out at national depth:
 - **United States:** ~**66,000 awakened**, ~**25,000 licensed hunters**, **11 S-ranks**. **Chicago:** ~**1,200 licensed hunters**, **2 resident S-ranks** — Horizon Guild's ace, and one BGM federal asset, **Elias Kane**, who answers to Washington before the city.
 - **Czech Republic:** ~**2,100 awakened**, ~**800 licensed hunters**, **1 S-rank** — a national celebrity and a permanent political football. **Prague:** ~**350 licensed hunters**, small enough that every B-rank is a known name and a new face is noticed within a week. That intimacy is the whole point of starting there.
 
+**Fighting is not the only job.** Most low-rank hunters do not make their living trading blows. The trade's floor is largely a **support tier** — **miners** who cut a Gate's crystal deposits, **harvesters** who strip a clear, and **porters** who haul loot and carry the fighters' spare gear. Support crew do not fight, so they need not match a Gate's grade: an E-rank rides into a C- or B-Gate under the strike team's protection, works the cleared ground, and is paid a share of crystal worth more than anything he could earn fighting (profile Section 9.4). It is honest, needed work — and dangerous, since a support crewman caught when the line breaks dies as surely as a striker. An E-rank *fighting* a D-beast is the exception an ambitious hunter chooses; an E-rank *mining* a D-Gate is Tuesday.
+
 **Rank in one line each, as the trade uses them:**
-- **E** — newly licensed; clears E-Gates in supervised parties. The floor, and where most hunters stay.
-- **D** — competent; solo E-work, D-Gate team member. The working majority above the floor.
+- **E** — newly licensed; supervised E-Gate combat, or support work (mining, harvesting, portering) on higher-grade clears. The floor, and where most hunters stay.
+- **D** — competent; solo E-work, D-Gate team member, or senior support. The working majority above the floor.
 - **C** — experienced; the backbone of a serious raid party.
 - **B** — veteran; rare enough that in Prague every one is known by name.
 - **A** — elite; a public figure, courted by every major guild.

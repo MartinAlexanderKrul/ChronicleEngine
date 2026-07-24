@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000135 |
-| Record | `REC-` | Canonical Record | REC-000085 |
-| Event | `EVT-` | Event | EVT-000068 |
-| Relationship | `REL-` | Relationship | REL-000064 |
+| Entity | `ENT-` | Persistent Entity | ENT-000136 |
+| Record | `REC-` | Canonical Record | REC-000086 |
+| Event | `EVT-` | Event | EVT-000069 |
+| Relationship | `REL-` | Relationship | REL-000065 |
 
 ---
 
@@ -160,6 +160,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000084 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0007/900_SAVE_MANIFEST.md` — vein's end, the grant acceptance, the fifth sale, and the boss kill |
 | EVT-000068 | Event | Gatefall: Pendragon: a sixth undeclared private sale, formal declaration of 41 C-crystals (the crew's highest), exit and return home, and the Runtime ruling establishing the Frozen Gallery harvest-share payout (≈$24,663) under the now-authored Section 13.2 formula |
 | REC-000085 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0008/900_SAVE_MANIFEST.md` — formal declaration, exit, and the harvest-share ruling |
+| ENT-000136 | Entity | Gatefall: Pendragon: Priya Okafor, striker and crew lead, arranged (pending) fifth-slot crew contact for a distinct unconfirmed E-D Gate |
+| REL-000065 | Relationship | Gatefall: Pendragon: Alexander's pending crew slot with Priya Okafor's crew, arranged through Kesha Morrison, not yet confirmed or signed |
+| EVT-000069 | Event | Gatefall: Pendragon: rest-day shop purchases (C-grade dagger, instant-dungeon key), private dagger-swap and summon-speed practice, third daily quest (grant deferred), stat allocation (Strength 13→16), and the arranged Priya Okafor crew slot |
+| REC-000086 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0009/900_SAVE_MANIFEST.md` — the rest day, shop purchases, private practice, third daily quest, and the pending Okafor crew slot |
 
 ---
 

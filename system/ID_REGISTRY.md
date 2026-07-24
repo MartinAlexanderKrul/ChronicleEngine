@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000135 |
-| Record | `REC-` | Canonical Record | REC-000081 |
-| Event | `EVT-` | Event | EVT-000064 |
+| Record | `REC-` | Canonical Record | REC-000082 |
+| Event | `EVT-` | Event | EVT-000065 |
 | Relationship | `REL-` | Relationship | REL-000064 |
 
 ---
@@ -152,6 +152,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000064 | Relationship | Gatefall: Pendragon: Alexander's harvest-hire standing with the corporate-adjacent contractor (per-job support labor, not peer-crew membership) |
 | EVT-000063 | Event | Gatefall: Pendragon: the Cicero Scar C-grade harvest job (2026-07-25) — chisel purchase, full mining roll sequence (8 crystals mined, 7 declared, 1 sold privately for 170 gold), stat-point allocation, and the harvest-share correction to ≈$5,700 |
 | EVT-000064 | Event | Gatefall: Pendragon: second daily quest (completed, grant unaccepted) and the start of the Frozen Gallery C-grade harvest job (2026-07-26) — archetype and population rolled, Gate entered, no mining resolved yet |
+| EVT-000065 | Event | Gatefall: Pendragon: two vein assignments worked at the Frozen Gallery (2026-07-26) — 30 crystals mined, 13 in the current declarable count, two undeclared private sales of 12 crystals each (4,080 gold), a critical fumble, and a break granted by Dale |
+| REC-000082 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0005/900_SAVE_MANIFEST.md` — the Frozen Gallery two-vein harvest and second undeclared sale |
 
 ---
 

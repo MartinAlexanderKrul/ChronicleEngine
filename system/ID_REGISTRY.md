@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000135 |
-| Record | `REC-` | Canonical Record | REC-000082 |
-| Event | `EVT-` | Event | EVT-000065 |
+| Record | `REC-` | Canonical Record | REC-000083 |
+| Event | `EVT-` | Event | EVT-000066 |
 | Relationship | `REL-` | Relationship | REL-000064 |
 
 ---
@@ -154,6 +154,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000064 | Event | Gatefall: Pendragon: second daily quest (completed, grant unaccepted) and the start of the Frozen Gallery C-grade harvest job (2026-07-26) — archetype and population rolled, Gate entered, no mining resolved yet |
 | EVT-000065 | Event | Gatefall: Pendragon: two vein assignments worked at the Frozen Gallery (2026-07-26) — 30 crystals mined, 13 in the current declarable count, two undeclared private sales of 12 crystals each (4,080 gold), a critical fumble, and a break granted by Dale |
 | REC-000082 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0005/900_SAVE_MANIFEST.md` — the Frozen Gallery two-vein harvest and second undeclared sale |
+| EVT-000066 | Event | Gatefall: Pendragon: a third vein assignment at the Frozen Gallery (2026-07-26) — 74 crystals mined (including a 16-crystal delegated stretch), two further undeclared private sales of 12 crystals each (4,080 gold, total gold 8,330), a performed exhaustion that drew a real mandatory break from Dale, and a tactical observation of the strike element yielding qualitative capability growth |
+| REC-000083 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0006/900_SAVE_MANIFEST.md` — the third Frozen Gallery vein, two further undeclared sales, and the strike-line observation |
 
 ---
 

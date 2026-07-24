@@ -1,0 +1,105 @@
+###status_tmpl
+╔═ ◈ SYSTEM · STATUS ══════════════════════════════════╗
+║  <NAME>                                              ║
+║  Rank   <band>            Level   <L>                ║
+║  Class  <class or —>      Title   <equipped or —>    ║
+╟──────────────────────────────────────────────────────╢
+║  XP   <bar>   <cur> / <next>                         ║
+║  HP   <bar>   <hp> / <hpmax>                         ║
+║  MP   <bar>   <mp> / <mpmax>                         ║
+╟──────────────────────────────────────────────────────╢
+║  Strength    <n>       Perception    <n>             ║
+║  Agility     <n>       Intelligence  <n>             ║
+║  Vitality    <n>       Unspent   ● <n>               ║
+╟──────────────────────────────────────────────────────╢
+║  Pending grants   <none, or list>                    ║
+║  Skills <n> · Titles <n> · Items <n> · Gold <n> g    ║
+╚══════════════════════════════════════════════════════╝
+
+###status_ren
+╔═ ◈ SYSTEM · STATUS ══════════════════════════════════╗
+║  REN                                                 ║
+║  Rank   E-band            Level   3                  ║
+║  Class  —                 Title   Lone Clear         ║
+╟──────────────────────────────────────────────────────╢
+║  XP   ██████████░░░░░░░░░░   150 / 300               ║
+║  HP   ███████████████░░░░░   31 / 40                 ║
+║  MP   ██████████████░░░░░░   22 / 30                 ║
+╟──────────────────────────────────────────────────────╢
+║  Strength     9        Perception    14              ║
+║  Agility     13        Intelligence  11              ║
+║  Vitality    11        Unspent   ● 1                 ║
+╟──────────────────────────────────────────────────────╢
+║  Pending grants   level-up (+3 & full restore)       ║
+║  Skills 4 · Titles 2 · Items 6 · Gold 340 g          ║
+╚══════════════════════════════════════════════════════╝
+
+###quests_ren
+╔═ ◈ SYSTEM · QUESTS ══════════════════════════════════╗
+║  [DAILY]  Training                                   ║
+║    push-ups 40/100 · sit-ups 100/100 · run 6/10      ║
+║    Reward +3 pts · full restore · 10 XP              ║
+║    Deadline 14h12m · Streak 6/7 → Weekly Cache       ║
+╟──────────────────────────────────────────────────────╢
+║  [URGENT]  Cull the Red Line nest   (3/4)            ║
+║    Reward 40 XP · Window this scene                  ║
+╟──────────────────────────────────────────────────────╢
+║  [HIDDEN]  ???                                       ║
+╚══════════════════════════════════════════════════════╝
+
+###skills_ren
+╔═ ◈ SYSTEM · SKILLS ══════════════════════════════════╗
+║  Mana Bolt        [E]  Mana 5                        ║
+║    ranged ×1.0 baseline; the die resolves it         ║
+║  Dagger Mastery   [E]  Passive                       ║
+║    light-blade strikes at ×0.75                      ║
+║  Sprint           [E]  Mana 3                        ║
+║    +1 step to movement for one exchange              ║
+║  Mend             [E]  Mana 6                        ║
+║    restore ¼ band health; no severity clear          ║
+╚══════════════════════════════════════════════════════╝
+
+###inv_ren
+╔═ ◈ SYSTEM · INVENTORY ═══════════════════════════════╗
+║  License                  [E-Rank]                   ║
+║  Steel dagger             [E]                        ║
+║  Lesser healing potion    ×3                         ║
+║  Instant-dungeon key      [E]                        ║
+╟──────────────────────────────────────────────────────╢
+║  E-crystal                ×8                         ║
+║  Cores                    ×2   [E]                   ║
+╚══════════════════════════════════════════════════════╝
+
+###titles_ren
+╔═ ◈ SYSTEM · TITLES ══════════════════════════════════╗
+║  Equipped:  Lone Clear                               ║
+╟──────────────────────────────────────────────────────╢
+║  ★ Lone Clear                        [equipped]      ║
+║    +1 step while no allied hunter in the Gate        ║
+║    Untouched                          [—]            ║
+║    +1 step to evasion, first exchange of combat      ║
+╚══════════════════════════════════════════════════════╝
+
+###shop_ren
+╔═ ◈ SYSTEM · SHOP   —   340 g ════════════════════════╗
+║  BUYS   E 10 · D 40 · C 170 · B 750 · A 3,400 g      ║
+╟──────────────────────────────────────────────────────╢
+║  SELLS                                               ║
+║    Healing potion   L 25 · S 90 · G 400 g            ║
+║    Mana potion (L)  20 g   ·   Antidote  30 g        ║
+║    Weapon   E 100 · D 450 · C 2,000 g                ║
+║    Instant-dungeon key (own band)   500 g            ║
+║    Elixir  +1 stat (max 3/stat)   5,000 g            ║
+╚══════════════════════════════════════════════════════╝
+
+###log_ren
+╔═ ◈ SYSTEM · LOG ═════════════════════════════════════╗
+║  ↑ LEVEL UP — Level 3                                ║
+║    Grant available: +3 pts · full restore            ║
+║    XP: 0 → 20/300                                    ║
+║  ★ TITLE EARNED — Lone Clear                         ║
+║    +1 step while no allied hunter in the Gate        ║
+║  ◈ QUEST ISSUED — DAILY TRAINING                     ║
+║    Reward +3 pts +10 XP · miss → penalty zone        ║
+╚══════════════════════════════════════════════════════╝
+

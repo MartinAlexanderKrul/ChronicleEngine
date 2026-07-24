@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000133 |
 | Record | `REC-` | Canonical Record | REC-000081 |
-| Event | `EVT-` | Event | EVT-000059 |
+| Event | `EVT-` | Event | EVT-000062 |
 | Relationship | `REL-` | Relationship | REL-000063 |
 
 ---
@@ -144,6 +144,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000132 | Entity | Campaign Gatefall: Pendragon Session 1: Cutting Edge, custom E-/D-grade gear shop in Chicago's warehouse district — recommended vendor, not visited |
 | ENT-000133 | Entity | Campaign Gatefall: Pendragon Session 1: Horizon's outfitter on Michigan Avenue, Horizon Guild-affiliated gear shop — recommended vendor, not visited; Alexander chose Ironbound for better pricing |
 | EVT-000059 | Event | Gatefall: Pendragon Session 1: the Red Line Corridor clear and System onset (2026-07-24) — Gate entry (true grade E, archetype Shattered City), full population cleared (9 common, 1 elite, 1 boss) with no crew casualties, System attachment to Alexander (`ENT-000125`) mid-fight per Profile Section 14.7, and the Level 1→2 grant off the elite-kill, common-beast-kill, and boss-kill/Gate-clear-milestone XP. No new entities, records, or relationships minted — the System is not a Persistent Entity (Profile Section 14.1) and lives in `ENT-000125`'s `canonical_state` alone |
+| EVT-000060 | Event | Gatefall: Pendragon Session 1 continued (2026-07-24 to 2026-07-25): Gate exit and loot split (mined crystals, beast/core drops, boss-drop armored greave, standard contract split filed), Alexander's rest, the System's first daily quest issued and completed (2026-07-25), and a Coalition visit reviewing the job board with Kesha Morrison. No new entities, records, or relationships minted |
+| EVT-000061 | Event | Gatefall: Pendragon: the rail-yard D-grade Gate contract posted on the Windy City Hunters Coalition board, one open harvest-element slot, filed for 2026-07-26 07:00 — named to Alexander by Kesha Morrison, not yet accepted or declined |
+| EVT-000062 | Event | Gatefall: Pendragon: ruling correcting `EVT-000060`'s overstatement that Alexander's E-card bars him from all C-grade work — per world-rule amendment `d53114b`, the card only caps strike/combat contracts at C-grade+; harvest/support work is not rank-gated. No fiction, XP, item, or relationship state changed |
 
 ---
 

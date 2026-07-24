@@ -56,6 +56,14 @@ Read, in this order, then follow the loaded procedure:
 5. **`engine/012_ENGINE_RUNTIME.md`** and **`engine/011_ENGINE_DATA_MODEL.md`** — runtime obligations and the data model (identifiers, ledgers) the validator enforces.
 6. **`tools/validate_repository.ps1`** — the validation gate run before any checkpoint is claimed saved.
 7. **`system/WORLDS_AND_CAMPAIGNS.md`** — the index of every world and campaign. This is the **rendered source** for the welcome page's listing; render its rows rather than composing a list from memory or from the example paths in these documents.
+8. **The play-discipline skills** — load and **hold for the whole session** the skill definitions in `.claude/skills/` (equivalently, the contracts in `AGENTS.md` / `.agents/skills/`, which mirror them). These are binding whenever you operate this repository, regardless of whether your harness auto-registers skills:
+   - **`chronicle`** — this bootstrap contract (you are executing it now).
+   - **`rules`** — state a mechanic only as a cited section from the World Rule Profile; verify player- and self-asserted rules against the file; never invent from genre memory.
+   - **`resolve`** — every uncertain resolution is an actual rolled tool call (never a typed die); damage is the authored formula shown; Health is tracked; a pre-System protagonist has no System window.
+   - **`save`** — a checkpoint is verified files on disk (the full Save Algorithm), never a claim; both validators must pass with their output shown before the word "saved."
+   - **`npc-knowledge`** — an NPC acts only on information the fiction gave *that* NPC a channel to; the player is the authority on what is private.
+
+   If your harness lists skills, confirm these appear; if it does not, the definitions above are files you read here and follow directly. Either way they govern play.
 
 Then select what to play and load its state only when the player subsequently issues `/continue`, `/resume`, `/new`, or `/load`:
 

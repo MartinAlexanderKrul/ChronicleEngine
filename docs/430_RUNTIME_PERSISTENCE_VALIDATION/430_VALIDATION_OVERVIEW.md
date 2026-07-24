@@ -59,6 +59,7 @@ The live canonical continuation remains protected. Destructive or divergent oper
 | `tools/validate_repository.ps1` | Live structural integrity, referential integrity, registry coverage, and presence invariants |
 | `tools/test_checkpoint_contract.ps1` | Canonical checkpoint shape, ledger completeness, manifest constraints, profile metadata, and index/current-state agreement |
 | `tools/test_runtime_command_catalog.ps1` | Exact command catalog and argumentless bootstrap contract |
+| `tools/test_runtime_persistence_validation.ps1` | Version 0.3 safe capability cases on disposable copies: presence/possession rejection through the real repository gate, profile-readiness across frozen/mismatch/unfrozen/no-profile, exact named restoration, and disposable branch/restart — see `431_CAPABILITY_MATRIX.md` for the per-case evidence class |
 | Other repository gates | Runtime residency, context preservation, decision ownership, and validator regressions |
 | Non-canonical fixtures in this directory | Failure behavior that must not be injected into live canon |
 | Gatefall: Pendragon checkpoints and session evidence | Real promotion, persistence, restoration, and command behavior |

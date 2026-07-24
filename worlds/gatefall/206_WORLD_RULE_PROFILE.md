@@ -1008,163 +1008,98 @@ Gatefall declares **`/system`** as its diegetic command. Its panels are **read-o
 - The **numbers are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer by design, and only he sees this window.
 - The Runtime **fits the frame width to the widest line** and pads the right border to align; the exact width is presentation, the structure and every value are canonical.
 
-Bare **`/system`** opens the STATUS window. Detail lives in the sub-panels (`/system quests`, `skills`, `inventory`, `shop`, `titles`, `log`); **`/system all`** renders the full dossier — every panel stacked in one read — for when the Bearer wants everything at once.
+Bare **`/system`** always renders the **full window** — every section (identity, vitals, stats, quests, skills, titles, inventory, gold) inside one framed window (Section 15.1). Focused single-section views and the interactive shop/titles panels remain available as `/system <section>` (Section 15.2), but the default is the whole of the Bearer at once.
 
 **One example Bearer runs through every base panel.** Call him **Ren** — an illustration only, not a canon character: a **level-3**, E-band Bearer with no class yet, mid-run. His canonical state: Level 3, XP 150/300 (threshold L3→4 = 300, Section 3.1); Health 40/40 (E-band health, Section 6.1, the E-band figure Section 8.2 already uses); Mana 22/30 (`max_mana(3) = 20 + 5×2 = 30`, Section 5.1); Strength 9 · Agility 13 · Vitality 11 · Perception 14 · Intelligence 11; 1 unspent point; skills Mana Bolt, Dagger Mastery, Sprint, Mend (Section 7.3); title **Lone Clear** equipped (Section 16); inventory and gold as shown.
 
-## 15.1 `/system` — the Status Window
+## 15.1 `/system` — the Full System Window
+
+Bare **`/system`** always renders the **entire System window**: identity, vitals, stats, active quests, known skills, earned titles, inventory, and gold — every section stacked inside one framed window, divided by labeled section rules. There is no partial default; the Bearer sees his whole state at once, the way the window hangs in his vision.
 
 ```text
-╔═ ◈ SYSTEM · STATUS ══════════════════════════════════╗
-║  <NAME>                                              ║
-║  Rank   <band>            Level   <L>                ║
-║  Class  <class or —>      Title   <equipped or —>    ║
-╟──────────────────────────────────────────────────────╢
-║  XP   <bar>   <cur> / <next>                         ║
+╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════╗
+║  <NAME>                       Rank  <band>           ║
+║  Level  <L>                   Class <class or —>     ║
+║  XP <cur>/<next>              Title <title or —>     ║
+╟─ VITALS ─────────────────────────────────────────────╢
 ║  HP   <bar>   <hp> / <hpmax>                         ║
 ║  MP   <bar>   <mp> / <mpmax>                         ║
-╟──────────────────────────────────────────────────────╢
-║  Strength    <n>       Perception    <n>             ║
-║  Agility     <n>       Intelligence  <n>             ║
-║  Vitality    <n>       Unspent   ● <n>               ║
-╟──────────────────────────────────────────────────────╢
+║  XP   <bar>   <cur> / <next>                         ║
+╟─ STATS ──────────────────────────────────────────────╢
+║  Strength     <n>       Perception     <n>           ║
+║  Agility      <n>       Intelligence   <n>           ║
+║  Vitality     <n>       Unspent points  ● <n>        ║
 ║  Pending grants   <none, or list>                    ║
-║  Skills <n> · Titles <n> · Items <n> · Gold <n> g    ║
+╟─ QUESTS ─────────────────────────────────────────────╢
+║  <one line per active quest; [HIDDEN] shows ???>     ║
+╟─ SKILLS ─────────────────────────────────────────────╢
+║  <one line per known skill: name [rank] cost eff>    ║
+╟─ TITLES  (equipped: <title or none>) ────────────────╢
+║  <one line per earned title; ★ marks equipped>       ║
+╟─ INVENTORY ──────────────────────────────────────────╢
+║  <items, then crystals and cores>                    ║
+╟─ SHOP ───────────────────────────────────────────────╢
+║  Gold <n> g          ( /system shop to trade )       ║
 ╚══════════════════════════════════════════════════════╝
 ```
 
-Ren (carrying one deferred level-up grant from his last fight):
+Ren, mid-run, carrying one deferred level-up grant:
 
 ```text
-╔═ ◈ SYSTEM · STATUS ══════════════════════════════════╗
-║  REN                                                 ║
-║  Rank   E-band            Level   3                  ║
-║  Class  —                 Title   Lone Clear         ║
-╟──────────────────────────────────────────────────────╢
-║  XP   ██████████░░░░░░░░░░   150 / 300               ║
+╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════╗
+║  REN                          Rank  E-band           ║
+║  Level  3                     Class —                ║
+║  XP 150/300                   Title  Lone Clear      ║
+╟─ VITALS ─────────────────────────────────────────────╢
 ║  HP   ███████████████░░░░░   31 / 40                 ║
 ║  MP   ██████████████░░░░░░   22 / 30                 ║
-╟──────────────────────────────────────────────────────╢
-║  Strength     9        Perception    14              ║
-║  Agility     13        Intelligence  11              ║
-║  Vitality    11        Unspent   ● 1                 ║
-╟──────────────────────────────────────────────────────╢
+║  XP   ██████████░░░░░░░░░░   150 / 300               ║
+╟─ STATS ──────────────────────────────────────────────╢
+║  Strength      9        Perception     14            ║
+║  Agility      13        Intelligence   11            ║
+║  Vitality     11        Unspent points  ● 1          ║
 ║  Pending grants   level-up (+3 & full restore)       ║
-║  Skills 4 · Titles 2 · Items 6 · Gold 340 g          ║
+╟─ QUESTS ─────────────────────────────────────────────╢
+║  [DAILY]  Training   Streak 6/7 → Cache   14h12m     ║
+║     push-ups 40/100 · sit-ups 100/100 · run 6/10     ║
+║  [URGENT] Cull the Red Line nest (3/4)   +40 XP      ║
+║  [HIDDEN] ???                                        ║
+╟─ SKILLS ─────────────────────────────────────────────╢
+║  Mana Bolt      [E] M5   ranged ×1.0 baseline        ║
+║  Dagger Mastery [E] pass  light blades ×0.75         ║
+║  Sprint         [E] M3   +1 step movement            ║
+║  Mend           [E] M6   restore ¼ band health       ║
+╟─ TITLES  (equipped: Lone Clear) ─────────────────────╢
+║  ★ Lone Clear    +1 step while alone in a Gate       ║
+║    Untouched     +1 step evasion, 1st exchange       ║
+╟─ INVENTORY ──────────────────────────────────────────╢
+║  License [E-Rank]     Steel dagger [E]               ║
+║  Lesser healing potion ×3    Dungeon key [E]         ║
+║  E-crystal ×8         Cores ×2 [E]                   ║
+╟─ SHOP ───────────────────────────────────────────────╢
+║  Gold 340 g          ( /system shop to trade )       ║
 ╚══════════════════════════════════════════════════════╝
 ```
 
-- **`Rank`** is the Bearer’s effective band (Section 6.6); **`Class`** reads `—` until the class quest is completed (Section 15.8, Section 18).
-- The **bars** are 20-cell meters filled proportionally to `current/max`.
-- **`Pending grants`** lists any deferred grant (Section 3.9) — the full heal held in reserve — and reads `none` when there are none.
-- The **at-a-glance footer** counts what the sub-panels detail (skills 15.3, titles 15.6, items 15.4, gold 15.5), making STATUS a one-glance dashboard.
+- **Bars** are 20-cell meters filled proportionally to `current/max` (Ren: HP ¾, MP ¾, XP half).
+- Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, inventory from the campaign inventory ledger, gold from the shop balance. Nothing is invented at render.
+- **`Pending grants`** shows any deferred grant (Section 3.9) — the full heal held in reserve — and reads `none` when empty.
+- The window grows with the Bearer: an empty section still renders its header with `none` beneath it (a fresh Bearer shows `SKILLS — none`, `TITLES — none`), so the shape is constant and the Bearer always sees the whole of himself.
+- **Numbers in the window are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer, and only he sees this window. The Runtime **pads every line to a constant width** so the frame closes as a clean rectangle.
 
-## 15.2 `/system quests`
+## 15.2 Focused Views and Interactive Panels
 
-```text
-╔═ ◈ SYSTEM · QUESTS ══════════════════════════════════╗
-║  [DAILY]  Training                                   ║
-║    push-ups 40/100 · sit-ups 100/100 · run 6/10      ║
-║    Reward +3 pts · full restore · 10 XP              ║
-║    Deadline 14h12m · Streak 6/7 → Weekly Cache       ║
-╟──────────────────────────────────────────────────────╢
-║  [URGENT]  Cull the Red Line nest   (3/4)            ║
-║    Reward 40 XP · Window this scene                  ║
-╟──────────────────────────────────────────────────────╢
-║  [HIDDEN]  ???                                       ║
-╚══════════════════════════════════════════════════════╝
-```
+The full window is the default. A Bearer may still call a **single section** for a closer look or to act on it — `/system quests`, `/system skills`, `/system inventory`, `/system titles`, `/system log` — each rendering just that section in its own framed window with the same data. Two of these are **interactive**, not just views:
 
-`[HIDDEN]` renders `???` until the Bearer knows the quest (Section 14.2). **Quest capacity and rewards:** default **three concurrent quests** (Intelligence unlocks raise the cap, Section 4.4); the **daily** pays +10 XP (Section 3.5), an **urgent** pays a bonus equal to the kill XP of its objective (Section 3.3) on completion, a **hidden** pays the milestone XP of its grade (Section 3.4) on first clear.
+- **`/system shop`** (Section 12.5) — the trading window: gold balance, crystal buy rates, and the stock sold at the Bearer's tier. Buying and selling happen here, in-window, never as an out-of-character question. The **no-exchange rule** (Section 12.5) holds: loot becomes gold only by selling it here, never back to USD.
+- **`/system titles`** — equipping is done here (one equipped at a time, Section 16).
 
-## 15.3 `/system skills`
+A focused view never shows less truth than the full window; it is the same canonical read, framed alone.
 
-```text
-╔═ ◈ SYSTEM · SKILLS ══════════════════════════════════╗
-║  Mana Bolt        [E]  Mana 5                        ║
-║    ranged ×1.0 baseline; the die resolves it         ║
-║  Dagger Mastery   [E]  Passive                       ║
-║    light-blade strikes at ×0.75                      ║
-║  Sprint           [E]  Mana 3                        ║
-║    +1 step to movement for one exchange              ║
-║  Mend             [E]  Mana 6                        ║
-║    restore ¼ band health; no severity clear          ║
-╚══════════════════════════════════════════════════════╝
-```
+## 15.3 Class Panels Attach Post-Class-Quest
 
-Every field is read from the skill’s ledger entry (Section 7.2); costs and effects are never restated to a plausible figure. The full authored skill catalogue is **Section 7.2** (starting skills) and **Section 11.3** (skill-book skills).
+Before the class quest (Section 18) the window's `Class` line reads `—` and no class section exists. On completing the class quest and choosing a class, a **class section** joins the full window and a focused command attaches — `/system shadows`, `/system arsenal`, `/system fragments`, `/system echoes`, or `/system rifts`. A Bearer has at most one class, so at most one class section; each is authored with its class in Section 18.
 
-## 15.4 `/system inventory`
-
-Dimensional storage, read live from the campaign inventory ledger each render; crystals and cores render on their own lines below a rule. USD is not a System good (it is mundane bank/wallet property); gold lives only in `/system shop`.
-
-```text
-╔═ ◈ SYSTEM · INVENTORY ═══════════════════════════════╗
-║  License                  [E-Rank]                   ║
-║  Steel dagger             [E]                        ║
-║  Lesser healing potion    ×3                         ║
-║  Instant-dungeon key      [E]                        ║
-╟──────────────────────────────────────────────────────╢
-║  E-crystal                ×8                         ║
-║  Cores                    ×2   [E]                   ║
-╚══════════════════════════════════════════════════════╝
-```
-
-## 15.5 `/system shop`
-
-The System shop (Section 12.5) trades in **gold**; the header shows the balance. Shopping happens in-window. The **no-exchange rule** (Section 12.5) means loot becomes gold only by selling it here, never back to USD.
-
-```text
-╔═ ◈ SYSTEM · SHOP   —   340 g ════════════════════════╗
-║  BUYS   E 10 · D 40 · C 170 · B 750 · A 3,400 g      ║
-╟──────────────────────────────────────────────────────╢
-║  SELLS                                               ║
-║    Healing potion   L 25 · S 90 · G 400 g            ║
-║    Mana potion (L)  20 g   ·   Antidote  30 g        ║
-║    Weapon   E 100 · D 450 · C 2,000 g                ║
-║    Instant-dungeon key (own band)   500 g            ║
-║    Elixir  +1 stat (max 3/stat)   5,000 g            ║
-╚══════════════════════════════════════════════════════╝
-```
-
-## 15.6 `/system titles`
-
-Earned titles (Section 16); one equipped at a time, only the equipped passive active.
-
-```text
-╔═ ◈ SYSTEM · TITLES ══════════════════════════════════╗
-║  Equipped:  Lone Clear                               ║
-╟──────────────────────────────────────────────────────╢
-║  ★ Lone Clear                        [equipped]      ║
-║    +1 step while no allied hunter in the Gate        ║
-║    Untouched                          [—]            ║
-║    +1 step to evasion, first exchange of combat      ║
-╚══════════════════════════════════════════════════════╝
-```
-
-## 15.7 `/system log`
-
-The last System messages, newest last, each replayed from its authored bracketed template (Sections 3.7, 3.9, 8.1, 16) condensed into the log frame.
-
-```text
-╔═ ◈ SYSTEM · LOG ═════════════════════════════════════╗
-║  ↑ LEVEL UP — Level 3                                ║
-║    Grant available: +3 pts · full restore            ║
-║    XP: 0 → 20/300                                    ║
-║  ★ TITLE EARNED — Lone Clear                         ║
-║    +1 step while no allied hunter in the Gate        ║
-║  ◈ QUEST ISSUED — DAILY TRAINING                     ║
-║    Reward +3 pts +10 XP · miss → penalty zone        ║
-╚══════════════════════════════════════════════════════╝
-```
-
-## 15.8 Class Panels Attach Post-Class-Quest
-
-Before the class quest (Section 18) the STATUS `Class` line reads `—` and no class panel exists. On completing the class quest and choosing a class, that class's panel — `/system shadows`, `/system arsenal`, `/system fragments`, `/system echoes`, or `/system rifts` — **attaches** to `/system`, and the STATUS `Class` line shows the class. A Bearer has at most one class, and therefore at most one class panel; each panel's template and worked example are authored with its class in Section 18.
-
-## 15.9 `/system all`
-
-`/system all` renders the **full dossier** — STATUS, quests, skills, inventory, shop, titles, and log, each in its own framed window, stacked in one read — for when the Bearer wants everything at once. It is the same panels (15.1–15.7), not a new view, and any class panel (15.8) joins the stack once earned.
 
 ---
 

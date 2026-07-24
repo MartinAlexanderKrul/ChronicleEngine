@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000133 |
 | Record | `REC-` | Canonical Record | REC-000081 |
-| Event | `EVT-` | Event | EVT-000058 |
+| Event | `EVT-` | Event | EVT-000059 |
 | Relationship | `REL-` | Relationship | REL-000063 |
 
 ---
@@ -143,6 +143,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000131 | Entity | Campaign Gatefall: Pendragon Session 1: Diane, owner of Ironbound gear shop on Milwaukee Avenue — sold Alexander his E-grade hunting gear and performed custom fitting on gauntlets |
 | ENT-000132 | Entity | Campaign Gatefall: Pendragon Session 1: Cutting Edge, custom E-/D-grade gear shop in Chicago's warehouse district — recommended vendor, not visited |
 | ENT-000133 | Entity | Campaign Gatefall: Pendragon Session 1: Horizon's outfitter on Michigan Avenue, Horizon Guild-affiliated gear shop — recommended vendor, not visited; Alexander chose Ironbound for better pricing |
+| EVT-000059 | Event | Gatefall: Pendragon Session 1: the Red Line Corridor clear and System onset (2026-07-24) — Gate entry (true grade E, archetype Shattered City), full population cleared (9 common, 1 elite, 1 boss) with no crew casualties, System attachment to Alexander (`ENT-000125`) mid-fight per Profile Section 14.7, and the Level 1→2 grant off the elite-kill, common-beast-kill, and boss-kill/Gate-clear-milestone XP. No new entities, records, or relationships minted — the System is not a Persistent Entity (Profile Section 14.1) and lives in `ENT-000125`'s `canonical_state` alone |
 
 ---
 

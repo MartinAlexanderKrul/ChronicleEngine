@@ -760,7 +760,7 @@ Prague contract and salary rates run at **≈ 70% of Chicago**, paid in CZK/EUR.
 
 ## 12.5 The System Shop
 
-The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crystals and selling consumables and gear. **USD and gold do not exchange** — the Bearer converts loot to gold only by selling it to the shop, and spends gold only inside it.
+The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crystals and selling consumables and gear. It is a **System interface, not a place** — the Bearer opens it with `/system shop` from anywhere, at any time, instantly; there is no storefront to travel to and no hours. A purchase deposits straight into his dimensional inventory (Section 12.9), and a sale is drawn from it, so trading never requires him to be anywhere or carry anything. **USD and gold do not exchange** — the Bearer converts loot to gold only by selling it to the shop, and spends gold only inside it.
 
 **The shop buys crystals (gold):**
 
@@ -834,6 +834,18 @@ Graded gear is not mined out of Gates whole — it is **forged from what Gates y
 - A commissioned piece is ordinary graded gear under Section 11.5; **named work by a known artificer trades above every anchor** on the negotiated market, like all gear resale.
 
 There is **no player crafting subsystem**: the Bearer commissions or buys like every other hunter — the forge is someone else's signature.
+
+## 12.9 The Dimensional Inventory
+
+The Bearer's inventory is not a backpack — it is a **pocket dimension**, a private space only he can reach, and it is his alone (no other hunter on Earth has one; Section 14.1). Every item he owns lives there unless he has chosen to hold or wear it, and the difference between "stored" and "carried" is his to set at any instant.
+
+- **Weightless and unencumbering.** Stored items impose no weight, bulk, or carrying limit. The Bearer never chooses what to leave behind for lack of hands; a full clear's loot, a spare weapon, a case of potions all sit in the pocket dimension at once, and he walks out unburdened.
+- **Store and withdraw anywhere, instantly, as a free action.** He may send an item to the inventory or call one to his hand from anywhere — a street, a Gate interior, mid-sentence, mid-fight — with a thought. Drawing a blade from nothing to meet an attack is a legitimate action the die still resolves for its outcome, but the *summoning itself* costs no action and no Mana. This is a real tactical edge: he is never disarmed, never out of potions he owns, never caught with the wrong tool.
+- **Private and secure.** What is in the pocket dimension cannot be seen, searched, stolen, or confiscated — it is not on his person to find. A licensed inspection, a mugging, a pat-down at a cordon reaches nothing. This is a standing advantage and a standing exposure risk (Section 19): an item summoned from empty air in front of witnesses is as much a giveaway as a status window, because no ordinary hunter can do it.
+- **What it holds.** **Inanimate physical objects** — gear, weapons, armor, consumables, crystals, cores, runes, books, keys, ordinary possessions. It does **not** hold living things (no creature, no person, no plant kept alive), and it is not a bank: **USD/CZK is mundane wallet-and-account money, never a System good** (Section 15, the `/system inventory` panel). System **gold** is likewise not "in" the inventory — it is the shop's internal currency (Section 12.5), shown as a balance, spent only in-window.
+- **Capacity.** No practical limit constrains a campaign — the pocket dimension holds what the Bearer puts in it. (There is no encumbrance subsystem to track; "he stored it" is the whole rule.)
+
+The inventory is read live and shown by the `/system` window (Section 15); loot enters it on pickup, shop purchases deposit into it, and shop sales withdraw from it. The Bearer interacts with the world's economy exactly as Sections 11–12 describe — he simply never has to carry the goods to do it.
 
 ---
 

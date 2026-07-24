@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000135 |
-| Record | `REC-` | Canonical Record | REC-000084 |
-| Event | `EVT-` | Event | EVT-000067 |
+| Record | `REC-` | Canonical Record | REC-000085 |
+| Event | `EVT-` | Event | EVT-000068 |
 | Relationship | `REL-` | Relationship | REL-000064 |
 
 ---
@@ -158,6 +158,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000083 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0006/900_SAVE_MANIFEST.md` — the third Frozen Gallery vein, two further undeclared sales, and the strike-line observation |
 | EVT-000067 | Event | Gatefall: Pendragon: the daily-quest grant accepted, the third vein worked to exhaustion, a fifth undeclared private sale (50 crystals, gold to 16,830), a near-miss with Dale successfully deflected, and the strike element's off-screen boss kill opening the Frozen Gallery's two-hour clear window |
 | REC-000084 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0007/900_SAVE_MANIFEST.md` — vein's end, the grant acceptance, the fifth sale, and the boss kill |
+| EVT-000068 | Event | Gatefall: Pendragon: a sixth undeclared private sale, formal declaration of 41 C-crystals (the crew's highest), exit and return home, and the Runtime ruling establishing the Frozen Gallery harvest-share payout (≈$24,663) under the now-authored Section 13.2 formula |
+| REC-000085 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0008/900_SAVE_MANIFEST.md` — formal declaration, exit, and the harvest-share ruling |
 
 ---
 

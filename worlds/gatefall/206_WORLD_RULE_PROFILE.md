@@ -6,7 +6,7 @@
 **Profile Version:** 1.0
 **Engine Compatibility:** 0.2.0; Data Model 0.1.2
 **Status:** Active
-**Compatibility Status:** workshop draft (Rules Section 14.6) — version 1.0 remains mutable while authoring iterates; a checkpoint captured under it carries an explicit *unfrozen — not save-trustworthy* warning. Freezing at the current version is a one-line owner declaration whenever iteration settles.
+**Compatibility Status:** frozen at version 1.0 (Rules Section 14.6, Decision 074), declared 2026-07-24. Version 1.0 is now an **immutable behavioral contract**: a checkpoint captured under it is **save-trustworthy**, and changing any declared override, magnitude, or mechanic requires a **new profile version** — classified *additive* (declare-only, backward-compatible; a restored older checkpoint needs no recomputation) or *migrating* (changes how existing state settles; restoration requires an explicit migration). Checkpoints captured **before** this freeze, under 1.0 while it was a workshop draft, retain their *unfrozen — not save-trustworthy* warning; the first checkpoint captured after this declaration is the campaign's first trustworthy restore point.
 
 **1.0 authors the System in full — the mechanical law of a gate-and-System world of awakened hunters.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
 

@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-26 — Gatefall Profile 1.10: seven-day streak-box upgrade
+
+Gatefall world authoring under Decision 062 and Version 0.3 milestone 0.3.5; no Engine Rule, Data Model section, Runtime mechanism, or decision number changed.
+
+**Daily streak:** each daily completion still creates exactly one Daily Random Box. When the completion raises the consecutive streak to a positive multiple of seven, that box becomes streak-upgraded: two candidates are rolled and fully resolved on the existing table, the Bearer chooses one, and the other produces nothing. There is no additional Weekly Cache or special 28-day rule.
+**Profile version:** frozen **1.9→1.10**, classified **additive**. Existing streaks, pending boxes, rewards, and resolved outcomes remain unchanged; only completions after adoption can create an upgraded box. A milestone already completed under an earlier profile is not reopened, so the next benefit falls at the next multiple of seven.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-26 — Gatefall Profile 1.9: licensed ranked-gear resale
 
 Gatefall world authoring under Decision 062 and Version 0.3 milestone 0.3.5; no Engine Rule, Data Model section, Runtime mechanism, or decision number changed.

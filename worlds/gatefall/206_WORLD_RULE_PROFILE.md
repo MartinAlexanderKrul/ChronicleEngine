@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.9
+# Gatefall — World Rule Profile 1.10
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.9
+**Profile Version:** 1.10
 **Engine Compatibility:** 0.2.0; Data Model 0.1.3
 **Status:** Active
-**Compatibility Status:** frozen at version 1.9 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.9 is an **additive economy advance** over frozen 1.8: Section 12.8.1 declares the previously missing licensed-market settlement price for ordinary ranked gear, derived from the existing same-Rank core and forging-fee anchors. It changes no stored field or existing threshold, combat or resource magnitude, probability, timer, System-shop price, repurchase rule, or resolved outcome.
+**Compatibility Status:** frozen at version 1.10 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.10 is an **additive streak-reward advance** over frozen 1.9: every daily completion that raises the consecutive streak to a positive multiple of seven upgrades that completion's one Daily Random Box to two fully resolved rolls with one result chosen. It adds no second box and no special 28-day rule.
+
+**1.9 → 1.10 compatibility treatment.** Preserve every stored value, current streak, pending reward, and resolved outcome. Adoption requires no recomputation and no state migration: only a daily quest completed after adoption may create an upgraded box. A positive multiple of seven already completed under an earlier profile is not reopened or rewarded again, and an already-pending ordinary box is not upgraded; the next upgrade occurs at the next positive multiple of seven the streak reaches. Immutable Profile 1.9-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.10 before play.
+
+Version 1.9 remains the additive economy advance over frozen 1.8: Section 12.8.1 declares the previously missing licensed-market settlement price for ordinary ranked gear, derived from the existing same-Rank core and forging-fee anchors. It changed no stored field or existing threshold, combat or resource magnitude, probability, timer, System-shop price, repurchase rule, or resolved outcome.
 
 **1.8 → 1.9 compatibility treatment.** Preserve every stored value and all resolved canon. Adoption requires no recomputation and no state migration: use the Section 12.8.1 licensed ranked-gear anchor for mundane-market transactions from adoption forward, then record the additive-upgrade acknowledgement in the live campaign and next promoted checkpoint. Do not reprice or reopen any transaction already resolved under an earlier profile. Immutable Profile 1.8-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.9 before play.
 
@@ -639,13 +643,20 @@ Warning: incomplete at midnight transfers you to a penalty zone.
 - **Issue and deadline:** the quest issues at **06:00 local** every in-fiction day. Its deadline is **00:00 local immediately following that issue date**: the Bearer may make progress from 06:00 through 23:59, an 18-hour window. At midnight the issuing day's quest is closed before any later beat resolves. No daily quest is active from 00:00 through 05:59; the next one issues at 06:00.
 - **The regimen** is fixed: **100 push-ups, 100 sit-ups, 100 squats, and a 10 km run**, completed within that daily window.
 - **Rewards on completion:** three independent pending entries — Ability Points +3, Status Recovery, and one Daily Random Box (Section 3.9).
-- The quest awards **no XP**. It tracks a **consecutive-completion streak**: completion advances the streak by 1; failure resets it to 0. The streak is a record and display value only—there is no Weekly Cache, threshold reward, multiplier, or other mechanical benefit. Each completed day already supplies its own box.
+- The quest awards **no XP**. It tracks a **consecutive-completion streak**: completion advances the streak by 1; failure resets it to 0.
+- **Seven-day streak upgrade:** when completion raises the streak to a **positive multiple of seven** (7, 14, 21, and so on), that completion's one Daily Random Box is recorded as **streak-upgraded**. It still creates exactly one pending box, but Section 8.1 resolves that box with two complete candidate rolls and lets the Bearer choose one result. There is no additional Weekly Cache, no multiplier on the other two daily rewards, and no separate 28-day benefit.
+
+On a streak-upgrade completion, append this exact line to the normal completion block:
+
+```text
+Streak milestone: Daily Random Box upgraded — roll twice, choose one.
+```
 
 Completion is genuine effort, not a checkbox — the objectives are physical work the Bearer must actually do in the fiction. The System tracks progress against each objective (the `0/100` counters advance as the work is done). It resolves the quest **complete immediately** when the final objective finishes; if any objective remains incomplete at 00:00, it resolves the quest **failed at midnight**, resets the streak, and applies Section 8.3.
 
 ### The Daily Random Box
 
-A Daily Random Box is rolled only when the Bearer opens that pending reward. Make one real d100 and Rank any ranked result to the Bearer's current **System Rank** (Section 6.6) at opening. Items follow their own sections:
+A Daily Random Box is rolled only when the Bearer opens that pending reward. A standard box makes one real d100. A **streak-upgraded** box makes **two independent real d100 rolls**, resolves both candidate results completely—including any required item, chassis, skill, or other subrolls—and presents both complete candidates to the Bearer. The Bearer chooses one; the unchosen candidate produces nothing and never enters inventory or state. Rank every ranked candidate to the Bearer's current **System Rank** (Section 6.6) at opening. Items follow their own sections:
 
 | d100 | Daily Random Box yields |
 |---|---|
@@ -656,7 +667,7 @@ A Daily Random Box is rolled only when the Bearer opens that pending reward. Mak
 | 94–99 | A **skill book** (Section 11.3) — a fuller technique with a growth path. |
 | 100 | An **elixir** (+1 permanent to one stat, Section 12.5's lifetime cap applies). |
 
-The box is the Bearer's alone and cannot be traded before opening because it is pending System state, not an object. Once opened, its contents are ordinary dimensional-inventory holdings. One completion creates exactly one box; the streak never changes its contents.
+The box is the Bearer's alone and cannot be traded before opening because it is pending System state, not an object. Once opened, the chosen contents are ordinary dimensional-inventory holdings. One completion creates exactly one box. The streak changes only that box's roll mode at positive multiples of seven; it never adds a second box or changes the table.
 
 ## 8.2 Inline System Notifications
 

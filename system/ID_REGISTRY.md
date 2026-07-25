@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000140 |
 | Record | `REC-` | Canonical Record | REC-000092 |
-| Event | `EVT-` | Event | EVT-000087 |
+| Event | `EVT-` | Event | EVT-000088 |
 | Relationship | `REL-` | Relationship | REL-000066 |
 
 ---
@@ -192,6 +192,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000085 | Event | Gatefall: Pendragon: explicit World Rule Profile 1.6→1.7 terminology migration — the E-Rank–S-Rank classification is uniformly Rank, persisted `system_tier: E` becomes `system_rank: E`, all values and outcomes are preserved, and no fictional time passes |
 | EVT-000086 | Event | Gatefall: Pendragon: additive World Rule Profile 1.7→1.8 presentation adoption — `/system` uses a fixed 76-cell frame, 20-cell progress bars, title-case labels, indented quest objectives, and wrapped item mechanics; no state, value, outcome, or fictional time changes |
 | EVT-000087 | Event | Gatefall: Pendragon: the command-versus-relationship collision Owen raised provisionally resolved (crew members, not partners, in a Gate), and a full rest day off — apartments, Owen's boat on the lake, first kiss, no Gates or crew business — through early evening heading to dinner |
+| EVT-000088 | Event | Gatefall: Pendragon: the evening of 2026-07-30 — Owen's pay and outside work established, Alexander's deferred proposal that Owen build and lead a crew with him in it (OBJ-12, motives stated as both Owen's worth and his C-Rank card), dinner, the Ashfield report confirmed filed, the 2026-07-30 Daily Premium cycle opened with three offers bought (gold 20,255 → 15,835), the Premium Rune consumed to learn Rupture [E-Rank], and a drawer given at Owen's apartment |
 | REC-000092 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0016/900_SAVE_MANIFEST.md` — automatic context-preservation checkpoint captured under frozen Profile 1.8, no migration required on restore |
 
 ---

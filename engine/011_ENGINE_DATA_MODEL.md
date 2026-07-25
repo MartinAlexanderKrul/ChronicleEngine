@@ -374,7 +374,17 @@ Qualities    e.g. trust, rivalry, obligation (Rules §5.6); governance quality
              and legitimacy band (Rules §10.2, §10.3); diplomatic quality (Rules §10.5);
              membership rank (Rules §9.4)
 State        the relationship's own current state and history
+Texture      how these two behave toward one another — the manner a reader of
+             Type, Qualities, and State alone would get wrong (Decision 076)
 ```
+
+`Qualities` answers *what this relationship is* — its standing, direction, and rank. `Texture` answers *how it is expressed*. The two are not interchangeable: standing is a scalar the simulation reads structurally, while manner is the observable behavior that makes a restored relationship recognizable as the same one.
+
+**`Texture` is required for a relationship whose endpoints are both Characters and whose type is not institutional, once play has established any.** It is optional and normally empty for membership, governance, jurisdiction, and diplomatic links, which have standing but no manner. `tools/validate_repository.ps1` checks presence only — that the field exists where required — and never adjudicates its content, for the reason Decision 071 gives when it declines to check whether an index row is still true.
+
+What belongs in it: habits, verbal patterns, physical tells, forms of address, what each party does with this person and no other, and the firsts that established them. What does not: interior state the Player Intent Domain reserves to the player, and anything the fiction has not actually shown. `Texture` records observable behavior, not inferred feeling.
+
+It exists because the loss it prevents is invisible. A relationship recorded as a role label is well-formed, resolves cleanly, and passes every gate — identically to one recorded well. A Runtime restoring from the first does not play the relationship badly; it plays a different relationship, correctly, from an accurate file (Decision 076).
 
 Rules Section 9 models membership as a relationship, and Rules Section 10 models governance, legitimacy, and diplomacy as relationships. That requires relationships to be identifiable, bidirectional objects with their own state. Governance, membership, and diplomatic state therefore reference `REL-` identifiers rather than duplicating relationship state on each entity. The *meaning* of each relationship type remains owned by its Rules domain section.
 

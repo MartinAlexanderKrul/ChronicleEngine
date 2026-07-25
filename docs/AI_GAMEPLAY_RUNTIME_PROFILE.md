@@ -592,6 +592,12 @@ Any player request to save, checkpoint, or record progress — however phrased, 
 
 The Runtime maintains a session-local counter of resolved player exchanges since the last verified checkpoint. It checks the resident watch after every settled exchange. A host warning, 20%-remaining signal, need to discard prior context, twentieth exchange, or qualifying scene boundary invokes the Save Algorithm immediately with checkpoint type `automatic-context-preservation` and a generated label identifying the trigger. Do not ask the player for confirmation, advance fiction, or consume another player action first. On success, report the checkpoint compactly and reset the counter.
 
+**The same trigger invokes Session Export (Decision 076).** The barrier fires precisely because transcript is about to be lost, and the transcript is the one artifact that cannot be regenerated from canon — it is what canon was promoted *from* (Session Export: An Export Is a Primary Record). Checkpointing without exporting at this trigger preserves the derived record and discards the primary one.
+
+Run the export **after** the checkpoint completes, so a failing export never blocks canon preservation. Number it per the Filing rule and label it with the same trigger. The bright line is unchanged: the export establishes no canon, mints no identifiers, and is not a save. An export failure is reported alongside the checkpoint result and does not make the checkpoint partial — the two artifacts fail independently, because they protect different things.
+
+A player who has issued no `/export` all session still has one at every preservation point. That is the intended effect: the artifact the canon hierarchy trusts most (Rules Section 2.1) should not also be the one the engine is least diligent about writing.
+
 If compaction occurred without a usable warning, stop before resolving the next gameplay instruction. Reload the latest checkpoint and canonical ledgers from Persistence; do not trust the compacted conversation summary as a save. Reconcile post-checkpoint facts only from an exact surviving transcript, export, or equally precise record. If exact recovery is impossible, report the last durable checkpoint and the unverified span instead of inventing continuity. A failed automatic checkpoint uses the same partial-checkpoint report as a failed manual save and suspends canonical play until persistence is repaired.
 
 ## Save Algorithm

@@ -275,6 +275,20 @@ if (-not (Test-Path -LiteralPath $indexPath -PathType Leaf)) {
 $definitions = @{}
 $references = [System.Collections.Generic.List[object]]::new()
 $objectCount = 0
+# Decision 076: Relationship Texture coverage. Entity types are collected on the
+# main pass; Relationship blocks are stashed and checked afterward, because a
+# relationship's endpoints may be defined in a file read later than its own.
+$entityTypes = @{}
+$relationshipBlocks = [System.Collections.Generic.List[object]]::new()
+# Personal relationship types require Texture. This is an allowlist rather than an
+# institutional denylist on purpose: relationship type is free-form world vocabulary
+# ("working-contact", "research-collaboration", "harvest-hire"), so a denylist can
+# never keep up and would fail closed campaigns for using their own words. A
+# coverage gate that under-fires is recoverable; one that fires falsely blocks all
+# validation and gets deleted. Worlds add their own personal types here.
+$personalRelationshipTypes = @(
+    "personal", "family", "romantic", "friendship", "mentorship", "kinship"
+)
 $placeholderPattern = '(ENT|REC|EVT|REL)-XXXXXX|<(required|optional|generated):'
 $identifierPattern = '(?<![A-Z0-9-])(ENT|REC|EVT|REL)-(\d{6})(?!\d)'
 $definitionPattern = '(?m)^[ \t]*id:[ \t]*((ENT|REC|EVT|REL)-(\d{6}))[ \t]*(?:#.*)?\r?$'
@@ -351,6 +365,57 @@ foreach ($file in $canonicalFiles) {
             $locationLines.Count -ne 1) {
             Add-Failure "$relativePath`:$line active Character $id must declare exactly one canonical_state.location; presence is owned by the entity's own record (Decision 073)."
         }
+
+        # Decision 076: gather what the Relationship Texture check needs.
+        if ($id.StartsWith("ENT-")) {
+            $entityType = [regex]::Match($block, '(?m)^[ \t]*type:[ \t]*(.+?)[ \t]*\r?$')
+            if ($entityType.Success) {
+                $entityTypes[$id] = $entityType.Groups[1].Value.Trim().Trim('"')
+            }
+        } elseif ($id.StartsWith("REL-")) {
+            $relationshipBlocks.Add([pscustomobject]@{
+                Id = $id
+                Block = $block
+                Path = $relativePath
+                Line = $line
+            })
+        }
+    }
+}
+
+# Decision 076 — Relationship Texture coverage.
+# A relationship between two Characters that is not institutional records how the
+# two behave toward one another. This is a PRESENCE check only: it never inspects
+# the content, for the reason Decision 071 gives when declining to adjudicate
+# whether an index row is still true.
+foreach ($relationship in $relationshipBlocks) {
+    $typeMatch = [regex]::Match($relationship.Block, '(?m)^[ \t]*type:[ \t]*(.+?)[ \t]*\r?$')
+    if (-not $typeMatch.Success) {
+        continue
+    }
+    $relationshipType = $typeMatch.Groups[1].Value.Trim().Trim('"')
+    if ($personalRelationshipTypes -notcontains $relationshipType) {
+        continue
+    }
+
+    $endpointIds = @([regex]::Matches($relationship.Block, '(?m)^[ \t]*-[ \t]*(ENT-\d{6})[ \t]*\r?$') |
+        ForEach-Object { $_.Groups[1].Value })
+    if ($endpointIds.Count -ne 2) {
+        continue
+    }
+
+    $bothCharacters = $true
+    foreach ($endpointId in $endpointIds) {
+        if (-not $entityTypes.ContainsKey($endpointId) -or $entityTypes[$endpointId] -ne "Character") {
+            $bothCharacters = $false
+        }
+    }
+    if (-not $bothCharacters) {
+        continue
+    }
+
+    if (-not [regex]::IsMatch($relationship.Block, '(?m)^[ \t]*texture[ \t]*:[ \t]*\S')) {
+        Add-Failure "$($relationship.Path)`:$($relationship.Line) Relationship $($relationship.Id) is type '$relationshipType' between two Characters, so it must record a non-empty 'texture' - how these two behave toward one another (Decision 076; 011_ENGINE_DATA_MODEL.md Section 10). If the manner was never captured, say so in the field rather than inventing it."
     }
 }
 

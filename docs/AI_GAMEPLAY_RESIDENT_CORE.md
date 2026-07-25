@@ -316,6 +316,29 @@ Checkpointing promotes this already-settled in-flight state; it does not perform
 
 ---
 
+# Characterization Settlement
+
+Tracked numbers are not the only thing an exchange establishes. When a resolved exchange establishes **how a character behaves** — a verbal pattern, a physical tell, a form of address, a gesture, a pattern broken — that is canon the same way damage is, and it settles the same way: **now, as a tracked pending promotion target**, not reconstructed from memory at the barrier (Decision 076).
+
+This is resident for the reason Turn-State Settlement is. Manner is texture, and texture is exactly what summarization removes. A Runtime that defers it to the promotion barrier is not writing it down late; it is writing down whatever survived compression, which is the role label — "the mender, friendly" — and never the thing that made the relationship recognizable.
+
+**The test mirrors the settlement test.** If a returning session would have to *invent* how two established characters speak to each other, the prior promotion failed. The player should never have to re-teach the Runtime a relationship they already played.
+
+Where it goes: the `Texture` field of the relationship between them (Data Model Section 10), or the character's own record where the behavior is general rather than directed at one person. Record **observable behavior only** — what was said, done, and shown. Interior state belongs to the player for their own character (Player Agency Contract) and remains hidden canon for an NPC.
+
+## Character Firsts
+
+The engine already treats firsts as significant: a first kill, a first threshold crossed, an onset. **Character firsts carry the same weight and are named triggers.** Settle them the exchange they occur:
+
+- the first time an NPC laughs, jokes, or is visibly disarmed;
+- the first time either party initiates physical contact, or refuses it;
+- the first time an NPC volunteers something unasked — a limit, an apology, a fear, a piece of biography;
+- the first time a character acts **against** their own established pattern, which is the strongest signal of all and the easiest to lose.
+
+These are the moments that make a relationship legible later, and they survive only when they are noticed at the time. Noticing is the Runtime's obligation, not the player's.
+
+---
+
 # Context-Preservation Watch
 
 After settling every exchange and before yielding, increment the session-local count of resolved player exchanges since the last verified checkpoint and check for context pressure. This is resident because a safeguard consulted only after context has already been compacted cannot preserve the missing transcript.

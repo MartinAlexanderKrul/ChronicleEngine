@@ -277,6 +277,7 @@ endpoints:
 type: mentorship
 qualities: "Supportive; Teague recommended Daedalus to the Authority"
 state: active
+texture: "**Not recorded.** This relationship was established before Decision 076 added the Texture field, and no manner was captured while it was played — how Teague and Daedalus actually speak to each other is absent from canon. Deliberately left as an honest gap rather than reconstructed: a plausible invention here would be indistinguishable from evidence afterward. `exports/play_export_0001.md` is the only surviving transcript for this campaign and attests no dialogue between them; fill this from future play rather than from inference."
 ```
 
 ```yaml

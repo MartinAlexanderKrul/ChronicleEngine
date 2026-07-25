@@ -3526,7 +3526,7 @@ The milestone exists because one bootstrap verb consumed six decisions (056, 063
 
 ## Decision 076 — Relationship Texture: Preserving Characterization Across the Promotion Barrier
 
-**Status:** Proposed — **Version 0.4 Planning** (foundational under Decision 069; cannot land inside the completed 0.3 Architecture Freeze)
+**Status:** Accepted — **Version 0.3 by owner ruling (2026-07-29)**, as an explicit, recorded exception to the completed Architecture Freeze
 **Date:** 2026-07-29
 **Related Sections:** `011_ENGINE_DATA_MODEL.md` Section 10 (Relationship); `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Turn-State Settlement); `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Gameplay Close step 3, Session Export, Automatic Context Preservation); `010_ENGINE_RULES.md` Sections 2.1, 2.8, 5.6; `tools/validate_repository.ps1`; Decisions 042, 048, 054, 055, 061, 069
 
@@ -3588,8 +3588,19 @@ The gate proves the field is **present**. It deliberately does not adjudicate wh
 
 ### Consequences
 
-- **Class under Decision 069: foundational.** The structural test is unambiguous — the diff changes `011_ENGINE_DATA_MODEL.md`, which that decision names as sufficient on its own, and it introduces an engine-general field that every world's Character relationships must satisfy. **Owning milestone: Version 0.4 — Planning and ADR Design.** It cannot land inside Version 0.3, whose Architecture Freeze is complete (Decisions 072–075).
-- Points 2, 3, and 5 are individually refinement-class and could land earlier — but points 2 and 3 have nothing to settle *into* without the field, and point 4 cannot check a field that does not exist. Splitting them would ship the obligation without the destination. They are held together deliberately.
+- **Class under Decision 069: foundational.** The structural test is unambiguous — the diff changes `011_ENGINE_DATA_MODEL.md`, which that decision names as sufficient on its own, and it introduces an engine-general field that every world's Character relationships must satisfy. By that test it belongs to a later version's Planning stage, and this decision was drafted as Proposed against Version 0.4 on exactly that ground.
+
+- **Owner ruling, 2026-07-29: accepted into Version 0.3 as an explicit exception to the Architecture Freeze.** The exception is recorded rather than reasoned away, because Decision 069 exists precisely to stop a change from talking itself out of its own classification. The classification stands: this *is* foundational. What the owner ruled is that it should land anyway, on three grounds.
+
+  First, **domain fit.** Version 0.3 is *Runtime & Persistence Hardening*. The defect is that characterization does not survive the promotion barrier — a persistence-hardening defect in the version whose entire declared subject is persistence hardening. Deferring it would move the one piece of work most squarely inside 0.3's theme out of 0.3.
+
+  Second, **the deferral target is not ready.** Version 0.4 currently holds Governance & Society at *accepted placement, scope unapproved*, alongside an unresolved number collision with Magic Framework. Landing a persistence decision there would require settling an unrelated placement question first, and would file this work under a domain it has nothing to do with.
+
+  Third, **the cost of waiting is silent and ongoing.** Every session played before this lands promotes relationships through a schema with no slot for manner, and the loss is undetectable from inside the system — two validators pass over it. Unlike most deferred architecture, the interval is not neutral; it accrues damaged records that later back-filling can only partly reconstruct.
+
+  This is an owner exception to a governance gate, not a reinterpretation of it. Decision 069's test is unchanged and still binding on every future change; a subsequent foundational change may not cite this ruling as precedent for self-classifying, because this ruling does not reclassify anything — it overrides a correct classification, in the open, with reasons.
+
+- Points 2, 3, and 5 are individually refinement-class and could have landed alone — but points 2 and 3 have nothing to settle *into* without the field, and point 4 cannot check a field that does not exist. Splitting them would ship the obligation without the destination. They are implemented together.
 - Existing relationships are not invalidated. `Texture` is additive, and the coverage gate applies from adoption forward; back-filling established Character relationships is a migration task for the owning milestone, not a retroactive validation failure.
 - The cost is paid at the promotion barrier, per relationship, by the writer — the same cost shape as Decision 071's index. It is larger than the index's, because manner takes more words than a checkpoint identifier.
 - `REL-000066` in `campaigns/gatefall_pendragon_001/` carries a `texture` field written ahead of this decision, as the worked instance the proposal is drawn from. It is evidence, not precedent, and does not constitute adoption.

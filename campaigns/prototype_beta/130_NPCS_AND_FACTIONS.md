@@ -293,4 +293,5 @@ endpoints:
 type: family
 qualities: "Spouses separated by the hospice fever-room line."
 state: "Edrin heard Lysa and tried to reach her; Lysa remains outside the line with a shivering boy."
+texture: "**Not recorded.** This relationship was established before Decision 076 added the Texture field, and no manner was captured while it was played — how these two speak to or handle each other is absent from canon and cannot be recovered from the ledgers. Deliberately left as an honest gap rather than reconstructed: a plausible invention here would be indistinguishable from evidence afterward. Fill it from play, from an export, or leave it empty."
 ```

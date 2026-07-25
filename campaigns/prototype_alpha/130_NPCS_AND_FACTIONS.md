@@ -65,6 +65,7 @@ endpoints:
 type: personal
 qualities: "Collaboration based on shared conviction about fever transmission. Double-agent strategy formalized (EVT-000012). Ilse's double-agent position failed within hours (EVT-000013). No further contact after Day 8 (Ilse entered Order custody). Corvane unaware of Ilse's execution; presumed to believe her still positioned at Order hospice or lost to institutional pressure."
 state: "TERMINATED BY PROTAGONIST DEATH — Day 17, Year 312 RR. Final state: intimate operational partnership severed by Ilse's assault on Solenne and subsequent detention/execution. No final communication between Corvane and Ilse. Corvane's reaction to Ilse's death: unknown."
+texture: "**Not recorded, and now unrecoverable.** This relationship predates Decision 076's Texture field; no manner was captured while it was played, and the campaign is closed-terminal with the protagonist dead, so no future play can fill it. Deliberately left as an honest gap rather than reconstructed — a plausible invention would be indistinguishable from evidence afterward, in a campaign retained as validation evidence. This is the clearest surviving instance of what the field exists to prevent: an intimate operational partnership preserved as its outcome, with none of its manner."
 ```
 
 ```yaml
@@ -87,4 +88,5 @@ endpoints:
 type: personal
 qualities: "Protective institutional mediator. Maelis positioned as anchor at Athenaeum for double-agent strategy (EVT-000012). Relationship maintained through care and professional distance. No judgment, no questions."
 state: "TERMINATED BY PROTAGONIST DEATH — Day 17, Year 312 RR. Final state: protective relationship severed when Ilse was arrested on Day 13. Maelis's role in Ilse's detention or execution: unknown (presumed Maelis was not consulted). Maelis's reaction to Ilse's death: unknown."
+texture: "**Not recorded, and now unrecoverable.** This relationship predates Decision 076's Texture field; no manner was captured while it was played, and the campaign is closed-terminal, so no future play can fill it. Deliberately left as an honest gap rather than reconstructed. The `qualities` field preserves one fragment of manner in passing — 'no judgment, no questions' — which is exactly the kind of detail the Texture field exists to hold deliberately rather than to survive by accident."
 ```

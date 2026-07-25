@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.8
+# Gatefall — World Rule Profile 1.9
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.8
+**Profile Version:** 1.9
 **Engine Compatibility:** 0.2.0; Data Model 0.1.3
 **Status:** Active
-**Compatibility Status:** frozen at version 1.8 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-25. Version 1.8 is an **additive presentation advance** over frozen 1.7: the `/system` full-window rendering contract now uses a fixed 76-cell frame, 20-cell progress bars, title-case labels and consistent abbreviations, indented quest objectives, and continuation rows separating item identity from mechanics. It changes no stored field, threshold, magnitude, probability, price, timer, or resolved outcome.
+**Compatibility Status:** frozen at version 1.9 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.9 is an **additive economy advance** over frozen 1.8: Section 12.8.1 declares the previously missing licensed-market settlement price for ordinary ranked gear, derived from the existing same-Rank core and forging-fee anchors. It changes no stored field or existing threshold, combat or resource magnitude, probability, timer, System-shop price, repurchase rule, or resolved outcome.
+
+**1.8 → 1.9 compatibility treatment.** Preserve every stored value and all resolved canon. Adoption requires no recomputation and no state migration: use the Section 12.8.1 licensed ranked-gear anchor for mundane-market transactions from adoption forward, then record the additive-upgrade acknowledgement in the live campaign and next promoted checkpoint. Do not reprice or reopen any transaction already resolved under an earlier profile. Immutable Profile 1.8-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.9 before play.
+
+Version 1.8 remains the additive presentation advance over frozen 1.7: the `/system` full-window rendering contract uses a fixed 76-cell frame, 20-cell progress bars, title-case labels and consistent abbreviations, indented quest objectives, and continuation rows separating item identity from mechanics. It changed no stored field, threshold, magnitude, probability, price, timer, or resolved outcome.
 
 **1.7 → 1.8 compatibility treatment.** Preserve every stored value and all resolved canon. Adoption requires no recomputation and no state migration: re-render `/system` and its focused views using the Section 15.1 layout contract, then record the additive-upgrade acknowledgement in the live campaign and next promoted checkpoint. Immutable Profile 1.7-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.8 before play.
 
@@ -1230,6 +1234,31 @@ Ranked gear is not mined out of Gates whole — it is **forged from what Gates y
 - A commissioned piece is ordinary ranked gear under Section 11.5; **named work by a known artificer trades above every anchor** on the negotiated market, like all gear resale.
 
 There is **no player crafting subsystem**: the Bearer commissions or buys like every other hunter — the forge is someone else's signature.
+
+### 12.8.1 Licensed Resale of Ranked Gear
+
+The licensed negotiated market values an ordinary finished ranked item at roughly its commissioning cost: **one same-Rank core plus a forging fee equal to the market price of a same-Rank core** (Section 12.8). Because a core is worth approximately **2.5×** the same-Rank crystal (Section 12.1), the authoritative settlement anchor is:
+
+`ranked gear licensed anchor = 5 × the same-Rank crystal price`
+
+| Item Rank | Chicago licensed settlement | Prague licensed settlement |
+|---|---:|---:|
+| **E-Rank** | ≈ **$750** | ≈ **11,550 CZK** |
+| **D-Rank** | ≈ **$3,000** | ≈ **46,200 CZK** |
+| **C-Rank** | ≈ **$12,500** | ≈ **192,500 CZK** |
+| **B-Rank** | ≈ **$55,000** | ≈ **847,000 CZK** |
+| **A-Rank** | ≈ **$250,000** | ≈ **3,850,000 CZK** |
+| **S-Rank** | **Auction-only** | **Auction-only** |
+
+The Prague figures apply the existing **70% regional market factor** (Sections 12.1 and 12.3) and the profile's **×22 USD/CZK convention** (Section 12.6). The table is the default total transaction value when no authored premium or exclusion below applies. The d100 never haggles around a missing range: a Runtime uses the anchor rather than inventing a discount, markup, or bid/ask spread (Sections 20.2–20.3).
+
+- **One anchor for every ordinary chassis.** A weapon, one armor piece, and one accessory of the same Rank use the same licensed settlement anchor. The System shop's separate gold prices and chassis ratios (Section 12.5) do not price the mundane market and establish no gold-to-money exchange.
+- **Functional condition.** Excellent, Good, Worn, and Damaged gear uses the complete Section 11.5 item line and therefore the same anchor. Broken or Destroyed gear has no functional ranked-gear settlement price; any salvage value requires later authoring and is never improvised or rolled.
+- **Provenance is required.** The anchor applies to ordinary gear with licensed provenance — including a declared Gate drop or commissioned piece. Equipment originating in the System shop has no licensed provenance, receives no USD/CZK/EUR price under this subsection, and cannot use Section 12.2's `+40%` rule because there is no licensed price to modify. Such an item remains transferable physical property under Section 12.5, but this profile authors no mundane-currency sale for it; buying with gold and reselling for ordinary money is not an exchange path.
+- **Named artificer work.** A known artificer's marked work trades above the generic same-Rank anchor, as Section 12.8 establishes, but has no universal multiplier. The exact offer must be authored for that transaction and is never rolled.
+- **Named artifacts.** A Section 11.6 artifact is individually negotiated or auctioned above the generic same-Rank anchor. Its exact value must be authored for the artifact or transaction and is never generated from this table.
+
+The black-market premium in Section 12.2 composes normally with an eligible licensed-provenance item's anchor. It does not create a price for excluded System-origin equipment, broken gear, or a named work whose exact value has not been authored.
 
 ## 12.9 The Dimensional Inventory
 

@@ -12,6 +12,15 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-26 — Gatefall Profile 1.9: licensed ranked-gear resale
+
+Gatefall world authoring under Decision 062 and Version 0.3 milestone 0.3.5; no Engine Rule, Data Model section, Runtime mechanism, or decision number changed.
+
+**Mundane-market anchor:** Gatefall World Rule Profile Section 12.8.1 derives an ordinary licensed-provenance ranked item's USD/CZK settlement value from its existing commissioning inputs: one same-Rank core plus an equal core-price forging fee, or approximately five times the same-Rank crystal price. Weapons, armor pieces, and accessories share the anchor; functional conditions retain it, while broken gear has no authored functional price. Named artificer work and artifacts remain individually authored above anchor.
+**Economy boundary:** System-origin equipment has no licensed provenance or mundane-currency price and cannot inherit the black-market premium, preserving the prohibition on gold-to-USD/CZK exchange and leaving the System shop's 25%/50% repurchase rules unchanged.
+**Profile version:** frozen **1.8→1.9**, classified **additive**. No recomputation or state migration is required; existing transactions and immutable checkpoints remain unchanged.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-25 — Gatefall Profile 1.8: aligned `/system` window
 
 World-authoring presentation refinement under Version 0.3 milestone 0.3.5; no Engine Rule, Data Model section, Runtime mechanism, or decision number changed.

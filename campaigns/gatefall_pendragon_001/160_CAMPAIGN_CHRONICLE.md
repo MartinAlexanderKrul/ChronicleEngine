@@ -799,3 +799,29 @@ Alexander called and put it plainly, without selling it and without attributing 
 
 No combat, injury, XP, Health, Mana, or gold change across this event. 15 unspent stat points and three unopened Daily Random Boxes remain untouched; the resonance chisel is still broken and unreplaced. Alexander is alone in his apartment at **14:11 on 2026-07-29**, with the run ahead of him, Ironbound needing a visit, and the Coalition at 18:00."
 ```
+
+## EVT-000082 - Gatefall Profile 1.6 Midnight Daily Deadline Migration
+
+```yaml
+id: EVT-000082
+canonical_record: REC-000079
+schema_version: "0.1.2"
+status: active
+provenance:
+  source: owner-rule-migration
+  event_time: "2026-07-29 14:11"
+  record_time: "2026-07-29T14:11:00Z"
+type: Event
+kind: world-rule-migration
+importance: major
+event_time: "2026-07-29"
+participants:
+  - ENT-000125
+description: "At an out-of-character readiness pause, the live campaign explicitly adopted frozen Gatefall World Rule Profile 1.6 from frozen 1.5. The migration consumed no fictional time and re-resolved no prior action.
+
+**Rule change.** The daily quest continues to issue at 06:00 local, but no longer runs for 24 hours. Its deadline is now 00:00 immediately following its issue date: the Bearer may finish from 06:00 through 23:59, and an incomplete quest fails at midnight. Failure resets the informational streak and fires the penalty-zone transfer then; if the Bearer is already inside a sealed instance, the failure records at midnight and only the transfer defers until exit (Profile Sections 8.1 and 8.3).
+
+**Active-quest migration.** Alexander's fifth daily quest issued 2026-07-29 06:00. Its existing progress is preserved exactly: push-ups 100/100, sit-ups 100/100, squats 100/100, run 0/10. Its deadline moves from 2026-07-30 06:00 to **2026-07-30 00:00 America/Chicago**. At the current fictional time, 14:11, the quest remains active and no penalty fires.
+
+No reward, streak, Health, Mana, XP, Stat, gold, item, ownership, relationship, or fictional-state value changed. Profile version and deadline state alone changed."
+```

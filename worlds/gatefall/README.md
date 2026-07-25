@@ -1,8 +1,8 @@
 # Gatefall World — Usage Guide
 
 **World Status:** Complete and playable
-**Version:** 0.1 (World Rule Profile 1.5)
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.2; Gatefall World Rule Profile 1.5
+**Version:** 0.1 (World Rule Profile 1.6)
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.2; Gatefall World Rule Profile 1.6
 **Created:** 2026-07-22
 
 ---
@@ -45,7 +45,7 @@ The world is original throughout — original names, characters, institutions, a
 
 **Core World Files:**
 - `200_WORLD_BIBLE.md` — Setting and narrative canon: the Gatefall event, the rules everyone knows, hunter-scale numbers, the World Ranking of S-ranks, the US and European layers, Chicago and Prague at national depth, the Jiu Valley Exclusion (the quarantined catastrophe region abroad), common knowledge by tier, the System's public (non-)existence, and an owner-only hidden-truth section not for players
-- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.5 (authoritative).** Every mechanic: levels/XP, causal base/effective stats, equipment power and item bonuses, mana, vitality and injury, skills, the daily quest and penalty zones, Gates, loot, economy, parties, the System's behavioral contract, the `/system` command and its panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-grading, pacing and lethality
+- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.6 (authoritative).** Every mechanic: levels/XP, causal base/effective stats, equipment power and item bonuses, mana, vitality and injury, skills, the daily quest and penalty zones, Gates, loot, economy, parties, the System's behavioral contract, the `/system` command and its panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-grading, pacing and lethality
 - `210_PLACES.md` — Geography: Chicago (Lakefront Gate Corridor, Red Line Corridor, the Cicero break scar, Horizon Tower, the BGM Region V field office) and Prague (Old Town Gate Cluster, Metro Corridor, the Libeň break scar, Karlov House, CGA headquarters)
 - `220_NOTABLE_FIGURES.md` — Fourteen NPCs — twelve city figures (six per city) plus two world-ranked S-ranks (the highest-ranked American and Brandhof's German ace) — each authored with a want, a fear/flaw, a secret, a live agenda, and named relationships: guild masters, regulators, S-ranks, appraisers, and black-market contacts
 - `240_RESOURCES.md` — The dual economy's material side: mana crystals, beast cores, graded hunter gear, and System-shop consumables, priced by grade
@@ -83,7 +83,7 @@ Between panel calls, ordinary numeric changes render inline as compact notificat
 
 ### The Daily Quest
 
-Once per in-fiction day the System issues a training regimen with a real reward (XP, and a stat point every seventh consecutive completed day) and a real penalty: miss the 24-hour window and the System transfers the protagonist into a **penalty zone** — a sealed, unrequested survival instance scaled to his own strength, with no loot and no early exit. Every in-world day carries stakes; the profile (Section 8) authors the full regimen, reward, and penalty.
+At 06:00 local each in-fiction day the System issues its fixed training regimen: 100 push-ups, 100 sit-ups, 100 squats, and a 10 km run. The Bearer has until midnight that same calendar day—06:00 through 23:59—to finish. Completion creates three separately claimable rewards (Ability Points +3, Status Recovery, and a Daily Random Box) and no XP; an incomplete quest at 00:00 resets the informational streak and transfers him into a **penalty zone**, or defers that transfer until he exits an already-sealed instance. The profile (Section 8) authors the full schedule, rewards, and penalty.
 
 ### Gates and Lethality
 

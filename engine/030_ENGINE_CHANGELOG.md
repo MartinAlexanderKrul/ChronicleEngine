@@ -12,6 +12,15 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-25 — Gatefall World Rule Profile 1.6: midnight daily deadline (migrating)
+
+Gatefall world authoring under Decision 062; no engine Rules, Data Model, Runtime profile, or decision number changed.
+
+**Daily schedule:** Section 8.1 retains the daily quest's 06:00 local issue and replaces its rolling 24-hour window with a same-calendar-day deadline at midnight. The Bearer may complete objectives from 06:00 through 23:59; an incomplete quest fails at 00:00, resets the informational streak, and triggers the penalty-zone transfer. Section 8.3 preserves the existing sealed-instance exception as a transfer deferral only: failure still records at midnight.
+
+**Profile version:** frozen **1.5 → 1.6**, classified **migrating** (Rules 14.6, Decision 074). An active quest preserves its objective counters and receives the midnight immediately following its issue date as its new deadline. Gatefall: Pendragon adopted the migration in `EVT-000082`; its fifth daily retains 100/100/100 calisthenics and 0/10 km, with the deadline shortened from 2026-07-30 06:00 to 00:00.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-25 — Gatefall World Rule Profile 1.4: causal Stats and wielder-relative equipment (migrating)
 
 Gatefall world authoring under Decision 062, with Gameplay Runtime wording aligned to the already-supported World Rule Profile override boundary; no engine Rules, Data Model, or decision number changed.

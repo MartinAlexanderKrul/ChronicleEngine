@@ -1,12 +1,20 @@
-# Gatefall — World Rule Profile 1.5
+# Gatefall — World Rule Profile 1.6
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.5
+**Profile Version:** 1.6
 **Engine Compatibility:** 0.2.0; Data Model 0.1.2
 **Status:** Active
-**Compatibility Status:** frozen at version 1.5 (Rules Section 14.6, Decision 074), declared 2026-07-28. Version 1.5 is a **migrating** advance over frozen 1.4: a mender's resolved treatment now **clears an injury's severity outright**, gated by the mender's rank against the injury tier, instead of merely halving its healing clock. This makes the mender working type what the world's fiction already treats it as — the reason a crew pays for one — and moves the real constraint onto the mender's limited per-clear touches rather than onto a rule that made a C-rank healer unable to set a broken bone. An active 1.4 campaign must complete the migration below before play continues. Version 1.4 remains the immutable contract governing play before that migration.
+**Compatibility Status:** frozen at version 1.6 (Rules Section 14.6, Decision 074), declared 2026-07-29. Version 1.6 is a **migrating** advance over frozen 1.5: the daily quest still issues at 06:00 local, but its deadline is now the following midnight rather than 24 hours after issuance. The Bearer has the issuing calendar day's 06:00–23:59 span to finish; at 00:00 an incomplete quest fails and its penalty-zone transfer fires or defers under Section 8.3. An active 1.5 campaign must complete the migration below before play continues. Version 1.5 remains the immutable contract governing play before that migration.
+
+**Required 1.5 → 1.6 migration.** At the readiness gate or the next natural pause, before further resolution:
+
+1. Preserve every Stat, level, XP total, pool value, item, equipment slot, skill, title, currency, ownership, provenance, pending reward, streak, completed daily quest, and resolved fictional outcome. Profile 1.6 re-resolves no past action and changes no completed or previously failed daily.
+2. For an active daily quest issued under 1.5, preserve every objective counter and move its deadline to **00:00 local immediately following its issue date**. If the campaign's current fictional time is already at or past that deadline and the quest was not recorded complete before it, settle the failure immediately under Sections 8.1 and 8.3; otherwise keep it active with the shortened deadline.
+3. Record daily state with an explicit issue timestamp, local midnight deadline, objective progress, and penalty status. Re-render `/system quests`; record the migration event and acknowledgement in the live ledgers and next promoted checkpoint.
+
+This migration changes no reward, Health, Mana, XP, Stat, gold, item, or ownership value. It changes only the deadline and possible midnight settlement of an active daily quest.
 
 **Required 1.4 → 1.5 migration.** At the readiness gate or the next natural pause, before further resolution:
 
@@ -43,7 +51,7 @@ This migration changes no Health, Mana, XP, Stat, gold, item, or ownership value
 
 This migration changes no gold, Health, Mana, XP, base stat, skill, title, injury, ownership, or item provenance. It only makes already-owned gear mechanically complete and records which pieces are equipped.
 
-**1.4 authors the System in full — the mechanical law of a gate-and-System world of awakened hunters.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats, equipment, and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
+**1.6 authors the System in full — the mechanical law of a gate-and-System world of awakened hunters.** Gatefall is a world where every hunter's rank is fixed at Awakening and only one person in the world grows: the **Bearer** of the System. This profile governs how the Bearer levels, what stats, equipment, and skills do, how mana and health resolve, how the daily quest and its penalty enforce the grind, and how the world's Gates, loot, and economy behave. It is authored across three parts; this file is the whole document as it stands. Sections 1–8 fix the progression core.
 
 ---
 
@@ -607,14 +615,16 @@ Once per in-fiction day the System issues the quest, rendered in a bracketed Sys
 [SYSTEM] QUEST ISSUED — DAILY TRAINING
 Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 100 squats 0/100 · 10 km run 0/10
 Rewards: Ability Points +3 · Status Recovery · Daily Random Box
-Warning: failure to complete within 24 h transfers you to a penalty zone.
+Deadline: 00:00 local tonight.
+Warning: incomplete at midnight transfers you to a penalty zone.
 ```
 
-- **The regimen** is fixed: **100 push-ups, 100 sit-ups, 100 squats, and a 10 km run**, completed within a **24-hour window** from issuance.
+- **Issue and deadline:** the quest issues at **06:00 local** every in-fiction day. Its deadline is **00:00 local immediately following that issue date**: the Bearer may make progress from 06:00 through 23:59, an 18-hour window. At midnight the issuing day's quest is closed before any later beat resolves. No daily quest is active from 00:00 through 05:59; the next one issues at 06:00.
+- **The regimen** is fixed: **100 push-ups, 100 sit-ups, 100 squats, and a 10 km run**, completed within that daily window.
 - **Rewards on completion:** three independent pending entries — Ability Points +3, Status Recovery, and one Daily Random Box (Section 3.9).
 - The quest awards **no XP**. It tracks a **consecutive-completion streak**: completion advances the streak by 1; failure resets it to 0. The streak is a record and display value only—there is no Weekly Cache, threshold reward, multiplier, or other mechanical benefit. Each completed day already supplies its own box.
 
-Completion is genuine effort, not a checkbox — the objectives are physical work the Bearer must actually do in the fiction. The System tracks progress against each objective (the `0/100` counters advance as the work is done) and resolves the quest as completed or failed at the window's close.
+Completion is genuine effort, not a checkbox — the objectives are physical work the Bearer must actually do in the fiction. The System tracks progress against each objective (the `0/100` counters advance as the work is done). It resolves the quest **complete immediately** when the final objective finishes; if any objective remains incomplete at 00:00, it resolves the quest **failed at midnight**, resets the streak, and applies Section 8.3.
 
 ### The Daily Random Box
 
@@ -645,7 +655,7 @@ Each shows `before → current/maximum` (for XP, `current/next threshold`). Rend
 
 ## 8.3 The Penalty Zone
 
-If the 24-hour window closes with the quest incomplete, the System **transfers the Bearer into a penalty zone**: a sealed survival instance he does not choose to enter and cannot leave early.
+If midnight arrives with the issuing day's quest incomplete, the System **transfers the Bearer into a penalty zone at 00:00 local**: a sealed survival instance he does not choose to enter and cannot leave early.
 
 - **Duration:** a **4-hour survival instance**. The Bearer survives it or dies in it; there is no other exit and no retreat.
 - **Grade:** the instance runs at the Bearer's **System tier** (Section 6.6) — it scales with progression, so it never stops being dangerous as he grows.
@@ -664,7 +674,7 @@ If the 24-hour window closes with the quest incomplete, the System **transfers t
 
 The penalty is deliberately not a fine or a debuff: missing the daily quest drops the Bearer, alone, into a fight at his own System tier that he did not pick. That is the System being indifferent to his convenience — the daily quest is an order, and refusal has teeth. That the teeth also make him stronger is exactly the System's logic: it does not fine failure, it *forces the training the Bearer skipped*, at knifepoint.
 
-**Deferred transfer from inside a sealed instance.** If the 24-hour window closes while the Bearer is inside a **sealed instance** — a red gate (Section 9.6), an instant dungeon (Section 17), or the class trial (Section 18.2) — the penalty transfer **cannot fire** while that seal holds: there is no exit, and the System does not drop him into a second sealed instance atop the first. The failed quest is recorded and the transfer **defers**; the instant the Bearer exits the sealed instance, the penalty-zone transfer **fires immediately**, before the next daily quest issues. The deferral spares him nothing — it only waits for a door.
+**Deferred transfer from inside a sealed instance.** If midnight arrives while the Bearer is inside a **sealed instance** — a red gate (Section 9.6), an instant dungeon (Section 17), or the class trial (Section 18.2) — the quest still fails and the streak still resets at 00:00, but the penalty transfer **cannot fire** while that seal holds: there is no exit, and the System does not drop him into a second sealed instance atop the first. The transfer **defers**; the instant the Bearer exits the sealed instance, it **fires immediately**, before any new daily quest can issue or any other voluntary action resolves. The deferral spares him nothing — it only waits for a door.
 
 ---
 
@@ -1385,7 +1395,7 @@ The System's **first contact** with a new Bearer is a fixed message sequence —
 1. **Attachment notice** — the initializing handshake and host designation, fired the instant the System attaches.
 2. **Status-window grant** — the STATUS panel (Section 15.1) is granted and rendered once, opening at level 1 with the creation-array Stats and the Health/Mana maxima derived from its Vitality and Intelligence.
 3. **First Daily Premium cycle** — make Section 12.5's twelve real rolls immediately and fire the rotation line; this is the current 06:00-to-06:00 cycle, not an extra cycle.
-4. **First daily quest** — the standing daily quest (Section 8.1) issues at the **next 06:00 local** after attachment, and the daily cycle runs from there.
+4. **First daily quest** — the standing daily quest (Section 8.1) issues at the **next 06:00 local** after attachment. It expires at the immediately following local midnight; later quests repeat on the same 06:00-to-00:00 calendar-day schedule.
 
 The worked onset block:
 
@@ -1407,7 +1417,8 @@ Strength <n> · Agility <n> · Vitality <n> · Perception <n> · Intelligence <n
 [SYSTEM] QUEST ISSUED — DAILY TRAINING
 Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 100 squats 0/100 · 10 km run 0/10
 Rewards: Ability Points +3 · Status Recovery · Daily Random Box
-Warning: failure to complete within 24 h transfers you to a penalty zone.
+Deadline: 00:00 local tonight.
+Warning: incomplete at midnight transfers you to a penalty zone.
 ```
 
 Every value is read from creation state (Sections 3–6): level 1, XP 0/100, `Health = 4 × effective Vitality`, and `Mana = 2 × effective Intelligence`. After this sequence the Bearer is an ordinary played character carrying the System, and all further output follows Section 14.3.
@@ -1452,7 +1463,7 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ║  Unspent points  ● <n>                                ║
 ║  Pending rewards  <none, or daily reward list>       ║
 ╟─ QUESTS ─────────────────────────────────────────────╢
-║  <one line per active quest; [HIDDEN] shows ???>     ║
+║  <active quest: objective progress · local deadline> ║
 ╟─ SKILLS ─────────────────────────────────────────────╢
 ║  <one line per known skill: name [rank] cost eff>    ║
 ╟─ TITLES  (equipped: <title or none>) ────────────────╢

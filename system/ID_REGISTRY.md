@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000139 |
 | Record | `REC-` | Canonical Record | REC-000090 |
-| Event | `EVT-` | Event | EVT-000081 |
+| Event | `EVT-` | Event | EVT-000082 |
 | Relationship | `REL-` | Relationship | REL-000066 |
 
 ---
@@ -184,6 +184,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000081 | Event | Gatefall: Pendragon: Alexander's partial answer to Owen and Owen's release of the promise, the night and resulting personal relationship, Owen's "no hero" filing strategy, Kesha's notice that Region V registered the Gate closure, Priya's agreement by phone with stated limits, and the fifth daily quest's calisthenics |
 | REL-000066 | Relationship | Gatefall: Pendragon: Alexander Pendragon and Owen — personal relationship formed after the Ashfield Gate clear, distinct from their crew membership; the one relationship in which Alexander's inexplicability is acknowledged rather than hidden |
 | REC-000090 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0013/900_SAVE_MANIFEST.md` — apartment checkpoint on 2026-07-29 afternoon, filing strategy agreed, before the crew's Coalition meeting |
+| EVT-000082 | Event | Gatefall: Pendragon: explicit World Rule Profile 1.5→1.6 migration — daily quests retain their 06:00 issue but now fail at the following midnight; fifth-daily progress preserved and deadline moved from 2026-07-30 06:00 to 00:00; no fictional time or other state changed |
 
 ---
 

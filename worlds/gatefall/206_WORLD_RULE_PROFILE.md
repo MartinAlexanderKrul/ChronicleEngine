@@ -1480,7 +1480,7 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ║    <objective progress>                                                  ║
 ║    <objective progress or local deadline>                                ║
 ╟─ SKILLS ─────────────────────────────────────────────────────────────────╢
-║  <name> [Rank] · <M# or Passive> · <cost/effect>                         ║
+║  <name> [Rank] <★ mastery> · <MANA n or Passive> · <effect>              ║
 ╟─ TITLES · Equipped: <title or none> ─────────────────────────────────────╢
 ║  <★ equipped title or earned title · effect>                             ║
 ╟─ EQUIPMENT ──────────────────────────────────────────────────────────────╢
@@ -1525,10 +1525,10 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 ║  [URGENT] Cull the Red Line Nest · 3/4 · +40 XP                          ║
 ║  [HIDDEN] ???                                                            ║
 ╟─ SKILLS ─────────────────────────────────────────────────────────────────╢
-║  Mana Bolt [E-Rank] · M5 · Rank Base 10 ×1.0                             ║
-║  Dagger Mastery [E-Rank] · Passive · Quickknife +0.10                    ║
-║  Sprint [E-Rank] · M3 · +1 Step Movement                                 ║
-║  Mend [E-Rank] · M5 · Rank Base 10 ×1.0                                  ║
+║  Mana Bolt [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                   ║
+║  Dagger Mastery [E-Rank] ★☆☆☆☆ · Passive · Quickknife +0.10              ║
+║  Sprint [E-Rank] ★☆☆☆☆ · MANA 3 · +1 Step Movement                       ║
+║  Mend [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                        ║
 ╟─ TITLES · Equipped: Lone Clear ──────────────────────────────────────────╢
 ║  ★ Lone Clear · +1 Step While Alone in a Gate                            ║
 ║    Untouched · +1 Step Evasion on First Exchange                         ║
@@ -1555,7 +1555,8 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 
 - **Bars** are 20-cell meters filled proportionally to `current/max` (Ren: HP approximately four-fifths, MP three-quarters, XP half).
 - **Frame width is fixed:** every rendered row is exactly **76 monospace cells** wide, including its two edge characters; the interior is 74 cells. The Runtime pads short rows, never allows content past the right edge, and uses indented continuation rows rather than truncation. If a name or value still exceeds one row, it wraps beneath its own label at the same indentation.
-- **Labels use title case and fixed abbreviations:** `Unspent Points`, `Pending Rewards`, `Physical Reduction`, `Acc.1`, `Acc.2`, `M1`–`M5`, and `Passive`. The same label is never shortened differently elsewhere in the window.
+- **Labels use title case and fixed abbreviations:** `Unspent Points`, `Pending Rewards`, `Physical Reduction`, `Acc.1`, `Acc.2`, and `Passive`. The same label is never shortened differently elsewhere in the window.
+- **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full skill row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` — or `<name> · Passive · <effect>` for a passive. **Erratum, not a behavioral change.** The earlier `M1`–`M5` shorthand in this list was ambiguous between a Mana cost and a mastery level, and it could not express a cost above 5 (Rupture's is 12). Section 7.4's rendering rule already authored the cost as the spelled word and the mastery as stars; this list is corrected to agree with it. No stored field, cost, magnitude, mastery level, or resolved outcome changes, and the profile version does not advance.
 - **Quest objectives are subordinate rows.** The quest name and status occupy the first row; objectives, progress, and the local deadline render beneath it with four-space indentation.
 - **Equipment and long inventory entries separate identity from mechanics.** The slot, item name, and `[Rank]` occupy the first row. Bonuses, power/protection, effects, and condition occupy one or more continuation rows aligned beneath the item name. This rule leaves room for prefixes, suffixes, and durability without widening the frame.
 - Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, equipment slots from Section 12.9, inventory from the campaign inventory ledger, and gold from the shop balance. Effective stats and physical reduction are derived from the equipped lines. Nothing is invented at render.

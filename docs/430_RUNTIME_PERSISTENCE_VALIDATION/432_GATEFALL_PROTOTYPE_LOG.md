@@ -32,9 +32,9 @@ At designation, the campaign had:
 
 ## Current Evidence State
 
-As of 2026-07-25 repository time, ordinary play has advanced the campaign to fourteen canonical-form checkpoints (`900_CHECKPOINT_0001`–`0014`). Checkpoint 0014 is an automatic Context-Preservation capture at a quiet interval on the campaign morning of 2026-07-30, under frozen Gatefall Profile 1.6 and captured Campaign Schema 0.1.2.
+As of 2026-07-25 repository time, ordinary play has advanced the campaign to fifteen canonical-form checkpoints (`900_CHECKPOINT_0001`–`0015`). Checkpoint 0015 is an automatic Context-Preservation capture at a quiet interval on the campaign morning of 2026-07-30, under frozen Gatefall Profile 1.6 and Campaign Schema 0.1.3. It is the campaign's first checkpoint captured natively under Data Model 0.1.3 and requires no migration on restore.
 
-Live prototype evidence also produced Decision 076: Relationship Texture. That finding was accepted on 2026-07-25 repository time as an explicit foundational exception to the Version 0.3 Architecture Freeze and advances mutable live state to Data Model 0.1.3. Checkpoint 0014 and every earlier checkpoint remain byte-immutable at their captured schema; restoring them now requires the explicit schema migration at readiness before validation and play. The campaign's in-world date did not date the architectural decision.
+Live prototype evidence also produced Decision 076: Relationship Texture. That finding was accepted on 2026-07-25 repository time as an explicit foundational exception to the Version 0.3 Architecture Freeze and advances mutable live state to Data Model 0.1.3. Checkpoint 0014 and every earlier checkpoint remain byte-immutable at their captured schema; restoring them requires the explicit schema migration at readiness before validation and play. Checkpoint 0015 closes the positive path by capturing already-migrated live state directly as 0.1.3. The campaign's in-world date did not date the architectural decision.
 
 **Reconciliation (Decision 074 freeze):** After this baseline, the Gatefall World Rule Profile was frozen at version 1.0 (Rules Section 14.6, Decision 074), and later checkpoints capture `freeze_status: frozen`. This does not invalidate the baseline: Checkpoint 0004 was captured before the freeze and remains the real, immutable pre-freeze workshop-draft case (WRP-03), while the live frozen profile now supplies the genuine matching and mismatch cases (WRP-01, WRP-02, WRP-05). The validation harness reads the live profile's actual frozen version rather than assuming a fixed value, so it tracks the freeze instead of breaking against it.
 
@@ -62,7 +62,7 @@ Branch and restart validation uses a disposable fork. Negative structure and com
 
 **Result:** Observed pass.
 
-Checkpoints 0001–0014 use the canonical four-digit directory form. Checkpoint 0014 contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004 and frozen Profile 1.6 metadata at Checkpoint 0014.
+Checkpoints 0001–0015 use the canonical four-digit directory form. Checkpoint 0015 contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004, frozen Profile 1.6 / schema 0.1.2 evidence at Checkpoint 0014, and the first native schema 0.1.3 capture at Checkpoint 0015.
 
 **Matrix:** V03-01, V03-09.
 
@@ -70,7 +70,7 @@ Checkpoints 0001–0014 use the canonical four-digit directory form. Checkpoint 
 
 **Result:** Observed pass.
 
-Checkpoint 0004 records the original complete eight-ledger target set, and subsequent checkpoints through 0014 repeat the canonical form. Live `180_CURRENT_STATE.md` identifies promoted Events, ledger effects, registry advances, and same-change index updates.
+Checkpoint 0004 records the original complete eight-ledger target set, and subsequent checkpoints through 0015 repeat the canonical form. Checkpoint 0015 additionally observes the automatic Context-Preservation path: all eight ledgers promoted, registry advanced through `EVT-000084`, worlds-and-campaigns index advanced to 0015, and `play_export_0003.md` written in the same preservation operation.
 
 **Matrix:** V03-02.
 
@@ -166,6 +166,18 @@ P-04: Repository validation FAILED (3 error(s))
 **Repository evidence:** Decisions 076; Data Model Sections 10 and 12.4.1; `tools/validate_repository.ps1`; Gatefall `180_CURRENT_STATE.md`; `exports/play_export_0001.md` and `play_export_0002.md`; Checkpoint 0014.
 **Matrix cases:** V03-01, V03-02, V03-09, V03-19.
 **Verdict:** Pass for finding disposition and migration; V03-19 remains open for the final postmortem determination.
+
+## Evidence 010 — Automatic Context-Preservation Checkpoint 0015
+
+**Date / checkpoint:** 2026-07-25 repository time; Gatefall Checkpoint 0015 at campaign time 2026-07-30 approximately 08:15.
+**Command or barrier:** Resident Context-Preservation Watch → automatic Session Export plus complete Save Algorithm after twenty-one resolved player exchanges since Checkpoint 0014.
+**Starting state:** Live campaign already migrated to Data Model 0.1.3; latest immutable checkpoint 0014 remained a 0.1.2 capture requiring readiness migration.
+**Expected result:** Without waiting for a player `/save`, context pressure triggers complete promotion, writes and reads back all eight ledgers, advances the registry and index atomically, creates an immutable canonical-form 0.1.3 checkpoint, and exports the non-regenerable transcript. The resulting checkpoint restores under the matching frozen profile and current schema without migration.
+**Observed result:** Checkpoint 0015 contains all eight ledgers and exactly one identifier-free manifest. Its manifest records `checkpoint_type: automatic-context-preservation`, parent 0014, frozen Gatefall Profile 1.6, `campaign_schema: "0.1.3"`, compatible status, and no required migration. `EVT-000084` records the promoted interval; the repository index and live current-state ledger both name 0015 as latest. `exports/play_export_0003.md` exists as the automatic transcript export.
+**Repository evidence:** `campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0015/`; `campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md`; `system/WORLDS_AND_CAMPAIGNS.md`; `campaigns/gatefall_pendragon_001/exports/play_export_0003.md`; commit `de73e20`.
+**Gate output:** `validate_repository.ps1` passed (352 live Persistent Objects); `test_checkpoint_contract.ps1` passed; `test_context_preservation_contract.ps1` passed.
+**Matrix cases:** V03-01, V03-02, V03-09, V03-19.
+**Verdict:** Pass — first native Data Model 0.1.3 checkpoint and first observed automatic context-preservation checkpoint/export pair after Decision 076.
 
 ---
 

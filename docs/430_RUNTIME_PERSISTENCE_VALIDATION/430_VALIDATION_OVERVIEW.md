@@ -34,12 +34,12 @@ Gatefall: Pendragon is the Version 0.3 prototype campaign.
 
 It has produced the exact evidence the milestone requires:
 
-- fourteen canonical-form checkpoints (`900_CHECKPOINT_0001`–`0014`),
+- fifteen canonical-form checkpoints (`900_CHECKPOINT_0001`–`0015`),
 - repeated eight-ledger promotion,
 - structured World Rule Profile metadata across workshop-draft and frozen captures through Profile 1.6,
 - live presence changes under Data Model 0.1.2 followed by the prototype-driven Relationship Texture migration to Data Model 0.1.3,
 - identifier allocation and index updates at checkpoint barriers,
-- automatic transcript export at the Context-Preservation Barrier,
+- observed automatic transcript export at the Context-Preservation Barrier (`play_export_0003.md` alongside Checkpoint 0015),
 - and continued campaign play across session boundaries.
 
 No replacement prototype campaign will be created merely to repeat that evidence.

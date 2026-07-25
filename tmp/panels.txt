@@ -19,7 +19,7 @@
 ###status_ren
 ╔═ ◈ SYSTEM · STATUS ══════════════════════════════════╗
 ║  REN                                                 ║
-║  Rank   E-band            Level   3                  ║
+║  Rank   E-Rank            Level   3                  ║
 ║  Class  —                 Title   Lone Clear         ║
 ╟──────────────────────────────────────────────────────╢
 ║  XP   ██████████░░░░░░░░░░   150 / 300               ║

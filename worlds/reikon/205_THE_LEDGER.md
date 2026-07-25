@@ -117,7 +117,7 @@ An ordinary Awakened has **no level and no XP**. They still grow — through pra
 
 **The Bearer's arc:** he opens as an E-Rank licence over an E-Rank pool. Within a handful of levels he carries a D-Rank's capacity behind that E-Rank card, and the gap only widens — by the nineties his pool assesses as S while his licence still reads E, if he has kept his silence. A Level 100 E-Rank is vastly more dangerous than a freshly Awakened C-Rank, and nothing on paper says so.
 
-The pool curve and its band crossings are in `206_WORLD_RULE_PROFILE.md` Section 3.2.
+The pool curve and its Rank crossings are in `206_WORLD_RULE_PROFILE.md` Section 3.2.
 
 **And it is the engine of his central problem.** The Association will never notice on its own: it re-measures only on request. So he holds a standing choice, renewed by silence —
 
@@ -146,15 +146,15 @@ Trivial, no-stakes repetition yields little or nothing. The System cannot be far
 
 ---
 
-# Official Ranks (E–S)
+# Official Ranks (E-Rank–S-Rank)
 
 The Hunters' Association certifies Ranks from demonstrated deeds in field testing and expedition assessment, not from the System's private readout:
 
 | Rank | Description |
 |------|-------------|
-| **E** | Newly licensed; basic competence; clears E-Rifts |
-| **D** | Competent solo hunter; handles D-Rifts solo |
-| **C** | Experienced; team-capable; can lead C-Rift expeditions |
+| **E** | Newly licensed; basic competence; clears E-Rank Rifts |
+| **D** | Competent solo hunter; handles D-Rank Rifts solo |
+| **C** | Experienced; team-capable; can lead C-Rank Rift expeditions |
 | **B** | Veteran; public recognition; rare; sought after |
 | **A** | Elite tier; national reputation; exceptional |
 | **S** | Legendary; top-tier threat-capable; handful exist |
@@ -162,7 +162,7 @@ The Hunters' Association certifies Ranks from demonstrated deeds in field testin
 
 A Rank is a **claim**. It can lag behind real growth, be inflated by a guild, forged by underground fixers (`230_KNOWLEDGE_SUBJECTS.md`), or simply be wrong — and a Rift does not care what the license says.
 
-The pool bands each Rank corresponds to are in `206_WORLD_RULE_PROFILE.md` Section 3.1.
+The pool Ranks each Rank corresponds to are in `206_WORLD_RULE_PROFILE.md` Section 3.1.
 
 ## Rank Certification Process
 
@@ -170,11 +170,11 @@ The pool bands each Rank corresponds to are in `206_WORLD_RULE_PROFILE.md` Secti
 
 **2. Mana Pool Assessment** — A specialist measures the hunter's capacity through calibrated tests or cores. The pool is the key determinant of Rank. A hunter with a C-Rank pool cannot be licensed D-Rank, regardless of confidence or test performance.
 
-**3. Practical Trial** — The hunter enters a controlled E-Rift with overseers watching, assessed on ability control and stability, physical competence, reaction to stress, and teamwork. Performance does not change their Rank; it confirms whether the pool assessment was accurate.
+**3. Practical Trial** — The hunter enters a controlled E-Rank Rift with overseers watching, assessed on ability control and stability, physical competence, reaction to stress, and teamwork. Performance does not change their Rank; it confirms whether the pool assessment was accurate.
 
-**4. Licensing and Rank Assignment** — A certificate is issued with their certified Rank. Assessment is imperfect: a pool measured near a band edge, on a bad day, or by a hurried specialist can be certified a band low or high. Such a divergence is a hidden discrepancy the hunter may never learn of — or may quietly exploit.
+**4. Licensing and Rank Assignment** — A certificate is issued with their certified Rank. Assessment is imperfect: a pool measured near a Rank boundary, on a bad day, or by a hurried specialist can be certified one Rank low or high. Such a divergence is a hidden discrepancy the hunter may never learn of — or may quietly exploit.
 
-**5. Assignment Eligibility** — E-Rank hunters get E-Rift assignments; D-Rank get D-Rifts or supervised E-Rifts. Breaking Rank requires special permission or forging.
+**5. Assignment Eligibility** — E-Rank hunters get E-Rank Rift assignments; D-Rank get D-Rank Rifts or supervised E-Rank Rifts. Breaking Rank requires special permission or forging.
 
 **Timeline:** Registration to licensing typically takes 1–2 weeks. A hunter can work sub-Rank within a week if urgent.
 
@@ -240,7 +240,7 @@ Recovery does not scale with the pool — deep pools take proportionally longer 
 
 At 0 mana a hunter cannot cast at all, and the exhaustion is real. An E-Rank in a Rift is one cast from helpless, and the minutes back to full are the most dangerous minutes they will spend.
 
-Pool bands, growth, costs, recovery rates, and the running-dry condition are all in `206_WORLD_RULE_PROFILE.md` Sections 3 and 5.
+Pool Ranks, growth, costs, recovery rates, and the running-dry condition are all in `206_WORLD_RULE_PROFILE.md` Sections 3 and 5.
 
 ---
 
@@ -266,14 +266,14 @@ Rift interiors are pocket dimensions with structure, but not predictable structu
 - **Core chamber** — Deepest or most protected. Contains the **core crystal**, usually guarded by an Apex monster. Reaching it is the objective.
 
 **Unpredictable elements:**
-- **Rift size** — An E-Rift might be a small cavern (30-minute walk to core). An A-Rift might be a sprawling complex (multi-day expedition). S-Rifts are unknown.
+- **Rift size** — An E-Rank Rift might be a small cavern (30-minute walk to core). An A-Rank Rift might be a sprawling complex (multi-day expedition). S-Rank Rifts are unknown.
 - **Environmental hazards** — Bottomless pits, collapsing ceilings, caustic pools, mana storms, dimensional distortion. Some Rifts are mechanically hostile independent of monsters.
 - **Monster placement** — Monsters cluster unpredictably. No two Rift interiors are identical.
 - **Dead ends and loops** — Navigation is an expedition skill.
 
 **Veteran knowledge** — Hunters who have cleared a Rift before know its layout and can brief new teams. The Association maintains files on cleared Rifts.
 
-**S-Rift anomaly** — S-Rift interiors are completely unpredictable. Dimensions shift, monsters appear without warning, the core location is unknown.
+**S-Rank Rift anomaly** — S-Rank Rift interiors are completely unpredictable. Dimensions shift, monsters appear without warning, the core location is unknown.
 
 ---
 
@@ -283,13 +283,13 @@ Cleared Rift cores and slain monsters leave **cores** — dense, crystalline res
 
 ## Core Pricing and Trade Value
 
-Cores trade at rates by grade, and the **Hunters' Association** and **Meridian Guild** maintain the official posted pricing. **Every number — the core ladder, the vell, posted costs, salaries — is in `206_WORLD_RULE_PROFILE.md` Section 12,** which governs.
+Cores trade at rates by Rank, and the **Hunters' Association** and **Meridian Guild** maintain the official posted pricing. **Every number — the core ladder, the vell, posted costs, salaries — is in `206_WORLD_RULE_PROFILE.md` Section 12,** which governs.
 
 Two currencies circulate. The Aldish Republic mints the **vell**, and civilian life runs on it: rent, food, ordinary goods. Hunters are paid in **cores**, and cores trade above coin — because a core is not only money. It is feedstock for medicine, industry, and the crafting of Marked relics, so industrial demand sits under its price permanently. Coin has no such floor. That is the whole reason the Association quotes a salary in cores and a landlord quotes rent in vells.
 
-**Any counter takes a core at three vells.** Any core, any grade, anywhere — the Republic's posted conversion, honored without question. It is flat because the counter is blind: to an ordinary merchant a core is a core, a dense residue of no distinguishable origin, and he is not equipped to know whether it came off a Broodling or off something that killed a B-Rank team. That rate is exactly fair for an E-core, which is what a hunter carries by the fistful. For anything rarer it is a robbery the merchant does not know he is committing.
+**Any counter takes a core at three vells.** Any core, any Rank, anywhere — the Republic's posted conversion, honored without question. It is flat because the counter is blind: to an ordinary merchant a core is a core, a dense residue of no distinguishable origin, and he is not equipped to know whether it came off a Broodling or off something that killed a B-Rank team. That rate is exactly fair for an E-Rank core, which is what a hunter carries by the fistful. For anything rarer it is a robbery the merchant does not know he is committing.
 
-**A core's real worth is its origin, and reading origin is a specialist's trade.** Association core desks, Guild buyers, and the trade stations that keep an appraiser can tell which creature died to leave a given core, and pay its grade. Nobody else can. So a hunter's take is worth what he knows about where to sell it — and handing a core to a specialist is a disclosure as much as a sale, because an appraiser who reads a core learns what it came from, and is under no obligation to keep that to himself. The mechanics are `206` Section 12.3.
+**A core's real worth is its origin, and reading origin is a specialist's trade.** Association core desks, Guild buyers, and the trade stations that keep an appraiser can tell which creature died to leave a given core, and pay its Rank. Nobody else can. So a hunter's take is worth what he knows about where to sell it — and handing a core to a specialist is a disclosure as much as a sale, because an appraiser who reads a core learns what it came from, and is under no obligation to keep that to himself. The mechanics are `206` Section 12.3.
 
 **Black market variation:** Illegal traders pay 10–20% below appraised value but ask no questions. That gap is the point: **a fence can appraise.** It is what makes him a fence rather than a shopkeeper, and why stolen cores flow to people who ask nothing rather than to people who cannot tell what they are holding. Guild-affiliated buyers offer standard rates but expect loyalty.
 
@@ -303,38 +303,38 @@ A **deep-Rift core** is rare and valuable — strange enough to be worth controv
 
 Rift-monsters are catalogued loosely, by what it takes to fight them rather than by strict species:
 
-- **Broodlings** — numerous, weak, dangerous only in mass; E-Rift standard
-- **Breakers** — the standard threat in D–C Rifts; dangerous but manageable for competent teams
-- **Wardens** *(no relation to the outlawed Path)* — rare, intelligent, territorial; found in B–A Rifts; the reason deep expeditions kill teams
+- **Broodlings** — numerous, weak, dangerous only in mass; E-Rank Rift standard
+- **Breakers** — the standard threat in D-Rank–C-Rank Rifts; dangerous but manageable for competent teams
+- **Wardens** *(no relation to the outlawed Path)* — rare, intelligent, territorial; found in B-Rank–A Rifts; the reason deep expeditions kill teams
 - **Apex** — a Rift's core-guardian or final threat; killing or sealing it closes the Rift
 
-The taxonomy is intentionally thin — a starting framework to fill in play, not a bestiary that resolves combat for you. **A monster needs only a grade** to be mechanically complete (`206` Section 6.4); everything else about it is fiction.
+The taxonomy is intentionally thin — a starting framework to fill in play, not a bestiary that resolves combat for you. **A monster needs only a Rank** to be mechanically complete (`206` Section 6.4); everything else about it is fiction.
 
-## Monster Archetypes by Grade
+## Monster Archetypes by Rank
 
-Hunters learn to recognize and classify monster types within each grade — knowledge earned through experience and shared via guild mentoring, Association briefings, and field journals.
+Hunters learn to recognize and classify monster types within each Rank — knowledge earned through experience and shared via guild mentoring, Association briefings, and field journals.
 
-**E-Rifts — Weaklings and Swarmers**
+**E-Rank Rifts — Weaklings and Swarmers**
 - **Weaklings** — Fast, fragile, low damage. Dangerous only in numbers.
 - **Swarmers** — Hive-minded coordination; individually weak but devastating in coordinated mass.
 
-**D-Rifts — Bruisers and Slingers**
+**D-Rank Rifts — Bruisers and Slingers**
 - **Bruisers** — Slow, heavily armored, high damage. Low intelligence; predictable patterns.
 - **Slingers** — Ranged attackers (acid, magic, projectiles). Intelligent, evasive, dangerous from distance.
 
-**C-Rifts — Hunters and Siege Beasts**
+**C-Rank Rifts — Hunters and Siege Beasts**
 - **Hunters** — Intelligent, coordinated, tactical. Mirror hunter strategy. First true threat.
 - **Siege Beasts** — Massive, territorial, devastating area damage. Force teams to adapt or abandon a section.
 
-**B-Rifts — Warlords and Anomalies**
+**B-Rank Rifts — Warlords and Anomalies**
 - **Warlords** — Command-class monsters that direct subordinates. Killing the Warlord breaks the Rift's monster hierarchy.
 - **Anomalies** — Unpredictable, rare, dangerous. No standard tactics work.
 
-**A-Rifts — Apex Predators and Architects**
+**A Rifts — Apex Predators and Architects**
 - **Apex Predators** — Legendary individual threats. Each is unique; hunters study them by name and reputation.
 - **Architects** — Rare monsters that shape the Rift environment itself.
 
-**S-Rifts — No classification.** S-Rift monsters follow no pattern. Hunters learn by doing or die.
+**S-Rank Rifts — No classification.** S-Rank Rift monsters follow no pattern. Hunters learn by doing or die.
 
 **In play:** Meeting a known type triggers tactical knowledge. Unknown or mixed archetypes force improvisation — a source of danger and discovery.
 
@@ -342,7 +342,7 @@ Hunters learn to recognize and classify monster types within each grade — know
 
 # Rift Loot: Cores, Artifacts, and Equipment
 
-**Cores** — The primary harvest. Every monster and the Rift's core crystal produce cores. Grade-matched to the Rift. Traded as currency or sent to specialists for processing.
+**Cores** — The primary harvest. Every monster and the Rift's core crystal produce cores. Rank-matched to the Rift. Traded as currency or sent to specialists for processing.
 
 **Artifacts** — Rare items left behind by prior hunters, or created by Rift conditions themselves:
 - A **marked weapon or armor** — crafted by a specialist from a rare core, enchanted with a hunter's technique
@@ -353,7 +353,7 @@ Hunters learn to recognize and classify monster types within each grade — know
 
 **Rarity gradient:** Most Rifts yield common cores and standard equipment. Occasionally an artifact. Very rarely, a deep Rift yields something unprecedented — enough to draw the Institute, the Guilds, or both. The Aurology Institute's current discovery was one such find.
 
-**Loot distribution:** A typical E-Rift cleared by one or two hunters yields 5–10 E-cores and basic equipment. A C-Rift cleared by a team yields 15–30 C-cores, a possible artifact, and specialized equipment. A dangerous A-Rift might yield 3–5 A-cores, a rare artifact, and legendary equipment. S-Rifts are unpredictable.
+**Loot distribution:** A typical E-Rank Rift cleared by one or two hunters yields 5–10 E-Rank cores and basic equipment. A C-Rank Rift cleared by a team yields 15–30 C-Rank cores, a possible artifact, and specialized equipment. A dangerous A Rift might yield 3–5 A cores, a rare artifact, and legendary equipment. S-Rank Rifts are unpredictable.
 
 ---
 
@@ -370,7 +370,7 @@ Rare cores can be transformed into unique weapons, armor, and ability-enhancing 
 
 **Enhancement Risk:** Crafting is not guaranteed. A poorly chosen crafter or incompatible pairing can produce a **failed craft** (core destroyed or a weak item), a **corrupted item** (works, but with nightmares, mana bleeding, odd compulsions), or an **unexpected result** (properties diverge from intent).
 
-**Value and Identity:** A crafted item becomes part of a hunter's identity. An artifact made from a B-Rift core by a master crafter is legendary and irreplaceable. Losing it is a genuine loss.
+**Value and Identity:** A crafted item becomes part of a hunter's identity. An artifact made from a B-Rank Rift core by a master crafter is legendary and irreplaceable. Losing it is a genuine loss.
 
 **In play:** Hunters seek out specialists, negotiate terms, and decide which cores to trade for money and which to craft into personal relics. A hunter's gear reflects their history.
 

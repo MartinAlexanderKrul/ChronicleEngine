@@ -9,11 +9,11 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.6"
+world_rule_profile: "Gatefall World Rule Profile 1.7"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0014
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0015
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 customization:
@@ -46,12 +46,12 @@ validation:
 
 # Campaign Policy
 
-Gatefall: Pendragon is the first campaign instance in the Gatefall world (`worlds/gatefall/`, start city Chicago). It is a **pre-System start**: the protagonist is an ordinary licensed E-rank hunter at campaign creation. The System (`GTF-OVR-001`, `GTF-OVR-002`) has not attached to him and grants nothing at creation — no level, no XP bar, no stat window, no Mana pool, no `/system` access. His five-stat creation array (Profile Section 4.1) is recorded as **latent**: it is civilian-range baseline, not yet read by any System, and describes only his ordinary capability under Chronicle Engine's d100 resolution and Gatefall's E-band (40) health.
+Gatefall: Pendragon is the first campaign instance in the Gatefall world (`worlds/gatefall/`, start city Chicago). It is a **pre-System start**: the protagonist is an ordinary licensed E-Rank hunter at campaign creation. The System (`GTF-OVR-001`, `GTF-OVR-002`) has not attached to him and grants nothing at creation — no level, no XP bar, no stat window, no Mana pool, no `/system` access. His five-stat creation array (Profile Section 4.1) is recorded as **latent**: it is civilian-range baseline, not yet read by any System, and describes only his ordinary capability under Chronicle Engine's d100 resolution and Gatefall's E-Rank (40) health.
 
 Alexander Pendragon is the confirmed custom protagonist for this instance. His background, stats, funds, debt, and starting affiliation are derived from the confirmed custom-character proposal and Profile Sections 4.1, 9.4, and 12.6.
 
 **The System's onset is not scheduled, foreshadowed, or announced by this configuration.** It arises from play under Profile Section 14.7 (the Onset Sequence); the profile's onset-timing ruling bounds it — **no later than the resolution of the protagonist's first genuine fight** — and within that bound, the Runtime determines the precipitating moment causally from play.
 
-**No posted E/D Gate contract may ever be offered to the protagonist as a solo bid.** Profile Section 9.4 sets a five-hunter posting floor on every board (BGM auction, co-op desk, guild dispatch) for E/D contracts, with no exception for an unconfirmed Gate or anything assessed D or above; insurance is void solo. Any contract the Runtime offers arrives as a crew slot.
+**No posted E-Rank/D-Rank Gate contract may ever be offered to the protagonist as a solo bid.** Profile Section 9.4 sets a five-hunter posting floor on every board (BGM auction, co-op desk, guild dispatch) for E-Rank/D-Rank contracts, with no exception for an unconfirmed Gate or anything assessed D or above; insurance is void solo. Any contract the Runtime offers arrives as a crew slot.
 
 No gameplay scene begins until the player receives the spoiler-safe briefing and confirms readiness.

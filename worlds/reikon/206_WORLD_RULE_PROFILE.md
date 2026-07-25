@@ -1,26 +1,28 @@
-# Reikon — World Rule Profile 0.10
+# Reikon — World Rule Profile 0.11
 
 **File:** `worlds/reikon/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
-**Profile Version:** 0.10
+**Profile Version:** 0.11
 **Engine Compatibility:** 0.2.0; Data Model 0.1.3
 **Status:** Active
-**Compatibility Status:** frozen (2026-07-23; Rules Section 14.6, Decision 074) — version 0.10 is an immutable behavioral contract and the first frozen World Rule Profile. Changing any declared override behavior now requires version 0.11 or later, classified additive or migrating. Checkpoints 0002–0017 were captured under unfrozen workshop-draft versions 0.1–0.8 and surface that warning on restoration.
+**Compatibility Status:** frozen at version 0.11 (2026-07-25; Rules Section 14.6, Decision 074). Version 0.11 is an **additive terminology advance** over frozen 0.10: Reikon's single E-Rank–S-Rank classification is now called **Rank** everywhere, its values are rendered **E-Rank, D-Rank, C-Rank, B-Rank, A-Rank, and S-Rank**, and derived identifiers use `effective_rank` and `rank_health`. No stored field, threshold, magnitude, probability, price, or resolved outcome changes. Checkpoints 0002–0017 remain immutable workshop-draft captures under versions 0.1–0.8; restoration surfaces that warning, adopts the intervening profile declarations at readiness, and normalizes only the mutable presentation.
 
-**0.10 authors the Rift threat model in Section 13 (owner-directed world authoring; Decision 062), closing playtest findings PT-002 and PT-003 (`worlds/reikon/270_PLAYTEST_BACKLOG.md`).** A Rift is now **populated and its core guarded by default** — emptiness becomes an authored, logged exception, never the absence of authoring (Section 12.7's discipline applied to threat). An assignment carries an **assessed grade and a confidence**, and an unconfirmed Rift's **true grade is arbitrated on the die at first contact** — weighted so it can be a full grade worse — instead of defaulting benign (Decision 060). An under-assessed or anomalous Rift is exactly an existing intervention trigger (Section 9.6), so danger arises *causally*, never on a drama timer (Decision 003; PT-001). It reuses grade and `band_health` (Sections 3.1, 6.4); no bestiary, spawn table, or map subsystem (Decision 020). A Bearer whose Perception reaches 16 reads a Rift's true grade himself (Section 12.3), converting *unconfirmed* to *confirmed* by capability rather than by default.
+**0.10 → 0.11 compatibility treatment.** Preserve every stored value and all resolved canon. `effective_rank` and `rank_health` are derived rule identifiers, not stored campaign fields, so adoption requires no ledger migration and no recomputation. Re-render affected interfaces with canonical Rank terminology and record the additive-upgrade acknowledgement in the next promoted checkpoint.
+
+**0.10 authors the Rift threat model in Section 13 (owner-directed world authoring; Decision 062), closing playtest findings PT-002 and PT-003 (`worlds/reikon/270_PLAYTEST_BACKLOG.md`).** A Rift is now **populated and its core guarded by default** — emptiness becomes an authored, logged exception, never the absence of authoring (Section 12.7's discipline applied to threat). An assignment carries an **assessed Rank and a confidence**, and an unconfirmed Rift's **true Rank is arbitrated on the die at first contact** — weighted so it can be a full Rank worse — instead of defaulting benign (Decision 060). An under-assessed or anomalous Rift is exactly an existing intervention trigger (Section 9.6), so danger arises *causally*, never on a drama timer (Decision 003; PT-001). It reuses Rank and `rank_health` (Sections 3.1, 6.4); no bestiary, spawn table, or map subsystem (Decision 020). A Bearer whose Perception reaches 16 reads a Rift's true Rank himself (Section 12.3), converting *unconfirmed* to *confirmed* by capability rather than by default.
 
 **0.9 authors the missing Stat payoffs for Power, Speed, and Perception (owner-directed world authoring; Decision 062), closing the gap Section 4.2 recorded under 0.8.** Law VII permits only *off-die magnitude* to be uncapped, so the three formulas split on that line:
 
-- **Power** gains an uncapped, off-die **physical-damage magnitude** (Section 6.4) — the melee counterpart of Ability Strength, and the one of the three that rides the band ladder, so like Endurance's `max_health` it is meaningful without bound.
+- **Power** gains an uncapped, off-die **physical-damage magnitude** (Section 6.4) — the melee counterpart of Ability Strength, and the one of the three that rides the Rank ladder, so like Endurance's `max_health` it is meaningful without bound.
 - **Speed** and **Perception** each gain a **+1-capped, domain-scoped** die contribution (Section 6.3): Speed on physical-reactive actions, Perception on contested detection. They cap for the same Law VII reason Mana Affinity does, and they bind *disjoint* action domains, so no single roll ever draws more than +1 from Stats.
-- **Perception** additionally gains an off-die awareness unlock (Section 12.3): at 16+ the Bearer appraises cores and reads threat grades himself — otherwise a specialist-only skill.
+- **Perception** additionally gains an off-die awareness unlock (Section 12.3): at 16+ the Bearer appraises cores and reads threat Ranks himself — otherwise a specialist-only skill.
 
 The honest consequence, recorded rather than hidden: uncapping the stored Stat number (0.8) pays off *without bound* only for **Power and Endurance**; Speed, Perception, and Mana Affinity remain die-capped and bank past their relevant range. This change reads already-stored Stat values and derives at use (Section 11), so it needs no ledger or character-sheet edit; a campaign adopts it as an ordinary profile-version bump at its next readiness gate (Section 14.4).
 
 **0.8 removes the 20-point Stat cap and raises the Ascension point rate to 5 in Sections 4.1–4.2 (`EVT-000045`), applied retroactively.** Stats now grow with no upper bound, the same "never a dead level" philosophy already governing the Mana pool curve (Section 3.2) — but uncapping the stored number does not uncap what it does: Mana Affinity's contribution to modifier steps stays fixed at +1 forever (Section 6.3), because Law VII forbids anything more generous, full stop. Endurance already has a real uncapped payoff (`max_health`, Section 7.1); Power, Speed, and Perception do not, and that gap is recorded rather than invented, under the same discipline Section 12.7 applies to unpriced goods.
 
-**0.7 authors the Rift-clear milestone XP magnitude in Section 8.2 (`EVT-000044`).** Section 8.2 always promised "a larger milestone sum" for clearing a Rift's core but never specified one; `EVT-000043` (Checkpoint 0014) flagged the gap and deliberately withheld an invented number. This revision fills it: the milestone is a flat ×10 multiplier on the clearing Rift's grade baseline, awarded once per Rift clear alongside ordinary per-kill XP. The formula applies prospectively to future clears and, at owner discretion, retroactively to already-played ones without recalculating any sealed checkpoint (Rules Section 5.2; `EVT-000043`'s own terms).
+**0.7 authors the Rift-clear milestone XP magnitude in Section 8.2 (`EVT-000044`).** Section 8.2 always promised "a larger milestone sum" for clearing a Rift's core but never specified one; `EVT-000043` (Checkpoint 0014) flagged the gap and deliberately withheld an invented number. This revision fills it: the milestone is a flat ×10 multiplier on the clearing Rift's Rank baseline, awarded once per Rift clear alongside ordinary per-kill XP. The formula applies prospectively to future clears and, at owner discretion, retroactively to already-played ones without recalculating any sealed checkpoint (Rules Section 5.2; `EVT-000043`'s own terms).
 
 **0.6 adds recurrent System interventions and Bearer succession in Sections 9.6–9.7.** The System is a patient world force oriented toward producing a stronger Bearer, not toward keeping the current one safe. At declared triggers it may remain silent, issue a directive, grant a finite technique, open a trial Rift, or rarely displace the Bearer into one. Every boon and trial has exact rules; XP still requires genuine resolved challenge. If the Bearer dies, that campaign ends and the System eventually selects another Bearer in the same world-line. The 0.5 finite-anomaly contract remains unchanged.
 
@@ -84,23 +86,23 @@ Mana is **tracked canonical state** (Decision 057). It is computed, not narrated
 
 **Pool is capacity; Mana Affinity is control.** They are different quantities and must not be conflated. The pool is how much you hold. Mana Affinity (a Stat, `n/20`) is how well you wield it. Allocating a point to Mana Affinity sharpens control; it does **not** enlarge the pool.
 
-## 3.1 Pool and Rank Bands
+## 3.1 Pool and Ranks
 
-Official Rank is a band of pool capacity, measured at Awakening. Bands are contiguous and non-overlapping.
+Official Rank is determined by pool capacity measured at Awakening. The six Ranks are contiguous and non-overlapping.
 
-| Rank | Mana pool | Typical | Baseline monster Health at this grade (Section 6.4) |
+| Rank | Mana pool | Typical | Baseline monster Health at this Rank (Section 6.4) |
 |------|-----------|---------|------|
-| **E** | 5–15 | ~10 | 30 |
-| **D** | 16–45 | ~28 | 82 |
-| **C** | 46–120 | ~80 | 227 |
-| **B** | 121–300 | ~200 | 623 |
-| **A** | 301–750 | ~500 | 1,715 |
-| **S** | 751+ | ~1,200 | 4,715 |
+| E-Rank | 5–15 | ~10 | 30 |
+| D-Rank | 16–45 | ~28 | 82 |
+| C-Rank | 46–120 | ~80 | 227 |
+| B-Rank | 121–300 | ~200 | 623 |
+| A-Rank | 301–750 | ~500 | 1,715 |
+| S-Rank | 751+ | ~1,200 | 4,715 |
 | **Anomalous** | unmeasurable, unstable, or refuses assessment | — | — |
 
 The band typicals form a geometric ladder of roughly **×2.75 per band**. Every **capability** scale in this profile — pool growth, monster Health, XP awards — rides that same ladder. This is not decoration: it is what keeps a Bearer's progression, the world's threats, and the XP curve in fixed proportion at every Rank.
 
-**The economy does not ride it.** Core value climbs **×5 per grade** (Section 12.1). That divergence is deliberate: capability scales with what a threat takes to fight, and value scales with what a core can be made into. They are different questions, and forcing them onto one ladder would make a grade's worth an accident of its danger.
+**The economy does not ride it.** Core value climbs **×5 per Rank** (Section 12.1). That divergence is deliberate: capability scales with what a threat takes to fight, and value scales with what a core can be made into. They are different questions, and forcing them onto one ladder would make a Rank's worth an accident of its danger.
 
 ## 3.2 Pool Growth — Bearer Only
 
@@ -128,22 +130,22 @@ The result is that early levels add a point and late levels add dozens, literall
 
 The maximum is canonical state, recorded with the Ascension event that caused it, before it is surfaced.
 
-**Band crossings for a Bearer opening at 13** (exact, from the formula):
+**Rank crossings for a Bearer opening at 13** (exact, from the formula):
 
 | Level | Pool | Assesses into |
 |-------|------|---------------|
-| 1 | 13 | E |
-| **4** | **16** | **D** |
-| 18 | 30 | D |
-| **27** | **46** | **C** |
-| 36 | 72 | C |
-| **47** | **123** | **B** |
-| 54 | 173 | B |
-| **66** | **310** | **A** |
-| 72 | 415 | A |
-| **85** | **783** | **S** |
-| 90 | 1,000 | S |
-| 100 | 1,628 | S |
+| 1 | 13 | E-Rank |
+| **4** | **16** | D-Rank |
+| 18 | 30 | D-Rank |
+| **27** | **46** | C-Rank |
+| 36 | 72 | C-Rank |
+| **47** | **123** | B-Rank |
+| 54 | 173 | B-Rank |
+| **66** | **310** | A-Rank |
+| 72 | 415 | A-Rank |
+| **85** | **783** | S-Rank |
+| 90 | 1,000 | S-Rank |
+| 100 | 1,628 | S-Rank |
 
 One band per ~20 levels, and Level 90 lands in S — making the world's existing claim that "as you approach Level 90+ your power approaches S-Rank capability" literally true of the pool rather than a figure of speech.
 
@@ -154,7 +156,7 @@ One band per ~20 levels, and Level 90 lands in S — making the world's existing
 - **Resting:** 1 mana per 10 seconds (6/minute).
 - **Active:** 1 mana per 30 seconds while moving, fighting, or under threat.
 - **Mana potion:** a vial holds **20 mana**, drunk in half-doses of **10**. Nothing is wasted — the vial keeps what you do not drink, indefinitely, and a draw never exceeds your shortfall.
-- **Rift cores:** consuming a core restores mana quickly (quantity by grade) and is dangerous.
+- **Rift cores:** consuming a core restores mana quickly (quantity by Rank) and is dangerous.
 
 Recovery **does not scale with the pool**. Deep pools take proportionally longer to refill, which is why high-Rank hunters carry potions and low-Rank hunters carry patience.
 
@@ -203,7 +205,7 @@ One point raises one stat by 1.
 
 - **Endurance** already has a real, uncapped, off-die payoff: it feeds `max_health` (Section 7.1) at every point, forever. Removing its ceiling is immediately meaningful with no further authoring needed.
 - **Mana Affinity's contribution to modifier steps stays fixed at a maximum of +1**, exactly as Section 6.3 already specifies, no matter how high the raw number climbs. That ceiling is not this profile's to move: Section 6.3 exists because anything more generous would walk the net modifier to +3, where the die stops deciding outcomes — which Law VII (Fairness), an Engine Law, forbids outright and no World Rule Profile can override (Rules Section 14.3). Points banked past the die-relevant range are legitimately held but have no further authored effect today.
-- **Power, Speed, and Perception are authored in 0.9.** Power feeds an uncapped, off-die physical-damage magnitude (Section 6.4); Speed and Perception each contribute a +1-capped, domain-scoped die step (Section 6.3), and Perception adds an off-die awareness unlock at 16+ (Section 12.3). Only **Power** — like Endurance — is uncapped-meaningful, because only a band-riding magnitude can be; Speed and Perception cap for the Law VII reason Mana Affinity does, and bank past their relevant range.
+- **Power, Speed, and Perception are authored in 0.9.** Power feeds an uncapped, off-die physical-damage magnitude (Section 6.4); Speed and Perception each contribute a +1-capped, domain-scoped die step (Section 6.3), and Perception adds an off-die awareness unlock at 16+ (Section 12.3). Only **Power** — like Endurance — is uncapped-meaningful, because only a Rank-riding magnitude can be; Speed and Perception cap for the Law VII reason Mana Affinity does, and bank past their relevant range.
 
 ## 4.3 Ability Sub-Stats
 
@@ -253,9 +255,9 @@ Base values at zero Efficiency allocation:
 
 | Ability | Base cost | Effect (Section 6.4) |
 |---------|-----------|--------|
-| Fireball | 12 | **1.0×** band Health, area — split across targets in the blast; 2-second cast |
+| Fireball | 12 | **1.0×** Rank Health, area — split across targets in the blast; 2-second cast |
 | Flame Shield | **2 / second** | **50%** damage reduction while sustained |
-| Combustion Touch | 6 | **1.5×** band Health, single target, requires contact |
+| Combustion Touch | 6 | **1.5×** Rank Health, single target, requires contact |
 | Endurance Surge | 10 | **+1 modifier step** to physical actions, 60 seconds |
 | Reinforced Body | **0** | **20%** physical damage reduction, passive, permanent |
 
@@ -287,21 +289,21 @@ Growth is earned through genuine challenge. Trivial, no-stakes repetition is not
 
 Level does not tilt fair fights. **It eliminates unfair ones.**
 
-The Bearer's **effective band** is the Rank band his *current* pool falls in (Section 3.1) — not his certified Rank. The challenge's band is its Rift or creature grade. Compare them:
+The Bearer's **effective Rank** is the Rank his *current* pool falls in (Section 3.1) — not his certified Rank. The challenge's Rank is its Rift or creature Rank. Compare them:
 
-| Band gap (Bearer vs challenge) | Resolution |
+| Rank gap (Bearer vs challenge) | Resolution |
 |---|---|
-| **≥ 2 bands up** | **No roll. Automatic success** (Rules Section 4.2 — "reliable competence") |
-| 1 band up | Roll, **+1** step |
-| Same band | Roll, **0** steps |
-| 1 band down | Roll, **−1** step |
-| ≥ 2 bands down | Roll at **−2/−3**, or automatic failure where it violates established reality |
+| **≥ 2 Ranks up** | **No roll. Automatic success** (Rules Section 4.2 — "reliable competence") |
+| 1 Rank up | Roll, **+1** step |
+| Same Rank | Roll, **0** steps |
+| 1 Rank down | Roll, **−1** step |
+| ≥ 2 Ranks down | Roll at **−2/−3**, or automatic failure where it violates established reality |
 
-This is Reikon's declared application of Rules Section 4.2, which already grants automatic success where "the character has already demonstrated reliable competence." A Level 100 Bearer (pool 1,628, S band) throwing Fireball at an E-grade Broodling is **not a roll he wins — it is not a roll**. His Fireball's own level is irrelevant to that; Ability level sets cost and magnitude, never whether the thing lands.
+This is Reikon's declared application of Rules Section 4.2, which already grants automatic success where "the character has already demonstrated reliable competence." A Level 100 Bearer (pool 1,628, S-Rank) throwing Fireball at an E-Rank Broodling is **not a roll he wins — it is not a roll**. His Fireball's own level is irrelevant to that; Ability level sets cost and magnitude, never whether the thing lands.
 
 **This is why level does not buy modifier steps.** An "automatic success" expressed as a forced high roll would still be read against the natural roll, and Decision 052's critical tails cannot be modified away — a natural 01–05 would still fumble. Not rolling avoids that entirely, and it is already legal under the engine as written.
 
-At a **gap of 0 the fight is fair and the tails are live**: an S-band Bearer in an S-grade Rift can fumble, and can die. This is what makes the world's own claim true — at high Rank, "the pool stops being the limit; the Rift does."
+At a **gap of 0 the fight is fair and the tails are live**: an S-Rank Bearer in an S-Rank Rift can fumble, and can die. This is what makes the world's own claim true — at high Rank, "the pool stops being the limit; the Rift does."
 
 ## 6.3 Modifier Steps
 
@@ -309,7 +311,7 @@ Steps compose per Rules Section 4.4 and Decision 058: one step is **20 percentil
 
 | Source | Contribution |
 |---|---|
-| Band gap (Section 6.2) | −3 … +1 |
+| Rank gap (Section 6.2) | −3 … +1 |
 | Domain Stat — whichever the action's type selects (at most one) | 1–4 → **−1** · 5–15 → **0** · 16+ → **+1** |
 | Established circumstance | remainder |
 | **Net** | **capped ±3**; critical tails always live (Decision 052) |
@@ -320,7 +322,7 @@ Steps compose per Rules Section 4.4 and Decision 058: one step is **20 percentil
 - **Speed** — physical, time-critical *reactive* actions: dodging, closing or breaking distance, acting first in a contested exchange, flight and pursuit;
 - **Perception** — contested detection: searching, reading intent, spotting an ambush or an anomaly.
 
-The domains are disjoint, so a single roll draws **at most +1 from Stats** — the ±3 net budget is never walked by Stats alone. An action outside all three domains takes no Stat step. Each of the three uses the same band (`1–4 → −1 · 5–15 → 0 · 16+ → +1`) and, like Mana Affinity, banks with no further die effect past 16 (Section 4.2).
+The domains are disjoint, so a single roll draws **at most +1 from Stats** — the ±3 net budget is never walked by Stats alone. An action outside all three domains takes no Stat step. Each of the three uses the same Rank (`1–4 → −1 · 5–15 → 0 · 16+ → +1`) and, like Mana Affinity, banks with no further die effect past 16 (Section 4.2).
 
 **Allocation buys no steps.** Neither Ability sub-stat touches the die. Each domain Stat contributes at most **+1** across its entire range.
 
@@ -329,7 +331,7 @@ That ceiling is deliberate, and it is not stingy. One step is twenty percentile 
 ## 6.4 Damage
 
 ```
-damage = band_health(Bearer's effective band)
+damage = rank_health(Bearer's effective Rank)
        × ability_ratio                          (Section 5)
        × (1 + 0.10 × strength_points)           (Section 4.3)
        × band_multiplier(result)                (below)
@@ -338,18 +340,18 @@ damage = band_health(Bearer's effective band)
 
 **Result band multiplier:** partial success **0.5×** · success **1.0×** · critical success **2.0×**. This makes Decision 011's degrees of success explicit rather than narrated.
 
-**Baseline damage scales with the Bearer's own band** (`band_health` from Section 3.1's table). This is not a preference — it is forced. Anchor base damage at E-grade instead, and a Level 90 Bearer with 80 strength points does `30 × 9 = 270` against an S-grade's 4,715 Health: five percent of its health bar. Reaching parity from a fixed base would need ~1,570 points, or Level 785.
+**Baseline damage scales with the Bearer's own Rank** (`rank_health` from Section 3.1's table). This is not a preference — it is forced. Anchor base damage at E-Rank instead, and a Level 90 Bearer with 80 strength points does `30 × 9 = 270` against an S-Rank's 4,715 Health: five percent of its health bar. Reaching parity from a fixed base would need ~1,570 points, or Level 785.
 
-So the band supplies the baseline, and **strength is what makes him punch above his band** — which is the Bearer's entire premise.
+So the band supplies the baseline, and **strength is what makes him punch above his Rank** — which is the Bearer's entire premise.
 
-**A monster needs only a grade, never a stat block.** Its Health is its grade's value in Section 3.1; its baseline damage equals that same value. New creatures are authored by naming their grade. Reikon gains no bestiary and no tactical subsystem (Decision 020).
+**A monster needs only a Rank, never a stat block.** Its Health is its Rank's value in Section 3.1; its baseline damage equals that same value. New creatures are authored by naming their Rank. Reikon gains no bestiary and no tactical subsystem (Decision 020).
 
 ## 6.5 Physical (Non-Ability) Damage — Power
 
 A physical or weapon strike is not an Ability and costs no Mana. Its damage uses the same structure as Section 6.4, with **Power** filling the magnitude slot Ability Strength holds for casting:
 
 ```
-physical_damage = band_health(Bearer's effective band)
+physical_damage = rank_health(Bearer's effective Rank)
                 × physical_ratio                     (strike class, below)
                 × (1 + 0.10 × (power − 10))           (Power magnitude; uncapped, off-die)
                 × band_multiplier(result)             (Section 6.4)
@@ -358,9 +360,9 @@ physical_damage = band_health(Bearer's effective band)
 
 - **`physical_ratio` is the strike class:** a competent armed strike is **0.75×**, an unarmed or improvised strike **0.5×**. An exceptional weapon, relic, or Marked blade is established circumstance, authored where it exists — Reikon gains no weapon table (Decision 020).
 - **Power magnitude is measured from a neutral baseline of 10, not from Awakening.** At Power 10 a strike does its class rate; each point above adds 10%, each below subtracts 10%. This keeps the value closed-form from the *current* Stat alone, needing no stored Awakening basis, and it is uncapped and off-die exactly like Ability Strength (Section 4.3).
-- **Physical damage rides the Bearer's own band**, for the identical reason Ability damage does above: anchored anywhere else, high-level Power is worthless against high-grade Health. Power is what lets the sword punch above its band, the way Strength does the spell.
+- **Physical damage rides the Bearer's own Rank**, for the identical reason Ability damage does above: anchored anywhere else, high-level Power is worthless against high-Rank Health. Power is what lets the sword punch above its band, the way Strength does the spell.
 
-The trade is deliberate: a physical strike is **free but single-target and needs reach or contact**, where casting buys area, range, and burst at a Mana cost. That is what makes a trained fighter's Power a real alternative to spending the pool rather than a strictly worse one — and it is why Daedalus's Swordsmanship now scales instead of staying flavor. Against a same-band monster a competent strike at neutral Power lands ~2 hits; a critical, or invested Power, punches through in one.
+The trade is deliberate: a physical strike is **free but single-target and needs reach or contact**, where casting buys area, range, and burst at a Mana cost. That is what makes a trained fighter's Power a real alternative to spending the pool rather than a strictly worse one — and it is why Daedalus's Swordsmanship now scales instead of staying flavor. Against a same-Rank monster a competent strike at neutral Power lands ~2 hits; a critical, or invested Power, punches through in one.
 
 ---
 
@@ -378,21 +380,21 @@ max_health(L, End) = round(
 )
 ```
 
-Health must scale, or the model breaks: a Level 90 Bearer with a 1,000 mana pool and a Level 1 body would be killed by a single A-grade hit, and "Level 90 approaches S-Rank capability" would be false in the only way that matters.
+Health must scale, or the model breaks: a Level 90 Bearer with a 1,000 mana pool and a Level 1 body would be killed by a single A-Rank hit, and "Level 90 approaches S-Rank capability" would be false in the only way that matters.
 
 Daedalus opens at `awakening_health` 100, `awakening_End` 9 → 100 at Level 1.
 
-**Calibration.** Against a same-band monster striking for its grade's baseline damage (Section 6.4), the Bearer survives a consistent **2–3 hits** at every Rank, and **~3–4** with Reinforced Body:
+**Calibration.** Against a same-Rank monster striking for its Rank's baseline damage (Section 6.4), the Bearer survives a consistent **2–3 hits** at every Rank, and **~3–4** with Reinforced Body:
 
-| Level | End | Band | Health | Same-band hit | Hits survived (with RB) |
+| Level | End | Band | Health | Same-Rank hit | Hits survived (with RB) |
 |---|---|---|---|---|---|
-| 1 | 9 | E | 100 | 30 | 4.2 |
-| 27 | 15 | C | 462 | 227 | 2.5 |
-| 47 | 18 | B | 1,368 | 623 | 2.7 |
-| 66 | 20 | A | 3,695 | 1,715 | 2.7 |
-| 90 | 20 | S | 11,917 | 4,715 | 3.2 |
+| 1 | 9 | E-Rank | 100 | 30 | 4.2 |
+| 27 | 15 | C-Rank | 462 | 227 | 2.5 |
+| 47 | 18 | B-Rank | 1,368 | 623 | 2.7 |
+| 66 | 20 | A-Rank | 3,695 | 1,715 | 2.7 |
+| 90 | 20 | S-Rank | 11,917 | 4,715 | 3.2 |
 
-Flat by design: a same-band fight is lethal at every Rank. An S-grade Rift is exactly as dangerous to a Level 90 Bearer as an E-Rift was at Level 1 — which is what "the pool stops being the limit; the Rift does" has to mean if it means anything.
+Flat by design: a same-Rank fight is lethal at every Rank. An S-Rank Rift is exactly as dangerous to a Level 90 Bearer as an E-Rank Rift was at Level 1 — which is what "the pool stops being the limit; the Rift does" has to mean if it means anything.
 
 ## 7.2 Damage Reduction
 
@@ -485,29 +487,29 @@ T(L) = 1.4L² + 29L + 70          rounded to the nearest 10
 
 Reaching Level 90 costs **456,910 XP** cumulative. There is no level cap.
 
-## 8.2 Awards by Grade
+## 8.2 Awards by Rank
 
 A challenge's XP award rides the same ×2.75 ladder as everything else:
 
-| Grade | E | D | C | B | A | S |
+| Rank | E-Rank | D-Rank | C-Rank | B-Rank | A-Rank | S-Rank |
 |---|---|---|---|---|---|---|
 | XP | **~7** | ~19 | ~53 | ~145 | ~400 | ~1,100 |
 
-E-grade baselines, as established canon: **Broodling ≈ 6, Swarmer ≈ 8**. Clearing a Rift core awards a larger milestone sum, specified below.
+E-Rank baselines, as established canon: **Broodling ≈ 6, Swarmer ≈ 8**. Clearing a Rift core awards a larger milestone sum, specified below.
 
-**Rift-Clear Milestone (established `EVT-000044`).** Clearing a Rift's core — the act that collapses it, not merely killing what guards it — awards a one-time milestone bonus of **×10 the clearing Rift's grade baseline** from the table above, in addition to whatever per-kill XP was earned fighting through it:
+**Rift-Clear Milestone (established `EVT-000044`).** Clearing a Rift's core — the act that collapses it, not merely killing what guards it — awards a one-time milestone bonus of **×10 the clearing Rift's Rank baseline** from the table above, in addition to whatever per-kill XP was earned fighting through it:
 
-| Grade | E | D | C | B | A | S |
+| Rank | E-Rank | D-Rank | C-Rank | B-Rank | A-Rank | S-Rank |
 |---|---|---|---|---|---|---|
 | Milestone XP | **70** | 190 | 530 | 1,450 | 4,000 | 11,000 |
 
-The multiplier is flat across grades by design, so it scales automatically as the same ×2.75 ladder that governs everything else in this section moves — no separate table to maintain as new grades come into play. It is awarded once per Rift, at the exchange that resolves the clear (core extraction, collapse, or equivalent), never per kill and never per attempt. A Rift that is abandoned, sealed by someone else, or left uncleared awards no milestone.
+The multiplier is flat across Ranks by design, so it scales automatically as the same ×2.75 ladder that governs everything else in this section moves — no separate table to maintain as new Ranks come into play. It is awarded once per Rift, at the exchange that resolves the clear (core extraction, collapse, or equivalent), never per kill and never per attempt. A Rift that is abandoned, sealed by someone else, or left uncleared awards no milestone.
 
 **Award timing is immediate.** The exchange that resolves the challenge also adds its XP to canonical in-flight state, checks the threshold, and fires the notification defined in Section 9.5. There is no pending-XP state and no later `/system` reconciliation. If several creatures are resolved by one action, aggregate that action's award and notify once.
 
-Against the threshold curve, grade-appropriate content costs **~11 to ~93 kills per Ascension, averaging ~40**, across the whole span from Level 1 to Level 90 — no runaway and no wall at any Rank.
+Against the threshold curve, Rank-appropriate content costs **~11 to ~93 kills per Ascension, averaging ~40**, across the whole span from Level 1 to Level 90 — no runaway and no wall at any Rank.
 
-**The variance is the design, not noise in it.** Within a band the threshold keeps climbing while the award stays flat, so the grind tightens the longer he stays: cheap just after a band crossing, punishing just before the next. The pressure resolves upward. One grade up pays **×2.75** for a **−1 step** — so the moment his own band turns grindy, the arithmetic pushes him toward things that can kill him. That is the world doing the work: he cannot level without real ordeal because staying safe stops paying.
+**The variance is the design, not noise in it.** Within a Rank the threshold keeps climbing while the award stays flat, so the grind tightens the longer he stays: cheap just after a Rank crossing, punishing just before the next. The pressure resolves upward. One Rank up pays **×2.75** for a **−1 step** — so the moment his own Rank turns grindy, the arithmetic pushes him toward things that can kill him. That is the world doing the work: he cannot level without real ordeal because staying safe stops paying.
 
 It makes the anti-farming rule arithmetic rather than exhortation, too. Grinding Broodlings at Level 54 yields 7 XP against a 5,720 threshold: **817 kills per level**. The System cannot be farmed without ordeal because the numbers say so, not because a Runtime remembered a sentence.
 
@@ -539,7 +541,7 @@ The System has no freeform off-ledger reasoning. Its changes come only from decl
 Truthfulness, omniscience, and infallibility are three different properties, and conflating them is what makes an "always truthful" oracle impossible. The System is truthful *and* non-omniscient without contradiction, because its assertive domain is bounded:
 
 - **About the Bearer it is authoritative and correct.** It *is* him, quantified. His own state is not in doubt.
-- **About the world it may point, never describe.** "A hidden quest exists here" is a pointer. "The pack leader is a disguised A-rank" is a description. Pointing leaks no secret; describing bypasses Discovery (Law VI).
+- **About the world it may point, never describe.** "A hidden quest exists here" is a pointer. "The pack leader is a disguised A-Rank" is a description. Pointing leaks no secret; describing bypasses Discovery (Law VI).
 
 **Silence is not a lie.** Withholding, cryptic phrasing, and `[HIDDEN] ???` are honest: they assert that a thing exists without asserting what it is.
 
@@ -613,7 +615,7 @@ An intervention check occurs once at each eligible trigger:
 
 1. the first safe exchange of a new in-fiction day;
 2. immediately after an Ascension exchange has fully settled; or
-3. first contact with a new Rift grade, a structurally anomalous Rift feature, or a threat above the Bearer's current effective band.
+3. first contact with a new Rift Rank, a structurally anomalous Rift feature, or a threat above the Bearer's current effective Rank.
 
 The same circumstance triggers only one check. Never make more than one intervention check in one exchange. Roll d100 and record an intervention only when one occurs:
 
@@ -731,7 +733,7 @@ State created under these overrides is carried as a **typed domain extension blo
 
 ```yaml
 system:
-  official_rank: <E|D|C|B|A|S|Anomalous>   # certified; not what he is
+  official_rank: <E | D | C | B | A | S | Anomalous>   # certified; not what he is
   level: <n>
   xp: <n>                                   # current, against T(level)
   unspent_points: <n>
@@ -764,7 +766,7 @@ system:
 
 Recorded: **allocations, Awakening basis values, current pools, recovery modes/care/severity, fractional recovery remainders, the intervention silence counter, and any active finite intervention.** Those are the facts that cannot be recomputed from static character state.
 
-Never recorded: `max_mana`, `max_health`, ability `cost`, ability `level`, `magnitude`, `next_threshold`, effective band. Every one is derived from the allocations above and the formulas in this document. Storing any of them creates a second representation that can drift from its source — the exact failure Decision 051 forbids and Section 10 rule 1 restates.
+Never recorded: `max_mana`, `max_health`, ability `cost`, ability `level`, `magnitude`, `next_threshold`, effective Rank. Every one is derived from the allocations above and the formulas in this document. Storing any of them creates a second representation that can drift from its source — the exact failure Decision 051 forbids and Section 10 rule 1 restates.
 
 `current_mana`, `mana_recovery_remainder_seconds`, `current_health`, the Health-recovery fields, `intervention_silent_checks`, and `active_intervention` **are** recorded because they are not derivable: they are the result of play.
 
@@ -776,54 +778,54 @@ Reikon has two media of exchange, and this section is authoritative on both. It 
 
 ## 12.1 The Core Unit — Appraised Value
 
-The **unit** is the appraised value of one E-core. Core grades form a ×5 ladder:
+The **unit** is the appraised value of one E-Rank core. Core Ranks form a ×5 ladder:
 
-| Grade | Appraised value |
+| Rank | Appraised value |
 |-------|-----------------|
-| E-core | 1 unit |
-| D-core | 5 units |
-| C-core | 25 units |
-| B-core | 125 units |
-| A-core | 625 units |
-| S-core | 3125 units |
+| E-Rank core | 1 unit |
+| D-Rank core | 5 units |
+| C-Rank core | 25 units |
+| B-Rank core | 125 units |
+| A-Rank core | 625 units |
+| S-Rank core | 3125 units |
 
-This is the economy's own ladder and is **deliberately not** the ×2.75 band ladder that Section 3.1 uses for pools, Health, and XP. Threat scales with what it takes to fight; value scales with what a core can be made into. They are different questions and they do not track.
+This is the economy's own ladder and is **deliberately not** the ×2.75 Rank ladder that Section 3.1 uses for pools, Health, and XP. Threat scales with what it takes to fight; value scales with what a core can be made into. They are different questions and they do not track.
 
-This ladder is what a core is **worth**. It is not what a core **fetches**. Realizing it requires someone who can tell the grades apart (12.3).
+This ladder is what a core is **worth**. It is not what a core **fetches**. Realizing it requires someone who can tell the Ranks apart (12.3).
 
-Where a ledger says "cores" without a grade — including `120_INVENTORY_AND_OWNERSHIP.md`'s core purse — it means **E-cores**, one unit each. A purse of 61 cores is 61 units.
+Where a ledger says "cores" without a Rank — including `120_INVENTORY_AND_OWNERSHIP.md`'s core purse — it means **E-Rank cores**, one unit each. A purse of 61 cores is 61 units.
 
 ## 12.2 Coin: the Vell, and the Universal Rate
 
 The Aldish Republic mints the **vell**. It is the civilian currency: wages outside hunting, rent, food, and ordinary goods are priced in vells, and every shop takes them.
 
-**The universal rate is 1 core = 3 vells.** Any core, any grade, anywhere, from any counter that takes cores at all — a provisioner, a tavern, a landlord, a carter. It is the Republic's posted conversion, everyone honors it, and no one asks what the core came from. A hunter with cores and no vells is never stuck and never needs an exchange first.
+**The universal rate is 1 core = 3 vells.** Any core, any Rank, anywhere, from any counter that takes cores at all — a provisioner, a tavern, a landlord, a carter. It is the Republic's posted conversion, everyone honors it, and no one asks what the core came from. A hunter with cores and no vells is never stuck and never needs an exchange first.
 
 The rate is **flat because the counter is blind.** To an ordinary merchant a core is a core: a dense crystalline residue of no distinguishable origin, worth taking because industry always buys them. He is not equipped to know whether the thing in his palm came off a Broodling or something that killed a B-Rank team, and he prices accordingly — one flat rate, no questions, no risk to him.
 
-Note what that means, because it is the whole shape of Reikon's economy: **3 vells is exactly par for an E-core** (1 unit = 3 vells). For the core a hunter actually carries by the fistful, the universal rate is honest and there is nothing to resent. Every grade above E, it is a robbery the merchant is not even aware of committing.
+Note what that means, because it is the whole shape of Reikon's economy: **3 vells is exactly par for an E-Rank core** (1 unit = 3 vells). For the core a hunter actually carries by the fistful, the universal rate is honest and there is nothing to resent. Every Rank above E, it is a robbery the merchant is not even aware of committing.
 
 Cores still trade above coin and always have, because a core is not only money — it is feedstock for medicine, industry, and the crafting of Marked relics, so industrial demand sits under its price permanently and coin has no such floor. That is why the Association quotes a salary in cores and a landlord quotes rent in vells.
 
 ## 12.3 Appraisal and the Specialist Premium
 
-A core carries its **origin** in its structure — which creature died to leave it, and therefore its grade. Reading that origin is a **specialist skill**, and only where someone holds it does a core fetch the ladder in 12.1.
+A core carries its **origin** in its structure — which creature died to leave it, and therefore its Rank. Reading that origin is a **specialist skill**, and only where someone holds it does a core fetch the ladder in 12.1.
 
 **Who can appraise:** Association core desks, Meridian Guild buyers, dedicated trade stations that keep an appraiser, Institute researchers, and the fences of the gray market. **Who cannot:** everyone else — the general provisioner, the tavern, the landlord, the hunter himself unless canon establishes he learned it.
 
-**The Bearer's own path: Perception.** A System Bearer whose **Perception reaches 16** reads a core's origin and a creature or Rift's grade himself — the self-appraisal this section otherwise reserves to specialists, and the off-die half of Perception's payoff (Section 4.2). Below 16 he is like any other hunter: he sees a core, not its grade; he faces a creature, not a known grade. At 16+ an uncontested read is automatic (No-Roll Zone, Section 6.2); a deliberately disguised or anomalous origin is still contested and rolls, with Perception's +1 (Section 6.3). This is knowledge, not power — it tells him what he holds and what he faces, never whether his strike lands (Section 6.1).
+**The Bearer's own path: Perception.** A System Bearer whose **Perception reaches 16** reads a core's origin and a creature or Rift's Rank himself — the self-appraisal this section otherwise reserves to specialists, and the off-die half of Perception's payoff (Section 4.2). Below 16 he is like any other hunter: he sees a core, not its Rank; he faces a creature, not a known Rank. At 16+ an uncontested read is automatic (No-Roll Zone, Section 6.2); a deliberately disguised or anomalous origin is still contested and rolls, with Perception's +1 (Section 6.3). This is knowledge, not power — it tells him what he holds and what he faces, never whether his strike lands (Section 6.1).
 
 | Where the core is sold | What it fetches |
 |------------------------|-----------------|
-| Any ordinary counter (unappraised) | **3 vells, flat, whatever its grade** (12.2) |
-| A specialist station (appraised) | Its grade's appraised value (12.1), less the station's spread and whatever else applies (12.4) |
+| Any ordinary counter (unappraised) | **3 vells, flat, whatever its Rank** (12.2) |
+| A specialist station (appraised) | Its Rank's appraised value (12.1), less the station's spread and whatever else applies (12.4) |
 | A gray-market fence (appraised, no questions) | 10–20% below appraised value |
 
 A fence pays below the desks and above the blind counter, and that gap is the point: **a fence can appraise.** That is what makes him a fence rather than a shopkeeper, and why stolen cores flow to people who ask no questions rather than to people who cannot tell what they are holding.
 
-The consequences are the world's, not the Runtime's to soften. Selling an A-core to a general provisioner is a transaction worth 1875 vells settled for 3, and **nothing warns the seller** — the merchant is not cheating him and does not know. Knowing where to sell is a real advantage, held by hunters with Association standing, Guild contacts, or the sense to ask. A newly licensed hunter has none of that by default.
+The consequences are the world's, not the Runtime's to soften. Selling an A-Rank core to a general provisioner is a transaction worth 1875 vells settled for 3, and **nothing warns the seller** — the merchant is not cheating him and does not know. Knowing where to sell is a real advantage, held by hunters with Association standing, Guild contacts, or the sense to ask. A newly licensed hunter has none of that by default.
 
-**Appraisal is information, and information cuts both ways.** An appraiser who reads a core's origin learns what it came from. One who identifies a core from a creature that should not have been in that Rift, at that grade, now knows something the seller may not have wanted known — and is under no obligation to keep it. Handing a core to a specialist is a disclosure as much as a sale.
+**Appraisal is information, and information cuts both ways.** An appraiser who reads a core's origin learns what it came from. One who identifies a core from a creature that should not have been in that Rift, at that Rank, now knows something the seller may not have wanted known — and is under no obligation to keep it. Handing a core to a specialist is a disclosure as much as a sale.
 
 **Appraisal can be uncertain.** A specialist may misread an unusual core, lowball a hunter he thinks is desperate, or recognize something he was never meant to see. Where the outcome is in doubt or opposed, the die resolves it (12.4).
 
@@ -839,7 +841,7 @@ When a price is **contested** — haggling, an appraisal, a gray-market sale, an
 
 ## 12.5 Posted Costs
 
-A price in **units** may be paid either way, and for E-cores the two are the same money: 1 E-core is 1 unit is 3 vells (12.2). A 2-unit potion costs two E-cores or six vells, and the seller does not care which. Paying a unit price with a *higher*-grade core at a blind counter is the 12.3 mistake — the counter takes it as one core, at 3 vells.
+A price in **units** may be paid either way, and for E-Rank cores the two are the same money: 1 E-Rank core is 1 unit is 3 vells (12.2). A 2-unit potion costs two E-Rank cores or six vells, and the seller does not care which. Paying a unit price with a *higher*-Rank core at a blind counter is the 12.3 mistake — the counter takes it as one core, at 3 vells.
 
 Hunter goods, in units:
 
@@ -878,12 +880,12 @@ Monthly base pay, in units, paid in cores (this profile governs Association base
 
 | Rank | Base salary |
 |------|-------------|
-| E | 50 units/month |
-| D | 200 units/month |
-| C | 800 units/month |
-| B | 3000 units/month |
-| A | 12000 units/month |
-| S | 60000 units/month |
+| E-Rank | 50 units/month |
+| D-Rank | 200 units/month |
+| C-Rank | 800 units/month |
+| B-Rank | 3000 units/month |
+| A-Rank | 12000 units/month |
+| S-Rank | 60000 units/month |
 
 This is the salary floor the world bible calls entry-level safety, and the word is **safety**, not comfort. 50 units is 150 vells. A cheap room and food take 37% of that; a decent apartment and food take 60%, leaving roughly 60 vells a month. That keeps potions on his belt (2 units, 6 vells) and buys little else: **quality armor** (40 units, 120 vells) is two months of saving every spare vell, and an **enchanted weapon** (150 units, 450 vells) is seven and a half. A licensed E-Rank hunter survives on base pay. He does not live well on it, and he does not equip himself on it quickly.
 
@@ -901,43 +903,43 @@ A price established by ruling in play is canon and is promoted like any other es
 
 A Rift is Reikon's unit of content and threat. This section authors what a Rift *contains* and how dangerous it *actually* is, so that "empty Rift" is a finding about the world and never the absence of authoring — the discipline Section 12.7 applies to price, applied to threat (playtest findings PT-002, PT-003).
 
-A Rift has a **grade** (E–S, or Anomalous), the same scale as pools, monsters, and cores (Section 3.1). Its grade sets the grade of what lives in it and what its core is worth.
+A Rift has a **Rank** (E-Rank–S-Rank, or Anomalous), the same scale as pools, monsters, and cores (Section 3.1). Its Rank sets the Rank of what lives in it and what its core is worth.
 
 ## 13.1 A Rift Is Populated by Default
 
-A Rift of grade G is populated, and its core is guarded. At minimum it holds:
+A Rift of Rank G is populated, and its core is guarded. At minimum it holds:
 
-- a **body of guardians** of grade G — the threats the Bearer fights through (grade-G Health and damage per Section 6.4; a creature needs only its grade);
-- a **core**, the clearing objective (Section 8.2), **guarded** by a stronger single threat at grade G — or **G+1** in a deep or anomalous Rift — the pack leader, the Breaker, the thing between the hunter and the collapse.
+- a **body of guardians** of Rank G — the threats the Bearer fights through (Rank-G Health and damage per Section 6.4; a creature needs only its Rank);
+- a **core**, the clearing objective (Section 8.2), **guarded** by a stronger single threat at Rank G — or **G+1** in a deep or anomalous Rift — the pack leader, the Breaker, the thing between the hunter and the collapse.
 
-The exact roster is authored to the scene the way monster damage is derived from a grade, not read from a spawn table. What is fixed is the **floor: a Rift is never unpopulated, and its core is never unguarded, by default.** Warehouse 7 — guardians, a core, a guardian on it — is the default shape, not a lucky one.
+The exact roster is authored to the scene the way monster damage is derived from a Rank, not read from a spawn table. What is fixed is the **floor: a Rift is never unpopulated, and its core is never unguarded, by default.** Warehouse 7 — guardians, a core, a guardian on it — is the default shape, not a lucky one.
 
-## 13.2 Assessed Grade, Confidence, and True Grade
+## 13.2 Assessed Rank, Confidence, and True Rank
 
-An assignment carries two things: an **assessed grade** and a **confidence** in that assessment. They are different facts, and the second is usually left implicit — which is the defect. A Rift's **true grade** is what its threats actually are, and it is resolved against the confidence, on the die where it is uncertain (Decision 060 — an uncertain world-fact is arbitrated, never defaulted favorable):
+An assignment carries two things: an **assessed Rank** and a **confidence** in that assessment. They are different facts, and the second is usually left implicit — which is the defect. A Rift's **true Rank** is what its threats actually are, and it is resolved against the confidence, on the die where it is uncertain (Decision 060 — an uncertain world-fact is arbitrated, never defaulted favorable):
 
-| Confidence | Source | True grade |
+| Confidence | Source | True Rank |
 |---|---|---|
 | **Confirmed** | Association-desk re-assessment, a specialist read, a prior clear | = assessed. No roll. |
 | **Assessed** | an ordinary posted assignment | mostly = assessed; roll a narrow ±1 spread |
-| **Unconfirmed** | a fresh report, an unlicensed tip, a first sighting | roll; real spread, weighted so it can be a full grade **worse** |
+| **Unconfirmed** | a fresh report, an unlicensed tip, a first sighting | roll; real spread, weighted so it can be a full Rank **worse** |
 
 For an **unconfirmed** Rift, roll d100 at first real contact:
 
-| d100 | True grade |
+| d100 | True Rank |
 |---:|---|
 | 01–15 | assessed **− 1**, or diminished — overrated, partly collapsed, thinned by a prior team. *An authored, logged reason (13.4), never free emptiness.* |
 | 16–65 | **= assessed** |
-| 66–90 | assessed **+ 1** — underrated; the fight is a band harder than posted |
+| 66–90 | assessed **+ 1** — underrated; the fight is a Rank harder than posted |
 | 91–100 | assessed **+ 1 with an anomalous feature**, or **+ 2** — a serious under-assessment; triggers the intervention check (Section 9.6) |
 
 The skew is the point: an unconfirmed Rift is *genuinely uncertain and tilted toward danger*, not reliably benign. An **assessed** Rift uses a tighter version of the same table — mostly the middle band, a narrow ±1; a **confirmed** Rift does not roll.
 
-**The Bearer can remove the uncertainty legitimately.** A Bearer whose Perception reaches 16 reads a Rift's true grade himself (Section 12.3), converting *unconfirmed* to *confirmed* for him before he commits — the uncertainty resolved by a capability he earned, not defaulted away.
+**The Bearer can remove the uncertainty legitimately.** A Bearer whose Perception reaches 16 reads a Rift's true Rank himself (Section 12.3), converting *unconfirmed* to *confirmed* for him before he commits — the uncertainty resolved by a capability he earned, not defaulted away.
 
 ## 13.3 Anomalies Arise Causally
 
-A Rift whose true grade exceeds its assessment by a full grade, or that carries a structurally anomalous feature, is **anomalous** — and anomalous Rifts are already an intervention-check trigger (Section 9.6: "a new Rift grade, a structurally anomalous Rift feature, or a threat above the Bearer's current effective band"). The threat model therefore plugs into the System's existing behavior rather than adding a mechanism: when an under-assessed Rift turns dangerous, that is exactly when the System stirs, and the danger is **caused** — an assessment that was wrong — never injected on a pacing clock (Decision 003; PT-001). The four D-grade Breakers guarding an E-Rift's core in Warehouse 7 were this case before it had a name.
+A Rift whose true Rank exceeds its assessment by a full Rank, or that carries a structurally anomalous feature, is **anomalous** — and anomalous Rifts are already an intervention-check trigger (Section 9.6: "a new Rift Rank, a structurally anomalous Rift feature, or a threat above the Bearer's current effective Rank"). The threat model therefore plugs into the System's existing behavior rather than adding a mechanism: when an under-assessed Rift turns dangerous, that is exactly when the System stirs, and the danger is **caused** — an assessment that was wrong — never injected on a pacing clock (Decision 003; PT-001). The four D-Rank Breakers guarding an E-Rank Rift's core in Warehouse 7 were this case before it had a name.
 
 ## 13.4 Emptiness Is an Authored Exception
 
@@ -945,4 +947,4 @@ A Rift is never empty by default. An empty, thinned, or drained Rift requires an
 
 ## 13.5 No Subsystem
 
-The model reuses what already exists: a grade (Section 3.1), grade-baselined Health and damage (Section 6.4), the intervention check (Section 9.6), and the die (Rules Section 4). A Rift names a grade, a confidence, and a roster authored to the scene within the populated floor. Reikon gains **no spawn table, no encounter or map layer, and no bestiary** (Decision 020) — the same restraint the economy (Section 12) and damage (Section 6.4) models keep. What changes is the default: populated and guarded, with real uncertainty on an unconfirmed grade, instead of silent and safe.
+The model reuses what already exists: Rank (Section 3.1), Rank-baselined Health and damage (Section 6.4), the intervention check (Section 9.6), and the die (Rules Section 4). A Rift names a Rank, a confidence, and a roster authored to the scene within the populated floor. Reikon gains **no spawn table, no encounter or map layer, and no bestiary** (Decision 020) — the same restraint the economy (Section 12) and damage (Section 6.4) models keep. What changes is the default: populated and guarded, with real uncertainty on an unconfirmed Rank, instead of silent and safe.

@@ -9,7 +9,7 @@ schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000050
-  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rift clear"
+  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
   record_time: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: campaign
@@ -166,7 +166,7 @@ canonical_state:
   condition: "No adverse condition established"
   capabilities: "Core fracture-pattern and structural-orientation research"
   personality: "Warm toward Daedalus and enthusiastic about field samples"
-  situation: "Shared progress across fifteen core grades and requested safe deep-core observations or samples. Now has one of the four harvested Breaker D-cores and Daedalus's chamber notes, routed to him by Kalens the same evening; his analysis has not yet been reported back to Daedalus."
+  situation: "Shared progress across fifteen core Ranks and requested safe deep-core observations or samples. Now has one of the four harvested Breaker D-Rank cores and Daedalus's chamber notes, routed to him by Kalens the same evening; his analysis has not yet been reported back to Daedalus."
 ```
 
 ```yaml
@@ -328,7 +328,7 @@ endpoints:
   - ENT-000071
 type: research-alliance
 qualities: "Former supervisor and field researcher. Trust is high and mutual, and the obligation runs both ways: Daedalus owes detailed basement observations, and Kalens undertook to keep him in the research loop. Channel: private by both parties' choice — Daedalus asked to consult Kalens directly rather than through the Institute's runner, and Kalens agreed and preferred it, giving his home address and a standing time window (ENT-000078) to call at the scholar's quarter on early evenings after the Institute closes. Standing obligation on Daedalus: anything that does not fit the standard pattern goes to Kalens the same day, ahead of any full report, his stated reason being that the Institute must know before the Vigil comes asking (ENT-000079)."
-state: "Active. The same-day obligation was MET AND HONOURED early on: Daedalus called on Kalens at his home the same evening, within the standing window, and gave him the complete basement findings — the four D-grade Breakers, the bonded core's measurements, and the failed extraction attempt. The research collaboration that followed succeeded fully: Kalens's Athenaeum contact, Marta's pulse-interval data, Soren's fracture analysis, and Daedalus's own follow-up finding (the framework's contact-point asymmetry) together supported a working resonance extraction, carried out successfully by Wren Ashcombe with Kalens observing. The core is now safely in Institute hands for long-term study."
+state: "Active. The same-day obligation was MET AND HONOURED early on: Daedalus called on Kalens at his home the same evening, within the standing window, and gave him the complete basement findings — the four D-Rank Breakers, the bonded core's measurements, and the failed extraction attempt. The research collaboration that followed succeeded fully: Kalens's Athenaeum contact, Marta's pulse-interval data, Soren's fracture analysis, and Daedalus's own follow-up finding (the framework's contact-point asymmetry) together supported a working resonance extraction, carried out successfully by Wren Ashcombe with Kalens observing. The core is now safely in Institute hands for long-term study."
 history: "Formed during the recovery-day consultation (EVT-000033) out of a pre-existing supervisor relationship from Daedalus's years as an Institute research assistant (REL-000041). Upgraded from the Institute's ordinary runner channel to a direct private one at Daedalus's request within the same conversation. Recorded in full by EVT-000035. The standing same-day obligation was honoured the same evening by EVT-000038."
 ```
 

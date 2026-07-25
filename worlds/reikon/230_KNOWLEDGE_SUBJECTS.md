@@ -84,7 +84,7 @@ canonical_state:
 
 ---
 
-## The Forging of Grades
+## The Forging of Ranks
 
 ```yaml
 id: ENT-000047
@@ -99,11 +99,11 @@ type: Discovery/Knowledge
 scope: local
 lifecycle: active
 aliases:
-  - name: "the forging of Grades"
+  - name: "the forging of Ranks"
     quality: current
 canonical_state:
-  claim: "Techniques for falsifying a hunter's official Grade and license without the underlying capability."
-  status: "Illegal; practiced by fixers such as Tallow (ENT-000039). Because a Grade is a recorded claim, not objective capability (Rules Section 2.2), a forged Grade can pass — until a Rift tests it."
+  claim: "Techniques for falsifying a hunter's official Rank and license without the underlying capability."
+  status: "Illegal; practiced by fixers such as Tallow (ENT-000039). Because a Rank is a recorded claim, not objective capability (Rules Section 2.2), a forged Rank can pass — until a Rift tests it."
 ```
 
 ---
@@ -149,7 +149,7 @@ provenance:
   record_time: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000041, ENT-000045]
 type: knowledge-state
-qualities: "Holder: the Hunters' Authority (pragmatist). State: agnostic-by-policy. It uses the Ledger and grades hunters; it does not ask what the Ledger is, and prefers the question unasked."
+qualities: "Holder: the Hunters' Authority (pragmatist). State: agnostic-by-policy. It uses the Ledger and Ranks hunters; it does not ask what the Ledger is, and prefers the question unasked."
 ```
 
 ```yaml
@@ -191,5 +191,5 @@ provenance:
   record_time: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000039, ENT-000047]
 type: knowledge-state
-qualities: "Holder: Tallow (practitioner). State: applied and monopolized. Can forge a Grade in practice; keeps the method close as leverage."
+qualities: "Holder: Tallow (practitioner). State: applied and monopolized. Can forge a Rank in practice; keeps the method close as leverage."
 ```

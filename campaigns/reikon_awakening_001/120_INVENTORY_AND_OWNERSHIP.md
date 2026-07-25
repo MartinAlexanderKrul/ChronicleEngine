@@ -9,7 +9,7 @@ schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000050
-  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rift clear"
+  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
   record_time: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: campaign
@@ -36,7 +36,7 @@ subjects:
   - ENT-000086
 ```
 
-All holdings are possessed by Daedalus (`ENT-000051`) and are carried on his person, currently in the tannery district just outside the collapsed E-Rift, save for the one D-core with Dr. Soren at the Institute.
+All holdings are possessed by Daedalus (`ENT-000051`) and are carried on his person, currently in the tannery district just outside the collapsed E-Rank Rift, save for the one D-Rank core with Dr. Soren at the Institute.
 
 Location is recorded as a region descriptor because carried inventory has no structural "on person" representation — the known limitation recorded as PA-002 in `docs/420_PROTOTYPE_ALPHA/423_ENGINE_IMPROVEMENT_BACKLOG.md`. Possession by `ENT-000051` is the authoritative fact; the descriptor follows the possessor.
 
@@ -209,7 +209,7 @@ schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000043
-  event_time: "Year 31 AR, Ashgate E-Rift closure"
+  event_time: "Year 31 AR, Ashgate E-Rank Rift closure"
   record_time: "2026-07-21T01:00:00Z"
 type: Resource
 subtype: currency-holding
@@ -219,7 +219,7 @@ aliases:
   - name: "Daedalus's starting core purse"
     quality: current
 canonical_state:
-  category: "Currency; 61 E-cores before the recovery purchase, minus 15 spent on four healing potions, two energy tonics, and wound dressing salve; plus 9 E-cores harvested from nine Ashgate Broodlings (2 in melee, 7 in the core chamber mop-up)"
+  category: "Currency; 61 E-Rank cores before the recovery purchase, minus 15 spent on four healing potions, two energy tonics, and wound dressing salve; plus 9 E-Rank cores harvested from nine Ashgate Broodlings (2 in melee, 7 in the core chamber mop-up)"
   condition: Excellent
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
@@ -279,7 +279,7 @@ canonical_state:
   possession: ENT-000051
   location: "carried by ENT-000051"
   quantity: 1
-  history: "Four purchased for 8 E-cores; one consumed during recovery training and two consumed during the Breaker engagement"
+  history: "Four purchased for 8 E-Rank cores; one consumed during recovery training and two consumed during the Breaker engagement"
 ```
 
 ## Energy Tonic Stack
@@ -307,7 +307,7 @@ canonical_state:
   possession: ENT-000051
   location: "carried by ENT-000051"
   quantity: 1
-  history: "Two purchased for 6 E-cores; one consumed before observing the Breaker formation"
+  history: "Two purchased for 6 E-Rank cores; one consumed before observing the Breaker formation"
 ```
 
 ## Wound Dressing Salve
@@ -362,7 +362,7 @@ canonical_state:
   ownership: "ENT-000051 (legal)"
   possession: ENT-000051
   location: "carried by ENT-000051"
-  contents: "Route sketch and Institute consultation notes; Breaker formation and behavior; burgundy core dimensions, three-second pulse, thermal emission, crystalline framework, eight-metre floor pattern, failed direct extraction, and the need for specialist severance. Hypotheses are marked unverified. The Institute notes record, per researcher: Kalens's observation checklist and his Vigil caution (ENT-000079), Soren's fracture-pattern theory across fifteen core grades and his request for a deep-core sample, and Marta's core-depth collapse correlation (ENT-000080) — closing with Daedalus's own reflection that he is gathering data now, not only clearing a Rift for pay."
+  contents: "Route sketch and Institute consultation notes; Breaker formation and behavior; burgundy core dimensions, three-second pulse, thermal emission, crystalline framework, eight-metre floor pattern, failed direct extraction, and the need for specialist severance. Hypotheses are marked unverified. The Institute notes record, per researcher: Kalens's observation checklist and his Vigil caution (ENT-000079), Soren's fracture-pattern theory across fifteen core Ranks and his request for a deep-core sample, and Marta's core-depth collapse correlation (ENT-000080) — closing with Daedalus's own reflection that he is gathering data now, not only clearing a Rift for pay."
 ```
 
 ## Kalens's Consultation Note
@@ -407,16 +407,16 @@ provenance:
   source: EVT-000038
   event_time: "Year 31 AR, evening consultation, the same day as the basement clear"
   record_time: "2026-07-20T06:30:00Z"
-  uncertainty: "Which of the four D-cores was handed over was not individually specified in play; this ledger records the ledge sentinel's as the one given by convention. Soren's actual findings from studying it are not yet established."
+  uncertainty: "Which of the four D-Rank cores was handed over was not individually specified in play; this ledger records the ledge sentinel's as the one given by convention. Soren's actual findings from studying it are not yet established."
 type: Resource
 subtype: monster-core
 scope: personal
 lifecycle: active
 aliases:
-  - name: "Midnight D-core from the ledge sentinel"
+  - name: "Midnight D-Rank core from the ledge sentinel"
     quality: current
 canonical_state:
-  category: "Appraised D-grade Rift-creature core; 5 E-core units"
+  category: "Appraised D-Rank Rift-creature core; 5 E-Rank core units"
   condition: Intact
   appearance: "Dark blue-black, angular, and warm with residual energy"
   ownership: "ENT-000051 (legal harvest; loaned for Institute analysis)"
@@ -441,10 +441,10 @@ subtype: monster-core
 scope: personal
 lifecycle: active
 aliases:
-  - name: "Indigo D-core from the flank guardian"
+  - name: "Indigo D-Rank core from the flank guardian"
     quality: current
 canonical_state:
-  category: "Appraised D-grade Rift-creature core; 5 E-core units"
+  category: "Appraised D-Rank Rift-creature core; 5 E-Rank core units"
   condition: Intact
   appearance: "Deep indigo and slightly smaller than the ledge sentinel's core"
   ownership: "ENT-000051 (legal harvest)"
@@ -469,10 +469,10 @@ subtype: monster-core
 scope: personal
 lifecycle: active
 aliases:
-  - name: "Violet-black D-core from the climbing guardian"
+  - name: "Violet-black D-Rank core from the climbing guardian"
     quality: current
 canonical_state:
-  category: "Appraised D-grade Rift-creature core; 5 E-core units"
+  category: "Appraised D-Rank Rift-creature core; 5 E-Rank core units"
   condition: Intact
   appearance: "Nearly black with faint violet undertones"
   ownership: "ENT-000051 (legal harvest)"
@@ -497,10 +497,10 @@ subtype: monster-core
 scope: personal
 lifecycle: active
 aliases:
-  - name: "Red-black D-core from the core guardian"
+  - name: "Red-black D-Rank core from the core guardian"
     quality: current
 canonical_state:
-  category: "Appraised D-grade Rift-creature core; 5 E-core units"
+  category: "Appraised D-Rank Rift-creature core; 5 E-Rank core units"
   condition: Intact
   appearance: "Largest of the four; near-black with deep red undertones and a distinct residual hum"
   ownership: "ENT-000051 (legal harvest)"
@@ -531,7 +531,7 @@ aliases:
   - name: "Ashgate Rift core"
     quality: current
 canonical_state:
-  category: "Extracted Rift core, distinct from monster-loot E-cores. Pulled cleanly from the Ashgate E-Rift's alcove housing (d100 88, success) with no bonding or resistance, unlike Warehouse 7's anomalous core. Appraised at the Association desk (d100 55, success) as an ordinary, unremarkable E-grade core with no bonding residue; sold for 24 vells rather than the 8-unit core-equivalent."
+  category: "Extracted Rift core, distinct from monster-loot E-Rank cores. Pulled cleanly from the Ashgate E-Rank Rift's alcove housing (d100 88, success) with no bonding or resistance, unlike Warehouse 7's anomalous core. Appraised at the Association desk (d100 55, success) as an ordinary, unremarkable E-Rank core with no bonding residue; sold for 24 vells rather than the 8-unit core-equivalent."
   condition: Intact
   appearance: "Fist-sized, pale-green, unremarkable in texture or warmth compared to Warehouse 7's burgundy anomaly"
   ownership: "Hunters' Authority / Association (purchased)"
@@ -581,9 +581,9 @@ schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000049
-  event_time: "Year 31 AR, tannery-district E-Rift clear"
+  event_time: "Year 31 AR, tannery-district E-Rank Rift clear"
   record_time: "2026-07-22T00:00:00Z"
-  uncertainty: "Unappraised. Whether it carries any value beyond an ordinary E-grade Rift core is unestablished. Why this Rift held no guardians at all is unestablished -- no Reikon rule requires a Rift to be guarded, so this is not a contradiction of canon, but no in-fiction explanation has been given either."
+  uncertainty: "Unappraised. Whether it carries any value beyond an ordinary E-Rank Rift core is unestablished. Why this Rift held no guardians at all is unestablished -- no Reikon rule requires a Rift to be guarded, so this is not a contradiction of canon, but no in-fiction explanation has been given either."
 type: Resource
 subtype: rift-core
 scope: personal
@@ -592,7 +592,7 @@ aliases:
   - name: "Tannery Rift core"
     quality: current
 canonical_state:
-  category: "Extracted Rift core, distinct from monster-loot E-cores. Pulled cleanly from an unguarded chamber (d100 92, legendary success) with no bonding or resistance. Its extraction triggered the Rift's collapse and earned the Rift-clear milestone XP under the newly authored World Rule Profile 0.7 formula (206 Section 8.2, EVT-000044), since the milestone rewards clearing the core regardless of guardian presence."
+  category: "Extracted Rift core, distinct from monster-loot E-Rank cores. Pulled cleanly from an unguarded chamber (d100 92, legendary success) with no bonding or resistance. Its extraction triggered the Rift's collapse and earned the Rift-clear milestone XP under the newly authored World Rule Profile 0.7 formula (206 Section 8.2, EVT-000044), since the milestone rewards clearing the core regardless of guardian presence."
   condition: Intact
   appearance: "Fist-sized, pale amber-yellow, no visible framework or bonding structure"
   ownership: "ENT-000051 (legal harvest, Association-sanctioned solo clear)"

@@ -3,7 +3,7 @@
 **Ledger:** Canonical Record (`011` Section 8) holding Gatefall's notable Character entities and their institutional memberships.
 **Status:** Active — instantiated as canonical world content (2026-07-22).
 
-Fourteen figures — twelve city figures (six in Chicago, six in Prague) and two **world-ranked S-ranks** appended below (the highest-ranked American and Brandhof's German ace) — each authored under the character depth law: every figure is a person mid-story, sitting inside a standing institutional tension and on a side of it, not a role-holder waiting to be queried. Each carries a **Want**, a **Fear/Flaw**, a **Secret**, an **Agenda (this month)**, and **Relationships** by identifier; a paragraph of voice and presence; and an Object Block. Secrets are written to be load-bearing: most connect to the standing tensions play can detonate — the three-way foreign siege of Karlov (the Karlov bid), the unpublished break-rate curve (the clock), the exposure and re-grading pipeline, the black-market flow of cores and artifacts westward out of Prague, and the contested politics of the World Ranking (Bible Section 3).
+Fourteen figures — twelve city figures (six in Chicago, six in Prague) and two **world-ranked S-ranks** appended below (the highest-ranked American and Brandhof's German ace) — each authored under the character depth law: every figure is a person mid-story, sitting inside a standing institutional tension and on a side of it, not a role-holder waiting to be queried. Each carries a **Want**, a **Fear/Flaw**, a **Secret**, an **Agenda (this month)**, and **Relationships** by identifier; a paragraph of voice and presence; and an Object Block. Secrets are written to be load-bearing: most connect to the standing tensions play can detonate — the three-way foreign siege of Karlov (the Karlov bid), the unpublished break-rate curve (the clock), the exposure and re-ranking pipeline, the black-market flow of cores and artifacts westward out of Prague, and the contested politics of the World Ranking (Bible Section 3).
 
 Clue-adjacent knowledge is carried only at the level of the World Bible's three planted clue-lines (the graveyard brand, the doubling break-rate chart, the audition's second mana signature). No figure holds or hints at the owner-only explanation beneath those clues.
 
@@ -59,15 +59,15 @@ subjects:
 
 ## Director Naomi Okafor — BGM Region V
 
-**Name / rank / role:** Naomi Okafor, C-rank awakened, long deskbound — her signature, **Still Room**, deadens the air of a closed space so that nothing said inside it carries, a gift the district's most careful conversations have quietly depended on for years. Regional Director of BGM Region V (ENT-000099), the federal appointee who sits over both the Grading Bench and the Auction Desk and answers to Washington for every published grade in the district.
+**Name / rank / role:** Naomi Okafor, C-Rank awakened, long deskbound — her signature, **Still Room**, deadens the air of a closed space so that nothing said inside it carries, a gift the district's most careful conversations have quietly depended on for years. Regional Director of BGM Region V (ENT-000099), the federal appointee who sits over both the Ranking Bench and the Auction Desk and answers to Washington for every published Rank in the district.
 
 **Want:** To get out of this chair without a break on her record — a clean exit into a national appointment, which means no Damen-Avenue-scale failure happening on her watch, ever.
 
 **Fear/Flaw:** She is a career administrator terrified of the one thing her instruments keep telling her and her mandate cannot let her say aloud, so she manages the fear by burying its evidence — and mistakes the burial for control.
 
-**Secret:** She holds the real, unpublished break-rate statistics, and she has reviewed incident-review logs from two anomalous clears in the district where the grading sensors read a Gate empty and then registered a *second mana signature that appeared only after entry* — as if the trial materialized around the hunters inside. She has kept the logs off the record and the analysis unfunded, because opening the question invites a panic she has no answer for and no budget to survive.
+**Secret:** She holds the real, unpublished break-rate statistics, and she has reviewed incident-review logs from two anomalous clears in the district where the ranking sensors read a Gate empty and then registered a *second mana signature that appeared only after entry* — as if the trial materialized around the hunters inside. She has kept the logs off the record and the analysis unfunded, because opening the question invites a panic she has no answer for and no budget to survive.
 
-**Agenda (this month):** Keep the Auction Desk's contract cadence moving fast enough that City Hall stops calling, without letting the Grading Bench's confidence bands slip so thin that a mis-grade kills a party and hands her the failure she has spent a decade avoiding — a squeeze the rising break rate makes worse every week.
+**Agenda (this month):** Keep the Auction Desk's contract cadence moving fast enough that City Hall stops calling, without letting the Ranking Bench's confidence bands slip so thin that a mis-Rank kills a party and hands her the failure she has spent a decade avoiding — a squeeze the rising break rate makes worse every week.
 
 **Relationships:** Eleanor "Nell" Foss (ENT-000111), her own senior appraiser, whose brand-anomaly report she quietly shelved. Preston Vaughn (ENT-000108, Horizon Guild) — crossing into industry — the major whose lobbyists lean on her auction cadence and whom she cannot afford to alienate before her next posting.
 
@@ -93,8 +93,8 @@ aliases:
 relationships:
   - REL-000052
 canonical_state:
-  role: "Regional Director of BGM Region V (ENT-000099); federal appointee over the Grading Bench and the Auction Desk."
-  capabilities: "Federal administration; grading and auction oversight; political survival; control of what does and does not get published."
+  role: "Regional Director of BGM Region V (ENT-000099); federal appointee over the Ranking Bench and the Auction Desk."
+  capabilities: "Federal administration; ranking and auction oversight; political survival; control of what does and does not get published."
   signature_ability: "Still Room — her mana deadens the air of a closed space so that nothing said inside it carries beyond the walls (Profile Section 13.6: descriptive fact, resolved at her band)."
   personality: "Courteous, procedural, controlled; manages fear by managing information."
   knowledge: "Holds the real unpublished break-rate statistics; has reviewed incident logs showing Gates that read empty then registered a second mana signature only after entry, and has kept them off the record."
@@ -106,11 +106,11 @@ canonical_state:
 
 **Name / rank / role:** Preston Vaughn, not awakened — a pure corporate operator. Guildmaster and chief executive of Horizon Guild (ENT-000100), the publicly traded major, running the board, the trophy wall, and the ace's contract from the top floor of Horizon Tower (ENT-000092).
 
-**Want:** To turn Horizon from Chicago's best guild into a global brand — and he has decided the move that does it is putting a *second* S-rank under the Horizon name, on the other side of the Atlantic, before any rival thinks of it.
+**Want:** To turn Horizon from Chicago's best guild into a global brand — and he has decided the move that does it is putting a *second* S-Rank under the Horizon name, on the other side of the Atlantic, before any rival thinks of it.
 
 **Fear/Flaw:** He commands the most powerful hunters on Earth and cannot enter a Gate himself, which he compensates for by treating people as assets on a balance sheet — and he is starting to do it to the one asset that cannot be replaced.
 
-**Secret:** He is the money and the will behind Horizon Europe's play for the Czech S-rank — pushing his own European branch, over Continental Command's caution, to land Tereza Blažková as the marquee acquisition that makes Horizon a two-S-rank global name. If it lands, it guts Karlov Guild and the CGA's whole retention strategy in one signature; Vaughn regards that as someone else's problem.
+**Secret:** He is the money and the will behind Horizon Europe's play for the Czech S-Rank — pushing his own European branch, over Continental Command's caution, to land Tereza Blažková as the marquee acquisition that makes Horizon a two-S-Rank global name. If it lands, it guts Karlov Guild and the CGA's whole retention strategy in one signature; Vaughn regards that as someone else's problem.
 
 **Agenda (this month):** Manufacture a populist counter to Ironline's recruiting before the pipeline story reaches an earnings call, while quietly wiring the resources and the cover his Prague branch needs to move on Blažková without the acquisition showing up on Horizon's public books yet.
 
@@ -139,18 +139,18 @@ canonical_state:
   role: "Guildmaster and CEO of Horizon Guild (ENT-000100); not awakened."
   capabilities: "Corporate command; capital; investor and lobbyist relationships; cross-Atlantic reach through the shared parent balance sheet with Horizon Guild — Europe (ENT-000105)."
   personality: "Genial, transactional, tireless; treats people as assets and is starting to do it to the ace."
-  knowledge: "Knows Horizon Europe's confidential bid strategy against Karlov Guild and the true scope of his own play for the Czech S-rank, kept off Horizon's public books."
+  knowledge: "Knows Horizon Europe's confidential bid strategy against Karlov Guild and the true scope of his own play for the Czech S-Rank, kept off Horizon's public books."
 ```
 
 ---
 
 ## Dominic Crane — Horizon Guild
 
-**Name / rank / role:** Dominic Crane, S-rank. Horizon Guild's (ENT-000100) drafted ace and public face — one of Chicago's two resident S-ranks, the trophy the whole brand is built around, with a private training level in Horizon Tower (ENT-000092) and his contract terms on the sports pages. His signature is **Meridian** — a lance of condensed force he holds, sweeps, and extends across the full length of a boss chamber, the longest measured projection on the American books — and reach is a number, which is what made it marketable and what makes it, lately, a thing he cannot bear to have read.
+**Name / rank / role:** Dominic Crane, S-Rank. Horizon Guild's (ENT-000100) drafted ace and public face — one of Chicago's two resident S-ranks, the trophy the whole brand is built around, with a private training level in Horizon Tower (ENT-000092) and his contract terms on the sports pages. His signature is **Meridian** — a lance of condensed force he holds, sweeps, and extends across the full length of a boss chamber, the longest measured projection on the American books — and reach is a number, which is what made it marketable and what makes it, lately, a thing he cannot bear to have read.
 
 **Want:** To still be the best — to walk into a Gate and feel the certainty he used to feel, instead of the new, private suspicion that his last two marquee clears went right by luck and handling rather than by him.
 
-**Fear/Flaw:** The world's one iron law is that rank never changes, and Crane has begun to feel himself slipping *inside* it — and an S-rank who fears he is fading has no one he can say it to, because he is a policy, not a person, to everyone who depends on him.
+**Fear/Flaw:** The world's one iron law is that rank never changes, and Crane has begun to feel himself slipping *inside* it — and an S-Rank who fears he is fading has no one he can say it to, because he is a policy, not a person, to everyone who depends on him.
 
 **Secret:** He has been quietly paying appraiser Nell Foss to re-measure him off the books, outside any BGM procedure, trying to prove to himself that his pool hasn't shrunk — the exact re-measurement machinery the exposure pipeline runs on, turned inward by the one man in the city who should have nothing to fear from it. If it ever surfaced that Horizon's ace was secretly testing his own rank, the stock would move on it.
 
@@ -178,8 +178,8 @@ aliases:
 relationships:
   - REL-000054
 canonical_state:
-  role: "S-rank ace of Horizon Guild (ENT-000100); one of Chicago's two resident S-ranks and the guild's public face."
-  capabilities: "S-rank combat; the only Horizon asset that cannot be replaced or poached cheaply; public draw."
+  role: "S-Rank ace of Horizon Guild (ENT-000100); one of Chicago's two resident S-ranks and the guild's public face."
+  capabilities: "S-Rank combat; the only Horizon asset that cannot be replaced or poached cheaply; public draw."
   signature_ability: "Meridian — a lance of condensed force held, swept, and extended across the length of a boss chamber, the longest measured projection on the American books; its reach is a published number, and a shrinking one is exactly what an off-book re-measurement can read (Profile Section 13.6)."
   personality: "Publicly the brand, privately watchful and decent; carrying a fear he cannot voice."
   knowledge: "Believes his own measured edge may be slipping and is testing it in secret; knows the reawakened/re-measurement machinery from the inside as a client, not a suspect."
@@ -189,13 +189,13 @@ canonical_state:
 
 ## Denise "Dee" Brannigan — Ironline Guild
 
-**Name / rank / role:** Denise "Dee" Brannigan, D-rank, who came up clearing E-Gates herself along the Red Line Corridor (ENT-000090). Guildmaster of Ironline Guild (ENT-000101), the blue-collar recruiter, elected off the Floor and still speaking for it against Ironline Capital. Her signature, **True Weight** — a rough felt sense of how hard the mana around her is actually working — made her a talent-spotter years before it made her a guildmaster.
+**Name / rank / role:** Denise "Dee" Brannigan, D-Rank, who came up clearing E-Rank Gates herself along the Red Line Corridor (ENT-000090). Guildmaster of Ironline Guild (ENT-000101), the blue-collar recruiter, elected off the Floor and still speaking for it against Ironline Capital. Her signature, **True Weight** — a rough felt sense of how hard the mana around her is actually working — made her a talent-spotter years before it made her a guildmaster.
 
 **Want:** To prove the workingman's guild can beat the trophy wall on its own terms — to build a bench so loyal and so good that Horizon's money can't buy it back.
 
-**Fear/Flaw:** She rose on the promise that Ironline treats an E-rank as a colleague, not a line item, and she is quietly making a choice that betrays exactly that promise — telling herself it's protection when it's really possession.
+**Fear/Flaw:** She rose on the promise that Ironline treats an E-Rank as a colleague, not a line item, and she is quietly making a choice that betrays exactly that promise — telling herself it's protection when it's really possession.
 
-**Secret:** She has clocked an over-performing low-rank on her own boards whose output does not match his card, and instead of flagging him for BGM re-measurement she has been actively *hiding* him from it — keeping him cheap, loyal, and off Horizon's radar. An underranked anomaly is Ironline's dream recruit, and she has decided he is hers before he is anyone's, which is precisely the exposure story the re-grading pipeline exists to surface. Who this over-performer is is deliberately left open: his identity resolves **at first campaign contact**, when the Runtime binds Brannigan's hidden recruit to whoever the campaign's Bearer — or a suitable underranked NPC — turns out to be. This is an authored deferral, not a blank; the slot exists, and first contact fills it.
+**Secret:** She has clocked an over-performing low-rank on her own boards whose output does not match his card, and instead of flagging him for BGM re-measurement she has been actively *hiding* him from it — keeping him cheap, loyal, and off Horizon's radar. An underranked anomaly is Ironline's dream recruit, and she has decided he is hers before he is anyone's, which is precisely the exposure story the re-ranking pipeline exists to surface. Who this over-performer is is deliberately left open: his identity resolves **at first campaign contact**, when the Runtime binds Brannigan's hidden recruit to whoever the campaign's Bearer — or a suitable underranked NPC — turns out to be. This is an authored deferral, not a blank; the slot exists, and first contact fills it.
 
 **Agenda (this month):** Sign her hidden anomaly to Ironline terms before a Horizon scout or a suspicious party leader gets him re-measured, while fighting a rearguard action against Ironline Capital's push to gut the profit-sharing that makes her recruiting pitch true.
 
@@ -234,7 +234,7 @@ canonical_state:
 
 ## Eleanor "Nell" Foss — BGM Region V
 
-**Name / rank / role:** Eleanor "Nell" Foss, B-rank Perception-class awakened, non-combatant. Senior licensed appraiser on BGM Region V's (ENT-000099) Grading Bench — one of the people the whole grading system rests on, who reads mana in beasts, hunters, loot, and Gates all on the one band. Her signature, **Provenance**, reads not just a signature's band but its history — age, old injury, wear — which is why her grades carry the bench's best confidence and why she cannot un-see what she has seen.
+**Name / rank / role:** Eleanor "Nell" Foss, B-Rank Perception-class awakened, non-combatant. Senior licensed appraiser on BGM Region V's (ENT-000099) Ranking Bench — one of the people the whole ranking system rests on, who reads mana in beasts, hunters, loot, and Gates all on the one Rank. Her signature, **Provenance**, reads not just a signature's Rank but its history — age, old injury, wear — which is why her Ranks carry the bench's best confidence and why she cannot un-see what she has seen.
 
 **Want:** To be believed — to get one finding taken seriously by someone with the authority to act on it, after a career of being the most trusted read in the room on everything except the thing that actually frightens her.
 
@@ -246,7 +246,7 @@ canonical_state:
 
 **Relationships:** Naomi Okafor (ENT-000107), her director, who shelved her report and signs her assignments. Dominic Crane (ENT-000109, Horizon Guild) — crossing into industry — the private client whose fading she is measuring in secret and whose fear she now shares a little of.
 
-Foss is precise in a way that unnerves people — she notices the thing you were hoping she'd miss, and says it plainly, because a soft grade is how hunters her clients' age die. She is dry, tired, and kind under the tiredness, the way people are kind when they've measured enough bad outcomes to stop pretending numbers are neutral. A scene with her feels like being read accurately, which is uncomfortable; she'll tell you your true grade, your gear's true grade, and — if she trusts you — the one grade she can't get anyone above her to write down.
+Foss is precise in a way that unnerves people — she notices the thing you were hoping she'd miss, and says it plainly, because a soft Rank is how hunters her clients' age die. She is dry, tired, and kind under the tiredness, the way people are kind when they've measured enough bad outcomes to stop pretending numbers are neutral. A scene with her feels like being read accurately, which is uncomfortable; she'll tell you your true Rank, your gear's true Rank, and — if she trusts you — the one Rank she can't get anyone above her to write down.
 
 ```yaml
 id: ENT-000111
@@ -268,9 +268,9 @@ aliases:
 relationships:
   - REL-000056
 canonical_state:
-  role: "Senior licensed appraiser on BGM Region V's (ENT-000099) Grading Bench; B-rank Perception-class awakened."
+  role: "Senior licensed appraiser on BGM Region V's (ENT-000099) Ranking Bench; B-Rank Perception-class awakened."
   capabilities: "Field mana appraisal of beasts, hunters, loot, and Gates on the unified band; anomaly detection; off-book re-measurement."
-  signature_ability: "Provenance — her appraisal reads a mana signature's history as well as its band: age, old injury, wear; the gift that graded the healed wound and the brand, and the one quietly re-measuring Crane (Profile Section 13.6)."
+  signature_ability: "Provenance — her appraisal reads a mana signature's history as well as its Rank: age, old injury, wear; the gift that ranked the healed wound and the brand, and the one quietly re-measuring Crane (Profile Section 13.6)."
   personality: "Precise, dry, quietly kind; constitutionally unable to stop looking at what frightens her."
   knowledge: "Has logged an identical healed weapon-wound and seared brand on beast remains from Gates on opposite sides of the planet; her report was shelved and she has kept a copy."
 ```
@@ -279,13 +279,13 @@ canonical_state:
 
 ## "Deacon" — black-market core buyer, Chicago
 
-**Name / rank / role:** Operates under the cover name "Deacon"; legal name withheld from the record. Former D-rank hunter turned unlicensed core fence — the standing buyer of undeclared cores and crystals in Chicago, working out of no fixed address and holding **no institutional membership** (and so no membership relationship in this ledger). His signature, **Doorways** — a felt sense of every exit from a space and whether it is watched — made him a mediocre hunter and has made him an excellent coward.
+**Name / rank / role:** Operates under the cover name "Deacon"; legal name withheld from the record. Former D-Rank hunter turned unlicensed core fence — the standing buyer of undeclared cores and crystals in Chicago, working out of no fixed address and holding **no institutional membership** (and so no membership relationship in this ledger). His signature, **Doorways** — a felt sense of every exit from a space and whether it is watched — made him a mediocre hunter and has made him an excellent coward.
 
 **Want:** To move up the chain from neighborhood fence to the man who controls a lane — specifically the lane that runs undeclared American cores eastward to the buyers who pay Prague prices, where the real margin is.
 
 **Fear/Flaw:** He is a coward with good instincts, which has kept him alive and small; his flaw is that he knows the smart play is to stay small and he can no longer stand it, so he is reaching for exactly the volume that gets fences like him noticed and prosecuted.
 
-**Secret:** His westward pipeline runs through the Prague smuggler "Sova," and it is beginning to carry more than money — a core or two that read *wrong* on the one appraisal he risked, off any grade band he knows. He does not understand what he is moving; he only knows it prices like nothing else and that the people who want it do not haggle.
+**Secret:** His westward pipeline runs through the Prague smuggler "Sova," and it is beginning to carry more than money — a core or two that read *wrong* on the one appraisal he risked, off any Rank he knows. He does not understand what he is moving; he only knows it prices like nothing else and that the people who want it do not haggle.
 
 **Agenda (this month):** Consolidate the Chicago-to-Prague flow into something he controls rather than merely feeds, and find out — carefully, without spooking his buyers — why the anomalous cores are worth what they're worth.
 
@@ -309,11 +309,11 @@ aliases:
   - name: "Deacon"
     quality: cover
 canonical_state:
-  role: "Unlicensed black-market buyer of undeclared cores and crystals in Chicago; former D-rank hunter. Holds no institutional membership."
+  role: "Unlicensed black-market buyer of undeclared cores and crystals in Chicago; former D-Rank hunter. Holds no institutional membership."
   capabilities: "Fencing; discretion; a working westward smuggling lane to Prague; the nerve, lately, to overreach."
   signature_ability: "Doorways — he feels every way out of a space and whether it is watched, the survival-sense that has kept him small and alive (Profile Section 13.6)."
   personality: "Fast-talking, evasive, cowardly, ambitious past his own judgment."
-  knowledge: "Moves cores westward through the Prague network; has handled a core or two that appraise off any grade band he knows, and does not understand what they are."
+  knowledge: "Moves cores westward through the Prague network; has handled a core or two that appraise off any Rank he knows, and does not understand what they are."
 ```
 
 ---
@@ -322,17 +322,17 @@ canonical_state:
 
 ## Director Miloš Beran — Czech Gate Administration
 
-**Name / rank / role:** Miloš Beran, E-rank awakened, career civil servant. Director of the Czech Gate Administration (ENT-000103) — the underfunded, proud national agency whose entire strategy is organized around keeping one person from leaving the country. His signature, **Letter-Perfect**, a modest E-band gift, keeps every page he has ever read exact in his memory — which is why nothing he has decided to bury needs to exist on paper for him to hold it.
+**Name / rank / role:** Miloš Beran, E-Rank awakened, career civil servant. Director of the Czech Gate Administration (ENT-000103) — the underfunded, proud national agency whose entire strategy is organized around keeping one person from leaving the country. His signature, **Letter-Perfect**, a modest E-Rank gift, keeps every page he has ever read exact in his memory — which is why nothing he has decided to bury needs to exist on paper for him to hold it.
 
-**Want:** To keep the nation's one S-rank home for one more year, and the year after that — because the day Tereza Blažková signs abroad is the day the CGA stops mattering, and Beran with it.
+**Want:** To keep the nation's one S-Rank home for one more year, and the year after that — because the day Tereza Blažková signs abroad is the day the CGA stops mattering, and Beran with it.
 
 **Fear/Flaw:** He is a small agency's director carrying a nation-sized secret and a nation-sized dependency, and his flaw is that he has confused holding the line with holding the truth down — he manages every crisis by making sure no one else can see it.
 
-**Secret:** He has seen the Libeň analyst's chart — worldwide break frequency not rising but *doubling on a fixed interval*, a clean geometric curve that extended hits vertical in a nameable year. The analyst worked out of the trailer at the Libeň Scar (ENT-000096) and has stopped returning calls. The CGA has issued nothing, and Beran intends to keep it that way, partly to prevent panic and partly because a country that believes the clock is real will not spend a fortune retaining an S-rank to fight it.
+**Secret:** He has seen the Libeň analyst's chart — worldwide break frequency not rising but *doubling on a fixed interval*, a clean geometric curve that extended hits vertical in a nameable year. The analyst worked out of the trailer at the Libeň Scar (ENT-000096) and has stopped returning calls. The CGA has issued nothing, and Beran intends to keep it that way, partly to prevent panic and partly because a country that believes the clock is real will not spend a fortune retaining an S-Rank to fight it.
 
 **Agenda (this month):** Squeeze the discretionary budget to make whatever contract Blažková is attached to go flawlessly, prop Karlov Guild up against the foreign bids just enough to keep her frame intact, and make sure the Libeň file stays a rumor among survey teams rather than a chart with a year on it.
 
-**Relationships:** Tereza Blažková (ENT-000114, Karlov Guild) — crossing from regulator into guild — the one asset his whole agency exists to retain. Vlastimil Karlov (ENT-000115, Karlov Guild) — crossing into the guild — the local guildmaster he props up because a solvent Karlov is the frame that keeps the S-rank in Prague.
+**Relationships:** Tereza Blažková (ENT-000114, Karlov Guild) — crossing from regulator into guild — the one asset his whole agency exists to retain. Vlastimil Karlov (ENT-000115, Karlov Guild) — crossing into the guild — the local guildmaster he props up because a solvent Karlov is the frame that keeps the S-Rank in Prague.
 
 Beran is courtly, anxious, and exhausting in his thoroughness — he answers a simple question with the full history of the policy and never quite arrives at the point, which is a technique, not a failing. He apologizes for the building, the budget, the coffee, and offers all three anyway. A scene with him feels like being received by a man performing calm over something that is keeping him up at night; the performance is good, but he touches the papers on his desk too often, squaring an edge that was already square.
 
@@ -356,18 +356,18 @@ aliases:
 relationships:
   - REL-000057
 canonical_state:
-  role: "Director of the Czech Gate Administration (ENT-000103); career civil servant, E-rank awakened."
-  capabilities: "National regulatory authority; discretionary budget over S-rank retention; control of what the CGA publishes."
-  signature_ability: "Letter-Perfect — every page he has ever read stays exact in his memory, a modest E-band clerk's gift; the Libeň chart is in his head whether or not the file survives (Profile Section 13.6)."
+  role: "Director of the Czech Gate Administration (ENT-000103); career civil servant, E-Rank awakened."
+  capabilities: "National regulatory authority; discretionary budget over S-Rank retention; control of what the CGA publishes."
+  signature_ability: "Letter-Perfect — every page he has ever read stays exact in his memory, a modest E-Rank clerk's gift; the Libeň chart is in his head whether or not the file survives (Profile Section 13.6)."
   personality: "Courtly, anxious, thorough to the point of evasion; keeps crises down by keeping them dark."
   knowledge: "Has seen the Libeň analyst's chart showing break frequency doubling on a fixed interval; the analyst has stopped returning calls and the CGA has published nothing."
 ```
 
 ---
 
-## Tereza Blažková — the Czech S-rank
+## Tereza Blažková — the Czech S-Rank
 
-**Name / rank / role:** Tereza Blažková, S-rank — the Czech Republic's first and only, measured in 2023. Contracted hunter of Karlov Guild (ENT-000104), national celebrity, and, in her own estimation, the most-managed person in the country. Her signature is the most famous fact in that country: **Vltava**, her mana rising as a river she shapes into wave, wall, or current — too total to file under any single working type, and the one power every Czech child can draw from memory.
+**Name / rank / role:** Tereza Blažková, S-Rank — the Czech Republic's first and only, measured in 2023. Contracted hunter of Karlov Guild (ENT-000104), national celebrity, and, in her own estimation, the most-managed person in the country. Her signature is the most famous fact in that country: **Vltava**, her mana rising as a river she shapes into wave, wall, or current — too total to file under any single working type, and the one power every Czech child can draw from memory.
 
 **Want:** To be a hunter instead of a national asset — to take the hardest Gates in the world and be measured by the work, not held in a small proud country as its one irreplaceable trophy.
 
@@ -399,8 +399,8 @@ aliases:
 relationships:
   - REL-000058
 canonical_state:
-  role: "The Czech Republic's sole S-rank (measured 2023); contracted hunter of Karlov Guild (ENT-000104) and national celebrity."
-  capabilities: "S-rank combat; cannot be compelled by any institution; her mere presence is the CGA's entire retention strategy."
+  role: "The Czech Republic's sole S-Rank (measured 2023); contracted hunter of Karlov Guild (ENT-000104) and national celebrity."
+  capabilities: "S-Rank combat; cannot be compelled by any institution; her mere presence is the CGA's entire retention strategy."
   signature_ability: "Vltava — her mana rises as a river she shapes into wave, wall, or current, too total to file under a single working type; the most famous power in the country (Profile Section 13.6)."
   personality: "Plain-spoken, restless, contemptuous of ceremony; resentment curdling toward self-destruction."
   knowledge: "Knows how close she has come to signing with a foreign guild — closer than anyone at Karlov or the CGA suspects; holds that decision alone."
@@ -410,7 +410,7 @@ canonical_state:
 
 ## Vlastimil Karlov — Karlov Guild
 
-**Name / rank / role:** Vlastimil Karlov, C-rank, one of the first Czechs to clear a Gate. Guildmaster of Karlov Guild (ENT-000104), the family-run house that runs Prague's hardest heritage clears on relationship rather than money, from the upper floor of Karlov House (ENT-000097). He remembers the Gatefall firsthand and has the hallway of photographs to prove it. His signature, **Threshold** — a warden's barrier raised across a doorway or a street's width and held — is the power the first Prague clears formed up behind, and the seed of everything the guild now calls heritage-clearance doctrine.
+**Name / rank / role:** Vlastimil Karlov, C-Rank, one of the first Czechs to clear a Gate. Guildmaster of Karlov Guild (ENT-000104), the family-run house that runs Prague's hardest heritage clears on relationship rather than money, from the upper floor of Karlov House (ENT-000097). He remembers the Gatefall firsthand and has the hallway of photographs to prove it. His signature, **Threshold** — a warden's barrier raised across a doorway or a street's width and held — is the power the first Prague clears formed up behind, and the seed of everything the guild now calls heritage-clearance doctrine.
 
 **Want:** For Karlov to survive this decade as *Karlov* — Prague's guild, not a branch office of someone else's name — and to hand it on intact to the family, the way it was handed to him.
 
@@ -420,7 +420,7 @@ canonical_state:
 
 **Agenda (this month):** Keep Karlov winning enough Old Town heritage contracts to look like a guild worth staying in, refuse the three foreign approaches one more cycle, and hold Blažková close without letting her — or anyone — see how much of the guild's survival now rests on her not leaving.
 
-**Relationships:** Ivana Karlová (ENT-000116), his heir, whose loyalty he counts on and whose judgment he overrides. Miloš Beran (ENT-000113, Czech Gate Administration) — crossing into the regulator — his patron and pressure, propping the guild up for reasons of state. Tereza Blažková (ENT-000114), his S-rank and, secretly, his single point of failure.
+**Relationships:** Ivana Karlová (ENT-000116), his heir, whose loyalty he counts on and whose judgment he overrides. Miloš Beran (ENT-000113, Czech Gate Administration) — crossing into the regulator — his patron and pressure, propping the guild up for reasons of state. Tereza Blažková (ENT-000114), his S-Rank and, secretly, his single point of failure.
 
 Karlov is old-world courteous and immovable, a man who receives you under the photographs of everyone who built the thing you are asking him to change. He tells stories — about the Gatefall, about contracts signed with the grandfathers of today's officials — and the stories are the argument. A scene with him feels like sitting with living history that has decided history is enough; he is gracious, genuinely wise about the city, and closed as a vault on the one subject that matters. When the internationals come up he smiles and changes the subject to something that happened in 2016.
 
@@ -442,18 +442,18 @@ aliases:
 relationships:
   - REL-000059
 canonical_state:
-  role: "Guildmaster of Karlov Guild (ENT-000104); C-rank, a firsthand witness of the Gatefall."
+  role: "Guildmaster of Karlov Guild (ENT-000104); C-Rank, a firsthand witness of the Gatefall."
   capabilities: "Municipal relationships; heritage-clearance doctrine; the moral authority of continuity; a decade of standing no foreign capital can buy."
   signature_ability: "Threshold — a warden's barrier raised across a doorway or a street's width and held, the power the first Prague clears formed up behind and the seed of Karlov's heritage-clearance doctrine (Profile Section 13.6)."
   personality: "Old-world courteous, immovable, wise about the city and willfully blind to its arithmetic."
-  knowledge: "Suspects his S-rank is wavering under foreign courtship and is concealing it from the CGA and his own heir, gambling the guild on loyalty."
+  knowledge: "Suspects his S-Rank is wavering under foreign courtship and is concealing it from the CGA and his own heir, gambling the guild on loyalty."
 ```
 
 ---
 
 ## Ivana Karlová — Karlov Guild
 
-**Name / rank / role:** Ivana Karlová, C-rank hunter and heir to Karlov Guild (ENT-000104), running its New Contracts Desk. The next Karlov, and the one arguing loudest that being the next Karlov will mean nothing if the guild doesn't change. Her signature, **Sidestep**, puts her ten meters from where she stood between one breath and the next — quick as her arguments, and as hard to answer.
+**Name / rank / role:** Ivana Karlová, C-Rank hunter and heir to Karlov Guild (ENT-000104), running its New Contracts Desk. The next Karlov, and the one arguing loudest that being the next Karlov will mean nothing if the guild doesn't change. Her signature, **Sidestep**, puts her ten meters from where she stood between one breath and the next — quick as her arguments, and as hard to answer.
 
 **Want:** To save the guild by modernizing it — outside capital, a partnership, anything that stops Karlov from being poached and outbid one hunter and one contract at a time until there is nothing left to inherit.
 
@@ -485,7 +485,7 @@ aliases:
 relationships:
   - REL-000060
 canonical_state:
-  role: "Heir to Karlov Guild (ENT-000104) and lead of its New Contracts Desk; C-rank hunter."
+  role: "Heir to Karlov Guild (ENT-000104) and lead of its New Contracts Desk; C-Rank hunter."
   capabilities: "Contract and financial acumen; the guild's modernizing faction; a back-channel to the foreign siege and to the black market."
   signature_ability: "Sidestep — a ten-meter step that puts her somewhere else between one breath and the next, useful in a fight and quietly useful for arriving at meetings no one sees her reach (Profile Section 13.6)."
   personality: "Quick, impatient, candid; loves the guild enough to betray its creed to save it."
@@ -496,13 +496,13 @@ canonical_state:
 
 ## Ondřej Dušek — Horizon Guild — Europe
 
-**Name / rank / role:** Ondřej Dušek, B-rank, Czech-born — and once a Karlov hunter himself. Prague branch chief of Horizon Guild — Europe (ENT-000105), leading the Prague Expansion Team that hires away local talent and bids against the guild that trained him. His signature, **Clean Cut** — a projected mana edge that severs exactly what it aims at and nothing beside it — is Karlov heritage training made visible, and the city never fails to notice whose hands it shows in.
+**Name / rank / role:** Ondřej Dušek, B-Rank, Czech-born — and once a Karlov hunter himself. Prague branch chief of Horizon Guild — Europe (ENT-000105), leading the Prague Expansion Team that hires away local talent and bids against the guild that trained him. His signature, **Clean Cut** — a projected mana edge that severs exactly what it aims at and nothing beside it — is Karlov heritage training made visible, and the city never fails to notice whose hands it shows in.
 
 **Want:** To land the win that makes his branch permanent and makes him untouchable — and he has decided the win is Tereza Blažková, the acquisition that would prove Horizon Europe belongs in Prague's top tier forever.
 
 **Fear/Flaw:** He is the local who left, resented as a traitor by the city he still lives in, and he manages that wound by needing to be proven right so badly that he over-promises upward — his flaw is ambition running ahead of what he can actually deliver.
 
-**Secret:** His whole standing rests on the S-rank play, and he has told Continental Command it is closer than it is, staking his own credibility on delivering Blažková this year. He is working two back-channels to do it — Ivana Karlová inside Karlov itself, and the parent's champion Preston Vaughn across the Atlantic — and if either collapses, or if Continental Command loses patience with the whole Prague adventure first, his position goes with it.
+**Secret:** His whole standing rests on the S-Rank play, and he has told Continental Command it is closer than it is, staking his own credibility on delivering Blažková this year. He is working two back-channels to do it — Ivana Karlová inside Karlov itself, and the parent's champion Preston Vaughn across the Atlantic — and if either collapses, or if Continental Command loses patience with the whole Prague adventure first, his position goes with it.
 
 **Agenda (this month):** Convert his contacts into momentum before his own bosses' patience runs out — keep Blažková leaning toward signing, keep Ivana talking partnership, and keep Vaughn's backing warm — without letting the CGA see enough to start quietly favoring Karlov on every close call.
 
@@ -528,11 +528,11 @@ aliases:
 relationships:
   - REL-000061
 canonical_state:
-  role: "Prague branch chief of Horizon Guild — Europe (ENT-000105); B-rank, Czech-born and once a Karlov hunter."
+  role: "Prague branch chief of Horizon Guild — Europe (ENT-000105); B-Rank, Czech-born and once a Karlov hunter."
   capabilities: "Aggressive hiring and bidding; American training doctrine and financial backing; back-channels into Karlov and to the American parent."
   signature_ability: "Clean Cut — a projected mana edge that severs exactly what it aims at and nothing beside it, Karlov heritage training legible in every stroke (Profile Section 13.6)."
   personality: "Polished and hot-running; a resented local defector armored in aggressive charm."
-  knowledge: "Has over-promised Continental Command on landing the Czech S-rank and is working the Karlov heir and the American parent to deliver before his own bosses lose patience."
+  knowledge: "Has over-promised Continental Command on landing the Czech S-Rank and is working the Karlov heir and the American parent to deliver before his own bosses lose patience."
 ```
 
 ---
@@ -547,7 +547,7 @@ canonical_state:
 
 **Secret:** She is moving artifacts and cores pulled from the Libeň Scar (ENT-000096) perimeter and from private hands that read *wrong* — one core carried an old healed scar and a seared brand matching nothing anyone will name — westward to buyers who pay for exactly that strangeness. She also knows which of her routes the CGA's enforcement has quietly chosen not to close, and she is careful never to ask why.
 
-**Agenda (this month):** Lock down the anomalous-cargo lane before a rival smuggler or a CGA grader who stops looking away notices its value, and keep her Chicago end ("Deacon") and her local sources fed without any of them learning how the others connect.
+**Agenda (this month):** Lock down the anomalous-cargo lane before a rival smuggler or a CGA ranking official who stops looking away notices its value, and keep her Chicago end ("Deacon") and her local sources fed without any of them learning how the others connect.
 
 **Relationships:** "Deacon" (ENT-000112) — the Chicago end of her westward lane, whom she keeps at arm's length. Ivana Karlová (ENT-000116, Karlov Guild) — crossing into the city's most principled guild — the unlikely client quietly selling her undeclared cores, whose secret is now also Sova's leverage.
 
@@ -584,7 +584,7 @@ Two world-ranked S-ranks (Bible Section 3), authored at the same depth as the ci
 
 ## Reid Calloway — Keystone Guild (world-ranked, IGR #7)
 
-**Name / rank / role:** Reid Calloway, S-rank, **world-ranked #7** on the International Gate Registry list (Bible Section 3). Ace of Keystone Guild, New York, and the **highest-ranked American hunter** — a household name, the public face of American Gate strength, and one of the eleven S-ranks in the country (distinct from Chicago's two plain-S residents). His signature, **Overrun** — an escalating force-discipline that out-damages anything it can reach — is the most broadcast power in America, and the billing it carries is the sore point of his life.
+**Name / rank / role:** Reid Calloway, S-Rank, **world-ranked #7** on the International Gate Registry list (Bible Section 3). Ace of Keystone Guild, New York, and the **highest-ranked American hunter** — a household name, the public face of American Gate strength, and one of the eleven S-ranks in the country (distinct from Chicago's two plain-S residents). His signature, **Overrun** — an escalating force-discipline that out-damages anything it can reach — is the most broadcast power in America, and the billing it carries is the sore point of his life.
 
 **Want:** One undeniable clear — a lead or solo close so unambiguously hard that no agency, rival, or analyst can call his ranking political. He wants to be the American #1 *on the merits*, not by billing.
 
@@ -594,7 +594,7 @@ Two world-ranked S-ranks (Bible Section 3), authored at the same depth as the ci
 
 **Agenda (this month):** Land a genuine headline clear — pushing his handlers for the hardest contract they will green-light — while managing the BGM's insistence that he take no risk that could cost the country its poster hunter, a tug-of-war the rising break rate sharpens by the week.
 
-**Relationships:** Preston Vaughn (ENT-000108, Horizon Guild) — crossing into a rival American major — who courted Calloway for years as the second-S-rank prize before pivoting his ambition to Blažková, and whom Calloway regards with wary contempt. Dominic Crane (ENT-000109, Horizon Guild) — crossing into another guild and another American S-rank — the Chicago ace who privately measures his own fading edge against Calloway's billing; the two have shared a raid and an unspoken understanding of what it costs to be a number instead of a man, and Calloway is the benchmark that sharpens Crane's fear.
+**Relationships:** Preston Vaughn (ENT-000108, Horizon Guild) — crossing into a rival American major — who courted Calloway for years as the second-S-Rank prize before pivoting his ambition to Blažková, and whom Calloway regards with wary contempt. Dominic Crane (ENT-000109, Horizon Guild) — crossing into another guild and another American S-Rank — the Chicago ace who privately measures his own fading edge against Calloway's billing; the two have shared a raid and an unspoken understanding of what it costs to be a number instead of a man, and Calloway is the benchmark that sharpens Crane's fear.
 
 Calloway is louder in public than in a room — the swagger is real on camera and thin off it, a man performing a certainty he audits privately every night. One-to-one he is blunt, quick, and unexpectedly tired, more interested in what you actually cleared than in what your card says, because he of all people knows the two can diverge. A scene with him runs hot and candid until the subject turns to his own ranking, where he goes flat and careful, defending a number he is not sure he earned. He is generous to working hunters and merciless toward the handlers and analysts who made him a symbol — the resentment of a man who suspects he is a marketing asset first and a hunter second.
 
@@ -616,28 +616,28 @@ aliases:
   - name: "the American #1"
     quality: current
 canonical_state:
-  role: "S-rank ace of Keystone Guild (New York); world-ranked #7 on the International Gate Registry and the highest-ranked American hunter. Keystone Guild is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
-  capabilities: "S-rank combat; the 'Overrun' escalating force-discipline; national-symbol status and the federal access that comes with it."
+  role: "S-Rank ace of Keystone Guild (New York); world-ranked #7 on the International Gate Registry and the highest-ranked American hunter. Keystone Guild is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
+  capabilities: "S-Rank combat; the 'Overrun' escalating force-discipline; national-symbol status and the federal access that comes with it."
   signature_ability: "Overrun — an escalating force-discipline that out-damages anything it can reach (Bible Section 3, World Ranking; Profile Section 13.6)."
   personality: "Publicly the brand, privately auditing himself; blunt, tired, resentful of his own handlers."
-  knowledge: "Briefed at federal level on the unpublished doubling break-rate projection and the classified Jiu Valley Exclusion after-action files; knows the S-rank corps is husbanded as strategic reserve against a projected date, and that his own world-ranking is partly a BGM-managed bluff. Holds no explanation for why the curve climbs."
+  knowledge: "Briefed at federal level on the unpublished doubling break-rate projection and the classified Jiu Valley Exclusion after-action files; knows the S-Rank corps is husbanded as strategic reserve against a projected date, and that his own world-ranking is partly a BGM-managed bluff. Holds no explanation for why the curve climbs."
 ```
 
 ---
 
 ## Lukas Reinhardt — Brandhof (world-ranked, IGR #8)
 
-**Name / rank / role:** Lukas Reinhardt, S-rank, **world-ranked #8** on the International Gate Registry list (Bible Section 3). Brandhof's flagship ace, based in Frankfurt — the face of the continent's largest guild and the **nearest world-ranked hunter to Prague**, which makes him a standing presence over the Czech siege even when he is not in the city. His signature, **Bastion** — a fortress-summoning barrier-and-siege discipline that walls a break and grinds it down — is his guild's whole doctrine written into one man's power.
+**Name / rank / role:** Lukas Reinhardt, S-Rank, **world-ranked #8** on the International Gate Registry list (Bible Section 3). Brandhof's flagship ace, based in Frankfurt — the face of the continent's largest guild and the **nearest world-ranked hunter to Prague**, which makes him a standing presence over the Czech siege even when he is not in the city. His signature, **Bastion** — a fortress-summoning barrier-and-siege discipline that walls a break and grinds it down — is his guild's whole doctrine written into one man's power.
 
 **Want:** To make Brandhof — and himself — the name the continent calls when a break goes past containment: the guild that owns the hardest work in Europe, permanently, the way it already owns the disciplined middle.
 
 **Fear/Flaw:** He commanded a containment rotation at the **Jiu Valley Exclusion** and watched an uncontained S-break take ground and hunters faster than doctrine said it could. His flaw is that the memory has hardened into a siege-everything caution that reads as discipline and is partly trauma — he cannot let a Gate be anything but a fortress problem, and it costs him speed and the patience of the hunters under him.
 
-**Secret:** He knows Brandhof's real objective in Prague is **not Tereza Blažková**. While Horizon Europe and Zenith exhaust themselves bidding on the one S-rank, Brandhof intends to let them — and then acquire **Karlov Guild itself**: its municipal relationships, its heritage-clearance doctrine, its century of standing, bought for a fraction once the guild is hollowed by the fight over its hunter. It is a flanking play Reinhardt designed and is quietly executing. Everyone in Prague believes three internationals are three bidders for one hunter; only Reinhardt knows Brandhof is playing a different board — which, if the CGA or Karlov read it in time, collapses the whole approach.
+**Secret:** He knows Brandhof's real objective in Prague is **not Tereza Blažková**. While Horizon Europe and Zenith exhaust themselves bidding on the one S-Rank, Brandhof intends to let them — and then acquire **Karlov Guild itself**: its municipal relationships, its heritage-clearance doctrine, its century of standing, bought for a fraction once the guild is hollowed by the fight over its hunter. It is a flanking play Reinhardt designed and is quietly executing. Everyone in Prague believes three internationals are three bidders for one hunter; only Reinhardt knows Brandhof is playing a different board — which, if the CGA or Karlov read it in time, collapses the whole approach.
 
 **Agenda (this month):** Keep Brandhof visibly in the Blažková bidding as cover, while advancing the real approach to Karlov's future — probing, through intermediaries, which of Karlov's people would sell and at what price — without Horizon Europe or the CGA reading the feint for what it is.
 
-**Relationships:** Ondřej Dušek (ENT-000117, Horizon Guild — Europe) — crossing into the rival foreign guild — his opposite number in the Prague siege, whom he is content to let believe the two of them are simply competing for the same S-rank. Tereza Blažková (ENT-000114, Karlov Guild) — crossing into Karlov's roster — the hunter Brandhof publicly courts as cover, and whom Reinhardt privately rates the most over-managed talent in Europe.
+**Relationships:** Ondřej Dušek (ENT-000117, Horizon Guild — Europe) — crossing into the rival foreign guild — his opposite number in the Prague siege, whom he is content to let believe the two of them are simply competing for the same S-Rank. Tereza Blažková (ENT-000114, Karlov Guild) — crossing into Karlov's roster — the hunter Brandhof publicly courts as cover, and whom Reinhardt privately rates the most over-managed talent in Europe.
 
 Reinhardt is precise, courteous, and immovable in the way of an engineer who has costed every outcome and does not enjoy being hurried. He speaks in critical paths and fallback lines, sketches a Gate as a site plan, and treats enthusiasm as a variable to be managed down. A scene with him feels like being briefed by a very good field commander who has decided that caution is a moral position — he is impressive, genuinely expert, and a little cold, and the cold has a source he will not discuss. Ask him about the Jiu and the site-plan manner stops for exactly one beat before he changes the register to logistics.
 
@@ -657,11 +657,11 @@ aliases:
   - name: "Lukas Reinhardt"
     quality: current
 canonical_state:
-  role: "S-rank ace of Brandhof (Frankfurt); world-ranked #8 on the International Gate Registry and the nearest world-ranked hunter to Prague. Brandhof is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
-  capabilities: "S-rank combat; the 'Bastion' barrier-and-siege discipline; command of Brandhof's methodical clearance doctrine; a containment veteran of the Jiu Valley Exclusion."
+  role: "S-Rank ace of Brandhof (Frankfurt); world-ranked #8 on the International Gate Registry and the nearest world-ranked hunter to Prague. Brandhof is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
+  capabilities: "S-Rank combat; the 'Bastion' barrier-and-siege discipline; command of Brandhof's methodical clearance doctrine; a containment veteran of the Jiu Valley Exclusion."
   signature_ability: "Bastion — a fortress-summoning barrier-and-siege discipline that walls a break and grinds it down (Bible Section 3, World Ranking; Profile Section 13.6)."
   personality: "Precise, courteous, immovable; a siege-everything caution that is half doctrine and half trauma."
-  knowledge: "Knows Brandhof's true Prague objective is the acquisition of Karlov Guild itself, not the S-rank the three internationals appear to be bidding for; is running the Blažková courtship as a feint."
+  knowledge: "Knows Brandhof's true Prague objective is the acquisition of Karlov Guild itself, not the S-Rank the three internationals appear to be bidding for; is running the Blažková courtship as a feint."
 ```
 
 ---
@@ -681,7 +681,7 @@ provenance:
   record_time: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000107, ENT-000099]
 type: membership
-qualities: "Rank: Regional Director (federal appointee leading BGM Region V over both the Grading Bench and the Auction Desk)."
+qualities: "Rank: Regional Director (federal appointee leading BGM Region V over both the Ranking Bench and the Auction Desk)."
 ```
 
 ```yaml
@@ -709,7 +709,7 @@ provenance:
   record_time: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000109, ENT-000100]
 type: membership
-qualities: "Rank: S-rank ace (drafted; Horizon Guild's public face and its one irreplaceable asset)."
+qualities: "Rank: S-Rank ace (drafted; Horizon Guild's public face and its one irreplaceable asset)."
 ```
 
 ```yaml
@@ -737,7 +737,7 @@ provenance:
   record_time: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000111, ENT-000099]
 type: membership
-qualities: "Rank: Senior licensed appraiser on the Grading Bench (B-rank Perception-class awakened, non-combatant)."
+qualities: "Rank: Senior licensed appraiser on the Ranking Bench (B-Rank Perception-class awakened, non-combatant)."
 ```
 
 ```yaml
@@ -765,7 +765,7 @@ provenance:
   record_time: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000114, ENT-000104]
 type: membership
-qualities: "Rank: Contracted S-rank hunter (Karlov Guild's marquee hunter; cannot be compelled, contracted by choice)."
+qualities: "Rank: Contracted S-Rank hunter (Karlov Guild's marquee hunter; cannot be compelled, contracted by choice)."
 ```
 
 ```yaml
@@ -793,7 +793,7 @@ provenance:
   record_time: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000116, ENT-000104]
 type: membership
-qualities: "Rank: Heir and lead of the New Contracts Desk (C-rank hunter; the guild's modernizing faction)."
+qualities: "Rank: Heir and lead of the New Contracts Desk (C-Rank hunter; the guild's modernizing faction)."
 ```
 
 ```yaml
@@ -807,5 +807,5 @@ provenance:
   record_time: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000117, ENT-000105]
 type: membership
-qualities: "Rank: Prague branch chief (leads Horizon Guild — Europe's Prague Expansion Team; B-rank, Czech-born)."
+qualities: "Rank: Prague branch chief (leads Horizon Guild — Europe's Prague Expansion Team; B-Rank, Czech-born)."
 ```

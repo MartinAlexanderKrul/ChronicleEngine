@@ -4,7 +4,7 @@
 
 **World Version:** 0.1 (Solo Leveling–inspired contemporary gate-and-hunter world)
 **Status:** Active — instantiated as canonical world content (2026-07-13); ENT-000030–ENT-000050, REC-000026–REC-000034, EVT-000018–EVT-000024, REL-000029–REL-000039
-**Engine Compatibility:** 0.2.0; Data Model 0.1.3; Reikon World Rule Profile 0.10 (frozen)
+**Engine Compatibility:** 0.2.0; Data Model 0.1.3; Reikon World Rule Profile 0.11 (frozen)
 **Progression:** Causal diegetic System progression (`RKO-OVR-001`, Decision 059)
 **Genre:** Contemporary "gate-and-hunter" litRPG — an original world in the genre, not based on any existing work
 **Setting Register:** Original-modern (invented nations and cities; no real-world geography)
@@ -103,32 +103,32 @@ After a Rift is sealed, the area retains residual mana for weeks. This creates e
 
 **Lore & Exploration** — Hunters investigate Rift-touched zones to study residual effects, collect rare materials, or search for missed loot. These zones become points of interest and story hooks.
 
-**Timeline:** Effects fade over 2-6 weeks depending on Rift grade and environmental factors. A-Rift zones take longest; E-Rift zones clear quickly.
+**Timeline:** Effects fade over 2-6 weeks depending on Rift Rank and environmental factors. A-Rank Rift zones take longest; E-Rank Rift zones clear quickly.
 
-## Rift Grades, Frequency, and Monster Ecology
+## Rift Ranks, Frequency, and Monster Ecology
 
-Rifts emerge with a grade that matches the monsters inside. Rift grade = monster grade inside; no mixing. Lower-grade monsters do not coexist with higher-grade ones (predation, territorial hierarchy).
+Rifts emerge with a Rank that matches the monsters inside. Rift Rank = monster Rank inside; no mixing. Lower-Rank monsters do not coexist with higher-Rank ones (predation, territorial hierarchy).
 
-Hunters are matched to Rift grades by the Association — C-Rank hunters enter C-Rifts, not E-Rifts or A-Rifts. A hunter badly mismatched to a Rift's grade dies.
+Hunters are matched to Rift Ranks by the Association — C-Rank hunters enter C-Rank Rifts, not E-Rank Rifts or A-Rank Rifts. A hunter badly mismatched to a Rift's Rank dies.
 
 **Baseline Frequency in Verholt:**
 
-| Grade | Frequency | Monster Grade | Typical Team | Notes |
+| Rank | Frequency | Monster Rank | Typical Team | Notes |
 |-------|-----------|---|--------------|-------|
-| **E-Rift** | Multiple per day | E-grade (weak) | Solo or supervised pair | Routine, low risk |
-| **D-Rift** | Multiple per day | D-grade | 2-3 hunters, D Rank | Standard work |
-| **C-Rift** | Several per week | C-grade (serious) | Team of 3-4, C Rank minimum | Common but not daily |
-| **B-Rift** | Several per week | B-grade (dangerous) | Specialized team, B Rank | Careful planning required |
-| **A-Rift** | ~1 per 29 days | A-grade (elite threat) | Veteran team, A Rank lead | Rare; high stakes |
-| **S-Rift** | ~1 per year maximum | S-grade (unknown) | Elite team or solo S-Rank | Extremely rare; no rules apply |
+| **E-Rank Rift** | Multiple per day | E-Rank (weak) | Solo or supervised pair | Routine, low risk |
+| **D-Rank Rift** | Multiple per day | D-Rank | 2-3 hunters, D-Rank | Standard work |
+| **C-Rank Rift** | Several per week | C-Rank (serious) | Team of 3-4, C-Rank minimum | Common but not daily |
+| **B-Rank Rift** | Several per week | B-Rank (dangerous) | Specialized team, B-Rank | Careful planning required |
+| **A-Rank Rift** | ~1 per 29 days | A-Rank (elite threat) | Veteran team, A-Rank lead | Rare; high stakes |
+| **S-Rank Rift** | ~1 per year maximum | S-Rank (unknown) | Elite team or solo S-Rank | Extremely rare; no rules apply |
 
-**Baseline:** At least one Rift per day emerges in Verholt, mostly E-D grade. The city runs on constant expedition work — the Association and Guilds field multiple teams daily, and cores flow steadily into the economy.
+**Baseline:** At least one Rift per day emerges in Verholt, mostly E-Rank–D-Rank. The city runs on constant expedition work — the Association and Guilds field multiple teams daily, and cores flow steadily into the economy.
 
 **Exceptions and Danger:**
-- **Grade shifts:** An established Rift's grade can increase during deepening. An E-Rift being delayed can shift to D or higher, trapping a team inside with suddenly stronger monsters. This is a real catastrophe risk.
-- **S-Rank Rifts are lawless:** S-Rifts follow no established rules. Monster types, Rift behavior, internal structure, core location — all unknown. Anything can happen. S-Rift expeditions are legendary events, not routine work.
+- **Rank shifts:** An established Rift's Rank can increase during deepening. An E-Rank Rift being delayed can shift to D or higher, trapping a team inside with suddenly stronger monsters. This is a real catastrophe risk.
+- **S-Rank Rifts are lawless:** S-Rank Rifts follow no established rules. Monster types, Rift behavior, internal structure, core location — all unknown. Anything can happen. S-Rank Rift expeditions are legendary events, not routine work.
 
-**The crisis:** Danesmoor (collapse) and Kessler (A-grade deepening) are **exceptions** where the system failed. Most days, the baseline holds. These are the breaks.
+**The crisis:** Danesmoor (collapse) and Kessler (A-Rank deepening) are **exceptions** where the system failed. Most days, the baseline holds. These are the breaks.
 
 ## Hunter Casualties and Career Dynamics
 
@@ -136,8 +136,8 @@ Being a hunter is **extremely dangerous.** Annual casualty and retirement rate i
 
 **Consequences:**
 - The profession is constantly bleeding people; the city needs constant flows of newly Awakened to maintain workforce
-- Hunter shortage at higher tiers is real — A-Rank and S-Rank hunters are national assets, not replaceable
-- E-D Rank hunters are common (easier to replace) but even they die regularly
+- Hunter shortage at higher Ranks is real — A-Rank and S-Rank hunters are national assets, not replaceable
+- E-Rank–D-Rank hunters are common (easier to replace) but even they die regularly
 - Career longevity is short; most hunters don't last decades
 - This drives urgency in recruitment and the willingness to take risks
 
@@ -172,25 +172,25 @@ Forged Ranks are rare because the death penalty is immediate and obvious.
 Hunters are paid through a **rank-based salary system with performance bonuses:**
 
 - **Base salary:** Determined by official Rank. E-Rank hunters earn less than S-Rank hunters; the gap is significant.
-- **Expedition bonus:** Successful Rift clearance yields additional pay. Bonuses scale with Rift grade (clearing a C-Rift pays more bonus than an E-Rift).
+- **Expedition bonus:** Successful Rift clearance yields additional pay. Bonuses scale with Rift Rank (clearing a C-Rank Rift pays more bonus than an E-Rank Rift).
 - **Employer variation:** The **Hunters' Association** uses this salary + bonus model. **Guilds** may negotiate differently (higher base, lower bonus, or per-contract rates). **Independent hunters** work per-expedition rates, no salary.
 - **Income reality:** A steady E-Rank hunter in the Association can survive; an independent E-Rank struggles. Higher Ranks (B-A-S) are well-compensated and can demand better terms.
 
-The system incentivizes hunters to clear higher-grade Rifts (for bonuses) but keeps entry-level hunters in the Association system (for the salary safety net).
+The system incentivizes hunters to clear higher-Rank Rifts (for bonuses) but keeps entry-level hunters in the Association system (for the salary safety net).
 
 ## Rift Team Composition Requirements
 
 Rifts must be cleared by **teams with proper Rank composition:**
 
 **Core rule:** The **majority of the team must be at the same Rank as the Rift** (or higher).
-- A C-Rift needs mostly C-Rank hunters (C-Rank majority). You can include some D-Rank or lower **as support** — carrying gear, logistics, field first aid — but they don't lead and don't fight the monsters.
-- B-Rift needs mostly B-Rank hunters; can include some A-Rank as leaders and C-Rank/lower in support.
+- A C-Rank Rift needs mostly C-Rank hunters (C-Rank majority). You can include some D-Rank or lower **as support** — carrying gear, logistics, field first aid — but they don't lead and don't fight the monsters.
+- B-Rank Rift needs mostly B-Rank hunters; can include some A-Rank as leaders and C-Rank/lower in support.
 
 **Flexibility:**
-- A lower-Rank hunter can participate in a Rift **one tier above** their Rank (D-Rank in a C-Rift, C-Rank in a B-Rift) if the majority rule is satisfied. Risk is theirs; monsters don't care about your intent.
-- A lower-Rank hunter can participate in **higher-tier Rifts** (more than one tier above) **only in support roles** — carrying equipment, setting camp, evacuating injured, managing resources. They do not engage monsters directly.
+- A lower-Rank hunter can participate in a Rift **one tier above** their Rank (D-Rank in a C-Rank Rift, C-Rank in a B-Rank Rift) if the majority rule is satisfied. Risk is theirs; monsters don't care about your intent.
+- A lower-Rank hunter can participate in **higher-Rank Rifts** (more than one Rank above) **only in support roles** — carrying equipment, setting camp, evacuating injured, managing resources. They do not engage monsters directly.
 
-**Rationale:** This prevents catastrophic team wipe-outs and ensures appropriate firepower for each Rift grade.
+**Rationale:** This prevents catastrophic team wipe-outs and ensures appropriate firepower for each Rift Rank.
 
 ## The System
 
@@ -248,18 +248,18 @@ This is the current institutional crisis driving all four power centers.
 
 ---
 
-# Hunter Ranks (E–S)
+# Hunter Ranks (E-Rank–S-Rank)
 
 The **Hunters' Association** certifies and ranks all licensed Awakened on a ladder:
 
 | Rank | Meaning | Typical Rift Assignment |
 |------|---------|------------------------|
-| **E** | Newly Awakened; basic training complete | E-Rift solo or supervised |
-| **D** | Competent solo hunter; proven through field assessment | D-Rift solo; E-Rift team lead |
-| **C** | Experienced; handles moderate danger | C-Rift team member; B-Rift with backup |
-| **B** | Veteran; rare and sought after | B-Rift lead; A-Rift with experienced team |
-| **A** | Elite; public reputation and heavy demand | A-Rift lead; S-Rift with team |
-| **S** | Legendary; top-tier national threat-capable | S-Rift lead; Special assignments |
+| **E** | Newly Awakened; basic training complete | E-Rank Rift solo or supervised |
+| **D** | Competent solo hunter; proven through field assessment | D-Rank Rift solo; E-Rank Rift team lead |
+| **C** | Experienced; handles moderate danger | C-Rank Rift team member; B-Rank Rift with backup |
+| **B** | Veteran; rare and sought after | B-Rank Rift lead; A-Rank Rift with experienced team |
+| **A** | Elite; public reputation and heavy demand | A-Rank Rift lead; S-Rank Rift with team |
+| **S** | Legendary; top-tier national threat-capable | S-Rank Rift lead; Special assignments |
 | **Anomalous** | Breaks the scale; growth potential unclear | Unassigned; tracked by all factions |
 
 ## S-Rank Hunters: Heroes and Uncontained
@@ -280,7 +280,7 @@ This power imbalance is foundational: S-Rank hunters are assets the world needs 
 
 **Awakening as a life event:** A person might live 20, 30, or 40 years without Awakening, then suddenly Awaken with a supernatural ability and a Rank. This can happen at any moment. Some Awaken as children (rare), most after puberty, some in middle age or later. There is no pattern or warning.
 
-**Flexibility:** Higher-Rank hunters commonly take lower-Rank work. An A-Rank can enter an E-Rift if needed (it's trivially easy for them). This keeps the system flexible and prevents shortage problems at entry levels.
+**Flexibility:** Higher-Rank hunters commonly take lower-Rank work. An A-Rank can enter an E-Rank Rift if needed (it's trivially easy for them). This keeps the system flexible and prevents shortage problems at entry levels.
 
 **Official certification:** The Association tests newly Awakened to determine their Rank from demonstrated mana pool, then certifies them with an official license. A hunter's **System Rank** (what they privately see) and **Official Rank** (what the Association certified) should match, but a misread or corrupted record can diverge. This gap is dangerous — a forged high Rank means you die in the Rift.
 
@@ -298,7 +298,7 @@ The full details on Abilities, Marks, mana, Ascensions, and the Rift ecosystem a
 
 *Association Rift Detection and Scouts:* The Association maintains a **scout corps** — experienced hunters stationed in hotspot zones (industrial districts, edges, known weak spots). When a Rift emerges (tremor, energy spike, citizen report, Rift-Sensor alert), scouts respond within minutes. They:
   - Confirm Rift emergence and location
-  - Estimate the Rift's grade (by pressure, monster sensing, environmental clues)
+  - Estimate the Rift's Rank (by pressure, monster sensing, environmental clues)
   - Establish initial perimeter and evacuation zones
   - Report to Association HQ with all findings
   - Brief the expedition team before deployment
@@ -341,7 +341,7 @@ Underground networks post Rift assignments outside official channels:
 - **How it works** — A fixer learns of a Rift (through scouts, citizens, or stolen Association intel). They assemble an unlicensed team and clear it before the Association can. Quick profit, high risk.
 - **Legality** — Illegal. Operating a Rift without Association permission is a felony.
 - **Risk** — Unlicensed teams get no official support, briefing, or equipment backup. Casualties are higher. Failed Rifts mean lost cores and deaths with no compensation.
-- **Profit** — A successful gray-market clear yields 100% core profit (Association takes no cut). A single C-Rift (15-30 cores) can be split among 3-4 hunters for life-changing money.
+- **Profit** — A successful gray-market clear yields 100% core profit (Association takes no cut). A single C-Rank Rift (15-30 cores) can be split among 3-4 hunters for life-changing money.
 
 ## Core Smuggling
 
@@ -404,7 +404,7 @@ All ledgers below are **instantiated canonical world content**, using real ident
 
 The following features enhance Reikon gameplay but are not required. Add them if they resonate; leave them out if they complicate play.
 
-**Monster Classification & Learning** — Hunters learn to identify monster archetypes (Weaklings, Bruisers, Swarmers, Hunters, etc.) within each grade. Recognizing an enemy type allows adapted tactics and builds progression through knowledge, not just raw power.
+**Monster Classification & Learning** — Hunters learn to identify monster archetypes (Weaklings, Bruisers, Swarmers, Hunters, etc.) within each Rank. Recognizing an enemy type allows adapted tactics and builds progression through knowledge, not just raw power.
 
 **Core Crafting & Enhancement** — Rare cores don't just trade for money; they go to specialists who craft unique weapons, armor, or ability-enhancing relics. A Strength-core might become gauntlets boosting physical power; a Rift-Sensing core becomes a warning pendant. Loot discovery drives character customization.
 

@@ -50,8 +50,8 @@ relationships:
   - REL-000038
 canonical_state:
   governance_structure: "A state bureau under Director Kest (ENT-000034) in Verholt."
-  doctrine_goals: "License and grade the Awakened; assign Rift-clearance; keep the cities from another collapse."
-  role: "The credentialing and regulatory power. It assigns Grades from assessed deeds (Rules Section 2.2) — a recorded claim, not the Ledger's private truth, and therefore forgeable and contestable."
+  doctrine_goals: "License and Rank the Awakened; assign Rift-clearance; keep the cities from another collapse."
+  role: "The credentialing and regulatory power. It assigns Ranks from assessed deeds (Rules Section 2.2) — a recorded claim, not the Ledger's private truth, and therefore forgeable and contestable."
   knowledge_stance: "Pragmatic and agnostic about what the Ledger is (REL-000036); custodian of the outlawed Warden Class as suppressed knowledge (REL-000038)."
   condition: "Legitimacy strained since the Danesmoor collapse (EVT-000023); under-resourced against rising Rift activity."
 ```

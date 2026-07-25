@@ -183,7 +183,7 @@ Each level grants **Stat Points** to allocate to these five core stats.
 
 **Assignment:** Clear E-Rift (solo, chosen by Daedalus)  
 **Location:** Verholt Industrial District, Warehouse 7  
-**Rift Grade:** E-Rank (confirmed by monster composition)  
+**Rift Rank:** E-Rank (confirmed by monster composition)
 **Stability Window:** 6 days remaining ✓  
 **Expedition Status:** IN PROGRESS (mid-expedition checkpoint)  
 **Kills:** 5 / estimated 15-20 total  

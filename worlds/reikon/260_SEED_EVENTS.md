@@ -65,7 +65,7 @@ provenance:
 type: Event
 importance: historical
 event_time: "Year 3 AR"
-summary: "The Aldish Republic charters the Hunters' Authority to license, grade, and direct the Awakened after the chaotic early years."
+summary: "The Aldish Republic charters the Hunters' Authority to license, Rank, and direct the Awakened after the chaotic early years."
 ```
 
 ---

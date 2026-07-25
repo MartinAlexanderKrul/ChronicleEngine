@@ -57,9 +57,9 @@ relationships:
   - REL-000029
 canonical_state:
   role: "Director of the Hunters' Authority, Verholt bureau."
-  capabilities: "Administration; hunter logistics; political survival. A former Grade II hunter, now largely deskbound."
+  capabilities: "Administration; hunter logistics; political survival. A former Rank II hunter, now largely deskbound."
   personality: "Institutionalist; protective of the Authority's mandate after Danesmoor."
-  knowledge: "Knows the Kessler Rift is under-graded and under-resourced; fears another collapse and what it would cost the Authority."
+  knowledge: "Knows the Kessler Rift is under-ranked and under-resourced; fears another collapse and what it would cost the Authority."
 ```
 
 ---
@@ -88,8 +88,8 @@ relationships:
 canonical_state:
   role: "Chair of the Meridian Guild, Verholt's dominant hunting company."
   capabilities: "Commerce; core-market control; talent acquisition; leverage."
-  personality: "Charming, acquisitive; treats Grades and licenses as assets."
-  knowledge: "Knows which licenses are for sale and which hunters are quietly over- or under-graded; buys silence."
+  personality: "Charming, acquisitive; treats Ranks and licenses as assets."
+  knowledge: "Knows which licenses are for sale and which hunters are quietly over- or under-ranked; buys silence."
 ```
 
 ---
@@ -168,9 +168,9 @@ aliases:
   - name: "Corin Vask"
     quality: current
 canonical_state:
-  role: "A celebrated Grade II hunter contracted to the Meridian Guild; a rival to the protagonist."
-  capabilities: "High-Grade combat; publicity; a carefully managed reputation."
-  personality: "Proud; image-conscious; not as secure in his Grade as the public believes."
+  role: "A celebrated Rank II hunter contracted to the Meridian Guild; a rival to the protagonist."
+  capabilities: "High-Rank combat; publicity; a carefully managed reputation."
+  personality: "Proud; image-conscious; not as secure in his Rank as the public believes."
   knowledge: "Aware his last two clears were quietly assisted; resents anyone who might expose it."
 ```
 
@@ -194,10 +194,10 @@ aliases:
   - name: "Tallow"
     quality: cover
 canonical_state:
-  role: "A black-market fixer dealing in unlicensed tutelage, illicit Marks, and forged Grades (ENT-000047, ENT-000048)."
+  role: "A black-market fixer dealing in unlicensed tutelage, illicit Marks, and forged Ranks (ENT-000047, ENT-000048)."
   capabilities: "Smuggling; document forgery; knowing who owes whom."
   personality: "Genial, amoral, useful."
-  knowledge: "Can get a hunter graded up on paper — for a price and a debt."
+  knowledge: "Can get a hunter ranked up on paper — for a price and a debt."
 ```
 
 ---
@@ -222,9 +222,9 @@ aliases:
   - name: "Sergeant Roan"
     quality: former
 canonical_state:
-  role: "A veteran Grade III hunter and the protagonist's first mentor; runs low-Grade clearance crews for the Authority."
+  role: "A veteran Rank III hunter and the protagonist's first mentor; runs low-Rank clearance crews for the Authority."
   capabilities: "Practical hunting; teaching; reading a Rift's danger; keeping green hunters alive."
-  personality: "Blunt, protective, unimpressed by Grades and publicity."
+  personality: "Blunt, protective, unimpressed by Ranks and publicity."
   knowledge: "Has survived long enough to distrust the Ledger's numbers and to notice when a hunter's page does not match their deeds."
 ```
 

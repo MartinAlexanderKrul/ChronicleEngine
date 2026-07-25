@@ -22,23 +22,23 @@ Findings are recorded here so they survive the conversation that produced them �
 
 ## PT-002 — Rift population / threat density is unauthored
 
-**Observed.** A Rift was assigned and cleared with no guardians and no real threat. Nothing in the profile or world docs says a Rift **must** have a population, a difficulty, or any threat proportional to its grade. So an "empty Rift" is indistinguishable from "the simulation did not author one" — the same failure shape as an unpriced good (Profile Section 12.7) or an unauthored ability cost: an unauthored magnitude gets improvised, here as "empty / fine."
+**Observed.** A Rift was assigned and cleared with no guardians and no real threat. Nothing in the profile or world docs says a Rift **must** have a population, a difficulty, or any threat proportional to its Rank. So an "empty Rift" is indistinguishable from "the simulation did not author one" — the same failure shape as an unpriced good (Profile Section 12.7) or an unauthored ability cost: an unauthored magnitude gets improvised, here as "empty / fine."
 
-**Class: Reikon world authoring** (Decision 062). The engine already supplies the pieces — `band_health` per grade and grade-baselined damage (Profile Section 6.4) mean a threat needs only a grade. What is missing is a rule that a Rift of grade G **is populated** by threats scaled to G by default, so emptiness is a deliberate authored exception rather than a default.
+**Class: Reikon world authoring** (Decision 062). The engine already supplies the pieces — `rank_health` per Rank and Rank-baselined damage (Profile Section 6.4) mean a threat needs only a Rank. What is missing is a rule that a Rift of Rank G **is populated** by threats scaled to G by default, so emptiness is a deliberate authored exception rather than a default.
 
-**Design question.** What determines a Rift's threat density — grade alone, or grade + age + anomaly + assignment source? Author a **Rift threat model** in the profile the way Section 6.4 authored monster damage and Section 12 authored the economy: minimal and grade-anchored, no bestiary and no tactical or map subsystem (Decision 020). A Rift names a grade (and optionally age/anomaly); its population follows by formula, as monster damage already does.
+**Design question.** What determines a Rift's threat density — Rank alone, or Rank + age + anomaly + assignment source? Author a **Rift threat model** in the profile the way Section 6.4 authored monster damage and Section 12 authored the economy: minimal and Rank-anchored, no bestiary and no tactical or map subsystem (Decision 020). A Rift names a Rank (and optionally age/anomaly); its population follows by formula, as monster damage already does.
 
-**Constraint.** Reuse `band_health` and grade baselining. Add no creature stat-blocks and no encounter/map subsystem.
+**Constraint.** Reuse `rank_health` and Rank baselining. Add no creature stat-blocks and no encounter/map subsystem.
 
 ---
 
-## PT-003 — "Unconfirmed grade" always resolves to "fine"
+## PT-003 — "Unconfirmed Rank" always resolves to "fine"
 
-**Observed.** Daedalus has had a long run of clean, low-risk wins — Ashgate closed with no real danger, the tannery Rift entirely empty. His `+2` favorable modifiers earned their keep mechanically, but the *fiction* has not put him in real danger in a while, because an unconfirmed-grade assignment keeps resolving to "turned out fine."
+**Observed.** Daedalus has had a long run of clean, low-risk wins — Ashgate closed with no real danger, the tannery Rift entirely empty. His `+2` favorable modifiers earned their keep mechanically, but the *fiction* has not put him in real danger in a while, because an unconfirmed-Rank assignment keeps resolving to "turned out fine."
 
-**Class: mixed.** The interpreter-discipline half is **engine-general** and sits next to PA-006 / Decision 060: an uncertain world-fact — here a Rift's true difficulty — should be arbitrated by canon, ruling, or the die, **not defaulted to the favorable outcome.** Systematically resolving "unconfirmed" to "safe" is the free-favorable-default that decision guards against, one level up. The calibration half is **Reikon world authoring**: tie assignment difficulty to something real (grade confidence, Rift age) so "unconfirmed" carries genuine variance — sometimes worse than hoped.
+**Class: mixed.** The interpreter-discipline half is **engine-general** and sits next to PA-006 / Decision 060: an uncertain world-fact — here a Rift's true difficulty — should be arbitrated by canon, ruling, or the die, **not defaulted to the favorable outcome.** Systematically resolving "unconfirmed" to "safe" is the free-favorable-default that decision guards against, one level up. The calibration half is **Reikon world authoring**: tie assignment difficulty to something real (Rank confidence, Rift age) so "unconfirmed" carries genuine variance — sometimes worse than hoped.
 
-**Design question.** Should an unconfirmed grade roll its true grade on the die, so an assessment can be wrong in the *dangerous* direction, and should grade-confidence be a stated property of an assignment rather than an implicit "probably fine"? Entangled with PT-002 (a populated-Rift model gives this its teeth) and with Perception's new self-appraisal unlock (Profile 0.9, Section 12.3 — a high-Perception Bearer *reads* the grade himself, removing the uncertainty legitimately rather than defaulting it).
+**Design question.** Should an unconfirmed Rank roll its true Rank on the die, so an assessment can be wrong in the *dangerous* direction, and should Rank-confidence be a stated property of an assignment rather than an implicit "probably fine"? Entangled with PT-002 (a populated-Rift model gives this its teeth) and with Perception's new self-appraisal unlock (Profile 0.9, Section 12.3 — a high-Perception Bearer *reads* the Rank himself, removing the uncertainty legitimately rather than defaulting it).
 
 **Constraint.** Variance must come from the die and established world facts, never from an interpreter making a scene harder for drama (Decision 003 again). The point is that "unconfirmed" should be genuinely uncertain, not reliably benign.
 

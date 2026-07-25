@@ -42,11 +42,11 @@ subtype: individual
 scope: local
 lifecycle: active
 aliases:
-  - name: "a forged Grade II license"
+  - name: "a forged Rank II license"
     quality: current
 canonical_state:
-  description: "An Authority hunter license reading Grade II, forged by Tallow (ENT-000039); the bearer's true capability is lower."
-  provenance: "Forged; instance of the forging-of-Grades technique (ENT-000047)."
+  description: "An Authority hunter license reading Rank II, forged by Tallow (ENT-000039); the bearer's true capability is lower."
+  provenance: "Forged; instance of the forging-of-Ranks technique (ENT-000047)."
   significance: "A recorded claim, not objective capability (Rules Section 2.2). It opens doors and contracts — and fails catastrophically the first time a Rift demands the capability it asserts."
 ```
 
@@ -97,7 +97,7 @@ aliases:
   - name: "the deep-Rift core"
     quality: current
 canonical_state:
-  description: "A core drawn from an unusually deep Rift, recovered by the Aurology Institute (EVT-000024). Its properties underpin the Institute's contested finding about the Rupture (ENT-000045, REL-000034)."
+  description: "A-Rank core drawn from an unusually deep Rift, recovered by the Aurology Institute (EVT-000024). Its properties underpin the Institute's contested finding about the Rupture (ENT-000045, REL-000034)."
   custody: "Held by Dr. Vane (ENT-000036) at the Institute; unpublished; sought by the Vigil, which wants it destroyed, and by the Meridian Guild, which wants it sold."
   significance: "The object around which the world's central conflict currently turns."
 ```

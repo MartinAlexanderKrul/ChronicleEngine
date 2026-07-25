@@ -16,6 +16,8 @@ Current Task:
 
 The Version 0.3 planned architecture was frozen with Decisions 072–075 accepted on 2026-07-23. Milestones **0.3.1–0.3.3 are implemented**, 0.3.4 is closed by drop (Decision 075), and the **Consistency Audit is complete**. Milestone **0.3.5 — Capability Validation and the Prototype Campaign is in progress**. Gatefall: Pendragon (`campaigns/gatefall_pendragon_001/`) is the designated live prototype; destructive, contradictory, and compatibility-failure cases remain non-canonical fixtures. Decision 076 was admitted on 2026-07-25 by explicit owner ruling as a foundational exception after live play demonstrated that relationship characterization did not survive promotion; it advances the Data Model to 0.1.3. The validation plan and evidence matrix live under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`. Further foundational findings require the same explicit governance disposition; prototype evidence is allowed to change architecture rather than being forced to validate a known defect.
 
+The prototype's terminology audit also normalized the worlds' E–S classification to the single term **Rank** (E-Rank through S-Rank). This is a world-authoring/consistency refinement under 0.3.5: Gatefall Profile 1.7 migrates persisted `system_tier` to `system_rank`, while Reikon Profile 0.11 is additive because its renamed Rank identifiers are derived rather than stored.
+
 The accepted scope replaced Governance & Society at 0.3 and moved it to Version 0.4. Its argument, its five capability milestones, and the recorded argument against it are in the Version 0.3 section below.
 
 Next Review:

@@ -35,7 +35,7 @@ When the player says an NPC couldn't know something, they are right by default �
 ## Special cases (all instances of the same rule)
 
 - **The System is invisible to everyone but its Bearer** (profile §14.4). No NPC knows his level, XP, stats, skills, pending grants, or that he has a System at all. An NPC reads him by his *visible conduct* — how he fights, what he carries — never his window.
-- **Numbers are out-of-character** (profile §20.5). No NPC quotes HP, damage, a die result, or a band. A mender says "he can't take another hit like that," never "he's at 9 of 40."
+- **Numbers are out-of-character** (profile §20.5). No NPC quotes HP, damage, a die result, or a Rank. A mender says "he can't take another hit like that," never "he's at 9 of 40."
 - **Inside an uncleared Gate there are no cameras or instruments** (profile §13.4). What happened in a Gate is known only to those who were in it and walked out to say so.
 
 ## Red flags — STOP and re-narrate

@@ -876,6 +876,18 @@ Record role determines how a document should be used when resolving contradictio
 
 ---
 
+## Rank
+
+The sole name for an authored E–S classification in a world that uses the letter scale.
+
+Values are written **E-Rank, D-Rank, C-Rank, B-Rank, A-Rank, and S-Rank**, ordered from E-Rank to S-Rank. The same vocabulary applies regardless of subject: Gate Rank, hunter Rank, monster Rank, item Rank, skill Rank, key Rank, official Rank, effective Rank, or System Rank.
+
+**Grade**, **tier**, and **band** are not synonyms for this scale. They remain valid only for unrelated concepts already carrying those names, such as an action-resolution result band, an injury tier, a confidence band, a canon-hierarchy tier, or the proper item name *Hunter's Band*.
+
+Structured state uses a subject-specific `*_rank` name. Literal legacy field names quoted in migration records remain unchanged because they identify the compatibility source being migrated; immutable checkpoints and durable transcript exports retain the vocabulary captured when they were created.
+
+---
+
 ## Relationship
 
 A specialization of the Persistent Object (`REL-`): a first-class link between exactly two entities, with a type, qualities, its own state and history, and—where established—Texture describing how the endpoints behave toward one another.

@@ -2,7 +2,7 @@
 
 **World Status:** Complete and playable  
 **Version:** 0.1 (Solo Leveling-inspired gate-and-hunter world)  
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.3; Reikon World Rule Profile 0.10 (frozen)
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.3; Reikon World Rule Profile 0.11 (frozen)
 **Created:** 2026-07-13
 
 ---
@@ -108,10 +108,10 @@
 5. Gain XP and grow stronger
 
 **Rift Lifecycle:** 2-7 days to clear before catastrophic collapse  
-**Rift Frequency:** Multiple E-D per day, several C per week, one A per month, one S per year  
+**Rift Frequency:** Multiple E-Rank–D-Rank per day, several C-Rank per week, one A-Rank per month, one S-Rank per year
 **Annual Casualty Rate:** 20-30% (dangerous profession)  
 **Monster Types:** Broodlings (weak), Swarmers (coordinated), Bruisers (tanky), Slingers (ranged), Hunters (intelligent), Siege Beasts, Warlords, Anomalies, Apex Predators, Architects  
-**Hunter Ranks:** E, D, C, B, A, S, Anomalous (immutable, determined by mana pool at Awakening)
+**Hunter Ranks:** E-Rank, D-Rank, C-Rank, B-Rank, A-Rank, S-Rank, Anomalous (immutable, determined by mana pool at Awakening)
 
 **Power Centers:**
 - Government (civilian administration)
@@ -142,7 +142,7 @@
 - Fire mage + Durability boost
 - E-Rank, Hunters' Association
 - Ambitious Prodigy personality
-- First assignment: Clear Warehouse 7 E-Rift
+- First assignment: Clear Warehouse 7 E-Rank Rift
 
 ---
 

@@ -29,7 +29,7 @@ Daedalus, a 20-year-old scholar from the Aurology Institute, recently Awakened d
 **First Assignment:**
 - **Objective:** Clear Warehouse 7 E-Rift (solo or supervised)
 - **Location:** Verholt Industrial District
-- **Rift Grade:** E-Rank
+- **Rift Rank:** E-Rank
 - **Stability Window:** 6 days remaining
 - **Expected Monsters:** 15-20 Broodlings (weak, numerous) and Swarmers (coordinated)
 - **Reward:** 50 cores + Association bonus
@@ -39,7 +39,7 @@ Daedalus, a 20-year-old scholar from the Aurology Institute, recently Awakened d
 - Kessler Rift (A-Rank) is deepening — Association crisis mode
 - Aurology Institute discovered System architect evidence — institutional tension rising
 - Danesmoor collapse aftermath still affecting public confidence
-- Multiple Rifts emerge daily in Verholt (mostly E-D grade)
+- Multiple Rifts emerge daily in Verholt (mostly E-Rank–D-Rank)
 
 **Key Contacts:**
 - **Dr. Kael Venn** (Institute Director) — Recommended you; believes in your potential

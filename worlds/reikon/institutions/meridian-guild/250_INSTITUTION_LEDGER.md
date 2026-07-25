@@ -45,8 +45,8 @@ relationships:
   - REL-000030
 canonical_state:
   governance_structure: "A chartered company under Chair Renn (ENT-000035), with a fellowship of contracted hunters."
-  doctrine_goals: "Field hunting teams for profit; corner the core market; acquire and retain high-Grade talent."
-  role: "The commercial monopoly interest. Turns Grades, licenses, and cores into assets; buys silence where a hunter's page and deeds diverge."
+  doctrine_goals: "Field hunting teams for profit; corner the core market; acquire and retain high-Rank talent."
+  role: "The commercial monopoly interest. Turns Ranks, licenses, and cores into assets; buys silence where a hunter's page and deeds diverge."
   knowledge_stance: "Indifferent to what the Ledger is; deeply interested in what it is worth. Would sell the Institute's deep-Rift core (ENT-000050) rather than study or destroy it."
-  condition: "Dominant in Verholt; quietly assisting its star hunter Corin Vask (ENT-000038) to protect his marketable Grade."
+  condition: "Dominant in Verholt; quietly assisting its star hunter Corin Vask (ENT-000038) to protect his marketable Rank."
 ```

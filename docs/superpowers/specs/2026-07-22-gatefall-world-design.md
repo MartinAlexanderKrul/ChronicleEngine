@@ -24,7 +24,7 @@ All expression is original: same mechanical skeleton and genre principles as Sol
 | Character depth | Every notable figure authored with want, fear, secret, live agenda, and relationships — flat characters are a recorded Reikon failure and a spec violation here |
 | Lethality | Fully lethal — die + authored threat model decide; protagonist death hard-ends the campaign |
 | Reikon fate | Kept as-is, campaign `reikon_awakening_001` marked **dormant** (fully resumable, nothing deleted) |
-| Build approach | Clean-slate full build; reuse engine primitives that work (grade-banded health, grade-baselined damage); no retheme of Reikon's profile |
+| Build approach | Clean-slate full build; reuse engine primitives that work (Rank Health, Rank-baselined damage); no retheme of Reikon's profile |
 
 ---
 
@@ -37,26 +37,26 @@ All expression is original: same mechanical skeleton and genre principles as Sol
 - Awakened rank (E–S) is assessed once by mana measurement and never changes — for everyone except the protagonist.
 - Only awakened can enter Gates. Killing the boss closes the Gate.
 
-**The USA layer.** Gate affairs are federally regulated by the **Bureau of Gate Management (BGM)**: hunter licensing, Gate grading, clearance-contract auctions. Clearing is done by private **guilds** (majors are publicly traded, with drafted S-ranks) and freelance low-rank hunters working E/D-Gate contracts. The world adapted the way the real world adapts: insurance markets, federal regulation, guild capitalism, cable-news coverage of S-rank raids.
+**The USA layer.** Gate affairs are federally regulated by the **Bureau of Gate Management (BGM)**: hunter licensing, Gate ranking, clearance-contract auctions. Clearing is done by private **guilds** (majors are publicly traded, with drafted S-Rank hunters) and freelance low-Rank hunters working E-Rank/D-Rank Gate contracts. The world adapted the way the real world adapts: insurance markets, federal regulation, guild capitalism, cable-news coverage of S-Rank raids.
 
 **Chicago** is a top-five US Gate city: high Gate density along the lakefront and L corridors, two major guilds, a BGM regional office.
 
-**The protagonist's hook** (campaign-level, the world must support it): the city's notoriously weakest licensed E-rank survives a double-dungeon-style incident and receives the **System** — quests, levels, stats that grow — which no other hunter has and no instrument can detect.
+**The protagonist's hook** (campaign-level, the world must support it): the city's notoriously weakest licensed E-Rank survives a double-dungeon-style incident and receives the **System** — quests, levels, stats that grow — which no other hunter has and no instrument can detect.
 
 **Prague** is the second home base, authored at the same depth as Chicago. Europe runs national Gate agencies under an EU coordination body (the **European Gate Council**); hunter licenses have international reciprocity. Prague's texture deliberately contrasts with Chicago's: Gates opening inside a UNESCO-protected historic center (clearing without destroying heritage is a legal and tactical constraint), a smaller and scrappier hunter scene where individuals matter sooner, older infrastructure, and a stronger black market feeding artifact smuggling westward. The System works identically everywhere.
 
 **Global layer.** Gates are worldwide. The world bible carries the worldwide Gate landscape, the European authority structure, license reciprocity, and notable foreign powers at foundation depth. Campaign creation chooses Chicago or Prague; other regions get authored if a campaign ever needs them.
 
-**European guild landscape.** EU license reciprocity makes Europe's guild scene transnational: **guild strength scales with home-country size and Gate density.** Large countries (Germany, France, UK) field top-tier national guilds that operate across borders; small countries can't sustain an S-rank-tier domestic guild and import clearance capacity — a standing political tension between sovereignty and safety. The world bible names the major international guilds operating in Europe (each with a one-line identity, home country, and posture), including at minimum: **Brandhof** (German, the continent's largest, engineering-corps culture), **Zenith Group** (British, finance-driven, buys rather than builds), and Horizon Guild's European arm. In Prague all three compete for CGA contracts against local Karlov; internationals get full institution ledgers only when a campaign engages them beyond contract competition.
+**European guild landscape.** EU license reciprocity makes Europe's guild scene transnational: **guild strength scales with home-country size and Gate density.** Large countries (Germany, France, UK) field leading national guilds that operate across borders; small countries can't sustain an S-Rank domestic guild and import clearance capacity — a standing political tension between sovereignty and safety. The world bible names the major international guilds operating in Europe (each with a one-line identity, home country, and posture), including at minimum: **Brandhof** (German, the continent's largest, engineering-corps culture), **Zenith Group** (British, finance-driven, buys rather than builds), and Horizon Guild's European arm. In Prague all three compete for CGA contracts against local Karlov; internationals get full institution ledgers only when a campaign engages them beyond contract competition.
 
 ## Hunter scale (authored in the world bible)
 
 The population pyramid is fixed at 1.0 so "how rare is a hunter?" is never improvised:
 
 - **Awakening rate:** roughly 1 in 5,000 people (~0.02%) — about 1.6 million awakened worldwide; a minority hold hunter licenses (many awakened take safer work: appraisal, construction, medicine, military).
-- **Rank distribution among licensed hunters:** E 60%, D 22%, C 11%, B 5%, A ~2%. **S-rank is counted in individuals, not percentages** — about 200 worldwide, each a strategic national asset.
-- **United States:** ~66,000 awakened, ~25,000 licensed hunters, **11 S-ranks**. Chicago: ~1,200 licensed hunters, 2 resident S-ranks (Horizon Guild's ace; one BGM federal asset).
-- **Czech Republic:** ~2,100 awakened, ~800 licensed hunters, **1 S-rank** (a national celebrity and political football). Prague: ~350 licensed hunters — small enough that every B-rank is a known name, which is exactly the point of starting there.
+- **Rank distribution among licensed hunters:** E-Rank 60%, D-Rank 22%, C-Rank 11%, B-Rank 5%, A-Rank ~2%. **S-Rank is counted in individuals, not percentages** — about 200 worldwide, each a strategic national asset.
+- **United States:** ~66,000 awakened, ~25,000 licensed hunters, **11 S-Rank hunters**. Chicago: ~1,200 licensed hunters, 2 resident S-Rank hunters (Horizon Guild's ace; one BGM federal asset).
+- **Czech Republic:** ~2,100 awakened, ~800 licensed hunters, **1 S-Rank hunter** (a national celebrity and political football). Prague: ~350 licensed hunters — small enough that every B-Rank hunter is a known name, which is exactly the point of starting there.
 
 ---
 
@@ -65,8 +65,8 @@ The population pyramid is fixed at 1.0 so "how rare is a hunter?" is never impro
 Everything below is authored in `206_WORLD_RULE_PROFILE.md` before play. Numeric magnitudes (XP curves, thresholds, costs, prices) are fixed during profile authoring, governed by one rule: **any magnitude the System can surface in play must be authored — an unauthored magnitude is a profile bug**, the failure class behind Reikon's empty Rifts.
 
 - **Mana pool & health** — the protagonist's mana pool, its growth on level-up, recovery rate, and the authored consequence of running dry; a health model with natural recovery rates, injury severity tiers, and how potions and hospital treatment interact with them. Both fully authored at 1.0 (Reikon's pool/vitality sections prove the shape works — the numbers are Gatefall's own).
-- **Other hunters & parties** — NPC hunters resolve by their fixed rank band (no sheets); authored party rules: standard party contracts (loot splits, liability), which Gate grades legally require a minimum party, and how party members' capability bands interact in a clear. The protagonist's early game happens inside parties of people stronger than he pretends to be — including the classic dungeon-betrayal setup, which needs no special rules, only enforceable contracts and witnesses (or their absence).
-- **Stat window** — Strength, Agility, Vitality, Intelligence, Perception. **Every stat has an authored payoff at 1.0:** stats feed die modifiers in their domains at authored thresholds, and named thresholds unlock capabilities (e.g., high Perception reads a Gate's true grade; high Agility unlocks reaction windows ordinary hunters don't get).
+- **Other hunters & parties** — NPC hunters resolve by their fixed Rank (no sheets); authored party rules: standard party contracts (loot splits, liability), which Gate Ranks legally require a minimum party, and how party members' Ranks interact in a clear. The protagonist's early game happens inside parties of people stronger than he pretends to be — including the classic dungeon-betrayal setup, which needs no special rules, only enforceable contracts and witnesses (or their absence).
+- **Stat window** — Strength, Agility, Vitality, Intelligence, Perception. **Every stat has an authored payoff at 1.0:** stats feed die modifiers in their domains at authored thresholds, and named thresholds unlock capabilities (e.g., high Perception reads a Gate's true Rank; high Agility unlocks reaction windows ordinary hunters don't get).
 - **Levels & XP** — XP from kills, quests, and Gate-clear milestones. Level-up grants stat points. Only the protagonist levels; every other hunter is fixed at measured rank.
 - **Daily quest** — a training regimen with a real reward (stat points) and a real penalty: skipping it drops the protagonist into a lethal **penalty zone**. Every in-world day carries stakes.
 - **Quests** — urgent quests (the System reacts to nearby crises) and hidden quests with first-clear rewards.
@@ -83,30 +83,30 @@ Gatefall declares `/system` as its diegetic command (listed in the index's diege
 - `/system` — the status window: name, level, class (or `—`), title equipped, XP bar, Health/Mana, the five stats, unspent points.
 - `/system quests` — active daily / urgent / hidden quests with objectives, rewards, and deadlines.
 - `/system skills` — known skills with rank, mana cost, and growth progress.
-- `/system inventory` — dimensional storage contents with item grades.
+- `/system inventory` — dimensional storage contents with item Ranks.
 - `/system shop` — the authored stock list at the protagonist's current tier, with gold prices — shopping happens in-window, never as an OOC question.
 - `/system titles` — earned titles and their passives; one equipped.
 - `/system log` — the last N System messages (quest issues, level-ups, warnings), rendered from the authored message templates.
-- **Class panel (post-class-quest)** — each hidden class adds one authored panel (e.g., Shadowbinder: the shadow roster with names, grades, and states; Soulforged Armory: the bound-weapon arsenal).
+- **Class panel (post-class-quest)** — each hidden class adds one authored panel (e.g., Shadowbinder: the shadow roster with names, Ranks, and states; Soulforged Armory: the bound-weapon arsenal).
 
 All panels are read-only views of canonical state; nothing is editable through them, and inline compact notifications (`XP: 40 → 90/300`) remain the in-play surface between window calls. The profile authors every panel template at 1.0, including the class panels.
 
 ## Loot
 
-Loot is a first-class subsystem at 1.0, not flavor text. **Every Gate clear yields loot rolled from an authored table keyed to the Gate's grade; the boss always drops something.** Items carry a grade E–S on the same banding as Gates and hunters, so an item's magnitude follows from its grade the way a monster's health does. An item the table can produce but the profile hasn't authored is a profile bug.
+Loot is a first-class subsystem at 1.0, not flavor text. **Every Gate clear yields loot rolled from an authored table keyed to the Gate's Rank; the boss always drops something.** Items carry a Rank from E-Rank to S-Rank on the same scale as Gates and hunters, so an item's magnitude follows from its Rank the way a monster's Health does. An item the table can produce but the profile hasn't authored is a profile bug.
 
-Categories at 1.0, each with authored effects, prices (gold and USD where sellable), and grade scaling:
+Categories at 1.0, each with authored effects, prices (gold and USD where sellable), and Rank scaling:
 
-- **Weapons & armor** — graded gear with authored die-facing effects; rare pieces carry one named property (lifedrink, mana-burn, unbreaking). High-grade beast materials (fangs, hide, cores) are the crafting inputs *industry* uses — the protagonist sells materials or commissions gear; no player crafting subsystem.
-- **Potions & elixirs** — healing and mana restoration in grade tiers; antidotes; **elixirs** as rare permanent stat consumables (the shop's late-game gold sink).
+- **Weapons & armor** — Ranked gear with authored die-facing effects; rare pieces carry one named property (lifedrink, mana-burn, unbreaking). High-Rank beast materials (fangs, hide, cores) are the crafting inputs *industry* uses — the protagonist sells materials or commissions gear; no player crafting subsystem.
+- **Potions & elixirs** — healing and mana restoration keyed to Rank; antidotes; **elixirs** as rare permanent stat consumables (the shop's late-game gold sink).
 - **Runes** — single-skill teaching stones, consumed on use; the common way combat skills enter circulation. Rune drops are how the world's *other* hunters got their one or two fixed skills — for the protagonist they stack.
 - **Skill books** — rarer, richer than runes: a full skill with a growth path. Class-restricted books exist and are worthless to everyone but him.
-- **Dungeon keys** — instant-dungeon access, graded; the loot that generates more gameplay.
+- **Dungeon keys** — instant-dungeon access, Ranked; the loot that generates more gameplay.
 - **Mana crystals & beast cores** — the economy's spine: sellable for USD on the licensed market (or better prices on the black market, with consequences), or to the shop for gold.
 
-Drop rarity is authored per Gate grade (e.g., an E-Gate yields crystals and maybe a rune; a red-gate anomaly rolls on a table a grade above its assessment). Named uniques exist only as authored items with provenance — no procedurally invented artifacts.
+Drop rarity is authored per Gate Rank (e.g., an E-Rank Gate yields crystals and maybe a rune; a red-gate anomaly rolls on a table one Rank above its assessment). Named uniques exist only as authored items with provenance — no procedurally invented artifacts.
 
-Engine integration: reuse `band_health` per grade and grade-baselined damage (already proven in Reikon's profile). The profile is written in Chronicle Engine terms and governed by engine rules.
+Engine integration: reuse derived `rank_health` per Rank and Rank-baselined damage (already proven in Reikon's profile). The profile is written in Chronicle Engine terms and governed by engine rules.
 
 ---
 
@@ -114,12 +114,12 @@ Engine integration: reuse `band_health` per grade and grade-baselined damage (al
 
 World law at 1.0, addressing PT-002, PT-003, PT-001 respectively:
 
-1. **Every Gate is populated, by law.** A Gate of grade G contains a threat population derived by formula from G — trash beasts, at least one elite, a boss — on the grade-banded health/damage baselines. The simulation cannot improvise "empty"; an empty Gate is an authored anomaly with an in-world cause, and in this world an empty-looking dungeon is a *warning sign* (the double-dungeon lesson). No bestiary, no tactical/map subsystem: a threat needs only a grade, per the existing engine constraint.
-2. **Grades are assessments, not facts.** A BGM grade carries a stated confidence. On first entry, a low-confidence grade **rolls its true grade on the die**, with a distribution that includes worse-than-assessed. Mis-graded Gates are canonically how low-rank hunters die. Red-gate-style anomalies (no exit until cleared) exist in an authored anomaly table. High Perception removes the uncertainty legitimately by reading the true grade — a stat payoff with teeth.
+1. **Every Gate is populated, by law.** A Gate of Rank G contains a threat population derived by formula from G — common beasts, at least one elite, a boss — on the Rank Health/damage baselines. The simulation cannot improvise "empty"; an empty Gate is an authored anomaly with an in-world cause, and in this world an empty-looking dungeon is a *warning sign* (the double-dungeon lesson). No bestiary, no tactical/map subsystem: a threat needs only a Rank, per the existing engine constraint.
+2. **Ranks are assessments, not facts.** A BGM Rank carries a stated confidence. On first entry, a low-confidence Rank **rolls its true Rank on the die**, with a distribution that includes worse-than-assessed. Mis-ranked Gates are canonically how low-Rank hunters die. Red-gate-style anomalies (no exit until cleared) exist in an authored anomaly table. High Perception removes the uncertainty legitimately by reading the true Rank — a stat payoff with teeth.
 3. **Logistics compress to montage, by law.** BGM paperwork, licensing queues, and contract auctions exist in fiction but the profile directs the runtime to compress them by default. Beat-by-beat play is reserved for uncertain, opposed, or consequential action. If a scene has no way to go wrong, it is a sentence, not a session. This is compression, not a drama timer — danger still arises only causally (Consistency Before Drama, Decision 003, is preserved).
 4. **Fully lethal.** The die and the authored threat model decide; protagonist death hard-ends the campaign. Penalty zones can kill. Uncleared Gate timers genuinely lapse into dungeon breaks — standing world pressure the simulation surfaces honestly instead of inventing drama.
 5. **Dungeon variety is authored.** The populated-by-formula law fixes *empty*; an **archetype table** fixes *samey*. Each Gate rolls or is assigned an authored archetype (crypt, hive, flooded mine, overgrown temple, beast den, shattered city…), each carrying one mechanical twist (darkness, water, verticality, swarm behavior, a shrine worth looting) that colors the clear without adding a map subsystem.
-6. **Exposure & re-grading.** An E-rank who performs like a B-rank gets noticed. Authored rules for how anomalies surface (witness reports, appraiser re-measurement requests, guild scouting, media), the BGM/CGA **re-assessment procedure** and the "reawakened" classification it can yield, and what the protagonist can legally refuse. His System is instrument-invisible, but his feats are not — the secrecy game runs on these authored rules, never on OOC rulings.
+6. **Exposure & re-ranking.** An E-Rank who performs like a B-Rank gets noticed. Authored rules for how anomalies surface (witness reports, appraiser re-measurement requests, guild scouting, media), the BGM/CGA **re-assessment procedure** and the "reawakened" classification it can yield, and what the protagonist can legally refuse. His System is instrument-invisible, but his feats are not — the secrecy game runs on these authored rules, never on OOC rulings.
 
 ---
 
@@ -141,10 +141,10 @@ Hidden class table at 1.0 — all unique on Earth, each authored with core mecha
 
 **Goal: ordinary play never needs an out-of-character question.** Reikon's failure mode generalized: every unauthored fact becomes either an OOC interruption or an improvised (usually favorable) default. Gatefall is authored so the predictable questions of play are answered in the files before the first session. Concretely, the world must pre-answer at least these question classes:
 
-- **Money** — authored price lists: cost of living (rent, food, transit) in both cities; gear and potion prices by grade; contract payouts by Gate grade; crystal/core prices on the licensed market vs. black market; typical starting funds by protagonist background; guild salary/split terms vs. freelance rates.
+- **Money** — authored price lists: cost of living (rent, food, transit) in both cities; gear and potion prices by Rank; contract payouts by Gate Rank; crystal/core prices on the licensed market vs. black market; typical starting funds by protagonist background; guild salary/split terms vs. freelance rates.
 - **Procedure & time** — how licensing works and how long it takes; the step-by-step path from Gate detection → grading → auction/assignment → clearance → loot declaration; auction cadence; emergency response order when a break starts. Each authored once as a procedure, so play can montage it.
 - **Law** — what is illegal (unlicensed Gate entry, undeclared loot, black-market sale, ability use on humans), the realistic penalty range, and how enforcement actually behaves in each city.
-- **Gates** — spawn rate per city per week, grade frequency distribution, timer length by grade, what a break looks like by grade, who responds.
+- **Gates** — spawn rate per city per week, Rank frequency distribution, timer length by Rank, what a break looks like by Rank, who responds.
 - **The System's voice** — authored message templates (quest issued, quest complete, level up, penalty warning, title granted), the daily quest's exact regimen, rewards, and penalty; the XP curve and level-up stat grant; shop stock list by tier.
 - **Common knowledge** — what an ordinary citizen knows, what a licensed hunter knows, what only regulators/guild masters know. Prevents both "everyone knows everything" and repeated table questions about who can know what.
 
@@ -161,22 +161,22 @@ Every notable figure is authored with all of: a **want** (what they're pursuing)
 - **Places** — Loop/lakefront high-density Gate corridor; an L-line district for low-rank contract work; a permanently quarantined dungeon-break scar (standing mystery and danger zone); guild HQs; BGM Region V office.
 - **Institutions (4):**
   - **Bureau of Gate Management — Region V** — federal regulator: licensing, grading, contract auctions.
-  - **Horizon Guild** — top-tier, publicly traded, S-rank ace.
+  - **Horizon Guild** — leading, publicly traded, S-Rank ace.
   - **Ironline Guild** — blue-collar rival, aggressive recruiter of low-ranks.
   - **Windy City Hunters Coalition** — freelancer co-op; likely protagonist starting affiliation.
 - **Notable figures** — BGM regional director; each guild's master and ace; a licensed appraiser; a black-market core buyer.
-- **Seed events** — a mis-graded Gate incident brewing; a guild war over a Gate-rich district auction.
+- **Seed events** — a mis-ranked Gate incident brewing; a guild war over a Gate-rich district auction.
 
 ## Prague (same depth as Chicago)
 
 - **Places** — Old Town / Malá Strana historic-center Gate cluster (UNESCO constraint: heritage-preserving clearance rules that make fights harder and contracts pricier); the metro-tunnel corridor where low-rank contracts live; a quarantined break scar across the Vltava in an outer district; Karlov Guild HQ; the Czech Gate Administration seat.
 - **Institutions (4):**
-  - **Czech Gate Administration (CGA)** — national regulator under the European Gate Council; underfunded, proud, protective of its one S-rank.
+  - **Czech Gate Administration (CGA)** — national regulator under the European Gate Council; underfunded, proud, protective of its one S-Rank hunter.
   - **Karlov Guild** — Prague's dominant guild, family-run, deep city ties, old-fashioned.
   - **Horizon Guild — Europe** — the American major's Prague branch office; resented, well-funded, hiring away local talent (ties the two cities into one world).
   - **Staroměstská Lodge** — the freelancer co-op; likely protagonist starting affiliation for a Prague campaign.
-- **Notable figures** — the CGA director; the Czech S-rank (national celebrity, political football); Karlov's guildmaster and heir; Horizon Europe's branch chief; Brandhof's and Zenith's Prague operations leads (bible-level entries, promoted to full depth if a campaign engages them); a black-market artifact smuggler moving goods westward.
-- **Seed events** — an Old Town Gate that keeps re-grading upward and nobody will say why; a three-way foreign bidding war (Horizon, Brandhof, Zenith) to buy out or displace Karlov Guild, with the CGA quietly favoring whoever promises to keep the S-rank home.
+- **Notable figures** — the CGA director; the Czech S-Rank hunter (national celebrity, political football); Karlov's guildmaster and heir; Horizon Europe's branch chief; Brandhof's and Zenith's Prague operations leads (bible-level entries, promoted to full depth if a campaign engages them); a black-market artifact smuggler moving goods westward.
+- **Seed events** — an Old Town Gate that keeps being ranked upward and nobody will say why; a three-way foreign bidding war (Horizon, Brandhof, Zenith) to buy out or displace Karlov Guild, with the CGA quietly favoring whoever promises to keep the S-Rank hunter home.
 
 ## The hidden truth (owner-eyes-only)
 
@@ -206,7 +206,7 @@ The world bible ends with a clearly-marked **owner-only section** that the Runti
 ## Success criteria
 
 1. Repository validation passes; the welcome-page index lists Gatefall and shows `reikon_awakening_001` dormant.
-2. The profile contains no unauthored magnitude reachable in ordinary play: every Gate grade yields a concrete threat population **and a concrete loot roll**; every System feature has authored costs, rewards, and thresholds.
+2. The profile contains no unauthored magnitude reachable in ordinary play: every Gate Rank yields a concrete threat population **and a concrete loot roll**; every System feature has authored costs, rewards, and thresholds.
 3. A campaign can be created in Gatefall in **either Chicago or Prague** without the world needing further authoring for its first sessions.
 4. Every notable figure satisfies the character depth law (want, fear/flaw, secret, live agenda, relationships).
 5. The completeness bar holds: every question class in Section 5b has its answers authored in the files — a first-session read-through can answer money, procedure, law, Gate, System-voice, and common-knowledge questions without a single OOC ruling.

@@ -106,7 +106,7 @@ aliases:
     quality: current
 canonical_state:
   location: "The Kessler industrial district on Verholt's south bank."
-  grade_estimate: "Assessed by the Authority as clearable at Grade III; contested — its depth has grown."
+  rank_estimate: "Assessed by the Authority as clearable at Rank III; contested — its depth has grown."
   conditions: "Stable but slowly deepening; a candidate for the next collapse if clearance is delayed. A Rift is a transient Place: it exists until cleared or until it collapses."
 ```
 
@@ -152,7 +152,7 @@ endpoints:
   - ENT-000041
   - ENT-000031
 type: governance
-qualities: "Regulatory jurisdiction over Rifts, the Awakened, and Grade licensing within Verholt; legitimacy band: Strained. Civil municipal government retains ordinary matters."
+qualities: "Regulatory jurisdiction over Rifts, the Awakened, and Rank licensing within Verholt; legitimacy band: Strained. Civil municipal government retains ordinary matters."
 state: "Strained since the Danesmoor collapse (EVT-000023); the Authority's writ over hunters is resented by the Meridian Guild and doubted by the public."
 history: "Held since the Authority's charter (EVT-000019)."
 ```

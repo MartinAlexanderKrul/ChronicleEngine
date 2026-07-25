@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000139 |
-| Record | `REC-` | Canonical Record | REC-000090 |
-| Event | `EVT-` | Event | EVT-000082 |
+| Entity | `ENT-` | Persistent Entity | ENT-000140 |
+| Record | `REC-` | Canonical Record | REC-000091 |
+| Event | `EVT-` | Event | EVT-000083 |
 | Relationship | `REL-` | Relationship | REL-000066 |
 
 ---
@@ -185,6 +185,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000066 | Relationship | Gatefall: Pendragon: Alexander Pendragon and Owen — personal relationship formed after the Ashfield Gate clear, distinct from their crew membership; the one relationship in which Alexander's inexplicability is acknowledged rather than hidden |
 | REC-000090 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0013/900_SAVE_MANIFEST.md` — apartment checkpoint on 2026-07-29 afternoon, filing strategy agreed, before the crew's Coalition meeting |
 | EVT-000082 | Event | Gatefall: Pendragon: explicit World Rule Profile 1.5→1.6 migration — daily quests retain their 06:00 issue but now fail at the following midnight; fifth-daily progress preserved and deadline moved from 2026-07-30 06:00 to 00:00; no fictional time or other state changed |
+| ENT-000140 | Entity | Gatefall: Pendragon: Vanguard Trade & Gear, a licensed Chicago hunter-supply retailer distinct from Ironbound — mundane E-grade civilian stock, visited once for a replacement resonance chisel |
+| EVT-000083 | Event | Gatefall: Pendragon: Session 2 continued (2026-07-29 afternoon–evening to 2026-07-30 morning) — pending daily rewards claimed, all 18 unspent stat points allocated, the 2026-07-29 Daily Premium cycle rolled and partially purchased (Ascendant Hunter's Band, Premium Rune teaching Stone Skin, Adaptive Bastion Torso), the resonance-chisel errand at Vanguard Trade & Gear completing the fifth daily quest, a BGM payout-processing discrepancy resolved by explicit ruling releasing all three pending payouts (cash to $34,381), the crew debrief and loot split at the Coalition case table with Priya ceding future tactical/strategic authority to Alexander by explicit ruling, a bonding crew dinner, and Alexander and Owen's (`REL-000066`) first night together |
+| REC-000091 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0014/900_SAVE_MANIFEST.md` — Session 2 checkpoint after the crew debrief, loot split, tactical-authority ruling, and the deepened relationship with Owen, captured the following morning |
 
 ---
 

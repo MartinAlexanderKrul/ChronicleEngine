@@ -36,19 +36,9 @@ subjects: []
 
 - **Armored Greave [E]** — **Bastion legs armor · Good · Vitality +1 · physical reduction 3%**. Grip-soled, joint-hinged leg armor salvaged from the Red Line Corridor boss (`EVT-000059`), suited to broken/vertical terrain. Stored and **not equipped** because the legs slot is occupied by the Shin Guards; whether it is Alexander's to keep or goes to the pooled split remains undecided (`EVT-000060`).
 
-### Mining Tool (Purchased 2026-07-25, Ironbound) — **BROKEN**
+### Mining Tool (Purchased 2026-07-25, Ironbound)
 
-- **Resonance Chisel** — **Broken; applies no line and is unusable** (Profile Section 11.5, Condition). Basic-model harvest tool, purchased from Diane at Ironbound for $80 (`EVT-000063`). Its head sheared from the shaft on a natural critical fumble while Alexander pushed an exhausted seam near the Ashfield Gate's aperture (`EVT-000080`, Section 4.8 — repeated attempts wear tools). Retained as scrap; replacement costs another $80 at Ironbound. It served two C-grade harvest jobs and part of a third clear before failing.
-
-### Ashfield Gate Haul (2026-07-28) — **crew loot, unsplit and unsold**
-
-Taken from the cleared Ashfield Gate (`EVT-000080`) and held pending the crew split. **None of this is yet Alexander's individual property**, and by the crew's own agreement none of it may be sold before they reconvene: the material is simultaneously the payout and the evidence of the Gate's true grade.
-
-- **16 C-crystals** — five taken from the common beasts killed inside, eleven mined (4 by Alexander, 6 by the crew, 1 hand-worked after the chisel broke). At licensed C rates (~$2,500 each) the crystal pool is ≈$40,000.
-- **2 C-cores** — one from the elite, one extracted from the boss by Alexander personally (strong success, clean and uncracked). At licensed C rates (~$6,250 each), ≈$12,500.
-- **Longshot [C]** — Gate-forged mana-bearing bow, the boss drop (d100 6 → equipment; d20 7 → Longshot). **Perception +5, Agility +2, weapon power 7, ranged armed strike ×0.75, two-handed.** Julian offered it directly to Priya as the better shot; Alexander overruled him — it enters the split or is bought out of it. Ownership undecided.
-
-Standard Gatefall party split applies (Profile Section 13): 10% leader's share off the top to Priya Okafor, the remaining 90% divided equally among all five. Not yet computed or filed.
+- **Resonance Chisel** — basic-model harvest tool, purchased from Diane at Ironbound for $80. Finds a vein's resonant seam; standard support-crew equipment (`EVT-000063`).
 
 ---
 
@@ -59,7 +49,7 @@ Standard Gatefall party split applies (Profile Section 13): 10% leader's share o
 - Ordinary krav maga training gear (wraps, mouthguard, gym clothes) and a modest personal wardrobe.
 - Standard studio apartment lease in Chicago (rent per Profile Section 12.4, ≈$1,400/month — an ordinary cost of living, not separately tracked as an asset).
 
-System-shop gold (22,520 g, unchanged — nothing bought or sold this clear), stored potions (**9 lesser healing potions**, one having been given to Priya Okafor during the boss fight, `EVT-000079`), antidotes, the E instant-dungeon key, the unequipped **Channeling Focus [E]** won from a Daily Random Box (`EVT-000075`), the equipped **C-grade Quickknife** (**Good · main hand · Agility +7 · weapon power 7 · armed strike ×0.75**), the recovered **E-grade Quickknife** (off hand — pulled back out of the boss's shoulder seam at the clear), and the current Daily Premium cycle are Bearer state tracked in `100_CHARACTER_SHEET.md`'s `system_state` (Profile Sections 11.5, 12.5, 12.9, 14.1). Profile 1.2 normalization and loadout state were adopted under `EVT-000072`, the current premium offer grades were migrated under Profile 1.3 in `EVT-000073`, and Profile 1.4 added weapon power under `EVT-000074`; no ownership or provenance changed.
+System-shop gold (22,520 g), stored potions/antidotes/key, the equipped **C-grade Quickknife** (**Good · main hand · Agility +7 · weapon power 7 · armed strike ×0.75**), and the current Daily Premium cycle are Bearer state tracked in `100_CHARACTER_SHEET.md`'s `system_state` (Profile Sections 11.5, 12.5, 12.9, 14.1). Profile 1.2 normalization and loadout state were adopted under `EVT-000072`, the current premium offer grades were migrated under Profile 1.3 in `EVT-000073`, and Profile 1.4 added weapon power under `EVT-000074`; no ownership or provenance changed.
 
 ## Pending Income (not yet received)
 

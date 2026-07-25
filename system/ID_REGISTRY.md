@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000139 |
-| Record | `REC-` | Canonical Record | REC-000087 |
-| Event | `EVT-` | Event | EVT-000074 |
+| Record | `REC-` | Canonical Record | REC-000089 |
+| Event | `EVT-` | Event | EVT-000080 |
 | Relationship | `REL-` | Relationship | REL-000065 |
 
 ---
@@ -173,6 +173,14 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000073 | Event | Gatefall: Pendragon: explicit World Rule Profile 1.2→1.3 Daily Premium grade migration — six current models and purchase flags preserved; five unpurchased grade-bearing offers independently rerolled for grade; no fiction or other campaign state changed |
 | EVT-000074 | Event | Gatefall: Pendragon: explicit World Rule Profile 1.3→1.4 causal-Stats migration — daily XP removed by replay (Level 3, 80/300), four completed dailies normalized with squats/streak/boxes, completed-level growth and pending rewards settled, Health/Mana re-derived, weapon power added, and `effective_band` renamed `system_tier`; no resolved exchange changed |
 | REC-000087 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0010/900_SAVE_MANIFEST.md` — mid-combat checkpoint after the Ashfield Gate's entry, first-wave clear, Alexander's first kill above his own band, and the elite's breakthrough and counter |
+| EVT-000075 | Event | Gatefall: Pendragon: stat allocation (10 migration-era points: Strength +3, Perception +3, Intelligence +3, Vitality +1) and one Daily Random Box opened, yielding an E-grade Channeling Focus |
+| EVT-000076 | Event | Gatefall: Pendragon: the elite's defeat — three further exchanges (graze, critical, strong) wearing it down to defenceless, an automatic finishing blow, and the resulting Level 3→4 level-up |
+| EVT-000077 | Event | Gatefall: Pendragon: crew aftermath dialogue — near-death accountability from Owen and Priya, deepened rapport with Owen, crew ranks established (Priya D, Julian/Renata E, Owen C), Owen's healing capacity established, and a tactical read finding a northeast lead toward the unlocated boss |
+| REC-000088 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0011/900_SAVE_MANIFEST.md` — post-combat checkpoint after the elite's defeat and crew aftermath, captured at a clean decision-point pause |
+| EVT-000078 | Event | Gatefall: Pendragon: owner-approved Gatefall World Rule Profile 1.4→1.5 migration — a mender's resolved treatment touch now clears an injury's severity outright, rank-gated (E/D/C/B+ clearing Minor/Moderate/Severe/Critical) and costing one per-clear touch; no fictional time consumed and no prior resolution changed |
+| EVT-000079 | Event | Gatefall: Pendragon: the Ashfield boss engagement — the crew's agreed plan, the unseen approach, the ambush and weak-point critical, two natural fumbles, the boss's retaliation inflicting a Severe rib injury, the claimed Status Recovery, and the evasion; combat ongoing |
+| EVT-000080 | Event | Gatefall: Pendragon: the Ashfield Gate cleared — Owen's mender touch clearing the Severe injury (first exercise of the Profile 1.5 rule), the boss kill and three level-ups to Level 7, the seven contained survivors, the harvest and broken chisel, the exit, the deliberately withheld BGM report, and Owen's direct acknowledgment of Alexander's exposure |
+| REC-000089 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0012/900_SAVE_MANIFEST.md` — first checkpoint captured under frozen Profile 1.5, taken at the bar after the Ashfield Gate's full clear |
 
 ---
 

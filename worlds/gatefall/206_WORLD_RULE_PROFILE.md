@@ -1,12 +1,21 @@
-# Gatefall — World Rule Profile 1.4
+# Gatefall — World Rule Profile 1.5
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.4
+**Profile Version:** 1.5
 **Engine Compatibility:** 0.2.0; Data Model 0.1.2
 **Status:** Active
-**Compatibility Status:** frozen at version 1.4 (Rules Section 14.6, Decision 074), declared 2026-07-25. Version 1.4 is a **migrating** advance over frozen 1.3: Stats now cause the body and resources they name; the Bearer's Health, Mana, physical magnitude, and contested positioning derive from effective Stats rather than level-band substitution; weapons add power instead of lending their grade's whole damage band; level-up and daily rewards follow the System's separated growth contract; and the Runtime receives an exact stat-first resolution procedure. An active 1.3 campaign must complete the migration below before play continues. Version 1.3 remains the immutable contract governing play before that migration.
+**Compatibility Status:** frozen at version 1.5 (Rules Section 14.6, Decision 074), declared 2026-07-28. Version 1.5 is a **migrating** advance over frozen 1.4: a mender's resolved treatment now **clears an injury's severity outright**, gated by the mender's rank against the injury tier, instead of merely halving its healing clock. This makes the mender working type what the world's fiction already treats it as — the reason a crew pays for one — and moves the real constraint onto the mender's limited per-clear touches rather than onto a rule that made a C-rank healer unable to set a broken bone. An active 1.4 campaign must complete the migration below before play continues. Version 1.4 remains the immutable contract governing play before that migration.
+
+**Required 1.4 → 1.5 migration.** At the readiness gate or the next natural pause, before further resolution:
+
+1. Preserve every Stat, level, XP total, pool value, item, equipment slot, skill, title, currency, ownership, provenance, daily reward, streak, and resolved fictional outcome. Profile 1.5 re-resolves no past action and recalculates no past damage.
+2. Preserve every **currently tracked injury** at its recorded severity, location, and cause. Injuries already healed stay healed; injuries already sustained are not retroactively cleared by this migration — they become clearable by the new treatment rule from this point forward.
+3. Preserve each mender's **per-clear touch count already spent** this clear. A touch spent under 1.4 is spent; the remaining touches operate under Section 6.3's new treatment rule.
+4. Re-render `/system` and record the migration event and acknowledgement in the live ledgers and next promoted checkpoint.
+
+This migration changes no Health, Mana, XP, Stat, gold, item, or ownership value. It only changes what a mender's touch is able to do from the moment it is adopted.
 
 **Required 1.3 → 1.4 migration.** At the readiness gate, before any further fiction or resolution:
 
@@ -456,7 +465,7 @@ Losing Health is not the same as taking a lasting **injury**. A hit inflicts an 
 
 The Runtime assigns the injury's **severity** from the engine's four-tier taxonomy (`010_ENGINE_RULES.md` Section 6.8 — **Minor · Moderate · Severe · Critical**) given the hit's magnitude and the established fiction, and tracks it under the engine injury model (location, type, ongoing effect, treatment). An injury's modifier-step and capability consequences (Rules Section 6.9) persist until it is healed; restoring Health does not by itself clear it.
 
-Untreated injuries heal on a tiered clock; professional (hospital) treatment **halves** the time at every tier. A healing-touch **mender's** care counts as professional care for this halving, priced as a hired session in Section 12.7:
+Untreated injuries heal on a tiered clock; professional (hospital) treatment **halves** the time at every tier:
 
 | Severity | Untreated | Hospital / professional care |
 |---|---|---|
@@ -465,11 +474,32 @@ Untreated injuries heal on a tiered clock; professional (hospital) treatment **h
 | **Severe** | 1 month | ½ month |
 | **Critical** | 3 months, **with death risk absent treatment** | 6 weeks |
 
+### A Mender Clears Severity
+
+A healing-touch **mender** does not merely accelerate that clock. A mender's **resolved treatment touch clears an injury's severity outright** — flesh knits, bone sets, the wound closes and the body is whole again — provided the mender's rank reaches the injury's tier:
+
+| Mender rank | Highest injury tier they can clear |
+|---|---|
+| **E** | Minor |
+| **D** | Moderate |
+| **C** | Severe |
+| **B and above** | Critical |
+
+- **It costs a touch.** Clearing severity consumes one of the mender's limited per-clear touches (Section 13.5), exactly as a Health restoration does. The mender's scarcity, not the injury table, is what makes wounds matter in a Gate.
+- **A single touch does one job.** One touch either restores Health or clears one injury's severity, chosen at the moment it is applied. It does not do both; the two axes remain independent (Section 6.4).
+- **Above their rank, they still help.** A mender treating an injury above their tier cannot clear it, but their care counts as professional treatment for the halving in the table above, and may step the severity down by one tier at the Runtime's ruling where the fiction supports it.
+- **It is a resolved treatment, not a label.** The touch is an actual applied action in the fiction — the mender must reach the patient and lay hands on them. Under pressure it is an uncertain action like any other and may be resolved by the die.
+- **Death remains final** (Section 6.5). A mender restores the living; nothing here touches that boundary.
+
+Priced as a hired session in Section 12.7. This is the reason a crew that can afford a mender fields one, and the reason a high-rank mender commands what they do.
+
 A **Critical** injury left untreated may kill the target before it heals — stabilization is not optional. Healing potions restore Health directly on the schedule authored in the economy (Section 12.5, per Anchor A7); a potion controls immediate bleeding and restores Health but does not by itself clear a wound's severity, which advances only through elapsed time and care.
 
 ## 6.4 Treatment Interaction
 
-Direct Health restoration (a potion, a skill, a facility) and severity recovery are independent: restoring Health to full does not automatically clear an injury condition, and clearing a condition does not automatically restore Health. A fictional label ("bandaged", "rested") never upgrades care on its own; care advances only through a resolved treatment appropriate to the injury. New damage applies immediately and may worsen severity.
+Direct Health restoration (a potion, a skill, a facility) and severity recovery are independent **axes**: restoring Health to full does not automatically clear an injury condition, and clearing a condition does not automatically restore Health. A fictional label ("bandaged", "rested") never upgrades care on its own; care advances only through a resolved treatment appropriate to the injury. New damage applies immediately and may worsen severity.
+
+Independence is about *what an effect does*, not about whether severity can be removed quickly. A **mender's touch is a resolved treatment** and clears severity outright within their rank (Section 6.3) — that is the one effect authored to act on the severity axis directly. A potion, a Status Recovery, and a level-up act only on the Health axis and never clear a wound, however full they leave the pool. This is why a Bearer can stand at maximum Health and still be genuinely broken, and why a crew's mender is the answer to that condition rather than another potion.
 
 ## 6.5 Death Is Final
 

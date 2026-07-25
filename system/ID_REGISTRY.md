@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000140 |
 | Record | `REC-` | Canonical Record | REC-000092 |
-| Event | `EVT-` | Event | EVT-000088 |
+| Event | `EVT-` | Event | EVT-000089 |
 | Relationship | `REL-` | Relationship | REL-000066 |
 
 ---
@@ -194,6 +194,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000087 | Event | Gatefall: Pendragon: the command-versus-relationship collision Owen raised provisionally resolved (crew members, not partners, in a Gate), and a full rest day off — apartments, Owen's boat on the lake, first kiss, no Gates or crew business — through early evening heading to dinner |
 | EVT-000088 | Event | Gatefall: Pendragon: the evening of 2026-07-30 — Owen's pay and outside work established, Alexander's deferred proposal that Owen build and lead a crew with him in it (OBJ-12, motives stated as both Owen's worth and his C-Rank card), dinner, the Ashfield report confirmed filed, the 2026-07-30 Daily Premium cycle opened with three offers bought (gold 20,255 → 15,835), the Premium Rune consumed to learn Rupture [E-Rank], and a drawer given at Owen's apartment |
 | REC-000092 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0016/900_SAVE_MANIFEST.md` — automatic context-preservation checkpoint captured under frozen Profile 1.8, no migration required on restore |
+| EVT-000089 | Event | Gatefall: Pendragon: the night of 2026-07-30 into the morning of 2026-07-31 — both banked Ability Points +3 awards claimed and six points allocated (Strength 30, Agility 26, Vitality 22), the Strength-30 stat-milestone skill Overpower granted, maximum Health re-derived 80→88, all four banked Daily Random Boxes opened (potion cache, two 500 g purses, Titan Boots [E-Rank]; gold 15,835 → 16,835), the 2026-07-31 Daily Premium cycle rotated and rolled with a Ghost Quickknife [B-Rank] at 18,000 g beyond reach and nothing bought, and the seventh daily quest completed at Loyola Park (streak 6→7) |
 
 ---
 

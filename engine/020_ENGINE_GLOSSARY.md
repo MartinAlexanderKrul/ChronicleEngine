@@ -878,7 +878,7 @@ Record role determines how a document should be used when resolving contradictio
 
 ## Relationship
 
-A specialization of the Persistent Object (`REL-`): a first-class link between exactly two entities, with a type, qualities, and its own state and history.
+A specialization of the Persistent Object (`REL-`): a first-class link between exactly two entities, with a type, qualities, its own state and history, and—where established—Texture describing how the endpoints behave toward one another.
 
 Membership, governance, legitimacy, and diplomacy are modelled as relationships; entities reference relationship identifiers rather than duplicating relationship state. The structure is defined in `011_ENGINE_DATA_MODEL.md`, Section 10; the meaning of each relationship type in the relevant `010_ENGINE_RULES.md` domain section.
 
@@ -1097,6 +1097,14 @@ The current engine uses Active, Regional, and Global simulation layers.
 How the world perceives a character.
 
 It includes reputation, title, rumor, legal status, and public standing.
+
+---
+
+## Texture
+
+The observable manner in which two Characters express their Relationship: habits, verbal patterns, physical tells, forms of address, character firsts, and behavior distinctive to that pair.
+
+Texture answers *how the relationship is expressed*; Qualities answer *what the relationship is*. It records only behavior established by play, never inferred interior state. A non-institutional Character-to-Character Relationship requires Texture once manner has been established; if historical evidence does not survive, the field says *not recorded* rather than inventing it. Defined in `011_ENGINE_DATA_MODEL.md`, Section 10 (Decision 076).
 
 ---
 

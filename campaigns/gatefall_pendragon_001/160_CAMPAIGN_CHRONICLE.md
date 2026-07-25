@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000079
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000056
@@ -55,7 +55,7 @@ subjects:
 ```yaml
 id: EVT-000056
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: ruling
@@ -76,7 +76,7 @@ description: "Alexander Pendragon (ENT-000125), one week into an active BGM hunt
 ```yaml
 id: EVT-000058
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-1-gameplay
@@ -101,7 +101,7 @@ description: "Alexander Pendragon's first week as an active hunter (2026-07-22 t
 ```yaml
 id: EVT-000059
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-1-gameplay
@@ -137,7 +137,7 @@ No crew casualties. Loot has not yet been collected; the crew has not yet exited
 ```yaml
 id: EVT-000060
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-1-gameplay
@@ -168,7 +168,7 @@ Coalition visit (2026-07-25). Alexander went to the Windy City Hunters Coalition
 ```yaml
 id: EVT-000061
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-1-gameplay
@@ -188,7 +188,7 @@ description: "A confirmed D-grade Gate near Chicago's old rail yards is posted o
 ```yaml
 id: EVT-000062
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: ruling
@@ -209,7 +209,7 @@ description: "Correction to `EVT-000060`. Kesha Morrison's dialogue there stated
 ```yaml
 id: EVT-000063
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -249,7 +249,7 @@ Back at the Coalition, Alexander asked Kesha about further C-grade mining work; 
 ```yaml
 id: EVT-000064
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -272,7 +272,7 @@ Dale (`ENT-000135`) greeted him, already briefed by Ada Reyes's word that he was
 ```yaml
 id: EVT-000065
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -303,7 +303,7 @@ description: "Alexander worked two vein assignments inside the Frozen Gallery un
 ```yaml
 id: EVT-000066
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -334,7 +334,7 @@ description: "Following the break granted at the end of `EVT-000065`, the harves
 ```yaml
 id: EVT-000067
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -363,7 +363,7 @@ No XP, Health, or Mana change this event — no combat resolved for Alexander; H
 ```yaml
 id: EVT-000068
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: ruling
@@ -390,7 +390,7 @@ The Frozen Gallery C-grade harvest job is complete: contract closed, no further 
 ```yaml
 id: EVT-000069
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -412,7 +412,7 @@ description: "Alexander took his declared rest day. That evening (2026-07-26) he
 ```yaml
 id: EVT-000070
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -452,7 +452,7 @@ Staged with Priya Okafor (`ENT-000136`) at 9 AM as arranged. Met the rest of the
 ```yaml
 id: EVT-000071
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -480,7 +480,7 @@ The elite is badly hurt but still active and recovering its footing. Priya is pu
 ```yaml
 id: EVT-000072
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: owner-approved-profile-migration
@@ -506,7 +506,7 @@ The current E-band Daily Premium cycle (2026-07-28 06:00 to 2026-07-29 06:00 Chi
 ```yaml
 id: EVT-000073
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: owner-approved-profile-migration
@@ -530,7 +530,7 @@ The migrated offers are Spellthread Focus [E] (Intelligence +4, active-skill Man
 ```yaml
 id: EVT-000074
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: owner-approved-profile-migration
@@ -558,7 +558,7 @@ The C Quickknife gained weapon power 7 and the E Quickknife weapon power 2, with
 ```yaml
 id: EVT-000075
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -580,7 +580,7 @@ Alexander then opened one of his four pending Daily Random Boxes (World Rule Pro
 ```yaml
 id: EVT-000076
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -612,7 +612,7 @@ Priya, Julian, Renata, and Owen all witnessed the finish; the clearing went quie
 ```yaml
 id: EVT-000077
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -646,7 +646,7 @@ As of this event, the crew stands at the same position: elite dead, boss unencou
 ```yaml
 id: EVT-000078
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: owner-approved-profile-migration
@@ -673,7 +673,7 @@ The migration was adopted out-of-character; no NPC is aware of a rules change, a
 ```yaml
 id: EVT-000079
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -719,7 +719,7 @@ The Status Recovery restored the pool and did **not** clear the injury. Alexande
 ```yaml
 id: EVT-000080
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -767,7 +767,7 @@ Alexander then directed a harvest near the aperture with Renata on watch: a five
 ```yaml
 id: EVT-000081
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay
@@ -807,7 +807,7 @@ No combat, injury, XP, Health, Mana, or gold change across this event. 15 unspen
 ```yaml
 id: EVT-000082
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: owner-rule-migration
@@ -833,7 +833,7 @@ No reward, streak, Health, Mana, XP, Stat, gold, item, ownership, relationship, 
 ```yaml
 id: EVT-000083
 canonical_record: REC-000079
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-2-gameplay

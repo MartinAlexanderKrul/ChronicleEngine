@@ -12,7 +12,7 @@ The figures and institutions themselves are world canon (`worlds/verra/220_NOTAB
 ```yaml
 id: REC-000021
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000014
@@ -58,7 +58,7 @@ subjects:
 ```yaml
 id: REL-000023
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000014
@@ -79,7 +79,7 @@ state: "Potential friction: Kael's choleric temperament and armed trade make Ord
 ```yaml
 id: ENT-000023
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000015
@@ -101,7 +101,7 @@ canonical_state:
 ```yaml
 id: ENT-000024
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000016
@@ -122,7 +122,7 @@ canonical_state:
 ```yaml
 id: ENT-000025
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000016
@@ -144,7 +144,7 @@ canonical_state:
 ```yaml
 id: ENT-000026
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000017
@@ -166,7 +166,7 @@ canonical_state:
 ```yaml
 id: ENT-000027
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000017
@@ -187,7 +187,7 @@ canonical_state:
 ```yaml
 id: ENT-000028
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000017
@@ -209,7 +209,7 @@ canonical_state:
 ```yaml
 id: ENT-000029
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000017
@@ -230,7 +230,7 @@ canonical_state:
 ```yaml
 id: REL-000024
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000016
@@ -247,7 +247,7 @@ state: "Active first watch."
 ```yaml
 id: REL-000025
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000016
@@ -264,7 +264,7 @@ state: "Tense but functional; Avel has seen Kael hold the door and follow washin
 ```yaml
 id: REL-000026
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000016
@@ -281,7 +281,7 @@ state: "Cautious respect after Kael held the family line; Brant remains dry and 
 ```yaml
 id: REL-000027
 canonical_record: REC-000021
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000017

@@ -12,7 +12,7 @@ This ledger records what is visible and accessible to the campaign. It reference
 ```yaml
 id: REC-000075
 canonical_record: REC-000075
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000056
@@ -27,7 +27,7 @@ subjects:
 ```yaml
 id: REL-000062
 canonical_record: REC-000075
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000056

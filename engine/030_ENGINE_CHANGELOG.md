@@ -12,6 +12,17 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-25 — Decision 076 completed: Relationship Texture and Data Model 0.1.3
+
+Live Gatefall prototype evidence showed that a personal relationship could pass every promotion and validation barrier while losing the observable manner that made the characters recognizable. By explicit owner ruling, Decision 076 entered Version 0.3 as a recorded foundational exception to the completed Architecture Freeze.
+
+**Data Model:** **0.1.2 → 0.1.3**. Relationship gains `Texture`; non-institutional Character-to-Character relationships require an authored value once play establishes manner. The value records observable behavior, never invented interior state. Historical relationships whose manner does not survive carry an explicit *not recorded* marker.
+**Migration:** all live mutable Persistent Objects and Canonical Records are retagged 0.1.3. Existing authored texture is preserved; four older personal relationships retain honest *not recorded* markers. Immutable checkpoints are byte-unchanged at their captured schema. Restoring a 0.1.2-or-earlier checkpoint surfaces the Campaign Schema mismatch, migrates the restored mutable graph at readiness, and validates before play. No fictional time passes and no identifier is allocated.
+**Runtime and enforcement:** the resident core gains Characterization Settlement and character-first triggers; `tools/validate_repository.ps1` enforces Texture coverage without judging prose quality and rejects live objects whose `schema_version` is not current 0.1.3 (immutable checkpoints remain excluded); automatic Context-Preservation now exports the non-regenerable transcript alongside checkpointing.
+**Templates and compatibility:** Relationship and Save Manifest templates advance to 0.1.3; live world compatibility declarations and campaign bindings advance to 0.1.3. The latest Gatefall Checkpoint 0014 remains an immutable 0.1.2 capture and therefore requires the explicit 0.1.2 → 0.1.3 readiness migration on restoration.
+**Chronology correction:** Decision 076’s original `2026-07-29` date was Gatefall’s in-world campaign date copied into a repository ADR. Git records the proposal and implementation on 2026-07-25 (`8b2cb74`, `bf43e00`); the ADR and roadmap now use the actual repository date.
+**Engine Version:** Unchanged; remains 0.2.0 until Version 0.3 completes its Prototype Campaign and Engine Postmortem gates.
+
 ## 2026-07-25 — Gatefall World Rule Profile 1.6: midnight daily deadline (migrating)
 
 Gatefall world authoring under Decision 062; no engine Rules, Data Model, Runtime profile, or decision number changed.

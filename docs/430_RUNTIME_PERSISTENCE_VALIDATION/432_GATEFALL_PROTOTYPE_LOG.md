@@ -30,6 +30,12 @@ At designation, the campaign had:
 - repeated identifier allocation and same-change worlds/campaigns index updates;
 - no baseline checkpoint, so `/restart` is correctly unavailable on the live campaign.
 
+## Current Evidence State
+
+As of 2026-07-25 repository time, ordinary play has advanced the campaign to fourteen canonical-form checkpoints (`900_CHECKPOINT_0001`–`0014`). Checkpoint 0014 is an automatic Context-Preservation capture at a quiet interval on the campaign morning of 2026-07-30, under frozen Gatefall Profile 1.6 and captured Campaign Schema 0.1.2.
+
+Live prototype evidence also produced Decision 076: Relationship Texture. That finding was accepted on 2026-07-25 repository time as an explicit foundational exception to the Version 0.3 Architecture Freeze and advances mutable live state to Data Model 0.1.3. Checkpoint 0014 and every earlier checkpoint remain byte-immutable at their captured schema; restoring them now requires the explicit schema migration at readiness before validation and play. The campaign's in-world date did not date the architectural decision.
+
 **Reconciliation (Decision 074 freeze):** After this baseline, the Gatefall World Rule Profile was frozen at version 1.0 (Rules Section 14.6, Decision 074), and later checkpoints capture `freeze_status: frozen`. This does not invalidate the baseline: Checkpoint 0004 was captured before the freeze and remains the real, immutable pre-freeze workshop-draft case (WRP-03), while the live frozen profile now supplies the genuine matching and mismatch cases (WRP-01, WRP-02, WRP-05). The validation harness reads the live profile's actual frozen version rather than assuming a fixed value, so it tracks the freeze instead of breaking against it.
 
 The live campaign is the positive-path subject. Its absence of a baseline is not repaired retroactively.
@@ -56,7 +62,7 @@ Branch and restart validation uses a disposable fork. Negative structure and com
 
 **Result:** Observed pass.
 
-Checkpoints 0001–0004 use the canonical four-digit directory form. Checkpoint 0004 contains all eight campaign ledgers and one manifest without a live registry identifier. The manifest records structured profile metadata and an explicit workshop-draft warning.
+Checkpoints 0001–0014 use the canonical four-digit directory form. Checkpoint 0014 contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004 and frozen Profile 1.6 metadata at Checkpoint 0014.
 
 **Matrix:** V03-01, V03-09.
 
@@ -64,7 +70,7 @@ Checkpoints 0001–0004 use the canonical four-digit directory form. Checkpoint 
 
 **Result:** Observed pass.
 
-Checkpoint 0004 records the complete eight-ledger target set. Live `180_CURRENT_STATE.md` identifies the promoted Events, ledger effects, registry advances, and same-change index update.
+Checkpoint 0004 records the original complete eight-ledger target set, and subsequent checkpoints through 0014 repeat the canonical form. Live `180_CURRENT_STATE.md` identifies promoted Events, ledger effects, registry advances, and same-change index updates.
 
 **Matrix:** V03-02.
 
@@ -72,7 +78,7 @@ Checkpoint 0004 records the complete eight-ledger target set. Live `180_CURRENT_
 
 **Result:** Observed pass at rest.
 
-The campaign advanced Alexander through several locations while the live repository continued to pass the Data Model 0.1.2 presence checks. This proves the positive shape is accepted; the negative fixture remains separate.
+The campaign advanced Alexander through several locations while the live repository continued to pass the Data Model 0.1.2 presence checks. The live state then migrated additively to Data Model 0.1.3 for Relationship Texture without changing the presence contract. This proves the positive shape remains accepted; the negative fixture remains separate.
 
 **Matrix:** V03-06.
 
@@ -135,7 +141,7 @@ P-04: Repository validation FAILED (3 error(s))
 **Date / checkpoint:** 2026-07-24 capability-validation worktree; branch source Gatefall 0004.
 **Command or barrier:** Disposable branch creation, baseline restart, and `validate_repository.ps1` after each state transition.
 **Starting state:** A complete temporary repository copy. The branch remaps every campaign-local definition into new monotonic registry allocations, including a protagonist distinct from `ENT-000125`, and records Gatefall 0004 as its parent.
-**Observed result:** Original campaign and source checkpoint directory digests stayed unchanged; the branch used distinct entity and Canonical Record identities, recorded non-canonical-continuation lineage, and passed repository validation. After a post-baseline Event allocation, restart restored all eight baseline ledgers byte-for-byte, kept the branch protagonist, preserved the registry high-water mark, left the discarded Event identifier retired, allocated the next Event identifier, and passed repository validation again.
+**Observed result:** Original campaign and source checkpoint directory digests stayed unchanged; the branch used distinct entity and Canonical Record identities, performed the explicit 0.1.2→0.1.3 migration on its new mutable graph before sealing its baseline, recorded non-canonical-continuation lineage, and passed repository validation. After a post-baseline Event allocation, restart restored all eight baseline ledgers byte-for-byte, kept the branch protagonist, preserved the registry high-water mark, left the discarded Event identifier retired, allocated the next Event identifier, and passed repository validation again.
 **Matrix cases:** V03-15, V03-16, V03-17.
 **Verdict:** Pass.
 
@@ -149,6 +155,17 @@ P-04: Repository validation FAILED (3 error(s))
 **Repository evidence:** Automated command-catalog coverage remains in `tools/test_runtime_command_catalog.ps1`; this entry records the required human observation without reconstructing an unavailable transcript.
 **Matrix case:** V03-13.
 **Verdict:** Pass.
+
+## Evidence 009 — Prototype-driven architecture finding and Checkpoint 0014
+
+**Date / checkpoint:** 2026-07-25 repository time; Gatefall Checkpoint 0014 at campaign time 2026-07-30.
+**Command or barrier:** Ordinary play, automatic Context-Preservation checkpoint and export, Decision 076 implementation, Data Model 0.1.3 live migration.
+**Starting state:** Thirteen earlier immutable checkpoints; a personal Character-to-Character Relationship whose standing survived promotion but whose manner required a new structural field.
+**Expected result:** Prototype evidence may change architecture when the finding is explicitly classified and governed; the Data Model version advances; live mutable state migrates; immutable checkpoints remain unchanged and acquire an explicit restoration migration.
+**Observed result:** Decision 076 was accepted as a recorded foundational exception; Relationship `Texture`, Characterization Settlement, coverage validation, and automatic transcript export were implemented. Four historical relationships carry honest *not recorded* markers. Live records are schema 0.1.3; Checkpoint 0014 remains a 0.1.2 capture and requires the additive readiness migration on restore.
+**Repository evidence:** Decisions 076; Data Model Sections 10 and 12.4.1; `tools/validate_repository.ps1`; Gatefall `180_CURRENT_STATE.md`; `exports/play_export_0001.md` and `play_export_0002.md`; Checkpoint 0014.
+**Matrix cases:** V03-01, V03-02, V03-09, V03-19.
+**Verdict:** Pass for finding disposition and migration; V03-19 remains open for the final postmortem determination.
 
 ---
 

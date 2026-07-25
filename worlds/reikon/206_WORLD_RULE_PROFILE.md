@@ -4,7 +4,7 @@
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
 **Profile Version:** 0.10
-**Engine Compatibility:** 0.2.0; Data Model 0.1.2
+**Engine Compatibility:** 0.2.0; Data Model 0.1.3
 **Status:** Active
 **Compatibility Status:** frozen (2026-07-23; Rules Section 14.6, Decision 074) — version 0.10 is an immutable behavioral contract and the first frozen World Rule Profile. Changing any declared override behavior now requires version 0.11 or later, classified additive or migrating. Checkpoints 0002–0017 were captured under unfrozen workshop-draft versions 0.1–0.8 and surface that warning on restoration.
 

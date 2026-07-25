@@ -14,7 +14,7 @@ Add one Object Block per entity. Copy the Character block for each NPC and the I
 ```yaml
 id: <generated: REC-XXXXXX>
 canonical_record: <generated: same as id>
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -36,7 +36,7 @@ One Character Object Block per NPC (see `templates/objects/character.md`).
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX of this ledger>
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -70,7 +70,7 @@ One Institution Object Block per faction (see `templates/objects/institution.md`
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX of this ledger>
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -93,3 +93,11 @@ canonical_state:
   military_arm: <optional: asset, or ENT-XXXXXX of a promoted Military Institution — §9.7>
   knowledge_stance: <optional: stance toward knowledge domains — §9.8>
 ```
+
+---
+
+## Relationships
+
+Add one Relationship Object Block for each relationship this ledger owns, using `templates/objects/relationship.md`. Include the `REL-` identifier in this ledger's `subjects`.
+
+For every non-institutional Relationship whose endpoints are both Characters, `texture` is required once play has established manner. Preserve observable habits, verbal patterns, physical tells, forms of address, and character firsts. If an older relationship has no surviving evidence of manner, write an explicit *not recorded* marker rather than reconstructing plausible behavior.

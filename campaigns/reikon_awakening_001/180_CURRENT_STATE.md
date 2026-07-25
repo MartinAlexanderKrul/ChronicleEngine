@@ -7,7 +7,7 @@
 ```yaml
 id: REC-000045
 canonical_record: REC-000045
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000050
@@ -20,7 +20,7 @@ subjects: []
 
 ## Bindings and Compatibility
 
-- Engine: 0.2.0; Data Model: 0.1.2
+- Engine: 0.2.0; Data Model: 0.1.3
 - World: Reikon 0.1
 - World Rule Profile: Reikon 0.8 (`RKO-OVR-001`, `RKO-OVR-002`) — recurrent intervention and succession contract active; the Warehouse 7 life-burn event remains expired; Emberbrand (the first recurrent-intervention grant) is spent, not merely expired; Section 8.2's Rift-clear milestone formula is authored; Stats are uncapped (Section 4.2) and Ascension grants 5 points (Section 4.1). *(Profile 0.9/0.10 authoring — Stat payoffs and the Rift threat model — is a separate world-content change adopted at the next readiness gate, Section 14.4.)*
 - Compatibility: compatible; no version mismatch outstanding
@@ -29,7 +29,7 @@ subjects: []
 
 **Live canon in this directory is authoritative.** Resume from this ledger.
 
-- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0017/` — Warehouse 7's permanent resolution (Wren Ashcombe's resonance extraction, `EVT-000048`) and the unguarded tannery E-Rift clear (+70 milestone XP, `EVT-000049`), sequenced after the Stat-cap removal. Two flagged corrections: Thorne's unauthored assignment-bonus claim (`EVT-000050`) and the recorded 24-vell Ashgate sale proceeds (`ENT-000086`).
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0017/` — Warehouse 7's permanent resolution (Wren Ashcombe's resonance extraction, `EVT-000048`) and the unguarded tannery E-Rift clear (+70 milestone XP, `EVT-000049`), sequenced after the Stat-cap removal. It remains immutable at Data Model 0.1.1 and requires the explicit schema migration through 0.1.2 to 0.1.3 at restoration readiness. Two flagged corrections: Thorne's unauthored assignment-bonus claim (`EVT-000050`) and the recorded 24-vell Ashgate sale proceeds (`ENT-000086`).
 - **Prior restorable checkpoint:** `saves/900_CHECKPOINT_0016/` — the Stat-cap removal and Ascension-rate ruling (World Rule Profile 0.8, `EVT-000045`) and the allocation of all 8 points (`EVT-000046`), applied retroactively.
 - **Earlier restorable checkpoint:** `saves/900_CHECKPOINT_0015/` — the Rift-clear milestone XP formula ruling (World Rule Profile 0.7), its retroactive application to the Ashgate clear, and the resulting Ascension to Level 3 (`EVT-000044`).
 - **Earlier restorable checkpoint:** `saves/900_CHECKPOINT_0014/` — Ashgate chamber mop-up (all nine Broodlings confirmed dead), core extraction, and Rift closure, plus a ruling flagging the unauthored Rift-clear milestone XP magnitude and awarding only the confirmed per-kill XP (`EVT-000042`, `EVT-000043`).

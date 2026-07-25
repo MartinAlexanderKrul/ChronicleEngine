@@ -5,7 +5,7 @@
 **File:** `011_ENGINE_DATA_MODEL.md`
 **Status:** Workshop Draft
 **Engine Version:** 0.2.0
-**Data Model Version:** 0.1.2
+**Data Model Version:** 0.1.3
 **Layer:** Engine (000–099)
 
 ---
@@ -422,6 +422,8 @@ Every record declares the Data Model version it conforms to (Section 2.1). The D
 
 A conforming repository satisfies the referential-integrity invariants (Section 3.1) and the registry invariants (Section 1.4): every referenced identifier exists and is registered, every required field is present, no record is orphaned, and no identifier is reused or silently collapsed. These are invariants the Runtime checks through the mechanical Repository Validation Barrier (`012_ENGINE_RUNTIME.md`, Section 5.4; Decision 054); they are not a formal schema language.
 
+Every Persistent Object in live mutable canon declares the current Data Model version in `schema_version`. The Repository Validation Barrier rejects a stale live schema tag. Immutable checkpoints are excluded from this live-state check and retain their captured schema; their mismatch is handled explicitly through restoration and migration (Section 12.4).
+
 A conforming repository also satisfies the presence invariants (Section 9.2; Decision 073): every entity holds at most one `canonical_state.location`; a Character entity in a live campaign ledger declares exactly one; and a carried Resource's location uses the `carried by <ENT->` form alone, naming a defined possessor and asserting no additional place.
 
 A conforming canonical file also contains **no unresolved template placeholder tokens**. A filled world or campaign file holds real identifiers and values only; the placeholder tokens used by templates (`ENT-XXXXXX`, `REC-XXXXXX`, `EVT-XXXXXX`, `REL-XXXXXX`, `<required: …>`, `<optional: …>`, `<generated: …>`) must not appear in a canonical file. The template conventions are defined in `templates/000_TEMPLATE_CONVENTIONS.md`.
@@ -429,6 +431,19 @@ A conforming canonical file also contains **no unresolved template placeholder t
 ## 12.4 Migration
 
 The Data Model defines the compatibility contract: records are schema-tagged, and the Runtime surfaces version mismatches on restoration (`012_ENGINE_RUNTIME.md`, Section 6.2). Automatic migration is deferred to Version 0.6 — Persistence (Rules Section 13.6). Reconciling a schema mismatch is handled explicitly when it arises, not silently.
+
+### 12.4.1 Data Model 0.1.2 → 0.1.3
+
+Decision 076 adds `Texture` to Relationship structure. This is an additive schema change, but it is still a Data Model change and therefore advances the schema version from 0.1.2 to 0.1.3.
+
+Migration of live mutable state:
+
+1. Retag every live Persistent Object and Canonical Record from schema 0.1.2 to 0.1.3.
+2. For each non-institutional Relationship whose endpoints are both Characters, preserve an already-authored `texture`; where play established the relationship but no manner survives in evidence, record an explicit *not recorded* marker rather than inventing one.
+3. Leave institutional relationships without `texture` unless play established relevant manner.
+4. Run the Repository Validation Barrier after the complete live object graph is migrated.
+
+Immutable checkpoints are never edited. A checkpoint captured under 0.1.2 or earlier retains that schema version and surfaces a Campaign Schema mismatch on restoration. The Runtime restores it into mutable live state, performs the explicit steps above at the readiness gate, retags the restored graph to 0.1.3, and validates before play continues. This metadata-and-coverage migration consumes no fictional time, allocates no identifier, and changes no historical event.
 
 ---
 

@@ -4,7 +4,7 @@
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
 **Profile Version:** 1.6
-**Engine Compatibility:** 0.2.0; Data Model 0.1.2
+**Engine Compatibility:** 0.2.0; Data Model 0.1.3
 **Status:** Active
 **Compatibility Status:** frozen at version 1.6 (Rules Section 14.6, Decision 074), declared 2026-07-29. Version 1.6 is a **migrating** advance over frozen 1.5: the daily quest still issues at 06:00 local, but its deadline is now the following midnight rather than 24 hours after issuance. The Bearer has the issuing calendar day's 06:00–23:59 span to finish; at 00:00 an incomplete quest fails and its penalty-zone transfer fires or defers under Section 8.3. An active 1.5 campaign must complete the migration below before play continues. Version 1.5 remains the immutable contract governing play before that migration.
 

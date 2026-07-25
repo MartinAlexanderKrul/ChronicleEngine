@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000081
 canonical_record: REC-000081
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000083
@@ -26,12 +26,12 @@ subjects: []
 ## Bindings and Versions
 
 - World: Gatefall (World Version 0.1, World Rule Profile 1.6)
-- Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.2
+- Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.3
 - Start city: Chicago
 - Campaign date: **2026-07-30, morning** (Owen Callahan's apartment, Rogers Park, Chicago)
 - Campaign state: session-2 in progress; Ashfield Gate cleared and closed out (report filed by Priya this morning, loot split agreed, tactical command ceded to Alexander), no immediate pressure
 - World Rule Profile: Gatefall **1.6**, frozen 2026-07-29 (Rules Section 14.6, Decision 074) — migrated 1.1→1.2 (`EVT-000072`), 1.2→1.3 (`EVT-000073`), 1.3→1.4 (`EVT-000074`), 1.4→1.5 (`EVT-000078`), and 1.5→1.6 (`EVT-000082`). No further migration this checkpoint.
-- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0014/` — captured under frozen Profile **1.6**, no migration required on restore. Captured the morning of 2026-07-30 at Owen's apartment, an automatic context-preservation checkpoint. Earlier checkpoints remain immutable: `0013` sits in Alexander's apartment mid-afternoon on 2026-07-29, before the crew meeting (requires the 1.5→1.6 migration on restore); `0012` sits at the bar immediately after the Ashfield clear; `0011` predates the 1.5 migration and the boss fight; `0010` is a 1.1 capture needing the full migration chain.
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0014/` — captured under frozen Profile **1.6** and Data Model **0.1.2**. Its immutable bytes remain unchanged; restoration now requires the explicit additive **0.1.2→0.1.3 Relationship Texture migration** at readiness, followed by repository validation. Captured the morning of 2026-07-30 at Owen's apartment, an automatic context-preservation checkpoint. Earlier checkpoints remain immutable: `0013` sits in Alexander's apartment mid-afternoon on 2026-07-29, before the crew meeting (requires the 1.5→1.6 profile migration plus the schema migration); `0012` sits at the bar immediately after the Ashfield clear; `0011` predates the 1.5 migration and the boss fight; `0010` is a 1.1 profile capture needing the full profile chain. Every checkpoint predates Data Model 0.1.3.
 
 ## Protagonist
 

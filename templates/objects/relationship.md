@@ -5,7 +5,7 @@ A specialization of the Persistent Object (`REL-`): a first-class link between e
 ```yaml
 id: <generated: REL-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -19,4 +19,5 @@ type: <required: e.g. membership | governance | diplomacy | personal | rivalry>
 qualities: <required: e.g. trust, obligation (§5.6); governance quality and legitimacy band (§10.2, §10.3); diplomatic quality (§10.5); membership rank (§9.4)>
 state: <optional: current state of the relationship>
 history: <optional: how the relationship has evolved>
+texture: <required for a non-institutional relationship between two Characters once play establishes manner; observable habits, verbal patterns, physical tells, forms of address, and character firsts — use an explicit "not recorded" marker rather than invention when historical evidence does not survive>
 ```

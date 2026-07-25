@@ -13,7 +13,7 @@ These four entries describe the standing **resource classes** the Gatefall econo
 ```yaml
 id: REC-000072
 canonical_record: REC-000072
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: ruling
@@ -54,7 +54,7 @@ The System shop's separate gold-buy schedule (`206` Section 12.5, Anchor A7): E 
 ```yaml
 id: ENT-000119
 canonical_record: REC-000072
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: ruling
@@ -98,7 +98,7 @@ The multiplier is authoritative and the figures follow from it, exactly as `206`
 ```yaml
 id: ENT-000120
 canonical_record: REC-000072
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: ruling
@@ -136,7 +136,7 @@ Weapons, armor pieces, shields, focuses, and accessories are graded E through S.
 ```yaml
 id: ENT-000121
 canonical_record: REC-000072
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: ruling
@@ -186,7 +186,7 @@ Healing and Mana potions, antidotes, appraisal scrolls, stabilization seals, gra
 ```yaml
 id: ENT-000122
 canonical_record: REC-000072
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: ruling

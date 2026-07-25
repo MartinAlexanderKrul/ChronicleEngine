@@ -8,6 +8,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 $failures = [System.Collections.Generic.List[string]]::new()
+$currentSchemaVersion = "0.1.3"
 
 if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) {
     $RepositoryRoot = Split-Path -Parent $PSScriptRoot
@@ -338,6 +339,11 @@ foreach ($file in $canonicalFiles) {
             if (-not [regex]::IsMatch($block, "(?m)^[ \\t]*$field[ \\t]*:")) {
                 Add-Failure "$relativePath`:$line object $id is missing required field '$field'."
             }
+        }
+
+        $schemaVersion = [regex]::Match($block, '(?m)^[ \t]*schema_version:[ \t]*"?([^"\s#]+)"?[ \t]*(?:#.*)?\r?$')
+        if ($schemaVersion.Success -and $schemaVersion.Groups[1].Value -ne $currentSchemaVersion) {
+            Add-Failure "$relativePath`:$line object $id declares schema_version '$($schemaVersion.Groups[1].Value)' but live canon must conform to current Data Model $currentSchemaVersion. Immutable checkpoints are excluded; restore and migrate older schemas explicitly before play."
         }
 
         $canonicalRecord = [regex]::Match($block, '(?m)^[ \t]*canonical_record:[ \t]*(REC-\d{6})[ \t]*(?:#.*)?\r?$')

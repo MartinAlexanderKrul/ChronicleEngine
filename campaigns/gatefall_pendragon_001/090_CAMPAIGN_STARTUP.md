@@ -12,7 +12,8 @@ world: worlds/gatefall
 world_rule_profile: "Gatefall World Rule Profile 1.6"
 protagonist_policy: custom
 default_protagonist: ENT-000125
-initialization_state: initialized-no-save
+initialization_state: resumable
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0014
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 customization:

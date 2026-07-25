@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000016
 canonical_record: REC-000016
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000008
@@ -26,7 +26,7 @@ subjects: []
 ## Bindings and Versions
 
 - World: Verra (World Version 0.1, Prototype)
-- Engine: 0.1.5 (Foundation Release); Data Model 0.1.2
+- Engine: 0.1.5 (Foundation Release); Data Model 0.1.3
 - Campaign date: Year 312 RR, late spring (Day 17, execution)
 
 ## Protagonist
@@ -54,7 +54,7 @@ This campaign instantiation is now closed. A new protagonist or campaign branch 
 
 ## Restore Point
 
-- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0001/` — the terminal state in the canonical checkpoint form, re-issued 2026-07-23 under Decision 072. Restoring it restores the terminal record for reading or forking, not continuation.
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0001/` — the terminal state in the canonical checkpoint form, re-issued 2026-07-23 under Decision 072. It remains immutable at Data Model 0.1.2; restoring it for reading or forking requires the explicit additive 0.1.2→0.1.3 Relationship Texture migration. It is not a continuation point.
 - **Baseline checkpoint:** `saves/900_CHECKPOINT_0000/` — the pre-play baseline (Decision 053); the `/restart` target.
 - The four `.saves/*.yaml` files are retired pre-unification evidence, not checkpoints; see `saves/README.md`.
 

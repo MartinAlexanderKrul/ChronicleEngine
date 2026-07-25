@@ -10,12 +10,13 @@
 ```yaml
 id: REC-000077
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
-  source: EVT-000058
-  event_time: "2026-07-23 to 2026-07-24, crew assembly"
-  record_time: "2026-07-24T09:00:00Z"
+  source: EVT-000083
+  event_time: "2026-07-28 to 2026-07-30"
+  record_time: "2026-07-30T09:30:00Z"
+  uncertainty: "Corrective update. Priya Okafor, Julian Boyd, Renata Marchetti, and Owen Callahan were still carrying `location: inside the Ashfield Gate` after the crew exited it on 2026-07-28 (`EVT-000080`) and spent 2026-07-29 in the city (`EVT-000083`) — stale presence surviving two promotions. Presence is owned by each entity's own `canonical_state.location` (Data Model Sections 7.1, 9.2; Decision 073), so it is corrected here. Only Owen's position is established precisely by canon; the other three are placed in Chicago without inventing a more specific position than the fiction has established."
 role: canonical ledger
 scope: campaign
 subjects:
@@ -52,7 +53,7 @@ Crew lead and striker; mid-30s, an experienced Gate clearer with three-plus clea
 ```yaml
 id: ENT-000126
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000058
@@ -85,7 +86,7 @@ The crew's sensor: an awakened whose gift reads Gate interiors — layout, popul
 ```yaml
 id: ENT-000127
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000058
@@ -118,7 +119,7 @@ Striker and Tanya's brother; broad-shouldered, blunt-force fighter carrying a re
 ```yaml
 id: ENT-000128
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000058
@@ -149,7 +150,7 @@ The crew's mender — the rare awakened who heals by touch, closing wounds mid-f
 ```yaml
 id: ENT-000129
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000058
@@ -180,7 +181,7 @@ Senior coordinator at the Windy City Hunters Coalition desk; about fifty, solid 
 ```yaml
 id: ENT-000130
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000058
@@ -210,7 +211,7 @@ Owner and operator of **Ironbound**, the independent gear shop on Milwaukee Aven
 ```yaml
 id: ENT-000131
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000058
@@ -242,7 +243,7 @@ A custom E-/D-grade gear shop in Chicago's warehouse district, one of three vend
 ```yaml
 id: ENT-000132
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000058
@@ -268,7 +269,7 @@ Horizon Guild's affiliated gear outfitter on Michigan Avenue, the third vendor o
 ```yaml
 id: ENT-000133
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000058
@@ -294,7 +295,7 @@ A larger licensed hunter outfitter than Ironbound — a proper storefront with c
 ```yaml
 id: ENT-000140
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000083
@@ -320,7 +321,7 @@ Logistics coordinator for a corporate-adjacent contractor running harvest-hire C
 ```yaml
 id: ENT-000134
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-1-gameplay
@@ -350,7 +351,7 @@ Logistics coordinator for the same corporate-adjacent contractor, running a sepa
 ```yaml
 id: ENT-000135
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: session-1-gameplay
@@ -382,7 +383,7 @@ Striker and crew lead running her own undersubscribed five-hunter crew. Not rela
 ```yaml
 id: ENT-000136
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000069
@@ -398,8 +399,8 @@ aliases:
 relationships:
   - REL-000065
 canonical_state:
-  location: "inside the Ashfield Gate (archetype), Chicago posting"
-  condition: "Wounded and under professional treatment — thrown hard by the elite's lunge after a fumbled intercept (`EVT-000071`). Alexander's potion restored her Health enough to fight properly but left the wound's severity untouched (Profile Section 6.4). She spent the morning of 2026-07-29 at a clinic having the side properly assessed (`EVT-000081`) and expects to be present but slow at the evening's meeting. Never treated by Owen, who spent his one used touch on Alexander instead."
+  location: ENT-000087
+  condition: "Wounded and healing under professional treatment — thrown hard by the elite's lunge after a fumbled intercept (`EVT-000071`). Alexander's potion restored her Health enough to fight properly but left the wound's severity untouched (Profile Section 6.4). She had the side properly assessed at a clinic on the morning of 2026-07-29 (`EVT-000081`), was visibly slow but present through that evening's Coalition meeting, and left the crew dinner early to ice it (`EVT-000083`). Never treated by Owen, who spent his one used touch on Alexander instead. On the morning of 2026-07-30 she is filing the Ashfield report and carrying the crew's crystals and cores in to close the contract; her exact position that morning is not established beyond Chicago."
   capabilities: "Striker; **D-rank**, made D roughly eight months ago — stated directly to Alexander (`EVT-000077`), the only above-E rank among the crew's combat element. Leads her own five-hunter crew. Solid, workmanlike reputation, nothing flashy — confirmed accurate by direct observation: competent, decisive, but not infallible. Approved Alexander's gear before entry and set his position (rear, paired with Owen, support role) based on Kesha's word about his read and his own self-description."
   appearance: "Late 30s, South Asian (the Priya name), solid and workmanlike — an athletic striker's build with nothing showy about it. Black hair in a tight, no-nonsense braid or bun; steady, level dark eyes; the small scars and worn gear of eight years in the trade. Practical reinforced combat kit, sensibly armored and sensibly maintained. Grounded and direct, quicker to own a mistake than to explain it away."
   portrait: "assets/portraits/Priya_Okafor_ENT-000136.png"
@@ -415,7 +416,7 @@ Striker on Priya Okafor's crew; broad-shouldered, economical with words, carries
 ```yaml
 id: ENT-000137
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000070
@@ -431,8 +432,8 @@ aliases:
   - name: "Julian"
     quality: current
 canonical_state:
-  location: "inside the Ashfield Gate (archetype), Chicago posting"
-  condition: "Healthy; no injury sustained this clear so far."
+  location: ENT-000087
+  condition: "Healthy; took no injury in the Ashfield clear. Out of the Gate since 2026-07-28 (`EVT-000080`); attended the Coalition meeting and crew dinner on 2026-07-29 (`EVT-000083`). His position on the morning of 2026-07-30 is not established beyond Chicago."
   capabilities: "Striker, ranged specialist; **E-rank**, confirmed directly by Priya (`EVT-000077`). Carries a graded (mana-bearing) shotgun — confirmed effective against monsters, which a mundane firearm would not be (`GTF-OVR-003`). Quiet, economical, does a lazy half-salute rather than talk. Landed two clean kills on the first wave of common beasts."
   appearance: "Mid-30s, broad-shouldered and rangy, sun-weathered from seasons of outdoor harvest work before the shotgun. Short brown hair, perpetual stubble, a flat unbothered expression. Practical field gear with an old harvester's wear to it, and a distinctive graded (mana-etched) shotgun on a sling that never leaves his reach. Economical in everything — a man who says the necessary words and no others."
   portrait: "assets/portraits/Julian_Boyd_ENT-000137.png"
@@ -448,7 +449,7 @@ Sensor/reader on Priya Okafor's crew; reads a room and its threats before anyone
 ```yaml
 id: ENT-000138
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000070
@@ -464,8 +465,8 @@ aliases:
   - name: "Renata"
     quality: current
 canonical_state:
-  location: "inside the Ashfield Gate (archetype), Chicago posting"
-  condition: "Healthy; no injury sustained this clear so far."
+  location: ENT-000087
+  condition: "Healthy; took no injury in the Ashfield clear. Out of the Gate since 2026-07-28 (`EVT-000080`); attended the Coalition meeting and crew dinner on 2026-07-29 (`EVT-000083`). Her position on the morning of 2026-07-30 is not established beyond Chicago."
   capabilities: "Reads incoming threats and the shape of a fight early and accurately — an experienced hunter's trained instinct, not an established awakened signature ability. **E-rank**, confirmed directly by Priya (`EVT-000077`). Correctly identified the population as heavier than a D on first entry, and called the elite's approach and the den structure behind it before either was visually confirmed."
   appearance: "Thirties, lean and alert, with quick precise hands and a reader's habitual stillness. Dark hair tied back out of the way; watchful dark eyes that catch a wrong detail before anyone else does; minimal, well-kept field gear and no showy weapon. Says little, and what she says tends to be right — a presence people learn to listen to."
   portrait: "assets/portraits/Renata_Marchetti_ENT-000138.png"
@@ -481,7 +482,7 @@ Mender on Priya Okafor's crew; lean, unhurried, chronically late, medical kit sl
 ```yaml
 id: ENT-000139
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000070
@@ -499,8 +500,8 @@ aliases:
 relationships:
   - REL-000066
 canonical_state:
-  location: "inside the Ashfield Gate (archetype), Chicago posting"
-  condition: "Healthy; no injury sustained this clear. **One per-clear touch spent** — used to clear Alexander's Severe rib injury mid-boss-fight (`EVT-000080`); the remainder of his capacity is unused."
+  location: "Owen Callahan's apartment, Rogers Park, Chicago (ENT-000087)"
+  condition: "Healthy; took no injury in the Ashfield clear. His one spent per-clear touch — used to clear Alexander's Severe rib injury mid-boss-fight (`EVT-000080`) — belonged to that clear and does not carry forward. At his own apartment on the morning of 2026-07-30, asleep with an arm over Alexander, the two of them having spent their first night together (`EVT-000083`, `REL-000066`)."
   capabilities: "Mender working type; **C-rank** — confirmed directly by Priya (`EVT-000077`), the reason a waiver-tier crew could field a real mender at all, worth the cost to the rest of the split. Practical healing capacity, stated in his own words: roughly four to five people at ordinary injury severity per clear, or as few as two if treating something as severe as Alexander's earlier near-lethal hit — no hard cutoff, just diminishing effect the more he's pushed. Has not yet had to actually treat anyone this clear, despite Alexander taking a near-lethal hit — the daily-quest grant's full restore beat him to it."
   appearance: "Twenty-seven, white, handsome and unaware of it. Tall (182cm) and lean, but with a faint softness to him — the build of a man whose gift meant he never had to become a fighter. Light brown hair worn a little long and never quite deliberate; green eyes; two or three days of unstyled stubble that reads less as a look than as the residue of a chronically late man. His clothes are genuinely nice — good fabric, well chosen — and always worn slightly undone: a collar open a button too far, sleeves shoved up, something untucked, as though he dressed well and then ran for the door. The field-medical kit is slung across his back and rides there like part of him. Warm, unhurried, and faintly rumpled — a handsome man who'd be more comfortable if you didn't mention it."
   portrait: "assets/portraits/Owen_Callahan_ENT-000139.png"
@@ -521,7 +522,7 @@ Defined in `110_WORLD_LEDGER.md` (`REC-000075`). Alexander's freelancer registra
 ```yaml
 id: REL-000063
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000058
@@ -541,7 +542,7 @@ history: "Formed at the Coalition case table on 2026-07-23 when Alexander, direc
 ```yaml
 id: REL-000064
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000063
@@ -561,7 +562,7 @@ history: "Formed 2026-07-25 when Kesha Morrison surfaced the Cicero Scar harvest
 ```yaml
 id: REL-000065
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000069
@@ -581,7 +582,7 @@ history: "Formed 2026-07-27 when Kesha Morrison, following up on her promised mo
 ```yaml
 id: REL-000066
 canonical_record: REC-000077
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000081

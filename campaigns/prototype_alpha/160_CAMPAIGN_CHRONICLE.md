@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000014
 canonical_record: REC-000014
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000008
@@ -32,7 +32,7 @@ subjects:
 ```yaml
 id: EVT-000008
 canonical_record: REC-000014
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: ruling
@@ -53,7 +53,7 @@ description: "Ilse Varn, a newly licensed physician-scholar and outsider, arrive
 ```yaml
 id: EVT-000009
 canonical_record: REC-000014
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000009-session-play
@@ -75,7 +75,7 @@ description: "Ilse presents her letter to Corvane at the Athenaeum after a direc
 ```yaml
 id: EVT-000010
 canonical_record: REC-000014
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000010-session-play
@@ -96,7 +96,7 @@ description: "Waking to the weight of her commitment, Ilse suffers an emotional 
 ```yaml
 id: EVT-000011
 canonical_record: REC-000014
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000011-session-play
@@ -143,7 +143,7 @@ Extended session checkpoint saved.
 ```yaml
 id: EVT-000012
 canonical_record: REC-000014
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000012-session-play
@@ -188,7 +188,7 @@ The commitment is made. The strategy is set. The risk is substantial.
 ```yaml
 id: EVT-000013
 canonical_record: REC-000014
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
   source: EVT-000013-session-play

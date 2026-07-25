@@ -10,12 +10,13 @@
 ```yaml
 id: REC-000076
 canonical_record: REC-000076
-schema_version: "0.1.2"
+schema_version: "0.1.3"
 status: active
 provenance:
-  source: EVT-000056
-  event_time: "2026-07-22"
-  record_time: "2026-07-23T00:00:00Z"
+  source: EVT-000083
+  event_time: "2026-07-29 to 2026-07-30"
+  record_time: "2026-07-30T09:30:00Z"
+  uncertainty: "Corrective update. The Pending Income section and the System-state summary paragraph below were left carrying pre-`EVT-000083` values at the Checkpoint 0014 promotion (payouts shown unreceived, gold at 22,520, the C Quickknife shown equipped). Both are rewritten here against `100_CHARACTER_SHEET.md` and `180_CURRENT_STATE.md`, which govern. No item, ownership, or provenance changed — only this ledger's statement of them."
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -67,13 +68,23 @@ Taken from the cleared Ashfield Gate (`EVT-000080`). Declared and split at the C
 - Ordinary krav maga training gear (wraps, mouthguard, gym clothes) and a modest personal wardrobe.
 - Standard studio apartment lease in Chicago (rent per Profile Section 12.4, ≈$1,400/month — an ordinary cost of living, not separately tracked as an asset).
 
-System-shop gold (22,520 g, unchanged — nothing bought or sold this clear), stored potions (**9 lesser healing potions**, one having been given to Priya Okafor during the boss fight, `EVT-000079`), antidotes, the E instant-dungeon key, the unequipped **Channeling Focus [E]** won from a Daily Random Box (`EVT-000075`), the equipped **C-grade Quickknife** (**Good · main hand · Agility +7 · weapon power 7 · armed strike ×0.75**), the recovered **E-grade Quickknife** (off hand — pulled back out of the boss's shoulder seam at the clear), and the current Daily Premium cycle are Bearer state tracked in `100_CHARACTER_SHEET.md`'s `system_state` (Profile Sections 11.5, 12.5, 12.9, 14.1). Profile 1.2 normalization and loadout state were adopted under `EVT-000072`, the current premium offer grades were migrated under Profile 1.3 in `EVT-000073`, and Profile 1.4 added weapon power under `EVT-000074`; no ownership or provenance changed.
+System-shop **gold**, the dimensional inventory's banked holdings (**9 lesser healing potions**, one having been given to Priya Okafor during the boss fight, `EVT-000079`; **2 antidotes**; the **E instant-dungeon key**; the unequipped **Channeling Focus [E]** won from a Daily Random Box, `EVT-000075`), both Quickknives (**C-grade** — Good · Agility +7 · weapon power 7 · armed strike ×0.75; and the **E-grade**, pulled back out of the boss's shoulder seam at the clear), the nine equipment slots, and the current Daily Premium cycle are **Bearer state owned by `100_CHARACTER_SHEET.md`'s `system_state`** (Profile Sections 11.5, 12.5, 12.9, 14.1). That record governs their current values; this ledger does not restate them. As of `EVT-000083` the whole loadout except the Ascendant Hunter's Band is **stored, not equipped**. Profile 1.2 normalization and loadout state were adopted under `EVT-000072`, the current premium offer grades were migrated under Profile 1.3 in `EVT-000073`, and Profile 1.4 added weapon power under `EVT-000074`; no ownership or provenance changed.
 
-## Pending Income (not yet received)
+## Pending Income
 
-- **≈$2,313** — Alexander's equal-fifth share of the Red Line Corridor contract's closing pool ($10,000 D-posted contract payout + ≈$2,850 in beast-drop/mined-crystal and core sale value at licensed rates, standard 10%-leader/90%-equal split). Filed with the Windy City Hunters Coalition and BGM Region V on 2026-07-25; Kesha Morrison quoted 1–2 business days for both the contract payout and Tanya Voss's crystal sale to clear (`EVT-000060`). Not counted in cash on hand above until it actually posts.
-- **≈$5,700** — Alexander's estimated harvest-share cut of the Cicero Scar C-grade job's declared pool (7 declared C-crystals of 19 total from the harvest crew, weighted share of the harvest crew's 20% cut of a ≈$77,500 total declared pool value — a Runtime ruling, Section 20.3, no authored harvest-share formula exists yet). Filed with Ada Reyes (`ENT-000134`) on 2026-07-25; payout timeline "a couple days" (`EVT-000063`). Not counted in cash on hand above until it posts.
-- **≈$24,663** — Alexander's harvest-share cut of the Frozen Gallery C-grade job's declared pool, computed under the now-authored standard support/harvest contract terms (World Rule Profile Section 13.2, 20% of the total declared pool, output-weighted by crystals personally mined): 41 of the 5-hunter harvest crew's 91 declared C-crystals, against a $273,750 total declared pool (91 mined + 11 beast-drop C-crystals + 3 C-cores at licensed rates). Filed at declaration on 2026-07-26 (`EVT-000068`); payout timeline 1–2 business days, consistent with the prior two jobs. His largest single payout to date. Not counted in cash on hand above until it posts.
+**One item is genuinely outstanding.**
+
+- **≈$9,450** — Alexander's equal share of the Ashfield Gate crystal/core pool ($52,500 declared, standard 10%-leader/90%-equal terms; see the haul entry above). Agreed at the Coalition case table on 2026-07-29 (`EVT-000083`); Priya Okafor (`ENT-000136`) carries the physical crystals and cores to file with her report the morning of 2026-07-30, and the payout follows that filing. The **Longshot [C]** will be sold and split the same five ways once appraised — not yet appraised, so no figure is estimated here. Not counted in cash on hand above.
+
+### Received — closed 2026-07-29 (`EVT-000083`)
+
+All three previously-pending payouts released and landed together the evening of 2026-07-29, after Kesha Morrison traced an apparent processing discrepancy to a stale account-sync issue at the Coalition desk and re-saved the record. Cash went **$1,705 → $34,381**. Retained here as the provenance of that cash.
+
+- **≈$2,313** — equal-fifth share of the Red Line Corridor contract's closing pool ($10,000 D-posted contract payout + ≈$2,850 in beast-drop/mined-crystal and core sale value at licensed rates, standard 10%-leader/90%-equal split). Filed with the Coalition and BGM Region V on 2026-07-25 (`EVT-000060`).
+- **≈$5,700** — harvest-share cut of the Cicero Scar C-grade job's declared pool (7 declared C-crystals of the harvest crew's 19, weighted share of the crew's 20% cut of a ≈$77,500 declared pool). Filed with Ada Reyes (`ENT-000134`) on 2026-07-25 (`EVT-000063`).
+- **≈$24,663** — harvest-share cut of the Frozen Gallery C-grade job's declared pool under the authored support/harvest terms (Profile Section 13.2): 41 of the harvest crew's 91 declared C-crystals against a $273,750 declared pool. Filed at declaration on 2026-07-26 (`EVT-000068`). His largest single payout to date.
+
+Coalition payouts process in **2–3 business days** from filing; past that the desk will trace one (`110_WORLD_LEDGER.md`, established `EVT-000083`).
 
 ## Standing Liability
 

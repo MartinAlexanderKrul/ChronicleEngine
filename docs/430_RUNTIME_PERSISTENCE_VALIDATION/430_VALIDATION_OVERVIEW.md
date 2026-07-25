@@ -32,13 +32,14 @@ Per Decision 048, Capability Validation precedes the Prototype Campaign in the l
 
 Gatefall: Pendragon is the Version 0.3 prototype campaign.
 
-It is already producing the exact evidence the milestone requires:
+It has produced the exact evidence the milestone requires:
 
-- four canonical-form checkpoints (`900_CHECKPOINT_0001`–`0004`),
+- fourteen canonical-form checkpoints (`900_CHECKPOINT_0001`–`0014`),
 - repeated eight-ledger promotion,
-- structured workshop-draft World Rule Profile metadata,
-- live presence changes under Data Model 0.1.2,
+- structured World Rule Profile metadata across workshop-draft and frozen captures through Profile 1.6,
+- live presence changes under Data Model 0.1.2 followed by the prototype-driven Relationship Texture migration to Data Model 0.1.3,
 - identifier allocation and index updates at checkpoint barriers,
+- automatic transcript export at the Context-Preservation Barrier,
 - and continued campaign play across session boundaries.
 
 No replacement prototype campaign will be created merely to repeat that evidence.
@@ -59,7 +60,7 @@ The live canonical continuation remains protected. Destructive or divergent oper
 | `tools/validate_repository.ps1` | Live structural integrity, referential integrity, registry coverage, and presence invariants |
 | `tools/test_checkpoint_contract.ps1` | Canonical checkpoint shape, ledger completeness, manifest constraints, profile metadata, and index/current-state agreement |
 | `tools/test_runtime_command_catalog.ps1` | Exact command catalog and argumentless bootstrap contract |
-| `tools/test_runtime_persistence_validation.ps1` | Version 0.3 safe capability cases on disposable copies: presence/possession rejection through the real repository gate, profile-readiness across frozen/mismatch/unfrozen/no-profile, exact named restoration, and disposable branch/restart — see `431_CAPABILITY_MATRIX.md` for the per-case evidence class |
+| `tools/test_runtime_persistence_validation.ps1` | Version 0.3 safe capability cases on disposable copies: presence/possession and stale-live-schema rejection through the real repository gate, profile-readiness across frozen/mismatch/unfrozen/no-profile, exact named restoration, explicit 0.1.2→0.1.3 migration during disposable branching, and branch/restart — see `431_CAPABILITY_MATRIX.md` for the per-case evidence class |
 | Other repository gates | Runtime residency, context preservation, decision ownership, and validator regressions |
 | Non-canonical fixtures in this directory | Failure behavior that must not be injected into live canon |
 | Gatefall: Pendragon checkpoints and session evidence | Real promotion, persistence, restoration, and command behavior |
@@ -125,4 +126,3 @@ Validation may not:
 - `436_COMMAND_AND_RESTORE_FIXTURES.md` — bootstrap, named load, and dispatcher behavior
 
 The Engine Postmortem is written only after the matrix is complete.
-

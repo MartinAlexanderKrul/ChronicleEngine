@@ -25,9 +25,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000139 |
-| Record | `REC-` | Canonical Record | REC-000089 |
-| Event | `EVT-` | Event | EVT-000080 |
-| Relationship | `REL-` | Relationship | REL-000065 |
+| Record | `REC-` | Canonical Record | REC-000090 |
+| Event | `EVT-` | Event | EVT-000081 |
+| Relationship | `REL-` | Relationship | REL-000066 |
 
 ---
 
@@ -181,6 +181,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000079 | Event | Gatefall: Pendragon: the Ashfield boss engagement — the crew's agreed plan, the unseen approach, the ambush and weak-point critical, two natural fumbles, the boss's retaliation inflicting a Severe rib injury, the claimed Status Recovery, and the evasion; combat ongoing |
 | EVT-000080 | Event | Gatefall: Pendragon: the Ashfield Gate cleared — Owen's mender touch clearing the Severe injury (first exercise of the Profile 1.5 rule), the boss kill and three level-ups to Level 7, the seven contained survivors, the harvest and broken chisel, the exit, the deliberately withheld BGM report, and Owen's direct acknowledgment of Alexander's exposure |
 | REC-000089 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0012/900_SAVE_MANIFEST.md` — first checkpoint captured under frozen Profile 1.5, taken at the bar after the Ashfield Gate's full clear |
+| EVT-000081 | Event | Gatefall: Pendragon: Alexander's partial answer to Owen and Owen's release of the promise, the night and resulting personal relationship, Owen's "no hero" filing strategy, Kesha's notice that Region V registered the Gate closure, Priya's agreement by phone with stated limits, and the fifth daily quest's calisthenics |
+| REL-000066 | Relationship | Gatefall: Pendragon: Alexander Pendragon and Owen — personal relationship formed after the Ashfield Gate clear, distinct from their crew membership; the one relationship in which Alexander's inexplicability is acknowledged rather than hidden |
+| REC-000090 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0013/900_SAVE_MANIFEST.md` — apartment checkpoint on 2026-07-29 afternoon, filing strategy agreed, before the crew's Coalition meeting |
 
 ---
 

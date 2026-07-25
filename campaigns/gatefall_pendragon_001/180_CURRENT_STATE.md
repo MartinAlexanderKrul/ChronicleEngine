@@ -25,13 +25,13 @@ subjects: []
 
 ## Bindings and Versions
 
-- World: Gatefall (World Version 0.1, World Rule Profile 1.7)
+- World: Gatefall (World Version 0.1, World Rule Profile 1.8)
 - Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.3
 - Start city: Chicago
 - Campaign date: **2026-07-30, approximately 08:15** (a diner two blocks from Owen Callahan's apartment, Rogers Park, Chicago)
 - Campaign state: session-2 in progress; Ashfield Gate cleared and closed out (Priya files the report this morning, loot split agreed, tactical command ceded to Alexander), no immediate pressure
-- World Rule Profile: Gatefall **1.7**, frozen on repository date 2026-07-25 (Rules Section 14.6, Decision 074) — migrated through 1.6 (`EVT-000082`) and the terminology-only 1.6→1.7 migration (`EVT-000085`). The latter changed persisted `system_tier: E` to `system_rank: E`, preserved every value and outcome, and consumed no fictional time.
-- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0015/` — immutable Profile **1.6** / Data Model **0.1.3** capture at the diner on the morning of 2026-07-30. Restoration requires the explicit **1.6→1.7 Rank terminology migration** at readiness before play. Preceding `0014` additionally requires the additive **0.1.2→0.1.3 Relationship Texture migration**. Earlier checkpoints remain immutable and run their applicable profile/schema migration chain through current versions.
+- World Rule Profile: Gatefall **1.8**, frozen on repository date 2026-07-25 (Rules Section 14.6, Decision 074) — migrated through 1.6 (`EVT-000082`), the terminology-only 1.6→1.7 migration (`EVT-000085`), and the additive 1.7→1.8 `/system` layout adoption (`EVT-000086`). The latest change only re-renders the interface; it preserves every value and outcome and consumes no fictional time.
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0015/` — immutable Profile **1.6** / Data Model **0.1.3** capture at the diner on the morning of 2026-07-30. Restoration requires the explicit **1.6→1.7 Rank terminology migration**, then the additive **1.7→1.8 `/system` layout adoption**, at readiness before play. Preceding `0014` additionally requires the additive **0.1.2→0.1.3 Relationship Texture migration**. Earlier checkpoints remain immutable and run their applicable profile/schema migration chain through current versions.
 
 ## Protagonist
 
@@ -83,6 +83,6 @@ Open threads, none urgent: his ≈$9,450 Ashfield split share and the Longshot [
 
 Session 2 in progress — **checkpoint `900_CHECKPOINT_0015` written** at the diner, an automatic context-preservation checkpoint (twenty-one resolved exchanges since 0014), capturing all eight ledgers with a save manifest.
 
-Promoted checkpoint 0015 (`EVT-000084`) is the latest immutable restore point, captured under frozen Profile 1.6 and Data Model 0.1.3. Live state has since adopted Profile 1.7 through `EVT-000085`; restore therefore applies the 1.6→1.7 terminology migration before play. Registry is advanced through `EVT-000085`.
+Promoted checkpoint 0015 (`EVT-000084`) is the latest immutable restore point, captured under frozen Profile 1.6 and Data Model 0.1.3. Live state has since adopted Profile 1.7 through `EVT-000085` and Profile 1.8 through `EVT-000086`; restore therefore applies the 1.6→1.7 terminology migration and then the additive 1.7→1.8 layout adoption before play. Registry is advanced through `EVT-000086`.
 
 **Concurrency note (2026-07-30 session).** An unrelated Architect-mode writer committed the repository-wide Data Model 0.1.2→0.1.3 Relationship Texture migration (`3345f6e`, 96 files) to `main` *while this gameplay session was in progress*, and swept three uncommitted corrective gameplay writes into that commit. The migration changed no Gatefall mechanic — only the Data Model compatibility line, schema-version declarations, and the validator's new schema check — so no resolution in this session is affected. Live state was re-validated after reconciliation. One exclusive writer during play remains the standing requirement (Runtime Profile, Persistence Preflight).

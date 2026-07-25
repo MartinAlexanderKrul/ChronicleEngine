@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-25 — Gatefall Profile 1.8: aligned `/system` window
+
+World-authoring presentation refinement under Version 0.3 milestone 0.3.5; no Engine Rule, Data Model section, Runtime mechanism, or decision number changed.
+
+**System window:** Gatefall World Rule Profile Section 15.1 now defines a fixed 76-cell full-window frame, aligned 20-cell HP/MP/XP bars, title-case labels with consistent abbreviations, subordinate quest-objective rows, and continuation rows separating item identity from mechanics.
+**Profile version:** frozen **1.7→1.8**, classified **additive**. `EVT-000086` records live adoption without changing state, mechanics, resolved canon, or fictional time. Immutable checkpoints remain unchanged and adopt the presentation after their applicable readiness migrations.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-25 — E–S terminology normalized to Rank
 
 World-authoring and consistency refinement owned by Version 0.3 milestone 0.3.5; no Engine Rule, Data Model section, Runtime mechanism, or decision number changed.

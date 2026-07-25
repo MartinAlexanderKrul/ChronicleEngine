@@ -267,3 +267,11 @@ Allocated campaign identifiers in `system/ID_REGISTRY.md` in the same initializa
 - **No mechanical or fictional change:** no value, roll, threshold, formula, probability, price, timer, ownership fact, relationship, or resolved outcome changed; no fictional time passed.
 - **Compatibility:** Checkpoints 0001–0015 remain immutable. Checkpoint 0015 is still the latest restore source, now requiring the 1.6→1.7 terminology migration at readiness before play.
 - **Repository allocation:** Allocated `EVT-000085`; no entity, record, or relationship identifier minted.
+
+**2026-07-30 readiness pause — Profile 1.8 `/system` layout adoption (`EVT-000086`).**
+
+- **Fixed frame:** the full `/system` window now renders at exactly 76 monospace cells per row, including both edges, with a 74-cell interior.
+- **Readable composition:** HP, MP, and XP use aligned 20-cell bars; labels use title case and consistent abbreviations; quest objectives indent beneath their quest; equipment and long inventory entries place item identity first and mechanics on aligned continuation rows.
+- **No mechanical or fictional change:** no stored field, value, roll, threshold, formula, price, timer, ownership fact, relationship, or resolved outcome changed; no fictional time passed.
+- **Compatibility:** Profile 1.7→1.8 is additive. Checkpoints 0001–0015 remain immutable; restoration adopts the layout after completing the applicable migration chain.
+- **Repository allocation:** Allocated `EVT-000086`; no entity, record, or relationship identifier minted.

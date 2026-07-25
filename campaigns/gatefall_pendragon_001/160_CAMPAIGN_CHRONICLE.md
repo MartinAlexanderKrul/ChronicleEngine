@@ -939,3 +939,25 @@ participants:
   - ENT-000125
 description: "At an out-of-character readiness pause, the live campaign explicitly adopted frozen Gatefall World Rule Profile 1.7 from frozen 1.6. The migration consumed no fictional time and re-resolved no prior action. Gatefall's E-Rank–S-Rank classification is now called Rank everywhere and its values render E-Rank through S-Rank. Alexander's persisted `system_tier: E` field became `system_rank: E`, preserving the same content/reward bracket. Every Stat, level, XP total, Health and Mana value, item, loadout slot, skill, title, currency, ownership fact, pending reward, quest state, streak, injury, relationship, and resolved outcome remains unchanged. Immutable checkpoints through 0015 retain their captured terminology and profile metadata; restoration runs the applicable profile chain through 1.7 before play."
 ```
+
+---
+
+## EVT-000086 - Gatefall Profile 1.8 System Window Layout Adoption
+
+```yaml
+id: EVT-000086
+canonical_record: REC-000079
+schema_version: "0.1.3"
+status: active
+provenance:
+  source: owner-approved-world-authoring
+  event_time: "2026-07-30, approximately 08:15; readiness pause"
+  record_time: "2026-07-25"
+type: Event
+kind: profile-additive-upgrade
+importance: routine
+event_time: "2026-07-30, approximately 08:15"
+participants:
+  - ENT-000125
+description: "At an out-of-character readiness pause, the live campaign adopted frozen Gatefall World Rule Profile 1.8 from frozen 1.7. The additive presentation change re-renders `/system` in a fixed 76-cell frame with 20-cell HP, MP, and XP bars; title-case labels and the fixed abbreviations Acc.1, Acc.2, M1–M5, and Passive; quest objectives indented beneath their quest; and item identity separated from mechanics on continuation rows. No stored field, Stat, level, XP, Health, Mana, Rank, item, loadout, skill, title, currency, reward, quest state, streak, relationship, roll, or resolved outcome changed, and no fictional time passed. Immutable checkpoints through 0015 retain their captured profile metadata; restoration runs the applicable profile chain through 1.8 before play."
+```

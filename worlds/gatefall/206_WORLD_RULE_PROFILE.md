@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.7
+# Gatefall — World Rule Profile 1.8
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.7
+**Profile Version:** 1.8
 **Engine Compatibility:** 0.2.0; Data Model 0.1.3
 **Status:** Active
-**Compatibility Status:** frozen at version 1.7 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-25. Version 1.7 is a **migrating** terminology advance over frozen 1.6: the world's single E-Rank–S-Rank classification is now called **Rank** everywhere, its values are rendered **E-Rank, D-Rank, C-Rank, B-Rank, A-Rank, and S-Rank**, and the persisted Bearer field `system_tier` is renamed `system_rank`. No threshold, magnitude, probability, price, timing rule, or resolved outcome changes. Version 1.6 was adopted at fictional campaign time 2026-07-29 during the repository session dated 2026-07-25; that fictional date is not the repository provenance date.
+**Compatibility Status:** frozen at version 1.8 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-25. Version 1.8 is an **additive presentation advance** over frozen 1.7: the `/system` full-window rendering contract now uses a fixed 76-cell frame, 20-cell progress bars, title-case labels and consistent abbreviations, indented quest objectives, and continuation rows separating item identity from mechanics. It changes no stored field, threshold, magnitude, probability, price, timer, or resolved outcome.
+
+**1.7 → 1.8 compatibility treatment.** Preserve every stored value and all resolved canon. Adoption requires no recomputation and no state migration: re-render `/system` and its focused views using the Section 15.1 layout contract, then record the additive-upgrade acknowledgement in the live campaign and next promoted checkpoint. Immutable Profile 1.7-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.8 before play.
+
+Version 1.7 remains the migrating terminology advance over frozen 1.6: the world's single E-Rank–S-Rank classification is called **Rank** everywhere, its values render **E-Rank, D-Rank, C-Rank, B-Rank, A-Rank, and S-Rank**, and the persisted Bearer field `system_tier` was renamed `system_rank`. No threshold, magnitude, probability, price, timing rule, or resolved outcome changed. Version 1.6 was adopted at fictional campaign time 2026-07-29 during the repository session dated 2026-07-25; that fictional date is not the repository provenance date.
 
 **Required 1.6 → 1.7 migration.** At the readiness gate or the next natural pause, before further resolution:
 
@@ -1455,91 +1459,109 @@ Bare **`/system`** always renders the **full window** — every section (identit
 Bare **`/system`** always renders the **entire System window**: identity, vitals, stats, active quests, known skills, earned titles, equipment, inventory, and gold — every section stacked inside one framed window, divided by labeled section rules. There is no partial default; the Bearer sees his whole state at once, the way the window hangs in his vision.
 
 ```text
-╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════╗
-║  <NAME>               Card <rank> · System Rank <rank> ║
-║  Level  <L>                   Class <class or —>     ║
-║  XP <cur>/<next>              Title <title or —>     ║
-╟─ VITALS ─────────────────────────────────────────────╢
-║  HP   <bar>   <hp> / <hpmax>                         ║
-║  MP   <bar>   <mp> / <mpmax>                         ║
-║  XP   <bar>   <cur> / <next>                         ║
-╟─ STATS ──────────────────────────────────────────────╢
-║  Strength     <base> (+<gear>) = <effective>         ║
-║  Agility      <base> (+<gear>) = <effective>         ║
-║  Vitality     <base> (+<gear>) = <effective>         ║
-║  Perception   <base> (+<gear>) = <effective>         ║
-║  Intelligence <base> (+<gear>) = <effective>         ║
-║  Unspent points  ● <n>                                ║
-║  Pending rewards  <none, or daily reward list>       ║
-╟─ QUESTS ─────────────────────────────────────────────╢
-║  <active quest: objective progress · local deadline> ║
-╟─ SKILLS ─────────────────────────────────────────────╢
-║  <one line per known skill: name [rank] cost eff>    ║
-╟─ TITLES  (equipped: <title or none>) ────────────────╢
-║  <one line per earned title; ★ marks equipped>       ║
-╟─ EQUIPMENT ──────────────────────────────────────────╢
-║  <nine slots; item [Rank] · bonuses · effect>       ║
-║  Physical reduction  <derived total>                 ║
-╟─ INVENTORY ──────────────────────────────────────────╢
-║  <stored items with complete item lines, then loot>  ║
-╟─ SHOP ───────────────────────────────────────────────╢
-║  Gold <n> g          ( /system shop to trade )       ║
-║  Daily Premium <available>/6 · rotates <deadline>    ║
-╚══════════════════════════════════════════════════════╝
+╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════════════════════════╗
+║  <NAME>                      Card <Rank> · System Rank <Rank>            ║
+║  Level <L>                   Class <class or —>                          ║
+║  XP <current>/<next>         Title <title or —>                          ║
+╟─ VITALS ─────────────────────────────────────────────────────────────────╢
+║  HP  <20-cell bar>  <current> / <maximum>                                ║
+║  MP  <20-cell bar>  <current> / <maximum>                                ║
+║  XP  <20-cell bar>  <current> / <next>                                   ║
+╟─ STATS ──────────────────────────────────────────────────────────────────╢
+║  Strength      <base> (+<gear>) = <effective>                            ║
+║  Agility       <base> (+<gear>) = <effective>                            ║
+║  Vitality      <base> (+<gear>) = <effective>                            ║
+║  Perception    <base> (+<gear>) = <effective>                            ║
+║  Intelligence  <base> (+<gear>) = <effective>                            ║
+║  Unspent Points  ● <n>                                                   ║
+║  Pending Rewards  <none or reward list>                                  ║
+╟─ QUESTS ─────────────────────────────────────────────────────────────────╢
+║  [<type>] <quest name> · <status/streak>                                 ║
+║    <objective progress>                                                  ║
+║    <objective progress or local deadline>                                ║
+╟─ SKILLS ─────────────────────────────────────────────────────────────────╢
+║  <name> [Rank] · <M# or Passive> · <cost/effect>                         ║
+╟─ TITLES · Equipped: <title or none> ─────────────────────────────────────╢
+║  <★ equipped title or earned title · effect>                             ║
+╟─ EQUIPMENT ──────────────────────────────────────────────────────────────╢
+║  <slot>   <item name> [Rank]                                             ║
+║           <bonuses · power/protection · effect · condition>              ║
+║  Acc.1    <item or —>                                                    ║
+║  Acc.2    <item or —>                                                    ║
+║  Physical Reduction  <derived total>                                     ║
+╟─ INVENTORY ──────────────────────────────────────────────────────────────╢
+║  <one item name [Rank] per line>                                         ║
+║           <stats/effect/condition on an indented continuation>           ║
+╟─ SHOP ───────────────────────────────────────────────────────────────────╢
+║  Gold <n> g · /system shop to trade                                      ║
+║  Daily Premium <available>/6 · Rotates <deadline>                        ║
+╚══════════════════════════════════════════════════════════════════════════╝
 ```
 
 Ren, mid-run, carrying one completed daily's separate rewards:
 
 ```text
-╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════╗
-║  REN                    Card E-Rank · System Rank: E-Rank ║
-║  Level  3                     Class —                ║
-║  XP 150/300                   Title  Lone Clear      ║
-╟─ VITALS ─────────────────────────────────────────────╢
-║  HP   ████████████████░░░░   39 / 48                 ║
-║  MP   ███████████████░░░░░   18 / 24                 ║
-║  XP   ██████████░░░░░░░░░░   150 / 300               ║
-╟─ STATS ──────────────────────────────────────────────╢
-║  Strength      11 (+0) = 11                          ║
-║  Agility       13 (+2) = 15                          ║
-║  Vitality      12 (+0) = 12                          ║
-║  Perception    12 (+0) = 12                          ║
-║  Intelligence  12 (+0) = 12                          ║
-║  Unspent points  ● 10                                ║
-║  Pending rewards  AP +3 · Recovery · Random Box      ║
-╟─ QUESTS ─────────────────────────────────────────────╢
-║  [DAILY] Training · streak 4 · next issue in 14h12m   ║
-║     push 40/100 · sit 100/100 · squat 20/100 · run 6/10 ║
-║  [URGENT] Cull the Red Line nest (3/4)   +40 XP      ║
-║  [HIDDEN] ???                                        ║
-╟─ SKILLS ─────────────────────────────────────────────╢
-║  Mana Bolt      [E-Rank] M5   rank base 10 ×1.0           ║
-║  Dagger Mastery [E-Rank] pass  Quickknife +0.10           ║
-║  Sprint         [E-Rank] M3   +1 step movement            ║
-║  Mend           [E-Rank] M5   rank base 10 ×1.0           ║
-╟─ TITLES  (equipped: Lone Clear) ─────────────────────╢
-║  ★ Lone Clear    +1 step while alone in a Gate       ║
-║    Untouched     +1 step evasion, 1st exchange       ║
-╟─ EQUIPMENT ──────────────────────────────────────────╢
-║  Main  Quickknife [E-Rank] · Agility +2 · power 2 · ×0.75 ║
-║  Off — · Head — · Torso — · Hands — · Legs —         ║
-║  Feet — · Accessory 1 — · Accessory 2 —              ║
-║  Physical reduction  0%                              ║
-╟─ INVENTORY ──────────────────────────────────────────╢
-║  License [E-Rank]                                    ║
-║  Lesser healing potion ×3    Dungeon key [E-Rank]         ║
-║  E-Rank crystal ×8         Cores ×2 [E-Rank]                   ║
-╟─ SHOP ───────────────────────────────────────────────╢
-║  Gold 340 g          ( /system shop to trade )       ║
-║  Daily Premium 6/6 · rotates in 14h12m               ║
-╚══════════════════════════════════════════════════════╝
+╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════════════════════════╗
+║  REN                         Card E-Rank · System Rank E-Rank            ║
+║  Level 3                     Class —                                     ║
+║  XP 150/300                  Title Lone Clear                            ║
+╟─ VITALS ─────────────────────────────────────────────────────────────────╢
+║  HP  ████████████████░░░░  39 / 48                                       ║
+║  MP  ███████████████░░░░░  18 / 24                                       ║
+║  XP  ██████████░░░░░░░░░░  150 / 300                                     ║
+╟─ STATS ──────────────────────────────────────────────────────────────────╢
+║  Strength      11 (+0) = 11                                              ║
+║  Agility       13 (+2) = 15                                              ║
+║  Vitality      12 (+0) = 12                                              ║
+║  Perception    12 (+0) = 12                                              ║
+║  Intelligence  12 (+0) = 12                                              ║
+║  Unspent Points  ● 10                                                    ║
+║  Pending Rewards  AP +3 · Recovery · Random Box                          ║
+╟─ QUESTS ─────────────────────────────────────────────────────────────────╢
+║  [DAILY] Training · Streak 4                                             ║
+║    Push-ups 40/100 · Sit-ups 100/100                                     ║
+║    Squats 20/100 · Run 6/10 km                                           ║
+║    Next Issue 14h12m                                                     ║
+║  [URGENT] Cull the Red Line Nest · 3/4 · +40 XP                          ║
+║  [HIDDEN] ???                                                            ║
+╟─ SKILLS ─────────────────────────────────────────────────────────────────╢
+║  Mana Bolt [E-Rank] · M5 · Rank Base 10 ×1.0                             ║
+║  Dagger Mastery [E-Rank] · Passive · Quickknife +0.10                    ║
+║  Sprint [E-Rank] · M3 · +1 Step Movement                                 ║
+║  Mend [E-Rank] · M5 · Rank Base 10 ×1.0                                  ║
+╟─ TITLES · Equipped: Lone Clear ──────────────────────────────────────────╢
+║  ★ Lone Clear · +1 Step While Alone in a Gate                            ║
+║    Untouched · +1 Step Evasion on First Exchange                         ║
+╟─ EQUIPMENT ──────────────────────────────────────────────────────────────╢
+║  Main     Quickknife [E-Rank]                                            ║
+║           Agility +2 · Power 2 · ×0.75                                   ║
+║  Off      —                    Head     —                                ║
+║  Torso    —                    Hands    —                                ║
+║  Legs     —                    Feet     —                                ║
+║  Acc.1    —                                                              ║
+║  Acc.2    —                                                              ║
+║  Physical Reduction  0%                                                  ║
+╟─ INVENTORY ──────────────────────────────────────────────────────────────╢
+║  License [E-Rank]                                                        ║
+║  Lesser Healing Potion ×3                                                ║
+║  Dungeon Key [E-Rank]                                                    ║
+║  E-Rank Crystal ×8                                                       ║
+║  E-Rank Core ×2                                                          ║
+╟─ SHOP ───────────────────────────────────────────────────────────────────╢
+║  Gold 340 g · /system shop to trade                                      ║
+║  Daily Premium 6/6 · Rotates in 14h12m                                   ║
+╚══════════════════════════════════════════════════════════════════════════╝
 ```
 
 - **Bars** are 20-cell meters filled proportionally to `current/max` (Ren: HP approximately four-fifths, MP three-quarters, XP half).
+- **Frame width is fixed:** every rendered row is exactly **76 monospace cells** wide, including its two edge characters; the interior is 74 cells. The Runtime pads short rows, never allows content past the right edge, and uses indented continuation rows rather than truncation. If a name or value still exceeds one row, it wraps beneath its own label at the same indentation.
+- **Labels use title case and fixed abbreviations:** `Unspent Points`, `Pending Rewards`, `Physical Reduction`, `Acc.1`, `Acc.2`, `M1`–`M5`, and `Passive`. The same label is never shortened differently elsewhere in the window.
+- **Quest objectives are subordinate rows.** The quest name and status occupy the first row; objectives, progress, and the local deadline render beneath it with four-space indentation.
+- **Equipment and long inventory entries separate identity from mechanics.** The slot, item name, and `[Rank]` occupy the first row. Bonuses, power/protection, effects, and condition occupy one or more continuation rows aligned beneath the item name. This rule leaves room for prefixes, suffixes, and durability without widening the frame.
 - Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, equipment slots from Section 12.9, inventory from the campaign inventory ledger, and gold from the shop balance. Effective stats and physical reduction are derived from the equipped lines. Nothing is invented at render.
-- **`Pending rewards`** lists each unclaimed daily Ability Point reward, Status Recovery, and Daily Random Box separately (Section 3.9), and reads `none` when empty. Level-ups never appear here because they settle immediately.
+- **`Pending Rewards`** lists each unclaimed daily Ability Point reward, Status Recovery, and Daily Random Box separately (Section 3.9), and reads `none` when empty. Level-ups never appear here because they settle immediately.
 - The window grows with the Bearer: an empty section still renders its header with `none` beneath it (a fresh Bearer shows `SKILLS — none`, `TITLES — none`), so the shape is constant and the Bearer always sees the whole of himself.
-- **Numbers in the window are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer, and only he sees this window. The Runtime **pads every line to a constant width** so the frame closes as a clean rectangle.
+- **Numbers in the window are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer, and only he sees this window.
 
 ## 15.2 Focused Views and Interactive Panels
 

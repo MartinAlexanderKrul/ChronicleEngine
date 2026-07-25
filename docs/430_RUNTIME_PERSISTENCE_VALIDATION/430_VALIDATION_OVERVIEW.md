@@ -36,7 +36,7 @@ It has produced the exact evidence the milestone requires:
 
 - fifteen canonical-form checkpoints (`900_CHECKPOINT_0001`–`0015`),
 - repeated eight-ledger promotion,
-- structured World Rule Profile metadata across workshop-draft and frozen captures through Profile 1.6, with current live restoration chaining through Profile 1.7,
+- structured World Rule Profile metadata across workshop-draft and frozen captures through Profile 1.6, with current live restoration chaining through Profile 1.8,
 - live presence changes under Data Model 0.1.2 followed by the prototype-driven Relationship Texture migration to Data Model 0.1.3,
 - identifier allocation and index updates at checkpoint barriers,
 - observed automatic transcript export at the Context-Preservation Barrier (`play_export_0003.md` alongside Checkpoint 0015),

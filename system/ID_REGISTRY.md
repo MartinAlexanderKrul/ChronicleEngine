@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000140 |
 | Record | `REC-` | Canonical Record | REC-000091 |
-| Event | `EVT-` | Event | EVT-000085 |
+| Event | `EVT-` | Event | EVT-000086 |
 | Relationship | `REL-` | Relationship | REL-000066 |
 
 ---
@@ -190,6 +190,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000083 | Event | Gatefall: Pendragon: Session 2 continued (2026-07-29 afternoon–evening to 2026-07-30 morning) — pending daily rewards claimed, all 18 unspent stat points allocated, the 2026-07-29 Daily Premium cycle rolled and partially purchased (Ascendant Hunter's Band, Premium Rune teaching Stone Skin, Adaptive Bastion Torso), the resonance-chisel errand at Vanguard Trade & Gear completing the fifth daily quest, a BGM payout-processing discrepancy resolved by explicit ruling releasing all three pending payouts (cash to $34,381), the crew debrief and loot split at the Coalition case table with Priya ceding future tactical/strategic authority to Alexander by explicit ruling, a bonding crew dinner, and Alexander and Owen's (`REL-000066`) first night together |
 | REC-000091 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0014/900_SAVE_MANIFEST.md` — Session 2 checkpoint after the crew debrief, loot split, tactical-authority ruling, and the deepened relationship with Owen, captured the following morning |
 | EVT-000085 | Event | Gatefall: Pendragon: explicit World Rule Profile 1.6→1.7 terminology migration — the E-Rank–S-Rank classification is uniformly Rank, persisted `system_tier: E` becomes `system_rank: E`, all values and outcomes are preserved, and no fictional time passes |
+| EVT-000086 | Event | Gatefall: Pendragon: additive World Rule Profile 1.7→1.8 presentation adoption — `/system` uses a fixed 76-cell frame, 20-cell progress bars, title-case labels, indented quest objectives, and wrapped item mechanics; no state, value, outcome, or fictional time changes |
 
 ---
 

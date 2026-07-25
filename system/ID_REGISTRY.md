@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000140 |
-| Record | `REC-` | Canonical Record | REC-000091 |
-| Event | `EVT-` | Event | EVT-000086 |
+| Record | `REC-` | Canonical Record | REC-000092 |
+| Event | `EVT-` | Event | EVT-000087 |
 | Relationship | `REL-` | Relationship | REL-000066 |
 
 ---
@@ -191,6 +191,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000091 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0014/900_SAVE_MANIFEST.md` — Session 2 checkpoint after the crew debrief, loot split, tactical-authority ruling, and the deepened relationship with Owen, captured the following morning |
 | EVT-000085 | Event | Gatefall: Pendragon: explicit World Rule Profile 1.6→1.7 terminology migration — the E-Rank–S-Rank classification is uniformly Rank, persisted `system_tier: E` becomes `system_rank: E`, all values and outcomes are preserved, and no fictional time passes |
 | EVT-000086 | Event | Gatefall: Pendragon: additive World Rule Profile 1.7→1.8 presentation adoption — `/system` uses a fixed 76-cell frame, 20-cell progress bars, title-case labels, indented quest objectives, and wrapped item mechanics; no state, value, outcome, or fictional time changes |
+| EVT-000087 | Event | Gatefall: Pendragon: the command-versus-relationship collision Owen raised provisionally resolved (crew members, not partners, in a Gate), and a full rest day off — apartments, Owen's boat on the lake, first kiss, no Gates or crew business — through early evening heading to dinner |
+| REC-000092 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0016/900_SAVE_MANIFEST.md` — automatic context-preservation checkpoint captured under frozen Profile 1.8, no migration required on restore |
 
 ---
 

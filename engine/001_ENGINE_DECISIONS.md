@@ -3524,6 +3524,88 @@ The milestone exists because one bootstrap verb consumed six decisions (056, 063
 
 ---
 
+## Decision 076 — Relationship Texture: Preserving Characterization Across the Promotion Barrier
+
+**Status:** Proposed — **Version 0.4 Planning** (foundational under Decision 069; cannot land inside the completed 0.3 Architecture Freeze)
+**Date:** 2026-07-29
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Section 10 (Relationship); `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Turn-State Settlement); `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Gameplay Close step 3, Session Export, Automatic Context Preservation); `010_ENGINE_RULES.md` Sections 2.1, 2.8, 5.6; `tools/validate_repository.ps1`; Decisions 042, 048, 054, 055, 061, 069
+
+### Context
+
+The engine's persistence machinery is exhaustively rigorous about quantities and casual about people. Both halves of that sentence are demonstrable in the same campaign, at the same checkpoint.
+
+`011_ENGINE_DATA_MODEL.md` Section 10 defines a Relationship as four things: `Endpoints`, `Type`, `Qualities`, and `State`. Every example the schema gives for `Qualities` is institutional — *"trust, rivalry, obligation; governance quality and legitimacy band; diplomatic quality; membership rank"* — sourced from Rules Section 9 (membership) and Section 10 (governance and diplomacy). The vocabulary is correct for what it was built to model: factions, offices, treaties, and ranks. It contains no slot for **how two characters behave toward one another**.
+
+This is not a Runtime failure. A Runtime filling a Relationship object writes what the schema asks for, and the schema does not ask. The texture is not lost in transit — **it is never requested.**
+
+The observed instance. In `campaigns/gatefall_pendragon_001/`, a personal relationship formed across one session between the protagonist and a crew mender and was promoted at the barrier as `REL-000066`. Its `type`, `qualities`, `state`, and `history` fields were written correctly and completely; `tools/validate_repository.ps1` and `tools/test_checkpoint_contract.ps1` both passed clean at two successive checkpoints. The entire physical and romantic content of the relationship was preserved as the phrase *"a personal and physical relationship,"* and its manner as nothing at all.
+
+What a restoring session would have inherited: that the two are together. What it would have lost: that they tease constantly and neither wins; that "mage" reliably offends him and "mender" is a correction he has clearly made before; that his tell is his hands; that his dryness is armor and stops working around this one person; that the protagonist is cold with the entire rest of the crew and unguarded only here; that the protagonist began a sentence he could not finish and the other man deliberately let it go. A Runtime restoring from that checkpoint would not have played these two characters wrong so much as **played two different characters entirely**, correctly, from an accurate file.
+
+The loss is invisible by construction. A relationship recorded as a role label looks exactly like a relationship recorded well — both are well-formed, both resolve, both pass every gate. Only a player who was present can detect it, which is what happened: the omission surfaced because the player asked how the relationship had been stored, thirteen checkpoints into the campaign.
+
+Four mechanisms compound:
+
+1. **Compression is asymmetrically lossy.** Every promotion summarizes. Discrete state survives summarization unchanged — `Level 7` compresses to `Level 7`. Manner is texture, and texture is exactly what summarization removes. Across N checkpoints, mechanical fidelity holds constant while characterization decays monotonically toward a role label.
+2. **Completeness is defined as coverage, never fidelity.** The Save Algorithm derives the target set from the session's events and requires every named ledger be opened and read back — a genuinely strong rule against the failure it addresses. It asks *which files changed*. It never asks *what kind of content survived*.
+3. **The one rule that covers this fires late and aims elsewhere.** Gameplay Close step 3 requires capturing *"qualitative evolution of existing relationships... if an NPC showed compassion, provided mentorship, took a risk for the character, or changed their stance."* Correct and real — but it lives in the fetched layer, is consulted at close, and governs **stance** (did the relationship change direction?) rather than **manner** (how is it expressed?). Stance is a scalar the existing `qualities` field already holds. Manner is the thing lost.
+4. **The resident core has no characterization analogue to Turn-State Settlement.** That section is emphatic that tracked state settles every exchange — *"If the player has to ask whether mana recovered or XP was earned, the prior exchange failed settlement."* Nothing carries the equivalent obligation for the exchange in which a character reveals how they behave. An NPC's first unguarded laugh is as canon-bearing as fifty-seven points of damage, and only one of the two has a settlement rule.
+
+This is Decision 055's finding in a layer neither 055 nor 054 reached. Those decisions established that an obligation carried only by instruction does not fire, and moved enforcement to a named point. Here the obligation is not merely unenforced — it was never expressed, because the schema had no field to express it in.
+
+### Decision
+
+**1. `011_ENGINE_DATA_MODEL.md` Section 10 gains a fifth Relationship field: `Texture`.**
+
+```text
+Endpoints    exactly two Entity IDs
+Type         the kind of relationship
+Qualities    e.g. trust, rivalry, obligation; governance quality
+             and legitimacy band; diplomatic quality; membership rank
+State        the relationship's own current state and history
+Texture      how these two behave toward one another — the manner a reader
+             of Type, Qualities, and State alone would get wrong
+```
+
+`Texture` is defined by the question it answers, not by an enumerated vocabulary. It is **optional for institutional relationships** (a membership or jurisdiction link has no manner worth recording) and **required for relationships between two Characters** where play has established one. It records observable behavior — habits, verbal patterns, physical tells, what each does that they do with nobody else — and never interior state the Player Intent Domain reserves to the player.
+
+**2. Characterization settlement becomes a resident per-turn obligation.** `docs/AI_GAMEPLAY_RESIDENT_CORE.md` gains a short companion to Turn-State Settlement: when a resolved exchange establishes *how* a character behaves — a verbal tic, a physical habit, a first-time gesture, a pattern broken — that becomes a tracked pending promotion target in the same way XP does, rather than something reconstructed from memory at the barrier. The test mirrors the existing one: if a returning session has to invent how two established characters speak to each other, the prior promotion failed settlement.
+
+**3. Character firsts are named triggers.** The engine already treats firsts as significant — first kill, first threshold crossed, System onset. Character firsts join them: the first time an NPC laughs, initiates contact, is visibly disarmed, or acts against their own established pattern. These are the moments that survive when they are noticed and vanish when they are not, and noticing is currently unassigned.
+
+**4. Enforcement point: `tools/validate_repository.ps1`, as a coverage check only.** Per Decision 055 this decision names where it is checked. The gate fails when a Relationship whose endpoints are both Characters, and whose type is not institutional, carries no `Texture`.
+
+The gate proves the field is **present**. It deliberately does not adjudicate whether the content is any good — that is a judgment, and a checker that scored prose quality would be wrong in interesting cases and trusted anyway. This is the same line Decision 071 draws for the index: coverage is mechanical, currency is the writer's obligation at the promotion barrier.
+
+**5. `/export` fires automatically on the Context-Preservation Barrier.** The gameplay transcript already ranks **above** canonical ledgers in the canon hierarchy (Rules Section 2.1), on the grounds that it reflects what actually happened while a ledger may be stale, and Decision 061 established that it cannot be regenerated from canon. It is nonetheless the only durable artifact the engine never writes on its own. When the resident Context-Preservation Watch invokes the Save Algorithm, it invokes Session Export in the same operation.
+
+### Rationale
+
+- **The schema is the prompt.** A Runtime fills the fields it is given. Every prior fix in this family moved an enforcement point because the instruction was already correct and unfollowed (Decisions 054, 055, 064, 071); this one is different in kind, because there was no instruction to follow and nowhere to put the answer. Adding the slot is most of the remedy.
+- **The evidence is a passing checkpoint, not a failing one.** Nothing errored. Two validators passed twice. The defect is undetectable from inside the system, which is precisely the profile of the failures this engine has historically taken most seriously.
+- **It matches the engine's stated purpose.** *"History is not written for the player. The player becomes part of history."* The engine models damage with a formula, XP with a table, and injury with a four-tier taxonomy carrying a healing clock and a treatment-interaction model. The people through whom that history is actually experienced get a free-text field with institutional examples. The asymmetry is not defensible on the engine's own terms.
+- **The transcript rule already exists and is simply not wired.** Rules Section 2.1 ranks it tier 2; Decision 042 excluded it from durability only because it was volatile; Decision 061 removed the volatility. `campaigns/gatefall_pendragon_001/` nonetheless reached thirteen checkpoints with zero exports. The artifact the hierarchy trusts most is the one the engine is least diligent about writing.
+
+### Consequences
+
+- **Class under Decision 069: foundational.** The structural test is unambiguous — the diff changes `011_ENGINE_DATA_MODEL.md`, which that decision names as sufficient on its own, and it introduces an engine-general field that every world's Character relationships must satisfy. **Owning milestone: Version 0.4 — Planning and ADR Design.** It cannot land inside Version 0.3, whose Architecture Freeze is complete (Decisions 072–075).
+- Points 2, 3, and 5 are individually refinement-class and could land earlier — but points 2 and 3 have nothing to settle *into* without the field, and point 4 cannot check a field that does not exist. Splitting them would ship the obligation without the destination. They are held together deliberately.
+- Existing relationships are not invalidated. `Texture` is additive, and the coverage gate applies from adoption forward; back-filling established Character relationships is a migration task for the owning milestone, not a retroactive validation failure.
+- The cost is paid at the promotion barrier, per relationship, by the writer — the same cost shape as Decision 071's index. It is larger than the index's, because manner takes more words than a checkpoint identifier.
+- `REL-000066` in `campaigns/gatefall_pendragon_001/` carries a `texture` field written ahead of this decision, as the worked instance the proposal is drawn from. It is evidence, not precedent, and does not constitute adoption.
+- Automatic export changes the write profile of a session: transcripts are large and accumulate per campaign. Retention and rotation are open questions this decision does not settle.
+
+### Alternatives Considered
+
+- **Strengthen Gameplay Close step 3 to ask for manner as well as stance.** Rejected on the reasoning Decision 054 gives and this failure demonstrates twice over. The instruction would be correct, would live in the fetched layer consulted once per session, and would have no field to write into. This is the "repair the prose at the failing point" move that three prior decisions in this family rejected.
+- **Record manner on the Character entity rather than the Relationship.** Rejected: manner is not a property of a person, it is a property of a pair. The mender is dry with everyone and disarmed by exactly one person; filing that under his entity makes it a general trait and loses the asymmetry that is the entire content. Rules Section 5.6 already sites relational qualities on the relationship for the same reason.
+- **Rely on `/export` alone and leave the schema untouched.** Rejected as insufficient, though the export is genuinely the strongest backstop and is adopted here as point 5. A transcript is a primary record a *reader* can reconstruct from; the ledgers are what a *restoring Runtime* actually loads at session start. Requiring every resumption to read a full transcript defeats the purpose of having canonical state at all.
+- **Add a quality score or rubric the validator can check.** Rejected. It would produce a gate that is confidently wrong about prose and trusted anyway — the failure mode Decision 071 names when it declines to adjudicate row currency, and the reason point 4 is deliberately a presence check.
+- **Extend `Qualities` with characterization examples instead of adding a field.** Rejected as the weaker version of the same change. `Qualities` is load-bearing for governance, legitimacy, and membership rank across Rules Sections 9 and 10; overloading it with manner would blur a field that institutional simulation reads structurally, and would still change the Data Model — paying the foundational cost without gaining a clean slot.
+- **Treat it as refinement and land it inside 0.3.** Rejected on Decision 069's structural test, which exists precisely to stop a change from self-declaring its own class in its own Alternatives section. The diff touches the Data Model. That settles it, regardless of how badly the gap wants fixing.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

@@ -13,9 +13,9 @@ canonical_record: REC-000079
 schema_version: "0.1.3"
 status: active
 provenance:
-  source: EVT-000104
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
+  source: EVT-000103
+  event_time: "2026-07-31, evening"
+  record_time: "2026-07-31T22:45:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -64,7 +64,6 @@ subjects:
   - EVT-000101
   - EVT-000102
   - EVT-000103
-  - EVT-000104
 ```
 
 ---
@@ -1440,33 +1439,4 @@ participants:
 description: "At Owen's apartment, over banter about who was where and when, two facts about the relationship's timeline were settled. First, a correction: the boat scene (`EVT-000087`, 2026-07-30) is confirmed as their **first real kiss** — the deliberate, sober, daylight one — distinct from and later than the physical intimacy of the night before it (`EVT-000083`), which the record already had running first; no change to either event, only to which one 'first kiss' properly names. Second, a genuine gap fill, ruled non-contradictory against the existing record (which is blank for that night): **Owen stayed over at Alexander's own apartment on the night of 2026-07-28**, after the beer/exposure conversation that followed the Ashfield clear (`EVT-000080`/`EVT-000081`) — the only time in the relationship's history the overnight stay has run in that direction.
 
 Inside the kitchen, mid-joke and mid-cooking, Alexander crossed the room without finishing his sentence, moved the groceries aside, and kissed Owen for real — unplanned, the first uncalculated thing he's done all day, and the closest either of them has come to actually answering the unweighed *\"I already miss you\"* text from earlier that afternoon (`EVT-000093`). Owen's reaction ran its usual sequence — surprise, then giving in, then a joke three seconds after (*\"hi. also hello, what was that\"*) — but the kiss itself ran longer and less controlled than the pattern, and he didn't pull back from it first. Dinner is cooking; the story of the day's money and the three instant dungeons is owed and not yet told. No XP, item, or Stat change; established relationship canon only."
-```
-
-## EVT-000104 - Dinner: Three Bosses, a Weekend, and a Line Neither Planned
-
-```yaml
-id: EVT-000104
-canonical_record: REC-000079
-schema_version: "0.1.3"
-status: active
-provenance:
-  source: session-2-gameplay
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
-type: Event
-kind: session-gameplay
-importance: moderate
-event_time: "2026-07-31, night"
-participants:
-  - ENT-000125
-  - ENT-000139
-description: "Over dinner, Alexander told Owen the real number, unprompted and grinning first: **three bosses**, that afternoon, alone. Owen's reaction was genuine — visible alarm, an unbidden mender's read that found nothing physically wrong, a flat 'three is a lot of not-asking' — before landing on the promise he's held since the bar: he won't ask how. The largest true fact Alexander has volunteered about himself to date, still short of naming the System.
-
-Alexander then joked, with real underlying anxiety, that the day's shopping had run his gold the wrong direction; Owen didn't buy the crisis framing, pointing out he's dressed in gear that could stop a bus. The conversation turned practical: Alexander restated, as a funded plan rather than a sentiment, that he intends to properly equip Owen — protection for the hands, real boots, actual armor beyond standard mender kit — addressing the exact gap Owen named weeks ago (never positioned to take a hit, never budgeted for by any crew). He also proposed bringing Owen along to a future Dale-brokered C-Rank mining job as easy, well-paid manual labor; Owen agreed with delighted horror. Alexander added, unguarded, that he has no interest in sharing how handsome Owen is with anyone else on site; Owen went visibly red and didn't argue.
-
-**Weekend planned.** Owen confirmed he's free the whole weekend but for two short pending items — looking at Renata's glitching sensor rig, and giving Priya a firm date for the recurring crew training (`OBJ-11`) — both under an hour, both still owed. Tomorrow: jet skis first (at Owen's openly competitive insistence), the lake and boat after.
-
-**The evening's least calculated line.** Cleaning up together, Alexander said *'I'll give you all the evenings'* — off guard, unplanned, the same unweighed register as the afternoon's text. Owen went still in the real way rather than the deflecting one and didn't produce his usual joke.
-
-Showered and went to bed together. No XP, Stat, gold, or item change — established relationship canon and two open commitments (Renata's rig, Priya's training date) only."
 ```

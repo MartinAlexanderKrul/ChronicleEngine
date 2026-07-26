@@ -15,9 +15,9 @@ canonical_record: REC-000078
 schema_version: "0.1.3"
 status: active
 provenance:
-  source: EVT-000104
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
+  source: EVT-000103
+  event_time: "2026-07-31, evening"
+  record_time: "2026-07-31T22:45:00Z"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -88,8 +88,6 @@ Status: Active, and deepened again. The night of 2026-07-29 into 2026-07-30 (`EV
 
 **2026-07-30, day (`EVT-000087`).** No new exposure this day — the two of them spent it entirely off-Gate and away from the crew, a full rest day on Owen's boat. The relationship deepened (first kiss, first full day alone together) without changing what Owen does or doesn't know about the System.
 
-**2026-07-31, dinner — the largest voluntary disclosure yet (`EVT-000104`).** Unprompted, Alexander told Owen he had killed three bosses that afternoon, alone. Owen's reaction was real alarm followed by a mender's read that found nothing wrong, then the same held line: he won't ask how. Still short of naming the System, but a genuine escalation past "something happened to me" — the first time Alexander has volunteered a concrete, verifiable fact about what he can do rather than a vague admission. The secret is not resolved; it is being managed jointly now rather than carried alone.
-
 **OBJ-11 - Train and coordinate with Priya Okafor's crew as its de facto tactical lead.**
 Following `REL-000065`'s tactical-authority handover, Alexander agreed with Julian, Renata, and Owen (2026-07-29, `EVT-000083`) to a recurring training and coordination schedule: a first session in 2–3 days, then roughly weekly (or at least every 10 days) after that. No date fixed yet beyond that window.
 Status: Active. First session still not fixed to a specific date.
@@ -104,8 +102,6 @@ Owen's three terms, to be designed into the formation:
 **Open complication, named aloud by Owen rather than discovered later:** the man who decides when Owen spends himself in a Gate is also the man he is sleeping with, and the two will collide the first time Alexander orders him to hold back or refuses to let him come.
 
 **Complicated the same evening (2026-07-30, `EVT-000088`).** Alexander proposed that Owen leave and build his own crew (see OBJ-12), which — if it ever happens — dissolves this objective's premise rather than resolving it. Owen conceded the underlying criticism: in five years no crew has ever put the mender in the plan, Priya included. The training schedule remains agreed and unscheduled.
-
-**Gear commitment made (2026-07-31, `EVT-000104`).** Over dinner, Alexander restated — plainly, as a funded plan rather than a sentiment — that he intends to properly equip Owen: real protective gear addressing the exact gap Owen named at the bar (never positioned to take a hit, never budgeted for by any crew). Owen's specific asks: hand protection, real boots, actual protection beyond standard mender kit. Owen also still owes Priya a firm date for the recurring training session (OBJ-11's original open item), unresolved as of this checkpoint.
 
 **Provisionally answered (2026-07-30, `EVT-000087`).** Alexander's stated resolution: in a Gate they operate as crew members, not partners, and neither acts on a whim against the agreed plan — the recurring training is meant to actually rehearse that distinction rather than assume it. Owen accepted the principle but was candid that he doesn't know whether it survives actually watching Alexander go down again in person; Alexander admitted the same fear runs the other way. The agreement is real but untested against an actual Gate. A related open question remains: whether the crew hears about the relationship from them or works it out.
 

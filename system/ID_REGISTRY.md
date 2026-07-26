@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000145 |
-| Record | `REC-` | Canonical Record | REC-000092 |
-| Event | `EVT-` | Event | EVT-000099 |
+| Record | `REC-` | Canonical Record | REC-000094 |
+| Event | `EVT-` | Event | EVT-000104 |
 | Relationship | `REL-` | Relationship | REL-000067 |
 
 ---
@@ -211,6 +211,13 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000097 | Event | Gatefall: Pendragon: first Instant-Dungeon Key [E-Rank] used — E-Rank instance, archetype Overgrown Temple (population 12 common/2 elite [1 rolled + 1 archetype shrine-guard]/1 boss); 4 common, 1 elite, and the boss killed; boss-drop rune rerolled from already-known Stone Skin to Flash Step [D-Rank] (learned) under an extended Section 12.5 reroll ruling; archetype bonus loot an Elixir of a Stat (later sold); corrected ruling that elites/bosses also drop a crystal in addition to their core (Section 11.1); +170 XP; instance closed on boss kill, ~40 minutes elapsed, ejected to 3:40 PM |
 | EVT-000098 | Event | Gatefall: Pendragon: post-dungeon shop activity — sold 6 E-Rank crystals (60 g) and the Elixir (2,500 g), consumed the boss-drop rune to learn Flash Step, bought a Stabilization Seal (150 g) and a second Instant-Dungeon Key [E-Rank] (500 g) |
 | EVT-000099 | Event | Gatefall: Pendragon: second Instant-Dungeon Key [E-Rank] used — E-Rank instance, archetype Hive (population doubled to 18 common plus the converted elite slot = 19 common, 0 elites, 1 boss); 6 common and the boss killed; drank both Lesser Mana Potions (+20 Mana) before the boss approach; boss drop a third Instant-Dungeon Key [E-Rank]; +170 XP; Rupture's mastery advanced Novice → Practiced on its third materially-distinct contributing use (multiplier ×2.0 → ×2.15, Mana cost 12 → 11) |
+| EVT-000100 | Event | Gatefall: Pendragon: adoption of the additive Gatefall World Rule Profile 1.10→1.11 item-diversity advance — future boss equipment carries a Boss Imprint, future Daily Premium categories draw from a bag without replacement from the next rotation, future dropped runes/books settle duplicates by a closed rule, and a fabrication series distinguishes later Premium rotations; nothing recomputed, no fictional time consumed |
+| EVT-000101 | Event | Gatefall: Pendragon: third Instant-Dungeon Key [E-Rank] used — E-Rank instance, archetype Frozen Gallery (Mana recovery halved; population 7 common/2 elite/1 boss); 5 common, both elites, and the boss killed; the boss's opening unseen strike fumbled naturally, its counter and a mid-combo counter both landed (Health 88→62, then 88→68 after a claimed Status Recovery), no injury tier; a legendary finishing strike ended the fight; boss drop a fresh Instant-Dungeon Key [E-Rank]; +200 XP (380→580/700); loot 8 crystals, 3 cores |
+| EVT-000102 | Event | Gatefall: Pendragon: back on the bench — texted Owen, sold all 15 banked E-Rank crystals to the System shop (150 g; gold 1,965→2,115), and was picked up by car (Owen's, previously unmentioned) after a grocery stop |
+| EVT-000103 | Event | Gatefall: Pendragon: at Owen's apartment — the boat kiss (`EVT-000087`) confirmed as their first real kiss, a previously blank night filled in (Owen stayed at Alexander's apartment 2026-07-28), and an unplanned kiss in the kitchen answering the day's unweighed text; no Stat, XP, or item change |
+| REC-000093 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0022/900_SAVE_MANIFEST.md` — player-requested checkpoint at Owen's apartment, captured under frozen Profile 1.11, no migration required on restore |
+| EVT-000104 | Event | Gatefall: Pendragon: dinner and night — Alexander told Owen he killed three bosses that afternoon (the largest voluntary disclosure to date), restated the gear commitment for Owen and proposed a future mining job, set weekend plans (jet skis, the lake), and said "I'll give you all the evenings" off guard; no Stat, XP, gold, or item change |
+| REC-000094 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0023/900_SAVE_MANIFEST.md` — player-requested checkpoint with both asleep at Owen's apartment, captured under frozen Profile 1.11, no migration required on restore |
 
 ---
 

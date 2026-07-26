@@ -13,9 +13,9 @@ canonical_record: REC-000080
 schema_version: "0.1.3"
 status: active
 provenance:
-  source: EVT-000104
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
+  source: EVT-000103
+  event_time: "2026-07-31, evening"
+  record_time: "2026-07-31T22:45:00Z"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -391,17 +391,3 @@ Player-requested checkpoint, taken at a quiet pause on the same park bench after
 **2026-07-31, evening — Checkpoint 0022.**
 
 Player-requested checkpoint, taken at Owen's apartment in Rogers Park while dinner cooks, after Profile 1.11 adoption, a third solo instant-dungeon clear, and the evening's reunion. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0022/` with `900_SAVE_MANIFEST.md`. Captured under frozen Profile 1.11 and Data Model 0.1.3 — no migration required on restore. `system/ID_REGISTRY.md` and `system/WORLDS_AND_CAMPAIGNS.md` updated in the same change.
-
-**2026-07-31, night — dinner, the three-boss disclosure, and a weekend planned (`EVT-000104`).**
-
-- **The largest voluntary disclosure yet.** Over dinner Alexander told Owen he'd killed three bosses that afternoon, alone. Owen's reaction was real alarm, an unbidden mender's read finding nothing wrong, and the held promise not to ask how — still short of naming the System, but the first concrete, verifiable fact Alexander has volunteered.
-- **Gear commitment restated.** Alexander confirmed, as a funded plan, that he intends to properly equip Owen — hands, boots, real protection — addressing the gap Owen named at the bar weeks ago. Proposed bringing Owen along to a future Dale-brokered mining job.
-- **Weekend planned.** Owen confirmed free all weekend but for two short pending items (Renata's sensor rig, a firm training date for Priya). Tomorrow: jet skis, then the lake.
-- **`REL-000066` deepened** — *"I'll give you all the evenings,"* said off guard, landed harder than anything rehearsed. Showered and went to bed together.
-- **No XP, Stat, gold, or item change this event.**
-- **Ledgers updated:** `100_CHARACTER_SHEET.md` (condition, situation narrative), `130_NPCS_AND_FACTIONS.md` (Owen's location, `REL-000066` texture), `140_OBJECTIVES.md` (OBJ-10 disclosure progress, OBJ-11 gear commitment), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000104` recorded, added to `REC-000079` subjects), `180_CURRENT_STATE.md` (full state refresh — see below). `110`, `120` unchanged.
-- **Repository allocation:** Allocated `EVT-000104`; no entity, record, or relationship identifier minted.
-
-**2026-08-01, pre-dawn — Checkpoint 0023.**
-
-Player-requested checkpoint, taken with both asleep at Owen's apartment, next session to resume at the morning wake-up rather than jumping ahead to the lake. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0023/` with `900_SAVE_MANIFEST.md`. Captured under frozen Profile 1.11 and Data Model 0.1.3 — no migration required on restore. `system/ID_REGISTRY.md` and `system/WORLDS_AND_CAMPAIGNS.md` updated in the same change.

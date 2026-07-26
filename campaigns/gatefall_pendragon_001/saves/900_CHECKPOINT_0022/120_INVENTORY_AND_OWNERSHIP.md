@@ -13,9 +13,9 @@ canonical_record: REC-000076
 schema_version: "0.1.3"
 status: active
 provenance:
-  source: EVT-000104
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
+  source: EVT-000103
+  event_time: "2026-07-31, evening"
+  record_time: "2026-07-31T22:45:00Z"
 role: canonical ledger
 scope: campaign
 subjects: []

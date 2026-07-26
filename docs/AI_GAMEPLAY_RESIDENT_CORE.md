@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.6
+**Document Version:** 1.7
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -32,6 +32,7 @@ Per `012` Section 0.4, these obligations are sited **resident per-turn**:
 - **promotion-obligation awareness** — canon established this turn is tracked as a pending write, not reconstructed at the barrier;
 - the **Context-Preservation Watch** — context pressure or the automatic fallback cadence triggers a checkpoint before more fiction is resolved;
 - **Turn-State Settlement** — tracked state settles every exchange, before yielding;
+- the **Profile-Declared Proactive Trigger Audit** — world-authored triggers are checked at their declared scene and exchange boundaries without waiting for a player prompt;
 - the rule that an applicable **World Rule Profile** is loaded before resolving state it governs (Rules Section 14.4).
 
 Mechanical repository validation (`012` Section 5.4) and promotion completeness remain barrier-enforced and are not restated here.
@@ -322,6 +323,23 @@ In debug mode, use one actor-relative list (`Effect on <actor>'s intent`) rather
 
 ---
 
+# Profile-Declared Proactive Trigger Audit
+
+This audit is **resident and automatic**. When the active World Rule Profile declares proactive triggers, load the bounded section that defines them during readiness and keep its trigger contract in the working set. The Runtime must execute it even when the player did not ask about the mechanic, open a status panel, or use its name.
+
+Run the audit at each trigger point declared by the active profile:
+
+1. before yielding every scene opening;
+2. when the protagonist enters or leaves a place;
+3. after a resolved exchange changes a crisis, threat, deadline, proximity, clue, or discovery that the profile names as trigger-relevant; and
+4. immediately before yielding whenever the just-resolved fiction may have made a trigger eligible.
+
+Evaluate eligibility only from loaded canon and the exchange just resolved. The audit never invents a crisis, concealed discovery, objective, or deadline so that something can fire. If every declared precondition holds, settle the profile-defined attachment, offer, warning, or other state reaction **before yielding**, write it into in-flight state, and render its notification without waiting for a player reminder. If the reaction presents a choice, stop at that choice; automatic detection is not permission to choose for the protagonist.
+
+For Gatefall, this resident obligation loads and executes World Rule Profile Sections **8.4 and 14.3**. An eligible Urgent quest produces its offer automatically and waits for acceptance; an eligible Hidden quest attaches automatically if capacity permits. A scene or exchange with no eligible condition produces no quest. Merely saying “the Runtime audits” in the world profile without executing this resident check is a failed implementation.
+
+---
+
 # Turn-State Settlement
 
 After every resolved exchange and before yielding, settle all tracked state that changed during that exchange. This is a **resident per-turn obligation**, not work deferred to `/system`, an OOC correction, `/save`, or session close.
@@ -330,8 +348,9 @@ After every resolved exchange and before yielding, settle all tracked state that
 2. Account for the in-world time the narrated exchange consumed. When the active world has a deterministic time-based rule, read its exact last-settled campaign-time anchor, establish the response's elapsed duration and new exact anchor, apply every deterministic time-based rule (including active/resting resource recovery and Health recovery), preserve every world-declared fractional remainder, and advance the anchor before the next action reads state. The same fictional span must settle identically whether narrated in one response or many. A vague phrase such as “later” or “overnight” does not replace the anchor: resolve the exact endpoint before any time-dependent next action. A Runtime may not invent a recovery rate; if none exists it preserves current Health until a resolved treatment or healing effect establishes a change.
 3. If the exchange completed training or demonstrated a technique, update qualitative capability/training state now with what was actually practiced or demonstrated. One session may establish familiarity or foundational practice without granting mastery; it is still recorded and can accumulate through later training and use. Physical skills are not discarded because a world also has System Abilities.
 4. If the exchange resolved a challenge, apply its reward now, including XP. When an active World Rule Profile makes level-up rewards immediate, settle every crossed level and its complete reward package before the next action; never convert it into an acceptance prompt or pending reward. Only rewards the profile explicitly declares deferrable—such as Gatefall's daily rewards—may stack unclaimed. A kill, clear, or other completed challenge is never left "not yet updated."
-5. Update the in-flight session state used by the next turn. The next response and `/system` read this settled state, never the opening checkpoint values.
-6. Narrate the fictional outcome, then render any world-declared compact state notifications once, in their declared format.
+5. Run the Profile-Declared Proactive Trigger Audit against the settled exchange and apply any eligible automatic state reaction before yielding.
+6. Update the in-flight session state used by the next turn. The next response and `/system` read this settled state, never the opening checkpoint values.
+7. Narrate the fictional outcome, then render any world-declared compact state notifications once, in their declared format.
 
 Checkpointing promotes this already-settled in-flight state; it does not perform the settlement for the first time. If the player has to ask whether mana recovered or XP was earned, the prior exchange failed settlement and must be corrected before play continues.
 

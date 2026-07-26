@@ -253,6 +253,27 @@ but must resolve an exact anchor before a time-dependent action or deadline is
 settled. Decision 078 owns this mechanism; the active World Rule Profile owns the
 clock representation, rates, modes, rounding, and migration.
 
+## 2.5 Profile-Declared Proactive Trigger Settlement
+
+When an active World Rule Profile declares a proactive trigger audit, the
+Runtime must load the governing profile section at readiness and execute the
+audit at every trigger point that profile names. This is an automatic
+state-settlement obligation: it does not wait for the player to request a
+status view, ask whether a trigger exists, or name the mechanic.
+
+The Runtime audits once before yielding a scene opening and again after every
+resolved exchange that may have established or changed a declared trigger
+condition. If the profile's eligibility contract is satisfied, the Runtime
+settles the declared state change and notification before yielding. If the
+profile requires a later player choice—such as accepting an offered quest—the
+automatic operation stops at that choice; it never chooses for the player.
+
+An audit does not create its own facts. Eligibility derives only from loaded
+canon and the just-resolved exchange, and a failed audit produces no trigger.
+The active Runtime Profile must site this obligation in its resident per-turn
+layer. A proactive trigger carried only by fetched reference material has no
+enforcement point and is therefore not implemented.
+
 ---
 
 # 3. Context

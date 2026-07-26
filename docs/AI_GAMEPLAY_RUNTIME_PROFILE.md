@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.37
+**Document Version:** 1.38
 **Status:** Active Gameplay Workflow — Fetched Reference Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -26,7 +26,7 @@ Interpreter mode may update world, campaign, and historical state through play. 
 
 The profile has two execution layers under Runtime Section 0.4 and Decision 055, and they are **two documents**:
 
-- **Resident per-turn layer — `docs/AI_GAMEPLAY_RESIDENT_CORE.md`.** The Player Agency Contract; the compression intent envelope; Interaction Cadence; intent/fact grounding; the Action Resolution Bright Line and Modifier Step Contract; the Information Boundary; Turn-State Settlement; promotion-obligation awareness; canon-determinism; and the rule that an applicable World Rule Profile is loaded before affected resolution. These checks fire on every turn at the point a fact or outcome would be narrated.
+- **Resident per-turn layer — `docs/AI_GAMEPLAY_RESIDENT_CORE.md`.** The Player Agency Contract; the compression intent envelope; Interaction Cadence; intent/fact grounding; the Action Resolution Bright Line and Modifier Step Contract; the Information Boundary; Turn-State Settlement; the Profile-Declared Proactive Trigger Audit; promotion-obligation awareness; canon-determinism; and the rule that an applicable World Rule Profile is loaded before affected resolution. These checks fire on every turn at the point a fact or outcome would be narrated.
 - **Fetched reference layer — this document.** Startup variants, command details, worked examples, export formatting, save/checkpoint procedure, and other sections consulted when their operation is invoked. Fetched material elaborates resident obligations but never replaces them.
 
 **The resident core is loaded before play and held for the whole session.** It is not optional, not summarized, and not consulted on demand. A session executing from this document alone is missing every per-turn guardrail: it has the command table and the save algorithm, and no agency contract, no bright line, and no settlement. Load `docs/AI_GAMEPLAY_RESIDENT_CORE.md` first.
@@ -301,7 +301,8 @@ When a valid checkpoint exists:
 3. Load the checkpoint's restoration entry point and included ledgers.
 4. Reconcile the restored checkpoint with the live campaign continuation.
 5. When the active World Rule Profile declares deterministic elapsed-time rules, load or migrate its exact campaign-time anchor, recovery modes, and fractional carry before any time-dependent action. Restoration itself advances no fictional time and grants no recovery.
-6. Read current objectives and situation-relevant records.
+6. When the active World Rule Profile declares proactive triggers, load their governing sections and execute the resident Profile-Declared Proactive Trigger Audit before the first scene opens.
+7. Read current objectives and situation-relevant records.
 
 Give a returning player a concise natural recap, unresolved pressures, the available-commands menu (Command Availability at Session Start), and a readiness question. Do not replay character creation or the full introduction.
 

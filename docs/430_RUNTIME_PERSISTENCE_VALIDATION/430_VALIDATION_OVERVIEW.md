@@ -34,9 +34,9 @@ Gatefall: Pendragon is the Version 0.3 prototype campaign.
 
 It has produced the exact evidence the milestone requires:
 
-- fifteen canonical-form checkpoints (`900_CHECKPOINT_0001`–`0015`),
+- twenty canonical-form checkpoints (`900_CHECKPOINT_0001`–`0020`),
 - repeated eight-ledger promotion,
-- structured World Rule Profile metadata across workshop-draft and frozen captures through Profile 1.6, with current live restoration chaining through Profile 1.8,
+- structured World Rule Profile metadata across workshop-draft and frozen captures through Profile 1.10, with older captures retaining their immutable versions and restoration chaining through current compatibility treatments,
 - live presence changes under Data Model 0.1.2 followed by the prototype-driven Relationship Texture migration to Data Model 0.1.3,
 - identifier allocation and index updates at checkpoint barriers,
 - observed automatic transcript export at the Context-Preservation Barrier (`play_export_0003.md` alongside Checkpoint 0015),
@@ -60,6 +60,7 @@ The live canonical continuation remains protected. Destructive or divergent oper
 | `tools/validate_repository.ps1` | Live structural integrity, referential integrity, registry coverage, and presence invariants |
 | `tools/test_checkpoint_contract.ps1` | Canonical checkpoint shape, ledger completeness, manifest constraints, profile metadata, and index/current-state agreement |
 | `tools/test_runtime_command_catalog.ps1` | Exact command catalog and argumentless bootstrap contract |
+| `tools/test_player_agency_contract.ps1` | Resident compression-intent envelope, undeclared-communication prohibition, and protagonist-as-actor pre-send check |
 | `tools/test_runtime_persistence_validation.ps1` | Version 0.3 safe capability cases on disposable copies: presence/possession and stale-live-schema rejection through the real repository gate, profile-readiness across frozen/mismatch/unfrozen/no-profile, exact named restoration, explicit 0.1.2→0.1.3 migration during disposable branching, and branch/restart — see `431_CAPABILITY_MATRIX.md` for the per-case evidence class |
 | Other repository gates | Runtime residency, context preservation, decision ownership, and validator regressions |
 | Non-canonical fixtures in this directory | Failure behavior that must not be injected into live canon |

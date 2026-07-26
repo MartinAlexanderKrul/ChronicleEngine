@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.4
+**Document Version:** 1.5
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -25,6 +25,7 @@ The two documents are one profile. This one is separate because Decision 055 fou
 Per `012` Section 0.4, these obligations are sited **resident per-turn**:
 
 - the **Player Agency Contract** — the player authors intent; the Runtime never does;
+- the **compression intent envelope** — summarization may omit detail but never supply an undeclared action, communication, disclosure, or choice;
 - **intent/fact grounding** — a player's phrasing does not add objects, allies, capabilities, or findings to the world;
 - the **Action Resolution Bright Line and Modifier Step Contract** — the die resolves an uncertain action before any outcome is narrated;
 - **canon-determinism** — the same canon and the same die produce the same state;
@@ -81,6 +82,26 @@ Only meaningful player choices require yielding control.
 
 Avoid unnecessary interruptions. Small actions that logically follow from a declared intent are involuntary consequences, not choices. "I walk into the library" is answered by the heavy door swinging inward and the room beyond — not by "do you open the door?" Do not force the player to declare every step: "I approach the mayor" already covers walking, climbing the stairs, entering, and sitting when invited. Stop only when a new meaningful decision arises.
 
+## Compression Preserves the Intent Envelope
+
+**Compression removes detail; it never supplies intent.** Before narrating a Transition, Montage, travel summary, work summary, or other multi-beat span, the Runtime forms an **intent envelope** from what the player actually declared. Within that envelope it may narrate only:
+
+1. the declared action or communication;
+2. strictly necessary automatic execution that carries that declaration out without choosing among meaningful alternatives;
+3. NPC and world actions; and
+4. automatic, involuntary, or deterministically resolved consequences.
+
+Compression does **not** widen the declaration. The Runtime must not add any protagonist action whose substance the player did not provide, including:
+
+- opening a new communication channel — sending a text, placing a call, writing a message, filing a report, making a declaration, or disclosing information;
+- selecting among materially different methods or outcomes inside a broad instruction — declaring versus concealing loot, buying versus walking away, taking one route rather than another when the route matters, accepting help, or including another person;
+- extending a repeated activity across a fresh decision merely because the same character chose that action before; or
+- choosing the clean, honest, conventional, friendly, or otherwise plausible default where another meaningful course remains open.
+
+An established play pattern is **not delegation**. It is evidence that an alternative may be live, and therefore a reason to preserve the decision rather than fill it in. A private or hidden-agenda branch is still a Player Decision Point even when no NPC can see it.
+
+Before sending a compressed response, apply the **protagonist-as-actor test**: for every summarized clause in which the protagonist acts, speaks, communicates, declares, conceals, spends, gives, contacts, agrees, or commits, point either to the player's words authorizing that substance or to a strictly necessary micro-action inside the intent envelope. If neither exists, remove the clause and yield before it. When the declaration is ambiguous at that boundary, ask one concise clarifying question instead of choosing a default.
+
 ## What Counts as a Player Decision Point
 
 Most basically, a Player Decision Point is reached when the declared intent has been carried to completion and continuing would require a new intent the player has not given. "Walk to the Athenaeum" is fulfilled by arriving; whether to greet the clerk, accept an escort, tour the building, or go elsewhere are new intents — so the Runtime yields at arrival. A juncture counts even when the next step seems obvious: plausible is not the same as chosen.
@@ -121,8 +142,8 @@ Pacing is selected by the density of meaningful choices and by uncertainty — n
 
 - **Beat** (finest) — dialogue at a decision, negotiation, active investigation, combat exchanges. One meaningful juncture per response; yield at each Player Decision Point.
 - **Scene** — a continuous location or encounter with intermittent choices. Advance through automatic execution and world reaction; yield at each Player Decision Point.
-- **Transition** — travel, waiting, or a committed multi-step activity with low branching. Compress and advance time; stop at the first interruption requiring a choice, at arrival, or at the activity's natural end.
-- **Montage** (coarsest) — a long committed span of low-uncertainty activity (a season of study, months of construction). Requires explicit or clearly implied delegation; produce a summarized outcome with provenance, then yield.
+- **Transition** — travel, waiting, or a committed multi-step activity with low branching. Compress only inside the declared intent envelope; stop at the first interruption requiring a choice, at arrival, or at the activity's natural end.
+- **Montage** (coarsest) — a long committed span of low-uncertainty activity (a season of study, months of construction). Requires explicit or clearly implied delegation; produce a summarized outcome with provenance without inventing any action or communication outside that delegation, then yield.
 
 Drop to a finer mode the moment meaningful-choice density rises — an interruption, a demand, new information. Rise to a coarser mode only when the player has committed and nothing branches, or on delegation.
 

@@ -32,7 +32,7 @@ At designation, the campaign had:
 
 ## Current Evidence State
 
-As of 2026-07-25 repository time, ordinary play has advanced the campaign to fifteen canonical-form checkpoints (`900_CHECKPOINT_0001`–`0015`). Checkpoint 0015 is an automatic Context-Preservation capture at a quiet interval on the campaign morning of 2026-07-30, under frozen Gatefall Profile 1.6 and Campaign Schema 0.1.3. It is the campaign's first checkpoint captured natively under Data Model 0.1.3. Its immutable manifest correctly recorded no migration at capture; current restoration additionally applies the terminology-only 1.6→1.7 Rank migration and then the additive 1.7→1.8 `/system` layout adoption before play.
+As of 2026-07-26 repository time, ordinary play has advanced the campaign to twenty canonical-form checkpoints (`900_CHECKPOINT_0001`–`0020`). Checkpoint 0015 is the first automatic Context-Preservation capture under Data Model 0.1.3; Checkpoint 0020 is the first capture under frozen Gatefall Profile 1.10. Every older checkpoint remains immutable at its captured profile/schema and runs the applicable readiness chain before play.
 
 Live prototype evidence also produced Decision 076: Relationship Texture. That finding was accepted on 2026-07-25 repository time as an explicit foundational exception to the Version 0.3 Architecture Freeze and advances mutable live state to Data Model 0.1.3. Checkpoint 0014 and every earlier checkpoint remain byte-immutable at their captured schema; restoring them requires the explicit schema migration at readiness before validation and play. Checkpoint 0015 closes the positive path by capturing already-migrated live state directly as 0.1.3. The campaign's in-world date did not date the architectural decision.
 
@@ -62,7 +62,7 @@ Branch and restart validation uses a disposable fork. Negative structure and com
 
 **Result:** Observed pass.
 
-Checkpoints 0001–0015 use the canonical four-digit directory form. Checkpoint 0015 contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004, frozen Profile 1.6 / schema 0.1.2 evidence at Checkpoint 0014, and the first native schema 0.1.3 capture at Checkpoint 0015.
+Checkpoints 0001–0020 use the canonical four-digit directory form. Each contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004, frozen Profile 1.6 / schema 0.1.2 evidence at Checkpoint 0014, the first native schema 0.1.3 capture at Checkpoint 0015, and the first frozen Profile 1.10 capture at Checkpoint 0020.
 
 **Matrix:** V03-01, V03-09.
 
@@ -70,7 +70,7 @@ Checkpoints 0001–0015 use the canonical four-digit directory form. Checkpoint 
 
 **Result:** Observed pass.
 
-Checkpoint 0004 records the original complete eight-ledger target set, and subsequent checkpoints through 0015 repeat the canonical form. Checkpoint 0015 additionally observes the automatic Context-Preservation path: all eight ledgers promoted, registry advanced through `EVT-000084`, worlds-and-campaigns index advanced to 0015, and `play_export_0003.md` written in the same preservation operation.
+Checkpoint 0004 records the original complete eight-ledger target set, and subsequent checkpoints through 0020 repeat the canonical form. Checkpoint 0015 additionally observes the automatic Context-Preservation path: all eight ledgers promoted, registry advanced through `EVT-000084`, worlds-and-campaigns index advanced to 0015, and `play_export_0003.md` written in the same preservation operation.
 
 **Matrix:** V03-02.
 
@@ -178,6 +178,18 @@ P-04: Repository validation FAILED (3 error(s))
 **Gate output:** `validate_repository.ps1` passed (352 live Persistent Objects); `test_checkpoint_contract.ps1` passed; `test_context_preservation_contract.ps1` passed.
 **Matrix cases:** V03-01, V03-02, V03-09, V03-19.
 **Verdict:** Pass — first native Data Model 0.1.3 checkpoint and first observed automatic context-preservation checkpoint/export pair after Decision 076.
+
+## Evidence 011 — Compression-time Player Agency violations at Checkpoint 0020
+
+**Date / checkpoint:** 2026-07-26 repository time; Gatefall Checkpoint 0020 at campaign time 2026-07-31.
+**Command or barrier:** Ordinary play across compressed work and travel spans; Player Agency Contract correction and rewind before promotion.
+**Starting state:** The resident core already reserved protagonist intent to the player, but its cadence section did not separately constrain what a Runtime may fill into a compressed multi-beat summary.
+**Observed result:** The Runtime twice converted a plausible default into an undeclared protagonist action. After “go to work with my better chisel,” it invented that Alexander stayed on Ruth's shared vein and declared every crystal, foreclosing the player's intended private-skimming choice. After arrival at a park bench, it invented an outgoing text to Owen and a reply without the player declaring any contact. The player caught both; each narration was rewound before Checkpoint 0020 was sealed.
+**Disposition:** Runtime refinement, not foundational architecture and no ADR. Resident Core 1.5 adds the compression intent envelope: summaries may include only declared conduct, strictly necessary execution, autonomous world behavior, and automatic consequences. It expressly prohibits invented communications and choices among materially different methods, states that established behavior is not delegation, and requires a protagonist-as-actor pre-send test plus clarification at ambiguity. Runtime Profile 1.36 advertises the resident guard.
+**Repository evidence:** `docs/AI_GAMEPLAY_RESIDENT_CORE.md`; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`; `tools/test_player_agency_contract.ps1`; immutable Checkpoint 0020 and commit `242ecb7` remain unchanged.
+**Gate output:** `test_player_agency_contract.ps1` passes alongside the repository and checkpoint gates.
+**Matrix cases:** V03-19.
+**Verdict:** Pass for finding disposition; V03-19 remains open for the final postmortem determination.
 
 ---
 

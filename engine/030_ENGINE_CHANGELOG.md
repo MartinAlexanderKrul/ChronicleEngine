@@ -12,6 +12,15 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-26 — Compression constrained by the player intent envelope
+
+Runtime refinement under Version 0.3 milestone 0.3.5, surfaced twice in Gatefall Checkpoint 0020; no Engine Rule, Data Model section, command mechanism, or decision number changed.
+
+**Observed failure:** while compressing downtime and travel, the Runtime first invented that Alexander declared every mined crystal rather than preserving the undeclared private-skimming decision, then invented an outgoing text to Owen and its reply. Both were rewound before promotion, but both violated the existing Player Agency Contract by turning a plausible default into protagonist intent.
+**Resident fix:** Resident Core 1.5 adds the compression intent envelope and a protagonist-as-actor pre-send test. A summary may contain declared conduct, strictly necessary micro-actions, autonomous world behavior, and automatic consequences; it may not create a communication, disclosure, commitment, spend, concealment decision, or other meaningful choice. Established behavior is expressly not delegation, and ambiguity yields to a concise question.
+**Enforcement:** `tools/test_player_agency_contract.ps1` pins the guard to the resident layer and covers both observed failure classes. Runtime Profile 1.36 advertises the guard in its resident-layer contract.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-26 — Gatefall Profile 1.10: seven-day streak-box upgrade
 
 Gatefall world authoring under Decision 062 and Version 0.3 milestone 0.3.5; no Engine Rule, Data Model section, Runtime mechanism, or decision number changed.

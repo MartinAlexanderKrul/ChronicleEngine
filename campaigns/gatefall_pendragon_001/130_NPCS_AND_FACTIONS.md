@@ -688,6 +688,7 @@ canonical_state:
   condition: "Healthy; not established as combat-active"
   capabilities: "Runs the crew and fieldwork side of Sable & Kern's harvest-hire operation; briefs and manages harvesters directly, works from a paper map rather than a tablet."
   appearance: "Late thirties, sun-weathered from real outdoor time, dark hair pulled back tight; ink-stained first knuckle. Sizes people up fast and briskly."
+  portrait: "assets/portraits/Sable_ENT-000141.png"
   personality: "Brisk, no wasted motion, professionally direct. Doesn't do a long introduction before a job."
   situation: "Ran the Halsted Depot C-Rank harvest job (`EVT-000093`, `EVT-000095`), Sable & Kern's first Coalition posting. Confirmed Alexander's license, assigned the shared vein with Ruth, called the crew back at time, tallied the declared haul, and quoted the payout terms (10% off top, remaining four-way even split). Told Alexander she'd likely call him again."
 ```
@@ -717,6 +718,7 @@ canonical_state:
   condition: "Healthy; not established as combat-active"
   capabilities: "Handles logistics and the portable scale for declared hauls; opened and sealed the aperture from the gray box truck."
   appearance: "A decade or so older than Sable, glasses pushed up into thinning hair, works a battered calculator by hand."
+  portrait: "assets/portraits/Kern_ENT-000142.png"
   personality: "Quiet, dryly practical — offered one piece of advice (bring water) and otherwise let Sable run the introductions."
   situation: "Worked the second assigned vein alongside Denny during the Halsted Depot job (`EVT-000095`); tallied the crew's declared crystal count on his portable scale at wrap-up."
 ```
@@ -746,6 +748,7 @@ canonical_state:
   condition: "Healthy; not established as combat-active"
   capabilities: "Highly experienced C-Rank harvester, especially on heat-vein (Foundry-type) ground — reads a vein's own shifting resonance rather than waiting for it to settle, unlike cold-seam technique. Older than Alexander, unspecified further."
   appearance: "Older woman in worn coveralls, unhurried, watches her surroundings rather than her crewmates."
+  portrait: "assets/portraits/Ruth_ENT-000143.png"
   personality: "Reserved, evaluative, sparing with approval — a short nod or an unremarked silence is her version of a compliment."
   situation: "Assigned the shared first vein alongside Alexander at the Halsted Depot job (`EVT-000095`); demonstrated heat-vein extraction technique, watched him adapt to it on one attempt (success), and told Sable afterward that she vouches for him — 'that's not nothing, she doesn't hand it out.'"
 ```
@@ -775,6 +778,7 @@ canonical_state:
   condition: "Healthy; not established as combat-active"
   capabilities: "Harvester, unspecified specialty; worked the second vein alongside Kern."
   appearance: "Younger, wiry build; handled a coil of rope restlessly before the job began."
+  portrait: "assets/portraits/Denny_ENT-000144.png"
   personality: "Distracted, easygoing — gave Alexander a quick nod at introductions and a distracted wave on parting."
   situation: "Worked the Halsted Depot job's second vein with Kern (`EVT-000095`); no further interaction with Alexander established."
 ```

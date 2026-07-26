@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.13
+# Gatefall — World Rule Profile 1.14
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.13
+**Profile Version:** 1.14
 **Engine Compatibility:** 0.2.0; Data Model 0.1.4
 **Status:** Active
-**Compatibility Status:** frozen at version 1.13 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.13 is a **migrating deterministic-recovery advance** over frozen 1.12: the Bearer records an exact Chicago-local settlement anchor, recovery modes, and fractional carry; elapsed fictional time settles Mana and Health automatically before the next action.
+**Compatibility Status:** frozen at version 1.14 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.14 is a **migrating non-daily-quest advance** over frozen 1.13: Urgent and Hidden quests now have closed triggers, capacity, acceptance, lifecycle, reward, storage, and rendering rules, and the Intelligence milestone skills have an exact baseline to expand.
+
+**Required 1.13 → 1.14 migration.** Preserve every Stat, skill, pool, item, reward, daily quest, class quest, clock value, and resolved outcome. Add a `non_daily_quests` map to the Bearer's `system_state` with `base_capacity: 1`, `multitask_bonus: 1` only if Multitask is already earned, `analyst_bonus: 1` only if Analyst is already earned, derived `capacity_total`, and empty `active` and `pending_offers` lists unless durable canon already establishes an unresolved System-issued Urgent or Hidden quest. Do not reconstruct missed opportunities from prior fiction and do not convert campaign-ledger objectives into System quests. Re-render `/system` and `/system quests`, then record adoption in mutable live state. This migration consumes no fictional time and changes no XP, reward, or quest result. Immutable Profile 1.13-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.14 before play.
+
+Version 1.13 remains the migrating deterministic-recovery advance over frozen 1.12: the Bearer records an exact Chicago-local settlement anchor, recovery modes, and fractional carry; elapsed fictional time settles Mana and Health automatically before the next action.
 
 **Required 1.12 → 1.13 migration.** Preserve every current pool, maximum, injury, skill, item, reward, and resolved outcome. Add a `temporal_state` map to the Bearer's `system_state` containing `campaign_time`, `mana_recovery_mode`, `mana_recovery_remainder_units`, `health_recovery_mode`, and `health_recovery_remainder_units`. Establish `campaign_time` at the most precise current fictional time supported by durable canon, including its UTC offset; do not infer elapsed recovery before that anchor. Initialize both remainders to zero unless durable evidence establishes an exact unsettled fraction. Choose each mode from the current fiction under Sections 5.2 and 6.1.1. From that anchor forward, settle every elapsed span automatically before the next action reads either pool. This migration itself consumes no fictional time and restores no Health or Mana. Immutable Profile 1.12-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.13 against mutable live state before validation and play.
 
@@ -378,7 +382,7 @@ At **30** and **50** in a **base** Stat, the System awards a named permanent **m
 | **Agility** | **Pre-empt** — act on an ambush warning before the ambush lands, taking a normal action in the surprise exchange rather than being caught flat. | **Slipstream** — disengage or reposition once per exchange without granting an opponent a reactive strike. |
 | **Strength** | **Overpower** — grapple, pin, or bull-rush a foe up to one Rank above the Bearer's own. | **Titan's Grip** — overpower or restrain a foe up to two Ranks above, and wield oversized or two-handed arms one-handed. |
 | **Vitality** | **Shrug Off** — ignore the effect of minor wounds, continuing to act without their modifier-step penalty. | **Iron Constitution** — suppress the penalty of one serious wound until the scene ends, and halve the onset rate of Rank-appropriate environmental hazards. |
-| **Intelligence** | **Multitask** — hold +1 concurrent System quest slot beyond the default. | **Analyst** — hold a further +1 concurrent quest slot, and appraise the full effect of an unidentified rune, skill book, or core before use. |
+| **Intelligence** | **Multitask** — raise concurrent non-daily System-quest capacity from the default **1** to **2** (Section 8.4). | **Analyst** — raise that capacity from **2** to **3**, and appraise the full effect of an unidentified rune, skill book, or core before use. |
 
 Perception's two milestone skills (Rank-Sight, Deep Sight) turn the Gate-assessment problem into a System technique the Bearer can earn; the world otherwise re-measures a Gate's Rank only by instrument survey (Section 9). Their “own tier” reads against the System Rank of Section 6.6 — Rank-Sight covers Gates at or below it, Deep Sight one Rank above it.
 
@@ -691,9 +695,9 @@ Mastery raises a skill's power, never its **rank** — an E-Rank Mana Bolt maste
 
 ---
 
-# 8. The Daily Quest and Penalty Zones
+# 8. System Quests and Penalty Zones
 
-The System issues the Bearer a **daily quest** — a training regimen with a hard deadline and a real cost for failure. It is the world's mechanism for keeping the Bearer growing between Gates, and its penalty is the sharpest edge the System shows in ordinary play.
+The System issues the Bearer a **daily quest** — a training regimen with a hard deadline and a real cost for failure — and may also surface bounded **Urgent** and **Hidden** quests under Section 8.4. The daily is the world's mechanism for keeping the Bearer growing between Gates, and its penalty is the sharpest edge the System shows in ordinary play.
 
 ## 8.1 The Daily Quest
 
@@ -770,6 +774,82 @@ If midnight arrives with the issuing day's quest incomplete, the System **transf
 The penalty is deliberately not a fine or a debuff: missing the daily quest drops the Bearer, alone, into a fight at his own System Rank that he did not pick. That is the System being indifferent to his convenience — the daily quest is an order, and refusal has teeth. That the teeth also make him stronger is exactly the System's logic: it does not fine failure, it *forces the training the Bearer skipped*, at knifepoint.
 
 **Deferred transfer from inside a sealed instance.** If midnight arrives while the Bearer is inside a **sealed instance** — a red gate (Section 9.6), an instant dungeon (Section 17), or the class trial (Section 18.2) — the quest still fails and the streak still resets at 00:00, but the penalty transfer **cannot fire** while that seal holds: there is no exit, and the System does not drop him into a second sealed instance atop the first. The transfer **defers**; the instant the Bearer exits the sealed instance, it **fires immediately**, before any new daily quest can issue or any other voluntary action resolves. The deferral spares him nothing — it only waits for a door.
+
+## 8.4 Urgent and Hidden Quests
+
+Urgent and Hidden quests are real System state, not labels the Runtime may add to an ordinary campaign objective. They exist only through the triggers below. The Runtime performs the trigger audit whenever a scene opens, the Bearer enters a new place, a nearby crisis materially changes, or the Bearer's action establishes a new concealed discovery. If no trigger is met, no quest appears.
+
+### 8.4.1 Capacity and Canonical State
+
+The Bearer has **1 concurrent non-daily quest slot by default**. Multitask raises this to **2**; Analyst raises it to **3** (Section 4.4). Only accepted `[URGENT]` quests and attached `[HIDDEN]` quests consume these slots.
+
+- The `[DAILY]` quest has its own reserved slot and never consumes non-daily capacity.
+- The Class Quest and later class-evolution quest (Section 18) each use their own reserved class slot and never consume non-daily capacity.
+- An Urgent offer that has not been accepted consumes no slot. A Hidden quest consumes one as soon as its pointer attaches, even while its content renders `???`.
+- Completion, failure, expiry, or abandonment frees the slot immediately. A capacity increase never creates a quest; it only permits another qualifying quest to attach or be accepted.
+- `/system quests` may abandon one named active Urgent quest or one selected Hidden pointer. Abandonment is immediate and irreversible, produces no reward or separate penalty, and cannot erase consequences already caused in the world.
+
+Canonical `system_state.non_daily_quests` stores `base_capacity`, `multitask_bonus`, `analyst_bonus`, `capacity_total`, `active`, and `pending_offers`. Every active quest record stores a stable quest key, type, status, issue time, objective counters, completion and failure conditions, reward Rank and XP, and deadline. A Hidden record additionally stores its authored concealed name, reveal condition, and whether it has been revealed. A pending Urgent offer stores the same resolved contract plus its offer-expiry condition. The complete record is canonical even when the character-facing panel withholds part of it.
+
+If a trigger fires while every non-daily slot is occupied, the quest does not attach and no state is silently displaced:
+
+```text
+[SYSTEM] QUEST CAPACITY REACHED — <URGENT or HIDDEN>
+Non-daily slots: <used>/<capacity>.
+Free a slot while this opportunity remains available.
+```
+
+The opportunity may be audited again only while its original world condition still holds. The System does not queue it after the crisis or discovery window has passed.
+
+### 8.4.2 Urgent Quests
+
+An **Urgent quest offer** becomes eligible only when all of the following are already established in the fiction:
+
+1. a present, nearby crisis poses an immediate threat of death to at least one non-hostile person;
+2. the threat is a Gate creature, an active Gate break, or a directly perceived sealed-instance hazard;
+3. the Bearer has a physically actionable route to intervene before the threat resolves; and
+4. the objective, success condition, failure condition, and causal deadline can be stated from facts the Bearer already perceives.
+
+Routine contracted hunting, a danger the Bearer deliberately created, a remote report he cannot reach in time, property loss without immediate danger to life, and a crisis already resolved do **not** qualify. The System does not reveal an unconfirmed Gate Rank, a hidden attacker, or an NPC's intent to make an offer fit.
+
+An eligible offer is Tier 2 (Section 14.3) and renders:
+
+```text
+[SYSTEM] URGENT QUEST OFFER — <name>
+Objective: <one concrete intervention with counters if needed>
+Reward: <XP> XP
+Deadline: <known timestamp or causal end condition>
+Failure: <the established condition that makes rescue impossible>
+Accept / Decline
+```
+
+The Bearer must explicitly accept before quest completion can be earned. Declining or letting the offer's causal window close creates no penalty. Acceptance requires a free non-daily slot and fixes the reward at **four times the common-kill XP of the Bearer's System Rank at acceptance**: E-Rank 40, D-Rank 100, C-Rank 240, B-Rank 600, A-Rank 1,600, S-Rank 4,000 (Section 3.3). Later leveling does not reprice it. Ordinary kill XP and Gate-clear XP still settle normally; the Urgent reward is additional challenge XP and settles immediately when the success condition is met. Failure or expiry awards nothing and does not impose a System penalty beyond the world's consequences.
+
+### 8.4.3 Hidden Quests
+
+A **Hidden quest pointer** becomes eligible only when all of the following are true:
+
+1. a concealed discovery, place, object, pattern, or optional objective already exists in authored world or campaign canon;
+2. the Bearer has entered immediate, actionable proximity to it or has just established a genuine clue through a resolved action;
+3. the Bearer does not yet know the concealed fact; and
+4. before notification, the Runtime records one exact reveal condition, one achievable objective, one completion condition, any failure or expiry condition, and the reward Rank in canonical Hidden quest state.
+
+The Runtime may not create `[HIDDEN] ???` merely for atmosphere, retroactively turn a guess into a quest, or use the pointer to describe the concealed fact. Asking the System what `???` means never satisfies the reveal condition. The Bearer must investigate or act in the fiction. If capacity is available, the pointer attaches automatically and renders:
+
+```text
+[SYSTEM] HIDDEN QUEST DETECTED
+Objective: ???
+Reward: ???
+Deadline: ???
+```
+
+When the authored reveal condition is met, the same record changes in place and immediately renders its name, objective, progress, reward, and any deadline. If the completion condition is met in that same action, reveal and completion settle together. A Hidden quest's reward is the **Gate-clear milestone XP for the Bearer's System Rank when the pointer first attached**: E-Rank 70, D-Rank 150, C-Rank 320, B-Rank 700, A-Rank 1,500, S-Rank 3,200 (Section 3.4). Later leveling does not reprice it. The XP settles immediately on completion; failure, expiry, or abandonment awards nothing and adds no separate System penalty.
+
+### 8.4.4 Settlement and Rendering
+
+Accepted Urgent quests and attached Hidden quests update their counters from resolved fiction, never from narrative convenience. Completion and failure are Tier-1 state reactions once their stored condition becomes true (Section 14.3). A quest cannot complete from conduct that occurred before its offer was accepted or pointer attached.
+
+`/system` and `/system quests` render `Non-Daily Slots <used>/<capacity>` first, then active quests in this order: Daily, Urgent by deadline, Hidden by attachment time, Class/evolution. Urgent rows always show objective progress, fixed XP, and deadline. An unrevealed Hidden row shows only `[HIDDEN] ???`; its reward and deadline remain `???` even though canonical state holds them. Completed, failed, expired, declined, and abandoned quests leave the active panel immediately and remain available only through `/system log`.
 
 ---
 
@@ -1561,19 +1641,20 @@ The System never decides what is true. It may decide **when to say it**.
   - Mana, Health, or XP changes → the matching compact line (Section 14.5);
   - an XP threshold is crossed → first settle every Section 3.2 reward immediately, then show the `LEVEL UP` block (worked example in Section 3.7); never render an acceptance prompt;
   - the daily quest is issued, completed, or failed → its block (Section 8.1, Section 15.7);
+  - an accepted Urgent quest or attached Hidden quest completes, fails, expires, or reveals → its stored quest-state block (Section 8.4);
   - 06:00 local time arrives → the Daily Premium stock rotates and its compact line fires (Section 12.5);
   - the daily window lapses incomplete → the penalty warning, then the transfer notice (Section 15.7);
   - a title is earned → the `TITLE EARNED` block (Section 15.7);
   - a pool crosses a declared danger threshold (e.g., 0 Mana, Section 5.3) → a warning;
   - a creature of resolved Rank (Section 14.4) enters the Bearer's perception → its **designation color** renders inline, red and pulsing for a creature two or more Ranks above him — the System's only unprompted tactical warning (Section 14.6).
-- **Tier 2 — Permitted (bounded discretion; a declared precondition must hold, the Runtime picks the beat).** Appraisal when an unidentified item or foe enters perception and Intelligence permits it (Section 4.4, Analyst); a hidden-quest pointer within proximity of an undiscovered thing; an urgent-quest offer when a nearby crisis meets its trigger; a danger warning while the condition holds. The Runtime picks the moment; it never picks whether the precondition is met.
+- **Tier 2 — Permitted (bounded discretion; a declared precondition must hold, the Runtime picks the beat).** Appraisal when an unidentified item or foe enters perception and Intelligence permits it (Section 4.4, Analyst); a Hidden pointer when every Section 8.4.3 precondition is recorded; an Urgent offer when every Section 8.4.2 precondition holds; a danger warning while the condition holds. The Runtime picks the moment inside the valid opportunity window; it never picks whether the precondition is met.
 - **Tier 3 — Prohibited.** The System may never fire to supply an uncertain outcome, to describe a world-fact (Section 14.2), to author the Bearer's decision, or **with no declared precondition at all**.
 
 **On request** is separate: the `/system` panels (Section 15) render on the Bearer's command at any time. They are read-only views, not announcements, and they never resolve an action.
 
 ## 14.4 The Information Boundary
 
-The System knows, exactly: **Bearer state** (Sections 3–7, 12.5), **quest state**, **its current shop stock**, and **Gate state once resolved** (a Gate's true Rank after Section 9.5 settles it, its population, its break timer). It does **not** know NPC minds, hidden identities, the true Rank of an unconfirmed Gate before entry, or anything a die has not yet resolved.
+The System knows, exactly: **Bearer state** (Sections 3–7, 12.5), **quest state** (including concealed fields the character-facing Hidden panel withholds under Section 8.4.3), **its current shop stock**, and **Gate state once resolved** (a Gate's true Rank after Section 9.5 settles it, its population, its break timer). It does **not** know NPC minds, hidden identities, the true Rank of an unconfirmed Gate before entry, or anything a die has not yet resolved.
 
 It is **perceptible only to its Bearer** — always, without exception. It cannot be displayed, shared, demonstrated, or proven; to an onlooker, a Bearer reading a notification is a man who stopped walking and looked at nothing. **System-issued quests are Bearer-only and therefore unknown to the world** — no NPC, institution, or public holds a Knowledge State about one. The quest is secret; its footprint is not. If the daily quest puts the Bearer on a rooftop at dawn, the world sees a man on a rooftop at dawn.
 
@@ -1687,6 +1768,7 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ║  Unspent Points  ● <n>                                                   ║
 ║  Pending Rewards  <none or reward list>                                  ║
 ╟─ QUESTS ─────────────────────────────────────────────────────────────────╢
+║  Non-Daily Slots <used>/<capacity>                                       ║
 ║  [<type>] <quest name> · <status/streak>                                 ║
 ║    <objective progress>                                                  ║
 ║    <objective progress or local deadline>                                ║
@@ -1730,12 +1812,13 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 ║  Unspent Points  ● 10                                                    ║
 ║  Pending Rewards  AP +3 · Recovery · Random Box                          ║
 ╟─ QUESTS ─────────────────────────────────────────────────────────────────╢
+║  Non-Daily Slots 1/1                                                     ║
 ║  [DAILY] Training · Streak 4                                             ║
 ║    Push-ups 40/100 · Sit-ups 100/100                                     ║
 ║    Squats 20/100 · Run 6/10 km                                           ║
-║    Next Issue 14h12m                                                     ║
+║    Deadline 00:00 local                                                  ║
 ║  [URGENT] Cull the Red Line Nest · 3/4 · +40 XP                          ║
-║  [HIDDEN] ???                                                            ║
+║    Deadline: crisis ends                                                 ║
 ╟─ SKILLS ─────────────────────────────────────────────────────────────────╢
 ║  Mana Bolt [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                   ║
 ║    Uses 4 · Progress 2/3                                                 ║
@@ -1773,7 +1856,7 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 - **Frame width is fixed:** every rendered row is exactly **76 monospace cells** wide, including its two edge characters; the interior is 74 cells. The Runtime pads short rows, never allows content past the right edge, and uses indented continuation rows rather than truncation. If a name or value still exceeds one row, it wraps beneath its own label at the same indentation.
 - **Labels use title case and fixed abbreviations:** `Unspent Points`, `Pending Rewards`, `Physical Reduction`, `Acc.1`, `Acc.2`, and `Passive`. The same label is never shortened differently elsewhere in the window.
 - **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full skill row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` — or `<name> · Passive · <effect>` for a passive. The next indented row renders `Uses <n> · Progress <n>/3`; no-mastery milestone passives render `Progress —`.
-- **Quest objectives are subordinate rows.** The quest name and status occupy the first row; objectives, progress, and the local deadline render beneath it with four-space indentation.
+- **Quest capacity and objectives are explicit.** `Non-Daily Slots <used>/<capacity>` is the first quest row. The quest name and status occupy the next row; objectives, progress, reward, and the local or causal deadline render beneath it with four-space indentation. Unrevealed Hidden quests are the sole exception: they render only `[HIDDEN] ???` until Section 8.4.3 reveals them.
 - **Equipment and long inventory entries separate identity from mechanics.** The slot, item name, and `[Rank]` occupy the first row. Bonuses, power/protection, effects, and condition occupy one or more continuation rows aligned beneath the item name. This rule leaves room for prefixes, suffixes, and durability without widening the frame.
 - Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, equipment slots from Section 12.9, inventory from the campaign inventory ledger, and gold from the shop balance. Effective stats and physical reduction are derived from the equipped lines. Nothing is invented at render.
 - **`Pending Rewards`** lists each unclaimed daily Ability Point reward, Status Recovery, and Daily Random Box separately (Section 3.9), and reads `none` when empty. Level-ups never appear here because they settle immediately.

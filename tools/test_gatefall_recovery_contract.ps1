@@ -60,13 +60,13 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw
 $character = Get-Content -LiteralPath $characterPath -Raw
 $checkpoint = Get-Content -LiteralPath $checkpointPath -Raw
 
-Assert-True ($profile -match 'World Rule Profile 1\.13') "Gatefall Profile 1.13 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.14\r?$') "Gatefall Profile 1.14 is not active."
 Assert-True ($profile -match 'mana_recovery_remainder_units') "Gatefall Mana carry is not declared."
 Assert-True ($profile -match 'health_recovery_remainder_units') "Gatefall Health carry is not declared."
 Assert-True ($resident -match 'exact last-settled campaign-time anchor') "Resident settlement does not require the exact anchor."
 Assert-True ($runtime -match 'Canonical Time Settlement') "Engine Runtime lacks the canonical-time settlement contract."
 
-Assert-True ($character -match 'campaign_time: "2026-07-31T23:00:00-05:00"') "Live Gatefall anchor is missing or incorrect."
+Assert-True ($character -match 'campaign_time: "2026-08-02T16:20:00-05:00"') "Live Gatefall anchor is missing or incorrect."
 Assert-True ($character -match 'mana_recovery_mode: resting') "Live Mana recovery mode is not resting."
 Assert-True ($character -match 'health_recovery_mode: resting') "Live Health recovery mode is not resting."
 Assert-True ($character -match 'mana_recovery_remainder_units: 0') "Live Mana carry was not initialized to zero."

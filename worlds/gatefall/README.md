@@ -1,8 +1,8 @@
 # Gatefall World — Usage Guide
 
 **World Status:** Complete and playable
-**Version:** 0.1 (World Rule Profile 1.13)
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.4; Gatefall World Rule Profile 1.13
+**Version:** 0.1 (World Rule Profile 1.14)
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.4; Gatefall World Rule Profile 1.14
 **Created:** 2026-07-22
 
 ---
@@ -45,7 +45,7 @@ The world is original throughout — original names, characters, institutions, a
 
 **Core World Files:**
 - `200_WORLD_BIBLE.md` — Setting and narrative canon: the Gatefall event, the rules everyone knows, hunter-scale numbers, the World Ranking of S-ranks, the US and European layers, Chicago and Prague at national depth, the Jiu Valley Exclusion (the quarantined catastrophe region abroad), common knowledge by tier, the System's public (non-)existence, and an owner-only hidden-truth section not for players
-- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.13 (authoritative).** Every mechanic: levels/XP, causal base/effective stats, equipment power and item bonuses, boss imprints and item appearance identity, exact campaign-time and automatic Mana/Health recovery settlement, vitality and injury, skills with successful-use and mastery-progress tracking, the daily quest, seven-day streak-box upgrades and penalty zones, Gates, loot, economy and licensed ranked-gear resale, Daily Premium rotation bags, parties, the System's behavioral contract, the `/system` command and its fixed-width panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-ranking, pacing and lethality
+- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.14 (authoritative).** Every mechanic: levels/XP, causal base/effective stats, equipment power and item bonuses, boss imprints and item appearance identity, exact campaign-time and automatic Mana/Health recovery settlement, vitality and injury, skills with successful-use and mastery-progress tracking, Daily/Urgent/Hidden quests with exact capacity and lifecycle rules, seven-day streak-box upgrades and penalty zones, Gates, loot, economy and licensed ranked-gear resale, Daily Premium rotation bags, parties, the System's behavioral contract, the `/system` command and its fixed-width panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-ranking, pacing and lethality
 - `210_PLACES.md` — Geography: Chicago (Lakefront Gate Corridor, Red Line Corridor, the Cicero break scar, Horizon Tower, the BGM Region V field office) and Prague (Old Town Gate Cluster, Metro Corridor, the Libeň break scar, Karlov House, CGA headquarters)
 - `220_NOTABLE_FIGURES.md` — Fourteen NPCs — twelve city figures (six per city) plus two world-ranked S-ranks (the highest-ranked American and Brandhof's German ace) — each authored with a want, a fear/flaw, a secret, a live agenda, and named relationships: guild masters, regulators, S-ranks, appraisers, and black-market contacts
 - `240_RESOURCES.md` — The dual economy's material side: mana crystals, beast cores, ranked hunter gear, and System-shop consumables, priced by Rank
@@ -84,6 +84,10 @@ Between panel calls, ordinary numeric changes render inline as compact notificat
 ### The Daily Quest
 
 At 06:00 local each in-fiction day the System issues its fixed training regimen: 100 push-ups, 100 sit-ups, 100 squats, and a 10 km run. The Bearer has until midnight that same calendar day—06:00 through 23:59—to finish. Completion creates three separately claimable rewards (Ability Points +3, Status Recovery, and a Daily Random Box) and no XP; an incomplete quest at 00:00 resets the informational streak and transfers him into a **penalty zone**, or defers that transfer until he exits an already-sealed instance. The profile (Section 8) authors the full schedule, rewards, and penalty.
+
+### Urgent and Hidden Quests
+
+The Bearer has one non-daily quest slot by default, two after earning **Multitask** at base Intelligence 30, and three after **Analyst** at 50. The Daily and class quests have reserved slots. An **Urgent** quest is an explicit offer tied to an actionable nearby threat to life; it must be accepted and pays fixed Rank-scaled XP if its stored success condition is met before the crisis closes. A **Hidden** quest attaches only when the Bearer reaches a concealed discovery already authored in canon; it renders `???` until an in-fiction action meets its stored reveal condition, then pays fixed Rank-scaled XP on completion. The profile's Section 8.4 is authoritative for triggers, capacity, abandonment, rewards, state, and rendering.
 
 ### Gates and Lethality
 

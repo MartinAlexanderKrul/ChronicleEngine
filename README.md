@@ -67,7 +67,7 @@ Read, in this order, then follow the loaded procedure:
 
 Then select what to play and load its state only when the player subsequently issues `/continue`, `/resume`, `/new`, or `/load`:
 
-- **A specific campaign** — read `campaigns/<campaign>/090_CAMPAIGN_STARTUP.md`, its canonical ledgers (`100`–`180`), the campaign's world records under `worlds/<world>/`, and, when resuming, the latest checkpoint under `campaigns/<campaign>/saves/`.
+- **A specific campaign** — read `campaigns/<campaign>/090_CAMPAIGN_STARTUP.md`, load its canonical ledgers (`100`–`180`) and world records under `worlds/<world>/` as directed there, and, when resuming, the latest checkpoint under `campaigns/<campaign>/saves/`. `required_sources` means authoritative availability, not a forced whole-file preload: read the restoration entry point and current state, then fetch relevant objects/events/sections from large ledgers in bounded, non-overlapping ranges.
 - **Bootstrap always stops here** — present the **complete runtime-command catalog** and the worlds-and-campaigns listing **rendered from `system/WORLDS_AND_CAMPAIGNS.md`**, then **wait for the player to choose** (`/continue [world|campaign]`, `/resume [world|campaign]`, `/new <world>`, or `/load <checkpoint>`). Do **not** load campaign files, auto-load or auto-resume a campaign, begin reconciliation, or enter a readiness gate until the player chooses one—presenting the Engine Welcome Page is the whole job.
 
 Every campaign path named anywhere in this file or in the start guide — `campaigns/prototype_alpha/`, `worlds/verra/` — is an **example**, never the repository's inventory. The inventory is the index, and only the index. A campaign absent from the welcome page because the listing was recalled instead of rendered is a startup failure, not a missing campaign.
@@ -164,7 +164,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps
 ## Engine
 
 1. engine/000_ENGINE_MANIFEST.md
-2. engine/001_ENGINE_DECISIONS.md
+2. engine/001_ENGINE_DECISIONS.md — indexed decision history; search the decision number/title and read that complete decision block rather than preloading the whole ledger
 3. engine/002_ENGINE_ROADMAP.md
 4. engine/010_ENGINE_RULES.md
 5. engine/011_ENGINE_DATA_MODEL.md

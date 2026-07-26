@@ -7,6 +7,18 @@ description: Use when about to state any game mechanic, rule, price, timer, form
 
 **A rule you have not read this session does not exist yet.** Not from genre memory, not from plausibility, not from the player's mouth. The world's mechanical law lives in `worlds/<world>/206_WORLD_RULE_PROFILE.md` (engine-level law in `engine/010_ENGINE_RULES.md`); a rule statement in play is a **citation**, or it is a guess wearing a citation's clothes.
 
+## Section-addressed loading
+
+A World Rule Profile may be larger than a reader's single-call output limit. **Required source** means the authoritative file must be available and its applicable sections must be read; it does not require a whole-file preload.
+
+1. Search the profile for the exact topic or numbered heading first (`rg -n` when available).
+2. Read the governing numbered section in one bounded range. Follow cross-references with separate bounded reads.
+3. Use non-overlapping ranges. Never batch overlapping ranges or restart from line 1 after a successful partial read; continue from the first unread line if a section itself needs another chunk.
+4. On restoration, read the metadata and only the compatibility/migration chain applicable to the checkpoint, then fetch mechanical sections as the restored state or next action requires.
+5. A table of contents, README, campaign summary, or search result locates authority but never replaces reading the governing profile text.
+
+The profile is **loaded for an affected operation** when every section governing that operation has been read this session. Do not fail startup merely because the entire profile cannot fit in one tool response.
+
 ## The contract for stating a rule
 
 1. **Read before you rule.** Before stating any mechanic not already verified this session: grep the profile, read the governing section (30 seconds), then answer *with the section number* — "Two hours from the boss's death (§9.7)." If you already verified it this session, cite it from that verification.

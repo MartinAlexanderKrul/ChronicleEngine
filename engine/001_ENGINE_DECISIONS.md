@@ -6,6 +6,7 @@
 **Status:** Active  
 **Purpose:** Architectural decision record for the engine  
 **Decision Format:** Numbered, immutable history with explicit status
+**Loading:** Section-addressed — search by decision number/title and read the complete matching decision block; a whole-file preload is not required.
 
 ---
 

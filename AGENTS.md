@@ -59,3 +59,12 @@ An NPC knows a fact only if the fiction gave *that NPC* a channel to it — your
 - Do not add `Co-Authored-By` or AI-attribution trailers to git commits.
 - Checkpoints are immutable once promoted; the engine forbids fix-it-later retcons of promoted canon.
 - These instructions summarize the skills — where they and a repo document differ, the repo document wins.
+
+## Large-file loading
+
+Repository authority does not imply a single whole-file tool call. Some canonical and historical files exceed common reader output limits.
+
+- Search for the exact numbered heading, identifier, event, or topic first, then read the governing block in bounded, non-overlapping ranges.
+- A startup `required_sources` entry means the source must be available and every portion governing the current operation must be read. It does not require preloading an unrelated history or the whole file.
+- If a complete file genuinely is required, continue sequentially from the first unread line. Never batch overlapping ranges or restart from line 1 after a successful partial read.
+- A size-limit refusal is not a missing-file or inaccessible-repository blocker while bounded reads succeed.

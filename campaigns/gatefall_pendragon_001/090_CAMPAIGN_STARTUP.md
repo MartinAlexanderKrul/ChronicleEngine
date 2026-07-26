@@ -21,6 +21,22 @@ customization:
   background_change: new-instance-only
   different_protagonist: new-instance-only
   preserve_baseline: true
+source_loading:
+  required_sources:
+    semantics: "Authoritative and available; not an instruction to preload every source in full."
+    restoration_entry: "Read the manifest, canonical entry point, current state, and situation-relevant objects/events."
+    large_ledger_policy: "Search identifiers or headings first; read bounded, non-overlapping blocks. Historical chronicle and changelog content is fetched only when relevant."
+    failure_policy: "A single-call size limit is not a source-read failure while the required bounded blocks remain readable."
+  world_rule_profile:
+    path: worlds/gatefall/206_WORLD_RULE_PROFILE.md
+    mode: section-addressed
+    required_source_semantics: "Authoritative and available; not a whole-file preload."
+    restoration_reads:
+      - "Profile metadata and the compatibility/migration chain applicable to the restored checkpoint."
+      - "Sections governing temporal settlement before either pool is read or time advances."
+      - "Any section governing the next affected operation, fetched before that operation resolves."
+    range_policy: "Search headings first; use separate, bounded, non-overlapping reads and continue from the first unread line."
+    failure_policy: "A single-call size limit is not a source-read failure; startup stops only if an applicable bounded section cannot be read."
 required_sources:
   - worlds/gatefall/200_WORLD_BIBLE.md
   - worlds/gatefall/206_WORLD_RULE_PROFILE.md

@@ -12,6 +12,15 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-26 — Gatefall Profile 1.11: item identity and rotation diversity
+
+Gatefall world authoring under Decision 062 and Version 0.3 milestone 0.3.5; no Engine Rule, Data Model section, Runtime mechanism, or decision number changed.
+
+**Boss loot:** future boss equipment carries a Boss Imprint derived from the boss facts already authored at instantiation. Its normalized body family adds one further Stat point, its defining signature mode supplies one bounded once-per-scene Echo, and Gate archetype, exact monster form, and a real d6 finish produce persistent visual identity without creating a named artifact. Potion-cache composition is closed by d4, and dropped runes/books now reroll unusable duplicates, preserve genuine Rank upgrades, and fall back to mastery contribution only when no eligible result remains.
+**Daily Premium:** Weapon, Armor, Accessory, Consumable, and Key models now draw from persistent without-replacement category bags; refill boundaries cannot repeat the immediately prior model. One shared d8 fabrication series gives every cycle a persistent visual language. Independent Rank odds, prices, quantities, expiry, purchase flags, Rune eligibility, and item effects remain unchanged.
+**Profile version:** frozen **1.10→1.11**, classified **additive**. Existing items and the active cycle are not rerolled or retrofitted; bags initialize from the full sets minus their active models and begin at the next rotation. Immutable checkpoints remain byte-unchanged. Optional bag/imprint fields use the Data Model's existing extension mechanism, so Data Model 0.1.3 does not advance.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-26 — Compression constrained by the player intent envelope
 
 Runtime refinement under Version 0.3 milestone 0.3.5, surfaced twice in Gatefall Checkpoint 0020; no Engine Rule, Data Model section, command mechanism, or decision number changed.

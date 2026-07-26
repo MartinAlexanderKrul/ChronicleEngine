@@ -32,7 +32,7 @@ At designation, the campaign had:
 
 ## Current Evidence State
 
-As of 2026-07-26 repository time, ordinary play has advanced the campaign to twenty canonical-form checkpoints (`900_CHECKPOINT_0001`–`0020`). Checkpoint 0015 is the first automatic Context-Preservation capture under Data Model 0.1.3; Checkpoint 0020 is the first capture under frozen Gatefall Profile 1.10. Every older checkpoint remains immutable at its captured profile/schema and runs the applicable readiness chain before play.
+As of 2026-07-26 repository time, ordinary play has advanced the campaign to twenty-one canonical-form checkpoints (`900_CHECKPOINT_0001`–`0021`). Checkpoint 0015 is the first automatic Context-Preservation capture under Data Model 0.1.3; Checkpoint 0020 is the first capture under frozen Gatefall Profile 1.10; Checkpoint 0021 is the latest immutable capture at that same profile. The live world profile has since advanced additively to 1.11 for item identity and rotation diversity; every checkpoint remains immutable at its captured profile/schema and runs the applicable readiness chain before play.
 
 Live prototype evidence also produced Decision 076: Relationship Texture. That finding was accepted on 2026-07-25 repository time as an explicit foundational exception to the Version 0.3 Architecture Freeze and advances mutable live state to Data Model 0.1.3. Checkpoint 0014 and every earlier checkpoint remain byte-immutable at their captured schema; restoring them requires the explicit schema migration at readiness before validation and play. Checkpoint 0015 closes the positive path by capturing already-migrated live state directly as 0.1.3. The campaign's in-world date did not date the architectural decision.
 
@@ -62,7 +62,7 @@ Branch and restart validation uses a disposable fork. Negative structure and com
 
 **Result:** Observed pass.
 
-Checkpoints 0001–0020 use the canonical four-digit directory form. Each contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004, frozen Profile 1.6 / schema 0.1.2 evidence at Checkpoint 0014, the first native schema 0.1.3 capture at Checkpoint 0015, and the first frozen Profile 1.10 capture at Checkpoint 0020.
+Checkpoints 0001–0021 use the canonical four-digit directory form. Each contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004, frozen Profile 1.6 / schema 0.1.2 evidence at Checkpoint 0014, the first native schema 0.1.3 capture at Checkpoint 0015, the first frozen Profile 1.10 capture at Checkpoint 0020, and the latest Profile 1.10 capture at Checkpoint 0021. Profile 1.11 currently has no promoted checkpoint evidence; adoption will be recorded at the next readiness pause and subsequent save.
 
 **Matrix:** V03-01, V03-09.
 

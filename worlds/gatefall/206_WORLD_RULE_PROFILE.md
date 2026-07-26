@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.10
+# Gatefall — World Rule Profile 1.11
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.10
+**Profile Version:** 1.11
 **Engine Compatibility:** 0.2.0; Data Model 0.1.3
 **Status:** Active
-**Compatibility Status:** frozen at version 1.10 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.10 is an **additive streak-reward advance** over frozen 1.9: every daily completion that raises the consecutive streak to a positive multiple of seven upgrades that completion's one Daily Random Box to two fully resolved rolls with one result chosen. It adds no second box and no special 28-day rule.
+**Compatibility Status:** frozen at version 1.11 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.11 is an **additive item-diversity advance** over frozen 1.10: future boss equipment carries a source-derived Boss Imprint, boss potion caches and duplicate skill drops resolve from closed rules, and Daily Premium models draw without replacement while a visual fabrication series distinguishes later rotations. Existing items and the active stock cycle do not change.
+
+**1.10 → 1.11 compatibility treatment.** Preserve every stored value, current offer, purchased flag, item, skill, mastery count, currency balance, and resolved outcome. Adoption does not reroll or visually retrofit an existing item and does not reopen a resolved duplicate-skill result. The active Daily Premium cycle remains exactly as generated under its earlier profile. For each future bag-governed category, initialize its bag to the full Section 12.5 model set **minus the active cycle's model**, record that active model as the category's previous draw, and begin bag draws at the next 06:00 rotation. Initialize no fabrication series for the active cycle; the first series roll occurs with that next rotation. Future boss-equipment results use Section 11.2.1, and future dropped runes/books use Section 11.3's duplicate settlement. The already-resolved Stone Skin → Flash Step dropped-rune reroll remains canon and is consistent with the new settlement; nothing else is recomputed. These optional world-rule fields live in the existing Data Model extension mechanism, so Data Model 0.1.3 does not advance. Immutable Profile 1.10-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.11 before play.
+
+Version 1.10 remains the additive streak-reward advance over frozen 1.9: every daily completion that raises the consecutive streak to a positive multiple of seven upgrades that completion's one Daily Random Box to two fully resolved rolls with one result chosen. It adds no second box and no special 28-day rule.
 
 **1.9 → 1.10 compatibility treatment.** Preserve every stored value, current streak, pending reward, and resolved outcome. Adoption requires no recomputation and no state migration: only a daily quest completed after adoption may create an upgraded box. A positive multiple of seven already completed under an earlier profile is not reopened or rewarded again, and an already-pending ordinary box is not upgraded; the next upgrade occurs at the next positive multiple of seven the streak reaches. Immutable Profile 1.9-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.10 before play.
 
@@ -817,6 +821,30 @@ Every Gate of Rank **G** is populated on this formula:
 
 **A boss fights with a signature.** A boss is never a bigger common. At instantiation it carries one authored **signature method**, consistent with its form and the Gate's archetype — a sweeping tail that threatens everything in its arc, a breath that fills a corridor, a burrowing charge, a coil-and-drown — capable of endangering **several hunters in a single exchange**. Each endangered hunter resolves against it separately (own roll, own damage at the boss's Rank); the signature multiplies *who is in danger*, never the per-hit number. And a boss is played with the cunning of an apex thing on its own ground: it ambushes, uses terrain, and picks targets — the mender first, the wounded first — rather than trading blows with whoever stands closest. Its menace is reach, endurance, intent, and the fact that nothing closes the Gate but its death; Rank honesty holds at every point of contact.
 
+For loot provenance, instantiation also records the boss's exact fictional form plus two normalized facets. These classify authored facts; they are **not rolls** and do not replace the creature's description or signature:
+
+| Body family | Covers | Boss-Imprint stat resonance |
+|---|---|---|
+| **Brute** | massive, load-bearing, crushing forms | +1 further Strength |
+| **Predator** | fast hunters, pouncers, stalking quadrupeds | +1 further Agility |
+| **Carapaced** | plated, shelled, stone-skinned forms | +1 further Vitality |
+| **Winged** | flying, gliding, aerial forms | +1 further Perception |
+| **Serpentine** | coiling, swimming, many-jointed forms | +1 further Agility |
+| **Arcane** | caster-like, crystalline, incorporeal, or otherwise mana-dominant forms | +1 further Intelligence |
+
+| Signature mode | Covers |
+|---|---|
+| **Impact** | slam, charge, quake, knockdown, crushing force |
+| **Edge** | claw, bite, horn, blade, tearing or puncture |
+| **Projection** | breath, bolt, spit, beam, ranged burst |
+| **Affliction** | venom, disease, drain, corrupting contact |
+| **Mobility** | pounce, dive, teleport, burrow, impossible speed |
+| **Control** | grapple, web, coil, fear, restraint, forced position |
+| **Guard** | shell, barrier, parry, reactive armor |
+| **Renewal** | regeneration, lifedrain, repair, rebirth |
+
+Use the single body family and signature mode most responsible for how the boss actually threatens the party. A hybrid still receives one of each, fixed before combat resolution and never selected after seeing its loot.
+
 An empty or under-populated interior is never a lucky break; it is an authored signal that something has already emptied the Gate — a break in progress, a prior party wiped, or a worse thing feeding. The Runtime treats emptiness as a clue, not an absence.
 
 **The clear window.** Killing the boss does not snuff the instance around the victors — it begins the collapse. From the moment of the boss's death the interior holds stable for **two hours**: the window in which a party loots the dead (Section 11), treats its wounded, and walks out the way it came. Section 13.2's loot-declared-at-exit procedure presumes this window. When it ends, the mouth closes and the interior ceases to exist; anyone still inside is lost with it, and no one has ever come back. The window is two hours at every Rank. Ordinary hunters work it by watch and hard-learned habit; the System, which holds Gate state (Section 14.4), surfaces the countdown to its Bearer. A hunter may also exit a standing, uncleared Gate through its mouth at any time — the threshold bars the unawakened inward and beasts outward (Section 9.8), never the awakened out — except inside a red gate (Section 9.6), which seals until the boss dies.
@@ -911,7 +939,14 @@ On the boss kill, in addition to its core, roll the **boss drop** on a d100. The
 | 91–97 | **Skill book** — from the skill-book table (Section 11.3). |
 | 98–00 | **Elixir** — a permanent +1 to one stat (max 3 lifetime per stat, Section 12.5). |
 
-The **potion cache** tier follows the Gate Rank: Gate Rank **E-Rank–D-Rank → lesser** potions, **C-Rank–B-Rank → standard**, **A-Rank–S-Rank → greater** (the tiers priced in Section 12.5).
+The **potion cache** tier follows the Gate Rank: Gate Rank **E-Rank–D-Rank → lesser** potions, **C-Rank–B-Rank → standard**, **A-Rank–S-Rank → greater** (the tiers priced in Section 12.5). Resolve its healing/mana mix with one real d4:
+
+| d4 | Three-potion cache |
+|---:|---|
+| 1 | 3 healing potions |
+| 2 | 2 healing potions · 1 mana potion |
+| 3 | 1 healing potion · 2 mana potions |
+| 4 | 3 mana potions |
 
 For an **equipment** result, roll d20:
 
@@ -934,6 +969,62 @@ For an **equipment** result, roll d20:
 
 Every roll is real under the resolution contract; a Runtime never chooses a favorable item except on the authored 20 result. The result receives the Gate Rank (or Section 11.4 bump), and its exact line is then derived from Section 11.5.
 
+### 11.2.1 Boss Imprints
+
+Every **equipment result produced by a boss** — the normal 01–40 result, an Overgrown Temple bonus roll that lands on equipment, or a Premium Armory Key's guaranteed equipment result — carries one **Boss Imprint**. Random-box gear, shop stock, commissioned gear, and ordinary market gear do not. The imprint is a non-unique source property: it never turns the item into a Section 11.6 named artifact.
+
+The imprint is fixed from facts recorded under Section 9.7:
+
+1. Record the exact boss form and signature method in provenance.
+2. Apply the body family's **+1 further Stat point** from the Section 9.7 table. It sits outside the Rank budget like a Premium item's further points.
+3. Apply the signature mode's **Echo** below.
+4. Roll one real d6 finish and compose the visible item from the Gate-archetype palette, the boss's actual anatomy/material, and that finish.
+
+| Signature mode | Echo — once per scene, within the net ±3 cap |
+|---|---|
+| **Impact** | +1 modifier step on one Strength action to break, shove, resist knockdown, or resist forced movement. |
+| **Edge** | +1 modifier step on one close attack against an already-injured target. |
+| **Projection** | +1 modifier step on one ranged attack or one defense against a ranged/area attack. |
+| **Affliction** | +1 modifier step on one resistance attempt against poison, venom, disease, drain, or the source's authored affliction. |
+| **Mobility** | +1 modifier step on one movement, pursuit, escape, or evasion action. |
+| **Control** | +1 modifier step on one attempt to establish or break a grapple, restraint, fear hold, or forced position. |
+| **Guard** | +1 modifier step on one physical defense action. |
+| **Renewal** | +1 modifier step on one healing, stabilization, or recovery action affecting the wearer; the Echo alone restores no pool and clears no injury. |
+
+A wearer may invoke **only one Boss-Imprint Echo per scene**, regardless of how many imprinted pieces are equipped. Passive body-family Stat resonances still apply normally. An Echo is an item capability, not a learned skill, costs no Mana, and does not gain mastery.
+
+| d6 | Finish |
+|---:|---|
+| 1 | Seamless |
+| 2 | Segmented |
+| 3 | Etched |
+| 4 | Crystalline |
+| 5 | Bound or wrapped |
+| 6 | Weathered |
+
+| Gate archetype | Appearance palette |
+|---|---|
+| **Crypt** | soot-black metal, ossified-white accents, violet mana lines |
+| **Hive** | lacquered chitin, amber resin, hexagonal seams |
+| **Flooded Mine** | green-black alloy, pearl accents, blue current-lines |
+| **Overgrown Temple** | root-grained metal, jade stone, gold sap-lines |
+| **Beast Den** | horn, bone, rawhide, iron-red accents |
+| **Shattered City** | fractured ceramic, black glass, bright metal joins |
+| **Ashfield** | cinder steel, charred grips, ember-red fissures |
+| **Frozen Gallery** | pale alloy, ice-blue crystal, frost tracery |
+
+An authored nonstandard archetype supplies its own one-line palette before the equipment appearance is resolved. The appearance roll changes no Rank, condition, slot, or combat magnitude. A Boss Imprint creates no automatic price multiplier: the System shop uses its existing category repurchase rule, and the licensed market retains Section 12.8.1's ordinary ranked-gear anchor unless a specific negotiated transaction values the provenance differently. A complete imprinted line records `boss form · body family · signature method · signature mode · finish · appearance · provenance` in addition to Section 11.5's ordinary fields.
+
+Worked item-line example (illustrative, not canon):
+
+```text
+Quickknife [C-Rank] · Agility +7 · Vitality +1 Boss Resonance · weapon power 7 · armed strike ×0.75
+Boss Imprint — plated mandible queen · Carapaced · acid fan · Projection Echo
+Finish/appearance — Etched · lacquered black chitin, amber resin seams, hooked mandible guard
+Echo — once/scene, +1 step on one ranged attack or defense against a ranged/area attack
+Provenance — C-Rank Hive boss equipment drop · Good
+```
+
 ## 11.3 The Skill-Book Table
 
 A **skill book** (boss drop 91–97) is rarer than a rune and teaches its skill at the **rank matching the Gate Rank it dropped from** — a book from a C-Rank Gate teaches its skill at C-Rank, above the E-Rank/D-Rank rune tier. Roll the taught skill on a d10:
@@ -953,6 +1044,8 @@ A **skill book** (boss drop 91–97) is rarer than a rune and teaches its skill 
 
 Entries 1–8 are the eight starting skills of Section 7.3, taught here at the dropped Gate's Rank rather than at the E-Rank/D-Rank rune tier. **Rupture** and **Bulwark** (entries 9–10) are authored here and enter the ledger with their name, rank (the Gate Rank the book dropped from), Mana cost, and effect on the schedule of Section 7.2.
 
+**Known-skill settlement for dropped runes and books.** A candidate teaches at the drop's Rank, never below the skill's native Rank. If the Bearer does not know it, settlement is ordinary. If the Bearer knows it at a lower Rank, consuming the item raises that skill to the candidate Rank while preserving mastery level and qualifying-scene progress. If the Bearer knows it at the same or a higher Rank, reroll on the originating d8/d10 table until the result is unknown or a genuine Rank upgrade. If no eligible result remains, the drop becomes a **Mastery Rune** or **Mastery Book** matching its original category; consuming it counts as one qualifying dangerous-scene contribution toward one chosen known skill's current mastery level, exactly as Section 12.5's Mastery Rune. This is duplicate protection, not player selection: every required reroll is real.
+
 **Class-restricted skill books** exist only as **authored named items with provenance** — usable by no one but the holder of their class, and entering play solely where a file authors them, exactly as the named-uniques rule (Section 11.5) requires.
 
 ## 11.4 Red-Gate and Anomaly Rank Bump
@@ -961,7 +1054,7 @@ Entries 1–8 are the eight starting skills of Section 7.3, taught here at the d
 
 ## 11.5 Equipment, Ranks, and Item Lines
 
-Equipment is mechanically complete only when its line records **name · Rank · chassis · slot · stat bonus · weapon power/protection · combat effect · provenance · condition**. Rank **E-Rank–S-Rank** sets the magnitude; chassis determines where that magnitude goes. An equipped item applies its line to its wielder. A stored, carried, broken, or merely owned item does not. The Bearer receives both the stat and combat lines. An ordinary hunter has no five-stat sheet (Section 13.1), so the item grants weapon power, combat effects, and protection but does not create or alter Stats for that hunter.
+Equipment is mechanically complete only when its line records **name · Rank · chassis · slot · stat bonus · weapon power/protection · combat effect · provenance · condition**. Boss-imprinted and Premium equipment additionally records its Section 11.2.1 imprint/appearance or Section 12.5 fabrication series. Rank **E-Rank–S-Rank** sets the magnitude; chassis determines where that magnitude goes. An equipped item applies its line to its wielder. A stored, carried, broken, or merely owned item does not. The Bearer receives both the stat and combat lines. An ordinary hunter has no five-stat sheet (Section 13.1), so the item grants weapon power, combat effects, and protection but does not create or alter Stats for that hunter.
 
 **Stat budgets by Rank:**
 
@@ -1145,11 +1238,26 @@ At **06:00 local time every morning**, the shop replaces its Daily Premium tab w
 
 **Rotation state and timing.**
 
-- At 06:00 the Runtime makes the **twelve real rolls** below — seven model rolls and five independent Rank rolls — and records the cycle date, all six complete offers, their prices, and six purchased/unpurchased flags as canonical Bearer state. A Runtime never selects the offers itself.
+- At 06:00 the Runtime makes the **twelve base real draws** below — five model-bag draws, one rune roll, one fabrication-series roll, and five independent Rank rolls — plus any explicitly required rune rerolls. It records the cycle date, fabrication series, all six complete offers, their prices, six purchased/unpurchased flags, each bag's remaining entries, and the previous draw for each bag-governed category as canonical Bearer state. A Runtime never selects the offers itself.
 - Each offer has **quantity 1**. Buying it marks that category purchased and removes the row until the next rotation. Unbought offers expire at the next 06:00; they are not carried forward or discounted.
 - A later level-up does not re-Rank the current cycle. If the System first attaches after 06:00, it generates the current cycle immediately using the Bearer's then-current System Rank as each Rank roll's floor; it does not reconstruct earlier cycles.
 - Rotation occurs even while the Bearer sleeps or occupies a sealed instance. The System fires the Tier-1 line: `[SYSTEM] DAILY PREMIUM STOCK ROTATED — 6 offers available.`
 - Once purchased, a premium item is ordinary transferable physical property under the withdrawn-goods rule below, but no world store stocks it and it has no anchored mundane-market price. An unused premium item may be sold back only to the System shop for **25% of its premium purchase price, rounded down**.
+
+**Model bags — draw without replacement.** Weapon, Armor, Accessory, Consumable, and Key each maintain a separate bag containing every model in their tables below; Armor's bag contains the 25 exact slot/style pairs. At rotation, make one real uniform draw from each category's remaining entries and remove the drawn entry. When a bag is empty, refill it with the full model set. On the first draw after refill, temporarily exclude that category's immediately previous model; draw from the rest, then return the excluded model to the remaining bag. Thus every model appears once per bag before ordinary repetition, and no refill boundary repeats yesterday's exact model. Rank is not part of bag identity and continues to roll independently.
+
+**Fabrication series — roll d8 once per rotation.** The one series applies visually to all six offers generated in that cycle, including consumable vessels, rune media, and key geometry. It changes no effect, Rank, price, quantity, resale value, or compatibility; withdrawn items retain their series appearance permanently.
+
+| d8 | Series | Visual language |
+|---:|---|---|
+| 1 | **Obsidian** | matte black, violet mana lines, sharp facets |
+| 2 | **Ivory** | pale ceramic, gold seams, smooth geometry |
+| 3 | **Cobalt** | deep-blue alloy, silver tracery, angular construction |
+| 4 | **Crimson** | dark-red enamel, black fittings, aggressive silhouettes |
+| 5 | **Verdant** | green-bronze surfaces, amber light, organic curves |
+| 6 | **Argent** | brushed silver, blue-white light, minimal ornament |
+| 7 | **Umbral** | smoked glass, muted metal, drifting internal shadow |
+| 8 | **Prismatic** | color-shifting surfaces and iridescent mana channels |
 
 For each Rank-bearing offer — Weapon, Armor, Accessory, Rune, and Key — make an independent **d100 Rank roll** against the Bearer's System Rank at rotation:
 
@@ -1164,9 +1272,9 @@ For each Rank-bearing offer — Weapon, Armor, Accessory, Rune, and Key — make
 
 Cap every result at **S**. The rolled offer Rank determines that offer's Stats, power, protection, effect, and price; it does not change the Bearer's System Rank. Consumables are unranked and receive no Rank roll.
 
-**Premium Weapon — roll d7.** Price: **2×** the offer-Rank weapon price.
+**Premium Weapon — draw from the seven-model Weapon bag.** Price: **2×** the offer-Rank weapon price.
 
-| d7 | Offer | Premium line in addition to its normal Section 11.5 line |
+| Bag entry | Offer | Premium line in addition to its normal Section 11.5 line |
 |---|---|---|
 | 1 | **Ghost Quickknife** | +2 further Agility; +1 step on the first attack made unseen in a combat. |
 | 2 | **Execution Longsword** | +2 further Strength; armed strike multiplier +0.10. |
@@ -1178,13 +1286,13 @@ Cap every result at **S**. The rolled offer Rank determines that offer's Stats, 
 
 “Multiplier +0.10/+0.15” adds to the chassis multiplier before the result multiplier; it does not change the d100.
 
-**Premium Armor — roll d5 for slot and d5 for style.** The d5 orders are Section 11.2's head/torso/hands/legs/feet and Bastion/Titan/Gale/Watcher/Arcanist lists. Price: **2×** the offer-Rank armor-piece price. The result is an **Adaptive** version of that piece: it grants **+2 further points to its style stat** and its own physical reduction is **3 percentage points higher**.
+**Premium Armor — draw from the 25-pair Armor bag.** The pair order is the Section 11.2 slot-major cross-product: head/torso/hands/legs/feet, each paired in order with Bastion/Titan/Gale/Watcher/Arcanist. Price: **2×** the offer-Rank armor-piece price. The result is an **Adaptive** version of that piece: it grants **+2 further points to its style stat** and its own physical reduction is **3 percentage points higher**.
 
-**Premium Accessory — roll d5** in Section 11.2's accessory order. Price: **2×** the offer-Rank accessory price. The result is an **Ascendant** version granting **+3 further points** to its named stat.
+**Premium Accessory — draw from the five-model Accessory bag** in Section 11.2's accessory order. Price: **2×** the offer-Rank accessory price. The result is an **Ascendant** version granting **+3 further points** to its named stat.
 
-**Premium Consumable — roll d6.**
+**Premium Consumable — draw from the six-model Consumable bag.**
 
-| d6 | Offer | Price | Effect |
+| Bag entry | Offer | Price | Effect |
 |---|---|---:|---|
 | 1 | **Restoration Draught** | 900 g | Restores Health and Mana to full; clears no injury severity. |
 | 2 | **Sovereign Panacea** | 600 g | Clears one poison, venom, or disease regardless of Rank; does not reverse an authored permanent condition. |
@@ -1193,15 +1301,15 @@ Cap every result at **S**. The rolled offer Rank determines that offer's Stats, 
 | 5 | **Quicksilver Phial** | 750 g | Grants +1 modifier step on Agility-governed actions for one scene, within the net ±3 cap. |
 | 6 | **Clarity Phial** | 750 g | Grants +1 modifier step on Intelligence- or Perception-governed appraisal and detection for one scene, within the net ±3 cap. |
 
-**Premium Rune — roll d10** on Section 11.3's skill-book table. The rune teaches the rolled skill at the current offer Rank (never below the skill's native E-Rank/D-Rank), is consumed on use, and is not offered if the Bearer already knows that skill; in that case reroll until an unknown skill is produced. If all ten are known, the offer is a **Mastery Rune** instead: consuming it counts as one qualifying dangerous-scene contribution toward the chosen known skill's current mastery level (Section 7.4). Price by offer Rank:
+**Premium Rune — roll d10** on Section 11.3's skill-book table. The candidate teaches at the current offer Rank, never below the skill's native E-Rank/D-Rank, and uses Section 11.3's known-skill settlement: an unknown skill or a genuine Rank upgrade is eligible; a same-or-lower duplicate rerolls. If no eligible result remains, the offer is a **Mastery Rune** instead: consuming it counts as one qualifying dangerous-scene contribution toward the chosen known skill's current mastery level (Section 7.4). Price by offer Rank:
 
 | Rank | E-Rank | D-Rank | C-Rank | B-Rank | A-Rank | S-Rank |
 |---|---:|---:|---:|---:|---:|---:|
 | Premium Rune | 2,500 g | 11,250 g | 50,000 g | 225,000 g | 1,000,000 g | 4,500,000 g |
 
-**Premium Key — roll d6.** Price: **2×** the offer-Rank instant-dungeon key price. The key otherwise opens a standard Section 17 instance and carries one exclusive loot modifier:
+**Premium Key — draw from the six-model Key bag.** Price: **2×** the offer-Rank instant-dungeon key price. The key otherwise opens a standard Section 17 instance and carries one exclusive loot modifier:
 
-| d6 | Key model | Premium modifier |
+| Bag entry | Key model | Premium modifier |
 |---|---|---|
 | 1 | **Bounty Key** | The boss makes two independent boss-drop rolls; both drops settle. |
 | 2 | **Crystal Key** | The instance's mined deposit roll is treated as 18 before the Rank multiplier. |
@@ -1447,7 +1555,7 @@ The System's **first contact** with a new Bearer is a fixed message sequence —
 
 1. **Attachment notice** — the initializing handshake and host designation, fired the instant the System attaches.
 2. **Status-window grant** — the STATUS panel (Section 15.1) is granted and rendered once, opening at level 1 with the creation-array Stats and the Health/Mana maxima derived from its Vitality and Intelligence.
-3. **First Daily Premium cycle** — make Section 12.5's twelve real rolls immediately and fire the rotation line; this is the current 06:00-to-06:00 cycle, not an extra cycle.
+3. **First Daily Premium cycle** — initialize Section 12.5's five model bags, make its twelve base real draws (plus any required rune rerolls), and fire the rotation line; this is the current 06:00-to-06:00 cycle, not an extra cycle.
 4. **First daily quest** — the standing daily quest (Section 8.1) issues at the **next 06:00 local** after attachment. It expires at the immediately following local midnight; later quests repeat on the same 06:00-to-00:00 calendar-day schedule.
 
 The worked onset block:

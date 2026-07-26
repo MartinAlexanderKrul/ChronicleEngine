@@ -1,8 +1,8 @@
 # Gatefall World — Usage Guide
 
 **World Status:** Complete and playable
-**Version:** 0.1 (World Rule Profile 1.10)
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.3; Gatefall World Rule Profile 1.10
+**Version:** 0.1 (World Rule Profile 1.11)
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.3; Gatefall World Rule Profile 1.11
 **Created:** 2026-07-22
 
 ---
@@ -45,7 +45,7 @@ The world is original throughout — original names, characters, institutions, a
 
 **Core World Files:**
 - `200_WORLD_BIBLE.md` — Setting and narrative canon: the Gatefall event, the rules everyone knows, hunter-scale numbers, the World Ranking of S-ranks, the US and European layers, Chicago and Prague at national depth, the Jiu Valley Exclusion (the quarantined catastrophe region abroad), common knowledge by tier, the System's public (non-)existence, and an owner-only hidden-truth section not for players
-- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.10 (authoritative).** Every mechanic: levels/XP, causal base/effective stats, equipment power and item bonuses, mana, vitality and injury, skills, the daily quest, seven-day streak-box upgrades and penalty zones, Gates, loot, economy and licensed ranked-gear resale, parties, the System's behavioral contract, the `/system` command and its fixed-width panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-ranking, pacing and lethality
+- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.11 (authoritative).** Every mechanic: levels/XP, causal base/effective stats, equipment power and item bonuses, boss imprints and item appearance identity, mana, vitality and injury, skills, the daily quest, seven-day streak-box upgrades and penalty zones, Gates, loot, economy and licensed ranked-gear resale, Daily Premium rotation bags, parties, the System's behavioral contract, the `/system` command and its fixed-width panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-ranking, pacing and lethality
 - `210_PLACES.md` — Geography: Chicago (Lakefront Gate Corridor, Red Line Corridor, the Cicero break scar, Horizon Tower, the BGM Region V field office) and Prague (Old Town Gate Cluster, Metro Corridor, the Libeň break scar, Karlov House, CGA headquarters)
 - `220_NOTABLE_FIGURES.md` — Fourteen NPCs — twelve city figures (six per city) plus two world-ranked S-ranks (the highest-ranked American and Brandhof's German ace) — each authored with a want, a fear/flaw, a secret, a live agenda, and named relationships: guild masters, regulators, S-ranks, appraisers, and black-market contacts
 - `240_RESOURCES.md` — The dual economy's material side: mana crystals, beast cores, ranked hunter gear, and System-shop consumables, priced by Rank
@@ -91,7 +91,7 @@ Every Gate is populated by an authored formula tied to its Rank — trash beasts
 
 ### Loot and the Economy
 
-Every Gate clear yields crystals, cores, and a rolled boss drop (equipment chassis, rune, potions, an instant-dungeon key, a skill book, or an elixir) — nothing is improvised at the drop. Equipment is causal game state: its Rank supplies a stat/protection budget and weapon power, its chassis assigns the bonuses and combat behavior, and only equipped items apply. A higher-Rank weapon adds its authored power to the wielder's own magnitude; it never lends its full Rank, Health, accuracy, or defense. The shop's Daily Premium tab separately rolls one expiring, quantity-one offer in each of its six goods categories at 06:00; five independent Rank rolls can place its equipment, rune, and key offers above the Bearer's System Rank, and these premium models exist nowhere in the normal world's store inventory. Two currencies run in parallel and never exchange: ordinary money (USD in Chicago, CZK/EUR in Prague) for the licensed and black markets, and the System's own gold for the shop. The profile's Sections 11 and 12 author every price, item line, rotation table, drop table, and spread.
+Every Gate clear yields crystals, cores, and a rolled boss drop (equipment chassis, rune, potions, an instant-dungeon key, a skill book, or an elixir) — nothing is improvised at the drop. Equipment is causal game state: its Rank supplies a stat/protection budget and weapon power, its chassis assigns the bonuses and combat behavior, and only equipped items apply. Boss equipment additionally carries a source-derived imprint: the boss's body family supplies one further Stat point, its defining attack supplies a bounded once-per-scene Echo, and its Gate, anatomy, and rolled finish supply persistent visual identity. A higher-Rank weapon adds its authored power to the wielder's own magnitude; it never lends its full Rank, Health, accuracy, or defense. The shop's Daily Premium tab separately produces one expiring, quantity-one offer in each of its six goods categories at 06:00; model bags prevent repeats until their category is exhausted, a shared fabrication series distinguishes each cycle visually, and five independent Rank rolls can place its equipment, rune, and key offers above the Bearer's System Rank. These premium models exist nowhere in the normal world's store inventory. Two currencies run in parallel and never exchange: ordinary money (USD in Chicago, CZK/EUR in Prague) for the licensed and black markets, and the System's own gold for the shop. The profile's Sections 11 and 12 author every price, item line, rotation table, drop table, and spread.
 
 ---
 

@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000145 |
 | Record | `REC-` | Canonical Record | REC-000094 |
-| Event | `EVT-` | Event | EVT-000116 |
+| Event | `EVT-` | Event | EVT-000118 |
 | Relationship | `REL-` | Relationship | REL-000067 |
 
 ---
@@ -229,6 +229,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000113 | Event | Gatefall: Pendragon: fifth Instant-Dungeon Key [E-Rank] used — E-Rank instance, archetype Flooded Mine (standing water, −1 step on Strength/Agility actions; population 12 common/2 elite/1 boss), all 15 killed with no hit taken; boss a Serpentine/Control brute; **Flash Step's mastery advanced Novice → Practiced** (Mana 8→7), an advance earned in play and settled at the promotion barrier; loot 15 crystals, 3 cores, boss drop d100 34 → a Gale Torso [E-Rank] |
 | EVT-000114 | Event | Gatefall: Pendragon: the 2026-08-02 settlement sitting — crystals and the Gale Torso sold, both banked Daily Random Boxes opened (500 g purse; Quickstep Charm [E-Rank]), all three banked Ability Points +3 awards claimed and all 14 points allocated (Agility→30, Intelligence→30, Vitality→25), granting the stat-milestone skills **Pre-empt** and **Multitask**; maxima re-derived to Health 116 and Mana 60; two standard-catalogue E-Rank runes bought teaching **Keen Sense** and **Dagger Mastery** in preference to an identically-ranked 2,500 g Premium offer; gold closing at 920 and the instant-dungeon key chain broken |
 | EVT-000115 | Event | Gatefall: Pendragon: adoption of frozen Profile 1.14 — Urgent and Hidden System quests receive closed trigger, capacity, lifecycle, reward, storage, and rendering rules; Multitask raises live non-daily capacity to 2 with no active quest or offer; no fictional time or resolved outcome changed |
+| EVT-000118 | Event | Gatefall: Pendragon: the morning of 2026-08-03 — the tenth daily completed (streak 10), the Verdant Daily Premium cycle rolled and its Runic Key [E-Rank] bought for 1,000 g after selling 6 potions and the Quickstep Charm (gold 920 → 12), the ≈$9,450 Ashfield share landing (cash $18,881 → $28,331), a confirmed E-Rank Cicero substation Gate booked two-handed under the new sponsor exception with Owen Callahan as sponsor of record, and $18,500 of protective gear bought for Owen at Horizon Outfitters (cash → $9,831) |
+| EVT-000117 | Event | Gatefall: Pendragon: adoption of frozen Profile 1.15 — Section 9.4's additive high-Rank sponsor exception, letting a confirmed E-Rank contract be staffed at any party size behind a C-Rank licence and a confirmed D-Rank contract behind a B-Rank licence, insured and confirmed-assessments-only; no fictional time or resolved outcome changed |
 | EVT-000116 | Event | Gatefall: Pendragon: the crew's first training session at the Coalition trading field (2026-08-02, 16:20–21:50) — formation briefing and walk-through, the call form drilled, light unarmed sparring with Priya Okafor, Julian Boyd, Renata Marchetti and a coaching session for Owen Callahan; Owen's first thrown punch landing Rank-honest damage (Health 116→92) and his treatment touch restoring it (92→116); Overpower's first demonstrated application; the relationship disclosed to the crew; Priya's spend-call question; and Alexander's first stated position on leaving this crew. No XP, gold, item, or equipment change |
 
 ---

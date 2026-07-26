@@ -3,10 +3,14 @@
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.14
+**Profile Version:** 1.15
 **Engine Compatibility:** 0.2.0; Data Model 0.1.4
 **Status:** Active
-**Compatibility Status:** frozen at version 1.14 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.14 is a **migrating non-daily-quest advance** over frozen 1.13: Urgent and Hidden quests now have closed triggers, capacity, acceptance, lifecycle, reward, storage, and rendering rules, and the Intelligence milestone skills have an exact baseline to expand.
+**Compatibility Status:** frozen at version 1.15 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.15 is an **additive party-composition advance** over frozen 1.14: Section 9.4 gains the **high-Rank sponsor exception**, letting a confirmed E-Rank contract be staffed at any party size behind a C-Rank licence, and a confirmed D-Rank contract behind a B-Rank licence, with insurance intact. It recomputes nothing.
+
+**1.14 → 1.15 compatibility treatment.** Preserve every stored value, Stat, pool, skill, item, quest, currency, contract, and resolved outcome. Adoption requires no recomputation and no state migration: the exception governs postings staffed from adoption forward and reopens no completed clear, filed report, or split. Legal minimums (Section 13.3) are untouched, unconfirmed assessments keep the ordinary posting floors, and the solo-entry insurance void is unchanged outside a sanctioned posting. Record the additive-upgrade acknowledgement in the live campaign and the next promoted checkpoint. Immutable Profile 1.14-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.15 before play.
+
+Version 1.14 remains the migrating non-daily-quest advance over frozen 1.13: Urgent and Hidden quests now have closed triggers, capacity, acceptance, lifecycle, reward, storage, and rendering rules, and the Intelligence milestone skills have an exact baseline to expand.
 
 **Required 1.13 → 1.14 migration.** Preserve every Stat, skill, pool, item, reward, daily quest, class quest, clock value, and resolved outcome. Add a `non_daily_quests` map to the Bearer's `system_state` with `base_capacity: 1`, `multitask_bonus: 1` only if Multitask is already earned, `analyst_bonus: 1` only if Analyst is already earned, derived `capacity_total`, and empty `active` and `pending_offers` lists unless durable canon already establishes an unresolved System-issued Urgent or Hidden quest. Do not reconstruct missed opportunities from prior fiction and do not convert campaign-ledger objectives into System quests. Re-render `/system` and `/system quests`, then record adoption in mutable live state. This migration consumes no fictional time and changes no XP, reward, or quest result. Immutable Profile 1.13-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.14 before play.
 
@@ -911,6 +915,21 @@ The gap between the columns is deliberate: the legal floor is the fighting stren
 **This is what most low-rank hunters actually do.** The world's floor is not a floor of weak *fighters* — it is a support tier. Most E- and D-Ranks make their living as **miners, harvesters, and gear-porters** on higher-Rank clears, not as front-line strikers expected to trade blows with beasts that would kill them. Fighting below one's safe Rank is the *exception* an ambitious hunter chooses; the ordinary career of a low-rank licensed hunter is support work, and it is honest, needed, and dangerous enough — a support crewman caught when a line breaks dies exactly as a striker would (Section 9.8). A standard clear therefore fields a **strike element** (combat-rated, Section 13.5) and a **support element** (any rank — miners cutting the deposits of Section 11.1, plus porters who haul loot and carry the fighters' spare gear and consumables), the support paid a harvest share rather than a full combat split (the standard support-contract terms — 20% of the clear, output-weighted — are Section 13.2).
 
 **The under-strength waiver.** A low-rate E- or D-Rank contract that has sat undersubscribed may post under a signed under-strength waiver at an absolute floor of **five** — no support element, everyone doubling roles, every signature acknowledging the risk. Cheap jobs sit, and thin crews take them; the waiver tier is where the trade's casualties concentrate, and everyone signing one knows it. Hunter insurance is void from the moment a hunter crosses a threshold alone. Solo entry of a populated Gate remains *legal* at Ranks E-Rank–D-Rank — as a matter of law, the government does not stop anyone from dying — and is understood by the entire trade as desperation or a death wish; the Lone Clear title (Section 16) is legendary precisely because its feat is one the working world considers suicide. The solo format that actually exists is not a Gate at all: it is the instant dungeon (Section 17), and it belongs to exactly one person on Earth.
+
+### The high-Rank sponsor exception (Profile 1.15)
+
+A **confirmed** low-Rank contract may be posted to, and bid by, a party of **any size** — including two — when the party carries a licence far enough above the Gate to make the headcount irrelevant:
+
+| Gate assessment | Sponsor requirement | Minimum party size |
+|---|---|---|
+| **Confirmed E-Rank** | at least one **C-Rank or higher** licensed member | none |
+| **Confirmed D-Rank** | at least one **B-Rank or higher** licensed member | none |
+
+- **Confirmed assessments only.** The exception reads the assessment's confidence (Section 9.5), not its posted number. An **unconfirmed** Gate keeps the ordinary floors — 8, or 5 under the under-strength waiver — and no board accepts a small bid on an unconfirmed posting or on anything assessed D-Rank or above. This is the whole safety of the rule: a sponsored pair can never be surprised by a true Rank two bands above them, because the assessment they bid on was already settled.
+- **A sponsored posting is sanctioned, so it is insured.** The sponsor's licence is what makes the clear legal to staff at that size, and hunter insurance applies to every member exactly as on any full-floor contract. The solo-entry void above is unchanged and still applies to anyone crossing a threshold outside a sanctioned posting.
+- **It changes no legal minimum.** E-Rank–D-Rank already require no combat-rated minimum (Section 13.3); this clause moves the *board's* floor, not the law's.
+- **Ordinary terms otherwise.** Standard party contract terms, declaration at exit, liability waivers, and beneficiary rules apply unchanged (Section 13.2). The sponsor holds no automatic leader's share; the split is whatever the contract says.
+- **The trade's opinion is its own.** Boards post these; veterans still read a two-person clear as thin, and a sponsor who loses a low-Rank member on one answers for it socially long before anyone answers for it legally.
 
 ## 9.5 Confidence and the True Rank
 

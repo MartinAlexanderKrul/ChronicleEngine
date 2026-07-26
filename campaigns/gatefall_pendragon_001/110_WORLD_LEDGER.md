@@ -17,7 +17,7 @@ status: active
 provenance:
   source: EVT-000056
   game_date: "2026-07-22"
-  real_date: "2026-07-23T00:00:00Z"
+  real_date: "2026-07-23T11:22:33+02:00"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -32,7 +32,7 @@ status: active
 provenance:
   source: EVT-000056
   game_date: "2026-07-22"
-  real_date: "2026-07-23T00:00:00Z"
+  real_date: "2026-07-23T11:22:33+02:00"
 endpoints:
   - ENT-000125
   - ENT-000102

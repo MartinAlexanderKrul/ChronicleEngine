@@ -15,7 +15,7 @@ status: active
 provenance:
   source: EVT-000105
   game_date: "2026-07-31, night"
-  real_date: "2026-07-26T11:35:39+02:00"
+  real_date: "2026-07-26T11:47:18+02:00"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -80,7 +80,7 @@ status: active
 provenance:
   source: ruling
   game_date: "2026-07-22"
-  real_date: "2026-07-23T00:00:00Z"
+  real_date: "2026-07-23T11:22:33+02:00"
 type: Event
 kind: campaign-start
 importance: immediate
@@ -101,7 +101,7 @@ status: active
 provenance:
   source: session-1-gameplay
   game_date: "2026-07-23 to 2026-07-24"
-  real_date: "2026-07-24T08:00:00Z"
+  real_date: "2026-07-23T15:03:14+02:00"
 type: Event
 kind: session-gameplay
 importance: immediate
@@ -126,7 +126,7 @@ status: active
 provenance:
   source: session-1-gameplay
   game_date: "2026-07-24"
-  real_date: "2026-07-24T00:00:00Z"
+  real_date: "2026-07-24T08:53:28+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -162,7 +162,7 @@ status: active
 provenance:
   source: session-1-gameplay
   game_date: "2026-07-24 to 2026-07-25"
-  real_date: "2026-07-25T00:00:00Z"
+  real_date: "2026-07-24T12:02:39+02:00"
 type: Event
 kind: session-gameplay
 importance: immediate
@@ -193,7 +193,7 @@ status: active
 provenance:
   source: session-1-gameplay
   game_date: "2026-07-25"
-  real_date: "2026-07-25T00:00:00Z"
+  real_date: "2026-07-24T12:02:39+02:00"
 type: Event
 kind: world-fact
 importance: background
@@ -213,7 +213,7 @@ status: active
 provenance:
   source: ruling
   game_date: "2026-07-25"
-  real_date: "2026-07-25T00:00:00Z"
+  real_date: "2026-07-24T12:02:39+02:00"
 type: Event
 kind: correction
 importance: background
@@ -234,7 +234,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-25"
-  real_date: "2026-07-25T23:00:00Z"
+  real_date: "2026-07-24T13:54:03+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -274,7 +274,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-26"
-  real_date: "2026-07-26T09:00:00Z"
+  real_date: "2026-07-24T13:54:03+02:00"
 type: Event
 kind: session-gameplay
 importance: immediate
@@ -297,7 +297,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-26"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T14:57:31+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -328,7 +328,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-26"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T15:47:56+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -359,7 +359,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-26"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T16:20:26+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -388,7 +388,7 @@ status: active
 provenance:
   source: ruling
   game_date: "2026-07-26"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T16:55:17+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -415,7 +415,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-27"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T20:38:46+02:00"
 type: Event
 kind: session-gameplay
 importance: minor
@@ -437,7 +437,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-28"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T23:30:49+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -477,7 +477,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-28"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T23:30:49+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -505,7 +505,7 @@ status: active
 provenance:
   source: owner-approved-profile-migration
   game_date: "2026-07-28, before the next Ashfield Gate exchange"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T00:00:09+02:00"
 type: Event
 kind: rules-migration
 importance: major
@@ -531,7 +531,7 @@ status: active
 provenance:
   source: owner-approved-profile-migration
   game_date: "2026-07-28, before the next Ashfield Gate exchange"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T00:00:09+02:00"
 type: Event
 kind: rules-migration
 importance: major
@@ -555,7 +555,7 @@ status: active
 provenance:
   source: owner-approved-profile-migration
   game_date: "2026-07-28, before the next Ashfield Gate exchange"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T00:39:59+02:00"
 type: Event
 kind: rules-migration
 importance: major
@@ -583,7 +583,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-28, immediately after the Profile 1.4 migration, before the next Ashfield Gate exchange"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T03:51:54+02:00"
 type: Event
 kind: session-gameplay
 importance: minor
@@ -605,7 +605,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-28"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T03:51:54+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -637,7 +637,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-28"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T03:51:54+02:00"
 type: Event
 kind: session-gameplay
 importance: immediate
@@ -671,7 +671,7 @@ status: active
 provenance:
   source: owner-approved-profile-migration
   game_date: "2026-07-28, mid-boss-fight pause, before the next exchange"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T03:51:54+02:00"
 type: Event
 kind: rules-migration
 importance: major
@@ -698,7 +698,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-28"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T03:51:54+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -744,7 +744,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-28"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T03:51:54+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -792,7 +792,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-28 afternoon to 2026-07-29 14:11"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T10:27:06+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -832,7 +832,7 @@ status: active
 provenance:
   source: owner-rule-migration
   game_date: "2026-07-29 14:11"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T10:39:12+02:00"
 type: Event
 kind: world-rule-migration
 importance: major
@@ -858,7 +858,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-29 14:11 to 2026-07-30 morning"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T14:52:23+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -904,7 +904,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-30, 05:40 to 08:15"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T16:52:25+02:00"
 type: Event
 kind: session-gameplay
 importance: pivotal
@@ -949,7 +949,7 @@ status: active
 provenance:
   source: owner-approved-world-authoring
   game_date: "2026-07-30, approximately 08:15; readiness pause"
-  real_date: "2026-07-25"
+  real_date: "2026-07-25T17:42:13+02:00"
 type: Event
 kind: profile-migration
 importance: routine
@@ -971,7 +971,7 @@ status: active
 provenance:
   source: owner-approved-world-authoring
   game_date: "2026-07-30, approximately 08:15; readiness pause"
-  real_date: "2026-07-25"
+  real_date: "2026-07-25T17:59:17+02:00"
 type: Event
 kind: profile-additive-upgrade
 importance: routine
@@ -993,7 +993,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-30, 08:15 to evening"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T20:40:27+02:00"
 type: Event
 kind: session-gameplay
 importance: significant
@@ -1024,7 +1024,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-30, early evening to night"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T22:29:28+02:00"
 type: Event
 kind: session-gameplay
 importance: significant
@@ -1063,7 +1063,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-30, night to 2026-07-31, morning"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T00:00:29+02:00"
 type: Event
 kind: session-gameplay
 importance: significant
@@ -1096,7 +1096,7 @@ status: active
 provenance:
   source: owner-authored world-rule advance
   game_date: "2026-07-31, morning (no fictional time consumed)"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T00:16:49+02:00"
 type: Event
 kind: profile-adoption
 importance: routine
@@ -1122,7 +1122,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, morning"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T00:16:49+02:00"
 type: Event
 kind: session-gameplay
 importance: routine
@@ -1148,7 +1148,7 @@ status: active
 provenance:
   source: owner-authored world-rule advance
   game_date: "2026-07-31, readiness pause (no fictional time consumed)"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T02:05:57+02:00"
 type: Event
 kind: profile-adoption
 importance: routine
@@ -1172,7 +1172,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, midday"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T02:05:57+02:00"
 type: Event
 kind: session-gameplay
 importance: minor
@@ -1202,7 +1202,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, midday, before the Halsted Depot job"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T02:05:57+02:00"
 type: Event
 kind: session-gameplay
 importance: minor
@@ -1227,7 +1227,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, afternoon"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T02:05:57+02:00"
 type: Event
 kind: session-gameplay
 importance: minor
@@ -1257,7 +1257,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, afternoon, ~3:00 PM"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T03:36:10+02:00"
 type: Event
 kind: session-gameplay
 importance: minor
@@ -1277,7 +1277,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, afternoon, ~3:00-3:40 PM"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T03:36:10+02:00"
 type: Event
 kind: session-gameplay
 importance: moderate
@@ -1305,7 +1305,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, afternoon, ~3:40-3:55 PM"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T03:36:10+02:00"
 type: Event
 kind: session-gameplay
 importance: minor
@@ -1325,7 +1325,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, afternoon, ~3:55-4:30 PM"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T03:36:10+02:00"
 type: Event
 kind: session-gameplay
 importance: moderate
@@ -1355,7 +1355,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, afternoon, ~4:30 PM"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T11:32:24+02:00"
 type: Event
 kind: profile-adoption
 importance: minor
@@ -1375,7 +1375,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, late afternoon, ~4:30-5:22 PM"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T11:32:24+02:00"
 type: Event
 kind: session-gameplay
 importance: moderate
@@ -1409,7 +1409,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, evening, ~5:22-5:37 PM"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T11:32:24+02:00"
 type: Event
 kind: session-gameplay
 importance: minor
@@ -1430,7 +1430,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, evening, ~5:40 PM onward"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T11:32:24+02:00"
 type: Event
 kind: session-gameplay
 importance: moderate
@@ -1453,7 +1453,7 @@ status: active
 provenance:
   source: session-2-gameplay
   game_date: "2026-07-31, night"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T11:32:24+02:00"
 type: Event
 kind: session-gameplay
 importance: moderate
@@ -1482,7 +1482,7 @@ status: active
 provenance:
   source: owner-approved-profile-migration
   game_date: "2026-07-31, night — no fictional time consumed"
-  real_date: "2026-07-26T11:35:39+02:00"
+  real_date: "2026-07-26T11:47:18+02:00"
 type: Event
 kind: system-profile-adoption
 importance: structural

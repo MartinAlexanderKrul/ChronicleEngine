@@ -15,7 +15,7 @@ status: active
 provenance:
   source: EVT-000104
   game_date: "2026-07-28 to 2026-07-31 night"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T11:32:24+02:00"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -63,7 +63,7 @@ status: active
 provenance:
   source: EVT-000058
   game_date: "2026-07-23, Coalition case table"
-  real_date: "2026-07-24T09:00:00Z"
+  real_date: "2026-07-23T15:03:14+02:00"
 type: Character
 subtype: crew leader / striker
 scope: local
@@ -96,7 +96,7 @@ status: active
 provenance:
   source: EVT-000058
   game_date: "2026-07-23, crew briefing"
-  real_date: "2026-07-24T09:00:00Z"
+  real_date: "2026-07-23T15:03:14+02:00"
 type: Character
 subtype: sensor
 scope: local
@@ -129,7 +129,7 @@ status: active
 provenance:
   source: EVT-000058
   game_date: "2026-07-24, Gate entrance"
-  real_date: "2026-07-24T09:00:00Z"
+  real_date: "2026-07-23T15:03:14+02:00"
 type: Character
 subtype: striker
 scope: local
@@ -160,7 +160,7 @@ status: active
 provenance:
   source: EVT-000058
   game_date: "2026-07-24, Gate entrance"
-  real_date: "2026-07-24T09:00:00Z"
+  real_date: "2026-07-23T15:03:14+02:00"
 type: Character
 subtype: mender
 scope: local
@@ -191,7 +191,7 @@ status: active
 provenance:
   source: EVT-000058
   game_date: "2026-07-23, Coalition desk"
-  real_date: "2026-07-24T09:00:00Z"
+  real_date: "2026-07-23T15:03:14+02:00"
 type: Character
 subtype: Coalition coordinator
 scope: local
@@ -221,7 +221,7 @@ status: active
 provenance:
   source: EVT-000058
   game_date: "2026-07-23, Ironbound gear shop"
-  real_date: "2026-07-24T09:00:00Z"
+  real_date: "2026-07-23T15:03:14+02:00"
 type: Character
 subtype: gear-shop owner
 scope: local
@@ -253,7 +253,7 @@ status: active
 provenance:
   source: EVT-000058
   game_date: "2026-07-23, named at the Coalition desk"
-  real_date: "2026-07-24T09:00:00Z"
+  real_date: "2026-07-23T15:03:14+02:00"
 type: Institution
 subtype: gear vendor
 scope: local
@@ -279,7 +279,7 @@ status: active
 provenance:
   source: EVT-000058
   game_date: "2026-07-23, named at the Coalition desk"
-  real_date: "2026-07-24T09:00:00Z"
+  real_date: "2026-07-23T15:03:14+02:00"
 type: Institution
 subtype: gear vendor
 scope: local
@@ -305,7 +305,7 @@ status: active
 provenance:
   source: EVT-000083
   game_date: "2026-07-29, afternoon"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T14:52:23+02:00"
 type: Institution
 subtype: gear vendor
 scope: local
@@ -331,7 +331,7 @@ status: active
 provenance:
   source: session-1-gameplay
   game_date: "2026-07-25, Cicero Scar staging"
-  real_date: "2026-07-25T00:00:00Z"
+  real_date: "2026-07-24T13:54:03+02:00"
 type: Character
 subtype: contractor logistics coordinator
 scope: local
@@ -361,7 +361,7 @@ status: active
 provenance:
   source: session-1-gameplay
   game_date: "2026-07-26, staging near the Frozen Gallery Gate"
-  real_date: "2026-07-26T00:00:00Z"
+  real_date: "2026-07-24T13:54:03+02:00"
 type: Character
 subtype: contractor logistics coordinator
 scope: local
@@ -393,7 +393,7 @@ status: active
 provenance:
   source: EVT-000069
   game_date: "2026-07-27, arranged by phone through Kesha Morrison"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T23:30:49+02:00"
 type: Character
 subtype: crew leader / striker
 scope: local
@@ -426,7 +426,7 @@ status: active
 provenance:
   source: EVT-000070
   game_date: "2026-07-28, staging and Gate entry"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T23:30:49+02:00"
 type: Character
 subtype: striker (ranged)
 scope: local
@@ -459,7 +459,7 @@ status: active
 provenance:
   source: EVT-000070
   game_date: "2026-07-28, staging and Gate entry"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T23:30:49+02:00"
 type: Character
 subtype: sensor / reader
 scope: local
@@ -492,7 +492,7 @@ status: active
 provenance:
   source: EVT-000070
   game_date: "2026-07-28, staging and Gate entry"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T23:30:49+02:00"
 type: Character
 subtype: mender
 scope: local
@@ -548,7 +548,7 @@ status: active
 provenance:
   source: EVT-000058
   game_date: "2026-07-23, contract signed"
-  real_date: "2026-07-24T09:00:00Z"
+  real_date: "2026-07-23T15:03:14+02:00"
 endpoints:
   - ENT-000125
   - ENT-000126
@@ -568,7 +568,7 @@ status: active
 provenance:
   source: EVT-000063
   game_date: "2026-07-25, Coalition desk and Cicero Scar staging"
-  real_date: "2026-07-25T00:00:00Z"
+  real_date: "2026-07-24T13:54:03+02:00"
 endpoints:
   - ENT-000125
   - ENT-000134
@@ -588,7 +588,7 @@ status: active
 provenance:
   source: EVT-000069
   game_date: "2026-07-27, arranged by phone through Kesha Morrison"
-  real_date: "2026-07-26"
+  real_date: "2026-07-24T20:38:46+02:00"
 endpoints:
   - ENT-000125
   - ENT-000136
@@ -608,7 +608,7 @@ status: active
 provenance:
   source: EVT-000081
   game_date: "2026-07-28 to 2026-07-29, from the bar through the following morning"
-  real_date: "2026-07-26"
+  real_date: "2026-07-25T10:27:06+02:00"
 endpoints:
   - ENT-000125
   - ENT-000139
@@ -673,7 +673,7 @@ status: active
 provenance:
   source: EVT-000093
   game_date: "2026-07-31, Coalition case table and Halsted Depot"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T02:05:57+02:00"
 type: Character
 subtype: contractor co-owner
 scope: local
@@ -702,7 +702,7 @@ status: active
 provenance:
   source: EVT-000093
   game_date: "2026-07-31, Coalition case table and Halsted Depot"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T02:05:57+02:00"
 type: Character
 subtype: contractor co-owner
 scope: local
@@ -731,7 +731,7 @@ status: active
 provenance:
   source: EVT-000093
   game_date: "2026-07-31, Halsted Depot"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T02:05:57+02:00"
 type: Character
 subtype: harvester
 scope: local
@@ -760,7 +760,7 @@ status: active
 provenance:
   source: EVT-000093
   game_date: "2026-07-31, Halsted Depot"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T02:05:57+02:00"
 type: Character
 subtype: harvester
 scope: local
@@ -789,7 +789,7 @@ status: active
 provenance:
   source: EVT-000093
   game_date: "2026-07-31, named at the Coalition desk"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T02:05:57+02:00"
 type: Institution
 subtype: harvest-hire contractor
 scope: local
@@ -817,7 +817,7 @@ status: active
 provenance:
   source: EVT-000095
   game_date: "2026-07-31, Coalition desk and Halsted Depot"
-  real_date: "2026-07-26"
+  real_date: "2026-07-26T02:05:57+02:00"
 endpoints:
   - ENT-000125
   - ENT-000145

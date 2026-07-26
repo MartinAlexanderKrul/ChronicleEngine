@@ -15,7 +15,7 @@ status: active
 provenance:
   source: EVT-000105
   game_date: "2026-07-31, night"
-  real_date: "2026-07-26T11:35:39+02:00"
+  real_date: "2026-07-26T11:47:18+02:00"
 role: canonical ledger
 scope: campaign
 subjects: []

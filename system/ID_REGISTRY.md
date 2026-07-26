@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000145 |
 | Record | `REC-` | Canonical Record | REC-000092 |
-| Event | `EVT-` | Event | EVT-000095 |
+| Event | `EVT-` | Event | EVT-000099 |
 | Relationship | `REL-` | Relationship | REL-000067 |
 
 ---
@@ -207,6 +207,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000093 | Event | Gatefall: Pendragon: Coalition referral to the Sable & Kern C-Rank harvest job (Kesha Morrison), crew introductions at Halsted, and an unprompted text to Owen Callahan ("I already miss you") — a `REL-000066` texture first, Alexander volunteering vulnerability unprompted rather than under duress |
 | EVT-000094 | Event | Gatefall: Pendragon: Horizon Outfitters (`ENT-000133`) purchase — Horizon Gale Gauntlets [C-Rank] and Horizon Gale Coif [D-Rank] bought for $15,500 cash; the superseded Reinforced Gauntlets [E-Rank] sold to the System shop for 15 g; both Ascendant Hunter's Bands (E-Rank and D-Rank) equipped together in the two accessory slots |
 | EVT-000095 | Event | Gatefall: Pendragon: the Halsted Depot C-Rank harvest job (Sable & Kern) — 10 C-Rank crystals mined solo across a second and third vein (7 + 3), 4 sold privately to the System shop (680 g, undeclared), 6 declared to the crew pool; crew total 16 crystals declared, $40,000 gross, Alexander's ≈$9,000 share pending 1–2 business days |
+| EVT-000096 | Event | Gatefall: Pendragon: gear-up on the bench (2026-07-31, afternoon) — bought and equipped the Ghost Quickknife [B-Rank] from the Daily Premium tab (18,000 g), sold the superseded E-Rank Quickknife (25 g), scene time explicitly established at 3:00 PM by ruling |
+| EVT-000097 | Event | Gatefall: Pendragon: first Instant-Dungeon Key [E-Rank] used — E-Rank instance, archetype Overgrown Temple (population 12 common/2 elite [1 rolled + 1 archetype shrine-guard]/1 boss); 4 common, 1 elite, and the boss killed; boss-drop rune rerolled from already-known Stone Skin to Flash Step [D-Rank] (learned) under an extended Section 12.5 reroll ruling; archetype bonus loot an Elixir of a Stat (later sold); corrected ruling that elites/bosses also drop a crystal in addition to their core (Section 11.1); +170 XP; instance closed on boss kill, ~40 minutes elapsed, ejected to 3:40 PM |
+| EVT-000098 | Event | Gatefall: Pendragon: post-dungeon shop activity — sold 6 E-Rank crystals (60 g) and the Elixir (2,500 g), consumed the boss-drop rune to learn Flash Step, bought a Stabilization Seal (150 g) and a second Instant-Dungeon Key [E-Rank] (500 g) |
+| EVT-000099 | Event | Gatefall: Pendragon: second Instant-Dungeon Key [E-Rank] used — E-Rank instance, archetype Hive (population doubled to 18 common plus the converted elite slot = 19 common, 0 elites, 1 boss); 6 common and the boss killed; drank both Lesser Mana Potions (+20 Mana) before the boss approach; boss drop a third Instant-Dungeon Key [E-Rank]; +170 XP; Rupture's mastery advanced Novice → Practiced on its third materially-distinct contributing use (multiplier ×2.0 → ×2.15, Mana cost 12 → 11) |
 
 ---
 

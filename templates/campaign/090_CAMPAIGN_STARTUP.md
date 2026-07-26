@@ -37,6 +37,7 @@ validation:
   require_confirmation_before_scene: true
   block_on_contradiction: true
   first_session_requires_save: false
+  require_temporal_settlement: <true when the active world declares deterministic time-based rules | false>
 ```
 
 ---
@@ -49,6 +50,7 @@ validation:
 - Use `emergent` when protagonist, world intersection, and opening situation are established through onboarding.
 - Set `preserve_baseline: true` when customization must create another campaign instance rather than rewrite the prepared campaign.
 - When the world declares a World Rule Profile, record its exact name and version and include the profile source in `required_sources`.
+- Set `require_temporal_settlement: true` when the profile declares deterministic elapsed-time rules; startup must then load and validate the world's exact campaign-time anchor and recovery carry before play.
 - List only source ledgers needed to derive startup. The Runtime may load additional scope-responsible records when validation or clarification requires them.
 
 ---

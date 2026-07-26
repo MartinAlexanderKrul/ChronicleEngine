@@ -1,6 +1,6 @@
 # Chronicle Engine
 
-**Document Version:** 1.11
+**Document Version:** 1.12
 
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 
@@ -263,7 +263,7 @@ Current focus:
 
 - Version 0.2.0 (Knowledge & Civilization) released.
 - Version 0.3 planned ADRs accepted (2026-07-23): Decisions 072–075, Architecture Freeze complete. Decision 076 was admitted on 2026-07-25 by explicit owner ruling as a foundational exception produced by live prototype evidence.
-- Milestones 0.3.1–0.3.3 implemented (2026-07-23): Save Layer Unification, Presence and Location (Data Model 0.1.2), and World Rule Profile versioning and freeze (Rules 14.6; Reikon 0.10 is the first frozen profile). Decision 076 advances the Data Model to 0.1.3 and preserves Relationship Texture across promotion; Decision 077 advances mutable live state to 0.1.4 and names its two clocks `game_date` and `real_date`. The Consistency Audit is complete. Milestone 0.3.5 is in progress: Gatefall: Pendragon is the live prototype, with unsafe failure cases isolated in `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`.
+- Milestones 0.3.1–0.3.3 implemented (2026-07-23): Save Layer Unification, Presence and Location (Data Model 0.1.2), and World Rule Profile versioning and freeze (Rules 14.6; Reikon 0.10 is the first frozen profile). Decision 076 advances the Data Model to 0.1.3 and preserves Relationship Texture across promotion; Decision 077 advances mutable live state to 0.1.4 and names its two provenance clocks `game_date` and `real_date`; Decision 078 adds exact canonical campaign-time settlement for deterministic elapsed-time rules without advancing the Data Model. The Consistency Audit is complete. Milestone 0.3.5 is in progress: Gatefall: Pendragon is the live prototype, with unsafe failure cases isolated in `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`.
 
 See:
 

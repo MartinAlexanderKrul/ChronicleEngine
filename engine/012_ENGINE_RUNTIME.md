@@ -235,6 +235,24 @@ If the host compacts without warning, the first subsequent operation is re-groun
 
 A context-preservation checkpoint is a normal immutable checkpoint under Rules Section 13. It changes no fiction by itself and requires the same complete target derivation, read-back, repository validation, and honest failure reporting as a manual checkpoint.
 
+## 2.4 Canonical Time Settlement
+
+When an active world declares a deterministic time-based mechanic, the Runtime
+must carry an exact canonical campaign-time anchor at the precision and in the
+calendar/timezone that world declares. A response that advances fictional time
+establishes its elapsed duration and new anchor, settles every applicable
+time-based rule from the old anchor through the new one, and updates in-flight
+state before the next action reads it.
+
+World-declared fractional carry is canonical state. Equivalent fictional time
+must produce identical settlement regardless of how many Runtime responses span
+it. A status view, checkpoint, or session close reads and promotes already-settled
+state; none may be the first operation that notices elapsed recovery. Where the
+fiction establishes only a time range, the Runtime may narrate within that range
+but must resolve an exact anchor before a time-dependent action or deadline is
+settled. Decision 078 owns this mechanism; the active World Rule Profile owns the
+clock representation, rates, modes, rounding, and migration.
+
 ---
 
 # 3. Context

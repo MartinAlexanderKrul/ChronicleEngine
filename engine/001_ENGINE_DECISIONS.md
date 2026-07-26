@@ -3678,6 +3678,70 @@ identifier, and changes no fictional event.
 
 ---
 
+## Decision 078 — Canonical Campaign Clock and Automatic Recovery Settlement
+
+**Status:** Accepted
+**Date:** 2026-07-26
+**Related Sections:** `012_ENGINE_RUNTIME.md` Section 2.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` Turn-State Settlement; `worlds/gatefall/206_WORLD_RULE_PROFILE.md` 1.13 Sections 5.2 and 6.1.1; Decisions 065–066, 074, 077
+
+### Context
+
+Gatefall play exposed a settlement failure already prohibited in principle but not
+made durable in state. Mana recovery had an exact formula and the resident Runtime
+required it after elapsed fictional time, yet the campaign stored only prose such
+as “late night” and no last-settled anchor or fractional carry. The next narrator
+therefore recalculated recovery only when the player asked, after later actions
+could already have read stale Mana. Gatefall also had a numeric Health pool but no
+natural Health-recovery magnitude, so automatic Health recovery was genuinely
+unauthored.
+
+This is direct Version 0.3 prototype evidence. The owner explicitly approved an
+exact canonical clock, deterministic carry, automatic per-turn settlement, and a
+Gatefall natural-Health rule. Under Decision 069 the durable clock is foundational
+because it introduces an engine-general mechanism. It is admitted to milestone
+0.3.5 by the same owner-governed exception used for Decisions 076 and 077.
+
+### Decision
+
+1. A world with a deterministic time-based rule must keep an exact canonical
+   campaign-time anchor at that world's declared precision and timezone/calendar.
+2. Every resolved span records or derives its elapsed fictional duration, settles
+   from the previous anchor through the new anchor, and advances the anchor before
+   the next action reads tracked state.
+3. World-declared fractional carry is canonical. Dividing one fictional span
+   across different response boundaries must produce the same result.
+4. Settlement occurs after every action, transition, montage, travel span, wait,
+   or sleep that advances time. `/system`, `/save`, session close, and player
+   correction may read or promote settlement but never trigger it for the first
+   time.
+5. A Runtime does not invent elapsed time hidden by vague prose. It establishes
+   the new exact anchor as part of narrating the span; if canon supports only a
+   range, it must stop before a time-dependent next action until the anchor is
+   resolved.
+6. Gatefall Profile 1.13 records the clock, Mana/Health recovery modes, and exact
+   fractional remainders. Mana retains its existing active/resting rates. Natural
+   Health recovery is 25% of maximum Health per eight hours of safe rest, half
+   that rate during safe light activity, and paused during combat, threat,
+   strenuous exertion, or unstable conditions. Health and injury severity remain
+   independent axes.
+7. Existing immutable checkpoints are unchanged. Restoring a pre-1.13 Gatefall
+   checkpoint migrates mutable live state at readiness: establish the most precise
+   supported clock anchor, preserve current pools, initialize remainders to zero
+   unless durable evidence supports more, and settle only fictional time that
+   occurs after that anchor.
+
+### Consequences
+
+- Engine Version and Data Model remain 0.2.0 and 0.1.4. The engine mechanism is
+  normative Runtime behavior; the serialized recovery fields are world-declared
+  Character extensions.
+- The Gameplay Resident Core and fetched Runtime Profile advance together, and
+  Gatefall advances from frozen Profile 1.12 to frozen Profile 1.13.
+- Runtime contract tests must prove that recovery settles without a status request
+  and remains invariant across equivalent response partitions.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

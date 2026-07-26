@@ -325,7 +325,8 @@ Current priority:
 2. The Consistency Audit is complete (2026-07-23): glossary terminology and cross-document references reconciled; PA-002 and PA-008 dispositioned Resolved.
 3. Decision 076 is implemented from live prototype evidence (2026-07-25): Relationship Texture, Characterization Settlement, automatic context-preservation export, and the Data Model 0.1.2 → 0.1.3 migration.
 4. Decision 077 is implemented from further live prototype evidence (2026-07-26): provenance now serializes the distinct fictional and repository clocks as `game_date` and `real_date`, advancing mutable live state to Data Model 0.1.4 while leaving immutable checkpoints unchanged.
-5. Milestone 0.3.5 is in progress: Gatefall: Pendragon is the designated live Prototype Campaign, with destructive and compatibility-failure cases isolated in non-canonical fixtures under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`.
+5. Decision 078 is implemented from Gatefall prototype evidence (2026-07-26): worlds with deterministic time rules carry an exact canonical campaign-time settlement anchor and world-declared fractional recovery state; settlement occurs before the next action, never on a later status request. Gatefall Profile 1.13 supplies the first complete implementation. Engine 0.2.0 and Data Model 0.1.4 remain unchanged.
+6. Milestone 0.3.5 is in progress: Gatefall: Pendragon is the designated live Prototype Campaign, with destructive and compatibility-failure cases isolated in non-canonical fixtures under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`.
 
 ---
 

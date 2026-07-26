@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.5
+**Document Version:** 1.6
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -327,7 +327,7 @@ In debug mode, use one actor-relative list (`Effect on <actor>'s intent`) rather
 After every resolved exchange and before yielding, settle all tracked state that changed during that exchange. This is a **resident per-turn obligation**, not work deferred to `/system`, an OOC correction, `/save`, or session close.
 
 1. Apply immediate costs and harm caused by the resolution (spent resources, Health damage, conditions, item use).
-2. Account for the in-world time the narrated exchange consumed. Apply every deterministic time-based rule, including active/resting resource recovery and Health recovery, and carry any sub-interval remainder required by the active world profile. A Runtime may not invent a recovery rate: it uses the active world's declared formula, and if none exists it preserves current Health until a resolved treatment or healing effect establishes a change.
+2. Account for the in-world time the narrated exchange consumed. When the active world has a deterministic time-based rule, read its exact last-settled campaign-time anchor, establish the response's elapsed duration and new exact anchor, apply every deterministic time-based rule (including active/resting resource recovery and Health recovery), preserve every world-declared fractional remainder, and advance the anchor before the next action reads state. The same fictional span must settle identically whether narrated in one response or many. A vague phrase such as “later” or “overnight” does not replace the anchor: resolve the exact endpoint before any time-dependent next action. A Runtime may not invent a recovery rate; if none exists it preserves current Health until a resolved treatment or healing effect establishes a change.
 3. If the exchange completed training or demonstrated a technique, update qualitative capability/training state now with what was actually practiced or demonstrated. One session may establish familiarity or foundational practice without granting mastery; it is still recorded and can accumulate through later training and use. Physical skills are not discarded because a world also has System Abilities.
 4. If the exchange resolved a challenge, apply its reward now, including XP. When an active World Rule Profile makes level-up rewards immediate, settle every crossed level and its complete reward package before the next action; never convert it into an acceptance prompt or pending reward. Only rewards the profile explicitly declares deferrable—such as Gatefall's daily rewards—may stack unclaimed. A kill, clear, or other completed challenge is never left "not yet updated."
 5. Update the in-flight session state used by the next turn. The next response and `/system` read this settled state, never the opening checkpoint values.

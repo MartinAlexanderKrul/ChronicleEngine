@@ -13,9 +13,9 @@ canonical_record: REC-000079
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000106
-  game_date: "2026-07-28 to 2026-07-29; transcript-backed continuity repair, no fictional time consumed"
-  real_date: "2026-07-26T11:48:32+02:00"
+  source: EVT-000107
+  game_date: "2026-07-31 23:00 -05:00; no fictional time consumed"
+  real_date: "2026-07-26T12:01:14+02:00"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -67,6 +67,7 @@ subjects:
   - EVT-000104
   - EVT-000105
   - EVT-000106
+  - EVT-000107
 ```
 
 ---
@@ -1514,4 +1515,24 @@ participants:
 description: "Architect-mode audit of the supplied durable Claude-session export confirms and re-promotes the full first overnight already summarized in `EVT-000081`. Immediately after the true-C-Rank Ashfield clear, Alexander and Owen went for beer. Alexander rejected gratitude in favor of getting drunk together; they held hands and continued drinking until Owen fell asleep in the booth. Alexander paid the whole tab, carried the sleeping Owen out, took him by taxi to Alexander's studio, put him in Alexander's bed, lay beside him, and slept with an arm around him for roughly fourteen hours. Owen remained beside him on waking. The morning continued through their established pillow fight, shared shower, affectionate teasing, and discussion of how the crew should report surviving the mismatched Gate.
 
 This event corrects later record framing, not the fiction: `EVT-000103` called the night a previously blank gap and later relationship prose called 2026-07-29 into 2026-07-30 their first night together. The export and `EVT-000081` show that 2026-07-28 into 2026-07-29 was already their first overnight, at Alexander's apartment; the following night at Owen's was the later milestone when they mutually named what they wanted. The relationship was romantic and physical by the first morning. No mechanical state, present location, item, XP, Stat, Health, Mana, or fictional time changes."
+```
+
+## EVT-000107 - Profile 1.13 Canonical Clock and Recovery Adoption
+
+```yaml
+id: EVT-000107
+canonical_record: REC-000079
+schema_version: "0.1.4"
+status: active
+provenance:
+  source: owner-approved-profile-migration
+  game_date: "2026-07-31 23:00 -05:00; no fictional time consumed"
+  real_date: "2026-07-26T12:01:14+02:00"
+type: Event
+kind: system-profile-adoption
+importance: structural
+game_date: "2026-07-31 23:00 -05:00; no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.13 and Decision 078 at readiness. The durable Checkpoint 0023/0024 anchor supports 2026-07-31 23:00 Chicago time, recorded as 2026-07-31T23:00:00-05:00. Added resting Mana and Health recovery modes and zero fractional carry. Preserved Health 68/88 and Mana 10/40 exactly: the migration consumes no fictional time and does not retroactively settle the already-narrated portion of the night. From this anchor forward, every elapsed span settles automatically before the next action. No injury, item, XP, Stat, skill, reward, location, or resolved outcome changed."
 ```

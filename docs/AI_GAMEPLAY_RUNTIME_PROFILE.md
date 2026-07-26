@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.36
+**Document Version:** 1.37
 **Status:** Active Gameplay Workflow — Fetched Reference Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -300,7 +300,8 @@ When a valid checkpoint exists:
 2. Verify Engine, World, Campaign Schema, and Save Format compatibility.
 3. Load the checkpoint's restoration entry point and included ledgers.
 4. Reconcile the restored checkpoint with the live campaign continuation.
-5. Read current objectives and situation-relevant records.
+5. When the active World Rule Profile declares deterministic elapsed-time rules, load or migrate its exact campaign-time anchor, recovery modes, and fractional carry before any time-dependent action. Restoration itself advances no fictional time and grants no recovery.
+6. Read current objectives and situation-relevant records.
 
 Give a returning player a concise natural recap, unresolved pressures, the available-commands menu (Command Availability at Session Start), and a readiness question. Do not replay character creation or the full introduction.
 

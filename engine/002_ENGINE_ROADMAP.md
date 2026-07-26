@@ -1128,6 +1128,8 @@ Delivered: the `Texture` field (Data Model Section 10), the Data Model **0.1.2 �
 
 **Decision 077 — Distinct Game and Repository Dates (2026-07-26), admitted to Version 0.3 by owner ruling as a second explicit foundational exception.** Gatefall live records had copied the fictional campaign clock into repository `record_time`, creating future-dated provenance. Delivered: Data Model **0.1.3 → 0.1.4**, universal `game_date` / `real_date` serialized keys, validator coverage, template and manifest alignment, and an immutable-checkpoint restoration chain that migrates only mutable live state. This finding is owned by milestone 0.3.5 and does not reopen the completed architecture milestones.
 
+**Decision 078 — Canonical Campaign Clock and Automatic Recovery Settlement (2026-07-26), admitted to Version 0.3 by owner ruling as a third explicit foundational exception.** Gatefall's Mana formula existed, but its live state carried no exact last-settled game-time anchor or fractional recovery carry; the narrator therefore settled only when the player asked. Gatefall Health recovery was unauthored. Delivered under milestone 0.3.5: an engine-general exact-clock settlement obligation for worlds with deterministic time rules, Gatefall Profile 1.13 recovery state and integer carry formulas, deterministic natural Health recovery, live migration, and regression coverage. Engine 0.2.0 and Data Model 0.1.4 do not advance; immutable checkpoints remain unchanged and migrate only into mutable readiness state.
+
 ---
 
 # Release Criteria

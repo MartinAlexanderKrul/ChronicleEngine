@@ -13,9 +13,9 @@ canonical_record: REC-000080
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000106
-  game_date: "2026-07-28 to 2026-07-29; transcript-backed continuity repair, no fictional time consumed"
-  real_date: "2026-07-26T11:48:32+02:00"
+  source: EVT-000107
+  game_date: "2026-07-31 23:00 -05:00; no fictional time consumed"
+  real_date: "2026-07-26T12:01:14+02:00"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -418,3 +418,10 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - Corrected the later framing introduced by `EVT-000103`: the night was not canonically blank, and 2026-07-29 into 2026-07-30 was not their first overnight. The 28th–29th at Alexander's was the first overnight and established romantic/physical intimacy; the 29th–30th at Owen's was the later night when both explicitly named what they wanted.
 - Updated `REL-000066` state, the Chronicle, this changelog, and Current State. No present location, mechanical state, XP, Stat, Health, Mana, item, objective, NPC knowledge, or fictional time changed. Checkpoints 0022 and 0023 remain byte-unchanged under Rules Section 13.2 and are superseded as the latest restore target by corrective Checkpoint 0024.
 - Repository allocation: `EVT-000106`; no entity, record, or relationship identifier minted.
+
+**2026-07-31, 23:00 Chicago time — Profile 1.12 → 1.13 canonical clock and automatic recovery adopted (`EVT-000107`; no fictional time consumed).**
+
+- Added the exact settlement anchor `2026-07-31T23:00:00-05:00`, resting Mana/Health modes, and zero fractional carry to Alexander's live System state.
+- Preserved Health **68/88** and Mana **10/40** exactly at migration. No pre-anchor recovery was inferred. Future elapsed time settles automatically before the next action under Profile Sections 5.2 and 6.1.1.
+- Checkpoint 0024 remains immutable under Profile 1.12 / Data Model 0.1.4. Restoring it runs the 1.12→1.13 readiness migration against mutable state before play.
+- Repository allocation: `EVT-000107`; no entity, record, or relationship identifier minted.

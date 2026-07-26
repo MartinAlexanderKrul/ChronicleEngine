@@ -12,6 +12,23 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-26 — Decision 078 and Gatefall Profile 1.13: automatic clock and recovery settlement
+
+Gatefall play demonstrated that an authored Mana rate plus a resident settlement
+instruction was insufficient without a durable exact campaign-time anchor and
+fractional carry: recovery was being calculated only when the player asked.
+Decision 078 adds the engine-general canonical-time settlement obligation for any
+world with deterministic time rules. The Resident Core advances to 1.6 and the
+fetched Runtime Profile to 1.37.
+
+Gatefall Profile **1.12 → 1.13** records exact Chicago-local campaign time, Mana
+and Health recovery modes, and integer fractional remainders. Existing Mana rates
+are unchanged. Natural Health recovery is now authored at 25% of maximum per
+eight hours of safe rest, half during safe light activity, and paused under
+threat or exertion; injuries remain independent. Engine 0.2.0 and Data Model
+0.1.4 do not advance. Immutable checkpoints remain unchanged and migrate only
+into mutable readiness state.
+
 ## 2026-07-26 — Decision 077 completed: explicit game and real provenance dates
 
 Live Gatefall provenance copied the fictional campaign clock into repository `record_time`, producing future-dated real provenance and repeating the clock-domain mismatch previously found in Decision 076's original date.

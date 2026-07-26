@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.12
+# Gatefall — World Rule Profile 1.13
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.12
+**Profile Version:** 1.13
 **Engine Compatibility:** 0.2.0; Data Model 0.1.4
 **Status:** Active
-**Compatibility Status:** frozen at version 1.12 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.12 is a **migrating skill-ledger advance** over frozen 1.11: every skill records successful-use totals and mastery progress explicitly, with closed counting rules for activations, sustained effects, passives, and continuous scenes.
+**Compatibility Status:** frozen at version 1.13 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.13 is a **migrating deterministic-recovery advance** over frozen 1.12: the Bearer records an exact Chicago-local settlement anchor, recovery modes, and fractional carry; elapsed fictional time settles Mana and Health automatically before the next action.
+
+**Required 1.12 → 1.13 migration.** Preserve every current pool, maximum, injury, skill, item, reward, and resolved outcome. Add a `temporal_state` map to the Bearer's `system_state` containing `campaign_time`, `mana_recovery_mode`, `mana_recovery_remainder_units`, `health_recovery_mode`, and `health_recovery_remainder_units`. Establish `campaign_time` at the most precise current fictional time supported by durable canon, including its UTC offset; do not infer elapsed recovery before that anchor. Initialize both remainders to zero unless durable evidence establishes an exact unsettled fraction. Choose each mode from the current fiction under Sections 5.2 and 6.1.1. From that anchor forward, settle every elapsed span automatically before the next action reads either pool. This migration itself consumes no fictional time and restores no Health or Mana. Immutable Profile 1.12-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.13 against mutable live state before validation and play.
+
+Version 1.12 remains the migrating skill-ledger advance over frozen 1.11: every skill records successful-use totals and mastery progress explicitly, with closed counting rules for activations, sustained effects, passives, and continuous scenes.
 
 **Required 1.11 → 1.12 migration.** Preserve every skill, Rank, mastery level, effect, Mana cost, resolved outcome, and all non-skill state. Add `successful_uses`, `qualifying_scenes_total`, and `mastery_progress` to each mastery-tracked skill; stat-milestone passives add `successful_uses` and explicitly declare `mastery_progress: none`. Backfill only from durable evidence, using an honest lower bound where exact history cannot be reconstructed. For Alexander Pendragon at adoption: Stone Skin is 1 successful use / 0 lifetime qualifying scenes / Novice 0 of 3; Rupture is 6 successful uses / 5 lifetime qualifying scenes / Practiced 2 of 3 toward Adept; Flash Step is 1 successful use / 1 lifetime qualifying scene / Novice 1 of 3; Rank-Sight and Overpower each have 0 explicitly demonstrated successful applications and no mastery track. Re-render `/system skills` and the full window, then record adoption in live campaign state. Immutable Profile 1.11-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.12 before play.
 
@@ -402,6 +406,28 @@ Intelligence 10 yields **20 Mana**; Intelligence 20 yields **40**; Intelligence 
 
 Recovery is a percentage of the *maximum* pool, so Intelligence increases both capacity and recovered Mana per hour while the time required to refill the whole pool stays constant. Recovery is settled from elapsed fictional time before the next action reads available Mana; a narrated span of rest produces one settled Mana figure, not a tick-by-tick stream.
 
+**Deterministic settlement.** `campaign_time` is an ISO-8601 Chicago-local
+timestamp with an explicit UTC offset and minute precision. `mana_recovery_mode`
+is `active` or `resting`; `mana_recovery_remainder_units` is a nonnegative integer
+smaller than `720000`. For elapsed seconds, use half-percent rate units so the
+Frozen Gallery's halving remains exact:
+
+```text
+rate_units = 20 active | 50 resting
+rate_units = rate_units ÷ 2 inside a Frozen Gallery
+total_units = mana_recovery_remainder_units
+            + elapsed_seconds × maximum_mana × rate_units
+mana_restored = floor(total_units ÷ 720000)
+mana_recovery_remainder_units = total_units mod 720000
+current_mana = min(maximum_mana, current_mana + mana_restored)
+```
+
+The denominator is `3600 seconds × 100 percent × 2`. At full Mana, set the
+remainder to zero. Changing mode first settles through the change instant under
+the old mode, then applies the new mode. Recovery settles after every action,
+transition, montage, travel span, wait, or sleep that advances time—never for the
+first time when `/system` is opened or the player asks.
+
 ## 5.3 Running Dry
 
 - A casting or skill whose cost exceeds current Mana is **unavailable** — it cannot be attempted until the Bearer has the Mana to pay it.
@@ -432,6 +458,35 @@ The fixed-Rank table remains canonical for every NPC hunter and monster:
 | Rank Health | 40 | 100 | 250 | 600 | 1,500 | 4,000 |
 
 The scale climbs roughly ×2.5 per Rank, keeping fixed-rank entities resolvable without individual Stat sheets. It never substitutes for the Bearer's effective Vitality.
+
+## 6.1.1 Natural Health Recovery
+
+Natural Health recovery is deterministic tracked state and is independent of
+injury severity. Safe rest restores **25% of maximum Health per eight hours**;
+safe light activity restores half that rate; combat, threat, strenuous exertion,
+or an unstable environment pauses natural recovery. Reaching full Health does
+not clear an injury, pain, poison, scar, or modifier; those change only under
+Sections 6.3–6.4.
+
+`health_recovery_mode` is `resting`, `light`, or `paused`.
+`health_recovery_remainder_units` is a nonnegative integer smaller than
+`5760000`. Settle elapsed seconds with integer arithmetic:
+
+```text
+rate_units = 50 resting | 25 light | 0 paused
+total_units = health_recovery_remainder_units
+            + elapsed_seconds × maximum_health × rate_units
+health_restored = floor(total_units ÷ 5760000)
+health_recovery_remainder_units = total_units mod 5760000
+current_health = min(maximum_health, current_health + health_restored)
+```
+
+The denominator is `8 hours × 3600 seconds × 100 percent × 2`. At full Health,
+set the remainder to zero. A mode or maximum-Health change preserves accumulated
+carry unless the pool reaches full. New damage applies immediately and does not
+erase carry. Settle through a mode change under the old mode before starting the
+new one. The Runtime performs this settlement automatically from `campaign_time`
+before the next action reads Health.
 
 ## 6.2 Damage
 

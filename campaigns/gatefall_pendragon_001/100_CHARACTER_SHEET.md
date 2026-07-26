@@ -13,9 +13,9 @@ canonical_record: REC-000074
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000105
-  game_date: "2026-07-31, night"
-  real_date: "2026-07-26T11:47:18+02:00"
+  source: EVT-000107
+  game_date: "2026-07-31 23:00 -05:00; no fictional time consumed"
+  real_date: "2026-07-26T12:01:14+02:00"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -66,12 +66,13 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.12"
+    profile_version: "1.13"
     profile_layout_event: EVT-000086
     profile_economy_event: EVT-000090
     profile_streak_event: EVT-000092
     profile_itemdiversity_event: EVT-000100
     profile_skilltracking_event: EVT-000105
+    profile_recovery_event: EVT-000107
     profile_migration_event: EVT-000082
     onset_event: EVT-000059
     onset_time: "2026-07-24, inside the Red Line Corridor Gate, mid-fight against the crew's remaining beasts and the elite"
@@ -81,6 +82,12 @@ canonical_state:
     xp: "580/700"
     health: "68/88"
     mana: "10/40"
+    temporal_state:
+      campaign_time: "2026-07-31T23:00:00-05:00"
+      mana_recovery_mode: resting
+      mana_recovery_remainder_units: 0
+      health_recovery_mode: resting
+      health_recovery_remainder_units: 0
     unspent_points: 0
     pending_rewards:
       ability_points: 3

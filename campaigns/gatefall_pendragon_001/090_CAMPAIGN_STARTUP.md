@@ -9,11 +9,11 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.8"
+world_rule_profile: "Gatefall World Rule Profile 1.13"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0015
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0024
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 customization:
@@ -40,6 +40,7 @@ validation:
   require_confirmation_before_scene: true
   block_on_contradiction: true
   first_session_requires_save: false
+  require_temporal_settlement: true
 ```
 
 ---

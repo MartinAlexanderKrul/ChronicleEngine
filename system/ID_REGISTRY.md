@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000145 |
 | Record | `REC-` | Canonical Record | REC-000094 |
-| Event | `EVT-` | Event | EVT-000106 |
+| Event | `EVT-` | Event | EVT-000107 |
 | Relationship | `REL-` | Relationship | REL-000067 |
 
 ---
@@ -220,6 +220,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000094 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0023/900_SAVE_MANIFEST.md` — player-requested checkpoint with both asleep at Owen's apartment, captured under frozen Profile 1.11, no migration required on restore |
 | EVT-000105 | Event | Gatefall: Pendragon: adoption of frozen Profile 1.12 skill tracking — successful uses, lifetime qualifying scenes, and current mastery progress backfilled from durable evidence; no fictional time or resolved outcome changed |
 | EVT-000106 | Event | Gatefall: Pendragon: transcript-backed continuity repair confirming the first Alexander/Owen overnight after the 2026-07-28 Ashfield clear — beer, taxi to Alexander's studio, roughly fourteen hours sharing his bed, and the following morning; later “blank night” and “first night together” framing corrected without changing fictional time or mechanics |
+| EVT-000107 | Event | Gatefall: Pendragon: adoption of frozen Profile 1.13 and Decision 078 — exact Chicago-local campaign-time anchor plus deterministic Mana/Health recovery modes and fractional carry; no fictional time or pool value changed at migration |
 
 ---
 

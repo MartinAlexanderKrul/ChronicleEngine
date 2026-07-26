@@ -5,12 +5,12 @@
 ```yaml
 id: REC-000041
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000050
-  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
+  real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -39,12 +39,12 @@ The Hunters' Association is the Hunters' Authority (`ENT-000041`); both names ar
 ```yaml
 id: ENT-000061
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000037
-  event_time: "Year 31 AR, before expedition"
-  record_time: "2026-07-15T17:31:04Z"
+  game_date: "Year 31 AR, before expedition"
+  real_date: "2026-07-15T17:31:04Z"
   uncertainty: "Whether Teague knows Vane, and how the directorship relates to the Institute's lead-researcher post, are unestablished. Teague has never appeared in a played scene; he exists as authored backstory."
 type: Character
 subtype: academic director
@@ -67,12 +67,12 @@ canonical_state:
 ```yaml
 id: ENT-000062
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, expedition departure"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, expedition departure"
+  real_date: "2026-07-14T00:00:00Z"
 type: Character
 subtype: Authority captain
 scope: local
@@ -93,12 +93,12 @@ canonical_state:
 ```yaml
 id: ENT-000063
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, before expedition"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, before expedition"
+  real_date: "2026-07-14T00:00:00Z"
 type: Character
 subtype: scholar
 scope: local
@@ -119,12 +119,12 @@ canonical_state:
 ```yaml
 id: ENT-000071
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000033
-  event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T09:15:00Z"
+  game_date: "Year 31 AR, recovery and Institute consultation"
+  real_date: "2026-07-15T09:15:00Z"
 type: Character
 subtype: aurology researcher
 scope: local
@@ -146,12 +146,12 @@ canonical_state:
 ```yaml
 id: ENT-000072
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000033
-  event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T09:15:00Z"
+  game_date: "Year 31 AR, recovery and Institute consultation"
+  real_date: "2026-07-15T09:15:00Z"
 type: Character
 subtype: core-analysis researcher
 scope: local
@@ -172,12 +172,12 @@ canonical_state:
 ```yaml
 id: ENT-000073
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000033
-  event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T09:15:00Z"
+  game_date: "Year 31 AR, recovery and Institute consultation"
+  real_date: "2026-07-15T09:15:00Z"
 type: Character
 subtype: environmental researcher
 scope: local
@@ -202,12 +202,12 @@ canonical_state:
 ```yaml
 id: ENT-000083
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000047
-  event_time: "Year 31 AR, Institute joint session"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, Institute joint session"
+  real_date: "2026-07-22T00:00:00Z"
   uncertainty: "Her broader reputation, other clients, and standing rate for resonance work beyond this one job are unestablished."
 type: Character
 subtype: independent contractor, resonance and calibration specialist
@@ -231,12 +231,12 @@ canonical_state:
 ```yaml
 id: REL-000040
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, expedition departure"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, expedition departure"
+  real_date: "2026-07-14T00:00:00Z"
 endpoints:
   - ENT-000051
   - ENT-000041
@@ -248,12 +248,12 @@ state: active
 ```yaml
 id: REL-000041
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, before expedition"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, before expedition"
+  real_date: "2026-07-14T00:00:00Z"
 endpoints:
   - ENT-000051
   - ENT-000043
@@ -265,12 +265,12 @@ state: active
 ```yaml
 id: REL-000042
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000037
-  event_time: "Year 31 AR, before expedition"
-  record_time: "2026-07-15T17:31:04Z"
+  game_date: "Year 31 AR, before expedition"
+  real_date: "2026-07-15T17:31:04Z"
 endpoints:
   - ENT-000051
   - ENT-000061
@@ -283,12 +283,12 @@ texture: "**Not recorded.** This relationship was established before Decision 07
 ```yaml
 id: REL-000043
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, expedition departure"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, expedition departure"
+  real_date: "2026-07-14T00:00:00Z"
 endpoints:
   - ENT-000051
   - ENT-000062
@@ -300,12 +300,12 @@ state: active
 ```yaml
 id: REL-000044
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, before expedition"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, before expedition"
+  real_date: "2026-07-14T00:00:00Z"
 endpoints:
   - ENT-000051
   - ENT-000063
@@ -317,12 +317,12 @@ state: active
 ```yaml
 id: REL-000045
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000035
-  event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T16:44:48Z"
+  game_date: "Year 31 AR, recovery and Institute consultation"
+  real_date: "2026-07-15T16:44:48Z"
 endpoints:
   - ENT-000051
   - ENT-000071
@@ -335,12 +335,12 @@ history: "Formed during the recovery-day consultation (EVT-000033) out of a pre-
 ```yaml
 id: REL-000046
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000033
-  event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T09:15:00Z"
+  game_date: "Year 31 AR, recovery and Institute consultation"
+  real_date: "2026-07-15T09:15:00Z"
 endpoints:
   - ENT-000051
   - ENT-000072
@@ -352,12 +352,12 @@ state: active
 ```yaml
 id: REL-000047
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000033
-  event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T09:15:00Z"
+  game_date: "Year 31 AR, recovery and Institute consultation"
+  real_date: "2026-07-15T09:15:00Z"
 endpoints:
   - ENT-000051
   - ENT-000073
@@ -369,12 +369,12 @@ state: active
 ```yaml
 id: REL-000048
 canonical_record: REC-000041
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000047
-  event_time: "Year 31 AR, Institute joint session"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, Institute joint session"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints:
   - ENT-000051
   - ENT-000083

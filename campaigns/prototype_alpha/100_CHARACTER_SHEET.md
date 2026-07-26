@@ -12,12 +12,12 @@
 ```yaml
 id: REC-000009
 canonical_record: REC-000009
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: deceased
 provenance:
   source: EVT-000008
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR, late spring"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -31,12 +31,12 @@ subjects:
 ```yaml
 id: ENT-000018
 canonical_record: REC-000009
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: deceased
 provenance:
   source: EVT-000008
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR, late spring"
+  real_date: "2026-07-11T00:00:00Z"
 type: Character
 scope: personal
 lifecycle: deceased

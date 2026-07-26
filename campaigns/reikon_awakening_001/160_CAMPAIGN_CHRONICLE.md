@@ -5,12 +5,12 @@
 ```yaml
 id: REC-000043
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000045
-  event_time: "Year 31 AR, Stat-cap removal and Ascension-rate ruling"
-  record_time: "2026-07-21T03:00:00Z"
+  game_date: "Year 31 AR, Stat-cap removal and Ascension-rate ruling"
+  real_date: "2026-07-21T03:00:00Z"
 role: chronicle
 scope: campaign
 subjects:
@@ -42,12 +42,12 @@ subjects:
 ```yaml
 id: EVT-000025
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: transcript
-  event_time: "Year 31 AR, expedition morning"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR, expedition morning"
+  real_date: "2026-07-13T00:00:00Z"
 kind: expedition-begin
 importance: archived
 participants:
@@ -61,12 +61,12 @@ description: "Captain Marissa Thorne briefs Daedalus, who accepts a solo E-Rank 
 ```yaml
 id: EVT-000026
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: transcript
-  event_time: "Year 31 AR, expedition, first combat"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR, expedition, first combat"
+  real_date: "2026-07-13T00:00:00Z"
 kind: combat
 importance: archived
 participants:
@@ -79,12 +79,12 @@ description: "Daedalus rolls 43 with +2 modifier steps and destroys two stationa
 ```yaml
 id: EVT-000027
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: transcript
-  event_time: "Year 31 AR, expedition, between combats"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR, expedition, between combats"
+  real_date: "2026-07-13T00:00:00Z"
 kind: observation
 importance: archived
 participants:
@@ -97,12 +97,12 @@ description: "Daedalus rests to recover mana and observes that Rift glow intensi
 ```yaml
 id: EVT-000028
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: transcript
-  event_time: "Year 31 AR, expedition, second combat"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR, expedition, second combat"
+  real_date: "2026-07-13T00:00:00Z"
 kind: combat
 importance: archived
 participants:
@@ -115,12 +115,12 @@ description: "Daedalus rolls 61 with +1 modifier step and destroys three chargin
 ```yaml
 id: EVT-000029
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: "campaigns/reikon_awakening_001/exports/play_export_0001.md"
-  event_time: "Year 31 AR, expedition morning, before departure"
-  record_time: "2026-07-14T18:00:00Z"
+  game_date: "Year 31 AR, expedition morning, before departure"
+  real_date: "2026-07-14T18:00:00Z"
 kind: training
 importance: archived
 participants:
@@ -133,12 +133,12 @@ description: "Daedalus completes a 10 km run, thirty minutes of sword forms, one
 ```yaml
 id: EVT-000030
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: "user-supplied raw chat export: full_chat_export_reikon_session.md"
-  event_time: "Year 31 AR, first expedition, pack-leader combat"
-  record_time: "2026-07-14T18:00:00Z"
+  game_date: "Year 31 AR, first expedition, pack-leader combat"
+  real_date: "2026-07-14T18:00:00Z"
 kind: combat
 importance: active
 participants:
@@ -151,12 +151,12 @@ description: "Daedalus wounds the Warehouse 7 pack leader with Fireball, is rake
 ```yaml
 id: EVT-000031
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: "user-supplied gameplay: /continue session 2"
-  event_time: "Year 31 AR, first expedition, post-combat exploration and exit"
-  record_time: "2026-07-14T20:30:00Z"
+  game_date: "Year 31 AR, first expedition, post-combat exploration and exit"
+  real_date: "2026-07-14T20:30:00Z"
 kind: exploration
 importance: active
 participants:
@@ -169,12 +169,12 @@ description: "Daedalus follows a retreating Broodling downward into the warehous
 ```yaml
 id: EVT-000032
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, first expedition, post-combat exploration and exit"
-  record_time: "2026-07-14T21:15:00Z"
+  game_date: "Year 31 AR, first expedition, post-combat exploration and exit"
+  real_date: "2026-07-14T21:15:00Z"
 kind: ruling
 importance: archived
 participants:
@@ -187,12 +187,12 @@ description: "Explicit ruling correcting a recording error in EVT-000031, classi
 ```yaml
 id: EVT-000033
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: "owner-supplied full shared-chat transcript, promoted only through the last rules-valid exchange"
-  event_time: "Year 31 AR, return to Warehouse 7"
-  record_time: "2026-07-15T09:15:00Z"
+  game_date: "Year 31 AR, return to Warehouse 7"
+  real_date: "2026-07-15T09:15:00Z"
 kind: combat
 importance: active
 participants:
@@ -209,12 +209,12 @@ description: "Daedalus bought four healing potions, two energy tonics, and wound
 ```yaml
 id: EVT-000034
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: "owner ruling applied to the complete shared-chat transcript"
-  event_time: "Year 31 AR, Warehouse 7 Breaker engagement and aftermath"
-  record_time: "2026-07-15T09:27:58Z"
+  game_date: "Year 31 AR, Warehouse 7 Breaker engagement and aftermath"
+  real_date: "2026-07-15T09:27:58Z"
 kind: ruling-and-combat
 importance: active
 participants:
@@ -227,12 +227,12 @@ description: "Owner ruling under Reikon Profile 0.5 supersedes EVT-000033's reje
 ```yaml
 id: EVT-000035
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T16:44:48Z"
+  game_date: "Year 31 AR, recovery and Institute consultation"
+  real_date: "2026-07-15T16:44:48Z"
   uncertainty: "Whether Daedalus retained the first paper naming the Institute's runner is not established by the transcript; Kalens set it aside after writing the second, and the fiction never says who kept it. Kalens's street and house are unnarrated: only the quarter and the time window are canonical. The runner is unnamed."
 kind: ruling
 importance: active
@@ -247,12 +247,12 @@ description: "Explicit ruling repairing an under-promotion in EVT-000033, classi
 ```yaml
 id: EVT-000036
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR; no fictional time elapsed"
-  record_time: "2026-07-15T16:44:48Z"
+  game_date: "Year 31 AR; no fictional time elapsed"
+  real_date: "2026-07-15T16:44:48Z"
   uncertainty: "Whether Venn and Vane know each other, how the Institute's directorship and its lead-researcher post relate, and whether Venn knows what Vane holds are all unestablished. Daedalus has met Venn and has never met Vane."
 kind: ruling
 importance: archived
@@ -266,12 +266,12 @@ description: "Owner ruling resolving a latent identity ambiguity surfaced by the
 ```yaml
 id: EVT-000037
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, predating the first expedition; no fictional time elapsed"
-  record_time: "2026-07-15T17:31:04Z"
+  game_date: "Year 31 AR, predating the first expedition; no fictional time elapsed"
+  real_date: "2026-07-15T17:31:04Z"
   uncertainty: "Whether Teague and Vane know each other, and how the Institute's directorship relates to its lead-researcher post, remain unestablished. Teague's given name and manner beyond 'supportive of Daedalus's potential' are unauthored, as they were under the prior name."
 kind: ruling
 importance: archived
@@ -285,12 +285,12 @@ description: "Owner ruling correcting the name of ENT-000061, the Aurology Insti
 ```yaml
 id: EVT-000038
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: transcript
-  event_time: "Year 31 AR, evening, the same day as the basement clear"
-  record_time: "2026-07-20T06:30:00Z"
+  game_date: "Year 31 AR, evening, the same day as the basement clear"
+  real_date: "2026-07-20T06:30:00Z"
 kind: social
 importance: active
 participants:
@@ -306,12 +306,12 @@ description: "After leaving the basement, Daedalus applied first-aid salve and c
 ```yaml
 id: EVT-000039
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: transcript
-  event_time: "Year 31 AR, evening into the following dawn"
-  record_time: "2026-07-20T07:00:00Z"
+  game_date: "Year 31 AR, evening into the following dawn"
+  real_date: "2026-07-20T07:00:00Z"
 kind: recovery
 importance: archived
 participants:
@@ -324,12 +324,12 @@ description: "Back in his rented room, Daedalus performed a light bodyweight wor
 ```yaml
 id: EVT-000040
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, dawn, the first safe exchange of a new in-fiction day"
-  record_time: "2026-07-20T07:00:00Z"
+  game_date: "Year 31 AR, dawn, the first safe exchange of a new in-fiction day"
+  real_date: "2026-07-20T07:00:00Z"
   uncertainty: "The System gave no reason for the grant, consistent with Section 9.2 — it points, it does not explain. Whether or on what Daedalus will spend Emberbrand is undetermined."
 kind: system-intervention
 importance: active
@@ -343,12 +343,12 @@ description: "Reikon World Rule Profile 0.6 Section 9.6 recurrent intervention c
 ```yaml
 id: EVT-000041
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
-  event_time: "Year 31 AR, day following the Institute consultation"
-  record_time: "2026-07-21T00:00:00Z"
+  game_date: "Year 31 AR, day following the Institute consultation"
+  real_date: "2026-07-21T00:00:00Z"
   uncertainty: "The Ashgate core chamber's full kill status is not confirmed: several Broodlings caught in the Fireball blast are confirmed dead, a few remain visibly moving at the blast's edge. Whether the Ashgate core is bonded or anomalous like Warehouse 7's is unestablished."
 kind: mixed
 importance: active
@@ -366,12 +366,12 @@ description: "Daedalus ran his full training regimen at dawn — deliberately om
 ```yaml
 id: EVT-000042
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
-  event_time: "Year 31 AR, immediately following the critical-force Fireball"
-  record_time: "2026-07-21T01:00:00Z"
+  game_date: "Year 31 AR, immediately following the critical-force Fireball"
+  real_date: "2026-07-21T01:00:00Z"
   uncertainty: "Whether the Ashgate core was bonded or anomalous in any way is now moot but never formally established; its clean extraction weakly suggests it was ordinary."
 kind: mixed
 importance: active
@@ -385,12 +385,12 @@ description: "Daedalus moved through the blast-struck core chamber checking each
 ```yaml
 id: EVT-000043
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, Ashgate E-Rank Rift closure"
-  record_time: "2026-07-21T01:00:00Z"
+  game_date: "Year 31 AR, Ashgate E-Rank Rift closure"
+  real_date: "2026-07-21T01:00:00Z"
   uncertainty: "No exact value for the Rift-clear milestone bonus exists anywhere in canon. This ruling does not invent one; it records the gap and defers it to an owner decision."
 kind: ruling
 importance: active
@@ -403,12 +403,12 @@ description: "worlds/reikon/206_WORLD_RULE_PROFILE.md Section 8.2 states that cl
 ```yaml
 id: EVT-000044
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, milestone-XP ruling applied retroactively to the Ashgate clear"
-  record_time: "2026-07-21T02:00:00Z"
+  game_date: "Year 31 AR, milestone-XP ruling applied retroactively to the Ashgate clear"
+  real_date: "2026-07-21T02:00:00Z"
   uncertainty: "Allocation of the 2 points this Ascension grants is an open player decision, not made by this ruling. Whether this formula will be revised before the next Rank boundary (D-Rank) is untested in play."
 kind: ruling
 importance: active
@@ -422,12 +422,12 @@ description: "The owner settled the gap `EVT-000043` flagged: worlds/reikon/206_
 ```yaml
 id: EVT-000045
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, Stat-cap removal and Ascension-rate ruling"
-  record_time: "2026-07-21T03:00:00Z"
+  game_date: "Year 31 AR, Stat-cap removal and Ascension-rate ruling"
+  real_date: "2026-07-21T03:00:00Z"
   uncertainty: "Power, Speed, and Perception have no authored uncapped formula; their indefinite-growth payoff is an open gap, not invented. Allocation of the resulting 8 unspent points is an open player decision, not made by this ruling."
 kind: ruling
 importance: active
@@ -441,12 +441,12 @@ description: "Two coupled owner rulings on worlds/reikon/206_WORLD_RULE_PROFILE.
 ```yaml
 id: EVT-000046
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, following the Stat-cap removal ruling"
-  record_time: "2026-07-21T04:00:00Z"
+  game_date: "Year 31 AR, following the Stat-cap removal ruling"
+  real_date: "2026-07-21T04:00:00Z"
 kind: milestone
 importance: active
 participants:
@@ -459,12 +459,12 @@ description: "Daedalus allocated all 8 unspent Ascension points (2 original + 6 
 ```yaml
 id: EVT-000047
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
-  event_time: "Year 31 AR, morning following the Ashgate closure and the milestone-XP ruling"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, morning following the Ashgate closure and the milestone-XP ruling"
+  real_date: "2026-07-22T00:00:00Z"
   uncertainty: "Wren Ashcombe's broader reputation and standing rate beyond this one job are unestablished. Whether Association assignments carry any completion bonus beyond core-sale value is an unauthored claim — see EVT-000050."
 kind: mixed
 importance: active
@@ -482,12 +482,12 @@ description: "Daedalus woke to the first safe exchange of a new in-fiction day, 
 ```yaml
 id: EVT-000048
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
-  event_time: "Year 31 AR, same day, Warehouse 7 basement"
-  record_time: "2026-07-22T00:30:00Z"
+  game_date: "Year 31 AR, same day, Warehouse 7 basement"
+  real_date: "2026-07-22T00:30:00Z"
 kind: milestone
 importance: active
 participants:
@@ -503,12 +503,12 @@ description: "At the Warehouse 7 chamber, Wren conducted an in-person assessment
 ```yaml
 id: EVT-000049
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
-  event_time: "Year 31 AR, same day, tannery district"
-  record_time: "2026-07-22T01:00:00Z"
+  game_date: "Year 31 AR, same day, tannery district"
+  real_date: "2026-07-22T01:00:00Z"
   uncertainty: "Why this Rift held no guardians at all is unestablished. No Reikon rule requires a Rift to be guarded, so this is not a contradiction of canon, but it is also not explained by any authored cause — flagged as an open worldbuilding question (see worlds/reikon/270_PLAYTEST_BACKLOG.md PT-002)."
 kind: mixed
 importance: active
@@ -522,12 +522,12 @@ description: "Daedalus took the unconfirmed-Rank tannery-district E-Rank Rift as
 ```yaml
 id: EVT-000050
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, following the tannery E-Rank Rift clear"
-  record_time: "2026-07-22T01:00:00Z"
+  game_date: "Year 31 AR, following the tannery E-Rank Rift clear"
+  real_date: "2026-07-22T01:00:00Z"
   uncertainty: "Whether Reikon's Association actually pays per-assignment completion bonuses distinct from core-sale value remains genuinely undecided; this ruling only establishes that no such mechanic currently exists in authored canon, not that one should or shouldn't."
 kind: ruling
 importance: active
@@ -540,12 +540,12 @@ description: "In play, Captain Thorne asserted that Association assignments pay 
 ```yaml
 id: EVT-000057
 canonical_record: REC-000043
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, at the tannery-district E-Rank Rift site (no fictional time elapsed)"
-  record_time: "2026-07-23T12:00:00Z"
+  game_date: "Year 31 AR, at the tannery-district E-Rank Rift site (no fictional time elapsed)"
+  real_date: "2026-07-23T12:00:00Z"
 kind: ruling
 importance: active
 participants: []

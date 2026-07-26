@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000079
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000104
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
+  source: EVT-000105
+  game_date: "2026-07-31, night"
+  real_date: "2026-07-26T11:35:39+02:00"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -65,6 +65,7 @@ subjects:
   - EVT-000102
   - EVT-000103
   - EVT-000104
+  - EVT-000105
 ```
 
 ---
@@ -74,16 +75,16 @@ subjects:
 ```yaml
 id: EVT-000056
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-23T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-23T00:00:00Z"
 type: Event
 kind: campaign-start
 importance: immediate
-event_time: "2026-07-22"
+game_date: "2026-07-22"
 participants:
   - ENT-000125
   - ENT-000102
@@ -95,16 +96,16 @@ description: "Alexander Pendragon (ENT-000125), one week into an active BGM hunt
 ```yaml
 id: EVT-000058
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-1-gameplay
-  event_time: "2026-07-23 to 2026-07-24"
-  record_time: "2026-07-24T08:00:00Z"
+  game_date: "2026-07-23 to 2026-07-24"
+  real_date: "2026-07-24T08:00:00Z"
 type: Event
 kind: session-gameplay
 importance: immediate
-event_time: "2026-07-23 to 2026-07-24"
+game_date: "2026-07-23 to 2026-07-24"
 participants:
   - ENT-000125
   - ENT-000126
@@ -120,16 +121,16 @@ description: "Alexander Pendragon's first week as an active hunter (2026-07-22 t
 ```yaml
 id: EVT-000059
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-1-gameplay
-  event_time: "2026-07-24"
-  record_time: "2026-07-24T00:00:00Z"
+  game_date: "2026-07-24"
+  real_date: "2026-07-24T00:00:00Z"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-24"
+game_date: "2026-07-24"
 participants:
   - ENT-000125
   - ENT-000126
@@ -156,16 +157,16 @@ No crew casualties. Loot has not yet been collected; the crew has not yet exited
 ```yaml
 id: EVT-000060
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-1-gameplay
-  event_time: "2026-07-24 to 2026-07-25"
-  record_time: "2026-07-25T00:00:00Z"
+  game_date: "2026-07-24 to 2026-07-25"
+  real_date: "2026-07-25T00:00:00Z"
 type: Event
 kind: session-gameplay
 importance: immediate
-event_time: "2026-07-24 to 2026-07-25"
+game_date: "2026-07-24 to 2026-07-25"
 participants:
   - ENT-000125
   - ENT-000126
@@ -187,16 +188,16 @@ Coalition visit (2026-07-25). Alexander went to the Windy City Hunters Coalition
 ```yaml
 id: EVT-000061
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-1-gameplay
-  event_time: "2026-07-25"
-  record_time: "2026-07-25T00:00:00Z"
+  game_date: "2026-07-25"
+  real_date: "2026-07-25T00:00:00Z"
 type: Event
 kind: world-fact
 importance: background
-event_time: "2026-07-25"
+game_date: "2026-07-25"
 participants:
   - ENT-000130
 description: "A confirmed D-Rank Gate near Chicago's old rail yards is posted on the Coalition board with one open harvest-element slot, filed by the crew running it for 2026-07-26, 07:00. Pay is a harvest share off whatever the crew mines, not a full strike split. Named to Alexander by Kesha Morrison (`ENT-000130`) on 2026-07-25 (`EVT-000060`) as a live option; he has neither accepted nor declined it. No crew members, exact contract terms beyond the harvest-share arrangement, or Gate archetype are established beyond what Kesha stated."
@@ -207,16 +208,16 @@ description: "A confirmed D-Rank Gate near Chicago's old rail yards is posted on
 ```yaml
 id: EVT-000062
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-25"
-  record_time: "2026-07-25T00:00:00Z"
+  game_date: "2026-07-25"
+  real_date: "2026-07-25T00:00:00Z"
 type: Event
 kind: correction
 importance: background
-event_time: "2026-07-25"
+game_date: "2026-07-25"
 participants:
   - ENT-000125
   - ENT-000130
@@ -228,16 +229,16 @@ description: "Correction to `EVT-000060`. Kesha Morrison's dialogue there stated
 ```yaml
 id: EVT-000063
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-25"
-  record_time: "2026-07-25T23:00:00Z"
+  game_date: "2026-07-25"
+  real_date: "2026-07-25T23:00:00Z"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-25"
+game_date: "2026-07-25"
 participants:
   - ENT-000125
   - ENT-000130
@@ -268,16 +269,16 @@ Back at the Coalition, Alexander asked Kesha about further C-Rank mining work; s
 ```yaml
 id: EVT-000064
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-26"
-  record_time: "2026-07-26T09:00:00Z"
+  game_date: "2026-07-26"
+  real_date: "2026-07-26T09:00:00Z"
 type: Event
 kind: session-gameplay
 importance: immediate
-event_time: "2026-07-26"
+game_date: "2026-07-26"
 participants:
   - ENT-000125
   - ENT-000135
@@ -291,16 +292,16 @@ Dale (`ENT-000135`) greeted him, already briefed by Ada Reyes's word that he was
 ```yaml
 id: EVT-000065
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-26"
-  record_time: "2026-07-26T11:00:00Z"
+  game_date: "2026-07-26"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-26"
+game_date: "2026-07-26"
 participants:
   - ENT-000125
   - ENT-000135
@@ -322,16 +323,16 @@ description: "Alexander worked two vein assignments inside the Frozen Gallery un
 ```yaml
 id: EVT-000066
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-26"
-  record_time: "2026-07-26T12:30:00Z"
+  game_date: "2026-07-26"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-26"
+game_date: "2026-07-26"
 participants:
   - ENT-000125
   - ENT-000135
@@ -353,16 +354,16 @@ description: "Following the break granted at the end of `EVT-000065`, the harves
 ```yaml
 id: EVT-000067
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-26"
-  record_time: "2026-07-26T14:00:00Z"
+  game_date: "2026-07-26"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-26"
+game_date: "2026-07-26"
 participants:
   - ENT-000125
   - ENT-000135
@@ -382,16 +383,16 @@ No XP, Health, or Mana change this event — no combat resolved for Alexander; H
 ```yaml
 id: EVT-000068
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-26"
-  record_time: "2026-07-26T20:00:00Z"
+  game_date: "2026-07-26"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-26"
+game_date: "2026-07-26"
 participants:
   - ENT-000125
   - ENT-000135
@@ -409,16 +410,16 @@ The Frozen Gallery C-Rank harvest job is complete: contract closed, no further o
 ```yaml
 id: EVT-000069
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-27"
-  record_time: "2026-07-27T09:00:00Z"
+  game_date: "2026-07-27"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: minor
-event_time: "2026-07-27"
+game_date: "2026-07-27"
 participants:
   - ENT-000125
   - ENT-000130
@@ -431,16 +432,16 @@ description: "Alexander took his declared rest day. That evening (2026-07-26) he
 ```yaml
 id: EVT-000070
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-28"
-  record_time: "2026-07-28T09:30:00Z"
+  game_date: "2026-07-28"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
   - ENT-000136
@@ -471,16 +472,16 @@ Staged with Priya Okafor (`ENT-000136`) at 9 AM as arranged. Met the rest of the
 ```yaml
 id: EVT-000071
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-28"
-  record_time: "2026-07-28T09:45:00Z"
+  game_date: "2026-07-28"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
   - ENT-000136
@@ -499,16 +500,16 @@ The elite is badly hurt but still active and recovering its footing. Priya is pu
 ```yaml
 id: EVT-000072
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: owner-approved-profile-migration
-  event_time: "2026-07-28, before the next Ashfield Gate exchange"
-  record_time: "2026-07-28T09:45:01Z"
+  game_date: "2026-07-28, before the next Ashfield Gate exchange"
+  real_date: "2026-07-26"
 type: Event
 kind: rules-migration
 importance: major
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
 description: "Before the next exchange of the Ashfield Gate fight, the live campaign explicitly adopted frozen Gatefall World Rule Profile 1.2 from frozen 1.1. This was a readiness migration, not fiction: no elapsed time, voluntary action, prior roll, damage, XP, Health, Mana, gold, ownership, provenance, injury, skill, title, or resolved exchange changed.
@@ -525,16 +526,16 @@ The current E-Rank Daily Premium cycle (2026-07-28 06:00 to 2026-07-29 06:00 Chi
 ```yaml
 id: EVT-000073
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: owner-approved-profile-migration
-  event_time: "2026-07-28, before the next Ashfield Gate exchange"
-  record_time: "2026-07-28T09:45:02Z"
+  game_date: "2026-07-28, before the next Ashfield Gate exchange"
+  real_date: "2026-07-26"
 type: Event
 kind: rules-migration
 importance: major
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
 description: "Before the next exchange of the Ashfield Gate fight, the live campaign explicitly adopted frozen Gatefall World Rule Profile 1.3 from frozen 1.2. This narrow rules migration consumed no fictional time and changed no action, roll, combat result, equipment, stat, Health, Mana, XP, gold, ownership, or purchase flag.
@@ -549,16 +550,16 @@ The migrated offers are Spellthread Focus [E-Rank] (Intelligence +4, active-skil
 ```yaml
 id: EVT-000074
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: owner-approved-profile-migration
-  event_time: "2026-07-28, before the next Ashfield Gate exchange"
-  record_time: "2026-07-28T09:45:03Z"
+  game_date: "2026-07-28, before the next Ashfield Gate exchange"
+  real_date: "2026-07-26"
 type: Event
 kind: rules-migration
 importance: major
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
 description: "Before the next exchange of the Ashfield Gate fight, the live campaign explicitly adopted frozen Gatefall World Rule Profile 1.4 from frozen 1.3. This readiness migration consumed no fictional time and did not re-resolve any prior roll, hit, damage, recovery, XP award, or combat position. The elite remains wounded and active; Priya remains wounded; the boss remains unencountered.
@@ -577,16 +578,16 @@ The C-Rank Quickknife gained weapon power 7 and the E-Rank Quickknife weapon pow
 ```yaml
 id: EVT-000075
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-28, immediately after the Profile 1.4 migration, before the next Ashfield Gate exchange"
-  record_time: "2026-07-28T09:46:00Z"
+  game_date: "2026-07-28, immediately after the Profile 1.4 migration, before the next Ashfield Gate exchange"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: minor
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
 description: "Before resuming the Ashfield Gate fight, Alexander allocated all 10 unspent stat points from the Profile 1.4 migration: Strength +3 (18→21), Perception +3 (13→16), Intelligence +3 (12→15), Vitality +1 (12→13). Effective Vitality rose 15→16 and effective Intelligence 12→15, re-deriving maximum Health 60→64 and maximum Mana 24→30; both pools were already full and refilled to the new maxima (Health 64/64, Mana 30/30). Unspent points 10→0.
@@ -599,16 +600,16 @@ Alexander then opened one of his four pending Daily Random Boxes (World Rule Pro
 ```yaml
 id: EVT-000076
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-28"
-  record_time: "2026-07-28T09:52:00Z"
+  game_date: "2026-07-28"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
   - ENT-000136
@@ -631,16 +632,16 @@ Priya, Julian, Renata, and Owen all witnessed the finish; the clearing went quie
 ```yaml
 id: EVT-000077
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-28"
-  record_time: "2026-07-28T10:05:00Z"
+  game_date: "2026-07-28"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: immediate
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
   - ENT-000136
@@ -665,16 +666,16 @@ As of this event, the crew stands at the same position: elite dead, boss unencou
 ```yaml
 id: EVT-000078
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: owner-approved-profile-migration
-  event_time: "2026-07-28, mid-boss-fight pause, before the next exchange"
-  record_time: "2026-07-28T10:40:00Z"
+  game_date: "2026-07-28, mid-boss-fight pause, before the next exchange"
+  real_date: "2026-07-26"
 type: Event
 kind: rules-migration
 importance: major
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
   - ENT-000139
@@ -692,16 +693,16 @@ The migration was adopted out-of-character; no NPC is aware of a rules change, a
 ```yaml
 id: EVT-000079
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-28"
-  record_time: "2026-07-28T10:40:00Z"
+  game_date: "2026-07-28"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
   - ENT-000136
@@ -738,16 +739,16 @@ The Status Recovery restored the pool and did **not** clear the injury. Alexande
 ```yaml
 id: EVT-000080
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-28"
-  record_time: "2026-07-28T12:30:00Z"
+  game_date: "2026-07-28"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-28"
+game_date: "2026-07-28"
 participants:
   - ENT-000125
   - ENT-000136
@@ -786,16 +787,16 @@ Alexander then directed a harvest near the aperture with Renata on watch: a five
 ```yaml
 id: EVT-000081
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-28 afternoon to 2026-07-29 14:11"
-  record_time: "2026-07-29T14:11:00Z"
+  game_date: "2026-07-28 afternoon to 2026-07-29 14:11"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-28 to 2026-07-29"
+game_date: "2026-07-28 to 2026-07-29"
 participants:
   - ENT-000125
   - ENT-000136
@@ -826,16 +827,16 @@ No combat, injury, XP, Health, Mana, or gold change across this event. 15 unspen
 ```yaml
 id: EVT-000082
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: owner-rule-migration
-  event_time: "2026-07-29 14:11"
-  record_time: "2026-07-29T14:11:00Z"
+  game_date: "2026-07-29 14:11"
+  real_date: "2026-07-26"
 type: Event
 kind: world-rule-migration
 importance: major
-event_time: "2026-07-29"
+game_date: "2026-07-29"
 participants:
   - ENT-000125
 description: "At an out-of-character readiness pause, the live campaign explicitly adopted frozen Gatefall World Rule Profile 1.6 from frozen 1.5. The migration consumed no fictional time and re-resolved no prior action.
@@ -852,16 +853,16 @@ No reward, streak, Health, Mana, XP, Stat, gold, item, ownership, relationship, 
 ```yaml
 id: EVT-000083
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-29 14:11 to 2026-07-30 morning"
-  record_time: "2026-07-30T09:00:00Z"
+  game_date: "2026-07-29 14:11 to 2026-07-30 morning"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-29 to 2026-07-30"
+game_date: "2026-07-29 to 2026-07-30"
 participants:
   - ENT-000125
   - ENT-000130
@@ -898,16 +899,16 @@ No combat, injury, or XP this event. Ending state: 2026-07-30 morning, Owen's ap
 ```yaml
 id: EVT-000084
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-30, 05:40 to 08:15"
-  record_time: "2026-07-30T08:15:00Z"
+  game_date: "2026-07-30, 05:40 to 08:15"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: pivotal
-event_time: "2026-07-30 morning"
+game_date: "2026-07-30 morning"
 participants:
   - ENT-000125
   - ENT-000139
@@ -943,16 +944,16 @@ Owen supplied three operating requirements, expressed diegetically and without n
 ```yaml
 id: EVT-000085
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: owner-approved-world-authoring
-  event_time: "2026-07-30, approximately 08:15; readiness pause"
-  record_time: "2026-07-25"
+  game_date: "2026-07-30, approximately 08:15; readiness pause"
+  real_date: "2026-07-25"
 type: Event
 kind: profile-migration
 importance: routine
-event_time: "2026-07-30, approximately 08:15"
+game_date: "2026-07-30, approximately 08:15"
 participants:
   - ENT-000125
 description: "At an out-of-character readiness pause, the live campaign explicitly adopted frozen Gatefall World Rule Profile 1.7 from frozen 1.6. The migration consumed no fictional time and re-resolved no prior action. Gatefall's E-Rank–S-Rank classification is now called Rank everywhere and its values render E-Rank through S-Rank. Alexander's persisted `system_tier: E` field became `system_rank: E`, preserving the same content/reward bracket. Every Stat, level, XP total, Health and Mana value, item, loadout slot, skill, title, currency, ownership fact, pending reward, quest state, streak, injury, relationship, and resolved outcome remains unchanged. Immutable checkpoints through 0015 retain their captured terminology and profile metadata; restoration runs the applicable profile chain through 1.7 before play."
@@ -965,16 +966,16 @@ description: "At an out-of-character readiness pause, the live campaign explicit
 ```yaml
 id: EVT-000086
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: owner-approved-world-authoring
-  event_time: "2026-07-30, approximately 08:15; readiness pause"
-  record_time: "2026-07-25"
+  game_date: "2026-07-30, approximately 08:15; readiness pause"
+  real_date: "2026-07-25"
 type: Event
 kind: profile-additive-upgrade
 importance: routine
-event_time: "2026-07-30, approximately 08:15"
+game_date: "2026-07-30, approximately 08:15"
 participants:
   - ENT-000125
 description: "At an out-of-character readiness pause, the live campaign adopted frozen Gatefall World Rule Profile 1.8 from frozen 1.7. The additive presentation change re-renders `/system` in a fixed 76-cell frame with 20-cell HP, MP, and XP bars; title-case labels and the fixed abbreviations Acc.1, Acc.2, M1–M5, and Passive; quest objectives indented beneath their quest; and item identity separated from mechanics on continuation rows. No stored field, Stat, level, XP, Health, Mana, Rank, item, loadout, skill, title, currency, reward, quest state, streak, relationship, roll, or resolved outcome changed, and no fictional time passed. Immutable checkpoints through 0015 retain their captured profile metadata; restoration runs the applicable profile chain through 1.8 before play."
@@ -987,16 +988,16 @@ description: "At an out-of-character readiness pause, the live campaign adopted 
 ```yaml
 id: EVT-000087
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-30, 08:15 to evening"
-  record_time: "2026-07-30T19:30:00Z"
+  game_date: "2026-07-30, 08:15 to evening"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: significant
-event_time: "2026-07-30, morning through evening"
+game_date: "2026-07-30, morning through evening"
 participants:
   - ENT-000125
   - ENT-000139
@@ -1018,16 +1019,16 @@ They stayed out until sundown, motored back in as the light went, and set out on
 ```yaml
 id: EVT-000088
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-30, early evening to night"
-  record_time: "2026-07-30T22:30:00Z"
+  game_date: "2026-07-30, early evening to night"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: significant
-event_time: "2026-07-30, early evening to night"
+game_date: "2026-07-30, early evening to night"
 participants:
   - ENT-000125
   - ENT-000139
@@ -1057,16 +1058,16 @@ description: "Continuing directly from `EVT-000087`, walking in from the lake la
 ```yaml
 id: EVT-000089
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-30, night to 2026-07-31, morning"
-  record_time: "2026-07-31T07:50:00Z"
+  game_date: "2026-07-30, night to 2026-07-31, morning"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: significant
-event_time: "2026-07-30, night to 2026-07-31, morning"
+game_date: "2026-07-30, night to 2026-07-31, morning"
 participants:
   - ENT-000125
   - ENT-000139
@@ -1090,16 +1091,16 @@ description: "Continuing directly from `EVT-000088` at Owen Callahan's apartment
 ```yaml
 id: EVT-000090
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: owner-authored world-rule advance
-  event_time: "2026-07-31, morning (no fictional time consumed)"
-  record_time: "2026-07-31T07:55:00Z"
+  game_date: "2026-07-31, morning (no fictional time consumed)"
+  real_date: "2026-07-26"
 type: Event
 kind: profile-adoption
 importance: routine
-event_time: "2026-07-31, morning (no fictional time consumed)"
+game_date: "2026-07-31, morning (no fictional time consumed)"
 participants:
   - ENT-000125
 description: "Gatefall's World Rule Profile advanced from frozen 1.8 to frozen **1.9** (declared on repository date 2026-07-26) while this session was live, and the advance is adopted here at the campaign's natural pause under Rules Sections 13.5, 14.4 and 14.6.
@@ -1116,16 +1117,16 @@ description: "Gatefall's World Rule Profile advanced from frozen 1.8 to frozen *
 ```yaml
 id: EVT-000091
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, morning"
-  record_time: "2026-07-31T07:55:00Z"
+  game_date: "2026-07-31, morning"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: routine
-event_time: "2026-07-31, morning"
+game_date: "2026-07-31, morning"
 participants:
   - ENT-000125
 description: "On the break wall at Loyola Park immediately after the seventh daily quest resolved (`EVT-000089`), with Owen Callahan beside him finishing a coffee, Alexander claimed and opened the **Daily Random Box** that completion had produced.
@@ -1142,16 +1143,16 @@ No other reward was claimed: **Ability Points +3 x1 and Status Recovery x3 remai
 ```yaml
 id: EVT-000092
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: owner-authored world-rule advance
-  event_time: "2026-07-31, readiness pause (no fictional time consumed)"
-  record_time: "2026-07-31T15:30:00Z"
+  game_date: "2026-07-31, readiness pause (no fictional time consumed)"
+  real_date: "2026-07-26"
 type: Event
 kind: profile-adoption
 importance: routine
-event_time: "2026-07-31, readiness pause (no fictional time consumed)"
+game_date: "2026-07-31, readiness pause (no fictional time consumed)"
 participants:
   - ENT-000125
 description: "Gatefall's World Rule Profile advanced from frozen 1.9 to frozen **1.10** (declared on repository date 2026-07-26) while this session was live, adopted at the readiness pause before Session 2 continued, under Rules Sections 13.5, 14.4 and 14.6.
@@ -1166,16 +1167,16 @@ description: "Gatefall's World Rule Profile advanced from frozen 1.9 to frozen *
 ```yaml
 id: EVT-000093
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, midday"
-  record_time: "2026-07-31T15:30:00Z"
+  game_date: "2026-07-31, midday"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: minor
-event_time: "2026-07-31, midday"
+game_date: "2026-07-31, midday"
 participants:
   - ENT-000125
   - ENT-000130
@@ -1196,16 +1197,16 @@ At the Halsted Depot site, Alexander showed his license, was scanned in, and was
 ```yaml
 id: EVT-000094
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, midday, before the Halsted Depot job"
-  record_time: "2026-07-31T15:30:00Z"
+  game_date: "2026-07-31, midday, before the Halsted Depot job"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: minor
-event_time: "2026-07-31, midday"
+game_date: "2026-07-31, midday"
 participants:
   - ENT-000125
   - ENT-000133
@@ -1221,16 +1222,16 @@ Finding a quiet, screened spot off Michigan Avenue afterward, Alexander equipped
 ```yaml
 id: EVT-000095
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, afternoon"
-  record_time: "2026-07-31T15:30:00Z"
+  game_date: "2026-07-31, afternoon"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: minor
-event_time: "2026-07-31, afternoon"
+game_date: "2026-07-31, afternoon"
 participants:
   - ENT-000125
   - ENT-000141
@@ -1251,16 +1252,16 @@ The crew exited through the aperture; Sable, Kern, Ruth, and Denny each parted o
 ```yaml
 id: EVT-000096
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, afternoon, ~3:00 PM"
-  record_time: "2026-07-31T16:30:00Z"
+  game_date: "2026-07-31, afternoon, ~3:00 PM"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: minor
-event_time: "2026-07-31, afternoon, ~3:00 PM"
+game_date: "2026-07-31, afternoon, ~3:00 PM"
 participants:
   - ENT-000125
 description: "Still on the park bench, Alexander opened the Daily Premium tab and bought the Weapon offer outright: the **Ghost Quickknife [B-Rank]** (Agility +13, weapon power 11, armed strike ×0.75, +1 modifier step on the first attack made unseen in a combat) for 18,000 g against a balance of 18,030 — gold **18,030 → 30**. He sold the superseded **E-Rank Quickknife** back to the shop for 25 g (**gold 30 → 55**) and equipped the Ghost Quickknife to the off hand, then moved it to the main hand the same sitting — a free equipment swap outside combat (Section 12.9); the C-Rank Quickknife took the off hand. Effective Agility rose to **51** (base 26 + equipment 25). Scene time was explicitly established by ruling at **3:00 PM**. No XP, injury, or combat resolved."
@@ -1271,16 +1272,16 @@ description: "Still on the park bench, Alexander opened the Daily Premium tab an
 ```yaml
 id: EVT-000097
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, afternoon, ~3:00-3:40 PM"
-  record_time: "2026-07-31T16:30:00Z"
+  game_date: "2026-07-31, afternoon, ~3:00-3:40 PM"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: moderate
-event_time: "2026-07-31, afternoon, ~3:00-3:40 PM"
+game_date: "2026-07-31, afternoon, ~3:00-3:40 PM"
 participants:
   - ENT-000125
 description: "Alexander used the E-Rank Instant-Dungeon Key already banked in his inventory (Section 17). The instance rolled **archetype Overgrown Temple** (d8 4) — a lootable shrine guarded by an extra elite, per the archetype's mechanical twist — and population **12 common E-Rank beasts, 2 elites (1 rolled + 1 archetype shrine-guard), 1 boss** (3d6=12, 1d2=1, +1 archetype elite).
@@ -1299,16 +1300,16 @@ Killed a common beast in the open (unmodified attack, d100 82, critical success)
 ```yaml
 id: EVT-000098
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, afternoon, ~3:40-3:55 PM"
-  record_time: "2026-07-31T16:30:00Z"
+  game_date: "2026-07-31, afternoon, ~3:40-3:55 PM"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: minor
-event_time: "2026-07-31, afternoon, ~3:40-3:55 PM"
+game_date: "2026-07-31, afternoon, ~3:40-3:55 PM"
 participants:
   - ENT-000125
 description: "Back on the bench, Alexander sold all 6 E-Rank crystals to the shop (10 g each, **gold 55 → 115**) and the Elixir of a Stat (50% of its 5,000 g listed price, an unused shop consumable, **gold 115 → 2,615**) — the two E-Rank cores from `EVT-000097` were not sold; Section 12.5 explicitly refuses cores at any price. He then bought a **Stabilization Seal** (150 g, **gold 2,615 → 2,465**) and a second **Instant-Dungeon Key [E-Rank]** (500 g, **gold 2,465 → 1,965**). Mana recovery was also corrected this session: traced properly against Section 5.2's Active/Resting rates rather than flat subtraction, landing Mana at 31/40 by this point (28/40 after `EVT-000097`'s Rupture cast, +3 from roughly 15 minutes resting on the bench). No XP, injury, or combat resolved."
@@ -1319,16 +1320,16 @@ description: "Back on the bench, Alexander sold all 6 E-Rank crystals to the sho
 ```yaml
 id: EVT-000099
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, afternoon, ~3:55-4:30 PM"
-  record_time: "2026-07-31T16:30:00Z"
+  game_date: "2026-07-31, afternoon, ~3:55-4:30 PM"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: moderate
-event_time: "2026-07-31, afternoon, ~3:55-4:30 PM"
+game_date: "2026-07-31, afternoon, ~3:55-4:30 PM"
 participants:
   - ENT-000125
 description: "Alexander used the newly bought Instant-Dungeon Key [E-Rank]. The instance rolled **archetype Hive** (d8 2) — its mechanical twist doubles the common-beast count and converts both elite slots into additional commons, so it ran **0 elites** against a swarm (3d6=9 doubled to 18, +1 from the converted 1d2 elite roll = 19 common E-Rank beasts) and 1 boss.
@@ -1349,16 +1350,16 @@ Mana was down to 7/40 by this point — enough for at most one more Rupture, not
 ```yaml
 id: EVT-000100
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, afternoon, ~4:30 PM"
-  record_time: "2026-07-31T22:45:00Z"
+  game_date: "2026-07-31, afternoon, ~4:30 PM"
+  real_date: "2026-07-26"
 type: Event
 kind: profile-adoption
 importance: minor
-event_time: "2026-07-31, afternoon, ~4:30 PM"
+game_date: "2026-07-31, afternoon, ~4:30 PM"
 participants:
   - ENT-000125
 description: "On the bench, adopted the additive Gatefall World Rule Profile 1.10→1.11 item-diversity advance (frozen 2026-07-26): future boss-equipment results carry a source-derived Boss Imprint (Section 11.2.1); future Daily Premium categories draw from a bag without replacement starting at the next 06:00 rotation, each category's bag initialized to the full model set minus the currently active offer; future dropped runes/skill books settle duplicates by Section 11.3's closed rule rather than an ad-hoc reroll (the already-resolved Stone Skin → Flash Step reroll stands unchanged); and a visual fabrication series distinguishes later Premium rotations, none initialized retroactively for the live 2026-07-31 cycle. Nothing recomputed, no transaction repriced, no resolved outcome changed, no fictional time consumed."
@@ -1369,16 +1370,16 @@ description: "On the bench, adopted the additive Gatefall World Rule Profile 1.1
 ```yaml
 id: EVT-000101
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, late afternoon, ~4:30-5:22 PM"
-  record_time: "2026-07-31T22:45:00Z"
+  game_date: "2026-07-31, late afternoon, ~4:30-5:22 PM"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: moderate
-event_time: "2026-07-31, late afternoon, ~4:30-5:22 PM"
+game_date: "2026-07-31, late afternoon, ~4:30-5:22 PM"
 participants:
   - ENT-000125
 description: "Alexander used the last banked Instant-Dungeon Key [E-Rank]. The instance rolled **archetype Frozen Gallery** (d8 8) — Mana recovery halved for the whole clear (Section 10). Population: 3d6=7 common, 1d2=2 elite, 1 boss, all E-Rank.
@@ -1403,16 +1404,16 @@ A calculated finishing strike on the now heavily wounded boss (d100 64, net +3, 
 ```yaml
 id: EVT-000102
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, evening, ~5:22-5:37 PM"
-  record_time: "2026-07-31T22:45:00Z"
+  game_date: "2026-07-31, evening, ~5:22-5:37 PM"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: minor
-event_time: "2026-07-31, evening, ~5:22-5:37 PM"
+game_date: "2026-07-31, evening, ~5:22-5:37 PM"
 participants:
   - ENT-000125
   - ENT-000139
@@ -1424,16 +1425,16 @@ description: "Checked the time (5:22 PM) and texted Owen: *\"Done. 9k in my pock
 ```yaml
 id: EVT-000103
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, evening, ~5:40 PM onward"
-  record_time: "2026-07-31T22:45:00Z"
+  game_date: "2026-07-31, evening, ~5:40 PM onward"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: moderate
-event_time: "2026-07-31, evening, ~5:40 PM onward"
+game_date: "2026-07-31, evening, ~5:40 PM onward"
 participants:
   - ENT-000125
   - ENT-000139
@@ -1447,16 +1448,16 @@ Inside the kitchen, mid-joke and mid-cooking, Alexander crossed the room without
 ```yaml
 id: EVT-000104
 canonical_record: REC-000079
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-2-gameplay
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
+  game_date: "2026-07-31, night"
+  real_date: "2026-07-26"
 type: Event
 kind: session-gameplay
 importance: moderate
-event_time: "2026-07-31, night"
+game_date: "2026-07-31, night"
 participants:
   - ENT-000125
   - ENT-000139
@@ -1469,4 +1470,24 @@ Alexander then joked, with real underlying anxiety, that the day's shopping had 
 **The evening's least calculated line.** Cleaning up together, Alexander said *'I'll give you all the evenings'* — off guard, unplanned, the same unweighed register as the afternoon's text. Owen went still in the real way rather than the deflecting one and didn't produce his usual joke.
 
 Showered and went to bed together. No XP, Stat, gold, or item change — established relationship canon and two open commitments (Renata's rig, Priya's training date) only."
+```
+
+## EVT-000105 - Profile 1.12 Skill-Tracking Adoption
+
+```yaml
+id: EVT-000105
+canonical_record: REC-000079
+schema_version: "0.1.4"
+status: active
+provenance:
+  source: owner-approved-profile-migration
+  game_date: "2026-07-31, night — no fictional time consumed"
+  real_date: "2026-07-26T11:35:39+02:00"
+type: Event
+kind: system-profile-adoption
+importance: structural
+game_date: "2026-07-31, night — no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.12 at readiness. Every skill now carries a lifetime successful-use total and explicit mastery progress; mastery-tracked skills also carry lifetime qualifying-scene totals. Durable evidence backfills Stone Skin 1 use / 0 qualifying / 0 of 3, Rupture 6 uses / 5 qualifying / 2 of 3 toward Adept, Flash Step 1 use / 1 qualifying / 1 of 3, and zero explicitly demonstrated material applications for the no-mastery milestone passives Rank-Sight and Overpower. No skill effect, Rank, Mana cost, mastery level, resolved outcome, or fictional time changed."
 ```

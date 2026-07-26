@@ -12,12 +12,12 @@ This ledger records what is visible and accessible to the campaign. It reference
 ```yaml
 id: REC-000075
 canonical_record: REC-000075
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000056
-  event_time: "2026-07-22"
-  record_time: "2026-07-23T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-23T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -27,12 +27,12 @@ subjects:
 ```yaml
 id: REL-000062
 canonical_record: REC-000075
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000056
-  event_time: "2026-07-22"
-  record_time: "2026-07-23T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-23T00:00:00Z"
 endpoints:
   - ENT-000125
   - ENT-000102

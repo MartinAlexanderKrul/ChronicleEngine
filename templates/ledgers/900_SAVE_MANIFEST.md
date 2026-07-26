@@ -18,9 +18,9 @@ A filled manifest must contain no placeholder tokens.
 ```yaml
 save_identity:
   checkpoint_type: <required: e.g. manual | milestone | session-close>
-  created: <generated: creation time>
+  real_date: <generated: real repository creation date/time; never derive from campaign time>
   source: <required: EVT-XXXXXX of the checkpoint | ruling>
-  event_time: <required: in-world time at checkpoint>
+  game_date: <required: in-world time at checkpoint>
 scope:
   world: <required: world name or repository path, e.g. worlds/asterra>
   campaign: <required: campaign name or repository path, e.g. campaigns/<campaign>>
@@ -36,7 +36,7 @@ versions:
   # the mapping above: `world_rule_profile: none` (Rules Sections 13.3, 14.6).
   # A workshop-draft capture is unfrozen — not save-trustworthy — and must say
   # so in compatibility.warnings.
-  campaign_schema: <required: Data Model version, e.g. 0.1.3>
+  campaign_schema: <required: Data Model version, e.g. 0.1.4>
   save_format: <required: e.g. 0.1.0>
 lineage:
   parent_save: <optional: parent checkpoint by ordinal, e.g. 900_CHECKPOINT_0004 (pre-Decision-072 manifests may reference a historical REC-XXXXXX)>

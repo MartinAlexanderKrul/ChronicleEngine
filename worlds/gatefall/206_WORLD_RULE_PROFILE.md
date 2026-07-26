@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.11
+# Gatefall — World Rule Profile 1.12
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.11
-**Engine Compatibility:** 0.2.0; Data Model 0.1.3
+**Profile Version:** 1.12
+**Engine Compatibility:** 0.2.0; Data Model 0.1.4
 **Status:** Active
-**Compatibility Status:** frozen at version 1.11 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.11 is an **additive item-diversity advance** over frozen 1.10: future boss equipment carries a source-derived Boss Imprint, boss potion caches and duplicate skill drops resolve from closed rules, and Daily Premium models draw without replacement while a visual fabrication series distinguishes later rotations. Existing items and the active stock cycle do not change.
+**Compatibility Status:** frozen at version 1.12 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.12 is a **migrating skill-ledger advance** over frozen 1.11: every skill records successful-use totals and mastery progress explicitly, with closed counting rules for activations, sustained effects, passives, and continuous scenes.
+
+**Required 1.11 → 1.12 migration.** Preserve every skill, Rank, mastery level, effect, Mana cost, resolved outcome, and all non-skill state. Add `successful_uses`, `qualifying_scenes_total`, and `mastery_progress` to each mastery-tracked skill; stat-milestone passives add `successful_uses` and explicitly declare `mastery_progress: none`. Backfill only from durable evidence, using an honest lower bound where exact history cannot be reconstructed. For Alexander Pendragon at adoption: Stone Skin is 1 successful use / 0 lifetime qualifying scenes / Novice 0 of 3; Rupture is 6 successful uses / 5 lifetime qualifying scenes / Practiced 2 of 3 toward Adept; Flash Step is 1 successful use / 1 lifetime qualifying scene / Novice 1 of 3; Rank-Sight and Overpower each have 0 explicitly demonstrated successful applications and no mastery track. Re-render `/system skills` and the full window, then record adoption in live campaign state. Immutable Profile 1.11-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.12 before play.
+
+Version 1.11 remains the additive item-diversity advance over frozen 1.10: future boss equipment carries a source-derived Boss Imprint, boss potion caches and duplicate skill drops resolve from closed rules, and Daily Premium models draw without replacement while a visual fabrication series distinguishes later rotations. Existing items and the active stock cycle do not change.
 
 **1.10 → 1.11 compatibility treatment.** Preserve every stored value, current offer, purchased flag, item, skill, mastery count, currency balance, and resolved outcome. Adoption does not reroll or visually retrofit an existing item and does not reopen a resolved duplicate-skill result. The active Daily Premium cycle remains exactly as generated under its earlier profile. For each future bag-governed category, initialize its bag to the full Section 12.5 model set **minus the active cycle's model**, record that active model as the category's previous draw, and begin bag draws at the next 06:00 rotation. Initialize no fabrication series for the active cycle; the first series roll occurs with that next rotation. Future boss-equipment results use Section 11.2.1, and future dropped runes/books use Section 11.3's duplicate settlement. The already-resolved Stone Skin → Flash Step dropped-rune reroll remains canon and is consistent with the new settlement; nothing else is recomputed. These optional world-rule fields live in the existing Data Model extension mechanism, so Data Model 0.1.3 does not advance. Immutable Profile 1.10-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.11 before play.
 
@@ -581,7 +585,7 @@ A skill enters the Bearer's ledger by one of four routes, and only these:
 
 ## 7.2 Skill Entries
 
-Every skill entry carries: **name · rank (E-Rank–S-Rank) · Mana cost · effect**. Active skills cost Mana and are gated by it (Section 5.3); passive skills cost 0 and are always in effect.
+Every skill entry carries: **name · rank (E-Rank–S-Rank) · Mana cost · effect · successful uses · mastery progress**. Active skills cost Mana and are gated by it (Section 5.3); passive skills cost 0 and are always in effect. Mastery-tracked skills also carry their lifetime `qualifying_scenes_total`; stat-milestone passives explicitly carry `mastery_progress: none`.
 
 For a Bearer damage or healing skill, rank supplies its base magnitude:
 
@@ -614,6 +618,10 @@ A skill is not fixed the day it is learned — it **grows in the Bearer's hands 
 
 **Advancing.** A skill rises **one mastery level** after it has **materially contributed to the resolution of three distinct dangerous scenes at its current level** — the earned-by-doing rigor of Section 7.1: genuine, resolved, at-risk use each time; trivial repetition does not count, and the three scenes must be materially distinct. Reaching Master therefore takes twelve qualifying scenes across a skill's life. The System advances mastery automatically on the third qualifying scene and fires a Tier-1 notification (`[SYSTEM] SKILL MASTERY — Mana Bolt is now Adept.`).
 
+**Use counters.** Every skill records `successful_uses`, a lifetime total that never resets. A successful activation or application adds one; a failed or missed use adds none. One activation counts once even when it affects several targets. A sustained skill counts once when activated, not once per exchange. A passive skill counts once per resolved action in which its effect materially applies. Several successful casts in one continuous dangerous scene each add to `successful_uses`, while that scene contributes at most one mastery point for that skill. A successful non-dangerous test adds a use but no qualifying scene.
+
+Mastery-tracked skills also record `qualifying_scenes_total`, which never resets, and `mastery_progress`, the exact count from 0 to 2 toward the next level. On the third qualifying scene the mastery level advances and current progress resets to 0; at Master it renders complete. Stat-milestone skills from Section 4.4 have no mastery track, but their successful material applications are still counted.
+
 **What each level above Novice improves** — two axes, both closed-form:
 
 - **Magnitude**, by one Rank of the skill's own effect per level:
@@ -622,7 +630,7 @@ A skill is not fixed the day it is learned — it **grows in the Bearer's hands 
   - a **modifier-step or utility** skill — already capped at +1 step (Section 4.3) — instead **lengthens**, its effect covering one further exchange per level and reaching the **whole scene at Master**, or widening to one stated additional target.
 - **Mana cost**, **−10% per level** (rounded, minimum 1): a 5-cost skill runs 5 → **3 at Master**; passive skills stay 0.
 
-**Rendering.** The `/system` skills line carries the mastery: `Mana Bolt [E-Rank] ★★★★☆ · Mana 4 · ×1.45` (Expert, four of five). Mastery is read from the skill's ledger entry like every other value (Section 15) and is never estimated.
+**Rendering.** The focused `/system skills` view carries mastery and counters: `Mana Bolt [E-Rank] ★★★★☆ · MANA 4 · Uses 17 · Progress 2/3 · ×1.45` (Expert, two qualifying scenes toward Master). The full window may wrap the counters onto an indented continuation row to preserve its fixed width. A stat-milestone passive renders `Uses <n> · Progress —`. Every value is read from the skill's ledger entry (Section 15) and is never estimated.
 
 Mastery raises a skill's power, never its **rank** — an E-Rank Mana Bolt mastered is still an E-Rank skill, just a lethal one. Rank reflects the tier it was learned at (Section 7.1); mastery reflects the hands that carry it.
 
@@ -1629,6 +1637,7 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ║    <objective progress or local deadline>                                ║
 ╟─ SKILLS ─────────────────────────────────────────────────────────────────╢
 ║  <name> [Rank] <★ mastery> · <MANA n or Passive> · <effect>              ║
+║    Uses <n> · Progress <n>/3 or —                                        ║
 ╟─ TITLES · Equipped: <title or none> ─────────────────────────────────────╢
 ║  <★ equipped title or earned title · effect>                             ║
 ╟─ EQUIPMENT ──────────────────────────────────────────────────────────────╢
@@ -1674,9 +1683,13 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 ║  [HIDDEN] ???                                                            ║
 ╟─ SKILLS ─────────────────────────────────────────────────────────────────╢
 ║  Mana Bolt [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                   ║
+║    Uses 4 · Progress 2/3                                                 ║
 ║  Dagger Mastery [E-Rank] ★☆☆☆☆ · Passive · Quickknife +0.10              ║
+║    Uses 11 · Progress 1/3                                                ║
 ║  Sprint [E-Rank] ★☆☆☆☆ · MANA 3 · +1 Step Movement                       ║
+║    Uses 6 · Progress 2/3                                                 ║
 ║  Mend [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                        ║
+║    Uses 3 · Progress 2/3                                                 ║
 ╟─ TITLES · Equipped: Lone Clear ──────────────────────────────────────────╢
 ║  ★ Lone Clear · +1 Step While Alone in a Gate                            ║
 ║    Untouched · +1 Step Evasion on First Exchange                         ║
@@ -1704,7 +1717,7 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 - **Bars** are 20-cell meters filled proportionally to `current/max` (Ren: HP approximately four-fifths, MP three-quarters, XP half).
 - **Frame width is fixed:** every rendered row is exactly **76 monospace cells** wide, including its two edge characters; the interior is 74 cells. The Runtime pads short rows, never allows content past the right edge, and uses indented continuation rows rather than truncation. If a name or value still exceeds one row, it wraps beneath its own label at the same indentation.
 - **Labels use title case and fixed abbreviations:** `Unspent Points`, `Pending Rewards`, `Physical Reduction`, `Acc.1`, `Acc.2`, and `Passive`. The same label is never shortened differently elsewhere in the window.
-- **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full skill row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` — or `<name> · Passive · <effect>` for a passive. **Erratum, not a behavioral change.** The earlier `M1`–`M5` shorthand in this list was ambiguous between a Mana cost and a mastery level, and it could not express a cost above 5 (Rupture's is 12). Section 7.4's rendering rule already authored the cost as the spelled word and the mastery as stars; this list is corrected to agree with it. No stored field, cost, magnitude, mastery level, or resolved outcome changes, and the profile version does not advance.
+- **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full skill row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` — or `<name> · Passive · <effect>` for a passive. The next indented row renders `Uses <n> · Progress <n>/3`; no-mastery milestone passives render `Progress —`.
 - **Quest objectives are subordinate rows.** The quest name and status occupy the first row; objectives, progress, and the local deadline render beneath it with four-space indentation.
 - **Equipment and long inventory entries separate identity from mechanics.** The slot, item name, and `[Rank]` occupy the first row. Bonuses, power/protection, effects, and condition occupy one or more continuation rows aligned beneath the item name. This rule leaves room for prefixes, suffixes, and durability without widening the frame.
 - Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, equipment slots from Section 12.9, inventory from the campaign inventory ledger, and gold from the shop balance. Effective stats and physical reduction are derived from the equipped lines. Nothing is invented at render.

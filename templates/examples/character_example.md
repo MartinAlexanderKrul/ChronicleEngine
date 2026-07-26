@@ -11,12 +11,12 @@ It demonstrates a filled `100_CHARACTER_SHEET.md`: every placeholder resolved, u
 ```yaml
 id: REC-000001
 canonical_record: REC-000001
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000001
-  event_time: "Year 812, Month of Frost, Day 3"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 812, Month of Frost, Day 3"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: personal
 subjects:
@@ -30,12 +30,12 @@ subjects:
 ```yaml
 id: ENT-000001
 canonical_record: REC-000001
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000001
-  event_time: "Year 812, Month of Frost, Day 3"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 812, Month of Frost, Day 3"
+  real_date: "2026-07-11T00:00:00Z"
 type: Character
 scope: personal
 lifecycle: active

@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000023
 canonical_record: REC-000023
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000014
-  event_time: "Year 312 RR, early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, early summer"
+  real_date: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -32,12 +32,12 @@ subjects:
 ```yaml
 id: EVT-000014
 canonical_record: REC-000023
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: confirmed-custom-protagonist-proposal
-  event_time: "Year 312 RR, early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, early summer"
+  real_date: "2026-07-13T00:00:00Z"
 kind: arrival
 importance: archived
 participants:
@@ -64,12 +64,12 @@ No gameplay scene has yet opened.
 ```yaml
 id: EVT-000015
 canonical_record: REC-000023
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: live-play
-  event_time: "Year 312 RR, early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, early summer"
+  real_date: "2026-07-13T00:00:00Z"
 kind: social-conflict
 importance: notable
 participants:
@@ -86,12 +86,12 @@ Kael asked after a merchant escort job and found Tollen Var at the market exchan
 ```yaml
 id: EVT-000016
 canonical_record: REC-000023
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: live-play
-  event_time: "Year 312 RR, early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, early summer"
+  real_date: "2026-07-13T00:00:00Z"
 kind: employment
 importance: major
 participants:
@@ -110,12 +110,12 @@ Kael approached the Order seeking good-paying dangerous work. He accepted lower-
 ```yaml
 id: EVT-000017
 canonical_record: REC-000023
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: live-play
-  event_time: "Year 312 RR, early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, early summer"
+  real_date: "2026-07-13T00:00:00Z"
 kind: duty-crisis
 importance: major
 participants:

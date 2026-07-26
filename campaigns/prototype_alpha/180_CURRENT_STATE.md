@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000016
 canonical_record: REC-000016
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000008
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR, late spring"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -26,7 +26,7 @@ subjects: []
 ## Bindings and Versions
 
 - World: Verra (World Version 0.1, Prototype)
-- Engine: 0.1.5 (Foundation Release); Data Model 0.1.3
+- Engine: 0.1.5 (Foundation Release); Data Model 0.1.4
 - Campaign date: Year 312 RR, late spring (Day 17, execution)
 
 ## Protagonist

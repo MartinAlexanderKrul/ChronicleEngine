@@ -5,12 +5,12 @@ A specialization of the Persistent Object (`EVT-`): a timed, immutable fact. Pro
 ```yaml
 id: <generated: EVT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>   # the record that first recorded this event
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active                              # events are immutable; status does not change
 provenance:
   source: <required: ruling | transcript | EVT-XXXXXX>
-  event_time: <required: in-world time the event occurred>
-  record_time: <generated: time this event was recorded>
+  game_date: <required: in-world time the event occurred>
+  real_date: <generated: time this event was recorded>
   uncertainty: <optional: unresolved uncertainty>
 kind: <required: e.g. transfer | transformation | promotion | ruling | founding | death>
 importance: <required: immediate | archived | historical | mythic — §3.5>

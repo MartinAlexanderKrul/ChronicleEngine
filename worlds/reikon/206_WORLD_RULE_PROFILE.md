@@ -4,7 +4,7 @@
 **Class:** World rule content (`010_ENGINE_RULES.md` Section 14.5; Decision 062)
 **World:** Reikon
 **Profile Version:** 0.11
-**Engine Compatibility:** 0.2.0; Data Model 0.1.3
+**Engine Compatibility:** 0.2.0; Data Model 0.1.4
 **Status:** Active
 **Compatibility Status:** frozen at version 0.11 (2026-07-25; Rules Section 14.6, Decision 074). Version 0.11 is an **additive terminology advance** over frozen 0.10: Reikon's single E-Rank–S-Rank classification is now called **Rank** everywhere, its values are rendered **E-Rank, D-Rank, C-Rank, B-Rank, A-Rank, and S-Rank**, and derived identifiers use `effective_rank` and `rank_health`. No stored field, threshold, magnitude, probability, price, or resolved outcome changes. Checkpoints 0002–0017 remain immutable workshop-draft captures under versions 0.1–0.8; restoration surfaces that warning, adopts the intervening profile declarations at readiness, and normalizes only the mutable presentation.
 

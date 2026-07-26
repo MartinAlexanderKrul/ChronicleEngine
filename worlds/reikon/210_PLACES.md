@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000026
 canonical_record: REC-000026
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -33,12 +33,12 @@ subjects:
 ```yaml
 id: ENT-000030
 canonical_record: REC-000026
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Place
 subtype: nation
 scope: regional
@@ -60,12 +60,12 @@ canonical_state:
 ```yaml
 id: ENT-000031
 canonical_record: REC-000026
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Settlement/Kingdom
 subtype: city
 scope: local
@@ -89,12 +89,12 @@ canonical_state:
 ```yaml
 id: ENT-000032
 canonical_record: REC-000026
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Place
 subtype: rift
 scope: local
@@ -117,12 +117,12 @@ canonical_state:
 ```yaml
 id: ENT-000033
 canonical_record: REC-000026
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000023
-  event_time: "Year 31 AR, early in the year"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR, early in the year"
+  real_date: "2026-07-13T00:00:00Z"
 type: Place
 subtype: collapse-site
 scope: local
@@ -142,12 +142,12 @@ canonical_state:
 ```yaml
 id: REL-000033
 canonical_record: REC-000026
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000019
-  event_time: "Year 3 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 3 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints:
   - ENT-000041
   - ENT-000031

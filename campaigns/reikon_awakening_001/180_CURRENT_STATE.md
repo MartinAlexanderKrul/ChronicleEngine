@@ -7,12 +7,12 @@
 ```yaml
 id: REC-000045
 canonical_record: REC-000045
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000050
-  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
-  record_time: "2026-07-22T12:00:00Z"
+  game_date: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
+  real_date: "2026-07-22T12:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -20,7 +20,7 @@ subjects: []
 
 ## Bindings and Compatibility
 
-- Engine: 0.2.0; Data Model: 0.1.3
+- Engine: 0.2.0; Data Model: 0.1.4
 - World: Reikon 0.1
 - World Rule Profile: Reikon 0.8 (`RKO-OVR-001`, `RKO-OVR-002`) — recurrent intervention and succession contract active; the Warehouse 7 life-burn event remains expired; Emberbrand (the first recurrent-intervention grant) is spent, not merely expired; Section 8.2's Rift-clear milestone formula is authored; Stats are uncapped (Section 4.2) and Ascension grants 5 points (Section 4.1). *(Profile 0.9/0.10/0.11 authoring — Stat payoffs, the Rift threat model, and canonical Rank terminology — is a separate world-content change adopted at the next readiness gate, Section 14.4.)*
 - Compatibility: compatible; no version mismatch outstanding

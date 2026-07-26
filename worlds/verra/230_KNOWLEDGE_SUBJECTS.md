@@ -11,12 +11,12 @@ The normative principle (Rules Section 8.1): **Knowledge Subjects persist; Knowl
 ```yaml
 id: REC-000003
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -41,12 +41,12 @@ subjects:
 ```yaml
 id: ENT-000012
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000004
-  event_time: "Year 250 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 250 RR"
+  real_date: "2026-07-11T00:00:00Z"
   uncertainty: "The method's first devising predates the Guild's charter; its origin is not precisely recorded."
 type: Discovery/Knowledge
 subtype: technique
@@ -76,12 +76,12 @@ canonical_state:
 ```yaml
 id: ENT-000013
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000005
-  event_time: "Year 311 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 311 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Discovery/Knowledge
 subtype: theory
 scope: regional
@@ -112,12 +112,12 @@ canonical_state:
 ```yaml
 id: ENT-000014
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000001
-  event_time: "Year 40 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 40 RR"
+  real_date: "2026-07-11T00:00:00Z"
   uncertainty: "Ancient; the making is now only partly known and held by a single aging mason."
 type: Discovery/Knowledge
 subtype: technique
@@ -145,12 +145,12 @@ canonical_state:
 ```yaml
 id: REL-000001
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000004
-  event_time: "Year 250 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 250 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000005
   - ENT-000012
@@ -162,12 +162,12 @@ state: "The Guild holds and works the method while keeping its theory unpublishe
 ```yaml
 id: REL-000002
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000004
-  event_time: "Year 250 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 250 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000010
   - ENT-000012
@@ -179,12 +179,12 @@ state: "Della can work the method but is bound not to teach it outside the Guild
 ```yaml
 id: REL-000003
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000004
-  event_time: "Year 250 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 250 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000002
   - ENT-000012
@@ -196,12 +196,12 @@ state: "Halden sees the product but not the method."
 ```yaml
 id: REL-000004
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000005
-  event_time: "Year 311 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 311 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000003
   - ENT-000013
@@ -213,12 +213,12 @@ state: "The Athenaeum treats the finding as validated under its own standard."
 ```yaml
 id: REL-000005
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000005
-  event_time: "Year 311 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 311 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000007
   - ENT-000013
@@ -230,12 +230,12 @@ state: "Corvane holds the finding in detail and presses to publish it."
 ```yaml
 id: REL-000006
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000006
-  event_time: "Year 311 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 311 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000004
   - ENT-000013
@@ -247,12 +247,12 @@ state: "The Order holds a rejecting state and restricts the finding; this is cus
 ```yaml
 id: REL-000007
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000006
-  event_time: "Year 311 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 311 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000002
   - ENT-000013
@@ -264,12 +264,12 @@ state: "Halden is divided over the finding."
 ```yaml
 id: REL-000008
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000007
-  event_time: "Year 300–312 RR (ongoing)"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 300–312 RR (ongoing)"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000011
   - ENT-000014
@@ -281,12 +281,12 @@ state: "Berrec is the last holder, and even his knowledge is now imperfect; pass
 ```yaml
 id: REL-000009
 canonical_record: REC-000003
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000007
-  event_time: "Year 300–312 RR (ongoing)"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 300–312 RR (ongoing)"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000002
   - ENT-000014

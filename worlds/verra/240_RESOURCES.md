@@ -11,12 +11,12 @@ Each resource is a Knowledge Asset or artifact tied to a Knowledge Subject: the 
 ```yaml
 id: REC-000004
 canonical_record: REC-000004
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -32,12 +32,12 @@ subjects:
 ```yaml
 id: ENT-000015
 canonical_record: REC-000004
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000005
-  event_time: "Year 311 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 311 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Resource
 subtype: manuscript
 scope: regional
@@ -61,12 +61,12 @@ canonical_state:
 ```yaml
 id: ENT-000016
 canonical_record: REC-000004
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000004
-  event_time: "Year 250 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 250 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Resource
 subtype: crafted good
 scope: local
@@ -90,12 +90,12 @@ canonical_state:
 ```yaml
 id: ENT-000017
 canonical_record: REC-000004
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000001
-  event_time: "Year 40 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 40 RR"
+  real_date: "2026-07-11T00:00:00Z"
   uncertainty: "Ancient; a surviving trace rather than a documented sample."
 type: Resource
 subtype: material sample

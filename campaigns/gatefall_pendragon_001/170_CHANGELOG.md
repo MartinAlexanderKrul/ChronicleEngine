@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000080
 canonical_record: REC-000080
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000104
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
+  source: EVT-000105
+  game_date: "2026-07-31, night"
+  real_date: "2026-07-26T11:35:39+02:00"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -405,3 +405,9 @@ Player-requested checkpoint, taken at Owen's apartment in Rogers Park while dinn
 **2026-08-01, pre-dawn — Checkpoint 0023.**
 
 Player-requested checkpoint, taken with both asleep at Owen's apartment, next session to resume at the morning wake-up rather than jumping ahead to the lake. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0023/` with `900_SAVE_MANIFEST.md`. Captured under frozen Profile 1.11 and Data Model 0.1.3 — no migration required on restore. `system/ID_REGISTRY.md` and `system/WORLDS_AND_CAMPAIGNS.md` updated in the same change.
+
+**2026-07-31, night — Profile 1.11 → 1.12 skill tracking adopted (`EVT-000105`; no fictional time consumed).**
+
+- Every skill now carries a lifetime successful-use count; mastery-tracked skills carry lifetime qualifying scenes and exact current progress.
+- Evidence-backed backfill: Stone Skin **1 use / 0 qualifying / 0/3**; Rupture **6 uses / 5 qualifying / 2/3 toward Adept**; Flash Step **1 use / 1 qualifying / 1/3**; Rank-Sight and Overpower **0 explicitly demonstrated applications**, no mastery track.
+- No skill Rank, effect, Mana cost, mastery level, combat result, or other campaign value changed. Immutable checkpoints through 0023 remain unchanged and require the applicable schema/profile readiness chain through Data Model 0.1.4 and Profile 1.12.

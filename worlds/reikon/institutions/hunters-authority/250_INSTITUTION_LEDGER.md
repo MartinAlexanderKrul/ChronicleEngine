@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000030
 canonical_record: REC-000030
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000019
-  event_time: "Year 3 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 3 AR"
+  real_date: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -29,12 +29,12 @@ subjects:
 ```yaml
 id: ENT-000041
 canonical_record: REC-000030
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000019
-  event_time: "Year 3 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 3 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Institution
 scope: local
 lifecycle: active

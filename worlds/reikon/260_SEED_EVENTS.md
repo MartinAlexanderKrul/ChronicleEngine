@@ -12,12 +12,12 @@ Events are immutable once instantiated; other records cite them as `source`.
 ```yaml
 id: REC-000034
 canonical_record: REC-000034
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -37,15 +37,15 @@ subjects:
 ```yaml
 id: EVT-000018
 canonical_record: REC-000034
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 0 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 0 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Event
 importance: mythic
-event_time: "Year 0 AR"
+game_date: "Year 0 AR"
 summary: "The first Rifts opened over a dozen cities at once and the first people Awakened. Origin unknown and disputed (ENT-000045). The founding event of the age; the calendar counts from it."
 ```
 
@@ -56,15 +56,15 @@ summary: "The first Rifts opened over a dozen cities at once and the first peopl
 ```yaml
 id: EVT-000019
 canonical_record: REC-000034
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 3 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 3 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Event
 importance: historical
-event_time: "Year 3 AR"
+game_date: "Year 3 AR"
 summary: "The Aldish Republic charters the Hunters' Authority to license, Rank, and direct the Awakened after the chaotic early years."
 ```
 
@@ -75,15 +75,15 @@ summary: "The Aldish Republic charters the Hunters' Authority to license, Rank, 
 ```yaml
 id: EVT-000020
 canonical_record: REC-000034
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 9 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 9 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Event
 importance: historical
-event_time: "Year 9 AR"
+game_date: "Year 9 AR"
 summary: "Private hunters incorporate as the Meridian Guild, turning Rift-clearance and the core trade into a business and, in time, a near-monopoly in Verholt."
 ```
 
@@ -94,15 +94,15 @@ summary: "Private hunters incorporate as the Meridian Guild, turning Rift-cleara
 ```yaml
 id: EVT-000021
 canonical_record: REC-000034
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 12 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 12 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Event
 importance: historical
-event_time: "Year 12 AR"
+game_date: "Year 12 AR"
 summary: "Scholars establish the Aurology Institute to study the Ledger and the Rifts empirically, over early objections that some things were not meant to be examined."
 ```
 
@@ -113,15 +113,15 @@ summary: "Scholars establish the Aurology Institute to study the Ledger and the 
 ```yaml
 id: EVT-000022
 canonical_record: REC-000034
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 18 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 18 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Event
 importance: historical
-event_time: "Year 18 AR"
+game_date: "Year 18 AR"
 summary: "After a devastating collapse, the Vigil of the Rupture coalesces into a mass movement holding the Rupture a judgment and empirical inquiry into it a profanity."
 ```
 
@@ -132,15 +132,15 @@ summary: "After a devastating collapse, the Vigil of the Rupture coalesces into 
 ```yaml
 id: EVT-000023
 canonical_record: REC-000034
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, early"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR, early"
+  real_date: "2026-07-13T00:00:00Z"
 type: Event
 importance: historical
-event_time: "Year 31 AR, early"
+game_date: "Year 31 AR, early"
 summary: "A Rift in the Danesmoor ward collapsed before clearance, overrunning a residential district (ENT-000033). The Authority's legitimacy crisis, and the pressure on the Kessler Rift, both date from here."
 ```
 
@@ -151,14 +151,14 @@ summary: "A Rift in the Danesmoor ward collapsed before clearance, overrunning a
 ```yaml
 id: EVT-000024
 canonical_record: REC-000034
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Event
 importance: archived
-event_time: "Year 31 AR"
+game_date: "Year 31 AR"
 summary: "An Institute team recovers a core from an unusually deep Rift (ENT-000050). Its properties give Dr. Vane a finding about the Rupture (ENT-000045) that the Vigil means to bury — the spark of the present crisis. Currently known to few."
 ```

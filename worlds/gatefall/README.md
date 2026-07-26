@@ -1,8 +1,8 @@
 # Gatefall World — Usage Guide
 
 **World Status:** Complete and playable
-**Version:** 0.1 (World Rule Profile 1.11)
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.3; Gatefall World Rule Profile 1.11
+**Version:** 0.1 (World Rule Profile 1.12)
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.4; Gatefall World Rule Profile 1.12
 **Created:** 2026-07-22
 
 ---
@@ -45,7 +45,7 @@ The world is original throughout — original names, characters, institutions, a
 
 **Core World Files:**
 - `200_WORLD_BIBLE.md` — Setting and narrative canon: the Gatefall event, the rules everyone knows, hunter-scale numbers, the World Ranking of S-ranks, the US and European layers, Chicago and Prague at national depth, the Jiu Valley Exclusion (the quarantined catastrophe region abroad), common knowledge by tier, the System's public (non-)existence, and an owner-only hidden-truth section not for players
-- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.11 (authoritative).** Every mechanic: levels/XP, causal base/effective stats, equipment power and item bonuses, boss imprints and item appearance identity, mana, vitality and injury, skills, the daily quest, seven-day streak-box upgrades and penalty zones, Gates, loot, economy and licensed ranked-gear resale, Daily Premium rotation bags, parties, the System's behavioral contract, the `/system` command and its fixed-width panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-ranking, pacing and lethality
+- `206_WORLD_RULE_PROFILE.md` — **World Rule Profile 1.12 (authoritative).** Every mechanic: levels/XP, causal base/effective stats, equipment power and item bonuses, boss imprints and item appearance identity, mana, vitality and injury, skills with successful-use and mastery-progress tracking, the daily quest, seven-day streak-box upgrades and penalty zones, Gates, loot, economy and licensed ranked-gear resale, Daily Premium rotation bags, parties, the System's behavioral contract, the `/system` command and its fixed-width panels, titles, instant dungeons, the class quest and hidden classes, exposure and re-ranking, pacing and lethality
 - `210_PLACES.md` — Geography: Chicago (Lakefront Gate Corridor, Red Line Corridor, the Cicero break scar, Horizon Tower, the BGM Region V field office) and Prague (Old Town Gate Cluster, Metro Corridor, the Libeň break scar, Karlov House, CGA headquarters)
 - `220_NOTABLE_FIGURES.md` — Fourteen NPCs — twelve city figures (six per city) plus two world-ranked S-ranks (the highest-ranked American and Brandhof's German ace) — each authored with a want, a fear/flaw, a secret, a live agenda, and named relationships: guild masters, regulators, S-ranks, appraisers, and black-market contacts
 - `240_RESOURCES.md` — The dual economy's material side: mana crystals, beast cores, ranked hunter gear, and System-shop consumables, priced by Rank
@@ -71,7 +71,7 @@ Gatefall declares **`/system`** as its diegetic command — the profile (Section
 
 - `/system` — the full window: name, level, class, title, XP, Health/Mana, base + equipment = effective stats, loadout, inventory, quests, skills, and gold
 - `/system quests` — active daily, urgent, and hidden quests with objectives, rewards, and deadlines
-- `/system skills` — known skills with rank, mana cost, and effect
+- `/system skills` — known skills with Rank, Mana cost, effect, successful-use total, and mastery progress
 - `/system equipment` — the nine-slot loadout, complete item lines, effective stats, and total armor reduction
 - `/system inventory` — dimensional storage contents with complete item lines, not Rank-only labels
 - `/system shop` — fixed Weapons, Armor, Accessories, Consumables, Runes, Keys, and Sell tabs at the protagonist's unlocked Ranks, plus six quantity-one System-exclusive Daily Premium offers rotating every morning at 06:00; each Rank-bearing premium offer rolls independently and can exceed the protagonist's System Rank — shopping happens in-window, never as an out-of-character question

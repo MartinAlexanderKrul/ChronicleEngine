@@ -5,12 +5,12 @@
 ```yaml
 id: REC-000039
 canonical_record: REC-000039
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000050
-  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
+  real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -29,12 +29,12 @@ subjects:
 ```yaml
 id: ENT-000052
 canonical_record: REC-000039
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000026
-  event_time: "Year 31 AR, first expedition"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, first expedition"
+  real_date: "2026-07-14T00:00:00Z"
 type: Discovery/Knowledge
 subtype: "creature archetype"
 scope: personal
@@ -55,12 +55,12 @@ canonical_state:
 ```yaml
 id: ENT-000053
 canonical_record: REC-000039
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000028
-  event_time: "Year 31 AR, first expedition"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, first expedition"
+  real_date: "2026-07-14T00:00:00Z"
 type: Discovery/Knowledge
 subtype: "creature archetype"
 scope: personal
@@ -81,12 +81,12 @@ canonical_state:
 ```yaml
 id: ENT-000079
 canonical_record: REC-000039
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000035
-  event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T16:44:48Z"
+  game_date: "Year 31 AR, recovery and Institute consultation"
+  real_date: "2026-07-15T16:44:48Z"
   uncertainty: "Reported to Daedalus by one interested party and unverified by him. What the Vigil's claimed jurisdiction rests on, what the Institute has actually found, and whether the pressure has any teeth are all unestablished in campaign canon. Daedalus dismissed the Vigil to Kalens's face as a 'mayfly cult' while agreeing to be careful."
 type: Discovery/Knowledge
 subtype: "political circumstance"
@@ -110,12 +110,12 @@ canonical_state:
 ```yaml
 id: ENT-000080
 canonical_record: REC-000039
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000035
-  event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T16:44:48Z"
+  game_date: "Year 31 AR, recovery and Institute consultation"
+  real_date: "2026-07-15T16:44:48Z"
   uncertainty: "Preliminary and explicitly unproven. Marta described it as early data from pattern analysis she had only recently got results from. Neither the magnitude of the effect nor its applicability to Warehouse 7 is established, and no rule in Reikon World Rule Profile 0.6 implements it."
 type: Discovery/Knowledge
 subtype: "stability theory"
@@ -141,12 +141,12 @@ canonical_state:
 ```yaml
 id: ENT-000064
 canonical_record: REC-000039
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: archived
 provenance:
   source: EVT-000048
-  event_time: "Year 31 AR, Warehouse 7 resonance extraction"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, Warehouse 7 resonance extraction"
+  real_date: "2026-07-22T00:00:00Z"
   uncertainty: "Why D-Rank Breakers guarded an E-Rank Rift, and whether their red-black cores indicate a broader pattern, remain unestablished. The severance mechanism worked as the Athenaeum's resonance theory predicted; whether this generalizes to other bonded cores is unestablished."
 type: Place
 subtype: "collapsed E-Rank Rift interior"
@@ -168,12 +168,12 @@ canonical_state:
 ```yaml
 id: ENT-000066
 canonical_record: REC-000039
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR, predating the first expedition"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, predating the first expedition"
+  real_date: "2026-07-14T00:00:00Z"
   uncertainty: "The landlord is unnamed and the tenancy's remaining term is unestablished."
 type: Place
 subtype: "rented lodging"
@@ -201,12 +201,12 @@ canonical_state:
 ```yaml
 id: ENT-000081
 canonical_record: REC-000039
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: archived
 provenance:
   source: EVT-000042
-  event_time: "Year 31 AR, Ashgate E-Rank Rift closure"
-  record_time: "2026-07-21T01:00:00Z"
+  game_date: "Year 31 AR, Ashgate E-Rank Rift closure"
+  real_date: "2026-07-21T01:00:00Z"
   uncertainty: "Whether the Ashgate core was bonded, anomalous, or an ordinary E-Rank core is now moot — it was extracted cleanly with no resistance, unlike Warehouse 7's core, which weakly suggests it was ordinary, but no formal appraisal has been done."
 type: Place
 subtype: "collapsed E-Rank Rift interior"
@@ -228,12 +228,12 @@ canonical_state:
 ```yaml
 id: ENT-000084
 canonical_record: REC-000039
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: archived
 provenance:
   source: EVT-000049
-  event_time: "Year 31 AR, tannery-district E-Rank Rift clear"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, tannery-district E-Rank Rift clear"
+  real_date: "2026-07-22T00:00:00Z"
   uncertainty: "Why this Rift held no guardians at all is unestablished. No Reikon rule requires a Rift to be guarded, so an empty Rift is not a contradiction of canon, but no in-fiction cause has been given either — flagged as an open worldbuilding question, not resolved by assumption."
 type: Place
 subtype: "collapsed E-Rank Rift interior"

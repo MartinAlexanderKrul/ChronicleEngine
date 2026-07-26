@@ -8,7 +8,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 $failures = [System.Collections.Generic.List[string]]::new()
-$currentSchemaVersion = "0.1.3"
+$currentSchemaVersion = "0.1.4"
 
 if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) {
     $RepositoryRoot = Split-Path -Parent $PSScriptRoot
@@ -338,6 +338,17 @@ foreach ($file in $canonicalFiles) {
         foreach ($field in @("canonical_record", "schema_version", "status", "provenance")) {
             if (-not [regex]::IsMatch($block, "(?m)^[ \\t]*$field[ \\t]*:")) {
                 Add-Failure "$relativePath`:$line object $id is missing required field '$field'."
+            }
+        }
+
+        foreach ($field in @("game_date", "real_date")) {
+            if (-not [regex]::IsMatch($block, "(?m)^[ \\t]+$field[ \\t]*:")) {
+                Add-Failure "$relativePath`:$line object $id provenance is missing required field '$field'."
+            }
+        }
+        foreach ($legacyField in @("event_time", "record_time")) {
+            if ([regex]::IsMatch($block, "(?m)^[ \\t]+$legacyField[ \\t]*:")) {
+                Add-Failure "$relativePath`:$line object $id uses legacy provenance field '$legacyField'; Data Model 0.1.4 requires game_date/real_date."
             }
         }
 

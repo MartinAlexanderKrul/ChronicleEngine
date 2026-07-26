@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000145 |
 | Record | `REC-` | Canonical Record | REC-000094 |
-| Event | `EVT-` | Event | EVT-000104 |
+| Event | `EVT-` | Event | EVT-000105 |
 | Relationship | `REL-` | Relationship | REL-000067 |
 
 ---
@@ -218,6 +218,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REC-000093 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0022/900_SAVE_MANIFEST.md` — player-requested checkpoint at Owen's apartment, captured under frozen Profile 1.11, no migration required on restore |
 | EVT-000104 | Event | Gatefall: Pendragon: dinner and night — Alexander told Owen he killed three bosses that afternoon (the largest voluntary disclosure to date), restated the gear commitment for Owen and proposed a future mining job, set weekend plans (jet skis, the lake), and said "I'll give you all the evenings" off guard; no Stat, XP, gold, or item change |
 | REC-000094 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0023/900_SAVE_MANIFEST.md` — player-requested checkpoint with both asleep at Owen's apartment, captured under frozen Profile 1.11, no migration required on restore |
+| EVT-000105 | Event | Gatefall: Pendragon: adoption of frozen Profile 1.12 skill tracking — successful uses, lifetime qualifying scenes, and current mastery progress backfilled from durable evidence; no fictional time or resolved outcome changed |
 
 ---
 

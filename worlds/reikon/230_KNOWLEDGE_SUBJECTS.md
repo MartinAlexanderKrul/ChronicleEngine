@@ -12,12 +12,12 @@ A Knowledge Subject persists as one subject; different holders keep divergent Kn
 ```yaml
 id: REC-000028
 canonical_record: REC-000028
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -39,12 +39,12 @@ subjects:
 ```yaml
 id: ENT-000045
 canonical_record: REC-000028
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Discovery/Knowledge
 scope: world
 lifecycle: active
@@ -64,12 +64,12 @@ canonical_state:
 ```yaml
 id: ENT-000046
 canonical_record: REC-000028
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Discovery/Knowledge
 scope: regional
 lifecycle: active
@@ -89,12 +89,12 @@ canonical_state:
 ```yaml
 id: ENT-000047
 canonical_record: REC-000028
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Discovery/Knowledge
 scope: local
 lifecycle: active
@@ -113,12 +113,12 @@ canonical_state:
 ```yaml
 id: REL-000034
 canonical_record: REC-000028
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000043, ENT-000045]
 type: knowledge-state
 qualities: "Holder: the Aurology Institute (validator). State: empirical and partial. Its recovered deep-Rift core (ENT-000050) implies the Rupture was not a judgment but a physical event with an origin that can be studied. Unpublished; validated only to the Institute's own standard, not proven."
@@ -127,12 +127,12 @@ qualities: "Holder: the Aurology Institute (validator). State: empirical and par
 ```yaml
 id: REL-000035
 canonical_record: REC-000028
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000044, ENT-000045]
 type: knowledge-state
 qualities: "Holder: the Vigil of the Rupture (restrictor). State: doctrinal. The Rupture was a judgment and the Ledger a covenant; empirical inquiry into it is profane and must be suppressed."
@@ -141,12 +141,12 @@ qualities: "Holder: the Vigil of the Rupture (restrictor). State: doctrinal. The
 ```yaml
 id: REL-000036
 canonical_record: REC-000028
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000041, ENT-000045]
 type: knowledge-state
 qualities: "Holder: the Hunters' Authority (pragmatist). State: agnostic-by-policy. It uses the Ledger and Ranks hunters; it does not ask what the Ledger is, and prefers the question unasked."
@@ -155,12 +155,12 @@ qualities: "Holder: the Hunters' Authority (pragmatist). State: agnostic-by-poli
 ```yaml
 id: REL-000037
 canonical_record: REC-000028
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000031, ENT-000045]
 type: knowledge-state
 qualities: "Holder: the Verholt public (myth). State: mixed folklore — the Rupture as punishment, as accident, as opportunity; belief tracks fear and the news of the last collapse more than evidence."
@@ -169,12 +169,12 @@ qualities: "Holder: the Verholt public (myth). State: mixed folklore — the Rup
 ```yaml
 id: REL-000038
 canonical_record: REC-000028
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000041, ENT-000046]
 type: knowledge-state
 qualities: "Holder: the Hunters' Authority. State: restriction/custody. Holds the Warden Class as outlawed knowledge; documents it only to suppress and prosecute it."
@@ -183,12 +183,12 @@ qualities: "Holder: the Hunters' Authority. State: restriction/custody. Holds th
 ```yaml
 id: REL-000039
 canonical_record: REC-000028
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000039, ENT-000047]
 type: knowledge-state
 qualities: "Holder: Tallow (practitioner). State: applied and monopolized. Can forge a Rank in practice; keeps the method close as leverage."

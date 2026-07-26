@@ -14,7 +14,7 @@ Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha
 
 Current Task:
 
-The Version 0.3 planned architecture was frozen with Decisions 072–075 accepted on 2026-07-23. Milestones **0.3.1–0.3.3 are implemented**, 0.3.4 is closed by drop (Decision 075), and the **Consistency Audit is complete**. Milestone **0.3.5 — Capability Validation and the Prototype Campaign is in progress**. Gatefall: Pendragon (`campaigns/gatefall_pendragon_001/`) is the designated live prototype; destructive, contradictory, and compatibility-failure cases remain non-canonical fixtures. Decision 076 was admitted on 2026-07-25 by explicit owner ruling as a foundational exception after live play demonstrated that relationship characterization did not survive promotion; it advances the Data Model to 0.1.3. The validation plan and evidence matrix live under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`. Further foundational findings require the same explicit governance disposition; prototype evidence is allowed to change architecture rather than being forced to validate a known defect.
+The Version 0.3 planned architecture was frozen with Decisions 072–075 accepted on 2026-07-23. Milestones **0.3.1–0.3.3 are implemented**, 0.3.4 is closed by drop (Decision 075), and the **Consistency Audit is complete**. Milestone **0.3.5 — Capability Validation and the Prototype Campaign is in progress**. Gatefall: Pendragon (`campaigns/gatefall_pendragon_001/`) is the designated live prototype; destructive, contradictory, and compatibility-failure cases remain non-canonical fixtures. Decision 076 was admitted on 2026-07-25 by explicit owner ruling as a foundational exception after live play demonstrated that relationship characterization did not survive promotion; it advances the Data Model to 0.1.3. Decision 077 was admitted on 2026-07-26 under the same explicit governance test after play demonstrated that ambiguous provenance names permitted fictional dates to masquerade as repository timestamps; it advances mutable live state to Data Model 0.1.4. The validation plan and evidence matrix live under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`. Further foundational findings require the same explicit governance disposition; prototype evidence is allowed to change architecture rather than being forced to validate a known defect.
 
 The prototype's terminology audit also normalized the worlds' E–S classification to the single term **Rank** (E-Rank through S-Rank). This is a world-authoring/consistency refinement under 0.3.5: Gatefall Profile 1.7 migrates persisted `system_tier` to `system_rank`, Profile 1.8 additively aligns the `/system` rendering contract, and Reikon Profile 0.11 is additive because its renamed Rank identifiers are derived rather than stored.
 
@@ -740,7 +740,7 @@ The combined evidence must exercise:
 - argumentless bootstrap and `/save`, `/load`, `/branch`, and `/restart` preserving their existing barriers;
 - branching into a disposable campaign with distinct identity and lineage;
 - restart on that disposable branch without registry rollback or identifier reuse;
-- and completion without a new command decision or foundational abstraction.
+- and completion with every prototype finding explicitly classified, governed, versioned, migrated where required, and revalidated, with no known architectural gap left unaddressed at postmortem.
 
 Gatefall main remains the canonical continuation. It is never corrupted, restarted, or given a retroactive baseline merely to manufacture evidence. Its lack of a baseline validates the `/restart` precondition; the full restart path is tested on a disposable branch.
 
@@ -755,7 +755,7 @@ Gatefall main remains the canonical continuation. It is never corrupted, restart
 
 - Every checkpoint in the repository restores or is explicitly quarantined.
 - A world profile is versioned and frozen, and save compatibility against it is enforced.
-- The prototype campaign completes without requiring a new foundational abstraction.
+- The prototype campaign reaches postmortem with every finding explicitly dispositioned under the accepted governance model and no known architectural gap left unaddressed; prototype-driven foundational changes are permitted only when classified, governed, versioned, migrated where required, and revalidated.
 
 ### Consequences of Approval (applied 2026-07-19)
 
@@ -1125,6 +1125,8 @@ Version 0.3 — Runtime & Persistence Hardening is in Capability Validation. Its
 It was surfaced by the 0.3 prototype rather than by design review — `campaigns/gatefall_pendragon_001/` promoted a personal relationship correctly, passed both gates at two successive checkpoints, and preserved the whole of that relationship's manner as one phrase. That is the prototype milestone doing exactly what it exists to do, and it is the first 0.3 finding to come from played evidence rather than audit.
 
 Delivered: the `Texture` field (Data Model Section 10), the Data Model **0.1.2 → 0.1.3** migration contract (Section 12.4.1), a resident Characterization Settlement obligation with named character-first triggers, a presence-only coverage gate in `tools/validate_repository.ps1`, and automatic Session Export on the Context-Preservation Barrier. Four pre-existing personal relationships across Prototype Alpha, Prototype Beta, and Reikon Awakening carry explicit *not recorded* markers rather than reconstructed manner; two of them, in the closed-terminal Prototype Alpha, are permanently unrecoverable and are retained as the clearest evidence of what the field prevents. Immutable checkpoints retain their captured schema and migrate only into mutable live state at a restoration readiness gate.
+
+**Decision 077 — Distinct Game and Repository Dates (2026-07-26), admitted to Version 0.3 by owner ruling as a second explicit foundational exception.** Gatefall live records had copied the fictional campaign clock into repository `record_time`, creating future-dated provenance. Delivered: Data Model **0.1.3 → 0.1.4**, universal `game_date` / `real_date` serialized keys, validator coverage, template and manifest alignment, and an immutable-checkpoint restoration chain that migrates only mutable live state. This finding is owned by milestone 0.3.5 and does not reopen the completed architecture milestones.
 
 ---
 

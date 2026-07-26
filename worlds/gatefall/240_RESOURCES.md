@@ -13,12 +13,12 @@ These four entries describe the standing **resource classes** the Gatefall econo
 ```yaml
 id: REC-000072
 canonical_record: REC-000072
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -54,12 +54,12 @@ The System shop's separate gold-buy schedule (`206` Section 12.5, Anchor A7): E 
 ```yaml
 id: ENT-000119
 canonical_record: REC-000072
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Resource
 subtype: ranked-family
 scope: world
@@ -98,12 +98,12 @@ The multiplier is authoritative and the figures follow from it, exactly as `206`
 ```yaml
 id: ENT-000120
 canonical_record: REC-000072
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Resource
 subtype: ranked-family
 scope: world
@@ -136,12 +136,12 @@ Weapons, armor pieces, shields, focuses, and accessories are ranked E through S.
 ```yaml
 id: ENT-000121
 canonical_record: REC-000072
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Resource
 subtype: ranked-family
 scope: world
@@ -186,12 +186,12 @@ Healing and Mana potions, antidotes, appraisal scrolls, stabilization seals, ran
 ```yaml
 id: ENT-000122
 canonical_record: REC-000072
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Resource
 subtype: ranked-family
 scope: world

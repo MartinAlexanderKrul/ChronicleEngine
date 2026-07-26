@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000069
 canonical_record: REC-000069
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -52,12 +52,12 @@ Its rivalry with Karlov Guild (ENT-000104) is open and structural — Horizon Eu
 ```yaml
 id: ENT-000105
 canonical_record: REC-000069
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Institution
 scope: regional
 lifecycle: active
@@ -81,12 +81,12 @@ canonical_state:
 ```yaml
 id: REL-000051
 canonical_record: REC-000069
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints:
   - ENT-000105
   - ENT-000104

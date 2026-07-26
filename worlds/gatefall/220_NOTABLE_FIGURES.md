@@ -18,12 +18,12 @@ All figures are original to Gatefall. No real person is depicted.
 ```yaml
 id: REC-000071
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -76,12 +76,12 @@ Okafor runs a meeting like a woman defusing something. She is unfailingly courte
 ```yaml
 id: ENT-000107
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -121,12 +121,12 @@ Vaughn is warm in the way of a man who has closed a great many deals across a gr
 ```yaml
 id: ENT-000108
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -163,12 +163,12 @@ Crane is quieter in a room than his press suggests — the public swagger is a c
 ```yaml
 id: ENT-000109
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -206,12 +206,12 @@ Brannigan talks like the shop floor she came off — fast, profane, funny, aller
 ```yaml
 id: ENT-000110
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -251,12 +251,12 @@ Foss is precise in a way that unnerves people — she notices the thing you were
 ```yaml
 id: ENT-000111
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -296,12 +296,12 @@ Deacon talks fast and low, all reassurance and hedged promises, a man who has ne
 ```yaml
 id: ENT-000112
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -339,12 +339,12 @@ Beran is courtly, anxious, and exhausting in his thoroughness — he answers a s
 ```yaml
 id: ENT-000113
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -384,12 +384,12 @@ Blažková is plain-spoken to the point of rudeness, because she is the one pers
 ```yaml
 id: ENT-000114
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -427,12 +427,12 @@ Karlov is old-world courteous and immovable, a man who receives you under the ph
 ```yaml
 id: ENT-000115
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -470,12 +470,12 @@ Ivana is quick, impatient, and better at the numbers than anyone else in Karlov 
 ```yaml
 id: ENT-000116
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -513,12 +513,12 @@ Dušek is polished in the American style his branch imported — first names, ea
 ```yaml
 id: ENT-000117
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -556,12 +556,12 @@ Sova is quiet, watchful, and almost impossible to read — she gives a meeting t
 ```yaml
 id: ENT-000118
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -601,12 +601,12 @@ Calloway is louder in public than in a room — the swagger is real on camera an
 ```yaml
 id: ENT-000123
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: world
 lifecycle: active
@@ -644,12 +644,12 @@ Reinhardt is precise, courteous, and immovable in the way of an engineer who has
 ```yaml
 id: ENT-000124
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Character
 scope: world
 lifecycle: active
@@ -673,12 +673,12 @@ Ten membership relationships bind the institution-affiliated figures to their in
 ```yaml
 id: REL-000052
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000107, ENT-000099]
 type: membership
 qualities: "Rank: Regional Director (federal appointee leading BGM Region V over both the Ranking Bench and the Auction Desk)."
@@ -687,12 +687,12 @@ qualities: "Rank: Regional Director (federal appointee leading BGM Region V over
 ```yaml
 id: REL-000053
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000108, ENT-000100]
 type: membership
 qualities: "Rank: Guildmaster and CEO (executive leadership of Horizon Guild; not awakened)."
@@ -701,12 +701,12 @@ qualities: "Rank: Guildmaster and CEO (executive leadership of Horizon Guild; no
 ```yaml
 id: REL-000054
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000109, ENT-000100]
 type: membership
 qualities: "Rank: S-Rank ace (drafted; Horizon Guild's public face and its one irreplaceable asset)."
@@ -715,12 +715,12 @@ qualities: "Rank: S-Rank ace (drafted; Horizon Guild's public face and its one i
 ```yaml
 id: REL-000055
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000110, ENT-000101]
 type: membership
 qualities: "Rank: Guildmaster (elected off the shop floor; leads Ironline Guild for the Floor against Ironline Capital)."
@@ -729,12 +729,12 @@ qualities: "Rank: Guildmaster (elected off the shop floor; leads Ironline Guild 
 ```yaml
 id: REL-000056
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000111, ENT-000099]
 type: membership
 qualities: "Rank: Senior licensed appraiser on the Ranking Bench (B-Rank Perception-class awakened, non-combatant)."
@@ -743,12 +743,12 @@ qualities: "Rank: Senior licensed appraiser on the Ranking Bench (B-Rank Percept
 ```yaml
 id: REL-000057
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000113, ENT-000103]
 type: membership
 qualities: "Rank: Director (career civil servant leading the Czech Gate Administration and its Retention Office)."
@@ -757,12 +757,12 @@ qualities: "Rank: Director (career civil servant leading the Czech Gate Administ
 ```yaml
 id: REL-000058
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000114, ENT-000104]
 type: membership
 qualities: "Rank: Contracted S-Rank hunter (Karlov Guild's marquee hunter; cannot be compelled, contracted by choice)."
@@ -771,12 +771,12 @@ qualities: "Rank: Contracted S-Rank hunter (Karlov Guild's marquee hunter; canno
 ```yaml
 id: REL-000059
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000115, ENT-000104]
 type: membership
 qualities: "Rank: Guildmaster (head of the family-run Karlov Guild and its inner circle, the Family)."
@@ -785,12 +785,12 @@ qualities: "Rank: Guildmaster (head of the family-run Karlov Guild and its inner
 ```yaml
 id: REL-000060
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000116, ENT-000104]
 type: membership
 qualities: "Rank: Heir and lead of the New Contracts Desk (C-Rank hunter; the guild's modernizing faction)."
@@ -799,12 +799,12 @@ qualities: "Rank: Heir and lead of the New Contracts Desk (C-Rank hunter; the gu
 ```yaml
 id: REL-000061
 canonical_record: REC-000071
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints: [ENT-000117, ENT-000105]
 type: membership
 qualities: "Rank: Prague branch chief (leads Horizon Guild — Europe's Prague Expansion Team; B-Rank, Czech-born)."

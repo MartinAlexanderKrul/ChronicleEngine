@@ -11,12 +11,12 @@ This is a multi-object ledger of immutable Events (`EVT-`). They are the provena
 ```yaml
 id: REC-000008
 canonical_record: REC-000008
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -36,12 +36,12 @@ subjects:
 ```yaml
 id: EVT-000001
 canonical_record: REC-000008
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 40 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 40 RR"
+  real_date: "2026-07-11T00:00:00Z"
 kind: founding
 importance: historical
 participants:
@@ -56,12 +56,12 @@ description: "Halden was established at the Verran ford. Its earliest river work
 ```yaml
 id: EVT-000002
 canonical_record: REC-000008
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 20 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 20 RR"
+  real_date: "2026-07-11T00:00:00Z"
 kind: founding
 importance: historical
 participants:
@@ -76,12 +76,12 @@ description: "The Order of the Ember was established. Over generations it gained
 ```yaml
 id: EVT-000003
 canonical_record: REC-000008
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 180 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 180 RR"
+  real_date: "2026-07-11T00:00:00Z"
 kind: founding
 importance: historical
 participants:
@@ -96,12 +96,12 @@ description: "The Athenaeum was chartered as a college of natural philosophy, va
 ```yaml
 id: EVT-000004
 canonical_record: REC-000008
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 250 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 250 RR"
+  real_date: "2026-07-11T00:00:00Z"
 kind: founding
 importance: historical
 participants:
@@ -117,12 +117,12 @@ description: "The Glaziers' Guild was chartered with a monopoly on Halden glassw
 ```yaml
 id: EVT-000005
 canonical_record: REC-000008
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 311 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 311 RR"
+  real_date: "2026-07-11T00:00:00Z"
 kind: validation
 importance: historical
 participants:
@@ -139,12 +139,12 @@ description: "Fellow Corvane's finding that the marsh-fever spreads through tain
 ```yaml
 id: EVT-000006
 canonical_record: REC-000008
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 311 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 311 RR"
+  real_date: "2026-07-11T00:00:00Z"
 kind: ruling
 importance: historical
 participants:
@@ -160,12 +160,12 @@ description: "The Order of the Ember condemned the marsh-fever finding as heresy
 ```yaml
 id: EVT-000007
 canonical_record: REC-000008
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 300–312 RR (ongoing)"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 300–312 RR (ongoing)"
+  real_date: "2026-07-11T00:00:00Z"
 kind: decline
 importance: historical
 participants:

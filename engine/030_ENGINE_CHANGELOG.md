@@ -12,6 +12,24 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-26 — Decision 077 completed: explicit game and real provenance dates
+
+Live Gatefall provenance copied the fictional campaign clock into repository `record_time`, producing future-dated real provenance and repeating the clock-domain mismatch previously found in Decision 076's original date.
+
+**Data Model:** **0.1.3 → 0.1.4**. Serialized provenance now uses `game_date` for in-world time and `real_date` for actual repository time. `real_date` may retain honest date-only precision when an exact historical clock time cannot be recovered and may never be derived from game time.
+**Migration:** every mutable live Persistent Object and Canonical Record is retagged 0.1.4 and uses the renamed keys. Demonstrably fictional future “real” values in Gatefall live state are corrected only to the repository date supported by evidence. Immutable checkpoints remain byte-unchanged and migrate into mutable live state at readiness.
+**Enforcement:** templates, save-manifest vocabulary, current bindings, and the Repository Validation Barrier advance together; the validator requires both new provenance keys and rejects legacy keys in live objects.
+**Engine Version:** Unchanged; remains 0.2.0.
+
+## 2026-07-26 — Gatefall Profile 1.12: explicit skill-use and mastery counters
+
+Gatefall world authoring under Decision 062 and Version 0.3 milestone 0.3.5.
+
+**Skill ledger:** every skill records lifetime successful uses; mastery-tracked skills additionally record lifetime qualifying scenes and exact 0/3 progress at the current mastery level. Counting is closed for missed uses, multi-target activations, sustained effects, passives, non-dangerous tests, and multiple casts inside one continuous scene.
+**Live backfill:** Stone Skin 1 use / 0 qualifying / 0/3; Rupture 6 / 5 / Practiced 2/3; Flash Step 1 / 1 / 1/3; Rank-Sight and Overpower each 0 explicitly demonstrated applications with no mastery track.
+**Profile version:** frozen **1.11→1.12**, classified **migrating** because stored skill entries gain counters. No skill effect, Rank, cost, mastery level, or resolved outcome changes; immutable checkpoints remain unchanged.
+**Engine Version:** Unchanged; remains 0.2.0.
+
 ## 2026-07-26 — Gatefall Profile 1.11: item identity and rotation diversity
 
 Gatefall world authoring under Decision 062 and Version 0.3 milestone 0.3.5; no Engine Rule, Data Model section, Runtime mechanism, or decision number changed.

@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000014
 canonical_record: REC-000014
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000008
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR, late spring"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -32,12 +32,12 @@ subjects:
 ```yaml
 id: EVT-000008
 canonical_record: REC-000014
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR, late spring"
+  real_date: "2026-07-11T00:00:00Z"
 kind: arrival
 importance: archived
 participants:
@@ -53,12 +53,12 @@ description: "Ilse Varn, a newly licensed physician-scholar and outsider, arrive
 ```yaml
 id: EVT-000009
 canonical_record: REC-000014
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000009-session-play
-  event_time: "Year 312 RR, late spring (evening)"
-  record_time: "2026-07-12T00:00:00Z"
+  game_date: "Year 312 RR, late spring (evening)"
+  real_date: "2026-07-12T00:00:00Z"
 kind: meeting
 importance: current
 participants:
@@ -75,12 +75,12 @@ description: "Ilse presents her letter to Corvane at the Athenaeum after a direc
 ```yaml
 id: EVT-000010
 canonical_record: REC-000014
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000010-session-play
-  event_time: "Year 312 RR, late spring (day 2, morning)"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, late spring (day 2, morning)"
+  real_date: "2026-07-13T00:00:00Z"
 kind: crisis
 importance: archived
 participants:
@@ -96,12 +96,12 @@ description: "Waking to the weight of her commitment, Ilse suffers an emotional 
 ```yaml
 id: EVT-000011
 canonical_record: REC-000014
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000011-session-play
-  event_time: "Year 312 RR, late spring (days 2–8)"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, late spring (days 2–8)"
+  real_date: "2026-07-13T00:00:00Z"
 kind: interlude
 importance: current
 participants:
@@ -143,12 +143,12 @@ Extended session checkpoint saved.
 ```yaml
 id: EVT-000012
 canonical_record: REC-000014
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000012-session-play
-  event_time: "Year 312 RR, late spring (evening, day 8)"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, late spring (evening, day 8)"
+  real_date: "2026-07-13T00:00:00Z"
 kind: decision
 importance: current
 participants:
@@ -188,12 +188,12 @@ The commitment is made. The strategy is set. The risk is substantial.
 ```yaml
 id: EVT-000013
 canonical_record: REC-000014
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000013-session-play
-  event_time: "Year 312 RR, late spring (days 13-17)"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, late spring (days 13-17)"
+  real_date: "2026-07-13T00:00:00Z"
 kind: sequence
 importance: terminal
 participants:

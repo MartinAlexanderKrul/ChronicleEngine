@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000011
 canonical_record: REC-000011
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000008
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR, late spring"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -30,12 +30,12 @@ subjects:
 ```yaml
 id: ENT-000019
 canonical_record: REC-000011
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Resource
 subtype: instruments
 scope: personal
@@ -59,12 +59,12 @@ canonical_state:
 ```yaml
 id: ENT-000020
 canonical_record: REC-000011
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR, early spring"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR, early spring"
+  real_date: "2026-07-11T00:00:00Z"
 type: Resource
 subtype: letter
 scope: personal

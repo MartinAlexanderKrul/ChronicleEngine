@@ -12,12 +12,12 @@ Objectives are tracked concerns, not a quest system (Decision 030). They are cam
 ```yaml
 id: REC-000078
 canonical_record: REC-000078
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000104
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
+  game_date: "2026-07-31, night"
+  real_date: "2026-07-26"
 role: canonical ledger
 scope: campaign
 subjects: []

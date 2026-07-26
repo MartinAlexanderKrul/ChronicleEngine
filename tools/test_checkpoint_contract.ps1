@@ -118,7 +118,7 @@ function Test-CheckpointContract {
                 # (Rules 13.2), so they are exempt; the capture date is itself
                 # immutable manifest content, which makes it the mechanical
                 # discriminator.
-                $createdMatch = [regex]::Match($manifestText, '(?m)^[ \t]*(?:created|record_time):[ \t]*"?(\d{4}-\d{2}-\d{2})')
+                $createdMatch = [regex]::Match($manifestText, '(?m)^[ \t]*(?:real_date|created|record_time):[ \t]*"?(\d{4}-\d{2}-\d{2})')
                 $preDecision074 = $createdMatch.Success -and ([datetime]$createdMatch.Groups[1].Value -lt [datetime]'2026-07-23')
                 if (-not $isOldForm -and -not $preDecision074) {
                     $profileField = [regex]::Match($manifestText, '(?m)^[ \t]*world_rule_profile:[ \t]*(.*?)[ \t]*\r?$')

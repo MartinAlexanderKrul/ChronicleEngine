@@ -15,12 +15,12 @@ The global seed (`EVT-000055`) is written to be consistent with, and never to qu
 ```yaml
 id: REC-000073
 canonical_record: REC-000073
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -40,16 +40,16 @@ A clearance contract BGM Region V posted for a Red Line Corridor detection reads
 ```yaml
 id: EVT-000051
 canonical_record: REC-000073
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-18"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-18"
+  real_date: "2026-07-22T00:00:00Z"
 type: Event
 kind: detection
 importance: immediate
-event_time: "2026-07-18"
+game_date: "2026-07-18"
 participants:
   - ENT-000090
   - ENT-000099
@@ -65,16 +65,16 @@ Ironline Guild's recruiting war against Horizon Guild has moved from the hiring 
 ```yaml
 id: EVT-000052
 canonical_record: REC-000073
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-06-10"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-06-10"
+  real_date: "2026-07-22T00:00:00Z"
 type: Event
 kind: escalation
 importance: immediate
-event_time: "2026-06-10"
+game_date: "2026-06-10"
 participants:
   - ENT-000099
   - ENT-000100
@@ -91,16 +91,16 @@ A specific Old Town Gate Cluster detection has been re-ranked upward twice withi
 ```yaml
 id: EVT-000053
 canonical_record: REC-000073
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-05-02"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-05-02"
+  real_date: "2026-07-22T00:00:00Z"
 type: Event
 kind: re-ranking
 importance: immediate
-event_time: "2026-05-02"
+game_date: "2026-05-02"
 participants:
   - ENT-000094
   - ENT-000103
@@ -117,16 +117,16 @@ The CGA has begun favoring Karlov Guild in discretionary contract calls specific
 ```yaml
 id: EVT-000054
 canonical_record: REC-000073
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-06-25"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-06-25"
+  real_date: "2026-07-22T00:00:00Z"
 type: Event
 kind: allocation
 importance: immediate
-event_time: "2026-06-25"
+game_date: "2026-06-25"
 participants:
   - ENT-000103
   - ENT-000104
@@ -144,16 +144,16 @@ Regulators worldwide have quietly confirmed the break rate is not merely climbin
 ```yaml
 id: EVT-000055
 canonical_record: REC-000073
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-01"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-01"
+  real_date: "2026-07-22T00:00:00Z"
 type: Event
 kind: briefing
 importance: immediate
-event_time: "2026-07-01"
+game_date: "2026-07-01"
 participants:
   - ENT-000099
   - ENT-000103

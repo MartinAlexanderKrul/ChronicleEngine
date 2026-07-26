@@ -9,12 +9,12 @@
 ```yaml
 id: REC-000001
 canonical_record: REC-000001
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -30,12 +30,12 @@ subjects:
 ```yaml
 id: ENT-000001
 canonical_record: REC-000001
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
   uncertainty: "The Reach is far older than Halden; no founding date is claimed for the valley itself."
 type: Place
 subtype: region
@@ -58,12 +58,12 @@ canonical_state:
 ```yaml
 id: ENT-000002
 canonical_record: REC-000001
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000001
-  event_time: "Year 40 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 40 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Settlement/Kingdom
 subtype: city
 scope: local
@@ -87,12 +87,12 @@ canonical_state:
 ```yaml
 id: REL-000010
 canonical_record: REC-000001
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000002
-  event_time: "Year 20 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 20 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000004
   - ENT-000002

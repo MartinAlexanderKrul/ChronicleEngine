@@ -5,12 +5,12 @@
 ```yaml
 id: REC-000044
 canonical_record: REC-000044
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000050
-  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
-  record_time: "2026-07-21T03:00:00Z"
+  game_date: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
+  real_date: "2026-07-21T03:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects: []

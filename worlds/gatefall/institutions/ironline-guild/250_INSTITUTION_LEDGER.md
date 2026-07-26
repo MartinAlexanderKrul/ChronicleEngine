@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000065
 canonical_record: REC-000065
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -51,12 +51,12 @@ The recruiting war against Horizon Guild (ENT-000100) is Ironline's whole strate
 ```yaml
 id: ENT-000101
 canonical_record: REC-000065
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Institution
 scope: local
 lifecycle: active

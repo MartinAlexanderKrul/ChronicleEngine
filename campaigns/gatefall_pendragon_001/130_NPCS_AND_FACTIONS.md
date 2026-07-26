@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000077
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000104
-  event_time: "2026-07-28 to 2026-07-31 night"
-  record_time: "2026-08-01T04:00:00Z"
+  game_date: "2026-07-28 to 2026-07-31 night"
+  real_date: "2026-07-26"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -58,12 +58,12 @@ Crew lead and striker; mid-30s, an experienced Gate clearer with three-plus clea
 ```yaml
 id: ENT-000126
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000058
-  event_time: "2026-07-23, Coalition case table"
-  record_time: "2026-07-24T09:00:00Z"
+  game_date: "2026-07-23, Coalition case table"
+  real_date: "2026-07-24T09:00:00Z"
 type: Character
 subtype: crew leader / striker
 scope: local
@@ -91,12 +91,12 @@ The crew's sensor: an awakened whose gift reads Gate interiors — layout, popul
 ```yaml
 id: ENT-000127
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000058
-  event_time: "2026-07-23, crew briefing"
-  record_time: "2026-07-24T09:00:00Z"
+  game_date: "2026-07-23, crew briefing"
+  real_date: "2026-07-24T09:00:00Z"
 type: Character
 subtype: sensor
 scope: local
@@ -124,12 +124,12 @@ Striker and Tanya's brother; broad-shouldered, blunt-force fighter carrying a re
 ```yaml
 id: ENT-000128
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000058
-  event_time: "2026-07-24, Gate entrance"
-  record_time: "2026-07-24T09:00:00Z"
+  game_date: "2026-07-24, Gate entrance"
+  real_date: "2026-07-24T09:00:00Z"
 type: Character
 subtype: striker
 scope: local
@@ -155,12 +155,12 @@ The crew's mender — the rare awakened who heals by touch, closing wounds mid-f
 ```yaml
 id: ENT-000129
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000058
-  event_time: "2026-07-24, Gate entrance"
-  record_time: "2026-07-24T09:00:00Z"
+  game_date: "2026-07-24, Gate entrance"
+  real_date: "2026-07-24T09:00:00Z"
 type: Character
 subtype: mender
 scope: local
@@ -186,12 +186,12 @@ Senior coordinator at the Windy City Hunters Coalition desk; about fifty, solid 
 ```yaml
 id: ENT-000130
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000058
-  event_time: "2026-07-23, Coalition desk"
-  record_time: "2026-07-24T09:00:00Z"
+  game_date: "2026-07-23, Coalition desk"
+  real_date: "2026-07-24T09:00:00Z"
 type: Character
 subtype: Coalition coordinator
 scope: local
@@ -216,12 +216,12 @@ Owner and operator of **Ironbound**, the independent gear shop on Milwaukee Aven
 ```yaml
 id: ENT-000131
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000058
-  event_time: "2026-07-23, Ironbound gear shop"
-  record_time: "2026-07-24T09:00:00Z"
+  game_date: "2026-07-23, Ironbound gear shop"
+  real_date: "2026-07-24T09:00:00Z"
 type: Character
 subtype: gear-shop owner
 scope: local
@@ -248,12 +248,12 @@ A custom E-Rank/D-Rank gear shop in Chicago's warehouse district, one of three v
 ```yaml
 id: ENT-000132
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000058
-  event_time: "2026-07-23, named at the Coalition desk"
-  record_time: "2026-07-24T09:00:00Z"
+  game_date: "2026-07-23, named at the Coalition desk"
+  real_date: "2026-07-24T09:00:00Z"
 type: Institution
 subtype: gear vendor
 scope: local
@@ -274,12 +274,12 @@ Horizon Guild's affiliated gear outfitter on Michigan Avenue, the third vendor o
 ```yaml
 id: ENT-000133
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000058
-  event_time: "2026-07-23, named at the Coalition desk"
-  record_time: "2026-07-24T09:00:00Z"
+  game_date: "2026-07-23, named at the Coalition desk"
+  real_date: "2026-07-24T09:00:00Z"
 type: Institution
 subtype: gear vendor
 scope: local
@@ -300,12 +300,12 @@ A larger licensed hunter outfitter than Ironbound — a proper storefront with c
 ```yaml
 id: ENT-000140
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000083
-  event_time: "2026-07-29, afternoon"
-  record_time: "2026-07-30T09:00:00Z"
+  game_date: "2026-07-29, afternoon"
+  real_date: "2026-07-26"
 type: Institution
 subtype: gear vendor
 scope: local
@@ -326,12 +326,12 @@ Logistics coordinator for a corporate-adjacent contractor running harvest-hire C
 ```yaml
 id: ENT-000134
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-1-gameplay
-  event_time: "2026-07-25, Cicero Scar staging"
-  record_time: "2026-07-25T00:00:00Z"
+  game_date: "2026-07-25, Cicero Scar staging"
+  real_date: "2026-07-25T00:00:00Z"
 type: Character
 subtype: contractor logistics coordinator
 scope: local
@@ -356,12 +356,12 @@ Logistics coordinator for the same corporate-adjacent contractor, running a sepa
 ```yaml
 id: ENT-000135
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: session-1-gameplay
-  event_time: "2026-07-26, staging near the Frozen Gallery Gate"
-  record_time: "2026-07-26T00:00:00Z"
+  game_date: "2026-07-26, staging near the Frozen Gallery Gate"
+  real_date: "2026-07-26T00:00:00Z"
 type: Character
 subtype: contractor logistics coordinator
 scope: local
@@ -388,12 +388,12 @@ Striker and crew lead running her own undersubscribed five-hunter crew. Not rela
 ```yaml
 id: ENT-000136
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000069
-  event_time: "2026-07-27, arranged by phone through Kesha Morrison"
-  record_time: "2026-07-28T09:00:00Z"
+  game_date: "2026-07-27, arranged by phone through Kesha Morrison"
+  real_date: "2026-07-26"
 type: Character
 subtype: crew leader / striker
 scope: local
@@ -421,12 +421,12 @@ Striker on Priya Okafor's crew; broad-shouldered, economical with words, carries
 ```yaml
 id: ENT-000137
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000070
-  event_time: "2026-07-28, staging and Gate entry"
-  record_time: "2026-07-28T09:00:00Z"
+  game_date: "2026-07-28, staging and Gate entry"
+  real_date: "2026-07-26"
 type: Character
 subtype: striker (ranged)
 scope: local
@@ -454,12 +454,12 @@ Sensor/reader on Priya Okafor's crew; reads a room and its threats before anyone
 ```yaml
 id: ENT-000138
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000070
-  event_time: "2026-07-28, staging and Gate entry"
-  record_time: "2026-07-28T09:00:00Z"
+  game_date: "2026-07-28, staging and Gate entry"
+  real_date: "2026-07-26"
 type: Character
 subtype: sensor / reader
 scope: local
@@ -487,12 +487,12 @@ Mender on Priya Okafor's crew; lean, unhurried, chronically late, medical kit sl
 ```yaml
 id: ENT-000139
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000070
-  event_time: "2026-07-28, staging and Gate entry"
-  record_time: "2026-07-28T09:00:00Z"
+  game_date: "2026-07-28, staging and Gate entry"
+  real_date: "2026-07-26"
 type: Character
 subtype: mender
 scope: local
@@ -543,12 +543,12 @@ Defined in `110_WORLD_LEDGER.md` (`REC-000075`). Alexander's freelancer registra
 ```yaml
 id: REL-000063
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000058
-  event_time: "2026-07-23, contract signed"
-  record_time: "2026-07-24T09:00:00Z"
+  game_date: "2026-07-23, contract signed"
+  real_date: "2026-07-24T09:00:00Z"
 endpoints:
   - ENT-000125
   - ENT-000126
@@ -563,12 +563,12 @@ history: "Formed at the Coalition case table on 2026-07-23 when Alexander, direc
 ```yaml
 id: REL-000064
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000063
-  event_time: "2026-07-25, Coalition desk and Cicero Scar staging"
-  record_time: "2026-07-25T00:00:00Z"
+  game_date: "2026-07-25, Coalition desk and Cicero Scar staging"
+  real_date: "2026-07-25T00:00:00Z"
 endpoints:
   - ENT-000125
   - ENT-000134
@@ -583,12 +583,12 @@ history: "Formed 2026-07-25 when Kesha Morrison surfaced the Cicero Scar harvest
 ```yaml
 id: REL-000065
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000069
-  event_time: "2026-07-27, arranged by phone through Kesha Morrison"
-  record_time: "2026-07-27T09:00:00Z"
+  game_date: "2026-07-27, arranged by phone through Kesha Morrison"
+  real_date: "2026-07-26"
 endpoints:
   - ENT-000125
   - ENT-000136
@@ -603,12 +603,12 @@ history: "Formed 2026-07-27 when Kesha Morrison, following up on her promised mo
 ```yaml
 id: REL-000066
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000081
-  event_time: "2026-07-28 to 2026-07-29, from the bar through the following morning"
-  record_time: "2026-07-29T14:11:00Z"
+  game_date: "2026-07-28 to 2026-07-29, from the bar through the following morning"
+  real_date: "2026-07-26"
 endpoints:
   - ENT-000125
   - ENT-000139
@@ -668,12 +668,12 @@ Co-owner of Sable & Kern, a small two-partner harvest contractor posting its fir
 ```yaml
 id: ENT-000141
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000093
-  event_time: "2026-07-31, Coalition case table and Halsted Depot"
-  record_time: "2026-07-31T15:30:00Z"
+  game_date: "2026-07-31, Coalition case table and Halsted Depot"
+  real_date: "2026-07-26"
 type: Character
 subtype: contractor co-owner
 scope: local
@@ -697,12 +697,12 @@ Co-owner of Sable & Kern; older than Sable, handles logistics, scale, and the nu
 ```yaml
 id: ENT-000142
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000093
-  event_time: "2026-07-31, Coalition case table and Halsted Depot"
-  record_time: "2026-07-31T15:30:00Z"
+  game_date: "2026-07-31, Coalition case table and Halsted Depot"
+  real_date: "2026-07-26"
 type: Character
 subtype: contractor co-owner
 scope: local
@@ -726,12 +726,12 @@ Experienced harvester on the Sable & Kern crew; more C-Rank vein experience than
 ```yaml
 id: ENT-000143
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000093
-  event_time: "2026-07-31, Halsted Depot"
-  record_time: "2026-07-31T15:30:00Z"
+  game_date: "2026-07-31, Halsted Depot"
+  real_date: "2026-07-26"
 type: Character
 subtype: harvester
 scope: local
@@ -755,12 +755,12 @@ Harvester on the Sable & Kern crew; younger, wiry, worked the second assigned ve
 ```yaml
 id: ENT-000144
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000093
-  event_time: "2026-07-31, Halsted Depot"
-  record_time: "2026-07-31T15:30:00Z"
+  game_date: "2026-07-31, Halsted Depot"
+  real_date: "2026-07-26"
 type: Character
 subtype: harvester
 scope: local
@@ -784,12 +784,12 @@ A small, two-partner harvest-hire contractor, its first job posted through the W
 ```yaml
 id: ENT-000145
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000093
-  event_time: "2026-07-31, named at the Coalition desk"
-  record_time: "2026-07-31T15:30:00Z"
+  game_date: "2026-07-31, named at the Coalition desk"
+  real_date: "2026-07-26"
 type: Institution
 subtype: harvest-hire contractor
 scope: local
@@ -812,12 +812,12 @@ canonical_state:
 ```yaml
 id: REL-000067
 canonical_record: REC-000077
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000095
-  event_time: "2026-07-31, Coalition desk and Halsted Depot"
-  record_time: "2026-07-31T15:30:00Z"
+  game_date: "2026-07-31, Coalition desk and Halsted Depot"
+  real_date: "2026-07-26"
 endpoints:
   - ENT-000125
   - ENT-000145

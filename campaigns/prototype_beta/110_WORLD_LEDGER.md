@@ -12,12 +12,12 @@ This ledger records what is visible and accessible to the campaign. It reference
 ```yaml
 id: REC-000019
 canonical_record: REC-000019
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000014
-  event_time: "Year 312 RR, early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, early summer"
+  real_date: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -30,12 +30,12 @@ subjects:
 ```yaml
 id: REL-000028
 canonical_record: REC-000019
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000017
-  event_time: "Year 312 RR, early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, early summer"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints:
   - ENT-000021
   - ENT-000013
@@ -72,12 +72,12 @@ Not visible to Kael at start: the Guild's tempering method itself, Corvane's evi
 ```yaml
 id: REL-000020
 canonical_record: REC-000019
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000014
-  event_time: "Year 312 RR, early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, early summer"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints:
   - ENT-000021
   - ENT-000013
@@ -89,12 +89,12 @@ state: "Kael knows the fever dispute exists and that speaking on the forbidden c
 ```yaml
 id: REL-000021
 canonical_record: REC-000019
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000014
-  event_time: "Year 312 RR, early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, early summer"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints:
   - ENT-000021
   - ENT-000012
@@ -106,12 +106,12 @@ state: "Aware of the product, not the method."
 ```yaml
 id: REL-000022
 canonical_record: REC-000019
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000014
-  event_time: "Year 312 RR, early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, early summer"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints:
   - ENT-000021
   - ENT-000014

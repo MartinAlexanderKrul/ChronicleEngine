@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000074
 canonical_record: REC-000074
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000104
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
+  source: EVT-000105
+  game_date: "2026-07-31, night"
+  real_date: "2026-07-26T11:35:39+02:00"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -29,12 +29,12 @@ subjects:
 ```yaml
 id: ENT-000125
 canonical_record: REC-000074
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000056
-  event_time: "2026-07-22"
-  record_time: "2026-07-23T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-23T00:00:00Z"
 type: Character
 scope: personal
 lifecycle: active
@@ -66,11 +66,12 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.11"
+    profile_version: "1.12"
     profile_layout_event: EVT-000086
     profile_economy_event: EVT-000090
     profile_streak_event: EVT-000092
     profile_itemdiversity_event: EVT-000100
+    profile_skilltracking_event: EVT-000105
     profile_migration_event: EVT-000082
     onset_event: EVT-000059
     onset_time: "2026-07-24, inside the Red Line Corridor Gate, mid-fight against the crew's remaining beasts and the elite"
@@ -111,11 +112,11 @@ canonical_state:
       accessory_2: "Ascendant Hunter's Band [D-Rank] — Good · Strength +5 · purchased via Daily Premium, 720 g (`EVT-000088`) · EQUIPPED (`EVT-000094`) — duplicate accessory type, both bonuses apply per Profile Section 11.5"
       total_physical_reduction: "≈23% combined across five worn pieces (coif 5%, torso 6%, gauntlets 8%, shin guards 3%, boots 3%, multiplicative per Section 11.5) — unchanged this session; only the weapon slots moved"
     skills_known:
-      - "Stone Skin [D-Rank] ★☆☆☆☆ Novice · Mana 4 · 30% physical damage reduction while sustained; ends when Mana lapses or dropped. Learned via a Premium Rune (`EVT-000083`); the rune's offer Rank rolled E, but the rune taught at Stone Skin's native D floor per Section 8.1's premium-rune rule."
-      - "Rupture [E-Rank] ★★☆☆☆ Practiced · Mana 11 · a heavy strike at **×2.15 of its skill-rank baseline** (E-Rank baseline 10, Section 7.2), resolving as `(10 + equipped focus power) × 2.15 × result multiplier` under Section 6.2; the die resolves whether it lands and its degree. Learned 2026-07-30 (`EVT-000088`). **Mastery advanced Novice → Practiced on its third materially-distinct contributing use** (`EVT-000099`, Section 7.4): the first dungeon's boss kill (`EVT-000097`), the Hive's second beast (`EVT-000099`), and the Hive's boss (`EVT-000099`) — a fourth cast, on the Hive's third beast, missed entirely and did not count toward mastery. Multiplier and Mana cost updated per the standard per-level formula; magnitude and cost changes apply from this point forward, not retroactively. **2 of 3 qualifying scenes toward Adept** as of `EVT-000101`: the third dungeon's first-chamber elite kill and the third dungeon's boss fight (two Rupture casts within one continuous engagement count as one scene toward mastery, not two)."
-      - "Flash Step [D-Rank] ★☆☆☆☆ Novice · Mana 8 · close or break line-of-sight distance instantly, once, granting +1 modifier step to the immediate follow-up action. Learned `EVT-000097` — the first instant dungeon's boss-drop rune rolled Stone Skin (already known); rerolled under an extended Section 12.5 ruling (dropped runes now reroll on a known-skill result the same way Premium Runes do) and landed Flash Step at its native D-Rank floor. Unused since learning — zero qualifying scenes toward Practiced."
-      - "Rank-Sight · Passive · Stat-milestone skill, awarded automatically on base Perception reaching **30** (Section 4.4). Reads the true Rank of any Gate at or below the Bearer's System Rank, converting an unconfirmed reading to confirmed by capability and bypassing the Section 9.5 true-Rank entry roll within that range. Currently covers **E-Rank** Gates (System Rank E); the range widens with System Rank, and Deep Sight at base Perception 50 would extend it one full Rank above. Carries no Mana cost and no mastery track — a milestone skill fires once and is permanent, unaffected by later equipment changes.\n\n        **Settled late (corrective promotion).** The threshold was crossed during the stat allocation of `EVT-000083` on 2026-07-29, when base Perception went 20 → 30, and the award was not recorded in that settlement. It is promoted here with provenance to the event that earned it, not to the moment it was noticed; nothing else about `EVT-000083` is re-resolved. Equipment bonuses never satisfy a milestone threshold (Section 4.4) — the qualifying value is the base 30, not the equipped-effective figure."
-      - "Overpower · Passive · Stat-milestone skill, awarded automatically on base Strength reaching **30** (Section 4.4). Grapple, pin, or bull-rush a foe up to one Rank above the Bearer's own — read against **System Rank** (Section 6.6), so it currently covers **D-Rank** foes and widens as the ladder does. Titan's Grip at base Strength 50 would extend it to two Ranks above and allow one-handing two-handed arms.\n\n        Earned and settled in the same exchange (`EVT-000089`, 2026-07-31 early hours) when the second claimed Ability Points +3 award put base Strength 29 → 30. It is a **possibility unlock, not a modifier**: the die still resolves an uncertain grapple, with Strength supplying the ordinary Section 4.3 margin against the target's Rank-derived domain rating. Carries no Mana cost and no mastery track; equipment never satisfies a milestone threshold, so the equipped-effective 34 was never the qualifying value. No other Stat is at or past a milestone: Agility is base 26 and Vitality base 22."
+      - "Stone Skin [D-Rank] ★☆☆☆☆ Novice · Mana 4 · 30% physical damage reduction while sustained; ends when Mana lapses or dropped. **Successful uses 1 · qualifying scenes total 0 · mastery progress 0/3 toward Practiced.** The one use was a non-dangerous activation test, so it increases uses but not mastery. Learned via a Premium Rune (`EVT-000083`); the rune's offer Rank rolled E, but the rune taught at Stone Skin's native D floor per Section 8.1."
+      - "Rupture [E-Rank] ★★☆☆☆ Practiced · Mana 11 · a heavy strike at **×2.15 of its skill-rank baseline** (E-Rank baseline 10, Section 7.2), resolving as `(10 + equipped focus power) × 2.15 × result multiplier` under Section 6.2. **Successful uses 6 · qualifying scenes total 5 · mastery progress 2/3 toward Adept.** Mastery advanced Novice → Practiced on the third qualifying scene (`EVT-000099`): first dungeon boss, Hive second beast, Hive boss. The missed Hive cast adds neither a use nor progress. The third dungeon added one qualifying scene at its first-chamber elite and one at its boss; both successful Ruptures inside that continuous boss engagement add uses but only one scene."
+      - "Flash Step [D-Rank] ★☆☆☆☆ Novice · Mana 8 · close or break line-of-sight distance instantly, once, granting +1 modifier step to the immediate follow-up action. **Successful uses 1 · qualifying scenes total 1 · mastery progress 1/3 toward Practiced.** Learned `EVT-000097`; first successfully used in the third dungeon boss combo (`EVT-000101`)."
+      - "Rank-Sight · Passive · Stat-milestone skill, awarded automatically on base Perception reaching **30** (Section 4.4). Reads the true Rank of any Gate at or below the Bearer's System Rank. **Successful material applications 0 explicitly demonstrated · mastery progress none.** The threshold was crossed in `EVT-000083`; equipment never satisfies it."
+      - "Overpower · Passive · Stat-milestone skill, awarded automatically on base Strength reaching **30** (Section 4.4). Grapple, pin, or bull-rush a foe up to one Rank above the Bearer's System Rank, currently D-Rank. **Successful material applications 0 explicitly demonstrated · mastery progress none.** Earned in `EVT-000089`; equipment never satisfies the threshold."
     gold: 2115
     shop_holdings:
       - "Mender's Seal — clears one Minor injury, or reduces one Moderate injury to Minor; restores no Health (Section 12.5) · purchased via the 2026-07-30 Daily Premium cycle, 1,200 g (`EVT-000088`) · banked, unused"

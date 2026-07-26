@@ -5,12 +5,12 @@
 ```yaml
 id: REC-000040
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000050
-  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
+  real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -45,12 +45,12 @@ Location is recorded as a region descriptor because carried inventory has no str
 ```yaml
 id: ENT-000054
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, expedition departure"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, expedition departure"
+  real_date: "2026-07-14T00:00:00Z"
 type: Resource
 subtype: license
 scope: personal
@@ -71,12 +71,12 @@ canonical_state:
 ```yaml
 id: ENT-000055
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000030
-  event_time: "Year 31 AR, first expedition, pack-leader combat"
-  record_time: "2026-07-14T18:00:00Z"
+  game_date: "Year 31 AR, first expedition, pack-leader combat"
+  real_date: "2026-07-14T18:00:00Z"
 type: Resource
 subtype: weapon
 scope: personal
@@ -97,12 +97,12 @@ canonical_state:
 ```yaml
 id: ENT-000056
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, expedition departure"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, expedition departure"
+  real_date: "2026-07-14T00:00:00Z"
 type: Resource
 subtype: tool-kit
 scope: personal
@@ -123,12 +123,12 @@ canonical_state:
 ```yaml
 id: ENT-000057
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, expedition departure"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, expedition departure"
+  real_date: "2026-07-14T00:00:00Z"
 type: Resource
 subtype: consumable-stack
 scope: personal
@@ -152,12 +152,12 @@ canonical_state:
 ```yaml
 id: ENT-000058
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, expedition departure"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, expedition departure"
+  real_date: "2026-07-14T00:00:00Z"
 type: Resource
 subtype: equipment
 scope: personal
@@ -178,12 +178,12 @@ canonical_state:
 ```yaml
 id: ENT-000059
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000025
-  event_time: "Year 31 AR, expedition departure"
-  record_time: "2026-07-14T00:00:00Z"
+  game_date: "Year 31 AR, expedition departure"
+  real_date: "2026-07-14T00:00:00Z"
 type: Resource
 subtype: magical-consumable
 scope: personal
@@ -205,12 +205,12 @@ canonical_state:
 ```yaml
 id: ENT-000060
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000043
-  event_time: "Year 31 AR, Ashgate E-Rank Rift closure"
-  record_time: "2026-07-21T01:00:00Z"
+  game_date: "Year 31 AR, Ashgate E-Rank Rift closure"
+  real_date: "2026-07-21T01:00:00Z"
 type: Resource
 subtype: currency-holding
 scope: personal
@@ -232,12 +232,12 @@ canonical_state:
 ```yaml
 id: ENT-000065
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000031
-  event_time: "Year 31 AR, first expedition, pack-leader harvest"
-  record_time: "2026-07-14T20:30:00Z"
+  game_date: "Year 31 AR, first expedition, pack-leader harvest"
+  real_date: "2026-07-14T20:30:00Z"
 type: Resource
 subtype: material-component
 scope: personal
@@ -259,12 +259,12 @@ canonical_state:
 ```yaml
 id: ENT-000067
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000033
-  event_time: "Year 31 AR, recovery purchase and training"
-  record_time: "2026-07-15T09:15:00Z"
+  game_date: "Year 31 AR, recovery purchase and training"
+  real_date: "2026-07-15T09:15:00Z"
 type: Resource
 subtype: consumable-stack
 scope: personal
@@ -287,12 +287,12 @@ canonical_state:
 ```yaml
 id: ENT-000068
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000033
-  event_time: "Year 31 AR, recovery purchase and basement entry"
-  record_time: "2026-07-15T09:15:00Z"
+  game_date: "Year 31 AR, recovery purchase and basement entry"
+  real_date: "2026-07-15T09:15:00Z"
 type: Resource
 subtype: consumable-stack
 scope: personal
@@ -315,12 +315,12 @@ canonical_state:
 ```yaml
 id: ENT-000069
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000033
-  event_time: "Year 31 AR, recovery purchase"
-  record_time: "2026-07-15T09:15:00Z"
+  game_date: "Year 31 AR, recovery purchase"
+  real_date: "2026-07-15T09:15:00Z"
 type: Resource
 subtype: medical-consumable
 scope: personal
@@ -343,12 +343,12 @@ canonical_state:
 ```yaml
 id: ENT-000070
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000033
-  event_time: "Year 31 AR, recovery and Warehouse 7 return"
-  record_time: "2026-07-15T09:15:00Z"
+  game_date: "Year 31 AR, recovery and Warehouse 7 return"
+  real_date: "2026-07-15T09:15:00Z"
 type: Resource
 subtype: research-notebook
 scope: personal
@@ -370,12 +370,12 @@ canonical_state:
 ```yaml
 id: ENT-000078
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000035
-  event_time: "Year 31 AR, recovery and Institute consultation"
-  record_time: "2026-07-15T16:44:48Z"
+  game_date: "Year 31 AR, recovery and Institute consultation"
+  real_date: "2026-07-15T16:44:48Z"
   uncertainty: "Only the quarter and the time window are canonical; Kalens's street and house number are unnarrated. The separate earlier slip naming the Institute's runner was set aside after this one was written, and whether Daedalus kept it is unestablished."
 type: Resource
 subtype: written-note
@@ -401,12 +401,12 @@ canonical_state:
 ```yaml
 id: ENT-000074
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000038
-  event_time: "Year 31 AR, evening consultation, the same day as the basement clear"
-  record_time: "2026-07-20T06:30:00Z"
+  game_date: "Year 31 AR, evening consultation, the same day as the basement clear"
+  real_date: "2026-07-20T06:30:00Z"
   uncertainty: "Which of the four D-Rank cores was handed over was not individually specified in play; this ledger records the ledge sentinel's as the one given by convention. Soren's actual findings from studying it are not yet established."
 type: Resource
 subtype: monster-core
@@ -430,12 +430,12 @@ canonical_state:
 ```yaml
 id: ENT-000075
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000034
-  event_time: "Year 31 AR, Warehouse 7 basement harvest"
-  record_time: "2026-07-15T09:27:58Z"
+  game_date: "Year 31 AR, Warehouse 7 basement harvest"
+  real_date: "2026-07-15T09:27:58Z"
 type: Resource
 subtype: monster-core
 scope: personal
@@ -458,12 +458,12 @@ canonical_state:
 ```yaml
 id: ENT-000076
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000034
-  event_time: "Year 31 AR, Warehouse 7 basement harvest"
-  record_time: "2026-07-15T09:27:58Z"
+  game_date: "Year 31 AR, Warehouse 7 basement harvest"
+  real_date: "2026-07-15T09:27:58Z"
 type: Resource
 subtype: monster-core
 scope: personal
@@ -486,12 +486,12 @@ canonical_state:
 ```yaml
 id: ENT-000077
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000034
-  event_time: "Year 31 AR, Warehouse 7 basement harvest"
-  record_time: "2026-07-15T09:27:58Z"
+  game_date: "Year 31 AR, Warehouse 7 basement harvest"
+  real_date: "2026-07-15T09:27:58Z"
 type: Resource
 subtype: monster-core
 scope: personal
@@ -516,12 +516,12 @@ canonical_state:
 ```yaml
 id: ENT-000082
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: archived
 provenance:
   source: EVT-000047
-  event_time: "Year 31 AR, morning after the Ashgate closure"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, morning after the Ashgate closure"
+  real_date: "2026-07-22T00:00:00Z"
   uncertainty: "No longer Daedalus's concern; recorded here for provenance only."
 type: Resource
 subtype: rift-core
@@ -547,12 +547,12 @@ canonical_state:
 ```yaml
 id: ENT-000086
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000047
-  event_time: "Year 31 AR, morning after the Ashgate closure"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, morning after the Ashgate closure"
+  real_date: "2026-07-22T00:00:00Z"
   uncertainty: "This holding was received in play (206 Section 12.2's universal 1 core = 3 vells rate) but not written to canon at the time; recorded now as a correction. Whether any additional Association assignment-completion bonus exists beyond core-sale value is an unauthored, flagged claim (EVT-000050) and is NOT included in this quantity."
 type: Resource
 subtype: currency-holding
@@ -577,12 +577,12 @@ canonical_state:
 ```yaml
 id: ENT-000085
 canonical_record: REC-000040
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000049
-  event_time: "Year 31 AR, tannery-district E-Rank Rift clear"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "Year 31 AR, tannery-district E-Rank Rift clear"
+  real_date: "2026-07-22T00:00:00Z"
   uncertainty: "Unappraised. Whether it carries any value beyond an ordinary E-Rank Rift core is unestablished. Why this Rift held no guardians at all is unestablished -- no Reikon rule requires a Rift to be guarded, so this is not a contradiction of canon, but no in-fiction explanation has been given either."
 type: Resource
 subtype: rift-core

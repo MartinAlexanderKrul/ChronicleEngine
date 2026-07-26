@@ -41,12 +41,12 @@ Every persistent object — Entity, Canonical Record, Event, or Relationship —
 ```yaml
 id: <generated: ENT-XXXXXX | REC-XXXXXX | EVT-XXXXXX | REL-XXXXXX>
 canonical_record: <required: REC-XXXXXX>   # self, for a Canonical Record
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
-  event_time: <required: in-world time of the represented event>
-  record_time: <generated: time this record was written>
+  game_date: <required: in-world time of the represented event>
+  real_date: <generated: time this record was written>
   uncertainty: <optional: unresolved uncertainty>
 ```
 

@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000067
 canonical_record: REC-000067
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -52,12 +52,12 @@ Every CGA policy in Prague is downstream of the anxiety that the S-Rank hunter c
 ```yaml
 id: ENT-000103
 canonical_record: REC-000067
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Institution
 scope: regional
 lifecycle: active
@@ -81,12 +81,12 @@ canonical_state:
 ```yaml
 id: REL-000050
 canonical_record: REC-000067
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 endpoints:
   - ENT-000103
   - ENT-000088

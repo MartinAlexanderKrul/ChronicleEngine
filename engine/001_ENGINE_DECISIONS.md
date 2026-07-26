@@ -3617,6 +3617,67 @@ The gate proves the field is **present**. It deliberately does not adjudicate wh
 
 ---
 
+## Decision 077 — Distinct Game and Repository Dates in Provenance
+
+**Status:** Accepted — **Version 0.3 by owner ruling (2026-07-26)**, as an explicit foundational exception produced by the live prototype
+**Date:** 2026-07-26
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Sections 8.2 and 12.4.2; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` Save Algorithm; `templates/`; `tools/validate_repository.ps1`; Decisions 069, 072, 076
+
+### Context
+
+Gatefall advanced its fictional calendar beyond the repository session date. Several
+live records then serialized the fictional clock as `record_time`, including dates
+that had not yet occurred in reality. The earlier names `event_time` and
+`record_time` described roles but did not name their domains, making a mechanically
+well-formed provenance envelope capable of carrying chronologically impossible
+repository provenance.
+
+This is the same root cause that originally dated Decision 076 from the game clock.
+Correcting isolated timestamps would leave the ambiguity that produced them.
+
+### Decision
+
+Data Model 0.1.4 renames the serialized provenance fields:
+
+```text
+event_time  → game_date
+record_time → real_date
+```
+
+`game_date` is the in-world time of the represented event. `real_date` is the actual
+repository write date/time and must never be derived from the campaign clock. An
+honest date-only value is permitted when exact real clock time cannot be recovered.
+
+Save manifests use the same vocabulary: `save_identity.game_date` and
+`save_identity.real_date`. The validator requires both fields on live Persistent
+Objects and rejects the legacy keys there.
+
+### Migration and Compatibility
+
+All mutable live Persistent Objects and Canonical Records are retagged from 0.1.3
+to 0.1.4 and their provenance keys renamed. Genuine old repository timestamps are
+preserved. Demonstrably game-derived future values are replaced only to the
+precision supported by repository evidence.
+
+Immutable checkpoints remain byte-unchanged with their captured schema and legacy
+field names. A restore treats them as historical input and runs the applicable
+schema chain through 0.1.4 against mutable live state at readiness before
+validation and play. The migration consumes no fictional time, allocates no
+identifier, and changes no fictional event.
+
+### Consequences
+
+- **Class under Decision 069: foundational.** It changes the universal provenance
+  contract in the Data Model.
+- **Owner ruling:** accepted into Version 0.3 because it is direct prototype
+  evidence of a persistence/provenance defect. The classification is not weakened
+  and creates no general exception precedent.
+- Data Model advances **0.1.3 → 0.1.4**. Engine Version remains 0.2.0.
+- Templates, current bindings, manifests, validator expectations, and validation
+  evidence advance consistently.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000062
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -46,12 +46,12 @@ A hunter working Chicago moves through a stratified economy: Horizon Guild's pub
 ```yaml
 id: ENT-000087
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Settlement/Kingdom
 subtype: city
 scope: regional
@@ -76,12 +76,12 @@ A hunter here checks the BGM ranking board before anything else — multiple act
 ```yaml
 id: ENT-000089
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Place
 subtype: gate-corridor
 scope: local
@@ -107,12 +107,12 @@ A hunter working the Red Line Corridor is usually here to build a track record o
 ```yaml
 id: ENT-000090
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Place
 subtype: contract-district
 scope: local
@@ -138,12 +138,12 @@ A hunter's business here is almost always BGM-contracted survey or containment w
 ```yaml
 id: ENT-000091
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Place
 subtype: break-scar
 scope: local
@@ -169,12 +169,12 @@ Above the public floors it stops being public. Contract negotiation suites, the 
 ```yaml
 id: ENT-000092
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Place
 subtype: guild-headquarters
 scope: local
@@ -199,12 +199,12 @@ A hunter comes here to get licensed, to get re-ranked if a performance review fl
 ```yaml
 id: ENT-000093
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Place
 subtype: field-office
 scope: local
@@ -231,12 +231,12 @@ Karlov Guild sits at the top of the local hierarchy by relationship rather than 
 ```yaml
 id: ENT-000088
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Settlement/Kingdom
 subtype: city
 scope: regional
@@ -261,12 +261,12 @@ A clearance in the Old Town Gate Cluster runs slower and more expensive than the
 ```yaml
 id: ENT-000094
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Place
 subtype: heritage-gate-site
 scope: local
@@ -292,12 +292,12 @@ The tunnel geometry is the corridor's real hazard: evacuation routes are narrowe
 ```yaml
 id: ENT-000095
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Place
 subtype: contract-district
 scope: local
@@ -323,12 +323,12 @@ A CGA analyst worked out of a trailer near the Libeň perimeter for the better p
 ```yaml
 id: ENT-000096
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Place
 subtype: break-scar
 scope: local
@@ -354,12 +354,12 @@ The guildmaster's rooms and the family archive occupy the upper floor, guild-onl
 ```yaml
 id: ENT-000097
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Place
 subtype: guild-headquarters
 scope: local
@@ -384,12 +384,12 @@ What sets the building apart is upstairs: a small, closely guarded liaison offic
 ```yaml
 id: ENT-000098
 canonical_record: REC-000062
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "2026-07-22"
-  record_time: "2026-07-22T00:00:00Z"
+  game_date: "2026-07-22"
+  real_date: "2026-07-22T00:00:00Z"
 type: Place
 subtype: field-office
 scope: local

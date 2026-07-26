@@ -13,12 +13,12 @@ It is the durable world-layer memory promoted from the **closed Prototype Alpha 
 ```yaml
 id: REC-000017
 canonical_record: REC-000017
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000013
-  event_time: "Year 312 RR, late spring – early summer"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 312 RR, late spring – early summer"
+  real_date: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:

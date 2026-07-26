@@ -12,12 +12,12 @@ This ledger records **what is visible and accessible to the campaign** — the w
 ```yaml
 id: REC-000010
 canonical_record: REC-000010
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000008
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR, late spring"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -52,12 +52,12 @@ Not visible to Ilse at start: the Guild's tempering method itself (`ENT-000012` 
 ```yaml
 id: REL-000017
 canonical_record: REC-000010
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000009
-  event_time: "Year 312 RR, late spring (evening)"
-  record_time: "2026-07-12T00:00:00Z"
+  game_date: "Year 312 RR, late spring (evening)"
+  real_date: "2026-07-12T00:00:00Z"
   extended_provenance:
     - EVT-000010
     - EVT-000011
@@ -73,12 +73,12 @@ state: "Physician's independent conclusion: witnessed pattern, tested for except
 ```yaml
 id: REL-000018
 canonical_record: REC-000010
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000008
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR, late spring"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000018
   - ENT-000012

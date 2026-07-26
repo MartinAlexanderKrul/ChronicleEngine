@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000029
 canonical_record: REC-000029
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -31,12 +31,12 @@ subjects:
 ```yaml
 id: ENT-000048
 canonical_record: REC-000029
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Resource
 subtype: individual
 scope: local
@@ -57,12 +57,12 @@ canonical_state:
 ```yaml
 id: ENT-000049
 canonical_record: REC-000029
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Resource
 subtype: individual
 scope: local
@@ -83,12 +83,12 @@ canonical_state:
 ```yaml
 id: ENT-000050
 canonical_record: REC-000029
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000024
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Resource
 subtype: individual
 scope: regional

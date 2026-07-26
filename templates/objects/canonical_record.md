@@ -7,12 +7,12 @@ Every ledger file carries a Canonical Record block as its own object.
 ```yaml
 id: <generated: REC-XXXXXX>
 canonical_record: <generated: same as id — a record is its own authority>
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
-  event_time: <required: in-world time of the represented event>
-  record_time: <generated: time this record was written>
+  game_date: <required: in-world time of the represented event>
+  real_date: <generated: time this record was written>
   uncertainty: <optional: unresolved uncertainty>
 role: <required: canonical ledger | historical document | chronicle | session summary | machine-readable save>
 scope: <required: world | campaign | institution | personal | historical>

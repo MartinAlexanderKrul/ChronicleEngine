@@ -11,12 +11,12 @@ Membership relationships (`REL-000011`–`REL-000015`) are owned here. Knowledge
 ```yaml
 id: REC-000002
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -40,12 +40,12 @@ subjects:
 ```yaml
 id: ENT-000006
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -70,12 +70,12 @@ canonical_state:
 ```yaml
 id: ENT-000007
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -101,12 +101,12 @@ canonical_state:
 ```yaml
 id: ENT-000008
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -131,12 +131,12 @@ canonical_state:
 ```yaml
 id: ENT-000009
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -161,12 +161,12 @@ canonical_state:
 ```yaml
 id: ENT-000010
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -192,12 +192,12 @@ canonical_state:
 ```yaml
 id: ENT-000011
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000007
-  event_time: "Year 312 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR"
+  real_date: "2026-07-11T00:00:00Z"
 type: Character
 scope: local
 lifecycle: declining
@@ -222,12 +222,12 @@ canonical_state:
 ```yaml
 id: REL-000011
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000003
-  event_time: "Year 180 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 180 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000006
   - ENT-000003
@@ -238,12 +238,12 @@ qualities: "Rank: Rector (leadership of the Athenaeum)."
 ```yaml
 id: REL-000012
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000003
-  event_time: "Year 180 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 180 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000007
   - ENT-000003
@@ -254,12 +254,12 @@ qualities: "Rank: Fellow of the Athenaeum."
 ```yaml
 id: REL-000013
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000002
-  event_time: "Year 20 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 20 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000008
   - ENT-000004
@@ -270,12 +270,12 @@ qualities: "Rank: Prelate (leadership of the Order)."
 ```yaml
 id: REL-000014
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000004
-  event_time: "Year 250 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 250 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000009
   - ENT-000005
@@ -286,12 +286,12 @@ qualities: "Rank: Guildmaster (leadership of the Guild)."
 ```yaml
 id: REL-000015
 canonical_record: REC-000002
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000004
-  event_time: "Year 250 RR"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 250 RR"
+  real_date: "2026-07-11T00:00:00Z"
 endpoints:
   - ENT-000010
   - ENT-000005

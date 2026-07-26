@@ -292,13 +292,17 @@ function New-BranchFromCheckpoint {
         foreach ($oldId in @($map.Keys | Sort-Object)) {
             $text = $text.Replace($oldId, $map[$oldId])
         }
-        # The source checkpoint is immutable Data Model 0.1.2. A fork creates new
-        # mutable live state, so Decision 076's explicit readiness migration retags
-        # that graph to 0.1.3 before the branch baseline is sealed and validated.
-        $text = $text.Replace('schema_version: "0.1.2"', 'schema_version: "0.1.3"')
+        # The source checkpoint is immutable legacy state. A fork creates new
+        # mutable live state, so Decisions 076 and 077's readiness migrations
+        # retag the graph and rename its provenance keys before validation.
+        $text = $text.Replace('schema_version: "0.1.2"', 'schema_version: "0.1.4"')
+        $text = $text.Replace('schema_version: "0.1.3"', 'schema_version: "0.1.4"')
+        $text = [regex]::Replace($text, '(?m)^(\s*)event_time:', '${1}game_date:')
+        $text = [regex]::Replace($text, '(?m)^(\s*)record_time:', '${1}real_date:')
         if ($ledger -eq "180_CURRENT_STATE.md") {
             $text = $text.Replace("saves/$CheckpointName/", "saves/900_CHECKPOINT_0000/")
-            $text = $text.Replace("Data Model 0.1.2", "Data Model 0.1.3")
+            $text = $text.Replace("Data Model 0.1.2", "Data Model 0.1.4")
+            $text = $text.Replace("Data Model 0.1.3", "Data Model 0.1.4")
         }
         Set-Text (Join-Path $branchCampaign $ledger) $text
     }
@@ -320,8 +324,8 @@ function New-BranchFromCheckpoint {
     $sourceManifest = $sourceManifest.Replace($CheckpointName, "900_CHECKPOINT_0000")
     $sourceManifest = [regex]::Replace(
         $sourceManifest,
-        '(?m)^([ \t]*campaign_schema:[ \t]*)"?0\.1\.2"?[ \t]*$',
-        '${1}"0.1.3"'
+        '(?m)^([ \t]*campaign_schema:[ \t]*)"?0\.1\.[23]"?[ \t]*$',
+        '${1}"0.1.4"'
     )
     $sourceManifest = [regex]::Replace(
         $sourceManifest,
@@ -376,12 +380,12 @@ function Add-DisposableEvent {
 ``````yaml
 id: $eventId
 canonical_record: $(([regex]::Match($chronicle, '(?m)^id:[ \t]*(REC-\d{6})')).Groups[1].Value)
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: $eventId
-  event_time: "2026-07-24"
-  record_time: "2026-07-24T00:00:00Z"
+  game_date: "2026-07-24"
+  real_date: "2026-07-26T00:00:00Z"
 type: Event
 scope: campaign
 canonical_state:
@@ -455,17 +459,17 @@ try {
     }
 
     # S-01: live canon may not retain an older schema tag after the explicit
-    # Decision 076 migration. Immutable checkpoints are excluded by the validator.
+    # Decision 077 migration. Immutable checkpoints are excluded by the validator.
     $schemaRoot = Join-Path $tempRoot "S-01"
     Copy-ValidationRepository $schemaRoot
     Replace-ExactlyOnce `
         -Path (Join-Path $schemaRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
-        -Pattern '(?ms)\A(.*?schema_version:) "0\.1\.3"' `
-        -Replacement '$1 "0.1.2"' `
+        -Pattern '(?ms)\A(.*?schema_version:) "0\.1\.4"' `
+        -Replacement '$1 "0.1.3"' `
         -Case "S-01"
     $schemaResult = Invoke-Validator $schemaRoot
     Assert-True ($schemaResult.ExitCode -ne 0) "S-01 unexpectedly passed repository validation."
-    Assert-Contains $schemaResult.Output "live canon must conform to current Data Model 0.1.3" `
+    Assert-Contains $schemaResult.Output "live canon must conform to current Data Model 0.1.4" `
         "S-01 failed for the wrong reason."
     Write-Host "S-01 PASSED - validator rejected a stale live schema tag while leaving checkpoints out of scope."
 

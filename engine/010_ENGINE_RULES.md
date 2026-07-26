@@ -4081,7 +4081,7 @@ Once created, a checkpoint must not change. The current-state ledger continues t
 
 Each checkpoint includes a save manifest containing, at minimum:
 
-- save identity, including a checkpoint type and creation time,
+- save identity, including a checkpoint type, `real_date` (actual repository creation time), and `game_date` (in-world time at capture); the two domains are never derived from one another,
 - scope, including world, campaign, and character,
 - versions, including Engine, World, World Rule Profile, Campaign Schema, and Save Format — the World Rule Profile version as a required, structured element (world identifier, version, and freeze status at capture; Section 14.6, Decision 074), with a world that declares no profile recording that absence explicitly (Section 14.5),
 - lineage, including parent save, canonical continuation status, and branch name,

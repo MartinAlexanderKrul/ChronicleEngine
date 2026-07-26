@@ -5,12 +5,12 @@ A Persistent Entity of type Character. Structure: `011_ENGINE_DATA_MODEL.md` Sec
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
-  event_time: <required: in-world time of the represented event>
-  record_time: <generated: time this record was written>
+  game_date: <required: in-world time of the represented event>
+  real_date: <generated: time this record was written>
   uncertainty: <optional: unresolved uncertainty>
 type: Character
 subtype: <optional: domain- or world-defined>

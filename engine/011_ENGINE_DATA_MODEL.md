@@ -5,7 +5,7 @@
 **File:** `011_ENGINE_DATA_MODEL.md`
 **Status:** Workshop Draft
 **Engine Version:** 0.2.0
-**Data Model Version:** 0.1.3
+**Data Model Version:** 0.1.4
 **Layer:** Engine (000–099)
 
 ---
@@ -323,10 +323,17 @@ Every record and every material update carries a provenance envelope. This forma
 Source           the Event ID, ruling reference, or transcript reference
                  that caused the record or update
 Scope            the scope the record is responsible for
-Event Time       the time of the represented event
-Record Time      the time the record was updated
+Game Date        the in-world date/time of the represented event
+Real Date        the real repository date/time when the record was updated
 Uncertainty      any unresolved uncertainty
 ```
+
+The serialized provenance keys are `game_date` and `real_date`. They are deliberately
+domain-named: `game_date` is fiction, while `real_date` is repository provenance and
+must never be calculated from, copied from, or advanced with the campaign clock.
+Each accepts an ISO 8601 timestamp or an honestly less-precise ISO 8601 date when the
+exact real clock time is unavailable. A fictional calendar may use its authored
+world notation in `game_date`.
 
 ---
 
@@ -444,6 +451,26 @@ Migration of live mutable state:
 4. Run the Repository Validation Barrier after the complete live object graph is migrated.
 
 Immutable checkpoints are never edited. A checkpoint captured under 0.1.2 or earlier retains that schema version and surfaces a Campaign Schema mismatch on restoration. The Runtime restores it into mutable live state, performs the explicit steps above at the readiness gate, retags the restored graph to 0.1.3, and validates before play continues. This metadata-and-coverage migration consumes no fictional time, allocates no identifier, and changes no historical event.
+
+### 12.4.2 Data Model 0.1.3 → 0.1.4
+
+Decision 077 replaces the ambiguous serialized provenance keys `event_time` and
+`record_time` with `game_date` and `real_date`. The meaning is not new; the names
+make the already-distinct time domains impossible to confuse without an explicit
+schema violation.
+
+Migration of live mutable state:
+
+1. Retag every live Persistent Object and Canonical Record from schema 0.1.3 to 0.1.4.
+2. Rename `provenance.event_time` to `provenance.game_date`, preserving its value.
+3. Rename `provenance.record_time` to `provenance.real_date` only when it is genuine repository provenance. If the old value was demonstrably derived from the fictional clock, replace it with the most precise real date supported by repository evidence; never invent precision.
+4. Update current manifests, templates, bindings, and compatibility declarations, then run the Repository Validation Barrier.
+
+Immutable checkpoints remain byte-unchanged at their captured schema and field
+names. Restoring a 0.1.3-or-earlier checkpoint first loads it as historical input,
+then applies every required migration in order to the mutable live graph before
+validation and play. This migration consumes no fictional time, allocates no
+identifier, and changes no fictional event.
 
 ---
 

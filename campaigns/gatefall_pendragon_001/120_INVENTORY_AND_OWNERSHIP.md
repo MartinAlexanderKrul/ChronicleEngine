@@ -10,12 +10,12 @@
 ```yaml
 id: REC-000076
 canonical_record: REC-000076
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000104
-  event_time: "2026-07-31, night"
-  record_time: "2026-08-01T04:00:00Z"
+  game_date: "2026-07-31, night"
+  real_date: "2026-07-26"
 role: canonical ledger
 scope: campaign
 subjects: []

@@ -5,12 +5,12 @@
 ```yaml
 id: REC-000038
 canonical_record: REC-000038
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000050
-  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
-  record_time: "2026-07-22T12:00:00Z"
+  game_date: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
+  real_date: "2026-07-22T12:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -22,12 +22,12 @@ subjects:
 ```yaml
 id: ENT-000051
 canonical_record: REC-000038
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000050
-  event_time: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
-  record_time: "2026-07-22T12:00:00Z"
+  game_date: "Year 31 AR, Warehouse 7 resonance extraction and tannery E-Rank Rift clear"
+  real_date: "2026-07-22T12:00:00Z"
   uncertainty: "Residence established by ruling (ENT-000066), not by played event; the landlord and the tenancy's remaining term are unestablished. Captain Thorne's in-fiction claim of an automatic per-assignment completion bonus is NOT backed by any established Reikon economy mechanic — flagged, not settled (EVT-000050); a formal Association request is pending. Power, Speed, and Perception have no authored uncapped formula under Profile 0.8 (206 S4.2) — an open gap, not invented (resolved by the separate Profile 0.9 authoring, adopted at the next readiness gate)."
 type: Character
 subtype: "System-bearing Awakened hunter"

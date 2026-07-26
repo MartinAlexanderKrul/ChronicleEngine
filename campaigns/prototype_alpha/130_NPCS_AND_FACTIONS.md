@@ -14,12 +14,12 @@ The figures and institutions themselves are **world canon** (`worlds/verra/220_N
 ```yaml
 id: REC-000012
 canonical_record: REC-000012
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: EVT-000008
-  event_time: "Year 312 RR, late spring"
-  record_time: "2026-07-11T00:00:00Z"
+  game_date: "Year 312 RR, late spring"
+  real_date: "2026-07-11T00:00:00Z"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -48,12 +48,12 @@ subjects:
 ```yaml
 id: REL-000016
 canonical_record: REC-000012
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: terminated
 provenance:
   source: EVT-000009
-  event_time: "Year 312 RR, late spring (evening)"
-  record_time: "2026-07-12T00:00:00Z"
+  game_date: "Year 312 RR, late spring (evening)"
+  real_date: "2026-07-12T00:00:00Z"
   extended_provenance:
     - EVT-000010
     - EVT-000011
@@ -71,12 +71,12 @@ texture: "**Not recorded, and now unrecoverable.** This relationship predates De
 ```yaml
 id: REL-000019
 canonical_record: REC-000012
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: terminated
 provenance:
   source: EVT-000009
-  event_time: "Year 312 RR, late spring (evening)"
-  record_time: "2026-07-12T00:00:00Z"
+  game_date: "Year 312 RR, late spring (evening)"
+  real_date: "2026-07-12T00:00:00Z"
   extended_provenance:
     - EVT-000010
     - EVT-000011

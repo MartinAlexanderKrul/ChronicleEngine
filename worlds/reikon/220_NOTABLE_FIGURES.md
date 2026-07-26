@@ -12,12 +12,12 @@ All figures are original to Reikon.
 ```yaml
 id: REC-000027
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 role: canonical ledger
 scope: world
 subjects:
@@ -41,12 +41,12 @@ subjects:
 ```yaml
 id: ENT-000034
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -69,12 +69,12 @@ canonical_state:
 ```yaml
 id: ENT-000035
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -99,12 +99,12 @@ canonical_state:
 ```yaml
 id: ENT-000036
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -127,12 +127,12 @@ canonical_state:
 ```yaml
 id: ENT-000037
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -155,12 +155,12 @@ canonical_state:
 ```yaml
 id: ENT-000038
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -181,12 +181,12 @@ canonical_state:
 ```yaml
 id: ENT-000039
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -207,12 +207,12 @@ canonical_state:
 ```yaml
 id: ENT-000040
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 type: Character
 scope: local
 lifecycle: active
@@ -235,12 +235,12 @@ canonical_state:
 ```yaml
 id: REL-000029
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000034, ENT-000041]
 type: membership
 qualities: "Rank: Director (leadership of the Authority's Verholt bureau)."
@@ -249,12 +249,12 @@ qualities: "Rank: Director (leadership of the Authority's Verholt bureau)."
 ```yaml
 id: REL-000030
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000035, ENT-000042]
 type: membership
 qualities: "Rank: Chair (leadership of the Meridian Guild)."
@@ -263,12 +263,12 @@ qualities: "Rank: Chair (leadership of the Meridian Guild)."
 ```yaml
 id: REL-000031
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000036, ENT-000043]
 type: membership
 qualities: "Rank: Lead researcher of the Aurology Institute."
@@ -277,12 +277,12 @@ qualities: "Rank: Lead researcher of the Aurology Institute."
 ```yaml
 id: REL-000032
 canonical_record: REC-000027
-schema_version: "0.1.3"
+schema_version: "0.1.4"
 status: active
 provenance:
   source: ruling
-  event_time: "Year 31 AR"
-  record_time: "2026-07-13T00:00:00Z"
+  game_date: "Year 31 AR"
+  real_date: "2026-07-13T00:00:00Z"
 endpoints: [ENT-000037, ENT-000044]
 type: membership
 qualities: "Rank: Hierophant (Verholt leadership of the Vigil)."

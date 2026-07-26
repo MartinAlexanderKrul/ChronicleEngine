@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000140 |
+| Entity | `ENT-` | Persistent Entity | ENT-000145 |
 | Record | `REC-` | Canonical Record | REC-000092 |
-| Event | `EVT-` | Event | EVT-000091 |
-| Relationship | `REL-` | Relationship | REL-000066 |
+| Event | `EVT-` | Event | EVT-000095 |
+| Relationship | `REL-` | Relationship | REL-000067 |
 
 ---
 
@@ -197,6 +197,16 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000089 | Event | Gatefall: Pendragon: the night of 2026-07-30 into the morning of 2026-07-31 — both banked Ability Points +3 awards claimed and six points allocated (Strength 30, Agility 26, Vitality 22), the Strength-30 stat-milestone skill Overpower granted, maximum Health re-derived 80→88, all four banked Daily Random Boxes opened (potion cache, two 500 g purses, Titan Boots [E-Rank]; gold 15,835 → 16,835), the 2026-07-31 Daily Premium cycle rotated and rolled with a Ghost Quickknife [B-Rank] at 18,000 g beyond reach and nothing bought, and the seventh daily quest completed at Loyola Park (streak 6→7) |
 | EVT-000090 | Event | Gatefall: Pendragon: adoption of the additive Gatefall World Rule Profile 1.8→1.9 economy advance — Section 12.8.1 authors the licensed mundane settlement price of ranked gear at 5× the same-Rank crystal and excludes System-shop-origin equipment from any mundane-currency price; nothing recomputed, no transaction repriced, no fictional time consumed |
 | EVT-000091 | Event | Gatefall: Pendragon: the seventh daily quest's Daily Random Box opened on the break wall at Loyola Park (d100 53 → System gold, E-Rank purse 500 g; gold 16,835 → 17,335), leaving no box banked and cutting the Ghost Quickknife [B-Rank] shortfall to 665 g |
+| EVT-000092 | Event | Gatefall: Pendragon: adoption of the additive Gatefall World Rule Profile 1.9→1.10 streak-reward advance at the readiness pause before Session 2 continued — a daily completion raising the consecutive streak to a positive multiple of seven upgrades that completion's Daily Random Box to two resolved rolls with one chosen; nothing recomputed, the already-completed streak-7 box (`EVT-000091`) is not reopened, next upgrade eligible at streak 14 |
+| ENT-000141 | Entity | Gatefall: Pendragon: Sable, co-owner of the harvest contractor Sable & Kern, running her first posted Coalition job |
+| ENT-000142 | Entity | Gatefall: Pendragon: Kern, co-owner of Sable & Kern, logistics/scale-keeper for the job |
+| ENT-000143 | Entity | Gatefall: Pendragon: Ruth, experienced harvester on the Sable & Kern crew, vouched for Alexander after the job |
+| ENT-000144 | Entity | Gatefall: Pendragon: Denny, harvester on the Sable & Kern crew |
+| ENT-000145 | Entity | Gatefall: Pendragon: Sable & Kern, a small two-partner harvest-hire contractor, first-time Coalition poster |
+| REL-000067 | Relationship | Gatefall: Pendragon: Alexander's harvest-hire standing with Sable & Kern, formed after one completed C-Rank job at the Halsted Depot site |
+| EVT-000093 | Event | Gatefall: Pendragon: Coalition referral to the Sable & Kern C-Rank harvest job (Kesha Morrison), crew introductions at Halsted, and an unprompted text to Owen Callahan ("I already miss you") — a `REL-000066` texture first, Alexander volunteering vulnerability unprompted rather than under duress |
+| EVT-000094 | Event | Gatefall: Pendragon: Horizon Outfitters (`ENT-000133`) purchase — Horizon Gale Gauntlets [C-Rank] and Horizon Gale Coif [D-Rank] bought for $15,500 cash; the superseded Reinforced Gauntlets [E-Rank] sold to the System shop for 15 g; both Ascendant Hunter's Bands (E-Rank and D-Rank) equipped together in the two accessory slots |
+| EVT-000095 | Event | Gatefall: Pendragon: the Halsted Depot C-Rank harvest job (Sable & Kern) — 10 C-Rank crystals mined solo across a second and third vein (7 + 3), 4 sold privately to the System shop (680 g, undeclared), 6 declared to the crew pool; crew total 16 crystals declared, $40,000 gross, Alexander's ≈$9,000 share pending 1–2 business days |
 
 ---
 

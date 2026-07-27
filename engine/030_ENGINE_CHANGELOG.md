@@ -12,6 +12,21 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-27 — Skill-counter staleness: a resident obligation and a mechanical gate
+
+Gatefall play produced the same defect twice: a resolved Gate clear whose skill use-counters and mastery progress were never advanced, while every other field on the same character sheet — Mana, XP, condition, equipment — was written correctly. Both gates passed each time. The second instance survived two checkpoints and surfaced only because the player asked.
+
+This is the **stale-field** class, and it defeats the existing barriers by construction. The Save Algorithm's read-back step verifies the intent it was handed, so an incomplete intent verifies clean; the Repository Validation Barrier is structural, and a counter frozen at its previous value is perfectly well-formed. Every existing contract asks whether a *file* was written. None asked whether a field inside a written file kept up.
+
+Two changes, at the two enforcement points Runtime Section 0.2 recognizes:
+
+- **Resident per-turn** — `AI_GAMEPLAY_RESIDENT_CORE.md` 1.7 → 1.8 adds Turn-State Settlement **step 4**: skill counters advance in the exchange that used them, with ordinary combat named as the ordinary case. The prior text spoke only of exchanges that "completed training or demonstrated a technique," which a Runtime resolving a fight does not reliably read as covering three castings and a passive. Where a world declares a per-activation resource cost, the exchange's own resource trace is named as the arithmetic check that no activation went uncounted.
+- **Mechanical barrier** — `tools/test_checkpoint_contract.ps1` gains **Contract 8**: if a checkpoint's `(level, xp)` advanced against the parent its manifest names, at least one tracked skill counter must have advanced too. It takes the two-independent-statements shape Contract 2 already uses, and deliberately under-fires — aggregate totals, so a partial miss passes; pairs whose parent tracks no counters are skipped, exempting every capture before a world adopts skill tracking; and a level-up that carries XP downward masks its own trigger. Under-firing is the recoverable failure mode, per the reasoning the Relationship Texture check already records.
+
+Verified against the full history: the contract fires on exactly one of the repository's twenty-nine Gatefall checkpoint transitions — the real defect — with no false positives across any campaign. Checkpoint `900_CHECKPOINT_0028` carries a documented exemption because its bytes are immutable (Rules Section 13.2); the true counts were corrected in live canon by `EVT-000127`. The defect is reproduced as a regression fixture under `tools/tests/fixtures/nonconforming_checkpoint/campaigns/stale_skill_counters/`.
+
+Neither change touches the Engine Rules, the Data Model, or any world's authored content, so no version advances. The stronger fix — structured per-event skill-use records reconciled against the stored counters, which would make the counters derived rather than trusted — remains open, and is the same drift Progression Surfacing already warns against when it forbids "a separate authoritative XP counter or level that could drift from canon."
+
 ## 2026-07-27 — Gatefall Profile 1.16: Daily Premium bag persistence repair
 
 Gatefall Profile **1.15 → 1.16** makes compact stored Daily Premium bag state the sole operational source for ordinary model draws. Expired rotations remain provenance and are never replayed during routine rotation.

@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.7
+**Document Version:** 1.8
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -347,12 +347,17 @@ After every resolved exchange and before yielding, settle all tracked state that
 1. Apply immediate costs and harm caused by the resolution (spent resources, Health damage, conditions, item use).
 2. Account for the in-world time the narrated exchange consumed. When the active world has a deterministic time-based rule, read its exact last-settled campaign-time anchor, establish the response's elapsed duration and new exact anchor, apply every deterministic time-based rule (including active/resting resource recovery and Health recovery), preserve every world-declared fractional remainder, and advance the anchor before the next action reads state. The same fictional span must settle identically whether narrated in one response or many. A vague phrase such as “later” or “overnight” does not replace the anchor: resolve the exact endpoint before any time-dependent next action. A Runtime may not invent a recovery rate; if none exists it preserves current Health until a resolved treatment or healing effect establishes a change.
 3. If the exchange completed training or demonstrated a technique, update qualitative capability/training state now with what was actually practiced or demonstrated. One session may establish familiarity or foundational practice without granting mastery; it is still recorded and can accumulate through later training and use. Physical skills are not discarded because a world also has System Abilities.
-4. If the exchange resolved a challenge, apply its reward now, including XP. When an active World Rule Profile makes level-up rewards immediate, settle every crossed level and its complete reward package before the next action; never convert it into an acceptance prompt or pending reward. Only rewards the profile explicitly declares deferrable—such as Gatefall's daily rewards—may stack unclaimed. A kill, clear, or other completed challenge is never left "not yet updated."
-5. Run the Profile-Declared Proactive Trigger Audit against the settled exchange and apply any eligible automatic state reaction before yielding.
-6. Update the in-flight session state used by the next turn. The next response and `/system` read this settled state, never the opening checkpoint values.
-7. Narrate the fictional outcome, then render any world-declared compact state notifications once, in their declared format.
+4. **If the exchange used any world-declared skill, ability, or tracked technique, advance that skill's own counters now** — use totals, qualifying-scene totals, and mastery progress — in the same settlement, exactly as damage and resources settle. **Ordinary combat is the ordinary case, not a special one.** The failure this prevents is reading step 3's "training or demonstrated a technique" narrowly and concluding that a Gate cleared with three castings, one repositioning, and a passive applied twice recorded no skill use at all. It recorded six. A passive counts wherever its effect materially applied; a skill's first-ever use is still a use.
 
-Checkpointing promotes this already-settled in-flight state; it does not perform the settlement for the first time. If the player has to ask whether mana recovered or XP was earned, the prior exchange failed settlement and must be corrected before play continues.
+   Where the world declares a resource cost per activation, **the exchange's own resource trace is the arithmetic check that nothing went uncounted**: a Mana ledger reading `60 → 58 → 48 → 38 → 28 → 21` is five activations, and a settlement recording fewer is provably incomplete before it is ever written. Count from the resolved exchange, never from memory of what the session felt like it used.
+5. If the exchange resolved a challenge, apply its reward now, including XP. When an active World Rule Profile makes level-up rewards immediate, settle every crossed level and its complete reward package before the next action; never convert it into an acceptance prompt or pending reward. Only rewards the profile explicitly declares deferrable—such as Gatefall's daily rewards—may stack unclaimed. A kill, clear, or other completed challenge is never left "not yet updated."
+6. Run the Profile-Declared Proactive Trigger Audit against the settled exchange and apply any eligible automatic state reaction before yielding.
+7. Update the in-flight session state used by the next turn. The next response and `/system` read this settled state, never the opening checkpoint values.
+8. Narrate the fictional outcome, then render any world-declared compact state notifications once, in their declared format.
+
+Checkpointing promotes this already-settled in-flight state; it does not perform the settlement for the first time. If the player has to ask whether mana recovered, XP was earned, or **a skill's counters advanced**, the prior exchange failed settlement and must be corrected before play continues.
+
+**A written ledger is not a settled one.** These obligations are per-*field*, not per-file: a character sheet whose Mana, XP, and condition were all correctly updated while its skill counters stayed frozen is a stale ledger that every downstream gate will pass, because read-back verifies the intent it was given and the validator sees a well-formed number. That is the defect class this step exists to prevent, and it has occurred twice.
 
 ---
 

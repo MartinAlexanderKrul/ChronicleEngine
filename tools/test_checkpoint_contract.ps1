@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param()
 
 Set-StrictMode -Version Latest
@@ -56,7 +56,8 @@ $requiredLedgers = @(
 function Test-CheckpointContract {
     param(
         [string]$Root,
-        [string[]]$SupersededOriginals
+        [string[]]$SupersededOriginals,
+        [string[]]$StaleSkillCounterExceptions = @()
     )
 
     $failures = New-Object System.Collections.Generic.List[string]
@@ -144,6 +145,90 @@ function Test-CheckpointContract {
             }
         }
 
+        # --- Contract 8: progression advanced, so a skill counter must have --
+        # The stale-field class. Every other contract here checks whether a
+        # *file* was written; this one checks whether a field inside a written
+        # file kept up. Read-back verification cannot catch it -- it confirms
+        # the intent it was handed, and an incomplete intent verifies clean --
+        # and the Repository Validation Barrier cannot either, because a
+        # counter frozen at its previous value is perfectly well-formed.
+        #
+        # The observed failure: Checkpoint 0028 captured a cleared Gate that
+        # resolved three Rupture casts, one Flash Step, one Keen Sense and two
+        # Dagger Mastery applications, with every skill counter left at its
+        # 0027 value. XP, Mana, condition and equipment were all correct in the
+        # same file. Both gates passed. It surfaced two checkpoints later, only
+        # because the player asked.
+        #
+        # The assertion is the same two-independent-statements shape Contract 2
+        # uses: progression state and skill counters are separate records of
+        # one session's combat, so drift between them is decidable without
+        # knowing which is right. If (level, xp) advanced -- which in a
+        # skill-tracking world means kills or a clear resolved -- at least one
+        # tracked skill counter must have advanced too.
+        #
+        # Deliberately under-fires. It compares aggregate use totals, so a
+        # partial miss (Rupture updated, Keen Sense forgotten) passes; it skips
+        # any pair whose parent tracks no counters at all, which exempts every
+        # checkpoint before a world adopts skill tracking; and a level-up that
+        # carries XP down masks its own trigger. A coverage gate that
+        # under-fires is recoverable, one that fires falsely blocks all
+        # validation and gets deleted -- the same reasoning the Relationship
+        # Texture check records for preferring an allowlist.
+        $skillState = @{}
+        foreach ($checkpoint in Get-ChildItem -LiteralPath $savesRoot -Directory) {
+            $sheetPath = Join-Path $checkpoint.FullName '100_CHARACTER_SHEET.md'
+            if (-not (Test-Path -LiteralPath $sheetPath -PathType Leaf)) { continue }
+            $sheetText = Get-Content -LiteralPath $sheetPath -Raw
+
+            $levelMatch = [regex]::Match($sheetText, '(?m)^[ \t]*level:[ \t]*(\d+)')
+            $xpMatch = [regex]::Match($sheetText, '(?m)^[ \t]*xp:[ \t]*"?(\d+)[ \t]*/')
+            if (-not $levelMatch.Success -or -not $xpMatch.Success) { continue }
+
+            # Mastery-tracked skills only. Stat-milestone passives record
+            # "Successful material applications" and have no mastery track
+            # (Gatefall Section 7.4), so they are correctly not matched here.
+            $useMatches = [regex]::Matches($sheetText, 'Successful uses[ \t]+(\d+)')
+            $useSum = 0
+            foreach ($use in $useMatches) { $useSum += [int]$use.Groups[1].Value }
+
+            $parentSave = $null
+            $manifestPath = Join-Path $checkpoint.FullName '900_SAVE_MANIFEST.md'
+            if (Test-Path -LiteralPath $manifestPath -PathType Leaf) {
+                $parentMatch = [regex]::Match((Get-Content -LiteralPath $manifestPath -Raw), '(?m)^[ \t]*parent_save:[ \t]*(\S+)')
+                if ($parentMatch.Success) { $parentSave = $parentMatch.Groups[1].Value.Trim('"') }
+            }
+
+            $skillState[$checkpoint.Name] = [pscustomobject]@{
+                Level         = [int]$levelMatch.Groups[1].Value
+                Xp            = [int]$xpMatch.Groups[1].Value
+                UseSum        = $useSum
+                TrackedSkills = $useMatches.Count
+                Parent        = $parentSave
+            }
+        }
+
+        foreach ($childName in ($skillState.Keys | Sort-Object)) {
+            $child = $skillState[$childName]
+
+            # Lineage comes from the manifest, not ordinal adjacency, so a fork
+            # is compared against the checkpoint it actually descends from.
+            if (-not $child.Parent) { continue }
+            if (-not $skillState.ContainsKey($child.Parent)) { continue }
+            $parentState = $skillState[$child.Parent]
+
+            # Nothing to check before the world tracks skill use at all.
+            if ($parentState.TrackedSkills -eq 0) { continue }
+
+            $progressed = ($child.Level -gt $parentState.Level) -or
+                          ($child.Level -eq $parentState.Level -and $child.Xp -gt $parentState.Xp)
+            if (-not $progressed) { continue }
+            if ($child.UseSum -gt $parentState.UseSum) { continue }
+            if ($StaleSkillCounterExceptions -contains "$($campaign.Name)/$childName") { continue }
+
+            $failures.Add("$($campaign.Name)/$childName advanced progression since $($child.Parent) (level $($parentState.Level) XP $($parentState.Xp) -> level $($child.Level) XP $($child.Xp)) while its skill-use counters stayed at $($child.UseSum). Kills or a clear resolved, so at least one tracked skill's counter should have advanced with them; a counter frozen at its previous value is well-formed and passes every other gate, which is why this one exists. Settle skill counters in the exchange that used them (Resident Core, Turn-State Settlement step 4).") | Out-Null
+        }
+
         # --- Contract 2: the index agrees with the campaign's restore point ---
         # The two are independent statements of the same fact and must not
         # drift. This is the assertion that would have caught 0010 and 0011
@@ -172,6 +257,7 @@ function Test-CheckpointContract {
         if ($SupersededOriginals -contains "$($campaign.Name)/$indexedCheckpoint") {
             $failures.Add("system/WORLDS_AND_CAMPAIGNS.md points campaigns/$($campaign.Name)/ at '$indexedCheckpoint', a superseded nonconforming original that is not a restore target; point it at the conforming re-issue instead.") | Out-Null
         }
+
     }
 
     # --- Contract 7: every declared world profile declares a version and a
@@ -206,7 +292,25 @@ $supersededOriginals = @(
     'reikon_awakening_001/900_CHECKPOINT_001'
 )
 
-$failures = Test-CheckpointContract -Root $root -SupersededOriginals $supersededOriginals
+# Checkpoints that genuinely captured stale skill counters, corrected in live
+# canon afterward. A checkpoint's bytes are immutable (Rules Section 13.2), so
+# the defect cannot be repaired where it happened and the exemption is the only
+# honest way to keep Contract 8 enforcing on everything after it. Each entry
+# names the correction that carries the true counts forward.
+#
+#   gatefall_pendragon_001/900_CHECKPOINT_0028
+#       The failure Contract 8 was written from. The Cicero Gate clear
+#       (EVT-000119-EVT-000120) resolved three Rupture casts, one Flash Step,
+#       one Keen Sense activation and two Dagger Mastery applications, none
+#       recorded. Corrected in live canon by EVT-000127: Rupture 13->16,
+#       Flash Step 5->6, Keen Sense 0->1, Dagger Mastery 0->2. No mastery
+#       threshold crossed and no resolved roll changed -- the rolls were always
+#       right, only the bookkeeping was stale.
+$staleSkillCounterExceptions = @(
+    'gatefall_pendragon_001/900_CHECKPOINT_0028'
+)
+
+$failures = Test-CheckpointContract -Root $root -SupersededOriginals $supersededOriginals -StaleSkillCounterExceptions $staleSkillCounterExceptions
 
 if ($failures.Count -gt 0) {
     Write-Host "Checkpoint contract FAILED ($($failures.Count) error(s))"
@@ -214,22 +318,25 @@ if ($failures.Count -gt 0) {
     exit 1
 }
 
-# --- Regression fixture: the 900_CHECKPOINT_001 failure class must be caught ---
-# The fixture reproduces the narrated-gate original: a three-digit ordinal, a
-# manifest self-reporting a validator PASS that never ran, and omitted required
-# ledgers. If the contract stops catching it, this test fails.
+# --- Regression fixture: the known failure classes must stay caught -----------
+# Two defects are reproduced under the fixture root. The narrated-gate original:
+# a three-digit ordinal, a manifest self-reporting a validator PASS that never
+# ran, and omitted required ledgers. And the stale-field class: a child
+# checkpoint whose XP advanced while its skill counter stayed frozen at the
+# parent's value. If the contract stops catching either, this test fails.
 $fixtureRoot = Join-Path $root 'tools/tests/fixtures/nonconforming_checkpoint'
 if (-not (Test-Path -LiteralPath $fixtureRoot -PathType Container)) {
     Write-Host 'Checkpoint contract FAILED: regression fixture tools/tests/fixtures/nonconforming_checkpoint/ is missing.'
     exit 1
 }
 
-$fixtureFailures = Test-CheckpointContract -Root $fixtureRoot -SupersededOriginals @()
+$fixtureFailures = Test-CheckpointContract -Root $fixtureRoot -SupersededOriginals @() -StaleSkillCounterExceptions @()
 $expectedNeedles = @(
     'canonical four-digit checkpoint form',
     'self-reports a validation verdict',
     'omits the required ledger 100_CHARACTER_SHEET.md',
-    'records no world_rule_profile'
+    'records no world_rule_profile',
+    'skill-use counters stayed at'
 )
 $fixtureProblems = New-Object System.Collections.Generic.List[string]
 foreach ($needle in $expectedNeedles) {

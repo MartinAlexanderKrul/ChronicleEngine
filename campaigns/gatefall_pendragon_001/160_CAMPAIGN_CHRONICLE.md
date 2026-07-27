@@ -13,8 +13,8 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000131
-  game_date: "2026-08-04 06:00 -05:00; profile migration and candidate settlement, no fictional time consumed"
+  source: EVT-000133
+  game_date: "2026-08-04 06:00 -05:00; mandatory ratification gate adoption, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -92,6 +92,8 @@ subjects:
   - EVT-000129
   - EVT-000130
   - EVT-000131
+  - EVT-000132
+  - EVT-000133
 ```
 
 ---
@@ -2299,4 +2301,66 @@ The audit never runs per attack, work roll, drill repetition, or narration respo
 **Dimensional boundary and authored result.** Ordinary inventory withdrawal remains an instant, free delivery to Alexander's own hand only. It cannot place or launch an item remotely. Profile 1.20 pre-authors the result if Dimensional Weapon Control reaches its third qualifying scene: **Dimensional Projection [E-Rank]**, Mana 6, remotely deploying and launching one owned portable weapon from a visible unoccupied point within 5 metres as one ranged physical attack, with closed line-of-sight, occupancy, action-package, equipment-bonus, and mastery limits in Section 7.2. The skill is not yet granted.
 
 No fictional time, roll, Mana, Health, XP, gold, item, quest, known skill, mastery counter, damage result, or prior outcome changes. Checkpoint 0029 remains immutable at Profile 1.16 / Data Model 0.1.4 and restores through the applicable chain to Profile 1.20 / Data Model 0.1.5."
+```
+
+---
+
+## EVT-000132 - Profile 1.21: Three Earned Techniques Ratified
+
+```yaml
+id: EVT-000132
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: owner-ruling
+  game_date: "2026-08-04 06:00 -05:00; ratification, no fictional time consumed"
+  real_date: "2026-07-27"
+type: Event
+kind: system-profile-adoption
+importance: structural
+game_date: "2026-08-04 06:00 -05:00; ratification, no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.21 and ratified three earned-by-doing candidates through explicit owner rulings.
+
+**Exploit Pattern [E-Rank], Passive.** A successful deliberate tactical read establishes an active Pattern tied to an opponent, behavior, weakness, or structure. Every personal action genuinely exploiting it gains +1 modifier step until the scene ends or the Pattern becomes invalid. Ordinary analysis remains unrestricted; the Pattern does not stack with another modifier from the same finding. Novice supports one active Pattern, widening to 2/3/4/5 through mastery.
+
+**Field Command [E-Rank], Passive.** Alexander may relay one active Pattern by a brief actionable call to an ally who can perceive and understand him. The ally treats it as personally understood, needs no separate tactical-read action, and gains its +1 modifier step on actions genuinely exploiting it. Alexander may update the call before the ally's roll, never after. Novice supports one recipient, widening to 2/3/4/5.
+
+**Resonance Extraction [E-Rank], Passive.** A successful deliberate read establishes a Resonance Pattern for a mana-crystal vein. Every extraction action following it gains +1 modifier step until the vein is exhausted or materially shifts, when recalibration is required. Ordinary mining expertise remains intact. Novice benefits Alexander; mastery lets 1/2/3/4 additional miners follow his live calls.
+
+All three begin at Novice with zero post-ratification successful uses, zero qualifying scenes, and 0/3 mastery progress. Their historical evidence established acquisition and does not backfill these counters. Candidate states become `ratified` with this Event as their resolution.
+
+Section 7.4 now advances mastery through three distinct skill-appropriate qualifying scenes at the current level: combat skills require danger, while non-combat skills may progress through consequential work or structured practice that materially exercises their effect. This changes no historical mastery.
+
+No fictional time, roll, Mana, Health, XP, gold, item, quest, prior skill counter, damage result, or prior outcome changes. Checkpoint 0029 remains immutable at Profile 1.16 / Data Model 0.1.4 and restores through the applicable chain to Profile 1.21 / Data Model 0.1.5."
+```
+
+---
+
+## EVT-000133 - Profile 1.22: Mandatory Earned-Technique Ratification Gate
+
+```yaml
+id: EVT-000133
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: owner-ruling
+  game_date: "2026-08-04 06:00 -05:00; profile adoption, no fictional time consumed"
+  real_date: "2026-07-27"
+type: Event
+kind: system-profile-adoption
+importance: structural
+game_date: "2026-08-04 06:00 -05:00; profile adoption, no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.22.
+
+At a candidate's third qualifying scene, a complete result already authored by the profile now ratifies automatically in the same dangerous-scene settlement or promotion-batch Event. An unauthored result becomes `pending-ratification` and enters one consolidated owner-adjudication queue. That queue must be ratified or rejected before another gameplay scene begins; the Runtime may still save, close, export, answer rules questions, and perform other non-advancing OOC work.
+
+Readiness and `/continue` scan persistent candidates and surface the queue before narration. Several candidates may share one profile advance and adoption Event. Approved ratification atomically authors the complete mechanic, creates its resolution Event, grants the Novice skill, initializes counters at zero, and records `resolution_event` plus `result_ref`; rejection preserves the evidence and an owner-authored reason.
+
+Alexander has no `pending-ratification` candidate at adoption. His ratified skills and tracked candidates remain unchanged. No fictional time, roll, Mana, Health, XP, gold, item, quest, skill, counter, damage result, or prior outcome changes. Checkpoint 0029 remains immutable at Profile 1.16 / Data Model 0.1.4 and restores through the applicable chain to Profile 1.22 / Data Model 0.1.5."
 ```

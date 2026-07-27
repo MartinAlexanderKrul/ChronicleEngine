@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.9
+**Document Version:** 1.10
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -336,9 +336,11 @@ Run the audit at each trigger point declared by the active profile:
 
 Evaluate eligibility only from loaded canon and the exchange just resolved. The audit never invents a crisis, concealed discovery, objective, or deadline so that something can fire. If every declared precondition holds, settle the profile-defined attachment, offer, warning, or other state reaction **before yielding**, write it into in-flight state, and render its notification without waiting for a player reminder. If the reaction presents a choice, stop at that choice; automatic detection is not permission to choose for the protagonist.
 
-For Gatefall, this resident obligation loads and executes World Rule Profile Sections **7.1, 7.4, 8.4, and 14.3**. Sections 8.4 and 14.3 audit System quests at their declared per-exchange trigger points. Section 7.1 audits a dangerous scene once when that danger closes; consequential work and structured practice only seal compact evidence notes for one batched classification at the next promotion barrier. Section 7.4 keeps known-skill counters immediate and supplies their promotion-time reconciliation. An eligible Urgent quest produces its offer automatically and waits for acceptance; an eligible Hidden quest attaches automatically if capacity permits. Merely saying “the Runtime audits” in the world profile without executing the applicable boundary check is a failed implementation.
+For Gatefall, this resident obligation loads and executes World Rule Profile Sections **7.1, 7.4, 8.4, and 14.3**. Sections 8.4 and 14.3 audit System quests at their declared per-exchange trigger points. Section 7.1 audits a dangerous scene once when that danger closes; consequential work and structured practice only seal compact evidence notes for one batched classification at the next promotion barrier. A fully pre-authored formation result ratifies automatically at its third qualifying scene. Every unauthored `pending-ratification` candidate enters one consolidated owner-adjudication queue: saving and other non-advancing OOC commands remain available, but the queue must resolve before the next scene opens. Section 7.4 keeps known-skill counters immediate and supplies their promotion-time reconciliation. An eligible Urgent quest produces its offer automatically and waits for acceptance; an eligible Hidden quest attaches automatically if capacity permits. Merely saying “the Runtime audits” in the world profile without executing the applicable boundary check is a failed implementation.
 
 For a profile-declared progression domain, obey its declared audit boundary. Do not insert a per-exchange candidate search. During a potentially qualifying scene, retain only compact notes for player-declared methods that actually contributed; existing resolution and counter settlement remain unchanged. At dangerous-scene close, evaluate that scene once, record its audit, and update candidates after ordinary outcome and rewards settle. At non-combat scene close, seal the compact note set and do no classification. The promotion barrier batches those sealed work/practice notes and reconciles every dangerous-scene audit since the preceding successful barrier before write and validation.
+
+Before yielding any scene opening, scan persistent candidate state for the active profile's unresolved ratification status. Surface all matches together. If a complete result is already authored, settle its automatic grant and validate it before narration; otherwise stop for the owner ruling. Do not accept a player action that would begin or advance a scene while this gate is open. `/save`, `/end`, `/export`, rules discussion, and other non-advancing OOC work do not waive or consume the gate.
 
 ---
 

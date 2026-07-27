@@ -9,7 +9,7 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.20"
+world_rule_profile: "Gatefall World Rule Profile 1.22"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
@@ -34,7 +34,7 @@ source_loading:
     restoration_reads:
       - "Profile metadata and the compatibility/migration chain applicable to the restored checkpoint."
       - "Sections governing temporal settlement before either pool is read or time advances."
-      - "Sections 7.1, 7.4, 8.4, and 14.3 before readiness completes; keep their skill-counter, progression-candidate, and quest-trigger contracts in the resident working set. Quest triggers use their declared exchange boundaries. Skill formation audits danger once at scene close; work/practice seals compact notes for one promotion-barrier batch, which also re-counts known combat-skill uses/mastery and reconciles combat formation audits since the prior barrier."
+      - "Sections 7.1, 7.4, 8.4, and 14.3 before readiness completes; keep their skill-counter, progression-candidate, ratification-gate, and quest-trigger contracts in the resident working set. Quest triggers use their declared exchange boundaries. Skill formation audits danger once at scene close; work/practice seals compact notes for one promotion-barrier batch, which also re-counts known combat-skill uses/mastery and reconciles combat formation audits since the prior barrier. Fully authored formation results ratify automatically; unauthored pending candidates form one mandatory adjudication queue before the next scene."
       - "Any section governing the next affected operation, fetched before that operation resolves."
     range_policy: "Search headings first; use separate, bounded, non-overlapping reads and continue from the first unread line."
     failure_policy: "A single-call size limit is not a source-read failure; startup stops only if an applicable bounded section cannot be read."

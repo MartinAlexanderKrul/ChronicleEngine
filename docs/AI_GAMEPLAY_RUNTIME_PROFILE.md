@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.40
+**Document Version:** 1.41
 **Status:** Active Gameplay Workflow — Fetched Reference Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -316,7 +316,7 @@ When a valid checkpoint exists:
 3. Load the checkpoint's restoration entry point and included ledgers.
 4. Reconcile the restored checkpoint with the live campaign continuation.
 5. When the active World Rule Profile declares deterministic elapsed-time rules, load or migrate its exact campaign-time anchor, recovery modes, and fractional carry before any time-dependent action. Restoration itself advances no fictional time and grants no recovery.
-6. When the active World Rule Profile declares proactive triggers, load their governing sections and execute the resident Profile-Declared Proactive Trigger Audit before the first scene opens.
+6. When the active World Rule Profile declares proactive triggers, load their governing sections and execute the resident Profile-Declared Proactive Trigger Audit before the first scene opens. If the profile declares a mandatory ratification gate, consolidate every pending candidate, automatically settle complete pre-authored results, and obtain owner rulings for the rest before readiness can open gameplay.
 7. Read current objectives and situation-relevant records.
 
 Give a returning player a concise natural recap, unresolved pressures, the available-commands menu (Command Availability at Session Start), and a readiness question. Do not replay character creation or the full introduction.
@@ -368,7 +368,7 @@ Compute the view from canonical state at the moment of surfacing. Do not maintai
 
 End onboarding or recap with the available-commands menu (Command Availability at Session Start) and a direct choice: proceed, ask clarification, request a fuller briefing, or revise permitted setup choices.
 
-No scene begins, die is rolled, NPC acts, or in-world time advances before explicit player confirmation. Contradictory, missing, stale, or incompatible canonical state blocks scene opening. Report the specific problem and request a ruling when canon precedence cannot resolve it.
+No scene begins, die is rolled, NPC acts, or in-world time advances before explicit player confirmation. Contradictory, missing, stale, or incompatible canonical state blocks scene opening. A profile-declared `pending-ratification` queue is also a scene-opening block: present it as one consolidated adjudication, automatically settle any fully pre-authored result, and obtain owner rulings for every unauthored result before narration. Saving, closing, exporting, and non-advancing OOC discussion remain available while the queue is preserved. Report the specific problem and request a ruling when canon precedence cannot resolve it.
 
 ---
 
@@ -624,6 +624,8 @@ On a checkpoint request, session close, or Context-Preservation Barrier, in this
 1. **Promotion Barrier first (unchanged).** Run Canon Reconciliation at Promotion. If an unreconcilable contradiction exists, reject the mutation, record a Rejected Simulation, and write nothing. The barrier runs before any write, so contradictory canon never reaches the repository.
 
    When an active profile defers progression classification to promotion, execute that bounded batch here. For Gatefall Sections 7.1 and 7.4, first re-count every known combat skill activation and material passive application in the unpromoted span from resolved actions and the Mana/resource trace, reconciling uses, qualifying scenes, mastery progress, and Event `counter_deltas`. Then classify all sealed consequential-work and structured-practice note sets since the prior successful barrier into one `progression-batch-settlement` Event, preserving each original stable scene key; finally reconcile every dangerous-scene formation settlement since that barrier against its retained compact notes, its `progression_audits` entry (including `none`), and resulting candidate state. Repair a missed use, duplicate count, missing or mismatched formation audit, or stale candidate threshold before target derivation. This double-check is limited to the current unpromoted span and never scans older chronicles or immutable checkpoints.
+
+   When that classification reaches a ratification threshold, automatically include any fully pre-authored grant in the same settlement. Persist every unauthored result as `pending-ratification` and include it in the consolidated adjudication queue. The queue does not make the checkpoint fail and does not prevent session close; it becomes a mandatory readiness and next-scene gate.
 2. **Ensure capability.** If write capability is Unestablished, run a capability check (the canary) now.
 3. **Derive the complete live target set, then attempt the canonical update.** A checkpoint is not a single-ledger write. The target set is **derived from the session's events, never judged from memory of what the session felt like it touched.** For every event promoted this session, take every identifier that event references — its subjects, the objects it moved, harmed, consumed, created, or relocated — and add **the owning ledger of each** to the target set. Then add the ledgers that always carry a played session: Current State, chronicle, changelog, and `system/ID_REGISTRY.md` for new identifiers. Objectives, relationships, inventory, knowledge, and world promotion enter the set by the same derivation, not by recollection.
 

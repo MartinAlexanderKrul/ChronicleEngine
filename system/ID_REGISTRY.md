@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000145 |
 | Record | `REC-` | Canonical Record | REC-000095 |
-| Event | `EVT-` | Event | EVT-000131 |
+| Event | `EVT-` | Event | EVT-000133 |
 | Relationship | `REL-` | Relationship | REL-000067 |
 
 ---
@@ -246,6 +246,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000129 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.18 — offensive actions gain closed ordinary-strike, ordinary-combo, split-dual, and named-multi-strike packages preserving Flash Step, dagger-plus-Rupture, and two-target dual-wield precedents; Alexander's three-scene dual-wield practice is ratified as **Twin Fang [E-Rank]**, Mana 6, Novice 0 uses / 0 qualifying scenes / 0 of 3 toward Practiced; no fictional time or prior resolution changed |
 | EVT-000130 | Event | Gatefall: Pendragon: owner-ruling adoption of Data Model 0.1.5 and frozen Profile 1.19 — tracked skill counters receive prospective arithmetic baselines; `gatefall.skill_formation` gains mandatory Event audits and persistent candidates; Twin Fang's historical evidence migrates without counter backfill; no fictional time or prior resolution changed |
 | EVT-000131 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.20 — earned-skill formation expands from danger to bounded consequential work and structured practice; danger audits at scene close, non-combat classification batches at promotion, and the promotion barrier re-counts known combat-skill uses/mastery and reconciles combat formation audits before write; six omitted historical candidate states are settled (three pending ratification, three tracking); Dimensional Projection is pre-authored but not yet granted; Data Model remains 0.1.5 and no prior outcome changes |
+| EVT-000132 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.21 — Combat Pattern Exploitation ratifies as passive Exploit Pattern [E-Rank], Field Command ratifies as a passive Pattern-transfer skill, and Resonance Extraction ratifies as a passive vein-reading skill; all begin Novice at zero post-ratification counters; Section 7.4 mastery becomes skill-appropriate across danger, consequential work, and structured practice; no fictional time or prior outcome changes |
+| EVT-000133 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.22 — fully authored earned-technique candidates ratify automatically at threshold; unauthored pending candidates form one mandatory owner-adjudication queue before the next gameplay scene while saves and non-advancing OOC commands remain available; no current candidate, skill, counter, fictional time, or prior outcome changes |
 
 ---
 

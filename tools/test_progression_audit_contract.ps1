@@ -57,9 +57,13 @@ try {
     $baseline = Invoke-Validation $tempRoot
     Assert-True ($baseline.ExitCode -eq 0) "Unmodified Data Model 0.1.5 repository did not validate:`n$($baseline.Output)"
     Assert-True ((Get-Text $profile).Contains('progression-batch-settlement')) `
-        "Gatefall Profile 1.20 does not declare promotion-time non-combat progression batching."
+        "Gatefall Profile 1.22 does not declare promotion-time non-combat progression batching."
     Assert-True ((Get-Text $profile).Contains('Promotion reconciliation.')) `
-        "Gatefall Profile 1.20 does not declare known combat-skill counter reconciliation."
+        "Gatefall Profile 1.22 does not declare known combat-skill counter reconciliation."
+    Assert-True ((Get-Text $profile).Contains('Mandatory ratification gate.')) `
+        "Gatefall Profile 1.22 does not declare the next-scene ratification gate."
+    Assert-True ((Get-Text $runtime).Contains('mandatory readiness and next-scene gate')) `
+        "The Save Algorithm does not preserve pending ratification as a next-scene gate."
     Assert-True ((Get-Text $runtime).Contains('re-count every known combat skill activation')) `
         "The Save Algorithm does not execute the combat-skill double-check at the promotion barrier."
 
@@ -83,22 +87,32 @@ try {
         "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: tracking" `
         "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: ratified"
 
-    Replace-Once $registry "| Event | ``EVT-`` | Event | EVT-000131 |" "| Event | ``EVT-`` | Event | EVT-000132 |"
+    Replace-Once $character `
+        "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: tracking`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint" `
+        "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: pending-ratification`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint`n          - EVT-000120#fixture-third-dimensional-scene"
+    $authoredThreshold = Invoke-Validation $tempRoot
+    Assert-True ($authoredThreshold.ExitCode -ne 0 -and $authoredThreshold.Output -like "*complete pre-authored result*requires automatic ratification*") `
+        "A pre-authored three-scene candidate was allowed to remain pending:`n$($authoredThreshold.Output)"
+    Replace-Once $character `
+        "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: pending-ratification`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint`n          - EVT-000120#fixture-third-dimensional-scene" `
+        "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: tracking`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint"
+
+    Replace-Once $registry "| Event | ``EVT-`` | Event | EVT-000133 |" "| Event | ``EVT-`` | Event | EVT-000134 |"
     $registryText = Get-Text $registry
     $marker = "# Allocation Invariants"
     Assert-True ($registryText.Contains($marker)) "Registry allocation marker is missing."
-    $registryText = $registryText.Replace($marker, "| EVT-000132 | Event | progression-audit contract fixture |`r`n`r`n---`r`n`r`n$marker")
+    $registryText = $registryText.Replace($marker, "| EVT-000134 | Event | progression-audit contract fixture |`r`n`r`n---`r`n`r`n$marker")
     Set-Text $registry $registryText
 
-    Replace-Once $chronicle "  - EVT-000130`n  - EVT-000131`n``````" "  - EVT-000130`n  - EVT-000131`n  - EVT-000132`n``````"
+    Replace-Once $chronicle "  - EVT-000132`n  - EVT-000133`n``````" "  - EVT-000132`n  - EVT-000133`n  - EVT-000134`n``````"
     $event = @"
 
 ---
 
-## EVT-000132 - Progression Audit Contract Fixture
+## EVT-000134 - Progression Audit Contract Fixture
 
 ``````yaml
-id: EVT-000132
+id: EVT-000134
 canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active

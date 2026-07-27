@@ -698,7 +698,12 @@ foreach ($candidate in $progressionCandidates) {
     }
     if ($candidate.Domain -eq "gatefall.skill_formation" -and
         @($candidate.Evidence).Count -ge 3 -and $candidate.Status -eq "tracking") {
-        Add-Failure "$($candidate.SourcePath)`:$($candidate.SourceLine) Gatefall candidate '$($candidate.Key)' has at least three distinct evidence references but remains tracking; Profile 1.20 requires pending-ratification or a resolved state."
+        Add-Failure "$($candidate.SourcePath)`:$($candidate.SourceLine) Gatefall candidate '$($candidate.Key)' has at least three distinct evidence references but remains tracking; Profile 1.22 requires pending-ratification or a resolved state."
+    }
+    if ($candidate.Domain -eq "gatefall.skill_formation" -and
+        $candidate.Key -eq "dimensional_weapon_control" -and
+        @($candidate.Evidence).Count -ge 3 -and $candidate.Status -ne "ratified") {
+        Add-Failure "$($candidate.SourcePath)`:$($candidate.SourceLine) Gatefall candidate 'dimensional_weapon_control' has a complete pre-authored result and at least three evidence references; Profile 1.22 requires automatic ratification."
     }
 }
 
@@ -720,7 +725,7 @@ foreach ($baseline in $progressionBaselines) {
             $_.Subject -eq $baseline.Subject -and $_.Domain -eq $baseline.Domain
         })
         if (@($covered).Count -eq 0) {
-            Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) closes a post-baseline Gatefall qualifying scene involving $($baseline.Subject) but has no '$($baseline.Domain)' progression audit (Decision 080 / Profile 1.20)."
+            Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) closes a post-baseline Gatefall qualifying scene involving $($baseline.Subject) but has no '$($baseline.Domain)' progression audit (Decision 080 / Profile 1.22)."
         }
     }
 }

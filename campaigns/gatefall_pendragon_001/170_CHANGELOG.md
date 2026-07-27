@@ -13,8 +13,8 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000131
-  game_date: "2026-08-04 06:00 -05:00; profile migration and candidate settlement, no fictional time consumed"
+  source: EVT-000133
+  game_date: "2026-08-04 06:00 -05:00; mandatory ratification gate adoption, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -633,3 +633,22 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **Dimensional boundary.** Ordinary inventory withdrawal is explicitly hand-only and supplies no remote motion. The complete future 3/3 result is pre-authored as **Dimensional Projection [E-Rank]**, Mana 6: deploy and launch one owned portable weapon from a visible, unoccupied point within 5 metres as one ranged physical attack. It remains ungranted.
 - **Versions.** Gatefall Profile 1.19 → 1.20. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the migration at readiness.
 - **Repository allocation:** `EVT-000131`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.21 earned-technique ratification adopted (`EVT-000132`; no fictional time consumed).**
+
+- **Exploit Pattern ratified.** Alexander learns **Exploit Pattern [E-Rank]**, passive, at Novice. A successful deliberate tactical read establishes one Pattern tied to a specific opponent, behavior, weakness, or structure; Alexander gains +1 on every personal action that genuinely exploits it until it is invalidated or the scene ends. The bonus never stacks with itself from the same source. Concurrent Pattern capacity is 1/2/3/4/5 by mastery.
+- **Field Command ratified.** Alexander learns **Field Command [E-Rank]**, passive, at Novice. He may relay an active Pattern to one ally who can perceive and understand the brief call; that ally treats the Pattern as personally understood and gains its +1 when genuinely exploiting it, without making a separate tactical read. Alexander may update the call before the ally's roll, never after. Recipient capacity is 1/2/3/4/5 by mastery. Ordinary communication remains descriptive only and does not transfer the mechanical Pattern.
+- **Resonance Extraction ratified.** Alexander learns **Resonance Extraction [E-Rank]**, passive, at Novice. A successful vein read establishes one Resonance Pattern; he gains +1 on each extraction attempt that follows it until the deposit is exhausted or materially changes, at which point he must recalibrate. The bonus never stacks with itself from the same source. At Novice it applies only to Alexander; later mastery permits 1/2/3/4 instructed miners to follow his calls.
+- **Mastery correction.** Section 7.4 now counts skill-appropriate qualifying scenes rather than dangerous scenes alone: combat skills require materially relevant danger; non-combat skills may advance through consequential work or structured practice with real uncertainty, feedback, and result. One scene contributes at most once to a skill's mastery progress, while each materially improved application still counts as a successful use.
+- **Prospective counters.** All three skills begin at 0 successful uses, 0 qualifying scenes, and 0/3 toward Practiced. Their pre-ratification evidence establishes acquisition only and does not backfill mastery.
+- **Versions.** Gatefall Profile 1.20 → 1.21. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the migration at readiness.
+- **Repository allocation:** `EVT-000132`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.22 mandatory ratification gate adopted (`EVT-000133`; no fictional time consumed).**
+
+- **Authored results are automatic.** When a candidate with a complete profile-authored result reaches its third qualifying scene, the same scene-settlement or promotion-batch Event grants the skill at Novice and records the resolved candidate. It cannot remain pending.
+- **Unauthored results force adjudication.** Every `pending-ratification` candidate is presented in one consolidated queue after settlement. Saving, closing, exporting, and non-advancing OOC work remain available, but no roll, NPC action, time advance, or next-scene narration may occur until the owner ratifies or rejects every queued candidate.
+- **Durable across sessions.** A checkpoint may preserve the queue; `/continue` and readiness must surface it before opening play. Approved ratification atomically authors and grants the skill with zero counters and complete candidate provenance.
+- **Live migration.** Alexander currently has no pending candidate, so no skill, tracked candidate, or counter changes.
+- **Versions.** Gatefall Profile 1.21 → 1.22. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the migration at readiness.
+- **Repository allocation:** `EVT-000133`; no entity, record, or relationship identifier minted.

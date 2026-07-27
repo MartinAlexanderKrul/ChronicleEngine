@@ -12,6 +12,12 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-27 — Gatefall Profile 1.22 mandatory ratification gate
+
+Gatefall earned-technique thresholds now produce a durable outcome instead of a notification that can be forgotten. A fully pre-authored candidate ratifies automatically in its threshold settlement; an unauthored candidate persists as `pending-ratification` and enters one consolidated owner-adjudication queue that blocks the next gameplay scene while preserving `/save`, session close, export, and other non-advancing OOC work. Checkpoints may carry the queue, and readiness must resolve it before narration.
+
+Resident Core **1.9 → 1.10** adds the scene-opening scan. Runtime Profile **1.40 → 1.41** adds restoration, readiness, and promotion-barrier handling. Gatefall Profile **1.21 → 1.22** supplies the closed world behavior, and the progression contract test enforces automatic settlement of the pre-authored Dimensional Projection result. Engine 0.2.0 and Data Model 0.1.5 remain unchanged.
+
 ## 2026-07-27 — Decisions 079–080, Data Model 0.1.5, and Gatefall Profile 1.19
 
 The owner accepted two explicit Version 0.3 Architecture Freeze exceptions from Gatefall prototype evidence. Decision 079 makes world-declared counters reconcilable through typed Event `counter_deltas`, prospective baselines, stored current values, and arithmetic validation. Decision 080 makes earned progression observable through typed Event `progression_audits`, persistent candidates, a mandatory resident audit, and threshold enforcement.

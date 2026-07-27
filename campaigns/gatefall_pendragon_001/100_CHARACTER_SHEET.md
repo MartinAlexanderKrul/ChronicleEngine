@@ -13,8 +13,8 @@ canonical_record: REC-000074
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000131
-  game_date: "2026-08-04 06:00 -05:00; profile migration and candidate settlement, no fictional time consumed"
+  source: EVT-000133
+  game_date: "2026-08-04 06:00 -05:00; mandatory ratification gate adoption, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -66,7 +66,9 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.20"
+    profile_version: "1.22"
+    profile_mandatory_ratification_gate_event: EVT-000133
+    profile_earned_technique_ratification_event: EVT-000132
     profile_meaningful_practice_event: EVT-000131
     profile_progression_audit_event: EVT-000130
     profile_dual_wield_event: EVT-000129
@@ -132,6 +134,9 @@ canonical_state:
       - "Keen Sense [E-Rank] ★☆☆☆☆ Novice · Mana 2 · +1 modifier step on detection — spotting ambush, hidden foes, or anomaly — for the scene. **Successful uses 1 · qualifying scenes total 1 · mastery progress 1/3 toward Practiced.** Learned `EVT-000114` from an ordinary 1,000 g E-Rank skill rune bought off the standard shop catalogue rather than the 2026-08-02 Daily Premium tab, whose Rank roll had come up E and priced the identical result at 2,500 g. **First used in the Cicero Gate's corridor (`EVT-000119`, 2026-08-03): a re-read, d100 33, net +2, effective 73, success (Mana 60→58).** Settled retroactively (`EVT-000127`); the use was resolved in play but never recorded against this ledger entry at Checkpoint 0028's promotion barrier."
       - "Dagger Mastery [E-Rank] ★☆☆☆☆ Novice · Passive · adds **+0.10** to a Quickknife's chassis multiplier (×0.75 → **×0.85**), applying to both equipped Quickknives. **Successful uses 2 · qualifying scenes total 1 · mastery progress 1/3 toward Practiced.** Learned `EVT-000114` from a second ordinary 1,000 g E-Rank skill rune, after the day's last resolved combat, so it saw no use that session. **First materially applied in the Cicero Gate's corridor (`EVT-000119`, 2026-08-03): two ordinary Quickknife strikes clearing isolated beasts (d100 97 natural legendary; d100 73, legendary), both resolving under the improved ×0.85 multiplier.** A passive counts once per resolved action in which its effect materially applies (Section 7.4); the Gate as a whole contributes one qualifying scene. Settled retroactively (`EVT-000127`); missed at Checkpoint 0028's promotion barrier."
       - "Twin Fang [E-Rank] ★☆☆☆☆ Novice · Mana 6 · while two Quickknives are equipped, follow one ordinary Quickknife strike against a single target with a separately rolled strike from the other Quickknife in the same action. Each strike uses only its own weapon power; the skill-enabled second strike has a ×1.00 Twin Fang mastery multiplier at Novice. Twin Fang occupies the action's offensive active-skill position and cannot combine with Rupture. **Successful uses 0 · qualifying scenes total 0 · mastery progress 0/3 toward Practiced.** Ratified by the System under Profile 1.18 Section 7.1 at `EVT-000129`, based on successful dual-wield practice in three distinct dangerous scenes: Ashfield (`EVT-000071`), the Frozen Gallery (`EVT-000101`), and Cicero (`EVT-000120`). Pre-ratification practice satisfies acquisition but does not backfill post-acquisition use or mastery counters."
+      - "Exploit Pattern [E-Rank] ★☆☆☆☆ Novice · Passive · a successful deliberate tactical read establishes one active Pattern tied to an opponent, behavior, weakness, or structure; Alexander gains +1 modifier step on every personal action genuinely exploiting it until the scene ends or the Pattern becomes invalid. The skill never restricts ordinary analysis and does not stack with another modifier from the same finding. Novice supports one active Pattern; mastery supports 2/3/4/5. **Successful uses 0 · qualifying scenes total 0 · mastery progress 0/3 toward Practiced.** Ratified at `EVT-000132` from `combat_pattern_exploitation`; historical evidence establishes acquisition only."
+      - "Field Command [E-Rank] ★☆☆☆☆ Novice · Passive · relay one active Exploit Pattern by a brief actionable call to one ally who can perceive and understand Alexander. The ally treats the Pattern as personally understood, needs no separate tactical read, and gains its +1 modifier step on genuinely exploiting actions; Alexander may update the call before the ally's roll, never afterward. Ordinary communication conveys information but not the Pattern's mechanical benefit. Novice supports one recipient; mastery supports 2/3/4/5. **Successful uses 0 · qualifying scenes total 0 · mastery progress 0/3 toward Practiced.** Ratified at `EVT-000132` from `field_command`; historical evidence establishes acquisition only."
+      - "Resonance Extraction [E-Rank] ★☆☆☆☆ Novice · Passive · a successful deliberate read establishes a Resonance Pattern for one mana-crystal vein; Alexander gains +1 modifier step on every extraction action following it until the vein is exhausted or materially shifts, when recalibration is required. It never replaces ordinary mining expertise and does not stack with another modifier from the same reading. At Novice it benefits Alexander; mastery lets 1/2/3/4 additional miners follow his live calls. **Successful uses 0 · qualifying scenes total 0 · mastery progress 0/3 toward Practiced.** Ratified at `EVT-000132` from `resonance_extraction`; mastery advances through distinct consequential mining scenes under Profile 1.21 Section 7.4; historical evidence establishes acquisition only."
       - "Rank-Sight · Passive · Stat-milestone skill, awarded automatically on base Perception reaching **30** (Section 4.4). Reads the true Rank of any Gate at or below the Bearer's System Rank. **Successful material applications 0 explicitly demonstrated · mastery progress none.** The threshold was crossed in `EVT-000083`; equipment never satisfies it."
       - "Overpower · Passive · Stat-milestone skill, awarded automatically on base Strength reaching **30** (Section 4.4). Grapple, pin, or bull-rush a foe up to one Rank above the Bearer's System Rank, currently D-Rank. **Successful material applications 1 explicitly demonstrated · mastery progress none.** Earned in `EVT-000089`; equipment never satisfies the threshold. First demonstrated in `EVT-000116`, light sparring at the Coalition trading field: a controlled takedown and pin of **D-Rank** striker Priya Okafor (`ENT-000136`), whose boxer's bridge-and-hip-escape could not move him — exactly the one-Rank-above envelope the skill authorizes, and the first time it has mattered in the fiction."
       - "Pre-empt · Passive · Stat-milestone skill, awarded automatically on base Agility reaching **30** (Section 4.4). Act on an ambush warning before the ambush lands, taking a normal action in the surprise exchange rather than being caught flat. **Successful material applications 0 explicitly demonstrated · mastery progress none.** Earned in `EVT-000114`; equipment never satisfies the threshold, so the equipped Agility 55 is irrelevant to it."
@@ -156,6 +161,15 @@ canonical_state:
       - { path: skills.twin_fang.successful_uses, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
       - { path: skills.twin_fang.qualifying_scenes_total, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
       - { path: skills.twin_fang.mastery_progress, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.exploit_pattern.successful_uses, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 0 }
+      - { path: skills.exploit_pattern.qualifying_scenes_total, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 0 }
+      - { path: skills.exploit_pattern.mastery_progress, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 0 }
+      - { path: skills.field_command.successful_uses, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 0 }
+      - { path: skills.field_command.qualifying_scenes_total, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 0 }
+      - { path: skills.field_command.mastery_progress, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 0 }
+      - { path: skills.resonance_extraction.successful_uses, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 0 }
+      - { path: skills.resonance_extraction.qualifying_scenes_total, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 0 }
+      - { path: skills.resonance_extraction.mastery_progress, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 0 }
       - { path: skills.rank_sight.successful_material_applications, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
       - { path: skills.overpower.successful_material_applications, baseline_value: 1, baseline_as_of: EVT-000130, current_value: 1 }
       - { path: skills.pre_empt.successful_material_applications, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
@@ -179,19 +193,23 @@ canonical_state:
       - domain: gatefall.skill_formation
         key: combat_pattern_exploitation
         signature: observe-specific-combat-tell-or-structural-weakness.then-personally-exploit
-        status: pending-ratification
+        status: ratified
         evidence:
           - EVT-000059#red-line-elite-recovery-window
           - EVT-000071#ashfield-elite-pattern-counter
           - EVT-000109#crypt-boss-nonvisual-arc
+        resolution_event: EVT-000132
+        result_ref: skills.exploit_pattern
       - domain: gatefall.skill_formation
         key: field_command
         signature: identify-actionable-opening.communicate-plan-or-call.ally-executes
-        status: pending-ratification
+        status: ratified
         evidence:
           - EVT-000059#red-line-boss-leap-call
           - EVT-000079#ashfield-boss-plan-and-calls
           - EVT-000120#cicero-alpha-weak-point-calls
+        resolution_event: EVT-000132
+        result_ref: skills.field_command
       - domain: gatefall.skill_formation
         key: nonvisual_combat_mapping
         signature: replace-sight-with-air-and-sound.map-movement.commit-to-mapped-position
@@ -201,11 +219,13 @@ canonical_state:
       - domain: gatefall.skill_formation
         key: resonance_extraction
         signature: read-vein-resonance-before-impact.adapt-strike-to-live-seam
-        status: pending-ratification
+        status: ratified
         evidence:
           - EVT-000063#cicero-scar-resonance-method
           - EVT-000066#frozen-gallery-live-recalibration
           - EVT-000095#halsted-heat-vein-adaptation
+        resolution_event: EVT-000132
+        result_ref: skills.resonance_extraction
       - domain: gatefall.skill_formation
         key: formation_instruction
         signature: assess-individual-failure-mode.design-role-fit-drill.deliver-tested-correction

@@ -288,6 +288,17 @@ also updates the subject's persistent candidate state. Candidate recognition
 never authorizes the Runtime to invent the resulting mechanic: an unauthored
 Rank, cost, effect, or balance remains an owner ruling.
 
+When a profile declares a ratification threshold, reaching it must produce a
+settled result rather than a forgettable notification. A completely pre-authored
+result may be granted automatically at the profile's declared settlement
+boundary. An unauthored result becomes a persistent pending candidate and a
+mandatory owner-adjudication item before the next gameplay scene. The Runtime
+may preserve that item through a checkpoint or session close, but readiness and
+scene-opening audits must surface it and prohibit rolls, NPC actions, fictional
+time advance, or new scene narration until the profile-required ruling is
+recorded. Several pending candidates are surfaced together; this obligation
+never adds per-action candidate checks.
+
 ---
 
 # 3. Context

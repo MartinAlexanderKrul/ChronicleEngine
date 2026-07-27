@@ -12,6 +12,12 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-27 — Gatefall Profile 1.16: Daily Premium bag persistence repair
+
+Gatefall Profile **1.15 → 1.16** makes compact stored Daily Premium bag state the sole operational source for ordinary model draws. Expired rotations remain provenance and are never replayed during routine rotation.
+
+The advance is frozen and classified **migrating**: a restored Profile 1.11-or-later state missing any complete category bag repairs only that category from the full Section 12.5 set minus the active cycle's model, records that model as the previous draw, and begins using the repaired bag at the next rotation. Complete stored bags are preserved. No active or expired offer is rerolled or reopened. The existing World Rule Profile extension mechanism carries the fields, so Engine 0.2.0 and Data Model 0.1.4 do not advance.
+
 ## 2026-07-26 — Decision 078 and Gatefall Profile 1.13: automatic clock and recovery settlement
 
 Gatefall play demonstrated that an authored Mana rate plus a resident settlement

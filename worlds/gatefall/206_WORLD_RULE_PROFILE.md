@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.14
+# Gatefall — World Rule Profile 1.16
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.15
+**Profile Version:** 1.16
 **Engine Compatibility:** 0.2.0; Data Model 0.1.4
 **Status:** Active
-**Compatibility Status:** frozen at version 1.15 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-26. Version 1.15 is an **additive party-composition advance** over frozen 1.14: Section 9.4 gains the **high-Rank sponsor exception**, letting a confirmed E-Rank contract be staffed at any party size behind a C-Rank licence, and a confirmed D-Rank contract behind a B-Rank licence, with insurance intact. It recomputes nothing.
+**Compatibility Status:** frozen at version 1.16 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.16 is a **migrating Daily Premium persistence-repair advance** over frozen 1.15: compact stored bag state is the sole operational source for ordinary rotation, and legacy Profile 1.11-or-later state missing a complete category bag repairs prospectively from its active cycle instead of replaying expired rotations.
+
+**Required 1.15 → 1.16 migration.** Preserve the active Daily Premium cycle, every complete stored category bag, every previous draw, all six offers and purchase flags, every expired result, and every other campaign value. For each bag-governed category whose compact bag state is missing or incomplete, do **not** reconstruct expired rotations from chronicles, changelogs, or older checkpoints. Initialize only that category's bag to its full Section 12.5 model set minus the active cycle's model, record the active model as its previous draw, and begin using the repaired bag at the next rotation. A complete stored bag is authoritative and is not reset. This migration rerolls no offer, reopens no expired cycle, and consumes no fictional time. Record adoption in mutable live state; immutable Profile 1.15-and-earlier checkpoints remain byte-unchanged and run the applicable migration chain through 1.16 at readiness.
+
+Version 1.15 remains the additive party-composition advance over frozen 1.14: Section 9.4 gains the **high-Rank sponsor exception**, letting a confirmed E-Rank contract be staffed at any party size behind a C-Rank licence, and a confirmed D-Rank contract behind a B-Rank licence, with insurance intact. It recomputes nothing.
 
 **1.14 → 1.15 compatibility treatment.** Preserve every stored value, Stat, pool, skill, item, quest, currency, contract, and resolved outcome. Adoption requires no recomputation and no state migration: the exception governs postings staffed from adoption forward and reopens no completed clear, filed report, or split. Legal minimums (Section 13.3) are untouched, unconfirmed assessments keep the ordinary posting floors, and the solo-entry insurance void is unchanged outside a sanctioned posting. Record the additive-upgrade acknowledgement in the live campaign and the next promoted checkpoint. Immutable Profile 1.14-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.15 before play.
 
@@ -1401,6 +1405,7 @@ At **06:00 local time every morning**, the shop replaces its Daily Premium tab w
 **Rotation state and timing.**
 
 - At 06:00 the Runtime makes the **twelve base real draws** below — five model-bag draws, one rune roll, one fabrication-series roll, and five independent Rank rolls — plus any explicitly required rune rerolls. It records the cycle date, fabrication series, all six complete offers, their prices, six purchased/unpurchased flags, each bag's remaining entries, and the previous draw for each bag-governed category as canonical Bearer state. A Runtime never selects the offers itself.
+- The stored remaining entries and previous draw are the sole operational source for the next model draws. Expired rotations in chronicles, changelogs, and historical checkpoints are provenance only and are never replayed during an ordinary rotation. If this compact state is missing, apply the required Profile 1.15 → 1.16 migration above once and persist its result before play continues.
 - Each offer has **quantity 1**. Buying it marks that category purchased and removes the row until the next rotation. Unbought offers expire at the next 06:00; they are not carried forward or discounted.
 - A later level-up does not re-Rank the current cycle. If the System first attaches after 06:00, it generates the current cycle immediately using the Bearer's then-current System Rank as each Rank roll's floor; it does not reconstruct earlier cycles.
 - Rotation occurs even while the Bearer sleeps or occupies a sealed instance. The System fires the Tier-1 line: `[SYSTEM] DAILY PREMIUM STOCK ROTATED — 6 offers available.`

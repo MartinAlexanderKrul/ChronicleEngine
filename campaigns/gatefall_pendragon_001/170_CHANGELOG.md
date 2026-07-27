@@ -10,11 +10,11 @@
 ```yaml
 id: REC-000080
 canonical_record: REC-000080
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000129
-  game_date: "2026-08-04 06:00 -05:00; owner ruling and skill ratification, no fictional time consumed"
+  source: EVT-000130
+  game_date: "2026-08-04 06:00 -05:00; Data Model and profile migration, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -616,3 +616,12 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **Versions.** `system_state.profile_version` 1.17 → 1.18. Engine 0.2.0 and Data Model 0.1.4 unchanged.
 - **Ledgers updated:** Profile 1.18; campaign startup; character sheet; Chronicle; changelog; Current State; world README; worlds/campaigns index; identifier registry.
 - **Repository allocation:** `EVT-000129`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Data Model 0.1.5 and Profile 1.19 progression audit adopted (`EVT-000130`; no fictional time consumed).**
+
+- **Owner ruling.** Decisions 079 and 080 are accepted into Version 0.3 as explicit Architecture Freeze exceptions.
+- **Counter reconciliation.** All 25 existing Alexander skill-counter fields are stamped with their current value and `baseline_as_of: EVT-000130`. Future changes require Event `counter_deltas` plus the matching stored `current_value`.
+- **Candidate detection.** `gatefall.skill_formation` batches once when a continuous dangerous scene closes, with no per-attack or per-exchange candidate classification. During danger only compact notes for materially successful player-declared methods are retained; the closing Event records the audit, including `none`. A candidate must be deliberate, repeatable, distinct from ordinary/existing capability, materially successful under danger, and evidenced in distinct scenes. Ambiguity becomes `pending-classification`; three scenes become `pending-ratification`.
+- **Twin Fang migration.** The already-ratified technique is represented as a `ratified` candidate with evidence `EVT-000071`, `EVT-000101`, and `EVT-000120`, resolved at `EVT-000129`; counters remain 0/0/0.
+- **Versions.** Live canon Data Model 0.1.4 → 0.1.5; `system_state.profile_version` 1.18 → 1.19. Checkpoint 0029 remains immutable and applies migrations at readiness.
+- **Repository allocation:** `EVT-000130`; no entity, record, or relationship identifier minted.

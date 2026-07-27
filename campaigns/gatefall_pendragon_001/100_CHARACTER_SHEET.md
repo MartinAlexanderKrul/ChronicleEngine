@@ -10,11 +10,11 @@
 ```yaml
 id: REC-000074
 canonical_record: REC-000074
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000129
-  game_date: "2026-08-04 06:00 -05:00; owner ruling and skill ratification, no fictional time consumed"
+  source: EVT-000130
+  game_date: "2026-08-04 06:00 -05:00; Data Model and profile migration, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -29,7 +29,7 @@ subjects:
 ```yaml
 id: ENT-000125
 canonical_record: REC-000074
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000056
@@ -66,7 +66,8 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.18"
+    profile_version: "1.19"
+    profile_progression_audit_event: EVT-000130
     profile_dual_wield_event: EVT-000129
     profile_instruction_binding_event: EVT-000128
     profile_premium_persistence_event: EVT-000125
@@ -135,6 +136,45 @@ canonical_state:
       - "Pre-empt · Passive · Stat-milestone skill, awarded automatically on base Agility reaching **30** (Section 4.4). Act on an ambush warning before the ambush lands, taking a normal action in the surprise exchange rather than being caught flat. **Successful material applications 0 explicitly demonstrated · mastery progress none.** Earned in `EVT-000114`; equipment never satisfies the threshold, so the equipped Agility 55 is irrelevant to it."
       - "Multitask · Passive · Stat-milestone skill, awarded automatically on base Intelligence reaching **30** (Section 4.4). Raises concurrent non-daily System-quest capacity from the default 1 to **2** (Section 8.4). **Successful material applications 0 explicitly demonstrated · mastery progress none.** Earned in `EVT-000114`. No non-daily quest — `[URGENT]` or `[HIDDEN]` — has been issued in this campaign, so both slots are currently free."
       - "Bulwark [E-Rank] ★☆☆☆☆ Novice · Mana 10 · 50% physical damage reduction for one exchange; reductions multiply, never add, so no stack reaches immunity. **Successful uses 0 · qualifying scenes total 0 · mastery progress 0/3 toward Practiced.** Learned `EVT-000120` from a boss-drop skill book off the Cicero Beast Den's leaner alpha (boss-drop d100 96 → skill book; d10 10 → Bulwark). Not yet used."
+    tracked_counters:
+      - { path: skills.stone_skin.successful_uses, baseline_value: 3, baseline_as_of: EVT-000130, current_value: 3 }
+      - { path: skills.stone_skin.qualifying_scenes_total, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.stone_skin.mastery_progress, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.rupture.successful_uses, baseline_value: 16, baseline_as_of: EVT-000130, current_value: 16 }
+      - { path: skills.rupture.qualifying_scenes_total, baseline_value: 8, baseline_as_of: EVT-000130, current_value: 8 }
+      - { path: skills.rupture.mastery_progress, baseline_value: 2, baseline_as_of: EVT-000130, current_value: 2 }
+      - { path: skills.flash_step.successful_uses, baseline_value: 6, baseline_as_of: EVT-000130, current_value: 6 }
+      - { path: skills.flash_step.qualifying_scenes_total, baseline_value: 4, baseline_as_of: EVT-000130, current_value: 4 }
+      - { path: skills.flash_step.mastery_progress, baseline_value: 1, baseline_as_of: EVT-000130, current_value: 1 }
+      - { path: skills.keen_sense.successful_uses, baseline_value: 1, baseline_as_of: EVT-000130, current_value: 1 }
+      - { path: skills.keen_sense.qualifying_scenes_total, baseline_value: 1, baseline_as_of: EVT-000130, current_value: 1 }
+      - { path: skills.keen_sense.mastery_progress, baseline_value: 1, baseline_as_of: EVT-000130, current_value: 1 }
+      - { path: skills.dagger_mastery.successful_uses, baseline_value: 2, baseline_as_of: EVT-000130, current_value: 2 }
+      - { path: skills.dagger_mastery.qualifying_scenes_total, baseline_value: 1, baseline_as_of: EVT-000130, current_value: 1 }
+      - { path: skills.dagger_mastery.mastery_progress, baseline_value: 1, baseline_as_of: EVT-000130, current_value: 1 }
+      - { path: skills.twin_fang.successful_uses, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.twin_fang.qualifying_scenes_total, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.twin_fang.mastery_progress, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.rank_sight.successful_material_applications, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.overpower.successful_material_applications, baseline_value: 1, baseline_as_of: EVT-000130, current_value: 1 }
+      - { path: skills.pre_empt.successful_material_applications, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.multitask.successful_material_applications, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.bulwark.successful_uses, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.bulwark.qualifying_scenes_total, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+      - { path: skills.bulwark.mastery_progress, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
+    progression_audit_baselines:
+      - { domain: gatefall.skill_formation, baseline_as_of: EVT-000130 }
+    progression_candidates:
+      - domain: gatefall.skill_formation
+        key: twin_fang
+        signature: two-equipped-quickknives.same-target.separate-strikes
+        status: ratified
+        evidence:
+          - EVT-000071#ashfield-elite-counter
+          - EVT-000101#frozen-gallery-boss-dual-strike
+          - EVT-000120#cicero-alpha-dual-strike
+        resolution_event: EVT-000129
+        result_ref: skills.twin_fang
     gold: 12
     shop_holdings:
       - "Mender's Seal — clears one Minor injury, or reduces one Moderate injury to Minor; restores no Health (Section 12.5) · purchased via the 2026-07-30 Daily Premium cycle, 1,200 g (`EVT-000088`) · banked, unused"

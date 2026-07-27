@@ -5,7 +5,7 @@ A Persistent Entity of type Character. Structure: `011_ENGINE_DATA_MODEL.md` Sec
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>
@@ -33,4 +33,22 @@ canonical_state:
   personality: <optional: core traits and current expression — §5.4>
   knowledge: <optional: what this character knows — §5.5>
   situation: <optional: current objective or circumstance — narrative only, never the location of record (Decision 073)>
+tracked_counters:
+  - path: <optional: unique world-owned counter path>
+    baseline_value: <optional: integer>
+    baseline_as_of: <optional: EVT-XXXXXX>
+    current_value: <optional: integer>
+progression_audit_baselines:
+  - domain: <optional: unique profile-owned domain>
+    baseline_as_of: <optional: EVT-XXXXXX>
+progression_candidates:
+  - domain: <optional: profile-owned domain>
+    key: <optional: stable candidate key, unique with domain>
+    signature: <optional: stable method/tools/sequence/payoff signature>
+    status: <optional: tracking | pending-classification | pending-ratification | ratified | rejected>
+    evidence:
+      - <optional: EVT-XXXXXX#scene-key>
+    resolution_event: <optional: EVT-XXXXXX; required when ratified>
+    result_ref: <optional: world-owned result path; required when ratified>
+    rejection_reason: <optional: profile-owned reason; required when rejected>
 ```

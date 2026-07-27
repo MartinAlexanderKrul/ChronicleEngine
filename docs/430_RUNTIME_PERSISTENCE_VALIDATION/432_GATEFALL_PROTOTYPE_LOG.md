@@ -46,6 +46,8 @@ the exact Chicago-local anchor, deterministic integer carry for both pools, and
 automatic settlement before the next action. Checkpoint 0024 remains immutable at
 Profile 1.12 and migrates only into mutable readiness state.
 
+On 2026-07-27 repository time, two further persistence failures were dispositioned by explicit owner ruling. Decision 079 advances live state to Data Model 0.1.5 so stored skill counters reconcile against prospective Event deltas. Decision 080 adds a profile-declared progression audit and persistent candidates after Alexander's three-scene dual-wield technique was never recognized by the Runtime. Gatefall Profile 1.19 is the first implementation; `EVT-000130` baselines current counters and migrates Twin Fang's supported evidence without rewriting historical Events or Checkpoint 0029.
+
 **Reconciliation (Decision 074 freeze):** After this baseline, the Gatefall World Rule Profile was frozen at version 1.0 (Rules Section 14.6, Decision 074), and later checkpoints capture `freeze_status: frozen`. This does not invalidate the baseline: Checkpoint 0004 was captured before the freeze and remains the real, immutable pre-freeze workshop-draft case (WRP-03), while the live frozen profile now supplies the genuine matching and mismatch cases (WRP-01, WRP-02, WRP-05). The validation harness reads the live profile's actual frozen version rather than assuming a fixed value, so it tracks the freeze instead of breaking against it.
 
 The live campaign is the positive-path subject. Its absence of a baseline is not repaired retroactively.

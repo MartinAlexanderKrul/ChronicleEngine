@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000145 |
 | Record | `REC-` | Canonical Record | REC-000095 |
-| Event | `EVT-` | Event | EVT-000129 |
+| Event | `EVT-` | Event | EVT-000130 |
 | Relationship | `REL-` | Relationship | REL-000067 |
 
 ---
@@ -244,6 +244,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000127 | Event | Gatefall: Pendragon: skill-mastery settlement correction — the Cicero Gate clear (`EVT-000119`–`EVT-000120`) resolved three Rupture casts, one Flash Step, one Keen Sense activation, and two Dagger Mastery applications that were never recorded against `skills_known` at Checkpoint 0028's promotion barrier. Corrected counts: Rupture uses 13→16, qualifying scenes 7→8; Flash Step uses 5→6, qualifying scenes 3→4; Keen Sense uses 0→1, qualifying scenes 0→1 (first use); Dagger Mastery uses 0→2, qualifying scenes 0→1 (first material application). No mastery-level threshold crossed; no resolved roll, Gate outcome, XP, or item changes |
 | EVT-000128 | Event | Gatefall: Pendragon: adoption of frozen Profile 1.17 — instructional items gain immutable provenance-derived recipient binding, identity is fixed at generation, eligible awakened NPCs may consume unbound instruction, and duplicate rerolls move to Bearer consumption. The active Cobalt Premium Rune remains Silent Step [C-Rank] and becomes unbound/NPC-eligible; no roll, fictional time, ownership, skill, or resolved outcome changed |
 | EVT-000129 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.18 — offensive actions gain closed ordinary-strike, ordinary-combo, split-dual, and named-multi-strike packages preserving Flash Step, dagger-plus-Rupture, and two-target dual-wield precedents; Alexander's three-scene dual-wield practice is ratified as **Twin Fang [E-Rank]**, Mana 6, Novice 0 uses / 0 qualifying scenes / 0 of 3 toward Practiced; no fictional time or prior resolution changed |
+| EVT-000130 | Event | Gatefall: Pendragon: owner-ruling adoption of Data Model 0.1.5 and frozen Profile 1.19 — tracked skill counters receive prospective arithmetic baselines; `gatefall.skill_formation` gains mandatory Event audits and persistent candidates; Twin Fang's historical evidence migrates without counter backfill; no fictional time or prior resolution changed |
 
 ---
 

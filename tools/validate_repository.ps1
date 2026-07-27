@@ -8,7 +8,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 $failures = [System.Collections.Generic.List[string]]::new()
-$currentSchemaVersion = "0.1.4"
+$currentSchemaVersion = "0.1.5"
 
 if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) {
     $RepositoryRoot = Split-Path -Parent $PSScriptRoot
@@ -43,6 +43,89 @@ function Get-LineNumber {
     }
 
     return ([regex]::Matches($Text.Substring(0, $Index), "\n").Count + 1)
+}
+
+function Get-IndentedSection {
+    param(
+        [string]$Block,
+        [string]$Name
+    )
+
+    $lines = $Block -split "\r?\n"
+    for ($index = 0; $index -lt $lines.Count; $index++) {
+        if ($lines[$index] -notmatch "^([ \t]*)$([regex]::Escape($Name)):[ \t]*$") {
+            continue
+        }
+
+        $baseIndent = $Matches[1].Length
+        $captured = [System.Collections.Generic.List[string]]::new()
+        for ($child = $index + 1; $child -lt $lines.Count; $child++) {
+            $line = $lines[$child]
+            if ([string]::IsNullOrWhiteSpace($line)) {
+                $captured.Add($line)
+                continue
+            }
+            $indent = ([regex]::Match($line, '^[ \t]*')).Value.Length
+            if ($indent -le $baseIndent) {
+                break
+            }
+            $captured.Add($line)
+        }
+        return ($captured -join "`n")
+    }
+    return $null
+}
+
+function Get-ListEntries {
+    param([string]$Section)
+
+    $entries = [System.Collections.Generic.List[string]]::new()
+    if ([string]::IsNullOrWhiteSpace($Section)) {
+        return $entries
+    }
+
+    $lines = $Section -split "\r?\n"
+    $itemIndent = $null
+    foreach ($line in $lines) {
+        if ($line -match '^([ \t]*)-[ \t]+') {
+            $itemIndent = $Matches[1].Length
+            break
+        }
+    }
+    if ($null -eq $itemIndent) {
+        return $entries
+    }
+
+    $current = [System.Collections.Generic.List[string]]::new()
+    foreach ($line in $lines) {
+        if ($line -match '^([ \t]*)-[ \t]+' -and $Matches[1].Length -eq $itemIndent) {
+            if ($current.Count -gt 0) {
+                $entries.Add(($current -join "`n"))
+                $current.Clear()
+            }
+        }
+        if ($current.Count -gt 0 -or ($line -match '^([ \t]*)-[ \t]+' -and $Matches[1].Length -eq $itemIndent)) {
+            $current.Add($line)
+        }
+    }
+    if ($current.Count -gt 0) {
+        $entries.Add(($current -join "`n"))
+    }
+    return $entries
+}
+
+function Get-EntryValue {
+    param(
+        [string]$Entry,
+        [string]$Name
+    )
+
+    $pattern = '(?m)(?:^|[,{])[ \t-]*' + [regex]::Escape($Name) + ':[ \t]*"?([^,"}\r\n#]+)'
+    $match = [regex]::Match($Entry, $pattern)
+    if (-not $match.Success) {
+        return $null
+    }
+    return $match.Groups[1].Value.Trim().Trim('"')
 }
 
 $registryPath = Join-Path $root "system/ID_REGISTRY.md"
@@ -281,6 +364,11 @@ $objectCount = 0
 # relationship's endpoints may be defined in a file read later than its own.
 $entityTypes = @{}
 $relationshipBlocks = [System.Collections.Generic.List[object]]::new()
+$trackedCounters = @{}
+$counterDeltas = [System.Collections.Generic.List[object]]::new()
+$progressionBaselines = [System.Collections.Generic.List[object]]::new()
+$progressionCandidates = [System.Collections.Generic.List[object]]::new()
+$eventAuditData = [System.Collections.Generic.List[object]]::new()
 # Personal relationship types require Texture. This is an allowlist rather than an
 # institutional denylist on purpose: relationship type is free-form world vocabulary
 # ("working-contact", "research-collaboration", "harvest-hire"), so a denylist can
@@ -348,7 +436,7 @@ foreach ($file in $canonicalFiles) {
         }
         foreach ($legacyField in @("event_time", "record_time")) {
             if ([regex]::IsMatch($block, "(?m)^[ \\t]+$legacyField[ \\t]*:")) {
-                Add-Failure "$relativePath`:$line object $id uses legacy provenance field '$legacyField'; Data Model 0.1.4 requires game_date/real_date."
+                Add-Failure "$relativePath`:$line object $id uses legacy provenance field '$legacyField'; Data Model 0.1.5 requires game_date/real_date."
             }
         }
 
@@ -362,6 +450,156 @@ foreach ($file in $canonicalFiles) {
             Add-Failure "$relativePath`:$line object $id does not have one valid REC canonical_record reference."
         } elseif ($id.StartsWith("REC-") -and $canonicalRecord.Groups[1].Value -ne $id) {
             Add-Failure "$relativePath`:$line Canonical Record $id must reference itself as canonical_record."
+        }
+
+        # Decisions 079-080: collect typed counter and progression evidence.
+        if ($id.StartsWith("ENT-")) {
+            foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "tracked_counters"))) {
+                $path = Get-EntryValue $entry "path"
+                $baselineValue = Get-EntryValue $entry "baseline_value"
+                $baselineAsOf = Get-EntryValue $entry "baseline_as_of"
+                $currentValue = Get-EntryValue $entry "current_value"
+                if ([string]::IsNullOrWhiteSpace($path) -or
+                    $baselineValue -notmatch '^-?\d+$' -or
+                    $baselineAsOf -notmatch '^EVT-\d{6}$' -or
+                    $currentValue -notmatch '^-?\d+$') {
+                    Add-Failure "$relativePath`:$line entity $id has a malformed tracked_counters entry; path, integer baseline/current values, and baseline Event are required (Decision 079)."
+                    continue
+                }
+                $key = "$id|$path"
+                if ($trackedCounters.ContainsKey($key)) {
+                    Add-Failure "$relativePath`:$line entity $id declares tracked counter '$path' more than once."
+                    continue
+                }
+                $trackedCounters[$key] = [pscustomobject]@{
+                    Subject = $id
+                    Path = $path
+                    BaselineValue = [int]$baselineValue
+                    BaselineAsOf = $baselineAsOf
+                    BaselineNumber = [int]$baselineAsOf.Substring(4)
+                    CurrentValue = [int]$currentValue
+                    SourcePath = $relativePath
+                    SourceLine = $line
+                }
+            }
+
+            foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "progression_audit_baselines"))) {
+                $domain = Get-EntryValue $entry "domain"
+                $baselineAsOf = Get-EntryValue $entry "baseline_as_of"
+                if ([string]::IsNullOrWhiteSpace($domain) -or $baselineAsOf -notmatch '^EVT-\d{6}$') {
+                    Add-Failure "$relativePath`:$line entity $id has a malformed progression_audit_baselines entry."
+                    continue
+                }
+                $progressionBaselines.Add([pscustomobject]@{
+                    Subject = $id
+                    Domain = $domain
+                    BaselineAsOf = $baselineAsOf
+                    BaselineNumber = [int]$baselineAsOf.Substring(4)
+                    SourcePath = $relativePath
+                    SourceLine = $line
+                })
+            }
+
+            foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "progression_candidates"))) {
+                $domain = Get-EntryValue $entry "domain"
+                $candidateKey = Get-EntryValue $entry "key"
+                $signature = Get-EntryValue $entry "signature"
+                $candidateStatus = Get-EntryValue $entry "status"
+                $resolutionEvent = Get-EntryValue $entry "resolution_event"
+                $resultRef = Get-EntryValue $entry "result_ref"
+                $rejectionReason = Get-EntryValue $entry "rejection_reason"
+                $evidence = @([regex]::Matches($entry, '(EVT-\d{6})#([a-z0-9][a-z0-9._-]*)') | ForEach-Object { $_.Value })
+                if ([string]::IsNullOrWhiteSpace($domain) -or
+                    [string]::IsNullOrWhiteSpace($candidateKey) -or
+                    [string]::IsNullOrWhiteSpace($signature) -or
+                    @("tracking", "pending-classification", "pending-ratification", "ratified", "rejected") -notcontains $candidateStatus) {
+                    Add-Failure "$relativePath`:$line entity $id has a malformed progression candidate."
+                    continue
+                }
+                if (($evidence | Select-Object -Unique).Count -ne $evidence.Count) {
+                    Add-Failure "$relativePath`:$line progression candidate '$domain/$candidateKey' repeats an Event-and-scene evidence reference."
+                }
+                if ($candidateStatus -eq "ratified" -and
+                    ($resolutionEvent -notmatch '^EVT-\d{6}$' -or [string]::IsNullOrWhiteSpace($resultRef))) {
+                    Add-Failure "$relativePath`:$line ratified progression candidate '$domain/$candidateKey' requires resolution_event and result_ref."
+                }
+                if ($candidateStatus -eq "rejected" -and [string]::IsNullOrWhiteSpace($rejectionReason)) {
+                    Add-Failure "$relativePath`:$line rejected progression candidate '$domain/$candidateKey' requires rejection_reason."
+                }
+                $progressionCandidates.Add([pscustomobject]@{
+                    Subject = $id
+                    Domain = $domain
+                    Key = $candidateKey
+                    Status = $candidateStatus
+                    Evidence = $evidence
+                    SourcePath = $relativePath
+                    SourceLine = $line
+                })
+            }
+        } elseif ($id.StartsWith("EVT-")) {
+            $eventNumber = [int]$id.Substring(4)
+            foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "counter_deltas"))) {
+                $subject = Get-EntryValue $entry "subject"
+                $counter = Get-EntryValue $entry "counter"
+                $delta = Get-EntryValue $entry "delta"
+                if ($subject -notmatch '^ENT-\d{6}$' -or [string]::IsNullOrWhiteSpace($counter) -or
+                    $delta -notmatch '^-?\d+$' -or [int]$delta -eq 0) {
+                    Add-Failure "$relativePath`:$line Event $id has a malformed counter_deltas entry."
+                    continue
+                }
+                $counterDeltas.Add([pscustomobject]@{
+                    Event = $id
+                    EventNumber = $eventNumber
+                    Subject = $subject
+                    Counter = $counter
+                    Delta = [int]$delta
+                    SourcePath = $relativePath
+                    SourceLine = $line
+                })
+            }
+
+            $audits = [System.Collections.Generic.List[object]]::new()
+            foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "progression_audits"))) {
+                $subject = Get-EntryValue $entry "subject"
+                $domain = Get-EntryValue $entry "domain"
+                $result = Get-EntryValue $entry "result"
+                $candidate = Get-EntryValue $entry "candidate"
+                $scene = Get-EntryValue $entry "scene"
+                $disposition = Get-EntryValue $entry "disposition"
+                $valid = $subject -match '^ENT-\d{6}$' -and
+                    -not [string]::IsNullOrWhiteSpace($domain) -and
+                    @("none", "evidence-recorded", "pending-classification") -contains $result
+                if ($result -eq "none") {
+                    $valid = $valid -and [string]::IsNullOrWhiteSpace($candidate) -and
+                        [string]::IsNullOrWhiteSpace($scene) -and [string]::IsNullOrWhiteSpace($disposition)
+                } else {
+                    $valid = $valid -and -not [string]::IsNullOrWhiteSpace($candidate) -and
+                        -not [string]::IsNullOrWhiteSpace($scene) -and
+                        @("qualifying", "ambiguous") -contains $disposition
+                    if ($result -eq "evidence-recorded") {
+                        $valid = $valid -and $disposition -eq "qualifying"
+                    } elseif ($result -eq "pending-classification") {
+                        $valid = $valid -and $disposition -eq "ambiguous"
+                    }
+                }
+                if (-not $valid) {
+                    Add-Failure "$relativePath`:$line Event $id has a malformed progression_audits entry."
+                    continue
+                }
+                $audits.Add([pscustomobject]@{ Subject = $subject; Domain = $domain; Result = $result })
+            }
+            $sourceMatch = [regex]::Match($block, '(?m)^[ \t]+source:[ \t]*([^#\r\n]+)')
+            $kindMatch = [regex]::Match($block, '(?m)^[ \t]*kind:[ \t]*([^#\r\n]+)')
+            $eventAuditData.Add([pscustomobject]@{
+                Event = $id
+                EventNumber = $eventNumber
+                Source = if ($sourceMatch.Success) { $sourceMatch.Groups[1].Value.Trim().Trim('"') } else { "" }
+                Kind = if ($kindMatch.Success) { $kindMatch.Groups[1].Value.Trim().Trim('"') } else { "" }
+                Block = $block
+                Audits = $audits
+                SourcePath = $relativePath
+                SourceLine = $line
+            })
         }
 
         # Presence invariants (Decision 073; 011_ENGINE_DATA_MODEL.md Sections 7.1, 9.2, 12.3).
@@ -396,6 +634,89 @@ foreach ($file in $canonicalFiles) {
                 Path = $relativePath
                 Line = $line
             })
+        }
+    }
+}
+
+# Decision 079 - every declared counter is arithmetic, not trusted prose.
+foreach ($delta in $counterDeltas) {
+    $key = "$($delta.Subject)|$($delta.Counter)"
+    if (-not $trackedCounters.ContainsKey($key)) {
+        Add-Failure "$($delta.SourcePath)`:$($delta.SourceLine) Event $($delta.Event) changes undeclared tracked counter '$($delta.Counter)' on $($delta.Subject)."
+        continue
+    }
+    if ($delta.EventNumber -le $trackedCounters[$key].BaselineNumber) {
+        Add-Failure "$($delta.SourcePath)`:$($delta.SourceLine) Event $($delta.Event) declares a delta at or before counter '$($delta.Counter)' baseline $($trackedCounters[$key].BaselineAsOf)."
+    }
+}
+
+foreach ($entry in $trackedCounters.GetEnumerator()) {
+    $counter = $entry.Value
+    if (-not $definitions.ContainsKey($counter.BaselineAsOf)) {
+        Add-Failure "$($counter.SourcePath)`:$($counter.SourceLine) tracked counter '$($counter.Path)' uses undefined baseline Event $($counter.BaselineAsOf)."
+    }
+    $sum = 0
+    foreach ($delta in $counterDeltas) {
+        if ($delta.Subject -eq $counter.Subject -and $delta.Counter -eq $counter.Path -and
+            $delta.EventNumber -gt $counter.BaselineNumber) {
+            $sum += $delta.Delta
+        }
+    }
+    $expected = $counter.BaselineValue + $sum
+    if ($counter.CurrentValue -ne $expected) {
+        Add-Failure "$($counter.SourcePath)`:$($counter.SourceLine) tracked counter '$($counter.Path)' on $($counter.Subject) is $($counter.CurrentValue), but baseline $($counter.BaselineValue) plus Event deltas $sum requires $expected (Decision 079)."
+    }
+}
+
+# Decision 080 - candidate evidence and post-baseline audit coverage.
+$baselineKeys = @{}
+foreach ($baseline in $progressionBaselines) {
+    $key = "$($baseline.Subject)|$($baseline.Domain)"
+    if ($baselineKeys.ContainsKey($key)) {
+        Add-Failure "$($baseline.SourcePath)`:$($baseline.SourceLine) repeats progression audit baseline '$($baseline.Domain)' for $($baseline.Subject)."
+    } else {
+        $baselineKeys[$key] = $baseline
+    }
+    if (-not $definitions.ContainsKey($baseline.BaselineAsOf)) {
+        Add-Failure "$($baseline.SourcePath)`:$($baseline.SourceLine) progression baseline '$($baseline.Domain)' uses undefined Event $($baseline.BaselineAsOf)."
+    }
+}
+
+$candidateKeys = @{}
+foreach ($candidate in $progressionCandidates) {
+    $key = "$($candidate.Subject)|$($candidate.Domain)|$($candidate.Key)"
+    if ($candidateKeys.ContainsKey($key)) {
+        Add-Failure "$($candidate.SourcePath)`:$($candidate.SourceLine) repeats progression candidate '$($candidate.Domain)/$($candidate.Key)' for $($candidate.Subject)."
+    } else {
+        $candidateKeys[$key] = $true
+    }
+    foreach ($evidenceRef in $candidate.Evidence) {
+        $eventId = $evidenceRef.Split('#')[0]
+        if (-not $definitions.ContainsKey($eventId)) {
+            Add-Failure "$($candidate.SourcePath)`:$($candidate.SourceLine) progression candidate '$($candidate.Domain)/$($candidate.Key)' cites undefined evidence Event $eventId."
+        }
+    }
+    if ($candidate.Domain -eq "gatefall.skill_formation" -and
+        $candidate.Evidence.Count -ge 3 -and $candidate.Status -eq "tracking") {
+        Add-Failure "$($candidate.SourcePath)`:$($candidate.SourceLine) Gatefall candidate '$($candidate.Key)' has at least three distinct evidence references but remains tracking; Profile 1.19 requires pending-ratification or a resolved state."
+    }
+}
+
+foreach ($baseline in $progressionBaselines) {
+    if ($baseline.Domain -ne "gatefall.skill_formation") {
+        continue
+    }
+    foreach ($eventData in $eventAuditData) {
+        if ($eventData.EventNumber -le $baseline.BaselineNumber -or
+            $eventData.Kind -ne 'dangerous-scene-settlement' -or
+            -not [regex]::IsMatch($eventData.Block, "(?m)^[ \\t]*-[ \\t]*$([regex]::Escape($baseline.Subject))[ \\t]*$")) {
+            continue
+        }
+        $covered = @($eventData.Audits | Where-Object {
+            $_.Subject -eq $baseline.Subject -and $_.Domain -eq $baseline.Domain
+        })
+        if ($covered.Count -eq 0) {
+            Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) closes a post-baseline Gatefall dangerous scene involving $($baseline.Subject) but has no '$($baseline.Domain)' progression audit (Decision 080)."
         }
     }
 }

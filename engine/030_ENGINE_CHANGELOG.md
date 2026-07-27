@@ -12,6 +12,12 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-27 — Decisions 079–080, Data Model 0.1.5, and Gatefall Profile 1.19
+
+The owner accepted two explicit Version 0.3 Architecture Freeze exceptions from Gatefall prototype evidence. Decision 079 makes world-declared counters reconcilable through typed Event `counter_deltas`, prospective baselines, stored current values, and arithmetic validation. Decision 080 makes earned progression observable through typed Event `progression_audits`, persistent candidates, a mandatory resident audit, and threshold enforcement.
+
+Data Model **0.1.4 → 0.1.5**. Resident Core **1.8 → 1.9** and Runtime Profile **1.39 → 1.40** wire the evidence pairs into settlement and the Save Algorithm. Gatefall Profile **1.18 → 1.19** supplies the first closed candidate test—deliberate method, repeatable signature, distinct capability, material success under danger, and distinct scene—and batches it once at dangerous-scene close, with no per-attack or per-exchange candidate classification. Alexander's existing counters are baselined at `EVT-000130`; Twin Fang migrates as already ratified from three supported historical scenes. No historical Event or immutable checkpoint is edited.
+
 ## 2026-07-27 — Runtime `/inventory` command
 
 Added `/inventory` as a campaign-scoped, read-only OOC runtime command. It renders every active Character in the loaded campaign, protagonist first and then campaign Characters in canonical record order, with current holdings resolved from live owning records rather than summaries or memory. Money is mandatory and unit-preserving; receivables and liabilities remain separate from spendable balances, ownership/possession differences stay visible, and an absent record is reported as unrecorded rather than zero.

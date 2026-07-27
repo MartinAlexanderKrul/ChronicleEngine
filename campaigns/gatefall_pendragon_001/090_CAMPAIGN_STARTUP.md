@@ -9,11 +9,11 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.18"
+world_rule_profile: "Gatefall World Rule Profile 1.19"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0026
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0029
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 customization:
@@ -34,7 +34,7 @@ source_loading:
     restoration_reads:
       - "Profile metadata and the compatibility/migration chain applicable to the restored checkpoint."
       - "Sections governing temporal settlement before either pool is read or time advances."
-      - "Sections 8.4 and 14.3 before readiness completes; keep their proactive quest-trigger contract in the resident working set and audit before every scene opening and after every trigger-relevant exchange."
+      - "Sections 7.1, 8.4, and 14.3 before readiness completes; keep their progression-candidate and quest-trigger contracts in the resident working set. Quest triggers use their declared exchange boundaries; skill formation batches once when a continuous dangerous scene closes."
       - "Any section governing the next affected operation, fetched before that operation resolves."
     range_policy: "Search headings first; use separate, bounded, non-overlapping reads and continue from the first unread line."
     failure_policy: "A single-call size limit is not a source-read failure; startup stops only if an applicable bounded section cannot be read."

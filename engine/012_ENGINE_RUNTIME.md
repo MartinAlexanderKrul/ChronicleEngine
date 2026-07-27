@@ -274,6 +274,16 @@ The active Runtime Profile must site this obligation in its resident per-turn
 layer. A proactive trigger carried only by fetched reference material has no
 enforcement point and is therefore not implemented.
 
+A profile may declare a progression-candidate domain as one such audit. The
+profile must provide a closed eligibility test, evidence unit, distinct-scene
+rule, threshold, audit boundary, and settlement behavior. For every post-baseline
+Event in the profile's boundary coverage set, the Runtime writes a Data Model
+Section 2.4 `progression_audits` result, including `none`. A profile may batch
+this at dangerous-scene close and prohibit per-exchange candidate work. Qualifying or ambiguous evidence
+also updates the subject's persistent candidate state. Candidate recognition
+never authorizes the Runtime to invent the resulting mechanic: an unauthored
+Rank, cost, effect, or balance remains an owner ruling.
+
 ---
 
 # 3. Context
@@ -372,6 +382,12 @@ Before promotion, a transcript fact is a **pending write**. After promotion, the
 
 Promotion is the mechanism that satisfies Invariant 3 and reconciles the precedence and durability axes (Section 4.2).
 
+When an Event changes a world-declared tracked counter, promotion includes the
+Event's `counter_deltas` and the owning entity's corresponding `current_value`.
+When a profile-declared progression audit applies, promotion includes both the
+Event's `progression_audits` result and any candidate-state mutation. Promoting
+only one side of either pair is incomplete.
+
 ## 5.4 Repository Validation Barrier
 
 Every mutation that creates or promotes durable canon must pass the **Repository Validation Barrier** before the Runtime declares it successful. This applies to campaign initialization, checkpoints, session close, campaign-termination promotion, and any equivalent durability boundary.
@@ -383,7 +399,7 @@ The barrier runs against Persistence, not Context:
 3. run deterministic repository validation against the resulting live state,
 4. only after validation passes, create an immutable checkpoint or report the mutation as saved or promoted.
 
-The validator enforces the structural constraints owned by the Data Model (`011_ENGINE_DATA_MODEL.md`, Sections 1.4, 3.1, and 12.3): registry coverage and high-water bounds, one live definition per referenced identifier, referential integrity, universal Persistent Object fields, Canonical Record references, required `game_date` / `real_date` provenance (Decision 077), placeholder rejection, and the presence invariants (Section 9.2; Decision 073) — each entity holds at most one current location, a live campaign's Character entities declare exactly one, and a carried Resource's location uses the carried-by form alone, naming a defined possessor and asserting no contradicting place. Immutable save snapshots are excluded from live duplicate-definition checks because they intentionally preserve copied historical state; their contents and manifest are verified through checkpoint completeness and read-back.
+The validator enforces the structural constraints owned by the Data Model (`011_ENGINE_DATA_MODEL.md`, Sections 1.4, 3.1, and 12.3): registry coverage and high-water bounds, one live definition per referenced identifier, referential integrity, universal Persistent Object fields, Canonical Record references, required `game_date` / `real_date` provenance (Decision 077), placeholder rejection, tracked-counter arithmetic and progression-audit coverage (Decisions 079–080), and the presence invariants (Section 9.2; Decision 073) — each entity holds at most one current location, a live campaign's Character entities declare exactly one, and a carried Resource's location uses the carried-by form alone, naming a defined possessor and asserting no contradicting place. Immutable save snapshots are excluded from live duplicate-definition checks because they intentionally preserve copied historical state; their contents and manifest are verified through checkpoint completeness and read-back.
 
 A validation failure is an execution error. It fails the checkpoint or promotion claim, but it is not by itself a canonical contradiction and does not erase grounded play. The Runtime reports the incomplete targets, repairs the live mutation when possible, and reruns the barrier. It must not create an immutable checkpoint from failing state or describe that state as successfully promoted.
 

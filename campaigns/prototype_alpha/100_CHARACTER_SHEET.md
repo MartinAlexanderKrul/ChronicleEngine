@@ -12,7 +12,7 @@
 ```yaml
 id: REC-000009
 canonical_record: REC-000009
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: deceased
 provenance:
   source: EVT-000008
@@ -31,7 +31,7 @@ subjects:
 ```yaml
 id: ENT-000018
 canonical_record: REC-000009
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: deceased
 provenance:
   source: EVT-000008

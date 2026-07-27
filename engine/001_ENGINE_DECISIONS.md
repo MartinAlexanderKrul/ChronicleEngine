@@ -3745,7 +3745,7 @@ because it introduces an engine-general mechanism. It is admitted to milestone
 
 ## Decision 079 — Event-Declared Counter Deltas: Making Stored Counters Reconcilable
 
-**Status:** Proposed — foundational under Decision 069; drafted against a future version's Planning stage, with the deferral target unsettled (see Consequences)
+**Status:** Accepted — **Version 0.3 by owner ruling (2026-07-27)**, as an explicit foundational exception produced by the live prototype
 **Date:** 2026-07-27
 **Related Sections:** `011_ENGINE_DATA_MODEL.md` Sections 2.4 and 12 (Event; schema 0.1.4 → 0.1.5); `012_ENGINE_RUNTIME.md` Sections 5.3 and 5.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Turn-State Settlement step 4); `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Save Algorithm step 3); `tools/validate_repository.ps1`; `tools/test_checkpoint_contract.ps1` (Contract 8); `worlds/gatefall/206_WORLD_RULE_PROFILE.md` Section 7.4; Decisions 051, 054, 055, 069, 071, 076
 
@@ -3816,12 +3816,12 @@ Per Decision 055 this decision names where it is checked. Unlike Decision 076's 
 
 ### Consequences
 
-- **Class under Decision 069: foundational.** The structural test is unambiguous and reads the diff, not the motivation: the change touches `011_ENGINE_DATA_MODEL.md`, which that decision names as sufficient on its own, and it introduces an engine-general mechanism a world may invoke. It therefore belongs to a later version's Planning and ADR Design stage, and is drafted **Proposed** on that ground rather than argued into a released version from inside its own Alternatives section — the move Decision 069 exists to prevent.
-- **The deferral target is not ready, and this decision does not resolve that.** Version 0.4 stands at *accepted placement, scope unapproved*, with an unresolved number collision between Governance & Society and Magic Framework. Decisions 076 and 077 each hit this same wall and were landed into 0.3 by explicit owner exception. Whether this one warrants the same treatment is an owner call, and is deliberately left open here; the argument for it is that the cost of waiting is silent and ongoing in the same way 076's was, and the argument against it is that the interim mitigation already exists — Contract 8 and resident step 4 are in place, which was not true of Texture.
+- **Class under Decision 069: foundational.** The structural test is unambiguous and reads the diff, not the motivation: the change touches `011_ENGINE_DATA_MODEL.md`, which that decision names as sufficient on its own, and it introduces an engine-general mechanism a world may invoke. The owner explicitly accepted it into Version 0.3 on 2026-07-27 as a recorded Architecture Freeze exception, using the same governance path as Decisions 076 and 077.
+- **The deferral question is resolved by that owner ruling.** Contract 8 and resident step 4 remain useful interim defenses, but neither makes a stored aggregate reconcilable. The accepted implementation therefore lands now instead of waiting for the unresolved Version 0.4 scope.
 - **Data Model change and migration: 0.1.4 → 0.1.5.** `counter_deltas` is additive and optional, but adding it changes the Data Model. Live objects are retagged; each tracked counter is stamped with its current value as `baseline_value` and the migration event as `baseline_as_of`. Immutable checkpoints remain byte-unchanged at their captured schema and migrate explicitly at readiness (`011` Section 12.4). The migration consumes no fictional time and allocates no identifier beyond the migration event itself.
 - **Real writer cost at the promotion barrier**, paid per canon-bearing event that moves a counter. It is smaller than Texture's — integers rather than prose — but it is not zero, and it lands on the same actor at the same moment.
 - **The validator gains arithmetic it did not previously do**, including resolving counter paths inside object blocks. This is meaningfully more tooling than any existing check and should be scoped as implementation work, not assumed free.
-- `campaigns/gatefall_pendragon_001/` is the worked instance throughout: the two occurrences, the `EVT-000127` correction, and the Contract 8 verification run are evidence this proposal is drawn from, not precedent for adopting it.
+- `campaigns/gatefall_pendragon_001/` is the first migrated instance: the two occurrences, the `EVT-000127` correction, and the Contract 8 verification run are the implementation evidence. Adoption is recorded prospectively at `EVT-000130`; immutable checkpoints are untouched.
 
 ### Alternatives Considered
 
@@ -3830,6 +3830,45 @@ Per Decision 055 this decision names where it is checked. Unlike Decision 076's 
 - **Strengthen Contract 8 from aggregate to per-skill comparison.** Rejected as insufficient rather than wrong. Per-skill comparison can detect that a *particular* counter did not move, but never that the *right* counter moved by the *right* amount, because the repository holds no machine-readable record of what happened. It would tighten a heuristic without giving it a source of truth.
 - **Derive the deltas from the world's declared resource costs — a Mana ledger of `60 → 58 → 48 → 38 → 28 → 21` is five activations.** Rejected as a *check* while retained as *guidance*. The arithmetic is genuinely available and is now written into resident step 4 as a self-audit, but it cannot be mechanized: two skills may share a cost (Rupture and Bulwark both cost 10), passives cost nothing and leave no trace, and elapsed-time recovery interleaves with spending. A gate that is confidently wrong in ambiguous cases and trusted anyway is the failure mode Decision 071 names when it declines to adjudicate row currency.
 - **Add more instruction and no mechanism.** Rejected on the record: instruction alone is what failed, twice, and the second failure occurred *after* the first had been corrected in the very same ledger the Runtime was writing. This is Decision 055's finding, and the reason it is cited here rather than restated.
+
+---
+
+## Decision 080 — Profile-Declared Progression Candidate Audit
+
+**Status:** Accepted — **Version 0.3 by owner ruling (2026-07-27)**, as an explicit foundational exception produced by the live prototype
+**Date:** 2026-07-27
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Sections 2.4, 4.3, and 12.4.3; `012_ENGINE_RUNTIME.md` Sections 2.5, 5.3, and 5.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Profile-Declared Proactive Trigger Audit; Turn-State Settlement); `worlds/gatefall/206_WORLD_RULE_PROFILE.md` Section 7.1; `tools/validate_repository.ps1`; Decisions 055, 069, 076, 079
+
+### Context
+
+Gatefall Section 7.1 has long allowed a skill to be earned by doing: three successful uses of the same technique in materially different dangerous scenes may establish it. Alexander Pendragon supplied exactly that evidence for dual-Quickknife fighting in `EVT-000071`, `EVT-000101`, and `EVT-000120`. The Runtime did not recognize or preserve a candidate. Twin Fang was created only after the player identified the omission.
+
+The failure was structural. Section 7.1 said the technique *may* be ratified but assigned no actor and no audit point. Turn-State Settlement could update an already-declared technique, but the data model had nowhere to retain a not-yet-named candidate. A Runtime therefore had to remember an interpretive pattern across several scenes, and promotion discarded that memory each time.
+
+### Decision
+
+**1. Profiles declare closed candidate eligibility tests.** A Runtime never marks an action because it appears stylish or resembles genre fiction. A world that supports earned progression must state the test. Gatefall's test requires all of: deliberate player method; repeatable signature and intended payoff; mechanical distinctness from ordinary action, equipment, circumstance, and an existing capability; successful material contribution under genuine danger; and evidence from a distinct dangerous scene.
+
+**2. The Event gains an optional `progression_audits` block.** Its domain-neutral fields identify the subject, profile-owned domain, audit result, and—when evidence exists—the candidate key and scene key. The Data Model owns the shape; the World Rule Profile owns eligibility and thresholds.
+
+**3. The subject persists candidates.** A `progression_audit_baselines` extension activates a declared domain prospectively. A `progression_candidates` extension preserves the candidate key, signature, status, evidence references, and eventual resolution. Candidate statuses are `tracking`, `pending-classification`, `pending-ratification`, `ratified`, or `rejected`.
+
+**4. Audit and escalation are mandatory at the profile-declared boundary.** Gatefall batches the audit once when a continuous dangerous scene closes; it does not run candidate classification on every attack or exchange. During the scene, only compact notes for player-declared methods that materially contributed are retained. The closing Event records an audit, including `none`. The first qualifying occurrence creates a candidate; later matching evidence appends to it, at most once per continuous dangerous scene. Ambiguity becomes `pending-classification` rather than disappearing. Reaching the profile threshold changes the candidate to `pending-ratification`. If complete mechanics already exist, the profile may grant automatically; otherwise the Runtime surfaces readiness after scene settlement and obtains an owner ruling rather than inventing mechanics.
+
+**5. Enforcement is mechanical where decidable.** Repository validation checks the typed fields, references, baseline coverage, unique event-and-scene evidence, legal statuses, and that a threshold-complete Gatefall candidate is not left in `tracking`. It cannot judge whether prose truly satisfies “distinct method”; that judgment remains resident and profile-bound.
+
+### Consequences
+
+- **Data Model 0.1.4 → 0.1.5.** This decision shares the migration with Decision 079. Live records are retagged and opted-in subjects receive prospective audit baselines. Historical Events remain immutable; supported pre-adoption evidence may be referenced from the migrated candidate state.
+- **Gatefall Profile 1.18 → 1.19.** Section 7.1 becomes an executable skill-formation contract. Alexander's already-ratified Twin Fang candidate is migrated with evidence `EVT-000071`, `EVT-000101`, and `EVT-000120`, resolution `EVT-000129`, and no counter backfill.
+- **No automatic mechanic invention.** Candidate recognition answers “is this repeated method potentially a capability?” It does not decide Rank, Mana cost, effect, balance, or final name unless the profile already authored those facts.
+- **Writer cost is explicit.** Opted-in gameplay Events must state an audit result. This small negative assertion is what lets validation distinguish “nothing qualified” from “the Runtime forgot to look.”
+
+### Alternatives Considered
+
+- **Let Turn-State Settlement's qualitative training line carry the feature.** Rejected. It has no persistent candidate shape, threshold evidence, or coverage proof and already failed on the worked case.
+- **Scan prose at save time.** Rejected. Retrospective natural-language inference is non-deterministic and repeats the lossy-promotion failure.
+- **Treat every repeated attack as a candidate.** Rejected. Repetition alone collapses ordinary proficiency, weapon ownership, and tactical circumstance into invented skills. The profile's distinctness test is mandatory.
 
 ---
 

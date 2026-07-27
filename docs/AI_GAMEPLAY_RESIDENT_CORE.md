@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.8
+**Document Version:** 1.9
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -336,7 +336,9 @@ Run the audit at each trigger point declared by the active profile:
 
 Evaluate eligibility only from loaded canon and the exchange just resolved. The audit never invents a crisis, concealed discovery, objective, or deadline so that something can fire. If every declared precondition holds, settle the profile-defined attachment, offer, warning, or other state reaction **before yielding**, write it into in-flight state, and render its notification without waiting for a player reminder. If the reaction presents a choice, stop at that choice; automatic detection is not permission to choose for the protagonist.
 
-For Gatefall, this resident obligation loads and executes World Rule Profile Sections **8.4 and 14.3**. An eligible Urgent quest produces its offer automatically and waits for acceptance; an eligible Hidden quest attaches automatically if capacity permits. A scene or exchange with no eligible condition produces no quest. Merely saying “the Runtime audits” in the world profile without executing this resident check is a failed implementation.
+For Gatefall, this resident obligation loads and executes World Rule Profile Sections **7.1, 8.4, and 14.3**. Sections 8.4 and 14.3 audit System quests at their declared per-exchange trigger points. Section 7.1 is deliberately cheaper: it batches skill-formation review once when a continuous dangerous scene closes. An eligible Urgent quest produces its offer automatically and waits for acceptance; an eligible Hidden quest attaches automatically if capacity permits. Merely saying “the Runtime audits” in the world profile without executing the applicable boundary check is a failed implementation.
+
+For a profile-declared progression domain, obey its declared audit boundary. Do not insert a per-exchange candidate search when the profile declares scene-close batching. During such a scene, retain only compact notes for player-declared methods that actually contributed; existing resolution and counter settlement remain unchanged. At the closing boundary, evaluate those notes once against the profile's eligibility test, record one audit result, update matching candidates, and then discard the notes. Surface ambiguity or threshold readiness only after the scene's ordinary outcome and rewards settle.
 
 ---
 
@@ -350,10 +352,11 @@ After every resolved exchange and before yielding, settle all tracked state that
 4. **If the exchange used any world-declared skill, ability, or tracked technique, advance that skill's own counters now** — use totals, qualifying-scene totals, and mastery progress — in the same settlement, exactly as damage and resources settle. **Ordinary combat is the ordinary case, not a special one.** The failure this prevents is reading step 3's "training or demonstrated a technique" narrowly and concluding that a Gate cleared with three castings, one repositioning, and a passive applied twice recorded no skill use at all. It recorded six. A passive counts wherever its effect materially applied; a skill's first-ever use is still a use.
 
    Where the world declares a resource cost per activation, **the exchange's own resource trace is the arithmetic check that nothing went uncounted**: a Mana ledger reading `60 → 58 → 48 → 38 → 28 → 21` is five activations, and a settlement recording fewer is provably incomplete before it is ever written. Count from the resolved exchange, never from memory of what the session felt like it used.
-5. If the exchange resolved a challenge, apply its reward now, including XP. When an active World Rule Profile makes level-up rewards immediate, settle every crossed level and its complete reward package before the next action; never convert it into an acceptance prompt or pending reward. Only rewards the profile explicitly declares deferrable—such as Gatefall's daily rewards—may stack unclaimed. A kill, clear, or other completed challenge is never left "not yet updated."
-6. Run the Profile-Declared Proactive Trigger Audit against the settled exchange and apply any eligible automatic state reaction before yielding.
-7. Update the in-flight session state used by the next turn. The next response and `/system` read this settled state, never the opening checkpoint values.
-8. Narrate the fictional outcome, then render any world-declared compact state notifications once, in their declared format.
+5. If a tracked counter changed, attach its `counter_deltas` entry to the canon-bearing Event and advance the owning entity's `current_value`; both statements must reconcile from the counter's baseline under Data Model Section 12.4.3.
+6. If the exchange resolved a challenge, apply its reward now, including XP. When an active World Rule Profile makes level-up rewards immediate, settle every crossed level and its complete reward package before the next action; never convert it into an acceptance prompt or pending reward. Only rewards the profile explicitly declares deferrable—such as Gatefall's daily rewards—may stack unclaimed. A kill, clear, or other completed challenge is never left "not yet updated."
+7. Run only the proactive triggers whose profile-declared boundary is this exchange. If this exchange closes a profile-declared progression scene, perform its one batched audit and attach the required `progression_audits` result—including `none`; otherwise perform no progression-candidate work.
+8. Update the in-flight session state used by the next turn. The next response and `/system` read this settled state, never the opening checkpoint values.
+9. Narrate the fictional outcome, then render any world-declared compact state notifications once, in their declared format.
 
 Checkpointing promotes this already-settled in-flight state; it does not perform the settlement for the first time. If the player has to ask whether mana recovered, XP was earned, or **a skill's counters advanced**, the prior exchange failed settlement and must be corrected before play continues.
 

@@ -5,7 +5,7 @@
 ```yaml
 id: REC-000040
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000050
@@ -45,7 +45,7 @@ Location is recorded as a region descriptor because carried inventory has no str
 ```yaml
 id: ENT-000054
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000025
@@ -71,7 +71,7 @@ canonical_state:
 ```yaml
 id: ENT-000055
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000030
@@ -97,7 +97,7 @@ canonical_state:
 ```yaml
 id: ENT-000056
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000025
@@ -123,7 +123,7 @@ canonical_state:
 ```yaml
 id: ENT-000057
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000025
@@ -152,7 +152,7 @@ canonical_state:
 ```yaml
 id: ENT-000058
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000025
@@ -178,7 +178,7 @@ canonical_state:
 ```yaml
 id: ENT-000059
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000025
@@ -205,7 +205,7 @@ canonical_state:
 ```yaml
 id: ENT-000060
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000043
@@ -232,7 +232,7 @@ canonical_state:
 ```yaml
 id: ENT-000065
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000031
@@ -259,7 +259,7 @@ canonical_state:
 ```yaml
 id: ENT-000067
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000033
@@ -287,7 +287,7 @@ canonical_state:
 ```yaml
 id: ENT-000068
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000033
@@ -315,7 +315,7 @@ canonical_state:
 ```yaml
 id: ENT-000069
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000033
@@ -343,7 +343,7 @@ canonical_state:
 ```yaml
 id: ENT-000070
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000033
@@ -370,7 +370,7 @@ canonical_state:
 ```yaml
 id: ENT-000078
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000035
@@ -401,7 +401,7 @@ canonical_state:
 ```yaml
 id: ENT-000074
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000038
@@ -430,7 +430,7 @@ canonical_state:
 ```yaml
 id: ENT-000075
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000034
@@ -458,7 +458,7 @@ canonical_state:
 ```yaml
 id: ENT-000076
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000034
@@ -486,7 +486,7 @@ canonical_state:
 ```yaml
 id: ENT-000077
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000034
@@ -516,7 +516,7 @@ canonical_state:
 ```yaml
 id: ENT-000082
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: archived
 provenance:
   source: EVT-000047
@@ -547,7 +547,7 @@ canonical_state:
 ```yaml
 id: ENT-000086
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000047
@@ -577,7 +577,7 @@ canonical_state:
 ```yaml
 id: ENT-000085
 canonical_record: REC-000040
-schema_version: "0.1.4"
+schema_version: "0.1.5"
 status: active
 provenance:
   source: EVT-000049

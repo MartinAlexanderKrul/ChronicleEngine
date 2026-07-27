@@ -5,7 +5,7 @@
 **File:** `011_ENGINE_DATA_MODEL.md`
 **Status:** Workshop Draft
 **Engine Version:** 0.2.0
-**Data Model Version:** 0.1.4
+**Data Model Version:** 0.1.5
 **Layer:** Engine (000–099)
 
 ---
@@ -151,6 +151,29 @@ An **Event** (`EVT-`) is a timed, immutable fact: something that happened at a p
 
 An Event is immutable once created. Provenance (Section 8.2) points at Event identifiers. An Event's historical importance is classified by the tiers already defined in Rules Section 3.5 (Immediate, Archived, Historical, Mythic); this document does not redefine those tiers.
 
+An Event may carry either of two optional, typed audit blocks:
+
+```yaml
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.rupture.successful_uses
+    delta: 1
+
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: evidence-recorded
+    candidate: twin_fang
+    scene: cicero-gate-clear
+    disposition: qualifying
+```
+
+For `counter_deltas`, `subject` is a defined Persistent Entity identifier, `counter` is a non-empty profile-owned path on that subject, and `delta` is a non-zero integer. A declared delta is part of the immutable causal record; it is not reconstructed later from prose.
+
+For `progression_audits`, `subject` is a defined Persistent Entity identifier, `domain` is a non-empty profile-owned audit domain, and `result` is one of `none`, `evidence-recorded`, or `pending-classification`. `candidate`, `scene`, and `disposition` are absent when `result` is `none`. They are required otherwise: `candidate` and `scene` are stable profile-owned keys, and `disposition` is `qualifying` or `ambiguous`. One Event may carry several audit entries when it contains several distinct scenes or subjects.
+
+These blocks define evidence shape, not game semantics. The active World Rule Profile decides which Events require an audit, what a counter path means, what makes evidence qualify, and what threshold changes a candidate's state.
+
 ---
 
 # 3. Reference by Identifier
@@ -215,6 +238,8 @@ This document owns the closed Type set and the fact that Subtype is open. The *m
 Beyond the minimal fields, a Persistent Entity may carry typed, additive **extension blocks** keyed by its Type or Subtype — for example institution governance and membership, settlement population and territory, or resource condition and provenance chain.
 
 This document defines only the **extension mechanism**: extensions are additive, typed, and optional. The *content* of each extension is owned by its Rules domain section. The *layout* of each extension is owned by the ledger template. This keeps the core schema minimal while allowing every domain to extend it without altering the root.
+
+Data Model 0.1.5 reserves three domain-neutral extension shapes used with Section 2.4 Events: `tracked_counters`, `progression_audit_baselines`, and `progression_candidates`. Their typed fields and invariants are defined in Section 12.4.3. A world opts into and names their paths, domains, evidence tests, thresholds, and rendered meanings; entities in worlds that do not opt in carry none of them.
 
 ---
 
@@ -471,6 +496,47 @@ names. Restoring a 0.1.3-or-earlier checkpoint first loads it as historical inpu
 then applies every required migration in order to the mutable live graph before
 validation and play. This migration consumes no fictional time, allocates no
 identifier, and changes no fictional event.
+
+### 12.4.3 Data Model 0.1.4 → 0.1.5
+
+Decisions 079 and 080 add reconcilable counter evidence and persistent progression-candidate audits. Both are additive, optional mechanisms, but their structure advances the schema version.
+
+Migration of live mutable state:
+
+1. Retag every live Persistent Object and Canonical Record from schema 0.1.4 to 0.1.5.
+2. For every existing world-declared tracked counter, add a `tracked_counters` entry on its owning entity:
+
+   ```yaml
+   tracked_counters:
+     - path: skills.rupture.successful_uses
+       baseline_value: 16
+       baseline_as_of: EVT-000130
+       current_value: 16
+   ```
+
+   `path` is unique per owning entity; all values are integers; `baseline_as_of` is the migration Event. Future Events after that baseline declare every change in `counter_deltas`. The invariant is `current_value = baseline_value + Σ(delta)` over later live Events for the same subject and path.
+3. For each profile-declared progression domain activated on a subject, add:
+
+   ```yaml
+   progression_audit_baselines:
+     - domain: gatefall.skill_formation
+       baseline_as_of: EVT-000130
+   progression_candidates:
+     - domain: gatefall.skill_formation
+       key: twin_fang
+       signature: two-equipped-quickknives.same-target.separate-strikes
+       status: ratified
+       evidence:
+         - EVT-000071#ashfield-elite-counter
+       resolution_event: EVT-000129
+       result_ref: skills.twin_fang
+   ```
+
+   `domain` plus `key` is unique per subject. `status` is one of `tracking`, `pending-classification`, `pending-ratification`, `ratified`, or `rejected`. Each evidence reference is a defined Event identifier plus a non-empty scene key and may occur only once within that candidate. `resolution_event` and `result_ref` are required for `ratified`; a rejected candidate instead records a profile-owned rejection reason.
+4. Do not rewrite historical Events to add audit blocks. Supported historical evidence may be cited by migrated candidate state. Beginning after `baseline_as_of`, every Event in the profile-declared coverage set must carry its `progression_audits` result, including `none`.
+5. Update current manifests, templates, bindings, and compatibility declarations, then run the Repository Validation Barrier.
+
+Immutable checkpoints remain byte-unchanged at their captured schema and fields. Restoration applies 0.1.2 → 0.1.3, 0.1.3 → 0.1.4, and 0.1.4 → 0.1.5 in order as applicable. The 0.1.5 migration consumes no fictional time, derives no missing historical evidence, and allocates no identifier beyond a campaign's recorded migration Event.
 
 ---
 

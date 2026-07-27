@@ -37,7 +37,7 @@ It has produced the exact evidence the milestone requires:
 - twenty-four canonical-form checkpoints (`900_CHECKPOINT_0001`–`0024`),
 - repeated eight-ledger promotion,
 - structured World Rule Profile metadata across workshop-draft and frozen captures through Profile 1.12 (Checkpoint 0024), with live Profile 1.13 deterministic clock/recovery compatibility declared and older captures retaining their immutable versions while restoration chains through the current profile,
-- live presence changes under Data Model 0.1.2, the Relationship Texture migration to 0.1.3, and the explicit real/game-date provenance migration to Data Model 0.1.4,
+- live presence changes under Data Model 0.1.2, the Relationship Texture migration to 0.1.3, the explicit real/game-date provenance migration to 0.1.4, and the reconcilable-counter/progression-audit migration to Data Model 0.1.5,
 - identifier allocation and index updates at checkpoint barriers,
 - observed automatic transcript export at the Context-Preservation Barrier (`play_export_0003.md` alongside Checkpoint 0015),
 - and continued campaign play across session boundaries.

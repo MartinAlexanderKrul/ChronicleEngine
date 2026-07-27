@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.18
+# Gatefall — World Rule Profile 1.19
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.18
-**Engine Compatibility:** 0.2.0; Data Model 0.1.4
+**Profile Version:** 1.19
+**Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.18 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.18 is an **additive dual-wield action-package and earned-technique advance** over frozen 1.17: Section 6.2 closes the number of offensive resolutions one declared action may contain while preserving authored combinations, and Section 7.2 authors **Twin Fang [E-Rank]** as a same-target two-Quickknife technique.
+**Compatibility Status:** frozen at version 1.19 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.19 is a **migrating earned-skill detection and audit advance** over frozen 1.18: Section 7.1 replaces discretionary recognition with a closed candidate test, persistent evidence, and one mandatory batched audit when each continuous dangerous scene closes under Data Model 0.1.5.
+
+**Required 1.18 → 1.19 migration.** Preserve every resolved roll, damage result, Mana spend, skill and mastery value, item, pool, reward, quest, currency balance, and fictional outcome. Retag live mutable canon to Data Model 0.1.5. Stamp every existing tracked skill counter at its current value with the migration Event as its prospective baseline. Activate `gatefall.skill_formation` on the Bearer at the same Event. Migrate Alexander Pendragon's already-ratified Twin Fang formation as one `ratified` candidate with evidence from `EVT-000071`, `EVT-000101`, and `EVT-000120` and resolution `EVT-000129`; do not backfill uses or mastery. Historical Events and immutable checkpoints remain byte-unchanged. This migration consumes no fictional time and runs after every earlier applicable profile and Data Model migration at readiness.
+
+Version 1.18 remains the additive dual-wield action-package and earned-technique advance over frozen 1.17: Section 6.2 closes the number of offensive resolutions one declared action may contain while preserving authored combinations, and Section 7.2 authors **Twin Fang [E-Rank]** as a same-target two-Quickknife technique.
 
 **1.17 → 1.18 compatibility treatment.** Preserve every resolved roll, damage result, Mana spend, skill and mastery value, item, pool, reward, quest, currency balance, and fictional outcome. Apply Section 6.2's offensive-action packages prospectively; they do not reopen or reinterpret earlier compressed sweeps, dagger-and-Rupture combinations, Flash Step follow-ups, or the Frozen Gallery's two-target dual strike. A Bearer gains no skill merely by restoring under 1.18: an earned-by-doing grant still requires Section 7.1's three-scene evidence and a recorded ratification. Alexander Pendragon's qualifying dual-wield practice is ratified separately at `EVT-000129`, granting Twin Fang at Novice with zero post-ratification uses or mastery progress. This treatment consumes no fictional time. Immutable Profile 1.17-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.18 at readiness.
 
@@ -674,8 +678,30 @@ A skill enters the Bearer's ledger by one of four routes, and only these:
 
 1. **Rune.** A rune dropped as loot (Section 11) teaches one authored skill on use, consumed in the teaching. Runes found at E- and D-Rank Gates teach from the starting skill table below.
 2. **Skill book.** A rarer drop teaching a specific authored skill, likewise consumed; skill books can carry skills above the rune tier (the full skill-book table is authored with loot in Section 11).
-3. **Earned by doing.** An approach the Bearer uses **successfully in at least three distinct dangerous scenes** may be **ratified by the System as a skill** — the System recognizes a proven practice and formalizes it. Ratification requires genuine, resolved, at-risk use each time; trivial repetition does not count, and the three scenes must be materially distinct, not one tactic replayed. On ratification the skill is authored into the ledger with a name, rank, cost, and effect at the time it is granted.
+3. **Earned by doing.** A method that passes the Skill-Formation Audit below and contributes qualifying evidence in **three distinct dangerous scenes** becomes ready for System ratification. Evidence is recorded from the first qualifying scene; recognition never depends on the Runtime remembering prose across sessions. At the third scene the candidate becomes `pending-ratification` and the Runtime surfaces it at the scene boundary. Because an earned technique's name, Rank, Mana cost, and effect are not known merely from practice, final ratification requires an owner ruling unless this profile already authors the complete result.
 4. **Stat milestone.** Crossing base Stat 30 or 50 awards the exact milestone skill listed in Section 4.4. The trigger, name, and effect are already authored; equipment cannot trigger it.
+
+### Skill-Formation Audit
+
+The profile-declared audit domain is `gatefall.skill_formation`. It runs **once when a continuous dangerous scene closes**, never once per attack, roll, exchange, opponent, or narration response. The closing canon-bearing Event uses `kind: dangerous-scene-settlement`, includes the Bearer as a participant, and records one Data Model Section 2.4 `progression_audits` result for this domain, including `none`.
+
+During the scene, the Runtime does no candidate search and makes no additional roll. It retains only a compact session-local note when a player-declared method successfully and materially affects a resolution: the method's tools, sequence, intended payoff, and resolved result. Existing skill counters still settle normally under Section 7.4. At scene close, the Runtime evaluates that bounded note set once against the five tests below and then discards it after promotion. It does not reread the whole transcript, scan historical chronicles, compare every attack against every candidate, or interrupt combat with a formation message.
+
+A demonstrated method is a skill candidate only when **all five** tests pass:
+
+1. **Deliberate.** It comes from the player's declared method or a method the Bearer intentionally practiced, not descriptive flourish added by the narrator.
+2. **Repeatable signature.** Its tools, sequence, and intended tactical payoff can be stated as a stable method another future attempt could match.
+3. **Distinct capability.** It is not merely an ordinary attack, ordinary movement, using the same weapon again, an equipment property, a favorable circumstance, generic competence, or an existing skill's authored effect. A combination may qualify only when the combined sequence creates a repeatable capability not already granted by its parts.
+4. **Material success.** The method successfully and materially contributes to a resolved outcome under genuine danger. An attempt that fails to contribute is not qualifying evidence.
+5. **Distinct scene.** The evidence comes from a continuous dangerous scene not already counted for that candidate. One scene contributes at most once, regardless of repetitions within it.
+
+At scene close, the first qualifying occurrence creates a `tracking` candidate with a stable key and signature and attaches the closing Event-and-scene reference. Later evidence matches by the signature's method, tools, sequence, and payoff—not by prose wording. If two candidates plausibly match or distinctness cannot be determined, record `pending-classification` and ask for a ruling only after the dangerous scene's outcome, rewards, and ordinary settlement have completed; never convert uncertainty to `none`. On the third qualifying scene, change the candidate to `pending-ratification` and render after that same scene-close settlement:
+
+`[SYSTEM] TECHNIQUE FORMATION — READY · <candidate signature> · Evidence 3/3`
+
+Ratification creates the fully authored skill at Novice and changes the candidate to `ratified`, recording `resolution_event` and `result_ref`. Rejection preserves the evidence and reason as `rejected`; it reopens only by owner ruling or when a materially different signature creates a new candidate. Pre-ratification evidence establishes acquisition only and never backfills post-acquisition successful-use or mastery counters.
+
+The audit is bookkeeping at a boundary, not an action-resolution phase. It adds no combat roll, modifier, response, or player choice before the dangerous scene ends.
 
 ### Instructional Item Identity and Binding
 
@@ -766,6 +792,8 @@ A skill is not fixed the day it is learned — it **grows in the Bearer's hands 
 **Use counters.** Every skill records `successful_uses`, a lifetime total that never resets. A successful activation or application adds one; a failed or missed use adds none. One activation counts once even when it affects several targets. A sustained skill counts once when activated, not once per exchange. A passive skill counts once per resolved action in which its effect materially applies. Several successful casts in one continuous dangerous scene each add to `successful_uses`, while that scene contributes at most one mastery point for that skill. A successful non-dangerous test adds a use but no qualifying scene.
 
 Mastery-tracked skills also record `qualifying_scenes_total`, which never resets, and `mastery_progress`, the exact count from 0 to 2 toward the next level. On the third qualifying scene the mastery level advances and current progress resets to 0; at Master it renders complete. Stat-milestone skills from Section 4.4 have no mastery track, but their successful material applications are still counted.
+
+Under Data Model 0.1.5, the Bearer's structured `tracked_counters` entries are the authoritative numeric storage for these values. The prose skill lines and `/system skills` panel are renderings of `current_value`, not independent counters. Every post-baseline change is written both as the causing Event's `counter_deltas` and the matching `current_value` update; repository validation rejects arithmetic drift.
 
 **What each level above Novice improves** — two axes, both closed-form:
 

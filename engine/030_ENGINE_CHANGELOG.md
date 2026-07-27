@@ -12,6 +12,12 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-27 — Runtime `/inventory` command
+
+Added `/inventory` as a campaign-scoped, read-only OOC runtime command. It renders every active Character in the loaded campaign, protagonist first and then campaign Characters in canonical record order, with current holdings resolved from live owning records rather than summaries or memory. Money is mandatory and unit-preserving; receivables and liabilities remain separate from spendable balances, ownership/possession differences stay visible, and an absent record is reported as unrecorded rather than zero.
+
+The exact cold-start catalogs in the Runtime Profile, README, and Gameplay Start Guide advance together, and the runtime-command catalog regression test now enforces the new row and its campaign requirement. Runtime Profile **1.38 → 1.39**, README **1.12 → 1.13**, and Gameplay Start Guide **2.17 → 2.18**. No Engine Rule, Data Model, campaign state, or world content changed; Engine Version remains 0.2.0.
+
 ## 2026-07-27 — Gatefall Profile 1.17: instructional binding and recipient settlement
 
 Gatefall Profile **1.16 → 1.17** gives every rune and skill book a fixed generated identity and immutable provenance-derived recipient binding. Ordinary catalogue and Daily Random Box instruction is Bearer-only; Daily Premium and authored world loot are unbound for eligible awakened recipients unless explicitly restricted. NPC consumption can learn or upgrade the original technique, capped at the NPC's fixed Rank, without creating Bearer-style Stats, XP, Mana, mastery, or innate party-role packages.

@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.38
+**Document Version:** 1.39
 **Status:** Active Gameplay Workflow — Fetched Reference Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -91,12 +91,27 @@ Each command dispatches to the named procedure. The procedure — not this table
 | `/export [label]` | Write the session's **durable gameplay transcript** to `campaigns/<campaign>/exports/`: every message verbatim and classified, plus the opening state, every resolution in full, every identifier allocated, every promotion, and the closing state — sufficient to rebuild canon if every checkpoint fails (Decision 061). Establishes no canon and is not a save. | Session Export |
 | `/recap` | Give a concise, spoiler-safe recap of current state and unresolved pressures. Advances no in-world time. | Returning Sessions recap |
 | `/status` | Show the out-of-character **Progression Surfacing** view (derived tiers, level, experience log). Distinct from any world's diegetic `/system`. | Progression Surfacing |
+| `/inventory` | Show the current canonical inventory of **every Character in the loaded campaign**, grouped by character, with all money and other currency holdings included. Out-of-character; no state change. Requires a loaded campaign. | Inventory Surfacing |
 | `/validate` | Run the Repository Validation Gate on demand and report the result. Out-of-character; no canon change. | Repository Validation Gate |
 | `/debug` | Toggle the testing/debug mechanical breakdown (difficulty, modifiers, band boundaries) described under Information Boundary. Off by default. | Information Boundary (debug mode) |
 | `/length [short|normal|long]` | Set the **narration length register**: `short` (1–2 paragraphs), `normal` (2–3), or `long` (4–5). With no argument, report the current level. Session-local display preference; the register is a soft default read each turn, never a cap on a genuinely dense beat, and never affects canon, resolution, or the die. Default `normal`. Aliases: `/narration`, `/verbosity`. | Interaction Cadence (Response Length) |
 | `/export-debug [label]` | Export the **entire user-visible current chat**, including conversation before engine startup and whether or not a campaign is loaded, to `exports/debug/`. This diagnostic transcript is not a gameplay export, establishes no canon, and is never a save. | Chat Debug Export |
 
 The interface is **extensible**: a future runtime command is added here as another dispatcher onto an existing procedure. A command that would require a *new* persistence, resolution, or canon mechanic is out of scope for this table and belongs in the Engine Rules or a Decision first.
+
+### Inventory Surfacing
+
+`/inventory` is a read-only, out-of-character view over the loaded campaign's current live canon. It advances no in-world time, consumes no Beat Budget, changes no state, and never substitutes a checkpoint summary, recap, transcript, or remembered prior display for the live canonical records.
+
+Render it deterministically:
+
+1. Enumerate every active `Character` entity defined in the loaded campaign's live canonical graph, including the protagonist and campaign NPCs. Do not include institutions, crews, shops, or other non-Character entities. Preserve canonical ledger order: protagonist first, then other Characters in their record order.
+2. For each Character, resolve current holdings from the canonical character, inventory/ownership, and other owning records. Include individually tracked Resources, generic or aggregated goods, equipped, carried, stored, loaned, or otherwise possessed holdings, and inventory content embedded directly in a Character record. Respect the distinction between ownership and possession: label an item whose owner and possessor differ rather than silently assigning it to both.
+3. Give each Character a **Money** line before other holdings. Include every current authored currency balance or monetary holding in its own unit (cash, bank balance, coins, vells, System gold, or a world's other currency); never convert between units unless canon already records the conversion. List authored receivables and liabilities separately as **Pending** and **Liabilities**, not as spendable money. Valuable loot, crystals, cores, and sale estimates remain inventory unless canon explicitly treats the quantity itself as currency or records proceeds already received.
+4. Show only current holdings. Exclude sold, consumed, destroyed, expired, or transferred-away entries except where a current liability or unresolved ownership/possession dispute still depends on them. Preserve canonical quantities, condition, equipped/stored status, and ownership qualifications; do not invent a price, location, quantity, or container.
+5. A Character with no authored holdings is still rendered as `No canonical holdings recorded.` This means unknown or unrecorded, never zero. Likewise, if no money is authored for that Character, render `Money: none recorded`, never infer poverty.
+
+The display is omniscient OOC repository inspection, not knowledge available to any character. It must not leak into NPC dialogue or action without an in-fiction knowledge channel.
 
 ### The Bootstrap Command
 

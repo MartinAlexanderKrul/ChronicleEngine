@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.17
+**Document Version:** 2.18
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -227,6 +227,7 @@ Once the engine is loaded, you can drive it with short **runtime commands** inst
 | `/export [label]` | Write the session's full transcript — every message kept distinct by who said it, plus the rolls, the identifiers created, and what changed. It is not a checkpoint and saves no canon, but it is complete enough to rebuild your campaign from if your checkpoints are ever lost or broken. Use `/save` to save; use `/export` so the session itself is never gone. |
 | `/recap` | Concise, spoiler-safe recap of where you are. |
 | `/status` | Your out-of-character progress view (tiers, level, experience log). |
+| `/inventory` | Every character's current canonical inventory, grouped by character, including money and other currency holdings. Requires a loaded campaign; out-of-character and read-only. |
 | `/validate` | Run repository validation and report the result. |
 | `/debug` | Toggle the fuller mechanical breakdown on rolls. Off by default. |
 | `/length [short|normal|long]` | Choose how much the narrator writes per turn: `short` (1–2 paragraphs), `normal` (2–3), or `long` (4–5). With no argument, it tells you the current setting. This changes only narration length, never what actually happens. Default `normal`. Aliases: `/narration`, `/verbosity`. |

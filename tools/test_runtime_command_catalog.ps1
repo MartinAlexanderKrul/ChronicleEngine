@@ -86,6 +86,15 @@ if ($profileText -notmatch 'must not parse trailing text as a world, campaign, c
 if ($profileText -notmatch 'always presents the Engine Welcome Page and waits') {
     throw 'Runtime Profile does not make the welcome page the invariant bootstrap result.'
 }
+if ($profile -notcontains '`/inventory`') {
+    throw 'Runtime Command Table does not expose /inventory.'
+}
+if ($profileText -notmatch '(?s)### Inventory Surfacing.*every active `Character` entity.*Money.*none recorded') {
+    throw '/inventory lacks the all-character, money-inclusive render contract.'
+}
+if ($profileText -notmatch '(?m)^\| `/inventory` \|.*Requires a loaded campaign\.') {
+    throw '/inventory is not declared campaign-scoped in the Runtime Command Table.'
+}
 
 $activeCommandDocs = @(
     'README.md',

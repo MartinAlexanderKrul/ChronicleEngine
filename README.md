@@ -1,6 +1,6 @@
 # Chronicle Engine
 
-**Document Version:** 1.12
+**Document Version:** 1.13
 
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 
@@ -93,6 +93,7 @@ On bootstrap, render **every row below**. Do not rename, merge, omit, or invent 
 | `/export [label]` | Export the current campaign's durable gameplay transcript. Requires a loaded campaign; it is not a save. |
 | `/recap` | Show a spoiler-safe recap. Requires a loaded campaign. |
 | `/status` | Show the out-of-character progression view. Requires a loaded campaign. |
+| `/inventory` | Show every character's current canonical inventory, grouped by character, including money and other currency holdings. Requires a loaded campaign; out-of-character and read-only. |
 | `/validate` | Run repository validation. |
 | `/debug` | Toggle full roll-mechanics detail. Off by default. |
 | `/length [short|normal|long]` | Set how long the narration runs each turn: `short` (1–2 paragraphs), `normal` (2–3), or `long` (4–5). With no argument, report the current level. A display preference only — it changes how much is written, never what happens, and touches no canon. Default `normal`. Aliases: `/narration`, `/verbosity`. |

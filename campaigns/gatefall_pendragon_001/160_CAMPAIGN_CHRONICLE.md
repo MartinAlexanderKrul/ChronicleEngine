@@ -13,8 +13,8 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000134
-  game_date: "2026-08-04 06:00 -05:00; System-interface presentation adoption, no fictional time consumed"
+  source: EVT-000135
+  game_date: "2026-08-04 06:00 -05:00; Premium-price correction and instant-dungeon deposit clarification, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -95,6 +95,7 @@ subjects:
   - EVT-000132
   - EVT-000133
   - EVT-000134
+  - EVT-000135
 ```
 
 ---
@@ -2390,4 +2391,34 @@ description: "Adopted frozen Gatefall World Rule Profile 1.23.
 The skills portion of the full `/system` window and the `/system skills` focused view now renders two stable groups: `SKILLS · ACTIVE` for mana-costed techniques and `SKILLS · PASSIVE` for costless techniques. Classification reads the canonical cost field, never the name or prose effect; each group preserves character-ledger order and renders `none` when empty.
 
 This is a presentation-only advance. Alexander's skills, Rank, mastery, Mana costs, effects, successful-use counters, qualifying-scene counters, progression candidates, and every other stored value remain unchanged. No fictional time, roll, Mana, Health, XP, gold, item, quest, damage result, or prior outcome changes. Checkpoint 0029 remains immutable at Profile 1.16 / Data Model 0.1.4 and restores through the applicable compatibility chain to Profile 1.23 / Data Model 0.1.5."
+```
+
+---
+
+## EVT-000135 - Profile 1.24: Premium Surcharge and Instant-Dungeon Deposits
+
+```yaml
+id: EVT-000135
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: owner-ruling
+  game_date: "2026-08-04 06:00 -05:00; profile migration, no fictional time consumed"
+  real_date: "2026-07-27"
+type: Event
+kind: system-profile-adoption
+importance: structural
+game_date: "2026-08-04 06:00 -05:00; profile migration, no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.24, correcting the Daily Premium surcharge and making Section 17's instant-dungeon deposit explicit.
+
+**Premium prices.** Rank-bearing Daily Premium Weapon, Armor, Accessory, Rune, and Key offers now cost 125% of their ordinary same-Rank category anchor, rounded upward to whole gold. Their independent Rank rolls, above-Rank access, exclusive effects, quantity-one scarcity, binding, model bags, fabrication series, and 06:00 expiry are unchanged. Premium Consumables keep their fixed authored prices because they have no ordinary equivalents.
+
+**Live-cycle migration.** The current Cobalt cycle remains exactly the cycle rolled at `EVT-000126`: no model, Rank, effect, binding, bag state, or purchase flag changed. Its five unpurchased Rank-bearing offers reprice deterministically: Colossus Greatarm [E-Rank] 200→125 g; Adaptive Titan Hands [D-Rank] 540→338 g; Ascendant Mindspun Loop [E-Rank] 160→100 g; Silent Step Premium Rune [C-Rank] 50,000→25,000 g; Crystal Key [D-Rank] 4,500→2,813 g. Clarity Phial remains 750 g. Gold remains 12 and 0/6 offers are purchased.
+
+**Instant-dungeon deposit.** Every future instant dungeon explicitly rolls Section 11.1's `3d6 × Rank multiplier` mineable deposit when it opens; a Crystal Key treats the `3d6` result as 18. Extraction must finish before the two-hour limit or boss kill closes the instance. No completed instant dungeon is reopened and no historical crystal is created.
+
+No fictional time, roll, gold, owned item, skill, pool, quest, damage result, expired offer, completed transaction, or prior outcome changed. Checkpoint 0029 remains immutable at Profile 1.16 / Data Model 0.1.4 and restores through the applicable compatibility chain to Profile 1.24 / Data Model 0.1.5."
 ```

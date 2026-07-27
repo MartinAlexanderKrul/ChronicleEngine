@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.23
+# Gatefall — World Rule Profile 1.24
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.23
+**Profile Version:** 1.24
 **Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.23 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.23 is an **additive System-interface presentation advance** over frozen 1.22: every `/system` skills rendering groups mana-costed techniques under `SKILLS · ACTIVE` and costless techniques under `SKILLS · PASSIVE`, preserving each group's character-ledger order and every existing skill value. No stored field, mechanic, threshold, magnitude, cost, counter, probability, timer, or resolved outcome changes. Data Model 0.1.5 remains unchanged.
+**Compatibility Status:** frozen at version 1.24 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.24 is a **migrating System-economy correction and instant-dungeon loot clarification** over frozen 1.23: every Rank-bearing Daily Premium offer now costs 125% of its ordinary same-Rank category anchor rather than 200% or 250%, while its higher-Rank access, exclusive model/effect, quantity-one scarcity, and daily expiry remain unchanged; Section 17 now states explicitly that every instant dungeon carries Section 11.1's mineable crystal deposit. Premium consumables retain their authored fixed prices. No probability, item identity, Rank, effect, owned item, completed transaction, or completed-instance outcome changes. Data Model 0.1.5 remains unchanged.
+
+**Required 1.23 → 1.24 migration.** Preserve every resolved roll, expired rotation, purchased item, completed purchase or resale price, currency balance, item identity, Rank, effect, binding, bag state, purchase flag, and fictional outcome. For the live Daily Premium cycle only, recompute the displayed price of each **unpurchased** Weapon, Armor, Accessory, Rune, and Key from its already-stored offer Rank under Section 12.5's 125% rule, rounding upward to the next whole gold; reroll nothing and leave every purchased or expired offer untouched. Premium Consumable prices do not change. Apply Section 17's deposit clarification prospectively: do not create crystals for, reopen, or reinterpret any completed instant dungeon. Record adoption in mutable live state; immutable Profile 1.23-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.24 at readiness.
+
+Version 1.23 remains the additive System-interface presentation advance over frozen 1.22: every `/system` skills rendering groups mana-costed techniques under `SKILLS · ACTIVE` and costless techniques under `SKILLS · PASSIVE`, preserving each group's character-ledger order and every existing skill value. No stored field, mechanic, threshold, magnitude, cost, counter, probability, timer, or resolved outcome changes. Data Model 0.1.5 remains unchanged.
 
 **1.22 → 1.23 compatibility treatment.** Preserve every stored value and all resolved canon. Adoption requires no recomputation and no state migration: re-render the skills portion of the full `/system` window and the `/system skills` focused view using Section 15's two-group layout, then record the additive-upgrade acknowledgement in mutable live state. Immutable Profile 1.22-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.23 at readiness.
 
@@ -1602,7 +1606,9 @@ For each Rank-bearing offer — Weapon, Armor, Accessory, Rune, and Key — make
 
 Cap every result at **S**. The rolled offer Rank determines that offer's Stats, power, protection, effect, and price; it does not change the Bearer's System Rank. Consumables are unranked and receive no Rank roll.
 
-**Premium Weapon — draw from the seven-model Weapon bag.** Price: **2×** the offer-Rank weapon price.
+**Premium surcharge.** A Rank-bearing Premium offer costs **125% of its ordinary same-Rank category price anchor, rounded upward to the next whole gold**. Weapon, Armor, Accessory, and Key use the corresponding Section 12.5 catalogue row at the rolled offer Rank. Premium Runes use the same-Rank rune anchor stated below. The surcharge pays for the exclusive model or loot modifier, transferable Premium instruction, quantity-one scarcity, daily opportunity, and possible access above the Bearer's unlocked catalogue Ranks; it never doubles or multiplies the price merely for appearing in the rotation. Premium Consumables have no ordinary equivalent and retain their fixed authored prices.
+
+**Premium Weapon — draw from the seven-model Weapon bag.** Price: **125%** of the offer-Rank weapon price under the Premium surcharge rule.
 
 | Bag entry | Offer | Premium line in addition to its normal Section 11.5 line |
 |---|---|---|
@@ -1616,9 +1622,9 @@ Cap every result at **S**. The rolled offer Rank determines that offer's Stats, 
 
 “Multiplier +0.10/+0.15” adds to the chassis multiplier before the result multiplier; it does not change the d100.
 
-**Premium Armor — draw from the 25-pair Armor bag.** The pair order is the Section 11.2 slot-major cross-product: head/torso/hands/legs/feet, each paired in order with Bastion/Titan/Gale/Watcher/Arcanist. Price: **2×** the offer-Rank armor-piece price. The result is an **Adaptive** version of that piece: it grants **+2 further points to its style stat** and its own physical reduction is **3 percentage points higher**.
+**Premium Armor — draw from the 25-pair Armor bag.** The pair order is the Section 11.2 slot-major cross-product: head/torso/hands/legs/feet, each paired in order with Bastion/Titan/Gale/Watcher/Arcanist. Price: **125%** of the offer-Rank armor-piece price under the Premium surcharge rule. The result is an **Adaptive** version of that piece: it grants **+2 further points to its style stat** and its own physical reduction is **3 percentage points higher**.
 
-**Premium Accessory — draw from the five-model Accessory bag** in Section 11.2's accessory order. Price: **2×** the offer-Rank accessory price. The result is an **Ascendant** version granting **+3 further points** to its named stat.
+**Premium Accessory — draw from the five-model Accessory bag** in Section 11.2's accessory order. Price: **125%** of the offer-Rank accessory price under the Premium surcharge rule. The result is an **Ascendant** version granting **+3 further points** to its named stat.
 
 **Premium Consumable — draw from the six-model Consumable bag.**
 
@@ -1631,13 +1637,15 @@ Cap every result at **S**. The rolled offer Rank determines that offer's Stats, 
 | 5 | **Quicksilver Phial** | 750 g | Grants +1 modifier step on Agility-governed actions for one scene, within the net ±3 cap. |
 | 6 | **Clarity Phial** | 750 g | Grants +1 modifier step on Intelligence- or Perception-governed appraisal and detection for one scene, within the net ±3 cap. |
 
-**Premium Rune — roll d10** on Section 11.3's skill-book table. The rune teaches the rolled technique at the current offer Rank, never below the skill's native E-Rank/D-Rank, and records `instruction_binding: unbound-awakened`. Its identity is fixed at rotation regardless of the Bearer's known skills. An eligible NPC may consume that original rune under Section 7.1. If the Bearer later consumes a same-or-lower duplicate, only then does the System apply Section 7.1's reroll and Mastery Rune fallback. Price by offer Rank:
+**Premium Rune — roll d10** on Section 11.3's skill-book table. The rune teaches the rolled technique at the current offer Rank, never below the skill's native E-Rank/D-Rank, and records `instruction_binding: unbound-awakened`. Its identity is fixed at rotation regardless of the Bearer's known skills. An eligible NPC may consume that original rune under Section 7.1. If the Bearer later consumes a same-or-lower duplicate, only then does the System apply Section 7.1's reroll and Mastery Rune fallback.
+
+The same-Rank rune price anchors are E=1,000 g, D=4,500 g, C=20,000 g, B=90,000 g, A=400,000 g, and S=1,800,000 g. E and D are the ordinary catalogue prices; C through S are pricing anchors only and do not add higher-Rank runes to the unlimited catalogue. Apply the Premium surcharge to those anchors:
 
 | Rank | E-Rank | D-Rank | C-Rank | B-Rank | A-Rank | S-Rank |
 |---|---:|---:|---:|---:|---:|---:|
-| Premium Rune | 2,500 g | 11,250 g | 50,000 g | 225,000 g | 1,000,000 g | 4,500,000 g |
+| Premium Rune | 1,250 g | 5,625 g | 25,000 g | 112,500 g | 500,000 g | 2,250,000 g |
 
-**Premium Key — draw from the six-model Key bag.** Price: **2×** the offer-Rank instant-dungeon key price. The key otherwise opens a standard Section 17 instance and carries one exclusive loot modifier:
+**Premium Key — draw from the six-model Key bag.** Price: **125%** of the offer-Rank instant-dungeon key price under the Premium surcharge rule. The key otherwise opens a standard Section 17 instance and carries one exclusive loot modifier:
 
 | Bag entry | Key model | Premium modifier |
 |---|---|---|
@@ -2102,7 +2110,7 @@ An **instant-dungeon key** — a boss drop (Section 11.2, roll 81–90) or a sho
 - **Rank.** A key's Rank is the Gate Rank it was rolled from or the explicit Rank bought/rolled in the shop. An “own-tier” key snapshots the Bearer's System Rank (Section 6.6) when created. The instance runs at the key's recorded Rank and never re-Ranks later.
 - **Opening.** Using a key opens a sealed instance for the Bearer (he may bring a party, but the key is his). It runs **2 hours**, closing at the two-hour mark or on the boss kill, whichever comes first.
 - **Population.** Populated by the standard Gate formula (Section 9.7) at the key's Rank G — `3d6` common beasts, `1d2` elites (×2 Rank Health), `1` boss (×4 Rank Health) — and it rolls an archetype on the d8 (Section 10) like any Gate.
-- **Loot.** Drops per Section 11: one crystal per beast, a core from each elite and the boss, and the boss-drop d100. It is a **real clear** — kill XP (Section 3.3) and the Gate-clear milestone (Section 3.4) settle on the boss kill exactly as in a public Gate.
+- **Loot.** Drops per Section 11: one crystal per beast, a core from each elite and the boss, and the boss-drop d100. Every instant dungeon also carries Section 11.1's mineable deposit at the key's Rank: roll **`3d6 × (Rank multiplier)` crystals** when the instance opens, except that a Crystal Key treats the `3d6` result as 18 (Section 12.5). Extraction consumes time and must occur before the two-hour limit or boss kill closes the instance; every unextracted deposit crystal disappears with it. A solo Bearer owns every crystal he extracts under Section 11.1, and no public-Gate declaration applies under the unregulated-space rule below. It is a **real clear** — kill XP (Section 3.3) and the Gate-clear milestone (Section 3.4) settle on the boss kill exactly as in a public Gate.
 - **No timer, no break.** An instant dungeon runs no break countdown (Section 9.3): it is a closed instance keyed to the Bearer, not a breach into the world. An unopened key is inert and never breaks.
 - **No BGM/CGA jurisdiction — legally unregulated space, and this profile says so.** An instant dungeon is not a licensed Gate: it posts no contract, requires no minimum party (Section 9.4), files no loot declaration (Section 13.2), and is invisible to the authorities, because only the Bearer's key opens it and only the Bearer perceives the System (Section 14.4). It is the one clearance the world cannot see, tax, or regulate — which is exactly its value and exactly its risk: a Bearer who dies in an instant dungeon (Section 6.5) dies unwitnessed, with no strike team that can be called.
 

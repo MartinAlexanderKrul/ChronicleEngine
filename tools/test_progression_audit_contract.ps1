@@ -57,11 +57,11 @@ try {
     $baseline = Invoke-Validation $tempRoot
     Assert-True ($baseline.ExitCode -eq 0) "Unmodified Data Model 0.1.5 repository did not validate:`n$($baseline.Output)"
     Assert-True ((Get-Text $profile).Contains('progression-batch-settlement')) `
-        "Gatefall Profile 1.23 does not preserve promotion-time non-combat progression batching."
+        "Gatefall Profile 1.24 does not preserve promotion-time non-combat progression batching."
     Assert-True ((Get-Text $profile).Contains('Promotion reconciliation.')) `
-        "Gatefall Profile 1.23 does not preserve known combat-skill counter reconciliation."
+        "Gatefall Profile 1.24 does not preserve known combat-skill counter reconciliation."
     Assert-True ((Get-Text $profile).Contains('Mandatory ratification gate.')) `
-        "Gatefall Profile 1.23 does not preserve the next-scene ratification gate."
+        "Gatefall Profile 1.24 does not preserve the next-scene ratification gate."
     Assert-True ((Get-Text $runtime).Contains('mandatory readiness and next-scene gate')) `
         "The Save Algorithm does not preserve pending ratification as a next-scene gate."
     Assert-True ((Get-Text $runtime).Contains('re-count every known combat skill activation')) `
@@ -97,22 +97,22 @@ try {
         "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: pending-ratification`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint`n          - EVT-000120#fixture-third-dimensional-scene" `
         "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: tracking`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint"
 
-    Replace-Once $registry "| Event | ``EVT-`` | Event | EVT-000134 |" "| Event | ``EVT-`` | Event | EVT-000135 |"
+    Replace-Once $registry "| Event | ``EVT-`` | Event | EVT-000135 |" "| Event | ``EVT-`` | Event | EVT-000136 |"
     $registryText = Get-Text $registry
     $marker = "# Allocation Invariants"
     Assert-True ($registryText.Contains($marker)) "Registry allocation marker is missing."
-    $registryText = $registryText.Replace($marker, "| EVT-000135 | Event | progression-audit contract fixture |`r`n`r`n---`r`n`r`n$marker")
+    $registryText = $registryText.Replace($marker, "| EVT-000136 | Event | progression-audit contract fixture |`r`n`r`n---`r`n`r`n$marker")
     Set-Text $registry $registryText
 
-    Replace-Once $chronicle "  - EVT-000133`n  - EVT-000134`n``````" "  - EVT-000133`n  - EVT-000134`n  - EVT-000135`n``````"
+    Replace-Once $chronicle "  - EVT-000134`n  - EVT-000135`n``````" "  - EVT-000134`n  - EVT-000135`n  - EVT-000136`n``````"
     $event = @"
 
 ---
 
-## EVT-000135 - Progression Audit Contract Fixture
+## EVT-000136 - Progression Audit Contract Fixture
 
 ``````yaml
-id: EVT-000135
+id: EVT-000136
 canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active

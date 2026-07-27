@@ -60,7 +60,7 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw
 $character = Get-Content -LiteralPath $characterPath -Raw
 $checkpoint = Get-Content -LiteralPath $checkpointPath -Raw
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.23\r?$') "Gatefall Profile 1.23 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.24\r?$') "Gatefall Profile 1.24 is not active."
 Assert-True ($profile -match 'mana_recovery_remainder_units') "Gatefall Mana carry is not declared."
 Assert-True ($profile -match 'health_recovery_remainder_units') "Gatefall Health carry is not declared."
 Assert-True ($resident -match 'exact last-settled campaign-time anchor') "Resident settlement does not require the exact anchor."

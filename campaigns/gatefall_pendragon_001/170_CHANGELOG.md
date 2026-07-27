@@ -13,8 +13,8 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000134
-  game_date: "2026-08-04 06:00 -05:00; System-interface presentation adoption, no fictional time consumed"
+  source: EVT-000135
+  game_date: "2026-08-04 06:00 -05:00; Premium-price correction and instant-dungeon deposit clarification, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -660,3 +660,11 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **Presentation only.** No skill, Rank, mastery, cost, effect, counter, candidate, pool, item, quest, currency, fictional time, or prior outcome changes.
 - **Versions.** Gatefall Profile 1.22 → 1.23. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the additive presentation advance at readiness.
 - **Repository allocation:** `EVT-000134`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.24 Premium surcharge and instant-dungeon deposit correction adopted (`EVT-000135`; no fictional time consumed).**
+
+- **Premium surcharge:** Future Rank-bearing Daily Premium Weapon, Armor, Accessory, Rune, and Key offers cost 125% of their ordinary same-Rank category anchor, rounded upward to whole gold. Rank rolls, above-Rank access, exclusive effects, model bags, binding, quantity-one scarcity, and expiry remain unchanged. Premium Consumables retain their fixed prices.
+- **Live Cobalt cycle repriced, not rerolled:** Weapon 200→125 g; Armor 540→338 g; Accessory 160→100 g; C-Rank Silent Step Rune 50,000→25,000 g; D-Rank Crystal Key 4,500→2,813 g. Clarity Phial remains 750 g. All models, Ranks, effects, bag state, binding, and 0/6 purchase flags are preserved; gold remains 12.
+- **Instant-dungeon deposit clarified:** Every future instance opens with Section 11.1's `3d6 × Rank multiplier` mineable deposit; Crystal Key fixes the `3d6` result at 18. Unextracted crystals disappear at the boss kill or two-hour closure. No completed instance receives retroactive loot.
+- **Versions:** Gatefall Profile 1.23→1.24. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0029 remains immutable and applies the complete migration chain at readiness.
+- **Repository allocation:** `EVT-000135`; no entity, record, or relationship identifier minted.

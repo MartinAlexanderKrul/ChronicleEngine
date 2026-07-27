@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000145 |
 | Record | `REC-` | Canonical Record | REC-000095 |
-| Event | `EVT-` | Event | EVT-000134 |
+| Event | `EVT-` | Event | EVT-000135 |
 | Relationship | `REL-` | Relationship | REL-000067 |
 
 ---
@@ -249,6 +249,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000132 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.21 — Combat Pattern Exploitation ratifies as passive Exploit Pattern [E-Rank], Field Command ratifies as a passive Pattern-transfer skill, and Resonance Extraction ratifies as a passive vein-reading skill; all begin Novice at zero post-ratification counters; Section 7.4 mastery becomes skill-appropriate across danger, consequential work, and structured practice; no fictional time or prior outcome changes |
 | EVT-000133 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.22 — fully authored earned-technique candidates ratify automatically at threshold; unauthored pending candidates form one mandatory owner-adjudication queue before the next gameplay scene while saves and non-advancing OOC commands remain available; no current candidate, skill, counter, fictional time, or prior outcome changes |
 | EVT-000134 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.23 — `/system` skills render in separate ACTIVE and PASSIVE groups derived from canonical Mana cost, preserving ledger order and all existing state; no fictional time or prior outcome changes |
+| EVT-000135 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.24 — Rank-bearing Daily Premium offers use a 25% surcharge over their ordinary same-Rank anchors while preserving higher-Rank access; the live cycle's five unpurchased Rank-bearing rows were repriced without rerolling; Section 17 explicitly includes the Section 11.1 mineable deposit in future instant dungeons; no fictional time, gold balance, completed transaction, or historical clear changed |
 
 ---
 

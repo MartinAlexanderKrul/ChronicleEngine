@@ -216,7 +216,7 @@ Once the engine is loaded, you can drive it with short **runtime commands** inst
 | `/help [command]` | With no argument, list every runtime command and alias without filtering; with an argument, explain that command. |
 | `/save [label]` | Checkpoint now. An optional label is recorded in the save manifest. |
 | `/end` | Close the session: promote canon, write a session-close checkpoint, print the report. |
-| `/continue [world|campaign]` | Resume a named campaign, the latest campaign in a named world, or—without an argument—the campaign played most recently. Alias: `/resume [world|campaign]`. |
+| `/continue [world\|campaign]` | Resume a named campaign, the latest campaign in a named world, or—without an argument—the campaign played most recently. Alias: `/resume [world\|campaign]`. |
 | `/new <world>` | Start a new campaign in that world. |
 | `/load <checkpoint>` | Restore a specific earlier checkpoint of the current campaign (continuing from it forks a new world-line). Won't load a checkpoint marked non-restorable. |
 | `/restart` | **Destructive — read this one.** Resets the campaign to its **baseline** (its very beginning) and replays from there, discarding everything played since. It is *not* "reload my last save" — that's `/continue`. It asks you to confirm first, and won't run at all if the campaign has no baseline checkpoint. |
@@ -230,7 +230,7 @@ Once the engine is loaded, you can drive it with short **runtime commands** inst
 | `/inventory` | Every character's current canonical inventory, grouped by character, including money and other currency holdings. Requires a loaded campaign; out-of-character and read-only. |
 | `/validate` | Run repository validation and report the result. |
 | `/debug` | Toggle the fuller mechanical breakdown on rolls. Off by default. |
-| `/length [short|normal|long]` | Choose how much the narrator writes per turn: `short` (1–2 paragraphs), `normal` (2–3), or `long` (4–5). With no argument, it tells you the current setting. This changes only narration length, never what actually happens. Default `normal`. Aliases: `/narration`, `/verbosity`. |
+| `/length [short\|normal\|long]` | Choose how much the narrator writes per turn: `short` (1–2 paragraphs), `normal` (2–3), or `long` (4–5). With no argument, it tells you the current setting. This changes only narration length, never what actually happens. Default `normal`. Aliases: `/narration`, `/verbosity`. |
 | `/export-debug [label]` | Export the raw current chat for diagnosis: only `User`/`Assistant` labels and each displayed message exactly as written, with no turn structure, summaries, mechanics tables, or reconstructed state. Works without a loaded game and writes under `exports/debug/`. This is not a campaign export, canon, or a save. |
 
 `/save`, `/end`, `/continue`, and `/new` run the full Save Algorithm, Gameplay Close, and initialization procedures — the same guarantees (promotion barrier, validation gate, read-back, readiness gate) apply whether you invoke them by command or by prompt.

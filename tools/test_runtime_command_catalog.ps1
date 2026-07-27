@@ -27,6 +27,18 @@ function Get-CommandRows {
     }
     $section = $section.Substring(0, $end.Index)
 
+    $tableLines = @($section -split "\r?\n" | Where-Object { $_ -match '^\|' })
+    if ($tableLines.Count -eq 0) {
+        throw "$RelativePath has no Markdown table rows in its command catalog."
+    }
+    $expectedSeparators = [regex]::Matches($tableLines[0], '(?<!\\)\|').Count
+    foreach ($line in $tableLines) {
+        $separatorCount = [regex]::Matches($line, '(?<!\\)\|').Count
+        if ($separatorCount -ne $expectedSeparators) {
+            throw "$RelativePath has a malformed command-table row with $separatorCount separators; expected ${expectedSeparators}: $line"
+        }
+    }
+
     return @([regex]::Matches($section, '(?m)^\|\s*(`/(?:[^`]+)`)\s*\|') | ForEach-Object {
         $_.Groups[1].Value
     })
@@ -72,7 +84,7 @@ if ($catalogText -match '/ChronicleEngine \[target\]') {
 if ($catalogText -notmatch '(?m)^\| `/ChronicleEngine` \|.*Aliases: `/game`, `/chronicle`, `/chronicles`\.') {
     throw 'README bootstrap aliases do not match the closed alias set.'
 }
-if ($catalogText -notmatch '(?m)^\| `/continue \[world\|campaign\]` \|.*Alias: `/resume \[world\|campaign\]`\.') {
+if ($catalogText -notmatch '(?m)^\| `/continue \[world\\\|campaign\]` \|.*Alias: `/resume \[world\\\|campaign\]`\.') {
     throw '/continue does not expose /resume with the same optional selector.'
 }
 

@@ -13,8 +13,8 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000133
-  game_date: "2026-08-04 06:00 -05:00; mandatory ratification gate adoption, no fictional time consumed"
+  source: EVT-000134
+  game_date: "2026-08-04 06:00 -05:00; System-interface presentation adoption, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -652,3 +652,11 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **Live migration.** Alexander currently has no pending candidate, so no skill, tracked candidate, or counter changes.
 - **Versions.** Gatefall Profile 1.21 → 1.22. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the migration at readiness.
 - **Repository allocation:** `EVT-000133`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.23 System-interface presentation adopted (`EVT-000134`; no fictional time consumed).**
+
+- **Skills split by operation.** The full `/system` window and `/system skills` now render `SKILLS · ACTIVE` followed by `SKILLS · PASSIVE`.
+- **Canonical classification.** A Mana cost places a technique in ACTIVE; the canonical `passive` cost places it in PASSIVE. Ledger order is preserved inside each group, and empty groups still render with `none`.
+- **Presentation only.** No skill, Rank, mastery, cost, effect, counter, candidate, pool, item, quest, currency, fictional time, or prior outcome changes.
+- **Versions.** Gatefall Profile 1.22 → 1.23. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the additive presentation advance at readiness.
+- **Repository allocation:** `EVT-000134`; no entity, record, or relationship identifier minted.

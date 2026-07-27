@@ -13,8 +13,8 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000133
-  game_date: "2026-08-04 06:00 -05:00; mandatory ratification gate adoption, no fictional time consumed"
+  source: EVT-000134
+  game_date: "2026-08-04 06:00 -05:00; System-interface presentation adoption, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -94,6 +94,7 @@ subjects:
   - EVT-000131
   - EVT-000132
   - EVT-000133
+  - EVT-000134
 ```
 
 ---
@@ -2363,4 +2364,30 @@ At a candidate's third qualifying scene, a complete result already authored by t
 Readiness and `/continue` scan persistent candidates and surface the queue before narration. Several candidates may share one profile advance and adoption Event. Approved ratification atomically authors the complete mechanic, creates its resolution Event, grants the Novice skill, initializes counters at zero, and records `resolution_event` plus `result_ref`; rejection preserves the evidence and an owner-authored reason.
 
 Alexander has no `pending-ratification` candidate at adoption. His ratified skills and tracked candidates remain unchanged. No fictional time, roll, Mana, Health, XP, gold, item, quest, skill, counter, damage result, or prior outcome changes. Checkpoint 0029 remains immutable at Profile 1.16 / Data Model 0.1.4 and restores through the applicable chain to Profile 1.22 / Data Model 0.1.5."
+```
+
+---
+
+## EVT-000134 - Profile 1.23: Active and Passive Skill Rendering
+
+```yaml
+id: EVT-000134
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: owner-ruling
+  game_date: "2026-08-04 06:00 -05:00; profile adoption, no fictional time consumed"
+  real_date: "2026-07-27"
+type: Event
+kind: system-profile-adoption
+importance: structural
+game_date: "2026-08-04 06:00 -05:00; profile adoption, no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.23.
+
+The skills portion of the full `/system` window and the `/system skills` focused view now renders two stable groups: `SKILLS · ACTIVE` for mana-costed techniques and `SKILLS · PASSIVE` for costless techniques. Classification reads the canonical cost field, never the name or prose effect; each group preserves character-ledger order and renders `none` when empty.
+
+This is a presentation-only advance. Alexander's skills, Rank, mastery, Mana costs, effects, successful-use counters, qualifying-scene counters, progression candidates, and every other stored value remain unchanged. No fictional time, roll, Mana, Health, XP, gold, item, quest, damage result, or prior outcome changes. Checkpoint 0029 remains immutable at Profile 1.16 / Data Model 0.1.4 and restores through the applicable compatibility chain to Profile 1.23 / Data Model 0.1.5."
 ```

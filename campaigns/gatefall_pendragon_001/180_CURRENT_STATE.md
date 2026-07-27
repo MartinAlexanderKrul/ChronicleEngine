@@ -13,8 +13,8 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000133
-  game_date: "2026-08-04 06:00 -05:00; mandatory ratification gate adoption, no fictional time consumed"
+  source: EVT-000134
+  game_date: "2026-08-04 06:00 -05:00; System-interface presentation adoption, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -25,13 +25,13 @@ subjects: []
 
 ## Bindings and Versions
 
-- World: Gatefall (World Version 0.1, World Rule Profile **1.22**)
+- World: Gatefall (World Version 0.1, World Rule Profile **1.23**)
 - Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.5
 - Start city: Chicago
 - Campaign date: **2026-08-04T06:00:00-05:00, morning** — asleep at Owen Callahan's Rogers Park apartment, Alexander awake and alone perceiving the System's 06:00 notifications. This is the exact canonical settlement anchor. The next daily quest issues **06:00 on 2026-08-05**. The next crew training session is fixed for **2026-08-09, 18:00**, with a standing order that no crew Gate precedes it.
-- Campaign state: session-3 in progress. The Cicero Gate is fully cleared and declared; no crew, contract, or filing pressure stands. Since the 2026-08-03 16:00 anchor: arrival at Owen's and the Damen Avenue Break disclosure (`EVT-000122`), dinner and the pocket-gate promise (`EVT-000123`), the night's rest and the 06:00 notifications (`EVT-000124`), Profile 1.16's adoption (`EVT-000125`), the deferred Daily Premium cycle resolved in full (`EVT-000126`), the missed skill counters corrected (`EVT-000127`), Profile 1.17's instructional binding migration adopted (`EVT-000128`), Profile 1.18's dual-wield packages plus Twin Fang ratification adopted (`EVT-000129`), Data Model 0.1.5 / Profile 1.19's auditable progression migration adopted (`EVT-000130`), Profile 1.20's meaningful-practice expansion and candidate settlement adopted (`EVT-000131`), Profile 1.21's three earned-technique ratifications and mastery-scene correction adopted (`EVT-000132`), and Profile 1.22's mandatory ratification gate adopted (`EVT-000133`).
-- World Rule Profile: Gatefall **1.22**, frozen on repository date 2026-07-27 — fully authored formation results ratify automatically at threshold; unauthored results enter one mandatory owner-adjudication queue before the next scene. Saves and non-advancing OOC commands remain available while a queue is preserved. Alexander currently has no pending ratification.
-- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0029/` — immutable Profile **1.16** / Data Model **0.1.4** capture at the 2026-08-04 06:00 anchor. Restoring it requires the applicable compatibility chain through **Profile 1.22 / Data Model 0.1.5** before play. `900_CHECKPOINT_0028` (2026-08-03 16:00, the Cicero Gate just cleared) remains the preceding immutable historical capture and likewise runs its full applicable chain.
+- Campaign state: session-3 in progress. The Cicero Gate is fully cleared and declared; no crew, contract, or filing pressure stands. Since the 2026-08-03 16:00 anchor: arrival at Owen's and the Damen Avenue Break disclosure (`EVT-000122`), dinner and the pocket-gate promise (`EVT-000123`), the night's rest and the 06:00 notifications (`EVT-000124`), Profile 1.16's adoption (`EVT-000125`), the deferred Daily Premium cycle resolved in full (`EVT-000126`), the missed skill counters corrected (`EVT-000127`), Profile 1.17's instructional binding migration adopted (`EVT-000128`), Profile 1.18's dual-wield packages plus Twin Fang ratification adopted (`EVT-000129`), Data Model 0.1.5 / Profile 1.19's auditable progression migration adopted (`EVT-000130`), Profile 1.20's meaningful-practice expansion and candidate settlement adopted (`EVT-000131`), Profile 1.21's three earned-technique ratifications and mastery-scene correction adopted (`EVT-000132`), Profile 1.22's mandatory ratification gate adopted (`EVT-000133`), and Profile 1.23's active/passive skill rendering adopted (`EVT-000134`).
+- World Rule Profile: Gatefall **1.23**, frozen on repository date 2026-07-27 — fully authored formation results ratify automatically at threshold; unauthored results enter one mandatory owner-adjudication queue before the next scene. Saves and non-advancing OOC commands remain available while a queue is preserved. `/system` skills render in ACTIVE and PASSIVE groups. Alexander currently has no pending ratification.
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0029/` — immutable Profile **1.16** / Data Model **0.1.4** capture at the 2026-08-04 06:00 anchor. Restoring it requires the applicable compatibility chain through **Profile 1.23 / Data Model 0.1.5** before play. `900_CHECKPOINT_0028` (2026-08-03 16:00, the Cicero Gate just cleared) remains the preceding immutable historical capture and likewise runs its full applicable chain.
 
 ## Protagonist
 
@@ -67,6 +67,8 @@ Session 3 continues directly from Checkpoint 0028's anchor. Arriving at Owen's R
 
 **Profile 1.22 mandatory ratification gate.** A fully authored candidate now ratifies automatically when its third distinct qualifying scene settles. An unauthored candidate enters a consolidated owner-adjudication queue that blocks the next gameplay scene—not saving or other non-advancing OOC work—until every item is ratified or rejected. The queue survives checkpoints and is checked by `/continue` and readiness. No candidate is presently pending.
 
+**Profile 1.23 System-interface presentation.** The full `/system` window and `/system skills` group mana-costed techniques under `SKILLS · ACTIVE` and costless techniques under `SKILLS · PASSIVE`, preserving ledger order within each group. This changes no skill state or mechanic.
+
 **Open threads, none urgent:** the pocket-gate demonstration Owen accepted, unscheduled; nine E-Rank cores still with no legal sale path; six live Premium offers expiring 2026-08-05 06:00 (none affordable at 12 gold); the ≈$9,000 Sable & Kern share and the ≈$1,762.50 Cicero split both still processing; crew training fixed for 2026-08-09 with a standing no-Gate order until then; OBJ-12 (the crew question) still undecided, pending Owen watching this crew run a real job; Priya's untested question about whether the spend-call rule survives either of them bleeding; Renata's deferred *who are you, exactly?*; the sensor rig still owed for Owen's 14 September birthday; and possible B-Rank mining work through Dale, unanswered. The eleventh daily quest (100/100/100/10km, deadline 00:00 tonight) is unstarted.
 
 ## Current Scene Anchor
@@ -77,9 +79,9 @@ Session 3, morning of 2026-08-04, 06:00, at Owen's Rogers Park apartment. Owen i
 
 Session 3 in progress — **checkpoint `900_CHECKPOINT_0029` written** at the 2026-08-04 06:00 anchor, carrying `EVT-000122` (arrival and the Damen Avenue Break disclosure), `EVT-000123` (dinner and the pocket-gate promise), `EVT-000124` (the night and the 06:00 notifications), `EVT-000125` (Profile 1.16 adoption), and `EVT-000126` (the deferred Daily Premium cycle resolved).
 
-Post-checkpoint live canon also carries `EVT-000127` (Cicero skill-counter correction), `EVT-000128` (Profile 1.17 instructional-binding migration), `EVT-000129` (Profile 1.18 dual-wield ruling and Twin Fang ratification), `EVT-000130` (Data Model 0.1.5 / Profile 1.19 auditable progression migration), `EVT-000131` (Profile 1.20 meaningful-practice expansion and candidate settlement), `EVT-000132` (Profile 1.21 earned-technique ratification and mastery-scene correction), and `EVT-000133` (Profile 1.22 mandatory ratification gate); none rewrites the immutable checkpoint.
+Post-checkpoint live canon also carries `EVT-000127` (Cicero skill-counter correction), `EVT-000128` (Profile 1.17 instructional-binding migration), `EVT-000129` (Profile 1.18 dual-wield ruling and Twin Fang ratification), `EVT-000130` (Data Model 0.1.5 / Profile 1.19 auditable progression migration), `EVT-000131` (Profile 1.20 meaningful-practice expansion and candidate settlement), `EVT-000132` (Profile 1.21 earned-technique ratification and mastery-scene correction), `EVT-000133` (Profile 1.22 mandatory ratification gate), and `EVT-000134` (Profile 1.23 active/passive skill rendering); none rewrites the immutable checkpoint.
 
-Checkpoint 0029 is the latest immutable restore point at **Profile 1.16 / Data Model 0.1.4** and requires the applicable compatibility chain through Profile 1.22 / Data Model 0.1.5 on restore. Registry is advanced through `EVT-000133`.
+Checkpoint 0029 is the latest immutable restore point at **Profile 1.16 / Data Model 0.1.4** and requires the applicable compatibility chain through Profile 1.23 / Data Model 0.1.5 on restore. Registry is advanced through `EVT-000134`.
 
 **Proactive trigger audit (Profile Sections 7.1, 8.4, and 14.3).** Quest checks were run at scene opening and after each resolved exchange this session, including the 06:00 notification settlement. No Urgent condition arose and no Hidden pointer condition arose; non-daily slots remain **0/2** with no pending offer. The skill-formation audit remains prospective from `EVT-000130`; `EVT-000131` migrated supported historical candidates, `EVT-000132` ratified the three threshold candidates, and `EVT-000133` added the mandatory next-scene ratification gate without rewriting old Events. No post-baseline qualifying gameplay scene has occurred yet, so all three new skills begin with zero uses and zero mastery progress.
 

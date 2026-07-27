@@ -13,8 +13,8 @@ canonical_record: REC-000074
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000133
-  game_date: "2026-08-04 06:00 -05:00; mandatory ratification gate adoption, no fictional time consumed"
+  source: EVT-000134
+  game_date: "2026-08-04 06:00 -05:00; System-interface presentation adoption, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -66,7 +66,8 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.22"
+    profile_version: "1.23"
+    profile_system_interface_event: EVT-000134
     profile_mandatory_ratification_gate_event: EVT-000133
     profile_earned_technique_ratification_event: EVT-000132
     profile_meaningful_practice_event: EVT-000131
@@ -75,7 +76,7 @@ canonical_state:
     profile_instruction_binding_event: EVT-000128
     profile_premium_persistence_event: EVT-000125
     profile_party_exception_event: EVT-000117
-    profile_layout_event: EVT-000086
+    profile_layout_event: EVT-000134
     profile_economy_event: EVT-000090
     profile_streak_event: EVT-000092
     profile_itemdiversity_event: EVT-000100

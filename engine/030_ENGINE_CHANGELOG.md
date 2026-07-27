@@ -12,6 +12,10 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-27 — Gatefall Profile 1.23 System-interface skill grouping
+
+Gatefall's full `/system` window and `/system skills` focused view now group techniques by operation: mana-costed techniques under `SKILLS · ACTIVE`, then costless techniques under `SKILLS · PASSIVE`. Classification is derived from the canonical cost field, ledger order is preserved inside each group, and empty groups remain visible. This is an additive presentation advance; no stored state or mechanic changes. Engine 0.2.0 and Data Model 0.1.5 remain unchanged.
+
 ## 2026-07-27 — Gatefall Profile 1.22 mandatory ratification gate
 
 Gatefall earned-technique thresholds now produce a durable outcome instead of a notification that can be forgotten. A fully pre-authored candidate ratifies automatically in its threshold settlement; an unauthored candidate persists as `pending-ratification` and enters one consolidated owner-adjudication queue that blocks the next gameplay scene while preserving `/save`, session close, export, and other non-advancing OOC work. Checkpoints may carry the queue, and readiness must resolve it before narration.

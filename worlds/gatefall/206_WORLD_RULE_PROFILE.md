@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.22
+# Gatefall — World Rule Profile 1.23
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.22
+**Profile Version:** 1.23
 **Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.22 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.22 is a **mandatory earned-technique ratification gate** over frozen 1.21: a candidate whose complete result is already authored ratifies automatically at its third qualifying scene, while an unauthored candidate enters one consolidated owner-adjudication queue that must be resolved before the next gameplay scene. Saving and session close remain available while the queue is pending. Data Model 0.1.5 remains unchanged.
+**Compatibility Status:** frozen at version 1.23 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.23 is an **additive System-interface presentation advance** over frozen 1.22: every `/system` skills rendering groups mana-costed techniques under `SKILLS · ACTIVE` and costless techniques under `SKILLS · PASSIVE`, preserving each group's character-ledger order and every existing skill value. No stored field, mechanic, threshold, magnitude, cost, counter, probability, timer, or resolved outcome changes. Data Model 0.1.5 remains unchanged.
+
+**1.22 → 1.23 compatibility treatment.** Preserve every stored value and all resolved canon. Adoption requires no recomputation and no state migration: re-render the skills portion of the full `/system` window and the `/system skills` focused view using Section 15's two-group layout, then record the additive-upgrade acknowledgement in mutable live state. Immutable Profile 1.22-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.23 at readiness.
+
+Version 1.22 remains the mandatory earned-technique ratification-gate advance over frozen 1.21: a candidate whose complete result is already authored ratifies automatically at its third qualifying scene, while an unauthored candidate enters one consolidated owner-adjudication queue that must be resolved before the next gameplay scene. Saving and session close remain available while the queue is pending.
 
 **Required 1.21 → 1.22 migration.** Preserve every resolved roll, damage result, Mana spend, skill and mastery value, candidate, item, pool, reward, quest, currency balance, and fictional outcome. Activate the Section 7.1 ratification gate prospectively. If a live candidate is already `pending-ratification` when this migration runs, include it in the consolidated adjudication queue before the next gameplay scene; if its complete result is already authored by this profile, ratify it automatically during readiness. Alexander has no pending candidates at this migration Event, so no skill or counter changes. This migration consumes no fictional time.
 
@@ -1957,8 +1961,11 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ║  [<type>] <quest name> · <status/streak>                                 ║
 ║    <objective progress>                                                  ║
 ║    <objective progress or local deadline>                                ║
-╟─ SKILLS ─────────────────────────────────────────────────────────────────╢
-║  <name> [Rank] <★ mastery> · <MANA n or Passive> · <effect>              ║
+╟─ SKILLS · ACTIVE ────────────────────────────────────────────────────────╢
+║  <name> [Rank] <★ mastery> · MANA <n> · <effect>                         ║
+║    Uses <n> · Progress <n>/3                                             ║
+╟─ SKILLS · PASSIVE ───────────────────────────────────────────────────────╢
+║  <name> [Rank] <★ mastery if tracked> · Passive · <effect>               ║
 ║    Uses <n> · Progress <n>/3 or —                                        ║
 ╟─ TITLES · Equipped: <title or none> ─────────────────────────────────────╢
 ║  <★ equipped title or earned title · effect>                             ║
@@ -2004,15 +2011,16 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 ║    Deadline 00:00 local                                                  ║
 ║  [URGENT] Cull the Red Line Nest · 3/4 · +40 XP                          ║
 ║    Deadline: crisis ends                                                 ║
-╟─ SKILLS ─────────────────────────────────────────────────────────────────╢
+╟─ SKILLS · ACTIVE ────────────────────────────────────────────────────────╢
 ║  Mana Bolt [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                   ║
 ║    Uses 4 · Progress 2/3                                                 ║
-║  Dagger Mastery [E-Rank] ★☆☆☆☆ · Passive · Quickknife +0.10              ║
-║    Uses 11 · Progress 1/3                                                ║
 ║  Sprint [E-Rank] ★☆☆☆☆ · MANA 3 · +1 Step Movement                       ║
 ║    Uses 6 · Progress 2/3                                                 ║
 ║  Mend [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                        ║
 ║    Uses 3 · Progress 2/3                                                 ║
+╟─ SKILLS · PASSIVE ───────────────────────────────────────────────────────╢
+║  Dagger Mastery [E-Rank] ★☆☆☆☆ · Passive · Quickknife +0.10              ║
+║    Uses 11 · Progress 1/3                                                ║
 ╟─ TITLES · Equipped: Lone Clear ──────────────────────────────────────────╢
 ║  ★ Lone Clear · +1 Step While Alone in a Gate                            ║
 ║    Untouched · +1 Step Evasion on First Exchange                         ║
@@ -2040,13 +2048,14 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 - **Bars** are 20-cell meters filled proportionally to `current/max` (Ren: HP approximately four-fifths, MP three-quarters, XP half).
 - **Frame width is fixed:** every rendered row is exactly **76 monospace cells** wide, including its two edge characters; the interior is 74 cells. The Runtime pads short rows, never allows content past the right edge, and uses indented continuation rows rather than truncation. If a name or value still exceeds one row, it wraps beneath its own label at the same indentation.
 - **Labels use title case and fixed abbreviations:** `Unspent Points`, `Pending Rewards`, `Physical Reduction`, `Acc.1`, `Acc.2`, and `Passive`. The same label is never shortened differently elsewhere in the window.
-- **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full skill row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` — or `<name> · Passive · <effect>` for a passive. The next indented row renders `Uses <n> · Progress <n>/3`; no-mastery milestone passives render `Progress —`.
+- **Skills render in two stable groups.** `SKILLS · ACTIVE` contains every skill whose ledger entry carries a Mana cost; `SKILLS · PASSIVE` contains every skill whose cost is `passive`. Preserve character-ledger order inside each group. Never duplicate a skill, infer a third category, or classify from its name or prose effect. Each group renders even when empty, with `none` on the following row.
+- **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full active row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` and a passive row is `<name> [Rank] ★☆☆☆☆ · Passive · <effect>` when mastery is tracked. The next indented row renders `Uses <n> · Progress <n>/3`; no-mastery milestone passives omit the star string and render `Progress —`.
 - **Quest capacity and objectives are explicit.** `Non-Daily Slots <used>/<capacity>` is the first quest row. The quest name and status occupy the next row; objectives, progress, reward, and the local or causal deadline render beneath it with four-space indentation. Unrevealed Hidden quests are the sole exception: they render only `[HIDDEN] ???` until Section 8.4.3 reveals them.
 - **Equipment and long inventory entries separate identity from mechanics.** The slot, item name, and `[Rank]` occupy the first row. Bonuses, power/protection, effects, and condition occupy one or more continuation rows aligned beneath the item name. This rule leaves room for prefixes, suffixes, and durability without widening the frame.
 - **Instructional items render their eligibility from canonical binding.** `/system inventory` and `/system shop` show `UNBOUND · NPC-ELIGIBLE` for `unbound-awakened` instruction and `BEARER-BOUND` for `bearer-only` instruction; a class-bound item shows `CLASS-BOUND · <class>`. The complete item line retains `teaches`, `teaching_rank`, binding, provenance source kind/event, and unused status. When transferred to an NPC, move that complete line to the NPC's holdings without altering binding. On consumption, remove the item from live holdings and record the recipient's learned or upgraded technique plus the settlement event.
 - Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, equipment slots from Section 12.9, inventory from the campaign inventory ledger, and gold from the shop balance. Effective stats and physical reduction are derived from the equipped lines. Nothing is invented at render.
 - **`Pending Rewards`** lists each unclaimed daily Ability Point reward, Status Recovery, and Daily Random Box separately (Section 3.9), and reads `none` when empty. Level-ups never appear here because they settle immediately.
-- The window grows with the Bearer: an empty section still renders its header with `none` beneath it (a fresh Bearer shows `SKILLS — none`, `TITLES — none`), so the shape is constant and the Bearer always sees the whole of himself.
+- The window grows with the Bearer: an empty section still renders its header with `none` beneath it. A fresh Bearer shows both `SKILLS · ACTIVE` and `SKILLS · PASSIVE` with `none`, plus `TITLES` with `none`, so the shape is constant and the Bearer always sees the whole of himself.
 - **Numbers in the window are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer, and only he sees this window.
 
 ## 15.2 Focused Views and Interactive Panels

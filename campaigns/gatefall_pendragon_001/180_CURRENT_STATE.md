@@ -13,9 +13,9 @@ canonical_record: REC-000081
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000126
-  game_date: "2026-08-04 06:00 -05:00"
-  real_date: "2026-07-27T11:30:00+02:00"
+  source: EVT-000128
+  game_date: "2026-08-04 06:00 -05:00; profile migration, no fictional time consumed"
+  real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -25,13 +25,13 @@ subjects: []
 
 ## Bindings and Versions
 
-- World: Gatefall (World Version 0.1, World Rule Profile **1.16**)
+- World: Gatefall (World Version 0.1, World Rule Profile **1.17**)
 - Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.4
 - Start city: Chicago
 - Campaign date: **2026-08-04T06:00:00-05:00, morning** — asleep at Owen Callahan's Rogers Park apartment, Alexander awake and alone perceiving the System's 06:00 notifications. This is the exact canonical settlement anchor. The next daily quest issues **06:00 on 2026-08-05**. The next crew training session is fixed for **2026-08-09, 18:00**, with a standing order that no crew Gate precedes it.
-- Campaign state: session-3 in progress. The Cicero Gate is fully cleared and declared; no crew, contract, or filing pressure stands. Since the 2026-08-03 16:00 anchor: arrival at Owen's and the Damen Avenue Break disclosure (`EVT-000122`), dinner and the pocket-gate promise (`EVT-000123`), the night's rest and the 06:00 notifications (`EVT-000124`), Profile 1.16's adoption (`EVT-000125`), and the deferred Daily Premium cycle resolved in full (`EVT-000126`).
-- World Rule Profile: Gatefall **1.16**, frozen on repository date 2026-07-27 — the migrating Daily Premium bag-persistence repair (Section 12.5) over the still-operative Profile 1.15 sponsor exception (Section 9.4). Alexander's five model bags were already complete and settled through the 2026-08-03 draw, so nothing was reconstructed; the repair let the deferred 2026-08-04 cycle resolve without replaying prior rotations.
-- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0029/` — Profile **1.16** / Data Model **0.1.4** capture at the 2026-08-04 06:00 anchor. **No migration is required on restore.** `900_CHECKPOINT_0028` (2026-08-03 16:00, the Cicero Gate just cleared) remains the preceding immutable historical capture; restoring it requires the additive 1.15→1.16 readiness step described above.
+- Campaign state: session-3 in progress. The Cicero Gate is fully cleared and declared; no crew, contract, or filing pressure stands. Since the 2026-08-03 16:00 anchor: arrival at Owen's and the Damen Avenue Break disclosure (`EVT-000122`), dinner and the pocket-gate promise (`EVT-000123`), the night's rest and the 06:00 notifications (`EVT-000124`), Profile 1.16's adoption (`EVT-000125`), the deferred Daily Premium cycle resolved in full (`EVT-000126`), the missed skill counters corrected (`EVT-000127`), and Profile 1.17's instructional binding migration adopted (`EVT-000128`).
+- World Rule Profile: Gatefall **1.17**, frozen on repository date 2026-07-27 — the migrating instructional-item binding and recipient-consumption advance over Profile 1.16's Daily Premium bag-persistence repair. Rune/book identity is fixed at generation; unbound instruction may be consumed by an eligible awakened NPC, while Bearer duplicate protection now fires only at consumption.
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0029/` — immutable Profile **1.16** / Data Model **0.1.4** capture at the 2026-08-04 06:00 anchor. Restoring it requires the **1.16→1.17 instructional-binding migration** before play. `900_CHECKPOINT_0028` (2026-08-03 16:00, the Cicero Gate just cleared) remains the preceding immutable historical capture and runs its full applicable migration chain through 1.17.
 
 ## Protagonist
 
@@ -40,7 +40,7 @@ subjects: []
 - Location: **Rogers Park, Chicago, morning of 2026-08-04** — Owen's apartment, Owen still asleep beside him.
 - Condition: Health **116/116**, Mana **60/60**, **no injury**. Mana settled deterministically from 21/60 under `resting` recovery across the 14-hour span since the Cicero Gate, reaching full well inside the window. Both recovery modes `resting`, zero fractional carry, at the exact `2026-08-04T06:00:00-05:00` anchor.
 - Equipment: **Unchanged from Checkpoint 0028.** Full nine-slot loadout: main hand (Ghost Quickknife [B-Rank]), off hand (C-Rank Quickknife), head (Horizon Gale Coif [D-Rank]), torso (Adaptive Bastion Torso [E-Rank]), hands (Horizon Gale Gauntlets [C-Rank]), legs (Shin Guards [E-Rank]), feet (Titan Boots [E-Rank]), both accessory slots (Ascendant Hunter's Bands, Strength +9 total). Combined physical reduction ≈23%, unchanged. Also held: 4 lesser healing potions, 2 antidotes, 1 unused Runic Key [E-Rank], **9 E-Rank cores**, 0 E-Rank crystals. **$9,831 cash**, unchanged; **≈$1,762.50** still pending from the Cicero split, alongside the still-processing ≈$9,000 Sable & Kern share. Full detail: `100_CHARACTER_SHEET.md` and `120_INVENTORY_AND_OWNERSHIP.md`.
-- Daily Premium: **ROTATED 2026-08-04 06:00 → 2026-08-05 06:00** (`EVT-000124`/`EVT-000126`), fabrication series **Cobalt**. Six offers resolved and priced (Colossus Greatarm [E-Rank] 200 g, Adaptive Titan Hands [D-Rank] 540 g, Ascendant Mindspun Loop [E-Rank] 160 g, Clarity Phial 750 g, Premium Rune teaching Silent Step [C-Rank] 50,000 g, Crystal Key [D-Rank] 4,500 g), **0/6 purchased**, all unaffordable at 12 gold. Full detail: `100_CHARACTER_SHEET.md` `system_state.daily_premium`.
+- Daily Premium: **ROTATED 2026-08-04 06:00 → 2026-08-05 06:00** (`EVT-000124`/`EVT-000126`), fabrication series **Cobalt**. Six offers resolved and priced (Colossus Greatarm [E-Rank] 200 g, Adaptive Titan Hands [D-Rank] 540 g, Ascendant Mindspun Loop [E-Rank] 160 g, Clarity Phial 750 g, Premium Rune teaching Silent Step [C-Rank] 50,000 g, Crystal Key [D-Rank] 4,500 g), **0/6 purchased**, all unaffordable at 12 gold. Under `EVT-000128`, the rune retains its exact identity and is marked **UNBOUND · NPC-ELIGIBLE** (`instruction_binding: unbound-awakened`). Full detail: `100_CHARACTER_SHEET.md` `system_state.daily_premium`.
 - Daily quest: the **eleventh** issued this morning (streak 10, unresolved); no objective yet started. Deadline 00:00 tonight. Next issues 2026-08-05 06:00.
 - Social position: unchanged in structure — Windy City Hunters Coalition freelancer (`REL-000062`); fifth-slot membership on Priya Okafor's crew with Alexander holding tactical/strategic field command (`REL-000065`); harvest-hire standings with the corporate-adjacent contractor and Sable & Kern (`REL-000064`, `REL-000067`). Personal relationship with Owen (`ENT-000139`, `REL-000066`) deepened by the largest non-System disclosure of the campaign — see below.
 - Standing liability: $30,000 tuition debt, $400/month minimum (see `100_CHARACTER_SHEET.md`, `120_INVENTORY_AND_OWNERSHIP.md`).
@@ -55,6 +55,8 @@ Session 3 continues directly from Checkpoint 0028's anchor. Arriving at Owen's R
 
 **The night and the morning.** An uneventful evening; both asleep by the ordinary hour. At 06:00 the System issued the eleventh daily quest and rotated the Daily Premium stock; Owen slept through it undisturbed (`EVT-000124`). Profile 1.16 was adopted — a migrating repair making each Daily Premium category's compact stored state (rather than full rotation history) the sole source needed for an ordinary draw (`EVT-000125`) — which let the deferred 2026-08-04 cycle resolve in full: fabrication series Cobalt, six offers priced, 0/6 purchased (`EVT-000126`).
 
+**Profile 1.17 adoption.** With no fictional time consumed, instructional identity and recipient binding were migrated (`EVT-000128`). No held unconsumed rune/book existed. The live Premium Rune remains Silent Step [C-Rank], gains `unbound-awakened`, and may be consumed by any eligible awakened recipient; only Bearer consumption can trigger duplicate rerolls.
+
 **Open threads, none urgent:** the pocket-gate demonstration Owen accepted, unscheduled; nine E-Rank cores still with no legal sale path; six live Premium offers expiring 2026-08-05 06:00 (none affordable at 12 gold); the ≈$9,000 Sable & Kern share and the ≈$1,762.50 Cicero split both still processing; crew training fixed for 2026-08-09 with a standing no-Gate order until then; OBJ-12 (the crew question) still undecided, pending Owen watching this crew run a real job; Priya's untested question about whether the spend-call rule survives either of them bleeding; Renata's deferred *who are you, exactly?*; the sensor rig still owed for Owen's 14 September birthday; and possible B-Rank mining work through Dale, unanswered. The eleventh daily quest (100/100/100/10km, deadline 00:00 tonight) is unstarted.
 
 ## Current Scene Anchor
@@ -65,7 +67,9 @@ Session 3, morning of 2026-08-04, 06:00, at Owen's Rogers Park apartment. Owen i
 
 Session 3 in progress — **checkpoint `900_CHECKPOINT_0029` written** at the 2026-08-04 06:00 anchor, carrying `EVT-000122` (arrival and the Damen Avenue Break disclosure), `EVT-000123` (dinner and the pocket-gate promise), `EVT-000124` (the night and the 06:00 notifications), `EVT-000125` (Profile 1.16 adoption), and `EVT-000126` (the deferred Daily Premium cycle resolved).
 
-Checkpoint 0029 is the latest immutable restore point at **Profile 1.16 / Data Model 0.1.4** and requires no migration on restore. Registry is advanced through `EVT-000126`.
+Post-checkpoint live canon also carries `EVT-000127` (Cicero skill-counter correction) and `EVT-000128` (Profile 1.17 instructional-binding migration); neither rewrites the immutable checkpoint.
+
+Checkpoint 0029 is the latest immutable restore point at **Profile 1.16 / Data Model 0.1.4** and requires the Profile 1.16→1.17 migration on restore. Registry is advanced through `EVT-000128`.
 
 **Proactive trigger audit (Profile Sections 8.4 and 14.3).** Run at scene opening and after each resolved exchange this session, including the 06:00 notification settlement. No Urgent condition arose and no Hidden pointer condition arose; non-daily slots remain **0/2** with no pending offer, and nothing was invented to make a trigger fire.
 

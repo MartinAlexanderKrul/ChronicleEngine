@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.16
+# Gatefall — World Rule Profile 1.17
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.16
+**Profile Version:** 1.17
 **Engine Compatibility:** 0.2.0; Data Model 0.1.4
 **Status:** Active
-**Compatibility Status:** frozen at version 1.16 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.16 is a **migrating Daily Premium persistence-repair advance** over frozen 1.15: compact stored bag state is the sole operational source for ordinary rotation, and legacy Profile 1.11-or-later state missing a complete category bag repairs prospectively from its active cycle instead of replaying expired rotations.
+**Compatibility Status:** frozen at version 1.17 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.17 is a **migrating instructional-item binding and consumption-settlement advance** over frozen 1.16: every rune or skill book now has an immutable recipient binding fixed by provenance, its taught technique is fixed when the physical item is generated, and duplicate protection occurs only when the Bearer consumes an eligible item.
+
+**Required 1.16 → 1.17 migration.** Preserve every resolved roll, reroll, learned skill, mastery value, consumed item, current offer identity and Rank, purchase flag, currency balance, and all other campaign state. Add Section 7.1's complete instructional-item fields to every live unconsumed rune, skill book, and instructional offer: derive `instruction_binding` from authored provenance, never from the current holder or intended recipient; preserve the generated `teaches` and `teaching_rank` without rerolling them. Ordinary catalogue and Daily Random Box instruction is `bearer-only`; Daily Premium instruction, public-Gate boss loot, instant-dungeon or Runic-Key loot, and future authored found/world loot are `unbound-awakened` unless their source explicitly authors another binding; Mastery Runes and Mastery Books are `bearer-only`; authored class instruction is `class-bound:<class>`. If provenance is insufficient to determine binding, mark the item unresolved and obtain an owner ruling — do not guess. Previously resolved generation-time duplicate rerolls remain canon and are not reopened. This migration consumes no fictional time. Record adoption in mutable live state; immutable Profile 1.16-and-earlier checkpoints remain byte-unchanged and run the applicable migration chain through 1.17 at readiness.
+
+Version 1.16 remains the migrating Daily Premium persistence-repair advance over frozen 1.15: compact stored bag state is the sole operational source for ordinary rotation, and legacy Profile 1.11-or-later state missing a complete category bag repairs prospectively from its active cycle instead of replaying expired rotations.
 
 **Required 1.15 → 1.16 migration.** Preserve the active Daily Premium cycle, every complete stored category bag, every previous draw, all six offers and purchase flags, every expired result, and every other campaign value. For each bag-governed category whose compact bag state is missing or incomplete, do **not** reconstruct expired rotations from chronicles, changelogs, or older checkpoints. Initialize only that category's bag to its full Section 12.5 model set minus the active cycle's model, record the active model as its previous draw, and begin using the repaired bag at the next rotation. A complete stored bag is authoritative and is not reset. This migration rerolls no offer, reopens no expired cycle, and consumes no fictional time. Record adoption in mutable live state; immutable Profile 1.15-and-earlier checkpoints remain byte-unchanged and run the applicable migration chain through 1.16 at readiness.
 
@@ -29,6 +33,8 @@ Version 1.12 remains the migrating skill-ledger advance over frozen 1.11: every 
 Version 1.11 remains the additive item-diversity advance over frozen 1.10: future boss equipment carries a source-derived Boss Imprint, boss potion caches and duplicate skill drops resolve from closed rules, and Daily Premium models draw without replacement while a visual fabrication series distinguishes later rotations. Existing items and the active stock cycle do not change.
 
 **1.10 → 1.11 compatibility treatment.** Preserve every stored value, current offer, purchased flag, item, skill, mastery count, currency balance, and resolved outcome. Adoption does not reroll or visually retrofit an existing item and does not reopen a resolved duplicate-skill result. The active Daily Premium cycle remains exactly as generated under its earlier profile. For each future bag-governed category, initialize its bag to the full Section 12.5 model set **minus the active cycle's model**, record that active model as the category's previous draw, and begin bag draws at the next 06:00 rotation. Initialize no fabrication series for the active cycle; the first series roll occurs with that next rotation. Future boss-equipment results use Section 11.2.1, and future dropped runes/books use Section 11.3's duplicate settlement. The already-resolved Stone Skin → Flash Step dropped-rune reroll remains canon and is consistent with the new settlement; nothing else is recomputed. These optional world-rule fields live in the existing Data Model extension mechanism, so Data Model 0.1.3 does not advance. Immutable Profile 1.10-and-earlier checkpoints remain byte-unchanged; restoration runs the applicable profile chain through 1.11 before play.
+
+Profile 1.17 supersedes 1.11's generation-time duplicate settlement prospectively with Section 7.1's fixed-identity and Bearer-consumption settlement. The paragraph above remains migration history, not the current generation rule.
 
 Version 1.10 remains the additive streak-reward advance over frozen 1.9: every daily completion that raises the consecutive streak to a positive multiple of seven upgrades that completion's one Daily Random Box to two fully resolved rolls with one result chosen. It adds no second box and no special 28-day rule.
 
@@ -650,6 +656,34 @@ A skill enters the Bearer's ledger by one of four routes, and only these:
 3. **Earned by doing.** An approach the Bearer uses **successfully in at least three distinct dangerous scenes** may be **ratified by the System as a skill** — the System recognizes a proven practice and formalizes it. Ratification requires genuine, resolved, at-risk use each time; trivial repetition does not count, and the three scenes must be materially distinct, not one tactic replayed. On ratification the skill is authored into the ledger with a name, rank, cost, and effect at the time it is granted.
 4. **Stat milestone.** Crossing base Stat 30 or 50 awards the exact milestone skill listed in Section 4.4. The trigger, name, and effect are already authored; equipment cannot trigger it.
 
+### Instructional Item Identity and Binding
+
+A generated rune or skill book is a physical instructional item with a fixed identity. Complete live state records:
+
+```yaml
+name: <item name>
+teaches: <authored skill or mastery contribution>
+teaching_rank: <E-Rank–S-Rank, or none for mastery instruction>
+instruction_binding: bearer-only | unbound-awakened | class-bound:<class>
+provenance:
+  source_kind: <catalogue | daily-random-box | daily-premium | public-gate-boss | instant-dungeon | found-world | authored>
+  source_event: <EVT-id>
+status: unused
+```
+
+`instruction_binding` is immutable when the item changes hands. `bearer-only` instruction can be consumed only by the System's Bearer. `unbound-awakened` instruction can be consumed by the Bearer or any already-awakened recipient; it cannot cause an unawakened person to awaken. `class-bound:<class>` instruction can be consumed only by a holder of that authored class. Physical transfer is still possible when consumption is not: binding governs who can learn from the item, not who may carry it. `npc_consumable` is derived from binding plus the proposed recipient and is never stored as a second source of truth.
+
+Binding follows provenance. Ordinary catalogue and Daily Random Box runes/books are `bearer-only`. Daily Premium runes, public-Gate boss runes/books, instant-dungeon and Runic-Key instruction, and authored found/world loot are `unbound-awakened` unless explicitly authored otherwise. Mastery Runes and Mastery Books are `bearer-only`. Class-restricted instruction uses `class-bound:<class>`.
+
+### Consumption Settlement
+
+The item's `teaches` and `teaching_rank` are fixed at generation regardless of what its current or future holder knows. Transfer never rerolls an item.
+
+- **NPC or other non-Bearer awakened recipient.** If eligible by binding and the recipient does not know the technique, consumption teaches it. If the recipient knows it at a lower Rank, consumption upgrades it. If the recipient knows it at the same or a higher Rank, the item cannot benefit that recipient and remains intact; there is no reroll. An NPC's effective learned-technique Rank is `min(teaching_rank, recipient fixed Rank)`.
+- **Bearer.** If the Bearer does not know the technique, consumption teaches it. If the Bearer knows it at a lower Rank, consumption upgrades it while preserving mastery level and counters. If the Bearer knows it at the same or a higher Rank, the System rerolls on the item's originating skill table until the result is unknown or a genuine Rank upgrade. Every reroll is real. If no eligible result remains, the item becomes the matching **Mastery Rune** or **Mastery Book**, `bearer-only`; consuming it counts as one qualifying dangerous-scene contribution toward one chosen known skill's current mastery level.
+
+Duplicate protection is therefore a Bearer-consumption property, not item-generation filtering. A fixed item may be valuable instruction for an NPC even when the Bearer already knows its technique.
+
 ## 7.2 Skill Entries
 
 Every skill entry carries: **name · rank (E-Rank–S-Rank) · Mana cost · effect · successful uses · mastery progress**. Active skills cost Mana and are gated by it (Section 5.3); passive skills cost 0 and are always in effect. Mastery-tracked skills also carry their lifetime `qualifying_scenes_total`; stat-milestone passives explicitly carry `mastery_progress: none`.
@@ -746,7 +780,7 @@ A Daily Random Box is rolled only when the Bearer opens that pending reward. A s
 | 94–99 | A **skill book** (Section 11.3) — a fuller technique with a growth path. |
 | 100 | An **elixir** (+1 permanent to one stat, Section 12.5's lifetime cap applies). |
 
-The box is the Bearer's alone and cannot be traded before opening because it is pending System state, not an object. Once opened, the chosen contents are ordinary dimensional-inventory holdings. One completion creates exactly one box. The streak changes only that box's roll mode at positive multiples of seven; it never adds a second box or changes the table.
+Any rune or skill book produced by a Daily Random Box has `instruction_binding: bearer-only` (Section 7.1). The box is the Bearer's alone and cannot be traded before opening because it is pending System state, not an object. Once opened, the chosen contents are ordinary dimensional-inventory holdings. One completion creates exactly one box. The streak changes only that box's roll mode at positive multiples of seven; it never adds a second box or changes the table.
 
 ## 8.2 Inline System Notifications
 
@@ -1210,9 +1244,9 @@ A **skill book** (boss drop 91–97) is rarer than a rune and teaches its skill 
 
 Entries 1–8 are the eight starting skills of Section 7.3, taught here at the dropped Gate's Rank rather than at the E-Rank/D-Rank rune tier. **Rupture** and **Bulwark** (entries 9–10) are authored here and enter the ledger with their name, rank (the Gate Rank the book dropped from), Mana cost, and effect on the schedule of Section 7.2.
 
-**Known-skill settlement for dropped runes and books.** A candidate teaches at the drop's Rank, never below the skill's native Rank. If the Bearer does not know it, settlement is ordinary. If the Bearer knows it at a lower Rank, consuming the item raises that skill to the candidate Rank while preserving mastery level and qualifying-scene progress. If the Bearer knows it at the same or a higher Rank, reroll on the originating d8/d10 table until the result is unknown or a genuine Rank upgrade. If no eligible result remains, the drop becomes a **Mastery Rune** or **Mastery Book** matching its original category; consuming it counts as one qualifying dangerous-scene contribution toward one chosen known skill's current mastery level, exactly as Section 12.5's Mastery Rune. This is duplicate protection, not player selection: every required reroll is real.
+**Dropped instructional-item settlement.** A generated rune or book teaches the rolled technique at the drop's Rank, never below the skill's native Rank, and records `instruction_binding: unbound-awakened` plus its source event. That physical identity is fixed even if the Bearer already knows the technique. Recipient eligibility, NPC rank capping, upgrades, and the Bearer's consumption-time duplicate protection resolve under Section 7.1.
 
-**Class-restricted skill books** exist only as **authored named items with provenance** — usable by no one but the holder of their class, and entering play solely where a file authors them, exactly as the named-uniques rule (Section 11.5) requires.
+**Class-restricted skill books** exist only as **authored named items with provenance** — recorded as `class-bound:<class>`, usable by no one but the holder of their class, and entering play solely where a file authors them, exactly as the named-uniques rule (Section 11.5) requires.
 
 ## 11.4 Red-Gate and Anomaly Rank Bump
 
@@ -1394,7 +1428,7 @@ The unlimited catalogue is separate from the rotating **Daily Premium** stock be
 | **Appraisal scroll** | Consumed to reveal one unidentified item's complete Section 11.5 line, regardless of Intelligence; it does not identify hidden history or an unauthored effect. |
 | **Stabilization seal** | Applied to one Critical injury to suspend its untreated death risk for 24 hours; it restores no Health, clears no severity, and does not replace professional treatment. |
 
-**Skill runes.** A purchased rune teaches the selected Section 7.3 skill at its native rank and is consumed on use, exactly as a dropped rune (Section 7.1). The shop will not sell a rune for a skill the Bearer already knows; mastery and higher-rank versions are earned through use or loot, never bought here.
+**Skill runes.** A purchased rune teaches the selected Section 7.3 skill at its native rank and is consumed on use. Catalogue runes record `instruction_binding: bearer-only`; they may be carried by another person but cannot teach anyone except the Bearer. The shop will not sell a rune for a skill the Bearer already knows; mastery and higher-rank versions are earned through use or loot, never bought here. This refusal is catalogue selection, not the consumption-time duplicate protection used by loot and Premium instruction (Section 7.1).
 
 **Resale.** The shop repurchases an intact equipment item from its own catalogue for **25% of the table price, rounded down**, regardless of where it came from. It repurchases an unused shop consumable, rune, or key for **50% of its listed price, rounded down**. Named artifacts, commissioned gear, broken gear, mundane possessions, cores, and story objects have no automatic shop price; the shop refuses them unless a later authored line says otherwise. Resale withdraws the item permanently and credits gold in the same transaction.
 
@@ -1404,7 +1438,7 @@ At **06:00 local time every morning**, the shop replaces its Daily Premium tab w
 
 **Rotation state and timing.**
 
-- At 06:00 the Runtime makes the **twelve base real draws** below — five model-bag draws, one rune roll, one fabrication-series roll, and five independent Rank rolls — plus any explicitly required rune rerolls. It records the cycle date, fabrication series, all six complete offers, their prices, six purchased/unpurchased flags, each bag's remaining entries, and the previous draw for each bag-governed category as canonical Bearer state. A Runtime never selects the offers itself.
+- At 06:00 the Runtime makes the **twelve real draws** below — five model-bag draws, one rune roll, one fabrication-series roll, and five independent Rank rolls. It records the cycle date, fabrication series, all six complete offers, their prices, six purchased/unpurchased flags, each bag's remaining entries, and the previous draw for each bag-governed category as canonical Bearer state. A Runtime never selects the offers itself. No rune reroll occurs at rotation because instructional identity is fixed at generation (Section 7.1).
 - The stored remaining entries and previous draw are the sole operational source for the next model draws. Expired rotations in chronicles, changelogs, and historical checkpoints are provenance only and are never replayed during an ordinary rotation. If this compact state is missing, apply the required Profile 1.15 → 1.16 migration above once and persist its result before play continues.
 - Each offer has **quantity 1**. Buying it marks that category purchased and removes the row until the next rotation. Unbought offers expire at the next 06:00; they are not carried forward or discounted.
 - A later level-up does not re-Rank the current cycle. If the System first attaches after 06:00, it generates the current cycle immediately using the Bearer's then-current System Rank as each Rank roll's floor; it does not reconstruct earlier cycles.
@@ -1468,7 +1502,7 @@ Cap every result at **S**. The rolled offer Rank determines that offer's Stats, 
 | 5 | **Quicksilver Phial** | 750 g | Grants +1 modifier step on Agility-governed actions for one scene, within the net ±3 cap. |
 | 6 | **Clarity Phial** | 750 g | Grants +1 modifier step on Intelligence- or Perception-governed appraisal and detection for one scene, within the net ±3 cap. |
 
-**Premium Rune — roll d10** on Section 11.3's skill-book table. The candidate teaches at the current offer Rank, never below the skill's native E-Rank/D-Rank, and uses Section 11.3's known-skill settlement: an unknown skill or a genuine Rank upgrade is eligible; a same-or-lower duplicate rerolls. If no eligible result remains, the offer is a **Mastery Rune** instead: consuming it counts as one qualifying dangerous-scene contribution toward the chosen known skill's current mastery level (Section 7.4). Price by offer Rank:
+**Premium Rune — roll d10** on Section 11.3's skill-book table. The rune teaches the rolled technique at the current offer Rank, never below the skill's native E-Rank/D-Rank, and records `instruction_binding: unbound-awakened`. Its identity is fixed at rotation regardless of the Bearer's known skills. An eligible NPC may consume that original rune under Section 7.1. If the Bearer later consumes a same-or-lower duplicate, only then does the System apply Section 7.1's reroll and Mastery Rune fallback. Price by offer Rank:
 
 | Rank | E-Rank | D-Rank | C-Rank | B-Rank | A-Rank | S-Rank |
 |---|---:|---:|---:|---:|---:|---:|
@@ -1487,7 +1521,7 @@ Cap every result at **S**. The rolled offer Rank determines that offer's Stats, 
 
 **Off-shop note — the gray sleep.** The wider world's restorative-alchemy market is separate from this Bearer-only shop (`240_RESOURCES.md`), but its one authored price anchors to the same scale: **arresting** chronic mana saturation — *the gray sleep* (Bible Section 5) — runs about a **greater healing potion's** worth of high-Rank restorative a month (≈400 g-equivalent shop-side; on the licensed medical market an **A crystal-scale sum** across a year — tens of thousands of USD, Section 12.1), while a **full reversal is an elixir-Rank intervention** priced accordingly, which is why only guilds and governments pay for a cure.
 
-**Withdrawn goods are ordinary objects.** Once a consumable or item leaves the shop into the world it is an **ordinary physical object** — usable by anyone, transferable to anyone, and traceable to anyone who holds it. The shop's origin neither clings to it nor conceals it: a System-shop healing potion works in an ally's hand exactly as in the Bearer's, and the same potion turning up in a pawnshop, an evidence locker, or a rival's kit is a physical thing with no licensed provenance and no market record — an **exposure thread** (Section 19) leading back toward a Bearer the world cannot otherwise see.
+**Withdrawn goods are ordinary objects.** Once a consumable or item leaves the shop into the world it is an **ordinary physical object** — transferable to anyone and traceable to anyone who holds it. Ordinary goods are usable by anyone: a System-shop healing potion works in an ally's hand exactly as in the Bearer's. Instructional items are the narrow exception: their immutable Section 7.1 binding may prevent the holder from consuming them, while leaving them physically transferable. Any withdrawn good turning up in a pawnshop, an evidence locker, or a rival's kit is a physical thing with no licensed provenance and no market record — an **exposure thread** (Section 19) leading back toward a Bearer the world cannot otherwise see.
 
 ## 12.6 Starting Funds by Background
 
@@ -1627,6 +1661,8 @@ Most awakened manifest a **signature ability** at awakening (Bible Sections 2–
 
 Signatures are innate and singular: one per awakening, fixed for life, its expression growing only as its owner's measured rank allows. Runes and skill books (Section 11) add *learned* techniques on top — rare enough that a hunter with two tricks is notable and a hunter with three is a story. The Bearer is the sole exception to all of it: he manifested nothing at awakening — the notorious blank card of the weakest E-Rank — and everything he gains, the System governs (Section 7). In a world where every hunter is born as exactly one power, the man who can *accumulate* them is a walking impossibility, and hiding that is the whole game (Section 19).
 
+An NPC learned technique resolves at its effective technique Rank from Section 7.1, never above the NPC's fixed Rank. It does not create Stats, XP, a Mana ledger, Bearer-style mastery, or use counters. An active learned technique may be used **once per dangerous scene** unless that authored technique explicitly supplies a narrower limit; a passive learned technique applies continuously. Attack and healing magnitude use the effective technique Rank; modifier steps, reductions, duration, and other utility use the authored technique effect. Learned **Mend** grants its heal but not the full innate-mender package of three field touches and one post-fight injury-tier reduction (Section 13.5). Learned **Stone Skin** or **Bulwark** does not make the holder a party warden; only an explicitly authored held formation barrier supplies Section 13.5's warden benefit.
+
 ---
 
 # 14. The System's Behavioral Contract
@@ -1723,7 +1759,7 @@ The System's **first contact** with a new Bearer is a fixed message sequence —
 
 1. **Attachment notice** — the initializing handshake and host designation, fired the instant the System attaches.
 2. **Status-window grant** — the STATUS panel (Section 15.1) is granted and rendered once, opening at level 1 with the creation-array Stats and the Health/Mana maxima derived from its Vitality and Intelligence.
-3. **First Daily Premium cycle** — initialize Section 12.5's five model bags, make its twelve base real draws (plus any required rune rerolls), and fire the rotation line; this is the current 06:00-to-06:00 cycle, not an extra cycle.
+3. **First Daily Premium cycle** — initialize Section 12.5's five model bags, make its twelve real draws, and fire the rotation line; this is the current 06:00-to-06:00 cycle, not an extra cycle. Rune duplicate protection occurs only if the Bearer later consumes the fixed offer (Section 7.1).
 4. **First daily quest** — the standing daily quest (Section 8.1) issues at the **next 06:00 local** after attachment. It expires at the immediately following local midnight; later quests repeat on the same 06:00-to-00:00 calendar-day schedule.
 
 The worked onset block:
@@ -1882,6 +1918,7 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 - **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full skill row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` — or `<name> · Passive · <effect>` for a passive. The next indented row renders `Uses <n> · Progress <n>/3`; no-mastery milestone passives render `Progress —`.
 - **Quest capacity and objectives are explicit.** `Non-Daily Slots <used>/<capacity>` is the first quest row. The quest name and status occupy the next row; objectives, progress, reward, and the local or causal deadline render beneath it with four-space indentation. Unrevealed Hidden quests are the sole exception: they render only `[HIDDEN] ???` until Section 8.4.3 reveals them.
 - **Equipment and long inventory entries separate identity from mechanics.** The slot, item name, and `[Rank]` occupy the first row. Bonuses, power/protection, effects, and condition occupy one or more continuation rows aligned beneath the item name. This rule leaves room for prefixes, suffixes, and durability without widening the frame.
+- **Instructional items render their eligibility from canonical binding.** `/system inventory` and `/system shop` show `UNBOUND · NPC-ELIGIBLE` for `unbound-awakened` instruction and `BEARER-BOUND` for `bearer-only` instruction; a class-bound item shows `CLASS-BOUND · <class>`. The complete item line retains `teaches`, `teaching_rank`, binding, provenance source kind/event, and unused status. When transferred to an NPC, move that complete line to the NPC's holdings without altering binding. On consumption, remove the item from live holdings and record the recipient's learned or upgraded technique plus the settlement event.
 - Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, equipment slots from Section 12.9, inventory from the campaign inventory ledger, and gold from the shop balance. Effective stats and physical reduction are derived from the equipped lines. Nothing is invented at render.
 - **`Pending Rewards`** lists each unclaimed daily Ability Point reward, Status Recovery, and Daily Random Box separately (Section 3.9), and reads `none` when empty. Level-ups never appear here because they settle immediately.
 - The window grows with the Bearer: an empty section still renders its header with `none` beneath it (a fresh Bearer shows `SKILLS — none`, `TITLES — none`), so the shape is constant and the Bearer always sees the whole of himself.

@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-27 — Gatefall Profile 1.17: instructional binding and recipient settlement
+
+Gatefall Profile **1.16 → 1.17** gives every rune and skill book a fixed generated identity and immutable provenance-derived recipient binding. Ordinary catalogue and Daily Random Box instruction is Bearer-only; Daily Premium and authored world loot are unbound for eligible awakened recipients unless explicitly restricted. NPC consumption can learn or upgrade the original technique, capped at the NPC's fixed Rank, without creating Bearer-style Stats, XP, Mana, mastery, or innate party-role packages.
+
+Duplicate protection moves from generation to **Bearer consumption**: an NPC can receive the original fixed technique even when the Bearer already knows it, while a same-or-higher Bearer duplicate rerolls on its originating table only when consumed and falls back to Bearer-bound mastery instruction only if no eligible result remains.
+
+The advance is frozen and classified **migrating** because live unconsumed instruction and offers gain binding/provenance fields. Pendragon's current Silent Step [C-Rank] Premium offer retains its exact roll and becomes `unbound-awakened`; historical consumption and resolved rerolls remain untouched. The existing World Rule Profile extension mechanism carries the fields, so Engine 0.2.0 and Data Model 0.1.4 do not advance.
+
 ## 2026-07-27 — Skill-counter staleness: a resident obligation and a mechanical gate
 
 Gatefall play produced the same defect twice: a resolved Gate clear whose skill use-counters and mastery progress were never advanced, while every other field on the same character sheet — Mana, XP, condition, equipment — was written correctly. Both gates passed each time. The second instance survived two checkpoints and surfaced only because the player asked.

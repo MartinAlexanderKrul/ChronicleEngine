@@ -13,9 +13,9 @@ canonical_record: REC-000074
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000127
-  game_date: "2026-08-04 06:00 -05:00; correction, no fictional time consumed"
-  real_date: "2026-07-27T12:05:00+02:00"
+  source: EVT-000128
+  game_date: "2026-08-04 06:00 -05:00; profile migration, no fictional time consumed"
+  real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -66,7 +66,8 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.16"
+    profile_version: "1.17"
+    profile_instruction_binding_event: EVT-000128
     profile_premium_persistence_event: EVT-000125
     profile_party_exception_event: EVT-000117
     profile_layout_event: EVT-000086
@@ -153,7 +154,7 @@ canonical_state:
       - Armor: **Adaptive Titan Hands [D-Rank]** · hands · Strength +4 total (D-Rank armor budget 2 + 2 premium) · physical reduction 8% (base 5% + premium 3pp) · 540 g
       - Accessory: **Ascendant Mindspun Loop [E-Rank]** · accessory · Intelligence +4 total (E-Rank accessory budget 1 + 3 premium) · 160 g
       - Consumable: **Clarity Phial** · +1 modifier step on Intelligence- or Perception-governed appraisal and detection for one scene, within the net ±3 cap · 750 g
-      - Rune: Premium Rune — teaches **Silent Step [C-Rank]** · Mana 3 · +1 modifier step on stealth and unseen-approach actions for the scene · 50,000 g
+      - Rune: Premium Rune — teaches **Silent Step [C-Rank]** · Mana 3 · +1 modifier step on stealth and unseen-approach actions for the scene · **UNBOUND · NPC-ELIGIBLE** · 50,000 g · `teaches: Silent Step` · `teaching_rank: C-Rank` · `instruction_binding: unbound-awakened` · `provenance.source_kind: daily-premium` · `provenance.source_event: EVT-000126` · `status: unused`
       - Key: **Crystal Key [D-Rank]** · standard D instant dungeon; its mined deposit roll is treated as 18 before the Rank multiplier · 4,500 g
 
       All six live until the 2026-08-05 06:00 rotation. Historical, superseded: **ROTATED 2026-08-03 06:00 America/Chicago -> 2026-08-04 06:00** (`EVT-000118`), fabrication series **Verdant** (d8 5). Opened at rotation and **1 of 6 purchased** — the Runic Key [E-Rank] for 1,000 g, funded by selling six Lesser Healing Potions and the Quickstep Charm. The other five stay live until the 2026-08-04 rotation: Farline Longshot [D-Rank] (900 g), Adaptive Bastion Torso [E-Rank] (120 g, a duplicate of the worn piece), Ascendant Hunter's Band [D-Rank] (720 g, a duplicate of an equipped Band), Sovereign Panacea (600 g), and a Premium Rune teaching Sprint [E-Rank] (2,500 g, unknown skill, unaffordable at 12 g). Rank rolls against System Rank E: weapon d100 79 -> D-Rank, armor d100 25 -> E-Rank, accessory d100 56 -> D-Rank, rune d100 12 -> E-Rank, key d100 5 -> E-Rank; rune skill d10 1 -> Sprint (unknown, no reroll required). Model-bag draws: weapon -> Farline Longshot, armor -> torso/Bastion, accessory -> Hunter's Band, consumable -> Sovereign Panacea, key -> Runic Key. **The 2026-08-02 Umbral cycle expired 0/6**, taking with it the Adaptive Titan Torso [C-Rank] he had been 1,480 g short of. Historical, superseded: **ROTATED 2026-08-02 06:00 America/Chicago → 2026-08-03 06:00** (`EVT-000111`), fabrication series **Umbral** (d8 7). The tab was opened on the afternoon of 2026-08-02 (`EVT-000114`) and **nothing was bought from it** — the only rune purchases that day came off the standard catalogue instead, because this cycle's rune Rank rolled E and priced an identical E-Rank teaching at 2,500 g against the catalogue's 1,000 g. All six offers stay live until the 2026-08-03 06:00 rotation. **Two full cycles have now lapsed unbought:** the 2026-08-01 cycle (Cobalt series) expired with all six offers unpurchased, including a Premium Rune that would have raised the already-known Rupture from E-Rank to **C-Rank** at 50,000 g — the single largest capability offer the tab has ever produced, and 47,745 g beyond his balance at the time. Expired offers are not carried forward or discounted."
@@ -182,7 +183,7 @@ canonical_state:
         armor: "Adaptive Titan Torso [C-Rank] · torso · Strength +5 total (C-Rank armor budget 3 + 2 premium) · physical reduction 11% · 2,400 g · unpurchased — **1,480 g beyond the current balance.** Would supersede the equipped Adaptive Bastion Torso [E-Rank], trading Vitality +3 for Strength +5 and 6% reduction for 11%; the swap would drop effective Vitality 29→26 and maximum Health 116→104 while raising total physical reduction from ≈23% to ≈27%"
         accessory: "Ascendant Heartward Sigil [D-Rank] · accessory · Vitality +5 total (D-Rank accessory budget 2 + 3 premium) · 720 g · unpurchased"
         consumable: "Quicksilver Phial · grants +1 modifier step on Agility-governed actions for one scene, within the net ±3 cap · 750 g · unpurchased"
-        rune: "Premium Rune — teaches **Keen Sense [E-Rank]** · Mana 2 · +1 modifier step on detection for the scene · 2,500 g · unpurchased and now worthless to him: the offer Rank rolled E, so it teaches nothing the identical 1,000 g standard-catalogue rune did not, and Keen Sense was learned from that cheaper rune the same sitting (`EVT-000114`). Buying it now would hit Section 11.3's known-skill settlement and reroll into an unrelated skill rather than upgrading anything"
+        rune: "Premium Rune — teaches **Keen Sense [E-Rank]** · Mana 2 · +1 modifier step on detection for the scene · 2,500 g · unpurchased and now worthless to him: the offer Rank rolled E, so it teaches nothing the identical 1,000 g standard-catalogue rune did not, and Keen Sense was learned from that cheaper rune the same sitting (`EVT-000114`). Had it remained live and been bought, Bearer consumption would have invoked Section 7.1's duplicate protection; its historical generated identity remains Keen Sense"
         key: "Core Key [B-Rank] · standard B instant dungeon; its boss drops one additional same-Rank core · 90,000 g · unpurchased, and unusable even if affordable — a B-Rank instance runs three Ranks above his System Rank"
       previous_cycle: "**2026-08-01, Cobalt series — expired 0/6 at the 2026-08-02 06:00 rotation (`EVT-000108`, `EVT-000111`).** Offers as rolled: Spellthread Focus [E-Rank] (200 g); Adaptive Watcher Legs [D-Rank] (540 g); Ascendant Quickstep Charm [E-Rank] (160 g); Restoration Draught (900 g); **Premium Rune raising the known Rupture from E-Rank to C-Rank (50,000 g)**; Bounty Key [D-Rank] (4,500 g). The rune is recorded because it is the largest single capability the tab has offered — it would have moved Rupture's baseline from 10 to 62 while preserving mastery — and it lapsed purely on price."
       historical_cycle_2026_07_31: "Rank rolls: weapon d100=97→B-Rank, armor d100=24→E-Rank, accessory d100=35→E-Rank, rune d100=28→E-Rank, key d100=20→E-Rank. Models: Ghost Quickknife; Bastion feet; Seer's Lens; Ironblood Phial; rune d10=4 (Stone Skin, known → rerolled) → d10=5 (Flash Step); Armory Key. **1/6 purchased** — the Ghost Quickknife [B-Rank] bought and equipped for 18,000 g (`EVT-000096`); the other five expired at the 2026-08-01 rotation."

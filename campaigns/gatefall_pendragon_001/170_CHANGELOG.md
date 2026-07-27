@@ -13,9 +13,9 @@ canonical_record: REC-000080
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000127
-  game_date: "2026-08-04 06:00 -05:00; correction, no fictional time consumed"
-  real_date: "2026-07-27T12:05:00+02:00"
+  source: EVT-000128
+  game_date: "2026-08-04 06:00 -05:00; profile migration, no fictional time consumed"
+  real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -597,3 +597,12 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **No mastery-level threshold crossed; no resolved roll, Gate outcome, XP, or item changes.** `900_CHECKPOINT_0028` remains immutable and uncorrected, retained as historical evidence — this is a live-state correction, not a rewrite of a checkpoint.
 - **Ledgers updated:** `100` (`skills_known` — Rupture, Flash Step, Keen Sense, Dagger Mastery counters and provenance), `160` (`EVT-000127`), `170`. `110`, `120`, `130`, `140`, `180` unaffected.
 - **Repository allocation:** `EVT-000127`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.16 → 1.17 instructional binding and recipient settlement adopted (`EVT-000128`; no fictional time consumed).**
+
+- **Frozen migrating advance.** Every rune and skill book now records a fixed taught technique, teaching Rank, immutable instruction binding, provenance source kind/event, and unused status. Instruction identity is fixed at generation; transfer never rerolls it.
+- **Binding by provenance.** Ordinary catalogue and Daily Random Box instruction is `bearer-only`; Daily Premium, public-Gate boss, instant-dungeon, Runic-Key, and future found/world instruction is `unbound-awakened` unless explicitly authored otherwise; Mastery instruction is `bearer-only`; authored class instruction is `class-bound:<class>`.
+- **Recipient settlement.** An eligible awakened NPC learns the original unknown technique or upgrades a lower version, capped at the NPC's fixed Rank. A same-or-higher known technique leaves the item intact with no reroll. NPC learned techniques create no Stats, XP, Mana ledger, mastery, use counters, or innate mender/warden role package. Bearer consumption alone retains duplicate rerolls and the Mastery fallback.
+- **Live migration.** No held unconsumed rune or skill book exists. The current Cobalt Premium Rune remains **Silent Step [C-Rank]**, 50,000 g, unpurchased; it is now `unbound-awakened`, provenance `daily-premium` / `EVT-000126`, status `unused`, rendered **UNBOUND · NPC-ELIGIBLE**. No identity or Rank reroll occurred. Historical consumed instruction and resolved rerolls remain untouched.
+- **Versions.** `system_state.profile_version` 1.16 → 1.17. Engine 0.2.0 and Data Model 0.1.4 remain unchanged. Checkpoint 0029 stays immutable at Profile 1.16 and runs the migration through 1.17 on restore.
+- **Repository allocation:** `EVT-000128`; no entity, record, or relationship identifier minted.

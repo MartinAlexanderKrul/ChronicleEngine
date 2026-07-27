@@ -13,9 +13,9 @@ canonical_record: REC-000079
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000127
-  game_date: "2026-08-04 06:00 -05:00; correction, no fictional time consumed"
-  real_date: "2026-07-27T12:05:00+02:00"
+  source: EVT-000128
+  game_date: "2026-08-04 06:00 -05:00; profile migration, no fictional time consumed"
+  real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -88,6 +88,7 @@ subjects:
   - EVT-000125
   - EVT-000126
   - EVT-000127
+  - EVT-000128
 ```
 
 ---
@@ -2177,4 +2178,32 @@ description: "Audit, raised by direct player question, found that the Cicero Gat
 - **Dagger Mastery** — materially applied twice: the corridor's two ordinary Quickknife strikes clearing isolated beasts (d100 97 natural legendary; d100 73, legendary), both resolving under the passive's ×0.85 chassis multiplier. Uses 0→**2**, qualifying scenes 0→**1** (first material application), mastery progress **1/3 toward Practiced**.
 
 **No mastery-level threshold crossed.** No resolved roll, Gate outcome, XP total, gold, or item changes — every affected roll had already resolved under the correct in-the-moment mechanics; only the ledger's bookkeeping was stale. `900_CHECKPOINT_0028` remains immutable and byte-unchanged, carrying the uncorrected counts as historical evidence; live state and any subsequent checkpoint carry the correction forward."
+```
+
+---
+
+## EVT-000128 - Profile 1.17: Instructional Binding and Recipient Settlement
+
+```yaml
+id: EVT-000128
+canonical_record: REC-000079
+schema_version: "0.1.4"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-04 06:00 -05:00; profile migration, no fictional time consumed"
+  real_date: "2026-07-27"
+type: Event
+kind: profile-migration
+importance: major
+game_date: "2026-08-04 06:00 -05:00; profile migration, no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.17, a migrating instructional-item binding and recipient-consumption advance over 1.16.
+
+Generation now fixes a rune or skill book's physical identity regardless of the Bearer's known skills. Ordinary catalogue and Daily Random Box instruction is Bearer-bound; Daily Premium, public-Gate boss, instant-dungeon, Runic-Key, and future found/world instruction is unbound for awakened recipients unless explicitly authored otherwise; Mastery instruction remains Bearer-bound; class instruction records its class. Eligible NPCs may learn or upgrade the original fixed technique, capped at their own fixed Rank, but receive no Stats, XP, Mana ledger, mastery track, or innate role package. Only Bearer consumption applies duplicate rerolls and the Mastery fallback.
+
+Live migration found no held, unconsumed rune or skill book. The current Cobalt Daily Premium offer remains exactly the previously rolled **Premium Rune teaching Silent Step [C-Rank]** at 50,000 g; it receives `instruction_binding: unbound-awakened`, provenance `daily-premium` / `EVT-000126`, unused status, and the rendered label **UNBOUND · NPC-ELIGIBLE**. No roll or item identity was changed, and the offer was not rerolled. All historical consumed instruction and previously resolved rerolls — including the Stone Skin → Flash Step result — remain canon.
+
+No fictional time, gold, item ownership, Stat, pool, skill, mastery counter, quest, purchase flag, or resolved outcome changed. Engine 0.2.0 and Data Model 0.1.4 remain unchanged. Immutable checkpoints remain byte-unchanged and run the applicable profile chain through 1.17 at readiness."
 ```

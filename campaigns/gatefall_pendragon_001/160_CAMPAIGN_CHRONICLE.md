@@ -13,8 +13,8 @@ canonical_record: REC-000079
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000128
-  game_date: "2026-08-04 06:00 -05:00; profile migration, no fictional time consumed"
+  source: EVT-000129
+  game_date: "2026-08-04 06:00 -05:00; owner ruling and skill ratification, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -89,6 +89,7 @@ subjects:
   - EVT-000126
   - EVT-000127
   - EVT-000128
+  - EVT-000129
 ```
 
 ---
@@ -2206,4 +2207,34 @@ Generation now fixes a rune or skill book's physical identity regardless of the 
 Live migration found no held, unconsumed rune or skill book. The current Cobalt Daily Premium offer remains exactly the previously rolled **Premium Rune teaching Silent Step [C-Rank]** at 50,000 g; it receives `instruction_binding: unbound-awakened`, provenance `daily-premium` / `EVT-000126`, unused status, and the rendered label **UNBOUND · NPC-ELIGIBLE**. No roll or item identity was changed, and the offer was not rerolled. All historical consumed instruction and previously resolved rerolls — including the Stone Skin → Flash Step result — remain canon.
 
 No fictional time, gold, item ownership, Stat, pool, skill, mastery counter, quest, purchase flag, or resolved outcome changed. Engine 0.2.0 and Data Model 0.1.4 remain unchanged. Immutable checkpoints remain byte-unchanged and run the applicable profile chain through 1.17 at readiness."
+```
+
+---
+
+## EVT-000129 - Profile 1.18: Dual-Wield Action Packages and Twin Fang
+
+```yaml
+id: EVT-000129
+canonical_record: REC-000079
+schema_version: "0.1.4"
+status: active
+provenance:
+  source: owner-ruling
+  game_date: "2026-08-04 06:00 -05:00; no fictional time consumed"
+  real_date: "2026-07-27"
+type: Event
+kind: system-profile-adoption
+importance: structural
+game_date: "2026-08-04 06:00 -05:00; no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.18, an additive dual-wield action-package and earned-technique advance over Profile 1.17.
+
+**Owner ruling — offensive packages.** One declared offensive action selects an ordinary strike, an ordinary weapon-plus-active-skill combo, a split dual strike against two different targets, or a named multi-strike. Only one offensive active skill may occupy the action unless a named capability says otherwise. Setup, mobility, defensive, reaction, and sustained skills remain compatible when their own text permits. This preserves Alexander's established Flash Step follow-ups, dagger-plus-Rupture combinations, and the Frozen Gallery's free two-target dual strike while closing unlimited same-target attack declarations.
+
+**Twin Fang ratified.** Alexander's successful dual-wield practice across three distinct dangerous scenes — Ashfield (`EVT-000071`), the Frozen Gallery (`EVT-000101`), and Cicero (`EVT-000120`) — satisfies Section 7.1's earned-by-doing threshold. The System grants **Twin Fang [E-Rank] ★☆☆☆☆ Novice · Mana 6**: with two equipped Quickknives, one ordinary strike against a target may be followed immediately by a separately rolled strike from the other Quickknife against that same target. Each strike uses only its own weapon power. Twin Fang occupies the action's offensive active-skill position and cannot combine with Rupture.
+
+**Mastery.** The skill-enabled second strike begins at ×1.00 and follows the damage-skill mastery schedule ×1.00/×1.15/×1.30/×1.45/×1.60; Mana follows 6/5/5/4/4. A successful use requires the second strike to land and materially contribute. Pre-ratification evidence grants the skill but does not backfill successful uses or mastery: Twin Fang begins at uses 0, qualifying scenes 0, progress 0/3.
+
+No fictional time, Mana, Health, XP, gold, item, quest, or resolved outcome changes. Engine 0.2.0 and Data Model 0.1.4 remain unchanged. Checkpoint 0029 stays immutable at Profile 1.16 and runs the applicable compatibility chain through 1.18 on restore."
 ```

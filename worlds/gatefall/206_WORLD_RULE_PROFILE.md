@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.17
+# Gatefall — World Rule Profile 1.18
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.17
+**Profile Version:** 1.18
 **Engine Compatibility:** 0.2.0; Data Model 0.1.4
 **Status:** Active
-**Compatibility Status:** frozen at version 1.17 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.17 is a **migrating instructional-item binding and consumption-settlement advance** over frozen 1.16: every rune or skill book now has an immutable recipient binding fixed by provenance, its taught technique is fixed when the physical item is generated, and duplicate protection occurs only when the Bearer consumes an eligible item.
+**Compatibility Status:** frozen at version 1.18 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.18 is an **additive dual-wield action-package and earned-technique advance** over frozen 1.17: Section 6.2 closes the number of offensive resolutions one declared action may contain while preserving authored combinations, and Section 7.2 authors **Twin Fang [E-Rank]** as a same-target two-Quickknife technique.
+
+**1.17 → 1.18 compatibility treatment.** Preserve every resolved roll, damage result, Mana spend, skill and mastery value, item, pool, reward, quest, currency balance, and fictional outcome. Apply Section 6.2's offensive-action packages prospectively; they do not reopen or reinterpret earlier compressed sweeps, dagger-and-Rupture combinations, Flash Step follow-ups, or the Frozen Gallery's two-target dual strike. A Bearer gains no skill merely by restoring under 1.18: an earned-by-doing grant still requires Section 7.1's three-scene evidence and a recorded ratification. Alexander Pendragon's qualifying dual-wield practice is ratified separately at `EVT-000129`, granting Twin Fang at Novice with zero post-ratification uses or mastery progress. This treatment consumes no fictional time. Immutable Profile 1.17-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.18 at readiness.
+
+Version 1.17 remains the migrating instructional-item binding and consumption-settlement advance over frozen 1.16: every rune or skill book has an immutable recipient binding fixed by provenance, its taught technique is fixed when the physical item is generated, and duplicate protection occurs only when the Bearer consumes an eligible item.
 
 **Required 1.16 → 1.17 migration.** Preserve every resolved roll, reroll, learned skill, mastery value, consumed item, current offer identity and Rank, purchase flag, currency balance, and all other campaign state. Add Section 7.1's complete instructional-item fields to every live unconsumed rune, skill book, and instructional offer: derive `instruction_binding` from authored provenance, never from the current holder or intended recipient; preserve the generated `teaches` and `teaching_rank` without rerolling them. Ordinary catalogue and Daily Random Box instruction is `bearer-only`; Daily Premium instruction, public-Gate boss loot, instant-dungeon or Runic-Key loot, and future authored found/world loot are `unbound-awakened` unless their source explicitly authors another binding; Mastery Runes and Mastery Books are `bearer-only`; authored class instruction is `class-bound:<class>`. If provenance is insufficient to determine binding, mark the item unresolved and obtain an owner ruling — do not guess. Previously resolved generation-time duplicate rerolls remain canon and are not reopened. This migration consumes no fictional time. Record adoption in mutable live state; immutable Profile 1.16-and-earlier checkpoints remain byte-unchanged and run the applicable migration chain through 1.17 at readiness.
 
@@ -532,6 +536,23 @@ Bearer_physical_damage = (effective Strength + weapon_power)
 
 An unarmed strike has `weapon_power 0` and chassis ×0.5. A wielded weapon uses only that weapon's power; dual-wielding does not add two weapon-power values to one strike unless a named skill explicitly says it does. Agility normally governs whether the weapon lands (§4.3); Strength governs how hard the landed physical strike hits.
 
+### Offensive Action Packages
+
+One declared action in an exchange selects exactly one offensive package:
+
+| Package | Resolutions | Mana |
+|---|---|---:|
+| **Ordinary strike** | One weapon against one target; one roll. | 0 |
+| **Ordinary combo** | One ordinary weapon strike plus one offensive active skill; resolve each component separately. | The skill's cost |
+| **Split dual strike** | While dual-wielding, one strike with each weapon against two different targets; one roll per target. | 0 |
+| **Named multi-strike** | The resolutions explicitly supplied by a named skill, such as Twin Fang. | The skill's cost |
+
+An **offensive active skill** is an active skill that directly deals damage or supplies an additional attack resolution. A declared action may contain at most one offensive active skill unless a named capability explicitly says otherwise. A split dual strike is already a free multi-resolution package and cannot add an offensive active skill. Setup, mobility, defensive, reaction, and sustained skills may accompany a package when their own text permits; Flash Step therefore remains compatible with an ordinary strike, an ordinary dagger-and-Rupture combo, or Twin Fang because it explicitly grants a follow-up action.
+
+Narrating a flurry, several cuts, or repeated blows does not create further attack rolls. Earlier Gatefall precedents remain legal under these packages: a dagger followed by Rupture is an ordinary combo; Flash Step may set up that combo; two daggers divided between two targets are a split dual strike. Twin Fang and Rupture cannot occupy the same declared action because both are offensive active skills.
+
+When Flash Step's immediate follow-up is a named multi-strike, its modifier step applies to every roll belonging to that one follow-up action. An item effect limited to the **first attack**, including the Ghost Quickknife's unseen-opening effect, still applies only to the first qualifying strike. Enemy actions already in motion resolve within the exchange normally; an action package creates no fresh enemy action between its component resolutions.
+
 For a Bearer damage or healing skill:
 
 ```text
@@ -695,6 +716,29 @@ For a Bearer damage or healing skill, rank supplies its base magnitude:
 | Rank baseline | 10 | 25 | 62 | 150 | 375 | 1,000 |
 
 The table preserves the fixed-Rank standard-hit scale while decoupling it from the Bearer's level. A-Rank Channeling Focus adds its weapon power to this baseline (Section 11.5). The skill's own multiplier and mastery then apply under Section 6.2. Utility effects remain expressed as a modifier step, duration, reduction, resource change, or stated capability.
+
+### Earned Weapon Technique — Twin Fang
+
+**Twin Fang [E-Rank]** is an earned-by-doing weapon technique under Section 7.1.
+
+| Skill | Rank | Mana cost | Effect |
+|---|---|---:|---|
+| **Twin Fang** | E-Rank | 6 | Requires two equipped Quickknives. After one ordinary Quickknife strike against a single target, immediately resolve a separate strike against that same target with the other Quickknife. Each strike has its own d100 roll and physical-damage calculation and uses only its own weapon power. Twin Fang is the action's offensive active skill and cannot combine with Rupture or another offensive active skill. |
+
+Mana is paid once when Twin Fang is activated, whether either strike lands or misses. Resolve the strikes in the declared order as components of one action; already-moving enemy reactions remain live under Section 6.2. The first strike is the ordinary opening and gains no Twin Fang mastery multiplier. The second, skill-enabled strike resolves as:
+
+```text
+Twin_Fang_follow_up =
+    (effective Strength + second_weapon_power)
+  × second_weapon_chassis
+  × Twin_Fang_mastery_multiplier
+  × result_multiplier
+  × (1 − total_reduction)
+```
+
+Dagger Mastery modifies each Quickknife chassis normally. Twin Fang's mastery multiplier follows the damage-skill schedule in Section 7.4: **×1.00 / ×1.15 / ×1.30 / ×1.45 / ×1.60** from Novice through Master. Its Mana cost follows the same section's −10%-per-level rule: **6 / 5 / 5 / 4 / 4**. A successful use is recorded only when the skill-enabled second strike lands and materially contributes; one continuous dangerous scene contributes at most one mastery point.
+
+Worked E-Rank baseline, before reduction: at effective Strength 10, an ordinary E-Rank Quickknife deals `(10 + 2) × 0.75 = 9` on a standard success. Novice Twin Fang deals `9 + 9 = 18` for 6 Mana. One ordinary dagger followed by Novice E-Rank Rupture deals `9 + (10 × 2.0) = 29` for Rupture's 12 Mana. Twin Fang is therefore the lower-cost sustained physical combination; Rupture is the higher-cost skill-rank burst.
 
 ## 7.3 Starting Skill Table
 

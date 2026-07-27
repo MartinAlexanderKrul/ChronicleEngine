@@ -13,8 +13,8 @@ canonical_record: REC-000080
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000128
-  game_date: "2026-08-04 06:00 -05:00; profile migration, no fictional time consumed"
+  source: EVT-000129
+  game_date: "2026-08-04 06:00 -05:00; owner ruling and skill ratification, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -606,3 +606,13 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **Live migration.** No held unconsumed rune or skill book exists. The current Cobalt Premium Rune remains **Silent Step [C-Rank]**, 50,000 g, unpurchased; it is now `unbound-awakened`, provenance `daily-premium` / `EVT-000126`, status `unused`, rendered **UNBOUND · NPC-ELIGIBLE**. No identity or Rank reroll occurred. Historical consumed instruction and resolved rerolls remain untouched.
 - **Versions.** `system_state.profile_version` 1.16 → 1.17. Engine 0.2.0 and Data Model 0.1.4 remain unchanged. Checkpoint 0029 stays immutable at Profile 1.16 and runs the migration through 1.17 on restore.
 - **Repository allocation:** `EVT-000128`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.17 → 1.18 dual-wield action packages and Twin Fang adopted (`EVT-000129`; no fictional time consumed).**
+
+- **Owner ruling — offensive packages.** One declared offensive action now selects an ordinary strike, ordinary weapon-plus-active-skill combo, split dual strike against two different targets, or named multi-strike. One offensive active skill may occupy the action unless a named capability overrides it. Flash Step setup, dagger-plus-Rupture, and the Frozen Gallery's two-target dual strike remain legal; unlimited same-target free attacks do not.
+- **Twin Fang earned.** Alexander's successful dual-wield practice in Ashfield (`EVT-000071`), the Frozen Gallery (`EVT-000101`), and Cicero (`EVT-000120`) satisfies Section 7.1. Granted **Twin Fang [E-Rank] ★☆☆☆☆ Novice · Mana 6**: one ordinary Quickknife strike followed by a separately rolled same-target strike with the other Quickknife. Each weapon uses only its own power; Twin Fang cannot combine with Rupture.
+- **Mastery initialized.** Skill-enabled second-strike multiplier ×1.00; successful uses 0; qualifying scenes 0; progress 0/3 toward Practiced. Pre-ratification practice proves acquisition but does not backfill post-acquisition counters. Mastery multipliers are ×1.00/×1.15/×1.30/×1.45/×1.60 and Mana costs 6/5/5/4/4.
+- **No retroactive resolution.** No prior roll, damage result, Mana spend, skill counter, XP, pool, item, quest, or fictional outcome changed. Checkpoint 0029 remains immutable at Profile 1.16 and restores through the compatibility chain to 1.18.
+- **Versions.** `system_state.profile_version` 1.17 → 1.18. Engine 0.2.0 and Data Model 0.1.4 unchanged.
+- **Ledgers updated:** Profile 1.18; campaign startup; character sheet; Chronicle; changelog; Current State; world README; worlds/campaigns index; identifier registry.
+- **Repository allocation:** `EVT-000129`; no entity, record, or relationship identifier minted.

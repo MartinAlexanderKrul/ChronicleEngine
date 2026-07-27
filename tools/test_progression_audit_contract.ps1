@@ -51,9 +51,17 @@ try {
     $character = Join-Path $tempRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md"
     $chronicle = Join-Path $tempRoot "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md"
     $registry = Join-Path $tempRoot "system/ID_REGISTRY.md"
+    $profile = Join-Path $tempRoot "worlds/gatefall/206_WORLD_RULE_PROFILE.md"
+    $runtime = Join-Path $root "docs/AI_GAMEPLAY_RUNTIME_PROFILE.md"
 
     $baseline = Invoke-Validation $tempRoot
     Assert-True ($baseline.ExitCode -eq 0) "Unmodified Data Model 0.1.5 repository did not validate:`n$($baseline.Output)"
+    Assert-True ((Get-Text $profile).Contains('progression-batch-settlement')) `
+        "Gatefall Profile 1.20 does not declare promotion-time non-combat progression batching."
+    Assert-True ((Get-Text $profile).Contains('Promotion reconciliation.')) `
+        "Gatefall Profile 1.20 does not declare known combat-skill counter reconciliation."
+    Assert-True ((Get-Text $runtime).Contains('re-count every known combat skill activation')) `
+        "The Save Algorithm does not execute the combat-skill double-check at the promotion barrier."
 
     Replace-Once $character `
         '- { path: skills.rupture.successful_uses, baseline_value: 16, baseline_as_of: EVT-000130, current_value: 16 }' `
@@ -65,28 +73,32 @@ try {
         '- { path: skills.rupture.successful_uses, baseline_value: 16, baseline_as_of: EVT-000130, current_value: 17 }' `
         '- { path: skills.rupture.successful_uses, baseline_value: 16, baseline_as_of: EVT-000130, current_value: 16 }'
 
-    Replace-Once $character "        status: ratified" "        status: tracking"
+    Replace-Once $character `
+        "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: ratified" `
+        "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: tracking"
     $threshold = Invoke-Validation $tempRoot
     Assert-True ($threshold.ExitCode -ne 0 -and $threshold.Output -like "*at least three distinct evidence references but remains tracking*") `
         "A three-scene candidate left in tracking was not rejected:`n$($threshold.Output)"
-    Replace-Once $character "        status: tracking" "        status: ratified"
+    Replace-Once $character `
+        "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: tracking" `
+        "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: ratified"
 
-    Replace-Once $registry "| Event | ``EVT-`` | Event | EVT-000130 |" "| Event | ``EVT-`` | Event | EVT-000131 |"
+    Replace-Once $registry "| Event | ``EVT-`` | Event | EVT-000131 |" "| Event | ``EVT-`` | Event | EVT-000132 |"
     $registryText = Get-Text $registry
     $marker = "# Allocation Invariants"
     Assert-True ($registryText.Contains($marker)) "Registry allocation marker is missing."
-    $registryText = $registryText.Replace($marker, "| EVT-000131 | Event | progression-audit contract fixture |`r`n`r`n---`r`n`r`n$marker")
+    $registryText = $registryText.Replace($marker, "| EVT-000132 | Event | progression-audit contract fixture |`r`n`r`n---`r`n`r`n$marker")
     Set-Text $registry $registryText
 
-    Replace-Once $chronicle "  - EVT-000130`n``````" "  - EVT-000130`n  - EVT-000131`n``````"
+    Replace-Once $chronicle "  - EVT-000130`n  - EVT-000131`n``````" "  - EVT-000130`n  - EVT-000131`n  - EVT-000132`n``````"
     $event = @"
 
 ---
 
-## EVT-000131 - Progression Audit Contract Fixture
+## EVT-000132 - Progression Audit Contract Fixture
 
 ``````yaml
-id: EVT-000131
+id: EVT-000132
 canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
@@ -107,7 +119,7 @@ description: "Fixture exchange."
 
     $missingAudit = Invoke-Validation $tempRoot
     Assert-True ($missingAudit.ExitCode -ne 0 -and $missingAudit.Output -like "*has no 'gatefall.skill_formation' progression audit*") `
-        "A covered gameplay Event without an audit was not rejected:`n$($missingAudit.Output)"
+        "A dangerous-scene settlement without an audit was not rejected:`n$($missingAudit.Output)"
 
     Replace-Once $chronicle `
         'participants:
@@ -121,7 +133,39 @@ progression_audits:
     result: none
 description: "Fixture exchange."'
     $audited = Invoke-Validation $tempRoot
-    Assert-True ($audited.ExitCode -eq 0) "A covered gameplay Event with an explicit none audit did not validate:`n$($audited.Output)"
+    Assert-True ($audited.ExitCode -eq 0) "A dangerous-scene settlement with an explicit none audit did not validate:`n$($audited.Output)"
+
+    Replace-Once $chronicle "kind: dangerous-scene-settlement" "kind: progression-batch-settlement"
+    $batchAudited = Invoke-Validation $tempRoot
+    Assert-True ($batchAudited.ExitCode -eq 0) "A promotion-time progression batch with an explicit audit did not validate:`n$($batchAudited.Output)"
+
+    Replace-Once $chronicle "kind: progression-batch-settlement" "kind: work-scene-settlement"
+    Replace-Once $chronicle `
+        'participants:
+  - ENT-000125
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Fixture exchange."' `
+        'participants:
+  - ENT-000125
+description: "Fixture exchange."'
+    $deferredWork = Invoke-Validation $tempRoot
+    Assert-True ($deferredWork.ExitCode -eq 0) "A work scene with classification correctly deferred to promotion did not validate:`n$($deferredWork.Output)"
+
+    Replace-Once $chronicle "kind: work-scene-settlement" "kind: progression-batch-settlement"
+    Replace-Once $chronicle `
+        'participants:
+  - ENT-000125
+description: "Fixture exchange."' `
+        'participants:
+  - ENT-000125
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Fixture exchange."'
 
     Replace-Once $chronicle `
         'progression_audits:

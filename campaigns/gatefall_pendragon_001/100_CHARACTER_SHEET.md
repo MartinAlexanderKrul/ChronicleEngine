@@ -13,8 +13,8 @@ canonical_record: REC-000074
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000130
-  game_date: "2026-08-04 06:00 -05:00; Data Model and profile migration, no fictional time consumed"
+  source: EVT-000131
+  game_date: "2026-08-04 06:00 -05:00; profile migration and candidate settlement, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -66,7 +66,8 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.19"
+    profile_version: "1.20"
+    profile_meaningful_practice_event: EVT-000131
     profile_progression_audit_event: EVT-000130
     profile_dual_wield_event: EVT-000129
     profile_instruction_binding_event: EVT-000128
@@ -175,6 +176,49 @@ canonical_state:
           - EVT-000120#cicero-alpha-dual-strike
         resolution_event: EVT-000129
         result_ref: skills.twin_fang
+      - domain: gatefall.skill_formation
+        key: combat_pattern_exploitation
+        signature: observe-specific-combat-tell-or-structural-weakness.then-personally-exploit
+        status: pending-ratification
+        evidence:
+          - EVT-000059#red-line-elite-recovery-window
+          - EVT-000071#ashfield-elite-pattern-counter
+          - EVT-000109#crypt-boss-nonvisual-arc
+      - domain: gatefall.skill_formation
+        key: field_command
+        signature: identify-actionable-opening.communicate-plan-or-call.ally-executes
+        status: pending-ratification
+        evidence:
+          - EVT-000059#red-line-boss-leap-call
+          - EVT-000079#ashfield-boss-plan-and-calls
+          - EVT-000120#cicero-alpha-weak-point-calls
+      - domain: gatefall.skill_formation
+        key: nonvisual_combat_mapping
+        signature: replace-sight-with-air-and-sound.map-movement.commit-to-mapped-position
+        status: tracking
+        evidence:
+          - EVT-000109#crypt-air-pressure-and-auditory-map
+      - domain: gatefall.skill_formation
+        key: resonance_extraction
+        signature: read-vein-resonance-before-impact.adapt-strike-to-live-seam
+        status: pending-ratification
+        evidence:
+          - EVT-000063#cicero-scar-resonance-method
+          - EVT-000066#frozen-gallery-live-recalibration
+          - EVT-000095#halsted-heat-vein-adaptation
+      - domain: gatefall.skill_formation
+        key: formation_instruction
+        signature: assess-individual-failure-mode.design-role-fit-drill.deliver-tested-correction
+        status: tracking
+        evidence:
+          - EVT-000116#dossier-informed-crew-training
+      - domain: gatefall.skill_formation
+        key: dimensional_weapon_control
+        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release
+        status: tracking
+        evidence:
+          - EVT-000069#private-summon-and-grip-drill
+          - EVT-000070#ashfield-pocket-swap-feint
     gold: 12
     shop_holdings:
       - "Mender's Seal — clears one Minor injury, or reduces one Moderate injury to Minor; restores no Health (Section 12.5) · purchased via the 2026-07-30 Daily Premium cycle, 1,200 g (`EVT-000088`) · banked, unused"

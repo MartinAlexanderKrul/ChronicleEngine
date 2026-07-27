@@ -13,8 +13,8 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000130
-  game_date: "2026-08-04 06:00 -05:00; Data Model and profile migration, no fictional time consumed"
+  source: EVT-000131
+  game_date: "2026-08-04 06:00 -05:00; profile migration and candidate settlement, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -625,3 +625,11 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **Twin Fang migration.** The already-ratified technique is represented as a `ratified` candidate with evidence `EVT-000071`, `EVT-000101`, and `EVT-000120`, resolved at `EVT-000129`; counters remain 0/0/0.
 - **Versions.** Live canon Data Model 0.1.4 → 0.1.5; `system_state.profile_version` 1.18 → 1.19. Checkpoint 0029 remains immutable and applies migrations at readiness.
 - **Repository allocation:** `EVT-000130`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.20 meaningful-practice skill formation adopted (`EVT-000131`; no fictional time consumed).**
+
+- **Broader qualifying scenes, cheaper boundary.** `gatefall.skill_formation` audits continuous danger once at scene close and never per action. A bounded consequential-work scene or structured-practice session may qualify when it has a declared objective, uncertain execution or real feedback, and a material result, but only seals compact evidence notes at scene close; all such notes are classified in one batch at the next promotion barrier. Before writing, that barrier also re-counts known combat-skill uses, qualifying scenes, and mastery from the unpromoted action/resource trace, then reconciles every dangerous-scene formation audit against its retained notes and candidate state. Routine daily repetitions, uncontested rehearsal, ordinary attendance, and untested writing remain excluded.
+- **Historical candidate settlement.** Combat Pattern Exploitation and Field Command each reach `pending-ratification`; Nonvisual Combat Mapping is `tracking` at 1/3. Resonance Extraction reaches `pending-ratification` from Cicero Scar, Frozen Gallery, and Halsted Depot. Formation Instruction is `tracking` at 1/3 from the dossier-informed crew training project. Dimensional Weapon Control is `tracking` at 2/3 from the private summon/grip drill and Ashfield pocket-swap feint.
+- **Dimensional boundary.** Ordinary inventory withdrawal is explicitly hand-only and supplies no remote motion. The complete future 3/3 result is pre-authored as **Dimensional Projection [E-Rank]**, Mana 6: deploy and launch one owned portable weapon from a visible, unoccupied point within 5 metres as one ranged physical attack. It remains ungranted.
+- **Versions.** Gatefall Profile 1.19 → 1.20. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the migration at readiness.
+- **Repository allocation:** `EVT-000131`; no entity, record, or relationship identifier minted.

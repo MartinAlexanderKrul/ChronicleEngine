@@ -516,7 +516,7 @@ foreach ($file in $canonicalFiles) {
                     Add-Failure "$relativePath`:$line entity $id has a malformed progression candidate."
                     continue
                 }
-                if (($evidence | Select-Object -Unique).Count -ne $evidence.Count) {
+                if (@($evidence | Select-Object -Unique).Count -ne @($evidence).Count) {
                     Add-Failure "$relativePath`:$line progression candidate '$domain/$candidateKey' repeats an Event-and-scene evidence reference."
                 }
                 if ($candidateStatus -eq "ratified" -and
@@ -697,8 +697,8 @@ foreach ($candidate in $progressionCandidates) {
         }
     }
     if ($candidate.Domain -eq "gatefall.skill_formation" -and
-        $candidate.Evidence.Count -ge 3 -and $candidate.Status -eq "tracking") {
-        Add-Failure "$($candidate.SourcePath)`:$($candidate.SourceLine) Gatefall candidate '$($candidate.Key)' has at least three distinct evidence references but remains tracking; Profile 1.19 requires pending-ratification or a resolved state."
+        @($candidate.Evidence).Count -ge 3 -and $candidate.Status -eq "tracking") {
+        Add-Failure "$($candidate.SourcePath)`:$($candidate.SourceLine) Gatefall candidate '$($candidate.Key)' has at least three distinct evidence references but remains tracking; Profile 1.20 requires pending-ratification or a resolved state."
     }
 }
 
@@ -707,16 +707,20 @@ foreach ($baseline in $progressionBaselines) {
         continue
     }
     foreach ($eventData in $eventAuditData) {
+        $isGatefallProgressionSettlement = $eventData.Kind -in @(
+            'dangerous-scene-settlement',
+            'progression-batch-settlement'
+        )
         if ($eventData.EventNumber -le $baseline.BaselineNumber -or
-            $eventData.Kind -ne 'dangerous-scene-settlement' -or
+            -not $isGatefallProgressionSettlement -or
             -not [regex]::IsMatch($eventData.Block, "(?m)^[ \\t]*-[ \\t]*$([regex]::Escape($baseline.Subject))[ \\t]*$")) {
             continue
         }
         $covered = @($eventData.Audits | Where-Object {
             $_.Subject -eq $baseline.Subject -and $_.Domain -eq $baseline.Domain
         })
-        if ($covered.Count -eq 0) {
-            Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) closes a post-baseline Gatefall dangerous scene involving $($baseline.Subject) but has no '$($baseline.Domain)' progression audit (Decision 080)."
+        if (@($covered).Count -eq 0) {
+            Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) closes a post-baseline Gatefall qualifying scene involving $($baseline.Subject) but has no '$($baseline.Domain)' progression audit (Decision 080 / Profile 1.20)."
         }
     }
 }

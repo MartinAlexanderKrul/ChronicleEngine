@@ -279,7 +279,11 @@ profile must provide a closed eligibility test, evidence unit, distinct-scene
 rule, threshold, audit boundary, and settlement behavior. For every post-baseline
 Event in the profile's boundary coverage set, the Runtime writes a Data Model
 Section 2.4 `progression_audits` result, including `none`. A profile may batch
-this at dangerous-scene close and prohibit per-exchange candidate work. Qualifying or ambiguous evidence
+dangerous evidence at scene close, defer bounded non-combat evidence to the next
+promotion barrier, and prohibit per-exchange candidate work. When classification
+is deferred, the profile must require stable scene keys, compact pending notes,
+one promotion-time audit Event, and a pre-write reconciliation of any immediate
+scene-close audits from the same unpromoted span. Qualifying or ambiguous evidence
 also updates the subject's persistent candidate state. Candidate recognition
 never authorizes the Runtime to invent the resulting mechanic: an unauthored
 Rank, cost, effect, or balance remains an owner ruling.

@@ -13,8 +13,8 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000130
-  game_date: "2026-08-04 06:00 -05:00; Data Model and profile migration, no fictional time consumed"
+  source: EVT-000131
+  game_date: "2026-08-04 06:00 -05:00; profile migration and candidate settlement, no fictional time consumed"
   real_date: "2026-07-27"
 role: canonical ledger
 scope: campaign
@@ -91,6 +91,7 @@ subjects:
   - EVT-000128
   - EVT-000129
   - EVT-000130
+  - EVT-000131
 ```
 
 ---
@@ -2268,4 +2269,34 @@ The `gatefall.skill_formation` progression domain is activated for Alexander. It
 Alexander's already-ratified Twin Fang is migrated as a `ratified` candidate with its supported historical evidence: Ashfield (`EVT-000071`), Frozen Gallery (`EVT-000101`), and Cicero (`EVT-000120`), resolved at `EVT-000129`. No historical Event is edited and no use or mastery counter is backfilled.
 
 No fictional time, Mana, Health, XP, gold, item, quest, skill, mastery value, roll, damage result, or prior outcome changes. Checkpoint 0029 remains immutable at Profile 1.16 / Data Model 0.1.4 and applies the compatibility chain through Profile 1.19 / Data Model 0.1.5 on restore."
+```
+
+---
+
+## EVT-000131 - Profile 1.20: Meaningful Practice and Historical Candidate Settlement
+
+```yaml
+id: EVT-000131
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: owner-ruling
+  game_date: "2026-08-04 06:00 -05:00; migration, no fictional time consumed"
+  real_date: "2026-07-27"
+type: Event
+kind: system-profile-adoption
+importance: structural
+game_date: "2026-08-04 06:00 -05:00; migration, no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.20, retaining Data Model 0.1.5 and the bounded `gatefall.skill_formation` audit while extending its qualifying scenes beyond danger.
+
+The audit never runs per attack, work roll, drill repetition, or narration response. Dangerous scenes receive one audit at `dangerous-scene-settlement`. Bounded consequential work and structured practice instead seal compact evidence notes at scene close and classify them together in one `progression-batch-settlement` Event at the next checkpoint, automatic context-preservation checkpoint, or session-close promotion barrier. That same barrier re-counts every known combat-skill activation and material passive application from the unpromoted action/resource trace, then reconciles every dangerous-scene formation audit against its retained notes and candidate mutation before writing. Non-dangerous evidence requires a declared objective, uncertain execution or real feedback, and a material result. Routine daily repetitions, uncontested rehearsal, ordinary attendance, and writing without tested application remain outside the coverage set.
+
+**Historical candidate settlement.** Combat Pattern Exploitation becomes `pending-ratification` from the Red Line, Ashfield, and Crypt. Field Command becomes `pending-ratification` from the Red Line boss call, the Ashfield boss plan, and the Cicero alpha-pair coordination. Nonvisual Combat Mapping becomes `tracking` at 1/3 from the Crypt. Resonance Extraction becomes `pending-ratification` from the Cicero Scar, Frozen Gallery, and Halsted Depot work scenes. Formation Instruction becomes `tracking` at 1/3 from the dossier-informed crew training project. Dimensional Weapon Control becomes `tracking` at 2/3 from the private summon/grip drill and the later Ashfield pocket-swap feint. Historical Events and immutable checkpoints remain unchanged.
+
+**Dimensional boundary and authored result.** Ordinary inventory withdrawal remains an instant, free delivery to Alexander's own hand only. It cannot place or launch an item remotely. Profile 1.20 pre-authors the result if Dimensional Weapon Control reaches its third qualifying scene: **Dimensional Projection [E-Rank]**, Mana 6, remotely deploying and launching one owned portable weapon from a visible unoccupied point within 5 metres as one ranged physical attack, with closed line-of-sight, occupancy, action-package, equipment-bonus, and mastery limits in Section 7.2. The skill is not yet granted.
+
+No fictional time, roll, Mana, Health, XP, gold, item, quest, known skill, mastery counter, damage result, or prior outcome changes. Checkpoint 0029 remains immutable at Profile 1.16 / Data Model 0.1.4 and restores through the applicable chain to Profile 1.20 / Data Model 0.1.5."
 ```

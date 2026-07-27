@@ -3743,6 +3743,96 @@ because it introduces an engine-general mechanism. It is admitted to milestone
 
 ---
 
+## Decision 079 — Event-Declared Counter Deltas: Making Stored Counters Reconcilable
+
+**Status:** Proposed — foundational under Decision 069; drafted against a future version's Planning stage, with the deferral target unsettled (see Consequences)
+**Date:** 2026-07-27
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Sections 2.4 and 12 (Event; schema 0.1.4 → 0.1.5); `012_ENGINE_RUNTIME.md` Sections 5.3 and 5.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Turn-State Settlement step 4); `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Save Algorithm step 3); `tools/validate_repository.ps1`; `tools/test_checkpoint_contract.ps1` (Contract 8); `worlds/gatefall/206_WORLD_RULE_PROFILE.md` Section 7.4; Decisions 051, 054, 055, 069, 071, 076
+
+### Context
+
+The engine has a rule against exactly this defect and skill counters escaped it on a technicality.
+
+Progression Surfacing (Decision 051) is explicit: *"Compute the view from canonical state at the moment of surfacing. Do not maintain a separate authoritative XP counter or level that could drift from canon."* XP and levels are forbidden from being stored precisely because a stored aggregate has no derivation path and therefore no way to be wrong loudly. That rule binds the **meta view**. Gatefall's skill counters — `successful_uses`, `qualifying_scenes_total`, `mastery_progress` (Profile Section 7.4) — are not a meta view. They are causal canonical state: mastery level sets a skill's damage multiplier and its Mana cost. So they are stored, as they must be, and nothing inherited 051's reasoning about what a stored counter costs.
+
+**The defect has now occurred twice, in the same campaign, against the same skills.**
+
+The first instance was caught late but caught: Flash Step's advance from Novice to Practiced was earned during `EVT-000113` and settled at the following promotion barrier, recorded in its own ledger entry as a settlement correction. The barrier worked.
+
+The second was not caught at all. `900_CHECKPOINT_0028` captured the Cicero Gate clear (`EVT-000119`–`EVT-000120`) — three Rupture casts, one Flash Step, one Keen Sense activation, two Dagger Mastery applications — with **every counter frozen at its `0027` value**. Mana, XP, condition, and equipment on the same character sheet were all correct. `tools/validate_repository.ps1` and `tools/test_checkpoint_contract.ps1` both passed. It survived two further checkpoints and surfaced only because the player asked whether skill progress was being tracked. The true counts were corrected in live canon afterward (`EVT-000127`); the checkpoint remains immutable and wrong, as Rules Section 13.2 requires.
+
+This is the **stale-field** class, and it defeats the existing barriers by construction rather than by accident:
+
+1. **Read-back verifies intent, not completeness.** The Save Algorithm's step 4 reloads every target and confirms "the intended changes are present." When the intent was already incomplete, read-back confirms the incomplete intent. The file was opened, written, re-read, and validated, and still carried a stale field.
+2. **The Repository Validation Barrier is structural.** A counter reading `Successful uses 13` is well-formed. The barrier checks identifiers, required fields, schema tags, and presence invariants; it has no notion of what the number *should* be, and the Save Algorithm says so in its own text — the target-set derivation is *"performed by the Runtime and checked by nothing,"* and *"it does not detect a ledger that is well-formed and semantically stale."*
+3. **Every existing contract asks whether a file was written.** Completeness across the promotion target set is well defended. Completeness *within* a written file has no defense at all.
+
+`tools/test_checkpoint_contract.ps1` gained Contract 8 in response: if a checkpoint's `(level, xp)` advanced against the parent its manifest names, at least one tracked counter must have advanced too. Verified against the full history, it fires on exactly one of twenty-nine Gatefall checkpoint transitions — the real defect — with no false positives. It is a genuine improvement and it is deliberately weak. It compares **aggregate** totals, so a partial miss passes silently; it cannot know which counter should have moved, or by how much, because nothing in the repository records what actually happened at that granularity. It detects a session that recorded nothing. It cannot detect a session that recorded some of it.
+
+The missing thing is not a stricter check. It is **evidence**. The chronicle records that a Gate was cleared and records the rolls in prose; nothing records, in a form a machine can read, that Rupture fired three times. Until that exists, every check over these counters is a heuristic over a number with no derivation.
+
+### Decision
+
+**1. `011_ENGINE_DATA_MODEL.md` Section 2.4 gains an optional, typed `counter_deltas` block on the Event.**
+
+An Event may declare the counter changes it caused:
+
+```yaml
+counter_deltas:
+  - subject: ENT-000125          # the entity whose counter changed
+    counter: skills.rupture.successful_uses
+    delta: 3
+  - subject: ENT-000125
+    counter: skills.rupture.qualifying_scenes_total
+    delta: 1
+```
+
+The Data Model owns the **shape** — subject identifier, counter path, integer delta — and nothing else. It does not know what a skill is, what mastery means, or which counters exist. Those belong to the world, exactly as Section 4.3's extension mechanism already establishes: *"extensions are additive, typed, and optional. The content of each extension is owned by its Rules domain section."* A world that tracks no counters declares none, and the mechanism costs it nothing.
+
+**2. A counter carries a baseline, so reconciliation is prospective.**
+
+Each tracked counter records `baseline_value` and `baseline_as_of` (an Event identifier). The invariant is arithmetic:
+
+```text
+stored_value == baseline_value + Σ(delta) over live Events after baseline_as_of
+```
+
+This is what makes the mechanism adoptable without rewriting history. Events predating adoption declare no deltas and are never replayed; a campaign migrates by stamping each counter's current value as its baseline at the migration event. It is the same prospective-repair move Gatefall Profile 1.16 made for Daily Premium model bags — *"repairs prospectively from its active cycle instead of replaying expired rotations"* — applied to a Data Model field.
+
+**3. Enforcement point: `tools/validate_repository.ps1`, as an arithmetic check.**
+
+Per Decision 055 this decision names where it is checked. Unlike Decision 076's Texture gate, which is deliberately presence-only because prose quality is a judgment, **this one is fully decidable** and should be strict: the validator resolves each declared counter, sums the deltas of live Events after its baseline, and fails on any mismatch. There is no interpretation involved and therefore no reason to settle for coverage.
+
+**4. Contract 8 is retained, not superseded.** It becomes the backstop for the case this decision cannot reach: a session that declares no deltas at all is arithmetically consistent — zero recorded, zero applied — and only the progression cross-check notices that a Gate was cleared regardless.
+
+**5. The per-turn half already landed and is not re-legislated here.** `docs/AI_GAMEPLAY_RESIDENT_CORE.md` gained Turn-State Settlement step 4 (2026-07-27), requiring skill counters to advance in the exchange that used them. This decision supplies the durable record that step 4 produces and the arithmetic that proves it happened.
+
+### Rationale
+
+- **A stored aggregate with no derivation cannot be checked, only trusted — and trust is what failed, twice.** Every other durable quantity in this engine is reconcilable against something: identifiers against the registry, references against definitions, presence against a single owning field, the index against the campaign's own declaration. Skill counters are the one causal quantity with no second source. Adding deltas gives them one, and the two-independent-statements shape is the pattern this repository already relies on wherever drift is decidable (Decisions 071, 072; Contract 2).
+- **The engine already forbids this pattern one layer over.** Decision 051 refuses to let XP be stored as an authoritative counter for precisely this reason. Skill counters are the same kind of quantity with a stronger claim to being stored, because they are causal and must be restorable from a checkpoint alone. The answer is not to derive them — it is to make them **verifiable**, which is what the baseline plus deltas achieves.
+- **Domain-neutral shape keeps world vocabulary out of the most stable layer.** A `skill_uses` field on the Event would push Gatefall's Section 7.4 into `011`, which no other world instantiates. A generic counter delta is the same mechanism at the right altitude, and Reikon's ability counters or any future world's tracked quantity get it for free.
+- **It closes a gap the engine has already written down and left open.** The Save Algorithm's admission — *"until a mechanical gate exists, this step is the only thing standing between a session's events and a stale checkpoint"* — is recorded against Version 0.3 planning. This is one concrete instance of that gate, for the field class where the arithmetic is available.
+
+### Consequences
+
+- **Class under Decision 069: foundational.** The structural test is unambiguous and reads the diff, not the motivation: the change touches `011_ENGINE_DATA_MODEL.md`, which that decision names as sufficient on its own, and it introduces an engine-general mechanism a world may invoke. It therefore belongs to a later version's Planning and ADR Design stage, and is drafted **Proposed** on that ground rather than argued into a released version from inside its own Alternatives section — the move Decision 069 exists to prevent.
+- **The deferral target is not ready, and this decision does not resolve that.** Version 0.4 stands at *accepted placement, scope unapproved*, with an unresolved number collision between Governance & Society and Magic Framework. Decisions 076 and 077 each hit this same wall and were landed into 0.3 by explicit owner exception. Whether this one warrants the same treatment is an owner call, and is deliberately left open here; the argument for it is that the cost of waiting is silent and ongoing in the same way 076's was, and the argument against it is that the interim mitigation already exists — Contract 8 and resident step 4 are in place, which was not true of Texture.
+- **Data Model change and migration: 0.1.4 → 0.1.5.** `counter_deltas` is additive and optional, but adding it changes the Data Model. Live objects are retagged; each tracked counter is stamped with its current value as `baseline_value` and the migration event as `baseline_as_of`. Immutable checkpoints remain byte-unchanged at their captured schema and migrate explicitly at readiness (`011` Section 12.4). The migration consumes no fictional time and allocates no identifier beyond the migration event itself.
+- **Real writer cost at the promotion barrier**, paid per canon-bearing event that moves a counter. It is smaller than Texture's — integers rather than prose — but it is not zero, and it lands on the same actor at the same moment.
+- **The validator gains arithmetic it did not previously do**, including resolving counter paths inside object blocks. This is meaningfully more tooling than any existing check and should be scoped as implementation work, not assumed free.
+- `campaigns/gatefall_pendragon_001/` is the worked instance throughout: the two occurrences, the `EVT-000127` correction, and the Contract 8 verification run are evidence this proposal is drawn from, not precedent for adopting it.
+
+### Alternatives Considered
+
+- **Author the counters into Gatefall's profile only, and check them with a Gatefall-specific test.** This is the cheapest path and, under Decision 069 point 4, requires no engine decision at all — a change scoped entirely to one world is world authoring. Rejected as the primary approach because the defect is not Gatefall-shaped: any world tracking any accumulating quantity has the same hole, and a per-world solution means per-world tooling written separately each time. It remains the correct fallback if the foundational cost is judged too high, and it is a legitimate owner choice rather than a wrong one.
+- **Derive the counters entirely and store nothing, as Decision 051 requires of XP.** Rejected. Skill mastery is causal — it sets damage multipliers and Mana costs — so a restoring Runtime must be able to read it from the checkpoint alone. Deriving it would require replaying the full chronicle at every restore and every `/system skills` render, and would make a checkpoint non-self-sufficient, defeating the point of having canonical state.
+- **Strengthen Contract 8 from aggregate to per-skill comparison.** Rejected as insufficient rather than wrong. Per-skill comparison can detect that a *particular* counter did not move, but never that the *right* counter moved by the *right* amount, because the repository holds no machine-readable record of what happened. It would tighten a heuristic without giving it a source of truth.
+- **Derive the deltas from the world's declared resource costs — a Mana ledger of `60 → 58 → 48 → 38 → 28 → 21` is five activations.** Rejected as a *check* while retained as *guidance*. The arithmetic is genuinely available and is now written into resident step 4 as a self-audit, but it cannot be mechanized: two skills may share a cost (Rupture and Bulwark both cost 10), passives cost nothing and leave no trace, and elapsed-time recovery interleaves with spending. A gate that is confidently wrong in ambiguous cases and trusted anyway is the failure mode Decision 071 names when it declines to adjudicate row currency.
+- **Add more instruction and no mechanism.** Rejected on the record: instruction alone is what failed, twice, and the second failure occurred *after* the first had been corrected in the very same ledger the Runtime was writing. This is Decision 055's finding, and the reason it is cited here rather than restated.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

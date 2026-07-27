@@ -13,9 +13,9 @@ canonical_record: REC-000079
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000126
-  game_date: "2026-08-04 06:00 -05:00"
-  real_date: "2026-07-27T11:30:00+02:00"
+  source: EVT-000127
+  game_date: "2026-08-04 06:00 -05:00; correction, no fictional time consumed"
+  real_date: "2026-07-27T12:05:00+02:00"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -87,6 +87,7 @@ subjects:
   - EVT-000124
   - EVT-000125
   - EVT-000126
+  - EVT-000127
 ```
 
 ---
@@ -2145,4 +2146,35 @@ description: "With Profile 1.16 adopted (`EVT-000125`), the 2026-08-04 06:00 Dai
 **Six offers, all priced and unpurchased (0/6, all unaffordable at 12 gold):** Colossus Greatarm [E-Rank] (Strength +4 total, weapon power 2, armed strike ×1.15, two-handed, 200 g); Adaptive Titan Hands [D-Rank] (Strength +4 total, physical reduction 8%, 540 g); Ascendant Mindspun Loop [E-Rank] (Intelligence +4 total, 160 g); Clarity Phial (+1 modifier step on Intelligence/Perception appraisal and detection for one scene, 750 g); Premium Rune teaching Silent Step [C-Rank] (Mana 3, +1 modifier step on stealth/unseen-approach for the scene, 50,000 g); Crystal Key [D-Rank] (mined deposit roll treated as 18 before the Rank multiplier, 4,500 g). All six live until the 2026-08-05 06:00 rotation.
 
 No fictional time, gold, item, Stat, or resolved outcome changes — this settles pending System-shop state, not play."
+```
+
+---
+
+## EVT-000127 - Skill-Mastery Settlement Correction: the Cicero Gate's Missed Counters
+
+```yaml
+id: EVT-000127
+canonical_record: REC-000079
+schema_version: "0.1.4"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-04 06:00 -05:00; correction, no fictional time consumed"
+  real_date: "2026-07-27T12:05:00+02:00"
+type: Event
+kind: settlement-correction
+importance: minor
+game_date: "2026-08-04 06:00 -05:00; correction, no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Audit, raised by direct player question, found that the Cicero Gate clear (`EVT-000119`–`EVT-000120`, 2026-08-03) resolved four skills' worth of successful activations that were never recorded against `100_CHARACTER_SHEET.md`'s `skills_known` at Checkpoint 0028's promotion barrier — a Turn-State Settlement gap identical in kind to the one already corrected once for Flash Step at `EVT-000113`.
+
+**Cross-checked against the changelog's own Mana trace** (`60 → 58 → 48 → 38 → 28 → 21`, matching `100_CHARACTER_SHEET.md`'s condition note exactly):
+
+- **Keen Sense** — one activation, the corridor re-read (d100 33, net +2, effective 73, success; Mana 60→58). This was the skill's first use since being learned (`EVT-000114`). Uses 0→**1**, qualifying scenes 0→**1** (first), mastery progress **1/3 toward Practiced**.
+- **Rupture** — three casts: the elite's unseen kill (Mana 58→48), the leaner alpha's opening exchange (Mana 48→38), and its finish (Mana 38→28). Uses 13→**16**, qualifying scenes 7→**8** (the whole Gate counts once, per Section 7.4's continuous-dangerous-scene rule), mastery progress 1→**2/3 toward Expert** — one more qualifying scene away from advancing.
+- **Flash Step** — one use, opening the plated alpha immediately before the joint finishing strike (Mana 28→21). Uses 5→**6**, qualifying scenes 3→**4**, mastery progress 0→**1/3 toward Adept**.
+- **Dagger Mastery** — materially applied twice: the corridor's two ordinary Quickknife strikes clearing isolated beasts (d100 97 natural legendary; d100 73, legendary), both resolving under the passive's ×0.85 chassis multiplier. Uses 0→**2**, qualifying scenes 0→**1** (first material application), mastery progress **1/3 toward Practiced**.
+
+**No mastery-level threshold crossed.** No resolved roll, Gate outcome, XP total, gold, or item changes — every affected roll had already resolved under the correct in-the-moment mechanics; only the ledger's bookkeeping was stale. `900_CHECKPOINT_0028` remains immutable and byte-unchanged, carrying the uncorrected counts as historical evidence; live state and any subsequent checkpoint carry the correction forward."
 ```

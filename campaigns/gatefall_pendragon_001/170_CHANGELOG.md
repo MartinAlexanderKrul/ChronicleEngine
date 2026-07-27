@@ -13,9 +13,9 @@ canonical_record: REC-000080
 schema_version: "0.1.4"
 status: active
 provenance:
-  source: EVT-000126
-  game_date: "2026-08-04 06:00 -05:00"
-  real_date: "2026-07-27T11:30:00+02:00"
+  source: EVT-000127
+  game_date: "2026-08-04 06:00 -05:00; correction, no fictional time consumed"
+  real_date: "2026-07-27T12:05:00+02:00"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -589,3 +589,11 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **Ledgers updated:** `100` (`daily_premium.cycle` — full resolution replacing the flagged-pending note, `model_bags` advanced), `160` (`EVT-000126`), `170`. `110`, `120`, `130`, `140`, `180` unaffected.
 - **Repository allocation:** `EVT-000126`; no entity, record, or relationship identifier minted.
 - **Checkpoint `900_CHECKPOINT_0029` written**, superseding `900_CHECKPOINT_0028` as the latest restorable checkpoint. Captured under frozen Profile 1.16 / Data Model 0.1.4; no migration required on restore.
+
+**2026-08-04, post-checkpoint — skill-mastery settlement correction (`EVT-000127`; no fictional time consumed).**
+
+- **Player-raised audit.** Asked directly whether skill progress had been tracked properly, cross-checked the Cicero Gate clear (`EVT-000119`–`EVT-000120`) against `skills_known` and found four skills' successful activations never recorded at Checkpoint 0028's promotion barrier — the same class of gap Flash Step already had one correction for (`EVT-000113`).
+- **Corrected, all within one continuous dangerous scene (the whole Gate) per Section 7.4:** Keen Sense uses 0→**1**, qualifying scenes 0→**1** (first use, progress 1/3 toward Practiced); Rupture uses 13→**16**, qualifying scenes 7→**8** (progress 2/3 toward Expert); Flash Step uses 5→**6**, qualifying scenes 3→**4** (progress 1/3 toward Adept); Dagger Mastery uses 0→**2**, qualifying scenes 0→**1** (first material application, progress 1/3 toward Practiced).
+- **No mastery-level threshold crossed; no resolved roll, Gate outcome, XP, or item changes.** `900_CHECKPOINT_0028` remains immutable and uncorrected, retained as historical evidence — this is a live-state correction, not a rewrite of a checkpoint.
+- **Ledgers updated:** `100` (`skills_known` — Rupture, Flash Step, Keen Sense, Dagger Mastery counters and provenance), `160` (`EVT-000127`), `170`. `110`, `120`, `130`, `140`, `180` unaffected.
+- **Repository allocation:** `EVT-000127`; no entity, record, or relationship identifier minted.

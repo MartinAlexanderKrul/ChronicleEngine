@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000145 |
 | Record | `REC-` | Canonical Record | REC-000095 |
-| Event | `EVT-` | Event | EVT-000126 |
+| Event | `EVT-` | Event | EVT-000127 |
 | Relationship | `REL-` | Relationship | REL-000067 |
 
 ---
@@ -241,6 +241,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000124 | Event | Gatefall: Pendragon: the night's rest and the morning of 2026-08-04 (2026-08-03 ~19:00 through 2026-08-04 06:00) — an uneventful evening winding down at Owen's apartment, both asleep by the normal hour. At 06:00 the System issued the **eleventh daily quest** (streak 10, unresolved) and the Daily Premium stock rotated (Tier-1 compact line only; the Verdant cycle's five unbought offers expired, and the new cycle's six offers have not yet been rolled — Section 12.5's model-bag draws require reconstructing bag-remaining state, deferred until the shop is actually opened). Mana settled deterministically from 21/60 under `resting` recovery across the 14-hour span to full **60/60** well before the anchor was reached; Health was already full and unchanged. Owen remained asleep throughout — no alarm, not woken |
 | EVT-000125 | Event | Gatefall: Pendragon: adoption of frozen Profile 1.16 — compact Daily Premium model-bag state becomes the sole operational source for ordinary rotations; complete live bags are preserved, while a missing legacy category repairs prospectively from the active cycle without replaying expired rotations; no fictional time or resolved result changed |
 | EVT-000126 | Event | Gatefall: Pendragon: the 2026-08-04 06:00 Daily Premium cycle (deferred at `EVT-000124`) resolved in full under newly-adopted Profile 1.16, using the compact `model_bags` state already on record rather than reconstructing prior rotations — fabrication series Cobalt (d8 3), five Rank rolls, five model-bag draws, one rune skill roll (Silent Step, unknown, no reroll); all six offers priced and recorded, 0/6 purchased, live until 2026-08-05 06:00; no fictional time consumed |
+| EVT-000127 | Event | Gatefall: Pendragon: skill-mastery settlement correction — the Cicero Gate clear (`EVT-000119`–`EVT-000120`) resolved three Rupture casts, one Flash Step, one Keen Sense activation, and two Dagger Mastery applications that were never recorded against `skills_known` at Checkpoint 0028's promotion barrier. Corrected counts: Rupture uses 13→16, qualifying scenes 7→8; Flash Step uses 5→6, qualifying scenes 3→4; Keen Sense uses 0→1, qualifying scenes 0→1 (first use); Dagger Mastery uses 0→2, qualifying scenes 0→1 (first material application). No mastery-level threshold crossed; no resolved roll, Gate outcome, XP, or item changes |
 
 ---
 

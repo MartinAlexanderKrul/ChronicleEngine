@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000147 |
-| Record | `REC-` | Canonical Record | REC-000096 |
-| Event | `EVT-` | Event | EVT-000139 |
-| Relationship | `REL-` | Relationship | REL-000069 |
+| Entity | `ENT-` | Persistent Entity | ENT-000148 |
+| Record | `REC-` | Canonical Record | REC-000097 |
+| Event | `EVT-` | Event | EVT-000146 |
+| Relationship | `REL-` | Relationship | REL-000070 |
 
 ---
 
@@ -259,6 +259,16 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000139 | Event | Gatefall: Pendragon: the pawn shop (2026-08-04, ~09:30–10:15) — Cicero's Quiet [C-Rank] confirmed genuine via a covert dimensional-inventory read; one private E-Rank core sold to the pawnbroker for $220 cash (stash 9→8, cash $9,831→$10,051) |
 | REL-000069 | Relationship | Gatefall: Pendragon: Alexander's informal, untested fence contact with the pawnbroker for unsellable private cores |
 | REC-000096 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0030/900_SAVE_MANIFEST.md` — session-3 continuation checkpoint at the 2026-08-04 10:15 anchor, captured under frozen Profile 1.24 / Data Model 0.1.5, no migration required on restore |
+| ENT-000148 | Entity | Gatefall: Pendragon: Denise Ferro, Coalition-run harvest-crew lead at the 2026-08-04 rail-corridor C-Rank job |
+| EVT-000140 | Event | Gatefall: Pendragon: the rail-corridor C-Rank harvest job (2026-08-04, 13:45–18:00) — twenty crystals declared, ≈$40,000 net pending; Resonance Extraction's first actual use (two successful vein reads, one qualifying scene) |
+| REL-000070 | Relationship | Gatefall: Pendragon: Alexander's harvest-hire standing with Denise Ferro's Coalition-run crew |
+| EVT-000141 | Event | Gatefall: Pendragon: rewards claimed (2026-08-04, ~18:10) — Ability Points allocated (Vitality 25→30, Shrug Off learned; Perception 31→32), two Daily Random Boxes opened (500 g purse, Arcanist Legs [E-Rank]) |
+| EVT-000142 | Event | Gatefall: Pendragon: solo Instant-Dungeon Key [E-Rank] used, archetype Shattered City — Twin Fang's first use, Rupture's third qualifying scene at Adept advancing it to Expert, boss killed in one strike; XP +270 crossing Level 8→9; loot 27 crystals, 3 cores, Guard Shield [E-Rank], guaranteed rune teaching Flash Step [D-Rank] |
+| EVT-000143 | Event | Gatefall: Pendragon: selling the haul and the walk to Owen's (2026-08-04, ~19:00–20:00) — 27 crystals sold; recap conversation surfacing the pawn-shop core-sale worry and Wade Bishop's pitch as real exposure concerns |
+| EVT-000144 | Event | Gatefall: Pendragon: second Instant-Dungeon Key [E-Rank] used with Owen watching, archetype Crypt — full-power demonstration (Rupture, Twin Fang, Stone Skin, Flash Step, Bulwark, Exploit Pattern all applied); Dagger Mastery advanced to Practiced, Flash Step to Adept; Mana spent to zero and partially refilled by a potion materialized in front of Owen; XP +260 (40→300/900); loot 26 crystals, 2 cores, rune teaching Mend [E-Rank] |
+| EVT-000145 | Event | Gatefall: Pendragon: the System named to Owen outright (2026-08-04, ~20:35–20:40) — the largest disclosure of the campaign |
+| EVT-000146 | Event | Gatefall: Pendragon: "I am never losing you," and the moving-in question opened (2026-08-04, ~20:40) — mutual reaffirmation of the relationship; new objective OBJ-15 opened, unresolved |
+| REC-000097 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0031/900_SAVE_MANIFEST.md` — session-3 continuation checkpoint at the 2026-08-04 20:40 anchor, captured under frozen Profile 1.24 / Data Model 0.1.5, no migration required on restore |
 
 ---
 

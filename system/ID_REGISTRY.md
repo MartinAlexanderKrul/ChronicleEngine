@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000145 |
-| Record | `REC-` | Canonical Record | REC-000095 |
-| Event | `EVT-` | Event | EVT-000135 |
-| Relationship | `REL-` | Relationship | REL-000067 |
+| Entity | `ENT-` | Persistent Entity | ENT-000147 |
+| Record | `REC-` | Canonical Record | REC-000096 |
+| Event | `EVT-` | Event | EVT-000139 |
+| Relationship | `REL-` | Relationship | REL-000069 |
 
 ---
 
@@ -250,6 +250,15 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000133 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.22 — fully authored earned-technique candidates ratify automatically at threshold; unauthored pending candidates form one mandatory owner-adjudication queue before the next gameplay scene while saves and non-advancing OOC commands remain available; no current candidate, skill, counter, fictional time, or prior outcome changes |
 | EVT-000134 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.23 — `/system` skills render in separate ACTIVE and PASSIVE groups derived from canonical Mana cost, preserving ledger order and all existing state; no fictional time or prior outcome changes |
 | EVT-000135 | Event | Gatefall: Pendragon: owner-ruling adoption of frozen Profile 1.24 — Rank-bearing Daily Premium offers use a 25% surcharge over their ordinary same-Rank anchors while preserving higher-Rank access; the live cycle's five unpurchased Rank-bearing rows were repriced without rerolling; Section 17 explicitly includes the Section 11.1 mineable deposit in future instant dungeons; no fictional time, gold balance, completed transaction, or historical clear changed |
+| EVT-000136 | Event | Gatefall: Pendragon: the morning at Owen's (2026-08-04, 06:00–07:50) — a follow-up text to Dale Pruitt, the pet name 'Owwiiiie' established, the eleventh daily quest completed under a spontaneous complaint-tax rule (streak 10→11), and Alexander proactively telling Owen he didn't want to ask him to lie again |
+| EVT-000137 | Event | Gatefall: Pendragon: two calls (2026-08-04, ~08:00–08:20) — Ada Reyes had no open work; Kesha Morrison booked a new confirmed C-Rank harvest slot (14:00, unnamed contractor) and relayed reputation news reaching a Horizon Guild contact |
+| ENT-000146 | Entity | Gatefall: Pendragon: Wade Bishop, Ironline Guild recruiter, approached Alexander at the Red Line Corridor |
+| EVT-000138 | Event | Gatefall: Pendragon: Wade Bishop's Ironline Guild recruitment pitch (2026-08-04, ~08:30–09:15) — steady strike-contract flow offered; Alexander requested a D-Rank strike trial with a properly-Ranked crew and a B-Rank harvest trial before deciding |
+| REL-000068 | Relationship | Gatefall: Pendragon: Alexander's pending, unaccepted recruitment overture from Ironline Guild via Wade Bishop |
+| ENT-000147 | Entity | Gatefall: Pendragon: the pawnbroker, unnamed owner of a warehouse-district pawn shop dealing in mundane and grey-market goods |
+| EVT-000139 | Event | Gatefall: Pendragon: the pawn shop (2026-08-04, ~09:30–10:15) — Cicero's Quiet [C-Rank] confirmed genuine via a covert dimensional-inventory read; one private E-Rank core sold to the pawnbroker for $220 cash (stash 9→8, cash $9,831→$10,051) |
+| REL-000069 | Relationship | Gatefall: Pendragon: Alexander's informal, untested fence contact with the pawnbroker for unsellable private cores |
+| REC-000096 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0030/900_SAVE_MANIFEST.md` — session-3 continuation checkpoint at the 2026-08-04 10:15 anchor, captured under frozen Profile 1.24 / Data Model 0.1.5, no migration required on restore |
 
 ---
 

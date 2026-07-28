@@ -1,0 +1,29 @@
+# Line-ending policy: LF in the index and in the working tree, everywhere.
+#
+# This is not cosmetic. Mixed endings in this repository have produced false
+# readings in contract work more than once: a concealed-record count that read 0
+# against a CRLF ledger while the identical pattern read 5 against an LF one,
+# and a diagnosis of test_progression_audit_contract sent down two blind alleys
+# because `git checkout` and `git worktree` silently rewrote endings and broke
+# different assertions than the real defect. Multi-line anchors are load-bearing
+# in tools/, so the bytes under them have to be predictable.
+*               text=auto eol=lf
+*.pdf           -text
+
+# --- On checkpoints, deliberately no exception ------------------------------
+#
+# Checkpoints are byte-frozen once promoted (Rules 13.2), and every profile
+# migration text here promises they stay byte-unchanged, so the obvious instinct
+# is to exclude campaigns/*/saves/** from renormalization. Measured before
+# writing this rule: `git ls-files --eol` reports i/lf for all 500 files under
+# saves/ and .saves/. They have always been stored as LF; the CRLF seen in the
+# working tree was produced by core.autocrlf at checkout and was never committed
+# canon. Applying eol=lf to them therefore changes nothing -- verified both
+# ways, with and without an exclusion, and `git status` reports zero modified
+# files under saves/ in each case.
+#
+# So an exclusion would buy no protection that the index does not already give,
+# while marking those paths -text would cost readable diffs on precisely the
+# files where a diff matters most: the ones that are never supposed to change,
+# where an accidental edit needs to be legible at review. One uniform rule is
+# both safer to reason about and better when something goes wrong.

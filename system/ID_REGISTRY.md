@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000148 |
 | Record | `REC-` | Canonical Record | REC-000098 |
-| Event | `EVT-` | Event | EVT-000153 |
+| Event | `EVT-` | Event | EVT-000154 |
 | Relationship | `REL-` | Relationship | REL-000070 |
 
 ---
@@ -277,6 +277,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000152 | Event | Gatefall: Pendragon: Instant-Dungeon Key [E-Rank] used, archetype Shattered City — Keen Sense Practiced→Adept, Sprint Novice→Practiced; XP 350→610/1000; loot 22 crystals, 2 cores, duplicate Stone Skin rune |
 | EVT-000153 | Event | Gatefall: Pendragon: two long-pending payouts land (Sable & Kern +$9,000, Cicero split +$1,762.50; cash $10,051.00→$20,813.50); follow-up texts to Owen and Dale Pruitt |
 | REC-000098 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0032/900_SAVE_MANIFEST.md` — session-3 continuation checkpoint at the 2026-08-05 10:30 anchor, captured under frozen Profile 1.24 / Data Model 0.1.5, no migration required on restore |
+| EVT-000154 | Event | Gatefall: Pendragon: Profile 1.24→1.25 consumable-economy correction — Lesser/Standard Healing and Mana potions restore a flat 30/90 Health and 20/40 Mana instead of 25%/50% of maximum; all six potion prices corrected to Healing 60/150/750 g and Mana 50/75/480 g so no tier is dominated; Healing and Mana potions stated System-exclusive with no world vendor, the world's separate restorative alchemy acting on the severity axis over time |
 
 ---
 

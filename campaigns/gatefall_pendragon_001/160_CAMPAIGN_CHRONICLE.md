@@ -13,9 +13,9 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000153
-  game_date: "2026-08-05 ~10:30 -05:00; a quiet corner near Loyola Park, Rogers Park"
-  real_date: "2026-07-27"
+  source: EVT-000154
+  game_date: "2026-08-05 ~10:30 -05:00; Profile 1.25 consumable-economy and sourcing correction, no fictional time consumed"
+  real_date: "2026-07-28"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -114,6 +114,7 @@ subjects:
   - EVT-000151
   - EVT-000152
   - EVT-000153
+  - EVT-000154
 ```
 
 ---
@@ -3053,4 +3054,36 @@ progression_audits:
     domain: gatefall.skill_formation
     result: none
 description: "A text to Owen ('E Rank dungeons are sooo boring') drew a reply from between patients — teasing, affectionate, unbothered. A phone check turned up two long-pending payouts finally cleared: the **Sable & Kern harvest share (+$9,000)** and the **Cicero Gate split (+$1,762.50)** — cash **$10,051.00 → $20,813.50**. The ≈$40,000 rail-corridor share (Denise Ferro's job, `EVT-000140`) remains processing, under 24 hours old. A follow-up text to Dale Pruitt on the possible B-Rank mining lead confirmed it remains undecided between crews, with a real answer expected by end of day 2026-08-06 — the thread stays open, one day closer to resolving."
+```
+
+---
+
+## EVT-000154 - Profile 1.25: Consumable Economy and Sourcing Correction
+
+```yaml
+id: EVT-000154
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: owner-ruling
+  game_date: "2026-08-05 ~10:30 -05:00; profile migration, no fictional time consumed"
+  real_date: "2026-07-28"
+type: Event
+kind: system-profile-adoption
+importance: structural
+game_date: "2026-08-05 ~10:30 -05:00; profile migration, no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.25, correcting the System shop's Healing and Mana potion economy and stating their sourcing explicitly.
+
+**Flat restoration.** Lesser and Standard potions now restore a flat amount rather than a percentage of the drinker's maximum pool: Lesser Healing 30 Health, Standard Healing 90 Health, Lesser Mana 20 Mana, Standard Mana 40 Mana, each capped at maximum. Greater Healing and Greater Mana potions continue to restore their pool to full. The change ties a lower-tier potion's value to the Gate-Rank bracket it serves (Section 11.2's potion-cache tiers) instead of letting it scale forever with the Bearer's own growth, which is what makes upgrading tiers meaningful.
+
+**Prices.** All six potions reprice so that no tier is dominated: Healing 60/150/750 g and Mana 50/75/480 g for Lesser/Standard/Greater. Under the previous percentage model two Lessers cost less than one Standard and did the same work, so Standard and Greater were purchases no rational buyer made; now a Standard costs fewer actions and no more gold than the Lessers it replaces from D-Rank scale upward, and a Greater is the only single-action full restore. Cost-per-point does **not** fall with tier and is not meant to — what the higher tier buys is action economy. The shop's 50% unused-consumable repurchase rate is unchanged and applies to the new prices.
+
+**Sourcing.** Healing and Mana potions are now stated to exist only inside the System shop: no licensed outfitter, guild armory, pharmacy, hospital, or black-market broker stocks one at any price, and none may appear on a world shelf, in a world loot cache, or in an NPC's kit unless Alexander put it there. The world's own restorative-alchemy market — brewed from beast cores, the thing that can arrest the gray sleep — is separate and unaffected; it acts on the severity axis over elapsed time and restores no pool as an immediate quantity. NPCs have no concept of a System potion. Owen remains the only person who knows the System exists at all.
+
+**Migration boundary.** Every already-resolved purchase and consumption stands exactly as narrated, including this session's two Standard Mana Potions bought and drunk at the old 75 g / 50%-of-maximum terms (`EVT-000150`, `EVT-000152`) and the Lesser Mana Potions at `EVT-000144` and `EVT-000150`. No held potion changes identity, Rank, quantity, or ownership — Alexander's six banked lesser healing potions are untouched as objects; only their effect-on-use and shop price change, and only from this Event forward. The sourcing rule reopens nothing either: the two lesser restoratives Owen bought off the licensed shelf at Vanguard Trade & Gear remain his property and remain a completed purchase — they are world-market alchemy and always were, not System consumables.
+
+No fictional time, roll, gold, cash, owned item, skill, pool, quest, damage result, or prior outcome changed. Checkpoint 0032 remains immutable at Profile 1.24 / Data Model 0.1.5 and restores through the applicable compatibility chain to Profile 1.25."
 ```

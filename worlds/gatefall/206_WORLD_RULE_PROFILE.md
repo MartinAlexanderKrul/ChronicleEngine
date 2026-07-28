@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.24
+# Gatefall — World Rule Profile 1.25
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.24
+**Profile Version:** 1.25
 **Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.24 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-27. Version 1.24 is a **migrating System-economy correction and instant-dungeon loot clarification** over frozen 1.23: every Rank-bearing Daily Premium offer now costs 125% of its ordinary same-Rank category anchor rather than 200% or 250%, while its higher-Rank access, exclusive model/effect, quantity-one scarcity, and daily expiry remain unchanged; Section 17 now states explicitly that every instant dungeon carries Section 11.1's mineable crystal deposit. Premium consumables retain their authored fixed prices. No probability, item identity, Rank, effect, owned item, completed transaction, or completed-instance outcome changes. Data Model 0.1.5 remains unchanged.
+**Compatibility Status:** frozen at version 1.25 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-28. Version 1.25 is a **migrating consumable economy and sourcing correction** over frozen 1.24, in two parts. **Effects and prices:** Lesser and Standard Healing/Mana potions now restore a flat amount — 30/90 Health and 20/40 Mana — instead of a percentage of the drinker's maximum pool, so their value is tied to the Gate-Rank bracket they serve (Section 11.2) rather than scaling forever with the Bearer's own growth; Greater Healing/Mana potions continue to restore to full. All six potion prices are corrected so that no tier is dominated: a Standard costs fewer actions and no more gold than the Lessers it replaces from D-Rank scale upward, and a Greater is the only single-action full restore. Healing runs 60/150/750 g and Mana 50/75/480 g for Lesser/Standard/Greater. **Sourcing:** Section 12.5 now states explicitly that Healing and Mana potions exist only inside the System shop and have no world vendor, and that the world's separate restorative-alchemy market acts on the severity axis over time and restores no pool as an immediate quantity. No other item, price, Rank, probability, owned item, completed transaction, or resolved outcome changes. Data Model 0.1.5 remains unchanged.
+
+**Required 1.24 → 1.25 migration.** Preserve every resolved roll, completed purchase, resale, currency balance, item identity, Rank, binding, and fictional outcome. A Healing or Mana potion already consumed under 1.24 or earlier keeps its historically narrated percentage-based restoration exactly as resolved — this migration reopens and recomputes no past consumption. From adoption forward, every Lesser potion consumption restores a flat 30 Health or 20 Mana, every Standard potion consumption restores a flat 90 Health or 40 Mana, and every Greater potion consumption continues to restore to full; apply the new prices to every future purchase and resale. No currently held unconsumed potion changes identity, Rank, quantity, or ownership — only its effect-on-use and its shop price change prospectively. The sourcing rule is a clarification, not a reopening: no past transaction is reversed, and where earlier narration used potion vocabulary for a licensed-market purchase, the goods are world restorative alchemy and always were. Record adoption in mutable live state; immutable Profile 1.24-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.25 at readiness.
+
+Version 1.24 remains the migrating System-economy correction and instant-dungeon loot clarification advance over frozen 1.23: every Rank-bearing Daily Premium offer costs 125% of its ordinary same-Rank category anchor rather than 200% or 250%, while its higher-Rank access, exclusive model/effect, quantity-one scarcity, and daily expiry remain unchanged; Section 17 states explicitly that every instant dungeon carries Section 11.1's mineable crystal deposit. Premium consumables retain their authored fixed prices. No probability, item identity, Rank, effect, owned item, completed transaction, or completed-instance outcome changed. Data Model 0.1.5 remained unchanged.
 
 **Required 1.23 → 1.24 migration.** Preserve every resolved roll, expired rotation, purchased item, completed purchase or resale price, currency balance, item identity, Rank, effect, binding, bag state, purchase flag, and fictional outcome. For the live Daily Premium cycle only, recompute the displayed price of each **unpurchased** Weapon, Armor, Accessory, Rune, and Key from its already-stored offer Rank under Section 12.5's 125% rule, rounding upward to the next whole gold; reroll nothing and leave every purchased or expired offer untouched. Premium Consumable prices do not change. Apply Section 17's deposit clarification prospectively: do not create crystals for, reopen, or reinterpret any completed instant dungeon. Record adoption in mutable live state; immutable Profile 1.23-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.24 at readiness.
 
@@ -1532,12 +1536,12 @@ The unlimited catalogue is separate from the rotating **Daily Premium** stock be
 
 | Item | Price |
 |---|---:|
-| **Lesser healing potion** | 25 g |
-| **Standard healing potion** | 90 g |
-| **Greater healing potion** | 400 g |
-| **Lesser mana potion** | 20 g |
+| **Lesser healing potion** | 60 g |
+| **Standard healing potion** | 150 g |
+| **Greater healing potion** | 750 g |
+| **Lesser mana potion** | 50 g |
 | **Standard mana potion** | 75 g |
-| **Greater mana potion** | 300 g |
+| **Greater mana potion** | 480 g |
 | **Antidote** | 30 g |
 | **Appraisal scroll** | 60 g |
 | **Stabilization seal** | 150 g |
@@ -1547,19 +1551,49 @@ The unlimited catalogue is separate from the rotating **Daily Premium** stock be
 
 **The no-exchange rule.** There is no gold-to-USD or USD-to-gold conversion at any rate. The only bridge between the two economies is the spread between what the shop pays for a crystal and what the same crystal fetches on the licensed market — the Bearer chooses, per crystal, whether it becomes cash or gold, and cannot move value back the other way.
 
-**Consumable effects.** Healing and Mana potions scale with the drinker's own maximum pools, so Vitality and Intelligence remain causal. The stat elixir's effect is stated inline in the sell table above.
+**Tier pricing.** Lesser and Standard restore a flat amount, not a percentage, so their value tapers as the drinker outgrows the Gate-Rank bracket the tier serves (Section 11.2); Greater restores to full, so it alone scales with the drinker's own pool.
+
+Prices are **not** set so that cost-per-point falls with tier, and must not be "corrected" toward that — a Lesser is often the cheapest gold-per-point and a Greater is always the dearest. What a higher tier buys is **action economy**: one drink is one action, and a pool the lower tier cannot close in one drink costs the drinker the fight, not the gold. The design constant is the size of that premium. Against the Section 4.3 reference stat for a ranked hunter (`Health = 4 × Vitality`, `Mana = 2 × Intelligence`), the cost of refilling an empty pool is:
+
+| Rank reference | Health pool | All-Lesser | All-Standard | Greater |
+|---|---:|---|---|---|
+| E (Vit 10) | 40 | 2 × 60 = **120 g**, 2 actions | 150 g, 1 action | 750 g, 1 action |
+| D (Vit 20) | 80 | 3 × 60 = 180 g, 3 actions | **150 g**, 1 action | 750 g, 1 action |
+| C (Vit 30) | 120 | 4 × 60 = **240 g**, 4 actions | 2 × 150 = 300 g, 2 actions | 750 g, 1 action |
+| B (Vit 40) | 160 | 6 × 60 = 360 g, 6 actions | 2 × 150 = **300 g**, 2 actions | 750 g, 1 action |
+| A (Vit 50) | 200 | 7 × 60 = **420 g**, 7 actions | 3 × 150 = 450 g, 3 actions | 750 g, 1 action |
+| S (Vit 60) | 240 | 8 × 60 = 480 g, 8 actions | 3 × 150 = **450 g**, 3 actions | 750 g, 1 action |
+
+| Rank reference | Mana pool | All-Lesser | All-Standard | Greater |
+|---|---:|---|---|---|
+| E (Int 10) | 20 | 1 × 50 = **50 g**, 1 action | 75 g, 1 action | 480 g, 1 action |
+| D (Int 20) | 40 | 2 × 50 = 100 g, 2 actions | **75 g**, 1 action | 480 g, 1 action |
+| C (Int 30) | 60 | 3 × 50 = **150 g**, 3 actions | 2 × 75 = **150 g**, 2 actions | 480 g, 1 action |
+| B (Int 40) | 80 | 4 × 50 = 200 g, 4 actions | 2 × 75 = **150 g**, 2 actions | 480 g, 1 action |
+| A (Int 50) | 100 | 5 × 50 = 250 g, 5 actions | 3 × 75 = **225 g**, 3 actions | 480 g, 1 action |
+| S (Int 60) | 120 | 6 × 50 = 300 g, 6 actions | 3 × 75 = **225 g**, 3 actions | 480 g, 1 action |
+
+Reading down the columns: stepping Lesser → Standard costs between **−17% and +25% gold** and always at least halves the actions; stepping Standard → Greater costs **+67% to +113% gold** to reach a one-action full restore. Those are the authored premiums. Under the superseded percentage model the same two steps cost **+80%** and **+122%** for a single action saved apiece, which is why Standard and Greater were purchases no rational buyer made — the defect this pricing corrects.
+
+The invariant a future reprice must preserve: **no tier may be strictly dominated** — worse on gold *and* no better on actions than an all-lower-tier route to the same restoration — at any pool on the tables above, and Greater must remain the only single-action full restore.
+
+**Consumable effects.** Greater Healing and Mana potions restore to full, so they scale with the drinker's own maximum pools and Vitality/Intelligence remain causal there; Lesser and Standard restore a flat amount regardless of the drinker's Stats. The stat elixir's effect is stated inline in the sell table above.
 
 | Consumable | Effect |
 |---|---|
-| **Lesser healing potion** | Restores 25% of maximum Health, final amount rounded under Section 6.2. |
-| **Standard healing potion** | Restores 50% of maximum Health, final amount rounded under Section 6.2. |
+| **Lesser healing potion** | Restores a flat 30 Health, capped at maximum. |
+| **Standard healing potion** | Restores a flat 90 Health, capped at maximum. |
 | **Greater healing potion** | Restores Health to full. |
-| **Lesser mana potion** | Restores 25% of the drinker's maximum Mana (Section 5). |
-| **Standard mana potion** | Restores 50% of the drinker's maximum Mana. |
+| **Lesser mana potion** | Restores a flat 20 Mana, capped at maximum. |
+| **Standard mana potion** | Restores a flat 40 Mana, capped at maximum. |
 | **Greater mana potion** | Restores Mana to full. |
 | **Antidote** | Clears poisons and venoms of the drinker's Rank or below. |
 | **Appraisal scroll** | Consumed to reveal one unidentified item's complete Section 11.5 line, regardless of Intelligence; it does not identify hidden history or an unauthored effect. |
 | **Stabilization seal** | Applied to one Critical injury to suspend its untreated death risk for 24 hours; it restores no Health, clears no severity, and does not replace professional treatment. |
+
+**Healing and Mana potions are System-exclusive.** The six Healing and Mana potions above exist only inside the System shop. No licensed outfitter, guild armory, pharmacy, hospital, black-market broker, or any other world vendor stocks one, at any price, in any city — there is no supply channel, because nobody outside the Bearer can see the interface and no one else can withdraw from it. The Runtime may not place a Healing or Mana potion on a world shelf, in a world loot cache, or in an NPC's kit unless the Bearer himself put it there. Once withdrawn it becomes an ordinary transferable object and may be handed to anyone, but it always traces back to him — which is exactly why it is an exposure thread (Section 19). This exclusivity is authored for the Healing and Mana potions specifically; the antidote, appraisal scroll, and stabilization seal are System-sourced goods with no licensed supply channel of their own, but the world has its own antivenoms, appraisers, and trauma medicine and may go on having them.
+
+**Not the same goods as world restorative alchemy.** The world's own restorative-alchemy market is real, separate, and untouched by this rule: brewed from beast cores (`240_RESOURCES.md`), sold licensed and black, its high-Rank product is what can arrest the gray sleep (Bible Section 5; the off-shop note below). It works the way world medicine works — on the **severity and condition axis, over elapsed time and care** (Section 6.4) — and carries none of the magnitudes authored above. **Nothing sold anywhere in the world restores Health or Mana as an immediate quantity;** that is the System's alone. When an NPC buys, carries, or is treated with a restorative, it is always this market. NPCs have no concept of a System potion and cannot ask for one; a character naming one is either the Bearer or someone he told.
 
 **Skill runes.** A purchased rune teaches the selected Section 7.3 skill at its native rank and is consumed on use. Catalogue runes record `instruction_binding: bearer-only`; they may be carried by another person but cannot teach anyone except the Bearer. The shop will not sell a rune for a skill the Bearer already knows; mastery and higher-rank versions are earned through use or loot, never bought here. This refusal is catalogue selection, not the consumption-time duplicate protection used by loot and Premium instruction (Section 7.1).
 
@@ -1606,7 +1640,7 @@ For each Rank-bearing offer — Weapon, Armor, Accessory, Rune, and Key — make
 
 Cap every result at **S**. The rolled offer Rank determines that offer's Stats, power, protection, effect, and price; it does not change the Bearer's System Rank. Consumables are unranked and receive no Rank roll.
 
-**Premium surcharge.** A Rank-bearing Premium offer costs **125% of its ordinary same-Rank category price anchor, rounded upward to the next whole gold**. Weapon, Armor, Accessory, and Key use the corresponding Section 12.5 catalogue row at the rolled offer Rank. Premium Runes use the same-Rank rune anchor stated below. The surcharge pays for the exclusive model or loot modifier, transferable Premium instruction, quantity-one scarcity, daily opportunity, and possible access above the Bearer's unlocked catalogue Ranks; it never doubles or multiplies the price merely for appearing in the rotation. Premium Consumables have no ordinary equivalent and retain their fixed authored prices.
+**Premium surcharge.** A Rank-bearing Premium offer costs **125% of its ordinary same-Rank category price anchor, rounded upward to the next whole gold**. Weapon, Armor, Accessory, and Key use the corresponding Section 12.5 catalogue row at the rolled offer Rank. Premium Runes use the same-Rank rune anchor stated below. The surcharge pays for the exclusive model or loot modifier, transferable Premium instruction, quantity-one scarcity, daily opportunity, and possible access above the Bearer's unlocked catalogue Ranks; it never doubles or multiplies the price merely for appearing in the rotation. Premium Consumables are authored fixed-price models, not derived from any ordinary anchor, and several deliberately undercut the ordinary goods whose effects they combine — a Restoration Draught at 900 g does in one action what 750 g of Greater healing and 480 g of Greater mana do in two. That is the point: a Premium Consumable is quantity-one, expires at the next 06:00 rotation, and may not return for weeks. Its constraint is scarcity, not price, and it is meant to feel like a windfall when it appears. Do not reprice these upward to "protect" the ordinary catalogue.
 
 **Premium Weapon — draw from the seven-model Weapon bag.** Price: **125%** of the offer-Rank weapon price under the Premium surcharge rule.
 
@@ -1656,7 +1690,7 @@ The same-Rank rune price anchors are E=1,000 g, D=4,500 g, C=20,000 g, B=90,000 
 | 5 | **Runic Key** | The boss drops one guaranteed rune result in addition to its normal boss-drop roll; roll the taught skill normally. |
 | 6 | **Alchemist Key** | The boss drops one guaranteed potion cache in addition to its normal boss-drop roll; tier it by Section 11.2. |
 
-**Off-shop note — the gray sleep.** The wider world's restorative-alchemy market is separate from this Bearer-only shop (`240_RESOURCES.md`), but its one authored price anchors to the same scale: **arresting** chronic mana saturation — *the gray sleep* (Bible Section 5) — runs about a **greater healing potion's** worth of high-Rank restorative a month (≈400 g-equivalent shop-side; on the licensed medical market an **A crystal-scale sum** across a year — tens of thousands of USD, Section 12.1), while a **full reversal is an elixir-Rank intervention** priced accordingly, which is why only guilds and governments pay for a cure.
+**Off-shop note — the gray sleep.** The wider world's restorative-alchemy market is separate from this Bearer-only shop (`240_RESOURCES.md`), but its one authored price anchors to the same scale: **arresting** chronic mana saturation — *the gray sleep* (Bible Section 5) — runs about a **greater healing potion's** worth of high-Rank restorative a month (≈750 g-equivalent shop-side, per the corrected Section 12.5 price; on the licensed medical market an **A crystal-scale sum** across a year — tens of thousands of USD, Section 12.1), while a **full reversal is an elixir-Rank intervention** priced accordingly, which is why only guilds and governments pay for a cure.
 
 **Withdrawn goods are ordinary objects.** Once a consumable or item leaves the shop into the world it is an **ordinary physical object** — transferable to anyone and traceable to anyone who holds it. Ordinary goods are usable by anyone: a System-shop healing potion works in an ally's hand exactly as in the Bearer's. Instructional items are the narrow exception: their immutable Section 7.1 binding may prevent the holder from consuming them, while leaving them physically transferable. Any withdrawn good turning up in a pawnshop, an evidence locker, or a rival's kit is a physical thing with no licensed provenance and no market record — an **exposure thread** (Section 19) leading back toward a Bearer the world cannot otherwise see.
 

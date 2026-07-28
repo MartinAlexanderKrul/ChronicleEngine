@@ -13,9 +13,9 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000153
-  game_date: "2026-08-05 ~10:30 -05:00; a quiet corner near Loyola Park, Rogers Park"
-  real_date: "2026-07-27"
+  source: EVT-000154
+  game_date: "2026-08-05 ~10:30 -05:00; Profile 1.25 consumable-economy and sourcing correction, no fictional time consumed"
+  real_date: "2026-07-28"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -25,13 +25,13 @@ subjects: []
 
 ## Bindings and Versions
 
-- World: Gatefall (World Version 0.1, World Rule Profile **1.24**)
+- World: Gatefall (World Version 0.1, World Rule Profile **1.25**)
 - Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.5
 - Start city: Chicago
 - Campaign date: **2026-08-05T10:30:00-05:00, mid-morning** — a quiet corner near Loyola Park, Rogers Park, alone. This is the exact canonical settlement anchor. The next daily quest issues **06:00 on 2026-08-06**. The next crew training session is fixed for **2026-08-09, 18:00**, with a standing order that no crew Gate precedes it.
-- Campaign state: session-3 in progress. Since Checkpoint 0031's 20:40 anchor: a full night's rest and the twelfth daily quest completed with Owen at Loyola Park (streak 11→12, `EVT-000147`); the first mutual "I love you" of the relationship, over breakfast (`EVT-000147`); the morning's banked rewards claimed — a Mend rune consumed, a Daily Random Box opened, and all eight unspent Ability Points allocated to Perception/Intelligence (`EVT-000148`); four solo instant-dungeon clears run back to back for deliberate skill training (`EVT-000149`-`EVT-000152`), taking Alexander from **Level 9 to Level 10** and his **System Rank from E to D**, with eight skills advancing mastery levels; and two long-pending payouts finally landing (`EVT-000153`).
-- World Rule Profile: Gatefall **1.24**, frozen on repository date 2026-07-27 — unchanged this session. Alexander currently has no pending ratification.
-- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0032/` — immutable Profile **1.24** / Data Model **0.1.5** capture at the 2026-08-05 10:30 anchor, requiring no migration on restore. `900_CHECKPOINT_0031` (2026-08-04 20:40, over dinner) remains the preceding immutable historical capture, also Profile 1.24 / Data Model 0.1.5, no migration required.
+- Campaign state: session-3 in progress. Since Checkpoint 0031's 20:40 anchor: a full night's rest and the twelfth daily quest completed with Owen at Loyola Park (streak 11→12, `EVT-000147`); the first mutual "I love you" of the relationship, over breakfast (`EVT-000147`); the morning's banked rewards claimed — a Mend rune consumed, a Daily Random Box opened, and all eight unspent Ability Points allocated to Perception/Intelligence (`EVT-000148`); four solo instant-dungeon clears run back to back for deliberate skill training (`EVT-000149`-`EVT-000152`), taking Alexander from **Level 9 to Level 10** and his **System Rank from E to D**, with eight skills advancing mastery levels; two long-pending payouts finally landing (`EVT-000153`); and Profile 1.25's consumable-economy and sourcing correction adopted (`EVT-000154`).
+- World Rule Profile: Gatefall **1.25**, frozen on repository date 2026-07-28 — Lesser/Standard Healing and Mana potions now restore a flat amount (30/90 Health, 20/40 Mana) instead of a percentage of maximum, with all six potion prices corrected so no tier is dominated; Greater potions still restore to full. Healing and Mana potions are also now stated System-exclusive: no world vendor stocks one. Alexander currently has no pending ratification.
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0032/` — immutable Profile **1.24** / Data Model **0.1.5** capture at the 2026-08-05 10:30 anchor. Restoring it requires the applicable compatibility chain through **Profile 1.25 / Data Model 0.1.5** before play. `900_CHECKPOINT_0031` (2026-08-04 20:40, over dinner) remains the preceding immutable historical capture, also Profile 1.24 / Data Model 0.1.5, and likewise runs the full applicable chain.
 
 ## Protagonist
 
@@ -59,6 +59,8 @@ Session 3 continues directly from Checkpoint 0031's anchor over dinner at Owen's
 
 **Payouts land (`EVT-000153`).** A text to Owen ("E Rank dungeons are sooo boring") drew a reply from his patient rounds. A phone check turned up the Sable & Kern harvest share (+$9,000) and the Cicero Gate split (+$1,762.50) both cleared — cash $10,051.00→$20,813.50. The ≈$40,000 Denise Ferro share remains processing. A follow-up text to Dale Pruitt confirmed the B-Rank mining lead is still undecided, a real answer expected by end of day 2026-08-06.
 
+**Profile 1.25 consumable-economy and sourcing correction (`EVT-000154`, no fictional time consumed).** Lesser and Standard Healing/Mana potions now restore a flat amount — 30/90 Health, 20/40 Mana — instead of a percentage of maximum, so their value is tied to the Gate-Rank bracket they serve rather than scaling forever with Alexander's own growth; Greater potions continue to restore to full. All six prices are corrected to 60/150/750 g (Healing) and 50/75/480 g (Mana) so no tier is dominated — a Standard now costs fewer actions and no more gold than the Lessers it replaces, and a Greater is the only single-action full restore. Healing and Mana potions are additionally stated **System-exclusive**: no licensed outfitter, guild armory, pharmacy, hospital, or black-market broker stocks one, and none may appear on a world shelf or in an NPC's kit unless Alexander put it there; the world's separate restorative-alchemy market acts on the severity axis over elapsed time and restores no pool as an immediate quantity. Every already-resolved purchase and consumption this session (including `EVT-000150`'s and `EVT-000152`'s mana potions at the old terms) remains canon exactly as narrated; only future purchases and consumptions use the new figures. Alexander's 6 banked lesser healing potions are unaffected in identity, Rank, or count — only their effect-on-use and shop price change prospectively.
+
 **Open threads, none urgent:** the moving-in question (`OBJ-15`), still open and unresolved; twenty-two E-Rank cores with only one pawn-shop outlet; Cicero's Quiet [C-Rank] sitting at the pawn shop for $35,000, not purchased; six live Premium offers expiring 2026-08-06 06:00; the ≈$40,000 harvest share still processing; crew training fixed for 2026-08-09 with a standing no-Gate order until then; OBJ-12 (the crew question) still undecided; Priya's untested question about the spend-call rule; Renata's deferred *who are you, exactly?*; the sensor rig still owed for Owen's 14 September birthday; possible B-Rank mining work through Dale, answer expected 2026-08-06; Ironline Guild's pending recruitment overture (Wade Bishop); the artificer thread, still open with Owen chasing a lead through Kesha; a duplicate rune teaching Flash Step [D-Rank] and a duplicate rune teaching Stone Skin [E-Rank], both unconsumed; and 5 unspent stat points, unallocated.
 
 ## Current Scene Anchor
@@ -69,7 +71,9 @@ Session 3, mid-morning of 2026-08-05, ~10:30, a quiet corner near Loyola Park, R
 
 Session 3 in progress — **checkpoint `900_CHECKPOINT_0032` written** at the 2026-08-05 10:30 anchor, carrying `EVT-000147` (morning run, daily quest, "I love you"), `EVT-000148` (rewards claimed), `EVT-000149` (Hive instant dungeon), `EVT-000150` (Ashfield instant dungeon — Level 10, System Rank D), `EVT-000151` (Overgrown Temple instant dungeon), `EVT-000152` (Shattered City instant dungeon), and `EVT-000153` (payouts land, standing threads check in).
 
-Checkpoint 0032 is the latest immutable restore point at **Profile 1.24 / Data Model 0.1.5**, requiring **no migration on restore**. `900_CHECKPOINT_0031` (2026-08-04 20:40) remains the preceding immutable historical capture, also Profile 1.24 / Data Model 0.1.5, no migration required. Registry is advanced through `EVT-000153`.
+Post-checkpoint live canon also carries `EVT-000154` (Profile 1.25 consumable-economy and sourcing correction adopted); it does not rewrite the immutable checkpoint.
+
+Checkpoint 0032 is the latest immutable restore point at **Profile 1.24 / Data Model 0.1.5** and requires the applicable compatibility chain through Profile 1.25 / Data Model 0.1.5 on restore. `900_CHECKPOINT_0031` (2026-08-04 20:40) remains the preceding immutable historical capture, also Profile 1.24 / Data Model 0.1.5, and likewise runs the full applicable chain. Registry is advanced through `EVT-000154`.
 
 **Proactive trigger audit (Profile Sections 7.1, 8.4, and 14.3).** Quest checks ran at scene opening and after each resolved exchange this session. No Urgent condition arose and no Hidden pointer condition arose; non-daily slots remain **0/2** with no pending offer. The skill-formation audit ran four times this session at dangerous-scene close (the four instant dungeons): Keen Sense, Rupture, Flash Step, Dagger Mastery, Twin Fang, Stone Skin, Bulwark, and Exploit Pattern each advanced one mastery level on a third qualifying scene; Mend and Sprint (both newly learned this session) each advanced Novice→Practiced on their own third qualifying scenes; Resonance Extraction remains unchanged (no consequential-work scene this session). No candidate reached a new `pending-ratification` threshold — all advances were mastery gains on already-ratified skills. `dimensional_weapon_control` remains `tracking` at 2/3, `nonvisual_combat_mapping` and `formation_instruction` remain `tracking` at 1/3 — none touched this session.
 

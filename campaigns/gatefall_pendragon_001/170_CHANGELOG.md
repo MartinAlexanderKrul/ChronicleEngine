@@ -13,9 +13,9 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000153
-  game_date: "2026-08-05 ~10:30 -05:00; a quiet corner near Loyola Park, Rogers Park"
-  real_date: "2026-07-27"
+  source: EVT-000154
+  game_date: "2026-08-05 ~10:30 -05:00; Profile 1.25 consumable-economy and sourcing correction, no fictional time consumed"
+  real_date: "2026-07-28"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -810,5 +810,13 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - Text to Owen and reply from his patient rounds. Two long-pending payouts cleared: Sable & Kern harvest share (+$9,000), Cicero Gate split (+$1,762.50) — cash $10,051.00→$20,813.50. The ≈$40,000 Denise Ferro harvest share remains processing. Follow-up text to Dale Pruitt: B-Rank mining lead still undecided, real answer expected by end of day 2026-08-06.
 - **Ledger updates:** `120_INVENTORY_AND_OWNERSHIP.md` (cash, Pending Income moved to Received), `140_OBJECTIVES.md` (OBJ-2 update).
 - **Repository allocation:** `EVT-000153`; no entity or relationship identifier minted.
+
+**2026-08-05, ~10:30 Chicago time — Profile 1.25 consumable-economy and sourcing correction adopted (`EVT-000154`; no fictional time consumed).**
+
+- **Flat-restore potions:** Lesser Healing/Mana potions now restore a flat 30 Health / 20 Mana; Standard Healing/Mana potions now restore a flat 90 Health / 40 Mana — both capped at maximum — replacing the old 25%/50%-of-maximum formula. Greater Healing/Mana potions continue to restore to full.
+- **Repriced to match:** Lesser 60 g / 50 g (Healing/Mana), Standard 150 g / 75 g, Greater 750 g / 480 g — priced so no tier is dominated. A Standard now costs fewer actions and no more gold than the Lessers it replaces from D-Rank scale upward, and a Greater is the only single-action full restore; cost-per-point does not fall with tier and is not meant to. No potion currently held changes identity, Rank, or quantity; every already-resolved past purchase and past consumption (including this session's `EVT-000150` and `EVT-000152` mana potions) remains canon exactly as narrated.
+- **System-exclusive sourcing:** Healing and Mana potions exist only inside the System shop — no world vendor stocks one, and none may appear on a world shelf, in a world loot cache, or in an NPC's kit unless Alexander put it there. The world's separate restorative-alchemy market is unaffected: it acts on the severity axis over elapsed time and restores no pool as an immediate quantity. Owen's two licensed restoratives bought at Vanguard Trade & Gear remain his property and are reclassified as world-market alchemy, which is what they always were.
+- **Versions:** Gatefall Profile 1.24→1.25. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0032 remains immutable and applies the complete migration chain at readiness.
+- **Repository allocation:** `EVT-000154`; no entity, record, or relationship identifier minted.
 
 **Session-3 continuation checkpoint pending — `saves/900_CHECKPOINT_0031/` to be written at the 2026-08-04 20:40 anchor, carrying `EVT-000140`–`EVT-000146`.**

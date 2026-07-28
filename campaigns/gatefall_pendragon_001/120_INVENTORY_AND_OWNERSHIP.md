@@ -204,7 +204,7 @@ Coalition payouts process in **2–3 business days** from filing; past that the 
 | **Horizon Bastion Torso** | torso | D-Rank | 5% | $3,000 | `ENT-000139` |
 | **Horizon Bastion Boots** | feet | D-Rank | 5% | $3,000 | `ENT-000139` |
 
-  Owen's own purchases the same visit, with his own money and at his own insistence after Alexander overrode their agreed cost split: a compact field kit, two lesser healing potions off the licensed shelf, and tape. These are his property and are not tracked in Alexander's inventory.
+  Owen's own purchases the same visit, with his own money and at his own insistence after Alexander overrode their agreed cost split: a compact field kit, two lesser licensed restoratives off the shelf (world-market alchemy, not System consumables — `206` Section 12.5 sourcing rule, `EVT-000154`), and tape. These are his property and are not tracked in Alexander's inventory.
 
   Standing liability unchanged: $30,000 tuition principal, $400/month minimum.
 

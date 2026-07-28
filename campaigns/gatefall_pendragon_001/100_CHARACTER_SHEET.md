@@ -13,9 +13,9 @@ canonical_record: REC-000074
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000153
-  game_date: "2026-08-05 ~10:30 -05:00; a quiet corner near Loyola Park, Rogers Park"
-  real_date: "2026-07-27"
+  source: EVT-000154
+  game_date: "2026-08-05 ~10:30 -05:00; Profile 1.25 consumable-economy and sourcing correction, no fictional time consumed"
+  real_date: "2026-07-28"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -66,7 +66,8 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.24"
+    profile_version: "1.25"
+    profile_consumable_economy_event: EVT-000154
     profile_premium_surcharge_event: EVT-000135
     profile_system_interface_event: EVT-000134
     profile_mandatory_ratification_gate_event: EVT-000133

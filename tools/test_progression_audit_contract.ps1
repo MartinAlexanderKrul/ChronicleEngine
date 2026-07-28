@@ -57,11 +57,11 @@ try {
     $baseline = Invoke-Validation $tempRoot
     Assert-True ($baseline.ExitCode -eq 0) "Unmodified Data Model 0.1.5 repository did not validate:`n$($baseline.Output)"
     Assert-True ((Get-Text $profile).Contains('progression-batch-settlement')) `
-        "Gatefall Profile 1.24 does not preserve promotion-time non-combat progression batching."
+        "Gatefall Profile 1.25 does not preserve promotion-time non-combat progression batching."
     Assert-True ((Get-Text $profile).Contains('Promotion reconciliation.')) `
-        "Gatefall Profile 1.24 does not preserve known combat-skill counter reconciliation."
+        "Gatefall Profile 1.25 does not preserve known combat-skill counter reconciliation."
     Assert-True ((Get-Text $profile).Contains('Mandatory ratification gate.')) `
-        "Gatefall Profile 1.24 does not preserve the next-scene ratification gate."
+        "Gatefall Profile 1.25 does not preserve the next-scene ratification gate."
     Assert-True ((Get-Text $runtime).Contains('mandatory readiness and next-scene gate')) `
         "The Save Algorithm does not preserve pending ratification as a next-scene gate."
     Assert-True ((Get-Text $runtime).Contains('re-count every known combat skill activation')) `

@@ -77,11 +77,14 @@ An invariant is not upheld because it is documented; it is upheld only if a name
 | Invariant | Moment checked | Enforcement layer |
 |-----------|----------------|-------------------|
 | Grounding | Before asserting any state, each turn | Resident per-turn |
+| Grounding — NPC channel | Before any NPC line asserting a fact about the player character beyond present visible conduct | Resident per-turn |
 | No silent canon | When durable canon is authored | Resident per-turn, backed by the mechanical barrier (Section 5.4) |
 | Promotion | At each durability boundary; obligation tracked per turn | Deferred barrier (Sections 2.2, 5.3), with resident promotion-obligation tracking |
 | Canon-determinism | When state is written | Resident per-turn, backed by the mechanical barrier (Section 5.4) |
 
 This obligation is substrate-general: any substrate whose default execution can diverge from an invariant must site enforcement at the point of divergence. A substrate that provably cannot violate an invariant records that as its enforcement point.
+
+The **NPC channel** row is Grounding applied to dialogue rather than a fifth invariant: an NPC asserting a fact it has no in-fiction channel to is the Runtime treating its own knowledge as canon, which Invariant 1 already forbids. It is listed separately because it has its own moment of violation. It is sited resident for the reason Section 5.3 gives — a full channel test carried *only* by fetched reference is the configuration Decision 055 rules out, and in practice it did not fire: one campaign recorded four leaks in a single session, including three on one thread after two corrections, while a complete and well-written fetched treatment of the rule already existed.
 
 ---
 

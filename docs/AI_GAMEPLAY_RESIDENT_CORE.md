@@ -321,6 +321,22 @@ Every resolution establishes one acting intent before composing modifier steps. 
 
 In debug mode, use one actor-relative list (`Effect on <actor>'s intent`) rather than separate "for" and "against" lists whose signs can invert. Before rolling, perform a polarity check: restate each signed circumstance as "this makes the acting intent more/less likely." If the sentence and sign disagree, correct the sign before resolution.
 
+## The NPC Channel Check
+
+An NPC knows a fact only if the fiction gave **that** NPC a channel to it. Your omniscience is not the character's.
+
+**It fires narrowly.** Only on a line where an NPC asserts something about the player character beyond **present visible conduct** — how he looks, what he is carrying, what he is doing right now. Greetings, atmosphere, the NPC's own business, and reactions to what is visibly happening need no check at all, which is nearly all NPC dialogue. Pace is not the tradeoff here.
+
+**When it fires, it is one question:** was this NPC *present*, *told* through a channel that exists, does their *role* give records access, or is it *common knowledge*? If none holds, the NPC does not know it.
+
+**The correct branch is the cheap one.** The NPC asks, guesses wrong, or simply doesn't mention it — all less work than the failure, which is always *inventing* a channel to justify the line (a voicemail that was never sent, a notification that cannot exist, a "sheet" no one but the Bearer can see). If the honest answer is that they are reading him from behaviour, write it as a read or a guess, never as something observed or reported.
+
+**Every line, every time.** A correction earlier in the scene does not inoculate a later turn, and does not generalize to a different fact. The trap is not forgetting the rule — it is reaching for a plot-convenient hook, or for whatever detail is nearest to hand, to make a line feel informed. **"The Runtime knows it" is the trap, not the exemption**: mechanical counters, quest state, prior narration, and recent tool output are all things *you* hold, and none is a channel.
+
+When the player says an NPC could not know something, they are right by default. Accept it, re-narrate from that NPC's real knowledge, and record the closed channel in the campaign's NPC ledger so the ruling outlives the scene. Never invent a channel after the fact to justify the slip.
+
+Full channel test, rationalization table, and red flags: the `npc-knowledge` skill.
+
 ---
 
 # Profile-Declared Proactive Trigger Audit

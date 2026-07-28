@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000148 |
-| Record | `REC-` | Canonical Record | REC-000097 |
-| Event | `EVT-` | Event | EVT-000146 |
+| Record | `REC-` | Canonical Record | REC-000098 |
+| Event | `EVT-` | Event | EVT-000153 |
 | Relationship | `REL-` | Relationship | REL-000070 |
 
 ---
@@ -269,6 +269,14 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000145 | Event | Gatefall: Pendragon: the System named to Owen outright (2026-08-04, ~20:35–20:40) — the largest disclosure of the campaign |
 | EVT-000146 | Event | Gatefall: Pendragon: "I am never losing you," and the moving-in question opened (2026-08-04, ~20:40) — mutual reaffirmation of the relationship; new objective OBJ-15 opened, unresolved |
 | REC-000097 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0031/900_SAVE_MANIFEST.md` — session-3 continuation checkpoint at the 2026-08-04 20:40 anchor, captured under frozen Profile 1.24 / Data Model 0.1.5, no migration required on restore |
+| EVT-000147 | Event | Gatefall: Pendragon: the morning of 2026-08-05 — twelfth daily quest completed with Owen at Loyola Park (streak 11→12); the first mutual "I love you" of the relationship over breakfast; breakfast conversation on the artificer/core-outlet plan |
+| EVT-000148 | Event | Gatefall: Pendragon: the morning's banked rewards claimed — Mend rune consumed (learned), Daily Random Box opened (+500 g), Ability Points +3 combined with 5 unspent and allocated (Perception +4, Intelligence +4) |
+| EVT-000149 | Event | Gatefall: Pendragon: solo Instant-Dungeon Key [E-Rank] (Alchemist Key) used, archetype Hive — Keen Sense advanced Novice→Practiced; XP 300→670/900; loot 37 crystals, 1 core, boss-drop rune teaching Sprint |
+| EVT-000150 | Event | Gatefall: Pendragon: Sprint rune consumed (learned); ordinary Instant-Dungeon Key [E-Rank] used, archetype Ashfield — Twin Fang/Stone Skin/Bulwark/Exploit Pattern advanced Novice→Practiced, Rupture Adept→Master; **Level 9→10, System Rank E→D**; loot 26 crystals, 2 cores, boss-drop key |
+| EVT-000151 | Event | Gatefall: Pendragon: Instant-Dungeon Key [E-Rank] used, archetype Overgrown Temple — Flash Step Adept→Expert, Dagger Mastery Practiced→Adept, Mend Novice→Practiced; XP 40→350/1000; loot 27 crystals, 4 cores, duplicate Guard Shield, bonus-shrine key |
+| EVT-000152 | Event | Gatefall: Pendragon: Instant-Dungeon Key [E-Rank] used, archetype Shattered City — Keen Sense Practiced→Adept, Sprint Novice→Practiced; XP 350→610/1000; loot 22 crystals, 2 cores, duplicate Stone Skin rune |
+| EVT-000153 | Event | Gatefall: Pendragon: two long-pending payouts land (Sable & Kern +$9,000, Cicero split +$1,762.50; cash $10,051.00→$20,813.50); follow-up texts to Owen and Dale Pruitt |
+| REC-000098 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0032/900_SAVE_MANIFEST.md` — session-3 continuation checkpoint at the 2026-08-05 10:30 anchor, captured under frozen Profile 1.24 / Data Model 0.1.5, no migration required on restore |
 
 ---
 

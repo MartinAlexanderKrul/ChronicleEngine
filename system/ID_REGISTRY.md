@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000150 |
-| Record | `REC-` | Canonical Record | REC-000099 |
-| Event | `EVT-` | Event | EVT-000158 |
-| Relationship | `REL-` | Relationship | REL-000070 |
+| Entity | `ENT-` | Persistent Entity | ENT-000163 |
+| Record | `REC-` | Canonical Record | REC-000100 |
+| Event | `EVT-` | Event | EVT-000159 |
+| Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
 
@@ -285,6 +285,12 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000157 | Event | Gatefall: Pendragon: the pawnbroker, round two (2026-08-05, ~11:40–12:15) — ten private E-Rank cores paid against a nine-core price for information rather than cash (stash 22→12); district trust map, BGM's real flagging mechanics, and Cicero's Quiet's true provenance obtained; the pawnbroker's own want for C-Rank-and-above cores opened; an unlicensed-artificer consultation brokered but not yet made |
 | REC-000099 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0033/900_SAVE_MANIFEST.md` — session-3 continuation checkpoint at the 2026-08-05 12:15 anchor, captured under frozen Profile 1.25 / Data Model 0.1.5, no migration required on restore |
 | EVT-000158 | Event | Gatefall: Pendragon: Profile 1.25→1.26 skill-Rank ascension — a skill's Rank stops being fixed at acquisition and rises by two offered routes, breakthrough at Master (→ Adept, +1 Rank) and rune ascension (→ Novice, to the item's Rank), both capped at System Rank + 1, a ceiling that binds acquisition too so waiting to learn confers no advantage; utility skills gain a Rank scale satisfying the Rank Dominance Law; the shop opens higher-Rank runes for known skills at the C–S anchors; `mastery_level` and `rank_ascensions` added as tracked counters; folded correction making Keen Sense and Silent Step scene-long at every mastery level with mastery widening scope instead of duration, and correcting three self-contradictory fields on the live Keen Sense line. Additive — no live value changes |
+| REC-000100 | Record | Gatefall world Knowledge Subjects ledger: `worlds/gatefall/230_KNOWLEDGE_SUBJECTS.md` — the concealed-discovery supply Profile Section 8.4.3 consumes |
+| ENT-000151 – ENT-000160 | Entity | Gatefall world concealed discoveries (`230_KNOWLEDGE_SUBJECTS.md`): the Cicero sublevel, the off-band cores, Foss's shelved brand file, the Red Line's repeating detection point, Okafor's off-record clears, the Lakefront's practiced distance, the Old Town Gate's receding clock, the lanes the CGA declines to close, the Libeň analyst's chart, and the brand as one pattern |
+| REL-000071 – REL-000083 | Relationship | Gatefall: thirteen holder Knowledge States over the ten world concealed discoveries |
+| ENT-000161 – ENT-000163 | Entity | Gatefall: Pendragon campaign-scope concealed discoveries (`110_WORLD_LEDGER.md`): the pawnbroker's use for high-Rank cores, what became of the Cicero scavenger, and what Ferro's Reclamation gets back |
+| REL-000084 – REL-000086 | Relationship | Gatefall: Pendragon: three holder Knowledge States over the campaign-scope concealed discoveries |
+| EVT-000159 | Event | Gatefall: Pendragon: Profile 1.26→1.27 concealed-canon supply — Section 8.4.3's Hidden-quest filter had no source behind it, so no Hidden quest could fire in fourteen in-fiction days of play; new `230_KNOWLEDGE_SUBJECTS.md` supplies ten world-scope concealed discoveries translated from already-authored secrets, three campaign-scope promotions join `110_WORLD_LEDGER.md`, and new Section 8.4.5 authors the field contract and the time-separated promotion ritual. Additive — no live value changes and no pointer attaches retroactively |
 
 ---
 

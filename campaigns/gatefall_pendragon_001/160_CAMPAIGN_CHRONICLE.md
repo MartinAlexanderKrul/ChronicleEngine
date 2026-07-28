@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000158
+  source: EVT-000159
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -119,6 +119,7 @@ subjects:
   - EVT-000156
   - EVT-000157
   - EVT-000158
+  - EVT-000159
 ```
 
 ---
@@ -3254,4 +3255,36 @@ description: "Adopted frozen Gatefall World Rule Profile 1.26, which makes a ski
 **Immediately consequential.** Rupture stands E-Rank at Master with its Rank below the C-Rank ceiling, and is therefore ascension-ready the moment play resumes: the System will present a breakthrough offer taking it to D-Rank Adept, ×2.30 against a 25 baseline, 57 on a standard success against its current 26. No other known skill is at Master. The offer stands open indefinitely and costs nothing to decline.
 
 No fictional time, roll, gold, cash, owned item, skill value, pool, quest, damage result, or prior outcome changed. Checkpoint 0033 remains immutable at Profile 1.25 / Data Model 0.1.5 and restores through the applicable compatibility chain to Profile 1.26."
+```
+
+## EVT-000159 - Profile 1.27: Concealed-Canon Supply
+
+```yaml
+id: EVT-000159
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-05 ~12:15 -05:00"
+  real_date: "2026-07-28"
+type: Event
+kind: ruling
+importance: immediate
+game_date: "2026-08-05 ~12:15 -05:00"
+participants:
+  - ENT-000125
+description: "Gatefall World Rule Profile 1.26 → 1.27 adopted at the 2026-08-05 12:15 anchor. **Additive**: no fictional time, roll, gold, cash, owned item, skill value, pool, counter, quest, or prior outcome changed.
+
+**The defect.** Across the campaign's full played span — fourteen in-fiction days, 2026-07-22 to 2026-08-05, and every day Section 8.4 has existed — the System has issued **zero Hidden quests and zero Urgent quests**. No audit was performed incorrectly. Section 8.4.3 makes a Hidden pointer eligible only when a concealed discovery *already exists in authored canon* with a recorded reveal condition, and the resident trigger audit is expressly forbidden to invent one. Gatefall had authored many secrets — Foss's shelved brand file, Deacon's off-band cores, the Cicero Scar's unexplained perimeter spikes, the Old Town Gate's receding clock — but not one of them carried a reveal condition, an objective, or any statement of what physical proximity to it meant, so not one could satisfy the section's fourth criterion. The filter was correct and the supply behind it was empty. Every audit that fired nothing was right to.
+
+**The supply.** New world ledger `worlds/gatefall/230_KNOWLEDGE_SUBJECTS.md` (`REC-000100`) holds ten world-scope `concealed-discovery` records (`ENT-000151`–`ENT-000160`) with thirteen holder Knowledge States (`REL-000071`–`REL-000083`). These invent no new mysteries: each translates a secret Gatefall had already authored into the exact shape Section 8.4.3 consumes, and each is sited where an E- or D-Rank hunter working ordinary contracts can physically reach it. Six sit in Chicago, three in Prague, and one — the brand as one pattern — is the connective subject none of its four fragment-holders has ever set beside another's. Several bottom out in the World Bible's owner-only section; those carry `resolution_depth: surface`, state their reachable layer only, and leave the deep answer to an owner ruling at reveal.
+
+**Campaign promotions.** Three threads this campaign's own fiction produced are promoted into eligible concealed canon in `110_WORLD_LEDGER.md` (`ENT-000161`–`ENT-000163`, `REL-000084`–`REL-000086`): the pawnbroker's withheld use for C-Rank-and-above cores, already flagged in canon as a live thread; what became of the Cicero scavenger who stopped taking calls; and the return half of Ferro's Reclamation's two-way favor trade with Coalition compliance — the half that determines whether Alexander's own name travels.
+
+**The ritual (Section 8.4.5).** A Runtime may now author a concealed-discovery record during play, promoting an unresolved thread the fiction already produced. Three bounds: **time separation** — a record is written no earlier than the close of the scene that produced its thread, and its pointer may attach no earlier than a *later* scene, so a record authored and attached in one exchange remains manufacturing and stays prohibited under Section 14.3 Tier 3; **grounding** — the record anchors to something already established, never to an invented mystery; and **completeness before attachment** — the full field set including the reveal condition is written before any pointer attaches, so retroactive quest creation stays impossible. The section also fixes the field contract, forbids a record from storing a reward (Section 8.4.3 fixes that from System Rank at attachment), and holds world records immutable against play, with live pointer status remaining campaign state.
+
+**What did not change.** Section 8.4.3's four criteria are untouched and all four still must hold. Real proximity or a genuinely resolved clue is still required; asking the System what `???` means still reveals nothing; a guess is still not a pointer; and Section 8.4.4 still forbids completion from conduct predating attachment. The change widens the supply of things to find, not the bar for finding them.
+
+**Adoption boundary.** **No pointer attaches at adoption.** The fourteen days already played are not re-audited against the new ledger, and `system_state.non_daily_quests` is unchanged — capacity 0/2 with `active: []` and `pending_offers: []`. Every campaign-scope record's proximity condition is deliberately forward-looking: delivering a C-Rank-or-above core into the pawnbroker's hands, reaching the middleman or the Cicero recovery site, doing business inside Ferro's. Alexander holds a secondhand account of the Cicero remains and the scavenger's silence, which is neither first-hand proximity nor a resolved clue under the records as authored. Checkpoint 0033 remains immutable at Profile 1.25 / Data Model 0.1.5 and restores through the applicable compatibility chain to Profile 1.27."
 ```

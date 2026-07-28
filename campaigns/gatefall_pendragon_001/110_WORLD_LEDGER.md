@@ -15,13 +15,19 @@ canonical_record: REC-000075
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000157
+  source: EVT-000159
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
 scope: campaign
 subjects:
   - REL-000062
+  - ENT-000161
+  - ENT-000162
+  - ENT-000163
+  - REL-000084
+  - REL-000085
+  - REL-000086
 ```
 
 ```yaml
@@ -70,6 +76,156 @@ References into authoritative Gatefall records. These are pointers, not copies; 
 Not visible to Alexander at start: BGM Region V's internal Ranking Bench field notes flagging the Red Line Gate's mana-pressure curve as climbing faster than a true D (`EVT-000051`'s non-public detail), and the identities or agendas of any of Gatefall's notable figures beyond ordinary public reputation.
 
 **Update, 2026-07-24 (`EVT-000059`):** The System attached to Alexander mid-clear, inside the Red Line Corridor Gate — see `100_CHARACTER_SHEET.md`'s `system_state`. This changes nothing about what is *publicly* known (the row below still holds: the System does not publicly exist, and nothing about Earth's or Gatefall's common knowledge has changed), but it is no longer true that Alexander has nothing System-side to know — he is now the world's first and only Bearer, a fact perceptible to him alone (Profile Section 14.4) and unknown to his crew, the Coalition, or anyone else.
+
+---
+
+## Campaign-Scope Concealed Discoveries (Profile Section 8.4.5)
+
+Campaign-scope `concealed-discovery` records, anchored on entities this campaign created. They carry the complete field contract Profile Section 8.4.5 requires and Section 8.4.3 consumes. World-scope discoveries live in `worlds/gatefall/230_KNOWLEDGE_SUBJECTS.md`; these three are promotions of threads this campaign's own fiction produced, authored at `EVT-000159` under the promotion ritual.
+
+**None of these attaches a pointer at adoption.** Each `proximity_condition` below is deliberately forward-looking — an action Alexander has not yet taken. The fourteen in-fiction days already played are not re-audited, per the Profile 1.26 → 1.27 compatibility treatment.
+
+These records are owner-facing. A Runtime never renders one, and an attached pointer shows `???` and nothing else.
+
+### ENT-000161 — The pawnbroker's use for high-Rank cores
+
+```yaml
+id: ENT-000161
+canonical_record: REC-000075
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: EVT-000159
+  game_date: "2026-08-05 ~12:15 -05:00"
+  real_date: "2026-07-28"
+type: Discovery/Knowledge
+subtype: concealed-discovery
+scope: local
+lifecycle: active
+aliases:
+  - name: "the pawnbroker's use for high-Rank cores"
+    quality: current
+canonical_state:
+  claim: "Asked what he actually wants, the pawnbroker (`ENT-000147`) named C-Rank cores and above, began to give a reason, visibly stopped himself, and said only that he has a use for things that don't come cheap through normal channels and that the shop's margins don't stretch to it. The use is real, it is not resale, and it is the reason a warehouse-district salvage dealer is quietly outbidding his own margins."
+  anchor: ENT-000147
+  concealment: "He stopped himself deliberately, in the same register as his discretion about Alexander's dimensional-inventory slip. He is not hiding it under pressure; he has simply decided Alexander has not yet earned it, and he does not volunteer twice."
+  proximity_condition: "Physically delivering a C-Rank-or-above core into his hands — the one thing he has said he wants and the one thing Alexander has never had to give him."
+  clue_condition: "Establishing from a third party in the district that the pawnbroker has been buying high-Rank cores from someone else, at prices his shop's trade cannot explain."
+  reveal_condition: "The pawnbroker states the use himself, unprompted by a direct question — which he does only once Alexander is a supplier of exactly the material in question rather than a seller of E-Rank stock."
+  objective: "Learn what he wants the high-Rank cores for."
+  completion_condition: "The use established first-hand, from him."
+  failure_or_expiry: "Expires if Alexander presses him directly for it before supplying — pressing converts a withheld confidence into a closed one, consistent with his established character, and he does not reopen it."
+  resolution_depth: "surface — the use itself is an owner ruling and is not authored here."
+  bearer_knows: false
+```
+
+### ENT-000162 — What became of the Cicero scavenger
+
+```yaml
+id: ENT-000162
+canonical_record: REC-000075
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: EVT-000159
+  game_date: "2026-08-05 ~12:15 -05:00"
+  real_date: "2026-07-28"
+type: Discovery/Knowledge
+subtype: concealed-discovery
+scope: local
+lifecycle: active
+aliases:
+  - name: "what became of the Cicero scavenger"
+    quality: current
+canonical_state:
+  claim: "The unlicensed scavenger who pulled Cicero's Quiet [C-Rank] out of an active federal quarantine stopped taking calls not long after the sale — no trouble traced, no body, nothing official. The middleman's own phrase for the artifact was that it 'came out colder than it went in.' Something accounts for the silence."
+  anchor: ENT-000147
+  concealment: "Everything Alexander holds is a secondhand account relayed by the pawnbroker from a middleman he has never personally traced — Character Knowledge only, establishing nothing as Objective Reality (Decision 060). The middleman is unnamed and unmet; the scavenger has no identifier."
+  proximity_condition: "Reaching the middleman in person, or standing at the cordon recovery site inside the Cicero Scar where the artifact was pulled."
+  clue_condition: "Obtaining a second account of the scavenger's disappearance from a source independent of the pawnbroker's middleman."
+  reveal_condition: "The Bearer establishes what happened to the scavenger from a source with first-hand knowledge, or from physical evidence at the recovery site."
+  objective: "Account for the scavenger's silence."
+  completion_condition: "The cause of the disappearance established first-hand, not relayed."
+  failure_or_expiry: "Expires if Cicero's Quiet leaves the pawnbroker's case to another buyer — the artifact is the only thread Alexander holds back to the middleman, and the pawnbroker will not chase a sold item's provenance for him."
+  resolution_depth: "surface — what happened is an owner ruling and is not authored here. It may or may not connect to `ENT-000151`; that connection is not established."
+  bearer_knows: false
+```
+
+### ENT-000163 — What Ferro's Reclamation gets back
+
+```yaml
+id: ENT-000163
+canonical_record: REC-000075
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: EVT-000159
+  game_date: "2026-08-05 ~12:15 -05:00"
+  real_date: "2026-07-28"
+type: Discovery/Knowledge
+subtype: concealed-discovery
+scope: local
+lifecycle: active
+aliases:
+  - name: "what Ferro's Reclamation gets back"
+    quality: current
+canonical_state:
+  claim: "Ferro's Reclamation (`ENT-000150`), two blocks north of the pawn shop, trades favors with Coalition compliance staff **in both directions**. Alexander has been told the outbound half — its owner talks, which makes the shop an informant risk. The return half is what compliance gives back, and that is the half that determines whether a name mentioned near Ferro's reaches a desk that matters or dies in a corridor."
+  anchor: ENT-000150
+  concealment: "Alexander bought the trust map from a competitor two blocks away, who named the risk without characterizing what sustains it. Neither side of the arrangement has any reason to describe it to a hunter selling undeclared cores in the same district."
+  proximity_condition: "Doing business inside Ferro's Reclamation in person, or being present when a Coalition compliance staffer is."
+  clue_condition: "Establishing that a specific piece of information Alexander can trace passed from Ferro's to a Coalition desk, and observing what followed it back."
+  reveal_condition: "The Bearer establishes what compliance provides in return — from either party, or from documentation of a favor already run."
+  objective: "Establish the return half of the arrangement."
+  completion_condition: "The reciprocal consideration established first-hand, with the responsible desk identified."
+  failure_or_expiry: "No expiry. This discovery carries live exposure risk rather than a deadline: Alexander now moves undeclared cores two blocks from a shop that talks, and reaching this discovery means getting close to the channel that would carry his own name."
+  resolution_depth: "surface — the arrangement's content is an owner ruling and is not authored here."
+  bearer_knows: false
+```
+
+### Holder Knowledge States
+
+```yaml
+id: REL-000084
+canonical_record: REC-000075
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: EVT-000159
+  game_date: "2026-08-05 ~12:15 -05:00"
+  real_date: "2026-07-28"
+endpoints: [ENT-000147, ENT-000161]
+type: knowledge-state
+qualities: "Holder: the pawnbroker (principal). State: complete and deliberately withheld. He knows exactly what he wants the cores for, started to say it, and stopped. He filed Alexander's 'not yet' without pursuing it, in the same register as the dagger slip."
+```
+
+```yaml
+id: REL-000085
+canonical_record: REC-000075
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: EVT-000159
+  game_date: "2026-08-05 ~12:15 -05:00"
+  real_date: "2026-07-28"
+endpoints: [ENT-000147, ENT-000162]
+type: knowledge-state
+qualities: "Holder: the pawnbroker (relayer). State: secondhand and incurious. He has the middleman's account and the middleman's phrase, has never traced the middleman himself, and treats the scavenger's silence as a thing that happens in his trade rather than a question."
+```
+
+```yaml
+id: REL-000086
+canonical_record: REC-000075
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: EVT-000159
+  game_date: "2026-08-05 ~12:15 -05:00"
+  real_date: "2026-07-28"
+endpoints: [ENT-000150, ENT-000163]
+type: knowledge-state
+qualities: "Holder: Ferro's Reclamation (principal). State: complete and operational. Its owner knows precisely what the arrangement returns, having run it in both directions for long enough that the district treats the outbound half as common knowledge."
+```
 
 ---
 

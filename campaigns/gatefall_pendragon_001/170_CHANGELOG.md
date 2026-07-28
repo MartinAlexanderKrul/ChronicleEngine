@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000158
+  source: EVT-000159
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -863,3 +863,15 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **Live consequence:** **Rupture [E-Rank] Master is ascension-ready** — the only known skill at Master and below the ceiling. A breakthrough offer to **D-Rank Adept (×2.30, 57 on a standard success against its current 26)** will be presented at the next settlement or promotion barrier. It costs nothing to decline and stands open indefinitely.
 - **Versions:** Gatefall Profile 1.25→1.26. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0033 remains immutable at Profile 1.25 and adopts the additive step at readiness with no recomputation.
 - **Repository allocation:** `EVT-000158`; no entity, record, or relationship identifier minted.
+
+**2026-08-05, ~12:15 Chicago time — Profile 1.27 concealed-canon supply adopted (`EVT-000159`; no fictional time consumed).**
+
+- **Defect corrected:** across the campaign's full played span — **fourteen in-fiction days** (2026-07-22 → 2026-08-05) and every day Section 8.4 has existed — the System issued **zero Hidden and zero Urgent quests**. Not a play error: Section 8.4.3 requires a concealed discovery to *already exist in authored canon* with a recorded reveal condition, and the resident trigger audit is forbidden to invent one. Gatefall's authored secrets (Foss's brand file, Deacon's off-band cores, the Cicero perimeter spikes, the Old Town Gate's receding clock) carried no reveal condition, no objective, and no statement of what proximity to them meant, so none could satisfy criterion 4. The filter was correct; the supply behind it was empty.
+- **New world ledger `worlds/gatefall/230_KNOWLEDGE_SUBJECTS.md` (`REC-000100`):** ten world-scope `concealed-discovery` records (`ENT-000151`–`ENT-000160`) and thirteen holder Knowledge States (`REL-000071`–`REL-000083`). Six Chicago, three Prague, one cross-city connective subject. These invent nothing — each translates an already-authored secret into the shape Section 8.4.3 consumes, sited within reach of an E/D-Rank hunter on ordinary contracts. Records bottoming out in the owner-only Bible section carry `resolution_depth: surface` and state only their reachable layer.
+- **Campaign promotions (`110_WORLD_LEDGER.md`):** `ENT-000161`–`ENT-000163` with `REL-000084`–`REL-000086` — the pawnbroker's withheld use for C-Rank-and-above cores (already flagged in canon as a live thread), what became of the Cicero scavenger, and the return half of Ferro's Reclamation's two-way favor trade with Coalition compliance.
+- **New Section 8.4.5 — supply and the promotion ritual.** Fixes the eleven-field record contract; forbids a stored reward (Section 8.4.3 fixes it from System Rank at attachment); holds world records immutable against play with live pointer status remaining campaign state; and authors the ritual by which a Runtime promotes an unresolved thread into eligible concealed canon, bound by **time separation** (authored no earlier than its scene's close, attachable no earlier than a *later* scene — same-exchange authoring and attachment remains manufacturing, prohibited under Section 14.3 Tier 3), **grounding**, and **completeness before attachment**. The authoring obligation is to seed non-transactional texture, explicitly **not a quota**: no rate, no dry-spell threshold, and no circumstance in which a quiet session justifies inventing a mystery.
+- **Section 8.4.3 criterion 1** now names the ledger. The other three criteria are untouched and all four still must hold.
+- **Classification: additive.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changed. Data Model 0.1.5 unchanged.
+- **No retroactive attachment.** `system_state.non_daily_quests` is unchanged — **0/2 active**, `active: []`, `pending_offers: []`. The fourteen played days are not re-audited; every campaign-scope record's proximity condition is forward-looking. Alexander's secondhand account of the Cicero remains and the scavenger's silence is neither first-hand proximity nor a resolved clue under the records as authored.
+- **Versions:** Gatefall Profile 1.26→1.27. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0033 remains immutable at Profile 1.25 and runs the applicable compatibility chain through 1.27 at readiness.
+- **Repository allocation:** `REC-000100`, `ENT-000151`–`ENT-000163`, `REL-000071`–`REL-000086`, `EVT-000159`.

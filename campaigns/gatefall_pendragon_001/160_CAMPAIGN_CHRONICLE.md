@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000173
+  source: EVT-000174
   game_date: "2026-08-06 ~11:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -136,6 +136,7 @@ subjects:
   - EVT-000171
   - EVT-000172
   - EVT-000173
+  - EVT-000174
 ```
 
 ---
@@ -3702,4 +3703,24 @@ participants:
   - ENT-000125
   - ENT-000139
 description: "Swam alone off the rocks near Loyola Park after finishing the regimen. Owen texted about the note; over a short exchange Alexander invited him to join rather than explain, and Owen talked his way free of an early start ('give me twenty minutes'). Owen arrived, waded in complaining about the cold exactly as Alexander had, and revealed — apparently for the first time — that he lifeguarded this exact stretch of water in college, delivered as a joke about jurisdiction. Light banter continued (Owen confirmed ordinary mender rounds at 10:00, no Bridgeport job); he asked whether Alexander had plans for the day, unanswered at scene's end. No Stat, XP, gold, Mana, or item change; Health and Mana both remained at maximum throughout."
+```
+
+## EVT-000174 - Skill Formation: Reactive Pattern Anticipation Opened
+
+```yaml
+id: EVT-000174
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-06 ~11:15 -05:00"
+  real_date: "2026-07-28"
+type: Event
+kind: ruling
+importance: minor
+game_date: "2026-08-06 ~11:15 -05:00"
+participants:
+  - ENT-000125
+description: "Owner flag, post-checkpoint: `EVT-000167`'s Milo reaction-footwork drill (2026-08-05) was recorded as pure qualitative capability with no tracked candidate, and should have opened one under Section 7.1 — a repeatable method (reading an opponent's tell before the call lands, pre-empting footwork, recovering mid-stride on a miss) demonstrated with material success under real feedback. Correcting the omission: opens skill-formation candidate `reactive_pattern_anticipation`, signature `read-opponent-tell-before-call-lands.pre-empt-footwork.recover-mid-stride-on-miss`, status `tracking`, evidence `EVT-000167#milo-footwork-drill-cold-double-pass`. Per Section 7.1's distinct-scene rule, one continuous structured-practice session counts once regardless of the two reps within it — this stands at **1/3** qualifying scenes toward ratification, not 2/3. A second distinct practice session would bring it to 2/3; a third ratifies it automatically if fully authored by then (Section 7.1; Profile 1.22), or opens the mandatory adjudication queue if not. No fictional time, roll, Stat, or prior resolved outcome changed."
 ```

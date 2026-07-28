@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000173
+  source: EVT-000174
   game_date: "2026-08-06 ~11:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -1010,3 +1010,10 @@ Claim separately at any time.
 - Confirmed Owen has ordinary mender rounds at 10:00, no Bridgeport job. Owen asked whether Alexander had plans for the day — unanswered at scene's end.
 - No Stat, XP, gold, Mana, or item change; Health and Mana both remained at maximum throughout.
 - Repository allocation: `EVT-000173`; no entity or relationship identifier minted.
+
+**2026-08-06, ~11:15 Chicago time — skill formation: reactive pattern anticipation opened (`EVT-000174`; no fictional time consumed).**
+
+- Owner flag: `EVT-000167`'s Milo footwork drill (2026-08-05) should have opened a Section 7.1 skill-formation candidate at the time and did not.
+- Corrected: opens `reactive_pattern_anticipation` (signature: read-tell-before-call-lands, pre-empt footwork, recover mid-stride on a miss), status `tracking`, evidence `EVT-000167#milo-footwork-drill-cold-double-pass`.
+- **1/3 qualifying scenes**, not 2/3 — one continuous practice session counts once regardless of reps within it (Section 7.1, distinct-scene rule). A second distinct session brings it to 2/3; a third ratifies automatically if fully authored, or opens the mandatory adjudication queue if not.
+- Repository allocation: `EVT-000174`; no entity or relationship identifier minted.

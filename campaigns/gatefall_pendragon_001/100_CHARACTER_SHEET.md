@@ -13,7 +13,7 @@ canonical_record: REC-000074
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000173
+  source: EVT-000174
   game_date: "2026-08-06 ~11:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -283,6 +283,13 @@ canonical_state:
         evidence:
           - EVT-000069#private-summon-and-grip-drill
           - EVT-000070#ashfield-pocket-swap-feint
+      - domain: gatefall.skill_formation
+        key: reactive_pattern_anticipation
+        signature: read-opponent-tell-before-call-lands.pre-empt-footwork.recover-mid-stride-on-miss
+        status: tracking
+        evidence:
+          - EVT-000167#milo-footwork-drill-cold-double-pass
+        note: "Opened retroactively (`EVT-000174`) from `EVT-000167`'s already-recorded evidence — Milo's reaction-footwork drill, run twice cold at the Coalition training grounds (legendary then strong success), Milo's own read that it looked like anticipation rather than reflex. One continuous structured-practice session counts as one qualifying scene regardless of the two reps within it (Section 7.1, evidence point 5), so this stands at 1/3 toward a ratification-eligible candidate, not 2/3. A second distinct session with Milo or an equivalent drill partner would bring it to 2/3; a third would ratify it (Section 7.1; 1.22's automatic-ratification rule) if the result is fully authored by then, or open the mandatory adjudication queue if not."
     gold: 507
     shop_holdings:
       - "Mender's Seal — clears one Minor injury, or reduces one Moderate injury to Minor; restores no Health (Section 12.5) · purchased via the 2026-07-30 Daily Premium cycle, 1,200 g (`EVT-000088`) · banked, unused"

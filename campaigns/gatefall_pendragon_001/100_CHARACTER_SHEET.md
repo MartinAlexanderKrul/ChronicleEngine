@@ -13,7 +13,7 @@ canonical_record: REC-000074
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000167
+  source: EVT-000168
   game_date: "2026-08-05 ~14:40 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -66,7 +66,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.29"
+    profile_version: "1.30"
     profile_skill_rank_ascension_event: EVT-000158
     profile_consumable_economy_event: EVT-000154
     profile_premium_surcharge_event: EVT-000135

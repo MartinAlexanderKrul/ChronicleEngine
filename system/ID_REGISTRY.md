@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000168 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000167 |
+| Event | `EVT-` | Event | EVT-000168 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -304,6 +304,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000166 | Event | Gatefall: Pendragon: bought two coffees (cash −$7.00) and walked to the Windy City Hunters Coalition; Kesha Morrison offered a sitting Red Line waiver-tier posting (declined), then found a fresh, not-yet-public confirmed E-Rank Gate at the Lakefront Gate Corridor and agreed to hold it for a Cicero-style two-handed booking with Owen until 22:00 tonight (`OBJ-17` opened). Reconfirmed the Denise Ferro payout still processing. 50 minutes elapsed, Mana 25→31/72 (recovery only) |
 | ENT-000168 | Entity | Gatefall: Pendragon: Milo, a sensor-adjacent hunter met at the Coalition training grounds, trains reaction footwork; no notable combat skill |
 | EVT-000167 | Event | Gatefall: Pendragon: checked phone for Dale's answer (not due until tomorrow); brief warm exchange with Denise Ferro (no work available, named near top of her list); Tanya Voss visible but not approached; met Milo (`ENT-000168`) and ran his reaction-footwork drill twice cold — 🎲 d100 88 (legendary success) then 🎲 d100 73 (strong success). Qualitative capability only, no authored skill/counter. 35 minutes elapsed, Mana 31→35/72 (recovery only) |
+| EVT-000168 | Event | Gatefall: Pendragon: Profile 1.29→1.30 trigger telemetry — new Section 8.4.6 requires an owner-facing `trigger_telemetry` block at each checkpoint recording Hidden/Urgent dry counts alongside the concealed-record and tracked-posting supply figures that make them interpretable, so a dead trigger surfaces in the repository rather than in play. Diagnostic only: never a precondition, never a threshold that fires a quest, never System state, never rendered in `/system`. Additive; no live value changes and immutable checkpoints are not retrofitted |
 
 ---
 

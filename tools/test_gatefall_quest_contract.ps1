@@ -32,7 +32,7 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8
 $runtimeProfile = Get-Content -LiteralPath $runtimeProfilePath -Raw -Encoding UTF8
 $latestCheckpoint = Get-Content -LiteralPath $latestCheckpointPath -Raw -Encoding UTF8
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.29\r?$') "Gatefall Profile 1.29 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.30\r?$') "Gatefall Profile 1.30 is not active."
 Assert-True ($profile -match 'The Bearer has \*\*1 concurrent non-daily quest slot by default\*\*') "Default non-daily capacity is not fixed at 1."
 Assert-True ($profile -match 'Multitask raises this to \*\*2\*\*; Analyst raises it to \*\*3\*\*') "Multitask/Analyst capacity increases are not fixed at 2 and 3."
 Assert-True ($profile -match 'The `\[DAILY\]` quest has its own reserved slot') "Daily quests do not have an explicit reserved slot."
@@ -42,15 +42,15 @@ Assert-True ($profile -match 'Gate-clear milestone XP for the Bearer''s System R
 Assert-True ($profile -match 'A quest cannot complete from conduct that occurred before') "Pre-attachment retroactive completion is not prohibited."
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
-Assert-True ($character -match 'profile_version: "1\.29"') "Live Gatefall character was not migrated to Profile 1.29."
+Assert-True ($character -match 'profile_version: "1\.30"') "Live Gatefall character was not migrated to Profile 1.30."
 Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 1\s+analyst_bonus: 0\s+capacity_total: 2\s+active: \[\]\s+pending_offers: \[\]') "Live Multitask quest capacity is missing or incorrect."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
-Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.29"') "Campaign startup does not bind Profile 1.29."
+Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.30"') "Campaign startup does not bind Profile 1.30."
 Assert-True ($startup -match 'latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0029') "Campaign startup does not target the latest checkpoint."
 Assert-True ($startup -match 'Sections 7\.1, 7\.4, 8\.4, and 14\.3 before readiness completes') "Gatefall startup does not preload the skill and proactive-trigger contracts."
 Assert-True ($startup -match 'require_profile_trigger_audit: true') "Gatefall startup does not require the proactive trigger audit."
-Assert-True ($index -match 'World Rule Profile 1\.29, frozen') "World index does not advertise frozen Profile 1.29."
+Assert-True ($index -match 'World Rule Profile 1\.30, frozen') "World index does not advertise frozen Profile 1.30."
 Assert-True ($profile -match 'SKILLS[^\r\n]+ACTIVE') "Gatefall /system template does not render an ACTIVE skills group."
 Assert-True ($profile -match 'SKILLS[^\r\n]+PASSIVE') "Gatefall /system template does not render a PASSIVE skills group."
 Assert-True ($profile -match 'contains every skill whose ledger entry carries a Mana cost') "Gatefall /system skills do not classify ACTIVE entries from canonical Mana cost."
@@ -194,5 +194,48 @@ Assert-True ($profile -match '\*\*Red gate\*\* — the Gate seals on entry and c
 
 # Reward and lifecycle untouched.
 Assert-True ($profile -match 'E-Rank 40, D-Rank 100, C-Rank 240, B-Rank 600, A-Rank 1,600, S-Rank 4,000') "Urgent reward ladder changed."
+
+# --- Profile 1.30: trigger telemetry (Section 8.4.6) ---
+
+$currentStatePath = Join-Path $repo "campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md"
+$currentState = Get-Content -LiteralPath $currentStatePath -Raw -Encoding UTF8
+
+Assert-True ($profile -match '(?m)^### 8\.4\.6 Trigger Telemetry\r?$') "Profile lacks Section 8.4.6."
+Assert-True ($profile -match '\*\*It is diagnostic, and it is never a trigger\.\*\*') "Section 8.4.6 does not declare itself diagnostic-only."
+Assert-True ($profile -match 'wearing a counter as a disguise') "Section 8.4.6 does not prohibit dry-spell-threshold firing as a Tier-3 evasion."
+Assert-True ($profile -match '\*\*It is not System state\.\*\*') "Section 8.4.6 does not keep telemetry out of System state."
+Assert-True ($profile -match 'never render in any `/system` panel') "Section 8.4.6 does not bar telemetry from /system."
+Assert-True ($profile -match '\*\*Existing checkpoints are not retrofitted\.\*\*') "Section 8.4.6 does not protect immutable checkpoints from retrofit."
+Assert-True ($profile -match 'Supply healthy, dry count rising\*\* — \*not\* a fault') "Section 8.4.6 does not distinguish a healthy dry count from a design fault."
+
+# The live block exists, carries every field, and is not inside system_state.
+Assert-True ($currentState -match '(?m)^trigger_telemetry:') "Live ledger carries no trigger_telemetry block (Section 8.4.6)."
+foreach ($f in @('hidden_pointers_attached','hidden_last_attached','hidden_dry_days',
+                 'urgent_offers_issued','urgent_last_offered','urgent_dry_days',
+                 'concealed_records_available','tracked_postings')) {
+    Assert-True ($currentState -match ("(?m)^\s+" + $f + ":")) "trigger_telemetry is missing required field '$f' (Section 8.4.6)."
+}
+Assert-True ($character -notmatch 'trigger_telemetry') "trigger_telemetry leaked into system_state on the character ledger; Section 8.4.6 forbids it."
+
+# The recorded supply counts must match the ledgers they summarise.
+$worldRecords = ([regex]::Matches($knowledge, '(?m)^subtype: concealed-discovery\r?$')).Count
+$campaignRecords = ([regex]::Matches($worldLedger, '(?m)^subtype: concealed-discovery\r?$')).Count
+$boardRows = ([regex]::Matches($worldLedger, '(?m)^\| `GB-\d+` \|')).Count
+
+Assert-True ($currentState -match '(?m)^\s+concealed_records_available:\s*(\d+)') "trigger_telemetry.concealed_records_available is unreadable."
+$recordedConcealed = [int]$Matches[1]
+Assert-True ($currentState -match '(?m)^\s+tracked_postings:\s*(\d+)') "trigger_telemetry.tracked_postings is unreadable."
+$recordedPostings = [int]$Matches[1]
+
+Assert-True ($recordedConcealed -eq ($worldRecords + $campaignRecords)) "trigger_telemetry.concealed_records_available is $recordedConcealed but the ledgers hold $($worldRecords + $campaignRecords) concealed-discovery records ($worldRecords world + $campaignRecords campaign)."
+Assert-True ($recordedPostings -eq $boardRows) "trigger_telemetry.tracked_postings is $recordedPostings but the Section 9.10 board holds $boardRows postings."
+
+# Cheap invariants on the recorded values. Note that an actually-exhausted supply
+# is caught earlier and more strictly by Assert-ConcealedRecords' minimum counts --
+# these two only catch a telemetry block that records zero while agreeing with
+# ledgers that somehow also hold zero. Kept as defence in depth, not as the
+# primary guard.
+Assert-True ($recordedConcealed -gt 0) "Concealed-discovery supply is exhausted: no Hidden quest can attach under Section 8.4.3 regardless of how correctly the audit runs. Author concealed canon under Section 8.4.5."
+Assert-True ($recordedPostings -gt 0) "The Section 9.10 board is empty: Section 8.4.2 has no Gate-sourced input stream. Let ordinary channels surface postings."
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

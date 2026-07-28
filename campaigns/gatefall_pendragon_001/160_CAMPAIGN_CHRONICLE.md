@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000161
+  source: EVT-000168
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -3542,4 +3542,38 @@ Milo was visibly startled both times, joked that it looked like Alexander was re
 **No trigger fired.** No Urgent or Hidden condition. Non-daily slots remain 0/2.
 
 **Settlement:** 35 minutes elapsed (14:05→14:40); Mana 31→35/72 (recovery only, no skill used). Scene closes with Alexander back in the open Coalition lot, empty coffee cup in hand, no destination decided."
+```
+
+## EVT-000168 - Profile 1.30: Trigger Telemetry
+
+```yaml
+id: EVT-000168
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-05 ~14:40 -05:00"
+  real_date: "2026-07-28"
+type: Event
+kind: ruling
+importance: immediate
+game_date: "2026-08-05 ~14:40 -05:00"
+participants:
+  - ENT-000125
+description: "Gatefall World Rule Profile 1.29 → 1.30 adopted at the 2026-08-05 14:40 anchor. **Additive**: no fictional time, roll, gold, cash, owned item, skill value, pool, counter, quest, or prior outcome changed.
+
+**The defect.** Profiles 1.27, 1.28 and 1.29 fixed the dead Hidden and Urgent triggers. This step fixes the reason the fault survived a whole campaign undetected: **nothing counted the zeros**. Every proactive audit was performed correctly and recorded honestly, each one reporting that no condition arose — and no artifact anywhere aggregated those reports into the observation that none ever had. The gap surfaced because the player noticed it, not because the repository said so.
+
+**Section 8.4.6 — trigger telemetry.** Each checkpoint now writes a `trigger_telemetry` block into mutable live state: lifetime Hidden pointer attachments and Urgent offers, the campaign timestamp of the most recent of each, the in-fiction days since (or since campaign start where neither has ever happened), and the two **supply** counts — concealed discoveries available under Section 8.4.5, and live postings on the Section 9.10 board.
+
+**The supply counts are the point.** A dry count alone is uninterpretable, and reading it wrongly is how the original defect persisted. Supply zero against a rising dry count is the design fault: no amount of correct auditing can produce a quest from an empty supply, and the response is to author concealed canon or let the board surface postings, at the owner's pace, between sessions. Supply healthy against a rising dry count is **not a fault at all** — it means the world has things to find and the Bearer has not yet met a proximity, clue, or crisis condition, and the correct response is none. A checkpoint recording a rising dry count against healthy supply is reporting a working system.
+
+**Diagnostic, never a trigger.** Nothing in the section creates, permits, or obliges a quest. No value it records is a precondition; no threshold releases the Runtime from Section 8.4.2 or 8.4.3; and a long dry count is never grounds to attach a pointer, issue an offer, invent a crisis, or lower a bar. A rule firing a quest at a dry-spell threshold would be a Tier-3 no-declared-precondition firing wearing a counter as a disguise (Section 14.3), and is prohibited exactly as such. The Runtime writes these counters and does not act on them; the owner reads them, between sessions, about the design.
+
+**Not System state.** The System's assertive domain is closed (Sections 14.1, 14.4) and holds nothing about the health of its own trigger supply. The block lives in campaign state, never in `system_state`, and never renders in any `/system` panel. Alexander cannot see it and cannot ask.
+
+**First reading, at this anchor — the healthy zero, not the broken one.** `hidden_pointers_attached: 0`, `urgent_offers_issued: 0`, both dry counts at **14** in-fiction days from the 2026-07-22 campaign start. But `concealed_records_available: 15` — ten world-scope in `230_KNOWLEDGE_SUBJECTS.md` and five campaign-scope in `110_WORLD_LEDGER.md`, none attached or completed — and `tracked_postings: 4`. The same two zeros that signalled a broken engine before Profile 1.27 now signal a working one. This afternoon's own span is the demonstration: two concealed records were authored from genuinely resolved Keen Sense reads (`ENT-000165`, the storefront's operator; `ENT-000167`, the fenced warehouse's purpose), and neither attached a pointer, because both are exterior reads with no entry, transaction, or traced contact. That is Section 8.4.3's bar holding, and it needs no fix.
+
+**Immutable checkpoints are not retrofitted.** Captures predating this section stay byte-unchanged and carry no telemetry block; the counters begin at the first checkpoint written after adoption and count from campaign start. Adoption attaches no pointer, issues no offer, and re-audits no past scene. Checkpoint 0034 remains immutable at Profile 1.25 / Data Model 0.1.5 and restores through the applicable compatibility chain to Profile 1.30."
 ```

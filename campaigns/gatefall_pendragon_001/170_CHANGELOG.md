@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000161
+  source: EVT-000168
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -954,3 +954,16 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - Tanya Voss visible at the training grounds but not approached. Met **Milo** (`ENT-000168`, new), a sensor-adjacent hunter training reaction footwork. Ran his drill twice: 🎲 d100 88 (legendary success) then 🎲 d100 73 (strong success, one late feint recovered). Recorded as qualitative demonstrated capability, no authored skill or counter.
 - Settlement: 35 minutes elapsed; Mana 31→35/72 (recovery only).
 - Repository allocation: `ENT-000168`, `EVT-000167`.
+
+**2026-08-05, ~14:40 Chicago time — Profile 1.30 trigger telemetry adopted (`EVT-000168`; no fictional time consumed).**
+
+- **Defect corrected:** 1.27–1.29 fixed the dead Hidden and Urgent triggers; this fixes why the fault survived a whole campaign undetected. Every proactive audit ran correctly and reported honestly that no condition arose, and **nothing aggregated those reports** into the observation that none ever had. The gap surfaced because the player noticed, not because the repository said so.
+- **New Section 8.4.6 — `trigger_telemetry`,** written into mutable live state at each checkpoint: `hidden_pointers_attached`, `hidden_last_attached`, `hidden_dry_days`, `urgent_offers_issued`, `urgent_last_offered`, `urgent_dry_days`, `concealed_records_available`, `tracked_postings`.
+- **The supply counts are the point.** A dry count alone is uninterpretable — misreading it is how the original defect persisted. **Supply zero + rising dry count** = the design fault; no amount of correct auditing produces a quest from an empty supply, and the fix is authoring concealed canon or letting the board surface postings, at the owner's pace, between sessions. **Supply healthy + rising dry count** = **not a fault**; the world has things to find and the Bearer hasn't met a proximity, clue, or crisis condition. Correct response: none.
+- **Diagnostic, never a trigger.** No value is a precondition, no threshold releases the Runtime from Sections 8.4.2/8.4.3, and no dry count ever justifies attaching a pointer, issuing an offer, inventing a crisis, or lowering a bar. Firing a quest at a dry-spell threshold would be a **Tier-3 no-declared-precondition firing wearing a counter as a disguise** (Section 14.3) and is prohibited as such. The Runtime writes; the owner reads.
+- **Not System state.** Lives outside `system_state`, never renders in any `/system` panel (Sections 14.1, 14.4). Alexander cannot see or ask.
+- **First reading at this anchor — the healthy zero:** both dry counts **14** days from the 2026-07-22 start, `hidden_pointers_attached: 0`, `urgent_offers_issued: 0` — but `concealed_records_available: **15**` (10 world + 5 campaign, none attached or completed) and `tracked_postings: **4**`. The same two zeros that meant a broken engine before 1.27 now mean a working one. This afternoon demonstrates it: `ENT-000165` and `ENT-000167` were authored from resolved Keen Sense reads and neither attached, both being exterior reads with no entry, transaction, or traced contact — Section 8.4.3's bar holding.
+- **Classification: additive.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changed. Data Model 0.1.5 unchanged.
+- **Immutable checkpoints are not retrofitted** — pre-adoption captures stay byte-unchanged and carry no telemetry block; counters begin at the first post-adoption checkpoint and count from campaign start. Adoption attaches no pointer, issues no offer, and re-audits nothing.
+- **Versions:** Gatefall Profile 1.29→1.30. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0034 remains immutable at Profile 1.25 and runs the applicable compatibility chain through 1.30 at readiness.
+- **Repository allocation:** `EVT-000168`; no entity, record, or relationship identifier minted.

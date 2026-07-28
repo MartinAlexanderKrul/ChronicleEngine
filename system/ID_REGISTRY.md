@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000148 |
-| Record | `REC-` | Canonical Record | REC-000098 |
-| Event | `EVT-` | Event | EVT-000154 |
+| Entity | `ENT-` | Persistent Entity | ENT-000150 |
+| Record | `REC-` | Canonical Record | REC-000099 |
+| Event | `EVT-` | Event | EVT-000157 |
 | Relationship | `REL-` | Relationship | REL-000070 |
 
 ---
@@ -278,6 +278,12 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000153 | Event | Gatefall: Pendragon: two long-pending payouts land (Sable & Kern +$9,000, Cicero split +$1,762.50; cash $10,051.00→$20,813.50); follow-up texts to Owen and Dale Pruitt |
 | REC-000098 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0032/900_SAVE_MANIFEST.md` — session-3 continuation checkpoint at the 2026-08-05 10:30 anchor, captured under frozen Profile 1.24 / Data Model 0.1.5, no migration required on restore |
 | EVT-000154 | Event | Gatefall: Pendragon: Profile 1.24→1.25 consumable-economy correction — Lesser/Standard Healing and Mana potions restore a flat 30/90 Health and 20/40 Mana instead of 25%/50% of maximum; all six potion prices corrected to Healing 60/150/750 g and Mana 50/75/480 g so no tier is dominated; Healing and Mana potions stated System-exclusive with no world vendor, the world's separate restorative alchemy acting on the severity axis over time |
+| EVT-000155 | Event | Gatefall: Pendragon: the Coalition call (2026-08-05, ~10:30–10:35) — no mining work posted; standing flag set for any C-Rank-or-above mining contract; Kesha corrects Alexander's "spectator" account from Priya's payout notes |
+| ENT-000149 | Entity | Gatefall: Pendragon: the Cutting Edge proprietor, unnamed owner-operator of the warehouse-district custom gear shop; rigidly licensed, logs core provenance without exception |
+| EVT-000156 | Event | Gatefall: Pendragon: Cutting Edge, first visit (2026-08-05, ~11:20–11:32) — commissioning rules established in fiction (core Rank is a hard ceiling, Rank is not additive, combining buys volume not power); Alexander refuses to disclose core count or source three times; nothing bought, sold, or commissioned |
+| ENT-000150 | Entity | Gatefall: Pendragon: Ferro's Reclamation, a warehouse-district salvage dealer named as an informant risk (owner trades favors with Coalition compliance staff); unrelated to Denise Ferro |
+| EVT-000157 | Event | Gatefall: Pendragon: the pawnbroker, round two (2026-08-05, ~11:40–12:15) — ten private E-Rank cores paid against a nine-core price for information rather than cash (stash 22→12); district trust map, BGM's real flagging mechanics, and Cicero's Quiet's true provenance obtained; the pawnbroker's own want for C-Rank-and-above cores opened; an unlicensed-artificer consultation brokered but not yet made |
+| REC-000099 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0033/900_SAVE_MANIFEST.md` — session-3 continuation checkpoint at the 2026-08-05 12:15 anchor, captured under frozen Profile 1.25 / Data Model 0.1.5, no migration required on restore |
 
 ---
 

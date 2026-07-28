@@ -12,6 +12,15 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-28 — Promotion-barrier settlement enforced
+
+Refinement under milestone 0.3.5; no Engine Rule, Data Model section, or decision number changed. Profile Section 7.1 already required each promotion barrier to create a `progression-batch-settlement` Event carrying the batch audit, including an explicit `none`.
+
+**Observed failure:** a qualifying practice scene was written up as "not a System skill, not mechanically tracked" and opened no candidate. System-skill eligibility and Section 7.1 candidacy are independent questions and only the first was asked.
+**Cause:** the deferred half of the audit had never run anywhere. Neither settlement kind appears as an Event `kind` in any of four campaigns, so the Decision 080 audit check — which keys off those kinds — had only ever fired against the contract test's own injected fixture, an input real play never produced. Sealed notes had nowhere to land.
+**Resident fix:** Resident Core names the non-sequitur (a progression domain is not the world's power system; the two questions are orthogonal) and states that a barrier which writes no settlement has discarded the deferral rather than honoured it.
+**Enforcement:** `tools/validate_repository.ps1` fails when play Events sit newer than the last settlement Event, against a closed exempt set of bookkeeping kinds. One Event per checkpoint discharges it. `tools/test_progression_audit_contract.ps1` gains coverage for the branch that actually failed — an unsettled play Event — and its prior "a deferred work scene validates cleanly" assertion is inverted, that expectation having been the bug. Its `kind` mutation anchors are now fixture-unique, since a real Event using a settlement kind now exists.
+
 ## 2026-07-28 — NPC channel check sited in the resident layer
 
 Runtime refinement under Version 0.3 milestone 0.3.5, surfaced four times in one Gatefall: Pendragon session; no Engine Rule, Data Model section, command mechanism, or decision number changed. Refinement under Decision 069 point 1: it sites an obligation the engine already carries (Invariant 1, Grounding) and adds no mechanism a world must satisfy — the case Decision 069 names explicitly, with Decision 055 as the type case.

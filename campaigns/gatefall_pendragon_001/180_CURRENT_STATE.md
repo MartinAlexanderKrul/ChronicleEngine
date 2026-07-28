@@ -13,7 +13,7 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000174
+  source: EVT-000175
   game_date: "2026-08-06 ~11:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -202,3 +202,13 @@ trigger_telemetry:
 **Sealed instances — and a correction.** The working assumption that sealed instances are bystander-free is wrong on the profile's own text: Section 17 lets him bring a party into an instant dungeon, and Section 9.6's red gate seals whoever entered. Criterion 1 can hold there. It can never hold where he went in **alone**, so a solo instant dungeon is permanently Urgent-ineligible — a deliberate cost rather than an oversight. Of the eleven instant dungeons he has opened, ten were solo; the eleventh (`EVT-000144`) opened the Crypt around both him and Owen, who was inside for the whole clear. **The more of his dangerous time he spends in private instances of his own opening, the less of his life is Urgent-eligible.**
 
 **No retroactive offers.** Nothing is re-audited, nothing reopened, and no offer is reconstructed for anyone who was in peril in an earlier session. Non-daily slots remain **0/2**, `active: []`, `pending_offers: []`. Eligibility applies prospectively from the first audit after adoption.
+
+## Promotion-Barrier Batch Settlement (`EVT-000175`, no fictional time consumed)
+
+Profile Section 7.1 splits its skill-formation audit in two: a dangerous scene settles at its own close, while consequential work and structured practice **seal notes and defer** classification to the next promotion barrier, which must create one `progression-batch-settlement` Event carrying the result — including an explicit `none`.
+
+**No barrier had ever created one.** Neither settlement kind appears as an Event `kind` in this campaign or any other, across 35 checkpoints. The deferred half of the audit had never run, so a sealed note had nowhere to land and a qualifying practice scene looked exactly like a non-qualifying one. `EVT-000167`'s Milo reaction-footwork drill is what that cost: it was written up as "not a System skill, not mechanically tracked" — a non-sequitur, since System-skill eligibility and Section 7.1 candidacy are independent questions — and stayed invisible until an owner re-read it and opened `reactive_pattern_anticipation` by hand (`EVT-000174`).
+
+`EVT-000175` discharges the outstanding barrier for the thirteen play Events since the `EVT-000153` baseline. One qualifies (`EVT-000167`, already opened, recorded here rather than counted twice); the rest classify `none` on stated grounds, with the doubled solo regimen of `EVT-000172` the nearest call and still excluded as repetition of an assured task.
+
+**Going forward this is enforced, not remembered.** `tools/validate_repository.ps1` now fails when play Events sit newer than the last settlement Event, so a checkpoint that skips its barrier cannot pass validation. Cost is one Event per checkpoint, not an audit per scene.

@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000174
+  source: EVT-000175
   game_date: "2026-08-06 ~11:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -137,6 +137,7 @@ subjects:
   - EVT-000172
   - EVT-000173
   - EVT-000174
+  - EVT-000175
 ```
 
 ---
@@ -3723,4 +3724,37 @@ game_date: "2026-08-06 ~11:15 -05:00"
 participants:
   - ENT-000125
 description: "Owner flag, post-checkpoint: `EVT-000167`'s Milo reaction-footwork drill (2026-08-05) was recorded as pure qualitative capability with no tracked candidate, and should have opened one under Section 7.1 — a repeatable method (reading an opponent's tell before the call lands, pre-empting footwork, recovering mid-stride on a miss) demonstrated with material success under real feedback. Correcting the omission: opens skill-formation candidate `reactive_pattern_anticipation`, signature `read-opponent-tell-before-call-lands.pre-empt-footwork.recover-mid-stride-on-miss`, status `tracking`, evidence `EVT-000167#milo-footwork-drill-cold-double-pass`. Per Section 7.1's distinct-scene rule, one continuous structured-practice session counts once regardless of the two reps within it — this stands at **1/3** qualifying scenes toward ratification, not 2/3. A second distinct practice session would bring it to 2/3; a third ratifies it automatically if fully authored by then (Section 7.1; Profile 1.22), or opens the mandatory adjudication queue if not. No fictional time, roll, Stat, or prior resolved outcome changed."
+```
+
+## EVT-000175 - Promotion Barrier: Skill-Formation Batch Settlement
+
+```yaml
+id: EVT-000175
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-06 ~11:15 -05:00"
+  real_date: "2026-07-28"
+type: Event
+kind: progression-batch-settlement
+importance: minor
+game_date: "2026-08-06 ~11:15 -05:00"
+participants:
+  - ENT-000125
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: evidence-recorded
+    candidate: reactive_pattern_anticipation
+    scene: milo-footwork-drill-cold-double-pass
+    disposition: qualifying
+description: "The first promotion-barrier batch settlement this campaign has written, discharging Profile Section 7.1's deferred half for the thirteen play Events since the `EVT-000153` baseline (`EVT-000155`-`EVT-000157`, `EVT-000163`-`EVT-000167`, `EVT-000169`-`EVT-000173`). Section 7.1 requires each barrier to create one canon-bearing `progression-batch-settlement` Event carrying the required audits, including an explicit `none` when nothing qualifies. No barrier had ever created one — neither settlement kind appears as an Event `kind` anywhere in this or any other campaign — so sealed work and practice notes had nowhere to go and a qualifying practice scene was indistinguishable from a non-qualifying one. That is how `EVT-000167` was missed until an owner re-read it by hand (`EVT-000174`).
+
+**Classification of the batch.** One scene qualifies: `EVT-000167`'s Milo reaction-footwork drill, already opened as `reactive_pattern_anticipation` at `EVT-000174` and recorded here as the batch's `evidence-recorded` result rather than counted twice. Its candidate state, evidence pointer, and 1-of-3 progress are unchanged by this Event.
+
+Every other scene in the span classifies `none`, and for reasons Section 7.1 states rather than by default. `EVT-000155`-`EVT-000157`, `EVT-000163`, `EVT-000166`, `EVT-000169`, `EVT-000170` and `EVT-000173` are conversation, errand, and relationship scenes demonstrating no repeatable method under tested execution. `EVT-000164` and `EVT-000165` are Keen Sense reads — a known ratified skill, so they settle as Section 7.4 use counters, which they did, and open no formation candidate. `EVT-000171` is rest and the daily quest issuing. `EVT-000172` is the doubled solo regimen: the nearest call in the batch, and still `none`, because doubling an automatic daily checklist adds volume to a task whose outcome is already assured rather than supplying the bounded objective, uncertain execution, or informative resistance Section 7.1 requires to distinguish improvement from repetition.
+
+No fictional time, roll, counter, skill value, item, pool, or resolved outcome changes. This Event records a classification that was owed and never written; it authors no new fiction."
 ```

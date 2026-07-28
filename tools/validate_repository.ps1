@@ -730,6 +730,71 @@ foreach ($baseline in $progressionBaselines) {
     }
 }
 
+# --- The promotion barrier owes a settlement Event -------------------------
+#
+# Profile Section 7.1 splits the audit in two: a dangerous scene settles at its
+# own close under `kind: dangerous-scene-settlement`, while consequential work
+# and structured practice only *seal* notes and are classified in one batch at
+# the next promotion barrier, which "creates one canon-bearing
+# progression-batch-settlement Event containing the Bearer and the required
+# progression_audits entries" and records "one explicit none" when nothing
+# qualifies.
+#
+# The check above verifies those Events when they exist. Nothing verified that
+# the barrier ever produced one -- and across four campaigns and thirty-five
+# Gatefall checkpoints, neither kind has ever been written. The deferred half of
+# the audit had therefore never run: sealed notes had nowhere to go, and a
+# practice scene that opened a candidate was indistinguishable from one that did
+# not. It surfaced only when an owner re-read a drill scene by hand
+# (`EVT-000174`, the Milo footwork drill of `EVT-000167`).
+#
+# So this asserts the writer's obligation rather than the record's shape: at
+# rest, no play Event may sit newer than the newest settlement Event. One
+# settlement per barrier discharges it, which is what the profile already asks
+# for and costs one Event per checkpoint rather than an audit per scene.
+#
+# Bookkeeping kinds are exempt because they close no scene and seal no notes.
+# The set is closed and listed here rather than inferred, so adding a kind is a
+# deliberate act.
+$progressionExemptKinds = @(
+    'ruling', 'correction', 'settlement-correction', 'canon-continuity-repair',
+    'profile-adoption', 'system-profile-adoption', 'profile-migration',
+    'profile-additive-upgrade', 'rules-migration', 'world-rule-migration',
+    'schema-and-profile-migration', 'system-shop-rotation', 'campaign-start',
+    'world-fact', 'detection', 'allocation', 'escalation', 'briefing', 're-ranking'
+)
+$progressionSettlementKinds = @('dangerous-scene-settlement', 'progression-batch-settlement')
+
+foreach ($baseline in $progressionBaselines) {
+    if ($baseline.Domain -ne "gatefall.skill_formation") { continue }
+
+    $subjectPattern = "(?m)^[ \t]*-[ \t]*$([regex]::Escape($baseline.Subject))[ \t]*$"
+    $relevant = @($eventAuditData | Where-Object {
+        $_.EventNumber -gt $baseline.BaselineNumber -and
+        [regex]::IsMatch($_.Block, $subjectPattern)
+    })
+    if ($relevant.Count -eq 0) { continue }
+
+    $settlements = @($relevant | Where-Object { $_.Kind -in $progressionSettlementKinds })
+    $lastSettlement = $baseline.BaselineNumber
+    if ($settlements.Count -gt 0) {
+        $lastSettlement = ($settlements | Sort-Object EventNumber -Descending | Select-Object -First 1).EventNumber
+    }
+
+    $unsettled = @($relevant | Where-Object {
+        $_.Kind -notin $progressionExemptKinds -and
+        $_.Kind -notin $progressionSettlementKinds -and
+        $_.EventNumber -gt $lastSettlement
+    } | Sort-Object EventNumber)
+
+    if ($unsettled.Count -gt 0) {
+        $first = $unsettled[0]
+        $names = (($unsettled | Select-Object -First 5 | ForEach-Object { $_.Event }) -join ', ')
+        if ($unsettled.Count -gt 5) { $names += ", ... ($($unsettled.Count) total)" }
+        Add-Failure "$($first.SourcePath)`:$($first.SourceLine) $($unsettled.Count) play Event(s) involving $($baseline.Subject) sit after the last '$($baseline.Domain)' settlement: $names. Profile Section 7.1 requires the promotion barrier to classify sealed work/practice notes in one 'progression-batch-settlement' Event carrying the required audits, including an explicit 'none' when nothing qualifies. Write that Event at the checkpoint."
+    }
+}
+
 # Decision 076 — Relationship Texture coverage.
 # A relationship between two Characters that is not institutional records how the
 # two behave toward one another. This is a PRESENCE check only: it never inspects

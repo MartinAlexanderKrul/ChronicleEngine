@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000168 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000174 |
+| Event | `EVT-` | Event | EVT-000175 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -311,6 +311,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000172 | Event | Gatefall: Pendragon: the thirteenth daily quest completed solo and doubled at Alexander's own request (streak 12→13); three new pending rewards (Ability Points +3, Status Recovery, Daily Random Box) |
 | EVT-000173 | Event | Gatefall: Pendragon: a solo lake swim at Loyola Park that Owen joined after a text exchange, revealing for the first time that he lifeguarded the same stretch of water in college; Owen's question about Alexander's plans for the day left unanswered |
 | EVT-000174 | Event | Gatefall: Pendragon: ruling opening the `reactive_pattern_anticipation` skill-formation candidate (Section 7.1) retroactively from `EVT-000167`'s already-recorded Milo footwork-drill evidence — 1/3 qualifying scenes toward ratification, one continuous practice session counting once regardless of reps within it. No fictional time, roll, or prior outcome changed |
+| EVT-000175 | Event | Gatefall: Pendragon: the campaign's first promotion-barrier `progression-batch-settlement`, discharging Profile Section 7.1's deferred half for the thirteen play Events since the `EVT-000153` baseline — one `evidence-recorded` result for the already-opened `reactive_pattern_anticipation`, every other scene classified `none` on stated grounds. No fiction authored |
 
 ---
 

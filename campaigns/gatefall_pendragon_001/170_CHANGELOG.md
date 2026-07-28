@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000174
+  source: EVT-000175
   game_date: "2026-08-06 ~11:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -1017,3 +1017,12 @@ Claim separately at any time.
 - Corrected: opens `reactive_pattern_anticipation` (signature: read-tell-before-call-lands, pre-empt footwork, recover mid-stride on a miss), status `tracking`, evidence `EVT-000167#milo-footwork-drill-cold-double-pass`.
 - **1/3 qualifying scenes**, not 2/3 — one continuous practice session counts once regardless of reps within it (Section 7.1, distinct-scene rule). A second distinct session brings it to 2/3; a third ratifies automatically if fully authored, or opens the mandatory adjudication queue if not.
 - Repository allocation: `EVT-000174`; no entity or relationship identifier minted.
+
+**2026-08-06, ~11:15 Chicago time — first promotion-barrier skill-formation batch settlement (`EVT-000175`; no fictional time consumed).**
+
+- **Defect corrected:** Profile Section 7.1 requires every promotion barrier to create one `progression-batch-settlement` Event carrying the batch's audits, including an explicit `none`. **No barrier had ever created one** — neither settlement kind appears as an Event `kind` in this or any other campaign, across 35 checkpoints. The deferred half of the audit had therefore never run: sealed work/practice notes had nowhere to land, and a qualifying practice scene was indistinguishable from a non-qualifying one. That is how `EVT-000167` went unnoticed until an owner re-read it (`EVT-000174`).
+- **`EVT-000175` discharges the outstanding barrier** for the thirteen play Events since the `EVT-000153` baseline (`EVT-000155`-`EVT-000157`, `EVT-000163`-`EVT-000167`, `EVT-000169`-`EVT-000173`).
+- **One qualifying scene:** `EVT-000167`'s Milo drill, already opened as `reactive_pattern_anticipation` at `EVT-000174`, recorded here as the batch's `evidence-recorded` result rather than counted twice. Candidate state, evidence, and 1-of-3 progress unchanged.
+- **Everything else `none`, on stated grounds** rather than by default: conversation/errand/relationship scenes demonstrate no tested repeatable method; `EVT-000164`/`EVT-000165` are Keen Sense reads on a known ratified skill and settle as Section 7.4 counters; `EVT-000171` is rest and quest issue. **`EVT-000172` is the nearest call and still `none`** — doubling an automatic daily checklist adds volume to a task whose outcome is already assured, which Section 7.1 excludes by name.
+- **No fictional time, roll, counter, skill value, item, pool, or resolved outcome changed.** This records a classification that was owed and never written; it authors no fiction.
+- **Repository allocation:** `EVT-000175`.

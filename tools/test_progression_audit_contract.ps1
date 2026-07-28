@@ -189,11 +189,23 @@ description: "Fixture exchange."'
     $audited = Invoke-Validation $tempRoot
     Assert-True ($audited.ExitCode -eq 0) "A dangerous-scene settlement with an explicit none audit did not validate:`n$($audited.Output)"
 
-    Replace-Once $chronicle "kind: dangerous-scene-settlement" "kind: progression-batch-settlement"
+    Replace-Once $chronicle `
+        'kind: dangerous-scene-settlement
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"' `
+        'kind: progression-batch-settlement
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"'
     $batchAudited = Invoke-Validation $tempRoot
     Assert-True ($batchAudited.ExitCode -eq 0) "A promotion-time progression batch with an explicit audit did not validate:`n$($batchAudited.Output)"
 
-    Replace-Once $chronicle "kind: progression-batch-settlement" "kind: work-scene-settlement"
+    Replace-Once $chronicle `
+        'kind: progression-batch-settlement
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"' `
+        'kind: work-scene-settlement
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"'
     Replace-Once $chronicle `
         'participants:
   - ENT-000125
@@ -205,10 +217,23 @@ description: "Fixture exchange."' `
         'participants:
   - ENT-000125
 description: "Fixture exchange."'
+    # A work scene carries no audit of its own -- Section 7.1 defers its
+    # classification -- but deferral is a promise the barrier must keep. With no
+    # settlement Event behind it, the note has nowhere to land, which is the
+    # state that let a qualifying practice scene pass unnoticed for a whole
+    # campaign. This assertion previously expected a clean validate here; that
+    # expectation was the bug, and it is inverted deliberately.
     $deferredWork = Invoke-Validation $tempRoot
-    Assert-True ($deferredWork.ExitCode -eq 0) "A work scene with classification correctly deferred to promotion did not validate:`n$($deferredWork.Output)"
+    Assert-True ($deferredWork.ExitCode -ne 0 -and $deferredWork.Output -like "*sit after the last*settlement*") `
+        "A work scene deferring classification with no promotion-barrier settlement behind it was accepted; the deferral is unenforced:`n$($deferredWork.Output)"
 
-    Replace-Once $chronicle "kind: work-scene-settlement" "kind: progression-batch-settlement"
+    Replace-Once $chronicle `
+        'kind: work-scene-settlement
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"' `
+        'kind: progression-batch-settlement
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"'
     Replace-Once $chronicle `
         'participants:
   - ENT-000125
@@ -247,6 +272,50 @@ description: "Fixture exchange."'
     Replace-Once $character $twinFang.Line (New-CounterLine $twinFang ($twinFang.Current + 1))
     $reconciled = Invoke-Validation $tempRoot
     Assert-True ($reconciled.ExitCode -eq 0) "A reconciled Event delta and stored counter did not validate:`n$($reconciled.Output)"
+
+    # --- The promotion barrier owes a settlement Event ---------------------
+    #
+    # Section 7.1 defers non-combat classification to the barrier, which must
+    # create a progression-batch-settlement Event carrying the audit result.
+    # No barrier ever did: neither settlement kind appeared as an Event kind in
+    # any campaign, so the deferred half of the audit had never run and a
+    # qualifying practice scene looked exactly like a non-qualifying one.
+    #
+    # Note what the fixture above proves and does not. It writes its own Event
+    # with a settlement kind, so it only ever exercised the branch that fires
+    # once such an Event exists -- an input real play never produced. This
+    # covers the branch that actually failed: a play Event left unsettled.
+    Replace-Once $chronicle `
+        'kind: progression-batch-settlement
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"' `
+        'kind: scene
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"'
+    $unsettledPlay = Invoke-Validation $tempRoot
+    Assert-True ($unsettledPlay.ExitCode -ne 0 -and $unsettledPlay.Output -like "*sit after the last*settlement*") `
+        "A play Event with no promotion-barrier settlement behind it was not rejected; the deferred half of Section 7.1 is unenforced:`n$($unsettledPlay.Output)"
+
+    Replace-Once $chronicle `
+        'kind: scene
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"' `
+        'kind: progression-batch-settlement
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"'
+    $settled = Invoke-Validation $tempRoot
+    Assert-True ($settled.ExitCode -eq 0) "A settled promotion barrier did not validate:`n$($settled.Output)"
+
+    # A bookkeeping Event closes no scene and must not demand a settlement.
+    Replace-Once $chronicle `
+        'kind: progression-batch-settlement
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"' `
+        'kind: ruling
+importance: minor
+game_date: "2026-08-04 06:01 -05:00"'
+    $exempt = Invoke-Validation $tempRoot
+    Assert-True ($exempt.ExitCode -eq 0) "A bookkeeping Event was treated as an unsettled play scene:`n$($exempt.Output)"
 
     Write-Host "Progression audit contract tests PASSED" -ForegroundColor Green
 } finally {

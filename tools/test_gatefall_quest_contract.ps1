@@ -32,7 +32,7 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8
 $runtimeProfile = Get-Content -LiteralPath $runtimeProfilePath -Raw -Encoding UTF8
 $latestCheckpoint = Get-Content -LiteralPath $latestCheckpointPath -Raw -Encoding UTF8
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.28\r?$') "Gatefall Profile 1.28 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.29\r?$') "Gatefall Profile 1.29 is not active."
 Assert-True ($profile -match 'The Bearer has \*\*1 concurrent non-daily quest slot by default\*\*') "Default non-daily capacity is not fixed at 1."
 Assert-True ($profile -match 'Multitask raises this to \*\*2\*\*; Analyst raises it to \*\*3\*\*') "Multitask/Analyst capacity increases are not fixed at 2 and 3."
 Assert-True ($profile -match 'The `\[DAILY\]` quest has its own reserved slot') "Daily quests do not have an explicit reserved slot."
@@ -42,15 +42,15 @@ Assert-True ($profile -match 'Gate-clear milestone XP for the Bearer''s System R
 Assert-True ($profile -match 'A quest cannot complete from conduct that occurred before') "Pre-attachment retroactive completion is not prohibited."
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
-Assert-True ($character -match 'profile_version: "1\.28"') "Live Gatefall character was not migrated to Profile 1.28."
+Assert-True ($character -match 'profile_version: "1\.29"') "Live Gatefall character was not migrated to Profile 1.29."
 Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 1\s+analyst_bonus: 0\s+capacity_total: 2\s+active: \[\]\s+pending_offers: \[\]') "Live Multitask quest capacity is missing or incorrect."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
-Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.28"') "Campaign startup does not bind Profile 1.28."
+Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.29"') "Campaign startup does not bind Profile 1.29."
 Assert-True ($startup -match 'latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0029') "Campaign startup does not target the latest checkpoint."
 Assert-True ($startup -match 'Sections 7\.1, 7\.4, 8\.4, and 14\.3 before readiness completes') "Gatefall startup does not preload the skill and proactive-trigger contracts."
 Assert-True ($startup -match 'require_profile_trigger_audit: true') "Gatefall startup does not require the proactive trigger audit."
-Assert-True ($index -match 'World Rule Profile 1\.28, frozen') "World index does not advertise frozen Profile 1.28."
+Assert-True ($index -match 'World Rule Profile 1\.29, frozen') "World index does not advertise frozen Profile 1.29."
 Assert-True ($profile -match 'SKILLS[^\r\n]+ACTIVE') "Gatefall /system template does not render an ACTIVE skills group."
 Assert-True ($profile -match 'SKILLS[^\r\n]+PASSIVE') "Gatefall /system template does not render a PASSIVE skills group."
 Assert-True ($profile -match 'contains every skill whose ledger entry carries a Mana cost') "Gatefall /system skills do not classify ACTIVE entries from canonical Mana cost."
@@ -153,5 +153,46 @@ foreach ($r in $rows) {
 # The control case the board's arithmetic is calibrated against stays intact.
 Assert-True ($profile -match '(?m)^\| Rank \| E-Rank \| D-Rank \| C-Rank \| B-Rank \| A-Rank \| S-Rank \|') "Section 9.3 break-timer table is missing."
 Assert-True ($profile -match '(?m)^\| Days from detection to break \| 7 \| 6 \| 5 \| 4 \| 3 \| 2 \|') "Section 9.3 break-timer values changed; the board's derived deadlines are calibrated to 7/6/5/4/3/2."
+
+# --- Profile 1.29: Urgent eligibility clarified (Section 8.4.2) ---
+
+# The crisis bar itself must not have moved: all four criteria still stand.
+Assert-True ($profile -match 'a present, nearby crisis poses an immediate threat of death to at least one non-hostile person') "Section 8.4.2 criterion 1 changed."
+Assert-True ($profile -match 'the threat is a Gate creature, an active Gate break, or a directly perceived sealed-instance hazard') "Section 8.4.2 criterion 2 changed."
+Assert-True ($profile -match 'the Bearer has a physically actionable route to intervene before the threat resolves') "Section 8.4.2 criterion 3 changed."
+Assert-True ($profile -match 'the objective, success condition, failure condition, and causal deadline can be stated from facts the Bearer already perceives') "Section 8.4.2 criterion 4 changed."
+
+# Criterion 1 excludes the Bearer himself.
+Assert-True ($profile -match 'non-hostile person \*\*other than the Bearer himself\*\*') "Section 8.4.2 criterion 1 does not exclude the Bearer."
+Assert-True ($profile -match '\*\*The Bearer is never the imperilled person\.\*\*') "Section 8.4.2 lacks the Bearer-exclusion clarification."
+Assert-True ($profile -match 'is combat, resolved under Sections 6 and 20\.4') "Section 8.4.2 does not route danger to the Bearer to combat resolution."
+
+# The contract exclusion is scoped, and the blanket phrasing is gone.
+Assert-True ($profile -match '\*\*The contract exclusion, exactly\.\*\*') "Section 8.4.2 lacks the scoped contract exclusion."
+Assert-True ($profile -match 'danger to any person who entered under the \*\*same contract\*\* as the Bearer') "Scoped contract exclusion does not name same-contract persons."
+Assert-True ($profile -match 'This exclusion does \*\*not\*\* reach a person who is not party to that contract') "Scoped contract exclusion does not release non-parties."
+Assert-True ($profile -notmatch 'Routine contracted hunting, a danger the Bearer deliberately created') "The blanket 'routine contracted hunting' exclusion is still present."
+
+# Every other non-qualifying case survives.
+foreach ($clause in @('a danger the Bearer deliberately created',
+                      'a remote report he cannot reach in time',
+                      'property loss without immediate danger to life',
+                      'a crisis already resolved do \*\*not\*\* qualify')) {
+    Assert-True ($profile -match $clause) "Section 8.4.2 dropped a non-qualifying case: $clause"
+}
+Assert-True ($profile -match 'The System does not reveal an unconfirmed Gate Rank, a hidden attacker, or an NPC.s intent to make an offer fit') "Section 8.4.2 dropped the no-reveal-to-fit rule."
+
+# Sealed-instance reachability is stated in both directions.
+Assert-True ($profile -match '\*\*Sealed instances can qualify, but not alone\.\*\*') "Section 8.4.2 does not state sealed-instance reachability."
+Assert-True ($profile -match 'no Urgent quest can arise in a solo instant dungeon at all') "Section 8.4.2 does not close the solo instant-dungeon case."
+Assert-True ($profile -match 'Section 17 lets the Bearer bring a party into an instant dungeon') "Section 8.4.2 does not ground the party case in Section 17."
+Assert-True ($profile -match 'a red gate \(Section 9\.6\) seals whoever entered it') "Section 8.4.2 does not ground the red-gate case in Section 9.6."
+
+# The two grounding rules it leans on must still say what it claims.
+Assert-True ($profile -match 'Using a key opens a sealed instance for the Bearer \(he may bring a party, but the key is his\)') "Section 17 no longer permits bringing a party; Section 8.4.2's sealed-instance rule depends on it."
+Assert-True ($profile -match '\*\*Red gate\*\* — the Gate seals on entry and cannot be exited until its boss dies') "Section 9.6's red gate no longer seals on entry; Section 8.4.2's sealed-instance rule depends on it."
+
+# Reward and lifecycle untouched.
+Assert-True ($profile -match 'E-Rank 40, D-Rank 100, C-Rank 240, B-Rank 600, A-Rank 1,600, S-Rank 4,000') "Urgent reward ladder changed."
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000160
+  source: EVT-000161
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -121,6 +121,7 @@ subjects:
   - EVT-000158
   - EVT-000159
   - EVT-000160
+  - EVT-000161
 ```
 
 ---
@@ -3324,4 +3325,36 @@ description: "Gatefall World Rule Profile 1.27 → 1.28 adopted at the 2026-08-0
 **The board at adoption** holds four Chicago clearance postings, seeded in `110_WORLD_LEDGER.md` with their honest current staffing and nothing pre-decided: `GB-01`, a confirmed E-Rank in the Red Line Corridor detected 2026-08-01, breaking midnight 2026-08-08, four signed of five at waiver tier and five days unfilled; `GB-02`, an unconfirmed D-Rank on the Lakefront detected 2026-08-03, breaking midnight 2026-08-09, a mid-tier auction lot with thin bids; `GB-03`, a confirmed C-Rank on the Lakefront detected 2026-08-04, breaking midnight 2026-08-09, held by Horizon Guild dispatch and on track to clear; and `GB-04`, a confirmed E-Rank in the Red Line Corridor posted this morning, breaking midnight 2026-08-12 and filling normally. Every deadline is derived arithmetic, verified against `EVT-000051`'s own control case (detected 2026-07-18, unconfirmed D, six days, broke midnight 2026-07-24). These are clearance contracts and are consistent with `EVT-000155`, in which Kesha Morrison had no *mining or harvest* work at C-Rank or above — which is what Alexander had asked her for.
 
 **No Gate breaks retroactively.** Every Gate named in a past scene is resolved exactly as that scene resolved it; no earlier posting is re-derived against Section 9.10; and no completed clear, filed split, or closed contract is reopened. Deadline resolution applies prospectively, from the first tracked deadline falling after adoption. Alexander's standing order that no crew Gate precedes the 2026-08-09 training session is a constraint of his own making covering Priya's crew, not a bar on freelance work he takes himself. Checkpoint 0033 remains immutable at Profile 1.25 / Data Model 0.1.5 and restores through the applicable compatibility chain to Profile 1.28."
+```
+
+## EVT-000161 - Profile 1.29: Urgent Eligibility Clarified
+
+```yaml
+id: EVT-000161
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-05 ~12:15 -05:00"
+  real_date: "2026-07-28"
+type: Event
+kind: ruling
+importance: immediate
+game_date: "2026-08-05 ~12:15 -05:00"
+participants:
+  - ENT-000125
+description: "Gatefall World Rule Profile 1.28 → 1.29 adopted at the 2026-08-05 12:15 anchor. **Additive**: no fictional time, roll, gold, cash, owned item, skill value, pool, counter, quest, or prior outcome changed.
+
+**The defect.** Profiles 1.27 and 1.28 gave the Hidden and Urgent triggers a supply to fire from. This step corrects the last part of the same failure: two clauses of Section 8.4.2 that were being read more broadly than they were written, which is why Urgent stayed at zero even in scenes that had real crises in them.
+
+**Criterion 1 never said whether the Bearer counts.** It requires 'at least one non-hostile person' at immediate threat of death. Read one way the Bearer qualifies, and an offer fires in every lethal fight he has — plainly not the intent, since criterion 3's 'intervene' means acting on someone else's behalf. Read the other way he does not, which is what a careful Runtime already assumed but the section never confirmed. It now states it: the imperilled person is someone **other than the Bearer**, and danger to his own life is combat under Sections 6 and 20.4, never a quest. The System does not offer him a reward for surviving.
+
+**The contract exclusion was written to stop every contract becoming a quest, and read as covering everything that happens during one.** It is now scoped to what it meant: the contracted objective itself, and danger to any person who entered under the **same contract** as the Bearer, strike and support element alike. A crew facing the Gate's population is doing the insured job it signed for, and the System does not pay a bonus for a hunter doing his own job. The exclusion does **not** reach a person who is not party to that contract — a civilian inside a cordon, a bystander at a break site, an unrelated crew, or a survey team the contract does not cover. Where a qualifying threat puts one of them at immediate death, that is not routine by any reading, and criteria 1–4 are evaluated on their own terms.
+
+**Sealed-instance reachability is now stated rather than inferred.** The earlier working assumption that sealed instances are bystander-free is wrong on the profile's own text: Section 17 permits the Bearer to bring a party into an instant dungeon, and Section 9.6's red gate seals whoever entered it. Criterion 1 can therefore hold inside a sealed instance where he brought others in. Where he entered **alone** it never can, and a solo instant dungeon is permanently Urgent-ineligible — a deliberate consequence, not an oversight. The more of his dangerous time Alexander spends in private instances of his own opening, the less of his life is Urgent-eligible. Solitude buys safety from the world's claims on him and costs him the world's opportunities. This campaign supplies both cases: Alexander has opened **eleven** instant dungeons (`EVT-000097`, `EVT-000099`, `EVT-000101`, `EVT-000109`, `EVT-000113`, `EVT-000142`, `EVT-000144`, and `EVT-000149`–`EVT-000152`), ten of them alone and therefore Urgent-ineligible under this clarification — and one that is the counter-example proving the branch is live rather than dead: at `EVT-000144` the key opened the Crypt **around both him and Owen**, who was inside, geared, and told to watch rather than fight, for the whole clear.
+
+**What did not change.** The crisis bar itself. All four criteria still must hold: a present and nearby crisis, a Gate creature or active break or perceived sealed-instance hazard, a physically actionable route to intervene before it resolves, and an objective, success condition, failure condition and causal deadline all statable from what he already perceives. The System still does not reveal an unconfirmed Gate Rank, a hidden attacker, or an NPC's intent to make an offer fit. A danger he deliberately created, a report he cannot reach in time, property loss without danger to life, and an already-resolved crisis still do not qualify. Reward, capacity, acceptance and lifecycle are untouched.
+
+**No retroactive offers.** No past scene is re-audited against the narrowed exclusion, no completed contract, clear or resolved crisis is reopened, and no offer is reconstructed for anyone who was in peril in an earlier session. Eligibility applies prospectively from the first audit after adoption. `non_daily_quests` stays 0/2 with empty `active` and `pending_offers`. Checkpoint 0033 remains immutable at Profile 1.25 / Data Model 0.1.5 and restores through the applicable compatibility chain to Profile 1.29."
 ```

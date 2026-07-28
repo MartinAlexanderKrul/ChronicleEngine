@@ -9,7 +9,7 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.28"
+world_rule_profile: "Gatefall World Rule Profile 1.29"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable

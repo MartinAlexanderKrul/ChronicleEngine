@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000163 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000160 |
+| Event | `EVT-` | Event | EVT-000161 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -292,6 +292,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000084 – REL-000086 | Relationship | Gatefall: Pendragon: three holder Knowledge States over the campaign-scope concealed discoveries |
 | EVT-000159 | Event | Gatefall: Pendragon: Profile 1.26→1.27 concealed-canon supply — Section 8.4.3's Hidden-quest filter had no source behind it, so no Hidden quest could fire in fourteen in-fiction days of play; new `230_KNOWLEDGE_SUBJECTS.md` supplies ten world-scope concealed discoveries translated from already-authored secrets, three campaign-scope promotions join `110_WORLD_LEDGER.md`, and new Section 8.4.5 authors the field contract and the time-separated promotion ritual. Additive — no live value changes and no pointer attaches retroactively |
 | EVT-000160 | Event | Gatefall: Pendragon: Profile 1.27→1.28 tracked Gate board — Section 9.3 gave every Gate a break countdown but nothing counted, so only a Gate the Bearer was contracted to had a running clock and no Gate could break off his own contract; new Section 9.10 makes a detection that has entered the fiction persist with a derived deadline and a staffing status, resolving deterministically at that deadline (`staffed`/`held` clears off-screen, `posted` breaks). Persistence, not simulation — Section 9.1's aggregate rates remain explicitly not a calendar. Additive; no live value changes, no retroactive breaks, and postings mint no identifiers |
+| EVT-000161 | Event | Gatefall: Pendragon: Profile 1.28→1.29 Urgent eligibility clarified — criterion 1's imperilled person is explicitly someone other than the Bearer (danger to himself is combat, never a quest), the blanket "routine contracted hunting" exclusion is scoped to the contracted objective and to people who entered under the same contract rather than to everything occurring during one, and sealed instances are stated to qualify where the Bearer brought others in but never where he entered alone. Crisis bar, reward, capacity and lifecycle unchanged. Additive; no live value changes and no retroactive offers |
 
 ---
 

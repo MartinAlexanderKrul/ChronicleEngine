@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000160
+  source: EVT-000161
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -889,3 +889,16 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **No retroactive breaks.** Every Gate named in a past scene stays resolved as that scene resolved it; no earlier posting is re-derived; no completed clear, filed split, or closed contract is reopened. `EVT-000051` was cleared on its deadline at `EVT-000059`/`EVT-000060` and stays closed. Resolution applies prospectively from the first tracked deadline after adoption.
 - **Versions:** Gatefall Profile 1.27→1.28. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0033 remains immutable at Profile 1.25 and runs the applicable compatibility chain through 1.28 at readiness.
 - **Repository allocation:** `EVT-000160`; no entity, record, or relationship identifier minted (postings are tracked state, not Persistent Objects).
+
+**2026-08-05, ~12:15 Chicago time — Profile 1.29 Urgent eligibility clarified (`EVT-000161`; no fictional time consumed).**
+
+- **Defect corrected:** two clauses of Section 8.4.2 were being read more broadly than written, which is the last part of why Urgent stayed at zero. The crisis bar itself is unchanged and all four criteria still must hold.
+- **Criterion 1 — the Bearer is never the imperilled person.** It required "at least one non-hostile person" without saying whether he counts. Reading him in fires an offer in every lethal fight; criterion 3's "intervene" plainly means acting on someone else's behalf. Now stated: the person must be **other than the Bearer**, and danger to his own life is combat under Sections 6 and 20.4, never a quest. The System does not reward him for surviving.
+- **The contract exclusion, scoped to what it meant.** "Routine contracted hunting" read as covering everything happening during a contract. It now excludes **the contracted objective** and **danger to any person who entered under the same contract** (strike and support element alike, Section 9.4) — a crew facing the Gate's population is doing the insured job it signed for. It does **not** reach a civilian inside a cordon, a bystander at a break site, an unrelated crew, or an uncovered survey team; where a qualifying threat puts one of them at immediate death, criteria 1–4 are evaluated on their own terms.
+- **Sealed-instance reachability stated, and the earlier working assumption corrected.** "Sealed instances are bystander-free" is **wrong on the profile's own text**: Section 17 lets the Bearer bring a party into an instant dungeon and Section 9.6's red gate seals whoever entered. Criterion 1 can hold there. It can never hold where he entered **alone**, making a solo instant dungeon permanently Urgent-ineligible by construction — a deliberate design cost, not an oversight.
+- **Verified against campaign canon:** Alexander has opened **eleven** instant dungeons (`EVT-000097`, `EVT-000099`, `EVT-000101`, `EVT-000109`, `EVT-000113`, `EVT-000142`, `EVT-000144`, `EVT-000149`–`EVT-000152`). Ten were solo. The eleventh, `EVT-000144`, had the key open the Crypt **around both him and Owen** — the live counter-example showing the sealed-instance branch is real rather than dead.
+- **Unchanged:** the four criteria, the Tier-2 offer template, the reward formula (4× common-kill XP at acceptance), capacity, acceptance, abandonment, lifecycle, and every existing non-qualifying case — self-created danger, unreachable remote reports, property loss without danger to life, and already-resolved crises. The System still does not reveal an unconfirmed Gate Rank, a hidden attacker, or an NPC's intent to make an offer fit.
+- **Classification: additive.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changed. Data Model 0.1.5 unchanged.
+- **No retroactive offers.** No past scene is re-audited, no completed contract, clear, or resolved crisis is reopened, and no offer is reconstructed for anyone in peril in an earlier session. Eligibility applies prospectively from the first audit after adoption. `non_daily_quests` stays **0/2** with empty `active` and `pending_offers`.
+- **Versions:** Gatefall Profile 1.28→1.29. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0033 remains immutable at Profile 1.25 and runs the applicable compatibility chain through 1.29 at readiness.
+- **Repository allocation:** `EVT-000161`; no entity, record, or relationship identifier minted.

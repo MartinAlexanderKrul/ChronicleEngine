@@ -15,7 +15,7 @@ canonical_record: REC-000075
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000160
+  source: EVT-000161
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger

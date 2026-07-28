@@ -26,7 +26,20 @@ function Assert-Contains {
     }
 }
 
-Assert-Contains $profile 'World Rule Profile 1\.25' 'Gatefall profile is not version 1.25.'
+function Assert-NotContains {
+    param(
+        [string]$Text,
+        [string]$Pattern,
+        [string]$Message
+    )
+
+    if ($Text -match $Pattern) {
+        $failures.Add($Message) | Out-Null
+    }
+}
+
+Assert-Contains $profile 'World Rule Profile 1\.26' 'Gatefall profile is not version 1.26.'
+Assert-Contains $profile '1\.25.+1\.26 compatibility treatment' 'Gatefall profile lacks the 1.25 to 1.26 compatibility treatment.'
 Assert-Contains $profile 'Required 1\.24.+1\.25 migration' 'Gatefall profile lacks the 1.24 to 1.25 migration.'
 Assert-Contains $profile 'Required 1\.23.+1\.24 migration' 'Gatefall profile lacks the 1.23 to 1.24 migration.'
 Assert-Contains $profile 'costs \*\*125% of its ordinary same-Rank category price anchor' 'Premium surcharge is not fixed at 125% of the ordinary same-Rank anchor.'
@@ -37,10 +50,10 @@ Assert-Contains $profile '3d6.+\(Rank multiplier\).+crystals' 'Section 17 does n
 Assert-Contains $profile 'Crystal Key treats the `3d6` result as 18' 'Section 17 does not connect the Crystal Key to its deposit result.'
 Assert-Contains $profile 'do not create crystals for, reopen, or reinterpret any completed instant dungeon' 'The 1.24 migration lacks its no-retroactive-loot boundary.'
 
-Assert-Contains $readme 'World Rule Profile 1\.25' 'Gatefall README does not advertise Profile 1.25.'
+Assert-Contains $readme 'World Rule Profile 1\.26' 'Gatefall README does not advertise Profile 1.26.'
 Assert-Contains $readme 'cost 125% of their ordinary same-Rank category anchor' 'Gatefall README does not summarize the corrected Premium surcharge.'
 Assert-Contains $resources 'costs 125% of its ordinary same-Rank category anchor' 'Gatefall resources do not summarize the corrected Premium surcharge.'
-Assert-Contains $character 'profile_version: "1\.25"' 'Live Gatefall character has not adopted Profile 1.25.'
+Assert-Contains $character 'profile_version: "1\.26"' 'Live Gatefall character has not adopted Profile 1.26.'
 
 # The 1.24 live-cycle reprice is asserted against its immutable adoption Event, not the
 # live Daily Premium tab: that cycle rotates every 06:00 and its offers expire.
@@ -81,6 +94,44 @@ Assert-Contains $profile 'NPCs have no concept of a System potion' 'Profile does
 Assert-Contains $profile 'the world has its own antivenoms, appraisers, and trauma medicine' 'Profile does not scope the exclusivity to Healing and Mana potions.'
 Assert-Contains $resources 'this is an authored prohibition, not merely an absence' 'Gatefall resources do not carry the potion sourcing prohibition.'
 Assert-Contains $profile '≈750 g-equivalent shop-side' 'The gray-sleep off-shop anchor was not repriced to the corrected Greater healing price.'
+
+# Profile 1.26 — skill Rank ascension. Rank stops being fixed at acquisition, the ceiling binds
+# acquisition as well as ascension, and the utility scales satisfy the Rank Dominance Law.
+Assert-Contains $chronicle '## EVT-000158 - Profile 1\.26' 'Live campaign lacks the Profile 1.26 adoption Event.'
+Assert-Contains $profile "A skill's Rank is \*\*not fixed at acquisition\.\*\*" 'Profile does not declare skill Rank a growth axis.'
+Assert-Contains $profile 'never exceed the \*\*Bearer''s System Rank \+ 1\*\*' 'Profile lacks the Section 7.5 ascension ceiling.'
+Assert-Contains $profile 'The ceiling binds \*\*acquisition and ascension alike\*\*' 'The ceiling does not bind acquisition, so waiting to learn still confers an advantage.'
+Assert-Contains $profile 'A skill at Novice one Rank higher is stronger than the same skill at Master one Rank lower' 'Profile lacks the Rank Dominance Law.'
+Assert-Contains $profile 'Falls to \*\*Adept\*\*, keeping three of five levels' 'Breakthrough does not settle at Adept.'
+Assert-Contains $profile 'Resets to \*\*Novice\*\*; `mastery_progress` resets to 0' 'Rune ascension does not reset mastery to Novice.'
+Assert-Contains $profile 'Breakthrough is \*\*offered, never imposed\.\*\*' 'Breakthrough is not an offer, so it could silently spend mastery.'
+Assert-Contains $profile 'is not consumed unless the offer is accepted' 'Rune ascension does not require an accepted offer.'
+
+# The utility Rank steps must each exceed a whole mastery track on the same axis, or ascension
+# is a downgrade. Mastery gives +20 points of reduction and +0.20 of multiplier across a track.
+Assert-Contains $profile '\*\*\+25 percentage points\*\* to the skill''s own reduction fraction' 'Reduction Rank step is not +25 points and may not outweigh a mastery track.'
+Assert-Contains $profile '\*\*\+0\.25\*\* to the multiplier the skill grants' 'Passive-multiplier Rank step is not +0.25 and may not outweigh a mastery track.'
+Assert-Contains $profile 'never exceeds 90%' 'The single-skill reduction cap was not raised to 90%.'
+Assert-Contains $profile 'Rank never changes a skill''s Mana cost' 'Rank and mastery axes are not kept separate on Mana cost.'
+Assert-Contains $profile '\*\*Rupture and Bulwark are native E-Rank\.\*\*' 'Rupture and Bulwark lack the native Rank their utility scale measures from.'
+
+# The shop must actually supply higher-Rank instruction, or the bought road does not exist.
+Assert-Contains $profile 'stocked only at Ranks \*\*above\*\* its current Rank' 'The shop still refuses higher-Rank runes for known skills.'
+Assert-Contains $profile 'live ordinary catalogue price for a rune within the Section 7\.5 ceiling' 'The C-through-S rune anchors are still Premium-only references.'
+
+# Mastery must never make a skill worse. Keen Sense and Silent Step are authored scene-long,
+# so Section 7.4's per-level lengthening ladder must not apply a shorter duration to them.
+Assert-Contains $profile '\*\*Mastery never shortens an authored effect\.\*\*' 'Section 7.4 does not guarantee mastery never shortens an authored effect.'
+Assert-Contains $profile 'the authored entry governs' 'Section 7.4 does not defer to the authored Section 7.3 entry on conflict.'
+Assert-Contains $profile '\*\*Keen Sense and Silent Step are scene-long from Novice\.\*\*' 'Section 7.3 does not pin Keen Sense and Silent Step to a scene-long duration.'
+# Asserted positively: the ledger line's own correction note quotes the superseded wording, so
+# proving absence of that substring would fail on the provenance rather than on the effect.
+Assert-Contains $character 'Keen Sense \[E-Rank\][^"]*\*\*for the scene\*\*, as authored in Profile Section 7\.3 at every mastery level' 'The live Keen Sense line does not render its authored scene-long duration.'
+Assert-Contains $character 'Keen Sense \[E-Rank\] ★★★☆☆ Adept' 'The live Keen Sense mastery glyph does not match its Adept level.'
+
+# mastery_level must be stored, because ascension breaks its derivation from lifetime scenes.
+Assert-Contains $character 'skills\.rupture\.mastery_level' 'Live character lacks the stored mastery_level counter.'
+Assert-Contains $character 'skills\.rupture\.rank_ascensions' 'Live character lacks the rank_ascensions counter.'
 
 if ($failures.Count -gt 0) {
     Write-Host "Gatefall economy contract: FAIL"

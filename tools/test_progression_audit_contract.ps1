@@ -32,6 +32,38 @@ function Replace-Once {
     Set-Text $Path $text.Replace($Old, $New)
 }
 
+# These fixtures are DERIVED from live state, never hardcoded. Counter values, the registry
+# high-water mark, and the chronicle's subject list all advance with ordinary play, so pinning
+# them to a snapshot makes this contract fail after every session for reasons unrelated to the
+# invariant under test. Each helper below reads the current value and mutates relative to it.
+function Get-CounterLine {
+    param([string]$Path, [string]$CounterPath)
+    $text = Get-Text $Path
+    $pattern = '- \{ path: ' + [regex]::Escape($CounterPath) + ', baseline_value: (\d+), baseline_as_of: (EVT-\d{6}), current_value: (\d+) \}'
+    $matches = [regex]::Matches($text, $pattern)
+    Assert-True ($matches.Count -eq 1) "Expected exactly one '$CounterPath' counter in $Path (found $($matches.Count))."
+    $m = $matches[0]
+    return [pscustomobject]@{
+        Line     = $m.Value
+        Baseline = [int]$m.Groups[1].Value
+        AsOf     = $m.Groups[2].Value
+        Current  = [int]$m.Groups[3].Value
+    }
+}
+
+function New-CounterLine {
+    param([pscustomobject]$Counter, [int]$Current)
+    return "- { path: $($Counter.Line -replace '^- \{ path: ([^,]+),.*$', '$1'), baseline_value: $($Counter.Baseline), baseline_as_of: $($Counter.AsOf), current_value: $Current }"
+}
+
+function Get-RegistryHighWater {
+    param([string]$Path)
+    $text = Get-Text $Path
+    $m = [regex]::Match($text, '\| Event \| `EVT-` \| Event \| EVT-(\d{6}) \|')
+    Assert-True $m.Success "Could not read the Event high-water mark from the ID registry."
+    return [int]$m.Groups[1].Value
+}
+
 function Invoke-Validation {
     param([string]$RepositoryRoot)
     $output = & powershell -NoProfile -ExecutionPolicy Bypass -File $validator `
@@ -57,25 +89,22 @@ try {
     $baseline = Invoke-Validation $tempRoot
     Assert-True ($baseline.ExitCode -eq 0) "Unmodified Data Model 0.1.5 repository did not validate:`n$($baseline.Output)"
     Assert-True ((Get-Text $profile).Contains('progression-batch-settlement')) `
-        "Gatefall Profile 1.25 does not preserve promotion-time non-combat progression batching."
+        "Gatefall Profile 1.26 does not preserve promotion-time non-combat progression batching."
     Assert-True ((Get-Text $profile).Contains('Promotion reconciliation.')) `
-        "Gatefall Profile 1.25 does not preserve known combat-skill counter reconciliation."
+        "Gatefall Profile 1.26 does not preserve known combat-skill counter reconciliation."
     Assert-True ((Get-Text $profile).Contains('Mandatory ratification gate.')) `
-        "Gatefall Profile 1.25 does not preserve the next-scene ratification gate."
+        "Gatefall Profile 1.26 does not preserve the next-scene ratification gate."
     Assert-True ((Get-Text $runtime).Contains('mandatory readiness and next-scene gate')) `
         "The Save Algorithm does not preserve pending ratification as a next-scene gate."
     Assert-True ((Get-Text $runtime).Contains('re-count every known combat skill activation')) `
         "The Save Algorithm does not execute the combat-skill double-check at the promotion barrier."
 
-    Replace-Once $character `
-        '- { path: skills.rupture.successful_uses, baseline_value: 16, baseline_as_of: EVT-000130, current_value: 16 }' `
-        '- { path: skills.rupture.successful_uses, baseline_value: 16, baseline_as_of: EVT-000130, current_value: 17 }'
+    $rupture = Get-CounterLine $character 'skills.rupture.successful_uses'
+    Replace-Once $character $rupture.Line (New-CounterLine $rupture ($rupture.Current + 1))
     $drift = Invoke-Validation $tempRoot
-    Assert-True ($drift.ExitCode -ne 0 -and $drift.Output -like "*baseline 16 plus Event deltas 0 requires 16*") `
+    Assert-True ($drift.ExitCode -ne 0 -and $drift.Output -like "*plus Event deltas*requires $($rupture.Current)*") `
         "Counter arithmetic drift was not rejected:`n$($drift.Output)"
-    Replace-Once $character `
-        '- { path: skills.rupture.successful_uses, baseline_value: 16, baseline_as_of: EVT-000130, current_value: 17 }' `
-        '- { path: skills.rupture.successful_uses, baseline_value: 16, baseline_as_of: EVT-000130, current_value: 16 }'
+    Replace-Once $character (New-CounterLine $rupture ($rupture.Current + 1)) $rupture.Line
 
     Replace-Once $character `
         "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: ratified" `
@@ -97,22 +126,33 @@ try {
         "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: pending-ratification`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint`n          - EVT-000120#fixture-third-dimensional-scene" `
         "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: tracking`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint"
 
-    Replace-Once $registry "| Event | ``EVT-`` | Event | EVT-000135 |" "| Event | ``EVT-`` | Event | EVT-000136 |"
+    # Allocate the fixture Event one past the live high-water mark, whatever it currently is.
+    $highWater = Get-RegistryHighWater $registry
+    $liveId = 'EVT-{0:D6}' -f $highWater
+    $fixtureId = 'EVT-{0:D6}' -f ($highWater + 1)
+
+    Replace-Once $registry "| Event | ``EVT-`` | Event | $liveId |" "| Event | ``EVT-`` | Event | $fixtureId |"
     $registryText = Get-Text $registry
     $marker = "# Allocation Invariants"
     Assert-True ($registryText.Contains($marker)) "Registry allocation marker is missing."
-    $registryText = $registryText.Replace($marker, "| EVT-000136 | Event | progression-audit contract fixture |`r`n`r`n---`r`n`r`n$marker")
+    $registryText = $registryText.Replace($marker, "| $fixtureId | Event | progression-audit contract fixture |`r`n`r`n---`r`n`r`n$marker")
     Set-Text $registry $registryText
 
-    Replace-Once $chronicle "  - EVT-000134`n  - EVT-000135`n``````" "  - EVT-000134`n  - EVT-000135`n  - EVT-000136`n``````"
+    # Line-ending agnostic: the chronicle is CRLF in git but edits may land LF.
+    $chronicleText = Get-Text $chronicle
+    $subjectsPattern = '(  - ' + [regex]::Escape($liveId) + ')(\r?\n```)'
+    $subjectsMatches = [regex]::Matches($chronicleText, $subjectsPattern)
+    Assert-True ($subjectsMatches.Count -eq 1) "Expected exactly one '$liveId' at the end of the chronicle subject list (found $($subjectsMatches.Count))."
+    $eol = $subjectsMatches[0].Groups[2].Value.Substring(0, $subjectsMatches[0].Groups[2].Value.Length - 3)
+    Set-Text $chronicle ([regex]::Replace($chronicleText, $subjectsPattern, ('$1' + $eol + "  - $fixtureId" + '$2'), 1))
     $event = @"
 
 ---
 
-## EVT-000136 - Progression Audit Contract Fixture
+## $fixtureId - Progression Audit Contract Fixture
 
 ``````yaml
-id: EVT-000136
+id: $fixtureId
 canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
@@ -194,13 +234,12 @@ progression_audits:
   - subject: ENT-000125
     domain: gatefall.skill_formation
     result: none'
+    $twinFang = Get-CounterLine $character 'skills.twin_fang.successful_uses'
     $unappliedDelta = Invoke-Validation $tempRoot
-    Assert-True ($unappliedDelta.ExitCode -ne 0 -and $unappliedDelta.Output -like "*plus Event deltas 1 requires 1*") `
+    Assert-True ($unappliedDelta.ExitCode -ne 0 -and $unappliedDelta.Output -like "*plus Event deltas*requires $($twinFang.Current + 1)*") `
         "An Event counter delta without the stored update was not rejected:`n$($unappliedDelta.Output)"
 
-    Replace-Once $character `
-        '- { path: skills.twin_fang.successful_uses, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }' `
-        '- { path: skills.twin_fang.successful_uses, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 1 }'
+    Replace-Once $character $twinFang.Line (New-CounterLine $twinFang ($twinFang.Current + 1))
     $reconciled = Invoke-Validation $tempRoot
     Assert-True ($reconciled.ExitCode -eq 0) "A reconciled Event delta and stored counter did not validate:`n$($reconciled.Output)"
 

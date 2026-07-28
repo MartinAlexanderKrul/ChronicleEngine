@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.25
+# Gatefall — World Rule Profile 1.26
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.25
+**Profile Version:** 1.26
 **Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.25 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-28. Version 1.25 is a **migrating consumable economy and sourcing correction** over frozen 1.24, in two parts. **Effects and prices:** Lesser and Standard Healing/Mana potions now restore a flat amount — 30/90 Health and 20/40 Mana — instead of a percentage of the drinker's maximum pool, so their value is tied to the Gate-Rank bracket they serve (Section 11.2) rather than scaling forever with the Bearer's own growth; Greater Healing/Mana potions continue to restore to full. All six potion prices are corrected so that no tier is dominated: a Standard costs fewer actions and no more gold than the Lessers it replaces from D-Rank scale upward, and a Greater is the only single-action full restore. Healing runs 60/150/750 g and Mana 50/75/480 g for Lesser/Standard/Greater. **Sourcing:** Section 12.5 now states explicitly that Healing and Mana potions exist only inside the System shop and have no world vendor, and that the world's separate restorative-alchemy market acts on the severity axis over time and restores no pool as an immediate quantity. No other item, price, Rank, probability, owned item, completed transaction, or resolved outcome changes. Data Model 0.1.5 remains unchanged.
+**Compatibility Status:** frozen at version 1.26 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-28. Version 1.26 is an **additive skill-Rank progression advance** over frozen 1.25, correcting a design defect: a skill's Rank was fixed at acquisition, so a fully mastered E-Rank technique stayed at the E-Rank baseline of 10 forever while a freshly learned C-Rank one started at 62. Mastery was worth +60% across twelve qualifying scenes; one Rank step is worth +150%. Learning a skill early was therefore strictly worse than waiting to learn it at a higher Rank — the opposite of what a growth axis should reward. Section 7.5 now authors two Rank-ascension routes: **breakthrough**, the earned road, where a skill reaching Master is *offered* one Rank and falls to Adept; and **rune ascension**, the bought road, where instruction teaching a known technique above its current Rank raises it immediately and resets mastery to Novice. The earned road yields the stronger result at the same Rank; the bought road yields it sooner and without a mastery prerequisite. Both are bounded by a **ceiling of the Bearer's System Rank + 1**, which applies to acquisition as well as ascension so that waiting confers no advantage. Section 7.2 gives utility skills an additive Rank scale so Rank means something beyond damage and healing, and declares the native Ranks of Rupture and Bulwark. Section 12.5 opens the catalogue to higher-Rank runes of known skills at the already-authored C–S anchors. Sections 7.3 and 7.4 additionally **correct a self-contradiction**: Keen Sense and Silent Step are authored *for the scene*, but Section 7.4's per-level lengthening ladder implied one exchange at Novice and returned them to scene-long only at Master, so mastering them appeared to shorten them. The authored entry governs, a skill already scene-long at Novice spends mastery on **scope** rather than duration, and **mastery never shortens an authored effect**. This is a rendering correction, not a rule change: every recorded Keen Sense use resolved scene-long already — `EVT-000114` shows a single 2-Mana activation at Novice running across a corridor read, a seven-common sweep, and an elite read — so the shorter reading never governed a resolved roll. Every one of the Bearer's known skills currently sits at its native Rank, so **no stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changes**. Data Model 0.1.5 remains unchanged.
+
+**1.25 → 1.26 compatibility treatment.** Preserve every stored value and all resolved canon. Adoption requires no recomputation: no held item changes identity, Rank, binding, or quantity; no skill changes Rank, mastery level, Mana cost, effect magnitude, or counter; no past consumption, purchase, or resolved roll is reopened. The utility Rank scale of Section 7.2 measures from each skill's **native** Rank, and every known skill stands at its native Rank at adoption, so every current effect value is unchanged by construction. Ascension, the acquisition ceiling, and the opened rune catalogue apply **prospectively only**. Record the additive-upgrade acknowledgement in mutable live state; immutable Profile 1.25-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.26 at readiness.
+
+Version 1.25 remains the **migrating consumable economy and sourcing correction** over frozen 1.24, in two parts. **Effects and prices:** Lesser and Standard Healing/Mana potions now restore a flat amount — 30/90 Health and 20/40 Mana — instead of a percentage of the drinker's maximum pool, so their value is tied to the Gate-Rank bracket they serve (Section 11.2) rather than scaling forever with the Bearer's own growth; Greater Healing/Mana potions continue to restore to full. All six potion prices are corrected so that no tier is dominated: a Standard costs fewer actions and no more gold than the Lessers it replaces from D-Rank scale upward, and a Greater is the only single-action full restore. Healing runs 60/150/750 g and Mana 50/75/480 g for Lesser/Standard/Greater. **Sourcing:** Section 12.5 now states explicitly that Healing and Mana potions exist only inside the System shop and have no world vendor, and that the world's separate restorative-alchemy market acts on the severity axis over time and restores no pool as an immediate quantity. No other item, price, Rank, probability, owned item, completed transaction, or resolved outcome changes. Data Model 0.1.5 remains unchanged.
 
 **Required 1.24 → 1.25 migration.** Preserve every resolved roll, completed purchase, resale, currency balance, item identity, Rank, binding, and fictional outcome. A Healing or Mana potion already consumed under 1.24 or earlier keeps its historically narrated percentage-based restoration exactly as resolved — this migration reopens and recomputes no past consumption. From adoption forward, every Lesser potion consumption restores a flat 30 Health or 20 Mana, every Standard potion consumption restores a flat 90 Health or 40 Mana, and every Greater potion consumption continues to restore to full; apply the new prices to every future purchase and resale. No currently held unconsumed potion changes identity, Rank, quantity, or ownership — only its effect-on-use and its shop price change prospectively. The sourcing rule is a clarification, not a reopening: no past transaction is reversed, and where earlier narration used potion vocabulary for a licensed-market purchase, the goods are world restorative alchemy and always were. Record adoption in mutable live state; immutable Profile 1.24-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.25 at readiness.
 
@@ -758,9 +762,14 @@ Binding follows provenance. Ordinary catalogue and Daily Random Box runes/books 
 The item's `teaches` and `teaching_rank` are fixed at generation regardless of what its current or future holder knows. Transfer never rerolls an item.
 
 - **NPC or other non-Bearer awakened recipient.** If eligible by binding and the recipient does not know the technique, consumption teaches it. If the recipient knows it at a lower Rank, consumption upgrades it. If the recipient knows it at the same or a higher Rank, the item cannot benefit that recipient and remains intact; there is no reroll. An NPC's effective learned-technique Rank is `min(teaching_rank, recipient fixed Rank)`.
-- **Bearer.** If the Bearer does not know the technique, consumption teaches it. If the Bearer knows it at a lower Rank, consumption upgrades it while preserving mastery level and counters. If the Bearer knows it at the same or a higher Rank, the System rerolls on the item's originating skill table until the result is unknown or a genuine Rank upgrade. Every reroll is real. If no eligible result remains, the item becomes the matching **Mastery Rune** or **Mastery Book**, `bearer-only`; consuming it counts as one qualifying dangerous-scene contribution toward one chosen known skill's current mastery level.
+- **Bearer — above the ceiling.** If `teaching_rank` exceeds the Section 7.5 ascension ceiling, the item **does not consume and remains intact**, whether or not the Bearer knows the technique. There is no reroll, no partial teaching at the ceiling, and no loss. It is instruction he is not yet a wide enough channel to take, and it waits: the moment his System Rank rises far enough to put `teaching_rank` at or below the ceiling, the item becomes consumable exactly as generated. This is the same intact-item branch the NPC rule above uses, applied to the Bearer's own bracket.
+- **Bearer — unknown technique.** Consumption teaches it at `teaching_rank`, at Novice mastery.
+- **Bearer — known at a lower Rank.** Consumption **ascends** the skill to `teaching_rank` under Section 7.5's rune-ascension route, which resets its mastery to Novice.
+- **Bearer — known at the same or a higher Rank.** The System rerolls on the item's originating skill table until the result is unknown to him or is a genuine Rank upgrade within the ceiling. Every reroll is real. If no eligible result remains, the item becomes the matching **Mastery Rune** or **Mastery Book**, `bearer-only`; consuming it counts as one qualifying dangerous-scene contribution toward one chosen known skill's current mastery level.
 
 Duplicate protection is therefore a Bearer-consumption property, not item-generation filtering. A fixed item may be valuable instruction for an NPC even when the Bearer already knows its technique.
+
+Because the ceiling applies to acquisition as well as ascension, holding off on learning a technique buys nothing: an unlearned skill and a learned one are both bounded by the same `System Rank + 1`, and the learned one has been accumulating mastery and lifetime counters the whole time. This is the intended incentive, and it is the defect Section 7.5 exists to correct.
 
 ## 7.2 Skill Entries
 
@@ -772,7 +781,32 @@ For a Bearer damage or healing skill, rank supplies its base magnitude:
 |---|---:|---:|---:|---:|---:|---:|
 | Rank baseline | 10 | 25 | 62 | 150 | 375 | 1,000 |
 
-The table preserves the fixed-Rank standard-hit scale while decoupling it from the Bearer's level. A-Rank Channeling Focus adds its weapon power to this baseline (Section 11.5). The skill's own multiplier and mastery then apply under Section 6.2. Utility effects remain expressed as a modifier step, duration, reduction, resource change, or stated capability.
+The table preserves the fixed-Rank standard-hit scale while decoupling it from the Bearer's level. A-Rank Channeling Focus adds its weapon power to this baseline (Section 11.5). The skill's own multiplier and mastery then apply under Section 6.2.
+
+**Native Rank.** Every skill has a **native Rank**: the lowest Rank at which its instruction can be inscribed, and the zero point of the Rank scale below. The eight Section 7.3 starting skills carry the native Ranks listed there. **Rupture and Bulwark are native E-Rank.** An earned-by-doing technique's native Rank is the Rank at which it was ratified. A skill at its native Rank receives no Rank bonus of any kind; every value authored in this profile is the skill's **native-Rank** value.
+
+**Utility effects and Rank.** Utility effects remain expressed as a modifier step, duration, reduction, resource change, or stated capability — Rank never raises a modifier step above the Section 4.3 cap of +1. Instead, each Rank a skill stands **above its native Rank** adds, by category:
+
+**The Rank Dominance Law.** Every utility Rank scale below is sized to satisfy one invariant, which holds for **every skill in this profile regardless of category**:
+
+> **A skill at Novice one Rank higher is stronger than the same skill at Master one Rank lower.**
+
+Damage and healing satisfy this natively — a Rank step multiplies output by ~2.5 while a full mastery track multiplies it by only ×1.3–×1.6, so higher-Rank Novice wins by 1.56× to 1.92×. Utility skills are sized here to match that behaviour rather than contradict it. Rank is the wider pipe; mastery is the steadier hand; and a wider pipe at its crudest always moves more than a narrow one perfectly handled. Without this law, ascension would be a trap on exactly the skills whose numbers are least visible, and the Bearer would learn to fear his own progression.
+
+| Utility category | Per Rank above native | Example |
+|---|---|---|
+| **Reduction** | **+25 percentage points** to the skill's own reduction fraction | Stone Skin, native D-Rank: 30% at D, 55% at C, 80% at B |
+| **Passive multiplier** | **+0.25** to the multiplier the skill grants | Dagger Mastery, native E-Rank: +0.10 chassis at E, +0.35 at D |
+| **Modifier step or stated capability** | **whole-scene duration outright**, plus **one further affected subject or concurrent instance per Rank** | Keen Sense, native E-Rank: one subject at E, whole scene and two subjects at D |
+
+Each Rank step is deliberately **larger than an entire mastery track** on the same axis: +25 points against mastery's +20, +0.25 against mastery's +0.20. That is not generosity, it is arithmetic — ascension *costs* mastery levels (Section 7.5), so a Rank step must outweigh the whole track it can consume or the invariant fails.
+
+The **modifier-step** row works differently for a reason. Mastery's duration track terminates at *whole scene* (Section 7.4), an absolute ceiling no quantity of exchanges can exceed, so no duration-based Rank step could ever beat a Master-level skill. Rank therefore saturates duration immediately at one Rank above native and spends every further Rank on **scope** — additional subjects, allies, patterns, or concurrent instances, whichever the skill's authored effect names. A D-Rank Novice Keen Sense covers the whole scene on two subjects; an E-Rank Master covers the whole scene on one. The invariant holds, on the axis that still has room.
+
+Rank gains and mastery gains on the same axis **add**. Two bounds apply:
+
+- Reductions still multiply and never add across sources (Section 7.3), and a **single skill's own reduction fraction never exceeds 90%** from Rank and mastery combined — reduction is bounded by arithmetic, not by design preference, and nothing in this profile reaches immunity. The Rank Dominance Law holds at every Rank until that cap binds, which for a native-D 30% reduction skill is A-Rank. At and above the cap, each further Rank step instead grants **one further exchange of duration**, so ascending a capped reduction skill is still never worth nothing.
+- **Rank never changes a skill's Mana cost** — that axis belongs to mastery alone (Section 7.4), so the two growth tracks stay legible against each other.
 
 ### Earned Weapon Technique — Twin Fang
 
@@ -846,6 +880,8 @@ These eight skills are what a rune can teach at E- and D-Rank. Costs are in Mana
 
 Reductions from Stone Skin and any other source **multiply, never add** (`total = 1 − Π(1 − rᵢ)`), so no stack of skills reaches immunity.
 
+**Keen Sense and Silent Step are scene-long from Novice.** Both are authored above as lasting *for the scene*, not for one exchange, and that authored duration governs at every mastery level — Section 7.4's per-level lengthening ladder does not apply to them, because there is no duration left to gain. Their mastery track instead widens **scope** under that section: Novice benefits the Bearer alone, and each level extends the effect to one further ally — **1 / 2 / 3 / 4 / 5** beneficiaries from Novice through Master. A Keen Sense ally shares the detection read as if he had made it himself; a Silent Step ally moving with the Bearer shares the concealment while he keeps to the Bearer's pace and line. Neither ever renders shorter than one scene at any level.
+
 ## 7.4 Skill Mastery
 
 A skill is not fixed the day it is learned — it **grows in the Bearer's hands with use.** Every skill is held at a **mastery level, 1 through 5** — Novice, Practiced, Adept, Expert, Master — starting at **Novice** when acquired. This is the Bearer's **second growth axis beside stats**: a much-used skill becomes formidable even at a low rank, the way a hunter's signature deepens over a career.
@@ -865,12 +901,74 @@ Under Data Model 0.1.5, the Bearer's structured `tracked_counters` entries are t
 - **Magnitude**, by one Rank of the skill's own effect per level:
   - a **damage or healing** skill's multiplier rises **+0.15** (Mana Bolt ×1.0 at Novice → **×1.6 at Master**; E-Rank Mend 10 → 16 before focus at Master);
   - a **reduction** skill's fraction rises **+5 points** (Stone Skin 30% → **50% at Master**);
-  - a **modifier-step or utility** skill — already capped at +1 step (Section 4.3) — instead **lengthens**, its effect covering one further exchange per level and reaching the **whole scene at Master**, or widening to one stated additional target.
+  - a **modifier-step or utility** skill — already capped at +1 step (Section 4.3) — instead **lengthens**, its effect covering one further exchange per level and reaching the **whole scene at Master**, or widening to one stated additional target. A skill whose authored effect **already covers the whole scene at Novice** has no duration left to gain; its mastery track instead widens **scope**, adding one further affected subject or ally per level — **1 / 2 / 3 / 4 / 5** beneficiaries from Novice through Master, on the pattern already used by Exploit Pattern, Field Command, and Resonance Extraction. **Mastery never shortens an authored effect.** Where this ladder and a skill's authored Section 7.3 entry disagree, the authored entry governs.
 - **Mana cost**, **−10% per level** (rounded, minimum 1): a 5-cost skill runs 5 → **3 at Master**; passive skills stay 0.
 
 **Rendering.** The focused `/system skills` view carries mastery and counters: `Mana Bolt [E-Rank] ★★★★☆ · MANA 4 · Uses 17 · Progress 2/3 · ×1.45` (Expert, two qualifying scenes toward Master). The full window may wrap the counters onto an indented continuation row to preserve its fixed width. A stat-milestone passive renders `Uses <n> · Progress —`. Every value is read from the skill's ledger entry (Section 15) and is never estimated.
 
-Mastery raises a skill's power, never its **rank** — an E-Rank Mana Bolt mastered is still an E-Rank skill, just a lethal one. Rank reflects the tier it was learned at (Section 7.1); mastery reflects the hands that carry it.
+Mastery raises a skill's power directly; it raises the skill's **Rank** only by carrying it to Master and opening the breakthrough route of Section 7.5. A mastered E-Rank Mana Bolt is still an E-Rank skill until it ascends — just a lethal one. Rank reflects the tier the technique is inscribed at; mastery reflects the hands that carry it. The two are separate axes that feed each other.
+
+## 7.5 Skill Rank Ascension
+
+A skill's Rank is **not fixed at acquisition.** A technique learned at E-Rank is the beginning of that technique's life, not its ceiling.
+
+**The ceiling.** A skill's Rank may never exceed the **Bearer's System Rank + 1** (Section 6.6), capped at S-Rank. At System Rank D the ceiling is C-Rank. The ceiling binds **acquisition and ascension alike**: instruction teaching above it does not consume and waits intact (Section 7.1). Because both routes share one ceiling, delaying acquisition to catch a higher-Rank rune later gains nothing.
+
+**Two routes, and only these:**
+
+| Route | Trigger | Mastery cost | Rank gained |
+|---|---|---|---|
+| **Breakthrough** — the earned road | A known skill reaches **Master** while below the ceiling | Falls to **Adept**, keeping three of five levels; `mastery_progress` resets to 0 | **+1 Rank** |
+| **Rune ascension** — the bought road | Consume instruction teaching a **known** technique above its current Rank, within the ceiling | Resets to **Novice**; `mastery_progress` resets to 0 | Rises to the item's `teaching_rank`, however many Ranks that spans |
+
+**The earned road is the better road, and this is deliberate.** Breakthrough demands the full twelve qualifying scenes of a mastery track and returns the skill at Adept; rune ascension demands only gold or luck and returns it at Novice. At the same Rank the breakthrough result is stronger — for Rupture, ×2.30 against ×2.00 — because the hands that carried a technique to Master do not wholly forget it when the technique widens. What the rune buys instead is **speed and reach**: it works at any mastery level with no prerequisite climb, it can cross several Ranks in one consumption, and it does not require the skill to be anywhere near Master. Gold buys the Rank now; play buys the Rank better. Neither road is strictly superior, and a skill may alternate between them across its life.
+
+A skill sitting at Novice loses nothing to rune ascension because it has nothing to lose. That is correct: the gold was the price, and there was no earned investment to surrender.
+
+**Rune ascension is offered too.** Consuming instruction for a technique the Bearer already knows presents the same before-and-after comparison as a breakthrough offer, and the item **is not consumed unless the offer is accepted**; a declined rune remains intact and owned. Under the Section 7.2 Rank Dominance Law the trade is always a net gain in power — a D-Rank Master Stone Skin at 50% lands at 55% as a C-Rank Novice — so the offer is not a trap warning but a disclosure: mastery levels are real, hard-won, and about to be spent, and the Bearer is entitled to see the exact before-and-after on every axis before that happens. He may prefer to hold a Master-level skill and breakthrough it later on the earned road instead.
+
+The full ordering, which holds for every skill in this profile, is therefore:
+
+`Rank N Master  <  Rank N+1 Novice (rune)  <  Rank N+1 Adept (breakthrough)`
+
+Every ascension is an improvement; the earned road is simply the larger one.
+
+**Breakthrough settlement.** Breakthrough is **offered, never imposed.** When a skill's mastery advances to Master and its Rank stands below the ceiling, it becomes **ascension-ready** and the Runtime surfaces the offer at the dangerous-scene settlement or promotion barrier that recorded the mastery advance, with the exact before-and-after values on every axis the skill uses:
+
+`[SYSTEM] RANK ASCENSION AVAILABLE — Rupture · E-Rank Master (×2.60, 26 dmg) → D-Rank Adept (×2.30, 57 dmg). Ascend?`
+
+The Bearer may decline and hold the skill at Master indefinitely; a declined offer stands open and re-surfaces at each later barrier, costing nothing and expiring never. Acceptance settles in that same canon-bearing Event and fires the Tier-1 confirmation. A skill already at Master and already at the ceiling simply holds; it becomes ascension-ready the instant the Bearer's System Rank rises, and needs no further qualifying scene to take the offer.
+
+The offer exists because ascension is a **trade, not a gift** — it exchanges hard-won mastery levels for Rank. The Section 7.2 Rank Dominance Law guarantees the trade is always favourable in raw power, but it is still the Bearer's to make: he may want a technique held at Master for a specific fight, a specific Mana cost, or a specific duration before he widens it. The System presents the arithmetic and waits.
+
+**What ascension changes, and what it never touches.** Ascension rewrites the skill's Rank and mastery level and nothing else:
+
+| Value | On ascension |
+|---|---|
+| Rank | Rises |
+| Mastery level | Breakthrough route: falls to **Adept**. Rune route: resets to **Novice** |
+| `mastery_progress` | Resets to 0 |
+| `successful_uses` | **Never resets** — lifetime total |
+| `qualifying_scenes_total` | **Never resets** — lifetime total |
+| Skill identity, name, effect text | Unchanged |
+| Mana cost | Recomputed from the new mastery level under Section 7.4's −10%-per-level rule; Rank itself never changes Mana cost |
+
+Because `qualifying_scenes_total` never resets while mastery does, a skill's mastery level is **no longer derivable** from its lifetime scene count once it has ascended. From adoption forward, `mastery_level` is an authoritative world-declared `tracked_counters` entry alongside the others, written as a `counter_deltas` change on the causing Event like every other counter. For any skill with no recorded ascension the stored value equals `min(5, 1 + floor(qualifying_scenes_total ÷ 3))`, which is what it has always been — so adoption requires no recomputation.
+
+**Ascension count.** Each skill records `rank_ascensions`, a lifetime total that never resets, naming how many times that technique has been raised. It is provenance, not a threshold: nothing reads it to gate anything.
+
+**Worked example — Rupture.** At adoption Rupture stands E-Rank, Master, 14 lifetime qualifying scenes, dealing `10 × 2.60 = 26` on a standard success. The Bearer's System Rank is D, so the ceiling is C-Rank and Rupture is immediately ascension-ready.
+
+| Step | Cost | Rank · mastery | Standard hit |
+|---|---|---|---:|
+| At adoption | — | E-Rank · Master | 26 |
+| Breakthrough | offered, free | **D-Rank · Adept** (×2.30) | **57** |
+| Climb Adept → Master | 6 qualifying scenes | D-Rank · Master (×2.60) | 65 |
+| Breakthrough | offered, free | **C-Rank · Adept** (×2.30) | **142** |
+
+There it holds at the ceiling until the Bearer reaches level 20 and System Rank C. The technique that was worth 26 forever is now worth 142 across six earned scenes and two offers — and note the second climb costs **six** scenes, not twelve, because breakthrough returns the skill at Adept rather than Novice. The earned road compounds; that is its reward.
+
+Had he instead bought a C-Rank rune for 20,000 g at the first opportunity, Rupture would stand C-Rank Novice at `62 × 2.00 = 124` — reaching a higher Rank far sooner, but landing weaker than the earned route's 142 and carrying no mastery into it. That is the intended shape of the choice.
 
 ---
 
@@ -1381,7 +1479,7 @@ A **skill book** (boss drop 91–97) is rarer than a rune and teaches its skill 
 
 Entries 1–8 are the eight starting skills of Section 7.3, taught here at the dropped Gate's Rank rather than at the E-Rank/D-Rank rune tier. **Rupture** and **Bulwark** (entries 9–10) are authored here and enter the ledger with their name, rank (the Gate Rank the book dropped from), Mana cost, and effect on the schedule of Section 7.2.
 
-**Dropped instructional-item settlement.** A generated rune or book teaches the rolled technique at the drop's Rank, never below the skill's native Rank, and records `instruction_binding: unbound-awakened` plus its source event. That physical identity is fixed even if the Bearer already knows the technique. Recipient eligibility, NPC rank capping, upgrades, and the Bearer's consumption-time duplicate protection resolve under Section 7.1.
+**Dropped instructional-item settlement.** A generated rune or book teaches the rolled technique at the drop's Rank, never below the skill's native Rank, and records `instruction_binding: unbound-awakened` plus its source event. That physical identity is fixed even if the Bearer already knows the technique, and generation is **never** bounded by the Section 7.5 ceiling — a C-Rank Gate drops C-Rank instruction regardless of who opens it. Recipient eligibility, NPC rank capping, ascension, the ceiling, and the Bearer's consumption-time duplicate protection all resolve at consumption under Section 7.1.
 
 **Class-restricted skill books** exist only as **authored named items with provenance** — recorded as `class-bound:<class>`, usable by no one but the holder of their class, and entering play solely where a file authors them, exactly as the named-uniques rule (Section 11.5) requires.
 
@@ -1507,7 +1605,7 @@ Prague contract and salary rates run at **≈ 70% of Chicago**, paid in CZK/EUR.
 
 The shop is the Bearer's alone (Section 2). It trades in **gold**, buying crystals and selling consumables, equipment, runes, and keys. It is a **System interface, not a place** — the Bearer opens it with `/system shop` from anywhere, at any time, instantly; there is no storefront to travel to and no hours. A purchase deposits straight into his dimensional inventory (Section 12.9), and a sale is drawn from it, so trading never requires him to be anywhere or carry anything. **USD and gold do not exchange** — the Bearer converts loot to gold only by selling it to the shop, and spends gold only inside it.
 
-**Stock unlock.** Equipment and keys are stocked at every Rank **at or below the Bearer's System Rank** (Section 6.6). An E-Rank Bearer sees E-Rank stock; reaching D-Rank adds D-Rank without removing E-Rank, through S-Rank at level 50. Consumables are always stocked. Skill runes appear when their native Rank is at or below the System Rank. Stock is fixed and unlimited; there is no refresh timer, random inventory, scarcity roll, or haggle.
+**Stock unlock.** Equipment and keys are stocked at every Rank **at or below the Bearer's System Rank** (Section 6.6). An E-Rank Bearer sees E-Rank stock; reaching D-Rank adds D-Rank without removing E-Rank, through S-Rank at level 50. Consumables are always stocked. Skill runes appear when their native Rank is at or below the System Rank, and are stocked at every Rank from that native Rank up to the Section 7.5 ascension ceiling. Stock is fixed and unlimited; there is no refresh timer, random inventory, scarcity roll, or haggle.
 
 The unlimited catalogue is separate from the rotating **Daily Premium** stock below.
 
@@ -1545,8 +1643,7 @@ The unlimited catalogue is separate from the rotating **Daily Premium** stock be
 | **Antidote** | 30 g |
 | **Appraisal scroll** | 60 g |
 | **Stabilization seal** | 150 g |
-| **E-Rank skill rune** (choose an E-Rank skill from Section 7.3) | 1,000 g |
-| **D-Rank skill rune** (choose a D-Rank skill from Section 7.3) | 4,500 g |
+| **Skill rune**, any Rank from the skill's native Rank to the Section 7.5 ceiling | E 1,000 g · D 4,500 g · C 20,000 g · B 90,000 g · A 400,000 g · S 1,800,000 g |
 | **Elixir of a stat** (+1 base stat permanent; **max 3 lifetime per stat**) | 5,000 g |
 
 **The no-exchange rule.** There is no gold-to-USD or USD-to-gold conversion at any rate. The only bridge between the two economies is the spread between what the shop pays for a crystal and what the same crystal fetches on the licensed market — the Bearer chooses, per crystal, whether it becomes cash or gold, and cannot move value back the other way.
@@ -1595,7 +1692,11 @@ The invariant a future reprice must preserve: **no tier may be strictly dominate
 
 **Not the same goods as world restorative alchemy.** The world's own restorative-alchemy market is real, separate, and untouched by this rule: brewed from beast cores (`240_RESOURCES.md`), sold licensed and black, its high-Rank product is what can arrest the gray sleep (Bible Section 5; the off-shop note below). It works the way world medicine works — on the **severity and condition axis, over elapsed time and care** (Section 6.4) — and carries none of the magnitudes authored above. **Nothing sold anywhere in the world restores Health or Mana as an immediate quantity;** that is the System's alone. When an NPC buys, carries, or is treated with a restorative, it is always this market. NPCs have no concept of a System potion and cannot ask for one; a character naming one is either the Bearer or someone he told.
 
-**Skill runes.** A purchased rune teaches the selected Section 7.3 skill at its native rank and is consumed on use. Catalogue runes record `instruction_binding: bearer-only`; they may be carried by another person but cannot teach anyone except the Bearer. The shop will not sell a rune for a skill the Bearer already knows; mastery and higher-rank versions are earned through use or loot, never bought here. This refusal is catalogue selection, not the consumption-time duplicate protection used by loot and Premium instruction (Section 7.1).
+**Skill runes.** A purchased rune teaches the selected skill and is consumed on use. Catalogue runes record `instruction_binding: bearer-only`; they may be carried by another person but cannot teach anyone except the Bearer.
+
+The catalogue stocks a rune for a skill at every Rank from that skill's **native Rank** (Section 7.2) up to the **Section 7.5 ascension ceiling** — the Bearer's System Rank + 1 — for skills he knows and skills he does not. A rune for a skill he already knows is stocked only at Ranks **above** its current Rank; the shop does not sell instruction that cannot benefit him. Consuming one ascends the skill under Section 7.5, at that route's cost of a full mastery reset to Novice. Mastery itself is never bought here at any price — gold buys width, never hands.
+
+Rune prices use the same-Rank anchors of the Daily Premium schedule below — **E 1,000 g, D 4,500 g, C 20,000 g, B 90,000 g, A 400,000 g, S 1,800,000 g** — at face value, without the Premium surcharge. The C-through-S anchors are live catalogue prices for runes within the ceiling, not pricing references only. They are deliberately steep: gold may skip a mastery track, but a C-Rank rune costs twenty E-Rank ones, so buying a Rank is a genuine economic decision rather than the default path.
 
 **Resale.** The shop repurchases an intact equipment item from its own catalogue for **25% of the table price, rounded down**, regardless of where it came from. It repurchases an unused shop consumable, rune, or key for **50% of its listed price, rounded down**. Named artifacts, commissioned gear, broken gear, mundane possessions, cores, and story objects have no automatic shop price; the shop refuses them unless a later authored line says otherwise. Resale withdraws the item permanently and credits gold in the same transaction.
 
@@ -1673,7 +1774,7 @@ Cap every result at **S**. The rolled offer Rank determines that offer's Stats, 
 
 **Premium Rune — roll d10** on Section 11.3's skill-book table. The rune teaches the rolled technique at the current offer Rank, never below the skill's native E-Rank/D-Rank, and records `instruction_binding: unbound-awakened`. Its identity is fixed at rotation regardless of the Bearer's known skills. An eligible NPC may consume that original rune under Section 7.1. If the Bearer later consumes a same-or-lower duplicate, only then does the System apply Section 7.1's reroll and Mastery Rune fallback.
 
-The same-Rank rune price anchors are E=1,000 g, D=4,500 g, C=20,000 g, B=90,000 g, A=400,000 g, and S=1,800,000 g. E and D are the ordinary catalogue prices; C through S are pricing anchors only and do not add higher-Rank runes to the unlimited catalogue. Apply the Premium surcharge to those anchors:
+The same-Rank rune price anchors are E=1,000 g, D=4,500 g, C=20,000 g, B=90,000 g, A=400,000 g, and S=1,800,000 g. Under Profile 1.26 every one of these is a live ordinary catalogue price for a rune within the Section 7.5 ceiling; the Premium tab's advantage over the catalogue is therefore its exclusive `unbound-awakened` binding and its quantity-one scarcity, not access to Ranks the catalogue refuses to stock. A Premium Rank roll landing above the ceiling now buys instruction the Bearer cannot yet consume — a bankable asset he grows into (Section 7.1), not an immediate teaching. Apply the Premium surcharge to those anchors:
 
 | Rank | E-Rank | D-Rank | C-Rank | B-Rank | A-Rank | S-Rank |
 |---|---:|---:|---:|---:|---:|---:|

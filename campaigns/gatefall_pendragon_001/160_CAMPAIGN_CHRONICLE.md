@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000157
+  source: EVT-000158
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -118,6 +118,7 @@ subjects:
   - EVT-000155
   - EVT-000156
   - EVT-000157
+  - EVT-000158
 ```
 
 ---
@@ -3210,3 +3211,47 @@ description: "Alexander walked the short distance to the unnamed warehouse-distr
 **Settlement.** Private E-Rank core stash **22 -> 12**. No gold, cash, crystal, equipment, Stat, XP, Health, quest, or skill counter changed. No die resolved anything in this scene. Alexander closed by confirming he would return with goods for the artificer's answer."
 ```
 
+
+---
+
+## EVT-000158 - Profile 1.26: Skill Rank Ascension
+
+```yaml
+id: EVT-000158
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: owner-ruling
+  game_date: "2026-08-05 ~12:15 -05:00; profile adoption, no fictional time consumed"
+  real_date: "2026-07-28"
+type: Event
+kind: system-profile-adoption
+importance: structural
+game_date: "2026-08-05 ~12:15 -05:00; profile adoption, no fictional time consumed"
+participants:
+  - ENT-000125
+description: "Adopted frozen Gatefall World Rule Profile 1.26, which makes a skill's Rank a growth axis rather than a permanent property fixed at acquisition.
+
+**The defect corrected.** Under 1.25 and earlier, a skill's Rank was set the moment it was learned and could rise only if loot happened to deliver the same technique at a higher Rank — a d8 boss-drop roll, a d10 book, or a d10 Premium rune — while Section 12.5 explicitly refused to sell a rune for a skill the Bearer already knew. Mastery raised power but never Rank. Because the Section 7.2 Rank baselines run 10/25/62/150/375/1000 while a full mastery track multiplies output by only ×1.3–×1.6, a fully mastered E-Rank technique was permanently worth less than a quarter of the same technique freshly learned at C-Rank. Alexander's own Rupture is the demonstration: E-Rank at Master, fourteen lifetime qualifying scenes, dealing 26 on a standard success, against 124 for a C-Rank Rupture learned that morning by a stranger. Learning a skill early was therefore strictly worse than declining to learn it and waiting for higher-Rank instruction — an incentive exactly opposed to the one a growth system should create.
+
+**Two ascension routes (Section 7.5).** A known skill's Rank now rises by two routes and only these. **Breakthrough**, the earned road: a skill reaching Master mastery while below the ceiling is *offered* one Rank and settles at Adept, keeping three of five mastery levels. **Rune ascension**, the bought road: consuming instruction that teaches a known technique above its current Rank raises it to that item's teaching Rank and resets mastery to Novice. Both are offers presented with exact before-and-after values on every axis the skill uses, and neither consumes an item or settles a change unless accepted; a declined rune remains intact and owned. The earned road yields the stronger result at the same Rank — for Rupture, ×2.30 against ×2.00 — while the bought road is instant, needs no mastery prerequisite, and can cross several Ranks in one consumption.
+
+**The ceiling.** No skill may exceed the Bearer's System Rank + 1, capped at S-Rank. At System Rank D the ceiling is C-Rank. The ceiling binds acquisition as well as ascension: instruction teaching above it does not consume and waits intact until the Bearer's System Rank rises, the same intact-item branch already used for ineligible NPC recipients. This is what removes the incentive to postpone learning — an unlearned skill and a learned one are bounded identically, and the learned one has been accumulating mastery and lifetime counters the whole time.
+
+**The Rank Dominance Law (Section 7.2).** Utility skills receive a Rank scale sized so that one invariant holds for every skill in the profile regardless of category: a skill at Novice one Rank higher is stronger than the same skill at Master one Rank lower. Damage and healing satisfied this natively. Reduction skills now gain +25 percentage points per Rank above native against mastery's +20 across a whole track; passive multipliers gain +0.25 against mastery's +0.20; modifier-step skills saturate duration at whole-scene one Rank above native and spend every further Rank on scope — additional subjects, allies, patterns, or concurrent instances — because whole-scene is mastery's absolute ceiling and no duration-based step could exceed it. The single-skill reduction cap rises from 75% to 90%; at that cap further Rank steps convert to duration, so no ascension is ever worth nothing. Rank never changes a skill's Mana cost, which remains mastery's axis alone.
+
+**Native Ranks declared.** Every skill now has a native Rank as the zero point of that scale. The eight Section 7.3 starting skills carry the native Ranks already listed there; Rupture and Bulwark, previously authored only in the Section 11.3 skill-book table with no floor, are declared native E-Rank; an earned technique's native Rank is the Rank at which it was ratified.
+
+**Rune economy (Section 12.5).** The catalogue's blanket refusal to sell instruction for a known skill is lifted. The shop now stocks a rune for a skill at every Rank from its native Rank up to the ascension ceiling, and for a known skill only at Ranks above its current one. The C-through-S price anchors — 20,000, 90,000, 400,000 and 1,800,000 g — become live catalogue prices rather than Premium-only references. The Daily Premium tab's remaining advantages are its unbound-awakened binding and quantity-one scarcity; a Premium Rank roll landing above the ceiling now buys instruction the Bearer cannot yet consume and banks it.
+
+**Counters.** Because qualifying_scenes_total never resets while mastery does, a skill's mastery level ceases to be derivable from its lifetime scene count once it has ascended. mastery_level becomes an authoritative world-declared tracked counter alongside the existing three, and rank_ascensions is added as a lifetime provenance counter that gates nothing. For every skill with no recorded ascension the stored mastery_level equals min(5, 1 + floor(qualifying_scenes_total ÷ 3)) — what it has always been — so adoption requires no recomputation.
+
+**Folded correction — Keen Sense and Silent Step.** Section 7.3 authors both as lasting *for the scene*, but Section 7.4's mastery ladder lengthened a modifier-step skill by one exchange per level and reached whole-scene only at Master, which implied one exchange at Novice and made mastering these two appear to shorten them. Section 7.4 now states that a skill already scene-long at Novice has no duration to gain and spends mastery on **scope** instead — 1/2/3/4/5 beneficiaries from Novice through Master — that the authored Section 7.3 entry governs where the two disagree, and that **mastery never shortens an authored effect**. This is a rendering correction rather than a rule change, and the campaign record proves it: every recorded Keen Sense use already resolved scene-long. At `EVT-000114` a single 2-Mana activation at Novice ran across the corridor read, Owen's solo kill, a seven-common delegated sweep, and the elite read from the passage mouth, explicitly narrated as 'with Keen Sense still running'. Under the ladder's implied one-exchange Novice duration that sequence would have required repeated re-activations the Mana trace does not show. The shorter reading therefore never governed a resolved roll. Alexander's Keen Sense ledger line is corrected on three points that contradicted its own stated Adept level — the '★★★★☆' glyph, the 'for two exchanges at Adept' duration, and the 'toward Master' progress target — and gains the authored scope ladder, giving him himself plus two allies at Adept. No counter, mastery level, Mana cost, or resolved outcome changes. Silent Step is unlearned and gains nothing today.
+
+**Adoption boundary.** This step is additive. Every one of Alexander's known skills stands at its native Rank at adoption, so the new utility Rank scales change no current value by construction. No skill changes Rank, mastery level, Mana cost, effect magnitude, or counter; no held item changes identity, Rank, binding, or quantity; no past consumption, purchase, or resolved roll is reopened. He holds no unused instructional item — only an unused Runic Key [E-Rank] — so the acquisition ceiling reprices nothing he owns. Ascension, the ceiling, and the opened rune catalogue apply prospectively only.
+
+**Immediately consequential.** Rupture stands E-Rank at Master with its Rank below the C-Rank ceiling, and is therefore ascension-ready the moment play resumes: the System will present a breakthrough offer taking it to D-Rank Adept, ×2.30 against a 25 baseline, 57 on a standard success against its current 26. No other known skill is at Master. The offer stands open indefinitely and costs nothing to decline.
+
+No fictional time, roll, gold, cash, owned item, skill value, pool, quest, damage result, or prior outcome changed. Checkpoint 0033 remains immutable at Profile 1.25 / Data Model 0.1.5 and restores through the applicable compatibility chain to Profile 1.26."
+```

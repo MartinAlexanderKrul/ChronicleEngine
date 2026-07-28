@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+﻿$ErrorActionPreference = "Stop"
 
 $repo = Split-Path -Parent $PSScriptRoot
 $profilePath = Join-Path $repo "worlds/gatefall/206_WORLD_RULE_PROFILE.md"
@@ -60,17 +60,29 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw
 $character = Get-Content -LiteralPath $characterPath -Raw
 $checkpoint = Get-Content -LiteralPath $checkpointPath -Raw
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.25\r?$') "Gatefall Profile 1.25 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.26\r?$') "Gatefall Profile 1.26 is not active."
 Assert-True ($profile -match 'mana_recovery_remainder_units') "Gatefall Mana carry is not declared."
 Assert-True ($profile -match 'health_recovery_remainder_units') "Gatefall Health carry is not declared."
 Assert-True ($resident -match 'exact last-settled campaign-time anchor') "Resident settlement does not require the exact anchor."
 Assert-True ($runtime -match 'Canonical Time Settlement') "Engine Runtime lacks the canonical-time settlement contract."
 
-Assert-True ($character -match 'campaign_time: "2026-08-04T06:00:00-05:00"') "Live Gatefall anchor is missing or incorrect."
-Assert-True ($character -match 'mana_recovery_mode: resting') "Live Mana recovery mode is not resting."
-Assert-True ($character -match 'health_recovery_mode: resting') "Live Health recovery mode is not resting."
-Assert-True ($character -match 'mana_recovery_remainder_units: 0') "Live Mana carry was not initialized to zero."
-Assert-True ($character -match 'health_recovery_remainder_units: 0') "Live Health carry was not initialized to zero."
+# The live character's anchor, modes, and carries all advance with ordinary play, so this
+# contract asserts their SHAPE and INVARIANTS rather than a snapshot. Pinning them to specific
+# values makes the test fail after every session for reasons unrelated to the rule under test.
+Assert-True ($character -match 'campaign_time: "\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}"') `
+    "Live Gatefall anchor is missing or is not an exact ISO-8601 instant with a UTC offset."
+Assert-True ($character -match 'mana_recovery_mode: (active|resting)') "Live Mana recovery mode is missing or not a declared mode."
+Assert-True ($character -match 'health_recovery_mode: (resting|light|paused)') "Live Health recovery mode is missing or not a declared mode."
+
+# A carry is the sub-unit remainder after settlement converts every whole unit, so it must
+# always be non-negative and strictly below one unit's worth. A carry at or above the unit
+# means a restored point was dropped rather than credited.
+Assert-True ($character -match 'mana_recovery_remainder_units: (\d+)') "Live Mana carry is missing."
+$manaCarry = [int64]$Matches[1]
+Assert-True ($manaCarry -lt 720000) "Live Mana carry $manaCarry is at or above one restored unit (720000); a Mana point was dropped."
+Assert-True ($character -match 'health_recovery_remainder_units: (\d+)') "Live Health carry is missing."
+$healthCarry = [int64]$Matches[1]
+Assert-True ($healthCarry -lt 5760000) "Live Health carry $healthCarry is at or above one restored unit (5760000); a Health point was dropped."
 
 Assert-True ($checkpoint -match 'version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'recovery_remainder_units') "Immutable Checkpoint 0024 was retrofitted with Profile 1.13 state."

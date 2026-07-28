@@ -13,7 +13,7 @@ canonical_record: REC-000074
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000157
+  source: EVT-000158
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -66,7 +66,8 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.25"
+    profile_version: "1.26"
+    profile_skill_rank_ascension_event: EVT-000158
     profile_consumable_economy_event: EVT-000154
     profile_premium_surcharge_event: EVT-000135
     profile_system_interface_event: EVT-000134
@@ -135,7 +136,7 @@ canonical_state:
       - "Stone Skin [D-Rank] ★★☆☆☆ Practiced · Mana 4 · 35% physical damage reduction while sustained; ends when Mana lapses or dropped. **Successful uses 8 · qualifying scenes total 5 · mastery progress 2/3 toward Adept.** Mastery advanced Novice → Practiced closing the 2026-08-05 Ashfield instant dungeon (`EVT-000150`), its third qualifying scene — sustained through a group rush that actually connected. Sustained again materially through the Overgrown Temple and Shattered City clears (`EVT-000151`, `EVT-000152`), each adding a further qualifying scene toward Adept. Learned via a Premium Rune (`EVT-000083`); the rune's offer Rank rolled E, but the rune taught at Stone Skin's native D floor per Section 8.1."
       - "Rupture [E-Rank] ★★★★★ Master · Mana 8 · a heavy strike at **×2.60 of its skill-rank baseline** (E-Rank baseline 10, Section 7.2), resolving as `(10 + equipped focus power) × 2.60 × result multiplier` under Section 6.2. **Successful uses 30 · qualifying scenes total 14 · mastery progress — (Master, complete).** Mastery advanced Expert → Master closing the 2026-08-05 Ashfield instant dungeon (`EVT-000150`), its third qualifying scene at Expert — two finishing strikes on that dungeon's boss. Used materially in all four of the morning's clears (`EVT-000149`-`EVT-000152`); uses after Master add to the lifetime total but no further mastery progress applies. Historical: advanced Adept → Expert at `EVT-000142` (2026-08-04); Practiced → Adept at `EVT-000109` (2026-08-01)."
       - "Flash Step [D-Rank] ★★★★☆ Expert · Mana 5 · close or break line-of-sight distance instantly, granting +1 modifier step to the immediate follow-up action; at Expert the effect covers three further exchanges (Section 7.4). **Successful uses 12 · qualifying scenes total 10 · mastery progress 1/3 toward Master.** Mastery advanced Adept → Expert closing the 2026-08-05 Overgrown Temple instant dungeon (`EVT-000151`), its third qualifying scene at Adept — closing under it against the second elite's aerial leap. Used again materially in the 2026-08-05 Shattered City clear (`EVT-000152`), contributing one further qualifying scene toward Master. Historical: advanced Practiced → Adept at `EVT-000144` (2026-08-04); Novice → Practiced at `EVT-000113` (2026-08-02)."
-      - "Keen Sense [E-Rank] ★★★★☆ Adept · Mana 2 · +1 modifier step on detection — spotting ambush, hidden foes, or anomaly — for two exchanges at Adept. **Successful uses 6 · qualifying scenes total 6 · mastery progress 0/3 toward Master.** Mastery advanced Novice → Practiced closing the 2026-08-05 Hive instant dungeon (`EVT-000149`), then Practiced → Adept closing the 2026-08-05 Shattered City instant dungeon (`EVT-000152`), each its own third qualifying scene — reading the collapsing-span layout before crossing at the second advance."
+      - "Keen Sense [E-Rank] ★★★☆☆ Adept · Mana 2 · +1 modifier step on detection — spotting ambush, hidden foes, or anomaly — **for the scene**, as authored in Profile Section 7.3 at every mastery level. At Adept the read extends to **himself plus 2 allies**, who share it as if each had made it personally (Section 7.4 scope ladder, 1/2/3/4/5 from Novice through Master). **Successful uses 6 · qualifying scenes total 6 · mastery progress 0/3 toward Expert.** Mastery advanced Novice → Practiced closing the 2026-08-05 Hive instant dungeon (`EVT-000149`), then Practiced → Adept closing the 2026-08-05 Shattered City instant dungeon (`EVT-000152`), each its own third qualifying scene — reading the collapsing-span layout before crossing at the second advance. Corrected under Profile 1.26 (`EVT-000158`): this line previously read '★★★★☆', 'for two exchanges at Adept', and 'toward Master', all three contradicting the skill's Adept level and its authored scene-long duration. No counter changed and no resolved roll is reopened — every recorded use already resolved scene-long (`EVT-000114`: one 2-Mana activation at Novice spanning a corridor read, a seven-common sweep, and an elite read)."
       - "Dagger Mastery [E-Rank] ★★★☆☆ Adept · Passive · adds **+0.20** to a Quickknife's chassis multiplier (×0.75 → **×0.95**), applying to both equipped Quickknives. **Successful uses 8 · qualifying scenes total 7 · mastery progress 1/3 toward Expert.** Mastery advanced Practiced → Adept closing the 2026-08-05 Overgrown Temple instant dungeon (`EVT-000151`), its third qualifying scene — ordinary strikes throughout the morning's clears applied it materially in all four."
       - "Twin Fang [E-Rank] ★★☆☆☆ Practiced · Mana 5 · while two Quickknives are equipped, follow one ordinary Quickknife strike against a single target with a separately rolled strike from the other Quickknife in the same action. Each strike uses only its own weapon power; the skill-enabled second strike has a ×1.15 Twin Fang mastery multiplier at Practiced. Twin Fang occupies the action's offensive active-skill position and cannot combine with Rupture. **Successful uses 6 · qualifying scenes total 5 · mastery progress 2/3 toward Adept.** Mastery advanced Novice → Practiced closing the 2026-08-05 Ashfield instant dungeon (`EVT-000150`), its third qualifying scene. Used deliberately and repeatedly again in the Overgrown Temple and Shattered City clears (`EVT-000151`, `EVT-000152` — twice, at the player's specific request), each contributing a further qualifying scene toward Adept."
       - "Exploit Pattern [E-Rank] ★★☆☆☆ Practiced · Passive · a successful deliberate tactical read establishes an active Pattern tied to an opponent, behavior, weakness, or structure; Alexander gains +1 modifier step on every personal action genuinely exploiting it until the scene ends or the Pattern becomes invalid. The skill never restricts ordinary analysis and does not stack with another modifier from the same finding. Practiced supports 2 concurrent active Patterns. **Successful uses 5 · qualifying scenes total 5 · mastery progress 2/3 toward Adept.** Mastery advanced Novice → Practiced closing the 2026-08-05 Ashfield instant dungeon (`EVT-000150`), its third qualifying scene. Applied materially again in the Overgrown Temple and Shattered City clears, each contributing a further qualifying scene."
@@ -191,6 +192,35 @@ canonical_state:
       - { path: skills.sprint.successful_uses, baseline_value: 0, baseline_as_of: EVT-000149, current_value: 3 }
       - { path: skills.sprint.qualifying_scenes_total, baseline_value: 0, baseline_as_of: EVT-000149, current_value: 3 }
       - { path: skills.sprint.mastery_progress, baseline_value: 0, baseline_as_of: EVT-000149, current_value: 0 }
+      # Profile 1.26 (EVT-000158): mastery_level becomes authoritative stored state rather than a value
+      # derived from qualifying_scenes_total, because Section 7.5 ascension resets mastery while the
+      # lifetime scene count never resets. Every baseline below equals min(5, 1 + floor(scenes / 3)) —
+      # the skill's existing level — so adoption changes no value. Stat-milestone skills have no
+      # mastery track (Section 7.4) and carry neither counter.
+      - { path: skills.stone_skin.mastery_level, baseline_value: 2, baseline_as_of: EVT-000158, current_value: 2 }
+      - { path: skills.rupture.mastery_level, baseline_value: 5, baseline_as_of: EVT-000158, current_value: 5 }
+      - { path: skills.flash_step.mastery_level, baseline_value: 4, baseline_as_of: EVT-000158, current_value: 4 }
+      - { path: skills.keen_sense.mastery_level, baseline_value: 3, baseline_as_of: EVT-000158, current_value: 3 }
+      - { path: skills.dagger_mastery.mastery_level, baseline_value: 3, baseline_as_of: EVT-000158, current_value: 3 }
+      - { path: skills.twin_fang.mastery_level, baseline_value: 2, baseline_as_of: EVT-000158, current_value: 2 }
+      - { path: skills.exploit_pattern.mastery_level, baseline_value: 2, baseline_as_of: EVT-000158, current_value: 2 }
+      - { path: skills.field_command.mastery_level, baseline_value: 1, baseline_as_of: EVT-000158, current_value: 1 }
+      - { path: skills.resonance_extraction.mastery_level, baseline_value: 1, baseline_as_of: EVT-000158, current_value: 1 }
+      - { path: skills.bulwark.mastery_level, baseline_value: 2, baseline_as_of: EVT-000158, current_value: 2 }
+      - { path: skills.mend.mastery_level, baseline_value: 2, baseline_as_of: EVT-000158, current_value: 2 }
+      - { path: skills.sprint.mastery_level, baseline_value: 2, baseline_as_of: EVT-000158, current_value: 2 }
+      - { path: skills.stone_skin.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.rupture.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.flash_step.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.keen_sense.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.dagger_mastery.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.twin_fang.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.exploit_pattern.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.field_command.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.resonance_extraction.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.bulwark.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.mend.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.sprint.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
     progression_audit_baselines:
       - { domain: gatefall.skill_formation, baseline_as_of: EVT-000153 }
     progression_candidates:

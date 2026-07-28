@@ -161,6 +161,8 @@ canonical_state:
 
 Healing and Mana potions, antidotes, appraisal scrolls, stabilization seals, ranked dungeon keys, selectable skill runes, and permanent stat elixirs make up the shop's non-equipment catalogue. All are priced in gold and reachable only through the Bearer's interface (`206` Sections 2, 12.5). A healing potion restores Health but does not clear injury severity; a stabilization seal suspends a Critical injury's untreated death risk for 24 hours without healing it; an elixir grants permanent +1 to one base stat, capped at **3 lifetime per stat**.
 
+**Skill Rank ascension.** Instruction is no longer a one-time teaching. A rune or book teaching a technique the Bearer already knows, at a Rank above his current one, **ascends** that skill to the item's Rank and resets its mastery to Novice; a skill reaching Master mastery is instead offered a free **breakthrough** of one Rank, settling at Adept (`206` Section 7.5). Both are offers showing exact before-and-after values, and neither consumes an item nor settles unless accepted. No skill may exceed the Bearer's **System Rank + 1**, a ceiling binding acquisition as well as ascension — instruction above it does not consume and waits intact. The catalogue therefore stocks a rune for a skill at every Rank from its native Rank to that ceiling, and for a known skill only above its current Rank.
+
 **Instructional binding.** Runes and skill books remain transferable physical goods, but their consumption eligibility is immutable and follows provenance (`206` Section 7.1). Ordinary catalogue and Daily Random Box instruction is Bearer-bound. Daily Premium, public-Gate boss, instant-dungeon, Runic-Key, and future authored found/world instruction is unbound for already-awakened recipients unless explicitly authored otherwise. Mastery instruction is Bearer-bound; authored class instruction is class-bound. Complete holdings preserve the taught technique, teaching Rank, binding, provenance source kind/event, and unused status through every transfer.
 
 **Market behavior.** These goods originate exclusively in the System shop — there is no licensed-market supply channel because nobody outside the Bearer can see the interface. For **Healing and Mana potions** this is an authored prohibition, not merely an absence: `206` Section 12.5 forbids placing one on any world shelf, in any world loot cache, or in any NPC's kit unless the Bearer put it there, and holds that nothing sold anywhere in the world restores Health or Mana as an immediate quantity. The world's separate restorative-alchemy market — brewed from beast cores, licensed and black, and the only thing that can arrest the gray sleep — works on the severity and condition axis over elapsed time and is never a System consumable. Once purchased these goods are transferable physical objects, however, and their unlicensed provenance can become an exposure thread. The shop repurchases an unused consumable, rune, or key at 50% of list price; the gold can never become money (`206` Sections 12.5, 19).
@@ -180,8 +182,7 @@ Healing and Mana potions, antidotes, appraisal scrolls, stabilization seals, ran
 | Antidote | 30 g |
 | Appraisal scroll | 60 g |
 | Stabilization seal | 150 g |
-| E-Rank selected skill rune | 1,000 g |
-| D-Rank selected skill rune | 4,500 g |
+| Selected skill rune (E/D/C/B/A/S-Rank) | 1,000 / 4,500 / 20,000 / 90,000 / 400,000 / 1,800,000 g |
 | Instant-dungeon key (E-Rank/D-Rank/C-Rank/B-Rank/A-Rank/S-Rank) | 500 / 2,250 / 10,000 / 45,000 / 200,000 / 900,000 g |
 | Elixir of a stat (+1 permanent base stat, max 3 lifetime per stat) | 5,000 g |
 
@@ -202,7 +203,7 @@ aliases:
   - name: "System-shop consumables"
     quality: current
 canonical_state:
-  description: "Healing and Mana potions, antidote, appraisal scroll, stabilization seal, ranked key, selectable E-Rank/D-Rank skill rune, and stat elixir sold by the System shop for gold; the interface is reachable only by the Bearer. A 06:00 Daily Premium rotation guarantees one expiring quantity-one offer in all six shop categories."
+  description: "Healing and Mana potions, antidote, appraisal scroll, stabilization seal, ranked key, selectable skill rune at any Rank from its native Rank to the Bearer's System Rank + 1, and stat elixir sold by the System shop for gold; the interface is reachable only by the Bearer. A 06:00 Daily Premium rotation guarantees one expiring quantity-one offer in all six shop categories."
   market_behavior: "Originates exclusively in the System shop but becomes transferable physical property after purchase; unused listed goods resell to the shop at 50%, premium goods at 25% of premium price. Premium models never appear as world-store stock. The no-exchange rule holds: gold never converts to money."
   price_table: "System shop sell (gold, Section 12.5): healing 60/150/750 g (Lesser/Standard restore a flat 30/90 Health, Greater restores to full; priced so no tier is dominated — a higher tier buys action economy, not a better gold-per-point rate); Mana 50/75/480 g (Lesser/Standard restore a flat 20/40 Mana, Greater restores to full; same shape); antidote 30 g; appraisal scroll 60 g; stabilization seal 150 g; E-Rank/D-Rank skill rune 1,000/4,500 g; E-S-Rank keys 500/2,250/10,000/45,000/200,000/900,000 g; stat elixir 5,000 g."
 ```

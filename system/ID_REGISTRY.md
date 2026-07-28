@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000150 |
 | Record | `REC-` | Canonical Record | REC-000099 |
-| Event | `EVT-` | Event | EVT-000157 |
+| Event | `EVT-` | Event | EVT-000158 |
 | Relationship | `REL-` | Relationship | REL-000070 |
 
 ---
@@ -284,6 +284,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000150 | Entity | Gatefall: Pendragon: Ferro's Reclamation, a warehouse-district salvage dealer named as an informant risk (owner trades favors with Coalition compliance staff); unrelated to Denise Ferro |
 | EVT-000157 | Event | Gatefall: Pendragon: the pawnbroker, round two (2026-08-05, ~11:40–12:15) — ten private E-Rank cores paid against a nine-core price for information rather than cash (stash 22→12); district trust map, BGM's real flagging mechanics, and Cicero's Quiet's true provenance obtained; the pawnbroker's own want for C-Rank-and-above cores opened; an unlicensed-artificer consultation brokered but not yet made |
 | REC-000099 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0033/900_SAVE_MANIFEST.md` — session-3 continuation checkpoint at the 2026-08-05 12:15 anchor, captured under frozen Profile 1.25 / Data Model 0.1.5, no migration required on restore |
+| EVT-000158 | Event | Gatefall: Pendragon: Profile 1.25→1.26 skill-Rank ascension — a skill's Rank stops being fixed at acquisition and rises by two offered routes, breakthrough at Master (→ Adept, +1 Rank) and rune ascension (→ Novice, to the item's Rank), both capped at System Rank + 1, a ceiling that binds acquisition too so waiting to learn confers no advantage; utility skills gain a Rank scale satisfying the Rank Dominance Law; the shop opens higher-Rank runes for known skills at the C–S anchors; `mastery_level` and `rank_ascensions` added as tracked counters; folded correction making Keen Sense and Silent Step scene-long at every mastery level with mastery widening scope instead of duration, and correcting three self-contradictory fields on the live Keen Sense line. Additive — no live value changes |
 
 ---
 

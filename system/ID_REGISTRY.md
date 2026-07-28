@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000168 |
+| Entity | `ENT-` | Persistent Entity | ENT-000170 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000175 |
+| Event | `EVT-` | Event | EVT-000181 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -303,6 +303,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000165 | Event | Gatefall: Pendragon: side door confirmed locked; texted Owen a flirty follow-up (reply, then silence); second Keen Sense activation on a newly-noticed fenced warehouse (🎲 d100 65, net +1, effective 85, strong success) — fresh fencing, commercial keypad, climate-control hum, read as real capital protecting conditions inside. Keen Sense successful_uses 7→8, qualifying_scenes_total 7→8, mastery_progress 1→2/3 toward Expert. `ENT-000166`/`ENT-000167` authored, unattached. 35 minutes elapsed, Mana 23→27 (recovery) →25 (Keen Sense cost) |
 | EVT-000166 | Event | Gatefall: Pendragon: bought two coffees (cash −$7.00) and walked to the Windy City Hunters Coalition; Kesha Morrison offered a sitting Red Line waiver-tier posting (declined), then found a fresh, not-yet-public confirmed E-Rank Gate at the Lakefront Gate Corridor and agreed to hold it for a Cicero-style two-handed booking with Owen until 22:00 tonight (`OBJ-17` opened). Reconfirmed the Denise Ferro payout still processing. 50 minutes elapsed, Mana 25→31/72 (recovery only) |
 | ENT-000168 | Entity | Gatefall: Pendragon: Milo, a sensor-adjacent hunter met at the Coalition training grounds, trains reaction footwork; no notable combat skill |
+| ENT-000169 | Entity | Gatefall: Pendragon: Voula, proprietor of the Nikitas diner in Rogers Park; fed the Loyola Park lifeguard staff across Owen Callahan's three summers and has kept their corner booth unseated for twelve years |
+| ENT-000170 | Entity | Gatefall: Pendragon: Nikitas, a Greek diner on Sheridan Road four blocks from the Loyola Park lakefront; the guard staff's canteen, and the door Owen Callahan has not walked through in nine years |
 | EVT-000167 | Event | Gatefall: Pendragon: checked phone for Dale's answer (not due until tomorrow); brief warm exchange with Denise Ferro (no work available, named near top of her list); Tanya Voss visible but not approached; met Milo (`ENT-000168`) and ran his reaction-footwork drill twice cold — 🎲 d100 88 (legendary success) then 🎲 d100 73 (strong success). Qualitative capability only, no authored skill/counter. 35 minutes elapsed, Mana 31→35/72 (recovery only) |
 | EVT-000168 | Event | Gatefall: Pendragon: Profile 1.29→1.30 trigger telemetry — new Section 8.4.6 requires an owner-facing `trigger_telemetry` block at each checkpoint recording Hidden/Urgent dry counts alongside the concealed-record and tracked-posting supply figures that make them interpretable, so a dead trigger surfaces in the repository rather than in play. Diagnostic only: never a precondition, never a threshold that fires a quest, never System state, never rendered in `/system`. Additive; no live value changes and immutable checkpoints are not retrofitted |
 | EVT-000169 | Event | Gatefall: Pendragon: a repeat Keen Sense check on the storefront and warehouse concealed-discovery sites (🎲 d100 20, failure, no new information), plus a text exchange with Owen (a joke pickup time, a second eggplant emoji) |
@@ -312,6 +314,12 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000173 | Event | Gatefall: Pendragon: a solo lake swim at Loyola Park that Owen joined after a text exchange, revealing for the first time that he lifeguarded the same stretch of water in college; Owen's question about Alexander's plans for the day left unanswered |
 | EVT-000174 | Event | Gatefall: Pendragon: ruling opening the `reactive_pattern_anticipation` skill-formation candidate (Section 7.1) retroactively from `EVT-000167`'s already-recorded Milo footwork-drill evidence — 1/3 qualifying scenes toward ratification, one continuous practice session counting once regardless of reps within it. No fictional time, roll, or prior outcome changed |
 | EVT-000175 | Event | Gatefall: Pendragon: the campaign's first promotion-barrier `progression-batch-settlement`, discharging Profile Section 7.1's deferred half for the thirteen play Events since the `EVT-000153` baseline — one `evidence-recorded` result for the already-opened `reactive_pattern_anticipation`, every other scene classified `none` on stated grounds. No fiction authored |
+| EVT-000176 | Event | Gatefall: Pendragon: the lakefront reckoning — Owen's note-versus-coordinate reading and the poured-out coffee, his volunteered fear of guessing wrong toward crowding, and a play-fight escape resolving on a natural critical |
+| EVT-000177 | Event | Gatefall: Pendragon: Nikitas — Voula (`ENT-000169`), the diner (`ENT-000170`), the cleared guard table, and Owen's account of the one-to-three-second pause on the rocks that nobody ever reviewed because it worked |
+| EVT-000178 | Event | Gatefall: Pendragon: the training contract and its four intervention tells; the unbound Stone Skin rune given to Owen Callahan and consumed, giving an awakened a second ability for the first recorded time in Gatefall; opens OBJ-18 |
+| EVT-000179 | Event | Gatefall: Pendragon: an E-Rank Instant-Dungeon Key bought for 500 g and opened from Owen's kitchen — archetype Overgrown Temple, 11 common / 2 elite / 1 boss; a partial Keen Sense read and a legendary tactical read establishing two Patterns |
+| EVT-000180 | Event | Gatefall: Pendragon: Owen clears eleven commons and an elite alone under relayed Field Command while Alexander takes no offensive action; +120 XP by Section 3.8 setup credit; 112 crystals sold to buy the Mana potion that restores a non-Bearer's well |
+| EVT-000181 | Event | Gatefall: Pendragon: the Checkpoint 0036 promotion barrier — skill-formation batch settlement returning `none`, with the open dangerous-scene audit for `EVT-000180` explicitly deferred to instance close |
 
 ---
 

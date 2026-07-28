@@ -221,11 +221,15 @@ progression_audits:
     result: none
 description: "Fixture exchange."'
 
+    # Anchored on the fixture's own description line. Without it this matches every
+    # real audit block in the chronicle (19 and counting), so the mutation precondition
+    # fails after any session that records one.
     Replace-Once $chronicle `
         'progression_audits:
   - subject: ENT-000125
     domain: gatefall.skill_formation
-    result: none' `
+    result: none
+description: "Fixture exchange."' `
         'counter_deltas:
   - subject: ENT-000125
     counter: skills.twin_fang.successful_uses
@@ -233,7 +237,8 @@ description: "Fixture exchange."'
 progression_audits:
   - subject: ENT-000125
     domain: gatefall.skill_formation
-    result: none'
+    result: none
+description: "Fixture exchange."'
     $twinFang = Get-CounterLine $character 'skills.twin_fang.successful_uses'
     $unappliedDelta = Invoke-Validation $tempRoot
     Assert-True ($unappliedDelta.ExitCode -ne 0 -and $unappliedDelta.Output -like "*plus Event deltas*requires $($twinFang.Current + 1)*") `

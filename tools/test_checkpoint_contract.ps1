@@ -229,6 +229,40 @@ function Test-CheckpointContract {
             $failures.Add("$($campaign.Name)/$childName advanced progression since $($child.Parent) (level $($parentState.Level) XP $($parentState.Xp) -> level $($child.Level) XP $($child.Xp)) while its skill-use counters stayed at $($child.UseSum). Kills or a clear resolved, so at least one tracked skill's counter should have advanced with them; a counter frozen at its previous value is well-formed and passes every other gate, which is why this one exists. Settle skill counters in the exchange that used them (Resident Core, Turn-State Settlement step 4).") | Out-Null
         }
 
+        # --- Contract 9: the chronicle's Record block lists every Event it -
+        # defines. The subjects list and the Event bodies are two statements of
+        # the same fact, and only the bodies get written during play, so the
+        # list silently falls behind. This is a writer's obligation exactly
+        # like Contract 2's index drift, and it fails the same way: quietly,
+        # while every structural gate still passes.
+        #
+        # Three separate omissions were found the first time anyone counted --
+        # EVT-000085 and EVT-000086 from the Profile 1.7/1.8 migrations, and
+        # EVT-000162 through EVT-000168 from a checkpoint and a profile
+        # adoption. Nothing had ever compared the two, and the gap surfaced
+        # only because test_progression_audit_contract derives a fixture from
+        # the high-water Event and requires it to be the last subject.
+        #
+        # Live ledgers only: immutable checkpoints are byte-frozen and a
+        # historical omission inside one is not repairable (Rules 13.2).
+        $chroniclePath = Join-Path $campaign.FullName '160_CAMPAIGN_CHRONICLE.md'
+        if (Test-Path -LiteralPath $chroniclePath -PathType Leaf) {
+            $chronicleText = (Get-Content -LiteralPath $chroniclePath -Raw) -replace "`r`n", "`n"
+            $subjectsBlock = [regex]::Match($chronicleText, '(?ms)^subjects:\n(.*?)^```')
+            if ($subjectsBlock.Success) {
+                $definedEvents = [regex]::Matches($chronicleText, '(?m)^id: (EVT-\d{6})$') |
+                    ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique
+                $listedEvents = [regex]::Matches($subjectsBlock.Groups[1].Value, 'EVT-\d{6}') |
+                    ForEach-Object { $_.Value } | Sort-Object -Unique
+                $unlisted = @($definedEvents | Where-Object { $listedEvents -notcontains $_ })
+                if ($unlisted.Count -gt 0) {
+                    $shown = ($unlisted | Select-Object -First 8) -join ', '
+                    if ($unlisted.Count -gt 8) { $shown += ", ... ($($unlisted.Count) total)" }
+                    $failures.Add("campaigns/$($campaign.Name)/160_CAMPAIGN_CHRONICLE.md defines Events its Record block does not list as subjects: $shown. The subjects list and the Event bodies are two statements of the same fact; add each Event to the list in the same change that writes it (011 Section 8).") | Out-Null
+                }
+            }
+        }
+
         # --- Contract 2: the index agrees with the campaign's restore point ---
         # The two are independent statements of the same fact and must not
         # drift. This is the assertion that would have caught 0010 and 0011

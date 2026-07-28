@@ -35,6 +35,12 @@ subjects:
   - EVT-000043
   - EVT-000044
   - EVT-000045
+  - EVT-000046
+  - EVT-000047
+  - EVT-000048
+  - EVT-000049
+  - EVT-000050
+  - EVT-000057
 ```
 
 ## Expedition Begins

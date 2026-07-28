@@ -12,6 +12,47 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-28 — NPC channel check sited in the resident layer
+
+Runtime refinement under Version 0.3 milestone 0.3.5, surfaced four times in one Gatefall: Pendragon session; no Engine Rule, Data Model section, command mechanism, or decision number changed. Refinement under Decision 069 point 1: it sites an obligation the engine already carries (Invariant 1, Grounding) and adds no mechanism a world must satisfy — the case Decision 069 names explicitly, with Decision 055 as the type case.
+
+**Observed failure:** NPCs asserted facts they had no in-fiction channel to — three times on one thread after two corrections in the same conversation, then a fourth on an unrelated fact. Corrections generalized neither across turns nor across facts. A complete channel test already existed in the `npc-knowledge` skill, including a rationalization table naming the exact excuses used.
+**Cause:** the test was carried *solely* by fetched reference, the configuration Runtime Section 5.3 and Decision 055 rule out. The resident Information Boundary constrains what the player is shown, not what an NPC may assert.
+**Resident fix:** Resident Core gains *The NPC Channel Check* — the four-channel test, the rule that a correction does not inoculate a later turn or generalize to another fact, and Runtime-held material (counters, quest state, prior narration, tool output) named as the trap rather than the exemption. Trigger scoped to assertions beyond present visible conduct, so ordinary dialogue needs no check at all and pace is preserved.
+**Durability:** campaign NPC ledgers gain a Closed Channels table, so a player ruling outlives the scene instead of evaporating with it.
+**Enforcement:** `engine/012_ENGINE_RUNTIME.md` Section 0.2 declares the enforcement point as a Grounding row; `tools/test_npc_channel_contract.ps1` pins resident siting, per-line application, and trigger narrowness separately; Runtime Profile advertises the guard in its resident-layer contract.
+
+## 2026-07-28 — Gatefall Profiles 1.27–1.30 non-daily quest trigger correction
+
+World authoring under Decision 069 point 4, milestone 0.3.5; recorded here rather than consuming a decision number. Four additive steps correcting one defect: across the prototype campaign's whole played span, and every day Section 8.4 existed, the System issued **zero** Hidden and **zero** Urgent quests while every audit ran correctly.
+
+**1.27 — concealed-canon supply.** Section 8.4.3 required a concealed discovery to already exist in authored canon with a recorded reveal condition, and nothing produced one; the filter was correct and its supply empty. New `worlds/gatefall/230_KNOWLEDGE_SUBJECTS.md` translates already-authored secrets into ten world-scope records; Section 8.4.5 adds the field contract and a time-separated promotion ritual.
+**1.28 — the tracked board.** Section 9.3 gave every Gate a countdown and nothing counted, so only a contracted Gate had a running clock and no Gate could break off the Bearer's own contract. Section 9.10 makes a surfaced detection persist with a derived deadline and deterministic resolution. Persistence, not simulation: Section 9.1's rates remain explicitly not a calendar.
+**1.29 — Urgent eligibility clarified.** Criterion 1 now excludes the Bearer himself; the blanket "routine contracted hunting" exclusion is scoped to the contracted objective and same-contract persons; sealed-instance reachability is stated in both directions. The crisis bar is unchanged.
+**1.30 — trigger telemetry.** Section 8.4.6 records dry counts beside the two supply figures that make them interpretable. Diagnostic only, never a trigger, not System state.
+
+All four additive; no stored value, resolved outcome, or immutable checkpoint changed, and no quest attaches retroactively. Enforcement in `tools/test_gatefall_quest_contract.ps1`, including recomputation of every board deadline from Section 9.3. Engine 0.2.0 and Data Model 0.1.5 unchanged.
+
+## 2026-07-28 — Chronicle subject completeness enforced
+
+Refinement under milestone 0.3.5. A chronicle's Record block and its Event bodies are two statements of the same fact, and only the bodies were written during play, so the subject list fell behind silently while every structural gate passed. Found in all three campaigns on first count. Repaired in place — no Event created, edited, or reinterpreted, and no provenance moved. `tools/test_checkpoint_contract.ps1` Contract 9 now compares them; live ledgers only, since immutable checkpoints are byte-frozen under Rules 13.2.
+
+## 2026-07-28 — Line endings normalized to LF
+
+Housekeeping. `.gitattributes` sets `* text=auto eol=lf`. Mixed endings had produced false readings in contract work twice. Deliberately no exception for `saves/**`: measured first, `git ls-files --eol` reports i/lf for all 500 files there, so they were always stored as LF and the CRLF was a checkout artifact — an exclusion would protect nothing while costing readable diffs on files that must never change.
+
+## 2026-07-28 — Gatefall Profile 1.26 skill Rank ascension
+
+World authoring, milestone 0.3.5. A skill's Rank was fixed at acquisition, so learning early was strictly worse than waiting. Section 7.5 adds two offered ascension routes — breakthrough at Master and rune ascension — both capped at System Rank + 1, a ceiling binding acquisition too. Section 7.2 adds the Rank Dominance Law sizing utility scales; Section 12.5 opens higher-Rank runes for known skills. `mastery_level` and `rank_ascensions` become tracked counters. Additive; every known skill stood at its native Rank at adoption.
+
+## 2026-07-28 — Gatefall Profile 1.25 consumable economy and sourcing
+
+World authoring, milestone 0.3.5. Lesser and Standard Healing/Mana potions restore a flat amount rather than a percentage of maximum, with all six prices corrected so no tier is dominated; Greater potions remain the only single-action full restore. Healing and Mana potions are stated System-exclusive with no world vendor. Migrating: prospective only, no past consumption reopened.
+
+## 2026-07-27 — Gatefall Profile 1.24 System economy and instant-dungeon deposits
+
+World authoring, milestone 0.3.5. Rank-bearing Daily Premium offers cost 125% of their ordinary same-Rank anchor rather than 200–250%; Section 17 states explicitly that every instant dungeon carries Section 11.1's mineable deposit. Migrating for unpurchased offers in the live cycle only; no probability, item identity, or completed transaction changed.
+
 ## 2026-07-27 — Gatefall Profile 1.23 System-interface skill grouping
 
 Gatefall's full `/system` window and `/system skills` focused view now group techniques by operation: mana-costed techniques under `SKILLS · ACTIVE`, then costless techniques under `SKILLS · PASSIVE`. Classification is derived from the canonical cost field, ledger order is preserved inside each group, and empty groups remain visible. This is an additive presentation advance; no stored state or mechanic changes. Engine 0.2.0 and Data Model 0.1.5 remain unchanged.

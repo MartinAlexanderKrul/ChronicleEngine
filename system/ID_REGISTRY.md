@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000168 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000168 |
+| Event | `EVT-` | Event | EVT-000173 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -305,6 +305,11 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000168 | Entity | Gatefall: Pendragon: Milo, a sensor-adjacent hunter met at the Coalition training grounds, trains reaction footwork; no notable combat skill |
 | EVT-000167 | Event | Gatefall: Pendragon: checked phone for Dale's answer (not due until tomorrow); brief warm exchange with Denise Ferro (no work available, named near top of her list); Tanya Voss visible but not approached; met Milo (`ENT-000168`) and ran his reaction-footwork drill twice cold — 🎲 d100 88 (legendary success) then 🎲 d100 73 (strong success). Qualitative capability only, no authored skill/counter. 35 minutes elapsed, Mana 31→35/72 (recovery only) |
 | EVT-000168 | Event | Gatefall: Pendragon: Profile 1.29→1.30 trigger telemetry — new Section 8.4.6 requires an owner-facing `trigger_telemetry` block at each checkpoint recording Hidden/Urgent dry counts alongside the concealed-record and tracked-posting supply figures that make them interpretable, so a dead trigger surfaces in the repository rather than in play. Diagnostic only: never a precondition, never a threshold that fires a quest, never System state, never rendered in `/system`. Additive; no live value changes and immutable checkpoints are not retrofitted |
+| EVT-000169 | Event | Gatefall: Pendragon: a repeat Keen Sense check on the storefront and warehouse concealed-discovery sites (🎲 d100 20, failure, no new information), plus a text exchange with Owen (a joke pickup time, a second eggplant emoji) |
+| EVT-000170 | Event | Gatefall: Pendragon: dinner at Owen's apartment — Owen said "Marry me," Alexander answered "Yes. Eventually. Du'h" (first time either has raised marriage), "I love you" repeated; the held Lakefront booking explicitly declined by text to Kesha Morrison (`OBJ-17` closed); Owen fell asleep on the couch and was walked to bed |
+| EVT-000171 | Event | Gatefall: Pendragon: an uneventful overnight rest at Owen's apartment (Mana settling to its maximum) and the 06:00 issue of the thirteenth daily quest |
+| EVT-000172 | Event | Gatefall: Pendragon: the thirteenth daily quest completed solo and doubled at Alexander's own request (streak 12→13); three new pending rewards (Ability Points +3, Status Recovery, Daily Random Box) |
+| EVT-000173 | Event | Gatefall: Pendragon: a solo lake swim at Loyola Park that Owen joined after a text exchange, revealing for the first time that he lifeguarded the same stretch of water in college; Owen's question about Alexander's plans for the day left unanswered |
 
 ---
 

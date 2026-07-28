@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000159
+  source: EVT-000160
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -120,6 +120,7 @@ subjects:
   - EVT-000157
   - EVT-000158
   - EVT-000159
+  - EVT-000160
 ```
 
 ---
@@ -3287,4 +3288,40 @@ description: "Gatefall World Rule Profile 1.26 → 1.27 adopted at the 2026-08-0
 **What did not change.** Section 8.4.3's four criteria are untouched and all four still must hold. Real proximity or a genuinely resolved clue is still required; asking the System what `???` means still reveals nothing; a guess is still not a pointer; and Section 8.4.4 still forbids completion from conduct predating attachment. The change widens the supply of things to find, not the bar for finding them.
 
 **Adoption boundary.** **No pointer attaches at adoption.** The fourteen days already played are not re-audited against the new ledger, and `system_state.non_daily_quests` is unchanged — capacity 0/2 with `active: []` and `pending_offers: []`. Every campaign-scope record's proximity condition is deliberately forward-looking: delivering a C-Rank-or-above core into the pawnbroker's hands, reaching the middleman or the Cicero recovery site, doing business inside Ferro's. Alexander holds a secondhand account of the Cicero remains and the scavenger's silence, which is neither first-hand proximity nor a resolved clue under the records as authored. Checkpoint 0033 remains immutable at Profile 1.25 / Data Model 0.1.5 and restores through the applicable compatibility chain to Profile 1.27."
+```
+
+## EVT-000160 - Profile 1.28: The Tracked Board
+
+```yaml
+id: EVT-000160
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-05 ~12:15 -05:00"
+  real_date: "2026-07-28"
+type: Event
+kind: ruling
+importance: immediate
+game_date: "2026-08-05 ~12:15 -05:00"
+participants:
+  - ENT-000125
+description: "Gatefall World Rule Profile 1.27 → 1.28 adopted at the 2026-08-05 12:15 anchor. **Additive**: no fictional time, roll, gold, cash, owned item, skill value, pool, counter, quest, or prior outcome changed.
+
+**The defect.** Section 9.3 gives every Gate a break countdown and Section 9.8 authors the dungeon break as the disaster the entire regulatory apparatus exists to prevent — but nothing was ever counting. A Gate the Bearer was contracted to had a live clock because the contract put it in front of him; the Red Line Corridor posting of `EVT-000051` had one, and was cleared on its deadline at `EVT-000059`/`EVT-000060`. Every other detection in the metro entered a scene as a line on a board and ceased to exist when the scene ended. No Gate could break anywhere except on Alexander's own contract, which is also why Section 8.4.2 has had almost no input stream: its eligible crisis is a Gate break, a Gate creature, or a perceived sealed-instance hazard, and the only Gates with running clocks were the ones he was already being paid to clear — excluded by name as routine contracted hunting.
+
+**Section 9.10 — the tracked board.** A detection that has entered the fiction through an ordinary channel the Bearer perceives — the BGM ranking board, a co-op or guild dispatch posting, an auction lot, or a named NPC telling him about one — now persists. It stores its place anchor, detection timestamp, assessed Rank and confidence, its Section 9.4 posting floor, a staffing status, and a break deadline **derived** from Section 9.3 rather than authored. Three to six tracked postings is the ordinary standing state for Chicago.
+
+**This is persistence, not simulation.** Section 9.1's rates remain explicitly aggregate and explicitly not a calendar. The Runtime still never rolls the metro's ~35 weekly detections and still decides when a Gate enters the fiction; what changed is only that a Gate stops evaporating afterward. The board holds what the fiction has actually surfaced and nothing else, and the Runtime does not manufacture postings to fill it.
+
+**Deadline resolution is deterministic** — no roll, no discretion. A posting `staffed` or `held` at its deadline clears off-screen, which is the ordinary case and the one that happens most. A posting `withdrawn` leaves the board. Only a posting still `posted` — under its floor when the clock runs out — breaks under Section 9.8. This is grounded in what Section 9.4 already says about the trade: cheap jobs sit, the under-strength waiver tier is where casualties concentrate, and `EVT-000051` records a real posting sitting undersubscribed at Red Line rates. `EVT-000052`'s auction war is authored to pull bids away from exactly these mid-tier lots. Institutions still act before the deadline — BGM escalates, raises the rate, or issues an emergency contract — and those interventions work by changing a posting's staffing status, which is how a break gets averted rather than decreed.
+
+**A posting is tracked state, not a Persistent Object.** It carries a stable local board key and mints no identifier; most postings are cleared by other people and leave without ever having mattered individually. Promotion to an Event happens only when a posting becomes campaign-durable — Alexander bids, takes, or enters it, it breaks, or it produces a consequence the campaign will cite — exactly as `EVT-000051` carries the one posting that mattered.
+
+**What this does not create.** A break is a world event, not a quest. If one fires where Alexander can perceive and reach it, Section 8.4.2's four criteria are then evaluated on their own terms and **unchanged**; the Runtime never adjusts a posting's staffing, deadline, or location to make an offer fit. If he is across the city it is news he hears, and the world is worse for it whether or not he was there. A posting two days from its deadline is information and pressure, never a summons.
+
+**The board at adoption** holds four Chicago clearance postings, seeded in `110_WORLD_LEDGER.md` with their honest current staffing and nothing pre-decided: `GB-01`, a confirmed E-Rank in the Red Line Corridor detected 2026-08-01, breaking midnight 2026-08-08, four signed of five at waiver tier and five days unfilled; `GB-02`, an unconfirmed D-Rank on the Lakefront detected 2026-08-03, breaking midnight 2026-08-09, a mid-tier auction lot with thin bids; `GB-03`, a confirmed C-Rank on the Lakefront detected 2026-08-04, breaking midnight 2026-08-09, held by Horizon Guild dispatch and on track to clear; and `GB-04`, a confirmed E-Rank in the Red Line Corridor posted this morning, breaking midnight 2026-08-12 and filling normally. Every deadline is derived arithmetic, verified against `EVT-000051`'s own control case (detected 2026-07-18, unconfirmed D, six days, broke midnight 2026-07-24). These are clearance contracts and are consistent with `EVT-000155`, in which Kesha Morrison had no *mining or harvest* work at C-Rank or above — which is what Alexander had asked her for.
+
+**No Gate breaks retroactively.** Every Gate named in a past scene is resolved exactly as that scene resolved it; no earlier posting is re-derived against Section 9.10; and no completed clear, filed split, or closed contract is reopened. Deadline resolution applies prospectively, from the first tracked deadline falling after adoption. Alexander's standing order that no crew Gate precedes the 2026-08-09 training session is a constraint of his own making covering Priya's crew, not a bar on freelance work he takes himself. Checkpoint 0033 remains immutable at Profile 1.25 / Data Model 0.1.5 and restores through the applicable compatibility chain to Profile 1.28."
 ```

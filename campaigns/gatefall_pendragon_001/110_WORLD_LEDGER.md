@@ -15,7 +15,7 @@ canonical_record: REC-000075
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000159
+  source: EVT-000160
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -76,6 +76,27 @@ References into authoritative Gatefall records. These are pointers, not copies; 
 Not visible to Alexander at start: BGM Region V's internal Ranking Bench field notes flagging the Red Line Gate's mana-pressure curve as climbing faster than a true D (`EVT-000051`'s non-public detail), and the identities or agendas of any of Gatefall's notable figures beyond ordinary public reputation.
 
 **Update, 2026-07-24 (`EVT-000059`):** The System attached to Alexander mid-clear, inside the Red Line Corridor Gate — see `100_CHARACTER_SHEET.md`'s `system_state`. This changes nothing about what is *publicly* known (the row below still holds: the System does not publicly exist, and nothing about Earth's or Gatefall's common knowledge has changed), but it is no longer true that Alexander has nothing System-side to know — he is now the world's first and only Bearer, a fact perceptible to him alone (Profile Section 14.4) and unknown to his crew, the Coalition, or anyone else.
+
+---
+
+## The Tracked Board (Profile Section 9.10)
+
+Gate postings that have entered the fiction and now persist with a running clock. Tracked state, not Persistent Objects: each carries a stable local key and mints no identifier until it becomes campaign-durable (Section 9.10), at which point it is promoted to an Event.
+
+Every `breaks` value below is **derived**, never authored — detection date plus the Section 9.3 days for the assessed Rank (E 7, D 6, C 5, B 4), matching the arithmetic already used for `EVT-000051` (detected 2026-07-18, unconfirmed D, broke at midnight 2026-07-24). An unconfirmed assessment derives from the card; a re-ranking re-derives.
+
+**Board as of the 2026-08-05 12:15 anchor.** These are **clearance** contracts, which is consistent with `EVT-000155`: Kesha Morrison had no *mining or harvest* work at C-Rank or above, which is what Alexander asked her for.
+
+| Key | Place | Assessment | Detected | Breaks | Floor (§9.4) | Staffing | Posting body |
+|---|---|---|---|---|---|---|---|
+| `GB-01` | Red Line Corridor (`ENT-000090`) | **Confirmed E-Rank** | 2026-08-01 | **midnight 2026-08-08** | 8, waiver floor 5 | **`posted`** — under floor, 4 signed of 5 at waiver tier | Windy City Hunters Coalition freelance posting. Thin rate even by Red Line standards; has sat five days without filling. |
+| `GB-02` | Lakefront Gate Corridor (`ENT-000089`) | **Unconfirmed D-Rank** | 2026-08-03 | **midnight 2026-08-09** | 8 | **`posted`** — under floor, bids thin | BGM auction lot. Mid-tier and exactly the kind of lot `EVT-000052`'s Ironline/Horizon auction war has been pulling bids away from. |
+| `GB-03` | Lakefront Gate Corridor (`ENT-000089`) | **Confirmed C-Rank** | 2026-08-04 | **midnight 2026-08-09** | 10–12 | **`held`** — Horizon Guild dispatch | Won at auction and staffed from Horizon's own bench. The ordinary case: it will clear off-screen on schedule. |
+| `GB-04` | Red Line Corridor (`ENT-000090`) | **Confirmed E-Rank** | 2026-08-05 | **midnight 2026-08-12** | 8, waiver floor 5 | **`posted`** — fresh, filling normally | Coalition freelance posting, on the board this morning. A full week to fill; no pressure on it yet. |
+
+**Nothing here is pre-decided.** Each posting resolves at its deadline by Section 9.10's deterministic rule from whatever its staffing status is *at that moment* — `held` and `staffed` clear off-screen, `posted` breaks. Bids, guild dispatches, BGM escalation, and Alexander's own choices all move staffing between now and then, and no outcome is authored in advance.
+
+**What Alexander knows.** `GB-01` and `GB-04` are Coalition freelance postings he can read at the desk or on the board; `GB-02` and `GB-03` are BGM board listings public to any licensed hunter who checks. He has a standing order that no *crew* Gate precedes the 2026-08-09 training session — a constraint of his own making that covers Priya's crew, not a bar on his taking freelance work himself.
 
 ---
 

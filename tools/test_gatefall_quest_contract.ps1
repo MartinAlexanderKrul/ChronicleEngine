@@ -32,7 +32,7 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8
 $runtimeProfile = Get-Content -LiteralPath $runtimeProfilePath -Raw -Encoding UTF8
 $latestCheckpoint = Get-Content -LiteralPath $latestCheckpointPath -Raw -Encoding UTF8
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.27\r?$') "Gatefall Profile 1.27 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.28\r?$') "Gatefall Profile 1.28 is not active."
 Assert-True ($profile -match 'The Bearer has \*\*1 concurrent non-daily quest slot by default\*\*') "Default non-daily capacity is not fixed at 1."
 Assert-True ($profile -match 'Multitask raises this to \*\*2\*\*; Analyst raises it to \*\*3\*\*') "Multitask/Analyst capacity increases are not fixed at 2 and 3."
 Assert-True ($profile -match 'The `\[DAILY\]` quest has its own reserved slot') "Daily quests do not have an explicit reserved slot."
@@ -42,15 +42,15 @@ Assert-True ($profile -match 'Gate-clear milestone XP for the Bearer''s System R
 Assert-True ($profile -match 'A quest cannot complete from conduct that occurred before') "Pre-attachment retroactive completion is not prohibited."
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
-Assert-True ($character -match 'profile_version: "1\.27"') "Live Gatefall character was not migrated to Profile 1.27."
+Assert-True ($character -match 'profile_version: "1\.28"') "Live Gatefall character was not migrated to Profile 1.28."
 Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 1\s+analyst_bonus: 0\s+capacity_total: 2\s+active: \[\]\s+pending_offers: \[\]') "Live Multitask quest capacity is missing or incorrect."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
-Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.27"') "Campaign startup does not bind Profile 1.27."
+Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.28"') "Campaign startup does not bind Profile 1.28."
 Assert-True ($startup -match 'latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0029') "Campaign startup does not target the latest checkpoint."
 Assert-True ($startup -match 'Sections 7\.1, 7\.4, 8\.4, and 14\.3 before readiness completes') "Gatefall startup does not preload the skill and proactive-trigger contracts."
 Assert-True ($startup -match 'require_profile_trigger_audit: true') "Gatefall startup does not require the proactive trigger audit."
-Assert-True ($index -match 'World Rule Profile 1\.27, frozen') "World index does not advertise frozen Profile 1.27."
+Assert-True ($index -match 'World Rule Profile 1\.28, frozen') "World index does not advertise frozen Profile 1.28."
 Assert-True ($profile -match 'SKILLS[^\r\n]+ACTIVE') "Gatefall /system template does not render an ACTIVE skills group."
 Assert-True ($profile -match 'SKILLS[^\r\n]+PASSIVE') "Gatefall /system template does not render a PASSIVE skills group."
 Assert-True ($profile -match 'contains every skill whose ledger entry carries a Mana cost') "Gatefall /system skills do not classify ACTIVE entries from canonical Mana cost."
@@ -120,5 +120,38 @@ Assert-True ($knowledge -match 'no campaign ever edits this file') "Concealed-ca
 
 # Adoption attached no pointer: live quest state is still empty.
 Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 1\s+analyst_bonus: 0\s+capacity_total: 2\s+active: \[\]\s+pending_offers: \[\]') "Profile 1.27 adoption seeded a non-daily quest; it must attach no pointer retroactively."
+
+# --- Profile 1.28: the tracked Gate board (Section 9.10) ---
+
+Assert-True ($profile -match '(?m)^## 9\.10 The Tracked Board\r?$') "Profile lacks Section 9.10."
+Assert-True ($profile -match '\*\*This is persistence, not simulation\.\*\*') "Section 9.10 does not distinguish persistence from simulation."
+Assert-True ($profile -match "Section 9\.1's rates are aggregate and explicitly \*\*not a calendar\*\*") "Section 9.10 does not preserve Section 9.1's no-calendar rule."
+Assert-True ($profile -match 'The deadline is \*\*derived, never authored\*\*') "Section 9.10 does not require deadlines to be derived."
+Assert-True ($profile -match '\*\*Deadline resolution is deterministic\.\*\*') "Section 9.10 does not make deadline resolution deterministic."
+foreach ($branch in @('`staffed` or `held` → cleared off-screen',
+                      '`posted` → the Gate breaks',
+                      '`withdrawn` → the posting leaves the board')) {
+    Assert-True ($profile -match [regex]::Escape($branch)) "Section 9.10 is missing deadline-resolution branch: $branch"
+}
+Assert-True ($profile -match '\*\*A posting is tracked state, not a Persistent Object\.\*\*') "Section 9.10 does not keep postings out of the identifier space."
+Assert-True ($profile -match "Section 8\.4\.2's four criteria are then evaluated \*\*on their own terms and unchanged\*\*") "Section 9.10 does not hold Section 8.4.2 unchanged."
+Assert-True ($profile -match 'never adjusts a posting.s staffing, deadline, or location to make one fit') "Section 9.10 does not forbid tuning a posting to manufacture an Urgent offer."
+
+# The seeded board exists, and every deadline is correct derived arithmetic (Section 9.3).
+$breakDays = @{ 'E' = 7; 'D' = 6; 'C' = 5; 'B' = 4 }
+$rows = [regex]::Matches($worldLedger, '(?m)^\| `(GB-\d+)` \| [^|]+ \| \*\*(?:Confirmed|Unconfirmed) ([EDCB])-Rank\*\* \| (\d{4}-\d{2}-\d{2}) \| \*\*midnight (\d{4}-\d{2}-\d{2})\*\* \|')
+Assert-True ($rows.Count -ge 3) "Tracked board holds $($rows.Count) parsable postings; at least 3 are required (Section 9.10)."
+foreach ($r in $rows) {
+    $key = $r.Groups[1].Value
+    $rank = $r.Groups[2].Value
+    $detected = [datetime]::ParseExact($r.Groups[3].Value, 'yyyy-MM-dd', $null)
+    $breaks = [datetime]::ParseExact($r.Groups[4].Value, 'yyyy-MM-dd', $null)
+    $expected = $detected.AddDays($breakDays[$rank])
+    Assert-True ($breaks -eq $expected) "Board posting $key has an authored deadline: $rank-Rank detected $($detected.ToString('yyyy-MM-dd')) derives $($expected.ToString('yyyy-MM-dd')) under Section 9.3, not $($breaks.ToString('yyyy-MM-dd'))."
+}
+
+# The control case the board's arithmetic is calibrated against stays intact.
+Assert-True ($profile -match '(?m)^\| Rank \| E-Rank \| D-Rank \| C-Rank \| B-Rank \| A-Rank \| S-Rank \|') "Section 9.3 break-timer table is missing."
+Assert-True ($profile -match '(?m)^\| Days from detection to break \| 7 \| 6 \| 5 \| 4 \| 3 \| 2 \|') "Section 9.3 break-timer values changed; the board's derived deadlines are calibrated to 7/6/5/4/3/2."
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

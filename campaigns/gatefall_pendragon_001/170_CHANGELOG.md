@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000159
+  source: EVT-000160
   game_date: "2026-08-05 ~12:15 -05:00"
   real_date: "2026-07-28"
 role: canonical ledger
@@ -875,3 +875,17 @@ Player-requested checkpoint, taken with both asleep at Owen's apartment, next se
 - **No retroactive attachment.** `system_state.non_daily_quests` is unchanged — **0/2 active**, `active: []`, `pending_offers: []`. The fourteen played days are not re-audited; every campaign-scope record's proximity condition is forward-looking. Alexander's secondhand account of the Cicero remains and the scavenger's silence is neither first-hand proximity nor a resolved clue under the records as authored.
 - **Versions:** Gatefall Profile 1.26→1.27. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0033 remains immutable at Profile 1.25 and runs the applicable compatibility chain through 1.27 at readiness.
 - **Repository allocation:** `REC-000100`, `ENT-000151`–`ENT-000163`, `REL-000071`–`REL-000086`, `EVT-000159`.
+
+**2026-08-05, ~12:15 Chicago time — Profile 1.28 tracked Gate board adopted (`EVT-000160`; no fictional time consumed).**
+
+- **Defect corrected:** Section 9.3 gives every Gate a break countdown and Section 9.8 makes the break the disaster the whole apparatus exists to prevent, but nothing counted. Only a Gate Alexander was contracted to had a running clock; every other detection entered a scene as a line on a board and stopped existing when the scene ended. No Gate could break except on his own contract — which also starved Section 8.4.2, whose eligible crisis is a Gate break, Gate creature, or perceived sealed-instance hazard, since the only Gates with clocks were the ones he was already paid to clear and excluded by name as routine contracted hunting.
+- **New Section 9.10 — the tracked board.** A detection that enters the fiction through an ordinary perceived channel (BGM ranking board, co-op or guild dispatch, auction lot, a named NPC) now persists, storing place anchor, detection timestamp, assessed Rank and confidence, Section 9.4 posting floor, staffing status, and a break deadline **derived** from Section 9.3. Three to six tracked postings is Chicago's ordinary standing state; Prague runs fewer.
+- **Persistence, not simulation.** Section 9.1's rates stay explicitly aggregate and explicitly **not a calendar**; the Runtime still never rolls the metro's ~35 weekly detections and still decides when a Gate enters the fiction. The board holds only what the fiction surfaced, and postings are never manufactured to fill it.
+- **Deterministic deadline resolution** — no roll, no discretion. `staffed`/`held` → cleared off-screen (the ordinary case). `withdrawn` → leaves the board. `posted`, still under floor when the clock runs out → **breaks** under Section 9.8. Grounded in Section 9.4's own text that cheap jobs sit and the waiver tier concentrates casualties, in `EVT-000051`'s undersubscribed Red Line posting, and in `EVT-000052`'s auction war pulling bids off mid-tier lots. Institutions avert breaks by changing **staffing status** (escalation, rate rise, emergency contract), not by decree.
+- **Postings mint no identifiers.** A posting is tracked state with a stable local board key, promoted to an Event only when it becomes campaign-durable — bid, taken, entered, broken, or consequential — exactly as `EVT-000051` carries the one posting that mattered.
+- **Board seeded at adoption** in `110_WORLD_LEDGER.md` with four Chicago clearance postings and **nothing pre-decided**: `GB-01` (Red Line, confirmed E, detected 08-01, breaks midnight **08-08**, 4 of 5 signed at waiver tier), `GB-02` (Lakefront, unconfirmed D, detected 08-03, breaks **08-09**, thin auction bids), `GB-03` (Lakefront, confirmed C, detected 08-04, breaks **08-09**, held by Horizon dispatch), `GB-04` (Red Line, confirmed E, detected 08-05, breaks **08-12**, filling normally). All deadlines derived; arithmetic verified against `EVT-000051`'s control case (07-18 + 6 = midnight 07-24). Consistent with `EVT-000155` — Kesha had no *mining/harvest* work at C-Rank+, which is what was asked for; these are clearance contracts.
+- **Section 8.4.2 untouched.** A break is a world event, not a quest. Where one is perceivable and reachable, 8.4.2's four criteria are evaluated on their own terms; the Runtime never adjusts staffing, deadline, or location to make an offer fit.
+- **Classification: additive.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changed. Data Model 0.1.5 unchanged.
+- **No retroactive breaks.** Every Gate named in a past scene stays resolved as that scene resolved it; no earlier posting is re-derived; no completed clear, filed split, or closed contract is reopened. `EVT-000051` was cleared on its deadline at `EVT-000059`/`EVT-000060` and stays closed. Resolution applies prospectively from the first tracked deadline after adoption.
+- **Versions:** Gatefall Profile 1.27→1.28. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0033 remains immutable at Profile 1.25 and runs the applicable compatibility chain through 1.28 at readiness.
+- **Repository allocation:** `EVT-000160`; no entity, record, or relationship identifier minted (postings are tracked state, not Persistent Objects).

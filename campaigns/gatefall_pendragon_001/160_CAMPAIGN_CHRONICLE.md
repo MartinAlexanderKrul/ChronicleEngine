@@ -2529,19 +2529,20 @@ progression_audits:
   - subject: ENT-000125
     domain: gatefall.skill_formation
     result: none
-description: "Woke beside Owen; sent a follow-up text to Dale Pruitt (`ENT-000135`) asking after mining work and 'the bigger thing' he'd mentioned — Dale replied that Alexander's name is genuinely under discussion, a real answer promised by Wednesday. Woke Owen with two kisses and a new pet name, 'Owwiiiie', delivered dead straight; Owen fought and lost the battle not to grin, conceded a quick coffee before the run.
+description: |
+    Woke beside Owen; sent a follow-up text to Dale Pruitt (`ENT-000135`) asking after mining work and 'the bigger thing' he'd mentioned — Dale replied that Alexander's name is genuinely under discussion, a real answer promised by Wednesday. Woke Owen with two kisses and a new pet name, 'Owwiiiie', delivered dead straight; Owen fought and lost the battle not to grin, conceded a quick coffee before the run.
 
-Ran the eleventh daily quest at the Rogers Park lakefront under a spontaneous house rule — one extra kilometre added to Owen's own run for every complaint he made during it — landing Owen at 13 km against his usual scaled effort (three self-inflicted complaints, three extra kilometres) while also completing his usual scaled calisthenics alongside the run. Alexander completed his own regimen (100 push-ups, 100 sit-ups, 100 squats, 10 km run) clean.
+    Ran the eleventh daily quest at the Rogers Park lakefront under a spontaneous house rule — one extra kilometre added to Owen's own run for every complaint he made during it — landing Owen at 13 km against his usual scaled effort (three self-inflicted complaints, three extra kilometres) while also completing his usual scaled calisthenics alongside the run. Alexander completed his own regimen (100 push-ups, 100 sit-ups, 100 squats, 10 km run) clean.
 
-```
-[SYSTEM] DAILY TRAINING COMPLETE.
-Objectives complete. Rewards: Ability Points +3, Status Recovery, Daily Random Box — pending.
-Streak: 10 → 11.
-```
+    ```
+    [SYSTEM] DAILY TRAINING COMPLETE.
+    Objectives complete. Rewards: Ability Points +3, Status Recovery, Daily Random Box — pending.
+    Streak: 10 → 11.
+    ```
 
-Before parting for their separate errands, Alexander told Owen plainly that he didn't want to ask him to lie again, naming the Cicero core declaration directly — the first time he has proactively volunteered discomfort about something he asked of Owen, rather than Owen naming a boundary first. Owen reframed it: he hadn't felt used, he'd felt trusted with a real choice, and confirmed that asking Kesha about an artificer contact isn't the same kind of ask, since commissioning gear requires no lie from anyone. Owen left for his own day (a rig vendor callback, Renata's rig, Coalition paperwork); Alexander noted, teasing, that Kesha likely has a soft spot for him.
+    Before parting for their separate errands, Alexander told Owen plainly that he didn't want to ask him to lie again, naming the Cicero core declaration directly — the first time he has proactively volunteered discomfort about something he asked of Owen, rather than Owen naming a boundary first. Owen reframed it: he hadn't felt used, he'd felt trusted with a real choice, and confirmed that asking Kesha about an artificer contact isn't the same kind of ask, since commissioning gear requires no lie from anyone. Owen left for his own day (a rig vendor callback, Renata's rig, Coalition paperwork); Alexander noted, teasing, that Kesha likely has a soft spot for him.
 
-No skill-formation evidence recorded: the run and calisthenics are the routine daily checklist, explicitly outside Section 7.1's coverage set (no genuine danger, consequential work, or structured practice with a declared learning objective). No XP, gold, Mana, Health, or item change; streak advances from the completed daily quest alone."
+    No skill-formation evidence recorded: the run and calisthenics are the routine daily checklist, explicitly outside Section 7.1's coverage set (no genuine danger, consequential work, or structured practice with a declared learning objective). No XP, gold, Mana, Health, or item change; streak advances from the completed daily quest alone.
 ```
 
 ---
@@ -3713,15 +3714,16 @@ importance: minor
 game_date: "2026-08-06 06:00-~10:30 -05:00"
 participants:
   - ENT-000125
-description: "Left Owen asleep with a note ('you know where I am'), brushed his teeth, made coffee, checked his phone and bank balance (cash $20,806.50 unchanged, no new messages), waited a quiet thirty minutes, then went to the Loyola Park lakefront alone and ran the thirteenth daily quest's regimen doubled at his own request — 200 push-ups, 200 sit-ups, 200 squats, a 20 km run — to work through what was on his mind rather than talk it out. The System tracked only the base 100/100/100/10km for completion; the extra volume is qualitative only.
+description: |
+    Left Owen asleep with a note ('you know where I am'), brushed his teeth, made coffee, checked his phone and bank balance (cash $20,806.50 unchanged, no new messages), waited a quiet thirty minutes, then went to the Loyola Park lakefront alone and ran the thirteenth daily quest's regimen doubled at his own request — 200 push-ups, 200 sit-ups, 200 squats, a 20 km run — to work through what was on his mind rather than talk it out. The System tracked only the base 100/100/100/10km for completion; the extra volume is qualitative only.
 
-```text
-[SYSTEM] DAILY TRAINING COMPLETE.
-Rewards available: Ability Points +3 · Status Recovery · Daily Random Box.
-Claim separately at any time.
-```
+    ```text
+    [SYSTEM] DAILY TRAINING COMPLETE.
+    Rewards available: Ability Points +3 · Status Recovery · Daily Random Box.
+    Claim separately at any time.
+    ```
 
-Streak 12→13, not a positive multiple of seven — an ordinary single-roll Daily Random Box. No injury; no Mana spent. Three new pending reward entries (Ability Points +3, one Status Recovery, one Daily Random Box), none claimed or opened."
+    Streak 12→13, not a positive multiple of seven — an ordinary single-roll Daily Random Box. No injury; no Mana spent. Three new pending reward entries (Ability Points +3, one Status Recovery, one Daily Random Box), none claimed or opened.
 ```
 
 ## EVT-000173 - Cold Water, and a Lifeguard's Confession
@@ -4141,37 +4143,38 @@ progression_audits:
     candidate: formation_instruction
     scene: overgrown-temple-owen-solo-clear
     disposition: qualifying
-description: "**Ordered by Alexander, executed by Owen.** The finishing blow resolved automatically with no roll (Rules Section 4.2 — failure is impossible against a collapsed, three-legged target at 15 of 160 Health, against a C-Rank hunter who has killed thirteen things this afternoon), matching the precedent set at `EVT-000077`. **Owen Callahan personally killed thirteen of the fourteen creatures in this instance.**
+description: |
+    **Ordered by Alexander, executed by Owen.** The finishing blow resolved automatically with no roll (Rules Section 4.2 — failure is impossible against a collapsed, three-legged target at 15 of 160 Health, against a C-Rank hunter who has killed thirteen things this afternoon), matching the precedent set at `EVT-000077`. **Owen Callahan personally killed thirteen of the fourteen creatures in this instance.**
 
-**Clear settlement.** Boss kill XP 10 x 4 = **40**; **E-Rank Gate-clear milestone 70** (Section 3.4). Both credit to Alexander under Section 3.8: the milestone settles on any clear the Bearer fought through, and his die was live throughout — two Keen Sense reads, a legendary Exploit Pattern read, a critical Flash Step displacement, and an exceptional footwork hold, every one of them a resolved action the exchanges turned on. This is not spectating. **XP 760 -> 870/1000**, no threshold crossed.
+    **Clear settlement.** Boss kill XP 10 x 4 = **40**; **E-Rank Gate-clear milestone 70** (Section 3.4). Both credit to Alexander under Section 3.8: the milestone settles on any clear the Bearer fought through, and his die was live throughout — two Keen Sense reads, a legendary Exploit Pattern read, a critical Flash Step displacement, and an exceptional footwork hold, every one of them a resolved action the exchanges turned on. This is not spectating. **XP 760 -> 870/1000**, no threshold crossed.
 
-**Loot, settled at the clear** as every prior instant-dungeon clear in this campaign has settled it (`EVT-000097`, `EVT-000099`, `EVT-000101`, `EVT-000109`): **14 E-Rank crystals** (11 commons, 2 elites, 1 boss) and **3 E-Rank cores** (2 elites, 1 boss), private stash 12 -> **15**. **Boss drop d100 73 — potion cache**, tier lesser at E-Rank, mix d4 3 -> **1 lesser healing + 2 lesser mana potions**. **Overgrown Temple bonus loot roll d100 28 — equipment** at Gate Rank; chassis d20 14 -> armor, slot d5 5 -> feet, style d5 2 -> Titan: **Titan Boots [E-Rank]**, Strength +1, 3% reduction — a duplicate of the pair already equipped, banked unequipped. No Boss Imprint: this piece came from the shrine's bonus roll, not from the boss drop (Section 11.2.1 applies to boss equipment).
+    **Loot, settled at the clear** as every prior instant-dungeon clear in this campaign has settled it (`EVT-000097`, `EVT-000099`, `EVT-000101`, `EVT-000109`): **14 E-Rank crystals** (11 commons, 2 elites, 1 boss) and **3 E-Rank cores** (2 elites, 1 boss), private stash 12 -> **15**. **Boss drop d100 73 — potion cache**, tier lesser at E-Rank, mix d4 3 -> **1 lesser healing + 2 lesser mana potions**. **Overgrown Temple bonus loot roll d100 28 — equipment** at Gate Rank; chassis d20 14 -> armor, slot d5 5 -> feet, style d5 2 -> Titan: **Titan Boots [E-Rank]**, Strength +1, 3% reduction — a duplicate of the pair already equipped, banked unequipped. No Boss Imprint: this piece came from the shrine's bonus roll, not from the boss drop (Section 11.2.1 applies to boss equipment).
 
-**Lost with the instance: the eleven unmined deposit crystals.** Nobody mined them and nobody had time to; Section 17 disposes of every unextracted deposit crystal when the instance closes. That was the price of spending the afternoon's last minutes on the lid, and the lid held first aid.
+    **Lost with the instance: the eleven unmined deposit crystals.** Nobody mined them and nobody had time to; Section 17 disposes of every unextracted deposit crystal when the instance closes. That was the price of spending the afternoon's last minutes on the lid, and the lid held first aid.
 
-The instance collapsed on the kill and ejected both men to Owen's kitchen in Rogers Park at roughly **15:10**, in full field kit, on his linoleum, three feet from the note written at six that morning.
+    The instance collapsed on the kill and ejected both men to Owen's kitchen in Rogers Park at roughly **15:10**, in full field kit, on his linoleum, three feet from the note written at six that morning.
 
----
+    ---
 
-**DANGEROUS-SCENE SETTLEMENT (Profile Section 7.1).** This Event closes the one continuous dangerous scene opened at `EVT-000179`, and discharges the audit explicitly deferred at `EVT-000181`.
+    **DANGEROUS-SCENE SETTLEMENT (Profile Section 7.1).** This Event closes the one continuous dangerous scene opened at `EVT-000179`, and discharges the audit explicitly deferred at `EVT-000181`.
 
-**Section 7.4 counters.** Uses were settled per activation as they occurred (`EVT-000179`, `EVT-000182`, `EVT-000183`); qualifying scenes settle here, once each, because the whole instance is one scene regardless of how many exchanges ran inside it:
+    **Section 7.4 counters.** Uses were settled per activation as they occurred (`EVT-000179`, `EVT-000182`, `EVT-000183`); qualifying scenes settle here, once each, because the whole instance is one scene regardless of how many exchanges ran inside it:
 
-- **Keen Sense** — 2 activations in-scene (threshold, shrine). Uses -> 10. Qualifying scenes 8 -> 9, mastery progress 2 -> 3 -> **advances Adept -> EXPERT**, progress resets to 0, mastery_level 3 -> 4. Mana cost recomputed under Section 7.4's -10%-per-level rule: 2 -> **1**. Scope ladder at Expert: **himself plus 3 allies**.
-- **Exploit Pattern** — uses -> 7 (the threshold read establishing two Patterns, and the anchor Pattern materially applying to Alexander's own Flash Step displacement). Qualifying scenes 5 -> 6, mastery progress 2 -> 3 -> **advances Practiced -> ADEPT**, resets to 0, mastery_level 2 -> 3. Concurrent Patterns supported: **3**.
-- **Field Command** — uses -> 6 (three further resolved actions in which the relayed Pattern materially applied: the second elite, and both boss exchanges). Qualifying scenes 0 -> **1**, mastery progress 0 -> 1. Its first qualifying scene in the campaign's life.
-- **Flash Step** — uses -> 13 (one activation; the Expert follow-up window covering three exchanges counts once, Section 7.4). Qualifying scenes 10 -> 11, mastery progress 1 -> 2.
-- **Stone Skin, Rupture, Twin Fang, Bulwark, Dagger Mastery, Mend, Sprint, Resonance Extraction** — not activated by Alexander in this scene. No counters advanced. **Overpower, Rank-Sight, Pre-empt, Multitask, Shrug Off** — no material application; Rank-Sight is recorded as explicitly contributing nothing, since the instance's Rank was purchased rather than read.
+    - **Keen Sense** — 2 activations in-scene (threshold, shrine). Uses -> 10. Qualifying scenes 8 -> 9, mastery progress 2 -> 3 -> **advances Adept -> EXPERT**, progress resets to 0, mastery_level 3 -> 4. Mana cost recomputed under Section 7.4's -10%-per-level rule: 2 -> **1**. Scope ladder at Expert: **himself plus 3 allies**.
+    - **Exploit Pattern** — uses -> 7 (the threshold read establishing two Patterns, and the anchor Pattern materially applying to Alexander's own Flash Step displacement). Qualifying scenes 5 -> 6, mastery progress 2 -> 3 -> **advances Practiced -> ADEPT**, resets to 0, mastery_level 2 -> 3. Concurrent Patterns supported: **3**.
+    - **Field Command** — uses -> 6 (three further resolved actions in which the relayed Pattern materially applied: the second elite, and both boss exchanges). Qualifying scenes 0 -> **1**, mastery progress 0 -> 1. Its first qualifying scene in the campaign's life.
+    - **Flash Step** — uses -> 13 (one activation; the Expert follow-up window covering three exchanges counts once, Section 7.4). Qualifying scenes 10 -> 11, mastery progress 1 -> 2.
+    - **Stone Skin, Rupture, Twin Fang, Bulwark, Dagger Mastery, Mend, Sprint, Resonance Extraction** — not activated by Alexander in this scene. No counters advanced. **Overpower, Rank-Sight, Pre-empt, Multitask, Shrug Off** — no material application; Rank-Sight is recorded as explicitly contributing nothing, since the instance's Rank was purchased rather than read.
 
-Mana trace for the scene reads 72 -> 70 (Keen Sense) -> 71 (recovery) -> 66 (Flash Step) -> 66, which is exactly two Keen Sense activations across the scene and one Flash Step, matching the settled counts with no unaccounted spend.
+    Mana trace for the scene reads 72 -> 70 (Keen Sense) -> 71 (recovery) -> 66 (Flash Step) -> 66, which is exactly two Keen Sense activations across the scene and one Flash Step, matching the settled counts with no unaccounted spend.
 
-**Formation audit — two candidates advance, neither ratifies.**
+    **Formation audit — two candidates advance, neither ratifies.**
 
-- **`reactive_pattern_anticipation`** (signature: read-opponent-tell-before-call-lands, pre-empt footwork, recover mid-stride on a miss) — Alexander deliberately used Milo's drilled method against a live boss to hold it as the threat while Owen crossed behind it, resolving an **exceptional success** without ever striking. All five Section 7.1 tests pass: player-declared method, stable repeatable signature, a distinct capability from ordinary movement or an existing skill's authored effect, material contribution under genuine danger, and a scene not already counted. **1/3 -> 2/3.** Status remains `tracking`.
-- **`formation_instruction`** (signature: assess-individual-failure-mode, design role-fit drill, deliver tested correction) — the `EVT-000116` flinch diagnosis was converted into a live corrective doctrine (*flinch forward*), delivered under fire, and it materially produced the result: Owen took thirteen kills and one hit across an entire instance he fought alone. Distinct scene from `EVT-000116`. **1/3 -> 2/3.** Status remains `tracking`.
-- `dimensional_weapon_control` remains `tracking` 2/3; `nonvisual_combat_mapping` remains `tracking` 1/3. Neither was exercised.
+    - **`reactive_pattern_anticipation`** (signature: read-opponent-tell-before-call-lands, pre-empt footwork, recover mid-stride on a miss) — Alexander deliberately used Milo's drilled method against a live boss to hold it as the threat while Owen crossed behind it, resolving an **exceptional success** without ever striking. All five Section 7.1 tests pass: player-declared method, stable repeatable signature, a distinct capability from ordinary movement or an existing skill's authored effect, material contribution under genuine danger, and a scene not already counted. **1/3 -> 2/3.** Status remains `tracking`.
+    - **`formation_instruction`** (signature: assess-individual-failure-mode, design role-fit drill, deliver tested correction) — the `EVT-000116` flinch diagnosis was converted into a live corrective doctrine (*flinch forward*), delivered under fire, and it materially produced the result: Owen took thirteen kills and one hit across an entire instance he fought alone. Distinct scene from `EVT-000116`. **1/3 -> 2/3.** Status remains `tracking`.
+    - `dimensional_weapon_control` remains `tracking` 2/3; `nonvisual_combat_mapping` remains `tracking` 1/3. Neither was exercised.
 
-**No candidate reached the third qualifying scene. No `pending-ratification` candidate exists and the readiness gate is clear.** Two candidates now stand one scene short, which is worth the owner's attention before the next dangerous scene: `reactive_pattern_anticipation` has no authored result and would open the mandatory adjudication queue on ratification, while `formation_instruction` likewise has none."
+    **No candidate reached the third qualifying scene. No `pending-ratification` candidate exists and the readiness gate is clear.** Two candidates now stand one scene short, which is worth the owner's attention before the next dangerous scene: `reactive_pattern_anticipation` has no authored result and would open the mandatory adjudication queue on ratification, while `formation_instruction` likewise has none.
 ```
 
 ## EVT-000185 - Promotion Barrier: Skill-Formation Batch Settlement

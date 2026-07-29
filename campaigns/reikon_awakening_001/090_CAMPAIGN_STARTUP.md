@@ -6,11 +6,13 @@
 startup_version: "1.1"
 campaign: campaigns/reikon_awakening_001
 world: worlds/reikon
-world_rule_profile: "Reikon 0.6"
+world_rule_profile: "Reikon 0.11"
 protagonist_policy: pre-authored
 default_protagonist: ENT-000051
 initialization_state: resumable
+latest_restorable_checkpoint: campaigns/reikon_awakening_001/saves/900_CHECKPOINT_0017
 canonical_entry_point: campaigns/reikon_awakening_001/180_CURRENT_STATE.md
+selection_caveat: "Dormant by owner choice but fully resumable. No baseline checkpoint exists, so /restart is unavailable."
 customization:
   name_change: new-instance-only
   background_change: new-instance-only

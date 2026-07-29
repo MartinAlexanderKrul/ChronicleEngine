@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.41
+**Document Version:** 1.46
 **Status:** Active Gameplay Workflow — Fetched Reference Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -34,6 +34,19 @@ The profile has two execution layers under Runtime Section 0.4 and Decision 055,
 The two layers were one file through Document Version 1.30. They were separated because a resident layer interleaved with six hundred lines of on-demand procedure is resident in name only — the defect Decision 055 identifies, applied to the profile that decision governs (Decision 070).
 
 Mechanical repository validation remains the barrier enforcement point for structural conformance. Promotion completeness remains a deferred barrier, with pending promotion targets tracked by the resident layer.
+
+---
+
+# Runtime Context Budgets
+
+Runtime loading is a measured execution surface. `system/RUNTIME_CONTEXT_BUDGETS.yaml` owns the deterministic UTF-8-byte estimator, exact bootstrap selectors, thresholds, and checked-in baselines. `tools/measure_runtime_context.ps1` measures the designated material and names every contributor.
+
+- resident core: warn at 6,000 estimated tokens; fail at 8,000;
+- Engine welcome/bootstrap: warn at 12,000; fail at 16,000;
+- campaign readiness before situation-specific expansion: warn at 20,000; fail at 30,000; and
+- one fetched operation: subdivide before it reaches 12,000.
+
+These limits measure material designated for loading, not the size of authoritative files available for bounded lookup. A warning exposes pressure and baseline drift; a failure blocks repository validation. Campaign readiness and fetched operations are derived from the same operation plan the Runtime executes, so the measurement cannot silently use a smaller parallel manifest.
 
 ---
 
@@ -144,7 +157,7 @@ This is the same requirement the Command Table already carries (Decision 064), a
 
 This rule exists because it was broken. A bootstrap reported the repository loaded and listed Prototype Alpha and Beta under Verra — while `campaigns/reikon_awakening_001/`, complete and six checkpoints deep, was absent. The campaign was fine; the listing had no source. Every concrete path in the README and the start guide names Prototype Alpha and Verra as examples, so a Runtime that did not enumerate `campaigns/` reproduced the examples and reported them as the inventory. Directory enumeration is still correct and still permitted — but it is the thing that failed, so the index, not the enumeration, is the enforcement point (Decision 055: an obligation carried only by instructions does not reliably fire).
 
-The index is **non-canonical** and holds no state. It records what exists and where, so a player can choose; the campaign's own ledgers govern everything else, and where the two disagree the ledgers win. `tools/validate_repository.ps1` fails when a live campaign or a world has no row, when a row names a directory or checkpoint that does not exist, or when the index is missing — so the listing cannot silently drift out of coverage. The gate cannot check whether a row's status or protagonist is still true; keeping those current is the writer's obligation at the promotion barrier, and the index is part of the checkpoint's live target set whenever the latest checkpoint changes.
+The index is **non-canonical** and holds no state. It records what exists and where, so a player can choose; the campaign's own ledgers govern everything else, and where the two disagree the ledgers win. Its tables and bounded caveats are generated deterministically by `tools/generate_runtime_index.ps1` from world/profile metadata, campaign startup configuration, the protagonist's current alias, and latest save manifests. `tools/validate_repository.ps1` regenerates the expected document in check mode and requires a byte-for-byte match, so coverage, status class, protagonist, latest checkpoint, capture date, and caveat source cannot drift through direct index edits.
 
 ## Resolution Rules
 
@@ -311,9 +324,9 @@ After initialization, simulation is world-first. Do not create guaranteed destin
 
 When a valid checkpoint exists:
 
-1. Read the latest canonical `900_SAVE_MANIFEST.md`.
-2. Verify Engine, World, Campaign Schema, and Save Format compatibility.
-3. Load the checkpoint's restoration entry point and included ledgers.
+1. Generate the bounded `continue` operation plan with `tools/resolve_operation_plan.ps1`, then perform its whole-file reads and exact selectors. `available_on_demand` declares authority and must not be preloaded.
+2. Verify Engine, World, World Rule Profile, Campaign Schema, and Save Format compatibility from the selected manifest and active-profile metadata.
+3. Load additional checkpoint ledgers only when the restoration entry, current situation, or a dispatched selector makes them relevant.
 4. Reconcile the restored checkpoint with the live campaign continuation.
 5. When the active World Rule Profile declares deterministic elapsed-time rules, load or migrate its exact campaign-time anchor, recovery modes, and fractional carry before any time-dependent action. Restoration itself advances no fictional time and grants no recovery.
 6. When the active World Rule Profile declares proactive triggers, load their governing sections and execute the resident Profile-Declared Proactive Trigger Audit before the first scene opens. If the profile declares a mandatory ratification gate, consolidate every pending candidate, automatically settle complete pre-authored results, and obtain owner rulings for the rest before readiness can open gameplay.
@@ -322,6 +335,22 @@ When a valid checkpoint exists:
 Give a returning player a concise natural recap, unresolved pressures, the available-commands menu (Command Availability at Session Start), and a readiness question. Do not replay character creation or the full introduction.
 
 Give a new player taking over an existing character the full spoiler-safe character introduction plus a recap limited to character-known information, current motivations, relationships, and immediate circumstances, and the available-commands menu. Offer a fuller briefing before asking for readiness.
+
+---
+
+# Derived Operation Plans
+
+On this repository substrate, generate a read-only operation plan before `/continue`, `/save`, or a campaign-declared diegetic command:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/resolve_operation_plan.ps1 -Campaign <campaign> -Operation <continue|save|diegetic-command>
+```
+
+The helper derives a finite plan from the campaign's existing non-canonical startup configuration. It does not read or establish canon on the Runtime's behalf, copy authoritative rule text, mutate files, or create a second loading contract. `whole_files` are complete reads; `selectors` are bounded headings, anchors, metadata, Object identifiers, or declared Object fields; `available_on_demand` sources are authoritative but unloaded until the current situation requires them.
+
+`available_on_demand_selectors` are exact deferred reads with a named dispatch. Fetch the matching group immediately before that operation needs the fields: action-resolution state for an affected uncertain action, progression counters at settlement or promotion, shop state for a shop operation, and any equivalent campaign-declared group. Deferred selectors reduce readiness load; they never permit resolving from an incomplete state.
+
+Every emitted file and selector must resolve exactly once. A missing or ambiguous selector blocks the affected readiness or command before narration. The Runtime performs the listed reads and remains responsible for grounding their meaning. Historical chronicles, changelogs, full World Rule Profiles, and NPC ledgers are never whole-file readiness reads unless a situation-specific operation independently requires them.
 
 ---
 
@@ -585,11 +614,13 @@ Promote the grounded and consistent work; flag the load-bearing new canon; recon
 
 # Repository Validation Gate
 
-Campaign initialization, every checkpoint, session close, and campaign-termination promotion must pass deterministic repository validation after all live targets have been written and read back. On a native Windows repository, run:
+Campaign initialization, every checkpoint, session close, and campaign-termination promotion must pass deterministic repository validation after all live targets have been written and read back. On a native Windows repository, run the Tier 1 gate:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_live.ps1
 ```
+
+This is the single named live gate: it runs repository structural validation and runtime-configuration validation together, so callers no longer disagree about which of the two "validated" meant. `tools/validate_checkpoint.ps1` is Tier 2 and adds the checkpoint form, lineage, and index-synchronization contract; `tools/new_checkpoint.ps1` runs the Tier 1 gates itself, before and after promotion, so a save does not require this command to be invoked separately. `tools/test_all.ps1` is the Tier 3 development suite and is never a save gate.
 
 The validator scans live Markdown under `worlds/` and `campaigns/`, excluding save and checkpoint snapshots from live duplicate-definition checks. It verifies registry high-water bounds and allocation-log coverage, unique live object definitions, resolved identifier references, universal Persistent Object fields, Canonical Record references, and placeholder rejection.
 
@@ -619,6 +650,8 @@ If compaction occurred without a usable warning, stop before resolving the next 
 
 ## Save Algorithm
 
+Before step 1, generate the campaign's `save` operation plan and load its authoritative procedure selector and deterministic tools. The plan is read-only and changes none of the ordered steps below.
+
 On a checkpoint request, session close, or Context-Preservation Barrier, in this order:
 
 1. **Promotion Barrier first (unchanged).** Run Canon Reconciliation at Promotion. If an unreconcilable contradiction exists, reject the mutation, record a Rejected Simulation, and write nothing. The barrier runs before any write, so contradictory canon never reaches the repository.
@@ -636,9 +669,61 @@ On a checkpoint request, session close, or Context-Preservation Barrier, in this
    General target-set derivation is still performed by the Runtime and is not fully mechanized. The Repository Validation Gate now checks presence, counter arithmetic, and opted-in progression-audit coverage, but it cannot infer every ledger semantically affected by arbitrary prose. Then write through to **every live target**, rewriting each target file's full content by resolved handle or path with provenance. Resolve missing handles through repository discovery rather than refusing. Updating one scope-responsible ledger while leaving Current State, the chronicle, or the changelog unwritten is a **partial checkpoint**, not a save. **Any new identifier introduced this session must be allocated in the registry and defined in its owning ledger as part of the target set.** Allocation means advancing that kind's high-water mark and recording allocation-log coverage, not merely mentioning the identifier. Consuming a reserved or pending identifier is a real allocation and must advance the high-water mark.
 4. **Read-back verification of live targets.** Reload **every** targeted live ledger and the registry when touched from the repository, not from Context, and confirm the intended changes and provenance are present. A target that did not receive its intended change is unwritten even when other targets succeeded.
 5. **Repository Validation Gate.** Run the deterministic validator against the read-back live state. If it fails, do not create the immutable checkpoint and do not claim promotion success. Repair, read back, and rerun when possible; otherwise emit a Runtime Checkpoint Report with the validator findings.
-6. **Create and verify the immutable checkpoint.** Only after live validation passes, create the checkpoint directory, copy the verified canonical ledgers, and create the save manifest from the targets actually written and read back. Record `save_identity.real_date` from the actual repository clock and `save_identity.game_date` from canonical campaign time; never derive either from the other. Read every checkpoint file and the manifest back and verify their contents.
+6. **Create and verify the immutable checkpoint transactionally.** After live validation passes, write the Version 1.0 mutation receipt below from the read-back results and invoke `tools/new_checkpoint.ps1`. The helper, rather than the AI, acquires the exclusive writer lock, revalidates every receipt hash and target path, confirms the expected parent, allocates the next ordinal, copies and byte-verifies all eight canonical ledgers, generates the existing Decision 072 manifest, updates the startup and Current State restore pointers, regenerates and checks `system/WORLDS_AND_CAMPAIGNS.md`, runs the repository, runtime-configuration, and checkpoint-contract gates, and reads the final files back. It records `save_identity.real_date` from the actual repository clock and takes `save_identity.game_date` only from canonical campaign time in the receipt; neither date is derived from the other. Do not manually create the checkpoint directory, manifest, or generated index row. A failed transaction rolls pointer files back byte-for-byte and retains any copied files only under a non-canonical `.900_CHECKPOINT_<NNNN>.staging-<token>` recovery directory.
 7. **On success** — the whole live target set written and verified, repository validation passed, and the immutable checkpoint written and verified — set write capability Established and report the checkpoint saved, with the verified paths.
 8. **On an incomplete target set or any actual write, read-back, validation, or checkpoint-creation failure**, do not claim the checkpoint was saved. Leave capability Established when writes have succeeded, name the written and unwritten targets, include validation findings when applicable, and emit a Runtime Checkpoint Report.
+
+### Transactional Checkpoint Input
+
+The mutation receipt is a handoff from semantic Canon Promotion to mechanical checkpoint creation. It is written only after steps 1–5 and contains no unverified intention:
+
+```json
+{
+  "receipt_version": "1.0",
+  "campaign": "campaigns/gatefall_pendragon_001",
+  "promotion_barrier_passed": true,
+  "updated_live_files": [
+    {
+      "path": "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md",
+      "sha256": "<lowercase SHA-256 of the read-back file>",
+      "read_back_verified": true
+    },
+    {
+      "path": "campaigns/gatefall_pendragon_001/170_CHANGELOG.md",
+      "sha256": "<lowercase SHA-256 of the read-back file>",
+      "read_back_verified": true
+    },
+    {
+      "path": "campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md",
+      "sha256": "<lowercase SHA-256 of the read-back file>",
+      "read_back_verified": true
+    }
+  ],
+  "manifest": {
+    "source": "EVT-XXXXXX",
+    "game_date": "<canonical campaign date/time>",
+    "branch": "<canonical continuation branch>",
+    "canonical_continuation": true,
+    "compatibility_status": "compatible",
+    "compatibility_warnings": "None."
+  }
+}
+```
+
+`updated_live_files` lists the complete derived target set actually written and read back, not merely the three abbreviated examples. Chronicle, Changelog, and Current State are mandatory played-session targets. Paths may resolve only to the eight canonical ledgers in the owning campaign, Markdown records under its active world, or `system/ID_REGISTRY.md`; save trees, operational campaign files, other worlds, `.git`, `.tmp`, and the generated worlds/campaigns index are rejected. Every listed SHA-256 must still match immediately before checkpoint work begins.
+
+Invoke:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/new_checkpoint.ps1 `
+  -Campaign campaigns/gatefall_pendragon_001 `
+  -CheckpointType automatic-context-preservation `
+  -Label "scene boundary" `
+  -ExpectedParent 900_CHECKPOINT_0030 `
+  -MutationReceipt .tmp/runtime-mutation-receipt.json
+```
+
+For a campaign's first checkpoint, pass `-ExpectedParent none`; if no parent manifest or World Bible exposes a world version, also include `manifest.world_version` in the receipt. The helper prints each validator's exact output and finishes with one `CHECKPOINT_RECEIPT_JSON=` line. Only `"status":"created"` is success. A failed receipt names its phase and recoverable staging path; it is a Runtime Checkpoint Report input, never evidence that a save exists.
 
 ## Write-Side Failure Handling
 

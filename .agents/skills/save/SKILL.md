@@ -5,7 +5,7 @@ description: Use when the player types /save or asks in any words to save, check
 
 # /save — Checkpoint a Campaign
 
-**A save is a set of verified files on disk — never a claim.** The word "saved" may appear only after every artifact below exists, read-back confirms it, and both validators have passed **with their output shown to the player**.
+**A save is a set of verified files on disk — never a claim.** The word "saved" may appear only after every artifact below exists, read-back confirms it, and the transactional helper returns `"status":"created"` after showing its real validator output.
 
 ## Procedure
 
@@ -17,12 +17,12 @@ description: Use when the player types /save or asks in any words to save, check
    - `system/ID_REGISTRY.md` high-water marks and allocation log cover every identifier minted this session.
    - `system/WORLDS_AND_CAMPAIGNS.md` campaign row: latest checkpoint and Captured updated.
    - `180_CURRENT_STATE.md` declares the latest restorable checkpoint.
-3. **Run both gates after the writes and paste their real output:**
+3. **Hand mechanical checkpointing to the transaction helper.** After live read-back and the live Repository Validation Gate, write the Version 1.0 hash-bound mutation receipt specified under the Runtime Profile's Save Algorithm. Then invoke:
    ```
-   powershell -ExecutionPolicy Bypass -File tools\validate_repository.ps1
-   powershell -ExecutionPolicy Bypass -File tools\test_checkpoint_contract.ps1
+   powershell -NoProfile -ExecutionPolicy Bypass -File tools\new_checkpoint.ps1 -Campaign <campaign-path> -CheckpointType <type> -Label "<label>" -ExpectedParent <checkpoint-or-none> -MutationReceipt <receipt.json>
    ```
-4. **Write the player's message only now.** Success names the verified checkpoint path. Any failure or unwritten target → report a **partial checkpoint** per the algorithm's step 8. Never draft the success message before the gates have run.
+   Do not manually allocate the ordinal, create the snapshot directory or manifest, edit the generated index, or substitute narrated gate results. The helper owns those steps, rollback, final read-back, and exact validator output.
+4. **Write the player's message only now.** Success requires the final `CHECKPOINT_RECEIPT_JSON` to say `"status":"created"` and names its verified checkpoint path. Any failure, staging path, or unwritten target → report a **partial checkpoint** per the algorithm's step 8. Never draft the success message before the helper finishes.
 
 ## Rationalizations — all observed in real failed sessions
 

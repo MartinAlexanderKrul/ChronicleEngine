@@ -6,6 +6,7 @@ $ErrorActionPreference = "Stop"
 
 $root = Split-Path -Parent $PSScriptRoot
 $validator = Join-Path $PSScriptRoot "validate_repository.ps1"
+. (Join-Path $PSScriptRoot "lib/FixtureRepository.ps1")
 $tempRoot = Join-Path (Join-Path $root "tmp") ("progression-audit-" + [guid]::NewGuid().ToString("N"))
 $utf8 = [System.Text.UTF8Encoding]::new($false)
 
@@ -66,8 +67,12 @@ function Get-RegistryHighWater {
 
 function Invoke-Validation {
     param([string]$RepositoryRoot)
+    # -CoreOnly: every assertion here is about progression candidates, counters,
+    # and audit linkage, all of which live in the structural scan. The three
+    # composite gates cost a PowerShell and a Python launch each and are covered
+    # by their own suites.
     $output = & powershell -NoProfile -ExecutionPolicy Bypass -File $validator `
-        -RepositoryRoot $RepositoryRoot 2>&1 | ForEach-Object { $_.ToString() }
+        -RepositoryRoot $RepositoryRoot -CoreOnly 2>&1 | ForEach-Object { $_.ToString() }
     return [pscustomobject]@{
         ExitCode = $LASTEXITCODE
         Output = ($output -join "`n")
@@ -76,9 +81,10 @@ function Invoke-Validation {
 
 try {
     New-Item -ItemType Directory -Path $tempRoot | Out-Null
-    foreach ($name in @("system", "worlds", "campaigns")) {
-        Copy-Item -LiteralPath (Join-Path $root $name) -Destination $tempRoot -Recurse
-    }
+    # Live progression state only. Under -CoreOnly the manifest-resolving
+    # runtime-configuration gate does not run, so checkpoint history is not read.
+    New-FixtureRepository -SourceRoot $root -DestinationRoot $tempRoot `
+        -Directories @("system", "worlds", "campaigns") | Out-Null
 
     $character = Join-Path $tempRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md"
     $chronicle = Join-Path $tempRoot "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md"
@@ -110,7 +116,9 @@ try {
         "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: ratified" `
         "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: tracking"
     $threshold = Invoke-Validation $tempRoot
-    Assert-True ($threshold.ExitCode -ne 0 -and $threshold.Output -like "*at least three distinct evidence references but remains tracking*") `
+    # The count is the profile's declared evidence_threshold, so the message carries
+    # the number rather than the word "three".
+    Assert-True ($threshold.ExitCode -ne 0 -and $threshold.Output -like "*distinct evidence references but remains tracking*") `
         "A three-scene candidate left in tracking was not rejected:`n$($threshold.Output)"
     Replace-Once $character `
         "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: tracking" `
@@ -120,7 +128,7 @@ try {
         "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: tracking`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint" `
         "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: pending-ratification`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint`n          - EVT-000120#fixture-third-dimensional-scene"
     $authoredThreshold = Invoke-Validation $tempRoot
-    Assert-True ($authoredThreshold.ExitCode -ne 0 -and $authoredThreshold.Output -like "*complete pre-authored result*requires automatic ratification*") `
+    Assert-True ($authoredThreshold.ExitCode -ne 0 -and $authoredThreshold.Output -like "*is declared pre-authored*requires automatic ratification*") `
         "A pre-authored three-scene candidate was allowed to remain pending:`n$($authoredThreshold.Output)"
     Replace-Once $character `
         "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: pending-ratification`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint`n          - EVT-000120#fixture-third-dimensional-scene" `

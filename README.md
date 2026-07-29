@@ -1,6 +1,6 @@
 # Chronicle Engine
 
-**Document Version:** 1.13
+**Document Version:** 1.14
 
 > *A persistent historical simulation engine where stories emerge from the evolution of a living world.*
 
@@ -47,23 +47,17 @@ This **Bootstrap Gate fires before campaign discovery or restoration**. Do **not
 
 The rest of the repository is available as readable, writable files even if this conversation began showing only `README.md`. **Read the engine files below on your own initiative.** Seeing only this README at the start is a cold-start artifact, never a reason to report that the engine files are missing — report a blocker only after an actual read attempt on a named file errors.
 
-Read, in this order, then follow the loaded procedure:
+The bootstrap working set is deliberately bounded. Follow this section, read only the first Markdown table under `# Worlds` and the first Markdown table under `# Campaigns` in `system/WORLDS_AND_CAMPAIGNS.md`, render the welcome page, and stop. `system/RUNTIME_CONTEXT_BUDGETS.yaml` is the machine-readable measurement manifest for this set. Do not preload the resident core, Gameplay Runtime Profile, start guide, engine specifications, validators, campaign files, world profiles, or historical per-campaign notes during `/ChronicleEngine`; they are fetched after the player chooses an operation.
 
-1. **`docs/GAMEPLAY_START_GUIDE.md`** — the setup guide. Its **AI Instructions** block and start/resume prompts are the authoritative bootstrap text; follow them.
-2. **`docs/AI_GAMEPLAY_RESIDENT_CORE.md`** — the resident layer: player agency, interaction cadence, action resolution and the die, the information boundary, turn-state settlement. **Load this before play and hold it for the whole session.** It is checked on every turn, not consulted on demand.
-3. **`docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`** — the fetched reference layer: startup variants, the Runtime Command Interface, exports, checkpoints, gameplay close. Consulted when its operation is invoked.
-4. **`engine/010_ENGINE_RULES.md`** — engine rules; load **Sections 4 and 6** (action resolution and combat) before the first uncertain action, and **Section 13** (saves) for checkpoint/restore.
-5. **`engine/012_ENGINE_RUNTIME.md`** and **`engine/011_ENGINE_DATA_MODEL.md`** — runtime obligations and the data model (identifiers, ledgers) the validator enforces.
-6. **`tools/validate_repository.ps1`** — the validation gate run before any checkpoint is claimed saved.
-7. **`system/WORLDS_AND_CAMPAIGNS.md`** — the index of every world and campaign. This is the **rendered source** for the welcome page's listing; render its rows rather than composing a list from memory or from the example paths in these documents.
-8. **The play-discipline skills** — load and **hold for the whole session** the skill definitions in `.claude/skills/` (equivalently, the contracts in `AGENTS.md` / `.agents/skills/`, which mirror them). These are binding whenever you operate this repository, regardless of whether your harness auto-registers skills:
+The play-discipline skills are already binding repository instructions. If the harness does not register them, read their compact contracts from `AGENTS.md`; do not preload both `.claude/skills/` and `.agents/skills/` mirrors. The contracts are:
+
    - **`chronicle`** — this bootstrap contract (you are executing it now).
    - **`rules`** — state a mechanic only as a cited section from the World Rule Profile; verify player- and self-asserted rules against the file; never invent from genre memory.
    - **`resolve`** — every uncertain resolution is an actual rolled tool call (never a typed die); damage is the authored formula shown; Health is tracked; a pre-System protagonist has no System window.
-   - **`save`** — a checkpoint is verified files on disk (the full Save Algorithm), never a claim; both validators must pass with their output shown before the word "saved."
+   - **`save`** — a checkpoint is verified files on disk (the full Save Algorithm), never a claim; the transactional checkpoint helper must return `"status":"created"` after its gates before the word "saved."
    - **`npc-knowledge`** — an NPC acts only on information the fiction gave *that* NPC a channel to; the player is the authority on what is private.
 
-   If your harness lists skills, confirm these appear; if it does not, the definitions above are files you read here and follow directly. Either way they govern play.
+Load `docs/AI_GAMEPLAY_RESIDENT_CORE.md` only when a campaign operation is selected and keep it for the play session. Derive the selected operation's remaining bounded reads with `tools/resolve_operation_plan.ps1`; fetch rules, save procedure, export procedure, and validation tools only when that operation invokes them.
 
 Then select what to play and load its state only when the player subsequently issues `/continue`, `/resume`, `/new`, or `/load`:
 
@@ -157,7 +151,44 @@ For setup instructions and ready-to-use AI Project prompts, see `docs/GAMEPLAY_S
 Validate live world and campaign state before accepting a checkpoint or canonical promotion:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps1
+python -m pip install -r tools/requirements.txt
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_live.ps1
+```
+
+Validation is tiered. **Tier 1** `tools/validate_live.ps1` is repository structure plus runtime configuration in one command — the gate for ordinary work and before promotion. **Tier 2** `tools/validate_checkpoint.ps1` adds the checkpoint form, lineage, and index-synchronization contract. **Tier 3** `tools/test_all.ps1` runs the full development regression suite and is explicitly **not** a save gate. Saving itself goes through `tools/new_checkpoint.ps1`, which runs the Tier 1 gates before and after promotion.
+
+The Python dependency provides the real YAML parser used for campaign startup and cross-file runtime-configuration checks; installation is required once per environment.
+
+After semantic promotion and live read-back, create a checkpoint from its hash-bound mutation receipt with:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/new_checkpoint.ps1 `
+  -Campaign campaigns/gatefall_pendragon_001 `
+  -CheckpointType manual `
+  -Label "session checkpoint" `
+  -ExpectedParent 900_CHECKPOINT_0030 `
+  -MutationReceipt .tmp/runtime-mutation-receipt.json
+```
+
+The authoritative receipt schema and ordering remain in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` under **Save Algorithm**. The helper prints exact gate output and one final `CHECKPOINT_RECEIPT_JSON=` result; it does not perform semantic Canon Promotion.
+
+Generate a bounded, read-only campaign operation plan with:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/resolve_operation_plan.ps1 -Campaign gatefall_pendragon_001 -Operation continue
+```
+
+Measure resident, bootstrap, campaign-readiness, and fetched-operation context against the checked-in budgets with:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/measure_runtime_context.ps1
+```
+
+Regenerate or verify the Engine Welcome Page inventory with:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/generate_runtime_index.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/generate_runtime_index.ps1 -Check
 ```
 
 ---

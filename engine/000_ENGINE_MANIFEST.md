@@ -150,7 +150,7 @@ The Runtime is substrate-independent. Substrate-specific procedure lives in oper
 
 Persistent-object identifiers are allocated by the repository-level registry at `system/ID_REGISTRY.md`, governed by `011_ENGINE_DATA_MODEL.md`.
 
-The repository's worlds and campaigns are indexed at `system/WORLDS_AND_CAMPAIGNS.md`, the rendered source for the Engine Welcome Page listing (Decision 071). It is operational and non-canonical: it records what exists and where so a player can choose, holds no canonical state, carries no identifier, and is subordinate to the campaign ledgers it points at.
+The repository's worlds and campaigns are indexed at `system/WORLDS_AND_CAMPAIGNS.md`, the generated rendered source for the Engine Welcome Page listing (Decision 071). It is operational and non-canonical: it records what exists and where so a player can choose, holds no canonical state, carries no identifier, and is subordinate to the campaign ledgers it points at. `tools/generate_runtime_index.ps1 -Check` enforces synchronization with its owning metadata.
 
 Repository validation tooling lives under `tools/`. It operationalizes Data Model and Runtime constraints but does not define them; `tools/validate_repository.ps1` is the reference implementation of the Repository Validation Barrier (Decision 054).
 

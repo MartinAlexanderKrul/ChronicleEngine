@@ -28,6 +28,7 @@ subjects: []
 - World: Verra (World Version 0.1, Prototype)
 - Engine: 0.1.5 (Foundation Release); Data Model 0.1.5
 - Campaign date: Year 312 RR, early summer
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0001/` — immutable pre-Data-Model-0.1.3 checkpoint; apply the authored schema migration when restoring
 - Campaign state: checkpoint-0001-saved; its immutable checkpoint predates Data Model 0.1.3 and requires the explicit schema migration at restoration readiness
 
 ## Protagonist

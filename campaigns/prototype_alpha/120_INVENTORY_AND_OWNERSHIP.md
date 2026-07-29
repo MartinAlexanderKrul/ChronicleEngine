@@ -79,8 +79,7 @@ canonical_state:
   possession: "ENT-000007 (Corvane, archiving)"
   location: "ENT-000003 (Athenaeum, Corvane's study, desk)"
   event_archived: "EVT-000009 (presented by Ilse to Corvane)"
-  provenance_chain: "Letter written by Ilse's mentor at Valdis; delivered to Corvane on day 1 evening; now formally archived in Corvane's records"
-  provenance_chain: "Written by Ilse's college mentor to introduce her to the Athenaeum (ENT-000003)."
+  provenance_chain: "Written by Ilse's college mentor at Valdis to introduce her to the Athenaeum (ENT-000003); delivered to Corvane on day 1 evening; now formally archived in Corvane's records."
 ```
 
 ---

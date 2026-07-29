@@ -11,9 +11,11 @@ campaign: campaigns/prototype_beta
 world: worlds/verra
 protagonist_policy: custom
 default_protagonist: ENT-000021
-initialization_state: initialized-no-save
+initialization_state: resumable
+latest_restorable_checkpoint: campaigns/prototype_beta/saves/900_CHECKPOINT_0001
 canonical_entry_point: campaigns/prototype_beta/180_CURRENT_STATE.md
 player_briefing: campaigns/prototype_beta/095_PLAYER_BRIEFING.md
+selection_caveat: "Active campaign; resumable from its latest checkpoint."
 customization:
   name_change: new-instance-only
   background_change: new-instance-only

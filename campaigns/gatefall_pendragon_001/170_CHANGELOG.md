@@ -1115,3 +1115,11 @@ Claim separately at any time.
 - Section 7.4 reconciliation clean against the resolved-action record and the Mana trace. **The `EVT-000181` deferral is discharged.**
 - **Still outstanding, a second checkpoint running: the 2026-08-06 06:00 Daily Premium rotation remains unsettled**, and no offer has been invented to cover it.
 - **Unresolved in fiction:** Owen has set one lid potion aside for a colleague and asked outright whether that crosses the line he was given. The question is unanswered; the potion has not moved and is still counted in Alexander's ten.
+
+**2026-08-06, post-Checkpoint-0037 recording completion — Owen's supply-chain conclusion (`EVT-000182`, live ledgers only).**
+
+- `EVT-000182` recorded that Owen understood the pocket gates were practice rather than profit, but **under-recorded the conclusion that follows from it** and that he actually stated in the scene: potions are bought with gold, gold comes only from selling crystal, private instances run net negative at 500 g a key, and therefore **only official contracted Gate work funds a potion supply.**
+- He said the resulting contradiction aloud and unprompted — *the version of me that's actually useful is the version where you keep taking contracts, and I have spent two weeks quietly hoping you'd take fewer* — and explicitly declined to resolve it.
+- **Recorded with its boundary intact:** the further step (a mender who wants a supply has to be in the crew that earns it) is one he has plainly reached and has **not** said. He has proposed, agreed to and asked for nothing, and must not be played in a later scene as having volunteered.
+- Amended in `160_CAMPAIGN_CHRONICLE.md`, `130_NPCS_AND_FACTIONS.md` and `180_CURRENT_STATE.md`. **No state, roll, counter, item, pool or resolved outcome changes** — this completes a description from the transcript and authors no fiction.
+- **`900_CHECKPOINT_0037` is immutable and is not retrofitted**; its snapshot carries the shorter wording, and live canon governs where the two differ (Rules Section 13.2).

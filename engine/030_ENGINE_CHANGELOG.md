@@ -12,13 +12,21 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-29 — Gatefall Profile 1.32: NPC and Monster Mana
+
+**World authoring:** Gatefall World Rule Profile 1.31 → 1.32 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
+**Profile:** Every fixed-Rank entity gains a Rank Mana pool (Section 6.1: 20/50/125/300/750/2,000, half Rank Health at every Rank), spent as a fraction of its own maximum by tier (Section 5.2: minor 10%, signature 25%, boss-tier 50%), with Sections 5.2 and 5.3 applying unchanged so a drained entity takes −1 step until above 25%. New Section 6.1.2 authors individual variance of up to ±10% on both pools — authored for recurring named NPCs, rolled once on a banded d100 for elites and bosses, absent for commons — while Section 6.2's damage baseline always reads the flat table value. Section 5's opening, Section 13.1's "Mana curve" denial, and GTF-OVR-002's scope line are corrected. **No engine decision changes**; Decision 020 governs abstraction level and says nothing about Mana.
+**Tools:** `test_gatefall_recovery_contract.ps1` pins the Rank Mana table, the boss-tier cost row, the flat-damage-baseline clause, and the removal of Section 13.1's Mana-curve denial; the three `test_gatefall_*` contracts rebase their version pins to 1.32
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `worlds/gatefall/README.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/test_gatefall_*_contract.ps1`
+**Spec:** `docs/superpowers/specs/2026-07-29-flux-sight-and-passive-unification-design.md` (Phase 2 of 3)
+
 ## 2026-07-29 — Gatefall Profile 1.31: Scope-Axis Repair
 
 **World authoring:** Gatefall World Rule Profile 1.30 → 1.31 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
 **Profile:** Section 7.2 Rank Dominance Law restated for the scope axis; Rank grants one further subject and one authored category per Rank while mastery grants subjects alone — both add to the count, and the law is carried by the category; scope ratchet (`scope_floor`) added. Section 7.3 gains E–D–C category ladders for five scope skills. Section 7.4 authors the passive-multiplier mastery rate (+0.05 per level) that Section 7.2 had assumed since 1.12. Section 7.5's ascension offer discloses category and ratcheted count.
 **Tools:** `validate_repository.ps1` requires a `scope_floor` counter for every known scope skill; `test_progression_audit_contract.ps1` asserts its absence is rejected; `test_gatefall_economy_contract.ps1`, `test_gatefall_quest_contract.ps1` and `test_gatefall_recovery_contract.ps1` rebased their hardcoded Profile 1.30 pins to 1.31 (a Task 4 gap — the version bump missed these three files, which every prior profile adoption had updated as routine), and the economy contract's stale Keen Sense `Adept` assertion was corrected to `Expert` to match canon already set at `EVT-000184`
 **Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/test_gatefall_economy_contract.ps1`, `tools/test_gatefall_quest_contract.ps1`, `tools/test_gatefall_recovery_contract.ps1`
-**Spec:** `docs/superpowers/specs/2026-07-29-flux-sight-and-passive-unification-design.md` (Phase 1 of 2)
+**Spec:** `docs/superpowers/specs/2026-07-29-flux-sight-and-passive-unification-design.md` (Phase 1 of 3)
 
 ## 2026-07-28 — Promotion-barrier settlement enforced
 

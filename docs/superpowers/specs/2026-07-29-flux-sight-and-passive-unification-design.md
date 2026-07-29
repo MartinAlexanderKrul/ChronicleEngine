@@ -363,9 +363,24 @@ Where a call is genuinely ambiguous, the lower tier governs, so drift compounds 
 longer fights rather than shorter ones.
 
 No creature receives an authored ability list or cost sheet. **Rank remains a complete
-mechanical description** — the pool and every cost derive from it. This preserves Decision
-020's *purpose* (no bestiary, no per-creature stat blocks) while amending its letter, and
-the profile records that amendment explicitly.
+mechanical description** — the pool and every cost derive from it.
+
+**Decision 020 is not amended, and an earlier draft of this spec was wrong to say it was.**
+Its entire content is *"the same principles govern all conflicts; only the level of
+abstraction changes"* — it says nothing about Mana, and §6.1 cites it only as the reason
+nothing is authored *per creature*. A Rank-derived Mana pool authors nothing per creature,
+exactly as Rank Health does not. No engine decision changes.
+
+What changes is **three Gatefall sentences** that currently assert NPCs have no Mana at all:
+
+| Location | Current text | Treatment |
+|---|---|---|
+| §5 opening | "Only the Bearer carries a Mana pool of this kind; other hunters' capacity is subsumed in their fixed Rank." | Rewritten: the Bearer's pool is Stat-derived and grows; an NPC's is Rank-derived and fixed. |
+| §13.1 | "No NPC hunter carries a level, a Stat sheet, an XP total, or a Mana curve." | "Mana curve" struck; the rest stands — an NPC still has no level, Stat sheet, or XP. |
+| **GTF-OVR-002 scope** | "only the Bearer carries a **growing** Mana pool (Section 5)" | Clarified, not reversed. It stays literally true — the Bearer's pool grows with Intelligence, an NPC's is fixed by Rank — but the wording invites the reading "only the Bearer has Mana," so it is made explicit rather than left to luck. |
+
+That third one is a **declared override**, the profile's highest-authority construct. It
+must be handled deliberately.
 
 Ordinary attacks and movement cost nothing, exactly as for the Bearer.
 
@@ -460,9 +475,10 @@ true on the scope axis for the first time, rather than aspirational.
 
 ## 8. Migration
 
-Split across two adoptions per §9; the sheet changes below all belong to **Phase 2 (1.32)**,
-except `scope_floor` initialisation, which lands with **Phase 1 (1.31)**. Each adoption is
-an Event under the ordinary §7.1 promotion discipline.
+Split across three adoptions per §9. The sheet changes below all belong to **Phase 3
+(1.33)**, except `scope_floor` initialisation, which lands with **Phase 1 (1.31)**.
+Phase 2 (1.32) changes no Bearer value. Each adoption is an Event under the ordinary
+§7.1 promotion discipline.
 
 **Character sheet (`100_CHARACTER_SHEET.md`):**
 
@@ -526,8 +542,9 @@ Stat Passive work.
   d100 rolled once for elites and bosses, flat for commons. Pools vary; §6.2's damage
   baseline always reads the flat table value.
 - §5.2 and §5.3 — recovery and exhaustion apply to NPCs unchanged.
-- §13.1 — the "no Mana curve" clause amended; Decision 020's purpose recorded as intact
-  and its letter as amended.
+- §5's opening, §13.1's "no Mana curve" clause, and **GTF-OVR-002's scope line** — the
+  three Gatefall statements asserting NPCs have no Mana. No engine decision changes;
+  Decision 020 is untouched (§5.2).
 - Cost tiers (minor 10% / signature 25% / boss-tier 50% of that entity's own maximum),
   the tier-selection test, and scene scoping.
 

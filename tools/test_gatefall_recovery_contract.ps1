@@ -14,6 +14,13 @@ function Assert-True {
     }
 }
 
+function Assert-Contains {
+    param([string]$Text, [string]$Pattern, [string]$Message)
+    if ($Text -notmatch $Pattern) {
+        throw $Message
+    }
+}
+
 function Settle-Mana {
     param(
         [int64]$Current,
@@ -60,7 +67,7 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw
 $character = Get-Content -LiteralPath $characterPath -Raw
 $checkpoint = Get-Content -LiteralPath $checkpointPath -Raw
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.31\r?$') "Gatefall Profile 1.31 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.32\r?$') "Gatefall Profile 1.32 is not active."
 Assert-True ($profile -match 'mana_recovery_remainder_units') "Gatefall Mana carry is not declared."
 Assert-True ($profile -match 'health_recovery_remainder_units') "Gatefall Health carry is not declared."
 Assert-True ($resident -match 'exact last-settled campaign-time anchor') "Resident settlement does not require the exact anchor."
@@ -116,5 +123,13 @@ $healthPartitioned = @{ Current = [int64]68; Remainder = [int64]0 }
 }
 Assert-True ($healthPartitioned.Current -eq $healthRest.Current) "Health differs across equivalent response partitions."
 Assert-True ($healthPartitioned.Remainder -eq $healthRest.Remainder) "Health carry differs across equivalent response partitions."
+
+# Profile 1.32: fixed-Rank entities carry a Rank Mana pool. These four values
+# are the ones every downstream cost derives from -- if the table drifts, every
+# ability cost in the world silently changes with it.
+Assert-Contains $profile '\| \*\*Rank Mana\*\* \| \*\*20\*\* \| \*\*50\*\* \| \*\*125\*\* \| \*\*300\*\* \| \*\*750\*\* \| \*\*2,000\*\* \|' 'Section 6.1 does not carry the Rank Mana table.'
+Assert-Contains $profile 'Section 6\.2.s standard-hit baseline reads' 'Section 6.1.2 does not pin the damage baseline to the flat table value.'
+Assert-Contains $profile '\*\*Boss-tier\*\* ability \| 50% \| 10 \| 25 \| 62 \| 150 \| 375 \| 1,000 \|' 'Section 5.2 does not carry the boss-tier cost row.'
+Assert-True ($profile -notmatch 'or a Mana curve') "Section 13.1 still denies NPC hunters a Mana pool."
 
 Write-Host "Gatefall recovery contract tests PASSED" -ForegroundColor Green

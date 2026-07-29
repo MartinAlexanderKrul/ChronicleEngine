@@ -149,6 +149,7 @@ subjects:
   - EVT-000184
   - EVT-000185
   - EVT-000186
+  - EVT-000187
 ```
 
 ---
@@ -4209,5 +4210,42 @@ description: "Adoption of Gatefall World Rule Profile 1.31, an additive correcti
 
 **Counters added:** `skills.keen_sense.scope_floor`, `skills.exploit_pattern.scope_floor`, `skills.field_command.scope_floor`, `skills.resonance_extraction.scope_floor`, each baselined at 0 against this Event. `counter_deltas` is empty because initialisation at zero is the recording of an absence, not a change to a tracked value.
 
-**Not addressed here.** Stat Passives, the Flux Sight refactor, and NPC/monster Mana are Phase 2 of the same design and land at Profile 1.32; the design is recorded at `docs/superpowers/specs/2026-07-29-flux-sight-and-passive-unification-design.md`. The unsettled 2026-08-06 Daily Premium rotation carried forward at `EVT-000185` remains unsettled and is untouched by this adoption."
+**Not addressed here.** NPC/monster Mana is Phase 2 and lands at Profile 1.32; Stat Passives and the Flux Sight refactor are Phase 3 and land at Profile 1.33. The design is recorded at `docs/superpowers/specs/2026-07-29-flux-sight-and-passive-unification-design.md`. The unsettled 2026-08-06 Daily Premium rotation carried forward at `EVT-000185` remains unsettled and is untouched by this adoption."
+```
+
+## EVT-000187 - Profile Adoption: Gatefall World Rule Profile 1.32
+
+```yaml
+id: EVT-000187
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-06 ~15:10 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-06 ~15:10 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.32, a migrating subsystem advance over frozen 1.31. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged at Owen Callahan's kitchen, ~15:10 on 2026-08-06.
+
+**What was missing.** Only the Bearer carried Mana. Section 5 said so outright, Section 13.1 denied NPC hunters a 'Mana curve', and GTF-OVR-002 scoped growing pools to him alone. A monster's supernatural capacity was therefore a fact about its Rank with **no number behind it** — nothing to spend, nothing to exhaust, and nothing any capability could ever report. A boss could throw its heaviest move every exchange forever, because nothing said it could not.
+
+**What now exists.** Every NPC hunter and monster carries **Rank Mana** read from the Section 6.1 table — **20 / 50 / 125 / 300 / 750 / 2,000**, half Rank Health at every Rank, which is the same ratio the Bearer's own `2 x Intelligence` against `4 x Vitality` produces at equal Stats. It is spent as a fraction of that entity's **own** maximum by the action's role: **minor 10%, signature 25%, boss-tier 50%**, floored to an integer, with an ambiguous call taking the lower tier. Ordinary attacks and movement cost nothing. Sections 5.2 and 5.3 then apply unchanged — the same recovery rates, and **−1 modifier step at 0 Mana until above 25%**. A drained boss is measurably worse, so wearing one down is now a real tactic rather than a figure of speech.
+
+**Individual variance.** New Section 6.1.2 lets a fixed-Rank entity carry up to **±10%** on both pools, so Rank names a bracket rather than one body: **authored** for recurring named NPCs in their world-file entry, **rolled once** on a banded d100 for elites and bosses, and **absent** for commons. Rolled once and never rerolled, exactly as a Gate's true Rank is fixed on first entry.
+
+**Section 6.2's damage baseline always reads the flat table value.** Pools vary; the arithmetic does not. Otherwise every exchange would need that individual's factor and combat would stop being reproducible from the tables — the property the fixed-Rank model exists to keep.
+
+**Nothing is authored per creature, and no engine decision changes.** Every pool and every cost derives from Rank, so a monster still needs no stat block, ability list, or cost sheet: the Section 6.1 discipline is extended one axis, not abandoned. **Decision 020 is untouched** — it governs abstraction level and says nothing about Mana.
+
+**Prospective in full.** No past exchange is recomputed, no completed fight re-resolved, and no monster retroactively runs dry. An entity already on screen at adoption enters at **full** Rank Mana, since nothing it has already done was ever charged; variance is assigned on **first contact after adoption**, so a creature already engaged takes the flat value for that encounter rather than having its body changed mid-fight.
+
+**The Bearer is untouched.** Not one Stat, pool, counter, skill, item, or counter baseline changes; `counter_deltas` is empty because this adoption moves no tracked value of his at all. His own Mana rules are entirely unchanged.
+
+**Not addressed here.** Stat Passives and the Flux Sight refactor are Phase 3 and land at Profile 1.33; Flux Sight's D rung will read the Mana this adoption creates. The unsettled 2026-08-06 Daily Premium rotation carried forward at `EVT-000185` remains unsettled and is untouched."
 ```

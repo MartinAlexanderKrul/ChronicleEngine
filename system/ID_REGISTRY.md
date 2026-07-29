@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000170 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000186 |
+| Event | `EVT-` | Event | EVT-000187 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -325,6 +325,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000184 | Event | Gatefall: Pendragon: Overgrown Temple cleared - Owen kills thirteen of fourteen, XP 760 to 870/1000, Keen Sense advances to Expert and Exploit Pattern to Adept at the dangerous-scene settlement, eleven deposit crystals lost unmined |
 | EVT-000185 | Event | Gatefall: Pendragon: the Checkpoint 0037 promotion barrier - batch settlement `none`, the EVT-000181 deferral discharged, the unsettled Daily Premium rotation carried forward a second checkpoint |
 | EVT-000186 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.31 - the Rank Dominance Law restated for the scope axis, Rank granting one further subject and one category per Rank against mastery's subject ladder, the scope ratchet and its four zero-initialised floors, and the passive-multiplier mastery rate Section 7.2 had assumed since 1.12 |
+| EVT-000187 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.32 - every fixed-Rank entity gains a Rank Mana pool it spends by tier and can run dry on, individual variance of up to ten percent on both pools for named and elite entities, and Section 6.2's damage baseline pinned to the flat table value |
 
 ---
 

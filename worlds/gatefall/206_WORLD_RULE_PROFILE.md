@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.31
+# Gatefall — World Rule Profile 1.32
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.31
+**Profile Version:** 1.32
 **Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.31 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-29. Version 1.31 is an **additive correction advance** over frozen 1.30, repairing the Rank Dominance Law on the scope axis and authoring a mastery rate the profile already assumed. Section 7.2 promised that a skill at Novice one Rank higher beats the same skill at Master one Rank lower, and sized every utility Rank scale to satisfy it — but on the **scope** axis Rank bought **+1** subject per Rank while mastery bought **+4** across its track, so an E-Rank Master Keen Sense reached five subjects against a D-Rank Novice's two and ascension was a strict downgrade on exactly the skills whose numbers are least visible. Section 7.2 additionally asserted "an E-Rank Master covers the whole scene on one," contradicting Section 7.3's authored 1/2/3/4/5 ladder outright: two sections of one profile stated different numbers for the same skill. Rank now grants **one further affected subject and one authored category** per Rank while mastery grants subjects alone — both add to the count, and the law is carried by the category, which no quantity of mastery ever reaches — and a **scope ratchet** (`scope_floor`) holds the count at its pre-ascension value so no ascension can reduce reach. Separately, Section 7.2 cited "mastery's +0.20" on the passive-multiplier axis while Section 7.4 never authored a passive multiplier any per-level gain at all — Dagger Mastery has rendered **+0.20** at Adept on an unwritten rule for the whole campaign; Section 7.4 now authors **+0.05 per level**, which yields exactly the stored value. Section 7.3 gains E–D–C category ladders for the five scope skills, and Section 7.5's ascension offer now discloses the category gained and the ratcheted count. **No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changes.** Data Model 0.1.5 remains unchanged.
+**Compatibility Status:** frozen at version 1.32 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-29. Version 1.32 is a **migrating subsystem advance** over frozen 1.31, giving every fixed-Rank entity a Mana pool it can spend and run dry on. Until now only the Bearer carried Mana: Section 5 stated it outright, Section 13.1 denied NPC hunters a "Mana curve", and GTF-OVR-002 scoped growing pools to the Bearer alone — so a monster's supernatural capacity was a fact about its Rank with no number behind it, nothing to exhaust, and nothing any capability could ever report. Every NPC hunter and monster now carries **Rank Mana** read from the Section 6.1 table (**20 / 50 / 125 / 300 / 750 / 2,000**, half Rank Health at every Rank — the same ratio the Bearer's own `2 × Intelligence` against `4 × Vitality` produces). It is spent as a fraction of that entity's own maximum by the action's role — **minor 10%, signature 25%, boss-tier 50%**, ambiguity resolving to the lower tier — and Sections 5.2 and 5.3 then apply unchanged, so a drained entity takes **−1 modifier step until above 25%** and attrition becomes a real tactic. New Section 6.1.2 adds **individual variance** of up to ±10% on both pools: authored for recurring named NPCs, rolled once on a banded d100 for elites and bosses, absent for commons — so Rank names a bracket rather than one body. **Section 6.2's damage baseline always reads the flat table value**, so pools vary while the arithmetic stays reproducible from the tables. **No creature is authored**: every pool and every cost derives from Rank, so the fixed-Rank model is extended one axis rather than abandoned, and **no engine decision changes** — Decision 020 governs abstraction level and says nothing about Mana. **No Bearer field, Stat, pool, counter, item, transaction, or resolved outcome changes.** Data Model 0.1.5 remains unchanged.
+
+**Required 1.31 → 1.32 migration.** Preserve every resolved roll, damage result, Mana spend, skill value, item, pool, reward, currency balance, and fictional outcome. **This migration is prospective in full and reopens nothing**: no past exchange is recomputed, no completed fight re-resolved, and no monster retroactively runs dry. Fixed-Rank entities begin carrying and spending Rank Mana from the adoption Event forward; an entity already on screen at adoption enters at **full** Rank Mana for its Rank, since nothing it has already done was ever charged. Variance is assigned on **first contact after adoption** — a creature already engaged takes the flat table value for that encounter, because rolling a factor mid-fight would change a body already established in the fiction. **The Bearer is untouched**: not one Stat, pool, counter, skill, item, or counter baseline changes, and no `tracked_counters` entry is added or removed. Record the adoption acknowledgement in mutable live state; immutable Profile 1.31-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.32 at readiness.
+
+Version 1.31 remains the **additive correction advance** over frozen 1.30, repairing the Rank Dominance Law on the scope axis and authoring a mastery rate the profile already assumed. Section 7.2 promised that a skill at Novice one Rank higher beats the same skill at Master one Rank lower, and sized every utility Rank scale to satisfy it — but on the **scope** axis Rank bought **+1** subject per Rank while mastery bought **+4** across its track, so an E-Rank Master Keen Sense reached five subjects against a D-Rank Novice's two and ascension was a strict downgrade on exactly the skills whose numbers are least visible. Section 7.2 additionally asserted "an E-Rank Master covers the whole scene on one," contradicting Section 7.3's authored 1/2/3/4/5 ladder outright: two sections of one profile stated different numbers for the same skill. Rank now grants **one further affected subject and one authored category** per Rank while mastery grants subjects alone — both add to the count, and the law is carried by the category, which no quantity of mastery ever reaches — and a **scope ratchet** (`scope_floor`) holds the count at its pre-ascension value so no ascension can reduce reach. Separately, Section 7.2 cited "mastery's +0.20" on the passive-multiplier axis while Section 7.4 never authored a passive multiplier any per-level gain at all — Dagger Mastery has rendered **+0.20** at Adept on an unwritten rule for the whole campaign; Section 7.4 now authors **+0.05 per level**, which yields exactly the stored value. Section 7.3 gains E–D–C category ladders for the five scope skills, and Section 7.5's ascension offer now discloses the category gained and the ratcheted count. **No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changes.** Data Model 0.1.5 remains unchanged.
 
 **1.30 → 1.31 compatibility treatment.** Preserve every stored value and all resolved canon. Adoption requires no recomputation and no state migration: every skill's Rank, mastery level, counters, and rendered effect are identical before and after. **Keen Sense stays E-Rank Expert covering the Bearer plus three allies** — the new formula returns `1 + 0 + (4 − 1) = 4`, exactly what it renders today — and **Dagger Mastery stays +0.20 at Adept**, now derived from an authored rule rather than an unwritten one. Every skill named in the Section 7.3 category table stands at its native E-Rank, so no category grant is live and none is retroactive; the ladders are prospective in full. Add a `scope_floor` counter initialised to **0** for each scope skill the Bearer knows — a new counter recording an absence, not a changed value. No **scope** skill has ever ascended in this campaign — Rupture's E-Rank to D-Rank breakthrough is a damage skill and carries no scope axis — so no floor binds. **No offer is reopened**: a declined ascension stands as declined, and no past settlement is re-audited. Record the adoption acknowledgement in mutable live state; immutable Profile 1.30-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.31 at readiness.
 
@@ -182,7 +186,7 @@ Ranks everywhere in this world are **E, D, C, B, A, S**, weakest to strongest.
 ## GTF-OVR-002 — System Vitality
 
 - **Replaces/refines:** Rules Sections 6.8–6.10 and Decision 018 where they reject a universal health-point pool for a character.
-- **Scope:** The Bearer's Health and Mana. Every other hunter, and every monster, uses the engine's **Rank Health** for its effective Rank (Section 6) and the engine injury model; only the Bearer carries a growing Mana pool (Section 5).
+- **Scope:** The Bearer's Health and Mana. Every other hunter, and every monster, uses the engine's **Rank Health** for its effective Rank (Section 6) and the engine injury model, and from Profile 1.32 a **Rank Mana** pool sized the same way (Section 6.1). Only the Bearer carries a *growing* pool of either kind: his scale with effective Vitality and Intelligence, while a fixed-Rank entity's are read from its Rank and never grow.
 - **Activation:** Active while the character bears Gatefall's System.
 - **Replacement:** The Bearer's Health and Mana are canonical current/maximum numeric pools. Damage removes Health after applicable reductions; casting and skill use remove Mana. At zero Health the Bearer is incapacitated and receives an outcome appropriate to the attack and established fiction — and in Gatefall, where death is final (Section 6.5), zero Health is where a campaign can end.
 - **State/provenance:** The Bearer's character ledger records current/maximum Health, current/maximum Mana, active conditions, and the event provenance of each change.
@@ -220,7 +224,7 @@ Gatefall has one legendary exception and everyone else. The overrides bind only 
 
 There is exactly **one Bearer alive** in a world-line. Who that is, is campaign canon, not world rule content: this profile binds *the Bearer role*, and each campaign's ledgers name the entity that holds it. A forked world-line has its own Bearer with its own identifier (Decision 053) and inherits this profile unchanged.
 
-**Every other character resolves as an ordinary engine character whose capability is their fixed Rank.** An NPC hunter is not given a stat sheet, a level, an XP total, or a Mana curve. "This is a licensed B-Rank" is a complete mechanical description: it sets the Rank the character acts at (Section 6, Section 13) and nothing further is authored. Monsters likewise are described by Rank alone. This scoping is the world's whole premise — Gatefall is not a world where the engine's progression model is replaced wholesale; it is a world that otherwise obeys the engine and contains one person the System is levelling.
+**Every other character resolves as an ordinary engine character whose capability is their fixed Rank.** An NPC hunter is not given a stat sheet, a level, or an XP total. From Profile 1.32 it carries a **Rank Mana** pool alongside its Rank Health (Sections 5.1, 6.1) — both fixed numbers read from its Rank, neither a Stat-linked curve that grows. "This is a licensed B-Rank" is a complete mechanical description: it sets the Rank the character acts at (Section 6, Section 13) and nothing further is authored. Monsters likewise are described by Rank alone. This scoping is the world's whole premise — Gatefall is not a world where the engine's progression model is replaced wholesale; it is a world that otherwise obeys the engine and contains one person the System is levelling.
 
 ---
 
@@ -454,7 +458,7 @@ Perception's two milestone skills (Rank-Sight, Deep Sight) turn the Gate-assessm
 
 # 5. Mana
 
-Mana is **tracked canonical Bearer state** (Decision 057): every cost and every tick of recovery is computed from the rules below and recorded, never estimated. Only the Bearer carries a Mana pool of this kind; other hunters' capacity is subsumed in their fixed Rank.
+Mana is **tracked canonical Bearer state** (Decision 057): every cost and every tick of recovery is computed from the rules below and recorded, never estimated. Only the Bearer carries a Mana pool of this kind — one derived from a Stat and growing with it. Every other hunter and every monster carries a **Rank Mana** pool instead: fixed by its Rank, read from the Section 6.1 table, and spent under Section 5.2's tiers. Capacity is still subsumed in Rank; what changed in Profile 1.32 is that the Rank now names a number the entity can run out of.
 
 ## 5.1 The Pool
 
@@ -465,6 +469,22 @@ maximum_mana = 2 × effective Intelligence
 ```
 
 Intelligence 10 yields **20 Mana**; Intelligence 20 yields **40**; Intelligence 50 yields **100**. Automatic level growth, allocation, and equipped Intelligence all change the pool because they change effective Intelligence. Apply the missing-amount rule of Section 4.1 whenever the maximum changes outside a level-up or Status Recovery.
+
+**Fixed-Rank entities.** Every NPC hunter and monster carries a **Rank Mana** pool read
+from the Section 6.1 table. It is not a Stat expression and never grows: a D-Rank beast
+has D-Rank Mana for as long as it is D-Rank, exactly as it has D-Rank Health.
+
+The table is derived from this section's own arithmetic rather than imported. The Bearer's
+pools are `Health = 4 × Vitality` and `Mana = 2 × Intelligence`, so at equal Stats his Mana
+is half his Health; the Rank Mana table applies that same ratio to the Section 6.1 Rank
+Health table. *(A sibling world, Reikon, independently sets Rank as bands of pool capacity
+whose tops match this table exactly at B and A and within a few points elsewhere. Reikon
+is a separate world and binds nothing here; the correspondence is recorded as a sanity
+check only.)*
+
+**No creature is authored by the baseline.** The pool and every cost derive from Rank, so a fixed-Rank
+entity still needs no stat block, no ability list, and no cost sheet — the Section 6.1
+discipline extended one axis, not abandoned. The single exception is deliberate and bounded: a **recurring named NPC** may carry an authored variance under Section 6.1.2, which is a chosen characterisation of one person rather than a stat block, and reaches no monster and no unnamed hunter.
 
 ## 5.2 Recovery
 
@@ -496,12 +516,50 @@ the old mode, then applies the new mode. Recovery settles after every action,
 transition, montage, travel span, wait, or sleep that advances time—never for the
 first time when `/system` is opened or the player asks.
 
+**Fixed-Rank entities spend and recover on the same rules.** An NPC hunter or monster pays
+for a skill-like action out of its Rank Mana pool (Section 6.1) as a fraction of **its own
+maximum**, selected by the action's role:
+
+| Tier | Cost | E | D | C | B | A | S |
+|---|---|---:|---:|---:|---:|---:|---:|
+| **Minor** ability | 10% | 2 | 5 | 12 | 30 | 75 | 200 |
+| **Signature** ability | 25% | 5 | 12 | 31 | 75 | 187 | 500 |
+| **Boss-tier** ability | 50% | 10 | 25 | 62 | 150 | 375 | 1,000 |
+
+Floor to an integer, minimum 1. **Ordinary attacks and movement cost nothing**, exactly as
+for the Bearer.
+
+Select the tier by the ability's role, never its flavour:
+
+- **Minor** — used freely and repeatedly; the entity's ordinary supernatural repertoire.
+- **Signature** — the thing that entity is known for, used once or twice in a fight.
+- **Boss-tier** — an encounter-defining move, one that changes the shape of the fight.
+
+Where a call is genuinely ambiguous the **lower** tier governs, so drift compounds toward
+longer fights rather than shorter ones. No creature receives an authored ability list: the
+tier is a reading of what the fiction just did, and the cost falls out of its Rank.
+
+Recovery rates above apply unchanged — 10% of the pool per hour active, 25% resting. A
+monster inside a live instance is `active`.
+
+**Scene scoping.** A fixed-Rank entity's current Mana is tracked only while it is on screen,
+and is discarded at scene close with other transient combat state. A **recurring named NPC**
+is the exception: their pool persists between appearances and recovers across the elapsed
+span under this section. Without this bound the subsystem is unbounded bookkeeping for
+entities that will never appear again.
+
 ## 5.3 Running Dry
 
 - A casting or skill whose cost exceeds current Mana is **unavailable** — it cannot be attempted until the Bearer has the Mana to pay it.
 - At **0 Mana**, the Bearer suffers **−1 modifier step on all actions** until Mana recovers **above 25% of the pool**. This is exhaustion, not merely an empty counter, and it applies to physical actions as well as castings.
 
 Mana gates whether a skill can be *attempted*; it never decides the result. The die resolves the attempt (Rules Section 4).
+
+**Both clauses bind fixed-Rank entities too.** An ability whose cost exceeds a monster's or
+NPC hunter's current Rank Mana is unavailable to it, and at **0 Mana** that entity takes
+**−1 modifier step on all actions** until its pool recovers **above 25%**. A drained boss is
+a measurably worse boss, and wearing one down is therefore a real tactic rather than a
+figure of speech — which is the point of tracking the number at all.
 
 ---
 
@@ -524,8 +582,9 @@ The fixed-Rank table remains canonical for every NPC hunter and monster:
 | Rank | E-Rank | D-Rank | C-Rank | B-Rank | A-Rank | S-Rank |
 |---|---|---|---|---|---|---|
 | Rank Health | 40 | 100 | 250 | 600 | 1,500 | 4,000 |
+| **Rank Mana** | **20** | **50** | **125** | **300** | **750** | **2,000** |
 
-The scale climbs roughly ×2.5 per Rank, keeping fixed-rank entities resolvable without individual Stat sheets. It never substitutes for the Bearer's effective Vitality.
+The scale climbs roughly ×2.5 per Rank, keeping fixed-rank entities resolvable without individual Stat sheets. It never substitutes for the Bearer's effective Vitality or Intelligence. Rank Mana is half Rank Health at every Rank, the same ratio the Bearer's own `2 × Intelligence` and `4 × Vitality` produce at equal Stats (Section 5.1).
 
 ## 6.1.1 Natural Health Recovery
 
@@ -555,6 +614,45 @@ carry unless the pool reaches full. New damage applies immediately and does not
 erase carry. Settle through a mode change under the old mode before starting the
 new one. The Runtime performs this settlement automatically from `campaign_time`
 before the next action reads Health.
+
+## 6.1.2 Individual Variance
+
+Two D-Rank hunters are not the same hunter. A fixed-Rank entity may carry an **individual
+variance** of up to ±10% on **both** its pools, so that Rank names a bracket rather than a
+single body.
+
+| Entity class | Variance | Where it lives |
+|---|---|---|
+| **Recurring named NPC** — one carrying an entry in `220_NOTABLE_FIGURES.md` or an `institutions/` roster | **Authored** ±10%, chosen deliberately | That NPC's own world-file entry, permanently |
+| **Elite or boss** | **Rolled once** on the band table below, at first contact | The instance's transient state; discarded when the instance closes |
+| **Common monster** | **None** — the flat table value | Nowhere |
+
+| d100 | Variance |
+|---|---|
+| 01–10 | **−10%** |
+| 11–30 | **−5%** |
+| 31–70 | **none** |
+| 71–90 | **+5%** |
+| 91–00 | **+10%** |
+
+Apply the factor to the table value and floor to an integer.
+
+**Rolled once, never rerolled.** The factor is fixed at first contact and is that entity's
+for as long as it exists, exactly as a Gate's true Rank is fixed on first entry
+(Section 9.5). A second encounter with the same named NPC never rerolls.
+
+**Variance never reaches the damage arithmetic.** Section 6.2's standard-hit baseline reads
+the **flat** Section 6.1 table value for the attacker's Rank, always. The pool varies; the
+damage does not. Were it otherwise, every exchange would need that individual's factor and
+combat would stop being reproducible from the tables alone — which is the property the
+whole fixed-Rank model exists to keep.
+
+A one-scene named character is not a recurring named NPC. If such a character later earns a
+world-file entry, their variance is authored at that point and is not retroactive.
+
+**Why this exists.** Without variance, an entity's Rank yields its pools exactly, so reading
+them returns nothing a Rank read did not already give. With it, the numbers are genuinely
+underivable — which is what makes a capability that reports them worth having.
 
 ## 6.2 Damage
 
@@ -2013,7 +2111,7 @@ Most Gates are cleared by parties, and most hunters in the world are ordinary li
 
 ## 13.1 NPC Hunters Resolve by Rank
 
-Every NPC hunter is a fixed-rank engine character (Section 2). A hunter's **Rank** is its complete mechanical description: a licensed B-Rank acts on the B-Rank for Health and damage, and nothing further is authored. No NPC hunter carries a level, a Stat sheet, an XP total, or a Mana curve.
+Every NPC hunter is a fixed-rank engine character (Section 2). A hunter's **Rank** is its complete mechanical description: a licensed B-Rank acts on the B-Rank for Health, Mana, and damage, and nothing further is authored. No NPC hunter carries a level, a Stat sheet, or an XP total. From Profile 1.32 it carries a **Rank Mana** pool (Sections 5.1, 6.1) — still not a curve, and still nothing authored per hunter: a fixed number read from its Rank, exactly as its Health is.
 
 When neither side is the Bearer, compare their Ranks for the capability contribution: **+1 step per Rank the actor stands above the resistance, −1 per Rank below**, capped inside the engine's net ±3. When the Bearer acts or resists, use Section 4.3's relevant effective Stat against the other party's Rank-derived domain rating instead; never apply both systems to one action.
 
@@ -2050,7 +2148,7 @@ A sealed Gate interior admits no recording and no remote monitoring: mana flux b
 
 ## 13.5 Support Types and Party Roles
 
-Party role composition is **descriptive, not a subsystem.** Signature abilities (Section 13.6) are as varied as the people who wake with them, so the trade files hunters by *what an ability does in a fight* using a loose, open vocabulary — **strikers** (melee damage), **casters / mages** (ranged mana — bolts, bursts, elements, area denial), **archers** (a signature that guides a shot), **wardens / tanks** (barrier and frontline), **menders** (healing-touch), **sensors** (detection and appraisal), **summoners / beast-tamers**, illusionists, and any number of others. **This is common shorthand, not a closed classification.** A hunter whose signature fits no board label is ordinary, not an error; most powers blur two or three of these at once, and new ones are named as they appear. Whatever the label, an NPC hunter is resolved the same way — **by Rank** (Section 13.1, Section 2), with no stat sheet, level, or Mana curve; the label is flavor and reach (Section 13.6), never a mechanic.
+Party role composition is **descriptive, not a subsystem.** Signature abilities (Section 13.6) are as varied as the people who wake with them, so the trade files hunters by *what an ability does in a fight* using a loose, open vocabulary — **strikers** (melee damage), **casters / mages** (ranged mana — bolts, bursts, elements, area denial), **archers** (a signature that guides a shot), **wardens / tanks** (barrier and frontline), **menders** (healing-touch), **sensors** (detection and appraisal), **summoners / beast-tamers**, illusionists, and any number of others. **This is common shorthand, not a closed classification.** A hunter whose signature fits no board label is ordinary, not an error; most powers blur two or three of these at once, and new ones are named as they appear. Whatever the label, an NPC hunter is resolved the same way — **by Rank** (Section 13.1, Section 2), with no stat sheet, level, or XP total, its Health and Mana both read from its Rank (Section 6.1); the label is flavor and reach (Section 13.6), never a mechanic.
 
 Because the labels are open, the **mechanics key to function, not to the word.** Only **three** effects are authored, and they attach to *what a signature does*, whatever the trade calls its owner:
 
@@ -2421,7 +2519,7 @@ On survival, the System tallies the five signals and offers the classes matching
 
 The Bearer chooses one. The choice is permanent; it attaches the class's `/system` panel (Section 15.8) and sets the STATUS `Class` line. Each class has a later **evolution quest** — an authored class-quest at **level 50** — that deepens it along its own line.
 
-**Shared Rank Mana ladder.** Several classes spend Mana by a target's Rank on one ladder — **E 5 · D 10 · C 20 · B 40 · A 80**. Because maximum Mana derives from Intelligence (§5.1), class allocation now directly determines how often these effects can be used. A low-Intelligence build may qualify for a class yet lack the pool for its highest-Rank target until it invests.
+**Shared target-Rank cost ladder.** Several classes spend Mana by a target's Rank on one ladder — **E 5 · D 10 · C 20 · B 40 · A 80**. This is a **cost** the Bearer pays, scaled by whom he targets; it is not a pool and is unrelated to the **Rank Mana** an entity of that Rank carries (Section 6.1). Because maximum Mana derives from Intelligence (§5.1), class allocation now directly determines how often these effects can be used. A low-Intelligence build may qualify for a class yet lack the pool for its highest-Rank target until it invests.
 
 ## 18.4 Shadowbinder — offered for battlefield control
 

@@ -123,7 +123,7 @@ canonical_state:
   anchor: ENT-000112
   concealment: "The lane is unlicensed and deliberately compartmented; Deacon hedges every answer by habit, and the anomalous cores are the one part of his stock he will not discuss with a seller he is still measuring."
   proximity_condition: "An in-person dealing with Deacon, or with any working fence in the same lane, at which the Bearer physically handles stock rather than only negotiating price."
-  clue_condition: "A resolved Rank-Sight, Keen Sense, or equivalent appraisal read on a core sourced from that lane which returns no band at all."
+  clue_condition: "A resolved appraisal read on a core sourced from that lane — by capability or at a bench — which returns no band at all."
   reveal_condition: "One such core is read by a Provenance-grade appraiser, or by a second appraisal independent of the first, and the two readings agree that it is off-band rather than mismeasured."
   objective: "Obtain one off-band core and establish that its reading is not instrument error."
   completion_condition: "Two independent appraisals of the same core both return off-band."

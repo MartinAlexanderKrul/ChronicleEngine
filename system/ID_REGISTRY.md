@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000176 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000210 |
+| Event | `EVT-` | Event | EVT-000214 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -352,6 +352,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000208 | Event | Gatefall: Pendragon: the phone call with Owen closing a near two-day silence, recorded as a Character First in `REL-000066` |
 | EVT-000209 | Event | Gatefall: Pendragon: the Checkpoint 0041 promotion barrier - Resonance Extraction's mining classification settled, no skill-formation candidate evidence in the remaining span, explicit none |
 | EVT-000210 | Event | Gatefall: Pendragon: adoption of the World Rule Profile 1.30 to 1.36 chain onto the post-Checkpoint-0041 state - the scope-axis repair and passive-multiplier rate, NPC and monster Rank Mana, Stat Passives and Flux Sight, system damage previews, ascension eligibility, and the Stat Passive authoring clamp |
+| EVT-000211 | Event | Gatefall: Pendragon: Alexander accepts the standing breakthrough ascension offer on Keen Sense, E-Rank Master -> D-Rank Adept (Section 7.5), scope held at 5 subjects by the Section 7.2 ratchet, gaining the D-Rank intent-and-method detection category |
+| EVT-000212 | Event | Gatefall: Pendragon: third visit to Walt Adamik's shop - Keen Sense legendary operating-method read of a rank-unconfirmed suppression emitter and unlicensed lockpick set, traded for all fifteen of Alexander's private E-Rank cores |
+| EVT-000213 | Event | Gatefall: Pendragon: Ada Reyes confirms the C-Rank harvest job, staging 2026-08-09 09:00; new Objective OBJ-24 opened |
+| EVT-000214 | Event | Gatefall: Pendragon: Checkpoint 0042 promotion barrier - explicit no skill-formation result; item appraisal boundary and EVT-000210 fictional timestamp reconciled |
 
 ---
 

@@ -32,9 +32,11 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8
 $runtimeProfile = Get-Content -LiteralPath $runtimeProfilePath -Raw -Encoding UTF8
 $latestCheckpoint = Get-Content -LiteralPath $latestCheckpointPath -Raw -Encoding UTF8
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.32\r?$') "Gatefall Profile 1.32 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.33\r?$') "Gatefall Profile 1.33 is not active."
 Assert-True ($profile -match 'The Bearer has \*\*1 concurrent non-daily quest slot by default\*\*') "Default non-daily capacity is not fixed at 1."
-Assert-True ($profile -match 'Multitask raises this to \*\*2\*\*; Analyst raises it to \*\*3\*\*') "Multitask/Analyst capacity increases are not fixed at 2 and 3."
+Assert-True ($profile -match 'Multitask raises this to \*\*2 / 3 / 4\*\* at E / D / C-Rank') "Multitask capacity ladder is not fixed at 2/3/4."
+Assert-True ($profile -match '\| \*\*Stat Passive Rank\*\* \| \*\*E\*\* \| \*\*D\*\* \| \*\*C\*\* \| \*\*B\*\* \| \*\*A\*\* \| \*\*S\*\* \|') "Stat Passive Rank ladder is missing."
+Assert-True ($profile -match '\*\*Rank-Sight\*\* and \*\*Deep Sight\*\* are both retired names for Flux Sight') "Flux Sight deprecation does not retire both prior names."
 Assert-True ($profile -match 'The `\[DAILY\]` quest has its own reserved slot') "Daily quests do not have an explicit reserved slot."
 Assert-True ($profile -match 'Class Quest and later class-evolution quest.*reserved class slot') "Class quests do not have an explicit reserved slot."
 Assert-True ($profile -match 'four times the common-kill XP') "Urgent quest reward formula is missing."
@@ -42,15 +44,18 @@ Assert-True ($profile -match 'Gate-clear milestone XP for the Bearer''s System R
 Assert-True ($profile -match 'A quest cannot complete from conduct that occurred before') "Pre-attachment retroactive completion is not prohibited."
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
-Assert-True ($character -match 'profile_version: "1\.32"') "Live Gatefall character was not migrated to Profile 1.32."
-Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 1\s+analyst_bonus: 0\s+capacity_total: 2\s+active: \[\]\s+pending_offers: \[\]') "Live Multitask quest capacity is missing or incorrect."
+Assert-True ($character -match 'profile_version: "1\.33"') "Live Gatefall character was not migrated to Profile 1.33."
+Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 2\s+capacity_total: 3\s+active: \[\]\s+pending_offers: \[\]') "Live D-Rank Multitask quest capacity is missing or incorrect."
+Assert-True ($character -match 'Flux Sight \[D-Rank\] . Stat Passive.+Uses 0 . Perception 38 . C-Rank at 44') "Live Flux Sight does not render its derived D-Rank progression."
+Assert-True ($character -match 'Multitask \[D-Rank\] . Stat Passive.+capacity \*\*3\*\*.+Uses 0 . Intelligence 36 . C-Rank at 44') "Live Multitask does not render its derived D-Rank progression."
+Assert-True ($character -notmatch 'Rank-Sight . Passive . Stat-milestone skill') "Retired Rank-Sight survives as a live skill."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
-Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.32"') "Campaign startup does not bind Profile 1.32."
+Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.33"') "Campaign startup does not bind Profile 1.33."
 Assert-True ($startup -match 'latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0029') "Campaign startup does not target the latest checkpoint."
 Assert-True ($startup -match 'Sections 7\.1, 7\.4, 8\.4, and 14\.3 before readiness completes') "Gatefall startup does not preload the skill and proactive-trigger contracts."
 Assert-True ($startup -match 'require_profile_trigger_audit: true') "Gatefall startup does not require the proactive trigger audit."
-Assert-True ($index -match 'World Rule Profile 1\.32, frozen') "World index does not advertise frozen Profile 1.32."
+Assert-True ($index -match 'World Rule Profile 1\.33, frozen') "World index does not advertise frozen Profile 1.33."
 Assert-True ($profile -match 'SKILLS[^\r\n]+ACTIVE') "Gatefall /system template does not render an ACTIVE skills group."
 Assert-True ($profile -match 'SKILLS[^\r\n]+PASSIVE') "Gatefall /system template does not render a PASSIVE skills group."
 Assert-True ($profile -match 'contains every skill whose ledger entry carries a Mana cost') "Gatefall /system skills do not classify ACTIVE entries from canonical Mana cost."
@@ -119,7 +124,7 @@ Assert-True ($knowledge -match 'an attached pointer renders `\?\?\?`') "Conceale
 Assert-True ($knowledge -match 'no campaign ever edits this file') "Concealed-canon ledger does not hold itself immutable against play."
 
 # Adoption attached no pointer: live quest state is still empty.
-Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 1\s+analyst_bonus: 0\s+capacity_total: 2\s+active: \[\]\s+pending_offers: \[\]') "Profile 1.27 adoption seeded a non-daily quest; it must attach no pointer retroactively."
+Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 2\s+capacity_total: 3\s+active: \[\]\s+pending_offers: \[\]') "Profile 1.33 migration seeded a non-daily quest; it must change capacity only."
 
 # --- Profile 1.28: the tracked Gate board (Section 9.10) ---
 

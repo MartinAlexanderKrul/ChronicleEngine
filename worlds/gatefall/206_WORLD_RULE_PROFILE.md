@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.32
+# Gatefall — World Rule Profile 1.33
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.32
+**Profile Version:** 1.33
 **Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.32 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-29. Version 1.32 is a **migrating subsystem advance** over frozen 1.31, giving every fixed-Rank entity a Mana pool it can spend and run dry on. Until now only the Bearer carried Mana: Section 5 stated it outright, Section 13.1 denied NPC hunters a "Mana curve", and GTF-OVR-002 scoped growing pools to the Bearer alone — so a monster's supernatural capacity was a fact about its Rank with no number behind it, nothing to exhaust, and nothing any capability could ever report. Every NPC hunter and monster now carries **Rank Mana** read from the Section 6.1 table (**20 / 50 / 125 / 300 / 750 / 2,000**, half Rank Health at every Rank — the same ratio the Bearer's own `2 × Intelligence` against `4 × Vitality` produces). It is spent as a fraction of that entity's own maximum by the action's role — **minor 10%, signature 25%, boss-tier 50%**, ambiguity resolving to the lower tier — and Sections 5.2 and 5.3 then apply unchanged, so a drained entity takes **−1 modifier step until above 25%** and attrition becomes a real tactic. New Section 6.1.2 adds **individual variance** of up to ±10% on both pools: authored for recurring named NPCs, rolled once on a banded d100 for elites and bosses, absent for commons — so Rank names a bracket rather than one body. **Section 6.2's damage baseline always reads the flat table value**, so pools vary while the arithmetic stays reproducible from the tables. **No creature is authored**: every pool and every cost derives from Rank, so the fixed-Rank model is extended one axis rather than abandoned, and **no engine decision changes** — Decision 020 governs abstraction level and says nothing about Mana. **No Bearer field, Stat, pool, counter, item, transaction, or resolved outcome changes.** Data Model 0.1.5 remains unchanged.
+**Compatibility Status:** frozen at version 1.33 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-29. Version 1.33 is a **migrating capability advance** over frozen 1.32. Section 4.4 replaces the two-threshold stat-milestone model with five **Stat Passives** whose Rank is derived from the governing base Stat at **30 / 36 / 44 / 54 / 66 / 80 → E / D / C / B / A / S**, clamped by the ordinary System-Rank-plus-one ceiling. They have no mastery track, stars, qualifying scenes, mastery progress, Rank ascension, or `scope_floor`; their Rank is their only growth axis. **Rank-Sight is renamed Flux Sight**, both Rank-Sight and Deep Sight are retired names for that one skill, and Flux Sight carries the complete Gate/monster/hunter/item/ability/complete-read ladder through S. The other four passives absorb their former Stat-50 partner as the D rung and carry authored E–D–C ladders. **Live derived consequences:** base Perception 38 makes Flux Sight D-Rank, reading perceived monsters' Rank and current/maximum Health and Mana; base Intelligence 36 makes Multitask D-Rank, raising concurrent non-daily quest capacity to 3. Overpower, Pre-empt, and Shrug Off remain E-Rank. No Stat, pool, ordinary skill Rank or mastery value, item, currency balance, roll, or resolved outcome changes. Data Model 0.1.5 remains unchanged.
+
+**Required 1.32 → 1.33 migration.** Preserve every resolved roll, damage result, Mana spend, ordinary skill value, item, pool, reward, currency balance, and fictional outcome. Rename the live Rank-Sight entry and counter path to **Flux Sight** while preserving its identity, acquisition Event, and zero successful uses; rename the other four stat-passive counters from `successful_material_applications` to `successful_uses` with values unchanged. Render each Stat Passive's derived Rank, class label, use count, governing base Stat, and next threshold; add no stored Rank or mastery counter. Apply Flux Sight D and Multitask D immediately from the Bearer's already-canonical base Stats, raising non-daily capacity 2 → 3 as a capability grant rather than a Stat change. Record adoption as `EVT-000188`; consume no fictional time and reopen nothing. Immutable Profile 1.32-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.33 at readiness.
+
+Version 1.32 remains the **migrating subsystem advance** over frozen 1.31, giving every fixed-Rank entity a Mana pool it can spend and run dry on. Until then only the Bearer carried Mana: Section 5 stated it outright, Section 13.1 denied NPC hunters a "Mana curve", and GTF-OVR-002 scoped growing pools to the Bearer alone — so a monster's supernatural capacity was a fact about its Rank with no number behind it, nothing to exhaust, and nothing any capability could ever report. Every NPC hunter and monster now carries **Rank Mana** read from the Section 6.1 table (**20 / 50 / 125 / 300 / 750 / 2,000**, half Rank Health at every Rank — the same ratio the Bearer's own `2 × Intelligence` against `4 × Vitality` produces). It is spent as a fraction of that entity's own maximum by the action's role — **minor 10%, signature 25%, boss-tier 50%**, ambiguity resolving to the lower tier — and Sections 5.2 and 5.3 then apply unchanged, so a drained entity takes **−1 modifier step until above 25%** and attrition becomes a real tactic. New Section 6.1.2 adds **individual variance** of up to ±10% on both pools: authored for recurring named NPCs, rolled once on a banded d100 for elites and bosses, absent for commons — so Rank names a bracket rather than one body. **Section 6.2's damage baseline always reads the flat table value**, so pools vary while the arithmetic stays reproducible from the tables. **No creature is authored**: every pool and every cost derives from Rank, so the fixed-Rank model is extended one axis rather than abandoned, and **no engine decision changes** — Decision 020 governs abstraction level and says nothing about Mana. **No Bearer field, Stat, pool, counter, item, transaction, or resolved outcome changes.** Data Model 0.1.5 remains unchanged.
 
 **Required 1.31 → 1.32 migration.** Preserve every resolved roll, damage result, Mana spend, skill value, item, pool, reward, currency balance, and fictional outcome. **This migration is prospective in full and reopens nothing**: no past exchange is recomputed, no completed fight re-resolved, and no monster retroactively runs dry. Fixed-Rank entities begin carrying and spending Rank Mana from the adoption Event forward; an entity already on screen at adoption enters at **full** Rank Mana for its Rank, since nothing it has already done was ever charged. Variance is assigned on **first contact after adoption** — a creature already engaged takes the flat table value for that encounter, because rolling a factor mid-fight would change a body already established in the fiction. **The Bearer is untouched**: not one Stat, pool, counter, skill, item, or counter baseline changes, and no `tracked_counters` entry is added or removed. Record the adoption acknowledgement in mutable live state; immutable Profile 1.31-and-earlier checkpoints remain byte-unchanged and run the applicable compatibility chain through 1.32 at readiness.
 
@@ -440,19 +444,41 @@ A high Stat therefore changes what the Bearer can do and how much a landed effec
 6. Apply resource cost and magnitude from Sections 5–7 and 11.5; round only at the final rule-defined step.
 7. Narrate the embodied result without mechanical vocabulary. Render figures only through the Bearer's System or OOC `/debug` under Section 20.5.
 
-## 4.4 Stat-Milestone Skills
+## 4.4 Stat Passives
 
-At **30** and **50** in a **base** Stat, the System awards a named permanent **milestone skill**. These are Gatefall-specific System rewards, not the Stat's intrinsic effect: the Stat already changes the Bearer's body point by point. Equipment bonuses do not satisfy the thresholds. Each award is recorded in the skill ledger, fires once, and remains after later equipment changes:
+The five **Stat Passives** are a distinct skill class whose Rank is derived from one governing **base Stat**. They are not ordinary passives with a bookkeeping exception: they have **no mastery track at all** — no stars, Novice-through-Master level, qualifying scenes, `mastery_progress`, breakthrough, rune ascension, `rank_ascensions`, or `scope_floor`. Their only growth axis is Rank:
 
-| Stat | At 30 | At 50 |
-|---|---|---|
-| **Perception** | **Rank-Sight** — read the true Rank of any Gate at or below the Bearer's System Rank, converting an unconfirmed reading to confirmed by capability. | **Deep Sight** — read the true Rank of a Gate up to one full Rank above the Bearer's System Rank. |
-| **Agility** | **Pre-empt** — act on an ambush warning before the ambush lands, taking a normal action in the surprise exchange rather than being caught flat. | **Slipstream** — disengage or reposition once per exchange without granting an opponent a reactive strike. |
-| **Strength** | **Overpower** — grapple, pin, or bull-rush a foe up to one Rank above the Bearer's own. | **Titan's Grip** — overpower or restrain a foe up to two Ranks above, and wield oversized or two-handed arms one-handed. |
-| **Vitality** | **Shrug Off** — ignore the effect of minor wounds, continuing to act without their modifier-step penalty. | **Iron Constitution** — suppress the penalty of one serious wound until the scene ends, and halve the onset rate of Rank-appropriate environmental hazards. |
-| **Intelligence** | **Multitask** — raise concurrent non-daily System-quest capacity from the default **1** to **2** (Section 8.4). | **Analyst** — raise that capacity from **2** to **3**, and appraise the full effect of an unidentified rune, skill book, or core before use. |
+| Base Stat | 30 | 36 | 44 | 54 | 66 | 80 |
+|---|---|---|---|---|---|---|
+| **Stat Passive Rank** | **E** | **D** | **C** | **B** | **A** | **S** |
 
-Perception's two milestone skills (Rank-Sight, Deep Sight) turn the Gate-assessment problem into a System technique the Bearer can earn; the world otherwise re-measures a Gate's Rank only by instrument survey (Section 9). Their “own tier” reads against the System Rank of Section 6.6 — Rank-Sight covers Gates at or below it, Deep Sight one Rank above it.
+Equipment never satisfies a threshold. Read the highest threshold met by the governing base Stat, then clamp the result to **System Rank + 1** under Section 7.5's ceiling. Stat value beyond the ceiling is held intact and applies the instant System Rank rises. Rank is canonical **derived state**, never a separately stored value.
+
+Each Stat Passive retains `successful_uses`, a lifetime count incremented when its effect materially applies. It carries no other progression counter.
+
+| Stat | Stat Passive | E-Rank | D-Rank | C-Rank |
+|---|---|---|---|---|
+| **Strength** | **Overpower** | Grapple, pin, or bull-rush a foe up to one Rank above System Rank | Overpower or restrain up to **two** Ranks above; wield oversized or two-handed arms one-handed | **Sustained restraint** — hold a foe through its own escape attempts across exchanges; break ranked inanimate structures up to the skill's Rank |
+| **Agility** | **Pre-empt** | Act normally in a surprise exchange on an ambush warning | Disengage or reposition once per exchange without granting a reactive strike | **Shared warning** — allies within his call act normally in the surprise exchange alongside him |
+| **Vitality** | **Shrug Off** | Ignore the modifier-step penalty of minor wounds | Suppress one serious wound's penalty until scene end; halve onset of Rank-appropriate environmental hazards | **Threshold absorption** — once per scene, a hit that would cross the Section 6.3 injury threshold inflicts damage only |
+| **Intelligence** | **Multitask** | Non-daily System-quest capacity **2** | Capacity **3** | Capacity **4** |
+
+The former Stat-50 skills **Titan's Grip**, **Slipstream**, **Iron Constitution**, and **Analyst** are retired as separate skills; each effect is now its partner's D-Rank rung. Analyst's appraisal clause moves to Flux Sight B-Rank. B-, A-, and S-Rank rungs for these four passives are unauthored until first reachable under Section 20.3.
+
+### Flux Sight
+
+**Flux Sight** is the Perception Stat Passive, renamed from **Rank-Sight** without changing its identity or acquisition Event. **Rank-Sight** and **Deep Sight** are both retired names for Flux Sight; no separate Perception-50 skill exists.
+
+| Rank | Flux Sight reads |
+|---|---|
+| **E** | **Gates.** True Rank of any Gate at or below System Rank, converting unconfirmed to confirmed by capability and bypassing the Section 9.5 entry roll within that range. |
+| **D** | **Monsters.** Rank, current/maximum Health, and current/maximum Mana of any perceived monster. Additionally, Gates **one Rank above** System Rank. |
+| **C** | **Awakened humans.** The same Rank/Health/Mana read on hunters and other awakened. |
+| **B** | **Items.** Full effect of an unidentified rune, skill book, core, or item of equipment before use. |
+| **A** | **Abilities.** Skills and abilities a perceived subject holds, and which it can currently pay for. |
+| **S** | **Complete read.** Everything the System holds on any perceived mana-bearing subject. |
+
+Flux Sight has no scope count. How many subjects the Bearer can hold in one read is fiction, not tracked state.
 
 ---
 
@@ -801,7 +827,7 @@ System Rank governs only:
 - **Penalty-zone Rank** (Section 8.3) — the sealed instance runs at his System Rank.
 - **Class-trial Rank** (Section 18.2) — the trial's waves and final foe stand at his System Rank.
 - **Instant-dungeon “own-tier” keys** (Section 17, Section 12.5) — a shop key opens at his System Rank.
-- **Rank-Sight / Deep Sight range** (Section 4.4) — read relative to his System Rank.
+- **Flux Sight Gate range and Stat Passive ceiling** (Section 4.4) — read relative to his System Rank.
 - **Underdog XP and Daily Premium Rank floors** (Sections 3.3 and 12.5).
 
 Where those content systems say “the Bearer's own Rank,” they mean this ladder. They never feed Health, Mana, physical damage, or the Section 4.3 stat margin.
@@ -819,7 +845,7 @@ A skill enters the Bearer's ledger by one of four routes, and only these:
 1. **Rune.** A rune dropped as loot (Section 11) teaches one authored skill on use, consumed in the teaching. Runes found at E- and D-Rank Gates teach from the starting skill table below.
 2. **Skill book.** A rarer drop teaching a specific authored skill, likewise consumed; skill books can carry skills above the rune tier (the full skill-book table is authored with loot in Section 11).
 3. **Earned by doing.** A method that passes the Skill-Formation Audit below and contributes qualifying evidence in **three distinct qualifying scenes** becomes ready for System ratification. A qualifying scene may involve danger, consequential work, or structured practice under the closed tests below. Evidence is recorded from the first qualifying scene; recognition never depends on the Runtime remembering prose across sessions. At the third scene the candidate becomes `pending-ratification` and the Runtime surfaces it at the scene boundary. Because an earned technique's name, Rank, Mana cost, and effect are not known merely from practice, final ratification requires an owner ruling unless this profile already authors the complete result.
-4. **Stat milestone.** Crossing base Stat 30 or 50 awards the exact milestone skill listed in Section 4.4. The trigger, name, and effect are already authored; equipment cannot trigger it.
+4. **Stat Passive.** Crossing base Stat 30 grants the governing Stat Passive in Section 4.4; later thresholds raise its derived Rank. Equipment cannot trigger or advance it, and the Section 7.5 ceiling clamps the result.
 
 ### Skill-Formation Audit
 
@@ -891,7 +917,7 @@ Because the ceiling applies to acquisition as well as ascension, holding off on 
 
 ## 7.2 Skill Entries
 
-Every skill entry carries: **name · rank (E-Rank–S-Rank) · Mana cost · effect · successful uses · mastery progress**. Active skills cost Mana and are gated by it (Section 5.3); passive skills cost 0 and are always in effect. Mastery-tracked skills also carry their lifetime `qualifying_scenes_total`; stat-milestone passives explicitly carry `mastery_progress: none`.
+Every ordinary skill entry carries: **name · rank (E-Rank–S-Rank) · Mana cost · effect · successful uses · mastery progress**. Active skills cost Mana and are gated by it (Section 5.3); passive skills cost 0 and are always in effect. Mastery-tracked skills also carry their lifetime `qualifying_scenes_total`. A Section 4.4 **Stat Passive** instead carries its derived Rank, class label, effect, successful uses, governing base Stat, and next threshold — never mastery state.
 
 For a Bearer damage or healing skill, rank supplies its base magnitude:
 
@@ -937,6 +963,8 @@ scope_floor := the skill's scope count immediately before its last ascension
 `scope_floor` is a `tracked_counters` entry under Section 7.4's storage rule, written as a `counter_deltas` change on the ascension Event like every other counter. Worked, on Keen Sense: at E-Rank Master it covers 5; breakthrough to D-Rank Adept computes `1 + 1 + 2 = 4` but the floor of 5 holds, and the D category is gained; climbing back to D-Rank Master computes `1 + 1 + 4 = 6` and the floor no longer binds. Rune ascension to D-Rank Novice computes 2, holds at 5, and reaches 6 at Master by the longer road. Neither road ever loses reach, and both gain the category immediately.
 
 **Inert until scope exists.** A skill whose authored effect carries no scope count at its current Rank has no scope value, and its `scope_floor` is inert. It begins tracking at the first Rank whose category grant is scope-valued, starting from the ladder's Novice value of 1.
+
+**Stat Passive exemption.** The per-Rank subject grant applies to **mastery-tracked** scope skills only. A Stat Passive (Section 4.4) has no mastery track and therefore no count axis: each Rank above native grants its authored category and nothing else, and it carries no `scope_floor`.
 
 Rank gains and mastery gains on the same axis **add**. Two bounds apply:
 
@@ -1031,7 +1059,7 @@ Every skill in this table is at its native E-Rank today, so every entry beyond t
 
 ## 7.4 Skill Mastery
 
-A skill is not fixed the day it is learned — it **grows in the Bearer's hands with use.** Every skill is held at a **mastery level, 1 through 5** — Novice, Practiced, Adept, Expert, Master — starting at **Novice** when acquired. This is the Bearer's **second growth axis beside stats**: a much-used skill becomes formidable even at a low rank, the way a hunter's signature deepens over a career.
+An ordinary skill is not fixed the day it is learned — it **grows in the Bearer's hands with use.** Every mastery-tracked skill is held at a **mastery level, 1 through 5** — Novice, Practiced, Adept, Expert, Master — starting at **Novice** when acquired. This is the Bearer's **second growth axis beside stats**: a much-used skill becomes formidable even at a low rank, the way a hunter's signature deepens over a career. Section 4.4 Stat Passives are the explicit exception: they grow from base-Stat thresholds and have no mastery level.
 
 **Advancing.** A skill rises **one mastery level** after it has materially contributed to **three distinct skill-appropriate qualifying scenes at its current level** under Section 7.1. A combat skill requires genuine dangerous-scene contributions. A non-combat skill may qualify through consequential work or structured practice whose objective, uncertainty or informative resistance, and material result actually exercise that skill. A mixed-use utility qualifies only in a scene where its authored effect materially matters. Trivial repetition does not count, and the three scenes must be materially distinct. Reaching Master therefore takes twelve qualifying scenes across a skill's life. The System advances mastery automatically on the third qualifying scene and fires a Tier-1 notification (`[SYSTEM] SKILL MASTERY — Mana Bolt is now Adept.`).
 
@@ -1039,7 +1067,7 @@ A skill is not fixed the day it is learned — it **grows in the Bearer's hands 
 
 **Promotion reconciliation.** Before a checkpoint or session-close promotion writes, re-count every known combat skill activation and material passive application in the unpromoted span from its resolved action record and resource trace. Reconcile those facts against the skill's in-flight `successful_uses`, `qualifying_scenes_total`, mastery progress, and required Event `counter_deltas`. Repair a missed or duplicate count before validation. This is limited to play since the prior successful promotion barrier; it never scans older chronicles or immutable checkpoints.
 
-Mastery-tracked skills also record `qualifying_scenes_total`, which never resets, and `mastery_progress`, the exact count from 0 to 2 toward the next level. On the third qualifying scene the mastery level advances and current progress resets to 0; at Master it renders complete. Stat-milestone skills from Section 4.4 have no mastery track, but their successful material applications are still counted.
+Mastery-tracked skills also record `qualifying_scenes_total`, which never resets, and `mastery_progress`, the exact count from 0 to 2 toward the next level. On the third qualifying scene the mastery level advances and current progress resets to 0; at Master it renders complete. Stat Passives from Section 4.4 have no mastery track, but their successful material applications still increment `successful_uses`.
 
 Under Data Model 0.1.5, the Bearer's structured `tracked_counters` entries are the authoritative numeric storage for these values. The prose skill lines and `/system skills` panel are renderings of `current_value`, not independent counters. Every post-baseline change is written both as the causing Event's `counter_deltas` and the matching `current_value` update; repository validation rejects arithmetic drift.
 
@@ -1052,7 +1080,7 @@ Under Data Model 0.1.5, the Bearer's structured `tracked_counters` entries are t
   - a **modifier-step or utility** skill — already capped at +1 step (Section 4.3) — instead **lengthens**, its effect covering one further exchange per level and reaching the **whole scene at Master**, or widening to one stated additional target. A skill whose authored effect **already covers the whole scene at Novice** has no duration left to gain; its mastery track instead widens **scope**, adding one further affected subject or ally per level — **1 / 2 / 3 / 4 / 5** beneficiaries from Novice through Master, on the pattern already used by Exploit Pattern, Field Command, and Resonance Extraction. This ladder is **mastery's** contribution to the count. Rank adds its own further subject and its category grant per Rank under Section 7.2, and the two contributions **add** rather than substitute; the Section 7.2 ratchet keeps the total from falling on ascension. **Mastery never shortens an authored effect.** Where this ladder and a skill's authored Section 7.3 entry disagree, the authored entry governs.
 - **Mana cost**, **−10% per level** (rounded, minimum 1): a 5-cost skill runs 5 → **3 at Master**; passive skills stay 0.
 
-**Rendering.** The focused `/system skills` view carries mastery and counters: `Mana Bolt [E-Rank] ★★★★☆ · MANA 4 · Uses 17 · Progress 2/3 · ×1.45` (Expert, two qualifying scenes toward Master). The full window may wrap the counters onto an indented continuation row to preserve its fixed width. A stat-milestone passive renders `Uses <n> · Progress —`. Every value is read from the skill's ledger entry (Section 15) and is never estimated.
+**Rendering.** The focused `/system skills` view carries mastery and counters: `Mana Bolt [E-Rank] ★★★★☆ · MANA 4 · Uses 17 · Progress 2/3 · ×1.45` (Expert, two qualifying scenes toward Master). The full window may wrap the counters onto an indented continuation row to preserve its fixed width. A Stat Passive renders `Flux Sight [D-Rank] · Stat Passive · Reads monsters — Rank, Health, Mana` followed by `Uses 0 · Perception 38 · C-Rank at 44`. It has no stars or `Progress` field. Every displayed Rank is derived from Section 4.4 and never independently stored.
 
 Mastery raises a skill's power directly; it raises the skill's **Rank** only by carrying it to Master and opening the breakthrough route of Section 7.5. A mastered E-Rank Mana Bolt is still an E-Rank skill until it ascends — just a lethal one. Rank reflects the tier the technique is inscribed at; mastery reflects the hands that carry it. The two are separate axes that feed each other.
 
@@ -1061,6 +1089,8 @@ Mastery raises a skill's power directly; it raises the skill's **Rank** only by 
 A skill's Rank is **not fixed at acquisition.** A technique learned at E-Rank is the beginning of that technique's life, not its ceiling.
 
 **The ceiling.** A skill's Rank may never exceed the **Bearer's System Rank + 1** (Section 6.6), capped at S-Rank. At System Rank D the ceiling is C-Rank. The ceiling binds **acquisition and ascension alike**: instruction teaching above it does not consume and waits intact (Section 7.1). Because both routes share one ceiling, delaying acquisition to catch a higher-Rank rune later gains nothing.
+
+**Stat Passives are outside this section.** Their Rank is derived from base Stat under Section 4.4 and merely uses this section's ceiling. They have no breakthrough or rune-ascension route and no `rank_ascensions` counter.
 
 **Two routes, and only these:**
 
@@ -1212,7 +1242,7 @@ Urgent and Hidden quests are real System state, not labels the Runtime may add t
 
 ### 8.4.1 Capacity and Canonical State
 
-The Bearer has **1 concurrent non-daily quest slot by default**. Multitask raises this to **2**; Analyst raises it to **3** (Section 4.4). Only accepted `[URGENT]` quests and attached `[HIDDEN]` quests consume these slots.
+The Bearer has **1 concurrent non-daily quest slot by default**. Multitask raises this to **2 / 3 / 4** at E / D / C-Rank respectively (Section 4.4). Only accepted `[URGENT]` quests and attached `[HIDDEN]` quests consume these slots.
 
 - The `[DAILY]` quest has its own reserved slot and never consumes non-daily capacity.
 - The Class Quest and later class-evolution quest (Section 18) each use their own reserved class slot and never consume non-daily capacity.
@@ -1430,7 +1460,7 @@ A **confirmed** Gate is entered at its stated Rank. An **unconfirmed** Gate reso
 | 71–92 | One Rank **higher** than assessed |
 | 93–00 | **Anomaly** — roll on the anomaly table (Section 9.6) |
 
-The Bearer's Perception unlocks (Section 4.4: **Rank-Sight** at 30, **Deep Sight** at 50) convert an unconfirmed reading to confirmed by capability, within their band range, and so bypass this roll.
+**Flux Sight** converts an unconfirmed reading to confirmed by capability and bypasses this roll within its authored Gate band: at E-Rank it covers Gates at or below System Rank; at D-Rank it also covers Gates one Rank above (Section 4.4).
 
 **The ladder clamps at both ends.** The true-Rank roll can point past the ends of the E-Rank–S-Rank ladder; when it does, it resolves to the nearest real Rank rather than an impossible one:
 
@@ -2215,7 +2245,7 @@ The System never decides what is true. It may decide **when to say it**.
   - a title is earned → the `TITLE EARNED` block (Section 15.7);
   - a pool crosses a declared danger threshold (e.g., 0 Mana, Section 5.3) → a warning;
   - a creature of resolved Rank (Section 14.4) enters the Bearer's perception → its **designation color** renders inline, red and pulsing for a creature two or more Ranks above him — the System's only unprompted tactical warning (Section 14.6).
-- **Tier 2 — Permitted (bounded discretion; a declared precondition must hold, the Runtime picks the beat).** Appraisal when an unidentified item or foe enters perception and Intelligence permits it (Section 4.4, Analyst); a Hidden pointer when every Section 8.4.3 precondition is recorded; an Urgent offer when every Section 8.4.2 precondition holds; a danger warning while the condition holds. The Runtime picks the moment inside the valid opportunity window; it never picks whether the precondition is met.
+- **Tier 2 — Permitted (bounded discretion; a declared precondition must hold, the Runtime picks the beat).** Appraisal when an unidentified item enters perception and Flux Sight is B-Rank or higher (Section 4.4); a Hidden pointer when every Section 8.4.3 precondition is recorded; an Urgent offer when every Section 8.4.2 precondition holds; a danger warning while the condition holds. The Runtime picks the moment inside the valid opportunity window; it never picks whether the precondition is met.
 - **Tier 3 — Prohibited.** The System may never fire to supply an uncertain outcome, to describe a world-fact (Section 14.2), to author the Bearer's decision, or **with no declared precondition at all**.
 
 **On request** is separate: the `/system` panels (Section 15) render on the Bearer's command at any time. They are read-only views, not announcements, and they never resolve an action.
@@ -2428,7 +2458,7 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 - **Frame width is fixed:** every rendered row is exactly **76 monospace cells** wide, including its two edge characters; the interior is 74 cells. The Runtime pads short rows, never allows content past the right edge, and uses indented continuation rows rather than truncation. If a name or value still exceeds one row, it wraps beneath its own label at the same indentation.
 - **Labels use title case and fixed abbreviations:** `Unspent Points`, `Pending Rewards`, `Physical Reduction`, `Acc.1`, `Acc.2`, and `Passive`. The same label is never shortened differently elsewhere in the window.
 - **Skills render in two stable groups.** `SKILLS · ACTIVE` contains every skill whose ledger entry carries a Mana cost; `SKILLS · PASSIVE` contains every skill whose cost is `passive`. Preserve character-ledger order inside each group. Never duplicate a skill, infer a third category, or classify from its name or prose effect. Each group renders even when empty, with `none` on the following row.
-- **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full active row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` and a passive row is `<name> [Rank] ★☆☆☆☆ · Passive · <effect>` when mastery is tracked. The next indented row renders `Uses <n> · Progress <n>/3`; no-mastery milestone passives omit the star string and render `Progress —`.
+- **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless ordinary skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full active row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` and an ordinary passive row is `<name> [Rank] ★☆☆☆☆ · Passive · <effect>`. The next indented row renders `Uses <n> · Progress <n>/3`. A Stat Passive omits stars and `Progress`, rendering `<name> [Rank] · Stat Passive · <effect>` then `Uses <n> · <Base Stat> <n> · <Next Rank> at <threshold>`.
 - **Quest capacity and objectives are explicit.** `Non-Daily Slots <used>/<capacity>` is the first quest row. The quest name and status occupy the next row; objectives, progress, reward, and the local or causal deadline render beneath it with four-space indentation. Unrevealed Hidden quests are the sole exception: they render only `[HIDDEN] ???` until Section 8.4.3 reveals them.
 - **Equipment and long inventory entries separate identity from mechanics.** The slot, item name, and `[Rank]` occupy the first row. Bonuses, power/protection, effects, and condition occupy one or more continuation rows aligned beneath the item name. This rule leaves room for prefixes, suffixes, and durability without widening the frame.
 - **Instructional items render their eligibility from canonical binding.** `/system inventory` and `/system shop` show `UNBOUND · NPC-ELIGIBLE` for `unbound-awakened` instruction and `BEARER-BOUND` for `bearer-only` instruction; a class-bound item shows `CLASS-BOUND · <class>`. The complete item line retains `teaches`, `teaching_rank`, binding, provenance source kind/event, and unused status. When transferred to an NPC, move that complete line to the NPC's holdings without altering binding. On consumption, remove the item from live holdings and record the recipient's learned or upgraded technique plus the settlement event.

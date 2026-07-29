@@ -12,6 +12,15 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-29 — Gatefall Profile 1.33: Stat Passives and Flux Sight
+
+**World authoring:** Gatefall World Rule Profile 1.32 → 1.33 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
+**Profile:** Section 4.4 declares five Stat Passives with Rank derived from base-Stat thresholds 30/36/44/54/66/80 and clamped by System Rank + 1. They retain successful uses and have no mastery, Rank-ascension, or scope-floor state. Rank-Sight is renamed Flux Sight; Rank-Sight and Deep Sight are retired names for one E–S read ladder. The four former Stat-50 partner skills become D-rank rungs. Section 7.2 exempts the class from per-Rank subject grants, Section 7.4 authors its rendering, Section 9.5 points Gate confirmation at Flux Sight, and Analyst appraisal moves to Flux Sight B.
+**Live migration:** Perception 38 derives Flux Sight D-Rank (monster Rank/Health/Mana reads); Intelligence 36 derives Multitask D-Rank (non-daily capacity 3); the other three passives remain E. Five use-counter paths are renamed with values intact. No Stat, pool, ordinary skill value, item, roll, or resolved outcome changes.
+**Tools:** `validate_repository.ps1` derives Stat Passive Rank from live base Stats and System Rank and rejects mismatched rendering or forbidden mastery state; progression and quest contracts prove the derivation, class rendering, capacity, and retired-name migration
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `worlds/gatefall/README.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/validate_repository.ps1`, `tools/test_progression_audit_contract.ps1`, `tools/test_gatefall_*_contract.ps1`
+**Spec:** `docs/superpowers/specs/2026-07-29-flux-sight-and-passive-unification-design.md` (Phase 3 of 3, complete)
+
 ## 2026-07-29 — Gatefall Profile 1.32: NPC and Monster Mana
 
 **World authoring:** Gatefall World Rule Profile 1.31 → 1.32 (Decisions 062, 069 — world-scoped, consumes no engine decision number)

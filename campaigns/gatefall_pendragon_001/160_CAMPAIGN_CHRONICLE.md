@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000186
+  source: EVT-000188
   game_date: "2026-08-06 ~15:10 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
@@ -150,6 +150,7 @@ subjects:
   - EVT-000185
   - EVT-000186
   - EVT-000187
+  - EVT-000188
 ```
 
 ---
@@ -4248,4 +4249,35 @@ description: "Adoption of Gatefall World Rule Profile 1.32, a migrating subsyste
 **The Bearer is untouched.** Not one Stat, pool, counter, skill, item, or counter baseline changes; `counter_deltas` is empty because this adoption moves no tracked value of his at all. His own Mana rules are entirely unchanged.
 
 **Not addressed here.** Stat Passives and the Flux Sight refactor are Phase 3 and land at Profile 1.33; Flux Sight's D rung will read the Mana this adoption creates. The unsettled 2026-08-06 Daily Premium rotation carried forward at `EVT-000185` remains unsettled and is untouched."
+```
+
+## EVT-000188 - Profile Adoption: Gatefall World Rule Profile 1.33
+
+```yaml
+id: EVT-000188
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-06 ~15:10 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-06 ~15:10 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.33, the third and final phase of the Flux Sight design. **No fictional time is consumed and no resolved roll is reopened.** Alexander remains in Owen Callahan's kitchen at ~15:10 on 2026-08-06.
+
+**Stat Passives.** Rank-Sight, Overpower, Pre-empt, Multitask, and Shrug Off become a declared class whose Rank is derived from the governing base Stat at **30 / 36 / 44 / 54 / 66 / 80 → E / D / C / B / A / S**, clamped at System Rank + 1. They have no mastery track, stars, qualifying scenes, mastery progress, Rank ascension, or scope floor. Existing successful-application counts carry forward unchanged as `successful_uses`.
+
+**Flux Sight.** Rank-Sight is renamed **Flux Sight** without changing its identity or acquisition Event. Rank-Sight and Deep Sight are both retired names for this one skill. Its ladder reads Gates at E; monsters' Rank and current/maximum Health and Mana plus Gates one Rank above System Rank at D; awakened humans at C; items at B; abilities at A; and the System's complete read at S.
+
+**Live derived grants.** Base Perception **38** makes Flux Sight **D-Rank**, so Alexander can now read perceived monsters' Rank and pools. Base Intelligence **36** makes Multitask **D-Rank**, raising concurrent non-daily System-quest capacity **2 → 3**. Strength 33, Agility 32, and Vitality 32 leave Overpower, Pre-empt, and Shrug Off at E-Rank. These are consequences of already-canonical Stats, not Stat changes.
+
+**Nothing else moves.** No pool, ordinary skill Rank or mastery value, use count, item, reward, currency balance, roll, or fictional outcome changes. The five counter paths are renamed without numeric deltas, so `counter_deltas` is empty. Immutable checkpoints are untouched and apply the compatibility chain through 1.33 at readiness.
+
+**Design complete.** Profile 1.31 repaired the scope axis, Profile 1.32 created NPC and monster Mana, and Profile 1.33 makes that Mana readable at Flux Sight's live D rung."
 ```

@@ -497,6 +497,74 @@ foreach ($file in $canonicalFiles) {
                 }
             }
 
+            # Gatefall Profile 1.33 Section 4.4: Stat Passive Rank is derived
+            # from the governing base Stat and clamped to System Rank + 1.
+            # The rendered skill row must agree with that derivation, and the
+            # class may carry successful_uses but no mastery/ascension state.
+            if ($id -eq "ENT-000125" -and $block -match 'profile_version:[ \t]*"1\.33"') {
+                $statSection = Get-IndentedSection $block "stats"
+                $skillsSection = Get-IndentedSection $block "skills_known"
+                $systemRankMatch = [regex]::Match($block, '(?m)^[ \t]+system_rank:[ \t]*([EDCBAS])(?:-Rank)?[ \t]*$')
+                if ([string]::IsNullOrWhiteSpace($statSection) -or
+                    [string]::IsNullOrWhiteSpace($skillsSection) -or
+                    -not $systemRankMatch.Success) {
+                    Add-Failure "$relativePath`:$line Gatefall Profile 1.33 Bearer is missing base Stats, skills_known, or System Rank needed to derive Stat Passives."
+                } else {
+                    $rankLadder = @("E", "D", "C", "B", "A", "S")
+                    $thresholds = @(30, 36, 44, 54, 66, 80)
+                    $systemRankIndex = [array]::IndexOf($rankLadder, $systemRankMatch.Groups[1].Value)
+                    $ceilingIndex = [math]::Min($rankLadder.Count - 1, $systemRankIndex + 1)
+                    $statPassives = @(
+                        @{ Name = "Flux Sight"; Key = "flux_sight"; Stat = "perception" },
+                        @{ Name = "Overpower"; Key = "overpower"; Stat = "strength" },
+                        @{ Name = "Pre-empt"; Key = "pre_empt"; Stat = "agility" },
+                        @{ Name = "Multitask"; Key = "multitask"; Stat = "intelligence" },
+                        @{ Name = "Shrug Off"; Key = "shrug_off"; Stat = "vitality" }
+                    )
+
+                    foreach ($passive in $statPassives) {
+                        $statMatch = [regex]::Match($statSection, "(?m)^[ \t]+$($passive.Stat):[ \t]*(\d+)[ \t]*$")
+                        if (-not $statMatch.Success) {
+                            Add-Failure "$relativePath`:$line Stat Passive '$($passive.Name)' has no numeric base $($passive.Stat) value."
+                            continue
+                        }
+
+                        $statValue = [int]$statMatch.Groups[1].Value
+                        $derivedIndex = -1
+                        for ($thresholdIndex = 0; $thresholdIndex -lt $thresholds.Count; $thresholdIndex++) {
+                            if ($statValue -ge $thresholds[$thresholdIndex]) {
+                                $derivedIndex = $thresholdIndex
+                            }
+                        }
+                        if ($derivedIndex -lt 0) {
+                            Add-Failure "$relativePath`:$line Stat Passive '$($passive.Name)' is present below its E-Rank threshold."
+                            continue
+                        }
+
+                        $expectedIndex = [math]::Min($derivedIndex, $ceilingIndex)
+                        $expectedRank = $rankLadder[$expectedIndex]
+                        $renderPattern = [regex]::Escape($passive.Name) + " \[$expectedRank-Rank\][^\r\n]+Stat Passive"
+                        if ($skillsSection -notmatch $renderPattern) {
+                            Add-Failure "$relativePath`:$line Stat Passive '$($passive.Name)' does not render derived Rank $expectedRank with the Stat Passive class label."
+                        }
+
+                        $usePath = "skills.$($passive.Key).successful_uses"
+                        if ($counterPaths -notcontains $usePath) {
+                            Add-Failure "$relativePath`:$line Stat Passive '$($passive.Name)' is missing its successful_uses counter."
+                        }
+                        foreach ($forbiddenSuffix in @("rank", "mastery_level", "mastery_progress", "qualifying_scenes_total", "rank_ascensions", "scope_floor")) {
+                            if ($counterPaths -contains "skills.$($passive.Key).$forbiddenSuffix") {
+                                Add-Failure "$relativePath`:$line Stat Passive '$($passive.Name)' carries forbidden stored $forbiddenSuffix state."
+                            }
+                        }
+                    }
+
+                    if (@($counterPaths | Where-Object { $_ -like "skills.rank_sight.*" }).Count -gt 0) {
+                        Add-Failure "$relativePath`:$line retired Rank-Sight counter path survives Profile 1.33 migration."
+                    }
+                }
+            }
+
             foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "progression_audit_baselines"))) {
                 $domain = Get-EntryValue $entry "domain"
                 $baselineAsOf = Get-EntryValue $entry "baseline_as_of"
@@ -560,6 +628,22 @@ foreach ($file in $canonicalFiles) {
                     $delta -notmatch '^-?\d+$' -or [int]$delta -eq 0) {
                     Add-Failure "$relativePath`:$line Event $id has a malformed counter_deltas entry."
                     continue
+                }
+                # Gatefall Profile 1.33 renamed the five Stat Passive use
+                # paths without changing identity or values. Historical
+                # Events retain the path current when they occurred; map
+                # those legacy names onto the live counter for arithmetic.
+                if ($subject -eq "ENT-000125") {
+                    $statPassiveCounterAliases = @{
+                        "skills.rank_sight.successful_material_applications" = "skills.flux_sight.successful_uses"
+                        "skills.overpower.successful_material_applications" = "skills.overpower.successful_uses"
+                        "skills.pre_empt.successful_material_applications" = "skills.pre_empt.successful_uses"
+                        "skills.multitask.successful_material_applications" = "skills.multitask.successful_uses"
+                        "skills.shrug_off.successful_material_applications" = "skills.shrug_off.successful_uses"
+                    }
+                    if ($statPassiveCounterAliases.ContainsKey($counter)) {
+                        $counter = $statPassiveCounterAliases[$counter]
+                    }
                 }
                 $counterDeltas.Add([pscustomobject]@{
                     Event = $id

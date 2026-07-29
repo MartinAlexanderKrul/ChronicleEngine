@@ -335,6 +335,30 @@ game_date: "2026-08-04 06:01 -05:00"'
     $restoredFloor = Invoke-Validation $tempRoot
     Assert-True ($restoredFloor.ExitCode -eq 0) "A restored scope_floor counter did not validate:`n$($restoredFloor.Output)"
 
+    # --- Profile 1.33 Stat Passive Rank is derived, never stored -----------
+    #
+    # Perception 38 derives Flux Sight D-Rank under Section 4.4. A rendered
+    # E-Rank is drift even if every other field remains valid.
+    Replace-Once $character 'Flux Sight [D-Rank]' 'Flux Sight [E-Rank]'
+    $wrongPassiveRank = Invoke-Validation $tempRoot
+    Assert-True ($wrongPassiveRank.ExitCode -ne 0 -and $wrongPassiveRank.Output -like "*does not render derived Rank D*") `
+        "A Stat Passive with a rendered Rank contradicting its base Stat was accepted:`n$($wrongPassiveRank.Output)"
+    Replace-Once $character 'Flux Sight [E-Rank]' 'Flux Sight [D-Rank]'
+
+    # Stat Passives have successful_uses only. A mastery counter would create
+    # a second growth axis explicitly forbidden by Section 4.4.
+    $fluxUses = Get-CounterLine $character 'skills.flux_sight.successful_uses'
+    Assert-True ($null -ne $fluxUses) "Flux Sight has no successful_uses counter; fixture precondition drifted."
+    $forbiddenMasteryLine = '      - { path: skills.flux_sight.mastery_progress, baseline_value: 0, baseline_as_of: EVT-000188, current_value: 0 }'
+    Set-Text $character ((Get-Text $character) -replace [regex]::Escape($fluxUses.Line), ($fluxUses.Line + "`n" + $forbiddenMasteryLine))
+    $forbiddenPassiveMastery = Invoke-Validation $tempRoot
+    Assert-True ($forbiddenPassiveMastery.ExitCode -ne 0 -and $forbiddenPassiveMastery.Output -like "*carries forbidden stored mastery_progress state*") `
+        "A Stat Passive with forbidden mastery state was accepted:`n$($forbiddenPassiveMastery.Output)"
+    Replace-Once $character ($forbiddenMasteryLine + "`n") ""
+
+    $restoredPassive = Invoke-Validation $tempRoot
+    Assert-True ($restoredPassive.ExitCode -eq 0) "Restored Stat Passive state did not validate:`n$($restoredPassive.Output)"
+
     Write-Host "Progression audit contract tests PASSED" -ForegroundColor Green
 } finally {
     $resolvedTmp = [System.IO.Path]::GetFullPath($tempRoot)

@@ -3,7 +3,7 @@
 **Date:** 2026-07-29
 **World:** Gatefall
 **Target profile versions:** 1.31, 1.32 and 1.33 (from 1.30) — see §9
-**Status:** approved design, pending implementation plan
+**Status:** implemented in Gatefall Profiles 1.31, 1.32, and 1.33
 
 ---
 

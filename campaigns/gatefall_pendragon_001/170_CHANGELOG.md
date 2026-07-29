@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000186
+  source: EVT-000188
   game_date: "2026-08-06 ~15:10 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
@@ -1140,3 +1140,11 @@ Claim separately at any time.
 - **What changed in live state.** `profile_version` advanced **1.31 → 1.32 and nothing else**. No Bearer Stat, pool, counter, skill, item, transaction, roll, or resolved outcome moved. The subsystem applies prospectively from this Event; an entity already on screen enters at full flat Rank Mana and receives no mid-fight variance roll.
 - **Repository allocation (2026-07-29).** Allocated `EVT-000187` in `system/ID_REGISTRY.md`; advanced the live campaign binding and readiness chain to Profile 1.32.
 - **Validators.** All six repository validators run clean. `tools/test_gatefall_recovery_contract.ps1` now pins the Rank Mana table, boss-tier cost row, flat-damage-baseline clause, and removal of the NPC Mana denial.
+
+**2026-07-29 — Gatefall World Rule Profile 1.33 adopted (`EVT-000188`; no fictional time consumed).**
+
+- **Stat Passives.** The five former stat-milestone skills become a Rank-derived class using base-Stat thresholds 30/36/44/54/66/80 for E/D/C/B/A/S, clamped by System Rank + 1. They retain successful uses and carry no mastery, Rank-ascension, or scope-floor state.
+- **Flux Sight.** Rank-Sight is renamed Flux Sight with identity and acquisition provenance intact; Rank-Sight and Deep Sight are retired names. Flux Sight now carries the complete Gate/monster/hunter/item/ability/complete-read ladder.
+- **Live derived grants.** Perception 38 makes Flux Sight D-Rank, adding monster Rank/Health/Mana reads. Intelligence 36 makes Multitask D-Rank, raising non-daily capacity 2→3. Overpower, Pre-empt, and Shrug Off remain E-Rank.
+- **What changed in live state.** `profile_version` 1.32→1.33, five successful-use counter paths renamed without changing values, and non-daily capacity re-derived to 3. **Nothing else.**
+- **Validators.** Repository validation derives every Stat Passive Rank from base Stat and System Rank, requires the class label and use counter, and rejects stored mastery/ascension/scope state. Contract mutations prove wrong Rank and forbidden mastery state fail.

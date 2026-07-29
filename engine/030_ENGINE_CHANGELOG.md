@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-29 — Gatefall Profile 1.36: Stat Passive Authoring Clamp
+
+**World authoring:** Gatefall World Rule Profile 1.35 → 1.36 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
+**Profile:** Section 4.4's Stat Passive derivation clamps by two limits rather than one — the Section 7.5 ceiling of System Rank + 1, and the deepest rung authored for that skill — with Stat value beyond either held intact and applying when the binding limit lifts. Profile 1.35 withheld an *ascension offer* for an unauthored Rank, but a Stat Passive makes no offer and its Rank rises on its own, so a Stat crossing an unauthored threshold would have granted a Rank whose effect does not exist (Section 20.2). A held rung is recorded, never silent: the crossing checkpoint states it and the `/system` row renders `<Next Rank> held: rung unauthored`. Section 15's Stat Passive row format gains that variant.
+**Tools:** `validate_repository.ps1` applies the authoring clamp inside the Stat Passive derivation it already ran against the ceiling, so a Rank exceeding its authored ladder fails validation; the three `test_gatefall_*` contracts rebase their version pins to 1.36
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `worlds/gatefall/README.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/validate_repository.ps1`, `tools/test_gatefall_*_contract.ps1`
+**Audit:** closes the last open finding from the 1.31–1.35 audit — the Stat Passive analogue of the gap Profile 1.35 closed for ascensions
+
 ## 2026-07-29 — Gatefall Profile 1.35: Ascension Eligibility
 
 **World authoring:** Gatefall World Rule Profile 1.34 → 1.35 (Decisions 062, 069 — world-scoped, consumes no engine decision number)

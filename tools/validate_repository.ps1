@@ -545,12 +545,21 @@ foreach ($file in $canonicalFiles) {
                     $thresholds = @(30, 36, 44, 54, 66, 80)
                     $systemRankIndex = [array]::IndexOf($rankLadder, $systemRankMatch.Groups[1].Value)
                     $ceilingIndex = [math]::Min($rankLadder.Count - 1, $systemRankIndex + 1)
+                    # Profile 1.36 Section 4.4 adds a second clamp beside the
+                    # ceiling: a Stat Passive may not stand at a Rank its own
+                    # ladder does not author. Unlike an ascension there is no
+                    # offer to withhold here -- the Rank rises on its own when
+                    # the Stat crosses a threshold -- so without this the skill
+                    # would hold a Rank whose grant does not exist. Flux Sight
+                    # is authored to S; the four that absorbed the old Stat-50
+                    # skills are authored through C until Section 20.3 reaches
+                    # higher, and this clamp moves with them.
                     $statPassives = @(
-                        @{ Name = "Flux Sight"; Key = "flux_sight"; Stat = "perception" },
-                        @{ Name = "Overpower"; Key = "overpower"; Stat = "strength" },
-                        @{ Name = "Pre-empt"; Key = "pre_empt"; Stat = "agility" },
-                        @{ Name = "Multitask"; Key = "multitask"; Stat = "intelligence" },
-                        @{ Name = "Shrug Off"; Key = "shrug_off"; Stat = "vitality" }
+                        @{ Name = "Flux Sight"; Key = "flux_sight"; Stat = "perception"; Authored = "S" },
+                        @{ Name = "Overpower"; Key = "overpower"; Stat = "strength"; Authored = "C" },
+                        @{ Name = "Pre-empt"; Key = "pre_empt"; Stat = "agility"; Authored = "C" },
+                        @{ Name = "Multitask"; Key = "multitask"; Stat = "intelligence"; Authored = "C" },
+                        @{ Name = "Shrug Off"; Key = "shrug_off"; Stat = "vitality"; Authored = "C" }
                     )
 
                     foreach ($passive in $statPassives) {
@@ -572,7 +581,8 @@ foreach ($file in $canonicalFiles) {
                             continue
                         }
 
-                        $expectedIndex = [math]::Min($derivedIndex, $ceilingIndex)
+                        $authoredIndex = [array]::IndexOf($rankLadder, $passive.Authored)
+                        $expectedIndex = [math]::Min([math]::Min($derivedIndex, $ceilingIndex), $authoredIndex)
                         $expectedRank = $rankLadder[$expectedIndex]
                         $renderPattern = [regex]::Escape($passive.Name) + " \[$expectedRank-Rank\][^\r\n]+Stat Passive"
                         if ($skillsSection -notmatch $renderPattern) {

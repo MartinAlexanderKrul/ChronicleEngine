@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000170 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000190 |
+| Event | `EVT-` | Event | EVT-000191 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -329,6 +329,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000188 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.33 - five Rank-derived Stat Passives, Rank-Sight renamed Flux Sight with its complete read ladder, Multitask raised to D-Rank capacity 3, and Stat Passive Rank validation |
 | EVT-000189 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.34 - `/system` derives standard-success pre-reduction damage previews for equipped weapons and offensive active skills, preserving separate hits and both legal Twin Fang weapon orders |
 | EVT-000190 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.35 - a skill is ascension-eligible only where the target Rank's grant is authored and non-empty, Section 7.5 withholds and states the offer where it is not, and Section 7.3 authors Sprint's broken-ground and vertical rungs and Flash Step's through-the-barrier rung |
+| EVT-000191 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.36 - a Stat Passive's derived Rank is clamped by the deepest rung authored for it as well as by the System Rank ceiling, with Stat value beyond either held intact, and a held rung recorded rather than silent |
 
 ---
 

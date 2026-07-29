@@ -25,7 +25,7 @@ subjects: []
 
 ## Bindings and Versions
 
-- World: Gatefall (World Version 0.1, World Rule Profile **1.35**)
+- World: Gatefall (World Version 0.1, World Rule Profile **1.36**)
 - Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.5
 - Start city: Chicago
 - Campaign date: **2026-08-06T15:10:00-05:00, mid-afternoon** — **Owen Callahan's kitchen in Rogers Park**, both men standing on his linoleum in full field kit, ejected there when the Overgrown Temple instance collapsed on the boss kill. This is the exact canonical settlement anchor. Owen is due at Edgewater at **16:00**. The next daily quest issues **06:00 on 2026-08-07**; crew training is fixed for **2026-08-09, 18:00**, with a standing order that no crew Gate precedes it.
@@ -90,7 +90,7 @@ Session 3, mid-afternoon of 2026-08-06 (Thursday), **~15:10, Owen's kitchen in R
 
 ## Promotion Status
 
-Session 3 in progress — **checkpoint `900_CHECKPOINT_0037` written** at the 2026-08-06 15:10 anchor under frozen Profile **1.30** / Data Model **0.1.5**, carrying `EVT-000182`-`EVT-000185`. At readiness it applies the 1.30→1.31 scope repair, 1.31→1.32 Rank-Mana migration, 1.32→1.33 derived Stat-Passive migration, 1.33→1.34 read-only damage-preview migration, and the additive 1.34→1.35 ascension-eligibility correction, with no recomputation; unlike its predecessor it captures a **closed** scene in an ordinary room.
+Session 3 in progress — **checkpoint `900_CHECKPOINT_0037` written** at the 2026-08-06 15:10 anchor under frozen Profile **1.30** / Data Model **0.1.5**, carrying `EVT-000182`-`EVT-000185`. At readiness it applies the 1.30→1.31 scope repair, 1.31→1.32 Rank-Mana migration, 1.32→1.33 derived Stat-Passive migration, 1.33→1.34 read-only damage-preview migration, the additive 1.34→1.35 ascension-eligibility correction, and the additive 1.35→1.36 Stat-Passive authoring clamp, with no recomputation; unlike its predecessor it captures a **closed** scene in an ordinary room.
 
 Registry advanced through **`EVT-000189`**. No new entities or relationships this span; `EVT-000186` through `EVT-000189` are profile-adoption acknowledgements consuming no fictional time.
 

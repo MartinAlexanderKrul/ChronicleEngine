@@ -153,6 +153,7 @@ subjects:
   - EVT-000188
   - EVT-000189
   - EVT-000190
+  - EVT-000191
 ```
 
 ---
@@ -4342,4 +4343,36 @@ description: "Adoption of Gatefall World Rule Profile 1.35, an additive correcti
 **Nothing changed.** Every skill Rank, mastery level, counter, Stat, pool, item, price, and resolved outcome is identical before and after. **Sprint stands at native E-Rank and Flash Step at native D-Rank**, so no capability rung is live and none is retroactive; both ladders are prospective in full. No ascension offer is issued, withdrawn, or re-adjudicated, and none was outstanding at adoption. `counter_deltas` is empty because this adoption changes no tracked value.
 
 **Enforcement.** `tools/validate_repository.ps1` now rejects a skill standing at a Rank its Section 7.3 ladder does not author, with a contract test in `tools/test_progression_audit_contract.ps1` proving the rejection and the restored pass. That ceiling is the half of eligibility a validator can see; the other half -- an offer never surfaced -- is a Runtime obligation under Section 7.5."
+```
+
+
+## EVT-000191 - Profile Adoption: Gatefall World Rule Profile 1.36
+
+```yaml
+id: EVT-000191
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-06 ~15:10 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-06 ~15:10 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.36, an additive correction advance over frozen 1.35. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged at Owen Callahan's kitchen, ~15:10 on 2026-08-06.
+
+**The hole 1.35 could not reach.** Profile 1.35 stopped an *ascension* from spending mastery for a Rank whose grant was never authored, by withholding the offer. A **Stat Passive** makes no offer. Its Rank derives from a base Stat under Section 4.4 and rises on its own the instant a threshold is crossed, so Section 7.2's eligibility rule had nothing to withhold. A governing Stat reaching **54** while that skill's B-Rank rung stood unauthored would have handed it a Rank whose grant does not exist -- a number this profile states and nothing defines, which is the Section 20.2 defect.
+
+**The repair.** Section 4.4's derivation now clamps by **two** limits rather than one: the Section 7.5 ceiling of System Rank + 1, and the **deepest rung authored for that skill**. Stat value beyond either is **held intact** and applies the instant the binding limit lifts -- the ceiling when System Rank rises, the authoring limit when Section 20.3 authors the rung. Flux Sight is authored to S-Rank and is never held; Overpower, Pre-empt, Shrug Off and Multitask are authored through C-Rank. Like the ceiling it sits beside, the clamp is a deferral and never a loss.
+
+**A held rung is recorded, never silent.** The checkpoint that first crosses such a threshold states the skill, the Rank held, and the Stat value that reached it, and the `/system` row renders `<Next Rank> held: rung unauthored` in place of a threshold. A rung already paid for in Stat points and not yet receivable is a gap in this profile, and an unstated gap is what Section 7.2's withholding rule and Section 8.4.6's telemetry both exist to prevent.
+
+**Nothing changes today, and that is why it was adopted today.** System Rank D already caps every Stat Passive at C-Rank under the pre-existing ceiling, and C is authored for all five, so **no skill is held by the new clamp**. Base Stats are Strength 33, Agility 32, Vitality 32, Perception 38, Intelligence 36; Flux Sight and Multitask stand at D-Rank and Overpower, Pre-empt and Shrug Off at E-Rank, identical before and after. No `/system` row changes. The clamp becomes load-bearing only at System Rank C with a Stat at 54 -- the first moment it could have gone wrong -- and reaching it beforehand is deliberate, since a Rank once rendered cannot be withdrawn without contradicting what the Bearer was shown.
+
+**Enforced, not merely stated.** `tools/validate_repository.ps1` already derived each Stat Passive's Rank and checked it against the ceiling; it now applies the authoring clamp in the same derivation, so a Rank exceeding its authored ladder fails validation rather than surviving in prose. This closes the last of the audit findings raised against the 1.31-1.35 run."
 ```

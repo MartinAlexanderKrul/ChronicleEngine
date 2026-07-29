@@ -130,7 +130,7 @@ Assert-Contains $profile '\*\*Keen Sense and Silent Step are scene-long from Nov
 # Asserted positively: the ledger line's own correction note quotes the superseded wording, so
 # proving absence of that substring would fail on the provenance rather than on the effect.
 Assert-Contains $character 'Keen Sense \[E-Rank\][^"]*\*\*for the scene\*\*, as authored in Profile Section 7\.3 at every mastery level' 'The live Keen Sense line does not render its authored scene-long duration.'
-Assert-Contains $character 'Keen Sense \[E-Rank\] ★★★★☆ Expert' 'The live Keen Sense mastery glyph does not match its Expert level.'
+Assert-Contains $character 'Keen Sense \[E-Rank\] ★★★★★ Master' 'The live Keen Sense mastery glyph does not match its Master level.'
 
 # mastery_level must be stored, because ascension breaks its derivation from lifetime scenes.
 Assert-Contains $character 'skills\.rupture\.mastery_level' 'Live character lacks the stored mastery_level counter.'

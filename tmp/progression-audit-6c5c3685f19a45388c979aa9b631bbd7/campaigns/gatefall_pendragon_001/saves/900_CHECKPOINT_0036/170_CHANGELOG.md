@@ -1,0 +1,1076 @@
+# Campaign Changelog - Gatefall: Pendragon
+
+**Campaign:** Gatefall: Pendragon - **World:** Gatefall
+**Ledger:** Canonical Record (`011` Section 8) indexing campaign state changes.
+
+---
+
+## Record
+
+```yaml
+id: REC-000080
+canonical_record: REC-000080
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: EVT-000181
+  game_date: "2026-08-06 ~14:52 -05:00"
+  real_date: "2026-07-28"
+role: canonical ledger
+scope: campaign
+subjects: []
+```
+
+---
+
+## Changes
+
+**2026-07-22 - Campaign initialized.**
+Gatefall: Pendragon campaign created in the Gatefall world (`worlds/gatefall/`), start city Chicago, as the world's first live campaign. Protagonist Alexander Pendragon (`ENT-000125`) established: pre-System licensed E-Rank, creation stat array Strength 11 / Agility 12 / Vitality 8 / Perception 11 / Intelligence 8 (latent, no mechanical effect until System onset), $4,000 starting funds (stable background, Profile Section 12.6), $30,000 tuition debt at $400/month recorded as a standing liability per Section 20.3. Freelancer affiliation with the Windy City Hunters Coalition recorded (`REL-000062`). Campaign-start event `EVT-000056`. No gameplay resolved yet; no checkpoint taken.
+
+**Repository allocation (2026-07-22).**
+Allocated campaign identifiers in `system/ID_REGISTRY.md` in the same initialization change: `ENT-000125`, `REC-000074` through `REC-000081`, `EVT-000056`, and `REL-000062`. Updated `system/WORLDS_AND_CAMPAIGNS.md`: Gatefall world status to Active with 1 live campaign, and added this campaign's row.
+
+**2026-07-23 to 2026-07-24 - Session 1: Crew Assembly (EVT-000058).**
+
+- **2026-07-23, Coalition desk:** Alexander accepted position on Tanya Voss's Red Line Corridor crew (unconfirmed D-Rank Gate, timer 2026-07-24 midnight). Signed crew contract with BGM Region V.
+- **2026-07-23, Ironbound gear shop:** Purchased E-Rank hunter gear for $2,000: reinforced leather jacket ($800), E-Rank dagger ($500), reinforced gauntlets ($600), shin guards ($100). Cash remaining: $2,000.
+- **2026-07-23 evening, Coalition headquarters:** Briefing by Tanya Voss and Marcus (sensor). Strategy confirmed; crew roles assigned.
+- **2026-07-24, 8:00 AM, Red Line Corridor Gate entrance:** Crew assembled and prepared to enter Gate. Participants: Alexander Pendragon (ENT-000125, striker), Tanya Voss (ENT-000126, crew lead/striker), Marcus (ENT-000127, sensor), Elias Voss (ENT-000128, striker), Dr. Sarah Chen (ENT-000129, mender).
+- **Ledger updates:** Inventory updated (E-Rank gear added, cash $2,000). NPCs and Factions updated (crew members promoted to campaign-local figures). Current State updated (location at Gate, situation, date). Chronicle updated (EVT-000057 recorded).
+- **Repository allocation (2026-07-24):** Allocated new campaign-local NPC/location identifiers: `ENT-000126` (Tanya Voss), `ENT-000127` (Marcus), `ENT-000128` (Elias Voss), `ENT-000129` (Dr. Sarah Chen), `ENT-000130` (Kesha Morrison, Coalition coordinator), `ENT-000131` (Diane, Ironbound gear shop owner), `ENT-000132` (Cutting Edge gear shop, warehouse district), `ENT-000133` (Horizon's outfitter on Michigan Avenue). Allocated event identifier `EVT-000058` (Session 1 narrative). Allocated new relationship identifier `REL-000063` (crew membership). Each now carries a full YAML Object Block in its owning ledger (`130`, plus `REL-000063`); `ENT-000132`/`ENT-000133` are authored as minimal Institution (gear-vendor) blocks rather than retired.
+- **Objectives:** OBJ-1 (get onto a crew) marked **met**; OBJ-5 (clear the Red Line Corridor with Voss's crew) opened as the live objective. OBJ-2 cushion corrected to $2,000.
+- **Checkpoint `900_CHECKPOINT_0001` written (2026-07-24T09:00Z)** at the Red Line Corridor Gate entrance: full copies of all eight canonical ledgers plus `900_SAVE_MANIFEST.md` (new form per Decision 072; captured under the workshop-draft Gatefall Profile 1.0, flagged not save-trustworthy). Declared the latest restorable checkpoint in `180_CURRENT_STATE.md` and named it in `system/WORLDS_AND_CAMPAIGNS.md` in the same change. `tools/validate_repository.ps1` and `tools/test_checkpoint_contract.ps1` both run clean against the resulting state.
+
+**2026-07-24 - Session 1 continued: The Red Line Corridor Clear and System Onset (`EVT-000059`).**
+
+- Entered the Gate at 08:00. True Rank resolved E (one below the unconfirmed D assessment); archetype Shattered City. Population rolled: 9 common E-Rank beasts, 1 E-Rank elite, 1 E-Rank boss.
+- Full population cleared with no crew casualties: ambush (3 common beasts), open engagement (6 common beasts + elite), boss kill. Full roll-by-roll detail recorded in `EVT-000059`.
+- **System onset.** The System attached to Alexander (`ENT-000125`) mid-fight, per World Rule Profile Section 14.7 (first genuine, lethal, uncertain fight). Perceptible to him alone. `100_CHARACTER_SHEET.md` gained a `system_state` block; the prior `latent_stat_array` is marked superseded and retained for provenance.
+- Alexander ended the session at **Level 2, XP 40/200, Health 40/40, Mana 20/20, 3 unspent stat points** — via setup-credit kill XP (Section 3.8) for the elite kill, a common-beast kill, and the boss kill, plus the E-Rank Gate clear milestone.
+- Sustained two Severe wounds during the fight (beast/elite exchange, boss's opening leap); both resolved through Sarah Chen's field-touches (2 of her 3 per-clear touches spent) and the Level 2 grant's full restore. No lasting injury tier recorded — Health is whole, though the fight is fresh in memory.
+- **Ledger updates:** `100` (system_state added, condition/situation updated), `110` (Bearer knowledge note added), `130` (Tanya's and Sarah's situations updated; `REL-000063` state/history updated to reflect the clear), `140` (OBJ-3 tested-and-held, OBJ-5 boss killed/Gate cleared but not yet exited), `160` (`EVT-000059` recorded), `180` (protagonist state, current situation, scene anchor, promotion status).
+- **Repository allocation (2026-07-24):** Allocated event identifier `EVT-000059` in `system/ID_REGISTRY.md`. No new entities, records, or relationships were minted this session — the System is not a Persistent Entity (World Rule Profile Section 14.1) and lives entirely in `ENT-000125`'s `canonical_state`; no new NPCs, items, or places were introduced.
+- Loot has not yet been collected and the crew has not yet exited the Gate; both remain open for the next session.
+- **Checkpoint `900_CHECKPOINT_0002` written**, superseding `900_CHECKPOINT_0001` as the latest restorable checkpoint.
+
+**2026-07-24 to 2026-07-25 - Session 1 continued: Gate Exit, Loot Split, and the System's First Day (`EVT-000060`, `EVT-000061`, `EVT-000062`).**
+
+- **Loot and exit (2026-07-24):** Alexander mined five E-Rank crystals himself under Tanya Voss's field instruction (safe target, vein left partly unworked); combined with nine beast-drop E-Rank crystals, two E-Rank cores, and an E-Rank boss-drop armored greave (split undecided), the crew declared the full haul and exited with no incident.
+- **Contract close:** standard split ($10,000 contract + ≈$2,850 crystal/core value = ≈$12,850 pool; Alexander's equal-fifth ≈$2,313) — filed with Kesha Morrison 2026-07-25, payment pending 1–2 business days. Crew dispersed that evening; Tanya invited Alexander back for the next posting in a few days.
+- **The System's first day (2026-07-25):** first daily quest issued at 06:00 (100 push-ups, 100 sit-ups, 10 km run) and completed same morning; grant accepted (+10 XP → 50/200, +3 unspent points → 6, streak → 1/7). A voluntary extra 10 km confirmed the full-restore grant clears ordinary physical fatigue, not only Health/Mana numbers. Alexander explored `/system`'s full window, focused views, and the shop (0 gold) on his own initiative.
+- **Coalition visit (2026-07-25):** Kesha Morrison confirmed the payout timeline and reviewed the live board: two E-Rank–D-Rank waiver-tier crew openings, a harvest-element hiring trend, and a confirmed D-Rank rail-yard harvest slot filed for 2026-07-26 07:00 (`EVT-000061`). He has not yet decided or bought mining gear.
+- **Correction, same session (`EVT-000062`):** Kesha's dialogue initially overstated the E-Rank card cap as barring all C-Rank work. Checked against the repository's commit history (`d53114b`, already live before this session): support crew (miners, harvesters, porters) may be **any rank** — the legal minimum and the Section 19.4 card cap are a combat/strike-contract requirement only. Corrected before capture: Alexander's E-Rank card caps him out of strike/combat contracts at C-Rank and above and their pay, but **not** harvest/support work, which is legally open to him at any Rank right now. No fiction, XP, item, or relationship state changed beyond the corrected statement.
+- **Ledger updates:** `100` (system_state XP/points/daily-quest fields, capabilities, condition/situation — corrected), `120` (armored greave added, pending-income note added, cash unchanged), `130` (Tanya's, Marcus's, Kesha's situations updated — Kesha's corrected; `REL-000063` state updated to contract-closed), `140` (OBJ-5 complete, OBJ-2 updated, OBJ-6 opened and corrected), `160` (`EVT-000060`, `EVT-000061`, `EVT-000062` recorded), `180` (location, date, situation, scene anchor, promotion status).
+- **Repository allocation (2026-07-25):** Allocated event identifiers `EVT-000060`, `EVT-000061`, and `EVT-000062` in `system/ID_REGISTRY.md`. No new entities, records, or relationships minted — the rail-yard contract is tracked as an event (consistent with `EVT-000051`'s treatment of the Red Line posting), not a new Persistent Entity.
+- **Checkpoint `900_CHECKPOINT_0003` written**, superseding `900_CHECKPOINT_0002` as the latest restorable checkpoint.
+
+**2026-07-25 to 2026-07-26 - Session 2: The Cicero Scar and Frozen Gallery C-Rank Harvest Jobs (`EVT-000063`, `EVT-000064`).**
+
+- **Cicero Scar job (2026-07-25, `EVT-000063`):** bought a resonance chisel from Diane at Ironbound ($80; cash $2,000→$1,920). Took a confirmed C-Rank harvest slot with a corporate-adjacent contractor (logistics: Ada Reyes), declining the never-confirmed D-Rank rail-yard interest. Mined 8 C-Rank crystals total across a full roll-by-roll sequence (partial/partial/strong, one natural-critical-fumble shattering a rushed cut, partial, then a private undeclared sale, a legendary-success batch of three, and a final success) — 7 declared, 1 sold privately through the System shop for 170 gold (real, undeclared theft under the standard harvest contract, unknown to any NPC). Allocated all 6 unspent stat points: Strength +2 (11→13), Vitality +2 (8→10, crosses threshold), Intelligence +2 (8→10, crosses threshold).
+- **Harvest-share correction:** Ada's off-the-cuff $1,500–2,500 estimate was reworked with the player against actual licensed rates and a Runtime ruling (no harvest-share formula is authored in the world rules — flagged separately as a background task for future authoring). Corrected, canonical, no-scene figure: **≈$5,700** pending.
+- **Follow-up at the Coalition:** signed onto a second C-Rank harvest slot (Frozen Gallery archetype, confirmed Rank) for 2026-07-26, 08:00, under a different site coordinator (Dale) with the same contractor. Confirmed with Kesha that Coalition freelancer registration carries no base salary.
+- **Second daily quest (2026-07-26, `EVT-000064`):** issued 06:00, completed same morning under a 2-hour staging deadline — push-ups and sit-ups alternated in sets, the 10 km run doubled as his commute to the job site in full gear. Per Section 3.9, XP and streak applied automatically on completion (+10 XP → 60/200, streak → 2/7); only the +3 stat points/full-restore grant was left deliberately unaccepted. Entered the Frozen Gallery Gate behind the strike element (population: 8 common C-Rank beasts, 2 C-Rank elites, 1 C-Rank boss); no mining resolved yet at this site.
+- **Ledger updates:** `100` (system_state stats/gold/daily-quest fields, capabilities, situation), `120` (chisel added, cash updated, second pending-income line added), `130` (Kesha's situation extended; Ada Reyes and Dale added as new figures; `REL-000064` harvest-hire relationship added), `140` (OBJ-2 updated, OBJ-6 superseded, OBJ-7 opened), `160` (`EVT-000063`, `EVT-000064` recorded), `180` (location, date, situation, scene anchor, promotion status).
+- **Repository allocation (2026-07-26):** Allocated entity identifiers `ENT-000134` (Ada Reyes) and `ENT-000135` (Dale), relationship identifier `REL-000064`, and event identifiers `EVT-000063` and `EVT-000064` in `system/ID_REGISTRY.md`.
+- **Checkpoint `900_CHECKPOINT_0004` written**, superseding `900_CHECKPOINT_0003` as the latest restorable checkpoint.
+
+**2026-07-26 - Session 2 continued: The Frozen Gallery Harvest, Two Veins and a Second Undeclared Sale (`EVT-000065`).**
+
+- **First vein:** full roll-by-roll mining sequence at net +2 (practiced technique) with one push into an untested deeper section (partial success, net +2 held) and a late stretch at reduced net (+1, then 0) as the seam thinned and finally proved spent. 17 crystals mined, all declared to the running count; one major failure (natural 8) on the spent pocket yielded nothing and prompted Dale's call to wrap up and move.
+- **Second vein:** a wider, richer assignment near the chamber edge. Continued strong rolls (several capped-100 legendary successes, one natural-2 critical fumble costing a shattered crystal) brought the running total to 23, then to a final 13 after fatigue and a thinning seam reduced the net to 0 for the last two cuts. **Two undeclared private sales** of 12 crystals each (170 g/crystal) were made mid-work through `/system shop` while continuing to appear to work — the first a straightforward circumstance-only concealment roll (strong success), the second made with Dale actively making his rounds nearby, resolved by a natural critical success that overrode the added risk. Neither sale was noticed by Dale or anyone else. Combined with the 170 g already held from the Cicero Scar, gold now stands at **4,250 g**, entirely private and unknown to any NPC.
+- **Break:** Alexander asked Dale for five minutes to catch his breath and drink water; Dale granted ten, unbothered and complimentary of his pace, unaware of the dead vein worked minutes earlier or of either private sale.
+- **No combat, no XP, no Health/Mana change this span** — mining awards no kill XP under World Rule Profile Section 3; Health and Mana remain full. The pending daily-quest grant remains unaccepted.
+- **Ledger updates:** `100` (system_state `gold` field; `capabilities`/`situation` narrative updated), `120` (13 declarable C-Rank crystals added as a held generic holding, gold cross-reference updated), `130` (Dale's `situation` and `REL-000064`'s `state` updated with the job's mid-progress totals), `140` (OBJ-2 gold figure updated, OBJ-7 status updated to mid-job with current declarable count), `160` (`EVT-000065` recorded), `180` (location, situation, scene anchor, promotion status).
+- **Repository allocation (2026-07-26):** Allocated event identifier `EVT-000065` in `system/ID_REGISTRY.md`. No new entities, records, or relationships minted — Dale (`ENT-000135`) and `REL-000064` already existed.
+- **Checkpoint `900_CHECKPOINT_0005` written**, superseding `900_CHECKPOINT_0004` as the latest restorable checkpoint.
+
+**2026-07-26 - Session 2 continued: The Third Vein, a Third and Fourth Undeclared Sale, and a Read on the Strike Line (`EVT-000066`).**
+
+- **Third vein:** the crew advanced with the strike element to a new chamber after a brief, distant, unthreatening combat noise; Dale assigned Alexander the deepest, richest vein yet, near the strike line's flank. An extended roll-by-roll sequence (net +2 practiced technique, dipping to +1 under fatigue and recovering via a deliberate mid-session recalibration) yielded 74 crystals, including a 16-crystal delegated stretch resolved under explicit player delegation ("continue until I reach at least 15 more crystals") and one always-live critical-tail roll read as exceptional success.
+- **Two further undeclared private sales** (12 crystals each, 170 g/crystal) brought this vein's private total to 4,080 gold — combined with the job's existing 4,250, **gold now stands at 8,330**, still unknown to any NPC. The second of the two sales was made with deliberate care (keeping his hands moving throughout) after the near-miss earlier in the session.
+- **A performed exhaustion.** Sensing the vein nearing its limit, Alexander deliberately slowed and looked visibly worn out for Dale's benefit. It worked completely — Dale read it as genuine and pulled him off the vein for a mandatory fifteen-minute break rather than the standard five, a real cost to his mining time but no suspicion whatsoever attached to it.
+- **Tactical observation.** During the enforced break, Alexander studied the strike element's held position on his own initiative: their formation geometry, then their pre-emptive timing ahead of a barely-perceptible cue. Recorded as qualitative capability growth (an externally-observed framework for reading a coordinated fight), not a stat or mechanical change. Unknown to any NPC.
+- **No combat, no XP, no Health/Mana change this span** — mining and the deception/observation rolls are not combat challenges; Health and Mana remain full. The pending daily-quest grant remains unaccepted.
+- **Running totals:** 104 crystals mined at the Frozen Gallery across all three veins, 63 in the current declarable count, 48 sold privately across four sales, 8,330 total private gold.
+- **Ledger updates:** `100` (system_state `gold` field; `capabilities` appended with the tactical-framework note; `situation` updated), `120` (declarable C-Rank crystal count updated to 63), `130` (Dale's `situation` and `REL-000064`'s `state` updated with the job's running totals), `140` (OBJ-2 gold figure updated, OBJ-7 status and totals updated), `160` (`EVT-000066` recorded), `180` (location, situation, scene anchor, promotion status).
+- **Repository allocation (2026-07-26):** Allocated event identifier `EVT-000066` in `system/ID_REGISTRY.md`. No new entities, records, or relationships minted.
+- **Checkpoint `900_CHECKPOINT_0006` written**, superseding `900_CHECKPOINT_0005` as the latest restorable checkpoint.
+
+**2026-07-26 - Session 2 continued: Vein's End, the Daily Grant Accepted, a Fifth Sale, a Near-Miss, and the Boss Falls (`EVT-000067`).**
+
+- **Grant accepted.** Alexander accepted the pending daily-quest grant mid-vein: +3 unspent stat points (0→3, unallocated), Health/Mana restore cosmetic (both already full). Per established precedent (`EVT-000060`) the grant's full restore also clears ordinary fatigue; one mining stretch resolved just before the acceptance was mistakenly penalized for fatigue that shouldn't have applied and was corrected in play, re-reading the same natural rolls at the proper modifier.
+- **Vein worked to exhaustion.** Continued mining (including a further delegated batch) carried the declarable count from 91 up through two batches, before a **fifth undeclared private sale — 50 crystals this time** — dropped it back down. The much larger transaction produced an extended, obvious stillness; Dale crossed the chamber directly and challenged Alexander outright, the first real suspicion (not casual concern) directed at him all day. Alexander's explanation held (a true-as-far-as-it-goes comparison between reading a vein and reading his status window), and mining resumed, continuing until the vein read as genuinely spent.
+- **Fifth sale:** 50 crystals × 170 g = 8,500 gold. Combined with the 8,330 carried in, **gold now stands at 16,830**.
+- **The boss falls.** While Alexander was finishing his own vein and then helping another harvester finish theirs (one crystal credited to that harvester, not to Alexander), the strike element killed the Frozen Gallery's boss off-screen — an off-screen world resolution, not a player-facing roll — opening the standard two-hour clear window. Dale organized a declaration queue at the Gate mouth; Alexander positioned himself deliberately mid-queue, listening to others' totals (highest overheard: 16) before his own turn.
+- **No combat, no XP, no Health/Mana change this event** — Alexander fought nothing; Health and Mana remain full. 3 unspent stat points await allocation.
+- **Ledger updates:** `100` (system_state `gold` and `unspent_points`/`pending_grants` fields; `situation` updated), `120` (declarable C-Rank crystal count updated to 91), `130` (Dale's `situation` and `REL-000064`'s `state` updated with the near-miss and the boss kill), `140` (OBJ-2 gold figure updated, OBJ-7 status updated to the job's close), `160` (`EVT-000067` recorded), `180` (location, situation, scene anchor, promotion status).
+- **Repository allocation (2026-07-26):** Allocated event identifier `EVT-000067` in `system/ID_REGISTRY.md`. No new entities, records, or relationships minted.
+- **Checkpoint `900_CHECKPOINT_0007` written**, superseding `900_CHECKPOINT_0006` as the latest restorable checkpoint.
+
+**2026-07-26 - Session 2 continued: Formal Declaration, Exit, and the Frozen Gallery Harvest-Share Ruling (`EVT-000068`).**
+
+- **Sixth private sale.** 50 more crystals sold via `/system shop` using a stretching cover for the extended transaction (partial success, net 0): the sale cleared invisibly as always, but Dale caught a second, shorter hitch from across the chamber and watched without confronting it this time. Sale total: 8,500 gold; **gold now 25,330**.
+- **Formal declaration.** Alexander declared **41 C-Rank crystals** to Dale — the harvest crew's highest single total by a wide margin (overheard peers: 11, 14, 9, 16). Logged without scrutiny; Dale praised the pace across both jobs and confirmed the contractor occasionally posts B-Rank harvest work, naming Alexander a strong future candidate.
+- **Exit and return home.** Alexander exited the Frozen Gallery Gate with the crew and returned to his apartment for the evening. No further mining, sales, or NPC contact this event.
+- **Harvest-share ruling (Profile Section 13.2, now formally authored — Runtime ruling, ex-scene).** The 5-hunter harvest crew declared 91 C-Rank crystals combined; the killed population (`EVT-000064`) yielded 11 beast-drop C-Rank crystals and 3 C-Rank cores. Total declared pool at licensed rates: $273,750. Harvest share (20%): $54,750, output-weighted. Alexander's cut (41/91 share): **≈$24,663** — his largest pending payout, alongside the Red Line split (≈$2,313) and Cicero Scar harvest share (≈$5,700).
+- **Job complete.** The Frozen Gallery C-Rank harvest job is closed; the 91 declared crystals are no longer in Alexander's possession (surrendered to the contractor's pool at declaration). OBJ-7 (build a harvest-labor track record) marked met.
+- **No combat, no XP, no Health/Mana change this event.** 3 unspent stat points remain unallocated.
+- **Ledger updates:** `100` (system_state `gold` field; `situation` updated to reflect both jobs' close), `120` (declarable C-Rank crystal line removed — declared and surrendered; harvest-share pending-income line added), `130` (Dale's `situation` and `REL-000064`'s `state` updated to job close, B-Rank opening noted), `140` (OBJ-2 payout figure updated, OBJ-7 marked met), `160` (`EVT-000068` recorded), `180` (location, situation, scene anchor, promotion status).
+- **Repository allocation (2026-07-26):** Allocated event identifier `EVT-000068` in `system/ID_REGISTRY.md`. No new entities, records, or relationships minted.
+- **Checkpoint `900_CHECKPOINT_0008` written**, superseding `900_CHECKPOINT_0007` as the latest restorable checkpoint.
+
+**2026-07-26 to 2026-07-27 - Session 2 continued: Rest Day, Shop Purchases, Private Practice, and Priya Okafor's Crew (`EVT-000069`).**
+
+- **Evening call (2026-07-26):** Alexander called the Coalition after-hours line asking after E-Rank striker/combat contracts; Kesha Morrison (covering the desk) reported two open waiver-tier crew slots and that Tanya Voss's crew wasn't back on the boards yet, and offered to call back in the morning with more detail.
+- **Shop purchases:** bought a C-Rank dagger (2,000 g) and an instant-dungeon key at his own E-Rank (500 g) through `/system shop`. Gold: 25,020 → 22,520.
+- **Private practice:** confirmed the pocket-dimension dagger swap carries no perceptible delay; drilled an unnoticeable mid-flourish grip switch from the old E-Rank dagger to the new C-Rank one. Unwitnessed; recorded as a demonstrated technique in progress.
+- **Third daily quest (2026-07-27, issued 06:00):** completed (calisthenics at home, 10 km run at the park). XP/streak applied automatically (+10 XP → 70/200, streak 2/7 → 3/7); the stat/full-restore grant was **deferred**, banked. Separately, Alexander's 3 already-held unspent points were allocated: Strength 13 → 16 (unspent 3 → 0).
+- **Kesha's callback and Priya Okafor's crew:** mid-run, Kesha confirmed both waiver-tier slots were still open; Alexander committed to striker Priya Okafor's crew for a distinct unconfirmed E-Rank–D-Rank Gate contract (timer breaking 2026-07-29 midnight), requesting a 9 AM staging time for the tentative 2026-07-28 start. Kesha undertook to confirm back.
+- **Ledger updates:** `100` (system_state stats/gold/XP/daily-quest/pending-grants fields, shop_holdings, notes), `120` (gold figure in prose updated), `130` (Priya Okafor `ENT-000136` added, `REL-000065` added), `140` (OBJ-8 opened), `160` (`EVT-000069` recorded), `180` (situation, scene anchor, promotion status).
+- **Repository allocation (2026-07-27):** Allocated entity identifier `ENT-000136` (Priya Okafor), relationship identifier `REL-000065` (pending crew slot), and event identifier `EVT-000069` in `system/ID_REGISTRY.md`.
+- **Checkpoint `900_CHECKPOINT_0009` written**, superseding `900_CHECKPOINT_0008` as the latest restorable checkpoint.
+
+**2026-07-28 - Session 2 continued: The Ashfield Gate — Entry, First Kill Above Band, the Elite (`EVT-000070`, `EVT-000071`).**
+
+- **Fourth daily quest:** completed (calisthenics, 10 km run doubling as travel to staging). XP/streak auto-applied (streak 3/7→4/7); grant's accept/defer prompt shown but never answered — left genuinely pending.
+- **Staged with Priya Okafor's crew** at 9 AM: met Julian (`ENT-000137`, ranked shotgun), Renata (`ENT-000138`, sensor), Owen (`ENT-000139`, mender) for the first time. Gear approved; formation set (Priya front, Julian/Renata mid, Owen/Alexander rear).
+- **Gate entry:** unconfirmed, posted low-confidence D, resolved **true C-Rank** (d100 78) — a real mismatch for this waiver-tier crew. Archetype **Ashfield** (d8 7, burn hazard). Population: 12 common C-Rank beasts, 1 C-Rank elite, 1 C-Rank boss (all rolled).
+- **First wave:** front line killed 4 common beasts cleanly. A 5th broke through; Alexander fought it solo across 5 exchanges, including taking a full Rank-honest hit that dropped his Health from 40 to **0** — claimed one of two pending daily-quest grants mid-collapse to survive (HP 0→40, +3 unspent points). Finished the beast for the kill: underdog-bonus XP (240) crossed the Level 2→3 threshold; new level-up grant **deferred**, joining the still-unanswered daily-quest one (2 pending grants).
+- **The elite:** Alexander read its attack pattern (strong success) and called it out. Priya's intercept attempt on that read **fumbled catastrophically** (natural 1) — she was wounded and thrown; the elite broke through toward the rear. Alexander met it dual-wielding both daggers (E-Rank + summoned C-Rank) using his own calculated timing: critical success, redirecting the lunge and landing a real counter-hit. Elite badly hurt but active; Priya wounded, recovering; boss not yet encountered.
+- **Ledger updates:** `100` (level/XP/unspent-points/pending-grants/daily-quest fields, extensive notes), `130` (Priya's entry updated; Julian, Renata, Owen added; `REL-000065` activated), `140` (OBJ-8 updated to in-progress with full Gate detail), `160` (`EVT-000070`, `EVT-000071` recorded), `180` (location, situation, scene anchor, promotion status).
+- **Repository allocation (2026-07-28):** Allocated entity identifiers `ENT-000137` (Julian), `ENT-000138` (Renata), `ENT-000139` (Owen), and event identifiers `EVT-000070` and `EVT-000071` in `system/ID_REGISTRY.md`.
+- **Checkpoint `900_CHECKPOINT_0010` written mid-combat**, superseding `900_CHECKPOINT_0009` as the latest restorable checkpoint. Restoring it resumes directly into the ongoing fight with the wounded elite.
+
+**2026-07-28 - Profile 1.2 Readiness Migration (`EVT-000072`).**
+
+- **Profile adoption:** Live campaign state migrated explicitly from frozen Gatefall Profile 1.1 to frozen Profile 1.2 before the next Ashfield Gate exchange. No fiction or previously resolved result was changed; Checkpoint 0010 remains immutable under 1.1.
+- **Equipment normalization:** E-Rank/C-Rank daggers became E-Rank/C-Rank Quickknives; jacket, gauntlets, shin guards, and the stored disputed greave became E-Rank Bastion armor in their recorded slots. Current loadout: C-Rank Quickknife main, E-Rank Quickknife off, E Bastion torso/hands/legs; all other slots empty. Base stats unchanged; effective stats now Strength 16 / Agility 21 / Vitality 13 / Perception 11 / Intelligence 10. Three 3% armor reductions compose to 8.7327% (display 8.7%).
+- **Daily Premium initialized by real rolls:** d7=6; armor d5=2/d5=4; accessory d5=3; consumable d6=5; rune d10=2; key d6=5. Current offers: Spellthread Focus [E-Rank], Adaptive Watcher Torso [E-Rank], Ascendant Heartward Sigil [E-Rank], Quicksilver Phial, Dagger Mastery Rune [E-Rank], Runic Key [E-Rank]. All 6/6 unpurchased; rotate 2026-07-29 06:00 Chicago.
+- **Ledger updates:** `090` (profile binding 1.2), `100` (profile version, item lines, equipment slots, effective stats, protection, premium cycle), `120` (owned gear normalized), `160` (`EVT-000072`), `170` (this entry), `180` (profile/readiness/current loadout), registry (`EVT-000072`), and worlds/campaigns index. `110`, `130`, and `140` unchanged.
+- **Repository allocation:** Allocated event identifier `EVT-000072`; no entity, record, or relationship identifier minted.
+
+**2026-07-28 - Profile 1.3 Daily Premium Rank Migration (`EVT-000073`).**
+
+- **Profile adoption:** Live campaign state migrated explicitly from frozen Gatefall Profile 1.2 to frozen Profile 1.3 before the next Ashfield Gate exchange. No fiction, purchase, equipped item, stat, or previously resolved result changed; Checkpoint 0010 remains immutable under 1.1.
+- **Premium models preserved; Ranks rolled:** The six existing models and all unpurchased flags were preserved. Five real Rank rolls against Alexander's E-Rank effective Rank produced Weapon 46 → E-Rank, Armor 85 → C-Rank, Accessory 74 → D-Rank, Rune 23 → E-Rank, and Key 70 → D-Rank; the Consumable remained unranked.
+- **Current offers:** Spellthread Focus [E-Rank] 200 g; Adaptive Watcher Torso [C-Rank] 2,400 g; Ascendant Heartward Sigil [D-Rank] 720 g; Quicksilver Phial 750 g; Dagger Mastery Rune [E-Rank] 2,500 g; Runic Key [D-Rank] 4,500 g. All 6/6 remain unpurchased and rotate 2026-07-29 06:00 Chicago.
+- **Ledger updates:** `090` (profile binding 1.3), `100` (profile version and migrated premium cycle), `160` (`EVT-000073`), `170` (this entry), `180` (profile/current offers/promotion status), registry (`EVT-000073`), and worlds/campaigns index. Other campaign ledgers unchanged.
+- **Repository allocation:** Allocated event identifier `EVT-000073`; no entity, record, or relationship identifier minted.
+
+**2026-07-28 - Profile 1.4 Causal-Stats Migration (`EVT-000074`).**
+
+- **Profile adoption:** Live campaign state migrated explicitly from frozen Gatefall Profile 1.3 to frozen Profile 1.4 before the next Ashfield Gate exchange. No fiction or prior result changed; Checkpoint 0010 remains immutable under 1.1.
+- **XP replay:** Daily-quest XP was removed and non-daily awards replayed chronologically: Red Line rewards 140 → Level 2 at 40/200; C-Rank beast kill +240 → Level 3 at **80/300**.
+- **Completed-level growth:** Two completed level-ups added +2 to each base Stat and +4 unspent points. The old pending Level 3 grant settled immediately, adding its original +3 points and full recovery. Current base Stats are 18/14/12/13/12; effective Stats are 18/23/15/13/12; unspent points are 10; derived Health/Mana are full at 60/60 and 24/24.
+- **Daily normalization and pending rewards:** All four completed dailies include 100 squats performed off-screen during the already-recorded exercise periods. Streak 4 remains active but purely record/display state, with no cache or multiplier. Four unopened Daily Random Boxes are pending—one per completion. The one pending old bundle separately became Ability Points +3 and one Status Recovery.
+- **Equipment:** C-Rank/E-Rank Quickknives gained weapon power 7/2; the current E Spellthread Focus offer gained focus power 2. No item Rank, chassis, slot, ownership, condition, price, or purchase flag changed.
+- **State terminology:** `effective_band: E` became `system_tier: E`; the field remains the content/reward bracket and no longer supplies Stats, pools, damage, or a generic modifier.
+- **Ledger updates:** `090`, `100`, `120`, `160`, `170`, and `180`; registry (`EVT-000074`); world profile, resource guide, world README, engine changelog, Runtime documentation, and worlds/campaigns index. `110`, `130`, and `140` unchanged.
+- **Repository allocation:** Allocated event identifier `EVT-000074`; no entity, record, or relationship identifier minted.
+
+**2026-07-28 - Session 2 continued: Stat Allocation, a Random Box, and the Elite's Defeat (`EVT-000075`, `EVT-000076`, `EVT-000077`).**
+
+- **Stat allocation (`EVT-000075`):** Alexander allocated all 10 unspent points from the 1.4 migration — Strength +3 (18→21), Perception +3 (13→16), Intelligence +3 (12→15), Vitality +1 (12→13). Health 60→64/64, Mana 24→30/30 (both already full, refilled to new maxima).
+- **Daily Random Box opened (`EVT-000075`):** contents roll d100 85 → ranked gear at System Rank: E-Rank; chassis roll d20 8 → Channeling Focus [E-Rank] (Intelligence +2, focus power 2), added unequipped. Pending boxes 4→3.
+- **The elite's defeat (`EVT-000076`):** three further exchanges (partial success graze, then a critical success, then a strong success) wore the wounded elite down to defenceless; the finishing blow resolved automatically (Rules Section 4.2, collapsed/unresisting target). Elite confirmed dead. Kill XP 480 (C-Rank base 60 × elite ×2 × underdog ×4) crossed the Level 3→4 threshold: Level 4, XP 260/400, all base Stats +1, +5 unspent points, Health/Mana re-derived and restored to 68/68 and 32/32.
+- **Aftermath (`EVT-000077`):** Owen and Priya both addressed Alexander's earlier near-death directly; Priya took formal responsibility for the rear-pair formation gap. Alexander's rapport with Owen deepened markedly (declined healing to bank it, a friendly gesture, the first smile of the clear); Owen put the dagger-exposure question on the record without confronting it. Crew ranks established: Priya D, Julian/Renata E, Owen **C** (corrected from an initial misstatement of E). Owen's practical healing capacity established (~4-5 people, fewer if severe). A tactical Perception read (partial success) found a northeast lead toward the unlocated boss/den, with a complication (worsening terrain that direction). Priya has asked Alexander for the crew's next move; awaiting his answer.
+- **Ledger updates:** `100` (system_state level/XP/stats/effective-stats/HP/MP/unspent-points/pending-rewards/shop_holdings, condition, extensive notes), `130` (Priya's, Julian's, Renata's, and Owen's capabilities/personality/situation updated with ranks and aftermath; `REL-000065` state updated), `140` (OBJ-8 updated with the elite's death, rank reveals, and the northeast read), `160` (`EVT-000075`, `EVT-000076`, `EVT-000077` recorded), `180` (protagonist stats, current situation, scene anchor, promotion status). `110` and `120` unchanged — no new world-layer facts and no mundane physical-property changes this session.
+- **Repository allocation (2026-07-28):** Allocated event identifiers `EVT-000075`, `EVT-000076`, and `EVT-000077` in `system/ID_REGISTRY.md`. No new entities, records, or relationships minted — all participating NPCs and the crew relationship already existed.
+- **Checkpoint `900_CHECKPOINT_0011` written**, superseding `900_CHECKPOINT_0010` as the latest restorable checkpoint. Captured with the crew regrouped, elite dead, boss unencountered, awaiting Alexander's declared next move — not mid-exchange, but mid-decision.
+
+**2026-07-28 - Profile 1.5 Mender-Treatment Migration (`EVT-000078`).**
+
+- **Owner ruling.** During the boss fight, at an out-of-character pause, the owner ruled Profile 1.4's mender rule inconsistent with what a mender is in this world: under 1.4 a C-Rank healing-touch mender could not set a broken bone, only halve its healing clock, which contradicts both the fiction and the crew economics that make a mender worth a share of the split. Frozen Profile **1.5** was authored and adopted.
+- **Rule change (Sections 6.3, 6.4):** a mender's resolved treatment touch now **clears an injury's severity outright**, rank-gated — E clears Minor, D clears Moderate, C clears Severe, B and above clear Critical. Clearing consumes one of the mender's limited per-clear touches; one touch either restores Health or clears one injury, never both; a mender treating above their tier still supplies the professional-care halving and may step severity down one tier by ruling. Section 6.4's Health/severity independence is preserved and clarified: the mender's touch is the one authored effect acting on the severity axis, while potions, Status Recovery, and level-ups act only on Health.
+- **Preserved:** every Stat, level, XP total, pool value, item, equipment slot, skill, title, currency, ownership, and provenance. Alexander's Severe rib injury is preserved at its recorded severity and becomes clearable going forward rather than retroactively erased. Owen's unspent per-clear touches carry over.
+- **Ledger updates:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` (version header, 1.4→1.5 migration block, Sections 6.3 and 6.4), `worlds/gatefall/README.md` (version references), `090` (profile binding 1.5), `100` (profile version, migration event, condition), `160` (`EVT-000078`), `170` (this entry), `180` (profile binding, condition, scene anchor, promotion status), registry (`EVT-000078`).
+- **Repository allocation:** Allocated event identifier `EVT-000078`; no entity, record, or relationship identifier minted.
+
+**2026-07-28 - Session 2 continued: The Ashfield Boss Engagement (`EVT-000079`).**
+
+- **The plan.** Alexander proposed finishing the Gate and got the crew's agreement — Owen first, then Julian, Renata, and finally Priya, who ceded the tactical call outright but demanded a real plan and a contingency for her going down. Each member raised a genuine objection (Renata's two incompatible jobs, Julian's closing lane, Owen's exposure, Priya's wound); Alexander revised: unseen approach on Renata's read, Renata freed to read exclusively, Julian holding until the go, he and Priya rotating the boss's attention between them, Owen held back and instructed not to come for him if both were down. He drew a **lesser healing potion from his dimensional inventory and gave it to Priya** (framed as a purchase), restoring her Health without touching her wound's severity — Owen registered the fourth unexplained thing and said nothing.
+- **The approach:** d100 50, net +2 (Renata's guidance, Ashfield haze), effective 90, strong success — the crew reached the den chamber unseen, boss circling unaware, rendered **red/pulsing** (two-plus Ranks above System Rank: E-Rank).
+- **The engagement:** Julian's opening shot turned the boss into Alexander's flank; Alexander's ambush strike (d100 43, net +2, effective 83, strong success) dealt 43.5, then his weak-point strike to pull it off Priya (d100 50, net +3, effective 100, **critical**) dealt 87 and fixed its attention entirely on him.
+- **Two natural fumbles.** Alexander planted the E-Rank Quickknife in the wound, instantly recalled the C-Rank Quickknife through the dimensional inventory, and struck — **natural 1**, back foot through churned ash, on one knee inside its reach. The boss's retaliation (d100 41, net +2, effective 61, success) dealt `62.5 × 1 × (1 − 0.087) = 57`: **Health 68 → 12/68**, meeting both injury tests under Section 6.3 and inflicting a **Severe left-rib injury**. Alexander claimed his pending **Status Recovery** (Health 12 → 68/68; pending rewards now AP +3 and three Random Boxes) — Owen's third witnessed impossible recovery. His next strike, on a body that could not plant, was a **second natural fumble (5)**, carrying him into the open.
+- **Evasion:** d100 88, net −1 (Severe injury, open ground, boss badly wounded), effective 68, success — cleared the charge; the boss overshot and Priya struck it on the pass.
+- **State:** boss badly wounded (five wounds, one limb dragging, Alexander's E-Rank Quickknife embedded in its shoulder), still active. Alexander at 68/68 with the untreated Severe injury and 5 unspent points. Combat ongoing.
+- **Ledger updates:** `100` (condition, profile fields), `160` (`EVT-000079`), `170` (this entry), `180` (condition, scene anchor, promotion status), registry (`EVT-000079`). `110`, `120`, `130`, `140` pending update at the next checkpoint.
+- **Repository allocation:** Allocated event identifier `EVT-000079`; no entity, record, or relationship identifier minted.
+
+**2026-07-28 - Session 2 continued: The Ashfield Gate Cleared (`EVT-000080`).**
+
+- **Owen clears the Severe injury.** Asked what he needed, Alexander said "my ribs." Owen's resolved C-Rank treatment touch (d100 38, net +2, effective 58, partial success) **cleared the Severe left-rib injury outright** under the just-authored Profile 1.5 Section 6.3 — the first exercise of this world's mender rule — costing one per-clear touch and roughly four seconds, long enough that the boss squared up with Owen exposed.
+- **The hinge and the kill.** Alexander ordered Julian to lay denial fire between the boss and Owen; the boss flinched left onto its dead limb, and Alexander levered the shoulder seam apart using his own embedded E-Rank blade as a fulcrum (d100 21, net +3, effective 81, strong success, 43.5 damage), collapsing its front-left quarter. A throat strike (d100 9, effective 69, success) failed to finish it; the boss heaved its ruined mass sideways as a collapse aimed like an attack. Alexander **allocated 5 unspent points to Agility** (base 15→20) and evaded forward along the line of the fall (d100 67, effective 67, success), leaving the boss pinned under its own weight with its ruined side skyward. The finishing blow **resolved automatically** (Rules Section 4.2 — target unable to resist). **Boss killed; Gate cleared.**
+- **Three level-ups in one settlement.** Kill XP 960 (C-Rank boss 240 × underdog ×4) + C-Rank clear milestone 320 = **1,280 XP**. From Level 4 at 260/400 through thresholds 400, 500, and 600 → **Level 7, XP 40/700**. All base Stats +3 (Strength 25, Agility 23, Vitality 17, Perception 20, Intelligence 19), **+15 unspent points**, Health/Mana re-derived and restored to **80/80 and 38/38**. Effective Stats 25/32/20/20/19. System Rank remains E-Rank (D at Level 10); no base Stat reached the 30 milestone.
+- **The seven, contained.** Renata's post-kill read (d100 83, net +1, effective 100, legendary success) found seven of twelve common beasts alive at the north wall. Per Section 9.8 a standing Gate's barrier contains its population absolutely and only a *break* — timer expiry before a clear — releases it; the Gate was cleared, so nothing could leave. The crew declined the fight and the seven went down with the instance. **A Runtime error was corrected here in play:** an earlier narration had the seven fleeing toward the aperture as an incipient break, which contradicts Section 9.8; it was retracted before resolution.
+- **Harvest and loot.** Alexander extracted the boss core clean (d100 92, effective 92, strong success) and recovered his E-Rank Quickknife. Five C-Rank crystals from the killed commons, a C-Rank core from the elite, the boss core, and the **boss drop** (d100 6 → equipment at Gate Rank; d20 7 → **Longshot [C-Rank]**: Perception +5, Agility +2, weapon power 7, two-handed). A five-cut stretch near the aperture gave Alexander 4 crystals and the crew 6; pushing the spent seam produced **two natural critical fumbles (5, 5)**, shattering a crystal and **breaking the resonance chisel** (Section 4.8). Final haul, unsold and unsplit: **16 C-Rank crystals, 2 C-Rank cores, Longshot [C-Rank]**. Julian offered the Longshot straight to Priya; Alexander coldly redirected it into the split and Julian accepted without argument.
+- **Exit and the withheld report.** Four hours eleven minutes inside; the aperture collapsed behind them. Priya raised the filing problem (posted E-Rank–D-Rank, truly C, her signature on the line). Alexander advised against filing while spent, clarifying under pushback that he meant **delay, not falsification**. Priya refused falsification outright, accepted delay, and stated she will file a **true** account of a mis-posted Gate. Renata supplied the binding constraint — the C-Rank loot declares the Rank to any appraiser, so the crew can lie on the form or sell the material but not both. Owen noted he alone carries no legal risk and was uncomfortable being silent about it. **Agreed: nobody files, nobody sells, nothing splits before 2026-07-29 18:00.**
+- **The bar.** Over the promised beer, Owen laid out unprompted and without accusation all four unexplainable things he has witnessed, stated he is not confused and will not later invent an explanation, reaffirmed he will not ask, and said he has seen what carrying it alone costs. The most direct acknowledgment of Alexander's exposure by any NPC to date (Profile Section 19). **Alexander has not answered.**
+- **Ledger updates:** `100` (level/XP/stats/effective-stats/pools/unspent-points/pending-rewards/shop_holdings, condition, extensive notes), `120` (chisel marked broken, Ashfield haul section added, potions 10→9), `130` (Priya, Julian, Renata, and Owen's conditions/capabilities/situations; `REL-000065` state to contract-complete), `140` (OBJ-8 marked complete, **OBJ-9 opened** for the report and split), `160` (`EVT-000080`), `170` (this entry), `180` (protagonist, condition, equipment, exposure note, situation, scene anchor, promotion status, latest checkpoint). `110` unchanged — no new world-layer facts.
+- **Repository allocation (2026-07-28):** Allocated event identifier `EVT-000080` in `system/ID_REGISTRY.md`, and advanced the record high-water mark by one for Checkpoint 0012's position in the record sequence (the save manifest itself mints no identifier, per Decision 072). No entity or relationship identifier minted — every participant already existed.
+- **Checkpoint `900_CHECKPOINT_0012` written**, superseding `900_CHECKPOINT_0011` as the latest restorable checkpoint and the **first captured under frozen Profile 1.5** — restoring it requires no migration. Captured at the bar, Gate cleared, Owen's question hanging unanswered.
+
+**2026-07-28 to 2026-07-29 - Session 2 continued: The Half-Answer, the Night, and the Agreed Filing (`EVT-000081`).**
+
+- **Alexander answered Owen in part.** Rather than the luck story, he said something had happened to him and **he does not understand it either** — the closest he has come to naming the System to anyone. Owen offered a permanent exit from the topic, observed that **nobody in this world knows what awakening is** (including him, about his own gift), and **released Alexander from his promise to explain**, substituting "when you want to, if you want to." The System remains unknown to every character (Section 14.4).
+- **`REL-000066` minted — Alexander and Owen, personal.** Drinks in place of thanks, Owen asleep in the booth, Alexander paying the whole tab and taking him home rather than leaving him; roughly fourteen hours' sleep; the relationship became explicitly personal and physical the morning of 2026-07-29. Owen disclosed ordinary biography (Rogers Park, awakened at twenty-two, twice declined Horizon Guild). Alexander's apartment has held no one else since he awakened three months ago.
+- **The filing strategy.** Alexander established the legal position himself — the contract was posted E-Rank–D-Rank, everyone signed something legal, and the true Rank resolved *on entry*, so no rank cap was breached. Owen conceded and named the real exposure: Region V will ask **how a D-Rank/E-Rank/E-Rank/E-Rank/C-Rank crew survived**, and the honest answer names Alexander. Alexander proposed Owen take credit for the boss kill; **Owen said he would sign it and then argued it down** (a non-combatant mender killing a C-Rank boss is more interesting, not less; it opens a file on him; it needs four people to hold one lie; Renata lies badly). Adopted instead: **"no hero"** — the crew killed the boss in a long coordinated fight, Alexander was the support striker who was hurt and treated. A lie of emphasis, not of fact.
+- **Kesha's notice and Priya's agreement.** Kesha Morrison relayed that Region V's monitoring registered the Gate's closure and the Coalition has been asked when the report is coming — routine, not accusatory. Priya set the meeting for that evening, spent the morning at a clinic on her side, and invited Alexander's thoughts beforehand. On his call (d100 62, net +1, effective 82, strong success) she **accepted**, revealing she had drafted honest sentences for two hours that all made her sound like a passenger on her own clear. Her limits are stated and exact: she will not write that Alexander was absent or didn't fight, and she will answer any direct Region V question honestly. She requires Julian and Renata to hear the same account from Alexander in the same room before she files.
+- **Fifth daily quest.** Issued 2026-07-29 06:00, dismissed unanswered while asleep. Calisthenics completed 13:30 (100/100/100) — resolved automatically as demonstrated competence (Rules Section 4.2). **10 km run outstanding**, window to 2026-07-30 06:00. The Daily Premium cycle rotated into stock not yet viewed or rolled; the prior cycle lapsed entirely unpurchased.
+- **No combat, injury, XP, Health, Mana, or gold change.** 15 unspent points and three Random Boxes untouched; chisel still broken.
+- **Ledger updates:** `100` (relationships list, daily_quest current state, daily_premium rotation), `130` (`REL-000066` defined with a full object block; Owen's, Priya's entries updated; Owen gains a relationships list), `140` (OBJ-9 updated to strategy-agreed, **OBJ-10 opened** for keeping the System hidden), `160` (`EVT-000081`), `170` (this entry), `180` (date, location, condition, social position, exposure note, daily fields, scene anchor, promotion status, latest checkpoint). `110` and `120` unchanged.
+- **Repository allocation (2026-07-29):** Allocated event identifier `EVT-000081` and relationship identifier `REL-000066` in `system/ID_REGISTRY.md`, and advanced the record high-water mark by one for Checkpoint 0013's position (the manifest mints no identifier, per Decision 072).
+- **Checkpoint `900_CHECKPOINT_0013` written**, superseding `900_CHECKPOINT_0012` as the latest restorable checkpoint. Captured in the apartment mid-afternoon, filing strategy agreed, four hours before the crew meeting.
+
+**2026-07-29 - Profile 1.6 Midnight Daily Deadline Migration (`EVT-000082`).**
+
+- **Owner ruling:** the daily quest still issues at 06:00 local, but its penalty deadline is now midnight on that same calendar day rather than 24 hours after issuance. The playable completion span is 06:00–23:59; incomplete at 00:00 resets the streak and triggers the penalty-zone transfer, subject only to the existing sealed-instance deferral (Profile Sections 8.1 and 8.3).
+- **Active fifth daily:** all progress preserved at push-ups 100/100, sit-ups 100/100, squats 100/100, run 0/10. Deadline moved from 2026-07-30 06:00 to **2026-07-30 00:00 America/Chicago**. At 14:11 the quest remains active, so no failure or penalty settled.
+- **Preserved:** every reward, streak value, Stat, level, XP total, Health/Mana value, item, currency, relationship, and resolved fictional outcome. No fictional time passed.
+- **Ledger updates:** Profile 1.6 and Gatefall README; `090` (profile binding), `100` (profile version and active daily deadline), `160` (`EVT-000082`), `170` (this entry), `180` (profile binding, checkpoint compatibility, daily deadline), world/campaign index, engine changelog, and registry.
+- **Repository allocation:** Allocated event identifier `EVT-000082`; no entity, record, or relationship identifier minted. Checkpoint 0013 remains immutable under Profile 1.5 and requires this migration when restored.
+
+**2026-07-29 afternoon to 2026-07-30 morning - Session 2 continued: rewards, gearing, the payout fix, the crew debrief, and the first night (`EVT-000083`).**
+
+- **Rewards and stat allocation.** Claimed pending Ability Points +3 and one Daily Random Box (d100 36 → 500 g gold). Allocated all 18 unspent points: Strength +4, Vitality +3, Perception +10, Intelligence +1 (base 25/23/17/20/19 → 29/23/20/30/20). Health re-derived to 92/92, Mana to 40/40.
+- **Daily Premium cycle rolled for real** (twelve real dice, recorded in `EVT-000083`). Bought and equipped the Ascendant Hunter's Band [E-Rank] (160 g, Strength +4) and a Premium Rune teaching Stone Skin [D-Rank] (2,500 g, consumed), then the Adaptive Bastion Torso [E-Rank] (120 g, Vitality +3, 6% reduction), selling the superseded Reinforced Leather Jacket back for 15 g. Gold 22,520 → 20,255. Stone Skin activated once (Mana 40→36) and dropped. Horizon Reacharm [D-Rank], Clarity Phial, and Runic Key [E-Rank] remain unpurchased.
+- **Unequipped for civilian dress** before the evening meeting — main hand, off hand, torso, gauntlets, shin guards all stored; only the Hunter's Band remained equipped for the rest of the day.
+- **Fifth daily quest completed in full** (10 km run finished at **Vanguard Trade & Gear**, `ENT-000140`, a new licensed Chicago outfitter). Streak 4→5. Bought two replacement resonance chisels there, $75 + $140 cash (cash $1,920→$1,705).
+- **Payout discrepancy resolved.** By explicit ruling, standard Coalition processing is 2–3 business days. All three overdue payouts (Red Line $2,313, Cicero Scar $5,700, Frozen Gallery $24,663) were found released but unarrived due to a stale account-sync issue; a re-save fixed it and all three landed. Cash $1,705 → **$34,381**.
+- **Coalition case table.** Delivered the agreed "no hero" account to Julian and Renata; both accepted it. Loot split under standard terms after a negotiation in which Priya, by explicit ruling (d100 49, net +2, effective 89, strong success), **ceded future tactical/strategic field command to Alexander**, keeping the contractual lead and 10% share (`REL-000065` updated). Crystal/core pool $52,500 split: Priya $14,700, others $9,450 each; Longshot [C-Rank] to sell and split once appraised.
+- **Crew dinner.** First unhurried time together for the five of them; NPC backgrounds established for Julian, Renata, Priya, and Owen (see `130`). Recurring crew training schedule agreed (first session in 2–3 days, then roughly weekly).
+- **`REL-000066` deepened** — Alexander and Owen's first night together, both naming the relationship plainly for the first time.
+- **No combat, injury, or XP this event.**
+- **Ledger updates:** `100` (stats, equipment, gold, skills, daily quest/premium, pending rewards, situation notes), `120` (jacket sold, two chisels added, cash, Ashfield haul split, packed clothes), `130` (`ENT-000140` defined; Julian/Renata/Priya background fields added; `REL-000065` and `REL-000066` updated), `140` (OBJ-2 and OBJ-9 resolved, OBJ-10 updated, **OBJ-11 opened**), `160` (`EVT-000083`), `170` (this entry), `180` (full state refresh — see below).
+- **Repository allocation (2026-07-30):** Allocated event identifier `EVT-000083`, entity identifier `ENT-000140` (Vanguard Trade & Gear), and advanced the record high-water mark by one for Checkpoint 0014's position, in `system/ID_REGISTRY.md`.
+- **Checkpoint `900_CHECKPOINT_0014` written** (automatic context-preservation trigger), superseding `900_CHECKPOINT_0013` as the latest restorable checkpoint. Captured the morning of 2026-07-30 at Owen's apartment.
+
+**2026-07-30 morning - Session 2 continued: the morning after, the daily quest as a shared session, the first biography, and the word (`EVT-000084`).**
+
+- **Waking and the 06:00 events.** Mana settled 36 -> 40/40 on overnight rest (Section 5.2), a deferred settlement from `EVT-000083`. At 06:00 both Tier-1 System events fired mid-embrace: the 2026-07-29 Daily Premium cycle expired with the Horizon Reacharm [D-Rank], Clarity Phial, and Runic Key [E-Rank] unpurchased, and the 2026-07-30 cycle was generated by **twelve real rolls** (Ranks: weapon E-Rank, armor E-Rank, accessory D-Rank, rune E-Rank, key D-Rank; rolls 6/50/60/13/68; models: d7=7 Aegis Guard Shield, slot d5=1 / style d5=4 Adaptive Watcher head, accessory d5=1 Hunter's Band, consumable d6=3 Mender's Seal, rune d10=9 Rupture, key d6=2 Crystal Key). The sixth daily quest issued. The shop tab was never opened in the fiction.
+- **Sixth daily quest completed in full** by ~07:40 (100/100/100, 10/10 km) at Loyola Park and the lakefront path, run as a **coached two-person session** with Owen Callahan, who completed a scaled 30 of each rather than take the offered exit. Streak **5 -> 6**. No XP (Section 3.5). Rewards stack as separate entries (Section 3.9): pending totals now **Ability Points +3 x2, Status Recovery x2, Daily Random Box x4**.
+- **New protagonist canon (first biography volunteered to anyone).** The secondary-school teaching post was a queue rather than a preference - he wanted to be a research scientist; krav maga was lifelong, with him instructing by his first university year. Recorded in `100` (`personal_history`). He was about fifteen at the Gatefall (March 2016).
+- **OBJ-4 given a mechanism.** Alexander stated his motive for the first time: he will keep hunting and get materially better at fighting because **capability is the price of access** to the phenomenon he wants to study. Owen named the cost back - this commits him to worse Gates deliberately - and Alexander did not dispute it.
+- **OBJ-11 given a purpose and three operating terms** from Owen: the mender must see the line, must be told the instant someone is hurt, and the call on spending a finite repair belongs to the field commander. Alexander named him the crew's most valuable asset and asked for his help outright.
+- **`REL-000066` named.** Alexander asked Owen to be his boyfriend; Owen said yes. First use of a word for the relationship by either. Texture updated with the morning-after register (physical play Owen always loses, the jurisdiction joke, the instructor's voice Owen identified, Alexander blushing for the first time). Owen intends to tell Priya first. The command-versus-relationship collision is on the record, raised by Owen, unresolved by agreement.
+- **No combat, injury, XP, gold, cash, item, or equipment change.** Loadout unchanged and still stored but for the Hunter's Band.
+- **Ledger updates:** `100` (Mana, condition, pending rewards, daily quest and streak, new Daily Premium cycle, personal history, aspiration), `130` (Owen's entry and location, `REL-000066` state and texture), `140` (OBJ-4, OBJ-10, OBJ-11), `160` (`EVT-000084`), `170` (this entry), `180` (full state refresh). `110` and `120` unchanged this event; `120` had been corrected earlier the same session against stale pre-`EVT-000083` values.
+- **Repository allocation:** Allocated event identifier `EVT-000084` in `system/ID_REGISTRY.md` (high-water advanced, allocation-log row added). No entity, record, or relationship identifier minted; per Decision 072 the manifest mints none.
+- **Concurrency, reconciled mid-session.** An unrelated Architect-mode commit (`3345f6e`, 96 files) landed the repository-wide Data Model 0.1.2->0.1.3 Relationship Texture migration on `main` during play, and swept three uncommitted corrective gameplay writes (`090`, `120`, `130` presence fields) into itself. Reconciled before checkpointing: the migration altered only schema-version declarations, the Data Model compatibility line, and the validator's new schema check - **no Gatefall mechanic and no resolution from this session changed.** Live state re-validated after reconciliation.
+- **Checkpoint `900_CHECKPOINT_0015` written** (automatic context-preservation trigger, twenty-one resolved exchanges), superseding `900_CHECKPOINT_0014` as the latest restorable checkpoint. Captured at the diner, 2026-07-30 morning, under frozen Profile 1.6 and Data Model 0.1.3 — no migration was required at capture; current restoration now additionally applies the terminology-only Profile 1.6→1.7 Rank migration.
+
+**2026-07-30 readiness pause - Profile 1.7 Rank terminology migration (`EVT-000085`).**
+
+- **Canonical vocabulary:** Gatefall's E-Rank–S-Rank classification is now named **Rank** exclusively and rendered E-Rank through S-Rank for Gates, hunters, monsters, equipment, skills, keys, and System scaling.
+- **Persisted field migration:** `system_tier: E` became `system_rank: E`. The value and its content/reward meaning are unchanged.
+- **No mechanical or fictional change:** no value, roll, threshold, formula, probability, price, timer, ownership fact, relationship, or resolved outcome changed; no fictional time passed.
+- **Compatibility:** Checkpoints 0001–0015 remain immutable. Checkpoint 0015 is still the latest restore source, now requiring the 1.6→1.7 terminology migration at readiness before play.
+- **Repository allocation:** Allocated `EVT-000085`; no entity, record, or relationship identifier minted.
+
+**2026-07-30 readiness pause — Profile 1.8 `/system` layout adoption (`EVT-000086`).**
+
+- **Fixed frame:** the full `/system` window now renders at exactly 76 monospace cells per row, including both edges, with a 74-cell interior.
+- **Readable composition:** HP, MP, and XP use aligned 20-cell bars; labels use title case and consistent abbreviations; quest objectives indent beneath their quest; equipment and long inventory entries place item identity first and mechanics on aligned continuation rows.
+- **No mechanical or fictional change:** no stored field, value, roll, threshold, formula, price, timer, ownership fact, relationship, or resolved outcome changed; no fictional time passed.
+- **Compatibility:** Profile 1.7→1.8 is additive. Checkpoints 0001–0015 remain immutable; restoration adopts the layout after completing the applicable migration chain.
+- **Repository allocation:** Allocated `EVT-000086`; no entity, record, or relationship identifier minted.
+
+**2026-07-30 - Corrective promotion: the Perception 30 stat-milestone skill (Rank-Sight), settled late.**
+
+- **What was missed.** Profile Section 4.4 awards a named permanent milestone skill at **30** and **50** in a *base* Stat. Alexander's base Perception crossed 30 during the stat allocation of `EVT-000083` (2026-07-29, base Perception 20 -> 30). The award fires automatically and is recorded in the skill ledger; it was **not** recorded in that settlement, and `skills_known` carried only Stone Skin until now.
+- **What is now recorded.** **Rank-Sight** (passive, no Mana cost, no mastery track) added to `100`'s `system_state.skills_known`: reads the true Rank of any Gate at or below the Bearer's System Rank, converting an unconfirmed reading to confirmed by capability and bypassing the Section 9.5 true-Rank entry roll within that range. At System Rank E it covers E-Rank Gates today, widening as System Rank climbs; Deep Sight at base Perception 50 would extend it one Rank above.
+- **Provenance points at the event that earned it** (`EVT-000083`), not at the moment it was noticed. No new identifier was minted, nothing about `EVT-000083` was re-resolved, and no other value changed. Equipment bonuses do not satisfy milestone thresholds, so the qualifying figure is base Perception 30, not the equipped-effective 30; no other Stat is at or past a milestone (Strength is base 29 — the 33 is the Ascendant Hunter's Band).
+- **How it surfaced.** A bare `/system` render was checked against canonical state before display; the STATS section showed base Perception 30 against a SKILLS section holding one skill, which is a contradiction under Section 4.4. Verified against the **current** Profile 1.8 text rather than the 1.6 text loaded at session start, since the profile had advanced mid-session (1.6 -> 1.7 Rank terminology, `EVT-000085`; 1.7 -> 1.8 `/system` layout, `EVT-000086`) and the skill is named **Rank-Sight** under current terminology.
+- **Not a checkpoint.** This is a live-ledger corrective write; it rides into the next promoted checkpoint. `900_CHECKPOINT_0015` remains immutable and does not contain it.
+
+**2026-07-30, morning to evening — the collision answered, and a day off (`EVT-000087`).**
+
+- **The command-versus-relationship collision Owen raised is provisionally resolved.** Alexander's answer: crew members, not partners, in a Gate; neither acts on a whim against the agreed plan. Owen accepted the principle but flagged, honestly, that he doesn't know if it holds against actually watching Alexander go down again; Alexander admitted the same uncertainty runs the other way. `140_OBJECTIVES.md` OBJ-11 updated with the resolution; OBJ-10 noted no new exposure this day.
+- **A full rest day.** Breakfast concluded; both changed at their own apartments; an afternoon on Owen's boat on the lake — first kiss, hours of unstructured closeness, no Gates, no crew, nothing owed. Returned at sundown, heading to dinner near Owen's apartment.
+- **Ledgers updated:** `180_CURRENT_STATE.md` (location, scene anchor, current situation, promotion status), `130_NPCS_AND_FACTIONS.md` (Owen's `ENT-000139` location, condition, situation), `140_OBJECTIVES.md` (OBJ-10, OBJ-11), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000087` recorded, added to `REC-000079` subjects). `100`, `110`, `120` unchanged — no Stat, XP, equipment, gold, or world-layer fact moved.
+- **Repository allocation:** Allocated `EVT-000087`; no entity, record, or relationship identifier minted.
+
+**2026-07-30, early evening — Checkpoint 0016.**
+
+Automatic context-preservation checkpoint written en route to dinner. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0016/` with `900_SAVE_MANIFEST.md`. Captured under frozen Gatefall World Rule Profile 1.8 and Data Model 0.1.3 — no migration required on restore, the first checkpoint of this campaign for which that is true. `system/ID_REGISTRY.md` allocation log and `system/WORLDS_AND_CAMPAIGNS.md` campaign row updated in the same change.
+
+**2026-07-30, evening to night — the crew question, three Daily Premium purchases, and a third skill (`EVT-000088`).**
+
+- **A new open objective (OBJ-12).** Alexander proposed that Owen Callahan (`ENT-000139`) build and lead his own crew with Alexander in it, and deferred it deliberately as an open window rather than a decision. Motives stated honestly under direct questioning — Owen's worth against an even fifth, *and* his C-Rank card covering the strike contracts an E-Rank card bars (Profile Section 19.4). Owen agreed to think about it. Nothing said to Priya, Julian, or Renata.
+- **Owen's working life established.** Two to three clears a month with other crews, C-Rank included, a Bridgeport crew as his regular; that outside work is his income, and Priya's slot is kept for other reasons. He has never asked her for a premium share and explained why. Recorded on `ENT-000139` and `REL-000066`.
+- **Gold moved: 20,255 → 15,835.** The 2026-07-30 Daily Premium cycle was opened for the first time and three of six offers bought for 4,420 g — Ascendant Hunter's Band [D-Rank] (720 g, banked **unequipped**, no effective-stat change), Mender's Seal (1,200 g, banked unused), Premium Rune (2,500 g, consumed).
+- **Third skill learned: Rupture [E-Rank]**, Mana 12, ×2.0 of the E-Rank skill-rank baseline 10, Novice mastery (Profile Sections 7.2, 11.3, 12.5). Taught by the consumed rune, privately and unwitnessed; no exposure change. Never cast, so no Mana spent.
+- **No combat, no XP, no Health/Mana change, no injury, no equipment change, no cash movement.** Priya confirmed by text that the Ashfield report was filed true and logged and that payouts are processing; the Longshot [C-Rank] goes to an appraiser Thursday. Dale reported no board work until Monday with something larger being discussed.
+- **Ledgers updated:** `100_CHARACTER_SHEET.md` (gold, skills, Daily Premium flags, shop holdings, condition, situation), `120_INVENTORY_AND_OWNERSHIP.md` (2026-07-30 premium purchases, gold restatement), `130_NPCS_AND_FACTIONS.md` (Owen's location, condition, situation; `REL-000066` state and texture), `140_OBJECTIVES.md` (OBJ-2, OBJ-11, new OBJ-12), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000088` recorded, added to `REC-000079` subjects), `180_CURRENT_STATE.md` (date, location, condition, gold, skills, premium, scene anchor, promotion status).
+- **Repository allocation:** Allocated `EVT-000088`; no entity, record, or relationship identifier minted.
+
+**2026-07-30, night — Checkpoint 0017.**
+
+Automatic context-preservation checkpoint, fired at the scene boundary after roughly fifteen resolved exchanges since Checkpoint 0016. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0017/` with `900_SAVE_MANIFEST.md`. Captured under frozen Gatefall World Rule Profile 1.8 and Data Model 0.1.3 — no migration required on restore. `system/ID_REGISTRY.md` allocation log and `system/WORLDS_AND_CAMPAIGNS.md` campaign row updated in the same change.
+
+**2026-07-30 — Owner ruling recorded into the profile: skill rows name MANA in full (Profile Section 15.1 erratum).**
+
+- **The question.** Profile Section 15.1's fixed-abbreviation list gave `M1`–`M5` for a skill row's cost slot, which was ambiguous between a **Mana cost** and a **mastery level** (Section 7.4 defines exactly five mastery levels), and could not express a cost above 5 — Rupture's is 12. Surfaced in play when Rupture was rendered as `M12`, which is unreadable under either sense.
+- **The ruling (owner, 2026-07-30).** A skill row spells the cost in full: **`MANA <n>`**, or `Passive` where there is none. Mastery renders as Section 7.4's five-cell star string ahead of it, so a full row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>`.
+- **Recorded as an erratum, not a version advance.** Section 7.4 already authored the cost as the spelled word and the mastery as stars; Section 15.1's shorthand list contradicted its own profile. The list, the Section 15.1 row template, and the worked Ren example are corrected to agree with Section 7.4. **No stored field, cost, magnitude, mastery level, threshold, price, timer, or resolved outcome changes**, no fictional time passes, and Gatefall's profile remains **frozen at 1.8** — nothing declared has changed behavior, so no additive bump is required. Frame rows remain exactly 76 cells; verified mechanically.
+- **Not a checkpoint.** This is a live world-file corrective write recorded per Profile Section 20.3; it rides into the next promoted checkpoint. `900_CHECKPOINT_0017` remains immutable and does not contain it.
+
+**2026-07-30 night to 2026-07-31 morning — six stat points, a second milestone skill, four boxes, and a B-Rank offer out of reach (`EVT-000089`).**
+
+- **Both banked Ability Points +3 awards claimed and allocated** (unspent 0→6→0): Strength +1 (29→**30**), Vitality +2 (20→**22**), Agility +3 (23→**26**). Base Strength 30 fired the Section 4.4 milestone and granted **Overpower** (passive; grapple, pin, or bull-rush up to one Rank above System Rank — currently D-Rank), his second milestone skill after Rank-Sight and his fourth skill overall.
+- **Maximum Health re-derived 80 → 88** (`4 × effective Vitality 22`) and filled, no missing amount to carry (Section 4.1). Mana unchanged at 40/40.
+- **All four banked Daily Random Boxes opened** (Section 8.1, real d100 each at System Rank E): 19 → potion cache (2 lesser mana potions, 1 lesser healing potion), 43 → 500 g, 82 → ranked gear (d20 10 → armor, slot d5 5 → feet, style d5 2 → Titan) = **Titan Boots [E-Rank]** banked unequipped, 56 → 500 g. **Gold 15,835 → 16,835.**
+- **Daily Premium rotated 06:00 2026-07-31**, twelve real rolls made and recorded. The weapon Rank roll came up **97 → +3 Ranks**, producing a **Ghost Quickknife [B-Rank]** (Agility +13, weapon power 11, +1 step on a first unseen attack) at **18,000 g**. The tab was opened and **nothing was purchased**; a briefly declared purchase of the knife and the Flash Step rune was retracted before it resolved, the shop having declined the knife for insufficient funds. Balance 16,835 leaves him **1,165 g short** with the cycle expiring 06:00 2026-08-01. The prior cycle's three unbought offers expired uncarried.
+- **Seventh daily quest issued 06:00 and completed by ~07:40** at Loyola Park as a second coached two-person session with Owen (4 km + scaled 30/30/30 for him, negotiated). **Streak 6 → 7**; three rewards pending as separate entries; no XP.
+- **No combat, no XP, no injury, no cash movement, no equipment equipped or unequipped, no exposure event reported.** Owen silently read Alexander's condition for the second consecutive morning and again said nothing — recorded on `ENT-000139` and `REL-000066` rather than as an exposure advance.
+- **Ledgers updated:** `100_CHARACTER_SHEET.md` (stats, Health, skills +Overpower, gold, pending rewards, shop holdings, Daily Premium cycle, daily-quest streak, condition, situation), `120_INVENTORY_AND_OWNERSHIP.md` (box contents, gold restatement), `130_NPCS_AND_FACTIONS.md` (Owen's location, condition, situation; `REL-000066` texture), `140_OBJECTIVES.md` (OBJ-2 gold and the new premium-offer pressure), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000089` recorded, added to `REC-000079` subjects), `180_CURRENT_STATE.md` (date, location, protagonist state, scene anchor, promotion status). `110_WORLD_LEDGER.md` unchanged — no world-layer fact moved.
+- **Repository allocation:** Allocated `EVT-000089`; no entity, record, or relationship identifier minted.
+
+**2026-07-31, morning — Checkpoint 0018.**
+
+Automatic context-preservation checkpoint, fired at the scene boundary at the end of the training session, past the fallback threshold of resolved exchanges since Checkpoint 0017. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0018/` with `900_SAVE_MANIFEST.md`. Captured under frozen Gatefall World Rule Profile 1.8 and Data Model 0.1.3 — no migration required on restore. `system/ID_REGISTRY.md` allocation log and `system/WORLDS_AND_CAMPAIGNS.md` campaign row updated in the same change.
+
+**2026-07-31, morning — Profile 1.8 → 1.9 adopted, and the seventh daily's box opened (`EVT-000090`, `EVT-000091`).**
+
+- **Additive profile advance adopted (`EVT-000090`).** Gatefall's World Rule Profile moved to frozen **1.9** (repository date 2026-07-26) while this session was live; surfaced and adopted at the natural pause per Rules Sections 13.5, 14.4, 14.6. New **Section 12.8.1** authors the licensed mundane settlement price of ranked gear as **5× the same-Rank crystal** (C-Rank ≈$12,500), excludes System-shop-origin equipment from any mundane-currency price and from the Section 12.2 black-market premium, and leaves named artificer work and Section 11.6 artifacts to per-transaction authoring. **Nothing recomputes**: no stored field, threshold, magnitude, probability, timer, shop price, repurchase rule, or resolved outcome changed, and no earlier transaction is repriced. `system_state.profile_version` 1.8 → 1.9. Checkpoints through 0018 remain byte-unchanged at 1.8 and run the chain on restore.
+- **Daily Random Box opened (`EVT-000091`).** d100 53 → System gold, E-Rank purse **500 g**. **Gold 16,835 → 17,335.** No box remains banked; Ability Points +3 ×1 and Status Recovery ×3 stay pending. No Stat, XP, Health, Mana, equipment, cash, injury, or exposure change.
+- **Standing consequence.** The Ghost Quickknife [B-Rank] shortfall falls from 1,165 g to **665 g** against a tab expiring 06:00 on 2026-08-01. No decision taken.
+- **Ledgers updated:** `100_CHARACTER_SHEET.md` (gold, pending rewards, profile version and adoption event, situation), `120_INVENTORY_AND_OWNERSHIP.md` (gold restatement), `140_OBJECTIVES.md` (OBJ-2 gold and the revised gap), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000090` and `EVT-000091` recorded, added to `REC-000079` subjects), `180_CURRENT_STATE.md` (profile binding, gold, pending rewards, scene anchor, promotion status). `110`, `130` unchanged — no world-layer fact or NPC state moved.
+- **Repository allocation:** Allocated `EVT-000090` and `EVT-000091`; no entity, record, or relationship identifier minted.
+
+**2026-07-31, morning — Checkpoint 0019.**
+
+Player-requested checkpoint taken minutes after Checkpoint 0018, promoting only the profile adoption and the opened box. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0019/` with `900_SAVE_MANIFEST.md` — a checkpoint is complete restorable state, not a diff (Rules Section 13.1). **First checkpoint of this campaign captured under frozen Profile 1.9** and Data Model 0.1.3; no migration required on restore. `system/ID_REGISTRY.md` and `system/WORLDS_AND_CAMPAIGNS.md` updated in the same change.
+
+**2026-07-31, readiness pause — Profile 1.9 → 1.10 streak-reward adoption (`EVT-000092`).**
+
+- **Additive advance adopted.** Gatefall's World Rule Profile moved to frozen **1.10** (repository date 2026-07-26); surfaced and adopted at the readiness pause before Session 2 continued, per Rules Sections 13.5, 14.4, 14.6. New Section 8.1 rule: a daily completion raising the consecutive streak to a positive multiple of seven upgrades that completion's Daily Random Box to two resolved rolls, one chosen. No second box, no multiplier on the other two daily rewards, no separate 28-day benefit.
+- **Nothing recomputes.** The already-completed streak-7 box (`EVT-000091`, a single ordinary roll under 1.9) is explicitly **not** reopened or re-rewarded per the profile's own compatibility text. Next eligible upgrade: streak 14. No Stat, pool, gold, item, skill, or resolved outcome changes. `system_state.profile_version` 1.9 → 1.10.
+- **Ledgers updated:** `100_CHARACTER_SHEET.md` (`profile_version`, new `profile_streak_event` field), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000092` recorded, added to `REC-000079` subjects). `110`, `120`, `130`, `140`, `180` unchanged by this event alone (folded into the same-day checkpoint below).
+- **Repository allocation:** Allocated `EVT-000092`; no entity, record, or relationship identifier minted.
+
+**2026-07-31, midday to afternoon — the Sable & Kern job, Horizon Outfitters, and an unweighed text (`EVT-000093`, `EVT-000094`, `EVT-000095`).**
+
+- **Coalition referral and a first unweighed text (`EVT-000093`).** Kesha Morrison referred Alexander to a first-time poster, **Sable & Kern** (`ENT-000145`), for a same-day confirmed C-Rank harvest slot at the Halsted Depot site (archetype Foundry Hollow). Mid-conversation, unprompted, Alexander texted Owen *"I already miss you"*; Owen replied in kind. Recorded as a `REL-000066` texture first. Crew introduced: Sable, Kern, Ruth, Denny (`ENT-000141`–`ENT-000144`).
+- **Horizon Outfitters (`EVT-000094`).** Bought **Horizon Gale Gauntlets [C-Rank]** ($12,500) and **Horizon Gale Coif [D-Rank]** ($3,000) — **cash $34,381 → $18,881**. Sold the superseded **Reinforced Gauntlets [E-Rank]** to the System shop for 15 g. Equipped the full stored loadout — both Quickknives, torso, shin guards, boots — and, discovering duplicate accessory types are permitted, equipped **both** Ascendant Hunter's Bands together (Strength +9 total). First time the full nine-slot loadout is worn at once. Effective Stats: Strength 40 / Agility 40 / Vitality 26 / Perception 30 / Intelligence 20; combined physical reduction ≈23%.
+- **The Halsted Depot job (`EVT-000095`).** Worked the shared first vein with Ruth (adapted heat-vein technique, d100 52, net +1, effective 72, success), then moved off alone to a second vein (7 crystals) and a rushed third (d100 61, net −1, effective 41, partial success, 3 crystals) before Sable's recall — **10 total**. Sold **4 privately** to the System shop (680 g, undeclared, unknown to the crew — the same skimming pattern as Frozen Gallery) and declared **6**. Crew total declared: 16 crystals, $40,000 gross, Sable & Kern's 10% cut, remaining split four ways — **≈$9,000 pending** for Alexander. Ruth vouched for him afterward. **Gold 17,335 → 18,030.**
+- **No XP, injury, or combat resolved across any of this.** Walked to a park bench near Owen's apartment in Rogers Park afterward; nothing scheduled.
+- **Ledgers updated:** `100_CHARACTER_SHEET.md` (gold, equipment, effective Stats, condition, situation), `120_INVENTORY_AND_OWNERSHIP.md` (Horizon purchases, sold gauntlets, Sable & Kern job section, cash, gold restatement, pending income), `130_NPCS_AND_FACTIONS.md` (`ENT-000141`–`ENT-000145` defined, `REL-000067` defined, Owen's location and `REL-000066` texture updated), `140_OBJECTIVES.md` (OBJ-2 cash/gold, OBJ-7 new contractor note), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000093`, `EVT-000094`, `EVT-000095` recorded, added to `REC-000079` subjects), `180_CURRENT_STATE.md` (full state refresh — see below). `110_WORLD_LEDGER.md` unchanged.
+- **Repository allocation:** Allocated `EVT-000093`, `EVT-000094`, `EVT-000095`; entity identifiers `ENT-000141`–`ENT-000145`; relationship identifier `REL-000067`.
+
+**2026-07-31, afternoon — Checkpoint 0020.**
+
+Player-requested checkpoint, taken at a quiet pause on a park bench near Owen's apartment. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0020/` with `900_SAVE_MANIFEST.md`. **First checkpoint of this campaign captured under frozen Profile 1.10** and Data Model 0.1.3; no migration required on restore. `system/ID_REGISTRY.md` and `system/WORLDS_AND_CAMPAIGNS.md` updated in the same change.
+
+**2026-07-31, afternoon — the Ghost Quickknife, two solo instant-dungeon clears, and Rupture's mastery (`EVT-000096`–`EVT-000099`).**
+
+- **Gear-up (`EVT-000096`).** Bought and equipped the **Ghost Quickknife [B-Rank]** from the Daily Premium tab (18,000 g), moved to main hand; sold the superseded E-Rank Quickknife for 25 g. Effective Agility 40 → 51. Scene time explicitly established at **3:00 PM** by ruling.
+- **First instant dungeon (`EVT-000097`), archetype Overgrown Temple.** Population 12 common/2 elite (1 rolled + 1 archetype shrine-guard)/1 boss. Killed 4 common, 1 elite, and the boss (unseen weak-point dagger strike into an immediate Rupture cast, the combo that closed the fight). Boss-drop rune rolled already-known Stone Skin; **rerolled under a new ruling** extending the Premium Rune reroll clause (Section 12.5) to dropped runes, landing **Flash Step [D-Rank]**, learned. Archetype bonus loot: an Elixir of a Stat. **Corrected mid-session:** elites and bosses also drop a crystal in addition to their core (Section 11.1), missed live on both kills and retroactively repaired. Instance closed on the boss kill — no separate looting window (Section 17) — ejecting Alexander back to the bench after ~40 minutes, ~3:40 PM. **+170 XP.** Loot banked: 6 crystals, 2 cores.
+- **Resale and restock (`EVT-000098`).** Sold all 6 crystals (60 g) and the Elixir (2,500 g, an unused shop consumable at 50% listed price); the 2 cores were **not** sellable — Section 12.5 explicitly refuses cores at any price. Bought a Stabilization Seal (150 g) and a second Instant-Dungeon Key [E-Rank] (500 g). **Mana recovery corrected** against Section 5.2's Active/Resting rates rather than flat subtraction, catching a real undercount.
+- **Second instant dungeon (`EVT-000099`), archetype Hive.** Population doubled to 19 common, both elite slots converted to additional commons — **0 elites**. Killed 6 common and the boss. Drank both Lesser Mana Potions (+20 Mana) to fund a two-Rupture opening on the boss; only one cast was needed. Boss drop: a third Instant-Dungeon Key [E-Rank]. **+170 XP.** Loot banked: 7 crystals, 1 core.
+- **Rupture's mastery advanced Novice → Practiced** (Section 7.4) on the second boss kill — its third materially-distinct contributing use (first dungeon's boss, second dungeon's second beast, second dungeon's boss); a fourth cast that missed entirely did not count. Multiplier ×2.0 → ×2.15; Mana cost 12 → 11.
+- **Session totals:** XP 40/700 → **380/700**. Gold 18,030 → 30 (Ghost Quickknife) → 55 (sold Quickknife) → 115 → 2,615 (crystal and Elixir sales) → 2,465 → **1,965** (Stabilization Seal, second key). Mana **15/40**. HP 88/88, never hit across either clear. Cash and USD payouts untouched — gold and mundane money still don't exchange.
+- **Ledgers updated:** `100_CHARACTER_SHEET.md` (gold, Mana, effective Agility, equipment, skills_known, daily_premium purchased flag, pending session narrative), `120_INVENTORY_AND_OWNERSHIP.md` (weapon resale, new instant-dungeon section, generic-holdings restatement), `140_OBJECTIVES.md` (OBJ-2 gold-cycle note), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000096`–`EVT-000099` recorded, added to `REC-000079` subjects), `180_CURRENT_STATE.md` (full state refresh — see below). `110`, `130` unchanged — no world-layer fact or NPC interaction this session.
+- **Repository allocation:** Allocated `EVT-000096`–`EVT-000099`; no entity, record, or relationship identifier minted — nothing here is a new Persistent Object beyond fields on `ENT-000125`.
+
+**2026-07-31, afternoon — Checkpoint 0021.**
+
+Player-requested checkpoint, taken at a quiet pause on the same park bench after two solo instant-dungeon clears. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0021/` with `900_SAVE_MANIFEST.md`. Captured under frozen Profile 1.10 and Data Model 0.1.3 — no migration required on restore. `system/ID_REGISTRY.md` and `system/WORLDS_AND_CAMPAIGNS.md` updated in the same change.
+
+**2026-07-31, afternoon to evening — Profile 1.11 adoption, a third instant dungeon, and a real kiss (`EVT-000100`–`EVT-000103`).**
+
+- **Profile 1.10→1.11 adopted (`EVT-000100`).** Additive item-diversity advance: future boss equipment carries a Boss Imprint, future Daily Premium categories draw from a bag without replacement from the next rotation, future dropped runes/books settle duplicates by a closed rule, and a fabrication series distinguishes later rotations. Nothing recomputed or repriced.
+- **Third instant dungeon (`EVT-000101`), archetype Frozen Gallery.** Mana recovery halved for the clear. Population 7 common/2 elite/1 boss. Killed 1 common at entry (legendary unseen strike), then an elite + 2 commons in a first chamber (Rupture legendary on the elite, dagger kills on both commons), then a second elite + 2 of four commons in an antechamber guarding the boss (unseen strike + same-spot follow-up on the elite, a simultaneous two-dagger kill on the stirred commons). **The boss** — a Carapaced, Impact-signature ice brute — took the opening unseen strike as a **natural fumble**; its reflexive counter landed for real (HP 88→62). Claimed a Status Recovery (HP/MP to maxima), then a four-part Rupture–Flash Step–dagger–Rupture combo (two partial successes, one success) during which the boss's own counter landed again (HP 88→68). A calculated finishing strike ended it **legendarily**. Boss drop: a fresh Instant-Dungeon Key [E-Rank]. **XP 380 → 580/700.** Loot: 8 crystals, 3 cores. No injury tier; Mana **10/40** at close.
+- **Back on the bench (`EVT-000102`).** Texted Owen (*"Done. 9k in my pocket. Starving. Dinner's on me."*), sold all 15 banked crystals for 150 g — **gold 1,965 → 2,115**. Owen replied within minutes; revealed for the first time to own a car (a two-year-old Honda Civic) and drove to collect Alexander after a grocery stop.
+- **The apartment, evening (`EVT-000103`).** Two relationship-history facts settled: the boat scene (`EVT-000087`) stands as their **first real kiss**, distinct from the physical intimacy the night before it; and a previously blank night is filled — **Owen stayed at Alexander's own apartment the night of 2026-07-28**, after the beer/exposure conversation, a genuine gap fill rather than a correction. Inside the kitchen, Alexander kissed Owen unplanned, mid-sentence — the day's first uncalculated act, answering the unweighed *"I already miss you"* text from earlier. No Stat, XP, or item change from this beat.
+- **Session totals:** XP 380/700 → **580/700**. Gold 1,965 → **2,115**. HP **68/88**, Mana **10/40**, no injury tier. Cash and both pending USD payouts (≈$9,450 Ashfield, ≈$9,000 Sable & Kern) unchanged, still processing.
+- **Ledgers updated:** `100_CHARACTER_SHEET.md` (profile_version, XP, HP, Mana, pending rewards, gold, shop_holdings, Rupture mastery-progress note, condition, situation narrative), `120_INVENTORY_AND_OWNERSHIP.md` (third-clear section, crystal sale, gold restatement), `130_NPCS_AND_FACTIONS.md` (Owen's location and car fact, `REL-000066` texture — first-kiss clarification, the 2026-07-28 gap fill, tonight's kiss), `140_OBJECTIVES.md` (OBJ-2 gold-cycle note), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000100`–`EVT-000103` recorded, added to `REC-000079` subjects), `180_CURRENT_STATE.md` (full state refresh — see below). `110` unchanged — no world-layer fact moved.
+- **Repository allocation:** Allocated `EVT-000100`–`EVT-000103`; no entity or relationship identifier minted — the car and the 2026-07-28 stay are fields/texture on existing `ENT-000139`/`REL-000066`, not new Persistent Objects.
+
+**2026-07-31, evening — Checkpoint 0022.**
+
+Player-requested checkpoint, taken at Owen's apartment in Rogers Park while dinner cooks, after Profile 1.11 adoption, a third solo instant-dungeon clear, and the evening's reunion. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0022/` with `900_SAVE_MANIFEST.md`. Captured under frozen Profile 1.11 and Data Model 0.1.3 — no migration required on restore. `system/ID_REGISTRY.md` and `system/WORLDS_AND_CAMPAIGNS.md` updated in the same change.
+
+**2026-07-31, night — dinner, the three-boss disclosure, and a weekend planned (`EVT-000104`).**
+
+- **The largest voluntary disclosure yet.** Over dinner Alexander told Owen he'd killed three bosses that afternoon, alone. Owen's reaction was real alarm, an unbidden mender's read finding nothing wrong, and the held promise not to ask how — still short of naming the System, but the first concrete, verifiable fact Alexander has volunteered.
+- **Gear commitment restated.** Alexander confirmed, as a funded plan, that he intends to properly equip Owen — hands, boots, real protection — addressing the gap Owen named at the bar weeks ago. Proposed bringing Owen along to a future Dale-brokered mining job.
+- **Weekend planned.** Owen confirmed free all weekend but for two short pending items (Renata's sensor rig, a firm training date for Priya). Tomorrow: jet skis, then the lake.
+- **`REL-000066` deepened** — *"I'll give you all the evenings,"* said off guard, landed harder than anything rehearsed. Showered and went to bed together.
+- **No XP, Stat, gold, or item change this event.**
+- **Ledgers updated:** `100_CHARACTER_SHEET.md` (condition, situation narrative), `130_NPCS_AND_FACTIONS.md` (Owen's location, `REL-000066` texture), `140_OBJECTIVES.md` (OBJ-10 disclosure progress, OBJ-11 gear commitment), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000104` recorded, added to `REC-000079` subjects), `180_CURRENT_STATE.md` (full state refresh — see below). `110`, `120` unchanged.
+- **Repository allocation:** Allocated `EVT-000104`; no entity, record, or relationship identifier minted.
+
+**2026-08-01, pre-dawn — Checkpoint 0023.**
+
+Player-requested checkpoint, taken with both asleep at Owen's apartment, next session to resume at the morning wake-up rather than jumping ahead to the lake. All eight canonical campaign ledgers copied to `saves/900_CHECKPOINT_0023/` with `900_SAVE_MANIFEST.md`. Captured under frozen Profile 1.11 and Data Model 0.1.3 — no migration required on restore. `system/ID_REGISTRY.md` and `system/WORLDS_AND_CAMPAIGNS.md` updated in the same change.
+
+**2026-07-31, night — Profile 1.11 → 1.12 skill tracking adopted (`EVT-000105`; no fictional time consumed).**
+
+- Every skill now carries a lifetime successful-use count; mastery-tracked skills carry lifetime qualifying scenes and exact current progress.
+- Evidence-backed backfill: Stone Skin **1 use / 0 qualifying / 0/3**; Rupture **6 uses / 5 qualifying / 2/3 toward Adept**; Flash Step **1 use / 1 qualifying / 1/3**; Rank-Sight and Overpower **0 explicitly demonstrated applications**, no mastery track.
+- No skill Rank, effect, Mana cost, mastery level, combat result, or other campaign value changed. Immutable checkpoints through 0023 remain unchanged and require the applicable schema/profile readiness chain through Data Model 0.1.4 and Profile 1.12.
+
+**2026-07-26 repository time — transcript-backed first-night continuity repair (`EVT-000106`; no fictional time consumed).**
+
+- Audited the supplied durable Claude-session export against `EVT-000081`, `REL-000066`, and Checkpoints 0022–0023. The export confirms that after the 2026-07-28 true-C-Rank Ashfield clear, Alexander and Owen drank beer together until Owen fell asleep, Alexander paid the tab and took him by taxi to Alexander's studio, and they slept together in Alexander's bed for roughly fourteen hours, Alexander's arm around Owen. The next morning included the pillow fight, shared shower, teasing, and filing discussion.
+- Corrected the later framing introduced by `EVT-000103`: the night was not canonically blank, and 2026-07-29 into 2026-07-30 was not their first overnight. The 28th–29th at Alexander's was the first overnight and established romantic/physical intimacy; the 29th–30th at Owen's was the later night when both explicitly named what they wanted.
+- Updated `REL-000066` state, the Chronicle, this changelog, and Current State. No present location, mechanical state, XP, Stat, Health, Mana, item, objective, NPC knowledge, or fictional time changed. Checkpoints 0022 and 0023 remain byte-unchanged under Rules Section 13.2 and are superseded as the latest restore target by corrective Checkpoint 0024.
+- Repository allocation: `EVT-000106`; no entity, record, or relationship identifier minted.
+
+**2026-07-31, 23:00 Chicago time — Profile 1.12 → 1.13 canonical clock and automatic recovery adopted (`EVT-000107`; no fictional time consumed).**
+
+- Added the exact settlement anchor `2026-07-31T23:00:00-05:00`, resting Mana/Health modes, and zero fractional carry to Alexander's live System state.
+- Preserved Health **68/88** and Mana **10/40** exactly at migration. No pre-anchor recovery was inferred. Future elapsed time settles automatically before the next action under Profile Sections 5.2 and 6.1.1.
+- Checkpoint 0024 remains immutable under Profile 1.12 / Data Model 0.1.4. Restoring it runs the 1.12→1.13 readiness migration against mutable state before play.
+- Repository allocation: `EVT-000107`; no entity, record, or relationship identifier minted.
+
+**2026-08-01, morning — a key, a birthday, and the eighth daily (`EVT-000108`).**
+
+- Woke 07:18 at Owen's with both pools restored overnight. The 06:00 rotation had issued the **eighth daily quest** and rolled a Cobalt-series Daily Premium cycle whose rune offer would have raised the already-known Rupture from E-Rank to **C-Rank for 50,000 g** — priced, viewed, and left; roughly 48,000 g beyond balance.
+- **Eighth daily completed** on the Loyola Park lakefront by ~08:00. **Streak 7 → 8.** Owen took 5 km plus a scaled 40/40/40 — his third consecutive session and a voluntary increase on the second. Three rewards banked pending.
+- **Owen gave Alexander a key to his apartment** — the one spare set, the same escalation as the drawer four days earlier. **Owen's birthday established: 14 September.**
+- **Sensor-rig commitment opened.** Owen diagnosed Renata's rig as a hairline fracture in the resonance crystal (≈$400 crystal + ≈$150 labour), and Alexander committed to buying him a full licensed rig of his own — *the best one* — as a 14 September birthday present, low thousands of USD by Owen's estimate. A separate Christmas present is now also owed.
+- **Ledgers updated:** `100` (daily quest, premium cycle), `110` (sensor-rig and trading-field knowledge rows), `130` (Owen's location, condition, situation; `REL-000066` texture), `140` (OBJ-2 gift commitment), `160` (`EVT-000108`), `180`.
+- **Repository allocation:** `EVT-000108`; no entity, record, or relationship identifier minted.
+
+**2026-08-01, mid-morning — the fourth instant dungeon, archetype Crypt (`EVT-000109`).**
+
+- Used the key banked from the third clear. **Crypt** — total darkness, ambush check, −1 step on sight-dependent actions. Population 12 common / 1 elite / 1 boss.
+- All 12 commons, the elite, and the boss killed. **Never hit; Health held at maximum the entire clear.**
+- **Level 7 → 8** on the trash-and-elite XP (140), settling all five base Stats +1, +5 unspent points, maximum Health 88 → 108 and Mana 40 → 42, both restored. Boss kill 40 + E-Rank clear milestone 70 → **XP 130/800**.
+- **Rupture's mastery advanced Practiced → Adept** (third qualifying scene at Practiced): ×2.15 → **×2.30**, Mana 11 → **10**.
+- Loot **14 E-Rank crystals**, **2 cores**, boss drop d100 87 → a fresh **Instant-Dungeon Key [E-Rank]**. All 14 crystals sold, **gold 2,115 → 2,255**.
+- **Ledgers updated:** `100` (level, XP, stats, pools, skills, gold), `120` (clear and sale), `140` (OBJ-2 gold), `160` (`EVT-000109`), `180`.
+- **Repository allocation:** `EVT-000109`; no entity, record, or relationship identifier minted.
+
+**2026-08-01, afternoon to night — the lake (`EVT-000110`).**
+
+- Owen's boat and jet skis. Three heats: Owen won the first two on course knowledge, the third a genuine photo finish both claimed.
+- **Alexander and Owen slept together on the boat**, anchored, in the open afternoon — a `REL-000066` first, distinct from the apartment nights.
+- No Gate, no crew business, no System spend, no mechanical change of any kind.
+- **Ledgers updated:** `130` (`REL-000066`), `160` (`EVT-000110`), `180`.
+- **Repository allocation:** `EVT-000110`; no entity, record, or relationship identifier minted.
+
+**2026-08-02, morning — the ninth daily, a breakfast contract, and a training date (`EVT-000111`).**
+
+- The 06:00 rotation issued the **ninth daily quest** and rotated the Daily Premium tab to a fresh **Umbral** cycle (d8 7). The 2026-08-01 Cobalt cycle **expired 0 of 6**, taking the C-Rank Rupture rune with it. New Rank rolls: weapon E, armor **C (+2)**, accessory D, rune E, key **B (+3)**.
+- **Ninth daily completed** by ~08:00. **Streak 8 → 9.** Alexander granted Owen an exemption from the run, priced it, and then walked him past it into the longest run of his life without mentioning the exit remained open; Owen caught it two kilometres in and ran it anyway, plus a scaled 50/50/50. Neither the eighth nor ninth completion landed on a multiple of seven, so neither box was streak-upgraded.
+- **Standing arrangement established:** Alexander buys every breakfast; no eggs after 10 AM.
+- **OBJ-11 scheduled at last.** After four days of drift, the crew's first training session was fixed for **18:00 on 2026-08-02 at the Coalition trading field**; Priya, Julian, and Renata all confirmed within minutes. This is the first exercise of the tactical command Priya ceded on 2026-07-29.
+- **Exposure:** Alexander answered "what did you do with those two hours" with *I went on a killing spree* — laughing, and not lying. Owen heard it correctly, asked nothing, and kissed him. **Fifth impossible thing filed without a question.**
+- **Ledgers updated:** `100` (daily quest, premium cycle), `110` (trading-field row), `130` (Owen, `REL-000065`, `REL-000066`), `140` (OBJ-10, OBJ-11), `160` (`EVT-000111`), `180`.
+- **Repository allocation:** `EVT-000111`; no entity, record, or relationship identifier minted.
+
+**2026-08-02, midday — the crew dossiers (`EVT-000112`).**
+
+- An afternoon at his own desk producing written per-member tactical files on Priya, Julian, and Renata — strengths, failure points, and individual-versus-formation performance — plus the formation plan that came out of them.
+- Each of the three carries a **blank private evaluation box** meaning *worth building around, or not.* **Owen's is the only one already ticked, and nothing new was written under it.**
+- No mechanical change; qualitative capability and objective state only. Undelivered to the crew as of this checkpoint.
+- **Ledgers updated:** `100` (situation), `130` (`REL-000065`), `140` (OBJ-11), `160` (`EVT-000112`), `180`.
+- **Repository allocation:** `EVT-000112`; no entity, record, or relationship identifier minted.
+
+**2026-08-02, afternoon — the fifth instant dungeon, archetype Flooded Mine (`EVT-000113`).**
+
+- Used the Crypt's dropped key. **Flooded Mine** — standing water, −1 step on Strength and Agility actions, drowning risk. Population 12 common / 2 elite / 1 boss.
+- All 12 commons, both elites, and the boss (Serpentine body family, Control signature) killed. He went under once losing footing against the second elite and was **never struck**; Health held at 108/108.
+- Boss kill 40 + clear milestone 70 → **XP 290 → 400/800**. Loot **15 E-Rank crystals**, **3 cores**, boss drop d100 34 → equipment → **Gale Torso [E-Rank]**.
+- **Flash Step's mastery advanced Novice → Practiced** on the boss opener — its third distinct qualifying scene. Mana 8 → **7**; effect now covers one further exchange. **Settlement correction:** this advance was earned in play and was not surfaced when it fired; it is settled here at the promotion barrier under the resident Turn-State Settlement obligation. No resolved roll or outcome changes, since Flash Step's modifier-step contribution is unchanged at Practiced and every affected roll had already resolved.
+- **Ledgers updated:** `100` (XP, skills), `120` (clear and loot), `140` (OBJ-2), `160` (`EVT-000113`), `180`.
+- **Repository allocation:** `EVT-000113`; no entity, record, or relationship identifier minted.
+
+**2026-08-02, 16:00–16:20 — settlement: two milestones, two runes, a broken key chain (`EVT-000114`).**
+
+- **Sold** 15 crystals (150 g) and the Gale Torso (15 g, declined rather than equipped — it would have cost 12 maximum Health for one point of Agility). **Opened** both banked Daily Random Boxes: d100 58 → 500 g purse; d100 91 → ranked E-Rank gear → **Quickstep Charm [E-Rank]**, banked unequipped.
+- **Claimed all three banked Ability Points +3 awards** (unspent 5 → 14) and allocated every point: **Agility +3 (→30), Intelligence +9 (→30), Vitality +2 (→25)**. Two thresholds crossed in one settlement, granting the stat-milestone skills **Pre-empt** (Agility 30) and **Multitask** (Intelligence 30). Maximum Health 108 → **116** filled; maximum Mana 42 → **60**, preserving the missing amount to 38/60 per Section 4.1. **Unspent points 0.**
+- **Bought two standard-catalogue E-Rank skill runes** (1,000 g each) rather than the Daily Premium rune, whose E-Rank Rank roll priced an identical teaching at 2,500 g. Learned **Keen Sense** and **Dagger Mastery**; both Quickknives now resolve at **×0.85**. **Gold 2,920 → 920.**
+- **No instant-dungeon key remains** for the first time since `EVT-000097` — the self-sustaining chain broke when the Flooded Mine boss rolled equipment. **Four Status Recoveries banked and nothing else.** Cash unchanged at $18,881; both payouts still processing.
+- **Exact settlement anchor advanced to `2026-08-02T16:20:00-05:00`**, both recovery modes `resting`, zero fractional carry, Mana settled to **43/60** across the twenty-minute interval.
+- **Ledgers updated:** `100`, `120`, `140`, `160` (`EVT-000114`), `180`.
+- **Repository allocation:** `EVT-000114`; no entity, record, or relationship identifier minted.
+
+**Concurrency note (2026-07-26 repository time).** This gameplay checkpoint was interrupted mid-algorithm by a second, unrelated Architect-mode writer performing the Profile 1.13 → 1.14 quest repair below. The gameplay session halted before writing the chronicle, changelog, current state, registry, or checkpoint, reported a partial checkpoint, and resumed only after the other writer finished — so the two sets of writes are sequential rather than interleaved. The Architect writer deliberately allocated `EVT-000115`, leaving `EVT-000108`–`EVT-000114` free for this session, and amended the gameplay session's live-ledger edits rather than overwriting them; no gameplay write was lost. One incidental defect introduced during that overlap was corrected here: `EVT-000107`'s top-level `game_date` had been changed to 2026-08-02 16:20, contradicting both its own `provenance.game_date` and its description, and has been restored to **2026-07-31 23:00 -05:00**. The standing one-exclusive-writer-during-play requirement (Runtime Profile, Persistence Preflight) was breached and is recorded here for the second time in this campaign.
+
+**2026-08-02, 16:20 Chicago time — Profile 1.13 → 1.14 Urgent/Hidden quest repair adopted (`EVT-000115`; no fictional time consumed).** *(Architect-mode writer; see the concurrency note above.)*
+
+- **Closed non-daily quest contract.** Urgent and Hidden are now implemented under Profile Section 8.4 with exact triggers, capacity, offer/attachment behavior, abandonment, settlement, rewards, canonical fields, and `/system quests` rendering. Default non-daily capacity is 1; Multitask raises it to 2 and Analyst to 3. Daily and class quests retain reserved slots.
+- **Live migration.** Added `system_state.non_daily_quests` with base capacity 1, Multitask bonus 1, Analyst bonus 0, total capacity 2, and empty active/offer lists. Alexander's base Intelligence reached 30 in `EVT-000114`, so Multitask applies immediately. No missed quest was reconstructed and no campaign objective was converted into System state.
+- **Nothing recomputes.** No fictional time, XP, reward, Stat, pool, item, skill, daily quest, relationship, location, or resolved outcome changed. Checkpoint 0024 remains immutable at Profile 1.12 and runs the 1.12→1.13→1.14 chain on restore.
+- **Ledgers updated:** `100_CHARACTER_SHEET.md` (profile version, adoption event, non-daily quest state), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000115`), `170_CHANGELOG.md`, and `180_CURRENT_STATE.md`; startup and world index bindings advanced to Profile 1.14.
+- **Repository allocation:** Allocated `EVT-000115`; no entity, record, or relationship identifier minted.
+
+**2026-08-02, 16:20–21:50 — the crew's first training session, and telling them (`EVT-000116`).**
+
+- **Automatic context-preservation checkpoint.** Written under the resident Context-Preservation Watch after 28 resolved player exchanges since Checkpoint 0025, past the profile's 20-exchange fallback cadence. No fiction advanced past the 21:50 anchor before the write.
+- **Training delivered (OBJ-11).** Formation briefing from memory; light unarmed sparring with each crew member in order of combat experience; two hours walking the formation with the call form fixed as *who, what, where*; Renata's deliberate-sabotage passes folding it twice; the spend-call rule accepted aloud by Owen. **Next session 2026-08-09**, same field and time. Standing order: **no Gate before at least one further training**, with Priya watching the board.
+- **Rolls resolved (5).** Priya's opening combinations read (d100 33, net +2, effective 73, success); Alexander's counter-takedown and pin (d100 15, net +3, effective 75, success); Julian taken at zero range (d100 75, net +3, effective 95, strong success); Renata's full assault defended untouched for ~40 seconds (d100 66, net +3, effective 100, legendary success); Owen's second, committed strike (d100 48, net +1, effective 68, success).
+- **Health.** Owen's landed punch resolved as a C-Rank hunter's unarmed strike under Section 6.2 — (250 ÷ 4) × 0.5 chassis × 1 standard result × (1 − ≈0.23 reduction) = **24 damage, Health 116 → 92/116**. No injury tier reached under Section 6.3. Owen's resolved off-Gate treatment touch restored it: **92 → 116/116**.
+- **Skills.** **Overpower's first explicitly demonstrated material application** — a controlled pin of D-Rank Priya Okafor, exactly the one-Rank-above envelope Section 4.4 authorizes. Successful material applications 0 → 1; no mastery track exists for stat-milestone passives.
+- **Temporal settlement.** Anchor advanced `2026-08-02T16:20:00-05:00` → `2026-08-02T21:50:00-05:00`. Mana settled 43/60 → **60/60** across the active evening span, remainder zeroed at full; both recovery modes `resting` with zero carry at the new anchor.
+- **No XP, gold, cash, item, equipment, or quest change.** No monster was fought; sparring and training award nothing under Section 3. Non-daily System quest slots remain **0/2** with no pending offer; the profile-declared proactive trigger audit (Sections 8.4, 14.3) was run at the scene opening and after each resolved exchange and produced no eligible Urgent or Hidden quest at any point.
+- **The relationship is now known to the crew (`REL-000066`, OBJ-10).** Owen told Priya, Julian, and Renata at the close of the session, at Alexander's request that it wait until after the drill. Priya congratulated both and then asked, once and in the open, whether the field commander's spend-call survives either of them bleeding — accepting the punch as an answer to Owen's half and naming Alexander's half untested. Renata had already deduced it.
+- **First direct inquiry into Alexander by anyone but Owen.** Renata asked *who are you, exactly?*, citing the gap between the filed Ashfield report and what she had just watched. He deferred; she let it go by choice. Recorded as a live social pressure on OBJ-10, not an investigation.
+- **OBJ-12 advanced, undecided.** Owen stated his objections (never led; fears a name-on-postings/voice-in-field structure) and that the training killed half his own argument for leaving; he will not decide until he has seen this crew run the formation on a real job. Alexander stated for the first time that he does not expect to stay on this crew long-term, expecting the command shift to collide with Priya eventually, and explicitly refused to use that to recruit Owen.
+- **Ruling adopted (owner, this session).** Owen's *keys are back on the hook* text was theatre: he had already driven his car to the Coalition and rode the Red Line back the wrong way so the two of them would arrive on foot together. Recorded as a `REL-000066` texture entry.
+- **Ledgers updated:** `100_CHARACTER_SHEET.md` (condition, pools, temporal anchor, Overpower, session narrative), `130_NPCS_AND_FACTIONS.md` (Priya, Julian, Renata, Owen, `REL-000065`, `REL-000066` state and texture), `140_OBJECTIVES.md` (OBJ-10, OBJ-11, OBJ-12), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000116`), `170_CHANGELOG.md`, `180_CURRENT_STATE.md`. `110_WORLD_LEDGER.md` and `120_INVENTORY_AND_OWNERSHIP.md` were opened and required no change: no new place, knowledge row, item, or currency movement occurred.
+- **Repository allocation:** `EVT-000116`; no entity, record, or relationship identifier minted.
+
+**2026-08-03, 06:05 Chicago time — Profile 1.14 → 1.15 high-Rank sponsor exception adopted (`EVT-000117`; no fictional time consumed).**
+
+- **Owner ruling.** Section 9.4 gains an additive exception: a **confirmed E-Rank** contract may be posted to and bid by a party of **any size** when one member holds a **C-Rank or higher** licence; a **confirmed D-Rank** contract likewise behind **B-Rank or higher**.
+- **Two edges fixed by ruling.** Confirmed assessments only — unconfirmed Gates keep the ordinary floors of 8 (or 5 under waiver), so a sponsored pair cannot be surprised by a true Rank two bands above them. And a sponsored posting is sanctioned, so **hunter insurance applies normally**; the solo-entry void stands for anyone crossing outside such a posting.
+- **Nothing recomputes.** Legal minimums (Section 13.3) untouched, contract terms unchanged, no completed clear, filed report, or split reopened. No Stat, pool, XP, gold, item, skill, quest, or streak value changed.
+- **Campaign consequence.** Owen Callahan (`ENT-000139`) is C-Rank, so a two-person confirmed-E-Rank clear with him sponsoring is now legal, postable, and insured. None sought or signed.
+- **Ledgers updated:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` (version, compatibility treatment, Section 9.4 clause), `090_CAMPAIGN_STARTUP.md`, `100_CHARACTER_SHEET.md` (profile version and adoption event), `160_CAMPAIGN_CHRONICLE.md` (`EVT-000117`), `170_CHANGELOG.md`, `180_CURRENT_STATE.md`, `system/WORLDS_AND_CAMPAIGNS.md` (world row).
+- **Repository allocation:** `EVT-000117`; no entity, record, or relationship identifier minted.
+
+
+**2026-08-03, 06:00–09:40 — the sponsor contract, the Runic Key, and Owen's first gear (`EVT-000118`).**
+
+- **Daily Premium rotated.** The 2026-08-02 Umbral cycle expired **0/6**, taking the Adaptive Titan Torso [C-Rank] with it. The 2026-08-03 cycle rolled **Verdant** (d8 5): Farline Longshot [D-Rank] 900 g (d100 79), Adaptive Bastion Torso [E-Rank] 120 g (d100 25), Ascendant Hunter's Band [D-Rank] 720 g (d100 56), Sovereign Panacea 600 g, Premium Rune teaching **Sprint [E-Rank]** 2,500 g (d100 12; d10 1, unknown skill so no reroll), **Runic Key [E-Rank]** 1,000 g (d100 5).
+- **Gold 920 → 12.** Sold 6 Lesser Healing Potions (12 g each, +72) and the never-equipped Quickstep Charm (+20) to close an 80 g gap, then bought the **Runic Key** for 1,000 g — its boss drops a guaranteed rune on top of the normal boss-drop roll. Cycle now 5/6 remaining. Potions 10 → 4.
+- **Tenth daily completed** on the Rogers Park lakefront by ~07:50, Owen's fifth consecutive coached session. **Streak 9 → 10**; not a multiple of seven, so no box upgrade (next at 14). Pending rewards now **Ability Points +3 ×1 · Status Recovery ×5 · Daily Random Box ×1**.
+- **Profile 1.15 applied in play.** The two-person clear was booked under the high-Rank sponsor exception adopted at `EVT-000117`: **Owen Callahan, C-Rank, sponsor of record.**
+- **Contract booked (`ENT-000130`, Kesha Morrison).** Cicero substation service tunnel, **confirmed E-Rank**, 50/50, no leader's share, flat posted rate, declared at exit, licences before 11:00, mouth by 13:00. Declined a West Town basement job with a residential mouth. Kesha asked twice whether Owen knew what he was signing, and **now knows about the relationship** — the first person outside Priya's crew.
+- **Cash $18,881 → $28,331 → $9,831.** The **≈$9,450 Ashfield share landed**; the ≈$9,000 Sable & Kern share is still processing. **$18,500 spent at Horizon Outfitters on gear for Owen** — Horizon Bastion Gauntlets [C-Rank] $12,500 (8%), Horizon Bastion Torso [D-Rank] $3,000 (5%), Horizon Bastion Boots [D-Rank] $3,000 (5%) — **owned by Owen**, bought over his objection when he tried to buy himself E-Rank kit. Ranked gear gives an ordinary hunter reduction and build quality only, never Stats (Section 11.5).
+- **New objective OBJ-13** — show Owen what he is, inside a Gate — with Owen's own rule of engagement recorded: one beast alone, a second on him is Alexander's, and he says the word and gets no vote if he is hurt enough to want a touch.
+- **Anchor advanced** `2026-08-02T21:50:00-05:00` → `2026-08-03T09:40:00-05:00`; both pools full, both recovery modes `resting`, zero carry. No XP, no injury, no equipment change for Alexander.
+- **Trigger audit** (Sections 8.4, 14.3) run at every scene opening and after each resolved exchange: no eligible Urgent or Hidden quest. Non-daily slots **0/2**.
+- **Ledgers updated:** `100`, `120`, `130` (Owen, Kesha Morrison, `REL-000066` texture), `140` (OBJ-13), `160` (`EVT-000118`), `170`, `180`. `110_WORLD_LEDGER.md` opened and unchanged.
+- **Repository allocation:** `EVT-000118`; no entity, record, or relationship identifier minted. The Horizon clerk is unnamed scene colour and mints nothing.
+
+**2026-08-03, 13:00–16:00 — the Cicero Gate: entry, the alpha pair, and the truth about pocket gates (`EVT-000119`–`EVT-000121`).**
+
+- **Gate resolved.** Confirmed E-Rank held (confirmed Gates skip the true-Rank roll). Archetype rolled **Beast Den** (d8 5) — two boss-Rank alphas instead of one. Population rolled **8 common / 1 elite / 2 boss-Rank** (3d6=8, 1d2=1).
+- **Corridor rolls (7).** Tactical read (d100 37, net +1, effective 57, partial success); Keen Sense re-read (Mana 60→58; d100 33, net +2, effective 73, success); Owen's first solo kill (d100 93, net +2, legendary); Alexander's two pocket sweeps (d100 97 natural legendary; d100 73, legendary); Owen's second and third solo kills (d100 40, net +2, effective 80, success, minor graze absorbed; d100 66, net +2, legendary); the elite's unseen dagger-and-Rupture kill (d100 68, d100 67, both legendary; Mana 58→48).
+- **XP from the corridor:** elite kill +20, no underdog bonus (elite at Bearer's own System Rank). **400 → 420/800.**
+- **Alpha-pair rolls (6).** Shared tactical read (d100 38, net +2, effective 78, success); Alexander's opening exchange (d100 24, net +2, effective 64, success; Mana 48→38); Owen's defense against the plated alpha's slam (d100 29, net +2, effective 69, success); the leaner alpha's finish (d100 59, net +3, legendary; Mana 38→28); Flash Step's opening on the plated alpha (Mana 28→21) and the joint finishing strike (Alexander d100 80, net +3, legendary; Owen d100 94, net +2, legendary).
+- **Gate cleared.** XP from both boss kills (+40 each, no underdog bonus) plus the E-Rank Gate-clear milestone (+70): **420 → 570/800.** No level threshold crossed (800 needed for Level 8→9).
+- **Boss-drop rolls (4).** Leaner alpha: d100 96 (91–97, skill book); d10 10 → **Bulwark [E-Rank]**, learned. Plated alpha: d100 28 (01–40, equipment); d20 20 (open player choice) → **Quickknife**, chosen; d6 1 (finish). Composed as a **Boss-Imprinted Quickknife [E-Rank]** — weapon power 2, ×0.75, dual-wieldable; body-family Vitality point inapplicable to an ordinary hunter (Section 11.5); signature Echo live: +1 modifier step, once per scene, on a Strength action to break, shove, or resist forced movement. Given outright to Owen — his first weapon.
+- **Loot tally, whole clear:** 11 E-Rank crystals (one per beast), 3 E-Rank cores (elite + both alphas — the Gate's only core-capable kills). No wall deposits mined.
+- **The core declaration.** Alexander asked Owen to fold his 11 private, unregulated E-Rank cores into the report. Owen refused blind, asked their origin, and was told the truth: a private, solo-only form of Gate ("a pocket gate") — the largest single mechanism-level disclosure of the campaign, still short of naming the System. Owen agreed to help once informed, on condition the number stay plausible; settled on **2 extra cores** (5 declared total, not 11). Owen corrected the report live with Kesha Morrison (d100 83, net +2, legendary) — accepted without further question, since nothing external exists to check a Gate's population against (Section 13.4, the Witness Rule).
+- **Declared and sold:** 11 crystals ($1,650) + 5 cores ($1,875) = **$3,525**, split 50/50 — **≈$1,762.50 each**, pending 1–2 business days. Private core stash: **11 → 9**.
+- **Objective settlement.** **OBJ-13 complete** — the clear happened as planned, and the core-declaration conversation closed the last unexplained gap between them. **OBJ-10 escalated** — pocket gates disclosed to Owen; he is now, by his own choice, complicit in concealing part of it, not merely declining to ask.
+- **Temporal settlement.** Anchor advanced `2026-08-03T09:40:00-05:00` → `2026-08-03T16:00:00-05:00`. Mana settled at **21/60** (spend only — Keen Sense 2, three Rupture casts 30, Flash Step 7 — no elapsed-time recovery credited within the clear itself); Health held at maximum throughout, never hit. Both recovery modes `resting`, zero carry, at the new anchor.
+- **Trigger audit** (Sections 8.4, 14.3) run at every scene opening and after each resolved exchange: no eligible Urgent or Hidden quest at any point. Non-daily slots remain **0/2**.
+- **Ledgers updated:** `100` (Mana, XP, skills_known — Bulwark, condition, session narrative), `120` (declared loot, core count, Quickknife transfer, cash pending line, stale-cash correction), `130` (Owen's condition/situation, `REL-000066` state and texture), `140` (OBJ-13 complete, OBJ-10 escalated, OBJ-2 financial note), `160` (`EVT-000119`–`EVT-000121`), `170`, `180`. `110_WORLD_LEDGER.md` opened and unchanged — no new world-layer fact.
+- **Repository allocation:** `EVT-000119`–`EVT-000121`; no entity, record, or relationship identifier minted. The Boss-Imprinted Quickknife is inventory content on `ENT-000139`'s ledger entry, not a new Persistent Object.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.15 → 1.16 Daily Premium persistence repair adopted (`EVT-000125`; no fictional time consumed).**
+
+- **Frozen migrating advance.** Section 12.5 now names each compact category bag's remaining entries and previous draw as the sole operational source for ordinary rotation. Expired rotations are provenance and are not replayed.
+- **Legacy repair.** A restored Profile 1.11-or-later state missing a complete category bag initializes only that category from the full model set minus the active cycle's model and begins using it at the next rotation. Existing complete bags remain authoritative.
+- **Live migration.** All five Pendragon bags were already complete and settled through the 2026-08-03 draw, so they were preserved exactly. The 2026-08-04 cycle remains unrolled; no model, Rank, series, offer, purchase flag, gold, item, quest, pool, Stat, skill, expired cycle, or resolved outcome changed.
+- **Versions.** `system_state.profile_version` 1.15 → 1.16. Engine 0.2.0 and Data Model 0.1.4 remain unchanged. Immutable checkpoints remain byte-unchanged and run the applicable profile chain through 1.16 at readiness.
+- **Repository allocation:** `EVT-000125`; no entity, record, or relationship identifier minted.
+
+**2026-08-03, ~16:15–19:00 — Damen Avenue, dinner, and the pocket-gate promise (`EVT-000122`–`EVT-000123`).**
+
+- **The disclosure.** At Owen's door, Alexander volunteered for the first time that his parents died at the **Damen Avenue Break** (July 2016, ~400 dead — established world canon, `worlds/gatefall/200_WORLD_BIBLE.md` Timeline) when he was fifteen, consistent with the personal-history note already on record. Both parents had awakened in the Gatefall's opening week (March 2016): his mother a university professor, his father an FBI Task Force detective who died alongside her fighting the Break's monsters with no BGM protocol yet chartered to help him (BGM would not exist for another year). Owen received it without pressing, pulled him inside, and the two kissed at the threshold. **Alexander's birthdate fixed: September 17, 2000** — turns 26 later this year, three days after Owen's own birthday (14 September, `EVT-000108`).
+- **Dinner.** Alexander cooked steak and potatoes; Owen set the table under mock protest. Banter proposed turning two-person sponsored Gate clears into a recurring "date." Alexander then committed to showing Owen a pocket-gate clear from the inside, correctly framing it as paying no USD and producing only unprovenanced cores. Caught himself mid-sentence claiming he'd need to find a key — he already has the unused **Runic Key [E-Rank]** banked from that morning's purchase (`EVT-000118`), forgotten since. The demonstration is a live thread, continuing OBJ-13.
+- **No Stat, XP, gold, or item change.**
+- **Ledgers updated:** `100` (`personal_history` — Damen Avenue connection, birthdate), `130` (`REL-000066` state and texture — the disclosure, the dinner, the commitment; Owen's `situation`), `140` (OBJ-13 continuation note), `160` (`EVT-000122`–`EVT-000123`), `170`. `110`, `120` opened and unchanged.
+- **Repository allocation:** `EVT-000122`–`EVT-000123`; no entity, record, or relationship identifier minted. The Damen Avenue Break itself was already established world canon (`worlds/gatefall/200_WORLD_BIBLE.md`); only Alexander's personal connection to it is new.
+
+**2026-08-03 ~19:00 through 2026-08-04, 06:00 — the night, and the eleventh daily (`EVT-000124`).**
+
+- **Uneventful evening.** No further resolution; sleep at the ordinary hour.
+- **06:00 notifications (Tier 1, mandatory).** Eleventh daily quest issued (100/100/100/10km, deadline 00:00 that night, streak 10 unresolved). Daily Premium stock rotated — the Verdant cycle's five unbought offers expired; **the new cycle's six offers were not rolled this checkpoint.** Section 12.5's model-bag draws are without-replacement against state accumulated across every prior rotation; reconstructing that state was flagged mid-session as significant effort and deliberately deferred rather than invented, to avoid recording a bag draw the Runtime did not actually make (Section 12.5: "A Runtime never selects the offers itself"). The cycle will be rolled in full — model-bag draws, the fabrication-series d8, and the five Rank d100 rolls together — the next time the shop is opened. **This is a known, explicitly flagged gap in this checkpoint, not a resolved offer set.**
+- **Temporal settlement.** Anchor advanced `2026-08-03T16:00:00-05:00` → `2026-08-04T06:00:00-05:00` (14 hours). Mana settled deterministically under `resting` recovery from 21/60 to full **60/60** well inside the window (remainder reset to zero per Section 5.2). Health already full (116/116), unchanged.
+- **Trigger audit** (Sections 8.4, 14.3): run at the scene's close; no eligible Urgent or Hidden condition. Non-daily slots remain **0/2**.
+- **Ledgers updated:** `100` (Mana 21→60/60, `temporal_state` anchor, `daily_quest` — eleventh issued, `daily_premium` — rotation flagged pending), `180` (full refresh, new anchor, checkpoint pointer), `160` (`EVT-000124`), `170`. `110`, `120`, `130`, `140` opened and unchanged.
+- **Repository allocation:** `EVT-000124`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — the deferred Daily Premium cycle resolved (`EVT-000126`; no fictional time consumed).**
+
+- With Profile 1.16 adopted (`EVT-000125`), the cycle flagged pending at `EVT-000124` is resolved in full using the compact `model_bags` state already on record — no history reconstruction needed. Fabrication series **Cobalt** (d8 3). Rank rolls against System Rank E: weapon d100 42 → E-Rank, armor d100 67 → **D-Rank**, accessory d100 15 → E-Rank, rune d100 88 → **C-Rank**, key d100 71 → **D-Rank**. Model-bag draws: weapon → Colossus Greatarm, armor → hands/Titan, accessory → Mindspun Loop (bag now empty, refills next draw), consumable → Clarity Phial, key → Crystal Key. Rune skill d10 7 → **Silent Step** (unknown, no reroll).
+- **Six offers, 0/6 purchased** (all unaffordable at 12 gold): Colossus Greatarm [E-Rank] 200 g; Adaptive Titan Hands [D-Rank] 540 g; Ascendant Mindspun Loop [E-Rank] 160 g; Clarity Phial 750 g; Premium Rune teaching Silent Step [C-Rank] 50,000 g; Crystal Key [D-Rank] 4,500 g. Live until 2026-08-05 06:00.
+- **Ledgers updated:** `100` (`daily_premium.cycle` — full resolution replacing the flagged-pending note, `model_bags` advanced), `160` (`EVT-000126`), `170`. `110`, `120`, `130`, `140`, `180` unaffected.
+- **Repository allocation:** `EVT-000126`; no entity, record, or relationship identifier minted.
+- **Checkpoint `900_CHECKPOINT_0029` written**, superseding `900_CHECKPOINT_0028` as the latest restorable checkpoint. Captured under frozen Profile 1.16 / Data Model 0.1.4; no migration required on restore.
+
+**2026-08-04, post-checkpoint — skill-mastery settlement correction (`EVT-000127`; no fictional time consumed).**
+
+- **Player-raised audit.** Asked directly whether skill progress had been tracked properly, cross-checked the Cicero Gate clear (`EVT-000119`–`EVT-000120`) against `skills_known` and found four skills' successful activations never recorded at Checkpoint 0028's promotion barrier — the same class of gap Flash Step already had one correction for (`EVT-000113`).
+- **Corrected, all within one continuous dangerous scene (the whole Gate) per Section 7.4:** Keen Sense uses 0→**1**, qualifying scenes 0→**1** (first use, progress 1/3 toward Practiced); Rupture uses 13→**16**, qualifying scenes 7→**8** (progress 2/3 toward Expert); Flash Step uses 5→**6**, qualifying scenes 3→**4** (progress 1/3 toward Adept); Dagger Mastery uses 0→**2**, qualifying scenes 0→**1** (first material application, progress 1/3 toward Practiced).
+- **No mastery-level threshold crossed; no resolved roll, Gate outcome, XP, or item changes.** `900_CHECKPOINT_0028` remains immutable and uncorrected, retained as historical evidence — this is a live-state correction, not a rewrite of a checkpoint.
+- **Ledgers updated:** `100` (`skills_known` — Rupture, Flash Step, Keen Sense, Dagger Mastery counters and provenance), `160` (`EVT-000127`), `170`. `110`, `120`, `130`, `140`, `180` unaffected.
+- **Repository allocation:** `EVT-000127`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.16 → 1.17 instructional binding and recipient settlement adopted (`EVT-000128`; no fictional time consumed).**
+
+- **Frozen migrating advance.** Every rune and skill book now records a fixed taught technique, teaching Rank, immutable instruction binding, provenance source kind/event, and unused status. Instruction identity is fixed at generation; transfer never rerolls it.
+- **Binding by provenance.** Ordinary catalogue and Daily Random Box instruction is `bearer-only`; Daily Premium, public-Gate boss, instant-dungeon, Runic-Key, and future found/world instruction is `unbound-awakened` unless explicitly authored otherwise; Mastery instruction is `bearer-only`; authored class instruction is `class-bound:<class>`.
+- **Recipient settlement.** An eligible awakened NPC learns the original unknown technique or upgrades a lower version, capped at the NPC's fixed Rank. A same-or-higher known technique leaves the item intact with no reroll. NPC learned techniques create no Stats, XP, Mana ledger, mastery, use counters, or innate mender/warden role package. Bearer consumption alone retains duplicate rerolls and the Mastery fallback.
+- **Live migration.** No held unconsumed rune or skill book exists. The current Cobalt Premium Rune remains **Silent Step [C-Rank]**, 50,000 g, unpurchased; it is now `unbound-awakened`, provenance `daily-premium` / `EVT-000126`, status `unused`, rendered **UNBOUND · NPC-ELIGIBLE**. No identity or Rank reroll occurred. Historical consumed instruction and resolved rerolls remain untouched.
+- **Versions.** `system_state.profile_version` 1.16 → 1.17. Engine 0.2.0 and Data Model 0.1.4 remain unchanged. Checkpoint 0029 stays immutable at Profile 1.16 and runs the migration through 1.17 on restore.
+- **Repository allocation:** `EVT-000128`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.17 → 1.18 dual-wield action packages and Twin Fang adopted (`EVT-000129`; no fictional time consumed).**
+
+- **Owner ruling — offensive packages.** One declared offensive action now selects an ordinary strike, ordinary weapon-plus-active-skill combo, split dual strike against two different targets, or named multi-strike. One offensive active skill may occupy the action unless a named capability overrides it. Flash Step setup, dagger-plus-Rupture, and the Frozen Gallery's two-target dual strike remain legal; unlimited same-target free attacks do not.
+- **Twin Fang earned.** Alexander's successful dual-wield practice in Ashfield (`EVT-000071`), the Frozen Gallery (`EVT-000101`), and Cicero (`EVT-000120`) satisfies Section 7.1. Granted **Twin Fang [E-Rank] ★☆☆☆☆ Novice · Mana 6**: one ordinary Quickknife strike followed by a separately rolled same-target strike with the other Quickknife. Each weapon uses only its own power; Twin Fang cannot combine with Rupture.
+- **Mastery initialized.** Skill-enabled second-strike multiplier ×1.00; successful uses 0; qualifying scenes 0; progress 0/3 toward Practiced. Pre-ratification practice proves acquisition but does not backfill post-acquisition counters. Mastery multipliers are ×1.00/×1.15/×1.30/×1.45/×1.60 and Mana costs 6/5/5/4/4.
+- **No retroactive resolution.** No prior roll, damage result, Mana spend, skill counter, XP, pool, item, quest, or fictional outcome changed. Checkpoint 0029 remains immutable at Profile 1.16 and restores through the compatibility chain to 1.18.
+- **Versions.** `system_state.profile_version` 1.17 → 1.18. Engine 0.2.0 and Data Model 0.1.4 unchanged.
+- **Ledgers updated:** Profile 1.18; campaign startup; character sheet; Chronicle; changelog; Current State; world README; worlds/campaigns index; identifier registry.
+- **Repository allocation:** `EVT-000129`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Data Model 0.1.5 and Profile 1.19 progression audit adopted (`EVT-000130`; no fictional time consumed).**
+
+- **Owner ruling.** Decisions 079 and 080 are accepted into Version 0.3 as explicit Architecture Freeze exceptions.
+- **Counter reconciliation.** All 25 existing Alexander skill-counter fields are stamped with their current value and `baseline_as_of: EVT-000130`. Future changes require Event `counter_deltas` plus the matching stored `current_value`.
+- **Candidate detection.** `gatefall.skill_formation` batches once when a continuous dangerous scene closes, with no per-attack or per-exchange candidate classification. During danger only compact notes for materially successful player-declared methods are retained; the closing Event records the audit, including `none`. A candidate must be deliberate, repeatable, distinct from ordinary/existing capability, materially successful under danger, and evidenced in distinct scenes. Ambiguity becomes `pending-classification`; three scenes become `pending-ratification`.
+- **Twin Fang migration.** The already-ratified technique is represented as a `ratified` candidate with evidence `EVT-000071`, `EVT-000101`, and `EVT-000120`, resolved at `EVT-000129`; counters remain 0/0/0.
+- **Versions.** Live canon Data Model 0.1.4 → 0.1.5; `system_state.profile_version` 1.18 → 1.19. Checkpoint 0029 remains immutable and applies migrations at readiness.
+- **Repository allocation:** `EVT-000130`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.20 meaningful-practice skill formation adopted (`EVT-000131`; no fictional time consumed).**
+
+- **Broader qualifying scenes, cheaper boundary.** `gatefall.skill_formation` audits continuous danger once at scene close and never per action. A bounded consequential-work scene or structured-practice session may qualify when it has a declared objective, uncertain execution or real feedback, and a material result, but only seals compact evidence notes at scene close; all such notes are classified in one batch at the next promotion barrier. Before writing, that barrier also re-counts known combat-skill uses, qualifying scenes, and mastery from the unpromoted action/resource trace, then reconciles every dangerous-scene formation audit against its retained notes and candidate state. Routine daily repetitions, uncontested rehearsal, ordinary attendance, and untested writing remain excluded.
+- **Historical candidate settlement.** Combat Pattern Exploitation and Field Command each reach `pending-ratification`; Nonvisual Combat Mapping is `tracking` at 1/3. Resonance Extraction reaches `pending-ratification` from Cicero Scar, Frozen Gallery, and Halsted Depot. Formation Instruction is `tracking` at 1/3 from the dossier-informed crew training project. Dimensional Weapon Control is `tracking` at 2/3 from the private summon/grip drill and Ashfield pocket-swap feint.
+- **Dimensional boundary.** Ordinary inventory withdrawal is explicitly hand-only and supplies no remote motion. The complete future 3/3 result is pre-authored as **Dimensional Projection [E-Rank]**, Mana 6: deploy and launch one owned portable weapon from a visible, unoccupied point within 5 metres as one ranged physical attack. It remains ungranted.
+- **Versions.** Gatefall Profile 1.19 → 1.20. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the migration at readiness.
+- **Repository allocation:** `EVT-000131`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.21 earned-technique ratification adopted (`EVT-000132`; no fictional time consumed).**
+
+- **Exploit Pattern ratified.** Alexander learns **Exploit Pattern [E-Rank]**, passive, at Novice. A successful deliberate tactical read establishes one Pattern tied to a specific opponent, behavior, weakness, or structure; Alexander gains +1 on every personal action that genuinely exploits it until it is invalidated or the scene ends. The bonus never stacks with itself from the same source. Concurrent Pattern capacity is 1/2/3/4/5 by mastery.
+- **Field Command ratified.** Alexander learns **Field Command [E-Rank]**, passive, at Novice. He may relay an active Pattern to one ally who can perceive and understand the brief call; that ally treats the Pattern as personally understood and gains its +1 when genuinely exploiting it, without making a separate tactical read. Alexander may update the call before the ally's roll, never after. Recipient capacity is 1/2/3/4/5 by mastery. Ordinary communication remains descriptive only and does not transfer the mechanical Pattern.
+- **Resonance Extraction ratified.** Alexander learns **Resonance Extraction [E-Rank]**, passive, at Novice. A successful vein read establishes one Resonance Pattern; he gains +1 on each extraction attempt that follows it until the deposit is exhausted or materially changes, at which point he must recalibrate. The bonus never stacks with itself from the same source. At Novice it applies only to Alexander; later mastery permits 1/2/3/4 instructed miners to follow his calls.
+- **Mastery correction.** Section 7.4 now counts skill-appropriate qualifying scenes rather than dangerous scenes alone: combat skills require materially relevant danger; non-combat skills may advance through consequential work or structured practice with real uncertainty, feedback, and result. One scene contributes at most once to a skill's mastery progress, while each materially improved application still counts as a successful use.
+- **Prospective counters.** All three skills begin at 0 successful uses, 0 qualifying scenes, and 0/3 toward Practiced. Their pre-ratification evidence establishes acquisition only and does not backfill mastery.
+- **Versions.** Gatefall Profile 1.20 → 1.21. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the migration at readiness.
+- **Repository allocation:** `EVT-000132`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.22 mandatory ratification gate adopted (`EVT-000133`; no fictional time consumed).**
+
+- **Authored results are automatic.** When a candidate with a complete profile-authored result reaches its third qualifying scene, the same scene-settlement or promotion-batch Event grants the skill at Novice and records the resolved candidate. It cannot remain pending.
+- **Unauthored results force adjudication.** Every `pending-ratification` candidate is presented in one consolidated queue after settlement. Saving, closing, exporting, and non-advancing OOC work remain available, but no roll, NPC action, time advance, or next-scene narration may occur until the owner ratifies or rejects every queued candidate.
+- **Durable across sessions.** A checkpoint may preserve the queue; `/continue` and readiness must surface it before opening play. Approved ratification atomically authors and grants the skill with zero counters and complete candidate provenance.
+- **Live migration.** Alexander currently has no pending candidate, so no skill, tracked candidate, or counter changes.
+- **Versions.** Gatefall Profile 1.21 → 1.22. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the migration at readiness.
+- **Repository allocation:** `EVT-000133`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.23 System-interface presentation adopted (`EVT-000134`; no fictional time consumed).**
+
+- **Skills split by operation.** The full `/system` window and `/system skills` now render `SKILLS · ACTIVE` followed by `SKILLS · PASSIVE`.
+- **Canonical classification.** A Mana cost places a technique in ACTIVE; the canonical `passive` cost places it in PASSIVE. Ledger order is preserved inside each group, and empty groups still render with `none`.
+- **Presentation only.** No skill, Rank, mastery, cost, effect, counter, candidate, pool, item, quest, currency, fictional time, or prior outcome changes.
+- **Versions.** Gatefall Profile 1.22 → 1.23. Engine 0.2.0 and Data Model 0.1.5 remain unchanged. Checkpoint 0029 remains immutable and applies the additive presentation advance at readiness.
+- **Repository allocation:** `EVT-000134`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00 Chicago time — Profile 1.24 Premium surcharge and instant-dungeon deposit correction adopted (`EVT-000135`; no fictional time consumed).**
+
+- **Premium surcharge:** Future Rank-bearing Daily Premium Weapon, Armor, Accessory, Rune, and Key offers cost 125% of their ordinary same-Rank category anchor, rounded upward to whole gold. Rank rolls, above-Rank access, exclusive effects, model bags, binding, quantity-one scarcity, and expiry remain unchanged. Premium Consumables retain their fixed prices.
+- **Live Cobalt cycle repriced, not rerolled:** Weapon 200→125 g; Armor 540→338 g; Accessory 160→100 g; C-Rank Silent Step Rune 50,000→25,000 g; D-Rank Crystal Key 4,500→2,813 g. Clarity Phial remains 750 g. All models, Ranks, effects, bag state, binding, and 0/6 purchase flags are preserved; gold remains 12.
+- **Instant-dungeon deposit clarified:** Every future instance opens with Section 11.1's `3d6 × Rank multiplier` mineable deposit; Crystal Key fixes the `3d6` result at 18. Unextracted crystals disappear at the boss kill or two-hour closure. No completed instance receives retroactive loot.
+- **Versions:** Gatefall Profile 1.23→1.24. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0029 remains immutable and applies the complete migration chain at readiness.
+- **Repository allocation:** `EVT-000135`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, 06:00-07:50 Chicago time — the morning at Owen's: a nickname, the complaint-tax run, and eleventh daily complete (`EVT-000136`).**
+
+- Texted Dale Pruitt a follow-up on mining work; confirmed his name is under real consideration, answer by Wednesday.
+- New pet name 'Owwiiiie' established over two good-morning kisses; a Texture first for `REL-000066`.
+- Eleventh daily quest completed under a spontaneous 'one km per complaint' house rule — Owen ran 13 km against his usual scaled effort plus his usual scaled calisthenics; Alexander's own 100/100/100/10 km completed clean. Streak 10→11. Rewards pending: Ability Points +3 ×2 total, Status Recovery ×6 total, Daily Random Box ×2 total.
+- Alexander told Owen he didn't want to ask him to lie again (referencing the Cicero core declaration) — a Texture first (proactively named discomfort). Owen reframed it as trust, not use.
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (`system_state.daily_quest`, `pending_rewards`, `condition`, `personal_history`/`situation`), `130_NPCS_AND_FACTIONS.md` (`REL-000066` state and texture).
+- **Repository allocation:** `EVT-000136`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, ~08:00-08:20 Chicago time — two calls: Ada Reyes and Kesha Morrison's news (`EVT-000137`).**
+
+- Ada Reyes: no open harvest work; logged Alexander's name for the next posting.
+- Kesha Morrison: booked a confirmed C-Rank harvest slot with a new, unnamed contractor, staging 14:00 today; relayed that Ada's and Dale's vouching reached a Horizon Guild harvest-liaison contact who asked after Alexander by name.
+- **Ledger updates:** `130_NPCS_AND_FACTIONS.md` (Ada Reyes and Kesha Morrison `situation` fields), `140_OBJECTIVES.md` (OBJ-3 reputation update, new harvest slot noted).
+- **Repository allocation:** `EVT-000137`; no entity, record, or relationship identifier minted.
+
+**2026-08-04, ~08:30-09:15 Chicago time — Wade Bishop's Ironline recruitment pitch at the Red Line Corridor (`EVT-000138`).**
+
+- New NPC Wade Bishop (`ENT-000146`), Ironline Guild recruiter, approached Alexander off coordinator grapevine chatter. Pitched steady strike-contract flow and guild structure; candid that it doesn't lift the E-Rank card's ceiling. Alexander requested proof (a D-Rank strike trial with a properly-Ranked crew, plus a B-Rank harvest trial) before deciding; Wade agreed to both.
+- New relationship `REL-000068` (pending recruitment overture, no commitment).
+- **Ledger updates:** `130_NPCS_AND_FACTIONS.md` (new `ENT-000146` block, new `REL-000068`), `140_OBJECTIVES.md` (new OBJ-14).
+- **Repository allocation:** `ENT-000146`, `EVT-000138`, `REL-000068`.
+
+**2026-08-04, ~09:30-10:15 Chicago time — the pawn shop: Cicero's Quiet and the first core sale (`EVT-000139`).**
+
+- New NPC, the pawnbroker (`ENT-000147`), showed Alexander **Cicero's Quiet [C-Rank]** (named artifact, Section 11.6), quoted $35,000, murky provenance. Confirmed genuine via a dimensional-inventory read under misdirection (🎲 d100 74, partial success — the pawnbroker caught an unexplained hitch). Not purchased.
+- Sold one private E-Rank core to the pawnbroker for **$220 cash** — first black-market outlet for the unsellable core stash. Cash $9,831→$10,051; private core stash 9→8.
+- New relationship `REL-000069` (informal fence contact).
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (`shop_holdings`, `situation`), `120_INVENTORY_AND_OWNERSHIP.md` (cash, new dated entry), `130_NPCS_AND_FACTIONS.md` (new `ENT-000147` block, new `REL-000069`), `140_OBJECTIVES.md` (OBJ-2 core-outlet update, Cicero's Quiet noted).
+- **Repository allocation:** `ENT-000147`, `EVT-000139`, `REL-000069`.
+
+**Checkpoint `900_CHECKPOINT_0030` written at the 2026-08-04 10:15 anchor, carrying `EVT-000136`–`EVT-000139`.**
+
+**2026-08-04, 13:45-18:00 Chicago time — the rail-corridor harvest job with Denise Ferro's crew (`EVT-000140`).**
+
+- New NPC Denise Ferro (`ENT-000148`), Coalition-run harvest-crew lead. Twenty C-Rank crystals declared from Alexander's own marked section (six from a resonance-guided pocket, fourteen ordinary); standard 80/20 split, ≈$40,000 net pending.
+- **Resonance Extraction's first actual material use** — two successful deliberate vein reads (d100 62 net +1 effective 82 strong success; d100 45 net +1 effective 65 success), one qualifying scene, mastery progress 0/3 → 1/3.
+- Six of twenty-six mined crystals sold privately as extracted (1 in 3 rule; 1,020 g total; gold 12 → 1,032).
+- New relationship `REL-000070` (harvest-hire standing with Denise Ferro's crew).
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (gold, Resonance Extraction counters), `120_INVENTORY_AND_OWNERSHIP.md` (new Pending Income entry), `130_NPCS_AND_FACTIONS.md` (new `ENT-000148` block, new `REL-000070`), `140_OBJECTIVES.md` (OBJ-2 update).
+- **Repository allocation:** `ENT-000148`, `EVT-000140`, `REL-000070`.
+
+**2026-08-04, ~18:10 Chicago time — rewards claimed: Ability Points, Shrug Off, two Daily Random Boxes (`EVT-000141`).**
+
+- Both Ability Points +3 awards allocated: Vitality 25→30 (Shrug Off milestone learned, max Health 116→136), Perception 31→32.
+- Both Daily Random Boxes opened: 500 g gold purse (gold 1,032→1,532); Arcanist Legs armor [E-Rank] (Intelligence +1, reduction 3%, banked unequipped).
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (stats, Health max, pending_rewards, shop_holdings, new Shrug Off skill entry).
+- **Repository allocation:** `EVT-000141`; no entity or relationship identifier minted.
+
+**2026-08-04, ~18:15-18:45 Chicago time — solo instant dungeon, Shattered City, and Level 9 (`EVT-000142`).**
+
+- Runic Key [E-Rank] consumed opening a private instance. Population 12 common/2 elite/1 boss. Twin Fang's first-ever use; boss killed in one Rupture strike (🎲 d100 71, net +3, success), Rupture's third qualifying scene at Adept advancing it to **Expert** (×2.45, Mana 9).
+- **XP +270 (190 kill + 70 Gate-clear milestone), 570→840/800 — Level 8→9.** All base Stats +1, +5 unspent points, Health/Mana re-derived and restored (Health 140/140, Mana 62/62). Excess XP carries: 40/900.
+- Loot: 27 E-Rank crystals, 3 E-Rank cores (private stash 8→11), Guard Shield [E-Rank] boss drop, guaranteed rune teaching Flash Step [D-Rank] (already known, banked unconsumed).
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (level, XP, stats, Health/Mana, Rupture/Twin Fang/Dagger Mastery counters, shop_holdings).
+- **Repository allocation:** `EVT-000142`; no entity or relationship identifier minted.
+
+**2026-08-04, ~19:00-20:00 Chicago time — selling the haul, and the walk to Owen's (`EVT-000143`).**
+
+- 27 E-Rank crystals sold (270 g; gold 1,532→1,802). Travel to Rogers Park; recap conversation surfacing the pawn-shop core-sale worry and Wade Bishop's recruitment pitch as real exposure concerns. No new commitment either direction.
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (gold, shop_holdings), `140_OBJECTIVES.md` (OBJ-2/OBJ-14 evening follow-up note).
+- **Repository allocation:** `EVT-000143`; no entity or relationship identifier minted.
+
+**2026-08-04, ~20:00-20:30 Chicago time — the second instant dungeon, Crypt, with Owen watching (`EVT-000144`).**
+
+- A fresh E-Rank key bought (500 g; D-Rank stock still locked, System Rank E pending Level 10). Owen entered a private instance for the first time. Population 13 common/1 elite/1 boss; Keen Sense ambush read (🎲 d100 78, net +1, success) on entry.
+- Full-power demonstration: Rupture, Twin Fang, Stone Skin (first material use), Flash Step, Bulwark (first-ever use), Exploit Pattern (first-ever use) all applied. Boss killed in one exchange (🎲 d100 91, critical/strong success).
+- **Mastery advances:** Dagger Mastery Novice→**Practiced** (third qualifying scene); Flash Step Practiced→**Adept** (third qualifying scene, Mana 7→6). Keen Sense, Stone Skin, Bulwark, Exploit Pattern, Rupture each advanced one qualifying scene.
+- Mana spent to zero (62→0); a Lesser Mana Potion bought and materialized in front of Owen (20 g; gold 1,302→1,282), drunk for +16 Mana (0→16).
+- **XP +260 (190 kill + 70 milestone), 40→300/900. No further level-up.**
+- Loot: 26 E-Rank crystals (sold same evening, `EVT-000143`'s sale figure supersedes — see note below), 2 E-Rank cores (private stash 11→13), a boss-drop rune teaching Mend [E-Rank] (unknown, banked unconsumed).
+- **Note:** the 26 Crypt crystals were sold together with running totals folded into `100_CHARACTER_SHEET.md`'s final gold figure (1,282 after the potion purchase, crystals not separately itemized as a second sale line since both dungeons' hauls cleared out same-day).
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (Mana, XP, skill counters, shop_holdings, mana potion), `140_OBJECTIVES.md` (OBJ-13 closed).
+- **Repository allocation:** `EVT-000144`; no entity or relationship identifier minted.
+
+**2026-08-04, ~20:35-20:40 Chicago time — the System named to Owen (`EVT-000145`).**
+
+- Alexander told Owen outright: *I am a Hunter who levels up*, explaining the status window, stats, kill counts, and daily quests. **Largest disclosure of the campaign** — the System itself is now named to one person outside Alexander.
+- **Ledger updates:** `130_NPCS_AND_FACTIONS.md` (REL-000066 qualities/state superseded note), `140_OBJECTIVES.md` (OBJ-10 status transformed).
+- **Repository allocation:** `EVT-000145`; no entity or relationship identifier minted.
+
+**2026-08-04, ~20:40 Chicago time — "I am never losing you," and the moving-in question opened (`EVT-000146`).**
+
+- Alexander: *I am never losing you.* Owen confirmed the same. Alexander then proposed moving in together; Owen affirmed wanting it too while naming the pace and the real cost out loud. Alexander pulled back — *let's not rush this* — and Owen declined to treat it as a correction. Nothing decided; relationship confirmed to hold regardless.
+- New objective `OBJ-15` (the moving-in question), open, no commitment made.
+- **Ledger updates:** `130_NPCS_AND_FACTIONS.md` (REL-000066 major state/texture addition), `140_OBJECTIVES.md` (new OBJ-15).
+- **Repository allocation:** `EVT-000146`; no entity or relationship identifier minted.
+
+**Checkpoint `900_CHECKPOINT_0031` written at the 2026-08-04 20:40 anchor, carrying `EVT-000140`-`EVT-000146`.**
+
+**2026-08-05, 06:00-08:20 Chicago time — morning run, twelfth daily quest, and "I love you too" (`EVT-000147`).**
+
+- Night settled deterministically: Mana 16→62/62 across 9h20m resting. Twelfth daily quest issued 06:00, completed with Owen at Loyola Park by ~07:50 — streak 11→12, one Ability Points +3 award, one Status Recovery, one ordinary Daily Random Box banked pending.
+- Owen said "I love you" for the first time, buried in a joke; Alexander froze, then reciprocated aloud with a kiss on Sheridan Road — the first mutual "I love you" of the relationship, a `REL-000066` Character First.
+- Breakfast conversation: artificer-combination and core-outlet plans stated aloud; Owen confirmed no Bridgeport job today, only ordinary mender rounds; artificer lead through Kesha not yet surfaced.
+- **Ledger updates:** `130_NPCS_AND_FACTIONS.md` (REL-000066 texture — first mutual "I love you"), `140_OBJECTIVES.md` (streak note).
+- **Repository allocation:** `EVT-000147`; no entity or relationship identifier minted.
+
+**2026-08-05, ~08:25-08:30 Chicago time — claiming the morning's rewards (`EVT-000148`).**
+
+- Phone check: nothing new from Kesha or on pending payouts. Text to Denise Ferro: nothing confirmed, two soft leads this week.
+- Consumed the banked Mend rune — learned **Mend [E-Rank]**, Novice, Mana 6. Daily Random Box opened: System gold purse, +500 g (gold 1,282→1,782). Ability Points +3 claimed and combined with 5 already-unspent (8 total), allocated **Perception 33→37, Intelligence 31→35**. Maximum Mana re-derived 62→70, restored to full.
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (gold, stats, Mana, new Mend skill entry, pending_rewards).
+- **Repository allocation:** `EVT-000148`; no entity or relationship identifier minted.
+
+**2026-08-05, ~08:30-09:00 Chicago time — first instant dungeon of the day, Hive (`EVT-000149`).**
+
+- Bought and used a Daily Premium Alchemist Key [E-Rank] (625 g; gold 1,782→1,157). Archetype Hive, 26 common beasts (doubled, no elites), 1 boss, mined deposit 11.
+- Deliberate multi-skill clear: Pre-empt's first test, Twin Fang, Flash Step into Rupture, Stone Skin sustained, Overpower bull-rush, Bulwark, Exploit Pattern, two-strike Rupture boss kill, Mend closing a graze. **Keen Sense advanced Novice→Practiced.**
+- XP 300→670/900. Loot: 37 E-Rank crystals (26 beast-drop + 11 mined), 1 E-Rank core, boss-drop rune teaching Sprint [E-Rank].
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (gold, XP, skill counters, shop_holdings).
+- **Repository allocation:** `EVT-000149`; no entity or relationship identifier minted.
+
+**2026-08-05, ~09:00-09:20 Chicago time — second instant dungeon, Ashfield: Level 10, System Rank D (`EVT-000150`).**
+
+- Consumed the Sprint rune — learned **Sprint [E-Rank]**, Novice, Mana 3. Bought a standard Instant-Dungeon Key [E-Rank] (500 g; gold 1,157→657). Drank a Lesser then a bought Standard Mana Potion (75 g; gold 657→582), restoring Mana to full 70/70.
+- Archetype Ashfield, 14 common, 1 elite, 1 boss, mined deposit 12. **Mastery advances: Twin Fang, Stone Skin, Bulwark, Exploit Pattern each Novice→Practiced; Rupture Adept→Master.**
+- **XP 670→940/900, crossing Level 9→10.** All Stats +1 (Str 33/Agi 32/Vit 32/Per 38/Int 36), +5 unspent points, Health/Mana re-derived to 144/144 and 72/72, restored full. **System Rank E→D.**
+- Loot: 26 E-Rank crystals (14 beast-drop + 12 mined), 2 E-Rank cores, boss-drop Instant-Dungeon Key [E-Rank].
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (level, XP, stats, HP/MP maxima, system_rank, all mastery-advanced skill entries, gold).
+- **Repository allocation:** `EVT-000150`; no entity or relationship identifier minted.
+
+**2026-08-05, ~09:20-09:45 Chicago time — third instant dungeon, Overgrown Temple (`EVT-000151`).**
+
+- Archetype Overgrown Temple, 14 common, 3 elite (2 rolled + 1 shrine-guard), 1 boss, mined deposit 13, bonus shrine loot roll. **Mastery advances: Flash Step Adept→Expert; Dagger Mastery Practiced→Adept; Mend Novice→Practiced.**
+- XP 40→350/1000. Loot: 27 E-Rank crystals (14 beast-drop + 13 mined), 4 E-Rank cores, duplicate Guard Shield [E-Rank], bonus-shrine Instant-Dungeon Key [E-Rank].
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (XP, skill counters, shop_holdings).
+- **Repository allocation:** `EVT-000151`; no entity or relationship identifier minted.
+
+**2026-08-05, ~09:45-10:15 Chicago time — fourth instant dungeon, Shattered City (`EVT-000152`).**
+
+- Bought and drank a Standard Mana Potion (75 g; gold 582→507). Archetype Shattered City, 13 common, 1 elite, 1 boss, mined deposit 9. **Mastery advances: Keen Sense Practiced→Adept; Sprint Novice→Practiced.**
+- XP 350→610/1000. Loot: 22 E-Rank crystals (13 beast-drop + 9 mined), 2 E-Rank cores, duplicate rune teaching Stone Skin [E-Rank] (already known, unconsumed).
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (gold, XP, skill counters, shop_holdings).
+- **Repository allocation:** `EVT-000152`; no entity or relationship identifier minted.
+
+**2026-08-05, ~10:15-10:30 Chicago time — payouts land, standing threads check in (`EVT-000153`).**
+
+- Text to Owen and reply from his patient rounds. Two long-pending payouts cleared: Sable & Kern harvest share (+$9,000), Cicero Gate split (+$1,762.50) — cash $10,051.00→$20,813.50. The ≈$40,000 Denise Ferro harvest share remains processing. Follow-up text to Dale Pruitt: B-Rank mining lead still undecided, real answer expected by end of day 2026-08-06.
+- **Ledger updates:** `120_INVENTORY_AND_OWNERSHIP.md` (cash, Pending Income moved to Received), `140_OBJECTIVES.md` (OBJ-2 update).
+- **Repository allocation:** `EVT-000153`; no entity or relationship identifier minted.
+
+**2026-08-05, ~10:30 Chicago time — Profile 1.25 consumable-economy and sourcing correction adopted (`EVT-000154`; no fictional time consumed).**
+
+- **Flat-restore potions:** Lesser Healing/Mana potions now restore a flat 30 Health / 20 Mana; Standard Healing/Mana potions now restore a flat 90 Health / 40 Mana — both capped at maximum — replacing the old 25%/50%-of-maximum formula. Greater Healing/Mana potions continue to restore to full.
+- **Repriced to match:** Lesser 60 g / 50 g (Healing/Mana), Standard 150 g / 75 g, Greater 750 g / 480 g — priced so no tier is dominated. A Standard now costs fewer actions and no more gold than the Lessers it replaces from D-Rank scale upward, and a Greater is the only single-action full restore; cost-per-point does not fall with tier and is not meant to. No potion currently held changes identity, Rank, or quantity; every already-resolved past purchase and past consumption (including this session's `EVT-000150` and `EVT-000152` mana potions) remains canon exactly as narrated.
+- **System-exclusive sourcing:** Healing and Mana potions exist only inside the System shop — no world vendor stocks one, and none may appear on a world shelf, in a world loot cache, or in an NPC's kit unless Alexander put it there. The world's separate restorative-alchemy market is unaffected: it acts on the severity axis over elapsed time and restores no pool as an immediate quantity. Owen's two licensed restoratives bought at Vanguard Trade & Gear remain his property and are reclassified as world-market alchemy, which is what they always were.
+- **Versions:** Gatefall Profile 1.24→1.25. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0032 remains immutable and applies the complete migration chain at readiness.
+- **Repository allocation:** `EVT-000154`; no entity, record, or relationship identifier minted.
+
+**Checkpoint `900_CHECKPOINT_0032` written** at the 2026-08-05 10:30 anchor, carrying `EVT-000147`–`EVT-000153`, under frozen Profile 1.24 / Data Model 0.1.5.
+
+**2026-08-05, ~10:30-10:35 Chicago time — the Coalition call (`EVT-000155`).**
+
+- Phoned Kesha Morrison asking after mining work: **nothing posted.** Sable & Kern quiet since Halsted Depot; Denise Ferro's crew still on rail-corridor paperwork; Dale Pruitt's B-Rank lead unmoved on her end too.
+- **Standing flag set:** Kesha will notify Alexander the moment any mining contract posts at **C-Rank or above.**
+- Alexander credited the Cicero clear to Owen and called himself a spectator; Kesha corrected him from **Priya's payout notes, which record him taking the finishing blow.** Affectionate teasing, not suspicion — but a live instance of filed paper contradicting his own downplaying.
+- **Ledger updates:** `130_NPCS_AND_FACTIONS.md` (`ENT-000130` situation).
+- **Repository allocation:** `EVT-000155`; no entity or relationship identifier minted.
+
+**2026-08-05, ~11:20-11:32 Chicago time — Cutting Edge, first visit (`EVT-000156`).**
+
+- Walked from Rogers Park to the warehouse district and entered **Cutting Edge** (`ENT-000132`) for the first time. Its owner-operator established as **`ENT-000149`** (unnamed in play).
+- **Commissioning rules established in fiction** (Profile Section 12.8): the supplied core's Rank is a hard ceiling; **Rank is not additive** — combining cores buys volume, never power; genuinely unusual work is a quality question needing unusual material, and draws review beyond the shop near B-Rank and above.
+- He is **rigidly licensed**: provenance logged before any core touches marked work. Alexander refused three times to state his core count or source; a single d100 63 (partial success) bought patience but no concession, and the visit ended with **nothing bought, sold, or commissioned** and no relationship formed.
+- **Ledger updates:** `130_NPCS_AND_FACTIONS.md` (`ENT-000149` created, `ENT-000132` standing), `110_WORLD_LEDGER.md` (commissioning-rules knowledge), `140_OBJECTIVES.md` (OBJ-16 opened).
+- **Repository allocation:** `ENT-000149`, `EVT-000156`; no relationship identifier minted.
+
+**2026-08-05, ~11:40-12:15 Chicago time — the pawnbroker, round two (`EVT-000157`).**
+
+- Returned to the warehouse-district pawn shop (`ENT-000147`), entering unseen by timing the street. Proposed an ongoing supplier arrangement on the principle that **trust is earned by doing rather than waiting**; accepted, with his terms stated (marked private tally, fair quotes, minimal questions, consistency over windfall). `REL-000069` upgraded from one-off sale to working arrangement.
+- **Paid ten private E-Rank cores against a nine-core price** — one over, as a deliberate bonus. **Private core stash 22 → 12.** No cash, gold, or crystal moved; Alexander explicitly chose knowledge over dollars.
+- **Three pieces of information bought:** the warehouse-district trust map (including **`ENT-000150` Ferro's Reclamation** created and named as an informant risk, unrelated to Denise Ferro); **BGM's real flagging mechanics** (paperwork gaps, volume-vs-clears audits, and informants — no tracer, no core detector); and **Cicero's Quiet's true provenance** (illegal cordon recovery during active quarantine; bought through an untraced middleman; the scavenger stopped taking calls not long after the sale). The last is recorded as **Character Knowledge only**, not Objective Reality.
+- Also answered on request: the **Cicero Scar's current condition**, matching authoritative `ENT-000091` — still cordoned, core blocks uncleared, unexplained periodic mana spikes, and survey reports of beast remains bearing old healed wounds.
+- **Two threads opened.** The pawnbroker's own want is **C-Rank cores and above** for a purpose he deliberately withheld; and he agreed to broker an introduction to an **unlicensed artificer** as a **consultation rather than a commission**, putting his own name on Alexander. $200–300 cash for an hour, possibly waived; no gold or crystals accepted; timing the artificer's own. **Not yet made; the artificer is unnamed, unmet, and holds no identifier.**
+- **Temporal settlement:** campaign time 10:30 → **12:15**; Mana **9 → 22/72** (5 min resting then 100 min active, remainder 360,000); Health unchanged at 144/144 full.
+- **Progression audit:** `none` on all three events — no dangerous scene, no qualifying consequential-work or structured-practice scene, no skill activation, no counter movement. All candidate states unchanged.
+- **Ledger updates:** `100_CHARACTER_SHEET.md` (cores, Mana, temporal state, condition), `110_WORLD_LEDGER.md` (four new knowledge rows), `120_INVENTORY_AND_OWNERSHIP.md` (core stash, pending consultation cost), `130_NPCS_AND_FACTIONS.md` (`ENT-000150` created, `ENT-000147` situation, `REL-000069` state/history), `140_OBJECTIVES.md` (OBJ-2 update, OBJ-16), `160_CAMPAIGN_CHRONICLE.md`, `180_CURRENT_STATE.md`.
+- **Repository allocation:** `ENT-000150`, `EVT-000157`; no relationship identifier minted (`REL-000069` already existed).
+
+**2026-08-05, ~12:15 Chicago time — Profile 1.26 skill-Rank ascension adopted (`EVT-000158`; no fictional time consumed).**
+
+- **Defect corrected:** a skill's Rank was fixed at acquisition and rose only by loot chance, while the shop refused to sell instruction for a known skill. Against the Section 7.2 Rank baselines (10/25/62/150/375/1000) a full mastery track is worth ×1.3–×1.6 and one Rank step ~×2.5, so learning early was strictly worse than waiting. Alexander's Rupture — E-Rank at Master, 14 lifetime qualifying scenes, 26 damage — was worth less than a quarter of a C-Rank Rupture learned that morning by anyone.
+- **Two offered ascension routes (Section 7.5):** **breakthrough** (a skill reaching Master is offered +1 Rank, settling at **Adept**) and **rune ascension** (consuming instruction above the skill's current Rank raises it to that Rank, resetting mastery to **Novice**). Both present exact before/after values on every axis; neither consumes an item or settles unless accepted, and a declined rune stays intact. Ordering: `Rank N Master < Rank N+1 Novice (rune) < Rank N+1 Adept (breakthrough)`.
+- **Ceiling:** no skill exceeds **System Rank + 1** (currently C-Rank), binding **acquisition as well as ascension** — instruction above the ceiling does not consume and waits intact. This is what removes the incentive to postpone learning a skill.
+- **Rank Dominance Law (Section 7.2):** utility Rank scales sized so a skill at Novice one Rank higher beats the same skill at Master one Rank lower — reduction **+25 points** per Rank above native, passive multipliers **+0.25**, modifier-step skills saturating duration at whole-scene one Rank above native then spending further Ranks on **scope**. Single-skill reduction cap **75% → 90%**, converting to duration at the cap. Rank never changes Mana cost.
+- **Native Ranks declared:** the Section 7.3 eight keep their listed Ranks; **Rupture and Bulwark are declared native E-Rank** (previously authored only in the Section 11.3 book table with no floor); an earned technique's native Rank is its ratification Rank.
+- **Rune economy (Section 12.5):** the catalogue's refusal to sell instruction for a known skill is lifted; runes now stock at every Rank from native to the ceiling, and for known skills only above their current Rank, at the C–S anchors (20,000 / 90,000 / 400,000 / 1,800,000 g) as live prices rather than Premium-only references.
+- **Counters:** `mastery_level` and `rank_ascensions` added as world-declared tracked counters on all twelve mastery-tracked skills, baselined at `EVT-000158`. Every `mastery_level` baseline equals `min(5, 1 + floor(qualifying_scenes_total ÷ 3))` — the value already implied — so adoption recomputes nothing. Stat-milestone skills have no mastery track and carry neither counter.
+- **Folded correction — Keen Sense / Silent Step.** Section 7.3 authors both **"for the scene"**, but Section 7.4's ladder lengthened modifier-step skills one exchange per level and reached whole-scene only at Master — implying one exchange at Novice, so mastering these two appeared to *shorten* them. Section 7.4 now states that a skill already scene-long at Novice spends mastery on **scope** (1/2/3/4/5 beneficiaries), that the authored Section 7.3 entry governs any disagreement, and that **mastery never shortens an authored effect**. A rendering correction, not a rule change: `EVT-000114` shows one 2-Mana Keen Sense activation at Novice running across a corridor read, a seven-common sweep, and an elite read — the shorter reading never governed a resolved roll, and the Mana trace shows no re-activations. Alexander's Keen Sense line is corrected on three self-contradictory points (`★★★★☆` → `★★★☆☆`, "two exchanges at Adept" → "for the scene", "toward Master" → "toward Expert") and gains the scope ladder (himself + 2 allies at Adept). Silent Step is unlearned and gains nothing today. No counter, mastery level, Mana cost, or resolved outcome changed.
+- **Classification: additive.** Every known skill stands at its **native Rank** at adoption, so the new utility scales change no current value by construction. No skill Rank, mastery level, Mana cost, effect magnitude, counter, held item, completed transaction, or resolved roll changed. No unused instructional item is held (only the unused Runic Key [E-Rank]), so the acquisition ceiling reprices nothing owned.
+- **Live consequence:** **Rupture [E-Rank] Master is ascension-ready** — the only known skill at Master and below the ceiling. A breakthrough offer to **D-Rank Adept (×2.30, 57 on a standard success against its current 26)** will be presented at the next settlement or promotion barrier. It costs nothing to decline and stands open indefinitely.
+- **Versions:** Gatefall Profile 1.25→1.26. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0033 remains immutable at Profile 1.25 and adopts the additive step at readiness with no recomputation.
+- **Repository allocation:** `EVT-000158`; no entity, record, or relationship identifier minted.
+
+**2026-08-05, ~12:15 Chicago time — Profile 1.27 concealed-canon supply adopted (`EVT-000159`; no fictional time consumed).**
+
+- **Defect corrected:** across the campaign's full played span — **fourteen in-fiction days** (2026-07-22 → 2026-08-05) and every day Section 8.4 has existed — the System issued **zero Hidden and zero Urgent quests**. Not a play error: Section 8.4.3 requires a concealed discovery to *already exist in authored canon* with a recorded reveal condition, and the resident trigger audit is forbidden to invent one. Gatefall's authored secrets (Foss's brand file, Deacon's off-band cores, the Cicero perimeter spikes, the Old Town Gate's receding clock) carried no reveal condition, no objective, and no statement of what proximity to them meant, so none could satisfy criterion 4. The filter was correct; the supply behind it was empty.
+- **New world ledger `worlds/gatefall/230_KNOWLEDGE_SUBJECTS.md` (`REC-000100`):** ten world-scope `concealed-discovery` records (`ENT-000151`–`ENT-000160`) and thirteen holder Knowledge States (`REL-000071`–`REL-000083`). Six Chicago, three Prague, one cross-city connective subject. These invent nothing — each translates an already-authored secret into the shape Section 8.4.3 consumes, sited within reach of an E/D-Rank hunter on ordinary contracts. Records bottoming out in the owner-only Bible section carry `resolution_depth: surface` and state only their reachable layer.
+- **Campaign promotions (`110_WORLD_LEDGER.md`):** `ENT-000161`–`ENT-000163` with `REL-000084`–`REL-000086` — the pawnbroker's withheld use for C-Rank-and-above cores (already flagged in canon as a live thread), what became of the Cicero scavenger, and the return half of Ferro's Reclamation's two-way favor trade with Coalition compliance.
+- **New Section 8.4.5 — supply and the promotion ritual.** Fixes the eleven-field record contract; forbids a stored reward (Section 8.4.3 fixes it from System Rank at attachment); holds world records immutable against play with live pointer status remaining campaign state; and authors the ritual by which a Runtime promotes an unresolved thread into eligible concealed canon, bound by **time separation** (authored no earlier than its scene's close, attachable no earlier than a *later* scene — same-exchange authoring and attachment remains manufacturing, prohibited under Section 14.3 Tier 3), **grounding**, and **completeness before attachment**. The authoring obligation is to seed non-transactional texture, explicitly **not a quota**: no rate, no dry-spell threshold, and no circumstance in which a quiet session justifies inventing a mystery.
+- **Section 8.4.3 criterion 1** now names the ledger. The other three criteria are untouched and all four still must hold.
+- **Classification: additive.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changed. Data Model 0.1.5 unchanged.
+- **No retroactive attachment.** `system_state.non_daily_quests` is unchanged — **0/2 active**, `active: []`, `pending_offers: []`. The fourteen played days are not re-audited; every campaign-scope record's proximity condition is forward-looking. Alexander's secondhand account of the Cicero remains and the scavenger's silence is neither first-hand proximity nor a resolved clue under the records as authored.
+- **Versions:** Gatefall Profile 1.26→1.27. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0033 remains immutable at Profile 1.25 and runs the applicable compatibility chain through 1.27 at readiness.
+- **Repository allocation:** `REC-000100`, `ENT-000151`–`ENT-000163`, `REL-000071`–`REL-000086`, `EVT-000159`.
+
+**2026-08-05, ~12:15 Chicago time — Profile 1.28 tracked Gate board adopted (`EVT-000160`; no fictional time consumed).**
+
+- **Defect corrected:** Section 9.3 gives every Gate a break countdown and Section 9.8 makes the break the disaster the whole apparatus exists to prevent, but nothing counted. Only a Gate Alexander was contracted to had a running clock; every other detection entered a scene as a line on a board and stopped existing when the scene ended. No Gate could break except on his own contract — which also starved Section 8.4.2, whose eligible crisis is a Gate break, Gate creature, or perceived sealed-instance hazard, since the only Gates with clocks were the ones he was already paid to clear and excluded by name as routine contracted hunting.
+- **New Section 9.10 — the tracked board.** A detection that enters the fiction through an ordinary perceived channel (BGM ranking board, co-op or guild dispatch, auction lot, a named NPC) now persists, storing place anchor, detection timestamp, assessed Rank and confidence, Section 9.4 posting floor, staffing status, and a break deadline **derived** from Section 9.3. Three to six tracked postings is Chicago's ordinary standing state; Prague runs fewer.
+- **Persistence, not simulation.** Section 9.1's rates stay explicitly aggregate and explicitly **not a calendar**; the Runtime still never rolls the metro's ~35 weekly detections and still decides when a Gate enters the fiction. The board holds only what the fiction surfaced, and postings are never manufactured to fill it.
+- **Deterministic deadline resolution** — no roll, no discretion. `staffed`/`held` → cleared off-screen (the ordinary case). `withdrawn` → leaves the board. `posted`, still under floor when the clock runs out → **breaks** under Section 9.8. Grounded in Section 9.4's own text that cheap jobs sit and the waiver tier concentrates casualties, in `EVT-000051`'s undersubscribed Red Line posting, and in `EVT-000052`'s auction war pulling bids off mid-tier lots. Institutions avert breaks by changing **staffing status** (escalation, rate rise, emergency contract), not by decree.
+- **Postings mint no identifiers.** A posting is tracked state with a stable local board key, promoted to an Event only when it becomes campaign-durable — bid, taken, entered, broken, or consequential — exactly as `EVT-000051` carries the one posting that mattered.
+- **Board seeded at adoption** in `110_WORLD_LEDGER.md` with four Chicago clearance postings and **nothing pre-decided**: `GB-01` (Red Line, confirmed E, detected 08-01, breaks midnight **08-08**, 4 of 5 signed at waiver tier), `GB-02` (Lakefront, unconfirmed D, detected 08-03, breaks **08-09**, thin auction bids), `GB-03` (Lakefront, confirmed C, detected 08-04, breaks **08-09**, held by Horizon dispatch), `GB-04` (Red Line, confirmed E, detected 08-05, breaks **08-12**, filling normally). All deadlines derived; arithmetic verified against `EVT-000051`'s control case (07-18 + 6 = midnight 07-24). Consistent with `EVT-000155` — Kesha had no *mining/harvest* work at C-Rank+, which is what was asked for; these are clearance contracts.
+- **Section 8.4.2 untouched.** A break is a world event, not a quest. Where one is perceivable and reachable, 8.4.2's four criteria are evaluated on their own terms; the Runtime never adjusts staffing, deadline, or location to make an offer fit.
+- **Classification: additive.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changed. Data Model 0.1.5 unchanged.
+- **No retroactive breaks.** Every Gate named in a past scene stays resolved as that scene resolved it; no earlier posting is re-derived; no completed clear, filed split, or closed contract is reopened. `EVT-000051` was cleared on its deadline at `EVT-000059`/`EVT-000060` and stays closed. Resolution applies prospectively from the first tracked deadline after adoption.
+- **Versions:** Gatefall Profile 1.27→1.28. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0033 remains immutable at Profile 1.25 and runs the applicable compatibility chain through 1.28 at readiness.
+- **Repository allocation:** `EVT-000160`; no entity, record, or relationship identifier minted (postings are tracked state, not Persistent Objects).
+
+**2026-08-05, ~12:15 Chicago time — Profile 1.29 Urgent eligibility clarified (`EVT-000161`; no fictional time consumed).**
+
+- **Defect corrected:** two clauses of Section 8.4.2 were being read more broadly than written, which is the last part of why Urgent stayed at zero. The crisis bar itself is unchanged and all four criteria still must hold.
+- **Criterion 1 — the Bearer is never the imperilled person.** It required "at least one non-hostile person" without saying whether he counts. Reading him in fires an offer in every lethal fight; criterion 3's "intervene" plainly means acting on someone else's behalf. Now stated: the person must be **other than the Bearer**, and danger to his own life is combat under Sections 6 and 20.4, never a quest. The System does not reward him for surviving.
+- **The contract exclusion, scoped to what it meant.** "Routine contracted hunting" read as covering everything happening during a contract. It now excludes **the contracted objective** and **danger to any person who entered under the same contract** (strike and support element alike, Section 9.4) — a crew facing the Gate's population is doing the insured job it signed for. It does **not** reach a civilian inside a cordon, a bystander at a break site, an unrelated crew, or an uncovered survey team; where a qualifying threat puts one of them at immediate death, criteria 1–4 are evaluated on their own terms.
+- **Sealed-instance reachability stated, and the earlier working assumption corrected.** "Sealed instances are bystander-free" is **wrong on the profile's own text**: Section 17 lets the Bearer bring a party into an instant dungeon and Section 9.6's red gate seals whoever entered. Criterion 1 can hold there. It can never hold where he entered **alone**, making a solo instant dungeon permanently Urgent-ineligible by construction — a deliberate design cost, not an oversight.
+- **Verified against campaign canon:** Alexander has opened **eleven** instant dungeons (`EVT-000097`, `EVT-000099`, `EVT-000101`, `EVT-000109`, `EVT-000113`, `EVT-000142`, `EVT-000144`, `EVT-000149`–`EVT-000152`). Ten were solo. The eleventh, `EVT-000144`, had the key open the Crypt **around both him and Owen** — the live counter-example showing the sealed-instance branch is real rather than dead.
+- **Unchanged:** the four criteria, the Tier-2 offer template, the reward formula (4× common-kill XP at acceptance), capacity, acceptance, abandonment, lifecycle, and every existing non-qualifying case — self-created danger, unreachable remote reports, property loss without danger to life, and already-resolved crises. The System still does not reveal an unconfirmed Gate Rank, a hidden attacker, or an NPC's intent to make an offer fit.
+- **Classification: additive.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changed. Data Model 0.1.5 unchanged.
+- **No retroactive offers.** No past scene is re-audited, no completed contract, clear, or resolved crisis is reopened, and no offer is reconstructed for anyone in peril in an earlier session. Eligibility applies prospectively from the first audit after adoption. `non_daily_quests` stays **0/2** with empty `active` and `pending_offers`.
+- **Versions:** Gatefall Profile 1.28→1.29. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0033 remains immutable at Profile 1.25 and runs the applicable compatibility chain through 1.29 at readiness.
+- **Repository allocation:** `EVT-000161`; no entity, record, or relationship identifier minted.
+
+**2026-08-05, ~12:15 Chicago time — Rupture Rank Ascension: breakthrough accepted (`EVT-000162`; no fictional time consumed).**
+
+- **Offer accepted.** At the readiness gate resuming session 3, Alexander accepted the standing Section 7.5 breakthrough offer surfaced by Profile 1.26's adoption (`EVT-000158`): Rupture stood E-Rank Master, below its System-Rank-D-derived C-Rank ceiling.
+- **Before → after:** Rupture [E-Rank] ★★★★★ Master (×2.60, 26 dmg standard hit, Mana 8) → Rupture [D-Rank] ★★★☆☆ Adept (×2.30, 57 dmg standard hit, Mana 10).
+- **Counters:** `mastery_progress` resets 0/3 toward Expert. `successful_uses` (30) and `qualifying_scenes_total` (14) are lifetime totals and carry forward unchanged. `rank_ascensions` 0 → 1.
+- **Nothing else changed:** no roll, no gold or cash, no other skill, pool, or counter. No other known skill is currently ascension-ready.
+- **Versions:** unchanged — Gatefall Profile 1.28, Engine 0.2.0, Data Model 0.1.5. Checkpoint 0033 remains immutable at Profile 1.25.
+- **Repository allocation:** `EVT-000162`; no entity, record, or relationship identifier minted.
+
+**2026-08-05, ~12:15-12:35 Chicago time — a text to Owen and a walk through the district (`EVT-000163`).**
+
+- **Owen replied:** still buried in paperwork, hasn't started; noted Alexander "started something" without him. Unanswered so far.
+- **Walk, no destination:** passed Cutting Edge and Ferro's Reclamation without entering either. New unresolved texture: a painted-over "CLOSED" storefront with a freshly-worn side-door loading ramp — not promoted to a concealed-discovery record; open atmosphere only.
+- **Trigger audit:** no Hidden pointer, no Urgent condition. Passing Ferro's door from outside does not satisfy `ENT-000163`'s proximity condition. Non-daily slots unchanged, 0/2.
+- **Settlement:** 20 minutes elapsed; Mana 22 → 24/72 (active recovery, remainder 360,000 → 648,000). No roll, no skill use.
+- **Repository allocation:** `EVT-000163`; no entity, record, or relationship identifier minted.
+
+**2026-08-05, ~12:35-12:40 Chicago time — Keen Sense reveals the intake storefront (`EVT-000164`).**
+
+- **Roll:** 🎲 d100 89, net +1 (Keen Sense), effective 100 — legendary success.
+- **Discovery:** dolly-wheel wear, a fresh stabilizing-reagent smell, and a stencil-marked packing scrap confirm the "CLOSED" storefront (`ENT-000164`, new) as an active unlicensed intake point for raw Gate material moved in bulk. Nobody present.
+- **Concealed-discovery authored, not attached:** `ENT-000165` — who runs it and what it moves the material for. Per Section 8.4.5, authored this event from a thread the prior scene produced; no Hidden pointer attaches this same exchange (proximity/clue condition not yet met — exterior only, no entry, transaction, or stencil trace).
+- **Skill settlement:** Keen Sense `successful_uses` 6→7, `qualifying_scenes_total` 6→7, `mastery_progress` 0→1/3 toward Expert.
+- **Settlement:** 5 minutes elapsed; Mana 24→25 (recovery) → 23 (Keen Sense's 2-Mana cost, remainder 648,000→360,000).
+- **Repository allocation:** `ENT-000164`, `ENT-000165`, `EVT-000164`.
+
+**2026-08-05, ~12:40-13:15 Chicago time — the fenced warehouse (`EVT-000165`).**
+
+- Storefront side door confirmed locked, no answer, consistent with the earlier read that no one was present.
+- Texted Owen a flirty follow-up; he replied in kind, then went quiet.
+- Second Keen Sense activation (Mana 2) on a newly-noticed fenced warehouse: 🎲 d100 65, net +1, effective 85 — strong success. Real capital/security investment identified, protecting conditions inside, not just contents.
+- New: `ENT-000166` (the warehouse), `ENT-000167` (concealed-discovery, authored not attached, per Section 8.4.5).
+- Skill settlement: Keen Sense `successful_uses` 7→8, `qualifying_scenes_total` 7→8, `mastery_progress` 1→2/3 toward Expert.
+- Settlement: 35 minutes elapsed; Mana 23→27 (recovery) → 25 (Keen Sense cost).
+- Repository allocation: `ENT-000166`, `ENT-000167`, `EVT-000165`.
+
+**2026-08-05, ~13:15-14:05 Chicago time — coffee, Kesha, and the Lakefront hold (`EVT-000166`).**
+
+- Bought two coffees en route ($20,813.50 → $20,806.50).
+- Kesha Morrison offered the sitting Red Line Corridor waiver-tier posting (four of five signed); declined in favor of a Cicero-style two-handed sponsored booking with Owen. Kesha found a fresh, not-yet-public confirmed E-Rank at the Lakefront Gate Corridor and agreed to hold it until 22:00 tonight, after which it posts publicly. `OBJ-17` opened.
+- Reconfirmed the ≈$40,000 Denise Ferro payout is still processing, no new information.
+- Settlement: 50 minutes elapsed; Mana 25→31/72 (recovery only).
+- Repository allocation: `EVT-000166`; no entity or relationship identifier minted.
+
+**2026-08-05, ~14:05-14:40 Chicago time — Denise Ferro and Milo's cones (`EVT-000167`).**
+
+- Checked phone for Dale's answer — not due until tomorrow, none expected today.
+- Brief in-person chat with Denise Ferro: her crew is between jobs, nothing to offer, named him near the top of her future-work list.
+- Tanya Voss visible at the training grounds but not approached. Met **Milo** (`ENT-000168`, new), a sensor-adjacent hunter training reaction footwork. Ran his drill twice: 🎲 d100 88 (legendary success) then 🎲 d100 73 (strong success, one late feint recovered). Recorded as qualitative demonstrated capability, no authored skill or counter.
+- Settlement: 35 minutes elapsed; Mana 31→35/72 (recovery only).
+- Repository allocation: `ENT-000168`, `EVT-000167`.
+
+**2026-08-05, ~14:40 Chicago time — Profile 1.30 trigger telemetry adopted (`EVT-000168`; no fictional time consumed).**
+
+- **Defect corrected:** 1.27–1.29 fixed the dead Hidden and Urgent triggers; this fixes why the fault survived a whole campaign undetected. Every proactive audit ran correctly and reported honestly that no condition arose, and **nothing aggregated those reports** into the observation that none ever had. The gap surfaced because the player noticed, not because the repository said so.
+- **New Section 8.4.6 — `trigger_telemetry`,** written into mutable live state at each checkpoint: `hidden_pointers_attached`, `hidden_last_attached`, `hidden_dry_days`, `urgent_offers_issued`, `urgent_last_offered`, `urgent_dry_days`, `concealed_records_available`, `tracked_postings`.
+- **The supply counts are the point.** A dry count alone is uninterpretable — misreading it is how the original defect persisted. **Supply zero + rising dry count** = the design fault; no amount of correct auditing produces a quest from an empty supply, and the fix is authoring concealed canon or letting the board surface postings, at the owner's pace, between sessions. **Supply healthy + rising dry count** = **not a fault**; the world has things to find and the Bearer hasn't met a proximity, clue, or crisis condition. Correct response: none.
+- **Diagnostic, never a trigger.** No value is a precondition, no threshold releases the Runtime from Sections 8.4.2/8.4.3, and no dry count ever justifies attaching a pointer, issuing an offer, inventing a crisis, or lowering a bar. Firing a quest at a dry-spell threshold would be a **Tier-3 no-declared-precondition firing wearing a counter as a disguise** (Section 14.3) and is prohibited as such. The Runtime writes; the owner reads.
+- **Not System state.** Lives outside `system_state`, never renders in any `/system` panel (Sections 14.1, 14.4). Alexander cannot see or ask.
+- **First reading at this anchor — the healthy zero:** both dry counts **14** days from the 2026-07-22 start, `hidden_pointers_attached: 0`, `urgent_offers_issued: 0` — but `concealed_records_available: **15**` (10 world + 5 campaign, none attached or completed) and `tracked_postings: **4**`. The same two zeros that meant a broken engine before 1.27 now mean a working one. This afternoon demonstrates it: `ENT-000165` and `ENT-000167` were authored from resolved Keen Sense reads and neither attached, both being exterior reads with no entry, transaction, or traced contact — Section 8.4.3's bar holding.
+- **Classification: additive.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changed. Data Model 0.1.5 unchanged.
+- **Immutable checkpoints are not retrofitted** — pre-adoption captures stay byte-unchanged and carry no telemetry block; counters begin at the first post-adoption checkpoint and count from campaign start. Adoption attaches no pointer, issues no offer, and re-audits nothing.
+- **Versions:** Gatefall Profile 1.29→1.30. Engine 0.2.0 and Data Model 0.1.5 unchanged. Checkpoint 0034 remains immutable at Profile 1.25 and runs the applicable compatibility chain through 1.30 at readiness.
+- **Repository allocation:** `EVT-000168`; no entity, record, or relationship identifier minted.
+
+**2026-08-05, ~14:40-15:15 Chicago time — a repeat read, nothing new (`EVT-000169`).**
+
+- Text exchange with Owen: a joke about a nonexistent 4 PM pickup, a second eggplant emoji, an exasperated reply confirming the (invented) pickup time anyway.
+- Walked back to the warehouse district without a deliberate destination; repeated Keen Sense on the storefront (`ENT-000164`) and warehouse (`ENT-000166`). 🎲 d100 20, net +1, effective 40 — failure. No new information; both sites read unchanged. Keen Sense counters unaffected (non-contributing use).
+- Settlement: 35 minutes elapsed; Mana 35→40 (recovery) →38 (Keen Sense cost, 2 Mana).
+- Repository allocation: `EVT-000169`; no entity or relationship identifier minted.
+
+**2026-08-05, ~15:15-21:30 Chicago time — dinner, and the word 'marry' (`EVT-000170`).**
+
+- Waited out the afternoon near Owen's building; Owen picked him up at 16:02 after a rough mender shift. Delivery burgers and beer at his apartment rather than going out.
+- Owen said "Marry me," half-joking; confirmed under direct question that he meant it, not the timing. Alexander answered "Yes. Eventually. Du'h" — unhedged. First time either has raised marriage, ~2 weeks into the relationship. "I love you" repeated once more over the same meal.
+- Alexander texted Kesha Morrison directly, declining the held Lakefront booking rather than asking Owen to work after his day (`OBJ-17` **closed — declined**); Kesha released it without friction, reposting publicly 2026-08-06 morning.
+- Owen fell asleep on the couch during a background movie; Alexander cleaned up quietly and walked him to bed.
+- Settlement: Mana reached maximum (72/72) via ordinary active recovery partway through the span; remainder reset to 0. No Stat, XP, gold, or item change.
+- Repository allocation: `EVT-000170`; no entity or relationship identifier minted.
+
+**2026-08-05 21:30 → 2026-08-06 06:00 Chicago time — a full night, and the thirteenth quest issues (`EVT-000171`).**
+
+- Uneventful overnight rest at Owen's apartment. Mana already at maximum before the switch to `resting` recovery, remained 72/72; Health unchanged at 144/144.
+- 06:00: the System issued the thirteenth daily quest (streak 12, unresolved).
+- Repository allocation: `EVT-000171`; no entity or relationship identifier minted.
+
+**2026-08-06, 06:00-~10:30 Chicago time — doubled, alone (`EVT-000172`).**
+
+- Left Owen asleep with a note; coffee, a phone/bank check (cash $20,806.50 unchanged, nothing new), a quiet thirty minutes, then the thirteenth daily quest run solo and doubled (200/200/200, 20 km) along the Loyola Park lakefront. System tracked only the base 100/100/100/10km for completion.
+
+```text
+[SYSTEM] DAILY TRAINING COMPLETE.
+Rewards available: Ability Points +3 · Status Recovery · Daily Random Box.
+Claim separately at any time.
+```
+
+- Streak 12→13 (not a positive multiple of seven — ordinary single-roll box). No injury, no Mana spent. Three new pending reward entries: Ability Points +3 (0→1), Status Recovery (7→8), Daily Random Box (0→1); none claimed or opened.
+- Repository allocation: `EVT-000172`; no entity or relationship identifier minted.
+
+**2026-08-06, ~10:30-11:15 Chicago time — cold water, and a lifeguard's confession (`EVT-000173`).**
+
+- Solo swim off the Loyola Park rocks after the regimen. Text exchange with Owen; invited him to join rather than explain the note. Owen arrived ~20 minutes later and got in, complaining about the cold exactly as Alexander had.
+- Owen revealed, apparently for the first time, that he lifeguarded this exact stretch of water in college.
+- Confirmed Owen has ordinary mender rounds at 10:00, no Bridgeport job. Owen asked whether Alexander had plans for the day — unanswered at scene's end.
+- No Stat, XP, gold, Mana, or item change; Health and Mana both remained at maximum throughout.
+- Repository allocation: `EVT-000173`; no entity or relationship identifier minted.
+
+**2026-08-06, ~11:15 Chicago time — skill formation: reactive pattern anticipation opened (`EVT-000174`; no fictional time consumed).**
+
+- Owner flag: `EVT-000167`'s Milo footwork drill (2026-08-05) should have opened a Section 7.1 skill-formation candidate at the time and did not.
+- Corrected: opens `reactive_pattern_anticipation` (signature: read-tell-before-call-lands, pre-empt footwork, recover mid-stride on a miss), status `tracking`, evidence `EVT-000167#milo-footwork-drill-cold-double-pass`.
+- **1/3 qualifying scenes**, not 2/3 — one continuous practice session counts once regardless of reps within it (Section 7.1, distinct-scene rule). A second distinct session brings it to 2/3; a third ratifies automatically if fully authored, or opens the mandatory adjudication queue if not.
+- Repository allocation: `EVT-000174`; no entity or relationship identifier minted.
+
+**2026-08-06, ~11:15 Chicago time — first promotion-barrier skill-formation batch settlement (`EVT-000175`; no fictional time consumed).**
+
+- **Defect corrected:** Profile Section 7.1 requires every promotion barrier to create one `progression-batch-settlement` Event carrying the batch's audits, including an explicit `none`. **No barrier had ever created one** — neither settlement kind appears as an Event `kind` in this or any other campaign, across 35 checkpoints. The deferred half of the audit had therefore never run: sealed work/practice notes had nowhere to land, and a qualifying practice scene was indistinguishable from a non-qualifying one. That is how `EVT-000167` went unnoticed until an owner re-read it (`EVT-000174`).
+- **`EVT-000175` discharges the outstanding barrier** for the thirteen play Events since the `EVT-000153` baseline (`EVT-000155`-`EVT-000157`, `EVT-000163`-`EVT-000167`, `EVT-000169`-`EVT-000173`).
+- **One qualifying scene:** `EVT-000167`'s Milo drill, already opened as `reactive_pattern_anticipation` at `EVT-000174`, recorded here as the batch's `evidence-recorded` result rather than counted twice. Candidate state, evidence, and 1-of-3 progress unchanged.
+- **Everything else `none`, on stated grounds** rather than by default: conversation/errand/relationship scenes demonstrate no tested repeatable method; `EVT-000164`/`EVT-000165` are Keen Sense reads on a known ratified skill and settle as Section 7.4 counters; `EVT-000171` is rest and quest issue. **`EVT-000172` is the nearest call and still `none`** — doubling an automatic daily checklist adds volume to a task whose outcome is already assured, which Section 7.1 excludes by name.
+- **No fictional time, roll, counter, skill value, item, pool, or resolved outcome changed.** This records a classification that was owed and never written; it authors no fiction.
+- **Repository allocation:** `EVT-000175`.
+
+**2026-08-06, ~11:15-11:45 Chicago time — the lakefront reckoning (`EVT-000176`).**
+
+- Owen corrected Alexander's stated time by reading the size of the beach crowd, and volunteered that he had moved his 10:00 mender round to an afternoon block at 06:40 after finding the note.
+- **The note argument, resolved both directions.** Owen read *you know where I am* as a coordinate, not an invitation, and deliberately stayed away; Alexander had waited half an hour with coffee made. Owen located the full cold mug on his own counter, which he had poured out at 10:30 assuming it was abandoned.
+- **Owen volunteered a limit unasked** (a Decision 076 character first): he does not know how to be invited by a man who does not invite people, and errs toward leaving Alexander alone rather than crowding him. He asked to be woken regardless of how he looks and to be the one who says he cannot; Alexander agreed, adding *once I commit you cannot say no*.
+- **Play-fight:** Owen's escape resolved a **natural 96**, unmodifiable under Rules Section 4.6 — a drilled lifeguard release and reversal. No damage, no injury, no state change. **Overpower not counted** as a material application (non-hostile partner, grapple broken rather than resolved).
+
+**2026-08-06, ~11:50-13:15 — Nikitas, and Owen's rocks (`EVT-000177`).**
+
+- New entities: **Voula (`ENT-000169`)**, diner proprietor, and **Nikitas (`ENT-000170`)**, the diner itself, on Sheridan Road four blocks from the lakefront. She recognised Owen after nine years, corrected him to twelve, cleared the long-unseated guard table for him, ordered for both men, and refused payment.
+- She volunteered the memorial notice on the door herself: her sister's boy **Andreas**, two years ago, **not the lake** — stated unprompted precisely because Owen was visibly doing arithmetic about it.
+- **Owen's largest disclosure of the campaign.** On the rocks in his third guarding summer he did not go in for one to three seconds, then took the nearer, easier casualty while Ruiz went past him for the girl out beyond the bar. **She lived, nobody reviewed it, nobody noticed the pause**, and that is why it is unresolvable. He never worked a beach again; mending is the profession where the going-in has already been done by someone braver. He connected it to the Ashfield Gate (`EVT-000079`) unled, and named his actual fear: not that he will fail to reach Alexander, but that he will pause again, it will work out again, and he will never know.
+
+**2026-08-06, ~13:15-13:52 — the training contract and Owen's second ability (`EVT-000178`).**
+
+- Owen asked to be **trained rather than absolved**, specifying he wanted to be put in front of something that can actually hurt him.
+- **Alexander disclosed unprompted** that the Lakefront booking closed as declined at `EVT-000170` had been set up the previous afternoon as exactly this training scenario, and binned by text when Owen came home rough. Owen named it as the same paternalism he had objected to that morning **and** conceded Alexander had been right; he also established that he had never asked about Alexander's day at all.
+- **The four intervention tells,** supplied by Owen because *would die* is a conclusion arriving four seconds late: down and not up in three seconds; three or more in contact and unbroken next beat; hands coming open after a hit; still standing and not answering.
+- **Owen learns Stone Skin [D-Rank] Novice** by consuming the unbound-awakened rune from `EVT-000152`. Section 7.1 consumption settlement: eligible binding, unknown technique, learned Rank min(teaching_rank, C-Rank) = the native D-Rank floor. **First recorded instance in Gatefall of an awakened acquiring a second ability.** No window, no notification — he perceives no System. It draws on the same well as his mending, which he identified himself before consuming.
+- **New objective OBJ-18** — Alexander promised, flatly, to enlarge Owen's capacity. No mechanism identified.
+- Repository allocation: `ENT-000169`, `ENT-000170`, `EVT-000176` through `EVT-000181`.
+
+**2026-08-06, ~13:52-14:00 — the Overgrown Temple opened (`EVT-000179`).**
+
+- **Instant-Dungeon Key [E-Rank]** bought for **500 g** (gold 507 to 7) and used from Owen's kitchen. E-Rank chosen deliberately as the training bracket over his own D-Rank tier.
+- Archetype d8 **4 → Overgrown Temple**. Population **11 common / 2 elites** (1d2 = 1, plus the archetype's shrine guard) **/ 1 boss**; mineable deposit 3d6 = **11 crystals**, unextracted. Instance closes **15:55** or on the boss kill.
+- **Keen Sense** (2 Mana, 72 to 70): d100 **11**, net +2, effective **51 — partial success.** Layout read; **the shrine greyed out** and Alexander said so aloud rather than pretend to a complete picture. At Adept the read shared to Owen as if personally made.
+- **Deliberate tactical read**, explicitly declining to trust the magical result at face value: d100 **61**, net +2, effective **100 — legendary success.** Two Patterns: the lattice is their road (four countable committed drop points per bay, floor is dead ground), and the shrine holds more than one thing (lattice density, derived from geometry rather than from the read).
+- Counters: Keen Sense uses 8 to 9; Exploit Pattern uses 5 to 6. Qualifying scenes and mastery deferred to dangerous-scene close.
+
+**2026-08-06, ~14:00-14:52 — Owen clears the bays (`EVT-000180`).**
+
+- **Owen fought the entire span alone.** Alexander took no offensive action.
+- **Field Command's first material use in the campaign** — Pattern relayed by call, +1 step to Owen. Coaching outside the mechanic corrected his `EVT-000116` four-inch flinch to **flinch forward**.
+- First contact: Owen d100 **48** to effective **68, success**, kill; the three drops already in motion resolved d100 **24** to effective **4, critical failure**. Sweep: d100 **93** to effective **100, legendary success**, ten more commons, untouched — **by the sixth bay Owen was calling commits ahead of Alexander.** Elite: d100 **60** to effective **60, partial success**, killed; its answer d100 **54** to effective **34, failure**, no serious blow landed.
+- **The partial's cost fell on Owen's capacity, not his body: roughly two-thirds of his well spent**, most of it sustaining Stone Skin's first-ever use.
+- **XP +120 to Alexander** under Section 3.8 setup credit (11 commons at 10, elite at 20, no underdog multiplier at or below D-Rank): **620 to 740/1000.** No level crossed.
+- Field Command uses 0 to **3**.
+- **Campaign discovery:** all **112 E-Rank crystals sold** (+1,120 g, gold 7 to 1,127), one **Standard Mana Potion** bought for 75 g (to **1,052**) and given to Owen, which **restored his expended capacity in full** — against his own statement that it returns overnight at best. Establishes that a System Mana potion restores an awakened non-Bearer's well (Discovery, Law VI). His unanswered question: *how many of those can you make?*
+- **Remaining unengaged: the boss (160 Health) and a second elite (80 Health), both at the shrine.**
+
+**2026-08-06, ~14:52 — Checkpoint 0036 promotion barrier (`EVT-000181`; no fictional time consumed).**
+
+- Skill-formation batch settlement for `EVT-000176` through `EVT-000180`: **none**, on stated grounds per scene rather than by default.
+- **`EVT-000180` deliberately not classified** — it is an *open* dangerous scene, and Section 7.1 settles danger once at scene close. Its formation audit, the qualifying-scene credit for Keen Sense / Exploit Pattern / Field Command, and any movement on `formation_instruction` (tracking 1/3, a plausible match for this coached clear) are **owed at instance close** and recorded here so the obligation survives the checkpoint.
+- Section 7.4 combat reconciliation: Mana trace 72 to 70 to 72 confirms exactly one activation against one recorded Keen Sense use. No missed or duplicate count. No `pending-ratification` candidate; readiness gate clear.
+- **Defect flagged, not papered over: the 2026-08-06 06:00 Daily Premium rotation was never settled.** The stored cycle is the expired 2026-08-05 Argent cycle; the anchor is now 14:52 the following day. Neither the rotation nor its Tier-1 notification fired during `EVT-000171`/`EVT-000172`, which spanned the boundary. **No replacement offer has been invented**, and the character sheet records the gap explicitly along with the exact rolls settling it will require.

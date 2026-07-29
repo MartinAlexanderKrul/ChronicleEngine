@@ -1,0 +1,79 @@
+save_manifest:
+  checkpoint_id: "SAVE-20260712-S1EXT-002"
+  session_number: 1
+  session_phase: "extended"
+  save_time: "2026-07-12T00:00:00Z"
+  campaign: "Prototype Alpha"
+  world: "Verra"
+  engine_version: "0.1.5"
+  
+campaign_date: "Year 312 RR, late spring (day 8, evening)"
+
+events_at_checkpoint:
+  - "EVT-000009 (Session One Checkpoint, complete)"
+  - "EVT-000010 (Crisis Cascade, complete)"
+  - "EVT-000011 (Interlude, complete)"
+  - "EVT-000012 (Commitment Decision, pending)"
+
+protagonist:
+  entity_id: "ENT-000018"
+  name: "Ilse Varn"
+  location: "Halden, Athenaeum infirmary"
+  condition: "Physically recovered; mentally clear; decision pending"
+
+ledgers_updated:
+  - file: "120_INVENTORY_AND_OWNERSHIP.md"
+    change: "Letter location: Corvane's desk (archived)"
+    record_id: "REC-000011"
+    status: "verified"
+  
+  - file: "140_OBJECTIVES.md"
+    change: "All objectives updated with extended session status"
+    subjects: ["OBJ-1", "OBJ-2", "OBJ-3"]
+    record_id: "REC-000013"
+    status: "verified"
+  
+  - file: "130_NPCS_AND_FACTIONS.md"
+    change: "REL-000016 (Corvane) and REL-000019 (Maelis) updated with EVT-000010 and EVT-000011 events"
+    record_id: "REC-000012"
+    status: "verified"
+  
+  - file: "110_WORLD_LEDGER.md"
+    change: "REL-000017 (fever knowledge state) updated: evidence witnessed, conclusion pending; extended provenance added"
+    record_id: "REC-000010"
+    status: "verified"
+  
+  - file: "160_CAMPAIGN_CHRONICLE.md"
+    change: "Added EVT-000010 and EVT-000011 narrative entries; subjects list updated"
+    record_id: "REC-000014"
+    status: "verified"
+  
+  - file: "170_CHANGELOG.md"
+    change: "Added extended session checkpoint entry with full ledger update list"
+    record_id: "REC-000015"
+    status: "verified"
+  
+  - file: "180_CURRENT_STATE.md"
+    change: "Protagonist location updated to infirmary; condition: recovered/decision pending; knowledge posture updated"
+    record_id: "REC-000016"
+    status: "verified"
+
+checkpoint_notes: |
+  This checkpoint follows the proper Save Algorithm (AI_GAMEPLAY_RUNTIME_PROFILE.md Section: Checkpoint Persistence):
+  1. Enumerated all promotion targets touched by extended session
+  2. Attempted write to every target ledger
+  3. Performed read-back verification of all written files
+  4. Confirmed intended changes and provenance in each file
+  5. All targets successfully written and verified
+  
+canonical_validation:
+  status: "CANONICAL"
+  write_capability: "Established (multiple successful writes)"
+  player_agency_preserved: true
+  world_reactions_recorded: true
+  consequences_deferred: true
+  decision_point_preserved: true
+
+next_event: "EVT-000012 (Ilse's commitment decision — pending player action)"
+next_decision_point: "Corvane awaits Ilse's answer in the infirmary"
+world_state_live: true

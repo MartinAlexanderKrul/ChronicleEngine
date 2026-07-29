@@ -13,8 +13,8 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000190
-  game_date: "2026-08-06 ~15:10 -05:00"
+  source: EVT-000209
+  game_date: "2026-08-08 ~13:15 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
 scope: campaign
@@ -154,6 +154,25 @@ subjects:
   - EVT-000189
   - EVT-000190
   - EVT-000191
+  - EVT-000192
+  - EVT-000193
+  - EVT-000194
+  - EVT-000195
+  - EVT-000196
+  - EVT-000197
+  - EVT-000198
+  - EVT-000199
+  - EVT-000200
+  - EVT-000201
+  - EVT-000202
+  - EVT-000203
+  - EVT-000204
+  - EVT-000205
+  - EVT-000206
+  - EVT-000207
+  - EVT-000208
+  - EVT-000209
+  - EVT-000210
 ```
 
 ---
@@ -4184,7 +4203,7 @@ description: "The promotion barrier for Checkpoint 0037, discharging Section 7.1
 No fictional time, roll, Stat, pool, item, or resolved outcome changed by this Event."
 ```
 
-## EVT-000186 - Profile Adoption: Gatefall World Rule Profile 1.31
+## EVT-000186 - The Walk to Edgewater
 
 ```yaml
 id: EVT-000186
@@ -4192,32 +4211,41 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: ruling
-  game_date: "2026-08-06 ~15:10 -05:00"
+  source: transcript
+  game_date: "2026-08-06 ~15:12-16:00 -05:00"
   real_date: "2026-07-29"
 type: Event
-kind: profile-adoption
-importance: minor
-game_date: "2026-08-06 ~15:10 -05:00"
+kind: relationship
+importance: major
+game_date: "2026-08-06 ~15:12-16:00 -05:00"
 participants:
   - ENT-000125
+  - ENT-000139
 counter_deltas: []
-description: "Adoption of Gatefall World Rule Profile 1.31, an additive correction advance over frozen 1.30. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged at Owen Callahan's kitchen, ~15:10 on 2026-08-06.
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Owen's kitchen, then on foot to Edgewater. No die was rolled; nothing here is a resolved uncertain action.
 
-**The defect corrected.** Section 7.2's Rank Dominance Law promised that a skill at Novice one Rank higher beats the same skill at Master one Rank lower. On the scope axis it was false: Rank granted **+1** subject per Rank above native while mastery granted **+4** across its track, so an E-Rank Master Keen Sense reached five beneficiaries against a D-Rank Novice's two. Ascension was a strict downgrade on every scope skill in the profile — Keen Sense, Silent Step, Exploit Pattern, Field Command, Resonance Extraction — and Section 7.5 would have presented that downgrade as a guaranteed net gain. Section 7.2 further asserted 'an E-Rank Master covers the whole scene on one', contradicting Section 7.3's authored 1/2/3/4/5 ladder: two sections of one profile stating different numbers for the same skill.
+**The potion terms, settled.** Alexander confirmed the healing potion is Owen's to use on anyone he judges needs it, with one hard line: never a mana potion, not even to another mender, not ever. Owen accepted the terms exactly as given, filing them the way he files a dosage, and independently chose to keep his own ask modest — one potion tonight, not more, framed as the number he can defend to himself. He pocketed it inside his field kit rather than his civilian bag. The second of the three lid potions returned to Alexander's dimensional inventory; the third remains counted among his ten, its earlier question (a colleague at Edgewater, still unnamed as Ines-specific here) unresolved from `EVT-000185`.
 
-**The repair.** Rank now grants, per Rank, **one further affected subject and one authored category** — a kind of reach no mastery level supplies — while mastery grants subjects alone on its 1/2/3/4/5 ladder. Both contribute to the count; the law is carried by the category, which no quantity of mastery ever reaches. A **scope ratchet** stores each scope skill's pre-ascension count as `scope_floor` and takes `max(formula, floor)`, so no ascension can reduce reach on either road. Section 7.3 gains E-D-C category ladders for all five skills; Section 7.5's offer now discloses the category gained and the ratcheted count.
+**Circumspection, stated plainly.** Alexander laid out exact tradecraft — never show the potion, dose it sublingually or in small amounts the way a mender already covers a patient who can't swallow dry, use it on someone sleeping or otherwise not positioned to ask questions. Owen recognized it immediately as a method he already half-uses to cover a medication he isn't supposed to have, and accepted it as his own operating procedure going forward rather than an instruction he's merely following.
 
-**The second defect.** Section 7.2 has cited 'mastery's +0.20' on the passive-multiplier axis since 1.12, but Section 7.4's closed-form list authored only damage/healing, reduction, and modifier-step categories — a passive multiplier was granted nothing per level anywhere in the profile. **Dagger Mastery has rendered +0.20 at Adept on an unwritten rule for the entire campaign.** Section 7.4 now authors **+0.05 per level**: `0.10 + (3 - 1) x 0.05 = 0.20`, exactly the stored value.
+**Alexander changed out of his field kit** into the civilian clothes already packed in the dimensional inventory (Section 12.9, established holding) before the two of them left the building. A kiss in the stairwell; Owen's unguarded reaction to being told plainly that the offer to walk him the whole way was not, in fact, a joke.
 
-**Nothing changed.** Every skill Rank, mastery level, counter, Stat, pool, item, price, and resolved outcome is identical before and after. Keen Sense stands E-Rank Expert covering Alexander plus three allies — the new formula returns `1 + 0 + (4 - 1) = 4`, what it already rendered. Dagger Mastery stands E-Rank Adept at +0.20. Every skill in the category table is at its native E-Rank, so no category grant is live and none is retroactive. No **scope** skill has ever ascended in this campaign — Rupture's E-Rank to D-Rank breakthrough is a damage skill and carries no scope axis — so every `scope_floor` initialises at **0** and none binds.
+**On the walk (hand in hand), three real conversations.** Asked how he actually feels about Edgewater specifically, Owen explained the deliberate choice — he picked a hospital that does little first-response work, where someone else has already done the going-in, naming the same logic that shapes the rest of his life since the rocks. He named a colleague, **Dr. Kowalczyk**, who has spent roughly a year trying to get him to take a lead-mender post, and his own reason for refusing: leadership trades hands-on patient time for a schedule and a signature, a trade he's watched cost three people he respects the thing that made them good at the job. Asked why not his own private clinic, he gave the honest reason under the practical one: alone with his own name on the door, there is no one behind him to catch what a pause costs — the exact fear from the rocks, restated without needing the story told twice.
 
-**Counters added:** `skills.keen_sense.scope_floor`, `skills.exploit_pattern.scope_floor`, `skills.field_command.scope_floor`, `skills.resonance_extraction.scope_floor`, each baselined at 0 against this Event. `counter_deltas` is empty because initialisation at zero is the recording of an absence, not a change to a tracked value.
+**A Character First — reassurance accepted without deflection.** Told plainly that he was underestimating himself and had proven it that same afternoon, Owen did not redirect it with a joke, which is his established pattern (Section 10, Data Model). He sat with the compliment, restated the numbers back accurately himself, and said aloud that he'd never had anyone state belief in him as a flat fact rather than an encouragement — and that he didn't know what to do with it, but heard it. The consultant idea (hiring a doctor to advise on awakened-specific medicine, off his own license) landed as a real idea worth thinking about rather than deflected.
 
-**Not addressed here.** NPC/monster Mana is Phase 2 and lands at Profile 1.32; Stat Passives and the Flux Sight refactor are Phase 3 and land at Profile 1.33. The design is recorded at `docs/superpowers/specs/2026-07-29-flux-sight-and-passive-unification-design.md`. The unsettled 2026-08-06 Daily Premium rotation carried forward at `EVT-000185` remains unsettled and is untouched by this adoption."
+**A standing proposal, left open — new OBJ-19.** Alexander offered to arrange future work through Owen's own C-Rank license rather than his own gold: not an instant dungeon (Section 17 — Bearer-only, cannot be legally sponsored by anyone), but a real posted Gate booked Cicero-style, with Owen doing the fighting and Alexander backing off the way he did in the instance today. Owen did not decline; he named the real risk difference — a confirmed posting is assessed, not guaranteed, and Cicero itself came in at two boss-Rank alphas against one assessed — and asked to actually think about it rather than answer standing at his own door. No commitment made either direction.
+
+**Settlement.** Recovery mode `active` the entire span; no combat, no Mana spent, no Health change. Elapsed 2026-08-06T15:10:00-05:00 to 16:00:00-05:00 (3,000 seconds). Mana: remainder 316,800 + (3,000 × 72 × 20) = 4,636,800 units → 6 restored, capping the pool at maximum; remainder resets to 0 per Section 5.2. **Mana 66 → 72/72 (full).** Health unaffected, already full, remainder stays 0.
+
+Owen entered his shift at Edgewater on schedule. No fiction beyond this Event's own span is authored by it."
 ```
 
-## EVT-000187 - Profile Adoption: Gatefall World Rule Profile 1.32
+## EVT-000187 - The Checkpoint 0038 Promotion Barrier
 
 ```yaml
 id: EVT-000187
@@ -4226,35 +4254,31 @@ schema_version: "0.1.5"
 status: active
 provenance:
   source: ruling
-  game_date: "2026-08-06 ~15:10 -05:00"
+  game_date: "2026-08-06 ~16:00 -05:00"
   real_date: "2026-07-29"
 type: Event
-kind: profile-adoption
+kind: progression-batch-settlement
 importance: minor
-game_date: "2026-08-06 ~15:10 -05:00"
+game_date: "2026-08-06 ~16:00 -05:00"
 participants:
   - ENT-000125
 counter_deltas: []
-description: "Adoption of Gatefall World Rule Profile 1.32, a migrating subsystem advance over frozen 1.31. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged at Owen Callahan's kitchen, ~15:10 on 2026-08-06.
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "The promotion barrier for Checkpoint 0038, covering the single play Event since the last settlement (`EVT-000185`): `EVT-000186`.
 
-**What was missing.** Only the Bearer carried Mana. Section 5 said so outright, Section 13.1 denied NPC hunters a 'Mana curve', and GTF-OVR-002 scoped growing pools to him alone. A monster's supernatural capacity was therefore a fact about its Rank with **no number behind it** — nothing to spend, nothing to exhaust, and nothing any capability could ever report. A boss could throw its heaviest move every exchange forever, because nothing said it could not.
+**Classification: `none`.** `EVT-000186` is conversation and travel — a potion transfer, a kiss, a walk, and an open proposal left undecided. No skill was activated, no combat occurred, and no consequential-work or structured-practice scene with a bounded objective and real feedback took place. No sealed note set exists to classify, so the batch records one explicit `none` rather than omitting the field.
 
-**What now exists.** Every NPC hunter and monster carries **Rank Mana** read from the Section 6.1 table — **20 / 50 / 125 / 300 / 750 / 2,000**, half Rank Health at every Rank, which is the same ratio the Bearer's own `2 x Intelligence` against `4 x Vitality` produces at equal Stats. It is spent as a fraction of that entity's **own** maximum by the action's role: **minor 10%, signature 25%, boss-tier 50%**, floored to an integer, with an ambiguous call taking the lower tier. Ordinary attacks and movement cost nothing. Sections 5.2 and 5.3 then apply unchanged — the same recovery rates, and **−1 modifier step at 0 Mana until above 25%**. A drained boss is measurably worse, so wearing one down is now a real tactic rather than a figure of speech.
+**Section 7.4 combat reconciliation**, bounded to play since the `EVT-000185` barrier: no skill activation occurred in `EVT-000186`, so no counter reconciliation is required. `reactive_pattern_anticipation` and `formation_instruction` remain exactly as settled at `EVT-000184`, at 2/3 each.
 
-**Individual variance.** New Section 6.1.2 lets a fixed-Rank entity carry up to **±10%** on both pools, so Rank names a bracket rather than one body: **authored** for recurring named NPCs in their world-file entry, **rolled once** on a banded d100 for elites and bosses, and **absent** for commons. Rolled once and never rerolled, exactly as a Gate's true Rank is fixed on first entry.
+**Still outstanding and deliberately carried forward:** the **2026-08-06 06:00 Daily Premium rotation remains unsettled**, unchanged from Checkpoints 0036 and 0037. It has now gone a third checkpoint without resolution and no offer has been invented to cover it. Recorded again rather than quietly dropped.
 
-**Section 6.2's damage baseline always reads the flat table value.** Pools vary; the arithmetic does not. Otherwise every exchange would need that individual's factor and combat would stop being reproducible from the tables — the property the fixed-Rank model exists to keep.
-
-**Nothing is authored per creature, and no engine decision changes.** Every pool and every cost derives from Rank, so a monster still needs no stat block, ability list, or cost sheet: the Section 6.1 discipline is extended one axis, not abandoned. **Decision 020 is untouched** — it governs abstraction level and says nothing about Mana.
-
-**Prospective in full.** No past exchange is recomputed, no completed fight re-resolved, and no monster retroactively runs dry. An entity already on screen at adoption enters at **full** Rank Mana, since nothing it has already done was ever charged; variance is assigned on **first contact after adoption**, so a creature already engaged takes the flat value for that encounter rather than having its body changed mid-fight.
-
-**The Bearer is untouched.** Not one Stat, pool, counter, skill, item, or counter baseline changes; `counter_deltas` is empty because this adoption moves no tracked value of his at all. His own Mana rules are entirely unchanged.
-
-**Not addressed here.** Stat Passives and the Flux Sight refactor are Phase 3 and land at Profile 1.33; Flux Sight's D rung will read the Mana this adoption creates. The unsettled 2026-08-06 Daily Premium rotation carried forward at `EVT-000185` remains unsettled and is untouched."
+No fictional time, roll, Stat, pool, item, or resolved outcome changed by this Event."
 ```
 
-## EVT-000188 - Profile Adoption: Gatefall World Rule Profile 1.33
+## EVT-000188 - The First Watch: A Delivery, and Titan Secure
 
 ```yaml
 id: EVT-000188
@@ -4262,30 +4286,43 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: ruling
-  game_date: "2026-08-06 ~15:10 -05:00"
+  source: transcript
+  game_date: "2026-08-06 ~16:25-17:05 -05:00"
   real_date: "2026-07-29"
 type: Event
-kind: profile-adoption
-importance: minor
-game_date: "2026-08-06 ~15:10 -05:00"
+kind: promotion
+importance: major
+game_date: "2026-08-06 ~16:25-17:05 -05:00"
 participants:
   - ENT-000125
-counter_deltas: []
-description: "Adoption of Gatefall World Rule Profile 1.33, the third and final phase of the Flux Sight design. **No fictional time is consumed and no resolved roll is reopened.** Alexander remains in Owen Callahan's kitchen at ~15:10 on 2026-08-06.
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.keen_sense.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.keen_sense.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.keen_sense.mastery_progress
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Left Owen's kitchen, changed into civilian clothes, and took the L to the warehouse district to act on the two concealed exterior reads from EVT-000164-EVT-000165. Chose the fenced warehouse (ENT-000166) over the storefront.
 
-**Stat Passives.** Rank-Sight, Overpower, Pre-empt, Multitask, and Shrug Off become a declared class whose Rank is derived from the governing base Stat at **30 / 36 / 44 / 54 / 66 / 80 → E / D / C / B / A / S**, clamped at System Rank + 1. They have no mastery track, stars, qualifying scenes, mastery progress, Rank ascension, or scope floor. Existing successful-application counts carry forward unchanged as `successful_uses`.
+The stakeout. Settled against a fence two doors down and activated Keen Sense (Mana 72 to 71). d100 37, net +3 (Perception margin +2 capped, Keen Sense +1), effective 97 - exceptional success. A plain panel van backed up to a side door not visible from the original read's angle; two men in unbranded but deliberately unremarkable gear unloaded four sealed crates in under ninety seconds and left by a different route than they arrived. Meets the clue_condition for ENT-000167 (observing a delivery in person) - combined with the pre-existing complete record and the Bearer not yet knowing the fact, all four Section 8.4.3 criteria hold. The Hidden pointer attached automatically, capacity available (non-daily slots were 0/2): quest key warehouse-meridian-ownership, unrevealed, tracked in 100_CHARACTER_SHEET.md system_state.non_daily_quests.active.
 
-**Flux Sight.** Rank-Sight is renamed **Flux Sight** without changing its identity or acquisition Event. Rank-Sight and Deep Sight are both retired names for this one skill. Its ladder reads Gates at E; monsters' Rank and current/maximum Health and Mana plus Gates one Rank above System Rank at D; awakened humans at C; items at B; abilities at A; and the System's complete read at S.
+The closer pass. Called Kesha Morrison as cover (routine check-in on the mining flag, OBJ-20 - no news) and walked past at an unhurried pace while she talked. d100 74, net +3, read as success: spotted a manufacturer/installer decal on the keypad housing, a company name and a partial phone number, worn but legible enough to attempt.
 
-**Live derived grants.** Base Perception **38** makes Flux Sight **D-Rank**, so Alexander can now read perceived monsters' Rank and pools. Base Intelligence **36** makes Multitask **D-Rank**, raising concurrent non-daily System-quest capacity **2 → 3**. Strength 33, Agility 32, and Vitality 32 leave Overpower, Pre-empt, and Shrug Off at E-Rank. These are consequences of already-canonical Stats, not Stat changes.
+The call. Reconstructed the worn digits from memory (d100 24, Intelligence-governed, net +1, effective 44 - partial success: most of the number recovered, one digit ambiguous between 8 and 3) and called both endings. The '8' ending dead-ended on a fax tone; the '3' ending reached Titan Secure, a small access-control installer (ENT-000171), employee Marsh (ENT-000172) answering. Alexander's guard-job pretext mismatched their actual business (d100 29, net -1, effective 9, read as partial success since Marsh volunteered real, if generic, information despite the mismatch): access control and camera installs, mostly warehouses and car lots. Pressed for the specific client at the fenced warehouse, Marsh declined outright - client confidentiality, stated as the company's actual product. Call ended clean, but a second call on any pretext is now materially harder.
 
-**Nothing else moves.** No pool, ordinary skill Rank or mastery value, use count, item, reward, currency balance, roll, or fictional outcome changes. The five counter paths are renamed without numeric deltas, so `counter_deltas` is empty. Immutable checkpoints are untouched and apply the compatibility chain through 1.33 at readiness.
+Correction recorded for provenance: Marsh was first narrated under the name 'Reyes' before the Runtime caught the collision with the already-established ENT-000134 Ada Reyes. No canon was ever written under the wrong name.
 
-**Design complete.** Profile 1.31 repaired the scope axis, Profile 1.32 created NPC and monster Mana, and Profile 1.33 makes that Mana readable at Flux Sight's live D rung."
+No Mana cost beyond the single Keen Sense activation. No XP - none of tonight's triggers are kill, Gate-clear, or quest-completion XP under Section 3."
 ```
 
-## EVT-000189 - Profile Adoption: Gatefall World Rule Profile 1.34
+## EVT-000189 - Meridian Cold Storage
 
 ```yaml
 id: EVT-000189
@@ -4293,26 +4330,32 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: ruling
-  game_date: "2026-08-06 ~15:10 -05:00"
+  source: transcript
+  game_date: "2026-08-06 ~17:05-17:50 -05:00"
   real_date: "2026-07-29"
 type: Event
-kind: profile-adoption
-importance: minor
-game_date: "2026-08-06 ~15:10 -05:00"
+kind: promotion
+importance: major
+game_date: "2026-08-06 ~17:05-17:50 -05:00"
 participants:
   - ENT-000125
 counter_deltas: []
-description: "Adoption of Gatefall World Rule Profile 1.34. **No fictional time is consumed and no resolved roll is reopened.** Alexander remains in Owen Callahan's kitchen at ~15:10 on 2026-08-06.
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Called Ada Reyes (ENT-000134) about open harvest work while walking back toward the warehouse. Good timing on her end: a C-Rank posting opening in about a day or two, same terms as Cicero Scar, out past the old freight yards - she logged his name for first refusal before it goes to the general board. Alexander confirmed on the spot. Pending confirmation, expected within 1-2 days.
 
-**Damage previews.** `/system` now derives standard-success raw damage before target reduction for every equipped damaging weapon and every known offensive active skill. The values come directly from Section 6.2's canonical inputs at render time and are not stored as a second source of truth. Multi-hit attacks retain separate hit values and show both legal weapon orders when either hand may open.
+Second stakeout. Waited at the same fence line for further activity - a repeat attempt against the same target, judged a fresh occurrence (a second delivery is a new event, not a resetting of the first roll) but carrying an accrued conspicuousness penalty for a third pass through the same block. d100 48, net +2 (Perception margin capped +2, Keen Sense +1 already live for the scene, -1 circumstance for repetition), effective 88 - strong success. A dark grey sedan badged directly through the keypad gate rather than delivering anything: a man, mid-30s, unremarkable build, familiar with the routine. Caught a clean look at his face, most of a vehicle plate, and an unrecognized company logo on his lanyard - three threads, none of them a name yet.
 
-**Live rendering.** Effective Strength 43, Dagger Mastery +0.20, and the equipped weapon lines yield **Ghost Quickknife 51** and **C-Rank Quickknife 48**. Rupture's D-Rank baseline 25 at Adept ×2.30 yields **58** after Section 6.2 final rounding. Twin Fang at Practiced ×1.15 yields **51 + 55 main→off** or **48 + 59 off→main**. Every figure is labeled standard and before reduction.
+Canvassing the block. Approached the neighboring auto shops. d100 70, net +1 (established capability at reading people, no specific skill applies), effective 90 - strong success. A mechanic on the block eleven years recalled a permit sign from about fourteen months back naming Meridian Cold Storage - never saw a truck with the name on it, just the sign. Further canvassing turned up only neighborhood guesswork (produce overflow, medical waste) with no one actually claiming to know.
 
-**Nothing mechanical moves.** No Stat, pool, skill Rank, mastery, item, counter, roll, damage result, or fictional outcome changes. The character sheet's stale explanatory Rupture rounding is corrected from 57 to 58. Twin Fang's prose is reconciled to its existing tracked counters — Practiced, 6 uses, 5 scenes, 2/3 toward Adept — removing a copied advancement claim for `EVT-000184`, where Alexander made no offensive action. The underlying formulae and values are unchanged. Immutable checkpoints remain untouched and apply the compatibility chain through 1.34 at readiness."
+The registry search. Web search for Meridian Cold Storage on his phone. d100 58, Intelligence-governed, net +2, effective 98 - exceptional success. Minimal public presence itself, but the Illinois Secretary of State's business registry (public record) showed Meridian Cold Storage LLC, formed approximately 14 months prior, matching the permit timing exactly. Registered agent: a corporate formation service, naming no person. The registered address is a downtown office suite - Suite 14 - shared with six other LLCs filed through the same agent within an 18-month span: a shell-mill address, not an operating company's own office. Confirms deliberate ownership obfuscation without naming who is actually behind it.
+
+110_WORLD_LEDGER.md ENT-000166 and ENT-000167 updated with the LLC name, shell structure, and observed visitor. New ENT-000171 (Titan Secure). No Mana, Health, or Stat change. No XP."
 ```
 
-## EVT-000190 - Profile Adoption: Gatefall World Rule Profile 1.35
+## EVT-000190 - Suite 14
 
 ```yaml
 id: EVT-000190
@@ -4320,33 +4363,37 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: ruling
-  game_date: "2026-08-06 ~15:10 -05:00"
+  source: transcript
+  game_date: "2026-08-06 ~17:50-18:50 -05:00"
   real_date: "2026-07-29"
 type: Event
-kind: profile-adoption
-importance: minor
-game_date: "2026-08-06 ~15:10 -05:00"
+kind: promotion
+importance: major
+game_date: "2026-08-06 ~17:50-18:50 -05:00"
 participants:
   - ENT-000125
 counter_deltas: []
-description: "Adoption of Gatefall World Rule Profile 1.35, an additive correction advance over frozen 1.34. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged at Owen Callahan's kitchen, ~15:10 on 2026-08-06.
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: evidence-recorded
+    candidate: pretext_and_cover
+    scene: suite-14-vence-bluff-and-hold
+    disposition: qualifying
+description: "Changed into a black suit from the dimensional inventory and took the L downtown to the office building holding the registered Suite 14. Waited outside, phone to ear as cover, Keen Sense reactivated for the new scene (Mana 71 to 70).
 
-**The defect corrected.** Section 7.2 spends every Rank above native on three things for a modifier-step or stated-capability skill: whole-scene duration at the first step, one further affected subject, and one authored category. On a skill whose authored effect is instantaneous and carries no scope count, the first two are inert -- there is no duration to saturate and no count to widen -- and the third existed for no skill outside Section 7.3's five-skill scope table. **Sprint and Flash Step could therefore ascend for nothing**, surrendering mastery levels for a Rank label with no capability behind it. Section 7.5 asserted the opposite in three separate places: its net-gain sentence, its `Rank N Master < Rank N+1 Novice < Rank N+1 Adept` ordering, and its rule making every Master-level skill below the ceiling ascension-ready.
+d100 2 - natural critical fumble, catastrophic failure regardless of net modifier. Lost the thread of his own fake call for a beat too long; the lobby guard clocked him watching the building and stepped out to confront him directly.
 
-**This was live, not theoretical.** Flash Step stands at **D-Rank Expert**, one mastery level below the Master that makes a skill ascension-ready, with the Section 7.5 ceiling at C-Rank against System Rank D. The next dangerous-scene settlement that advanced it would have obliged the Runtime to surface an offer costing two mastery levels and granting nothing, announced under a law promising the trade is always a gain. An accepted ascension consumes mastery, and Rules Section 13.2 forbids reopening what a settlement has spent, so the repair had to reach it **before** that settlement rather than after. It does.
+The bluff. Improvised a cover story on the spot - looking for a 'Vence' who was supposed to meet him here. d100 75, net -1 (guard already suspicious, name fabricated with no backing), effective 55 - partial success: the guard didn't call it out as a lie, but pressed for a surname to actually check. Alexander supplied 'M. Vence' and thanked him for offering to verify - a calculated commitment to a story with nothing behind it. This scene, and the second roll below, are the first two qualifying instances of a new skill-formation candidate (Section 7.1 five-test pass: deliberate, a repeatable fabricate-identity-under-scrutiny signature, distinct from any existing skill, materially successful, a distinct scene) - classified at this checkpoint's promotion barrier per the deferred non-combat rule, not mid-scene.
 
-**The repair.** A skill is now **ascension-eligible** at a target Rank only where that Rank's grant is authored and non-empty for it. Where it is not, Section 7.5 withholds the offer rather than making it, and states the withholding at the settlement that would have surfaced it -- an unauthored rung is a gap in the profile, and a gap that goes unstated is the defect Section 8.4.6's telemetry exists to prevent elsewhere. Withholding costs nothing and reverses the moment the rung is authored under Section 20.3. An offer surfaced for an ineligible skill is a misstated offer that restores the mastery it consumed.
+Holding the story. The guard checked the tenant system directly. d100 71, net 0, effective 71 - success: no 'Vence' on file, no visitor logged for 14 - and the guard concluded, sympathetically, that Alexander had a bad address or got stood up. Unprompted, he volunteered that Suite 14 'barely gets anybody' in two years working the desk - confirmation the suite is a mail-drop, not a working office. Naming Meridian directly (no roll, low-stakes factual question) got a plain confirmation of the tenant-board name and nothing further.
 
-**The rungs authored.** Section 7.3 gains a capability-axis ladder beside its scope ladder. **Sprint** (native E-Rank) gains **broken ground** at D -- the step holds across footing that would otherwise demand its own check -- and **vertical** at C, where vertical and overhanging surfaces count as ground. **Flash Step** (native D-Rank) gains **through the barrier** at C: the step crosses a closed constructed barrier rather than only open distance, bounded to obstacles he could pass if they stood open, requiring a read of the far side or resolving as an uncertain action, and explicitly unable to cross a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall -- those are the edges of a space, not obstacles within one. Flash Step's B rung is deliberately left unauthored under Section 20.3, the Section 7.5 ceiling putting it out of reach at System Rank D.
+The number. Asked who the guard had actually called. d100 82, net +1 (rapport built over the exchange), effective 100 (clamped) - legendary success. The guard, now fully at ease, turned his directory screen around unprompted and read off the one contact number on file for Suite 14 - no name attached, rings straight to voicemail with no greeting, which he found mildly odd himself. Alexander thanked him sincerely and left; the guard's sympathy never curdled into suspicion.
 
-**Nothing changed.** Every skill Rank, mastery level, counter, Stat, pool, item, price, and resolved outcome is identical before and after. **Sprint stands at native E-Rank and Flash Step at native D-Rank**, so no capability rung is live and none is retroactive; both ladders are prospective in full. No ascension offer is issued, withdrawn, or re-adjudicated, and none was outstanding at adoption. `counter_deltas` is empty because this adoption changes no tracked value.
-
-**Enforcement.** `tools/validate_repository.ps1` now rejects a skill standing at a Rank its Section 7.3 ladder does not author, with a contract test in `tools/test_progression_audit_contract.ps1` proving the rejection and the restored pass. That ceiling is the half of eligibility a validator can see; the other half -- an offer never surfaced -- is a Runtime obligation under Section 7.5."
+No XP. Mana settlement carried in the checkpoint's temporal-state note."
 ```
 
-
-## EVT-000191 - Profile Adoption: Gatefall World Rule Profile 1.36
+## EVT-000191 - A Number Now Burned
 
 ```yaml
 id: EVT-000191
@@ -4354,25 +4401,787 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
+  source: transcript
+  game_date: "2026-08-06 ~18:50-19:10 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: major
+game_date: "2026-08-06 ~18:50-19:10 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: evidence-recorded
+    candidate: pretext_and_cover
+    scene: disguised-voicemail-and-callback-bait
+    disposition: qualifying
+description: "Called the number from the guard's screen directly, from his own real phone. Connected on one truncated ring - a switch clicking open rather than a normal pickup - straight to a flat tone, no greeting, exactly as described.
+
+d100 38, Perception-governed (ordinary listening, no Keen Sense activation spent on this), net +2, effective 78 - success: caught a faint pre-tone click suggesting an active line-switch rather than a passive voicemail system, and the mailbox read as maintained - not full, not dead. Someone checks this.
+
+The bait. Disguised his voice and left a deliberately vague, insider-sounding message: 'Is it still on?' d100 98, net 0, effective 98, and a natural critical besides - exceptional success. Convincing enough that a callback came within moments, same number. Second qualifying scene for the pretext_and_cover candidate - a materially different application of the same fabricate-identity-under-scrutiny signature, in a different medium (recorded message rather than live conversation).
+
+Holding it live. Answered still disguised, opened with 'Listening' to make the other party commit first. A cautious, older male voice demanded 'Who' - Alexander held silence a half-second too long. d100 15, net -1 (live, unscripted, no backing information to draw on under direct challenge - materially higher difficulty than the recorded message), effective 1 - catastrophic failure. The man on the line made him instantly, said plainly that he wasn't on whatever list this was for, confirmed he now had Alexander's number, and hung up on his own terms. This attempt does not count as evidence for pretext_and_cover - Section 7.1 test 4 requires material success; a failure contributes to neither the candidate's evidence nor against it.
+
+Net result of the night's final exchange: no name traded away, no admission made, but Alexander's real phone number is now attached to tonight's questions on the other end of a line he doesn't control. Recorded as a live, unresolved exposure risk under OBJ-21 - mundane, not System-related, and distinct in kind from the Section 19 concealment threads.
+
+Walked home. No further rolls. No XP, gold, or item change this Event."
+```
+
+## EVT-000192 - The Checkpoint 0039 Promotion Barrier
+
+```yaml
+id: EVT-000192
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
   source: ruling
-  game_date: "2026-08-06 ~15:10 -05:00"
+  game_date: "2026-08-06 ~19:15 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: progression-batch-settlement
+importance: minor
+game_date: "2026-08-06 ~19:15 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: evidence-recorded
+    candidate: pretext_and_cover
+    scene: suite-14-vence-bluff-and-hold
+    disposition: qualifying
+description: "The promotion barrier for Checkpoint 0039, covering EVT-000188-EVT-000191 since the last settlement (EVT-000187).
+
+Section 7.1 non-combat batch classification. Two sealed scenes evaluated: the Suite-14 bluff-and-hold (EVT-000190) and the disguised voicemail (EVT-000191). Both pass all five tests - deliberate, a repeatable signature (fabricate a plausible identity or story under direct real-time scrutiny, adapt to pushback, sustain to a resolved outcome), distinct from any existing skill, materially successful, and materially distinct scenes. New tracking candidate opened: pretext_and_cover, 2/3 qualifying scenes, not yet ratification-eligible. The third scene that same night (holding the live callback) failed and contributes no evidence either way, per test 4.
+
+Section 7.4 combat/mastery reconciliation, bounded to play since EVT-000187: one Keen Sense activation succeeded (EVT-000188, exceptional) and one failed (EVT-000190, natural fumble). Reconciled against the resolved-action record: successful_uses 10 to 11, qualifying_scenes_total 9 to 10, mastery_progress 0 to 1 toward Master. The failed activation correctly contributes nothing. No missed count, duplicate, or stale threshold found.
+
+Hidden quest state. First pointer of the campaign attached at EVT-000188 (warehouse-meridian-ownership, anchor ENT-000167). Not revealed - the reveal_condition requires both ownership and true purpose established; only the shell-company ownership layer has been reached this session. Recorded in 100_CHARACTER_SHEET.md system_state.non_daily_quests.active; non-daily slots now 1/2.
+
+Still outstanding and deliberately carried forward: the 2026-08-06 06:00 Daily Premium rotation remains unsettled, now a fourth checkpoint running, no offer invented to cover it.
+
+No fictional time, Stat, pool, item, or resolved combat outcome changed by this Event beyond the reconciliation stated."
+```
+
+## EVT-000193 - Overdue
+
+```yaml
+id: EVT-000193
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-07 ~06:15-19:00 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: minor
+game_date: "2026-08-07 ~06:15-19:00 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "The morning after the warehouse investigation. No text from Owen since the goodbye outside Edgewater. Checked the bank balance out of habit and caught that the Denise Ferro rail-corridor payout was genuinely overdue - three business days late against the stated 1-2 day window, not just slow. Did not chase it through Kesha or Denise Ferro; checked again later and it had simply cleared. Cash $20,806.50 to $60,806.50 (+$40,000.00 exactly: twenty C-Rank crystals at the licensed anchor, $50,000 gross, standard 80/20 split).
+
+Called Wade Bishop (ENT-000146) about the D-Rank and B-Rank trials agreed at EVT-000138, unchased for two days. Saturday's D-Rank crew was already fixed and couldn't move earlier; declined a smaller sooner alternative (a briefing sit-in for an unrelated crew) and confirmed Saturday instead. Locked: 2026-08-08, 09:00, Coalition lot, 4110 W Fullerton, confirmed D-Rank, four already-carded D-Rank hunters, Alexander the fifth. B-Rank harvest lead remains separately pending, 5-7 days out.
+
+Texted Dale Pruitt (ENT-000135) asking after his own promised B-Rank mining answer. Dale replied inside the window: real lead, contractor hasn't signed off yet, probably 5-7 days. Casual beer exchange, no commitment beyond that.
+
+Went to sleep without further contact. No fictional risk resolved this Event; all logistics and one financial correction. No Mana, Health, or Stat change."
+```
+
+## EVT-000194 - The Refusal
+
+```yaml
+id: EVT-000194
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-07 06:00 to 2026-08-08 00:10 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: major
+game_date: "2026-08-07 06:00 to 2026-08-08 00:10 -05:00"
+participants:
+  - ENT-000125
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.keen_sense.successful_uses
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "The fourteenth daily quest issued at 06:00 (100 push-ups, 100 sit-ups, 100 squats, 10 km run). Alexander deliberately attempted none of it, on purpose, specifically to see the penalty zone rather than take its severity on faith. The day passed with the counters frozen at 0/100/0/100/0/100/0/10 all day.
+
+At 00:00 the quest resolved failed. [SYSTEM] DAILY TRAINING FAILED, streak reset 13 to 0. [SYSTEM] PENALTY ZONE - TRANSFER IMMINENT followed immediately. Transfer landed him in a sealed 4-hour survival instance at System Rank D, fully re-equipped in field kit by the System outside any exchange (Section 12.9). Population per the standard Gate formula at Rank D: 3d6 common beasts (rolled 1+6+2=9), 1d2 elites (rolled 2), 1 boss - 9 commons, 2 elites, 1 boss, no material loot of any kind per Section 8.3.
+
+Activated Keen Sense on entry (Mana 72 to 71, already full post-level-up settlement from the prior evening). d100 10, net +3, effective 70, success: a workable read of the pack, a chokepoint fifteen metres ahead, and two elites flanking further back, none of it yet aware of him.
+
+No fictional time skip beyond the day's deliberate idleness. No XP, Health, or item change this Event; Mana spent as stated."
+```
+
+## EVT-000195 - The Ambush
+
+```yaml
+id: EVT-000195
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~00:10-00:14 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: major
+game_date: "2026-08-08 ~00:10-00:14 -05:00"
+participants:
+  - ENT-000125
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.rupture.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.twin_fang.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.sprint.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.exploit_pattern.successful_uses
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Activated Exploit Pattern before engaging. d100 67, net +3, effective 100, legendary success: identified a shared tell across the whole pack (a head-drop exposing an unarmored seam at the base of the skull, immediately before a lunge) and the chokepoint's queuing behavior (one beast at a time, a kill there clearing the doorway for the next without alarming it). Two Patterns established, Adept's capacity at two of three slots.
+
+Opened with a materialized-dagger Rupture strike on the first common, exploiting the skull-seam tell. d100 52, net +3, effective 100, legendary success - one-shot kill, no alarm raised per the chokepoint Pattern. XP +25 (D-Rank common, no underdog bonus at the Bearer's own Rank) - 870 to 895/1000.
+
+Second beast: activated Sprint (Mana 3) to close before it finished its drop, followed with Twin Fang (Mana 5) - two rolls, main hand d100 85 (effective 100, critical), off hand d100 80 (effective 100, critical). One-shot kill. XP +25 - 895 to 920/1000. Mana 71 to 61 (Rupture 10) to 53 (Sprint 3, Twin Fang 5).
+
+Both kills exploited the same two Patterns without alerting the queue, exactly as read. Seven commons and both elites remain, plus the boss. No Health change; no injury."
+```
+
+## EVT-000196 - The Sweep and the Level
+
+```yaml
+id: EVT-000196
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~00:14-00:16 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: pivotal
+game_date: "2026-08-08 ~00:14-00:16 -05:00"
+participants:
+  - ENT-000125
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.twin_fang.successful_uses
+    delta: 7
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Player delegation: continue the established ambush pattern against the remaining seven common beasts without a full exchange per kill, given the extremely low variance already demonstrated. Rolled Twin Fang pairs for all seven, net +3 throughout (Sprint's two-exchange window from the prior kill covered part of this span, though the ordinary Agility margin plus Exploit Pattern's tell already capped the net at +3 regardless):
+
+Beast 3: main 74 (crit), off 7 (success). Beast 4: main 63 (crit), off 40 (crit). Beast 5: main 78 (crit), off 86 (crit). Beast 6: main 45 (crit), off 32 (strong). Beast 7: main 45 (crit), off 3 - natural fumble, no damage, main hand alone still lethal. Beast 8: main 83 (crit), off 59 (crit). Beast 9: main 32 (strong), off 40 (crit).
+
+Every main-hand strike alone exceeded the D-Rank common's 100 Health, so all seven died regardless of the off-hand result. XP +25 x 7 = +175 - 920 to 1095/1000, crossing the Level 10 to 11 threshold (1,000) mid-sweep.
+
+[SYSTEM] LEVEL UP - 10 to 11. All five base Stats +1 (34/33/33/39/37), +5 unspent points (5 to 10), effective Stats re-derived (44/58/37/39/37), new maxima Health 148 and Mana 74, both restored to full outright - the level-up's unconditional restoration wiped the Mana spent across the whole sweep. System Rank holds at D; the next threshold (Rank C) is level 20.
+
+All nine common beasts dead. Two elites and the boss remain, and by the last kill something in the room's rhythm had changed enough that the elites stopped behaving as passively as before."
+```
+
+## EVT-000197 - Two Elites
+
+```yaml
+id: EVT-000197
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~00:16-00:20 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: major
+game_date: "2026-08-08 ~00:16-00:20 -05:00"
+participants:
+  - ENT-000125
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.keen_sense.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.exploit_pattern.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.twin_fang.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.rupture.successful_uses
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "A Keen Sense attempt to track the now-alert first elite fumbled naturally (d100 4, catastrophic failure regardless of the net modifier) - the read collapsed into static and the elite snapped onto Alexander's actual position rather than sweeping generally.
+
+Pivoted to Exploit Pattern instead. d100 21, net +2, effective 61, success: found the elite over-committing weight onto its left guard before striking, exposing its right flank. Adept's third Pattern slot filled. The elite closed and struck during the same exchange (its charge already in motion): d100 65, net 0, effective 65, a clean standard hit. Corrected damage - (100/4) x 1 x 1 x 0.77 = 19.25, rounded 19 (the base D-Rank value, not the elite's inflated 200-Health pool, per the rank_health term's actual definition). Health 148 to 129/148.
+
+Closed with Twin Fang on the exposed flank, Sprint's earlier bonus already folded into the capped net +3: main hand d100 25 (effective 85, strong), off hand d100 99 (natural critical). First elite down. XP +50 (D-Rank elite, x2) - 920... corrected running total 1095 to 1145 within Level 11 (95 to 145/1100 past the threshold). Mana 74 to 69 (Twin Fang 5).
+
+Drank one Lesser Healing Potion (flat +30, capped at the then-current max): Health 129 to 148/148 (wait: capped exactly at max, no waste). Activated Keen Sense to track the second elite, still unaware: d100 100, natural critical, a complete positional and structural read - a soft point at the base of its throat, stationary, no idea he was coming.
+
+Ambushed with a materialized-dagger Rupture strike on the throat seam. d100 58, net +3, effective 100, critical. One-shot kill (25 x 2.30 x 4 = 230, exceeding the elite's 200 Health outright). XP +50 - 145 to 195/1100. Mana 69 to 59 (Rupture 10).
+
+Both elites dead, all commons dead. Only the boss remains, unmoved the entire fight."
+```
+
+## EVT-000198 - The Boss
+
+```yaml
+id: EVT-000198
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~00:20-00:25 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: pivotal
+game_date: "2026-08-08 ~00:20-00:25 -05:00"
+participants:
+  - ENT-000125
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.exploit_pattern.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.sprint.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.flash_step.successful_uses
+    delta: 2
+  - subject: ENT-000125
+    counter: skills.twin_fang.successful_uses
+    delta: 2
+  - subject: ENT-000125
+    counter: skills.rupture.successful_uses
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Exploit Pattern read on the still-unmoved boss. d100 81, net +2, effective 100, legendary success: its stillness was never patience - it is mid-molt, one seam along its ribs unhardened. The window closes the instant it takes any hit; everything thrown at it in the first exchange is worth more than everything after.
+
+Alpha strike: Sprint (Mana 3) plus Flash Step (Mana 5) closed the distance instantly, Twin Fang (Mana 5) landed on the seam - main hand d100 35 (effective 95, strong), off hand d100 30 (effective 90, strong). Boss 400 to 184/400 (105 + 111 damage). The window closed; the boss reoriented fully aware for the first time all fight.
+
+Follow-up Rupture on the same cracked plating fumbled naturally (d100 1, catastrophic failure, no damage, cost spent regardless - Mana 46 to 36). The overextension let the boss's own retaliation land: d100 42, net 0, effective 42, partial. Corrected damage (100/4) x 1 x 0.5 x 0.77 = 9.625, rounded 10 (base D-Rank value). Health 148 to 138/148.
+
+Repositioned with Flash Step alone and struck again: d100 19, net +3, effective 79, success. Rupture for 58 (25 x 2.30 x 1). Boss 184 to 126/400. Mana 36 to 26. No boss retaliation this exchange - the reposition kept him clear.
+
+Final exchange: dagger-and-Twin-Fang immediately, no further setup skill. Main hand d100 7 (effective 67, success, 52 damage), off hand d100 77 (effective 100, critical, 223 damage) - 275 total, boss's remaining 126 Health exceeded outright. The boss's own already-committed retaliation landed in the same exchange as its death: d100 73, effective 73, a clean standard hit. Corrected damage (100/4) x 1 x 1 x 0.77 = 19.25, rounded 19 (base D-Rank value, not the boss's inflated 400-Health pool - the same correction applied retroactively to this and the earlier elite hit after the player caught the error). Health 138 to 119/148.
+
+[SYSTEM] BOSS DEFEATED. XP +100 (D-Rank boss kill, x4) +150 (Gate-clear milestone, Section 3.4) - 195... running total 445/1100. The instance collapsed immediately on the boss kill per Section 8.3, ejecting Alexander back to his own apartment. Final state at collapse: Level 11, XP 445/1100, Health 119/148, Mana 21/74 (26 minus Twin Fang's final 5), no injury tier, no material loot of any kind."
+```
+
+## EVT-000199 - The Checkpoint 0040 Promotion Barrier
+
+```yaml
+id: EVT-000199
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-08 ~00:25 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: progression-batch-settlement
+importance: major
+game_date: "2026-08-08 ~00:25 -05:00"
+participants:
+  - ENT-000125
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.dagger_mastery.successful_uses
+    delta: 13
+  - subject: ENT-000125
+    counter: skills.keen_sense.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.keen_sense.mastery_progress
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.exploit_pattern.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.exploit_pattern.mastery_progress
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.rupture.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.rupture.mastery_progress
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.sprint.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.sprint.mastery_progress
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.dagger_mastery.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.dagger_mastery.mastery_progress
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.twin_fang.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.twin_fang.mastery_progress
+    delta: -2
+  - subject: ENT-000125
+    counter: skills.twin_fang.mastery_level
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.flash_step.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.flash_step.mastery_progress
+    delta: -2
+  - subject: ENT-000125
+    counter: skills.flash_step.mastery_level
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "The promotion barrier for Checkpoint 0040, covering EVT-000193-EVT-000198 since the last settlement (EVT-000192). No skill-formation candidate evidence this span - no pretext, deception, or other non-combat qualifying activity occurred inside the penalty zone; pretext_and_cover remains tracking at 2/3, unchanged.
+
+Section 7.1 danger settlement, once for the whole penalty-zone scene (EVT-000194 through EVT-000198), per the settle-once-at-scene-close rule: one qualifying scene credited to every skill materially used inside it. Keen Sense qualifying_scenes_total 10 to 11, mastery_progress 1 to 2 toward Master (not yet crossing). Exploit Pattern qualifying_scenes_total 6 to 7, mastery_progress 0 to 1 toward Expert. Rupture qualifying_scenes_total 14 to 15, mastery_progress 0 to 1 toward Expert. Sprint qualifying_scenes_total 3 to 4, mastery_progress 0 to 1 toward Adept. Dagger Mastery qualifying_scenes_total 7 to 8, mastery_progress 1 to 2 toward Expert (thirteen successful dagger-involving actions this session credited to successful_uses in the same pass).
+
+Two skills crossed their third qualifying scene and advanced a full mastery level: Twin Fang qualifying_scenes_total 5 to 6, crossing from 2/3 - advanced Practiced to Adept, mastery_progress reset to 0, Mana 5 to 4, mastery multiplier 1.15 to 1.30. Flash Step qualifying_scenes_total 11 to 12, crossing from 2/3 - advanced Expert to Master, mastery_progress reset to 0, Mana 5 to 4, follow-up window now covers the whole scene (no further duration to gain).
+
+Flash Step's advance to Master makes it ascension-ready under Section 7.5 (D-Rank, below the System Rank D+1 = C-Rank ceiling). The offer is surfaced but not resolved: Flash Step carries no authored Rank-scaling magnitude or range beyond Mana cost, unlike the five named scope skills of Section 7.3, so a complete before-and-after cannot honestly be shown on a second axis. Flagged as an authoring gap rather than silently resolved either direction; the offer stands open, costs nothing to leave unanswered, and re-surfaces at the next barrier.
+
+Mid-session correction, applied retroactively before this barrier closes: the first elite's charge, the boss's partial retaliation, and the boss's dying retaliation were all originally computed using each creature's inflated elite/boss Health pool (200 or 400) in the rank_health term of the damage formula, rather than the base D-Rank value (100) the term actually names per Section 9's population formula ('x2 Rank Health', 'x4 Rank Health' - multiples of the base term, not the term itself). Corrected: 39 to 19 (elite), 39 to 10 (boss partial), 77 to 19 (boss dying blow). Final Health raised from the original 23/148 to the corrected 119/148. No other combat outcome changes - same kills, same XP, same boss defeated, same instance collapse.
+
+Daily quest: fourteenth quest (issued 2026-08-07 06:00) failed by deliberate choice at 00:00 2026-08-08. Streak reset 13 to 0. New Objective OBJ-22 opened and closed the same session, recording the deliberate trigger and its outcome as resolved-by-experience.
+
+Still outstanding and deliberately carried forward: the 2026-08-06 06:00 Daily Premium rotation remains unsettled, now a fifth checkpoint running, no offer invented to cover it."
+```
+
+## EVT-000200 - The Fifteenth Daily, Doubled
+
+```yaml
+id: EVT-000200
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 06:00-09:00 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: minor
+game_date: "2026-08-08 06:00-09:00 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "A full night's rest (00:25-06:00) settled Health 119 to 144/148 and Mana to full 74/74 under the resting recovery formula before the fifteenth daily quest issued on schedule at 06:00. Alexander doubled the regimen at his own request - 200 push-ups, 200 sit-ups, 200 squats, 20 km - timed to finish with margin before Wade Bishop's 09:00 D-Rank trial. Completed in full; streak 0 to 1 (the fourteenth having been deliberately failed the prior night to trigger the penalty zone, EVT-000194). Not a positive multiple of seven - an ordinary single-roll box. Three new pending entries: Ability Points +3 (1 to 2), one Status Recovery (8 to 9), one Daily Random Box (1 to 2); none claimed. The doubled exertion paused natural Health recovery (no change, already full) and held Mana capped. Arrived at 4110 W Fullerton at 09:00 exactly."
+```
+
+## EVT-000201 - Wade Bishop's D-Rank Trial: Crew and the First Ambush
+
+```yaml
+id: EVT-000201
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 09:00-09:40 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: major
+game_date: "2026-08-08 09:00-09:40 -05:00"
+participants:
+  - ENT-000125
+  - ENT-000090
+  - ENT-000173
+  - ENT-000174
+  - ENT-000175
+  - ENT-000176
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.keen_sense.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.exploit_pattern.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.twin_fang.successful_uses
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Wade Bishop introduced the borrowed four-hunter D-Rank trial crew - Reggie Calloway (point), Bhavna Iyer (ranged/sensor), Foster Nakashima (perimeter), Callie Dunmore (flex striker) - and assigned Alexander second striker, domain the flanks and whatever peels off. Bhavna's sensor read confirmed twelve commons, two elites, one boss deep in the structure. Alexander's own Keen Sense read (kept private at his own instruction) confirmed the count and additionally caught one beast in the first four-strong cluster holding still, poised rather than idle - an ambush.
+
+Withheld deliberately at his own choice. Reggie called the advance with no objection raised; the still beast broke cover and took him down at the column line, unhurt but pinned. Alexander closed in exploiting the target's total commitment to Reggie (Exploit Pattern: d100 25, net +3, effective 85, strong success, establishing the Pattern) and killed it with Twin Fang (opening strike d100 66, net +3, effective 100, legendary, ~209 damage; follow-up d100 37, net +3, effective 97, exceptional, ~252 damage) - both strikes landing on an already-dead target by the second blow. Kill XP +25 (D-Rank common, no underdog bonus at matched System Rank). Reggie freed, shaken but unhurt."
+```
+
+## EVT-000202 - Split Dual Strike and the First Cluster's Close
+
+```yaml
+id: EVT-000202
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~09:40 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: major
+game_date: "2026-08-08 ~09:40 -05:00"
+participants:
+  - ENT-000125
+  - ENT-000173
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.twin_fang.successful_uses
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Three beasts remained from the first cluster, closing together. Alexander split-dual-struck the middle and right targets (off hand vs middle: d100 13, net +2, effective 53, partial/graze, ~24 damage; main hand vs right: d100 92, net +2, effective 100, legendary, ~209 damage, kill). Kill XP +25 (right-side beast). Reggie engaged the left beast unassisted.
+
+Alexander then finished the wounded middle beast with Twin Fang, same called wound (opening d100 92, net +3, effective 100, legendary, ~209 damage, kill; follow-up d100 65, success, landing on an already-dead target). Kill XP +25. Reggie's sustained, unquantified trade with the left-side beast plus one clean flank strike from Alexander (d100 38, net +2, effective 78, success, ~52 damage) brought it down by ruling, given the extended timeline of Reggie's engagement. Kill XP +25. All four of the first cluster dead; running total this trial +100 XP (445 to 545 against the prior checkpoint's baseline)."
+```
+
+## EVT-000203 - The Leadership Dispute
+
+```yaml
+id: EVT-000203
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~09:45-10:00 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: major
+game_date: "2026-08-08 ~09:45-10:00 -05:00"
+participants:
+  - ENT-000125
+  - ENT-000090
+  - ENT-000173
+  - ENT-000174
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "With the first cluster cleared, Alexander confronted the crew's total lack of coordination - no lead called before the ambush, Bhavna and Reggie sniping at each other over the missed shot. Reggie admitted no standing crew exists here; Wade left it unassigned on purpose to see what happened without one. Alexander threatened to walk unless it changed; Wade offered to embed and call from inside the room rather than direct blind from the entrance, was called out for having no combat or command experience of his own (confirmed against `130_NPCS_AND_FACTIONS.md`), conceded the point, and stepped back to pure observer. Alexander took the field-lead role outright, demanded 50% of the trial's combined value and full field command as his price for continuing, and was told the split is not Wade's to grant unilaterally - Wade committed to carry it upstairs rather than water it down, and confirmed (corrected from an earlier misstatement citing BGM/Coalition) that this Gate is Ironline's own guild-held contract, arranged specifically to recruit Alexander."
+```
+
+## EVT-000204 - Reads and the Compressed Second Cluster
+
+```yaml
+id: EVT-000204
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~10:00-10:35 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: major
+game_date: "2026-08-08 ~10:00-10:35 -05:00"
+participants:
+  - ENT-000125
+  - ENT-000173
+  - ENT-000174
+  - ENT-000175
+  - ENT-000176
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.keen_sense.successful_uses
+    delta: 2
+  - subject: ENT-000125
+    counter: skills.exploit_pattern.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.twin_fang.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.rupture.successful_uses
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Before advancing, Alexander read the deeper structure - Keen Sense (d100 32, net +2, effective 72, success), shared this time with three allies (Reggie, Bhavna, Foster) at his own choice under Expert's scope - confirming eight commons in two loose clusters and two elites holding a chokepoint defensively rather than patrolling. Exploit Pattern (d100 30, net +2, effective 70, success) confirmed the elites' posture as guarding something past them. Alexander briefed the crew with assignments by role and yielded, delegating the clearing explicitly per the player's request to compress it.
+
+The crew executed cleanly: first cluster fast and quiet, no repeat of the earlier chaos; second cluster engaged only after the first was down; the two elites baited apart (Foster drawing one off with deliberate noise) and killed separately rather than together. Alexander fought throughout rather than spectating, contributing live-die actions across the stretch (Twin Fang, a Rupture activation, another Keen Sense read). Reggie took a real hit crossing the chokepoint's kill zone; Callie took a shallow gash; nobody went down. Kill XP for all ten (eight commons at 25 each = 200, two elites at 50 each [x2 elite multiplier] = 100): +300 XP, since Alexander's live-die participation qualifies under Section 3.8. Mana drawn from 64 to 28/74 across the sustained clear; Health from 144 to 128/148 from the one graze taken."
+```
+
+## EVT-000205 - The Boss Ambush
+
+```yaml
+id: EVT-000205
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~10:35 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: dangerous-scene-settlement
+importance: major
+game_date: "2026-08-08 ~10:35 -05:00"
+participants:
+  - ENT-000125
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.keen_sense.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.keen_sense.mastery_progress
+    delta: -2
+  - subject: ENT-000125
+    counter: skills.keen_sense.mastery_level
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.exploit_pattern.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.exploit_pattern.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.exploit_pattern.mastery_progress
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.twin_fang.successful_uses
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.twin_fang.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.twin_fang.mastery_progress
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.dagger_mastery.successful_uses
+    delta: 3
+  - subject: ENT-000125
+    counter: skills.dagger_mastery.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.dagger_mastery.mastery_progress
+    delta: -2
+  - subject: ENT-000125
+    counter: skills.dagger_mastery.mastery_level
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "With the chokepoint cleared, Alexander ordered the crew to hold silent and read the boss with Exploit Pattern: d100 80, net +2, effective 100, legendary success. Instantiated Carapaced/Impact - a low, wide, plated form fighting by slam rather than cutting - stationary and unaware, with a narrow unclosed gap low on its left flank visible only at rest.
+
+Alexander approached alone through the shadows and struck first, ahead of Bhavna's planned covering shot, which never fired. Twin Fang into the flank gap: opening strike d100 66, net +3 (Exploit Pattern + total surprise + the Ghost Quickknife's first-unseen-attack bonus, capped), effective 100, legendary, ~209 damage; follow-up d100 37, effective 97, exceptional, ~252 damage. Combined damage far exceeds the D-Rank boss's Rank Health (100 x4 = 400); it died before any return action. Kill XP +100 (25 x4 boss multiplier) plus the Gate-clear milestone +150 = +250 XP (845 to 1095/1100, five short of Level 12).
+
+Section 7.1 danger settlement for the whole trial Gate, one continuous dangerous scene from EVT-000201 through this kill: Keen Sense crossed its third qualifying scene at Expert - advanced Expert to Master, mastery_progress reset, Mana holds at 1 (practical floor). Exploit Pattern and Twin Fang each advanced one qualifying scene without crossing (Exploit Pattern 1 to 2/3 toward Expert; Twin Fang 0 to 1/3 toward Expert, fresh off its own Practiced-to-Adept crossing at Checkpoint 0040). Dagger Mastery crossed its third qualifying scene at Adept - advanced Adept to Expert, mastery_progress reset; no Expert-tier multiplier is authored under the frozen Profile 1.30 this campaign holds to, so the +0.20 value is retained and the gap is flagged for an owner ruling, the same treatment given Flash Step's open ascension offer. Mana 28 to 24 (Twin Fang, 4). The Gate collapses on the boss kill; the two-hour clear window opens."
+```
+
+## EVT-000206 - Loot, Private Mining, and the Declared Pool
+
+```yaml
+id: EVT-000206
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~10:35-12:20 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: progression-batch-settlement
+importance: minor
+game_date: "2026-08-08 ~10:35-12:20 -05:00"
+participants:
+  - ENT-000125
+counter_deltas:
+  - subject: ENT-000125
+    counter: skills.resonance_extraction.successful_uses
+    delta: 2
+  - subject: ENT-000125
+    counter: skills.resonance_extraction.qualifying_scenes_total
+    delta: 1
+  - subject: ENT-000125
+    counter: skills.resonance_extraction.mastery_progress
+    delta: 1
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "The crew collected combat drops from the ten kills (11 D-Rank crystals, 3 D-Rank cores) while Alexander mined separately. First vein: Resonance Extraction d100 63, net +2, effective 100, legendary, 18 crystals. Second vein: d100 15, net +2, effective 55, partial success, a thinner and harder read, 6 crystals, costing most of the remaining clear window. 24 D-Rank crystals mined total - one continuous mining stop, one qualifying scene under Section 7.1's deferred non-combat rule, classified at this promotion barrier: Resonance Extraction qualifying_scenes_total 1 to 2, mastery_progress 1 to 2/3 toward Practiced.
+
+Alexander sold 12 of his mined crystals privately to the System shop at 40 g each (+480 g, gold 1,052 to 1,532), folded 8 into the crew's shared pool, and kept 4 undeclared. Declared pool for Ironline filing: 19 D-Rank crystals, 3 D-Rank cores (~$15,900 at licensed rates). Split calculated privately under the standard leader's-cut convention (10% off top to Alexander plus an equal fifth - $4,452 to him, $2,862 each to the other four) but withheld from the crew pending Wade's answer on the 50% ask. The crew's minor injuries (Reggie's shoulder, Callie's forearm) went untreated but stable. Party exited with the window's last minutes to spare, ~12:25-12:30."
+```
+
+## EVT-000207 - Terms With Wade Bishop
+
+```yaml
+id: EVT-000207
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~12:30 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: major
+game_date: "2026-08-08 ~12:30 -05:00"
+participants:
+  - ENT-000125
+  - ENT-000090
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Outside the Gate, Alexander reported the boss dead and the Gate cleared, dry and unembellished; Reggie filled in the detail Alexander omitted (a two-hit solo boss kill before any of the crew was in range). Wade did not accept Alexander's 'I got lucky' framing, but let the deflection stand, and named the strategy holding up without Alexander in it as the actual thing he'd been hoping to see. Alexander set the terms for any further Ironline consideration: see the promised money land, and see the still-owed B-Rank harvest trial actually move, before granting a second chance. Wade accepted both without argument, reaffirmed he would push the split personally, and left first."
+```
+
+## EVT-000208 - The Call With Owen
+
+```yaml
+id: EVT-000208
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~12:35-13:15 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: promotion
+importance: major
+game_date: "2026-08-08 ~12:35-13:15 -05:00"
+participants:
+  - ENT-000125
+  - ENT-000139
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Alexander called Owen, closing a near two-day silence since the walk to Edgewater (2026-08-06 ~16:00). Owen answered plainly, admitted he'd seen the prior night's 'Something happened?' text and not known how to respond. Alexander asked directly whether they were okay rather than answering what happened; Owen confirmed they were, tracing his own silence to sitting alone with the unanswered OBJ-19 question (fighting under his own license) rather than any doubt about the relationship, and named the actual promise he'd broken (a text that never came two nights ago). Alexander named the fear plainly - waiting, worrying, not knowing - and Owen took it without deflecting, naming his own avoidance as 'the same four seconds, just stretched out over two days,' the same fear he confessed at Nikitas about pausing when it matters, now recognized turning up in his own hands. Confirmed without hesitation that he wants to see Alexander; agreed to call the moment he's off shift. Call ended on 'I love you. Talk soon.' Recorded as a Character First in REL-000066's texture - the first time the rocks-fear has been named as something Owen is actively doing, not something that happened once."
+```
+
+## EVT-000209 - The Checkpoint 0041 Promotion Barrier
+
+```yaml
+id: EVT-000209
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: transcript
+  game_date: "2026-08-08 ~13:15 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: progression-batch-settlement
+importance: minor
+game_date: "2026-08-08 ~13:15 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "The Checkpoint 0041 promotion barrier, covering EVT-000206-EVT-000208 since the last gatefall.skill_formation settlement at EVT-000205. The mining stop (EVT-000206) settled its own deferred non-combat classification in place (Resonance Extraction, one qualifying scene, no formation-candidate evidence). The conversation with Wade Bishop (EVT-000207) and the phone call with Owen (EVT-000208) involved no skill activation, no danger, and no consequential-work scene meeting the Section 7.1 five-part test - no candidate evidence, explicit none. pretext_and_cover, reactive_pattern_anticipation, formation_instruction, dimensional_weapon_control, and nonvisual_combat_mapping are all unchanged this span. No pending-ratification candidate exists; the readiness gate is clear. Still outstanding, unresolved for a sixth checkpoint running: the 2026-08-06 06:00 Daily Premium rotation. Still outstanding: Flash Step's Rank-C breakthrough offer and Dagger Mastery's new Expert-tier multiplier, both flagged authoring gaps."
+```
+
+
+## EVT-000210 - Profile Adoption: the Gatefall 1.30 to 1.36 chain
+
+```yaml
+id: EVT-000210
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-08 ~21:40 -05:00"
   real_date: "2026-07-29"
 type: Event
 kind: profile-adoption
 importance: minor
-game_date: "2026-08-06 ~15:10 -05:00"
+game_date: "2026-08-08 ~21:40 -05:00"
 participants:
   - ENT-000125
 counter_deltas: []
-description: "Adoption of Gatefall World Rule Profile 1.36, an additive correction advance over frozen 1.35. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged at Owen Callahan's kitchen, ~15:10 on 2026-08-06.
+description: "Adoption of the Gatefall World Rule Profile **1.30 to 1.36 chain** in a single settlement, applied to the state left by Checkpoint 0041. **No fictional time is consumed and no resolved roll is reopened.**
 
-**The hole 1.35 could not reach.** Profile 1.35 stopped an *ascension* from spending mastery for a Rank whose grant was never authored, by withholding the offer. A **Stat Passive** makes no offer. Its Rank derives from a base Stat under Section 4.4 and rises on its own the instant a threshold is crossed, so Section 7.2's eligibility rule had nothing to withhold. A governing Stat reaching **54** while that skill's B-Rank rung stood unauthored would have handed it a Rank whose grant does not exist -- a number this profile states and nothing defines, which is the Section 20.2 defect.
+**Why one Event and not six.** The campaign's last adopted profile was **1.30** (`EVT-000168`). Sessions covering Checkpoints 0038 through 0041 were played under it on an isolated branch, and the campaign **never passed through 1.31, 1.32, 1.33, 1.34 or 1.35** — no adoption Event, changelog entry, or readiness record exists for any of them, and the live ledgers carried no `scope_floor` counters, which 1.31 would have created. A `profile_version: \"1.31\"` string had been stamped into the character sheet by profile work sharing that branch, contradicting `180_CURRENT_STATE` and all four save manifests, which correctly read 1.30. That string is corrected here. Six Events describing adoptions this campaign did not make would have been fiction; one Event describing the jump it did make is the record.
 
-**The repair.** Section 4.4's derivation now clamps by **two** limits rather than one: the Section 7.5 ceiling of System Rank + 1, and the **deepest rung authored for that skill**. Stat value beyond either is **held intact** and applies the instant the binding limit lifts -- the ceiling when System Rank rises, the authoring limit when Section 20.3 authors the rung. Flux Sight is authored to S-Rank and is never held; Overpower, Pre-empt, Shrug Off and Multitask are authored through C-Rank. Like the ceiling it sits beside, the clamp is a deferral and never a loss.
+**What the chain changes in live state.**
 
-**A held rung is recorded, never silent.** The checkpoint that first crosses such a threshold states the skill, the Rank held, and the Stat value that reached it, and the `/system` row renders `<Next Rank> held: rung unauthored` in place of a threshold. A rung already paid for in Stat points and not yet receivable is a gap in this profile, and an unstated gap is what Section 7.2's withholding rule and Section 8.4.6's telemetry both exist to prevent.
+- **Dagger Mastery [E-Rank] Expert: +0.20 → +0.25** (chassis ×0.95 → ×1.00). Checkpoint 0041's manifest flagged this exact gap — *'new multiplier unauthored under frozen Profile 1.30 — flagged as an authoring gap, prior +0.20 retained'* — and correctly held the old number rather than inventing one. **Profile 1.31 authors the rate the gameplay was waiting for**: +0.05 per mastery level, so `0.10 + (4 − 1) × 0.05 = 0.25`. The value is supplied, not changed.
+- **Rank-Sight becomes Flux Sight [D-Rank]**, a **Stat Passive** (Profile 1.33). Base Perception 39 derives D-Rank on the 30/36/44/54/66/80 ladder, clamped by System Rank + 1 and by the deepest authored rung. It now reads a perceived monster's Rank, current/maximum Health and current/maximum Mana. `Rank-Sight` and `Deep Sight` are both retired names; no separate Perception-50 skill exists.
+- **The other four Stat Passives take derived Ranks**: Multitask **D-Rank** (Intelligence 37) raising non-daily quest capacity to **3**; Overpower, Pre-empt and Shrug Off **E-Rank** (Strength 34, Agility 33, Vitality 33, all below the 36 threshold). Their `successful_material_applications` counters become `successful_uses`; the class carries no mastery, stars, or progress.
+- **Four `scope_floor` counters initialise at 0** (Profile 1.31) for the scope skills Alexander knows — Keen Sense, Exploit Pattern, Field Command, Resonance Extraction. No skill has ever ascended on the scope axis, so no floor binds.
+- **Every fixed-Rank entity now carries Rank Mana** (Profile 1.32), spent by tier and exhaustible. **Prospective in full**: no past exchange is recomputed and no monster retroactively ran dry. Variance is assigned on first contact after this Event.
+- `/system` gains standard-success damage previews (Profile 1.34), a render derived at display time from existing inputs; no field is stored.
 
-**Nothing changes today, and that is why it was adopted today.** System Rank D already caps every Stat Passive at C-Rank under the pre-existing ceiling, and C is authored for all five, so **no skill is held by the new clamp**. Base Stats are Strength 33, Agility 32, Vitality 32, Perception 38, Intelligence 36; Flux Sight and Multitask stand at D-Rank and Overpower, Pre-empt and Shrug Off at E-Rank, identical before and after. No `/system` row changes. The clamp becomes load-bearing only at System Rank C with a Stat at 54 -- the first moment it could have gone wrong -- and reaching it beforehand is deliberate, since a Rank once rendered cannot be withdrawn without contradicting what the Bearer was shown.
+**An ascension offer is now open, and is the Bearer's to take.** Keen Sense reached **Master** at `EVT-000199`. At E-Rank Master below the C-Rank ceiling it is **ascension-ready**, and under Profile 1.35's eligibility rule its D rung *is* authored — *intent and concealment method* — so the offer is eligible rather than withheld. Section 7.5 requires it be **offered, never imposed**: breakthrough would take it to **D-Rank Adept**, gaining that category while the scope ratchet holds its count at the pre-ascension five. It stands open at the next barrier and expires never.
 
-**Enforced, not merely stated.** `tools/validate_repository.ps1` already derived each Stat Passive's Rank and checked it against the ceiling; it now applies the authoring clamp in the same derivation, so a Rank exceeding its authored ladder fails validation rather than surviving in prose. This closes the last of the audit findings raised against the 1.31-1.35 run."
+**What does not change.** No resolved roll, damage result, kill, loot, currency balance, quest outcome, or fictional time. Alexander is Level 11, System Rank D, at the state Checkpoint 0041 captured. **The four checkpoints remain immutable Profile 1.30 captures** and run this compatibility chain at readiness; none is retrofitted.
+
+**Identifier reconciliation.** Both this line of work and the profile work allocated `EVT-000186` through `EVT-000191` independently — the concurrent-allocation limitation `system/ID_REGISTRY.md` documents, resolved by its Invariant 4, reconcile before merge. **The gameplay's allocations stand**, because they are embedded in four immutable checkpoints; the profile adoptions, which existed only in mutable ledgers and wrote no checkpoint, are consolidated into this single Event at `EVT-000210`."
 ```

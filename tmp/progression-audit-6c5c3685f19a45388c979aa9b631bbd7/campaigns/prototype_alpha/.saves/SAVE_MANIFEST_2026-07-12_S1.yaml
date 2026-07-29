@@ -1,0 +1,47 @@
+checkpoint_manifest:
+  session: "Session 1 (first session)"
+  campaign: "Prototype Alpha"
+  world: "Verra"
+  checkpoint_time: "2026-07-12T00:00:00Z"
+  event_time: "Year 312 RR, late spring (evening)"
+  event_id: "EVT-000009"
+  
+character_state:
+  protagonist: "ENT-000018 (Ilse Varn)"
+  location: "Halden Athenaeum, Corvane's study"
+  condition: "Sound, travel-worn, mentally engaged"
+  
+ledgers_updated:
+  - "180_CURRENT_STATE.md (protagonist location, condition, knowledge)"
+  - "110_WORLD_LEDGER.md (knowledge states REL-000017 advanced)"
+  - "130_NPCS_AND_FACTIONS.md (REL-000016 upgraded, REL-000019 created)"
+  - "140_OBJECTIVES.md (OBJ-1 progressing, OBJ-2 active, OBJ-3 tension rising)"
+  - "160_CAMPAIGN_CHRONICLE.md (EVT-000009 recorded)"
+  - "170_CHANGELOG.md (session one changes logged)"
+
+key_events:
+  - "Ilse entered Athenaeum reading room, studied forbidden *Observations* manuscript"
+  - "Met Rector Maelis; direct exchange established professional boundaries"
+  - "Presented letter of introduction to Fellow Corvane"
+  - "Witnessed Corvane's evidentiary maps: fever cluster in lower-ward, water-source correlation"
+  - "Committed to investigation despite Order's ban"
+  - "Maelis warned: Order will know of Ilse within 1-2 days"
+  - "Fever cases confirmed (minimum 2) in river ward"
+
+knowledge_advances:
+  - "REL-000017 (marsh-fever): provisional → witnessed but unconfirmed"
+  - "Corvane's methodology, mapping, and evidence data now accessible to Ilse"
+  - "Order's enforcement mechanisms and Maelis's institutional concerns now understood"
+
+relationships_established:
+  - "REL-000016 (Corvane): introduced by letter → met in person, active collaboration"
+  - "REL-000019 (Maelis): newly created, neutral to cautiously collaborative"
+
+open_pressures:
+  - "Order of Ember will likely become aware of Ilse's presence (1-2 days)"
+  - "Fever cases will likely increase in river ward (session momentum)"
+  - "Ilse has not yet secured formal standing at the Athenaeum (OBJ-1 incomplete)"
+  - "Ilse has not yet formed her own medical conclusion (OBJ-2 ongoing)"
+
+write_capability: "ESTABLISHED"
+canonical_status: "PROMOTED TO CANON"

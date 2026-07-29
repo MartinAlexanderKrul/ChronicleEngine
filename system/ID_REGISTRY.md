@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000170 |
+| Entity | `ENT-` | Persistent Entity | ENT-000176 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000191 |
+| Event | `EVT-` | Event | EVT-000210 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -324,12 +324,34 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000183 | Event | Gatefall: Pendragon: two boss exchanges fought by Owen alone, the shrine revealed as a lid, a natural-99 Flash Step displacing the boss off it, and an exceptional footwork hold using Milo's drilled method without a single strike |
 | EVT-000184 | Event | Gatefall: Pendragon: Overgrown Temple cleared - Owen kills thirteen of fourteen, XP 760 to 870/1000, Keen Sense advances to Expert and Exploit Pattern to Adept at the dangerous-scene settlement, eleven deposit crystals lost unmined |
 | EVT-000185 | Event | Gatefall: Pendragon: the Checkpoint 0037 promotion barrier - batch settlement `none`, the EVT-000181 deferral discharged, the unsettled Daily Premium rotation carried forward a second checkpoint |
-| EVT-000186 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.31 - the Rank Dominance Law restated for the scope axis, Rank granting one further subject and one category per Rank against mastery's subject ladder, the scope ratchet and its four zero-initialised floors, and the passive-multiplier mastery rate Section 7.2 had assumed since 1.12 |
-| EVT-000187 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.32 - every fixed-Rank entity gains a Rank Mana pool it spends by tier and can run dry on, individual variance of up to ten percent on both pools for named and elite entities, and Section 6.2's damage baseline pinned to the flat table value |
-| EVT-000188 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.33 - five Rank-derived Stat Passives, Rank-Sight renamed Flux Sight with its complete read ladder, Multitask raised to D-Rank capacity 3, and Stat Passive Rank validation |
-| EVT-000189 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.34 - `/system` derives standard-success pre-reduction damage previews for equipped weapons and offensive active skills, preserving separate hits and both legal Twin Fang weapon orders |
-| EVT-000190 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.35 - a skill is ascension-eligible only where the target Rank's grant is authored and non-empty, Section 7.5 withholds and states the offer where it is not, and Section 7.3 authors Sprint's broken-ground and vertical rungs and Flash Step's through-the-barrier rung |
-| EVT-000191 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.36 - a Stat Passive's derived Rank is clamped by the deepest rung authored for it as well as by the System Rank ceiling, with Stat value beyond either held intact, and a held rung recorded rather than silent |
+| EVT-000186 | Event | Gatefall: Pendragon: the walk to Edgewater - potion-use terms settled, a goodbye kiss, Owen's reasoning on his hospital and declined clinic, a Character First accepting reassurance without deflection, and an open proposal (OBJ-19) to book Owen's next fight through his own license |
+| EVT-000187 | Event | Gatefall: Pendragon: the Checkpoint 0038 promotion barrier - batch settlement `none`, no skill activation to reconcile, the unsettled Daily Premium rotation carried forward a third checkpoint |
+| ENT-000171 | Entity | Gatefall: Pendragon: Titan Secure, the warehouse district's access-control installer, confirmed as the fenced warehouse's keypad/fence servicer |
+| ENT-000172 | Entity | Gatefall: Pendragon: Marsh, Titan Secure's phone-answering employee - first narrated under the colliding name "Reyes," corrected before any canon was written |
+| EVT-000188 | Event | Gatefall: Pendragon: the first warehouse stakeout - exceptional Keen Sense read, a delivery observed, the campaign's first Hidden quest pointer attached; Titan Secure identified and called, client confidentiality held |
+| EVT-000189 | Event | Gatefall: Pendragon: Ada Reyes offers a new C-Rank harvest slot; a second stakeout observes a badged visitor; canvassing and a registry search name Meridian Cold Storage LLC as a shell operator |
+| EVT-000190 | Event | Gatefall: Pendragon: the downtown office building - a Keen Sense fumble draws a guard's suspicion, a bluffed "Vence" cover holds under verification, a raw contact number for Suite 14 obtained |
+| EVT-000191 | Event | Gatefall: Pendragon: a disguised-voice voicemail baits a callback; holding the ruse live fails catastrophically, exposing Alexander's real phone number to whoever runs the shell |
+| EVT-000192 | Event | Gatefall: Pendragon: the Checkpoint 0039 promotion barrier - the `pretext_and_cover` skill-formation candidate opens at 2/3, Keen Sense counters reconciled, the Hidden quest pointer's attached-not-revealed status recorded |
+| EVT-000193 | Event | Gatefall: Pendragon: the overdue Denise Ferro payout lands (+$40,000.00), Wade Bishop's D-Rank trial confirmed for Saturday, Dale Pruitt's B-Rank lead update |
+| EVT-000194 | Event | Gatefall: Pendragon: a deliberately failed daily quest, streak reset to 0, transfer into a sealed System-Rank-D penalty-zone survival instance (9 commons, 2 elites, 1 boss, no material loot) |
+| EVT-000195 | Event | Gatefall: Pendragon: an Exploit-Pattern-read ambush kills the first two common beasts, exploiting a shared tell and a non-alarming chokepoint |
+| EVT-000196 | Event | Gatefall: Pendragon: a delegated batch kills the remaining seven commons; XP crosses the Level 10 to 11 threshold mid-sweep, full level-up settled |
+| EVT-000197 | Event | Gatefall: Pendragon: both elites killed - a fumbled Keen Sense read costs a real hit on the first, a legendary read keeps the ambush pattern alive for the second |
+| EVT-000198 | Event | Gatefall: Pendragon: the mid-molt boss killed across four exchanges - an alpha strike, a fumble, a clean follow-up, and a final double-strike whose dying retaliation still lands; instance collapses |
+| EVT-000199 | Event | Gatefall: Pendragon: the Checkpoint 0040 promotion barrier - Twin Fang advances to Adept and Flash Step to Master, a combat-math correction (elite/boss Health pool misused in the damage formula) is applied, Flash Step's breakthrough offer flagged as an authoring gap |
+| EVT-000200 | Event | Gatefall: Pendragon: the fifteenth daily quest completed doubled solo, streak 0 to 1, before Wade Bishop's 09:00 D-Rank trial |
+| ENT-000173 - ENT-000176 | Entity | Gatefall: Pendragon: Reggie Calloway, Bhavna Iyer, Foster Nakashima, Callie Dunmore - Wade Bishop's borrowed four-hunter D-Rank trial crew, 2026-08-08. No standing relationships formed |
+| EVT-000201 | Event | Gatefall: Pendragon: the D-Rank trial crew introduced and assigned; the first cluster's isolated beast ambushes Reggie unwarned; Alexander kills it with an Exploit-Pattern-read Twin Fang |
+| EVT-000202 | Event | Gatefall: Pendragon: a split dual strike and a second Twin Fang finish clear the remaining first-cluster beasts; the fourth credited to Reggie's sustained engagement by ruling |
+| EVT-000203 | Event | Gatefall: Pendragon: the leadership dispute - Alexander confronts the crew's lack of coordination, Wade concedes he has no command experience and steps back, Alexander takes field lead and demands 50% plus full command |
+| EVT-000204 | Event | Gatefall: Pendragon: Keen Sense and Exploit Pattern reads map the remaining population; the crew clears the second cluster and both elites with Alexander's genuine participation, delegated per player request |
+| EVT-000205 | Event | Gatefall: Pendragon: the Checkpoint 0041 dangerous-scene settlement - the Carapaced/Impact boss killed alone in a two-strike ambush before it acts; Keen Sense advances to Master and Dagger Mastery to Expert (new multiplier flagged as an authoring gap under frozen Profile 1.30) |
+| EVT-000206 | Event | Gatefall: Pendragon: loot collected from the ten kills; Alexander mines two veins solo for 24 D-Rank crystals, sells 12 privately, folds 8 into the crew's declared pool; Resonance Extraction's deferred non-combat classification settled |
+| EVT-000207 | Event | Gatefall: Pendragon: terms set with Wade Bishop outside the Gate - Ironline's second chance conditioned on the payment landing and the B-Rank harvest trial actually moving |
+| EVT-000208 | Event | Gatefall: Pendragon: the phone call with Owen closing a near two-day silence, recorded as a Character First in `REL-000066` |
+| EVT-000209 | Event | Gatefall: Pendragon: the Checkpoint 0041 promotion barrier - Resonance Extraction's mining classification settled, no skill-formation candidate evidence in the remaining span, explicit none |
+| EVT-000210 | Event | Gatefall: Pendragon: adoption of the World Rule Profile 1.30 to 1.36 chain onto the post-Checkpoint-0041 state - the scope-axis repair and passive-multiplier rate, NPC and monster Rank Mana, Stat Passives and Flux Sight, system damage previews, ascension eligibility, and the Stat Passive authoring clamp |
 
 ---
 

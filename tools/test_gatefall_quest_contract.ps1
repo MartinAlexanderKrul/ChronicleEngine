@@ -5,6 +5,7 @@ $profilePath = Join-Path $repo "worlds/gatefall/206_WORLD_RULE_PROFILE.md"
 $characterPath = Join-Path $repo "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md"
 $checkpointPath = Join-Path $repo "campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0024/100_CHARACTER_SHEET.md"
 $startupPath = Join-Path $repo "campaigns/gatefall_pendragon_001/090_CAMPAIGN_STARTUP.md"
+$chroniclePath = Join-Path $repo "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md"
 $indexPath = Join-Path $repo "system/WORLDS_AND_CAMPAIGNS.md"
 $residentPath = Join-Path $repo "docs/AI_GAMEPLAY_RESIDENT_CORE.md"
 $runtimePath = Join-Path $repo "engine/012_ENGINE_RUNTIME.md"
@@ -26,6 +27,7 @@ $profile = Get-Content -LiteralPath $profilePath -Raw -Encoding UTF8
 $character = Get-Content -LiteralPath $characterPath -Raw -Encoding UTF8
 $checkpoint = Get-Content -LiteralPath $checkpointPath -Raw -Encoding UTF8
 $startup = Get-Content -LiteralPath $startupPath -Raw -Encoding UTF8
+$chronicle = Get-Content -LiteralPath $chroniclePath -Raw -Encoding UTF8
 $index = Get-Content -LiteralPath $indexPath -Raw -Encoding UTF8
 $resident = Get-Content -LiteralPath $residentPath -Raw -Encoding UTF8
 $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8
@@ -45,9 +47,14 @@ Assert-True ($profile -match 'A quest cannot complete from conduct that occurred
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
 Assert-True ($character -match 'profile_version: "1\.36"') "Live Gatefall character was not migrated to Profile 1.36."
-Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 2\s+capacity_total: 3\s+active: \[\]\s+pending_offers: \[\]') "Live D-Rank Multitask quest capacity is missing or incorrect."
-Assert-True ($character -match 'Flux Sight \[D-Rank\] . Stat Passive.+Uses 0 . Perception 38 . C-Rank at 44') "Live Flux Sight does not render its derived D-Rank progression."
-Assert-True ($character -match 'Multitask \[D-Rank\] . Stat Passive.+capacity \*\*3\*\*.+Uses 0 . Intelligence 36 . C-Rank at 44') "Live Multitask does not render its derived D-Rank progression."
+# Capacity is derived from Multitask's Rank and is the invariant under test. The quest
+# lists beside it are live state that changes with play, so they are deliberately NOT
+# pinned here -- doing so made this assertion fail on the first session that attached a
+# Hidden quest, for a reason unrelated to the rule.
+Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 2\s+capacity_total: 3') "Live D-Rank Multitask quest capacity is missing or incorrect."
+Assert-True ($character -notmatch 'analyst_bonus') "Retired analyst_bonus survives the Profile 1.33 migration."
+Assert-True ($character -match 'Flux Sight \[D-Rank\] . Stat Passive.+Uses \d+ . Perception \d+ . C-Rank at 44') "Live Flux Sight does not render its derived D-Rank progression."
+Assert-True ($character -match 'Multitask \[D-Rank\] . Stat Passive.+capacity \*\*3\*\*.+Uses \d+ . Intelligence \d+ . C-Rank at 44') "Live Multitask does not render its derived D-Rank progression."
 Assert-True ($character -notmatch 'Rank-Sight . Passive . Stat-milestone skill') "Retired Rank-Sight survives as a live skill."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
@@ -123,8 +130,12 @@ Assert-ConcealedRecords -Text $worldLedger -Label "Gatefall: Pendragon world led
 Assert-True ($knowledge -match 'an attached pointer renders `\?\?\?`') "Concealed-canon ledger does not state that an attached pointer still renders ???."
 Assert-True ($knowledge -match 'no campaign ever edits this file') "Concealed-canon ledger does not hold itself immutable against play."
 
-# Adoption attached no pointer: live quest state is still empty.
-Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 2\s+capacity_total: 3\s+active: \[\]\s+pending_offers: \[\]') "Profile 1.33 migration seeded a non-daily quest; it must change capacity only."
+# Adoption attached no pointer. The invariant is that the ADOPTION EVENT seeds no quest --
+# not that live quest state stays empty forever, which stopped being true the moment play
+# legitimately attached one. Bounded to the adoption Event's own block.
+$adoption = if ($chronicle -match '(?s)## EVT-000210.*') { $Matches[0] } else { "" }
+Assert-True ($adoption -ne "") "The chain adoption Event EVT-000210 is missing from the chronicle."
+Assert-True ($adoption -notmatch 'quest_key') "The chain adoption Event seeded a non-daily quest; it must change capacity only."
 
 # --- Profile 1.28: the tracked Gate board (Section 9.10) ---
 
@@ -232,7 +243,13 @@ $recordedConcealed = [int]$Matches[1]
 Assert-True ($currentState -match '(?m)^\s+tracked_postings:\s*(\d+)') "trigger_telemetry.tracked_postings is unreadable."
 $recordedPostings = [int]$Matches[1]
 
-Assert-True ($recordedConcealed -eq ($worldRecords + $campaignRecords)) "trigger_telemetry.concealed_records_available is $recordedConcealed but the ledgers hold $($worldRecords + $campaignRecords) concealed-discovery records ($worldRecords world + $campaignRecords campaign)."
+# Section 8.4.6 counts discoveries AVAILABLE, not total: a record with a Hidden pointer
+# attached to it is no longer supply. This distinction was invisible while nothing had ever
+# attached -- total and available were the same number -- and surfaced on the campaign's
+# first attachment. Subtract the attached pointers rather than requiring the totals match.
+$attachedPointers = ([regex]::Matches($character, '(?m)^\s+concealed_name:')).Count
+$availableRecords = $worldRecords + $campaignRecords - $attachedPointers
+Assert-True ($recordedConcealed -eq $availableRecords) "trigger_telemetry.concealed_records_available is $recordedConcealed but the ledgers hold $availableRecords available ($worldRecords world + $campaignRecords campaign, less $attachedPointers attached)."
 Assert-True ($recordedPostings -eq $boardRows) "trigger_telemetry.tracked_postings is $recordedPostings but the Section 9.10 board holds $boardRows postings."
 
 # Cheap invariants on the recorded values. Note that an actually-exhausted supply
@@ -266,9 +283,21 @@ Assert-True ($character -match 'Dagger Mastery \[E-Rank\].+adds \*\*\+([0-9.]+)\
 $daggerBonus = [decimal]::Parse($Matches[1], [Globalization.CultureInfo]::InvariantCulture)
 Assert-True ($character -match 'Rupture \[D-Rank\].+\*\*×([0-9.]+) of its skill-rank baseline\*\*.+baseline 25') "Rupture multiplier is unreadable."
 $ruptureMultiplier = [decimal]::Parse($Matches[1], [Globalization.CultureInfo]::InvariantCulture)
-Assert-True ($character -match 'Twin Fang \[E-Rank\].+second strike has a ×([0-9.]+) Twin Fang') "Twin Fang multiplier is unreadable."
+Assert-True ($character -match 'Twin Fang \[E-Rank\].+second strike has a \**×([0-9.]+)\** Twin Fang') "Twin Fang multiplier is unreadable."
 $twinFangMultiplier = [decimal]::Parse($Matches[1], [Globalization.CultureInfo]::InvariantCulture)
-Assert-True ($character -match 'Twin Fang \[E-Rank\] ★★☆☆☆ Practiced.+Successful uses 6 . qualifying scenes total 5 . mastery progress 2/3 toward Adept') "Twin Fang rendered prose does not match its canonical Practiced 6/5/2 counter state."
+# Section 7.4 makes the prose a RENDERING of the stored counters, so the invariant is that
+# the two agree -- not that they equal a particular snapshot. Pinning the snapshot made this
+# fail on the first session that advanced Twin Fang, for a reason unrelated to the rule.
+$tfLevels = @{ 1 = '★☆☆☆☆ Novice'; 2 = '★★☆☆☆ Practiced'; 3 = '★★★☆☆ Adept'; 4 = '★★★★☆ Expert'; 5 = '★★★★★ Master' }
+Assert-True ($character -match 'skills\.twin_fang\.successful_uses[^}]*current_value: (\d+)') "Twin Fang successful_uses counter is unreadable."
+$tfUses = [int]$Matches[1]
+Assert-True ($character -match 'skills\.twin_fang\.qualifying_scenes_total[^}]*current_value: (\d+)') "Twin Fang qualifying_scenes_total counter is unreadable."
+$tfScenes = [int]$Matches[1]
+Assert-True ($character -match 'skills\.twin_fang\.mastery_progress[^}]*current_value: (\d+)') "Twin Fang mastery_progress counter is unreadable."
+$tfProgress = [int]$Matches[1]
+Assert-True ($character -match 'skills\.twin_fang\.mastery_level[^}]*current_value: (\d+)') "Twin Fang mastery_level counter is unreadable."
+$tfLevel = [int]$Matches[1]
+Assert-True ($character -match ('Twin Fang \[E-Rank\] ' + [regex]::Escape($tfLevels[$tfLevel]) + '.+Successful uses ' + $tfUses + ' . qualifying scenes total ' + $tfScenes + ' . mastery progress ' + $tfProgress + '/3')) "Twin Fang rendered prose does not match its stored counters (level $tfLevel, uses $tfUses, scenes $tfScenes, progress $tfProgress)."
 
 $quickknifeChassis = [decimal]0.75 + $daggerBonus
 $mainDamage = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeChassis)
@@ -277,10 +306,15 @@ $ruptureDamage = Round-HalfUp (25 * $ruptureMultiplier)
 $offFollowUp = Round-HalfUp (($effectiveStrength + $offPower) * $quickknifeChassis * $twinFangMultiplier)
 $mainFollowUp = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeChassis * $twinFangMultiplier)
 
-Assert-True ($mainDamage -eq 51) "Main-hand /system preview is $mainDamage, expected 51."
-Assert-True ($offDamage -eq 48) "Off-hand /system preview is $offDamage, expected 48."
+# These are a SNAPSHOT of the current loadout and Stats, not a rule -- they move whenever
+# effective Strength, a weapon, Dagger Mastery, or a mastery level changes. The formula
+# above is the invariant; these guard it against silent drift. Recomputed at the Profile
+# 1.30->1.36 chain adoption (EVT-000210): effective Strength 44, main power 11, off power 7,
+# Dagger Mastery +0.25 (chassis x1.00), Rupture x2.30, Twin Fang x1.30 at Adept.
+Assert-True ($mainDamage -eq 55) "Main-hand /system preview is $mainDamage, expected 55."
+Assert-True ($offDamage -eq 51) "Off-hand /system preview is $offDamage, expected 51."
 Assert-True ($ruptureDamage -eq 58) "Rupture /system preview is $ruptureDamage, expected 58."
-Assert-True (($mainDamage -eq 51) -and ($offFollowUp -eq 55)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 51 + 55."
-Assert-True (($offDamage -eq 48) -and ($mainFollowUp -eq 59)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 48 + 59."
+Assert-True (($mainDamage -eq 55) -and ($offFollowUp -eq 66)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 55 + 66."
+Assert-True (($offDamage -eq 51) -and ($mainFollowUp -eq 72)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 51 + 72."
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

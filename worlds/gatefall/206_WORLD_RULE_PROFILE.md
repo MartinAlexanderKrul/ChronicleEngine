@@ -1,12 +1,16 @@
-# Gatefall — World Rule Profile 1.33
+# Gatefall — World Rule Profile 1.34
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.33
+**Profile Version:** 1.34
 **Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.33 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-29. Version 1.33 is a **migrating capability advance** over frozen 1.32. Section 4.4 replaces the two-threshold stat-milestone model with five **Stat Passives** whose Rank is derived from the governing base Stat at **30 / 36 / 44 / 54 / 66 / 80 → E / D / C / B / A / S**, clamped by the ordinary System-Rank-plus-one ceiling. They have no mastery track, stars, qualifying scenes, mastery progress, Rank ascension, or `scope_floor`; their Rank is their only growth axis. **Rank-Sight is renamed Flux Sight**, both Rank-Sight and Deep Sight are retired names for that one skill, and Flux Sight carries the complete Gate/monster/hunter/item/ability/complete-read ladder through S. The other four passives absorb their former Stat-50 partner as the D rung and carry authored E–D–C ladders. **Live derived consequences:** base Perception 38 makes Flux Sight D-Rank, reading perceived monsters' Rank and current/maximum Health and Mana; base Intelligence 36 makes Multitask D-Rank, raising concurrent non-daily quest capacity to 3. Overpower, Pre-empt, and Shrug Off remain E-Rank. No Stat, pool, ordinary skill Rank or mastery value, item, currency balance, roll, or resolved outcome changes. Data Model 0.1.5 remains unchanged.
+**Compatibility Status:** frozen at version 1.34 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-29. Version 1.34 is an **additive presentation advance** over frozen 1.33. Sections 6.2 and 15 add a deterministic damage preview to `/system`: every equipped damaging weapon and every known offensive active skill displays its standard-success raw Health damage before target reduction, derived live from canonical Stats, equipment, skill Rank, mastery, and focus power. Multi-hit skills render each hit in declared order and never collapse separately reduced hits into one misleading number. The preview is read-only derived state, excludes unknown target defenses and situational roll effects, and never changes combat resolution. **Live previews:** Alexander's main-hand Ghost Quickknife displays 51, his off-hand C-Rank Quickknife 48, Rupture 58, and Twin Fang displays either `51 + 55` main→off or `48 + 59` off→main. No stored Stat, pool, skill value, item, counter, roll, damage result, or fictional outcome changes. Data Model 0.1.5 remains unchanged.
+
+**Required 1.33 → 1.34 migration.** Preserve every stored field and all resolved canon. Add no damage field to the character ledger: `/system` derives previews at render from Section 6.2's existing canonical inputs, using standard success (`×1`), no target reduction, and ordinary final rounding. Record adoption as `EVT-000189`; consume no fictional time and reopen nothing. Immutable Profile 1.33-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.34 at readiness.
+
+Version 1.33 remains the **migrating capability advance** over frozen 1.32. Section 4.4 replaces the two-threshold stat-milestone model with five **Stat Passives** whose Rank is derived from the governing base Stat at **30 / 36 / 44 / 54 / 66 / 80 → E / D / C / B / A / S**, clamped by the ordinary System-Rank-plus-one ceiling. They have no mastery track, stars, qualifying scenes, mastery progress, Rank ascension, or `scope_floor`; their Rank is their only growth axis. **Rank-Sight is renamed Flux Sight**, both Rank-Sight and Deep Sight are retired names for that one skill, and Flux Sight carries the complete Gate/monster/hunter/item/ability/complete-read ladder through S. The other four passives absorb their former Stat-50 partner as the D rung and carry authored E–D–C ladders. **Live derived consequences:** base Perception 38 makes Flux Sight D-Rank, reading perceived monsters' Rank and current/maximum Health and Mana; base Intelligence 36 makes Multitask D-Rank, raising concurrent non-daily quest capacity to 3. Overpower, Pre-empt, and Shrug Off remain E-Rank. No Stat, pool, ordinary skill Rank or mastery value, item, currency balance, roll, or resolved outcome changes. Data Model 0.1.5 remains unchanged.
 
 **Required 1.32 → 1.33 migration.** Preserve every resolved roll, damage result, Mana spend, ordinary skill value, item, pool, reward, currency balance, and fictional outcome. Rename the live Rank-Sight entry and counter path to **Flux Sight** while preserving its identity, acquisition Event, and zero successful uses; rename the other four stat-passive counters from `successful_material_applications` to `successful_uses` with values unchanged. Render each Stat Passive's derived Rank, class label, use count, governing base Stat, and next threshold; add no stored Rank or mastery counter. Apply Flux Sight D and Multitask D immediately from the Bearer's already-canonical base Stats, raising non-daily capacity 2 → 3 as a capability grant rather than a Stat change. Record adoption as `EVT-000188`; consume no fictional time and reopen nothing. Immutable Profile 1.32-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.33 at readiness.
 
@@ -755,6 +759,14 @@ A miss deals no damage. **Critical tails are always live** (Decision 052): a nat
 - **Equipped armor is an authored reduction.** Each equipped armor piece and Guard Shield contributes the reduction for its own Rank from Section 11.5. These reductions compose multiplicatively with one another, skills, titles, and circumstances under the same formula above. Stored, carried, broken, or merely owned armor contributes nothing.
 
 **Final rounding.** Keep precision through every multiplier and reduction, then round the final Health change to the nearest whole number, with `.5` rounding up. A landed damaging hit that remains positive after reductions deals at least 1 Health. Do not round intermediate values.
+
+### `/system` Damage Preview
+
+`/system` shows **standard-success raw damage before target reduction** for every equipped weapon that can deal direct Health damage and every known offensive active skill. This is the only target-independent damage figure Section 6.2 can derive: use the applicable formula above with `result_multiplier ×1` and `total_reduction 0`, then apply ordinary final rounding. Label every number `DMG <n> standard · before reduction`; it is a preview, never a replacement for the rolled result.
+
+Derive the preview live. It is not stored in a character ledger and must immediately reflect changes to effective Strength, weapon power or chassis, Dagger Mastery, skill Rank or mastery, and equipped focus power. Do not include accuracy modifiers, unseen-opening effects, temporary setup, a guessed target reduction, or any other circumstance that is not a permanent input to the displayed attack.
+
+Each separately resolved hit stays separate. An ordinary combo shows its weapon and skill on their own rows. A named multi-strike shows every component in declared order; when either equipped weapon may open, show both legal orders rather than selecting one silently. Twin Fang therefore renders `main→off <opening> + <follow-up>` and `off→main <opening> + <follow-up>`. A skill that heals, reduces damage, moves, detects, or modifies another action but deals no direct Health damage receives no `DMG` field.
 
 Healing uses the magnitude source its effect names: a fixed-rank mender uses its Rank baseline, while a Bearer skill uses its skill-rank baseline and focus power.
 
@@ -2372,6 +2384,7 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ║    <objective progress or local deadline>                                ║
 ╟─ SKILLS · ACTIVE ────────────────────────────────────────────────────────╢
 ║  <name> [Rank] <★ mastery> · MANA <n> · <effect>                         ║
+║    <DMG line when the skill directly damages>                            ║
 ║    Uses <n> · Progress <n>/3                                             ║
 ╟─ SKILLS · PASSIVE ───────────────────────────────────────────────────────╢
 ║  <name> [Rank] <★ mastery if tracked> · Passive · <effect>               ║
@@ -2381,6 +2394,7 @@ Bare **`/system`** always renders the **entire System window**: identity, vitals
 ╟─ EQUIPMENT ──────────────────────────────────────────────────────────────╢
 ║  <slot>   <item name> [Rank]                                             ║
 ║           <bonuses · power/protection · effect · condition>              ║
+║           <DMG line when the equipped item is a weapon>                  ║
 ║  Acc.1    <item or —>                                                    ║
 ║  Acc.2    <item or —>                                                    ║
 ║  Physical Reduction  <derived total>                                     ║
@@ -2422,7 +2436,7 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 ║    Deadline: crisis ends                                                 ║
 ╟─ SKILLS · ACTIVE ────────────────────────────────────────────────────────╢
 ║  Mana Bolt [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                   ║
-║    Uses 4 · Progress 2/3                                                 ║
+║    DMG 10 standard · before reduction · Uses 4 · Progress 2/3            ║
 ║  Sprint [E-Rank] ★☆☆☆☆ · MANA 3 · +1 Step Movement                       ║
 ║    Uses 6 · Progress 2/3                                                 ║
 ║  Mend [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                        ║
@@ -2435,7 +2449,8 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 ║    Untouched · +1 Step Evasion on First Exchange                         ║
 ╟─ EQUIPMENT ──────────────────────────────────────────────────────────────╢
 ║  Main     Quickknife [E-Rank]                                            ║
-║           Agility +2 · Power 2 · ×0.75                                   ║
+║           Agility +2 · Power 2 · ×0.85 with Dagger Mastery               ║
+║           DMG 11 standard · before reduction                             ║
 ║  Off      —                    Head     —                                ║
 ║  Torso    —                    Hands    —                                ║
 ║  Legs     —                    Feet     —                                ║
@@ -2459,6 +2474,7 @@ Ren, mid-run, carrying one completed daily's separate rewards:
 - **Labels use title case and fixed abbreviations:** `Unspent Points`, `Pending Rewards`, `Physical Reduction`, `Acc.1`, `Acc.2`, and `Passive`. The same label is never shortened differently elsewhere in the window.
 - **Skills render in two stable groups.** `SKILLS · ACTIVE` contains every skill whose ledger entry carries a Mana cost; `SKILLS · PASSIVE` contains every skill whose cost is `passive`. Preserve character-ledger order inside each group. Never duplicate a skill, infer a third category, or classify from its name or prose effect. Each group renders even when empty, with `none` on the following row.
 - **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless ordinary skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full active row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` and an ordinary passive row is `<name> [Rank] ★☆☆☆☆ · Passive · <effect>`. The next indented row renders `Uses <n> · Progress <n>/3`. A Stat Passive omits stars and `Progress`, rendering `<name> [Rank] · Stat Passive · <effect>` then `Uses <n> · <Base Stat> <n> · <Next Rank> at <threshold>`.
+- **Damage previews use Section 6.2, never stored prose.** Every equipped damaging weapon and known offensive active skill renders `DMG <n> standard · before reduction`, derived with the standard `×1` result and zero target reduction. Multi-hit skills render each separately resolved hit in order; when either hand can open, both legal orders render. Non-damaging skills and unequipped inventory weapons receive no preview.
 - **Quest capacity and objectives are explicit.** `Non-Daily Slots <used>/<capacity>` is the first quest row. The quest name and status occupy the next row; objectives, progress, reward, and the local or causal deadline render beneath it with four-space indentation. Unrevealed Hidden quests are the sole exception: they render only `[HIDDEN] ???` until Section 8.4.3 reveals them.
 - **Equipment and long inventory entries separate identity from mechanics.** The slot, item name, and `[Rank]` occupy the first row. Bonuses, power/protection, effects, and condition occupy one or more continuation rows aligned beneath the item name. This rule leaves room for prefixes, suffixes, and durability without widening the frame.
 - **Instructional items render their eligibility from canonical binding.** `/system inventory` and `/system shop` show `UNBOUND · NPC-ELIGIBLE` for `unbound-awakened` instruction and `BEARER-BOUND` for `bearer-only` instruction; a class-bound item shows `CLASS-BOUND · <class>`. The complete item line retains `teaches`, `teaching_rank`, binding, provenance source kind/event, and unused status. When transferred to an NPC, move that complete line to the NPC's holdings without altering binding. On consumption, remove the item from live holdings and record the recipient's learned or upgraded technique plus the settlement event.

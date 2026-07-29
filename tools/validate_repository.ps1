@@ -501,7 +501,10 @@ foreach ($file in $canonicalFiles) {
             # from the governing base Stat and clamped to System Rank + 1.
             # The rendered skill row must agree with that derivation, and the
             # class may carry successful_uses but no mastery/ascension state.
-            if ($id -eq "ENT-000125" -and $block -match 'profile_version:[ \t]*"1\.33"') {
+            $profileVersionMatch = [regex]::Match($block, 'profile_version:[ \t]*"(\d+\.\d+)"')
+            if ($id -eq "ENT-000125" -and
+                $profileVersionMatch.Success -and
+                [version]$profileVersionMatch.Groups[1].Value -ge [version]"1.33") {
                 $statSection = Get-IndentedSection $block "stats"
                 $skillsSection = Get-IndentedSection $block "skills_known"
                 $systemRankMatch = [regex]::Match($block, '(?m)^[ \t]+system_rank:[ \t]*([EDCBAS])(?:-Rank)?[ \t]*$')

@@ -13,7 +13,7 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000188
+  source: EVT-000189
   game_date: "2026-08-06 ~15:10 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
@@ -25,12 +25,12 @@ subjects: []
 
 ## Bindings and Versions
 
-- World: Gatefall (World Version 0.1, World Rule Profile **1.33**)
+- World: Gatefall (World Version 0.1, World Rule Profile **1.34**)
 - Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.5
 - Start city: Chicago
 - Campaign date: **2026-08-06T15:10:00-05:00, mid-afternoon** — **Owen Callahan's kitchen in Rogers Park**, both men standing on his linoleum in full field kit, ejected there when the Overgrown Temple instance collapsed on the boss kill. This is the exact canonical settlement anchor. Owen is due at Edgewater at **16:00**. The next daily quest issues **06:00 on 2026-08-07**; crew training is fixed for **2026-08-09, 18:00**, with a standing order that no crew Gate precedes it.
 - Campaign state: session-3 in progress. Since Checkpoint 0036's 14:52 anchor (`EVT-000182`-`EVT-000185`): the shrine read that found the garrison's anchor radius, Owen's legendary kill on the second elite, two boss exchanges he fought alone, the shrine revealed as a **lid**, a natural-99 Flash Step that displaced the boss off it, an exceptional footwork hold that never landed a blow, the lid opened for three healing potions, and **the Gate cleared — Owen having personally killed thirteen of the fourteen creatures in it.**
-- World Rule Profile: Gatefall **1.33**, frozen on repository date 2026-07-29 — the five Stat Passives derive Rank from base Stat, Rank-Sight is now Flux Sight, and both prior Perception names are retired. Perception 38 makes Flux Sight D-Rank with monster Rank/Health/Mana reads; Intelligence 36 makes Multitask D-Rank and non-daily capacity 3. Profile **1.32** remains operative beneath it: every fixed-Rank entity carries Rank Mana, spends it by tier, and can run dry; individual pools may vary while Section 6.2 damage remains flat. Profile **1.31** remains operative beneath that: the Rank Dominance Law is repaired on the scope axis and the passive-multiplier mastery rate is authored. Earlier profiles remain operative unchanged. Alexander has no pending ratification.
+- World Rule Profile: Gatefall **1.34**, frozen on repository date 2026-07-29 — `/system` derives standard-success raw damage before target reduction for equipped weapons and offensive active skills; Alexander's current previews are main 51, off 48, Rupture 58, and Twin Fang 51 + 55 main→off or 48 + 59 off→main. Profile **1.33** remains operative beneath it: the five Stat Passives derive Rank from base Stat, Rank-Sight is now Flux Sight, and both prior Perception names are retired. Perception 38 makes Flux Sight D-Rank with monster Rank/Health/Mana reads; Intelligence 36 makes Multitask D-Rank and non-daily capacity 3. Profile **1.32** remains operative beneath that: every fixed-Rank entity carries Rank Mana, spends it by tier, and can run dry; individual pools may vary while Section 6.2 damage remains flat. Profile **1.31** remains operative beneath that: the Rank Dominance Law is repaired on the scope axis and the passive-multiplier mastery rate is authored. Earlier profiles remain operative unchanged. Alexander has no pending ratification.
 - **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0037/` — immutable Profile **1.30** / Data Model **0.1.5** capture at the 2026-08-06 15:10 anchor, applying the additive **1.30→1.31** scope repair, prospective **1.31→1.32** Rank-Mana subsystem migration, and derived **1.32→1.33** Stat-Passive migration at readiness with no recomputation, and capturing a **closed** scene in an ordinary domestic room rather than mid-fight. `900_CHECKPOINT_0036` (2026-08-06 14:52) remains the preceding immutable capture and is an **open dangerous scene** — restoring it resumes mid-clear with a boss and a second elite alive; after the chain, entities already engaged use full flat Rank Mana for that encounter and receive no mid-fight variance roll. `900_CHECKPOINT_0035` (2026-08-06 11:15) is the lakefront capture, same Profile/Data-Model pair, applying the same readiness chain.
 
 ## Protagonist
@@ -90,9 +90,9 @@ Session 3, mid-afternoon of 2026-08-06 (Thursday), **~15:10, Owen's kitchen in R
 
 ## Promotion Status
 
-Session 3 in progress — **checkpoint `900_CHECKPOINT_0037` written** at the 2026-08-06 15:10 anchor under frozen Profile **1.30** / Data Model **0.1.5**, carrying `EVT-000182`-`EVT-000185`. At readiness it applies the 1.30→1.31 scope repair, 1.31→1.32 Rank-Mana migration, and 1.32→1.33 derived Stat-Passive migration, with no recomputation; unlike its predecessor it captures a **closed** scene in an ordinary room.
+Session 3 in progress — **checkpoint `900_CHECKPOINT_0037` written** at the 2026-08-06 15:10 anchor under frozen Profile **1.30** / Data Model **0.1.5**, carrying `EVT-000182`-`EVT-000185`. At readiness it applies the 1.30→1.31 scope repair, 1.31→1.32 Rank-Mana migration, 1.32→1.33 derived Stat-Passive migration, and 1.33→1.34 read-only damage-preview migration, with no recomputation; unlike its predecessor it captures a **closed** scene in an ordinary room.
 
-Registry advanced through **`EVT-000188`**. No new entities or relationships this span; `EVT-000186` through `EVT-000188` are profile-adoption acknowledgements consuming no fictional time.
+Registry advanced through **`EVT-000189`**. No new entities or relationships this span; `EVT-000186` through `EVT-000189` are profile-adoption acknowledgements consuming no fictional time.
 
 **The `EVT-000181` deferral is discharged.** `EVT-000184` is the dangerous-scene settlement for the whole instance: uses settled per activation, qualifying scenes once each. **Keen Sense advanced Adept -> Expert** (Mana 2 -> 1, scope himself + 3 allies) and **Exploit Pattern advanced Practiced -> Adept** (3 concurrent Patterns); Field Command took its first qualifying scene; Flash Step reached 2/3 toward Master. The Mana trace 72 -> 70 -> 71 -> 66 reconciles exactly against two Keen Sense activations and one Flash Step.
 

@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000188
+  source: EVT-000189
   game_date: "2026-08-06 ~15:10 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
@@ -151,6 +151,7 @@ subjects:
   - EVT-000186
   - EVT-000187
   - EVT-000188
+  - EVT-000189
 ```
 
 ---
@@ -4280,4 +4281,31 @@ description: "Adoption of Gatefall World Rule Profile 1.33, the third and final 
 **Nothing else moves.** No pool, ordinary skill Rank or mastery value, use count, item, reward, currency balance, roll, or fictional outcome changes. The five counter paths are renamed without numeric deltas, so `counter_deltas` is empty. Immutable checkpoints are untouched and apply the compatibility chain through 1.33 at readiness.
 
 **Design complete.** Profile 1.31 repaired the scope axis, Profile 1.32 created NPC and monster Mana, and Profile 1.33 makes that Mana readable at Flux Sight's live D rung."
+```
+
+## EVT-000189 - Profile Adoption: Gatefall World Rule Profile 1.34
+
+```yaml
+id: EVT-000189
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-06 ~15:10 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-06 ~15:10 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.34. **No fictional time is consumed and no resolved roll is reopened.** Alexander remains in Owen Callahan's kitchen at ~15:10 on 2026-08-06.
+
+**Damage previews.** `/system` now derives standard-success raw damage before target reduction for every equipped damaging weapon and every known offensive active skill. The values come directly from Section 6.2's canonical inputs at render time and are not stored as a second source of truth. Multi-hit attacks retain separate hit values and show both legal weapon orders when either hand may open.
+
+**Live rendering.** Effective Strength 43, Dagger Mastery +0.20, and the equipped weapon lines yield **Ghost Quickknife 51** and **C-Rank Quickknife 48**. Rupture's D-Rank baseline 25 at Adept ×2.30 yields **58** after Section 6.2 final rounding. Twin Fang at Practiced ×1.15 yields **51 + 55 main→off** or **48 + 59 off→main**. Every figure is labeled standard and before reduction.
+
+**Nothing mechanical moves.** No Stat, pool, skill Rank, mastery, item, counter, roll, damage result, or fictional outcome changes. The character sheet's stale explanatory Rupture rounding is corrected from 57 to 58. Twin Fang's prose is reconciled to its existing tracked counters — Practiced, 6 uses, 5 scenes, 2/3 toward Adept — removing a copied advancement claim for `EVT-000184`, where Alexander made no offensive action. The underlying formulae and values are unchanged. Immutable checkpoints remain untouched and apply the compatibility chain through 1.34 at readiness."
 ```

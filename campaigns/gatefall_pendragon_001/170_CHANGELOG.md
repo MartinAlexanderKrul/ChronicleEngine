@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000188
+  source: EVT-000189
   game_date: "2026-08-06 ~15:10 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
@@ -1148,3 +1148,9 @@ Claim separately at any time.
 - **Live derived grants.** Perception 38 makes Flux Sight D-Rank, adding monster Rank/Health/Mana reads. Intelligence 36 makes Multitask D-Rank, raising non-daily capacity 2→3. Overpower, Pre-empt, and Shrug Off remain E-Rank.
 - **What changed in live state.** `profile_version` 1.32→1.33, five successful-use counter paths renamed without changing values, and non-daily capacity re-derived to 3. **Nothing else.**
 - **Validators.** Repository validation derives every Stat Passive Rank from base Stat and System Rank, requires the class label and use counter, and rejects stored mastery/ascension/scope state. Contract mutations prove wrong Rank and forbidden mastery state fail.
+
+**2026-07-29 — Gatefall World Rule Profile 1.34 adopted (`EVT-000189`; no fictional time consumed).**
+
+- **`/system` damage previews.** Every equipped damaging weapon and known offensive active skill now displays its standard-success raw damage before target reduction, derived live under Section 6.2 rather than stored as a second source of truth. Multi-hit skills keep each separately reduced hit visible and show both legal weapon orders.
+- **Live rendering.** Ghost Quickknife: **51**; C-Rank Quickknife: **48**; Rupture: **58**; Twin Fang: **51 + 55** main→off or **48 + 59** off→main. These are previews, not resolved damage.
+- **What changed in live state.** `profile_version` 1.33→1.34 and ledger provenance advanced to `EVT-000189`. Rupture's stale explanatory rounding was corrected 57→58. Twin Fang's prose was reconciled to its existing tracked state — Practiced, 6 uses, 5 scenes, 2/3 toward Adept — removing a false `EVT-000184` advancement claim from a scene in which Alexander made no offensive action. No Stat, pool, skill magnitude, item, counter, roll, resolved damage result, or fictional outcome changed.

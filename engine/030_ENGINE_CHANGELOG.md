@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-29 — Gatefall Profile 1.34: `/system` Damage Previews
+
+**World authoring:** Gatefall World Rule Profile 1.33 → 1.34 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
+**Profile:** Sections 6.2 and 15 derive a read-only, target-independent preview for every equipped damaging weapon and known offensive active skill: standard-success raw Health damage before target reduction. Multi-hit attacks keep component hits separate and show every legal equipped-weapon order; non-damaging skills and unequipped inventory weapons receive no preview.
+**Live migration:** Alexander renders Ghost Quickknife 51, C-Rank Quickknife 48, Rupture 58, and Twin Fang 51 + 55 main→off or 48 + 59 off→main. The character ledger stores no preview values. A stale explanatory Rupture rounding is corrected 57→58; no mechanical value or resolved outcome changes.
+**Tools:** Gatefall contracts pin the Profile 1.34 migration and recompute the live previews from effective Strength, weapon power, chassis, Dagger Mastery, skill baseline, and mastery. The render contract requires the standard/before-reduction label and separate multi-hit values.
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `worlds/gatefall/README.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/test_gatefall_*_contract.ps1`
+
 ## 2026-07-29 — Gatefall Profile 1.33: Stat Passives and Flux Sight
 
 **World authoring:** Gatefall World Rule Profile 1.32 → 1.33 (Decisions 062, 069 — world-scoped, consumes no engine decision number)

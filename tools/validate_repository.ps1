@@ -497,6 +497,34 @@ foreach ($file in $canonicalFiles) {
                 }
             }
 
+            # Gatefall Profile 1.35 Section 7.2: a skill may not stand at a Rank
+            # its Section 7.3 ladder does not author. Ascension eligibility
+            # withholds the offer, so a Rank above the authored ceiling can only
+            # mean the guard was bypassed -- and the mastery an ascension spends
+            # cannot be returned (Rules Section 13.2). Both the scope ladder and
+            # the capability ladder top out at C-Rank today; Section 20.3 authors
+            # higher rungs at the checkpoint where each becomes reachable, and
+            # this ceiling moves with them.
+            $ladderVersionMatch = [regex]::Match($block, 'profile_version:[ \t]*"(\d+\.\d+)"')
+            if ($id -eq "ENT-000125" -and $ladderVersionMatch.Success -and
+                [version]$ladderVersionMatch.Groups[1].Value -ge [version]"1.35") {
+                $ladderSkills = @(
+                    "Keen Sense", "Silent Step", "Exploit Pattern", "Field Command",
+                    "Resonance Extraction", "Sprint", "Flash Step"
+                )
+                $ladderRankOrder = @("E", "D", "C", "B", "A", "S")
+                $highestAuthoredIndex = [array]::IndexOf($ladderRankOrder, "C")
+                $ladderSection = Get-IndentedSection $block "skills_known"
+                foreach ($ladderSkill in $ladderSkills) {
+                    $ladderMatch = [regex]::Match($ladderSection, '"' + [regex]::Escape($ladderSkill) + ' \[([EDCBAS])-Rank\]')
+                    if (-not $ladderMatch.Success) { continue }
+                    $heldRank = $ladderMatch.Groups[1].Value
+                    if ([array]::IndexOf($ladderRankOrder, $heldRank) -gt $highestAuthoredIndex) {
+                        Add-Failure "$relativePath`:$line entity $id holds $ladderSkill at $heldRank-Rank, which exceeds its authored category ladder (Gatefall Profile 1.35 Section 7.2; Section 7.3 authors through C-Rank)."
+                    }
+                }
+            }
+
             # Gatefall Profile 1.33 Section 4.4: Stat Passive Rank is derived
             # from the governing base Stat and clamped to System Rank + 1.
             # The rendered skill row must agree with that derivation, and the

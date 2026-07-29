@@ -67,7 +67,7 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw
 $character = Get-Content -LiteralPath $characterPath -Raw
 $checkpoint = Get-Content -LiteralPath $checkpointPath -Raw
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.34\r?$') "Gatefall Profile 1.34 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.35\r?$') "Gatefall Profile 1.35 is not active."
 Assert-True ($profile -match 'mana_recovery_remainder_units') "Gatefall Mana carry is not declared."
 Assert-True ($profile -match 'health_recovery_remainder_units') "Gatefall Health carry is not declared."
 Assert-True ($resident -match 'exact last-settled campaign-time anchor') "Resident settlement does not require the exact anchor."
@@ -124,7 +124,7 @@ $healthPartitioned = @{ Current = [int64]68; Remainder = [int64]0 }
 Assert-True ($healthPartitioned.Current -eq $healthRest.Current) "Health differs across equivalent response partitions."
 Assert-True ($healthPartitioned.Remainder -eq $healthRest.Remainder) "Health carry differs across equivalent response partitions."
 
-# Profile 1.32 retained through Profile 1.34: fixed-Rank entities carry a Rank Mana pool. These four values
+# Profile 1.32 retained through Profile 1.35: fixed-Rank entities carry a Rank Mana pool. These four values
 # are the ones every downstream cost derives from -- if the table drifts, every
 # ability cost in the world silently changes with it.
 Assert-Contains $profile '\| \*\*Rank Mana\*\* \| \*\*20\*\* \| \*\*50\*\* \| \*\*125\*\* \| \*\*300\*\* \| \*\*750\*\* \| \*\*2,000\*\* \|' 'Section 6.1 does not carry the Rank Mana table.'

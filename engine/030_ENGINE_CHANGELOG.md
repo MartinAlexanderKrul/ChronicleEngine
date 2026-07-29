@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-29 — Gatefall Profile 1.35: Ascension Eligibility
+
+**World authoring:** Gatefall World Rule Profile 1.34 → 1.35 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
+**Profile:** Section 7.2 authors an **ascension-eligibility** rule — a skill is eligible at a target Rank only where that Rank's grant is authored and non-empty, and Section 7.5 withholds and states the offer where it is not. Section 7.3 gains a capability-axis category ladder beside the scope ladder: Sprint broken ground at D and vertical at C, Flash Step through the barrier at C. Section 7.5's net-gain sentence, `Rank N` ordering, and breakthrough-settlement trigger are all bound to eligibility.
+**Tools:** `validate_repository.ps1` rejects a skill held above its authored Section 7.3 ladder; `test_progression_audit_contract.ps1` asserts the rejection and the restored pass
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `worlds/gatefall/README.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/` (validator + four contracts)
+**Plan:** `docs/superpowers/plans/2026-07-29-profile-1.35-ascension-eligibility.md`
+
 ## 2026-07-29 — Gatefall Profile 1.34: `/system` Damage Previews
 
 **World authoring:** Gatefall World Rule Profile 1.33 → 1.34 (Decisions 062, 069 — world-scoped, consumes no engine decision number)

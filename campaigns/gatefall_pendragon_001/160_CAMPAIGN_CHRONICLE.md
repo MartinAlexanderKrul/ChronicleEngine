@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000189
+  source: EVT-000190
   game_date: "2026-08-06 ~15:10 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
@@ -152,6 +152,7 @@ subjects:
   - EVT-000187
   - EVT-000188
   - EVT-000189
+  - EVT-000190
 ```
 
 ---
@@ -4308,4 +4309,37 @@ description: "Adoption of Gatefall World Rule Profile 1.34. **No fictional time 
 **Live rendering.** Effective Strength 43, Dagger Mastery +0.20, and the equipped weapon lines yield **Ghost Quickknife 51** and **C-Rank Quickknife 48**. Rupture's D-Rank baseline 25 at Adept ×2.30 yields **58** after Section 6.2 final rounding. Twin Fang at Practiced ×1.15 yields **51 + 55 main→off** or **48 + 59 off→main**. Every figure is labeled standard and before reduction.
 
 **Nothing mechanical moves.** No Stat, pool, skill Rank, mastery, item, counter, roll, damage result, or fictional outcome changes. The character sheet's stale explanatory Rupture rounding is corrected from 57 to 58. Twin Fang's prose is reconciled to its existing tracked counters — Practiced, 6 uses, 5 scenes, 2/3 toward Adept — removing a copied advancement claim for `EVT-000184`, where Alexander made no offensive action. The underlying formulae and values are unchanged. Immutable checkpoints remain untouched and apply the compatibility chain through 1.34 at readiness."
+```
+
+## EVT-000190 - Profile Adoption: Gatefall World Rule Profile 1.35
+
+```yaml
+id: EVT-000190
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-06 ~15:10 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-06 ~15:10 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.35, an additive correction advance over frozen 1.34. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged at Owen Callahan's kitchen, ~15:10 on 2026-08-06.
+
+**The defect corrected.** Section 7.2 spends every Rank above native on three things for a modifier-step or stated-capability skill: whole-scene duration at the first step, one further affected subject, and one authored category. On a skill whose authored effect is instantaneous and carries no scope count, the first two are inert -- there is no duration to saturate and no count to widen -- and the third existed for no skill outside Section 7.3's five-skill scope table. **Sprint and Flash Step could therefore ascend for nothing**, surrendering mastery levels for a Rank label with no capability behind it. Section 7.5 asserted the opposite in three separate places: its net-gain sentence, its `Rank N Master < Rank N+1 Novice < Rank N+1 Adept` ordering, and its rule making every Master-level skill below the ceiling ascension-ready.
+
+**This was live, not theoretical.** Flash Step stands at **D-Rank Expert**, one mastery level below the Master that makes a skill ascension-ready, with the Section 7.5 ceiling at C-Rank against System Rank D. The next dangerous-scene settlement that advanced it would have obliged the Runtime to surface an offer costing two mastery levels and granting nothing, announced under a law promising the trade is always a gain. An accepted ascension consumes mastery, and Rules Section 13.2 forbids reopening what a settlement has spent, so the repair had to reach it **before** that settlement rather than after. It does.
+
+**The repair.** A skill is now **ascension-eligible** at a target Rank only where that Rank's grant is authored and non-empty for it. Where it is not, Section 7.5 withholds the offer rather than making it, and states the withholding at the settlement that would have surfaced it -- an unauthored rung is a gap in the profile, and a gap that goes unstated is the defect Section 8.4.6's telemetry exists to prevent elsewhere. Withholding costs nothing and reverses the moment the rung is authored under Section 20.3. An offer surfaced for an ineligible skill is a misstated offer that restores the mastery it consumed.
+
+**The rungs authored.** Section 7.3 gains a capability-axis ladder beside its scope ladder. **Sprint** (native E-Rank) gains **broken ground** at D -- the step holds across footing that would otherwise demand its own check -- and **vertical** at C, where vertical and overhanging surfaces count as ground. **Flash Step** (native D-Rank) gains **through the barrier** at C: the step crosses a closed constructed barrier rather than only open distance, bounded to obstacles he could pass if they stood open, requiring a read of the far side or resolving as an uncertain action, and explicitly unable to cross a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall -- those are the edges of a space, not obstacles within one. Flash Step's B rung is deliberately left unauthored under Section 20.3, the Section 7.5 ceiling putting it out of reach at System Rank D.
+
+**Nothing changed.** Every skill Rank, mastery level, counter, Stat, pool, item, price, and resolved outcome is identical before and after. **Sprint stands at native E-Rank and Flash Step at native D-Rank**, so no capability rung is live and none is retroactive; both ladders are prospective in full. No ascension offer is issued, withdrawn, or re-adjudicated, and none was outstanding at adoption. `counter_deltas` is empty because this adoption changes no tracked value.
+
+**Enforcement.** `tools/validate_repository.ps1` now rejects a skill standing at a Rank its Section 7.3 ladder does not author, with a contract test in `tools/test_progression_audit_contract.ps1` proving the rejection and the restored pass. That ceiling is the half of eligibility a validator can see; the other half -- an offer never surfaced -- is a Runtime obligation under Section 7.5."
 ```

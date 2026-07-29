@@ -483,6 +483,20 @@ foreach ($file in $canonicalFiles) {
                 }
             }
 
+            # Profile 1.31 Section 7.2: every scope-axis skill carries a
+            # scope_floor, so the ratchet has a value to hold. The list is the
+            # Section 7.3 category-ladder table; a skill absent from the ledger
+            # is not required to carry one.
+            $scopeSkills = @('keen_sense', 'silent_step', 'exploit_pattern', 'field_command', 'resonance_extraction')
+            $counterPaths = @(Get-ListEntries (Get-IndentedSection $block "tracked_counters") |
+                ForEach-Object { Get-EntryValue $_ "path" })
+            foreach ($skill in $scopeSkills) {
+                if ($counterPaths -contains "skills.$skill.successful_uses" -and
+                    $counterPaths -notcontains "skills.$skill.scope_floor") {
+                    Add-Failure "$relativePath`:$line entity $id knows $skill but is missing a scope_floor tracked_counters entry (Gatefall Profile 1.31 Section 7.2)."
+                }
+            }
+
             foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "progression_audit_baselines"))) {
                 $domain = Get-EntryValue $entry "domain"
                 $baselineAsOf = Get-EntryValue $entry "baseline_as_of"

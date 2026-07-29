@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-29
 **World:** Gatefall
-**Target profile versions:** 1.31 and 1.32 (from 1.30) — see §9
+**Target profile versions:** 1.31, 1.32 and 1.33 (from 1.30) — see §9
 **Status:** approved design, pending implementation plan
 
 ---
@@ -54,14 +54,16 @@ the evidence.
 
 Four changes, which interlock:
 
-1. **§7.2** — repair the Rank Dominance Law on the scope axis: Rank buys *category*,
-   mastery buys *count*, and a **scope ratchet** guarantees ascension never reduces reach.
+1. **§7.2** — repair the Rank Dominance Law on the scope axis: Rank grants *one further
+   subject and one category* per Rank while mastery grants *subjects*, both adding to the
+   count with the law carried by the category, and a **scope ratchet** guarantees ascension
+   never reduces reach.
 2. **§4.4** — declare **Stat Passives** as a separate skill class with **no mastery track
    at all**, growing on Rank alone via base-Stat thresholds (30/36/44/54/66/80 → E–S). The
    Stat-50 milestones stop being separate skills and become each partner's D rung.
    Rank-Sight is renamed **Flux Sight** and given the owner's tiered read ladder.
-3. **§5, §6.1, §13.1** — monsters and NPC hunters gain a **Rank Mana pool** they actually
-   spend, plus **individual variance** on pools for named and elite entities.
+3. **§5, §6.1, new §6.1.2, §13.1** — monsters and NPC hunters gain a **Rank Mana pool**
+   they actually spend, plus **individual variance** on pools for named and elite entities.
 4. **§7.4** — author the missing passive-multiplier mastery rate.
 
 ---
@@ -73,11 +75,19 @@ Four changes, which interlock:
 For any skill whose effect is expressed as scope (subjects, allies, concurrent instances)
 or as a stated capability:
 
-- **Mastery buys count.** The 1/2/3/4/5 ladder, Novice through Master, is unchanged.
+- **Mastery grants subjects.** The 1/2/3/4/5 ladder, Novice through Master, is unchanged.
   Nothing in live canon is nerfed.
-- **Rank buys category.** Each Rank above native grants one authored *kind* of thing the
-  skill can reach that no mastery level ever grants. The first Rank above native
-  additionally saturates duration to whole-scene, as §7.2 already provides.
+- **Rank grants a subject and a category.** Each Rank above native grants **one further
+  affected subject** and one authored *kind* of thing the skill can reach that no mastery
+  level ever grants. The first Rank above native additionally saturates duration to
+  whole-scene, as §7.2 already provides.
+- **Both contribute to the count, and the count is not what carries the law** — the
+  category does, because no quantity of mastery ever reaches a kind. Stating this as an
+  exclusive division of axes ("Rank buys category, mastery buys count") is the original
+  defect and reintroduces it; the formula in §3.2 adds a Rank term to the same number
+  mastery contributes to, and §7.2 has said since 1.12 that gains on a shared axis add.
+  Owner ruling, 2026-07-29, after the phrasing shipped twice and was caught twice in
+  review during the Phase 1 build.
 
 ### 3.2 The scope ratchet
 
@@ -122,7 +132,8 @@ mastery-tracked scope skills in §3.4.
 The current wording compares counts and is false. It becomes:
 
 > **The Rank Dominance Law.** A skill at Novice one Rank higher can do something the same
-> skill at Master one Rank lower cannot do at all, and never covers less.
+> skill at Master one Rank lower cannot do at all, and ascension never leaves it covering
+> less than it covered immediately before.
 
 On magnitude axes this remains the numeric statement already verified in 1.26 (Rupture
 E-Master 26 < D-Novice 50; Stone Skin D-Master 50% < C-Novice 55%). On the scope axis it
@@ -270,6 +281,22 @@ the skill's identity and acquisition Event (`EVT-000083`) are unchanged.
 **No scope count and no `scope_floor`.** Flux Sight has no mastery track, so it has no
 count axis to widen or protect. Each Rank grants a category and nothing else. How many
 subjects he can hold in one read is fiction, not a tracked number.
+
+**§7.2 must state this exemption explicitly — it does not follow from the text as it
+stands.** §7.2's utility table grants a "Modifier step or stated capability" skill **one
+further affected subject and one authored category grant** per Rank above native. Flux
+Sight is a stated-capability skill, so read literally that row hands it a subject count
+this section says it does not have, and the same applies to Pre-empt's C rung. Phase 2
+therefore adds to §7.2:
+
+> The per-Rank subject grant applies to **mastery-tracked** scope skills only. A **Stat
+> Passive** (Section 4.4) has no mastery track and therefore no count axis: each Rank
+> above native grants it its authored category and nothing else, and it carries no
+> `scope_floor`.
+
+Without this clause the profile states two different rules for the same skill — the exact
+defect class Phase 1 corrected three times. It is a consequence of the no-mastery ruling,
+not a new decision, but it must be authored rather than inferred.
 
 **§9.5's mechanic is unchanged**, but its sentence citing "Rank-Sight at 30, Deep Sight at
 50" is rewritten to cite Flux Sight's E and D rungs — one skill, two Ranks, not two skills.
@@ -472,7 +499,7 @@ Stat Passive Rank that disagrees with its Stat.
 
 ## 9. Phasing
 
-Two profile adoptions.
+Three profile adoptions.
 
 **Phase 1 — Profile 1.31, defect repair.** Self-contained, no new subsystems, no migration
 beyond `scope_floor` initialisation. Everything here fixes a rule that is wrong in the
@@ -489,16 +516,40 @@ profile today.
 Phase 1 alone removes the live hazard that a Keen Sense ascension offer would understate
 the result and read as a downgrade.
 
-**Phase 2 — Profile 1.32, the new material.**
+**Phase 2 — Profile 1.32, NPC and monster Mana.** Self-contained; nothing in it needs the
+Stat Passive work.
+
+- §5.1 — the NPC pool, its derivation from the Bearer's `2 × Int` : `4 × Vit` ratio, and
+  the Reikon corroboration noted as a sanity check rather than authority.
+- §6.1 — the Rank Mana table (20 / 50 / 125 / 300 / 750 / 2,000).
+- **New §6.1.2** — individual variance: authored ±10% for recurring named NPCs, a banded
+  d100 rolled once for elites and bosses, flat for commons. Pools vary; §6.2's damage
+  baseline always reads the flat table value.
+- §5.2 and §5.3 — recovery and exhaustion apply to NPCs unchanged.
+- §13.1 — the "no Mana curve" clause amended; Decision 020's purpose recorded as intact
+  and its letter as amended.
+- Cost tiers (minor 10% / signature 25% / boss-tier 50% of that entity's own maximum),
+  the tier-selection test, and scene scoping.
+
+**Applies prospectively only.** Every resolved fight stays as resolved; no exchange is
+recomputed and no roll reopened. Monsters and NPC hunters begin carrying and spending Mana
+from the adoption Event forward. This is the profile's established migration idiom.
+
+**Phase 3 — Profile 1.33, Stat Passives and Flux Sight.**
 
 - §4.4 — the Stat Passive class, the threshold ladder, the ceiling clamp, the five skills.
+- §7.2 — the Stat Passive exemption from the per-Rank subject grant (§4.3).
+- §7.4 — Stat Passive rendering; the no-mastery-track statement retargeted at the class.
 - The Flux Sight rename, its six-rung ladder, and the deprecation note.
-- §5, §6.1, §6.1.2, §13.1 — NPC and monster Mana, costs, recovery, exhaustion, variance.
 - §9.5's rewritten sentence; Analyst's appraisal clause relocated.
 - Sheet migration and validator updates.
 
-**Ordering note.** Phase 2 depends on Phase 1 only for the category mechanism the Stat
-Passive ladders reuse. Nothing in Phase 1 depends on Phase 2.
+**Ordering note.** Phase 2 depends on nothing. **Phase 3 depends on Phase 2**: Flux Sight
+adopts at **D-Rank** (base Perception 38) and its D rung reads a monster's Rank, Health
+**and Mana**, so the Mana subsystem must already exist or the rung the Bearer actually
+holds would author a read of a value the world has no rule for — the §20.2 defect. Phase 3
+also depends on Phase 1 for the category mechanism its ladders reuse. Nothing in Phase 1 or
+Phase 2 depends on Phase 3.
 
 ---
 

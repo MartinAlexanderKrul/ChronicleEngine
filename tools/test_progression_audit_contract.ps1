@@ -317,6 +317,24 @@ game_date: "2026-08-04 06:01 -05:00"'
     $exempt = Invoke-Validation $tempRoot
     Assert-True ($exempt.ExitCode -eq 0) "A bookkeeping Event was treated as an unsettled play scene:`n$($exempt.Output)"
 
+    # --- Section 7.2's scope ratchet needs its counter to exist ------------
+    #
+    # Profile 1.31 makes scope = max(formula, scope_floor). A scope skill with
+    # no stored floor silently degrades to the bare formula, which is the exact
+    # arithmetic that made ascension a downgrade before 1.31. The counter
+    # recording an absence is load-bearing, so its absence must fail.
+    $keenFloor = Get-CounterLine $character 'skills.keen_sense.scope_floor'
+    Assert-True ($null -ne $keenFloor) "Keen Sense has no scope_floor counter to remove; fixture precondition drifted."
+
+    Replace-Once $character ("      " + $keenFloor.Line + "`n") ""
+    $missingFloor = Invoke-Validation $tempRoot
+    Assert-True ($missingFloor.ExitCode -ne 0 -and $missingFloor.Output -like "*missing a scope_floor tracked_counters entry*") `
+        "A scope skill with no scope_floor counter was accepted; the Section 7.2 ratchet is unenforced:`n$($missingFloor.Output)"
+
+    Set-Text $character ((Get-Text $character) -replace 'tracked_counters:', ("tracked_counters:`n      " + $keenFloor.Line))
+    $restoredFloor = Invoke-Validation $tempRoot
+    Assert-True ($restoredFloor.ExitCode -eq 0) "A restored scope_floor counter did not validate:`n$($restoredFloor.Output)"
+
     Write-Host "Progression audit contract tests PASSED" -ForegroundColor Green
 } finally {
     $resolvedTmp = [System.IO.Path]::GetFullPath($tempRoot)

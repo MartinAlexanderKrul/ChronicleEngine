@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-29 — Gatefall Profile 1.31: Scope-Axis Repair
+
+**World authoring:** Gatefall World Rule Profile 1.30 → 1.31 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
+**Profile:** Section 7.2 Rank Dominance Law restated for the scope axis; Rank grants one further subject and one authored category per Rank while mastery grants subjects alone — both add to the count, and the law is carried by the category; scope ratchet (`scope_floor`) added. Section 7.3 gains E–D–C category ladders for five scope skills. Section 7.4 authors the passive-multiplier mastery rate (+0.05 per level) that Section 7.2 had assumed since 1.12. Section 7.5's ascension offer discloses category and ratcheted count.
+**Tools:** `validate_repository.ps1` requires a `scope_floor` counter for every known scope skill; `test_progression_audit_contract.ps1` asserts its absence is rejected; `test_gatefall_economy_contract.ps1`, `test_gatefall_quest_contract.ps1` and `test_gatefall_recovery_contract.ps1` rebased their hardcoded Profile 1.30 pins to 1.31 (a Task 4 gap — the version bump missed these three files, which every prior profile adoption had updated as routine), and the economy contract's stale Keen Sense `Adept` assertion was corrected to `Expert` to match canon already set at `EVT-000184`
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/test_gatefall_economy_contract.ps1`, `tools/test_gatefall_quest_contract.ps1`, `tools/test_gatefall_recovery_contract.ps1`
+**Spec:** `docs/superpowers/specs/2026-07-29-flux-sight-and-passive-unification-design.md` (Phase 1 of 2)
+
 ## 2026-07-28 — Promotion-barrier settlement enforced
 
 Refinement under milestone 0.3.5; no Engine Rule, Data Model section, or decision number changed. Profile Section 7.1 already required each promotion barrier to create a `progression-batch-settlement` Event carrying the batch audit, including an explicit `none`.

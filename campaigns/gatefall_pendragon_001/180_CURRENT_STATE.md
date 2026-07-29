@@ -13,7 +13,7 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000185
+  source: EVT-000186
   game_date: "2026-08-06 ~15:10 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
@@ -25,13 +25,13 @@ subjects: []
 
 ## Bindings and Versions
 
-- World: Gatefall (World Version 0.1, World Rule Profile **1.30**)
+- World: Gatefall (World Version 0.1, World Rule Profile **1.31**)
 - Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.5
 - Start city: Chicago
 - Campaign date: **2026-08-06T15:10:00-05:00, mid-afternoon** — **Owen Callahan's kitchen in Rogers Park**, both men standing on his linoleum in full field kit, ejected there when the Overgrown Temple instance collapsed on the boss kill. This is the exact canonical settlement anchor. Owen is due at Edgewater at **16:00**. The next daily quest issues **06:00 on 2026-08-07**; crew training is fixed for **2026-08-09, 18:00**, with a standing order that no crew Gate precedes it.
 - Campaign state: session-3 in progress. Since Checkpoint 0036's 14:52 anchor (`EVT-000182`-`EVT-000185`): the shrine read that found the garrison's anchor radius, Owen's legendary kill on the second elite, two boss exchanges he fought alone, the shrine revealed as a **lid**, a natural-99 Flash Step that displaced the boss off it, an exceptional footwork hold that never landed a blow, the lid opened for three healing potions, and **the Gate cleared — Owen having personally killed thirteen of the fourteen creatures in it.**
-- World Rule Profile: Gatefall **1.30**, frozen on repository date 2026-07-28 — trigger telemetry at each checkpoint. Profiles **1.29** (Urgent eligibility clarified), **1.28** (the tracked board), **1.27** (concealed-canon supply), **1.26** (skill Rank ascension) and **1.25** (consumable economy and sourcing) all remain operative beneath it, unchanged this span. Alexander has no pending ratification.
-- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0037/` — immutable Profile **1.30** / Data Model **0.1.5** capture at the 2026-08-06 15:10 anchor, requiring **no migration** on restore, and capturing a **closed** scene in an ordinary domestic room rather than mid-fight. `900_CHECKPOINT_0036` (2026-08-06 14:52) remains the preceding immutable capture and is an **open dangerous scene** — restoring it resumes mid-clear with a boss and a second elite alive. `900_CHECKPOINT_0035` (2026-08-06 11:15) is the lakefront capture, same Profile/Data-Model pair, no migration.
+- World Rule Profile: Gatefall **1.31**, frozen on repository date 2026-07-29 — the Rank Dominance Law restated for the scope axis (Section 7.2), E-D-C category ladders authored for the five scope skills (Section 7.3), and the passive-multiplier mastery rate authored at +0.05 per level (Section 7.4). Profiles **1.30** (trigger telemetry at each checkpoint), **1.29** (Urgent eligibility clarified), **1.28** (the tracked board), **1.27** (concealed-canon supply), **1.26** (skill Rank ascension) and **1.25** (consumable economy and sourcing) all remain operative beneath it, unchanged this span. Alexander has no pending ratification.
+- **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0037/` — immutable Profile **1.30** / Data Model **0.1.5** capture at the 2026-08-06 15:10 anchor, adopting the **additive 1.30→1.31 scope-axis-repair step** at readiness with no recomputation, and capturing a **closed** scene in an ordinary domestic room rather than mid-fight. `900_CHECKPOINT_0036` (2026-08-06 14:52) remains the preceding immutable capture and is an **open dangerous scene** — restoring it resumes mid-clear with a boss and a second elite alive. `900_CHECKPOINT_0035` (2026-08-06 11:15) is the lakefront capture, same Profile/Data-Model pair, adopting the same additive step at readiness.
 
 ## Protagonist
 
@@ -90,7 +90,7 @@ Session 3, mid-afternoon of 2026-08-06 (Thursday), **~15:10, Owen's kitchen in R
 
 ## Promotion Status
 
-Session 3 in progress — **checkpoint `900_CHECKPOINT_0037` written** at the 2026-08-06 15:10 anchor under frozen Profile **1.30** / Data Model **0.1.5**, carrying `EVT-000182`-`EVT-000185`. No migration on restore, and unlike its predecessor it captures a **closed** scene in an ordinary room.
+Session 3 in progress — **checkpoint `900_CHECKPOINT_0037` written** at the 2026-08-06 15:10 anchor under frozen Profile **1.30** / Data Model **0.1.5**, carrying `EVT-000182`-`EVT-000185`. It adopts the additive 1.30→1.31 scope-axis-repair step at readiness with no recomputation, and unlike its predecessor it captures a **closed** scene in an ordinary room.
 
 Registry advanced through **`EVT-000185`**. No new entities or relationships this span.
 

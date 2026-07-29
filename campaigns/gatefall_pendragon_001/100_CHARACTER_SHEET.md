@@ -13,7 +13,7 @@ canonical_record: REC-000074
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000185
+  source: EVT-000186
   game_date: "2026-08-06 ~15:10 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
@@ -66,7 +66,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.30"
+    profile_version: "1.31"
     profile_skill_rank_ascension_event: EVT-000158
     profile_consumable_economy_event: EVT-000154
     profile_premium_surcharge_event: EVT-000135
@@ -178,6 +178,10 @@ canonical_state:
       - { path: skills.resonance_extraction.successful_uses, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 2 }
       - { path: skills.resonance_extraction.qualifying_scenes_total, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 1 }
       - { path: skills.resonance_extraction.mastery_progress, baseline_value: 0, baseline_as_of: EVT-000132, current_value: 1 }
+      - { path: skills.keen_sense.scope_floor, baseline_value: 0, baseline_as_of: EVT-000186, current_value: 0 }
+      - { path: skills.exploit_pattern.scope_floor, baseline_value: 0, baseline_as_of: EVT-000186, current_value: 0 }
+      - { path: skills.field_command.scope_floor, baseline_value: 0, baseline_as_of: EVT-000186, current_value: 0 }
+      - { path: skills.resonance_extraction.scope_floor, baseline_value: 0, baseline_as_of: EVT-000186, current_value: 0 }
       - { path: skills.rank_sight.successful_material_applications, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 0 }
       - { path: skills.overpower.successful_material_applications, baseline_value: 1, baseline_as_of: EVT-000130, current_value: 3 }
       - { path: skills.pre_empt.successful_material_applications, baseline_value: 0, baseline_as_of: EVT-000130, current_value: 1 }

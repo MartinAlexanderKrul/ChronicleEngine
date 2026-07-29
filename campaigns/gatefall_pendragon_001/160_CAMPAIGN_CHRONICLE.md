@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000185
+  source: EVT-000186
   game_date: "2026-08-06 ~15:10 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
@@ -148,6 +148,7 @@ subjects:
   - EVT-000183
   - EVT-000184
   - EVT-000185
+  - EVT-000186
 ```
 
 ---
@@ -4176,4 +4177,37 @@ description: "The promotion barrier for Checkpoint 0037, discharging Section 7.1
 **Still outstanding and deliberately carried forward:** the **2026-08-06 06:00 Daily Premium rotation remains unsettled**, unchanged from Checkpoint 0036. It has now gone a second checkpoint without resolution and no offer has been invented to cover it. Recorded again rather than quietly dropped.
 
 No fictional time, roll, Stat, pool, item, or resolved outcome changed by this Event."
+```
+
+## EVT-000186 - Profile Adoption: Gatefall World Rule Profile 1.31
+
+```yaml
+id: EVT-000186
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-06 ~15:10 -05:00"
+  real_date: "2026-07-29"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-06 ~15:10 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.31, an additive correction advance over frozen 1.30. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged at Owen Callahan's kitchen, ~15:10 on 2026-08-06.
+
+**The defect corrected.** Section 7.2's Rank Dominance Law promised that a skill at Novice one Rank higher beats the same skill at Master one Rank lower. On the scope axis it was false: Rank granted **+1** subject per Rank above native while mastery granted **+4** across its track, so an E-Rank Master Keen Sense reached five beneficiaries against a D-Rank Novice's two. Ascension was a strict downgrade on every scope skill in the profile — Keen Sense, Silent Step, Exploit Pattern, Field Command, Resonance Extraction — and Section 7.5 would have presented that downgrade as a guaranteed net gain. Section 7.2 further asserted 'an E-Rank Master covers the whole scene on one', contradicting Section 7.3's authored 1/2/3/4/5 ladder: two sections of one profile stating different numbers for the same skill.
+
+**The repair.** Rank now grants, per Rank, **one further affected subject and one authored category** — a kind of reach no mastery level supplies — while mastery grants subjects alone on its 1/2/3/4/5 ladder. Both contribute to the count; the law is carried by the category, which no quantity of mastery ever reaches. A **scope ratchet** stores each scope skill's pre-ascension count as `scope_floor` and takes `max(formula, floor)`, so no ascension can reduce reach on either road. Section 7.3 gains E-D-C category ladders for all five skills; Section 7.5's offer now discloses the category gained and the ratcheted count.
+
+**The second defect.** Section 7.2 has cited 'mastery's +0.20' on the passive-multiplier axis since 1.12, but Section 7.4's closed-form list authored only damage/healing, reduction, and modifier-step categories — a passive multiplier was granted nothing per level anywhere in the profile. **Dagger Mastery has rendered +0.20 at Adept on an unwritten rule for the entire campaign.** Section 7.4 now authors **+0.05 per level**: `0.10 + (3 - 1) x 0.05 = 0.20`, exactly the stored value.
+
+**Nothing changed.** Every skill Rank, mastery level, counter, Stat, pool, item, price, and resolved outcome is identical before and after. Keen Sense stands E-Rank Expert covering Alexander plus three allies — the new formula returns `1 + 0 + (4 - 1) = 4`, what it already rendered. Dagger Mastery stands E-Rank Adept at +0.20. Every skill in the category table is at its native E-Rank, so no category grant is live and none is retroactive. No **scope** skill has ever ascended in this campaign — Rupture's E-Rank to D-Rank breakthrough is a damage skill and carries no scope axis — so every `scope_floor` initialises at **0** and none binds.
+
+**Counters added:** `skills.keen_sense.scope_floor`, `skills.exploit_pattern.scope_floor`, `skills.field_command.scope_floor`, `skills.resonance_extraction.scope_floor`, each baselined at 0 against this Event. `counter_deltas` is empty because initialisation at zero is the recording of an absence, not a change to a tracked value.
+
+**Not addressed here.** Stat Passives, the Flux Sight refactor, and NPC/monster Mana are Phase 2 of the same design and land at Profile 1.32; the design is recorded at `docs/superpowers/specs/2026-07-29-flux-sight-and-passive-unification-design.md`. The unsettled 2026-08-06 Daily Premium rotation carried forward at `EVT-000185` remains unsettled and is untouched by this adoption."
 ```

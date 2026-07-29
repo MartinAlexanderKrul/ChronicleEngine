@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000185
+  source: EVT-000186
   game_date: "2026-08-06 ~15:10 -05:00"
   real_date: "2026-07-29"
 role: canonical ledger
@@ -1123,3 +1123,11 @@ Claim separately at any time.
 - **Recorded with its boundary intact:** the further step (a mender who wants a supply has to be in the crew that earns it) is one he has plainly reached and has **not** said. He has proposed, agreed to and asked for nothing, and must not be played in a later scene as having volunteered.
 - Amended in `160_CAMPAIGN_CHRONICLE.md`, `130_NPCS_AND_FACTIONS.md` and `180_CURRENT_STATE.md`. **No state, roll, counter, item, pool or resolved outcome changes** — this completes a description from the transcript and authors no fiction.
 - **`900_CHECKPOINT_0037` is immutable and is not retrofitted**; its snapshot carries the shorter wording, and live canon governs where the two differ (Rules Section 13.2).
+
+**2026-07-29 — Gatefall World Rule Profile 1.31 adopted (`EVT-000186`; no fictional time consumed).**
+
+- **What was wrong.** Section 7.2's Rank Dominance Law was false on the scope axis. Rank bought +1 subject per Rank; mastery bought +4 across its track. An E-Rank Master Keen Sense reached five beneficiaries, a D-Rank Novice two — so ascending a scope skill *reduced* it, and Section 7.5 would have offered that as a guaranteed gain. Section 7.2 also stated a Keen Sense figure that contradicted Section 7.3 outright. Separately, Section 7.2 had cited a passive-multiplier mastery rate of +0.20 per track since 1.12 that Section 7.4 never authored — Dagger Mastery's +0.20 at Adept was running on an unwritten rule.
+- **What changed in the profile.** Rank grants one further subject and one authored category per Rank, mastery grants subjects alone, both add to the count with the law carried by the category, and a scope ratchet (`scope_floor`) holds the count at its pre-ascension value. Section 7.3 gains E–D–C category ladders for Keen Sense, Silent Step, Exploit Pattern, Field Command and Resonance Extraction. Section 7.4 authors +0.05 per level for passive multipliers. Section 7.5's offer discloses category and ratcheted count.
+- **What changed in live state.** Four `scope_floor` counters initialised at 0 (`keen_sense`, `exploit_pattern`, `field_command`, `resonance_extraction`), `profile_version` 1.30 → 1.31. **Nothing else.** No skill Rank, mastery level, counter, Stat, pool, item, or resolved outcome moved. Keen Sense stays E-Rank Expert at four beneficiaries; Dagger Mastery stays +0.20 at Adept.
+- **Repository allocation (2026-07-29).** Allocated `EVT-000186` in `system/ID_REGISTRY.md`. Updated `system/WORLDS_AND_CAMPAIGNS.md` to World Rule Profile 1.31. Advanced the live campaign binding to Profile 1.31 in `090_CAMPAIGN_STARTUP.md` and the Bindings-and-Versions header in `180_CURRENT_STATE.md` (a Task 4 gap: the version bump missed these two operational files). Rebased `tools/test_gatefall_economy_contract.ps1`, `tools/test_gatefall_quest_contract.ps1` and `tools/test_gatefall_recovery_contract.ps1` from their hardcoded Profile 1.30 pins to 1.31, matching the same version-pin bump every prior profile adoption commit (e.g. `805f107`) already carried out for these three files as a routine part of adoption. The economy contract's Keen Sense assertion was additionally corrected from `★★★☆☆ Adept` to `★★★★☆ Expert` — a stale assertion predating this adoption, since Keen Sense advanced to Expert in play at `EVT-000184`; canon was always correct, only the test was stale.
+- **Validators.** All six repository validators — `tools/validate_repository.ps1`, `tools/test_checkpoint_contract.ps1`, `tools/test_progression_audit_contract.ps1`, `tools/test_gatefall_economy_contract.ps1`, `tools/test_gatefall_quest_contract.ps1`, `tools/test_gatefall_recovery_contract.ps1` — run clean against the resulting state; the progression-audit contract gained a new assertion covering the ratchet's counter.

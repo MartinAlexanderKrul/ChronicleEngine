@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000170 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000181 |
+| Event | `EVT-` | Event | EVT-000185 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -320,6 +320,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000179 | Event | Gatefall: Pendragon: an E-Rank Instant-Dungeon Key bought for 500 g and opened from Owen's kitchen — archetype Overgrown Temple, 11 common / 2 elite / 1 boss; a partial Keen Sense read and a legendary tactical read establishing two Patterns |
 | EVT-000180 | Event | Gatefall: Pendragon: Owen clears eleven commons and an elite alone under relayed Field Command while Alexander takes no offensive action; +120 XP by Section 3.8 setup credit; 112 crystals sold to buy the Mana potion that restores a non-Bearer's well |
 | EVT-000181 | Event | Gatefall: Pendragon: the Checkpoint 0036 promotion barrier — skill-formation batch settlement returning `none`, with the open dangerous-scene audit for `EVT-000180` explicitly deferred to instance close |
+| EVT-000182 | Event | Gatefall: Pendragon: the Overgrown Temple shrine read establishing the garrison's twelve-metre anchor radius, and Owen's legendary kill on the second elite off the back of its arc; the shrine reacts to that death alone |
+| EVT-000183 | Event | Gatefall: Pendragon: two boss exchanges fought by Owen alone, the shrine revealed as a lid, a natural-99 Flash Step displacing the boss off it, and an exceptional footwork hold using Milo's drilled method without a single strike |
+| EVT-000184 | Event | Gatefall: Pendragon: Overgrown Temple cleared - Owen kills thirteen of fourteen, XP 760 to 870/1000, Keen Sense advances to Expert and Exploit Pattern to Adept at the dangerous-scene settlement, eleven deposit crystals lost unmined |
+| EVT-000185 | Event | Gatefall: Pendragon: the Checkpoint 0037 promotion barrier - batch settlement `none`, the EVT-000181 deferral discharged, the unsettled Daily Premium rotation carried forward a second checkpoint |
 
 ---
 

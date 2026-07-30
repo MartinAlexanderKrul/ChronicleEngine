@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000180 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000238 |
+| Event | `EVT-` | Event | EVT-000242 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -381,6 +381,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000236 | Event | Gatefall: Pendragon: final sale of all 58 Dungeon 2/3 crystals (net gold 12,726 to 13,151), downtime (time/phone checks, shower), and an out-of-character discussion setting a Runtime-authored Wade Bishop follow-up window (2026-08-13 to 2026-08-15) on `OBJ-23` |
 | EVT-000237 | Event | Gatefall: Pendragon: consolidated skill-mastery reconciliation - Dagger Mastery Expert to Master and Rupture Adept to Expert, with a terminology correction distinguishing this session's ordinary Section 7.4 mastery-level advances from Section 7.5 rank ascensions (none occurred) |
 | EVT-000238 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement covering `EVT-000231`-`EVT-000237`, explicit none for new gatefall.skill_formation candidates; final skill-state tally recorded |
+| EVT-000239 | Event | Gatefall: Pendragon: Owen's post-shift call - the Rogers Park two-bedroom named as Alexander's actual choice; three instant-dungeon clears disclosed to him |
+| EVT-000240 | Event | Gatefall: Pendragon: all 10 unspent Ability Points allocated - Vitality +6, Strength +4; maximum Health 172 to 196; Shrug Off D-Rank to C-Rank (threshold absorption) |
+| EVT-000241 | Event | Gatefall: Pendragon: the evening with Owen - Rogers Park agreed in principle, a rent-split framework named, and a confirmed posting to be sponsored on Owen's C-Rank card 50/50 with his half against the rent; crew and Gate questions deliberately deferred |
+| EVT-000242 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement for EVT-000239-EVT-000241, explicit none for gatefall.skill_formation; no skill activated and no die rolled across the span |
 
 ---
 

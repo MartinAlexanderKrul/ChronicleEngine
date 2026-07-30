@@ -65,7 +65,7 @@ Assert-True ($character -match 'profile_version: "1\.38"') "Live Gatefall charac
 # Hidden quest, for a reason unrelated to the rule.
 Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 2\s+capacity_total: 3') "Live D-Rank Multitask quest capacity is missing or incorrect."
 Assert-True ($character -notmatch 'analyst_bonus') "Retired analyst_bonus survives the Profile 1.33 migration."
-Assert-True ($character -match 'Flux Sight \[D-Rank\] . Stat Passive.+Uses \d+ . Perception \d+ . C-Rank at 44') "Live Flux Sight does not render its derived D-Rank progression."
+Assert-True ($character -match 'Flux Sight \[C-Rank\] . Stat Passive.+Uses \d+ . Perception \d+ . at its System-Rank-D ceiling') "Live Flux Sight does not render its derived C-Rank/System-Rank-D-ceiling state."
 Assert-True ($character -match 'Multitask \[D-Rank\] . Stat Passive.+capacity \*\*3\*\*.+Uses \d+ . Intelligence \d+ . C-Rank at 44') "Live Multitask does not render its derived D-Rank progression."
 Assert-True ($character -notmatch 'Rank-Sight . Passive . Stat-milestone skill') "Retired Rank-Sight survives as a live skill."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
@@ -334,13 +334,14 @@ $mainFollowUp = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeCha
 
 # These are a SNAPSHOT of the current loadout and Stats, not a rule -- they move whenever
 # effective Strength, a weapon, Dagger Mastery, or a mastery level changes. The formula
-# above is the invariant; these guard it against silent drift. Recomputed at the Profile
-# 1.30->1.36 chain adoption (EVT-000210): effective Strength 44, main power 11, off power 7,
-# Dagger Mastery +0.25 (chassis x1.00), Rupture x2.30, Twin Fang x1.30 at Adept.
-Assert-True ($mainDamage -eq 55) "Main-hand /system preview is $mainDamage, expected 55."
-Assert-True ($offDamage -eq 51) "Off-hand /system preview is $offDamage, expected 51."
+# above is the invariant; these guard it against silent drift. Recomputed at the
+# EVT-000222 Ability Point reallocation (Strength 34->36 base): effective Strength 45,
+# main power 11, off power 7, Dagger Mastery +0.25 (chassis x1.00), Rupture x2.30,
+# Twin Fang x1.30 at Adept.
+Assert-True ($mainDamage -eq 56) "Main-hand /system preview is $mainDamage, expected 56."
+Assert-True ($offDamage -eq 52) "Off-hand /system preview is $offDamage, expected 52."
 Assert-True ($ruptureDamage -eq 58) "Rupture /system preview is $ruptureDamage, expected 58."
-Assert-True (($mainDamage -eq 55) -and ($offFollowUp -eq 66)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 55 + 66."
-Assert-True (($offDamage -eq 51) -and ($mainFollowUp -eq 72)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 51 + 72."
+Assert-True (($mainDamage -eq 56) -and ($offFollowUp -eq 68)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 56 + 68."
+Assert-True (($offDamage -eq 52) -and ($mainFollowUp -eq 73)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 52 + 73."
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

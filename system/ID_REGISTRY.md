@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000180 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000229 |
+| Event | `EVT-` | Event | EVT-000230 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -372,6 +372,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000227 | Event | Gatefall: Pendragon: live 2026-08-09 06:00 Daily Premium rotation resolved (fabrication series Crimson) at the player's request; 2026-08-06/-07/-08 gap left unbackfilled by owner ruling |
 | EVT-000228 | Event | Gatefall: Pendragon: System shop session - sold 71 C-Rank and 14 E-Rank crystals, bought the Armory Key [D-Rank], swapped Legs/Feet gear E-Rank to D-Rank, sold seven retired/unused items; net gold 3,532 to 12,726 |
 | EVT-000229 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement (Profile Section 7.1) for EVT-000227-EVT-000228, explicit none for gatefall.skill_formation |
+| EVT-000230 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.39 - removes Section 7.1's Bearer duplicate-consumption reroll, an unbounded procedure superseded by NPC consumption, replacing it with an explicit intact-or-mastery choice; disambiguates the Bearer branch labels; clears the superseded frozen-1.30 Dagger Mastery gap note from the live skill line |
 
 ---
 

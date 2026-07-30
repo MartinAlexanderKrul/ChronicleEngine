@@ -192,6 +192,7 @@ subjects:
   - EVT-000227
   - EVT-000228
   - EVT-000229
+  - EVT-000230
 ```
 
 ---
@@ -5764,4 +5765,35 @@ progression_audits:
     domain: gatefall.skill_formation
     result: none
 description: "Promotion-barrier progression-batch-settlement (Profile Section 7.1) covering `EVT-000227`-`EVT-000228`: the Daily Premium rotation and the System shop session (crystal sales, Armory Key purchase, Legs/Feet gear swap, retired-gear liquidation). No sealed consequential-work or structured-practice note from this span opens or advances a `gatefall.skill_formation` candidate — pure shop administration, no die rolled against an opponent or obstacle. Explicit **none** recorded for `ENT-000125`. No fictional time of consequence consumed; this Event exists to discharge the checkpoint's audit obligation."
+```
+
+## EVT-000230 - Profile Adoption: Gatefall World Rule Profile 1.39
+
+```yaml
+id: EVT-000230
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-09 ~14:50 -05:00"
+  real_date: "2026-07-30"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-09 ~14:50 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.39, a compatibility-treatment advance over frozen 1.38. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged, ~14:50 on 2026-08-09.
+
+**Why this bump exists.** Section 7.1's Consumption Settlement carried a Bearer duplicate-consumption reroll: when the Bearer went to consume instruction teaching a technique he already knew at or above its `teaching_rank`, the System rerolled on the item's originating skill table until the result was unknown to him or was a genuine Rank upgrade. That rule was written before an unbound rune had ever actually taught a non-Bearer, and two things have since made it wrong. First, NPC consumption works and is demonstrably the better outlet — Owen Callahan learned Stone Skin at D-Rank from exactly such a rune (`EVT-000178`), so a duplicate already has real value that a re-draw only destroys. Second, the rule is **unbounded**: 'reroll until the result is unknown to him' has no terminating condition once the Bearer knows every technique on a skill table, and the intended `if no eligible result remains` exit is only reachable by exhausting a table the procedure never stops drawing from. Alexander is not near that state today, but the defect is in the rule, not in the campaign that happens not to have reached it.
+
+**What Section 7.1 now authors.** Nothing rerolls an item — not transfer, not consumption, not a holder who already knows what it teaches. An item teaching **below** what the Bearer knows still ascends the skill under Section 7.5's rune-ascension route, unchanged. An item teaching **at or above** what he knows presents one explicit choice, made once at consumption: **leave it intact**, the item not consuming and keeping its identity, `instruction_binding`, and provenance — the same intact branch the NPC and above-ceiling cases already used, and what preserves it as real instruction for an eligible awakened recipient; or **spend it for mastery**, consuming it for one qualifying dangerous-scene contribution toward one chosen known skill's current mastery level, exactly as the matching Mastery Rune or Mastery Book does. The second is the outlet for a `bearer-only` duplicate no other holder could ever consume. Both outcomes were already reachable under 1.38; 1.39 removes the re-draw between them and makes the choice explicit.
+
+**A wording repair carried in the same bump.** The Bearer branches were labelled 'known at a lower Rank' and 'known at the same or a higher Rank', which read equally well as the item's Rank or the Bearer's and had in fact been read both ways. They now read 'known **below** `teaching_rank`' and 'known **at or above** `teaching_rank`', and the section states outright which side of the comparison governs. No branch selects differently for any item; only the label changes.
+
+**What does not change.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changes. **No consumption-time reroll has ever been executed in this campaign**, so nothing traces to the removed rule and nothing unwinds. The one reroll in campaign history is a *generation*-time Daily Premium duplicate filter from the historical 2026-07-31 cycle (rune `d10=4` Stone Skin, known → `d10=5` Flash Step), taken under an earlier profile and untouched here; Profile 1.24 onward already fixes a Premium rune's identity at rotation. The banked `unbound-awakened` rune teaching Flash Step [D-Rank] (`EVT-000142`) keeps every stored field: against Alexander's C-Rank Flash Step it is now an intact-or-mastery choice rather than a reroll, and its preferred use — teaching an eligible awakened non-Bearer at D-Rank — was never the reroll branch and is unaffected. Immutable Profile 1.38-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.39 at readiness.
+
+**Ledger repair recorded under the same Event.** Dagger Mastery's `skills_known` line still carried the frozen-1.30 hold note declaring its Expert-tier multiplier unauthored and the skill an open authoring gap. That note was superseded by `EVT-000210`, and the ruling `skill_rulings.dagger_mastery_evt_000210` already said so — but the obsolete prose sat in the same line as the live values and kept being rendered back as a live gap in session summaries. It is struck here. **No number changes:** Expert stands at **+0.25** (each Quickknife ×0.75 → ×1.00), as it has since `EVT-000210`. The remainder of the track needs no authoring — Section 7.4's passive-multiplier ladder gives **+0.05 per mastery level** to Master (**+0.30**), and Section 7.2 gives **+0.25 per Rank** above native E beyond that. Mastery progress stands at **0/3 toward Master** and is correct: no dagger-involving qualifying scene has occurred since `EVT-000205`, and `successful_uses` alone never advances mastery (Section 7.4)."
 ```

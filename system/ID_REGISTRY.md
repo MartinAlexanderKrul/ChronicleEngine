@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000176 |
+| Entity | `ENT-` | Persistent Entity | ENT-000177 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000215 |
+| Event | `EVT-` | Event | EVT-000219 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -357,6 +357,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000213 | Event | Gatefall: Pendragon: Ada Reyes confirms the C-Rank harvest job, staging 2026-08-09 09:00; new Objective OBJ-24 opened |
 | EVT-000214 | Event | Gatefall: Pendragon: Checkpoint 0042 promotion barrier - explicit no skill-formation result; item appraisal boundary and EVT-000210 fictional timestamp reconciled |
 | EVT-000215 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.37 - versions the trigger-dispatch manifest and Tier-2 mandatory-first-qualifying-yield timing that a repository-tooling change had added to frozen 1.36 without a version bump, and repairs the Flux Sight/Analyst regression the same edit introduced |
+| ENT-000177 | Entity | Gatefall: Pendragon: Elias Ward, seller of the Gate Direction Finder at an unnamed surplus/pawn shop in the warehouse district |
+| EVT-000216 - EVT-000219 | Event | Gatefall: Pendragon: relay recovery after Checkpoint 0042 - Kesha visit and finder purchase, Owen reconciliation and overnight recovery, sixteenth daily completion and shared-home commitment, and the Checkpoint 0043 promotion barrier |
 
 ---
 

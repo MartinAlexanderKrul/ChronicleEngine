@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000180 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000230 |
+| Event | `EVT-` | Event | EVT-000238 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -373,6 +373,14 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000228 | Event | Gatefall: Pendragon: System shop session - sold 71 C-Rank and 14 E-Rank crystals, bought the Armory Key [D-Rank], swapped Legs/Feet gear E-Rank to D-Rank, sold seven retired/unused items; net gold 3,532 to 12,726 |
 | EVT-000229 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement (Profile Section 7.1) for EVT-000227-EVT-000228, explicit none for gatefall.skill_formation |
 | EVT-000230 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.39 - removes Section 7.1's Bearer duplicate-consumption reroll, an unbounded procedure superseded by NPC consumption, replacing it with an explicit intact-or-mastery choice; disambiguates the Bearer branch labels; clears the superseded frozen-1.30 Dagger Mastery gap note from the live skill line |
+| EVT-000231 | Event | Gatefall: Pendragon: standalone legendary Keen Sense recon (D-Rank Adept to Expert) preceding the Armory Key's consumption opening Instant Dungeon 1, archetype Flooded Mine (15 common/1 elite/1 boss, all D-Rank) |
+| EVT-000232 | Event | Gatefall: Pendragon: Dungeon 1 (Flooded Mine) cleared - an Exploit-Pattern ambush crosses Level 11 to 12 mid-fight, Exploit Pattern and Twin Fang advance Adept to Expert, the elite advances Stone Skin and Bulwark Practiced to Adept, the boss falls to a stealth opener and a Bulwark-sustained Overpower grapple break into a Twin Fang finish; boss drops Titan Legs [D-Rank] and Watcher Feet [D-Rank]; the 22-crystal mined deposit is lost uncollected when the instance closes on the boss kill |
+| EVT-000233 | Event | Gatefall: Pendragon: Dungeon 1 loot sold (17 Mana Crystal [D-Rank]) and a shop stop - Standard/Lesser Mana Potions bought and drunk to top off Mana, 2 more of each plus an Instant-Dungeon Key [D-Rank] bought |
+| EVT-000234 | Event | Gatefall: Pendragon: Instant Dungeon 2 (Frozen Gallery, 7 common/2 elite/1 boss) cleared and fully mined - both elites fall to Twin Fang criticals, the boss dies in the opening exchange to its own catastrophic-failure retaliation; loot 24 Mana Crystal [D-Rank], 3 Beast Core [D-Rank], a fresh Instant-Dungeon Key [D-Rank] |
+| EVT-000235 | Event | Gatefall: Pendragon: Instant Dungeon 3 (Shattered City, 11 common/2 elite/1 boss) cleared and fully mined, crossing Level 12 to 13 mid-fight; the boss dies in another opening-exchange kill and its rune drop teaches Silent Step [E-Rank] under the pre-1.39 duplicate-reroll sequence, resolved as originally rolled; Dagger Mastery's third dagger-involving qualifying scene this session banks, advancing Expert to Master |
+| EVT-000236 | Event | Gatefall: Pendragon: final sale of all 58 Dungeon 2/3 crystals (net gold 12,726 to 13,151), downtime (time/phone checks, shower), and an out-of-character discussion setting a Runtime-authored Wade Bishop follow-up window (2026-08-13 to 2026-08-15) on `OBJ-23` |
+| EVT-000237 | Event | Gatefall: Pendragon: consolidated skill-mastery reconciliation - Dagger Mastery Expert to Master and Rupture Adept to Expert, with a terminology correction distinguishing this session's ordinary Section 7.4 mastery-level advances from Section 7.5 rank ascensions (none occurred) |
+| EVT-000238 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement covering `EVT-000231`-`EVT-000237`, explicit none for new gatefall.skill_formation candidates; final skill-state tally recorded |
 
 ---
 

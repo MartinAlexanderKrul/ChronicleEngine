@@ -7,7 +7,7 @@ description: Use when the player types /length, /length <short|normal|long>, or 
 
 Thin dispatcher only — this skill exists so the harness recognizes `/length` (and its aliases `/narration`, `/verbosity`) as a registered command; it does not reimplement the procedure.
 
-Per `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, section **"Interaction Cadence (Response Length)"**:
+Per `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, section **"Interaction Cadence"** (the `/length` row of the Runtime Command Table carries the full register definition):
 - **No argument:** report the current level.
 - **`short`** — 1–2 paragraphs. **`normal`** (default) — 2–3. **`long`** — 4–5.
 

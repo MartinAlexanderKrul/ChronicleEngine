@@ -10,7 +10,19 @@ $indexPath = Join-Path $repo "system/WORLDS_AND_CAMPAIGNS.md"
 $residentPath = Join-Path $repo "docs/AI_GAMEPLAY_RESIDENT_CORE.md"
 $runtimePath = Join-Path $repo "engine/012_ENGINE_RUNTIME.md"
 $runtimeProfilePath = Join-Path $repo "docs/AI_GAMEPLAY_RUNTIME_PROFILE.md"
-$latestCheckpointPath = Join-Path $repo "campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0029/100_CHARACTER_SHEET.md"
+
+# Derived, not pinned. The latest checkpoint advances with every promoted save,
+# so a literal ordinal here goes stale every session and fails for a reason that
+# has nothing to do with the quest contract. `900_CHECKPOINT_0024` above is a
+# different case: it is a fixed historical capture this test deliberately checks
+# was never retrofitted, so it is correctly literal.
+$latestCheckpointName = (
+    Get-ChildItem -LiteralPath (Join-Path $repo "campaigns/gatefall_pendragon_001/saves") -Directory |
+        Where-Object { $_.Name -match '^900_CHECKPOINT_\d+$' } |
+        Sort-Object Name |
+        Select-Object -Last 1
+).Name
+$latestCheckpointPath = Join-Path $repo "campaigns/gatefall_pendragon_001/saves/$latestCheckpointName/100_CHARACTER_SHEET.md"
 
 function Assert-True {
     param(
@@ -34,7 +46,7 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8
 $runtimeProfile = Get-Content -LiteralPath $runtimeProfilePath -Raw -Encoding UTF8
 $latestCheckpoint = Get-Content -LiteralPath $latestCheckpointPath -Raw -Encoding UTF8
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.36\r?$') "Gatefall Profile 1.36 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.37\r?$') "Gatefall Profile 1.37 is not active."
 Assert-True ($profile -match 'The Bearer has \*\*1 concurrent non-daily quest slot by default\*\*') "Default non-daily capacity is not fixed at 1."
 Assert-True ($profile -match 'Multitask raises this to \*\*2 / 3 / 4\*\* at E / D / C-Rank') "Multitask capacity ladder is not fixed at 2/3/4."
 Assert-True ($profile -match '\| \*\*Stat Passive Rank\*\* \| \*\*E\*\* \| \*\*D\*\* \| \*\*C\*\* \| \*\*B\*\* \| \*\*A\*\* \| \*\*S\*\* \|') "Stat Passive Rank ladder is missing."
@@ -46,7 +58,7 @@ Assert-True ($profile -match 'Gate-clear milestone XP for the Bearer''s System R
 Assert-True ($profile -match 'A quest cannot complete from conduct that occurred before') "Pre-attachment retroactive completion is not prohibited."
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
-Assert-True ($character -match 'profile_version: "1\.36"') "Live Gatefall character was not migrated to Profile 1.36."
+Assert-True ($character -match 'profile_version: "1\.37"') "Live Gatefall character was not migrated to Profile 1.37."
 # Capacity is derived from Multitask's Rank and is the invariant under test. The quest
 # lists beside it are live state that changes with play, so they are deliberately NOT
 # pinned here -- doing so made this assertion fail on the first session that attached a
@@ -58,16 +70,22 @@ Assert-True ($character -match 'Multitask \[D-Rank\] . Stat Passive.+capacity \*
 Assert-True ($character -notmatch 'Rank-Sight . Passive . Stat-milestone skill') "Retired Rank-Sight survives as a live skill."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
-Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.36"') "Campaign startup does not bind Profile 1.36."
-Assert-True ($startup -match 'latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0029') "Campaign startup does not target the latest checkpoint."
-Assert-True ($startup -match 'Sections 7\.1, 7\.4, 8\.4, and 14\.3 before readiness completes') "Gatefall startup does not preload the skill and proactive-trigger contracts."
+Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.37"') "Campaign startup does not bind Profile 1.37."
+Assert-True ($startup -match "latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/$([regex]::Escape($latestCheckpointName))") "Campaign startup does not target the latest checkpoint on disk ($latestCheckpointName)."
+Assert-True ($startup -match 'readiness_headings:') "Gatefall startup has no bounded readiness selector list."
+Assert-True ($startup -match '"14\.3 Trigger Tiers') "Gatefall startup does not select the trigger manifest heading."
+Assert-True ($startup -match 'migration_index: worlds/gatefall/migrations/INDEX\.md') "Gatefall startup does not point restoration at the migration index."
 Assert-True ($startup -match 'require_profile_trigger_audit: true') "Gatefall startup does not require the proactive trigger audit."
-Assert-True ($index -match 'World Rule Profile 1\.36, frozen') "World index does not advertise frozen Profile 1.36."
+Assert-True ($index -match 'World Rule Profile 1\.37, frozen') "World index does not advertise frozen Profile 1.37."
 Assert-True ($profile -match 'SKILLS[^\r\n]+ACTIVE') "Gatefall /system template does not render an ACTIVE skills group."
 Assert-True ($profile -match 'SKILLS[^\r\n]+PASSIVE') "Gatefall /system template does not render a PASSIVE skills group."
 Assert-True ($profile -match 'contains every skill whose ledger entry carries a Mana cost') "Gatefall /system skills do not classify ACTIVE entries from canonical Mana cost."
 Assert-True ($profile -match 'contains every skill whose cost is `passive`') "Gatefall /system skills do not classify PASSIVE entries from canonical cost."
-Assert-True ($latestCheckpoint -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 1\s+analyst_bonus: 0\s+capacity_total: 2') "Latest checkpoint does not capture Multitask quest capacity."
+# The capacity values move with Multitask's Rank, and Profile 1.33 retired
+# analyst_bonus entirely. What matters is that the latest checkpoint captured the
+# derived total at all, and that it agrees with its declared parts.
+Assert-True ($latestCheckpoint -match '(?ms)non_daily_quests:\s+base_capacity: (?<base>\d+)\s+multitask_bonus: (?<multitask>\d+)\s+capacity_total: (?<total>\d+)') "Latest checkpoint does not capture Multitask quest capacity."
+Assert-True (([int]$Matches["base"] + [int]$Matches["multitask"]) -eq [int]$Matches["total"]) "Latest checkpoint capacity_total $($Matches['total']) does not equal base $($Matches['base']) plus Multitask $($Matches['multitask'])."
 
 Assert-True ($runtime -match '(?m)^## 2\.5 Profile-Declared Proactive Trigger Settlement\r?$') "Normative Runtime lacks proactive trigger settlement."
 Assert-True ($runtime -match 'does not wait for the player to request a') "Normative Runtime still permits player-prompted-only triggers."
@@ -75,8 +93,14 @@ Assert-True ($resident -match '(?m)^# Profile-Declared Proactive Trigger Audit\r
 Assert-True ($resident -match 'must execute it even when the player did not ask') "Resident trigger audit is not automatic."
 Assert-True ($resident -match 'before yielding every scene opening') "Resident trigger audit does not run at scene opening."
 Assert-True ($resident -match 'after a resolved exchange changes a crisis, threat, deadline, proximity, clue, or discovery') "Resident trigger audit does not run after trigger-relevant exchanges."
-Assert-True ($resident -match 'eligible Urgent quest produces its offer automatically') "Resident Gatefall Urgent behavior is not wired."
-Assert-True ($resident -match 'eligible Hidden quest attaches automatically') "Resident Gatefall Hidden behavior is not wired."
+Assert-True ($resident -match 'candidate_deltas.*intersect') "Resident trigger dispatch is not delta-selective."
+Assert-True ($resident -match 'An empty intersection performs no full-domain eligibility scan') "Irrelevant exchanges still permit a full trigger scan."
+Assert-True ($profile -match 'trigger_manifest_version: "1\.0"') "Gatefall trigger manifest is missing."
+Assert-True ($profile -match '(?ms)gatefall\.quest\.urgent:.*?timing: first_qualifying_yield.*?settlement: offer') "Urgent trigger dispatch is incomplete."
+Assert-True ($profile -match '(?ms)gatefall\.quest\.hidden:.*?identity:.*?concealed_object_or_objective_key.*?settlement: automatic_attachment') "Hidden trigger identity or settlement is incomplete."
+Assert-True (($profile | Select-String -Pattern 'capacity_notice_repeat: first_blocked_audit_then_capacity_change' -AllMatches).Matches.Count -eq 2) "Quest-capacity warning repeat policy is incomplete."
+Assert-True ($profile -match '(?ms)gatefall\.skill_formation:.*?dangerous_scene\.closed.*?promotion_barrier.*?settlement: progression_audit') "Skill-formation boundaries are absent from the manifest."
+Assert-True ($profile -notmatch 'Runtime picks the beat') "Gatefall still permits delayed Tier-2 trigger settlement."
 Assert-True ($runtimeProfile -match 'execute the resident Profile-Declared Proactive Trigger Audit before the first scene opens') "Returning-session procedure does not run the proactive audit."
 
 # --- Profile 1.27: concealed-canon supply (Sections 8.4.3, 8.4.5) ---
@@ -262,7 +286,9 @@ Assert-True ($recordedPostings -gt 0) "The Section 9.10 board is empty: Section 
 
 # --- Profile 1.34: /system standard-hit damage previews (Sections 6.2 and 15) ---
 
-Assert-True ($profile -match 'Required 1\.33.+1\.34 migration') "Profile lacks the 1.33 to 1.34 damage-preview migration."
+# Version history is owned by worlds/gatefall/migrations/, not the active profile (R7).
+$migration134 = Get-Content -LiteralPath (Join-Path $repo "worlds/gatefall/migrations/1.33_to_1.34.md") -Raw -Encoding UTF8
+Assert-True ($migration134 -match 'Required 1\.33.+1\.34 migration') "The 1.33 to 1.34 migration record lacks its damage-preview procedure."
 Assert-True ($profile -match 'standard-success raw damage before target reduction') "/system damage previews lack their target-independent standard/before-reduction definition."
 Assert-True ($profile -match 'Multi-hit skills render each separately resolved hit') "/system damage previews collapse separately reduced hits."
 Assert-True ($profile -match 'when either hand can open, both legal orders render') "/system damage previews do not require both legal Twin Fang orders."

@@ -12,6 +12,23 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-30 — Gatefall Profile 1.37: versioning the frozen-1.36 trigger-manifest edit
+
+**World authoring:** Gatefall World Rule Profile 1.36 → 1.37 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
+**Problem:** the runtime-audit-refactor work (Recommendations R6, R11) had written Section 14.3's trigger-dispatch manifest, its per-domain `ratification` blocks, and a Tier-2 timing correction directly into the text of frozen Profile 1.36, with no version bump — a Rules Section 14.6 violation (a frozen version's declared behavior does not change without one). The same edit also regressed the Tier-2 appraisal precondition to a retired "Analyst" reference predating Profile 1.33's absorption of Analyst into Flux Sight's B-Rank rung.
+**Profile:** content is unchanged from what was already live — the manifest and ratification declarations, and the Tier-2 line's "mandatory at the first qualifying yield" timing (Decision 081 ruling 2's already-ratified design) — now correctly versioned as 1.37, additive, with the Flux Sight/Analyst regression repaired in the same line.
+**Tools:** fixed a latent bug in `tools/extract_profile_migrations.py`'s `partition()` — it discarded the newly-authored history paragraph when a prior extraction's pointer paragraph already existed in the profile header, so any *second* run of the tool (the "run it after each adoption" workflow its own docstring describes) silently produced no output. Verified idempotent after the fix.
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `worlds/gatefall/migrations/1.36_to_1.37.md`, `worlds/gatefall/migrations/INDEX.md`, `worlds/gatefall/README.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/extract_profile_migrations.py`, `tools/test_gatefall_*_contract.ps1`
+**Audit:** closes the Rules 14.6 freeze violation flagged in review of the runtime-audit-refactor commit; see Decision 081's Consequences section for the correction note.
+
+## 2026-07-29 — Readiness budget enforced at the hard bound, not the warning line
+
+Owner ruling. `tools/test_runtime_context_budget.ps1` required Gatefall readiness to sit below **20,000** estimated tokens — the *warning* threshold — so a campaign growing in the ordinary way failed a gate the architecture does not set. The audit's own success metric (Section 22) is 30,000 before situation-specific fetches, and `system/RUNTIME_CONTEXT_BUDGETS.yaml` has always declared 20,000 as a warning and 30,000 as the failure.
+
+The test now asserts the **30,000 hard budget** and accepts `WARN` as a steady state. Nothing is loosened in what the tooling reports: the warning still appears in every measurement, the hard budget is enforced twice — by the measurement's own exit status and by an explicit bound — and the resident-core and bootstrap assertions are unchanged.
+
+Gatefall measures **23,024** at Profile 1.36 / Checkpoint 0041, with Alexander at Level 11, seventeen skills, and a live Hidden quest. That state is legitimately larger than when 20,000 was written. Returning below the warning line would mean bounding the Current State and character-sheet reads with selectors instead of whole-file — a design change, not a threshold change.
+
 ## 2026-07-29 — Gatefall Profile 1.36: Stat Passive Authoring Clamp
 
 **World authoring:** Gatefall World Rule Profile 1.35 → 1.36 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
@@ -60,6 +77,81 @@ Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Pos
 **Tools:** `validate_repository.ps1` requires a `scope_floor` counter for every known scope skill; `test_progression_audit_contract.ps1` asserts its absence is rejected; `test_gatefall_economy_contract.ps1`, `test_gatefall_quest_contract.ps1` and `test_gatefall_recovery_contract.ps1` rebased their hardcoded Profile 1.30 pins to 1.31 (a Task 4 gap — the version bump missed these three files, which every prior profile adoption had updated as routine), and the economy contract's stale Keen Sense `Adept` assertion was corrected to `Expert` to match canon already set at `EVT-000184`
 **Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/test_gatefall_economy_contract.ps1`, `tools/test_gatefall_quest_contract.ps1`, `tools/test_gatefall_recovery_contract.ps1`
 **Spec:** `docs/superpowers/specs/2026-07-29-flux-sight-and-passive-unification-design.md` (Phase 1 of 3)
+## 2026-07-28 — A quadratic removed from repository validation; micro-optimization exhausted
+
+`Get-LineNumber` resolved a line by taking `Substring(0, index)` and counting newlines in the copy — O(n) per lookup, once per identifier occurrence. The scan performs 5,403 of those across the live set against files up to 259 KB, so the term was quadratic in chronicle size on a gate that runs at every save. It now builds each file's newline offsets once and binary-searches them. Reference line numbers are also resolved lazily: the consumer deduplicates by identifier and reports on a handful, so resolving all 5,403 eagerly produced values almost none of which were read.
+
+Best-of-three, like for like: **3.74 s → 3.14 s, 16% faster.** Correctness is unchanged — the new lookup was checked against the old implementation across every offset of a sample, and the validator's own regression suite passes.
+
+**The remaining cost has no hot spot, and this is the useful result.** Six hypotheses were measured and five refuted: fixture copying (~4 s across the whole suite), process startup (parse 0.015 s, launch 0.179 s), the per-block helper functions (0.09 s + 0.08 s over the real block set), per-block field regexes (0.01 s over 492 blocks), and object-creation volume (0.1 s for 5,403 allocations). Reading every file and extracting all 541 blocks with nine field regexes costs 0.24 s in total. The residual ~3.1 s is distributed interpretation across roughly a thousand lines of PowerShell, not any one operation.
+
+That settles a question the audit left open. Incremental optimization of this scanner has now been tried and does not reach the twenty-second target; the path is porting the collection pass to the structured parser R10 introduced, which already reads all 492 blocks with a real YAML parser in 0.8 s including interpreter startup. Both `validate_repository.ps1`'s scan and `test_all.ps1`'s note record this so the next attempt does not re-derive it.
+
+## 2026-07-28 — Trigger state validated against the declared manifest
+
+Recommendation R6 shipped its trigger manifest and delta-selective dispatch without the behavioural fixtures its own acceptance criteria named. Decision 081 settled the timing contract, which unblocks them, and this closes the half that a script can actually reach.
+
+`validate_runtime_configuration.py` now checks stored non-daily quest state against the trigger domains the active profile declares. Every rule is read from the manifest — domain names, identity fields, blocked statuses — so no world or campaign string enters the validator. It enforces that one crisis identity holds one live opportunity, that a concealed record is attached once, that a settled opportunity is not offered again, that `capacity_total` agrees with its declared parts and is not exceeded, and that every stored entry routes to exactly one declared domain. `tools/test_trigger_state.ps1` covers seven cases, including a positive one proving two *distinct* live opportunities are still accepted.
+
+**One acceptance criterion is not covered, and is recorded as such rather than claimed.** "An irrelevant exchange performs no full eligibility scan" describes work the Runtime does *not* do inside a turn. It leaves no repository trace, so no fixture can prove it; it remains a resident-layer text assertion, which is weaker. The audit's required-fixture list is annotated with what has a suite, what is covered only at the stored-consequence level, and what has none.
+
+## 2026-07-28 — Structured object-block validation
+
+Recommendation R10's compatibility procedure ran in order, and it found real defects rather than confirming health. `tools/survey_object_blocks.py` parsed all 571 live fenced YAML blocks with a duplicate-key-rejecting loader: **27 failed a strict parse that the regex scanner had reported clean.**
+
+The worst was not on the recommendation's list. Two Events — `EVT-000136` and `EVT-000172` — embed a bare ``` fence inside their `description`, which by markdown rules closes the enclosing ```yaml block early. Every tool reading those Events saw a **truncated block**, and `validate_repository.ps1` passed them because the fields it checks all sit before the cut. Also found live: two unescaped inner quotes, three `aliases:` keys indented one level deeper than their siblings, four multi-paragraph values unparseable as written, and a duplicate `provenance_chain` key carrying two different values where a parser keeps one and silently drops the other.
+
+All eight live defects are repaired and no immutable checkpoint was touched. The six multi-paragraph prose values are now YAML literal block scalars, indented four spaces so an embedded fence cannot close the block; the conversion script verified each by parsing the result and comparing the recovered string before writing. The duplicate key is merged, losing neither statement. Every live campaign and world block now parses strictly — the 19 remaining survey failures are in `templates/`, which use placeholder syntax by design.
+
+`tools/validate_object_blocks.py` now validates all 492 live object blocks structurally: parse validity, no duplicate keys, exactly one object identifier per block, required fields typed rather than merely present, provenance as a mapping owning its own date fields, known status values, current schema version. It runs inside `validate_repository.ps1` as a composite gate, covering `/validate`, Tier 1, and the save path. `tools/test_object_block_structure.ps1` proves six defect classes are rejected.
+
+One rule from the recommendation was tested and rejected: "date fields in the wrong provenance mapping" cannot mean a top-level `game_date`. Under Decision 077 an Event correctly carries the fiction time it occurred at the top level alongside `provenance.game_date` for when the record was written; a gate rejecting that fails 131 correct live blocks. The enforceable check is that provenance owns its own dates.
+
+The existing regex scan is unchanged — this adds a structural floor beneath it rather than replacing it, so R9's performance target is not yet delivered.
+
+## 2026-07-28 — Validator scan cost measured; R9's performance diagnosis corrected
+
+The audit attributed the regression suite's runtime to fixtures copying the multi-megabyte save tree. Measurement refutes it. Pruning 28 MB of binary assets and all checkpoint history from fixtures moved the suite by roughly four seconds, and a per-file filtered copy proved *slower* than a bulk one. Script parse is 0.015 s and a PowerShell launch 0.179 s against a 3.4 s execution, so hosting validation in-process — the other prescribed fix — would save about 0.19 s per call.
+
+What does drive it: `validate_repository.ps1` runs roughly fifty regular expressions over multi-hundred-kilobyte live ledgers on every invocation. A 127-file fixture costs the same as the full repository because it still holds the same large ledgers; truncating three of them from 2.43 MB to 1.77 MB cut the scan from 3.75 s to 1.6 s. Suite time is ~35 validator invocations at ~3.5 s each.
+
+This has a consequence beyond the test suite: **the production gate degrades as the campaign grows.** `validate_live.ps1` is 5.6 s today, runs on every save, and scales with the chronicle. It also means R9's performance half and R10 are one piece of work — structured parsing is what makes the scan cheap, and optimizing the regex scanner first would mean optimizing something R10 replaces.
+
+Delivered: `validate_repository.ps1` gains `-CoreOnly`, skipping the three composite gates it otherwise spawns as separate processes, each already covered by its own suite. `tools/lib/FixtureRepository.ps1` gives the suite one fixture builder that omits binary assets and, by default, checkpoint history — a test needing history asks for it and fails loudly otherwise rather than passing vacuously. Suite total 150 s → 146 s; the twenty-second target is not met and is sequenced behind R10.
+
+## 2026-07-28 — Tiered validation commands
+
+Recommendation R9's command half is implemented. `tools/validate_live.ps1` (Tier 1) runs repository structural validation and runtime-configuration validation together; `tools/validate_checkpoint.ps1` (Tier 2) adds the checkpoint form, lineage, and index-synchronization contract; `tools/test_all.ps1` (Tier 3) runs the development regression suite and is explicitly not a save gate.
+
+This removes a real ambiguity rather than adding a wrapper. The Save Algorithm named `validate_repository.ps1`, the save skill also required the checkpoint contract, `new_checkpoint.ps1` invoked its own pair, and `/validate` ran a third combination — four callers with four answers to "what does validated mean". README, the Runtime Profile Save Algorithm, the Gameplay Start Guide, `docs/INDEX.md`, and both `/validate` skill copies now name the Tier 1 gate.
+
+**The performance half is not done and the targets are not met.** Tier 2 runs in 6.5 s against an under-five-second target; Tier 3 runs in 150 s against an under-twenty-second target, worse than the 57.5 s audit baseline because the suite has grown while still copying the whole repository per fixture. `test_all.ps1` reports its own total and warns when it exceeds the target, so the gap is visible at every run instead of assumed away. Tier 2 also takes no `-Campaign`/`-Checkpoint` argument, because `test_checkpoint_contract.ps1` is repository-wide and the wrapper does not fake a scope it cannot honour.
+
+## 2026-07-28 — Progression ratification policy moved to the World Rule Profile
+
+Recommendation R11's hard-code is removed. `tools/validate_repository.ps1` carried the literal candidate key `dimensional_weapon_control`, the literal domain `gatefall.skill_formation`, the evidence threshold `3`, and the two settlement Event kinds — one campaign's facts compiled into an engine-general validator, against the audit's own metric that no validator contain a hard-coded campaign candidate key. Both failure messages also still cited **Profile 1.22** while the active profile is **1.30**.
+
+Gatefall's trigger manifest now declares a `ratification` block per progression domain: `evidence_threshold`, `pre_authored_result_keys`, and `settlement_event_kinds`. The validator reads that policy from every world's profile and applies it generically; it now contains no world or campaign identifier in any code path. Authoring a second pre-authored result is a profile edit.
+
+`tools/test_progression_policy.ps1` proves the three claims that matter: a lowered threshold changes enforcement, a newly declared pre-authored key is enforced with no change under `tools/`, and a profile declaring no ratification policy stands the domain checks down rather than falling back to a built-in rule. That last case earned its place immediately — the first implementation used a singleline regex, so one domain body swallowed every domain after it, the policy resolved under the wrong key, and both checks were silently skipped while validation still reported PASS. A validator that quietly stops checking is a worse failure than the hard-code it replaced.
+
+## 2026-07-28 — Current State returned to its declared role
+
+Recommendation R14 is applied to `campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md`, which had grown from roughly 20 KB to **50 KB** and become 45% of the Gatefall readiness surface. Under R14's ownership rule the Chronicle owns canon-bearing Event definitions, the migration records own each adoption's procedure and boundary, the objectives and world ledgers own their own records, and Current State owns **only current operational anchors, open pressures, and the restore pointer**.
+
+Eleven sections of per-Event narrative and per-profile-adoption prose were removed, plus the accumulated version history inside `Bindings and Versions` and four superseded trigger-audit spans. **Nothing was removed before it was verified present in its owning record:** all twenty-seven Events resolve to substantive chronicle entries totalling 74.8 KB — in every case fuller than the Current State restatement — with `OBJ-12`–`OBJ-17` in the objectives ledger, the concealed-discovery records and Gate board in the world ledger, and the adoption procedures in `worlds/gatefall/migrations/`. The open-threads paragraph is current pressure rather than history and was promoted to its own `Open Threads` section.
+
+The file falls **50,386 → 15,501 bytes**. Gatefall readiness falls **27,732 → 19,011 estimated tokens**, back below the 20,000 warning threshold and only 599 tokens above the pre-merge baseline despite five profile adoptions and three checkpoints of campaign growth. Every measured surface now passes. No canonical fact, mechanic, Event, objective, relationship, or immutable checkpoint changes — this moves duplicated prose to the record that owns it.
+
+## 2026-07-28 — Gatefall migration history extracted from the active rule profile
+
+Recommendation R7 is implemented as Gatefall world authoring. The version history that transformed Profile 1.1 forward now lives in `worlds/gatefall/migrations/` — twenty-nine records, one per edge, declared by `INDEX.md`. `206_WORLD_RULE_PROFILE.md` keeps current mechanical law, its freeze status, and a pointer to the chain.
+
+Every rule sentence was relocated **verbatim** by script and machine-verified: each source paragraph appears byte-identically in exactly one record, across both the original 1.1–1.25 extraction and the 1.25–1.30 extension. The profile drops roughly **31 KB (about 7,800 estimated tokens)** off the head of the file consulted for every rule lookup. Restoring a capture taken under Profile *V* now reads the index plus only the records from *V* forward; a current rule lookup reads none of them.
+
+Each record carries routing metadata only — source/target, classification, fictional-time cost, and the stored paths its prose already names. Preserved state and procedure stay in the verbatim prose, which remains the authority. `fictional_time_cost` records `unstated` wherever the source declares no cost; two plausible-looking phrases were checked against their sentences and rejected as false positives rather than asserted.
+
+`tools/validate_runtime_configuration.ps1` now proves the chain is contiguous, acyclic, non-branching, fully declared in both directions, agreed between each record's YAML and its index row, and terminating at the active profile version — and fails if migration prose reappears in the active profile. Campaign startup declares `migration_index`, which the same gate resolves. `tools/test_migration_chain.ps1` covers eight defect classes. No Engine Rule, Data Model, world mechanic, canonical campaign fact, or immutable checkpoint changes.
 
 ## 2026-07-28 — Promotion-barrier settlement enforced
 
@@ -110,6 +202,43 @@ World authoring, milestone 0.3.5. Lesser and Standard Healing/Mana potions resto
 ## 2026-07-27 — Gatefall Profile 1.24 System economy and instant-dungeon deposits
 
 World authoring, milestone 0.3.5. Rank-bearing Daily Premium offers cost 125% of their ordinary same-Rank anchor rather than 200–250%; Section 17 states explicitly that every instant dungeon carries Section 11.1's mineable deposit. Migrating for unpurchased offers in the live cycle only; no probability, item identity, or completed transaction changed.
+## 2026-07-27 — Transactional checkpoint creation
+
+Recommendation R8 is implemented without changing Decision 072's complete-snapshot form. `tools/new_checkpoint.ps1` and its Python core accept a Version 1.0 mutation receipt only after semantic promotion and live read-back. The receipt binds every promoted target to its repository path, SHA-256, and read-back result; Chronicle, Changelog, and Current State remain mandatory played-session targets.
+
+The helper exclusively owns the mechanical checkpoint phase: a repository-scoped writer lock, expected-parent verification, monotonic four-digit ordinal allocation, fixed eight-ledger copying and byte comparison, structured manifest generation, startup/Current State pointer updates, generated index refresh, current production gates, and final read-back. Failures roll pointer/index bytes back and demote any promoted directory to recoverable non-canonical staging. Exact gate output is followed by a compact `CHECKPOINT_RECEIPT_JSON` result.
+
+`tools/test_transactional_checkpoint.ps1` covers a greater-than-130 KB unchanged NPC ledger, stale receipt hashes, stale parent refusal, concurrent-lock refusal before allocation, successful nine-file capture, and final-gate rollback. Linked-worktree regression exposed and repaired a CRLF-sensitive progression-audit participant match plus one LF-only fixture mutation. Runtime Profile **1.45 → 1.46**, Gameplay Start Guide **2.18 → 2.19**, and README **1.13 → 1.14** route saves through the helper. No Engine Rule, Data Model, Save Format, world mechanic, canonical campaign fact, or immutable checkpoint changes.
+
+## 2026-07-27 — Minimal generated worlds-and-campaigns index
+
+Recommendation R5 is implemented as a refinement of Decision 071. `system/WORLDS_AND_CAMPAIGNS.md` shrinks from roughly 38.5 KB of tables plus duplicated checkpoint narrative to a deterministic **2.7 KB** pre-selection index: one world table, one campaign table, four explicit spoiler-safe caveats, and maintenance metadata.
+
+`tools/generate_runtime_index.ps1` derives world versions/status from world or active-profile metadata; campaign/world binding, status class, and short caveat from startup configuration; protagonist display name from the live Character alias; and latest checkpoint/capture date from the startup binding and save manifest. `-Check` requires byte-for-byte equality, and repository validation runs it for generated indexes. Direct row edits, missing/overlong caveats, and nondeterministic output have regression coverage. Save operation plans now include index regeneration after the new manifest exists.
+
+Runtime Profile **1.44 → 1.45** documents generated listing ownership and the post-manifest refresh/check. Canonical campaign history remains in Current State, save indexes/manifests, chronicles, and changelogs; no canon, mechanic, immutable checkpoint, Engine Rule, or Data Model changes.
+
+## 2026-07-27 — Gatefall readiness below the context warning threshold
+
+Runtime Profile **1.43 → 1.44** and the operation-plan helper now distinguish preloaded Object fields from exact named `available_on_demand_selectors`. Gatefall keeps identity, live pools, temporal state, pending rewards, progression ratification candidates, and quest state in readiness. Stats, effective stats, equipment, skills, progression counters/baselines, gold, and shop holdings are explicitly deferred to `action_resolution`, `progression_settlement`, or `system_shop` dispatch and must be fetched before those operations resolve.
+
+Gatefall readiness now loads the exact Urgent and Hidden eligibility subsections rather than their shared parent, and defers Acquisition and Skill Mastery until a matching trigger or affected action. The measured readiness surface falls from **28,734 to 18,393 estimated tokens**, below both the 30,000 hard failure and 20,000 warning thresholds. The full Character Sheet and World Rule Profile remain authoritative and available on demand; no canonical fact, mechanic, campaign ledger, or immutable checkpoint changes.
+
+## 2026-07-27 — Enforced runtime context budgets and compact resident core
+
+Recommendations R1 and R2 from the AI runtime-load audit are implemented. Resident Core **1.11 → 1.12** is reduced from 51,040 to roughly 13,800 UTF-8 bytes while preserving its agency, resolution, information, proactive-trigger, settlement, characterization, and context-preservation enforcement points. Runtime Profile **1.42 → 1.43** declares measurable loading budgets.
+
+`system/RUNTIME_CONTEXT_BUDGETS.yaml` now owns the deterministic estimator, exact bootstrap selectors, thresholds, and baselines. `tools/measure_runtime_context.ps1` reports bytes, words, estimated tokens, baseline deltas, and exact contributors for resident, bootstrap, every campaign readiness plan, save, and declared diegetic operations; hard overages fail repository validation. The regression fixture proves that adding the whole fetched Runtime Profile to bootstrap exceeds the gate and names that file.
+
+README bootstrap now loads only its governing section and the two inventory tables before yielding. Gatefall's protagonist readiness selector is field-bounded: historical condition and Daily Premium history remain available on demand instead of entering every resume. Its readiness surface falls from roughly 48,400 to 28,700 estimated tokens—still correctly reported as a warning, but below the 30,000 hard limit. No Engine Rule, Data Model, world mechanic, canonical campaign fact, or immutable checkpoint changes.
+
+## 2026-07-27 — Derived operation plans and Gatefall trigger dispatch manifest
+
+Runtime Profile **1.41 → 1.42** adds a read-only operation-plan helper that derives bounded whole-file reads and exact selectors from existing campaign startup metadata for readiness, save, and declared diegetic commands. The helper validates every path, heading, anchor, and Object selector; it never copies rules or canonical state into operational metadata. Gatefall continue plans select exact recovery, progression, quest, and trigger sections without preloading its full profile, chronicle, changelog, or NPC ledger. Reikon `/system` resolves its existing canonical profile anchor and live-read set through the same generic helper.
+
+Resident Core **1.10 → 1.11** replaces duplicated Gatefall-specific trigger prose with delta-selective profile dispatch. Gatefall Profile 1.24 gains a structured operational trigger manifest and corrects Tier-2 timing to the first qualifying yield, conforming the profile to the already-normative, non-overridable Runtime Section 2.5 settlement obligation. This is a synchronization correction rather than a new behavior or profile-version advance: presentation phrasing remains discretionary, eligibility remains owned by Sections 7.1 and 8.4, and no canonical field, campaign outcome, or immutable checkpoint changes.
+
+The runtime-configuration gate now validates trigger-manifest structure, unique eligibility headings, exact readiness selectors, identity/repeat fields, and delta uniqueness. Regression fixtures cover stale headings, duplicate deltas, bounded Gatefall readiness, Reikon `/system`, both Verra campaigns, deterministic output, save dispatch, and undeclared commands. Engine 0.2.0 and Data Model 0.1.5 remain unchanged; the work is a Decision 069 refinement plus Gatefall world-authoring correction owned by Version 0.3 milestone 0.3.5.
 
 ## 2026-07-27 — Gatefall Profile 1.23 System-interface skill grouping
 

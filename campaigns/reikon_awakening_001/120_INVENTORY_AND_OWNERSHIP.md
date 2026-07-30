@@ -133,7 +133,7 @@ type: Resource
 subtype: consumable-stack
 scope: personal
 lifecycle: active
-  aliases:
+aliases:
   - name: "Daedalus's mana potions"
     quality: current
 canonical_state:
@@ -269,7 +269,7 @@ type: Resource
 subtype: consumable-stack
 scope: personal
 lifecycle: active
-  aliases:
+aliases:
   - name: "Daedalus's standard healing potions"
     quality: current
 canonical_state:
@@ -325,7 +325,7 @@ type: Resource
 subtype: medical-consumable
 scope: personal
 lifecycle: active
-  aliases:
+aliases:
   - name: "Amber wound dressing salve"
     quality: current
 canonical_state:

@@ -1,0 +1,93 @@
+context_budget_version: "1.0"
+estimator:
+  method: utf8_bytes_divided_by
+  divisor: 4
+  rounding: ceiling
+
+surfaces:
+  resident:
+    warning_tokens: 6000
+    failure_tokens: 8000
+    baseline_tokens: 3453
+    contributors:
+      - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
+        whole_file: true
+        reason: per-turn invariant card
+
+  bootstrap:
+    warning_tokens: 12000
+    failure_tokens: 16000
+    baseline_tokens: 2499
+    contributors:
+      - file: README.md
+        heading: Play Chronicle Engine — the `/ChronicleEngine` command
+        reason: bootstrap procedure and complete command catalog
+      - file: system/WORLDS_AND_CAMPAIGNS.md
+        markdown_table_under: Worlds
+        reason: rendered world inventory
+      - file: system/WORLDS_AND_CAMPAIGNS.md
+        markdown_table_under: Campaigns
+        reason: rendered campaign inventory
+
+  readiness:
+    warning_tokens: 20000
+    failure_tokens: 30000
+    # Growth beyond the allowance fails until the baseline is re-recorded. See
+    # the note at the foot of this file for why a rate governs these surfaces
+    # rather than a fixed ceiling alone.
+    growth_allowance_percent: 15
+    baseline_tokens_by_campaign:
+      gatefall_pendragon_001: 23891
+      prototype_alpha: 7430
+      prototype_beta: 7943
+      reikon_awakening_001: 11755
+    include_resident: true
+    derive_operation: continue
+
+  fetched_operation:
+    # 12,000 governs a single fetched rules operation, which is what
+    # Recommendation R1 sized this for. Gatefall's bare `/system` is a different
+    # thing: Profile Section 15.1 renders the whole Bearer at once by design, so
+    # it is governed by its own baseline and the ratchet rather than by a ceiling
+    # it can never meet. Every focused view sits inside 12,000 with room.
+    warning_tokens: 12000
+    failure_tokens: 12000
+    growth_allowance_percent: 15
+    exempt_from_failure_ceiling:
+      - gatefall_pendragon_001:/system
+    baseline_tokens_by_operation:
+      gatefall_pendragon_001:save: 2486
+      gatefall_pendragon_001:/system: 22904
+      gatefall_pendragon_001:/system skills: 3216
+      gatefall_pendragon_001:/system shop: 6421
+      gatefall_pendragon_001:/system quests: 2315
+      gatefall_pendragon_001:/system equipment: 1061
+      gatefall_pendragon_001:/system inventory: 11302
+      reikon_awakening_001:/system: 8985
+    subdivision_message: fetched operation requires a narrower selector
+
+# Per-entry budgets for collections that legitimately grow in length.
+#
+# A total cannot distinguish earned growth from bloat: seventeen skills should
+# cost seventeen skills' worth of render data, and when `skills_known` also
+# carried a per-use activation log it cost four times that at the same entry
+# count. Dividing by the entry count separates the two — the figure is flat when
+# the field holds only what it should, and climbs as soon as narrative starts
+# accumulating inside it.
+per_unit_budgets:
+  - name: gatefall_skills_known
+    file: campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+    field: canonical_state.system_state.skills_known
+    max_bytes_per_entry: 700
+    reason: >-
+      An entry holds the `/system` render line, its counters, and the sentence
+      naming the most recent mastery advance. Per-use logs and roll-by-roll
+      narrative belong in the chronicle, which already records them.
+
+  - name: gatefall_tracked_counters
+    file: campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+    field: canonical_state.system_state.tracked_counters
+    max_bytes_per_entry: 220
+    reason: >-
+      A counter is a path, a baseline, the Event that set it, and a current
+      value. Prose explaining how it got there belongs in the chronicle.

@@ -13,9 +13,9 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000214
+  source: EVT-000215
   game_date: "2026-08-08 ~15:15 -05:00"
-  real_date: "2026-07-29"
+  real_date: "2026-07-30"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -1201,3 +1201,11 @@ Claim separately at any time.
 - **Promotion reconciliation** (`EVT-000214`): the item-function read stands, but the transcript's two Rank labels and hidden-origin certainty are withdrawn as beyond D-Rank Keen Sense. Reliable item Rank/full appraisal requires Flux Sight at B-Rank (Profile Sections 4.4 and 7.3). No trade, counter, or resolved roll changed. `EVT-000210`'s fictional timestamp corrected from ~21:40 to ~13:15; the adoption consumed no fictional time.
 - Repository allocation: `EVT-000211`-`EVT-000214`. No new entities or relationships; Ada Reyes (`ENT-000134`) and Walt Adamik (`ENT-000147`) situations updated.
 - **Unchanged:** every resolved roll, kill, loot, balance and quest outcome. Level 11, System Rank D, at Checkpoint 0041's state. The four checkpoints remain immutable Profile 1.30 captures.
+
+**2026-07-30 — Gatefall World Rule Profile 1.37 adopted (`EVT-000215`; no fictional time consumed).**
+
+- **What was wrong.** A repository-tooling change on 2026-07-30 added Section 14.3's trigger-dispatch manifest (`trigger_manifest_version`, the `gatefall.quest.urgent`/`gatefall.quest.hidden`/`gatefall.skill_formation` domains and their `ratification` blocks) and a Tier-2 timing correction directly into the text of frozen Profile 1.36, with no version bump — a Rules Section 14.6 violation, since a frozen version's declared behavior may not change without one. The same edit also regressed the Tier-2 appraisal precondition to a retired 'Analyst' reference predating Profile 1.33.
+- **What changed in the profile.** Version bumped to 1.37, classified additive: the manifest content is unchanged from what was already live, now correctly versioned; the Tier-2 line keeps its **mandatory at the first qualifying yield** timing (Decision 081 ruling 2's already-ratified design) and has its appraisal precondition restored to **Flux Sight is B-Rank or higher**.
+- **What changed in live state.** `profile_version` 1.36 → 1.37. **Nothing else.** No Urgent offer, Hidden pointer, or skill-formation candidate is issued or reinterpreted retroactively; every settled record in this campaign stands exactly as resolved. `dimensional_weapon_control` remains the sole pre-authored progression result at evidence threshold 3. No `/system` row changes.
+- **Repository allocation (2026-07-30).** Allocated `EVT-000215` in `system/ID_REGISTRY.md`. Advanced the profile version in `090_CAMPAIGN_STARTUP.md`, `100_CHARACTER_SHEET.md`, `180_CURRENT_STATE.md`, `worlds/gatefall/README.md`, `system/WORLDS_AND_CAMPAIGNS.md` (regenerated), and the three `tools/test_gatefall_*_contract.ps1` pins. Extracted the 1.36 → 1.37 compatibility treatment to `worlds/gatefall/migrations/1.36_to_1.37.md` via `tools/extract_profile_migrations.py` (fixing a latent bug in that tool's re-run path along the way — it discarded new prose when a prior extraction's pointer paragraph already existed in the header).
+- **Validators.** All Tier 1/2/3 gates run clean against the resulting state.

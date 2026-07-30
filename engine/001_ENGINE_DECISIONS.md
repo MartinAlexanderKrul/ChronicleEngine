@@ -3872,6 +3872,44 @@ The failure was structural. Section 7.1 said the technique *may* be ratified but
 
 ---
 
+## Decision 081 — Runtime Load Audit: Owner Rulings on the Five Open Questions
+
+**Status:** Accepted
+**Date:** 2026-07-28
+**Related Sections:** `docs/430_RUNTIME_PERSISTENCE_VALIDATION/437_AI_RUNTIME_LOAD_AND_VALIDATION_RECOMMENDATIONS.md` Sections 22 and 24; `system/RUNTIME_CONTEXT_BUDGETS.yaml`; `engine/012_ENGINE_RUNTIME.md` Section 2.5; `worlds/gatefall/206_WORLD_RULE_PROFILE.md` Section 14.3 and `worlds/gatefall/migrations/`; Decisions 069, 071, 072, 074, 080
+
+### Context
+
+The runtime load, trigger, and validation audit closed with five questions it explicitly refused to answer from the draft alone. Four of its recommendations landed while those questions stayed open, which meant shipped behaviour rested on unratified assumptions. This decision settles all five. Every ruling confirms current behaviour or defers work; none requires a rebuild.
+
+### Decision
+
+**1. The declared context budgets stand.** Resident gameplay core warns at 6,000 and fails at 8,000 estimated tokens; bootstrap warns at 12,000 and fails at 16,000; campaign readiness warns at 20,000 and fails at 30,000; a single fetched rules operation is capped at 12,000. The thresholds are ratified as written in `system/RUNTIME_CONTEXT_BUDGETS.yaml`. Evidence for keeping them: the gate caught a merge that would have quadrupled the resident layer to 13,691 tokens, and it caught the growth of a live campaign ledger to 45% of a readiness surface. Both were silent failures that no other gate detected.
+
+**2. Tier-2 triggers fire at the first qualifying yield.** Eligibility becomes mandatory at the first qualifying yield after all conditions hold. The Runtime chooses presentation phrasing, never whether or when to fire after the boundary. The alternative — permitting delay against a persisted pending opportunity — is **rejected**: it buys narrative placement at the cost of a durable to-do list that can be lost at a promotion barrier, and the loss would be undetectable. This confirms the contract already implemented in Gatefall Profile Section 14.3 and Runtime Section 2.5; no behaviour changes.
+
+**3. Checkpoint integrity hashes do not enter Version 0.3.** Recommendation R12 changes the canonical manifest contract under Decision 072 and is refused as a freeze exception. The gap is acknowledged: immutability is a rule enforced at write and read-back, not a mechanically persistent fact thereafter. It is deferred to a version boundary rather than applied mid-campaign to a live prototype with thirty-five promoted checkpoints.
+
+**4. Migration records remain a Gatefall convention.** The thirty-five-record chain under `worlds/gatefall/migrations/` is world authoring, not an engine-general mechanism. One world's successful use is not evidence the shape fits Reikon or Verra, whose version histories are shorter and differently structured. Generalization requires a second world adopting it voluntarily first; only then does the question of an engine-general contract become answerable on evidence.
+
+**5. The checkpoint duplication problem belongs to a later persistence version.** Recommendation R13's disposition is ratified. Complete snapshots under Decision 072 are retained for Version 0.3 despite their cost — Gatefall stores roughly 9.3 MB across its save history and copies a 259 KB chronicle on every promotion. Content-addressed storage, deduplicated blobs, delta checkpoints, and append-only event logs all change the restoration contract and create new failure modes. Human-readable, independently restorable snapshots are worth their disk cost while the engine is still the thing being validated.
+
+### Consequences
+
+- **No implementation follows from rulings 1, 2, 3, or 5.** They ratify current behaviour or record a refusal, and exist so that shipped behaviour has a decision behind it.
+- **Ruling 2 unblocks the missing trigger fixtures.** With the timing contract settled, the audit's required behavioural cases — exactly one Urgent offer per crisis, no full eligibility scan on an irrelevant exchange, and no duplicate Hidden attachment on re-entry — become buildable. They remain **unbuilt**, and Recommendation R6 shipped its trigger manifest without them.
+- **Correction (2026-07-30):** the trigger manifest and Tier-2 timing correction this ruling describes were originally written directly into frozen Gatefall Profile 1.36's text, with no version bump — a Rules Section 14.6 violation this decision's own "no behaviour changes" framing did not catch, since the framing was true of the *design* question but not of how it landed in the file. Corrected as Gatefall Profile 1.37 (`EVT-000215`); the content is unchanged, now properly versioned.
+- **Ruling 4 leaves a documentation obligation.** The migration-record schema is currently described only by its own index and the records themselves. A world adopting it has no engine-general contract to read.
+- **Rulings 3 and 5 are revisitable at a version boundary,** not reopened by ordinary play. Neither blocks any current milestone 0.3.5 work.
+
+### Alternatives Considered
+
+- **Answer the questions implicitly by shipping.** Rejected. Four recommendations already landed against unratified assumptions; leaving the questions open would make the next merge re-litigate them, as this session's resident-core conflict nearly did.
+- **Accept checkpoint hashes now as a small additive field.** Rejected. It is additive in the manifest but not in the contract: restore must then refuse a mismatch, which is a behaviour change to the restoration path during live prototype play.
+- **Promote migration records to an engine mechanism immediately.** Rejected under Decision 069. It would make a world-authoring convention mandatory for every world on a single world's evidence.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

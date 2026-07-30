@@ -9,19 +9,53 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.36"
+world_rule_profile: "Gatefall World Rule Profile 1.37"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
 latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0042
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
+selection_caveat: "Active campaign; resumable from its latest checkpoint."
 customization:
   name_change: new-instance-only
   background_change: new-instance-only
   different_protagonist: new-instance-only
   preserve_baseline: true
 source_loading:
+  protagonist_readiness_fields:
+    - canonical_state.age
+    - canonical_state.location
+    - canonical_state.appearance
+    - canonical_state.personality
+    - canonical_state.aspiration
+    - canonical_state.system_state.profile_version
+    - canonical_state.system_state.onset_event
+    - canonical_state.system_state.class
+    - canonical_state.system_state.title
+    - canonical_state.system_state.level
+    - canonical_state.system_state.xp
+    - canonical_state.system_state.health
+    - canonical_state.system_state.mana
+    - canonical_state.system_state.temporal_state
+    - canonical_state.system_state.unspent_points
+    - canonical_state.system_state.pending_rewards
+    - canonical_state.system_state.system_rank
+    - canonical_state.system_state.progression_candidates
+    - canonical_state.system_state.non_daily_quests
+    - canonical_state.system_state.daily_quest
+  protagonist_deferred_field_groups:
+    action_resolution:
+      - canonical_state.system_state.stats
+      - canonical_state.system_state.effective_stats
+      - canonical_state.system_state.equipment
+      - canonical_state.system_state.skills_known
+    progression_settlement:
+      - canonical_state.system_state.tracked_counters
+      - canonical_state.system_state.progression_audit_baselines
+    system_shop:
+      - canonical_state.system_state.gold
+      - canonical_state.system_state.shop_holdings
   required_sources:
     semantics: "Authoritative and available; not an instruction to preload every source in full."
     restoration_entry: "Read the manifest, canonical entry point, current state, and situation-relevant objects/events."
@@ -31,11 +65,15 @@ source_loading:
     path: worlds/gatefall/206_WORLD_RULE_PROFILE.md
     mode: section-addressed
     required_source_semantics: "Authoritative and available; not a whole-file preload."
-    restoration_reads:
-      - "Profile metadata and the compatibility/migration chain applicable to the restored checkpoint."
-      - "Sections governing temporal settlement before either pool is read or time advances."
-      - "Sections 7.1, 7.4, 8.4, and 14.3 before readiness completes; keep their skill-counter, progression-candidate, ratification-gate, and quest-trigger contracts in the resident working set. Quest triggers use their declared exchange boundaries. Skill formation audits danger once at scene close; work/practice seals compact notes for one promotion-barrier batch, which also re-counts known combat-skill uses/mastery and reconciles combat formation audits since the prior barrier. Fully authored formation results ratify automatically; unauthored pending candidates form one mandatory adjudication queue before the next scene."
-      - "Any section governing the next affected operation, fetched before that operation resolves."
+    migration_index: worlds/gatefall/migrations/INDEX.md
+    migration_policy: "The active profile carries current law only. When a restored checkpoint's captured profile is older than the active version, read the index and then only the records from the captured version forward, in order. A current rule lookup reads none of them."
+    readiness_headings:
+      - "5.2 Recovery"
+      - "6.1.1 Natural Health Recovery"
+      - "8.4.2 Urgent Quests"
+      - "8.4.3 Hidden Quests"
+      - "14.3 Trigger Tiers — What It Says Unprompted, and What Only on Request"
+    operation_policy: "Fetch any additional affected section before its operation resolves."
     range_policy: "Search headings first; use separate, bounded, non-overlapping reads and continue from the first unread line."
     failure_policy: "A single-call size limit is not a source-read failure; startup stops only if an applicable bounded section cannot be read."
 required_sources:
@@ -52,6 +90,82 @@ required_sources:
   - campaigns/gatefall_pendragon_001/140_OBJECTIVES.md
   - campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md
   - campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
+diegetic_commands:
+  /system:
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#151-system-the-full-system-window
+    required_live_reads:
+      - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+      - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
+    protagonist_fields:
+      - canonical_state.system_state.class
+      - canonical_state.system_state.title
+      - canonical_state.system_state.level
+      - canonical_state.system_state.xp
+      - canonical_state.system_state.health
+      - canonical_state.system_state.mana
+      - canonical_state.system_state.system_rank
+      - canonical_state.system_state.temporal_state
+      - canonical_state.system_state.unspent_points
+      - canonical_state.system_state.pending_rewards
+      - canonical_state.system_state.stats
+      - canonical_state.system_state.effective_stats
+      - canonical_state.system_state.equipment
+      - canonical_state.system_state.skills_known
+      - canonical_state.system_state.daily_quest
+      - canonical_state.system_state.non_daily_quests
+      - canonical_state.system_state.gold
+      - canonical_state.system_state.daily_premium
+    render_policy: exact-template-only
+  /system skills:
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels
+    required_live_reads:
+      - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+    protagonist_fields:
+      - canonical_state.system_state.skills_known
+      - canonical_state.system_state.stats
+      - canonical_state.system_state.effective_stats
+      - canonical_state.system_state.equipment
+      - canonical_state.system_state.mana
+      - canonical_state.system_state.system_rank
+    render_policy: exact-template-only
+  /system shop:
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels
+    required_live_reads:
+      - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+    protagonist_fields:
+      - canonical_state.system_state.gold
+      - canonical_state.system_state.shop_holdings
+      - canonical_state.system_state.daily_premium
+      - canonical_state.system_state.system_rank
+      - canonical_state.system_state.skills_known
+    render_policy: exact-template-only
+  /system quests:
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels
+    required_live_reads:
+      - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+    protagonist_fields:
+      - canonical_state.system_state.daily_quest
+      - canonical_state.system_state.non_daily_quests
+      - canonical_state.system_state.pending_rewards
+    render_policy: exact-template-only
+  /system equipment:
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels
+    required_live_reads:
+      - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+    protagonist_fields:
+      - canonical_state.system_state.equipment
+      - canonical_state.system_state.stats
+      - canonical_state.system_state.effective_stats
+    render_policy: exact-template-only
+  /system inventory:
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels
+    required_live_reads:
+      - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+      - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
+    protagonist_fields:
+      - canonical_state.system_state.gold
+      - canonical_state.system_state.equipment
+    render_policy: exact-template-only
 validation:
   require_confirmation_before_mutation: true
   require_confirmation_before_scene: true

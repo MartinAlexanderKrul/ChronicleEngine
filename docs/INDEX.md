@@ -17,9 +17,11 @@ Use `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (the resident layer, held every turn) wi
 
 Setup manual and AI Project prompts: `docs/GAMEPLAY_START_GUIDE.md`.
 
-Repository inventory: `system/WORLDS_AND_CAMPAIGNS.md` (Decision 071) — every world and campaign, with status and latest checkpoint. It is the rendered source for the Engine Welcome Page listing; the listing is never composed from memory or from the example paths in the README and start guide.
+Repository inventory: `system/WORLDS_AND_CAMPAIGNS.md` (Decision 071) — the generated minimal table of every world and campaign, with status and latest checkpoint. It is the rendered source for the Engine Welcome Page listing; `tools/generate_runtime_index.ps1 -Check` enforces byte-for-byte synchronization.
 
-Formal repository validation gate: `tools/validate_repository.ps1` (Decision 054). It also enforces index coverage: a live campaign or world with no row fails the build (Decision 071).
+Formal validation gates, tiered (Recommendation R9): **Tier 1** `tools/validate_live.ps1` — repository structure (Decision 054) plus runtime configuration, the single named live gate. **Tier 2** `tools/validate_checkpoint.ps1` — Tier 1 plus the checkpoint form, lineage, and index-synchronization contract. **Tier 3** `tools/test_all.ps1` — the development regression suite, never a save gate. The underlying `tools/validate_repository.ps1` also enforces index coverage: a live campaign or world with no row fails the build (Decision 071).
+
+Transactional checkpoint writer: `tools/new_checkpoint.ps1` (Recommendation R8). It consumes the Runtime Profile's hash-bound live-mutation receipt and mechanically owns locking, complete snapshot copying, manifest generation, restore-pointer/index synchronization, rollback, final gates, and the machine result.
 
 Governance gate: `tools/test_decision_roadmap_sync.ps1` (Decision 069) — every accepted decision must be claimed by a roadmap milestone. Change classification is defined in `docs/DEVELOPMENT_WORKFLOW.md`.
 
@@ -62,3 +64,4 @@ For the current inventory of worlds and campaigns, read `system/WORLDS_AND_CAMPA
 20. docs/430_RUNTIME_PERSISTENCE_VALIDATION/430_VALIDATION_OVERVIEW.md
 21. docs/430_RUNTIME_PERSISTENCE_VALIDATION/431_CAPABILITY_MATRIX.md
 22. docs/430_RUNTIME_PERSISTENCE_VALIDATION/432_GATEFALL_PROTOTYPE_LOG.md
+23. docs/430_RUNTIME_PERSISTENCE_VALIDATION/437_AI_RUNTIME_LOAD_AND_VALIDATION_RECOMMENDATIONS.md

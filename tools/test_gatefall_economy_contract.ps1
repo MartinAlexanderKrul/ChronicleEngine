@@ -38,25 +38,42 @@ function Assert-NotContains {
     }
 }
 
-Assert-Contains $profile 'World Rule Profile 1\.36' 'Gatefall profile is not version 1.36.'
-Assert-Contains $profile 'Required 1\.31.+1\.32 migration' 'Gatefall profile lacks the 1.31 to 1.32 migration.'
-Assert-Contains $profile 'Required 1\.32.+1\.33 migration' 'Gatefall profile lacks the 1.32 to 1.33 migration.'
-Assert-Contains $profile 'Required 1\.33.+1\.34 migration' 'Gatefall profile lacks the 1.33 to 1.34 migration.'
-Assert-Contains $profile '1\.35.+1\.36 compatibility treatment' 'Gatefall profile lacks the 1.35 to 1.36 compatibility treatment.'
-Assert-Contains $profile 'Required 1\.24.+1\.25 migration' 'Gatefall profile lacks the 1.24 to 1.25 migration.'
-Assert-Contains $profile 'Required 1\.23.+1\.24 migration' 'Gatefall profile lacks the 1.23 to 1.24 migration.'
+Assert-Contains $profile 'World Rule Profile 1\.37' 'Gatefall profile is not version 1.37.'
+
+# Version history is owned by worlds/gatefall/migrations/, not the active profile
+# (Recommendation R7). Each assertion below reads the record for its own edge, so
+# a new profile version needs a new line here and no new plumbing.
+function Get-MigrationRecord {
+    param([string]$Source, [string]$Target)
+
+    $path = Join-Path $repo "worlds/gatefall/migrations/${Source}_to_${Target}.md"
+    if (-not (Test-Path -LiteralPath $path -PathType Leaf)) {
+        $failures.Add("Missing migration record for $Source to $Target.") | Out-Null
+        return ""
+    }
+    return Get-Content -Raw $path
+}
+
+Assert-Contains (Get-MigrationRecord '1.31' '1.32') 'Required 1\.31.+1\.32 migration' 'The 1.31 to 1.32 migration record lacks its procedure.'
+Assert-Contains (Get-MigrationRecord '1.32' '1.33') 'Required 1\.32.+1\.33 migration' 'The 1.32 to 1.33 migration record lacks its procedure.'
+Assert-Contains (Get-MigrationRecord '1.33' '1.34') 'Required 1\.33.+1\.34 migration' 'The 1.33 to 1.34 migration record lacks its procedure.'
+Assert-Contains (Get-MigrationRecord '1.35' '1.36') '1\.35.+1\.36 compatibility treatment' 'The 1.35 to 1.36 migration record lacks its treatment.'
+Assert-Contains (Get-MigrationRecord '1.36' '1.37') '1\.36.+1\.37 compatibility treatment' 'The 1.36 to 1.37 migration record lacks its treatment.'
+Assert-Contains (Get-MigrationRecord '1.29' '1.30') '1\.29.+1\.30 compatibility treatment' 'The 1.29 to 1.30 migration record lacks its treatment.'
+Assert-Contains (Get-MigrationRecord '1.24' '1.25') 'Required 1\.24.+1\.25 migration' 'The 1.24 to 1.25 migration record lacks its procedure.'
+Assert-Contains (Get-MigrationRecord '1.23' '1.24') 'Required 1\.23.+1\.24 migration' 'The 1.23 to 1.24 migration record lacks its procedure.'
 Assert-Contains $profile 'costs \*\*125% of its ordinary same-Rank category price anchor' 'Premium surcharge is not fixed at 125% of the ordinary same-Rank anchor.'
 Assert-Contains $profile 'rounded upward to the next whole gold' 'Premium surcharge lacks its whole-gold rounding rule.'
 Assert-Contains $profile '\| Premium Rune \| 1,250 g \| 5,625 g \| 25,000 g \| 112,500 g \| 500,000 g \| 2,250,000 g \|' 'Premium Rune prices do not follow the 125% anchor schedule.'
 Assert-Contains $profile 'Every instant dungeon also carries Section 11\.1''s mineable deposit' 'Section 17 does not explicitly give instant dungeons their mineable deposit.'
 Assert-Contains $profile '3d6.+\(Rank multiplier\).+crystals' 'Section 17 does not state the instant-dungeon deposit formula.'
 Assert-Contains $profile 'Crystal Key treats the `3d6` result as 18' 'Section 17 does not connect the Crystal Key to its deposit result.'
-Assert-Contains $profile 'do not create crystals for, reopen, or reinterpret any completed instant dungeon' 'The 1.24 migration lacks its no-retroactive-loot boundary.'
+Assert-Contains (Get-MigrationRecord '1.23' '1.24') 'do not create crystals for, reopen, or reinterpret any completed instant dungeon' 'The 1.24 migration lacks its no-retroactive-loot boundary.'
 
-Assert-Contains $readme 'World Rule Profile 1\.36' 'Gatefall README does not advertise Profile 1.36.'
+Assert-Contains $readme 'World Rule Profile 1\.37' 'Gatefall README does not advertise Profile 1.37.'
 Assert-Contains $readme 'cost 125% of their ordinary same-Rank category anchor' 'Gatefall README does not summarize the corrected Premium surcharge.'
 Assert-Contains $resources 'costs 125% of its ordinary same-Rank category anchor' 'Gatefall resources do not summarize the corrected Premium surcharge.'
-Assert-Contains $character 'profile_version: "1\.36"' 'Live Gatefall character has not adopted Profile 1.36.'
+Assert-Contains $character 'profile_version: "1\.37"' 'Live Gatefall character has not adopted Profile 1.37.'
 
 # The 1.24 live-cycle reprice is asserted against its immutable adoption Event, not the
 # live Daily Premium tab: that cycle rotates every 06:00 and its offers expire.
@@ -129,8 +146,17 @@ Assert-Contains $profile 'the authored entry governs' 'Section 7.4 does not defe
 Assert-Contains $profile '\*\*Keen Sense and Silent Step are scene-long from Novice\.\*\*' 'Section 7.3 does not pin Keen Sense and Silent Step to a scene-long duration.'
 # Asserted positively: the ledger line's own correction note quotes the superseded wording, so
 # proving absence of that substring would fail on the provenance rather than on the effect.
-Assert-Contains $character 'Keen Sense \[E-Rank\][^"]*\*\*for the scene\*\*, as authored in Profile Section 7\.3 at every mastery level' 'The live Keen Sense line does not render its authored scene-long duration.'
-Assert-Contains $character 'Keen Sense \[E-Rank\] ★★★★★ Master' 'The live Keen Sense mastery glyph does not match its Master level.'
+#
+# Rank and mastery are deliberately NOT pinned. The invariant under test is that
+# the entry renders its authored scene-long duration at *any* mastery level, and
+# both axes move with play: Keen Sense was E-Rank Master when these lines were
+# written and is D-Rank Adept after its ascension, which failed the assertion for
+# a reason unrelated to the rule.
+Assert-Contains $character 'Keen Sense \[[EDCBAS]-Rank\][^"]*\*\*for the scene\*\*' 'The live Keen Sense line does not render its authored scene-long duration.'
+# Matched on the mastery word, not the star glyphs: this file is read as ANSI by
+# Windows PowerShell when it carries no BOM, and a literal glyph class silently
+# stops matching.
+Assert-Contains $character 'Keen Sense \[[EDCBAS]-Rank\] \S+ (Novice|Practiced|Adept|Expert|Master)' 'The live Keen Sense line does not render a Rank and mastery level.'
 
 # mastery_level must be stored, because ascension breaks its derivation from lifetime scenes.
 Assert-Contains $character 'skills\.rupture\.mastery_level' 'Live character lacks the stored mastery_level counter.'

@@ -2,7 +2,7 @@
 
 # Gameplay Start Guide
 
-**Document Version:** 2.18
+**Document Version:** 2.19
 **Audience:** Players and campaign operators
 **Purpose:** Start or resume Chronicle Engine gameplay with any AI that can read and write the repository files
 
@@ -48,13 +48,13 @@ The AI must always see the latest canonical state. After a session, review the c
 
 During play, the resident profile enforces automatic context-preservation checkpoints. The AI saves before a reported or detected compaction and, when the host provides no context telemetry, no later than 20 resolved player exchanges since the prior checkpoint (or the first scene boundary after 12). The safeguard requires no player command. If a host compacts without warning, the AI must reload the latest durable checkpoint before continuing and must not treat the compacted summary as canonical storage.
 
-On Windows, run the formal validation gate from the repository root:
+On Windows, the live-state validation gate is Tier 1:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_live.ps1
 ```
 
-The command must pass after campaign initialization and after live checkpoint writes, before an immutable checkpoint is created or canon promotion is reported as successful.
+The command must pass after campaign initialization and after live promotion. Checkpoint creation itself runs through `tools/new_checkpoint.ps1`, which repeats live validation, creates and byte-verifies the complete snapshot, synchronizes restore pointers and the generated index, runs the final checkpoint gates, and emits a machine receipt. Only a receipt with `"status":"created"` permits a saved claim.
 
 ## Confirm Write Capability (indirect access only)
 
@@ -115,9 +115,9 @@ At every checkpoint/session close apply Canon Promotion; never silently overwrit
 1. Enumerate EVERY live target touched: Current State (180), chronicle (160), changelog (170), relationships (130), objectives (140), world/knowledge (110), inventory (120) if changed, world history if the campaign ended, and system/ID_REGISTRY.md for any new ENT/REC/EVT/REL.
 2. Write ALL targets with provenance. A new id MUST be allocated in the registry (ADVANCE the high-water mark and add allocation-log coverage — not just mentioned) and defined in its owning ledger.
 3. Read each target BACK from the repository (not memory) and confirm the change is present.
-4. Run `powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps1`. On failure, report a PARTIAL checkpoint, repair and rerun; do not claim success.
-5. Only after validation passes, create the immutable checkpoint and manifest from the verified files, then read them back.
-6. Report "saved"/"promoted to canon" ONLY if every target verifies and validation passes. The manifest's updated-ledger list must contain only files actually written and read back.
+4. Run `powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_live.ps1`. On failure, report a PARTIAL checkpoint, repair and rerun; do not claim success.
+5. Write the Version 1.0 hash-bound mutation receipt specified by the Runtime Profile from those read-back targets, then invoke `tools/new_checkpoint.ps1` with the campaign, checkpoint type, label, expected parent, and receipt. Do not manually create the checkpoint directory, manifest, or index row.
+6. Report "saved"/"promoted to canon" ONLY when the helper has emitted its exact validator output and a final `CHECKPOINT_RECEIPT_JSON` with `"status":"created"`. A failed result or staging path is a PARTIAL checkpoint, never a save.
 ```
 
 This instruction establishes the Runtime role. It does not replace repository access or the active Gameplay Runtime Profile.
@@ -197,7 +197,7 @@ When ready to stop, send:
 ```text
 Close the gameplay session now.
 
-Apply the Promotion Barrier, then run a complete checkpoint: enumerate every affected live ledger (Current State, chronicle, changelog, NPCs/relationships, objectives, world/knowledge, inventory if changed, and world history/state if the campaign ended), allocate any new IDs in the registry, and write all of them with provenance. Read every live target back, then run `powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_repository.ps1`. Only after validation passes, create and read back the immutable checkpoint and save manifest. Report "promoted to canon" only if every target verifies and validation passes; otherwise report a PARTIAL checkpoint with the unwritten targets or validator findings. Then provide the Gameplay Runtime Report. Do not produce a development report.
+Apply the Promotion Barrier, then run a complete checkpoint: enumerate every affected live ledger (Current State, chronicle, changelog, NPCs/relationships, objectives, world/knowledge, inventory if changed, and world history/state if the campaign ended), allocate any new IDs in the registry, and write all of them with provenance. Read every live target back, run `tools/validate_repository.ps1`, write the Runtime Profile's hash-bound mutation receipt, and invoke `tools/new_checkpoint.ps1`. Report "promoted to canon" only when the helper returns `"status":"created"` after its final gates; otherwise report a PARTIAL checkpoint with the unwritten targets, staging path, or validator findings. Then provide the Gameplay Runtime Report. Do not produce a development report.
 ```
 
 Do not close the conversation until the Runtime confirms whether canon was promoted and identifies the checkpoint or any blocking contradiction. If it reports a checkpoint saved, it should also be able to name the ledgers it read back to confirm it — a "saved" claim without read-back is the partial-checkpoint failure to watch for.

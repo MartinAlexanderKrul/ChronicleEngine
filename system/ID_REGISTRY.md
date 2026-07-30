@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000176 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000214 |
+| Event | `EVT-` | Event | EVT-000215 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -356,6 +356,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000212 | Event | Gatefall: Pendragon: third visit to Walt Adamik's shop - Keen Sense legendary operating-method read of a rank-unconfirmed suppression emitter and unlicensed lockpick set, traded for all fifteen of Alexander's private E-Rank cores |
 | EVT-000213 | Event | Gatefall: Pendragon: Ada Reyes confirms the C-Rank harvest job, staging 2026-08-09 09:00; new Objective OBJ-24 opened |
 | EVT-000214 | Event | Gatefall: Pendragon: Checkpoint 0042 promotion barrier - explicit no skill-formation result; item appraisal boundary and EVT-000210 fictional timestamp reconciled |
+| EVT-000215 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.37 - versions the trigger-dispatch manifest and Tier-2 mandatory-first-qualifying-yield timing that a repository-tooling change had added to frozen 1.36 without a version bump, and repairs the Flux Sight/Analyst regression the same edit introduced |
 
 ---
 

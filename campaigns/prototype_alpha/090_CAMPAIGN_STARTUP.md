@@ -11,9 +11,11 @@ campaign: campaigns/prototype_alpha
 world: worlds/verra
 protagonist_policy: either
 default_protagonist: ENT-000018
-initialization_state: initialized-no-save
+initialization_state: terminal
+latest_restorable_checkpoint: campaigns/prototype_alpha/saves/900_CHECKPOINT_0001
 canonical_entry_point: campaigns/prototype_alpha/180_CURRENT_STATE.md
 player_briefing: campaigns/prototype_alpha/095_PLAYER_BRIEFING.md
+selection_caveat: "Terminal campaign. Its latest checkpoint is available for reading or branching, not continuation; use /new or /branch to keep playing in Verra."
 customization:
   name_change: new-instance-only
   background_change: new-instance-only

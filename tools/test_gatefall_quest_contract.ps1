@@ -46,7 +46,7 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8
 $runtimeProfile = Get-Content -LiteralPath $runtimeProfilePath -Raw -Encoding UTF8
 $latestCheckpoint = Get-Content -LiteralPath $latestCheckpointPath -Raw -Encoding UTF8
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.38\r?$') "Gatefall Profile 1.38 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.39\r?$') "Gatefall Profile 1.39 is not active."
 Assert-True ($profile -match 'The Bearer has \*\*1 concurrent non-daily quest slot by default\*\*') "Default non-daily capacity is not fixed at 1."
 Assert-True ($profile -match 'Multitask raises this to \*\*2 / 3 / 4\*\* at E / D / C-Rank') "Multitask capacity ladder is not fixed at 2/3/4."
 Assert-True ($profile -match '\| \*\*Stat Passive Rank\*\* \| \*\*E\*\* \| \*\*D\*\* \| \*\*C\*\* \| \*\*B\*\* \| \*\*A\*\* \| \*\*S\*\* \|') "Stat Passive Rank ladder is missing."
@@ -58,25 +58,25 @@ Assert-True ($profile -match 'Gate-clear milestone XP for the Bearer''s System R
 Assert-True ($profile -match 'A quest cannot complete from conduct that occurred before') "Pre-attachment retroactive completion is not prohibited."
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
-Assert-True ($character -match 'profile_version: "1\.38"') "Live Gatefall character was not migrated to Profile 1.38."
+Assert-True ($character -match 'profile_version: "1\.39"') "Live Gatefall character was not migrated to Profile 1.39."
 # Capacity is derived from Multitask's Rank and is the invariant under test. The quest
 # lists beside it are live state that changes with play, so they are deliberately NOT
 # pinned here -- doing so made this assertion fail on the first session that attached a
 # Hidden quest, for a reason unrelated to the rule.
 Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 2\s+capacity_total: 3') "Live D-Rank Multitask quest capacity is missing or incorrect."
 Assert-True ($character -notmatch 'analyst_bonus') "Retired analyst_bonus survives the Profile 1.33 migration."
-Assert-True ($character -match 'Flux Sight \[D-Rank\] . Stat Passive.+Uses \d+ . Perception \d+ . C-Rank at 44') "Live Flux Sight does not render its derived D-Rank progression."
+Assert-True ($character -match 'Flux Sight \[C-Rank\] . Stat Passive.+Uses \d+ . Perception \d+ . at its System-Rank-D ceiling') "Live Flux Sight does not render its derived C-Rank/System-Rank-D-ceiling state."
 Assert-True ($character -match 'Multitask \[D-Rank\] . Stat Passive.+capacity \*\*3\*\*.+Uses \d+ . Intelligence \d+ . C-Rank at 44') "Live Multitask does not render its derived D-Rank progression."
 Assert-True ($character -notmatch 'Rank-Sight . Passive . Stat-milestone skill') "Retired Rank-Sight survives as a live skill."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
-Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.38"') "Campaign startup does not bind Profile 1.38."
+Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.39"') "Campaign startup does not bind Profile 1.39."
 Assert-True ($startup -match "latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/$([regex]::Escape($latestCheckpointName))") "Campaign startup does not target the latest checkpoint on disk ($latestCheckpointName)."
 Assert-True ($startup -match 'readiness_headings:') "Gatefall startup has no bounded readiness selector list."
 Assert-True ($startup -match '"14\.3 Trigger Tiers') "Gatefall startup does not select the trigger manifest heading."
 Assert-True ($startup -match 'migration_index: worlds/gatefall/migrations/INDEX\.md') "Gatefall startup does not point restoration at the migration index."
 Assert-True ($startup -match 'require_profile_trigger_audit: true') "Gatefall startup does not require the proactive trigger audit."
-Assert-True ($index -match 'World Rule Profile 1\.38, frozen') "World index does not advertise frozen Profile 1.38."
+Assert-True ($index -match 'World Rule Profile 1\.39, frozen') "World index does not advertise frozen Profile 1.39."
 Assert-True ($profile -match 'SKILLS[^\r\n]+ACTIVE') "Gatefall /system template does not render an ACTIVE skills group."
 Assert-True ($profile -match 'SKILLS[^\r\n]+PASSIVE') "Gatefall /system template does not render a PASSIVE skills group."
 Assert-True ($profile -match 'contains every skill whose ledger entry carries a Mana cost') "Gatefall /system skills do not classify ACTIVE entries from canonical Mana cost."
@@ -334,13 +334,14 @@ $mainFollowUp = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeCha
 
 # These are a SNAPSHOT of the current loadout and Stats, not a rule -- they move whenever
 # effective Strength, a weapon, Dagger Mastery, or a mastery level changes. The formula
-# above is the invariant; these guard it against silent drift. Recomputed at the Profile
-# 1.30->1.36 chain adoption (EVT-000210): effective Strength 44, main power 11, off power 7,
-# Dagger Mastery +0.25 (chassis x1.00), Rupture x2.30, Twin Fang x1.30 at Adept.
-Assert-True ($mainDamage -eq 55) "Main-hand /system preview is $mainDamage, expected 55."
-Assert-True ($offDamage -eq 51) "Off-hand /system preview is $offDamage, expected 51."
+# above is the invariant; these guard it against silent drift. Recomputed at the
+# EVT-000222 Ability Point reallocation (Strength 34->36 base): effective Strength 45,
+# main power 11, off power 7, Dagger Mastery +0.25 (chassis x1.00), Rupture x2.30,
+# Twin Fang x1.30 at Adept.
+Assert-True ($mainDamage -eq 56) "Main-hand /system preview is $mainDamage, expected 56."
+Assert-True ($offDamage -eq 52) "Off-hand /system preview is $offDamage, expected 52."
 Assert-True ($ruptureDamage -eq 58) "Rupture /system preview is $ruptureDamage, expected 58."
-Assert-True (($mainDamage -eq 55) -and ($offFollowUp -eq 66)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 55 + 66."
-Assert-True (($offDamage -eq 51) -and ($mainFollowUp -eq 72)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 51 + 72."
+Assert-True (($mainDamage -eq 56) -and ($offFollowUp -eq 68)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 56 + 68."
+Assert-True (($offDamage -eq 52) -and ($mainFollowUp -eq 73)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 52 + 73."
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

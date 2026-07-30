@@ -7,6 +7,12 @@ description: Use when the player types /save or asks in any words to save, check
 
 **A save is a set of verified files on disk — never a claim.** The word "saved" may appear only after every artifact below exists, read-back confirms it, and the transactional helper returns `"status":"created"` after showing its real validator output.
 
+## Canon lives in the conversation until /save — not in the files
+
+**Do not write to any campaign or world file mid-scene.** Rolls, damage, HP/Mana changes, inventory movement, quest progress, NPC reactions, shop transactions, skill-formation evidence — everything that happens during ordinary play stays tracked in the conversation (and, when `/debug` is on, the OOC block) as pending state. Ledger files (`100`–`180`, world records, everything under `saves/`) are not touched until the player runs `/save`, at which point the full Save Algorithm above writes the session's entire derived target set in one pass.
+
+This reverses the campaign's earlier practice of writing `100_CHARACTER_SHEET.md`/`180_CURRENT_STATE.md` continuously through a session (visible in this campaign's history as repeated "live, unpromoted-to-checkpoint" edits) — that pattern is retired. A shop roll, a combat exchange, or an NPC-knowledge ruling is now held as a pending delta and narrated from memory of the conversation, never confirmed by re-reading a file you just wrote. Only `/save` derives the target set from the session's events and commits it to disk.
+
 ## Procedure
 
 1. **Open and follow the authoritative Save Algorithm** — `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, section "Save Algorithm" (8 steps, in order). Execute it from the document, not from memory. Do not invent checkpoint structure: the canonical form is `saves/900_CHECKPOINT_NNNN/` (zero-padded, next number) containing copies of **all eight canonical campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180), changed or not** (a checkpoint is a complete restorable state, not a diff) — plus `900_SAVE_MANIFEST.md`. `090`/`095` are operational and derived artifacts, not canon: they stay out of the snapshot. The manifest mints no registry identifier (Decision 072).

@@ -345,13 +345,14 @@ game_date: "2026-08-04 06:01 -05:00"'
 
     # --- Profile 1.33 Stat Passive Rank is derived, never stored -----------
     #
-    # Perception 38 derives Flux Sight D-Rank under Section 4.4. A rendered
-    # E-Rank is drift even if every other field remains valid.
-    Replace-Once $character 'Flux Sight [D-Rank]' 'Flux Sight [E-Rank]'
+    # Perception 44 derives Flux Sight C-Rank under Section 4.4 (its
+    # System-Rank-D ceiling). A rendered E-Rank is drift even if every
+    # other field remains valid.
+    Replace-Once $character 'Flux Sight [C-Rank]' 'Flux Sight [E-Rank]'
     $wrongPassiveRank = Invoke-Validation $tempRoot
-    Assert-True ($wrongPassiveRank.ExitCode -ne 0 -and $wrongPassiveRank.Output -like "*does not render derived Rank D*") `
+    Assert-True ($wrongPassiveRank.ExitCode -ne 0 -and $wrongPassiveRank.Output -like "*does not render derived Rank C*") `
         "A Stat Passive with a rendered Rank contradicting its base Stat was accepted:`n$($wrongPassiveRank.Output)"
-    Replace-Once $character 'Flux Sight [E-Rank]' 'Flux Sight [D-Rank]'
+    Replace-Once $character 'Flux Sight [E-Rank]' 'Flux Sight [C-Rank]'
 
     # Stat Passives have successful_uses only. A mastery counter would create
     # a second growth axis explicitly forbidden by Section 4.4.

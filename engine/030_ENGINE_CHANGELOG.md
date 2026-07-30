@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-30 — Gatefall Profile 1.39: the Bearer duplicate-consumption reroll is removed
+
+**World authoring:** Gatefall World Rule Profile 1.38 → 1.39 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
+**Problem:** Section 7.1's Consumption Settlement rerolled on an item's originating skill table whenever the Bearer went to consume instruction he already knew at or above its `teaching_rank`. Two defects. The rule predates working NPC consumption, which is the better outlet for a duplicate and destroys none of its value (`EVT-000178`: an unbound rune taught Owen Callahan Stone Skin at D-Rank) — the re-draw exists to solve a problem transfer already solves. And the procedure is **unbounded**: "reroll until the result is unknown to him" has no terminating condition once the Bearer knows every technique on a table, and its intended `if no eligible result remains` exit is only reachable by exhausting a table the procedure never stops drawing from.
+**Profile:** removes the reroll. An item teaching below what the Bearer knows still ascends the skill (Section 7.5, unchanged); an item teaching at or above it presents one explicit choice at consumption — leave it **intact** (item does not consume; identity, binding, and provenance preserved, the same branch the NPC and above-ceiling cases already used) or **spend it for mastery** (one qualifying-scene contribution toward a chosen known skill, as the matching Mastery Rune or Mastery Book), which is the outlet for a `bearer-only` duplicate no one else could consume. Section 7.1's Bearer branch labels are also disambiguated to name which side of the comparison governs. Compatibility treatment, no recomputation — no consumption-time reroll has ever executed in a live campaign.
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `worlds/gatefall/migrations/1.38_to_1.39.md`, `worlds/gatefall/migrations/INDEX.md`, `worlds/gatefall/README.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/test_gatefall_economy_contract.ps1`, `tools/test_gatefall_quest_contract.ps1`, `tools/test_gatefall_recovery_contract.ps1`
+**Audit:** removes the only unbounded procedure in Section 7.1. Also strikes the superseded frozen-1.30 Dagger Mastery hold note from the live `skills_known` line under the same Event — `EVT-000210` had already resolved that gap and the ruling said so, but the obsolete prose shared a line with live values and kept being rendered back as an open gap; no number changes.
+
 ## 2026-07-30 — Gatefall Profile 1.38: B-Rank category ladders for the seven Section 7.3 starting skills
 
 **World authoring:** Gatefall World Rule Profile 1.37 → 1.38 (Decisions 062, 069 — world-scoped, consumes no engine decision number)

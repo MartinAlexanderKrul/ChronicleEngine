@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000230
+  source: EVT-000229
   game_date: "2026-08-09 ~14:50 -05:00"
   real_date: "2026-07-30"
 role: canonical ledger
@@ -27,7 +27,7 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.39
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.38
 - **Engine Rules:** 0.2.0
 - **Data Model:** 0.1.5
 - **Campaign time:** 2026-08-09, approximately 14:50 CDT (`-05:00`)
@@ -83,14 +83,12 @@ At 06:00 on 2026-08-09 Alexander completed his sixteenth daily regimen. During t
 - Alexander is five XP short of Level 12; no XP was awarded by the daily quest, the stat allocation, the random boxes, or the harvest job (mining is not a kill/clear XP source).
 - **Resolved this session:** 71 of the 75 undeclared C-Rank crystals were sold straight to the System shop at 170 g each — a legitimate gold-side outlet that doesn't touch USD or require any declaration (Section 12.5's no-exchange rule). 4 C-Rank crystals remain in the private stash, same terms.
 - The Flash Step and Resonance Extraction ascensions/mastery advances this session are both real, resolved changes — not open questions.
-- **Banked Flash Step rune [D-Rank]** (`EVT-000142`, `unbound-awakened`): Alexander knows Flash Step at C-Rank, so it teaches him nothing. Under Profile 1.39 (`EVT-000230`) that is no longer a reroll — it is a choice between leaving it intact and spending it for one qualifying-scene mastery contribution. Its best use is unchanged and outside that choice: teaching an eligible awakened non-Bearer at D-Rank.
-- **Dagger Mastery has no authoring gap.** Expert (+0.25, ×1.00 per Quickknife) is live and correct; Master (+0.30) is authored by Section 7.4's +0.05-per-level passive-multiplier ladder and each Rank above native E adds a further +0.25 (Section 7.2). Mastery progress stands at **0/3 toward Master** because no dagger-involving qualifying scene has occurred since `EVT-000205` — `successful_uses` alone never advances mastery. The frozen-1.30 hold note that kept surfacing this as an open gap was superseded at `EVT-000210` and struck from the live skill line at `EVT-000230`.
 
 ---
 
 ## Promotion Status
 
-Live canon is promoted through `EVT-000230`. Since Checkpoint 0044: the live 2026-08-09 06:00 Daily Premium rotation was resolved (`EVT-000227`, fabrication series Crimson), and a System shop session sold 71 C-Rank and 14 E-Rank crystals, bought the Armory Key [D-Rank], swapped Legs/Feet gear from E-Rank to D-Rank, and liquidated seven retired/unused items (`EVT-000228`) — net gold 3,532 → 12,726. World Rule Profile 1.39 was then adopted (`EVT-000230`), removing Section 7.1's Bearer duplicate-consumption reroll; it consumes no fictional time, changes no stored value, and reopens nothing. No relay promotion remains pending. The 2026-08-06/-07/-08 Daily Premium gap remains explicitly unresolved by owner ruling (not backfilled). This Current State reflects live, unpromoted-to-checkpoint play; the next `/save` will capture it as Checkpoint 0045.
+Live canon is promoted through `EVT-000229`. Since Checkpoint 0044: the live 2026-08-09 06:00 Daily Premium rotation was resolved (`EVT-000227`, fabrication series Crimson), and a System shop session sold 71 C-Rank and 14 E-Rank crystals, bought the Armory Key [D-Rank], swapped Legs/Feet gear from E-Rank to D-Rank, and liquidated seven retired/unused items (`EVT-000228`) — net gold 3,532 → 12,726. No relay promotion remains pending. The 2026-08-06/-07/-08 Daily Premium gap remains explicitly unresolved by owner ruling (not backfilled). This Current State reflects live, unpromoted-to-checkpoint play; the next `/save` will capture it as Checkpoint 0045.
 
 ---
 

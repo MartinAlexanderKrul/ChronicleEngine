@@ -378,11 +378,11 @@ game_date: "2026-08-04 06:01 -05:00"'
     # other two Flash Step mentions are historical narration. The opening quote
     # of the YAML list entry is unique to the live row and is ASCII, which the
     # mastery glyphs are not.
-    Replace-Once $character '"Flash Step [D-Rank]' '"Flash Step [B-Rank]'
+    Replace-Once $character '"Flash Step [C-Rank]' '"Flash Step [B-Rank]'
     $unauthoredRank = Invoke-Validation $tempRoot
     Assert-True ($unauthoredRank.ExitCode -ne 0 -and $unauthoredRank.Output -like "*exceeds its authored category ladder*") `
         "A skill standing above its authored ladder was accepted; Section 7.2 eligibility is unenforced:`n$($unauthoredRank.Output)"
-    Replace-Once $character '"Flash Step [B-Rank]' '"Flash Step [D-Rank]'
+    Replace-Once $character '"Flash Step [B-Rank]' '"Flash Step [C-Rank]'
 
     $restoredLadder = Invoke-Validation $tempRoot
     Assert-True ($restoredLadder.ExitCode -eq 0) "A skill restored to its authored Rank did not validate:`n$($restoredLadder.Output)"

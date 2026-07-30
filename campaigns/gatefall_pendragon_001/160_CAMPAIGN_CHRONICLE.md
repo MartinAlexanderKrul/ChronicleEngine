@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000219
+  source: EVT-000221
   game_date: "2026-08-09 ~07:50 -05:00"
   real_date: "2026-07-30"
 role: canonical ledger
@@ -182,6 +182,8 @@ subjects:
   - EVT-000217
   - EVT-000218
   - EVT-000219
+  - EVT-000220
+  - EVT-000221
 ```
 
 ---
@@ -5463,4 +5465,66 @@ progression_audits:
 description: "The Checkpoint 0043 promotion barrier covers `EVT-000216`-`EVT-000218` on top of the committed Profile 1.37 adoption at `EVT-000215`. The finder inspection at `EVT-000216` was one distinct consequential non-combat scene in which Keen Sense materially informed an $800 purchase and confirmed the device's operating limits: `successful_uses` **17 -> 18** at activation, `qualifying_scenes_total` **13 -> 14**, and `mastery_progress` **1 -> 2/3 toward Expert** here. It exercised an existing authored skill and supplies no distinct skill-formation candidate. The relationship scenes involved no skill activation. The sixteenth daily was routine repetition and is outside the Section 7.1 formation coverage set. Explicit `gatefall.skill_formation` result: **none**; no pending-ratification candidate exists.
 
 Canon reconciliation retains Elias Ward as a campaign-local Character (`ENT-000177`) and the finder as an individually tracked held item. The unnamed shop is incidental, so no separate Place is minted. Existing `OBJ-15` is updated instead of creating a duplicate housing objective. The relay's final Health/Mana caps stand after deterministic recovery reconciliation. The known Daily Premium rotation backlog beginning 2026-08-06 remains explicitly unsettled; no unrolled historical or current offer is invented during recovery."
+```
+
+## EVT-000220 - Flash Step: Authoring Gap Closed and Ascension Accepted
+
+```yaml
+id: EVT-000220
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-09 ~07:50 -05:00"
+  real_date: "2026-07-30"
+type: Event
+kind: ruling
+importance: minor
+game_date: "2026-08-09 ~07:50 -05:00"
+participants:
+  - ENT-000125
+counter_deltas:
+  - { subject: ENT-000125, counter: skills.flash_step.mastery_level, delta: -2 }
+  - { subject: ENT-000125, counter: skills.flash_step.rank_ascensions, delta: 1 }
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Owner ruling closing the authoring gap flagged against Flash Step's standing Section 7.5 breakthrough offer, then Alexander's acceptance of that offer at the same readiness gate — same anchor, no fictional time consumed.
+
+**The gap.** Flash Step reached D-Rank Master at `EVT-000199` and stood ascension-ready (below the System-Rank-D-derived C-Rank ceiling), but Section 7.3 authored no Rank-category ladder for it — unlike the five scope skills, a modifier-step skill needs its capability axis authored to be ascension-eligible at all under Section 7.2. Presenting the offer with only a recomputed Mana cost and no second axis would have been a misstated offer. Gatefall Profile 1.37 (`EVT-000215`) has since authored the missing capability-axis category ladder in Section 7.3: Flash Step's first Rank above native (C) gains **Through the barrier** — the step crosses a closed constructed barrier (door, shutter, partition, hatch, fence) rather than only open distance, provided Alexander already holds a read of the far side (a prior look, a resolved Keen Sense, or a relayed Pattern) or the step is blind and resolves as an uncertain action under Rules Section 4; it never crosses a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall. This closes the gap; the offer is no longer misstated.
+
+**Before → after.** Flash Step [D-Rank] ★★★★★ Master — Mana 4, close or break line-of-sight distance instantly, +1 modifier step to the follow-up action, effect covering the whole scene — becomes Flash Step [C-Rank] ★★★☆☆ Adept — Mana 6 (recomputed from the native 8 Mana cost under Section 7.4's -10%-per-level rule at Adept), same instant-distance effect with its follow-up window falling back to two further exchanges beyond the immediate action (Adept's rung on Section 7.4's utility-duration ladder, mastery having fallen from Master), plus the newly authored **Through the barrier** category. `mastery_progress` resets to 0/3 toward Expert. `successful_uses` (15) and `qualifying_scenes_total` (12) are lifetime totals and carry forward unchanged. `rank_ascensions` 0 → 1.
+
+**Nothing else moves.** No roll, no gold or cash, no other skill, no pool, no counter beyond the ones named above. This is a player-accepted System offer settled under Turn-State Settlement, not a dangerous-scene or promotion-batch audit — it required no qualifying scene of its own, only the mastery advance already recorded at `EVT-000199` and the category gap closed by Profile 1.37."
+```
+
+## EVT-000221 - Profile Adoption: Gatefall World Rule Profile 1.38
+
+```yaml
+id: EVT-000221
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-09 ~07:50 -05:00"
+  real_date: "2026-07-30"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-09 ~07:50 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.38, an additive advance over frozen 1.37. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged, ~07:50 on 2026-08-09.
+
+**Why this bump exists.** Flash Step's Section 7.5 breakthrough offer was blocked until Profile 1.37 authored its missing Rank-category ladder, closed at `EVT-000220`. That same authoring gap was latent for the other six Section 7.3 starting skills that use a scope-axis or capability-axis category ladder — Keen Sense, Silent Step, Exploit Pattern, Field Command, Resonance Extraction, and Sprint — each due to hit the identical blocked-offer state the first time it next reaches Master at its current Rank. Rather than repeat the same flagged-gap-and-decline cycle six more times, this adoption authors the B-Rank rung for all seven skills in one pass, ahead of need.
+
+**What Section 7.3 now authors at B-Rank.** Keen Sense's **through concealment** (pierces an active concealment effect or detection-blocking ward); Silent Step's **ward-blind** (concealment holds even against an actively searching detection skill or ward); Exploit Pattern's **composite read** (two or more established Patterns read and exploited together); Field Command's **broadcast relay** (one call reaches a whole crew at once, and an ally with no prior shared context); Resonance Extraction's **predictive read** (forecasts a sited field's resonance drift rather than only its present structure); Sprint's **over the gap** (a short unsupported span counts as ground); Flash Step's **through the ward** (crosses a closed ward or barrier-effect, not only a physical construction, under the same prior-read precondition and the same absolute exclusions — never a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall).
+
+**What remains an open question, not a gap.** A-Rank and S-Rank for these seven skills are explicitly flagged rather than silently unauthored: this world's canon gives every named S-Rank hunter one unique signature technique (Tereza Blažková's Vltava, Reid Calloway's Overrun) rather than a templated ladder continuation, so whether a Section 7.3 starting skill scales that far at all — and if so, by what mechanism — is left to an owner ruling under Section 20.3 rather than assumed or invented now.
+
+**What does not change.** No skill in play stands at B-Rank today; Flash Step, the only one of the seven above native Rank at all, sits at C-Rank Adept after its own breakthrough (`EVT-000220`). No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changes, and no ascension offer is reopened, issued, or reinterpreted retroactively. Immutable Profile 1.37-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.38 at readiness."
 ```

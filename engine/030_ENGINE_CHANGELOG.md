@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-30 — Gatefall Profile 1.38: B-Rank category ladders for the seven Section 7.3 starting skills
+
+**World authoring:** Gatefall World Rule Profile 1.37 → 1.38 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
+**Problem:** Flash Step's standing Section 7.5 breakthrough offer had been blocked because Section 7.3 authored no Rank-category ladder for it above C-Rank; Profile 1.37 closed that specific gap, and the ascension was accepted at `EVT-000220`. The same gap was latent for the other six Section 7.3 starting skills that use a scope-axis or capability-axis category ladder (Keen Sense, Silent Step, Exploit Pattern, Field Command, Resonance Extraction, Sprint) — each would hit the identical blocked-offer state the first time it next reaches Master at its current Rank.
+**Profile:** authors the B-Rank rung for all seven skills' category ladders in Section 7.3 (Keen Sense's *through concealment*, Silent Step's *ward-blind*, Exploit Pattern's *composite read*, Field Command's *broadcast relay*, Resonance Extraction's *predictive read*, Sprint's *over the gap*, Flash Step's *through the ward*), additive, no recomputation — no skill in play stands at B-Rank today. A-Rank and S-Rank are explicitly flagged as an open question rather than silently unauthored or guessed: this world's canon gives every named S-Rank hunter one unique signature technique rather than a templated ladder continuation, so whether these starting skills scale that far at all is left to an owner ruling under Section 20.3.
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `worlds/gatefall/migrations/1.37_to_1.38.md`, `worlds/gatefall/migrations/INDEX.md`, `worlds/gatefall/README.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`)
+**Audit:** pre-empts a recurrence of the exact blocked-offer state closed once already for Flash Step (`EVT-000220`), for the remaining six skills sharing its category-ladder mechanism.
+
 ## 2026-07-30 — Gatefall Profile 1.37: versioning the frozen-1.36 trigger-manifest edit
 
 **World authoring:** Gatefall World Rule Profile 1.36 → 1.37 (Decisions 062, 069 — world-scoped, consumes no engine decision number)

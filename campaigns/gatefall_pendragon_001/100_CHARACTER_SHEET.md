@@ -13,7 +13,7 @@ canonical_record: REC-000074
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000219
+  source: EVT-000221
   game_date: "2026-08-09 ~07:50 -05:00"
   real_date: "2026-07-30"
 role: canonical ledger
@@ -71,7 +71,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.37"
+    profile_version: "1.38"
     profile_skill_rank_ascension_event: EVT-000158
     profile_consumable_economy_event: EVT-000154
     profile_premium_surcharge_event: EVT-000135
@@ -141,7 +141,7 @@ canonical_state:
     skills_known:
       - "Stone Skin [D-Rank] ★★☆☆☆ Practiced · Mana 4 · 35% physical damage reduction while sustained; ends when Mana lapses or dropped. **Successful uses 8 · qualifying scenes total 5 · mastery progress 2/3 toward Adept.**"
       - "Rupture [D-Rank] ★★★☆☆ Adept · Mana 10 · a heavy strike at **×2.30 of its skill-rank baseline** (D-Rank baseline 25, Section 7.2), resolving as `(25 + equipped focus power) × 2.30 × result multiplier` under Section 6.2. **Successful uses 34 · qualifying scenes total 15 · mastery progress 1/3 toward Expert · rank ascensions 1.**"
-      - "Flash Step [D-Rank] ★★★★★ Master · Mana 4 · close or break line-of-sight distance instantly, granting +1 modifier step to the immediate follow-up action; **at Master the follow-up window covers the whole scene** (Section 7.4's utility ladder — no further duration to gain beyond this). **Successful uses 15 · qualifying scenes total 12 · mastery progress 0/3 (Master — track complete) · rank ascensions 0.** **Mastery advanced Expert → Master at the close of the 2026-08-08 penalty-zone survival instance (`EVT-000199`)**, its third qualifying scene at Expert — settled once for the whole dangerous scene under Section 7.1, crediting two activations this session: the Sprint-and-Flash-Step alpha strike on the boss's molt seam, and the solo repositioning strike that confused the boss mid-clash. Mana recomputed 5 → 4 under Section 7.4's −10%-per-level rule.\n\n **Ascension-ready — offer pending, not yet answered.** D-Rank Master, below the ceiling (System Rank D + 1 = C-Rank). Section 7.5 requires the Runtime to surface the exact before-and-after on every axis Flash Step uses before the Bearer decides; Mana and mastery are fully known (D-Rank Master, Mana 4 → C-Rank Adept, Mana recomputed at Adept's rate), but **Flash Step carries no authored Rank-scaling magnitude or range beyond Mana cost** — unlike the five named scope skills (Section 7.3), it was never given a Rank-category ladder. Presenting the offer without a real second axis to show would be a misstated offer under Section 7.5's own rule. **This is flagged as an authoring gap, not resolved here**; the offer stands open, costs nothing to leave unanswered, and re-surfaces at the next barrier."
+      - "Flash Step [C-Rank] ★★★☆☆ Adept · Mana 6 · close or break line-of-sight distance instantly, granting +1 modifier step to the follow-up action; at Adept the follow-up window covers the immediate action plus **two further exchanges** (Section 7.4's utility ladder). New at C-Rank: **Through the barrier** — the step crosses a closed constructed barrier (door, shutter, partition, hatch, fence) rather than only open distance, provided Alexander already holds a read of the far side (a prior look, a resolved Keen Sense, or a relayed Pattern), else it resolves as an uncertain action under Rules Section 4; it never crosses a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall (Section 7.3). **Successful uses 15 · qualifying scenes total 12 · mastery progress 0/3 toward Expert · rank ascensions 1.** **Breakthrough accepted at the 2026-08-09 readiness gate (`EVT-000220`)**: D-Rank Master (Mana 4, whole-scene follow-up window) → C-Rank Adept (Mana 6, follow-up window falls back to two further exchanges, gains Through the barrier). Mastery fell Master → Adept; `mastery_progress` reset to 0; `successful_uses`/`qualifying_scenes_total` carried forward unchanged. Closed the authoring gap flagged since `EVT-000199` — Gatefall Profile 1.37 authored the missing C-Rank category ladder, so the offer was no longer misstated."
       - "Keen Sense [D-Rank] ★★★☆☆ Adept · Mana 2 · +1 modifier step on detection — spotting ambush, hidden foes, or anomaly — **for the scene**, plus, new at D-Rank, reads a detected thing's **intent and method** — what it is preparing, and how it is concealed. Scope holds at **himself plus 4 allies** (5 subjects total) — the Section 7.2 scope ratchet, `scope_floor` 5, since Adept's raw computation (1 + 1 + 2 = 4) would otherwise have fallen below the pre-ascension count. **Successful uses 18 · qualifying scenes total 14 · mastery progress 2/3 toward Expert · rank ascensions 1.**"
       - "Dagger Mastery [E-Rank] ★★★★☆ Expert · Passive · adds **+0.25** to a Quickknife's chassis multiplier (×0.75 → **×1.00**), applying to both equipped Quickknives. **Successful uses 24 · qualifying scenes total 9 · mastery progress 0/3 (Expert — new multiplier unauthored, see note) · rank ascensions 0.** **Mastery advanced Adept → Expert at the close of the 2026-08-08 D-Rank trial Gate (`EVT-000205`)**, its third qualifying scene at Adept — every dagger-involving strike across the trial applied it materially. **The campaign holds this skill's mastery multiplier at the undocumented +0.20-at-Adept value under frozen Profile 1.30** (the 1.31 correction that would author +0.05/level is not adopted here per the player's standing instruction to remain on 1.30). No Expert-tier multiplier is authored under 1.30 either. Flagged as an authoring gap, same treatment as Flash Step's open ascension offer: the prior +0.20 value is retained rather than guessed, pending an owner ruling."
       - "Twin Fang [E-Rank] ★★★☆☆ Adept · Mana 4 · while two Quickknives are equipped, follow one ordinary Quickknife strike against a single target with a separately rolled strike from the other Quickknife in the same action. Each strike uses only its own weapon power; the skill-enabled second strike has a **×1.30** Twin Fang mastery multiplier at Adept. Twin Fang occupies the action's offensive active-skill position and cannot combine with Rupture. **Successful uses 21 · qualifying scenes total 7 · mastery progress 1/3 toward Expert · rank ascensions 0.**"
@@ -212,7 +212,7 @@ canonical_state:
       # mastery track (Section 7.4) and carry neither counter.
       - { path: skills.stone_skin.mastery_level, baseline_value: 2, baseline_as_of: EVT-000158, current_value: 2 }
       - { path: skills.rupture.mastery_level, baseline_value: 5, baseline_as_of: EVT-000158, current_value: 3 }
-      - { path: skills.flash_step.mastery_level, baseline_value: 4, baseline_as_of: EVT-000158, current_value: 5 }
+      - { path: skills.flash_step.mastery_level, baseline_value: 4, baseline_as_of: EVT-000158, current_value: 3 }
       - { path: skills.keen_sense.mastery_level, baseline_value: 3, baseline_as_of: EVT-000158, current_value: 3 }
       - { path: skills.dagger_mastery.mastery_level, baseline_value: 3, baseline_as_of: EVT-000158, current_value: 4 }
       - { path: skills.twin_fang.mastery_level, baseline_value: 2, baseline_as_of: EVT-000158, current_value: 3 }
@@ -224,7 +224,7 @@ canonical_state:
       - { path: skills.sprint.mastery_level, baseline_value: 2, baseline_as_of: EVT-000158, current_value: 2 }
       - { path: skills.stone_skin.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
       - { path: skills.rupture.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 1 }
-      - { path: skills.flash_step.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
+      - { path: skills.flash_step.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 1 }
       - { path: skills.keen_sense.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 1 }
       - { path: skills.dagger_mastery.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }
       - { path: skills.twin_fang.rank_ascensions, baseline_value: 0, baseline_as_of: EVT-000158, current_value: 0 }

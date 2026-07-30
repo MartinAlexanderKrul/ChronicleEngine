@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000219
+  source: EVT-000221
   game_date: "2026-08-09 ~07:50 -05:00"
   real_date: "2026-07-30"
 role: canonical ledger
@@ -27,7 +27,7 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.37
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.38
 - **Engine Rules:** 0.2.0
 - **Data Model:** 0.1.5
 - **Campaign time:** 2026-08-09, approximately 07:50 CDT (`-05:00`)
@@ -43,6 +43,7 @@ subjects: []
 - **Pending rewards:** 3 Ability Points, 10 Status Recovery uses, and 3 Daily Random Boxes.
 - **Daily streak:** 2. The sixteenth daily quest was completed on 2026-08-09.
 - **Keen Sense:** 18 successful uses, 14 qualifying scenes, 2/3 mastery progress toward Expert.
+- **Flash Step:** C-Rank Adept (ascended from D-Rank Master, `EVT-000220`) · Mana 6 · 15 successful uses, 12 qualifying scenes, 0/3 mastery progress toward Expert, 1 rank ascension. Gains the new **Through the barrier** category.
 - **Cash/checking:** $60,006.50. **Gold:** 1,532.
 - **Notable carried item:** Gate Direction Finder, purchased from Elias Ward on 2026-08-08 for $800.
 - **Current location:** Outdoors on the Rogers Park/lakefront route, running with Owen toward Alexander's apartment.
@@ -82,7 +83,7 @@ At 06:00 on 2026-08-09 Alexander completed his sixteenth daily regimen. During t
 
 ## Promotion Status
 
-Live canon is promoted through `EVT-000219`. The relay material has been reconciled against checkpoint 0042 without replacing the later Profile 1.37 adoption already present in live canon. No relay promotion remains pending. The Daily Premium backlog is explicitly unresolved.
+Live canon is promoted through `EVT-000221`. The relay material has been reconciled against checkpoint 0042 without replacing the later Profile 1.37 adoption already present in live canon. Since Checkpoint 0043, Flash Step's standing breakthrough offer was accepted after Profile 1.37 closed its authoring gap (`EVT-000220`: D-Rank Master → C-Rank Adept), and Profile 1.38 was then adopted (`EVT-000221`), authoring the B-Rank rung of the same category ladders for all seven affected starting skills before the gap recurs elsewhere. Both are additive/free, consume no fictional time, and reopen nothing. No relay promotion remains pending. The Daily Premium backlog is explicitly unresolved.
 
 ---
 

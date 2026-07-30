@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000219
+  source: EVT-000221
   game_date: "2026-08-09 ~07:50 -05:00"
   real_date: "2026-07-30"
 role: canonical ledger
@@ -1221,3 +1221,19 @@ Claim separately at any time.
 - Advanced existing **OBJ-15** rather than minting a duplicate: Alexander and Owen committed to living together and to searching for a new, larger apartment belonging to both from the beginning.
 - New anchor: **2026-08-09 ~07:50**, running back toward Alexander's apartment. Owen's hospital shift begins 08:00; Alexander's C-Rank harvest job stages 09:00. Neither arrival is resolved.
 - Opened and found unchanged: `110_WORLD_LEDGER.md`; no durable world object was created. Updated live targets: `100`, `120`, `130`, `140`, `160`, `170`, `180`, and `system/ID_REGISTRY.md`.
+
+**2026-08-09 ~07:50 Chicago time — Flash Step: authoring gap closed, ascension accepted (`EVT-000220`; no fictional time consumed).**
+
+- **Gap closed.** Gatefall Profile 1.37 (`EVT-000215`) authored the missing Section 7.3 capability-axis category ladder for Flash Step: first Rank above native (C) gains **Through the barrier** — crossing a closed constructed barrier given a prior read of the far side, never a Gate boundary/seal/instance wall. Flash Step's standing breakthrough offer (open since `EVT-000199`) was therefore no longer misstated.
+- **Offer accepted.** Flash Step **D-Rank Master (Mana 4, whole-scene follow-up window) → C-Rank Adept (Mana 6, follow-up window falls back to two further exchanges, gains Through the barrier)**. Mastery falls to Adept (not Novice); `mastery_progress` resets to 0; `successful_uses` (15) and `qualifying_scenes_total` (12) carry forward unchanged. `rank_ascensions` 0 → 1.
+- **Nothing else changed:** no roll, no gold or cash, no other skill, pool, or counter beyond the ones named above.
+- **Versions:** unchanged — Gatefall Profile 1.37, Engine 0.2.0, Data Model 0.1.5. Checkpoint 0043 remains immutable at its captured state.
+- **Repository allocation:** `EVT-000220`; no entity, record, or relationship identifier minted.
+
+**2026-08-09 ~07:50 Chicago time — Gatefall World Rule Profile 1.38 adopted (`EVT-000221`; no fictional time consumed).**
+
+- **What changed in the profile.** Version bumped to 1.38, classified additive: authors the B-Rank rung of Section 7.3's scope-axis and capability-axis category ladders for all seven starting skills that use them — Keen Sense's **through concealment**, Silent Step's **ward-blind**, Exploit Pattern's **composite read**, Field Command's **broadcast relay**, Resonance Extraction's **predictive read**, Sprint's **over the gap**, Flash Step's **through the ward** — pre-empting the same blocked-offer state just closed once for Flash Step (`EVT-000220`) from recurring for the other six.
+- **Open question, not a gap.** A-Rank and S-Rank for these seven skills are explicitly flagged rather than silently unauthored: this world's canon gives every named S-Rank hunter a unique signature technique, not a templated ladder continuation, so scaling a starting skill that far is left to an owner ruling under Section 20.3.
+- **What changed in live state.** `profile_version` 1.37 → 1.38. **Nothing else.** No skill in play stands at B-Rank today; no ascension offer, counter, or resolved outcome changes.
+- **Versions:** Gatefall Profile 1.37 → 1.38, Engine 0.2.0, Data Model 0.1.5. Checkpoint 0043 remains immutable at Profile 1.37.
+- **Repository allocation:** `EVT-000221`; no entity, record, or relationship identifier minted. New migration record `worlds/gatefall/migrations/1.37_to_1.38.md`.

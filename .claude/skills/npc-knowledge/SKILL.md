@@ -20,7 +20,7 @@ If none holds, **the NPC does not know it.** Narrate the NPC from what it actual
 
 ## The player is the authority on what's private
 
-When the player says an NPC couldn't know something, they are right by default — it is their character's private experience. **Stop, accept it, and re-narrate the line from the NPC's real knowledge set.** Do not defend the slip, do not invent a channel after the fact to justify it. A retroactive "well, she could have heard because…" is the same error twice.
+When the player says an NPC couldn't know something, they are right by default — it is their character's private experience. **Stop, accept it, and re-narrate the line from the NPC's real knowledge set.** Do not defend the slip, do not invent a channel after the fact to justify it. A retroactive "well, she could have heard because…" is the same error twice. Hold the closed channel as a pending ruling in conversation rather than writing it to the NPC ledger file mid-scene — per the `save` skill, that write happens only when `/save` runs.
 
 ## Rationalizations — including the one this failure ran on
 

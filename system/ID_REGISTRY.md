@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000180 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000226 |
+| Event | `EVT-` | Event | EVT-000229 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -369,6 +369,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000224 | Event | Gatefall: Pendragon: Ada Reyes's C-Rank harvest job - three veins worked solo under a held Resonance Extraction Pattern (Novice to Practiced), 93 C-Rank crystals mined on an owner-ruled exceptionally rich Gate (Frozen Gallery precedent), 18 declared/75 kept private, $9,000 harvest-share payout filed; OBJ-24 closed |
 | EVT-000225 | Event | Gatefall: Pendragon: lunch and a first solo OBJ-15 apartment-research pass, three candidates shortlisted, nothing committed |
 | EVT-000226 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement (Profile Section 7.1) for EVT-000222-EVT-000225, explicit none for gatefall.skill_formation |
+| EVT-000227 | Event | Gatefall: Pendragon: live 2026-08-09 06:00 Daily Premium rotation resolved (fabrication series Crimson) at the player's request; 2026-08-06/-07/-08 gap left unbackfilled by owner ruling |
+| EVT-000228 | Event | Gatefall: Pendragon: System shop session - sold 71 C-Rank and 14 E-Rank crystals, bought the Armory Key [D-Rank], swapped Legs/Feet gear E-Rank to D-Rank, sold seven retired/unused items; net gold 3,532 to 12,726 |
+| EVT-000229 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement (Profile Section 7.1) for EVT-000227-EVT-000228, explicit none for gatefall.skill_formation |
 
 ---
 

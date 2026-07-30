@@ -63,7 +63,8 @@ ChronicleEngine/
 │
 ├── system/
 │   ├── ID_REGISTRY.md
-│   └── WORLDS_AND_CAMPAIGNS.md
+│   ├── WORLDS_AND_CAMPAIGNS.md
+│   └── RUNTIME_CONTEXT_BUDGETS.yaml
 │
 ├── tools/
 │   └── validate_repository.ps1
@@ -72,6 +73,7 @@ ChronicleEngine/
 │   └── <world>/
 │       ├── 200_WORLD_BIBLE.md
 │       ├── 206_WORLD_RULE_PROFILE.md    (optional; declared overrides)
+│       ├── migrations/                  (optional; world-authored version history, see Decision 081)
 │       ├── ...
 │       ├── institutions/
 │       │   └── <institution>/

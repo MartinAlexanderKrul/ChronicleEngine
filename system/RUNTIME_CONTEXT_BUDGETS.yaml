@@ -57,7 +57,7 @@ surfaces:
       - gatefall_pendragon_001:/system
     baseline_tokens_by_operation:
       gatefall_pendragon_001:save: 2486
-      gatefall_pendragon_001:/system: 19992
+      gatefall_pendragon_001:/system: 22904
       gatefall_pendragon_001:/system skills: 3216
       gatefall_pendragon_001:/system shop: 6421
       gatefall_pendragon_001:/system quests: 2315

@@ -114,6 +114,7 @@ diegetic_commands:
       - canonical_state.system_state.daily_quest
       - canonical_state.system_state.non_daily_quests
       - canonical_state.system_state.gold
+      - canonical_state.system_state.daily_premium
     render_policy: exact-template-only
   /system skills:
     dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels

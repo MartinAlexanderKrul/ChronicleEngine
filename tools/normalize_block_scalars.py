@@ -10,8 +10,19 @@ clean.
 
 A literal block scalar has none of those hazards - the text is taken verbatim.
 This finds every multi-line quoted value in the named files and rewrites it,
-verifying each conversion by parsing the result and comparing the recovered
-string before anything is written.
+verifying each conversion by de-indenting the emitted block and comparing it
+against the source text before anything is written. A full YAML round-trip
+cannot be used for this check: the enclosing block does not parse yet, which
+is why it is being repaired, so there is nothing for the parser to recover
+from until every defect in the block is fixed. This text-level check does not
+independently confirm the emitted block parses; convert_file() re-scans the
+rebuilt text afterward and reports any block still failing.
+
+Escaping is limited to `\"` -> `"`; a `\n` or literal backslash-n sequence
+inside a converted value is carried through unchanged rather than turned into
+a real newline, since a block scalar cannot represent an escaped newline at
+all - only converted values that used `\"` for something other than an actual
+newline round-trip losslessly through this script.
 
 Run it after a session that added prose to a ledger. It is idempotent: a value
 already in block form is skipped.

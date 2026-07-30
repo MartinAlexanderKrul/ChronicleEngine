@@ -23,6 +23,11 @@ description: Use when the player types /save or asks in any words to save, check
    ```
    Do not manually allocate the ordinal, create the snapshot directory or manifest, edit the generated index, or substitute narrated gate results. The helper owns those steps, rollback, final read-back, and exact validator output.
 4. **Write the player's message only now.** Success requires the final `CHECKPOINT_RECEIPT_JSON` to say `"status":"created"` and names its verified checkpoint path. Any failure, staging path, or unwritten target → report a **partial checkpoint** per the algorithm's step 8. Never draft the success message before the helper finishes.
+5. **Commit to `main` — every green checkpoint, no separate request needed.** Once the helper returns `"status":"created"`:
+   - Check `git branch --show-current`. If it's already `main`, commit there. Otherwise `main` is checked out in a separate worktree — find it with `git worktree list` (the path moves; don't reuse a cached one) and commit there instead, re-running the repository and checkpoint-contract gates in that worktree first.
+   - Stage only this session's checkpoint files: the changed campaign ledgers (`100`–`180`), `system/ID_REGISTRY.md`, `system/WORLDS_AND_CAMPAIGNS.md`, and the new `saves/900_CHECKPOINT_NNNN/` directory. Check `git status --short` first — never `git add -A`, since unrelated in-progress edits from other sessions are routinely sitting in this working tree.
+   - Commit only; do not push to `origin/main` unless the player separately asks for that.
+   - A checkpoint is not finished until this lands on `main`. Report the commit alongside the checkpoint result, not as a separate follow-up.
 
 ## Rationalizations — all observed in real failed sessions
 

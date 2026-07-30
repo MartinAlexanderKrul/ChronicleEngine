@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000177 |
+| Entity | `ENT-` | Persistent Entity | ENT-000180 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000221 |
+| Event | `EVT-` | Event | EVT-000226 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -361,6 +361,14 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000216 - EVT-000219 | Event | Gatefall: Pendragon: relay recovery after Checkpoint 0042 - Kesha visit and finder purchase, Owen reconciliation and overnight recovery, sixteenth daily completion and shared-home commitment, and the Checkpoint 0043 promotion barrier |
 | EVT-000220 | Event | Gatefall: Pendragon: Flash Step authoring gap closed (Profile 1.37's Section 7.3 capability-axis category ladder) and its standing Section 7.5 breakthrough offer accepted - D-Rank Master to C-Rank Adept, gaining Through the barrier |
 | EVT-000221 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.38 - authors the B-Rank rung of Section 7.3's scope-axis and capability-axis category ladders for all seven starting skills that use them, pre-empting Flash Step's just-closed authoring gap recurring elsewhere; flags A-Rank/S-Rank as an explicit open question rather than unauthored |
+| EVT-000222 | Event | Gatefall: Pendragon: all three pending Ability Points +3 claimed and allocated (Perception +5, Vitality +3, Strength +2, Agility +3, Intelligence +6); maximum Health/Mana re-derived; five Stat Passives (Overpower, Pre-empt, Shrug Off, Flux Sight, Multitask) checked against Section 4.4's threshold table, four rising a Rank |
+| EVT-000223 | Event | Gatefall: Pendragon: all three pending Daily Random Boxes opened - a 2,000 g gold purse, a Greatarm [D-Rank], and a Seer's Lens [D-Rank], none streak-upgraded |
+| ENT-000178 | Entity | Gatefall: Pendragon: Tomas Alvarez, strike captain on Ada Reyes's 2026-08-09 C-Rank harvest job |
+| ENT-000179 | Entity | Gatefall: Pendragon: Denny Osei, harvest-element miner on Ada Reyes's 2026-08-09 C-Rank harvest job |
+| ENT-000180 | Entity | Gatefall: Pendragon: Marisol Ruiz, harvest-element miner on Ada Reyes's 2026-08-09 C-Rank harvest job |
+| EVT-000224 | Event | Gatefall: Pendragon: Ada Reyes's C-Rank harvest job - three veins worked solo under a held Resonance Extraction Pattern (Novice to Practiced), 93 C-Rank crystals mined on an owner-ruled exceptionally rich Gate (Frozen Gallery precedent), 18 declared/75 kept private, $9,000 harvest-share payout filed; OBJ-24 closed |
+| EVT-000225 | Event | Gatefall: Pendragon: lunch and a first solo OBJ-15 apartment-research pass, three candidates shortlisted, nothing committed |
+| EVT-000226 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement (Profile Section 7.1) for EVT-000222-EVT-000225, explicit none for gatefall.skill_formation |
 
 ---
 

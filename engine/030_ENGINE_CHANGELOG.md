@@ -12,6 +12,15 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-30 — Gatefall Profile 1.37: versioning the frozen-1.36 trigger-manifest edit
+
+**World authoring:** Gatefall World Rule Profile 1.36 → 1.37 (Decisions 062, 069 — world-scoped, consumes no engine decision number)
+**Problem:** the runtime-audit-refactor work (Recommendations R6, R11) had written Section 14.3's trigger-dispatch manifest, its per-domain `ratification` blocks, and a Tier-2 timing correction directly into the text of frozen Profile 1.36, with no version bump — a Rules Section 14.6 violation (a frozen version's declared behavior does not change without one). The same edit also regressed the Tier-2 appraisal precondition to a retired "Analyst" reference predating Profile 1.33's absorption of Analyst into Flux Sight's B-Rank rung.
+**Profile:** content is unchanged from what was already live — the manifest and ratification declarations, and the Tier-2 line's "mandatory at the first qualifying yield" timing (Decision 081 ruling 2's already-ratified design) — now correctly versioned as 1.37, additive, with the Flux Sight/Analyst regression repaired in the same line.
+**Tools:** fixed a latent bug in `tools/extract_profile_migrations.py`'s `partition()` — it discarded the newly-authored history paragraph when a prior extraction's pointer paragraph already existed in the profile header, so any *second* run of the tool (the "run it after each adoption" workflow its own docstring describes) silently produced no output. Verified idempotent after the fix.
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, `worlds/gatefall/migrations/1.36_to_1.37.md`, `worlds/gatefall/migrations/INDEX.md`, `worlds/gatefall/README.md`, `system/WORLDS_AND_CAMPAIGNS.md`, `system/ID_REGISTRY.md`, `campaigns/gatefall_pendragon_001/` (`090`, `100`, `160`, `170`, `180`), `tools/extract_profile_migrations.py`, `tools/test_gatefall_*_contract.ps1`
+**Audit:** closes the Rules 14.6 freeze violation flagged in review of the runtime-audit-refactor commit; see Decision 081's Consequences section for the correction note.
+
 ## 2026-07-29 — Readiness budget enforced at the hard bound, not the warning line
 
 Owner ruling. `tools/test_runtime_context_budget.ps1` required Gatefall readiness to sit below **20,000** estimated tokens — the *warning* threshold — so a campaign growing in the ordinary way failed a gate the architecture does not set. The audit's own success metric (Section 22) is 30,000 before situation-specific fetches, and `system/RUNTIME_CONTEXT_BUDGETS.yaml` has always declared 20,000 as a warning and 30,000 as the failure.

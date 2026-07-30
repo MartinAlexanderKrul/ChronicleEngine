@@ -13,9 +13,9 @@ canonical_record: REC-000079
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000214
+  source: EVT-000215
   game_date: "2026-08-08 ~15:15 -05:00"
-  real_date: "2026-07-29"
+  real_date: "2026-07-30"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -177,6 +177,7 @@ subjects:
   - EVT-000212
   - EVT-000213
   - EVT-000214
+  - EVT-000215
 ```
 
 ---
@@ -3797,7 +3798,9 @@ description: "The first promotion-barrier batch settlement this campaign has wri
 
 Every other scene in the span classifies `none`, and for reasons Section 7.1 states rather than by default. `EVT-000155`-`EVT-000157`, `EVT-000163`, `EVT-000166`, `EVT-000169`, `EVT-000170` and `EVT-000173` are conversation, errand, and relationship scenes demonstrating no repeatable method under tested execution. `EVT-000164` and `EVT-000165` are Keen Sense reads — a known ratified skill, so they settle as Section 7.4 use counters, which they did, and open no formation candidate. `EVT-000171` is rest and the daily quest issuing. `EVT-000172` is the doubled solo regimen: the nearest call in the batch, and still `none`, because doubling an automatic daily checklist adds volume to a task whose outcome is already assured rather than supplying the bounded objective, uncertain execution, or informative resistance Section 7.1 requires to distinguish improvement from repetition.
 
-No fictional time, roll, counter, skill value, item, pool, or resolved outcome changes. This Event records a classification that was owed and never written; it authors no new fiction."
+No fictional time, roll, counter, skill value, item, pool, or resolved outcome changes. This Event records a classification that was owed and never written; it authors no new fiction.
+
+**Recovery derivation for the span, restored 2026-07-30 from checkpoint 0042's still-immutable copy after a later ledger compression dropped it from live state without a surviving live copy.** 20h35m elapsed from the 2026-08-05 14:40 anchor, remainder carried in at 648,000 from `EVT-000167`'s settlement (`900_CHECKPOINT_0034`). `EVT-000169` (14:40→15:15, 35 min, active): 648,000 + 2,100 × 72 × 20 = 3,672,000 units → +5 Mana, remainder 72,000 (Mana 35 → 40), then a repeat Keen Sense activation (🎲 d100 20, failure, no new information), 2-Mana cost (40 → 38). `EVT-000170` (15:15→21:30, 6h15m, active — waiting, the drive, dinner, cleaning, bed): 72,000 + 22,500 × 72 × 20 = 32,472,000 units → pool reaches maximum before the span ends (Mana 38 → 72, capped), remainder reset to 0 per Section 5.2. `EVT-000171` (21:30→06:00, 8h30m resting overnight): pool already full, remainder stays 0; Health unaffected, already full. `EVT-000172` (06:00→~10:30, the thirteenth daily quest doubled solo): no Mana cost (physical regimen only), pool remains full. `EVT-000173` (~10:30→11:15, the lake swim): no Mana cost, pool remains full. Health was at maximum throughout the entire span, so its remainder stays 0 (Profile Section 6.1.1). Mode remains `active`."
 ```
 
 ## EVT-000176 - The Lake: Two Private Operations Collide
@@ -4018,7 +4021,9 @@ description: "The promotion barrier for Checkpoint 0036, discharging Profile Sec
 
 **Combat-formation reconciliation for the span** (Section 7.4 promotion reconciliation, bounded to play since `EVT-000175`): re-counted from resolved actions and the Mana trace. Alexander's trace reads 72 to 70 to 72, one activation, matching one Keen Sense use exactly. Exploit Pattern: one activation, one use. Field Command: three resolved actions in which the relayed Pattern materially applied. **Overpower is explicitly counted as zero for `EVT-000176`** — a non-hostile partner in play, and a grapple that was broken rather than resolved, which fails Section 7.4's material-application test. No missed count, duplicate, or stale threshold found. No `pending-ratification` candidate exists; the readiness gate is clear.
 
-No fictional time, roll, Stat, pool, item, or resolved outcome changed."
+No fictional time, roll, Stat, pool, item, or resolved outcome changed.
+
+**Recovery derivation for the span, restored 2026-07-30 from checkpoint 0042's still-immutable copy after a later ledger compression dropped it from live state without a surviving live copy.** 3h37m elapsed from the 2026-08-06 11:15 anchor, all of it `active` mode. Health was at maximum throughout the whole span and never took damage — Alexander made no attack and was never attacked — so its remainder stays 0 (Profile Section 6.1.1). Mana: full at 11:15 and untouched until the instance threshold at ~13:52, where a single Keen Sense activation cost 2 (72 → 70, `EVT-000179`). From 13:52 to 14:52, 3,600s active: 0 + 3,600 × 72 × 20 = 5,184,000 units → +7 Mana, which caps the pool at 72 and resets the remainder to 0 per Section 5.2 (Mana 70 → 72) — one activation in the trace, matching exactly the one recorded Keen Sense use above. The instance's own clock is separate from recovery: it closes at 15:55 real elapsed time from its 13:52 opening, or on the boss kill."
 ```
 
 ## EVT-000182 - The Shrine Guard, and What Was Under It
@@ -5311,4 +5316,34 @@ progression_audits:
 description: "The Checkpoint 0042 promotion barrier, covering `EVT-000211`-`EVT-000213`. Keen Sense's breakthrough ascension settled its own counters at `EVT-000211`; its legendary operating-method read at Walt Adamik's settled one successful use and one non-combat qualifying scene at `EVT-000212`. The use exercised an existing skill effect and supplies no distinct skill-formation candidate. The Ada Reyes callback (`EVT-000213`) involved no skill activation, danger, or consequential practice. `pretext_and_cover`, `reactive_pattern_anticipation`, `formation_instruction`, `dimensional_weapon_control`, and `nonvisual_combat_mapping` remain unchanged; no pending-ratification candidate exists. Explicit `gatefall.skill_formation` result: none.
 
 **Promotion reconciliation.** The transcript's read validly established both items' operating intent and method under Keen Sense's D-Rank category, but overstated the result as a full appraisal. Reliable item Rank/full appraisal requires Flux Sight at B-Rank (Profile Sections 4.4 and 7.3), so both item Ranks and hidden origins are recorded as unconfirmed. The purchase, the items' observed functions, the successful use, and its qualifying-scene credit stand. `EVT-000210`'s fictional timestamp is also corrected from ~21:40 to the Checkpoint 0041 anchor, ~13:15; the earlier value was session-clock contamination and the profile adoption consumed no fictional time."
+```
+
+
+## EVT-000215 - Profile Adoption: Gatefall World Rule Profile 1.37
+
+```yaml
+id: EVT-000215
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-08 ~15:15 -05:00"
+  real_date: "2026-07-30"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-08 ~15:15 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.37, an additive advance over frozen 1.36. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged, ~15:15 on 2026-08-08.
+
+**Why this bump exists.** A repository-tooling change (2026-07-30) had added Section 14.3's operational trigger-dispatch manifest — `trigger_manifest_version`, the `gatefall.quest.urgent`/`gatefall.quest.hidden`/`gatefall.skill_formation` domains, and each domain's `ratification` block — plus a Tier-2 timing correction, directly into the text of frozen Profile 1.36, with no version bump. Rules Section 14.6 is explicit that a frozen version's declared behavior does not change without one. This Event and the accompanying 1.36 → 1.37 migration record close that gap: the content is unchanged from what was already live, now correctly versioned rather than silently amending a frozen contract.
+
+**What the manifest declares.** Three trigger domains — Urgent quests, Hidden quests, skill-formation — each name their candidate deltas, governing eligibility heading, opportunity identity, blocked statuses, and settlement policy; `gatefall.skill_formation` additionally declares its `ratification` block (`evidence_threshold: 3`, the pre-authored `dimensional_weapon_control` result, and its settlement Event kinds). This is the same content `tools/validate_repository.ps1` previously hard-coded for progression ratification (Decision 081's Recommendation R11, item 8) and the same eligibility rules Sections 8.4.2/8.4.3 already stated in prose — declared, not invented.
+
+**Tier-2 timing, corrected in the same motion.** Section 14.3's Tier 2 line now reads **mandatory at the first qualifying yield** rather than *permitted, Runtime-timed* — the design question Decision 081 ruling 2 already settled ('Tier-2 triggers fire at the first qualifying yield... this confirms the contract already implemented... no behaviour changes'), which the unversioned edit had contradicted by changing the frozen text out from under that ruling. The appraisal precondition is restored to **Flux Sight is B-Rank or higher** (Section 4.4) — the unversioned edit had regressed this to a retired 'Analyst' reference from before Profile 1.33 absorbed Analyst into Flux Sight's B-Rank rung; this adoption both versions the timing correction properly and repairs that regression in the same line.
+
+**What does not change.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome. No Urgent offer or Hidden pointer is issued or reinterpreted retroactively; every settled candidate and pointer in this campaign stands exactly as resolved. `dimensional_weapon_control` remains the sole pre-authored progression result and its evidence threshold remains 3. No `/system` row changes. Immutable Profile 1.36-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.37 at readiness."
 ```

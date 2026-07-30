@@ -130,7 +130,9 @@ def partition(profile_text: str):
         head = paragraph.strip().split("\n")[0]
         kind = classify(head)
         if kind and kind[0] == "pointer":
-            current = None
+            if current:
+                blocks.append(current)
+                current = None
             continue
         if kind:
             if current:

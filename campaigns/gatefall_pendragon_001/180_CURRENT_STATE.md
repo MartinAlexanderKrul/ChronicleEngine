@@ -13,9 +13,9 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000214
+  source: EVT-000215
   game_date: "2026-08-08 ~15:15 -05:00"
-  real_date: "2026-07-29"
+  real_date: "2026-07-30"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -25,12 +25,13 @@ subjects: []
 
 ## Bindings and Versions
 
-- World: Gatefall (World Version 0.1, World Rule Profile **1.36**)
+- World: Gatefall (World Version 0.1, World Rule Profile **1.37**)
 - Engine: 0.2.0 (Knowledge & Civilization); Data Model 0.1.5
 - Start city: Chicago
 - Campaign date: **2026-08-08T15:15:00-05:00** — home for a shower and change, a trade visit to Walt Adamik's, and a confirmed callback with Ada Reyes behind him. This is the exact canonical settlement anchor. The fifteenth daily quest is complete (streak 0→1); crew training is fixed for **2026-08-09, 18:00**, with a standing order that no crew Gate precedes it; a confirmed C-Rank harvest job (`OBJ-24`) stages at **09:00** the same morning, clear of training. Wade Bishop's D-Rank trial is **closed** — cleared, contested, and settled on Alexander's own terms.
 - Campaign state: session-3 in progress. Since Checkpoint 0040's 00:25 anchor (`EVT-000200`-`EVT-000209`): the fifteenth daily quest completed doubled solo, then Wade Bishop's D-Rank trial at 4110 W Fullerton with a borrowed four-hunter crew (Reggie Calloway, Bhavna Iyer, Foster Nakashima, Callie Dunmore) whose opening coordination failed with no lead assigned, costing Reggie an ambush hit. Alexander took over as field lead unassigned, killed four of the first cluster personally, took a genuine part in the crew's clearing of the second cluster and both elites (+300 XP), then killed the Gate's Carapaced/Impact boss alone in a two-strike ambush (+250 XP) — **XP 445 → 1095/1100**, five short of Level 12. **Keen Sense crossed Expert → Master; Dagger Mastery crossed Adept → Expert** (new multiplier unauthored under frozen 1.30, flagged as an authoring gap). Mined 24 D-Rank crystals solo, sold 12 privately (480 g), folded 8 into the crew's declared pool. Demanded 50% of the trial's combined value and full field command from Wade Bishop; Wade committed to carry it upstairs and confirmed the Gate is Ironline's own guild-held contract. Set two conditions for further Ironline consideration (new `OBJ-23`): the payment landing, and the still-owed B-Rank harvest trial actually moving. Closed with a phone call to Owen, resolving a near two-day silence — Owen naming his own avoidance as the rocks-fear recurring in real time (Character First, `REL-000066`). **No World Rule Profile adoption this span** — remains on frozen **1.30**, not 1.31, per the player's standing instruction.
 - World Rule Profile: Gatefall **1.36**, adopted as the whole **1.30 → 1.36 chain** at `EVT-000210` — the campaign played Checkpoints 0038-0041 under frozen **1.30** and never passed through the intermediate versions. Live effects: Dagger Mastery Expert now +0.25 (the value 1.30 left unauthored); Rank-Sight is **Flux Sight [D-Rank]**, a Stat Passive reading a monster's Rank, Health and Mana; Multitask **D-Rank**, non-daily capacity 3; Overpower, Pre-empt and Shrug Off E-Rank; every fixed-Rank entity carries Rank Mana prospectively. **Ascension resolved (`EVT-000211`):** Keen Sense's standing breakthrough offer, open since reaching Master at `EVT-000199`, was accepted — E-Rank Master → **D-Rank Adept**, scope held at 5 subjects by the Section 7.2 ratchet, gaining the D-Rank *intent and method* detection category; Mana recomputed 1 → 2. Alexander has no pending ratification.
+- World Rule Profile: Gatefall **1.37**, adopted at `EVT-000215`, **since** Checkpoint 0042 (a repository-tooling change had added the trigger-dispatch manifest and a Tier-2 timing correction to frozen 1.36's text with no version bump; this closes that gap under the correct version). Additive, no recomputation: every settled Hidden pointer, Urgent offer, and skill-formation candidate stands exactly as resolved, and no `/system` row changes.
 - **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0042/` — immutable Profile **1.36** / Data Model **0.1.5** capture at the 2026-08-08 15:15 anchor, requiring **no migration** on restore, capturing an ordinary, non-dangerous closing scene (walking away from a confirmed phone call, Alexander safe, nothing pending). `900_CHECKPOINT_0041` (2026-08-08 13:15, Profile 1.30) is the preceding immutable capture, just off the call with Owen. `900_CHECKPOINT_0040` (2026-08-08 00:25) is at his apartment right after the penalty zone. `900_CHECKPOINT_0038` (2026-08-06 16:00) is outside Edgewater Hospital. `900_CHECKPOINT_0036` (2026-08-06 14:52) is an **open dangerous scene** — restoring it resumes mid-clear with a boss and a second elite alive.
 
 ## Protagonist
@@ -75,6 +76,8 @@ Session 3, 2026-08-08 (Friday), **~15:15, warehouse district, walking back towar
 ## Promotion Status
 
 Session 3 in progress — **checkpoint `900_CHECKPOINT_0042` written** at the 2026-08-08 15:15 anchor under Profile **1.36** / Data Model **0.1.5**, carrying `EVT-000210`-`EVT-000214`. No migration on restore; an ordinary closing scene, no danger, no roll pending.
+
+**Since Checkpoint 0042, live readiness has adopted Profile 1.37 (`EVT-000215`).** A repository-tooling change had declared Section 14.3's trigger-dispatch manifest and corrected Tier-2 timing directly in frozen Profile 1.36's text with no version bump; this adoption versions that content correctly and repairs the Flux Sight/Analyst regression the same edit introduced. Additive, no recomputation, no fictional time; the fiction remains at the same 15:15 anchor, still unwritten to a new checkpoint.
 
 **This barrier (`EVT-000211`-`EVT-000214`) discharges cleanly.** Keen Sense's breakthrough ascension (`EVT-000211`) settled its counters immediately (mastery_level 5→3, mastery_progress reset to 0, scope_floor set to 5, rank_ascensions 0→1) — free, no fictional time. The Walt Adamik visit (`EVT-000212`) credited Keen Sense one qualifying scene as non-combat consequential work (operating-method read): `successful_uses` 16→17, `qualifying_scenes_total` 12→13, `mastery_progress` 0→1 toward Expert. `EVT-000214` records the appraisal boundary: item Ranks and hidden origins remain unconfirmed; no counter, trade, or observed function changes. No other skill activated this span. `pretext_and_cover`, `reactive_pattern_anticipation`, `formation_instruction`, `dimensional_weapon_control`, and `nonvisual_combat_mapping` are all unchanged — no matching evidence occurred. No `pending-ratification` candidate exists; the readiness gate is clear.
 

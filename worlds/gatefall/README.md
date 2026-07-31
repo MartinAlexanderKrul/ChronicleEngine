@@ -1,8 +1,8 @@
 # Gatefall World — Usage Guide
 
 **World Status:** Complete and playable
-**Version:** 0.1 (World Rule Profile 1.42)
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.5; Gatefall World Rule Profile 1.42
+**Version:** 0.1 (World Rule Profile 1.43)
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.5; Gatefall World Rule Profile 1.43
 **Created:** 2026-07-22
 
 ---

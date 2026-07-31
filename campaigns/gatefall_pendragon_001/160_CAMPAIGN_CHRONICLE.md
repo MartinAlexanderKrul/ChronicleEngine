@@ -213,6 +213,7 @@ subjects:
   - EVT-000248
   - EVT-000249
   - EVT-000250
+  - EVT-000251
 ```
 
 ---
@@ -6452,4 +6453,42 @@ description: "Adoption of Gatefall World Rule Profile 1.42, a compatibility-trea
 **Five E-Rank hunters are recorded as correctly carrying none** under the new floor: Julian Boyd (`ENT-000137`), Renata Marchetti (`ENT-000138`), Denny Osei (`ENT-000179`), Marisol Ruiz (`ENT-000180`), and Milo (`ENT-000168`). Each entry states the reasoning rather than leaving a bare empty field.
 
 **What does not change.** No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes. **No authored signature is removed from any entry at any Rank** — the floor governs what must be authored going forward. A signature has never carried magnitude in the first place (Section 13.6 fixes it as a descriptive fact of method and reach), so authoring six of them alters no damage, reduction, pool, cost, or party effect, and nothing is re-resolved. Every scene in which these six have appeared stands exactly as recorded. Immutable Profile 1.41-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.42 at readiness."
+```
+
+## EVT-000251 - Profile Adoption: Gatefall World Rule Profile 1.43, the Elixir Given Away
+
+```yaml
+id: EVT-000251
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-10 ~07:38 -05:00"
+  real_date: "2026-07-31"
+type: Event
+kind: profile-adoption
+importance: major
+game_date: "2026-08-10 ~07:38 -05:00"
+participants: []
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.43, a compatibility-treatment advance over frozen 1.42. **No fictional time is consumed, no scene occurs, and no resolved outcome changes.** Alexander is not a participant and learns nothing; no elixir has been bought, given, or drunk.
+
+**What this is.** Gatefall's founding division is that one person grows and nobody else does — an awakened's capability is their fixed Rank (Section 2), their pools are read from the Section 6.1 table, and nothing they do, earn, train for, or survive moves either. 1.43 leaves every word of that standing and adds exactly one hand that can reach past it: **the Bearer's, spending a Section 12.5 stat elixir on another awakened.** It is the first exception to Section 2 since this profile was written, and the reasoning is that the System is not the world. What the Bearer hands someone is the System's, and the System's rules are not the ones an appraiser measures by.
+
+**New Section 12.5.1 governs it.** **Vitality and Intelligence only** — Strength, Agility and Perception cannot be raised this way, because Section 13.1 resolves those by Rank and a point has nothing to attach to. **Uncapped for a non-Bearer:** Section 12.5's max-3-lifetime is a limit on the Bearer's own progression and does not bind what he spends on someone else, so gold is the only limit at 5,000 g a point. Each point applies the Bearer's own conversion as a flat permanent addition on top of the recipient's variance-adjusted Rank pool — **+4 maximum Health per Vitality, +2 maximum Mana per Intelligence**. No Stat sheet is created, no level, XP, skill, mastery, or equipment Stat line follows, and the Section 4.3 domain rating is untouched: the recipient still resolves every contested action at their Rank.
+
+**Section 14.4's boundary is unmoved, and the recipient still knows.** No window, no notification, no number, no System voice — that line holds exactly where it was. But this is the recipient's own body rather than a technique arriving in it, and the change registers **immediately and unmistakably** as depth: more to spend, and further to the bottom of it. A mender, who reads capacity for a living and knows better than anyone what their own floor feels like, will know something has happened the moment it does and will not be able to say what.
+
+**Crossing the bracket, and what the world can see.** Section 6.1.2 gives every Rank a ±10% bracket. Elixir points are added **outside** it — variance is authored once and never recomputed, and the addition is flat on top. The first point that carries a recipient past their bracket ceiling makes them a number **no hunter of that Rank can be**. Nothing announces it. It is real from that instant and invisible until something measures it: a Flux Sight read at the C rung (Section 4.4), a BGM Ranking Bench instrument, or a re-assessment under Section 19.2.
+
+**True Rank advances; the card does not follow.** When both totals reach the next Rank's **flat** Section 6.1 values, the recipient's true Rank advances and they resolve at it in full — Section 13.1 makes Rank the complete description of a body, and a body with B-Rank pools is a B-Rank body. Their licence still records what BGM measured at their Awakening, so Section 9.4's party minimums, contract-Rank ceilings, and sponsor eligibility all keep reading the card. Correcting it means Section 19.2's procedure, and the world has exactly one sanctioned explanation for a card reading higher than it used to: **reawakening** (Section 19.3), a regulator ruling the original measurement wrong. For the first time that explanation is available to describe something that actually happened — and it is still a lie, because nothing was mismeasured.
+
+**The state between Ranks has no name.** Above a bracket ceiling and below the next Rank's floor, a person is not their carded Rank, not the next one, and not reawakened. The world has no box for it, no procedure for it, and no precedent. That is deliberate: it is what a System doing something the world's physics forbids looks like from inside the world.
+
+**The arithmetic, for the case that prompted this.** Owen Callahan (`ENT-000139`) stands at **275 Health and 137 Mana** — C-Rank table at his authored +10%, which is exactly the ceiling of the C bracket. **One** Intelligence elixir takes him to **139**, two points past what any C-Rank can be, for **5,000 g** against Alexander's 13,151. Carrying him to a true B-Rank needs **82 Vitality points and 82 Intelligence points — 164 elixirs, 820,000 g.**
+
+**`GTF-OVR-002` and Section 2 are amended to admit it.** The override's scope clause read that a fixed-Rank entity's pools never grow; it now reads that they never grow *of themselves*, and names Section 12.5.1 as the single intervention that moves them. Section 2's scope table carries the same qualification.
+
+**What does not change.** No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes. **Nothing has happened yet** — no stat elixir has ever been purchased, transferred, or consumed in this or any campaign, so there is no recipient, no elixir point, and no altered pool anywhere at adoption. Every pool in every ledger remains its Section 6.1 table value times its Section 6.1.2 variance. **No past transfer is reread as this rule:** the Stone Skin rune (`EVT-000178`) taught a technique under Section 7.1 and the Standard Mana Potion (`EVT-000180`) restored expended capacity without touching capacity itself — which is precisely the distinction `OBJ-18` turns on, and neither is retroactively an instance of Section 12.5.1. The Bearer's own max-3-lifetime elixir cap is unchanged; only the give-away case is uncapped. Immutable Profile 1.42-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.43 at readiness."
 ```

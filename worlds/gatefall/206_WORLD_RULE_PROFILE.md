@@ -1,12 +1,12 @@
-# Gatefall — World Rule Profile 1.42
+# Gatefall — World Rule Profile 1.43
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.42
+**Profile Version:** 1.43
 **Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.42 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-31. Version 1.42 **puts a Rank floor under Section 13.6's signature-ability requirement.** Since 1.6 the section has required a signature of *every* named NPC hunter; it now requires one of every named NPC hunter at **D-Rank or above**, and an E-Rank entry that carries none is correct rather than incomplete. The reasoning is stated where the rule is: an E-Rank's gift is not absent but **too slight to name, file, or build a reputation on**, which is why the trade's boards record E-Ranks by working type and licence number and why most of them make their living as miners and harvesters (Section 9.4) rather than as anybody's firelance. Section 13.6's own "most awakened manifest a signature" is unchanged, and an E-Rank's may still be named in play if the fiction needs it, authored under the same no-magnitude limit as any other. The Bearer's case is untouched and reads more sharply for it: his card was **blank**, not slight — nothing at all, which is a different thing from an unremarkable E-Rank gift and is exactly why it was notorious. **No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes**; no authored signature is removed from any existing entry. Data Model 0.1.5 remains unchanged. *(1.41 extended Section 6.1.2's authored pool variance to campaign-ledger NPCs; 1.40 removed the boss-kill close from instant dungeons.)*
+**Compatibility Status:** frozen at version 1.43 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-31. Version 1.43 authors **the first and only exception to Section 2 since this profile was written**: a Bearer may spend a Section 12.5 stat elixir on another awakened hunter, and it works. New **Section 12.5.1** governs it. Vitality and Intelligence only, **uncapped** for a non-Bearer, each point adding the Bearer's own conversion — `+4` maximum Health per Vitality, `+2` maximum Mana per Intelligence — flat on top of the recipient's variance-adjusted Rank pool. No Stat sheet is created, Strength/Agility/Perception cannot be raised, the Section 4.3 domain rating is untouched, and Section 14.4's information boundary is unmoved: the recipient gets no window, no notification and no number, but **feels the change immediately** as depth, because it is their own body rather than a technique arriving in it. Elixir points sit **outside** Section 6.1.2's ±10% bracket, so the first point past the ceiling makes the recipient a number no hunter of their Rank can be — real from that instant, invisible until measured. When both pools reach the next Rank's **flat** table values, **true Rank advances** and they resolve at it in full; their **card does not move with them**, so Section 9.4's minimums and every contract ceiling still read the licence until a Section 19.2 re-assessment, whose only sanctioned explanation is Section 19.3's reawakening — now available, for the first time, to describe something that actually happened. `GTF-OVR-002`'s scope clause and Section 2's table are amended to admit it. **No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes**; no elixir has ever been given. Data Model 0.1.5 remains unchanged. *(1.42 put a D-Rank floor under Section 13.6's signature abilities; 1.41 extended Section 6.1.2's pool variance to campaign-ledger NPCs.)*
 
 **Version history and migrations.** Every transformation from Profile 1.1 forward to the active version lives in `worlds/gatefall/migrations/`, one authoritative record per edge, declared by `worlds/gatefall/migrations/INDEX.md`. Restoring a capture taken under Profile *V* runs each record from *V* forward to the active version in order and reads no other migration text; a current rule lookup reads none of them. Immutable checkpoints are never rewritten by a migration — the chain applies to mutable live state. Where a migration record and this profile disagree about present law, this profile governs: a migration record describes a transformation, not a standing rule.
 
@@ -40,7 +40,7 @@ Ranks everywhere in this world are **E, D, C, B, A, S**, weakest to strongest.
 ## GTF-OVR-002 — System Vitality
 
 - **Replaces/refines:** Rules Sections 6.8–6.10 and Decision 018 where they reject a universal health-point pool for a character.
-- **Scope:** The Bearer's Health and Mana. Every other hunter, and every monster, uses the engine's **Rank Health** for its effective Rank (Section 6) and the engine injury model, and from Profile 1.32 a **Rank Mana** pool sized the same way (Section 6.1). Only the Bearer carries a *growing* pool of either kind: his scale with effective Vitality and Intelligence, while a fixed-Rank entity's are read from its Rank and never grow.
+- **Scope:** The Bearer's Health and Mana. Every other hunter, and every monster, uses the engine's **Rank Health** for its effective Rank (Section 6) and the engine injury model, and from Profile 1.32 a **Rank Mana** pool sized the same way (Section 6.1). Only the Bearer carries a pool that grows **of itself**: his scale with effective Vitality and Intelligence, while a fixed-Rank entity's are read from its Rank and never grow on their own. **From Profile 1.43 there is exactly one way a non-Bearer's pools move: the Bearer spending a Section 12.5 stat elixir on them (Section 12.5.1).** That is System intervention, not growth — nothing the recipient does, earns, trains for, or survives will ever change their pools, and no other hand in the world can move them either.
 - **Activation:** Active while the character bears Gatefall's System.
 - **Replacement:** The Bearer's Health and Mana are canonical current/maximum numeric pools. Damage removes Health after applicable reductions; casting and skill use remove Mana. At zero Health the Bearer is incapacitated and receives an outcome appropriate to the attack and established fiction — and in Gatefall, where death is final (Section 6.5), zero Health is where a campaign can end.
 - **State/provenance:** The Bearer's character ledger records current/maximum Health, current/maximum Mana, active conditions, and the event provenance of each change.
@@ -73,7 +73,7 @@ Gatefall has one legendary exception and everyone else. The overrides bind only 
 | | Grows in play? | Governed by |
 |---|---|---|
 | **The unawakened** | No | Engine defaults |
-| **Awakened hunters** (E-Rank–S-Rank) | No — rank is fixed at Awakening; capability is their Rank | Engine defaults |
+| **Awakened hunters** (E-Rank–S-Rank) | No, with one exception — rank is fixed at Awakening and capability is their Rank, but the Bearer may enlarge another awakened's pools with a stat elixir (Section 12.5.1) | Engine defaults, plus `GTF-OVR-002` where a Bearer has intervened |
 | **The Bearer** | Yes — levels, stats, skills, growing pools | `GTF-OVR-001` and `GTF-OVR-002` |
 
 There is exactly **one Bearer alive** in a world-line. Who that is, is campaign canon, not world rule content: this profile binds *the Bearer role*, and each campaign's ledgers name the entity that holds it. A forked world-line has its own Bearer with its own identifier (Decision 053) and inherits this profile unchanged.
@@ -544,6 +544,11 @@ they are the ones that bite:
   31, and Section 5.3's running-dry threshold is 25% of that same varied maximum. This is
   the intended consequence: the deeper well is genuinely deeper and pays proportionally for
   what it does.
+
+**Elixir points sit outside the bracket (Profile 1.43).** Variance is authored once and never recomputed; a
+Section 12.5.1 elixir adds flat on top of the varied pool rather than re-deriving it. A recipient carried past
+their Rank's bracket ceiling is a number no hunter of that Rank can be — which is the whole exposure surface
+that rule creates, and the reason the bracket is worth stating precisely.
 
 A one-scene named character is not a recurring named NPC. If such a character later earns a
 ledger or world-file entry, their variance is authored at that point and is not retroactive.
@@ -1811,7 +1816,34 @@ The unlimited catalogue is separate from the rotating **Daily Premium** stock be
 | **Appraisal scroll** | 60 g |
 | **Stabilization seal** | 150 g |
 | **Skill rune**, any Rank from the skill's native Rank to the Section 7.5 ceiling | E 1,000 g · D 4,500 g · C 20,000 g · B 90,000 g · A 400,000 g · S 1,800,000 g |
-| **Elixir of a stat** (+1 base stat permanent; **max 3 lifetime per stat**) | 5,000 g |
+| **Elixir of a stat** (+1 base stat permanent; **max 3 lifetime per stat** for the Bearer — **uncapped** when spent on another awakened, Section 12.5.1) | 5,000 g |
+
+### 12.5.1 The Elixir Given Away — the one thing that moves a non-Bearer's pools
+
+**A stat elixir works on an ordinary awakened hunter, and nothing else in the world does.** This is the profile's single exception to Section 2: an awakened's capability is their fixed Rank, their pools are read from the Section 6.1 table, and neither moves for anything they do — but the System is not the world, and what the Bearer hands them is the System's. The elixir is Bearer-purchased, hand-delivered, and consumed by the recipient exactly as a rune or potion already is (Section 7.1, `EVT-000178`; Section 12.5, `EVT-000180`).
+
+**What it grants.** **Vitality and Intelligence only.** Each point applies the Bearer's own conversion (Sections 5.1, 6.1) as a permanent addition on top of the recipient's Rank-derived pool:
+
+```text
+maximum_health = (Rank Health × individual variance) + 4 × elixir Vitality
+maximum_mana   = (Rank Mana   × individual variance) + 2 × elixir Intelligence
+```
+
+**Uncapped for a non-Bearer.** Section 12.5's "max 3 lifetime per stat" is a limit on the Bearer's own progression and does not bind what he spends on someone else. The real limit is gold: 5,000 g a point, and the arithmetic below is why this is a campaign and not a purchase.
+
+**What it does *not* grant.** No Stat sheet is created (Section 13.1 stands). **Strength, Agility, and Perception cannot be raised this way** — Section 13.1 resolves those by Rank and there is nothing for a point to attach to. Elixir Vitality and Intelligence are **pool stats only**: they never touch the Section 4.3 domain rating, so the recipient still resolves every contested action at their Rank, and they never confer levels, XP, skills, mastery, equipment Stat lines (Section 11.5), or any System perception (Section 14.4).
+
+**The recipient feels it, and is told nothing.** There is no window, no notification, no number, and no System voice — that boundary is unmoved. But this is the recipient's own body rather than a technique arriving in it, and the change registers **immediately and unmistakably** as depth: more to spend, and further to the bottom of it. A mender, who reads capacity for a living and knows better than anyone what their own floor feels like, will know something has happened the moment it does, without being able to say what.
+
+**Crossing the bracket.** Section 6.1.2 gives every Rank a bracket of ±10%. Elixir points are added *outside* it — variance is authored once and never recomputed (Section 6.1.2), and the elixir addition is flat on top of the varied pool. The first point that carries a recipient past their Rank's bracket ceiling makes them **a number no hunter of that Rank can be**. Nothing announces it. It is real from that instant and invisible until something measures it: a Flux Sight read at the C rung (Section 4.4), a BGM Ranking Bench instrument, or a re-assessment under Section 19.2.
+
+**True Rank and carded Rank.** When the recipient's totals reach the **flat** Section 6.1 table values of the next Rank **on both pools at once**, their true Rank advances: Section 13.1 makes Rank the complete description of a body, and a body with B-Rank pools is a B-Rank body. From that moment they resolve at the new Rank in full — damage baseline, domain rating, party-minimum eligibility as a matter of fact rather than law. Variance is **not** recomputed at the new Rank; the authored factor stays where it was and the elixir addition stays flat on top of it.
+
+**Their card does not move with them.** A licence records what BGM measured at Awakening (Section 2), and no instrument has looked since. Until a re-assessment happens, the recipient is legally and contractually their old Rank — Section 9.4's party minimums, contract-Rank ceilings, and sponsor eligibility all read the card, not the body. Correcting it means Section 19.2's procedure, and the world has exactly one sanctioned explanation for a card reading higher than it used to: **reawakening** (Section 19.3), a regulator ruling the original measurement wrong. That explanation is now, for the first time, available to describe something that actually happened — and it is still a lie, because nothing was mismeasured.
+
+**The state between Ranks has no name.** A recipient above their bracket ceiling but below the next Rank's floor is not their carded Rank, not the next one, and not reawakened. The world has no box for it, no procedure for it, and no precedent. That is a feature: it is what a System doing something the world's physics forbids actually looks like from inside the world.
+
+**The arithmetic, worked.** A C-Rank mender carrying Section 6.1.2's +10% stands at 275 Health and 137 Mana, which is the ceiling of the C bracket. **One** Intelligence elixir takes him to 139 — two points past what any C-Rank can be — for **5,000 g**. Carrying him to a true B-Rank needs (600 − 275) ÷ 4 = **82 Vitality points** and (300 − 137) ÷ 2 = **82 Intelligence points**: 164 elixirs, **820,000 g**. Against a Bearer holding 13,151 g, the first point is a real decision and the last is a life's work.
 
 **The no-exchange rule.** There is no gold-to-USD or USD-to-gold conversion at any rate. The only bridge between the two economies is the spread between what the shop pays for a crystal and what the same crystal fetches on the licensed market — the Bearer chooses, per crystal, whether it becomes cash or gold, and cannot move value back the other way.
 

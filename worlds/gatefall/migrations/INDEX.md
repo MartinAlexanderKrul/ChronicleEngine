@@ -3,8 +3,8 @@
 **File:** `worlds/gatefall/migrations/INDEX.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Active Profile:** 1.42
-**Chain:** 1.1 → 1.42, contiguous, 41 edges
+**Active Profile:** 1.43
+**Chain:** 1.1 → 1.43, contiguous, 42 edges
 
 ---
 
@@ -63,6 +63,7 @@ Each record is authoritative for its own edge. Where a record and the active pro
 | 1.39 → 1.40 | treatment | none | owner ruling | `1.39_to_1.40.md` |
 | 1.40 → 1.41 | treatment | none | owner ruling | `1.40_to_1.41.md` |
 | 1.41 → 1.42 | treatment | none | owner ruling | `1.41_to_1.42.md` |
+| 1.42 → 1.43 | treatment | none | owner ruling | `1.42_to_1.43.md` |
 
 `fictional time` reports what the record itself states. `unstated` means the source prose declares no cost and none may be inferred.
 

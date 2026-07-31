@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000180 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000250 |
+| Event | `EVT-` | Event | EVT-000251 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -393,6 +393,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000248 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.41 - extends Section 6.1.2's authored individual pool variance to recurring named NPCs in a campaign's own ledger, pins the mender field-touch to the flat table while Section 5.2 Mana tiers read the varied maximum, adds a Section 13.1 recording convention for derived NPC mechanics, and authors nine variances; prospective only, no elite or boss retroactively rolled |
 | EVT-000249 | Event | Gatefall: Pendragon: Rank and variance backfill - twelve world figures receive their Section 6.1.2 variance, Preston Vaughn and Sova are recorded as correctly carrying none, five campaign hunters (Tanya Voss, Tomas Alvarez, Denny Osei, Marisol Ruiz, Milo) receive Ranks derived from canon under Section 9.4, and four figures whose awakened status is unestablished are flagged rather than filled in |
 | EVT-000250 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.42 - Section 13.6's signature-ability requirement gains a D-Rank floor, an E-Rank entry carrying none is correct rather than incomplete, and six D-Rank-and-above hunters are authored a signature (Priya Okafor, Ruth, Reggie Calloway, Bhavna Iyer, Foster Nakashima, Callie Dunmore); Foster's is a perimeter sense and deliberately triggers no Section 13.5 warden effect |
+| EVT-000251 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.43 - new Section 12.5.1, a Bearer-given stat elixir enlarges an ordinary awakened's pools (Vitality and Intelligence only, uncapped, +4 Health and +2 Mana per point, flat above the Section 6.1.2 variance bracket), true Rank advances at the next Rank's flat table values while the card does not, and the first exception to Section 2 since the profile was written |
 
 ---
 

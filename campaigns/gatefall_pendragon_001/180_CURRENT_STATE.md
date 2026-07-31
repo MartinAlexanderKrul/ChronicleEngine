@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000250
+  source: EVT-000251
   game_date: "2026-08-10 ~07:38 -05:00"
   real_date: "2026-07-30"
 role: canonical ledger
@@ -27,13 +27,14 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.42
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.43
 - **Engine Rules:** 0.2.0
 - **Data Model:** 0.1.5
 - **Campaign time:** 2026-08-10 (Monday), approximately 07:38 CDT (`-05:00`)
 - **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0048/` — The seventeenth daily, two Character Firsts, and the building seen from outside.
 - **NPC pool variance is live (Profile 1.41, `EVT-000248`).** Nine recurring named NPCs now carry an authored ±10% on both pools under Section 6.1.2 — Owen Callahan **+10%** (Health 275, Mana 137), Priya Okafor none, Julian Boyd +5%, Renata Marchetti −5%, Ruth +5%, Reggie Calloway +5%, Bhavna Iyer none, Foster Nakashima −5%, Callie Dunmore none. Permanent, never rerolled, recorded in each entry in `130_NPCS_AND_FACTIONS.md`. **Backfilled at `EVT-000249`:** twelve world figures in `220_NOTABLE_FIGURES.md` received theirs, and five further campaign hunters received a Rank derived from canon — Tanya Voss D-Rank, Tomas Alvarez C-Rank (+5%), Denny Osei E-Rank, Marisol Ruiz E-Rank (+5%), Milo E-Rank (−5%). Sable, Denise Ferro, Wade Bishop and Kesha Morrison are flagged as having no established awakened status and were deliberately left unranked.
 - **Signature abilities now carry a D-Rank floor (Profile 1.42, `EVT-000250`).** Section 13.6 requires one of every named NPC hunter at **D-Rank or above**; an E-Rank entry carrying none is correct, not incomplete. Six authored — Priya Okafor **Follow-Through**, Ruth **Warm Hands**, Reggie Calloway **Threshold**, Bhavna Iyer **Tally**, Foster Nakashima **Backstop**, Callie Dunmore **Slip**. Backstop is a perimeter *sense* and deliberately triggers no Section 13.5 warden effect. Owen's mending remains the only signature in the ledger that carries mechanics.
+- **`OBJ-18` has a mechanism (Profile 1.43, `EVT-000251`).** New Section 12.5.1: a **stat elixir bought by Alexander and given to an ordinary awakened** enlarges their pools — Vitality and Intelligence only, **uncapped**, +4 max Health and +2 max Mana per point, added flat above the Section 6.1.2 variance bracket. Owen sits at 275 / 137, exactly the C-Rank ceiling; **one Intelligence elixir (5,000 g) takes him to 139 — a number no C-Rank can have.** He would feel it immediately and be told nothing (Section 14.4 unmoved); nobody else would know until something measured him. A true B-Rank is 164 elixirs and 820,000 g against 13,151 held. **Nothing has been bought, given, or drunk, and Owen has not been told this exists.**
 
 ---
 
@@ -118,7 +119,7 @@ Overnight and into Monday morning the day stayed domestic. Alexander carried Owe
 
 ## Promotion Status
 
-Live canon is promoted through `EVT-000250`. Since Checkpoint 0045: a legendary Keen Sense recon advanced it to Expert (`EVT-000231`), then three solo D-Rank instant-dungeon clears ran back to back (`EVT-000232`, `EVT-000234`, `EVT-000235`) with a shop stop and final sale between and after them (`EVT-000233`, `EVT-000236`) — Level 11→12→13, seven skills advancing a mastery tier (Dagger Mastery reaching Master), Silent Step learned, and net gold 12,726 → 13,151. A consolidated skill-mastery reconciliation (`EVT-000237`) and the promotion-barrier batch settlement (`EVT-000238`, explicit `none` for new `gatefall.skill_formation` candidates) close the span. World Rule Profile 1.40 was then adopted (`EVT-000247`), removing Section 17's boss-kill close from instant dungeons, and **Profile 1.41 after it (`EVT-000248`)**, extending Section 6.1.2's authored individual pool variance to recurring named NPCs in the campaign's own ledger and authoring nine of them; both consume no fictional time, change no stored value, and reopen nothing. **`EVT-000249` then backfilled the ledger work 1.41 left open** — twelve world figures' variance, five campaign hunters' Ranks derived from canon under Section 9.4, and explicit not-awakened / unestablished notes on six figures who correctly carry none; it is ledger-only, occurs in no scene, and Alexander learns nothing from it. No relay promotion remains pending. The 2026-08-06/-07/-08 Daily Premium gap remains explicitly unresolved by owner ruling (not backfilled). This Current State reflects live, unpromoted-to-checkpoint play; the next `/save` will capture it as Checkpoint 0046.
+Live canon is promoted through `EVT-000251`. Since Checkpoint 0045: a legendary Keen Sense recon advanced it to Expert (`EVT-000231`), then three solo D-Rank instant-dungeon clears ran back to back (`EVT-000232`, `EVT-000234`, `EVT-000235`) with a shop stop and final sale between and after them (`EVT-000233`, `EVT-000236`) — Level 11→12→13, seven skills advancing a mastery tier (Dagger Mastery reaching Master), Silent Step learned, and net gold 12,726 → 13,151. A consolidated skill-mastery reconciliation (`EVT-000237`) and the promotion-barrier batch settlement (`EVT-000238`, explicit `none` for new `gatefall.skill_formation` candidates) close the span. World Rule Profile 1.40 was then adopted (`EVT-000247`), removing Section 17's boss-kill close from instant dungeons, and **Profile 1.41 after it (`EVT-000248`)**, extending Section 6.1.2's authored individual pool variance to recurring named NPCs in the campaign's own ledger and authoring nine of them; both consume no fictional time, change no stored value, and reopen nothing. **`EVT-000249` then backfilled the ledger work 1.41 left open** — twelve world figures' variance, five campaign hunters' Ranks derived from canon under Section 9.4, and explicit not-awakened / unestablished notes on six figures who correctly carry none; it is ledger-only, occurs in no scene, and Alexander learns nothing from it. No relay promotion remains pending. The 2026-08-06/-07/-08 Daily Premium gap remains explicitly unresolved by owner ruling (not backfilled). This Current State reflects live, unpromoted-to-checkpoint play; the next `/save` will capture it as Checkpoint 0046.
 
 ---
 

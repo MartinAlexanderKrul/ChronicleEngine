@@ -238,11 +238,32 @@ No mechanism identified, and — corrected as of this checkpoint — **no route 
 
 The constraint that follows is the hard one: **Owen's 137 Mana is not a plateau, it is a ceiling** — set at his Awakening, unmovable for the rest of his life, by the same law that governs everyone who is not the Bearer. (137, not the flat C-Rank 125: he carries an authored **+10%** individual variance under Profile Section 6.1.2, assigned at the 1.41 adoption, `EVT-000248`. It makes the well he was born with a tenth deeper than the table's and changes nothing about whether it can grow — variance is a bracket the Rank always named, not a route out of it.) Equipment stat bonuses do not attach to non-Bearers, who carry no Stat sheet (Section 11.5). **The one datum acquired since:** a System Mana potion restores an awakened non-Bearer's expended capacity in full (`EVT-000180`) — which enlarges Owen's *effective* output per day without touching the pool itself, and is bounded only by Alexander's gold and the fact that the potions are System-exclusive and traceable to him alone (Section 19 exposure).
 
-Which reframes the objective. Alexander did not promise to find a known route; he promised, flatly and in the instructor's register, a thing the world's own physics has no category for. The only entity on Earth that grows is the System, and its Bearer is the one making the promise.
+Which reframed the objective. Alexander did not promise to find a known route; he promised, flatly and in the instructor's register, a thing the world's own physics has no category for. The only entity on Earth that grows is the System, and its Bearer is the one making the promise.
+
+---
+
+**THE MECHANISM EXISTS (Profile 1.43, `EVT-000251`).** Everything above stands as the state of the question before it was answered, and every word of it was true of *the world*. It was not true of the System. **A Section 12.5 stat elixir, bought by the Bearer and given to an ordinary awakened hunter, works** — new Section 12.5.1, the first exception to Section 2 since the profile was written.
+
+**What it does.** Vitality and Intelligence only, **uncapped** for a non-Bearer, each point adding the Bearer's own conversion flat on top of Owen's variance-adjusted pool: **+4 maximum Health per Vitality point, +2 maximum Mana per Intelligence point.** No Stat sheet, no levels, no skills, no change to how he resolves an action — just the well, genuinely and permanently deeper. **The promise is keepable.** It was never impossible; it was only impossible for anyone who was not carrying a System.
+
+**What one point costs, and what it does to him.** Owen sits at 275 / 137, which is *exactly* the ceiling of the C-Rank bracket (Section 6.1.2). Elixir points land outside that bracket. So:
+
+| | Health | Mana | Gold |
+|---|---|---|---|
+| Owen today | 275 | 137 | — |
+| C-Rank bracket ceiling | 275 | 137 | — |
+| **After one Intelligence elixir** | 275 | **139** | **5,000 g** |
+| A true B-Rank | 600 | 300 | **820,000 g** (164 elixirs) |
+
+**The first point is the dangerous one, not the last.** 139 Mana is a number no C-Rank in the world can have. It is real the instant he drinks it and invisible until something measures it — Flux Sight at the C rung, a BGM Ranking Bench instrument, or a Section 19.2 re-assessment. And **Owen will feel it immediately**: Section 14.4's boundary is unmoved, so there is no window, no notification and no number, but it is his own body rather than a technique arriving in it, and he is a mender who has stated that capacity is the one hard constraint on his entire profession. He will know something happened the moment it does, and he will not be able to say what.
+
+**And then there is no box for him.** Above C's ceiling and below B's floor, he is not a C, not a B, and not reawakened. The world has no procedure for that and no precedent. If he ever *did* reach B in body, his card would still say C — Section 9.4's party minimums, every contract ceiling, and his sponsor eligibility all read the licence — and the only sanctioned route to correcting it is Section 19.3's **reawakening**, a regulator ruling the original measurement wrong. Which would be a lie. Nothing was mismeasured.
+
+**Against 13,151 gold**, one point is over a third of everything Alexander owns and the full climb to B is a life's work. Nothing has been bought, given, or drunk. What changed is that the answer to *how* is no longer missing — only the gold, the decision, and the willingness to hand Owen a body the world cannot account for.
 
 Interacts with **OBJ-12** (the crew question — a mender who can be refilled mid-clear changes what a crew led by Owen could take on), **OBJ-16** (the artificer consultation, whose two open questions are about pushing gear past its ordinary budget), and the standing gear commitment under **OBJ-11**.
 
-Status: **Open, promised, no mechanism.** No deadline.
+Status: **Open, promised, mechanism found, nothing spent.** No deadline. The route is Section 12.5.1's stat elixir; the obstacles are now gold (5,000 g a point against 13,151 held), exposure (the first point puts Owen outside every bracket the world can read him in), and consent — Owen has not been told any of this exists.
 
 **OBJ-19 - Book Owen's next fight through his own license, not a private instance.**
 Opened 2026-08-06 (`EVT-000186`), on the walk to Edgewater. Alexander offered to arrange future work the way Cicero was arranged — a real posted Gate, sponsored under Owen's own C-Rank card, Owen doing the fighting while Alexander backs off the way he did in today's instance — rather than spending his own gold opening another private instant dungeon. The two are not the same thing: an instant dungeon is Section 17's Bearer-only mechanism and cannot be legally sponsored by anyone; a posted Gate under Owen's license is real, on the books, and insured.

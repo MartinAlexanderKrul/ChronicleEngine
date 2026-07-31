@@ -98,7 +98,7 @@ Overnight and into Monday morning the day stayed domestic. Alexander carried Owe
 - `OBJ-15`: the Rogers Park two-bedroom is chosen in principle and has now been **seen from the street** (`EVT-000245`) but **not from the inside**. A 06:15 voicemail was left with the Lakeline Residential agent naming neither Alexander nor the property; **no callback and no viewing booked.**
 - **Kesha Morrison owes a callback** on what Monday's desk turns up for a confirmed posting Owen could sponsor (`EVT-000243`, `OBJ-19`). She said nothing on Sunday night's board was worth his card.
 - **Three daily rewards sit unclaimed** — Ability Points +3, Status Recovery ×11, one Daily Random Box.
-- The Lakeline Residential agent is **Corinne Whitlock** — renamed by owner ruling from a briefly-authored *Denise* that collided with harvest-crew lead **Denise Ferro** (`ENT-000148`). No entity is minted for her yet; only her recorded greeting has been heard.
+- **Flagged for an owner ruling:** the Lakeline Residential agent's authored given name collides with **Denise Ferro** (`ENT-000148`). No entity was minted for her; only a recorded greeting has been heard.
 - The Gate Direction Finder has been purchased and used once; it did not locate a Gate. It has not yet been carried into an actual Gate expedition.
 - Elias Ward has entered the campaign as a persistent NPC. His shop, origins, and any wider standing are otherwise unestablished.
 - Daily Premium rotations from 2026-08-06 onward require an authored settlement before their rewards can enter canon.

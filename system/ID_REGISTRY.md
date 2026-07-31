@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000180 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000242 |
+| Event | `EVT-` | Event | EVT-000246 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -385,6 +385,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000240 | Event | Gatefall: Pendragon: all 10 unspent Ability Points allocated - Vitality +6, Strength +4; maximum Health 172 to 196; Shrug Off D-Rank to C-Rank (threshold absorption) |
 | EVT-000241 | Event | Gatefall: Pendragon: the evening with Owen - Rogers Park agreed in principle, a rent-split framework named, and a confirmed posting to be sponsored on Owen's C-Rank card 50/50 with his half against the rent; crew and Gate questions deliberately deferred |
 | EVT-000242 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement for EVT-000239-EVT-000241, explicit none for gatefall.skill_formation; no skill activated and no die rolled across the span |
+| EVT-000243 | Event | Gatefall: Pendragon: Owen carried asleep to bed; the one-toothbrush asymmetry noted; Kesha texted about a posting Owen could sponsor - nothing on the board, she checks Monday |
+| EVT-000244 | Event | Gatefall: Pendragon: seventeenth daily issued; two Character Firsts - Alexander says I love you first and unprompted, and Owen's deflecting joke fails to arrive; a voicemail to the letting agent naming neither caller nor property |
+| EVT-000245 | Event | Gatefall: Pendragon: seventeenth daily completed on the lakefront route, streak 2 to 3; the Rogers Park building seen from the street for the first time, still unseen inside |
+| EVT-000246 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement for EVT-000243-EVT-000245, explicit none for gatefall.skill_formation; no skill activated and no die rolled across the span |
 
 ---
 

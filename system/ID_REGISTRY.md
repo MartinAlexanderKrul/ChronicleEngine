@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000180 |
+| Entity | `ENT-` | Persistent Entity | ENT-000181 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000251 |
+| Event | `EVT-` | Event | EVT-000260 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -394,6 +394,16 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000249 | Event | Gatefall: Pendragon: Rank and variance backfill - twelve world figures receive their Section 6.1.2 variance, Preston Vaughn and Sova are recorded as correctly carrying none, five campaign hunters (Tanya Voss, Tomas Alvarez, Denny Osei, Marisol Ruiz, Milo) receive Ranks derived from canon under Section 9.4, and four figures whose awakened status is unestablished are flagged rather than filled in |
 | EVT-000250 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.42 - Section 13.6's signature-ability requirement gains a D-Rank floor, an E-Rank entry carrying none is correct rather than incomplete, and six D-Rank-and-above hunters are authored a signature (Priya Okafor, Ruth, Reggie Calloway, Bhavna Iyer, Foster Nakashima, Callie Dunmore); Foster's is a perimeter sense and deliberately triggers no Section 13.5 warden effect |
 | EVT-000251 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.43 - new Section 12.5.1, a Bearer-given stat elixir enlarges an ordinary awakened's pools (Vitality and Intelligence only, uncapped, +4 Health and +2 Mana per point, flat above the Section 6.1.2 variance bracket), true Rank advances at the next Rank's flat table values while the card does not, and the first exception to Section 2 since the profile was written |
+| EVT-000252 | Event | Gatefall: Pendragon: a live Daily Premium rotation to the Cobalt cycle under a new standing rotate-on-stale-check rule, and a shop session — the entire private crystal stash sold (840 g) and a Crystal Key [C-Rank] bought (12,500 g), gold 13,151 to 1,491 |
+| EVT-000253 | Event | Gatefall: Pendragon: Monday morning calls - Owen's sponsored-job ask corrected to Kesha Morrison (not mining), her reply promising a call that evening, and a live callback booking the Rogers Park flat viewing for 2:00 PM |
+| EVT-000254 | Event | Gatefall: Pendragon: on Owen's boat, an honest disclosure of how close Alexander has come to dying, the C-Rank instant-dungeon key's terms agreed (Owen present as backup mender/observer only, never a combatant), and a stated philosophy for Owen's own growth ("helping factor, not master decider") |
+| EVT-000255 | Event | Gatefall: Pendragon: the banked Flash Step [D-Rank] rune given to Owen Callahan and consumed - his third ability - and the aspiration for a future cheap-Mana Mend rune raised and left open |
+| EVT-000256 | Event | Gatefall: Pendragon: the Rogers Park two-bedroom viewed from the inside for the first time, leasing agent Corinne Whitlock met in person, and an application submitted on the spot |
+| EVT-000257 | Event | Gatefall: Pendragon: an evening texting round to established mining contacts (Ada Reyes, Dale Pruitt, Denise Ferro, Sable and Kern) surfacing nothing new except Denise Ferro's relationship escalating to an explicit personal-callback promise |
+| EVT-000258 | Event | Gatefall: Pendragon: the complete account of Wade Bishop's 2026-08-08 D-Rank trial told to Owen Callahan for the first time, including the deliberately withheld ambush warning and two untreated crew injuries |
+| EVT-000259 | Event | Gatefall: Pendragon: owner ruling firming Wade Bishop's `OBJ-23` follow-up from a probabilistic window to a certainty - he calls 2026-08-11 |
+| EVT-000260 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement closing the `EVT-000252`-`EVT-000259` span, explicit `none` for `gatefall.skill_formation`, temporal anchor advanced to 2026-08-10 ~19:45 |
+| ENT-000181 | Entity | Gatefall: Pendragon: Corinne Whitlock, Lakeline Residential's leasing agent for the Rogers Park two-bedroom listing |
 
 ---
 

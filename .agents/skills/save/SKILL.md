@@ -32,8 +32,10 @@ This reverses the campaign's earlier practice of writing `100_CHARACTER_SHEET.md
 5. **Commit to `main` — every green checkpoint, no separate request needed.** Once the helper returns `"status":"created"`:
    - Check `git branch --show-current`. If it's already `main`, commit there. Otherwise `main` is checked out in a separate worktree — find it with `git worktree list` (the path moves; don't reuse a cached one) and commit there instead, re-running the repository and checkpoint-contract gates in that worktree first.
    - Stage only this session's checkpoint files: the changed campaign ledgers (`100`–`180`), `system/ID_REGISTRY.md`, `system/WORLDS_AND_CAMPAIGNS.md`, and the new `saves/900_CHECKPOINT_NNNN/` directory. Check `git status --short` first — never `git add -A`, since unrelated in-progress edits from other sessions are routinely sitting in this working tree.
+   - **The commit is the Chronicle Engine's own record — no AI attribution anywhere in it.** No `Co-Authored-By` trailer, no "Generated with", no model or assistant name, no tool or vendor reference, in the subject, the body, or the trailers. Author and committer stay the repository's configured git identity; do not override them. The message describes what happened in the campaign, and nothing about what produced it.
    - Commit only; do not push to `origin/main` unless the player separately asks for that.
    - A checkpoint is not finished until this lands on `main`. Report the commit alongside the checkpoint result, not as a separate follow-up.
+   - **The player may waive this per save** — "don't commit", "keep it local", "I'll commit myself". Only an explicit instruction to that effect skips the commit; silence is consent, and a low-context or hurried session is not a waiver.
 
 ## Rationalizations — all observed in real failed sessions
 
@@ -45,6 +47,8 @@ This reverses the campaign's earlier practice of writing `100_CHARACTER_SHEET.md
 | "Changes were small, validation is a formality" | A "small" session produced 9 validation errors. Run the gates. |
 | "The player is in a hurry / context is low" | Speed pressure is when checkpoints break. The algorithm IS the fast path: a false save costs a future session. |
 | "I'll checkpoint properly at session end" | /save IS the checkpoint request. Deferring is refusing. |
+| "The player didn't ask me to commit" | Committing a green checkpoint to `main` needs no request. Only an explicit "don't commit" stops it. |
+| "The trailer is just standard practice / it's honest attribution" | Not in this repository. The checkpoint commit carries no AI attribution of any kind, in any field. |
 
 ## Red flags — STOP
 
@@ -52,3 +56,5 @@ This reverses the campaign's earlier practice of writing `100_CHARACTER_SHEET.md
 - A checkpoint folder name you made up instead of `900_CHECKPOINT_NNNN/`
 - An ID minted whose Object Block you haven't written
 - Describing what you will write instead of reading back what you wrote
+- A green checkpoint reported as finished with no commit on `main` and no explicit waiver from the player
+- Any AI, assistant, model, or tool name anywhere in a checkpoint commit message

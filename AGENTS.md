@@ -56,7 +56,8 @@ An NPC knows a fact only if the fiction gave *that NPC* a channel to it — your
 
 ## Repository conventions
 
-- Do not add `Co-Authored-By` or AI-attribution trailers to git commits.
+- **Every green checkpoint is committed to `main`** as part of the save — no separate request needed, whether it came from `/save`, `/end`, or a session close. The player waives it only by saying so explicitly for that save ("don't commit", "I'll commit myself"). Commit only; pushing to `origin/main` still needs a separate ask. Procedure: `.agents/skills/save/SKILL.md` step 5.
+- **No AI attribution in any commit.** No `Co-Authored-By`, no "Generated with", no model, assistant, tool, or vendor name — not in the subject, the body, or the trailers. Author and committer stay the repository's configured git identity; never override them. Commits are the Chronicle Engine's record of what happened in the campaign, not of what produced them.
 - Checkpoints are immutable once promoted; the engine forbids fix-it-later retcons of promoted canon.
 - These instructions summarize the skills — where they and a repo document differ, the repo document wins.
 

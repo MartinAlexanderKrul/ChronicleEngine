@@ -63,10 +63,10 @@ Assert-True ($character -match 'profile_version: "1\.40"') "Live Gatefall charac
 # lists beside it are live state that changes with play, so they are deliberately NOT
 # pinned here -- doing so made this assertion fail on the first session that attached a
 # Hidden quest, for a reason unrelated to the rule.
-Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 2\s+capacity_total: 3') "Live D-Rank Multitask quest capacity is missing or incorrect."
+Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 3\s+capacity_total: 4') "Live C-Rank Multitask quest capacity is missing or incorrect."
 Assert-True ($character -notmatch 'analyst_bonus') "Retired analyst_bonus survives the Profile 1.33 migration."
-Assert-True ($character -match 'Flux Sight \[C-Rank\] . Stat Passive.+Uses \d+ . Perception \d+ . at its System-Rank-D ceiling') "Live Flux Sight does not render its derived C-Rank/System-Rank-D-ceiling state."
-Assert-True ($character -match 'Multitask \[D-Rank\] . Stat Passive.+capacity \*\*3\*\*.+Uses \d+ . Intelligence \d+ . C-Rank at 44') "Live Multitask does not render its derived D-Rank progression."
+Assert-True ($character -match 'Flux Sight \[C-Rank\] . Stat Passive.+Uses \d+ . Perception \d+ . B-Rank at 54') "Live Flux Sight does not render its derived C-Rank state and next threshold."
+Assert-True ($character -match 'Multitask \[C-Rank\] . Stat Passive.+capacity \*\*4\*\*.+Uses \d+ . Intelligence \d+ . B-Rank at 54') "Live Multitask does not render its derived C-Rank progression."
 Assert-True ($character -notmatch 'Rank-Sight . Passive . Stat-milestone skill') "Retired Rank-Sight survives as a live skill."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
@@ -334,14 +334,16 @@ $mainFollowUp = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeCha
 
 # These are a SNAPSHOT of the current loadout and Stats, not a rule -- they move whenever
 # effective Strength, a weapon, Dagger Mastery, or a mastery level changes. The formula
-# above is the invariant; these guard it against silent drift. Recomputed at the
-# EVT-000222 Ability Point reallocation (Strength 34->36 base): effective Strength 45,
-# main power 11, off power 7, Dagger Mastery +0.25 (chassis x1.00), Rupture x2.30,
-# Twin Fang x1.30 at Adept.
-Assert-True ($mainDamage -eq 56) "Main-hand /system preview is $mainDamage, expected 56."
-Assert-True ($offDamage -eq 52) "Off-hand /system preview is $offDamage, expected 52."
-Assert-True ($ruptureDamage -eq 58) "Rupture /system preview is $ruptureDamage, expected 58."
-Assert-True (($mainDamage -eq 56) -and ($offFollowUp -eq 68)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 56 + 68."
-Assert-True (($offDamage -eq 52) -and ($mainFollowUp -eq 73)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 52 + 73."
+# above is the invariant; these guard it against silent drift. Recomputed for the
+# 2026-08-09 instant-dungeon run and its mastery reconciliation (EVT-000232-EVT-000237),
+# which took Level 11->13 and advanced three of the four inputs at once: effective
+# Strength 45->51 (base 36->42), main power 11, off power 7, Dagger Mastery +0.25->+0.30
+# at Master (chassis x1.00->x1.05), Rupture x2.30->x2.45 at Expert, Twin Fang
+# x1.30->x1.45 at Expert.
+Assert-True ($mainDamage -eq 65) "Main-hand /system preview is $mainDamage, expected 65."
+Assert-True ($offDamage -eq 61) "Off-hand /system preview is $offDamage, expected 61."
+Assert-True ($ruptureDamage -eq 61) "Rupture /system preview is $ruptureDamage, expected 61."
+Assert-True (($mainDamage -eq 65) -and ($offFollowUp -eq 88)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 65 + 88."
+Assert-True (($offDamage -eq 61) -and ($mainFollowUp -eq 94)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 61 + 94."
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

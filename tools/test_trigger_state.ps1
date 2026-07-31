@@ -138,30 +138,26 @@ try {
         -Expected "offered again while already settled" `
         -Content (With-Pending $reOffered)
 
-    # More active quests than capacity allows.
-    $overCapacity = @"
-        - type: urgent
-          crisis_event: EVT-000902
-          objective_key: fixture-a
-          status: accepted
-        - type: urgent
-          crisis_event: EVT-000903
-          objective_key: fixture-b
-          status: accepted
-        - type: urgent
-          crisis_event: EVT-000904
-          objective_key: fixture-c
-          status: accepted
-"@
+    if ($original -notmatch '(?m)^      capacity_total: (?<total>\d+)$') {
+        throw "Test precondition failed: no capacity_total in $sheet."
+    }
+    $declaredTotal = [int]$Matches["total"]
+
+    # More active quests than capacity allows. The fixture is sized from the live
+    # capacity_total rather than pinned to a count, for the same reason Add-Entries
+    # handles both list shapes: capacity moves with Multitask's Rank, and a pinned
+    # three-quest fixture silently stopped exceeding anything when Intelligence
+    # crossed 44 and the ceiling went 3 -> 4 (EVT-000235). Each entry needs its own
+    # crisis_event and objective_key, or the one-offer-per-crisis check rejects
+    # this first and the case passes for the wrong reason.
+    $overCapacity = ((1..($declaredTotal + 1) | ForEach-Object {
+        "        - type: urgent`n          crisis_event: EVT-{0:D6}`n          objective_key: fixture-over-{1}`n          status: accepted" -f (910 + $_), $_
+    }) -join "`n")
     Assert-Rejected -Name "more active quests than capacity" `
         -Expected "exceed capacity_total" `
         -Content (With-Active $overCapacity)
 
     # Capacity arithmetic that does not add up.
-    if ($original -notmatch '(?m)^      capacity_total: (?<total>\d+)$') {
-        throw "Test precondition failed: no capacity_total in $sheet."
-    }
-    $declaredTotal = [int]$Matches["total"]
     Assert-Rejected -Name "capacity_total disagreeing with its parts" `
         -Expected "plus declared bonuses" `
         -Content ($original.Replace("      capacity_total: $declaredTotal", "      capacity_total: $($declaredTotal + 3)"))

@@ -211,6 +211,7 @@ subjects:
   - EVT-000246
   - EVT-000247
   - EVT-000248
+  - EVT-000249
 ```
 
 ---
@@ -6384,4 +6385,36 @@ description: "Adoption of Gatefall World Rule Profile 1.41, a compatibility-trea
 **Two ledger defects corrected in the same pass.** Owen's Stone Skin was recorded at *Novice mastery*; Section 13.6 gives an NPC learned technique no mastery track, no use counter, and no progression, so the 30% stands as the authored D-Rank technique effect (Section 7.3) and the mastery label is retired. And Section 13.6's statement that a learned technique creates no Mana ledger is reconciled rather than changed: the technique creates none, the entity has one anyway under 1.32, and the technique is paid from it at a Section 5.2 tier.
 
 **What does not change.** No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes. Variance is authored forward: assigning a factor to an NPC who already exists changes what their pool is from here onward and does not reach back, so no exchange is recomputed, no fight re-resolved, no injury re-tiered, and no Mana spend restated. **No elite or boss is retroactively rolled** — 1.32 made that roll mandatory at first contact and it has never once been performed, including for the elites and bosses of the three D-Rank instant dungeons of 2026-08-09 (`EVT-000232`, `EVT-000234`, `EVT-000235`); those instances are closed, their populations discarded with them, and every one of those fights resolved at flat table values, which is a legal outcome of the band and in any case can no longer be distinguished from one. **No narrated cost is restated** — Owen sustaining Stone Skin through an elite at a described cost of roughly two-thirds of his capacity (`EVT-000180`, 2026-08-06) resolved two days before 1.32 was adopted at `EVT-000210` and was never bound by the tier table; it is not recomputed and sets no precedent. Immutable Profile 1.40-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.41 at readiness."
+```
+
+## EVT-000249 - Rank and Variance Backfill: the World Figures and Five Campaign Hunters
+
+```yaml
+id: EVT-000249
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-10 ~07:38 -05:00"
+  real_date: "2026-07-31"
+type: Event
+kind: ruling
+importance: minor
+game_date: "2026-08-10 ~07:38 -05:00"
+participants: []
+counter_deltas: []
+description: "A follow-up settlement to Profile 1.41 (`EVT-000248`), closing the two gaps that adoption left open. **No fictional time is consumed, no scene occurs, and no resolved outcome changes.** Alexander is not a participant and does not learn any of it; this is ledger work.
+
+**Twelve world figures receive their variance.** 1.41 extended Section 6.1.2's authored class to campaign ledgers but did not backfill the world-layer file the rule had named since 1.32, where 0 of 14 figures carried a factor. Authored now, each from what that figure's own entry already establishes: **Naomi Okafor −5%** (C-Rank, a decade deskbound behind a social-utility signature), **Dominic Crane +5%** (S-Rank, a drafted ace selected for being more than the median), **Dee Brannigan none** (D-Rank, the guildmaster who came up the hard way and is the median on purpose), **Nell Foss −5%** (B-Rank Perception-class non-combatant), **Deacon none** (former D-Rank hunter), **Miloš Beran −10%** (E-Rank career civil servant), **Tereza Blažková +10%** (S-Rank, a nation's first and only), **Vlastimil Karlov +5%** (C-Rank, decades on Prague's hardest ground), **Ivana Karlová none** (C-Rank, running a desk rather than the ground), **Ondřej Dušek none** (B-Rank branch chief), **Reid Calloway +10%** (S-Rank, world-ranked #7), **Lukas Reinhardt +5%** (S-Rank, world-ranked #8).
+
+**Two world figures correctly carry nothing, and now say so.** **Preston Vaughn (`ENT-000108`) is explicitly not awakened** — his own entry calls him a pure corporate operator — so he holds no Rank, no pools, and no variance, and Section 13.6's signature-ability requirement does not reach him, because it binds named NPC *hunters*. An earlier audit pass wrongly listed him as missing a signature; he is not, and the entry now records why so the error does not recur. **Sova (`ENT-000118`) has no Rank by design** — a low-signature awakened who is hard to appraise, which is characterisation rather than an omission.
+
+**Five campaign hunters receive a Rank, derived from what canon already had them do rather than invented.** **Tanya Voss (`ENT-000126`) D-Rank, variance none** — an experienced licensed hunter and crew leader who took a five-hunter crew into an **unconfirmed-D** assessment (`EVT-000059`) before its true E-Rank was known, at Section 9.4's under-strength-waiver floor of five, with kit recorded as heavier than an E-Rank starter's. Leading a possible D is D-Rank work. **Tomas Alvarez (`ENT-000178`) C-Rank, +5%** — he runs the point element that clears and secures a **C-Rank** Gate's interior (`EVT-000224`), and Section 9.4's legal minimum for a C-Rank Gate is four C-Rank-capable hunters. **Denny Osei (`ENT-000179`) E-Rank, none** and **Marisol Ruiz (`ENT-000180`) E-Rank, +5%** — ordinary harvest hires on the contractor's C-Rank jobs, explicitly not combat-active, which Section 9.4 settles directly: support crew may be any Rank far below the Gate's, and most E- and D-Ranks make their living as miners and harvesters on higher-Rank clears, exactly as Alexander does on the same job with an E-Rank card. Ruiz takes the +5% for out-hauling the support element on 2026-08-09, 14 crystals against Osei's 11. **Milo (`ENT-000168`) E-Rank, −5%** — awakened with a minor perception-adjacent ability, and by his own account no combat skill worth naming.
+
+**Four campaign figures are flagged rather than filled in.** Sable (`ENT-000141`), Denise Ferro (`ENT-000148`), Wade Bishop (`ENT-000146`), and Kesha Morrison (`ENT-000130`) all manage or broker Gate work with **no record of being awakened at all**. Preston Vaughn is the precedent that a senior operator in this trade need not be, so assigning any of them a Rank would be inventing canon rather than deriving it. Each entry records the reasoning and awaits a ruling.
+
+**Still open, and deliberately not resolved here.** Eight ranked NPC hunters carry no signature ability against Section 13.6's requirement — Priya Okafor, Julian Boyd, Renata Marchetti, Ruth, Reggie Calloway, Bhavna Iyer, Foster Nakashima, and Callie Dunmore. Those are characterisation rather than derivation and are held for the owner. Every world figure who should have one already does.
+
+**Nothing recomputes.** No stored field, magnitude, probability, owned item, transaction, or resolved outcome changes. A Rank authored here describes what a character has been since their Awakening and is not a change to them; no scene in which any of these figures appeared is reopened or re-resolved, and no exchange is recomputed. Variance is permanent and never rerolled (Section 6.1.2)."
 ```

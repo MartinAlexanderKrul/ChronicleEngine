@@ -93,6 +93,9 @@ aliases:
 relationships:
   - REL-000052
 canonical_state:
+  rank: "**C-Rank** — stated in her entry: C-Rank awakened, long deskbound. Resolved by that Rank under Section 13.1."
+  pool_variance: "**−5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A decade behind a desk. Her signature is a social utility — Still Room deadens a closed room — and the well behind it has not been worked in years."
+  pools: "**Maximum Health 237, maximum Mana 118** — Section 6.1 table (250 / 125) × 0.95, floored. Section 5.2 tier costs, read from their own maximum: **Minor 11, Signature 29, Boss-tier 59**. Section 5.3 running-dry threshold **29**."
   role: "Regional Director of BGM Region V (ENT-000099); federal appointee over the Ranking Bench and the Auction Desk."
   capabilities: "Federal administration; ranking and auction oversight; political survival; control of what does and does not get published."
   signature_ability: "Still Room — her mana deadens the air of a closed space so that nothing said inside it carries beyond the walls (Profile Section 13.6: descriptive fact, resolved at her band)."
@@ -136,6 +139,7 @@ aliases:
 relationships:
   - REL-000053
 canonical_state:
+  rank: "**None — he is not awakened.** Stated in his own entry: a pure corporate operator. He therefore carries no Rank, no Rank Health or Rank Mana, and no Section 6.1.2 variance, and Section 13.6's signature-ability requirement does not reach him — it binds named NPC *hunters*. Recorded so an audit does not read the empty fields as a gap."
   role: "Guildmaster and CEO of Horizon Guild (ENT-000100); not awakened."
   capabilities: "Corporate command; capital; investor and lobbyist relationships; cross-Atlantic reach through the shared parent balance sheet with Horizon Guild — Europe (ENT-000105)."
   personality: "Genial, transactional, tireless; treats people as assets and is starting to do it to the ace."
@@ -178,6 +182,9 @@ aliases:
 relationships:
   - REL-000054
 canonical_state:
+  rank: "**S-Rank** — stated in his entry: Horizon Guild's drafted ace, one of Chicago's two resident S-Ranks. Resolved by that Rank under Section 13.1."
+  pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A drafted ace is selected for being measurably more than the median S, and the whole brand is built on his being it."
+  pools: "**Maximum Health 4200, maximum Mana 2100** — Section 6.1 table (4000 / 2000) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 210, Signature 525, Boss-tier 1050**. Section 5.3 running-dry threshold **525**."
   role: "S-Rank ace of Horizon Guild (ENT-000100); one of Chicago's two resident S-ranks and the guild's public face."
   capabilities: "S-Rank combat; the only Horizon asset that cannot be replaced or poached cheaply; public draw."
   signature_ability: "Meridian — a lance of condensed force held, swept, and extended across the length of a boss chamber, the longest measured projection on the American books; its reach is a published number, and a shrinking one is exactly what an off-book re-measurement can read (Profile Section 13.6)."
@@ -223,6 +230,9 @@ aliases:
 relationships:
   - REL-000055
 canonical_state:
+  rank: "**D-Rank** — stated in her entry: D-Rank, who came up clearing E-Rank Gates herself along the Red Line Corridor. Resolved by that Rank under Section 13.1."
+  pool_variance: "**None** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. She is the guildmaster who did it the hard way from the bottom rung; the median D is exactly the point of her."
+  pools: "**Maximum Health 100, maximum Mana 50** — the flat Section 6.1 table value at D-Rank. Section 5.2 tier costs, read from their own maximum: **Minor 5, Signature 12, Boss-tier 25**. Section 5.3 running-dry threshold **12**."
   role: "Guildmaster of Ironline Guild (ENT-000101); rose from the Red Line Corridor (ENT-000090) shop floor."
   capabilities: "Recruiting; talent-spotting; shop-floor loyalty; low-rank contract logistics."
   signature_ability: "True Weight — she feels how hard the mana around her is actually working, a rough sensor's read no card can argue with; it is how she clocked what her hidden recruit's card does not say (Profile Section 13.6)."
@@ -268,6 +278,9 @@ aliases:
 relationships:
   - REL-000056
 canonical_state:
+  rank: "**B-Rank** — stated in her entry: B-Rank Perception-class awakened, non-combatant. Resolved by that Rank under Section 13.1."
+  pool_variance: "**−5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A sensing rank held by an appraiser who has never spent it in a fight."
+  pools: "**Maximum Health 570, maximum Mana 285** — Section 6.1 table (600 / 300) × 0.95, floored. Section 5.2 tier costs, read from their own maximum: **Minor 28, Signature 71, Boss-tier 142**. Section 5.3 running-dry threshold **71**."
   role: "Senior licensed appraiser on BGM Region V's (ENT-000099) Ranking Bench; B-Rank Perception-class awakened."
   capabilities: "Field mana appraisal of beasts, hunters, loot, and Gates on the unified band; anomaly detection; off-book re-measurement."
   signature_ability: "Provenance — her appraisal reads a mana signature's history as well as its Rank: age, old injury, wear; the gift that ranked the healed wound and the brand, and the one quietly re-measuring Crane (Profile Section 13.6)."
@@ -309,6 +322,9 @@ aliases:
   - name: "Deacon"
     quality: cover
 canonical_state:
+  rank: "**D-Rank** — stated in his entry: a former D-Rank hunter, now an unlicensed core fence. Resolved by that Rank under Section 13.1."
+  pool_variance: "**None** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. Nothing in the record pulls a retired D off the median in either direction."
+  pools: "**Maximum Health 100, maximum Mana 50** — the flat Section 6.1 table value at D-Rank. Section 5.2 tier costs, read from their own maximum: **Minor 5, Signature 12, Boss-tier 25**. Section 5.3 running-dry threshold **12**."
   role: "Unlicensed black-market buyer of undeclared cores and crystals in Chicago; former D-Rank hunter. Holds no institutional membership."
   capabilities: "Fencing; discretion; a working westward smuggling lane to Prague; the nerve, lately, to overreach."
   signature_ability: "Doorways — he feels every way out of a space and whether it is watched, the survival-sense that has kept him small and alive (Profile Section 13.6)."
@@ -356,6 +372,9 @@ aliases:
 relationships:
   - REL-000057
 canonical_state:
+  rank: "**E-Rank** — stated in his entry: E-Rank awakened, career civil servant. Resolved by that Rank under Section 13.1."
+  pool_variance: "**−10%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. An administrator's card. He has held a directorship rather than a line, and the pool shows it."
+  pools: "**Maximum Health 36, maximum Mana 18** — Section 6.1 table (40 / 20) × 0.90, floored. Section 5.2 tier costs, read from their own maximum: **Minor 1, Signature 4, Boss-tier 9**. Section 5.3 running-dry threshold **4**."
   role: "Director of the Czech Gate Administration (ENT-000103); career civil servant, E-Rank awakened."
   capabilities: "National regulatory authority; discretionary budget over S-Rank retention; control of what the CGA publishes."
   signature_ability: "Letter-Perfect — every page he has ever read stays exact in his memory, a modest E-Rank clerk's gift; the Libeň chart is in his head whether or not the file survives (Profile Section 13.6)."
@@ -399,6 +418,9 @@ aliases:
 relationships:
   - REL-000058
 canonical_state:
+  rank: "**S-Rank** — stated in her entry: S-Rank, the Czech Republic's first and only, measured in 2023. Resolved by that Rank under Section 13.1."
+  pool_variance: "**+10%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A nation's sole S-Rank and a national celebrity. If any pool in this file should sit at the top of its bracket, it is hers."
+  pools: "**Maximum Health 4400, maximum Mana 2200** — Section 6.1 table (4000 / 2000) × 1.10, floored. Section 5.2 tier costs, read from their own maximum: **Minor 220, Signature 550, Boss-tier 1100**. Section 5.3 running-dry threshold **550**."
   role: "The Czech Republic's sole S-Rank (measured 2023); contracted hunter of Karlov Guild (ENT-000104) and national celebrity."
   capabilities: "S-Rank combat; cannot be compelled by any institution; her mere presence is the CGA's entire retention strategy."
   signature_ability: "Vltava — her mana rises as a river she shapes into wave, wall, or current, too total to file under a single working type; the most famous power in the country (Profile Section 13.6)."
@@ -442,6 +464,9 @@ aliases:
 relationships:
   - REL-000059
 canonical_state:
+  rank: "**C-Rank** — stated in his entry: C-Rank, one of the first Czechs to clear a Gate. Resolved by that Rank under Section 13.1."
+  pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. Decades on Prague's hardest heritage-site ground, which is long-pool work."
+  pools: "**Maximum Health 262, maximum Mana 131** — Section 6.1 table (250 / 125) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 13, Signature 32, Boss-tier 65**. Section 5.3 running-dry threshold **32**."
   role: "Guildmaster of Karlov Guild (ENT-000104); C-Rank, a firsthand witness of the Gatefall."
   capabilities: "Municipal relationships; heritage-clearance doctrine; the moral authority of continuity; a decade of standing no foreign capital can buy."
   signature_ability: "Threshold — a warden's barrier raised across a doorway or a street's width and held, the power the first Prague clears formed up behind and the seed of Karlov's heritage-clearance doctrine (Profile Section 13.6)."
@@ -485,6 +510,9 @@ aliases:
 relationships:
   - REL-000060
 canonical_state:
+  rank: "**C-Rank** — stated in her entry: C-Rank hunter and heir to Karlov Guild. Resolved by that Rank under Section 13.1."
+  pool_variance: "**None** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. Running the New Contracts Desk rather than the hard ground; no evidence pulls her off the median."
+  pools: "**Maximum Health 250, maximum Mana 125** — the flat Section 6.1 table value at C-Rank. Section 5.2 tier costs, read from their own maximum: **Minor 12, Signature 31, Boss-tier 62**. Section 5.3 running-dry threshold **31**."
   role: "Heir to Karlov Guild (ENT-000104) and lead of its New Contracts Desk; C-Rank hunter."
   capabilities: "Contract and financial acumen; the guild's modernizing faction; a back-channel to the foreign siege and to the black market."
   signature_ability: "Sidestep — a ten-meter step that puts her somewhere else between one breath and the next, useful in a fight and quietly useful for arriving at meetings no one sees her reach (Profile Section 13.6)."
@@ -528,6 +556,9 @@ aliases:
 relationships:
   - REL-000061
 canonical_state:
+  rank: "**B-Rank** — stated in his entry: B-Rank, Czech-born, once a Karlov hunter himself. Resolved by that Rank under Section 13.1."
+  pool_variance: "**None** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A branch chief now, a working B before that; the median is the honest reading."
+  pools: "**Maximum Health 600, maximum Mana 300** — the flat Section 6.1 table value at B-Rank. Section 5.2 tier costs, read from their own maximum: **Minor 30, Signature 75, Boss-tier 150**. Section 5.3 running-dry threshold **75**."
   role: "Prague branch chief of Horizon Guild — Europe (ENT-000105); B-Rank, Czech-born and once a Karlov hunter."
   capabilities: "Aggressive hiring and bidding; American training doctrine and financial backing; back-channels into Karlov and to the American parent."
   signature_ability: "Clean Cut — a projected mana edge that severs exactly what it aims at and nothing beside it, Karlov heritage training legible in every stroke (Profile Section 13.6)."
@@ -569,6 +600,7 @@ aliases:
   - name: "Sova"
     quality: cover
 canonical_state:
+  rank: "**Deliberately unestablished.** His entry describes him as a low-signature awakened who is hard to appraise, which is characterisation rather than an omission: not knowing what he is is the point of him. No Rank is authored here, so no pools and no Section 6.1.2 variance are derived. If a Rank is ever fixed in play, variance is authored at that point and is not retroactive."
   role: "Unlicensed black-market smuggler moving contraband cores and artifacts westward out of Prague; low-signature awakened. Holds no institutional membership."
   capabilities: "Smuggling; concealment; a working westward route to Chicago; knowledge of which CGA enforcement lanes stay open."
   signature_ability: "Dead Air — her mana reads as almost nothing to appraisal and damps the signature of what she carries, which is why she is hard to measure and harder to catch (Profile Section 13.6)."
@@ -616,6 +648,9 @@ aliases:
   - name: "the American #1"
     quality: current
 canonical_state:
+  rank: "**S-Rank** — stated in his entry: S-Rank, world-ranked #7 on the International Gate Registry list. Resolved by that Rank under Section 13.1."
+  pool_variance: "**+10%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. World-ranked seventh on Earth and the highest-ranked American. The list is the justification."
+  pools: "**Maximum Health 4400, maximum Mana 2200** — Section 6.1 table (4000 / 2000) × 1.10, floored. Section 5.2 tier costs, read from their own maximum: **Minor 220, Signature 550, Boss-tier 1100**. Section 5.3 running-dry threshold **550**."
   role: "S-Rank ace of Keystone Guild (New York); world-ranked #7 on the International Gate Registry and the highest-ranked American hunter. Keystone Guild is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
   capabilities: "S-Rank combat; the 'Overrun' escalating force-discipline; national-symbol status and the federal access that comes with it."
   signature_ability: "Overrun — an escalating force-discipline that out-damages anything it can reach (Bible Section 3, World Ranking; Profile Section 13.6)."
@@ -657,6 +692,9 @@ aliases:
   - name: "Lukas Reinhardt"
     quality: current
 canonical_state:
+  rank: "**S-Rank** — stated in his entry: S-Rank, world-ranked #8 on the International Gate Registry list. Resolved by that Rank under Section 13.1."
+  pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. World-ranked eighth, one rung below Calloway, and the number should say so."
+  pools: "**Maximum Health 4200, maximum Mana 2100** — Section 6.1 table (4000 / 2000) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 210, Signature 525, Boss-tier 1050**. Section 5.3 running-dry threshold **525**."
   role: "S-Rank ace of Brandhof (Frankfurt); world-ranked #8 on the International Gate Registry and the nearest world-ranked hunter to Prague. Brandhof is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
   capabilities: "S-Rank combat; the 'Bastion' barrier-and-siege discipline; command of Brandhof's methodical clearance doctrine; a containment veteran of the Jiu Valley Exclusion."
   signature_ability: "Bastion — a fortress-summoning barrier-and-siege discipline that walls a break and grinds it down (Bible Section 3, World Ranking; Profile Section 13.6)."

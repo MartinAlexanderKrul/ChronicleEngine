@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000180 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000248 |
+| Event | `EVT-` | Event | EVT-000249 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -391,6 +391,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000246 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement for EVT-000243-EVT-000245, explicit none for gatefall.skill_formation; no skill activated and no die rolled across the span |
 | EVT-000247 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.40 - removes Section 17's boss-kill close from instant dungeons, leaving the two-hour mark and the Bearer's own decision as the only close conditions; states that population never respawns and that closing returns everyone to the world; prospective only, Dungeon 1's lost 22-crystal deposit is not restored |
 | EVT-000248 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.41 - extends Section 6.1.2's authored individual pool variance to recurring named NPCs in a campaign's own ledger, pins the mender field-touch to the flat table while Section 5.2 Mana tiers read the varied maximum, adds a Section 13.1 recording convention for derived NPC mechanics, and authors nine variances; prospective only, no elite or boss retroactively rolled |
+| EVT-000249 | Event | Gatefall: Pendragon: Rank and variance backfill - twelve world figures receive their Section 6.1.2 variance, Preston Vaughn and Sova are recorded as correctly carrying none, five campaign hunters (Tanya Voss, Tomas Alvarez, Denny Osei, Marisol Ruiz, Milo) receive Ranks derived from canon under Section 9.4, and four figures whose awakened status is unestablished are flagged rather than filled in |
 
 ---
 

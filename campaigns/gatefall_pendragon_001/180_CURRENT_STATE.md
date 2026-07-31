@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000246
+  source: EVT-000247
   game_date: "2026-08-10 ~07:38 -05:00"
   real_date: "2026-07-30"
 role: canonical ledger
@@ -27,7 +27,7 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.39
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.40
 - **Engine Rules:** 0.2.0
 - **Data Model:** 0.1.5
 - **Campaign time:** 2026-08-10 (Monday), approximately 07:38 CDT (`-05:00`)
@@ -110,12 +110,13 @@ Overnight and into Monday morning the day stayed domestic. Alexander carried Owe
 - **Titan Legs [D-Rank] and Watcher Feet [D-Rank]** sit banked, unequipped, from Dungeon 1's boss (`EVT-000232`). No decision made on whether to equip either.
 - **8 Beast Core [D-Rank]** banked, unsold — the System shop still refuses cores at any price (Section 12.5).
 - **Wade Bishop / `OBJ-23` follow-up window.** A Runtime-authored expectation (not a promise on the record) that Wade calls or texts with concrete news by **2026-08-13 to 2026-08-15**; if neither the 50% split nor the B-Rank harvest trial has moved by then, that silence is itself informative.
+- **Instant dungeons no longer close on the boss kill** (Profile 1.40, `EVT-000247`). An instance runs two hours from the moment the key is used and ends at that mark or when Alexander chooses to leave. The boss kill still settles XP, milestone, and drops, but the interior now stands for the remaining time, so a clear can be mined and looted instead of ejecting him — the failure that cost Dungeon 1's 22-crystal deposit (`EVT-000232`). The two hours are absolute; a late kill leaves only the minutes remaining. Population never respawns, and closing returns everyone inside to the world. **Prospective only:** no past clear is reopened and the 22 lost crystals are not restored. No instant-dungeon key is banked, so this first applies to a key not yet acquired.
 
 ---
 
 ## Promotion Status
 
-Live canon is promoted through `EVT-000246`. Since Checkpoint 0045: a legendary Keen Sense recon advanced it to Expert (`EVT-000231`), then three solo D-Rank instant-dungeon clears ran back to back (`EVT-000232`, `EVT-000234`, `EVT-000235`) with a shop stop and final sale between and after them (`EVT-000233`, `EVT-000236`) — Level 11→12→13, seven skills advancing a mastery tier (Dagger Mastery reaching Master), Silent Step learned, and net gold 12,726 → 13,151. A consolidated skill-mastery reconciliation (`EVT-000237`) and the promotion-barrier batch settlement (`EVT-000238`, explicit `none` for new `gatefall.skill_formation` candidates) close the span. No relay promotion remains pending. The 2026-08-06/-07/-08 Daily Premium gap remains explicitly unresolved by owner ruling (not backfilled). This Current State reflects live, unpromoted-to-checkpoint play; the next `/save` will capture it as Checkpoint 0046.
+Live canon is promoted through `EVT-000247`. Since Checkpoint 0045: a legendary Keen Sense recon advanced it to Expert (`EVT-000231`), then three solo D-Rank instant-dungeon clears ran back to back (`EVT-000232`, `EVT-000234`, `EVT-000235`) with a shop stop and final sale between and after them (`EVT-000233`, `EVT-000236`) — Level 11→12→13, seven skills advancing a mastery tier (Dagger Mastery reaching Master), Silent Step learned, and net gold 12,726 → 13,151. A consolidated skill-mastery reconciliation (`EVT-000237`) and the promotion-barrier batch settlement (`EVT-000238`, explicit `none` for new `gatefall.skill_formation` candidates) close the span. World Rule Profile 1.40 was then adopted (`EVT-000247`), removing Section 17's boss-kill close from instant dungeons; it consumes no fictional time, changes no stored value, and reopens nothing. No relay promotion remains pending. The 2026-08-06/-07/-08 Daily Premium gap remains explicitly unresolved by owner ruling (not backfilled). This Current State reflects live, unpromoted-to-checkpoint play; the next `/save` will capture it as Checkpoint 0046.
 
 ---
 

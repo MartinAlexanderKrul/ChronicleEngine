@@ -209,6 +209,7 @@ subjects:
   - EVT-000244
   - EVT-000245
   - EVT-000246
+  - EVT-000247
 ```
 
 ---
@@ -6314,4 +6315,35 @@ progression_audits:
     domain: gatefall.skill_formation
     result: none
 description: "Promotion-barrier progression-batch-settlement (Profile Section 7.1) covering `EVT-000243`-`EVT-000245`. **No skill was activated and no die was rolled across the span** — carrying a sleeping man to bed resolved automatically under Section 4.3, and the remainder was a text exchange, a night's sleep, a conversation, a voicemail, and a training run. The Section 7.1 re-count finds no combat activation, no material passive application, and no resource trace to reconcile; every counter carries forward unchanged from `EVT-000242`. The daily regimen is the campaign's seventeenth and is long-established routine, not a structured-practice scene producing new candidate evidence. Explicit **none** recorded for `ENT-000125`.\n\n`pretext_and_cover`, `reactive_pattern_anticipation`, `formation_instruction`, `dimensional_weapon_control`, and `nonvisual_combat_mapping` are unchanged this span. No pending-ratification candidate exists; the readiness gate is clear.\n\n**Temporal settlement.** Anchor advanced **2026-08-09T19:30 → 2026-08-10T07:38 -05:00**, spanning a full night's rest and a morning run. Health and Mana both stood at maximum for the entire span — **196/196** and **94/94** — so no recovery was owed and both remainders settle to **zero**. Recovery modes: Health light, Mana resting. The daily quest awards no XP, so **XP is unchanged at 620/1300, Level 13**.\n\n**Daily quest state.** Seventeenth issued 06:00 2026-08-10 and completed ~07:38; **streak 2 → 3**; `last_completed` advanced to 2026-08-10; next issues 06:00 2026-08-11. Three rewards pending and unclaimed: Ability Points +3, Status Recovery (10 → 11), Daily Random Box (0 → 1).\n\n**Owner ruling applied, entity still unminted:** the Lakeline Residential agent was renamed **Corinne Whitlock** before promotion, the briefly-authored *Denise* having collided with Denise Ferro (`ENT-000148`). No Persistent Entity was minted — only a recorded greeting has been heard — and one should be created when she is first actually spoken to.\n\n**Registry allocation this span:** `EVT-000243`-`EVT-000246`. No new entity, record, or relationship identifier minted. New high-water mark **EVT-000246**; ENT/REC/REL unchanged at ENT-000180/REC-000100/REL-000086.\n\nNew anchor: **2026-08-10 ~07:38**, back at Alexander's flat after the run, both of them free for the whole day. Updated live targets: `100`, `120`, `130`, `140`, `160`, `170`, `180`, and `system/ID_REGISTRY.md`. Opened and found unchanged: `110_WORLD_LEDGER.md` — entirely personal-scope."
+```
+
+## EVT-000247 - Profile Adoption: Gatefall World Rule Profile 1.40
+
+```yaml
+id: EVT-000247
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-10 ~07:38 -05:00"
+  real_date: "2026-07-31"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-10 ~07:38 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.40, a compatibility-treatment advance over frozen 1.39. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged, ~07:38 on 2026-08-10.
+
+**Why this bump exists, and the clear that proved it.** Section 17 closed an instant dungeon 'at the two-hour mark or on the boss kill, whichever comes first.' That made a private instance strictly worse than a licensed Gate at the moment it was won: in a public Gate the boss's death **opens** a two-hour clear window in which a crew loots its dead and walks out (Section 9.7), while in an instant dungeon the same kill collapsed the interior instantly. It also worked directly against Section 17's own loot rule — every instance carries a mineable deposit rolled at opening (Section 11.1), extraction costs time, and under the old rule killing the boss was the one thing a Bearer working that deposit could not afford to do. The instance that pays best for a solo Bearer punished him for clearing it. **Dungeon 1 of the 2026-08-09 run is the demonstration** (`EVT-000232`): its 22-crystal D-Rank deposit was never extracted and was lost outright when the boss kill closed the instance around him.
+
+**What Section 17 now authors.** An instance ends on exactly two conditions: the **two-hour mark**, measured from the moment the key is used, or **the Bearer choosing to leave**. Nothing else closes it, and the boss kill does not. A boss's death still settles its core, its boss-drop d100, its kill XP, and the Gate-clear milestone (Section 3.4) at the instant it lands — that is unchanged — and the interior then holds for whatever remains of the two hours. Voluntary exit is available at any time, boss alive or dead, on the same principle that lets an awakened walk out of a standing Gate through its mouth; he steps out and the instance ends behind him. Closing is final either way: the key is spent, the instance cannot be re-entered, and anything left inside is gone with it.
+
+**The two hours are absolute.** A boss killed with five minutes left leaves five minutes to extract, not a fresh window. Clearing early is what buys looting time, and that is the whole of the pressure this section carries — the timer, not the kill.
+
+**Two things the old text never settled, now stated.** Population is rolled **once, at opening**, and nothing respawns or is added later, so the remainder after a boss kill is time to mine, loot, and walk rather than time to farm. And closing **returns everyone inside to the world** rather than stranding them: a System instance keyed to the Bearer expels its occupants at its limit, exactly as the Section 8.3 penalty zone does at four hours, and Section 9.7's lost-inside rule is a public-Gate rule that does not reach here.
+
+**What does not change — including Dungeon 1's lost deposit.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changes. **No completed instant dungeon is reopened, re-looted, re-timed, or recomputed.** Every clear on record — the three E-Rank clears of 2026-08-02, the three of 2026-08-05, and the three D-Rank clears of 2026-08-09 — ended on its boss kill as the rule then required, and its settled drops, crystals, cores, XP, and milestones stand exactly as recorded. **Dungeon 1's 22 unextracted crystals are not restored, not re-rolled, and not compensated.** They were lost under the rule in force at the time, that loss is promoted canon, and the engine forbids a fix-it-later retcon of promoted canon; 1.40 is the reason it will not happen again, not a reversal of the time it did. The rule is prospective, governing instances opened from here forward. No instant-dungeon key is banked at adoption — the Armory Key [D-Rank] was consumed opening Dungeon 1 (`EVT-000231`), Dungeon 2's key was bought and spent, and Dungeon 3's boss dropped a rune rather than a key (`EVT-000233`-`EVT-000235`) — so the first instance to run under 1.40 will open from a key not yet acquired. No campaign has ever run an instance to its two-hour limit, so neither new clarification contradicts a resolved outcome. Immutable Profile 1.39-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.40 at readiness."
 ```

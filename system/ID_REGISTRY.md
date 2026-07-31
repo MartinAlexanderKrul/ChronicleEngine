@@ -25,8 +25,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000181 |
-| Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000260 |
+| Record | `REC-` | Canonical Record | REC-000101 |
+| Event | `EVT-` | Event | EVT-000267 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -404,6 +404,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000259 | Event | Gatefall: Pendragon: owner ruling firming Wade Bishop's `OBJ-23` follow-up from a probabilistic window to a certainty - he calls 2026-08-11 |
 | EVT-000260 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement closing the `EVT-000252`-`EVT-000259` span, explicit `none` for `gatefall.skill_formation`, temporal anchor advanced to 2026-08-10 ~19:45 |
 | ENT-000181 | Entity | Gatefall: Pendragon: Corinne Whitlock, Lakeline Residential's leasing agent for the Rogers Park two-bedroom listing |
+| EVT-000261 - EVT-000267 | Event | Gatefall: Pendragon: the collapsed rail cutting Gate — Kesha's callback and job confirmation (261), the eighteenth daily and a live Daily Premium rotation (262), Gate entry with archetype/population rolls and a Keen Sense read (263), Owen's delegated solo sweep through nine commons and two elites plus two Mend casts and a new support-contribution standing ruling (264), the boss fight and its loot (265), the exit declaration and artificer conversation (266), and the promotion-barrier settlement (267) |
+| REC-000101 | Record | Gatefall: Pendragon `saves/900_CHECKPOINT_0050/900_SAVE_MANIFEST.md` — the collapsed rail cutting Gate checkpoint |
 
 ---
 

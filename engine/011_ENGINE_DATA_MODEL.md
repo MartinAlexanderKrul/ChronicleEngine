@@ -330,6 +330,54 @@ This is the structural name for what Rules Section 3.10 calls an entity's *curre
 
 When canonical state is updated (Section 12.1), the superseded version *becomes* historical evidence, carrying the provenance of its change. The Data Model does not mandate an append-only event log; historical continuity is preserved through record versioning, provenance, and promotion to Historical Documents, consistent with Rules Section 13.6.
 
+## 7.3 Tracked State
+
+**Tracked State** is present truth that carries no identifier. It is authoritative and mutable like Canonical State, but it is not object-shaped: it lives as fields inside a holding record rather than in a Canonical Record of its own, and it mints nothing from the registry.
+
+This is the same structural line Section 11 draws through resources — counted quantities inside a holding record on one side, identified Persistent Entities on the other — generalized to any subject the simulation must carry but most instances of which never matter individually. Promotion is the act of minting an identifier (Section 11), and it applies here unchanged: tracked state that becomes campaign-durable is promoted to an Event or Entity at that moment, and only then.
+
+Tracked state is still canon. It is read, settled, and checkpointed like any other present truth, and a Runtime may not treat it as scratch because it has no identifier. What it does not carry is referential integrity: nothing may point at it by identifier, because there is none to point at.
+
+## 7.4 Pending World-Side Commitment
+
+A **pending world-side commitment** is tracked state recording that an NPC or institution has undertaken to act by a stated time (Decision 082).
+
+```text
+Owner        the Entity or institution that owes the action
+Subject      what was undertaken
+Due          a due time or window on the campaign clock
+Status       pending | met | partially-met | lapsed | deferred
+Provenance   the Event, ruling, or transcript reference that established it
+```
+
+`Due` is required. An undertaking with no time a clock can reach is not recordable as a commitment, which is deliberate: an intention without a due time is the shape that cannot be settled and therefore cannot be distinguished from one nobody remembered.
+
+Both an on-the-record NPC promise and a Runtime-authored expectation of NPC behavior are recorded this way. The second is not a lesser kind — the failure case that produced Decision 082 was an explicitly authored, correctly reasoned NPC-behavior trigger that carried a due window in prose and never fired.
+
+`Status` moves at the due time, from the owner's own state and knowledge, whether or not the player is present or aware the commitment exists (`012_ENGINE_RUNTIME.md` Section 2.4; Rules Sections 1.8 and 3.4). A `lapsed` commitment records the grounded reason it lapsed and a `deferred` one carries a new `Due`. **A lapse is a settlement, not an absence:** settled silence is information the fiction may use, while unsettled silence is indistinguishable from an obligation that was forgotten.
+
+Rules Sections 1.8, 3.4, and 3.6 own *when* a world actor plausibly commits and how long it takes; a World Rule Profile owns its own actors' cadence. This section owns the structure.
+
+## 7.5 Supply Source
+
+A **supply source** is tracked state recording that an entity or institution generates opportunity — work, custom, patronage, advancement — on its own schedule (Decision 083; Rules Section 3.4.1).
+
+```text
+Owner        the Entity or institution that generates
+Kind         what it generates
+Cadence      how often, as its world declares, or derived from the source's canon
+Advanced     the campaign-clock anchor through which supply has been settled
+Available    zero or more standing openings, each tracked state until taken
+```
+
+`Advanced` is the field that makes supply honest. It is the exact analogue of the recovery anchor (Decision 078): it records how far the source has been settled, so a later read cannot be confused with a first generation, and repeated inquiry inside one span cannot produce a second draw. **A source is advanced by the clock and read by the inquiry; these are different operations and only the first may create anything.**
+
+An advance that yields nothing sets `Advanced` forward with `Available` unchanged or empty. That is a recorded settlement, not a skipped one — the same negative-assertion discipline Decision 080 requires of progression audits, and for the same reason: it is what distinguishes *nothing qualified* from *nobody looked*.
+
+`Available` openings are tracked state under Section 7.3 and mint no identifier. An opening is promoted to an Event when it becomes campaign-durable — taken, bid on, refused consequentially, or cited later — exactly as a commitment is under Section 7.4.
+
+Rules Section 3.4.1 owns when and how far supply advances and the limits on what it may produce. A World Rule Profile owns its own sources' rates and capacities. This section owns the structure.
+
 ---
 
 # 8. Canonical Record
@@ -437,6 +485,8 @@ Individual resource      a Persistent Entity of Type Resource.  Has an ENT- iden
 **Promotion is the structural act of minting an identifier.** When an aggregated or generic subject gains individual identity (Rules Section 3.10, Section 7.12), the Runtime mints a new `ENT-` identifier through the registry and creates the entity, optionally linking it to the aggregate it came from with an `emerges-from` link (Section 6).
 
 This document owns the structural act of allocating an identifier. Rules Section 3.10 owns *when* promotion is warranted. The Runtime owns *performing* it at execution time (`012_ENGINE_RUNTIME.md`, Section 5). Three layers, one concept.
+
+The same line runs beyond resources. Section 7.3 generalizes it as **Tracked State**: any subject the simulation carries without an identifier until it becomes durable enough to need one.
 
 ---
 

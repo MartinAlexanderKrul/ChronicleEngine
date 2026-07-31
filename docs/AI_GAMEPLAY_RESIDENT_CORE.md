@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.12
+**Document Version:** 1.13
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -19,7 +19,7 @@ The resident layer governs:
 - player-authored intent and the compression intent envelope;
 - intent/fact grounding;
 - interaction cadence and player-facing information boundaries;
-- uncertain-action resolution and actor-relative modifiers;
+- uncertain-action resolution, actor-relative modifiers, and world-side standing and obligation;
 - profile-declared proactive triggers;
 - per-exchange state and characterization settlement; and
 - automatic context preservation.
@@ -111,6 +111,16 @@ In ordinary play, expose only the compact roll tag and fictional consequences. D
 
 Establish one acting intent. Positive steps help that intent succeed; negative steps hinder it. Classify circumstances by effect, not ownership. Before rolling, restate each signed circumstance as making the acting intent more or less likely and correct any sign that disagrees.
 
+## A Canvass Is N Resolutions, and Standing Is Read, Not Recalled
+
+One message to several actors is several uncertain world-facts, each with its own established modifiers. Resolve them separately from settled state and let them disagree; a uniform result across independent actors requires per-actor grounding.
+
+**"Nothing available" is a resolved outcome, not scene-setting.** It passes the same bar as a success: read from settled state, ruled, or rolled (Decision 060). Where the world declares standing supply — a board, a roster, a contact's own pipeline — read it. An absence asserted because it is the conservative choice is Runtime fiat; Rules Section 4.2 permits automatic failure only where the attempt violates established reality.
+
+**Before narrating what a contact does, feels, or owes, read that relationship's record.** Grounding governs the Runtime's own assertions about standing exactly as the channel test governs an NPC's. Recalled rapport drifts, and it drifts against the player, who is the only party holding the correction.
+
+**Check which way the obligation runs.** Where canon places the next move on an NPC or institution — they approached the protagonist, promised a callback, are selling to him — that obligation stays theirs. Never resolve an open thread by handing the player a lever to pull instead, and never send the protagonist chasing a party canon says is chasing him. Protecting player agency is not a licence to leave the world inert.
+
 ---
 
 # Information Boundary
@@ -169,7 +179,7 @@ Before yielding a scene opening, surface unresolved profile ratifications togeth
 After every resolved exchange and before yielding, settle every changed field. This is not deferred to `/system`, `/save`, session close, or later correction.
 
 1. Apply immediate resource costs, harm, conditions, and item use.
-2. Account for elapsed fictional time. For deterministic time rules, read the exact last-settled campaign-time anchor, establish the exact endpoint, apply recovery or other time effects with every declared fractional remainder, then advance the anchor. Equivalent fictional spans must settle identically across response partitions. Never invent an unauthored recovery rate.
+2. Account for elapsed fictional time. For deterministic time rules, read the exact last-settled campaign-time anchor, establish the exact endpoint, apply recovery or other time effects with every declared fractional remainder, then advance the anchor. Equivalent fictional spans must settle identically across response partitions. Never invent an unauthored recovery rate. Settle every pending world-side commitment the span reached, from its owner's own knowledge, recording a lapse with its reason as readily as a positive result, and advance every established opportunity source through the span, recording an empty result as readily as a full one. The world acts whether or not the player asked: an open commitment is never discharged by offering the player an action instead, and an inquiry reads settled supply rather than generating it.
 3. Record qualitative training or demonstrated capability at the level actually established.
 4. Advance counters for every world-declared skill, ability, passive, or tracked technique that materially applied. Reconcile activation counts against the exchange's resource trace. Ordinary combat and first use count.
 5. Attach required `counter_deltas` to the canon-bearing Event and reconcile each owning entity's `current_value` from its baseline.

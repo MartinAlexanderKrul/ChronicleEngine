@@ -1,12 +1,12 @@
-# Gatefall — World Rule Profile 1.43
+# Gatefall — World Rule Profile 1.44
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.43
+**Profile Version:** 1.44
 **Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.43 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-31. Version 1.43 authors **the first and only exception to Section 2 since this profile was written**: a Bearer may spend a Section 12.5 stat elixir on another awakened hunter, and it works. New **Section 12.5.1** governs it. Vitality and Intelligence only, **uncapped** for a non-Bearer, each point adding the Bearer's own conversion — `+4` maximum Health per Vitality, `+2` maximum Mana per Intelligence — flat on top of the recipient's variance-adjusted Rank pool. No Stat sheet is created, Strength/Agility/Perception cannot be raised, the Section 4.3 domain rating is untouched, and Section 14.4's information boundary is unmoved: the recipient gets no window, no notification and no number, but **feels the change immediately** as depth, because it is their own body rather than a technique arriving in it. Elixir points sit **outside** Section 6.1.2's ±10% bracket, so the first point past the ceiling makes the recipient a number no hunter of their Rank can be — real from that instant, invisible until measured. When both pools reach the next Rank's **flat** table values, **true Rank advances** and they resolve at it in full; their **card does not move with them**, so Section 9.4's minimums and every contract ceiling still read the licence until a Section 19.2 re-assessment, whose only sanctioned explanation is Section 19.3's reawakening — now available, for the first time, to describe something that actually happened. `GTF-OVR-002`'s scope clause and Section 2's table are amended to admit it. **No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes**; no elixir has ever been given. Data Model 0.1.5 remains unchanged. *(1.42 put a D-Rank floor under Section 13.6's signature abilities; 1.41 extended Section 6.1.2's pool variance to campaign-ledger NPCs.)*
+**Compatibility Status:** frozen at version 1.44 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-31. Version 1.44 makes the Section 9.10 tracked board **dispatchable**. The board's deadline rule has been deterministic and discretion-free since 1.31 and was authored precisely so that postings would not evaporate when nobody was looking — and it went three deadlines past without settling anyway, because a rule the Runtime is never obliged to consult is a rule that fires when someone remembers it. Section 14.3's manifest gains **`gatefall.board.deadline`**, a `world_state_settlement` domain under Decision 084 whose eligibility heading is Section 9.10 and whose settlement is that section's existing deterministic resolution — no new rule, no roll, and nothing the Bearer is told. Its candidate deltas are `clock.advanced`, `supply.advanced`, `commitment.due`, and `outreach.initiated`, the last of which settles the board *before* answering an inquiry and never generates in response to one. **No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes**, and no posting's stored deadline moves; what changes is when the board is read. Data Model 0.1.5 remains unchanged. *(1.43 authored the first exception to Section 2 — a Bearer may spend a Section 12.5 stat elixir on another awakened hunter, governed by new Section 12.5.1; 1.42 put a D-Rank floor under Section 13.6's signature abilities; 1.41 extended Section 6.1.2's pool variance to campaign-ledger NPCs.)*
 
 **Version history and migrations.** Every transformation from Profile 1.1 forward to the active version lives in `worlds/gatefall/migrations/`, one authoritative record per edge, declared by `worlds/gatefall/migrations/INDEX.md`. Restoring a capture taken under Profile *V* runs each record from *V* forward to the active version in order and reads no other migration text; a current rule lookup reads none of them. Immutable checkpoints are never rewritten by a migration — the chain applies to mutable live state. Where a migration record and this profile disagree about present law, this profile governs: a migration record describes a transformation, not a standing rule.
 
@@ -2247,7 +2247,26 @@ trigger_domains:
       settlement_event_kinds:
         - dangerous-scene-settlement
         - progression-batch-settlement
+  gatefall.board.deadline:
+    candidate_deltas:
+      - clock.advanced
+      - supply.advanced
+      - commitment.due
+      - outreach.initiated
+    eligibility_heading: "9.10 The Tracked Board"
+    timing: declared_boundary
+    identity:
+      - board_key
+    blocked_statuses:
+      - cleared
+      - broken
+      - withdrawn
+    settlement: world_state_settlement
 ```
+
+**`gatefall.board.deadline` is not a System trigger, and the tiers below do not reach it.** It is a `world_state_settlement` domain under `012_ENGINE_RUNTIME.md` Section 2.5 (Decision 084): it settles the Section 9.10 board on the campaign clock and tells the Bearer nothing. Section 14.4's boundary is exactly why. The System knows Bearer state, quest state, its own stock, and a Gate's disposition **once resolved** — it does not know what a posting on a public board is doing, and a break that fires across the city is a world event the Bearer learns about the way anyone does, if at all. A posting settling to `cleared`, `broken`, or `withdrawn` produces no notification, no panel line, and no `progression_audits` entry; it changes the board, and the world carries the consequence. It rides this manifest because the manifest is the profile's one dispatch index, not because the System is involved.
+
+Its deltas name the moments the board can have fallen behind: the clock advanced, a supply source was advanced (Rules Section 3.4.1), a commitment came due (Data Model Section 7.4), or the Bearer put a question to the trade. That last one settles the board **before** the answer and never generates in response to it — the asking is an occasion to settle, never a cause of what is found.
 
 - **Tier 1 — Mandatory (unprompted; a pure function of state the System already holds).** Fires the instant the condition holds, with zero discretion:
   - Mana, Health, or XP changes → the matching compact line (Section 14.5);

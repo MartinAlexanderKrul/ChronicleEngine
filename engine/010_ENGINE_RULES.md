@@ -848,6 +848,26 @@ The player does not cause the world to exist.
 
 The player participates within it.
 
+### 3.4.1 Opportunity Supply
+
+What the world offers develops independently on the same terms.
+
+An established source of work, custom, patronage, or advancement — an employer, a contractor, a coordinator, a guild, a crew, a market — generates what it generates on its own schedule, not at the moment a character asks.
+
+The engine therefore settles supply forward on the clock, exactly as it settles recovery and world-side commitments (Section 3.9; `012_ENGINE_RUNTIME.md` Section 2.4).
+
+Three constraints govern it.
+
+**Supply advances on elapsed time, never on the inquiry.** Asking reads settled state. A character who asks twice in an hour receives the same answer twice. Nothing is generated because a question was asked, and nothing is generated to reward the asking.
+
+**Supply is bounded by what the source's canon supports.** A source generates only work its established trade, capacity, standing, and relationship with the character permit. This is the same limit Section 1 places on opportunity generally: opportunities emerge from the world's own development, never solely to reward the player.
+
+**An empty advance is a settled result and is recorded as such.** A source that generates nothing this cycle has been settled, not skipped. The distinction is the whole point: settled scarcity is a fact the fiction may use and the world may be judged by, while unsettled scarcity is indistinguishable from a simulation that was never run.
+
+A world may declare its own cadence, rates, and capacities for its sources; where it declares none, the source is still settled forward from its own established canon by ordinary resolution (Section 4) rather than assumed empty.
+
+Scarcity is a legitimate outcome. Permanent scarcity produced by never advancing supply is not scarcity; it is an unsimulated world.
+
 ---
 
 ## 3.5 Event Importance

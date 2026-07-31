@@ -3910,6 +3910,154 @@ The runtime load, trigger, and validation audit closed with five questions it ex
 
 ---
 
+## Decision 082 — Pending World-Side Commitments
+
+**Status:** Accepted — **Version 0.3 by owner ruling (2026-07-31)**, as an explicit foundational exception produced by the live prototype
+**Date:** 2026-07-31
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Sections 7.3, 7.4, and 11; `012_ENGINE_RUNTIME.md` Section 2.4; `010_ENGINE_RULES.md` Sections 1.8, 3.4, and 3.6; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Turn-State Settlement); `engine/004_DESIGN_FLAGS.md` F-001; Decisions 060, 069, 073, 078
+
+### Context
+
+F-001 recorded a player texting four established contacts in one round and receiving four declines. The analysis (`docs/430_RUNTIME_PERSISTENCE_VALIDATION/438_F001_MULTI_CONTACT_OUTREACH_ANALYSIS.md`) found two independent defects. This decision addresses the second: at the moment of that exchange, **five parties owed the protagonist contact** — a Coalition coordinator's callback due that morning, a letting agent, a contractor's B-Rank lead, a guild recruiter's follow-up window, and a crew lead's promise — and not one of them was recorded as anything a Runtime could settle.
+
+Every one lived as prose, in a ledger body, describing a future the world had committed to. Prose has no due time a clock can reach and no status a validator can read, so nothing settled when Monday arrived, and the Runtime — holding no obligation it could see — resolved the player's inquiry by handing initiative back to him.
+
+The decisive evidence is that the campaign had already diagnosed this itself. `OBJ-23` carries, authored the day before the flagged session:
+
+> **Runtime-authored follow-up window, 2026-08-09.** [...] an authored expectation that Wade Bishop follows up — by call or text — once he has concrete news [...] the natural window for that follow-up runs **2026-08-13 to 2026-08-15**. This is a **Runtime-authored NPC-behavior trigger** [...] if neither thread has moved by that window, the silence itself becomes informative rather than merely more waiting.
+
+That is this decision's construct — owner, subject, due window, and correct lapse semantics — improvised by hand because the engine offered nothing. It did not work. One in-fiction day later the Runtime proposed the protagonist chase the very NPC it had itself authored as the party who calls. **A trigger written in prose, with no type and no dispatch, is not a trigger; it is a note.** The gap is not that the world's intentions were unknown. It is that they were unaddressable.
+
+### Decision
+
+**1. A world-side intention with a due time is typed state.** When an NPC or institution states — or the Runtime authors — an intention to act by a stated time or within a stated window, it is recorded as a **pending world-side commitment** carrying an owner, a subject, a due time or window on the campaign clock, a status, and the provenance of its origin. This applies equally to a promise an NPC made on the record and to a Runtime-authored expectation of NPC behavior; the second is not a lesser kind, and `OBJ-23` is the case that proves it needs the same treatment.
+
+**2. It is tracked state, not a Persistent Object.** A commitment carries a stable local key and mints no identifier, on the same structural line Section 11 already draws for aggregated resources and Gatefall Section 9.10 draws for tracked postings. Most commitments are met, lapse, or are overtaken without ever mattering individually. It is promoted to an Event, and allocated an identifier, only when it becomes campaign-durable.
+
+**3. It settles at its due time, from the owner's own state.** Settlement occurs when the campaign clock reaches the due time, independent of whether the player asks, is present, or is aware the commitment exists (Rules Sections 1.8 and 3.4). The owner acts on what that actor can know — the NPC channel test governs the settlement exactly as it governs dialogue — and never on Runtime omniscience.
+
+**4. A lapse is a settlement, not an absence.** Statuses are `pending`, `met`, `partially-met`, `lapsed`, and `deferred`. A `lapsed` commitment records the grounded reason it lapsed, and a `deferred` one carries a new due time. Silence that has been settled is information the fiction may use; silence that was never settled is indistinguishable from a commitment nobody remembered. `OBJ-23` authored this distinction correctly in prose and it is preserved here as a field.
+
+**5. An open commitment is never resolved by transferring it to the player.** Where a commitment names the world as the actor, that obligation stays with the world until it settles. Offering the player an action in its place is not a settlement, and the resident rule added under F-001's first half (`docs/AI_GAMEPLAY_RESIDENT_CORE.md`, *A Canvass Is N Resolutions, and Standing Is Read, Not Recalled*) forbids it at the point of narration.
+
+**6. Cadence and calibration are world-authored.** The engine owns the construct, the settlement obligation, and the statuses. A World Rule Profile owns what its actors plausibly commit to, how long they take, and how often they lapse.
+
+### Consequences
+
+- **Data Model 0.1.5 stands; no migration.** No Persistent Object structure changes, so no live record is retagged and no checkpoint is touched. This is the direct consequence of point 2, and it is the reason that structure was chosen: the alternative advanced the schema and would have required migrating all 580 live object blocks across four campaigns for a construct most instances of which never matter individually. Contrast Decision 076, which added one field to Relationship *structure* and therefore advanced 0.1.2 → 0.1.3.
+- **Settlement rides Decision 078's boundary.** Commitments settle where deterministic time rules already settle, at the canonical clock anchor (`012_ENGINE_RUNTIME.md` Section 2.4). No new audit boundary is introduced, and a status view, checkpoint, or session close may not be the first operation that notices a due commitment.
+- **Writer cost is explicit, and deliberate.** A commitment without a due time is not recordable under this decision. That is the point: "he'll get back to you" with no clock is the exact shape that failed, and requiring the time is what makes the difference between a promise and a note.
+- **World adoption is separate work.** This decision authors the engine-general construct. Declaring dispatch deltas in a profile's trigger manifest, and backfilling the five live Gatefall commitments, are world-authoring and campaign-canon operations that belong to a play session under normal save discipline.
+- **F-001 remains Open** until its supply half is also ruled on. This decision closes one of two foundational halves.
+
+### Alternatives Considered
+
+- **Model a commitment as a Persistent Object.** Rejected. It buys referential integrity for a construct that is usually ephemeral, at the cost of a schema advance and a repository-wide migration. Section 11 and Gatefall Section 9.10 both already draw this line in the same place and for the same reason.
+- **Leave commitments in objectives prose and rely on the Runtime to read them.** Rejected — `OBJ-23` is that experiment, run for one day, with the failure recorded above. The prose was well written, correctly reasoned, and explicitly labelled a trigger; it still did not fire, because nothing dispatches against prose.
+- **Fire due commitments as quests or trigger offers.** Rejected. A commitment is world behavior, not an offer to the player: it must be able to settle to nothing, settle while the player is elsewhere, and settle without producing a decision point. Routing it through an offer surface would make every lapse invisible and every settlement a prompt.
+- **Require the player to follow up to collect.** Rejected as the defect itself. It is the behavior F-001 recorded, and it fails Rules Section 1's Design Goal — a world that would continue existing if no player were present.
+
+---
+
+## Decision 083 — Opportunity Supply Advances on the World's Clock
+
+**Status:** Accepted — **Version 0.3 by owner ruling (2026-07-31)**, as an explicit foundational exception produced by the live prototype
+**Date:** 2026-07-31
+**Related Sections:** `010_ENGINE_RULES.md` Sections 1.8, 3.4.1, and 4; `011_ENGINE_DATA_MODEL.md` Sections 7.3 and 7.5; `012_ENGINE_RUNTIME.md` Section 2.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Turn-State Settlement); `engine/004_DESIGN_FLAGS.md` F-001; Decisions 060, 069, 078, 080, 082
+
+### Context
+
+This is the second half of F-001, and the half the flag was actually about.
+
+A player texted four established contacts in one round — four working contractors, each with a board, a client base, and a pipeline — and all four returned nothing. The Runtime's own out-of-character defense was that *"none of these people had one sitting in their pocket waiting for you to ask."*
+
+That was true. It is also the defect, because the question it never asks is *why not*. Across five elapsed in-fiction days those four sources had generated, between them, **zero** work — while the same world declares roughly thirty-five weekly Gate detections in the metro and three to six standing postings as its ordinary state. None of that supply was ever advanced. "Nothing" was not a settled result; it was the only answer the fiction was structurally capable of returning, because nothing had ever been generated to settle.
+
+The Runtime then stated the dilemma itself, offering the player two options: accept the wall of refusals, or accept an opening it described as *"you creating an opening rather than one already existing."* **That dichotomy is false, and it is the shape of the defect.** A third option is what Section 1.8 has always specified — the world generated it days ago, before anyone asked. Supply simulation is what makes that option exist.
+
+The bias against invention is correct and is not being weakened here. What was missing is that where supply is never generated *proactively*, "do not invent" and "there is nothing" collapse into the same statement, and the world's entire economy of opportunity resolves to permanent scarcity by construction.
+
+### Decision
+
+**1. An established source of opportunity generates on its own schedule.** An employer, contractor, coordinator, guild, crew, or market that the campaign has established as a source of work, custom, patronage, or advancement carries a supply cadence and is settled forward on the campaign clock (Rules Section 3.4.1).
+
+**2. Supply advances on elapsed time; an inquiry reads it.** These are two different operations and only the first may create anything. Where a source's `Advanced` anchor lags the clock, the Runtime settles it forward from that anchor *before* answering, and never generates at the point of asking. Two inquiries inside one unadvanced span return the same answer.
+
+**3. Generation is bounded by the source's canon.** A source produces only what its established trade, capacity, standing, and relationship with the character support, and may produce nothing that contradicts loaded canon. This is Rules Section 1's existing limit — opportunities emerge from the world's development, never solely to reward the player — applied to a mechanism that now exists to be limited.
+
+**4. An empty advance is a recorded settlement.** A source that generates nothing sets its anchor forward and records that it did. This is the negative-assertion discipline Decision 080 already requires of progression audits, for the same reason: it is what distinguishes *nothing was generated* from *nobody looked*.
+
+**5. Calibration is world-authored; the obligation is not.** A World Rule Profile owns its sources' rates and capacities. Where a world declares none, the source is still settled forward from its own established canon by ordinary resolution (Rules Section 4, Decision 060) rather than assumed empty. **A world that has authored no cadence does not thereby earn an empty world.**
+
+**6. Supply state is tracked state.** A supply source and its standing openings carry no identifiers (Data Model Sections 7.3, 7.5). An opening is promoted to an Event only when it becomes campaign-durable.
+
+### Consequences
+
+- **Data Model 0.1.5 stands; no migration.** As with Decision 082, no Persistent Object structure changes. Immutable checkpoints are untouched.
+- **Rules Section 3.4 gains subsection 3.4.1.** This is the foundational element: it adds a Rules obligation and a mechanism worlds build against, which is why this decision could not land as a refinement under Decision 069.
+- **Settlement introduces no new boundary.** Supply settles where recovery (Decision 078) and commitments (Decision 082) already settle. A campaign that settles its clock correctly settles supply for free; one that does not had a defect already.
+- **Scarcity survives.** Nothing here guarantees the player work, raises any probability in the player's favour, or makes a canvass more likely to succeed. A quiet week remains a completely ordinary outcome — the change is that it becomes a *settled* one, produced days earlier by a clock and a die rather than chosen at the moment of asking. The difference is not the odds; it is who decided, and when.
+- **Canvassing cannot be farmed.** Point 2 is what forecloses it: repetition reads the same state, so there is no action the player can spam to draw again.
+- **World adoption is separate work.** Declaring Gatefall's cadences against its own Section 9.1 detection rates and Section 9.10 standing board, and backfilling live sources, are world-authoring and campaign-canon operations belonging to a play session.
+
+### Alternatives Considered
+
+- **Weight a multi-contact canvass toward surfacing at least one seeded opportunity.** This is F-001's own proposed remedy, and it is **rejected as written**. Implemented reactively it fails twice on the engine's own terms — Rules Section 1 forbids opportunities created solely to reward the player, and Law VIII forbids rewriting history to improve a story — and it makes canvassing a farming loop. The *reasoning* behind the flag is nonetheless correct and is what this decision implements: the player's stated basis was "not out of nowhere but from established encounters," which is a claim about under-simulated world state, not a request for favourable odds. Proactive supply satisfies that claim; reactive weighting only appears to.
+- **Generate supply lazily at the moment of inquiry, then cache it.** Rejected. It produces identical fiction on the first ask and is indistinguishable from correct behaviour in a transcript, which is precisely why it is dangerous: the generation is still caused by the player's question, so the world still does not run when nobody is looking, and a second character asking first would have received a different world.
+- **Declare a fixed global opportunity rate in the engine.** Rejected under Decision 069 point 4. Rates are world-authoring; a medieval kingdom's patronage cadence and a modern metro's contract board are not the same number, and the engine has no business holding either.
+- **Do nothing and rely on the Runtime to remember to advance the world.** Rejected on the evidence. That was the standing arrangement, `OBJ-23` shows what happens to an obligation carried only in prose, and Rules Section 1.8 has said the world develops independently since the Foundation line while the flagged exchange still occurred.
+
+---
+
+## Decision 084 — World-State Settlement as a Declarable Trigger Domain
+
+**Status:** Accepted — **Version 0.3 by owner ruling (2026-07-31)**, as an explicit foundational exception completing the mechanism Decisions 082 and 083 opened
+**Date:** 2026-07-31
+**Related Sections:** `012_ENGINE_RUNTIME.md` Sections 2.4 and 2.5; `011_ENGINE_DATA_MODEL.md` Sections 7.3, 7.4, and 7.5; `tools/validate_runtime_configuration.py`; `engine/004_DESIGN_FLAGS.md` F-001; Decisions 069, 078, 080, 081, 082, 083
+
+### Context
+
+Decisions 082 and 083 gave the engine two world-side obligations that settle on the campaign clock: a commitment falls due, and a supply source advances. Both are engine-general. Neither is *dispatchable* by a world.
+
+Section 2.5 lets a World Rule Profile declare a proactive trigger audit, and the profile declares it through a trigger manifest whose contract the runtime configuration validator enforces. That contract carries a **closed settlement vocabulary** — `offer`, `automatic_attachment`, and `progression_audit` — authored when the only declarable domains were quests (Decision 059's profile mechanism) and progression candidates (Decision 080). Every member of that set describes something the profile presents to or resolves for the *player*.
+
+A world-side settlement is none of those three. Gatefall's Section 9.10 tracked board is the concrete case and the one F-001 surfaced: a posting's deadline arrives, and Section 9.10 resolves it with, in the profile's own words, "no roll and no Runtime discretion." Nothing is offered, nothing is attached, and no progression audit is written. The nearest available member, `progression_audit`, is not merely imprecise — declaring it would oblige the Runtime to write a Data Model Section 2.4 `progression_audits` result for a mechanism that has no subject, no candidate, and no evidence threshold.
+
+The result is that Recommendation R4 of the F-001 analysis — authoring Gatefall's dispatch deltas for supply, due commitments, and the board — **cannot be expressed at all**, and the disposition's own item 4 is unreachable. The obligations exist engine-side and the eligibility rule exists world-side, with no vocabulary connecting them.
+
+This is the enforcement-asymmetry finding of F-001 recurring one layer down. Decisions 082 and 083 sited resident obligations correctly; a profile still had no way to declare *when* and *against what state* they dispatch, which is exactly the gap Decision 055 names — a correct rule with no named enforcement point does not fire.
+
+### Decision
+
+**1. The trigger settlement vocabulary gains a fourth member, `world_state_settlement`.** A domain declaring it settles world-side state deterministically from the profile's own eligibility heading, presenting nothing to the player and resolving nothing on the player's behalf.
+
+**2. It writes no `progression_audits` entry.** The Section 2.5 obligation to write a Data Model Section 2.4 audit result, including `none`, is specific to a progression-candidate domain and does not extend here. A `world_state_settlement` domain records its settlement in the state its eligibility heading governs.
+
+**3. It carries no capacity-notice policy.** `capacity_notice_repeat` remains required of `offer` and `automatic_attachment`, whose settlement can be blocked by a player-facing capacity limit. A world-state settlement has no such surface and must not declare one.
+
+**4. Its timing is the declared boundary.** A `world_state_settlement` domain declares `timing: declared_boundary` and settles where recovery (Decision 078), commitments (Decision 082), and supply (Decision 083) already settle. It introduces no new audit point.
+
+**5. Determinism is required, not optional.** A domain declaring this settlement asserts that its eligibility heading resolves the outcome without Runtime discretion. Where an outcome needs a roll, the profile owns that roll under Rules Section 4 at the heading — the settlement kind does not license the dispatcher to invent one.
+
+**6. The eligibility heading remains the authority.** As with every other domain, the manifest is a dispatch index. It names deltas, identity, blocked statuses, and settlement type; it does not restate the rule.
+
+### Consequences
+
+- **Data Model 0.1.5 stands; no migration.** No Persistent Object structure changes and no stored record moves. This decision adds a declarable value, not a shape.
+- **Foundational under Decision 069, and deliberately not self-classified as a refinement.** It introduces an engine-general mechanism a world may invoke, which is the structural test regardless of how small the diff is. Decision 069 also forecloses the available dodge — "a follow-on decision does not become a refinement by virtue of completing a foundational one" — so completing Decisions 082 and 083 does not lower its class. It shares their owning milestone under the same clause: one mechanism spanning several decisions carries one class.
+- **Recommendation R4 becomes authorable.** Gatefall Profile 1.44 declares the board domain against Section 9.10 and adds `supply.advanced`, `commitment.due`, and `outreach.initiated` as candidate deltas.
+- **Enforcement is where the vocabulary already lives.** `tools/validate_runtime_configuration.py` owns the closed set; `tools/test_opportunity_supply_contract.ps1` asserts both that the new member is admitted and that the capacity-notice requirement still binds the two kinds that need it.
+- **The closed set stays closed.** A fourth member is not an invitation to a fifth by convenience. Adding one remains foundational, and each must name a settlement shape the existing members cannot express.
+
+### Alternatives Considered
+
+- **Declare the board domain with `settlement: progression_audit`.** Rejected. It validates and is wrong: Section 2.5 obliges every Event in a progression domain's coverage set to carry a `progression_audits` result, so the declaration would either produce meaningless audit records against a mechanism with no subject or candidate, or be quietly ignored — and a contract that is quietly ignored is the failure mode this whole flag is about.
+- **Let a profile declare a second trigger manifest for world-side domains.** Rejected. The validator requires exactly one manifest per profile, and that constraint is correct: two manifests means two dispatch indexes and a question about which governs. The gap is a missing vocabulary member, not a missing container.
+- **Open the settlement field to any profile-defined string.** Rejected. A closed vocabulary is what lets the validator reject a typo and what makes the dispatcher's behaviour knowable from the engine alone. An open field turns every profile into its own dispatch semantics, which is Decision 062's boundary violated rather than extended.
+- **Leave R4 unauthored and rely on the resident obligations alone.** Rejected on F-001's own evidence. Decisions 082 and 083 place the obligation correctly, but a world with no declared dispatch has no named point at which its own eligibility rule is consulted — which is precisely how Gatefall's Section 9.10 board, a deterministic rule authored specifically so postings would not evaporate unobserved, went three deadlines past without settling. That board is F-002.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

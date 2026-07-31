@@ -230,6 +230,7 @@ subjects:
   - EVT-000265
   - EVT-000266
   - EVT-000267
+  - EVT-000268
 ```
 
 ---
@@ -6988,4 +6989,36 @@ description: "Promotion-barrier progression-batch-settlement (Profile Section 7.
 
 New anchor: **2026-08-11 ~09:35**, walking back from the collapsed rail cutting Gate with Owen. Updated live targets: `100`, `110`, `120`, `130`, `140`, `160`, `170`, `180`, `system/ID_REGISTRY.md`."
 ```
+## EVT-000268 - Profile Adoption: Gatefall World Rule Profile 1.44, the Board Becomes Dispatchable
 
+```yaml
+id: EVT-000268
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-11 ~09:35 -05:00"
+  real_date: "2026-07-31"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-11 ~09:35 -05:00"
+participants: []
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.44, a compatibility-treatment advance over frozen 1.43. **No fictional time is consumed, no scene occurs, and no resolved outcome changes.** Alexander is not a participant and learns nothing; the System says nothing, because this is not a System matter.
+
+**What this is.** Section 9.10's tracked board has resolved deadlines deterministically since 1.31 — `staffed` or `held` clears off-screen, `posted` breaks under Section 9.8, `withdrawn` leaves the board, with in the profile's own words *no roll and no Runtime discretion*. That section exists precisely so postings do not evaporate when nobody is watching. It went three deadlines past without settling anyway. 1.44 adds no rule to Section 9.10 and changes not one word of it; it adds the thing that was missing, which is a **named moment at which the Runtime is obliged to consult it**.
+
+**Section 14.3's manifest gains `gatefall.board.deadline`.** Its eligibility heading is Section 9.10; its settlement kind is **`world_state_settlement`**, the fourth member of the engine's closed trigger-settlement vocabulary, admitted by Decision 084 for state a world carries on its own behalf rather than presents to the player. Identity is the posting's stable local board key; a posting already `cleared`, `broken`, or `withdrawn` is blocked from settling twice.
+
+**Its deltas name the moments the board can have fallen behind.** `clock.advanced`, `supply.advanced` (Rules Section 3.4.1), and `commitment.due` (Data Model Section 7.4) are the clock-boundary occasions. `outreach.initiated` is the Bearer putting a question to the trade — and it settles the board **before** the answer, never generating in response to it. The asking is an occasion to settle, never a cause of what is found. That ordering is the whole anti-farming property: two questions inside one unadvanced span read the same board.
+
+**It is not a System trigger, and the Section 14.3 tiers do not reach it.** Section 14.4's boundary is unmoved and is the reason. The System knows Bearer state, quest state, its own stock, and a Gate's disposition *once resolved* — it does not know what a posting on a public board is doing. A posting settling produces no notification, no panel line, and no `progression_audits` entry. A Gate that breaks across the city is news the Bearer hears the way anyone does, if at all, and the world is worse for it whether or not he was there. The domain rides that manifest because the manifest is this profile's single dispatch index, not because the System is involved.
+
+**What does not change.** No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes. No posting's deadline is re-derived, no staffing status moves, no board key is minted or retired, and the board's contents at adoption are exactly its contents before it. Section 9.10's standing state, stored fields, four staffing statuses, institutional-intervention clause, and its closing line that the Bearer is not obligated to any of it all stand as written in 1.31.
+
+**Adoption settles nothing retroactively.** The domain dispatches forward. The live board carries three postings past their derived deadlines — `GB-01` at midnight 2026-08-08, `GB-02` and `GB-03` at midnight 2026-08-09 — and adopting 1.44 does not resolve them. Clearing them is ordinary Section 9.10 work in a normal session at the anchor the campaign holds, and is tracked as design flag **F-002**. This adoption neither performs it nor licenses performing it in bulk from outside play.
+
+**Engine dependency.** Decision 084 admits `world_state_settlement` to the engine's closed vocabulary; no Persistent Object structure changes. Engine 0.2.0 and Data Model 0.1.5 are unchanged. Immutable Profile 1.43-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.44 at readiness."
+```

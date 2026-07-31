@@ -256,6 +256,26 @@ but must resolve an exact anchor before a time-dependent action or deadline is
 settled. Decision 078 owns this mechanism; the active World Rule Profile owns the
 clock representation, rates, modes, rounding, and migration.
 
+The same boundary settles **pending world-side commitments** (Decision 082;
+`011_ENGINE_DATA_MODEL.md` Section 7.4). When elapsed time reaches a commitment's
+due time or window, the Runtime settles it from the owner's own state and
+knowledge — the NPC channel test governs that settlement as it governs dialogue —
+and records the resulting status, including a `lapsed` with its grounded reason.
+Settlement does not depend on the player being present, asking, or knowing the
+commitment exists; the world acts on its own account (Rules Sections 1.8, 3.4).
+An open commitment is never discharged by offering the player an action in its
+place. As with recovery, no status view, checkpoint, or session close may be the
+first operation that notices a commitment has come due.
+
+**Opportunity supply settles at the same boundary** (Decision 083;
+`011_ENGINE_DATA_MODEL.md` Section 7.5; Rules Section 3.4.1). Elapsed time
+advances each established supply source through its cadence and records the
+result, including an empty one. A player inquiry **reads** settled supply and
+never advances it: where a source's `Advanced` anchor lags the current clock,
+the Runtime settles it forward from that anchor before answering, and does not
+generate at the point of asking. Two inquiries inside one unadvanced span return
+the same answer.
+
 ## 2.5 Profile-Declared Proactive Trigger Settlement
 
 When an active World Rule Profile declares a proactive trigger audit, the
@@ -276,6 +296,24 @@ canon and the just-resolved exchange, and a failed audit produces no trigger.
 The active Runtime Profile must site this obligation in its resident per-turn
 layer. A proactive trigger carried only by fetched reference material has no
 enforcement point and is therefore not implemented.
+
+A declared domain names its settlement kind from a closed vocabulary the engine
+owns: `offer`, `automatic_attachment`, `progression_audit`, and
+`world_state_settlement`. A profile may not invent a fifth.
+
+A profile may declare a **world-state settlement** domain for state the world
+carries on its own behalf rather than presents to the player — a pending
+world-side commitment coming due, a supply source falling behind its cadence, or
+any deterministic world rule the profile owns. Such a domain settles at the
+declared boundary of Section 2.4, where recovery, commitments, and supply already
+settle, and introduces no new audit point. It offers nothing, attaches nothing,
+and writes no `progression_audits` result; it records its settlement in the state
+its eligibility heading governs, and an empty settlement is recorded as readily
+as a positive one. Declaring this kind asserts that the eligibility heading
+resolves the outcome without Runtime discretion. Where the profile's own rule
+calls for a roll, that roll belongs to the heading under Rules Section 4 and the
+dispatcher never invents one. It also
+never substitutes a player prompt for a settlement the world owes itself.
 
 A profile may declare a progression-candidate domain as one such audit. The
 profile must provide a closed eligibility test, evidence unit, distinct-scene

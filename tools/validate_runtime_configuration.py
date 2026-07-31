@@ -44,7 +44,16 @@ INITIALIZATION_STATES = {"uninitialized", "initialized-no-save", "resumable", "t
 PROTAGONIST_POLICIES = {"pre-authored", "custom", "either", "emergent"}
 CUSTOMIZATION_VALUES = {"allowed", "new-instance-only", "prohibited"}
 TRIGGER_TIMINGS = {"first_qualifying_yield", "declared_boundary"}
-TRIGGER_SETTLEMENTS = {"offer", "automatic_attachment", "progression_audit"}
+# Closed vocabulary, owned by the engine (Decision 084). `world_state_settlement`
+# covers domains the world settles on its own behalf — a commitment coming due, a
+# supply source behind its cadence — which present nothing to the player and write
+# no progression audit. Adding a member is a foundational change, not a convenience.
+TRIGGER_SETTLEMENTS = {
+    "offer",
+    "automatic_attachment",
+    "progression_audit",
+    "world_state_settlement",
+}
 SELECTOR_TOKEN = re.compile(r"^[a-z][a-z0-9_.-]*$")
 MIGRATION_FILE = re.compile(r"^(\d+(?:\.\d+)*)_to_(\d+(?:\.\d+)*)\.md$")
 MIGRATION_ROW = re.compile(
@@ -260,6 +269,13 @@ def validate_trigger_manifest(
                 != "first_blocked_audit_then_capacity_change"
             ):
                 failures.append(f"{prefix} must declare the capacity-notice repeat policy")
+        elif contract.get("settlement") == "world_state_settlement":
+            # Decision 084: a world-state settlement has no player-facing surface to
+            # be blocked, and settles where recovery, commitments, and supply already do.
+            if "capacity_notice_repeat" in contract:
+                failures.append(f"{prefix} must not declare a capacity-notice policy")
+            if contract.get("timing") != "declared_boundary":
+                failures.append(f"{prefix} must settle at the declared boundary")
 
 
 def parse_index(root: Path, failures: list[str]) -> tuple[dict[str, dict[str, str]], dict[str, dict[str, str]]]:

@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000267
+  source: EVT-000268
   game_date: "2026-08-11 ~09:35 -05:00"
   real_date: "2026-07-31"
 role: canonical ledger
@@ -1415,3 +1415,12 @@ Claim separately at any time.
 - **Mend crossed its mastery threshold (3/3 toward Adept) but the Adept magnitude has not been looked up or applied — flagged for the next session.**
 - **Promotion-barrier settlement (`EVT-000267`).** Explicit `none` recorded for `gatefall.skill_formation` — Alexander's live-die actions this span were ordinary applications of already-known skills, no new candidate signature. Anchor advances 2026-08-10T19:45 → T09:35 2026-08-11.
 - **Repository allocation.** `EVT-000261`-`EVT-000267`; no new entity, record, or relationship identifier minted. New high-water mark **EVT-000267**. Updated live targets: `100`, `110`, `120`, `130`, `140`, `160`, `170`, `180`, `system/ID_REGISTRY.md`.
+**2026-08-11 ~09:35 — Gatefall World Rule Profile 1.44 adopted: the tracked board becomes dispatchable (`EVT-000268`; no fictional time consumed).**
+
+- **No new rule.** Section 9.10 resolves a posting's deadline deterministically and has since 1.31 — `staffed`/`held` clears, `posted` breaks under Section 9.8, `withdrawn` leaves the board, *no roll and no Runtime discretion*. Not one word of it changes. What 1.44 adds is the **named moment at which the Runtime must consult it**, which is what was missing when three deadlines passed unsettled.
+- **Section 14.3 gains `gatefall.board.deadline`.** Eligibility heading Section 9.10; settlement kind **`world_state_settlement`** (Decision 084, the engine's fourth and newest trigger-settlement kind); identity is the posting's board key; `cleared`, `broken`, and `withdrawn` block a second settlement.
+- **Deltas:** `clock.advanced`, `supply.advanced`, `commitment.due`, `outreach.initiated`. The last settles the board **before** answering an inquiry and never generates in response to one — two questions inside one unadvanced span read the same board.
+- **Not a System trigger.** Section 14.4 is unmoved: the System does not know what a public board is doing. No notification, no panel line, no `progression_audits` entry. A break across the city is news the Bearer hears the way anyone does, if at all.
+- **Nothing moves at adoption.** No deadline re-derived, no staffing status changed, no board key minted or retired, no past scene reread. **The three passed deadlines are not settled by adopting this** — `GB-01` (midnight 2026-08-08), `GB-02` and `GB-03` (midnight 2026-08-09) stand exactly as they are; clearing them is ordinary Section 9.10 work in a normal session, tracked as design flag **F-002**.
+- **Versions.** `system_state.profile_version` 1.43 → 1.44. Engine 0.2.0 and Data Model 0.1.5 unchanged. New migration record `worlds/gatefall/migrations/1.43_to_1.44.md`; chain 1.1 → 1.44, 43 edges.
+- **Repository allocation.** `EVT-000268`; no entity, record, or relationship identifier minted. New high-water mark **EVT-000268**. Updated live targets: `090`, `100`, `160`, `170`, `180`, `system/ID_REGISTRY.md`, `system/WORLDS_AND_CAMPAIGNS.md`.

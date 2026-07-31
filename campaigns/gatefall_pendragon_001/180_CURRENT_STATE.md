@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.5"
 status: active
 provenance:
-  source: EVT-000267
+  source: EVT-000268
   game_date: "2026-08-11 ~09:35 -05:00"
   real_date: "2026-07-31"
 role: canonical ledger
@@ -27,7 +27,7 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.43
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.44
 - **Engine Rules:** 0.2.0
 - **Data Model:** 0.1.5
 - **Campaign time:** 2026-08-11 (Tuesday), approximately 09:35 CDT (`-05:00`)
@@ -35,6 +35,7 @@ subjects: []
 - **NPC pool variance is live (Profile 1.41, `EVT-000248`).** Nine recurring named NPCs now carry an authored ±10% on both pools under Section 6.1.2 — Owen Callahan **+10%** (Health 275, Mana 137), Priya Okafor none, Julian Boyd +5%, Renata Marchetti −5%, Ruth +5%, Reggie Calloway +5%, Bhavna Iyer none, Foster Nakashima −5%, Callie Dunmore none. Permanent, never rerolled, recorded in each entry in `130_NPCS_AND_FACTIONS.md`. **Backfilled at `EVT-000249`:** twelve world figures in `220_NOTABLE_FIGURES.md` received theirs, and five further campaign hunters received a Rank derived from canon — Tanya Voss D-Rank, Tomas Alvarez C-Rank (+5%), Denny Osei E-Rank, Marisol Ruiz E-Rank (+5%), Milo E-Rank (−5%). Sable, Denise Ferro, Wade Bishop and Kesha Morrison are flagged as having no established awakened status and were deliberately left unranked.
 - **Signature abilities now carry a D-Rank floor (Profile 1.42, `EVT-000250`).** Section 13.6 requires one of every named NPC hunter at **D-Rank or above**; an E-Rank entry carrying none is correct, not incomplete. Six authored — Priya Okafor **Follow-Through**, Ruth **Warm Hands**, Reggie Calloway **Threshold**, Bhavna Iyer **Tally**, Foster Nakashima **Backstop**, Callie Dunmore **Slip**. Backstop is a perimeter *sense* and deliberately triggers no Section 13.5 warden effect. Owen's mending remains the only signature in the ledger that carries mechanics.
 - **`OBJ-18` has a mechanism (Profile 1.43, `EVT-000251`).** New Section 12.5.1: a **stat elixir bought by Alexander and given to an ordinary awakened** enlarges their pools — Vitality and Intelligence only, **uncapped**, +4 max Health and +2 max Mana per point, added flat above the Section 6.1.2 variance bracket. Owen sits at 275 / 137, exactly the C-Rank ceiling; **one Intelligence elixir (5,000 g) takes him to 139 — a number no C-Rank can have.** He would feel it immediately and be told nothing (Section 14.4 unmoved); nobody else would know until something measured him. A true B-Rank is 164 elixirs and 820,000 g against 13,151 held. **Nothing has been bought, given, or drunk, and Owen has not been told this exists.**
+- **The tracked board is now dispatched (Profile 1.44, `EVT-000268`).** Section 14.3's manifest carries `gatefall.board.deadline`, a `world_state_settlement` domain (Decision 084) whose eligibility heading is Section 9.10 and whose settlement is that section's existing deterministic deadline rule — no new rule, no roll, no notification, and nothing the Bearer is told. It fires on `clock.advanced`, `supply.advanced`, `commitment.due`, and `outreach.initiated`, the last settling the board **before** an inquiry is answered rather than generating in response to it. **It settles nothing retroactively:** `GB-01`, `GB-02`, and `GB-03` remain past their derived deadlines and unresolved, `tracked_postings` still reads 4, and clearing them is ordinary Section 9.10 work in a normal session — design flag **F-002**.
 
 ---
 
@@ -137,7 +138,7 @@ A little after 20:15, Kesha's owed callback landed: a confirmed E-Rank Gate, a c
 
 ## Promotion Status
 
-Live canon is promoted through `EVT-000267`. Since Checkpoint 0049: Kesha's callback confirming the collapsed rail cutting Gate and Owen's second sponsorship (`EVT-000261`); the eighteenth daily and a live Daily Premium rotation (`EVT-000262`); Gate entry, archetype and population rolls, and a successful Keen Sense read (`EVT-000263`); Owen's solo delegated sweep through nine commons and two elites plus two Mend casts and the new support-contribution standing ruling (`EVT-000264`); the boss fight — a failed tactical read, clean Flux Sight reads, and a natural-critical kill on the guardian, plus its loot (`EVT-000265`); the honest exit declaration and artificer conversation (`EVT-000266`); and the promotion-barrier settlement closing the span with an explicit `none` for `gatefall.skill_formation` (`EVT-000267`). Alexander took no damage this session; Owen took two wounds, both closed by Mend. This Current State reflects live, unpromoted-to-checkpoint play; this `/save` captures it as the next sequential checkpoint after `900_CHECKPOINT_0049`.
+Live canon is promoted through `EVT-000268`. Since Checkpoint 0049: Kesha's callback confirming the collapsed rail cutting Gate and Owen's second sponsorship (`EVT-000261`); the eighteenth daily and a live Daily Premium rotation (`EVT-000262`); Gate entry, archetype and population rolls, and a successful Keen Sense read (`EVT-000263`); Owen's solo delegated sweep through nine commons and two elites plus two Mend casts and the new support-contribution standing ruling (`EVT-000264`); the boss fight — a failed tactical read, clean Flux Sight reads, and a natural-critical kill on the guardian, plus its loot (`EVT-000265`); the honest exit declaration and artificer conversation (`EVT-000266`); and the promotion-barrier settlement closing the span with an explicit `none` for `gatefall.skill_formation` (`EVT-000267`). Alexander took no damage this session; Owen took two wounds, both closed by Mend. This Current State reflects live, unpromoted-to-checkpoint play; this `/save` captures it as the next sequential checkpoint after `900_CHECKPOINT_0049`. **World Rule Profile 1.44 was then adopted (`EVT-000268`)**, making Section 9.10's tracked board dispatchable through a new `gatefall.board.deadline` domain; it consumes no fictional time, changes no stored value, reopens nothing, and settles none of the board's three passed deadlines.
 
 ---
 

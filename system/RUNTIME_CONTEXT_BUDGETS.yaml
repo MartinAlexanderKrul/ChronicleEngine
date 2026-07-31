@@ -8,7 +8,14 @@ surfaces:
   resident:
     warning_tokens: 6000
     failure_tokens: 8000
-    baseline_tokens: 3453
+    # Re-recorded 2026-07-31 across the F-001 work: the canvass and
+    # standing-grounding rule (Resident Core 1.13), then commitment settlement
+    # (Decision 082) and supply advance (Decision 083) folded into Turn-State
+    # Settlement step 2. The prior 3453 predated several accepted refinements
+    # and had drifted +813 before any of it; accepting growth is meant to be a
+    # deliberate act, so the figure is restated rather than left stale. Total
+    # cost of the three changes is +498 against a 6000 warning.
+    baseline_tokens: 4764
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true

@@ -232,6 +232,7 @@ Once the engine is loaded, you can drive it with short **runtime commands** inst
 | `/debug` | Toggle the fuller mechanical breakdown on rolls. Off by default. |
 | `/length [short\|normal\|long]` | Choose how much the narrator writes per turn: `short` (1–2 paragraphs), `normal` (2–3), or `long` (4–5). With no argument, it tells you the current setting. This changes only narration length, never what actually happens. Default `normal`. Aliases: `/narration`, `/verbosity`. |
 | `/export-debug [label]` | Export the raw current chat for diagnosis: only `User`/`Assistant` labels and each displayed message exactly as written, with no turn structure, summaries, mechanics tables, or reconstructed state. Works without a loaded game and writes under `exports/debug/`. This is not a campaign export, canon, or a save. |
+| `/flag [summary]` | Raise a design issue about the engine itself — something the Runtime or a rule got wrong, rather than a detail to correct inside the story. It is written to `engine/004_DESIGN_FLAGS.md` straight away, with or without a game loaded, so the finding survives the session. Changes nothing in your campaign. |
 
 `/save`, `/end`, `/continue`, and `/new` run the full Save Algorithm, Gameplay Close, and initialization procedures — the same guarantees (promotion barrier, validation gate, read-back, readiness gate) apply whether you invoke them by command or by prompt.
 

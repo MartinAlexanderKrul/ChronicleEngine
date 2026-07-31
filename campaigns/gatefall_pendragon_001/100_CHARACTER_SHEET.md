@@ -85,7 +85,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.40"
+    profile_version: "1.41"
     profile_skill_rank_ascension_event: EVT-000158
     profile_consumable_economy_event: EVT-000154
     profile_premium_surcharge_event: EVT-000135

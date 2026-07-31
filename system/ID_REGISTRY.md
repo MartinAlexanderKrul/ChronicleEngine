@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000180 |
 | Record | `REC-` | Canonical Record | REC-000100 |
-| Event | `EVT-` | Event | EVT-000247 |
+| Event | `EVT-` | Event | EVT-000248 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -390,6 +390,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000245 | Event | Gatefall: Pendragon: seventeenth daily completed on the lakefront route, streak 2 to 3; the Rogers Park building seen from the street for the first time, still unseen inside |
 | EVT-000246 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement for EVT-000243-EVT-000245, explicit none for gatefall.skill_formation; no skill activated and no die rolled across the span |
 | EVT-000247 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.40 - removes Section 17's boss-kill close from instant dungeons, leaving the two-hour mark and the Bearer's own decision as the only close conditions; states that population never respawns and that closing returns everyone to the world; prospective only, Dungeon 1's lost 22-crystal deposit is not restored |
+| EVT-000248 | Event | Gatefall: Pendragon: adoption of World Rule Profile 1.41 - extends Section 6.1.2's authored individual pool variance to recurring named NPCs in a campaign's own ledger, pins the mender field-touch to the flat table while Section 5.2 Mana tiers read the varied maximum, adds a Section 13.1 recording convention for derived NPC mechanics, and authors nine variances; prospective only, no elite or boss retroactively rolled |
 
 ---
 

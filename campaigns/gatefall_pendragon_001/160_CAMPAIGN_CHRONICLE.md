@@ -210,6 +210,7 @@ subjects:
   - EVT-000245
   - EVT-000246
   - EVT-000247
+  - EVT-000248
 ```
 
 ---
@@ -6346,4 +6347,41 @@ description: "Adoption of Gatefall World Rule Profile 1.40, a compatibility-trea
 **Two things the old text never settled, now stated.** Population is rolled **once, at opening**, and nothing respawns or is added later, so the remainder after a boss kill is time to mine, loot, and walk rather than time to farm. And closing **returns everyone inside to the world** rather than stranding them: a System instance keyed to the Bearer expels its occupants at its limit, exactly as the Section 8.3 penalty zone does at four hours, and Section 9.7's lost-inside rule is a public-Gate rule that does not reach here.
 
 **What does not change — including Dungeon 1's lost deposit.** No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changes. **No completed instant dungeon is reopened, re-looted, re-timed, or recomputed.** Every clear on record — the three E-Rank clears of 2026-08-02, the three of 2026-08-05, and the three D-Rank clears of 2026-08-09 — ended on its boss kill as the rule then required, and its settled drops, crystals, cores, XP, and milestones stand exactly as recorded. **Dungeon 1's 22 unextracted crystals are not restored, not re-rolled, and not compensated.** They were lost under the rule in force at the time, that loss is promoted canon, and the engine forbids a fix-it-later retcon of promoted canon; 1.40 is the reason it will not happen again, not a reversal of the time it did. The rule is prospective, governing instances opened from here forward. No instant-dungeon key is banked at adoption — the Armory Key [D-Rank] was consumed opening Dungeon 1 (`EVT-000231`), Dungeon 2's key was bought and spent, and Dungeon 3's boss dropped a rune rather than a key (`EVT-000233`-`EVT-000235`) — so the first instance to run under 1.40 will open from a key not yet acquired. No campaign has ever run an instance to its two-hour limit, so neither new clarification contradicts a resolved outcome. Immutable Profile 1.39-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.40 at readiness."
+```
+
+## EVT-000248 - Profile Adoption: Gatefall World Rule Profile 1.41
+
+```yaml
+id: EVT-000248
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-10 ~07:38 -05:00"
+  real_date: "2026-07-31"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-10 ~07:38 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.41, a compatibility-treatment advance over frozen 1.40. **No fictional time is consumed and no resolved roll is reopened.** Alexander's anchor is unchanged, ~07:38 on 2026-08-10.
+
+**Why this bump exists.** Section 6.1.2 has authored individual pool variance since Profile 1.32: a fixed-Rank entity may carry up to ±10% on both pools, so that a Rank names a bracket rather than one body. Its authored class named only `220_NOTABLE_FIGURES.md` and `institutions/` rosters — both world-layer files. Every crewmate, contact, employer, and rival a campaign actually plays lives in that campaign's own `130_NPCS_AND_FACTIONS.md`, which the rule did not name. Those NPCs therefore fell into **no class at all**: not authored, not rolled as an elite or boss, not excluded as a common monster. The rule silently did not reach the people the campaign is made of.
+
+**The audit that found it.** In the whole repository, not one entity of any class had ever carried a variance — 0 of the 14 figures in `220_NOTABLE_FIGURES.md`, 0 across every campaign ledger, and 0 rolled in play. All eight `institutions/` directories contain zero Character blocks, so half the authored-class definition addressed an empty set. The one place the omission was visible in play is Flux Sight: at its C rung it reads an awakened human's current and maximum Health and Mana, Alexander has held that rung since Perception reached 44, and against every human in the world it returned the flat table value — which is exactly what a Rank read already gave him. Section 6.1.2's own stated purpose is that the numbers be underivable. They were not.
+
+**What 1.41 authors.** The authored row of Section 6.1.2 now names a campaign's `130_NPCS_AND_FACTIONS.md` alongside the two world files, as one class on identical terms — a crewmate and a world-ranked hunter carry variance the same way and to the same limit. The `institutions/` clause is retained and labelled forward-looking, binding any roster that later carries a Character. Elites and bosses keep their rolled band unchanged; common monsters keep none.
+
+**Two derivation boundaries, closed before they could bite.** Both are invisible while every pool equals its table value, which is why 1.32 did not need them. **Section 13.5's mender field-touch reads the flat table** — the touch restores one standard-hit baseline of the mender's Rank, so a C-Rank mender's touch is 62 whatever their variance, and a deeper well never makes a mender stronger per touch, only able to spend more before the pool stops them. **Section 5.2's Mana tiers read the varied maximum** — an entity pays 10%, 25%, or 50% of its own pool, so a +10% C-Rank hunter's Signature ability costs 34 rather than 31, and Section 5.3's running-dry threshold is 25% of that same varied maximum.
+
+**Section 13.1 gains a recording convention, and authors nothing.** Section 5.1's discipline stands untouched: no creature is authored by the baseline, and no NPC hunter receives a stat block, an ability list, or a cost sheet. What a named NPC's entry may now carry is the derived form of rules already stated elsewhere — `rank`, `pool_variance`, `pools`, `signature_ability`, `learned_techniques`, `equipment` — written once so a Runtime reads a settled number instead of re-deriving it mid-scene, and so a Flux Sight read is answerable from the ledger. An entry omitting a field is not defective, because the rules supply the value; an entry contradicting the rules is.
+
+**Nine variances authored at adoption.** Only NPCs whose Rank is actually established in play were given one; the rest of the campaign ledger carries no Rank to vary and none was invented for them. **Owen Callahan (`ENT-000139`) +10%** — Health 275, Mana 137 — his mending depth is repeatedly established and the gift outran the body it landed in. **Priya Okafor (`ENT-000136`) none** — 100 / 50 — the median D on purpose, because *solid, workmanlike, nothing flashy* is her whole characterisation. **Julian Boyd (`ENT-000137`) +5%** — 42 / 21. **Renata Marchetti (`ENT-000138`) −5%** — 38 / 19. **Ruth (`ENT-000143`) +5%** — 262 / 131. On Ironline's trial crew: **Reggie Calloway (`ENT-000173`) +5%** — 105 / 52; **Bhavna Iyer (`ENT-000174`) none**; **Foster Nakashima (`ENT-000175`) −5%** — 95 / 47; **Callie Dunmore (`ENT-000176`) none**. Each is permanent and never rerolled (Section 6.1.2).
+
+**Two ledger defects corrected in the same pass.** Owen's Stone Skin was recorded at *Novice mastery*; Section 13.6 gives an NPC learned technique no mastery track, no use counter, and no progression, so the 30% stands as the authored D-Rank technique effect (Section 7.3) and the mastery label is retired. And Section 13.6's statement that a learned technique creates no Mana ledger is reconciled rather than changed: the technique creates none, the entity has one anyway under 1.32, and the technique is paid from it at a Section 5.2 tier.
+
+**What does not change.** No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes. Variance is authored forward: assigning a factor to an NPC who already exists changes what their pool is from here onward and does not reach back, so no exchange is recomputed, no fight re-resolved, no injury re-tiered, and no Mana spend restated. **No elite or boss is retroactively rolled** — 1.32 made that roll mandatory at first contact and it has never once been performed, including for the elites and bosses of the three D-Rank instant dungeons of 2026-08-09 (`EVT-000232`, `EVT-000234`, `EVT-000235`); those instances are closed, their populations discarded with them, and every one of those fights resolved at flat table values, which is a legal outcome of the band and in any case can no longer be distinguished from one. **No narrated cost is restated** — Owen sustaining Stone Skin through an elite at a described cost of roughly two-thirds of his capacity (`EVT-000180`, 2026-08-06) resolved two days before 1.32 was adopted at `EVT-000210` and was never bound by the tier table; it is not recomputed and sets no precedent. Immutable Profile 1.40-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.41 at readiness."
 ```

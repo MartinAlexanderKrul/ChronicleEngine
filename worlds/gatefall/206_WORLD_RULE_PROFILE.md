@@ -1,12 +1,12 @@
-# Gatefall — World Rule Profile 1.40
+# Gatefall — World Rule Profile 1.41
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.40
+**Profile Version:** 1.41
 **Engine Compatibility:** 0.2.0; Data Model 0.1.5
 **Status:** Active
-**Compatibility Status:** frozen at version 1.40 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-31. Version 1.40 **removes the boss-kill close from Section 17's instant dungeons.** An instance now ends on exactly two conditions — the **two-hour mark** measured from the moment the key is used, or **the Bearer's own decision to leave**. The boss kill still settles its core, its boss-drop d100, its kill XP, and the Gate-clear milestone at the instant it lands, but it no longer collapses the instance: the interior holds for whatever remains of the two hours, so a clear can actually be looted and mined instead of ejecting the Bearer the moment it is won. This restores parity with a public Gate, where a boss's death opens a two-hour clear window rather than ending one (Section 9.7), and removes the perverse incentive the old rule created — that killing the boss was the one thing a Bearer working the deposit could not afford to do. The two hours stay **absolute**: a late kill leaves only the minutes remaining, so clearing early is what buys looting time. Two consequences the old text never settled are stated outright: **population is rolled once at opening and never respawns**, so the post-kill remainder is time to mine and walk rather than time to farm; and **closing returns everyone inside to the world**, as the Section 8.3 penalty zone already does at its own limit, rather than stranding them under Section 9.7's public-Gate lost-inside rule. **No stored field, magnitude, cost, counter, probability, owned item, completed transaction, or resolved outcome changes**; every instant dungeon already cleared closed correctly under the rule in force at the time and is not reopened. Data Model 0.1.5 remains unchanged.
+**Compatibility Status:** frozen at version 1.41 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-31. Version 1.41 **extends Section 6.1.2's authored individual variance to the recurring named NPCs a campaign actually plays.** Since 1.32 the authored class has named only figures in `220_NOTABLE_FIGURES.md` and `institutions/` rosters, which left every crewmate, contact, and rival recorded in a campaign's own `130_NPCS_AND_FACTIONS.md` in **no class at all** — neither authored, nor rolled as an elite or boss, nor flatly excluded as a common monster. The rule silently did not reach them, and in the whole repository not one entity of any class has ever carried a variance. The authored class now names the campaign ledger alongside the world files, and the `institutions/` clause — which addresses zero Character blocks in any of the eight institution directories — is stated as the forward-looking provision it is. Two derivation traps that only bite once pools differ from the table are closed with them: **Section 13.5's mender field-touch reads the flat table**, exactly as Section 6.2's standard-hit baseline already does, and **an NPC's Section 5.2 Mana costs read its own varied maximum**, which is what varying the pool is for. **No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes**; variance is authored forward and no resolved exchange is recomputed. Data Model 0.1.5 remains unchanged. *(Version 1.40 removed the boss-kill close from Section 17's instant dungeons.)*
 
 **Version history and migrations.** Every transformation from Profile 1.1 forward to the active version lives in `worlds/gatefall/migrations/`, one authoritative record per edge, declared by `worlds/gatefall/migrations/INDEX.md`. Restoring a capture taken under Profile *V* runs each record from *V* forward to the active version in order and reads no other migration text; a current rule lookup reads none of them. Immutable checkpoints are never rewritten by a migration — the chain applies to mutable live state. Where a migration record and this profile disagree about present law, this profile governs: a migration record describes a transformation, not a standing rule.
 
@@ -503,9 +503,11 @@ single body.
 
 | Entity class | Variance | Where it lives |
 |---|---|---|
-| **Recurring named NPC** — one carrying an entry in `220_NOTABLE_FIGURES.md` or an `institutions/` roster | **Authored** ±10%, chosen deliberately | That NPC's own world-file entry, permanently |
+| **Recurring named NPC** — one carrying an entry in a campaign's `130_NPCS_AND_FACTIONS.md`, in `220_NOTABLE_FIGURES.md`, or on an `institutions/` roster | **Authored** ±10%, chosen deliberately | That NPC's own entry, permanently |
 | **Elite or boss** | **Rolled once** on the band table below, at first contact | The instance's transient state; discarded when the instance closes |
 | **Common monster** | **None** — the flat table value | Nowhere |
+
+The three sources named in the authored row are one class, not a hierarchy: a crewmate in a campaign ledger and a world-ranked hunter in `220_NOTABLE_FIGURES.md` carry variance on identical terms. The `institutions/` clause is forward-looking — no institution roster currently carries a Character block — and binds any that later does.
 
 | d100 | Variance |
 |---|---|
@@ -527,8 +529,24 @@ damage does not. Were it otherwise, every exchange would need that individual's 
 combat would stop being reproducible from the tables alone — which is the property the
 whole fixed-Rank model exists to keep.
 
+**What reads flat, and what reads varied.** Every magnitude derived from an entity's Rank
+Health *as a source of output* reads the flat table; every quantity that is a fraction of
+that entity's *own pool* reads its varied maximum. Two cases are stated outright because
+they are the ones that bite:
+
+- **Section 13.5's mender field-touch reads flat.** The touch restores one standard-hit
+  baseline of the mender's Rank — ¼ of the **flat** table value — so a C-Rank mender's
+  touch is **62** whatever their variance. A deeper well makes a mender no stronger per
+  touch; it lets them spend more before the pool decides otherwise, which is the only axis
+  variance should move.
+- **Section 5.2's Mana tiers read varied.** A fixed-Rank entity pays 10%, 25%, or 50% of
+  **its own maximum**, so a +10% C-Rank hunter's Signature ability costs **34** rather than
+  31, and Section 5.3's running-dry threshold is 25% of that same varied maximum. This is
+  the intended consequence: the deeper well is genuinely deeper and pays proportionally for
+  what it does.
+
 A one-scene named character is not a recurring named NPC. If such a character later earns a
-world-file entry, their variance is authored at that point and is not retroactive.
+ledger or world-file entry, their variance is authored at that point and is not retroactive.
 
 **Why this exists.** Without variance, an entity's Rank yields its pools exactly, so reading
 them returns nothing a Rank read did not already give. With it, the numbers are genuinely
@@ -2027,6 +2045,17 @@ Most Gates are cleared by parties, and most hunters in the world are ordinary li
 Every NPC hunter is a fixed-rank engine character (Section 2). A hunter's **Rank** is its complete mechanical description: a licensed B-Rank acts on the B-Rank for Health, Mana, and damage, and nothing further is authored. No NPC hunter carries a level, a Stat sheet, or an XP total. From Profile 1.32 it carries a **Rank Mana** pool (Sections 5.1, 6.1) — still not a curve, and still nothing authored per hunter: a fixed number read from its Rank, exactly as its Health is.
 
 When neither side is the Bearer, compare their Ranks for the capability contribution: **+1 step per Rank the actor stands above the resistance, −1 per Rank below**, capped inside the engine's net ±3. When the Bearer acts or resists, use Section 4.3's relevant effective Stat against the other party's Rank-derived domain rating instead; never apply both systems to one action.
+
+**What a recurring named NPC's ledger entry records (Profile 1.41).** Section 5.1's rule stands unchanged — *no creature is authored by the baseline*, and no NPC hunter gets a stat block, an ability list, or a cost sheet. What a named NPC's entry may carry is the **derived** form of rules already stated elsewhere, written down once so that a Runtime reads a settled number instead of re-deriving it mid-scene and so a Flux Sight read (Section 4.4, C rung) can be answered from the ledger. Recording these authors nothing:
+
+- **`rank`** — the fixed Rank that is the entity's whole mechanical description (this section).
+- **`pool_variance`** — the authored ±10% factor of Section 6.1.2, or `none`. Permanent, never rerolled.
+- **`pools`** — maximum Health and Mana: the Section 6.1 table value × the variance factor, floored, with the arithmetic shown. May carry the entity's own Section 5.2 tier costs and Section 5.3 threshold, all floored from the same maximum.
+- **`signature_ability`** — the one-sentence descriptive fact Section 13.6 already requires of every named NPC hunter, plus which of Section 13.5's three authored effects it triggers, if any.
+- **`learned_techniques`** — any rune- or book-taught technique the entity holds, at its effective technique Rank under Section 7.1, with the authored technique effect and Section 13.6's once-per-dangerous-scene limit. A learned technique carries no mastery track, no use counter, and no progression; where the technique's Bearer-side entry states a mastery ladder, the NPC holds the **base authored effect at its Rank** and nothing above it.
+- **`equipment`** — owned Ranked gear and its reduction only. Section 11.5 gives a non-Bearer no Stat sheet, so no equipment Stat line ever applies.
+
+An entry that omits any of these is not defective; the rules supply the value. An entry that *contradicts* them is, and the profile governs.
 
 ## 13.2 Standard Party Contract Terms
 

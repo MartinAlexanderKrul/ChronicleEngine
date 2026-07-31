@@ -122,6 +122,49 @@ try {
     Assert-Rejected -Name "duplicate trigger delta selector" -Expected "candidate_deltas contains a duplicate selector"
     Set-Content -LiteralPath (Join-Path $temporaryRoot $gatefallProfilePath) -Value $gatefallProfileOriginal -Encoding UTF8
 
+    # Campaign readiness headings. The key exists so a large campaign ledger can
+    # surrender a small block to readiness without being preloaded whole; these
+    # three cases pin the bounds that keep it from becoming a general preload.
+    $headingSelector = '    - file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md'
+    Set-MutatedContent -RelativePath $gatefallPath -Original $gatefallOriginal `
+        -OldValue 'heading: "Closed Channels"' `
+        -NewValue 'heading: "Closed Channel"'
+    Assert-Rejected -Name "stale campaign readiness heading" -Expected "must resolve exactly once in campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md; found 0"
+    Set-Content -LiteralPath (Join-Path $temporaryRoot $gatefallPath) -Value $gatefallOriginal -Encoding UTF8
+
+    Set-MutatedContent -RelativePath $gatefallPath -Original $gatefallOriginal `
+        -OldValue $headingSelector `
+        -NewValue '    - file: worlds/gatefall/200_WORLD_BIBLE.md'
+    Assert-Rejected -Name "campaign readiness heading reaching outside the campaign" -Expected "may only select inside campaigns/gatefall_pendragon_001/"
+    Set-Content -LiteralPath (Join-Path $temporaryRoot $gatefallPath) -Value $gatefallOriginal -Encoding UTF8
+
+    Set-MutatedContent -RelativePath $gatefallPath -Original $gatefallOriginal `
+        -OldValue $headingSelector `
+        -NewValue '    - file: campaigns/gatefall_pendragon_001/170_CHANGELOG.md'
+    Assert-Rejected -Name "campaign readiness heading outside required_sources" -Expected "absent from required_sources"
+    Set-Content -LiteralPath (Join-Path $temporaryRoot $gatefallPath) -Value $gatefallOriginal -Encoding UTF8
+
+    # Entity deferred groups. The dispatch is what turns the resident load
+    # obligation into an addressed read; these cases pin the three ways it could
+    # silently stop being one.
+    Set-MutatedContent -RelativePath $gatefallPath -Original $gatefallOriginal `
+        -OldValue "        - canonical_state.personality" `
+        -NewValue "        - canonical_state.disposition"
+    Assert-Rejected -Name "stale entity dispatch field" -Expected "field does not resolve in campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md"
+    Set-Content -LiteralPath (Join-Path $temporaryRoot $gatefallPath) -Value $gatefallOriginal -Encoding UTF8
+
+    Set-MutatedContent -RelativePath $gatefallPath -Original $gatefallOriginal `
+        -OldValue "      object_source: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md" `
+        -NewValue "      object_source: campaigns/gatefall_pendragon_001/136_MISSING_ROSTER.md"
+    Assert-Rejected -Name "entity dispatch with an unreadable object source" -Expected "object_source does not exist"
+    Set-Content -LiteralPath (Join-Path $temporaryRoot $gatefallPath) -Value $gatefallOriginal -Encoding UTF8
+
+    Set-MutatedContent -RelativePath $gatefallPath -Original $gatefallOriginal `
+        -OldValue "      object_source: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md" `
+        -NewValue "      unrelated_key: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md"
+    Assert-Rejected -Name "entity dispatch with no object source" -Expected "needs an object_source"
+    Set-Content -LiteralPath (Join-Path $temporaryRoot $gatefallPath) -Value $gatefallOriginal -Encoding UTF8
+
     Set-MutatedContent -RelativePath $gatefallProfilePath -Original $gatefallProfileOriginal `
         -OldValue "capacity_notice_repeat: first_blocked_audit_then_capacity_change" `
         -NewValue "capacity_notice_repeat: every_audit"

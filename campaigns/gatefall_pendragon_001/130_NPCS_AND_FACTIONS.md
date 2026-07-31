@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000077
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000267
@@ -91,7 +91,7 @@ Crew lead and striker; mid-30s, an experienced Gate clearer with three-plus clea
 ```yaml
 id: ENT-000126
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000058
@@ -127,7 +127,7 @@ The crew's sensor: an awakened whose gift reads Gate interiors — layout, popul
 ```yaml
 id: ENT-000127
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000058
@@ -160,7 +160,7 @@ Striker and Tanya's brother; broad-shouldered, blunt-force fighter carrying a re
 ```yaml
 id: ENT-000128
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000058
@@ -191,7 +191,7 @@ The crew's mender — the rare awakened who heals by touch, closing wounds mid-f
 ```yaml
 id: ENT-000129
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000058
@@ -222,7 +222,7 @@ Senior coordinator at the Windy City Hunters Coalition desk; about fifty, solid 
 ```yaml
 id: ENT-000130
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000058
@@ -271,7 +271,7 @@ Owner and operator of **Ironbound**, the independent gear shop on Milwaukee Aven
 ```yaml
 id: ENT-000131
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000058
@@ -303,7 +303,7 @@ A custom E-Rank/D-Rank gear shop in Chicago's warehouse district, one of three v
 ```yaml
 id: ENT-000132
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000058
@@ -329,7 +329,7 @@ Horizon Guild's affiliated gear outfitter on Michigan Avenue, the third vendor o
 ```yaml
 id: ENT-000133
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000058
@@ -355,7 +355,7 @@ A larger licensed hunter outfitter than Ironbound — a proper storefront with c
 ```yaml
 id: ENT-000140
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000083
@@ -381,7 +381,7 @@ Logistics coordinator for a corporate-adjacent contractor running harvest-hire C
 ```yaml
 id: ENT-000134
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-1-gameplay
@@ -417,7 +417,7 @@ Logistics coordinator for the same corporate-adjacent contractor, running a sepa
 ```yaml
 id: ENT-000135
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-1-gameplay
@@ -451,7 +451,7 @@ Strike captain running point on Ada Reyes's 2026-08-09 C-Rank harvest job. Lean,
 ```yaml
 id: ENT-000178
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000224
@@ -483,7 +483,7 @@ Harvest-element miner on Ada Reyes's 2026-08-09 C-Rank harvest job, alongside Al
 ```yaml
 id: ENT-000179
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000224
@@ -515,7 +515,7 @@ Harvest-element miner on Ada Reyes's 2026-08-09 C-Rank harvest job, alongside Al
 ```yaml
 id: ENT-000180
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000224
@@ -547,7 +547,7 @@ Striker and crew lead running her own undersubscribed five-hunter crew. Not rela
 ```yaml
 id: ENT-000136
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000069
@@ -584,7 +584,7 @@ Striker on Priya Okafor's crew; broad-shouldered, economical with words, carries
 ```yaml
 id: ENT-000137
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000070
@@ -621,7 +621,7 @@ Sensor/reader on Priya Okafor's crew; reads a room and its threats before anyone
 ```yaml
 id: ENT-000138
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000070
@@ -708,7 +708,7 @@ Total ≈**18% physical reduction**. He carries no Stat sheet (Section 11.5), so
 ```yaml
 id: ENT-000139
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000070
@@ -805,7 +805,7 @@ Ironline Guild recruiter ("talent side"), met at the Red Line Corridor on 2026-0
 ```yaml
 id: ENT-000146
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000138
@@ -846,7 +846,7 @@ Owner of an unnamed pawn-adjacent shop in Chicago's warehouse district, dealing 
 ```yaml
 id: ENT-000147
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000139
@@ -890,7 +890,7 @@ Owner-operator of Cutting Edge (`ENT-000132`), the custom gear shop in Chicago's
 ```yaml
 id: ENT-000149
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000156
@@ -919,7 +919,7 @@ A salvage and scrap dealer two blocks north of the pawn shop in Chicago's wareho
 ```yaml
 id: ENT-000150
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000157
@@ -945,7 +945,7 @@ A hunter met at the Windy City Hunters Coalition's training grounds, 2026-08-05.
 ```yaml
 id: ENT-000168
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000167
@@ -984,7 +984,7 @@ Defined in `110_WORLD_LEDGER.md` (`REC-000075`). Alexander's freelancer registra
 ```yaml
 id: REL-000063
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000058
@@ -1004,7 +1004,7 @@ history: "Formed at the Coalition case table on 2026-07-23 when Alexander, direc
 ```yaml
 id: REL-000064
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000063
@@ -1024,7 +1024,7 @@ history: "Formed 2026-07-25 when Kesha Morrison surfaced the Cicero Scar harvest
 ```yaml
 id: REL-000065
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000069
@@ -1044,7 +1044,7 @@ history: "Formed 2026-07-27 when Kesha Morrison, following up on her promised mo
 ```yaml
 id: REL-000066
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000147
@@ -1181,7 +1181,7 @@ Co-owner of Sable & Kern, a small two-partner harvest contractor posting its fir
 ```yaml
 id: ENT-000141
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000093
@@ -1212,7 +1212,7 @@ Co-owner of Sable & Kern; older than Sable, handles logistics, scale, and the nu
 ```yaml
 id: ENT-000142
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000093
@@ -1242,7 +1242,7 @@ Experienced harvester on the Sable & Kern crew; more C-Rank vein experience than
 ```yaml
 id: ENT-000143
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000093
@@ -1276,7 +1276,7 @@ Harvester on the Sable & Kern crew; younger, wiry, worked the second assigned ve
 ```yaml
 id: ENT-000144
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000093
@@ -1306,7 +1306,7 @@ A small, two-partner harvest-hire contractor, its first job posted through the W
 ```yaml
 id: ENT-000145
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000093
@@ -1334,7 +1334,7 @@ canonical_state:
 ```yaml
 id: REL-000067
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000095
@@ -1354,7 +1354,7 @@ history: "Formed 2026-07-31 when Kesha Morrison referred Alexander to Sable & Ke
 ```yaml
 id: REL-000068
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000138
@@ -1374,7 +1374,7 @@ history: "Formed 2026-08-04 when Wade Bishop approached Alexander unprompted at 
 ```yaml
 id: REL-000069
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000139
@@ -1402,7 +1402,7 @@ Harvest-crew lead running a Coalition-posted C-Rank job at a warehouse-district 
 ```yaml
 id: ENT-000148
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000140
@@ -1430,7 +1430,7 @@ situation: "Ran the 2026-08-04 C-Rank harvest posting near the old rail corridor
 ```yaml
 id: REL-000070
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000140
@@ -1464,7 +1464,7 @@ history: "Formed 2026-08-04 when Kesha Morrison booked Alexander onto Denise Fer
 ```yaml
 id: ENT-000169
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000177
@@ -1493,7 +1493,7 @@ canonical_state:
 ```yaml
 id: ENT-000170
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000177
@@ -1521,7 +1521,7 @@ An employee of Titan Secure (`ENT-000171`), reached by phone during Alexander's 
 ```yaml
 id: ENT-000172
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000188
@@ -1551,7 +1551,7 @@ Point man on Wade Bishop's borrowed four-hunter D-Rank trial crew, 2026-08-08. N
 ```yaml
 id: ENT-000173
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000201
@@ -1583,7 +1583,7 @@ Support gunner and sensor operator on Wade Bishop's borrowed D-Rank trial crew, 
 ```yaml
 id: ENT-000174
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000201
@@ -1615,7 +1615,7 @@ Perimeter/overwatch element on Wade Bishop's borrowed D-Rank trial crew, 2026-08
 ```yaml
 id: ENT-000175
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000201
@@ -1647,7 +1647,7 @@ Floater/flex striker on Wade Bishop's borrowed D-Rank trial crew, 2026-08-08. Na
 ```yaml
 id: ENT-000176
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000201
@@ -1681,7 +1681,7 @@ Seller at an unnamed surplus/pawn shop in Chicago's warehouse district. The shop
 ```yaml
 id: ENT-000177
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000216
@@ -1708,7 +1708,7 @@ Leasing agent for Lakeline Residential, handling the Rogers Park two-bedroom lis
 ```yaml
 id: ENT-000181
 canonical_record: REC-000077
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000256

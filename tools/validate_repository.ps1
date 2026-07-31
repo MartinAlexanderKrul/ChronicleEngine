@@ -22,7 +22,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 $failures = [System.Collections.Generic.List[string]]::new()
-$currentSchemaVersion = "0.1.5"
+$currentSchemaVersion = "0.1.6"
 
 if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) {
     $RepositoryRoot = Split-Path -Parent $PSScriptRoot
@@ -426,6 +426,29 @@ if (-not (Test-Path -LiteralPath $indexPath -PathType Leaf)) {
             )
         }
     }
+
+    # A stale cast roster is worse than no roster: readiness would carry a
+    # confident list of who exists that silently omits whoever entered the
+    # campaign most recently, which is exactly who a live session is about to
+    # meet. Coverage is mechanical here for the same reason the index's is.
+    $castGenerator = Join-Path $root "tools/generate_campaign_cast.py"
+    if (-not $CoreOnly -and (Test-Path -LiteralPath $castGenerator -PathType Leaf)) {
+        $castRunner = Join-Path $PSScriptRoot "generate_campaign_cast.ps1"
+        $previousErrorAction = $ErrorActionPreference
+        $ErrorActionPreference = "Continue"
+        $castOutput = & powershell -NoProfile -ExecutionPolicy Bypass `
+            -File $castRunner -RepositoryRoot $root -Check 2>&1 |
+            ForEach-Object { $_.ToString() }
+        $castExitCode = $LASTEXITCODE
+        $ErrorActionPreference = $previousErrorAction
+        if ($castExitCode -ne 0) {
+            Add-Failure (
+                "Generated campaign cast roster is not synchronized (exit {0}): {1}" -f
+                $castExitCode,
+                ($castOutput -join " ")
+            )
+        }
+    }
 }
 
 $definitions = @{}
@@ -435,6 +458,7 @@ $objectCount = 0
 # main pass; Relationship blocks are stashed and checked afterward, because a
 # relationship's endpoints may be defined in a file read later than its own.
 $entityTypes = @{}
+$objectBlocks = @{}
 $relationshipBlocks = [System.Collections.Generic.List[object]]::new()
 $trackedCounters = @{}
 $counterDeltas = [System.Collections.Generic.List[object]]::new()
@@ -506,7 +530,58 @@ function Get-ProgressionRatificationPolicy {
     return $policy
 }
 
+function Get-ParticipationPolicy {
+    param([string]$RepositoryRoot)
+
+    # Decision 085. A world opts into participation auditing by declaring a
+    # baseline Event and the Event kinds inside coverage. A world that declares
+    # nothing carries no obligation, which is why this returns a null policy
+    # rather than a default set: an engine-general default would impose the
+    # writer cost on every world on one world's evidence (Decision 069).
+    $policy = @{}
+    $worldsRoot = Join-Path $RepositoryRoot "worlds"
+    if (-not (Test-Path -LiteralPath $worldsRoot -PathType Container)) {
+        return $policy
+    }
+    foreach ($worldDirectory in (Get-ChildItem -LiteralPath $worldsRoot -Directory | Sort-Object Name)) {
+        $profilePath = Join-Path $worldDirectory.FullName "206_WORLD_RULE_PROFILE.md"
+        if (-not (Test-Path -LiteralPath $profilePath -PathType Leaf)) {
+            continue
+        }
+        $profileText = Get-Content -LiteralPath $profilePath -Raw -Encoding UTF8
+        $fencePattern = '(?ms)^```ya?ml[ \t]*\r?\n(?<manifest>.*?)^```[ \t]*$'
+        foreach ($fence in [regex]::Matches($profileText, $fencePattern)) {
+            $manifest = $fence.Groups['manifest'].Value
+            if ($manifest -notmatch '(?m)^participation_coverage_version:') {
+                continue
+            }
+            $baseline = $null
+            if ($manifest -match '(?m)^  baseline_as_of:\s*(EVT-\d{6})\s*$') {
+                $baseline = $Matches[1]
+            }
+            $kinds = [System.Collections.Generic.List[string]]::new()
+            if ($manifest -match '(?ms)^  event_kinds:\r?\n(?<kinds>(?:^    - .*\r?\n?)*)') {
+                foreach ($kindLine in [regex]::Matches($Matches['kinds'], '(?m)^    - (?<kind>\S+)\s*$')) {
+                    $kinds.Add($kindLine.Groups['kind'].Value) | Out-Null
+                }
+            }
+            if ($null -eq $baseline -or $kinds.Count -eq 0) {
+                Add-Failure "worlds/$($worldDirectory.Name)/206_WORLD_RULE_PROFILE.md declares a participation coverage manifest without both a baseline_as_of Event and a non-empty event_kinds list (Decision 085)."
+                continue
+            }
+            $policy[$worldDirectory.Name] = [pscustomobject]@{
+                Baseline = $baseline
+                BaselineNumber = [int]$baseline.Substring(4)
+                Kinds = $kinds
+                SourcePath = "worlds/$($worldDirectory.Name)/206_WORLD_RULE_PROFILE.md"
+            }
+        }
+    }
+    return $policy
+}
+
 $progressionPolicy = Get-ProgressionRatificationPolicy -RepositoryRoot $root
+$participationPolicy = Get-ParticipationPolicy -RepositoryRoot $root
 # Personal relationship types require Texture. This is an allowlist rather than an
 # institutional denylist on purpose: relationship type is free-form world vocabulary
 # ("working-contact", "research-collaboration", "harvest-hire"), so a denylist can
@@ -579,7 +654,7 @@ foreach ($file in $canonicalFiles) {
         }
         foreach ($legacyField in @("event_time", "record_time")) {
             if ([regex]::IsMatch($block, "(?m)^[ \\t]+$legacyField[ \\t]*:")) {
-                Add-Failure "$relativePath`:$line object $id uses legacy provenance field '$legacyField'; Data Model 0.1.5 requires game_date/real_date."
+                Add-Failure "$relativePath`:$line object $id uses legacy provenance field '$legacyField'; Data Model 0.1.4 and later require game_date/real_date."
             }
         }
 
@@ -870,6 +945,53 @@ foreach ($file in $canonicalFiles) {
                 }
                 $audits.Add([pscustomobject]@{ Subject = $subject; Domain = $domain; Result = $result })
             }
+
+            # Decision 085 - who was in this Event, and what the promotion did
+            # about each of them.
+            $participants = [System.Collections.Generic.List[string]]::new()
+            foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "participants"))) {
+                # Entries keep their own "- " prefix, so match past it rather
+                # than trimming: a bare Trim() leaves the dash and the identifier
+                # never matches.
+                if ($entry -match '(?m)^[ \t]*-[ \t]+"?(ENT-\d{6})') {
+                    $participants.Add($Matches[1]) | Out-Null
+                }
+            }
+            $participationAudits = [System.Collections.Generic.List[object]]::new()
+            $seenParticipationSubjects = @{}
+            foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "participation_audits"))) {
+                $subject = Get-EntryValue $entry "subject"
+                $result = Get-EntryValue $entry "result"
+                $record = Get-EntryValue $entry "record"
+                if ($subject -notmatch '^ENT-\d{6}$' -or
+                    @("record-updated", "no-change") -notcontains $result) {
+                    Add-Failure "$relativePath`:$line Event $id has a malformed participation_audits entry; subject must be an entity identifier and result must be record-updated or no-change (Decision 085)."
+                    continue
+                }
+                if ($result -eq "record-updated") {
+                    if ($record -notmatch '^(ENT|REC|REL)-\d{6}$') {
+                        Add-Failure "$relativePath`:$line Event $id records a participation audit for $subject as record-updated but names no valid moved record (Decision 085)."
+                        continue
+                    }
+                } elseif (-not [string]::IsNullOrWhiteSpace($record)) {
+                    Add-Failure "$relativePath`:$line Event $id records a no-change participation audit for $subject but also names a moved record (Decision 085)."
+                    continue
+                }
+                if ($seenParticipationSubjects.ContainsKey($subject)) {
+                    Add-Failure "$relativePath`:$line Event $id records more than one participation audit for $subject (Decision 085)."
+                    continue
+                }
+                $seenParticipationSubjects[$subject] = $true
+                if ($participants.Count -gt 0 -and $participants -notcontains $subject) {
+                    Add-Failure "$relativePath`:$line Event $id audits participation for $subject, which is not among its own participants (Decision 085)."
+                    continue
+                }
+                $participationAudits.Add([pscustomobject]@{
+                    Subject = $subject
+                    Result = $result
+                    Record = $record
+                })
+            }
             $sourceMatch = [regex]::Match($block, '(?m)^[ \t]+source:[ \t]*([^#\r\n]+)')
             $kindMatch = [regex]::Match($block, '(?m)^[ \t]*kind:[ \t]*([^#\r\n]+)')
             $eventAuditData.Add([pscustomobject]@{
@@ -879,6 +1001,8 @@ foreach ($file in $canonicalFiles) {
                 Kind = if ($kindMatch.Success) { $kindMatch.Groups[1].Value.Trim().Trim('"') } else { "" }
                 Block = $block
                 Audits = $audits
+                Participants = $participants
+                ParticipationAudits = $participationAudits
                 SourcePath = $relativePath
                 SourceLine = $line
             })
@@ -902,6 +1026,10 @@ foreach ($file in $canonicalFiles) {
             $locationLines.Count -ne 1) {
             Add-Failure "$relativePath`:$line active Character $id must declare exactly one canonical_state.location; presence is owned by the entity's own record (Decision 073)."
         }
+
+        # Decision 085: the record-updated cross-check needs the moved object's
+        # own text, which $definitions does not carry (it holds locations only).
+        $objectBlocks[$id] = $block
 
         # Decision 076: gather what the Relationship Texture check needs.
         if ($id.StartsWith("ENT-")) {
@@ -1009,6 +1137,54 @@ foreach ($baseline in $progressionBaselines) {
         })
         if (@($covered).Count -eq 0) {
             Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) closes a post-baseline qualifying scene involving $($baseline.Subject) but has no '$($baseline.Domain)' progression audit (Decision 080 / $($domainPolicy.SourcePath))."
+        }
+    }
+}
+
+# Decision 085 - a claimed promotion is checkable; a claimed non-promotion is not.
+#
+# This is the half of the audit that has teeth. `record-updated` names the object
+# the promotion moved, and that object must actually cite this Event -- which
+# catches the Decision 076 failure directly: a checkpoint that passed two
+# validators twice while the content it claimed to promote was gone.
+#
+# `no-change` is deliberately unverifiable and is not pretended otherwise. It
+# earns its place by making coverage decidable: without it there is no way to
+# distinguish "nothing moved" from "nobody looked".
+foreach ($eventData in $eventAuditData) {
+    foreach ($audit in $eventData.ParticipationAudits) {
+        if ($audit.Result -ne "record-updated") {
+            continue
+        }
+        if (-not $definitions.ContainsKey($audit.Record)) {
+            Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) claims to have moved undefined record $($audit.Record) for $($audit.Subject) (Decision 085)."
+            continue
+        }
+        $movedBlock = $objectBlocks[$audit.Record]
+        if (-not [string]::IsNullOrWhiteSpace($movedBlock) -and
+            $movedBlock -notmatch [regex]::Escape($eventData.Event)) {
+            Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) claims it moved $($audit.Record) for $($audit.Subject), but $($audit.Record) does not reference that Event; the promotion was claimed and not made (Decision 085)."
+        }
+    }
+}
+
+# Coverage. Prospective only: an Event at or before the declared baseline carries
+# no obligation, so adoption backfills nothing and no historical Event is rewritten.
+foreach ($worldName in $participationPolicy.Keys) {
+    $policy = $participationPolicy[$worldName]
+    foreach ($eventData in $eventAuditData) {
+        if ($eventData.EventNumber -le $policy.BaselineNumber -or
+            $policy.Kinds -notcontains $eventData.Kind) {
+            continue
+        }
+        foreach ($participant in $eventData.Participants) {
+            if ($entityTypes.ContainsKey($participant) -and $entityTypes[$participant] -ne "Character") {
+                continue
+            }
+            $covered = @($eventData.ParticipationAudits | Where-Object { $_.Subject -eq $participant })
+            if ($covered.Count -eq 0) {
+                Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) is in the participation coverage set and names $participant, but records no participation audit for them; state record-updated or an explicit no-change (Decision 085 / $($policy.SourcePath))."
+            }
         }
     }
 }

@@ -19,6 +19,8 @@ Setup manual and AI Project prompts: `docs/GAMEPLAY_START_GUIDE.md`.
 
 Repository inventory: `system/WORLDS_AND_CAMPAIGNS.md` (Decision 071) — the generated minimal table of every world and campaign, with status and latest checkpoint. It is the rendered source for the Engine Welcome Page listing; `tools/generate_runtime_index.ps1 -Check` enforces byte-for-byte synchronization.
 
+Campaign cast rosters: `campaigns/<campaign>/135_CAST_IN_PLAY.md` — the generated one-row-per-entity index of who exists in a campaign, derived from its `130_NPCS_AND_FACTIONS.md`. It is a readiness read, so a session knows the cast without preloading a ledger many times the readiness budget; the records themselves stay on demand and are loaded at the encounter (Resident Core, *Load a Recorded NPC Before Playing It*). `tools/generate_campaign_cast.ps1 -Check` enforces byte-for-byte synchronization.
+
 Formal validation gates, tiered (Recommendation R9): **Tier 1** `tools/validate_live.ps1` — repository structure (Decision 054) plus runtime configuration, the single named live gate. **Tier 2** `tools/validate_checkpoint.ps1` — Tier 1 plus the checkpoint form, lineage, and index-synchronization contract. **Tier 3** `tools/test_all.ps1` — the development regression suite, never a save gate. The underlying `tools/validate_repository.ps1` also enforces index coverage: a live campaign or world with no row fails the build (Decision 071).
 
 Transactional checkpoint writer: `tools/new_checkpoint.ps1` (Recommendation R8). It consumes the Runtime Profile's hash-bound live-mutation receipt and mechanically owns locking, complete snapshot copying, manifest generation, restore-pointer/index synchronization, rollback, final gates, and the machine result.

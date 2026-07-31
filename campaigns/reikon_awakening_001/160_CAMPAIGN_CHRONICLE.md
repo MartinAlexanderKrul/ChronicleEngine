@@ -5,7 +5,7 @@
 ```yaml
 id: REC-000043
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000045
@@ -48,7 +48,7 @@ subjects:
 ```yaml
 id: EVT-000025
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -67,7 +67,7 @@ description: "Captain Marissa Thorne briefs Daedalus, who accepts a solo E-Rank 
 ```yaml
 id: EVT-000026
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -85,7 +85,7 @@ description: "Daedalus rolls 43 with +2 modifier steps and destroys two stationa
 ```yaml
 id: EVT-000027
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -103,7 +103,7 @@ description: "Daedalus rests to recover mana and observes that Rift glow intensi
 ```yaml
 id: EVT-000028
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -121,7 +121,7 @@ description: "Daedalus rolls 61 with +1 modifier step and destroys three chargin
 ```yaml
 id: EVT-000029
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "campaigns/reikon_awakening_001/exports/play_export_0001.md"
@@ -139,7 +139,7 @@ description: "Daedalus completes a 10 km run, thirty minutes of sword forms, one
 ```yaml
 id: EVT-000030
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "user-supplied raw chat export: full_chat_export_reikon_session.md"
@@ -157,7 +157,7 @@ description: "Daedalus wounds the Warehouse 7 pack leader with Fireball, is rake
 ```yaml
 id: EVT-000031
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "user-supplied gameplay: /continue session 2"
@@ -175,7 +175,7 @@ description: "Daedalus follows a retreating Broodling downward into the warehous
 ```yaml
 id: EVT-000032
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -193,7 +193,7 @@ description: "Explicit ruling correcting a recording error in EVT-000031, classi
 ```yaml
 id: EVT-000033
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "owner-supplied full shared-chat transcript, promoted only through the last rules-valid exchange"
@@ -215,7 +215,7 @@ description: "Daedalus bought four healing potions, two energy tonics, and wound
 ```yaml
 id: EVT-000034
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "owner ruling applied to the complete shared-chat transcript"
@@ -233,7 +233,7 @@ description: "Owner ruling under Reikon Profile 0.5 supersedes EVT-000033's reje
 ```yaml
 id: EVT-000035
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -253,7 +253,7 @@ description: "Explicit ruling repairing an under-promotion in EVT-000033, classi
 ```yaml
 id: EVT-000036
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -272,7 +272,7 @@ description: "Owner ruling resolving a latent identity ambiguity surfaced by the
 ```yaml
 id: EVT-000037
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -291,7 +291,7 @@ description: "Owner ruling correcting the name of ENT-000061, the Aurology Insti
 ```yaml
 id: EVT-000038
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -312,7 +312,7 @@ description: "After leaving the basement, Daedalus applied first-aid salve and c
 ```yaml
 id: EVT-000039
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -330,7 +330,7 @@ description: "Back in his rented room, Daedalus performed a light bodyweight wor
 ```yaml
 id: EVT-000040
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -349,7 +349,7 @@ description: "Reikon World Rule Profile 0.6 Section 9.6 recurrent intervention c
 ```yaml
 id: EVT-000041
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
@@ -372,7 +372,7 @@ description: "Daedalus ran his full training regimen at dawn — deliberately om
 ```yaml
 id: EVT-000042
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
@@ -391,7 +391,7 @@ description: "Daedalus moved through the blast-struck core chamber checking each
 ```yaml
 id: EVT-000043
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -409,7 +409,7 @@ description: "worlds/reikon/206_WORLD_RULE_PROFILE.md Section 8.2 states that cl
 ```yaml
 id: EVT-000044
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -428,7 +428,7 @@ description: "The owner settled the gap `EVT-000043` flagged: worlds/reikon/206_
 ```yaml
 id: EVT-000045
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -447,7 +447,7 @@ description: "Two coupled owner rulings on worlds/reikon/206_WORLD_RULE_PROFILE.
 ```yaml
 id: EVT-000046
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -465,7 +465,7 @@ description: "Daedalus allocated all 8 unspent Ascension points (2 original + 6 
 ```yaml
 id: EVT-000047
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
@@ -488,7 +488,7 @@ description: "Daedalus woke to the first safe exchange of a new in-fiction day, 
 ```yaml
 id: EVT-000048
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
@@ -509,7 +509,7 @@ description: "At the Warehouse 7 chamber, Wren conducted an in-person assessment
 ```yaml
 id: EVT-000049
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "owner-supplied session transcript, promoted through the last rules-valid exchange"
@@ -528,7 +528,7 @@ description: "Daedalus took the unconfirmed-Rank tannery-district E-Rank Rift as
 ```yaml
 id: EVT-000050
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -546,7 +546,7 @@ description: "In play, Captain Thorne asserted that Association assignments pay 
 ```yaml
 id: EVT-000057
 canonical_record: REC-000043
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling

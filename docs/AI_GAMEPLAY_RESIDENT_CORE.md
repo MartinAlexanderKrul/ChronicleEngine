@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.13
+**Document Version:** 1.15
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -19,6 +19,7 @@ The resident layer governs:
 - player-authored intent and the compression intent envelope;
 - intent/fact grounding;
 - interaction cadence and player-facing information boundaries;
+- loading a recorded NPC before playing it, and what that NPC may know;
 - uncertain-action resolution, actor-relative modifiers, and world-side standing and obligation;
 - profile-declared proactive triggers;
 - per-exchange state and characterization settlement; and
@@ -131,6 +132,16 @@ Do not expose repository paths, object identifiers, Knowledge-State labels, vali
 
 Before any NPC dialogue, action, or reaction, apply the NPC knowledge channel test from the active runtime contract: present, told through fiction, authored records access, or common knowledge. Runtime omniscience is not an NPC channel.
 
+## Load a Recorded NPC Before Playing It
+
+A named campaign NPC has a record: an `ENT-` block, and often a `REL-` with the protagonist carrying how those two actually behave together. **Neither is in the readiness set.** The NPC ledger is deliberately on-demand because it is far too large to preload; readiness carries only its Closed Channels table.
+
+So load the record before that NPC's first line in a scene — its entity block, plus any relationship with the protagonist. Once per scene, not once per line, and *before* narrating rather than after a line has already been written from recollection. Take the fields the campaign's declared entity dispatch names rather than the whole block: a long-running record runs to tens of kilobytes, and most of that is history the chronicle already holds.
+
+An NPC's manner, standing, last-known situation, and open threads are canon. Canon that was never loaded cannot govern narration, and a line that happens to come out right was still ungrounded (Invariant 1). Recollection is the failure mode here exactly as it is for state: what you remember of a character is a compressed role label, and the manner is what compression removes. If the record cannot be read, say the NPC is unloaded and narrate nothing resting on its history.
+
+This is not the channel check below. Loading asks what the record says; the channel check asks what the character may know. Passing one never satisfies the other.
+
 ## The NPC Channel Check
 
 An NPC knows a fact only if the fiction gave **that** NPC a channel to it. Your omniscience is not the character's.
@@ -185,6 +196,7 @@ After every resolved exchange and before yielding, settle every changed field. T
 5. Attach required `counter_deltas` to the canon-bearing Event and reconcile each owning entity's `current_value` from its baseline.
 6. Apply completed-challenge rewards and every immediate level reward now. Defer only rewards the active profile explicitly marks deferrable.
 7. Run only trigger and progression audits whose declared boundary occurred, recording required `none` results as well as positive results.
+7b. Where a profile declares participation coverage, record a result for every Character the Event names: `record-updated` naming the object you actually moved, or an explicit `no-change`. Write it from what the promotion did, not from what the scene felt like — a `record-updated` claim is checked against the named object and fails the barrier when that object does not cite the Event.
 8. Update in-flight session state. The next response and `/system` read settled state, not checkpoint-opening values.
 9. Record characterization changes described below, then narrate fictional outcomes and declared compact notifications.
 

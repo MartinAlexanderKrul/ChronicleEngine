@@ -14,6 +14,8 @@ import yaml
 sys.dont_write_bytecode = True
 
 from validate_runtime_configuration import (
+    campaign_readiness_headings,
+    entity_deferred_groups,
     find_character,
     load_single_fenced_yaml,
     normalize_repo_path,
@@ -237,6 +239,100 @@ def build_continue_plan(
                     failures,
                 )
 
+    # Per-entity deferred reads. The subject is not known until an NPC actually
+    # enters a scene, so the plan names the file, the fields, and where the
+    # identifier is listed, and the identifier binds at dispatch. Fields are named
+    # rather than taking the whole block for the same reason the protagonist's
+    # are: in the live prototype the largest entity record is 65 KB and the
+    # largest relationship 52 KB, so a whole-object encounter read would cost more
+    # than the entire readiness budget.
+    declared_groups = entity_deferred_groups(config)
+    if isinstance(declared_groups, dict):
+        for dispatch in sorted(declared_groups):
+            group = declared_groups[dispatch]
+            if not isinstance(group, dict):
+                failures.append(f"entity deferred group '{dispatch}' must be a mapping")
+                continue
+            file_value = group.get("file")
+            object_source = group.get("object_source")
+            if not isinstance(file_value, str) or not file_value.strip():
+                failures.append(f"entity deferred group '{dispatch}' needs a file")
+                continue
+            normalized = normalize_repo_path(file_value)
+            path = resolve_repo_path(root, normalized)
+            if not path.is_file():
+                failures.append(f"entity deferred group file does not exist: {normalized}")
+                continue
+            selector: dict[str, Any] = {"file": normalized}
+            if isinstance(object_source, str) and object_source.strip():
+                selector["object"] = (
+                    f"any ENT- listed in {normalize_repo_path(object_source)}"
+                )
+            for key, plan_key in (
+                ("entity_fields", "fields"),
+                ("relationship_fields", "relationship_fields"),
+            ):
+                fields = group.get(key)
+                if not isinstance(fields, list) or not fields:
+                    continue
+                resolved: list[str] = []
+                for value in fields:
+                    if not isinstance(value, str) or field_path_matches(path, value) < 1:
+                        failures.append(
+                            f"entity deferred field does not resolve in {normalized}: {value}"
+                        )
+                        continue
+                    resolved.append(value)
+                if resolved:
+                    selector[plan_key] = resolved
+            if "fields" not in selector and "relationship_fields" not in selector:
+                failures.append(f"entity deferred group '{dispatch}' resolves no fields")
+                continue
+            selector["dispatch"] = dispatch
+            reason = group.get("reason")
+            selector["reason"] = (
+                reason.strip()
+                if isinstance(reason, str) and reason.strip()
+                else "fetch when the named subject enters play"
+            )
+            plan["available_on_demand_selectors"].append(selector)
+    elif declared_groups is not None:
+        failures.append("source_loading.entity_deferred_groups must be a mapping")
+
+    # A campaign ledger excluded from readiness as a whole file may still own a
+    # small block readiness needs. The campaign declares the exact heading; the
+    # runtime-configuration validator bounds it to this campaign's own
+    # required_sources and proves it resolves exactly once.
+    declared_headings = campaign_readiness_headings(config)
+    if isinstance(declared_headings, list):
+        for entry in declared_headings:
+            if not isinstance(entry, dict):
+                failures.append("campaign readiness heading entry must be a mapping")
+                continue
+            file_value = entry.get("file")
+            heading_value = entry.get("heading")
+            if (
+                not isinstance(file_value, str)
+                or not file_value.strip()
+                or not isinstance(heading_value, str)
+                or not heading_value.strip()
+            ):
+                failures.append("campaign readiness heading entry needs a file and a heading")
+                continue
+            reason = entry.get("reason")
+            add_heading_selector(
+                root,
+                plan,
+                file_value,
+                heading_value.strip(),
+                reason.strip()
+                if isinstance(reason, str) and reason.strip()
+                else "campaign readiness selector declared by campaign startup",
+                failures,
+            )
+    elif declared_headings is not None:
+        failures.append("source_loading.campaign_readiness_headings must be a list")
+
     required_sources = config.get("required_sources")
     if isinstance(required_sources, list):
         plan["available_on_demand"] = [
@@ -261,6 +357,7 @@ def build_save_plan(
     )
     for tool in (
         "tools/generate_runtime_index.ps1",
+        "tools/generate_campaign_cast.ps1",
         "tools/validate_repository.ps1",
         "tools/test_checkpoint_contract.ps1",
     ):

@@ -5,7 +5,7 @@ A Persistent Entity of type Place: a location with continuing identity. Structur
 ```yaml
 id: <generated: ENT-XXXXXX>
 canonical_record: <required: REC-XXXXXX>
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: <required: active | ended | superseded>
 provenance:
   source: <required: EVT-XXXXXX | ruling | transcript>

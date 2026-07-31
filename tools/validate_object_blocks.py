@@ -212,7 +212,7 @@ def validate(root: Path, schema_version: str) -> tuple[list[str], int]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repository-root", default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--schema-version", default="0.1.5")
+    parser.add_argument("--schema-version", default="0.1.6")
     parser.add_argument("--quiet", action="store_true")
     args = parser.parse_args()
 

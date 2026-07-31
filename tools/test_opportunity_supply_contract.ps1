@@ -56,8 +56,11 @@ Assert-Contains $resident 'advance every established opportunity source through 
 Assert-Contains $resident 'an inquiry reads settled supply rather than generating it' 'The resident layer does not forbid generating supply at the point of asking.'
 
 # Decision 083 point 6 keeps supply off the schema, as Decision 082 did for
-# commitments. If that ever changes, the Data Model version must move with it.
-Assert-Contains $dataModel '^\*\*Data Model Version:\*\* 0\.1\.5$' 'Data Model version moved; Decisions 082 and 083 both assert 0.1.5 stands because no Persistent Object structure changes.'
+# commitments. This pinned the Data Model at 0.1.5 until Decision 085 advanced it
+# to 0.1.6 over a block neither decision has a stake in, so the claim is asserted
+# where it actually lives: a supply source and its openings stay tracked state.
+Assert-Contains $dataModel 'A \*\*supply source\*\* is tracked state' 'Section 7.5 no longer declares a supply source as tracked state.'
+Assert-Contains $dataModel 'tracked state under Section 7\.3 and mint no identifier' 'Standing openings no longer mint no identifier.'
 
 # Decision 084. Decisions 082 and 083 placed two world-side obligations on the
 # clock boundary, but the Section 2.5 trigger manifest's settlement vocabulary

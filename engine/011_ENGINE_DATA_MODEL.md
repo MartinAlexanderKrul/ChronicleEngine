@@ -5,7 +5,7 @@
 **File:** `011_ENGINE_DATA_MODEL.md`
 **Status:** Workshop Draft
 **Engine Version:** 0.2.0
-**Data Model Version:** 0.1.5
+**Data Model Version:** 0.1.6
 **Layer:** Engine (000–099)
 
 ---
@@ -151,7 +151,7 @@ An **Event** (`EVT-`) is a timed, immutable fact: something that happened at a p
 
 An Event is immutable once created. Provenance (Section 8.2) points at Event identifiers. An Event's historical importance is classified by the tiers already defined in Rules Section 3.5 (Immediate, Archived, Historical, Mythic); this document does not redefine those tiers.
 
-An Event may carry either of two optional, typed audit blocks:
+An Event may carry any of three optional, typed audit blocks:
 
 ```yaml
 counter_deltas:
@@ -166,13 +166,20 @@ progression_audits:
     candidate: twin_fang
     scene: cicero-gate-clear
     disposition: qualifying
+
+participation_audits:
+  - subject: ENT-000139
+    result: record-updated
+    record: REL-000066
 ```
 
 For `counter_deltas`, `subject` is a defined Persistent Entity identifier, `counter` is a non-empty profile-owned path on that subject, and `delta` is a non-zero integer. A declared delta is part of the immutable causal record; it is not reconstructed later from prose.
 
 For `progression_audits`, `subject` is a defined Persistent Entity identifier, `domain` is a non-empty profile-owned audit domain, and `result` is one of `none`, `evidence-recorded`, or `pending-classification`. `candidate`, `scene`, and `disposition` are absent when `result` is `none`. They are required otherwise: `candidate` and `scene` are stable profile-owned keys, and `disposition` is `qualifying` or `ambiguous`. One Event may carry several audit entries when it contains several distinct scenes or subjects.
 
-These blocks define evidence shape, not game semantics. The active World Rule Profile decides which Events require an audit, what a counter path means, what makes evidence qualify, and what threshold changes a candidate's state.
+For `participation_audits`, `subject` is a defined Persistent Entity identifier that also appears in this Event's own `participants`, and `result` is one of `record-updated` or `no-change`. `record` is required when `result` is `record-updated` and absent otherwise: it names the Canonical Record, entity, or relationship the promotion actually moved, and that named object must itself reference this Event. `no-change` asserts that the subject was considered and nothing about it changed — a negative assertion that is deliberately not machine-verifiable, and exists so that validation can tell "nothing moved" from "nobody looked" (Decision 085).
+
+These blocks define evidence shape, not game semantics. The active World Rule Profile decides which Events require an audit, what a counter path means, what makes evidence qualify, what threshold changes a candidate's state, and which Events fall inside a participation coverage set.
 
 ---
 
@@ -587,6 +594,19 @@ Migration of live mutable state:
 5. Update current manifests, templates, bindings, and compatibility declarations, then run the Repository Validation Barrier.
 
 Immutable checkpoints remain byte-unchanged at their captured schema and fields. Restoration applies 0.1.2 → 0.1.3, 0.1.3 → 0.1.4, and 0.1.4 → 0.1.5 in order as applicable. The 0.1.5 migration consumes no fictional time, derives no missing historical evidence, and allocates no identifier beyond a campaign's recorded migration Event.
+
+### 12.4.4 Data Model 0.1.5 → 0.1.6
+
+Decision 085 adds `participation_audits`, a third optional Event audit block recording, per participating subject, whether the promotion moved that subject's record. It is additive and optional, but it is a Data Model change and therefore advances the schema version.
+
+Migration of live mutable state:
+
+1. Retag every live Persistent Object and Canonical Record from schema 0.1.5 to 0.1.6.
+2. Do not rewrite historical Events to add the block. Coverage is **prospective**: it begins at the Event identifier the active World Rule Profile declares as its participation baseline, and applies only to Events allocated after it.
+3. A world that declares no participation coverage set carries no obligation and no entries. There is no entity-side extension and no per-subject state to create — unlike 0.1.5, this migration adds nothing to any entity.
+4. Update current manifests, templates, bindings, and compatibility declarations, then run the Repository Validation Barrier.
+
+Immutable checkpoints remain byte-unchanged at their captured schema. Restoration applies each migration in order as applicable, through 0.1.5 → 0.1.6. This migration consumes no fictional time, derives no historical evidence, creates no entity state, and **allocates no identifier**: the baseline is the campaign's existing Event high-water mark at adoption, not a newly minted migration Event.
 
 ---
 

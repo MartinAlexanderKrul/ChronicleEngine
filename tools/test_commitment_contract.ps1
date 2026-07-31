@@ -59,10 +59,14 @@ Assert-Contains $runtime 'first operation that notices a commitment has come due
 Assert-Contains $resident 'Settle every pending world-side commitment the span reached' 'Turn-State Settlement does not settle due commitments.'
 Assert-Contains $resident 'the world acts whether or not the player asked' 'Commitment settlement can still be read as player-triggered.'
 
-# Decision 082 point 2 exists to avoid a schema advance. If a later change makes
-# a commitment object-shaped, the Data Model version must move with it and this
-# assertion is the reminder that the trade was deliberate.
-Assert-Contains $dataModel '^\*\*Data Model Version:\*\* 0\.1\.5$' 'Data Model version moved; Decision 082 asserts 0.1.5 stands because no Persistent Object structure changes.'
+# Decision 082 point 2 exists to avoid a schema advance: a commitment is tracked
+# state, so no Persistent Object structure changes and no live record is retagged.
+# This pinned the Data Model at 0.1.5 until Decision 085 advanced it to 0.1.6 for
+# an unrelated reason — which is the false positive a version pin buys, since the
+# number moves for changes this contract has no stake in. What Decision 082
+# actually claims is asserted directly instead, and it still fails the moment a
+# commitment is made object-shaped.
+Assert-Contains $dataModel 'A \*\*pending world-side commitment\*\* is tracked state' 'Section 7.4 no longer declares a commitment as tracked state.'
 Assert-NotContains $dataModel 'A pending world-side commitment is a Persistent Object' 'A commitment must remain tracked state, not a Persistent Object.'
 
 Write-Host 'Pending world-side commitment contract PASSED'

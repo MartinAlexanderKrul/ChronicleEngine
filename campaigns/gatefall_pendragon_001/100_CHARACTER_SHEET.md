@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000074
 canonical_record: REC-000074
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000267
@@ -29,7 +29,7 @@ subjects:
 ```yaml
 id: ENT-000125
 canonical_record: REC-000074
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000056
@@ -91,7 +91,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.44"
+    profile_version: "1.45"
     profile_skill_rank_ascension_event: EVT-000158
     profile_consumable_economy_event: EVT-000154
     profile_premium_surcharge_event: EVT-000135

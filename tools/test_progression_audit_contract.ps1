@@ -93,7 +93,7 @@ try {
     $runtime = Join-Path $root "docs/AI_GAMEPLAY_RUNTIME_PROFILE.md"
 
     $baseline = Invoke-Validation $tempRoot
-    Assert-True ($baseline.ExitCode -eq 0) "Unmodified Data Model 0.1.5 repository did not validate:`n$($baseline.Output)"
+    Assert-True ($baseline.ExitCode -eq 0) "Unmodified Data Model 0.1.6 repository did not validate:`n$($baseline.Output)"
     Assert-True ((Get-Text $profile).Contains('progression-batch-settlement')) `
         "Gatefall Profile 1.26 does not preserve promotion-time non-combat progression batching."
     Assert-True ((Get-Text $profile).Contains('Promotion reconciliation.')) `
@@ -162,7 +162,7 @@ try {
 ``````yaml
 id: $fixtureId
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay

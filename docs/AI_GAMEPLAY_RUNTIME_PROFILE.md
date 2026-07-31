@@ -2,7 +2,7 @@
 
 # AI Gameplay Runtime Profile
 
-**Document Version:** 1.46
+**Document Version:** 1.47
 **Status:** Active Gameplay Workflow — Fetched Reference Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -26,7 +26,7 @@ Interpreter mode may update world, campaign, and historical state through play. 
 
 The profile has two execution layers under Runtime Section 0.4 and Decision 055, and they are **two documents**:
 
-- **Resident per-turn layer — `docs/AI_GAMEPLAY_RESIDENT_CORE.md`.** The Player Agency Contract; the compression intent envelope; Interaction Cadence; intent/fact grounding; the Action Resolution Bright Line and Modifier Step Contract; the canvass and standing-grounding rule; the Information Boundary; the NPC channel check; Turn-State Settlement; the Profile-Declared Proactive Trigger Audit; promotion-obligation awareness; canon-determinism; and the rule that an applicable World Rule Profile is loaded before affected resolution. These checks fire on every turn at the point a fact or outcome would be narrated.
+- **Resident per-turn layer — `docs/AI_GAMEPLAY_RESIDENT_CORE.md`.** The Player Agency Contract; the compression intent envelope; Interaction Cadence; intent/fact grounding; the Action Resolution Bright Line and Modifier Step Contract; the canvass and standing-grounding rule; the Information Boundary; the NPC load obligation and the NPC channel check; Turn-State Settlement; the Profile-Declared Proactive Trigger Audit; promotion-obligation awareness; canon-determinism; and the rule that an applicable World Rule Profile is loaded before affected resolution. These checks fire on every turn at the point a fact or outcome would be narrated.
 - **Fetched reference layer — this document.** Startup variants, command details, worked examples, export formatting, save/checkpoint procedure, and other sections consulted when their operation is invoked. Fetched material elaborates resident obligations but never replaces them.
 
 **The resident core is loaded before play and held for the whole session.** It is not optional, not summarized, and not consulted on demand. A session executing from this document alone is missing every per-turn guardrail: it has the command table and the save algorithm, and no agency contract, no bright line, and no settlement. Load `docs/AI_GAMEPLAY_RESIDENT_CORE.md` first.
@@ -352,6 +352,10 @@ The helper derives a finite plan from the campaign's existing non-canonical star
 `available_on_demand_selectors` are exact deferred reads with a named dispatch. Fetch the matching group immediately before that operation needs the fields: action-resolution state for an affected uncertain action, progression counters at settlement or promotion, shop state for a shop operation, and any equivalent campaign-declared group. Deferred selectors reduce readiness load; they never permit resolving from an incomplete state.
 
 Every emitted file and selector must resolve exactly once. A missing or ambiguous selector blocks the affected readiness or command before narration. The Runtime performs the listed reads and remains responsible for grounding their meaning. Historical chronicles, changelogs, full World Rule Profiles, and NPC ledgers are never whole-file readiness reads unless a situation-specific operation independently requires them.
+
+`entity_deferred_groups` declares the same bounded read for a subject the plan cannot name in advance. A generated plan knows which fields an NPC encounter needs and which file holds them, but not which entity will walk into the scene, so the group names the file, the fields, and the `object_source` that lists the candidate identifiers — the campaign's cast roster — and the identifier binds at dispatch. Fields are named rather than taken wholesale for the same reason the protagonist's are: a long-running entity record reaches tens of kilobytes, most of it history the chronicle already holds, and a whole-object encounter read would cost more than the entire readiness budget. The validator requires the file and its object source to be in `required_sources` and every declared field to resolve in that file at least once — at least, not exactly, because the selector binds to whichever entity enters.
+
+Whole-file exclusion is not block-level exclusion. A campaign may declare `source_loading.campaign_readiness_headings` to pull an exact heading out of an otherwise on-demand campaign ledger — the mechanism the World Rule Profile's `readiness_headings` already provides for world material. Each entry names a file and a heading; the runtime-configuration validator requires the file to sit inside that campaign, to be present in `required_sources`, and the heading to resolve exactly once. Use it for a small block readiness genuinely needs and cannot reconstruct, not to reintroduce a preload one heading at a time. Gatefall's NPC ledger declares its **Closed Channels** table this way: those are player rulings about what a named NPC cannot know, and a resumed session that never opened them would narrate straight past them.
 
 ---
 

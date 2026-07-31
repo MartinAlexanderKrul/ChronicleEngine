@@ -168,6 +168,45 @@ def heading_count(path: Path, heading: str) -> int:
     return len(pattern.findall(read_text(path)))
 
 
+def campaign_readiness_headings(config: dict[str, Any]) -> Any:
+    """The campaign's declared bounded readiness headings, as written.
+
+    A campaign ledger may be authoritative and far too large to preload -- the
+    Gatefall NPC ledger is over 250 KB against a readiness ceiling that cannot
+    hold a tenth of it. Whole-file exclusion is correct, but it also excluded
+    small blocks inside those files that readiness genuinely needs, with no way
+    to say so: the campaign's Closed Channels table is a handful of player
+    rulings sitting inside the ledger readiness never opens. This declares an
+    exact heading instead of an all-or-nothing file.
+
+    Returns the raw declaration so callers can reject a malformed one rather
+    than silently reading it as absent.
+    """
+    source_loading = config.get("source_loading")
+    if not isinstance(source_loading, dict):
+        return None
+    return source_loading.get("campaign_readiness_headings")
+
+
+def entity_deferred_groups(config: dict[str, Any]) -> Any:
+    """The campaign's declared per-entity deferred reads, as written.
+
+    The protagonist already has this: `protagonist_deferred_field_groups` names
+    the exact fields a shop or an action needs out of a 150 KB character sheet.
+    NPCs had no equivalent, so the only declared handle on an NPC record was the
+    whole ledger, and the encounter case fell back on nothing at all.
+
+    A plan is generated before a session, so it cannot know *which* entity will
+    walk into a scene. It can still name the file, the fields, and where the
+    identifier comes from -- which is the whole difference between an addressed
+    read and a search.
+    """
+    source_loading = config.get("source_loading")
+    if not isinstance(source_loading, dict):
+        return None
+    return source_loading.get("entity_deferred_groups")
+
+
 def field_path_count(path: Path, field_path: str) -> int:
     parts = field_path.split(".")
     if not parts or any(not re.fullmatch(r"[a-z][a-z0-9_]*", part) for part in parts):
@@ -586,6 +625,152 @@ def validate_campaign(
             seen_sources.add(normalized)
             if not resolve_repo_path(root, normalized).is_file():
                 failures.append(f"{display}: required source does not exist: {normalized}")
+
+    declared_headings = campaign_readiness_headings(config)
+    if declared_headings is not None:
+        authoritative = {
+            normalize_repo_path(source)
+            for source in required_sources or []
+            if isinstance(source, str)
+        }
+        if not isinstance(declared_headings, list) or not declared_headings:
+            failures.append(
+                f"{display}: source_loading.campaign_readiness_headings must be a "
+                "non-empty list when present"
+            )
+        else:
+            seen_headings: set[tuple[str, str]] = set()
+            for entry in declared_headings:
+                if not isinstance(entry, dict):
+                    failures.append(
+                        f"{display}: every campaign_readiness_headings entry must be a mapping"
+                    )
+                    continue
+                file_value = entry.get("file")
+                heading_value = entry.get("heading")
+                if not isinstance(file_value, str) or not file_value.strip():
+                    failures.append(
+                        f"{display}: campaign_readiness_headings entry needs a non-empty file"
+                    )
+                    continue
+                if not isinstance(heading_value, str) or not heading_value.strip():
+                    failures.append(
+                        f"{display}: campaign_readiness_headings entry for '{file_value}' "
+                        "needs a non-empty heading"
+                    )
+                    continue
+                normalized = normalize_repo_path(file_value)
+                heading = heading_value.strip()
+                key = (normalized, heading)
+                if key in seen_headings:
+                    failures.append(
+                        f"{display}: campaign_readiness_headings repeats '{heading}' "
+                        f"in {normalized}"
+                    )
+                seen_headings.add(key)
+                # Bounded, and bounded to this campaign. Without this the key
+                # would be a second, unreviewed route for preloading world
+                # material that the World Rule Profile's own readiness_headings
+                # already governs on its own terms.
+                if not normalized.startswith(f"{campaign}/"):
+                    failures.append(
+                        f"{display}: campaign_readiness_headings may only select inside "
+                        f"{campaign}/; got {normalized}"
+                    )
+                    continue
+                if normalized not in authoritative:
+                    failures.append(
+                        f"{display}: campaign_readiness_headings selects {normalized}, "
+                        "which is absent from required_sources"
+                    )
+                    continue
+                path = resolve_repo_path(root, normalized)
+                if not path.is_file():
+                    failures.append(
+                        f"{display}: campaign_readiness_headings file does not exist: {normalized}"
+                    )
+                    continue
+                count = heading_count(path, heading)
+                if count != 1:
+                    failures.append(
+                        f"{display}: campaign readiness heading '{heading}' must resolve "
+                        f"exactly once in {normalized}; found {count}"
+                    )
+
+    declared_groups = entity_deferred_groups(config)
+    if declared_groups is not None:
+        authoritative = {
+            normalize_repo_path(source)
+            for source in required_sources or []
+            if isinstance(source, str)
+        }
+        if not isinstance(declared_groups, dict) or not declared_groups:
+            failures.append(
+                f"{display}: source_loading.entity_deferred_groups must be a "
+                "non-empty mapping when present"
+            )
+        else:
+            for dispatch, group in declared_groups.items():
+                label = f"{display}: entity_deferred_groups.{dispatch}"
+                if not isinstance(dispatch, str) or not re.fullmatch(
+                    r"[a-z][a-z0-9_.-]*", dispatch
+                ):
+                    failures.append(f"{display}: invalid entity dispatch name '{dispatch}'")
+                    continue
+                if not isinstance(group, dict):
+                    failures.append(f"{label} must be a mapping")
+                    continue
+                file_value = group.get("file")
+                if not isinstance(file_value, str) or not file_value.strip():
+                    failures.append(f"{label} needs a non-empty file")
+                    continue
+                normalized = normalize_repo_path(file_value)
+                path = resolve_repo_path(root, normalized)
+                if not path.is_file():
+                    failures.append(f"{label} file does not exist: {normalized}")
+                    continue
+                if normalized not in authoritative:
+                    failures.append(f"{label} file is absent from required_sources: {normalized}")
+                # Where the identifier comes from. A dispatch that names fields
+                # but no source of subjects is a read with no way to know what to
+                # read, which is the state this key exists to end.
+                object_source = group.get("object_source")
+                if not isinstance(object_source, str) or not object_source.strip():
+                    failures.append(f"{label} needs an object_source naming where subjects are listed")
+                else:
+                    normalized_source = normalize_repo_path(object_source)
+                    if not resolve_repo_path(root, normalized_source).is_file():
+                        failures.append(f"{label} object_source does not exist: {normalized_source}")
+                    elif normalized_source not in authoritative:
+                        failures.append(
+                            f"{label} object_source is absent from required_sources: "
+                            f"{normalized_source}"
+                        )
+                declared_any = False
+                for key in ("entity_fields", "relationship_fields"):
+                    fields = group.get(key)
+                    if fields is None:
+                        continue
+                    if not isinstance(fields, list) or not fields:
+                        failures.append(f"{label}.{key} must be a non-empty list when present")
+                        continue
+                    declared_any = True
+                    for value in fields:
+                        if not isinstance(value, str) or not value.strip():
+                            failures.append(f"{label}.{key} contains a non-field")
+                            continue
+                        # At least once, not exactly once: this selector binds to
+                        # whichever entity enters the scene, so the same field
+                        # legitimately appears on every record in the ledger.
+                        if field_path_count(path, value.strip()) < 1:
+                            failures.append(
+                                f"{label}.{key} field does not resolve in {normalized}: {value}"
+                            )
+                if not declared_any:
+                    failures.append(
+                        f"{label} must declare entity_fields, relationship_fields, or both; "
+                        "an unbounded dispatch is the whole-object read this key replaces"
+                    )
 
     validation = config.get("validation")
     trigger_audit_required = False

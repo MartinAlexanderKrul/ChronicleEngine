@@ -1,12 +1,12 @@
-# Gatefall — World Rule Profile 1.44
+# Gatefall — World Rule Profile 1.45
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.44
-**Engine Compatibility:** 0.2.0; Data Model 0.1.5
+**Profile Version:** 1.45
+**Engine Compatibility:** 0.2.0; Data Model 0.1.6
 **Status:** Active
-**Compatibility Status:** frozen at version 1.44 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-31. Version 1.44 makes the Section 9.10 tracked board **dispatchable**. The board's deadline rule has been deterministic and discretion-free since 1.31 and was authored precisely so that postings would not evaporate when nobody was looking — and it went three deadlines past without settling anyway, because a rule the Runtime is never obliged to consult is a rule that fires when someone remembers it. Section 14.3's manifest gains **`gatefall.board.deadline`**, a `world_state_settlement` domain under Decision 084 whose eligibility heading is Section 9.10 and whose settlement is that section's existing deterministic resolution — no new rule, no roll, and nothing the Bearer is told. Its candidate deltas are `clock.advanced`, `supply.advanced`, `commitment.due`, and `outreach.initiated`, the last of which settles the board *before* answering an inquiry and never generates in response to one. **No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes**, and no posting's stored deadline moves; what changes is when the board is read. Data Model 0.1.5 remains unchanged. *(1.43 authored the first exception to Section 2 — a Bearer may spend a Section 12.5 stat elixir on another awakened hunter, governed by new Section 12.5.1; 1.42 put a D-Rank floor under Section 13.6's signature abilities; 1.41 extended Section 6.1.2's pool variance to campaign-ledger NPCs.)*
+**Compatibility Status:** frozen at version 1.45 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-31. Version 1.45 changes **no rule a character could notice**: no number, cost, timer, capability, or resolved outcome moves. It declares one thing, and that thing is about how this world's Events are written down rather than what happens in them — Gatefall opts into the Data Model Section 2.4 `participation_audits` block (Decision 085), naming a prospective baseline of `EVT-000268` and twelve fiction-bearing Event kinds as its coverage set. Within coverage, every Character an Event names in its own `participants` needs a recorded result: `record-updated` naming the object the promotion moved, or an explicit `no-change`. Administrative kinds are deliberately outside it. Nothing is backfilled — the 217 Events already written acquire no obligation — and the cost is prospective, falling on the writer of the next covered Event. **Data Model 0.1.5 → 0.1.6** accompanies this adoption engine-side; the block is additive and optional, and immutable checkpoints keep their captured schema. *(1.44 made the Section 9.10 tracked board dispatchable through a `gatefall.board.deadline` domain under Decision 084; 1.43 authored the first exception to Section 2, a stat elixir spent on another awakened; 1.42 put a D-Rank floor under Section 13.6's signature abilities.)*
 
 **Version history and migrations.** Every transformation from Profile 1.1 forward to the active version lives in `worlds/gatefall/migrations/`, one authoritative record per edge, declared by `worlds/gatefall/migrations/INDEX.md`. Restoring a capture taken under Profile *V* runs each record from *V* forward to the active version in order and reads no other migration text; a current rule lookup reads none of them. Immutable checkpoints are never rewritten by a migration — the chain applies to mutable live state. Where a migration record and this profile disagree about present law, this profile governs: a migration record describes a transformation, not a standing rule.
 
@@ -2267,6 +2267,29 @@ trigger_domains:
 **`gatefall.board.deadline` is not a System trigger, and the tiers below do not reach it.** It is a `world_state_settlement` domain under `012_ENGINE_RUNTIME.md` Section 2.5 (Decision 084): it settles the Section 9.10 board on the campaign clock and tells the Bearer nothing. Section 14.4's boundary is exactly why. The System knows Bearer state, quest state, its own stock, and a Gate's disposition **once resolved** — it does not know what a posting on a public board is doing, and a break that fires across the city is a world event the Bearer learns about the way anyone does, if at all. A posting settling to `cleared`, `broken`, or `withdrawn` produces no notification, no panel line, and no `progression_audits` entry; it changes the board, and the world carries the consequence. It rides this manifest because the manifest is the profile's one dispatch index, not because the System is involved.
 
 Its deltas name the moments the board can have fallen behind: the clock advanced, a supply source was advanced (Rules Section 3.4.1), a commitment came due (Data Model Section 7.4), or the Bearer put a question to the trade. That last one settles the board **before** the answer and never generates in response to it — the asking is an occasion to settle, never a cause of what is found.
+
+**Participation coverage (Decision 085).** Gatefall opts into the Data Model Section 2.4 `participation_audits` block. Coverage is **prospective from the baseline below**: no Event allocated at or before it carries an obligation, and no historical Event is rewritten. Within coverage, every Character named in an Event's own `participants` needs an entry — `record-updated` naming the object the promotion moved, or an explicit `no-change`.
+
+The kinds listed are the fiction-bearing ones, where an NPC actually acted and their record could therefore have moved. Administrative kinds — `promotion`, `profile-adoption`, `rules-migration`, `ruling`, and the settlement kinds above — are deliberately outside coverage: they record bookkeeping about the world rather than something an NPC did in it, and auditing them would buy nothing but noise.
+
+```yaml
+participation_coverage_version: "1.0"
+participation_coverage:
+  baseline_as_of: EVT-000268
+  event_kinds:
+    - social
+    - scene
+    - combat
+    - relationship
+    - downtime
+    - disclosure
+    - discovery
+    - exploration
+    - work
+    - harvest-job
+    - shop
+    - loot
+```
 
 - **Tier 1 — Mandatory (unprompted; a pure function of state the System already holds).** Fires the instant the condition holds, with zero discretion:
   - Mana, Health, or XP changes → the matching compact line (Section 14.5);

@@ -38,7 +38,7 @@ function Assert-NotContains {
     }
 }
 
-Assert-Contains $profile 'World Rule Profile 1\.44' 'Gatefall profile is not version 1.44.'
+Assert-Contains $profile 'World Rule Profile 1\.45' 'Gatefall profile is not version 1.45.'
 
 # Version history is owned by worlds/gatefall/migrations/, not the active profile
 # (Recommendation R7). Each assertion below reads the record for its own edge, so
@@ -58,7 +58,7 @@ Assert-Contains (Get-MigrationRecord '1.31' '1.32') 'Required 1\.31.+1\.32 migra
 Assert-Contains (Get-MigrationRecord '1.32' '1.33') 'Required 1\.32.+1\.33 migration' 'The 1.32 to 1.33 migration record lacks its procedure.'
 Assert-Contains (Get-MigrationRecord '1.33' '1.34') 'Required 1\.33.+1\.34 migration' 'The 1.33 to 1.34 migration record lacks its procedure.'
 Assert-Contains (Get-MigrationRecord '1.35' '1.36') '1\.35.+1\.36 compatibility treatment' 'The 1.35 to 1.36 migration record lacks its treatment.'
-Assert-Contains (Get-MigrationRecord '1.43' '1.44') '1\.43.+1\.44 compatibility treatment' 'The 1.43 to 1.44 migration record lacks its treatment.'
+Assert-Contains (Get-MigrationRecord '1.44' '1.45') '1\.44.+1\.45 compatibility treatment' 'The 1.44 to 1.45 migration record lacks its treatment.'
 Assert-Contains (Get-MigrationRecord '1.29' '1.30') '1\.29.+1\.30 compatibility treatment' 'The 1.29 to 1.30 migration record lacks its treatment.'
 Assert-Contains (Get-MigrationRecord '1.24' '1.25') 'Required 1\.24.+1\.25 migration' 'The 1.24 to 1.25 migration record lacks its procedure.'
 Assert-Contains (Get-MigrationRecord '1.23' '1.24') 'Required 1\.23.+1\.24 migration' 'The 1.23 to 1.24 migration record lacks its procedure.'
@@ -70,10 +70,10 @@ Assert-Contains $profile '3d6.+\(Rank multiplier\).+crystals' 'Section 17 does n
 Assert-Contains $profile 'Crystal Key treats the `3d6` result as 18' 'Section 17 does not connect the Crystal Key to its deposit result.'
 Assert-Contains (Get-MigrationRecord '1.23' '1.24') 'do not create crystals for, reopen, or reinterpret any completed instant dungeon' 'The 1.24 migration lacks its no-retroactive-loot boundary.'
 
-Assert-Contains $readme 'World Rule Profile 1\.44' 'Gatefall README does not advertise Profile 1.44.'
+Assert-Contains $readme 'World Rule Profile 1\.45' 'Gatefall README does not advertise Profile 1.45.'
 Assert-Contains $readme 'cost 125% of their ordinary same-Rank category anchor' 'Gatefall README does not summarize the corrected Premium surcharge.'
 Assert-Contains $resources 'costs 125% of its ordinary same-Rank category anchor' 'Gatefall resources do not summarize the corrected Premium surcharge.'
-Assert-Contains $character 'profile_version: "1\.44"' 'Live Gatefall character has not adopted Profile 1.44.'
+Assert-Contains $character 'profile_version: "1\.45"' 'Live Gatefall character has not adopted Profile 1.45.'
 
 # The 1.24 live-cycle reprice is asserted against its immutable adoption Event, not the
 # live Daily Premium tab: that cycle rotates every 06:00 and its offers expire.

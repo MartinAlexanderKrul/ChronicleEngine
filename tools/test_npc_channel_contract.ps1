@@ -69,4 +69,43 @@ Assert-Contains $profile 'the NPC channel check' 'The Runtime Profile does not a
 Assert-Contains $resident 'Full channel test, rationalization table, and red flags: the `npc-knowledge` skill' 'The resident layer does not point at the fetched elaboration.'
 Assert-Contains $skill 'The channel test \(run it before every NPC line\)' 'The npc-knowledge skill no longer carries the full channel test it elaborates.'
 
+# --- The load contract ------------------------------------------------------
+#
+# The channel check above governs what an NPC may KNOW. It presupposes something
+# nothing previously required: that the NPC's own record was read before the
+# Runtime played it. It is not read by default -- `130_NPCS_AND_FACTIONS.md` is
+# `available_on_demand` in every derived operation plan, and the Runtime Profile
+# excludes NPC ledgers from readiness whole-file reads, both correctly: the
+# Gatefall ledger alone is over eight times the whole readiness budget.
+#
+# That left the encounter case with no obligation at all. A Runtime could open a
+# scene, play a recorded NPC from recollection for a dozen exchanges, and violate
+# no stated rule -- while Decision 076 already established that recollection of a
+# character decays to a role label, which is exactly the content at stake.
+#
+# So the rule is sited resident for the same reason the channel check is
+# (Decision 055): the plan that names the read is fetched material, and a
+# fetched-only guardrail does not fire.
+
+Assert-Contains $resident '^## Load a Recorded NPC Before Playing It$' 'The NPC load obligation is not in the resident per-turn layer; the plan naming the read is fetched, and a fetched-only guardrail does not fire (Runtime 5.3, Decision 055).'
+Assert-Contains $resident 'load the record before that NPC''s first line in a scene' 'The resident layer does not state when the NPC record must be loaded.'
+Assert-Contains $resident 'Once per scene, not once per line' 'The load obligation is unbounded per line, which makes it too expensive to keep and it will be dropped.'
+Assert-Contains $resident 'a line that happens to come out right was still ungrounded' 'The resident layer lets a correct-by-luck line stand in for a grounded one.'
+Assert-Contains $resident 'Loading asks what the record says; the channel check asks what the character may know' 'The load obligation and the channel check are not distinguished, so satisfying one will be read as satisfying both.'
+
+# The load is only affordable because readiness carries the rulings that must
+# survive between scenes. Losing this selector restores the configuration where a
+# player ruling was written to a file the next session never opens.
+$startup = 'campaigns/gatefall_pendragon_001/090_CAMPAIGN_STARTUP.md'
+Assert-Contains $startup 'campaign_readiness_headings' 'The prototype campaign declares no bounded campaign readiness headings.'
+Assert-Contains $startup 'heading: "Closed Channels"' 'Readiness no longer selects the NPC ledger''s Closed Channels table.'
+Assert-Contains 'campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md' '^## Closed Channels$' 'The NPC ledger no longer carries the Closed Channels table the readiness selector names.'
+
+# The obligation needs a read behind it. Without a declared dispatch the only
+# handle on an NPC record is the whole 250 KB ledger, and the rule degrades into
+# an instruction to go searching -- which is the cost that gets it dropped.
+Assert-Contains $startup 'npc_present:' 'The prototype campaign declares no NPC-encounter dispatch, so the resident load obligation names no read.'
+Assert-Contains $startup 'object_source: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY\.md' 'The NPC dispatch does not name the roster its subject identifiers come from.'
+Assert-Contains $resident 'Take the fields the campaign''s declared entity dispatch names rather than the whole block' 'The resident layer does not bound the load to named fields; the largest live record is over 65 KB.'
+
 Write-Host 'NPC channel contract PASSED'

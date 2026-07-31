@@ -24,6 +24,10 @@ from validate_runtime_configuration import (
 )
 
 
+OBJECT_FENCE = re.compile(r"(?ms)^```ya?ml[ \t]*\r?\n(.*?)^```[ \t]*$")
+OBJECT_ID_LINE = re.compile(r"(?m)^id:[ \t]*((?:ENT|REC|EVT|REL)-\d{6})[ \t]*$")
+
+
 @dataclass(frozen=True)
 class Contribution:
     label: str
@@ -417,6 +421,94 @@ def measure_per_unit(root: Path, config: dict[str, Any]) -> list[dict[str, Any]]
     return results
 
 
+def measure_per_object(root: Path, config: dict[str, Any]) -> list[dict[str, Any]]:
+    """Cost of the single largest object block in a ledger.
+
+    `per_unit_budgets` governs a collection that grows in *entries*. This governs
+    an object that grows in *prose*, which is a different failure and invisible to
+    a per-entry figure: a Relationship holds one `texture` and one `state`, so no
+    entry count ever rises while both fill with narrative.
+
+    It matters because the resident core now requires an NPC's record to be loaded
+    before that NPC is played. That obligation is only keepable while a record is
+    a record. The distribution is what makes an average useless here -- across the
+    Gatefall NPC ledger the median entity block is about 2 KB and the largest is
+    over sixty, so the worst case is the only figure that describes the cost of
+    the rule.
+
+    It is a ratchet against the measured worst case, not a target. Existing canon
+    is not failed for being long; growth beyond the allowance is, until someone
+    re-records the baseline and says why. Trimming a record is authoring work and
+    stays with the owner -- Decision 076 declines to have a checker adjudicate
+    prose, and so does this.
+    """
+    checks = config.get("per_object_budgets")
+    results: list[dict[str, Any]] = []
+    if not isinstance(checks, list):
+        return results
+    for check in checks:
+        if not isinstance(check, dict):
+            continue
+        name = str(check.get("name", "unnamed"))
+        path = resolve_repo_path(root, normalize_repo_path(str(check.get("file", ""))))
+        prefixes = check.get("object_prefixes")
+        baseline = check.get("baseline_worst_bytes")
+        if (
+            not path.is_file()
+            or not isinstance(prefixes, list)
+            or not prefixes
+            or not isinstance(baseline, int)
+        ):
+            results.append({"name": name, "status": "FAIL",
+                            "detail": "per-object budget is not fully declared"})
+            continue
+        blocks: list[tuple[int, str]] = []
+        for body in OBJECT_FENCE.findall(read_text(path)):
+            match = OBJECT_ID_LINE.search(body)
+            if not match:
+                continue
+            identifier = match.group(1)
+            if not any(identifier.startswith(str(prefix)) for prefix in prefixes):
+                continue
+            blocks.append((len(body.encode("utf-8")), identifier))
+        if not blocks:
+            results.append({"name": name, "status": "FAIL",
+                            "detail": "no matching object blocks found"})
+            continue
+        blocks.sort(reverse=True)
+        worst_bytes, worst_id = blocks[0]
+        limit = ratchet_limit(baseline, check.get("growth_allowance_percent"))
+        results.append({
+            "name": name,
+            "status": "FAIL" if limit is not None and worst_bytes > limit else "PASS",
+            "objects": len(blocks),
+            "worst_bytes": worst_bytes,
+            "worst_id": worst_id,
+            "median_bytes": blocks[len(blocks) // 2][0],
+            "baseline_worst_bytes": baseline,
+            "limit": limit,
+            "reason": str(check.get("reason", "")),
+        })
+    return results
+
+
+def render_per_object(results: list[dict[str, Any]]) -> None:
+    for item in results:
+        if "worst_bytes" not in item:
+            print(f"{item['status']:4} per-object {item['name']}: {item.get('detail', '')}")
+            continue
+        print(
+            f"{item['status']:4} per-object {item['name']}: "
+            f"largest {item['worst_id']} at {item['worst_bytes']} bytes "
+            f"across {item['objects']} objects "
+            f"(median {item['median_bytes']}; baseline {item['baseline_worst_bytes']}"
+            + (f", ratchet {item['limit']}" if item["limit"] is not None else "")
+            + ")"
+        )
+        if item["status"] == "FAIL" and item["reason"]:
+            print(f"       {item['reason']}")
+
+
 def render_per_unit(results: list[dict[str, Any]]) -> None:
     for item in results:
         if "per_entry" not in item:
@@ -505,18 +597,23 @@ def main() -> int:
         render(groups)
         per_unit = measure_per_unit(root, config)
         render_per_unit(per_unit)
+        per_object = measure_per_object(root, config)
+        render_per_object(per_object)
     except (KeyError, TypeError, ValueError, OSError) as exc:
         print(f"Runtime context measurement FAILED: {exc}", file=sys.stderr)
         return 2
 
     failed = [group for group in groups if group["status"] == "FAIL"]
     per_unit_failed = [item for item in per_unit if item["status"] == "FAIL"]
-    if failed or per_unit_failed:
+    per_object_failed = [item for item in per_object if item["status"] == "FAIL"]
+    if failed or per_unit_failed or per_object_failed:
         parts = []
         if failed:
             parts.append(f"{len(failed)} surface(s) over budget")
         if per_unit_failed:
             parts.append(f"{len(per_unit_failed)} per-unit budget(s) exceeded")
+        if per_object_failed:
+            parts.append(f"{len(per_object_failed)} per-object budget(s) exceeded")
         print(
             f"Runtime context measurement FAILED ({', '.join(parts)}).",
             file=sys.stderr,

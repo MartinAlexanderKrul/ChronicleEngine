@@ -9,7 +9,7 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.44"
+world_rule_profile: "Gatefall World Rule Profile 1.45"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
@@ -56,6 +56,27 @@ source_loading:
     system_shop:
       - canonical_state.system_state.gold
       - canonical_state.system_state.shop_holdings
+  entity_deferred_groups:
+    npc_present:
+      file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
+      object_source: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md
+      entity_fields:
+        - canonical_state.location
+        - canonical_state.condition
+        - canonical_state.personality
+        - canonical_state.situation
+      relationship_fields:
+        - qualities
+        - state
+        - texture
+      reason: "fetch when a recorded NPC enters a scene, before its first line (Resident Core, Load a Recorded NPC Before Playing It)"
+  campaign_readiness_headings:
+    - file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
+      heading: "Closed Channels"
+      reason: "player-ruled NPC knowledge closures, which the resident channel check reads before an NPC speaks"
+    - file: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md
+      heading: "Cast"
+      reason: "who exists and where; the records themselves stay on demand"
   required_sources:
     semantics: "Authoritative and available; not an instruction to preload every source in full."
     restoration_entry: "Read the manifest, canonical entry point, current state, and situation-relevant objects/events."
@@ -87,6 +108,7 @@ required_sources:
   - campaigns/gatefall_pendragon_001/110_WORLD_LEDGER.md
   - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
   - campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
+  - campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md
   - campaigns/gatefall_pendragon_001/140_OBJECTIVES.md
   - campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md
   - campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md

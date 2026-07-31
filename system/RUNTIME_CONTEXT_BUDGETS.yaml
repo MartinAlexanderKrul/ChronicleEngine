@@ -8,14 +8,15 @@ surfaces:
   resident:
     warning_tokens: 6000
     failure_tokens: 8000
-    # Re-recorded 2026-07-31 across the F-001 work: the canvass and
-    # standing-grounding rule (Resident Core 1.13), then commitment settlement
-    # (Decision 082) and supply advance (Decision 083) folded into Turn-State
-    # Settlement step 2. The prior 3453 predated several accepted refinements
-    # and had drifted +813 before any of it; accepting growth is meant to be a
-    # deliberate act, so the figure is restated rather than left stale. Total
-    # cost of the three changes is +498 against a 6000 warning.
-    baseline_tokens: 4764
+    # Re-recorded 2026-07-31 after two independent lines of work landed in the
+    # same card: the F-001 canvass and standing-grounding rule plus commitment
+    # and supply settlement (Resident Core 1.13), and the NPC load obligation
+    # and its bounded dispatch (1.14, 1.15). Neither side's figure survives the
+    # merge, so this is measured against the combined card rather than added up.
+    # The prior 3,453 had also drifted +813 before any of it, which is the
+    # argument for re-recording on every deliberate change rather than only when
+    # a ceiling is hit.
+    baseline_tokens: 5240
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true
@@ -43,11 +44,17 @@ surfaces:
     # the note at the foot of this file for why a rate governs these surfaces
     # rather than a fixed ceiling alone.
     growth_allowance_percent: 15
+    # Every readiness surface includes the resident card, so a resident change
+    # moves all four. Gatefall's figure now covers the Closed Channels table (561)
+    # and the cast roster (894), which is what buys the NPC records their place
+    # off this surface: readiness carries who exists and what a player has ruled
+    # unknowable, and the records themselves are fetched at the encounter. It sits
+    # above the 20,000 warning, as it did before this work.
     baseline_tokens_by_campaign:
-      gatefall_pendragon_001: 23891
-      prototype_alpha: 7430
-      prototype_beta: 7943
-      reikon_awakening_001: 11755
+      gatefall_pendragon_001: 26159
+      prototype_alpha: 8404
+      prototype_beta: 8917
+      reikon_awakening_001: 12729
     include_resident: true
     derive_operation: continue
 
@@ -91,6 +98,17 @@ per_unit_budgets:
       naming the most recent mastery advance. Per-use logs and roll-by-roll
       narrative belong in the chronicle, which already records them.
 
+  - name: gatefall_relationship_state_updates
+    file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
+    field: state_updates
+    max_bytes_per_entry: 2400
+    reason: >-
+      A state update is what changed in the relationship and the Event that
+      changed it. The narrative of the scene it came from belongs in the
+      chronicle, which already holds it. Only `REL-000066` uses the field today,
+      at three entries; the budget exists so the fourth is a sentence and not
+      another essay.
+
   - name: gatefall_tracked_counters
     file: campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     field: canonical_state.system_state.tracked_counters
@@ -98,3 +116,31 @@ per_unit_budgets:
     reason: >-
       A counter is a path, a baseline, the Event that set it, and a current
       value. Prose explaining how it got there belongs in the chronicle.
+
+# Per-object budgets for records that grow in prose rather than in entries.
+#
+# The resident core requires an NPC's record to be loaded before that NPC is
+# played. That obligation is only keepable while a record is a record. A per-entry
+# figure cannot see this failure: a Relationship holds one `texture` and one
+# `state`, so no entry count rises while both fill with narrative.
+#
+# These are ratchets against the measured worst case, not targets. The numbers
+# below record what the prototype campaign already carries; existing canon is not
+# failed for being long. Trimming a record is authoring work and belongs to the
+# owner, on the same reasoning Decision 076 gives for refusing to have a checker
+# adjudicate prose.
+per_object_budgets:
+  - name: gatefall_npc_ledger_objects
+    file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
+    object_prefixes: [ENT-, REL-]
+    baseline_worst_bytes: 65504
+    growth_allowance_percent: 15
+    reason: >-
+      The distribution is the point: the median block is around 2 KB and the
+      largest is over sixty. `ENT-000139` is 65,504 bytes, of which
+      `canonical_state.situation` alone is 36,624 — a state field holding an
+      accumulated history the campaign chronicle already records. `REL-000066` is
+      51,904, of which `texture` is 26,723 and `state` is 17,008. Loading that one
+      NPC and its relationship costs roughly 29,000 tokens, against a readiness
+      ceiling of 30,000 and a fetched-operation ceiling of 12,000. Every other
+      entity in the ledger is affordable.

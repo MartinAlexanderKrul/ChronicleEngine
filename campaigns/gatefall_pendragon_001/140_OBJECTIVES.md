@@ -12,7 +12,7 @@ Objectives are tracked concerns, not a quest system (Decision 030). They are cam
 ```yaml
 id: REC-000078
 canonical_record: REC-000078
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000267

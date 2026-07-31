@@ -4058,6 +4058,65 @@ This is the enforcement-asymmetry finding of F-001 recurring one layer down. Dec
 
 ---
 
+## Decision 085 — NPC Participation Audit: Making a Claimed Promotion Verifiable
+
+**Status:** Accepted — **Version 0.3 by owner ruling (2026-07-31)**, as an explicit foundational exception produced by the live prototype
+**Date:** 2026-07-31
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Sections 2.4 and 12.4; `012_ENGINE_RUNTIME.md` Sections 0.2, 5.3, and 5.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Load a Recorded NPC Before Playing It; Turn-State Settlement); `tools/validate_repository.ps1`; Decisions 054, 055, 069, 076, 079, 080
+
+### Context
+
+The load obligation now exists and is sited resident: an NPC's record must be read before that NPC is played. It has no enforcement point. `012_ENGINE_RUNTIME.md` Section 0.2 sites Grounding as *resident per-turn*, and the resident layer is instruction — the configuration Decision 055 exists to warn about. The write side has a mechanical barrier (Section 5.4); the read side has nothing.
+
+Four measurements taken against the live prototype bound what is buildable.
+
+**1. The subject side is already free.** Every Event in the campaign carries a structured `participants` list — 209 of 209. No new field is needed to know who was in a scene.
+
+**2. Records carry no last-modified marker.** `provenance.source` is a creation stamp and stays one: `ENT-000126` records `EVT-000058` while its own block cites Events through `EVT-000249`. Nothing in canon answers *when did this record last move*.
+
+**3. The purely-derived version does not work.** The check that needs no schema change — an Event names X as participant, X's own record does not cite that Event — fires on **147 of 390 participations across 49 entities**, 38%. Most are legitimate: an NPC can be present while nothing about them changes. A gate at that rate is noise, and this is the measurement that rules out the refinement-class route. It is recorded here so the question is not reopened without new evidence.
+
+**4. The failure this actually catches is not the one it was proposed for.** The audit cannot prove a file was read: a Runtime that skips the load can write `no-change` as easily as one that did the work. What it *can* prove is the other half — a `record-updated` claim naming a record that does not, in fact, cite the Event. That is the Decision 076 failure exactly: a checkpoint that passed two validators twice while the content it claimed to promote was gone. This decision is therefore justified as **promotion verification**, with load pressure as a secondary and weaker effect. Framing it the other way would oversell it.
+
+### Decision
+
+**1. The Event gains a third optional audit block, `participation_audits`,** sibling to `counter_deltas` (Decision 079) and `progression_audits` (Decision 080):
+
+```yaml
+participation_audits:
+  - subject: ENT-000139
+    result: record-updated
+    record: REL-000066
+```
+
+`subject` is a defined Persistent Entity identifier appearing in the Event's own `participants`. `result` is `record-updated` or `no-change`. `record` is required when `result` is `record-updated`, absent otherwise, and names the Canonical Record or object the promotion moved.
+
+**2. The active World Rule Profile declares the coverage set.** Which Events require an audit is world semantics, exactly as it is for `progression_audits`. The Data Model owns the shape; the profile owns when it applies. A world that declares no coverage set carries no obligation and no cost.
+
+**3. Within coverage, every non-protagonist Character participant needs an entry, including an explicit `no-change`.** This is Decision 080's negative-assertion rationale applied unchanged: the small explicit "nothing moved" is what lets validation distinguish that from nobody having looked.
+
+**4. Enforcement is mechanical on the half that is decidable.** `tools/validate_repository.ps1` checks typed fields, that `subject` appears in the Event's `participants`, coverage across the declared set, and — the load-bearing check — that a `record-updated` entry names a live record which actually references that Event. A `no-change` entry is not verifiable and is not pretended to be.
+
+**5. Prospective only.** Historical Events are immutable and are not rewritten, matching Decision 080 point 4 and Data Model Section 12.4. Coverage begins at a declared baseline Event.
+
+### Consequences
+
+- **Owner ruling, 2026-07-31: admitted to Version 0.3 as an explicit exception to the Architecture Freeze.** The classification is not reinterpreted — this *is* foundational, and Decision 069's test is unchanged and still binding. Two grounds were on the table when the ruling was made. **Domain fit:** Version 0.3 is Runtime & Persistence Hardening, and a promotion whose success cannot be checked is a persistence defect in the version whose declared subject is persistence. **A gap nothing else covers:** no current gate verifies that any claimed promotion actually landed, and Decision 076 is the recorded case of exactly that going undetected across thirteen checkpoints. The argument against it — that the common `no-change` entry is the unverifiable half, so the friction falls on an honest writer — was recorded before the ruling and is not withdrawn by it.
+- **Data Model 0.1.5 → 0.1.6,** with the retagging and migration that implies. This is what makes the change foundational under Decision 069's structural test, and the test is not argued with.
+- **Writer cost is real and should be sized before approval.** The live prototype holds 390 participations across 209 Events. Under a coverage set as broad as Gatefall's progression domain, most covered Events gain one to three lines.
+- **The common entry will be `no-change`,** which is the unverifiable half. The gate's friction therefore lands mostly on an honest writer, and a Runtime under load can satisfy it without reading anything. This is the strongest argument against the decision and is recorded rather than answered.
+- **`record-updated` becomes a checkable claim,** which no current gate provides for any promotion.
+- **No new mechanic is invented.** The audit records whether a record moved; it never decides what should have moved.
+
+### Alternatives Considered
+
+- **Derive staleness from existing canon; change no schema.** Rejected on measurement 3 — 38% false-positive rate. This is the cheapest option and it was tested, not assumed.
+- **Add a `last_updated` Event pointer to each entity record instead.** Rejected: it is one field per entity rather than one entry per participation, but it relocates the noise rather than removing it. Presence without change is still legitimate, so a record trailing the Events it appears in still proves nothing.
+- **Require every participant's record to move.** Rejected. An NPC can appear and be unchanged; forcing a write would manufacture canon to satisfy a checker, which is the failure Decision 080 names when it refuses to treat repetition as evidence.
+- **Do nothing and rely on the resident load rule.** The honest default, and it may be the right one. The rule is sited, tested, and costs no schema change. Against it: the read side then has no enforcement point at all, and Decision 055's finding is that an obligation carried only by instruction does not reliably fire.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

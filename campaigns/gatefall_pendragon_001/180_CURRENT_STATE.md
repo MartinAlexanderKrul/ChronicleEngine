@@ -11,7 +11,7 @@
 ```yaml
 id: REC-000081
 canonical_record: REC-000081
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000268
@@ -138,7 +138,7 @@ A little after 20:15, Kesha's owed callback landed: a confirmed E-Rank Gate, a c
 
 ## Promotion Status
 
-Live canon is promoted through `EVT-000268`. Since Checkpoint 0049: Kesha's callback confirming the collapsed rail cutting Gate and Owen's second sponsorship (`EVT-000261`); the eighteenth daily and a live Daily Premium rotation (`EVT-000262`); Gate entry, archetype and population rolls, and a successful Keen Sense read (`EVT-000263`); Owen's solo delegated sweep through nine commons and two elites plus two Mend casts and the new support-contribution standing ruling (`EVT-000264`); the boss fight — a failed tactical read, clean Flux Sight reads, and a natural-critical kill on the guardian, plus its loot (`EVT-000265`); the honest exit declaration and artificer conversation (`EVT-000266`); and the promotion-barrier settlement closing the span with an explicit `none` for `gatefall.skill_formation` (`EVT-000267`). Alexander took no damage this session; Owen took two wounds, both closed by Mend. This Current State reflects live, unpromoted-to-checkpoint play; this `/save` captures it as the next sequential checkpoint after `900_CHECKPOINT_0049`. **World Rule Profile 1.44 was then adopted (`EVT-000268`)**, making Section 9.10's tracked board dispatchable through a new `gatefall.board.deadline` domain; it consumes no fictional time, changes no stored value, reopens nothing, and settles none of the board's three passed deadlines.
+Live canon is promoted through `EVT-000269`. Since Checkpoint 0049: Kesha's callback confirming the collapsed rail cutting Gate and Owen's second sponsorship (`EVT-000261`); the eighteenth daily and a live Daily Premium rotation (`EVT-000262`); Gate entry, archetype and population rolls, and a successful Keen Sense read (`EVT-000263`); Owen's solo delegated sweep through nine commons and two elites plus two Mend casts and the new support-contribution standing ruling (`EVT-000264`); the boss fight — a failed tactical read, clean Flux Sight reads, and a natural-critical kill on the guardian, plus its loot (`EVT-000265`); the honest exit declaration and artificer conversation (`EVT-000266`); and the promotion-barrier settlement closing the span with an explicit `none` for `gatefall.skill_formation` (`EVT-000267`). Alexander took no damage this session; Owen took two wounds, both closed by Mend. This Current State reflects live, unpromoted-to-checkpoint play; this `/save` captures it as the next sequential checkpoint after `900_CHECKPOINT_0049`. **World Rule Profile 1.44 was then adopted (`EVT-000268`)**, making Section 9.10's tracked board dispatchable through a new `gatefall.board.deadline` domain; it consumes no fictional time, changes no stored value, reopens nothing, and settles none of the board's three passed deadlines. **World Rule Profile 1.45 followed (`EVT-000269`)**, adopting the Data Model Section 2.4 participation coverage manifest (Decision 085); like the adoption before it, it consumes no fictional time, opens no scene, changes no stored value, and backfills nothing.
 
 ---
 

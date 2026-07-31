@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000011
 canonical_record: REC-000011
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000008
@@ -30,7 +30,7 @@ subjects:
 ```yaml
 id: ENT-000019
 canonical_record: REC-000011
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -59,7 +59,7 @@ canonical_state:
 ```yaml
 id: ENT-000020
 canonical_record: REC-000011
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling

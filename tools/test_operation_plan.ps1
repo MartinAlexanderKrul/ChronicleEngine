@@ -58,6 +58,12 @@ $preloaded = [regex]::Match(
 ).Groups["body"].Value
 Assert-True ($preloaded -notmatch 'canonical_state\.system_state\.skills_known') "Gatefall preloads the full skill ledger before an affected action."
 Assert-True ($preloaded -notmatch 'canonical_state\.system_state\.shop_holdings') "Gatefall preloads shop inventory outside a shop operation."
+# The NPC ledger stays out of whole_files (asserted above) but must still hand
+# readiness the player-ruled channel closures, or a resumed session narrates
+# past a ruling it has no way to see.
+Assert-True (
+    $preloaded -match '130_NPCS_AND_FACTIONS\.md\r?\n\s+heading: Closed Channels'
+) "Gatefall readiness omits the NPC ledger's Closed Channels table."
 $deferred = [regex]::Match(
     $gatefall.Output,
     '(?ms)^available_on_demand_selectors:\s*(?<body>.*?)^tools:'
@@ -68,6 +74,18 @@ Assert-True ($deferred -match 'dispatch: progression_settlement') "Gatefall has 
 Assert-True ($deferred -match 'canonical_state\.system_state\.tracked_counters') "Gatefall deferred progression state omits counters."
 Assert-True ($deferred -match 'dispatch: system_shop') "Gatefall has no explicit deferred shop selector."
 Assert-True ($deferred -match 'canonical_state\.system_state\.shop_holdings') "Gatefall deferred shop state omits holdings."
+# The encounter case. Without a dispatch the resident load obligation has no
+# addressed read behind it and degrades into searching a 250 KB ledger.
+Assert-True ($deferred -match 'dispatch: npc_present') "Gatefall has no deferred NPC-encounter selector, so the resident load obligation names no read."
+Assert-True ($deferred -match 'object: any ENT- listed in campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY\.md') "The NPC dispatch does not say where its subject identifiers come from."
+Assert-True ($deferred -match 'relationship_fields:') "The NPC dispatch omits the protagonist relationship, which is where manner is recorded (Decision 076)."
+Assert-True ($deferred -match '- texture') "The NPC dispatch omits Relationship texture, the field Decision 076 exists to preserve."
+# Bounded, not wholesale: the largest live entity record is over 65 KB and the
+# largest relationship over 50 KB, so a whole-object encounter read would cost
+# more than the entire readiness budget.
+Assert-True (
+    $deferred -notmatch '(?ms)dispatch: npc_present.*?\n\s*whole_file'
+) "The NPC dispatch takes a whole object rather than named fields."
 
 $reikon = Invoke-Plan -Campaign "reikon_awakening_001" -Operation "/system"
 Assert-True ($reikon.ExitCode -eq 0) "Reikon /system plan failed:`n$($reikon.Output)"

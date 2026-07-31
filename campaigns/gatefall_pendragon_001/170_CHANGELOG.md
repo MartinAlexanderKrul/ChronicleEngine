@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000080
 canonical_record: REC-000080
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000268
@@ -24,6 +24,9 @@ subjects: []
 ---
 
 ## Changes
+
+**2026-07-31 - Profile 1.45 adopted: participation coverage (`EVT-000269`).**
+Gatefall World Rule Profile 1.44 -> 1.45, a compatibility-treatment advance. **No fictional time, no scene, no stored value.** Alexander is not a participant and nothing about the world he lives in changed. The profile now declares a Data Model Section 2.4 `participation_audits` coverage set (Decision 085): baseline `EVT-000260`, twelve fiction-bearing Event kinds. From the next covered Event onward, every Character an Event names must carry a recorded result - `record-updated` naming the object the promotion moved, or an explicit `no-change`. The 217 Events already written acquire no obligation and none is rewritten. Data Model **0.1.5 -> 0.1.6** accompanies it engine-side; every live object in this campaign is retagged and immutable checkpoints keep their captured schema.
 
 **2026-07-22 - Campaign initialized.**
 Gatefall: Pendragon campaign created in the Gatefall world (`worlds/gatefall/`), start city Chicago, as the world's first live campaign. Protagonist Alexander Pendragon (`ENT-000125`) established: pre-System licensed E-Rank, creation stat array Strength 11 / Agility 12 / Vitality 8 / Perception 11 / Intelligence 8 (latent, no mechanical effect until System onset), $4,000 starting funds (stable background, Profile Section 12.6), $30,000 tuition debt at $400/month recorded as a standing liability per Section 20.3. Freelancer affiliation with the Windy City Hunters Coalition recorded (`REL-000062`). Campaign-start event `EVT-000056`. No gameplay resolved yet; no checkpoint taken.

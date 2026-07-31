@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000079
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: EVT-000267
@@ -231,6 +231,7 @@ subjects:
   - EVT-000266
   - EVT-000267
   - EVT-000268
+  - EVT-000269
 ```
 
 ---
@@ -240,7 +241,7 @@ subjects:
 ```yaml
 id: EVT-000056
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -261,7 +262,7 @@ description: "Alexander Pendragon (ENT-000125), one week into an active BGM hunt
 ```yaml
 id: EVT-000058
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-1-gameplay
@@ -286,7 +287,7 @@ description: "Alexander Pendragon's first week as an active hunter (2026-07-22 t
 ```yaml
 id: EVT-000059
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-1-gameplay
@@ -322,7 +323,7 @@ No crew casualties. Loot has not yet been collected; the crew has not yet exited
 ```yaml
 id: EVT-000060
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-1-gameplay
@@ -353,7 +354,7 @@ Coalition visit (2026-07-25). Alexander went to the Windy City Hunters Coalition
 ```yaml
 id: EVT-000061
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-1-gameplay
@@ -373,7 +374,7 @@ description: "A confirmed D-Rank Gate near Chicago's old rail yards is posted on
 ```yaml
 id: EVT-000062
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -394,7 +395,7 @@ description: "Correction to `EVT-000060`. Kesha Morrison's dialogue there stated
 ```yaml
 id: EVT-000063
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -434,7 +435,7 @@ Back at the Coalition, Alexander asked Kesha about further C-Rank mining work; s
 ```yaml
 id: EVT-000064
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -457,7 +458,7 @@ Dale (`ENT-000135`) greeted him, already briefed by Ada Reyes's word that he was
 ```yaml
 id: EVT-000065
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -488,7 +489,7 @@ description: "Alexander worked two vein assignments inside the Frozen Gallery un
 ```yaml
 id: EVT-000066
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -519,7 +520,7 @@ description: "Following the break granted at the end of `EVT-000065`, the harves
 ```yaml
 id: EVT-000067
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -548,7 +549,7 @@ No XP, Health, or Mana change this event — no combat resolved for Alexander; H
 ```yaml
 id: EVT-000068
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -575,7 +576,7 @@ The Frozen Gallery C-Rank harvest job is complete: contract closed, no further o
 ```yaml
 id: EVT-000069
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -597,7 +598,7 @@ description: "Alexander took his declared rest day. That evening (2026-07-26) he
 ```yaml
 id: EVT-000070
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -637,7 +638,7 @@ Staged with Priya Okafor (`ENT-000136`) at 9 AM as arranged. Met the rest of the
 ```yaml
 id: EVT-000071
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -665,7 +666,7 @@ The elite is badly hurt but still active and recovering its footing. Priya is pu
 ```yaml
 id: EVT-000072
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-approved-profile-migration
@@ -691,7 +692,7 @@ The current E-Rank Daily Premium cycle (2026-07-28 06:00 to 2026-07-29 06:00 Chi
 ```yaml
 id: EVT-000073
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-approved-profile-migration
@@ -715,7 +716,7 @@ The migrated offers are Spellthread Focus [E-Rank] (Intelligence +4, active-skil
 ```yaml
 id: EVT-000074
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-approved-profile-migration
@@ -743,7 +744,7 @@ The C-Rank Quickknife gained weapon power 7 and the E-Rank Quickknife weapon pow
 ```yaml
 id: EVT-000075
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -765,7 +766,7 @@ Alexander then opened one of his four pending Daily Random Boxes (World Rule Pro
 ```yaml
 id: EVT-000076
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -797,7 +798,7 @@ Priya, Julian, Renata, and Owen all witnessed the finish; the clearing went quie
 ```yaml
 id: EVT-000077
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -831,7 +832,7 @@ As of this event, the crew stands at the same position: elite dead, boss unencou
 ```yaml
 id: EVT-000078
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-approved-profile-migration
@@ -858,7 +859,7 @@ The migration was adopted out-of-character; no NPC is aware of a rules change, a
 ```yaml
 id: EVT-000079
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -904,7 +905,7 @@ The Status Recovery restored the pool and did **not** clear the injury. Alexande
 ```yaml
 id: EVT-000080
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -952,7 +953,7 @@ Alexander then directed a harvest near the aperture with Renata on watch: a five
 ```yaml
 id: EVT-000081
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -992,7 +993,7 @@ No combat, injury, XP, Health, Mana, or gold change across this event. 15 unspen
 ```yaml
 id: EVT-000082
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-rule-migration
@@ -1018,7 +1019,7 @@ No reward, streak, Health, Mana, XP, Stat, gold, item, ownership, relationship, 
 ```yaml
 id: EVT-000083
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1064,7 +1065,7 @@ No combat, injury, or XP this event. Ending state: 2026-07-30 morning, Owen's ap
 ```yaml
 id: EVT-000084
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1109,7 +1110,7 @@ Owen supplied three operating requirements, expressed diegetically and without n
 ```yaml
 id: EVT-000085
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-approved-world-authoring
@@ -1131,7 +1132,7 @@ description: "At an out-of-character readiness pause, the live campaign explicit
 ```yaml
 id: EVT-000086
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-approved-world-authoring
@@ -1153,7 +1154,7 @@ description: "At an out-of-character readiness pause, the live campaign adopted 
 ```yaml
 id: EVT-000087
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1184,7 +1185,7 @@ They stayed out until sundown, motored back in as the light went, and set out on
 ```yaml
 id: EVT-000088
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1223,7 +1224,7 @@ description: "Continuing directly from `EVT-000087`, walking in from the lake la
 ```yaml
 id: EVT-000089
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1256,7 +1257,7 @@ description: "Continuing directly from `EVT-000088` at Owen Callahan's apartment
 ```yaml
 id: EVT-000090
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-authored world-rule advance
@@ -1282,7 +1283,7 @@ description: "Gatefall's World Rule Profile advanced from frozen 1.8 to frozen *
 ```yaml
 id: EVT-000091
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1308,7 +1309,7 @@ No other reward was claimed: **Ability Points +3 x1 and Status Recovery x3 remai
 ```yaml
 id: EVT-000092
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-authored world-rule advance
@@ -1332,7 +1333,7 @@ description: "Gatefall's World Rule Profile advanced from frozen 1.9 to frozen *
 ```yaml
 id: EVT-000093
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1362,7 +1363,7 @@ At the Halsted Depot site, Alexander showed his license, was scanned in, and was
 ```yaml
 id: EVT-000094
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1387,7 +1388,7 @@ Finding a quiet, screened spot off Michigan Avenue afterward, Alexander equipped
 ```yaml
 id: EVT-000095
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1417,7 +1418,7 @@ The crew exited through the aperture; Sable, Kern, Ruth, and Denny each parted o
 ```yaml
 id: EVT-000096
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1437,7 +1438,7 @@ description: "Still on the park bench, Alexander opened the Daily Premium tab an
 ```yaml
 id: EVT-000097
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1465,7 +1466,7 @@ Killed a common beast in the open (unmodified attack, d100 82, critical success)
 ```yaml
 id: EVT-000098
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1485,7 +1486,7 @@ description: "Back on the bench, Alexander sold all 6 E-Rank crystals to the sho
 ```yaml
 id: EVT-000099
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1515,7 +1516,7 @@ Mana was down to 7/40 by this point — enough for at most one more Rupture, not
 ```yaml
 id: EVT-000100
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1535,7 +1536,7 @@ description: "On the bench, adopted the additive Gatefall World Rule Profile 1.1
 ```yaml
 id: EVT-000101
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1569,7 +1570,7 @@ A calculated finishing strike on the now heavily wounded boss (d100 64, net +3, 
 ```yaml
 id: EVT-000102
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1590,7 +1591,7 @@ description: "Checked the time (5:22 PM) and texted Owen: *\"Done. 9k in my pock
 ```yaml
 id: EVT-000103
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1613,7 +1614,7 @@ Inside the kitchen, mid-joke and mid-cooking, Alexander crossed the room without
 ```yaml
 id: EVT-000104
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-2-gameplay
@@ -1642,7 +1643,7 @@ Showered and went to bed together. No XP, Stat, gold, or item change — establi
 ```yaml
 id: EVT-000105
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-approved-profile-migration
@@ -1662,7 +1663,7 @@ description: "Adopted frozen Gatefall World Rule Profile 1.12 at readiness. Ever
 ```yaml
 id: EVT-000106
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: "Claude session export C:/Users/marti/Downloads/1778be86-dbce-44ac-8f4e-10c9c70f4e6d.jsonl, visible gameplay turns 956-1038"
@@ -1685,7 +1686,7 @@ This event corrects later record framing, not the fiction: `EVT-000103` called t
 ```yaml
 id: EVT-000107
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-approved-profile-migration
@@ -1705,7 +1706,7 @@ description: "Adopted frozen Gatefall World Rule Profile 1.13 and Decision 078 a
 ```yaml
 id: EVT-000108
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: gameplay
@@ -1735,7 +1736,7 @@ By text, Owen diagnosed the fault as a **hairline fracture in the resonance crys
 ```yaml
 id: EVT-000109
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: gameplay
@@ -1765,7 +1766,7 @@ Boss kill 40 XP plus the E-Rank Gate-clear milestone 70. **XP 20 → 130/800.** 
 ```yaml
 id: EVT-000110
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: gameplay
@@ -1792,7 +1793,7 @@ They hauled the skis at dusk, Owen backing the trailer in one try while loudly p
 ```yaml
 id: EVT-000111
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: gameplay
@@ -1824,7 +1825,7 @@ Alexander left for his own apartment to prepare, having declined to be talked in
 ```yaml
 id: EVT-000112
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: gameplay
@@ -1856,7 +1857,7 @@ The plan that came out of it: Priya and Julian anchor a front line built around 
 ```yaml
 id: EVT-000113
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: gameplay
@@ -1886,7 +1887,7 @@ Boss kill 40 XP plus the E-Rank clear milestone 70. **XP 290 → 400/800.** Loot
 ```yaml
 id: EVT-000114
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: gameplay
@@ -1916,7 +1917,7 @@ description: "Ejected back to his own desk, Alexander settled the day's accumula
 ```yaml
 id: EVT-000115
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-requested-profile-repair
@@ -1936,7 +1937,7 @@ description: "Adopted frozen Gatefall World Rule Profile 1.14 at readiness, clos
 ```yaml
 id: EVT-000116
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: gameplay
@@ -1989,7 +1990,7 @@ description: "The first exercise of the tactical command Priya Okafor ceded on 2
 ```yaml
 id: EVT-000117
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-ruling
@@ -2017,7 +2018,7 @@ Legal minimums are untouched (Section 13.3 already required no combat-rated mini
 ```yaml
 id: EVT-000118
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: gameplay
@@ -2066,7 +2067,7 @@ description: "The morning after the crew's first training session, and the first
 ```yaml
 id: EVT-000119
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2093,7 +2094,7 @@ description: "After a quiet midday at Owen's apartment — real food, licences f
 ```yaml
 id: EVT-000120
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2122,7 +2123,7 @@ description: "With the elite down, Alexander and Owen moved together on the den'
 ```yaml
 id: EVT-000121
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2153,7 +2154,7 @@ Owen, closing the call: *That's the last one I do on instinct. Next time, the ma
 ```yaml
 id: EVT-000122
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2182,7 +2183,7 @@ This is the first time Alexander has told anyone in this campaign why he is the 
 ```yaml
 id: EVT-000123
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2209,7 +2210,7 @@ No Stat, XP, gold, or item change. The Runic Key remains unused, banked."
 ```yaml
 id: EVT-000124
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2238,7 +2239,7 @@ Owen remained asleep throughout the notification — no alarm, not woken. Alexan
 ```yaml
 id: EVT-000125
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: repository-correction
@@ -2264,7 +2265,7 @@ description: "Adopted frozen Gatefall World Rule Profile 1.16, a migrating Daily
 ```yaml
 id: EVT-000126
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2298,7 +2299,7 @@ No fictional time, gold, item, Stat, or resolved outcome changes — this settle
 ```yaml
 id: EVT-000127
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -2329,7 +2330,7 @@ description: "Audit, raised by direct player question, found that the Cicero Gat
 ```yaml
 id: EVT-000128
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -2357,7 +2358,7 @@ No fictional time, gold, item ownership, Stat, pool, skill, mastery counter, que
 ```yaml
 id: EVT-000129
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-ruling
@@ -2387,7 +2388,7 @@ No fictional time, Mana, Health, XP, gold, item, quest, or resolved outcome chan
 ```yaml
 id: EVT-000130
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-ruling
@@ -2417,7 +2418,7 @@ No fictional time, Mana, Health, XP, gold, item, quest, skill, mastery value, ro
 ```yaml
 id: EVT-000131
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-ruling
@@ -2447,7 +2448,7 @@ No fictional time, roll, Mana, Health, XP, gold, item, quest, known skill, maste
 ```yaml
 id: EVT-000132
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-ruling
@@ -2481,7 +2482,7 @@ No fictional time, roll, Mana, Health, XP, gold, item, quest, prior skill counte
 ```yaml
 id: EVT-000133
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-ruling
@@ -2509,7 +2510,7 @@ Alexander has no `pending-ratification` candidate at adoption. His ratified skil
 ```yaml
 id: EVT-000134
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-ruling
@@ -2535,7 +2536,7 @@ This is a presentation-only advance. Alexander's skills, Rank, mastery, Mana cos
 ```yaml
 id: EVT-000135
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-ruling
@@ -2565,7 +2566,7 @@ No fictional time, roll, gold, owned item, skill, pool, quest, damage result, ex
 ```yaml
 id: EVT-000136
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2606,7 +2607,7 @@ description: |
 ```yaml
 id: EVT-000137
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2634,7 +2635,7 @@ No item, gold, Mana, Health, or XP change. A new harvest engagement is now booke
 ```yaml
 id: EVT-000138
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2661,7 +2662,7 @@ New relationship formed: `REL-000068` (pending recruitment overture, no commitme
 ```yaml
 id: EVT-000139
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2694,7 +2695,7 @@ Before leaving, Alexander sold the pawnbroker **one private E-Rank core for $220
 ```yaml
 id: EVT-000140
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2731,7 +2732,7 @@ The rest of the section ran ordinary — fifteen more crystals mined steadily ov
 ```yaml
 id: EVT-000141
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2759,7 +2760,7 @@ Pending rewards after settlement: Ability Points 0, Daily Random Box 0, Status R
 ```yaml
 id: EVT-000142
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2806,7 +2807,7 @@ Runic Key consumed; none remain banked."
 ```yaml
 id: EVT-000143
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2831,7 +2832,7 @@ description: "All 27 E-Rank crystals from the Shattered City instant dungeon sol
 ```yaml
 id: EVT-000144
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2892,7 +2893,7 @@ Mana spent to zero across the display (62 → 0). Alexander materialized a Lesse
 ```yaml
 id: EVT-000145
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2921,7 +2922,7 @@ Superseded: OBJ-10's premise (Owen knows something is unexplained but not what) 
 ```yaml
 id: EVT-000146
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2952,7 +2953,7 @@ New objective opened: `OBJ-15` (the moving-in question), status open, no commitm
 ```yaml
 id: EVT-000147
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -2981,7 +2982,7 @@ Over eggs, Alexander told Owen he has a private plan for the morning: investigat
 ```yaml
 id: EVT-000148
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -3007,7 +3008,7 @@ Finding a private corner, Alexander worked through the morning's banked System s
 ```yaml
 id: EVT-000149
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -3035,7 +3036,7 @@ Deliberately worked through the swarm using every applicable skill at least once
 ```yaml
 id: EVT-000150
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -3065,7 +3066,7 @@ Loot collected: **26 E-Rank crystals** (14 beast-drop + 12 mined), **2 E-Rank co
 ```yaml
 id: EVT-000151
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -3093,7 +3094,7 @@ Keen Sense at entry, Sprint into Twin Fang on the opener, Stone Skin sustained w
 ```yaml
 id: EVT-000152
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -3153,7 +3154,7 @@ Keen Sense read the layout before a collapsing-span crossing; Twin Fang led deli
 ```yaml
 id: EVT-000153
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-3-gameplay
@@ -3180,7 +3181,7 @@ description: "A text to Owen ('E Rank dungeons are sooo boring') drew a reply fr
 ```yaml
 id: EVT-000154
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-ruling
@@ -3212,7 +3213,7 @@ No fictional time, roll, gold, cash, owned item, skill, pool, quest, damage resu
 ```yaml
 id: EVT-000155
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: play
@@ -3245,7 +3246,7 @@ No canonical state changed beyond in-flight time. No gold, cash, item, Stat, XP,
 ```yaml
 id: EVT-000156
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: play
@@ -3284,7 +3285,7 @@ Alexander declined, three times, to state how many cores he holds or where they 
 ```yaml
 id: EVT-000157
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: play
@@ -3332,7 +3333,7 @@ description: "Alexander walked the short distance to the unnamed warehouse-distr
 ```yaml
 id: EVT-000158
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: owner-ruling
@@ -3374,7 +3375,7 @@ No fictional time, roll, gold, cash, owned item, skill value, pool, quest, damag
 ```yaml
 id: EVT-000159
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -3406,7 +3407,7 @@ description: "Gatefall World Rule Profile 1.26 → 1.27 adopted at the 2026-08-0
 ```yaml
 id: EVT-000160
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -3442,7 +3443,7 @@ description: "Gatefall World Rule Profile 1.27 → 1.28 adopted at the 2026-08-0
 ```yaml
 id: EVT-000161
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -3474,7 +3475,7 @@ description: "Gatefall World Rule Profile 1.28 → 1.29 adopted at the 2026-08-0
 ```yaml
 id: EVT-000162
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -3501,7 +3502,7 @@ description: "At the readiness gate resuming session 3 — same anchor, no ficti
 ```yaml
 id: EVT-000163
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -3529,7 +3530,7 @@ description: "Alexander texted Owen ('you done?'); Owen replied he's still burie
 ```yaml
 id: EVT-000164
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: roll
@@ -3559,7 +3560,7 @@ description: "Alexander activated Keen Sense (Mana 2) to read the painted-over '
 ```yaml
 id: EVT-000165
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: roll
@@ -3593,7 +3594,7 @@ Walked the district with no destination, reaching an intersection and choosing a
 ```yaml
 id: EVT-000166
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -3623,7 +3624,7 @@ Also reconfirmed: the ≈$40,000 Denise Ferro rail-corridor payout is still proc
 ```yaml
 id: EVT-000167
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: roll
@@ -3659,7 +3660,7 @@ Milo was visibly startled both times, joked that it looked like Alexander was re
 ```yaml
 id: EVT-000168
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -3693,7 +3694,7 @@ description: "Gatefall World Rule Profile 1.29 → 1.30 adopted at the 2026-08-0
 ```yaml
 id: EVT-000169
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session play
@@ -3714,7 +3715,7 @@ description: "Leaving the Coalition staging lot, Alexander texted Owen a joke ab
 ```yaml
 id: EVT-000170
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session play
@@ -3735,7 +3736,7 @@ description: "Waited out the rest of the afternoon on a bench near Owen's Rogers
 ```yaml
 id: EVT-000171
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session play
@@ -3756,7 +3757,7 @@ description: "An uneventful night at Owen's apartment; both asleep by the ordina
 ```yaml
 id: EVT-000172
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session play
@@ -3785,7 +3786,7 @@ description: |
 ```yaml
 id: EVT-000173
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session play
@@ -3806,7 +3807,7 @@ description: "Swam alone off the rocks near Loyola Park after finishing the regi
 ```yaml
 id: EVT-000174
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -3826,7 +3827,7 @@ description: "Owner flag, post-checkpoint: `EVT-000167`'s Milo reaction-footwork
 ```yaml
 id: EVT-000175
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -3861,7 +3862,7 @@ No fictional time, roll, counter, skill value, item, pool, or resolved outcome c
 ```yaml
 id: EVT-000176
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -3895,7 +3896,7 @@ Both men named the shared defect explicitly: each is running a private one-man o
 ```yaml
 id: EVT-000177
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -3933,7 +3934,7 @@ Skill-formation audit: `none`. Conversation and a meal; no repeatable method und
 ```yaml
 id: EVT-000178
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -3971,7 +3972,7 @@ Alexander equipped his full nine-slot loadout instantly on the landing (Section 
 ```yaml
 id: EVT-000179
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4008,7 +4009,7 @@ One activation, one use (Section 7.4: one activation counts once regardless of h
 ```yaml
 id: EVT-000180
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4049,7 +4050,7 @@ Field Command counted **3 material applications** — one per resolved action in
 ```yaml
 id: EVT-000181
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -4084,7 +4085,7 @@ No fictional time, roll, Stat, pool, item, or resolved outcome changed.
 ```yaml
 id: EVT-000182
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4123,7 +4124,7 @@ Resolution: d100 63, net +2 (Rank gap, relayed Pattern, an unseen strike at a ch
 ```yaml
 id: EVT-000183
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4164,7 +4165,7 @@ A garrison, an extra elite, and a sealed stone lid, for three lesser healing pot
 ```yaml
 id: EVT-000184
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4240,7 +4241,7 @@ description: |
 ```yaml
 id: EVT-000185
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -4273,7 +4274,7 @@ No fictional time, roll, Stat, pool, item, or resolved outcome changed by this E
 ```yaml
 id: EVT-000186
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4315,7 +4316,7 @@ Owen entered his shift at Edgewater on schedule. No fiction beyond this Event's 
 ```yaml
 id: EVT-000187
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -4348,7 +4349,7 @@ No fictional time, roll, Stat, pool, item, or resolved outcome changed by this E
 ```yaml
 id: EVT-000188
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4392,7 +4393,7 @@ No Mana cost beyond the single Keen Sense activation. No XP - none of tonight's 
 ```yaml
 id: EVT-000189
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4425,7 +4426,7 @@ The registry search. Web search for Meridian Cold Storage on his phone. d100 58,
 ```yaml
 id: EVT-000190
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4463,7 +4464,7 @@ No XP. Mana settlement carried in the checkpoint's temporal-state note."
 ```yaml
 id: EVT-000191
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4501,7 +4502,7 @@ Walked home. No further rolls. No XP, gold, or item change this Event."
 ```yaml
 id: EVT-000192
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -4539,7 +4540,7 @@ No fictional time, Stat, pool, item, or resolved combat outcome changed by this 
 ```yaml
 id: EVT-000193
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4570,7 +4571,7 @@ Went to sleep without further contact. No fictional risk resolved this Event; al
 ```yaml
 id: EVT-000194
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4604,7 +4605,7 @@ No fictional time skip beyond the day's deliberate idleness. No XP, Health, or i
 ```yaml
 id: EVT-000195
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4647,7 +4648,7 @@ Both kills exploited the same two Patterns without alerting the queue, exactly a
 ```yaml
 id: EVT-000196
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4683,7 +4684,7 @@ All nine common beasts dead. Two elites and the boss remain, and by the last kil
 ```yaml
 id: EVT-000197
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4730,7 +4731,7 @@ Both elites dead, all commons dead. Only the boss remains, unmoved the entire fi
 ```yaml
 id: EVT-000198
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4780,7 +4781,7 @@ Final exchange: dagger-and-Twin-Fang immediately, no further setup skill. Main h
 ```yaml
 id: EVT-000199
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -4868,7 +4869,7 @@ Still outstanding and deliberately carried forward: the 2026-08-06 06:00 Daily P
 ```yaml
 id: EVT-000200
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4893,7 +4894,7 @@ description: "A full night's rest (00:25-06:00) settled Health 119 to 144/148 an
 ```yaml
 id: EVT-000201
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4934,7 +4935,7 @@ Withheld deliberately at his own choice. Reggie called the advance with no objec
 ```yaml
 id: EVT-000202
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4965,7 +4966,7 @@ Alexander then finished the wounded middle beast with Twin Fang, same called wou
 ```yaml
 id: EVT-000203
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -4993,7 +4994,7 @@ description: "With the first cluster cleared, Alexander confronted the crew's to
 ```yaml
 id: EVT-000204
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -5036,7 +5037,7 @@ The crew executed cleanly: first cluster fast and quiet, no repeat of the earlie
 ```yaml
 id: EVT-000205
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -5104,7 +5105,7 @@ Section 7.1 danger settlement for the whole trial Gate, one continuous dangerous
 ```yaml
 id: EVT-000206
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -5140,7 +5141,7 @@ Alexander sold 12 of his mined crystals privately to the System shop at 40 g eac
 ```yaml
 id: EVT-000207
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -5166,7 +5167,7 @@ description: "Outside the Gate, Alexander reported the boss dead and the Gate cl
 ```yaml
 id: EVT-000208
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -5192,7 +5193,7 @@ description: "Alexander called Owen, closing a near two-day silence since the wa
 ```yaml
 id: EVT-000209
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -5218,7 +5219,7 @@ description: "The Checkpoint 0041 promotion barrier, covering EVT-000206-EVT-000
 ```yaml
 id: EVT-000210
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -5257,7 +5258,7 @@ description: "Adoption of the Gatefall World Rule Profile **1.30 to 1.36 chain**
 ```yaml
 id: EVT-000211
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: player-action
@@ -5286,7 +5287,7 @@ description: "Alexander accepted the standing Section 7.5 breakthrough offer on 
 ```yaml
 id: EVT-000212
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: player-action
@@ -5322,7 +5323,7 @@ Alexander offered **all fifteen** of his private E-Rank cores - his entire stash
 ```yaml
 id: EVT-000213
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: player-action
@@ -5349,7 +5350,7 @@ Terms: same as the original Cicero Scar job - harvest element behind a secured s
 ```yaml
 id: EVT-000214
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -5377,7 +5378,7 @@ description: "The Checkpoint 0042 promotion barrier, covering `EVT-000211`-`EVT-
 ```yaml
 id: EVT-000215
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -5407,7 +5408,7 @@ description: "Adoption of Gatefall World Rule Profile 1.37, an additive advance 
 ```yaml
 id: EVT-000216
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: relay-report
@@ -5438,7 +5439,7 @@ Alexander activated D-Rank Keen Sense once at its authored **2 Mana** cost (Gate
 ```yaml
 id: EVT-000217
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: relay-report
@@ -5463,7 +5464,7 @@ Safe time settled Health and Mana to their maxima before the 06:00 boundary: **H
 ```yaml
 id: EVT-000218
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: relay-report
@@ -5490,7 +5491,7 @@ At the event close they are running back toward Alexander's apartment. Owen's ho
 ```yaml
 id: EVT-000219
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: relay-recovery
@@ -5519,7 +5520,7 @@ Canon reconciliation retains Elias Ward as a campaign-local Character (`ENT-0001
 ```yaml
 id: EVT-000220
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -5552,7 +5553,7 @@ description: "Owner ruling closing the authoring gap flagged against Flash Step'
 ```yaml
 id: EVT-000221
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -5581,7 +5582,7 @@ description: "Adoption of Gatefall World Rule Profile 1.38, an additive advance 
 ```yaml
 id: EVT-000222
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -5610,7 +5611,7 @@ description: "Alone at his apartment after Owen left for his 08:00 Edgewater shi
 ```yaml
 id: EVT-000223
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -5641,7 +5642,7 @@ Pending Daily Random Box 3 → 0. Pending Rewards now shows only Status Recovery
 ```yaml
 id: EVT-000224
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -5685,7 +5686,7 @@ Ada Reyes staged the confirmed C-Rank harvest job at 09:00 as scheduled, out pas
 ```yaml
 id: EVT-000225
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -5710,7 +5711,7 @@ description: "Walked back from the old freight yards, arriving in the neighborho
 ```yaml
 id: EVT-000226
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: promotion-barrier
@@ -5735,7 +5736,7 @@ description: "Promotion-barrier progression-batch-settlement (Profile Section 7.
 ```yaml
 id: EVT-000227
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -5760,7 +5761,7 @@ description: "At the player's explicit direction, only the live 2026-08-09 06:00
 ```yaml
 id: EVT-000228
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -5785,7 +5786,7 @@ description: "Working the `/system shop` between errands, Alexander sold 71 of h
 ```yaml
 id: EVT-000229
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: promotion-barrier
@@ -5810,7 +5811,7 @@ description: "Promotion-barrier progression-batch-settlement (Profile Section 7.
 ```yaml
 id: EVT-000230
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -5841,7 +5842,7 @@ description: "Adoption of Gatefall World Rule Profile 1.39, a compatibility-trea
 ```yaml
 id: EVT-000231
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -5866,7 +5867,7 @@ description: "Right after opening the apartment's Armory Key [D-Rank] (bought `E
 ```yaml
 id: EVT-000232
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -5891,7 +5892,7 @@ description: "**Ambush**, Exploit Pattern established automatically off the Keen
 ```yaml
 id: EVT-000233
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -5916,7 +5917,7 @@ description: "Back at the apartment. Sold 17 D-Rank crystals at 40 g each = 680 
 ```yaml
 id: EVT-000234
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -5941,7 +5942,7 @@ description: "Opened with the just-bought ordinary D-Rank key (consumed). Archet
 ```yaml
 id: EVT-000235
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -5966,7 +5967,7 @@ description: "Checked the time (~15:05→~15:35 across this point) and phone (no
 ```yaml
 id: EVT-000236
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -5992,7 +5993,7 @@ description: "Sold **all** D-Rank crystals held: Dungeon 2's 24 + Dungeon 3's 34
 ```yaml
 id: EVT-000237
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -6013,7 +6014,7 @@ description: "Global skill-mastery reconciliation for the 2026-08-09 afternoon's
 ```yaml
 id: EVT-000238
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: promotion-barrier
@@ -6137,7 +6138,7 @@ description: "Promotion-barrier progression-batch-settlement (Profile Section 7.
 ```yaml
 id: EVT-000239
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -6163,7 +6164,7 @@ description: "Owen Callahan came off an eight-and-a-half-hour Edgewater shift an
 ```yaml
 id: EVT-000240
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -6188,7 +6189,7 @@ description: "Alone in the apartment in the twenty minutes before Owen arrived, 
 ```yaml
 id: EVT-000241
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -6214,7 +6215,7 @@ description: "Owen arrived early, carrying nothing, eight and a half hours uprig
 ```yaml
 id: EVT-000242
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: promotion-barrier
@@ -6239,7 +6240,7 @@ description: "Promotion-barrier progression-batch-settlement (Profile Section 7.
 ```yaml
 id: EVT-000243
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -6266,7 +6267,7 @@ description: "With Owen asleep against him on the couch, Alexander lifted him an
 ```yaml
 id: EVT-000244
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -6292,7 +6293,7 @@ description: "The **seventeenth daily quest** issued at 06:00 local as scheduled
 ```yaml
 id: EVT-000245
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: transcript
@@ -6318,7 +6319,7 @@ description: "The pair went out a little before 06:30 and ran the usual lakefron
 ```yaml
 id: EVT-000246
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: promotion-barrier
@@ -6343,7 +6344,7 @@ description: "Promotion-barrier progression-batch-settlement (Profile Section 7.
 ```yaml
 id: EVT-000247
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -6374,7 +6375,7 @@ description: "Adoption of Gatefall World Rule Profile 1.40, a compatibility-trea
 ```yaml
 id: EVT-000248
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -6411,7 +6412,7 @@ description: "Adoption of Gatefall World Rule Profile 1.41, a compatibility-trea
 ```yaml
 id: EVT-000249
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -6443,7 +6444,7 @@ description: "A follow-up settlement to Profile 1.41 (`EVT-000248`), closing the
 ```yaml
 id: EVT-000250
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -6477,7 +6478,7 @@ description: "Adoption of Gatefall World Rule Profile 1.42, a compatibility-trea
 ```yaml
 id: EVT-000251
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -6515,7 +6516,7 @@ description: "Adoption of Gatefall World Rule Profile 1.43, a compatibility-trea
 ```yaml
 id: EVT-000252
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -6544,7 +6545,7 @@ Applied immediately: the 2026-08-09 Crimson cycle had expired at 06:00 this morn
 ```yaml
 id: EVT-000253
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -6573,7 +6574,7 @@ Alexander suggested brunch on Owen's boat before the viewing — familiar, low-k
 ```yaml
 id: EVT-000254
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -6603,7 +6604,7 @@ description: "Anchored away from marina traffic, Alexander told Owen he could as
 ```yaml
 id: EVT-000255
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -6631,7 +6632,7 @@ description: "Asked whether he wanted more runes, Owen said yes — carefully, h
 ```yaml
 id: EVT-000256
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -6660,7 +6661,7 @@ Asked whether they already knew, both confirmed it without hesitation. Applicati
 ```yaml
 id: EVT-000257
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -6693,7 +6694,7 @@ Over dinner, Owen asked whether Alexander had told him about 'the recruiter' —
 ```yaml
 id: EVT-000258
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-gameplay
@@ -6721,7 +6722,7 @@ Owen listened without interrupting, named the ambush-withholding back to Alexand
 ```yaml
 id: EVT-000259
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -6741,7 +6742,7 @@ description: "At the player's explicit instruction, the `OBJ-23` follow-up windo
 ```yaml
 id: EVT-000260
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: promotion-barrier
@@ -6772,7 +6773,7 @@ New anchor: **2026-08-10 ~19:45**, Alexander's apartment, mid-conversation with 
 ```yaml
 id: EVT-000261
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-4-gameplay
@@ -6799,7 +6800,7 @@ No mechanical state changed — no roll, no XP, no item movement. `OBJ-19` advan
 ```yaml
 id: EVT-000262
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-4-gameplay
@@ -6825,7 +6826,7 @@ description: "The **eighteenth daily quest** issued at 06:00 and was completed b
 ```yaml
 id: EVT-000263
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-4-gameplay
@@ -6849,7 +6850,7 @@ Alexander opened with a combined Keen Sense read before entering (Mana **94→92
 ```yaml
 id: EVT-000264
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-4-gameplay
@@ -6895,7 +6896,7 @@ description: "**Standing ruling adopted this session (player instruction):** act
 ```yaml
 id: EVT-000265
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-4-gameplay
@@ -6937,7 +6938,7 @@ No damage taken by Owen this fight — every guardian swing missed or fumbled.
 ```yaml
 id: EVT-000266
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: session-4-gameplay
@@ -6964,7 +6965,7 @@ Walking back, Owen raised wanting a longsword or ranged weapon to complement the
 ```yaml
 id: EVT-000267
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: promotion-barrier
@@ -6994,7 +6995,7 @@ New anchor: **2026-08-11 ~09:35**, walking back from the collapsed rail cutting 
 ```yaml
 id: EVT-000268
 canonical_record: REC-000079
-schema_version: "0.1.5"
+schema_version: "0.1.6"
 status: active
 provenance:
   source: ruling
@@ -7021,4 +7022,32 @@ description: "Adoption of Gatefall World Rule Profile 1.44, a compatibility-trea
 **Adoption settles nothing retroactively.** The domain dispatches forward. The live board carries three postings past their derived deadlines — `GB-01` at midnight 2026-08-08, `GB-02` and `GB-03` at midnight 2026-08-09 — and adopting 1.44 does not resolve them. Clearing them is ordinary Section 9.10 work in a normal session at the anchor the campaign holds, and is tracked as design flag **F-002**. This adoption neither performs it nor licenses performing it in bulk from outside play.
 
 **Engine dependency.** Decision 084 admits `world_state_settlement` to the engine's closed vocabulary; no Persistent Object structure changes. Engine 0.2.0 and Data Model 0.1.5 are unchanged. Immutable Profile 1.43-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.44 at readiness."
+```
+
+## EVT-000269 - Profile Adoption: Gatefall World Rule Profile 1.45, Participation Coverage
+
+```yaml
+id: EVT-000269
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-11 ~09:35 -05:00"
+  real_date: "2026-07-31"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-11 ~09:35 -05:00"
+participants: []
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.45, a compatibility-treatment advance over frozen 1.44. **No fictional time is consumed, no scene occurs, and no resolved outcome changes.** Alexander is not a participant and learns nothing; nothing about the world he lives in is different after this Event than before it.
+
+**What this is.** 1.45 changes no rule a character could notice. It declares how this world's Events are written down, not what happens in them. Gatefall opts into the Data Model Section 2.4 `participation_audits` block under Decision 085, naming a prospective baseline of `EVT-000268` and twelve fiction-bearing Event kinds as its coverage set: social, scene, combat, relationship, downtime, disclosure, discovery, exploration, work, harvest-job, shop, and loot. Within those, every Character an Event names in its own `participants` needs a recorded result - `record-updated` naming the object the promotion moved, or an explicit `no-change`. Administrative kinds are deliberately outside coverage, this adoption Event among them.
+
+**Why it exists.** The obligation it backs was written because of this campaign. The NPC ledger reached 262 KB across forty-seven objects while nothing required the Runtime to read a record before playing the character it describes, and the Closed Channels table recorded the same leak returning after correction. The resident rule now requires the read; this manifest is what makes a claimed promotion checkable afterwards.
+
+**What it costs and what it does not.** Nothing is backfilled: the 217 Events already written acquire no obligation, and no historical Event is rewritten. No pool, Rank, counter, quest, price, timer, item, relationship, or resolved outcome is touched. The cost is prospective and falls on the writer of the next covered Event. The common entry will be `no-change`, which is deliberately not machine-verifiable - it exists so validation can tell 'nothing moved' from 'nobody looked'. The verifiable half is `record-updated`, where the named object must actually cite the Event.
+
+**Data Model 0.1.5 to 0.1.6** accompanies this adoption engine-side. The block is additive and optional; live objects are retagged, and immutable Profile 1.43-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.44 at readiness."
 ```

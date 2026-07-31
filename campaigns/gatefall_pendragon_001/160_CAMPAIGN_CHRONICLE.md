@@ -212,6 +212,7 @@ subjects:
   - EVT-000247
   - EVT-000248
   - EVT-000249
+  - EVT-000250
 ```
 
 ---
@@ -6417,4 +6418,38 @@ description: "A follow-up settlement to Profile 1.41 (`EVT-000248`), closing the
 **Still open, and deliberately not resolved here.** Eight ranked NPC hunters carry no signature ability against Section 13.6's requirement — Priya Okafor, Julian Boyd, Renata Marchetti, Ruth, Reggie Calloway, Bhavna Iyer, Foster Nakashima, and Callie Dunmore. Those are characterisation rather than derivation and are held for the owner. Every world figure who should have one already does.
 
 **Nothing recomputes.** No stored field, magnitude, probability, owned item, transaction, or resolved outcome changes. A Rank authored here describes what a character has been since their Awakening and is not a change to them; no scene in which any of these figures appeared is reopened or re-resolved, and no exchange is recomputed. Variance is permanent and never rerolled (Section 6.1.2)."
+```
+
+## EVT-000250 - Profile Adoption: Gatefall World Rule Profile 1.42, and Six Signature Abilities
+
+```yaml
+id: EVT-000250
+canonical_record: REC-000079
+schema_version: "0.1.5"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-10 ~07:38 -05:00"
+  real_date: "2026-07-31"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-10 ~07:38 -05:00"
+participants: []
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.42, a compatibility-treatment advance over frozen 1.41, together with the signature-ability authoring it governs. **No fictional time is consumed, no scene occurs, and no resolved outcome changes.** Alexander is not a participant and learns none of it.
+
+**The rule.** Section 13.6 has required a signature ability of *every* named NPC hunter recorded in play. It now requires one of every named NPC hunter at **D-Rank or above**, on the owner's ruling. An E-Rank entry carrying no signature is correct rather than incomplete, and no audit or Runtime should read the empty field as a gap.
+
+**What the floor does not say.** An E-Rank's gift is not absent — it is **too slight to name, file, or build a reputation on**, which is why the trade's boards record hunters at that Rank by working type and licence number rather than by power, and why Section 9.4 has most E- and D-Ranks earning their living as miners, harvesters, and gear-porters rather than as anybody's firelance. Section 13.6's opening clause still reads *most* awakened manifest a signature, not all, and an E-Rank's may be named in play whenever the fiction needs it, authored under the same descriptive no-magnitude limit as any other.
+
+**The Bearer's case reads more sharply, not less.** Section 13.6 records that he manifested nothing at awakening — the notorious blank card of the weakest E-Rank. Under 1.42 a blank card is **nothing at all**, which is a distinct and remarkable reading against the slight, unfiled gift an ordinary E-Rank is now understood to carry. The floor preserves the contrast that made the card notorious rather than eroding it.
+
+**Six signatures authored, all D-Rank or above.** **Priya Okafor (`ENT-000136`) — Follow-Through:** her mana carries a committed strike past the point where the body would stop, so a blow that connects keeps driving through the guard behind it. It is the same gift as her flaw — the reason her weight travels past the end of her third beat, the habit Alexander diagnosed in front of her own crew (`EVT-000116`) and she dated to age twenty-four. Eight years powered by a thing that does not brake. **Ruth (`ENT-000143`) — Warm Hands:** her mana reads heat and pressure through stone by touch, finding a live seam with a palm on rock rather than waiting for a rig to settle, which is the shifting-resonance technique her entry already credits her with. **Reggie Calloway (`ENT-000173`) — Threshold:** for the moment he crosses an opening, his mana reads what is on the other side, which is why he takes doors first and why nobody argues. **Bhavna Iyer (`ENT-000174`) — Tally:** her mana counts living things in a space rather than placing them, a number before a direction — the gift behind the entry read she delivered on the 2026-08-08 trial that matched Alexander's independent Keen Sense confirmation exactly. **Foster Nakashima (`ENT-000175`) — Backstop:** his mana fixes a line behind the crew and tells him the instant anything crosses it. **Callie Dunmore (`ENT-000176`) — Slip:** a short mana-driven acceleration into a gap that has just opened, which is why she is never quite where she was.
+
+**One deliberate mechanical restraint.** Backstop is a perimeter **sense**, not a barrier, and **does not trigger Section 13.5's warden effect** — that effect attaches to a signature raising a held barrier or physically holding a line, and his does neither. Ironline's trial crew therefore gains no formation defensive step from him. He knows what came through; he does not stop it. None of the other five triggers any of Section 13.5's three authored effects either; Owen Callahan's mending remains the only signature in the campaign ledger that carries mechanics.
+
+**Five E-Rank hunters are recorded as correctly carrying none** under the new floor: Julian Boyd (`ENT-000137`), Renata Marchetti (`ENT-000138`), Denny Osei (`ENT-000179`), Marisol Ruiz (`ENT-000180`), and Milo (`ENT-000168`). Each entry states the reasoning rather than leaving a bare empty field.
+
+**What does not change.** No stored field, magnitude, probability, owned item, completed transaction, or resolved outcome changes. **No authored signature is removed from any entry at any Rank** — the floor governs what must be authored going forward. A signature has never carried magnitude in the first place (Section 13.6 fixes it as a descriptive fact of method and reach), so authoring six of them alters no damage, reduction, pool, cost, or party effect, and nothing is re-resolved. Every scene in which these six have appeared stands exactly as recorded. Immutable Profile 1.41-and-earlier checkpoints remain byte-unchanged and run the compatibility chain through 1.42 at readiness."
 ```

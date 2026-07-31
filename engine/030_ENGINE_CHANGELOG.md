@@ -12,6 +12,14 @@
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.
 
+## 2026-07-31 — `/flag` and the Design Flags intake log
+
+**Engine tooling, not world-scoped.**
+**Problem:** during play, a real design gap surfaced (see `004_DESIGN_FLAGS.md` F-001) and was raised only as an ephemeral spawn-task suggestion — a UI chip with no repository record. Once that chip is dismissed or the session ends, the finding is gone; nothing forces a design concern noticed mid-play to actually reach the repository the way an accepted Decision or a Roadmap item does.
+**Change:** new `engine/004_DESIGN_FLAGS.md` — a non-canonical intake log for design friction surfaced during ordinary play, sitting upstream of both `001_ENGINE_DECISIONS.md` (accepted) and `002_ENGINE_ROADMAP.md` (planned). New `/flag [summary]` runtime command and `.claude/skills/flag/SKILL.md`: writes a new entry to that log **immediately**, regardless of whether a campaign session is open, since the log is engine documentation rather than campaign canon and is not held for that campaign's `/save`. A spawn-task chip may still be raised alongside it as a convenience, but the repository write is mandatory every time, not optional.
+**Files:** `engine/004_DESIGN_FLAGS.md` (new), `.claude/skills/flag/SKILL.md` (new), `README.md` (cold-start command catalog).
+**Audit:** F-001, the flag that motivated this change, is itself the first entry in the new log.
+
 ## 2026-07-31 — Gatefall Profile 1.41: individual pool variance reaches the NPCs a campaign plays
 
 **World authoring:** Gatefall World Rule Profile 1.40 → 1.41 (Decisions 062, 069 — world-scoped, consumes no engine decision number)

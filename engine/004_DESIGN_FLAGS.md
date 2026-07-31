@@ -67,4 +67,28 @@ This is distinct from F-001. F-001 concerned how a question was answered; this i
 
 **The open question is not what the rule says but why it did not fire**, and whether Section 9.10 needs a declared audit boundary the way Decisions 082 and 083 gave commitments and supply one, or whether this is purely a settlement lapse in play. Resolving the board itself is campaign canon and belongs in a session under normal save discipline; it is not an engine change.
 
+**Status:** **Actioned (2026-07-31)** — the board settled in play at `campaigns/gatefall_pendragon_001/`, `EVT-000270`: `GB-01` and `GB-02` broke, `GB-03` cleared off-screen, `GB-04` remains live. The underlying engine question (whether Section 9.10 needs a declared audit boundary, per the open question above) remains genuinely unaddressed — this closes the campaign-canon lapse only, not the design question. Settling it surfaced a distinct authoring gap, raised separately as **F-004**.
+
+## F-003 — Repeated NPC-knowledge leak on the same closed channel within one scene
+
+**Raised:** 2026-07-31 · **Source:** `campaigns/gatefall_pendragon_001/`, 2026-08-11 in-fiction session
+
+During a single short scene (Alexander and Owen discussing how to commission a weapon for Owen), the Runtime had Owen reference Walt Adamik — by inference and then by name — **twice**, despite `130_NPCS_AND_FACTIONS.md`'s existing Closed Channels table already recording that Owen has no channel to Alexander's dealings with Walt. The player caught and corrected the leak the first time (Owen inferring "the pawnbroker's guy... the one who doesn't ask" from context that only the player and Runtime shared); the Runtime was told to re-narrate from Owen's real knowledge, apparently retracted the reference, and then reintroduced Walt by name two exchanges later in the same scene, prompting a second correction.
+
+This is the same class of defect the existing Owen/Walt and Owen/Kesha rows in the Closed Channels table were written to catch — "the same leak has recurred three and four times in one session," per that table's own framing note — recurring again after an in-scene correction had just been made and accepted. The npc-knowledge skill's channel test was run and passed once, then silently not re-run on the very next NPC line touching the same fact.
+
+**The open design question:** whether the Resident Core's turn-by-turn discipline needs an explicit "closed-channel facts stay suppressed for the rest of the scene, not just the next line" rule — i.e., once a fact is confirmed closed to an NPC mid-scene, treat it as a standing constraint on every subsequent line for that NPC in that scene (and arguably that session), not a check that resets after one corrected turn. Worth reviewing whether this belongs in the `npc-knowledge` skill itself, the Resident Core's per-turn checklist, or as a lightweight scene-local working-memory convention (e.g., restate active closed channels for present NPCs at scene start).
+
+**Status:** Open.
+
+## F-004 — Section 9.5's true-Rank roll has no trigger for an unconfirmed Gate that breaks unentered
+
+**Raised:** 2026-07-31 · **Source:** `campaigns/gatefall_pendragon_001/`, found while resolving F-002 (`EVT-000270`)
+
+Settling the tracked board (`EVT-000270`) hit a genuine authoring gap on `GB-02`, an unconfirmed D-Rank Gate that sat under-bid until its deadline and broke under Section 9.8 without ever being entered. Section 9.5 resolves an unconfirmed Gate's true Rank **on first entry**, on a d100 — the only trigger the profile names for that roll. `GB-02` had no entry, so the roll had nothing to fire on, and Section 9.10's break rule (deterministic settlement from staffing status) says nothing about Rank at all.
+
+**The owner ruling made in play, for this instance only:** consistent with Section 9.10's own "no roll" character for deadline settlement, an unconfirmed Gate that breaks without ever being entered never triggers the Section 9.5 roll — the assessed Rank is what the board, the institutions, and the resulting population respond to. `GB-02` broke as its assessed D-Rank, population rolled from that Rank.
+
+**The open design question:** whether Section 9.10 (or Section 9.5 itself) should author this case explicitly — an unconfirmed Gate's Rank-at-break when no entry ever occurred — rather than leaving it to a per-instance ruling each time an unconfirmed posting goes unstaffed to its deadline, which Section 9.4's own economics (cheap jobs sit) suggests will not be rare. Worth reviewing alongside Section 9.6's anomaly table, since an entered unconfirmed Gate can anomaly-roll to a Rank swing that an unentered break, under the ruling above, can never produce.
+
 **Status:** Open.

@@ -83,11 +83,12 @@ Assert-Contains $resident '\*\*author it now, from established texture\.\*\*' 'T
 Assert-Contains $resident 'The silence of the record is not a world fact' 'The resident layer does not close the absent-therefore-refuse inference.'
 Assert-Contains $resident 'Where canon states an aggregate and names a fraction, the remainder exists' 'The resident layer does not carry the aggregate test, which is the positive check that replaces a prohibition.'
 
-# The deferral branch must stay available, and must stay expensive. A deferral
-# offered in place of a name is a Decision 082 commitment; F-001 is the record of
-# what happens to those when nothing settles them.
-Assert-Contains $resident 'Defer only when settled state actually withholds the subject' 'The resident layer does not require a settled world fact behind a deferral.'
-Assert-Contains $resident 'a commitment you must then record and settle' 'The resident layer does not carry the cost of deferring, so withholding still reads as the cheap branch.'
+# The deferral branch must stay available, and must stay expensive. Its own
+# governance moved to the resident "World's Answer Is Due" section and is pinned
+# by test_commitment_contract.ps1; duplicating those pins here would be the
+# two-copies-of-one-rule drift this repository keeps paying for. What stays
+# pinned here is the handoff and the Runtime-side consequence.
+Assert-Contains $resident 'Whether to defer at all is governed below' 'The authoring rule no longer hands off to the deferral rule, so the two can drift apart.'
 Assert-Contains $runtime 'creates a pending world-side commitment that must then be recorded and settled' 'The Runtime does not tie an in-fiction deferral to the Data Model Section 7.4 commitment it creates.'
 
 # --- The second site of the same default ------------------------------------

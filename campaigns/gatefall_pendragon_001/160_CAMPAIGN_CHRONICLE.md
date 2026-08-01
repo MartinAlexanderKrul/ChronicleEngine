@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000275
+  source: EVT-000276
   game_date: "2026-08-11 ~09:55 -05:00"
   real_date: "2026-08-01"
 role: canonical ledger
@@ -238,6 +238,7 @@ subjects:
   - EVT-000273
   - EVT-000274
   - EVT-000275
+  - EVT-000276
 ```
 
 ---
@@ -7264,4 +7265,34 @@ description: "Promotion-barrier progression-batch-settlement (Profile Section 7.
 **Temporal settlement.** Anchor advanced **2026-08-11T09:50 → 2026-08-11T09:55 -05:00**, the remainder of the walk plus the opening exchange at the Coalition desk. No Mana or Health change; both held at 80/94 and 196/196 respectively throughout.
 
 **Registry allocation this span:** `ENT-000182` (Reyna Castillo), `EVT-000273`-`EVT-000275`. New high-water marks: **ENT-000182**, **EVT-000275**. No new Relationship identifier minted this span; `REL-000066` received texture updates, not a new object."
+```
+
+## EVT-000276 - Profile Adoption: Gatefall World Rule Profile 1.46, the `/system` Window Redesign
+
+```yaml
+id: EVT-000276
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-11 ~09:55 -05:00"
+  real_date: "2026-08-01"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-11 ~09:55 -05:00"
+participants: []
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.46, a compatibility-treatment advance over frozen 1.45. **No fictional time is consumed, no scene occurs, and no resolved outcome changes.** Alexander is not a participant. He is walking into the Coalition building with Owen at 09:55 both before and after this Event, carrying the same pools, the same gear, the same gold, and the same quests.
+
+**What this is.** 1.46 rewrites Section 15 — how the System renders its windows — and nothing else. The `/system` window is a view of canonical state (Section 14.1), so changing the view changes no state. No number, cost, timer, capability, pool, price, Rank, counter, quest, item, title, or resolved outcome moves, and `system_state` is byte-equivalent across the adoption except for its `profile_version` string.
+
+**Why it exists.** Section 15 was authored against a level-3 Bearer with four skills and five inventory lines, and rendered every section into one window. Alexander is level 13 with eighteen skills, nine worn slots, fourteen live stored lines, and two active quests; the same template produces well over a hundred rows at his depth, most of them wrap-continuations, with an unclaimed reward and a banked antidote at identical weight. The window stopped being readable at the point he most needs to read it.
+
+**What changed.** The command divides into three tiers: bare `/system` renders a one-screen **Console**; `/system <panel>` renders one panel in full; `/system all` renders everything, which is what bare `/system` used to do. A fourth form, `/system <panel> <item>`, renders an entry's complete canonical line including provenance and binding fields no panel column carries. The worn loadout and the dimensional inventory merge into `/system gear`, since Section 12.9 already governed them as one surface — `/system equipment` and `/system inventory` are retained as aliases. Every panel gains an authored template where 1.45 declared focused views and authored none. Stat Passives get their own skills group rather than a second row grammar inside `PASSIVE`; no skill is reclassified. A render grammar (Section 15.1) fixes width, a required spacing law, fixed columns, and a two-glyph status gutter. Rank always renders bracketed — `[E-Rank]` through `[S-Rank]` — never as a bare letter. Cash and pending payouts render beside gold and are never totalled with it, because Section 12.5's no-exchange rule holds and the layout is built to show it.
+
+**What it does not change.** No trigger tier moves; no notification is added, removed, or reworded; Section 14.4's information boundary is untouched. No past render is reissued and no past scene is reread — a `/system` window rendered in a prior session stands as the record of that moment. Nothing reachable under 1.45 became unreachable. Stale Section 15.6/15.7/15.8 citations left in Sections 14.3, 16, and 18 by an earlier renumber are repointed, which corrects a citation and not a rule.
+
+**No engine dependency.** No Persistent Object structure changes and no stored record moves. Data Model 0.1.6 is unchanged. Migration record: `worlds/gatefall/migrations/1.45_to_1.46.md`."
 ```

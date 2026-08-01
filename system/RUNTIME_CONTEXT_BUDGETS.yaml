@@ -24,7 +24,14 @@ surfaces:
     # The prior 3,453 had also drifted +813 before any of it, which is the
     # argument for re-recording on every deliberate change rather than only when
     # a ceiling is hit.
-    baseline_tokens: 5819
+    # Re-recorded again 2026-08-01 for "The World's Answer Is Due In The Scene
+    # That Asks" (1.18), which replaced the promise section rather than joining
+    # it: a whole new governing rule for +92 net, because the F-008 tail that
+    # duplicated it was cut to a handoff. At 5,911 the card has 89 tokens of
+    # headroom and is effectively full. The next rule cannot be appended at all
+    # -- it displaces something, or the 6,000 warning moves on a deliberate
+    # ruling with the readiness surfaces re-measured behind it.
+    baseline_tokens: 5911
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true
@@ -68,32 +75,49 @@ surfaces:
     # failure and will breach it on ordinary play, not on engine work. Trimming
     # it is authoring and belongs to the owner (Recommendation R14).
     baseline_tokens_by_campaign:
-      gatefall_pendragon_001: 28357
-      prototype_alpha: 8983
-      prototype_beta: 9496
-      reikon_awakening_001: 13308
+      gatefall_pendragon_001: 28448
+      prototype_alpha: 9075
+      prototype_beta: 9588
+      reikon_awakening_001: 13399
     include_resident: true
     derive_operation: continue
 
   fetched_operation:
     # 12,000 governs a single fetched rules operation, which is what
-    # Recommendation R1 sized this for. Gatefall's bare `/system` is a different
-    # thing: Profile Section 15.1 renders the whole Bearer at once by design, so
-    # it is governed by its own baseline and the ratchet rather than by a ceiling
-    # it can never meet. Every focused view sits inside 12,000 with room.
+    # Recommendation R1 sized this for. Three Gatefall surfaces are a different
+    # thing and are governed by their own baseline and the ratchet rather than by
+    # a ceiling they can never meet:
+    #
+    #   `/system`      the Console, which reads the whole Bearer to render a
+    #                  screen of it (Profile Section 15.2);
+    #   `/system gear` the worn loadout and the dimensional inventory, merged into
+    #                  one panel at Profile 1.46 because Section 12.9 governs them
+    #                  as one surface — it inherits the union of the two reads the
+    #                  superseded `/system equipment` and `/system inventory`
+    #                  baselines used to carry separately;
+    #   `/system all`  every panel by definition, so the union of every read.
+    #
+    # Every other focused panel sits inside 12,000 with room. `/system skills`
+    # grew at 1.46 because Section 15.3.1 authored a render template where 1.45
+    # declared a focused view and authored none; the baseline is re-recorded
+    # against the authored section, not against the absence of one.
     warning_tokens: 12000
     failure_tokens: 12000
     growth_allowance_percent: 15
     exempt_from_failure_ceiling:
       - gatefall_pendragon_001:/system
+      - gatefall_pendragon_001:/system gear
+      - gatefall_pendragon_001:/system all
     baseline_tokens_by_operation:
       gatefall_pendragon_001:save: 2486
       gatefall_pendragon_001:/system: 22904
-      gatefall_pendragon_001:/system skills: 3216
+      gatefall_pendragon_001:/system skills: 5233
       gatefall_pendragon_001:/system shop: 6421
       gatefall_pendragon_001:/system quests: 2315
-      gatefall_pendragon_001:/system equipment: 1061
-      gatefall_pendragon_001:/system inventory: 11302
+      gatefall_pendragon_001:/system gear: 18851
+      gatefall_pendragon_001:/system titles: 460
+      gatefall_pendragon_001:/system log: 9498
+      gatefall_pendragon_001:/system all: 19443
       reikon_awakening_001:/system: 8985
     subdivision_message: fetched operation requires a narrower selector
 

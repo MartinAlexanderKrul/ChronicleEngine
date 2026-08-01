@@ -9,7 +9,7 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.45"
+world_rule_profile: "Gatefall World Rule Profile 1.46"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
@@ -114,7 +114,7 @@ required_sources:
   - campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 diegetic_commands:
   /system:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#151-system-the-full-system-window
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-system-the-console
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
       - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
@@ -139,7 +139,7 @@ diegetic_commands:
       - canonical_state.system_state.daily_premium
     render_policy: exact-template-only
   /system skills:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1531-system-skills
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     protagonist_fields:
@@ -151,7 +151,7 @@ diegetic_commands:
       - canonical_state.system_state.system_rank
     render_policy: exact-template-only
   /system shop:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1535-system-shop
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     protagonist_fields:
@@ -162,7 +162,7 @@ diegetic_commands:
       - canonical_state.system_state.skills_known
     render_policy: exact-template-only
   /system quests:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1533-system-quests
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     protagonist_fields:
@@ -170,23 +170,45 @@ diegetic_commands:
       - canonical_state.system_state.non_daily_quests
       - canonical_state.system_state.pending_rewards
     render_policy: exact-template-only
-  /system equipment:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels
-    required_live_reads:
-      - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
-    protagonist_fields:
-      - canonical_state.system_state.equipment
-      - canonical_state.system_state.stats
-      - canonical_state.system_state.effective_stats
-    render_policy: exact-template-only
-  /system inventory:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-focused-views-and-interactive-panels
+  /system gear:
+    aliases:
+      - /system equipment
+      - /system inventory
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1532-system-gear
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
       - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
     protagonist_fields:
-      - canonical_state.system_state.gold
       - canonical_state.system_state.equipment
+      - canonical_state.system_state.shop_holdings
+      - canonical_state.system_state.stats
+      - canonical_state.system_state.effective_stats
+      - canonical_state.system_state.skills_known
+      - canonical_state.system_state.gold
+    render_policy: exact-template-only
+  /system titles:
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1534-system-titles
+    required_live_reads:
+      - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+    protagonist_fields:
+      - canonical_state.system_state.title
+    render_policy: exact-template-only
+  /system log:
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1536-system-log
+    required_live_reads:
+      - campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
+    protagonist_fields:
+      - canonical_state.system_state.daily_quest
+      - canonical_state.system_state.non_daily_quests
+    render_policy: exact-template-only
+  /system all:
+    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#154-system-all
+    required_live_reads:
+      - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+      - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
+      - campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
+    protagonist_fields:
+      - canonical_state.system_state
     render_policy: exact-template-only
 validation:
   require_confirmation_before_mutation: true

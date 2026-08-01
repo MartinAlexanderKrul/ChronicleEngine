@@ -1,8 +1,8 @@
 # Gatefall World — Usage Guide
 
 **World Status:** Complete and playable
-**Version:** 0.1 (World Rule Profile 1.45)
-**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.6; Gatefall World Rule Profile 1.45
+**Version:** 0.1 (World Rule Profile 1.46)
+**Engine Compatibility:** Chronicle Engine 0.2.0; Data Model 0.1.6; Gatefall World Rule Profile 1.46
 **Created:** 2026-07-22
 
 ---
@@ -70,15 +70,18 @@ The world is original throughout — original names, characters, institutions, a
 
 Gatefall declares **`/system`** as its diegetic command — the profile (Section 15) is the governing source for every panel's exact template and content. `/system` and its panels are read-only views of canonical state, rendered identically by every Runtime from the same underlying numbers, never invented at the table:
 
-- `/system` — the full window: name, level, class, title, XP, Health/Mana, base + equipment = effective stats, loadout, inventory, quests, skills, and gold
+- `/system` — the **Console**: one screen with name, level, Card and System Rank, class, title, condition, Health/Mana/XP bars, base + gear = effective stats, unclaimed rewards, active quests, funds, and a counted index naming the panel that holds each remaining body of detail
 - `/system quests` — active daily, urgent, and hidden quests with objectives, rewards, and deadlines
-- `/system skills` — known skills with Rank, Mana cost, effect, successful-use total, and mastery progress
-- `/system equipment` — the nine-slot loadout, complete item lines, effective stats, and total armor reduction
-- `/system inventory` — dimensional storage contents with complete item lines, not Rank-only labels
+- `/system skills` — known skills in three groups (active, passive, stat passive) with Rank, Mana cost, effect, mastery, and progress to the next level
+- `/system gear` — the worn nine-slot loadout **and** dimensional storage in one panel: complete item lines, derived stat contribution and total armor reduction, stored holdings grouped by kind, and gold, cash, and pending payouts. `/system equipment` and `/system inventory` are retained aliases and render this panel
 - `/system shop` — fixed Weapons, Armor, Accessories, Consumables, Runes, Keys, and Sell tabs at the protagonist's unlocked Ranks, plus six quantity-one System-exclusive Daily Premium offers rotating every morning at 06:00; each Rank-bearing premium offer rolls independently and can exceed the protagonist's System Rank, then costs 125% of its ordinary same-Rank category anchor — shopping happens in-window, never as an out-of-character question
 - `/system titles` — earned titles and their passives; one equipped at a time
 - `/system log` — the last System messages, replayed from the authored templates
+- `/system all` — the Console followed by every panel in sequence: the whole of the protagonist at once
+- `/system <panel> <item>` — one entry's complete canonical line, including provenance and binding fields no panel column carries
 - **A class panel**, once the class quest is completed (`/system shadows`, `/system arsenal`, `/system fragments`, `/system echoes`, or `/system rifts`, depending on the class chosen) — see the profile Section 18
+
+Panels render as framed, fixed-width System windows under the profile's render grammar (Section 15.1): 78 cells, required blank-row spacing, fixed columns with prose on indented continuation rows, a status gutter marking what is actionable (`!`) and what changed since the last checkpoint (`Δ`), and Rank always written `[E-Rank]` through `[S-Rank]`, never as a bare letter.
 
 Between panel calls, ordinary numeric changes render inline as compact notifications (`XP: 40 → 90/300`), per the profile's notification contract. `/system` is *diegetic* — it belongs to Gatefall's fiction and is different from the engine's out-of-character **runtime commands** (`/save`, `/continue`, `/new`, `/end`, `/status`, and the rest), which work the same in every world. See `docs/GAMEPLAY_START_GUIDE.md` for the full runtime command list.
 

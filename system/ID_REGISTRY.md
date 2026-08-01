@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000182 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000275 |
+| Event | `EVT-` | Event | EVT-000276 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -415,6 +415,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000273 | Event | Gatefall: Pendragon: at the Coalition desk, Alexander pitches Kesha Morrison on founding a new C-Rank-floor crew with Owen as eventual command; Kesha reviews the sponsor/command mechanics, agrees to help staff it, and names Reyna Castillo as a real, currently-crewless C-Rank candidate whose prior crew broke apart after a bad D-Rank pull six weeks ago; declines to help with active "poaching" of crewed hunters and draws the line at people already between crews; institution ledger authored fixing the Coalition's own Rank distribution (420 registered freelancers, C-Rank as the practical ceiling, 22 C-Rank total) |
 | EVT-000274 | Event | Gatefall: Pendragon: walking to the Coalition, Owen names his own reflex to deflect under a serious question, answers plainly instead ("I want this, and it terrifies me"), and — caught making the conversation about himself again — turns the question back to ask how Alexander is actually doing; relationship texture recorded to `REL-000066` |
 | EVT-000275 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement closing the `EVT-000273`-`EVT-000274` span, explicit `none` for `gatefall.skill_formation`, temporal anchor advanced to 2026-08-11 ~09:55 |
+| EVT-000276 | Event | Gatefall: adoption of World Rule Profile 1.46 - the `/system` window redesign: three command tiers (Console, focused panel, `all`), an authored template for every panel, `/system equipment` and `/system inventory` merged into `/system gear` with both retained as aliases, a third `STAT PASSIVE` skills group, cash and pending payouts rendered beside gold and never totalled with it, bracketed `[E-Rank]` Rank rendering, and a fixed render grammar; no fictional time, no scene, no stored value changed |
 
 ---
 

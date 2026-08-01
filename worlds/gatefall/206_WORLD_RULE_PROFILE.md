@@ -1,12 +1,12 @@
-# Gatefall — World Rule Profile 1.45
+# Gatefall — World Rule Profile 1.46
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.45
+**Profile Version:** 1.46
 **Engine Compatibility:** 0.2.0; Data Model 0.1.6
 **Status:** Active
-**Compatibility Status:** frozen at version 1.45 (Rules Section 14.6, Decision 074), declared on repository date 2026-07-31. Version 1.45 changes **no rule a character could notice**: no number, cost, timer, capability, or resolved outcome moves. It declares one thing, and that thing is about how this world's Events are written down rather than what happens in them — Gatefall opts into the Data Model Section 2.4 `participation_audits` block (Decision 085), naming a prospective baseline of `EVT-000268` and twelve fiction-bearing Event kinds as its coverage set. Within coverage, every Character an Event names in its own `participants` needs a recorded result: `record-updated` naming the object the promotion moved, or an explicit `no-change`. Administrative kinds are deliberately outside it. Nothing is backfilled — the 217 Events already written acquire no obligation — and the cost is prospective, falling on the writer of the next covered Event. **Data Model 0.1.5 → 0.1.6** accompanies this adoption engine-side; the block is additive and optional, and immutable checkpoints keep their captured schema. *(1.44 made the Section 9.10 tracked board dispatchable through a `gatefall.board.deadline` domain under Decision 084; 1.43 authored the first exception to Section 2, a stat elixir spent on another awakened; 1.42 put a D-Rank floor under Section 13.6's signature abilities.)*
+**Compatibility Status:** frozen at version 1.46 (Rules Section 14.6, Decision 074), declared on repository date 2026-08-01. Version 1.46 changes **no rule a character could notice** either: no number, cost, timer, capability, pool, price, or resolved outcome moves, and no stored value is touched. It rewrites **Section 15** — how the System's windows are laid out and how the command is divided. `/system` now renders a one-screen **Console** rather than one exhaustive window; every panel gains an authored template where Section 15.2 previously declared focused views and authored none; the worn loadout and the dimensional inventory merge into a single **`/system gear`** panel (Section 12.9 already governed them as one surface), with `/system equipment` and `/system inventory` retained as aliases; **`/system all`** is added for the exhaustive read; Stat Passives get their own skills group instead of a second row grammar inside `PASSIVE`; the Console and `/system gear` show **cash and pending payouts** beside gold, never totalled with it; **Rank always renders bracketed** (`[E-Rank]`), never as a bare letter; and a new **render grammar** (Section 15.1) fixes width, spacing, columns, and a two-glyph status gutter. Every fact reachable under 1.45 remains reachable, and the stale Section 15.6/15.7/15.8 cross-references left by an earlier renumber are repointed. *(1.45 opted Gatefall into the Data Model Section 2.4 `participation_audits` block under Decision 085, with a prospective `EVT-000268` baseline and twelve fiction-bearing Event kinds as its coverage set, and carried **Data Model 0.1.5 → 0.1.6** engine-side; 1.44 made the Section 9.10 tracked board dispatchable through a `gatefall.board.deadline` domain under Decision 084; 1.43 authored the first exception to Section 2, a stat elixir spent on another awakened; 1.42 put a D-Rank floor under Section 13.6's signature abilities.)*
 
 **Version history and migrations.** Every transformation from Profile 1.1 forward to the active version lives in `worlds/gatefall/migrations/`, one authoritative record per edge, declared by `worlds/gatefall/migrations/INDEX.md`. Restoring a capture taken under Profile *V* runs each record from *V* forward to the active version in order and reads no other migration text; a current rule lookup reads none of them. Immutable checkpoints are never rewritten by a migration — the chain applies to mutable live state. Where a migration record and this profile disagree about present law, this profile governs: a migration record describes a transformation, not a standing rule.
 
@@ -986,7 +986,7 @@ Under Data Model 0.1.5, the Bearer's structured `tracked_counters` entries are t
   - a **modifier-step or utility** skill — already capped at +1 step (Section 4.3) — instead **lengthens**, its effect covering one further exchange per level and reaching the **whole scene at Master**, or widening to one stated additional target. A skill whose authored effect **already covers the whole scene at Novice** has no duration left to gain; its mastery track instead widens **scope**, adding one further affected subject or ally per level — **1 / 2 / 3 / 4 / 5** beneficiaries from Novice through Master, on the pattern already used by Exploit Pattern, Field Command, and Resonance Extraction. This ladder is **mastery's** contribution to the count. Rank adds its own further subject and its category grant per Rank under Section 7.2, and the two contributions **add** rather than substitute; the Section 7.2 ratchet keeps the total from falling on ascension. **Mastery never shortens an authored effect.** Where this ladder and a skill's authored Section 7.3 entry disagree, the authored entry governs.
 - **Mana cost**, **−10% per level** (rounded, minimum 1): a 5-cost skill runs 5 → **3 at Master**; passive skills stay 0.
 
-**Rendering.** The focused `/system skills` view carries mastery and counters: `Mana Bolt [E-Rank] ★★★★☆ · MANA 4 · Uses 17 · Progress 2/3 · ×1.45` (Expert, two qualifying scenes toward Master). The full window may wrap the counters onto an indented continuation row to preserve its fixed width. A Stat Passive renders `Flux Sight [D-Rank] · Stat Passive · Reads monsters — Rank, Health, Mana` followed by `Uses 0 · Perception 38 · C-Rank at 44`. It has no stars or `Progress` field. Every displayed Rank is derived from Section 4.4 and never independently stored.
+**Rendering.** The focused `/system skills` panel (Section 15.3.1) carries mastery in its own column — the five-cell star string followed by its level name — with the Mana cost under `MANA` and qualifying-scene progress under `NEXT` as `<n> / 3`. Cumulative successful-use counts are canonical but reached through `/system skills <name>`, not the panel's columns. A Stat Passive renders in its own `STAT PASSIVE` group, carrying its driving Stat, that Stat's current value, its use count, and the next rung's threshold; it has no stars and no mastery progress. Every displayed Rank is derived from Section 4.4, renders bracketed as `[<Rank>]`, and is never independently stored.
 
 Mastery raises a skill's power directly; it raises the skill's **Rank** only by carrying it to Master and opening the breakthrough route of Section 7.5. A mastered E-Rank Mana Bolt is still an E-Rank skill until it ascends — just a lethal one. Rank reflects the tier the technique is inscribed at; mastery reflects the hands that carry it. The two are separate axes that feed each other.
 
@@ -1222,7 +1222,7 @@ When the authored reveal condition is met, the same record changes in place and 
 
 Accepted Urgent quests and attached Hidden quests update their counters from resolved fiction, never from narrative convenience. Completion and failure are Tier-1 state reactions once their stored condition becomes true (Section 14.3). A quest cannot complete from conduct that occurred before its offer was accepted or pointer attached.
 
-`/system` and `/system quests` render `Non-Daily Slots <used>/<capacity>` first, then active quests in this order: Daily, Urgent by deadline, Hidden by attachment time, Class/evolution. Urgent rows always show objective progress, fixed XP, and deadline. An unrevealed Hidden row shows only `[HIDDEN] ???`; its reward and deadline remain `???` even though canonical state holds them. Completed, failed, expired, declined, and abandoned quests leave the active panel immediately and remain available only through `/system log`.
+`/system quests` renders `Non-Daily Slots <used> / <capacity>` first and the Console carries the same figure in its `QUESTS` rule (Section 15.2); both then render active quests in this order: Daily, Urgent by deadline, Hidden by attachment time, Class/evolution. Urgent rows always show objective progress, fixed XP, and deadline. An unrevealed Hidden row shows only `[HIDDEN] ???`; its reward and deadline remain `???` even though canonical state holds them. Completed, failed, expired, declined, and abandoned quests leave the active panel immediately and remain available only through `/system log`.
 
 ### 8.4.5 Concealed-Canon Supply and the Promotion Ritual
 
@@ -2061,7 +2061,7 @@ The Bearer's inventory is not a backpack — it is a **pocket dimension**, a pri
 - **Store and withdraw anywhere, instantly, as a free action.** He may send an item to the inventory or call one **to his own hand** from anywhere — a street, a Gate interior, mid-sentence, mid-fight — with a thought. Without a named skill, withdrawal has no other destination and imparts no remote motion: an item cannot be summoned beside, behind, above, or inside a target, and cannot be launched directly from the pocket dimension. Drawing a blade from nothing to meet an attack is a legitimate action the die still resolves for its outcome, but the *hand-delivery itself* costs no action and no Mana. Dimensional Projection (Section 7.2) is the authored earned technique that can extend this property to bounded remote deployment and launch. This is a real tactical edge: he is never disarmed, never out of potions he owns, never caught with the wrong tool.
 - **Equip and swap.** Outside an exchange, any number of slots may be rearranged instantly. During an exchange, the Bearer may change **one item** as a free System operation; putting away one weapon and calling another into the same slot is one change. A two-handed item changes both hand slots as one item. Changing armor under immediate attack does not erase an attack already resolved against the prior loadout. The equipment state used for a roll and its damage is the state established before that roll.
 - **Private and secure.** What is in the pocket dimension cannot be seen, searched, stolen, or confiscated — it is not on his person to find. A licensed inspection, a mugging, a pat-down at a cordon reaches nothing. This is a standing advantage and a standing exposure risk (Section 19): an item summoned from empty air in front of witnesses is as much a giveaway as a status window, because no ordinary hunter can do it.
-- **What it holds.** **Inanimate physical objects** — gear, weapons, armor, consumables, crystals, cores, runes, books, keys, ordinary possessions. It does **not** hold living things (no creature, no person, no plant kept alive), and it is not a bank: **USD/CZK is mundane wallet-and-account money, never a System good** (Section 15, the `/system inventory` panel). System **gold** is likewise not "in" the inventory — it is the shop's internal currency (Section 12.5), shown as a balance, spent only in-window.
+- **What it holds.** **Inanimate physical objects** — gear, weapons, armor, consumables, crystals, cores, runes, books, keys, ordinary possessions. It does **not** hold living things (no creature, no person, no plant kept alive), and it is not a bank: **USD/CZK is mundane wallet-and-account money, never a System good** (Section 15, the `/system gear` panel, where cash renders beside gold and never totals with it). System **gold** is likewise not "in" the inventory — it is the shop's internal currency (Section 12.5), shown as a balance, spent only in-window.
 - **Capacity.** No practical limit constrains a campaign — the pocket dimension holds what the Bearer puts in it. (There is no encumbrance subsystem to track; "he stored it" is the whole rule.)
 
 The inventory is read live and shown by the `/system` window (Section 15); loot enters it on pickup, shop purchases deposit into it, and shop sales withdraw from it. The Bearer interacts with the world's economy exactly as Sections 11–12 describe — he simply never has to carry the goods to do it.
@@ -2294,11 +2294,11 @@ participation_coverage:
 - **Tier 1 — Mandatory (unprompted; a pure function of state the System already holds).** Fires the instant the condition holds, with zero discretion:
   - Mana, Health, or XP changes → the matching compact line (Section 14.5);
   - an XP threshold is crossed → first settle every Section 3.2 reward immediately, then show the `LEVEL UP` block (worked example in Section 3.7); never render an acceptance prompt;
-  - the daily quest is issued, completed, or failed → its block (Section 8.1, Section 15.7);
+  - the daily quest is issued, completed, or failed → its block (Section 8.1, Section 14.5);
   - an accepted Urgent quest or attached Hidden quest completes, fails, expires, or reveals → its stored quest-state block (Section 8.4);
   - 06:00 local time arrives → the Daily Premium stock rotates and its compact line fires (Section 12.5);
-  - the daily window lapses incomplete → the penalty warning, then the transfer notice (Section 15.7);
-  - a title is earned → the `TITLE EARNED` block (Section 15.7);
+  - the daily window lapses incomplete → the penalty warning, then the transfer notice (Section 14.5);
+  - a title is earned → the `TITLE EARNED` block (Section 14.5);
   - a pool crosses a declared danger threshold (e.g., 0 Mana, Section 5.3) → a warning;
   - a creature of resolved Rank (Section 14.4) enters the Bearer's perception → its **designation color** renders inline, red and pulsing for a creature two or more Ranks above him — the System's only unprompted tactical warning (Section 14.6).
 - **Tier 2 — Mandatory at the first qualifying yield (bounded presentation discretion; a declared precondition must hold).** Appraisal when an unidentified item enters perception and Flux Sight is B-Rank or higher (Section 4.4); a Hidden pointer when every Section 8.4.3 precondition is recorded; an Urgent offer when every Section 8.4.2 precondition holds; a danger warning while the condition holds. The Runtime chooses phrasing, not whether to fire or how long to delay after the applicable boundary.
@@ -2352,7 +2352,7 @@ The System's **first contact** with a new Bearer is a fixed message sequence —
 **Onset timing (owner ruling, 2026-07-24).** The incident is a campaign concern; its **pacing is not**. The System attaches within the campaign's opening arc and **no later than the resolution of the protagonist's first genuine fight** — the first scene in which he faces lethal, uncertain combat. The precipitating incident must still arise causally from the fiction in play — a brush with death is the classic crucible; what this ruling bounds is *when*, not *why*. A campaign that resolves its first real fight with the protagonist still bare of the System is out of law. This binds every Gatefall campaign, including any in progress at the time of the ruling.
 
 1. **Attachment notice** — the initializing handshake and host designation, fired the instant the System attaches.
-2. **Status-window grant** — the STATUS panel (Section 15.1) is granted and rendered once, opening at level 1 with the creation-array Stats and the Health/Mana maxima derived from its Vitality and Intelligence.
+2. **Status-window grant** — the Console (Section 15.2) is granted and rendered once, opening at level 1 with the creation-array Stats and the Health/Mana maxima derived from its Vitality and Intelligence.
 3. **First Daily Premium cycle** — initialize Section 12.5's five model bags, make its twelve real draws, and fire the rotation line; this is the current 06:00-to-06:00 cycle, not an extra cycle. Rune duplicate handling occurs only if the Bearer later consumes the fixed offer (Section 7.1).
 4. **First daily quest** — the standing daily quest (Section 8.1) issues at the **next 06:00 local** after attachment. It expires at the immediately following local midnight; later quests repeat on the same 06:00-to-00:00 calendar-day schedule.
 
@@ -2388,165 +2388,538 @@ Every value is read from creation state (Sections 3–6): level 1, XP 0/100, `He
 
 Gatefall declares **`/system`** as its diegetic command. Its panels are **read-only views of canonical Bearer state** (Section 14.1): nothing is editable through them, every value is read or derived from canonical state and never invented at render (Decision 051), and the same state renders the same panel from any Runtime. Inline compact notifications (Section 14.5) remain the in-play surface between panel calls.
 
-**The panels render as framed System windows.** Each template below is normative — a Runtime fills the `<…>` slots from state and changes nothing else — but the *presentation* is a proper window, not a bare line list, rendered in a monospaced code block so it holds its shape. The house frame:
+**The command has three tiers, and no other.**
 
-- A **box frame** in light box-drawing (`╔ ═ ╗ ║ ╚ ╝`, inner rules `╟ ─ ╢`) around every panel; the panel's title sits in the top border: `╔═ ◈ SYSTEM · STATUS ═…═╗`.
-- **Pools render as bars** — a 20-cell meter, `█` filled proportional to `current/max` and `░` empty, with the numbers beside it: `HP  ████████████████░░░░  31/40`. XP uses the same bar against its next-level threshold.
-- **Sections are separated by inner rules**; labels are left-aligned and values align in columns.
-- The **numbers are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer by design, and only he sees this window.
-- The Runtime **fits the frame width to the widest line** and pads the right border to align; the exact width is presentation, the structure and every value are canonical.
+- Bare **`/system`** renders the **Console** (Section 15.2) — one screen carrying everything that moves turn to turn, plus a counted index of everything that does not.
+- **`/system <panel>`** renders one panel in full (Section 15.3): `skills`, `gear`, `quests`, `titles`, `shop`, `log`, and the class panel once one exists. `/system equipment` and `/system inventory` are **retained aliases of `/system gear`** and render exactly that panel.
+- **`/system all`** renders every panel in sequence (Section 15.4) — the whole of the Bearer at once, for a Bearer who wants it.
 
-Bare **`/system`** always renders the **full window** — every section (identity, vitals, stats, quests, skills, titles, equipment, inventory, gold) inside one framed window (Section 15.1). Focused single-section views and the interactive shop/titles panels remain available as `/system <section>` (Section 15.2), but the default is the whole of the Bearer at once.
+A tier never shows less truth than another: the Console defers detail to a panel and says where it went, and nothing reachable under Profile 1.45 became unreachable. **A panel is not a summary of canonical state — it is a view of it.** Where a panel's row would require a value canonical state does not hold, the row renders `—` and nothing is inferred to fill it.
 
-**One example Bearer runs through every base panel.** Call him **Ren** — an illustration only, not a canon character: a level-3, E-Rank Bearer with no class yet. His creation array was Strength 9 · Agility 11 · Vitality 10 · Perception 10 · Intelligence 10. Two immediate level-ups made the current base Stats Strength 11 · Agility 13 · Vitality 12 · Perception 12 · Intelligence 12; an equipped E-Rank Quickknife grants Agility +2 and weapon power 2, making effective Agility 15. He is at XP 150/300, Health 39/48, Mana 18/24, has 10 unspent level-up points, and holds the skills and inventory shown below. One completed daily has all three rewards pending separately.
+**One example Bearer runs through every panel.** Call him **Ren** — an illustration only, not a canon character — shown at two depths so the grammar is exercised both sparse and dense. **Ren at level 3:** an E-Rank Bearer with no class, creation array Strength 9 · Agility 11 · Vitality 10 · Perception 10 · Intelligence 10, two level-ups bringing base Stats to 11 · 13 · 12 · 12 · 12, an equipped E-Rank Quickknife granting Agility +2 and weapon power 2, XP 150/300, Health 39/48, Mana 18/24, 10 unspent points, and one completed daily whose three rewards are pending separately. **Ren at level 13:** D-Rank, still classless, base Stats 30 · 40 · 34 · 33 · 33, worn gear contributing Strength +1 · Agility +5 · Vitality +2, so effective Vitality 36 and effective Intelligence 33 give Health 144 and Mana 66 under Sections 6.1 and 5.1.
 
-## 15.1 `/system` — the Full System Window
+## 15.1 Render Grammar
 
-Bare **`/system`** always renders the **entire System window**: identity, vitals, stats, active quests, known skills, earned titles, equipment, inventory, and gold — every section stacked inside one framed window, divided by labeled section rules. There is no partial default; the Bearer sees his whole state at once, the way the window hangs in his vision.
+Every panel is a **framed System window rendered in a monospaced code block**. The templates in Sections 15.2–15.4 are normative: a Runtime fills the `<…>` slots from canonical state and changes nothing else. This section governs the frame those templates are rendered into, and it governs every panel identically.
 
-```text
-╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════════════════════════╗
-║  <NAME>                      Card <Rank> · System Rank <Rank>            ║
-║  Level <L>                   Class <class or —>                          ║
-║  XP <current>/<next>         Title <title or —>                          ║
-╟─ VITALS ─────────────────────────────────────────────────────────────────╢
-║  HP  <20-cell bar>  <current> / <maximum>                                ║
-║  MP  <20-cell bar>  <current> / <maximum>                                ║
-║  XP  <20-cell bar>  <current> / <next>                                   ║
-╟─ STATS ──────────────────────────────────────────────────────────────────╢
-║  Strength      <base> (+<gear>) = <effective>                            ║
-║  Agility       <base> (+<gear>) = <effective>                            ║
-║  Vitality      <base> (+<gear>) = <effective>                            ║
-║  Perception    <base> (+<gear>) = <effective>                            ║
-║  Intelligence  <base> (+<gear>) = <effective>                            ║
-║  Unspent Points  ● <n>                                                   ║
-║  Pending Rewards  <none or reward list>                                  ║
-╟─ QUESTS ─────────────────────────────────────────────────────────────────╢
-║  Non-Daily Slots <used>/<capacity>                                       ║
-║  [<type>] <quest name> · <status/streak>                                 ║
-║    <objective progress>                                                  ║
-║    <objective progress or local deadline>                                ║
-╟─ SKILLS · ACTIVE ────────────────────────────────────────────────────────╢
-║  <name> [Rank] <★ mastery> · MANA <n> · <effect>                         ║
-║    <DMG line when the skill directly damages>                            ║
-║    Uses <n> · Progress <n>/3                                             ║
-╟─ SKILLS · PASSIVE ───────────────────────────────────────────────────────╢
-║  <name> [Rank] <★ mastery if tracked> · Passive · <effect>               ║
-║    Uses <n> · Progress <n>/3 or —                                        ║
-╟─ TITLES · Equipped: <title or none> ─────────────────────────────────────╢
-║  <★ equipped title or earned title · effect>                             ║
-╟─ EQUIPMENT ──────────────────────────────────────────────────────────────╢
-║  <slot>   <item name> [Rank]                                             ║
-║           <bonuses · power/protection · effect · condition>              ║
-║           <DMG line when the equipped item is a weapon>                  ║
-║  Acc.1    <item or —>                                                    ║
-║  Acc.2    <item or —>                                                    ║
-║  Physical Reduction  <derived total>                                     ║
-╟─ INVENTORY ──────────────────────────────────────────────────────────────╢
-║  <one item name [Rank] per line>                                         ║
-║           <stats/effect/condition on an indented continuation>           ║
-╟─ SHOP ───────────────────────────────────────────────────────────────────╢
-║  Gold <n> g · /system shop to trade                                      ║
-║  Daily Premium <available>/6 · Rotates <deadline>                        ║
-╚══════════════════════════════════════════════════════════════════════════╝
-```
+**The frame.** A box in heavy box-drawing (`╔ ═ ╗ ║ ╚ ╝`) with inner section rules (`╟ ─ ╢`). The panel's title sits in the top border: `╔══ ◈  S Y S T E M  ·  <PANEL> ══…══╗`. A section rule carries its section name at the left and may carry one right-aligned count or status: `╟──  ACTIVE  ──…──  9 known  ──╢`.
 
-Ren, mid-run, carrying one completed daily's separate rewards:
+**Width is fixed at 78 cells** — 76 interior between the two edge characters. The Runtime pads every short row to the right edge and never allows content past it. It **never truncates**: a value too long for its row wraps onto an indented continuation row beneath its own label, at the label's indentation.
+
+**Spacing is structural, not decorative, and is required.** A window that omits it is misrendered:
+
+- one blank interior row directly below the top border and directly above the bottom border;
+- one blank interior row above and below every inner section rule;
+- one blank interior row between a column header and its first data row;
+- one blank interior row between consecutive entries that carry continuation rows;
+- **no** blank row between consecutive single-row entries in the same group.
+
+**The gutter.** The interior's first five cells are a status gutter. An ordinary row begins at interior column 6. A marked row places its glyph at interior column 3. There are exactly two glyphs, and a row carries at most one:
+
+- **`!`** — actionable now: an unclaimed reward, an unspent point, a live deadline, a quest the Bearer can still complete today.
+- **`Δ`** — changed since the campaign's most recent promoted checkpoint. The comparison is against stored checkpoint state, so the mark is derived and canonical, never remembered.
+
+**Columns.** Where a group's entries share a shape, the group renders as a table: a header row naming each column, then one row per entry with values landing on fixed columns. Numeric columns align on their digits. Prose never shares a row with tabular values — an entry's effect, limits, and condition go on **indented continuation rows** beneath it, at interior column 10.
+
+**Rank always renders bracketed and suffixed** — `[E-Rank]`, `[D-Rank]`, `[C-Rank]`, `[B-Rank]`, `[A-Rank]`, `[S-Rank]` — in every panel, every column, and every continuation row, including a Stat Passive's next rung and a Card or System Rank on the Console. **A bare letter is never rendered.** The bracketed form is the same one item lines and skill lines already use throughout this profile, so a Rank reads identically wherever it appears.
+
+**Bars.** `HP`, `MP`, and `XP` render as 20-cell meters, `█` filled proportional to `current/max` and `░` empty, with the numbers beside them. XP measures against its next-level threshold (Section 3.1).
+
+**Fixed label vocabulary.** `Card Rank`, `System Rank`, `Physical Reduction`, `Unspent Points`, `Stat Contribution`, `Non-Daily Slots`, `Acc.1`, `Acc.2`, `Main`, `Off`. A label is never shortened differently in another panel.
+
+**Mana is never abbreviated** (owner ruling, 2026-07-30, Section 20.3). The skills table carries a column headed `MANA` with the cost beneath it; the word appears in full, and `M<n>` remains forbidden. A costless ordinary skill renders under `PASSIVE`, where the column does not exist.
+
+**An empty group still renders**, with its header and `none` on the following row. A fresh Bearer's window has the same shape as a level-50 Bearer's — sections do not appear and disappear, so the Bearer always sees the whole of himself.
+
+**Every value is read live from canonical state** (Section 14.1): quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, worn slots and stored holdings from Section 12.9, gold from the shop balance, cash and pending payouts from the campaign's ownership ledger. Effective Stats, physical reduction, and every damage preview are **derived at render** from those reads. Nothing is invented, and nothing is carried forward from a previous render.
+
+**Disposed holdings never render.** A stored line whose quantity is zero, or whose canonical entry records it as sold, consumed, given away, or lost, is ledger history and is absent from every panel.
+
+**Damage previews use Section 6.2, never stored prose.** Every equipped damaging weapon and every known offensive active skill renders `DMG <n> standard · before reduction`, derived with the standard `×1` result and zero target reduction. Multi-hit skills render each separately resolved hit in order; when either hand can open, both legal orders render. Non-damaging skills and stored weapons receive no preview.
+
+**The numbers are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer by design, and only he sees these windows.
+
+## 15.2 `/system` — the Console
+
+Bare **`/system`** renders the Console: identity, vitals, stats, unclaimed rewards, active quests, a counted index of every other panel, and funds. It is the default because it is what a Bearer checks between exchanges.
 
 ```text
-╔═ ◈ SYSTEM — FULL STATUS ═════════════════════════════════════════════════╗
-║  REN                         Card E-Rank · System Rank E-Rank            ║
-║  Level 3                     Class —                                     ║
-║  XP 150/300                  Title Lone Clear                            ║
-╟─ VITALS ─────────────────────────────────────────────────────────────────╢
-║  HP  ████████████████░░░░  39 / 48                                       ║
-║  MP  ███████████████░░░░░  18 / 24                                       ║
-║  XP  ██████████░░░░░░░░░░  150 / 300                                     ║
-╟─ STATS ──────────────────────────────────────────────────────────────────╢
-║  Strength      11 (+0) = 11                                              ║
-║  Agility       13 (+2) = 15                                              ║
-║  Vitality      12 (+0) = 12                                              ║
-║  Perception    12 (+0) = 12                                              ║
-║  Intelligence  12 (+0) = 12                                              ║
-║  Unspent Points  ● 10                                                    ║
-║  Pending Rewards  AP +3 · Recovery · Random Box                          ║
-╟─ QUESTS ─────────────────────────────────────────────────────────────────╢
-║  Non-Daily Slots 1/1                                                     ║
-║  [DAILY] Training · Streak 4                                             ║
-║    Push-ups 40/100 · Sit-ups 100/100                                     ║
-║    Squats 20/100 · Run 6/10 km                                           ║
-║    Deadline 00:00 local                                                  ║
-║  [URGENT] Cull the Red Line Nest · 3/4 · +40 XP                          ║
-║    Deadline: crisis ends                                                 ║
-╟─ SKILLS · ACTIVE ────────────────────────────────────────────────────────╢
-║  Mana Bolt [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                   ║
-║    DMG 10 standard · before reduction · Uses 4 · Progress 2/3            ║
-║  Sprint [E-Rank] ★☆☆☆☆ · MANA 3 · +1 Step Movement                       ║
-║    Uses 6 · Progress 2/3                                                 ║
-║  Mend [E-Rank] ★☆☆☆☆ · MANA 5 · Rank Base 10 ×1.0                        ║
-║    Uses 3 · Progress 2/3                                                 ║
-╟─ SKILLS · PASSIVE ───────────────────────────────────────────────────────╢
-║  Dagger Mastery [E-Rank] ★☆☆☆☆ · Passive · Quickknife +0.10              ║
-║    Uses 11 · Progress 1/3                                                ║
-╟─ TITLES · Equipped: Lone Clear ──────────────────────────────────────────╢
-║  ★ Lone Clear · +1 Step While Alone in a Gate                            ║
-║    Untouched · +1 Step Evasion on First Exchange                         ║
-╟─ EQUIPMENT ──────────────────────────────────────────────────────────────╢
-║  Main     Quickknife [E-Rank]                                            ║
-║           Agility +2 · Power 2 · ×0.85 with Dagger Mastery               ║
-║           DMG 11 standard · before reduction                             ║
-║  Off      —                    Head     —                                ║
-║  Torso    —                    Hands    —                                ║
-║  Legs     —                    Feet     —                                ║
-║  Acc.1    —                                                              ║
-║  Acc.2    —                                                              ║
-║  Physical Reduction  0%                                                  ║
-╟─ INVENTORY ──────────────────────────────────────────────────────────────╢
-║  License [E-Rank]                                                        ║
-║  Lesser Healing Potion ×3                                                ║
-║  Dungeon Key [E-Rank]                                                    ║
-║  E-Rank Crystal ×8                                                       ║
-║  E-Rank Core ×2                                                          ║
-╟─ SHOP ───────────────────────────────────────────────────────────────────╢
-║  Gold 340 g · /system shop to trade                                      ║
-║  Daily Premium 6/6 · Rotates in 14h12m                                   ║
-╚══════════════════════════════════════════════════════════════════════════╝
+╔══ ◈  S Y S T E M ══════════════════════════════════════════════════════════╗
+║                                                                            ║
+║     <NAME>                                                                 ║
+║                                                                            ║
+║     Level           <L>                 Class          <class or —>        ║
+║     Card Rank       [<Rank>]            Title          <title or —>        ║
+║     System Rank     [<Rank>]            Condition      <injury or none>    ║
+║                                                                            ║
+╟──  VITALS  ────────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     HP    <20-cell bar>     <current> / <maximum>                          ║
+║                                                                            ║
+║     MP    <20-cell bar>     <current> / <maximum>      <recovery mode>     ║
+║                                                                            ║
+║     XP    <20-cell bar>     <current> / <next>         <n> to Level <L+1>  ║
+║                                                                            ║
+╟──  STATS  ─────────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║                          BASE      GEAR      TOTAL                         ║
+║                                                                            ║
+║     Strength            <base>     <+gear>    <effective>                  ║
+║     Agility             <base>     <+gear>    <effective>                  ║
+║     Vitality            <base>     <+gear>    <effective>                  ║
+║     Perception          <base>     <+gear>    <effective>                  ║
+║     Intelligence        <base>     <+gear>    <effective>                  ║
+║                                                                            ║
+║     Physical Reduction                        <derived>                    ║
+║     Unspent Points                            <n>                          ║
+║                                                                            ║
+╟──  PENDING  ──────────────────────────────────────────────  <n> unclaimed  ╢
+║                                                                            ║
+║  !  <reward name>          <amount>    × <count>                           ║
+║                                                                            ║
+╟──  QUESTS  ──────────────────────────────────  slots  <used> / <capacity>  ╢
+║                                                                            ║
+║  !  [ <TYPE> ]     <quest name>                     <status or streak>     ║
+║                    <objective progress>                                    ║
+║                    <local or causal deadline>                              ║
+║                                                                            ║
+╟──  ELSEWHERE  ─────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Skills          <n> active  <n> passive  <n> stat      /system skills  ║
+║     Gear            <n> worn · <n> stored                  /system gear    ║
+║     Titles          <n> earned · <equipped or none>        /system titles  ║
+║     Daily Premium   <n> / 6 · rotates <deadline>           /system shop    ║
+║                                                                            ║
+╟──  FUNDS  ─────────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Gold            <n> g                                                  ║
+║     Cash            $ <n>          last known                              ║
+║     Pending         $ <n>          <n> payouts                             ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
 ```
 
-- **Bars** are 20-cell meters filled proportionally to `current/max` (Ren: HP approximately four-fifths, MP three-quarters, XP half).
-- **Frame width is fixed:** every rendered row is exactly **76 monospace cells** wide, including its two edge characters; the interior is 74 cells. The Runtime pads short rows, never allows content past the right edge, and uses indented continuation rows rather than truncation. If a name or value still exceeds one row, it wraps beneath its own label at the same indentation.
-- **Labels use title case and fixed abbreviations:** `Unspent Points`, `Pending Rewards`, `Physical Reduction`, `Acc.1`, `Acc.2`, and `Passive`. The same label is never shortened differently elsewhere in the window.
-- **Skills render in two stable groups.** `SKILLS · ACTIVE` contains every skill whose ledger entry carries a Mana cost; `SKILLS · PASSIVE` contains every skill whose cost is `passive`. Preserve character-ledger order inside each group. Never duplicate a skill, infer a third category, or classify from its name or prose effect. Each group renders even when empty, with `none` on the following row.
-- **A skill row names its Mana cost in full: `MANA <n>`, never an `M<n>` abbreviation** (owner ruling, 2026-07-30, Section 20.3). A costless ordinary skill reads `Passive` in the same position. Mastery renders as the five-cell star string of Section 7.4 ahead of the cost, so a full active row is `<name> [Rank] ★☆☆☆☆ · MANA <n> · <effect>` and an ordinary passive row is `<name> [Rank] ★☆☆☆☆ · Passive · <effect>`. The next indented row renders `Uses <n> · Progress <n>/3`. A Stat Passive omits stars and `Progress`, rendering `<name> [Rank] · Stat Passive · <effect>` then `Uses <n> · <Base Stat> <n> · <Next Rank> at <threshold>`. Where the next rung is held by Section 4.4's authoring clamp, the final cell reads `<Next Rank> held: rung unauthored` instead of a threshold, so a Rank the Bearer has already reached in Stat points but cannot yet receive is visible rather than rendered as though it were simply unearned.
-- **Damage previews use Section 6.2, never stored prose.** Every equipped damaging weapon and known offensive active skill renders `DMG <n> standard · before reduction`, derived with the standard `×1` result and zero target reduction. Multi-hit skills render each separately resolved hit in order; when either hand can open, both legal orders render. Non-damaging skills and unequipped inventory weapons receive no preview.
-- **Quest capacity and objectives are explicit.** `Non-Daily Slots <used>/<capacity>` is the first quest row. The quest name and status occupy the next row; objectives, progress, reward, and the local or causal deadline render beneath it with four-space indentation. Unrevealed Hidden quests are the sole exception: they render only `[HIDDEN] ???` until Section 8.4.3 reveals them.
-- **Equipment and long inventory entries separate identity from mechanics.** The slot, item name, and `[Rank]` occupy the first row. Bonuses, power/protection, effects, and condition occupy one or more continuation rows aligned beneath the item name. This rule leaves room for prefixes, suffixes, and durability without widening the frame.
-- **Instructional items render their eligibility from canonical binding.** `/system inventory` and `/system shop` show `UNBOUND · NPC-ELIGIBLE` for `unbound-awakened` instruction and `BEARER-BOUND` for `bearer-only` instruction; a class-bound item shows `CLASS-BOUND · <class>`. The complete item line retains `teaches`, `teaching_rank`, binding, provenance source kind/event, and unused status. When transferred to an NPC, move that complete line to the NPC's holdings without altering binding. On consumption, remove the item from live holdings and record the recipient's learned or upgraded technique plus the settlement event.
-- Every **section** is read live from canonical state (Section 14.1) — quests from the quest log, skills from Section 7.2 ledger entries, titles from Section 16, equipment slots from Section 12.9, inventory from the campaign inventory ledger, and gold from the shop balance. Effective stats and physical reduction are derived from the equipped lines. Nothing is invented at render.
-- **`Pending Rewards`** lists each unclaimed daily Ability Point reward, Status Recovery, and Daily Random Box separately (Section 3.9), and reads `none` when empty. Level-ups never appear here because they settle immediately.
-- The window grows with the Bearer: an empty section still renders its header with `none` beneath it. A fresh Bearer shows both `SKILLS · ACTIVE` and `SKILLS · PASSIVE` with `none`, plus `TITLES` with `none`, so the shape is constant and the Bearer always sees the whole of himself.
-- **Numbers in the window are the diegetic exception of Section 20.5** — the System speaks in figures to its Bearer, and only he sees this window.
+Ren at level 3, mid-run, carrying one completed daily's separate rewards:
 
-## 15.2 Focused Views and Interactive Panels
+```text
+╔══ ◈  S Y S T E M ══════════════════════════════════════════════════════════╗
+║                                                                            ║
+║     REN                                                                    ║
+║                                                                            ║
+║     Level           3                   Class          —                   ║
+║     Card Rank       [E-Rank]            Title          Lone Clear          ║
+║     System Rank     [E-Rank]            Condition      No injury           ║
+║                                                                            ║
+╟──  VITALS  ────────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     HP    ████████████████░░░░      39 / 48                                ║
+║                                                                            ║
+║     MP    ███████████████░░░░░      18 / 24        resting                 ║
+║                                                                            ║
+║     XP    ██████████░░░░░░░░░░     150 / 300       150 to Level 4          ║
+║                                                                            ║
+╟──  STATS  ─────────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║                          BASE      GEAR      TOTAL                         ║
+║                                                                            ║
+║     Strength              11        +0         11                          ║
+║     Agility               13        +2         15                          ║
+║     Vitality              12        +0         12                          ║
+║     Perception            12        +0         12                          ║
+║     Intelligence          12        +0         12                          ║
+║                                                                            ║
+║     Physical Reduction                         0%                          ║
+║     Unspent Points                             10                          ║
+║                                                                            ║
+╟──  PENDING  ────────────────────────────────────────────────  3 unclaimed  ╢
+║                                                                            ║
+║  !  Ability Points        +3    × 1                                        ║
+║  !  Status Recovery             × 1                                        ║
+║  !  Daily Random Box            × 1                                        ║
+║                                                                            ║
+╟──  QUESTS  ────────────────────────────────────────────────  slots  1 / 1  ╢
+║                                                                            ║
+║  !  [ DAILY ]      Training                          streak  4             ║
+║                    Push-ups 40/100 · Sit-ups 100/100                       ║
+║                    Squats 20/100 · Run 6/10 km                             ║
+║                    Deadline 00:00 local                                    ║
+║                                                                            ║
+║  !  [ URGENT ]     Cull the Red Line Nest            3 / 4 · +40 XP        ║
+║                    Deadline: crisis ends                                   ║
+║                                                                            ║
+╟──  ELSEWHERE  ─────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Skills          3 active  1 passive  0 stat            /system skills  ║
+║     Gear            1 worn · 5 stored                      /system gear    ║
+║     Titles          2 earned · Lone Clear                  /system titles  ║
+║     Daily Premium   6 / 6 · rotates in 14h12m              /system shop    ║
+║                                                                            ║
+╟──  FUNDS  ─────────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Gold            340 g                                                  ║
+║     Cash            $ 4,000.00     last known                              ║
+║     Pending         $ 0.00         no payouts                              ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
 
-The full window is the default. A Bearer may still call a **single section** for a closer look or to act on it — `/system quests`, `/system skills`, `/system equipment`, `/system inventory`, `/system titles`, `/system log` — each rendering just that section in its own framed window with the same data. Three of these are **interactive**, not just views:
+- **`PENDING` lists each unclaimed reward separately** — Ability Points, Status Recovery, and Daily Random Box each on their own row with their own count (Section 3.9) — and the whole section renders `none` when empty. Level-ups never appear; they settle immediately.
+- **`QUESTS` carries capacity in its rule** (`slots <used> / <capacity>`) and then the active quests in the Section 8.4.4 order: Daily, Urgent by deadline, Hidden by attachment time, Class. Objectives and deadlines render on continuation rows. An unrevealed Hidden quest renders only `[ HIDDEN ]     ???`.
+- **`ELSEWHERE` is an index, not a summary.** Each row states a count and names the panel holding the detail. It never carries a value that appears nowhere else.
+- **`FUNDS` shows gold and cash on separate rows and never totals them.** They do not exchange (Section 12.5), and the layout says so by offering no conversion. Gold is canonical System state; **cash is labeled `last known`** because the System holds no bank account — it renders what the Bearer knows of his own balance, read from the campaign ownership ledger. `Pending` sums filed-but-unreceived payouts and is never counted as cash on hand.
 
-- **`/system shop`** (Section 12.5) — the trading window: gold balance; BUY tabs for Weapons, Armor, Accessories, Consumables, Runes, and Keys; a **Daily Premium** tab showing its cycle deadline and six quantity-one offers; and a SELL tab for crystals and eligible inventory. Each row renders name, Rank, slot, stat bonus/effect, price, and availability. Buying and selling happen here, in-window, never as an out-of-character question. The **no-exchange rule** (Section 12.5) holds: loot becomes gold only by selling it here, never back to USD.
-- **`/system equipment`** — the nine-slot loadout from Section 12.9. Equipping, unequipping, and swapping happen here or directly by thought in the fiction; the panel always re-renders the five effective stats and total physical reduction after a change.
-- **`/system titles`** — equipping is done here (one equipped at a time, Section 16).
+## 15.3 Focused Panels
 
-A focused view never shows less truth than the full window; it is the same canonical read, framed alone.
+Each panel below renders in its own framed window under Section 15.1's grammar. Three are **interactive**: `/system gear` (equipping, unequipping, withdrawing), `/system shop` (buying and selling), and `/system titles` (equipping). Acting through a panel re-renders the affected totals immediately.
 
-## 15.3 Class Panels Attach Post-Class-Quest
+### 15.3.1 `/system skills`
 
-Before the class quest (Section 18) the window's `Class` line reads `—` and no class section exists. On completing the class quest and choosing a class, a **class section** joins the full window and a focused command attaches — `/system shadows`, `/system arsenal`, `/system fragments`, `/system echoes`, or `/system rifts`. A Bearer has at most one class, so at most one class section; each is authored with its class in Section 18.
+Skills render in **three groups, and never any other**. The `SKILLS · ACTIVE` group contains every skill whose ledger entry carries a Mana cost. The `SKILLS · PASSIVE` group contains every skill whose cost is `passive` and is not a Section 4.4 threshold passive. `STAT PASSIVE` contains every Section 4.4 threshold passive, which has its own row shape and therefore its own group rather than a second grammar inside `PASSIVE`. Preserve character-ledger order inside each group; never duplicate a skill, never move one between groups, and never classify from its name or prose effect. Each group renders even when empty, with `none` beneath its header.
 
+```text
+╔══ ◈  S Y S T E M  ·  S K I L L S ══════════════════════════════════════════╗
+║                                                                            ║
+╟──  ACTIVE  ───────────────────────────────────────────────────  <n> known  ╢
+║                                                                            ║
+║     SKILL                 RANK       MASTERY            MANA    NEXT       ║
+║                                                                            ║
+║     <name>                [<Rank>]   <★ string> <level> <n>     <n> / 3    ║
+║         <effect>                                                           ║
+║         DMG <n> standard · before reduction                                ║
+║                                                                            ║
+╟──  PASSIVE  ──────────────────────────────────────────────────  <n> known  ╢
+║                                                                            ║
+║     SKILL                 RANK       MASTERY                    NEXT       ║
+║                                                                            ║
+║     <name>                [<Rank>]   <★ string> <level>         <n> / 3    ║
+║         <effect>                                                           ║
+║                                                                            ║
+╟──  STAT PASSIVE  ──────────────────────────────────────────────  <n> held  ╢
+║                                                                            ║
+║     SKILL               RANK       DRIVER         USES    NEXT RUNG        ║
+║                                                                            ║
+║     <name>              [<Rank>]   <STAT> <n>     <n>     [<Rank>] at <n>  ║
+║         <effect>                                                           ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+Mastery renders as the five-cell star string of Section 7.4 followed by its level name. `NEXT` is qualifying-scene progress toward the next mastery level, `<n> / 3`. Cumulative successful-use counts are canonical but do not render here; they are reached through `/system skills <name>`. A Stat Passive has no stars and no mastery progress: it renders its driving Stat, that Stat's current value, its use count, and the next rung's threshold. Where Section 4.4's authoring clamp holds the next rung, that cell reads `[<Rank>] held: rung unauthored` instead of a threshold, so a rung the Bearer has reached in Stat points but cannot receive is visible rather than looking merely unearned.
+
+Ren at level 13:
+
+```text
+╔══ ◈  S Y S T E M  ·  S K I L L S ══════════════════════════════════════════╗
+║                                                                            ║
+╟──  ACTIVE  ─────────────────────────────────────────────────────  4 known  ╢
+║                                                                            ║
+║     SKILL                 RANK       MASTERY            MANA    NEXT       ║
+║                                                                            ║
+║     Mana Bolt             [E-Rank]   ★★★★☆  Expert      4       2 / 3      ║
+║         Ranged mana strike at ×1.45 of the E-Rank baseline                 ║
+║         DMG 15 standard · before reduction                                 ║
+║                                                                            ║
+║     Mend                  [E-Rank]   ★★☆☆☆  Practiced   5       1 / 3      ║
+║         Restores Health at ×1.15 of the E-Rank baseline                    ║
+║                                                                            ║
+║     Sprint                [E-Rank]   ★★☆☆☆  Practiced   3       2 / 3      ║
+║         +1 step on movement and pursuit · covers two exchanges             ║
+║                                                                            ║
+║     Flash Step            [D-Rank]   ★★★☆☆  Adept       6       0 / 3      ║
+║         Close or break line of sight · +1 step for three exchanges         ║
+║                                                                            ║
+╟──  PASSIVE  ────────────────────────────────────────────────────  1 known  ╢
+║                                                                            ║
+║     SKILL                 RANK       MASTERY                    NEXT       ║
+║                                                                            ║
+║     Dagger Mastery        [E-Rank]   ★★★★☆  Expert              1 / 3      ║
+║         Adds +0.25 to a Quickknife chassis · ×0.75 → ×1.00                 ║
+║                                                                            ║
+╟──  STAT PASSIVE  ────────────────────────────────────────────────  2 held  ╢
+║                                                                            ║
+║     SKILL               RANK       DRIVER         USES    NEXT RUNG        ║
+║                                                                            ║
+║     Flux Sight          [D-Rank]   PER  33        2       [C-Rank] at 44   ║
+║         Reads a perceived monster — Rank, Health, Mana                     ║
+║                                                                            ║
+║     Pre-empt            [D-Rank]   AGI  40        1       [C-Rank] at 44   ║
+║         Acts normally in a surprise exchange on an ambush warning          ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+### 15.3.2 `/system gear`
+
+**One panel holds the worn loadout and the dimensional inventory**, because Section 12.9 governs them as one surface: what is worn and what is stored differ only in whether the line is applied (Section 11.5). Splitting them across two commands made the ordinary act — comparing a stored piece against the worn one and swapping — span two windows. `/system equipment` and `/system inventory` remain valid and render this panel.
+
+`WORN` divides into weapons, armor, and accessories so each group's columns describe what that group actually has: weapons carry power and a chassis multiplier, armor carries reduction, accessories carry neither. `WORN · TOTALS` sits at the seam, stating the derived stat contribution and total physical reduction — so the worn pieces, what they produce, and the stored pieces that could replace them all fall in one read.
+
+`STORED` groups holdings by kind — **Gear · Consumables · Keys · Materials · Special** — each rule carrying its live line count. A group with no live holdings renders `none`. Quantities collapse: one line per item with `× <n>`, never one line per copy.
+
+```text
+╔══ ◈  S Y S T E M  ·  G E A R ══════════════════════════════════════════════╗
+║                                                                            ║
+╟──  WORN · WEAPONS  ────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     SLOT     ITEM                      RANK       BONUS       POWER        ║
+║                                                                            ║
+║     Main     <item or —>               [<Rank>]   <STAT> <n>  <n>          ║
+║         <chassis multiplier, mastery applied>                              ║
+║         <combat effect>                                                    ║
+║         DMG <n> standard · before reduction                                ║
+║                                                                            ║
+║     Off      <item or —>               [<Rank>]   <STAT> <n>  <n>          ║
+║                                                                            ║
+╟──  WORN · ARMOR  ──────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     SLOT     ITEM                      RANK       BONUS       REDUCE       ║
+║                                                                            ║
+║     Head     <item or —>               [<Rank>]   <STAT> <n>  <n>%         ║
+║     Torso    <item or —>               [<Rank>]   <STAT> <n>  <n>%         ║
+║     Hands    <item or —>               [<Rank>]   <STAT> <n>  <n>%         ║
+║     Legs     <item or —>               [<Rank>]   <STAT> <n>  <n>%         ║
+║     Feet     <item or —>               [<Rank>]   <STAT> <n>  <n>%         ║
+║                                                                            ║
+╟──  WORN · ACCESSORIES  ────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Acc.1    <item or —>               [<Rank>]   <STAT> <n>               ║
+║     Acc.2    <item or —>               [<Rank>]   <STAT> <n>               ║
+║                                                                            ║
+╟──  WORN · TOTALS  ─────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Stat Contribution      STR <n>   AGI <n>   VIT <n>                     ║
+║                            PER <n>   INT <n>                               ║
+║                                                                            ║
+║     Physical Reduction     <derived>   multiplicative, <n> pieces          ║
+║                                                                            ║
+╟──  STORED · GEAR  ──────────────────────────────────────────────────  <n>  ╢
+║                                                                            ║
+║     <item>                        [<Rank>]   <STAT> <n>  <n>%              ║
+║                                                                            ║
+╟──  STORED · CONSUMABLES  ───────────────────────────────────────────  <n>  ╢
+║                                                                            ║
+║     <item>                        × <n>   <effect>                         ║
+║                                                                            ║
+╟──  STORED · KEYS  ──────────────────────────────────────────────────  <n>  ╢
+║                                                                            ║
+║     <item>                        × <n>   [<Rank>] · <modifier>            ║
+║                                                                            ║
+╟──  STORED · MATERIALS  ─────────────────────────────────────────────  <n>  ╢
+║                                                                            ║
+║     <item>                        × <n>   [<Rank>]                         ║
+║                                                                            ║
+╟──  STORED · SPECIAL  ───────────────────────────────────────────────  <n>  ╢
+║                                                                            ║
+║     <item>                        × <n>   [<Rank>] · <binding tag>         ║
+║         <effect, limits, and condition>                                    ║
+║                                                                            ║
+╟──  FUNDS  ─────────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Gold                          <n> g                      /system shop  ║
+║     Cash                     $ <n>           last known                    ║
+║                                                                            ║
+║     Pending                  $ <n>           <n> payouts                   ║
+║         <source>              $ <n>           filed <date>                 ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+Ren at level 13:
+
+```text
+╔══ ◈  S Y S T E M  ·  G E A R ══════════════════════════════════════════════╗
+║                                                                            ║
+╟──  WORN · WEAPONS  ────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     SLOT     ITEM                      RANK       BONUS       POWER        ║
+║                                                                            ║
+║     Main     Quickknife                [D-Rank]   AGI  +4     4            ║
+║         Chassis ×0.75 · +0.25 Dagger Mastery = ×1.00                       ║
+║         DMG 35 standard · before reduction                                 ║
+║                                                                            ║
+║     Off      —                                                             ║
+║                                                                            ║
+╟──  WORN · ARMOR  ──────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     SLOT     ITEM                      RANK       BONUS       REDUCE       ║
+║                                                                            ║
+║     Head     Gale Coif                 [E-Rank]   AGI  +1     3%           ║
+║     Torso    Bastion Torso             [E-Rank]   VIT  +1     3%           ║
+║     Hands    —                                                             ║
+║     Legs     Bastion Legs              [E-Rank]   VIT  +1     3%           ║
+║     Feet     —                                                             ║
+║                                                                            ║
+╟──  WORN · ACCESSORIES  ────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Acc.1    Hunter's Band             [E-Rank]   STR  +1                  ║
+║     Acc.2    —                                                             ║
+║                                                                            ║
+╟──  WORN · TOTALS  ─────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Stat Contribution      STR +1    AGI +5    VIT +2                      ║
+║                            PER +0    INT +0                                ║
+║                                                                            ║
+║     Physical Reduction     9%        multiplicative, three pieces          ║
+║                                                                            ║
+╟──  STORED · GEAR  ────────────────────────────────────────────────────  1  ╢
+║                                                                            ║
+║     Guard Shield                  [E-Rank]   VIT  +1     3%                ║
+║                                                                            ║
+╟──  STORED · CONSUMABLES  ─────────────────────────────────────────────  3  ╢
+║                                                                            ║
+║     Lesser Healing Potion         × 3                                      ║
+║     Antidote                      × 2                                      ║
+║     Stabilization Seal            × 1     holds one Critical               ║
+║                                                                            ║
+╟──  STORED · KEYS  ────────────────────────────────────────────────────  1  ╢
+║                                                                            ║
+║     Instant-Dungeon Key           × 1     [E-Rank] · standard instance     ║
+║                                                                            ║
+╟──  STORED · MATERIALS  ───────────────────────────────────────────────  2  ╢
+║                                                                            ║
+║     Mana Crystal                  × 8     [E-Rank]                         ║
+║     Beast Core                    × 2     [E-Rank]                         ║
+║                                                                            ║
+╟──  STORED · SPECIAL  ─────────────────────────────────────────────────  1  ╢
+║                                                                            ║
+║     Rune teaching Stone Skin      × 1     [D-Rank] · UNBOUND               ║
+║         NPC-ELIGIBLE · teaches Stone Skin [D-Rank] Novice · unused         ║
+║                                                                            ║
+╟──  FUNDS  ─────────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Gold                            340 g                    /system shop  ║
+║     Cash                     $  4,000.00     last known                    ║
+║                                                                            ║
+║     Pending                  $  1,762.50     1 payout                      ║
+║         Cicero Gate split    $  1,762.50     filed 08-03                   ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+- **Identity and mechanics stay separated.** Slot, item name, Rank, and the tabular values occupy the entry row; bonuses that do not fit a column, combat effects, limits, and condition occupy continuation rows. This leaves room for prefixes, suffixes, fabrication series, and durability without widening the frame.
+- **Instructional items render their eligibility from canonical binding.** `UNBOUND · NPC-ELIGIBLE` for `unbound-awakened` instruction, `BEARER-BOUND` for `bearer-only`, and `CLASS-BOUND · <class>` for a class-bound item. The complete canonical line retains `teaches`, `teaching_rank`, binding, provenance source kind and event, and unused status; `/system gear <item>` renders it in full. When transferred to an NPC, the complete line moves to that NPC's holdings with binding unaltered. On consumption, the item leaves live holdings and the recipient's learned or upgraded technique is recorded with its settlement event.
+- **`FUNDS` repeats the Console's block** rather than deferring to the shop, because a purchase decision is made here. Pending payouts itemize by source and filing date.
+
+### 15.3.3 `/system quests`
+
+```text
+╔══ ◈  S Y S T E M  ·  Q U E S T S ══════════════════════════════════════════╗
+║                                                                            ║
+╟──  CAPACITY  ──────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Non-Daily Slots        <used> / <capacity>                             ║
+║     Multitask Bonus        <n>                                             ║
+║                                                                            ║
+╟──  ACTIVE  ─────────────────────────────────────────────────────────  <n>  ╢
+║                                                                            ║
+║  !  [ DAILY ]      <quest name>                      streak  <n>           ║
+║                    <objective progress>                                    ║
+║                    Deadline <local time>                                   ║
+║                                                                            ║
+║     [ URGENT ]     <quest name>                      <n> / <n> · +<n> XP   ║
+║                    <objective progress>                                    ║
+║                    Deadline <local or causal>                              ║
+║                                                                            ║
+║     [ HIDDEN ]     ???                                                     ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+Capacity renders first (Section 8.4.4). Urgent rows always show objective progress, fixed XP, and deadline. An unrevealed Hidden row shows only `???`, and its reward and deadline remain `???` even though canonical state holds them (Section 8.4.3). Completed, failed, expired, declined, and abandoned quests leave this panel immediately and remain reachable only through `/system log`.
+
+### 15.3.4 `/system titles`
+
+```text
+╔══ ◈  S Y S T E M  ·  T I T L E S ══════════════════════════════════════════╗
+║                                                                            ║
+╟──  EQUIPPED  ──────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     ★  <title>                                                             ║
+║         <passive>                                                          ║
+║                                                                            ║
+╟──  EARNED  ─────────────────────────────────────────────────────────  <n>  ╢
+║                                                                            ║
+║     <title>                                                                ║
+║         <passive, dormant>                                                 ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+One title is equipped at a time (Section 16); the equipped title carries `★` and its passive is active, and every other earned title renders with its passive marked dormant. Equipping happens here and is free.
+
+### 15.3.5 `/system shop`
+
+```text
+╔══ ◈  S Y S T E M  ·  S H O P ══════════════════════════════════════════════╗
+║                                                                            ║
+╟──  BALANCE  ───────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Gold                          <n> g                                    ║
+║                                                                            ║
+╟──  DAILY PREMIUM  ───────────────────────────────────────  <n> / 6 bought  ╢
+║                                                                            ║
+║     Rotates <deadline> · <fabrication series>                              ║
+║                                                                            ║
+║     TAB            ITEM                  RANK       EFFECT      PRICE      ║
+║                                                                            ║
+║     Weapon         <item>                [<Rank>]   <line>      <n> g      ║
+║     Armor          <item>                [<Rank>]   <line>      <n> g      ║
+║     Accessory      <item>                [<Rank>]   <line>      <n> g      ║
+║     Consumable     <item>                —          <line>      <n> g      ║
+║     Rune           <item>                [<Rank>]   <binding>   <n> g      ║
+║     Key            <item>                [<Rank>]   <line>      <n> g      ║
+║                                                                            ║
+╟──  BUY  ───────────────────────────────────────────  unlocked to [<Rank>]  ╢
+║                                                                            ║
+║     Weapons · Armor · Accessories · Consumables · Runes · Keys             ║
+║                                                                            ║
+║     <tab>          <item>                [<Rank>]   <line>      <n> g      ║
+║                                                                            ║
+╟──  SELL  ──────────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     <item>                        × <n>   [<Rank>] · <n> g each            ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+The shop's contents, prices, stock unlock, and rotation are governed entirely by Section 12.5; this template governs only how they render. `DAILY PREMIUM` renders its cycle deadline, its fabrication series, and its six quantity-one offers with their purchased state. `BUY` renders the unlimited catalogue at every Rank the Bearer has unlocked. `SELL` renders crystals and eligible stored holdings at their resale rates. Buying and selling happen in-window and are never put to the player as an out-of-character question. The no-exchange rule holds: loot becomes gold only by selling it here, and gold never becomes USD.
+
+### 15.3.6 `/system log`
+
+```text
+╔══ ◈  S Y S T E M  ·  L O G ════════════════════════════════════════════════╗
+║                                                                            ║
+╟──  RECENT  ────────────────────────────────────────────────  <n> messages  ╢
+║                                                                            ║
+║     <game date and time>                                                   ║
+║         <the authored message, replayed verbatim>                          ║
+║                                                                            ║
+╟──  CLOSED QUESTS  ──────────────────────────────────────────────────  <n>  ╢
+║                                                                            ║
+║     [ <TYPE> ]     <quest name>                      <outcome>             ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+The log replays authored System messages verbatim — it never re-composes or summarizes one — and lists quests that have left the active panel, with their outcomes. It is a **bounded window on the recent record**, not a campaign history: it reads the campaign's current-state ledger and the quest records, never the full chronicle. A message older than that window is chronicle material and is reached there, not through this panel.
+
+### 15.3.7 `/system <panel> <item>`
+
+Naming an entry inside a panel renders its **complete canonical line**: every stored field, including provenance, binding, acquisition event, and counters the panel's columns omit. This is where detail the upper tiers shed is recovered, and it is why the Console may defer without anything being lost.
+
+## 15.4 `/system all`
+
+**`/system all`** renders the Console followed by every focused panel in order — skills, gear, quests, titles, shop, log, and the class panel where one exists — each in its own frame, in one reply. It is the whole of the Bearer at once: the exhaustive read for a checkpoint, an audit, or a Bearer who simply wants everything in front of him. It composes the panels of Sections 15.2 and 15.3 unchanged and authors no layout of its own.
+
+## 15.5 Class Panels Attach Post-Class-Quest
+
+Before the class quest (Section 18) the Console's `Class` line reads `—`, no class panel exists, and `/system all` renders none. On completing the class quest and choosing a class, a **class panel** attaches and a focused command comes with it — `/system shadows`, `/system arsenal`, `/system fragments`, `/system echoes`, or `/system rifts`. The Console's `ELSEWHERE` index gains a row for it. A Bearer has at most one class, so at most one class panel; each is authored with its class in Section 18 and renders under Section 15.1's grammar like every other.
 
 ---
 
 # 16. Titles
 
-A **title** is a named commendation the System grants for a specific feat, carrying one passive. **One title is equipped at a time**; the equipped title's passive is active and every other earned title is dormant. Titles are permanent once earned; equipping is free and changed through `/system titles` (Section 15.6). Each is granted the instant its feat resolves, as a Tier-1 message (Section 15.7).
+A **title** is a named commendation the System grants for a specific feat, carrying one passive. **One title is equipped at a time**; the equipped title's passive is active and every other earned title is dormant. Titles are permanent once earned; equipping is free and changed through `/system titles` (Section 15.3.4). Each is granted the instant its feat resolves, as a Tier-1 message (Section 14.5).
 
 The 1.0 titles:
 
@@ -2608,7 +2981,7 @@ On survival, the System tallies the five signals and offers the classes matching
 - **Endurance → Echo Knight**
 - **Positioning → Riftwalker**
 
-The Bearer chooses one. The choice is permanent; it attaches the class's `/system` panel (Section 15.8) and sets the STATUS `Class` line. Each class has a later **evolution quest** — an authored class-quest at **level 50** — that deepens it along its own line.
+The Bearer chooses one. The choice is permanent; it attaches the class's `/system` panel (Section 15.5) and sets the Console's `Class` line. Each class has a later **evolution quest** — an authored class-quest at **level 50** — that deepens it along its own line.
 
 **Shared target-Rank cost ladder.** Several classes spend Mana by a target's Rank on one ladder — **E 5 · D 10 · C 20 · B 40 · A 80**. This is a **cost** the Bearer pays, scaled by whom he targets; it is not a pool and is unrelated to the **Rank Mana** an entity of that Rank carries (Section 6.1). Because maximum Mana derives from Intelligence (§5.1), class allocation now directly determines how often these effects can be used. A low-Intelligence build may qualify for a class yet lack the pool for its highest-Rank target until it invests.
 

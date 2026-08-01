@@ -90,8 +90,23 @@ Assert-Contains $runtime 'A commitment is recorded when it is made, not when it 
 Assert-Contains $runtime 'same response that narrates it' 'The creation obligation is not bound to the narrating turn, so it can drift to /save and be lost.'
 Assert-Contains $runtime 'is therefore not narratable as an undertaking' 'A promise with no establishable due time can still be narrated, producing an unrecordable obligation.'
 
-Assert-Contains $resident '^## A Promise Is Recorded In The Turn It Is Made$' 'The creation obligation is not resident; the failure happens at narration time and a fetched-only guardrail does not fire (Decision 055).'
+Assert-Contains $resident '^## The World.s Answer Is Due In The Scene That Asks$' 'The creation obligation is not resident; the failure happens at narration time and a fetched-only guardrail does not fire (Decision 055).'
 Assert-Contains $resident 'If you are not recording it, do not narrate it' 'The resident layer does not remove the cheap escape -- narrating a deferral without recording it.'
 Assert-Contains $resident 'not recordable, and therefore not sayable' 'The resident layer still permits an open-ended promise, which is the shape that cannot be settled.'
+
+# --- Deferral itself is the defect, not just an unrecorded deferral ---------
+#
+# Recording a deferral correctly makes the WRONG answer well-tracked. The owner's
+# second correction: the Runtime reaches for "later" as a general-purpose answer
+# to its OWN uncertainty and speaks it in the character's voice. Kesha was a desk
+# fixer with the registry open, asked about the registry -- she was waiting on
+# nothing; the Runtime was. Because fictional time advances only as play drives
+# it, "in two days" is frequently never, so the deferral converts an answerable
+# question into a thread the player must return and collect.
+Assert-Contains $resident 'whose ignorance this is' 'The resident layer does not make the Runtime ask whose ignorance produces the delay, which is the test that separates a real deferral from a laundered one.'
+Assert-Contains $resident 'Deferral is the expensive answer, not the safe one' 'The resident layer does not reprice deferral, so "later" still reads as the cautious default.'
+Assert-Contains $resident 'is waiting on nothing' 'The capability check is missing: a character able to answer now must answer now.'
+Assert-Contains $runtime 'Runtime uncertainty is never a world fact' 'The Runtime does not forbid discharging its own undecided question as an in-fiction delay.'
+Assert-Contains $runtime 'the scene that asks the question is the scene that answers it' 'The Runtime states no default that an available answer is due in the asking scene.'
 
 Write-Host 'Pending world-side commitment contract PASSED'

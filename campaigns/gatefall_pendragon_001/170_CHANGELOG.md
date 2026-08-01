@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000275
+  source: EVT-000276
   game_date: "2026-08-11 ~09:55 -05:00"
   real_date: "2026-08-01"
 role: canonical ledger
@@ -24,6 +24,9 @@ subjects: []
 ---
 
 ## Changes
+
+**2026-08-11 ~09:55 - Profile 1.46 adopted: the `/system` window redesign (`EVT-000276`).**
+Gatefall World Rule Profile 1.45 -> 1.46, a compatibility-treatment advance. **No fictional time, no scene, no stored value.** Alexander is not a participant; `system_state` is byte-equivalent across the adoption except for its `profile_version` string. Section 15 is rewritten and nothing else is: bare `/system` now renders a one-screen **Console**, `/system <panel>` renders one panel in full, `/system all` renders everything (what bare `/system` used to do), and `/system <panel> <item>` renders an entry's complete canonical line. `/system equipment` and `/system inventory` merge into **`/system gear`** — Section 12.9 already governed the worn loadout and the dimensional inventory as one surface — with both old names retained as aliases. Every panel gains an authored template where 1.45 declared focused views and authored none. Stat Passives get their own skills group; no skill is reclassified. Cash and pending payouts render beside gold and are never totalled with it (Section 12.5's no-exchange rule). Rank always renders bracketed, `[E-Rank]` through `[S-Rank]`. A new render grammar (Section 15.1) fixes width, spacing, columns, and a two-glyph status gutter. Stale Section 15.6/15.7/15.8 citations in Sections 14.3, 16, and 18 are repointed — a citation correction, not a rule change. Nothing reachable under 1.45 became unreachable; no past render is reissued and no past scene is reread. Migration record: `worlds/gatefall/migrations/1.45_to_1.46.md`. Registry allocation: `EVT-000276`.
 
 **2026-08-11 ~09:55 - Promotion-barrier session settlement (`EVT-000275`).**
 Closes the `EVT-000273`-`EVT-000274` span. Explicit `none` for `gatefall.skill_formation` — no combat skill activation or repeatable method demonstrated this span, purely social play. Temporal anchor advanced 09:50 → 09:55. Registry allocation this span: `ENT-000182` (Reyna Castillo), `EVT-000273`-`EVT-000275`.

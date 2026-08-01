@@ -184,6 +184,8 @@ Misclassifying *unnamed but entailed* as *unknown in-world* is the common failur
 
 Whether an opportunity *obtains* is a supply question, settled from the source's own clock and never generated at the point of asking (Rules Section 3.4.1; Decision 083). *Who or what it turns out to be*, once it obtains, is this class. Section 3.4.1 governs the generation of opportunity, not the naming of participants, and it is not grounds for withholding a name.
 
+**Runtime uncertainty is never a world fact.** An unresolved question may not be discharged by having a character postpone it. A delay narrated because the *Runtime* has not decided converts an answerable question into an open thread, and because fictional time advances only as play drives it, that thread may never come back on its own — so the deferral is not a neutral pause but a durable cost, carried by the player. A character may postpone only what that character's own state, role, and access make them unable to answer now. Before narrating a delay, the Runtime establishes what the character must do to obtain the answer and that they cannot do it in the present scene; where the answer is available to them, the scene that asks the question is the scene that answers it.
+
 ## 1.5 Action Resolution Responsibilities
 
 When resolving an action, the Interpreter applies Action Resolution (Rules Section 4). This document does not restate that procedure. It states the Interpreter's obligations in applying it:

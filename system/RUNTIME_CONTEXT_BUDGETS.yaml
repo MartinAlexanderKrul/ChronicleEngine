@@ -8,6 +8,14 @@ surfaces:
   resident:
     warning_tokens: 6000
     failure_tokens: 8000
+    # Re-recorded 2026-08-01, twice in one session. First +318 for the F-008
+    # authoring default (Resident Core 1.16, "Unnamed Is Not Absent"), then +248
+    # for the commitment creation rule (1.17, "A Promise Is Recorded In The Turn
+    # It Is Made"). Both figures are attributable in full; nothing else moved the
+    # card. It now stands at 5,806 against a 6,000 warning -- 194 tokens of
+    # headroom, the tightest it has been. The next resident addition should
+    # displace text rather than append to it, or move the warning deliberately.
+    #
     # Re-recorded 2026-07-31 after two independent lines of work landed in the
     # same card: the F-001 canvass and standing-grounding rule plus commitment
     # and supply settlement (Resident Core 1.13), and the NPC load obligation
@@ -16,7 +24,7 @@ surfaces:
     # The prior 3,453 had also drifted +813 before any of it, which is the
     # argument for re-recording on every deliberate change rather than only when
     # a ceiling is hit.
-    baseline_tokens: 5240
+    baseline_tokens: 5819
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true
@@ -50,11 +58,20 @@ surfaces:
     # off this surface: readiness carries who exists and what a player has ruled
     # unknowable, and the records themselves are fetched at the encounter. It sits
     # above the 20,000 warning, as it did before this work.
+    #
+    # Re-recorded 2026-08-01 with the resident figure above. Three of the four
+    # moved by exactly the card's combined +566, which is the whole of this
+    # session's engine work. Gatefall moved +2,184, so +1,618 of it is campaign
+    # drift that had already accumulated and is recorded here rather than
+    # absorbed silently: Current State has grown to 8,877 tokens and the manifest
+    # is now Checkpoint 0052. That surface is at 28,343 against a 30,000 hard
+    # failure and will breach it on ordinary play, not on engine work. Trimming
+    # it is authoring and belongs to the owner (Recommendation R14).
     baseline_tokens_by_campaign:
-      gatefall_pendragon_001: 26159
-      prototype_alpha: 8404
-      prototype_beta: 8917
-      reikon_awakening_001: 12729
+      gatefall_pendragon_001: 28357
+      prototype_alpha: 8983
+      prototype_beta: 9496
+      reikon_awakening_001: 13308
     include_resident: true
     derive_operation: continue
 

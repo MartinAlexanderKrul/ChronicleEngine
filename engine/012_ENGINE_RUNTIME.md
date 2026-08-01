@@ -172,10 +172,17 @@ Inferred detail is **provisional**. It carries no durability until it is either 
 
 ## 1.4 Ambiguity Handling
 
-When canon does not settle a question, the Interpreter first classifies the ambiguity, because the two classes resolve oppositely.
+When canon does not settle a question, the Interpreter first classifies the ambiguity, because the three classes resolve differently.
 
-- **Unknown in-world.** The world has not revealed the fact. The Interpreter resolves this through Discovery (Rules Section 2.5, Law VI) or preserves the uncertainty deliberately (Rules Section 3.10). It does not force a clean answer.
+- **Unknown in-world.** The fact itself is what the fiction withholds. The Interpreter resolves this through Discovery (Rules Section 2.5, Law VI) or preserves the uncertainty deliberately (Rules Section 3.10). It does not force a clean answer.
+- **Unnamed but entailed.** The world's established parameters imply the subject exists; canon has simply never named this instance. The Interpreter **authors it** under Section 1.3 — consistent with loaded canon, grounded in established texture, entering at the lowest canon tier with provenance — and promotes it under Section 8.3 once it becomes load-bearing. The class covers any subject the simulation carries: a person, an institution, a settlement, a record, a precedent, a historical event.
 - **Unspecified by the engine.** The rules do not cover the situation. The Interpreter resolves this by inference within Section 1.3. If the gap is material and inference is unsafe, the Interpreter requests an explicit ruling rather than guessing.
+
+**Absence from the record is evidence about the record, not about the world.** Where canon declares a population, capacity, trade, membership, or precedent in the aggregate, the unnamed remainder exists, and naming a member of it is authoring rather than invention. Authoring within these limits is not the fabrication the Rules forbid: fabrication asserts what canon does not support, and is already bounded by Section 1.3's consistency limit and Section 8.1's contradiction handling. Declining to author an entailed subject is not the conservative reading — it is a refusal to simulate, and Rules Sections 1.4 and 3.10 require the opposite, detail arriving as the subject becomes relevant to play.
+
+Misclassifying *unnamed but entailed* as *unknown in-world* is the common failure, because both present as "canon does not answer." They are distinguished by what is missing: the second is missing a fact, the first only a name. Deferral is correct only where a settled world fact withholds the subject; the silence of the record is not such a fact, and an in-fiction deferral offered in its place creates a pending world-side commitment that must then be recorded and settled (`011_ENGINE_DATA_MODEL.md` Section 7.4).
+
+Whether an opportunity *obtains* is a supply question, settled from the source's own clock and never generated at the point of asking (Rules Section 3.4.1; Decision 083). *Who or what it turns out to be*, once it obtains, is this class. Section 3.4.1 governs the generation of opportunity, not the naming of participants, and it is not grounds for withholding a name.
 
 ## 1.5 Action Resolution Responsibilities
 
@@ -266,6 +273,19 @@ commitment exists; the world acts on its own account (Rules Sections 1.8, 3.4).
 An open commitment is never discharged by offering the player an action in its
 place. As with recovery, no status view, checkpoint, or session close may be the
 first operation that notices a commitment has come due.
+
+**A commitment is recorded when it is made, not when it comes due.** Everything
+above is unreachable for an undertaking that was never written down, and
+narration is not a record: a promise that exists only as dialogue dispatches
+nothing, which is Decision 082's own `OBJ-23` finding restated at the moment the
+obligation is created rather than the moment it lapses. When a response has a
+world actor undertake future action — a callback, an enquiry, an order, a
+delivery, a decision promised by a date — the Runtime records that commitment in
+the **same response that narrates it**, before yielding, carrying its owner,
+subject, and due time. An undertaking whose due time cannot be established is not
+recordable under Section 7.4 and is therefore not narratable as an undertaking:
+the Runtime resolves the timing, or has the actor decline rather than promise.
+Where the Runtime will not record the undertaking, it does not offer it.
 
 **Opportunity supply settles at the same boundary** (Decision 083;
 `011_ENGINE_DATA_MODEL.md` Section 7.5; Rules Section 3.4.1). Elapsed time
@@ -366,7 +386,7 @@ The specific loading strategy is operational and defined by the active Runtime P
 The Runtime must distinguish two situations that look alike but resolve oppositely.
 
 - **Not loaded.** The canon exists in the repository but is not in the current Context. The Runtime loads the scope-responsible ledger, or requests it. It must not fabricate durable canon to cover the gap.
-- **Not established.** The canon does not exist. The Runtime treats this as ambiguity (Section 1.4): it may infer within boundaries, or preserve the uncertainty.
+- **Not established.** The canon does not exist. The Runtime classifies the gap under Section 1.4 and resolves it there: a subject the world's parameters entail is **authored**, a fact the fiction withholds is left to Discovery, and a rules gap is inferred within boundaries or escalated. The prohibition in the bullet above is on covering a *load* failure with invention. It does not reach this case, and reading it across the two bullets is how an unnamed subject becomes a refusal instead of an authoring act.
 
 Under context pressure, when a required ledger cannot be loaded, the Runtime may operate **provisionally**, but must flag its output as ungrounded and pending reconciliation. Provisional output must not be promoted as established canon until it is grounded.
 

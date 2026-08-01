@@ -1358,6 +1358,100 @@ if (-not $CoreOnly -and (Test-Path -LiteralPath $blockValidator -PathType Leaf))
     }
 }
 
+# --- A commitment that came due must have been settled ----------------------
+#
+# Decision 082 specified in full how a pending world-side commitment is settled
+# and Runtime Section 2.4 says no status view, checkpoint or session close may
+# be "the first operation that notices a commitment has come due". Nothing
+# checked it. F-002 is the same failure one layer over, in a mechanism that owed
+# no roll and no discretion: three tracked-board deadlines passed unsettled and
+# it took a human reading the ledger to notice.
+#
+# This adds no shape. Data Model Section 7.3 already makes tracked state canon
+# that lives inside a holding record, Section 7.4 already requires `Due` and
+# fixes the five statuses, and Decision 078 already puts an exact campaign
+# anchor in live state. The check is arithmetic over contracts that exist.
+#
+# It is deliberately vacuous where a campaign records no commitments, which is
+# every campaign today: Decisions 082 and 083 built a settler and no writer, so
+# the construct has zero live instances. That is honest rather than useful --
+# the gate bites the moment a play session records the first one, and until
+# then it proves nothing. Making absence itself fail would require a declared
+# serialization home in Section 7.4, which is foundational and an owner ruling.
+$commitmentStatuses = @('pending', 'met', 'partially-met', 'lapsed', 'deferred')
+$commitmentOpenStatuses = @('pending', 'deferred')
+
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    $campaignName = $campaignDirectory.Name
+
+    # The anchor is Decision 078's exact campaign clock. Without one there is
+    # nothing to compare against, so the staleness half is skipped and the shape
+    # checks below still run.
+    $anchor = $null
+    foreach ($anchorFile in @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "1*.md" -File)) {
+        $anchorMatch = [regex]::Match(
+            (Get-Content -LiteralPath $anchorFile.FullName -Raw),
+            '(?m)^[ \t]*campaign_time:[ \t]*"?([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:]{8}[+-][0-9:]{5})"?')
+        if ($anchorMatch.Success) {
+            $parsed = [datetimeoffset]::MinValue
+            if ([datetimeoffset]::TryParse($anchorMatch.Groups[1].Value, [ref]$parsed)) {
+                if ($null -eq $anchor -or $parsed -gt $anchor) { $anchor = $parsed }
+            }
+        }
+    }
+
+    foreach ($ledger in @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "*.md" -File)) {
+        $ledgerText = Get-Content -LiteralPath $ledger.FullName -Raw
+        if ($ledgerText -notmatch 'pending_commitments:') { continue }
+        $ledgerRelative = Get-RelativePath $ledger.FullName
+        $ledgerIndex = New-LineIndex $ledgerText
+
+        foreach ($entry in (Get-ListEntries (Get-IndentedSection $ledgerText "pending_commitments"))) {
+            $owner = Get-EntryValue $entry "owner"
+            $subject = Get-EntryValue $entry "subject"
+            $due = Get-EntryValue $entry "due"
+            $status = Get-EntryValue $entry "status"
+            $reason = Get-EntryValue $entry "reason"
+            $entryLine = Get-LineNumber $ledgerIndex ($ledgerText.IndexOf($entry))
+
+            if ($owner -notmatch '^(ENT|REC)-\d{6}$') {
+                Add-Failure "$ledgerRelative`:$entryLine pending commitment names no defined owner; a commitment is owed by an identified entity or institution (Data Model Section 7.4, Decision 082)."
+                continue
+            }
+            if ([string]::IsNullOrWhiteSpace($subject)) {
+                Add-Failure "$ledgerRelative`:$entryLine pending commitment owned by $owner records no subject; what was undertaken is required (Data Model Section 7.4)."
+                continue
+            }
+            if ($commitmentStatuses -notcontains $status) {
+                Add-Failure "$ledgerRelative`:$entryLine pending commitment owned by $owner has status '$status'; it must be one of $($commitmentStatuses -join ', ') (Data Model Section 7.4)."
+                continue
+            }
+
+            # Section 7.4: "`Due` is required. An undertaking with no time a clock
+            # can reach is not recordable as a commitment, which is deliberate."
+            $dueParsed = [datetimeoffset]::MinValue
+            if ([string]::IsNullOrWhiteSpace($due) -or -not [datetimeoffset]::TryParse($due, [ref]$dueParsed)) {
+                Add-Failure "$ledgerRelative`:$entryLine pending commitment owned by $owner has no clock-reachable due time; an intention without one cannot be settled and is not recordable (Data Model Section 7.4, Decision 082)."
+                continue
+            }
+
+            # "A lapse is a settlement, not an absence": a lapsed commitment
+            # records the grounded reason it lapsed.
+            if ($status -eq 'lapsed' -and [string]::IsNullOrWhiteSpace($reason)) {
+                Add-Failure "$ledgerRelative`:$entryLine pending commitment owned by $owner is lapsed but records no grounded reason; a lapse is a settlement, not an absence (Data Model Section 7.4)."
+                continue
+            }
+
+            # The load-bearing check. An open commitment whose due time is behind
+            # the campaign's own anchor was never settled, and the settlement
+            # obligation is not discharged by the player failing to ask.
+            if ($null -ne $anchor -and $commitmentOpenStatuses -contains $status -and $dueParsed -lt $anchor) {
+                Add-Failure "$ledgerRelative`:$entryLine pending commitment owned by $owner is still '$status' with a due time of $due, behind the campaign anchor $($anchor.ToString('o')); elapsed time reaching a commitment's due time must settle it from the owner's own state (Runtime Section 2.4, Decision 082)."
+            }
+        }
+    }
+}
+
 $runtimeValidator = Join-Path $PSScriptRoot "validate_runtime_configuration.ps1"
 $runtimeExitCode = 0
 $runtimeOutput = @()

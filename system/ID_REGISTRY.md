@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000182 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000276 |
+| Event | `EVT-` | Event | EVT-000281 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -416,6 +416,11 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000274 | Event | Gatefall: Pendragon: walking to the Coalition, Owen names his own reflex to deflect under a serious question, answers plainly instead ("I want this, and it terrifies me"), and — caught making the conversation about himself again — turns the question back to ask how Alexander is actually doing; relationship texture recorded to `REL-000066` |
 | EVT-000275 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement closing the `EVT-000273`-`EVT-000274` span, explicit `none` for `gatefall.skill_formation`, temporal anchor advanced to 2026-08-11 ~09:55 |
 | EVT-000276 | Event | Gatefall: adoption of World Rule Profile 1.46 - the `/system` window redesign: three command tiers (Console, focused panel, `all`), an authored template for every panel, `/system equipment` and `/system inventory` merged into `/system gear` with both retained as aliases, a third `STAT PASSIVE` skills group, cash and pending payouts rendered beside gold and never totalled with it, bracketed `[E-Rank]` Rank rendering, and a fixed render grammar; no fictional time, no scene, no stored value changed |
+| EVT-000277 | Event | Gatefall: Pendragon: Mend's banked mastery threshold ascends Practiced → Adept at the player's explicit request, settling automatically under Section 7.4 — multiplier ×1.15→×1.30, Mana cost unchanged at 5, mastery progress reset |
+| EVT-000278 | Event | Gatefall: Pendragon: Owen calls Priya to arrange a face-to-face meeting; the Coalition parting between Alexander and Owen |
+| EVT-000279 | Event | Gatefall: Pendragon: Corinne Whitlock closes the Rogers Park application's documentation gap by calling Edgewater HR directly, confirming Owen's employment live |
+| EVT-000280 | Event | Gatefall: Pendragon: Walt Adamik's shop — the artificer's real working alias (Marnie) corrects an earlier misstatement ("Reyes," flagged as design issue `F-009`); two grey-market items (Warded Vambrace [A-Rank], Dormant Core [S-Rank]) bought for $5,200 cash and auto-identified on entry to the dimensional inventory |
+| EVT-000281 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000277`-`EVT-000280` span with an explicit `none` for `gatefall.skill_formation` |
 
 ---
 

@@ -40,7 +40,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000136` | Priya Okafor | crew leader / striker | active | Chicago | `REL-000065` |
 | `ENT-000137` | Julian Boyd | striker (ranged) | active | Chicago | — |
 | `ENT-000138` | Renata Marchetti | sensor / reader | active | Chicago | — |
-| `ENT-000139` | Owen Callahan | mender | active | Called Priya Okafor from the Coalition desk | `REL-000066` |
+| `ENT-000139` | Owen Callahan | mender | active | At Alexander's apartment, evening of 2026-08-11, helping pack f… | `REL-000066` |
 | `ENT-000146` | Wade Bishop | guild recruiter | active | Red Line Corridor | `REL-000068` |
 | `ENT-000147` | Walt Adamik | pawnbroker / grey-market dealer | active | Chicago | `REL-000069` |
 | `ENT-000149` | the Cutting Edge proprietor | gear artisan / licensed vendor | active | Cutting Edge | — |
@@ -62,12 +62,18 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000177` | Elias Ward | surplus and pawn seller | active | an unnamed surplus/pawn shop in Chicago's warehouse district | — |
 | `ENT-000181` | Corinne Whitlock | leasing agent | active | the Rogers Park two-bedroom listing, second-floor front | — |
 | `ENT-000182` | Reyna Castillo | striker | active | Chicago | — |
+| `ENT-000183` | Petra | salvage dealer / informant | active | Ferro's Reclamation | `REL-000087` |
+| `ENT-000184` | Marcus Whitlow | striker | active | Chicago | `REL-000088` |
+| `ENT-000185` | Soraya Delgado | ranged support | active | Chicago | — |
+| `ENT-000186` | Grant Okwuosa | striker | active | Chicago | — |
+| `ENT-000187` | Iris Halvorsen | sensor | active | Chicago | — |
+| `ENT-000188` | Theo Bannerman | striker | active | Chicago | — |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.0`.
-- Entities: 39. Protagonist relationships: 8.
+- Entities: 45. Protagonist relationships: 10.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000182 |
+| Entity | `ENT-` | Persistent Entity | ENT-000188 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000281 |
-| Relationship | `REL-` | Relationship | REL-000086 |
+| Event | `EVT-` | Event | EVT-000295 |
+| Relationship | `REL-` | Relationship | REL-000088 |
 
 ---
 
@@ -421,6 +421,28 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000279 | Event | Gatefall: Pendragon: Corinne Whitlock closes the Rogers Park application's documentation gap by calling Edgewater HR directly, confirming Owen's employment live |
 | EVT-000280 | Event | Gatefall: Pendragon: Walt Adamik's shop — the artificer's real working alias (Marnie) corrects an earlier misstatement ("Reyes," flagged as design issue `F-009`); two grey-market items (Warded Vambrace [A-Rank], Dormant Core [S-Rank]) bought for $5,200 cash and auto-identified on entry to the dimensional inventory |
 | EVT-000281 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000277`-`EVT-000280` span with an explicit `none` for `gatefall.skill_formation` |
+| EVT-000282 | Event | Gatefall: Pendragon: Walt Adamik given Alexander's real phone number and asked to watch for C-Rank-and-above hunters |
+| EVT-000283 | Event | Gatefall: Pendragon: texting round to established job contacts (Ada Reyes, Sable, Dale Pruitt, Denise Ferro) — no job, Dale shows real movement |
+| EVT-000284 | Event | Gatefall: Pendragon: Wade Bishop's callback — split renegotiated to 35% + lead credit, B-Rank harvest trial confirmed 2026-08-14, hunter-list request |
+| EVT-000285 | Event | Gatefall: Pendragon: Elias Ward — a $400 grey-market envelope bought, a standing-offer omission repaired to `EVT-000216` |
+| ENT-000183 | Entity | Gatefall: Pendragon: Petra, owner of Ferro's Reclamation (`ENT-000150`), met in person |
+| REL-000087 | Relationship | Gatefall: Pendragon: Alexander and Petra — standing informal-informant arrangement |
+| EVT-000286 | Event | Gatefall: Pendragon: Ferro's Reclamation — Petra met, the warehouse investigation traded for Marcus Whitlow's name |
+| EVT-000287 | Event | Gatefall: Pendragon: the envelope opened — Cormant Holdings connected to the unidentified lanyard logo from `EVT-000189` |
+| ENT-000184 | Entity | Gatefall: Pendragon: Marcus Whitlow, C-Rank striker, first recruit for the new crew |
+| REL-000088 | Relationship | Gatefall: Pendragon: Alexander and Marcus Whitlow — crew recruitment |
+| EVT-000288 | Event | Gatefall: Pendragon: Marcus Whitlow cold-called, agrees to lunch |
+| EVT-000289 | Event | Gatefall: Pendragon: Marcus Whitlow lunch at Dobek's Diner — Keen Sense/Flux Sight read, pitched, recruited |
+| EVT-000290 | Event | Gatefall: Pendragon: home, packing begins; Corinne relays a landlord complication over renting to active hunters |
+| EVT-000291 | Event | Gatefall: Pendragon: Owen's outcome with Priya relayed by text — told with real hurt understood |
+| EVT-000292 | Event | Gatefall: Pendragon: Corinne's callback — deposit number agreed, lease signing locked for 2026-08-12 09:30 |
+| ENT-000185 | Entity | Gatefall: Pendragon: Soraya Delgado, C-Rank ranged support, referred by Wade Bishop, unmet |
+| ENT-000186 | Entity | Gatefall: Pendragon: Grant Okwuosa, C-Rank striker, referred by Wade Bishop, unmet |
+| ENT-000187 | Entity | Gatefall: Pendragon: Iris Halvorsen, B-Rank sensor, referred by Wade Bishop, unmet |
+| ENT-000188 | Entity | Gatefall: Pendragon: Theo Bannerman, C-Rank striker, referred by Wade Bishop, unmet |
+| EVT-000293 | Event | Gatefall: Pendragon: evening — Owen returns, Wade's four-hunter list arrives by text |
+| EVT-000294 | Event | Gatefall: Pendragon: the apartment moment — mutual declarations of love, recorded on `REL-000066` |
+| EVT-000295 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000282`-`EVT-000294` span with an explicit `none` for `gatefall.skill_formation` |
 
 ---
 

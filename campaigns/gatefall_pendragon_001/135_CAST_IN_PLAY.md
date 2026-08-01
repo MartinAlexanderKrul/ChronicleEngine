@@ -61,12 +61,13 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000176` | Callie Dunmore | D-Rank hunter, flex striker | active | 4110 W Fullerton, Chicago — the confirmed D-Rank Gate site | — |
 | `ENT-000177` | Elias Ward | surplus and pawn seller | active | an unnamed surplus/pawn shop in Chicago's warehouse district | — |
 | `ENT-000181` | Corinne Whitlock | leasing agent | active | the Rogers Park two-bedroom listing, second-floor front | — |
+| `ENT-000182` | Reyna Castillo | striker | active | Chicago | — |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.0`.
-- Entities: 38. Protagonist relationships: 8.
+- Entities: 39. Protagonist relationships: 8.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

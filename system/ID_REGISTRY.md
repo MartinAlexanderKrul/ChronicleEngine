@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000181 |
+| Entity | `ENT-` | Persistent Entity | ENT-000182 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000272 |
+| Event | `EVT-` | Event | EVT-000275 |
 | Relationship | `REL-` | Relationship | REL-000086 |
 
 ---
@@ -411,6 +411,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000270 | Event | Gatefall: Pendragon: Section 9.10 tracked-board settlement (`gatefall.board.deadline` domain) — `GB-01` breaks E-Rank (8 common/2 elite/1 boss, rolled), `GB-02` breaks D-Rank under an owner ruling on unconfirmed-Gate-breaks-without-entry (13 common/2 elite/1 boss, rolled), `GB-03` clears off-screen as `held`, `GB-04` remains live; resolves design flag F-002 |
 | EVT-000271 | Event | Gatefall: Pendragon: Owen agrees to leave Priya Okafor's crew and found a new one with Alexander (resolving `OBJ-12`'s open question); Owen has not yet told Priya, recorded as a committed but uncompleted intention; Closed Channel recorded for Owen/Walt Adamik |
 | EVT-000272 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement closing the `EVT-000270`-`EVT-000271` span, explicit `none` for `gatefall.skill_formation`, temporal anchor advanced to 2026-08-11 ~09:50 |
+| ENT-000182 | Entity | Gatefall: Pendragon: Reyna Castillo, C-Rank striker, currently without a crew — Kesha Morrison's first named candidate for Alexander and Owen's new crew |
+| EVT-000273 | Event | Gatefall: Pendragon: at the Coalition desk, Alexander pitches Kesha Morrison on founding a new C-Rank-floor crew with Owen as eventual command; Kesha reviews the sponsor/command mechanics, agrees to help staff it, and names Reyna Castillo as a real, currently-crewless C-Rank candidate whose prior crew broke apart after a bad D-Rank pull six weeks ago; declines to help with active "poaching" of crewed hunters and draws the line at people already between crews; institution ledger authored fixing the Coalition's own Rank distribution (420 registered freelancers, C-Rank as the practical ceiling, 22 C-Rank total) |
+| EVT-000274 | Event | Gatefall: Pendragon: walking to the Coalition, Owen names his own reflex to deflect under a serious question, answers plainly instead ("I want this, and it terrifies me"), and — caught making the conversation about himself again — turns the question back to ask how Alexander is actually doing; relationship texture recorded to `REL-000066` |
+| EVT-000275 | Event | Gatefall: Pendragon: promotion-barrier progression-batch-settlement closing the `EVT-000273`-`EVT-000274` span, explicit `none` for `gatefall.skill_formation`, temporal anchor advanced to 2026-08-11 ~09:55 |
 
 ---
 

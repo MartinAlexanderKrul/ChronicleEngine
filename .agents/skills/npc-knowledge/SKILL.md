@@ -20,7 +20,11 @@ If none holds, **the NPC does not know it.** Narrate the NPC from what it actual
 
 ## The player is the authority on what's private
 
-When the player says an NPC couldn't know something, they are right by default — it is their character's private experience. **Stop, accept it, and re-narrate the line from the NPC's real knowledge set.** Do not defend the slip, do not invent a channel after the fact to justify it. A retroactive "well, she could have heard because…" is the same error twice. Hold the closed channel as a pending ruling in conversation rather than writing it to the NPC ledger file mid-scene — per the `save` skill, that write happens only when `/save` runs.
+When the player says an NPC couldn't know something, they are right by default — it is their character's private experience. **Stop, accept it, and re-narrate the line from the NPC's real knowledge set.** Do not defend the slip, do not invent a channel after the fact to justify it. A retroactive "well, she could have heard because…" is the same error twice.
+
+**Then write the row immediately.** Add it to the Closed Channels table in the campaign's `130_NPCS_AND_FACTIONS.md` the moment the channel is ruled closed — not at `/save`, not at the end of the scene. This is the one deliberate exception to the save skill's mid-scene write prohibition, and it is narrow by construction: the row mints no identifier, bumps no provenance, and changes no canonical state. It is a player ruling about what an NPC cannot know.
+
+The exception exists because the alternative was measured and failed. A correction held only in conversation evaporates with the scene, and the table's own rows record the cost — one fact leaked twice and another three times in a single scene, each time *after* a correction had been made and accepted (F-003). Holding the ruling in your head is the configuration that produced those rows.
 
 ## Rationalizations — including the one this failure ran on
 

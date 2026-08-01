@@ -14,6 +14,14 @@ function Assert-Contains {
     }
 }
 
+function Assert-NotContains {
+    param([string]$RelativePath, [string]$Pattern, [string]$Message)
+    $path = Join-Path $root $RelativePath
+    if (Select-String -LiteralPath $path -Pattern $Pattern -Quiet) {
+        throw "$Message ($RelativePath)"
+    }
+}
+
 $resident = 'docs/AI_GAMEPLAY_RESIDENT_CORE.md'
 $profile  = 'docs/AI_GAMEPLAY_RUNTIME_PROFILE.md'
 $runtime  = 'engine/012_ENGINE_RUNTIME.md'
@@ -107,5 +115,48 @@ Assert-Contains 'campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md' '^##
 Assert-Contains $startup 'npc_present:' 'The prototype campaign declares no NPC-encounter dispatch, so the resident load obligation names no read.'
 Assert-Contains $startup 'object_source: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY\.md' 'The NPC dispatch does not name the roster its subject identifiers come from.'
 Assert-Contains $resident 'Take the fields the campaign''s declared entity dispatch names rather than the whole block' 'The resident layer does not bound the load to named fields; the largest live record is over 65 KB.'
+
+# --- The write is immediate, and every layer must agree (F-003) -------------
+#
+# The resident rule above requires a closed-channel ruling to be recorded "so
+# the ruling outlives the scene", and the Closed Channels table's own framing
+# says to add a row "the moment a channel is ruled closed ... do not wait for a
+# checkpoint". Both were correct. Two fetched skills said the opposite:
+# npc-knowledge told the Runtime to "hold the closed channel as a pending ruling
+# in conversation rather than writing it to the NPC ledger file mid-scene", and
+# the save skill named an "NPC-knowledge ruling" among the deltas held until
+# /save. Four documents, two of them pointing the wrong way, and only the
+# resident leg was pinned -- so the conflict passed every gate.
+#
+# That is F-003's mechanism. A Runtime following the fetched skill holds the
+# ruling in conversation, nothing durable exists two exchanges later, and the
+# fact leaks again inside the same scene. The table's rows record it happening
+# twice on one fact and three times on another, each after a correction.
+#
+# These legs pin the agreement rather than any single copy of it.
+$npcSkillClaude = '.claude/skills/npc-knowledge/SKILL.md'
+$saveSkill      = '.agents/skills/save/SKILL.md'
+$saveSkillClaude = '.claude/skills/save/SKILL.md'
+
+foreach ($s in @($skill, $npcSkillClaude)) {
+    Assert-Contains $s 'Then write the row immediately' "The npc-knowledge skill does not require the closed-channel row to be written at once ($s)."
+    Assert-NotContains $s 'rather than writing it to the NPC ledger file mid-scene' "The npc-knowledge skill still defers the closed-channel write, contradicting the resident rule and the table's own framing (F-003) ($s)."
+}
+
+foreach ($s in @($saveSkill, $saveSkillClaude)) {
+    Assert-Contains $s 'One exception, and only one: a closed-channel ruling' "The save skill does not carve out the closed-channel write, so its mid-scene prohibition still swallows it (F-003) ($s)."
+    Assert-NotContains $s 'or an NPC-knowledge ruling is now held as a pending delta' "The save skill still holds an NPC-knowledge ruling until /save, which is the write that evaporates (F-003) ($s)."
+}
+
+# The mirrors must stay byte-identical, or a fix lands in one and not the other.
+foreach ($pair in @(
+    @('.agents/skills/npc-knowledge/SKILL.md', '.claude/skills/npc-knowledge/SKILL.md'),
+    @('.agents/skills/save/SKILL.md',          '.claude/skills/save/SKILL.md'))) {
+    $a = Get-FileHash (Join-Path $root $pair[0]) -Algorithm SHA256
+    $b = Get-FileHash (Join-Path $root $pair[1]) -Algorithm SHA256
+    if ($a.Hash -ne $b.Hash) {
+        throw "Skill mirrors have diverged: $($pair[0]) and $($pair[1]) differ, so a rule can be fixed in one and left wrong in the other."
+    }
+}
 
 Write-Host 'NPC channel contract PASSED'

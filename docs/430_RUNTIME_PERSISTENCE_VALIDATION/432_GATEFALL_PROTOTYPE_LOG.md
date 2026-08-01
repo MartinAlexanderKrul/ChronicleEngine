@@ -32,7 +32,23 @@ At designation, the campaign had:
 
 ## Current Evidence State
 
-As of 2026-07-26 repository time, ordinary play has advanced the campaign to twenty-four canonical-form checkpoints (`900_CHECKPOINT_0001`–`0024`). Checkpoint 0015 is the first automatic Context-Preservation capture under Data Model 0.1.3; Checkpoint 0020 is the first capture under frozen Gatefall Profile 1.10; Checkpoints 0022–0023 are immutable Profile 1.11 / Data Model 0.1.3 captures; and corrective Checkpoint 0024 is the latest, under Profile 1.12 / Data Model 0.1.4. Live state has since advanced to Profile 1.13 with exact clock/recovery settlement; every checkpoint remains immutable and runs the applicable readiness chain before play.
+**As of 2026-08-01 repository time, ordinary play has advanced the campaign to fifty-two canonical-form checkpoints (`900_CHECKPOINT_0001`–`0052`).** The registry stands at `ENT-000182`, `REC-000101`, `EVT-000276`, `REL-000086`.
+
+The captures partition cleanly by schema, with no gap and no abandoned point:
+
+| Data Model | Checkpoints | Count |
+|---|---|---|
+| 0.1.2 | 0001–0014 | 14 |
+| 0.1.3 | 0015–0023 | 9 |
+| 0.1.4 | 0024–0029 | 6 |
+| 0.1.5 | 0030–0050 | 21 |
+| 0.1.6 | 0051–0052 | 2 |
+
+Profile freeze status partitions the same way: `workshop-draft` at 0001–0008, `frozen` at 0009–0052. Checkpoint 0052 is the latest immutable capture — Profile 1.45 frozen, `campaign_schema: 0.1.6`, parent 0051, source `EVT-000275`. Live authoring has since advanced to Profile 1.46.
+
+Milestone captures within that sequence: Checkpoint 0015 is the first automatic Context-Preservation capture and the first native 0.1.3; Checkpoint 0020 is the first under frozen Profile 1.10; Checkpoint 0024 is the first 0.1.4; Checkpoint 0030 the first 0.1.5; Checkpoint 0051 the first 0.1.6. Every checkpoint remains immutable and runs the applicable readiness chain before play.
+
+**This section had drifted twenty-eight checkpoints and five decisions behind live state before this reconciliation**, having last been written on 2026-07-26. That is worth recording rather than quietly correcting: it is the same operational-metadata decay the roadmap's Technical Debt entry describes, occurring in the document that is supposed to be the postmortem's evidence base. The prototype was producing evidence faster than the validation record was absorbing it.
 
 Live prototype evidence also produced Decision 076: Relationship Texture. That finding was accepted on 2026-07-25 repository time as an explicit foundational exception to the Version 0.3 Architecture Freeze and advances mutable live state to Data Model 0.1.3. Checkpoint 0014 and every earlier checkpoint remain byte-immutable at their captured schema; restoring them requires the explicit schema migration at readiness before validation and play. Checkpoint 0015 closes the positive path by capturing already-migrated live state directly as 0.1.3. The campaign's in-world date did not date the architectural decision.
 
@@ -74,7 +90,9 @@ Branch and restart validation uses a disposable fork. Negative structure and com
 
 **Result:** Observed pass.
 
-Checkpoints 0001–0021 use the canonical four-digit directory form. Each contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004, frozen Profile 1.6 / schema 0.1.2 evidence at Checkpoint 0014, the first native schema 0.1.3 capture at Checkpoint 0015, the first frozen Profile 1.10 capture at Checkpoint 0020, and the latest Profile 1.10 capture at Checkpoint 0021. Profile 1.11 currently has no promoted checkpoint evidence; adoption will be recorded at the next readiness pause and subsequent save.
+Checkpoints **0001–0052** use the canonical four-digit directory form. Each contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004, frozen Profile 1.6 / schema 0.1.2 evidence at Checkpoint 0014, the first native schema 0.1.3 capture at Checkpoint 0015, the first frozen Profile 1.10 capture at Checkpoint 0020, and continues unbroken through the schema and profile transitions tabulated under *Current Evidence State* to Checkpoint 0052.
+
+Fifty-two consecutive conforming captures across five Data Model versions and a profile line from 1.0 to 1.45 is the strongest single result in the matrix: the checkpoint form absorbed six schema advances and forty-five profile versions without one malformed or abandoned point.
 
 **Matrix:** V03-01, V03-09.
 
@@ -82,7 +100,7 @@ Checkpoints 0001–0021 use the canonical four-digit directory form. Each contai
 
 **Result:** Observed pass.
 
-Checkpoint 0004 records the original complete eight-ledger target set, and subsequent checkpoints through 0020 repeat the canonical form. Checkpoint 0015 additionally observes the automatic Context-Preservation path: all eight ledgers promoted, registry advanced through `EVT-000084`, worlds-and-campaigns index advanced to 0015, and `play_export_0003.md` written in the same preservation operation.
+Checkpoint 0004 records the original complete eight-ledger target set, and subsequent checkpoints through **0052** repeat the canonical form. Checkpoint 0015 additionally observes the automatic Context-Preservation path: all eight ledgers promoted, registry advanced through `EVT-000084`, worlds-and-campaigns index advanced to 0015, and `play_export_0003.md` written in the same preservation operation.
 
 **Matrix:** V03-02.
 
@@ -202,6 +220,46 @@ P-04: Repository validation FAILED (3 error(s))
 **Gate output:** `test_player_agency_contract.ps1` passes alongside the repository and checkpoint gates.
 **Matrix cases:** V03-19.
 **Verdict:** Pass for finding disposition; V03-19 remains open for the final postmortem determination.
+
+## Evidence 012 — The design-flag intake path, and F-001's two decisions
+
+**Date / checkpoint:** 2026-07-31 repository time; checkpoints 0043–0051.
+**Command or barrier:** `/flag`; ordinary play; owner rulings admitting Decisions 082–084.
+**Starting state:** No intake path existed between "noticed in play" and "accepted decision," so friction either became an ADR immediately or evaporated.
+**Observed result:** `engine/004_DESIGN_FLAGS.md` was added as the intake queue with an explicit three-state vocabulary — Open, Actioned, Dismissed. F-001 recorded a player texting four established contacts and receiving four declines. Analysis (`438_F001_MULTI_CONTACT_OUTREACH_ANALYSIS.md`) found five parties owed the protagonist contact and none was recorded as anything a Runtime could settle, and that the campaign had already improvised the construct by hand in `OBJ-23` — labelled a *Runtime-authored NPC-behavior trigger* — which failed within one in-fiction day because nothing dispatches against prose. Decisions 082 and 083 followed, then 084 when authoring the dispatch exposed that the trigger manifest's settlement vocabulary had no member a world-side settlement could declare.
+**Repository evidence:** `engine/004_DESIGN_FLAGS.md`; Decisions 082, 083, 084; Gatefall Profile 1.44; `EVT-000268`.
+**Matrix cases:** V03-19.
+**Verdict:** Pass for finding disposition. The flag path itself is the result worth recording: three of the version's ten foundational changes entered through it rather than through design review.
+
+## Evidence 013 — F-002: a deterministic mechanism that stopped firing
+
+**Date / checkpoint:** 2026-07-31; `EVT-000270`, checkpoint 0051.
+**Command or barrier:** Section 9.10 tracked-board deadline settlement.
+**Starting state:** Four tracked Gate postings snapshotted at the 2026-08-05 12:15 anchor. At the campaign's 2026-08-10 anchor, three of the four derived deadlines had passed and none had been settled; `180_CURRENT_STATE.md` still reported `tracked_postings: 4`.
+**Observed result:** The board settled in play — `GB-01` and `GB-02` broke, `GB-03` cleared off-screen, `GB-04` remained live — and `tracked_postings` fell to 1.
+**Verdict:** **Gap, then closed.** This is the clearest case in the version of the recurring shape: a rule authored *specifically* so postings would not evaporate unobserved, which owed no roll and no discretion, went three deadlines past without firing because nothing named the moment it had to be consulted. Decision 084 gave it a declarable dispatch. Settling it also surfaced F-004, dispositioned as world authoring.
+
+## Evidence 014 — F-008: the Runtime declining to author, and then to answer
+
+**Date / checkpoint:** 2026-08-01 repository time; no checkpoint (development session).
+**Command or barrier:** Ordinary play; owner correction; Runtime Sections 1.4, 2.4, 3.2 and Resident Core 1.16–1.18.
+**Starting state:** A player asked an established fixer to find a crewless C-Rank hunter. None was named in canon.
+**Observed result:** The Runtime had the NPC defer in fiction and cited Decision 083 when pressed. The recorded reasoning shows the decision was taken a step earlier, on a bare inference stated as a premise citing nothing — *"I don't have any other named C-Rank freelancers … so I shouldn't fabricate one"* — with Decision 083 arriving afterwards as justification. Five existing grants permitted the authoring (Rules 1.4, 3.10, 2.1; Runtime 1.3, 8.3); what was missing was a default and a class to file the case in, so it fell into Runtime 1.4's *unknown in-world*, which correctly refuses to force an answer. The same world declares twenty-two C-Rank hunters citywide and names a handful.
+**Disposition:** Refinement, no ADR. Runtime 1.4 gains a third ambiguity class, *unnamed but entailed*. A second correction established the broader rule — Runtime uncertainty is never a world fact, and a delay narrated because the *Runtime* has not decided is not a world fact either.
+**Repository evidence:** `engine/004_DESIGN_FLAGS.md` F-008; `tools/test_world_authoring_default.ps1`; `tools/test_commitment_contract.ps1`.
+**Matrix cases:** V03-19.
+**Verdict:** Pass for finding disposition. Notable as the first finding where the flag's own diagnosis was wrong and the transcript corrected it.
+
+## Evidence 015 — Four flags, one generator: NPC grounding
+
+**Date / checkpoint:** 2026-07-31 to 2026-08-01; sessions around checkpoints 0051–0052.
+**Command or barrier:** Resident *NPC Channel Check* and *Load a Recorded NPC Before Playing It*; `tools/test_npc_channel_contract.ps1`.
+**Starting state:** The channel check was complete, sited resident, and gated, with a rationalization table naming the exact excuses the earlier failures ran on.
+**Observed result:** Four further flags. F-003 re-leaked a fact two exchanges after an accepted correction; F-005 invented conversational history against `EVT-000138` and then asserted a Bearer-only System Rank; F-006 treated an Event's aggregate summary as proof of what passed between two characters; F-007 landed on the *first* NPC line after an explicit scene reset.
+**Disposition:** F-003 had a mechanical cause and is closed — four documents governed recording a closed-channel ruling and two pointed the wrong way, with only the resident leg gated. F-005/006/007 are consolidated as one recorded architectural finding; they have no decidable proxy, and Decision 085's own measurement (38% false positives on the nearest derived check) rules that route out on evidence.
+**Repository evidence:** `439_NPC_GROUNDING_ANALYSIS.md`; `tools/test_npc_channel_contract.ps1`.
+**Matrix cases:** V03-19.
+**Verdict:** **Partial pass, one gap carried.** The recording half is closed; whether the read happens at all is the version's weakest enforcement and is carried to the postmortem with its limit stated rather than patched.
 
 ---
 

@@ -79,7 +79,13 @@ This is the same class of defect the existing Owen/Walt and Owen/Kesha rows in t
 
 **The open design question:** whether the Resident Core's turn-by-turn discipline needs an explicit "closed-channel facts stay suppressed for the rest of the scene, not just the next line" rule — i.e., once a fact is confirmed closed to an NPC mid-scene, treat it as a standing constraint on every subsequent line for that NPC in that scene (and arguably that session), not a check that resets after one corrected turn. Worth reviewing whether this belongs in the `npc-knowledge` skill itself, the Resident Core's per-turn checklist, or as a lightweight scene-local working-memory convention (e.g., restate active closed channels for present NPCs at scene start).
 
-**Status:** Open.
+**Status:** **Actioned (2026-08-01)** → `.agents/` and `.claude/` `npc-knowledge` and `save` skills; `tools/test_npc_channel_contract.ps1`. Full analysis: `docs/430_RUNTIME_PERSISTENCE_VALIDATION/439_NPC_GROUNDING_ANALYSIS.md`.
+
+**The flag's proposed remedy is not what was wrong.** The rule it asks for already existed — the resident layer states that a correction "does not inoculate a later turn, and does not generalize to a different fact," and a gate has pinned that since 2026-07-28. The defect was that **four documents governed recording the ruling and two pointed the wrong way.** The Resident Core says record it "so the ruling outlives the scene"; the Closed Channels table says add a row "the moment a channel is ruled closed… do not wait for a checkpoint"; but the `npc-knowledge` skill said to "hold the closed channel as a pending ruling in conversation rather than writing it to the NPC ledger file mid-scene," and the `save` skill named an NPC-knowledge ruling among the deltas held until `/save`. Only the resident leg was gated, so the conflict passed every check.
+
+A Runtime following the fetched skills holds the ruling in conversation, nothing durable exists two exchanges later, and the fact leaks again inside the same scene — which is precisely what the table's rows record, twice on one fact and three times on another, each after an accepted correction. Both skills now carve out the closed-channel write as the single deliberate exception to the mid-scene prohibition, narrow by construction because the row mints no identifier, bumps no provenance, and changes no canonical state. The gate pins the agreement across all four documents and asserts the two skill mirrors stay byte-identical.
+
+This closes the *recording* half only. Whether the Runtime performs the grounding read at all is F-005/F-006/F-007's finding and is not mechanically checkable; see the analysis.
 
 ## F-004 — Section 9.5's true-Rank roll has no trigger for an unconfirmed Gate that breaks unentered
 
@@ -91,7 +97,9 @@ Settling the tracked board (`EVT-000270`) hit a genuine authoring gap on `GB-02`
 
 **The open design question:** whether Section 9.10 (or Section 9.5 itself) should author this case explicitly — an unconfirmed Gate's Rank-at-break when no entry ever occurred — rather than leaving it to a per-instance ruling each time an unconfirmed posting goes unstaffed to its deadline, which Section 9.4's own economics (cheap jobs sit) suggests will not be rare. Worth reviewing alongside Section 9.6's anomaly table, since an entered unconfirmed Gate can anomaly-roll to a Rank swing that an unentered break, under the ruling above, can never produce.
 
-**Status:** Open.
+**Status:** **Dispositioned (2026-08-01) — world authoring, deferred to a play session.** Not Actioned and not Dismissed: the question is real and stands, but it is scoped entirely to `worlds/gatefall/206_WORLD_RULE_PROFILE.md` Sections 9.5, 9.6 and 9.10, and Decision 062 with Decision 069 point 4 both establish that world authoring requires no engine decision and consumes no decision number. It is recorded in `030_ENGINE_CHANGELOG.md` and the world's own documents when it lands.
+
+**It does not block the Version 0.3 Engine Postmortem**, which assesses engine architecture. The owner ruling already made in play (`EVT-000270`) governs the live board in the meantime: an unconfirmed Gate that breaks without ever being entered never triggers the Section 9.5 roll, and its assessed Rank stands. What remains is promoting that ruling from per-instance to authored, which is a profile edit under normal save discipline.
 
 ## F-005 — Two fresh NPC-knowledge channel violations back-to-back, neither caught before generation
 
@@ -106,7 +114,11 @@ Both are distinct from F-003's repeat-after-correction pattern: these were first
 
 **The open design question:** whether the Resident Core's *Load a Recorded NPC Before Playing It* and *NPC Channel Check* sections need a stronger, more mechanical precondition — e.g., an explicit instruction that any NPC line asserting shared conversational history (not just present-tense fact-knowledge) must be checked against the chronicle before being written, and that any line implying knowledge of a Bearer-only System quantity (Rank, level, XP, Mana, quests) must be checked against the active World Rule Profile's Information Boundary section before being written — rather than relying on the general "channel check fires narrowly" framing, which two consecutive misses in one exchange suggests is not catching this class of error reliably even when a Closed Channels table has just been loaded into the working set at readiness.
 
-**Status:** Open.
+**Status:** **Actioned (2026-08-01) — consolidated with F-006 and F-007 into one finding.** `docs/430_RUNTIME_PERSISTENCE_VALIDATION/439_NPC_GROUNDING_ANALYSIS.md`, carried to the Version 0.3 Engine Postmortem.
+
+These are not three defects. They are one — *an NPC's line is generated from what the Runtime recalls about that character rather than from a read of what canon says the character knows* — meeting three different surfaces: the chronicle (F-005a), the profile's information boundary (F-005b), an Event's summary prose (F-006), and ambiguous Current State prose (F-007). Fixing them individually yields a table of per-fact prohibitions and leaves the generator untouched, which is what four flags across two sessions already demonstrates.
+
+The analysis records why no gate is available: the failure leaves no repository trace, because a line generated from recollection and one generated from a correct read are identical in the transcript when the recollection happens to be right. Decision 085 measured the nearest derived check at 38% false positives and rejected it on that measurement; the same decision states that its own `no-change` half "is not verifiable and is not pretended to be." The disposition is therefore a recorded architectural finding with its enforcement limit stated, not a patch.
 
 ## F-006 — F-005's exchange required a third correction before landing a clean answer
 
@@ -118,7 +130,7 @@ Three corrections inside one exchange, over what should have been a low-stakes o
 
 **The open design question:** beyond F-005's proposed fixes, whether the Resident Core needs an explicit warning against treating chronicle *summary/description* prose as granular proof of what one character told another — i.e., a description line naming several facts in aggregate ("flagged X, Y, and Z") is not itself evidence that every named item was individually communicated, and asserting it as would-be grounding for an NPC's specific knowledge is a subtler version of the same "recollection instead of an actual read" failure the Resident Core already warns about for state and channel checks. Also worth asking whether three corrections in one exchange, immediately after the first two were logged, indicates the fix needs to land before the next NPC line is generated in-session, not just as a future engine change.
 
-**Status:** Open.
+**Status:** **Actioned (2026-08-01) — consolidated with F-005 and F-007.** See `docs/430_RUNTIME_PERSISTENCE_VALIDATION/439_NPC_GROUNDING_ANALYSIS.md` and the disposition recorded under F-005.
 
 ## F-007 — A fourth ungrounded NPC-knowledge claim landed immediately after the player reset the scene to get a clean start
 
@@ -130,7 +142,9 @@ This is the same failure shape as F-006's Ada/Dale error (treating adjacent narr
 
 **The open design question:** whether the underlying issue is that ambiguous provenance in `180_CURRENT_STATE.md`'s narrative prose (a paragraph mixing "what happened" with "what was told to whom") needs to be written more strictly to separate protagonist-only facts from facts actually communicated to a present NPC, and/or whether the Runtime needs a harder default rule for exactly this ambiguity: when a current-state or chronicle passage does not unambiguously state that an NPC was told a specific fact, default to the NPC not knowing it, rather than defaulting to the more informed reading. Four corrections across three consecutive exchange attempts, surviving an explicit scene reset, suggests this needs a structural fix rather than continued in-session vigilance.
 
-**Status:** Open.
+**Status:** **Actioned (2026-08-01) — consolidated with F-005 and F-006.** See `docs/430_RUNTIME_PERSISTENCE_VALIDATION/439_NPC_GROUNDING_ANALYSIS.md` and the disposition recorded under F-005.
+
+This flag carries the one contributing cause that is *not* engine work and is recorded separately so the postmortem does not mistake it for one: `180_CURRENT_STATE.md` paragraphs mix what happened with what was told to whom, and that ambiguity is what the Runtime resolved toward the more-informed reading. Writing those passages to separate protagonist-only facts from communicated ones is world and campaign authoring, and belongs to a play session. Its own observation stands and is the reason it did not become a fourth patch: the failure landed on the first NPC line after an explicit scene reset, so it is not scene-state carryover — it runs fresh at each line.
 
 ## F-008 — "Nothing named in canon yet" should default to authoring it, not deferring or citing a supply-cadence rule against the player
 

@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.18
+**Document Version:** 1.19
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 

@@ -4117,6 +4117,58 @@ participation_audits:
 
 ---
 
+## Decision 086 — The Architecture Freeze Binds Implementation, Not Validation
+
+**Status:** Accepted — 2026-08-01
+**Date:** 2026-08-01
+**Related Sections:** `002_ENGINE_ROADMAP.md`; `docs/DEVELOPMENT_WORKFLOW.md` (Version Evolution & Validation Lifecycle, Change Classification); `docs/430_RUNTIME_PERSISTENCE_VALIDATION/440_ENGINE_POSTMORTEM.md` Finding 1; Decisions 048, 069, 076–085
+
+### Context
+
+Decision 048 established the lifecycle and its Architecture Freeze: once a version's ADRs are accepted, "later work within the version is implementation and refinement, not new foundational architecture." Decision 069 completed 048 from the other side by giving change *classification* a structural test that reads the diff rather than the motivation, and made ownership mechanical at the roadmap.
+
+The freeze's **exception path received no equivalent.** Version 0.3 then admitted ten foundational changes by explicit owner ruling — Decisions 076–085. Each carries a recorded justification; each names its classification as foundational and does not reinterpret it; none is reopened here.
+
+The postmortem's Finding 1 states the problem precisely: "admitted by owner ruling" is unfalsifiable. There is no written condition an exception must meet, so the freeze constrains nothing an owner is willing to rule on, and a reader who was not in the conversation cannot check whether a given exception was legitimate.
+
+Two readings were on the table. Either the freeze meant what it said and ten exceptions is a governance failure, or the freeze was advisory during a prototype milestone and should say so.
+
+**The second reading is correct, and the evidence is the lifecycle's own structure.** Decision 048 *mandates* a Prototype Campaign whose declared purpose is to validate the engine through use and surface what design review missed. A freeze that forbids acting on those findings would require the lifecycle to discover defects and then forbid repairing them until the next version — inverting the purpose of the stage that produced them. Decision 076 made exactly that argument when it became the first exception, and nine further decisions followed because the argument held every time.
+
+Ten justified exceptions are not ten lapses of discipline. They are evidence that the rule as written did not match the stage it was being applied to.
+
+### Decision
+
+**1. The Architecture Freeze binds the Implementation and Consistency Audit stages.** From ADR Approval through the Consistency Audit, foundational change is closed: that is the interval the freeze exists to protect, and the one in which a foundational change means the version's architectural basis was not actually settled.
+
+**2. From Capability Validation onward, foundational change is permitted when it meets all four of the following.** The conditions are cumulative and each is externally checkable:
+
+- **(a) Played evidence.** The finding arises from prototype play or validation execution, not from design review. A foundational change proposed from reasoning alone still belongs to the next version's Planning.
+- **(b) Classified.** It is classified under Decision 069's structural test, and the classification is recorded as it stands rather than reinterpreted to fit.
+- **(c) Versioned and migrated.** Any Data Model or profile advance carries its version bump and an explicit migration contract; immutable checkpoints remain immutable.
+- **(d) Revalidated.** The repository passes its gates after the change, and the finding's disposition is recorded in the version's validation record.
+
+**3. An exception is recorded in the decision itself.** The decision states which of the four conditions it meets and how, so the record answers the question without the conversation.
+
+**4. The owner ruling remains required and is not replaced.** This defines what an exception must satisfy, not who may grant one. A change meeting all four conditions is still admitted deliberately.
+
+### Consequences
+
+- **Decisions 076–085 are retroactively described, not retroactively excused.** All ten already meet the four conditions — each came from played evidence, carries its classification unrevised, advanced and migrated its schema where required, and was revalidated. The rule now describes the practice instead of being routed around by it. Their status is unchanged and none is reopened.
+- **The freeze becomes falsifiable again.** A foundational change from design review during validation, or one that skips migration or revalidation, now fails a written condition rather than resting on judgment.
+- **This is a refinement under Decision 069.** It adds no Rules section, changes no Data Model contract, and introduces no mechanism a world may invoke or must satisfy. It completes Decision 048 exactly as Decision 069 did, and carries the same class for the same reason.
+- **The lifecycle's warning is not weakened.** Decision 048 exists partly because a project can hide in hardening indefinitely. Condition (a) is what prevents this ruling from becoming a general licence: without played evidence, the freeze still holds.
+- **Version 0.3 closes with its largest finding addressed** rather than carried, which is the acceptance condition Decision 048 sets for a version's postmortem.
+
+### Alternatives Considered
+
+- **Tighten the freeze and treat the ten as a governance failure.** Rejected. It would require the next prototype campaign either to withhold its findings until the following version, or to repeat the same ten rulings under the same unfalsifiable path. It also mischaracterizes the record: the ten are individually sound, and a rule broken ten times by careful people in good faith is usually the wrong rule.
+- **Leave the freeze as written and rely on owner judgment.** The honest status quo, and it works while one owner holds the whole history. It fails the test this repository applies everywhere else — an obligation with no enforcement point holds only by assumption (Decision 055) — and it leaves a reader unable to check any exception.
+- **Require a formal version re-plan whenever a foundational finding appears.** Rejected as disproportionate: it converts every prototype finding into a planning cycle, which would have meant ten re-plans in nine days, and Decision 048's lifecycle already has a stage for incorporating findings.
+- **Suspend the freeze during 0.3.5 as a one-off.** Rejected. It solves this version and leaves the next prototype campaign in exactly the same position, which is the drift Decision 069 exists to stop.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

@@ -8,6 +8,22 @@
 
 ---
 
+# Version 0.3.0 — Runtime & Persistence Hardening
+
+Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
+
+## 2026-08-01 — Version 0.3.0 released, and the Architecture Freeze is scoped
+
+**Release and governance; Decision 086 is a refinement under Decision 069.** Closes milestone 0.3.5 and Version 0.3.
+**Problem:** the version met every completion criterion — matrix complete, prototype played, postmortem written, no flag Open — while carrying one unresolved finding that was arguably disqualifying. Decision 048 froze the architecture at Decisions 072–075, and **ten foundational changes were then admitted by owner ruling** (Decisions 076–085). Each was individually justified and none is reopened. But Decision 069 had given change *classification* a structural test, and the freeze's exception path received no equivalent, so "admitted by owner ruling" was unfalsifiable: no written condition an exception must meet, and no way for a reader outside the conversation to check whether a given one was legitimate.
+**Change:** **Decision 086** rules that the freeze was mis-scoped rather than violated. It binds Implementation and the Consistency Audit — the interval where a foundational change means the architectural basis was never settled. From Capability Validation onward a foundational change is permitted when it meets four cumulative, externally checkable conditions: it arises from **played evidence** rather than design review; it is **classified** under Decision 069 with the classification recorded as it stands; it is **versioned and migrated**, immutable checkpoints untouched; and it is **revalidated** against the gates with its disposition recorded. The exception is recorded in the decision itself, and the owner ruling is still required — this defines what an exception must satisfy, not who may grant one.
+
+The reasoning is the lifecycle's own structure: Decision 048 *mandates* a Prototype Campaign whose purpose is to surface what design review missed, so a freeze forbidding action on those findings would require discovering defects and then forbidding their repair until the next version. Decision 076 made that argument when it became the first exception and nine more followed, which is evidence the rule did not match the stage rather than evidence of ten lapses. All ten already satisfy the four conditions, so the rule now describes the practice instead of being routed around by it — and stays falsifiable, since a foundational change from design review, or one skipping migration or revalidation, still fails.
+**Files:** `engine/001_ENGINE_DECISIONS.md` (Decision 086), `engine/000_ENGINE_MANIFEST.md`, `engine/002_ENGINE_ROADMAP.md`, `README.md`, `docs/430_RUNTIME_PERSISTENCE_VALIDATION/440_ENGINE_POSTMORTEM.md`.
+**Audit:** Engine 0.2.0 → **0.3.0**; the Manifest's Data Model row is corrected 0.1.5 → **0.1.6**, which had drifted behind the live schema — the same Finding 4 decay, in the version table. **Release evidence:** fifty-six consecutive conforming checkpoints across six Data Model versions and forty-six profile versions, exact named restoration, branch, restart, registry preservation, and profile-compatibility readiness all demonstrated; every capability row passing; every flag dispositioned. **Findings 2–4 are carried to Version 0.4** as required refinements under Decision 048 — the enforcement class with no mechanical proxy, the resident card full at 5,978 of 6,000, the recurring settler-without-writer shape, and metadata decay wherever no gate reads it. **Version 0.4 Planning is blocked** until the number collision is settled: Governance & Society and Magic Framework both hold 0.4, left visible rather than pre-resolved under Decision 069's anti-drift rule.
+
+---
+
 # Version 0.2.0 — Knowledge & Civilization
 
 Released 2026-07-14 after Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements completed under Decision 048.

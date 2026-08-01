@@ -2,7 +2,7 @@
 
 ## Version 0.3 Engine Postmortem — Runtime & Persistence Hardening
 
-**Status:** Draft — awaiting the owner's Release Decision
+**Status:** Accepted — Engine Version 0.3.0 released 2026-08-01
 **Milestone:** 0.3.5 — Capability Validation and Prototype Campaign
 **Prototype:** Gatefall: Pendragon (`campaigns/gatefall_pendragon_001/`)
 **Evidence base:** `431_CAPABILITY_MATRIX.md`, `432_GATEFALL_PROTOTYPE_LOG.md`, `438`, `439`
@@ -140,15 +140,12 @@ All gates pass on the merged tree at the time of writing, with one known excepti
 
 # Release Decision
 
-**Reserved for the owner.**
+**Engine Version 0.3.0 — Runtime & Persistence Hardening — is released, 2026-08-01, by owner ruling.**
 
-The engineering position: Version 0.3's declared goal is met, its capability matrix is complete, every flag carries a disposition, and no known architectural gap is unaddressed — the two that remain open (class-3 enforcement, the mandatory commitment block) are recorded with their limits stated rather than papered over, which is the acceptance condition Decision 048 sets.
+Version 0.3's declared goal is met, its capability matrix is complete, every flag carries a disposition, and no known architectural gap is unaddressed. The two limits that remain are recorded with their boundaries stated rather than papered over — class-3 enforcement has no mechanical proxy, and making a *missing* commitment fail would need a declared serialization home — which is the acceptance condition Decision 048 sets.
 
-The governance position is genuinely unsettled and is Finding 1. Declaring 0.3.0 while the freeze's meaning is unresolved would close the version with its largest finding unaddressed.
+**Finding 1 was ruled on before release rather than carried**, as Decision 086. The freeze was not violated ten times; it was mis-scoped once. It binds Implementation and the Consistency Audit, and from Capability Validation onward a foundational change is permitted when it arises from played evidence, is classified under Decision 069, is versioned and migrated, and is revalidated. All ten of Decisions 076–085 already met those conditions, so the rule now describes the practice instead of being routed around by it — and remains falsifiable, because a foundational change from design review, or one skipping migration or revalidation, still fails a written condition.
 
-Two paths, and the choice is the owner's:
+The alternative — holding the version open to resolve a governance question about its own freeze — was rejected. Decision 048 requires the postmortem's refinements before **Version 0.4 Planning**, not before release, so holding bought nothing; and this roadmap's own argument for the version warns that "a project can hide in hardening indefinitely," which is precisely the shape that delay would have taken.
 
-1. **Declare 0.3.0 now**, and make Finding 1 the first item of 0.4 Planning.
-2. **Hold 0.3 open** until the freeze question is ruled on, then declare.
-
-Under Decision 048, the required refinements above must be incorporated before Version 0.4 Planning begins either way.
+Findings 2, 3 and 4 are carried to Version 0.4 as required refinements. Under Decision 048 they must be incorporated before Version 0.4 Planning begins, and Planning is separately blocked until the 0.4 number collision is settled.

@@ -2,7 +2,7 @@
 
 ## Engine Manifest
 
-**Engine Version:** 0.2.0
+**Engine Version:** 0.3.0
 **Status:** Workshop Draft  
 **Project Type:** Persistent Historical Simulation Engine  
 **Simulation Model:** World-First  
@@ -295,8 +295,8 @@ Changes to one component should not require version changes to unrelated compone
 
 | Component | Version |
 |-----------|---------|
-| Engine | 0.2.0 |
-| Data Model | 0.1.5 |
+| Engine | 0.3.0 |
+| Data Model | 0.1.6 |
 | World | 0.9 |
 | Campaign | Not Created |
 | Save Format | 0.1.0 |
@@ -315,21 +315,22 @@ Changes to one component should not require version changes to unrelated compone
 
 Chronicle Engine develops one version at a time through the standard development lifecycle (`001_ENGINE_DECISIONS.md` Decision 048; `docs/DEVELOPMENT_WORKFLOW.md`). The Engine Version represents the most recent completed release, not work in progress.
 
-**Current Engine Version:** 0.2.0 (Knowledge & Civilization)
-**Current Development Target:** Version 0.3 — Runtime & Persistence Hardening
-**Current Milestone:** Capability Validation (0.3.5)
+**Current Engine Version:** 0.3.0 (Runtime & Persistence Hardening)
+**Current Development Target:** Version 0.4 — Planning not yet begun
+**Current Milestone:** None; Version 0.3 is complete
 
-The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 completed Knowledge & Civilization and all lifecycle validation gates. The Version 0.3 scope was accepted on 2026-07-19 and its planned ADRs — Decisions 072–075 — on 2026-07-23 (Architecture Freeze; see `002_ENGINE_ROADMAP.md`). Decisions 076, 077, 079, and 080 were admitted by explicit owner rulings as foundational exceptions produced by prototype evidence.
+The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 completed Knowledge & Civilization and all lifecycle validation gates. **Version 0.3.0 was released on 2026-08-01** after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem, per Decision 048.
 
-Current priority:
+What Version 0.3 delivered:
 
-1. Decisions 072–074 are implemented (2026-07-23): the canonical checkpoint form, single-owner presence (Data Model 0.1.2), and the World Rule Profile freeze contract (Rules 14.6) with Reikon 0.10 frozen as the first conformance fixture.
-2. The Consistency Audit is complete (2026-07-23): glossary terminology and cross-document references reconciled; PA-002 and PA-008 dispositioned Resolved.
-3. Decision 076 is implemented from live prototype evidence (2026-07-25): Relationship Texture, Characterization Settlement, automatic context-preservation export, and the Data Model 0.1.2 → 0.1.3 migration.
-4. Decision 077 is implemented from further live prototype evidence (2026-07-26): provenance now serializes the distinct fictional and repository clocks as `game_date` and `real_date`, advancing mutable live state to Data Model 0.1.4 while leaving immutable checkpoints unchanged.
-5. Decision 078 is implemented from Gatefall prototype evidence (2026-07-26): worlds with deterministic time rules carry an exact canonical campaign-time settlement anchor and world-declared fractional recovery state; settlement occurs before the next action, never on a later status request.
-6. Decisions 079–080 are implemented from Gatefall prototype evidence (2026-07-27): Data Model 0.1.5 adds Event counter deltas, prospective counter baselines, progression-audit results, and persistent candidates. Gatefall Profile 1.19 is the first complete skill-formation implementation.
-7. Milestone 0.3.5 is in progress: Gatefall: Pendragon is the designated live Prototype Campaign, with destructive and compatibility-failure cases isolated in non-canonical fixtures under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`.
+1. **Save Layer Unification (0.3.1, Decision 072).** One canonical checkpoint form, mechanically enforced, with the Reikon Checkpoint 0001 failure class covered by a regression fixture.
+2. **Presence and Location (0.3.2, Decision 073).** Presence has exactly one structural owner; `occupants` is standing state; carried inventory is presence-by-possession; the invariants are enforced by the Repository Validation Barrier.
+3. **World Rule Profile freeze (0.3.3, Decision 074).** Profile versioning, freeze status, and save compatibility, surfaced explicitly on restoration rather than silently resolved.
+4. **Command Surface Settlement (0.3.4, Decision 075).** Assessed and closed by drop; the command model was already minimal.
+5. **Capability Validation and the Prototype Campaign (0.3.5).** Fifty-six conforming checkpoints across six Data Model versions and forty-six profile versions, with exact named restoration, branch, restart, and registry preservation demonstrated. Ten foundational findings arrived from played evidence and were dispositioned as Decisions 076–085, advancing the Data Model to 0.1.6.
+6. **The Architecture Freeze is scoped (Decision 086).** It binds Implementation and the Consistency Audit; from Capability Validation onward a foundational change is permitted only on played evidence, classified, versioned and migrated, and revalidated.
+
+The Engine Postmortem is `docs/430_RUNTIME_PERSISTENCE_VALIDATION/440_ENGINE_POSTMORTEM.md`. Its carried findings — the enforcement class that has no mechanical proxy, the full resident card, and the Version 0.4 number collision — are required input to Version 0.4 Planning, which has not begun.
 
 ---
 

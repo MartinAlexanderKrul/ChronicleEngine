@@ -286,17 +286,20 @@ Chronicle Engine prioritizes:
 
 # Current Status
 
-**Current Engine Version:** 0.2.0 (Knowledge & Civilization)
+**Current Engine Version:** 0.3.0 (Runtime & Persistence Hardening)
 
-**Current Development Target:** Version 0.3 — Runtime & Persistence Hardening (Capability Validation)
+**Current Development Target:** Version 0.4 — Planning not yet begun
 
-The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 is the first completed simulation capability built on it. Capability Validation, Prototype Alpha, and the Engine Postmortem are complete (Decision 048).
+The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 was the first completed simulation capability built on it. **Version 0.3.0 was released on 2026-08-01** after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem (Decision 048).
 
-Current focus:
+What 0.3 delivered:
 
-- Version 0.2.0 (Knowledge & Civilization) released.
-- Version 0.3 planned ADRs accepted (2026-07-23): Decisions 072–075, Architecture Freeze complete. Decisions 076, 077, 079, and 080 were later admitted by explicit owner rulings as foundational exceptions produced by live prototype evidence.
-- Milestones 0.3.1–0.3.3 implemented (2026-07-23): Save Layer Unification, Presence and Location (Data Model 0.1.2), and World Rule Profile versioning and freeze (Rules 14.6; Reikon 0.10 is the first frozen profile). Decisions 076–077 advance the Data Model through 0.1.4 for Relationship Texture and explicit `game_date` / `real_date`; Decision 078 adds exact canonical campaign-time settlement; Decisions 079–080 advance mutable live state to Data Model 0.1.5 with reconcilable counter deltas and profile-declared progression candidates. The Consistency Audit is complete. Milestone 0.3.5 is in progress: Gatefall: Pendragon is the live prototype, with unsafe failure cases isolated in `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`.
+- **A persistence layer that holds.** Fifty-six consecutive conforming checkpoints across six Data Model versions (0.1.2 → 0.1.6) and forty-six world-profile versions, with exact named restoration, branch, restart, and registry preservation demonstrated. The layer this version existed to harden did not fail once.
+- **Milestones 0.3.1–0.3.3** (Decisions 072–074): Save Layer Unification, single-owner Presence and Location, and World Rule Profile versioning and freeze. 0.3.4 was assessed and closed by drop (Decision 075).
+- **Ten findings from live play** (Decisions 076–085), each classified, versioned, migrated, and revalidated — Relationship Texture, distinct game and repository dates, exact clock settlement, reconcilable counters and progression candidates, pending world-side commitments, opportunity supply on the world's clock, world-state settlement dispatch, and the NPC participation audit.
+- **A scoped Architecture Freeze** (Decision 086): it binds Implementation and the Consistency Audit, and from Capability Validation onward a foundational change is permitted only when it comes from played evidence, is classified, is versioned and migrated, and is revalidated.
+
+The Engine Postmortem is `docs/430_RUNTIME_PERSISTENCE_VALIDATION/440_ENGINE_POSTMORTEM.md`. Its carried findings are required input to Version 0.4 Planning, which is blocked until the 0.4 number collision is settled (see `engine/002_ENGINE_ROADMAP.md`).
 
 See:
 

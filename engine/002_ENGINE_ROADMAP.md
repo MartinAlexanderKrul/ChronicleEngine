@@ -2,19 +2,23 @@
 
 # Engine Roadmap
 
-**Engine Version:** 0.2.0 (Knowledge & Civilization)
-**Development Target:** Version 0.3 — Runtime & Persistence Hardening
-**Status:** Version 0.3 Capability Validation in progress — Gatefall: Pendragon designated as the Prototype Campaign
+**Engine Version:** 0.3.0 (Runtime & Persistence Hardening)
+**Development Target:** Version 0.4 — Planning not yet begun
+**Status:** Version 0.3 released 2026-08-01; Version 0.4 Planning is blocked on the number collision recorded below
 
 # Current Sprint
 
 Goal:
 
-Version 0.2 architecture, implementation, Capability Validation, Prototype Alpha, and the Engine Postmortem are complete. Version 0.3 — **Runtime & Persistence Hardening** — has completed ADR approval, implementation of Decisions 072–074, and its Consistency Audit. It has advanced to Capability Validation.
+**Version 0.3 — Runtime & Persistence Hardening — is complete and released.** Its full lifecycle is closed under Decision 048: ADR approval and Architecture Freeze (Decisions 072–075), implementation of milestones 0.3.1–0.3.3 with 0.3.4 closed by drop, the Consistency Audit, Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem.
 
 Current Task:
 
-The Version 0.3 planned architecture was frozen with Decisions 072–075 accepted on 2026-07-23. Milestones **0.3.1–0.3.3 are implemented**, 0.3.4 is closed by drop (Decision 075), and the **Consistency Audit is complete**. Milestone **0.3.5 — Capability Validation and the Prototype Campaign is in progress**. Gatefall: Pendragon (`campaigns/gatefall_pendragon_001/`) is the designated live prototype; destructive, contradictory, and compatibility-failure cases remain non-canonical fixtures. Decisions 076 and 077 were admitted by explicit owner ruling after play exposed Relationship Texture loss and ambiguous clock provenance, advancing the Data Model through 0.1.4. Decisions 079 and 080 were admitted by the same governance path on 2026-07-27 after play exposed unreconcilable skill counters and missed earned-skill formation, advancing live state to Data Model 0.1.5. The validation plan and evidence matrix live under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`. Further foundational findings require the same explicit governance disposition; prototype evidence is allowed to change architecture rather than being forced to validate a known defect.
+**Version 0.4 Planning has not begun, and one thing blocks it: 0.4 is double-booked.** Governance & Society was moved to 0.4 by the accepted Version 0.3 scope, and Magic Framework already held that number. The collision was left visible rather than pre-resolved (Decision 069 anti-drift), and it must be settled before any 0.4 scope work. Reclassifying Magic Framework and Historical Simulation as world-authoring backlog rather than engine versions is the recommendation on the table and remains a separate decision.
+
+Before Planning opens, Decision 048 requires the postmortem's refinements to be incorporated. Two are engine work and are recorded in the postmortem's Backlog Disposition; the rest are world authoring and a play session's business — backfilling Gatefall's live commitments so the settlement gate stops being vacuous, settling F-004 into the Gatefall profile, and deciding the tracked-board floor in `test_gatefall_quest_contract.ps1`.
+
+The Prototype Campaign continues as ordinary play. Gatefall: Pendragon is the natural Prototype Campaign for Version 0.4 when that version reaches the stage; no replacement campaign is created merely to repeat evidence.
 
 The prototype's terminology audit also normalized the worlds' E–S classification to the single term **Rank** (E-Rank through S-Rank). This is a world-authoring/consistency refinement under 0.3.5: Gatefall Profile 1.7 migrates persisted `system_tier` to `system_rank`, Profile 1.8 additively aligns the `/system` rendering contract, and Reikon Profile 0.11 is additive because its renamed Rank identifiers are derived rather than stored.
 
@@ -646,13 +650,27 @@ Both remain **Accepted**. They are not reopened, reversed, or renumbered: accept
 | Decision 070 | The resident layer is a separate document | Refinement — sites the obligation `012` Section 0.4 already imposes |
 | Decision 071 | The Worlds and Campaigns Index | Refinement — mechanical enforcement point for the Decision 067 welcome listing |
 
+### Version 0.3 — Postmortem and release
+
+| Decision | Subject | Class |
+|----------|---------|-------|
+| Decision 086 | The Architecture Freeze Binds Implementation, Not Validation | Refinement — completes Decision 048 as Decision 069 did; adds no Rules section, no Data Model change, and no mechanism a world may invoke |
+
+Owned by milestone 0.3.5 and accepted at the version's close, as the disposition of the Engine Postmortem's Finding 1. It is the answer to a question the version itself raised: ten foundational changes were admitted to a frozen version by owner ruling, and the freeze had no written condition an exception must meet. Decision 086 supplies one. It does not excuse the ten — all ten already satisfy it — and it does not replace the owner ruling, which is still required.
+
 Decision 071 is the fifth decision against the bootstrap boundary (with 056, 063, 064, 067) and the second disposition of the profile-churn technical debt below. It is recorded there rather than treated as a separate pattern.
 
 ---
 
 ## Version 0.3 — Runtime & Persistence Hardening
 
-Status: **Capability Validation in progress.** Scope approved 2026-07-19; ADRs (Decisions 072–075) accepted 2026-07-23 (Architecture Freeze, Decision 048); Decisions 072–074 implemented and the Consistency Audit complete. Validation proceeds against the accepted architecture only.
+Status: **Complete — released 2026-08-01.** Scope approved 2026-07-19; ADRs (Decisions 072–075) accepted 2026-07-23 (Architecture Freeze, Decision 048); milestones 0.3.1–0.3.3 implemented, 0.3.4 closed by drop, Consistency Audit complete, and milestone 0.3.5 — Capability Validation and the Prototype Campaign — closed with the Engine Postmortem at `docs/430_RUNTIME_PERSISTENCE_VALIDATION/440_ENGINE_POSTMORTEM.md`.
+
+**Release evidence.** Fifty-six consecutive conforming checkpoints across six Data Model versions (0.1.2 → 0.1.6) and forty-six Gatefall profile versions, with exact named restoration, branch, restart, registry preservation, and profile-compatibility readiness all demonstrated; every capability row in `431_CAPABILITY_MATRIX.md` passing; every design flag dispositioned. The persistence layer this version existed to harden did not fail once.
+
+**Ten foundational findings arrived from played evidence** and were dispositioned as Decisions 076–085, advancing the Data Model to 0.1.6. **Decision 086 then scoped the Architecture Freeze** so that path is falsifiable rather than resting on unrecorded judgment: the freeze binds Implementation and the Consistency Audit, and from Capability Validation onward a foundational change is permitted only when it comes from played evidence, is classified under Decision 069, is versioned and migrated, and is revalidated. All ten already met those conditions.
+
+**Carried to Version 0.4** (postmortem Findings 2–4): NPC grounding is the one obligation class with no mechanical proxy, and the resident card that would carry it is full at 5,978 of a 6,000-token warning; the "settler without writer" shape recurred three times and should be checked for whenever a decision introduces state the Runtime must settle; and operational metadata decays wherever no gate reads it.
 
 Version 0.2 implementation, Prototype Alpha, the Engine Postmortem, and the required refinements are all complete, which is what unblocked this version under the development lifecycle (Decision 048).
 
@@ -1118,7 +1136,9 @@ Current architectural debt:
 
 Version 0.2 - Knowledge & Civilization is complete. Capability Validation, Prototype Alpha, the Engine Postmortem, and required refinements are complete.
 
-Version 0.3 — Runtime & Persistence Hardening is in Capability Validation. Its ADRs — Decisions 072, 073, and 074 (foundational) and 075 (refinement; milestone 0.3.4 closed by drop) — were accepted on 2026-07-23 (Architecture Freeze, Decision 048); all three foundational decisions are implemented and the Consistency Audit is complete. Gatefall: Pendragon is the designated 0.3 prototype, with non-canonical failure fixtures and its evidence matrix under `docs/430_RUNTIME_PERSISTENCE_VALIDATION/`. Anything beyond the accepted set remains frozen.
+**Version 0.3 — Runtime & Persistence Hardening is complete and released (2026-08-01).** Its ADRs — Decisions 072, 073, and 074 (foundational) and 075 (refinement; milestone 0.3.4 closed by drop) — were accepted on 2026-07-23 under the Architecture Freeze. Milestone 0.3.5 closed with the Engine Postmortem, and Decision 086 scoped the freeze so the exception path is falsifiable. The entries below record the ten prototype-driven decisions that arrived during validation; they are history now rather than open work, and remain here because Decision 069 requires every accepted decision to name the milestone that owns it.
+
+**Version 0.4 Planning has not begun.** It is blocked on the number collision recorded under Version 0.4 below, and Decision 048 requires the postmortem's refinements to be incorporated first.
 
 **Decision 076 — Relationship Texture (2026-07-25), admitted to Version 0.3 by owner ruling as an explicit exception to the Architecture Freeze.** It is foundational under Decision 069's structural test (it changes `011_ENGINE_DATA_MODEL.md`), and that classification stands unrevised — the ruling overrides a correct classification rather than reinterpreting it. Admitted on three grounds recorded in the decision: the defect is characterization failing to survive the promotion barrier, which is this version's declared domain; Version 0.4 currently holds Governance & Society at unapproved scope with an unresolved number collision, so the deferral target could not receive it; and the interval is not neutral, because every session played meanwhile promotes relationships through a schema with no slot for manner, undetectably.
 

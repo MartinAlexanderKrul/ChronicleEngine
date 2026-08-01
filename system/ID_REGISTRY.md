@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000188 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000295 |
+| Event | `EVT-` | Event | EVT-000297 |
 | Relationship | `REL-` | Relationship | REL-000088 |
 
 ---
@@ -443,6 +443,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000293 | Event | Gatefall: Pendragon: evening — Owen returns, Wade's four-hunter list arrives by text |
 | EVT-000294 | Event | Gatefall: Pendragon: the apartment moment — mutual declarations of love, recorded on `REL-000066` |
 | EVT-000295 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000282`-`EVT-000294` span with an explicit `none` for `gatefall.skill_formation` |
+| EVT-000296 | Event | Gatefall: Pendragon: Kesha's promised callback to Reyna Castillo resolved retroactively — interested, wants to meet Alexander and Owen in person first |
+| EVT-000297 | Event | Gatefall: Pendragon: promotion-barrier settlement closing `EVT-000296` with an explicit `none` for `gatefall.skill_formation` |
 
 ---
 

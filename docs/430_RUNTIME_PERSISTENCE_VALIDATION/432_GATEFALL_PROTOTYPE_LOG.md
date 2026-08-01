@@ -32,23 +32,40 @@ At designation, the campaign had:
 
 ## Current Evidence State
 
-**As of 2026-08-01 repository time, ordinary play has advanced the campaign to fifty-two canonical-form checkpoints (`900_CHECKPOINT_0001`–`0052`).** The registry stands at `ENT-000182`, `REC-000101`, `EVT-000276`, `REL-000086`.
+The counts, ranges and partitions below are **generated from the campaign's own save manifests** and checked by repository validation.
 
-The captures partition cleanly by schema, with no gap and no abandoned point:
+They were hand-maintained until 2026-08-02, and had drifted twenty-eight checkpoints and five decisions behind live state — inside the document that is supposed to be the postmortem's evidence base. That is the Version 0.3 postmortem's Finding 4 happening to the validation record itself, and it is why this half is no longer written by hand. The prototype was producing evidence faster than the record absorbed it, and nothing read the record closely enough to notice.
 
-| Data Model | Checkpoints | Count |
-|---|---|---|
+What is **not** generated: verdicts, evidence classes, and every assessment in this document. Those are judgment, and a generator emitting them would be authoritative and wrong — the limit Decision 071 already recorded when the same question was put to the worlds-and-campaigns index.
+
+<!-- BEGIN GENERATED: evidence-state -->
+
+*Derived by `tools/generate_validation_evidence.ps1` from the campaign's own save manifests. Do not edit inside the markers; edit the manifests and regenerate. Verdicts, evidence classes and assessment prose are deliberately not generated — they are judgment and live in the hand-written sections.*
+
+**Checkpoints:** 57 (`900_CHECKPOINT_0001`–`900_CHECKPOINT_0057`)
+
+**Data Model schema by capture**
+
+| Schema | Checkpoints | Count |
+|---|---|---:|
 | 0.1.2 | 0001–0014 | 14 |
 | 0.1.3 | 0015–0023 | 9 |
 | 0.1.4 | 0024–0029 | 6 |
 | 0.1.5 | 0030–0050 | 21 |
-| 0.1.6 | 0051–0052 | 2 |
+| 0.1.6 | 0051–0057 | 7 |
 
-Profile freeze status partitions the same way: `workshop-draft` at 0001–0008, `frozen` at 0009–0052. Checkpoint 0052 is the latest immutable capture — Profile 1.45 frozen, `campaign_schema: 0.1.6`, parent 0051, source `EVT-000275`. Live authoring has since advanced to Profile 1.46.
+**World Rule Profile freeze status by capture**
 
-Milestone captures within that sequence: Checkpoint 0015 is the first automatic Context-Preservation capture and the first native 0.1.3; Checkpoint 0020 is the first under frozen Profile 1.10; Checkpoint 0024 is the first 0.1.4; Checkpoint 0030 the first 0.1.5; Checkpoint 0051 the first 0.1.6. Every checkpoint remains immutable and runs the applicable readiness chain before play.
+| Freeze status | Checkpoints | Count |
+|---|---|---:|
+| workshop-draft | 0001–0008 | 8 |
+| frozen | 0009–0057 | 49 |
 
-**This section had drifted twenty-eight checkpoints and five decisions behind live state before this reconciliation**, having last been written on 2026-07-26. That is worth recording rather than quietly correcting: it is the same operational-metadata decay the roadmap's Technical Debt entry describes, occurring in the document that is supposed to be the postmortem's evidence base. The prototype was producing evidence faster than the validation record was absorbing it.
+**Latest capture:** `900_CHECKPOINT_0057` — kind `manual`, profile 1.46 (frozen), schema 0.1.6, parent `900_CHECKPOINT_0056`, source `EVT-000305`.
+
+<!-- END GENERATED: evidence-state -->
+
+Milestone captures within that sequence, hand-recorded because *first* is a claim about significance rather than a field in a manifest: Checkpoint 0015 is the first automatic Context-Preservation capture and the first native 0.1.3; Checkpoint 0020 the first under a frozen profile, at 1.10; Checkpoint 0024 the first 0.1.4; Checkpoint 0030 the first 0.1.5; Checkpoint 0051 the first 0.1.6. Every checkpoint remains immutable and runs the applicable readiness chain before play.
 
 Live prototype evidence also produced Decision 076: Relationship Texture. That finding was accepted on 2026-07-25 repository time as an explicit foundational exception to the Version 0.3 Architecture Freeze and advances mutable live state to Data Model 0.1.3. Checkpoint 0014 and every earlier checkpoint remain byte-immutable at their captured schema; restoring them requires the explicit schema migration at readiness before validation and play. Checkpoint 0015 closes the positive path by capturing already-migrated live state directly as 0.1.3. The campaign's in-world date did not date the architectural decision.
 
@@ -90,9 +107,11 @@ Branch and restart validation uses a disposable fork. Negative structure and com
 
 **Result:** Observed pass.
 
-Checkpoints **0001–0052** use the canonical four-digit directory form. Each contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004, frozen Profile 1.6 / schema 0.1.2 evidence at Checkpoint 0014, the first native schema 0.1.3 capture at Checkpoint 0015, the first frozen Profile 1.10 capture at Checkpoint 0020, and continues unbroken through the schema and profile transitions tabulated under *Current Evidence State* to Checkpoint 0052.
+Every checkpoint uses the canonical four-digit directory form. Each contains all eight campaign ledgers and one manifest without a live registry identifier. The sequence includes the original workshop-draft profile evidence at Checkpoint 0004, frozen Profile 1.6 / schema 0.1.2 evidence at Checkpoint 0014, the first native schema 0.1.3 capture at Checkpoint 0015, and the first frozen-profile capture at Checkpoint 0020, continuing unbroken through the schema and freeze transitions tabulated under *Current Evidence State*.
 
-Fifty-two consecutive conforming captures across five Data Model versions and a profile line from 1.0 to 1.45 is the strongest single result in the matrix: the checkpoint form absorbed six schema advances and forty-five profile versions without one malformed or abandoned point.
+**The count and range are deliberately not restated here.** They are generated above and checked by repository validation; a second hand-written copy is exactly the duplication that let this document fall twenty-eight checkpoints behind, and it went stale again within a day of the last hand reconciliation.
+
+The result itself is unchanged and is the strongest single one in the matrix: consecutive conforming captures across every Data Model version the campaign has held and a profile line from 1.0 onward, with the checkpoint form absorbing each schema advance without one malformed or abandoned point.
 
 **Matrix:** V03-01, V03-09.
 

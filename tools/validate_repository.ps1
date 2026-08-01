@@ -1517,6 +1517,33 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
     }
 }
 
+# The validation record's derivable half must match the manifests it describes.
+#
+# Version 0.3 postmortem, Finding 4. The prototype log drifted twenty-eight
+# checkpoints and five decisions behind live state, inside the document the
+# postmortem depends on -- and then drifted four checkpoints further within a
+# day of being reconciled by hand. Counts, ranges and partitions are derivable
+# from the save manifests; verdicts and evidence classes are not and stay
+# hand-written outside the generated markers.
+$evidenceGenerator = Join-Path $root "tools/generate_validation_evidence.py"
+if (-not $CoreOnly -and (Test-Path -LiteralPath $evidenceGenerator -PathType Leaf)) {
+    $evidenceRunner = Join-Path $PSScriptRoot "generate_validation_evidence.ps1"
+    $previousErrorAction = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $evidenceOutput = & powershell -NoProfile -ExecutionPolicy Bypass `
+        -File $evidenceRunner -RepositoryRoot $root -Check 2>&1 |
+        ForEach-Object { $_.ToString() }
+    $evidenceExitCode = $LASTEXITCODE
+    $ErrorActionPreference = $previousErrorAction
+    if ($evidenceExitCode -ne 0) {
+        Add-Failure (
+            "Generated validation evidence block is not synchronized (exit {0}): {1}" -f
+            $evidenceExitCode,
+            ($evidenceOutput -join " ")
+        )
+    }
+}
+
 $runtimeValidator = Join-Path $PSScriptRoot "validate_runtime_configuration.ps1"
 $runtimeExitCode = 0
 $runtimeOutput = @()

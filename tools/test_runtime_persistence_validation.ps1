@@ -458,6 +458,28 @@ try {
         Write-Host "$($case.Id) PASSED - validator rejected disposable state: $($case.Expected)"
     }
 
+    # N-01: two live entities in one campaign may not answer to the same current
+    # name. F-009, raised within a day of the Runtime being told to author
+    # entailed subjects on demand rather than withhold them: a freshly authored
+    # contact was named into a campaign that already carried Ada Reyes
+    # (ENT-000134), a few exchanges after that character's own job was narrated.
+    #
+    # Only the exact collision is asserted here. A shared surname is ordinary in
+    # a city of millions, stays a Runtime judgment against the cast roster at
+    # authoring time, and is deliberately not adjudicated by the barrier.
+    $nameRoot = Join-Path $tempRoot "N-01"
+    Copy-ValidationRepository $nameRoot
+    Replace-ExactlyOnce `
+        -Path (Join-Path $nameRoot "campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md") `
+        -Pattern '(?ms)(id: ENT-000139.*?aliases:\r?\n[ \t]*- name: )"[^"]+"' `
+        -Replacement '$1"Ada Reyes"' `
+        -Case "N-01"
+    $nameResult = Invoke-Validator $nameRoot
+    Assert-True ($nameResult.ExitCode -ne 0) "N-01 unexpectedly passed repository validation."
+    Assert-Contains $nameResult.Output "may not answer to the same full name" `
+        "N-01 failed for the wrong reason."
+    Write-Host "N-01 PASSED - validator rejected two live entities sharing one current name."
+
     # S-01: live canon may not retain an older schema tag after the explicit
     # Decision 077 migration. Immutable checkpoints are excluded by the validator.
     $schemaRoot = Join-Path $tempRoot "S-01"

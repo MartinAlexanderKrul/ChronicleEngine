@@ -1452,6 +1452,71 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
     }
 }
 
+# --- Two live entities may not answer to the same current name --------------
+#
+# F-009, raised within a day of the Runtime being told to author entailed
+# subjects on demand rather than withhold them (Section 1.4). A newly authored
+# grey-market contact was named "Reyes" into a campaign already carrying
+# ENT-000134, Ada Reyes, an established contractor coordinator with her own
+# relationship record and history in the same campaign -- and the collision came
+# a few exchanges after that character's own job was narrated. The name that
+# surfaces while authoring is disproportionately one the session just used, so
+# this is likelier than chance rather than unlucky.
+#
+# Only the EXACT collision is mechanical. Two people sharing a surname is
+# ordinary in a city of millions and the flag says so; that case stays a
+# judgment the Runtime makes at authoring time against the cast roster, and the
+# barrier does not adjudicate it. What no campaign wants is two live entities
+# answering to the same full name, which is decidable and almost always an
+# authoring slip.
+#
+# Scope is per campaign: the same name in two campaigns is two unrelated
+# fictions, not a collision.
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    $namesSeen = @{}
+
+    foreach ($ledger in @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "*.md" -File)) {
+        $ledgerRelative = Get-RelativePath $ledger.FullName
+        $ledgerText = Get-Content -LiteralPath $ledger.FullName -Raw
+        $ledgerLines = $ledgerText -split "\r?\n"
+
+        $currentId = $null
+        $currentStatus = $null
+        for ($index = 0; $index -lt $ledgerLines.Count; $index++) {
+            $line = $ledgerLines[$index]
+
+            if ($line -match '^[ \t]*id:[ \t]*"?(ENT-\d{6})') {
+                $currentId = $Matches[1]
+                $currentStatus = $null
+                continue
+            }
+            if ($null -eq $currentId) { continue }
+            if ($line -match '^[ \t]*status:[ \t]*"?([a-z-]+)') { $currentStatus = $Matches[1] }
+
+            # An alias counts only when it is the entity's current name; former
+            # and alternate names are deliberately allowed to collide, because
+            # that is how identity continuity records a rename.
+            if ($line -match '^[ \t]*-[ \t]+name:[ \t]*"([^"]+)"') {
+                $candidate = $Matches[1].Trim()
+                $quality = $null
+                if ($index + 1 -lt $ledgerLines.Count -and
+                    $ledgerLines[$index + 1] -match '^[ \t]*quality:[ \t]*"?([a-z-]+)') {
+                    $quality = $Matches[1]
+                }
+                if ($quality -ne 'current' -or $currentStatus -eq 'retired') { continue }
+
+                $key = $candidate.ToLowerInvariant()
+                if ($namesSeen.ContainsKey($key) -and $namesSeen[$key].Id -ne $currentId) {
+                    $first = $namesSeen[$key]
+                    Add-Failure "$ledgerRelative`:$(Get-LineNumber (New-LineIndex $ledgerText) ($ledgerText.IndexOf($line))) $currentId carries the current name `"$candidate`", which $($first.Id) already carries in $($first.Path); two live entities in one campaign may not answer to the same full name (F-009)."
+                } elseif (-not $namesSeen.ContainsKey($key)) {
+                    $namesSeen[$key] = [pscustomobject]@{ Id = $currentId; Path = $ledgerRelative }
+                }
+            }
+        }
+    }
+}
+
 $runtimeValidator = Join-Path $PSScriptRoot "validate_runtime_configuration.ps1"
 $runtimeExitCode = 0
 $runtimeOutput = @()

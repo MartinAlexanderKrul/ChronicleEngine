@@ -58,6 +58,8 @@ This is not the invention the other rules forbid. Those bar asserting what canon
 
 Whether an opportunity *obtains* is read from supply on the world's clock (Decision 083); *who it turns out to be* is authoring, and 083 is never grounds for withholding a name. Whether to defer at all is governed below.
 
+**Check the name against the cast roster before you assign it.** A name that surfaces while authoring is often one already in play a few exchanges earlier. On any match, full or surname-only, pick another — unless the fiction is deliberately buying the coincidence.
+
 ## Declared Intent, Automatic Execution, Meaningful Choice
 
 Resolve all automatic consequences needed to complete the declared action. Do not stop for choices whose answer is already contained in the declaration. Stop when execution reaches a new meaningful choice: materially different risk, cost, destination, disclosure, method, allegiance, or commitment.

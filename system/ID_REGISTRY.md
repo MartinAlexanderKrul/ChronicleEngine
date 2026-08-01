@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000188 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000297 |
+| Event | `EVT-` | Event | EVT-000305 |
 | Relationship | `REL-` | Relationship | REL-000088 |
 
 ---
@@ -445,6 +445,14 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000295 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000282`-`EVT-000294` span with an explicit `none` for `gatefall.skill_formation` |
 | EVT-000296 | Event | Gatefall: Pendragon: Kesha's promised callback to Reyna Castillo resolved retroactively — interested, wants to meet Alexander and Owen in person first |
 | EVT-000297 | Event | Gatefall: Pendragon: promotion-barrier settlement closing `EVT-000296` with an explicit `none` for `gatefall.skill_formation` |
+| EVT-000298 | Event | Gatefall: Pendragon: outreach texts sent to five crew candidates (Reyna Castillo, Soraya Delgado, Grant Okwuosa, Iris Halvorsen, Theo Bannerman) before sleep on 2026-08-11; all five reply with interest, none yet scheduled to meet |
+| EVT-000299 | Event | Gatefall: Pendragon: the morning of 2026-08-12 — the nineteenth daily quest issued and completed at the lakefront with Owen joining (streak 4→5); Owen's Edgewater shift conflict resolved by phone call, granted late arrival covering the two lost hours at shift's end |
+| EVT-000300 | Event | Gatefall: Pendragon: the Rogers Park lease signing (2026-08-12 09:30) — $9,750 certified deposit paid by Alexander, keys received, the apartment now occupied; player ruling that Owen owes Alexander $2,925 (half the original $5,850 deposit) as a pending receivable, not yet repaid |
+| EVT-000301 | Event | Gatefall: Pendragon: alone at the new apartment — all three pending Ability Points +3 awards claimed and allocated (Strength +2, Agility +6, Intelligence +1), crossing thresholds that ascend Overpower D-Rank→C-Rank and Pre-empt D-Rank→C-Rank; Mana maximum re-derived and refilled |
+| EVT-000302 | Event | Gatefall: Pendragon: three pending Daily Random Boxes opened (two potion caches — 3 Lesser Healing Potion, 3 Lesser Mana Potion — and a redundant Flash Step rune, already known at a higher Rank); the overdue 06:00 Daily Premium rotation resolved live; the redundant rune sold to the System shop for 2,250 g |
+| EVT-000303 | Event | Gatefall: Pendragon: first Instant-Dungeon Key [D-Rank] bought and used solo — Beast Den archetype (7 common, 1 elite, 2 boss-Rank alphas, all D-Rank), full clear with no damage taken until the second alpha's fight; 575 XP crossing Level 13→14 (all base Stats +1, +5 unspent points banked, Health/Mana re-derived and restored); loot 31 D-Rank crystals (sold, 1,240 g), a Quickstep Charm [D-Rank], and a Mana Bolt rune [D-Rank] (consumed, learned at Novice); skill progression — Rupture mastery 1/3→2/3 toward Master, Twin Fang ascended Expert→Master, Exploit Pattern ascended Expert→Master, Keen Sense mastery 1/3→2/3 toward Master, Silent Step's first real activation (0/3→1/3 toward Practiced) |
+| EVT-000304 | Event | Gatefall: Pendragon: second Instant-Dungeon Key [D-Rank] bought and used solo — Shattered City archetype (7 common, 2 elite, 1 boss, all D-Rank), full clear with zero damage taken, Mana Bolt led from range; 525 XP (135/1400→660/1400, no level-up); loot 34 D-Rank crystals (sold, 1,360 g) and an Arcanist Torso [D-Rank]; skill progression — Mana Bolt's first qualifying scene (0/3→1/3 toward Practiced), Rupture ascended Expert→Master |
+| EVT-000305 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000298`-`EVT-000304` span with an explicit `none` for `gatefall.skill_formation` — outreach texts, a daily quest, a lease signing, and a System-shop session are not skill-formation-qualifying scenes; the two instant dungeons already carry their own dangerous-scene `none` audits |
 
 ---
 

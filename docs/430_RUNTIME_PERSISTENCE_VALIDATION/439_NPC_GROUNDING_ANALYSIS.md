@@ -74,6 +74,35 @@ The load obligation (Resident Core, *Load a Recorded NPC Before Playing It*) is 
 
 ---
 
+# Measured: narrowing the coverage set does not rescue the derived check
+
+The disposition above first rested on Decision 085's 38% measurement — which was taken for a **different and broader** check than the one that would be built here. Inheriting it would have been the same error this document criticises elsewhere, so it was measured directly. `tools/measure_npc_grounding_proxy.ps1` reproduces the measurement and reports it under four partitions.
+
+**Check under test:** an Event names entity X among its participants, and X's own live record does not cite that Event.
+
+| Partition | Flagged | Participations | Rate |
+|---|---:|---:|---:|
+| All participations (Decision 085's partition) | 92 | 246 | **37.4%** |
+| Fiction-bearing Event kinds only | 89 | 232 | **38.4%** |
+| NPCs holding a relationship with the protagonist | 63 | 168 | **37.5%** |
+| Both filters | 60 | 161 | **37.3%** |
+
+*(45 distinct subjects across 134 distinct Events. The denominator is smaller than Decision 085's 390 because this counts only entities defined in the campaign's own NPC ledger, excluding the protagonist and world-layer figures. The rate is the comparable figure, not the count.)*
+
+**The hypothesis under test was that a narrower coverage set would be viable**, and it is refuted. Decision 076 established that recollection of a character decays to a role label, so the expectation was that recurring, relationship-bearing NPCs — the ones actually played from that decayed label — would show a materially lower miss rate than incidental one-scene participants, making a targeted gate affordable even if a broad one is not.
+
+They do not. **The rate is flat to within a percentage point across every partition.** Restricting to fiction-bearing Events moves it up slightly; restricting to relationship-bearing NPCs moves it down slightly; doing both lands within 0.1 points of where it started.
+
+That flatness is a stronger result than the original 38%, and it is the reason this route is closed rather than merely expensive:
+
+- The false positives are **not** an artifact of sweeping in incidental NPCs. Presence-without-change is uniformly legitimate across the whole population, including the characters the campaign is most about.
+- There is therefore **no subset to retreat to.** Every obvious narrowing has been measured and none of them helps, so "scope it tighter" is answered rather than left as an open suggestion for the next person.
+- A gate at ~37% would flag roughly three legitimate cases for every real one, on the campaign's most important characters. It would be turned off, and correctly.
+
+The measurement is reproducible rather than quoted, so Version 0.4 can re-run it against a longer corpus rather than inherit this conclusion the way this document nearly inherited Decision 085's.
+
+---
+
 # Disposition
 
 | Flag | Disposition |

@@ -63,6 +63,28 @@ Consequences:
 
 Enforcement is mechanical and lives at the roadmap: `tools/test_decision_roadmap_sync.ps1` fails when an accepted decision is claimed by no milestone. It enforces ownership, not class — its purpose is to make an unclassified decision impossible to leave unnoticed.
 
+## A Decision That Introduces Settled State Names Its Writer
+
+**When a change introduces state the Runtime must later settle, read, or audit, it must also name the moment that state is *created* and the enforcement point for that creation — or record explicitly that none exists.**
+
+This is the Version 0.3 postmortem's Finding 3, and it is a rule because the same shape produced three separate defects inside one version:
+
+- **F-001 / `OBJ-23`.** A Runtime-authored NPC-behavior trigger with a due window, carried in prose. Nothing dispatched against it, and it failed within one in-fiction day.
+- **F-003, closed channels.** The resident layer required a player's ruling to be recorded; two fetched skills told the Runtime to hold it in conversation until `/save`. Only the resident leg was gated, so the conflict passed every check while the same fact leaked twice and three times after correction.
+- **Decision 082, pending commitments.** Runtime Section 2.4 specifies settlement in full and opens at *"when elapsed time reaches a commitment's due time"* — presupposing a record something had to write. Across two decisions and a declared trigger delta, the construct reached the version's close with **zero live instances**.
+
+The pattern is not carelessness. Each of those fixes sited the read or settle side, where the obligation is legible and easy to state, and left the write side to instruction, where it is neither. A settler with no writer is indistinguishable at rest from a mechanism that is simply quiet, which is why all three survived review.
+
+So a decision introducing such state answers three questions in its own text:
+
+1. **What creates it**, and at which moment in a turn or barrier.
+2. **What enforces that creation** — a mechanical barrier, a resident obligation, or nothing.
+3. **What the absence looks like** if creation never happens, and whether that absence is detectable.
+
+Answering (3) with *"not detectable"* is a permitted and often correct answer — absence of a record is frequently the thing that cannot be checked for. Recording it is what stops a settler-only mechanism from being mistaken for a complete one.
+
+**This is not mechanically gated.** No checker can decide whether a given decision introduces settled state, and pretending otherwise would repeat the error the rule exists to name. It is a review obligation, enforced by the architecture review in Phase 3 and by the decision's own text surviving a reader who was not in the conversation.
+
 ---
 
 # Standard Development Workflow

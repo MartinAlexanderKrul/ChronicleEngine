@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000188 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000305 |
+| Event | `EVT-` | Event | EVT-000314 |
 | Relationship | `REL-` | Relationship | REL-000088 |
 
 ---
@@ -453,6 +453,15 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000303 | Event | Gatefall: Pendragon: first Instant-Dungeon Key [D-Rank] bought and used solo — Beast Den archetype (7 common, 1 elite, 2 boss-Rank alphas, all D-Rank), full clear with no damage taken until the second alpha's fight; 575 XP crossing Level 13→14 (all base Stats +1, +5 unspent points banked, Health/Mana re-derived and restored); loot 31 D-Rank crystals (sold, 1,240 g), a Quickstep Charm [D-Rank], and a Mana Bolt rune [D-Rank] (consumed, learned at Novice); skill progression — Rupture mastery 1/3→2/3 toward Master, Twin Fang ascended Expert→Master, Exploit Pattern ascended Expert→Master, Keen Sense mastery 1/3→2/3 toward Master, Silent Step's first real activation (0/3→1/3 toward Practiced) |
 | EVT-000304 | Event | Gatefall: Pendragon: second Instant-Dungeon Key [D-Rank] bought and used solo — Shattered City archetype (7 common, 2 elite, 1 boss, all D-Rank), full clear with zero damage taken, Mana Bolt led from range; 525 XP (135/1400→660/1400, no level-up); loot 34 D-Rank crystals (sold, 1,360 g) and an Arcanist Torso [D-Rank]; skill progression — Mana Bolt's first qualifying scene (0/3→1/3 toward Practiced), Rupture ascended Expert→Master |
 | EVT-000305 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000298`-`EVT-000304` span with an explicit `none` for `gatefall.skill_formation` — outreach texts, a daily quest, a lease signing, and a System-shop session are not skill-formation-qualifying scenes; the two instant dungeons already carry their own dangerous-scene `none` audits |
+| EVT-000306 | Event | Gatefall: Pendragon: afternoon scheduling round — Reyna Castillo given the choice of solo-today or both-Saturday and picks Saturday with Owen; Iris Halvorsen confirms 1 PM at Founder's Coffee; Theo Bannerman confirms 6 PM at his boxing club; Grant Okwuosa confirms 9 AM the next morning; Soraya Delgado confirms 2 PM the next afternoon, location pending |
+| EVT-000307 | Event | Gatefall: Pendragon: a casual Coalition visit to Kesha Morrison — no new job posted, confirms she already heard from Reyna that the two of them talked |
+| EVT-000308 | Event | Gatefall: Pendragon: first in-person meeting with Iris Halvorsen at Founder's Coffee — Flux Sight, Keen Sense (legendary), and Exploit Pattern used on her before speaking; Alexander shares the read openly without revealing mechanism; she reads him back in turn; negotiates real veto power and structured training; agrees to attend a training session and a supervised low-stakes run before committing |
+| EVT-000309 | Event | Gatefall: Pendragon: training-grounds session with Milo — a closed-channel correction (Milo has no channel to Alexander's surname), three reaction-footwork drill reps (two successes, one genuine miss, the third landed using an Exploit Pattern read first), and the resulting `gatefall.skill_formation` candidate reaching its third qualifying scene; ratified as **Broken Rhythm [E-Rank] Novice** |
+| EVT-000310 | Event | Gatefall: Pendragon: moving all of Alexander's and Owen's belongings from both old apartments into the Rogers Park apartment — mundane, no rolls, no NPC contact |
+| EVT-000311 | Event | Gatefall: Pendragon: first in-person meeting with Theo Bannerman at his boxing club — Flux Sight confirms genuine C-Rank; a live sparring demonstration (🎲 d100 94) confirms raw but genuine talent; Theo recruited on the spot, the second name secured for the crew after Marcus |
+| EVT-000312 | Event | Gatefall: Pendragon: evening outreach to three past work contacts — Dale Pruitt confirms a real B-Rank harvest job (2026-08-16, 08:00, the freight yards); Denise Ferro has nothing available (crew mid-contract); Ada Reyes confirms a C-Rank harvest slot (2026-08-15, Cicero-style terms) |
+| EVT-000313 | Event | Gatefall: Pendragon: Owen returns home from his (rescheduled) Edgewater shift ~22:00 to the apartment mostly unpacked; a warm, unhurried reunion |
+| EVT-000314 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000306`-`EVT-000313` span with an explicit `none` for `gatefall.skill_formation` beyond the already-ratified Broken Rhythm candidate |
 
 ---
 

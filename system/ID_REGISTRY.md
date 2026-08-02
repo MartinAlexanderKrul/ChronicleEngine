@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000193 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000336 |
+| Event | `EVT-` | Event | EVT-000337 |
 | Relationship | `REL-` | Relationship | REL-000089 |
 
 ---
@@ -490,6 +490,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000334 | Event | Gatefall: Pendragon: Owen Callahan told everything from the evening, unprompted, in full — Walt Adamik's existence, Marnie, the wallet, the dock, the CONSULT stranger, Loomis Street. Closed Channel opened (Owen/Walt-Marnie existence, `130_NPCS_AND_FACTIONS.md`). Owen's reaction: real fear stated plainly about the break-in's risk, alongside explicit approval of the immediate, unprompted disclosure |
 | EVT-000335 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000332`-`EVT-000334` span with an explicit `none` for `gatefall.skill_formation` — the second settlement of the same in-fiction day, after play continued past `EVT-000330`. The Beast Den clear resolved as a trivial montage itemizing no skill activation; both boss drops were redundant and sold rather than consumed; the two closing scenes invoked no skill at all |
 | EVT-000336 | Event | Gatefall: Pendragon: owner ruling settling design flag `F-011` toward the ascension — Twin Fang, Exploit Pattern and Keen Sense each advance `mastery_level` to 5 (Master) with their progress resets, ratifying ascensions `EVT-000303` narrated but never wrote to counters. Rupture is excluded and its star-label corrected to Expert: its counter arithmetic, its rendered ×2.45/Mana 9, and the impossibility of a negative progress reset all refuse the ascension `EVT-000304` claimed. No rendered effect changes for any of the four |
+| EVT-000337 | Event | Gatefall: Pendragon: the `marnie-disappearance` Hidden quest's `objective_counters` reconciled against already-promoted Events — the dock's physical corroboration (`EVT-000326`, `EVT-000328`, the S-Rank dagger and mid-work stock sharing the wallet's maker's stamp), the Loomis Street location lead, and Walt Adamik's outstanding 2026-08-14 inquiry all added; the clue condition's mis-citation to `EVT-000326` corrected to `EVT-000325`. Reward, status and conditions unchanged — Section 8.4.3 fixes reward at attachment and the S-Rank dagger is loot, not a quest reward; the quest stays attached and unrevealed |
 
 ---
 

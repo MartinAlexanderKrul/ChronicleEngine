@@ -12,6 +12,18 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-02 — Version 0.4 enters Planning as Economy & Opportunity
+
+**Planning-stage output under Decision 048; no engine change and no ADR.** Scope drafted, **not approved** — ADR Design does not begin until an owner approves it.
+**Problem:** Version 0.4's number was resolved by Decision 087 but its scope was not, and the corrected focus list still held five domains. Version 0.2 delivered one capability across a full lifecycle; five is not one, so the version needed a first capability chosen on evidence rather than on which domain sounded most foundational.
+**Change:** the roadmap gains a full Planning section for **Economy & Opportunity**, in the shape Version 0.2's used — vision, success statement, capability milestones with acceptance fixtures and per-milestone exclusions, likely ADR impact, version exclusions, completion criteria, and open questions.
+
+The vision states the historical truth the version simulates: **opportunity is not found, it is produced.** Version 0.3 established one half of that — Decision 083 made supply advance on the world's clock, so "nothing available" became a settled result rather than the only answer the fiction could structurally return — and left the other half missing entirely: nothing models that a *need* is generated on a schedule, that a finite opportunity is contested by people other than the player, or that scarcity is state the world carries rather than a word a narrator reaches for. Three capability milestones follow from that: **0.4.1** demand advances like supply does, **0.4.2** a finite opportunity is contested and can be taken by someone else, **0.4.3** scarcity is state with a history and a world's declared prices may respond to it. **0.4.4** is Capability Validation and the Prototype Campaign, which remains Gatefall: Pendragon.
+
+The Decision 083 division holds throughout — the engine owns the obligation, the World Rule Profile owns the rates — and is what keeps this from becoming a market simulator. Exclusions are explicit: no population or demographic model (PA-001), no order books or price discovery, no trade routes, logistics or production chains, no engine-held price table, and no governments, laws or diplomacy, which Decision 036 and Rules Section 10 already delivered.
+**Files:** `engine/002_ENGINE_ROADMAP.md`.
+**Audit:** the scope records the argument **against itself** rather than only for itself, as the Version 0.3 scope did. Three open questions stand at the head of approval: whether Economy is the right first capability at all — 0.4.1's "an institution needs things" is arguably a population model wearing a coat, which is the counter to taking Economy specifically *to test* whether Population is needed; whether the postmortem's carried findings (NPC grounding's enforcement class, the exhausted resident card) belong in this version, since neither is economic; and whether Persistence moves into the vacated 0.5, for which Version 0.3 supplied real evidence — four Data Model migrations each with a hand-authored contract, against a Decision 039 that deferred general migration procedures for want of exactly that.
+
 ## 2026-08-02 — The 0.4 collision resolves, and half of Governance & Society was already built
 
 **Planning and governance; Decision 087 is a refinement under Decision 069.** Unblocks Version 0.4 Planning on numbering. Also adds the commitment-backfill worklist.

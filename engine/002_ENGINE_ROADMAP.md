@@ -3,8 +3,8 @@
 # Engine Roadmap
 
 **Engine Version:** 0.3.0 (Runtime & Persistence Hardening)
-**Development Target:** Version 0.4 — Planning not yet begun
-**Status:** Version 0.3 released 2026-08-01; Version 0.4 Planning is blocked on the number collision recorded below
+**Development Target:** Version 0.4 — Economy & Opportunity
+**Status:** Version 0.3 released 2026-08-01; Version 0.4 is in **Planning**, scope drafted 2026-08-02 and awaiting owner approval
 
 # Current Sprint
 
@@ -18,7 +18,7 @@ Current Task:
 
 **All three postmortem refinements are incorporated**, which clears Decision 048's remaining precondition: the settler-without-writer rule in `docs/DEVELOPMENT_WORKFLOW.md`, the measured NPC-grounding proxy, and the generated validation-evidence block.
 
-What remains before Planning can be approved is the scope itself — a proposal is recorded under Version 0.4 below, recommending **Economy & Opportunity** as the first capability on the grounds that Version 0.3's prototype produced the play evidence PA-001 found missing. It is a proposal and is not accepted.
+**Version 0.4 has entered Planning.** The full scope draft is recorded below as **Economy & Opportunity**: vision, success statement, three capability milestones (demand advances like supply; a finite opportunity is contested; scarcity is state), acceptance fixtures, exclusions, completion criteria, and the likely ADR impact. It is Decision 048's Planning-stage output and **is not approved** — ADR Design does not begin until it is. Three open questions are listed at the end of that section, the first being whether Economy is the right first capability at all.
 
 Separately, three items are a play session's business and belong to campaign canon rather than the engine: backfilling Gatefall's live commitments so the settlement gate stops being vacuous (`tools/list_commitment_candidates.ps1` produces the worklist), settling F-004 into the Gatefall profile, and deciding the tracked-board floor in `test_gatefall_quest_contract.ps1`.
 
@@ -815,27 +815,130 @@ Support believable civilizations without requiring direct player control.
 
 ### Even corrected, this is not one version
 
-Version 0.2 delivered **one** capability across a full lifecycle. Five domains is not one capability, and the same reasoning that split the old list applies again. The recommended shape is one capability version first, with the rest explicitly unscheduled rather than queued.
+Version 0.2 delivered **one** capability across a full lifecycle. Five domains is not one capability. The version therefore takes one, and the rest stay explicitly unscheduled rather than queued.
 
-**Recommended first capability: Economy & Opportunity.** The argument is play evidence, which is what PA-001 said was missing when Population was floated as the narrow alternative during Version 0.3 scope approval:
+**First capability: Economy & Opportunity.** The argument is play evidence, which is what PA-001 said was missing when Population was floated as the narrow alternative during Version 0.3 scope approval:
 
-- The Version 0.3 prototype produced **economy-shaped findings under load**, and two of them became foundational decisions. Decision 083 (opportunity supply advances on the world's clock) and Decision 082 (pending world-side commitments) exist because a contractor economy failed to generate work when nobody was looking. Data Model Sections 7.4 and 7.5 are already the beachhead: a supply source with a cadence and an `Advanced` anchor is a production model with one product.
+- The Version 0.3 prototype produced **economy-shaped findings under load**, and two became foundational decisions. Decision 083 (opportunity supply advances on the world's clock) and Decision 082 (pending world-side commitments) exist because a contractor economy failed to generate work when nobody was looking. Data Model Sections 7.4 and 7.5 are already the beachhead: a supply source with a cadence and an `Advanced` anchor is a production model with exactly one product.
 - Gatefall carries the shape live and unmodelled — a Coalition with 420 registered freelancers and a 22-strong C-Rank ceiling, a tracked board with postings, pay, staffing status and deadlines, and contract rates the campaign reasons about constantly.
-- **Population remains without play evidence.** PA-001's finding stands: settlement and institution proxies were sufficient, and nothing in fifty-seven Gatefall checkpoints has demanded a population entity type. Taking Economy first also tests whether Population is needed at all, since a production model that works against institution proxies is evidence that it is not.
+- **Population remains without play evidence.** PA-001's finding stands: settlement and institution proxies were sufficient, and nothing in fifty-eight Gatefall checkpoints has demanded a population entity type. Taking Economy first also *tests* whether Population is needed, since a production model that works against institution proxies is evidence that it is not.
 
-Infrastructure and Logistics are deliberately left unscheduled. Version 0.2 excluded them as separate subsystems, nothing since has produced evidence for them, and Version 0.3's own warning applies: a focus list assembled from adjacency rather than evidence is how eight domains got here.
+Infrastructure and Logistics stay unscheduled. Version 0.2 excluded them as separate subsystems, nothing since has produced evidence for them, and a focus list assembled from adjacency rather than evidence is how eight domains got here.
 
-### Explicit exclusions for the proposed capability
+---
 
-- No population simulation, demographic model, or new entity type (PA-001).
-- No infrastructure, logistics, or travel-geometry subsystem.
-- No currency or price system beyond what a world already declares; the engine owns the obligation, a World Rule Profile owns the rates (Decision 083 point 5).
+# Version 0.4 — Economy & Opportunity
 
-### What Planning must settle before this is accepted
+Status: **Planning — drafted 2026-08-02, scope not yet approved.** Decision 048's Planning stage output. ADR Design does not begin until an owner approves this scope.
 
-1. Whether Economy & Opportunity is the right first capability, or whether Population's absence of evidence is itself the reason to take it.
-2. Its success statement, in the shape Version 0.2's was written — one sentence naming what the engine can model that it cannot today.
-3. Whether the postmortem's carried findings belong here or stay unscheduled: NPC grounding's enforcement class, and the resident card's exhausted capacity.
+## Version 0.4 Vision
+
+Version 0.4 exists to simulate a historical truth: **opportunity is not found, it is produced.** Work exists because someone needed something done and said so. Goods are scarce because other people wanted them first. A price is what a seller can get, given who else is buying. None of it waits for a protagonist to arrive, and none of it is a spawn table.
+
+Version 0.3 established one half of this and proved it was missing. Decision 083 made supply advance on the world's clock, so "nothing available" became a settled result rather than the only answer the fiction could structurally return. What it did not model is everything on the other side of the transaction: that a need is also generated on a schedule, that a finite opportunity is contested by people other than the player, and that scarcity is a state the world carries rather than a word a narrator reaches for.
+
+Its purpose is to make an economy behave as the aggregate of independent actors pursuing their own ends — without a market simulator, a price-discovery algorithm, or a population model.
+
+## Version 0.4 Success Statement
+
+Version 0.4 is complete when Chronicle Engine can model **work, goods, and scarcity as products of other actors' independent pursuit of their own ends** — so that an opportunity can be generated, contested, taken by someone else, and exhausted, and a world's declared prices can respond to that, all settled on the world's clock rather than at the moment a player asks.
+
+Without requiring: a population or demographic model, a market or order-book simulation, a price-discovery algorithm, trade routes, logistics, or production chains.
+
+## Foundation
+
+Version 0.4 must strengthen the existing engine rather than expand it. Where a mechanic increases historical realism and can be expressed through existing Persistent Objects, Tracked State, Institutions, Resources, the supply-source model, and the campaign clock, that is preferred over a new subsystem. The Decision 083 division holds throughout: **the engine owns the obligation, the World Rule Profile owns the rates.**
+
+## Capability Milestones
+
+### 0.4.1 Demand Advances Like Supply Does
+
+Capability delivered:
+
+- An established need — an institution's, a trade's, a household's — generates on its own schedule and is settled forward on the campaign clock, exactly as supply is under Rules Section 3.4.1.
+- The symmetry is the point: Decision 083 fixed a world that could not produce work, and left a world that cannot want anything.
+
+Dependencies: Decision 083; Rules Section 3.4.1; Data Model Sections 7.3 and 7.5.
+
+Acceptance fixtures:
+
+- An institution's standing need generates work with no player inquiry, and is met by someone else when the protagonist does not act.
+- A need that goes unmet has a grounded consequence in the holder's own state, recorded rather than narrated away.
+
+Explicit exclusions: no demand curve, no utility model, no population aggregate.
+
+### 0.4.2 A Finite Opportunity Is Contested
+
+Capability delivered:
+
+- An opportunity carries who else can take it, and is settled to a claimant on the clock. If the protagonist does not act, someone else may — and that is a settled world event, not a punishment or a timer.
+- This is where "the world runs when you are not looking" acquires teeth. Today Gatefall's board can expire a posting but cannot record that a rival crew took it.
+
+Dependencies: Decisions 082 and 083; Rules Sections 1.8, 3.4, 4; Data Model Section 7.5.
+
+Acceptance fixtures:
+
+- A posting the protagonist ignores is taken by another crew, settled on the clock, and is gone when he returns for it.
+- A contested opportunity resolves by ordinary resolution against the competitors' own established standing, never by a rule that favours or disfavours the player (Law VII).
+- An uncontested opportunity simply remains, with no artificial decay.
+
+Explicit exclusions: no drama timer, no scarcity introduced to create pressure (Decision 003, Rules 1.2).
+
+### 0.4.3 Scarcity Is State, Not Flavour
+
+Capability delivered:
+
+- A resource's availability within a scope is tracked state that responds to production and consumption, so "there are none left" is a settled fact with a history rather than a narrator's assertion.
+- A world's declared prices may respond to that state. The engine obliges the response; the profile owns the numbers and the curve.
+
+Dependencies: Rules Sections 7.2, 7.6, 7.7, 9.6; Data Model Section 7.3.
+
+Acceptance fixtures:
+
+- Several actors consume a consumable and its scarcity rises; a world-declared price responds without the engine holding a price table.
+- The protagonist's own selling affects what is available to others.
+- A supplier's own supply fails, so a downstream opportunity never appears — recorded as a settled negative, on the Decision 080/083 discipline.
+
+Explicit exclusions: no engine-held price table, no inflation model, no commodity taxonomy.
+
+### 0.4.4 Capability Validation and Prototype Campaign
+
+Per Decision 048 these remain distinct evidence stages. Gatefall: Pendragon continues as the Prototype Campaign — no replacement campaign is created to repeat evidence it already produces, and it is the world that generated the findings this version exists to answer.
+
+Combined evidence must exercise: demand settling unobserved; an opportunity lost to a competitor; scarcity rising and falling from real consumption; a world-declared price responding; and at least one negative result recorded rather than skipped.
+
+## Likely ADR Impact
+
+Planning identifies these as probable, and ADR Design decides:
+
+1. **Demand as tracked state** — near-certainly the mirror of Data Model Section 7.5, and probably foundational under Decision 069 since it changes `011`.
+2. **Opportunity claimants and contention** — may extend Section 7.5 rather than add a section.
+3. **Scarcity state and the price-response obligation** — the boundary between engine obligation and profile-owned rates needs stating explicitly, as Decision 083 point 5 did.
+
+Under Decision 086, anything foundational arriving *after* the freeze must come from played evidence, be classified, versioned and migrated, and revalidated.
+
+## Exclusions
+
+- Population simulation, demographic models, or a new entity type (PA-001).
+- Market simulation, order books, price discovery, auction mechanics.
+- Trade routes, infrastructure, logistics, travel geometry.
+- New currency systems; Rules Section 7.2 stands.
+- Production chains or crafting trees.
+- Governments, laws, and diplomacy — already delivered by Decision 036 and Rules Section 10.
+
+## Completion Criteria
+
+- An opportunity can be generated, contested, taken by another actor, and exhausted, entirely on the world's clock.
+- A need generates, is met or unmet, and its outcome is recorded.
+- Scarcity is readable state with a history, and a world's prices can respond to it without the engine owning a number.
+- No fixture requires a population model, a market simulator, or a logistics subsystem.
+- The Prototype Campaign reaches postmortem with every finding dispositioned under Decision 086.
+
+## Open Questions for Scope Approval
+
+1. **Is Economy the right first capability, or is Population's absence of evidence itself the argument for building it?** The counter is real: institution proxies may be hiding a gap rather than filling one, and 0.4.1's "an institution needs things" is arguably a population model wearing a coat.
+2. **Do the postmortem's carried findings belong here or stay unscheduled?** NPC grounding's enforcement class and the resident card's exhausted capacity are both real and neither is economic.
+3. **Does Persistence move into the vacated 0.5?** Version 0.3 performed four Data Model migrations, each with a hand-authored contract, while Gatefall's profile ran to 1.46 with its own migrations index — which is the played evidence Decision 039 lacked when it deferred general migration procedures. Deliberately not decided here (Decision 087).
 
 ---
 

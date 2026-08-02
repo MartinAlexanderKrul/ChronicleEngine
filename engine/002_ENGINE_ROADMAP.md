@@ -661,6 +661,15 @@ Both remain **Accepted**. They are not reopened, reversed, or renumbered: accept
 | Decision 086 | The Architecture Freeze Binds Implementation, Not Validation | Refinement — completes Decision 048 as Decision 069 did; adds no Rules section, no Data Model change, and no mechanism a world may invoke |
 | Decision 087 | Milestones Whose Engine Layer Is Closed Are World-Authoring Backlog | Refinement — reclassifies planning records; adds no Rules section, no Data Model change, no mechanism |
 
+### Version 0.4 — ADR Design and Architecture Freeze
+
+| Decision | Subject | Class |
+|----------|---------|-------|
+| Decision 088 | Standing Need: Demand Advances on the World's Clock | **Foundational** — adds Data Model Section 7.6; owned by milestone 0.4.1 |
+| Decision 089 | Opportunity Claimants: A Finite Opening Is Contested | **Foundational** — extends Data Model Section 7.5; owned by milestone 0.4.2 |
+
+Both accepted 2026-08-02, together, as the Version 0.4 Architecture Freeze (Decisions 048, 086). Neither advances the Data Model version and neither requires a migration: both are tracked state minting no identifier, held in records that already exist, on Decision 082's precedent. They are foundational under Decision 069 because they change `011`, and they were accepted at ADR Approval rather than admitted as freeze exceptions — which is the ordinary path the lifecycle describes and the one Version 0.3 departed from ten times.
+
 Owned by milestone 0.3.5 and accepted at the version's close, as the disposition of the Engine Postmortem's Finding 1. It is the answer to a question the version itself raised: ten foundational changes were admitted to a frozen version by owner ruling, and the freeze had no written condition an exception must meet. Decision 086 supplies one. It does not excuse the ten — all ten already satisfy it — and it does not replace the owner ruling, which is still required.
 
 Decision 071 is the fifth decision against the bootstrap boundary (with 056, 063, 064, 067) and the second disposition of the profile-churn technical debt below. It is recorded there rather than treated as a separate pattern.
@@ -829,7 +838,9 @@ Infrastructure and Logistics stay unscheduled. Version 0.2 excluded them as sepa
 
 # Version 0.4 — Economy & Opportunity
 
-Status: **ADR Design — 2026-08-02.** The capability is settled (Economy & Opportunity, owner ruling) and the scope below is the Planning-stage output. **Decisions 088 and 089 are drafted as Proposed**; accepting them is the Version 0.4 Architecture Freeze under Decisions 048 and 086, and Implementation does not begin before that.
+Status: **Implementation — Architecture Freeze 2026-08-02.** The capability is settled (Economy & Opportunity), the scope below is the Planning-stage output, and **Decisions 088 and 089 are Accepted**. Their acceptance is the Version 0.4 Architecture Freeze under Decisions 048 and 086: the version's architectural basis is now fixed, and later work is implementation and refinement.
+
+**What the freeze now means here, precisely** (Decision 086). It binds Implementation and the Consistency Audit: no further foundational change lands in Version 0.4 during those stages. From Capability Validation onward a foundational change is permitted only where it arises from played evidence, is classified under Decision 069, is versioned and migrated, and is revalidated. Version 0.3 admitted ten such changes and Decision 086 exists so that this version's are checkable rather than merely ruled.
 
 **Standing constraint on every Version 0.4 ADR:** the resident card is at 5,976 tokens against a 6,000 warning. Any decision adding a per-turn obligation must name what it displaces. Decisions 088 and 089 both discharge this by extending clauses that already exist rather than adding new ones.
 

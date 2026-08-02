@@ -180,7 +180,22 @@ Assert-True ($profile -match 'never adjusts a posting.s staffing, deadline, or l
 # The seeded board exists, and every deadline is correct derived arithmetic (Section 9.3).
 $breakDays = @{ 'E' = 7; 'D' = 6; 'C' = 5; 'B' = 4 }
 $rows = [regex]::Matches($worldLedger, '(?m)^\| `(GB-\d+)` \| [^|]+ \| \*\*(?:Confirmed|Unconfirmed) ([EDCB])-Rank\*\* \| (\d{4}-\d{2}-\d{2}) \| \*\*midnight (\d{4}-\d{2}-\d{2})\*\* \|')
-Assert-True ($rows.Count -ge 3) "Tracked board holds $($rows.Count) parsable postings; at least 3 are required (Section 9.10)."
+# This is a vacuity guard, not a board-size contract, and it used to be both by
+# accident. The loop below checks each posting's derived deadline arithmetic; if
+# the table's format changed and the regex matched nothing, that loop would pass
+# over an empty set and prove nothing. So the assertion exists to confirm the
+# table is still parsable.
+#
+# It required at least three, which was the count the board happened to hold
+# when the test was written and was never argued for. After F-002 settled
+# (`EVT-000270`) the board legitimately holds one live posting -- GB-01 and
+# GB-02 broke, GB-03 cleared -- and the suite failed for days on a world state
+# that is correct. Section 9.10 sets no minimum and Section 9.4's economics
+# ("cheap jobs sit") make a quiet board an ordinary outcome, so asserting a
+# floor here was asserting something no rule says.
+#
+# One row is what the guard actually needs.
+Assert-True ($rows.Count -ge 1) "Tracked board holds no parsable postings; the Section 9.10 table is missing or its format has changed, so the deadline arithmetic below would check nothing."
 foreach ($r in $rows) {
     $key = $r.Groups[1].Value
     $rank = $r.Groups[2].Value
@@ -260,7 +275,20 @@ Assert-True ($character -notmatch 'trigger_telemetry') "trigger_telemetry leaked
 # The recorded supply counts must match the ledgers they summarise.
 $worldRecords = ([regex]::Matches($knowledge, '(?m)^subtype: concealed-discovery\r?$')).Count
 $campaignRecords = ([regex]::Matches($worldLedger, '(?m)^subtype: concealed-discovery\r?$')).Count
-$boardRows = ([regex]::Matches($worldLedger, '(?m)^\| `GB-\d+` \|')).Count
+# `tracked_postings` counts postings still ON the board, not every row the table
+# has ever carried. The distinction did not exist until F-002 settled: before
+# then no posting had ever been resolved, so "rows in the table" and "live
+# postings" were the same number and the test could not tell which it meant.
+#
+# After `EVT-000270` the table carries its settled history -- GB-01 and GB-02
+# `broken`, GB-03 `cleared`, each marked with the Event that settled it -- and
+# only GB-04 remains `posted`. Counting rows therefore reported 4 against a
+# correct telemetry value of 1 and failed on a board that is right.
+#
+# A settled row is identified by its own settlement marker rather than by the
+# presentational bolding of its deadline, which is a rendering convention and
+# not a contract.
+$boardRows = ([regex]::Matches($worldLedger, '(?m)^\| `GB-\d+` \|(?![^\r\n]*settled `EVT-)')).Count
 
 Assert-True ($currentState -match '(?m)^\s+concealed_records_available:\s*(\d+)') "trigger_telemetry.concealed_records_available is unreadable."
 $recordedConcealed = [int]$Matches[1]

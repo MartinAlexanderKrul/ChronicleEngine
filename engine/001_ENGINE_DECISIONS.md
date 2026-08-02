@@ -4217,7 +4217,7 @@ A third correction surfaced while resolving this and is recorded because it chan
 
 ## Decision 088 — Standing Need: Demand Advances on the World's Clock
 
-**Status:** Proposed — Version 0.4 ADR Design, milestone 0.4.1. Acceptance constitutes part of the Version 0.4 Architecture Freeze (Decisions 048, 086).
+**Status:** Accepted — 2026-08-02. Owned by Version 0.4, milestone 0.4.1. Accepted together with Decision 089; the pair constitutes the **Version 0.4 Architecture Freeze** (Decisions 048, 086).
 **Date:** 2026-08-02
 **Related Sections:** `010_ENGINE_RULES.md` Sections 1.8, 3.4, 3.4.1; `011_ENGINE_DATA_MODEL.md` Sections 7.3, 7.5 (proposed 7.6); `012_ENGINE_RUNTIME.md` Section 2.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Turn-State Settlement); Decisions 060, 078, 080, 082, 083
 
@@ -4290,7 +4290,9 @@ Required by `docs/DEVELOPMENT_WORKFLOW.md` (*A Decision That Introduces Settled 
 
 ## Decision 089 — Opportunity Claimants: A Finite Opening Is Contested
 
-**Status:** Proposed — Version 0.4 ADR Design, milestone 0.4.2. Acceptance constitutes part of the Version 0.4 Architecture Freeze (Decisions 048, 086).
+**Status:** Accepted — 2026-08-02. Owned by Version 0.4, milestone 0.4.2. Accepted together with Decision 088; the pair constitutes the **Version 0.4 Architecture Freeze** (Decisions 048, 086).
+
+The owner ruling accepted both rather than freezing demand alone, on the ground that the two are a designed pair: a need with nothing contesting its fulfilment models only half the transaction, and 0.4.2 is where the world stops waiting for the protagonist. **The risk recorded in Consequences is not withdrawn by acceptance** — contention is the mechanism most likely to read as punishment for hesitating, and testing whether it does is milestone 0.4.3's explicit job.
 **Date:** 2026-08-02
 **Related Sections:** `010_ENGINE_RULES.md` Sections 1.2, 1.8, 3.4.1, 4 (Law VII); `011_ENGINE_DATA_MODEL.md` Sections 7.3, 7.5; `012_ENGINE_RUNTIME.md` Section 2.4; Decisions 003, 060, 078, 083, 088
 

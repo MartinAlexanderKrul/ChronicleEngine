@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000188 |
+| Entity | `ENT-` | Persistent Entity | ENT-000190 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000314 |
+| Event | `EVT-` | Event | EVT-000322 |
 | Relationship | `REL-` | Relationship | REL-000088 |
 
 ---
@@ -462,6 +462,16 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000312 | Event | Gatefall: Pendragon: evening outreach to three past work contacts — Dale Pruitt confirms a real B-Rank harvest job (2026-08-16, 08:00, the freight yards); Denise Ferro has nothing available (crew mid-contract); Ada Reyes confirms a C-Rank harvest slot (2026-08-15, Cicero-style terms) |
 | EVT-000313 | Event | Gatefall: Pendragon: Owen returns home from his (rescheduled) Edgewater shift ~22:00 to the apartment mostly unpacked; a warm, unhurried reunion |
 | EVT-000314 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000306`-`EVT-000313` span with an explicit `none` for `gatefall.skill_formation` beyond the already-ratified Broken Rhythm candidate |
+| ENT-000189 | Entity | Gatefall: Pendragon: Marnie, the unlicensed artificer Walt Adamik brokered an introduction to — named but still unmet, now gone unexplainedly quiet |
+| ENT-000190 | Entity | Gatefall: Pendragon: campaign-scope concealed-discovery record, "What happened to Marnie" — promoted from the fiction at `EVT-000320`, no pointer attached yet |
+| EVT-000315 | Event | Gatefall: Pendragon: the morning of 2026-08-13 — the twentieth daily quest issued and completed on the new lakefront route from Rogers Park (streak 5→6); the Daily Premium tab rotated live (Argent series) |
+| EVT-000316 | Event | Gatefall: Pendragon: a Daily Random Box opened (potion cache — 1 Lesser Healing, 2 Lesser Mana Potion); the pending Ability Points +3 stack claimed and, combined with the banked 5, all 8 points allocated to Strength (45→53) |
+| EVT-000317 | Event | Gatefall: Pendragon: first in-person meeting with Grant Okwuosa at a diner near the Coalition building — Flux Sight/Keen Sense/Exploit Pattern reads shared aloud; negotiates equal evaluation regardless of tenure; **recruited on the spot**, third name secured after Marcus and Theo |
+| EVT-000318 | Event | Gatefall: Pendragon: the Reyna/Ada Saturday scheduling conflict resolved — Ada's C-Rank harvest job confirmed as a 09:00 morning start (grounded from her established pattern), freeing the evening; Reyna's meeting with Alexander and Owen locked for 7 PM the same day |
+| EVT-000319 | Event | Gatefall: Pendragon: first in-person meeting with Soraya Delgado at the Redline Practice Yards (her choice of venue, for privacy) — Flux Sight/legendary Keen Sense/Exploit Pattern reads shared aloud; negotiates a shared-picture tactical role rather than caller-or-background; **interested, contingent on seeing the first crew training**, same condition as Iris |
+| EVT-000320 | Event | Gatefall: Pendragon: a call to Walt Adamik chasing the Marnie introduction — the artificer has gone genuinely quiet (six unanswered messages against her normal pattern; 🎲 d100 2, catastrophic), a real concern rather than routine silence. Walt shares everything he actually knows: her working alias, no known address by her own design, a coffee stall near the Metro rail yards off Cermak as the one fixed meeting point, no known mundane job or contacts. No new grey-market stock this visit (🎲 d100 15, major failure) |
+| EVT-000321 | Event | Gatefall: Pendragon: promotion ritual (Profile Section 8.4.5) — Marnie's disappearance authored as a campaign-scope concealed-discovery record (`ENT-000190`), anchored to `ENT-000189`. No pointer attached this Event per the mandatory time-separation rule; eligible to attach in a later scene once Alexander is actually investigating rather than just having learned of it |
+| EVT-000322 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000315`-`EVT-000321` span with an explicit `none` for `gatefall.skill_formation` |
 
 ---
 

@@ -351,7 +351,12 @@ Assert-True ($character -match 'skills\.twin_fang\.mastery_progress[^}]*current_
 $tfProgress = [int]$Matches[1]
 Assert-True ($character -match 'skills\.twin_fang\.mastery_level[^}]*current_value: (\d+)') "Twin Fang mastery_level counter is unreadable."
 $tfLevel = [int]$Matches[1]
-Assert-True ($character -match ('Twin Fang \[E-Rank\] ' + [regex]::Escape($tfLevels[$tfLevel]) + '.+Successful uses ' + $tfUses + ' . qualifying scenes total ' + $tfScenes + ' . mastery progress ' + $tfProgress + '/3')) "Twin Fang rendered prose does not match its stored counters (level $tfLevel, uses $tfUses, scenes $tfScenes, progress $tfProgress)."
+# Master is the ceiling, so the sheet renders "mastery progress complete" there
+# rather than a fraction -- a Master skill has no next tier to be N/3 toward.
+# Pinning only the fraction form made this unsatisfiable for any skill that
+# actually reached Master, which is what F-011's settlement exposed.
+$tfProgressRender = if ($tfLevel -eq 5) { 'mastery progress complete' } else { 'mastery progress ' + $tfProgress + '/3' }
+Assert-True ($character -match ('Twin Fang \[E-Rank\] ' + [regex]::Escape($tfLevels[$tfLevel]) + '.+Successful uses ' + $tfUses + ' . qualifying scenes total ' + $tfScenes + ' . ' + $tfProgressRender)) "Twin Fang rendered prose does not match its stored counters (level $tfLevel, uses $tfUses, scenes $tfScenes, progress $tfProgress)."
 
 $quickknifeChassis = [decimal]0.75 + $daggerBonus
 $mainDamage = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeChassis)
@@ -362,16 +367,26 @@ $mainFollowUp = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeCha
 
 # These are a SNAPSHOT of the current loadout and Stats, not a rule -- they move whenever
 # effective Strength, a weapon, Dagger Mastery, or a mastery level changes. The formula
-# above is the invariant; these guard it against silent drift. Recomputed for the
+# above is the invariant; these guard it against silent drift.
+#
+# Recomputed at 900_CHECKPOINT_0061 for effective Strength 51->62, the only input that
+# moved: main power 11, off power 7, Dagger Mastery +0.30 at Master (chassis x1.05) and
+# Rupture x2.45 at Expert are all unchanged. Twin Fang's x1.60 is unchanged here too --
+# the sheet had rendered Master's multiplier all along, so F-011's settlement moved the
+# stored counter up to the number this snapshot was already computed from rather than
+# changing the number. The prior pin sat at Strength 51 and had been stale since the
+# Level 14 advance. The superseded note it was recorded under:
+#
+# Recomputed for the
 # 2026-08-09 instant-dungeon run and its mastery reconciliation (EVT-000232-EVT-000237),
 # which took Level 11->13 and advanced three of the four inputs at once: effective
 # Strength 45->51 (base 36->42), main power 11, off power 7, Dagger Mastery +0.25->+0.30
 # at Master (chassis x1.00->x1.05), Rupture x2.30->x2.45 at Expert, Twin Fang
 # x1.30->x1.45 at Expert.
-Assert-True ($mainDamage -eq 65) "Main-hand /system preview is $mainDamage, expected 65."
-Assert-True ($offDamage -eq 61) "Off-hand /system preview is $offDamage, expected 61."
+Assert-True ($mainDamage -eq 77) "Main-hand /system preview is $mainDamage, expected 77."
+Assert-True ($offDamage -eq 72) "Off-hand /system preview is $offDamage, expected 72."
 Assert-True ($ruptureDamage -eq 61) "Rupture /system preview is $ruptureDamage, expected 61."
-Assert-True (($mainDamage -eq 65) -and ($offFollowUp -eq 88)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 65 + 88."
-Assert-True (($offDamage -eq 61) -and ($mainFollowUp -eq 94)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 61 + 94."
+Assert-True (($mainDamage -eq 77) -and ($offFollowUp -eq 116)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 77 + 116."
+Assert-True (($offDamage -eq 72) -and ($mainFollowUp -eq 123)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 72 + 123."
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

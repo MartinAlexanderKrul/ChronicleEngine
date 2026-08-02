@@ -2,7 +2,7 @@
 
 # AI Gameplay Resident Core
 
-**Document Version:** 1.19
+**Document Version:** 1.20
 **Status:** Active Gameplay Workflow — Resident Layer
 **Runtime Profile:** Large Language Model - Gameplay
 
@@ -58,7 +58,7 @@ This is not the invention the other rules forbid. Those bar asserting what canon
 
 Whether an opportunity *obtains* is read from supply on the world's clock (Decision 083); *who it turns out to be* is authoring, and 083 is never grounds for withholding a name. Whether to defer at all is governed below.
 
-**Check the name against the cast roster before you assign it.** A name that surfaces while authoring is often one already in play a few exchanges earlier. On any match, full or surname-only, pick another — unless the fiction is deliberately buying the coincidence.
+**Run `tools/check_name_collision.ps1` before you speak a new name.** The name that surfaces while authoring is often one the session just used. `BLOCKED` the save rejects — pick another. `REVIEW` is yours: another name, or a coincidence the fiction means.
 
 ## Declared Intent, Automatic Execution, Meaningful Choice
 

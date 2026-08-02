@@ -207,6 +207,25 @@ def entity_deferred_groups(config: dict[str, Any]) -> Any:
     return source_loading.get("entity_deferred_groups")
 
 
+def entity_authoring_check(config: dict[str, Any]) -> Any:
+    """The campaign's declared naming-time collision check, as written.
+
+    F-009's fix sited the only mechanical name check at the Repository
+    Validation Barrier, which runs at a durability boundary -- so a colliding
+    name is rejected a whole session after the player read it, and the partial
+    collision that F-009 actually was is not adjudicated there at all.
+
+    `entity_deferred_groups` above made an NPC *read* addressed rather than
+    remembered. This does the same for the name *check*: it names the tool and
+    the sources it reads, so a declaration that rots fails the build instead of
+    quietly describing a check nobody runs.
+    """
+    source_loading = config.get("source_loading")
+    if not isinstance(source_loading, dict):
+        return None
+    return source_loading.get("entity_authoring_check")
+
+
 def field_path_count(path: Path, field_path: str) -> int:
     parts = field_path.split(".")
     if not parts or any(not re.fullmatch(r"[a-z][a-z0-9_]*", part) for part in parts):
@@ -771,6 +790,63 @@ def validate_campaign(
                         f"{label} must declare entity_fields, relationship_fields, or both; "
                         "an unbounded dispatch is the whole-object read this key replaces"
                     )
+
+    declared_check = entity_authoring_check(config)
+    if declared_check is not None:
+        authoritative = {
+            normalize_repo_path(source)
+            for source in required_sources or []
+            if isinstance(source, str)
+        }
+        label = f"{display}: entity_authoring_check"
+        if not isinstance(declared_check, dict) or not declared_check:
+            failures.append(
+                f"{display}: source_loading.entity_authoring_check must be a "
+                "non-empty mapping when present"
+            )
+        else:
+            # The tool resolves against the engine's own installation, not
+            # against the root under validation. It is engine machinery rather
+            # than campaign data: every fixture root in tools/ is a partial copy
+            # of campaigns, system, and worlds, and requiring tools/ inside one
+            # would fail those suites on the absence of the fixture instead of
+            # on anything under test. The rot this guards against -- a renamed
+            # or deleted check -- is a property of the engine, and that is where
+            # it is checked.
+            engine_root = Path(__file__).resolve().parents[1]
+            tool_value = declared_check.get("tool")
+            if not isinstance(tool_value, str) or not tool_value.strip():
+                failures.append(f"{label} needs a non-empty tool")
+            elif not resolve_repo_path(engine_root, normalize_repo_path(tool_value)).is_file():
+                failures.append(
+                    f"{label} tool does not exist: {normalize_repo_path(tool_value)}"
+                )
+            # Every source the check reads must exist and be authoritative for
+            # this campaign. A check pointed at a ledger the campaign does not
+            # declare is reading someone else's fiction.
+            for key in ("object_source", "ledger", "world_ledger"):
+                value = declared_check.get(key)
+                if value is None:
+                    if key == "world_ledger":
+                        continue
+                    failures.append(f"{label} needs a {key}")
+                    continue
+                if not isinstance(value, str) or not value.strip():
+                    failures.append(f"{label}.{key} must be a non-empty path")
+                    continue
+                normalized = normalize_repo_path(value)
+                if not resolve_repo_path(root, normalized).is_file():
+                    failures.append(f"{label}.{key} does not exist: {normalized}")
+                elif normalized not in authoritative:
+                    failures.append(
+                        f"{label}.{key} is absent from required_sources: {normalized}"
+                    )
+            reason = declared_check.get("reason")
+            if not isinstance(reason, str) or not reason.strip():
+                failures.append(
+                    f"{label} needs a reason; an undeclared purpose is how a "
+                    "declaration outlives the rule it was written for"
+                )
 
     validation = config.get("validation")
     trigger_audit_required = False

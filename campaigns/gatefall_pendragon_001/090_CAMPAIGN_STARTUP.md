@@ -70,6 +70,12 @@ source_loading:
         - state
         - texture
       reason: "fetch when a recorded NPC enters a scene, before its first line (Resident Core, Load a Recorded NPC Before Playing It)"
+  entity_authoring_check:
+    tool: tools/check_name_collision.ps1
+    object_source: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md
+    ledger: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
+    world_ledger: worlds/gatefall/220_NOTABLE_FIGURES.md
+    reason: "run before a freshly authored NPC's name is spoken, not after the save (F-009). BLOCKED is what the Repository Validation Barrier will reject; REVIEW is the author's own call in the turn."
   campaign_readiness_headings:
     - file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
       heading: "Closed Channels"
@@ -101,6 +107,7 @@ required_sources:
   - worlds/gatefall/200_WORLD_BIBLE.md
   - worlds/gatefall/206_WORLD_RULE_PROFILE.md
   - worlds/gatefall/210_PLACES.md
+  - worlds/gatefall/220_NOTABLE_FIGURES.md
   - worlds/gatefall/institutions/windy-city-coalition/250_INSTITUTION_LEDGER.md
   - worlds/gatefall/institutions/bgm-region-v/250_INSTITUTION_LEDGER.md
   - worlds/gatefall/260_SEED_EVENTS.md

@@ -39,7 +39,14 @@ surfaces:
     # Version 0.3 postmortem records this as an architectural constraint on the
     # per-turn enforcement layer rather than as a budget note, because it is the
     # binding limit on the one obligation class that has no mechanical proxy.
-    baseline_tokens: 5978
+    # Re-recorded 2026-08-02 for the naming-time collision gate: 5,978 -> 5,976,
+    # a net -2. This is the first resident change made under the closed-surface
+    # rule above, and it is what that rule asks for -- the F-009 clause was
+    # replaced in place rather than joined, so naming the instrument and both its
+    # verdicts costs less than the sentence it displaced. Headroom is 24 tokens
+    # and the surface stays closed; the constraint is unchanged, not relaxed by
+    # having been met once.
+    baseline_tokens: 5976
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true

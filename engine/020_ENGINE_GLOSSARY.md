@@ -194,6 +194,18 @@ Character Knowledge may be incomplete or incorrect.
 
 ---
 
+## Claimant
+
+Who, other than the protagonist, may take a standing Opening — a named entity, a role, or a world-declared pool.
+
+A claim settles at the same clock boundary that advances the source, by ordinary resolution against the claimants' own established standing, and never by a rule that raises or lowers the protagonist's odds. **The protagonist is a claimant like any other:** if he acts first, he takes it.
+
+Two limits are structural rather than tuning. An unclaimed opening simply remains — there is no decay, and no opening becomes likelier to be taken because the protagonist was told about it, which would be a drama timer. And an advance in which nobody claimed anything is recorded, not skipped.
+
+An opening with no claimants is one nobody else wants, and behaves exactly as openings did before the field existed. Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.5.1; see Decision 089.
+
+---
+
 ## Condition
 
 The current state of usefulness or integrity of a physical resource.
@@ -722,6 +734,16 @@ Occupancy changes when tenancy, control, or containment changes — never when s
 
 ---
 
+## Opening
+
+A standing item of available opportunity held by a Supply Source — a posting, a commission, a vacancy — carried as tracked state until it is taken.
+
+An opening mints no identifier. It is promoted to an Event when it becomes campaign-durable: taken, bid on, refused consequentially, or cited later.
+
+An opening may carry **Claimants**. Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.5; see Decision 083.
+
+---
+
 ## Ownership
 
 The legal, social, magical, or practical right to a resource.
@@ -735,6 +757,18 @@ Ownership is distinct from possession.
 An in-session fact — a ruling or canon-bearing gameplay-transcript event — that has not yet been promoted into a durable ledger.
 
 Pending canon governs play in flight but is not preserved until promoted by the next promotion barrier. See Canon Promotion, Durable Canon. Defined in `012_ENGINE_RUNTIME.md`, Section 5.
+
+---
+
+## Pending World-Side Commitment
+
+Tracked state recording that an NPC or institution has undertaken to act by a stated time.
+
+`Due` is required: an undertaking with no time a clock can reach is not recordable, which is deliberate — an intention without a due time is the shape that cannot be settled and therefore cannot be distinguished from one nobody remembered. Both an on-the-record promise and a Runtime-authored expectation of NPC behaviour are recorded this way.
+
+Status moves at the due time from the owner's own state, whether or not the player is present or aware the commitment exists. **A lapse is a settlement, not an absence:** settled silence is information the fiction may use, while unsettled silence is indistinguishable from an obligation that was forgotten.
+
+Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.4; settled at `012_ENGINE_RUNTIME.md`, Section 2.4; see Decision 082.
 
 ---
 
@@ -1066,6 +1100,18 @@ Also called a Kingdom when its role is a sovereign or quasi-sovereign territory.
 
 ---
 
+## Standing Need
+
+Tracked state recording that an entity or institution requires something, on its own schedule.
+
+**The holder is an entity that already exists in canon.** A need is a property of an actor, never of an aggregate — the line that keeps the construct out of population simulation. An institution needs staff because that institution exists and has a stated shortfall, not because a modelled populace wants something.
+
+It is the mirror of the Supply Source and deliberately separate from it: a supply source records what an actor *offers*, a standing need what it *wants*. They are recorded apart because a need that produces no opening is the case the model could not otherwise express. A need may be met by anyone, including nobody, and a need met by a third party is the ordinary case; an `unmet` need records why.
+
+Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.6; settled at `012_ENGINE_RUNTIME.md`, Section 2.4; see Decision 088.
+
+---
+
 ## Substrate
 
 The underlying system that realizes a Runtime — for example a large language model, a local model, a native application, or a dedicated server.
@@ -1079,6 +1125,16 @@ The engine specification is written against the Runtime abstraction, never again
 Magic, miracle, curse, resurrection, or any other world-established capability that exceeds ordinary physical explanation.
 
 A supernatural phenomenon may exist only if a world establishes it through discoverable mechanics, and must define a source, access requirements, costs, limitations, risks, and social and institutional consequences.
+
+---
+
+## Supply Source
+
+Tracked state recording that an entity or institution generates opportunity — work, custom, patronage, advancement — on its own schedule.
+
+Its `Advanced` anchor is what makes supply honest: **a source is advanced by the clock and read by an inquiry, and only the first may create anything.** An advance that yields nothing sets the anchor forward and records that it did, so *nothing was generated* stays distinguishable from *nobody looked*. Asking about work therefore settles supply before answering, and never generates in response to the asking.
+
+Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.5; governed by `010_ENGINE_RULES.md`, Section 3.4.1; see Decision 083. Its mirror is the Standing Need.
 
 ---
 
@@ -1117,6 +1173,16 @@ It includes reputation, title, rumor, legal status, and public standing.
 The observable manner in which two Characters express their Relationship: habits, verbal patterns, physical tells, forms of address, character firsts, and behavior distinctive to that pair.
 
 Texture answers *how the relationship is expressed*; Qualities answer *what the relationship is*. It records only behavior established by play, never inferred interior state. A non-institutional Character-to-Character Relationship requires Texture once manner has been established; if historical evidence does not survive, the field says *not recorded* rather than inventing it. Defined in `011_ENGINE_DATA_MODEL.md`, Section 10 (Decision 076).
+
+---
+
+## Tracked State
+
+Present truth that carries no identifier: authoritative and mutable like Canonical State, but held as fields inside a holding record rather than in a Canonical Record of its own, minting nothing from the registry.
+
+It is still canon — read, settled, and checkpointed like any other present truth — and a Runtime may not treat it as scratch because it has no identifier. What it does not carry is referential integrity, since nothing can point at it by identifier. Tracked state that becomes campaign-durable is promoted to an Event or Entity at that moment, and only then.
+
+The construct that lets the engine carry pending commitments, supply sources, and standing needs without a schema advance. Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.3; see Decision 082.
 
 ---
 

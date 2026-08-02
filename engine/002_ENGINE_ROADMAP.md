@@ -838,7 +838,9 @@ Infrastructure and Logistics stay unscheduled. Version 0.2 excluded them as sepa
 
 # Version 0.4 — Economy & Opportunity
 
-Status: **Implementation — Architecture Freeze 2026-08-02.** The capability is settled (Economy & Opportunity), the scope below is the Planning-stage output, and **Decisions 088 and 089 are Accepted**. Their acceptance is the Version 0.4 Architecture Freeze under Decisions 048 and 086: the version's architectural basis is now fixed, and later work is implementation and refinement.
+Status: **Consistency Audit — 2026-08-02.** Milestones 0.4.1 and 0.4.2 are implemented; the audit reconciled terminology across the Glossary, which carried **none** of the tracked-state constructs — not the two this version added, and not Decisions 082 and 083's either. Next is Capability Validation and the Prototype Campaign (0.4.3).
+
+Architecture Freeze 2026-08-02. The capability is settled (Economy & Opportunity), the scope below is the Planning-stage output, and **Decisions 088 and 089 are Accepted**. Their acceptance is the Version 0.4 Architecture Freeze under Decisions 048 and 086: the version's architectural basis is now fixed, and later work is implementation and refinement.
 
 **What the freeze now means here, precisely** (Decision 086). It binds Implementation and the Consistency Audit: no further foundational change lands in Version 0.4 during those stages. From Capability Validation onward a foundational change is permitted only where it arises from played evidence, is classified under Decision 069, is versioned and migrated, and is revalidated. Version 0.3 admitted ten such changes and Decision 086 exists so that this version's are checkable rather than merely ruled.
 
@@ -866,6 +868,8 @@ Version 0.4 must strengthen the existing engine rather than expand it. Where a m
 
 ### 0.4.1 Demand Advances Like Supply Does
 
+**Status: Implemented 2026-08-02** (Decision 088). Data Model Section 7.6 — Standing Need; Runtime Section 2.4 settlement; resident settlement clause extended; shape and staleness enforced by `validate_repository.ps1` with seven fixtures in `tools/test_commitment_settlement_gate.ps1`. The Data Model version does not advance and no migration is required.
+
 Capability delivered:
 
 - An established need — an institution's, a trade's, a household's — generates on its own schedule and is settled forward on the campaign clock, exactly as supply is under Rules Section 3.4.1.
@@ -881,6 +885,8 @@ Acceptance fixtures:
 Explicit exclusions: no demand curve, no utility model, no population aggregate.
 
 ### 0.4.2 A Finite Opportunity Is Contested
+
+**Status: Implemented 2026-08-02** (Decision 089). Data Model Section 7.5.1 — Claimants, extending the supply source rather than adding a section; Runtime Section 2.4 settles a claim inside the supply advance. The Data Model version does not advance and no migration is required. **Milestone 0.4.3 must test whether contention reads as a stealth timer in play** — that risk is recorded in the decision and is not withdrawn by its acceptance.
 
 Capability delivered:
 

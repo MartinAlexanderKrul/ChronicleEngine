@@ -108,7 +108,15 @@ surfaces:
     # so that the next genuine climb is visible from its real floor rather than
     # from a high-water mark nobody is standing on.
     baseline_tokens_by_campaign:
-      gatefall_pendragon_001: 22108
+    # Re-recorded again 2026-08-02, 22,108 -> 24,462: campaign growth across
+    # checkpoints 0060-0062, none of it engine work. Recording it is not
+    # optional bookkeeping here. `test_growth_budgets.ps1` derives its
+    # within-allowance case from the *recorded* figure (baseline / 1.10), so a
+    # baseline left stale makes the actual surface sit outside the allowance it
+    # is meant to sit inside, and the suite fails on a repository that is fine.
+    # A stale baseline breaks the ratchet in both directions: it cannot detect
+    # real growth, and it invents growth that never happened.
+      gatefall_pendragon_001: 24462
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479

@@ -12,6 +12,14 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-02 — Persistence takes the vacated 0.5
+
+**Roadmap milestone state; owner ruling. Refinement under Decision 069** — no Rules section, no Data Model change, no mechanism. No ADR: Decision 087 established the framework and this applies it.
+**Change:** Persistence is renumbered from Version 0.6 into the slot Historical Simulation vacated, and now follows Version 0.4. Its scope remains unapproved and Planning has not begun. Decision 087 deliberately left this undone — moving a version as a side effect of a tidy-up is the drift Decision 069 exists to stop — so it is recorded here as its own ruling.
+**Why it earned the slot**, on the standard Decision 087 applied to Population and Historical Periodization: Decision 039 deferred general migration procedures for want of evidence, and Version 0.3 supplied it. **Four Data Model migrations in a single version** — 0.1.2 → 0.1.3 → 0.1.4 → 0.1.5 → 0.1.6 — each with a contract hand-authored into Data Model Section 12.4, while the Gatefall profile ran 1.0 → 1.46 and grew its own `migrations/` directory and index to cope. Decision 072 had already pushed migration procedures out of milestone 0.3.1 and into this one. Four hand-written migrations and a world inventing its own migration index is the shape of a missing general mechanism.
+**Files:** `engine/002_ENGINE_ROADMAP.md`.
+**Audit:** **nine references to "Version 0.6" in accepted decisions are deliberately not rewritten** — Decisions 039, 053 and 072 among them. Accepted decisions are immutable history and record what was true when they were accepted; the roadmap section carries a pointer saying every such reference means it. Rewriting them would be the retroactive edit the Revision Policy forbids, and would also destroy the record of when the deferral was made. Version 0.6 is now empty and unclaimed.
+
 ## 2026-08-02 — Version 0.4 ADR Design: Decisions 088 and 089 drafted as Proposed
 
 **ADR Design stage output under Decision 048. Both decisions are Proposed, not Accepted** — accepting them is the Version 0.4 Architecture Freeze (Decision 086), and Implementation does not begin before that. Scope question 2 is settled in the same pass.

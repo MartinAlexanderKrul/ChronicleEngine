@@ -946,7 +946,7 @@ The objection raised against it during Planning was that 0.4.1's *"an institutio
 
 **The resident card is not a milestone but a binding constraint on this version's ADRs.** It is a ceiling rather than a capability, and 0.4 meets it immediately, because settling demand and contention per turn is precisely the kind of per-turn obligation the card carries. The rule adopted for the version: **any 0.4 ADR that adds a per-turn obligation must name what it displaces.** That folds the constraint into ADR Design, where it can actually govern something, rather than tracking it as work.
 
-**3. Does Persistence move into the vacated 0.5?** Open. Version 0.3 performed four Data Model migrations, each with a hand-authored contract, while Gatefall's profile ran to 1.46 with its own migrations index — the played evidence Decision 039 lacked when it deferred general migration procedures. Deliberately not decided here (Decision 087).
+**3. Does Persistence move into the vacated 0.5? — Settled 2026-08-02 (owner). Yes.** Version 0.3 performed four Data Model migrations, each with a hand-authored contract in Data Model Section 12.4, while Gatefall's profile ran to 1.46 and grew its own migrations index — the played evidence Decision 039 lacked when it deferred general migration procedures. Persistence is now Version 0.5 and follows Version 0.4; its scope remains unapproved and its Planning has not begun. Historical references to "Version 0.6" in accepted decisions are not rewritten and mean that milestone.
 
 ---
 
@@ -983,16 +983,20 @@ Allow history itself to become part of gameplay.
 
 ---
 
-## Version 0.6 - Persistence
+## Version 0.5 — Persistence
 
-Status: **Partially Rescoped**
+Status: **Renumbered from 0.6 into the slot Historical Simulation vacated (owner ruling, 2026-08-02).** Scope unapproved; Planning has not begun. It follows Version 0.4.
 
-Save architecture and basic version-compatibility recording are closed by `001_ENGINE_DECISIONS.md` Decision 039 and `010_ENGINE_RULES.md` Section 13 - saves are ledger checkpoints with manifests, not a new format, and restoration is already defined.
+**Historical references say 0.6, and they are not rewritten.** Decisions 039, 053, 072 and others name this milestone as "Version 0.6"; accepted decisions are immutable history and record what was true when they were accepted. Every such reference means this section.
+
+Save architecture and basic version-compatibility recording are closed by `001_ENGINE_DECISIONS.md` Decision 039 and `010_ENGINE_RULES.md` Section 13 — saves are ledger checkpoints with manifests, not a new format, and restoration is already defined.
 
 Remaining genuinely new focus:
 
 - Campaign migration and world migration procedures for reconciling version mismatches, deferred by Decision 039
 - Long-term continuity across many campaigns and checkpoints within one persistent world
+
+**Why it earned the slot, on the standard Decision 087 applied to Population and Historical Periodization.** Decision 039 deferred general migration procedures for want of evidence. Version 0.3 supplied it: **four Data Model migrations in a single version** — 0.1.2 → 0.1.3 → 0.1.4 → 0.1.5 → 0.1.6 — each with a migration contract hand-authored into Data Model Section 12.4, while the Gatefall profile ran from 1.0 to 1.46 and grew its own `migrations/` directory and index to cope. Decision 072 explicitly pushed migration procedures out of 0.3.1 and into this milestone. Four hand-written migrations and a world inventing its own migration index is the shape of a missing general mechanism.
 
 Goal:
 

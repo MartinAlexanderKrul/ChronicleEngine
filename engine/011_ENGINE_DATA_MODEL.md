@@ -383,7 +383,55 @@ An advance that yields nothing sets `Advanced` forward with `Available` unchange
 
 `Available` openings are tracked state under Section 7.3 and mint no identifier. An opening is promoted to an Event when it becomes campaign-durable — taken, bid on, refused consequentially, or cited later — exactly as a commitment is under Section 7.4.
 
+### 7.5.1 Claimants — An Opening Is Contested
+
+A standing opening may carry who else can take it (Decision 089):
+
+```text
+Claimants    who else may take this opening — a named entity, a role, or a
+             world-declared pool
+Claimed      the actor that took it, and the campaign-clock anchor at which
+             the claim settled
+```
+
+Both fields are optional, and their absence is meaningful rather than incomplete: **an opening with no claimants is one nobody else wants, and behaves exactly as openings behaved before this section existed.** A world adopting none of this loses nothing it had.
+
+A claim settles at the same clock boundary that advances the source, by ordinary resolution against the claimants' own established standing — capability, proximity, interest, competing obligations (Rules Section 4; Decision 060). It is never resolved by a rule that raises or lowers the protagonist's odds, which Law VII forbids, and the protagonist is himself a claimant like any other: if he acts first he takes it.
+
+An unclaimed opening simply remains. There is no decay and no expiry pressure, and **no opening becomes more likely to be taken because the protagonist was told about it** — that is a drama timer, which Rules Section 1.2 and Decision 003 forbid. An advance in which nobody claimed anything sets the anchor forward and records that it did, on the same negative-assertion discipline as an empty generation.
+
+A pool or role is sufficient and usually correct. Naming every rival individually is the population model Version 0.4 exists without (PA-001).
+
 Rules Section 3.4.1 owns when and how far supply advances and the limits on what it may produce. A World Rule Profile owns its own sources' rates and capacities. This section owns the structure.
+
+---
+
+## 7.6 Standing Need
+
+A **standing need** is tracked state recording that an entity or institution requires something, on its own schedule (Decision 088; Rules Sections 1.8 and 3.4).
+
+```text
+Holder       the Entity or institution that has the need
+Subject      what is needed
+Due          when it is needed by, or the cadence on which it recurs
+Advanced     the campaign-clock anchor through which the need has been settled
+Status       open | met | partially-met | unmet | withdrawn
+Outcome      what met it or why it went unmet, and when
+```
+
+**`Holder` is an entity that already exists in canon.** A need is a property of an actor, never of an aggregate — which is the line that keeps this construct out of population simulation and leaves PA-001 standing. An institution needs staff because that institution exists and has a stated shortfall, not because a modelled populace wants something.
+
+Section 7.5 is its mirror and the two are deliberately separate. A supply source records what an actor *offers*; a standing need records what it *wants*. They frequently pair — a need commonly produces an opening — and they are recorded apart because **a need that produces no opening is precisely the case the model could not previously express.** Where only supply existed, an opportunity's output was modelled while its cause was not, so a withdrawn posting took its reason with it and nothing carried forward that the thing still needed doing.
+
+`Advanced` carries the same weight it does for a supply source: it records how far the need has been settled, so a later read is not confused with a first settlement.
+
+**A need may be met by anyone, including nobody.** Settlement resolves from the holder's own state, standing and reach — not from the protagonist's involvement — and a need met by a third party is the ordinary case. `Status` moves at the due time or cadence boundary whether or not the player is present or aware the need exists (`012_ENGINE_RUNTIME.md` Section 2.4; Rules Sections 1.8 and 3.4).
+
+**An `unmet` need records why, in `Outcome`.** This is Decision 080's negative-assertion discipline unchanged: settled failure is information the fiction may use, while unsettled silence is indistinguishable from a need nobody carried. An institution that failed to staff a contract and one that staffed it must not look identical at rest.
+
+A need is tracked state under Section 7.3 and mints no identifier. It is promoted to an Event when it becomes campaign-durable, exactly as a commitment is under Section 7.4.
+
+Rules Sections 1.8 and 3.4 own when a world actor plausibly needs something and how long fulfilment takes; a World Rule Profile owns its own actors' cadence. A world that declares no cadence still settles a need forward from its established canon by ordinary resolution (Rules Section 4; Decision 060) rather than assuming it lapsed. This section owns the structure.
 
 ---
 

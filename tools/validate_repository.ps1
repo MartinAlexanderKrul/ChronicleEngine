@@ -1641,6 +1641,89 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
 # day of being reconciled by hand. Counts, ranges and partitions are derivable
 # from the save manifests; verdicts and evidence classes are not and stay
 # hand-written outside the generated markers.
+# --- A standing need that came due must have been settled ------------------
+#
+# Decision 088, Version 0.4 milestone 0.4.1. The mirror of the commitment check
+# above, and it exists for the same reason: Runtime Section 2.4 obliges a need
+# to settle at the clock boundary, and an obligation with no enforcement point
+# holds only by assumption (Decision 055).
+#
+# Data Model Section 7.6 already fixes the shape, the five statuses, and the
+# rule that an `unmet` need records why in `Outcome`. This adds no structure --
+# it is arithmetic over a contract accepted at the Architecture Freeze.
+#
+# Like the commitment gate this is vacuous where a campaign records no needs,
+# which is every campaign at implementation time. That is honest rather than
+# useful: the gate bites when a world adopts the construct.
+$needStatuses = @('open', 'met', 'partially-met', 'unmet', 'withdrawn')
+
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    $anchor = $null
+    foreach ($anchorFile in @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "1*.md" -File)) {
+        $anchorMatch = [regex]::Match(
+            (Get-Content -LiteralPath $anchorFile.FullName -Raw),
+            '(?m)^[ \t]*campaign_time:[ \t]*"?([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:]{8}[+-][0-9:]{5})"?')
+        if ($anchorMatch.Success) {
+            $parsed = [datetimeoffset]::MinValue
+            if ([datetimeoffset]::TryParse($anchorMatch.Groups[1].Value, [ref]$parsed)) {
+                if ($null -eq $anchor -or $parsed -gt $anchor) { $anchor = $parsed }
+            }
+        }
+    }
+
+    foreach ($ledger in @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "*.md" -File)) {
+        $ledgerText = Get-Content -LiteralPath $ledger.FullName -Raw
+        if ($ledgerText -notmatch 'standing_needs:') { continue }
+        $ledgerRelative = Get-RelativePath $ledger.FullName
+        $ledgerIndex = New-LineIndex $ledgerText
+
+        foreach ($entry in (Get-ListEntries (Get-IndentedSection $ledgerText "standing_needs"))) {
+            $holder = Get-EntryValue $entry "holder"
+            $subject = Get-EntryValue $entry "subject"
+            $due = Get-EntryValue $entry "due"
+            $status = Get-EntryValue $entry "status"
+            $outcome = Get-EntryValue $entry "outcome"
+            $entryLine = Get-LineNumber $ledgerIndex ($ledgerText.IndexOf($entry))
+
+            # Section 7.6: the holder is an entity that already exists in canon.
+            # This is the line that keeps a need out of population simulation,
+            # so it is the one worth failing on.
+            if ($holder -notmatch '^(ENT|REC)-\d{6}$') {
+                Add-Failure "$ledgerRelative`:$entryLine standing need names no defined holder; a need is a property of an actor already in canon, never of an aggregate (Data Model Section 7.6, Decision 088)."
+                continue
+            }
+            if ([string]::IsNullOrWhiteSpace($subject)) {
+                Add-Failure "$ledgerRelative`:$entryLine standing need held by $holder records no subject; what is needed is required (Data Model Section 7.6)."
+                continue
+            }
+            if ($needStatuses -notcontains $status) {
+                Add-Failure "$ledgerRelative`:$entryLine standing need held by $holder has status '$status'; it must be one of $($needStatuses -join ', ') (Data Model Section 7.6)."
+                continue
+            }
+            if ([string]::IsNullOrWhiteSpace($due)) {
+                Add-Failure "$ledgerRelative`:$entryLine standing need held by $holder records no due time or cadence; a need nothing can reach cannot be settled (Data Model Section 7.6)."
+                continue
+            }
+
+            # "An `unmet` need records why, in `Outcome`" -- Decision 080's
+            # negative-assertion discipline. A settled failure is information;
+            # an unexplained one is indistinguishable from one nobody carried.
+            if ($status -eq 'unmet' -and [string]::IsNullOrWhiteSpace($outcome)) {
+                Add-Failure "$ledgerRelative`:$entryLine standing need held by $holder is unmet but records no outcome; a settled failure states why (Data Model Section 7.6, Decision 088)."
+                continue
+            }
+
+            # `Due` may be a cadence rather than a date, so staleness is checked
+            # only where it is clock-reachable. A cadence is not a deadline.
+            $dueParsed = [datetimeoffset]::MinValue
+            if ($null -ne $anchor -and $status -eq 'open' -and
+                [datetimeoffset]::TryParse($due, [ref]$dueParsed) -and $dueParsed -lt $anchor) {
+                Add-Failure "$ledgerRelative`:$entryLine standing need held by $holder is still 'open' with a due time of $due, behind the campaign anchor $($anchor.ToString('o')); elapsed time reaching a need's due time must settle it from the holder's own state (Runtime Section 2.4, Decision 088)."
+            }
+        }
+    }
+}
+
 $evidenceGenerator = Join-Path $root "tools/generate_validation_evidence.py"
 if (-not $CoreOnly -and (Test-Path -LiteralPath $evidenceGenerator -PathType Leaf)) {
     $evidenceRunner = Join-Path $PSScriptRoot "generate_validation_evidence.ps1"

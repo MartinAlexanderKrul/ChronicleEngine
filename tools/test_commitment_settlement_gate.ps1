@@ -67,6 +67,24 @@ $future  = $anchor.AddDays(2).ToString("yyyy-MM-ddTHH:mm:sszzz")
 # fails for the reason under test rather than for an unknown identifier.
 $owner = "ENT-000130"
 
+function New-NeedBlock {
+    param([string]$Due, [string]$Status, [string]$Outcome, [string]$Holder = $owner)
+
+    $lines = @(
+        '',
+        '```yaml',
+        'standing_needs:',
+        "  - holder: $Holder",
+        '    subject: a C-Rank striker for the Red Line rotation',
+        "    due: `"$Due`"",
+        "    status: $Status"
+    )
+    if ($Outcome) { $lines += "    outcome: $Outcome" }
+    $lines += '```'
+    $lines += ''
+    return ($lines -join "`n")
+}
+
 function New-CommitmentBlock {
     param([string]$Due, [string]$Status, [string]$Reason)
 
@@ -128,6 +146,50 @@ try {
         }
     }
 
+    # --- Decision 088: the standing-need mirror ----------------------------
+    #
+    # Same shape, same reason, and the holder check is the one that matters:
+    # Section 7.6 requires a need to belong to an actor already in canon, which
+    # is the line keeping the construct out of population simulation. A need
+    # attached to nothing is the failure that would quietly turn this into a
+    # demographic model.
+    $needCases = @(
+        @{ Name = 'N-01 open, past due';        Due = $overdue; Status = 'open';    Extra = $null; Holder = $owner
+           ShouldFail = $true;  Expect = 'behind the campaign anchor' }
+        @{ Name = 'N-02 unmet without outcome'; Due = $overdue; Status = 'unmet';   Extra = $null; Holder = $owner
+           ShouldFail = $true;  Expect = 'a settled failure states why' }
+        @{ Name = 'N-03 unmet with outcome';    Due = $overdue; Status = 'unmet';   Extra = 'the Coalition filled it internally'; Holder = $owner
+           ShouldFail = $false; Expect = $null }
+        @{ Name = 'N-04 met, past due';         Due = $overdue; Status = 'met';     Extra = $null; Holder = $owner
+           ShouldFail = $false; Expect = $null }
+        @{ Name = 'N-05 open, not yet due';     Due = $future;  Status = 'open';    Extra = $null; Holder = $owner
+           ShouldFail = $false; Expect = $null }
+        @{ Name = 'N-06 holder is not an entity'; Due = $future; Status = 'open';   Extra = $null; Holder = 'the hunter population'
+           ShouldFail = $true;  Expect = 'never of an aggregate' }
+        @{ Name = 'N-07 status outside the five'; Due = $future; Status = 'wanted'; Extra = $null; Holder = $owner
+           ShouldFail = $true;  Expect = 'must be one of' }
+    )
+
+    $needIndex = 0
+    foreach ($case in $needCases) {
+        $needIndex++
+        $caseRoot = Join-Path $tempRoot "need$needIndex"
+        Copy-ValidationRepository $caseRoot
+        Add-Content -LiteralPath (Join-Path $caseRoot "campaigns/$campaign/180_CURRENT_STATE.md") `
+            -Value (New-NeedBlock $case.Due $case.Status $case.Extra $case.Holder)
+        $result = Invoke-Validator $caseRoot
+
+        if ($case.ShouldFail) {
+            if ($result.ExitCode -eq 0) {
+                $failures.Add("$($case.Name): expected the validator to reject this state, but it passed.") | Out-Null
+            } elseif ($result.Output -notmatch [regex]::Escape($case.Expect)) {
+                $failures.Add("$($case.Name): rejected, but not for the authored reason. Expected '$($case.Expect)'. Got:`n$($result.Output)") | Out-Null
+            }
+        } elseif ($result.ExitCode -ne 0) {
+            $failures.Add("$($case.Name): expected this state to be accepted, but the validator rejected it:`n$($result.Output)") | Out-Null
+        }
+    }
+
     $caseIndex = 0
     foreach ($case in $cases) {
         $caseIndex++
@@ -161,7 +223,7 @@ if ($failures.Count -gt 0) {
     exit 1
 }
 
-Write-Host "Commitment settlement gate PASSED ($($cases.Count) cases)"
+Write-Host "Commitment settlement gate PASSED ($($cases.Count) commitment + $($needCases.Count) standing-need cases)"
 if (-not $liveHasCommitments) {
     Write-Host "  Note: no live campaign records a pending commitment, so the gate is vacuous against real state." -ForegroundColor Yellow
     Write-Host "  Decisions 082 and 083 built a settler and no writer. The gate bites when a session records the first one."

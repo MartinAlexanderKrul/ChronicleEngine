@@ -293,6 +293,16 @@ recordable under Section 7.4 and is therefore not narratable as an undertaking:
 the Runtime resolves the timing, or has the actor decline rather than promise.
 Where the Runtime will not record the undertaking, it does not offer it.
 
+**Standing needs settle at the same boundary** (Decision 088;
+`011_ENGINE_DATA_MODEL.md` Section 7.6; Rules Sections 1.8 and 3.4). Elapsed
+time advances each established need through its due time or cadence and records
+the result. A need is met from the holder's own state, standing and reach —
+**by anyone, including nobody, and a need met by a third party is the ordinary
+case.** An `unmet` need records why it went unmet. Settlement does not depend on
+the player being present, asking, or knowing the need exists: an institution
+that failed to staff its work and one that staffed it must not look identical
+at rest, which is the whole reason the construct exists.
+
 **Opportunity supply settles at the same boundary** (Decision 083;
 `011_ENGINE_DATA_MODEL.md` Section 7.5; Rules Section 3.4.1). Elapsed time
 advances each established supply source through its cadence and records the
@@ -301,6 +311,22 @@ never advances it: where a source's `Advanced` anchor lags the current clock,
 the Runtime settles it forward from that anchor before answering, and does not
 generate at the point of asking. Two inquiries inside one unadvanced span return
 the same answer.
+
+**A contested opening settles inside that advance** (Decision 089;
+`011_ENGINE_DATA_MODEL.md` Section 7.5.1). Where a standing opening carries
+claimants, the same advance resolves whether one of them took it, by ordinary
+resolution against those claimants' own established standing — never by a rule
+that raises or lowers the protagonist's odds (Law VII). The protagonist is a
+claimant like any other: if he acted first, he has it.
+
+Two constraints bound this and are not negotiable at the profile layer. **An
+unclaimed opening simply remains** — no decay, no expiry pressure, and no
+opening becomes more likely to be taken because the protagonist was told about
+it, which would be a drama timer (Rules Section 1.2; Decision 003). And **an
+advance in which nobody claimed anything is recorded**, on the same
+negative-assertion discipline as an empty generation: a settled *nobody took it*
+is information, while an unsettled one is indistinguishable from an advance that
+never ran. Inquiry reads a settled claim and never triggers one.
 
 ## 2.5 Profile-Declared Proactive Trigger Settlement
 

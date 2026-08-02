@@ -46,7 +46,17 @@ surfaces:
     # verdicts costs less than the sentence it displaced. Headroom is 24 tokens
     # and the surface stays closed; the constraint is unchanged, not relaxed by
     # having been met once.
-    baseline_tokens: 5976
+    # Re-recorded 2026-08-02 for Version 0.4 Implementation: +15, the standing
+    # need and contested opening folded into the settlement clause that already
+    # advances commitments and supply. Decisions 088 and 089 each promised to
+    # extend an existing clause rather than add one, and this is that promise
+    # measured -- a whole capability's per-turn obligation for fifteen tokens.
+    #
+    # The card now stands at 5,991 against a 6,000 warning: NINE tokens. There
+    # is no headroom left in any practical sense. The next resident change
+    # displaces text or the warning moves on an owner ruling; there is no third
+    # option, and "it only adds a few words" is no longer available.
+    baseline_tokens: 5991
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true
@@ -89,11 +99,19 @@ surfaces:
     # is now Checkpoint 0052. That surface is at 28,343 against a 30,000 hard
     # failure and will breach it on ordinary play, not on engine work. Trimming
     # it is authoring and belongs to the owner (Recommendation R14).
+    #
+    # Re-recorded 2026-08-02. Three campaigns move by the card's +15. Gatefall
+    # moves -6,614, and that is play trimming rather than engine work: Current
+    # State was cut hard during a session, taking the surface from 28,722 to
+    # 22,108. The 30,000 hard failure that this file has flagged as reachable on
+    # ordinary play is no longer close, and the figure is re-recorded downward
+    # so that the next genuine climb is visible from its real floor rather than
+    # from a high-water mark nobody is standing on.
     baseline_tokens_by_campaign:
-      gatefall_pendragon_001: 28722
-      prototype_alpha: 9142
-      prototype_beta: 9655
-      reikon_awakening_001: 13466
+      gatefall_pendragon_001: 22108
+      prototype_alpha: 9155
+      prototype_beta: 9668
+      reikon_awakening_001: 13479
     include_resident: true
     derive_operation: continue
 

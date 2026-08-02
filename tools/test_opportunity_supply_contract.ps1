@@ -52,7 +52,12 @@ Assert-Contains $runtime 'settles it forward from that anchor before answering' 
 Assert-Contains $runtime 'Two inquiries inside one unadvanced span return' 'Nothing forecloses drawing twice by asking twice.'
 
 # Resident per-turn settlement, folded into the step that already settles time.
-Assert-Contains $resident 'advance every established opportunity source through the span' 'Turn-State Settlement does not advance supply.'
+# The clause absorbed standing needs at Version 0.4 Implementation (Decision
+# 088): one sentence now advances needs and supply together, because the
+# resident card had nine tokens of headroom and both ADRs undertook to extend an
+# existing clause rather than add one. The pin follows the wording so that it
+# still proves supply is advanced per-turn, and now proves needs are too.
+Assert-Contains $resident 'advance every established need and opportunity source through the span' 'Turn-State Settlement does not advance supply.'
 Assert-Contains $resident 'an inquiry reads settled supply rather than generating it' 'The resident layer does not forbid generating supply at the point of asking.'
 
 # Decision 083 point 6 keeps supply off the schema, as Decision 082 did for

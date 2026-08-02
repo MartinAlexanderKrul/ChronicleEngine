@@ -94,7 +94,14 @@ def partition(pairs: list[tuple[str, str]]) -> list[tuple[str, str, str, int]]:
 
 def render(campaign: str, root: pathlib.Path) -> str:
     saves = root / "campaigns" / campaign / "saves"
-    directories = sorted(d for d in saves.iterdir() if d.is_dir())
+    # `.900_CHECKPOINT_<NNNN>.staging-<token>` recovery directories are the
+    # non-canonical residue a failed transactional checkpoint leaves behind
+    # (Save Algorithm step 6). They keep the manifest they had been given, so
+    # counting them would let one failed run inflate the evidence block and
+    # fail every later run's preflight.
+    directories = sorted(
+        d for d in saves.iterdir() if d.is_dir() and not d.name.startswith(".")
+    )
 
     rows: list[tuple[str, dict[str, str]]] = []
     for directory in directories:

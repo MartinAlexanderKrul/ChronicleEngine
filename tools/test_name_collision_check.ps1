@@ -140,7 +140,15 @@ try {
 
     # --- Leg 3: a clean name passes ----------------------------------------
     # A check that never says OK is a check nobody will run twice.
-    Assert-Verdict -Leg 'N-D clean name' -Name 'Marnie Sokolov' `
+    #
+    # The control name is fixture data and has to stay outside the campaign's
+    # own namespace, because live play keeps moving into it. This leg was
+    # 'Marnie Sokolov' until the Gatefall campaign authored `ENT-000189`
+    # "Marnie" on 2026-08-11, at which point the control shared a token with
+    # live canon and the leg failed on its own fixture rather than on the
+    # checker -- the F-009 shape, landing on the suite built to catch it.
+    # Prefer a name with no token any roster is likely to reach.
+    Assert-Verdict -Leg 'N-D clean name' -Name 'Wrenfield Ashgrove' `
         -Verdict 'OK' -ExitCode 0
 
     # --- Leg 4: honorifics are not identity ---------------------------------

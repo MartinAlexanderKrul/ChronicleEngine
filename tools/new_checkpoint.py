@@ -31,6 +31,10 @@ from validate_runtime_configuration import (
 )
 
 
+EVIDENCE_GENERATOR = "generate_validation_evidence.py"
+EVIDENCE_TARGET = (
+    "docs/430_RUNTIME_PERSISTENCE_VALIDATION/432_GATEFALL_PROTOTYPE_LOG.md"
+)
 REQUIRED_LEDGERS = (
     "100_CHARACTER_SHEET.md",
     "110_WORLD_LEDGER.md",
@@ -695,6 +699,42 @@ def create_checkpoint(args: argparse.Namespace) -> int:
                 common_root + ["-Check"],
             )
         )
+
+        phase = "evidence-generation"
+        # The promoted checkpoint is a new row in the campaign's own save
+        # manifests, so the derived validation-evidence block is stale the
+        # instant `os.replace` above lands -- exactly as the runtime index is,
+        # and for the same reason. Regenerate it here, before the gate that
+        # checks it, or `validate_repository.ps1` below fails every run on a
+        # count only this function could have advanced.
+        #
+        # Guarded on the generator's presence the same way validate_repository
+        # guards its own evidence check, so a repository without the generator
+        # is not failed for drifting out of sync with a check nobody runs.
+        if (root / "tools" / EVIDENCE_GENERATOR).is_file():
+            # Regeneration rewrites a tracked document, so it joins the
+            # byte-for-byte rollback set before it is touched -- otherwise a
+            # later gate failure would leave the evidence block advanced past
+            # a checkpoint that no longer exists, and poison the next preflight.
+            evidence_target = root / EVIDENCE_TARGET
+            if evidence_target.is_file() and evidence_target not in originals:
+                originals[evidence_target] = evidence_target.read_bytes()
+            gates.append(
+                run_gate(
+                    root,
+                    "validation evidence generation",
+                    "generate_validation_evidence.ps1",
+                    common_root,
+                )
+            )
+            gates.append(
+                run_gate(
+                    root,
+                    "validation evidence synchronization",
+                    "generate_validation_evidence.ps1",
+                    common_root + ["-Check"],
+                )
+            )
 
         phase = "checkpoint-validation"
         gates.append(

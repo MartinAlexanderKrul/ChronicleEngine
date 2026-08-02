@@ -30,6 +30,7 @@ function New-Fixture {
     $temporaryRoots.Add($fixture)
     foreach ($directory in @(
         "campaigns/example/saves/900_CHECKPOINT_0001",
+        "docs/430_RUNTIME_PERSISTENCE_VALIDATION",
         "engine",
         "system",
         "tools",
@@ -129,9 +130,43 @@ versions:
 "@
     Write-Utf8 (Join-Path $fixture "system/WORLDS_AND_CAMPAIGNS.md") "generated:900_CHECKPOINT_0001`n"
 
+    # The evidence block is derived from the campaign's own save directories,
+    # so promoting a checkpoint staleness-marks it. The fixture models that
+    # coupling -- generator plus a validator that actually checks it -- because
+    # a fixture that stubbed only the tools the helper already called is what
+    # let the helper ship unable to pass its own post-promotion gate (F-010).
+    Write-Utf8 (Join-Path $fixture "docs/430_RUNTIME_PERSISTENCE_VALIDATION/432_GATEFALL_PROTOTYPE_LOG.md") "checkpoints:1`n"
+    Write-Utf8 (Join-Path $fixture "tools/generate_validation_evidence.py") "# fixture marker: presence gates the helper's evidence phase`n"
+    Write-Utf8 (Join-Path $fixture "tools/generate_validation_evidence.ps1") @'
+[CmdletBinding()]
+param([string]$RepositoryRoot, [string]$Campaign, [switch]$Check)
+$root = if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) { Split-Path -Parent $PSScriptRoot } else { $RepositoryRoot }
+$saves = Join-Path $root "campaigns/example/saves"
+$count = @(Get-ChildItem -LiteralPath $saves -Directory | Where-Object { -not $_.Name.StartsWith(".") }).Count
+$evidence = Join-Path $root "docs/430_RUNTIME_PERSISTENCE_VALIDATION/432_GATEFALL_PROTOTYPE_LOG.md"
+$expected = "checkpoints:$count`n"
+if ($Check) {
+    if ([System.IO.File]::ReadAllText($evidence) -ne $expected) {
+        Write-Host "fixture evidence block is not synchronized"
+        exit 1
+    }
+} else {
+    [System.IO.File]::WriteAllText($evidence, $expected, [System.Text.UTF8Encoding]::new($false))
+}
+Write-Host "fixture evidence generation PASSED"
+exit 0
+'@
     Write-Utf8 (Join-Path $fixture "tools/validate_repository.ps1") @'
 [CmdletBinding()]
 param([string]$RepositoryRoot)
+$root = if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) { Split-Path -Parent $PSScriptRoot } else { $RepositoryRoot }
+$saves = Join-Path $root "campaigns/example/saves"
+$count = @(Get-ChildItem -LiteralPath $saves -Directory | Where-Object { -not $_.Name.StartsWith(".") }).Count
+$evidence = Join-Path $root "docs/430_RUNTIME_PERSISTENCE_VALIDATION/432_GATEFALL_PROTOTYPE_LOG.md"
+if ([System.IO.File]::ReadAllText($evidence) -ne "checkpoints:$count`n") {
+    Write-Host "fixture repository validation FAILED: generated validation evidence block is not synchronized"
+    exit 1
+}
 Write-Host "fixture repository validation PASSED"
 exit 0
 '@
@@ -299,6 +334,7 @@ try {
     $startupHash = (Get-FileHash -LiteralPath (Join-Path $rollbackRoot "campaigns/example/090_CAMPAIGN_STARTUP.md") -Algorithm SHA256).Hash
     $currentHash = (Get-FileHash -LiteralPath (Join-Path $rollbackRoot "campaigns/example/180_CURRENT_STATE.md") -Algorithm SHA256).Hash
     $indexHash = (Get-FileHash -LiteralPath (Join-Path $rollbackRoot "system/WORLDS_AND_CAMPAIGNS.md") -Algorithm SHA256).Hash
+    $evidenceHash = (Get-FileHash -LiteralPath (Join-Path $rollbackRoot "docs/430_RUNTIME_PERSISTENCE_VALIDATION/432_GATEFALL_PROTOTYPE_LOG.md") -Algorithm SHA256).Hash
     $rollback = Invoke-Checkpoint $rollbackRoot $rollbackReceipt
     Assert-True ($rollback.ExitCode -ne 0) "A failing final checkpoint gate was reported as success."
     Assert-True ($rollback.Output -match '"status":"failed"') "Failure emitted no machine receipt."
@@ -308,6 +344,7 @@ try {
     Assert-True ($startupHash -eq (Get-FileHash -LiteralPath (Join-Path $rollbackRoot "campaigns/example/090_CAMPAIGN_STARTUP.md") -Algorithm SHA256).Hash) "Startup pointer did not roll back byte-for-byte."
     Assert-True ($currentHash -eq (Get-FileHash -LiteralPath (Join-Path $rollbackRoot "campaigns/example/180_CURRENT_STATE.md") -Algorithm SHA256).Hash) "Current State did not roll back byte-for-byte."
     Assert-True ($indexHash -eq (Get-FileHash -LiteralPath (Join-Path $rollbackRoot "system/WORLDS_AND_CAMPAIGNS.md") -Algorithm SHA256).Hash) "Generated index did not roll back byte-for-byte."
+    Assert-True ($evidenceHash -eq (Get-FileHash -LiteralPath (Join-Path $rollbackRoot "docs/430_RUNTIME_PERSISTENCE_VALIDATION/432_GATEFALL_PROTOTYPE_LOG.md") -Algorithm SHA256).Hash) "Generated validation evidence did not roll back byte-for-byte, and would stale-fail the next preflight."
     Assert-True (-not (Test-Path -LiteralPath (Join-Path $rollbackRoot ".tmp/checkpoint-writer.lock"))) "Writer lock remained after rollback."
 }
 finally {

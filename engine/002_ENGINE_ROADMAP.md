@@ -905,6 +905,12 @@ Explicit exclusions: no drama timer, no scarcity introduced to create pressure (
 
 ### 0.4.3 Capability Validation and Prototype Campaign
 
+**Status: In Progress (2026-08-02).** The validation suite is authored at `docs/440_ECONOMY_VALIDATION/` before play rather than after it — Version 0.3's Finding 4 applied at the start of a version instead of after its record had drifted twenty-eight checkpoints behind the campaign it described.
+
+`441_CAPABILITY_MATRIX.md` opens at **six rows passing on gate and fixture, one vacuous, seven pending play.** That ratio is the honest shape of this version rather than a shortfall: its subject is what the world does when nobody is watching, and a fixture can prove the shape of that record while only play can prove the world moved. The vacuous row is labelled as such — the claimant shape exists and nothing uses it — because discovering that state late is what Version 0.3 spent a version learning to avoid.
+
+Two rows deserve attention before play begins. **V04-10 is the control for V04-09**: an opening lost to a rival is the capability, an opening that quietly disappears is the defect wearing the same clothes, and without the negative case the positive one proves nothing. **V04-13 cannot be settled by a document** — whether contention reads as a stealth timer is a judgement the player makes, and the postmortem must record it in those terms rather than convert it to a metric.
+
 Per Decision 048 these remain distinct evidence stages. Gatefall: Pendragon continues as the Prototype Campaign — no replacement campaign is created to repeat evidence it already produces, and it is the world that generated the findings this version exists to answer.
 
 Combined evidence must exercise: a need settling unobserved and being met by someone other than the protagonist; an opportunity lost to a competitor while he was elsewhere; a supplier's own failure preventing a downstream opportunity from ever appearing; and at least one negative result recorded rather than skipped.

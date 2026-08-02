@@ -14,9 +14,13 @@ Goal:
 
 Current Task:
 
-**Version 0.4 Planning has not begun, and one thing blocks it: 0.4 is double-booked.** Governance & Society was moved to 0.4 by the accepted Version 0.3 scope, and Magic Framework already held that number. The collision was left visible rather than pre-resolved (Decision 069 anti-drift), and it must be settled before any 0.4 scope work. Reclassifying Magic Framework and Historical Simulation as world-authoring backlog rather than engine versions is the recommendation on the table and remains a separate decision.
+**Version 0.4 Planning is unblocked on numbering and open on scope.** Decision 087 resolved the collision by reclassifying Magic Framework and Historical Simulation as world-authoring backlog: their engine layers were closed by Decisions 037 and 038 and they were holding version numbers while waiting for work already done. Resolving it surfaced a third correction — **four of Governance & Society's eight domains were also already delivered** by Decision 036 and Rules Section 10 — so Version 0.4 is now **Population & Material Society**, and smaller than its old name implied.
 
-Before Planning opens, Decision 048 requires the postmortem's refinements to be incorporated. Two are engine work and are recorded in the postmortem's Backlog Disposition; the rest are world authoring and a play session's business — backfilling Gatefall's live commitments so the settlement gate stops being vacuous, settling F-004 into the Gatefall profile, and deciding the tracked-board floor in `test_gatefall_quest_contract.ps1`.
+**All three postmortem refinements are incorporated**, which clears Decision 048's remaining precondition: the settler-without-writer rule in `docs/DEVELOPMENT_WORKFLOW.md`, the measured NPC-grounding proxy, and the generated validation-evidence block.
+
+What remains before Planning can be approved is the scope itself — a proposal is recorded under Version 0.4 below, recommending **Economy & Opportunity** as the first capability on the grounds that Version 0.3's prototype produced the play evidence PA-001 found missing. It is a proposal and is not accepted.
+
+Separately, three items are a play session's business and belong to campaign canon rather than the engine: backfilling Gatefall's live commitments so the settlement gate stops being vacuous (`tools/list_commitment_candidates.ps1` produces the worklist), settling F-004 into the Gatefall profile, and deciding the tracked-board floor in `test_gatefall_quest_contract.ps1`.
 
 The Prototype Campaign continues as ordinary play. Gatefall: Pendragon is the natural Prototype Campaign for Version 0.4 when that version reaches the stage; no replacement campaign is created merely to repeat evidence.
 
@@ -655,6 +659,7 @@ Both remain **Accepted**. They are not reopened, reversed, or renumbered: accept
 | Decision | Subject | Class |
 |----------|---------|-------|
 | Decision 086 | The Architecture Freeze Binds Implementation, Not Validation | Refinement — completes Decision 048 as Decision 069 did; adds no Rules section, no Data Model change, and no mechanism a world may invoke |
+| Decision 087 | Milestones Whose Engine Layer Is Closed Are World-Authoring Backlog | Refinement — reclassifies planning records; adds no Rules section, no Data Model change, no mechanism |
 
 Owned by milestone 0.3.5 and accepted at the version's close, as the disposition of the Engine Postmortem's Finding 1. It is the answer to a question the version itself raised: ten foundational changes were admitted to a frozen version by owner ruling, and the freeze had no written condition an exception must meet. Decision 086 supplies one. It does not excuse the ten — all ten already satisfy it — and it does not replace the owner ruling, which is still required.
 
@@ -788,15 +793,16 @@ Recorded because it is real, not to be dismissed. A hardening version delivers n
 
 ---
 
-## Version 0.4 - Governance & Society
+## Version 0.4 — Population & Material Society
 
-Status: **Accepted placement, scope unapproved** — moved from Version 0.3 to Version 0.4 by the accepted Version 0.3 scope (2026-07-19); the domain scope itself is unchanged and has not yet passed through its own Planning stage
+Status: **Number resolved (Decision 087), scope unapproved.** The collision with Magic Framework is settled and Planning is unblocked on numbering. The scope below is a **proposal awaiting the owner's Planning approval** and is not accepted.
 
-Focus:
+### The focus list was half-done, and the correction matters
 
-- Governments
-- Laws
-- Diplomacy
+The old list named eight domains. **Four were already delivered.** Rules Section 10, integrated by Decision 036, defines Settlement and Kingdom typing, Governance as Relationship, Legitimacy, Law, Diplomacy, Treaties and Agreements, and Conflict Between Political Entities. The roadmap's own Future Architecture entry has said so all along — "Population, Economy, Trade, Infrastructure, and Logistics remain out of scope" — but the milestone kept the full list in its heading, so the version looked twice its real size and carried a name describing closed work.
+
+Governments, Laws, and Diplomacy are struck (Decision 087 point 4). What genuinely remains:
+
 - Population
 - Economy
 - Trade
@@ -807,19 +813,41 @@ Goal:
 
 Support believable civilizations without requiring direct player control.
 
-Note: this focus list spans eight domains, several of which (economy, trade, logistics) Version 0.2 explicitly excluded as separate subsystems. Version 0.2 delivered one capability across a full lifecycle. Scoping this version will likely require splitting it; that is a planning problem for its own Planning stage, not a reason to hold it at 0.3.
+### Even corrected, this is not one version
+
+Version 0.2 delivered **one** capability across a full lifecycle. Five domains is not one capability, and the same reasoning that split the old list applies again. The recommended shape is one capability version first, with the rest explicitly unscheduled rather than queued.
+
+**Recommended first capability: Economy & Opportunity.** The argument is play evidence, which is what PA-001 said was missing when Population was floated as the narrow alternative during Version 0.3 scope approval:
+
+- The Version 0.3 prototype produced **economy-shaped findings under load**, and two of them became foundational decisions. Decision 083 (opportunity supply advances on the world's clock) and Decision 082 (pending world-side commitments) exist because a contractor economy failed to generate work when nobody was looking. Data Model Sections 7.4 and 7.5 are already the beachhead: a supply source with a cadence and an `Advanced` anchor is a production model with one product.
+- Gatefall carries the shape live and unmodelled — a Coalition with 420 registered freelancers and a 22-strong C-Rank ceiling, a tracked board with postings, pay, staffing status and deadlines, and contract rates the campaign reasons about constantly.
+- **Population remains without play evidence.** PA-001's finding stands: settlement and institution proxies were sufficient, and nothing in fifty-seven Gatefall checkpoints has demanded a population entity type. Taking Economy first also tests whether Population is needed at all, since a production model that works against institution proxies is evidence that it is not.
+
+Infrastructure and Logistics are deliberately left unscheduled. Version 0.2 excluded them as separate subsystems, nothing since has produced evidence for them, and Version 0.3's own warning applies: a focus list assembled from adjacency rather than evidence is how eight domains got here.
+
+### Explicit exclusions for the proposed capability
+
+- No population simulation, demographic model, or new entity type (PA-001).
+- No infrastructure, logistics, or travel-geometry subsystem.
+- No currency or price system beyond what a world already declares; the engine owns the obligation, a World Rule Profile owns the rates (Decision 083 point 5).
+
+### What Planning must settle before this is accepted
+
+1. Whether Economy & Opportunity is the right first capability, or whether Population's absence of evidence is itself the reason to take it.
+2. Its success statement, in the shape Version 0.2's was written — one sentence naming what the engine can model that it cannot today.
+3. Whether the postmortem's carried findings belong here or stay unscheduled: NPC grounding's enforcement class, and the resident card's exhausted capacity.
 
 ---
 
-## Version 0.4 - Magic Framework *(number collides with Governance & Society; pending reclassification)*
+## Magic Framework — reclassified as world-authoring backlog
 
-Status: **Rescoped — numbering unresolved.** The accepted Version 0.3 scope (2026-07-19) moved Governance & Society into 0.4, which now collides with this milestone's number. The collision is left visible rather than pre-resolved: the 0.3 scope's Consequences recommend reclassifying this milestone and Historical Simulation as world-authoring backlog rather than engine versions, and that is a separate decision. Renumbering these milestones as part of the 0.3 approval would exceed its scope and risk the drift Decision 069 exists to stop, so it is deferred to that reclassification decision.
+Status: **Closed as an engine version (Decision 087, 2026-08-02).** It holds no version number and blocks nothing.
 
-The engine-level portion of this milestone - abstraction, world extension model, cost/limitation/discoverability contract, and magical research - is substantially closed by `001_ENGINE_DECISIONS.md` Decision 037 and `010_ENGINE_RULES.md` Section 11. Magical research already runs through the existing Research & Knowledge lifecycle (Section 8) and required no separate mechanic.
+The engine-level portion — abstraction, world extension model, the cost/limitation/discoverability contract, and magical research — is closed by `001_ENGINE_DECISIONS.md` Decision 037 and `010_ENGINE_RULES.md` Section 11. Magical research already runs through the existing Research & Knowledge lifecycle (Section 8) and required no separate mechanic. That has been recorded here since the milestone was first rescoped; what changes is that it no longer holds a number while waiting for engine work that is already done.
 
-Remaining focus is world-layer authoring rather than engine work:
+Remaining work is world authoring, recorded in `030_ENGINE_CHANGELOG.md` and the world's own documents when it lands, consuming no engine decision number (Decisions 062, 069 point 4, 087):
 
-- Expanding Asterra's Weave system in `worlds/asterra/200_WORLD_BIBLE.md` against the Supernatural Phenomena Contract (Section 11.2)
+- Expanding Asterra's Weave in `worlds/asterra/200_WORLD_BIBLE.md` against the Supernatural Phenomena Contract (Section 11.2)
 - Any world-specific magic content for future worlds
 
 Goal:
@@ -828,16 +856,15 @@ Ensure magic extends the simulation instead of replacing it.
 
 ---
 
-## Version 0.5 - Historical Simulation
+## Historical Simulation — reclassified as world-authoring backlog, with one carve-out
 
-Status: **Partially Rescoped**
+Status: **Closed as an engine version (Decision 087, 2026-08-02).** Version 0.5 is vacated. Renumbering the versions above it is deliberately *not* done as a side effect; that belongs to their own Planning stages.
 
-Historical documents, myths, biographies, archives, and historical interpretation are substantially closed at the engine layer by `001_ENGINE_DECISIONS.md` Decision 038 and `010_ENGINE_RULES.md` Section 12 - a historical document is an Individual Resource/Knowledge Asset with no dedicated mechanic required, and Libraries/Archives are achievable today as Institutions holding such resources (Section 9.6), without new engine work.
+Historical documents, myths, biographies, archives, and historical interpretation are closed at the engine layer by `001_ENGINE_DECISIONS.md` Decision 038 and `010_ENGINE_RULES.md` Section 12 — a historical document is an Individual Resource / Knowledge Asset needing no dedicated mechanic, and Libraries and Archives are achievable today as Institutions holding such resources (Section 9.6).
 
-Remaining genuinely new focus:
+World-layer authoring of Asterra's historical documents and myths against Section 12 is backlog like Magic Framework's.
 
-- Retrospective Ages / Historical Periodization - not yet formalized; World Bible Section 8 demonstrates the concept narratively but no engine mechanic exists
-- World-layer authoring of Asterra's historical documents and myths against Section 12
+**The carve-out: Retrospective Ages / Historical Periodization is not closed** and does not disappear with the milestone. World Bible Section 8 demonstrates the concept narratively and no engine mechanic exists. It returns to **Future Architecture** below as an unscheduled engine item, to be claimed by a version when there is play evidence for it — deliberately not folded into Version 0.4, since attaching an unrelated unscheduled item to the nearest open version is how an eight-domain focus list was assembled in the first place.
 
 Goal:
 
@@ -974,9 +1001,17 @@ v
 
 Treaties
 
-Population, Economy, Trade, Infrastructure, and Logistics remain out of scope, reserved for Version 0.3 - Governance & Society.
+Population, Economy, Trade, Infrastructure, and Logistics remain out of scope, and are the whole of what Version 0.4 — Population & Material Society — still has to deliver (Decision 087).
 
-Integrated through `001_ENGINE_DECISIONS.md` Decision 036 and `010_ENGINE_RULES.md` Section 10.
+Integrated through `001_ENGINE_DECISIONS.md` Decision 036 and `010_ENGINE_RULES.md` Section 10. **This entry is the record that Governments, Laws, and Diplomacy were closed here**, which is why Version 0.4's focus list was corrected rather than planned against.
+
+---
+
+## Retrospective Ages / Historical Periodization
+
+Status: **Open, unscheduled engine work**
+
+Carried out of the reclassified Historical Simulation milestone by Decision 087. World Bible Section 8 demonstrates historical periodization narratively; no engine mechanic exists. It has no play evidence yet and is deliberately attached to no version — it is claimed when a prototype produces a reason for it, on the same standard Decision 087 applied to Population.
 
 ---
 

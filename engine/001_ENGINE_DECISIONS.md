@@ -4169,6 +4169,52 @@ Ten justified exceptions are not ten lapses of discipline. They are evidence tha
 
 ---
 
+## Decision 087 — Milestones Whose Engine Layer Is Closed Are World-Authoring Backlog
+
+**Status:** Accepted — 2026-08-02
+**Date:** 2026-08-02
+**Related Sections:** `002_ENGINE_ROADMAP.md` (Versions 0.4, 0.5); `010_ENGINE_RULES.md` Sections 10, 11, 12; Decisions 036, 037, 038, 062, 069
+
+### Context
+
+Version 0.4 held two milestones at the same number. The accepted Version 0.3 scope moved Governance & Society into 0.4, where Magic Framework already sat, and the collision was left visible rather than pre-resolved so that fixing it would be a deliberate act (Decision 069 anti-drift). Version 0.3 is now released and the collision blocks Version 0.4 Planning.
+
+The collision is not a scheduling conflict between two live versions. It is bookkeeping: **a milestone whose engine work is finished still holds an engine version number.**
+
+- **Magic Framework.** The roadmap already records that "the engine-level portion of this milestone — abstraction, world extension model, cost/limitation/discoverability contract, and magical research — is substantially closed by Decision 037 and Rules Section 11," and that magical research needed no separate mechanic because it runs through the existing Research & Knowledge lifecycle. What remains is expanding Asterra's Weave against the Supernatural Phenomena Contract: world content.
+- **Historical Simulation.** Same shape. Decision 038 and Rules Section 12 closed historical documents, myths, biographies, archives, and interpretation — a historical document is an Individual Resource with no dedicated mechanic, and Libraries and Archives are Institutions holding such resources. One genuinely unformalized engine item remains: Retrospective Ages / Historical Periodization.
+
+A third correction surfaced while resolving this and is recorded because it changes what Version 0.4 actually is. **Half of Governance & Society is closed too.** Rules Section 10, integrated by Decision 036, already defines Settlement and Kingdom typing, Governance as Relationship, Legitimacy, Law, Diplomacy, Treaties and Agreements, and Conflict Between Political Entities. The roadmap's own Future Architecture entry says so directly: "Population, Economy, Trade, Infrastructure, and Logistics remain out of scope." Four of the eight domains in the focus list are done; the milestone's name has been describing closed work.
+
+### Decision
+
+**1. A milestone whose engine layer is closed is reclassified as world-authoring backlog and surrenders its version number.** It is recorded in `030_ENGINE_CHANGELOG.md` and the world's own documents when it lands, and consumes no engine decision number (Decisions 062 and 069 point 4).
+
+**2. Magic Framework is reclassified.** Its remaining work is Asterra's Weave and any future world's magic content, authored against the Section 11.2 contract.
+
+**3. Historical Simulation is reclassified, with one carve-out.** Its remaining engine item — Retrospective Ages / Historical Periodization — is not closed and does not disappear with the milestone. It returns to Future Architecture as an unscheduled engine item, to be claimed by a version when there is play evidence for it. World-layer authoring of Asterra's historical documents is backlog like the rest.
+
+**4. Version 0.4 is Governance & Society's *open* remainder only,** and its focus list is corrected to Population, Economy, Trade, Infrastructure, and Logistics. Governments, Laws, and Diplomacy are struck from it as already delivered by Decision 036 and Rules Section 10.
+
+**5. Reclassification is not deletion.** These milestones' records stay in the roadmap with their status, so the reasoning survives; what changes is that they no longer hold a number or block a version.
+
+### Consequences
+
+- **The Version 0.4 collision is resolved** and Planning is unblocked on the numbering question. Scope approval remains a separate, unmet precondition.
+- **Version 0.5 is vacated** and Version 0.6 — Persistence — keeps its remaining genuinely-open engine work: campaign and world migration procedures deferred by Decision 039, and long-term continuity across many campaigns in one world. Renumbering it is deliberately *not* done here; that is scope work for its own Planning stage, and moving it as a side effect would be the drift Decision 069 exists to stop.
+- **This is a refinement under Decision 069.** It adds no Rules section, changes no Data Model contract, and introduces no mechanism a world may invoke or must satisfy. It reclassifies planning records.
+- **Version 0.4 is smaller and more honest than its name suggested**, and the correction is the useful part: a version scoped against a focus list half of which was already built would have spent its Planning stage rediscovering Rules Section 10.
+- **No accepted decision is reopened.** Decisions 036, 037, and 038 stand exactly as accepted; this records what they already closed.
+
+### Alternatives Considered
+
+- **Renumber Magic Framework and Historical Simulation to later versions.** Rejected. It preserves the fiction that they are engine versions awaiting engine work, and the next person to plan a version would find them queued ahead of real work.
+- **Delete the milestones outright.** Rejected. The roadmap is the record of what was planned and why; deleting a milestone erases the reasoning that closed it, and Decision 038's disposition is exactly the kind of thing a future reader needs.
+- **Fold Historical Periodization into Version 0.4.** Rejected as scope-padding. It has no play evidence and no relationship to the population and economy domains; attaching it because both are unscheduled is how an eight-domain focus list was assembled in the first place.
+- **Resolve the collision as part of Version 0.4 Planning rather than before it.** Rejected on sequencing: Planning cannot open against an ambiguous version number, and this is the smaller decision. Keeping them separate also keeps the scope question honest — it must be argued on its own merits, not carried by a tidy-up.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

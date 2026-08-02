@@ -23,6 +23,9 @@ $ErrorActionPreference = "Stop"
 
 $failures = [System.Collections.Generic.List[string]]::new()
 $currentSchemaVersion = "0.1.6"
+# campaign name -> world name, read from the generated worlds/campaigns index so
+# a campaign-scoped block can be judged against its own world's rule profile.
+$campaignWorlds = @{}
 
 if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) {
     $RepositoryRoot = Split-Path -Parent $PSScriptRoot
@@ -381,6 +384,7 @@ if (-not (Test-Path -LiteralPath $indexPath -PathType Leaf)) {
         if (-not (Test-Path -LiteralPath (Join-Path $root "worlds/$worldName") -PathType Container)) {
             Add-Failure "system/WORLDS_AND_CAMPAIGNS.md gives campaigns/$name/ the world worlds/$worldName/, which does not exist."
         }
+        $campaignWorlds[$name] = $worldName
 
         if ($match.Groups[3].Success) {
             $checkpoint = $match.Groups[3].Value
@@ -596,6 +600,61 @@ $identifierPattern = '(?<![A-Z0-9-])(ENT|REC|EVT|REL)-(\d{6})(?!\d)'
 $definitionPattern = '(?m)^[ \t]*id:[ \t]*((ENT|REC|EVT|REL)-(\d{6}))[ \t]*(?:#.*)?\r?$'
 $objectBlockPattern = '(?ms)^```ya?ml[ \t]*\r?\n(.*?)^```[ \t]*\r?$'
 
+# Hidden quest reward siting. A world's own profile owns both halves of this:
+# a concealed-discovery record never stores a reward, and the reward a Hidden
+# quest does carry is the Gate-clear milestone XP for the Bearer's System Rank
+# at attachment. Both facts are read out of the profile rather than restated
+# here -- a validator that hardcoded the ladder would become a second copy of
+# the exact derived value the rule exists to keep in one place, and would drift
+# silently the first time a world repriced a Rank. A world whose profile does
+# not state these sentences is simply not governed by this check.
+$script:questRewardFactsCache = @{}
+function Get-QuestRewardFacts {
+    param([string]$Root, [string]$WorldName)
+
+    if ($script:questRewardFactsCache.ContainsKey($WorldName)) {
+        return $script:questRewardFactsCache[$WorldName]
+    }
+
+    $facts = [pscustomobject]@{
+        ForbidsStoredReward = $false
+        Ladder              = @{}
+        SourcePath          = "worlds/$WorldName/206_WORLD_RULE_PROFILE.md"
+    }
+
+    $profilePath = Join-Path $Root "worlds/$WorldName/206_WORLD_RULE_PROFILE.md"
+    if (Test-Path -LiteralPath $profilePath -PathType Leaf) {
+        $profileText = Get-Content -LiteralPath $profilePath -Raw -Encoding UTF8
+        $facts.ForbidsStoredReward = $profileText -match 'never stores a reward'
+        $ladderSentence = [regex]::Match(
+            $profileText, 'Gate-clear milestone XP for the Bearer[^.]*')
+        if ($ladderSentence.Success) {
+            foreach ($pair in [regex]::Matches(
+                $ladderSentence.Value, '([EDCBAS])-Rank[ \t]+([\d,]+)')) {
+                $facts.Ladder[$pair.Groups[1].Value] =
+                    [int]($pair.Groups[2].Value -replace ',', '')
+            }
+        }
+    }
+
+    $script:questRewardFactsCache[$WorldName] = $facts
+    return $facts
+}
+
+function Resolve-WorldForPath {
+    param([string]$RelativePath, [hashtable]$CampaignWorlds)
+
+    $worldMatch = [regex]::Match($RelativePath, '^worlds/([^/]+)/')
+    if ($worldMatch.Success) { return $worldMatch.Groups[1].Value }
+
+    $campaignMatch = [regex]::Match($RelativePath, '^campaigns/([^/]+)/')
+    if ($campaignMatch.Success -and
+        $CampaignWorlds.ContainsKey($campaignMatch.Groups[1].Value)) {
+        return $CampaignWorlds[$campaignMatch.Groups[1].Value]
+    }
+    return $null
+}
+
 foreach ($file in $canonicalFiles) {
     $relativePath = Get-RelativePath $file.FullName
     $text = Get-Content -Raw -LiteralPath $file.FullName
@@ -739,6 +798,63 @@ foreach ($file in $canonicalFiles) {
                     $heldRank = $ladderMatch.Groups[1].Value
                     if ([array]::IndexOf($ladderRankOrder, $heldRank) -gt $highestAuthoredIndex) {
                         Add-Failure "$relativePath`:$line entity $id holds $ladderSkill at $heldRank-Rank, which exceeds its authored category ladder (Gatefall Profile 1.35 Section 7.2; Section 7.3 authors through C-Rank)."
+                    }
+                }
+            }
+
+            # Hidden quest reward siting, both halves, against the governing
+            # world's own profile. This ran only in a contract test before, and
+            # a contract test is not one of the checkpoint's gates -- a record
+            # carrying a reward it may never carry went into a promoted
+            # checkpoint green. The gate is the place a rule has to live if a
+            # save is supposed to be unable to break it.
+            $blockWorld = Resolve-WorldForPath $relativePath $campaignWorlds
+            if ($blockWorld) {
+                $questFacts = Get-QuestRewardFacts $root $blockWorld
+
+                # Negative half: the record describes a concealed fact and
+                # exists before, and independently of, any attachment. There is
+                # no Rank to price a reward from at authoring time, so storing
+                # one is either a guess or a duplicate of quest state.
+                if ($questFacts.ForbidsStoredReward -and
+                    $block -match '(?m)^[ \t]*subtype:[ \t]*concealed-discovery[ \t]*\r?$') {
+                    $storedReward = [regex]::Match($block, '(?m)^[ \t]*(reward[a-z_]*):')
+                    if ($storedReward.Success) {
+                        Add-Failure "$relativePath`:$line concealed-discovery record $id stores '$($storedReward.Groups[1].Value)'; $($questFacts.SourcePath) states a record never stores a reward, which is fixed from the Bearer's System Rank at attachment and belongs in Hidden quest state."
+                    }
+                }
+
+                # Positive half, which nothing checked anywhere: an attached
+                # Hidden quest must actually carry the reward, and the XP must
+                # be the milestone figure for the Rank recorded beside it. A
+                # present-but-wrong figure passed every gate before this.
+                $questSection = Get-IndentedSection $block "non_daily_quests"
+                if (-not [string]::IsNullOrWhiteSpace($questSection)) {
+                    $questChunks = [regex]::Split($questSection, '(?m)^[ \t]*-[ \t]+quest_key:[ \t]*')
+                    for ($qi = 1; $qi -lt $questChunks.Count; $qi++) {
+                        $chunk = $questChunks[$qi]
+                        $questKey = ([regex]::Match($chunk, '^"?([^"\r\n]+)"?')).Groups[1].Value.Trim()
+                        if ($chunk -notmatch '(?m)^[ \t]*type:[ \t]*hidden[ \t]*\r?$') { continue }
+                        if ($chunk -notmatch '(?m)^[ \t]*status:[ \t]*attached[ \t]*\r?$') { continue }
+
+                        $rankMatch = [regex]::Match($chunk, '(?m)^[ \t]*reward_rank:[ \t]*([EDCBAS])-Rank[ \t]*\r?$')
+                        $xpMatch = [regex]::Match($chunk, '(?m)^[ \t]*reward_xp:[ \t]*(\d+)[ \t]*\r?$')
+
+                        if (-not $rankMatch.Success) {
+                            Add-Failure "$relativePath`:$line attached Hidden quest '$questKey' on $id records no reward_rank; $($questFacts.SourcePath) requires the reward Rank recorded in canonical Hidden quest state before notification."
+                            continue
+                        }
+                        if (-not $xpMatch.Success) {
+                            Add-Failure "$relativePath`:$line attached Hidden quest '$questKey' on $id records no reward_xp beside reward_rank $($rankMatch.Groups[1].Value)-Rank."
+                            continue
+                        }
+                        $heldRank = $rankMatch.Groups[1].Value
+                        if ($questFacts.Ladder.ContainsKey($heldRank)) {
+                            $expectedXp = $questFacts.Ladder[$heldRank]
+                            if ([int]$xpMatch.Groups[1].Value -ne $expectedXp) {
+                                Add-Failure "$relativePath`:$line attached Hidden quest '$questKey' on $id pays $($xpMatch.Groups[1].Value) XP at $heldRank-Rank, but $($questFacts.SourcePath) fixes the Gate-clear milestone for $heldRank-Rank at $expectedXp."
+                            }
+                        }
                     }
                 }
             }

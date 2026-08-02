@@ -68,5 +68,105 @@ Assert-Contains -Text $unindexed.Output -Expected "campaigns/example/ is a live 
 Assert-NotContains -Text $unindexed.Output -Unexpected "worlds/example_world/ has no row" `
     -Because "The fixture lists its world; only the campaign row is under test."
 
+# --- Hidden quest reward siting ------------------------------------------------
+#
+# Both halves are asserted against an isolated copy of the REAL repository and the
+# REAL validator, because the value of these legs is that they fail when the gate
+# stops firing -- not that a fixture agrees with itself. tools/ is deliberately not
+# copied, matching test_name_collision_check.ps1: copying it switches on the
+# generator -Check gates, which then fail on a partial copy rather than on anything
+# under test.
+#
+# This exists because the record half previously lived only in a contract test,
+# which is not one of the checkpoint's gates, and a record carrying a reward it may
+# never carry reached a promoted checkpoint green.
+$temporaryRoots = [System.Collections.Generic.List[string]]::new()
+
+function New-RepositoryCopy {
+    $destination = Join-Path ([System.IO.Path]::GetTempPath()) ("chronicle-validator-" + [guid]::NewGuid().ToString("N"))
+    $temporaryRoots.Add($destination)
+    New-Item -ItemType Directory -Path $destination | Out-Null
+    foreach ($name in @("system", "worlds", "campaigns")) {
+        Copy-Item -LiteralPath (Join-Path $repositoryRoot $name) -Destination $destination -Recurse
+    }
+    return $destination
+}
+
+function Edit-FixtureFile {
+    param([string]$Path, [string]$Find, [string]$Replace)
+
+    $text = [System.IO.File]::ReadAllText($Path)
+    if (-not $text.Contains($Find)) {
+        throw "Fixture anchor not found in $Path -- the live file moved and this leg is no longer testing what it claims."
+    }
+    # ReadAllText/WriteAllText round-trips line endings untouched. A whole-file
+    # rewrite that flips LF to CRLF silently disables the anchored regexes in the
+    # validator under test, and the failure then surfaces nowhere near its cause.
+    # Two-argument String.Replace is ordinal by definition. The comparison
+    # overload is .NET Core only and does not exist under Windows PowerShell 5.1.
+    [System.IO.File]::WriteAllText($Path, $text.Replace($Find, $Replace), [System.Text.UTF8Encoding]::new($false))
+}
+
+try {
+    # Leg 1: a concealed-discovery record may not store a reward at all. The
+    # record exists before, and independently of, any attachment -- there is no
+    # Rank to price a reward from at authoring time.
+    $storedRewardRoot = New-RepositoryCopy
+    Edit-FixtureFile -Path (Join-Path $storedRewardRoot "campaigns/gatefall_pendragon_001/110_WORLD_LEDGER.md") `
+        -Find "    status: attached`n    attached_event: EVT-000325" `
+        -Replace "    status: attached`n    attached_event: EVT-000325`n    reward_rank_at_attachment: D-Rank"
+    $storedReward = Invoke-Validator -Root $storedRewardRoot
+    if ($storedReward.ExitCode -eq 0) {
+        throw "Expected a concealed-discovery record storing a reward to fail validation."
+    }
+    Assert-Contains -Text $storedReward.Output -Expected "stores 'reward_rank_at_attachment'" `
+        -Because "The gate must name the offending key on the record."
+    Assert-Contains -Text $storedReward.Output -Expected "206_WORLD_RULE_PROFILE.md" `
+        -Because "The gate must cite the profile it read the rule from, not restate the rule itself."
+
+    # Leg 2: the XP beside a recorded reward Rank must be that Rank's Gate-clear
+    # milestone. Nothing checked this anywhere before -- a present-but-wrong
+    # figure passed every gate, because each field was individually well-formed.
+    $wrongXpRoot = New-RepositoryCopy
+    Edit-FixtureFile -Path (Join-Path $wrongXpRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
+        -Find "          reward_rank: D-Rank`n          reward_xp: 150" `
+        -Replace "          reward_rank: D-Rank`n          reward_xp: 999"
+    $wrongXp = Invoke-Validator -Root $wrongXpRoot
+    if ($wrongXp.ExitCode -eq 0) {
+        throw "Expected an attached Hidden quest paying the wrong XP for its Rank to fail validation."
+    }
+    Assert-Contains -Text $wrongXp.Output -Expected "pays 999 XP at D-Rank" `
+        -Because "The gate must name the wrong figure and the Rank it was paid at."
+    Assert-Contains -Text $wrongXp.Output -Expected "at 150" `
+        -Because "The gate must name the milestone it derived from the profile, proving it read the ladder rather than a constant."
+
+    # Leg 3: an attached Hidden quest must carry the reward Rank at all. Section
+    # 8.4.3 requires it recorded in quest state before notification.
+    $missingRankRoot = New-RepositoryCopy
+    Edit-FixtureFile -Path (Join-Path $missingRankRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
+        -Find "          reward_rank: D-Rank`n          reward_xp: 150" `
+        -Replace "          reward_xp: 150"
+    $missingRank = Invoke-Validator -Root $missingRankRoot
+    if ($missingRank.ExitCode -eq 0) {
+        throw "Expected an attached Hidden quest with no reward_rank to fail validation."
+    }
+    Assert-Contains -Text $missingRank.Output -Expected "records no reward_rank" `
+        -Because "The gate must name the missing field on the quest."
+
+    # Leg 4: the negative half must not fire on a compliant repository. An
+    # unconditional failure would pass legs 1-3 and block every real save.
+    Assert-NotContains -Text $live.Output -Unexpected "stores 'reward" `
+        -Because "The live repository is compliant; the record half must not fire on it."
+    Assert-NotContains -Text $live.Output -Unexpected "records no reward_rank" `
+        -Because "The live repository records its reward Rank; the quest half must not fire on it."
+}
+finally {
+    foreach ($temporary in $temporaryRoots) {
+        if (Test-Path -LiteralPath $temporary) {
+            Remove-Item -LiteralPath $temporary -Recurse -Force -ErrorAction SilentlyContinue
+        }
+    }
+}
+
 Write-Host "Validator regression tests PASSED" -ForegroundColor Green
 exit 0

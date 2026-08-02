@@ -69,12 +69,16 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000187` | Iris Halvorsen | sensor | active | Chicago | — |
 | `ENT-000188` | Theo Bannerman | striker | active | Chicago | — |
 | `ENT-000189` | Marnie | unlicensed artificer | active | Unknown. No fixed address by her own deliberate design across f… | — |
+| `ENT-000194` | Corbin Yates | strike hunter | active | Chicago | `REL-000090` |
+| `ENT-000195` | Felix Aranda | strike hunter | active | Chicago | `REL-000091` |
+| `ENT-000196` | Dana Whitcombe | strike hunter | active | Chicago | `REL-000092` |
+| `ENT-000197` | Warren Sato | strike hunter | active | Chicago | `REL-000093` |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.0`.
-- Entities: 46. Protagonist relationships: 10.
+- Entities: 50. Protagonist relationships: 14.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

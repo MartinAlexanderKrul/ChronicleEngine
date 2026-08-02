@@ -54,4 +54,23 @@ Three things to watch as play produces evidence:
 - **V04-11 is the row that proves the version is one capability rather than two.** If a supplier's unmet need never suppresses a downstream opening, then need and supply are parallel bookkeeping and 0.4.1 delivered a field nobody reads.
 - **V04-13 cannot be settled by this document.** It is a judgement the player makes, and the postmortem should record it in those terms rather than converting it into a metric.
 
+---
+
+# The One Thing Blocking Every Pending Row
+
+**No actor in Gatefall declares a supply source or a standing need.** Decision 083's construct has had zero live instances since Version 0.3 accepted it, and Decision 088's has had none since yesterday. Every row marked *Pending — needs play* is blocked on the same missing adoption, not on seven separate things.
+
+`tools/list_supply_and_need_candidates.ps1` produces the worklist: **45 candidate actors** already described in canon as offering work or wanting something, none of them modelled — 11 that do both, 27 supply-only, 7 need-only. The obvious first entries are the ones the campaign already reasons about constantly:
+
+- `ENT-000102` **Windy City Hunters Coalition** — postings, a roster, a desk, and recruiting; the institution the tracked board belongs to
+- `ENT-000130` **Kesha Morrison** — a Coalition coordinator whose whole function is contracts and postings
+- `ENT-000134` **Ada Reyes** — postings and hires, and canon already says she is *short of* people
+- `ENT-000136` **Priya Okafor** — a crew leader canon already describes as *down a* member
+
+That last pair matter disproportionately: a crew lead short a member and a coordinator with postings are a standing need and a supply source **that should be coupled**, which is exactly what V04-11 exists to test.
+
+The rates are world authoring and belong to the owner. The engine owns the obligation; the profile owns the cadence (Decision 083 point 5). The lister is a worklist and never a gate — prose matching for *"this actor generates work"* is unreliable, which disqualifies it as a check and is fine for a starting set.
+
+---
+
 The Engine Postmortem is written only after this matrix is complete.

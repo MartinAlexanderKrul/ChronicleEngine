@@ -4215,6 +4215,145 @@ A third correction surfaced while resolving this and is recorded because it chan
 
 ---
 
+## Decision 088 — Standing Need: Demand Advances on the World's Clock
+
+**Status:** Proposed — Version 0.4 ADR Design, milestone 0.4.1. Acceptance constitutes part of the Version 0.4 Architecture Freeze (Decisions 048, 086).
+**Date:** 2026-08-02
+**Related Sections:** `010_ENGINE_RULES.md` Sections 1.8, 3.4, 3.4.1; `011_ENGINE_DATA_MODEL.md` Sections 7.3, 7.5 (proposed 7.6); `012_ENGINE_RUNTIME.md` Section 2.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Turn-State Settlement); Decisions 060, 078, 080, 082, 083
+
+### Context
+
+Decision 083 made supply advance on the world's clock: an established source of work, custom, patronage or advancement generates on its own schedule and is settled forward before an inquiry is answered. It fixed a world that could not *produce* work.
+
+It left a world that cannot *want* anything.
+
+Nothing in the engine models that an actor needs something. The consequence is not cosmetic:
+
+- **A need's output exists without its cause.** Gatefall's Section 9.10 board carries postings, and every posting exists because someone needed a Gate cleared. The posting is modelled; the need is not. So a posting can be withdrawn, expire or break, and the underlying need silently evaporates with it — nothing carries forward the fact that the thing still needs doing.
+- **An unmet need is indistinguishable from a met one.** An institution that failed to staff a contract and one that staffed it look identical at rest, because neither recorded anything. This is the F-002 shape exactly: a deterministic consequence that nothing was obliged to settle.
+- **The world cannot act on its own behalf.** Rules Section 1.8 has said the world develops independently since the Foundation line, and Decision 083 gave that teeth on the supply side only. A Coalition with a 22-strong C-Rank ceiling and crews short of members cannot presently do anything about it.
+
+The prototype supplies the evidence in the fiction and nowhere else. Reyna Castillo is crewless because her crew fell apart; Tomas Alvarez is unavailable because he is already working Ada Reyes's jobs. Both are needs and their fulfilment, held entirely in prose.
+
+### Decision
+
+**1. A standing need is tracked state (proposed Data Model Section 7.6).** It records that an entity or institution requires something, on its own schedule:
+
+```text
+Holder       the Entity or institution that has the need
+Subject      what is needed
+Due          when it is needed by, or the cadence on which it recurs
+Advanced     the last campaign-time point through which the need was settled
+Status       open | met | partially-met | unmet | withdrawn
+Outcome      what met it or why it went unmet, and when
+```
+
+`Holder` is an entity **that already exists in canon**. A need is a property of an actor, never of an aggregate — which is what keeps this out of population simulation and leaves PA-001 untouched.
+
+**2. Needs settle at the existing clock boundary** (Runtime Section 2.4; Decision 078), where recovery, commitments and supply already settle. No new boundary is introduced.
+
+**3. A need may be met by anyone, including nobody.** Settlement resolves from the holder's own state, standing and reach — not from the protagonist's involvement. A need met by a third party is the ordinary case.
+
+**4. An unmet need records why.** This is Decision 080's negative-assertion discipline applied unchanged, and Decision 083 point 4's for the same reason: settled silence is information the fiction may use, while unsettled silence is indistinguishable from an obligation nobody carried.
+
+**5. Cadence and rates are world-authored; the obligation is not.** A World Rule Profile owns how often its actors need things and how quickly needs are met. A world that declares no cadence still settles a need forward from its established canon by ordinary resolution (Rules Section 4, Decision 060) rather than assuming it lapsed — Decision 083 point 5 restated.
+
+**6. A need is not an opportunity.** A need is what an actor wants; a supply source's opening is what it offers. They frequently pair, and they are separately recorded, because a need that produces no opening is exactly the case the current model cannot express.
+
+### Writer, Enforcement, and Absence
+
+Required by `docs/DEVELOPMENT_WORKFLOW.md` (*A Decision That Introduces Settled State Names Its Writer*), which exists because Version 0.3 shipped three settlers with no writer.
+
+**What creates it, and when.** A need is recorded at the moment the fiction establishes it — an institution states a shortfall, a crew loses a member, a contract requires staffing — in the same turn that narrates it, on the Runtime Section 2.4 obligation Decision 082's creation half already carries. A need whose `Due` or cadence cannot be established is not recordable and is therefore not assertable as a standing need; it is ordinary narration.
+
+**What enforces the creation.** Nothing mechanical, and this is stated rather than implied. The obligation is resident, and the resident layer is instruction (Decision 055).
+
+**What absence looks like, and whether it is detectable.** A need that was never recorded is invisible: absence of a record is exactly what cannot be checked for. The Repository Validation Barrier can enforce the *shape* of a recorded need and reject one left `open` past its `Due` behind the campaign anchor — the commitment-settlement check generalized — but a world that records no needs passes vacuously, exactly as the commitment gate does today. **This is a known and accepted limit of the design, not an oversight**, and the honest mitigation is the same one: a worklist tool for backfill, not a gate that pretends.
+
+### Consequences
+
+- **Foundational under Decision 069** — it adds a section to `011`. It arises from played evidence (F-001, F-002, the prototype's unmodelled staffing), which is what Decision 086 requires of a foundational change at this stage.
+- **The Data Model version does not advance and no migration is required.** No Persistent Object structure changes: a need is tracked state carrying no identifier, held inside a record that already exists. This is Decision 082's precedent applied unchanged, and it is why that shape was chosen.
+- **Resident cost is one clause, not one section.** Turn-State Settlement already settles commitments and supply forward in a single sentence; needs join it. The card stands at 5,978 of a 6,000 warning, so this ADR is explicitly budgeted: **it displaces nothing because it extends an existing clause.** Any 0.4 decision that cannot make that claim must name what it displaces.
+- **The world gains the ability to fail.** An institution that cannot staff its work now has a recorded, consequential failure, which is the substrate milestone 0.4.2 builds contention on.
+- **Writer cost is real.** Every established need is a recorded object a session must settle. The mitigation is that a need is only recorded when the fiction establishes one, and worlds that want few needs record few.
+
+### Alternatives Considered
+
+- **Merge need and supply into one construct.** Rejected. They answer different questions — what an actor wants versus what it offers — and an entity commonly has both. Merging them would also re-create the current defect, since a need that produces no opening would have nowhere to live.
+- **Derive demand from supply.** Rejected, and it is the status quo: the output exists without the cause, so an unmet need is invisible and a withdrawn posting takes its reason with it.
+- **Model a need as an Objective.** Rejected. Objectives are the protagonist's; this is the world's, and conflating them would make every NPC's want a player-facing quest.
+- **Leave demand to World Rule Profiles.** Rejected on the Decision 083 precedent. Every world would reinvent it, incompatibly, and Gatefall's Section 9.10 board is the evidence — a world-authored mechanism that models a need's output while the need itself has nowhere to sit.
+- **Do nothing; rely on narration.** The honest default, and it is what produced F-002. Prose dispatches nothing.
+
+---
+
+## Decision 089 — Opportunity Claimants: A Finite Opening Is Contested
+
+**Status:** Proposed — Version 0.4 ADR Design, milestone 0.4.2. Acceptance constitutes part of the Version 0.4 Architecture Freeze (Decisions 048, 086).
+**Date:** 2026-08-02
+**Related Sections:** `010_ENGINE_RULES.md` Sections 1.2, 1.8, 3.4.1, 4 (Law VII); `011_ENGINE_DATA_MODEL.md` Sections 7.3, 7.5; `012_ENGINE_RUNTIME.md` Section 2.4; Decisions 003, 060, 078, 083, 088
+
+### Context
+
+Decision 083 gave a supply source `Available` openings held as tracked state. Nothing records who else could take one.
+
+The gap shows most clearly in the mechanism built to close the previous one. Gatefall's Section 9.10 tracked board can settle a posting's deadline — `staffed` or `held` clears it, `posted` breaks it — but it has no way to record the ordinary outcome that **another crew took the job**. F-002's settlement resolved four postings and reached for `held` as the nearest available shape for one that simply went to somebody else.
+
+So the world can currently lose an opportunity to time, and cannot lose one to a competitor. That is backwards: in a city with 420 registered freelancers, the overwhelmingly common fate of a posting is that someone else takes it, and the deadline case is the exception.
+
+The consequence is that the world does not visibly run when the player is not looking. A posting he declines is still waiting when he returns, indefinitely, because nothing else in the fiction is capable of wanting it.
+
+### Decision
+
+**1. An opening carries its claimants** (proposed extension to Data Model Section 7.5, not a new section):
+
+```text
+Claimants    who else may take this opening — a named entity, a role, or a
+             world-declared pool
+Claimed      the actor that took it, and the campaign time at which it settled
+```
+
+A pool or role is sufficient and preferred. Modelling competitors as individually named entities is not required and is usually wrong (PA-001).
+
+**2. Claim settlement rides the existing clock boundary** (Runtime Section 2.4; Decision 078). It introduces no new boundary and no new trigger.
+
+**3. A claim resolves by ordinary resolution against the claimants' own standing** (Rules Section 4; Decision 060) — their capability, proximity, interest and competing obligations. It is never resolved by a rule that raises or lowers the protagonist's odds, which Law VII forbids directly.
+
+**4. An unclaimed opening simply remains.** There is no decay, no expiry pressure, and no rule that an opening becomes more likely to be taken because the protagonist has been told about it. **No opening is ever contested because the player hesitated** — that would be a drama timer, which Rules Section 1.2 and Decision 003 forbid: no event exists solely because it would be dramatic.
+
+**5. The protagonist is a claimant like any other.** If he acts first he takes it. The mechanism never reserves an opening for him and never removes one to punish him.
+
+**6. An advance in which nobody claimed anything is recorded.** Decision 080's negative-assertion discipline again: an empty settlement is a result, and distinguishing it from an unsettled one is the whole point.
+
+**7. Inquiry reads; it never resolves.** Decision 083 point 2's anti-farming ordering carries over unchanged. Asking about an opening settles the board *before* answering and never triggers a claim resolution in response to the asking. Two inquiries inside one unadvanced span return the same answer.
+
+### Writer, Enforcement, and Absence
+
+**What creates it, and when.** `Claimants` is recorded when the opening is recorded — it is a property of the opening, not a separate object, which is why this extends Section 7.5 rather than adding a section. `Claimed` is written at the clock boundary that settles it.
+
+**What enforces the creation.** For `Claimed`, the same barrier that will check needs and commitments: an opening whose claim settled must record who took it and when, and that is mechanically checkable once recorded. For `Claimants`, nothing — an opening authored without them is simply an opening nobody else wants, which is a legitimate state and indistinguishable from an omission.
+
+**What absence looks like.** An opening with no claimants behaves exactly as openings behave today: it waits. **The design degrades to current behaviour rather than to a defect**, which is deliberate — a world that adopts none of this loses nothing it has.
+
+### Consequences
+
+- **Foundational under Decision 069** — it changes `011`, by extension rather than addition. Played evidence: F-002's board reaching for `held` to describe an outcome it could not express.
+- **The Data Model version does not advance and no migration is required.** `Claimants` and `Claimed` are optional fields on tracked state that mints no identifier; an existing opening without them is valid and unchanged.
+- **Resident cost is zero new clauses.** Claim settlement occurs inside the supply advance that Turn-State Settlement already performs. Against a card at 5,978 of 6,000, this ADR displaces nothing.
+- **This is the milestone most likely to feel bad in play, and that is a real risk rather than a rhetorical one.** Losing a posting to a rival crew is correct simulation and is also experienced as punishment for hesitating. Points 4 and 5 are the guardrails, and the Prototype Campaign must specifically test whether contention reads as a stealth timer. If it does, that is a finding, not a tuning problem.
+- **Scarcity is still out of scope.** An opening being taken is not a price signal, and this decision holds no notion of cost, quantity or substitution (Version 0.4 exclusions).
+
+### Alternatives Considered
+
+- **Expire openings on a timer.** Rejected as a drama timer under Rules 1.2 and Decision 003. It also models the exception — loss to time — while leaving the common case, loss to a competitor, still unexpressible.
+- **Leave contention to World Rule Profiles.** Rejected on the Decision 083 precedent, and F-002 is the specific evidence: a world-authored board reached for the wrong status because the engine's own opening had no concept of being taken by someone.
+- **Model every competitor as a named entity.** Rejected. A pool or role carries the simulation, and naming every rival hunter is the population model this version exists to avoid.
+- **Weight contention against the player when he is idle**, to create pressure. Rejected outright and recorded because it is the tempting version: it fails Law VII, fails Rules Section 1.2, and is the reactive-weighting error Decision 083 already rejected from the other direction.
+- **Do nothing.** A defensible position — the world has functioned without it. Against it: the postings a player declines accumulate untouched, and a world where nobody else wants work is not a world with an economy.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

@@ -829,7 +829,9 @@ Infrastructure and Logistics stay unscheduled. Version 0.2 excluded them as sepa
 
 # Version 0.4 — Economy & Opportunity
 
-Status: **Planning — drafted 2026-08-02, scope not yet approved.** Decision 048's Planning stage output. ADR Design does not begin until an owner approves this scope.
+Status: **ADR Design — 2026-08-02.** The capability is settled (Economy & Opportunity, owner ruling) and the scope below is the Planning-stage output. **Decisions 088 and 089 are drafted as Proposed**; accepting them is the Version 0.4 Architecture Freeze under Decisions 048 and 086, and Implementation does not begin before that.
+
+**Standing constraint on every Version 0.4 ADR:** the resident card is at 5,976 tokens against a 6,000 warning. Any decision adding a per-turn obligation must name what it displaces. Decisions 088 and 089 both discharge this by extending clauses that already exist rather than adding new ones.
 
 ## Version 0.4 Vision
 
@@ -938,7 +940,11 @@ Under Decision 086, anything foundational arriving *after* the freeze must come 
 
 The objection raised against it during Planning was that 0.4.1's *"an institution needs things"* is a population model wearing a coat, which would cut directly against the reason for choosing Economy — that it tests whether Population is needed at all. **The objection does not hold, and the reason is worth keeping.** A population model says *there are N people with attributes who aggregate into demand.* Milestone 0.4.1 says *this named institution, already a Persistent Object in canon, has a need that generates on a schedule.* That is structurally identical to Section 7.5's supply source: attached to an entity that already exists, held as tracked state, no new entity type and no aggregate. The Coalition needs C-Rank hunters because the Coalition exists and has a roster ceiling, not because 420 simulated people each want something. **Demand is a property of actors, not of a populace**, and PA-001 stands untouched.
 
-**2. Do the postmortem's carried findings belong here or stay unscheduled?** Open. NPC grounding's enforcement class and the resident card's exhausted capacity are both real and neither is economic. This one still affects scope edges, so ADR Design should not open until it is answered.
+**2. Do the postmortem's carried findings belong here? — Settled 2026-08-02.** They are two different kinds of thing and lumping them was a framing error.
+
+**NPC grounding stays unscheduled.** It is not economic, has no decidable proxy — measured at ~37% across every partition — and its only live option is a written trace at encounter time with real writer cost. Putting it here would give the version two unrelated capabilities, the exact mistake corrected by cutting scarcity.
+
+**The resident card is not a milestone but a binding constraint on this version's ADRs.** It is a ceiling rather than a capability, and 0.4 meets it immediately, because settling demand and contention per turn is precisely the kind of per-turn obligation the card carries. The rule adopted for the version: **any 0.4 ADR that adds a per-turn obligation must name what it displaces.** That folds the constraint into ADR Design, where it can actually govern something, rather than tracking it as work.
 
 **3. Does Persistence move into the vacated 0.5?** Open. Version 0.3 performed four Data Model migrations, each with a hand-authored contract, while Gatefall's profile ran to 1.46 with its own migrations index — the played evidence Decision 039 lacked when it deferred general migration procedures. Deliberately not decided here (Decision 087).
 

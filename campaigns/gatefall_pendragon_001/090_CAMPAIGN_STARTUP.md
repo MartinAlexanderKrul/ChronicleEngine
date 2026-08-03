@@ -9,7 +9,7 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.46"
+world_rule_profile: "Gatefall World Rule Profile 1.47"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
@@ -33,6 +33,7 @@ source_loading:
     - canonical_state.system_state.onset_event
     - canonical_state.system_state.class
     - canonical_state.system_state.title
+    - canonical_state.system_state.titles
     - canonical_state.system_state.level
     - canonical_state.system_state.xp
     - canonical_state.system_state.health
@@ -128,6 +129,7 @@ diegetic_commands:
     protagonist_fields:
       - canonical_state.system_state.class
       - canonical_state.system_state.title
+      - canonical_state.system_state.titles
       - canonical_state.system_state.level
       - canonical_state.system_state.xp
       - canonical_state.system_state.health
@@ -199,6 +201,7 @@ diegetic_commands:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     protagonist_fields:
       - canonical_state.system_state.title
+      - canonical_state.system_state.titles
     render_policy: exact-template-only
   /system log:
     dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1536-system-log

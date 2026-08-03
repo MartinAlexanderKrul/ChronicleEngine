@@ -116,7 +116,17 @@ surfaces:
     # is meant to sit inside, and the suite fails on a repository that is fine.
     # A stale baseline breaks the ratchet in both directions: it cannot detect
     # real growth, and it invents growth that never happened.
-      gatefall_pendragon_001: 24462
+    #
+    # Re-recorded 2026-08-03, 24,462 -> 26,175: Profile 1.47 authored the
+    # `system_state.titles` block, and the two retroactive Title Assessments
+    # filled it with nine granted entries, each carrying the criterion and the
+    # Event that proved it. That is protagonist state a readiness load has to
+    # carry, on the same standing ruling as the verbose item entries
+    # (`EVT-000331`), and it is one-time: later assessments append at most a
+    # handful of rows to a list that already exists. Re-measured again the same
+    # day at 26,764 when the catalog took its three grades and the Rare-grade
+    # Cartographer entry landed in the earned list.
+      gatefall_pendragon_001: 26764
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479
@@ -142,6 +152,16 @@ surfaces:
     # grew at 1.46 because Section 15.3.1 authored a render template where 1.45
     # declared a focused view and authored none; the baseline is re-recorded
     # against the authored section, not against the absence of one.
+    #
+    # `/system titles` was baselined at 460 against a Bearer who held no titles
+    # and could not hold any: Section 16 had no trigger before Profile 1.47, so
+    # the panel read an empty field and a template with nothing in it. The 1.47
+    # Title Assessment fills both sides at once — nine granted entries, each
+    # carrying its criterion and the Event that proved it, against a catalog
+    # section that grew from five rows to twenty-one across three grades, and
+    # each granted entry carries its grade, its rung, and the Event that proved
+    # it. The baseline is re-recorded against a panel that now has something to
+    # render. It stays far inside the 12,000 ceiling and needs no exemption.
     warning_tokens: 12000
     failure_tokens: 12000
     growth_allowance_percent: 15
@@ -156,7 +176,7 @@ surfaces:
       gatefall_pendragon_001:/system shop: 10000
       gatefall_pendragon_001:/system quests: 2315
       gatefall_pendragon_001:/system gear: 25000
-      gatefall_pendragon_001:/system titles: 460
+      gatefall_pendragon_001:/system titles: 3237
       gatefall_pendragon_001:/system log: 9498
       gatefall_pendragon_001:/system all: 19443
       reikon_awakening_001:/system: 8985

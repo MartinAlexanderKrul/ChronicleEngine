@@ -53,7 +53,7 @@ Assert-True ($clean.Output -match '(?:PASS|WARN) readiness:gatefall_pendragon_00
     "Gatefall readiness measurement is missing."
 Assert-True ([int]$Matches["gatefall"] -lt 30000) `
     "Gatefall readiness is not below the 30,000 hard budget (measured $($Matches['gatefall']))."
-Assert-True ($clean.Output -match '100_CHARACTER_SHEET\.md\[object:ENT-000125\]\[fields:20\]') "Gatefall protagonist loading is not field-bounded."
+Assert-True ($clean.Output -match '100_CHARACTER_SHEET\.md\[object:ENT-000125\]\[fields:21\]') "Gatefall protagonist loading is not field-bounded."
 # Assert the baseline mechanism reports, not that some surface happens to sit
 # exactly on its baseline. The old form required a delta of zero somewhere, so
 # an edit anywhere could break it for reasons unrelated to budgets - which it

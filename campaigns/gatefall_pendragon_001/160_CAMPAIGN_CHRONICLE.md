@@ -13,9 +13,9 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000347
+  source: EVT-000349
   game_date: "2026-08-14 ~12:15 -05:00"
-  real_date: "2026-08-02"
+  real_date: "2026-08-03"
 role: canonical ledger
 scope: campaign
 subjects:
@@ -310,6 +310,8 @@ subjects:
   - EVT-000345
   - EVT-000346
   - EVT-000347
+  - EVT-000348
+  - EVT-000349
 ```
 
 ---
@@ -9539,4 +9541,109 @@ participation_audits:
     result: record-updated
     record: ENT-000125
 description: "The Checkpoint 0063 promotion barrier, covering `EVT-000338`-`EVT-000346` since the last settlement (`EVT-000337`). Full skill-use and qualifying-scene reconciliation performed for Keen Sense, Exploit Pattern, Field Command, Resonance Extraction, Rupture, Twin Fang, Mana Bolt, Stone Skin, and Dagger Mastery against this session's resolved exchanges; counters in `100_CHARACTER_SHEET.md` reflect the reconciled totals, not a running narrative tally.\n\n**Correction caught in the same barrier, not left to drift:** Overpower (Strength) and Shrug Off (Vitality) both crossed their governing Stat's B-Rank threshold (54) this session, but Section 4.4 authors only E/D/C rungs for these four base-Stat passives — B/A/S are explicitly unauthored and clamp-held. Both skills remain **C-Rank, held: [B-Rank] rung unauthored**, not B-Rank as briefly misrendered in play. No rendered effect changes for either.\n\n`gatefall.skill_formation`: no new candidate evidence this span — the session's qualifying activity (combat skill use, Field Command relays, mining) maps entirely to existing tracked skills; explicit `none`."
+```
+
+## EVT-000348 - Profile Adoption: Gatefall World Rule Profile 1.47, Titles Get a Trigger
+
+```yaml
+id: EVT-000348
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-14 ~12:15 -05:00"
+  real_date: "2026-08-03"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-14 ~12:15 -05:00"
+participants: []
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.47, a **required-migration** advance over frozen 1.46. No fictional time is consumed and no scene occurs. Alexander is standing outside Wade Bishop's collapsed B-Rank Gate at 12:15 both before and after this Event, with the same pools, gear, gold, quests, Stats, and skills.
+
+**What this is.** 1.47 rewrites Section 16 and nothing else. Titles were authored at 1.0 to be granted *the instant the feat resolves* — a sentence that reads like a rule and never was one, because nothing in the profile ever caused a feat to be tested against the catalog. There was no schedule, no evaluating step in any settlement, no field to write a title into, and no Event that could produce one. Forty-six versions of live law, a `/system titles` panel, a Console row, and a Tier-1 message block, all permanently empty. **Titles were dormant because nothing ever asked.**
+
+**What changed.** The section gets a trigger: the **Title Assessment** (Section 16.1). The level-up that settles **level 10**, and every level-up settling a level that is a multiple of ten thereafter, now runs an assessment inside that same exchange — the System reading the Bearer's whole recorded career since onset against the catalog and granting every title the record has earned. The schedule is deliberately the Section 6.6 System Rank ladder: 10, 20, 30, 40 and 50 are the rungs into D, C, B, A and S — every rung above the E a Bearer starts at — and past 50 the assessments continue on the decade because Section 3.1 sets no level cap. Levels 1-9 carry no assessment. Nothing fires between assessments — a feat completed at level 12 waits, unannounced and uncounted, until 20 — and **no unearned criterion is ever published** (Section 14.2's withholding): an assessment reports what it granted and how many catalog entries remain unheld, never what they are.
+
+**The catalog grows from five entries to twenty-one, across three grades** — twelve **Common** (+2 points), six **Rare** (+5), three **Singular** (+10). The grade states how hard the criterion is to reach and nothing else. The 1.0 titles keep their passives and have their criteria restated as statements about the record: *first Gate cleared solo* becomes *at least one Gate cleared alone*, the same feat asked of a career instead of a moment. Every entry is decidable from resolved Events without a ruling.
+
+**Every entry is named for what its feat made the Bearer, not for the feat** — a commendation is a name for the man, and the System does not narrate an afternoon in a title. **Lone Clear becomes Loner** and **Untouched becomes Untouchable**; Red Survivor, Centurion and Break-Breaker already named a person and stand. The Common grade fills out with **Underdog**, **Diehard**, **Kingmaker**, **Prospector**, **Penitent**, **Ascetic** and **Giantslayer**. **Rare** adds **Cartographer**, **Deathless**, **Executioner**, **Warden**, **Vanguard** and **Wellspring**; **Singular** adds **Godslayer** (an S-Rank boss dead to his credit), **Unbroken** (a hundred consecutive dailies) and **The Unmeasured** (a card three or more Ranks below his System Rank). A Singular passive grants a capability the profile grants nowhere else, and most Bearers will die holding none. No renaming touches a criterion, a passive or a stored value, and none can strand a reference — no Bearer has ever held a title under any name.
+
+**A title now grants two things, and the second was already promised.** Sections 3.2 and 4.2 have named *item/**title**/skill rewards that state a specific point bonus* as a stat-point source since 1.0, and no title ever stated one — the same shape of gap as the missing trigger. Every title now grants **allocatable stat points the moment it is earned** — +2 Common, +5 Rare, +10 Singular — permanent and never contingent on equipping, alongside the passive it carries while equipped. **And the loadout grows with the Bearer:** where 1.0 allowed exactly one equipped title forever — so a Bearer holding nine would use one and leave eight inert — he now holds **one equipped slot per assessment passed, capped at five**, against a catalog of twenty-one. `system_state.title` accordingly holds a list rather than a single name; it read `null` in every campaign before this and reads `null` still.
+
+**Supporting sections.** Section 3.2 gains the assessment as a further settlement on decade levels, under the invariant it already carried. Section 14.3's Tier-1 list trades the untriggerable `TITLE EARNED` line for the `TITLE ASSESSMENT` block. Section 15.3.4's `/system titles` panel gains an `ASSESSMENT` section reporting last, next, and held-of-catalog. No other section moves.
+
+**What it does not change.** No pool, Stat, maximum, XP total, level, System Rank, mastery counter, use count, quest counter, deadline, streak, gold balance, cash balance, item, binding, or resolved outcome. The one capability number the adoption does move is the **unspent stat-point pool**, through the title point bonus above, and it moves only at `EVT-000349`. No past scene is reread and no past roll reinterpreted. Section 14.4's information boundary is untouched; the System still never lies, never resolves an action, and never surfaces for anyone but its Bearer.
+
+**The required state transformation** — authoring the `system_state.titles` block and running the assessments Alexander passed under a profile that had none — executes at `EVT-000349`, immediately after this. **No engine dependency:** no Persistent Object structure changes, Data Model 0.1.6 is unchanged. Migration record: `worlds/gatefall/migrations/1.46_to_1.47.md`."
+```
+## EVT-000349 - Two Title Assessments, Eleven and One Levels Late
+
+```yaml
+id: EVT-000349
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-14 ~12:15 -05:00"
+  real_date: "2026-08-03"
+type: Event
+kind: profile-migration
+importance: major
+game_date: "2026-08-14 ~12:15 -05:00"
+participants: []
+counter_deltas: []
+description: "The required 1.46 -> 1.47 state transformation, executed on this campaign. `system_state.titles` is authored on Alexander's ledger, and **both** Title Assessments he has passed run here, in level order: **level 10**, crossed at `EVT-000150` on 2026-08-05 in the Ashfield instant dungeon that also took him System Rank E -> D, and **level 20**, crossed at `EVT-000341` this morning. Neither could fire when he crossed it, because the rule did not exist. `last_assessment` records 20 and `next_assessment` 30.
+
+**Each rung is judged at the level it belongs to** (migration step 3). A catch-up spanning two rungs must not collapse into one grant at the higher of them, or the level-10 assessment would be fiction. So the level-10 assessment tests the catalog against the record **as it stood when `EVT-000150` settled**, and a title goes to the earliest rung whose record satisfied it. Only the level-20 assessment — the final missed rung — additionally counts everything resolved since, up to this anchor, because Rules Section 13.2 forbids un-resolving Events promoted in between. Every assessment from here forward fires inside its own level-up exchange and reads the record as of that exchange.
+
+**The split is seven and three**, and it is not close in either direction: the level-10 rung was already carrying most of a career, the campaign's single **Rare**-grade title included. Points follow the grade — +2 Common, +5 Rare, +10 Singular (Sections 3.2, 4.2, 16.1) — so the two rungs add **23 unspent points, 17 then 6**: unspent 30 → 47 → **53**, none of it allocated. Each rung also opens one **equipped slot**: Alexander holds **2**, and a third comes at level 30.
+
+
+**LEVEL 10 ASSESSMENT — 2026-08-05, `EVT-000150`. Seven granted: six Common and one Rare.**
+
+**TITLE EARNED - Kingmaker** [Common] (`EVT-000059`) — earned in the onset scene itself, before he had held the System for an hour. A first read of the Red Line Corridor boss found nothing; a second, taken from watching it strike Elias, resolved completely (legendary): its leap leaves it locked and unable to redirect for roughly a second after landing. He called it to the crew, Tanya Voss baited the leap deliberately, and when it landed and locked, Elias and Tanya killed it together. Boss Kill XP (40) and the E-Rank Gate-clear milestone (70) settled to **Alexander** on Section 3.8 setup credit. He has been winning fights he does not land the last blow in since the day the System attached. Repeated at `EVT-000184` and `EVT-000341`. Passive: the first action an allied hunter takes against a target whose weakness he has relayed this scene takes +1 modifier step.
+
+**TITLE EARNED - Underdog** [Common] (`EVT-000070`) — the Ashfield Gate, posted as a low-confidence D, resolved true **C-Rank** on entry. Alexander was System Rank E: two full Ranks under it, a red designation. A fifth beast broke the line toward Owen; he intercepted it out of his declared support position and killed it alone across six exchanges. Sustained again at `EVT-000340` against B-Rank commons at System Rank D. Passive: +1 modifier step on his first action against each orange- or red-designated creature in a combat.
+
+**TITLE EARNED - Diehard** [Common] (`EVT-000070`) — the same interception. The C-Rank beast's retaliation landed Rank-honest for roughly 47 against a 40-point maximum: **Health 40 -> 0**, the first genuinely lethal hit of his career, taken in front of Owen. He survived it by claiming a pending daily-quest grant mid-exchange, which restored him to full where Owen could see it and could not explain it. Repeated at `EVT-000340`, where Shrug Off's threshold absorption held a 266-damage counter to raw damage. Passive: +1 modifier step on all actions while Health stands at or below one quarter of its maximum.
+
+**TITLE EARNED - Loner** [Common] (`EVT-000097`) — the first instant dungeon he ever opened, Overgrown Temple, boss killed with nobody else inside. One of **seven** solo clears already standing at this rung; ten more since, plus the `EVT-000198` penalty zone. Passive: +1 modifier step on all actions while no allied hunter shares the Gate.
+
+**TITLE EARNED - Untouchable** [Common] (`EVT-000097`) — that same first solo clear closes on the words `No injury; never hit`. Repeated at `EVT-000234`, `EVT-000304`, `EVT-000327` and `EVT-000332`. Passive: +1 modifier step on evasion in the first exchange of every combat.
+
+**TITLE EARNED - Cartographer** [**Rare**] (`EVT-000120`) — a Gate of **every archetype** on the Section 10 d8, cleared and credited: Shattered City (`EVT-000059`), Ashfield (`EVT-000080`), Overgrown Temple (`EVT-000097`), Hive (`EVT-000099`), Frozen Gallery (`EVT-000101`), Crypt (`EVT-000109`), Flooded Mine (`EVT-000113`), and Beast Den — the Cicero Gate's alpha pair, cleared with Owen on 2026-08-03, which closed all eight interiors inside eleven days and two days before the rung. **The only Rare-grade title in the record, and the only one of the nine new upper-grade entries he holds.** Passive: a Gate's archetype is known to him the moment he enters, without a read, a survey or a confirmation, and +1 modifier step on every action that exploits or evades the archetype's twist. Stat points +5.
+
+**TITLE EARNED - Centurion** [Common] (`EVT-000149`) — the hundredth kill falls inside the 2026-08-05 Hive clear on **solo instant-dungeon kills alone**, before a single Gate or party credit is counted: 6, 13, 23, 37, 52, 67, 82, 109 cumulative across `EVT-000097`, `EVT-000099`, `EVT-000101`, `EVT-000109`, `EVT-000113`, `EVT-000142`, `EVT-000144`, `EVT-000149`. Passive: +1 Mana recovered per common beast killed.
+
+*Nothing else was ripe at this rung.* Vein-Reader stood at roughly 270 crystals against a 500 floor; Regimen at twelve dailies against twenty; the penalty zone that earns Debt Paid had not happened yet, and would not until three days later — the Level 10 -> 11 threshold was itself crossed **inside** it (`EVT-000196`).
+
+
+**LEVEL 20 ASSESSMENT — 2026-08-14, `EVT-000341`. Three granted, all Common.**
+
+**TITLE EARNED - Prospector** [Common] (`EVT-000342`) — 500 crystals extracted from mineable deposits by his own hand. 552 on cited extractions alone: 189 across the Frozen Gallery job (`EVT-000065`-`EVT-000068`), 104 in this morning's clear window, 93 at Ada Reyes's C-Rank job (`EVT-000224`), 24 at Wade Bishop's D-Rank trial (`EVT-000206`), and 142 across the instant-dungeon deposits he mined out — before the Cicero Scar, Halsted Depot and rail-corridor veins are counted at all. Passive: every deposit he extracts personally yields 2 additional crystals.
+
+**TITLE EARNED - Penitent** [Common] (`EVT-000198`) — the fourteenth daily deliberately failed, at zero effort and on purpose, specifically to see what the penalty was; then the sealed four-hour D-Rank survival instance cleared solo in roughly twenty-five minutes (`EVT-000194`-`EVT-000198`). Passive: +1 modifier step on all actions inside a sealed instance he did not open.
+
+**TITLE EARNED - Ascetic** [Common] (`EVT-000338`) — twenty daily quests completed, consecutive or not; twenty-one by this morning, across one deliberate failure and the streak reset that followed it. Passive: each daily-quest Ability Points reward grants +4 points instead of +3.
+
+
+**Eleven entries are unheld at both rungs — three Common, five Rare, three Singular — and the System names none of them** (Section 16.1). Recorded here for the Runtime only, never rendered to Alexander.
+
+*Common:* **Red Survivor**, no red gate having been rolled in this campaign; **Break-Breaker**, both dungeon breaks on the Section 9.10 tracked board (`EVT-000270`) having resolved without him; **Giantslayer**, since every above-Rank boss credited to him fell to another hunter's hand or with a crew inside and every boss he killed alone stood at or below his own System Rank — the exact shadow of Kingmaker, and a solo above-tier instant-dungeon boss would close it.
+
+*Rare:* **Deathless**, whose streak restarted this morning when Health floored at 0 (`EVT-000340`); **Executioner**, at roughly thirty above-Rank kills against a floor of fifty, most of them this morning's B-Rank commons; **Warden**, five party clears in the whole campaign against a floor of ten; **Vanguard**, two Gates entered alone and first against a floor of ten; **Wellspring**, the B-Rank Hive being his heaviest single expenditure and still well short of twice a 112 pool.
+
+*Singular:* **Godslayer**, no A- or S-Rank boss having been faced; **Unbroken**, a streak of 7 against 100 with a deliberate failure already on the record; and **The Unmeasured**, the closest of the three — his E-Rank card stands two Ranks under System Rank C and the criterion asks three, so if he is still carded E when System Rank B arrives at level 30, it lands on its own. Which is the secrecy game of Section 19 turned into a reward for staying in it.
+
+**Nothing is equipped.** The assessments grant titles, points, and slots; they fill no slot (migration step 5). `system_state.title` stays `null`, **both slots stand empty against ten earned titles**, no title passive is active, and the choice is Alexander's own through `/system titles` — free, immediate, and reversible at any time. He can run two passives at once, which is the first time in the campaign that equipping has been a loadout rather than a single pick.
+
+**Nothing else moved.** No pool, Stat, maximum, XP total, level, System Rank, counter, quest, deadline, streak, gold, cash, or item is touched by this Event. It writes to `titles`, widens `title` to a list, and adds 23 to `unspent_points` — and nothing else. The points arrive **unallocated**, so no Stat, Health or Mana maximum, or Stat Passive Rank moves on account of them; that settlement is Alexander's to make in play under Section 4.2.
+
+**Both blocks rendered at the 12:15 anchor**, in level order, as Tier-1 messages — standing outside the collapsed Gate with a beer in his hand and four hunters he had met that morning still around him, eleven levels of overdue commendation arriving at once:
+
+[SYSTEM] TITLE ASSESSMENT - LEVEL 10 / seven titles earned / Stat points +17. Unspent 30 -> 47. / Title slots 0 / 1. Titles held: 7 / 21. Next assessment: level 20.
+[SYSTEM] TITLE ASSESSMENT - LEVEL 20 / three titles earned / Stat points +6. Unspent 47 -> 53. / Title slots 0 / 2. Titles held: 10 / 21. Next assessment: level 30."
 ```

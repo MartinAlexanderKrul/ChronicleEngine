@@ -27,12 +27,13 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.46
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.47
 - **Engine Rules:** 0.3.0
 - **Data Model:** 0.1.6
 - **Campaign time:** 2026-08-14 (Friday), approximately 12:15 CDT (`-05:00`)
 - **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0063/` — Wade Bishop's B-Rank harvest trial: Level 21, System Rank C, and the leverage he can't legally close.
 - **System Rank: D → C**, crossed at the Level 20 threshold this checkpoint (`EVT-000341`).
+- **Titles are live for the first time** (Profile 1.47, `EVT-000348`-`EVT-000349`). Assessments fire at level 10 and every tenth level after; Alexander had passed two of them, and both ran retroactively at adoption, each judged against the record as it stood at its own rung. **Ten of twenty-one granted** — seven at **level 10** (Kingmaker, Underdog, Diehard, Loner, Untouchable, Centurion, and the **Rare**-grade Cartographer) and three at **level 20** (Prospector, Penitent, Ascetic). Points follow the grade — +2 Common, +5 Rare, +10 Singular — so **unspent 30 → 53**, banked. **Two equipped slots, both empty** — one slot per assessment passed, filled free through `/system titles`, and no title passive is active until Alexander picks. **Next assessment: level 30**, which opens a third slot.
 - **A new, live piece of leverage exists:** Wade Bishop is materially compromised — a confirmed B-Rank Gate staffed at 4 combat-rated hunters against a legal minimum of 8 (`110_WORLD_LEDGER.md`, `140_OBJECTIVES.md` `OBJ-27`).
 
 ---
@@ -42,7 +43,8 @@ subjects: []
 - **Alexander Pendragon:** Level 21, C-Rank System Rank, 230/2,100 XP.
 - **Health:** 248/248, full. **Mana:** 110/112. No injury — the one hit that dropped Health to 0 mid-trial (a catastrophic Rupture fumble followed by a critical opportunistic counter, `EVT-000340`) was absorbed by Shrug Off's threshold effect for the first time this campaign and left no classified injury.
 - **Stats (base):** Strength 60, Agility 52, Vitality 57, Perception 54, Intelligence 54. **Effective:** Strength 69, Agility 92, Vitality 62, Perception 54, Intelligence 56.
-- **Unspent stat points: 30** — five level-ups' worth (Levels 15 through 21, past the Vitality allocation already spent at Level 15), unallocated.
+- **Titles held: 10 / 21 (nine Common, one Rare). Two slots, both empty.** Equipping is free and instant through `/system titles`; the strongest candidates for how he actually fights are **Cartographer** (Rare — a Gate's archetype known on entry without a read, plus +1 step on anything exploiting the twist), **Kingmaker** (his relayed reads buy an allied hunter +1 step), **Underdog** (+1 step on his first action against anything orange or red — which, at System Rank C on B-Rank work, is most of it), and **Ascetic** (+4 Ability Points per daily instead of +3, compounding). He can run two at once.
+- **Unspent stat points: 53** — 30 from five level-ups' worth (Levels 15 through 21, past the Vitality allocation already spent at Level 15) plus **23 from the two Title Assessments** (+2 for each of nine Common titles and +5 for the Rare, Profile §3.2/§4.2/§16.1). All unallocated.
 - **Pending rewards, all unclaimed:** Ability Points +3 ×1, Status Recovery ×13, one **streak-upgraded** Daily Random Box (two candidate rolls, choose one).
 - **Daily streak: 7.** Twenty-first daily completed 2026-08-14 06:00 (streak 6→7); the twenty-second issues 06:00 on 2026-08-15.
 - **Equipment change:** the recovered **S-Rank dagger is equipped for the first time**, main hand — Agility +22, weapon power 22, armed strike ×0.75 base. The **Ghost Quickknife [B-Rank]** moves to off-hand. The prior **C-Rank Quickknife** is unequipped, banked unused. Total physical reduction unchanged, ≈26%.
@@ -95,7 +97,7 @@ The trial's aftermath mattered as much as the fight: the crew thanked him and to
 - **`OBJ-18`** — neither route (elixir or cheap-Mana rune) acted on yet for Owen.
 - Titan Legs [D-Rank] and Watcher Feet [D-Rank] remain banked, unequipped.
 - Daily Premium rotations 2026-08-06 through 2026-08-08 remain formally unsettled by owner ruling.
-- **30 unspent stat points and 1 pending Ability Points +3 stack** — neither allocated/claimed yet.
+- **53 unspent stat points and 1 pending Ability Points +3 stack** — neither allocated/claimed yet.
 - **A streak-upgraded Daily Random Box** — pending, unopened.
 
 ---

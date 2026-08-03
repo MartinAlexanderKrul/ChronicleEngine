@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000197 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000347 |
+| Event | `EVT-` | Event | EVT-000349 |
 | Relationship | `REL-` | Relationship | REL-000093 |
 
 ---
@@ -509,6 +509,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000093 | Relationship | Gatefall: Pendragon: Alexander's contact exchange with Warren Sato (`ENT-000197`) — tentative crew interest, no commitment |
 | EVT-000346 | Event | Gatefall: Pendragon: a celebratory round bought for the harvest-trial crew, mid-morning, first genuine laugh out of Corbin all day |
 | EVT-000347 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000338`-`EVT-000346` span — full skill-use/qualifying-scene reconciliation for Keen Sense, Exploit Pattern, Field Command, Resonance Extraction, Rupture, Twin Fang, and Mana Bolt against this session's resolved exchanges; explicit correction that Overpower and Shrug Off hold at C-Rank (B-Rank rung unauthored under Section 4.4's clamp) despite Strength/Vitality crossing the B-Rank stat threshold |
+| EVT-000348 | Event | Gatefall: adoption of World Rule Profile 1.47 - a required-migration advance giving Section 16 the trigger it never had: the **Title Assessment** runs inside the level-up that settles level 10 and every multiple of ten thereafter, reading the Bearer's whole career since onset against a catalog grown from five entries to twenty-one across three grades (twelve Common, six Rare, three Singular), every entry named for what its feat made the Bearer rather than for the feat; each title now grants allocatable stat points on earning — +2 / +5 / +10 by grade, the Section 3.2 / 4.2 title point bonus never stated by a 1.0 title — alongside its equipped-only passive, and the Bearer holds one equipped slot per assessment passed to a maximum of five where 1.0 allowed one forever; nothing fires between assessments and no unearned criterion is ever published |
+| EVT-000349 | Event | Gatefall: Pendragon: the required 1.46→1.47 state transformation - `system_state.titles` authored and both missed Title Assessments run retroactively in level order, each judged against the record as it stood at its own rung. Level 10 (`EVT-000150`) grants seven (Kingmaker, Underdog, Diehard, Loner, Untouchable, Centurion, and the Rare-grade Cartographer); level 20 (`EVT-000341`) grants three (Prospector, Penitent, Ascetic). Eleven unheld and unnamed to the Bearer. The ten grant their grades' points — unspent 30 → 53, banked unallocated — and open two equipped slots, both left empty; `title` widens to a list and stays `null`; no other stored value moved |
 
 ---
 

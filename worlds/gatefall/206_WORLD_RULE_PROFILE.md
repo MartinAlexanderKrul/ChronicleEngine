@@ -1,12 +1,12 @@
-# Gatefall — World Rule Profile 1.46
+# Gatefall — World Rule Profile 1.47
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.46
+**Profile Version:** 1.47
 **Engine Compatibility:** 0.2.0; Data Model 0.1.6
 **Status:** Active
-**Compatibility Status:** frozen at version 1.46 (Rules Section 14.6, Decision 074), declared on repository date 2026-08-01. Version 1.46 changes **no rule a character could notice** either: no number, cost, timer, capability, pool, price, or resolved outcome moves, and no stored value is touched. It rewrites **Section 15** — how the System's windows are laid out and how the command is divided. `/system` now renders a one-screen **Console** rather than one exhaustive window; every panel gains an authored template where Section 15.2 previously declared focused views and authored none; the worn loadout and the dimensional inventory merge into a single **`/system gear`** panel (Section 12.9 already governed them as one surface), with `/system equipment` and `/system inventory` retained as aliases; **`/system all`** is added for the exhaustive read; Stat Passives get their own skills group instead of a second row grammar inside `PASSIVE`; the Console and `/system gear` show **cash and pending payouts** beside gold, never totalled with it; **Rank always renders bracketed** (`[E-Rank]`), never as a bare letter; and a new **render grammar** (Section 15.1) fixes width, spacing, columns, and a two-glyph status gutter. Every fact reachable under 1.45 remains reachable, and the stale Section 15.6/15.7/15.8 cross-references left by an earlier renumber are repointed. *(1.45 opted Gatefall into the Data Model Section 2.4 `participation_audits` block under Decision 085, with a prospective `EVT-000268` baseline and twelve fiction-bearing Event kinds as its coverage set, and carried **Data Model 0.1.5 → 0.1.6** engine-side; 1.44 made the Section 9.10 tracked board dispatchable through a `gatefall.board.deadline` domain under Decision 084; 1.43 authored the first exception to Section 2, a stat elixir spent on another awakened; 1.42 put a D-Rank floor under Section 13.6's signature abilities.)*
+**Compatibility Status:** frozen at version 1.47 (Rules Section 14.6, Decision 074), declared on repository date 2026-08-03. Version 1.47 rewrites **Section 16** and, unlike its three predecessors, **changes a rule a character can notice**. Titles were authored to be granted "the instant the feat resolves" and nothing in the profile ever caused one to be evaluated: the section was live law with no trigger, and no Bearer in any Gatefall campaign has ever held a title. 1.47 gives it one. A **Title Assessment** (Section 16.1) now runs inside the level-up that settles **level 10** and every level that is a multiple of ten thereafter — every rung of the Section 6.6 System Rank ladder above the E a Bearer starts at, continuing past 50 on the decade — and it re-reads the Bearer's **whole recorded career since onset** against the catalog, granting every title the record has earned. Nothing fires between assessments, no unearned criterion is ever published (Section 14.2), and an assessment that grants nothing still renders. Section 3.2 gains the assessment as a fifth settlement on decade levels under its existing invariant; Section 14.3's Tier-1 list trades the untriggerable `TITLE EARNED` line for the `TITLE ASSESSMENT` block; `/system titles` (Section 15.3.4) gains an `ASSESSMENT` section; and the catalog grows from five entries to **twenty-one across three grades** — twelve Common, six Rare, three Singular — every one of them authored so that a Runtime can decide it from resolved Events alone, and every one of them named for what its feat made the Bearer rather than for the feat. A title also now grants what Sections 3.2 and 4.2 have promised since 1.0 and no title ever stated: **allocatable stat points on earning — +2 Common, +5 Rare, +10 Singular**, permanent and independent of equipping. And the loadout grows with the Bearer — **one equipped slot per assessment passed, capped at five** against a catalog of twelve, where 1.0 allowed exactly one forever; `system_state.title` accordingly holds a list. **A Bearer already past level 10 at adoption runs every missed assessment once, at adoption, in level order** — see `worlds/gatefall/migrations/1.46_to_1.47.md`. No other number, cost, timer, capability, pool, price, or resolved outcome moves. *(1.46 changed no rule a character could notice: it rewrote **Section 15** — how the System's windows are laid out and how the command is divided. `/system` now renders a one-screen **Console** rather than one exhaustive window; every panel gains an authored template where Section 15.2 previously declared focused views and authored none; the worn loadout and the dimensional inventory merge into a single **`/system gear`** panel (Section 12.9 already governed them as one surface), with `/system equipment` and `/system inventory` retained as aliases; **`/system all`** is added for the exhaustive read; Stat Passives get their own skills group instead of a second row grammar inside `PASSIVE`; the Console and `/system gear` show **cash and pending payouts** beside gold, never totalled with it; **Rank always renders bracketed** (`[E-Rank]`), never as a bare letter; and a new **render grammar** (Section 15.1) fixes width, spacing, columns, and a two-glyph status gutter. Every fact reachable under 1.45 remains reachable, and the stale Section 15.6/15.7/15.8 cross-references left by an earlier renumber are repointed. 1.45 opted Gatefall into the Data Model Section 2.4 `participation_audits` block under Decision 085, with a prospective `EVT-000268` baseline and twelve fiction-bearing Event kinds as its coverage set, and carried **Data Model 0.1.5 → 0.1.6** engine-side; 1.44 made the Section 9.10 tracked board dispatchable through a `gatefall.board.deadline` domain under Decision 084; 1.43 authored the first exception to Section 2, a stat elixir spent on another awakened; 1.42 put a D-Rank floor under Section 13.6's signature abilities.)*
 
 **Version history and migrations.** Every transformation from Profile 1.1 forward to the active version lives in `worlds/gatefall/migrations/`, one authoritative record per edge, declared by `worlds/gatefall/migrations/INDEX.md`. Restoring a capture taken under Profile *V* runs each record from *V* forward to the active version in order and reads no other migration text; a current rule lookup reads none of them. Immutable checkpoints are never rewritten by a migration — the chain applies to mutable live state. Where a migration record and this profile disagree about present law, this profile governs: a migration record describes a transformation, not a standing rule.
 
@@ -113,7 +113,9 @@ The System fires the level-up block after all four effects settle. Nothing is of
 
 > **Level-up settlement invariant:** every reward caused by crossing an XP threshold applies in that same exchange. The Runtime never asks `accept / defer`, never creates a pending level-up entry, and never lets the Bearer reserve the restoration. If one XP award crosses several thresholds, settle the complete four-step package once for each level in order before play continues.
 
-Allocatable stat points come from the level-up award (+5), the **daily-quest Ability Point reward (+3, Section 8.1)**, and item/title/skill rewards that state a specific point bonus.
+**A decade level carries one further settlement.** Where the level reached is **10, or any multiple of ten above it**, the four-step award is followed inside the same exchange by the **Title Assessment** (Section 16.1) — the System reading the whole recorded career against the title catalog and granting every title it has earned. It settles under this same invariant: never deferred, never banked, never declined. Levels 1–9 carry no assessment.
+
+Allocatable stat points come from the level-up award (+5), the **daily-quest Ability Point reward (+3, Section 8.1)**, the **Title Assessment (+2 per title earned, Section 16.1)**, and item or skill rewards that state a specific point bonus.
 
 ## 3.3 Kill XP by Threat Rank
 
@@ -244,7 +246,7 @@ Equipping capacity is not a heal, and unequipping it is not damage. A separate S
 
 ## 4.2 Stat Points
 
-A **stat point** is the allocatable unit of growth. Its sources are the **level-up award** (+5, Section 3.2), the **daily Ability Point reward** (+3, Sections 3.9 and 8.1), plus any item, title, or skill that states a specific point bonus. One stat point raises one **base** stat by **1**. Allocation is permanent canonical capability; there is no respec unless a future authored in-world mechanism adds one with a cost. Awarded points sit in the Bearer's **unspent pool** until he allocates them; allocation may happen any time.
+A **stat point** is the allocatable unit of growth. Its sources are the **level-up award** (+5, Section 3.2), the **daily Ability Point reward** (+3, Sections 3.9 and 8.1), the **Title Assessment** (+2 for each title it grants, Section 16.1), plus any item or skill that states a specific point bonus. One stat point raises one **base** stat by **1**. Allocation is permanent canonical capability; there is no respec unless a future authored in-world mechanism adds one with a cost. Awarded points sit in the Bearer's **unspent pool** until he allocates them; allocation may happen any time.
 
 ## 4.3 Stats in Action Resolution
 
@@ -2298,7 +2300,7 @@ participation_coverage:
   - an accepted Urgent quest or attached Hidden quest completes, fails, expires, or reveals → its stored quest-state block (Section 8.4);
   - 06:00 local time arrives → the Daily Premium stock rotates and its compact line fires (Section 12.5);
   - the daily window lapses incomplete → the penalty warning, then the transfer notice (Section 14.5);
-  - a title is earned → the `TITLE EARNED` block (Section 14.5);
+  - a level-up settles level 10 or any multiple of ten above it → the `TITLE ASSESSMENT` block, immediately after the level-up block (Section 16.1);
   - a pool crosses a declared danger threshold (e.g., 0 Mana, Section 5.3) → a warning;
   - a creature of resolved Rank (Section 14.4) enters the Bearer's perception → its **designation color** renders inline, red and pulsing for a creature two or more Ranks above him — the System's only unprompted tactical warning (Section 14.6).
 - **Tier 2 — Mandatory at the first qualifying yield (bounded presentation discretion; a declared precondition must hold).** Appraisal when an unidentified item enters perception and Flux Sight is B-Rank or higher (Section 4.4); a Hidden pointer when every Section 8.4.3 precondition is recorded; an Urgent offer when every Section 8.4.2 precondition holds; a danger warning while the condition holds. The Runtime chooses phrasing, not whether to fire or how long to delay after the applicable boundary.
@@ -2449,7 +2451,7 @@ Bare **`/system`** renders the Console: identity, vitals, stats, unclaimed rewar
 ║     <NAME>                                                                 ║
 ║                                                                            ║
 ║     Level           <L>                 Class          <class or —>        ║
-║     Card Rank       [<Rank>]            Title          <title or —>        ║
+║     Card Rank       [<Rank>]            Titles         <equipped or —>     ║
 ║     System Rank     [<Rank>]            Condition      <injury or none>    ║
 ║                                                                            ║
 ╟──  VITALS  ────────────────────────────────────────────────────────────────╢
@@ -2487,7 +2489,7 @@ Bare **`/system`** renders the Console: identity, vitals, stats, unclaimed rewar
 ║                                                                            ║
 ║     Skills          <n> active  <n> passive  <n> stat      /system skills  ║
 ║     Gear            <n> worn · <n> stored                  /system gear    ║
-║     Titles          <n> earned · <equipped or none>        /system titles  ║
+║     Titles          <n> earned · <k>/<s> equipped          /system titles  ║
 ║     Daily Premium   <n> / 6 · rotates <deadline>           /system shop    ║
 ║                                                                            ║
 ╟──  FUNDS  ─────────────────────────────────────────────────────────────────╢
@@ -2507,7 +2509,7 @@ Ren at level 3, mid-run, carrying one completed daily's separate rewards:
 ║     REN                                                                    ║
 ║                                                                            ║
 ║     Level           3                   Class          —                   ║
-║     Card Rank       [E-Rank]            Title          Lone Clear          ║
+║     Card Rank       [E-Rank]            Titles         Loner               ║
 ║     System Rank     [E-Rank]            Condition      No injury           ║
 ║                                                                            ║
 ╟──  VITALS  ────────────────────────────────────────────────────────────────╢
@@ -2551,7 +2553,7 @@ Ren at level 3, mid-run, carrying one completed daily's separate rewards:
 ║                                                                            ║
 ║     Skills          3 active  1 passive  0 stat            /system skills  ║
 ║     Gear            1 worn · 5 stored                      /system gear    ║
-║     Titles          2 earned · Lone Clear                  /system titles  ║
+║     Titles          2 earned · 1/1 equipped                /system titles  ║
 ║     Daily Premium   6 / 6 · rotates in 14h12m              /system shop    ║
 ║                                                                            ║
 ╟──  FUNDS  ─────────────────────────────────────────────────────────────────╢
@@ -2832,20 +2834,30 @@ Capacity renders first (Section 8.4.4). Urgent rows always show objective progre
 ```text
 ╔══ ◈  S Y S T E M  ·  T I T L E S ══════════════════════════════════════════╗
 ║                                                                            ║
-╟──  EQUIPPED  ──────────────────────────────────────────────────────────────╢
+╟──  EQUIPPED  ───────────────────────────────────────────  <k> / <s> slots  ╢
 ║                                                                            ║
 ║     ★  <title>                                                             ║
 ║         <passive>                                                          ║
+║     ★  <title>                                                             ║
+║         <passive>                                                          ║
+║        <empty slot>                                                        ║
 ║                                                                            ║
 ╟──  EARNED  ─────────────────────────────────────────────────────────  <n>  ╢
 ║                                                                            ║
 ║     <title>                                                                ║
 ║         <passive, dormant>                                                 ║
 ║                                                                            ║
+╟──  ASSESSMENT  ────────────────────────────────────────────────────────────╢
+║                                                                            ║
+║     Last  level <L>  ·  <n> granted        Next  level <L+10>              ║
+║     Held  <k> / <m>  ·  slots <k> / <s>                                    ║
+║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
 
-One title is equipped at a time (Section 16); the equipped title carries `★` and its passive is active, and every other earned title renders with its passive marked dormant. Equipping happens here and is free.
+**`EQUIPPED` renders one row per slot, filled or not** — a Bearer holds `<s>` slots, one per assessment passed to a maximum of five (Section 16), and an unfilled one renders `<empty slot>` rather than vanishing, so the loadout's shape is always visible. Each equipped title carries `★` and its passive is active; every earned title outside a slot renders under `EARNED` with its passive marked dormant. Equipping, unequipping, and swapping happen here, are free and instant, and take no action in a fight.
+
+The `ASSESSMENT` section reads `system_state.titles` (Section 16.1): the level of the most recent Title Assessment and how many titles it granted, the level of the next, how many of the catalog's entries are held, and how many slots are filled. **It names no unearned title** — `<m>` is the catalog's size and nothing else about the unheld entries renders here or anywhere (Section 16.1). Before a Bearer's first assessment the `Last` field renders `—`, `Next` renders `level 10`, and `EQUIPPED` renders no slot rows at all, because he holds none. **The +2 stat points a title granted on earning render nowhere in this panel** — they left it for the unspent pool the moment they were awarded (Section 4.2) and are not a property of the title afterward.
 
 ### 15.3.5 `/system shop`
 
@@ -2919,19 +2931,106 @@ Before the class quest (Section 18) the Console's `Class` line reads `—`, no c
 
 # 16. Titles
 
-A **title** is a named commendation the System grants for a specific feat, carrying one passive. **One title is equipped at a time**; the equipped title's passive is active and every other earned title is dormant. Titles are permanent once earned; equipping is free and changed through `/system titles` (Section 15.3.4). Each is granted the instant its feat resolves, as a Tier-1 message (Section 14.5).
+A **title** is a named commendation the System grants for a feat the Bearer's own record proves he performed. Each carries two things: **allocatable stat points, granted permanently the moment the title is earned** — +2, +5, or +10 by its grade (Section 16.2) — and **one passive, active only while the title is equipped**. Titles are permanent once earned; equipping is free, immediate, reversible, and done through `/system titles` (Section 15.3.4).
 
-The 1.0 titles:
+**The Bearer holds one equipped slot per assessment he has passed, to a maximum of five** (Section 16.1) — one at level 10, two at 20, three at 30, four at 40, five at 50 and thereafter. A title in a slot has its passive active; every earned title outside one is dormant. Slots are derived from `titles.last_assessment`, never stored separately, and a slot may be left empty.
 
-| Title | Earned by | Passive (while equipped) |
+## 16.1 The Title Assessment
+
+**No title is granted at the moment of its feat.** The System commends a career rather than an afternoon, and it reads that career on a fixed schedule: the level-up that settles **level 10**, and every level-up that settles a level that is a **multiple of ten** thereafter — 20, 30, 40, 50, 60, and onward, since Section 3.1 sets no level cap. Levels 1–9 carry no assessment at all: the first stretch is a Bearer learning the ladder, and the System says nothing about a career too short to have one.
+
+**The schedule is the Rank ladder.** Levels 10, 20, 30, 40, and 50 are exactly Section 6.6's rungs into D, C, B, A, and S — every rung above the E-Rank a Bearer starts at. An assessment is what a re-Ranking costs the System's attention: at each rung it re-reads the whole record and settles what the Bearer has become. Past level 50 the ladder is spent and the decade is not; assessments continue at 60, 70, and beyond.
+
+**It settles inside the level-up exchange.** Section 3.2's settlement invariant governs it exactly as it governs the four-step award: an assessment caused by crossing a threshold applies in that same exchange, after step 4 and before play continues. It is never deferred, banked, offered, or declined, and there is no pending-assessment state. Where one XP award crosses several decade thresholds at once, each decade runs its own assessment in level order, and a title granted by the earlier one is already held at the later one.
+
+**It reads the whole record, not the interval.** The assessment tests every catalog entry (Section 16.2) against the Bearer's entire recorded career **since onset** (Section 14.7) — never merely since the previous assessment. A feat performed at level 3 is credited at the level-20 assessment exactly as one performed at level 19, and a feat already credited is not credited twice. Deeds resolved in the onset scene itself count, the System having been attached before that scene settled. Deeds predating attachment do not count and are not reconstructed: the System knows Bearer state (Section 14.4), and it held none before onset.
+
+**Every criterion the record satisfies grants its title, in the same assessment.** There is no cap on how many titles one assessment grants and no priority among them — a first assessment reaching back across ten hard levels may grant several at once, and a later one covering a quiet decade may grant none. A title already held is never re-granted, and no title is ever revoked, downgraded, or lost.
+
+**Each title granted adds stat points to the unspent pool, immediately and permanently — +2 Common, +5 Rare, +10 Singular** (Section 16.2). This is the "title reward that states a specific point bonus" Sections 3.2 and 4.2 name as a stat-point source. The points are the Bearer's the instant the title is earned and are **never conditional on equipping it** — a dormant title's passive sleeps, but the growth it paid for does not. They allocate under Section 4.2 like every other point, at any time. **The assessment itself also opens a slot** where the Bearer holds fewer than five.
+
+**Between assessments the System is silent about titles.** A Bearer who completes a title's feat at level 12 receives no notification, no progress line, and no partial credit; the deed sits in the record until the level-20 assessment counts it. **An unearned criterion is never published** (Section 14.2's withholding): an assessment names what it granted and how many catalog entries remain unheld, never what they are and never how near he came to one. The catalog is world law a Runtime reads — it is not a checklist the System hands its Bearer.
+
+**The assessment block** is a Tier-1 message (Section 14.3), fired once per assessment, immediately after the level-up block that caused it:
+
+```text
+[SYSTEM] TITLE ASSESSMENT — LEVEL <L>
+
+TITLE EARNED — <title>  [<grade>]
+  <the feat, as the record proves it>
+  <passive>
+  Stat points +<2 / 5 / 10>
+
+TITLE EARNED — <title>  [<grade>]
+  <the feat, as the record proves it>
+  <passive>
+  Stat points +<2 / 5 / 10>
+
+Stat points +<total>.  Unspent <before> → <after>.
+Title slots <k> / <s>.  Titles held: <h> / <m>.   Next assessment: level <L+10>.
+```
+
+An assessment that grants nothing renders the same block with `No title earned.` where the granted entries would stand, omits the stat-point line, and keeps the closing line. **The System never suppresses an assessment** — the Bearer always learns one ran, even when it commended nothing.
+
+**Stored state.** The Bearer's ledger holds a `system_state.titles` block: `earned`, one entry per held title naming the title, the assessment level that granted it, and the Event whose resolution satisfied the criterion; and `last_assessment` / `next_assessment`, the level of the most recent assessment and the level of the next. The **equipped** titles remain `system_state.title` — the field the Console and every panel already read (Sections 15.2, 15.3.4) — now holding a **list** of equipped title names, `null` or empty for none. Its length may never exceed the derived slot count, and no title appears in it twice. Earned titles and their granted points are canonical Bearer state under GTF-OVR-001 and restore with a checkpoint like every other stored value.
+
+## 16.2 The Catalog
+
+Each criterion is a statement **about the record**, decidable at an assessment without a ruling: a Runtime tests it against resolved Events, never against an impression of how the campaign has gone. Where a criterion counts, it counts across the whole career since onset.
+
+**A title is a name for the man, not a description of the afternoon.** Every entry below names *what the Bearer is* to anything that has read his record — Loner, Centurion, Kingmaker — because that is what a commendation is. The System does not narrate the feat in the title; it says what the feat made him.
+
+**Three grades, and the grade sets the point grant.** The grade is a statement about how hard the criterion is to reach, nothing else — it changes no passive's wording and gives no title priority at an assessment.
+
+| Grade | Titles | Points on earning | Character of the passive |
+|---|---|---|---|
+| **Common** | 12 | **+2** | one modifier step, or one small resource effect |
+| **Rare** | 6 | **+5** | a step that applies broadly, a damage or pool multiplier, or a real informational edge |
+| **Singular** | 3 | **+10** | a capability the profile grants nowhere else. Most Bearers die never holding one. |
+
+### Common titles
+
+| Title | Earned when the record holds… | Passive (while equipped) |
 |---|---|---|
-| **Lone Clear** | first Gate cleared solo — boss killed with no other hunter inside | +1 modifier step on all actions while no allied hunter shares the Gate |
-| **Red Survivor** | survive and clear a red gate (sealed anomaly, Section 9.6) | the first injury you would take in any sealed instance each scene is reduced by one severity tier (Section 6.3) |
-| **Untouched** | clear a Gate having taken zero damage | +1 modifier step on evasion in the first exchange of every combat |
-| **Centurion** | 100 confirmed kills | +1 Mana recovered per common beast killed |
-| **Break-Breaker** | be part of stopping a dungeon break (Section 9.8) before it clears the cordon | +1 modifier step on all actions defending a fixed position or civilians |
+| **Loner** | at least one Gate cleared alone — its boss killed with no other hunter inside. Section 17's instant dungeons and Section 8.3's penalty zones count: both are real clears. | +1 modifier step on all actions while no allied hunter shares the Gate |
+| **Red Survivor** | a red gate (sealed anomaly, Section 9.6) entered, cleared, and walked out of | the first injury you would take in any sealed instance each scene is reduced by one severity tier (Section 6.3) |
+| **Untouchable** | at least one Gate cleared in which the Bearer took no damage at all | +1 modifier step on evasion in the first exchange of every combat |
+| **Centurion** | 100 kills credited to the Bearer, live-contribution credit under Section 3.8 included | +1 Mana recovered per common beast killed |
+| **Break-Breaker** | a dungeon break (Section 9.8) stopped before it cleared the cordon, the Bearer part of stopping it | +1 modifier step on all actions defending a fixed position or civilians |
+| **Underdog** | a creature killed while it stood **two or more Ranks above** the Bearer's System Rank — a red designation (Section 14.6) — at the moment of the kill | +1 modifier step on the Bearer's first action against each orange- or red-designated creature in a combat |
+| **Diehard** | Health reduced to 0 in a resolved exchange the Bearer survived (Section 6.5) | +1 modifier step on all actions while Health stands at or below one quarter of its maximum |
+| **Kingmaker** | a boss killed by another hunter's hand on a weakness or opening the Bearer resolved and relayed, the clear credited to him under Section 3.8 | the first action an allied hunter takes against a target whose weakness the Bearer has relayed this scene takes +1 modifier step |
+| **Prospector** | 500 crystals extracted from mineable deposits (Section 11.1) by the Bearer's own hand | every deposit the Bearer extracts personally yields 2 additional crystals |
+| **Penitent** | a penalty zone (Section 8.3) cleared — its boss killed before the four hours ran out | +1 modifier step on all actions inside a sealed instance the Bearer did not open |
+| **Ascetic** | 20 daily quests (Section 8.1) completed, consecutive or not | each daily-quest Ability Points reward grants +4 points instead of +3 |
+| **Giantslayer** | a boss of a Rank **above** the Bearer's System Rank killed by his own hand, alone, with no other hunter inside | +1 modifier step on all actions against a boss |
 
-Every passive is stated in modifier-step or resource terms (Section 4.3, Section 5), so a Runtime applies it without a ruling. Only the equipped passive applies; a title's modifier step composes into the net ±3 cap (Section 4.3) like any other, and any reduction it grants composes multiplicatively (Section 7.3).
+### Rare titles
+
+| Title | Earned when the record holds… | Passive (while equipped) |
+|---|---|---|
+| **Cartographer** | at least one Gate of **every archetype** on the Section 10 d8 cleared and credited — all eight interiors walked out of | a Gate's archetype is known to the Bearer the moment he enters, without a read, a survey, or a confirmation; and +1 modifier step on every action that exploits or evades the archetype's twist |
+| **Deathless** | **twenty consecutive Gate clears** in which he took no classified injury (Section 6.3) **and** his Health never fell below one quarter of its maximum. A single breach restarts the count at zero. | the first injury he would take in **any** scene is reduced by one severity tier (Section 6.3) — everywhere, not only inside a sealed instance |
+| **Executioner** | **50 kills** of creatures standing **above** his System Rank at the moment of the kill | a critical hit against a creature at or above his System Rank deals **×1.25** damage (Section 6.2, applied with the other multipliers) |
+| **Warden** | **ten** Gate clears in which no hunter who entered alongside him took a classified injury | +1 modifier step on all of the Bearer's defensive actions, and every allied hunter sharing the Gate takes +1 modifier step on their first defensive action each scene |
+| **Vanguard** | **ten Gates entered alone and first**, ahead of the party he arrived with, each of them cleared | +2 modifier steps on the Bearer's first action in any combat he opened |
+| **Wellspring** | more than **twice his maximum Mana** spent inside a single sealed instance he then cleared | maximum Mana is raised by **10%**, and out-of-combat Mana recovery runs at **double rate** (Section 5.2) |
+
+### Singular titles
+
+| Title | Earned when the record holds… | Passive (while equipped) |
+|---|---|---|
+| **Godslayer** | an **S-Rank boss** dead, its kill or its clear credited to the Bearer (Section 3.3, Section 3.8) | every creature the Bearer perceives renders its **exact remaining Health** alongside its designation colour (Section 14.6) |
+| **Unbroken** | **100 consecutive daily quests** completed with no failure and no reset (Section 8.1) | the daily quest's three rewards are granted **twice** on every day it is completed |
+| **The Unmeasured** | a carded Rank standing **three or more Ranks below** his System Rank at the moment an assessment runs, never re-assessed (Section 19) | Flux Sight reads one Rank above its Section 4.4 ceiling, and any action taken to conceal his true capability (Section 19.1) takes **+2 modifier steps** |
+
+## 16.3 Passives, Points, and Slots
+
+**Points on earning follow the grade: +2 Common, +5 Rare, +10 Singular.** Nothing else about a title varies with its grade — no priority at an assessment, no ordering in a panel, no restriction on which slot it may sit in. The points are unconditional, permanent, and independent of equipping (Section 16.1).
+
+**Only an equipped title's passive applies.** Every passive is stated in modifier-step, multiplier, resource, or stated-capability terms (Sections 4.3, 5, 6.2), so a Runtime applies it without a ruling. A title's modifier step composes into the net ±3 cap (Section 4.3) like any other, and any reduction it grants composes multiplicatively (Section 7.3). Where two equipped titles both apply to one action they **both count toward that cap and neither is doubled**; where they apply to different things they simply both apply. **Kingmaker** and **Warden** are the passives whose effects land on someone else's roll: they apply to the allied hunter's action, are capped on that hunter's side by the same ±3, and are inert while nobody shares the fight. **Wellspring** is the one passive that moves a maximum: while equipped, maximum Mana is derived at ×1.10 and the pool is clamped, never truncated, when it is unequipped — an over-full pool falls to the new maximum and nothing else changes.
+
+**Slots are the loadout, and they never reach the whole catalog.** One slot per assessment passed, capped at five (Section 16.1), against a catalog of twenty-one — so a Bearer at the top of the Rank ladder still runs fewer than half of what he has earned, and equipping stays a decision rather than a formality. Changing a loadout is free and instant, takes no action in a fight, and may be done any time `/system titles` can be opened. A newly equipped passive applies from the next resolved action; it never retroactively changes an exchange already rolled.
 
 ---
 

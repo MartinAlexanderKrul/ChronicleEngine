@@ -53,7 +53,7 @@ canonical_state:
   age: 25
   location: ENT-000087
   condition: |
-      Health **248/248**, Mana **110/112**, no injury — **Level 21, ~12:15 on 2026-08-14 (Friday)**, at the mouth of Wade Bishop's now-collapsed B-Rank harvest Gate past the Region V line, with the crew. Since the 20:30 parent anchor (`EVT-000334`): the twenty-first daily completed with Owen at dawn (streak 6→7, a streak-upgrade box pending, `EVT-000338`). Arrived at Wade's confirmed B-Rank harvest trial and entered the Gate's mouth alone over Wade's objection. A botched stealth entry and a scrambled Keen Sense read (both natural critical failures) alerted the swarm; the S-Rank dagger from the dock went to main hand for the first time, the Ghost Quickknife to off-hand; Pre-empt held off the surprise penalty; a Twin Fang combo took the first kill (`EVT-000339`). The Gate resolved Hive on real dice — 24 commons, no elites, 1 boss; a legendary Keen Sense/Exploit Pattern read found the chamber's chokepoint, relayed by Field Command to Corbin Yates, who held it the rest of the fight; the swarm went down across a long Rupture/Twin Fang/Mana Bolt sequence, crossing Levels 15 (Vitality +5 allocated) and 16. A catastrophic Rupture fumble immediately followed by a critical opportunistic hit dropped Health from full to 0; Shrug Off's threshold absorption (triggered for the first time) kept it from becoming a classified injury; two Status Recovery claims restored full Health and Mana each time it mattered (`EVT-000340`). A burrower boss surfaced mid-fight; three Keen Sense attempts (the third after repositioning to correct the read angle, legendary) found its sweep tell and a cracked belly weak-point, relayed to Dana Whitcombe and then Felix Aranda, who landed the coordinated kill together. The Gate collapsed; boss Kill XP, the Gate-clear milestone, and retroactive contribution credit for Corbin's sustained chokepoint kills carried Alexander from Level 17 to **Level 21**, crossing System Rank **D→C** (`EVT-000341`). A legendary vein-find and Resonance Extraction (Practiced→Adept) yielded 104 B-Rank crystals mined solo across the two-hour clear window; 20 declared to Wade's harvest pool, 84 kept undeclared (`EVT-000342`-`EVT-000343`). The crew thanked him in their own registers and took his number for the crew he's forming, no commitments made (`EVT-000344`). Confronted Wade over the crew's lack of coordination and then over a genuine legal violation — 4 combat-rated hunters against a B-Rank Gate's legal minimum of 8 — and set hard terms in exchange for discretion before Wade's end-of-day report: retroactive roster inclusion, sight of the report, standard shares confirmed as owed fact, and an ongoing unofficial arrangement (contacts, information, favors, nothing manual) with exact payout numbers owed tonight and Ironline's guild decision still owed tomorrow (`EVT-000345`). Closed on a round of beer for the crew at ten in the morning (`EVT-000346`).
+      Health **248/248**, Mana **110/112**, no injury — **Level 21, ~12:15 on 2026-08-14 (Friday)**, at the mouth of Wade Bishop's now-collapsed B-Rank harvest Gate past the Region V line, with the crew. Since the 20:30 parent anchor (`EVT-000334`): the twenty-first daily completed with Owen at dawn (streak 6→7, a streak-upgrade box pending, `EVT-000338`). Arrived at Wade's confirmed B-Rank harvest trial and entered the Gate's mouth alone over Wade's objection. A botched stealth entry and a scrambled Keen Sense read (both natural critical failures) alerted the swarm; the S-Rank dagger from the dock went to main hand for the first time, the Ghost Quickknife to off-hand; Pre-empt held off the surprise penalty; a Twin Fang combo took the first kill (`EVT-000339`). The Gate resolved Hive on real dice — 24 commons, no elites, 1 boss; a legendary Keen Sense/Exploit Pattern read found the chamber's chokepoint, relayed by Field Command to Corbin Yates, who held it the rest of the fight; the swarm went down across a long Rupture/Twin Fang/Mana Bolt sequence, crossing Levels 15 (Vitality +5 allocated) and 16. A catastrophic Rupture fumble immediately followed by a critical opportunistic hit dropped Health from full to 0; Shrug Off's threshold absorption (triggered for the first time) kept it from becoming a classified injury; two Status Recovery claims restored full Health and Mana each time it mattered (`EVT-000340`). A burrower boss surfaced mid-fight; three Keen Sense attempts (the third after repositioning to correct the read angle, legendary) found its sweep tell and a cracked belly weak-point, relayed to Dana Whitcombe and then Felix Aranda, who landed the coordinated kill together. The Gate collapsed; boss Kill XP, the Gate-clear milestone, and retroactive contribution credit for Corbin's sustained chokepoint kills carried Alexander from Level 17 to **Level 21**, crossing System Rank **D→C** (`EVT-000341`). A legendary vein-find and Resonance Extraction (Practiced→Adept) yielded 104 B-Rank crystals mined solo across the two-hour clear window; 20 declared to Wade's harvest pool, 84 kept undeclared (`EVT-000342`-`EVT-000343`). The crew thanked him in their own registers and took his number for the crew he's forming, no commitments made (`EVT-000344`). Confronted Wade over the crew's lack of coordination and then over a genuine legal violation — 4 combat-rated hunters against a B-Rank Gate's legal minimum of 8 — and set hard terms in exchange for discretion before Wade's end-of-day report: retroactive roster inclusion, sight of the report, standard shares confirmed as owed fact, and an ongoing unofficial arrangement (contacts, information, favors, nothing manual) with exact payout numbers owed tonight and Ironline's guild decision still owed tomorrow (`EVT-000345`). Closed on a round of beer for the crew at ten in the morning (`EVT-000346`). At the 12:15 anchor, Profile 1.47 was adopted (`EVT-000348`) and the **two Title Assessments** it authors — level 10 and level 20, both passed under profiles that had none — ran retroactively (`EVT-000349`): **ten titles granted**, seven at the level-10 rung (Kingmaker, Underdog, Diehard, Loner, Untouchable, Centurion, and the Rare-grade **Cartographer** — all seven already true by 2026-08-05) and three at level 20 (Prospector, Penitent, Ascetic). Points by grade: **unspent 30 → 47 → 53**, banked and unallocated. Two equipped slots are open (one per assessment passed) and **both are empty** — that choice is his, through `/system titles`, and no title passive is active until he makes it. No pool, Stat, maximum, item, or resolved outcome moved with it.
 
       Prior anchor state, superseded: Health **200/200**, Mana **98/98**, no injury — **Level 14, ~15:30 on 2026-08-13 (Thursday)**, out in the city, alone. Since the 22:00 parent anchor (`EVT-000313`): the first morning run from the Rogers Park apartment's own door, the twentieth daily completed with Owen (streak 5→6), the Daily Premium tab rotated live (Argent series) (`EVT-000315`). All 8 banked unspent points (5 from the Level 14 grant, 3 from today's daily) allocated to Strength in one pass, 45→53 (`EVT-000316`). Met and recruited Grant Okwuosa at a diner near the Coalition building — third name secured after Marcus and Theo (`EVT-000317`). Resolved the Saturday scheduling conflict: Ada's harvest job grounded as a 09:00 morning start, freeing Reyna and Owen's meeting for 7 PM the same day (`EVT-000318`). Met Soraya Delgado at a private practice lot of her choosing — interested, contingent on the first training, same as Iris (`EVT-000319`). Called Walt Adamik chasing the Marnie introduction: she's gone genuinely quiet, six messages unanswered against her established pattern — a real concern, not routine silence. Walt shared everything he has: her alias, no known address by design, a coffee stall near the Metro rail yards off Cermak as the one fixed lead (`EVT-000320`). That thread promoted into a tracked concealed-discovery record (`EVT-000321`) — not yet a Hidden quest pointer, which needs a later scene of actual investigation to attach. No fight, no item or cash change this span — only gold and stat points moved.
 
@@ -106,7 +106,8 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.46"
+    profile_version: "1.47"
+    profile_title_assessment_event: EVT-000348
     profile_system_window_event: EVT-000276
     profile_skill_rank_ascension_event: EVT-000158
     profile_consumable_economy_event: EVT-000154
@@ -132,6 +133,77 @@ canonical_state:
     onset_time: "2026-07-24, inside the Red Line Corridor Gate, mid-fight against the crew's remaining beasts and the elite"
     class: null
     title: null
+    titles:
+      last_assessment: 20
+      next_assessment: 30
+      catalog_size: 21
+      slots: 2
+      slots_note: "One equipped slot per assessment passed, capped at five (Section 16). Alexander has passed two — level 10 and level 20 — so he holds **2 slots, both empty**, against ten earned titles. A third opens at level 30. `title` is the equipped list and reads `null`."
+      points_granted: 23
+      note: "Granted by the two retroactive Title Assessments (`EVT-000349`), run at Profile 1.47 adoption (`EVT-000348`) because Alexander crossed level 10 at `EVT-000150` and level 20 at `EVT-000341` under profiles that had no assessment to fire. Each rung was judged at the level it belongs to (migration step 3): **seven at level 10**, **three at level 20**. Ten of the twenty-one catalog entries (Section 16.2) are held — nine Common and one Rare (**Cartographer**), no Singular. Points by grade (+2 / +5 / +10): 6×2 + 5 = **17 at the level-10 rung**, 3×2 = **6 at level 20**, **23 banked unspent**, which is why `unspent_points` reads 53 rather than 30. `title` is `null` — the assessments grant and open slots, they never equip; both slots are Alexander's own free choice through `/system titles` (Section 15.3.4) and no passive is active until he makes it. The next assessment is the level-30 level-up, which also opens a third slot, and nothing fires before it (Section 16.1)."
+      earned:
+        - title: "Kingmaker"
+          grade: common
+          assessment: 10
+          proved_by: EVT-000059
+          criterion: "a boss killed by another hunter's hand on a weakness he resolved and relayed, the clear credited to him under Section 3.8 — the Red Line Corridor boss, in the onset scene itself: a legendary second read found that its leap leaves it locked for about a second on landing, he called it to the crew, Tanya Voss baited the leap, and Elias and Tanya killed it together, with boss Kill XP (40) and the E-Rank clear milestone (70) settling to Alexander on setup credit. Repeated at `EVT-000184` (Owen Callahan killed thirteen of fourteen; the clear was still Alexander's) and at `EVT-000341`"
+          passive: "the first action an allied hunter takes against a target whose weakness he has relayed this scene takes +1 modifier step"
+        - title: "Underdog"
+          grade: common
+          assessment: 10
+          proved_by: EVT-000070
+          criterion: "a creature killed while it stood two or more Ranks above his System Rank — the Ashfield Gate resolved true **C-Rank** on entry against a low-confidence D assessment, and Alexander, then System Rank E, intercepted a C-Rank common that broke toward Owen and killed it alone across six exchanges: two full Ranks up, a red designation (Section 14.6). Sustained again at `EVT-000340` against B-Rank commons at System Rank D"
+          passive: "+1 modifier step on his first action against each orange- or red-designated creature in a combat"
+        - title: "Diehard"
+          grade: common
+          assessment: 10
+          proved_by: EVT-000070
+          criterion: "Health reduced to 0 in a resolved exchange he survived — the same Ashfield interception: the C-Rank beast's retaliation landed Rank-honest for ~47 against a 40 maximum, Health 40 → 0, the first genuinely lethal hit of his career, survived by claiming a pending daily-quest grant mid-exchange with Owen watching. Repeated at `EVT-000340`, where Shrug Off's threshold absorption held a 266-damage counter to raw damage"
+          passive: "+1 modifier step on all actions while Health stands at or below one quarter of its maximum"
+        - title: "Loner"
+          grade: common
+          assessment: 10
+          proved_by: EVT-000097
+          criterion: "at least one Gate cleared alone, its boss killed with no other hunter inside — the first solo instant dungeon (Overgrown Temple, `EVT-000097`), one of **seven** solo clears already standing at the level-10 rung; ten more since, plus the `EVT-000198` penalty zone"
+          passive: "+1 modifier step on all actions while no allied hunter shares the Gate"
+        - title: "Untouchable"
+          grade: common
+          assessment: 10
+          proved_by: EVT-000097
+          criterion: "at least one Gate cleared taking no damage at all — that same first solo instant dungeon closes with `No injury; never hit`. Repeated at `EVT-000234`, `EVT-000304` (zero damage taken the entire clear), `EVT-000327` and `EVT-000332`"
+          passive: "+1 modifier step on evasion in the first exchange of every combat"
+        - title: "Cartographer"
+          grade: rare
+          assessment: 10
+          proved_by: EVT-000120
+          criterion: "a Gate of **every archetype** on the Section 10 d8 cleared and credited — all eight interiors walked out of, and all eight inside eleven days: Shattered City (`EVT-000059`, the Red Line Corridor), Ashfield (`EVT-000080`), Overgrown Temple (`EVT-000097`), Hive (`EVT-000099`), Frozen Gallery (`EVT-000101`), Crypt (`EVT-000109`), Flooded Mine (`EVT-000113`), and Beast Den (`EVT-000120`, the Cicero Gate's alpha pair with Owen — confirmed solo later at `EVT-000303`). The eighth closed the set on 2026-08-03, two days before the level-10 rung. **The only Rare-grade title in his record.**"
+          passive: "a Gate's archetype is known to him the moment he enters, without a read, a survey, or a confirmation; and +1 modifier step on every action that exploits or evades the archetype's twist"
+        - title: "Centurion"
+          grade: common
+          assessment: 10
+          proved_by: EVT-000149
+          criterion: "100 kills credited, Section 3.8 live-contribution credit included — the hundredth falls inside the 2026-08-05 Hive clear on **solo instant-dungeon kills alone**, before any Gate or party credit is counted: 6, 13, 23, 37, 52, 67, 82, 109 cumulative across `EVT-000097`, `EVT-000099`, `EVT-000101`, `EVT-000109`, `EVT-000113`, `EVT-000142`, `EVT-000144`, `EVT-000149`"
+          passive: "+1 Mana recovered per common beast killed"
+        - title: "Prospector"
+          grade: common
+          assessment: 20
+          proved_by: EVT-000342
+          criterion: "500 crystals extracted from mineable deposits by his own hand — short of the floor at the level-10 rung (roughly 270 by 2026-08-05) and passed since: 552 on cited extractions alone — 189 (Frozen Gallery, `EVT-000065`-`EVT-000068`), 104 (`EVT-000342`), 93 (`EVT-000224`), 24 (`EVT-000206`), and 142 across the instant-dungeon deposits he mined out, before the Cicero Scar, Halsted Depot and rail-corridor veins are counted"
+          passive: "every deposit he extracts personally yields 2 additional crystals"
+        - title: "Penitent"
+          grade: common
+          assessment: 20
+          proved_by: EVT-000198
+          criterion: "a penalty zone cleared — the fourteenth daily deliberately failed to see what the penalty was, then the sealed four-hour D-Rank survival instance cleared solo in roughly twenty-five minutes (`EVT-000194`-`EVT-000198`). It falls after the level-10 rung: the Level 10→11 threshold was crossed **inside** that instance (`EVT-000196`)"
+          passive: "+1 modifier step on all actions inside a sealed instance he did not open"
+        - title: "Ascetic"
+          grade: common
+          assessment: 20
+          proved_by: EVT-000338
+          criterion: "20 daily quests completed, consecutive or not — twelve by the level-10 rung, short of the floor; twenty-one by the morning of 2026-08-14, across one deliberate failure and the streak reset that followed it"
+          passive: "each daily-quest Ability Points reward grants +4 points instead of +3"
+      unearned_count: 11
+      unearned_note: "Eleven catalog entries are unheld at both rungs — three Common, five Rare, three Singular. Their identities are not rendered to the Bearer (Section 16.1's withholding) and are recorded here for the Runtime only: **Red Survivor** — no red gate has ever been rolled in this campaign; **Break-Breaker** — the two dungeon breaks on the Section 9.10 tracked board (`EVT-000270`) resolved without him; **Giantslayer** — every boss above his System Rank he has been credited with fell to another hunter's hand (`EVT-000341`) or with a crew inside, and every boss he has killed alone stood at or below his own Rank; it is the exact shadow of Kingmaker, and a solo above-tier instant-dungeon boss would close it. **Rare, unheld:** *Deathless* (the streak restarted this morning — Health floored at 0 at `EVT-000340`), *Executioner* (roughly 30 above-Rank kills against a floor of 50, most of them this morning's B-Rank commons), *Warden* (five party clears in the whole campaign against a floor of ten), *Vanguard* (two Gates entered alone and first, against ten), *Wellspring* (the B-Rank Hive is his heaviest Mana expenditure and falls well short of twice a 112 pool). **Singular, unheld:** *Godslayer* (no A- or S-Rank boss has been faced), *Unbroken* (streak 7 against 100, and one deliberate failure already on the record), *The Unmeasured* — **the closest of the three**: his E-Rank card stands two Ranks under System Rank C, and the criterion asks three. If he is still carded E at the level-30 assessment, System Rank B makes it land on its own."
     level: 21
     xp: "230/2100"
     health: "248/248"
@@ -145,13 +217,13 @@ canonical_state:
       settlement_note: "Settled from 15:30 (2026-08-13) through 12:15 (2026-08-14): an evening of disclosure and sleep, the 06:00 daily regimen, then the entire B-Rank harvest trial (`EVT-000338`-`EVT-000347`). Health and Mana both restored to full repeatedly by level-up settlement and claimed Status Recovery through the trial; the two-hour post-boss clear window (mining, declarations, crew talk, the confrontation with Wade) passed at rest with only the vein-read Keen Sense's −2 drawn against it. Current Mana 110/112, remainder negligible; Health full at 248/248 — no unhealed wounds; the one hit that dropped Health to 0 mid-trial was absorbed by Shrug Off's threshold effect and left no classified injury.
 
 Prior anchor state, superseded: settled from 22:00 (2026-08-12) through 15:30 (2026-08-13), spanning a full night and a morning/afternoon of recruiting. Two Keen Sense casts (reading Grant Okwuosa, `EVT-000317`; reading Soraya Delgado, `EVT-000319`; −2 each) against recovery accrued across the whole span — Mana refilled to full well before evening and holds at 98/98, remainder zero. Health untouched at 200/200 — no combat, no hits taken."
-    unspent_points: 30
+    unspent_points: 53
     pending_rewards:
       ability_points: 1
       status_recovery: 13
       daily_random_box: 1
       latest_settlement: "`EVT-000338`: the twenty-first daily's rewards issue on completion (streak 6→7, a positive multiple of seven) — one Ability Points +3 stack, one Status Recovery, and one **streak-upgraded** Daily Random Box (two candidate rolls, choose one, on opening). None of the three claimed yet. Separately, two of the fourteen banked Status Recovery rewards were claimed mid-trial (`EVT-000340`) to restore Health/Mana to full after a near-death hit; net status_recovery 14 + 1 (today) − 2 (claimed) = 13."
-      note: "Unspent stat points (30) are the accumulated +5-per-level-up allocations from Levels 15 through 21 (five level-ups this session past the Vitality allocation already spent at Level 15), separate from the still-pending daily Ability Points +3 stack above. None reallocated yet."
+      note: "Unspent stat points (53) are 30 from the +5-per-level-up allocations across Levels 15 through 21 (five level-ups this session past the Vitality allocation already spent at Level 15) plus **23 from the two retroactive Title Assessments** (`EVT-000349` — the Section 3.2 / 4.2 title point bonus: +2 for each of nine Common titles and +5 for the one Rare). Both are separate from the still-pending daily Ability Points +3 stack above. None allocated yet: no Stat, maximum, pool, or Stat Passive Rank has moved on account of them."
     stats:
       strength: 60
       agility: 52

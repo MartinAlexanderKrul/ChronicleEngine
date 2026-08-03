@@ -6,6 +6,7 @@ $ErrorActionPreference = "Stop"
 
 $root = Split-Path -Parent $PSScriptRoot
 $validator = Join-Path $PSScriptRoot "validate_repository.ps1"
+. (Join-Path $PSScriptRoot "lib/FixtureRepository.ps1")
 $requiredLedgers = @(
     "100_CHARACTER_SHEET.md",
     "110_WORLD_LEDGER.md",
@@ -445,9 +446,23 @@ try {
             Expected = "references ENT-999999, above registry high-water mark"
         }
     )
+    # P-01 through P-04, N-01 and S-01 each change exactly one file and then ask
+    # the validator for a verdict, so they share one copy and the three files
+    # between them are restored from their captured bytes between cases. The
+    # restore-and-branch cases further down still take their own copies: those
+    # rewrite whole ledger sets and a restore point would not describe them.
+    $mutationRoot = Join-Path $tempRoot "mutations"
+    Copy-ValidationRepository $mutationRoot
+    $mutationFiles = @(
+        "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md",
+        "campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md",
+        "campaigns/reikon_awakening_001/120_INVENTORY_AND_OWNERSHIP.md"
+    )
+    $mutationPoint = New-FixtureRestorePoint -Root $mutationRoot -Paths $mutationFiles
+
     foreach ($case in $presenceCases) {
-        $caseRoot = Join-Path $tempRoot $case.Id
-        Copy-ValidationRepository $caseRoot
+        Restore-FixtureFiles -Root $mutationRoot -RestorePoint $mutationPoint
+        $caseRoot = $mutationRoot
         Replace-ExactlyOnce -Path (Join-Path $caseRoot $case.Path) -Pattern $case.Pattern `
             -Replacement $case.Replacement -Case $case.Id
         $result = Invoke-Validator $caseRoot
@@ -467,8 +482,8 @@ try {
     # Only the exact collision is asserted here. A shared surname is ordinary in
     # a city of millions, stays a Runtime judgment against the cast roster at
     # authoring time, and is deliberately not adjudicated by the barrier.
-    $nameRoot = Join-Path $tempRoot "N-01"
-    Copy-ValidationRepository $nameRoot
+    Restore-FixtureFiles -Root $mutationRoot -RestorePoint $mutationPoint
+    $nameRoot = $mutationRoot
     Replace-ExactlyOnce `
         -Path (Join-Path $nameRoot "campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md") `
         -Pattern '(?ms)(id: ENT-000139.*?aliases:\r?\n[ \t]*- name: )"[^"]+"' `
@@ -482,8 +497,8 @@ try {
 
     # S-01: live canon may not retain an older schema tag after the explicit
     # Decision 077 migration. Immutable checkpoints are excluded by the validator.
-    $schemaRoot = Join-Path $tempRoot "S-01"
-    Copy-ValidationRepository $schemaRoot
+    Restore-FixtureFiles -Root $mutationRoot -RestorePoint $mutationPoint
+    $schemaRoot = $mutationRoot
     Replace-ExactlyOnce `
         -Path (Join-Path $schemaRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
         -Pattern '(?ms)\A(.*?schema_version:) "0\.1\.6"' `
@@ -494,6 +509,19 @@ try {
     Assert-Contains $schemaResult.Output "live canon must conform to current Data Model 0.1.6" `
         "S-01 failed for the wrong reason."
     Write-Host "S-01 PASSED - validator rejected a stale live schema tag while leaving checkpoints out of scope."
+
+    # The six cases above shared one copy, so the guarantee a fresh copy gave for
+    # free -- that nothing leaked from one case into the next -- has to be paid
+    # for here. Both halves matter: the byte check catches a restore that stopped
+    # working, and the validator catches a case that wrote a file the restore
+    # point never captured.
+    Restore-FixtureFiles -Root $mutationRoot -RestorePoint $mutationPoint
+    $drifted = Assert-FixtureRestored -Root $mutationRoot -RestorePoint $mutationPoint
+    Assert-True ($drifted.Count -eq 0) `
+        "Fixture leak: $($drifted -join ', ') did not restore to baseline bytes, so every case after the first ran against unknown state."
+    $residual = Invoke-Validator $mutationRoot
+    Assert-True ($residual.ExitCode -eq 0) `
+        "Fixture leak: the shared mutation fixture no longer validates once restored, so a case wrote a file outside the restore point:`n$($residual.Output)"
 
     # WRP-01 through WRP-05: readiness against real captured manifests and the
     # live Gatefall profile. The Gatefall profile is frozen at version 1.0

@@ -62,3 +62,83 @@ function New-FixtureRepository {
     }
     return $pruned
 }
+
+# --- Restore points ---------------------------------------------------------
+#
+# Most fixture cases in this suite change exactly one file and then ask the
+# validator for a verdict. Copying the whole tree per case to achieve that cost
+# more than every assertion in the suite combined -- sixteen copies in the
+# settlement gate alone, of a tree that is now 84 MB.
+#
+# A restore point is the cheap equivalent: capture the bytes of the few files a
+# group of cases touches, and put them back between cases. WriteAllBytes restores
+# exactly what Copy-Item produced, encoding and line endings included, which
+# matters because several validators read anchored regexes that a CRLF flip would
+# silently disable.
+#
+# What a fresh copy gave for free was the guarantee that nothing leaked between
+# cases, so a caller that gives that up owes the check instead. Assert-FixtureRestored
+# is that check, and it is not optional decoration: without it a restore that
+# quietly stops working turns every later case into an assertion about unknown
+# state, which is the failure mode fixtures exist to prevent. Call it once after
+# the cases have run.
+function New-FixtureRestorePoint {
+    <#
+    .SYNOPSIS
+        Capture the current bytes of the fixture files a case group will mutate.
+    .PARAMETER Root
+        Fixture root the relative paths are resolved against.
+    .PARAMETER Paths
+        Repository-relative paths. Every file a case writes must appear here.
+    #>
+    param(
+        [Parameter(Mandatory)][string]$Root,
+        [Parameter(Mandatory)][string[]]$Paths
+    )
+
+    $point = [ordered]@{}
+    foreach ($relative in $Paths) {
+        $full = Join-Path $Root $relative
+        if (-not (Test-Path -LiteralPath $full -PathType Leaf)) {
+            throw "Cannot capture a restore point for '$relative': it does not exist under $Root."
+        }
+        $point[$relative] = [System.IO.File]::ReadAllBytes($full)
+    }
+    return $point
+}
+
+function Restore-FixtureFiles {
+    param(
+        [Parameter(Mandatory)][string]$Root,
+        [Parameter(Mandatory)]$RestorePoint
+    )
+
+    foreach ($relative in $RestorePoint.Keys) {
+        [System.IO.File]::WriteAllBytes((Join-Path $Root $relative), $RestorePoint[$relative])
+    }
+}
+
+function Assert-FixtureRestored {
+    <#
+    .SYNOPSIS
+        Fail if the captured files are not byte-identical to their restore point.
+    .DESCRIPTION
+        Returns the list of drifted paths. A caller that has a validator on hand
+        should also re-run it on the restored fixture: this catches a broken
+        restore, and the validator catches a case that wrote a file nobody
+        captured.
+    #>
+    param(
+        [Parameter(Mandatory)][string]$Root,
+        [Parameter(Mandatory)]$RestorePoint
+    )
+
+    $drifted = [System.Collections.Generic.List[string]]::new()
+    foreach ($relative in $RestorePoint.Keys) {
+        $current = [System.IO.File]::ReadAllBytes((Join-Path $Root $relative))
+        if (-not [System.Linq.Enumerable]::SequenceEqual([byte[]]$current, [byte[]]$RestorePoint[$relative])) {
+            $drifted.Add($relative) | Out-Null
+        }
+    }
+    return , $drifted.ToArray()
+}

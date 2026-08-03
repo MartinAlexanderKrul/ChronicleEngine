@@ -6,6 +6,7 @@ $ErrorActionPreference = "Stop"
 
 $root = Split-Path -Parent $PSScriptRoot
 $validator = Join-Path $PSScriptRoot "validate_repository.ps1"
+. (Join-Path $PSScriptRoot "lib/FixtureRepository.ps1")
 
 # Why this test exists
 #
@@ -60,17 +61,17 @@ function Copy-ValidationRepository {
 function Invoke-Case {
     param(
         [string]$RepositoryRoot,
-        [string]$LedgerPath,
-        [byte[]]$LedgerOriginal,
+        [string]$LedgerRelative,
+        $RestorePoint,
         [string]$Block
     )
 
-    [System.IO.File]::WriteAllBytes($LedgerPath, $LedgerOriginal)
-    Add-Content -LiteralPath $LedgerPath -Value $Block
+    Restore-FixtureFiles -Root $RepositoryRoot -RestorePoint $RestorePoint
+    Add-Content -LiteralPath (Join-Path $RepositoryRoot $LedgerRelative) -Value $Block
     try {
         return Invoke-Validator $RepositoryRoot
     } finally {
-        [System.IO.File]::WriteAllBytes($LedgerPath, $LedgerOriginal)
+        Restore-FixtureFiles -Root $RepositoryRoot -RestorePoint $RestorePoint
     }
 }
 
@@ -163,8 +164,8 @@ try {
 
     # The one file every case appends to, captured pristine immediately after
     # the baseline run confirmed the copy is clean.
-    $ledgerPath = Join-Path $fixture "campaigns/$campaign/180_CURRENT_STATE.md"
-    $ledgerOriginal = [System.IO.File]::ReadAllBytes($ledgerPath)
+    $ledgerRelative = "campaigns/$campaign/180_CURRENT_STATE.md"
+    $restorePoint = New-FixtureRestorePoint -Root $fixture -Paths @($ledgerRelative)
 
     # The live repository records no commitments at all, so the gate is vacuous
     # today. Assert that plainly: it is the honest limit of this work, and if a
@@ -202,8 +203,8 @@ try {
     )
 
     foreach ($case in $needCases) {
-        $result = Invoke-Case -RepositoryRoot $fixture -LedgerPath $ledgerPath `
-            -LedgerOriginal $ledgerOriginal `
+        $result = Invoke-Case -RepositoryRoot $fixture -LedgerRelative $ledgerRelative `
+            -RestorePoint $restorePoint `
             -Block (New-NeedBlock $case.Due $case.Status $case.Extra $case.Holder)
 
         if ($case.ShouldFail) {
@@ -218,8 +219,8 @@ try {
     }
 
     foreach ($case in $cases) {
-        $result = Invoke-Case -RepositoryRoot $fixture -LedgerPath $ledgerPath `
-            -LedgerOriginal $ledgerOriginal `
+        $result = Invoke-Case -RepositoryRoot $fixture -LedgerRelative $ledgerRelative `
+            -RestorePoint $restorePoint `
             -Block (New-CommitmentBlock $case.Due $case.Status $case.Reason)
 
         if ($case.ShouldFail) {
@@ -241,9 +242,9 @@ try {
     # way, so the guard is the price of dropping fifteen of them: the ledger is
     # required to be byte-identical to its baseline, and the whole fixture is
     # required to validate clean again.
-    if (-not [System.Linq.Enumerable]::SequenceEqual(
-            [byte[]][System.IO.File]::ReadAllBytes($ledgerPath), [byte[]]$ledgerOriginal)) {
-        $failures.Add("Fixture leak: 180_CURRENT_STATE.md was not restored to its baseline bytes after the cases ran, so every case after the first ran against unknown state.") | Out-Null
+    $drifted = Assert-FixtureRestored -Root $fixture -RestorePoint $restorePoint
+    if ($drifted.Count -gt 0) {
+        $failures.Add("Fixture leak: $($drifted -join ', ') was not restored to its baseline bytes after the cases ran, so every case after the first ran against unknown state.") | Out-Null
     }
     $residual = Invoke-Validator $fixture
     if ($residual.ExitCode -ne 0) {

@@ -5,6 +5,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 $root = Split-Path -Parent $PSScriptRoot
+. (Join-Path $PSScriptRoot "lib/FixtureRepository.ps1")
 $check = Join-Path $PSScriptRoot "check_name_collision.ps1"
 $repositoryValidator = Join-Path $PSScriptRoot "validate_repository.ps1"
 $configValidator = Join-Path $PSScriptRoot "validate_runtime_configuration.ps1"
@@ -188,8 +189,20 @@ try {
     # same state: the check calls it BLOCKED, and the REAL repository validator
     # rejects it by name. Asserting only the first would prove the script agrees
     # with itself.
-    $agree = Join-Path $tempRoot "agreement"
-    Copy-FixtureRepository $agree
+    # Legs 8 through 11 each change one file -- the cast ledger or the startup
+    # config -- and then ask a checker for a verdict. They share one copy, with
+    # both files restored from captured bytes between legs, rather than taking
+    # seven copies of an 84 MB tree. The guard after the legs is what keeps the
+    # isolation claim honest.
+    $fixture = Join-Path $tempRoot "fixture"
+    Copy-FixtureRepository $fixture
+    $fixtureFiles = @(
+        "campaigns/$campaign/130_NPCS_AND_FACTIONS.md",
+        "campaigns/$campaign/090_CAMPAIGN_STARTUP.md"
+    )
+    $fixturePoint = New-FixtureRestorePoint -Root $fixture -Paths $fixtureFiles
+
+    $agree = $fixture
     Edit-Ledger -RepositoryRoot $agree `
         -Find "aliases:`n  - name: `"Dale Pruitt`"`n    quality: current" `
         -Replace "aliases:`n  - name: `"Dale Pruitt`"`n    quality: current`n  - name: `"Ada Reyes`"`n    quality: current"
@@ -212,8 +225,8 @@ try {
     # rename, so the barrier exempts it and this check must exempt it too. The
     # fixture adds a name the campaign has never used, as a former alias only:
     # if the quality filter were dropped, this would come back BLOCKED.
-    $former = Join-Path $tempRoot "former"
-    Copy-FixtureRepository $former
+    Restore-FixtureFiles -Root $fixture -RestorePoint $fixturePoint
+    $former = $fixture
     Edit-Ledger -RepositoryRoot $former `
         -Find "aliases:`n  - name: `"Dale Pruitt`"`n    quality: current" `
         -Replace "aliases:`n  - name: `"Dale Pruitt`"`n    quality: current`n  - name: `"Adalyn Vance`"`n    quality: former"
@@ -227,8 +240,8 @@ try {
     # otherwise. Only the check runs here: retiring a live Character is a
     # presence-invariant question the barrier answers separately and that is not
     # what this leg is about.
-    $retired = Join-Path $tempRoot "retired"
-    Copy-FixtureRepository $retired
+    Restore-FixtureFiles -Root $fixture -RestorePoint $fixturePoint
+    $retired = $fixture
     $retiredLedger = Join-Path $retired "campaigns/$campaign/130_NPCS_AND_FACTIONS.md"
     $retiredText = Get-Content -LiteralPath $retiredLedger -Raw
     $dalePattern = '(?s)(id: ENT-000135.*?)status: active'
@@ -266,11 +279,9 @@ try {
            Expect = 'needs a reason' }
     )
 
-    $configIndex = 0
     foreach ($case in $configCases) {
-        $configIndex++
-        $configRoot = Join-Path $tempRoot "config$configIndex"
-        Copy-FixtureRepository $configRoot
+        Restore-FixtureFiles -Root $fixture -RestorePoint $fixturePoint
+        $configRoot = $fixture
 
         $startupPath = Join-Path $configRoot "campaigns/$campaign/090_CAMPAIGN_STARTUP.md"
         $startupText = Get-Content -LiteralPath $startupPath -Raw
@@ -311,6 +322,23 @@ try {
     }
     if ($runtime -notmatch 'it still does not adjudicate the partial one') {
         $failures.Add("N-S barrier scope: Section 1.4 no longer preserves the barrier's refusal to adjudicate a partial collision.") | Out-Null
+    }
+
+    # Legs 8 through 11 shared one copy, so the isolation a fresh copy per leg
+    # gave for free is owed back. The byte check catches a restore that stopped
+    # working; the repository validator catches a leg that wrote a file the
+    # restore point never captured. A leak here would be invisible otherwise --
+    # legs 9 and 10 assert OK verdicts, which is exactly what a stale mutation
+    # from leg 8 would still produce for the wrong reason.
+    Restore-FixtureFiles -Root $fixture -RestorePoint $fixturePoint
+    $drifted = Assert-FixtureRestored -Root $fixture -RestorePoint $fixturePoint
+    if ($drifted.Count -gt 0) {
+        $failures.Add("Fixture leak: $($drifted -join ', ') did not restore to baseline bytes, so every leg after the first ran against unknown state.") | Out-Null
+    }
+    $residual = & powershell -NoProfile -ExecutionPolicy Bypass -File $repositoryValidator `
+        -RepositoryRoot $fixture -CoreOnly 2>&1 | ForEach-Object { $_.ToString() }
+    if ($LASTEXITCODE -ne 0) {
+        $failures.Add("Fixture leak: the shared fixture no longer validates once restored, so a leg wrote a file outside the restore point:`n$($residual -join "`n")") | Out-Null
     }
 } finally {
     Remove-Item -LiteralPath $tempRoot -Recurse -Force -ErrorAction SilentlyContinue

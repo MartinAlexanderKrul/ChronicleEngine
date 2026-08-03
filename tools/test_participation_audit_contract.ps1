@@ -63,33 +63,23 @@ function Invoke-Validator {
 # working, fails there instead of silently handing the next case unknown state.
 $script:FixtureFiles = @($chronicleRelative, $registryRelative, $profileRelative)
 $script:FixtureRoot = $null
-$script:FixtureBaseline = @{}
+$script:FixturePoint = $null
 
 function New-Fixture {
     if ($null -eq $script:FixtureRoot) {
         $script:FixtureRoot = Join-Path $tempRoot ([guid]::NewGuid().ToString("N"))
         New-FixtureRepository -SourceRoot $root -DestinationRoot $script:FixtureRoot | Out-Null
-        foreach ($relative in $script:FixtureFiles) {
-            $script:FixtureBaseline[$relative] =
-                [System.IO.File]::ReadAllBytes((Join-Path $script:FixtureRoot $relative))
-        }
+        $script:FixturePoint = New-FixtureRestorePoint -Root $script:FixtureRoot -Paths $script:FixtureFiles
     } else {
-        foreach ($relative in $script:FixtureFiles) {
-            [System.IO.File]::WriteAllBytes(
-                (Join-Path $script:FixtureRoot $relative), $script:FixtureBaseline[$relative])
-        }
+        Restore-FixtureFiles -Root $script:FixtureRoot -RestorePoint $script:FixturePoint
     }
     return $script:FixtureRoot
 }
 
-function Assert-FixtureRestored {
-    foreach ($relative in $script:FixtureFiles) {
-        $current = [System.IO.File]::ReadAllBytes((Join-Path $script:FixtureRoot $relative))
-        if (-not [System.Linq.Enumerable]::SequenceEqual(
-                [byte[]]$current, [byte[]]$script:FixtureBaseline[$relative])) {
-            Assert-True $false "Fixture leak: $relative was not restored to its baseline bytes, so cases after the first ran against unknown state."
-        }
-    }
+function Assert-NoFixtureLeak {
+    $drifted = Assert-FixtureRestored -Root $script:FixtureRoot -RestorePoint $script:FixturePoint
+    Assert-True ($drifted.Count -eq 0) `
+        "Fixture leak: $($drifted -join ', ') did not restore to baseline bytes, so cases after the first ran against unknown state."
     $residual = Invoke-Validator -FixtureRoot $script:FixtureRoot
     Assert-True ($residual.ExitCode -eq 0) `
         "Fixture leak: the shared fixture no longer validates once restored, so a case wrote a file outside the restored set:`n$($residual.Output)"
@@ -282,7 +272,7 @@ participation_audits:
     Assert-True ($result.Output -notmatch 'records no participation audit for them') "Coverage reached an Event at or before the declared baseline; adoption is no longer prospective.`n$($result.Output)"
 
     $null = New-Fixture
-    Assert-FixtureRestored
+    Assert-NoFixtureLeak
 
     Write-Host "Participation audit contract PASSED" -ForegroundColor Green
     exit 0

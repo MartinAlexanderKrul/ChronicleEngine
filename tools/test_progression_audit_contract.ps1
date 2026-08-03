@@ -393,11 +393,26 @@ game_date: "2026-08-04 06:01 -05:00"'
     # other two Flash Step mentions are historical narration. The opening quote
     # of the YAML list entry is unique to the live row and is ASCII, which the
     # mastery glyphs are not.
-    Replace-Once $character '"Flash Step [C-Rank]' '"Flash Step [B-Rank]'
+    #
+    # Live Rank read, not written down -- per this file's own rule above, and for
+    # the reason the Flux Sight leg further up had to be repaired: a skill's Rank
+    # advances with play, and a pinned one turns this leg into an assertion about
+    # a snapshot. The mutation is one rung above whatever the skill currently
+    # stands at, which is the minimal violation of the authored ceiling and the
+    # same thing the old literal C-to-B pair expressed.
+    $ladder = @("E", "D", "C", "B", "A", "S")
+    $liveFlashRank = [regex]::Match((Get-Text $character), '"Flash Step \[([EDCBAS])-Rank\]')
+    Assert-True $liveFlashRank.Success "Flash Step renders no Rank in skills_known; fixture precondition drifted."
+    $flashRank = $liveFlashRank.Groups[1].Value
+    $flashIndex = [array]::IndexOf($ladder, $flashRank)
+    Assert-True ($flashIndex -lt $ladder.Count - 1) `
+        "Flash Step already stands at the top of the ladder, so there is no Rank above it to test the authored ceiling with."
+    $aboveRank = $ladder[$flashIndex + 1]
+    Replace-Once $character "`"Flash Step [$flashRank-Rank]" "`"Flash Step [$aboveRank-Rank]"
     $unauthoredRank = Invoke-Validation $tempRoot
     Assert-True ($unauthoredRank.ExitCode -ne 0 -and $unauthoredRank.Output -like "*exceeds its authored category ladder*") `
         "A skill standing above its authored ladder was accepted; Section 7.2 eligibility is unenforced:`n$($unauthoredRank.Output)"
-    Replace-Once $character '"Flash Step [B-Rank]' '"Flash Step [C-Rank]'
+    Replace-Once $character "`"Flash Step [$aboveRank-Rank]" "`"Flash Step [$flashRank-Rank]"
 
     $restoredLadder = Invoke-Validation $tempRoot
     Assert-True ($restoredLadder.ExitCode -eq 0) "A skill restored to its authored Rank did not validate:`n$($restoredLadder.Output)"

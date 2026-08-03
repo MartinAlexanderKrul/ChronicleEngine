@@ -6,6 +6,7 @@ $ErrorActionPreference = "Stop"
 
 $repositoryRoot = Split-Path -Parent $PSScriptRoot
 $validator = Join-Path $PSScriptRoot "validate_repository.ps1"
+. (Join-Path $PSScriptRoot "lib/FixtureRepository.ps1")
 $fixtureRoot = Join-Path $PSScriptRoot "tests/fixtures"
 
 function Invoke-Validator {
@@ -108,10 +109,21 @@ function Edit-FixtureFile {
 }
 
 try {
+    # The three legs below change one file each, so they share one copy and the
+    # two files between them are restored from their captured bytes between legs.
+    # Three copies of an 84 MB tree bought nothing the restore does not, and the
+    # guard after the legs is what keeps that true.
+    $legRoot = New-RepositoryCopy
+    $legFiles = @(
+        "campaigns/gatefall_pendragon_001/110_WORLD_LEDGER.md",
+        "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md"
+    )
+    $legPoint = New-FixtureRestorePoint -Root $legRoot -Paths $legFiles
+
     # Leg 1: a concealed-discovery record may not store a reward at all. The
     # record exists before, and independently of, any attachment -- there is no
     # Rank to price a reward from at authoring time.
-    $storedRewardRoot = New-RepositoryCopy
+    $storedRewardRoot = $legRoot
     Edit-FixtureFile -Path (Join-Path $storedRewardRoot "campaigns/gatefall_pendragon_001/110_WORLD_LEDGER.md") `
         -Find "    status: attached`n    attached_event: EVT-000325" `
         -Replace "    status: attached`n    attached_event: EVT-000325`n    reward_rank_at_attachment: D-Rank"
@@ -127,7 +139,8 @@ try {
     # Leg 2: the XP beside a recorded reward Rank must be that Rank's Gate-clear
     # milestone. Nothing checked this anywhere before -- a present-but-wrong
     # figure passed every gate, because each field was individually well-formed.
-    $wrongXpRoot = New-RepositoryCopy
+    Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
+    $wrongXpRoot = $legRoot
     Edit-FixtureFile -Path (Join-Path $wrongXpRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
         -Find "          reward_rank: D-Rank`n          reward_xp: 150" `
         -Replace "          reward_rank: D-Rank`n          reward_xp: 999"
@@ -142,7 +155,8 @@ try {
 
     # Leg 3: an attached Hidden quest must carry the reward Rank at all. Section
     # 8.4.3 requires it recorded in quest state before notification.
-    $missingRankRoot = New-RepositoryCopy
+    Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
+    $missingRankRoot = $legRoot
     Edit-FixtureFile -Path (Join-Path $missingRankRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
         -Find "          reward_rank: D-Rank`n          reward_xp: 150" `
         -Replace "          reward_xp: 150"
@@ -159,6 +173,21 @@ try {
         -Because "The live repository is compliant; the record half must not fire on it."
     Assert-NotContains -Text $live.Output -Unexpected "records no reward_rank" `
         -Because "The live repository records its reward Rank; the quest half must not fire on it."
+
+    # The legs shared one copy, so the isolation a fresh copy gave for free is
+    # owed back here: the byte check catches a restore that stopped working, and
+    # the validator catches a leg that wrote a file the restore point never
+    # captured. Without it, leg 2 and leg 3 could be asserting against leg 1's
+    # mutation and would still report green.
+    Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
+    $drifted = Assert-FixtureRestored -Root $legRoot -RestorePoint $legPoint
+    if ($drifted.Count -gt 0) {
+        throw "Fixture leak: $($drifted -join ', ') did not restore to baseline bytes, so the later legs ran against unknown state."
+    }
+    $residual = Invoke-Validator -Root $legRoot
+    if ($residual.ExitCode -ne 0) {
+        throw "Fixture leak: the shared leg fixture no longer validates once restored, so a leg wrote a file outside the restore point:`n$($residual.Output)"
+    }
 }
 finally {
     foreach ($temporary in $temporaryRoots) {

@@ -65,7 +65,14 @@ surfaces:
   bootstrap:
     warning_tokens: 12000
     failure_tokens: 16000
-    baseline_tokens: 2499
+    # Re-recorded 2026-08-03, 2,499 -> 2,583: drift in the README's bootstrap
+    # section, already on disk and never recorded. Worth stating plainly because
+    # the figure is the argument: the whole engine boot costs 2,583 tokens
+    # against a 16,000 failure, while the reading order the `chronicle` skill
+    # named until today came to roughly 91,000. That skill and AGENTS.md now
+    # carry the bounded set instead, which is what the README has specified
+    # since the resident/fetched split.
+    baseline_tokens: 2583
     contributors:
       - file: README.md
         heading: Play Chronicle Engine — the `/ChronicleEngine` command
@@ -126,7 +133,32 @@ surfaces:
     # handful of rows to a list that already exists. Re-measured again the same
     # day at 26,764 when the catalog took its three grades and the Rare-grade
     # Cartographer entry landed in the earned list.
-      gatefall_pendragon_001: 26764
+    #
+    # Re-recorded 2026-08-03, 26,764 -> 27,959. Two independent movements, and
+    # they are separated here because only one is chargeable to engine work:
+    # +789 is campaign drift that had already accumulated on disk, and +406 is
+    # this session's diegetic-dispatch work — the startup config grew 558 tokens
+    # carrying the render sections each `/system` panel must load, against 152
+    # tokens the protagonist block lost to ordinary play. A campaign's startup
+    # config is a readiness whole-file read, so declaring a command's reads
+    # correctly is paid for on this surface even though the reads themselves are
+    # fetched. At 27,959 against a 30,000 hard failure the margin is 2,041, and
+    # the trimming this file has asked for twice is now the near-term work.
+    #
+    # Re-recorded again the same day, 27,959 -> 28,540: +581 for the campaign's
+    # `/system` Pre-Render Gate, the intercept Reikon has carried since its own
+    # render failures and Gatefall did not. A correct operation plan names the
+    # sections a render obeys; it cannot make the render read them, and
+    # `render_policy: exact-template-only` states the obligation without ever
+    # firing on a turn. The gate is what fires.
+    #
+    # The margin is now 1,460 tokens against a hard failure that blocks
+    # repository validation, and this session spent 987 of the 2,041 that were
+    # there this morning. Both spends bought correctness on the surface the
+    # player cannot check, and neither is refundable by measuring differently:
+    # the next one comes out of authoring. Trimming Current State and the
+    # protagonist block is the work, and it belongs to the owner (R14).
+      gatefall_pendragon_001: 28540
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479
@@ -162,6 +194,45 @@ surfaces:
     # each granted entry carries its grade, its rung, and the Event that proved
     # it. The baseline is re-recorded against a panel that now has something to
     # render. It stays far inside the 12,000 ceiling and needs no exemption.
+    #
+    # Re-recorded 2026-08-03 across every Gatefall panel, for one reason with
+    # two sizes. Section 15.1 is the render grammar — fixed width, the mandatory
+    # blank interior rows, the gutter, bracketed Rank, `—` for a value canonical
+    # state does not hold, an empty group still rendering `none`, and the
+    # standing prohibition on truncating — and it declares itself normative for
+    # every panel identically. No command dispatched it. Every panel therefore
+    # loaded every value it renders and none of the layout it renders them into,
+    # and a panel rendered from a remembered frame is exactly the narrowed,
+    # spacing-dropped window the render policy exists to forbid. It costs 1,277
+    # tokens on each panel and every panel now carries it.
+    #
+    # `/system all` is the larger correction: 19,443 -> 33,836. Its dispatch was
+    # Section 15.4 alone, which is 116 tokens that name the panels it composes
+    # and author no layout of their own — a plan holding the whole of the
+    # Bearer's state and effectively no render procedure. It now dispatches the
+    # eight sections it actually renders. That figure is not new cost; it is the
+    # first honest measurement of what "every panel in one reply" was always
+    # going to take, and it is the strongest argument for the ownership-ledger
+    # trimming noted below.
+    #
+    # Two baselines also stop being placeholders. `/system gear` at a round
+    # 25,000 and `/system shop` at a round 10,000 were hand-entered rather than
+    # measured; both are recorded from the tool now. `/system log` falls 9,498 ->
+    # 7,187 for a different reason: it declared the quest fields it renders while
+    # the planner silently dropped them, because it applied `protagonist_fields`
+    # only when the character sheet was also a live read. The panel now loads the
+    # quest state it always claimed to, and still comes in below its stale
+    # baseline.
+    #
+    # `/system` and `/system gear` remain roughly twice the 12,000 subdivision
+    # threshold, and neither the grammar nor the templates are why: 13,223 tokens
+    # of each is `120_INVENTORY_AND_OWNERSHIP.md` read whole, because the FUNDS
+    # block needs current cash and that figure is derived across dated history
+    # rather than held in one block. `required_live_reads` accepts a heading
+    # selector now, but pointing it at `Generic Holdings` would render a stale
+    # number with a plan that looks correct. Bringing these two inside the
+    # ceiling is authoring — a current-holdings block in that ledger — and it
+    # belongs to the owner, on the same reasoning the NPC-record note gives.
     warning_tokens: 12000
     failure_tokens: 12000
     growth_allowance_percent: 15
@@ -171,14 +242,14 @@ surfaces:
       - gatefall_pendragon_001:/system all
     baseline_tokens_by_operation:
       gatefall_pendragon_001:save: 2486
-      gatefall_pendragon_001:/system: 22904
-      gatefall_pendragon_001:/system skills: 5233
-      gatefall_pendragon_001:/system shop: 10000
-      gatefall_pendragon_001:/system quests: 2315
-      gatefall_pendragon_001:/system gear: 25000
-      gatefall_pendragon_001:/system titles: 3237
-      gatefall_pendragon_001:/system log: 9498
-      gatefall_pendragon_001:/system all: 19443
+      gatefall_pendragon_001:/system: 26991
+      gatefall_pendragon_001:/system skills: 7036
+      gatefall_pendragon_001:/system shop: 9937
+      gatefall_pendragon_001:/system quests: 3584
+      gatefall_pendragon_001:/system gear: 25880
+      gatefall_pendragon_001:/system titles: 4513
+      gatefall_pendragon_001:/system log: 7187
+      gatefall_pendragon_001:/system all: 33836
       reikon_awakening_001:/system: 8985
     subdivision_message: fetched operation requires a narrower selector
 

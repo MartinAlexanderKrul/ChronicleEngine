@@ -87,6 +87,56 @@ Assert-True (
     $deferred -notmatch '(?ms)dispatch: npc_present.*?\n\s*whole_file'
 ) "The NPC dispatch takes a whole object rather than named fields."
 
+# A panel loads the grammar its frame obeys, not only its own template. Section
+# 15.1 declares itself normative for every Gatefall panel identically, so a plan
+# without it carries every value and no layout.
+foreach ($panel in @(
+    "/system", "/system skills", "/system gear", "/system quests",
+    "/system titles", "/system shop", "/system log", "/system all"
+)) {
+    $rendered = Invoke-Plan -Campaign "gatefall_pendragon_001" -Operation $panel
+    Assert-True ($rendered.ExitCode -eq 0) "Gatefall $panel plan failed:`n$($rendered.Output)"
+    Assert-True (
+        $rendered.Output -match 'anchor: 151-render-grammar'
+    ) "Gatefall $panel omits the render grammar every panel obeys."
+    Assert-True (
+        $rendered.Output -match 'render_policy: exact-template-only'
+    ) "Gatefall $panel omits its exact render policy."
+}
+
+# `/system all` composes every panel, so it dispatches every panel's template.
+# Section 15.4 names them and authors no layout of its own; alone it was 116
+# tokens of render procedure against the whole of the Bearer's state.
+$all = Invoke-Plan -Campaign "gatefall_pendragon_001" -Operation "/system all"
+foreach ($anchor in @(
+    "152-system-the-console", "1531-system-skills", "1532-system-gear",
+    "1533-system-quests", "1534-system-titles", "1535-system-shop",
+    "1536-system-log", "154-system-all"
+)) {
+    Assert-True (
+        $all.Output -match "anchor: $anchor"
+    ) "/system all composes $anchor without dispatching its template."
+}
+
+# A retained alias resolves to the panel it renders. The profile requires a plan
+# before a diegetic command, so an alias that fails to plan is the one path most
+# likely to be rendered from memory instead.
+foreach ($alias in @("/system equipment", "/system inventory")) {
+    $aliased = Invoke-Plan -Campaign "gatefall_pendragon_001" -Operation $alias
+    Assert-True ($aliased.ExitCode -eq 0) "Declared alias $alias produced no plan:`n$($aliased.Output)"
+    Assert-True ($aliased.Output -match 'alias_of: /system gear') "$alias does not report the command it renders."
+    Assert-True ($aliased.Output -match 'anchor: 1532-system-gear') "$alias does not dispatch the gear template."
+}
+
+# Declared protagonist fields bind to the protagonist's record whether or not the
+# character sheet is also a live read. `/system log` declared the quest fields it
+# renders and loaded none of them.
+$log = Invoke-Plan -Campaign "gatefall_pendragon_001" -Operation "/system log"
+Assert-True ($log.Output -match 'object: ENT-000125') "/system log renders quest state with no protagonist read."
+Assert-True (
+    $log.Output -match 'canonical_state\.system_state\.non_daily_quests'
+) "/system log declares quest fields the plan drops."
+
 $reikon = Invoke-Plan -Campaign "reikon_awakening_001" -Operation "/system"
 Assert-True ($reikon.ExitCode -eq 0) "Reikon /system plan failed:`n$($reikon.Output)"
 Assert-True ($reikon.Output -match 'anchor: 10-canonical-system-render-template-normative') "Reikon /system dispatch anchor is missing."
@@ -103,8 +153,12 @@ $save = Invoke-Plan -Campaign "gatefall_pendragon_001" -Operation "save"
 Assert-True ($save.ExitCode -eq 0) "Save operation plan failed:`n$($save.Output)"
 Assert-True ($save.Output -match 'heading: Save Algorithm') "Save operation plan omits its authoritative procedure."
 Assert-True ($save.Output -match 'tools/generate_runtime_index\.ps1') "Save operation plan omits generated index refresh."
-Assert-True ($save.Output -match 'tools/validate_repository\.ps1') "Save operation plan omits repository validation."
-Assert-True ($save.Output -match 'tools/test_checkpoint_contract\.ps1') "Save operation plan omits checkpoint validation."
+Assert-True ($save.Output -match 'tools/validate_checkpoint\.ps1') "Save operation plan omits the Tier 2 checkpoint gate."
+# Tier 2 runs Tier 1 inside it. Naming the superseded Tier 1 validator, or the
+# Tier 3 development test the README says is never a save gate, is the drift this
+# assertion exists to catch.
+Assert-True ($save.Output -notmatch 'tools/validate_repository\.ps1') "Save operation plan names a validator Tier 2 already runs."
+Assert-True ($save.Output -notmatch 'tools/test_checkpoint_contract\.ps1') "Save operation plan names a Tier 3 development test as a save gate."
 
 $unknown = Invoke-Plan -Campaign "prototype_beta" -Operation "/system"
 Assert-True ($unknown.ExitCode -ne 0) "An undeclared Prototype Beta /system operation was accepted."

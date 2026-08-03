@@ -10,7 +10,8 @@ Full agent-skill definitions live in `.agents/skills/` (mirrored from `.claude/s
 
 When the user types `/chronicle` (or `/ChronicleEngine`):
 
-- Read `README.md`, section **"Play Chronicle Engine"** — it is the authoritative bootstrap spec and names an exact reading order. Follow it exactly.
+- Read `README.md`, section **"Play Chronicle Engine"** — it is the authoritative bootstrap spec. Follow it exactly.
+- **Read nothing else.** The bootstrap working set is that README section plus the first Markdown table under `# Worlds` and the first under `# Campaigns` in `system/WORLDS_AND_CAMPAIGNS.md` — about 2,600 estimated tokens against a 16,000 hard failure. Do not preload the resident core, the Runtime Profile, the start guide, `engine/` specifications, validators, world profiles, or campaign files; each is fetched after the player chooses an operation. The old whole-set reading order is roughly 91,000 tokens and is what the two-layer split exists to prevent.
 - Render the Engine Welcome Page: the runtime-command catalog plus the worlds-and-campaigns listing rendered row-by-row from `system/WORLDS_AND_CAMPAIGNS.md` — every row, unfiltered.
 - Then **stop and wait** for the player to choose. `/chronicle` never means "resume my last game" — resume is `/continue`, chosen by the player from the welcome page. Do not read campaign ledgers or checkpoints before the player chooses.
 
@@ -29,10 +30,9 @@ A save is a set of verified files on disk — never a claim.
 
 - Execute the **Save Algorithm** from `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (8 steps, in order), from the document, not from memory.
 - A checkpoint is `saves/900_CHECKPOINT_NNNN/` containing copies of all eight canonical ledgers plus `900_SAVE_MANIFEST.md`, with registries and indexes updated.
-- After the writes, run both validators and show their real output to the player:
+- After the writes, run the Tier 2 checkpoint gate and show its real output to the player. It runs Tier 1 (repository structure plus runtime configuration) and then the checkpoint form, lineage, and index-synchronization contract, so it is one command and not two:
   ```
-  powershell -ExecutionPolicy Bypass -File tools\validate_repository.ps1
-  powershell -ExecutionPolicy Bypass -File tools\test_checkpoint_contract.ps1
+  powershell -ExecutionPolicy Bypass -File tools\validate_checkpoint.ps1
   ```
 - The word "saved" may appear only after every artifact exists, read-back confirms it, and both validators pass.
 

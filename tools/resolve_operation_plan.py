@@ -355,16 +355,121 @@ def build_save_plan(
         "authoritative checkpoint procedure",
         failures,
     )
+    # The one named checkpoint gate is Tier 2. It runs Tier 1 — repository
+    # structure plus runtime configuration — and then the checkpoint form,
+    # completeness, lineage, and index synchronization contract, so it replaces
+    # naming `validate_repository.ps1` and `test_checkpoint_contract.ps1`
+    # separately. Naming them separately handed the Save Algorithm a Tier 1
+    # validator the README had already superseded and a Tier 3 development test
+    # the README says explicitly is not a save gate.
     for tool in (
         "tools/generate_runtime_index.ps1",
         "tools/generate_campaign_cast.ps1",
-        "tools/validate_repository.ps1",
-        "tools/test_checkpoint_contract.ps1",
+        "tools/validate_checkpoint.ps1",
     ):
         if resolve_repo_path(root, tool).is_file():
             plan["tools"].append(tool)
         else:
             failures.append(f"save tool does not exist: {tool}")
+
+
+def resolve_declared_command(
+    commands: Any, operation: str, failures: list[str]
+) -> tuple[str | None, dict[str, Any] | None]:
+    """Find the declared command an operation names, directly or by alias.
+
+    A world may retain an older command spelling as an alias — Gatefall's
+    `/system equipment` and `/system inventory` both render `/system gear`. The
+    profile requires an operation plan before a diegetic command, so an alias
+    the planner cannot resolve leaves the one path a player is most likely to
+    take with no plan at all, which is the render-from-memory failure the plan
+    exists to prevent.
+    """
+    if not isinstance(commands, dict):
+        return None, None
+    command = commands.get(operation)
+    if isinstance(command, dict):
+        return operation, command
+    matched: list[str] = []
+    for name, declared in commands.items():
+        if not isinstance(declared, dict):
+            continue
+        aliases = declared.get("aliases")
+        if isinstance(aliases, list) and operation in aliases:
+            matched.append(str(name))
+    if not matched:
+        return None, None
+    if len(matched) > 1:
+        failures.append(
+            f"alias '{operation}' is declared by more than one command: {', '.join(sorted(matched))}"
+        )
+        return None, None
+    return matched[0], commands[matched[0]]
+
+
+def add_dispatch_selector(
+    root: Path,
+    plan: dict[str, Any],
+    operation: str,
+    dispatch: Any,
+    failures: list[str],
+) -> None:
+    if not isinstance(dispatch, str) or "#" not in dispatch:
+        failures.append(f"{operation} dispatch must be a file#anchor selector")
+        return
+    file, anchor = dispatch.split("#", 1)
+    normalized = normalize_repo_path(file)
+    path = resolve_repo_path(root, normalized)
+    if not path.is_file():
+        failures.append(f"{operation} dispatch file does not exist: {normalized}")
+        return
+    count = anchor_matches(path, anchor)
+    if count != 1:
+        failures.append(
+            f"{operation} anchor '{anchor}' in {normalized} must resolve exactly once; "
+            f"found {count}"
+        )
+        return
+    entry = {
+        "file": normalized,
+        "anchor": anchor,
+        "reason": "canonical diegetic render procedure",
+    }
+    if entry not in plan["selectors"]:
+        plan["selectors"].append(entry)
+
+
+def add_protagonist_selector(
+    root: Path,
+    plan: dict[str, Any],
+    command: dict[str, Any],
+    operation: str,
+    sheet: str,
+    protagonist: str,
+    failures: list[str],
+) -> None:
+    selector: dict[str, Any] = {
+        "file": sheet,
+        "object": protagonist,
+        "reason": f"{operation} protagonist state",
+    }
+    # A diegetic command may name the exact protagonist fields it renders.
+    # Without this the plan is the whole object, which for a long-running
+    # campaign is most of the context budget: a Gatefall protagonist block is
+    # over 150 KB, and `/system` renders a small, well-defined part of it.
+    fields = command.get("protagonist_fields")
+    if isinstance(fields, list) and fields:
+        selector["fields"] = []
+        for value in fields:
+            if not isinstance(value, str) or field_path_matches(
+                resolve_repo_path(root, sheet), value
+            ) != 1:
+                failures.append(
+                    f"{operation} protagonist field must resolve exactly once: {value}"
+                )
+                continue
+            selector["fields"].append(value)
+    plan["selectors"].append(selector)
 
 
 def build_diegetic_plan(
@@ -374,70 +479,99 @@ def build_diegetic_plan(
     plan: dict[str, Any],
     failures: list[str],
 ) -> bool:
-    commands = config.get("diegetic_commands")
-    command = commands.get(operation) if isinstance(commands, dict) else None
-    if not isinstance(command, dict):
+    canonical, command = resolve_declared_command(
+        config.get("diegetic_commands"), operation, failures
+    )
+    if not isinstance(command, dict) or canonical is None:
         return False
+    if canonical != operation:
+        plan["alias_of"] = canonical
+
+    # `dispatch` may name more than one section. A panel's own template is not
+    # always the whole of its render procedure: a world may hold the frame
+    # grammar in one section and compose several templates in another, and a
+    # command that dispatches only its own heading loads every value it renders
+    # and none of the layout it renders them into.
     dispatch = command.get("dispatch")
-    if not isinstance(dispatch, str) or "#" not in dispatch:
-        failures.append(f"{operation} dispatch must be a file#anchor selector")
-    else:
-        file, anchor = dispatch.split("#", 1)
-        normalized = normalize_repo_path(file)
-        path = resolve_repo_path(root, normalized)
-        if not path.is_file():
-            failures.append(f"{operation} dispatch file does not exist: {normalized}")
-        else:
-            count = anchor_matches(path, anchor)
-            if count != 1:
-                failures.append(
-                    f"{operation} anchor '{anchor}' in {normalized} must resolve exactly once; "
-                    f"found {count}"
-                )
-            else:
-                plan["selectors"].append(
-                    {
-                        "file": normalized,
-                        "anchor": anchor,
-                        "reason": "canonical diegetic render procedure",
-                    }
-                )
+    entries = dispatch if isinstance(dispatch, list) else [dispatch]
+    if not entries:
+        failures.append(f"{operation} dispatch must name at least one file#anchor selector")
+    for entry in entries:
+        add_dispatch_selector(root, plan, canonical, entry, failures)
+
     live_reads = command.get("required_live_reads")
+    protagonist = config.get("default_protagonist")
+    campaign = config.get("campaign")
+    sheet = (
+        f"{normalize_repo_path(campaign)}/100_CHARACTER_SHEET.md"
+        if isinstance(campaign, str)
+        else None
+    )
+    protagonist_selected = False
     if not isinstance(live_reads, list) or not live_reads:
         failures.append(f"{operation} required_live_reads must be a non-empty list")
     else:
-        protagonist = config.get("default_protagonist")
         for source in live_reads:
-            if not isinstance(source, str):
+            # A live read is a whole file by default, or a named heading where
+            # the ledger holds the rendered block in one place. The narrowed
+            # form is only correct where the heading carries the current value:
+            # a ledger whose current figure is derived across dated history is
+            # read whole, and trimming it there would render a stale number.
+            if isinstance(source, dict):
+                file_value = source.get("file")
+                heading_value = source.get("heading")
+                if not isinstance(file_value, str) or not file_value.strip():
+                    failures.append(f"{operation} required_live_reads entry needs a file")
+                    continue
+                if heading_value is not None and (
+                    not isinstance(heading_value, str) or not heading_value.strip()
+                ):
+                    failures.append(
+                        f"{operation} required_live_reads heading must be a non-empty string"
+                    )
+                    continue
+                normalized = normalize_repo_path(file_value)
+                if isinstance(heading_value, str):
+                    add_heading_selector(
+                        root,
+                        plan,
+                        normalized,
+                        heading_value.strip(),
+                        f"{operation} required live state",
+                        failures,
+                    )
+                    continue
+            elif isinstance(source, str):
+                normalized = normalize_repo_path(source)
+            else:
                 failures.append(f"{operation} required_live_reads contains a non-path")
                 continue
-            normalized = normalize_repo_path(source)
             if normalized.endswith("/100_CHARACTER_SHEET.md") and isinstance(protagonist, str):
-                selector: dict[str, Any] = {
-                    "file": normalized,
-                    "object": protagonist,
-                    "reason": f"{operation} protagonist state",
-                }
-                # A diegetic command may name the exact protagonist fields it
-                # renders. Without this the plan is the whole object, which for
-                # a long-running campaign is most of the context budget: a
-                # Gatefall protagonist block is over 150 KB, and `/system`
-                # renders a small, well-defined part of it.
-                fields = command.get("protagonist_fields")
-                if isinstance(fields, list) and fields:
-                    selector["fields"] = []
-                    for value in fields:
-                        if not isinstance(value, str) or field_path_matches(
-                            resolve_repo_path(root, normalized), value
-                        ) != 1:
-                            failures.append(
-                                f"{operation} protagonist field must resolve exactly once: {value}"
-                            )
-                            continue
-                        selector["fields"].append(value)
-                plan["selectors"].append(selector)
+                add_protagonist_selector(
+                    root, plan, command, operation, normalized, protagonist, failures
+                )
+                protagonist_selected = True
             else:
                 add_whole_file(root, plan, normalized, f"{operation} required live state", failures)
+
+    # Declared protagonist fields bind to the protagonist's own record whether
+    # or not the character sheet is also listed as a live read. Silently
+    # dropping them left `/system log` declaring the quest fields it renders and
+    # loading none of them.
+    if (
+        not protagonist_selected
+        and isinstance(command.get("protagonist_fields"), list)
+        and command.get("protagonist_fields")
+    ):
+        if isinstance(protagonist, str) and isinstance(sheet, str):
+            add_protagonist_selector(
+                root, plan, command, operation, sheet, protagonist, failures
+            )
+        else:
+            failures.append(
+                f"{operation} declares protagonist_fields but the campaign names no protagonist"
+            )
+
     plan["render_policy"] = command.get("render_policy")
     return True
 
@@ -462,6 +596,16 @@ def build_plan(root: Path, startup_path: Path, config: dict[str, Any], operation
         build_save_plan(root, plan, failures)
     elif not build_diegetic_plan(root, config, operation, plan, failures):
         failures.append(f"operation is not declared for this campaign: {operation}")
+    if "alias_of" in plan:
+        # Read next to the operation it resolved to, not at the foot of the plan.
+        ordered = {}
+        for key, value in plan.items():
+            if key == "alias_of":
+                continue
+            ordered[key] = value
+            if key == "operation":
+                ordered["alias_of"] = plan["alias_of"]
+        plan = ordered
     return plan, failures
 
 

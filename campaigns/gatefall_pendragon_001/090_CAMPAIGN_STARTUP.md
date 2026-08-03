@@ -121,8 +121,18 @@ required_sources:
   - campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md
   - campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 diegetic_commands:
+  # Every panel's `dispatch` opens with Section 15.1. That section is the render
+  # grammar — fixed 78-cell width, the mandatory blank interior rows, the status
+  # gutter, bracketed Rank everywhere, `—` for a value canonical state does not
+  # hold, an empty group still rendering its header and `none`, and the standing
+  # prohibition on truncating — and Section 15.1 declares itself normative for
+  # every panel identically. A command that dispatched only its own template
+  # loaded every value it renders and none of the layout it renders them into,
+  # which is how a panel comes back narrower than the template it claims to obey.
   /system:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-system-the-console
+    dispatch:
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#151-render-grammar
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-system-the-console
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
       - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
@@ -148,7 +158,9 @@ diegetic_commands:
       - canonical_state.system_state.daily_premium
     render_policy: exact-template-only
   /system skills:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1531-system-skills
+    dispatch:
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#151-render-grammar
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1531-system-skills
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     protagonist_fields:
@@ -160,7 +172,9 @@ diegetic_commands:
       - canonical_state.system_state.system_rank
     render_policy: exact-template-only
   /system shop:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1535-system-shop
+    dispatch:
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#151-render-grammar
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1535-system-shop
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     protagonist_fields:
@@ -171,7 +185,9 @@ diegetic_commands:
       - canonical_state.system_state.skills_known
     render_policy: exact-template-only
   /system quests:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1533-system-quests
+    dispatch:
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#151-render-grammar
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1533-system-quests
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     protagonist_fields:
@@ -183,7 +199,9 @@ diegetic_commands:
     aliases:
       - /system equipment
       - /system inventory
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1532-system-gear
+    dispatch:
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#151-render-grammar
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1532-system-gear
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
       - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
@@ -196,7 +214,9 @@ diegetic_commands:
       - canonical_state.system_state.gold
     render_policy: exact-template-only
   /system titles:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1534-system-titles
+    dispatch:
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#151-render-grammar
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1534-system-titles
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     protagonist_fields:
@@ -204,15 +224,32 @@ diegetic_commands:
       - canonical_state.system_state.titles
     render_policy: exact-template-only
   /system log:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#1536-system-log
+    dispatch:
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#151-render-grammar
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1536-system-log
     required_live_reads:
       - campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
     protagonist_fields:
       - canonical_state.system_state.daily_quest
       - canonical_state.system_state.non_daily_quests
     render_policy: exact-template-only
+  # `/system all` composes every panel, so it dispatches every panel's template.
+  # Section 15.4 is four sentences that name the sections it renders and author
+  # no layout of their own; dispatching it alone produced a plan carrying the
+  # whole Bearer's state and 116 tokens of render procedure. Section 15.5 is here
+  # because it governs what `/system all` renders when no class panel exists.
   /system all:
-    dispatch: worlds/gatefall/206_WORLD_RULE_PROFILE.md#154-system-all
+    dispatch:
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#151-render-grammar
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-system-the-console
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1531-system-skills
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1532-system-gear
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1533-system-quests
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1534-system-titles
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1535-system-shop
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1536-system-log
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#154-system-all
+      - worlds/gatefall/206_WORLD_RULE_PROFILE.md#155-class-panels-attach-post-class-quest
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
       - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
@@ -228,6 +265,20 @@ validation:
   require_temporal_settlement: true
   require_profile_trigger_audit: true
 ```
+
+---
+
+# `/system` Pre-Render Gate
+
+This gate is resident after campaign load and fires whenever the player's complete message is `/system`, a `/system <panel>`, a declared alias, or `/system all` — before any response is composed.
+
+1. **Read, this turn, from disk.** Generate the operation plan for the exact command issued (`tools/resolve_operation_plan.ps1 -Campaign gatefall_pendragon_001 -Operation "<command>"`) and perform every selector it names: the render sections, the live ledgers, and the protagonist fields. An alias resolves to the panel it renders and reports it as `alias_of`.
+2. **A panel rendered from memory is not a panel.** Do not answer from an earlier render in this session, from the conversation's recollection of Bearer state, from `180_CURRENT_STATE.md` alone, or from a summary. The Console defers detail to a panel and says where it went; it never defers because the detail was not loaded. Nothing carries forward from a previous render (Profile Section 15.1).
+3. **Bind values into the template; change nothing else.** The `<…>` slots take canonical values and the rest of the template is fixed. Do not rename, reorder, merge, add, or drop a section, and do not invent a value to fill a row — where canonical state does not hold one, the row renders `—`.
+4. **Before sending, verify the draft against the template you just read.** Every section present and in the template's order; the frame closed at its fixed width with the required blank interior rows; every Rank bracketed; every empty group rendering its header and `none`; no row truncated, and any over-long value wrapped onto an indented continuation row. `/system all` additionally renders the Console and every focused panel, each in its own frame, in one reply.
+5. **A draft that fails step 4 is discarded and rendered again from the template** — never patched, never sent with an apology, never replaced by a prose summary of what the panel would have said. Sending a partial window is the failure this gate exists to prevent, and it is invisible to the player, who has no copy of the template to check it against.
+
+If a required source cannot be read, say so out of character, name the file, and render nothing. A partial `/system` is worse than a reported read failure: the player cannot tell one from a complete one.
 
 ---
 

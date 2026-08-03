@@ -7,7 +7,14 @@ $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
 $validator = Join-Path $PSScriptRoot "validate_repository.ps1"
 . (Join-Path $PSScriptRoot "lib/FixtureRepository.ps1")
-$tempRoot = Join-Path (Join-Path $root "tmp") ("progression-audit-" + [guid]::NewGuid().ToString("N"))
+# Outside the repository, like every other suite in this directory.
+#
+# This wrote its fixture to <repo>/tmp/, and an interrupted run leaves the whole
+# copied tree behind inside the working tree, where the next `git add -A` sweeps
+# it into a commit. That already happened: 669 files of a progression-audit
+# fixture are committed under tmp/progression-audit-6c5c3685... as of 8dfe8f4.
+# A test fixture has no business being reachable by a commit at all.
+$tempRoot = Join-Path ([System.IO.Path]::GetTempPath()) ("chronicle-progression-audit-" + [guid]::NewGuid().ToString("N"))
 $utf8 = [System.Text.UTF8Encoding]::new($false)
 
 function Assert-True {
@@ -419,9 +426,12 @@ game_date: "2026-08-04 06:01 -05:00"'
 
     Write-Host "Progression audit contract tests PASSED" -ForegroundColor Green
 } finally {
+    # The guard stays, anchored on the system temp directory the fixture now
+    # lives in: a recursive force-delete of a path built from a variable is worth
+    # confining to the one place it is allowed to act.
     $resolvedTmp = [System.IO.Path]::GetFullPath($tempRoot)
-    $resolvedWorkspaceTmp = [System.IO.Path]::GetFullPath((Join-Path $root "tmp"))
-    if ($resolvedTmp.StartsWith($resolvedWorkspaceTmp, [System.StringComparison]::OrdinalIgnoreCase) -and
+    $resolvedSystemTmp = [System.IO.Path]::GetFullPath([System.IO.Path]::GetTempPath())
+    if ($resolvedTmp.StartsWith($resolvedSystemTmp, [System.StringComparison]::OrdinalIgnoreCase) -and
         (Test-Path -LiteralPath $resolvedTmp)) {
         Remove-Item -LiteralPath $resolvedTmp -Recurse -Force
     }

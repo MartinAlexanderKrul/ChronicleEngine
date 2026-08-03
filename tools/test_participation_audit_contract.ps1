@@ -22,7 +22,11 @@ $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
 $validator = Join-Path $PSScriptRoot "validate_repository.ps1"
 . (Join-Path $PSScriptRoot "lib/FixtureRepository.ps1")
-$tempRoot = Join-Path (Join-Path $root "tmp") ("participation-audit-" + [guid]::NewGuid().ToString("N"))
+# Outside the repository, like every other suite in this directory. Writing a
+# fixture tree into <repo>/tmp/ leaves it inside the working tree when a run is
+# interrupted, where the next `git add -A` commits it -- which is how 669 files
+# of a sibling suite's fixture landed in this repository's history.
+$tempRoot = Join-Path ([System.IO.Path]::GetTempPath()) ("chronicle-participation-audit-" + [guid]::NewGuid().ToString("N"))
 $utf8 = [System.Text.UTF8Encoding]::new($false)
 
 $chronicleRelative = "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md"

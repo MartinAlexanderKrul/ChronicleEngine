@@ -46,7 +46,7 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8
 $runtimeProfile = Get-Content -LiteralPath $runtimeProfilePath -Raw -Encoding UTF8
 $latestCheckpoint = Get-Content -LiteralPath $latestCheckpointPath -Raw -Encoding UTF8
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.50\r?$') "Gatefall Profile 1.50 is not active."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.51\r?$') "Gatefall Profile 1.51 is not active."
 # Profile 1.49 removed the "1 slot by default" baseline along with Multitask: capacity
 # is the System Rank ladder outright, floored at 2 by E-Rank, with no default to add to
 # and no skill contributing. The old assertion pinned a baseline that no longer exists.
@@ -62,7 +62,7 @@ Assert-True ($profile -match 'Gate-clear milestone XP for the Bearer''s System R
 Assert-True ($profile -match 'A quest cannot complete from conduct that occurred before') "Pre-attachment retroactive completion is not prohibited."
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
-Assert-True ($character -match 'profile_version: "1\.50"') "Live Gatefall character was not migrated to Profile 1.50."
+Assert-True ($character -match 'profile_version: "1\.51"') "Live Gatefall character was not migrated to Profile 1.51."
 Assert-True ($character -notmatch 'analyst_bonus') "Retired analyst_bonus survives the Profile 1.33 migration."
 # Derived, not pinned -- the same reason as the checkpoint ordinal above, and
 # the same reason the quest lists beside line 66 are not pinned either.
@@ -185,13 +185,13 @@ Assert-StatPassiveRow -Name 'Shrug Off' -Stat 'vitality' -Authored 'S' -Tail '.+
 Assert-True ($character -notmatch 'Rank-Sight . Passive . Stat-milestone skill') "Retired Rank-Sight survives as a live skill."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
-Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.50"') "Campaign startup does not bind Profile 1.50."
+Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.51"') "Campaign startup does not bind Profile 1.51."
 Assert-True ($startup -match "latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/$([regex]::Escape($latestCheckpointName))") "Campaign startup does not target the latest checkpoint on disk ($latestCheckpointName)."
 Assert-True ($startup -match 'readiness_headings:') "Gatefall startup has no bounded readiness selector list."
 Assert-True ($startup -match '"14\.3 Trigger Tiers') "Gatefall startup does not select the trigger manifest heading."
 Assert-True ($startup -match 'migration_index: worlds/gatefall/migrations/INDEX\.md') "Gatefall startup does not point restoration at the migration index."
 Assert-True ($startup -match 'require_profile_trigger_audit: true') "Gatefall startup does not require the proactive trigger audit."
-Assert-True ($index -match 'World Rule Profile 1\.50, frozen') "World index does not advertise frozen Profile 1.50."
+Assert-True ($index -match 'World Rule Profile 1\.51, frozen') "World index does not advertise frozen Profile 1.51."
 Assert-True ($profile -match 'SKILLS[^\r\n]+ACTIVE') "Gatefall /system template does not render an ACTIVE skills group."
 Assert-True ($profile -match 'SKILLS[^\r\n]+PASSIVE') "Gatefall /system template does not render a PASSIVE skills group."
 Assert-True ($profile -match 'contains every skill whose ledger entry carries a Mana cost') "Gatefall /system skills do not classify ACTIVE entries from canonical Mana cost."

@@ -116,7 +116,8 @@ try {
     $legRoot = New-RepositoryCopy
     $legFiles = @(
         "campaigns/gatefall_pendragon_001/110_WORLD_LEDGER.md",
-        "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md"
+        "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md",
+        "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md"
     )
     $legPoint = New-FixtureRestorePoint -Root $legRoot -Paths $legFiles
 
@@ -219,34 +220,47 @@ try {
     Assert-Contains -Text $duplicateKind.Output -Expected "omits the 'special' kind" `
         -Because "The gate must name the kind that went missing."
 
-    # Leg 7: a boss kill whose drops are missing and whose omission is NOT on the
-    # books must fail. Removing the acknowledgement is the honest mutation here:
-    # EVT-000341's drops really are missing in the live repository, so the only
-    # thing standing between it and a failure is the recorded debt. Take that
-    # away and both halves of the gate must fire.
+    # Leg 7: a boss kill that records neither its core nor its drop roll must
+    # fail. EVT-000341 really did omit both (F-010); what satisfies the gate
+    # today is the Correction note the audit appended to that Event, pointing at
+    # EVT-000369 and EVT-000370 where the gap and the live roll are recorded.
+    # Break that note's wording and both halves must fire again.
     Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
-    $unacknowledgedRoot = $legRoot
-    Edit-FixtureFile -Path (Join-Path $unacknowledgedRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
-        -Find "      unresolved_gate_loot: `"**The B-Rank trial Gate" `
-        -Replace "      unresolved_gate_loot_disabled: `"**The B-Rank trial Gate"
-    $unacknowledged = Invoke-Validator -Root $unacknowledgedRoot
-    if ($unacknowledged.ExitCode -eq 0) {
-        throw "Expected an unacknowledged boss kill with no recorded drops to fail validation."
+    $noDropRoot = $legRoot
+    Edit-FixtureFile -Path (Join-Path $noDropRoot "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md") `
+        -Find "omitted the boss's core and Section 11.2 boss-drop roll entirely" `
+        -Replace "omitted what the kill yielded entirely"
+    Edit-FixtureFile -Path (Join-Path $noDropRoot "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md") `
+        -Find "the core and the boss-drop d100 belong to this kill" `
+        -Replace "what it yielded belongs to this kill"
+    $noDrop = Invoke-Validator -Root $noDropRoot
+    if ($noDrop.ExitCode -eq 0) {
+        throw "Expected a boss kill recording neither core nor drop roll to fail validation."
     }
-    Assert-Contains -Text $unacknowledged.Output -Expected "EVT-000341 resolves a boss kill" `
+    Assert-Contains -Text $noDrop.Output -Expected "EVT-000341 resolves a boss kill" `
         -Because "The gate must name the Event whose drops are missing."
-    Assert-Contains -Text $unacknowledged.Output -Expected "the core Section 11.1 makes automatic" `
+    Assert-Contains -Text $noDrop.Output -Expected "the core Section 11.1 makes automatic" `
         -Because "The core half must fire; Section 11.1 owes it without a roll."
-    Assert-Contains -Text $unacknowledged.Output -Expected "the Section 11.2 boss drop" `
+    Assert-Contains -Text $noDrop.Output -Expected "the Section 11.2 boss drop" `
         -Because "The drop half must fire independently of the core half."
 
-    # Leg 8: the acknowledgement must be Event-specific, not a blanket waiver.
-    # A note that names some other Event leaves EVT-000341 unacknowledged.
+    # Leg 8: the acknowledgement escape must be Event-specific, not a blanket
+    # waiver. The live tree no longer exercises that path -- the loot was rolled
+    # and paid out at EVT-000370/EVT-000371, and the acknowledgement went with
+    # it -- so the case is built here: break the Correction note as in leg 7, and
+    # add back an acknowledgement that names some OTHER Event. The gate must
+    # still fire, because an acknowledgement only covers the Event it names.
     Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
     $wrongEventRoot = $legRoot
+    Edit-FixtureFile -Path (Join-Path $wrongEventRoot "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md") `
+        -Find "omitted the boss's core and Section 11.2 boss-drop roll entirely" `
+        -Replace "omitted what the kill yielded entirely"
+    Edit-FixtureFile -Path (Join-Path $wrongEventRoot "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md") `
+        -Find "the core and the boss-drop d100 belong to this kill" `
+        -Replace "what it yielded belongs to this kill"
     Edit-FixtureFile -Path (Join-Path $wrongEventRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
-        -Find "(``EVT-000341``, recorded as owed at ``EVT-000369``)" `
-        -Replace "(``EVT-000999``, recorded as owed at ``EVT-000369``)"
+        -Find "      status_recovery:" `
+        -Replace "      unresolved_gate_loot: `"Owed and unresolved at ``EVT-000999``.`"`n      status_recovery:"
     $wrongEvent = Invoke-Validator -Root $wrongEventRoot
     if ($wrongEvent.ExitCode -eq 0) {
         throw "Expected an acknowledgement naming a different Event to leave EVT-000341 unacknowledged."

@@ -953,6 +953,50 @@ foreach ($file in $canonicalFiles) {
                 }
             }
 
+            # Gatefall Profile 1.50 Section 15.3.2: the dimensional inventory is
+            # grouped into five named kinds, and /system gear takes each STORED
+            # group's printed line count from that kind's list length. The count
+            # is only trustworthy while the grouping is structural, so a sixth
+            # kind, a missing kind, or a holding sitting loose under inventory
+            # is a defect rather than a formatting choice.
+            #
+            # This check exists because the unstructured field really did lose an
+            # item: a /system gear render dropped the Gate Direction Finder while
+            # the sheet carried it correctly (EVT-000366). Nothing asserted the
+            # field's shape, so nothing objected. An empty kind is kept rather
+            # than omitted -- Section 15.3.2 requires a group with no live
+            # holdings to render 'none', and a kind absent from state cannot.
+            if ($id -eq "ENT-000125" -and
+                $profileVersionMatch.Success -and
+                [version]$profileVersionMatch.Groups[1].Value -ge [version]"1.50") {
+                $inventorySection = Get-IndentedSection $block "inventory"
+                if ([string]::IsNullOrWhiteSpace($inventorySection)) {
+                    Add-Failure "$relativePath`:$line Gatefall Profile 1.50 Bearer has no system_state.inventory section."
+                } else {
+                    $allowedKinds = @("keys", "consumables", "special", "gear", "materials")
+                    $declaredKinds = @([regex]::Matches($inventorySection, '(?m)^[ \t]{6}([a-z_]+):[ \t]*$') |
+                        ForEach-Object { $_.Groups[1].Value })
+
+                    foreach ($declaredKind in $declaredKinds) {
+                        if ($allowedKinds -notcontains $declaredKind) {
+                            Add-Failure "$relativePath`:$line system_state.inventory declares kind '$declaredKind', which Profile Section 15.3.2 does not name (allowed: $($allowedKinds -join ', '))."
+                        }
+                    }
+                    foreach ($requiredKind in $allowedKinds) {
+                        if ($declaredKinds -notcontains $requiredKind) {
+                            Add-Failure "$relativePath`:$line system_state.inventory omits the '$requiredKind' kind, which Profile Section 15.3.2 retains even when empty so its group can render 'none'."
+                        }
+                    }
+                    if ($declaredKinds.Count -ne @($declaredKinds | Select-Object -Unique).Count) {
+                        Add-Failure "$relativePath`:$line system_state.inventory declares the same kind twice, so a holding's group is ambiguous."
+                    }
+                    $ungroupedCount = @([regex]::Matches($inventorySection, '(?m)^[ \t]{6}-[ \t]')).Count
+                    if ($ungroupedCount -gt 0) {
+                        Add-Failure "$relativePath`:$line system_state.inventory holds $ungroupedCount entry/entries directly under the field rather than inside one of Section 15.3.2's five kinds."
+                    }
+                }
+            }
+
             foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "progression_audit_baselines"))) {
                 $domain = Get-EntryValue $entry "domain"
                 $baselineAsOf = Get-EntryValue $entry "baseline_as_of"
@@ -1487,6 +1531,77 @@ if (-not $CoreOnly -and (Test-Path -LiteralPath $blockValidator -PathType Leaf))
         }
         if (-not @($blockOutput | Where-Object { $_ -match '^\s+-\s+' })) {
             Add-Failure ("Object block validation failed: " + ($blockOutput -join ' '))
+        }
+    }
+}
+
+# --- A boss kill must record the drops the profile makes automatic ----------
+#
+# Gatefall Section 11.1 says elites and bosses *always* drop one core, and
+# Section 11.2 says that on the boss kill, *in addition to its core*, the boss
+# drop is rolled on a d100. Neither is discretionary and neither was checked.
+#
+# F-010: the B-Rank trial Gate (EVT-000338-EVT-000342) killed 24 commons and a
+# boss and recorded no crystal, no core, and no drop roll -- the words do not
+# appear anywhere in the clear. Only the mined deposit was tracked, because
+# mining is narrated and drops are bookkeeping. It took the player asking
+# months later to notice, which is exactly the failure mode a gate exists for.
+#
+# WHY THE WINDOW. This campaign does not always record the kill and its loot in
+# one Event: EVT-000183 kills the boss and EVT-000184 carries the drop roll. A
+# per-Event assertion would fail on a correct record, so the evidence is sought
+# across the killing Event and the two that follow it. That is how the ledger is
+# actually written, not a concession.
+#
+# WHY THE TRIGGER IS NARROW. Descriptions are prose, so this reads idiom rather
+# than structure. The alternatives were measured against the live chronicle: a
+# bare mention of "boss" fires on Boss-Imprinted weapons and on Section 17's
+# "closes on the boss kill" clause, and would fail a good repository. The
+# phrases below match every boss kill this campaign has recorded and nothing
+# else. A future Event phrased around all of them slips through -- this narrows
+# the failure, it does not close it -- and that is the right trade when the cost
+# of a false positive is blocking validation on a correct record.
+$bossKillPattern = 'kill(s|ed|ing) the boss|killing the boss|\bboss killed\b|\bboss kill xp\b|the boss[^.\r\n]{0,60}\b(dies|died|is dead)\b'
+$bossDropPattern = 'boss[- ]drop|boss loot'
+
+foreach ($chronicleFile in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Recurse -File -Filter "160_CAMPAIGN_CHRONICLE.md" -ErrorAction SilentlyContinue |
+    Where-Object { $_.FullName -notmatch '[\\/]\.?saves[\\/]' })) {
+
+    $chronicleText = Get-Content -LiteralPath $chronicleFile.FullName -Raw
+    $chronicleRelative = $chronicleFile.FullName.Substring($root.Length + 1).Replace('\', '/')
+    $eventBlocks = @([regex]::Matches($chronicleText, '(?s)```yaml\r?\n(id: (EVT-\d{6}).*?)\r?\n```'))
+
+    for ($blockIndex = 0; $blockIndex -lt $eventBlocks.Count; $blockIndex++) {
+        $eventBody = $eventBlocks[$blockIndex].Groups[1].Value
+        if ($eventBody -notmatch '(?m)^kind:[ \t]*combat[ \t]*$') { continue }
+        if ($eventBody -notmatch $bossKillPattern) { continue }
+
+        $eventId = $eventBlocks[$blockIndex].Groups[2].Value
+        $windowEnd = [math]::Min($eventBlocks.Count - 1, $blockIndex + 2)
+        $window = ($eventBlocks[$blockIndex..$windowEnd] | ForEach-Object { $_.Groups[1].Value }) -join "`n"
+
+        # An omission already on the books is not the failure this gate is for.
+        # `pending_rewards.unresolved_gate_loot` is readiness-loaded protagonist
+        # state, so an acknowledgement recorded there is raised at the start of
+        # every session until it is settled -- which is the outcome wanted, and
+        # strictly better than a suppression list, because the debt keeps
+        # announcing itself instead of going quiet the moment it is catalogued.
+        # The acknowledgement must name the Event, so it cannot be a blanket
+        # waiver for whatever else goes missing later.
+        $sheetPath = Join-Path $chronicleFile.DirectoryName "100_CHARACTER_SHEET.md"
+        $acknowledged = $false
+        if (Test-Path -LiteralPath $sheetPath -PathType Leaf) {
+            $sheetText = Get-Content -LiteralPath $sheetPath -Raw
+            $acknowledgement = [regex]::Match($sheetText, '(?m)^[ \t]*unresolved_gate_loot:[ \t]*"(.*?)"[ \t]*$')
+            $acknowledged = $acknowledgement.Success -and $acknowledgement.Groups[1].Value -match [regex]::Escape($eventId)
+        }
+        if ($acknowledged) { continue }
+
+        if ($window -notmatch '\bcores?\b') {
+            Add-Failure "$chronicleRelative $eventId resolves a boss kill and neither it nor the two Events after it record the core Section 11.1 makes automatic."
+        }
+        if ($window -notmatch $bossDropPattern) {
+            Add-Failure "$chronicleRelative $eventId resolves a boss kill and neither it nor the two Events after it record the Section 11.2 boss drop."
         }
     }
 }

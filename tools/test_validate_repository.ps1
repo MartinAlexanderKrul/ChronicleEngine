@@ -109,10 +109,10 @@ function Edit-FixtureFile {
 }
 
 try {
-    # The three legs below change one file each, so they share one copy and the
-    # two files between them are restored from their captured bytes between legs.
-    # Three copies of an 84 MB tree bought nothing the restore does not, and the
-    # guard after the legs is what keeps that true.
+    # The eight mutation legs below change one file each, so they share one copy
+    # and the two files between them are restored from their captured bytes
+    # between legs. Eight copies of an 84 MB tree bought nothing the restore does
+    # not, and the guard after the legs is what keeps that true.
     $legRoot = New-RepositoryCopy
     $legFiles = @(
         "campaigns/gatefall_pendragon_001/110_WORLD_LEDGER.md",
@@ -167,12 +167,103 @@ try {
     Assert-Contains -Text $missingRank.Output -Expected "records no reward_rank" `
         -Because "The gate must name the missing field on the quest."
 
-    # Leg 4: the negative half must not fire on a compliant repository. An
-    # unconditional failure would pass legs 1-3 and block every real save.
+    # Leg 4: the dimensional inventory may not declare a kind Profile Section
+    # 15.3.2 does not name. `/system gear` renders one STORED group per kind and
+    # prints its list length as the group's live count, so a sixth kind is a
+    # group the panel has no rule for and a count nothing carries.
+    Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
+    $unknownKindRoot = $legRoot
+    Edit-FixtureFile -Path (Join-Path $unknownKindRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
+        -Find "      materials:`n        # Crystals, cores" `
+        -Replace "      trinkets:`n        # Crystals, cores"
+    $unknownKind = Invoke-Validator -Root $unknownKindRoot
+    if ($unknownKind.ExitCode -eq 0) {
+        throw "Expected an inventory declaring a kind Section 15.3.2 does not name to fail validation."
+    }
+    Assert-Contains -Text $unknownKind.Output -Expected "declares kind 'trinkets'" `
+        -Because "The gate must name the invented kind."
+    Assert-Contains -Text $unknownKind.Output -Expected "omits the 'materials' kind" `
+        -Because "Renaming a kind also loses it, and the panel cannot render 'none' for a group that is absent from state."
+
+    # Leg 5: no holding may sit loose under `inventory` rather than inside a
+    # kind. This is the shape the field had before Profile 1.50 -- undifferentiated
+    # prose a renderer had to classify at render time -- and it is exactly how a
+    # real possession went missing from a `/system gear` call (EVT-000366).
+    Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
+    $ungroupedRoot = $legRoot
+    Edit-FixtureFile -Path (Join-Path $ungroupedRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
+        -Find "        - `"Antidote x2 (banked, unwithdrawn)`"" `
+        -Replace "      - `"Antidote x2 (banked, unwithdrawn)`""
+    $ungrouped = Invoke-Validator -Root $ungroupedRoot
+    if ($ungrouped.ExitCode -eq 0) {
+        throw "Expected a holding stored outside every kind to fail validation."
+    }
+    Assert-Contains -Text $ungrouped.Output -Expected "directly under the field rather than inside one of Section 15.3.2's five kinds" `
+        -Because "The gate must say the holding is ungrouped, not merely that something is malformed."
+
+    # Leg 6: a kind may not be declared twice, and none of the five may go
+    # missing. Both halves fire from one mutation because they are the same
+    # defect seen from either end: a holding whose group is ambiguous, and a
+    # group with no list to take its count from.
+    Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
+    $duplicateKindRoot = $legRoot
+    Edit-FixtureFile -Path (Join-Path $duplicateKindRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
+        -Find "      special:`n        # Worth not mechanical" `
+        -Replace "      gear:`n        # Worth not mechanical"
+    $duplicateKind = Invoke-Validator -Root $duplicateKindRoot
+    if ($duplicateKind.ExitCode -eq 0) {
+        throw "Expected an inventory declaring one kind twice and omitting another to fail validation."
+    }
+    Assert-Contains -Text $duplicateKind.Output -Expected "declares the same kind twice" `
+        -Because "The gate must name the ambiguity, since a holding under a repeated key belongs to no single group."
+    Assert-Contains -Text $duplicateKind.Output -Expected "omits the 'special' kind" `
+        -Because "The gate must name the kind that went missing."
+
+    # Leg 7: a boss kill whose drops are missing and whose omission is NOT on the
+    # books must fail. Removing the acknowledgement is the honest mutation here:
+    # EVT-000341's drops really are missing in the live repository, so the only
+    # thing standing between it and a failure is the recorded debt. Take that
+    # away and both halves of the gate must fire.
+    Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
+    $unacknowledgedRoot = $legRoot
+    Edit-FixtureFile -Path (Join-Path $unacknowledgedRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
+        -Find "      unresolved_gate_loot: `"**The B-Rank trial Gate" `
+        -Replace "      unresolved_gate_loot_disabled: `"**The B-Rank trial Gate"
+    $unacknowledged = Invoke-Validator -Root $unacknowledgedRoot
+    if ($unacknowledged.ExitCode -eq 0) {
+        throw "Expected an unacknowledged boss kill with no recorded drops to fail validation."
+    }
+    Assert-Contains -Text $unacknowledged.Output -Expected "EVT-000341 resolves a boss kill" `
+        -Because "The gate must name the Event whose drops are missing."
+    Assert-Contains -Text $unacknowledged.Output -Expected "the core Section 11.1 makes automatic" `
+        -Because "The core half must fire; Section 11.1 owes it without a roll."
+    Assert-Contains -Text $unacknowledged.Output -Expected "the Section 11.2 boss drop" `
+        -Because "The drop half must fire independently of the core half."
+
+    # Leg 8: the acknowledgement must be Event-specific, not a blanket waiver.
+    # A note that names some other Event leaves EVT-000341 unacknowledged.
+    Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
+    $wrongEventRoot = $legRoot
+    Edit-FixtureFile -Path (Join-Path $wrongEventRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
+        -Find "(``EVT-000341``, recorded as owed at ``EVT-000369``)" `
+        -Replace "(``EVT-000999``, recorded as owed at ``EVT-000369``)"
+    $wrongEvent = Invoke-Validator -Root $wrongEventRoot
+    if ($wrongEvent.ExitCode -eq 0) {
+        throw "Expected an acknowledgement naming a different Event to leave EVT-000341 unacknowledged."
+    }
+    Assert-Contains -Text $wrongEvent.Output -Expected "EVT-000341 resolves a boss kill" `
+        -Because "An acknowledgement that names another Event must not waive this one."
+
+    # Leg 9: the negative half must not fire on a compliant repository. An
+    # unconditional failure would pass legs 1-8 and block every real save.
     Assert-NotContains -Text $live.Output -Unexpected "stores 'reward" `
         -Because "The live repository is compliant; the record half must not fire on it."
     Assert-NotContains -Text $live.Output -Unexpected "records no reward_rank" `
         -Because "The live repository records its reward Rank; the quest half must not fire on it."
+    Assert-NotContains -Text $live.Output -Unexpected "system_state.inventory" `
+        -Because "The live inventory declares all five kinds and groups every holding; no half of the inventory gate may fire on it."
+    Assert-NotContains -Text $live.Output -Unexpected "resolves a boss kill" `
+        -Because "Every live boss kill either records its drops or has its omission acknowledged; the gate must be silent on the real repository."
 
     # The legs shared one copy, so the isolation a fresh copy gave for free is
     # owed back here: the byte check catches a restore that stopped working, and

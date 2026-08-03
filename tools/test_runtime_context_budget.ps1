@@ -39,11 +39,17 @@ Assert-True ([int]$Matches["tokens"] -lt 16000) "Bootstrap is not below 16,000 e
 # Gatefall readiness is asserted against the hard budget, not the warning line.
 #
 # Owner ruling, 2026-07-29. The audit's own success metric (Section 22) is that
-# readiness stays below 30,000 estimated tokens before situation-specific
-# fetches; 20,000 is the warning threshold, and pinning the test there made a
-# growing campaign fail a gate the architecture does not actually set. Alexander
-# is Level 11 with seventeen skills and a live Hidden quest, and that state is
+# readiness stays below the hard budget before situation-specific fetches;
+# 20,000 is the warning threshold, and pinning the test there made a growing
+# campaign fail a gate the architecture does not actually set. Alexander is
+# Level 11 with seventeen skills and a live Hidden quest, and that state is
 # legitimately larger than it was when this number was first written.
+#
+# Owner ruling, 2026-08-03: the hard budget moves 30,000 -> 35,000, and this
+# figure follows it rather than restating it. The reasoning, and what it does
+# not excuse, are recorded once at `readiness.failure_tokens` in
+# `system/RUNTIME_CONTEXT_BUDGETS.yaml`; two copies of a number that must agree
+# is how this suite came to fail on a repository the measurement had passed.
 #
 # WARN is therefore an accepted steady state and stays visible in every report,
 # which is the point of having a warning threshold at all. The hard budget is
@@ -51,8 +57,8 @@ Assert-True ([int]$Matches["tokens"] -lt 16000) "Bootstrap is not below 16,000 e
 # and the bound below is checked explicitly.
 Assert-True ($clean.Output -match '(?:PASS|WARN) readiness:gatefall_pendragon_001: (?<gatefall>\d+) tokens') `
     "Gatefall readiness measurement is missing."
-Assert-True ([int]$Matches["gatefall"] -lt 30000) `
-    "Gatefall readiness is not below the 30,000 hard budget (measured $($Matches['gatefall']))."
+Assert-True ([int]$Matches["gatefall"] -lt 35000) `
+    "Gatefall readiness is not below the 35,000 hard budget (measured $($Matches['gatefall']))."
 Assert-True ($clean.Output -match '100_CHARACTER_SHEET\.md\[object:ENT-000125\]\[fields:21\]') "Gatefall protagonist loading is not field-bounded."
 # Assert the baseline mechanism reports, not that some surface happens to sit
 # exactly on its baseline. The old form required a delta of zero somewhere, so

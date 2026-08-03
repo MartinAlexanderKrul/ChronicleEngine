@@ -86,7 +86,31 @@ surfaces:
 
   readiness:
     warning_tokens: 20000
-    failure_tokens: 30000
+    # Raised 2026-08-03, 30,000 -> 35,000, by owner ruling, with the trimming
+    # deferred rather than cancelled.
+    #
+    # The ceiling had become the binding constraint on recording true things.
+    # Gatefall readiness stood at 29,971 -- 29 tokens of room -- and the work
+    # that hit it was not bloat: an unresolved B-Rank Gate's owed loot needs to
+    # live in a readiness surface or no session will ever raise it, because the
+    # chronicle is written to and never scanned back. A ceiling that makes the
+    # correct record unaffordable stops measuring cost and starts suppressing
+    # facts, which is the opposite of what this file is for.
+    #
+    # 35,000 is a deliberate figure, not a doubling: it restores roughly the
+    # 5,000-token working margin this surface had before the Profile 1.47-1.50
+    # run, and leaves the warning at 20,000 so every campaign above it still
+    # reports as needing attention on every measurement. Gatefall has been over
+    # that warning for weeks and this does not change that verdict.
+    #
+    # WHAT THIS DOES NOT DO: it does not retire Recommendation R14. Current
+    # State (~4,900) and the startup file (~4,336) are still the levers, and
+    # moving `titles` into a deferred group is still the obvious structural win
+    # -- the Console needs only its count. The owner has taken the trimming as
+    # their own later work; this raise buys the room to keep recording
+    # correctly in the meantime, and the growth ratchet below is what keeps the
+    # meantime honest, since a re-record is still a deliberate act.
+    failure_tokens: 35000
     # Growth beyond the allowance fails until the baseline is re-recorded. See
     # the note at the foot of this file for why a rate governs these surfaces
     # rather than a fixed ceiling alone.
@@ -179,7 +203,27 @@ surfaces:
       # (~4,900), the startup file (~4,336), and moving a readiness field into a
       # deferred group -- `titles` is the obvious candidate, since the Console
       # needs only its count and the panel fetches the rest on demand.
-      gatefall_pendragon_001: 29814
+      # Re-recorded 2026-08-03, 29,814 -> 30,397 (+583), alongside the raise of
+      # the hard ceiling above. Three movements, none of them drift:
+      #
+      #   +157  the Profile 1.50 inventory reshape and the potion reconciliation
+      #         (`EVT-000366`-`EVT-000368`) -- net of two rounds of trimming the
+      #         Current State prose, which is why it is not larger.
+      #   +426  `pending_rewards.unresolved_gate_loot` and its Current State
+      #         obligation (`EVT-000369`), recording a B-Rank Gate's unresolved
+      #         beast drops.
+      #
+      # The second is the whole reason the ceiling moved. It is the cost of a
+      # session being able to see an obligation at all: readiness never re-reads
+      # the chronicle, so an omission recorded only in history is invisible
+      # forever. This entry is expected to come back *down* when the loot is
+      # resolved in play and the acknowledgement is replaced by the settlement.
+      #
+      # Recording it is not optional bookkeeping. `test_growth_budgets.ps1`
+      # derives its within-allowance case from this figure, so a baseline left
+      # stale breaks the ratchet in both directions -- it stops detecting real
+      # growth and invents growth that never happened.
+      gatefall_pendragon_001: 30397
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479

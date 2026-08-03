@@ -57,7 +57,7 @@ $preloaded = [regex]::Match(
     '(?ms)^selectors:\s*(?<body>.*?)^available_on_demand:'
 ).Groups["body"].Value
 Assert-True ($preloaded -notmatch 'canonical_state\.system_state\.skills_known') "Gatefall preloads the full skill ledger before an affected action."
-Assert-True ($preloaded -notmatch 'canonical_state\.system_state\.shop_holdings') "Gatefall preloads shop inventory outside a shop operation."
+Assert-True ($preloaded -notmatch 'canonical_state\.system_state\.inventory') "Gatefall preloads the dimensional inventory outside an operation that needs it."
 # The NPC ledger stays out of whole_files (asserted above) but must still hand
 # readiness the player-ruled channel closures, or a resumed session narrates
 # past a ruling it has no way to see.
@@ -73,7 +73,7 @@ Assert-True ($deferred -match 'canonical_state\.system_state\.skills_known') "Ga
 Assert-True ($deferred -match 'dispatch: progression_settlement') "Gatefall has no explicit deferred progression selector."
 Assert-True ($deferred -match 'canonical_state\.system_state\.tracked_counters') "Gatefall deferred progression state omits counters."
 Assert-True ($deferred -match 'dispatch: system_shop') "Gatefall has no explicit deferred shop selector."
-Assert-True ($deferred -match 'canonical_state\.system_state\.shop_holdings') "Gatefall deferred shop state omits holdings."
+Assert-True ($deferred -match 'canonical_state\.system_state\.inventory') "Gatefall deferred shop state omits the dimensional inventory."
 # The encounter case. Without a dispatch the resident load obligation has no
 # addressed read behind it and degrades into searching a 250 KB ledger.
 Assert-True ($deferred -match 'dispatch: npc_present') "Gatefall has no deferred NPC-encounter selector, so the resident load obligation names no read."

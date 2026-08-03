@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000365
+  source: EVT-000369
   game_date: "2026-08-14 ~14:30 -05:00"
   real_date: "2026-08-03"
 role: canonical ledger
@@ -328,6 +328,10 @@ subjects:
   - EVT-000363
   - EVT-000364
   - EVT-000365
+  - EVT-000366
+  - EVT-000367
+  - EVT-000368
+  - EVT-000369
 ```
 
 ---
@@ -10147,4 +10151,136 @@ Effect at B: **Mana recovery +20 percentage points on both rates — 30%/hr acti
 **Nothing retroactive, and no Mana is recomputed.** Conduit applies from this anchor forward only. No elapsed span is re-settled at the improved rate, no `mana_recovery_remainder_units` is recomputed, and the pool is not topped up to what it would have held had Conduit existed earlier — Mana stands at **118/120** exactly as `EVT-000361` left it. Rules Section 13.2 forbids reopening what a settlement has spent, and Section 5.2's determinism depends on a settled span staying settled.
 
 **Nothing else moved.** No pool maximum, Stat, XP total, level, System Rank, mastery counter, title, item, gold, cash, deadline, or streak is touched. Overpower, Pre-empt, Shrug Off and Flux Sight keep their Ranks and their `successful_uses` — 4, 2, 1 and 8 — and Flux Sight is unaffected in every respect."
+```
+
+## EVT-000366 - `shop_holdings` Becomes `inventory`, and Stops Hiding Things
+
+```yaml
+id: EVT-000366
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-14 ~14:30 -05:00"
+  real_date: "2026-08-03"
+type: Event
+kind: ruling
+importance: minor
+game_date: "2026-08-14 ~14:30 -05:00"
+participants: []
+counter_deltas: []
+description: "Player-instructed ledger repair, prompted by a `/system gear` render that omitted the **Gate Direction Finder [E-Rank]** — an item the sheet was carrying correctly all along. No rule changed, no profile version moved, and no owned object was gained or lost. Profile 1.49 remains active.
+
+**The field was not a list of items.** `system_state.shop_holdings` held **35 entries**, of which only 28 named something Alexander owns. Five were session narrative — the `EVT-000327` Overgrown Temple extraction summary carries dice rolls, an XP total, and goods bought-and-consumed, and names no owned object at all — and two were disposal records. A renderer therefore had to judge, per prose entry, whether a bolded paragraph named a possession, and a miss silently dropped a real one with nothing to catch it. The worn side never had this failure: `equipment` is nine named slots and cannot lose an item.
+
+**The name was wrong too.** Profile Section 12.9 calls this the **dimensional inventory** — *the pocket dimension where every item he owns lives unless he has chosen to hold or wear it* — while `shop_holdings` described where a minority of the contents came from. The Gate Direction Finder was bought from Elias Ward for $800 cash, the dock salvage was swept out of a loading bay, the Warded Vambrace and the Dormant Core came off a pawnbroker's grey-market shelf. None of it is shop stock.
+
+**The repair.** The field is renamed **`system_state.inventory`** and normalized to **one holding per entry, 28 of them**. The five narrative entries are dropped: every Event they cite (`EVT-000301`-`EVT-000304`, `EVT-000323`-`EVT-000328`, `EVT-000327`, `EVT-000332`-`EVT-000334`) is already promoted in this chronicle, so nothing unique was destroyed. The two disposal entries move to `120_INVENTORY_AND_OWNERSHIP.md` under a new **Disposed — No Longer Owned** heading, which is where Section 15.1 already says they belong: a disposed line *is ledger history and is absent from every panel*, so it has no business in the live inventory a panel reads.
+
+**Nothing about ownership moved.** All 28 holdings keep their text, Rank lines, provenance, and quantities verbatim. `equipment` is untouched — worn slots stay separate from stored goods exactly as Section 12.9 distinguishes them, and the `/system gear` panel still renders WORN and STORED as two groups from two fields.
+
+**One known discrepancy is carried forward, still flagged, deliberately not resolved:** the inventory records **8** Lesser Healing Potions where `180_CURRENT_STATE.md` records **3**. It predates this repair, no Event has touched potions since it appeared, and normalizing the field's shape is not licence to pick a number. It stays visible rather than being quietly rounded away by a cleanup.
+
+Startup dispatch (three references), the ownership ledger's pointer, and two tool assertions are repointed to the new field name. Immutable checkpoints keep `shop_holdings` forever and are untouched."
+```
+
+## EVT-000367 - Profile Adoption: 1.50, the Five Stored Kinds Get Definitions
+
+```yaml
+id: EVT-000367
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-14 ~14:30 -05:00"
+  real_date: "2026-08-03"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-14 ~14:30 -05:00"
+participants: []
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.50, a **required-migration** advance over frozen 1.49, together with the state reshape it requires. No fictional time is consumed and no scene occurs.
+
+**Section 15.3.2 named five groups and defined none of them.** `/system gear` renders the dimensional inventory as **Gear · Consumables · Keys · Materials · Special** and prints each group's live line count — a number the profile states without ever saying which holdings produce it. That is the Section 20.2 defect in its purest form: a stated figure resting on an unstated rule, decided fresh at every render by whoever happens to be rendering.
+
+**The kinds are defined, with a deterministic precedence order:** Keys, Consumables, Special, Gear, Materials — first match wins, exactly one group per holding. The order is what makes the boundaries decidable rather than tasteful. A key is a consumable by nature and is still a **Key**, because Section 17 makes instant-dungeon keys their own economy. An unidentified core is **Special**, not Materials, because its Rank is precisely what is not yet known — and it moves to Materials on the identification that resolves it, a state change with an Event behind it rather than a re-reading of unchanged facts. A stored weapon is **Gear** while the crystals out of the same Gate are **Materials**.
+
+**Special absorbs the unresolved**, which is what gives every ambiguous holding a defined home instead of a coin flip: anything whose worth is not mechanical — evidence, documents, quest-bearing objects, named artifacts — and any item whose function, Rank, or provenance is unresolved.
+
+**`system_state.inventory` is restructured into one list per kind.** Alexander's twenty-eight holdings regroup as **keys 3 · consumables 7 · special 4 · gear 10 · materials 4**. Every holding's text, Rank line, provenance and quantity carries over verbatim; the total is twenty-eight before and after. A panel now renders five groups from five lists and takes each count from its list's length, so nothing about the grouping is inferred at render time, no holding can appear twice, and no holding can sit in a kind the profile does not name.
+
+**One assignment is worth recording**, because it is the boundary case the precedence order exists for: the **half-finished leather piece** from the dock sweep is **Special**, not Materials. It is literally unworked stock, but its worth is not mechanical — it carries the same maker's stamp as the S-Rank dagger and the keyed wallet, which makes it quest-bearing evidence in the Marnie thread. Special is tested before Materials precisely so that this decides one way and stays decided.
+
+**This closes the second half of the defect `EVT-000366` opened.** A `/system gear` call had silently omitted the Gate Direction Finder because the field it renders from was prose a renderer had to interpret twice: once to ask whether an entry named an item at all, and again to ask which group it belonged to. `EVT-000366` answered the first question by normalizing to one holding per entry. This answers the second by making the grouping structural. A repository check now enforces the shape — five named kinds, none missing, none invented, and no ungrouped holding — so the field cannot drift back.
+
+**No holding, quantity, Rank, provenance, or owned object changed**, and `equipment` is untouched: worn slots stay separate from stored holdings exactly as Section 12.9 distinguishes them. Migration record: `worlds/gatefall/migrations/1.49_to_1.50.md`."
+```
+## EVT-000368 - The Potion Count Reconciled: Neither Ledger Was Right
+
+```yaml
+id: EVT-000368
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-14 ~14:30 -05:00"
+  real_date: "2026-08-03"
+type: Event
+kind: ruling
+importance: minor
+game_date: "2026-08-14 ~14:30 -05:00"
+participants: []
+counter_deltas: []
+description: "Player-instructed ledger repair, resolving the Lesser Healing Potion discrepancy that `EVT-000361` and `EVT-000366` both carried forward flagged. No rule changed, no profile version moved, no fictional time passed, and nothing was gained or lost in the fiction: this settles what the record already says Alexander owns.
+
+**Neither recorded number was right.** The inventory read **8** and `180_CURRENT_STATE.md` read **3**. Traced against the Events themselves, the true figure is **12**, and the discrepancy was two independent failures rather than one disagreement.
+
+**The chain, every step stated in an Event or a ledger snapshot.** `EVT-000154` records six banked. `EVT-000183` adds three (shrine-lid cache) and `EVT-000184` one (boss-drop cache), which `120_INVENTORY_AND_OWNERSHIP.md` totals as **6 to 10**. `EVT-000186` transfers one to Owen Callahan, **10 to 9**. `EVT-000197` drinks one mid-fight, **9 to 8**, and the ownership ledger's `EVT-000216` anchor snapshot states **8 lesser healing potions** outright. Then `EVT-000302` banks a three-potion Daily Random Box cache and `EVT-000316` banks one more. **Nothing has been drunk, sold, or given since `EVT-000197`.** 8 + 3 + 1 = **12**.
+
+**Why the sheet said 8:** its entry read *unchanged this session; see 2026-08-08 history below* - the 2026-08-08 figure, correct when written and never updated for either later cache. **Why `180_CURRENT_STATE.md` said 3:** it recorded `EVT-000302`'s three-potion cache as though the cache were the whole stock, a session delta written into a total field. Both are the same class of defect as `EVT-000366`'s: a number carried in prose that no check ever compared against the Events behind it.
+
+**The audit did not stop at healing potions, and found two more faults in the same block.**
+
+**Lesser Mana Potions stood in two entries reading 3 and 2**, which is one holding split across two lines - exactly what `EVT-000366` normalized the field to forbid. Their chain: **2** banked at `EVT-000233`'s close (both pre-existing drunk, two bought), **+3** at `EVT-000265`, **+3** at `EVT-000302`, **+2** at `EVT-000316`, none drunk since. The two entries become one reading **10**.
+
+**`180_CURRENT_STATE.md` also recorded a consumption that never happened** - *1 Lesser Mana Potion consumed mid-fight; banked count 3 to 2*. No Event between `EVT-000338` and `EVT-000361` consumes a potion of any kind; the session's two Mana restorations were claimed Status Recovery rewards (`EVT-000340`), not potions. The line is struck as unsourced.
+
+**Standard Mana Potions stand at 2, verified unchanged.** `EVT-000358`'s three Standard Mana Potions were the **unchosen** streak-upgrade candidate, and Section 8.1 is explicit that an unchosen candidate produces nothing and never enters inventory or state. The sheet was right not to bank them.
+
+**Net effect on holdings: Lesser Healing Potion 8 to 12, Lesser Mana Potion 3+2 to 10, Standard Mana Potion 2 unchanged.** The consumables kind falls from **7 entries to 6** as the duplicate mana line merges, and the dimensional inventory from **28 holdings to 27** - a line count, not a loss: the merge removes an entry and no potion. Section 15.3.2's other four kinds are untouched."
+```
+## EVT-000369 - The Trial Gate's Beast Drops, Recorded as Owed and Unresolved
+
+```yaml
+id: EVT-000369
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-14 ~14:30 -05:00"
+  real_date: "2026-08-03"
+type: Event
+kind: ruling
+importance: minor
+game_date: "2026-08-14 ~14:30 -05:00"
+participants: []
+counter_deltas: []
+description: "Player-instructed audit finding, raised out of character. **Nothing is granted here and no die is rolled.** This Event records an obligation the rules already created and the record failed to take, so that a session can see it; it does not settle it.
+
+**The B-Rank trial Gate produced no beast drops at all.** `EVT-000339` opens the clear with a Hive-common kill, `EVT-000340` resolves the archetype at **24 commons plus 1 boss** (both elite slots converted to commons on the archetype roll, so the clear contains **no elites**), and `EVT-000341` kills the boss and collapses the Gate. Across all three Events the words crystal, core, drop, and loot **do not appear**. The only take recorded from that Gate is the mined deposit at `EVT-000342` - 104 B-Rank crystals worked out of a vein during the clear window, which is Section 11.1's *deposit* rule and has nothing to do with what the beasts themselves drop.
+
+**What Section 11.1 owes, without a roll.** *Every beast killed drops one crystal, of the beast's own Rank*, and *elites and bosses always drop one core* each. Twenty-four commons and one boss, all B-Rank, therefore owe **25 B-Rank crystals**, and the boss owes **1 B-Rank core**. No elites, so no elite cores. These are not rolled and were never uncertain; they are stated outcomes the record simply omitted.
+
+**What Section 11.2 owes, and why it is not resolved here.** *On the boss kill, in addition to its core, roll the boss drop on a d100*, at the Gate's Rank. That roll has **never been made**. It is left unmade: Section 14.1's resolution contract requires a real roll at the moment of resolution, and a checkpoint repair inventing a d100 - and then its chassis, tier, or mix sub-rolls - would be fabricating loot rather than recovering it. **It resolves in play or not at all.**
+
+**Ownership is a second open question, and it is already open in the fiction.** Section 13.2 is explicit that a support worker's compensation is the harvest share alone and that *the physical cores, beast-drop crystals, and any boss drop belong to the combat pool*. Alexander's harvest share (the 20 crystals declared at `EVT-000343`) is therefore not the channel for any of this. His claim runs through the **combat-contribution claim for the boss kill and swarm clear** that he named as owed fact at `EVT-000345`, against a crew that ran four combat-rated hunters where Section 9.4 requires eight - and Wade Bishop owes exact mining-share and combat-contribution figures **tonight, 2026-08-14** (`OBJ-27`). The split cannot be computed before those figures exist.
+
+**Recorded where a session will actually see it.** Readiness loads a bounded set of surfaces and never re-reads this chronicle, so an omission recorded only in history stays invisible forever. The finding is written into `system_state.pending_rewards.unresolved_gate_loot`, a readiness-loaded protagonist field, and into `180_CURRENT_STATE.md`'s immediate obligations beside the Wade payout it settles against. That placement is the whole point of this Event: the defect was not that the loot went missing but that nothing would ever have raised it.
+
+**No holding, quantity, gold, cash, XP, level, Rank, counter, or owned object changes at this Event.**"
 ```

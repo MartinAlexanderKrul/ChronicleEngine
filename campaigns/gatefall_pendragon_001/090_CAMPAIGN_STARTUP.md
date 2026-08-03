@@ -9,7 +9,7 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.49"
+world_rule_profile: "Gatefall World Rule Profile 1.50"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
@@ -56,7 +56,7 @@ source_loading:
       - canonical_state.system_state.progression_audit_baselines
     system_shop:
       - canonical_state.system_state.gold
-      - canonical_state.system_state.shop_holdings
+      - canonical_state.system_state.inventory
   entity_deferred_groups:
     npc_present:
       file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
@@ -179,7 +179,7 @@ diegetic_commands:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     protagonist_fields:
       - canonical_state.system_state.gold
-      - canonical_state.system_state.shop_holdings
+      - canonical_state.system_state.inventory
       - canonical_state.system_state.daily_premium
       - canonical_state.system_state.system_rank
       - canonical_state.system_state.skills_known
@@ -207,7 +207,7 @@ diegetic_commands:
       - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
     protagonist_fields:
       - canonical_state.system_state.equipment
-      - canonical_state.system_state.shop_holdings
+      - canonical_state.system_state.inventory
       - canonical_state.system_state.stats
       - canonical_state.system_state.effective_stats
       - canonical_state.system_state.skills_known

@@ -223,6 +223,14 @@ All three previously-pending payouts released and landed together the evening of
 
 Coalition payouts process in **2–3 business days** from filing; past that the desk will trace one (`110_WORLD_LEDGER.md`, established `EVT-000083`).
 
+## Disposed — No Longer Owned
+
+Relocated here from `100_CHARACTER_SHEET.md` at `EVT-000366`. Profile Section 15.1 is explicit that **disposed holdings never render** — *"a stored line whose quantity is zero, or whose canonical entry records it as sold, consumed, given away, or lost, is ledger history and is absent from every panel"* — so a disposed line has no business in the live inventory a panel reads. It is ownership history, and this file is the ownership record.
+
+- **Disposed, no longer owned — compressed** (full per-item detail in `160_CAMPAIGN_CHRONICLE.md` at each cited Event). **This session:** Armory Key [D-Rank] consumed opening Dungeon 1 (`EVT-000231`; its guaranteed-equipment modifier landed the Titan Legs). Mana Crystal [D-Rank] x0 — 17 from Dungeon 1 sold for 680 g (`EVT-000233`) and 58 from Dungeons 2-3 sold for 2,320 g (`EVT-000236`); Dungeon 1's own 22-crystal mined deposit was never extracted and was lost when the boss kill closed the instance (Section 17). Instant-Dungeon Key [D-Rank] x0 — one bought opened Dungeon 2, its boss-drop key opened Dungeon 3, and Dungeon 3's boss dropped a rune rather than a key (`EVT-000233`-`EVT-000235`). **Earlier:** E-Rank crystal x0 (final 14 sold, 140 g, `EVT-000228`; the prior 112 sold for 1,120 g, `EVT-000180`). E-Rank core x0 (all 15 traded to Walt Adamik for the Suppression Emitter and Lockpick Set, `EVT-000212`). Instant-Dungeon Key [E-Rank] x0 (`EVT-000150`-`EVT-000152`). Quickstep Charm [E-Rank] sold, 20 g (`EVT-000118`). Channeling Focus [E-Rank], Guard Shield [E-Rank] x2, Titan Boots [E-Rank] x2, Arcanist Legs [E-Rank], Shin Guards [E-Rank], Greatarm [D-Rank], Seer's Lens [D-Rank] all sold for 337 g combined at the 25% resale rate (`EVT-000228`). Rune teaching Stone Skin given to Owen Callahan (`ENT-000139`) and consumed, teaching him Stone Skin [D-Rank] Novice (`EVT-000178`). Standard Mana Potion x0 from 2026-08-06 — bought 75 g and given to Owen the same minute, establishing that a System Mana potion refills an awakened non-Bearer's well (`EVT-000180`).
+
+- Rune teaching Flash Step [D-Rank] — **given to Owen Callahan and consumed, `EVT-000255`.** No longer Alexander's property. Guaranteed boss-drop rune from the Runic Key (`EVT-000142`), banked unused since; `instruction_binding: unbound-awakened` made it eligible to teach an awakened non-Bearer — Alexander himself already knew Flash Step above its D-Rank, so Bearer consumption would have taught him nothing (Profile 1.39, `EVT-000230`). Materialized on Owen's own boat and handed over; he consumed it on the spot, learning Flash Step [D-Rank] Novice.
+
 ## Standing Liability
 
 - **University tuition debt:** $30,000 outstanding principal, **$400/month minimum payment**, recorded at this initialization checkpoint per Profile Section 20.3. This is a pressuring monthly obligation against his income, not a deduction from starting funds.
@@ -277,7 +285,7 @@ Coalition payouts process in **2–3 business days** from filing; past that the 
 At a warehouse-district pawn shop, sold **one private E-Rank core** to its unnamed owner (`ENT-000147`) for **$220 cash** — a genuine unlicensed transaction under Profile Section 12.2 (black market, felony risk both jurisdictions, no sale record). The dealer's offer reasoned from the $375 licensed anchor minus his own risk/movement discount, not the +40% premium a buyer pays for anonymity. First real outlet found for the private core stash.
 
 - **Cash: $9,831 → $10,051.**
-- **Private E-Rank core stash: 9 → 8** (see `100_CHARACTER_SHEET.md` `system_state.shop_holdings`), still no legal path for the rest.
+- **Private E-Rank core stash: 9 → 8** (see `100_CHARACTER_SHEET.md` `system_state.inventory`, named `shop_holdings` at the time), still no legal path for the rest.
 - New informal relationship: `REL-000069`, an untested but willing fence contact, open to future cores "one at a time, price improves with trust."
 
 ---
@@ -421,7 +429,7 @@ Every gold movement happened inside or immediately after the two instant dungeon
 
 ### In — individually tracked
 
-Full per-item detail (Rank lines, provenance, condition, current state) is authored in `100_CHARACTER_SHEET.md` `system_state.shop_holdings` under the standing owner ruling at `EVT-000331`. Recorded here as the ownership record:
+Full per-item detail (Rank lines, provenance, condition, current state) is authored in `100_CHARACTER_SHEET.md` `system_state.inventory` (named `shop_holdings` until `EVT-000366`) under the standing owner ruling at `EVT-000331`. Recorded here as the ownership record:
 
 - **Keyed document wallet [C-Rank]** (`EVT-000323`) — bundled purchase. Lock beaten at `EVT-000324`; empty, but a hidden lining seam carries an unidentified maker's stamp. Currently open, no key.
 - **Unmarked motion-sensor rig [D-Rank]** (`EVT-000323`) — bundled purchase. Logs detected movement to a remote destination rather than displaying locally. Destination unread.

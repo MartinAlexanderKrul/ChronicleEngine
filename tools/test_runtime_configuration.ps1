@@ -82,8 +82,8 @@ try {
     Set-Content -LiteralPath (Join-Path $temporaryRoot $gatefallPath) -Value $gatefallOriginal -Encoding UTF8
 
     Set-MutatedContent -RelativePath $gatefallPath -Original $gatefallOriginal `
-        -OldValue "      - canonical_state.system_state.shop_holdings" `
-        -NewValue "      - canonical_state.system_state.missing_shop_holdings"
+        -OldValue "      - canonical_state.system_state.inventory" `
+        -NewValue "      - canonical_state.system_state.missing_inventory"
     Assert-Rejected -Name "stale deferred protagonist field" -Expected "must resolve exactly once; found 0"
     Set-Content -LiteralPath (Join-Path $temporaryRoot $gatefallPath) -Value $gatefallOriginal -Encoding UTF8
 

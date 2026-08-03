@@ -65,8 +65,88 @@ Assert-True ($character -match 'profile_version: "1\.47"') "Live Gatefall charac
 # Hidden quest, for a reason unrelated to the rule.
 Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 3\s+capacity_total: 4') "Live C-Rank Multitask quest capacity is missing or incorrect."
 Assert-True ($character -notmatch 'analyst_bonus') "Retired analyst_bonus survives the Profile 1.33 migration."
-Assert-True ($character -match 'Flux Sight \[C-Rank\] . Stat Passive.+Uses \d+ . Perception \d+ . B-Rank at 54') "Live Flux Sight does not render its derived C-Rank state and next threshold."
-Assert-True ($character -match 'Multitask \[C-Rank\] . Stat Passive.+capacity \*\*4\*\*.+Uses \d+ . Intelligence \d+ . B-Rank at 54') "Live Multitask does not render its derived C-Rank progression."
+# Derived, not pinned -- the same reason as the checkpoint ordinal above, and
+# the same reason the quest lists beside line 66 are not pinned either.
+#
+# A Stat Passive's Rank is a function of its governing base Stat under Section
+# 4.4's threshold table, clamped by System Rank + 1 and by the deepest rung its
+# own ladder authors. All three inputs move with play. Pinned as literal
+# "C-Rank ... B-Rank at 54", this assertion went stale the session Perception
+# reached 54 and Flux Sight rose C -> B, and it failed naming the derivation it
+# was supposed to be protecting.
+#
+# What is asserted here is deliberately the half the repository validator does
+# not cover. That gate already re-derives the Rank and requires the row to
+# render it with its class label, so repeating it here would prove nothing. It
+# does not look at the telemetry tail -- and Section 4.4's "A held rung is
+# recorded, never silent" is precisely the clause a silent regression erases.
+# So the tail is the subject, checked against a Rank derived the way the gate
+# derives it.
+$statPassiveThresholds = @(30, 36, 44, 54, 66, 80)
+$statPassiveLadder = @("E", "D", "C", "B", "A", "S")
+
+# Scoped to system_state, never the whole sheet. `latent_stat_array` carries the
+# superseded civilian creation array with its own `perception:` key; read at file
+# scope it wins on document order and derives an E-Rank that renders nowhere.
+$systemStateOffset = $character.IndexOf("`n  system_state:")
+Assert-True ($systemStateOffset -ge 0) "Live character sheet has no system_state block to derive Stat Passives from."
+$systemState = $character.Substring($systemStateOffset)
+$liveStats = [regex]::Match($systemState, '(?ms)^[ \t]+stats:[ \t]*\r?\n(?<body>(?:[ \t]+[a-z_]+:[ \t]*\d+[ \t]*\r?\n)+)')
+Assert-True $liveStats.Success "Live system_state carries no numeric base stat block."
+$systemRankMatch = [regex]::Match($systemState, '(?m)^[ \t]+system_rank:[ \t]*([EDCBAS])(?:-Rank)?[ \t]*$')
+Assert-True $systemRankMatch.Success "Live system_state declares no System Rank to clamp Stat Passive Ranks against."
+$ceilingIndex = [math]::Min($statPassiveLadder.Count - 1,
+    [array]::IndexOf($statPassiveLadder, $systemRankMatch.Groups[1].Value) + 1)
+
+function Assert-StatPassiveRow {
+    param(
+        [string]$Name,
+        [string]$Stat,
+        # The deepest rung Section 4.4 authors for this skill. Flux Sight is
+        # authored to S; the four that absorbed the retired Stat-50 skills stop
+        # at C until Section 20.3 reaches higher.
+        [string]$Authored,
+        [string]$Tail
+    )
+
+    $statMatch = [regex]::Match($liveStats.Groups['body'].Value, "(?m)^[ \t]+$Stat`:[ \t]*(\d+)[ \t]*$")
+    Assert-True $statMatch.Success "Live base $Stat is missing; $Name's Rank cannot be derived."
+    $statValue = [int]$statMatch.Groups[1].Value
+
+    $derivedIndex = -1
+    for ($i = 0; $i -lt $statPassiveThresholds.Count; $i++) {
+        if ($statValue -ge $statPassiveThresholds[$i]) { $derivedIndex = $i }
+    }
+    Assert-True ($derivedIndex -ge 0) "$Name's base $Stat ($statValue) is below its own E-Rank threshold."
+
+    $authoredIndex = [array]::IndexOf($statPassiveLadder, $Authored)
+    $rankIndex = [math]::Min([math]::Min($derivedIndex, $ceilingIndex), $authoredIndex)
+    $rank = $statPassiveLadder[$rankIndex]
+
+    # Section 4.4: a next rung the ladder does not author renders as held rather
+    # than as a threshold. A next rung that is merely above the System Rank
+    # ceiling still renders its threshold -- the ceiling defers the grant, and
+    # the profile authors no separate wording for it.
+    $nextIndex = $rankIndex + 1
+    if ($nextIndex -ge $statPassiveLadder.Count) {
+        $nextText = 'S-Rank'
+    } elseif ($nextIndex -gt $authoredIndex) {
+        $nextText = "\[$($statPassiveLadder[$nextIndex])-Rank\] held: rung unauthored"
+    } else {
+        $nextText = "$($statPassiveLadder[$nextIndex])-Rank at $($statPassiveThresholds[$nextIndex])"
+    }
+
+    $pattern = [regex]::Escape($Name) + " \[$rank-Rank\] . Stat Passive" + $Tail +
+        "Uses \d+ . $([regex]::Escape($Stat.Substring(0,1).ToUpper() + $Stat.Substring(1))) $statValue . $nextText"
+    Assert-True ($character -match $pattern) `
+        "Live $Name does not render its derived $rank-Rank state and next threshold. Expected the row to match: $pattern"
+}
+
+Assert-StatPassiveRow -Name 'Flux Sight' -Stat 'perception' -Authored 'S' -Tail '.+'
+# Multitask's rendered capacity is the Section 4.4 ladder's own figure for the
+# Rank it derives to (E/D/C -> 2/3/4), so it is derived here rather than pinned.
+Assert-StatPassiveRow -Name 'Multitask' -Stat 'intelligence' -Authored 'C' `
+    -Tail '.+capacity 4.+'
 Assert-True ($character -notmatch 'Rank-Sight . Passive . Stat-milestone skill') "Retired Rank-Sight survives as a live skill."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
@@ -329,9 +409,15 @@ function Round-HalfUp {
 
 Assert-True ($character -match 'strength: "(\d+) \(base') "Effective Strength is unreadable for damage-preview derivation."
 $effectiveStrength = [int]$Matches[1]
-Assert-True ($character -match 'main_hand: "Ghost Quickknife.+weapon power (\d+)') "Main-hand weapon power is unreadable."
+# The equipped weapon's POWER is the damage-preview input; which weapon supplies
+# it is loadout, and loadout changes with play. These pinned the weapon names
+# ("Ghost Quickknife" main, "C-Rank Quickknife" off) and broke the session a
+# Finished dagger [S-Rank] displaced the Ghost Quickknife into the off hand --
+# failing as "weapon power is unreadable" when the power was perfectly readable
+# and simply belonged to a different blade.
+Assert-True ($character -match 'main_hand: ".+?weapon power (\d+)') "Main-hand weapon power is unreadable."
 $mainPower = [int]$Matches[1]
-Assert-True ($character -match 'off_hand: "C-Rank Quickknife.+weapon power (\d+)') "Off-hand weapon power is unreadable."
+Assert-True ($character -match 'off_hand: ".+?weapon power (\d+)') "Off-hand weapon power is unreadable."
 $offPower = [int]$Matches[1]
 Assert-True ($character -match 'Dagger Mastery \[E-Rank\].+adds \*\*\+([0-9.]+)\*\*') "Dagger Mastery bonus is unreadable."
 $daggerBonus = [decimal]::Parse($Matches[1], [Globalization.CultureInfo]::InvariantCulture)
@@ -369,24 +455,28 @@ $mainFollowUp = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeCha
 # effective Strength, a weapon, Dagger Mastery, or a mastery level changes. The formula
 # above is the invariant; these guard it against silent drift.
 #
-# Recomputed at 900_CHECKPOINT_0061 for effective Strength 51->62, the only input that
-# moved: main power 11, off power 7, Dagger Mastery +0.30 at Master (chassis x1.05) and
-# Rupture x2.45 at Expert are all unchanged. Twin Fang's x1.60 is unchanged here too --
-# the sheet had rendered Master's multiplier all along, so F-011's settlement moved the
-# stored counter up to the number this snapshot was already computed from rather than
-# changing the number. The prior pin sat at Strength 51 and had been stale since the
-# Level 14 advance. The superseded note it was recorded under:
+# Recomputed for the B-Rank Gate session, which moved two inputs at once: the
+# Finished dagger [S-Rank] (weapon power 22) was equipped mid-fight and displaced
+# the Ghost Quickknife (11) from main hand into off hand, and effective Strength
+# rose 62->69. Dagger Mastery +0.30 at Master (chassis x1.05), Rupture x2.45 at
+# Expert and Twin Fang x1.60 at Master are all unchanged, so every movement below
+# traces to the loadout and the Stat.
 #
-# Recomputed for the
-# 2026-08-09 instant-dungeon run and its mastery reconciliation (EVT-000232-EVT-000237),
-# which took Level 11->13 and advanced three of the four inputs at once: effective
-# Strength 45->51 (base 36->42), main power 11, off power 7, Dagger Mastery +0.25->+0.30
-# at Master (chassis x1.00->x1.05), Rupture x2.30->x2.45 at Expert, Twin Fang
-# x1.30->x1.45 at Expert.
-Assert-True ($mainDamage -eq 77) "Main-hand /system preview is $mainDamage, expected 77."
-Assert-True ($offDamage -eq 72) "Off-hand /system preview is $offDamage, expected 72."
+# Rupture stays 61 by construction: its preview is the skill-rank baseline times
+# its multiplier, and no weapon enters that product. A change there would mean
+# the formula moved, which is the whole point of keeping these pinned.
+#
+# Superseded, recorded at 900_CHECKPOINT_0061 for effective Strength 51->62, the
+# only input that moved then: main power 11, off power 7, Dagger Mastery +0.30 at
+# Master (chassis x1.05) and Rupture x2.45 at Expert all unchanged. Twin Fang's
+# x1.60 was unchanged there too -- the sheet had rendered Master's multiplier all
+# along, so F-011's settlement moved the stored counter up to the number this
+# snapshot was already computed from rather than changing the number. The pin
+# before that sat at Strength 51 and had been stale since the Level 14 advance.
+Assert-True ($mainDamage -eq 96) "Main-hand /system preview is $mainDamage, expected 96."
+Assert-True ($offDamage -eq 84) "Off-hand /system preview is $offDamage, expected 84."
 Assert-True ($ruptureDamage -eq 61) "Rupture /system preview is $ruptureDamage, expected 61."
-Assert-True (($mainDamage -eq 77) -and ($offFollowUp -eq 116)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 77 + 116."
-Assert-True (($offDamage -eq 72) -and ($mainFollowUp -eq 123)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 72 + 123."
+Assert-True (($mainDamage -eq 96) -and ($offFollowUp -eq 134)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 96 + 134."
+Assert-True (($offDamage -eq 84) -and ($mainFollowUp -eq 153)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 84 + 153."
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

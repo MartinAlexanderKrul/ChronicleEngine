@@ -345,14 +345,28 @@ game_date: "2026-08-04 06:01 -05:00"'
 
     # --- Profile 1.33 Stat Passive Rank is derived, never stored -----------
     #
-    # Perception 44 derives Flux Sight C-Rank under Section 4.4 (its
-    # System-Rank-D ceiling). A rendered E-Rank is drift even if every
-    # other field remains valid.
-    Replace-Once $character 'Flux Sight [C-Rank]' 'Flux Sight [E-Rank]'
+    # Section 4.4 derives Flux Sight's Rank from base Perception, clamped by
+    # System Rank + 1. A rendered Rank that contradicts that derivation is
+    # drift even if every other field remains valid.
+    #
+    # The live Rank is read rather than written down, per this file's own rule
+    # above. It was pinned as C-Rank against "Perception 44 ... its System-Rank-D
+    # ceiling", and both halves went stale in the same session: Perception
+    # reached 54 and System Rank reached C, taking Flux Sight to B. The mutation
+    # then failed its own precondition, so the contract stopped reporting on the
+    # invariant and started reporting on the snapshot.
+    $liveFluxRank = [regex]::Match((Get-Text $character), 'Flux Sight \[([EDCBAS])-Rank\]')
+    Assert-True $liveFluxRank.Success "Flux Sight renders no Rank; fixture precondition drifted."
+    $fluxRank = $liveFluxRank.Groups[1].Value
+    # Any Rank other than the derived one is drift. E unless E is what it already
+    # derives to, in which case S -- the two ends of the ladder, so the wrong
+    # value is never accidentally the right one.
+    $wrongRank = if ($fluxRank -eq 'E') { 'S' } else { 'E' }
+    Replace-Once $character "Flux Sight [$fluxRank-Rank]" "Flux Sight [$wrongRank-Rank]"
     $wrongPassiveRank = Invoke-Validation $tempRoot
-    Assert-True ($wrongPassiveRank.ExitCode -ne 0 -and $wrongPassiveRank.Output -like "*does not render derived Rank C*") `
+    Assert-True ($wrongPassiveRank.ExitCode -ne 0 -and $wrongPassiveRank.Output -like "*does not render derived Rank $fluxRank*") `
         "A Stat Passive with a rendered Rank contradicting its base Stat was accepted:`n$($wrongPassiveRank.Output)"
-    Replace-Once $character 'Flux Sight [E-Rank]' 'Flux Sight [C-Rank]'
+    Replace-Once $character "Flux Sight [$wrongRank-Rank]" "Flux Sight [$fluxRank-Rank]"
 
     # Stat Passives have successful_uses only. A mastery counter would create
     # a second growth axis explicitly forbidden by Section 4.4.

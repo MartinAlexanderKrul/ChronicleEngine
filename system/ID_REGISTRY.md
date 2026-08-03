@@ -1,4 +1,4 @@
-# Chronicle Engine
+﻿# Chronicle Engine
 
 ## Identifier Registry
 
@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000197 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000354 |
+| Event | `EVT-` | Event | EVT-000361 |
 | Relationship | `REL-` | Relationship | REL-000093 |
 
 ---
@@ -516,6 +516,13 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000352 | Event | Gatefall: Pendragon: Walt Adamik's supplier inquiry, the world-side commitment due today (`EVT-000333`), is discharged and **fails** (🎲 d100 3, natural critical failure) — not through inaction but because the asking went badly. A thirty-year contact told Walt to lose his number if he ever said 'CONSULT' again, frightened rather than annoyed, and hung up. No name, no operator, no lead on Marnie; instead the finding that established grey-market traders are afraid to be asked about the operation at all. Walt volunteers a warning about Loomis Street |
 | EVT-000353 | Event | Gatefall: Pendragon: Loomis Street walked and read — a legendary Keen Sense (🎲 d100 93, effective 100) finds the anomaly on an otherwise unremarkable industrial block: one unsigned building running professional, funded, deliberately unadvertised security, cameras covering every approach rather than the door, and a cold-engine panel van with someone deliberately inside it. Intent and posture established, contents not; no approach, entry, or contact made, and nothing has seen him. The Hidden quest stays attached and unrevealed — the operation's physical seat, still not Marnie |
 | EVT-000354 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000350`-`EVT-000353` span with an explicit `none` for `gatefall.skill_formation`. Records Walt Adamik's commitment as discharged-and-failed and Wade Bishop's payout figures as still outstanding but not yet late; opens two new Alexander-side commitments (the training location owed 2026-08-15, and Soraya's unanswered gear question) |
+| EVT-000355 | Event | Gatefall: Pendragon: owner ruling reconciling the stale `daily_quest` block in `100_CHARACTER_SHEET.md` (streak 3 / 2026-08-10 / next 2026-08-10) to the values `180_CURRENT_STATE.md` and `EVT-000338` already carried (streak 7 / 2026-08-14 / next 2026-08-15). Stale figures had been captured into `900_CHECKPOINT_0064`; repair written forward, not by editing the immutable checkpoint
+| EVT-000356 | Event | Gatefall: Pendragon: overdue Daily Premium rotation resolved live at ~14:30 under the 2026-08-10 standing rule (exactly one cycle regardless of the missed boundary). Twelve real draws, the first cycle floored at System Rank C: Prismatic series (d8 8); weapon B-Rank Colossus Greatarm, armor C-Rank Adaptive Bastion Legs, accessory C-Rank Ascendant Seer's Lens, Quicksilver Phial, a C-Rank Silent Step Premium Rune, and a C-Rank Core Key. Accessory bag refilled with the previous model excluded from the first draw. 0/6 purchased
+| EVT-000357 | Event | Gatefall: Pendragon: the campaign's first title loadout — Ascetic and Prospector equipped into the two slots open since `EVT-000349`; the pending Ability Points +3 claimed at its issued value (unspent 53→56); 49 points allocated (Perception +6, Intelligence +4, Strength +1, Vitality +38), re-deriving maximum Health 248→400 and maximum Mana 112→120. No Stat Passive Rank moved; Shrug Off holds an S-worth of Vitality against a C-Rank grant
+| EVT-000358 | Event | Gatefall: Pendragon: the streak-upgraded Daily Random Box from the twenty-first daily opened — two complete candidates rolled (d100 19 → C-Rank standard potion cache, d4 4 → 3 Standard Mana Potions; d100 50 → System gold 8,500 g). The player took the gold; the unchosen candidate produced nothing and entered no ledger. Gold 6,061→14,561
+| EVT-000359 | Event | Gatefall: Pendragon: 44 of the 84 undeclared B-Rank crystals sold to the System shop at the Section 12.5 rate of 750 g each — 33,000 g, gold 14,561→47,561, stock 84→40. No cash moved. A holding line for these crystals written into `100_CHARACTER_SHEET.md` and `120_INVENTORY_AND_OWNERSHIP.md` for the first time, repairing an omission from Checkpoint 0064's target set
+| EVT-000360 | Event | Gatefall: Pendragon: the final 7 stat points allocated (Agility +2, Vitality +5), unspent 7→0 for the first time since Level 15; maximum Health 400→420. Agility 54 crosses Pre-empt's B-Rank stat threshold, which Section 4.4's authoring clamp holds unauthored — Pre-empt becomes the fourth of four clamped Stat Passives holding a rung that does not exist
+| EVT-000361 | Event | Gatefall: Pendragon: promotion-barrier session settlement closing the `EVT-000355`-`EVT-000360` span with an explicit `none` for `gatefall.skill_formation`. Zero skill activations across the span — the only dice were twelve Daily Premium rotation draws and three Daily Random Box rolls, none a skill use — so no counter moved and `counter_deltas` is empty on every Event. Anchor unmoved at 2026-08-14T14:30:00-05:00
 
 ---
 

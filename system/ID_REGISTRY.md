@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000200 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000376 |
+| Event | `EVT-` | Event | EVT-000377 |
 | Relationship | `REL-` | Relationship | REL-000094 |
 
 ---
@@ -542,6 +542,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000374 | Event | Gatefall: Pendragon: Rosalind Fenn's first call — assigned both the Marnie disappearance and the Meridian Cold Storage ownership thread (`OBJ-21`), running in parallel, 2-3 days estimated |
 | EVT-000375 | Event | Gatefall: Pendragon: full solo instant-dungeon clear on the banked Crystal Key [C-Rank] — Beast Den archetype, twin C-Rank boss alphas twist, 6 commons/2 elites/2 bosses killed, full loot and deposit extracted (82 C-Rank crystals, 4 C-Rank cores, Longsword [C-Rank] boss drop, Instant-Dungeon Key [C-Rank] boss drop), 1,160 XP (830→1,630/2,100), nine skills' qualifying-scene counters advanced |
 | EVT-000376 | Event | Gatefall: Pendragon: closing promotion-barrier settlement for the `EVT-000370`-`EVT-000375` span, `gatefall.skill_formation` explicit `none` |
+| EVT-000377 | Event | Gatefall: Pendragon: player-instructed audit of Checkpoint 0066 - repaired an XP breakdown whose arithmetic did not add up (stored total correct at 1,400; the explanation said 1,160), a stale inventory-count line in `180_CURRENT_STATE.md` (27 holdings against an actual 31), and recorded that `OBJ-25` was overtaken when its reserved Crystal Key was spent on a solo run without Owen. Intent and Owen's reaction deliberately left as an open owner ruling; no fictional time, no resolved outcome, and no relationship state changed |
 
 ---
 

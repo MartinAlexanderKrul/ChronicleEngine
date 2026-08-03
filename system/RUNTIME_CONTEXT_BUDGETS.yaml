@@ -158,7 +158,28 @@ surfaces:
     # player cannot check, and neither is refundable by measuring differently:
     # the next one comes out of authoring. Trimming Current State and the
     # protagonist block is the work, and it belongs to the owner (R14).
-      gatefall_pendragon_001: 28540
+      # Re-recorded 2026-08-03, 28,540 -> 29,814 across the Profile 1.48 and 1.49
+      # Stat Passive work: four passives rising C -> B, Multitask retired for
+      # Conduit, quest capacity re-derived from System Rank, and Current State
+      # carrying the reasons.
+      #
+      # This figure is NET OF A DELIBERATE TRIM. The same work first measured
+      # 30,340 -- over the 30,000 hard failure, which no baseline re-record can
+      # bypass -- and the excess was cut from the newest prose rather than
+      # absorbed: the two Current State settlement bullets merged into one pair,
+      # the quest-capacity note reduced to its stored facts, and the titles
+      # block's two Runtime-facing notes compressed. No canonical value, Event
+      # citation, or criterion was dropped to buy the room.
+      #
+      # THE SURFACE STILL STANDS 186 TOKENS UNDER ITS HARD FAILURE. That is a
+      # countdown, not a margin, and it is now the binding constraint on this
+      # campaign: the next ordinary session breaches it and the suite fails on a
+      # repository that is fine. Trimming further is authoring and belongs to
+      # the owner (Recommendation R14). The levers, largest first: Current State
+      # (~4,900), the startup file (~4,336), and moving a readiness field into a
+      # deferred group -- `titles` is the obvious candidate, since the Console
+      # needs only its count and the panel fetches the rest on demand.
+      gatefall_pendragon_001: 29814
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479
@@ -248,7 +269,12 @@ surfaces:
       gatefall_pendragon_001:/system quests: 3584
       gatefall_pendragon_001:/system gear: 25880
       gatefall_pendragon_001:/system titles: 4513
-      gatefall_pendragon_001:/system log: 7187
+      # Re-recorded 2026-08-03, 7,187 -> 8,342. `/system log` reads Current
+      # State, which gained the Profile 1.48 Stat Passive settlement: four
+      # skills rising C -> B in one Event, and the reason each one did. That is
+      # live readiness a Runtime has to carry, and it is one-time — the next
+      # rung movement edits these lines rather than adding a block.
+      gatefall_pendragon_001:/system log: 8342
       gatefall_pendragon_001:/system all: 33836
       reikon_awakening_001:/system: 8985
     subdivision_message: fetched operation requires a narrower selector

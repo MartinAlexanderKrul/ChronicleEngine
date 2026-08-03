@@ -894,16 +894,19 @@ foreach ($file in $canonicalFiles) {
                     # ladder does not author. Unlike an ascension there is no
                     # offer to withhold here -- the Rank rises on its own when
                     # the Stat crosses a threshold -- so without this the skill
-                    # would hold a Rank whose grant does not exist. Flux Sight
-                    # is authored to S; the four that absorbed the old Stat-50
-                    # skills are authored through C until Section 20.3 reaches
-                    # higher, and this clamp moves with them.
+                    # would hold a Rank whose grant does not exist. Profile
+                    # 1.48 authored the twelve rungs the four that absorbed the
+                    # old Stat-50 skills were missing, so all five are now
+                    # authored to S and this clamp no longer binds any of them.
+                    # It is retained rather than deleted: it is the mechanism
+                    # for the next Stat Passive a version adds, and deleting it
+                    # would make that skill's Rank unvalidated on arrival.
                     $statPassives = @(
                         @{ Name = "Flux Sight"; Key = "flux_sight"; Stat = "perception"; Authored = "S" },
-                        @{ Name = "Overpower"; Key = "overpower"; Stat = "strength"; Authored = "C" },
-                        @{ Name = "Pre-empt"; Key = "pre_empt"; Stat = "agility"; Authored = "C" },
-                        @{ Name = "Multitask"; Key = "multitask"; Stat = "intelligence"; Authored = "C" },
-                        @{ Name = "Shrug Off"; Key = "shrug_off"; Stat = "vitality"; Authored = "C" }
+                        @{ Name = "Overpower"; Key = "overpower"; Stat = "strength"; Authored = "S" },
+                        @{ Name = "Pre-empt"; Key = "pre_empt"; Stat = "agility"; Authored = "S" },
+                        @{ Name = "Conduit"; Key = "conduit"; Stat = "intelligence"; Authored = "S" },
+                        @{ Name = "Shrug Off"; Key = "shrug_off"; Stat = "vitality"; Authored = "S" }
                     )
 
                     foreach ($passive in $statPassives) {
@@ -1023,7 +1026,11 @@ foreach ($file in $canonicalFiles) {
                         "skills.rank_sight.successful_material_applications" = "skills.flux_sight.successful_uses"
                         "skills.overpower.successful_material_applications" = "skills.overpower.successful_uses"
                         "skills.pre_empt.successful_material_applications" = "skills.pre_empt.successful_uses"
+                        # Multitask was retired at Profile 1.49 and replaced by Conduit. Its
+                        # alias stays because immutable checkpoints still carry the counter
+                        # under both historical names, and a restore reads them.
                         "skills.multitask.successful_material_applications" = "skills.multitask.successful_uses"
+                        "skills.conduit.successful_material_applications" = "skills.conduit.successful_uses"
                         "skills.shrug_off.successful_material_applications" = "skills.shrug_off.successful_uses"
                     }
                     if ($statPassiveCounterAliases.ContainsKey($counter)) {

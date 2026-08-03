@@ -27,12 +27,14 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.47
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.49
 - **Engine Rules:** 0.3.0
 - **Data Model:** 0.1.6
 - **Campaign time:** 2026-08-14 (Friday), approximately 14:30 CDT (`-05:00`)
 - **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0065/` — The first title loadout, fifty-six points, and forty-four crystals into gold.
 - **System Rank: D → C**, crossed at the Level 20 threshold this checkpoint (`EVT-000341`).
+- **Stat Passives, Profiles 1.48-1.49** (`EVT-000362`-`EVT-000365`). Section 4.4's missing B/A/S rungs were authored, so all four clamped passives rose **C → B** at once on Stat already banked — no Stat moved. **Overpower** *redirection*; **Pre-empt** *first blade* (resolves first in any exchange he opens); **Shrug Off** *total suppression*, now holding a full **S**-Rank of Vitality against the System Rank ceiling alone (A at level 40, S at 50). Flux Sight unchanged at B.
+- **Multitask retired; Intelligence's passive is Conduit.** Its only grant was a quest ceiling that never bound — use counter **0**, no Urgent quest in ninety days — so **capacity moved to System Rank** (C → **4**, nothing evicted) and Intelligence took the resource it owns. **Conduit at B: Mana recovery +20 points — 30%/hr active, 45%/hr resting.** It cannot refill mid-fight; §5.3 exhaustion untouched.
 - **Titles are live and equipped for the first time** (Profile 1.47, `EVT-000348`-`EVT-000349`, `EVT-000357`). **Ten of twenty-one granted** — seven at level 10 (Kingmaker, Underdog, Diehard, Loner, Untouchable, Centurion, and the **Rare** Cartographer) and three at level 20 (Prospector, Penitent, Ascetic). **Both slots now filled: Ascetic and Prospector.** The other eight are dormant. **Next assessment: level 30**, opening a third slot.
 - **Every stat point is spent** — 53 banked plus the claimed +3, all 56 allocated across `EVT-000357` and `EVT-000360`. `unspent_points` reads **0** for the first time since Level 15.
 - **Four of five Stat Passives are Rank-frozen behind unauthored rungs** — Pre-empt joined Overpower, Shrug Off, and Multitask at `EVT-000360` (Agility 54). Flux Sight is frozen instead by the System Rank + 1 ceiling at B-Rank, where it already sits. Further points in those four stats buy pools and roll margins only.

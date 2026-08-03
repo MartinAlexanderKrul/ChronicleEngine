@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000361
+  source: EVT-000365
   game_date: "2026-08-14 ~14:30 -05:00"
   real_date: "2026-08-03"
 role: canonical ledger
@@ -324,6 +324,10 @@ subjects:
   - EVT-000359
   - EVT-000360
   - EVT-000361
+  - EVT-000362
+  - EVT-000363
+  - EVT-000364
+  - EVT-000365
 ```
 
 ---
@@ -10008,4 +10012,139 @@ participation_audits:
     result: record-updated
     record: ENT-000125
 description: "The Checkpoint 0065 promotion barrier, covering `EVT-000355`-`EVT-000360` since the last settlement (`EVT-000354`). **The lightest span in the campaign's history and among the largest in state change** - every Event in it is out-of-character System-layer work resolved at a single unmoved anchor.\n\n**Zero skill activations.** No combat, no uncertain contested action, no Gate, no NPC contact, no dialogue. The only dice were System-layer: twelve Daily Premium rotation draws (`EVT-000356`) and three Daily Random Box rolls (`EVT-000358`). Not one is a skill use, so no `successful_uses`, `qualifying_scenes_total`, `mastery_progress`, or `mastery_level` counter moved anywhere in the sheet, and `counter_deltas` is empty on every Event in the span.\n\n`gatefall.skill_formation`: explicit **`none`**. A shop rotation, a reward claim, a point allocation, and a crystal sale demonstrate no repeatable method under genuine feedback - there is no candidate evidence to seal, and the audit records the negative result rather than omitting the field.\n\n**No fictional time elapsed.** `campaign_time` holds at 2026-08-14T14:30:00-05:00 with both recovery remainders at 0. Pools moved by re-derivation from allocated Stats, never by recovery: Health 248 to 400 to **420**, Mana 112 to 120 maximum with 2 missing carried.\n\n**World-side commitments, unchanged this span and restated so the clock is not lost:** Wade Bishop's exact mining-share and combat-contribution figures are owed **tonight, 2026-08-14** - still outstanding, the day still open, not yet late. Wade's separate Ironline guild decision is owed **2026-08-15**. Alexander's own two remain open: the **training location owed to ten people by 2026-08-15**, nothing booked or scouted, and **Soraya Delgado's unanswered question** about whether gear is mandatory. None advanced, because no time passed for them to advance in.\n\n**Two ledger gaps repaired rather than carried:** the stale `daily_quest` block (`EVT-000355`) and the missing B-Rank crystal holding line in both item ledgers (`EVT-000359`). **One open owner ruling persists** and is not a `pending-ratification` gate: whether Ascetic's +4 reaches a reward issued before it was equipped (`skill_rulings.ascetic_claim_timing_evt_000357`). **One pre-existing discrepancy is carried forward untouched** - `shop_holdings` renders 8 Lesser Healing Potions where `180_CURRENT_STATE.md` records 3. It predates this session, no Event in this span touched potions, and it is therefore outside this checkpoint's derived target set; it is flagged here rather than silently resolved."
+```
+
+## EVT-000362 - Profile Adoption: Gatefall World Rule Profile 1.48, the Twelve Empty Rungs
+
+```yaml
+id: EVT-000362
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-14 ~14:30 -05:00"
+  real_date: "2026-08-03"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-14 ~14:30 -05:00"
+participants: []
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.48, a **required-migration** advance over frozen 1.47. No fictional time is consumed and no scene occurs.
+
+**What this is.** When the Stat-50 skills were retired into their partners, Section 4.4 authored **Overpower**, **Pre-empt**, **Shrug Off**, and **Multitask** at E, D, and C and stopped — against a threshold table that runs 30 / 36 / 44 / 54 / 66 / 80. Flux Sight alone was authored to S. So four of the five Stat Passives had half a ladder, and a Bearer whose base Stat crossed 54 banked the value against a rung that did not exist. Section 4.4's **authoring clamp** held the Rank down and its telemetry line reported the hold at every checkpoint — the mechanism working exactly as designed, and reporting a gap the profile had never closed.
+
+**1.48 authors all twelve.** Section 4.4 gains a second rung table covering B, A and S for the four. Each rung is a **category** under Section 7.2's Rank Dominance Law and its Stat Passive exemption — a kind of thing the Rank beneath cannot do at any value of the governing Stat — and none of them adds a modifier step, a Mana cost, a damage multiplier, or a scope count.
+
+- **Overpower** — B **redirection** (a held foe becomes a weapon; a creature can be shifted off its own footing), A **anchoring** (immovable against force up to the skill's Rank; breaks structures one Rank above it), S **leverage without purchase** (force applies with no footing, brace or grip).
+- **Pre-empt** — B **first blade** (resolves before any opponent up to the skill's Rank in an exchange he opens), A **interposition** (once per exchange, intercept an attack aimed at another creature in reach and take its resolution), S **no blind side** (surprise cannot exist against him; an unaware creature grants a free resolution).
+- **Shrug Off** — B **total suppression** (every wound's penalty, not one; hazards up to the skill's Rank cause no onset), A **threshold immunity** (nothing more than one Rank below the skill crosses the injury threshold at any damage), S **continuance** (no wound, condition, exhaustion or hazard imposes a modifier step at any severity).
+- **Multitask** — capacity **5 / 6 / 7** at B / A / S, continuing the ladder it already was. Section 8.4's capacity sentence follows it.
+
+**Death is untouched** (Section 20.4). Shrug Off at S removes every penalty harm imposes and never makes a killing blow survivable; no Stat Passive in this profile spares the Bearer a resolved lethal result. That constraint is why Shrug Off's A rung is stated as threshold immunity against lower-Rank creatures rather than as any form of death save.
+
+**The authoring clamp is now spent, and the ceiling stands alone.** Section 7.5's System Rank + 1 ceiling is untouched and is the only remaining limit on a Stat Passive's Rank. The clamp itself is retained for any Stat Passive a later version adds, together with its held-rung render — which 1.48 also completes: Section 4.4 now requires the row to name **which** clamp binds (`held: rung unauthored` versus `held: System Rank ceiling`) and to name the **highest** threshold the base Stat has actually reached rather than only the next one up, and it forbids a row advertising a next threshold as a bare number when neither clamp would let it pay out.
+
+**The state transformation** — re-deriving four Stat Passive Ranks and writing Multitask's stored capacity — executes at `EVT-000363`, immediately after this. **No engine dependency:** no Persistent Object structure changes, Data Model 0.1.6 is unchanged. Migration record: `worlds/gatefall/migrations/1.47_to_1.48.md`."
+```
+
+## EVT-000363 - Four Rungs Land at Once: Every Stat Passive Rises to B
+
+```yaml
+id: EVT-000363
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-14 ~14:30 -05:00"
+  real_date: "2026-08-03"
+type: Event
+kind: profile-migration
+importance: major
+game_date: "2026-08-14 ~14:30 -05:00"
+participants: []
+counter_deltas: []
+description: "The required 1.47 -> 1.48 state transformation, executed on this campaign. Four Stat Passive Ranks re-derive and **all four rise C -> B in the same settlement**. No Stat moved to earn any of it: every point had already been allocated and banked against a rung that did not exist, and Section 4.4's promise is that held value 'applies the instant the binding limit lifts — the authoring limit when Section 20.3 authors the rung'. This is that deferral being paid.
+
+**Overpower C -> B.** Strength 61, banked since Checkpoint 0064. Gains **redirection**: a foe he holds becomes a weapon, thrown or driven into another target with the strike transferring to it, and a creature can be shifted off its own footing mid-exchange to deny it a chosen line.
+
+**Pre-empt C -> B.** Agility 54, and the only one of the four bought deliberately: those were the last 2 of the session's 56 allocated points (`EVT-000360`), spent purely for the 54 threshold, since effective Agility 94 had long since saturated the Section 4.3 margin at +2 against everything through S-Rank. Gains **first blade** — in any exchange he opens he resolves before any opponent up to B-Rank acts, whatever order the fiction implies. For a Bearer who opens with Silent Step, the Ghost Quickknife's unseen-attack bonus and an Exploit Pattern read, it is the most consequential of the four.
+
+**Shrug Off C -> B.** Vitality 100, carrying a full **S-Rank's** worth of Stat. It rises only to B because the System Rank + 1 ceiling now binds alone, and its row's hold changes hands accordingly — from `[S-Rank] held: rung unauthored` to `[S-Rank] held: System Rank ceiling`. Gains **total suppression**: every wound's modifier-step penalty is suppressed until scene end rather than one, and environmental hazards up to B-Rank cause no onset at all. A-Rank waits for level 40 and S-Rank for level 50; the Stat is already paid for.
+
+**Multitask C -> B.** Intelligence 58. Gains capacity **5**, and is the only rung of the four that writes a stored number: `non_daily_quests.multitask_bonus` 3 -> 4 and `capacity_total` 4 -> 5. Both are **derived quest-capacity fields re-computed from the new Rank**, not `tracked_counters` entries, so this Event carries no `counter_deltas` — nothing here is a counted use, and `successful_uses` on all four passives is untouched. **No accepted or attached quest is disturbed** — capacity rose, so nothing is evicted, and no quest is created to fill the new slot. Non-daily slots stand at 2/5 used, both of them Hidden pointers.
+
+**Flux Sight is unchanged at B-Rank.** It was authored to S already, the authoring clamp never bound it, and this adoption gives it nothing: Perception 60 sits below the A threshold of 66, and 66 would be held by the ceiling even if reached.
+
+**Nothing retroactive.** No past exchange is re-resolved, no injury reclassified, no surprise round replayed, and no quest capacity applied backward to a moment a slot was declined. Every prior scene resolved correctly under the Rank Alexander actually held at the time, and Rules Section 13.2 forbids reopening what a settlement has spent. The new rungs apply from this anchor forward.
+
+**Nothing else moved.** No pool, Stat, maximum, XP total, level, System Rank, mastery counter, use count, title, item, gold, cash, deadline, or streak is touched. `successful_uses` on each of the four is unchanged — a Rank change is not a use. The four rows re-render at their new Rank and effect; the fifth does not move at all."
+```
+
+## EVT-000364 - Profile Adoption: Gatefall World Rule Profile 1.49, Multitask Retired
+
+```yaml
+id: EVT-000364
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-14 ~14:30 -05:00"
+  real_date: "2026-08-03"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-14 ~14:30 -05:00"
+participants: []
+counter_deltas: []
+description: "Adoption of Gatefall World Rule Profile 1.49, a **required-migration** advance over frozen 1.48. No fictional time is consumed and no scene occurs.
+
+**Multitask granted a ceiling nobody reached.** Its whole effect was the cap on concurrent non-daily quests, and the play record convicts it: capacity 4 against **two** attached Hidden pointers, **no** Urgent quest accepted in ninety in-fiction days, and a `successful_uses` counter reading **0** while Flux Sight read 8, Overpower 4, Pre-empt 2 and Shrug Off 1. The binding constraint on concurrent quests is **supply** — Section 8.4.2's crisis criteria and Section 8.4.3's concealed-discovery and proximity requirements — never the ceiling. Raising an unreached cap is a Rank step that grants nothing, which is Section 7.2's Rank Dominance Law failing on its own terms, and 1.48 had just extended that ladder to 5/6/7 rather than noticing it.
+
+**Capacity moves to System Rank.** Section 8.4 derives it directly now — **2 / 3 / 4 / 5 / 6 / 7** at E / D / C / B / A / S — owned by no skill and raised by no allocation, item, or title. It still grows with progression, because System Rank does; it stops pretending to be a capability. `non_daily_quests` drops `base_capacity`, `multitask_bonus`, and `analyst_bonus`.
+
+**Conduit takes the Intelligence slot**, and it is one category escalating across all six rungs the way Flux Sight's reading widens: **+5 / +10 / +15 / +20 / +25 / +30 percentage points** on both Section 5.2 recovery rates. Intelligence already sets maximum Mana at `2 × effective Intelligence` and recovery is a percentage of that maximum, so the stat now compounds with itself instead of governing a number nobody was near.
+
+**Two properties make it safe, and both are stated rather than hoped for.** Composition order is fixed — base rate, Conduit, environmental halving, then any title multiplier — so a Frozen Gallery halves the improved rate and the **Wellspring** title's out-of-combat doubling lands last. And **no rung reaches inside a fight**: recovery settles from elapsed fictional time, an exchange is not an hour, so Section 5.3's exhaustion, its −1 modifier step at 0 Mana, and the drained-boss tactic that rule supports are all untouched. Nothing here alters a skill's Mana cost, which remains mastery's axis alone (Section 7.2).
+
+**Two 1.48 rungs are corrected by the same standard that condemned Multitask** — a rung that changes subject is as wrong as a rung that grants nothing. **Overpower A** was *Anchoring*, immovability, which is defence where the category is dominating above your own Rank; it becomes **three Ranks above, structures one Rank above the skill**, continuing E's one and D's two. **Pre-empt A** was *Interposition*, taking a hit for another, which is protection where the category is acting ahead of the beat; it becomes **shared first blade**, every ally within his call resolving before any opponent up to the skill's Rank. No Bearer stands at A-Rank on any Stat Passive, so neither correction takes anything from anyone.
+
+**The state transformation** — retiring Multitask, authoring Conduit, and re-deriving quest capacity — executes at `EVT-000365`. **No engine dependency:** no Persistent Object structure changes, Data Model 0.1.6 unchanged. Migration record: `worlds/gatefall/migrations/1.48_to_1.49.md`."
+```
+
+## EVT-000365 - Conduit Replaces Multitask; Quest Capacity Returns to Rank
+
+```yaml
+id: EVT-000365
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-14 ~14:30 -05:00"
+  real_date: "2026-08-03"
+type: Event
+kind: profile-migration
+importance: major
+game_date: "2026-08-14 ~14:30 -05:00"
+participants: []
+counter_deltas: []
+description: "The required 1.48 -> 1.49 state transformation, executed on this campaign.
+
+**Multitask is retired.** Its `skills_known` entry and its `skills.multitask.successful_uses` counter are removed. Nothing is lost in the removal and nothing is invented to replace it: the counter read **0**, so the skill has no history to carry. It held B-Rank for exactly one settlement (`EVT-000363`) and never materially applied in the ninety in-fiction days before that.
+
+**Conduit is authored in its place, at B-Rank.** It derives from the same base Intelligence 58 Multitask stood on, clamped by the same System Rank + 1 ceiling, so **no Stat moved in the exchange** — this is a different skill occupying the same rung, not a promotion. Its `successful_uses` opens at 0 with a fresh baseline at this Event.
+
+Effect at B: **Mana recovery +20 percentage points on both rates — 30%/hr active, 45%/hr resting**, against a 10/25 baseline. Concretely, across this morning's two-hour post-boss clear window at the B-Rank Gate he would have recovered roughly 60% of pool instead of 20%. The A rung (+25) waits on System Rank B at level 30 and the S rung (+30) on System Rank A at level 40; Intelligence 58 already holds B and nothing above it is banked, the A threshold standing at 66.
+
+**Quest capacity returns to Rank: 5 -> 4.** System Rank C derives 4 under Section 8.4's ladder, and `base_capacity`, `multitask_bonus`, and `analyst_bonus` are deleted, leaving `capacity_total` alone. **This is a reduction that cannot bite.** Capacity read 4 for the whole campaign until 1.48 briefly made it 5 hours ago; two slots are occupied, both by Hidden pointers; and no quest is evicted, cancelled, or displaced in either direction. The ceiling has never bound once, which is precisely why it stopped being a skill.
+
+**The two rung corrections apply prospectively and take nothing.** Overpower's and Pre-empt's A rungs change wording only. Both stand at B-Rank and the System Rank + 1 ceiling puts A out of reach until System Rank A, so no Bearer has ever held either rung and no past exchange resolved under the superseded text.
+
+**Nothing retroactive, and no Mana is recomputed.** Conduit applies from this anchor forward only. No elapsed span is re-settled at the improved rate, no `mana_recovery_remainder_units` is recomputed, and the pool is not topped up to what it would have held had Conduit existed earlier — Mana stands at **118/120** exactly as `EVT-000361` left it. Rules Section 13.2 forbids reopening what a settlement has spent, and Section 5.2's determinism depends on a settled span staying settled.
+
+**Nothing else moved.** No pool maximum, Stat, XP total, level, System Rank, mastery counter, title, item, gold, cash, deadline, or streak is touched. Overpower, Pre-empt, Shrug Off and Flux Sight keep their Ranks and their `successful_uses` — 4, 2, 1 and 8 — and Flux Sight is unaffected in every respect."
 ```

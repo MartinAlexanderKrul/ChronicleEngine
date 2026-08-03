@@ -483,24 +483,35 @@ def validate_trigger_state(
     live = [("active", e) for e in active if isinstance(e, dict)]
     live += [("pending_offer", e) for e in pending if isinstance(e, dict)]
 
-    # Capacity: the derived total must agree with its parts, and must hold.
+    # Capacity must hold, and where parts are stored they must agree with the total.
+    #
+    # Two stored shapes are legal. Through Profile 1.48 capacity was the Multitask
+    # Stat Passive and the ledger carried `base_capacity` plus `*_bonus` parts; from
+    # 1.49 it derives from System Rank alone and only `capacity_total` is stored.
+    # Immutable checkpoints keep the old shape forever, so both must validate.
+    #
+    # The capacity-holds check is deliberately OUTSIDE the parts check. It used to
+    # sit inside it, gated on `base_capacity` being present -- so when 1.49 removed
+    # that field the over-capacity gate silently stopped firing altogether, and a
+    # ledger could carry more active quests than its ceiling with nothing objecting.
     base = quests.get("base_capacity")
     total = quests.get("capacity_total")
-    if isinstance(base, int) and isinstance(total, int):
-        bonuses = sum(
-            value for key, value in quests.items()
-            if key.endswith("_bonus") and isinstance(value, int)
-        )
-        if base + bonuses != total:
-            failures.append(
-                f"{display}: non_daily_quests.capacity_total is {total} but "
-                f"base {base} plus declared bonuses {bonuses} is {base + bonuses}"
-            )
+    if isinstance(total, int):
         if len(active) > total:
             failures.append(
                 f"{display}: {len(active)} active non-daily quests exceed "
                 f"capacity_total {total}"
             )
+        if isinstance(base, int):
+            bonuses = sum(
+                value for key, value in quests.items()
+                if key.endswith("_bonus") and isinstance(value, int)
+            )
+            if base + bonuses != total:
+                failures.append(
+                    f"{display}: non_daily_quests.capacity_total is {total} but "
+                    f"base {base} plus declared bonuses {bonuses} is {base + bonuses}"
+                )
 
     domains = manifest.get("trigger_domains")
     if not isinstance(domains, dict):

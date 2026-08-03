@@ -46,9 +46,13 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8
 $runtimeProfile = Get-Content -LiteralPath $runtimeProfilePath -Raw -Encoding UTF8
 $latestCheckpoint = Get-Content -LiteralPath $latestCheckpointPath -Raw -Encoding UTF8
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.47\r?$') "Gatefall Profile 1.47 is not active."
-Assert-True ($profile -match 'The Bearer has \*\*1 concurrent non-daily quest slot by default\*\*') "Default non-daily capacity is not fixed at 1."
-Assert-True ($profile -match 'Multitask raises this to \*\*2 / 3 / 4\*\* at E / D / C-Rank') "Multitask capacity ladder is not fixed at 2/3/4."
+Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.49\r?$') "Gatefall Profile 1.49 is not active."
+# Profile 1.49 removed the "1 slot by default" baseline along with Multitask: capacity
+# is the System Rank ladder outright, floored at 2 by E-Rank, with no default to add to
+# and no skill contributing. The old assertion pinned a baseline that no longer exists.
+Assert-True ($profile -match 'It is not granted by any skill, and no allocation, item, or title raises it') "Non-daily capacity does not exclude skill, allocation, item and title sources."
+Assert-True ($profile -match 'derived from the Bearer''s System Rank\*\* \(Section 6\.6\): \*\*2 / 3 / 4 / 5 / 6 / 7\*\* at E / D / C / B / A / S') "Non-daily quest capacity is not derived from System Rank at 2/3/4/5/6/7."
+Assert-True ($profile -notmatch 'Multitask raises this to') "Retired Multitask still grants quest capacity."
 Assert-True ($profile -match '\| \*\*Stat Passive Rank\*\* \| \*\*E\*\* \| \*\*D\*\* \| \*\*C\*\* \| \*\*B\*\* \| \*\*A\*\* \| \*\*S\*\* \|') "Stat Passive Rank ladder is missing."
 Assert-True ($profile -match '\*\*Rank-Sight\*\* and \*\*Deep Sight\*\* are both retired names for Flux Sight') "Flux Sight deprecation does not retire both prior names."
 Assert-True ($profile -match 'The `\[DAILY\]` quest has its own reserved slot') "Daily quests do not have an explicit reserved slot."
@@ -58,12 +62,7 @@ Assert-True ($profile -match 'Gate-clear milestone XP for the Bearer''s System R
 Assert-True ($profile -match 'A quest cannot complete from conduct that occurred before') "Pre-attachment retroactive completion is not prohibited."
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
-Assert-True ($character -match 'profile_version: "1\.47"') "Live Gatefall character was not migrated to Profile 1.47."
-# Capacity is derived from Multitask's Rank and is the invariant under test. The quest
-# lists beside it are live state that changes with play, so they are deliberately NOT
-# pinned here -- doing so made this assertion fail on the first session that attached a
-# Hidden quest, for a reason unrelated to the rule.
-Assert-True ($character -match '(?ms)non_daily_quests:\s+base_capacity: 1\s+multitask_bonus: 3\s+capacity_total: 4') "Live C-Rank Multitask quest capacity is missing or incorrect."
+Assert-True ($character -match 'profile_version: "1\.49"') "Live Gatefall character was not migrated to Profile 1.49."
 Assert-True ($character -notmatch 'analyst_bonus') "Retired analyst_bonus survives the Profile 1.33 migration."
 # Derived, not pinned -- the same reason as the checkpoint ordinal above, and
 # the same reason the quest lists beside line 66 are not pinned either.
@@ -98,6 +97,17 @@ Assert-True $systemRankMatch.Success "Live system_state declares no System Rank 
 $ceilingIndex = [math]::Min($statPassiveLadder.Count - 1,
     [array]::IndexOf($statPassiveLadder, $systemRankMatch.Groups[1].Value) + 1)
 
+# Capacity derives from System Rank alone from Profile 1.49 -- Multitask is retired and
+# `base_capacity`/`multitask_bonus`/`analyst_bonus` are gone from stored state. Derived
+# here rather than pinned, for the same reason the Stat Passive rows are: System Rank
+# moves with play. The quest lists beside it are deliberately NOT pinned -- doing so made
+# this fail on the first session that attached a Hidden quest, unrelated to the rule.
+$capacityLadder = @{ 'E' = 2; 'D' = 3; 'C' = 4; 'B' = 5; 'A' = 6; 'S' = 7 }
+$expectedCapacity = $capacityLadder[$systemRankMatch.Groups[1].Value]
+Assert-True ($character -match "(?ms)non_daily_quests:\s+capacity_total: $expectedCapacity") "Live non-daily capacity does not derive $expectedCapacity from System Rank $($systemRankMatch.Groups[1].Value)."
+Assert-True ($character -notmatch 'multitask_bonus') "Retired multitask_bonus survives the Profile 1.49 migration."
+Assert-True ($character -notmatch 'skills\.multitask\.') "Retired Multitask counter survives the Profile 1.49 migration."
+
 function Assert-StatPassiveRow {
     param(
         [string]$Name,
@@ -123,17 +133,33 @@ function Assert-StatPassiveRow {
     $rankIndex = [math]::Min([math]::Min($derivedIndex, $ceilingIndex), $authoredIndex)
     $rank = $statPassiveLadder[$rankIndex]
 
-    # Section 4.4: a next rung the ladder does not author renders as held rather
-    # than as a threshold. A next rung that is merely above the System Rank
-    # ceiling still renders its threshold -- the ceiling defers the grant, and
-    # the profile authors no separate wording for it.
+    # Section 4.4, completed at Profile 1.48: a rung the skill cannot take
+    # renders as held and names WHICH clamp binds -- `rung unauthored` for the
+    # authoring clamp, `System Rank ceiling` for the Section 7.5 ceiling. The
+    # ceiling now has its own wording; before 1.48 it had none, and a
+    # ceiling-blocked rung rendered as a bare threshold, promising a grant the
+    # profile could not deliver.
+    #
+    # The Rank named is the highest threshold the base Stat actually reached
+    # where that stands above the skill's current Rank -- Shrug Off at Vitality
+    # 100 is holding S, not merely the A above its B -- and otherwise the next
+    # rung, the one the clamp will block when the Stat arrives.
     $nextIndex = $rankIndex + 1
     if ($nextIndex -ge $statPassiveLadder.Count) {
         $nextText = 'S-Rank'
-    } elseif ($nextIndex -gt $authoredIndex) {
-        $nextText = "\[$($statPassiveLadder[$nextIndex])-Rank\] held: rung unauthored"
     } else {
-        $nextText = "$($statPassiveLadder[$nextIndex])-Rank at $($statPassiveThresholds[$nextIndex])"
+        $heldIndex = if ($derivedIndex -gt $rankIndex) {
+            [math]::Min($derivedIndex, $authoredIndex)
+        } else {
+            $nextIndex
+        }
+        if ($heldIndex -gt $authoredIndex) {
+            $nextText = "\[$($statPassiveLadder[$heldIndex])-Rank\] held: rung unauthored"
+        } elseif ($heldIndex -gt $ceilingIndex) {
+            $nextText = "\[$($statPassiveLadder[$heldIndex])-Rank\] held: System Rank ceiling"
+        } else {
+            $nextText = "$($statPassiveLadder[$heldIndex])-Rank at $($statPassiveThresholds[$heldIndex])"
+        }
     }
 
     $pattern = [regex]::Escape($Name) + " \[$rank-Rank\] . Stat Passive" + $Tail +
@@ -142,30 +168,44 @@ function Assert-StatPassiveRow {
         "Live $Name does not render its derived $rank-Rank state and next threshold. Expected the row to match: $pattern"
 }
 
+# Every Stat Passive is authored to S from Profile 1.48; the four that absorbed
+# the retired Stat-50 skills stopped at C before it. `Authored` stays a
+# parameter rather than becoming a constant, because it is the mechanism that
+# will validate the next Stat Passive a version adds part-authored.
 Assert-StatPassiveRow -Name 'Flux Sight' -Stat 'perception' -Authored 'S' -Tail '.+'
-# Multitask's rendered capacity is the Section 4.4 ladder's own figure for the
-# Rank it derives to (E/D/C -> 2/3/4), so it is derived here rather than pinned.
-Assert-StatPassiveRow -Name 'Multitask' -Stat 'intelligence' -Authored 'C' `
-    -Tail '.+capacity 4.+'
+# Conduit replaced Multitask at Profile 1.49. Its rendered bonus is the Section 4.4
+# ladder's own figure for the Rank it derives to (E/D/C/B/A/S -> +5/+10/+15/+20/+25/
+# +30 points), so it is derived here rather than pinned.
+$conduitPoints = @{ 'E' = 5; 'D' = 10; 'C' = 15; 'B' = 20; 'A' = 25; 'S' = 30 }
+Assert-StatPassiveRow -Name 'Conduit' -Stat 'intelligence' -Authored 'S' `
+    -Tail '.+'
+Assert-StatPassiveRow -Name 'Overpower' -Stat 'strength' -Authored 'S' -Tail '.+'
+Assert-StatPassiveRow -Name 'Pre-empt' -Stat 'agility' -Authored 'S' -Tail '.+'
+Assert-StatPassiveRow -Name 'Shrug Off' -Stat 'vitality' -Authored 'S' -Tail '.+'
 Assert-True ($character -notmatch 'Rank-Sight . Passive . Stat-milestone skill') "Retired Rank-Sight survives as a live skill."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
-Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.47"') "Campaign startup does not bind Profile 1.47."
+Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.49"') "Campaign startup does not bind Profile 1.49."
 Assert-True ($startup -match "latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/$([regex]::Escape($latestCheckpointName))") "Campaign startup does not target the latest checkpoint on disk ($latestCheckpointName)."
 Assert-True ($startup -match 'readiness_headings:') "Gatefall startup has no bounded readiness selector list."
 Assert-True ($startup -match '"14\.3 Trigger Tiers') "Gatefall startup does not select the trigger manifest heading."
 Assert-True ($startup -match 'migration_index: worlds/gatefall/migrations/INDEX\.md') "Gatefall startup does not point restoration at the migration index."
 Assert-True ($startup -match 'require_profile_trigger_audit: true') "Gatefall startup does not require the proactive trigger audit."
-Assert-True ($index -match 'World Rule Profile 1\.47, frozen') "World index does not advertise frozen Profile 1.47."
+Assert-True ($index -match 'World Rule Profile 1\.49, frozen') "World index does not advertise frozen Profile 1.49."
 Assert-True ($profile -match 'SKILLS[^\r\n]+ACTIVE') "Gatefall /system template does not render an ACTIVE skills group."
 Assert-True ($profile -match 'SKILLS[^\r\n]+PASSIVE') "Gatefall /system template does not render a PASSIVE skills group."
 Assert-True ($profile -match 'contains every skill whose ledger entry carries a Mana cost') "Gatefall /system skills do not classify ACTIVE entries from canonical Mana cost."
 Assert-True ($profile -match 'contains every skill whose cost is `passive`') "Gatefall /system skills do not classify PASSIVE entries from canonical cost."
-# The capacity values move with Multitask's Rank, and Profile 1.33 retired
-# analyst_bonus entirely. What matters is that the latest checkpoint captured the
-# derived total at all, and that it agrees with its declared parts.
-Assert-True ($latestCheckpoint -match '(?ms)non_daily_quests:\s+base_capacity: (?<base>\d+)\s+multitask_bonus: (?<multitask>\d+)\s+capacity_total: (?<total>\d+)') "Latest checkpoint does not capture Multitask quest capacity."
-Assert-True (([int]$Matches["base"] + [int]$Matches["multitask"]) -eq [int]$Matches["total"]) "Latest checkpoint capacity_total $($Matches['total']) does not equal base $($Matches['base']) plus Multitask $($Matches['multitask'])."
+# Two stored shapes are legal and both must pass, because checkpoints are immutable:
+# every capture through Profile 1.48 carries `base_capacity` + `multitask_bonus` +
+# `capacity_total` and must still agree with itself, while 1.49 and later carry
+# `capacity_total` alone, derived from System Rank. Pinning either shape alone breaks
+# on the other, and a checkpoint is never rewritten to match a newer profile.
+if ($latestCheckpoint -match '(?ms)non_daily_quests:\s+base_capacity: (?<base>\d+)\s+multitask_bonus: (?<multitask>\d+)\s+capacity_total: (?<total>\d+)') {
+    Assert-True (([int]$Matches["base"] + [int]$Matches["multitask"]) -eq [int]$Matches["total"]) "Latest checkpoint capacity_total $($Matches['total']) does not equal base $($Matches['base']) plus Multitask $($Matches['multitask'])."
+} else {
+    Assert-True ($latestCheckpoint -match '(?ms)non_daily_quests:\s+capacity_total: \d+') "Latest checkpoint captures neither the pre-1.49 capacity parts nor a derived capacity_total."
+}
 
 Assert-True ($runtime -match '(?m)^## 2\.5 Profile-Declared Proactive Trigger Settlement\r?$') "Normative Runtime lacks proactive trigger settlement."
 Assert-True ($runtime -match 'does not wait for the player to request a') "Normative Runtime still permits player-prompted-only triggers."
@@ -473,10 +513,18 @@ $mainFollowUp = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeCha
 # along, so F-011's settlement moved the stored counter up to the number this
 # snapshot was already computed from rather than changing the number. The pin
 # before that sat at Strength 51 and had been stale since the Level 14 advance.
-Assert-True ($mainDamage -eq 96) "Main-hand /system preview is $mainDamage, expected 96."
-Assert-True ($offDamage -eq 84) "Off-hand /system preview is $offDamage, expected 84."
+#
+# Superseded again, recorded at 900_CHECKPOINT_0065 for effective Strength
+# 69->70: the single point allocated to Strength at `EVT-000357`, and the only
+# input that moved. Main power 22, off power 11, Dagger Mastery +0.30 at Master
+# (chassis x1.05), Twin Fang x1.60 and Rupture x2.45 are all unchanged, which is
+# why every figure below moves by exactly one point of Strength through the
+# formula and Rupture does not move at all. The drift predates Profile 1.48 and
+# is unrelated to it; the Stat Passive rungs touch no damage input.
+Assert-True ($mainDamage -eq 97) "Main-hand /system preview is $mainDamage, expected 97."
+Assert-True ($offDamage -eq 85) "Off-hand /system preview is $offDamage, expected 85."
 Assert-True ($ruptureDamage -eq 61) "Rupture /system preview is $ruptureDamage, expected 61."
-Assert-True (($mainDamage -eq 96) -and ($offFollowUp -eq 134)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 96 + 134."
-Assert-True (($offDamage -eq 84) -and ($mainFollowUp -eq 153)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 84 + 153."
+Assert-True (($mainDamage -eq 97) -and ($offFollowUp -eq 136)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 97 + 136."
+Assert-True (($offDamage -eq 85) -and ($mainFollowUp -eq 155)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 85 + 155."
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

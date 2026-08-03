@@ -145,7 +145,8 @@ try {
 
     # More active quests than capacity allows. The fixture is sized from the live
     # capacity_total rather than pinned to a count, for the same reason Add-Entries
-    # handles both list shapes: capacity moves with Multitask's Rank, and a pinned
+    # handles both list shapes: capacity moves with System Rank (Multitask's Rank
+    # before Profile 1.49 retired it), and a pinned
     # three-quest fixture silently stopped exceeding anything when Intelligence
     # crossed 44 and the ceiling went 3 -> 4 (EVT-000235). Each entry needs its own
     # crisis_event and objective_key, or the one-offer-per-crisis check rejects
@@ -158,9 +159,19 @@ try {
         -Content (With-Active $overCapacity)
 
     # Capacity arithmetic that does not add up.
+    #
+    # Only the PRE-1.49 stored shape has parts to disagree with. From Profile 1.49
+    # capacity derives from System Rank and the ledger stores `capacity_total` alone,
+    # so the fixture supplies the legacy shape rather than mutating the live one --
+    # immutable checkpoints carry it forever and it must keep validating. Mutating
+    # the live total instead would assert nothing: with no parts stored, there is no
+    # arithmetic to contradict.
+    $legacyShape = $original.Replace(
+        "      capacity_total: $declaredTotal",
+        "      base_capacity: 1`n      multitask_bonus: $($declaredTotal - 1)`n      capacity_total: $($declaredTotal + 3)")
     Assert-Rejected -Name "capacity_total disagreeing with its parts" `
         -Expected "plus declared bonuses" `
-        -Content ($original.Replace("      capacity_total: $declaredTotal", "      capacity_total: $($declaredTotal + 3)"))
+        -Content $legacyShape
 
     # An entry that routes nowhere.
     $noDomain = @"

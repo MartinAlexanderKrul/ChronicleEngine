@@ -51,10 +51,48 @@ function Invoke-Validator {
     return [pscustomobject]@{ ExitCode = $exitCode; Output = ($output -join "`n") }
 }
 
+# Every case here mutates the same three files -- the chronicle it appends an
+# Event to, the registry that must cover the new identifier, and (in the
+# prospective-adoption case) the profile holding the coverage baseline. So the
+# cases share one fixture and those three files are restored from their original
+# bytes between them, rather than rebuilding the whole tree eight times.
+#
+# WriteAllBytes restores exactly what the copy produced, encoding and line
+# endings included. The guard at the end of the run is what keeps that claim
+# honest: a case that ever writes a fourth file, or a restore that ever stops
+# working, fails there instead of silently handing the next case unknown state.
+$script:FixtureFiles = @($chronicleRelative, $registryRelative, $profileRelative)
+$script:FixtureRoot = $null
+$script:FixtureBaseline = @{}
+
 function New-Fixture {
-    $fixture = Join-Path $tempRoot ([guid]::NewGuid().ToString("N"))
-    New-FixtureRepository -SourceRoot $root -DestinationRoot $fixture | Out-Null
-    return $fixture
+    if ($null -eq $script:FixtureRoot) {
+        $script:FixtureRoot = Join-Path $tempRoot ([guid]::NewGuid().ToString("N"))
+        New-FixtureRepository -SourceRoot $root -DestinationRoot $script:FixtureRoot | Out-Null
+        foreach ($relative in $script:FixtureFiles) {
+            $script:FixtureBaseline[$relative] =
+                [System.IO.File]::ReadAllBytes((Join-Path $script:FixtureRoot $relative))
+        }
+    } else {
+        foreach ($relative in $script:FixtureFiles) {
+            [System.IO.File]::WriteAllBytes(
+                (Join-Path $script:FixtureRoot $relative), $script:FixtureBaseline[$relative])
+        }
+    }
+    return $script:FixtureRoot
+}
+
+function Assert-FixtureRestored {
+    foreach ($relative in $script:FixtureFiles) {
+        $current = [System.IO.File]::ReadAllBytes((Join-Path $script:FixtureRoot $relative))
+        if (-not [System.Linq.Enumerable]::SequenceEqual(
+                [byte[]]$current, [byte[]]$script:FixtureBaseline[$relative])) {
+            Assert-True $false "Fixture leak: $relative was not restored to its baseline bytes, so cases after the first ran against unknown state."
+        }
+    }
+    $residual = Invoke-Validator -FixtureRoot $script:FixtureRoot
+    Assert-True ($residual.ExitCode -eq 0) `
+        "Fixture leak: the shared fixture no longer validates once restored, so a case wrote a file outside the restored set:`n$($residual.Output)"
 }
 
 # The coverage baseline the live profile declares.
@@ -242,6 +280,9 @@ participation_audits:
     Set-CoverageBaseline -FixtureRoot $fixture -Number $nextNumber
     $result = Invoke-Validator -FixtureRoot $fixture
     Assert-True ($result.Output -notmatch 'records no participation audit for them') "Coverage reached an Event at or before the declared baseline; adoption is no longer prospective.`n$($result.Output)"
+
+    $null = New-Fixture
+    Assert-FixtureRestored
 
     Write-Host "Participation audit contract PASSED" -ForegroundColor Green
     exit 0

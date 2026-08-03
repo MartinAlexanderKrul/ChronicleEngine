@@ -48,6 +48,32 @@ function Copy-ValidationRepository {
     }
 }
 
+# Every case below is one appended block in one ledger, so they share a single
+# copy and the ledger is restored from its original bytes between them. A copy
+# per case meant fifteen redundant copies of an 84 MB tree and proved nothing
+# the restore does not: WriteAllBytes puts the file back exactly as Copy-Item
+# left it, encoding and line endings included, and no case writes any other
+# file in the fixture.
+#
+# A case must therefore leave nothing behind but that one ledger. One that ever
+# needs to mutate a second file takes its own copy rather than widening this.
+function Invoke-Case {
+    param(
+        [string]$RepositoryRoot,
+        [string]$LedgerPath,
+        [byte[]]$LedgerOriginal,
+        [string]$Block
+    )
+
+    [System.IO.File]::WriteAllBytes($LedgerPath, $LedgerOriginal)
+    Add-Content -LiteralPath $LedgerPath -Value $Block
+    try {
+        return Invoke-Validator $RepositoryRoot
+    } finally {
+        [System.IO.File]::WriteAllBytes($LedgerPath, $LedgerOriginal)
+    }
+}
+
 # The subject campaign carries Decision 078's exact anchor, which is what the
 # staleness half compares against. Resolve it rather than hard-coding a date:
 # the live campaign advances, and a pinned date would rot into a false pass.
@@ -128,12 +154,17 @@ $failures = [System.Collections.Generic.List[string]]::new()
 
 try {
     # Baseline: the unmodified copy must pass, or every result below is noise.
-    $baseline = Join-Path $tempRoot "baseline"
-    Copy-ValidationRepository $baseline
-    $baselineResult = Invoke-Validator $baseline
+    $fixture = Join-Path $tempRoot "fixture"
+    Copy-ValidationRepository $fixture
+    $baselineResult = Invoke-Validator $fixture
     if ($baselineResult.ExitCode -ne 0) {
         throw "Baseline repository copy does not validate, so the fixtures below prove nothing:`n$($baselineResult.Output)"
     }
+
+    # The one file every case appends to, captured pristine immediately after
+    # the baseline run confirmed the copy is clean.
+    $ledgerPath = Join-Path $fixture "campaigns/$campaign/180_CURRENT_STATE.md"
+    $ledgerOriginal = [System.IO.File]::ReadAllBytes($ledgerPath)
 
     # The live repository records no commitments at all, so the gate is vacuous
     # today. Assert that plainly: it is the honest limit of this work, and if a
@@ -170,14 +201,10 @@ try {
            ShouldFail = $true;  Expect = 'must be one of' }
     )
 
-    $needIndex = 0
     foreach ($case in $needCases) {
-        $needIndex++
-        $caseRoot = Join-Path $tempRoot "need$needIndex"
-        Copy-ValidationRepository $caseRoot
-        Add-Content -LiteralPath (Join-Path $caseRoot "campaigns/$campaign/180_CURRENT_STATE.md") `
-            -Value (New-NeedBlock $case.Due $case.Status $case.Extra $case.Holder)
-        $result = Invoke-Validator $caseRoot
+        $result = Invoke-Case -RepositoryRoot $fixture -LedgerPath $ledgerPath `
+            -LedgerOriginal $ledgerOriginal `
+            -Block (New-NeedBlock $case.Due $case.Status $case.Extra $case.Holder)
 
         if ($case.ShouldFail) {
             if ($result.ExitCode -eq 0) {
@@ -190,16 +217,10 @@ try {
         }
     }
 
-    $caseIndex = 0
     foreach ($case in $cases) {
-        $caseIndex++
-        $caseRoot = Join-Path $tempRoot "case$caseIndex"
-        Copy-ValidationRepository $caseRoot
-
-        $target = Join-Path $caseRoot "campaigns/$campaign/180_CURRENT_STATE.md"
-        Add-Content -LiteralPath $target -Value (New-CommitmentBlock $case.Due $case.Status $case.Reason)
-
-        $result = Invoke-Validator $caseRoot
+        $result = Invoke-Case -RepositoryRoot $fixture -LedgerPath $ledgerPath `
+            -LedgerOriginal $ledgerOriginal `
+            -Block (New-CommitmentBlock $case.Due $case.Status $case.Reason)
 
         if ($case.ShouldFail) {
             if ($result.ExitCode -eq 0) {
@@ -212,6 +233,21 @@ try {
                 $failures.Add("$($case.Name): expected this state to be accepted, but the validator rejected it:`n$($result.Output)") | Out-Null
             }
         }
+    }
+
+    # The cases share one fixture, so a restore that ever stopped working would
+    # leak one case's block into the next and quietly turn later cases into
+    # assertions about the wrong state. A copy per case could not drift this
+    # way, so the guard is the price of dropping fifteen of them: the ledger is
+    # required to be byte-identical to its baseline, and the whole fixture is
+    # required to validate clean again.
+    if (-not [System.Linq.Enumerable]::SequenceEqual(
+            [byte[]][System.IO.File]::ReadAllBytes($ledgerPath), [byte[]]$ledgerOriginal)) {
+        $failures.Add("Fixture leak: 180_CURRENT_STATE.md was not restored to its baseline bytes after the cases ran, so every case after the first ran against unknown state.") | Out-Null
+    }
+    $residual = Invoke-Validator $fixture
+    if ($residual.ExitCode -ne 0) {
+        $failures.Add("Fixture leak: the shared fixture no longer validates after the cases ran, so a case left state behind:`n$($residual.Output)") | Out-Null
     }
 } finally {
     Remove-Item -LiteralPath $tempRoot -Recurse -Force -ErrorAction SilentlyContinue

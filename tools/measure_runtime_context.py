@@ -569,7 +569,20 @@ def main() -> int:
 
     root = Path(args.repository_root).resolve()
     try:
-        config = load_yaml(resolve_repo_path(root, args.budget_file))
+        # An absolute --budget-file is taken as given. Only the budget document
+        # itself gets this; every path *inside* it stays repo-relative, because
+        # those name real surfaces under the root being measured.
+        #
+        # The regression suite needs it: proving a budget overload is rejected
+        # means measuring the real repository against a mutated budget, and
+        # without this the mutated copy has to be written inside the repository
+        # being measured. That put a temporary directory under tools/ while
+        # other suites were recursively copying tools/, which is a race the
+        # moment the suite stops running one suite at a time.
+        budget_path = Path(args.budget_file)
+        if not budget_path.is_absolute():
+            budget_path = resolve_repo_path(root, args.budget_file)
+        config = load_yaml(budget_path)
         estimator = config["estimator"]
         divisor = int(estimator["divisor"])
         surfaces = config["surfaces"]

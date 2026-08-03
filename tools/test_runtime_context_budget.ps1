@@ -61,12 +61,13 @@ Assert-True ($clean.Output -match '100_CHARACTER_SHEET\.md\[object:ENT-000125\]\
 Assert-True ($clean.Output -match 'PASS resident: \d+ tokens[^\r\n]*baseline=\d+ delta=[+-]\d+') `
     "Baseline comparison is missing from the resident measurement."
 
-$temporaryDirectory = Join-Path $PSScriptRoot ".runtime-context-budget-test"
+# Outside the repository, under a unique name. This used to be a fixed
+# directory under tools/, which meant the one suite that mutates a budget was
+# creating and deleting a directory inside the tree other suites recursively
+# copy -- harmless while the runner was serial, a race as soon as it is not.
+$temporaryDirectory = Join-Path ([System.IO.Path]::GetTempPath()) ("chronicle-context-budget-" + [guid]::NewGuid().ToString("N"))
 $temporaryBudget = Join-Path $temporaryDirectory "RUNTIME_CONTEXT_BUDGETS.yaml"
 try {
-    if (Test-Path -LiteralPath $temporaryDirectory) {
-        Remove-Item -LiteralPath $temporaryDirectory -Recurse -Force
-    }
     New-Item -ItemType Directory -Path $temporaryDirectory | Out-Null
     $source = Get-Content -LiteralPath (Join-Path $root "system/RUNTIME_CONTEXT_BUDGETS.yaml") -Raw -Encoding UTF8
     $overload = @"
@@ -77,8 +78,7 @@ try {
     $mutated = $source -replace '(?m)^  readiness:', ($overload + "`n  readiness:")
     Set-Content -LiteralPath $temporaryBudget -Value $mutated -Encoding UTF8
 
-    $relativeBudget = "tools/.runtime-context-budget-test/RUNTIME_CONTEXT_BUDGETS.yaml"
-    $failed = Invoke-Measurement -BudgetFile $relativeBudget
+    $failed = Invoke-Measurement -BudgetFile $temporaryBudget
     Assert-True ($failed.ExitCode -ne 0) "Adding a full fetched document to bootstrap did not fail."
     Assert-True ($failed.Output -match 'FAIL bootstrap:') "Injected bootstrap overload did not identify the failing surface."
     Assert-True ($failed.Output -match 'docs/AI_GAMEPLAY_RUNTIME_PROFILE\.md') "Failure report did not name the exact contributor."

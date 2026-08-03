@@ -145,7 +145,7 @@ canonical_state:
 
 ### ENT-000127 — Marcus Aldridge
 
-The crew's sensor: an awakened whose gift reads Gate interiors — layout, population density, and whether a dungeon is holding something its assessment missed. Quiet and analytical; he is Tanya Voss's established partner and reads the space on entry so the crew knows what it is actually walking into.
+The crew's sensor: an awakened whose gift reads Gate interiors — layout, population density, and whether a dungeon is holding something its assessment missed. Quiet and analytical; he is Tanya Voss's established partner and reads the space on entry so the crew knows what it is actually walking into. **Disambiguation: not `ENT-000184` Marcus Whitlow**, the C-Rank striker recruited to Alexander's forming crew. Both are live and both answer to "Marcus" — this entry additionally carries the bare first name as a current alias, so an unqualified "Marcus" in narration is genuinely ambiguous. Use the surname.
 
 ```yaml
 id: ENT-000127
@@ -166,6 +166,7 @@ aliases:
   - name: "Marcus"
     quality: current
 canonical_state:
+  rank: "**E-Rank** — **Authored at the NPC audit from what canon already had him do**, on the same reasoning the 1.41 follow-up used for `ENT-000126`. Canon is explicit that he is **better at field triage-by-read than at combat**, and records him carrying **minimal gear and no visible weapon at all** — the inverse of the heavier-than-starter kit that resolved Tanya Voss to D. Section 9.4 sets **no legal combat minimum** at an E–D Gate, so nothing in the Red Line Corridor contract required him to be combat-rated, and the crew ran the **waiver floor of five** rather than a full strike element. An unarmed reader riding a waiver-floor crew is E-Rank work. Resolved by that Rank under Section 13.1; pools are supplied by Rank under the same section and are not separately authored here. **His `Deep Read` signature stands regardless** — Section 13.6 withholds an *authored* signature at E-Rank but expressly permits one to be named where the fiction needs it, and this crew's entire entry procedure depends on his."
   location: ENT-000087
   condition: "Healthy; no adverse condition established"
   capabilities: "Sensor working type: reads Gate interior layout, population density, and anomalies on entry. Tanya Voss's established clearing partner; better at field triage-by-read than at combat."
@@ -197,6 +198,7 @@ aliases:
   - name: "Elias Voss"
     quality: current
 canonical_state:
+  rank: "**D-Rank** — **Authored at the NPC audit from what canon already had him do**, on the identical reasoning the 1.41 follow-up used for his sister `ENT-000126`. That ruling turned on kit: Tanya resolved to D because her gear is *recorded as heavier than an E-Rank starter's*. Elias's is recorded heavier still — a **reinforced plated jacket** and a **heavy reinforced steel warhammer**, carried as the crew's dedicated close-combat line-holder on a contract accepted as an **unconfirmed D** (`EVT-000059`). Granting Tanya D on kit and withholding it from the better-equipped striker beside her would be inconsistent, so it is not withheld. Two-plus years licensed argues for the **bottom** of D, not against D. Resolved by that Rank under Section 13.1; pools are supplied by Rank under the same section and are not separately authored here.\n\n  **Held at D and no higher.** Section 9.4 sets no legal combat minimum at an E–D Gate, the crew ran the **waiver floor of five** rather than a full strike element, and the Gate proved true **E-Rank** — nothing in the record reaches above D, and `Groundbreak` is resolved at D-Rank magnitude accordingly."
   location: ENT-000087
   condition: "Healthy; equipped with a reinforced steel hammer"
   capabilities: "Striker working type, blunt-force specialty; two-plus years licensed. Holds a line in close combat."
@@ -228,6 +230,7 @@ aliases:
   - name: "Dr. Sarah Chen"
     quality: current
 canonical_state:
+  rank: "**E-Rank** — **not authored here but transcribed from resolved play.** The Red Line Corridor clear records her field-touch on Alexander explicitly as **`E-Rank baseline, +10` (Health 10→20)**, and Section 13.5 fixes a field-touch at one standard-hit baseline of the *mender's own Rank* — ¼ of Rank Health, which is 10 only at E-Rank's 40. Her Rank was therefore settled by a resolved outcome long before this audit; the field was simply never written down. Six months licensed at the time, consistent with it. Resolved by that Rank under Section 13.1; pools are supplied by Rank under the same section.\n\n  **What E-Rank means for her Section 13.5 effects, since they are magnitude-bearing:** three field-touches per Gate clear at **+10 Health each**, and the party's one-tier post-fight injury conversion applies only to injuries at **E-Rank or below**. This is already how the clear resolved — she spent two touches restoring Health and did not clear the severity of Alexander's Severe wound. **Her `Mending Touch` signature stands at E-Rank**: Section 13.6 withholds an *authored* signature at E-Rank but expressly permits one to be named where the fiction needs it, and a mender's whole function is that gift."
   location: ENT-000087
   condition: "Healthy; carries a field medical kit"
   capabilities: "Mender working type: touch-based restorative ability, able to close wounds and restore Health mid-fight — a scarce and valuable gift (~1 in 12 awakened). Six months licensed; twice declined Horizon Guild recruitment to stay independent. Trained for crisis triage. Field-touch magnitudes per Profile Section 13.5."
@@ -503,10 +506,11 @@ canonical_state:
   rank: "**C-Rank** — **Authored at the 1.41 follow-up from what canon already had him do.** He is the strike captain who clears and secures a **C-Rank** Gate's interior so the harvest element can work behind the line (`EVT-000224`). Section 9.4's legal minimum for a C-Rank Gate is four C-Rank-capable hunters; running its point element is C-Rank work by definition. Resolved by that Rank under Section 13.1."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. He does this for a living, job after job, and calls the fall-back signal for everyone behind him."
   pools: "**Maximum Health 262, maximum Mana 131** — Section 6.1 table (250 / 125) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 13, Signature 32, Boss-tier 65**. Section 5.3 running-dry threshold **32**."
+  signature_ability: "**Settled.** His mana reads whether a cleared space has actually gone quiet or is only between things — whether *secured* is still true. It is a working captain's gift rather than a spectacular one, and it is why the fall-back call is his to make and why the twenty-minute window warning on the 2026-08-09 job (`EVT-000224`) came when it did. A read only: it raises no barrier and holds no line for anybody, **does not trigger Section 13.5's warden effect** despite the line-securing language of his job description, and leaves his strikes as C-Rank standard hits."
   location: ENT-000087
   condition: "Healthy; combat-active"
   capabilities: "Runs the strike element on Ada Reyes's contractor jobs — clears and secures a Gate's interior so the harvest element can work behind the line, calls the fall-back signal."
-  appearance: "Lean, weathered, a working strike captain rather than a showpiece; carries a pump shotgun slung across his back."
+  appearance: "Forties, Latino, lean and rope-muscled, weathered in the specific way of a man who has spent a decade indoors in places that are worse than outdoors. Black hair going grey and cropped without ceremony; a lined, narrow face; flat dark eyes that price a new hire in about two seconds and move on. Practical, unbranded C-Rank kit with the wear concentrated exactly where a point man's would be, and a pump shotgun slung across his back that he checks by touch without looking at it. A working strike captain rather than a showpiece, and visibly uninterested in being anything else."
   personality: "Assessing rather than dismissive on first meeting a new hire; brisk and businesslike on the job."
   situation: "Ran point on the 2026-08-09 C-Rank harvest job (`EVT-000224`), gave Alexander a reserved once-over on introduction, cleared the Gate's interior with his strike element without incident, and called the twenty-minute window warning that sent the harvest element back to the fence line. No injuries reported; job closed clean."
 ```
@@ -539,6 +543,7 @@ canonical_state:
   location: ENT-000087
   condition: "Healthy; not established as combat-active"
   capabilities: "Ordinary harvest-hire miner working the same contractor's C-Rank jobs as Alexander."
+  appearance: "Thirties, Black, Ghanaian-American (the Osei name), of middling height and thickly built through the shoulders from years on a pick. Hair kept very short, a broad face that defaults to good humor, an easy gap-toothed grin he gives away cheaply. Harvest-hire kit rather than combat kit — heavy gloves, knee pads worn through, a dust-greyed jacket he clearly does not bother washing between jobs. Moves at the unhurried pace of a man paid by the shift and not the swing."
   personality: "Easy, unbothered, friendly toward another harvest hire on sight."
   situation: "Worked the 2026-08-09 C-Rank harvest job (`EVT-000224`) alongside Alexander and Marisol Ruiz; declared 11 C-Rank crystals to Ada's manifest, an ordinary solid haul. Paid $5,500 off the support element's declared-pool split."
 ```
@@ -571,6 +576,7 @@ canonical_state:
   location: ENT-000087
   condition: "Healthy; not established as combat-active"
   capabilities: "Ordinary harvest-hire miner working the same contractor's C-Rank jobs as Alexander."
+  appearance: "Late twenties, Latina, small and wiry, with the forearms of someone who does this work for a living and the posture of someone who is good at it. Dark hair braided back tightly and shoved under a hard hat; quick brown eyes; a face that goes openly satisfied whenever a seam comes out clean and makes no attempt to hide it. Harvest kit assembled cheaply and kept in better order than her crewmates'. Checks her own haul twice before declaring it."
   personality: "A little pleased with her own results; easy nod toward another harvest hire on sight."
   situation: "Worked the 2026-08-09 C-Rank harvest job (`EVT-000224`) alongside Alexander and Denny Osei; declared 14 C-Rank crystals to Ada's manifest, drawing an approving nod from Ada. Paid $7,000 off the support element's declared-pool split."
 ```
@@ -995,7 +1001,7 @@ canonical_state:
 
 ### ENT-000168 — Milo
 
-A hunter met at the Windy City Hunters Coalition's training grounds, 2026-08-05. Sensor-adjacent with minor perception ability but no notable combat skill; trains reaction footwork as compensation. Surname not given.
+A hunter met at the Windy City Hunters Coalition's training grounds, 2026-08-05. Sensor-adjacent with minor perception ability but no notable combat skill; trains reaction footwork as compensation. **Surname `Brandt`, on the ledger's record — but he did not give it to Alexander**, who has only ever had "Milo"; the ledger is world-canon, not the protagonist's knowledge, and nothing has yet put the full name in front of him.
 
 ```yaml
 id: ENT-000168
@@ -1011,6 +1017,8 @@ subtype: sensor-adjacent hunter
 scope: local
 lifecycle: active
 aliases:
+  - name: "Milo Brandt"
+    quality: current
   - name: "Milo"
     quality: current
 canonical_state:
@@ -1313,6 +1321,8 @@ subtype: harvester
 scope: local
 lifecycle: active
 aliases:
+  - name: "Ruth Kowalczyk"
+    quality: current
   - name: "Ruth"
     quality: current
 canonical_state:
@@ -1331,7 +1341,7 @@ canonical_state:
 
 ### ENT-000144 — Denny
 
-Harvester on the Sable & Kern crew; younger, wiry, worked the second assigned vein alongside Kern.
+Harvester on the Sable & Kern crew; younger, wiry, worked the second assigned vein alongside Kern. **Disambiguation: not `ENT-000179` Denny Osei**, a different harvest-element miner on the unrelated corporate-adjacent contractor's crew. The shared first name is coincidence, and both are live — prefer the full name in narration.
 
 ```yaml
 id: ENT-000144
@@ -1347,6 +1357,8 @@ subtype: harvester
 scope: local
 lifecycle: active
 aliases:
+  - name: "Denny Prosser"
+    quality: current
   - name: "Denny"
     quality: current
 canonical_state:
@@ -1488,6 +1500,7 @@ canonical_state:
   location: ENT-000087
   condition: "Healthy; hard hat and Coalition-branded harvest vest, clipboard and tablet manifest"
   capabilities: "Runs Coalition-posted harvest-labor crews; brisk and process-driven rather than personable. Not established as a combatant."
+  appearance: "Fifties, white, short and square-built, with the flat-footed stance of someone who runs a staging line standing up all day. Iron-grey hair cut bluntly at the ear; reading glasses she pushes up and forgets about; a brisk, unsmiling face that is not unfriendly so much as fully occupied. A clipboard she still prefers to a tablet, and a hi-vis vest worn over ordinary clothes. Says a hire's name once, at intake, and does not say it again unless there is a problem."
 situation: "Ran the 2026-08-04 C-Rank harvest posting near the old rail corridor — two other freelancers plus Alexander, each with an individually marked section, standard 80/20 split (her cut off the top). Checked Alexander's twenty declared crystals against her own tally without discrepancy and closed the manifest on schedule at 18:00. Later named him 'near the top of her list for future work needing a hitter who doesn't need his hand held' (`OBJ-20`).
 
   **Texted 2026-08-12 evening (`EVT-000312`).** Answered honestly rather than encouragingly: nothing available, her crew's mid-contract for two more weeks. Confirmed Alexander stays on her list regardless."
@@ -1527,7 +1540,7 @@ history: "Formed 2026-08-04 when Kesha Morrison booked Alexander onto Denise Fer
 
 ## Campaign-Local Figures — Nikitas (2026-08-06)
 
-### Voula
+### ENT-000169 — Voula Stamatis
 
 ```yaml
 id: ENT-000169
@@ -1542,6 +1555,8 @@ type: Character
 scope: campaign
 lifecycle: active
 aliases:
+  - name: "Voula Stamatis"
+    quality: current
   - name: "Voula"
     quality: current
 relationships: []
@@ -1556,7 +1571,7 @@ canonical_state:
   history_with_owen: "Fed the Loyola Park lifeguard staff across the three summers Owen worked the beach, on an off-menu plate for four dollars, and stopped charging some of them entirely while lying about it. Recognised him instantly on the door bell after nine years, named him without hesitation, and corrected his 'nine years' to twelve — nine is when the *last* of the guards stopped coming, which is not the same date as when Owen did. She has kept the corner booth by the kitchen — the guard table — permanently unseated ever since, storing newspapers and ketchup on it, and cleared it for him in front of the whole room."
 ```
 
-### Nikitas
+### ENT-000170 — Nikitas
 
 ```yaml
 id: ENT-000170
@@ -1582,7 +1597,7 @@ canonical_state:
   known_to: "Owen Callahan (`ENT-000139`), intimately and historically. Alexander Pendragon (`ENT-000125`) as of 2026-08-06. Kesha Morrison named neither this place nor Voula to Alexander at any point."
 ```
 
-### Marsh
+### ENT-000172 — Curtis Marsh
 
 An employee of Titan Secure (`ENT-000171`), reached by phone during Alexander's guard-job pretext call, 2026-08-06 (`EVT-000188`). Ordinary, brisk, and entirely uninterested beyond correcting the mismatched pretext and politely declining to name a client.
 
@@ -1602,12 +1617,15 @@ lifecycle: active
 aliases:
   - name: "Reyes"
     quality: false-claim
+  - name: "Curtis Marsh"
+    quality: current
   - name: "Marsh"
     quality: current
 canonical_state:
   location: "Chicago's warehouse district (`worlds/gatefall/`, `ENT-000087`); reached by phone only, exact location unestablished"
   condition: "Healthy; voice only, never met in person"
   capabilities: "Ordinary employee of Titan Secure, handles phone inquiries. Not established as combat-active or otherwise notable."
+  appearance: "**Never seen — voice only.** The single contact was a phone call (`EVT-000188`), so no physical description is established and none is authored here; inventing one would record as canon something the fiction has never shown. What *is* established is the voice: a flat, mid-range, faintly nasal Chicago delivery, unhurried, with the practiced patience of someone who answers this phone all day and has heard a confused pretext before. Keyboard audible under the call throughout."
   personality: "Bored-professional, helpful within limits, genuinely unbothered by a stranger's confused pretext. Holds a clean line on client confidentiality without needing to be pressed twice."
   situation: "Answered Alexander's call under his guard-job pretext (`EVT-000188`); corrected him that Titan Secure does access control, not staffing, volunteered the company's general client base (commercial, warehouses, car lots), and declined outright to name which client sits at the fenced warehouse (`ENT-000166`). Ended the call first. A second call from Alexander on any pretext is now materially harder."
 ```
@@ -1635,11 +1653,12 @@ aliases:
 canonical_state:
   rank: "**D-Rank** — licensed D-Rank hunter on Ironlines 2026-08-08 trial crew; resolved by that Rank under Section 13.1."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 at the 1.41 adoption (`EVT-000248`). Point element — he reads and takes doors first, which makes him the man who absorbs first contact for the crew."
-  pools: "**Maximum Health 105, maximum Mana 52** — Section 6.1 table (100 / 50) × 1.05, floored. Section 5.2 tier costs: **Minor 10, Signature 13, Boss-tier 26**. Section 5.3 running-dry threshold **13**."
+  pools: "**Maximum Health 105, maximum Mana 52** — Section 6.1 table (100 / 50) × 1.05, floored. Section 5.2 tier costs: **Minor 5, Signature 13, Boss-tier 26**. Section 5.3 running-dry threshold **13**."
   signature_ability: "**Threshold.** For the moment he crosses an opening, his mana reads what is on the other side of it. It is why he takes doors first, why the crew lets him, and why he is dry about it. Reach and method only; his strikes remain D-Rank standard hits and no Section 13.5 effect attaches."
   location: "4110 W Fullerton, Chicago — the confirmed D-Rank Gate site (`worlds/gatefall/`); left the Gate at trial's close"
   condition: "Favoring a bruised shoulder taken crossing the elites' chokepoint; upright, no injury tier, untreated"
   capabilities: "D-Rank licensed hunter, point-element specialist — reads and takes doors first. Dry, understated manner under pressure."
+  appearance: "Late thirties, Black, tall and long-limbed with a spare, economical build — no more muscle on him than the job requires and none of it for show. Close-shaved head, a short beard going patchy grey at the chin, heavy-lidded eyes that make him look bored right up until they don't. Serviceable D-Rank kit, scuffed hardest across the left shoulder and forearm where a man who goes through doorways first would wear it. Stands slightly angled to whatever door is nearest, out of habit rather than intent."
   personality: "Direct, self-aware about his own bad habits (dry deflection under adrenaline); genuinely grateful rather than proud once corrected on it."
   situation: "Assigned point by Wade for the trial. Ate the first cluster's ambush unwarned — no lead had been called — and was pulled off it by Alexander's Exploit-Pattern-read Twin Fang kill before the creature could do worse. Snapped dry immediately after being freed; caught and corrected himself unprompted once Alexander called it out, thanking him plainly. Confirmed to Alexander, honestly, that Ironline crews normally have an assigned lead before entry and that this trial's lack of one was Wade's deliberate omission, not standard practice. Contributed to the declared loot pool from the ten kills (11 crystals, 3 cores, split under the standard leader's-cut convention once filed). No standing relationship formed; Alexander does not intend further contact."
 ```
@@ -1672,6 +1691,7 @@ canonical_state:
   location: "4110 W Fullerton, Chicago — the confirmed D-Rank Gate site (`worlds/gatefall/`); left the Gate at trial's close"
   condition: "Untouched, no injury"
   capabilities: "D-Rank licensed hunter, ranged support and sensor-rig operator — first population read at Gate entry (twelve commons, two elites, boss, matching Alexander's independent Keen Sense confirmation)."
+  appearance: "Thirties, South Asian (the Iyer name), of average height and neatly, unremarkably built. Black hair cut to the jaw and clipped back off her face; steady dark eyes; an even, professional expression that does not shift much whether she is being thanked or contradicted. Carries a shoulder-mounted sensor rig she treats as expensive equipment rather than as a prop, and keeps a hand near it. The tidiest-looking member of a borrowed crew, in a way that reads as competence rather than fussiness."
   personality: "Professional, unbothered by pressure, holds her ground plainly when criticized rather than deferring."
   situation: "Provided the opening sensor read and covered from range throughout, though columns denied her a clean line at the first cluster and she never fired a shot in the whole trial — the boss died to Alexander's ambush before she had an angle either time. Pushed back directly when Alexander criticized her for not firing sooner, correctly noting she'd had no clean shot through structural cover without risking her own crew. Contributed to the declared loot pool. No standing relationship formed; Alexander does not intend further contact."
 ```
@@ -1704,6 +1724,7 @@ canonical_state:
   location: "4110 W Fullerton, Chicago — the confirmed D-Rank Gate site (`worlds/gatefall/`); left the Gate at trial's close"
   condition: "Untouched, no injury"
   capabilities: "D-Rank licensed hunter, perimeter awareness and rear-guard — a faded BGM sensor-training patch on his sleeve, self-stitched."
+  appearance: "Forties, Japanese-American, of middling height and solidly built, with the settled heaviness of a man who has stopped growing into the job and simply does it. Greying black hair worn a little shaggy, a wide flat face, dark eyes that keep moving over the edges of a space rather than its middle. Older D-Rank kit, well past fashionable and immaculately kept, with a faded BGM sensor-training patch stitched back onto the sleeve by hand — the stitching visibly his own, and visibly redone more than once. Habitually stands where he can see the way everyone came in."
   personality: "Quiet, watchful, says little; the crew's steadiest presence under the chaos of the first ambush."
   situation: "Held the six the entire trial without incident; nothing ever came from behind. Drew one elite off its post with deliberate noise during the compressed second-cluster clear, letting it be isolated and killed apart from its partner. Contributed to the declared loot pool. No standing relationship formed; Alexander does not intend further contact."
 ```
@@ -1736,6 +1757,7 @@ canonical_state:
   location: "4110 W Fullerton, Chicago — the confirmed D-Rank Gate site (`worlds/gatefall/`); left the Gate at trial's close"
   condition: "A shallow forearm gash, self-treated/ignored, no injury tier"
   capabilities: "D-Rank licensed hunter, flex striker — goes wherever the fight opens rather than holding a fixed post."
+  appearance: "Mid-twenties and reading younger, white, small and quick and never entirely still — up on the balls of her feet more often than not. Reddish-brown hair cut short and messily, freckles across the nose, wide pale eyes that go straight to whoever in a room has the most reputation. Mismatched D-Rank kit, some of it obviously secondhand, worn with more enthusiasm than system. The newest-looking hunter on any crew she is on, and the first to say so."
   personality: "Restless, eager, openly impressed by reputation; the youngest-reading member of the borrowed crew."
   situation: "Closed on the ambushed Reggie fastest of the crew but arrived after Alexander had already resolved it. Backed Reggie on the left-side beast during the first cluster's clear without landing the finishing blow. Contributed to the declared loot pool. No standing relationship formed; Alexander does not intend further contact."
 ```
@@ -1766,6 +1788,7 @@ canonical_state:
   location: "an unnamed surplus/pawn shop in Chicago's warehouse district"
   condition: "No injury or impairment established."
   capabilities: "Seller of miscellaneous awakened-adjacent equipment; no Rank, faction, history, or technical specialty established."
+  appearance: "Sixties, white, thin and slightly stooped, with the pallor of a man who keeps shop hours in a building with no windows worth the name. Wispy grey hair combed over without conviction; a long face; watery eyes behind smeared glasses he cleans on his shirt and does not improve. A cardigan gone through at both elbows over a shirt buttoned to the throat. Sits behind the counter of a crowded surplus shop among stock he can locate by memory and not by system."
   situation: "Sold Alexander Pendragon a Gate Direction Finder [E-Rank] with its calibration key and a six-month warranty for $800 cash. The device's origin and Elias's motives remain unestablished. He was not told about the System or the private Keen Sense result.
 
   **Repair, 2026-08-11 — an omission from the original sale.** At that same sale he also made a standing informal offer, never previously recorded: he occasionally gets other unusual stock through — grey-market items, sometimes information — and told Alexander to come back and ask first rather than let him fence it out to whoever walked in. Corrects an under-recorded gap in `EVT-000216`; no new fictional time or state, only the missing fact.
@@ -1797,6 +1820,7 @@ canonical_state:
   location: "the Rogers Park two-bedroom listing, second-floor front"
   condition: "No injury or impairment established."
   capabilities: "Leasing agent for Lakeline Residential; brisk, professional, tactful — gave the couple room on the balcony and in the second bedroom without being asked. No Rank, faction, or combat capability established; a civilian."
+  appearance: "Late forties, white, trim and carefully put together — a good blazer, low heels she can actually walk a building in, a lanyard of unit keys she manages without rattling. Blonde hair cut to the shoulder and blown out; light eyes; a warm, practiced, entirely professional smile that arrives on cue and leaves the same way. Carries a tablet with the listings on it and glances at it far less than she pretends to. Steps out onto a landing at exactly the right moment to give people a minute alone."
   situation: "Met Alexander and Owen in person for the first time 2026-08-10, 2:00 PM (`EVT-000256`), after a front-desk coordinator (unnamed, same firm) booked the slot off Alexander's morning callback. Walked them through the full flat — balcony, second bedroom, bathroom — confirmed the unit was updated four years back (plumbing and electric), quoted terms exactly as listed ($1,950/mo, first and last plus one month's deposit, no broker's fee), and took the application on the spot at the couple's request. Told them landlord sign-off is typically fast, two to three business days for standard processing. No further history established."
 ```
 
@@ -1822,10 +1846,12 @@ aliases:
     quality: current
 canonical_state:
   rank: "**C-Rank**, Coalition-registered — one of the Coalition's 22 (`worlds/gatefall/institutions/windy-city-coalition/250_INSTITUTION_LEDGER.md`, `membership_rank_distribution`). Resolved by that Rank under Profile Section 13.1."
+  signature_ability: "**Measure.** Her mana runs down the blade into whatever it touches and comes back with what is left in the thing — how much fight is still standing in front of her, read through the weapon at the moment of contact. A striker's gift that is really an assessor's, and the reason her insistence on seeing a plan before she signs onto it reads as professional judgment rather than nerves: she is the member of a crew who knows *first*, and by the hit rather than the guess, that a pull has gone wrong. Method and reach only; no magnitude beyond a C-Rank standard hit and no Section 13.5 effect attaches."
   location: ENT-000087
   condition: "Healthy; not currently engaged on any posting."
-  capabilities: "C-Rank striker, six years licensed. No signature ability authored yet — not yet established in play (Profile Section 13.6 requires one at C-Rank or above; owed at her first scene)."
-  personality: "Not yet established in play beyond Kesha's secondhand read: capable, currently sitting out rather than rejoining something reckless."
+  capabilities: "C-Rank striker, six years licensed — an experienced hand currently choosing not to take combat crew work rather than being unable to get it."
+  appearance: "Early thirties, Latina, of average height and compactly, durably built — six years of the work with none of the showiness some of it produces. Black hair cut to the shoulder and tied back out of the way; steady dark eyes that hold contact a beat longer than is comfortable when she is deciding something; a level, unhurried face that does not spend expression it doesn't need to. Her kit is good, thoroughly maintained, and has plainly not been worn in anger for about six weeks. **Authored ahead of the first face-to-face meeting** (locked for 2026-08-15 19:00, `EVT-000318`), so the entry is table-ready when it happens; nothing here has been shown to Alexander yet."
+  personality: "Businesslike and economical, in text and by report — brief replies, no small talk, and a flat refusal to commit to anything she has not seen for herself. Not gun-shy in the sense of frightened: she waited five extra days to meet both crew leads together rather than take the faster meeting, which is a person exercising judgment rather than avoiding a decision. Says the uncomfortable thing plainly ('I got burned trusting a plan I never saw') instead of working around it."
   situation: "**Named, not yet met.** Kesha Morrison surfaced her by name when asked to help staff Alexander and Owen's new crew (`EVT-000273`): Reyna's five-hunter crew broke apart roughly six weeks ago after a D-Rank pull went bad — two members quit outright after a near-death the crew's own lead had walked them into under-prepared, and the crew never re-formed. Since then Kesha's desk has only placed her on solo-eligible E/D-Rank support work; Reyna has not signed onto another combat crew in the interval. Kesha's read, given secondhand rather than confirmed: 'good striker, gun-shy about who she trusts to plan a pull now, and I don't blame her.' No direct contact with Alexander or Owen yet — Kesha is proposing to reach out on their behalf, not handing over her number unasked.
 
   **Kesha's callback, 2026-08-11 afternoon (`EVT-000296`).** Reyna is genuinely interested but won't commit blind — her own words to Kesha: 'I got burned trusting a plan I never saw. Not doing that again.' She wants to meet Alexander and Owen in person before saying yes to anything. Kesha gave her Alexander's number.
@@ -1855,6 +1881,8 @@ subtype: salvage dealer / informant
 scope: local
 lifecycle: active
 aliases:
+  - name: "Petra Nowak"
+    quality: current
   - name: "Petra"
     quality: current
 relationships:
@@ -1870,7 +1898,7 @@ canonical_state:
 
 ### ENT-000184 — Marcus Whitlow
 
-C-Rank striker, first candidate for Alexander and Owen's new crew, recruited through Petra's referral. Met in person 2026-08-11.
+C-Rank striker, first candidate for Alexander and Owen's new crew, recruited through Petra's referral. Met in person 2026-08-11. **Disambiguation: not `ENT-000127` Marcus Aldridge**, the sensor on Tanya Voss's crew. Use the surname in narration.
 
 ```yaml
 id: ENT-000184
@@ -1891,10 +1919,14 @@ aliases:
 relationships:
   - REL-000088
 canonical_state:
-  rank: "**C-Rank**, confirmed directly by Flux Sight (`EVT-000289`): Health 250/250, Mana 125/125, no individual variance authored yet."
+  rank: "**C-Rank**, confirmed directly by Flux Sight (`EVT-000289`). Resolved by that Rank under Section 13.1."
+  pool_variance: "**None** — Flux Sight (`EVT-000289`) read the Section 6.1 table values exactly (250 / 125), which is what a variance of none looks like on the card. Permanent, never rerolled."
+  pools: "**Maximum Health 250, maximum Mana 125** — Section 6.1 table (250 / 125), flat, as directly confirmed by Flux Sight (`EVT-000289`). Section 5.2 tier costs: **Minor 12, Signature 31, Boss-tier 62**. Section 5.3 running-dry threshold **31**."
+  signature_ability: "**Clean Line.** His mana runs the edge as a thin bright line that finishes the cut his arm only started — the stroke completes along the path he chose even where his body's follow-through does not, so the blade arrives on a line his stance should not have been able to give it. Precise rather than spectacular, and that is the whole problem with it: it is exactly the gift that makes a hunter reliable enough to be left on unremarkable contract work for two years, which is the thing he is afraid of. Method and reach only; no magnitude beyond a C-Rank standard hit and no Section 13.5 effect attaches."
   location: ENT-000087
   condition: "Healthy, no injury."
-  capabilities: "C-Rank striker, two years with a mid-tier guild doing largely unremarkable contract work. Has twice declined guild-internal transfers because neither offered anything genuinely different from what he already had. No signature ability authored yet — owed at his first dangerous scene (Profile Section 13.6)."
+  capabilities: "C-Rank striker, two years with a mid-tier guild doing largely unremarkable contract work. Has twice declined guild-internal transfers because neither offered anything genuinely different from what he already had."
+  appearance: "Twenty-six, white, medium height and compactly muscled — the even, maintained build of someone who trains consistently and has never needed to train desperately. Mid-brown hair kept in a plain short cut he has clearly had for years; grey-blue eyes; a steady, pleasant, slightly closed face that takes a moment to warm. Good mid-tier guild kit, properly fitted and unscuffed in the places that suggest he has not been anywhere genuinely bad in a while. Sits still, but his hands don't — a tell that runs directly against the composure of everything above them."
   personality: "Restless under a competent, steady surface — Keen Sense (legendary read, `EVT-000289`) confirmed his stated boredom is real rather than performed: specifically a fear of stagnation, of being skilled enough to coast and dreading that coasting is all his career amounts to. Direct once past initial wariness; doesn't hide genuine reactions well, including being visibly unsettled by how accurately Alexander read him."
   situation: "**Recruited, 2026-08-11 (`EVT-000284`, `EVT-000286`, `EVT-000288`-`EVT-000289`).** Named by Wade Bishop to Petra's counterpart ask, then independently by Petra herself when Alexander traded her the warehouse lead — same name from two separate sources. Cold-called by Alexander citing Petra's referral; agreed to lunch within the hour. At Dobek's Diner, Alexander read him with Keen Sense and Flux Sight (undisclosed to Marcus) confirming sincerity and Rank, then pitched the crew directly: chain of command, frequent training, a stable roster, real Gate-Rank progression from C upward rather than a ceiling. Marcus committed on the spot — **'I'm in'** — and agreed to a sparring session to follow. First name secured toward the new crew (`OBJ-26`)."
 ```
@@ -1920,11 +1952,15 @@ aliases:
   - name: "Soraya Delgado"
     quality: current
 canonical_state:
-  rank: "**C-Rank**, per Wade Bishop's secondhand referral. Not independently confirmed."
+  rank: "**C-Rank** — Wade Bishop's secondhand referral, since **independently confirmed by Flux Sight** (`EVT-000319`). Resolved by that Rank under Section 13.1."
+  pool_variance: "**None** — Flux Sight (`EVT-000319`) read the Section 6.1 table values exactly (250 / 125). Permanent, never rerolled."
+  pools: "**Maximum Health 250, maximum Mana 125** — Section 6.1 table (250 / 125), flat, as directly confirmed by Flux Sight (`EVT-000319`). Section 5.2 tier costs: **Minor 12, Signature 31, Boss-tier 62**. Section 5.3 running-dry threshold **31**."
+  signature_ability: "**Downrange.** Her mana rides the shot out and she reads the field from where it lands — she sees the room from her own impact point, which puts the crew's best forward eye at the back of the formation being spent as generic damage. Section 13.5 files a signature that guides a shot under *archer*; hers guides the **shooter** instead, and that is exactly the tactical judgment two years of escort contracts never once called on (`EVT-000319`) and exactly what the shared-picture model she negotiated with Alexander is built to use. Reach and method only; her shots remain C-Rank standard hits and no Section 13.5 effect attaches."
   location: ENT-000087
-  condition: "Not established — named, not yet met."
-  capabilities: "Not established in play beyond Wade's secondhand note: ranged support, two years on the same guild B-team running escort contracts."
-  personality: "Not established beyond Wade's read: capable at her job, openly bored by it."
+  condition: "Healthy, no injury — met in person 2026-08-13 (`EVT-000319`)."
+  capabilities: "C-Rank ranged support, two years on a guild B-team running escort contracts that never once called on her tactical judgment. Sound, unflashy shooting; the underused half of her is the read behind it."
+  appearance: "Late twenties, Latina, of average height and lightly built, standing with the settled, squared stillness of someone trained to shoot from a fixed position. Dark hair pulled back into a low, practical knot; brown eyes that move over a space in a deliberate sweep rather than darting; a composed face that gives away very little until she decides otherwise. Wears her own kit rather than guild issue — lighter than a striker's, chosen around a clear sightline and a fast reload, and visibly maintained by someone who cares about it. Arrives early to places and picks where she stands before anyone else does."
+  personality: "Cautious in a considered way rather than a fearful one — asks pointed, specific questions and waits for the whole answer. Has been promised 'real training' before and had it not materialize, and says so plainly instead of testing for it obliquely. Presses once on a thing that matters, then lets it go rather than forcing it."
   situation: "**Named, not yet met** (`EVT-000293`). One of four hunters Wade Bishop referred at Alexander's request for the new crew (`OBJ-26`).
 
   **Direct contact made, 2026-08-11 ~21:00 (`EVT-000298`).** Alexander texted her the pitch directly. She replied within the hour, genuinely interested but cautious — asked pointed questions about what 'real training' actually means in practice, reading as someone who has heard that promise before and had it not pan out.
@@ -1953,11 +1989,13 @@ aliases:
   - name: "Grant Okwuosa"
     quality: current
 canonical_state:
-  rank: "**C-Rank**, per Wade Bishop's secondhand referral. Not independently confirmed."
+  rank: "**C-Rank** — Wade Bishop's secondhand referral, since **confirmed directly by Flux Sight** (`EVT-000317`). Resolved by that Rank under Section 13.1. Exact pool figures were not recorded at the read; Section 13.1 supplies them from Rank until they are."
+  signature_ability: "**Pry.** His mana turns a blow into leverage: what he hits does not merely take the hit, it comes *open* — guard broken, flank turned, footing spoiled — for whoever arrives next. The wound is an ordinary C-Rank standard hit; the opening it leaves behind is the point of him, and it is a frontline gift that only pays if someone else is there to use it. It is why he could answer without hesitating that letting a better-placed crewmate take the killing blow costs him nothing (`EVT-000317`): his gift has never drawn a line between his opening and somebody else's. Method only; no magnitude beyond his Rank and no Section 13.5 effect attaches."
   location: ENT-000087
-  condition: "Not established — named, not yet met."
-  capabilities: "Not established in play beyond Wade's secondhand note: frontline striker, passed over for a lead slot twice on seniority grounds rather than skill."
-  personality: "Not established beyond Wade's read: still shows up and does the work, but visibly wearing on him."
+  condition: "Healthy, no injury — met in person and recruited 2026-08-13 (`EVT-000317`)."
+  capabilities: "C-Rank frontline striker, passed over for a lead slot twice on seniority grounds rather than demonstrated skill. Reads and works to other people's openings as readily as his own."
+  appearance: "Early thirties, Black, Nigerian-American (the Okwuosa name), tall and heavily built through the shoulders and back — a genuine frontline frame, and one he plainly maintains. Hair cut close, a short beard kept neat, warm dark eyes set in a face that is quick to open and slow to close again. Well-worn frontline kit, scarred across the forearms and chestplate where a man who takes first contact would expect it to be. Carries himself with an easy, unguarded physical confidence that sits oddly against how carefully he chooses his words about his own career."
+  personality: "Steady and willing on the surface, with a specific and well-earned frustration underneath it: not about credit, which he genuinely does not need, but about being pre-judged on tenure before anyone has watched him work. Direct when the subject is finally named out loud, and quick to test whether a promise about it is real."
   situation: "**Named, not yet met** (`EVT-000293`). One of four hunters Wade Bishop referred at Alexander's request for the new crew (`OBJ-26`).
 
   **Direct contact made, 2026-08-11 ~21:00 (`EVT-000298`).** Alexander texted him the pitch, naming the earned-not-seniority framing directly. He replied fast and eager — 'Wade said you actually meant that about earned, not seniority? If that's real I want to talk. When.'
@@ -1986,11 +2024,15 @@ aliases:
   - name: "Iris Halvorsen"
     quality: current
 canonical_state:
-  rank: "**B-Rank**, per Wade Bishop's secondhand referral. Not independently confirmed."
+  rank: "**B-Rank** — Wade Bishop's secondhand referral, since **independently confirmed by Flux Sight** (`EVT-000308`). Resolved by that Rank under Section 13.1. The highest-Ranked hunter on the crew's candidate list."
+  pool_variance: "**None** — Flux Sight (`EVT-000308`) read the Section 6.1 table values exactly (600 / 300). Permanent, never rerolled."
+  pools: "**Maximum Health 600, maximum Mana 300** — Section 6.1 table (600 / 300), flat, as directly confirmed by Flux Sight (`EVT-000308`). Section 5.2 tier costs: **Minor 30, Signature 75, Boss-tier 150**. Section 5.3 running-dry threshold **75**."
+  signature_ability: "**First to Move.** Her mana reads a space by *priority* rather than by census — not only how many things are in it and where, but which of them is going to act next, and which is holding back. A population count is the least of what she can tell a crew, which is exactly why having that read received as a formality has worn on her for as long as it has, and why she wants to be forward rather than parked at the back with it (`EVT-000308`). Reach and method only; no Section 13.5 effect attaches and her strikes remain B-Rank standard hits."
   location: ENT-000087
-  condition: "Not established — named, not yet met."
-  capabilities: "Not established in play beyond Wade's secondhand note: a sensor whose read her current crew treats as a formality rather than actually using."
-  personality: "Not established beyond Wade's read: unhappy enough with that dynamic that Wade flagged her as a possible hard sell but the best get on the list."
+  condition: "Healthy, no injury — met in person 2026-08-12 (`EVT-000308`)."
+  capabilities: "B-Rank sensor whose read runs to threat priority and intent, not merely population and position — and whose current crew treats it as a box to tick rather than something to act on. Wants to fight forward as well as read; her present crew placed her at the back without asking."
+  appearance: "Mid-thirties, white, Norwegian-American (the Halvorsen name), tall and solidly built — noticeably more physical than the sensor label leads people to expect, which is part of her complaint. Ash-blonde hair cut short and pushed back off her face; light grey eyes with the slightly unfocused middle-distance habit of someone who is always half-reading the room; a strong, guarded face that holds its expression a beat too long before it commits. Kit is better than her crew's and chosen for a fight rather than a vantage point — armored properly, weapon real, none of it decorative. Sits with her back to a wall by preference and does not apologize for moving seats to get one."
+  personality: "Guarded on first contact, and it reads as real caution rather than hostility — she wants this to be genuine considerably more than she is willing to show. Long-frustrated in a specific way, and visibly affected by having that frustration named accurately by a stranger. Asks concrete, verifiable questions and holds the answers to account; agreed to nothing beyond a training session and one supervised run before committing."
   situation: "**Named, not yet met** (`EVT-000293`). One of four hunters Wade Bishop referred at Alexander's request for the new crew (`OBJ-26`); Wade's own assessment ranks her as the strongest name on the list.
 
   **Direct contact made, 2026-08-11 ~21:00 (`EVT-000298`).** Alexander's text named her specific frustration directly — a sensor whose read is treated as a formality — and framed it as exactly what he wants built into the crew from the start. Her reply was long, specific, and unmistakably relieved: visibly someone who has been quietly frustrated about this for a long time and just had it named by a stranger. She wants to meet as soon as possible, said so twice.
@@ -2019,11 +2061,15 @@ aliases:
   - name: "Theo Bannerman"
     quality: current
 canonical_state:
-  rank: "**C-Rank**, per Wade Bishop's secondhand referral. Not independently confirmed."
+  rank: "**C-Rank** — Wade Bishop's secondhand referral, since **independently confirmed by Flux Sight** (`EVT-000311`). Resolved by that Rank under Section 13.1."
+  pool_variance: "**None** — Flux Sight (`EVT-000311`) read the Section 6.1 table values exactly (250 / 125). Permanent, never rerolled."
+  pools: "**Maximum Health 250, maximum Mana 125** — Section 6.1 table (250 / 125), flat, as directly confirmed by Flux Sight (`EVT-000311`). Section 5.2 tier costs: **Minor 12, Signature 31, Boss-tier 62**. Section 5.3 running-dry threshold **31**."
+  signature_ability: "**All In.** Once he commits, his mana floods the whole sequence at once and burns through it — the combo comes visibly lit, faster and heavier-looking than his frame should manage, and there is no calling any part of it back once it is spent. It is the reason his timing and shape read as near-perfect (he is never hedging) and equally the reason he twice ate an avoidable hit mid-combo at his own boxing club rather than break form (`EVT-000311`). The gift and the flaw are one fact, which is why 'calm down' is not the fix and structure is. Magnitude is unchanged — C-Rank standard hits — and no Section 13.5 effect attaches; what the mana buys is commitment, and it is not optional once poured."
   location: ENT-000087
-  condition: "Not established — named, not yet met."
-  capabilities: "Not established in play beyond Wade's secondhand note: young, hungry, undisciplined — highest upside of the four by Wade's own read, if given real structure."
-  personality: "Not established beyond Wade's secondhand read."
+  condition: "Healthy, no injury — met in person and recruited 2026-08-12 (`EVT-000311`)."
+  capabilities: "C-Rank striker: young, raw, and genuinely gifted. Reads an opening roughly half a second early and commits to it completely. Highest upside of Wade's four referrals by Wade's own read, on the condition that someone gives him real structure rather than telling him to rein it in."
+  appearance: "Twenty-two, white, of middling height and built like the boxer he is — lean, fast, thick through the wrists and neck, still carrying a little of the gawkiness he has not quite grown out of. Dark hair kept short on the sides and perpetually sweat-damp; a slightly crooked nose that has been broken at least once and set carelessly; bright, restless eyes in a face that shows every single thing he feels. Mismatched kit assembled from whatever was affordable, worn hard and unevenly. Cannot stand still in a conversation and does not appear to notice that he can't."
+  personality: "Eager to the point of being unguarded — replies too fast, with too much punctuation, and means all of it. Wants to be shown rather than told, and asked to demonstrate before he would talk. Takes accurate criticism far better than encouragement, and visibly reorganized himself around the first piece of feedback that named what he actually does rather than telling him to rein it in."
   situation: "**Named, not yet met** (`EVT-000293`). One of four hunters Wade Bishop referred at Alexander's request for the new crew (`OBJ-26`).
 
   **Direct contact made, 2026-08-11 ~21:00 (`EVT-000298`).** Alexander texted him the pitch. His reply came back rough around the edges — too much punctuation, clearly typed fast — but the enthusiasm underneath it was real: in, pending actually meeting Alexander in person.
@@ -2124,10 +2170,11 @@ relationships:
   - REL-000090
 canonical_state:
   rank: "B-Rank, combat-rated — part of the legal minimum roster for the confirmed B-Rank Gate (Section 9.4), though the roster itself ran short at 4 against the required 8."
+  signature_ability: "**Deadweight.** His mana pours down into the blade at the instant of contact, so a strike lands with the shock of a far heavier weapon than the one he is actually holding — the wound is an ordinary B-Rank standard hit, but what the blow does to footing and posture is out of all proportion to the steel. It is why the things that reached him at the chokepoint went down and stayed down, and why so few of them reached him twice. Method only. It raises no barrier and holds no line for the party, and **deliberately does not trigger Section 13.5's warden effect**: the funnel was terrain Alexander read and relayed (`EVT-000340`), not anything Corbin projected, and the party's defensive actions that day drew no step from him."
   location: ENT-000087
   condition: "Healthy, unhurt — never took a hit at the chokepoint he held."
   capabilities: "Competent, disciplined line-holder. Took a relayed Exploit Pattern call (the chamber's chokepoint funnel) from Alexander via Field Command and held the position unbroken for the length of the swarm engagement, letting only two Hive-commons reach him at once regardless of how many pressed from behind."
-  appearance: "Unremarkable B-Rank field kit, nothing showy. Weapon never fully lowers until the fight is actually over."
+  appearance: "Forties, Black, of middling height and thick through the chest and shoulders without being heavy — the compact, load-bearing frame of a man who has held ground for a living for twenty years. Close-cropped hair going grey at the temples; a flat, steady gaze that tracks a room without appearing to move; deep lines set into a face that spends most of its time expressionless. Unremarkable B-Rank field kit, well-maintained and entirely unshowy, every strap where it should be. His weapon never fully lowers until a fight is actually over, and he is usually the last person in a chamber to accept that it is."
   personality: "Flat, dry, unhurried. States facts rather than opinions — 'that's not unusual for a Wade Bishop crew, that's just Tuesday' — without performing either bitterness or loyalty. The first genuine laugh out of him all day came only after the fight, over beer."
   situation: |
       Held the chokepoint Alexander identified for the entire swarm engagement (`EVT-000340`), crediting Alexander flatly afterward ('You're the one who called the choke... didn't drop once after that'). Confirmed to Alexander's face, alongside Felix, that a Wade Bishop crew running with no lead and no coordination is standard practice, not an exception (`EVT-000345`). Took Alexander's phone number for the crew he's forming (`REL-000090`, `EVT-000344`) — genuine interest, no commitment made. Present for the closing round of beer (`EVT-000346`), first real laugh of the day.
@@ -2157,10 +2204,11 @@ relationships:
   - REL-000091
 canonical_state:
   rank: "B-Rank, combat-rated — part of the same undersized roster as `ENT-000194`."
+  signature_ability: "**Throughline.** Once he commits to a path his mana carries him down it, shouldering aside contact that should have stopped him — he does not slip a crowd, he goes through it and the crowd gives. It is how he crossed a pressing swarm to reach Warren Sato and arrived in time to matter (`EVT-000340`), and it is of a piece with having a weapon up before he had finished processing the noise of Alexander's entry (`EVT-000339`). Movement, reach, and method only; it batters nothing down on its own, adds no magnitude to his B-Rank standard hits, and triggers no Section 13.5 effect."
   location: ENT-000087
   condition: "Healthy, unhurt."
   capabilities: "Reacted fastest to Alexander's botched stealth entry, weapon up before he'd finished processing the noise; stood down once he registered Alexander wasn't hostile to the crew. Broke off from the swarm fight to pull Warren Sato (`ENT-000197`) clear when he was flanked, successfully. Later closed on the burrower boss alongside Dana Whitcombe (`ENT-000196`) and received Alexander's Field Command relay of the boss's sweep tell and belly weak-point; the two landed the coordinated killing blow together."
-  appearance: "Field-kit practical, nothing distinguishing beyond a habit of watching people a beat longer than the conversation needs."
+  appearance: "Mid-thirties, Latino, lean and long-limbed with a restless economy to the way he stands — never quite still, his weight always already shifted toward wherever he might next need to go. Black hair cut short and grown well past its last cut; dark, quick eyes; a narrow face that gives away amusement before he has decided whether to show it. Practical field kit with nothing decorative on it anywhere. The one distinguishing habit is where his attention goes — he watches a person a beat longer than the conversation needs, and does not pretend he isn't."
   personality: "Wry, quick, unbothered by being wrong-footed. Read Alexander as more than an observer within seconds of meeting him ('Figured this was coming the second you said observe with a straight face') and wasn't offended by the recruitment pitch that followed."
   situation: |
       First to react to Alexander's entry (`EVT-000339`); introduced himself once he confirmed Alexander wasn't a threat. Rescued Warren Sato from being flanked mid-swarm-fight (`EVT-000340`). Closed on the boss with Dana Whitcombe off Alexander's relayed Exploit Pattern reads and landed the coordinated kill (`EVT-000341`). Confirmed to Alexander, alongside Corbin, that Wade's crews routinely run without a lead (`EVT-000345`). Took Alexander's number for the forming crew (`REL-000091`, `EVT-000344`) — genuine interest, no commitment.
@@ -2190,10 +2238,11 @@ relationships:
   - REL-000092
 canonical_state:
   rank: "B-Rank, combat-rated — part of the same undersized roster."
+  signature_ability: "**Second Edge.** Her mana trails a half-beat behind her weapon and arrives after it, so a cut lands and then the edge of it lands again — not a second strike (the blow resolves as a single B-Rank standard hit) but a stroke that opens a guard which had already closed in time. It is what turned a half-heard warning and a relayed weak-point into the coordinated killing blow on the burrower boss (`EVT-000341`). Method only; no magnitude beyond her Rank and no Section 13.5 effect attaches."
   location: ENT-000087
   condition: "Healthy, unhurt — dodged the boss's opening sweep clean off a partial Keen Sense warning relayed via Field Command."
   capabilities: "Nearest hunter to the burrower boss's emergence; reacted to Alexander's half-formed warning fast enough to avoid the breach entirely. Later received the full Exploit Pattern relay (sweep tell, belly weak-point) and, alongside Felix Aranda, landed the coordinated killing blow on the boss."
-  appearance: "Not otherwise described in play."
+  appearance: "Early thirties, white, tall and rangy — long through the arms and legs, built more like a runner than a striker, with no bulk on her anywhere. Dirty-blonde hair cut bluntly at the jaw and shoved back behind her ears; pale eyes; a scattering of old freckles across a face that shows what she is thinking a half-second before she says it. Field kit chosen for freedom of movement over coverage, scuffed through at both knees and forearms. Stands with her weight already committed forward, as though whatever she does next will be sudden."
   personality: "Direct, still visibly recalibrating who she just fought next to by the fight's end. Says what she means without padding it — 'that's twice you talked me through something that would've killed me otherwise... I don't know what just here to observe actually means, but it isn't that.'"
   situation: |
       Dodged the boss's opening sweep off a partial Keen Sense warning (`EVT-000341`). Received the full sweep-tell/belly-weak-point Exploit Pattern relay and landed the coordinated killing blow with Felix. Openly credited Alexander afterward, twice, for keeping her alive (`EVT-000344`). Took his number for the forming crew without hesitation ('After today? Absolutely.') (`REL-000092`).
@@ -2223,10 +2272,11 @@ relationships:
   - REL-000093
 canonical_state:
   rank: "B-Rank, combat-rated — part of the same undersized roster."
+  signature_ability: "**Sweep.** His mana carries the blade's edge a hand's breadth past the steel and all the way around him, so his reach is a closed circle and being surrounded is the shape his gift works best in. It is why being flanked and cut off early in the swarm fight did not finish him before Felix Aranda broke through (`EVT-000340`) — the press had no side of him that was not already covered. Reach and method only: it stops nothing and reduces nothing, adds no magnitude to his B-Rank standard hits, and triggers no Section 13.5 effect."
   location: ENT-000087
   condition: "A real graze from being flanked and cut off mid-swarm-fight; nothing severe. Rescued by Felix Aranda."
   capabilities: "Cut off from the rest of the line by the swarm's press early in the engagement; held his own until Felix broke through to him. Fought the remainder of the engagement from Corbin's chokepoint rather than near the boss."
-  appearance: "Not otherwise described in play."
+  appearance: "Late twenties, Japanese-American, short and compactly built, with the quiet physical competence of someone who has trained a long time and never once made a performance of it. Black hair kept very short; a square, unreadable face; dark eyes that find the exits in a new room before they find the people. Standard-issue B-Rank kit worn exactly to spec, nothing personalized on it. Carries a fresh graze along one forearm from the flanking, dressed neatly and not mentioned."
   personality: "Quieter than the other three, not the type to commit loudly. Took Alexander's number without much comment, but watched him carefully afterward, the same way the others did."
   situation: |
       Flanked and cut off early in the swarm fight; rescued by Felix Aranda (`EVT-000340`). Fought the remainder of the engagement at Corbin's chokepoint. Present for the crew's thanks and the closing round of beer, mostly quiet throughout (`EVT-000344`, `EVT-000346`). Took Alexander's number for the forming crew — a nod, not a firm commitment (`REL-000093`).

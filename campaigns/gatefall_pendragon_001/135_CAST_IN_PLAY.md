@@ -45,16 +45,16 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000147` | Walt Adamik | pawnbroker / grey-market dealer | active | Chicago | `REL-000069` |
 | `ENT-000149` | the Cutting Edge proprietor | gear artisan / licensed vendor | active | Cutting Edge | — |
 | `ENT-000150` | Ferro's Reclamation | salvage dealer | active | Chicago | — |
-| `ENT-000168` | Milo | sensor-adjacent hunter | active | Windy City Hunters Coalition training grounds | — |
+| `ENT-000168` | Milo Brandt | sensor-adjacent hunter | active | Windy City Hunters Coalition training grounds | — |
 | `ENT-000141` | Sable | contractor co-owner | active | Chicago | — |
 | `ENT-000142` | Kern | contractor co-owner | active | Chicago | — |
-| `ENT-000143` | Ruth | harvester | active | Chicago | — |
-| `ENT-000144` | Denny | harvester | active | Chicago | — |
+| `ENT-000143` | Ruth Kowalczyk | harvester | active | Chicago | — |
+| `ENT-000144` | Denny Prosser | harvester | active | Chicago | — |
 | `ENT-000145` | Sable & Kern | harvest-hire contractor | active | Chicago | `REL-000067` |
 | `ENT-000148` | Denise Ferro | harvest-crew lead | active | Chicago | `REL-000070` |
-| `ENT-000169` | Voula | Character | active | Chicago | — |
+| `ENT-000169` | Voula Stamatis | Character | active | Chicago | — |
 | `ENT-000170` | Nikitas | Place | active | Chicago | — |
-| `ENT-000172` | Marsh | security-company employee | active | Chicago | — |
+| `ENT-000172` | Curtis Marsh | security-company employee | active | Chicago | — |
 | `ENT-000173` | Reggie Calloway | D-Rank hunter, point element | active | 4110 W Fullerton, Chicago — the confirmed D-Rank Gate site | — |
 | `ENT-000174` | Bhavna Iyer | D-Rank hunter, ranged/sensor element | active | 4110 W Fullerton, Chicago — the confirmed D-Rank Gate site | — |
 | `ENT-000175` | Foster Nakashima | D-Rank hunter, overwatch/perimeter element | active | 4110 W Fullerton, Chicago — the confirmed D-Rank Gate site | — |
@@ -62,7 +62,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000177` | Elias Ward | surplus and pawn seller | active | an unnamed surplus/pawn shop in Chicago's warehouse district | — |
 | `ENT-000181` | Corinne Whitlock | leasing agent | active | the Rogers Park two-bedroom listing, second-floor front | — |
 | `ENT-000182` | Reyna Castillo | striker | active | Chicago | — |
-| `ENT-000183` | Petra | salvage dealer / informant | active | Ferro's Reclamation | `REL-000087` |
+| `ENT-000183` | Petra Nowak | salvage dealer / informant | active | Ferro's Reclamation | `REL-000087` |
 | `ENT-000184` | Marcus Whitlow | striker | active | Chicago | `REL-000088` |
 | `ENT-000185` | Soraya Delgado | ranged support | active | Chicago | — |
 | `ENT-000186` | Grant Okwuosa | striker | active | Chicago | — |

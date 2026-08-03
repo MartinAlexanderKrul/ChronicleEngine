@@ -40,7 +40,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000136` | Priya Okafor | crew leader / striker | active | Chicago | `REL-000065` |
 | `ENT-000137` | Julian Boyd | striker (ranged) | active | Chicago | — |
 | `ENT-000138` | Renata Marchetti | sensor / reader | active | Chicago | — |
-| `ENT-000139` | Owen Callahan | mender | active | At Alexander's apartment, evening of 2026-08-11, helping pack f… | `REL-000066` |
+| `ENT-000139` | Owen Callahan | mender | active | Halvard's | `REL-000066` |
 | `ENT-000146` | Wade Bishop | guild recruiter | active | Red Line Corridor | `REL-000068` |
 | `ENT-000147` | Walt Adamik | pawnbroker / grey-market dealer | active | Chicago | `REL-000069` |
 | `ENT-000149` | the Cutting Edge proprietor | gear artisan / licensed vendor | active | Cutting Edge | — |
@@ -76,12 +76,15 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000198` | Rosalind Fenn | private investigator | active | Unestablished — worked entirely by phone this call. | `REL-000094` |
 | `ENT-000199` | Duane | yard lessor | active | the freight yard off Ashland | — |
 | `ENT-000200` | the freight yard off Ashland | private rentable yard | active | Off Ashland, roughly fifteen minutes from Walt Adamik's shop in… | — |
+| `ENT-000201` | Glenwood Garden and Feed | garden and feed store | active | Glenwood Avenue, Rogers Park, Chicago — eight blocks north of E… | — |
+| `ENT-000202` | Halvard's | diner | active | Three blocks west of Edgewater Hospital, Chicago. | — |
+| `ENT-000203` | Priscilla Nakamura | artificer | active | Unestablished. Wade contacted her by message only | — |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.0`.
-- Entities: 53. Protagonist relationships: 15.
+- Entities: 56. Protagonist relationships: 15.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

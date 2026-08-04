@@ -834,6 +834,18 @@ foreach ($file in $canonicalFiles) {
                 Add-Failure "$relativePath`:$line object $id provenance is missing required field '$field'."
             }
         }
+        # Current State's promotion boundary is a rendering of the record's
+        # provenance source. Checkpoint 0071 advanced the source to EVT-000406
+        # while leaving the prose at EVT-000404; both statements were locally
+        # well formed, so the old gate accepted their contradiction.
+        if ($relativePath -match '/180_CURRENT_STATE\.md$') {
+            $sourceMatch = [regex]::Match($block, '(?m)^[ \t]+source:[ \t]*(EVT-\d{6})[ \t]*$')
+            $promotionMatch = [regex]::Match($text, '(?m)^\*\*Live canon is promoted through `(EVT-\d{6})`\.\*\*')
+            if ($sourceMatch.Success -and $promotionMatch.Success -and
+                $sourceMatch.Groups[1].Value -ne $promotionMatch.Groups[1].Value) {
+                Add-Failure "$relativePath`:$line says live canon is promoted through $($promotionMatch.Groups[1].Value) but record provenance source is $($sourceMatch.Groups[1].Value)."
+            }
+        }
         foreach ($legacyField in @("event_time", "record_time")) {
             if ([regex]::IsMatch($block, "(?m)^[ \\t]+$legacyField[ \\t]*:")) {
                 Add-Failure "$relativePath`:$line object $id uses legacy provenance field '$legacyField'; Data Model 0.1.4 and later require game_date/real_date."
@@ -894,6 +906,155 @@ foreach ($file in $canonicalFiles) {
                 'resonance_extraction', 'broken_rhythm')
             $counterPaths = @(Get-ListEntries (Get-IndentedSection $block "tracked_counters") |
                 ForEach-Object { Get-EntryValue $_ "path" })
+
+            # Gatefall live-state semantic checks. These values used to be
+            # asserted only by development contract tests, which are not part
+            # of the checkpoint gate. Checkpoint 0070 therefore promoted with
+            # rules-invalid recovery modes and several prose/counter splits,
+            # and Checkpoint 0071 still carried stale weapon previews. A save
+            # gate must check the live state itself, not merely that a test
+            # describing the intended check passes somewhere in Tier 3.
+            $entityWorld = Resolve-WorldForPath $relativePath $campaignWorlds
+            if ($entityWorld -eq "gatefall") {
+                $temporalSection = Get-IndentedSection $block "temporal_state"
+                if (-not [string]::IsNullOrWhiteSpace($temporalSection)) {
+                    if ($temporalSection -notmatch '(?m)^[ \t]+campaign_time:[ \t]*"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}"[ \t]*$') {
+                        Add-Failure "$relativePath`:$line entity $id temporal_state campaign_time is missing or is not an exact ISO-8601 instant with an explicit UTC offset (Gatefall Profile Section 5.2)."
+                    }
+                    if ($temporalSection -notmatch '(?m)^[ \t]+mana_recovery_mode:[ \t]*(active|resting)[ \t]*$') {
+                        Add-Failure "$relativePath`:$line entity $id mana_recovery_mode must be active or resting (Gatefall Profile Section 5.2)."
+                    }
+                    if ($temporalSection -notmatch '(?m)^[ \t]+health_recovery_mode:[ \t]*(resting|light|paused)[ \t]*$') {
+                        Add-Failure "$relativePath`:$line entity $id health_recovery_mode must be resting, light, or paused (Gatefall Profile Section 6.1.1)."
+                    }
+                    $manaCarry = [regex]::Match($temporalSection, '(?m)^[ \t]+mana_recovery_remainder_units:[ \t]*(\d+)[ \t]*$')
+                    if (-not $manaCarry.Success -or [int64]$manaCarry.Groups[1].Value -ge 720000) {
+                        Add-Failure "$relativePath`:$line entity $id mana_recovery_remainder_units must be an integer from 0 through 719999 (Gatefall Profile Section 5.2)."
+                    }
+                    $healthCarry = [regex]::Match($temporalSection, '(?m)^[ \t]+health_recovery_remainder_units:[ \t]*(\d+)[ \t]*$')
+                    if (-not $healthCarry.Success -or [int64]$healthCarry.Groups[1].Value -ge 5760000) {
+                        Add-Failure "$relativePath`:$line entity $id health_recovery_remainder_units must be an integer from 0 through 5759999 (Gatefall Profile Section 6.1.1)."
+                    }
+                    $anchorMatch = [regex]::Match($temporalSection, '(?m)^[ \t]+campaign_time:[ \t]*"(?<value>[^"\r\n]+)"[ \t]*$')
+                    # The Entity provenance is its creation date; temporal
+                    # state belongs to the containing canonical ledger. The
+                    # first indented game_date in a campaign ledger is that
+                    # record's provenance date.
+                    $provenanceDateMatch = [regex]::Match($text, '(?m)^  game_date:[ \t]*"(?<value>[^"\r\n]+)"[ \t]*$')
+                    if ($anchorMatch.Success -and $provenanceDateMatch.Success) {
+                        $anchorInstant = [DateTimeOffset]::MinValue
+                        $provenanceInstant = [DateTimeOffset]::MinValue
+                        $anchorValid = [DateTimeOffset]::TryParse($anchorMatch.Groups['value'].Value, [ref]$anchorInstant)
+                        $provenanceText = $provenanceDateMatch.Groups['value'].Value -replace '[ \t]*~[ \t]*', ' '
+                        $provenanceValid = [DateTimeOffset]::TryParse($provenanceText, [ref]$provenanceInstant)
+                        if (-not $anchorValid -or -not $provenanceValid -or $anchorInstant -ne $provenanceInstant) {
+                            Add-Failure "$relativePath`:$line entity $id canonical campaign_time '$($anchorMatch.Groups['value'].Value)' disagrees with ledger provenance game_date '$($provenanceDateMatch.Groups['value'].Value)'."
+                        }
+                    }
+                }
+
+                $counterValues = @{}
+                foreach ($counterEntry in (Get-ListEntries (Get-IndentedSection $block "tracked_counters"))) {
+                    $counterPath = Get-EntryValue $counterEntry "path"
+                    $counterValue = Get-EntryValue $counterEntry "current_value"
+                    $skillCounterMatch = [regex]::Match($counterPath, '^skills\.(?<skill>[a-z0-9_]+)\.(?<metric>[a-z0-9_]+)$')
+                    if ($skillCounterMatch.Success -and
+                        $counterValue -match '^-?\d+$') {
+                        $counterValues["$($skillCounterMatch.Groups['skill'].Value)|$($skillCounterMatch.Groups['metric'].Value)"] = [int]$counterValue
+                    }
+                }
+
+                $skillsSection = Get-IndentedSection $block "skills_known"
+                $masteryLevels = @{ Novice = 1; Practiced = 2; Adept = 3; Expert = 4; Master = 5 }
+                foreach ($skillEntry in (Get-ListEntries $skillsSection)) {
+                    $nameMatch = [regex]::Match($skillEntry, '^[ \t]*-[ \t]+"(?<name>[^\[]+?)[ \t]*\[[EDCBAS]-Rank\]')
+                    if (-not $nameMatch.Success) { continue }
+                    $skillKey = ($nameMatch.Groups['name'].Value.Trim().ToLowerInvariant() -replace '[^a-z0-9]+', '_').Trim('_')
+
+                    $renderChecks = @(
+                        @{ Metric = 'successful_uses'; Pattern = '\b(?:Successful uses|Uses)[ \t]+(?<value>\d+)\b' },
+                        @{ Metric = 'qualifying_scenes_total'; Pattern = '\b(?:qualifying scenes total|scenes)[ \t]+(?<value>\d+)\b' },
+                        @{ Metric = 'mastery_progress'; Pattern = '\b(?:mastery progress|progress)[ \t]+(?<value>\d+)/3\b' },
+                        @{ Metric = 'rank_ascensions'; Pattern = '\b(?:rank ascensions|ascensions)[ \t]+(?<value>\d+)\b' }
+                    )
+                    foreach ($renderCheck in $renderChecks) {
+                        $counterKey = "$skillKey|$($renderCheck.Metric)"
+                        if (-not $counterValues.ContainsKey($counterKey)) { continue }
+                        $renderMatch = [regex]::Match($skillEntry, $renderCheck.Pattern)
+                        if (-not $renderMatch.Success) {
+                            if ($renderCheck.Metric -eq 'rank_ascensions') { continue }
+                            Add-Failure "$relativePath`:$line skill '$($nameMatch.Groups['name'].Value.Trim())' has tracked $($renderCheck.Metric) state but its skills_known rendering omits that value (Gatefall Profile Section 7.4)."
+                            continue
+                        }
+                        $renderedValue = [int]$renderMatch.Groups['value'].Value
+                        if ($renderedValue -ne $counterValues[$counterKey]) {
+                            Add-Failure "$relativePath`:$line skill '$($nameMatch.Groups['name'].Value.Trim())' renders $($renderCheck.Metric) $renderedValue but tracked current_value is $($counterValues[$counterKey]) (Gatefall Profile Section 7.4)."
+                        }
+                    }
+
+                    $masteryKey = "$skillKey|mastery_level"
+                    if ($counterValues.ContainsKey($masteryKey)) {
+                        $masteryMatch = [regex]::Match($skillEntry, '\[[EDCBAS]-Rank\].*?\b(Novice|Practiced|Adept|Expert|Master)\b')
+                        if (-not $masteryMatch.Success -or $masteryLevels[$masteryMatch.Groups[1].Value] -ne $counterValues[$masteryKey]) {
+                            $renderedMastery = if ($masteryMatch.Success) { $masteryMatch.Groups[1].Value } else { 'missing' }
+                            Add-Failure "$relativePath`:$line skill '$($nameMatch.Groups['name'].Value.Trim())' renders mastery $renderedMastery but tracked mastery_level is $($counterValues[$masteryKey]) (Gatefall Profile Section 7.4)."
+                        }
+                    }
+                }
+
+                $effectiveSection = Get-IndentedSection $block "effective_stats"
+                $strengthMatch = [regex]::Match($effectiveSection, '(?m)^[ \t]+strength:[ \t]*"?(?<value>\d+)')
+                $intelligenceMatch = [regex]::Match($effectiveSection, '(?m)^[ \t]+intelligence:[ \t]*"?(?<value>\d+)')
+                $effectiveStrength = if ($strengthMatch.Success) { [int]$strengthMatch.Groups['value'].Value } else { $null }
+                $effectiveIntelligence = if ($intelligenceMatch.Success) { [int]$intelligenceMatch.Groups['value'].Value } else { $null }
+
+                $equipmentSection = Get-IndentedSection $block "equipment"
+                $focusPower = 0
+                foreach ($equipmentLine in ($equipmentSection -split "\r?\n")) {
+                    if ($equipmentLine -match '(?i)Channeling Focus' -and $equipmentLine -match '(?i)weapon power[ \t]+(?<power>\d+)') {
+                        $focusPower = [int]$Matches['power']
+                    }
+                }
+                foreach ($equipmentLine in ($equipmentSection -split "\r?\n")) {
+                    $weapon = [regex]::Match($equipmentLine, '(?i)weapon power[ \t]+(?<power>\d+).*?effective chassis[^0-9]*(?<chassis>\d+(?:\.\d+)?).*?DMG[ \t]+(?<damage>\d+)[ \t]+standard before reduction.*?at effective Strength[ \t]+(?<stat>\d+)')
+                    if (-not $weapon.Success -or $null -eq $effectiveStrength) { continue }
+                    $shownStrength = [int]$weapon.Groups['stat'].Value
+                    if ($shownStrength -ne $effectiveStrength) {
+                        Add-Failure "$relativePath`:$line equipped weapon preview uses effective Strength $shownStrength but live effective Strength is $effectiveStrength (Gatefall Profile Sections 6.2 and 15.1)."
+                    }
+                    $rawDamage = ($effectiveStrength + [int]$weapon.Groups['power'].Value) * [double]$weapon.Groups['chassis'].Value
+                    $expectedDamage = [int][math]::Round($rawDamage, 0, [System.MidpointRounding]::AwayFromZero)
+                    $shownDamage = [int]$weapon.Groups['damage'].Value
+                    if ($shownDamage -ne $expectedDamage) {
+                        Add-Failure "$relativePath`:$line equipped weapon renders DMG $shownDamage but Section 6.2 derives $expectedDamage from effective Strength $effectiveStrength, weapon power $($weapon.Groups['power'].Value), and chassis $($weapon.Groups['chassis'].Value)."
+                    }
+                    $equation = [regex]::Match($equipmentLine, '`\((?<strength>\d+)[ \t]*\+[ \t]*(?<power>\d+)\)[^0-9]*(?<chassis>\d+(?:\.\d+)?)[ \t]*=[ \t]*(?<raw>\d+(?:\.\d+)?)`')
+                    if ($equation.Success) {
+                        $equationRaw = [double]$equation.Groups['raw'].Value
+                        if ([int]$equation.Groups['strength'].Value -ne $effectiveStrength -or
+                            [int]$equation.Groups['power'].Value -ne [int]$weapon.Groups['power'].Value -or
+                            [double]$equation.Groups['chassis'].Value -ne [double]$weapon.Groups['chassis'].Value -or
+                            [math]::Abs($equationRaw - $rawDamage) -gt 0.000001) {
+                            Add-Failure "$relativePath`:$line equipped weapon's stored worked equation ($($equation.Groups['strength'].Value) + $($equation.Groups['power'].Value)) x $($equation.Groups['chassis'].Value) = $($equation.Groups['raw'].Value) disagrees with live Section 6.2 inputs ($effectiveStrength + $($weapon.Groups['power'].Value)) x $($weapon.Groups['chassis'].Value) = $rawDamage."
+                        }
+                    }
+                }
+
+                foreach ($skillEntry in (Get-ListEntries $skillsSection)) {
+                    $skillDamage = [regex]::Match($skillEntry, '(?i)resolving as `\((?<baseline>\d+)[ \t]*\+[ \t]*effective Intelligence[ \t]*\+[ \t]*equipped focus power\)[^0-9]*(?<multiplier>\d+(?:\.\d+)?)[^`]*`.*?DMG[ \t]+(?<damage>\d+)[ \t]+standard before reduction.*?at effective Intelligence[ \t]+(?<stat>\d+)')
+                    if (-not $skillDamage.Success -or $null -eq $effectiveIntelligence) { continue }
+                    $shownIntelligence = [int]$skillDamage.Groups['stat'].Value
+                    if ($shownIntelligence -ne $effectiveIntelligence) {
+                        Add-Failure "$relativePath`:$line offensive skill preview uses effective Intelligence $shownIntelligence but live effective Intelligence is $effectiveIntelligence (Gatefall Profile Sections 6.2 and 15.1)."
+                    }
+                    $rawDamage = ([int]$skillDamage.Groups['baseline'].Value + $effectiveIntelligence + $focusPower) * [double]$skillDamage.Groups['multiplier'].Value
+                    $expectedDamage = [int][math]::Round($rawDamage, 0, [System.MidpointRounding]::AwayFromZero)
+                    $shownDamage = [int]$skillDamage.Groups['damage'].Value
+                    if ($shownDamage -ne $expectedDamage) {
+                        Add-Failure "$relativePath`:$line offensive skill renders DMG $shownDamage but Section 6.2 derives $expectedDamage from baseline $($skillDamage.Groups['baseline'].Value), effective Intelligence $effectiveIntelligence, focus power $focusPower, and multiplier $($skillDamage.Groups['multiplier'].Value)."
+                    }
+                }
+            }
             foreach ($skill in $scopeSkills) {
                 if ($counterPaths -contains "skills.$skill.successful_uses" -and
                     $counterPaths -notcontains "skills.$skill.scope_floor") {

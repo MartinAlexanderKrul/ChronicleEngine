@@ -314,7 +314,7 @@ Ruled in the same change: its mastery track is the **scope axis, 1/2/3/4/5 benef
 ## F-015 — A sibling delta masks a missing one, and prose the validator never reads
 
 **Raised:** 2026-08-04 · **Source:** `campaigns/gatefall_pendragon_001/`, audit of Checkpoint 0070 (`EVT-000406`)
-**Status:** Open — canon repaired, gate unchanged
+**Status:** Partially actioned — mechanically decidable relations gated; semantic completeness remains open
 
 Checkpoint 0070 passed every gate: repository validation, runtime configuration, checkpoint contract, index synchronization, and the counter-arithmetic reconciliation of Decision 079. A player-instructed audit run minutes later found **nine defects**, four of them missing or wrong skill credit.
 
@@ -330,10 +330,12 @@ Checkpoint 0070 passed every gate: repository validation, runtime configuration,
 
 **The generalizable defect:** every one of these is a gate that verifies a *relationship between two stored numbers* while the thing that went wrong is a **relationship between a stored number and the world it describes** — an applied skill with no delta, a rendered figure with no reconciliation, a narrated pool with no arithmetic, a mode string with no domain check. Arithmetic self-consistency is cheap to verify and is not the property that matters.
 
-**Cheap fixes available, none applied yet.**
-- Reconcile `skills_known` rendered counts against `tracked_counters` at validation; the numbers are already parsed for both.
-- Constrain `mana_recovery_mode` to `{active, resting}` and `health_recovery_mode` to `{resting, light, paused}` — a two-line domain check.
-- Require the `temporal_state` anchor to equal the checkpoint manifest's `game_date`, which would have caught the 16:30/16:45 split.
-- Require every damage preview to be recomputed and compared at checkpoint, since Section 15.1 already declares them derived-at-render; both stale previews (Rupture 299 for 301, Mana Bolt 98 for 100) were mechanically detectable.
+**Mechanically decidable fixes applied by the save-mechanism audit.**
+- `validate_repository.ps1` reconciles every rendered use/scene/progress/ascension/mastery value in `skills_known` against its authoritative `tracked_counters.current_value`.
+- The production gate constrains `mana_recovery_mode` to `{active, resting}`, `health_recovery_mode` to `{resting, light, paused}`, and both remainder domains to their authored denominators.
+- `new_checkpoint.py` binds receipt/manifest `game_date` to canonical `campaign_time` before ordinal allocation and requires Chronicle, Changelog, and Current State provenance to name the same closing Event and instant. The live gate also compares the character ledger's provenance date to its temporal anchor.
+- The production gate recomputes equipped-weapon and offensive-skill previews from live inputs and rejects stale figures; it also reconciles Current State's promoted-through boundary against record provenance.
 
-**Left open, and it is the residue of `F-013` and `F-014` again:** the coverage question — *did every skill that applied get credited* — is not mechanically decidable from the ledgers, because "materially applied" lives in the Event's prose rather than in a field. Until an Event names the skills it exercised in structured form, this class stays a human-audit finding. The honest version of the gate would say what it verifies, and the checkpoint report would not read as unqualified success.
+**The audit of the audit found seven further failures in Checkpoint 0071's live state.** The Character Sheet provenance still read 16:30 against its corrected 16:45 anchor; both weapon previews still used pre-level-up Strength 66 and rendered 128/112 instead of the Section 6.2 results 129/113 at Strength 67; Mana Bolt was "repaired" from 98 to **100**, but `(25 + 61) × 1.15 = 98.9`, which Section 6.2 rounds to **99**; and Current State still claimed promotion only through `EVT-000404` under provenance `EVT-000406`. The new gate reports all seven. This is direct evidence that an unconstrained second human audit can repeat the same class it is correcting.
+
+**Left open, and it is the residue of `F-013` and `F-014` again:** the coverage question — *did every skill that applied get credited* — and the recovery-coverage question — *was every elapsed span settled* — are not mechanically decidable from the ledgers, because "materially applied" and the span partition live in Event prose rather than typed fields. Until Events carry structured per-skill application facts and structured temporal transitions, these classes remain promotion-audit findings. Runtime Profile 1.48 now requires a per-Event promotion audit matrix and explicitly denies that the receipt boolean is evidence; this reduces the omission risk but does not turn missing facts into mechanically provable ones.

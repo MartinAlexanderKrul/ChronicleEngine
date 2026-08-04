@@ -12,6 +12,14 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-04 — The save gate checks semantic relationships, not only well-formed bytes
+
+**Engine tooling and Runtime procedure; refinement under Decision 069.** Partially actions F-015 without changing the Data Model or any world mechanic.
+**Problem:** Checkpoint 0070 passed every production gate with an omitted recovery settlement, rules-invalid recovery modes, a stale temporal anchor, stale derived damage, and missing skill credit. Its immediate repair checkpoint then repeated the class: the audit of Checkpoint 0071 found seven mechanically decidable contradictions still live — Character Sheet provenance at 16:30 against canonical time 16:45; both weapon previews using Strength 66 after the level-up made it 67; resulting damage 128/112 instead of 129/113; Mana Bolt "corrected" to 100 when Section 6.2 derives 99; and Current State promoted-through `EVT-000404` under provenance `EVT-000406`. The transaction helper had proved atomicity and byte identity. It had not proved the bytes agreed with one another or with derived rules.
+**Change:** `validate_repository.ps1` now gates Gatefall recovery domains and carries, ledger-provenance/temporal agreement, rendered skill counters against authoritative tracked counters, weapon and offensive-skill preview arithmetic against live inputs, and Current State's promotion boundary against provenance. `new_checkpoint.py` refuses before ordinal allocation when manifest time differs from canonical campaign time or Chronicle/Changelog/Current State provenance differs from the receipt's closing Event or instant. Runtime Profile 1.48 and both save-skill mirrors require a per-Event promotion audit matrix and explicitly state the remaining proof boundary: applied skills and elapsed-span completeness still live only in prose, so a green deterministic gate cannot certify facts the schema does not record.
+**Files:** `tools/validate_repository.ps1`, `tools/new_checkpoint.py`, `tools/test_progression_audit_contract.ps1`, `tools/test_transactional_checkpoint.ps1`, `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, `.agents/skills/save/SKILL.md`, `.claude/skills/save/SKILL.md`, `engine/004_DESIGN_FLAGS.md`.
+**Audit:** regression fixtures mutate each newly gated relationship independently. The live gate was run before campaign repair and reported all seven remaining contradictions, including the bad 100→99 Mana Bolt correction that the manual audit itself introduced.
+
 ## 2026-08-02 — A Hidden quest's reward is checked where saves are actually gated
 
 **Engine tooling; refinement under Decision 069 (no Rules, Data Model, or Runtime mechanism a world must satisfy).** No ADR, no owner ruling: this enforces an existing world rule, it does not author one.

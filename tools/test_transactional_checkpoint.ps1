@@ -103,6 +103,12 @@ subjects: []
         if ($ledgers[$index] -eq "130_NPCS_AND_FACTIONS.md") {
             $content += "`n" + ("large-ledger-byte-copy-proof`n" * 6000)
         }
+        if ($ledgers[$index] -eq "100_CHARACTER_SHEET.md") {
+            $content = $content -replace 'subjects: \[\]', "subjects: []`nsystem_state:`n  temporal_state:`n    campaign_time: `"2026-01-01T12:00:00+00:00`""
+        }
+        if ($ledgers[$index] -in @("160_CAMPAIGN_CHRONICLE.md", "170_CHANGELOG.md", "180_CURRENT_STATE.md")) {
+            $content = $content -replace 'game_date: "2026-01-01"', 'game_date: "2026-01-01T12:00:00+00:00"'
+        }
         if ($ledgers[$index] -eq "180_CURRENT_STATE.md") {
             $content += @"
 
@@ -309,6 +315,27 @@ try {
     Assert-True ($badHash.ExitCode -ne 0) "A stale mutation receipt hash was accepted."
     Assert-True ($badHash.Output -match 'changed after read-back') "Stale receipt failed without the hash diagnosis."
     Assert-True (@(Get-ChildItem -LiteralPath (Join-Path $hashRoot "campaigns/example/saves") -Directory -Filter "*.staging-*").Count -eq 0) "Receipt failure allocated staging."
+
+    # Receipt time drift: the helper binds manifest identity to canonical time
+    # before allocating an ordinal. Checkpoint 0070 carried a 16:30 character
+    # anchor under a 16:45 manifest because the two were never compared.
+    $timeRoot = New-Fixture
+    $timeReceipt = New-Receipt $timeRoot
+    $timeJson = Get-Content -LiteralPath $timeReceipt -Raw | ConvertFrom-Json
+    $timeJson.manifest.game_date = "2026-01-01T12:01:00+00:00"
+    Write-Utf8 $timeReceipt ($timeJson | ConvertTo-Json -Depth 8)
+    $badTime = Invoke-Checkpoint $timeRoot $timeReceipt
+    Assert-True ($badTime.ExitCode -ne 0) "A manifest game_date that disagrees with canonical campaign_time was accepted."
+    Assert-True ($badTime.Output -match 'manifest.game_date does not match canonical campaign_time') "Time drift failed without the anchor diagnosis."
+    Assert-True (@(Get-ChildItem -LiteralPath (Join-Path $timeRoot "campaigns/example/saves") -Directory -Filter "*.staging-*").Count -eq 0) "Time drift allocated staging."
+
+    $sourceRoot = New-Fixture
+    $sourceChronicle = Join-Path $sourceRoot "campaigns/example/160_CAMPAIGN_CHRONICLE.md"
+    Write-Utf8 $sourceChronicle ((Get-Content -LiteralPath $sourceChronicle -Raw) -replace 'source: EVT-000001', 'source: EVT-000002')
+    $sourceReceipt = New-Receipt $sourceRoot
+    $badSource = Invoke-Checkpoint $sourceRoot $sourceReceipt
+    Assert-True ($badSource.ExitCode -ne 0) "An always-promoted ledger whose provenance source disagrees with the manifest was accepted."
+    Assert-True ($badSource.Output -match 'provenance source.*does not match manifest.source') "Source drift failed without the provenance diagnosis."
 
     # Parent drift: fail before ordinal allocation.
     $parentRoot = New-Fixture

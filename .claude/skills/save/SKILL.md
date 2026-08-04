@@ -17,7 +17,7 @@ This reverses the campaign's earlier practice of writing `100_CHARACTER_SHEET.md
 
 ## Procedure
 
-1. **Open and follow the authoritative Save Algorithm** — `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, section "Save Algorithm" (8 steps, in order). Execute it from the document, not from memory. Do not invent checkpoint structure: the canonical form is `saves/900_CHECKPOINT_NNNN/` (zero-padded, next number) containing copies of **all eight canonical campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180), changed or not** (a checkpoint is a complete restorable state, not a diff) — plus `900_SAVE_MANIFEST.md`. `090`/`095` are operational and derived artifacts, not canon: they stay out of the snapshot. The manifest mints no registry identifier (Decision 072).
+1. **Open and follow the authoritative Save Algorithm** — `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, section "Save Algorithm" (8 steps, in order). Execute it from the document, not from memory. Its promotion audit matrix is mandatory: enumerate every unpromoted Event's time movement, pool transition, skill activation/material passive application, success, qualifying-scene result, and owed delta before declaring the barrier passed. A narrative summary, a sibling skill delta, or the receipt's boolean is not a substitute. Do not invent checkpoint structure: the canonical form is `saves/900_CHECKPOINT_NNNN/` (zero-padded, next number) containing copies of **all eight canonical campaign ledgers (100, 110, 120, 130, 140, 160, 170, 180), changed or not** (a checkpoint is a complete restorable state, not a diff) — plus `900_SAVE_MANIFEST.md`. `090`/`095` are operational and derived artifacts, not canon: they stay out of the snapshot. The manifest mints no registry identifier (Decision 072).
 2. **Completion contract.** A checkpoint exists only when ALL of these are true on disk:
    - Every identifier referenced anywhere has a live fenced-YAML Object Block. A registry row or prose mention is a reference, not a definition.
    - Live ledgers updated from the session's **derived** target set (from its events — not from recollection of what changed).
@@ -29,7 +29,7 @@ This reverses the campaign's earlier practice of writing `100_CHARACTER_SHEET.md
    ```
    powershell -NoProfile -ExecutionPolicy Bypass -File tools\new_checkpoint.ps1 -Campaign <campaign-path> -CheckpointType <type> -Label "<label>" -ExpectedParent <checkpoint-or-none> -MutationReceipt <receipt.json>
    ```
-   Do not manually allocate the ordinal, create the snapshot directory or manifest, edit the generated index, or substitute narrated gate results. The helper owns those steps, rollback, final read-back, and exact validator output.
+   Do not manually allocate the ordinal, create the snapshot directory or manifest, edit the generated index, or substitute narrated gate results. The helper owns those steps, rollback, final read-back, exact validator output, and the manifest-to-campaign-time/provenance binding.
 4. **Write the player's message only now.** Success requires the final `CHECKPOINT_RECEIPT_JSON` to say `"status":"created"` and names its verified checkpoint path. Any failure, staging path, or unwritten target → report a **partial checkpoint** per the algorithm's step 8. Never draft the success message before the helper finishes.
 5. **Commit to `main` — every green checkpoint, no separate request needed.** Once the helper returns `"status":"created"`:
    - Check `git branch --show-current`. If it's already `main`, commit there. Otherwise `main` is checked out in a separate worktree — find it with `git worktree list` (the path moves; don't reuse a cached one) and commit there instead, re-running the repository and checkpoint-contract gates in that worktree first.
@@ -60,3 +60,4 @@ This reverses the campaign's earlier practice of writing `100_CHARACTER_SHEET.md
 - Describing what you will write instead of reading back what you wrote
 - A green checkpoint reported as finished with no commit on `main` and no explicit waiver from the player
 - Any AI, assistant, model, or tool name anywhere in a checkpoint commit message
+- `promotion_barrier_passed: true` with no per-Event audit matrix behind it

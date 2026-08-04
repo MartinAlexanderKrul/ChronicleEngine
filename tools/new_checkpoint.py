@@ -126,6 +126,74 @@ def load_json_mapping(path: Path) -> dict[str, Any]:
     return value
 
 
+def parse_campaign_instant(value: str, field: str) -> datetime:
+    """Parse an exact campaign instant without inventing missing precision."""
+    try:
+        instant = datetime.fromisoformat(value)
+    except ValueError as exc:
+        raise CheckpointFailure(
+            f"{field} must be an exact ISO-8601 date/time with UTC offset"
+        ) from exc
+    if instant.tzinfo is None or instant.utcoffset() is None:
+        raise CheckpointFailure(
+            f"{field} must include an explicit UTC offset"
+        )
+    return instant
+
+
+def validate_manifest_anchor(campaign_root: Path, manifest_input: dict[str, Any]) -> None:
+    """Bind the receipt's game date to canonical temporal state when present."""
+    character_path = campaign_root / "100_CHARACTER_SHEET.md"
+    if not character_path.is_file():
+        return
+    character = read_text(character_path)
+    matches = re.findall(
+        r'^\s+campaign_time:\s*"([^"\r\n]+)"\s*$', character, re.MULTILINE
+    )
+    if not matches:
+        return
+    if len(matches) != 1:
+        raise CheckpointFailure(
+            "100_CHARACTER_SHEET.md must expose exactly one canonical campaign_time"
+        )
+    canonical_text = matches[0]
+    manifest_text = single_line(manifest_input.get("game_date"), "manifest.game_date")
+    manifest_source = single_line(manifest_input.get("source"), "manifest.source")
+    canonical = parse_campaign_instant(canonical_text, "canonical campaign_time")
+    manifest = parse_campaign_instant(manifest_text, "manifest.game_date")
+    if canonical != manifest:
+        raise CheckpointFailure(
+            "manifest.game_date does not match canonical campaign_time "
+            f"({manifest_text!r} versus {canonical_text!r})"
+        )
+
+    # The three always-promoted ledgers are the semantic close of a played
+    # span. Their provenance must identify the same closing Event and instant
+    # as the receipt. Hashes prove bytes did not change after read-back; these
+    # comparisons prove the bytes agree about what was promoted.
+    for ledger_name in sorted(ALWAYS_PROMOTED):
+        ledger_path = campaign_root / ledger_name
+        ledger = fenced_yaml_mapping(ledger_path)
+        provenance = ledger.get("provenance")
+        if not isinstance(provenance, dict):
+            raise CheckpointFailure(f"{ledger_name} has no provenance mapping")
+        ledger_source = str(provenance.get("source", "")).strip()
+        if ledger_source != manifest_source:
+            raise CheckpointFailure(
+                f"{ledger_name} provenance source {ledger_source!r} does not match "
+                f"manifest.source {manifest_source!r}"
+            )
+        ledger_date_text = str(provenance.get("game_date", "")).strip()
+        ledger_date = parse_campaign_instant(
+            ledger_date_text, f"{ledger_name} provenance.game_date"
+        )
+        if ledger_date != canonical:
+            raise CheckpointFailure(
+                f"{ledger_name} provenance.game_date does not match canonical "
+                f"campaign_time ({ledger_date_text!r} versus {canonical_text!r})"
+            )
+
+
 def fenced_yaml_mapping(path: Path) -> dict[str, Any]:
     failures: list[str] = []
     mappings = load_fenced_yaml_mappings(path, failures)
@@ -326,6 +394,7 @@ def validate_mutation_receipt(
     manifest_input = receipt.get("manifest")
     if not isinstance(manifest_input, dict):
         raise CheckpointFailure("mutation receipt manifest must be an object")
+    validate_manifest_anchor(campaign_root, manifest_input)
     return manifest_input, verified
 
 

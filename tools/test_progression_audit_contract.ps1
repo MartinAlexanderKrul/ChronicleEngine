@@ -40,6 +40,14 @@ function Replace-Once {
     Set-Text $Path $text.Replace($Old, $New)
 }
 
+function Replace-RegexOnce {
+    param([string]$Path, [string]$Pattern, [string]$Replacement)
+    $text = Get-Text $Path
+    $matches = [regex]::Matches($text, $Pattern)
+    Assert-True ($matches.Count -eq 1) "Mutation precondition drifted in $Path for regex: $Pattern (found $($matches.Count))"
+    Set-Text $Path ([regex]::Replace($text, $Pattern, $Replacement, 1))
+}
+
 # These fixtures are DERIVED from live state, never hardcoded. Counter values, the registry
 # high-water mark, and the chronicle's subject list all advance with ordinary play, so pinning
 # them to a snapshot makes this contract fail after every session for reasons unrelated to the
@@ -99,8 +107,81 @@ try {
     $profile = Join-Path $tempRoot "worlds/gatefall/206_WORLD_RULE_PROFILE.md"
     $runtime = Join-Path $root "docs/AI_GAMEPLAY_RUNTIME_PROFILE.md"
 
+    # The new production checks intentionally block the current live campaign
+    # until F-015 receives a corrective checkpoint. This suite needs a valid
+    # control before it can mutate one relationship at a time, so normalize
+    # only those already-diagnosed render/provenance defects in the isolated
+    # copy. Once live canon is repaired these replacements simply do nothing.
+    $fixtureCharacter = Get-Text $character
+    $fixtureCharacter = $fixtureCharacter.Replace(
+        '  game_date: "2026-08-15 ~16:30 -05:00"',
+        '  game_date: "2026-08-15 16:45 -05:00"')
+    $fixtureCharacter = $fixtureCharacter.Replace(
+        '**DMG 128 standard before reduction** at effective Strength 66',
+        '**DMG 129 standard before reduction** at effective Strength 67')
+    $fixtureCharacter = [regex]::Replace(
+        $fixtureCharacter,
+        '`\(66 \+ 22\)[^0-9]+1\.45 = 127\.6`',
+        '`(67 + 22) x 1.45 = 129.05`')
+    $fixtureCharacter = $fixtureCharacter.Replace(
+        '**DMG 112 standard before reduction** at effective Strength 66',
+        '**DMG 113 standard before reduction** at effective Strength 67')
+    $fixtureCharacter = [regex]::Replace(
+        $fixtureCharacter,
+        '`\(66 \+ 11\)[^0-9]+1\.45 = 111\.65`',
+        '`(67 + 11) x 1.45 = 113.1`')
+    $fixtureCharacter = $fixtureCharacter.Replace(
+        '**DMG 100 standard before reduction** at effective Intelligence 61',
+        '**DMG 99 standard before reduction** at effective Intelligence 61')
+    Set-Text $character $fixtureCharacter
+
+    $fixtureCurrent = Get-Text (Join-Path $tempRoot "campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md")
+    $fixtureCurrent = $fixtureCurrent.Replace(
+        '**Live canon is promoted through `EVT-000404`.**',
+        '**Live canon is promoted through `EVT-000406`.**')
+    Set-Text (Join-Path $tempRoot "campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md") $fixtureCurrent
+
     $baseline = Invoke-Validation $tempRoot
-    Assert-True ($baseline.ExitCode -eq 0) "Unmodified Data Model 0.1.6 repository did not validate:`n$($baseline.Output)"
+    Assert-True ($baseline.ExitCode -eq 0) "Normalized Data Model 0.1.6 control repository did not validate:`n$($baseline.Output)"
+
+    # Checkpoint 0070's repair audit exposed values that were duplicated in a
+    # prose rendering and structured state without any gate comparing them.
+    # These mutations prove the production validator rejects that class now.
+    $keenUses = Get-CounterLine $character 'skills.keen_sense.successful_uses'
+    $keenPattern = '("Keen Sense \[[EDCBAS]-Rank\][^\r\n]*?\*\*Uses )' + $keenUses.Current + '(\s+)'
+    Replace-RegexOnce $character $keenPattern ('${1}' + ($keenUses.Current + 1) + '${2}')
+    $renderDrift = Invoke-Validation $tempRoot
+    Assert-True ($renderDrift.ExitCode -ne 0 -and $renderDrift.Output -like "*Keen Sense*renders successful_uses $($keenUses.Current + 1)*tracked current_value is $($keenUses.Current)*") `
+        "A skills_known rendering that disagrees with its authoritative counter was accepted:`n$($renderDrift.Output)"
+    $wrongKeenPattern = '("Keen Sense \[[EDCBAS]-Rank\][^\r\n]*?\*\*Uses )' + ($keenUses.Current + 1) + '(\s+)'
+    Replace-RegexOnce $character $wrongKeenPattern ('${1}' + $keenUses.Current + '${2}')
+
+    Replace-Once $character "      mana_recovery_mode: resting" "      mana_recovery_mode: light"
+    $badRecoveryMode = Invoke-Validation $tempRoot
+    Assert-True ($badRecoveryMode.ExitCode -ne 0 -and $badRecoveryMode.Output -like "*mana_recovery_mode must be active or resting*") `
+        "A Health-only recovery mode was accepted for Mana:`n$($badRecoveryMode.Output)"
+    Replace-Once $character "      mana_recovery_mode: light" "      mana_recovery_mode: resting"
+
+    $weaponPreview = [regex]::Match((Get-Text $character), '(?<prefix>weapon power (?<power>\d+).*?effective chassis[^0-9]*(?<chassis>\d+(?:\.\d+)?).*?DMG )(?<damage>\d+)(?<suffix> standard before reduction.*?at effective Strength (?<stat>\d+))')
+    Assert-True $weaponPreview.Success "No equipped weapon preview found; fixture precondition drifted."
+    $wrongDamage = [int]$weaponPreview.Groups['damage'].Value + 1
+    Replace-Once $character $weaponPreview.Value ($weaponPreview.Groups['prefix'].Value + $wrongDamage + $weaponPreview.Groups['suffix'].Value)
+    $badDamage = Invoke-Validation $tempRoot
+    Assert-True ($badDamage.ExitCode -ne 0 -and $badDamage.Output -like "*equipped weapon renders DMG $wrongDamage but Section 6.2 derives*") `
+        "A stale equipped-weapon damage preview was accepted:`n$($badDamage.Output)"
+    Replace-Once $character ($weaponPreview.Groups['prefix'].Value + $wrongDamage + $weaponPreview.Groups['suffix'].Value) $weaponPreview.Value
+
+    $currentState = Join-Path $tempRoot "campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md"
+    $currentSource = [regex]::Match((Get-Text $currentState), '(?m)^  source: (EVT-\d{6})$')
+    Assert-True $currentSource.Success "Current State provenance source is missing; fixture precondition drifted."
+    $wrongPromotionNumber = [int]$currentSource.Groups[1].Value.Substring(4) - 1
+    $wrongPromotion = "EVT-{0:D6}" -f $wrongPromotionNumber
+    Replace-Once $currentState "**Live canon is promoted through ``$($currentSource.Groups[1].Value)``.**" "**Live canon is promoted through ``$wrongPromotion``.**"
+    $badPromotion = Invoke-Validation $tempRoot
+    Assert-True ($badPromotion.ExitCode -ne 0 -and $badPromotion.Output -like "*says live canon is promoted through $wrongPromotion*provenance source is $($currentSource.Groups[1].Value)*") `
+        "A stale Current State promotion boundary was accepted:`n$($badPromotion.Output)"
+    Replace-Once $currentState "**Live canon is promoted through ``$wrongPromotion``.**" "**Live canon is promoted through ``$($currentSource.Groups[1].Value)``.**"
+
     Assert-True ((Get-Text $profile).Contains('progression-batch-settlement')) `
         "Gatefall Profile 1.26 does not preserve promotion-time non-combat progression batching."
     Assert-True ((Get-Text $profile).Contains('Promotion reconciliation.')) `
@@ -336,6 +417,8 @@ description: "Fixture exchange."'
         "An Event counter delta without the stored update was not rejected:`n$($unappliedDelta.Output)"
 
     Replace-Once $character $twinFang.Line (New-CounterLine $twinFang ($twinFang.Current + 1))
+    $twinRenderPattern = '("Twin Fang \[[EDCBAS]-Rank\][^\r\n]*?\*\*Successful uses )' + $twinFang.Current + '(\s+)'
+    Replace-RegexOnce $character $twinRenderPattern ('${1}' + ($twinFang.Current + 1) + '${2}')
     $reconciled = Invoke-Validation $tempRoot
     Assert-True ($reconciled.ExitCode -eq 0) "A reconciled Event delta and stored counter did not validate:`n$($reconciled.Output)"
 

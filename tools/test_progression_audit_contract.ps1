@@ -407,14 +407,20 @@ game_date: "2026-08-04 06:01 -05:00"'
     # a snapshot. The mutation is one rung above whatever the skill currently
     # stands at, which is the minimal violation of the authored ceiling and the
     # same thing the old literal C-to-B pair expressed.
+    # The violation must sit above the *authored ceiling*, not merely above the
+    # skill's current Rank. Those were the same thing while the ladders stopped
+    # at C and Flash Step stood at D; Section 7.3 now authors through B-Rank, so
+    # bumping a C-Rank Flash Step one rung lands on a legal B and asserts
+    # nothing. Target the first genuinely unauthored rung instead (F-013).
     $ladder = @("E", "D", "C", "B", "A", "S")
+    $authoredCeiling = "B"
     $liveFlashRank = [regex]::Match((Get-Text $character), '"Flash Step \[([EDCBAS])-Rank\]')
     Assert-True $liveFlashRank.Success "Flash Step renders no Rank in skills_known; fixture precondition drifted."
     $flashRank = $liveFlashRank.Groups[1].Value
-    $flashIndex = [array]::IndexOf($ladder, $flashRank)
-    Assert-True ($flashIndex -lt $ladder.Count - 1) `
-        "Flash Step already stands at the top of the ladder, so there is no Rank above it to test the authored ceiling with."
-    $aboveRank = $ladder[$flashIndex + 1]
+    $ceilingIndex = [array]::IndexOf($ladder, $authoredCeiling)
+    Assert-True ($ceilingIndex -lt $ladder.Count - 1) `
+        "The authored ladder reaches the top of the Rank order, so there is no unauthored Rank to test the ceiling with."
+    $aboveRank = $ladder[$ceilingIndex + 1]
     Replace-Once $character "`"Flash Step [$flashRank-Rank]" "`"Flash Step [$aboveRank-Rank]"
     $unauthoredRank = Invoke-Validation $tempRoot
     Assert-True ($unauthoredRank.ExitCode -ne 0 -and $unauthoredRank.Output -like "*exceeds its authored category ladder*") `

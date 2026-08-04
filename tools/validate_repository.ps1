@@ -788,10 +788,15 @@ foreach ($file in $canonicalFiles) {
             # its Section 7.3 ladder does not author. Ascension eligibility
             # withholds the offer, so a Rank above the authored ceiling can only
             # mean the guard was bypassed -- and the mastery an ascension spends
-            # cannot be returned (Rules Section 13.2). Both the scope ladder and
-            # the capability ladder top out at C-Rank today; Section 20.3 authors
-            # higher rungs at the checkpoint where each becomes reachable, and
-            # this ceiling moves with them.
+            # cannot be returned (Rules Section 13.2). Both ladders now author
+            # through B-Rank: Section 7.3 states "the reachable band is set out
+            # below through B-Rank", its scope table carries a B column for all
+            # five scope skills, and Flash Step's B rung is explicitly "now
+            # closed and no longer the gap it once was". A-Rank and S-Rank remain
+            # the open question Section 20.3 answers at the checkpoint where each
+            # becomes reachable, and this ceiling moves with them. It read C
+            # until Profile 1.51, where a B-Rank Keen Sense ascension found it
+            # stale (see F-013).
             $ladderVersionMatch = [regex]::Match($block, 'profile_version:[ \t]*"(\d+\.\d+)"')
             if ($id -eq "ENT-000125" -and $ladderVersionMatch.Success -and
                 [version]$ladderVersionMatch.Groups[1].Value -ge [version]"1.35") {
@@ -800,14 +805,14 @@ foreach ($file in $canonicalFiles) {
                     "Resonance Extraction", "Sprint", "Flash Step"
                 )
                 $ladderRankOrder = @("E", "D", "C", "B", "A", "S")
-                $highestAuthoredIndex = [array]::IndexOf($ladderRankOrder, "C")
+                $highestAuthoredIndex = [array]::IndexOf($ladderRankOrder, "B")
                 $ladderSection = Get-IndentedSection $block "skills_known"
                 foreach ($ladderSkill in $ladderSkills) {
                     $ladderMatch = [regex]::Match($ladderSection, '"' + [regex]::Escape($ladderSkill) + ' \[([EDCBAS])-Rank\]')
                     if (-not $ladderMatch.Success) { continue }
                     $heldRank = $ladderMatch.Groups[1].Value
                     if ([array]::IndexOf($ladderRankOrder, $heldRank) -gt $highestAuthoredIndex) {
-                        Add-Failure "$relativePath`:$line entity $id holds $ladderSkill at $heldRank-Rank, which exceeds its authored category ladder (Gatefall Profile 1.35 Section 7.2; Section 7.3 authors through C-Rank)."
+                        Add-Failure "$relativePath`:$line entity $id holds $ladderSkill at $heldRank-Rank, which exceeds its authored category ladder (Gatefall Profile 1.35 Section 7.2; Section 7.3 authors through B-Rank)."
                     }
                 }
             }

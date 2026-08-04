@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000203 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000389 |
+| Event | `EVT-` | Event | EVT-000390 |
 | Relationship | `REL-` | Relationship | REL-000094 |
 
 ---
@@ -557,6 +557,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000201 | Entity | Gatefall: Pendragon: Glenwood Garden and Feed (Place) — a garden and feed storefront on Glenwood Avenue, Rogers Park; ordinary retail horticulture with no connection to the Gate economy |
 | ENT-000202 | Entity | Gatefall: Pendragon: Halvard's (Place) — a Scandinavian-American diner three blocks west of Edgewater Hospital, chosen by Owen Callahan because hospital staff eat there and do not talk there |
 | ENT-000203 | Entity | Gatefall: Pendragon: Priscilla Nakamura (Character) — an independent licensed artificer doing off-the-books identification and commission work for two or three guilds, named by Wade Bishop as the one who does not ask where a thing came from. Not yet met, not yet contacted directly |
+| EVT-000390 | Event | Gatefall: Pendragon: player-instructed audit of every mastery-tracked skill - Section 7.5's mandatory breakthrough offer had never been presented for four skills, and `EVT-000327`/`EVT-000332` (two complete solo dungeon clears) carried `counter_deltas: []` entirely. Owner ruled to credit every qualifying scene and settle every earned breakthrough: **Keen Sense [D-Rank] Master to [B-Rank] Adept** (10 scenes, now at the Section 7.5 ceiling), **Dagger Mastery [E-Rank] Master to [C-Rank] Adept** (7 scenes, ascension-ready since 2026-08-09, chassis +0.30 to +0.70), **Exploit Pattern [E-Rank] Master to [C-Rank] Adept** (6 scenes, Persistence + Group coordination, 6 concurrent Patterns). Twin Fang correctly withheld as not ascension-eligible. Dagger previews 92/80 to 127/111. No pool, Stat, XP, gold, cash, item, or quest state moved. Engine defect raised as `F-012` |
 | EVT-000389 | Event | Gatefall: Pendragon: player-instructed audit of Checkpoint 0068 - `EVT-000382` recorded two divergences between canon and Owen Callahan's belief and only one survives. "I expected a mining job and wasn't told it would be live" is substantially **true**: it was a B-Rank harvest trial whose vein chamber Alexander mined, the harvest element works behind a secured strike line on every prior job in this campaign, that line failed because the roster ran 4 against a legal 8, and Wade's own record already says he withheld how Ironline's guild-held Gates get staffed. Wade objected to him entering **alone**, which is not a warning. The near-death omission (Health full to 0, Shrug Off) stands. One Closed Channels row struck rather than dated; no fictional time, no pool, and no resolved outcome changed; Checkpoint 0068 left immutable |
 
 ---

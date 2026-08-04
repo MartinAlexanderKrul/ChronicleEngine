@@ -231,3 +231,55 @@ So live state holds both skills at stored `mastery_level: 4` (Expert) with `mast
 **No skill's rendered effect changed for any of the four** — three skills' typed state caught up to what the sheet already rendered and play already resolved, and one label came down to what its own numbers already said. The damage previews in `tools/test_gatefall_quest_contract.ps1` were separately repinned from effective Strength 51 to 62, where they had been stale since the Level 14 advance and unrelated to this ruling.
 
 **The generalizable half remains open and is worth a Decision.** A promotion-barrier settlement can still narrate a tier advance in prose while omitting the counter that carries it, and every mechanical gate passes: `validate_repository.ps1`'s counter arithmetic is satisfied, because what is missing was never claimed as a delta at all. Requiring an Event whose description asserts an ascension to carry a matching `mastery_level` delta — the shape Decision 085 already applies to claimed-and-not-made promotions — would close it. Until then the only detector is a contract test that is not one of the checkpoint's gates.
+
+## F-012 — Empty `counter_deltas` on completed dangerous scenes, and the Section 7.5 offers it silently suppressed
+
+**Raised:** 2026-08-04 · **Source:** `campaigns/gatefall_pendragon_001/`, found during a player-instructed skill audit at the 2026-08-15 06:00 anchor, immediately after `900_CHECKPOINT_0068`
+**Status:** Open
+
+**This is F-011's explicitly-deferred generalizable half, observed firing.** F-011 closed its own case by owner ruling but left this on the record: *"`counter_deltas: []` on an Event that resolved a full dungeon clear is well-formed today."* It is, and it has been used.
+
+**What was found.** `EVT-000327` and `EVT-000332` are both complete solo instant-dungeon clears — populations of 12 and 12, both narrated as cleared, one explicitly "solo clear, no damage taken" — and both carry `counter_deltas: []`. Not a missing entry for one skill: **no skill counter of any kind for either scene.** Separately, `EVT-000340` (a 24-common Hive swarm) records `skills.twin_fang.successful_uses, delta: 10` with no qualifying scene for Twin Fang, and no Dagger Mastery entry at all despite every one of those ten strike-pairs being thrown with two equipped Quickknives. Dagger Mastery's last recorded use anywhere is `EVT-000339`.
+
+**The consequence that makes it more than bookkeeping.** Section 7.5 makes a breakthrough offer mandatory: a skill at Master, below the Section 7.5 ceiling, whose next Rank is authored, becomes ascension-ready and the Runtime *"surfaces the offer at the dangerous-scene settlement or promotion barrier that recorded the mastery advance,"* and a declined offer *"stands open and re-surfaces at each later barrier, costing nothing and expiring never."* Four skills sat ascension-ready and no offer was ever presented:
+
+| Skill | Ascension-ready since | Barriers passed with no offer |
+|---|---|---|
+| Dagger Mastery | `EVT-000238`, 2026-08-09 | ~8 |
+| Exploit Pattern | `EVT-000303`, 2026-08-12 | ~6 |
+| Keen Sense | `EVT-000308`, 2026-08-12 | 6 |
+| (Twin Fang — correctly withheld, not ascension-eligible) | — | — |
+
+Six in-fiction days. The player found it by asking, not by being told.
+
+**Why every gate stayed green.** `validate_repository.ps1` checks that declared deltas and stored `current_value`s agree, and they did — what was missing was never *claimed*, so there was nothing to disagree with. Decision 085's participation coverage requires an entry per Character an Event names, but says nothing about the acting Bearer's own skill counters. The checkpoint contract, the runtime-configuration gate, and the context-budget measurement are all indifferent. `900_CHECKPOINT_0068` was written with all nine gates at exit 0 while three skills were two Ranks below where the record supports.
+
+**A self-reinforcing failure mode, which is the part worth designing against.** A skill pinned at Master renders `mastery_progress` as *complete*, so a settlement crediting a qualifying scene to it sees no number move and has no visible reason to write the delta. Uncredited scenes then keep the skill at Master, and the suppressed offer keeps it there permanently. The cheapest moment to notice is exactly the moment the system makes it look like nothing is happening.
+
+**The open design questions:**
+
+1. Should a promotion-barrier settlement over a span containing a resolved dangerous scene be **prohibited from emitting `counter_deltas: []`** — required either to carry per-skill deltas or to state an explicit `none` with a reason, the way `progression_audits` already requires an explicit `none`?
+2. Should the resident Profile-Declared Proactive Trigger Audit gain a **standing ascension-readiness check** — every mastery-tracked skill at Master, below ceiling, with an authored next Rank — evaluated at every barrier rather than only at the barrier that recorded the advance? The "re-surfaces at each later barrier" clause already implies a standing check; nothing implements one.
+3. Should a **qualifying scene credited to a Master-level skill still be written**, so that a later ascension can retro-credit it, rather than being dropped because it moves no visible counter?
+4. Is a deterministic detector possible — e.g. a validator rule that an Event of kind `combat` naming the Bearer must carry at least one `skills.*` delta?
+
+**What the repair cost this session.** Three ascensions across two skills, ten to seven credited scenes each, a scope value stale since 2026-08-12, and a Mana cost stale since 2026-08-06 — a ~38% increase to every dagger strike's damage preview, all arriving from bookkeeping rather than from play. The player had to rule on which unrecorded scenes counted, because canon held no line to read.
+
+## F-013 — The ladder-ceiling guard in `validate_repository.ps1` lagged the profile that authors the ladder
+
+**Raised:** 2026-08-04 · **Source:** `campaigns/gatefall_pendragon_001/`, hit during the `/save` that settled `EVT-000390`'s skill audit
+**Status:** Actioned (fixed in the same change)
+
+`validate_repository.ps1` enforces that a Section 7.3 ladder skill may not stand at a Rank its ladder does not author — a good guard, and the right shape: ascension eligibility withholds the offer, so a Rank above the authored ceiling can only mean the guard was bypassed, and the mastery an ascension spends cannot be returned. It carried the ceiling as a **hardcoded `"C"`**, with a comment asserting *"Both the scope ladder and the capability ladder top out at C-Rank today."*
+
+That was true when it was written against Profile 1.35. It has not been true for some time. Profile 1.51's Section 7.3 states plainly that *"the reachable band is set out below through B-Rank"*, its scope table carries a populated **B column for all five scope skills**, and its capability table closes Flash Step's B rung with *"B-Rank is now closed and no longer the gap it once was."* Only A-Rank and S-Rank remain the open question Section 20.3 defers.
+
+So a legitimately earned B-Rank Keen Sense — two breakthroughs on the earned road, both within the Section 7.5 ceiling, landing on a category the profile authors in full — was rejected by the repository gate as exceeding an authored ladder that does in fact author it. The guard had become a false negative on correct canon.
+
+**The contract test hid it rather than catching it.** `tools/test_progression_audit_contract.ps1` builds its violation as *one rung above the skill's current Rank*, with a comment explaining that this is "the minimal violation of the authored ceiling and the same thing the old literal C-to-B pair expressed." Those coincided while the ceiling was C and Flash Step stood at D. Once Flash Step reached C-Rank the mutation produced **B**, which the profile authors — so the test was asserting that a *legal* Rank fails, and it passed only because the validator was equally stale. Two stale things agreeing is not verification.
+
+**The generalizable defect:** a validator constant that encodes a profile's authored extent, updated by hand, with a test whose fixture is derived from live state rather than from the same constant. The profile moved eleven versions; neither followed. Nothing in the checkpoint gates compares them.
+
+**Fix applied.** The ceiling reads `"B"` and the failure message names B-Rank; the comment records what authors it and that A/S remain Section 20.3's question, so the next mover has the citation. The contract test now derives its violation from the **authored ceiling** rather than from the skill's current Rank, targeting the first genuinely unauthored rung — it fails correctly if the ceiling constant and the profile disagree in the direction that matters.
+
+**Left open:** the constant is still hand-maintained. Parsing the authored extent out of Section 7.3's own tables at validation time would make the guard self-updating and remove this class entirely.

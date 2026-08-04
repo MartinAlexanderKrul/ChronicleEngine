@@ -95,11 +95,11 @@ if ($ceilingIndex -lt 1) { throw "No Section 7.3 ladder table with Rank column h
 # level 1-5), plus whether every reachable rung carries a category. `Categorised`
 # is what carries the law where the number is flat.
 $skills = @(
-    @{ Name = "Rupture";              Native = "E"; Categorised = $false; Capped = $false
+    @{ Name = "Rupture";              Native = "E"; Categorised = $true ; Capped = $false
        F = { param($r, $m) $baseline[$ranks[[array]::IndexOf($ranks, "E") + $r]] * (2.00 + 0.15 * ($m - 1)) } },
     @{ Name = "Mend";                 Native = "E"; Categorised = $false; Capped = $false
        F = { param($r, $m) $baseline[$ranks[[array]::IndexOf($ranks, "E") + $r]] * (1.00 + 0.15 * ($m - 1)) } },
-    @{ Name = "Mana Bolt";            Native = "E"; Categorised = $false; Capped = $false
+    @{ Name = "Mana Bolt";            Native = "E"; Categorised = $true ; Capped = $false
        F = { param($r, $m) $baseline[$ranks[[array]::IndexOf($ranks, "E") + $r]] * (1.00 + 0.15 * ($m - 1)) } },
     @{ Name = "Dagger Mastery";       Native = "E"; Categorised = $true; Capped = $false
        F = { param($r, $m) 0.10 + 0.25 * $r + 0.05 * ($m - 1) } },
@@ -108,7 +108,14 @@ $skills = @(
     @{ Name = "Bulwark";              Native = "E"; Categorised = $true; Capped = $true
        F = { param($r, $m) [math]::Min(90, 60 + 25 * $r + 5 * ($m - 1)) } },
     @{ Name = "Twin Fang";            Native = "E"; Categorised = $true; Capped = $false
-       F = { param($r, $m) 1.00 + 0.35 * $r + 0.15 * ($m - 1) } }
+       F = { param($r, $m) 1.00 + 0.35 * $r + 0.15 * ($m - 1) } },
+    # Unformed candidate, checked anyway. Its ladder was authored at 1.55 ahead
+    # of ratification precisely so the trap Twin Fang fell into is closed before
+    # the skill can exist: range 5/7/10/15/20 m at native Rank, +3 m per Rank
+    # above it. Without the per-Rank grant this reads x0.25 -- 20 m falling to
+    # 5 m -- which is the second case the magnitude ratchet exists for.
+    @{ Name = "Dimensional Projection"; Native = "E"; Categorised = $true; Capped = $false
+       F = { param($r, $m) @(5, 7, 10, 15, 20)[$m - 1] + 3 * $r } }
 )
 
 foreach ($skill in $skills) {
@@ -182,6 +189,8 @@ $authored = @{
     'Mastery step, passive multiplier (+0.05)'   = "granted multiplier rises \*\*\+0\.05\*\*"
     'Single-skill reduction cap (90%)'           = "reduction fraction never exceeds 90%"
     'Rupture native multiplier band (2.00-2.60)' = "2\.00.{0,40}2\.60|x2\.00|E-Rank Master \(.2\.60"
+    'Mana skill damage reads Intelligence'       = 'skill_rank_baseline \+ effective Intelligence'
+    'Healing excluded from Intelligence'         = 'Bearer_skill_healing = \(skill_rank_baseline \+ equipped_focus_power\)'
 }
 foreach ($name in $authored.Keys) {
     if ($profile -notmatch $authored[$name]) {

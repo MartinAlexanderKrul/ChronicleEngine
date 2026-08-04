@@ -512,7 +512,15 @@ $tfLevel = [int]$Matches[1]
 # Pinning only the fraction form made this unsatisfiable for any skill that
 # actually reached Master, which is what F-011's settlement exposed.
 $tfProgressRender = if ($tfLevel -eq 5) { 'mastery progress complete' } else { 'mastery progress ' + $tfProgress + '/3' }
-Assert-True ($character -match ('Twin Fang \[E-Rank\] ' + [regex]::Escape($tfLevels[$tfLevel]) + '.+Successful uses ' + $tfUses + ' . qualifying scenes total ' + $tfScenes + ' . ' + $tfProgressRender)) "Twin Fang rendered prose does not match its stored counters (level $tfLevel, uses $tfUses, scenes $tfScenes, progress $tfProgress)."
+# The Rank was pinned at E here, which is the same F-013 defect the Dagger
+# Mastery and Rupture assertions above were already fixed for: a fixture
+# pinning live state. It survived only because Twin Fang had never ascended.
+# `EVT-000396` took it E -> D and the assertion then matched nothing, failing as
+# "prose does not match its stored counters" when the prose matched perfectly
+# and simply sat beside a different Rank. Read the rendered Rank instead; the
+# invariant under Section 7.4 is that prose and counters agree, not that the
+# skill stands at any particular Rank.
+Assert-True ($character -match ('Twin Fang \[([EDCBAS])-Rank\] ' + [regex]::Escape($tfLevels[$tfLevel]) + '.+Successful uses ' + $tfUses + ' . qualifying scenes total ' + $tfScenes + ' . ' + $tfProgressRender)) "Twin Fang rendered prose does not match its stored counters (level $tfLevel, uses $tfUses, scenes $tfScenes, progress $tfProgress)."
 
 $quickknifeChassis = [decimal]0.75 + $daggerBonus
 $mainDamage = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeChassis)

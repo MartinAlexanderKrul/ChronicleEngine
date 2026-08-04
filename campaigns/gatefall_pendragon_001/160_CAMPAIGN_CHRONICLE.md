@@ -356,6 +356,9 @@ subjects:
   - EVT-000391
   - EVT-000392
   - EVT-000393
+  - EVT-000394
+  - EVT-000395
+  - EVT-000396
 ```
 
 ---
@@ -11244,4 +11247,139 @@ description: "Adoption of **Gatefall World Rule Profile 1.54**, a required migra
 **Nothing else moves, and that is checkable.** Twin Fang stands at **native E-Rank**, so `ranks_above_native` is 0 and the new base contributes nothing: its Master multiplier is **x1.60 before and after**, Mana 4 before and after, and every resolved strike in the record stands. A `magnitude_floor` counter is written at 0 - it binds only after a first ascension, and Twin Fang has none.
 
 **A contract test makes it permanent.** `tools/test_rank_dominance_law.ps1` verifies every reachable rung of every skill on both ascension roads, reads the Rank baseline table and the authored ceiling out of the profile rather than restating them, ties each ladder constant back to the sentence that authors it, and catches the further trap the ratchet itself creates - **a floor that swallows an entire mastery track**, so climbing Novice to Master at the new Rank buys nothing. That is `F-014` reappearing on the magnitude axis, and it is invisible to a fall-detection check because the floor has already hidden the fall. The test was mutation-checked both ways before being accepted."
+```
+
+## EVT-000394 - Profile 1.55: A Rung That Read as a Refusal, and the Skill With No Ladder
+
+```yaml
+id: EVT-000394
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: profile-adoption
+  game_date: "2026-08-15 06:00 -05:00"
+  real_date: "2026-08-04"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-15 06:00 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+participation_audits:
+  - subject: ENT-000125
+    result: no-change
+description: "Adoption of **Gatefall World Rule Profile 1.55**, a compatibility treatment over frozen 1.54. **No fictional time passes, no pool moves, no scene occurs, no stored value changes, and no skill of Alexander's is touched.** Both changes came from the player reading the finished Section 7.3 tables back and asking why two skills appeared to be refused.
+
+**Broken Rhythm's B-Rank rung was named *Denied*** - the name of what it does to an opponent, which denies a telegraphed opening - sitting in a column whose neighbours legitimately read *deferred*, *unauthored* and *open question*. It read as the rung being withheld. Renamed **Cadence break**; the effect text is unchanged in every particular. A rung name that collides with the vocabulary of withholding is a Section 20.2 rendering defect: a reader cannot tell an authored thing from an absent one, which is the entire point of giving every skill a row.
+
+**Dimensional Projection was the one skill in the tables with no Rank ladder at all**, deferred at 1.52 on the ground that a skill which does not exist yet should not carry rungs. It is an unformed `progression_candidate` - no Bearer has ever demonstrated it.
+
+**The owner ruling goes the other way, and Twin Fang is the reason.** The ladder is what makes a skill *safe to form*. Twin Fang was made ascension-eligible at 1.52 with no Rank axis whatsoever, and its first ascension would have destroyed 37.5% of its damage - `EVT-000391` opened that offer before anyone computed the trade. Dimensional Projection carried the identical defect: its range is authored by mastery alone, so ascension read **x0.25**, twenty metres falling to five. **Deferring the rungs did not defer the trap; it only deferred noticing it.**
+
+**Authored:** range band **+3 m per Rank above native** (E 5-20 m, D 8-23, C 11-26, B 14-29, A 17-32) over the existing 5/7/10/15/20 mastery ladder, with a `magnitude_floor` from ratification; categories **Recall** (D, the launched weapon returns to hand rather than staying where it falls), **Blind placement** (C, a held read instead of an unobstructed line of sight), **Past the wall** (B, beyond a barrier the weapon could not be thrown through - never a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall), and **Recall in flight** (A, recalled mid-flight and re-launched at a second target in the same action). `tools/test_rank_dominance_law.ps1` verifies it alongside every formed skill.
+
+**Nothing is granted to Alexander.** Broken Rhythm keeps its Rank, mastery, counters, effect and Mana cost - only the name of a rung it does not occupy has changed. Dimensional Projection does not exist for him: no counter is written and no `magnitude_floor` is stored until it forms. The Twin Fang offer from `EVT-000391`, re-priced at `EVT-000393`, is unchanged and still unanswered."
+```
+
+## EVT-000395 - Profile 1.56: The Skill That Was Worse Than Swinging the Knife
+
+```yaml
+id: EVT-000395
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: profile-adoption
+  game_date: "2026-08-15 06:00 -05:00"
+  real_date: "2026-08-04"
+type: Event
+kind: profile-adoption
+importance: major
+game_date: "2026-08-15 06:00 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+participation_audits:
+  - subject: ENT-000125
+    result: record-updated
+    record: ENT-000125
+description: "Adoption of **Gatefall World Rule Profile 1.56**, a required migration over frozen 1.55. **No fictional time passes, no pool moves, no scene occurs, and no past exchange is re-resolved.** Player observation, checked against the ledger and confirmed.
+
+**Rupture had become strictly worse than swinging the knife.** At Level 21, effective Strength 66, S-Rank dagger equipped: an **ordinary main-hand strike deals 128 and costs nothing**; **Rupture deals 61 and costs 9 Mana**; Twin Fang deals 316 for 4. His signature heavy strike was worth less than half a free swing.
+
+**The cause is structural.** A Rank baseline is **fixed per Rank**; a weapon strike **compounds** with effective Strength, weapon power and the Dagger Mastery chassis, every session the Bearer grows. Section 7.2's own worked example set the two as a deliberate pair at E-Rank - Rupture 29 for 12 Mana, Twin Fang 18 for 6. Ninety in-fiction days later it read 61 against 316. **No amount of Rank ascension closes a gap that widens on its own**, which is why settling Rupture's owed breakthroughs could not have fixed it.
+
+**Owner ruling: a Mana skill's damage reads Intelligence the way a strike reads Strength.** Section 6.2 splits - `Bearer_skill_damage = (skill_rank_baseline + effective Intelligence + equipped_focus_power) x multiplier`, healing keeping the old form. The connection was already half-written: **Rupture takes an equipped focus**, which is caster gear rather than a weapon, and **Mana Bolt already had Intelligence governing its control**. This lets it govern the magnitude too.
+
+**Healing is deliberately excluded**, and it is the one place the two formulas differ. Mend reading Intelligence would restore **91 Health for 5 Mana** against a Lesser Healing Potion's 30, repeatable, on a Bearer whose maximum is 412 - which does not rebalance the Section 12.6 consumable economy so much as delete it. Mend is untouched at every Rank and mastery level.
+
+**Two ladders flatten and take categories.** A large flat Intelligence term added to a small baseline compresses the Rank ratio: **Mana Bolt's E-to-D step comes to return nothing at all on either road** (112 at E-Master against 85 by rune and 111 by breakthrough, both held flat by the magnitude ratchet), and **Rupture's breakthrough road inverts above Intelligence 105**. Both leave *magnitude only, by design* and gain authored rungs - Rupture **Compound** / **Structural** / **Ward-breaking** / **Propagating**, Mana Bolt **Arcing** / **Detonating** / **Ward-piercing** / **Homing**. Mend keeps its magnitude-only row and keeps it honestly, having been excluded from the change. **That a *magnitude only* row is a claim which can expire is the general lesson**, and `tools/test_rank_dominance_law.ps1` is what caught it.
+
+**What Alexander takes at adoption.** Damage previews re-derive live and are stored nowhere, so nothing is written: at effective Intelligence 60, **Rupture 61 to 299** and **Mana Bolt 29 to 98** - against Twin Fang's 323 and a free strike's 128. He also takes the categories his held Ranks already cover, a deferral being paid on the 1.47-to-1.48 precedent: **Rupture Compound (D) and Structural (C)**, **Mana Bolt Arcing (D)**. No pool, Stat, level, XP, item, or resolved outcome moves."
+```
+
+## EVT-000396 - The Recalculation: Every Owed Ascension, Taken When It Was Owed
+
+```yaml
+id: EVT-000396
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-15 06:00 -05:00"
+  real_date: "2026-08-04"
+type: Event
+kind: progression-batch-settlement
+importance: major
+game_date: "2026-08-15 06:00 -05:00"
+participants:
+  - ENT-000125
+counter_deltas:
+  - { subject: ENT-000125, counter: skills.rupture.mastery_progress, delta: -2 }
+  - { subject: ENT-000125, counter: skills.rupture.rank_ascensions, delta: 1 }
+  - { subject: ENT-000125, counter: skills.twin_fang.mastery_level, delta: -2 }
+  - { subject: ENT-000125, counter: skills.twin_fang.rank_ascensions, delta: 1 }
+  - { subject: ENT-000125, counter: skills.twin_fang.magnitude_floor, delta: 160 }
+  - { subject: ENT-000125, counter: skills.keen_sense.mastery_level, delta: 1 }
+  - { subject: ENT-000125, counter: skills.broken_rhythm.mastery_level, delta: 1 }
+  - { subject: ENT-000125, counter: skills.field_command.mastery_level, delta: 1 }
+  - { subject: ENT-000125, counter: skills.field_command.mastery_progress, delta: -2 }
+  - { subject: ENT-000125, counter: skills.mana_bolt.mastery_level, delta: 1 }
+  - { subject: ENT-000125, counter: skills.mana_bolt.mastery_progress, delta: -2 }
+  - { subject: ENT-000125, counter: skills.dagger_mastery.magnitude_floor, delta: 55 }
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+participation_audits:
+  - subject: ENT-000125
+    result: record-updated
+    record: ENT-000125
+description: "Player-instructed recalculation of every mastery-tracked skill on one counterfactual: **assume each Section 7.5 breakthrough offer was accepted the moment it became available.** `F-012` established that the offers were mandatory and were never surfaced; this settles what the record would hold had the engine behaved. **No fictional time passes and no past exchange is re-resolved.**
+
+**Method.** Every skill's lifetime qualifying scenes were replayed in Event order from its own `counter_deltas` record, advancing mastery three scenes to a level and taking the breakthrough immediately on reaching Master wherever the Rank stood below the Section 7.5 ceiling **as that ceiling actually was at the time** - D-Rank before `EVT-000150`, C-Rank to `EVT-000341`, B-Rank since. **`successful_uses` and `qualifying_scenes_total` are unchanged everywhere**: both are lifetime counts that never reset, so no use and no scene is created or destroyed here. What moves is only where those scenes *land*.
+
+**Three skills move on the counterfactual.** **Rupture D to C-Rank** - two breakthroughs were owed, at scenes 12 and 18, and only one had ever been taken; Expert holds, progress resets to 0/3, ascensions 1 to 2. **Twin Fang E to D-Rank Adept** - the offer opened at `EVT-000391` and re-priced at `EVT-000393` is **accepted here**, mastery 5 to 3, gaining *Second target*, follow-up x1.60 to x1.65, Mana 4 to 5. **Keen Sense Adept to Expert** at B-Rank - the same 29 scenes and the same three ascensions, but taken when owed, the later scenes built a fresh track instead of banking against a Master ceiling; Mana 2 to 1, scope holds at 7.
+
+**Three more move on a separate ruling.** **Broken Rhythm, Field Command and Mana Bolt each hold 3 lifetime qualifying scenes while stored at Novice**, where Section 7.5's own derivation - `min(5, 1 + scenes / 3)` - gives Practiced. Ruled to apply the rule literally: all three advance, and Field Command's and Mana Bolt's `mastery_progress` reset from 2 to 0. Broken Rhythm and Field Command reach **2 beneficiaries** on their scope ladders.
+
+**Nine skills do not move at all.** Dagger Mastery, Exploit Pattern and Flash Step land exactly where they already stood, because `EVT-000390` had already settled their ascensions in the same chronological order this recalculation derives - which is a real check on the method, not a coincidence. Stone Skin, Bulwark, Mend, Resonance Extraction, Sprint and Silent Step never reached Master. **Total ascensions 9 to 11.**
+
+**The magnitude ratchet is written for the first time.** Twin Fang's `magnitude_floor` records **160** - hundredths of the x1.60 it held at E-Rank Master immediately before this ascension, a tracked counter being an integer under Decision 079 - and Dagger Mastery's records **55** for the +0.55 it held at D-Rank Master before its C ascension. Neither binds today: Twin Fang computes x1.65 and Dagger Mastery +0.70, both above their floors. They exist so no future ascension can land beneath them.
+
+**Recorded honestly.** Rupture's damage moves **61 to 299** across this settlement and Profile 1.56 together, the largest single jump in the campaign's record - and it is the figure that had stood *below a free 128-damage dagger strike*. None of it arrives from play. The premise of the exercise is that the engine owed these offers and never presented them, which is `F-012`, and the player ruled the debt be paid rather than written off."
 ```

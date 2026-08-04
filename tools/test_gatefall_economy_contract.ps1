@@ -76,6 +76,8 @@ Assert-Contains (Get-MigrationRecord '1.49' '1.50') 'Required 1\.49.+1\.50 migra
 Assert-Contains (Get-MigrationRecord '1.51' '1.52') 'Required 1\.51.+1\.52 migration' 'The 1.51 to 1.52 migration record lacks its procedure.'
 Assert-Contains (Get-MigrationRecord '1.52' '1.53') '1\.52.+1\.53 compatibility treatment' 'The 1.52 to 1.53 migration record lacks its treatment.'
 Assert-Contains (Get-MigrationRecord '1.53' '1.54') 'Required 1\.53.+1\.54 migration' 'The 1.53 to 1.54 migration record lacks its procedure.'
+Assert-Contains (Get-MigrationRecord '1.54' '1.55') '1\.54.+1\.55 compatibility treatment' 'The 1.54 to 1.55 migration record lacks its treatment.'
+Assert-Contains (Get-MigrationRecord '1.55' '1.56') 'Required 1\.55.+1\.56 migration' 'The 1.55 to 1.56 migration record lacks its procedure.'
 Assert-Contains (Get-MigrationRecord '1.50' '1.51') '1\.50.+1\.51 compatibility treatment' 'The 1.50 to 1.51 migration record lacks its treatment.'
 Assert-Contains (Get-MigrationRecord '1.29' '1.30') '1\.29.+1\.30 compatibility treatment' 'The 1.29 to 1.30 migration record lacks its treatment.'
 Assert-Contains (Get-MigrationRecord '1.24' '1.25') 'Required 1\.24.+1\.25 migration' 'The 1.24 to 1.25 migration record lacks its procedure.'

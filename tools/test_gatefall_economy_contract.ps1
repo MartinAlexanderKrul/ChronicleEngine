@@ -38,7 +38,17 @@ function Assert-NotContains {
     }
 }
 
-Assert-Contains $profile 'World Rule Profile 1\.51' 'Gatefall profile is not version 1.51.'
+# The active version is READ, never pinned. These assertions carried the literal
+# "1.51" and had to be hand-edited on every profile adoption -- a test that must
+# be edited to keep passing is a test that stops meaning anything, which is
+# F-013's defect exactly. What is worth asserting is that the profile, its
+# README and the live character sheet all AGREE on a version, not that the
+# version equals a particular number.
+$activeProfileVersion = [regex]::Match($profile, '(?m)^# Gatefall .+Profile (?<v>\d+\.\d+)\r?$')
+if (-not $activeProfileVersion.Success) { $failures.Add('Gatefall profile header declares no active version.') | Out-Null }
+$activeVersion = $activeProfileVersion.Groups['v'].Value
+$activeVersionPattern = [regex]::Escape($activeVersion)
+Assert-Contains $profile "World Rule Profile $activeVersionPattern" "Gatefall profile is not version $activeVersion."
 
 # Version history is owned by worlds/gatefall/migrations/, not the active profile
 # (Recommendation R7). Each assertion below reads the record for its own edge, so
@@ -63,6 +73,9 @@ Assert-Contains (Get-MigrationRecord '1.46' '1.47') 'Required 1\.46.+1\.47 migra
 Assert-Contains (Get-MigrationRecord '1.47' '1.48') 'Required 1\.47.+1\.48 migration' 'The 1.47 to 1.48 migration record lacks its procedure.'
 Assert-Contains (Get-MigrationRecord '1.48' '1.49') 'Required 1\.48.+1\.49 migration' 'The 1.48 to 1.49 migration record lacks its procedure.'
 Assert-Contains (Get-MigrationRecord '1.49' '1.50') 'Required 1\.49.+1\.50 migration' 'The 1.49 to 1.50 migration record lacks its procedure.'
+Assert-Contains (Get-MigrationRecord '1.51' '1.52') 'Required 1\.51.+1\.52 migration' 'The 1.51 to 1.52 migration record lacks its procedure.'
+Assert-Contains (Get-MigrationRecord '1.52' '1.53') '1\.52.+1\.53 compatibility treatment' 'The 1.52 to 1.53 migration record lacks its treatment.'
+Assert-Contains (Get-MigrationRecord '1.53' '1.54') 'Required 1\.53.+1\.54 migration' 'The 1.53 to 1.54 migration record lacks its procedure.'
 Assert-Contains (Get-MigrationRecord '1.50' '1.51') '1\.50.+1\.51 compatibility treatment' 'The 1.50 to 1.51 migration record lacks its treatment.'
 Assert-Contains (Get-MigrationRecord '1.29' '1.30') '1\.29.+1\.30 compatibility treatment' 'The 1.29 to 1.30 migration record lacks its treatment.'
 Assert-Contains (Get-MigrationRecord '1.24' '1.25') 'Required 1\.24.+1\.25 migration' 'The 1.24 to 1.25 migration record lacks its procedure.'
@@ -75,10 +88,10 @@ Assert-Contains $profile '3d6.+\(Rank multiplier\).+crystals' 'Section 17 does n
 Assert-Contains $profile 'Crystal Key treats the `3d6` result as 18' 'Section 17 does not connect the Crystal Key to its deposit result.'
 Assert-Contains (Get-MigrationRecord '1.23' '1.24') 'do not create crystals for, reopen, or reinterpret any completed instant dungeon' 'The 1.24 migration lacks its no-retroactive-loot boundary.'
 
-Assert-Contains $readme 'World Rule Profile 1\.51' 'Gatefall README does not advertise Profile 1.51.'
+Assert-Contains $readme "World Rule Profile $activeVersionPattern" "Gatefall README does not advertise Profile $activeVersion."
 Assert-Contains $readme 'cost 125% of their ordinary same-Rank category anchor' 'Gatefall README does not summarize the corrected Premium surcharge.'
 Assert-Contains $resources 'costs 125% of its ordinary same-Rank category anchor' 'Gatefall resources do not summarize the corrected Premium surcharge.'
-Assert-Contains $character 'profile_version: "1\.51"' 'Live Gatefall character has not adopted Profile 1.51.'
+Assert-Contains $character "profile_version: `"$activeVersionPattern`"" "Live Gatefall character has not adopted Profile $activeVersion."
 
 # The 1.24 live-cycle reprice is asserted against its immutable adoption Event, not the
 # live Daily Premium tab: that cycle rotates every 06:00 and its offers expire.

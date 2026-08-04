@@ -667,6 +667,7 @@ Both remain **Accepted**. They are not reopened, reversed, or renumbered: accept
 |----------|---------|-------|
 | Decision 088 | Standing Need: Demand Advances on the World's Clock | **Foundational** — adds Data Model Section 7.6; owned by milestone 0.4.1 |
 | Decision 089 | Opportunity Claimants: A Finite Opening Is Contested | **Foundational** — extends Data Model Section 7.5; owned by milestone 0.4.2 |
+| Decision 090 | Skill Credit Is Asserted, Not Inferred; and Rank Must Land Somewhere on Every Skill | Refinement — reuses the existing `progression_audits` block for its existing meaning; adds no Data Model block, no Rules section, and no schema version bump. Owned by milestone 0.4.3 |
 
 Both accepted 2026-08-02, together, as the Version 0.4 Architecture Freeze (Decisions 048, 086). Neither advances the Data Model version and neither requires a migration: both are tracked state minting no identifier, held in records that already exist, on Decision 082's precedent. They are foundational under Decision 069 because they change `011`, and they were accepted at ADR Approval rather than admitted as freeze exceptions — which is the ordinary path the lifecycle describes and the one Version 0.3 departed from ten times.
 
@@ -914,6 +915,10 @@ Two rows deserve attention before play begins. **V04-10 is the control for V04-0
 Per Decision 048 these remain distinct evidence stages. Gatefall: Pendragon continues as the Prototype Campaign — no replacement campaign is created to repeat evidence it already produces, and it is the world that generated the findings this version exists to answer.
 
 Combined evidence must exercise: a need settling unobserved and being met by someone other than the protagonist; an opportunity lost to a competitor while he was elsewhere; a supplier's own failure preventing a downstream opportunity from ever appearing; and at least one negative result recorded rather than skipped.
+
+**Decision 090 is this milestone's first finding, and it arrived from play rather than from review** — which is Decision 086's condition (a) satisfied in the ordinary way. The prototype surfaced two defects on the same axis: a mandatory ascension offer suppressed for up to eight promotion barriers because the counter that would have triggered it was never written (`F-012`), and eight mastery-tracked skills reaching Rank through no authored ladder at all, one of them permanently unable to ascend (`F-014`). Both are classed **Refinement** — the negative assertion reuses the existing `progression_audits` block for its existing meaning, so no Data Model block, Rules section, or schema version moves.
+
+It is worth recording what the milestone learned about its own instruments, because it generalizes past this version. **Three of the four detectors proposed for these findings failed on measurement**, and each was measured against the live record rather than argued about: keying coverage on `kind: combat` catches neither Event that raised the flag; scanning descriptions for a resolved-clear signature fires mostly on administrative records; and a hardcoded per-entry byte ceiling had been overtaken twice by legitimate growth. The surviving detector reads a **classification the writer declares**, and its residual exposure — a misfiled kind — is written into the decision rather than implied away. Separately, five contract tests were found pinning live campaign state as literals (profile version in three, skill Rank and a damage snapshot in a fourth, a padding constant in the fifth); all five were converted to read what they assert against. That is `F-013`'s defect class, and it was present in five more places than `F-013` recorded.
 
 ---
 

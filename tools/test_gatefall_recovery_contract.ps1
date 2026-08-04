@@ -67,7 +67,13 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw
 $character = Get-Content -LiteralPath $characterPath -Raw
 $checkpoint = Get-Content -LiteralPath $checkpointPath -Raw
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.51\r?$') "Gatefall Profile 1.51 is not active."
+# The active version is READ, never pinned. This carried the literal "1.51" and
+# had to be hand-edited on every profile adoption -- a test that must be edited
+# to keep passing is a test that stops meaning anything, which is F-013's defect
+# exactly. The recovery contract does not care which version is active, only
+# that the profile declares one and the carry rules below hold under it.
+$activeProfileVersion = [regex]::Match($profile, '(?m)^# Gatefall .+Profile (?<v>\d+\.\d+)\r?$')
+Assert-True $activeProfileVersion.Success "Gatefall profile header declares no active version."
 Assert-True ($profile -match 'mana_recovery_remainder_units') "Gatefall Mana carry is not declared."
 Assert-True ($profile -match 'health_recovery_remainder_units') "Gatefall Health carry is not declared."
 Assert-True ($resident -match 'exact last-settled campaign-time anchor') "Resident settlement does not require the exact anchor."

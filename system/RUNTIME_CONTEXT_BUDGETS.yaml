@@ -223,7 +223,27 @@ surfaces:
       # derives its within-allowance case from this figure, so a baseline left
       # stale breaks the ratchet in both directions -- it stops detecting real
       # growth and invents growth that never happened.
-      gatefall_pendragon_001: 30397
+      # Re-recorded 2026-08-04, 30,397 -> 32,570 (+2,173). The warning two
+      # entries above landed: this baseline was left stale through the
+      # checkpoint 0069 skill audit and had already drifted to 32,449 on disk —
+      # +6.7%, inside the 15% ratchet and therefore silent. `test_growth_budgets`
+      # derives its within-allowance case as `recorded / 1.10`, so with the
+      # recorded figure 6.7% low the tolerated case sat at 17.4% growth, outside
+      # the allowance it exists to prove is tolerated, and the suite failed on a
+      # repository that was fine. That is the failure mode this block has warned
+      # about twice; it has now happened.
+      #
+      # Of the +2,173, roughly +2,050 is drift already on disk before this
+      # change. The remainder is Profile 1.52 work: +321 resident (the standing
+      # readiness check and the write-the-invisible-counter rule, both per-turn
+      # invariants), against Current State trimmed twice in the same pass —
+      # a duplicated damage-preview pair retired and the `F-012` manual-check
+      # workaround replaced by the standing check that made it unnecessary.
+      #
+      # 2,430 tokens under the 35,000 hard failure. The levers are unchanged and
+      # still owner authoring (R14): Current State, the startup file, and moving
+      # `titles` into a deferred group.
+      gatefall_pendragon_001: 32570
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479
@@ -307,8 +327,25 @@ surfaces:
       - gatefall_pendragon_001:/system all
     baseline_tokens_by_operation:
       gatefall_pendragon_001:save: 2486
-      gatefall_pendragon_001:/system: 26991
-      gatefall_pendragon_001:/system skills: 7036
+      # Re-recorded 2026-08-04, 26,991 -> 31,066, on the same owner ruling that
+      # raised `gatefall_skills_known` to 1,100 bytes/entry. `/system` composes
+      # the skills panel, so it carries that verbosity directly. Most of the
+      # +4,075 was already on disk before this change and silent inside the 15%
+      # ratchet; the rest is Profile 1.52 authoring Dagger Mastery's, Twin
+      # Fang's and Broken Rhythm's effects in full. This surface is exempt from
+      # the shared 12,000 ceiling by design and governed by the ratchet alone,
+      # which is what just fired.
+      gatefall_pendragon_001:/system: 31066
+      # Re-recorded 2026-08-04, 7,036 -> 8,097, on the same owner ruling that
+      # raised the `gatefall_skills_known` per-entry budget 700 -> 1100. The
+      # requirement is that a skill entry explain its effect well enough to
+      # resolve an action from without opening the profile, so this operation
+      # grows by design: Profile 1.52 gave Dagger Mastery and Twin Fang their
+      # authored categories in full, and every future ascension appends another.
+      # It tripped the +15% ratchet by 6 tokens against the old baseline, which
+      # is the ratchet working — deliberate growth is re-recorded here, not
+      # waived. The 12,000 ceiling is untouched and still 3,900 tokens away.
+      gatefall_pendragon_001:/system skills: 8097
       gatefall_pendragon_001:/system shop: 9937
       gatefall_pendragon_001:/system quests: 3584
       gatefall_pendragon_001:/system gear: 25880
@@ -318,7 +355,16 @@ surfaces:
       # skills rising C -> B in one Event, and the reason each one did. That is
       # live readiness a Runtime has to carry, and it is one-time — the next
       # rung movement edits these lines rather than adding a block.
-      gatefall_pendragon_001:/system log: 8342
+      # Re-recorded 2026-08-04, 8,342 -> 9,653. Current State had already grown
+      # to 9,531 by `EVT-000390` — 62 tokens under the ratchet — so the next
+      # real change to it was always going to trip, and this one is a standing
+      # open ascension offer (`EVT-000391`, Twin Fang) that Section 7.5 requires
+      # to re-surface at every barrier: readiness a Runtime cannot carry
+      # implicitly. Two stale lines were retired in the same pass rather than
+      # re-baselining over them — a duplicated damage-preview pair that
+      # contradicted the line below it, and the `F-012` manual-check workaround
+      # that Decision 090 replaced. The 12,000 ceiling is untouched.
+      gatefall_pendragon_001:/system log: 9653
       gatefall_pendragon_001:/system all: 33836
       reikon_awakening_001:/system: 8985
     subdivision_message: fetched operation requires a narrower selector
@@ -335,11 +381,33 @@ per_unit_budgets:
   - name: gatefall_skills_known
     file: campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
     field: canonical_state.system_state.skills_known
-    max_bytes_per_entry: 700
+    max_bytes_per_entry: 1100
     reason: >-
-      An entry holds the `/system` render line, its counters, and the sentence
-      naming the most recent mastery advance. Per-use logs and roll-by-roll
-      narrative belong in the chronicle, which already records them.
+      An entry holds the `/system` render line, its counters, a full statement
+      of what the skill actually does at its current Rank and mastery — every
+      authored category, with the effect spelled out rather than named — and the
+      sentence naming the most recent mastery advance. Per-use logs and
+      roll-by-roll narrative still belong in the chronicle, which already
+      records them, and that is what this budget exists to keep out.
+
+      Raised 700 -> 1100 on owner ruling, 2026-08-04. 700 was set when an entry
+      was a render line plus counters, and it has been overtaken twice by
+      legitimate growth rather than by bloat. Rank ascension appends a category
+      clause per Rank — Keen Sense carries four, Exploit Pattern two — and
+      Profile 1.52's magnitude-axis ladder (Decision 090) authors categories for
+      five further skills that previously had none, so the field grows by design
+      every time a skill ascends. The owner's requirement is that a skill entry
+      explain its effect well enough to resolve an action from, without opening
+      the profile: a player reading `/system skills` should not have to be told
+      what "Thrown" or "Second target" means. Compressing that back into a name
+      is exactly the failure mode Section 20.2 names — a stated value resting on
+      an unstated rule.
+
+      The ceiling still bites where it should. The historical bloat case, a
+      per-use activation log inside the field, cost roughly four times the
+      render figure at the same entry count — around 2,800 bytes per entry — and
+      trips this at 1,100 as readily as at 700. What changed is the floor under
+      legitimate effect prose, not the detector.
 
   - name: gatefall_relationship_state_updates
     file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md

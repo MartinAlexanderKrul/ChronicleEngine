@@ -4356,6 +4356,68 @@ A pool or role is sufficient and preferred. Modelling competitors as individuall
 
 ---
 
+## Decision 090 — Skill Credit Is Asserted, Not Inferred; and Rank Must Land Somewhere on Every Skill
+
+**Status:** Accepted — 2026-08-04
+**Date:** 2026-08-04
+**Related Sections:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` Sections 7.2, 7.3, 7.4, 7.5, 14.3; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (Profile-Declared Proactive Trigger Audit; Turn-State Settlement); `tools/validate_repository.ps1`; `worlds/gatefall/migrations/1.51_to_1.52.md`; Decisions 079, 080, 085, 086; design flags `F-011`, `F-012`, `F-013`
+
+### Context
+
+`F-012` recorded a failure with two halves, and this decision rules on both.
+
+**The observed half.** `EVT-000327` and `EVT-000332` are complete solo instant-dungeon clears, populations of twelve apiece, one narrated *"solo clear, no damage taken"*, and both carry `counter_deltas: []` — not one skill counter for either scene. Downstream, Section 7.5's **mandatory** breakthrough offer was never presented for four ascension-ready skills; Dagger Mastery had waited since 2026-08-09, six in-fiction days and roughly eight promotion barriers. Every repository gate stayed green throughout, because a delta that is never *claimed* can never disagree with a stored value. The player found it by asking.
+
+**The structural half, which is why this is a decision and not a repair.** The failure is self-reinforcing. A skill pinned at Master renders `mastery_progress` as *complete*, so crediting it a qualifying scene moves no visible number and the delta goes unwritten; the uncredited scenes then hold it at Master; the suppressed offer holds it there permanently. **The cheapest moment to notice is exactly the moment the system makes it look as though nothing is happening.**
+
+Auditing the skill set to settle the flag surfaced a second, independent gap on the same axis. Section 7.3 carried two ladder tables covering seven skills, and **eight mastery-tracked skills appeared in neither.** The profile's whole account of them was Section 7.2's sentence that the quantitative axes are closed-form, so the grant is always authored. True, and insufficient in two ways measured against the Rank Dominance Law's own comparison:
+
+| Axis | 1st Rank above native | 2nd | 3rd |
+|---|---:|---:|---:|
+| Damage / healing (Rank baseline) | 1.56× | 1.56× | 1.56× |
+| Passive multiplier (+0.25) | 1.17× | **1.09×** | **1.06×** |
+| Reduction (+25 points) | **1.10×** | **1.07×** | cap |
+
+The latter two **converge toward parity** — a fixed increment on a growing base, against a mastery track that also adds a fixed increment. The law held and the Bearer could not feel it: Dagger Mastery ascended twice and gained a larger number and no capability at all. Worse, an earned technique whose damage reads **weapon power rather than a Rank baseline** takes nothing from any axis: Twin Fang stood at Master, below the ceiling, **permanently ascension-ineligible** — twelve qualifying scenes spent to reach a dead end, with Section 7.2 withholding the offer correctly and forever.
+
+### Decision
+
+**1. A resolved dangerous scene asserts its skill credit, positively or negatively.** Within a world-declared coverage set, an Event naming the Bearer carries **either at least one `skills.*` entry in `counter_deltas` for him, or an explicit negative assertion** — a `progression_audits` entry with `domain: <world>.skill_credit` and `result: none`. This is Decision 080's negative-assertion rationale applied unchanged, and deliberately reuses an existing block for its existing meaning: **no Data Model change, so this is a refinement under Decision 069, not a foundational exception under 086.**
+
+**2. The coverage set is world semantics, and the classification it reads is a rule.** The Data Model owns the shape; the profile owns when it applies, exactly as for `progression_audits` and `participation_audits`. Because coverage keys on Event kind, **which kind an Event carries is itself governed**: an Event recording a resolved dangerous scene carries a danger-bearing kind, and `kind: scene` is not available to a Gate or instant-dungeon clear.
+
+**3. A skill at Master still earns and still writes its qualifying scenes.** `mastery_progress` renders complete and cannot advance, but `qualifying_scenes_total` and `successful_uses` never reset, and the delta is written **even though no rendered value moves.** Ascension returns the skill at Adept with a live progress track, and the scenes credited while it stood at Master are the record that track reconciles against. This is the root of the self-reinforcing loop and is closed at the source.
+
+**4. The ascension-readiness check is standing and reads stored state.** At every dangerous-scene settlement and every promotion barrier, evaluate the whole mastery-tracked set — `mastery_level` is 5, Rank below the ceiling, eligible at the next Rank — rather than surfacing an offer only where memory says a barrier recorded an advance. It reaches no history, so it costs the same at every barrier and produces the same answer, which is what makes a missed offer **recoverable rather than lost**. Where a skill is at Master and below the ceiling but not eligible, the withholding is stated and the skill and Rank named.
+
+**5. Rank must land somewhere on every mastery-tracked skill.** A world authoring Rank ladders authors a rung, or an explicit *magnitude only* with its dominance ratio, for **every** mastery-tracked skill — no skill sits in no table. A grant is **thin** where the higher Rank's Novice value exceeds the lower Rank's Master value by less than **1.15×**, and a thin grant reaches the skill through an authored category as well, exactly as an absent one does. The quantitative grant is unchanged and still applies in full; a category is added beside the number, never in place of it.
+
+**6. Enforcement is mechanical where it is decidable, and its limit is written down.** `tools/validate_repository.ps1` gates point 1 within the declared coverage, and gates that every mastery-tracked skill carries the `mastery_level` and `rank_ascensions` entries Section 7.5 has required since adoption. Points 3, 4 and 5 are instruction sited resident and in the profile; they have no mechanical gate, and this decision says so rather than implying one.
+
+**7. Prospective only.** Coverage begins at a declared baseline Event. Historical Events are immutable and are not rewritten.
+
+### Consequences
+
+- **The detector `F-012` itself proposed does not work, and this was measured rather than assumed.** The flag asked whether "an Event of kind `combat` naming the Bearer must carry at least one `skills.*` delta" would close it. **It catches neither `EVT-000327` nor `EVT-000332`** — both are `kind: scene`. The result reframed the finding: the root cause is not a missing counter rule but a **misclassified Event**, one wrong `kind` disabling Decision 080's `progression_audits` coverage and every skill-counter obligation simultaneously.
+- **The prose backstop was measured and rejected.** Scanning descriptions for a resolved-clear signature fires on 18 post-baseline Events, most of them administrative records merely *mentioning* a past clear — the same noise ratio that rejected Decision 085's derived check on measurement 3. Prose is not a substrate a gate can stand on, and the negative result is recorded so it is not re-proposed.
+- **The residual exposure is one line wide and is named, not papered over.** The gate reads the classification, so a dangerous scene misfiled as `scene` escapes it exactly as those two did. Nothing structural in an Event distinguishes a dungeon clear from a conversation.
+- **Writer cost is small and lands where it should.** Against the live record the coverage set holds 53 Events, 35 of which would carry the one-line explicit `none` — roughly one Event in eleven campaign-wide, and concentrated on promotion barriers, which is precisely where a barrier that credited nothing should have to say so.
+- **Twin Fang becomes ascendable, and the offer is the Bearer's.** Authoring its D rung ends a permanent ineligibility. Adoption **surfaces** the offer and settles nothing: Section 7.5 makes it his to take or decline and Section 14.3's Tier 3 forbids the System authoring his decision. Dagger Mastery takes its already-earned D and C categories at adoption, a deferral being paid on the 1.47 → 1.48 precedent.
+- **Two skills were missing stored state nothing claimed.** Mana Bolt and Broken Rhythm carried no `mastery_level` and no `rank_ascensions` despite Section 7.5 requiring both since `EVT-000158`; Silent Step, acquired in the same window, had both. This is `F-012`'s exact shape in miniature — unclaimed state cannot disagree with anything — and point 6's gate closes it.
+- **Section 7.3 stopped asserting live state.** Two lines carried hand-maintained copies of which rungs were occupied, false since `EVT-000390` and `EVT-000220`. That is `F-013` one layer up, and it is fixed the same way: the rules file authors rungs and reads held Rank from the ledger.
+- **This does not prove any settlement read anything**, the same honest limit Decision 085 records. A Runtime under load can write `result: none` as easily as it can do the work. What it converts is a *silent* omission into an *asserted* one.
+
+### Alternatives Considered
+
+- **Add a dedicated `skill_credit_audits` block to the Data Model.** Rejected. It is the tidier schema and it costs Data Model 0.1.6 → 0.1.7, a retag and a migration, to express something `progression_audits` already expresses in its existing `result: none` shape. Decision 086's condition (c) is satisfiable but the change is not worth its own foundational classification.
+- **Key coverage on `kind: combat` alone,** as `F-012` proposed. Rejected on measurement: it catches neither Event that raised the flag.
+- **Detect dangerous scenes from description prose.** Rejected on measurement: 18 hits, mostly false.
+- **Require a `skills.*` delta unconditionally, with no negative assertion.** Rejected. A scene can genuinely resolve with no skill applying, and forcing a write would manufacture canon to satisfy a checker — the failure Decision 080 names when it refuses to treat repetition as evidence.
+- **Leave the magnitude-axis skills untabled and rely on Section 7.2's closed-form sentence.** The status quo, and it is not wrong on its own terms — the Rank Dominance Law is satisfied at every step. Against it: satisfied at 1.06× is satisfied in a way no Bearer will ever notice, and it left one skill in the live campaign permanently unable to ascend at all.
+- **Raise the quantitative increments instead of authoring categories.** Rejected. It fixes *thin* and does nothing for *absent* — Twin Fang has no quantitative axis to raise — and it would rescale every reduction and multiplier in the profile to repair a comparison at the margin.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

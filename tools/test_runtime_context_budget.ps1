@@ -32,7 +32,27 @@ function Assert-True {
 
 $clean = Invoke-Measurement
 Assert-True ($clean.ExitCode -eq 0) "The checked-in context plan exceeds a hard budget:`n$($clean.Output)"
-Assert-True ($clean.Output -match 'PASS resident: (?<tokens>\d+) tokens') "Resident measurement is missing."
+# Resident is asserted against the hard budget, not the warning line — the same
+# ruling the Gatefall readiness assertion below already carries, and for the same
+# reason.
+#
+# Owner ruling, 2026-08-04. The resident core stood at 5,991 tokens against a
+# 6,000 warning line: nine tokens of headroom, so *any* addition to the per-turn
+# guardrail card failed this gate regardless of merit. Decision 090 added two
+# per-turn invariants — a mandatory threshold is re-checked from stored state at
+# every boundary, and a counter that moves no rendered value is still written —
+# and Decision 055's finding is precisely that an obligation carried only by
+# fetched instruction does not reliably fire, which is how `F-012` happened. The
+# rules belong resident; the warning line was measuring the wrong thing when it
+# blocked them.
+#
+# The hard budget is unchanged at 8,000 and is still enforced two ways:
+# `$clean.ExitCode` above fails on any hard overage, and the bound below is
+# checked explicitly. WARN remains an accepted steady state and stays visible in
+# every report, which is the point of having a warning threshold at all — it is
+# a signal to trim, not a gate. Trimming the resident core is owner authoring
+# (Recommendation R14) and is not discharged by this ruling.
+Assert-True ($clean.Output -match '(?:PASS|WARN) resident: (?<tokens>\d+) tokens') "Resident measurement is missing."
 Assert-True ([int]$Matches["tokens"] -lt 8000) "Resident core is not below 8,000 estimated tokens."
 Assert-True ($clean.Output -match 'PASS bootstrap: (?<tokens>\d+) tokens') "Bootstrap measurement is missing."
 Assert-True ([int]$Matches["tokens"] -lt 16000) "Bootstrap is not below 16,000 estimated tokens."
@@ -64,7 +84,12 @@ Assert-True ($clean.Output -match '100_CHARACTER_SHEET\.md\[object:ENT-000125\]\
 # exactly on its baseline. The old form required a delta of zero somewhere, so
 # an edit anywhere could break it for reasons unrelated to budgets - which it
 # did, when a six-byte syntax repair moved the one surface that qualified.
-Assert-True ($clean.Output -match 'PASS resident: \d+ tokens[^\r\n]*baseline=\d+ delta=[+-]\d+') `
+# `PASS|WARN` for the same reason as the resident assertion above: this checks
+# that the baseline mechanism *reports*, and it reports identically in either
+# state. Pinning PASS made it a second copy of the warn-line gate, so the
+# 2026-08-04 ruling had to be applied in both places or it was applied in
+# neither — which is what happened on the first attempt.
+Assert-True ($clean.Output -match '(?:PASS|WARN) resident: \d+ tokens[^\r\n]*baseline=\d+ delta=[+-]\d+') `
     "Baseline comparison is missing from the resident measurement."
 
 # Outside the repository, under a unique name. This used to be a fixed

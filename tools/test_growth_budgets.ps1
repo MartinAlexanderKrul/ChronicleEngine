@@ -103,7 +103,31 @@ try {
     if ($sheetOriginal -notmatch '(?m)^      - "Stone Skin \[') {
         throw "Test precondition failed: no Stone Skin skills_known entry found."
     }
-    $padding = "x" * 9000
+    # The padding is derived from the declared budget, never hardcoded. It read
+    # a literal 9000 while the ceiling was 700; raising the ceiling to 1100 left
+    # it tripping the check by 41 bytes out of 1,141 -- still passing, and
+    # passing for no reason it stated. That is F-013 exactly: a fixture sized
+    # against a constant it does not read, agreeing with it until it quietly
+    # does not. Compute the threshold the check actually applies -- one added
+    # entry must carry the mean above max_bytes_per_entry -- and clear it by
+    # half again, so the test follows the budget wherever the owner moves it.
+    if ($budgetOriginal -notmatch '(?ms)^  - name: gatefall_skills_known\r?$.*?^    max_bytes_per_entry: (?<max>\d+)\r?$') {
+        throw "Test precondition failed: no gatefall_skills_known max_bytes_per_entry found."
+    }
+    $perEntryMax = [int]$Matches["max"]
+    $skillsBlock = [regex]::Match($sheetOriginal, '(?ms)^    skills_known:\r?\n(?<entries>(?:^      - ".*"\r?\n)+)')
+    if (-not $skillsBlock.Success) {
+        throw "Test precondition failed: no skills_known block found."
+    }
+    $entryLines = [regex]::Matches($skillsBlock.Groups["entries"].Value, '(?m)^      - "(?<body>.*)"\r?$')
+    $entryCount = $entryLines.Count
+    $entryBytes = ($entryLines | ForEach-Object {
+        [System.Text.Encoding]::UTF8.GetByteCount($_.Groups["body"].Value)
+    } | Measure-Object -Sum).Sum
+    $paddingBytes = [math]::Ceiling(
+        (($perEntryMax * ($entryCount + 1)) - $entryBytes) * 1.5)
+    if ($paddingBytes -lt 1) { $paddingBytes = $perEntryMax }
+    $padding = "x" * $paddingBytes
     Set-Text -RelativePath $sheet -Content `
         ($sheetOriginal -replace '(?m)^(      - "Stone Skin \[)', "      - `"$padding`"`n`$1")
     Assert-Rejected -Name "narrative padding inside skills_known" -Expected "per-unit gatefall_skills_known"

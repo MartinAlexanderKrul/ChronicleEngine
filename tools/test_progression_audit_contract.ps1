@@ -190,6 +190,13 @@ description: "Fixture exchange."
     Assert-True ($missingAudit.ExitCode -ne 0 -and $missingAudit.Output -like "*has no 'gatefall.skill_formation' progression audit*") `
         "A dangerous-scene settlement without an audit was not rejected:`n$($missingAudit.Output)"
 
+    # The fixture carries a `gatefall.skill_credit` none alongside the
+    # formation none. These are two independent contracts that happen to share
+    # the `progression_audits` block: formation asks whether the scene opened a
+    # candidate technique (Decision 080), skill_credit asks whether it credited
+    # the Bearer's existing skills (Decision 090). A dangerous-scene settlement
+    # naming the Bearer owes an answer to both, and a fixture that answers only
+    # one is not a valid settlement to be testing the other against.
     Replace-Once $chronicle `
         'participants:
   - ENT-000125
@@ -200,9 +207,36 @@ progression_audits:
   - subject: ENT-000125
     domain: gatefall.skill_formation
     result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
 description: "Fixture exchange."'
     $audited = Invoke-Validation $tempRoot
     Assert-True ($audited.ExitCode -eq 0) "A dangerous-scene settlement with an explicit none audit did not validate:`n$($audited.Output)"
+
+    # Decision 090's own contract, tested on the same fixture: drop the
+    # skill_credit none and the settlement must be rejected. This is the check
+    # that would have caught EVT-000327 and EVT-000332 had it existed -- both
+    # were complete solo dungeon clears carrying `counter_deltas: []`.
+    Replace-Once $chronicle `
+        '  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+description: "Fixture exchange."' `
+        'description: "Fixture exchange."'
+    $missingCredit = Invoke-Validation $tempRoot
+    Assert-True ($missingCredit.ExitCode -ne 0 -and $missingCredit.Output -like "*skill credit coverage set*") `
+        "A dangerous-scene settlement crediting no skill and asserting no explicit none was not rejected:`n$($missingCredit.Output)"
+    Replace-Once $chronicle `
+        '    domain: gatefall.skill_formation
+    result: none
+description: "Fixture exchange."' `
+        '    domain: gatefall.skill_formation
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+description: "Fixture exchange."'
 
     Replace-Once $chronicle `
         'kind: dangerous-scene-settlement
@@ -228,10 +262,18 @@ progression_audits:
   - subject: ENT-000125
     domain: gatefall.skill_formation
     result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
 description: "Fixture exchange."' `
         'participants:
   - ENT-000125
 description: "Fixture exchange."'
+    # `work-scene-settlement` is outside Decision 090's coverage set, so
+    # stripping the skill_credit none with the rest is correct here rather than
+    # incidental: a work scene resolved no dangerous encounter and owes no
+    # skill-credit assertion.
+    #
     # A work scene carries no audit of its own -- Section 7.1 defers its
     # classification -- but deferral is a promise the barrier must keep. With no
     # settlement Event behind it, the note has nowhere to land, which is the
@@ -259,6 +301,9 @@ progression_audits:
   - subject: ENT-000125
     domain: gatefall.skill_formation
     result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
 description: "Fixture exchange."'
 
     # Anchored on the fixture's own description line. Without it this matches every
@@ -269,6 +314,9 @@ description: "Fixture exchange."'
   - subject: ENT-000125
     domain: gatefall.skill_formation
     result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
 description: "Fixture exchange."' `
         'counter_deltas:
   - subject: ENT-000125
@@ -277,6 +325,9 @@ description: "Fixture exchange."' `
 progression_audits:
   - subject: ENT-000125
     domain: gatefall.skill_formation
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
     result: none
 description: "Fixture exchange."'
     $twinFang = Get-CounterLine $character 'skills.twin_fang.successful_uses'
@@ -412,8 +463,28 @@ game_date: "2026-08-04 06:01 -05:00"'
     # at C and Flash Step stood at D; Section 7.3 now authors through B-Rank, so
     # bumping a C-Rank Flash Step one rung lands on a legal B and asserts
     # nothing. Target the first genuinely unauthored rung instead (F-013).
+    #
+    # The ceiling is READ FROM THE PROFILE'S OWN TABLES, not written down here.
+    # It was the literal "C", then the literal "B", and each move needed a hand
+    # edit in two places -- this file and `validate_repository.ps1` -- which is
+    # two copies of one fact that can agree with each other while both disagree
+    # with the profile. That is precisely the F-013 failure, and F-013 recorded
+    # closing it as still-open work. Both sides now parse the same thing: the
+    # highest Rank appearing as a column header across Section 7.3's ladder
+    # tables. If the guard and the profile ever disagree, this leg fails.
     $ladder = @("E", "D", "C", "B", "A", "S")
-    $authoredCeiling = "B"
+    $profileText = Get-Text "worlds/gatefall/206_WORLD_RULE_PROFILE.md"
+    $authoredCeiling = $null
+    $bestIndex = -1
+    foreach ($header in [regex]::Matches($profileText, '(?m)^\|[ \t]*Skill[ \t]*\|.*\|[ \t]*$')) {
+        foreach ($cell in $header.Value.Trim('|').Split('|')) {
+            $rankCell = [regex]::Match($cell.Trim(), '^(?<rank>[EDCBAS])(?:[ \t]*\(native\))?$')
+            if (-not $rankCell.Success) { continue }
+            $index = [array]::IndexOf($ladder, $rankCell.Groups['rank'].Value)
+            if ($index -gt $bestIndex) { $bestIndex = $index; $authoredCeiling = $rankCell.Groups['rank'].Value }
+        }
+    }
+    Assert-True ($null -ne $authoredCeiling) "No Section 7.3 ladder table with Rank column headers could be read from the profile."
     $liveFlashRank = [regex]::Match((Get-Text $character), '"Flash Step \[([EDCBAS])-Rank\]')
     Assert-True $liveFlashRank.Success "Flash Step renders no Rank in skills_known; fixture precondition drifted."
     $flashRank = $liveFlashRank.Groups[1].Value

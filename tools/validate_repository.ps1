@@ -594,8 +594,78 @@ function Get-ParticipationPolicy {
     return $policy
 }
 
+function Get-SkillCreditPolicy {
+    param([string]$RepositoryRoot)
+
+    # Decision 090. A resolved dangerous scene credits the Bearer's skills or
+    # explicitly credits none; an empty counter_deltas asserts nothing and is
+    # indistinguishable from nobody having looked (F-012, where two complete
+    # solo dungeon clears carried counter_deltas: [] through a green
+    # checkpoint). Coverage is declared per world for the same reason
+    # participation coverage is: an engine-general default would impose the
+    # writer cost on every world on one world's evidence (Decision 069).
+    #
+    # Note what coverage keys on. F-012 proposed keying it on `kind: combat`,
+    # and that was measured against the live record before this shape was
+    # chosen: it catches NEITHER EVT-000327 nor EVT-000332, because both were
+    # filed `kind: scene`. The classification is therefore itself a profile
+    # rule -- a resolved dangerous scene carries a danger-bearing kind -- and
+    # this gate reads it. A scene misfiled as `scene` still escapes; that
+    # residue is real and is recorded in Decision 090 rather than implied away.
+    $policy = @{}
+    $worldsRoot = Join-Path $RepositoryRoot "worlds"
+    if (-not (Test-Path -LiteralPath $worldsRoot -PathType Container)) {
+        return $policy
+    }
+    foreach ($worldDirectory in (Get-ChildItem -LiteralPath $worldsRoot -Directory | Sort-Object Name)) {
+        $profilePath = Join-Path $worldDirectory.FullName "206_WORLD_RULE_PROFILE.md"
+        if (-not (Test-Path -LiteralPath $profilePath -PathType Leaf)) {
+            continue
+        }
+        $profileText = Get-Content -LiteralPath $profilePath -Raw -Encoding UTF8
+        $fencePattern = '(?ms)^```ya?ml[ \t]*\r?\n(?<manifest>.*?)^```[ \t]*$'
+        foreach ($fence in [regex]::Matches($profileText, $fencePattern)) {
+            $manifest = $fence.Groups['manifest'].Value
+            if ($manifest -notmatch '(?m)^skill_credit_coverage_version:') {
+                continue
+            }
+            $baseline = $null
+            if ($manifest -match '(?m)^  baseline_as_of:\s*(EVT-\d{6})\s*$') {
+                $baseline = $Matches[1]
+            }
+            $kinds = [System.Collections.Generic.List[string]]::new()
+            if ($manifest -match '(?ms)^  event_kinds:\r?\n(?<kinds>(?:^    - .*\r?\n?)*)') {
+                foreach ($kindLine in [regex]::Matches($Matches['kinds'], '(?m)^    - (?<kind>\S+)\s*$')) {
+                    $kinds.Add($kindLine.Groups['kind'].Value) | Out-Null
+                }
+            }
+            if ($null -eq $baseline -or $kinds.Count -eq 0) {
+                Add-Failure "worlds/$($worldDirectory.Name)/206_WORLD_RULE_PROFILE.md declares a skill credit coverage manifest without both a baseline_as_of Event and a non-empty event_kinds list (Decision 090)."
+                continue
+            }
+            $policy[$worldDirectory.Name] = [pscustomobject]@{
+                Baseline = $baseline
+                BaselineNumber = [int]$baseline.Substring(4)
+                Kinds = $kinds
+                # The negative assertion reuses Decision 080's progression_audits
+                # block for its existing meaning rather than adding a Data Model
+                # block, which is what keeps this a refinement under Decision 069.
+                Domain = "$($worldDirectory.Name).skill_credit"
+                SourcePath = "worlds/$($worldDirectory.Name)/206_WORLD_RULE_PROFILE.md"
+            }
+        }
+    }
+    return $policy
+}
+
 $progressionPolicy = Get-ProgressionRatificationPolicy -RepositoryRoot $root
 $participationPolicy = Get-ParticipationPolicy -RepositoryRoot $root
+$skillCreditPolicy = Get-SkillCreditPolicy -RepositoryRoot $root
+# Decision 090: the coverage obligation falls on the Bearer, who is the only
+# subject in these worlds carrying a mastery-tracked skill set. Read from the
+# entity's own declared system_state rather than hardcoding an identifier, so a
+# second campaign or a second Bearer is governed without editing this file.
+$bearerEntities = @{}
 # Personal relationship types require Texture. This is an allowlist rather than an
 # institutional denylist on purpose: relationship type is free-form world vocabulary
 # ("working-contact", "research-collaboration", "harvest-hire"), so a denylist can
@@ -649,6 +719,49 @@ function Get-QuestRewardFacts {
 
     $script:questRewardFactsCache[$WorldName] = $facts
     return $facts
+}
+
+# The authored extent of a world's Section 7.3 category ladders, read from the
+# tables themselves. Every ladder table's header carries its Rank columns
+# (`| Skill | E (native) | D | C | B | A |`), so the deepest authored rung is
+# the highest Rank letter appearing as a column heading across them. A world
+# whose profile has no such table returns $null and is simply not governed.
+#
+# This closes what F-013 left open. The ceiling lived here as a hand-maintained
+# literal, moved by hand at 1.51 and 1.53, and checked only against a contract
+# test derived from the same literal -- so the guard and its test could agree
+# with each other while both disagreed with the profile, which is exactly what
+# happened.
+$script:ladderCeilingCache = @{}
+function Get-LadderCeiling {
+    param([string]$Root, [string]$WorldName)
+
+    if (-not $WorldName) { return $null }
+    if ($script:ladderCeilingCache.ContainsKey($WorldName)) {
+        return $script:ladderCeilingCache[$WorldName]
+    }
+
+    $ceiling = $null
+    $profilePath = Join-Path $Root "worlds/$WorldName/206_WORLD_RULE_PROFILE.md"
+    if (Test-Path -LiteralPath $profilePath -PathType Leaf) {
+        $profileText = Get-Content -LiteralPath $profilePath -Raw -Encoding UTF8
+        $rankOrder = @("E", "D", "C", "B", "A", "S")
+        $best = -1
+        foreach ($header in [regex]::Matches($profileText, '(?m)^\|[ \t]*Skill[ \t]*\|.*\|[ \t]*$')) {
+            foreach ($cell in $header.Value.Trim('|').Split('|')) {
+                # "E (native)" and a bare "D" both name a Rank column; effect
+                # columns ("Native effect", "Rank's magnitude grant") do not.
+                $rankCell = [regex]::Match($cell.Trim(), '^(?<rank>[EDCBAS])(?:[ \t]*\(native\))?$')
+                if (-not $rankCell.Success) { continue }
+                $index = [array]::IndexOf($rankOrder, $rankCell.Groups['rank'].Value)
+                if ($index -gt $best) { $best = $index }
+            }
+        }
+        if ($best -ge 0) { $ceiling = $rankOrder[$best] }
+    }
+
+    $script:ladderCeilingCache[$WorldName] = $ceiling
+    return $ceiling
 }
 
 function Resolve-WorldForPath {
@@ -774,13 +887,46 @@ foreach ($file in $canonicalFiles) {
             # scope_floor, so the ratchet has a value to hold. The list is the
             # Section 7.3 category-ladder table; a skill absent from the ledger
             # is not required to carry one.
-            $scopeSkills = @('keen_sense', 'silent_step', 'exploit_pattern', 'field_command', 'resonance_extraction')
+            # Profile 1.52 authored Broken Rhythm's mastery track as the scope
+            # axis (Section 7.2, Ratified Earned Technique), so it joins the
+            # ratchet's coverage. Before that it had no mastery axis at all.
+            $scopeSkills = @('keen_sense', 'silent_step', 'exploit_pattern', 'field_command',
+                'resonance_extraction', 'broken_rhythm')
             $counterPaths = @(Get-ListEntries (Get-IndentedSection $block "tracked_counters") |
                 ForEach-Object { Get-EntryValue $_ "path" })
             foreach ($skill in $scopeSkills) {
                 if ($counterPaths -contains "skills.$skill.successful_uses" -and
                     $counterPaths -notcontains "skills.$skill.scope_floor") {
                     Add-Failure "$relativePath`:$line entity $id knows $skill but is missing a scope_floor tracked_counters entry (Gatefall Profile 1.31 Section 7.2)."
+                }
+            }
+
+            # Decision 090 point 6. Profile Section 7.5: once ascension can reset
+            # mastery while qualifying_scenes_total never does, mastery_level
+            # stops being derivable from the scene count and becomes
+            # authoritative stored state -- "a world-declared tracked_counters
+            # entry alongside the others" -- and rank_ascensions rides with it.
+            # The EVT-000158 adoption wrote both for every skill known at the
+            # time and nothing has claimed them since, so two skills acquired
+            # afterward (Mana Bolt at EVT-000303, Broken Rhythm at EVT-000308)
+            # carried neither for two months. That is F-012's shape exactly:
+            # state nobody claimed cannot disagree with anything, so every gate
+            # stayed green over a missing value.
+            #
+            # The skill list is derived, never enumerated. A skill is
+            # mastery-tracked precisely when it stores qualifying_scenes_total;
+            # a Section 4.4 Stat Passive has no mastery track and stores only
+            # successful_uses (Section 7.2), so it is excluded by its own
+            # storage rather than by a name this file would have to maintain.
+            foreach ($counterPath in $counterPaths) {
+                $masteryMatch = [regex]::Match(
+                    $counterPath, '^skills\.(?<skill>[a-z0-9_]+)\.qualifying_scenes_total$')
+                if (-not $masteryMatch.Success) { continue }
+                $masterySkill = $masteryMatch.Groups['skill'].Value
+                foreach ($required in @("mastery_level", "rank_ascensions")) {
+                    if ($counterPaths -notcontains "skills.$masterySkill.$required") {
+                        Add-Failure "$relativePath`:$line entity $id tracks $masterySkill as a mastery-tracked skill but is missing a skills.$masterySkill.$required tracked_counters entry; Section 7.5 makes it authoritative stored state, not a derived value (Decision 090)."
+                    }
                 }
             }
 
@@ -800,19 +946,46 @@ foreach ($file in $canonicalFiles) {
             $ladderVersionMatch = [regex]::Match($block, 'profile_version:[ \t]*"(\d+\.\d+)"')
             if ($id -eq "ENT-000125" -and $ladderVersionMatch.Success -and
                 [version]$ladderVersionMatch.Groups[1].Value -ge [version]"1.35") {
+                # Profile 1.52 adds the magnitude-axis ladder (Section 7.3,
+                # Decision 090), so the five skills that previously sat in no
+                # table are now authored through B-Rank like the rest and come
+                # under the same ceiling guard. Stone Skin is native D-Rank and
+                # Flash Step native D-Rank; the guard is a ceiling, not a floor,
+                # so a native Rank above E needs no special case here.
                 $ladderSkills = @(
                     "Keen Sense", "Silent Step", "Exploit Pattern", "Field Command",
-                    "Resonance Extraction", "Sprint", "Flash Step"
+                    "Resonance Extraction", "Sprint", "Flash Step",
+                    "Dagger Mastery", "Stone Skin", "Bulwark", "Twin Fang", "Broken Rhythm"
                 )
+                # The ceiling is now PARSED from the profile's own ladder tables
+                # rather than carried as a constant here. F-013 recorded the
+                # constant going stale against the profile and left this exact
+                # repair open: "parsing the authored extent out of Section 7.3's
+                # own tables at validation time would make the guard
+                # self-updating and remove this class entirely." It read "C"
+                # until 1.51 and "B" until 1.53, needing a hand edit each time,
+                # with only a contract test derived from the same hand-edited
+                # value to check it -- two copies of one fact, agreeing until
+                # they did not.
+                #
+                # 1.53 made this possible by giving all three tables absolute
+                # Rank column headers (E/D/C/B/A) instead of "First/Second/Third
+                # Rank above native", which put one skill's A-Rank in a
+                # different column from another's. The authored extent is now
+                # simply the highest Rank appearing as a column header.
                 $ladderRankOrder = @("E", "D", "C", "B", "A", "S")
-                $highestAuthoredIndex = [array]::IndexOf($ladderRankOrder, "B")
+                $ladderCeiling = Get-LadderCeiling $root (Resolve-WorldForPath $relativePath $campaignWorlds)
+                if (-not $ladderCeiling) {
+                    Add-Failure "$relativePath`:$line entity $id declares a Section 7.3 ladder profile, but no ladder table with Rank column headers could be read from it; the ceiling guard cannot run."
+                }
+                $highestAuthoredIndex = [array]::IndexOf($ladderRankOrder, $ladderCeiling)
                 $ladderSection = Get-IndentedSection $block "skills_known"
                 foreach ($ladderSkill in $ladderSkills) {
                     $ladderMatch = [regex]::Match($ladderSection, '"' + [regex]::Escape($ladderSkill) + ' \[([EDCBAS])-Rank\]')
                     if (-not $ladderMatch.Success) { continue }
                     $heldRank = $ladderMatch.Groups[1].Value
                     if ([array]::IndexOf($ladderRankOrder, $heldRank) -gt $highestAuthoredIndex) {
-                        Add-Failure "$relativePath`:$line entity $id holds $ladderSkill at $heldRank-Rank, which exceeds its authored category ladder (Gatefall Profile 1.35 Section 7.2; Section 7.3 authors through B-Rank)."
+                        Add-Failure "$relativePath`:$line entity $id holds $ladderSkill at $heldRank-Rank, which exceeds its authored category ladder (Section 7.2; Section 7.3's tables author through $ladderCeiling-Rank)."
                     }
                 }
             }
@@ -1219,6 +1392,12 @@ foreach ($file in $canonicalFiles) {
             if ($entityType.Success) {
                 $entityTypes[$id] = $entityType.Groups[1].Value.Trim().Trim('"')
             }
+            # Decision 090: who the skill-credit obligation falls on, declared
+            # by the entity rather than assumed by this file.
+            if ($relativePath -match '^campaigns/[^/]+/[^/]+$' -and
+                $block -match '(?m)^[ \t]*bearer:[ \t]*true[ \t]*\r?$') {
+                $bearerEntities[$id] = $true
+            }
         } elseif ($id.StartsWith("REL-")) {
             $relationshipBlocks.Add([pscustomobject]@{
                 Id = $id
@@ -1366,6 +1545,47 @@ foreach ($worldName in $participationPolicy.Keys) {
             $covered = @($eventData.ParticipationAudits | Where-Object { $_.Subject -eq $participant })
             if ($covered.Count -eq 0) {
                 Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) is in the participation coverage set and names $participant, but records no participation audit for them; state record-updated or an explicit no-change (Decision 085 / $($policy.SourcePath))."
+            }
+        }
+    }
+}
+
+# --- Decision 090: a resolved dangerous scene asserts its skill credit -------
+#
+# Within the declared coverage, an Event naming a Bearer carries either at
+# least one skills.* counter delta for him, or the explicit negative assertion
+# -- a progression_audits entry in the world's skill_credit domain with
+# result: none. The positive case needs no separate audit block, because the
+# deltas themselves are the assertion; only "nothing applied" needs saying out
+# loud, which is Decision 080's negative-assertion rationale unchanged.
+#
+# What this does not do, stated plainly: it cannot prove a settlement counted
+# correctly, and a Runtime under load can write `none` as easily as it can do
+# the work. What it converts is a SILENT omission into an ASSERTED one, which
+# is the whole distinction F-012 turned on -- what was missing was never
+# claimed, so nothing could disagree with it.
+foreach ($worldName in $skillCreditPolicy.Keys) {
+    $policy = $skillCreditPolicy[$worldName]
+    foreach ($eventData in $eventAuditData) {
+        if ($eventData.EventNumber -le $policy.BaselineNumber -or
+            $policy.Kinds -notcontains $eventData.Kind) {
+            continue
+        }
+        foreach ($participant in $eventData.Participants) {
+            if (-not $bearerEntities.ContainsKey($participant)) { continue }
+            $credited = @($counterDeltas | Where-Object {
+                $_.Event -eq $eventData.Event -and
+                $_.Subject -eq $participant -and
+                $_.Counter -like "skills.*"
+            })
+            if ($credited.Count -gt 0) { continue }
+            $asserted = @($eventData.Audits | Where-Object {
+                $_.Subject -eq $participant -and
+                $_.Domain -eq $policy.Domain -and
+                $_.Result -eq "none"
+            })
+            if ($asserted.Count -eq 0) {
+                Add-Failure "$($eventData.SourcePath)`:$($eventData.SourceLine) Event $($eventData.Event) is kind '$($eventData.Kind)' in the skill credit coverage set and names Bearer $participant, but credits no skills.* counter and records no explicit none; a resolved dangerous scene asserts its skill credit either way (Decision 090 / $($policy.SourcePath))."
             }
         }
     }

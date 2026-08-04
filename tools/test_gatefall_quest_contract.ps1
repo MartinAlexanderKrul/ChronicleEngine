@@ -46,7 +46,17 @@ $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8
 $runtimeProfile = Get-Content -LiteralPath $runtimeProfilePath -Raw -Encoding UTF8
 $latestCheckpoint = Get-Content -LiteralPath $latestCheckpointPath -Raw -Encoding UTF8
 
-Assert-True ($profile -match '(?m)^# Gatefall .+Profile 1\.51\r?$') "Gatefall Profile 1.51 is not active."
+# The active version is READ, never pinned. Four assertions here carried the
+# literal "1.51" and had to be hand-edited on every profile adoption; a test
+# that must be edited to keep passing is a test that stops meaning anything,
+# which is F-013's defect exactly. What is actually worth asserting is not the
+# number but that everything AGREES on it -- profile header, live character
+# sheet, campaign startup binding, and world index -- so the number is taken
+# from the profile and the other three are checked against it.
+$activeProfileVersion = [regex]::Match($profile, '(?m)^# Gatefall .+Profile (?<v>\d+\.\d+)\r?$')
+Assert-True $activeProfileVersion.Success "Gatefall profile header declares no active version."
+$activeVersion = $activeProfileVersion.Groups['v'].Value
+$activeVersionPattern = [regex]::Escape($activeVersion)
 # Profile 1.49 removed the "1 slot by default" baseline along with Multitask: capacity
 # is the System Rank ladder outright, floored at 2 by E-Rank, with no default to add to
 # and no skill contributing. The old assertion pinned a baseline that no longer exists.
@@ -62,7 +72,7 @@ Assert-True ($profile -match 'Gate-clear milestone XP for the Bearer''s System R
 Assert-True ($profile -match 'A quest cannot complete from conduct that occurred before') "Pre-attachment retroactive completion is not prohibited."
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
-Assert-True ($character -match 'profile_version: "1\.51"') "Live Gatefall character was not migrated to Profile 1.51."
+Assert-True ($character -match "profile_version: `"$activeVersionPattern`"") "Live Gatefall character was not migrated to Profile $activeVersion."
 Assert-True ($character -notmatch 'analyst_bonus') "Retired analyst_bonus survives the Profile 1.33 migration."
 # Derived, not pinned -- the same reason as the checkpoint ordinal above, and
 # the same reason the quest lists beside line 66 are not pinned either.
@@ -185,13 +195,13 @@ Assert-StatPassiveRow -Name 'Shrug Off' -Stat 'vitality' -Authored 'S' -Tail '.+
 Assert-True ($character -notmatch 'Rank-Sight . Passive . Stat-milestone skill') "Retired Rank-Sight survives as a live skill."
 Assert-True ($checkpoint -match 'profile_version: "1\.12"') "Immutable Checkpoint 0024 profile version changed."
 Assert-True ($checkpoint -notmatch 'non_daily_quests:') "Immutable Checkpoint 0024 was retrofitted with Profile 1.14 quest state."
-Assert-True ($startup -match 'world_rule_profile: "Gatefall World Rule Profile 1\.51"') "Campaign startup does not bind Profile 1.51."
+Assert-True ($startup -match "world_rule_profile: `"Gatefall World Rule Profile $activeVersionPattern`"") "Campaign startup does not bind Profile $activeVersion."
 Assert-True ($startup -match "latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/$([regex]::Escape($latestCheckpointName))") "Campaign startup does not target the latest checkpoint on disk ($latestCheckpointName)."
 Assert-True ($startup -match 'readiness_headings:') "Gatefall startup has no bounded readiness selector list."
 Assert-True ($startup -match '"14\.3 Trigger Tiers') "Gatefall startup does not select the trigger manifest heading."
 Assert-True ($startup -match 'migration_index: worlds/gatefall/migrations/INDEX\.md') "Gatefall startup does not point restoration at the migration index."
 Assert-True ($startup -match 'require_profile_trigger_audit: true') "Gatefall startup does not require the proactive trigger audit."
-Assert-True ($index -match 'World Rule Profile 1\.51, frozen') "World index does not advertise frozen Profile 1.51."
+Assert-True ($index -match "World Rule Profile $activeVersionPattern, frozen") "World index does not advertise frozen Profile $activeVersion."
 Assert-True ($profile -match 'SKILLS[^\r\n]+ACTIVE') "Gatefall /system template does not render an ACTIVE skills group."
 Assert-True ($profile -match 'SKILLS[^\r\n]+PASSIVE') "Gatefall /system template does not render a PASSIVE skills group."
 Assert-True ($profile -match 'contains every skill whose ledger entry carries a Mana cost') "Gatefall /system skills do not classify ACTIVE entries from canonical Mana cost."
@@ -459,12 +469,32 @@ Assert-True ($character -match 'main_hand: ".+?weapon power (\d+)') "Main-hand w
 $mainPower = [int]$Matches[1]
 Assert-True ($character -match 'off_hand: ".+?weapon power (\d+)') "Off-hand weapon power is unreadable."
 $offPower = [int]$Matches[1]
-Assert-True ($character -match 'Dagger Mastery \[E-Rank\].+adds \*\*\+([0-9.]+)\*\*') "Dagger Mastery bonus is unreadable."
-$daggerBonus = [decimal]::Parse($Matches[1], [Globalization.CultureInfo]::InvariantCulture)
-Assert-True ($character -match 'Rupture \[D-Rank\].+\*\*×([0-9.]+) of its skill-rank baseline\*\*.+baseline 25') "Rupture multiplier is unreadable."
-$ruptureMultiplier = [decimal]::Parse($Matches[1], [Globalization.CultureInfo]::InvariantCulture)
-Assert-True ($character -match 'Twin Fang \[E-Rank\].+second strike has a \**×([0-9.]+)\** Twin Fang') "Twin Fang multiplier is unreadable."
-$twinFangMultiplier = [decimal]::Parse($Matches[1], [Globalization.CultureInfo]::InvariantCulture)
+# A skill's RANK is not pinned here, for the same reason the weapon names above
+# stopped being pinned. Rank ascension (Section 7.5) moves it with play, and
+# these three read `[E-Rank]`, `[D-Rank]` and `[E-Rank]` as literals. Dagger
+# Mastery's went stale at `EVT-000390`, which took it E -> C: the assertion then
+# matched nothing and failed as "bonus is unreadable" when the bonus was
+# perfectly readable and simply sat beside a different Rank. That is F-013's
+# defect class again -- a fixture pinning live state -- and it is fixed the same
+# way: read the Rank the sheet renders, then check the derivation against it.
+Assert-True ($character -match 'Dagger Mastery \[([EDCBAS])-Rank\].+adds \*\*\+([0-9.]+)\*\*') "Dagger Mastery bonus is unreadable."
+$daggerBonus = [decimal]::Parse($Matches[2], [Globalization.CultureInfo]::InvariantCulture)
+# Rupture's baseline is a function of its own Rank under Section 7.2's table,
+# so it is looked up there rather than pinned at the D-Rank 25 it happens to
+# stand at today.
+Assert-True ($profile -match '(?m)^\| Rank baseline \|(?<row>.+)\|\s*$') "Section 7.2 Rank baseline table is unreadable."
+$rankBaselines = @{}
+$baselineCells = $Matches['row'].Split('|') | ForEach-Object { $_.Trim() } | Where-Object { $_ -match '^[\d,]+$' }
+for ($ri = 0; $ri -lt $baselineCells.Count -and $ri -lt 6; $ri++) {
+    $rankBaselines[@("E", "D", "C", "B", "A", "S")[$ri]] = [int]($baselineCells[$ri] -replace ',', '')
+}
+Assert-True ($character -match 'Rupture \[([EDCBAS])-Rank\].+\*\*×([0-9.]+) of its skill-rank baseline\*\*.+baseline (\d+)') "Rupture multiplier is unreadable."
+$ruptureRank = $Matches[1]
+$ruptureRenderedBaseline = [int]$Matches[3]
+$ruptureMultiplier = [decimal]::Parse($Matches[2], [Globalization.CultureInfo]::InvariantCulture)
+Assert-True ($rankBaselines.ContainsKey($ruptureRank) -and $rankBaselines[$ruptureRank] -eq $ruptureRenderedBaseline) "Rupture renders baseline $ruptureRenderedBaseline at $ruptureRank-Rank; Section 7.2's table fixes it at $($rankBaselines[$ruptureRank])."
+Assert-True ($character -match 'Twin Fang \[([EDCBAS])-Rank\].+second strike has a \**×([0-9.]+)\** Twin Fang') "Twin Fang multiplier is unreadable."
+$twinFangMultiplier = [decimal]::Parse($Matches[2], [Globalization.CultureInfo]::InvariantCulture)
 # Section 7.4 makes the prose a RENDERING of the stored counters, so the invariant is that
 # the two agree -- not that they equal a particular snapshot. Pinning the snapshot made this
 # fail on the first session that advanced Twin Fang, for a reason unrelated to the rule.
@@ -487,7 +517,7 @@ Assert-True ($character -match ('Twin Fang \[E-Rank\] ' + [regex]::Escape($tfLev
 $quickknifeChassis = [decimal]0.75 + $daggerBonus
 $mainDamage = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeChassis)
 $offDamage = Round-HalfUp (($effectiveStrength + $offPower) * $quickknifeChassis)
-$ruptureDamage = Round-HalfUp (25 * $ruptureMultiplier)
+$ruptureDamage = Round-HalfUp ($ruptureRenderedBaseline * $ruptureMultiplier)
 $offFollowUp = Round-HalfUp (($effectiveStrength + $offPower) * $quickknifeChassis * $twinFangMultiplier)
 $mainFollowUp = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeChassis * $twinFangMultiplier)
 
@@ -521,10 +551,54 @@ $mainFollowUp = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeCha
 # why every figure below moves by exactly one point of Strength through the
 # formula and Rupture does not move at all. The drift predates Profile 1.48 and
 # is unrelated to it; the Stat Passive rungs touch no damage input.
-Assert-True ($mainDamage -eq 97) "Main-hand /system preview is $mainDamage, expected 97."
-Assert-True ($offDamage -eq 85) "Off-hand /system preview is $offDamage, expected 85."
-Assert-True ($ruptureDamage -eq 61) "Rupture /system preview is $ruptureDamage, expected 61."
-Assert-True (($mainDamage -eq 97) -and ($offFollowUp -eq 136)) "Twin Fang main-to-off preview is $mainDamage + $offFollowUp, expected 97 + 136."
-Assert-True (($offDamage -eq 85) -and ($mainFollowUp -eq 155)) "Twin Fang off-to-main preview is $offDamage + $mainFollowUp, expected 85 + 155."
+# The pin is replaced by the invariant it was standing in for. Section 15 makes
+# the `/system` preview a DERIVATION -- Section 6.2's formula at result
+# multiplier x1 and zero reduction, with ordinary final rounding -- so the
+# assertion that matters is that the number the sheet RENDERS equals the number
+# the formula produces from the sheet's own inputs. That is self-updating
+# against Strength, loadout, chassis and mastery, and it still fails loudly if
+# the formula itself moves, which is what the pin was for.
+#
+# The pin did not survive contact. It was hand-recomputed at least four times
+# (Strength 51->62, 62->69, 69->70, loadout swaps), and the fifth time it was
+# not: `EVT-000390` moved Dagger Mastery +0.30 -> +0.70 and nothing here
+# followed. Worse, the drift ran the other way too -- that Event wrote the
+# previews as 127 and 111, TRUNCATING 127.6 and 111.65 where Section 6.2 rounds
+# to nearest with .5 up. A pinned snapshot could not have caught that, because
+# the snapshot and the sheet were both hand-written from the same arithmetic.
+# Corrected to 128 and 112 at `EVT-000391`.
+Assert-True ($character -match 'main_hand: ".+?DMG (\d+) standard') "Main-hand rendered DMG preview is unreadable."
+$mainRendered = [int]$Matches[1]
+Assert-True ($character -match 'off_hand: ".+?DMG (\d+) standard') "Off-hand rendered DMG preview is unreadable."
+$offRendered = [int]$Matches[1]
+Assert-True ($mainRendered -eq $mainDamage) "Main-hand sheet renders DMG $mainRendered; Section 6.2 on the sheet's own inputs (Strength $effectiveStrength + power $mainPower, chassis x$quickknifeChassis) derives $mainDamage."
+Assert-True ($offRendered -eq $offDamage) "Off-hand sheet renders DMG $offRendered; Section 6.2 on the sheet's own inputs (Strength $effectiveStrength + power $offPower, chassis x$quickknifeChassis) derives $offDamage."
+# Rupture takes no weapon input, so its preview is the Rank baseline times its
+# multiplier and moves only when one of those two does -- both of which are read
+# above rather than pinned.
+Assert-True ($ruptureDamage -eq (Round-HalfUp ($rankBaselines[$ruptureRank] * $ruptureMultiplier))) "Rupture preview $ruptureDamage disagrees with its own Rank baseline $($rankBaselines[$ruptureRank]) x $ruptureMultiplier."
+# Twin Fang's two combination previews are not rendered anywhere on the sheet,
+# so unlike the weapon previews above there is no independent number to check
+# the derivation against -- and re-asserting the value this file just computed
+# would be circular. What these pins were really guarding is Section 7.2's two
+# structural rules about the technique, so those are asserted directly and the
+# snapshot (97+136, 85+155, four inputs stale) is retired.
+#
+# 1. "The first strike is the ordinary opening and gains no Twin Fang mastery
+#    multiplier." The opener must equal that weapon's plain preview exactly,
+#    and the follow-up must exceed the other weapon's plain preview whenever
+#    the multiplier is above x1.00 -- catching both regressions at once: the
+#    multiplier leaking onto the opener, or being dropped from the follow-up.
+# 2. "Each strike uses only its own weapon power." With unequal powers the two
+#    orderings cannot produce the same follow-up; if they do, one weapon's
+#    power is being used for both strikes.
+Assert-True ($twinFangMultiplier -ge [decimal]1.0) "Twin Fang mastery multiplier $twinFangMultiplier is below the Novice x1.00 floor."
+if ($twinFangMultiplier -gt [decimal]1.0) {
+    Assert-True ($offFollowUp -gt $offDamage) "Twin Fang follow-up ($offFollowUp) does not exceed the off-hand's ordinary preview ($offDamage) at multiplier x$twinFangMultiplier; the follow-up is not carrying the mastery multiplier."
+    Assert-True ($mainFollowUp -gt $mainDamage) "Twin Fang follow-up ($mainFollowUp) does not exceed the main-hand's ordinary preview ($mainDamage) at multiplier x$twinFangMultiplier; the follow-up is not carrying the mastery multiplier."
+}
+if ($mainPower -ne $offPower) {
+    Assert-True ($mainFollowUp -ne $offFollowUp) "Twin Fang resolves both orderings to $mainFollowUp despite unequal weapon power ($mainPower vs $offPower); each strike must use only its own weapon's power."
+}
 
 Write-Host "Gatefall quest contract tests PASSED" -ForegroundColor Green

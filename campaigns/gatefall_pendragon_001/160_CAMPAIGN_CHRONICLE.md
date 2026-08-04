@@ -353,6 +353,9 @@ subjects:
   - EVT-000388
   - EVT-000389
   - EVT-000390
+  - EVT-000391
+  - EVT-000392
+  - EVT-000393
 ```
 
 ---
@@ -11092,4 +11095,153 @@ description: "Player-instructed audit of every mastery-tracked skill, run at the
 **Derived state re-computed.** Both dagger damage previews rise with the chassis multiplier: main-hand (66 + 22) x 1.45 = **127**, off-hand (66 + 11) x 1.45 = **111**, against 92 and 80 before. No pool, Stat, level, XP, gold, cash, item, or quest state moves.
 
 **Recorded honestly rather than quietly:** this is a substantial power increase - roughly 38% on every dagger strike - arriving entirely from bookkeeping repair rather than from play, and the player had to rule on which unrecorded scenes counted because canon held no line to read. The failure and its open design questions are `F-012` in `engine/004_DESIGN_FLAGS.md`."
+```
+
+## EVT-000391 - Profile 1.52: A Third Ladder, and the Skill That Could Not Ascend
+
+```yaml
+id: EVT-000391
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: profile-adoption
+  game_date: "2026-08-15 06:00 -05:00"
+  real_date: "2026-08-04"
+type: Event
+kind: profile-adoption
+importance: major
+game_date: "2026-08-15 06:00 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+participation_audits:
+  - subject: ENT-000125
+    result: record-updated
+    record: ENT-000125
+description: "Adoption of **Gatefall World Rule Profile 1.52**, a required migration over frozen 1.51, at the same 2026-08-15 06:00 anchor as `EVT-000390`. **No fictional time passes, no pool moves, no scene occurs, and no resolved outcome is rewritten.** It settles the four open design questions `EVT-000390` raised as `F-012`, and one it did not raise, found while settling them.
+
+**What the audit that closed `F-012` also found.** Section 7.3 carried two ladder tables - scope, covering five skills, and capability, covering two. **Eight mastery-tracked skills appeared in neither.** The profile's whole account of them was Section 7.2's sentence that the quantitative axes are closed-form, so the grant is always authored. That sentence is true, and it hid two different failures.
+
+**Thin.** Against the Rank Dominance Law's own comparison - the higher Rank's Novice value against the lower Rank's Master value - damage and healing hold at **1.56x** at every step, because the Rank baseline multiplies. The passive-multiplier ladder gives **1.17x / 1.09x / 1.06x**; reduction gives **1.10x / 1.07x**. Both converge toward parity, a fixed increment on a growing base against a mastery track that also adds a fixed increment. **Dagger Mastery had ascended twice at `EVT-000390`, E-Rank to C-Rank, and gained a larger number and no capability whatsoever** - the player's own observation, and the thing that opened this pass.
+
+**Absent.** An earned technique whose damage reads **weapon power rather than a Rank baseline** takes nothing from any axis. `EVT-000390` withheld Twin Fang's offer and was right to: no category, no scope, no duration, no rank baseline. What that Event recorded as correct engine behaviour is correct **and** was a permanent sentence - Twin Fang had spent twelve qualifying scenes to reach E-Rank Master and could never ascend again, by either road, for the rest of the campaign. Section 7.2 calls withholding *'a deferral, not a denial ... eligible the moment the rung is authored'*. For Twin Fang nothing was ever going to author it, because the profile held no table it belonged in.
+
+**1.52 authors a third Section 7.3 table so every mastery-tracked skill has a row.** Real D/C/B categories for **Dagger Mastery** (Any blade / Thrown / Blind edge), **Stone Skin** (Impact spread / Shared skin), **Bulwark** (Anticipated / Covering / the Section 7.2 reduction cap), **Twin Fang** (Second target / Through the answer / Continuation) and **Broken Rhythm** (Unseen cadence / Relayed / Denied); an explicit *magnitude only, by design* with its 1.56x ratio attached for **Rupture, Mend and Mana Bolt**, so a row is never blank; and **Dimensional Projection** deferred to its own ratification rather than authored speculatively. No rung adds a modifier step, none changes a Mana cost, and **every quantitative grant is unchanged and still applies in full** - a category is added beside the number, never in place of it.
+
+**What this changes for Alexander, exactly.** **Dagger Mastery takes the two categories its held C-Rank already covers** - **Any blade** (D) and **Thrown** (C) - a deferral being paid on the 1.47-to-1.48 precedent, not a new grant. Its +0.70 chassis bonus is unchanged and both dagger previews stand at **127 / 111**. Every other skill in the new table stands at its native Rank, so no other category is owed and nothing else moves.
+
+**One offer is now open and is deliberately left unanswered.** With its D rung authored, **Twin Fang [E-Rank] Master is ascension-ready for the first time**: it stands below the System Rank C + 1 ceiling and is now ascension-eligible.
+
+`[SYSTEM] RANK ASCENSION AVAILABLE - Twin Fang - E-Rank Master (x1.60 follow-up, Mana 4) -> D-Rank Adept (x1.30 follow-up, Mana 5, + the follow-up may take a second target). Ascend?`
+
+**It is not settled here.** Section 7.5 makes the offer the Bearer's to take or decline, and Section 14.3's Tier 3 forbids the System authoring his decision; an adoption presents arithmetic, it does not spend mastery. Note the trade honestly - this one **costs** immediate damage, x1.60 down to x1.30 on the follow-up strike, in exchange for a Rank and a capability, and it is the first offer in this campaign where the mastery surrendered is visible in the same number the skill is used for. It stands open, re-surfaces at every later barrier, and expires never.
+
+**The `F-012` questions, ruled.** Q1 and Q4 together become **skill-credit coverage** (Section 14.3): within the danger-bearing Event kinds, an Event naming the Bearer carries either a `skills.*` delta or an explicit `progression_audits` entry with `domain: gatefall.skill_credit`, `result: none`. Q2 makes Section 7.5's readiness check **standing** - evaluated from stored state at every barrier, reaching no history, so a missed offer is recoverable rather than lost. Q3 states in Section 7.4 that **a skill at Master still earns and still writes its qualifying scenes**, delta included, which is the root of the self-reinforcing loop. Engine ruling: **Decision 090**.
+
+**Q4's own proposed detector was measured and does not work.** `F-012` asked whether a rule that an Event of kind `combat` naming the Bearer must carry a skill delta would close this. **It catches neither `EVT-000327` nor `EVT-000332` - both were filed `kind: scene`.** The root cause is a **misclassified Event**: one wrong kind took Decision 080's `progression_audits` coverage and every skill-counter obligation out at the same time. 1.52 therefore rules the classification too - a resolved dangerous scene carries a danger-bearing kind, and `kind: scene` is not available to a Gate or instant-dungeon clear. A prose backstop was measured as well and rejected at 18 hits, most of them administrative records merely mentioning a past clear.
+
+**Two skills were missing stored state nothing had ever claimed.** **Mana Bolt** (`EVT-000303`) and **Broken Rhythm** (`EVT-000308`) carried no `mastery_level` and no `rank_ascensions` `tracked_counters` entry, though Section 7.5 has required both as authoritative stored state since the `EVT-000158` adoption and Silent Step, learned in the same window, has them. Both are written here at their acquiring Event's baseline with `current_value` equal to the level each already holds - **Mana Bolt Novice (1), Broken Rhythm Novice (1)**, both `rank_ascensions` 0. **No value changes**; a derived number becomes a stored one. It is `F-012`'s shape in miniature - unclaimed state cannot disagree with anything - and a repository gate now claims it.
+
+**Section 7.3 stopped asserting live state.** Two lines carried hand-maintained copies of which rungs were occupied - *'every skill in this table is at its native E-Rank today'* and *'Flash Step at native D-Rank today'* - false since `EVT-000390` and `EVT-000220` respectively, with nothing comparing them to the ledger. That is `F-013` one layer up and is fixed the same way: the rules file authors rungs and reads held Rank from the Bearer's own ledger.
+
+**The same defect was then found on the mastery axis, and closed in the same adoption.** Auditing what *levelling* grants each skill — not what Rank grants — found **Broken Rhythm gaining nothing from Novice to Master.** A permanent passive already at the Section 4.3 step cap has no multiplier to raise, no reduction fraction, no duration to lengthen, no authored scope count to widen, and Mana 0 so the −10%-per-level rule is inert: every closed-form axis in Section 7.4 was inapplicable at once. Twelve qualifying scenes would have bought no change of any kind. 1.52 authors its mastery track as **scope — 1/2/3/4/5 beneficiaries**, the ladder Keen Sense and Silent Step already use: at Novice Alexander alone, each level extending the step to one further ally who can perceive him against an attacker whose cadence he has read aloud. It stands at **1** today and gains a `scope_floor` counter accordingly.
+
+**Two related repairs fell out of that.** Broken Rhythm's *effect had never been authored in the profile at all* — a live mechanic resting only in this sheet's rendered line, which is the Section 20.2 defect — and it is now written into Section 7.2 as a ratified earned technique. And its C-Rank Rank-category, drafted this same session as *Relayed* (ally-sharing), **collided with the mastery ladder**: Rank grants a kind and mastery grants a count, and a skill whose two tracks compete for one axis has no legible growth. The C rung is re-authored as **Read the room** — he holds every attacker's cadence in the exchange at once rather than one at a time — which no mastery level reaches.
+
+**Section 7.4 gains a per-skill mastery table**, one row per mastery-tracked skill naming its axis and its Novice→Master span, mirroring what Section 7.3 now does for Rank. That is the structural half: a closed-form rule with no coverage list cannot report a skill it fails to cover, which is exactly how Broken Rhythm went unnoticed.
+
+**A-Rank and S-Rank remain deferred** under Section 20.3, unchanged. The reason still holds — every named S-Rank in canon carries one singular signature technique rather than a templated continuation of a starter skill — and nothing is blocked: at System Rank C the ceiling is B, so A-Rank is unreachable until level 30.
+
+**Nothing retroactive, and nothing else moves.** No past exchange is re-resolved, no strike recomputed, no clear re-credited, and no category applied backward to a scene that resolved without it. `EVT-000327` and `EVT-000332` keep their recorded kind and their empty `counter_deltas`; their repair was settled at `EVT-000390` and skill-credit coverage is prospective from this Event. No pool, Stat, maximum, XP, level, System Rank, title, item, equipment, gold, cash, deadline, streak, quest, or objective is touched. Checkpoints 0069 and earlier remain immutable and run the compatibility chain through 1.52 at readiness. Raised as `F-014`, actioned in the same change."
+```
+
+## EVT-000392 - Profile 1.53: A-Rank Authored, and the Argument That Had Deferred It
+
+```yaml
+id: EVT-000392
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: profile-adoption
+  game_date: "2026-08-15 06:00 -05:00"
+  real_date: "2026-08-04"
+type: Event
+kind: profile-adoption
+importance: major
+game_date: "2026-08-15 06:00 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+participation_audits:
+  - subject: ENT-000125
+    result: record-updated
+    record: ENT-000125
+description: "Adoption of **Gatefall World Rule Profile 1.53**, a compatibility treatment over frozen 1.52, at the same 2026-08-15 06:00 anchor as `EVT-000391`. **No fictional time passes, no pool moves, no scene occurs, no stored value changes, and nothing is granted.** Owner ruling, taken immediately after `EVT-000391` deferred it.
+
+**What `EVT-000391` deferred, and why the deferral did not survive examination.** That Event kept A-Rank and S-Rank withheld on Section 7.3's standing argument: every named S-Rank in canon - Tereza Blazkova's **Vltava**, Reid Calloway's **Overrun**, Dominic Crane's **Meridian** - carries one unique, singular *signature* technique rather than a templated continuation of a starter skill's ladder, so authoring an A- or S-Rank rung by the D/C/B pattern risked contradicting established fact.
+
+**The argument conflated two things this profile deliberately keeps apart.** A **signature** is innate, one per awakening, fixed for life, authored per NPC under Section 13.6 - and that section grants one to *every named NPC hunter of D-Rank or above*, not only to S-Ranks. **Naomi Okafor is C-Rank and carries Still Room.** A **ladder rung** is what a *learned* technique gains from Rank, and Section 13.6 states in its own words that runes and skill books 'add **learned** techniques on top' of a signature. The two already coexist at every Rank from D upward - C-Rank included, where this profile has authored rungs since 1.6 and nothing has ever contradicted Naomi. Authoring an A-Rank rung for a learned skill says nothing about what any S-Rank's signature is.
+
+**A-Rank is authored in all three tables**, each a category and nothing else - no modifier step, no Mana change, no magnitude the skill did not already have. Keen Sense **Provenance** (the recent past of what he detects reads as clearly as its present) - Silent Step **Unattributed** (being seen no longer means being identified) - Exploit Pattern **Anticipatory** (a Pattern reaches what the subject has not yet done) - Field Command **Standing order** (a relayed Pattern persists without him) - Resonance Extraction **Latent siting** (reads deposits that have not surfaced) - Sprint **Unbroken** (the effect no longer ends at an obstacle, a fall, or a change of medium) - Flash Step **Blind step** (the held-read requirement falls away) - Dagger Mastery **Unbroken edge** (the blade cannot be taken or destroyed by a resolved action) - Stone Skin **Against the unphysical** (the reduction answers non-physical harm) - Bulwark **Covering the line** (reduction extends to every ally in reach) - Twin Fang **Answer** (the technique may be spent as a reaction) - Broken Rhythm **Broken formation** (he breaks a coordinated group's cadence as one). Rupture, Mend and Mana Bolt continue *magnitude only, by design*.
+
+**Nothing is granted to Alexander, because nothing is in reach.** Section 7.2 grants a category per Rank a skill stands **above its native Rank**, and no skill of his stands at A-Rank; the highest is **Keen Sense at B-Rank**, one rung below. Unlike `EVT-000391` - where Dagger Mastery took two categories its held C-Rank already covered - **this adoption pays no deferral, because none had accrued.** Nor does it change ascension readiness: Section 7.5's ceiling is System Rank + 1, so at System Rank C he is capped at B-Rank whatever A-Rank authors. **A-Rank first becomes reachable at System Rank B, level 30.** The Twin Fang offer opened at `EVT-000391` stands open and unanswered, unchanged by this.
+
+**S-Rank stays deferred, on a reason that survives the correction.** Not signatures - that is answered. It is that S-Rank is the top of the ladder, where a *learned* technique would stand level with the six named singular gifts the world's whole hunter politics is built on. Whether a starting skill reaches that at all is a question about the world's power ceiling rather than about a category ladder, and it is left to an owner ruling under Section 20.3. It is unreachable until System Rank A, level 40.
+
+**Two structural repairs came with it.** Section 7.3's ladder columns become **absolute Ranks** (E/D/C/B/A) instead of 'First/Second/Third Rank above native' - the old indexing put Sprint's A-Rank rung (native E, fourth step) and Flash Step's A-Rank rung (native D, third step) in *different columns*, which is what made the deferred rung read as a property of the column rather than of the Rank. And `validate_repository.ps1`'s ladder ceiling is now **parsed from those tables** rather than carried as a hand-maintained literal - it read 'C' until 1.51 and 'B' until 1.53, checked only against a contract test derived from the same literal, so the guard and its test could agree with each other while both disagreed with the profile. That is `F-013` exactly, and `F-013` recorded closing it as still-open work. The absolute-Rank columns are what made the parse possible.
+
+**Nothing retroactive, and nothing else moves.** No past exchange is re-resolved and no rung applies backward. No pool, Stat, maximum, XP, level, System Rank, mastery level, use count, qualifying-scene count, `scope_floor`, title, item, equipment, gold, cash, deadline, streak, quest, or objective is touched. No skill's rendered effect changes, because no skill occupies a rung this adoption authored. Checkpoints 0069 and earlier remain immutable and run the compatibility chain through 1.53 at readiness."
+```
+
+## EVT-000393 - Profile 1.54: The Ascension That Cost 37.5%
+
+```yaml
+id: EVT-000393
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: profile-adoption
+  game_date: "2026-08-15 06:00 -05:00"
+  real_date: "2026-08-04"
+type: Event
+kind: profile-adoption
+importance: major
+game_date: "2026-08-15 06:00 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+participation_audits:
+  - subject: ENT-000125
+    result: record-updated
+    record: ENT-000125
+description: "Adoption of **Gatefall World Rule Profile 1.54**, a required migration over frozen 1.53, at the same 2026-08-15 06:00 anchor. **No fictional time passes, no pool moves, no scene occurs, and no live value changes.** Player-instructed check: *make sure ascending from Master at one Rank to Novice at the next is always a benefit.* It was not.
+
+**Section 7.5 has stated the ordering since 1.6 and nothing ever verified it.** `Rank N Master < Rank N+1 Novice (rune) < Rank N+1 Adept (breakthrough)`, with Section 7.2 promising every trade this profile offers is a net gain. Computed at every rung of every skill on both roads: Rupture x1.92, Mend and Mana Bolt x1.56, Dagger Mastery x1.17 falling to x1.04, Stone Skin and Bulwark x1.10 falling to **x1.00 at the 90% cap** - and then two that were simply wrong.
+
+**Twin Fang came out at x0.625 - a 37.5% loss of the damage the technique exists to deal.** Its strikes read weapon power rather than a Rank baseline (Section 7.2), so its entire follow-up multiplier was authored by mastery, and ascension resets mastery. **`EVT-000391` opened that offer to Alexander and described it as costing immediate damage**, framed as an honest trade the Bearer was entitled to weigh. It was not a trade this profile permits; it was a rule violation. The 1.52 magnitude-axis ladder had made Twin Fang *eligible* by authoring a category for it, and no one checked whether the trade it now permitted was favourable. **Dimensional Projection carried the identical defect at x0.25** - range 20 m falling to 5 m - unformed and waiting.
+
+**Two fixes.** Twin Fang gains **+0.35 per Rank above native** on its multiplier base: `1.00 + 0.35 x ranks_above_native + 0.15 x (level - 1)`, giving E x1.00-x1.60, D x1.35-x1.95, C x1.70-x2.30, B x2.05-x2.65, A x2.40-x3.00. Modest by design rather than the ~2.5x a Rank baseline carries, because Twin Fang's damage already grows with effective Strength and with every weapon equipped. And Section 7.2 gains the **magnitude ratchet** - `magnitude_floor`, the exact counterpart of the scope ratchet it has carried since 1.31: no ascension may land below the value held immediately before it, on any magnitude a skill owns.
+
+**The law is restated as what it actually is:** `Rank N Master <= Rank N+1 Novice < Rank N+1 Adept`. **No axis ever falls, and at least one thing is gained** - a larger number, a further exchange of duration at the cap, or an authored category. Equality plus a new kind is a real ascension; a smaller number is not.
+
+**Alexander's Twin Fang offer is re-priced, not withdrawn.** Section 7.5 entitles him to the exact before-and-after on every axis, and the figure he was given was wrong. **E-Rank Master (x1.60, Mana 4) -> D-Rank Adept (x1.65, Mana 5, + Second target)** - a strict gain where it had been a 37.5% cut. It remains open, unanswered, and his to take or decline; the Mana step is the ordinary cost of spending mastery, which every ascension in this profile carries.
+
+**Nothing else moves, and that is checkable.** Twin Fang stands at **native E-Rank**, so `ranks_above_native` is 0 and the new base contributes nothing: its Master multiplier is **x1.60 before and after**, Mana 4 before and after, and every resolved strike in the record stands. A `magnitude_floor` counter is written at 0 - it binds only after a first ascension, and Twin Fang has none.
+
+**A contract test makes it permanent.** `tools/test_rank_dominance_law.ps1` verifies every reachable rung of every skill on both ascension roads, reads the Rank baseline table and the authored ceiling out of the profile rather than restating them, ties each ladder constant back to the sentence that authors it, and catches the further trap the ratchet itself creates - **a floor that swallows an entire mastery track**, so climbing Novice to Master at the new Rank buys nothing. That is `F-014` reappearing on the magnitude axis, and it is invisible to a fall-detection check because the floor has already hidden the fall. The test was mutation-checked both ways before being accepted."
 ```

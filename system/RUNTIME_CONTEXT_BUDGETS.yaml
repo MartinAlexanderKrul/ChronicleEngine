@@ -346,8 +346,28 @@ surfaces:
       # is the ratchet working — deliberate growth is re-recorded here, not
       # waived. The 12,000 ceiling is untouched and still 3,900 tokens away.
       gatefall_pendragon_001:/system skills: 8097
-      gatefall_pendragon_001:/system shop: 9937
+      # Re-recorded 2026-08-04, 9,937 -> 11,488, on the same owner ruling that
+      # raised `gatefall_skills_known` to 1,100 bytes/entry. `/system shop`
+      # declares `skills_known` as a protagonist field — it has to, because the
+      # Runes tab cannot flag a redundant rune without knowing what he already
+      # holds — so it carries the full verbosity of every skill entry, 9,250 of
+      # its 11,488 tokens. The growth is Profiles 1.52 through 1.57 authoring
+      # what each skill actually does: Rank ladders, mastery axes, the
+      # categories held at each Rank, and now Rupture's and Mana Bolt's
+      # delivery ranges. Per-entry the skills are still inside their authored
+      # cap — `gatefall_skills_known` measures 880 bytes/entry against 1,100 —
+      # so this is the aggregate of twenty compliant entries, not one bloated
+      # line. The 12,000 ceiling is untouched, but only 512 tokens away, and
+      # that is the real constraint now: the next skill to gain a rung will
+      # trip the ceiling rather than the ratchet, and a ceiling is not
+      # re-recordable. Trimming resolved history out of the skill lines is the
+      # work that buys the next rung its room.
+      gatefall_pendragon_001:/system shop: 11488
       gatefall_pendragon_001:/system quests: 3584
+      # NOT re-recorded, deliberately: `/system gear` measures 29,655 against a
+      # 29,761 ratchet — 106 tokens of headroom — from the same skill-entry
+      # growth. It is left armed so the next change trips it and gets read,
+      # rather than pre-emptively waived here.
       gatefall_pendragon_001:/system gear: 25880
       gatefall_pendragon_001:/system titles: 4513
       # Re-recorded 2026-08-03, 7,187 -> 8,342. `/system log` reads Current

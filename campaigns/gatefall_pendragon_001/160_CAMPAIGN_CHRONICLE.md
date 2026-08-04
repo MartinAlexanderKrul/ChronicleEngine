@@ -359,6 +359,7 @@ subjects:
   - EVT-000394
   - EVT-000395
   - EVT-000396
+  - EVT-000397
 ```
 
 ---
@@ -11382,4 +11383,47 @@ description: "Player-instructed recalculation of every mastery-tracked skill on 
 **The magnitude ratchet is written for the first time.** Twin Fang's `magnitude_floor` records **160** - hundredths of the x1.60 it held at E-Rank Master immediately before this ascension, a tracked counter being an integer under Decision 079 - and Dagger Mastery's records **55** for the +0.55 it held at D-Rank Master before its C ascension. Neither binds today: Twin Fang computes x1.65 and Dagger Mastery +0.70, both above their floors. They exist so no future ascension can land beneath them.
 
 **Recorded honestly.** Rupture's damage moves **61 to 299** across this settlement and Profile 1.56 together, the largest single jump in the campaign's record - and it is the figure that had stood *below a free 128-damage dagger strike*. None of it arrives from play. The premise of the exercise is that the engine owed these offers and never presented them, which is `F-012`, and the player ruled the debt be paid rather than written off."
+```
+
+## EVT-000397 - Profile 1.57: The Two Spells That Were Almost the Same Spell
+
+```yaml
+id: EVT-000397
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: profile-adoption
+  game_date: "2026-08-15 06:00 -05:00"
+  real_date: "2026-08-04"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-15 06:00 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+participation_audits:
+  - subject: ENT-000125
+    result: record-updated
+    record: ENT-000125
+description: "Adoption of **Gatefall World Rule Profile 1.57**, a required migration over frozen 1.56. **No fictional time passes, no pool moves, no scene occurs, no damage number changes, and no counter is written.** Player observation, and correct on inspection: **Rupture and Mana Bolt looked like almost the same spell.**
+
+**They were.** Since `EVT-000395` folded effective Intelligence into Mana damage the two have read the **identical Section 6.2 formula**, differing only by multiplier bands exactly **1.00 apart at every mastery level** (x2.00-x2.60 against x1.00-x1.60) and by Mana cost. **The resemblance predates 1.56**, which only removed the last cosmetic difference - through 1.55 both already read `(baseline + focus) x multiplier`. It was structural, and had simply never been looked at.
+
+**Neither skill had an authored range at all.** Mana Bolt was called *a ranged bolt* and Rupture *a heavy strike*, and ninety in-fiction days of play settled the distinction by convention alone - **every Rupture in the record narrated at contact, every Mana Bolt from range** - with nothing in the profile requiring it. 1.57 authors it.
+
+**Rupture reaches 5 metres, flat at every Rank.** It is the burst: larger multiplier, higher cost, and a band short enough that using it means being in the fight. Range is deliberately **not** an axis - the skill already grows on magnitude and on four categories, and a restriction that says what a skill *is* should not erode as it ascends. A dagger strike followed by Rupture remains an ordinary combo, the Bearer being inside 5 metres whenever that happens.
+
+**Mana Bolt has no limit in distance**, reaching as far as Alexander can see, and at its native E-Rank requiring that he see it. **Its ladder relaxes the sense, not the reach, and that is what keeps it a ladder.** The shape first proposed - *vision or sound* at the baseline - was rejected on arithmetic rather than taste: it would hand the baseline **Arcing** (D), which already sells a known position where a clear line was required, and **Homing** (A), which already sells a target perceived by any means. That leaves two Ranks granting nothing on a skill whose magnitude ladder 1.56 had **already** measured at nothing. **Alexander holds *Arcing* today**, granted at `EVT-000395` one Event earlier, so the change would have emptied a category he had held for a single Event.
+
+**A gap in the test is recorded rather than left to be rediscovered.** `tools/test_rank_dominance_law.ps1` verifies that a thin magnitude ladder *carries* categories; it does not verify that a category grants what the Rank beneath cannot, so a redundant rung passes green. **That is the same hole 1.56 found in the *magnitude only* rows, one layer up.**
+
+**Neither skill crosses a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall**, on the clause Dimensional Projection's *Past the wall* already uses.
+
+**What Alexander takes.** Nothing he did not have. Rupture still deals **299** for 9 Mana and Mana Bolt **98** for 5, unchanged from `EVT-000395`; both skill lines re-render to carry a range they were always played at. No pool, Stat, level, XP, mastery level, use count, item, or resolved outcome moves, and no ascension offer opens."
 ```

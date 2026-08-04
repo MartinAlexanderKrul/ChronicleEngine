@@ -37,6 +37,35 @@ $failures = [System.Collections.Generic.List[string]]::new()
 
 $ranks = @("E", "D", "C", "B", "A", "S")
 
+# Every Markdown table in the profile must have a consistent column count.
+#
+# This is here because a hand edit to the Section 7.3 ladders silently produced
+# two malformed tables and every gate passed: five A-Rank cells were appended to
+# the WRONG table (the first regex match won, hitting the Starting Skill Table
+# and the Ratified Earned Techniques table instead of the scope ladder), so the
+# scope ladder had no A column at all while two unrelated tables carried
+# A-Rank prose in a phantom sixth cell. Flash Step separately kept a stale
+# "Open question" cell after its A rung was authored. Nothing noticed: the
+# repository validator does not read table shape, and a ladder row with the
+# wrong arity still parses as prose.
+$tableLine = '(?m)^\|(?!-).*\|[ \t]*$'
+$lines = $profile -split "`r?`n"
+$tableStart = -1
+$expected = 0
+for ($i = 0; $i -lt $lines.Count; $i++) {
+    $line = $lines[$i]
+    if ($line -match '^\|' -and $line -match '\|[ \t]*$') {
+        $count = ($line.Trim().Trim('|') -split '\|').Count
+        if ($tableStart -lt 0) { $tableStart = $i + 1; $expected = $count; continue }
+        if ($line -match '^\|[\s:-]+\|[\s:|-]*$') { continue }   # separator row
+        if ($count -ne $expected) {
+            $failures.Add("Profile line $($i + 1): table row has $count columns against the header's $expected -- '$($line.Substring(0, [math]::Min(60, $line.Length)))'") | Out-Null
+        }
+    } else {
+        $tableStart = -1
+    }
+}
+
 # The Rank baseline table is read from the profile, never restated here -- a
 # second copy of a number that must agree is how F-013 happened.
 if ($profile -notmatch '(?m)^\| Rank baseline \|(?<row>.+)\|\s*$') {

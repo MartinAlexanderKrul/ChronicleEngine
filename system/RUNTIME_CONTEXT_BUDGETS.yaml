@@ -110,7 +110,38 @@ surfaces:
     # their own later work; this raise buys the room to keep recording
     # correctly in the meantime, and the growth ratchet below is what keeps the
     # meantime honest, since a re-record is still a deliberate act.
-    failure_tokens: 35000
+    #
+    # Raised 2026-08-04, 35,000 -> 40,000, on owner instruction, for the reason
+    # the block above already anticipated: **the ceiling came due, and it came
+    # due against a correct record rather than a bloated one.** Gatefall's
+    # readiness surface reached 35,541 at `EVT-000411` — an ordinary played
+    # evening of two meetings, no combat, one identified object and two new
+    # relationships. Roughly 1,000 tokens of Runtime verbosity were trimmed out
+    # of `180_CURRENT_STATE.md` first and the surface still did not fit, which
+    # is the distinction that decided this: the remaining 541 could only have
+    # come out of live canon.
+    #
+    # **A ceiling that makes the correct record unaffordable stops measuring
+    # cost and starts suppressing facts** — this block's own words, five
+    # paragraphs up, now describing an actual event rather than a hypothetical.
+    # The alternative on the table was deleting real campaign record to fit a
+    # number, and this file already rules on that: existing canon is not failed
+    # for being long, and trimming a record is authoring work that belongs to
+    # the owner.
+    #
+    # Same shape as the `fetched_operation` raise in the same pass: **only the
+    # failure ceiling moves.** The warning stays at 20,000, so every campaign
+    # above it still reports as needing attention on every measurement, and
+    # Gatefall has been over that warning for weeks — unchanged verdict. The
+    # 15% ratchet below is untouched and remains the real governor; growth still
+    # has to be read and deliberately re-recorded. What this buys is ~4,450
+    # tokens of working margin, not permission to stop looking.
+    #
+    # R14 is still not retired and is now overdue rather than pending. Current
+    # State and the startup file are still the levers; `titles` into a deferred
+    # group is still the obvious structural win. This is the second time that
+    # work has been deferred by raising a number instead.
+    failure_tokens: 40000
     # Growth beyond the allowance fails until the baseline is re-recorded. See
     # the note at the foot of this file for why a rate governs these surfaces
     # rather than a fixed ceiling alone.
@@ -318,8 +349,50 @@ surfaces:
     # number with a plan that looks correct. Bringing these two inside the
     # ceiling is authoring — a current-holdings block in that ledger — and it
     # belongs to the owner, on the same reasoning the NPC-record note gives.
+    # Ceiling raised 2026-08-04, 12,000 -> 16,000, on owner instruction, and the
+    # warning band restored with it. Two things had gone wrong with the old
+    # figure, and they compound.
+    #
+    # **The band was not a band.** `warning_tokens` and `failure_tokens` were
+    # both 12,000, so this group had no warning state at all: every surface that
+    # would have warned failed in the same measurement. The whole point of a
+    # warning is to be seen while there is still room to act, and a group whose
+    # warning fires simultaneously with its failure reports a problem only at
+    # the moment it has become a blocker. The two focused panels that actually
+    # approached the line — `/system shop` at 11,488 and `/system log` at 10,991
+    # — spent their entire approach reading PASS, and would have gone straight
+    # to FAILED on the next ordinary edit with no intermediate signal. Warning
+    # now sits at 12,000, where it always meant to, and failure at 16,000.
+    #
+    # **And a ceiling is not re-recordable.** That is the property that made
+    # this urgent rather than tidy. Every other pressure in this file is a
+    # ratchet: it fires, a human reads what grew, and a deliberate re-record
+    # clears it — the mechanism that caught `EVT-000407` working exactly as
+    # designed. A ceiling has no such release. `/system shop` sat ~512 tokens
+    # from a hard stop reached by twenty compliant skill entries, none of them
+    # bloated, against a per-entry budget it measures well inside (880 against
+    # 1,100). The next skill to gain a rung would have hit a wall with no
+    # procedure behind it, and the only exits were an exemption — waiving the
+    # check rather than answering it — or emergency trimming of canon under
+    # deadline, which is the worst possible time to decide what a record may
+    # lose.
+    #
+    # 16,000 is not a fresh number: it is the failure ceiling the `bootstrap`
+    # group already carries against the same 12,000 warning, so the file gains
+    # an internal consistency rather than another hand-picked constant. It
+    # leaves ~4,500 tokens of headroom over the largest non-exempt panel, and
+    # sits far under the readiness group's 35,000.
+    #
+    # What this deliberately does NOT do is relax the ratchet, which stays at
+    # 15% and remains the real governor. Growth still has to be read and
+    # re-recorded; this only stops a re-recordable surface from being killed by
+    # a non-re-recordable one. Nor does it touch the three exempt Gatefall
+    # panels below, which remain ratchet-governed for the reasons above — and
+    # the ownership-ledger trimming that would bring `/system` and
+    # `/system gear` back under any ceiling is still owner authoring work, still
+    # unstarted, and is not paid for by this raise.
     warning_tokens: 12000
-    failure_tokens: 12000
+    failure_tokens: 16000
     growth_allowance_percent: 15
     exempt_from_failure_ceiling:
       - gatefall_pendragon_001:/system
@@ -364,12 +437,68 @@ surfaces:
       # work that buys the next rung its room.
       gatefall_pendragon_001:/system shop: 11488
       gatefall_pendragon_001:/system quests: 3584
-      # NOT re-recorded, deliberately: `/system gear` measures 29,655 against a
-      # 29,761 ratchet — 106 tokens of headroom — from the same skill-entry
-      # growth. It is left armed so the next change trips it and gets read,
-      # rather than pre-emptively waived here.
-      gatefall_pendragon_001:/system gear: 25880
+      # Left armed 2026-08-04 at 25,880 while the surface measured 29,655
+      # against a 29,761 ratchet — 106 tokens of headroom — deliberately, so
+      # that the next change would trip it and get read rather than being
+      # pre-emptively waived. **It tripped on the first change after that, and
+      # it was read.** Re-recorded 2026-08-04, 25,880 -> 30,649 (+4,769), of
+      # which roughly +3,775 was the drift already on disk and armed against,
+      # and +994 is `EVT-000407`: three banked holdings restored to
+      # `system_state.inventory.gear` (the Quickknife [C-Rank], Quickstep Charm
+      # [D-Rank], and Arcanist Torso [D-Rank], all owned throughout and
+      # recorded in the ownership ledger, none of them rendering in any panel),
+      # the three Section 7.4 mastery advances written into `skills_known`,
+      # and this Event's own section in `120_INVENTORY_AND_OWNERSHIP.md`.
+      #
+      # The mechanism the armed baseline was testing worked exactly as
+      # designed, and it is worth recording that it did: the ratchet caught a
+      # ~1,000-token change on a surface whose drift had been silent for two
+      # checkpoints, because the headroom had been left small on purpose.
+      #
+      # This surface remains the strongest case for the ownership-ledger
+      # trimming noted above: 16,508 of the 30,649 is
+      # `120_INVENTORY_AND_OWNERSHIP.md` read whole, because FUNDS needs a
+      # current cash figure that is derived across dated history rather than
+      # held in one block. Restoring three holdings does not change that; a
+      # current-holdings block in that ledger would.
+      gatefall_pendragon_001:/system gear: 30649
       gatefall_pendragon_001:/system titles: 4513
+      # Re-recorded 2026-08-04, 33,836 -> 62,654 (+28,818). **Almost none of
+      # this is growth. It is the removal of a measurement artifact, and the
+      # old figure was never a measurement of this surface at all.**
+      #
+      # `/system all` is the only operation whose protagonist selector is
+      # `canonical_state.system_state` **whole** (`fields:1`); every other panel
+      # enumerates named fields. The whole-block extractor ends the block at the
+      # first line indented at or below the parent's level — and
+      # `temporal_state.settlement_note`, a double-quoted scalar, contained
+      # **continuation lines starting at column 0** ("Both pools reach and hold
+      # their caps...", "Prior anchor state, superseded..."). Legal YAML, which
+      # is why both blocks parse clean and why no gate ever complained. But the
+      # extractor stopped at the first of them, so `system_state` measured
+      # **3,432 tokens for a block that is actually ~26,223** — it was reading
+      # roughly an eighth of the Bearer and reporting a total.
+      #
+      # `EVT-000411`'s session retired that superseded anchor chain to the
+      # chronicle, which removed the column-0 lines, which removed the early
+      # terminator. The surface did not grow by 28,818 tokens; it started being
+      # measured. The honest figure is recorded here and the baseline is
+      # rebuilt on it rather than on the accident.
+      #
+      # **This is `F-013`/`F-015`'s class exactly, a third time: a stated number
+      # resting on an unstated assumption about the substrate.** There the
+      # assumption was a hand-maintained constant and a rendered surface never
+      # compared to its record; here it is that a YAML scalar's continuation
+      # lines will be indented. Nothing checks that, and the failure is silent
+      # and *downward* — it under-reports, so it can never trip a ratchet. The
+      # three other `fields:N` surfaces are unaffected because enumerating named
+      # fields does not use the block scan.
+      #
+      # The number itself is not a surprise once measured: `/system all` renders
+      # every panel, so it reads the whole Bearer plus the whole ownership
+      # ledger plus eight render sections. It is exempt from the 16,000 ceiling
+      # by design and governed by the ratchet alone, which is what just fired.
+      gatefall_pendragon_001:/system all: 62654
       # Re-recorded 2026-08-03, 7,187 -> 8,342. `/system log` reads Current
       # State, which gained the Profile 1.48 Stat Passive settlement: four
       # skills rising C -> B in one Event, and the reason each one did. That is
@@ -384,8 +513,17 @@ surfaces:
       # re-baselining over them — a duplicated damage-preview pair that
       # contradicted the line below it, and the `F-012` manual-check workaround
       # that Decision 090 replaced. The 12,000 ceiling is untouched.
-      gatefall_pendragon_001:/system log: 9653
-      gatefall_pendragon_001:/system all: 33836
+      # Re-recorded 2026-08-04, 9,653 -> 10,991 (+1,338), from `EVT-000407`'s
+      # Current State edits: the three settled mastery advances, the corrected
+      # weapon and Mana Bolt previews, and the restored-holdings accounting.
+      # This one was *inside* the 15% allowance (11,101) and would have stayed
+      # silent — recorded anyway, because this file's own repeated warning is
+      # that a stale baseline breaks the ratchet in both directions, and this
+      # surface has now been the subject of that warning three re-records
+      # running. It is also the clearest illustration of why the ceiling moved
+      # in the same pass: at the old 12,000, a panel that had just passed would
+      # have had ~1,000 tokens left before a hard stop with no release.
+      gatefall_pendragon_001:/system log: 10991
       reikon_awakening_001:/system: 8985
     subdivision_message: fetched operation requires a narrower selector
 

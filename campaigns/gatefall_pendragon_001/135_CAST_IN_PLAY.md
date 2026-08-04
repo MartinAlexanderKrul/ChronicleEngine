@@ -61,7 +61,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000176` | Callie Dunmore | D-Rank hunter, flex striker | active | 4110 W Fullerton, Chicago — the confirmed D-Rank Gate site | — |
 | `ENT-000177` | Elias Ward | surplus and pawn seller | active | an unnamed surplus/pawn shop in Chicago's warehouse district | — |
 | `ENT-000181` | Corinne Whitlock | leasing agent | active | the Rogers Park two-bedroom listing, second-floor front | — |
-| `ENT-000182` | Reyna Castillo | striker | active | Chicago | — |
+| `ENT-000182` | Reyna Castillo | striker | active | Chicago | `REL-000095` |
 | `ENT-000183` | Petra Nowak | salvage dealer / informant | active | Ferro's Reclamation | `REL-000087` |
 | `ENT-000184` | Marcus Whitlow | striker | active | Chicago | `REL-000088` |
 | `ENT-000185` | Soraya Delgado | ranged support | active | Chicago | — |
@@ -78,13 +78,13 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000200` | the freight yard off Ashland | private rentable yard | active | Off Ashland, roughly fifteen minutes from Walt Adamik's shop in… | — |
 | `ENT-000201` | Glenwood Garden and Feed | garden and feed store | active | Glenwood Avenue, Rogers Park, Chicago — eight blocks north of E… | — |
 | `ENT-000202` | Halvard's | diner | active | Three blocks west of Edgewater Hospital, Chicago. | — |
-| `ENT-000203` | Priscilla Nakamura | artificer | active | Unestablished. Wade contacted her by message only | — |
+| `ENT-000203` | Priscilla Nakamura | artificer | active | **Her workshop — a flat brick front on a side street off LaSall… | `REL-000096` |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.0`.
-- Entities: 56. Protagonist relationships: 15.
+- Entities: 56. Protagonist relationships: 17.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

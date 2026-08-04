@@ -14,9 +14,9 @@ canonical_record: REC-000081
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000388
+  source: EVT-000389
   game_date: "2026-08-15 06:00 -05:00"
-  real_date: "2026-08-03"
+  real_date: "2026-08-04"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -102,7 +102,7 @@ Then, at Halvard's (`ENT-000202`), **Alexander told him a deliberately shortened
 
 ## Open Threads
 
-- **Owen believes two things about the trial that are not true, and knows he might be being managed** (`EVT-000382`). He holds that Wade withheld that the Gate was live, and that the worst moment was survivable-and-prepared-for rather than Health at 0. He named the evasion to Alexander's face and **deferred the conversation rather than accepting it** — three rows are in the Closed Channels table. This reopens the moment Alexander answers it, or the moment Wade or one of the four trial hunters says something in his hearing.
+- **Owen was told the truth about the job and a short version of the danger** (`EVT-000382`, corrected at `EVT-000389`). What he holds about the trial is **accurate** — it was a harvest job, and Wade did not tell him the strike line would run at half the legal roster. **The one omission is the near-death:** he was told *closer than I liked, and I was prepared for it* where canon is Health from full to 0, held by Shrug Off. He named that as evasive to Alexander's face and **deferred the conversation rather than accepting it**. It reopens when Alexander answers it, or when Wade or one of the four trial hunters says something in his hearing — and all four are at Monday's training.
 - **The unfiled Ironline report is in Alexander's inventory** — documentary evidence of a falsified roster, taken with Wade's knowledge and no discussion of what happens next. Whether Wade can still file is unestablished.
 - **`OBJ-28` is live and standing:** every hunter who refuses a Wade Bishop pitch, name plus read, same day. Nothing owed yet.
 - **Priscilla Nakamura (`ENT-000203`) is a second, licensed artificer route** that does not require finding Marnie first — the first movement on the Dormant Core [S-Rank] since 2026-08-11. Window owed today; nothing has been shown or named to her.
@@ -124,7 +124,7 @@ Then, at Halvard's (`ENT-000202`), **Alexander told him a deliberately shortened
 
 ## Promotion Status
 
-**Live canon is promoted through `EVT-000388`.** Since Checkpoint 0067, `EVT-000379`-`EVT-000388`: the seed purchase, Wade's call, Edgewater and Halvard's, the walk home, the lot meeting, the run and loadout swaps, the night, the twenty-second daily, and the barrier settlement. **Zero skill activations and zero counter movement across the entire span** — the only die was `EVT-000380`'s failed compression. Cash $43,129.60→$42,936.50; gold, XP, level, base Stats, and unspent points all unchanged. New identifiers: `ENT-000201`-`ENT-000203`, `EVT-000379`-`EVT-000388`. No new `REL-`.
+**Live canon is promoted through `EVT-000389`** — `EVT-000389` is a post-checkpoint audit correcting `EVT-000382`, written after Checkpoint 0068 and therefore **not in it**; the checkpoint holds the defect as captured. Since Checkpoint 0067, `EVT-000379`-`EVT-000388`: the seed purchase, Wade's call, Edgewater and Halvard's, the walk home, the lot meeting, the run and loadout swaps, the night, the twenty-second daily, and the barrier settlement. **Zero skill activations and zero counter movement across the entire span** — the only die was `EVT-000380`'s failed compression. Cash $43,129.60→$42,936.50; gold, XP, level, base Stats, and unspent points all unchanged. New identifiers: `ENT-000201`-`ENT-000203`, `EVT-000379`-`EVT-000388`. No new `REL-`.
 
 **Prior spans, all promoted and checkpointed — index only; the chronicle holds the detail.** Checkpoint 0067 promoted through `EVT-000378` (`EVT-000370`-`EVT-000376` play, `EVT-000377` the checkpoint audit, `EVT-000378` Profile 1.51). Checkpoint 0065 promoted `EVT-000355`-`EVT-000361`, the out-of-character System block — first title loadout, 56 points spent, streak box, 44 crystals sold, Premium rotation — with zero skill activations. Checkpoint 0064 and earlier promoted `EVT-000338`-`EVT-000354`, the B-Rank trial through Loomis Street: Levels 14→21, System Rank D→C, `ENT-000194`-`ENT-000197` and `REL-000090`-`REL-000093` minted, Profile 1.47 adopted with both retroactive Title Assessments.
 

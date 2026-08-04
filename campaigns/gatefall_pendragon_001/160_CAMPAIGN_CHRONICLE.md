@@ -351,6 +351,7 @@ subjects:
   - EVT-000386
   - EVT-000387
   - EVT-000388
+  - EVT-000389
 ```
 
 ---
@@ -10739,12 +10740,14 @@ participation_audits:
     record: REL-000066
 description: "**Halvard's** (`ENT-000202`), a narrow Scandinavian diner three blocks west of Edgewater Hospital that Owen picked for the specific reason that hospital staff eat there and do not talk there. Owen ordered meatballs without opening the menu; Alexander waved off the pork the waitress suggested and took something else.
 
-**What Alexander actually told him, and what he did not.** He gave the trial's shape honestly — the swarm's numbers, the boss, the chokepoint read that held the line, the coordinated kill on the burrower, the S-Rank dagger's first use in a fight, **System Rank C** carried out of it, and the Gate itself confirmed **B-Rank**. He made two deliberate departures from the record:
+**What Alexander actually told him, and what he did not.** He gave the trial's shape honestly — the swarm's numbers, the boss, the chokepoint read that held the line, the coordinated kill on the burrower, the S-Rank dagger's first use in a fight, **System Rank C** carried out of it, and the Gate itself confirmed **B-Rank**.
 
-1. **His own reason for entering.** He told Owen he went in expecting a mining job and that **Wade had not told him the Gate would be live** — that he intended to observe and read for four other hunters. The canonical record is `EVT-000338`-`EVT-000339`: Alexander entered the Gate's mouth **alone, over Wade Bishop's stated objection**, at a confirmed B-Rank harvest trial he had negotiated for since 2026-08-04.
-2. **The near-death.** He compressed the moment Health went **from full to 0** in a single exchange (`EVT-000340`) into *'took a real hit — closer than I liked,'* framed as prepared-for and already filed, explicitly *'not like the Ashfield thing.'* Shrug Off's first-ever threshold absorption was not mentioned at all.
+**CORRECTED AT `EVT-000389`.** This Event originally recorded *two* departures from the record. Only one survives audit.
 
-**This is authored player intent, not a Runtime slip.** The player declared the shaped account explicitly and out of character; the Player Agency Contract puts what the protagonist discloses inside the Player Intent Domain. It is recorded as a divergence between canon and **what Owen now believes**, not as a change to canon.
+1. ~~**His own reason for entering.**~~ **Not a departure — struck.** He told Owen he expected a mining job and that Wade had not told him it would be live, and that is substantially true: it **was** a B-Rank *harvest* trial whose vein chamber he entered and then mined for 104 crystals, the harvest element on every prior job in this campaign works behind a **secured** strike line, and that line failed here because the roster ran **4 combat-rated hunters against a legal minimum of 8** — which is precisely what Wade withheld (`ENT-000146`). Wade's objection at the Gate's mouth was to his going in **alone**, which is not a warning that the line would not hold. See `EVT-000389` for the full reasoning.
+2. **The near-death — this one stands.** He compressed the moment Health went **from full to 0** in a single exchange (`EVT-000340`) into *'took a real hit — closer than I liked,'* framed as prepared-for and already filed, explicitly *'not like the Ashfield thing.'* Shrug Off's first-ever threshold absorption was not mentioned at all.
+
+**This is authored player intent, not a Runtime slip.** The player declared the shaped account explicitly and out of character; the Player Agency Contract puts what the protagonist discloses inside the Player Intent Domain. The one surviving omission is recorded as a divergence between canon and **what Owen now believes**, not as a change to canon.
 
 **Owen did not swallow it whole.** He repeated *'Wade didn't tell you it was live'* back as a flat non-question, named *'closer than I liked'* as doing a lot of work in that sentence for a man who bought seed packets on the way over, and — when the B-Rank/System-Rank-C gap landed — did the arithmetic aloud and stopped himself before asking how far under it Alexander had been. He filed both rather than pressing, on the record: *'I'm going to want to have that one. Not tonight. But I'm not going to forget you said it either.'*
 
@@ -10985,4 +10988,44 @@ description: "Session-close settlement for the `EVT-000379`-`EVT-000387` span.
 **Pending world-side commitments carried forward, both from `EVT-000384`:** Wade Bishop owes a Nakamura scheduling window by **2026-08-15 evening (2026-08-16 at the outside)**, and the `OBJ-28` rejection pipeline is now standing with nothing due until his next pitch is turned down. Separately, the **Ironline guild decision** remains owed to Wade **today, 2026-08-15** (`OBJ-23`). `OBJ-26`'s two commitments — the training location and Soraya's gear question — were **already closed at `EVT-000373`** and are not outstanding; nothing is owed on the crew thread before Monday itself.
 
 **No pending-ratification candidates.** Anchor 2026-08-15T06:00:00-05:00. Checkpoint follows."
+```
+
+## EVT-000389 - Checkpoint 0068 Audited: One of the Two "False Beliefs" Was True
+
+```yaml
+id: EVT-000389
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-15 06:00 -05:00"
+  real_date: "2026-08-04"
+type: Event
+kind: ruling
+importance: moderate
+game_date: "2026-08-15 06:00 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "Player-instructed audit of Checkpoint 0068 immediately after it was written. **No fictional time passes, no pool moves, and no resolved outcome changes.** One defect, and it is a canon defect rather than bookkeeping: **`EVT-000382` recorded two divergences between canon and Owen Callahan's belief, and only one of them is real.**
+
+**The claim wrongly marked false: that Alexander expected a mining job and was not told the Gate would be live.** Read against `EVT-000339`, this is substantially accurate and should never have been flagged.
+
+1. **It was a harvest trial and he was the harvest element.** `EVT-000338`-`EVT-000339` establish a **B-Rank harvest trial** whose vein-chamber Alexander entered and then mined for 104 crystals (`EVT-000342`). Expecting to mine is not a fabrication; it is a description of the contracted work.
+2. **On every prior harvest job in this campaign the harvest element works behind a *secured* strike line** — Ada Reyes's C-Rank job, Sable & Kern at Halsted Depot, the Cicero Scar. That is the established shape of the arrangement, and it is what a harvest element is entitled to assume.
+3. **That line did not hold because the roster was half-strength** — 4 combat-rated hunters against Section 9.4's legal minimum of 8 (`EVT-000345`, `110_WORLD_LEDGER.md`). A swarm-common loose in the vein chamber is a direct consequence of an understaffed line.
+4. **Wade Bishop's own record already says he withheld exactly this** (`ENT-000146`): he 'pitched the recruitment honestly on its selling points while withholding how Ironline's own guild-held Gates actually get staffed.' His objection at the Gate's mouth was to Alexander entering **alone**, which is not a warning that the strike line would fail.
+
+**What was mistaken for a contradiction.** `EVT-000339` records Alexander entering the Gate's mouth alone over Wade's objection, and the audit read that as contradicting 'I expected a mining job.' It does not. Entering alone is a statement about *how he went in*; expecting to mine is a statement about *what the job was*. Both are true simultaneously, and whether he privately intended to fight is interior state inside the Player Intent Domain, which the Runtime does not author either way.
+
+**The claim that remains genuinely edited, unchanged by this ruling:** the near-death. Canon is **Health from full to 0 in a single exchange** (`EVT-000340`), held only by Shrug Off's first-ever threshold absorption; Owen was told *'a real hit, closer than I liked… I was prepared for that,'* explicitly framed as unlike Ashfield, with the absorption unmentioned. That is a real omission, Owen named it as evasive to Alexander's face, and it stands.
+
+**Repairs made to live state.** The second Closed Channels row (Owen having no channel to Alexander entering alone over Wade's objection) is **struck rather than dated** — it recorded a closure over a fact that was never misrepresented, so there is nothing for it to close. `ENT-000139`'s knowledge block, `EVT-000382`'s own description, and `180_CURRENT_STATE.md`'s Open Threads are corrected from two false beliefs to one. **Checkpoint 0068 is immutable and is not rewritten**; it holds the defect as captured, exactly as `EVT-000377` handled Checkpoint 0066's.
+
+**A Runtime failure is recorded alongside it.** The audit that produced the error asserted a contradiction from a one-line summary of `EVT-000339` rather than from the Event itself, and then wrote that assertion into four ledgers plus a checkpoint. Grounding governs the Runtime's own claims about canon exactly as it governs an NPC's — and the player, who was there for the scene, was the only party holding the correction."
 ```

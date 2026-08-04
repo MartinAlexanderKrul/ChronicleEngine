@@ -13,9 +13,9 @@ canonical_record: REC-000080
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000388
+  source: EVT-000389
   game_date: "2026-08-15 06:00 -05:00"
-  real_date: "2026-08-03"
+  real_date: "2026-08-04"
 role: canonical ledger
 scope: campaign
 subjects: []
@@ -24,6 +24,9 @@ subjects: []
 ---
 
 ## Changes
+
+**2026-08-15 06:00 - Checkpoint 0068 audited: one of the two "false beliefs" was true (`EVT-000389`).**
+Player-instructed audit immediately after Checkpoint 0068 was written. **No fictional time, no pool, no resolved outcome changes.** `EVT-000382` had recorded **two** divergences between canon and Owen's belief; **only one survives.** The struck one — *"I expected a mining job and Wade didn't tell me it would be live"* — is substantially **true**: it **was** a B-Rank **harvest** trial whose vein chamber Alexander entered and then mined for 104 crystals; the harvest element works behind a **secured** strike line on every prior job in this campaign (Ada, Sable & Kern, Cicero Scar); that line failed here because the roster ran **4 combat-rated hunters against a legal minimum of 8**; and Wade's own record already states he *"pitched the recruitment honestly on its selling points while withholding how Ironline's own guild-held Gates actually get staffed."* His objection at the Gate's mouth was to Alexander going in **alone** — not a warning that the line would not hold. Entering alone and expecting to mine are not contradictory: one describes how he went in, the other what the job was. **The near-death omission stands** — Health full to 0 in one exchange (`EVT-000340`), held by Shrug Off's first threshold absorption, told as *"closer than I liked… I was prepared for that."* Repairs: one Closed Channels row **struck rather than dated** (it closed a channel over a fact never misrepresented), plus corrections to `ENT-000139`'s knowledge block, `EVT-000382`'s own description, `REL-000066`, and `180_CURRENT_STATE.md`. **Checkpoint 0068 is immutable and holds the defect as captured**, exactly as `EVT-000377` handled Checkpoint 0066's. **Runtime failure recorded alongside:** the audit asserted a contradiction from a one-line summary of `EVT-000339` rather than from the Event itself, then wrote it into four ledgers and a checkpoint — grounding governs the Runtime's own claims about canon exactly as it governs an NPC's. Registry allocation: `EVT-000389`.
 
 **2026-08-15 06:00 - Promotion barrier settlement, the evening-through-dawn span (`EVT-000388`).**
 Closes `EVT-000379`-`EVT-000387`. **Zero skill activations across the entire span**, re-counted from resolved actions and the Mana/resource trace: the only die was `EVT-000380`'s failed thirty-minute compression, a social/logistical resolution. Every pool movement in the span is passive recovery. **`gatefall.skill_formation`: explicit `none`** — no dangerous scene closed, and the two candidate-shaped moments (the run home, the edited disclosure) were tested on their own terms against §7.1 and neither qualifies. **`gatefall.quest.urgent`: no offer** — §8.4.2 criterion 1 never met, no crisis threatened anyone. **`gatefall.quest.hidden`: no attachment** — both pointers stay attached and unrevealed, slots 2/4. **`gatefall.board.deadline`:** settled silently, no change. No pending ratifications. Anchor **2026-08-15T06:00:00-05:00**.

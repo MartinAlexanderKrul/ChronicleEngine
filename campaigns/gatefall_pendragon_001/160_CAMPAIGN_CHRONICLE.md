@@ -398,6 +398,14 @@ subjects:
   - EVT-000433
   - EVT-000434
   - EVT-000435
+  - EVT-000436
+  - EVT-000437
+  - EVT-000438
+  - EVT-000439
+  - EVT-000440
+  - EVT-000441
+  - EVT-000442
+  - EVT-000443
 ```
 
 ---
@@ -13117,4 +13125,345 @@ description: "Full skill-counter reconciliation for the `EVT-000428`-`EVT-000434
 **Full kill ledger reconciled against the live in-session XP tracking, confirming it:** 5 commons `EVT-000428` = 300; elite + boss `EVT-000429` = 680; 6 commons `EVT-000431` = 360; elite `EVT-000432` = 120; boss `EVT-000433` = 560; 7 commons `EVT-000434` = 420 — **total 2,440 XP earned this span.** `1,205+2,440=3,645`, crossing exactly one threshold: 22→23 at 2,200 (`EVT-000431`, mid-cluster), remainder `3,645-2,200=1,445` into the 2,300 bar for 23→24 — **not reached.** The live session total (1,445/2,300, Level 23) already reflects this correctly; an earlier attempt at this same reconciliation mis-summed the span to 2,500 and wrongly claimed a second crossing to Level 24. **Final, confirmed: Level 23, XP 1,445/2,300, unspent points 5** (the one level-up's grant, ungranted-allocated).
 
 No further identifiers minted. New high-water mark **EVT-000435**."
+```
+
+---
+
+## EVT-000436 - Dimensional Projection, and a Method Nobody Wrote Down
+
+```yaml
+id: EVT-000436
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: dangerous-scene-settlement
+importance: major
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: evidence-recorded
+    candidate: dimensional_weapon_control
+    scene: penalty-zone-materialized-dagger-openers
+    disposition: qualifying
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: evidence-recorded
+    candidate: applied_analytical_reconstruction
+    scene: loomis-street-camera-cone-geometry
+    disposition: qualifying
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: evidence-recorded
+    candidate: applied_analytical_reconstruction
+    scene: cicero-scar-core-block-structural-read
+    disposition: qualifying
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+participation_audits:
+  - subject: ENT-000125
+    result: no-change
+description: "Player-instructed retroactive skill-formation audit across every promoted Event of the campaign, run at the 2026-08-16 evening anchor immediately after Checkpoint 0075. **No fictional time passes, no pool moves, no scene occurs, and no past exchange is re-resolved.** Two findings, both settled here; every other `none` in the record was re-read and holds.
+
+**The scan itself is outside the Runtime's ordinary duty and is recorded as such.** Section 7.1 scopes formation reconciliation to *'a bounded session reconciliation, never a scan of older chronicles or checkpoints.'* This is an owner-directed audit that deliberately exceeded that bound, and its repairs go **forward** as this Event on the `EVT-000389`/`EVT-000390`/`EVT-000406` precedent. No promoted Event and no immutable checkpoint is edited; every one of them holds its defect exactly as captured.
+
+**Finding A — `dimensional_weapon_control` was already at 3/3 and had been since 2026-08-08.** The candidate has sat `tracking` at 2/3 since the `EVT-000131` historical settlement, on `EVT-000069` (the private summon-and-grip drill) and `EVT-000070` (the Ashfield pocket-swap feint). Its third scene is the **sealed penalty-zone survival instance** of 2026-08-08 — the four-hour System-imposed instance at real death, cleared solo in roughly twenty-five minutes — where two kills opened on a **materialized-dagger strike**: `EVT-000195`, a Rupture opener on the first common (🎲 d100 52, net +3, effective 100, legendary, one-shot, no alarm raised), and `EVT-000197`, the second elite ambushed on a throat seam (🎲 d100 58, net +3, effective 100, critical, one-shot at 230 against a 200 pool). Both are the weapon arriving out of the dimensional inventory **into** a committed strike rather than being held before it.
+
+**Why this qualifies, against the five tests rather than against impression.** Deliberate — the materialization is the declared delivery, not narrator dressing. Repeatable signature — it matches `instant-withdrawal.mid-motion.weapon-line-change-or-release` on tools, sequence and payoff. Distinct capability — Section 7.2's own Dimensional Projection entry says outright that *'practicing hand summons, grip changes, immediate releases, and throws **can** establish formation evidence'*, which is the profile naming this conduct as formation-bearing rather than as Section 12.9's bare inventory property. Material success — two one-shot kills under genuine danger. Distinct scene — the penalty-zone instance is one continuous danger and therefore contributes **once**, not twice, which is all the candidate needed.
+
+**Why it read `none` at the time, stated rather than glossed.** Both Events are filed `kind: promotion`, which is not a settlement kind under this profile's own trigger manifest, so no `dangerous-scene-settlement` ever evaluated that instance's notes. The same misfiling class as `EVT-000327`/`EVT-000332`, arriving on the formation gate instead of the skill-credit one. Recorded against `F-015`.
+
+**Ratified automatically, and the automatic path is the rule rather than a courtesy.** `dimensional_weapon_control` is one of this profile's declared `pre_authored_result_keys` (Section 14.3's trigger manifest), and Section 7.1 requires that a candidate whose complete result is already authored *'must not pause in `pending-ratification`'*. No owner adjudication queue opens and none is owed.
+
+**Dimensional Projection [E-Rank], Novice** — 6 Mana. Withdraw one owned, portable weapon into a visible, unoccupied point within **5 metres** and immediately launch it at one perceived target as a named offensive action; one ranged physical strike, Agility to hit, the ordinary Bearer physical-damage formula. Deployment needs unobstructed line of sight from Alexander and a clear physical path to the target; it cannot place a weapon inside a creature, object, barrier, worn equipment or occupied space, cannot cross a sealed barrier, and cannot target a location he cannot perceive. The launched weapon is a real object afterward and stays where the fiction puts it until recovered. A stored weapon contributes no equipped Stat bonus to the action. It occupies the action's offensive active-skill position and cannot combine with Rupture, Twin Fang, a split dual strike, or another offensive active skill; its remote withdrawal is that exchange's one inventory change. Mastery extends range **5 / 7 / 10 / 15 / 20 m** and Mana runs **6 / 5 / 5 / 4 / 4**; a successful use records only when the projected strike lands and materially contributes, one mastery point per qualifying scene. It carries a `magnitude_floor` from ratification per Section 7.2.
+
+**Counters initialize at zero with this Event as baseline.** Section 7.1: *'Pre-ratification evidence establishes acquisition only and never backfills post-acquisition successful-use or mastery counters.'* The 2026-08-08 kills bought the acquisition and nothing else — no use, no scene, no mastery is carried forward from them.
+
+**What did not change.** No Mana was spent here, no strike was re-resolved, and nothing in the past becomes a Dimensional Projection use retroactively. Section 7.2's pre-skill boundary held for every exchange before this Event: hand delivery only, no remote placement, no launch. The technique is live from this Event forward.
+
+**Finding B — a candidate that should have existed since 2026-08-14 and never did.** Twice, Alexander has resolved a problem by applying his **trained mathematics-and-physics background as the declared method, explicitly instead of a System skill**, each time taking the +1 modifier step for a directly relevant established capability: `EVT-000372`, plotting the four Loomis Street cameras' mounting points and sweep cones by hand (🎲 d100 69, effective 89, strong success) and finding a real four-foot blind spot along the north wall that the parked van was already sitting on — which materially reframed the site from *professional security* to *staffed to cover its own blind spot*; and `EVT-000398`, a structural read of the Cicero Scar's unreclaimed core blocks (🎲 d100 88, strong success) establishing that the sublevel is unreachable without an inner-cordon survey posting.
+
+**No candidate was ever opened, and the two settlements that should have opened it said the opposite.** `EVT-000376` classified the `EVT-000370`-`EVT-000375` span without mentioning `EVT-000372` at all. `EVT-000405` classified `EVT-000398`-`EVT-000404` with *'No new repeatable method appeared this span that isn't already a ratified skill'* — which is not true of a read the Event itself describes as physics/math-trained rather than a skill. Section 7.1 requires the **first** qualifying occurrence to create a `tracking` candidate with a stable key and signature; the first was over two in-fiction days before the second and neither landed.
+
+**Opened here at 2/3, not ratified.** Key `applied_analytical_reconstruction`, signature `apply-formal-physical-or-geometric-training.reconstruct-unobserved-structure-or-coverage.act-on-the-derived-finding`. It is genuinely two scenes against Section 7.1's threshold of three, this profile authors no complete result for it, and the campaign is not permitted to ratify a candidate one scene short merely because the shape of the technique is already clear. **A third qualifying scene opens the mandatory Section 7.1 adjudication queue**, where the owner authors and names it.
+
+**Every other `none` in the record was re-read and holds.** `EVT-000417`'s Owen training instance is live tactical relay and therefore Field Command's ratified effect — `EVT-000418`'s reasoning stands and `formation_instruction` holds at 2/3. `EVT-000343`'s feigned fatigue passed under casual notice rather than the direct real-time scrutiny `pretext_and_cover`'s signature names, and `EVT-000382`'s shaped account of the trial failed on its face when Owen refused it — that candidate holds at 2/3. `EVT-000139`'s pawnshop sleight-of-hand was correctly rejected in-Event as idle downtime outside Section 7.1's coverage set. `EVT-000071`'s mid-motion summon is the same continuous Ashfield danger as the already-credited `EVT-000070` and is capped by test 5. `EVT-000079`'s recall-and-strike fumbled on a natural 1 and fails test 4. `EVT-000339`'s S-Rank dagger equip is a Section 12.9 free equipment swap, which test 3 excludes as an equipment property. `nonvisual_combat_mapping` holds at 1/3 — the Crypt dungeons' darkness was answered with Keen Sense and Cartographer, not by replacing sight with air and sound.
+
+No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, or resolved die outcome changes. New high-water mark **EVT-000436**."
+```
+
+---
+
+## EVT-000437 - Profile 1.58: First Principles, Authored Before It Exists
+
+```yaml
+id: EVT-000437
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: profile-adoption
+importance: moderate
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+description: "Adoption of **Gatefall World Rule Profile 1.58**, a compatibility treatment over frozen 1.57, at the same 2026-08-16 evening anchor as `EVT-000436`. **No fictional time passes, no pool moves, no scene occurs, no stored value beyond `profile_version` changes, and nothing is granted.** Owner ruling, taken immediately after `EVT-000436` opened the candidate it concerns.
+
+**What `EVT-000436` left standing, and why it could not be left there.** That Event opened `applied_analytical_reconstruction` at 2/3 and declined to ratify it, correctly: Section 7.1's threshold is three and this profile authored no result for it. But those two facts together describe a **trap rather than a wait**. Section 7.1's mandatory adjudication gate says that when a candidate with no authored result reaches 3/3, the Runtime may answer rules questions and save but **may not roll, narrate an NPC action, advance in-world time, or begin the next scene** until the owner has authored and named the complete skill. The third scene would therefore land mid-session and stop play, and the technique would be authored under exactly the time pressure that produces a bad one.
+
+**The ruling is the one 1.55 already made for Dimensional Projection.** That edge authored a Rank ladder for a skill nobody had ever demonstrated, over the objection that an unformed skill should not carry rungs, on the ground that **the ladder is what makes the skill safe to form** — Twin Fang having been made ascension-eligible with no Rank axis at all, one ascension away from destroying 37.5% of its own damage. The same argument applies a step earlier, to the effect itself. 1.58 authors the complete result and adds `applied_analytical_reconstruction` to the profile's declared `pre_authored_result_keys`, so a third qualifying scene **ratifies automatically in its own settlement**, exactly as `dimensional_weapon_control` did at `EVT-000436`.
+
+**First Principles [E-Rank]**, passive, 0 Mana: **+1 modifier step on any action that reconstructs unobserved structure, coverage, or reach from observed geometry and physical law** — sightlines and sensor cones, load paths and structural extent, trajectory, span, and reachability.
+
+**It derives; it does not perceive, and that is what keeps it distinct from two skills Alexander already holds.** It never reveals what is *present* — Keen Sense's work, which costs Mana and reads a subject — and it establishes **no Pattern**, so it grants no standing exploit and occupies no Exploit Pattern slot. It answers *what must be true of this space, given what I can measure.* Its modifier does not stack with another derived from the same measurements. **A derivation resting on wrong or insufficient measurements is wrong**, and the die resolves that as it resolves anything else: the skill improves the reasoning, never the evidence.
+
+**Its mastery axis is authored rather than inherited, and that is Broken Rhythm's lesson applied on time.** A permanent passive at the Section 4.3 step cap has no multiplier, no reduction fraction, no duration to lengthen, and Mana 0, so Section 7.4's −10%-per-level rule is inert — **every closed-form axis inapplicable at once**, the exact state in which Broken Rhythm climbed to a live mastery level granting nothing at any of them, twelve qualifying scenes for no change (`F-014`). Mastery here grants **1 / 2 / 3 / 4 / 5 beneficiaries**: at Novice Alexander alone, each level extending the step to one further person he has walked through the derivation with, who acts on the finding as though he had reached it himself. It carries a `scope_floor`. Its Rank ladder joins the Section 7.3 **scope-axis** table — whose own criterion is a skill gaining a further subject and an authored category per Rank — with **Inference from absence** (D), **Mechanism** (C), **From secondhand measure** (B), and **Predictive** (A). It also takes a row in Section 7.4's per-skill mastery table, because that section states that a mastery-tracked skill without one is not finished.
+
+**What this does not do.** Nothing is granted. The candidate stays `tracking` at **2/3** on `EVT-000372` and `EVT-000398`, and **ratification still requires a third qualifying scene** under an unchanged threshold — this Event changes only what happens when one lands. No `skills_known` entry is written and no counter is initialized; First Principles exists on no ledger until a ratification Event creates it. Neither `EVT-000372` nor `EVT-000398` becomes a First Principles use, and no past roll is recomputed — pre-ratification evidence establishes acquisition only. Keen Sense and Exploit Pattern are untouched in effect, Rank, mastery, scope, and Mana cost; describing what First Principles is *not* restricts neither of them.
+
+`profile_version` advances 1.57 → **1.58** and is the only stored value this edge touches. Full transformation record at `worlds/gatefall/migrations/1.57_to_1.58.md`. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. New high-water mark **EVT-000437**."
+```
+
+---
+
+## EVT-000438 - Profile 1.59: The Half of the Pocket Dimension Nobody Wrote Down
+
+```yaml
+id: EVT-000438
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: profile-adoption
+importance: moderate
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+description: "Adoption of **Gatefall World Rule Profile 1.59**, a required migration over frozen 1.58, at the same 2026-08-16 evening anchor as `EVT-000436` and `EVT-000437`. **No fictional time passes, no pool moves, no scene occurs, no skill changes Rank or mastery, and no past exchange is re-resolved.** Player observation, taken on reading `EVT-000436`'s ratified skill back: **'the launched weapon stays where it lands' does not survive a Bearer who can store anything.** Correct, and the defect is larger than the sentence.
+
+**The pocket dimension's two directions were never symmetric, and only one was ever written down.** Section 12.9 bounds **withdrawal** explicitly — *to his own hand*, with remote destinations denied by name: an item cannot be summoned beside, behind, above, or inside a target, and cannot be launched from the pocket dimension. **Storage carried no stated bound at all**; its whole text was *he may send an item to the inventory … from anywhere*. Section 7.2 nonetheless asserted the pre-skill inventory was **hand-delivery only in both directions**, on the strength of a sentence Section 12.9 never wrote — and the play record had already contradicted it. **`EVT-000326` swept three crates *and a workbench* into the pocket dimension on a single roll**, which no hand-delivery reading supports.
+
+**The omission was load-bearing rather than cosmetic, which is why it is a required migration.** It was the only justification for Dimensional Projection's recovery cost, and therefore for whether the technique's **D rung granted anything at all**. *Recall* promised to end *the ordinary recovery cost of using the technique* — but if storage already worked at range, Alexander could do exactly that at native E-Rank for free, and the rung sold nothing. Section 7.2 defines a category as **a kind of thing the Rank beneath cannot do at any value of the governing Stat**; the old wording would have failed the Rank Dominance Law the instant anyone read the two sections together. Same defect class 1.57 recorded against Mana Bolt's ladder — a rung the tier below already covers — arriving this time through an **unstated** rule rather than a redundant one.
+
+**Storage now reaches what he perceives; withdrawal still reaches only his hand.** He may send to the inventory any inanimate object he can perceive and could lawfully pick up. Three limits are authored with it and they are what keep this from becoming a different ability: **nothing a person is holding, wearing, or carrying**; nothing behind a barrier he cannot perceive through; and a contested attempt is an uncertain action the die resolves. **Nothing here disarms anyone**, and the withdrawal side is untouched — remote deployment and launch still do not exist without Dimensional Projection.
+
+**The cost lands where the tension actually is.** Remote storage is **free outside an exchange** — picking a room clean, sweeping a dock, drawing a folder off a car boot — and **inside an exchange it is that exchange's one inventory change** under Section 12.9's existing *Equip and swap* budget. Hand-delivery in both directions stays free and unlimited exactly as always; only the remote reach is rationed. The currency was already this skill's: Section 7.2 has said since 1.51 that *its remote withdrawal is the action's one inventory change for that exchange*.
+
+**What Alexander actually holds now.** A projected weapon is **never lost and never an errand** — it comes straight back, no walking to it. But at native E-Rank he may **launch or recover in an exchange, never both**, so the technique costs a beat of tempo paid in the same currency as a weapon swap. **`Recall` (D) survives as a genuine grant**: it returns the weapon at the action's end **without** spending that change, so at D he does both in one action and keeps the change for a swap besides. The E-Rank drawback becomes a tempo cost rather than an errand — the more interesting version of the same restriction, and the one the ladder can sell against.
+
+**Nothing is granted and nothing moves.** Dimensional Projection keeps [E-Rank], Novice, its 5 m band, its 6 Mana, and its Agility-to-hit resolution; its `skills_known` line is re-rendered to carry the recovery terms, a rendering change over a restriction that did not previously exist in writing. The *Recall* rung is reworded to name what it removes and is **not** newly granted — it remains unreached until the skill stands at D-Rank. No other skill is touched. **Nothing retroactive:** `EVT-000326`'s sweep is retrospectively legitimate rather than newly permitted — resolved on a strong success, outside any exchange, under the rule this edge finally writes down — and Dimensional Projection has never been used in play, so no projection or recovery exists to re-cost.
+
+`profile_version` advances 1.58 → **1.59**. Full transformation record at `worlds/gatefall/migrations/1.58_to_1.59.md`. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, counter, mastery, Rank, or resolved die outcome changes. New high-water mark **EVT-000438**."
+```
+
+---
+
+## EVT-000439 - Ledger Audit: Four Stat Passives Reading Yesterday's Stats
+
+```yaml
+id: EVT-000439
+canonical_record: REC-000074
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: correction
+importance: moderate
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Player-directed audit of the Stat Passive rows in `100_CHARACTER_SHEET.md`, prompted by `tools/test_gatefall_quest_contract.ps1` failing on Conduit. **Four of the five carry a stale governing-Stat figure. No Rank moves, no grant changes, and no played outcome is touched** — a read-back repair on the `EVT-000420` precedent.
+
+**What was stale, and which allocation each row missed.** Section 4.4 renders a Stat Passive with its governing **base** Stat, and base Stats moved twice since these lines were last written: `EVT-000426` allocated **+8 Intelligence and +5 Agility**, and `EVT-000431`'s Level 23 grant added **+1 to all five**.
+
+- **Conduit — Intelligence 59 → 68.** Missed both: `EVT-000426`'s +8 (59 → 67) and `EVT-000431`'s +1 (67 → 68).
+- **Pre-empt — Agility 55 → 61.** Missed both: `EVT-000426`'s +5 (55 → 60) and `EVT-000431`'s +1 (60 → 61).
+- **Overpower — Strength 62 → 63.** Missed `EVT-000431`'s +1.
+- **Shrug Off — Vitality 101 → 102.** Missed `EVT-000431`'s +1.
+- **Flux Sight — Perception 62, already correct** and stated rather than passed over silently, because the audit's finding is that four rows drifted and one did not.
+
+**No Rank moves and no capability changes today.** Section 4.4 reads the highest threshold the base Stat meets (30 / 36 / 44 / 54 / 66 / 80 → E / D / C / B / A / S) and then clamps by **System Rank + 1** and by the deepest authored rung. System Rank is **C**, so the ceiling is **B**, and every one of the five was already at B and stays there. Every held-rung clause is likewise unchanged and was independently correct: Conduit, Overpower, Pre-empt and Flux Sight hold **[A-Rank]**, Shrug Off holds **[S-Rank]** — Vitality 102 clears the 80 threshold exactly as 101 did. **Conduit's +20 percentage points at B-Rank is unchanged, so no Section 5.2 recovery rate moves and no settled span is re-derived.**
+
+**Why no gate caught it, and this is the interesting part.** Section 4.4 makes a Stat Passive's Rank **canonical derived state, never a separately stored value** — so there is no stored Rank for a stale Stat to contradict. The figure itself sits inside a `skills_known` prose line rather than in `tracked_counters`, so no `counter_deltas` arithmetic reaches it either. Both halves of the usual defence are structurally absent at once: **an unclaimed delta cannot disagree with a stored value, and a derived value cannot disagree with its own input.** That is `F-015` in its purest form, and it is why the contract test asserting the *derivation* — rather than a pinned literal — is the only thing that could have found this.
+
+**What it would have cost if left standing.** At System Rank B (level 30) the ceiling lifts to A and these figures decide which rung each passive takes. Three of the four would have landed correctly anyway — Overpower at 62 and 63 both derive B, Pre-empt at 55 and 61 both derive B, Shrug Off at 101 and 102 both hold S. **Conduit is the exception and it is a real one:** Intelligence 68 clears the A-Rank threshold of 66 and 59 does not, so the stale line would have taken **B-Rank (+20 points) where the true Stat earns A-Rank (+25)** the moment the ceiling lifted — a capability silently and permanently underpaid, discovered only by someone re-deriving it by hand. The value was already bought and banked under Section 4.4's own held-intact rule; the row simply failed to say so.
+
+No fiction, no die, no XP, level, Stat, Health, Mana, gold, cash, item, quest, title, counter, or resolved outcome changes — the corrected figures are what the character sheet already held everywhere else. New high-water mark **EVT-000439**."
+```
+
+---
+
+## EVT-000440 - Profile 1.60: Education Is Capability, Not a Skill
+
+```yaml
+id: EVT-000440
+canonical_record: REC-000074
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: ruling
+importance: major
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Owner ruling **rejecting the `applied_analytical_reconstruction` candidate** under Section 7.1's rejection route, and adoption of **Gatefall World Rule Profile 1.60**, which retires the result 1.58 pre-authored for it. **No fictional time passes, no pool moves, no scene occurs, no skill is removed from any ledger, and no past roll is recomputed.**
+
+**This closes a finding this session opened four Events ago, and closes it against itself.** `EVT-000436` opened the candidate at 2/3 on the reading that `EVT-000376` and `EVT-000405` had both missed it; `EVT-000437` gave it a complete result so its third scene would ratify automatically rather than halting play at Section 7.1's mandatory adjudication gate. The player's objection — *the Ranking now actually fights his own knowledge he learned at the university* — is correct, and it is fatal rather than corrective.
+
+**The native effect duplicated a modifier Alexander already receives.** Both evidence scenes resolved on the engine's standing **established-capability** step: `EVT-000372` records it in its own text as *'+1 step for the directly relevant established capability'*, and `EVT-000189` shows the identical shape on another domain — *'net +1 (established capability at reading people, no specific skill applies)'*. That step fires for competence a character actually holds and needs **no skill whatsoever**. Alexander is a university-trained mathematician and physicist (`canonical_state.capabilities`, established since character creation). Sightlines, load paths, sweep cones and structural extent are what that training **is**.
+
+**So First Principles would have granted nothing.** Section 4.3 caps the net modifier at +1, and Section 7.2 forbids a second modifier derived from the same finding. On the exact two scenes that formed the candidate, the skill would have changed **no roll, no margin, and no resolved outcome**. That is the **Rank Dominance Law failing at acquisition rather than at ascension**: the law asks whether a higher Rank can do something the Rank beneath cannot, and here the *skill* could do nothing its own absence could not.
+
+**Three mastery axes were tried and all three failed for the same underlying reason**, which is how the defect was finally isolated instead of patched. **Beneficiaries** (1.58's choice) priced a solitary analytical method as a group capability. **Concurrent held derivations** rebuilt **Multitask's** retired defect exactly — a capacity ladder no play ever reaches, which Profile 1.49 removed on the finding that *'a Rank step that raises an unreached cap grants nothing a Bearer can notice.'* **Scale**, starting at *one wall*, asserted a floor **beneath** what Alexander had already demonstrated with no skill at all: at `EVT-000372` he mapped four cameras' cones across a whole building and found a four-foot gap in the coverage. Ratification would have been a **downgrade dressed as progression**. There was no capability to grow because there was no capability being granted.
+
+**`EVT-000405` was right, for a reason it did not quite articulate.** That settlement declined to open a candidate with *'No new repeatable method appeared this span that isn't already a ratified skill'*, and `EVT-000436` recorded that as a miss. Read again: **no new method appeared because the method was never new.** It was the man's education, doing what his education does. The audit's own finding is withdrawn here rather than defended.
+
+**The general rule this leaves behind, and it is the durable part.** A System skill is a capability the world does not otherwise grant. Where a Bearer's own background already resolves an action, **the established-capability step is the correct and complete pricing of it**, and Section 7.1's third test — *distinct capability*, excluding **generic competence** — is exactly what keeps it out of formation. **Education is capability, not a skill.** It carries no Rank, no Mana cost, no mastery track, and no System Rank ceiling, and it applies whenever it is directly relevant — **strictly better than any E-Rank passive this profile could have authored for it.** Alexander loses nothing by this rejection; he keeps the thing that was always doing the work, unclamped by the System Rank ceiling that binds every one of his actual skills.
+
+**What changes, exactly.** The candidate goes **`rejected`** with its owner-authored reason and this Event recorded; **its evidence is preserved unchanged** — `EVT-000372` and `EVT-000398` remain exactly as promoted, and Section 7.1 reopens the candidate only by owner ruling or when a **materially different** signature creates a new one. First Principles is removed from Sections 7.2, 7.3 and 7.4 and the key leaves the trigger manifest's `pre_authored_result_keys`, which returns to `dimensional_weapon_control` alone. Section 7.2 keeps the *reasoning* under a rejected-candidate heading rather than deleting it, because a rejection that leaves no trace invites the next reader to open the same candidate on the same evidence.
+
+**Nothing is lost and nothing is unwound.** First Principles existed only as authored profile text between 1.58 and 1.60: **no Bearer ever held it**, no `skills_known` entry named it, and no `tracked_counters` row was ever created for it — so there is no counter to retire, no mastery to reverse, and no Mana, Rank, or scope value to recompute. **Dimensional Projection is untouched and remains ratified and live** (`EVT-000436`); this ruling reaches neither it nor its candidate.
+
+`profile_version` advances 1.59 → **1.60**. Full transformation record at `worlds/gatefall/migrations/1.59_to_1.60.md`. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. New high-water mark **EVT-000440**."
+```
+
+---
+
+## EVT-000441 - Profile 1.61: The Passive That Was Never Authorized to Speak
+
+```yaml
+id: EVT-000441
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: profile-adoption
+importance: major
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Adoption of **Gatefall World Rule Profile 1.61**, a compatibility treatment over frozen 1.60, at the same 2026-08-16 evening anchor as `EVT-000436` through `EVT-000440`. **No fictional time passes, no pool moves, no scene occurs, no skill changes Rank or mastery, and no past exchange is re-resolved.**
+
+**Raised by `F-017` item 4 — Flux Sight withheld across a whole combat session as though it needed an active check — and the finding is sharper than the report: the Runtime was following the rule that existed.** Section 14.3's trigger tiers are the entire authorization list for what the System says unprompted, and Tier 3 forbids firing *'with no declared precondition at all.'* Tier 1 named the **designation color**. Tier 2 named the **B-rung item appraisal**. The **D rung (monsters) and C rung (awakened humans) appeared in no tier whatsoever** — so a strict reading found no authorization to fire them and a standing prohibition against firing anyway. Naming exactly one rung, under *bounded discretion*, is also what made the whole passive read as conditional when its own text is *reads on sight*.
+
+**A second hole sat beside it.** Section 4.4 authored *what* Flux Sight reads and **nothing authored how it renders** — the only System output in the profile with no exact template, so it was re-invented at each use: three shapes in one campaign, the rule citation leaking into the fiction twice, and **Mana dropped in two of three**, against a D rung authoring *'Rank, current/maximum Health, and current/maximum Mana'* as one read. A rung's values are not a menu.
+
+**What 1.61 settles.** Every Flux Sight rung is **Tier 1, fires on sight, no roll and no Mana**, the item appraisal promoted out of Tier 2 to join them. **The read and the designation color render as one line**, the color computed from the very Rank the read states — where Flux Sight does not cover a creature whose Rank is resolved the color still fires alone, and a Gate takes no color at all, the palette comparing a *creature's* Rank and a Gate being a place. **Section 14.5 becomes the contract rather than three examples**: one grammar — subject, bracketed Rank, delta, `before → current/maximum`, parenthesized source — and two weights, the Bearer's own pools and XP rendering bare, anything carrying a subject taking `[SYSTEM]`. **The XP line names its award source**, which is exactly what `F-017`'s third item lacked when a whole dungeon's XP went unrendered and the total resumed from a figure matching no derivable sum. **A target's pools re-render in any exchange the Bearer's action moved them.** Pool labels are `HP`/`MP`/`XP` on every surface; the 2026-07-30 ruling that Mana is never abbreviated is **scoped** to the skills table's cost column rather than overturned — a cost is `Mana 8`, a pool is `MP 92/98`.
+
+**Why this Event is being written after the profile it adopts, and that is the finding worth keeping.** Profile 1.61 was authored and committed world-side at `e02bea9` — profile, migration record, INDEX, startup binding, README and `engine/004_DESIGN_FLAGS.md` — while the campaign side was never completed: no adoption Event, no changelog entry, no registry row, and `180_CURRENT_STATE.md` still reading Profile 1.60 against a character sheet already reading 1.61. **Repository validation was green throughout.** `profile_version` is a stored string with nothing to disagree with it, and an adoption Event's *absence* is not a value any gate compares — so the split passed every check while the sheet claimed a version no Event had ever adopted. **That is `F-015` in its structural form**, and it is the fourth time this session has hit it: an unclaimed value no arithmetic can contradict. Every prior profile edge in this campaign carries a canon-bearing adoption Event — `EVT-000437` for 1.58, `EVT-000438` for 1.59, `EVT-000440` for 1.60 — and 1.61 now carries one too.
+
+`profile_version` advances 1.60 → **1.61**. Full transformation record at `worlds/gatefall/migrations/1.60_to_1.61.md`. **Nothing stored moves and nothing is retroactive** — a Flux Sight read reveals information and settles nothing, granting no modifier step and costing no Mana, so no past roll, margin, or damage figure changes. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. New high-water mark **EVT-000441**."
+```
+
+---
+
+## EVT-000442 - Profile 1.62: A Stat Block on the Man He Lives With
+
+```yaml
+id: EVT-000442
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: profile-adoption
+importance: moderate
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Adoption of **Gatefall World Rule Profile 1.62**, a compatibility treatment over frozen 1.61, at the same 2026-08-16 evening anchor as `EVT-000441`. **No fictional time passes, no pool moves, no scene occurs, no skill changes Rank or mastery, and no past exchange is re-resolved.**
+
+**1.61 authored the Flux Sight read for a Bearer meeting a monster, and then applied that cadence to everyone.** Player question the same day — *would it fire when I meet an awakened NPC too?* — and following it through exposed the gap. It fires: the **C rung reads any perceived awakened** and Alexander's Flux Sight stands at B, so the rung is reached. 1.61's cadence was *full read at first perception in a scene*, extended from Section 14.6's designation-color rule **without accounting for a familiar NPC standing in the Bearer's own kitchen.** Owen Callahan lives with him. Under 1.61 every domestic scene would have opened with a combat-style stat block on his partner, restating a number that had not moved in days — noise that flattens an intimate scene into an encounter.
+
+**Rule one, new Section 14.5.6: first meeting, then on change.** The full read fires the first time he ever perceives someone, wherever that happens — a Gate mouth, a guild hall, a kitchen. Afterwards it renders **only when a value has materially moved** since his last read of that person: Health or Mana away from where he last saw it, a changed Rank, a condition the pools carry. An unchanged subject renders nothing, across any number of scenes.
+
+**The passive is not narrowed and Section 4.4 is untouched.** Flux Sight remains always in effect and Alexander always knows. What is bounded is when the System *says so*, which is the same principle already governing the designation color (*'not repeated each exchange'*) and a target's pools in Section 14.5.5 (*rendered in the exchange that changed them*), now carried to people he lives among. **It is the more useful rule and not merely the quieter one:** a line restating an unchanged number carries no information, and a reader who learns to skip it is exactly the reader a real change slips past. Under this rule a rendered line always carries news, and an injured friend coming through the door is the case it fires on.
+
+**Rule two: a populated room renders one room line, then individuals on engagement.** Where he perceives many awakened at once — a guild hall, a staging floor, a bar — the read emits a single line giving the room's shape, counts by Rank with each Rank's color, then a **full individual read on anyone he engages, is approached by, singles out, or fights.** The room line carries no pools, a count of strangers having no single pool to state. This is 1.61's grouping rule applied to people rather than to monsters: compress the undifferentiated, name what matters.
+
+**Rule three, Section 14.5.3: the bracketed head grammar is stated rather than left to pattern-matching.** Every bracketed message shares `[SYSTEM] <EVENT NAME IN CAPS> — <subject>`, the subject omitted where there is none. What differs below the head now differs **by a stated rule**: a **fixed tuple renders inline on the head row**, `·`-separated in the Section 14.5.1 order, because the fields are always the same fields in the same order and naming them would be noise; a **variable field set renders as labelled rows**, because the reader cannot know which fields are present. A read is a fixed tuple and is one row; a quest carries objectives, rewards, deadlines and warnings in combinations that vary and is labelled rows. Neither shape is available to the other. The existing quest and title blocks already had these shapes — 1.62 writes down the reason they are consistent instead of leaving it to be inferred.
+
+**Nothing is granted and no NPC record gains a field.** *Has he read this person before* is answered from the campaign's existing record of who Alexander has met, not from new stored state, and the rules are **prospective**: no backfill of previously-read subjects is owed. Where the record does not establish a prior read, the first perception after adoption fires the full read and that subject is thereafter on the change cadence — correct behavior, needing no ruling per NPC.
+
+`profile_version` advances 1.61 → **1.62**. Full transformation record at `worlds/gatefall/migrations/1.61_to_1.62.md`. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. New high-water mark **EVT-000442**."
+```
+
+---
+
+## EVT-000443 - Profile 1.63: One System, One Window
+
+```yaml
+id: EVT-000443
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: profile-adoption
+importance: moderate
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Adoption of **Gatefall World Rule Profile 1.63**, a compatibility treatment over frozen 1.62, at the same 2026-08-16 evening anchor as `EVT-000441` and `EVT-000442`. **No fictional time passes, no pool moves, no scene occurs, no skill changes Rank or mastery, and no past exchange is re-resolved.**
+
+**Player question, and the right one:** *is the Flux Sight template the same as the quest templates and the other System messages?* It was not — and the answer was worse than a mismatch between two templates.
+
+**The System had two visual identities.** A **summoned panel** was a framed window: `╔══ ◈  S Y S T E M ══…`, content at interior column 6, bracketed Ranks, a fixed label vocabulary, a two-glyph status gutter, columns aligned on their digits. A **fired notification** was plain text wearing a `[SYSTEM]` prefix and sharing none of it. Nothing in the fiction justified the split — the same System, addressing the same Bearer, through the same interface, looking like two different things depending only on whether he had asked.
+
+**The prefix was load-bearing in the wrong direction, and this is the real finding.** A prefix is cheap enough to attach to any shape at all, and that is what happened: **four mutually incompatible message shapes** had accumulated beneath one label — a head with an inline tuple (the read, level-up, mastery), a head with labelled rows (the three quest kinds), a head with an unlabelled record list (the five Section 18 class panels), and a head with nested indented sub-blocks (the Title Assessment). **`EVT-000442`'s own Section 14.5.3 declared two of those a contract** and closed with *'neither shape is available to the other'* — describing shapes 1 and 2, silent on 3 and 4, and stated as though it covered everything. A contract covering half its own subject matter is the defect 1.63 repairs; the visual split is merely what made it visible.
+
+**One render, two forms, and the line between them is what the System is doing.** **The window** is what it **presents** — a read, an event, an offer, an assessment, a panel — framed always, in the Section 15.1 frame unchanged, its top rule carrying the event name where a panel carries `S Y S T E M`, and a subject on the first content row: the rule names *what happened*, the row names *to whom*. **The ledger line** is what it **counts** while an action resolves — a pool or XP moving, on the Bearer or on a target he acted upon — unframed but **indented to interior column 6**, the window's own content column, so the numbers read as System output with no rule above them.
+
+**A window is an occasion and may cost three rows; a ledger line fires several times an exchange.** Framing each would put forty rules through a single dungeon fight, the fiction pushed apart by its own bookkeeping. **The frame marks what the System chose to say; the indent marks what it is merely keeping.** A read is therefore **one window however many subjects it covers** — everything perceived in the same instant shares a frame, its subjects rendered as columns, one rule for a room rather than one per creature — and the fight that follows is ledger lines, arithmetic on a subject already introduced being counting rather than presenting.
+
+**Two long-standing defects fell out of conforming every site rather than restating the contract.** The **Daily quest rendered `Objectives:` and `Rewards:` where Urgent and Hidden rendered `Objective:` and `Reward:`** — the same field under two names on the same surface since 1.0 — now one name, and a label inside a window is never punctuated with a colon, the column doing the work the colon used to. The **Section 18 class panels rendered Rank as a bare letter** (`Gravecut · D · Field`, `180 E · 44 D`) against Section 15.1's own *'a bare letter is never rendered'* — now bracketed in the panels and in the prose quoting them.
+
+**Section 15.1's frame rule is corrected against its own templates.** It stated that *no* rule is closed on the right while every normative template in Sections 15.2–15.4 closed its inner section rules on `╢` and left the top and bottom open — the stated rule and the templates it governs disagreeing on every panel in the profile. **The templates are what a Runtime copies, so the templates win:** only an inner section rule closes, on `╢`. A closed rule reads as a divider between two things, an open one as the edge of something.
+
+**Nothing retroactive, and no promoted record is re-rendered.** A notification's shape has never been an input to any resolution — it grants no modifier step, costs no Mana, and settles nothing. **Historical Events quoting a `[SYSTEM]` line stay exactly as promoted**, being faithful records of what was rendered under the profile then in force. The `Objectives`/`Rewards` correction touches rendering labels only; canonical quest state stores its counters, rewards and deadlines under its own schema, untouched.
+
+`profile_version` advances 1.62 → **1.63**. Full transformation record at `worlds/gatefall/migrations/1.62_to_1.63.md`. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. New high-water mark **EVT-000443**."
 ```

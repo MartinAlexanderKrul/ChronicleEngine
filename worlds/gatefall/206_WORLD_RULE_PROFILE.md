@@ -1,12 +1,12 @@
-# Gatefall — World Rule Profile 1.57
+# Gatefall — World Rule Profile 1.63
 
 **File:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`
 **Class:** World rule content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Profile Version:** 1.57
+**Profile Version:** 1.63
 **Engine Compatibility:** 0.2.0; Data Model 0.1.6
 **Status:** Active
-**Compatibility Status:** frozen at version 1.57 (Rules Section 14.6, Decision 074), declared on repository date 2026-08-04. Version 1.57 **gives Rupture and Mana Bolt the delivery ranges that tell them apart.** Player observation, and correct: they looked like almost the same spell. Since 1.56 folded effective Intelligence into Mana damage the two have read the **identical Section 6.2 formula**, differing only by multiplier bands exactly **1.00 apart at every mastery level** and by Mana cost — and that had been true since long before 1.56, which only made it visible. **Rupture is now a heavy strike within 5 metres, flat at every Rank**: range is a restriction that says what the skill *is*, not a growth track, and Rupture already grows on magnitude and on four categories. **Mana Bolt has no limit in distance at all**, reaching as far as the Bearer can see, and at native Rank requiring that he see it. **Its ladder relaxes the sense, not the reach, and that is what keeps it a ladder** — *Arcing* (D) already sells a known position where a clear line was required, and *Homing* (A) already sells a target perceived by any means, sound included. Writing vision-or-sound into the E-Rank baseline instead, the shape first proposed, would have handed the baseline both rungs and left two Ranks granting nothing on a skill whose magnitude ladder 1.56 had already measured at nothing — **and the Bearer holds *Arcing* today**, granted at `EVT-000395`. Section 7.2 defines a category as a kind of thing the Rank beneath cannot do at any value of the governing Stat; a rung the baseline already covers is not one. **The dominance test does not cover this defect class**: `tools/test_rank_dominance_law.ps1` verifies that a thin magnitude ladder *carries* categories, not that each grants something new, so a redundant rung passes green — the same hole 1.56 found in the *magnitude only* rows, one layer up, now on the record. **Neither skill crosses a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall.** **No stored value moves, no past exchange is re-resolved, and no damage number changes** — see `worlds/gatefall/migrations/1.56_to_1.57.md`. *(1.56 gave a Mana skill's damage the Stat it obviously belongs to. Measured at Level 21: **Rupture dealt 61 for 9 Mana while an ordinary dagger strike, costing nothing, dealt 128** — and Twin Fang dealt 316 for 4. A signature offensive skill had become strictly worse than swinging the knife. The cause is structural rather than a bookkeeping slip: **a Rank baseline is fixed per Rank, while a weapon strike compounds with Stats and gear every session the Bearer grows.** The profile's own worked example set Rupture and Twin Fang as a deliberate pair at 29 against 18; ninety in-fiction days later it read 61 against 316. No amount of Rank ascension closes a gap that widens on its own. **Section 6.2 now reads `(skill_rank_baseline + effective Intelligence + equipped_focus_power)` for a Bearer damage skill**, exactly as a physical strike reads effective Strength. The connection was already half-written — Rupture takes an equipped **focus**, which is caster gear, and Mana Bolt already had Intelligence governing its control — and this completes it. Rupture moves to 299 and Mana Bolt to 98, against Twin Fang's 323 and a free strike's 128. **Healing is deliberately excluded**, and it is the one place the two formulas differ: Mend reading Intelligence would restore **91 Health for 5 Mana** against a Lesser Healing Potion's 30, repeatable, which does not rebalance the Section 12.6 consumable economy so much as delete it. **The change flattens two Rank ladders and they take categories accordingly.** A large flat Intelligence term added to a small baseline compresses the ratio: Mana Bolt's E→D step came to return **nothing at all on either road**, and Rupture's breakthrough road inverts outright above Intelligence 105. Both leave *magnitude only, by design* and gain authored rungs — Rupture **Compound / Structural / Ward-breaking / Propagating**, Mana Bolt **Arcing / Detonating / Ward-piercing / Homing**. Mend keeps its magnitude-only row, and keeps it honestly, because it was excluded from the change. **That a *magnitude only* row is a claim which can expire is the general lesson**, and it is now on the record. **This is a required migration and it moves live capability** — see `worlds/gatefall/migrations/1.55_to_1.56.md`. 1.55 authored Dimensional Projection's Rank ladder ahead of ratification, and renamed a rung that read as a refusal. Two small corrections, both from the player reading the finished Section 7.3 tables back. **Broken Rhythm's B-Rank rung was called *Denied*** — the name of what it does to an opponent's opening — sitting in a column whose neighbours legitimately read *deferred* and *unauthored*. It parsed as the rung itself being refused. It is now **Cadence break**; the effect is unchanged. A rung name that collides with the vocabulary of withholding is a rendering defect, and Section 20.2's principle applies to names as much as to numbers. **Dimensional Projection was the one skill with no Rank ladder**, deferred at 1.52 on the ground that a skill which does not exist yet should not carry rungs — it is an unformed candidate that no Bearer has ever demonstrated. **The ruling goes the other way: the ladder is what makes the skill safe to form.** Twin Fang is the evidence. It was made ascension-eligible at 1.52 with no Rank axis at all, and its first ascension would have destroyed 37.5% of its damage before anyone checked; Dimensional Projection sat at **x0.25**, range 20 m falling to 5 m, waiting to do the same. Authoring the rungs now closes that before the skill can exist rather than after. Its range band gains **+3 m per Rank above native** (E 5-20, D 8-23, C 11-26, B 14-29, A 17-32) and it carries a `magnitude_floor` from ratification; its categories are **Recall** (D), **Blind placement** (C), **Past the wall** (B) and **Recall in flight** (A). `tools/test_rank_dominance_law.ps1` now verifies it alongside every formed skill. **No live value moves and no skill changes**: Dimensional Projection is unformed, and Broken Rhythm keeps its effect, its Rank, and its mastery — see `worlds/gatefall/migrations/1.54_to_1.55.md`. 1.54 made ascension provably worth taking, which through 1.53 it was not. Section 7.5 has always stated the ordering `Rank N Master < Rank N+1 Novice < Rank N+1 Adept`, and nothing ever verified it. Checked as arithmetic at every rung of every skill, it was false in two places. **Twin Fang landed at x0.625** — a **37.5% loss** of the damage the technique exists to deal — because its strikes read weapon power rather than a Rank baseline, so its entire follow-up multiplier belonged to mastery and ascension reset it. The 1.52 magnitude-axis ladder had made the skill *eligible* without anyone checking whether the trade it now permitted was favourable, **and an offer had already been opened to the Bearer on those terms.** **Dimensional Projection sat at x0.25**, range 20 m falling to 5 m, unformed and waiting. And at the **90% reduction cap** a higher-Rank Novice merely *equals* the lower-Rank Master, which the stated `<` also got wrong. **Two fixes.** Twin Fang gains **+0.35 per Rank above native** on its multiplier base, deliberately modest because its damage already grows with Strength and every weapon equipped — its value at native E-Rank Master is **x1.60, unchanged**. And Section 7.2 gains the **magnitude ratchet**, `magnitude_floor`, the exact counterpart of the scope ratchet it has carried since 1.31: no ascension may land below the value held immediately before it, on any magnitude a skill owns — multiplier, reduction fraction, or authored range. **The law is restated as what it actually is**: `Rank N Master <= Rank N+1 Novice (rune) < Rank N+1 Adept (breakthrough)` — **no axis ever falls, and at least one thing is gained**, whether a larger number, a further exchange of duration at the cap, or an authored category. Equality plus a new kind is a real ascension; a smaller number is not, and this profile no longer produces one. `tools/test_rank_dominance_law.ps1` now verifies every reachable rung of every skill on every ascension road, and catches the further trap the ratchet creates — a floor that swallows an entire mastery track, so climbing Novice to Master at the new Rank buys nothing. **No live value moves**: Twin Fang stands at native E-Rank Master and its multiplier is x1.60 before and after — see `worlds/gatefall/migrations/1.53_to_1.54.md`. 1.53 authored A-Rank across all three Section 7.3 ladders Both were deferred together through 1.52 on one argument: every named S-Rank in canon carries a unique **signature** technique rather than a templated continuation of a starter skill, so authoring an A- or S-Rank rung by the D/C/B pattern risked contradicting established fact. **That argument conflated two things this profile deliberately keeps apart.** A signature is innate, one per awakening, and authored per NPC under Section 13.6 — which grants one to *every named NPC hunter of D-Rank or above*, not only S-Ranks: **Naomi Okafor is C-Rank and carries Still Room.** A ladder rung is what a *learned* technique gains from Rank, and Section 13.6 says in its own words that runes and skill books "add **learned** techniques on top" of a signature. The two already coexist at every Rank from D upward, C-Rank included, where this profile has authored rungs since 1.6 and nothing has ever contradicted Naomi. **A-Rank is therefore authored** — Keen Sense *Provenance*, Silent Step *Unattributed*, Exploit Pattern *Anticipatory*, Field Command *Standing order*, Resonance Extraction *Latent siting*, Sprint *Unbroken*, Flash Step *Blind step*, Dagger Mastery *Unbroken edge*, Stone Skin *Against the unphysical*, Bulwark *Covering the line*, Twin Fang *Answer*, Broken Rhythm *Broken formation*; Rupture, Mend and Mana Bolt continue *magnitude only, by design*. Each is a category and nothing else: no modifier step, no Mana change, no magnitude the skill did not already have. **S-Rank stays deferred on a reason that survives the correction** — not signatures, but that a learned technique standing level with the six named singular gifts the world's hunter politics is built on is a question about the world's power ceiling, left to Section 20.3. **Ladder columns become absolute Ranks** (E/D/C/B/A) instead of "First/Second/Third Rank above native", which had put Sprint's A-Rank and Flash Step's A-Rank in different columns; a native-D skill simply has no grant in the D column and the cell says so. **The repository ceiling guard now parses the authored extent from these tables** rather than carrying it as a hand-maintained literal, closing what `F-013` left open. **Nothing is retroactive and no stored value moves**: no skill in any campaign stands at A-Rank, which is unreachable until System Rank B at level 30 — see `worlds/gatefall/migrations/1.52_to_1.53.md`. 1.52 gave Rank somewhere to land on every skill that had nowhere. Section 7.3 carried two ladder tables — scope and capability — covering seven skills between them. Eight mastery-tracked skills appeared in neither, and the profile's account of them was one sentence in Section 7.2: the quantitative axes are closed-form, so the grant is always authored. **That sentence was true and it was not enough.** For damage and healing it is fine — the Rank baseline multiplies output by ~2.5 a step and a higher-Rank Novice beats a lower-Rank Master by 1.56×. For the **passive-multiplier** and **reduction** ladders the same comparison gives **1.17× / 1.09× / 1.06×** and **1.10× / 1.07×**, converging toward parity, because both add a fixed increment to a growing base against a mastery track that also adds a fixed increment. Dagger Mastery ascended **twice** and gained nothing a Bearer can feel and no capability at all. And for an earned technique whose damage reads **weapon power rather than a Rank baseline** — Twin Fang, Dimensional Projection — the quantitative grant is not thin but **absent**: every axis inapplicable, no row in either table, so the skill was **permanently ascension-ineligible**. Twin Fang stood at Master, below the ceiling, finished. **1.52 authors a third Section 7.3 table, the magnitude-axis ladder, giving every mastery-tracked skill a row** — real D/C/B categories for Dagger Mastery, Stone Skin, Bulwark, Twin Fang and Broken Rhythm; an explicit *magnitude only, by design* with its ratio attached for Rupture, Mend and Mana Bolt, so a row is never blank; and Dimensional Projection deferred to its own ratification. No rung adds a modifier step, none changes a Mana cost, and **every quantitative grant is unchanged and still applies in full** — a category is added beside the number, never in place of it. **The same defect existed on the mastery axis and is closed with it.** Section 7.4's ladders are closed-form and had no coverage list, and **Broken Rhythm used none of them** — a permanent passive at the Section 4.3 step cap has no multiplier, no reduction, no duration to lengthen, no scope count, and Mana 0, so levelling it from Novice to Master granted **nothing at all**. Its mastery track is now the **scope axis, 1/2/3/4/5 beneficiaries**; its effect is authored into Section 7.2 as a ratified earned technique, having existed only as a line on the Bearer's sheet; and Section 7.4 gains a **per-skill mastery table** so no skill's levelling is undocumented again. Section 7.4 also states that **a skill at Master still earns and still writes its qualifying scenes**, and Section 7.5 makes the ascension-readiness check **standing**, evaluated from stored state at every barrier rather than from memory of which barrier recorded an advance. **A-Rank and S-Rank remain deferred** under Section 20.3, unchanged. Section 14.3 adds **skill-credit coverage** and rules that a resolved dangerous scene may not be filed as `kind: scene`. **This is a required migration and it moves live capability** — see `worlds/gatefall/migrations/1.51_to_1.52.md`. No pool, Stat, level, XP, price, timer, item, or resolved outcome moves. 1.51 took the vertical edges off the System window. Section 15.1's frame was a closed box, every interior row carrying a `║` at both margins; 1.51 keeps the horizontal rules and removes both edges, so a panel opens on `╔══…`, divides on `╟──…`, closes on `╚══…`, and an interior row is its content alone. **The right edge was the expensive half** — it only holds if every row is padded to an exact width, and these panels are full of glyphs a Runtime can miscount (`★`, `█`, `◈`, `×`, bracketed Ranks), so one slip renders a wall that visibly fails to close and reads to the Bearer as a broken window. The left edge repeated that per-row risk for no gain, the rules already marking where a panel starts, ends, and divides. **Rows are laid out on columns and never padded rightward**, there being no margin to pad to; the no-truncation rule is unchanged, and the rules alone keep a fixed length. **The change is necessarily global** — Section 15.4 states that `/system all` composes the other panels unchanged and authors no layout of its own, so the frame cannot differ between them. **No mechanic, number, price, timer, pool, capability, or resolved outcome moves, and no stored value is read or written** — this is a compatibility treatment, not a required migration; see `worlds/gatefall/migrations/1.50_to_1.51.md`. Every value reachable under 1.50 is reachable under 1.51, in the same section, on the same row, in the same order. 1.50 **defined the five stored inventory kinds Section 15.3.2 had only named.** `/system gear` groups the dimensional inventory into Gear, Consumables, Keys, Materials and Special and prints each group's live line count, and the profile never said what belongs in any of them — a stated number resting on an unstated rule, which is the Section 20.2 defect. The kinds are now defined with a **deterministic precedence order** (Keys, Consumables, Special, Gear, Materials), so a holding falls in exactly one group and a misfile is a contradiction rather than a matter of taste. **`system_state.inventory` is restructured to match**, holding one list per kind, so a panel renders five groups from five lists and each count is that list's length — nothing about the grouping is inferred at render time. This closes the second half of a defect whose first half was repaired at `EVT-000366`: a `/system gear` call had silently omitted a real possession, because the field it renders from was prose a renderer had to interpret twice, once to ask whether an entry was an item at all and again to ask which group it belonged to. **No holding, quantity, Rank, provenance, or owned object changes** — see `worlds/gatefall/migrations/1.49_to_1.50.md`. No other number, cost, timer, capability, pool, or resolved outcome moves. 1.49 retired Multitask and gave Intelligence **a passive it can feel.** Multitask's entire grant was a ceiling on concurrent non-daily quests, and across the whole of Gatefall's play record that ceiling never once bound: a Bearer at capacity 4 held two attached Hidden pointers and had accepted no Urgent quest at all, while the skill's own use counter stood at **0** against 8, 4, 2 and 1 for the other four. The binding constraint on quests is **supply** (Sections 8.4.2, 8.4.3), never the cap — so the ladder was a Rank step that granted nothing, which is Section 7.2's Rank Dominance Law failing on its own terms. **Capacity moves to System Rank** (Section 8.4): 2 / 3 / 4 / 5 / 6 / 7 at E / D / C / B / A / S, owned by no skill, and `non_daily_quests` drops its `base_capacity`, `multitask_bonus`, and `analyst_bonus` fields. **Conduit** takes the Intelligence slot: one category escalating across six rungs, **+5 / +10 / +15 / +20 / +25 / +30 percentage points** to both Section 5.2 recovery rates. It composes in a fixed order — base rate, Conduit, environmental halving, then any title multiplier — and it **cannot reach inside a fight**, because recovery is settled from elapsed fictional time and an exchange is not an hour, so Section 5.3's exhaustion and the drained-boss tactic it supports are untouched. Nothing here alters a skill's Mana cost, which remains mastery's axis alone (Section 7.2). Two 1.48 rungs are corrected to their own category on the same principle: **Overpower A** returns to the dominate-above-your-Rank ladder (three Ranks above, structures one Rank above) instead of granting immovability, and **Pre-empt A** extends the tempo ladder to allies (shared first blade) instead of granting interposition. **This is a required migration and it moves live capability** — see `worlds/gatefall/migrations/1.48_to_1.49.md`. No other number, cost, timer, pool, price, or resolved outcome moves. 1.48 authored the twelve **Stat Passive rungs Section 4.4 had left empty** — B, A, and S for **Overpower**, **Pre-empt**, **Shrug Off**, and **Multitask** — closing a gap the profile had carried since the Stat-50 skills were folded into their partners. Those four had E, D, and C authored and nothing above, so a Bearer whose base Stat crossed 54, 66, or 80 banked the value against a rung that did not exist; Section 4.4's authoring clamp held it, and its telemetry line said so at every checkpoint. Each new rung is a **category** under Section 7.2's Rank Dominance Law and its Stat Passive exemption — a kind of thing the Rank beneath cannot do at any Stat value — and none adds a modifier step, a Mana cost, a multiplier, or a scope count. **Death is untouched at every rung** (Section 20.4): Shrug Off at S removes the penalties harm imposes and never makes a killing blow survivable. Multitask's ladder continues as the capacity number it already was, **5 / 6 / 7** at B / A / S, and Section 8.4's sentence follows it. **This is a required migration and it moves live capability**: the authoring clamp lifting is not a rule a Bearer can fail to notice, and any Bearer already standing above a threshold takes that Rank the instant the rung exists — see `worlds/gatefall/migrations/1.47_to_1.48.md`. The System Rank ceiling (Section 7.5, System Rank + 1) is untouched and is now the only limit on a Stat Passive's Rank. No other number, cost, timer, capability, pool, price, or resolved outcome moves. 1.47 rewrote **Section 16** and, unlike its three predecessors, **changes a rule a character can notice**. Titles were authored to be granted "the instant the feat resolves" and nothing in the profile ever caused one to be evaluated: the section was live law with no trigger, and no Bearer in any Gatefall campaign has ever held a title. 1.47 gives it one. A **Title Assessment** (Section 16.1) now runs inside the level-up that settles **level 10** and every level that is a multiple of ten thereafter — every rung of the Section 6.6 System Rank ladder above the E a Bearer starts at, continuing past 50 on the decade — and it re-reads the Bearer's **whole recorded career since onset** against the catalog, granting every title the record has earned. Nothing fires between assessments, no unearned criterion is ever published (Section 14.2), and an assessment that grants nothing still renders. Section 3.2 gains the assessment as a fifth settlement on decade levels under its existing invariant; Section 14.3's Tier-1 list trades the untriggerable `TITLE EARNED` line for the `TITLE ASSESSMENT` block; `/system titles` (Section 15.3.4) gains an `ASSESSMENT` section; and the catalog grows from five entries to **twenty-one across three grades** — twelve Common, six Rare, three Singular — every one of them authored so that a Runtime can decide it from resolved Events alone, and every one of them named for what its feat made the Bearer rather than for the feat. A title also now grants what Sections 3.2 and 4.2 have promised since 1.0 and no title ever stated: **allocatable stat points on earning — +2 Common, +5 Rare, +10 Singular**, permanent and independent of equipping. And the loadout grows with the Bearer — **one equipped slot per assessment passed, capped at five** against a catalog of twelve, where 1.0 allowed exactly one forever; `system_state.title` accordingly holds a list. **A Bearer already past level 10 at adoption runs every missed assessment once, at adoption, in level order** — see `worlds/gatefall/migrations/1.46_to_1.47.md`. No other number, cost, timer, capability, pool, price, or resolved outcome moves. 1.46 changed no rule a character could notice: it rewrote **Section 15** — how the System's windows are laid out and how the command is divided. `/system` now renders a one-screen **Console** rather than one exhaustive window; every panel gains an authored template where Section 15.2 previously declared focused views and authored none; the worn loadout and the dimensional inventory merge into a single **`/system gear`** panel (Section 12.9 already governed them as one surface), with `/system equipment` and `/system inventory` retained as aliases; **`/system all`** is added for the exhaustive read; Stat Passives get their own skills group instead of a second row grammar inside `PASSIVE`; the Console and `/system gear` show **cash and pending payouts** beside gold, never totalled with it; **Rank always renders bracketed** (`[E-Rank]`), never as a bare letter; and a new **render grammar** (Section 15.1) fixes width, spacing, columns, and a two-glyph status gutter. Every fact reachable under 1.45 remains reachable, and the stale Section 15.6/15.7/15.8 cross-references left by an earlier renumber are repointed. 1.45 opted Gatefall into the Data Model Section 2.4 `participation_audits` block under Decision 085, with a prospective `EVT-000268` baseline and twelve fiction-bearing Event kinds as its coverage set, and carried **Data Model 0.1.5 → 0.1.6** engine-side; 1.44 made the Section 9.10 tracked board dispatchable through a `gatefall.board.deadline` domain under Decision 084; 1.43 authored the first exception to Section 2, a stat elixir spent on another awakened; 1.42 put a D-Rank floor under Section 13.6's signature abilities.)*
+**Compatibility Status:** frozen at version 1.63 (Rules Section 14.6, Decision 074), declared on repository date 2026-08-05. Version 1.63 **gave the System one visual identity, and it had two.** Player question, and the right one: *is the Flux Sight template the same as the quest templates and the other System messages?* It was not. A **summoned panel** was a framed window — `╔══ ◈  S Y S T E M ══…`, interior column 6, bracketed Ranks, a fixed label vocabulary, a status gutter. A **fired notification** was a plain-text line wearing a `[SYSTEM]` prefix and sharing none of it. **Nothing in the fiction justified the split**: the same System, addressing the same Bearer, through the same interface, looking like two different things depending only on whether he had asked. **Worse, the prefix was load-bearing in the wrong direction** — cheap enough to attach to any shape at all, which is exactly how **four mutually incompatible message shapes** accumulated beneath one label: a head with an inline tuple (the read, level-up, mastery), a head with labelled rows (the quests), a head with an unlabelled record list (the five Section 18 class panels), and a head with nested indented sub-blocks (the Title Assessment). 1.62's Section 14.5.3 had declared **two** of those shapes a contract and closed with *"neither shape is available to the other"* — a rule that described half the profile's own bracketed messages and was silent on the rest. **1.63 retires the `[SYSTEM]` prefix entirely and renders every System utterance in the Section 15.1 frame.** What remains is **one render and two forms**, and the line between them is what the System is *doing*: **the window** is what it **presents** — a read, an event, an offer, an assessment, a panel — framed always; **the ledger line** is what it **counts** while an action resolves — a pool or XP moving, on the Bearer or on a target he acted upon — unframed but **indented to the window's own interior column 6**, so the numbers read as the System's with no rule above them. **A window is an occasion and may cost three rows; a ledger line fires several times an exchange**, and framing each would put forty rules through a single fight, the fiction pushed apart by its own bookkeeping. **The frame marks what the System chose to say, and the indent marks what it is merely keeping.** Every site is conformed rather than merely the contract restated — Sections 3.2, 3.9, 7.1, 7.4, 7.5, 8.1, 8.2, 8.4.1–8.4.3, 12.5, 14.5, 14.7, 16.1 and 18.4–18.8 — and two long-standing defects fall out of doing it: **the Daily quest rendered `Objectives:`/`Rewards:` where Urgent and Hidden rendered `Objective:`/`Reward:`**, the same field under two names on the same surface, now one; and **the Section 18 class panels rendered Rank as a bare letter** (`Gravecut · D · Field`) against Section 15.1's own *"a bare letter is never rendered,"* now bracketed everywhere. **A label inside a window is never punctuated with a colon** — the column does the work the colon used to, exactly as `Level`, `Card Rank` and `Unspent Points` already did in Section 15.2. **Section 15.1's frame rule is corrected against its own templates**: it stated that *no* rule is closed on the right while every normative template in 15.2–15.4 closed its section rules on `╢`, so the rule and the templates it governs disagreed on every panel in the profile; the templates are what a Runtime copies, so **only an inner section rule closes, and it closes on `╢`**, the top and bottom rules running open — a closed rule reads as a divider between two things, an open one as the edge of something. **No stored value moves and nothing is retroactive** — this is how the System renders, not what it knows or grants — see `worlds/gatefall/migrations/1.62_to_1.63.md`. *(1.62 **bounded the Flux Sight read to news, and wrote down the grammar 1.61 left to be inferred.** Player question the same day — *would it fire when I meet an awakened NPC too?* — and following it through found the gap: the **C rung reads any perceived awakened**, and 1.61's cadence was *full read at first perception in a scene*, extended from Section 14.6's designation-color rule without accounting for **a familiar NPC standing in the Bearer's own kitchen.** Owen Callahan lives with him, so every domestic scene would have opened with a combat-style stat block on his partner, restating a number that had not moved in days. **New Section 14.5.6, and the rule is *first meeting, then on change*:** the full read fires the first time the Bearer ever perceives someone, wherever that happens; afterwards it renders **only when a value has materially moved** since his last read — Health or Mana away from where he last saw it, a changed Rank, a condition the pools carry — and an unchanged subject renders nothing across any number of scenes. **The passive is not narrowed and Section 4.4 is untouched**: Flux Sight remains always in effect and the Bearer always knows. What is bounded is when the System *says so*, which is the principle already governing the designation color (*"not repeated each exchange"*) and a target's pools in Section 14.5.5 (*rendered in the exchange that changed them*), now carried to people he lives among. **It is the more useful rule and not merely the quieter one** — a line restating an unchanged number carries no information, and a reader who learns to skip it is exactly the reader a real change slips past; under this rule **a rendered line always carries news**, and an injured friend coming through the door is the case it fires on. **A populated room renders one room line, then individuals on engagement**: a guild hall, a staging floor or a bar emits a single line giving the room's shape and counts by Rank with each Rank's color, then a full individual read on anyone he engages, is approached by, singles out, or fights. The room line carries no pools, a count of strangers having no single pool to state — this is **1.61's grouping rule applied to people rather than to monsters**, compressing the undifferentiated and naming what matters. And **Section 14.5.3 now states the bracketed head grammar** instead of leaving it to be recovered by inspecting the quest and title blocks: every bracketed message shares `[SYSTEM] <EVENT NAME IN CAPS> — <subject>`, and what differs below the head differs **by a rule rather than by taste** — a **fixed tuple renders inline on the head row**, `·`-separated in the Section 14.5.1 order, because the fields are always the same fields in the same order and naming them would be noise; a **variable field set renders as labelled rows**, because the reader cannot know which fields are present. A Flux Sight read is a fixed tuple and is one row; a quest carries objectives, rewards, deadlines and warnings in combinations that vary and is labelled rows; **neither shape is available to the other.** **No stored value moves and nothing is retroactive** — a read reveals information and settles nothing, and *"has he read this person before"* is answered from the campaign's existing record of who the Bearer has met rather than from new stored state — see `worlds/gatefall/migrations/1.61_to_1.62.md`. 1.61 **gave Flux Sight the authorization to fire and the template to fire into, and made every inline System notification one grammar.** Player observation from the two-Crypt session recorded as `F-017`, and the finding is sharper than the report: the passive being withheld across a whole combat session as though it required an active check was **the profile's own instruction, not a lapse.** Section 14.3's tiers are the entire authorization list for what the System says unprompted, and Tier 3 forbids firing *"with no declared precondition at all"* — Tier 1 named the **designation color**, Tier 2 named the **B-rung item appraisal**, and the **D and C rungs appeared in no tier whatsoever.** A Runtime reading them strictly found no authorization and a standing prohibition. Naming exactly one rung, under *bounded discretion*, is also what made the whole passive read as conditional. **Both holes are closed: every rung is Tier 1, fires on sight, no roll and no Mana, and the item appraisal moves up to join them.** Separately, Section 4.4 authored *what* Flux Sight reads and **nothing authored how it renders** — the only System output in this profile without an exact template, so it was re-invented at each use: three shapes in one campaign, the rule citation leaking into the fiction twice, and **Mana dropped in two of three**, against a D rung authoring *"Rank, current/maximum Health, and current/maximum Mana"* as one read. A rung's values are not a menu. **The read and the designation color are now one line**, because they fire at the same instant on the same subject at first perception, both rollless and Bearer-only, and the color is computed from the very Rank the read states; where Flux Sight does not cover a creature whose Rank is resolved, the color still fires alone — the color is the floor, the read is the floor plus what the rung adds. **Section 14.5 becomes the contract rather than three examples**: one grammar — subject, bracketed Rank, delta, `before → current/maximum`, parenthesized source — and **two weights**, the Bearer's own pools and XP rendering bare because they move several times an exchange, anything carrying a subject or more than a number taking `[SYSTEM]`. **The XP line names its source**, so `XP +50 · 40 → 90/300 (elite ×2)` is checkable against Section 3.3 without reconstructing the fight; `F-017`'s third item is a whole dungeon's XP going unrendered and the total then resuming from a figure matching no derivable sum. **A target's pools re-render in any exchange the Bearer's action moved them** — the color is fixed for a scene and repeating it is noise, but a pool is the number the fight is *about*, and leaving it in conversational memory across sixty exchanges is the drift `F-017` records. **The label vocabulary was inconsistent with itself**: through 1.60 the contract read `XP:`, `Mana:`, `HP:`, one word spelled out between two abbreviations in the same block. Pools are **`HP`, `MP`, `XP` on every surface** now, matching Section 15.1's own bar labels and joining its fixed-vocabulary list; the 2026-07-30 ruling that *"Mana is never abbreviated"* is **scoped rather than overturned** — it governs the skills table's cost column, the surface it was made about and the one its next sentence names, where `M<n>` stays forbidden. A cost is `Mana 8`; a pool is `MP 92/98`. **No stored value moves and nothing is retroactive** — a Flux Sight read reveals information and settles nothing, granting no modifier step and costing no Mana, so no past roll, margin, or damage figure changes — see `worlds/gatefall/migrations/1.60_to_1.61.md`. 1.60 **rejects `applied_analytical_reconstruction` and retires First Principles, the skill 1.58 pre-authored two versions ago.** Player observation, and it is fatal rather than corrective: **the Bearer already knows how to do this, and the engine already pays him for it.** Both evidence scenes resolved on the standing **established-capability** step — *"+1 step for the directly relevant established capability"* — which fires for competence a character actually holds and needs no skill at all. He is a university-trained mathematician and physicist; sightlines, load paths and sweep-cone geometry are what that training *is*. A skill granting +1 step for applied physics to a man who already draws +1 step for applied physics grants **nothing**: Section 4.3 caps the net step at +1 and a modifier never stacks with another from the same finding, so on the very scenes that formed the candidate the skill would have changed no resolved outcome. **That is the Rank Dominance Law failing at acquisition rather than at ascension** — the skill could do nothing its own absence could not — and every mastery axis failed the same test from the other side: beneficiaries priced a solitary method as a group one, concurrent held derivations rebuilt Multitask's retired defect of a ceiling no play reaches, and a scale ladder starting at *one wall* asserted a floor **beneath** what the Bearer had already demonstrated with no skill, making ratification a downgrade dressed as progression. **Education is capability, not a skill** — it carries no Rank, no Mana, no mastery track and no System Rank ceiling, and it applies whenever directly relevant, which is strictly better than any E-Rank passive this profile could have authored for it. Section 7.1's third test excludes generic competence from formation and this is what that exclusion is for. The candidate goes `rejected` with its evidence and reason preserved, reopening only by owner ruling or a **materially different** signature; Section 7.2 keeps the reasoning rather than deleting it, because a rejected candidate that leaves no trace invites the next reader to open it again. **Nothing is lost and no live value moves**: First Principles never existed on any ledger — see `worlds/gatefall/migrations/1.59_to_1.60.md`. 1.59 **authored the half of Section 12.9 that only ever existed by omission.** Player observation, and correct on inspection: *the launched weapon stays where it lands* does not survive a Bearer who can store anything. **The two directions of the pocket dimension were never symmetric.** Withdrawal is bounded in writing — *to his own hand*, with remote destinations explicitly denied — while **storage carried no stated bound at all**, and Section 7.2 asserted the inventory was *hand-delivery only* in both directions on the strength of a sentence Section 12.9 never wrote. `EVT-000326` had already contradicted it, sweeping three crates **and a workbench** into the pocket dimension on a single roll. A rule that exists only by omission is the Section 20.2 defect, and this one was load-bearing: it was the sole justification for Dimensional Projection's recovery cost, and therefore for whether its D rung granted anything at all. **Storage now reaches what he perceives; withdrawal still reaches only his hand.** He may store any inanimate object he can perceive and could lawfully pick up — nothing a person is holding, wearing, or carrying, nothing behind a barrier he cannot perceive through, and a contested attempt resolves on the die. **Nothing here disarms anyone.** **The cost lands where it belongs: remote storage is free outside an exchange and spends the exchange's one inventory change inside one.** Hand-delivery in both directions stays free and unlimited exactly as it always was; only the remote reach is rationed. A launched weapon is therefore **never lost and never an errand** — it comes straight back — but at native Rank he may launch **or** recover in an exchange, never both, and the price is a beat of tempo paid in the same currency as a weapon swap. ***Recall* (D) survives as a genuine grant, which was the real question**: it returns the weapon at the action's end **without** spending that change, so the D rung sells something E-Rank provably cannot do — the Rank Dominance Law's own test for a category, which the old wording would have failed the moment anyone read the two sections together. **No live value moves, no skill changes Rank or mastery, and no past exchange is re-resolved** — see `worlds/gatefall/migrations/1.58_to_1.59.md`. 1.58 **pre-authored First Principles, the second earned technique this profile completes before it forms.** Section 7.1 route 3 requires an owner ruling at ratification unless the profile already authors the complete result; `dimensional_weapon_control` is the one candidate that ever had one, and Dimensional Projection ratified automatically at `EVT-000436` because of it. **`applied_analytical_reconstruction` now has one too.** The Bearer has twice resolved a problem on his trained mathematics-and-physics background as the declared method, explicitly instead of a System skill — Loomis Street's camera sweep-cone geometry and the Cicero Scar's core-block structural read — and the candidate stands at 2/3 with no authored result, which under 1.57 meant a third scene would stop play at the mandatory adjudication gate. **The ruling is the same one 1.55 made for Dimensional Projection: author the result before the skill can exist rather than after.** **First Principles [E-Rank]**, passive, 0 Mana: +1 modifier step on reconstructing unobserved structure, coverage, or reach from observed geometry and physical law. It is **derivation, not perception** — it never reveals what is present, which is Keen Sense's work, and it establishes no exploitable Pattern, which is Exploit Pattern's. Its mastery axis is **scope — 1/2/3/4/5 beneficiaries**, the Broken Rhythm treatment applied at authoring time rather than twelve wasted qualifying scenes later, and its Rank ladder runs **Inference from absence** (D), **Mechanism** (C), **From secondhand measure** (B), **Predictive** (A). It joins the Section 7.3 scope-axis table and the Section 7.4 mastery table, because a mastery-tracked skill in neither is not finished. **Nothing is granted and no live value moves**: the candidate remains at 2/3 and ratification still requires a third qualifying scene — this changes only what happens when one lands. See `worlds/gatefall/migrations/1.57_to_1.58.md`. 1.57 **gave Rupture and Mana Bolt the delivery ranges that tell them apart.** Player observation, and correct: they looked like almost the same spell. Since 1.56 folded effective Intelligence into Mana damage the two have read the **identical Section 6.2 formula**, differing only by multiplier bands exactly **1.00 apart at every mastery level** and by Mana cost — and that had been true since long before 1.56, which only made it visible. **Rupture is now a heavy strike within 5 metres, flat at every Rank**: range is a restriction that says what the skill *is*, not a growth track, and Rupture already grows on magnitude and on four categories. **Mana Bolt has no limit in distance at all**, reaching as far as the Bearer can see, and at native Rank requiring that he see it. **Its ladder relaxes the sense, not the reach, and that is what keeps it a ladder** — *Arcing* (D) already sells a known position where a clear line was required, and *Homing* (A) already sells a target perceived by any means, sound included. Writing vision-or-sound into the E-Rank baseline instead, the shape first proposed, would have handed the baseline both rungs and left two Ranks granting nothing on a skill whose magnitude ladder 1.56 had already measured at nothing — **and the Bearer holds *Arcing* today**, granted at `EVT-000395`. Section 7.2 defines a category as a kind of thing the Rank beneath cannot do at any value of the governing Stat; a rung the baseline already covers is not one. **The dominance test does not cover this defect class**: `tools/test_rank_dominance_law.ps1` verifies that a thin magnitude ladder *carries* categories, not that each grants something new, so a redundant rung passes green — the same hole 1.56 found in the *magnitude only* rows, one layer up, now on the record. **Neither skill crosses a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall.** **No stored value moves, no past exchange is re-resolved, and no damage number changes** — see `worlds/gatefall/migrations/1.56_to_1.57.md`. 1.56 gave a Mana skill's damage the Stat it obviously belongs to. Measured at Level 21: **Rupture dealt 61 for 9 Mana while an ordinary dagger strike, costing nothing, dealt 128** — and Twin Fang dealt 316 for 4. A signature offensive skill had become strictly worse than swinging the knife. The cause is structural rather than a bookkeeping slip: **a Rank baseline is fixed per Rank, while a weapon strike compounds with Stats and gear every session the Bearer grows.** The profile's own worked example set Rupture and Twin Fang as a deliberate pair at 29 against 18; ninety in-fiction days later it read 61 against 316. No amount of Rank ascension closes a gap that widens on its own. **Section 6.2 now reads `(skill_rank_baseline + effective Intelligence + equipped_focus_power)` for a Bearer damage skill**, exactly as a physical strike reads effective Strength. The connection was already half-written — Rupture takes an equipped **focus**, which is caster gear, and Mana Bolt already had Intelligence governing its control — and this completes it. Rupture moves to 299 and Mana Bolt to 98, against Twin Fang's 323 and a free strike's 128. **Healing is deliberately excluded**, and it is the one place the two formulas differ: Mend reading Intelligence would restore **91 Health for 5 Mana** against a Lesser Healing Potion's 30, repeatable, which does not rebalance the Section 12.6 consumable economy so much as delete it. **The change flattens two Rank ladders and they take categories accordingly.** A large flat Intelligence term added to a small baseline compresses the ratio: Mana Bolt's E→D step came to return **nothing at all on either road**, and Rupture's breakthrough road inverts outright above Intelligence 105. Both leave *magnitude only, by design* and gain authored rungs — Rupture **Compound / Structural / Ward-breaking / Propagating**, Mana Bolt **Arcing / Detonating / Ward-piercing / Homing**. Mend keeps its magnitude-only row, and keeps it honestly, because it was excluded from the change. **That a *magnitude only* row is a claim which can expire is the general lesson**, and it is now on the record. **This is a required migration and it moves live capability** — see `worlds/gatefall/migrations/1.55_to_1.56.md`. 1.55 authored Dimensional Projection's Rank ladder ahead of ratification, and renamed a rung that read as a refusal. Two small corrections, both from the player reading the finished Section 7.3 tables back. **Broken Rhythm's B-Rank rung was called *Denied*** — the name of what it does to an opponent's opening — sitting in a column whose neighbours legitimately read *deferred* and *unauthored*. It parsed as the rung itself being refused. It is now **Cadence break**; the effect is unchanged. A rung name that collides with the vocabulary of withholding is a rendering defect, and Section 20.2's principle applies to names as much as to numbers. **Dimensional Projection was the one skill with no Rank ladder**, deferred at 1.52 on the ground that a skill which does not exist yet should not carry rungs — it is an unformed candidate that no Bearer has ever demonstrated. **The ruling goes the other way: the ladder is what makes the skill safe to form.** Twin Fang is the evidence. It was made ascension-eligible at 1.52 with no Rank axis at all, and its first ascension would have destroyed 37.5% of its damage before anyone checked; Dimensional Projection sat at **x0.25**, range 20 m falling to 5 m, waiting to do the same. Authoring the rungs now closes that before the skill can exist rather than after. Its range band gains **+3 m per Rank above native** (E 5-20, D 8-23, C 11-26, B 14-29, A 17-32) and it carries a `magnitude_floor` from ratification; its categories are **Recall** (D), **Blind placement** (C), **Past the wall** (B) and **Recall in flight** (A). `tools/test_rank_dominance_law.ps1` now verifies it alongside every formed skill. **No live value moves and no skill changes**: Dimensional Projection is unformed, and Broken Rhythm keeps its effect, its Rank, and its mastery — see `worlds/gatefall/migrations/1.54_to_1.55.md`. 1.54 made ascension provably worth taking, which through 1.53 it was not. Section 7.5 has always stated the ordering `Rank N Master < Rank N+1 Novice < Rank N+1 Adept`, and nothing ever verified it. Checked as arithmetic at every rung of every skill, it was false in two places. **Twin Fang landed at x0.625** — a **37.5% loss** of the damage the technique exists to deal — because its strikes read weapon power rather than a Rank baseline, so its entire follow-up multiplier belonged to mastery and ascension reset it. The 1.52 magnitude-axis ladder had made the skill *eligible* without anyone checking whether the trade it now permitted was favourable, **and an offer had already been opened to the Bearer on those terms.** **Dimensional Projection sat at x0.25**, range 20 m falling to 5 m, unformed and waiting. And at the **90% reduction cap** a higher-Rank Novice merely *equals* the lower-Rank Master, which the stated `<` also got wrong. **Two fixes.** Twin Fang gains **+0.35 per Rank above native** on its multiplier base, deliberately modest because its damage already grows with Strength and every weapon equipped — its value at native E-Rank Master is **x1.60, unchanged**. And Section 7.2 gains the **magnitude ratchet**, `magnitude_floor`, the exact counterpart of the scope ratchet it has carried since 1.31: no ascension may land below the value held immediately before it, on any magnitude a skill owns — multiplier, reduction fraction, or authored range. **The law is restated as what it actually is**: `Rank N Master <= Rank N+1 Novice (rune) < Rank N+1 Adept (breakthrough)` — **no axis ever falls, and at least one thing is gained**, whether a larger number, a further exchange of duration at the cap, or an authored category. Equality plus a new kind is a real ascension; a smaller number is not, and this profile no longer produces one. `tools/test_rank_dominance_law.ps1` now verifies every reachable rung of every skill on every ascension road, and catches the further trap the ratchet creates — a floor that swallows an entire mastery track, so climbing Novice to Master at the new Rank buys nothing. **No live value moves**: Twin Fang stands at native E-Rank Master and its multiplier is x1.60 before and after — see `worlds/gatefall/migrations/1.53_to_1.54.md`. 1.53 authored A-Rank across all three Section 7.3 ladders Both were deferred together through 1.52 on one argument: every named S-Rank in canon carries a unique **signature** technique rather than a templated continuation of a starter skill, so authoring an A- or S-Rank rung by the D/C/B pattern risked contradicting established fact. **That argument conflated two things this profile deliberately keeps apart.** A signature is innate, one per awakening, and authored per NPC under Section 13.6 — which grants one to *every named NPC hunter of D-Rank or above*, not only S-Ranks: **Naomi Okafor is C-Rank and carries Still Room.** A ladder rung is what a *learned* technique gains from Rank, and Section 13.6 says in its own words that runes and skill books "add **learned** techniques on top" of a signature. The two already coexist at every Rank from D upward, C-Rank included, where this profile has authored rungs since 1.6 and nothing has ever contradicted Naomi. **A-Rank is therefore authored** — Keen Sense *Provenance*, Silent Step *Unattributed*, Exploit Pattern *Anticipatory*, Field Command *Standing order*, Resonance Extraction *Latent siting*, Sprint *Unbroken*, Flash Step *Blind step*, Dagger Mastery *Unbroken edge*, Stone Skin *Against the unphysical*, Bulwark *Covering the line*, Twin Fang *Answer*, Broken Rhythm *Broken formation*; Rupture, Mend and Mana Bolt continue *magnitude only, by design*. Each is a category and nothing else: no modifier step, no Mana change, no magnitude the skill did not already have. **S-Rank stays deferred on a reason that survives the correction** — not signatures, but that a learned technique standing level with the six named singular gifts the world's hunter politics is built on is a question about the world's power ceiling, left to Section 20.3. **Ladder columns become absolute Ranks** (E/D/C/B/A) instead of "First/Second/Third Rank above native", which had put Sprint's A-Rank and Flash Step's A-Rank in different columns; a native-D skill simply has no grant in the D column and the cell says so. **The repository ceiling guard now parses the authored extent from these tables** rather than carrying it as a hand-maintained literal, closing what `F-013` left open. **Nothing is retroactive and no stored value moves**: no skill in any campaign stands at A-Rank, which is unreachable until System Rank B at level 30 — see `worlds/gatefall/migrations/1.52_to_1.53.md`. 1.52 gave Rank somewhere to land on every skill that had nowhere. Section 7.3 carried two ladder tables — scope and capability — covering seven skills between them. Eight mastery-tracked skills appeared in neither, and the profile's account of them was one sentence in Section 7.2: the quantitative axes are closed-form, so the grant is always authored. **That sentence was true and it was not enough.** For damage and healing it is fine — the Rank baseline multiplies output by ~2.5 a step and a higher-Rank Novice beats a lower-Rank Master by 1.56×. For the **passive-multiplier** and **reduction** ladders the same comparison gives **1.17× / 1.09× / 1.06×** and **1.10× / 1.07×**, converging toward parity, because both add a fixed increment to a growing base against a mastery track that also adds a fixed increment. Dagger Mastery ascended **twice** and gained nothing a Bearer can feel and no capability at all. And for an earned technique whose damage reads **weapon power rather than a Rank baseline** — Twin Fang, Dimensional Projection — the quantitative grant is not thin but **absent**: every axis inapplicable, no row in either table, so the skill was **permanently ascension-ineligible**. Twin Fang stood at Master, below the ceiling, finished. **1.52 authors a third Section 7.3 table, the magnitude-axis ladder, giving every mastery-tracked skill a row** — real D/C/B categories for Dagger Mastery, Stone Skin, Bulwark, Twin Fang and Broken Rhythm; an explicit *magnitude only, by design* with its ratio attached for Rupture, Mend and Mana Bolt, so a row is never blank; and Dimensional Projection deferred to its own ratification. No rung adds a modifier step, none changes a Mana cost, and **every quantitative grant is unchanged and still applies in full** — a category is added beside the number, never in place of it. **The same defect existed on the mastery axis and is closed with it.** Section 7.4's ladders are closed-form and had no coverage list, and **Broken Rhythm used none of them** — a permanent passive at the Section 4.3 step cap has no multiplier, no reduction, no duration to lengthen, no scope count, and Mana 0, so levelling it from Novice to Master granted **nothing at all**. Its mastery track is now the **scope axis, 1/2/3/4/5 beneficiaries**; its effect is authored into Section 7.2 as a ratified earned technique, having existed only as a line on the Bearer's sheet; and Section 7.4 gains a **per-skill mastery table** so no skill's levelling is undocumented again. Section 7.4 also states that **a skill at Master still earns and still writes its qualifying scenes**, and Section 7.5 makes the ascension-readiness check **standing**, evaluated from stored state at every barrier rather than from memory of which barrier recorded an advance. **A-Rank and S-Rank remain deferred** under Section 20.3, unchanged. Section 14.3 adds **skill-credit coverage** and rules that a resolved dangerous scene may not be filed as `kind: scene`. **This is a required migration and it moves live capability** — see `worlds/gatefall/migrations/1.51_to_1.52.md`. No pool, Stat, level, XP, price, timer, item, or resolved outcome moves. 1.51 took the vertical edges off the System window. Section 15.1's frame was a closed box, every interior row carrying a `║` at both margins; 1.51 keeps the horizontal rules and removes both edges, so a panel opens on `╔══…`, divides on `╟──…`, closes on `╚══…`, and an interior row is its content alone. **The right edge was the expensive half** — it only holds if every row is padded to an exact width, and these panels are full of glyphs a Runtime can miscount (`★`, `█`, `◈`, `×`, bracketed Ranks), so one slip renders a wall that visibly fails to close and reads to the Bearer as a broken window. The left edge repeated that per-row risk for no gain, the rules already marking where a panel starts, ends, and divides. **Rows are laid out on columns and never padded rightward**, there being no margin to pad to; the no-truncation rule is unchanged, and the rules alone keep a fixed length. **The change is necessarily global** — Section 15.4 states that `/system all` composes the other panels unchanged and authors no layout of its own, so the frame cannot differ between them. **No mechanic, number, price, timer, pool, capability, or resolved outcome moves, and no stored value is read or written** — this is a compatibility treatment, not a required migration; see `worlds/gatefall/migrations/1.50_to_1.51.md`. Every value reachable under 1.50 is reachable under 1.51, in the same section, on the same row, in the same order. 1.50 **defined the five stored inventory kinds Section 15.3.2 had only named.** `/system gear` groups the dimensional inventory into Gear, Consumables, Keys, Materials and Special and prints each group's live line count, and the profile never said what belongs in any of them — a stated number resting on an unstated rule, which is the Section 20.2 defect. The kinds are now defined with a **deterministic precedence order** (Keys, Consumables, Special, Gear, Materials), so a holding falls in exactly one group and a misfile is a contradiction rather than a matter of taste. **`system_state.inventory` is restructured to match**, holding one list per kind, so a panel renders five groups from five lists and each count is that list's length — nothing about the grouping is inferred at render time. This closes the second half of a defect whose first half was repaired at `EVT-000366`: a `/system gear` call had silently omitted a real possession, because the field it renders from was prose a renderer had to interpret twice, once to ask whether an entry was an item at all and again to ask which group it belonged to. **No holding, quantity, Rank, provenance, or owned object changes** — see `worlds/gatefall/migrations/1.49_to_1.50.md`. No other number, cost, timer, capability, pool, or resolved outcome moves. 1.49 retired Multitask and gave Intelligence **a passive it can feel.** Multitask's entire grant was a ceiling on concurrent non-daily quests, and across the whole of Gatefall's play record that ceiling never once bound: a Bearer at capacity 4 held two attached Hidden pointers and had accepted no Urgent quest at all, while the skill's own use counter stood at **0** against 8, 4, 2 and 1 for the other four. The binding constraint on quests is **supply** (Sections 8.4.2, 8.4.3), never the cap — so the ladder was a Rank step that granted nothing, which is Section 7.2's Rank Dominance Law failing on its own terms. **Capacity moves to System Rank** (Section 8.4): 2 / 3 / 4 / 5 / 6 / 7 at E / D / C / B / A / S, owned by no skill, and `non_daily_quests` drops its `base_capacity`, `multitask_bonus`, and `analyst_bonus` fields. **Conduit** takes the Intelligence slot: one category escalating across six rungs, **+5 / +10 / +15 / +20 / +25 / +30 percentage points** to both Section 5.2 recovery rates. It composes in a fixed order — base rate, Conduit, environmental halving, then any title multiplier — and it **cannot reach inside a fight**, because recovery is settled from elapsed fictional time and an exchange is not an hour, so Section 5.3's exhaustion and the drained-boss tactic it supports are untouched. Nothing here alters a skill's Mana cost, which remains mastery's axis alone (Section 7.2). Two 1.48 rungs are corrected to their own category on the same principle: **Overpower A** returns to the dominate-above-your-Rank ladder (three Ranks above, structures one Rank above) instead of granting immovability, and **Pre-empt A** extends the tempo ladder to allies (shared first blade) instead of granting interposition. **This is a required migration and it moves live capability** — see `worlds/gatefall/migrations/1.48_to_1.49.md`. No other number, cost, timer, pool, price, or resolved outcome moves. 1.48 authored the twelve **Stat Passive rungs Section 4.4 had left empty** — B, A, and S for **Overpower**, **Pre-empt**, **Shrug Off**, and **Multitask** — closing a gap the profile had carried since the Stat-50 skills were folded into their partners. Those four had E, D, and C authored and nothing above, so a Bearer whose base Stat crossed 54, 66, or 80 banked the value against a rung that did not exist; Section 4.4's authoring clamp held it, and its telemetry line said so at every checkpoint. Each new rung is a **category** under Section 7.2's Rank Dominance Law and its Stat Passive exemption — a kind of thing the Rank beneath cannot do at any Stat value — and none adds a modifier step, a Mana cost, a multiplier, or a scope count. **Death is untouched at every rung** (Section 20.4): Shrug Off at S removes the penalties harm imposes and never makes a killing blow survivable. Multitask's ladder continues as the capacity number it already was, **5 / 6 / 7** at B / A / S, and Section 8.4's sentence follows it. **This is a required migration and it moves live capability**: the authoring clamp lifting is not a rule a Bearer can fail to notice, and any Bearer already standing above a threshold takes that Rank the instant the rung exists — see `worlds/gatefall/migrations/1.47_to_1.48.md`. The System Rank ceiling (Section 7.5, System Rank + 1) is untouched and is now the only limit on a Stat Passive's Rank. No other number, cost, timer, capability, pool, price, or resolved outcome moves. 1.47 rewrote **Section 16** and, unlike its three predecessors, **changes a rule a character can notice**. Titles were authored to be granted "the instant the feat resolves" and nothing in the profile ever caused one to be evaluated: the section was live law with no trigger, and no Bearer in any Gatefall campaign has ever held a title. 1.47 gives it one. A **Title Assessment** (Section 16.1) now runs inside the level-up that settles **level 10** and every level that is a multiple of ten thereafter — every rung of the Section 6.6 System Rank ladder above the E a Bearer starts at, continuing past 50 on the decade — and it re-reads the Bearer's **whole recorded career since onset** against the catalog, granting every title the record has earned. Nothing fires between assessments, no unearned criterion is ever published (Section 14.2), and an assessment that grants nothing still renders. Section 3.2 gains the assessment as a fifth settlement on decade levels under its existing invariant; Section 14.3's Tier-1 list trades the untriggerable `TITLE EARNED` line for the `TITLE ASSESSMENT` block; `/system titles` (Section 15.3.4) gains an `ASSESSMENT` section; and the catalog grows from five entries to **twenty-one across three grades** — twelve Common, six Rare, three Singular — every one of them authored so that a Runtime can decide it from resolved Events alone, and every one of them named for what its feat made the Bearer rather than for the feat. A title also now grants what Sections 3.2 and 4.2 have promised since 1.0 and no title ever stated: **allocatable stat points on earning — +2 Common, +5 Rare, +10 Singular**, permanent and independent of equipping. And the loadout grows with the Bearer — **one equipped slot per assessment passed, capped at five** against a catalog of twelve, where 1.0 allowed exactly one forever; `system_state.title` accordingly holds a list. **A Bearer already past level 10 at adoption runs every missed assessment once, at adoption, in level order** — see `worlds/gatefall/migrations/1.46_to_1.47.md`. No other number, cost, timer, capability, pool, price, or resolved outcome moves. 1.46 changed no rule a character could notice: it rewrote **Section 15** — how the System's windows are laid out and how the command is divided. `/system` now renders a one-screen **Console** rather than one exhaustive window; every panel gains an authored template where Section 15.2 previously declared focused views and authored none; the worn loadout and the dimensional inventory merge into a single **`/system gear`** panel (Section 12.9 already governed them as one surface), with `/system equipment` and `/system inventory` retained as aliases; **`/system all`** is added for the exhaustive read; Stat Passives get their own skills group instead of a second row grammar inside `PASSIVE`; the Console and `/system gear` show **cash and pending payouts** beside gold, never totalled with it; **Rank always renders bracketed** (`[E-Rank]`), never as a bare letter; and a new **render grammar** (Section 15.1) fixes width, spacing, columns, and a two-glyph status gutter. Every fact reachable under 1.45 remains reachable, and the stale Section 15.6/15.7/15.8 cross-references left by an earlier renumber are repointed. 1.45 opted Gatefall into the Data Model Section 2.4 `participation_audits` block under Decision 085, with a prospective `EVT-000268` baseline and twelve fiction-bearing Event kinds as its coverage set, and carried **Data Model 0.1.5 → 0.1.6** engine-side; 1.44 made the Section 9.10 tracked board dispatchable through a `gatefall.board.deadline` domain under Decision 084; 1.43 authored the first exception to Section 2, a stat elixir spent on another awakened; 1.42 put a D-Rank floor under Section 13.6's signature abilities.)*
 
 **Version history and migrations.** Every transformation from Profile 1.1 forward to the active version lives in `worlds/gatefall/migrations/`, one authoritative record per edge, declared by `worlds/gatefall/migrations/INDEX.md`. Restoring a capture taken under Profile *V* runs each record from *V* forward to the active version in order and reads no other migration text; a current rule lookup reads none of them. Immutable checkpoints are never rewritten by a migration — the chain applies to mutable live state. Where a migration record and this profile disagree about present law, this profile governs: a migration record describes a transformation, not a standing rule.
 
@@ -172,11 +172,22 @@ Total earned in the clear: **230 XP**. Tracking against the thresholds: the firs
 During the fight the Bearer spends Mana on a skill (Section 7); a representative inline notification stream (Section 8 fixes the format) reads:
 
 ```text
-Mana: 20 → 14/20
-XP: 0 → 100/100
-[SYSTEM] LEVEL UP — Level 2 · all Stats +1 · Ability Points +5 · HP/MP restored.
-XP: 0 → 130/200
+╔══ ◈  F L U X   S I G H T ══…
+     10 × Ashroot Crawler     [E-Rank] yellow     HP 40/40      MP 20/20     each
+     Ashroot Matriarch        [E-Rank] yellow     HP 160/160    MP 80/80
+╚══…
+
+     MP −6 · 20 → 14/20
+     XP +100 · 0 → 100/100  (10 × common E)
+
+╔══ ◈  L E V E L   U P ══…
+     Level 2      all Stats +1      Ability Points +5      HP/MP restored
+╚══…
+
+     XP +130 · 0 → 130/200  (elite ×2, boss ×4, E-Rank clear milestone)
 ```
+
+The Flux Sight lines assume the Bearer has reached the D rung; a Bearer whose Perception has not yet reached 36 sees the designation colors alone (Section 14.6) and no pools. Every value is still derived from Sections 3.1–3.4 and the population formula — the read renders what the clear already determined, and settles nothing on its own.
 
 During the same fight an E-Rank beast lands a standard hit — one E fixed-Rank baseline of 10 before reductions (Section 6.2). Compare that resolved damage with the Bearer's current and maximum Health to apply Section 6.3; do not call it “a quarter of the Bearer's Health,” because the Bearer's pool now derives from Vitality and can be much larger or smaller than the attacker's Rank baseline. Every number here is derived from Sections 3.1–3.4, 6.2–6.3, and the population formula; a Runtime resolves the whole clear — kills, XP, level-up, Mana spend, and whether a hit wounds — without a ruling.
 
@@ -201,9 +212,10 @@ The Bearer may claim any, all, or none in any order. Each pending reward does no
 The completion prompt renders:
 
 ```text
-[SYSTEM] DAILY TRAINING COMPLETE.
-Rewards available: Ability Points +3 · Status Recovery · Daily Random Box.
-Claim separately at any time.
+╔══ ◈  D A I L Y   T R A I N I N G   C O M P L E T E ══…
+     Rewards         Ability Points +3 · Status Recovery · Daily Random Box
+     Claim           separately, at any time
+╚══…
 ```
 
 The System never allocates points for the Bearer. Pending daily rewards appear individually in `/system`; a Runtime never compresses them into an ambiguous “grant.” Only the Bearer's System creates these rewards, and nothing about an NPC hunter changes (Section 13.1).
@@ -344,6 +356,12 @@ The former Stat-50 skills **Titan's Grip**, **Slipstream**, **Iron Constitution*
 | **S** | **Complete read.** Everything the System holds on any perceived mana-bearing subject. |
 
 Flux Sight has no scope count. How many subjects the Bearer can hold in one read is fiction, not tracked state.
+
+**It reads on sight. There is no roll, no Mana cost, no activation, and no declaration.** A Stat Passive is always in effect (Section 4.4 opening), and Flux Sight's effect *is* the reading — so the read happens the instant a covered subject enters the Bearer's perception, whether or not he sought it, whether or not the scene is a combat, and whether or not he says anything. A Runtime never gates it behind a check, never asks whether the Bearer looks, and never withholds it pending an action declaration. Its rendering is **Tier 1** under Section 14.3 and its exact template is Section 14.5.
+
+**Rendering it is not optional, and the covered rungs are not a menu.** Every rung the Bearer's Flux Sight Rank has reached fires on every covered subject at first perception. A read that names Rank but omits Health or Mana at a rung that authors all three has not been rendered — the D rung authors *"Rank, current/maximum Health, and current/maximum Mana"* as one read, not three the Runtime may select among.
+
+Recorded as `F-017`, whose fourth item is this passive being withheld across an entire combat session as though it required an active check. The cause was structural rather than a lapse: Section 14.3's tier list authorized the designation color and the B-rung item appraisal, and named the D and C rungs in no tier at all — so a Runtime reading the tiers strictly found no authorization to fire the read unprompted, and Tier 3 forbids firing without a declared precondition. Both holes are closed in 1.61.
 
 ---
 
@@ -778,7 +796,13 @@ At the applicable boundary, the first qualifying occurrence creates a `tracking`
 
 On the third qualifying scene, the Runtime must settle the threshold after the scene's ordinary outcome and rewards. If this profile already authors the candidate's complete name, Rank, cost, effect, limits, and mastery progression, ratify it automatically in that same dangerous-scene settlement or promotion-batch Event; it must not pause in `pending-ratification`. Otherwise change it to `pending-ratification` and render after a dangerous scene settles or after the work/practice promotion barrier succeeds:
 
-`[SYSTEM] TECHNIQUE FORMATION — READY · <candidate signature> · Evidence 3/3`
+```text
+╔══ ◈  T E C H N I Q U E   F O R M A T I O N ══…
+     <candidate signature>
+     Status          ready
+     Evidence        3/3
+╚══…
+```
 
 Ratification creates the fully authored skill at Novice and changes the candidate to `ratified`, recording `resolution_event` and `result_ref`. Rejection preserves the evidence and reason as `rejected`; it reopens only by owner ruling or when a materially different signature creates a new candidate. Pre-ratification evidence establishes acquisition only and never backfills post-acquisition successful-use or mastery counters.
 
@@ -1006,11 +1030,25 @@ Repeated, materially successful control of the dimensional inventory during moti
 |---|---|---:|---|
 | **Dimensional Projection** | E-Rank | 6 | Withdraw one owned, portable weapon into a visible, unoccupied point within 5 metres and immediately launch it at one perceived target as a named offensive action. Resolve one ranged physical strike using Agility to hit and the ordinary Bearer physical-damage formula—effective Strength, that weapon's power and chassis, the result multiplier, then reductions. |
 
-The deployment point must have an unobstructed line of sight from the Bearer and a clear physical path to the target. A weapon cannot appear inside a creature, object, barrier, worn equipment, or occupied space; cannot cross a sealed barrier; and cannot target a location the Bearer cannot perceive. The launched weapon is a real physical object after withdrawal: on either a hit or miss it remains where the fiction puts it until recovered or recalled. A stored weapon contributes no equipped Stat bonus to the action; only a weapon already equipped before the roll supplies its ordinary equipped bonuses.
+The deployment point must have an unobstructed line of sight from the Bearer and a clear physical path to the target. A weapon cannot appear inside a creature, object, barrier, worn equipment, or occupied space; cannot cross a sealed barrier; and cannot target a location the Bearer cannot perceive. **The launched weapon is a real physical object after withdrawal: on either a hit or miss it lands where the fiction puts it and stays there until recovered or recalled.** A stored weapon contributes no equipped Stat bonus to the action; only a weapon already equipped before the roll supplies its ordinary equipped bonuses.
 
-Dimensional Projection is the action's offensive active skill and cannot combine with Rupture, Twin Fang, a split dual strike, or another offensive active skill. Its remote withdrawal is the action's one inventory change for that exchange. The pre-skill Section 12.9 inventory remains hand-delivery only: practicing hand summons, grip changes, immediate releases, and throws can establish formation evidence, but remote placement or launch does not exist before ratification.
+**Recovering it is Section 12.9's remote storage, and the cost is the point.** A landed weapon is an inanimate object the Bearer can perceive and no one is holding, so he may send it straight back to the inventory without walking to it — **but inside an exchange that is remote storage, and it spends that exchange's one inventory change.** The weapon is therefore never lost and never an errand; the price is a beat of tempo, paid in the same currency as a weapon swap. Outside an exchange recovery is free like any other storage. **This corrects a real defect rather than adding a convenience**: through 1.58 this entry said the pre-skill inventory was *hand-delivery only* in both directions, which Section 12.9's own text established for withdrawal and never for storage — so *stays where it lands* rested on a rule nobody had written, and `EVT-000326`'s crate sweep already contradicted it.
+
+Dimensional Projection is the action's offensive active skill and cannot combine with Rupture, Twin Fang, a split dual strike, or another offensive active skill. Its remote withdrawal is the action's one inventory change for that exchange, so **launching and recovering cannot both happen in one exchange** at native Rank. The pre-skill Section 12.9 inventory imparts no remote *motion*: practicing hand summons, grip changes, immediate releases, and throws can establish formation evidence, but remote placement and launch do not exist before ratification.
 
 Mastery extends maximum deployment range to **5 / 7 / 10 / 15 / 20 metres** from Novice through Master, over a band that rises **+3 m for each Rank above native** (Section 7.3). Like Twin Fang, its strike reads weapon power rather than a Rank baseline, so without that per-Rank grant Rank would reach the technique on no axis and ascension would cut its range from 20 m to 5 m — a **×0.25** loss, and the second case the Section 7.2 magnitude ratchet was written for. It carries a `magnitude_floor` from ratification. Mana follows the ordinary −10%-per-level rule: **6 / 5 / 5 / 4 / 4**. A successful use is recorded only when the projected strike lands and materially contributes. One qualifying scene contributes at most one mastery point.
+
+### Rejected Formation Candidate — applied analytical reconstruction
+
+`applied_analytical_reconstruction` — signature `apply-formal-physical-or-geometric-training.reconstruct-unobserved-structure-or-coverage.act-on-the-derived-finding` — was opened at 2/3 and **carried a pre-authored result, First Principles [E-Rank], through 1.58 and 1.59. Both are retired at 1.60 and the candidate is `rejected`.** The reasoning is kept here rather than deleted, because a rejected candidate that leaves no trace invites the next reader to open it again.
+
+**The native effect duplicated a modifier the Bearer already receives.** Both evidence scenes resolved on the engine's standing **established-capability** step — *"+1 step for the directly relevant established capability"* — which fires for competence a character actually holds and needs no skill at all. The Bearer is a university-trained mathematician and physicist; sightlines, load paths, and sweep-cone geometry are what that training *is*. A skill granting +1 step for applied physics to a man who already draws +1 step for applied physics grants nothing: Section 4.3 caps the net step at +1 and a modifier never stacks with another derived from the same finding, so on the very scenes that formed the candidate the skill would have changed no resolved outcome.
+
+**That is the Rank Dominance Law failing at acquisition rather than at ascension.** The law asks whether a higher Rank can do something the Rank beneath cannot; here the *skill* could do nothing its own absence could not. Every mastery axis then failed the same test from the other direction: beneficiaries priced a solitary method as a group one; concurrent held derivations reproduced Multitask's retired defect, a ceiling no play ever reaches; and a scale ladder starting at *one wall* asserted a floor **beneath** what the Bearer had already demonstrated with no skill, making ratification a downgrade dressed as progression.
+
+**The general rule this leaves behind.** A System skill is a capability the world does not otherwise grant. Where the Bearer's own background already resolves an action, the established-capability step is the correct and complete pricing of it, and Section 7.1's third test — *distinct capability*, not generic competence — excludes it from formation. **Education is capability, not a skill.** It carries no Rank, no Mana cost, no mastery track, and no System Rank ceiling, and it applies whenever it is directly relevant, which is strictly better than any E-Rank passive this profile could have authored for it.
+
+Section 7.1's rejection route governs: the evidence and this reason are preserved, and the candidate reopens only by owner ruling or when a **materially different** signature creates a new one.
 
 ## 7.3 Starting Skill Table
 
@@ -1077,7 +1115,7 @@ Every mastery-tracked skill in neither table above has a row. A row reading *mag
 | **Rupture** | E-Rank | ×2.5 per Rank on the baseline table, **now thin** — and its 5 m band is flat at every Rank by design (1.57), so range is not a second axis; — folding effective Intelligence into the magnitude (1.56, Section 6.2) flattens the ratio, and above Intelligence 105 the breakthrough road inverts outright | **Compound** *(D)* — the wound reopens, taking effect again at the end of the next exchange | **Structural** *(C)* — it may be aimed at an object, wall, or mechanism and ruptures it as it would a body | **Ward-breaking** *(B)* — it ruptures a mana barrier or ward as though that ward were physical structure | **Propagating** *(A)* — the rupture carries to one further target in contact with, or immediately behind, the first |
 | **Mend** | E-Rank | ×2.5 per Rank on the baseline table — **dominant at 1.56×**, and it stays dominant because healing does not read Intelligence (Section 6.2) | *Magnitude only, by design* | *Magnitude only* | *Magnitude only* | *Magnitude only* |
 | **Mana Bolt** | E-Rank | ×2.5 per Rank on the baseline table, **now thin** — distance is unlimited from native Rank (1.57), so this ladder relaxes the **sense** required rather than the reach; — with Intelligence folded in (1.56) its E→D step returns **nothing at all** on either road, which is why it is no longer magnitude-only | **Arcing** *(D)* — the bolt bends around intervening cover; a known position suffices where a clear line was required | **Detonating** *(C)* — it bursts on impact, reaching what is in immediate contact with the target rather than the target alone | **Ward-piercing** *(B)* — it passes a mana barrier that stops an ordinary bolt | **Homing** *(A)* — once released it corrects to a target that breaks line of sight, so long as he still perceives it by any means |
-| **Dimensional Projection** | E-Rank | **+3 m** to both ends of its range band per Rank (1.55; the same weapon-power case as Twin Fang, so a Rank baseline cannot reach it) | **Recall** *(D)* — the launched weapon returns to his hand at the action's end rather than remaining where the fiction puts it, ending the ordinary recovery cost of using the technique at all | **Blind placement** *(C)* — the deployment point requires a **held read** rather than an unobstructed line of sight: a prior look, a resolved Keen Sense, or a relayed Pattern | **Past the wall** *(B)* — the point may sit beyond a barrier the weapon could not be thrown through, on the same held-read terms; it still never crosses a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall | **Recall in flight** *(A)* — the weapon may be recalled mid-flight and re-launched at a **second** target within the same action, resolving a separate strike |
+| **Dimensional Projection** | E-Rank | **+3 m** to both ends of its range band per Rank (1.55; the same weapon-power case as Twin Fang, so a Rank baseline cannot reach it) | **Recall** *(D)* — the launched weapon returns to his hand at the action's end rather than landing and waiting to be recovered, **without spending the exchange's one inventory change** (Section 12.9). At native Rank he may launch or recover in an exchange, never both; at D he does both in one action and keeps the change for a swap besides | **Blind placement** *(C)* — the deployment point requires a **held read** rather than an unobstructed line of sight: a prior look, a resolved Keen Sense, or a relayed Pattern | **Past the wall** *(B)* — the point may sit beyond a barrier the weapon could not be thrown through, on the same held-read terms; it still never crosses a Gate boundary, a Section 9.6 seal, or a Section 17 instance wall | **Recall in flight** *(A)* — the weapon may be recalled mid-flight and re-launched at a **second** target within the same action, resolving a separate strike |
 
 Three constraints bind every rung above. **No rung adds a modifier step** — Section 4.3's cap of +1 is untouched, and where a category widens *who* or *what* a step reaches, the step itself is the same one. **No rung changes a Mana cost**, which stays mastery's axis alone (Section 7.2). **The quantitative grant is unchanged and still applies in full** — a category is added beside the number, never in place of it, so no ascension returns less than it did under 1.51.
 
@@ -1097,7 +1135,7 @@ Through 1.52 both were deferred together on one argument: every named S-Rank hun
 
 An ordinary skill is not fixed the day it is learned — it **grows in the Bearer's hands with use.** Every mastery-tracked skill is held at a **mastery level, 1 through 5** — Novice, Practiced, Adept, Expert, Master — starting at **Novice** when acquired. This is the Bearer's **second growth axis beside stats**: a much-used skill becomes formidable even at a low rank, the way a hunter's signature deepens over a career. Section 4.4 Stat Passives are the explicit exception: they grow from base-Stat thresholds and have no mastery level.
 
-**Advancing.** A skill rises **one mastery level** after it has materially contributed to **three distinct skill-appropriate qualifying scenes at its current level** under Section 7.1. A combat skill requires genuine dangerous-scene contributions. A non-combat skill may qualify through consequential work or structured practice whose objective, uncertainty or informative resistance, and material result actually exercise that skill. A mixed-use utility qualifies only in a scene where its authored effect materially matters. Trivial repetition does not count, and the three scenes must be materially distinct. Reaching Master therefore takes twelve qualifying scenes across a skill's life. The System advances mastery automatically on the third qualifying scene and fires a Tier-1 notification (`[SYSTEM] SKILL MASTERY — Mana Bolt is now Adept.`).
+**Advancing.** A skill rises **one mastery level** after it has materially contributed to **three distinct skill-appropriate qualifying scenes at its current level** under Section 7.1. A combat skill requires genuine dangerous-scene contributions. A non-combat skill may qualify through consequential work or structured practice whose objective, uncertainty or informative resistance, and material result actually exercise that skill. A mixed-use utility qualifies only in a scene where its authored effect materially matters. Trivial repetition does not count, and the three scenes must be materially distinct. Reaching Master therefore takes twelve qualifying scenes across a skill's life. The System advances mastery automatically on the third qualifying scene and fires a Tier-1 window titled `◈  S K I L L   M A S T E R Y`, carrying the skill on its first row and one `Mastery` row — *Mana Bolt · Novice → Adept*.
 
 **Use counters.** Every skill records `successful_uses`, a lifetime total that never resets. A successful activation or application adds one; a failed or missed use adds none. One activation counts once even when it affects several targets. A sustained skill counts once when activated, not once per exchange. A passive skill counts once per resolved action in which its effect materially applies. Several successful applications in one qualifying scene each add to `successful_uses`, while that scene contributes at most one mastery point for that skill. A successful trivial or consequence-free test adds a use but no qualifying scene.
 
@@ -1139,7 +1177,7 @@ Under Data Model 0.1.5, the Bearer's structured `tracked_counters` entries are t
 | **Field Command** | Scope — simultaneous recipients | 1 → 5 |
 | **Resonance Extraction** | Scope — additional miners | 0 → 4 |
 | **Broken Rhythm** | Scope — beneficiaries | 1 → 5 (**authored at 1.52**; it had no axis at all before) |
-| **Dimensional Projection** | Range | 5 m → 20 m at native Rank, both ends +3 m per Rank above it (unformed candidate; applies at ratification) |
+| **Dimensional Projection** | Range | 5 m → 20 m at native Rank, both ends +3 m per Rank above it |
 
 A Section 4.4 **Stat Passive** appears in no row by design: it has no mastery track, grows from base-Stat thresholds alone, and stores neither `mastery_level` nor `mastery_progress` (Section 7.2's Stat Passive exemption).
 
@@ -1180,11 +1218,26 @@ Every ascension is an improvement; the earned road is simply the larger one.
 
 **Breakthrough settlement.** Breakthrough is **offered, never imposed.** When a skill's mastery advances to Master, its Rank stands below the ceiling, and it is **ascension-eligible** at the next Rank under Section 7.2, it becomes **ascension-ready** and the Runtime surfaces the offer at the dangerous-scene settlement or promotion barrier that recorded the mastery advance, with the exact before-and-after values on every axis the skill uses:
 
-`[SYSTEM] RANK ASCENSION AVAILABLE — Rupture · E-Rank Master (×2.60, 26 dmg) → D-Rank Adept (×2.30, 57 dmg). Ascend?`
+```text
+╔══ ◈  R A N K   A S C E N S I O N   A V A I L A B L E ══…
+     Rupture
+     From            [E-Rank] Master · ×2.60 · 26 dmg
+     To              [D-Rank] Adept · ×2.30 · 57 dmg
+     Action          Ascend?
+╚══…
+```
 
 A scope skill's offer states the category gained and the ratcheted count, because those are the axes it moves:
 
-`[SYSTEM] RANK ASCENSION AVAILABLE — Keen Sense · E-Rank Master (whole scene, 5 subjects) → D-Rank Adept (whole scene, 5 subjects, + reads intent and method). Ascend?`
+```text
+╔══ ◈  R A N K   A S C E N S I O N   A V A I L A B L E ══…
+     Keen Sense
+     From            [E-Rank] Master · whole scene · 5 subjects
+     To              [D-Rank] Adept · whole scene · 5 subjects · + reads intent
+                     and method
+     Action          Ascend?
+╚══…
+```
 
 An offer that omits a category grant or shows a count below the Section 7.2 ratchet floor is a misstated offer and is corrected like any misstated rule. An offer surfaced for a skill that is **not ascension-eligible** is a misstated offer of the same kind: it is withdrawn, the withholding is recorded under Section 7.2, and any mastery it consumed is restored, since the offer should never have been presentable.
 
@@ -1235,14 +1288,17 @@ The System issues the Bearer a **daily quest** — a training regimen with a har
 
 ## 8.1 The Daily Quest
 
-Once per in-fiction day the System issues the quest, rendered in a bracketed System block:
+Once per in-fiction day the System issues the quest, rendered as a Section 14.5.3 window:
 
 ```text
-[SYSTEM] QUEST ISSUED — DAILY TRAINING
-Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 100 squats 0/100 · 10 km run 0/10
-Rewards: Ability Points +3 · Status Recovery · Daily Random Box
-Deadline: 00:00 local tonight.
-Warning: incomplete at midnight transfers you to a penalty zone.
+╔══ ◈  Q U E S T   I S S U E D ══…
+     Daily Training
+     Objective       100 push-ups 0/100 · 100 sit-ups 0/100 · 100 squats 0/100
+                     10 km run 0/10
+     Reward          Ability Points +3 · Status Recovery · Daily Random Box
+     Deadline        00:00 local tonight
+     Warning         incomplete at midnight transfers you to a penalty zone
+╚══…
 ```
 
 - **Issue and deadline:** the quest issues at **06:00 local** every in-fiction day. Its deadline is **00:00 local immediately following that issue date**: the Bearer may make progress from 06:00 through 23:59, an 18-hour window. At midnight the issuing day's quest is closed before any later beat resolves. No daily quest is active from 00:00 through 05:59; the next one issues at 06:00.
@@ -1251,10 +1307,10 @@ Warning: incomplete at midnight transfers you to a penalty zone.
 - The quest awards **no XP**. It tracks a **consecutive-completion streak**: completion advances the streak by 1; failure resets it to 0.
 - **Seven-day streak upgrade:** when completion raises the streak to a **positive multiple of seven** (7, 14, 21, and so on), that completion's one Daily Random Box is recorded as **streak-upgraded**. It still creates exactly one pending box, but Section 8.1 resolves that box with two complete candidate rolls and lets the Bearer choose one result. There is no additional Weekly Cache, no multiplier on the other two daily rewards, and no separate 28-day benefit.
 
-On a streak-upgrade completion, append this exact line to the normal completion block:
+On a streak-upgrade completion, the completion window carries one further row before its closing rule:
 
 ```text
-Streak milestone: Daily Random Box upgraded — roll twice, choose one.
+     Streak           milestone — Daily Random Box upgraded, roll twice and choose one
 ```
 
 Completion is genuine effort, not a checkbox — the objectives are physical work the Bearer must actually do in the fiction. The System tracks progress against each objective (the `0/100` counters advance as the work is done). It resolves the quest **complete immediately** when the final objective finishes; if any objective remains incomplete at 00:00, it resolves the quest **failed at midnight**, resets the streak, and applies Section 8.3.
@@ -1276,15 +1332,17 @@ Any rune or skill book produced by a Daily Random Box has `instruction_binding: 
 
 ## 8.2 Inline System Notifications
 
-During prose, ordinary numeric changes render as compact single lines showing the change and the new standing:
+During prose, a pool or XP moving during resolution renders as a **ledger line** — unframed, indented to interior column 6, carrying the delta, the new standing, and the source:
 
 ```text
-XP: 40 → 90/300
-Mana: 25 → 13/45
-HP: 34 → 21/40
+     XP +50 · 40 → 90/300  (elite ×2)
+     MP −12 · 25 → 13/45
+     HP −13 · 34 → 21/40
 ```
 
-Each shows `before → current/maximum` (for XP, `current/next threshold`). Render each changed quantity once per resolved action. The full daily-quest and level-up blocks retain their bracketed form because they communicate more than a number. (The complete System-voice contract and every `/system` panel are authored in a later section.)
+Each shows `before → current/maximum` (for XP, `current/next threshold`). Pool labels are `HP` and `MP`, always. Render each changed quantity once per resolved action. **Anything the System presents rather than counts — the Flux Sight read, level-up, the daily quest — renders as a framed window instead**, in the same Section 15.1 frame the `/system` panels use. There is no `[SYSTEM]` text prefix on either form; it was retired at 1.63.
+
+**This is a mirror. Section 14.5 is the authority**, and it authors the full contract: the grammar, both forms, the Flux Sight read template, grouping, and re-render cadence. The two must never diverge.
 
 ## 8.3 The Penalty Zone
 
@@ -1330,9 +1388,11 @@ Canonical `system_state.non_daily_quests` stores `capacity_total`, `active`, and
 If a trigger fires while every non-daily slot is occupied, the quest does not attach and no state is silently displaced:
 
 ```text
-[SYSTEM] QUEST CAPACITY REACHED — <URGENT or HIDDEN>
-Non-daily slots: <used>/<capacity>.
-Free a slot while this opportunity remains available.
+╔══ ◈  Q U E S T   C A P A C I T Y   R E A C H E D ══…
+     <URGENT or HIDDEN>
+     Non-Daily Slots   <used> / <capacity>
+     Action            free a slot while this opportunity remains available
+╚══…
 ```
 
 The opportunity may be audited again only while its original world condition still holds. The System does not queue it after the crisis or discovery window has passed.
@@ -1357,12 +1417,14 @@ A danger the Bearer deliberately created, a remote report he cannot reach in tim
 An eligible offer is Tier 2 (Section 14.3) and renders:
 
 ```text
-[SYSTEM] URGENT QUEST OFFER — <name>
-Objective: <one concrete intervention with counters if needed>
-Reward: <XP> XP
-Deadline: <known timestamp or causal end condition>
-Failure: <the established condition that makes rescue impossible>
-Accept / Decline
+╔══ ◈  U R G E N T   Q U E S T   O F F E R ══…
+     <name>
+     Objective       <one concrete intervention with counters if needed>
+     Reward          <XP> XP
+     Deadline        <known timestamp or causal end condition>
+     Failure         <the established condition that makes rescue impossible>
+     Action          Accept / Decline
+╚══…
 ```
 
 The Bearer must explicitly accept before quest completion can be earned. Declining or letting the offer's causal window close creates no penalty. Acceptance requires a free non-daily slot and fixes the reward at **four times the common-kill XP of the Bearer's System Rank at acceptance**: E-Rank 40, D-Rank 100, C-Rank 240, B-Rank 600, A-Rank 1,600, S-Rank 4,000 (Section 3.3). Later leveling does not reprice it. Ordinary kill XP and Gate-clear XP still settle normally; the Urgent reward is additional challenge XP and settles immediately when the success condition is met. Failure or expiry awards nothing and does not impose a System penalty beyond the world's consequences.
@@ -1379,10 +1441,11 @@ A **Hidden quest pointer** becomes eligible only when all of the following are t
 The Runtime may not create `[HIDDEN] ???` merely for atmosphere, retroactively turn a guess into a quest, or use the pointer to describe the concealed fact. Asking the System what `???` means never satisfies the reveal condition. The Bearer must investigate or act in the fiction. If capacity is available, the pointer attaches automatically and renders:
 
 ```text
-[SYSTEM] HIDDEN QUEST DETECTED
-Objective: ???
-Reward: ???
-Deadline: ???
+╔══ ◈  H I D D E N   Q U E S T   D E T E C T E D ══…
+     Objective       ???
+     Reward          ???
+     Deadline        ???
+╚══…
 ```
 
 When the authored reveal condition is met, the same record changes in place and immediately renders its name, objective, progress, reward, and any deadline. If the completion condition is met in that same action, reveal and completion settle together. A Hidden quest's reward is the **Gate-clear milestone XP for the Bearer's System Rank when the pointer first attached**: E-Rank 70, D-Rank 150, C-Rank 320, B-Rank 700, A-Rank 1,500, S-Rank 3,200 (Section 3.4). Later leveling does not reprice it. The XP settles immediately on completion; failure, expiry, or abandonment awards nothing and adds no separate System penalty.
@@ -2078,7 +2141,7 @@ At **06:00 local time every morning**, the shop replaces its Daily Premium tab w
 - The stored remaining entries and previous draw are the sole operational source for the next model draws. Expired rotations in chronicles, changelogs, and historical checkpoints are provenance only and are never replayed during an ordinary rotation. If this compact state is missing, apply the required Profile 1.15 → 1.16 migration above once and persist its result before play continues.
 - Each offer has **quantity 1**. Buying it marks that category purchased and removes the row until the next rotation. Unbought offers expire at the next 06:00; they are not carried forward or discounted.
 - A later level-up does not re-Rank the current cycle. If the System first attaches after 06:00, it generates the current cycle immediately using the Bearer's then-current System Rank as each Rank roll's floor; it does not reconstruct earlier cycles.
-- Rotation occurs even while the Bearer sleeps or occupies a sealed instance. The System fires the Tier-1 line: `[SYSTEM] DAILY PREMIUM STOCK ROTATED — 6 offers available.`
+- Rotation occurs even while the Bearer sleeps or occupies a sealed instance. The System fires the Tier-1 window `◈  D A I L Y   P R E M I U M   S T O C K   R O T A T E D`, carrying one row: `Offers          6 available`.
 - Once purchased, a premium item is ordinary transferable physical property under the withdrawn-goods rule below, but no world store stocks it and it has no anchored mundane-market price. An unused premium item may be sold back only to the System shop for **25% of its premium purchase price, rounded down**.
 
 **Model bags — draw without replacement.** Weapon, Armor, Accessory, Consumable, and Key each maintain a separate bag containing every model in their tables below; Armor's bag contains the 25 exact slot/style pairs. At rotation, make one real uniform draw from each category's remaining entries and remove the drawn entry. When a bag is empty, refill it with the full model set. On the first draw after refill, temporarily exclude that category's immediately previous model; draw from the rest, then return the excluded model to the remaining bag. Thus every model appears once per bag before ordinary repetition, and no refill boundary repeats yesterday's exact model. Rank is not part of bag identity and continues to roll independently.
@@ -2228,6 +2291,8 @@ The Bearer's inventory is not a backpack — it is a **pocket dimension**, a pri
 
 - **Weightless and unencumbering.** Stored items impose no weight, bulk, or carrying limit. The Bearer never chooses what to leave behind for lack of hands; a full clear's loot, a spare weapon, a case of potions all sit in the pocket dimension at once, and he walks out unburdened.
 - **Store and withdraw anywhere, instantly, as a free action.** He may send an item to the inventory or call one **to his own hand** from anywhere — a street, a Gate interior, mid-sentence, mid-fight — with a thought. Without a named skill, withdrawal has no other destination and imparts no remote motion: an item cannot be summoned beside, behind, above, or inside a target, and cannot be launched directly from the pocket dimension. Drawing a blade from nothing to meet an attack is a legitimate action the die still resolves for its outcome, but the *hand-delivery itself* costs no action and no Mana. Dimensional Projection (Section 7.2) is the authored earned technique that can extend this property to bounded remote deployment and launch. This is a real tactical edge: he is never disarmed, never out of potions he owns, never caught with the wrong tool.
+- **The two directions are not symmetric, and 1.59 authors the half that was never stated.** Withdrawal is bounded above — *to his own hand*, with remote destinations explicitly denied. **Storage carried no stated bound at all**, and a rule that exists only by omission is the Section 20.2 defect: `EVT-000326` swept three crates and a workbench into the pocket dimension on one roll, which no hand-delivery reading supports, while Section 7.2 asserted the inventory was *hand-delivery only* in both directions on the strength of a sentence this section never wrote. **Storage reaches what he perceives; withdrawal reaches his hand.** He may send to the inventory any inanimate object he can perceive and could lawfully pick up — one that **no person is holding, wearing, or carrying**, and that nothing is actively contesting. There is no distance limit beyond perception and no requirement that it pass through his hand. He cannot take an object off a living person, cannot reach past a barrier he cannot perceive through, and a contested attempt is an uncertain action the die resolves like any other. Nothing here lets him disarm anyone.
+- **Remote storage is free outside an exchange and costs the exchange's one inventory change inside one.** Picking a room clean, sweeping a dock, or drawing a folder off a car boot is ordinary storage and costs nothing. Inside a resolved exchange, storing an object **not already in his hand** is that exchange's single inventory change under *Equip and swap* below — so recovering a thrown or projected weapon mid-fight competes with a weapon swap rather than being free. Hand-delivery in either direction stays free and unlimited, exactly as it has always been; only the remote reach is rationed. **This is what makes a launched weapon recoverable without making it costless**, and it is the cost Dimensional Projection's *Recall* rung (Section 7.3) exists to remove.
 - **Equip and swap.** Outside an exchange, any number of slots may be rearranged instantly. During an exchange, the Bearer may change **one item** as a free System operation; putting away one weapon and calling another into the same slot is one change. A two-handed item changes both hand slots as one item. Changing armor under immediate attack does not erase an attack already resolved against the prior loadout. The equipment state used for a roll and its damage is the state established before that roll.
 - **Private and secure.** What is in the pocket dimension cannot be seen, searched, stolen, or confiscated — it is not on his person to find. A licensed inspection, a mugging, a pat-down at a cordon reaches nothing. This is a standing advantage and a standing exposure risk (Section 19): an item summoned from empty air in front of witnesses is as much a giveaway as a status window, because no ordinary hunter can do it.
 - **What it holds.** **Inanimate physical objects** — gear, weapons, armor, consumables, crystals, cores, runes, books, keys, ordinary possessions. It does **not** hold living things (no creature, no person, no plant kept alive), and it is not a bank: **USD/CZK is mundane wallet-and-account money, never a System good** (Section 15, the `/system gear` panel, where cash renders beside gold and never totals with it). System **gold** is likewise not "in" the inventory — it is the shop's internal currency (Section 12.5), shown as a balance, spent only in-window.
@@ -2487,8 +2552,11 @@ skill_credit_coverage:
   - the daily window lapses incomplete → the penalty warning, then the transfer notice (Section 14.5);
   - a level-up settles level 10 or any multiple of ten above it → the `TITLE ASSESSMENT` block, immediately after the level-up block (Section 16.1);
   - a pool crosses a declared danger threshold (e.g., 0 Mana, Section 5.3) → a warning;
-  - a creature of resolved Rank (Section 14.4) enters the Bearer's perception → its **designation color** renders inline, red and pulsing for a creature two or more Ranks above him — the System's only unprompted tactical warning (Section 14.6).
-- **Tier 2 — Mandatory at the first qualifying yield (bounded presentation discretion; a declared precondition must hold).** Appraisal when an unidentified item enters perception and Flux Sight is B-Rank or higher (Section 4.4); a Hidden pointer when every Section 8.4.3 precondition is recorded; an Urgent offer when every Section 8.4.2 precondition holds; a danger warning while the condition holds. The Runtime chooses phrasing, not whether to fire or how long to delay after the applicable boundary.
+  - a creature of resolved Rank (Section 14.4) enters the Bearer's perception → its **designation color** renders inline, red and pulsing for a creature two or more Ranks above him — the System's only unprompted tactical warning (Section 14.6);
+  - **a subject covered by a reached Flux Sight rung enters the Bearer's perception** (Section 4.4) → the **Flux Sight read** fires on sight, no roll and no Mana, carrying every value that rung authors: a Gate's true Rank at E; a monster's Rank, Health and Mana at D; a hunter's or other awakened's at C; an unidentified item's full effect at B. **The read and the designation color render as one line** (Section 14.5), the color being derived from the very Rank the read states.
+- **Tier 2 — Mandatory at the first qualifying yield (bounded presentation discretion; a declared precondition must hold).** A Hidden pointer when every Section 8.4.3 precondition is recorded; an Urgent offer when every Section 8.4.2 precondition holds; a danger warning while the condition holds. The Runtime chooses phrasing, not whether to fire or how long to delay after the applicable boundary.
+
+  **The B-rung item appraisal moved to Tier 1 in 1.61** and is no longer listed here. It was the only Flux Sight rung any tier named, and naming one rung under *bounded discretion* while the rest went unnamed is what made the whole passive read as conditional. Every rung now fires on the same terms, which is what "reads on sight" has always meant.
 - **Tier 3 — Prohibited.** The System may never fire to supply an uncertain outcome, to describe a world-fact (Section 14.2), to author the Bearer's decision, or **with no declared precondition at all**.
 
 **On request** is separate: the `/system` panels (Section 15) render on the Bearer's command at any time. They are read-only views, not announcements, and they never resolve an action.
@@ -2499,17 +2567,175 @@ The System knows, exactly: **Bearer state** (Sections 3–7, 12.5), **quest stat
 
 It is **perceptible only to its Bearer** — always, without exception. It cannot be displayed, shared, demonstrated, or proven; to an onlooker, a Bearer reading a notification is a man who stopped walking and looked at nothing. **System-issued quests are Bearer-only and therefore unknown to the world** — no NPC, institution, or public holds a Knowledge State about one. The quest is secret; its footprint is not. If the daily quest puts the Bearer on a rooftop at dawn, the world sees a man on a rooftop at dawn.
 
-## 14.5 Compact Inline Notifications (exact)
+## 14.5 The Inline Notification Contract (exact)
 
-During prose, ordinary numeric changes render as compact single lines showing the change and the new standing — `before → current/maximum` (for XP, `current/next threshold`):
+Everything the System says inline during prose shares **one render with the panels of Section 15** and takes **one of two forms**. This is the A10 notification contract, identical to Section 8.2 — the two must never diverge.
+
+**The System has one visual identity, and through 1.62 it had two.** A summoned panel was a framed window — `╔══ ◈  S Y S T E M ══…`, interior column 6, bracketed Ranks, a fixed label vocabulary. An inline notification was a plain-text line wearing a `[SYSTEM]` prefix, sharing none of it. Nothing in the fiction justifies the split: it is the same System, addressing the same Bearer, through the same interface, and it looked like two different things depending only on whether he had asked. **1.63 removes the `[SYSTEM]` prefix entirely and renders every System utterance in the Section 15.1 frame.**
+
+**The two forms, and the line between them is what the System is doing:**
+
+- **The window** — what the System **presents**: a read, an event, an offer, an assessment, a panel. Framed, always, per Section 14.5.3.
+- **The ledger line** — what the System **counts** while an action resolves: a pool or XP moving, on the Bearer or on a target he acted upon. Unframed but indented into the window's interior column, per Section 14.5.2.
+
+A window is an occasion and is allowed to cost three rows. A ledger line fires several times an exchange, and framing each one would put forty rules through a single fight — the fiction pushed apart by its own bookkeeping. **The frame marks what the System chose to say; the indent marks what it is merely keeping.**
+
+### 14.5.1 The grammar
+
+Every inline line is built from the same parts, in this order, separated by ` · `:
+
+| Part | Form | Notes |
+|---|---|---|
+| Subject | name, or `<n> × <name>` for a group | omitted on the Bearer's own lines — he is the default subject |
+| Rank | `[E-Rank]` … `[S-Rank]` | **always bracketed and suffixed; a bare letter is never rendered** (Section 15.1) |
+| Delta | `+n` / `−n` | a true minus sign `−`, not a hyphen |
+| Standing | `before → current/maximum` | for XP, `current/next threshold` (Section 3.1) |
+| Source | `(reason)` in parentheses, last | why the number moved |
+
+**Pool labels are `HP` and `MP`, everywhere and always** — inline, in panels, and in prose that quotes a pool. `XP` likewise. A label is never spelled one way on one surface and another way on another (Section 15.1's fixed-vocabulary rule). This replaces the mixed `HP:` / `Mana:` forms used through 1.59.
+
+### 14.5.2 Form one — the ledger line
+
+A pool or XP moving during resolution renders **unframed, at interior column 6** — the same column a window's content sits on, so the numbers read as the System's even with no rule above them:
 
 ```text
-XP: 40 → 90/300
-Mana: 25 → 13/45
-HP: 34 → 21/40
+     MP −6 · 98 → 92/98
+     HP −38 · 200 → 162/200
+     XP +50 · 40 → 90/300  (elite ×2)
 ```
 
-Render each changed quantity once per resolved action; if one action resolves several monsters, aggregate that action's change and notify once. The bracketed blocks (Section 8.1, Section 15) are reserved for messages that carry more than a number. This is the A10 notification contract, identical to Section 8.2 — the two must never diverge.
+**The ledger line carries a subject when the subject is not the Bearer.** His own pools take no name — he is the default subject (Section 14.5.1) — while a target's pools, re-rendered under Section 14.5.5, name whose they are:
+
+```text
+     Crypt Ghoul · HP −323 · 250 → 0/250
+```
+
+**The indent is load-bearing and is not decoration.** It is what makes a ledger line legible as System output at a glance without a frame, and it is why the frame can be reserved for occasions. A ledger line rendered flush against the prose margin is misrendered.
+
+**The XP line names its source, and this is not decoration.** Section 3.3 makes every award a fixed multiple of a Rank value, so a line reading `+50 (elite ×2)` states the award *and* the arithmetic that produced it, and a reader can check it against the table without reconstructing the fight. A running total that names no source is unauditable the moment anyone doubts it — recorded as `F-017`, whose third item is an entire instant dungeon's XP going unrendered and the total then resuming from a figure that matched no derivable sum.
+
+Render each changed quantity **once per resolved action**; if one action resolves several monsters, aggregate that action's change and notify once (Section 3.6).
+
+### 14.5.3 Form two — the window
+
+Anything the System **presents** renders as a framed window: the Flux Sight read, level-up, mastery, quests, rotation, title assessment, class panels, warnings (Sections 3.2, 3.9, 7.4, 8.1, 8.4, 12.5, 16.1, 18.4–18.8). **The frame is Section 15.1's, unchanged and identical** — same glyphs, same nominal 78-cell rules, same interior column 6, same status gutter, same bracketed Ranks, same fixed label vocabulary. A summoned panel and a fired notification are the same window; only the name in the top rule differs.
+
+```text
+╔══ ◈  <E V E N T   N A M E> ══…
+     <content rows, at interior column 6>
+╚══…
+```
+
+**The top rule carries the event name, letter-spaced, in place of `S Y S T E M`.** A summoned panel names the surface the Bearer asked for; a fired window names the occasion that fired it. Both open on `╔══ ◈ `, both close on `╚══`, and neither is closed on the right.
+
+**Content rows follow Section 15.1 exactly**, which means the body needs no separate rule here — it is the panel body rule, applied to a smaller window:
+
+- Where entries share a shape, they render as **columns**, values landing on fixed columns and numerics aligned on their digits. A read's subjects are entries of one shape, so a read is a column layout.
+- Where a field set is **named and varying**, each field renders on its own row with its label in the leftmost column and its value on the value column — the quest form. **A label is never punctuated with a colon inside a window**; the column does the work the colon used to do, exactly as `Level`, `Card Rank` and `Unspent Points` already do in Section 15.2.
+- Prose never shares a row with tabular values; it goes on **indented continuation rows** at interior column 10.
+- **An absent value renders `—`**, never an omitted row.
+
+```text
+╔══ ◈  L E V E L   U P ══…
+     Level 15     all Stats +1     Ability Points +5     HP/MP restored
+╚══…
+
+╔══ ◈  U R G E N T   Q U E S T   O F F E R ══…
+     Cordon Breach
+     Objective       <one concrete intervention with counters if needed>
+     Reward          <XP> XP
+     Deadline        <known timestamp or causal end condition>
+     Failure         <the established condition that makes rescue impossible>
+     Action          Accept / Decline
+╚══…
+```
+
+**A window with a subject puts it on the first content row**, above the fields, rather than in the top rule — the top rule names *what happened*, the first row names *to whom*. Where a message has no subject at all the first row is simply the first field.
+
+**Why the `[SYSTEM]` prefix is gone.** It existed to mark a line as the System's when the line had no other way to say so. A framed window says so with its frame, and a ledger line says so with its indent, so the prefix marks nothing that the render does not already carry — and through 1.62 it was doing active harm, because a prefix is cheap enough to attach to any shape at all, which is exactly how four incompatible message shapes accumulated under one label.
+
+### 14.5.4 The Flux Sight read (exact)
+
+A Flux Sight read (Section 4.4) is Tier 1, fires on sight with no roll and no Mana, and **carries the designation color on the subject's own row** — the color is derived from the Rank the read states (Section 14.6), so rendering them separately says one thing twice.
+
+**A read is one window however many subjects it covers.** Everything perceived in the same instant shares a frame, its subjects rendered as columns under Section 14.5.3 — one rule for a room, not one rule per creature.
+
+```text
+╔══ ◈  F L U X   S I G H T ══…
+     <subject>            [<Rank>-Rank] <color>     HP <cur>/<max>    MP <cur>/<max>
+╚══…
+```
+
+Worked, at System Rank C:
+
+```text
+╔══ ◈  F L U X   S I G H T ══…
+     Crypt Warden         [C-Rank] yellow     HP 1000/1000    MP 240/240
+     10 × Crypt Ghoul     [E-Rank] gray       HP 40/40        MP 20/20      each
+     Marisela Kwan        [B-Rank] orange     HP 600/600      MP 300/300
+     Gate, Lakefront Corridor    [D-Rank]     confirmed by capability
+╚══…
+```
+
+**Per subject class:**
+
+| Subject | Rung | Renders |
+|---|---|---|
+| **Gate** | E (at or below System Rank), D (one above) | true Rank and `confirmed by capability`. A Gate has no pools and renders no `HP`/`MP`, and **no color** — a Gate is not a creature (Section 14.6) |
+| **Monster** | D | Rank, color, HP, MP |
+| **Hunter or other awakened** | C | Rank, color, HP, MP |
+| **Unidentified item** | B | its full effect; no pools, no color |
+
+**Grouping.** Identical commons render as one group row with `<n> × <name>` and `each` after the pools. **Anything individually consequential takes its own row** — every elite, every boss, every named hunter, and any common whose pools have diverged from its group. A group row is a compression of identical subjects, never a summary of different ones.
+
+**A populated room renders one room row, then individuals on engagement.** Where the Bearer perceives many awakened at once — a guild hall, a staging floor, a bar — the read does not emit one row per person. It emits a single row giving the room's shape, counts by Rank with each Rank's color, and then a **full individual read on anyone he engages, is approached by, singles out, or fights**:
+
+```text
+╔══ ◈  F L U X   S I G H T ══…
+     20 awakened present     [B-Rank] ×1 orange   [C-Rank] ×6 yellow   [D-Rank] ×13 white
+╚══…
+```
+
+This is the grouping rule applied to people rather than to monsters: **compress the undifferentiated, name what matters.** The room line carries no pools, because a count of strangers has no single pool to state; a pool arrives with the individual read. The Bearer's knowledge is unchanged either way — the passive reads all of them, and the rendering is what is bounded.
+
+**Partial coverage renders what is covered, and says so.** Where the Bearer's Flux Sight Rank reaches a subject's Rank but not its class, or the System holds no resolved Rank at all, the line carries what is known and nothing more — an unconfirmed Gate's population is uncolored and unread until first entry resolves it (Sections 9.5, 14.6), and the System asserts no value it has not been given (Section 14.2). A read is never padded with a guess to fill the template.
+
+### 14.5.5 Re-rendering during a fight
+
+**Full read on first perception of a subject in a scene** (for an awakened he has met before, Section 14.5.6 governs instead). Thereafter that subject's pools re-render **only in an exchange the Bearer's own resolved action changed them**, as a **ledger line** (Section 14.5.2) carrying the subject — the same rule his own numbers already follow, pointed outward:
+
+```text
+     Crypt Warden · HP −258 · 1000 → 742/1000
+```
+
+**The window fires once; the fight is ledger lines.** A read is an occasion — the moment the System tells him what he is looking at — and it is framed. What follows is arithmetic on a subject already introduced, so it takes the indent and no rule. An exchange that changes nothing about a subject renders nothing about it. The **window** repeats only if the subject's Rank is re-resolved or the Bearer's System Rank changes mid-scene and recolors it (Section 14.6).
+
+**Why the pools re-render at all, when the color does not.** A designation color is fixed for the scene, so restating it is noise; a pool is the number the fight is actually about, and leaving it to be carried in conversational memory across sixty exchanges is precisely the drift `F-017` records. Rendering the change at the moment it happens is what makes a wrong figure visible while it is still cheap to correct.
+
+### 14.5.6 A subject he already knows
+
+**The per-scene cadence above is for a subject the Bearer is meeting.** For an awakened he has already read, the rule is **first meeting, then on change**:
+
+- **The first time he ever perceives someone**, the full read fires, wherever that happens — a Gate mouth, a guild hall, a kitchen.
+- **Afterwards it renders only when a value has materially moved** since his last read of that person: Health or Mana away from where he last saw it, a Rank that has changed, a condition the pools carry. An unchanged subject renders nothing, in any number of scenes.
+
+```text
+— an ordinary morning, nothing has moved —
+(nothing rendered)
+
+"Morning."
+
+— he comes in favouring his left side —
+╔══ ◈  F L U X   S I G H T ══…
+     Owen Callahan        [C-Rank] yellow     HP 198/275      MP 137/137
+╚══…
+```
+
+**The passive is not narrowed; the notification is.** Flux Sight remains always in effect and the Bearer always knows — Section 4.4 is untouched. What this bounds is when the System *says so*, and it is the same principle already governing the designation color (*"not repeated each exchange"*) and a target's pools in Section 14.5.5 (*rendered in the exchange that changed them*), now carried to people he lives among.
+
+**It is also the more useful rule, not merely the quieter one.** Under a fire-every-scene cadence a partner's stat block opens every domestic scene, restating a number that has not moved in days — so the line carries no information and the reader learns to skip it, which is exactly when a real change slips past. Under this rule **a rendered line always carries news**, and an injured friend walking through the door is the case it fires on.
+
+Ruled 2026-08-05 alongside the room line above, both raised by a player asking what the C rung does to an ordinary conversation. The `F-017` cadence — full read at first perception in a scene, then on change — was extended from Section 14.6's color rule without accounting for a familiar NPC standing in the Bearer's own kitchen.
 
 ## 14.6 Threat-Color Legibility (Designation Colors)
 
@@ -2532,6 +2758,10 @@ The creature's Rank relative to the Bearer's System Rank sets the color:
 
 **In prose play.** A creature's designation color is stated **inline on first perception** of that creature in a scene and is not repeated each exchange unless the Bearer's System Rank changes mid-scene and recolors it. It has no `/system` panel of its own.
 
+**Where a Flux Sight read covers the same creature, the color rides that read's line and is not rendered separately** (Sections 4.4, 14.5.4). Both fire at the same instant, on the same subject, at first perception, both without a roll, and the color is computed from the very Rank the read states — so two lines would report one perception twice. Where Flux Sight does **not** cover the creature but its true Rank is resolved, the color still fires alone on its own Tier-1 terms, exactly as authored above: the color is the floor, and the read is the floor plus what the rung adds.
+
+**A Gate takes no color.** The palette compares a *creature's* Rank with the Bearer's, and a Gate is a place. A Gate's Flux Sight line carries its true Rank and nothing else (Section 14.5.4); its population is colored individually on first perception, once entry has resolved what that population is (Section 9.5).
+
 ## 14.7 The Onset Sequence
 
 The System's **first contact** with a new Bearer is a fixed message sequence — the same four beats every time, rendered in the bracketed A10 style (Section 14.5, Section 15). This section authors only the **System's messages**; the in-world incident that precedes attachment is a campaign concern (Section 2) and is not authored here.
@@ -2546,25 +2776,37 @@ The System's **first contact** with a new Bearer is a fixed message sequence —
 The worked onset block:
 
 ```text
-[SYSTEM] INITIALIZING…
-[SYSTEM] HOST DESIGNATION ACCEPTED — you are the Bearer.
-[SYSTEM] STATUS WINDOW GRANTED. Access via /system.
+╔══ ◈  I N I T I A L I Z I N G ══…
+     Host designation      accepted — you are the Bearer
+     Status window         granted, access via /system
+╚══…
 
-[SYSTEM] STATUS — <NAME>
-Class: —  ·  Title: —
-Level 1  ·  XP 0/100
-Health <4×Vitality>/<same>  ·  Mana <2×Intelligence>/<same>  ·  Unspent points 0
-Strength <n> · Agility <n> · Vitality <n> · Perception <n> · Intelligence <n>
+╔══ ◈  S T A T U S ══…
+     <NAME>
+     Level           1                   Class          —
+     XP              0/100               Title          —
+╟──  VITALS  ──…──╢
+     HP    <4×Vitality> / <same>
+     MP    <2×Intelligence> / <same>
+     Unspent Points  0
+╟──  STATS  ──…──╢
+     Strength <n> · Agility <n> · Vitality <n> · Perception <n> · Intelligence <n>
+╚══…
 
-[SYSTEM] DAILY PREMIUM STOCK ROTATED — 6 offers available.
+╔══ ◈  D A I L Y   P R E M I U M   S T O C K   R O T A T E D ══…
+     Offers          6 available
+╚══…
 
 — at the next 06:00 local —
 
-[SYSTEM] QUEST ISSUED — DAILY TRAINING
-Objectives: 100 push-ups 0/100 · 100 sit-ups 0/100 · 100 squats 0/100 · 10 km run 0/10
-Rewards: Ability Points +3 · Status Recovery · Daily Random Box
-Deadline: 00:00 local tonight.
-Warning: incomplete at midnight transfers you to a penalty zone.
+╔══ ◈  Q U E S T   I S S U E D ══…
+     Daily Training
+     Objective       100 push-ups 0/100 · 100 sit-ups 0/100 · 100 squats 0/100
+                     10 km run 0/10
+     Reward          Ability Points +3 · Status Recovery · Daily Random Box
+     Deadline        00:00 local tonight
+     Warning         incomplete at midnight transfers you to a penalty zone
+╚══…
 ```
 
 Every value is read from creation state (Sections 3–6): level 1, XP 0/100, `Health = 4 × effective Vitality`, and `Mana = 2 × effective Intelligence`. After this sequence the Bearer is an ordinary played character carrying the System, and all further output follows Section 14.3.
@@ -2589,9 +2831,19 @@ A tier never shows less truth than another: the Console defers detail to a panel
 
 Every panel is a **framed System window rendered in a monospaced code block**. The templates in Sections 15.2–15.4 are normative: a Runtime fills the `<…>` slots from canonical state and changes nothing else. This section governs the frame those templates are rendered into, and it governs every panel identically.
 
-**The frame is horizontal rules only, and carries no vertical edges.** A panel opens on a top rule, closes on a bottom rule, and divides on inner section rules; **no row carries a `║` at either margin, and no rule is closed on the right.** The rules keep their left corner glyph and run rightward in `═` or `─`: the title sits in the top rule as `╔══ ◈  S Y S T E M  ·  <PANEL> ══…`, a section rule carries its name at the left and may carry one count or status after its run — `╟──  ACTIVE  ──…──  9 known` — and the panel closes on `╚══…`. An interior row is its content alone, and a blank interior row is an empty line.
+**It also governs every window the System fires unprompted** (Section 14.5.3). From 1.63 a summoned panel and a fired notification are the same render — same glyphs, same rules, same interior column, same gutter, same label vocabulary — differing only in the name carried in the top rule and in how much there is to say. A window the Bearer asked for and a window that arrived on its own should be recognisably one interface, because in the fiction they are one System.
+
+**The frame is horizontal rules only, and carries no vertical edges.** A panel opens on a top rule, closes on a bottom rule, and divides on inner section rules; **no row carries a `║` at either margin.** The rules keep their left corner glyph and run rightward in `═` or `─`: the title sits in the top rule as `╔══ ◈  S Y S T E M  ·  <PANEL> ══…`, a section rule carries its name at the left and may carry one count or status after its run, and the panel closes on `╚══…`. An interior row is its content alone, and a blank interior row is an empty line.
+
+**Only an inner section rule is closed on the right, and it closes on `╢`.** The top and bottom rules run open. This is a correction rather than a change: through 1.62 this paragraph said *no* rule was closed on the right while every normative template in Sections 15.2–15.4 closed its section rules on `╢`, so the stated rule and the templates it governs disagreed on every panel in the profile. **The templates are what a Runtime actually copies, so the templates win** — and the asymmetry earns its keep, because a closed rule reads as a divider *between* two things while an open rule reads as an edge *of* something, which is exactly the difference between a section break and the start or end of a window.
+
+```text
+╟──  ACTIVE  ────────────────────────────────────────────────  9 known  ────╢
+```
 
 **Why the edges are gone.** They cost more than they bought. A right edge only holds if every row is padded to an exact width, so a Runtime that miscounts one glyph — and these panels are full of them, `★`, `█`, `◈`, `×`, bracketed Ranks — renders a wall that visibly fails to close, turning a cosmetic slip into something that reads as a broken window. The left edge then repeats that risk on every row for nothing, since the rules already mark where a panel starts and ends. What the frame is actually for is telling the Bearer where a panel begins, where it ends, and where its sections divide, and the horizontal rules do all three on their own.
+
+**Rule length is not part of a template.** Every template in this profile writes its rules abbreviated — `╔══ ◈  S Y S T E M ══…`, `╟──  VITALS  ──…──╢`, `╚══…` — because a rule's *run* carries no information and reproducing it at full width in the source costs bytes on every readiness and operation budget that loads the section. **A rendered window always runs its rules to the nominal 78 cells** regardless of how long the rule appears here. A template fixes the frame's structure, its title, its section names and its columns; the `…` marks a run the Runtime completes.
 
 **Rows are laid out on columns, not padded to a width.** The Runtime aligns each group's columns as the templates below set them and **never pads a row rightward**, because there is no right margin to pad to; a short row simply ends. It **never truncates**: a value too long for its row wraps onto an indented continuation row beneath its own label, at the label's indentation. The rules themselves run to a nominal 78 cells so that panels stack evenly, and a rule is the only thing in a panel with a fixed length.
 
@@ -2614,9 +2866,11 @@ Every panel is a **framed System window rendered in a monospaced code block**. T
 
 **Bars.** `HP`, `MP`, and `XP` render as 20-cell meters, `█` filled proportional to `current/max` and `░` empty, with the numbers beside them. XP measures against its next-level threshold (Section 3.1).
 
-**Fixed label vocabulary.** `Card Rank`, `System Rank`, `Physical Reduction`, `Unspent Points`, `Stat Contribution`, `Non-Daily Slots`, `Acc.1`, `Acc.2`, `Main`, `Off`. A label is never shortened differently in another panel.
+**Fixed label vocabulary.** `HP`, `MP`, `XP`, `Card Rank`, `System Rank`, `Physical Reduction`, `Unspent Points`, `Stat Contribution`, `Non-Daily Slots`, `Acc.1`, `Acc.2`, `Main`, `Off`. A label is never shortened differently in another panel — **or on another surface**: the three pool labels read identically in a panel, in an inline notification (Section 14.5), and in prose that quotes a pool.
 
-**Mana is never abbreviated** (owner ruling, 2026-07-30, Section 20.3). The skills table carries a column headed `MANA` with the cost beneath it; the word appears in full, and `M<n>` remains forbidden. A costless ordinary skill renders under `PASSIVE`, where the column does not exist.
+**A skill's Mana cost is never abbreviated** (owner ruling, 2026-07-30, Section 20.3). The skills table carries a column headed `MANA` with the cost beneath it; the word appears in full, and `M<n>` remains forbidden. A costless ordinary skill renders under `PASSIVE`, where the column does not exist.
+
+**Scope of that ruling, stated in 1.61 rather than left to inference.** It governs the **skill-cost column** — the surface it was made about, and the surface its own next sentence names. It does not govern the **pool labels**, which are `HP`, `MP` and `XP` on every surface, as the bar rule directly above has always rendered them. The ruling's target was `M<n>`, a compression that made a cost unreadable beside a skill name; nothing about it was aimed at the pools. Through 1.59 the inline contract read `HP:` and `Mana:` in the same three-line block — one word spelled out between two abbreviations — and that mixture is what the scoping resolves. A cost is written `Mana 8`; a pool is written `MP 92/98`.
 
 **An empty group still renders**, with its header and `none` on the following row. A fresh Bearer's window has the same shape as a level-50 Bearer's — sections do not appear and disappear, so the Bearer always sees the whole of himself.
 
@@ -2633,7 +2887,7 @@ Every panel is a **framed System window rendered in a monospaced code block**. T
 Bare **`/system`** renders the Console: identity, vitals, stats, unclaimed rewards, active quests, a counted index of every other panel, and funds. It is the default because it is what a Bearer checks between exchanges.
 
 ```text
-╔══ ◈  S Y S T E M ══════════════════════════════════════════════════════════
+╔══ ◈  S Y S T E M ══…
 
      <NAME>
 
@@ -2641,7 +2895,7 @@ Bare **`/system`** renders the Console: identity, vitals, stats, unclaimed rewar
      Card Rank       [<Rank>]            Titles         <equipped or —>
      System Rank     [<Rank>]            Condition      <injury or none>
 
-╟──  VITALS  ────────────────────────────────────────────────────────────────╢
+╟──  VITALS  ──…──╢
 
      HP    <20-cell bar>     <current> / <maximum>
 
@@ -2649,7 +2903,7 @@ Bare **`/system`** renders the Console: identity, vitals, stats, unclaimed rewar
 
      XP    <20-cell bar>     <current> / <next>         <n> to Level <L+1>
 
-╟──  STATS  ─────────────────────────────────────────────────────────────────╢
+╟──  STATS  ──…──╢
 
                           BASE      GEAR      TOTAL
 
@@ -2672,26 +2926,26 @@ Bare **`/system`** renders the Console: identity, vitals, stats, unclaimed rewar
                     <objective progress>
                     <local or causal deadline>
 
-╟──  ELSEWHERE  ─────────────────────────────────────────────────────────────╢
+╟──  ELSEWHERE  ──…──╢
 
      Skills          <n> active  <n> passive  <n> stat      /system skills
      Gear            <n> worn · <n> stored                  /system gear
      Titles          <n> earned · <k>/<s> equipped          /system titles
      Daily Premium   <n> / 6 · rotates <deadline>           /system shop
 
-╟──  FUNDS  ─────────────────────────────────────────────────────────────────╢
+╟──  FUNDS  ──…──╢
 
      Gold            <n> g
      Cash            $ <n>          last known
      Pending         $ <n>          <n> payouts
 
-╚════════════════════════════════════════════════════════════════════════════
+╚══…
 ```
 
 Ren at level 3, mid-run, carrying one completed daily's separate rewards:
 
 ```text
-╔══ ◈  S Y S T E M ══════════════════════════════════════════════════════════
+╔══ ◈  S Y S T E M ══…
 
      REN
 
@@ -2699,7 +2953,7 @@ Ren at level 3, mid-run, carrying one completed daily's separate rewards:
      Card Rank       [E-Rank]            Titles         Loner
      System Rank     [E-Rank]            Condition      No injury
 
-╟──  VITALS  ────────────────────────────────────────────────────────────────╢
+╟──  VITALS  ──…──╢
 
      HP    ████████████████░░░░      39 / 48
 
@@ -2707,7 +2961,7 @@ Ren at level 3, mid-run, carrying one completed daily's separate rewards:
 
      XP    ██████████░░░░░░░░░░     150 / 300       150 to Level 4
 
-╟──  STATS  ─────────────────────────────────────────────────────────────────╢
+╟──  STATS  ──…──╢
 
                           BASE      GEAR      TOTAL
 
@@ -2736,20 +2990,20 @@ Ren at level 3, mid-run, carrying one completed daily's separate rewards:
   !  [ URGENT ]     Cull the Red Line Nest            3 / 4 · +40 XP
                     Deadline: crisis ends
 
-╟──  ELSEWHERE  ─────────────────────────────────────────────────────────────╢
+╟──  ELSEWHERE  ──…──╢
 
      Skills          3 active  1 passive  0 stat            /system skills
      Gear            1 worn · 5 stored                      /system gear
      Titles          2 earned · 1/1 equipped                /system titles
      Daily Premium   6 / 6 · rotates in 14h12m              /system shop
 
-╟──  FUNDS  ─────────────────────────────────────────────────────────────────╢
+╟──  FUNDS  ──…──╢
 
      Gold            340 g
      Cash            $ 4,000.00     last known
      Pending         $ 0.00         no payouts
 
-╚════════════════════════════════════════════════════════════════════════════
+╚══…
 ```
 
 - **`PENDING` lists each unclaimed reward separately** — Ability Points, Status Recovery, and Daily Random Box each on their own row with their own count (Section 3.9) — and the whole section renders `none` when empty. Level-ups never appear; they settle immediately.
@@ -2766,7 +3020,7 @@ Each panel below renders in its own framed window under Section 15.1's grammar. 
 Skills render in **three groups, and never any other**. The `SKILLS · ACTIVE` group contains every skill whose ledger entry carries a Mana cost. The `SKILLS · PASSIVE` group contains every skill whose cost is `passive` and is not a Section 4.4 threshold passive. `STAT PASSIVE` contains every Section 4.4 threshold passive, which has its own row shape and therefore its own group rather than a second grammar inside `PASSIVE`. Preserve character-ledger order inside each group; never duplicate a skill, never move one between groups, and never classify from its name or prose effect. Each group renders even when empty, with `none` beneath its header.
 
 ```text
-╔══ ◈  S Y S T E M  ·  S K I L L S ══════════════════════════════════════════
+╔══ ◈  S Y S T E M  ·  S K I L L S ══…
 
 ╟──  ACTIVE  ───────────────────────────────────────────────────  <n> known  ╢
 
@@ -2790,7 +3044,7 @@ Skills render in **three groups, and never any other**. The `SKILLS · ACTIVE` g
      <name>              [<Rank>]   <STAT> <n>     <n>     [<Rank>] at <n>
          <effect>
 
-╚════════════════════════════════════════════════════════════════════════════
+╚══…
 ```
 
 Mastery renders as the five-cell star string of Section 7.4 followed by its level name. `NEXT` is qualifying-scene progress toward the next mastery level, `<n> / 3`. Cumulative successful-use counts are canonical but do not render here; they are reached through `/system skills <name>`. A Stat Passive has no stars and no mastery progress: it renders its driving Stat, that Stat's current value, its use count, and the next rung's threshold. Where Section 4.4's authoring clamp holds the next rung, that cell reads `[<Rank>] held: rung unauthored` instead of a threshold, so a rung the Bearer has reached in Stat points but cannot receive is visible rather than looking merely unearned.
@@ -2798,7 +3052,7 @@ Mastery renders as the five-cell star string of Section 7.4 followed by its leve
 Ren at level 13:
 
 ```text
-╔══ ◈  S Y S T E M  ·  S K I L L S ══════════════════════════════════════════
+╔══ ◈  S Y S T E M  ·  S K I L L S ══…
 
 ╟──  ACTIVE  ─────────────────────────────────────────────────────  4 known  ╢
 
@@ -2834,7 +3088,7 @@ Ren at level 13:
      Pre-empt            [D-Rank]   AGI  40        1       [C-Rank] at 44
          Acts normally in a surprise exchange on an ambush warning
 
-╚════════════════════════════════════════════════════════════════════════════
+╚══…
 ```
 
 ### 15.3.2 `/system gear`
@@ -2860,9 +3114,9 @@ The order does real work at every boundary it crosses. A key is a consumable by 
 **The stored side is structured to match.** `system_state.inventory` holds one list per kind — `keys`, `consumables`, `special`, `gear`, `materials` — so a panel renders five groups from five lists and each rule's count is that list's length. Nothing about the grouping is inferred at render time, no holding can appear twice, and no holding can appear in a kind this table does not name.
 
 ```text
-╔══ ◈  S Y S T E M  ·  G E A R ══════════════════════════════════════════════
+╔══ ◈  S Y S T E M  ·  G E A R ══…
 
-╟──  WORN · WEAPONS  ────────────────────────────────────────────────────────╢
+╟──  WORN · WEAPONS  ──…──╢
 
      SLOT     ITEM                      RANK       BONUS       POWER
 
@@ -2873,7 +3127,7 @@ The order does real work at every boundary it crosses. A key is a consumable by 
 
      Off      <item or —>               [<Rank>]   <STAT> <n>  <n>
 
-╟──  WORN · ARMOR  ──────────────────────────────────────────────────────────╢
+╟──  WORN · ARMOR  ──…──╢
 
      SLOT     ITEM                      RANK       BONUS       REDUCE
 
@@ -2883,12 +3137,12 @@ The order does real work at every boundary it crosses. A key is a consumable by 
      Legs     <item or —>               [<Rank>]   <STAT> <n>  <n>%
      Feet     <item or —>               [<Rank>]   <STAT> <n>  <n>%
 
-╟──  WORN · ACCESSORIES  ────────────────────────────────────────────────────╢
+╟──  WORN · ACCESSORIES  ──…──╢
 
      Acc.1    <item or —>               [<Rank>]   <STAT> <n>
      Acc.2    <item or —>               [<Rank>]   <STAT> <n>
 
-╟──  WORN · TOTALS  ─────────────────────────────────────────────────────────╢
+╟──  WORN · TOTALS  ──…──╢
 
      Stat Contribution      STR <n>   AGI <n>   VIT <n>
                             PER <n>   INT <n>
@@ -2916,7 +3170,7 @@ The order does real work at every boundary it crosses. A key is a consumable by 
      <item>                        × <n>   [<Rank>] · <binding tag>
          <effect, limits, and condition>
 
-╟──  FUNDS  ─────────────────────────────────────────────────────────────────╢
+╟──  FUNDS  ──…──╢
 
      Gold                          <n> g                      /system shop
      Cash                     $ <n>           last known
@@ -2924,15 +3178,15 @@ The order does real work at every boundary it crosses. A key is a consumable by 
      Pending                  $ <n>           <n> payouts
          <source>              $ <n>           filed <date>
 
-╚════════════════════════════════════════════════════════════════════════════
+╚══…
 ```
 
 Ren at level 13:
 
 ```text
-╔══ ◈  S Y S T E M  ·  G E A R ══════════════════════════════════════════════
+╔══ ◈  S Y S T E M  ·  G E A R ══…
 
-╟──  WORN · WEAPONS  ────────────────────────────────────────────────────────╢
+╟──  WORN · WEAPONS  ──…──╢
 
      SLOT     ITEM                      RANK       BONUS       POWER
 
@@ -2942,7 +3196,7 @@ Ren at level 13:
 
      Off      —
 
-╟──  WORN · ARMOR  ──────────────────────────────────────────────────────────╢
+╟──  WORN · ARMOR  ──…──╢
 
      SLOT     ITEM                      RANK       BONUS       REDUCE
 
@@ -2952,12 +3206,12 @@ Ren at level 13:
      Legs     Bastion Legs              [E-Rank]   VIT  +1     3%
      Feet     —
 
-╟──  WORN · ACCESSORIES  ────────────────────────────────────────────────────╢
+╟──  WORN · ACCESSORIES  ──…──╢
 
      Acc.1    Hunter's Band             [E-Rank]   STR  +1
      Acc.2    —
 
-╟──  WORN · TOTALS  ─────────────────────────────────────────────────────────╢
+╟──  WORN · TOTALS  ──…──╢
 
      Stat Contribution      STR +1    AGI +5    VIT +2
                             PER +0    INT +0
@@ -2988,7 +3242,7 @@ Ren at level 13:
      Rune teaching Stone Skin      × 1     [D-Rank] · UNBOUND
          NPC-ELIGIBLE · teaches Stone Skin [D-Rank] Novice · unused
 
-╟──  FUNDS  ─────────────────────────────────────────────────────────────────╢
+╟──  FUNDS  ──…──╢
 
      Gold                            340 g                    /system shop
      Cash                     $  4,000.00     last known
@@ -2996,7 +3250,7 @@ Ren at level 13:
      Pending                  $  1,762.50     1 payout
          Cicero Gate split    $  1,762.50     filed 08-03
 
-╚════════════════════════════════════════════════════════════════════════════
+╚══…
 ```
 
 - **Identity and mechanics stay separated.** Slot, item name, Rank, and the tabular values occupy the entry row; bonuses that do not fit a column, combat effects, limits, and condition occupy continuation rows. This leaves room for prefixes, suffixes, fabrication series, and durability without widening the frame.
@@ -3006,9 +3260,9 @@ Ren at level 13:
 ### 15.3.3 `/system quests`
 
 ```text
-╔══ ◈  S Y S T E M  ·  Q U E S T S ══════════════════════════════════════════
+╔══ ◈  S Y S T E M  ·  Q U E S T S ══…
 
-╟──  CAPACITY  ──────────────────────────────────────────────────────────────╢
+╟──  CAPACITY  ──…──╢
 
      Non-Daily Slots        <used> / <capacity>
      From System Rank       [<Rank>]
@@ -3025,7 +3279,7 @@ Ren at level 13:
 
      [ HIDDEN ]     ???
 
-╚════════════════════════════════════════════════════════════════════════════
+╚══…
 ```
 
 Capacity renders first (Section 8.4.4). Urgent rows always show objective progress, fixed XP, and deadline. An unrevealed Hidden row shows only `???`, and its reward and deadline remain `???` even though canonical state holds them (Section 8.4.3). Completed, failed, expired, declined, and abandoned quests leave this panel immediately and remain reachable only through `/system log`.
@@ -3033,7 +3287,7 @@ Capacity renders first (Section 8.4.4). Urgent rows always show objective progre
 ### 15.3.4 `/system titles`
 
 ```text
-╔══ ◈  S Y S T E M  ·  T I T L E S ══════════════════════════════════════════
+╔══ ◈  S Y S T E M  ·  T I T L E S ══…
 
 ╟──  EQUIPPED  ───────────────────────────────────────────  <k> / <s> slots  ╢
 
@@ -3048,12 +3302,12 @@ Capacity renders first (Section 8.4.4). Urgent rows always show objective progre
      <title>
          <passive, dormant>
 
-╟──  ASSESSMENT  ────────────────────────────────────────────────────────────╢
+╟──  ASSESSMENT  ──…──╢
 
      Last  level <L>  ·  <n> granted        Next  level <L+10>
      Held  <k> / <m>  ·  slots <k> / <s>
 
-╚════════════════════════════════════════════════════════════════════════════
+╚══…
 ```
 
 **`EQUIPPED` renders one row per slot, filled or not** — a Bearer holds `<s>` slots, one per assessment passed to a maximum of five (Section 16), and an unfilled one renders `<empty slot>` rather than vanishing, so the loadout's shape is always visible. Each equipped title carries `★` and its passive is active; every earned title outside a slot renders under `EARNED` with its passive marked dormant. Equipping, unequipping, and swapping happen here, are free and instant, and take no action in a fight.
@@ -3063,9 +3317,9 @@ The `ASSESSMENT` section reads `system_state.titles` (Section 16.1): the level o
 ### 15.3.5 `/system shop`
 
 ```text
-╔══ ◈  S Y S T E M  ·  S H O P ══════════════════════════════════════════════
+╔══ ◈  S Y S T E M  ·  S H O P ══…
 
-╟──  BALANCE  ───────────────────────────────────────────────────────────────╢
+╟──  BALANCE  ──…──╢
 
      Gold                          <n> g
 
@@ -3088,11 +3342,11 @@ The `ASSESSMENT` section reads `system_state.titles` (Section 16.1): the level o
 
      <tab>          <item>                [<Rank>]   <line>      <n> g
 
-╟──  SELL  ──────────────────────────────────────────────────────────────────╢
+╟──  SELL  ──…──╢
 
      <item>                        × <n>   [<Rank>] · <n> g each
 
-╚════════════════════════════════════════════════════════════════════════════
+╚══…
 ```
 
 The shop's contents, prices, stock unlock, and rotation are governed entirely by Section 12.5; this template governs only how they render. `DAILY PREMIUM` renders its cycle deadline, its fabrication series, and its six quantity-one offers with their purchased state. `BUY` renders the unlimited catalogue at every Rank the Bearer has unlocked. `SELL` renders crystals and eligible stored holdings at their resale rates. Buying and selling happen in-window and are never put to the player as an out-of-character question. The no-exchange rule holds: loot becomes gold only by selling it here, and gold never becomes USD.
@@ -3100,7 +3354,7 @@ The shop's contents, prices, stock unlock, and rotation are governed entirely by
 ### 15.3.6 `/system log`
 
 ```text
-╔══ ◈  S Y S T E M  ·  L O G ════════════════════════════════════════════════
+╔══ ◈  S Y S T E M  ·  L O G ══…
 
 ╟──  RECENT  ────────────────────────────────────────────────  <n> messages  ╢
 
@@ -3111,7 +3365,7 @@ The shop's contents, prices, stock unlock, and rotation are governed entirely by
 
      [ <TYPE> ]     <quest name>                      <outcome>
 
-╚════════════════════════════════════════════════════════════════════════════
+╚══…
 ```
 
 The log replays authored System messages verbatim — it never re-composes or summarizes one — and lists quests that have left the active panel, with their outcomes. It is a **bounded window on the recent record**, not a campaign history: it reads the campaign's current-state ledger and the quest records, never the full chronicle. A message older than that window is chronicle material and is reached there, not through this panel.
@@ -3155,23 +3409,24 @@ A **title** is a named commendation the System grants for a feat the Bearer's ow
 **The assessment block** is a Tier-1 message (Section 14.3), fired once per assessment, immediately after the level-up block that caused it:
 
 ```text
-[SYSTEM] TITLE ASSESSMENT — LEVEL <L>
+╔══ ◈  T I T L E   A S S E S S M E N T ══…
+     Level <L>
+╟──  EARNED  ──────────────────────────────────────────────  <n> granted  ──╢
+  !  <title>          [<grade>]                    Stat points +<2 / 5 / 10>
+          <the feat, as the record proves it>
+          <passive>
 
-TITLE EARNED — <title>  [<grade>]
-  <the feat, as the record proves it>
-  <passive>
-  Stat points +<2 / 5 / 10>
-
-TITLE EARNED — <title>  [<grade>]
-  <the feat, as the record proves it>
-  <passive>
-  Stat points +<2 / 5 / 10>
-
-Stat points +<total>.  Unspent <before> → <after>.
-Title slots <k> / <s>.  Titles held: <h> / <m>.   Next assessment: level <L+10>.
+  !  <title>          [<grade>]                    Stat points +<2 / 5 / 10>
+          <the feat, as the record proves it>
+          <passive>
+╟──  STANDING  ──…──╢
+     Stat points     +<total>       Unspent <before> → <after>
+     Title slots     <k> / <s>      Titles held <h> / <m>
+     Next assessment level <L+10>
+╚══…
 ```
 
-An assessment that grants nothing renders the same block with `No title earned.` where the granted entries would stand, omits the stat-point line, and keeps the closing line. **The System never suppresses an assessment** — the Bearer always learns one ran, even when it commended nothing.
+An assessment that grants nothing renders the same window with `none` on the `EARNED` rule's count and a single `No title earned` row where the granted entries would stand, omits the stat-point row, and keeps the `STANDING` section. **The System never suppresses an assessment** — the Bearer always learns one ran, even when it commended nothing.
 
 **Stored state.** The Bearer's ledger holds a `system_state.titles` block: `earned`, one entry per held title naming the title, the assessment level that granted it, and the Event whose resolution satisfied the criterion; and `last_assessment` / `next_assessment`, the level of the most recent assessment and the level of the next. The **equipped** titles remain `system_state.title` — the field the Console and every panel already read (Sections 15.2, 15.3.4) — now holding a **list** of equipped title names, `null` or empty for none. Its length may never exceed the derived slot count, and no title appears in it twice. Earned titles and their granted points are canonical Bearer state under GTF-OVR-001 and restore with a checkpoint like every other stored value.
 
@@ -3290,26 +3545,36 @@ The Bearer chooses one. The choice is permanent; it attaches the class's `/syste
 On defeating a foe, the Bearer may raise its shadow. Shadows come in **two classes**, and this is what lets a Shadowbinder end as a general, not a squad leader:
 
 - **Elite shadows** are **named, individually tracked, and level up** — the lieutenants. Extraction is an **Intelligence-governed d100 attempt** costing Rank-ladder Mana (E 5 … A 80). Compare effective Intelligence against the corpse Rank's Section 4.3 domain rating; do not add a Rank-gap modifier. On success the foe rises as an elite retaining its Rank — Rank Health (Section 6.1), fixed-Rank damage (Section 6.2), and a name. **Elite cap = Intelligence ÷ 5** (Int 20 → 4 elites, Int 40 → 8). An elite advances after landing the killing blow in 10 distinct clears, capped at the Bearer's System Rank.
-- **The horde** is the **massed, un-named rank-and-file** — not tracked one by one, carried as a **count and Rank** (e.g., "180 E · 44 D"). Ordinary defeated common beasts are **swept into the horde in bulk** at a flat **2 Mana each, no per-corpse roll** — the Bearer scoops the fallen as he passes. **Horde cap = Intelligence × 20** (Int 30 → 600), and the Legion evolution lifts it to **no practical cap — an army of thousands.**
+- **The horde** is the **massed, un-named rank-and-file** — not tracked one by one, carried as a **count and Rank** (e.g., "180 [E-Rank] · 44 [D-Rank]"). Ordinary defeated common beasts are **swept into the horde in bulk** at a flat **2 Mana each, no per-corpse roll** — the Bearer scoops the fallen as he passes. **Horde cap = Intelligence × 20** (Int 30 → 600), and the Legion evolution lifts it to **no practical cap — an army of thousands.**
 
 **Commanding the horde (closed-form, never per-shadow):** committed to a fight, the horde resolves as **one action per exchange**. It **automatically overruns** trash threats at or below the horde's dominant Rank (they are swarmed under, no roll), and against elites and bosses it grants the Bearer's side **+1 modifier step per 100 shadows committed, to the net ±3 cap** (Section 4.3) — the weight of numbers. A hard fight inflicts **attrition**: on a poor exchange, or against a boss, the horde loses a die-scaled fraction of the committed shadows, replenished by extracting the newly slain. Storing/re-summoning elites is free/½-cost as before; the horde is always "on call" and costs nothing at rest.
 
 - **Evolution quest hook — the Sovereign's Trial (level 50):** extract a **boss-Rank** elite to unlock **Legion** — the horde cap becomes effectively unbounded (thousands), elite cap rises to Intelligence ÷ 3, and the horde in formation grants **+1 modifier step to one coordinated allied action per exchange** on top of its mass bonus.
 
 ```text
-[SYSTEM] SHADOWS — Elites <filled>/<cap>  ·  Horde <count>
-<name> · <Rank> · <Field | Stored> · clears <n>/10 to next band
-Horde: <count by Rank>   (cap = Intelligence × 20)
+╔══ ◈  S H A D O W S ══…
+     Elites          <filled> / <cap>
+     Horde           <count>          (cap = Intelligence × 20)
+╟──  ELITES  ──…──╢
+     <name>          [<Rank>-Rank]    <Field | Stored>   clears <n>/10 to next band
+╟──  HORDE  ──…──╢
+     <count by Rank>
+╚══…
 ```
 
 Example — a Shadowbinder at level 25, Intelligence 20 (elite cap 4, horde cap 400):
 
 ```text
-[SYSTEM] SHADOWS — Elites 3/4  ·  Horde 224
-Gravecut · D · Field · clears 7/10 to next band
-Hollow · E · Stored · clears 2/10 to next band
-Pale Warden · D · Field · clears 4/10 to next band
-Horde: 180 E · 44 D   (cap 400)
+╔══ ◈  S H A D O W S ══…
+     Elites          3 / 4
+     Horde           224              (cap 400)
+╟──  ELITES  ──…──╢
+     Gravecut        [D-Rank]         Field              clears 7/10 to next band
+     Hollow          [E-Rank]         Stored             clears 2/10 to next band
+     Pale Warden     [D-Rank]         Field              clears 4/10 to next band
+╟──  HORDE  ──…──╢
+     180 [E-Rank] · 44 [D-Rank]
+╚══…
 ```
 
 ## 18.5 Soulforged Armory — offered for weapon breadth
@@ -3321,17 +3586,27 @@ Horde: 180 E · 44 D   (cap 400)
 - **Evolution quest hook — the Forge Trial (level 50):** bind a **boss** essence to unlock **Living Edge** — one weapon may hold **two** source-abilities, and bound weapons self-repair between scenes.
 
 ```text
-[SYSTEM] ARSENAL — <filled>/<cap>   (cap = level ÷ 5)
-<weapon> [<Rank>] · <bound ability> · Mana <n> · from <source>
+╔══ ◈  A R S E N A L ══…
+     Bound           <filled> / <cap>     (cap = level ÷ 5)
+╟──  W E A P O N S  ──…──╢
+     <weapon>        [<Rank>-Rank]   <bound ability>   Mana <n>
+          from <source>
+╚══…
 ```
 
 Example — a Soulforged Armory Bearer at level 25 (cap 5):
 
 ```text
-[SYSTEM] ARSENAL — 3/5   (cap = level ÷ 5)
-Emberfang dagger [D-Rank] · Searing Strike ×1.5 · Mana 8 · from a D-Rank fire-lizard
-Tidespike [C-Rank] · Drowning Coil (target −1 modifier step) · Mana 10 · from a C-Rank serpent
-Boneaxe [E-Rank] · Cleave ×1.25 · Mana 4 · from an E-Rank ogre-brute
+╔══ ◈  A R S E N A L ══…
+     Bound           3 / 5                (cap = level ÷ 5)
+╟──  W E A P O N S  ──…──╢
+     Emberfang dagger    [D-Rank]    Searing Strike ×1.5              Mana 8
+          from a [D-Rank] fire-lizard
+     Tidespike           [C-Rank]    Drowning Coil (target −1 step)   Mana 10
+          from a [C-Rank] serpent
+     Boneaxe             [E-Rank]    Cleave ×1.25                     Mana 4
+          from an [E-Rank] ogre-brute
+╚══…
 ```
 
 ## 18.6 Devourer — offered for kill efficiency
@@ -3349,17 +3624,27 @@ Boneaxe [E-Rank] · Cleave ×1.25 · Mana 4 · from an E-Rank ogre-brute
 - **Evolution quest hook — the Apex Trial (level 50):** consume a **boss** core to unlock **Apex Predator** — the fragment cap rises to 1 per 3 levels, and one fragment may be ascended to boss-Rank magnitude (its skill multiplier or reduction takes the next band up).
 
 ```text
-[SYSTEM] FRAGMENTS — <filled>/<cap>   (cap = level ÷ 5)
-<fragment> · <band> · <ability> · <Mana n | Passive> · from <source>
+╔══ ◈  F R A G M E N T S ══…
+     Held            <filled> / <cap>     (cap = level ÷ 5)
+╟──  H E L D  ──…──╢
+     <fragment>      [<Rank>-Rank]   <ability>          <Mana n | Passive>
+          from <source>
+╚══…
 ```
 
 Example — a Devourer at level 25 (cap 5):
 
 ```text
-[SYSTEM] FRAGMENTS — 3/5   (cap = level ÷ 5)
-Breath · D · ×2.0 cone across foes in reach · Mana 12 · from a D salamander
-Stone-Hide · C · 30% physical reduction sustained · Mana 4/exchange · from a C golem
-Regeneration · D · 25 Health for 3 exchanges · Mana 10 · from a D troll
+╔══ ◈  F R A G M E N T S ══…
+     Held            3 / 5                (cap = level ÷ 5)
+╟──  H E L D  ──…──╢
+     Breath          [D-Rank]    ×2.0 cone across foes in reach    Mana 12
+          from a [D-Rank] salamander
+     Stone-Hide      [C-Rank]    30% physical reduction sustained  Mana 4/exchange
+          from a [C-Rank] golem
+     Regeneration    [D-Rank]    25 Health for 3 exchanges         Mana 10
+          from a [D-Rank] troll
+╚══…
 ```
 
 ## 18.7 Echo Knight — offered for endurance
@@ -3370,18 +3655,24 @@ Regeneration · D · 25 Health for 3 exchanges · Mana 10 · from a D troll
 - **Evolution quest hook — the Chorus Trial (level 50):** unlock a **4th slot** and **Simultaneity** — all recorded instants deploy together in one exchange for a single combined cost.
 
 ```text
-[SYSTEM] ECHOES — <filled>/3 recorded · deploy Mana 8 each
-Slot <n>: <action> · captured <degree> · ×<skill multiplier>
-Active echoes: <n>/3
+╔══ ◈  E C H O E S ══…
+     Recorded        <filled> / 3         deploy Mana 8 each
+     Active          <n> / 3
+╟──  S L O T S  ──…──╢
+     Slot <n>        <action>             captured <degree>   ×<multiplier>
+╚══…
 ```
 
 Example — an Echo Knight at level 25:
 
 ```text
-[SYSTEM] ECHOES — 2/3 recorded · deploy Mana 8 each
-Slot 1: Mana Bolt volley · captured critical · ×1.0
-Slot 2: dagger riposte · captured strong · ×0.75
-Active echoes: 0/3
+╔══ ◈  E C H O E S ══…
+     Recorded        2 / 3                deploy Mana 8 each
+     Active          0 / 3
+╟──  S L O T S  ──…──╢
+     Slot 1          Mana Bolt volley     captured critical   ×1.0
+     Slot 2          dagger riposte       captured strong     ×0.75
+╚══…
 ```
 
 ## 18.8 Riftwalker — offered for positioning
@@ -3395,21 +3686,23 @@ Active echoes: 0/3
 - **Evolution quest hook — the Threshold Trial (level 50):** unlock the **personal gate** — open a stable two-way portal between two locations the Bearer has physically visited, holding for a scene, with a Mana cost scaling by distance: travel and infiltration the world's own Gates never offered.
 
 ```text
-[SYSTEM] RIFTS
-Rift-step: <range> · Mana 6 · <ready | used this exchange>
-Micro-rift deflection: Mana 8 · 50% reduction (reaction)
-Pocket cache: <contents>
-Gate anchors: <known locations | none — unlocks at evolution>
+╔══ ◈  R I F T S ══…
+     Rift-step       <range>              Mana 6    <ready | used this exchange>
+     Deflection      50% reduction        Mana 8    reaction
+     Pocket cache    <contents>
+     Gate anchors    <known locations | none — unlocks at evolution>
+╚══…
 ```
 
 Example — a Riftwalker at level 25:
 
 ```text
-[SYSTEM] RIFTS
-Rift-step: line of sight · Mana 6 · ready
-Micro-rift deflection: Mana 8 · 50% reduction (reaction)
-Pocket cache: 4 lesser healing potions, 1 spare dagger
-Gate anchors: none — unlocks at the Threshold Trial (level 50)
+╔══ ◈  R I F T S ══…
+     Rift-step       line of sight        Mana 6    ready
+     Deflection      50% reduction        Mana 8    reaction
+     Pocket cache    4 lesser healing potions, 1 spare dagger
+     Gate anchors    none — unlocks at the Threshold Trial (level 50)
+╚══…
 ```
 
 ---

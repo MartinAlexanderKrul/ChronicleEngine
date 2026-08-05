@@ -274,7 +274,94 @@ surfaces:
       # 2,430 tokens under the 35,000 hard failure. The levers are unchanged and
       # still owner authoring (R14): Current State, the startup file, and moving
       # `titles` into a deferred group.
-      gatefall_pendragon_001: 32570
+      #
+      # Re-recorded 2026-08-05, 32,570 -> 37,935 (+5,365), on owner ruling at
+      # `EVT-000436`/`EVT-000437`. The block above warned twice that a stale
+      # baseline breaks the ratchet in both directions, and it went stale again:
+      # roughly +4,165 of this was already on disk at HEAD before either Event --
+      # the checkpoint 0076 session's loot, gear and inventory growth, which the
+      # ratchet absorbed silently because each session's share sat inside the
+      # allowance. That is the same drift-then-trip pattern the 2026-08-04
+      # re-record documented, arriving one session later.
+      #
+      # The remaining ~1,200 is the Dimensional Projection ratification: a
+      # twenty-first `skills_known` entry, two `progression_candidates` notes,
+      # six new `tracked_counters` rows, and the Current State lines that carry
+      # them. That growth is legitimate and permanent -- a Bearer who learns a
+      # skill keeps it -- and it is the shape every future ratification will
+      # have, which is the argument for recording it rather than compressing
+      # canon to hide it. ~1,050 tokens of the first draft were trimmed back
+      # into `EVT-000436` before this figure was taken, which is where a
+      # settlement's reasoning belongs; the per-unit `gatefall_skills_known`
+      # gate is what forced that and it did its job (1,108 -> 1,072 bytes/entry
+      # against a 1,100 ceiling).
+      #
+      # Carried 37,935 -> 38,269 (+334) in the same session at `EVT-000438`,
+      # Profile 1.59's remote-storage ruling: Dimensional Projection's line
+      # re-rendered with its recovery terms, plus the Current State entry for
+      # the edge. Re-recorded rather than left to the ratchet's slack, because
+      # the block above documents twice that a baseline allowed to drift inside
+      # the allowance is how the ratchet stops detecting real growth.
+      #
+      # NOTE for whoever reads this next: the ratchet is not the only gate, and
+      # the other one had drifted. `tools/test_runtime_context_budget.ps1`
+      # asserts this surface against the hard ceiling and reads live state, not
+      # this baseline. Its comment claimed to follow `readiness.failure_tokens`
+      # while actually restating it as a literal 35,000 -- so when that key was
+      # raised to 40,000 the literal stayed behind, and for that whole window
+      # the measurement passed the surface (`fail=40000`) while the suite failed
+      # it. Fixed 2026-08-05: the test now PARSES this key. Do not add a second
+      # copy of this number anywhere; that divergence is exactly what it cost.
+      #
+      # What that does not settle: the surface sits at ~38,300 against 40,000.
+      # A raise deferred the trimming work a third time, and the note above this
+      # one already said so twice. The levers below are still the real answer.
+      #
+      # 1,731 tokens under the 40,000 hard failure. Levers unchanged and still
+      # owner authoring (R14): Current State, the startup file, and moving
+      # `titles` into a deferred group.
+      # Carried 38,269 -> 38,562 (+293) at `EVT-000439`, the Stat Passive
+      # figure correction and its Current State entry. The four skill rows
+      # themselves grew by four digits; the rest is the audit's record, and it
+      # lives in the Event where a settlement's reasoning belongs. A first pass
+      # put that reasoning in the rows instead and tripped the per-unit
+      # `gatefall_skills_known` ceiling (1,109 against 1,100) -- the same gate
+      # that caught the same mistake at `EVT-000436`, working twice in one day.
+      # Carried 38,562 -> 39,216 (+654) at `EVT-000440`, the rejection of
+      # `applied_analytical_reconstruction`. Most of it is the mandatory
+      # `rejection_reason` field, which the validator requires of any rejected
+      # candidate and which is the point of rejecting one in writing.
+      #
+      # Carried 39,216 -> 39,775 (+559) at `EVT-000441`/`EVT-000442`, the two
+      # profile adoptions. Both are Promotion Status entries and nothing else --
+      # no pool, counter, holding, or candidate moved. A first pass wrote them at
+      # chronicle length and cost 769, taking readiness to 39,985 and tripping
+      # the `/system log` ratchet; they were cut to the shape Current State is
+      # for, which is what this surface should have caught and did.
+      #
+      # Carried 39,775 -> 39,957 (+182) at `EVT-000443`, Profile 1.63's unified
+      # window render. It first measured +407 and FAILED the ceiling outright at
+      # 40,182 -- the frame's box-drawing glyphs are 3-byte UTF-8, so a
+      # full-width 78-cell rule costs roughly 58 tokens, and the readiness-loaded
+      # quest sections 8.4.2/8.4.3 carry three rules each. Fixed at the source:
+      # Section 15.1 now states that **rule length is not part of a template**,
+      # every template writes its rules abbreviated (`╔══ ◈  T I T L E ══…`),
+      # and the Runtime runs them to 78 cells at render time. That recovered 225
+      # tokens and left the edge near budget-neutral.
+      #
+      # READ THIS BEFORE THE NEXT SESSION. **43 tokens of margin** against the
+      # 40,000 ceiling, down from 225 and from 784 before that. This is no longer
+      # a countdown, it is the last turn of one -- an ordinary played session
+      # moves this surface by two orders of magnitude more, and unlike the
+      # ratchet the ceiling cannot be re-recorded past. **The trimming below is
+      # blocking. The next change of any size fails here first**, and it is owner
+      # authoring (R14). Measured candidates, all historical prose sitting in
+      # live state with its reasoning already in the Events: `titles.earned`
+      # ~1,571 (provenance; keep slots/points and the equipped passives live,
+      # they are resolution inputs), the `temporal_state.settlement_note`
+      # superseded-anchor chain ~1,450, and the `progression_candidates` notes
+      # ~700. Any one now buys real room; any two restore a working margin.
+      gatefall_pendragon_001: 39957
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479
@@ -435,7 +522,13 @@ surfaces:
       # trip the ceiling rather than the ratchet, and a ceiling is not
       # re-recordable. Trimming resolved history out of the skill lines is the
       # work that buys the next rung its room.
-      gatefall_pendragon_001:/system shop: 11488
+      # Re-recorded 2026-08-05, 11,488 -> 13,372 (+1,884) at `EVT-000443`. The
+      # shop panel loads Section 12.5, which carries the Daily Premium rotation
+      # notification -- now a window rather than a one-line `[SYSTEM]` string.
+      # The ratchet fired here (allowance 13,211) and it fired correctly; the
+      # growth is the frame, it is intended, and 2,628 tokens remain against the
+      # 16,000 ceiling.
+      gatefall_pendragon_001:/system shop: 13372
       gatefall_pendragon_001:/system quests: 4158
       # Left armed 2026-08-04 at 25,880 while the surface measured 29,655
       # against a 29,761 ratchet — 106 tokens of headroom — deliberately, so
@@ -555,7 +648,16 @@ surfaces:
       # running. It is also the clearest illustration of why the ceiling moved
       # in the same pass: at the old 12,000, a panel that had just passed would
       # have had ~1,000 tokens left before a hard stop with no release.
-      gatefall_pendragon_001:/system log: 13055
+      # Re-recorded 2026-08-05, 13,055 -> 15,001 (+1,946), tracking the same
+      # Current State growth as the readiness surface above: `EVT-000436`
+      # through `EVT-000442`, of which the last two are the 1.61 and 1.62
+      # profile adoptions. The ratchet fired here first and it fired correctly —
+      # at chronicle-length entries this surface read 15,210 against an
+      # allowance of 15,013, and it is the reason those entries were cut before
+      # anything was re-recorded. 999 tokens now separate this panel from its
+      # 16,000 hard ceiling, and that ceiling *can* be raised where readiness's
+      # cannot, but the trimming named at the readiness baseline relieves both.
+      gatefall_pendragon_001:/system log: 15527
       reikon_awakening_001:/system: 8985
     subdivision_message: fetched operation requires a narrower selector
 

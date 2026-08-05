@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000449
+  source: EVT-000450
   game_date: "2026-08-17T11:15:00-05:00"
   real_date: "2026-08-05"
 role: canonical ledger
@@ -133,7 +133,7 @@ At Halvard's (`ENT-000202`), **Alexander told him a version of the trial short i
 - **Ironline's roster padding is now established as routine rather than a one-off** (`110_WORLD_LEDGER.md`) — with a named mechanism, Wade's refusal to change it, and his own three dead recruits attached to it. Still unreported to any authority.
 
 - **First crew training set: Monday 2026-08-17, 18:00, freight yard off Ashland**, $400 cash on arrival. Nothing owed before Monday. Corbin, Felix, Dana, Warren, Iris, Soraya and now **Reyna Castillo** all attend to decide; Marcus, Theo and Grant are already recruited.
-- **Reyna Castillo met and is judging Monday, not the pitch** (`EVT-000409`, `REL-000095`). Her standard, asked three times before it was answered: does a bad call get named out loud in front of the crew, or quietly managed. **Carried and one-sided:** Alexander told Owen privately he is *not sure about her* and that she 'wasn't listening'; Owen disagreed openly on the grounds that she had quoted Alexander almost verbatim. Nothing said to Reyna; her attendance is not in doubt. **This is a read Alexander holds that his own partner, present for the whole exchange, thinks is wrong.**
+- **Reyna Castillo met and is judging tonight, not the pitch** (`EVT-000409`, `REL-000095`). Her standard, asked three times before it was answered: does a bad call get named out loud in front of the crew, or quietly managed. Alexander privately reads her as not listening and is **not sure about her**; that read is his and nobody else's, and nothing has been said to Reyna. **A contrary opinion attributed to Owen was struck at `EVT-000450`** as Runtime invention `EVT-000409` had itself declined to promote. Her attendance is not in doubt — but her exit line named the training at *sunup* against the 18:00 everyone else holds, and **whether she has been told the right hour is unresolved.**
 - **The S-Rank dagger is equipped and visibly in use** — a live provenance/exposure risk (Section 19), accepted knowingly.
 - **Unsold stock:** 40 undeclared B-Rank crystals; 147 C-Rank crystals and 7 C-Rank cores; 28 D-Rank and 1 E-Rank Beast Core. Separately, **25 B-Rank crystals and 1 core sit undivided** in the trial Gate's combat pool pending Wade's physical split.
 - **Banked and unequipped:** Longsword [C-Rank], **Quickknife [C-Rank]**, Quickstep Charm [D-Rank], Arcanist Torso [D-Rank], Titan Legs [D-Rank], Watcher Feet [D-Rank], Adaptive Bastion Torso [E-Rank], Ascendant Hunter's Band [E-Rank], and a mundane directional listening rig, untested. The **Quickknife [C-Rank]**, **Quickstep Charm [D-Rank]**, and **Arcanist Torso [D-Rank]** were absent from `system_state.inventory.gear` until `EVT-000407` and rendered in no `/system gear` panel.
@@ -149,7 +149,7 @@ At Halvard's (`ENT-000202`), **Alexander told him a version of the trial short i
 
 ## Promotion Status
 
-**Live canon is promoted through `EVT-000449`.** Since Checkpoint 0076 (canon through `EVT-000443`): **`EVT-000444`-`EVT-000449`**, below — `EVT-000449` being the promotion barrier's own settlement, both domains explicit `none`.
+**Live canon is promoted through `EVT-000450`.** Since Checkpoint 0076 (canon through `EVT-000443`): **`EVT-000444`-`EVT-000450`**, below — `EVT-000449` being the promotion barrier's own settlement, both domains explicit `none`, and **`EVT-000450` a records-only repair** of two `EVT-000409` defects (an Owen disagreement its own Event declined to promote, struck; and Reyna's *sunup* exit line against the 18:00 everyone else holds).
 
 **`EVT-000448` — the registry search, and a payout that was never late.** 🎲 d100 **66**, partial: a clean licensed **salvage-and-surplus import registration** for Sal Prykowski and a **street address**, and **no corroboration at all** — nothing tying him to Loomis Street, Cormant Holdings, Meridian, or CONSULT. A real door, unopened; his name has not been said to Owen, Fenn, or Nakamura. Separately, **Wade's $221,540 is not overdue** — filed Friday, and Monday is the first business day of the stated window; the ledger's calendar-day framing is corrected.
 

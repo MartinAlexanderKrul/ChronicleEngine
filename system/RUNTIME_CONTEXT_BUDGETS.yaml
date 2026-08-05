@@ -361,7 +361,13 @@ surfaces:
       # they are resolution inputs), the `temporal_state.settlement_note`
       # superseded-anchor chain ~1,450, and the `progression_candidates` notes
       # ~700. Any one now buys real room; any two restore a working margin.
-      gatefall_pendragon_001: 39957
+      # Carried 39,957 -> 39,628 (-329) at `EVT-000450`. A *downward* re-record,
+      # made because this file's own repeated warning is that a stale baseline
+      # breaks the ratchet in both directions: left at 39,957 it would have
+      # silently absorbed 329 tokens of real growth before firing. Checkpoint
+      # 0077 rewrote Current State's span summary, and the `EVT-000450` repair
+      # was net-negative on top of it. Margin against the 40,000 ceiling is 372.
+      gatefall_pendragon_001: 39628
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479

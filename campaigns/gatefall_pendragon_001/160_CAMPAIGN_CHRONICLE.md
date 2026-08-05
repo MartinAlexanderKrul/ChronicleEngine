@@ -412,6 +412,7 @@ subjects:
   - EVT-000447
   - EVT-000448
   - EVT-000449
+  - EVT-000450
 ```
 
 ---
@@ -13738,4 +13739,42 @@ description: "**Section 7.1 promotion-barrier settlement for `EVT-000444`-`EVT-0
 **`gatefall.skill_credit`: explicit `none`, asserted rather than omitted.** **No dangerous scene occurred anywhere in the span** — no die was rolled against a live threat, no Gate or instance was entered, and no damage was dealt or taken. The five Events classify as what actually happened rather than by default: `EVT-000444` and `EVT-000445` are `scene`, `EVT-000446` and `EVT-000447` are `scene`, `EVT-000448` is `scene`. None belongs to a danger-bearing kind, so the coverage set does not reach them and the `none` is discharged on its own terms. Flux Sight's +2 is carried on `EVT-000446` itself.
 
 **Nothing sealed, nothing deferred, nothing owed forward.** No mastery crossed, no Rank ascended, no candidate ratified, no `pending-ratification` entry created or discharged. New high-water mark **EVT-000449**."
+```
+
+---
+
+## EVT-000450 - Record Repair: A Disagreement That Its Own Event Declined to Promote
+
+```yaml
+id: EVT-000450
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-17 11:15 -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: correction
+importance: moderate
+game_date: "2026-08-17 11:15 -05:00"
+participants:
+  - ENT-000125
+  - ENT-000139
+  - ENT-000182
+counter_deltas: []
+progression_audits: []
+description: "Player-directed re-read of the `EVT-000409` transcript (the Reyna Castillo meeting at the Loyola lakefront), repairing two defects it left in live records. **No fictional time passes, no pool moves, no scene occurs, and `EVT-000409` itself is untouched** - it sits inside promoted Checkpoint 0075 and is immutable. This is a read-back repair on the `EVT-000420` precedent, reaching only derived live state.
+
+**Defect one: a Runtime-authored disagreement between Alexander and Owen, carried into records that `EVT-000409` had explicitly declined to carry it into.** `130_NPCS_AND_FACTIONS.md` and `180_CURRENT_STATE.md` both held *'Owen disagreed openly on the grounds that she had quoted Alexander almost verbatim'*, with Current State elevating it to standing tension - *'a read Alexander holds that his own partner, present for the whole exchange, thinks is wrong.'* **`EVT-000409`'s own promoted description says the opposite:** Owen *'independently disputed a separate, ungrounded Runtime claim about her attentiveness mid-scene, **corrected in play rather than carried into canon**.'* The settlement identified the claim as invention and correctly refused it; the derived records carried it regardless. **The promoted Event governs, and the thread is retired from live state.**
+
+**Where it came from, because the provenance is the point.** Mid-scene the Runtime wrote Owen co-signing its own read of Reyna. The player corrected it - *'stop playing all NPCs the same. Owen doesn't need to agree with your narration on other NPCs.'* The Runtime then wrote Owen **disagreeing with Alexander instead**, on the same underlying read. Owen's position never moved; only his target did. **The disagreement was an artifact of a correction about NPC independence, not a thing Owen thought**, and it should never have reached a ledger. Recorded as `F-016`'s third instance.
+
+**What stands, and what does not.** Alexander's own assessment is **his and unchanged** - he is not sure about Reyna and read her as not listening; that is a protagonist judgment, canonical because he holds it, and this Event neither overturns nor validates it. What is struck is the claim that **Owen holds a contrary position on the record.** Owen witnessed the exchange, said almost nothing, and the fiction establishes no grounded opinion for him beyond that. Nothing is invented in the other direction: he is not written as agreeing either.
+
+**Defect two: a schedule contradiction that survived into promoted canon.** `EVT-000409` twice has Reyna naming the crew training at **'sunup'** - *'Ashland, Monday, sunup'* and *'Ashland. Sunup.'* **Every other record holds 18:00**: `180_CURRENT_STATE.md`, her own `ENT-000182` entry, `EVT-000350`, `EVT-000351`, and the confirmations of all nine other attendees. The operative time is **Monday 2026-08-17, 18:00**, unchanged and never in doubt; 'sunup' was Runtime invention inside a promoted description and cannot be edited out of it. **This Event is the correction of record**, and it is real rather than cosmetic: uncorrected, the campaign held an NPC believing she was due at a freight yard twelve hours before anyone else. Whether Reyna was ever told the correct hour directly is **unresolved and deliberately left so** - a live question for Monday, not something this repair settles by assertion.
+
+**Why no gate caught either.** Both are prose in derived records with no arithmetic to contradict them - a stored figure disagreeing with nothing, `F-015`'s shape again. A settlement that declines to promote a claim currently binds nothing about what the derived-record writes in the same pass may say, which is the structural half of `F-016`'s open question.
+
+No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. No entity, record, or relationship is minted. New high-water mark **EVT-000450**."
 ```

@@ -2016,7 +2016,9 @@ canonical_state:
 
   **What settled it was manner, not content.** Alexander's third answer came out sharp, faintly irritated, and unmanaged: the crew analyzes and solves, nobody pretends it didn't happen. She took the sharpness as the credible version precisely because he was not handling her when he said it, and told him so. **Committed to attending Monday's training as an evaluator**, restating that she is judging the crew on what she sees rather than on the invitation. Alexander closed by telling her to come prepared to show something herself; she took that well.
 
-  **One misread, corrected in the scene rather than carried.** She read him as clock-watching and said so; it was wrong, and she dropped it without argument when told — *'Fine. Wrong read.'* — which is itself consistent with her record. Owen was present throughout, said almost nothing, and afterward disputed Alexander's private assessment that she 'wasn't listening.'"
+  **One misread, corrected in the scene rather than carried.** She read him as clock-watching and said so; it was wrong, and she dropped it without argument when told — *'Fine. Wrong read.'* — which is itself consistent with her record. Owen was present throughout and said almost nothing; the fiction establishes no opinion of his about her beyond that. **A contrary position attributed to him here was struck at `EVT-000450`** as Runtime invention that `EVT-000409` itself had declined to promote. Alexander's own read — not sure about her, heard her as not listening — is his, unchanged, and unendorsed by anyone else on the record.
+
+  **Her exit line named the training at 'sunup'; the operative time is and always was Monday 18:00** (`EVT-000450`). Whether she has been told the correct hour directly is unresolved."
 ```
 
 ### ENT-000183 — Petra

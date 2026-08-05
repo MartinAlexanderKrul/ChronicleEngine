@@ -40,9 +40,11 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000136` | Priya Okafor | crew leader / striker | active | Chicago | `REL-000065` |
 | `ENT-000137` | Julian Boyd | striker (ranged) | active | Chicago | — |
 | `ENT-000138` | Renata Marchetti | sensor / reader | active | Chicago | — |
-| `ENT-000139` | Owen Callahan | mender | active | **Just outside the second Crypt instant dungeon, 2026-08-16 eve… | `REL-000066` |
+| `ENT-000139` | Owen Callahan | mender | active | **Downtown Chicago, late morning 2026-08-17, picking a lunch pl… | `REL-000066` |
 | `ENT-000146` | Wade Bishop | guild recruiter | active | Red Line Corridor | `REL-000068` |
 | `ENT-000147` | Walt Adamik | pawnbroker / grey-market dealer | active | Chicago | `REL-000069` |
+| `ENT-000206` | Sal Prykowski | salvage and surplus importer / grey-market supplier | active | Works out of a licensed salvage-and-surplus import operation in… | — |
+| `ENT-000207` | Nadia Adamik | civilian; Gate-touched | active | Unestablished. Chicago is implied by Walt's account and by his… | — |
 | `ENT-000149` | the Cutting Edge proprietor | gear artisan / licensed vendor | active | Cutting Edge | — |
 | `ENT-000150` | Ferro's Reclamation | salvage dealer | active | Chicago | — |
 | `ENT-000168` | Milo Brandt | sensor-adjacent hunter | active | Windy City Hunters Coalition training grounds | — |
@@ -87,6 +89,6 @@ A blank relationship cell means no relationship with the protagonist is recorded
 # Maintenance
 
 - Generation schema: `1.0`.
-- Entities: 58. Protagonist relationships: 18.
+- Entities: 60. Protagonist relationships: 18.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

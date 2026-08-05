@@ -402,6 +402,7 @@ subjects:
   - EVT-000437
   - EVT-000438
   - EVT-000439
+  - EVT-000440
 ```
 
 ---
@@ -13306,4 +13307,46 @@ description: "Player-directed audit of the Stat Passive rows in `100_CHARACTER_S
 **What it would have cost if left standing.** At System Rank B (level 30) the ceiling lifts to A and these figures decide which rung each passive takes. Three of the four would have landed correctly anyway — Overpower at 62 and 63 both derive B, Pre-empt at 55 and 61 both derive B, Shrug Off at 101 and 102 both hold S. **Conduit is the exception and it is a real one:** Intelligence 68 clears the A-Rank threshold of 66 and 59 does not, so the stale line would have taken **B-Rank (+20 points) where the true Stat earns A-Rank (+25)** the moment the ceiling lifted — a capability silently and permanently underpaid, discovered only by someone re-deriving it by hand. The value was already bought and banked under Section 4.4's own held-intact rule; the row simply failed to say so.
 
 No fiction, no die, no XP, level, Stat, Health, Mana, gold, cash, item, quest, title, counter, or resolved outcome changes — the corrected figures are what the character sheet already held everywhere else. New high-water mark **EVT-000439**."
+```
+
+---
+
+## EVT-000440 - Profile 1.60: Education Is Capability, Not a Skill
+
+```yaml
+id: EVT-000440
+canonical_record: REC-000074
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: ruling
+importance: major
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Owner ruling **rejecting the `applied_analytical_reconstruction` candidate** under Section 7.1's rejection route, and adoption of **Gatefall World Rule Profile 1.60**, which retires the result 1.58 pre-authored for it. **No fictional time passes, no pool moves, no scene occurs, no skill is removed from any ledger, and no past roll is recomputed.**
+
+**This closes a finding this session opened four Events ago, and closes it against itself.** `EVT-000436` opened the candidate at 2/3 on the reading that `EVT-000376` and `EVT-000405` had both missed it; `EVT-000437` gave it a complete result so its third scene would ratify automatically rather than halting play at Section 7.1's mandatory adjudication gate. The player's objection — *the Ranking now actually fights his own knowledge he learned at the university* — is correct, and it is fatal rather than corrective.
+
+**The native effect duplicated a modifier Alexander already receives.** Both evidence scenes resolved on the engine's standing **established-capability** step: `EVT-000372` records it in its own text as *'+1 step for the directly relevant established capability'*, and `EVT-000189` shows the identical shape on another domain — *'net +1 (established capability at reading people, no specific skill applies)'*. That step fires for competence a character actually holds and needs **no skill whatsoever**. Alexander is a university-trained mathematician and physicist (`canonical_state.capabilities`, established since character creation). Sightlines, load paths, sweep cones and structural extent are what that training **is**.
+
+**So First Principles would have granted nothing.** Section 4.3 caps the net modifier at +1, and Section 7.2 forbids a second modifier derived from the same finding. On the exact two scenes that formed the candidate, the skill would have changed **no roll, no margin, and no resolved outcome**. That is the **Rank Dominance Law failing at acquisition rather than at ascension**: the law asks whether a higher Rank can do something the Rank beneath cannot, and here the *skill* could do nothing its own absence could not.
+
+**Three mastery axes were tried and all three failed for the same underlying reason**, which is how the defect was finally isolated instead of patched. **Beneficiaries** (1.58's choice) priced a solitary analytical method as a group capability. **Concurrent held derivations** rebuilt **Multitask's** retired defect exactly — a capacity ladder no play ever reaches, which Profile 1.49 removed on the finding that *'a Rank step that raises an unreached cap grants nothing a Bearer can notice.'* **Scale**, starting at *one wall*, asserted a floor **beneath** what Alexander had already demonstrated with no skill at all: at `EVT-000372` he mapped four cameras' cones across a whole building and found a four-foot gap in the coverage. Ratification would have been a **downgrade dressed as progression**. There was no capability to grow because there was no capability being granted.
+
+**`EVT-000405` was right, for a reason it did not quite articulate.** That settlement declined to open a candidate with *'No new repeatable method appeared this span that isn't already a ratified skill'*, and `EVT-000436` recorded that as a miss. Read again: **no new method appeared because the method was never new.** It was the man's education, doing what his education does. The audit's own finding is withdrawn here rather than defended.
+
+**The general rule this leaves behind, and it is the durable part.** A System skill is a capability the world does not otherwise grant. Where a Bearer's own background already resolves an action, **the established-capability step is the correct and complete pricing of it**, and Section 7.1's third test — *distinct capability*, excluding **generic competence** — is exactly what keeps it out of formation. **Education is capability, not a skill.** It carries no Rank, no Mana cost, no mastery track, and no System Rank ceiling, and it applies whenever it is directly relevant — **strictly better than any E-Rank passive this profile could have authored for it.** Alexander loses nothing by this rejection; he keeps the thing that was always doing the work, unclamped by the System Rank ceiling that binds every one of his actual skills.
+
+**What changes, exactly.** The candidate goes **`rejected`** with its owner-authored reason and this Event recorded; **its evidence is preserved unchanged** — `EVT-000372` and `EVT-000398` remain exactly as promoted, and Section 7.1 reopens the candidate only by owner ruling or when a **materially different** signature creates a new one. First Principles is removed from Sections 7.2, 7.3 and 7.4 and the key leaves the trigger manifest's `pre_authored_result_keys`, which returns to `dimensional_weapon_control` alone. Section 7.2 keeps the *reasoning* under a rejected-candidate heading rather than deleting it, because a rejection that leaves no trace invites the next reader to open the same candidate on the same evidence.
+
+**Nothing is lost and nothing is unwound.** First Principles existed only as authored profile text between 1.58 and 1.60: **no Bearer ever held it**, no `skills_known` entry named it, and no `tracked_counters` row was ever created for it — so there is no counter to retire, no mastery to reverse, and no Mana, Rank, or scope value to recompute. **Dimensional Projection is untouched and remains ratified and live** (`EVT-000436`); this ruling reaches neither it nor its candidate.
+
+`profile_version` advances 1.59 → **1.60**. Full transformation record at `worlds/gatefall/migrations/1.59_to_1.60.md`. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. New high-water mark **EVT-000440**."
 ```

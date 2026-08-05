@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000439
+  source: EVT-000440
   game_date: "2026-08-16T17:00:00-05:00"
   real_date: "2026-08-05"
 role: canonical ledger
@@ -27,7 +27,7 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.59
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.60
 - **Engine Rules:** 0.3.0
 - **Data Model:** 0.1.6
 - **Campaign time:** **2026-08-16 (Sunday), 17:00 CDT (`-05:00`)** — just outside the second Crypt instant dungeon with Owen, both freshly showered-worthy after two full clears. The twenty-third daily completed, **streak 9**. Next daily issues 2026-08-17 06:00. **Tomorrow evening is the first crew training**, 18:00, freight yard off Ashland, ten people holding the date.
@@ -38,7 +38,7 @@ subjects: []
 - **Titles: ten of twenty-one granted, both slots filled — Cartographer and Untouchable.** Next assessment level 30.
 - **Unspent stat points: 5** — the Level 23 grant, unallocated. Only **Status Recovery ×15** remains pending.
 - **Eight skill masteries advanced this span** (`EVT-000428`-`EVT-000435`): Silent Step→Practiced, Field Command→Adept, Dagger Mastery→Expert, Mend→Expert, Rupture→Master, Twin Fang→Expert, Exploit Pattern→Master, Mana Bolt→Practiced.
-- **New skill: Dimensional Projection [E-Rank] Novice** (`EVT-000436`) — 6 Mana, 5 m, Agility to hit; earned by doing, counters at zero, live forward only. A launched weapon comes straight back by Section 12.9 remote storage, but inside an exchange that spends the exchange's one inventory change, so **launch or recover, never both** at native Rank (`EVT-000438`). **Twenty-one skills known.** Open candidates: `applied_analytical_reconstruction` 2/3 (new), `formation_instruction` 2/3, `pretext_and_cover` 2/3, `nonvisual_combat_mapping` 1/3 — none eligible.
+- **New skill: Dimensional Projection [E-Rank] Novice** (`EVT-000436`) — 6 Mana, 5 m, Agility to hit; earned by doing, counters at zero, live forward only. A launched weapon comes straight back by Section 12.9 remote storage, but inside an exchange that spends the exchange's one inventory change, so **launch or recover, never both** at native Rank (`EVT-000438`). **Twenty-one skills known.** Open candidates: `formation_instruction` 2/3, `pretext_and_cover` 2/3, `nonvisual_combat_mapping` 1/3 — none eligible. **`applied_analytical_reconstruction` is `rejected`** (`EVT-000440`): his physics training already draws the engine's established-capability step, so the skill would have granted nothing — education is capability, not a skill.
 - **Live leverage, now contractual.** Wade Bishop remains materially compromised — a confirmed B-Rank Gate staffed at 4 combat-rated hunters against a legal minimum of 8, filed on a roster forged to 8 — and **Alexander physically holds that unfiled report** (`EVT-000384`, `110_WORLD_LEDGER.md`, `OBJ-27`). **The Ironline decision is made** (`EVT-000404`): Alexander joins as a contractor, no salary, his own choice of jobs, Wade as supervisor of record — closing `OBJ-23`.
 
 ---
@@ -136,7 +136,9 @@ At Halvard's (`ENT-000202`), **Alexander told him a version of the trial short i
 
 ## Promotion Status
 
-**Live canon is promoted through `EVT-000439`.** Since Checkpoint 0075 (canon through `EVT-000427`): **`EVT-000428`-`EVT-000439`**, below.
+**Live canon is promoted through `EVT-000440`.** Since Checkpoint 0075 (canon through `EVT-000427`): **`EVT-000428`-`EVT-000440`**, below.
+
+**`EVT-000440` — Profile 1.60: `applied_analytical_reconstruction` rejected and First Principles retired; nothing granted, nothing unwound.** Closes a finding this session opened, against itself. Both evidence scenes resolved on the engine's standing **established-capability** step (`EVT-000372`: *"+1 step for the directly relevant established capability"*), which fires for competence a character already holds and needs no skill. Alexander is a university-trained mathematician and physicist — this *is* that training. Section 4.3 caps the net step at +1 and Section 7.2 forbids a second modifier from the same finding, so the skill would have changed **no roll and no outcome** on the very scenes that formed it: the **Rank Dominance Law failing at acquisition**. All three candidate mastery axes failed the same way — beneficiaries priced a solitary method as a group one, concurrent derivations rebuilt Multitask's unreached-ceiling defect, and scale starting at *one wall* sat beneath what he had already done with no skill. **`EVT-000405` was right after all**: no new method appeared because the method was never new. **Education is capability, not a skill** — no Rank, no Mana, no mastery, no ceiling, applying whenever directly relevant. Evidence preserved; First Principles never reached any ledger, so there is nothing to retire. Dimensional Projection untouched.
 
 **`EVT-000439` — four Stat Passive rows corrected against live base Stats; no Rank, grant, or played outcome moved.** Conduit **59→68**, Pre-empt **55→61** (both had missed `EVT-000426` and `EVT-000431`), Overpower **62→63**, Shrug Off **101→102** (both had missed the Level 23 grant); Flux Sight's Perception 62 was already correct. System Rank C clamps all five at B, and every held-rung clause was independently right. **Nothing caught it because Section 4.4 makes the Rank derived and never stored, and the figure lives in prose rather than `tracked_counters`** — an unclaimed delta with no stored value to contradict and a derived value with no way to contradict its own input, `F-015` with both defences absent. Conduit's was the costly one: 68 clears the A threshold of 66 and 59 does not, so at level 30 it would have taken +20 where it earns +25.
 

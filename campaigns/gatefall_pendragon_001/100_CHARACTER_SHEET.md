@@ -128,9 +128,9 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.59"
+    profile_version: "1.61"
+    profile_candidate_rejection_event: EVT-000440
     profile_remote_storage_event: EVT-000438
-    profile_first_principles_event: EVT-000437
     profile_magnitude_ladder_event: EVT-000391
     profile_a_rank_ladder_event: EVT-000392
     profile_magnitude_ratchet_event: EVT-000393
@@ -511,11 +511,13 @@ canonical_state:
       - domain: gatefall.skill_formation
         key: applied_analytical_reconstruction
         signature: apply-formal-physical-or-geometric-training.reconstruct-unobserved-structure-or-coverage.act-on-the-derived-finding
-        status: tracking
+        status: rejected
         evidence:
           - EVT-000372#loomis-street-camera-cone-geometry
           - EVT-000398#cicero-scar-core-block-structural-read
-        note: "**Opened retroactively at `EVT-000436`; it should have existed since 2026-08-14.** Twice Alexander resolved a problem on his **trained mathematics-and-physics background as the declared method, explicitly instead of a System skill**: `EVT-000372` (Loomis Street camera sweep-cone geometry, 🎲 69 → 89, finding the four-foot blind spot the van was parked on) and `EVT-000398` (Cicero Scar core-block structural read, 🎲 88). Neither settlement opened a candidate. **2/3; ratification still needs a third qualifying scene.** Its complete result is **pre-authored at Profile 1.58** (`EVT-000437`) as **First Principles [E-Rank]** — passive, +1 step on reconstructing unobserved structure, coverage, or reach from observed geometry and physical law; mastery is scope, 1/2/3/4/5 beneficiaries — and the key is a declared `pre_authored_result_key`, so the third scene **ratifies automatically** in its own settlement rather than opening the adjudication queue."
+        resolution_event: EVT-000440
+        rejection_reason: "Generic competence, excluded by Section 7.1 test 3. Both evidence scenes resolved on the engine's standing established-capability step (`EVT-000372`: '+1 step for the directly relevant established capability'), which fires for competence a character already holds and needs no skill. Alexander's university physics and mathematics training is that competence. Section 4.3 caps the net step at +1 and Section 7.2 forbids a second modifier from the same finding, so the skill would have changed no roll on the very scenes that formed it — the Rank Dominance Law failing at acquisition. All three candidate mastery axes failed the same way: beneficiaries priced a solitary method as a group one, concurrent derivations rebuilt Multitask's retired unreached-ceiling defect, and a scale ladder starting at one wall sat beneath what he had already demonstrated with no skill. Education is capability, not a skill."
+        note: "Opened at `EVT-000436` on two scenes where Alexander resolved a problem on his physics-and-mathematics training rather than a System skill — `EVT-000372` (Loomis Street sweep-cone geometry) and `EVT-000398` (Cicero Scar core blocks). **Rejected at `EVT-000440`**, which withdraws that finding; reason in `rejection_reason`, full argument at the Event."
       - domain: gatefall.skill_formation
         key: pretext_and_cover
         signature: fabricate-plausible-identity-or-story-under-direct-real-time-scrutiny.adapt-to-pushback.sustain-to-resolved-outcome

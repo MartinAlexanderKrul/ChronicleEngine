@@ -327,7 +327,22 @@ surfaces:
       # put that reasoning in the rows instead and tripped the per-unit
       # `gatefall_skills_known` ceiling (1,109 against 1,100) -- the same gate
       # that caught the same mistake at `EVT-000436`, working twice in one day.
-      gatefall_pendragon_001: 38562
+      # Carried 38,562 -> 39,216 (+654) at `EVT-000440`, the rejection of
+      # `applied_analytical_reconstruction`. Most of it is the mandatory
+      # `rejection_reason` field, which the validator requires of any rejected
+      # candidate and which is the point of rejecting one in writing.
+      #
+      # READ THIS BEFORE THE NEXT SESSION. 784 tokens of margin against the
+      # 40,000 ceiling. That is a countdown, not a margin -- an ordinary played
+      # session moves this surface by more than that, and unlike the ratchet the
+      # ceiling cannot be re-recorded past. The trimming named below is now the
+      # binding work and it is owner authoring (R14). Measured candidates, all
+      # historical prose sitting in live state with its reasoning already in the
+      # Events: `titles.earned` ~1,571 (provenance; keep slots/points and the
+      # equipped passives live, they are resolution inputs), the
+      # `temporal_state.settlement_note` superseded-anchor chain ~1,450, and the
+      # `progression_candidates` notes ~700. Any two clear it.
+      gatefall_pendragon_001: 39216
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479

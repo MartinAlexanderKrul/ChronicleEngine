@@ -71,14 +71,41 @@ Assert-True ([int]$Matches["tokens"] -lt 16000) "Bootstrap is not below 16,000 e
 # `system/RUNTIME_CONTEXT_BUDGETS.yaml`; two copies of a number that must agree
 # is how this suite came to fail on a repository the measurement had passed.
 #
+# Owner ruling, 2026-08-05: that comment described an intent the code never
+# implemented. `failure_tokens` was raised 35,000 -> 40,000 in the budget file
+# and the literal here stayed at 35,000, so for the whole of that window the
+# measurement passed the surface (`fail=40000`, and `$clean.ExitCode` with it)
+# while this assertion failed it -- the precise divergence the paragraph above
+# warned about, produced by the paragraph above claiming to follow a number it
+# was in fact restating. The figure is now READ from the budget file, so the
+# next raise cannot leave a stale copy behind. There is one authority and it is
+# `readiness.failure_tokens`.
+#
+# This does not excuse the growth. The budget file records at that same key that
+# raising the ceiling has now deferred the trimming work twice, and the readiness
+# surface stands at ~38,300 against a 40,000 ceiling -- a countdown, not a margin.
+# Trimming is owner authoring (Recommendation R14) and is not discharged here.
+#
 # WARN is therefore an accepted steady state and stays visible in every report,
 # which is the point of having a warning threshold at all. The hard budget is
 # still enforced two ways: `$clean.ExitCode` above fails on any hard overage,
-# and the bound below is checked explicitly.
+# and the bound below is checked explicitly against the declared figure.
+$budgetPath = Join-Path $root "system/RUNTIME_CONTEXT_BUDGETS.yaml"
+$budgetText = Get-Content -LiteralPath $budgetPath -Raw -Encoding UTF8
+# Bound the scan to the `readiness:` surface block. Without that bound the first
+# `failure_tokens` in the file wins, which belongs to `resident` (8,000) and would
+# silently assert a ceiling five times too tight.
+$readinessBlock = [regex]::Match($budgetText, '(?ms)^  readiness:\r?\n(?<body>(?:^(?:[ \t]{4}.*)?\r?\n)*)')
+Assert-True $readinessBlock.Success `
+    "Could not locate the `readiness:` surface block in $budgetPath."
+$declared = [regex]::Match($readinessBlock.Groups["body"].Value, '(?m)^[ \t]{4}failure_tokens:[ \t]*(?<tokens>\d+)[ \t]*$')
+Assert-True $declared.Success `
+    "The `readiness:` surface declares no failure_tokens in $budgetPath."
+$readinessCeiling = [int]$declared.Groups["tokens"].Value
 Assert-True ($clean.Output -match '(?:PASS|WARN) readiness:gatefall_pendragon_001: (?<gatefall>\d+) tokens') `
     "Gatefall readiness measurement is missing."
-Assert-True ([int]$Matches["gatefall"] -lt 35000) `
-    "Gatefall readiness is not below the 35,000 hard budget (measured $($Matches['gatefall']))."
+Assert-True ([int]$Matches["gatefall"] -lt $readinessCeiling) `
+    "Gatefall readiness is not below the $readinessCeiling hard budget declared at readiness.failure_tokens (measured $($Matches['gatefall']))."
 Assert-True ($clean.Output -match '100_CHARACTER_SHEET\.md\[object:ENT-000125\]\[fields:21\]') "Gatefall protagonist loading is not field-bounded."
 # Assert the baseline mechanism reports, not that some surface happens to sit
 # exactly on its baseline. The old form required a delta of zero somewhere, so

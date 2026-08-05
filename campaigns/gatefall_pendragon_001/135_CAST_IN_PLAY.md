@@ -79,12 +79,14 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000201` | Glenwood Garden and Feed | garden and feed store | active | Glenwood Avenue, Rogers Park, Chicago — eight blocks north of E… | — |
 | `ENT-000202` | Halvard's | diner | active | Three blocks west of Edgewater Hospital, Chicago. | — |
 | `ENT-000203` | Priscilla Nakamura | artificer | active | **Her workshop — a flat brick front on a side street off LaSall… | `REL-000096` |
+| `ENT-000204` | Marisela Kwan | strike captain | active | Chicago | `REL-000097` |
+| `ENT-000205` | Reston | harvest-element miner | active | Chicago | — |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.0`.
-- Entities: 56. Protagonist relationships: 17.
+- Entities: 58. Protagonist relationships: 18.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

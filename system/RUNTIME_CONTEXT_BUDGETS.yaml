@@ -408,7 +408,7 @@ surfaces:
       # Fang's and Broken Rhythm's effects in full. This surface is exempt from
       # the shared 12,000 ceiling by design and governed by the ratchet alone,
       # which is what just fired.
-      gatefall_pendragon_001:/system: 31066
+      gatefall_pendragon_001:/system: 36330
       # Re-recorded 2026-08-04, 7,036 -> 8,097, on the same owner ruling that
       # raised the `gatefall_skills_known` per-entry budget 700 -> 1100. The
       # requirement is that a skill entry explain its effect well enough to
@@ -418,7 +418,7 @@ surfaces:
       # It tripped the +15% ratchet by 6 tokens against the old baseline, which
       # is the ratchet working — deliberate growth is re-recorded here, not
       # waived. The 12,000 ceiling is untouched and still 3,900 tokens away.
-      gatefall_pendragon_001:/system skills: 8097
+      gatefall_pendragon_001:/system skills: 9597
       # Re-recorded 2026-08-04, 9,937 -> 11,488, on the same owner ruling that
       # raised `gatefall_skills_known` to 1,100 bytes/entry. `/system shop`
       # declares `skills_known` as a protagonist field — it has to, because the
@@ -436,7 +436,7 @@ surfaces:
       # re-recordable. Trimming resolved history out of the skill lines is the
       # work that buys the next rung its room.
       gatefall_pendragon_001:/system shop: 11488
-      gatefall_pendragon_001:/system quests: 3584
+      gatefall_pendragon_001:/system quests: 4158
       # Left armed 2026-08-04 at 25,880 while the surface measured 29,655
       # against a 29,761 ratchet — 106 tokens of headroom — deliberately, so
       # that the next change would trip it and get read rather than being
@@ -498,7 +498,39 @@ surfaces:
       # every panel, so it reads the whole Bearer plus the whole ownership
       # ledger plus eight render sections. It is exempt from the 16,000 ceiling
       # by design and governed by the ratchet alone, which is what just fired.
-      gatefall_pendragon_001:/system all: 62654
+      gatefall_pendragon_001:/system all: 66002
+      #
+      # ---- Five budgets re-recorded together 2026-08-05, `EVT-000418` ----
+      #
+      # One played Sunday touched every surface that reads the Bearer.
+      # `EVT-000413`-`EVT-000418`: a B-Rank harvest job, a D-Rank instant-dungeon
+      # clear run as a training instance, a weapon given away, an overdue
+      # tracked-board break settled four days late, and six skills taking real
+      # counter movement. None of this is engine work and none of it is drift --
+      # it is a session's canon arriving at once.
+      #
+      #   `/system`        31,066 -> 36,330  (nineteen protagonist fields)
+      #   `/system skills`  8,097 ->  9,597  (six skills gained counter history
+      #                                       in one day; Exploit Pattern's
+      #                                       Adept -> Expert advance had its
+      #                                       *no-op* written out per `F-014`)
+      #   `/system quests`  3,584 ->  4,158  (twenty-third daily, two dailies'
+      #                                       unclaimed rewards stacked)
+      #   `/system log`    10,991 -> 13,055  (Current State again)
+      #   `/system all`    62,654 -> 66,002  (composes all of the above)
+      #
+      # `/system log` is now over its 12,000 WARNING with the 16,000 ceiling
+      # 2,945 away. That is the first surface to reach that state since the band
+      # was restored on 2026-08-04, and it is exactly what a warning band exists
+      # to say: act before the ceiling, not at it.
+      #
+      # **The honest note: this is the third budget pass in two sessions.** Two
+      # ceilings were raised 2026-08-04 and five ratchets move here. Every raise
+      # has been individually defensible; the aggregate is a campaign outgrowing
+      # its own measurement. **R14 is the unpaid work underneath all of it** --
+      # trimming Current State and the startup file, and moving `titles` into a
+      # deferred group so the Console carries only its count. It has now been
+      # deferred by raising a number three separate times.
       # Re-recorded 2026-08-03, 7,187 -> 8,342. `/system log` reads Current
       # State, which gained the Profile 1.48 Stat Passive settlement: four
       # skills rising C -> B in one Event, and the reason each one did. That is
@@ -523,7 +555,7 @@ surfaces:
       # running. It is also the clearest illustration of why the ceiling moved
       # in the same pass: at the old 12,000, a panel that had just passed would
       # have had ~1,000 tokens left before a hard stop with no release.
-      gatefall_pendragon_001:/system log: 10991
+      gatefall_pendragon_001:/system log: 13055
       reikon_awakening_001:/system: 8985
     subdivision_message: fetched operation requires a narrower selector
 
@@ -602,7 +634,32 @@ per_object_budgets:
   - name: gatefall_npc_ledger_objects
     file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
     object_prefixes: [ENT-, REL-]
-    baseline_worst_bytes: 65504
+    # Re-recorded 2026-08-05, 65,504 -> 77,150 (`EVT-000418`), and this one is
+    # recorded with less comfort than the operation ratchets above.
+    #
+    # `ENT-000139` remains the pathological object this budget was written to
+    # watch, and it grew again: the 2026-08-16 session gave Owen a weapon, had
+    # him decline a real offer with his reasons, and had him clear an entire
+    # D-Rank instance as the only combatant in it -- his largest single day in
+    # the campaign, landing on the record that was already the largest.
+    #
+    # **The Runtime's own additions were trimmed twice before this was raised,
+    # and that order matters.** The first draft of the session note ran ~5,700
+    # bytes and was cut to ~1,900; a damage derivation duplicated between this
+    # record and `120_INVENTORY_AND_OWNERSHIP.md` was removed from here and left
+    # in the ledger that owns it. The object still measured 77,150 against a
+    # 75,329 ratchet. What remained could only have come out of canon that
+    # predates this session -- which is owner authoring work, not a Runtime
+    # decision, on this file's own rule that existing canon is not failed for
+    # being long.
+    #
+    # The distribution is the finding and it has got worse, not better: median
+    # 2,549 bytes across 76 objects against a largest of 77,150. One record is
+    # thirty times the median. `canonical_state.situation` and
+    # `relationship_to_alexander` are where it lives, and both are genuinely
+    # load-bearing for narration -- which is precisely why splitting Owen's
+    # history out of his live record is authoring work rather than deletion.
+    baseline_worst_bytes: 77150
     growth_allowance_percent: 15
     reason: >-
       The distribution is the point: the median block is around 2 KB and the

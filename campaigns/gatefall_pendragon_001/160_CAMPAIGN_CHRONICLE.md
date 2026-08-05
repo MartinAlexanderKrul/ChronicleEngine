@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000459
+  source: EVT-000461
   game_date: "2026-08-17T19:45:00-05:00"
   real_date: "2026-08-05"
 role: canonical ledger
@@ -422,6 +422,8 @@ subjects:
   - EVT-000457
   - EVT-000458
   - EVT-000459
+  - EVT-000460
+  - EVT-000461
 ```
 
 ---
@@ -14221,4 +14223,84 @@ description: "**Section 7.1 promotion-barrier settlement for `EVT-000451`-`EVT-0
 **`gatefall.skill_credit`: explicit `none`.** No dangerous scene occurred in this span — no live threat, no Gate or instance entered, no damage dealt or taken. `EVT-000451`-`EVT-000453` classify as `scene`; `EVT-000454`-`EVT-000458` classify as `scene`. None belongs to a danger-bearing kind, so the coverage set does not reach them.
 
 **Cash: $2,574.00 → $2,174.00** (`EVT-000453`, Duane's $400 yard fee). No gold, XP, level, Stat, item, ownership, or title change. New identifier this span: `REL-000098` (Alexander and Iris Halvorsen), allocated at this barrier. New high-water mark **EVT-000459**."
+```
+
+---
+
+## EVT-000460 - Profile 1.64: What "Capable" Means, and the Ceiling It Was Hiding
+
+```yaml
+id: EVT-000460
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-17 19:45 -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: profile-adoption
+importance: major
+game_date: "2026-08-17 19:45 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Adoption of **Gatefall World Rule Profile 1.64**, a compatibility treatment over frozen 1.63, at the freight-yard anchor immediately following the first crew training. **No fictional time passes, no pool moves, no scene occurs, no skill changes Rank or mastery, and no past exchange is re-resolved.**
+
+**The crew asked a question the profile could not answer.** With the training closed, Alexander holds a working crew of **five B-Ranks** (Corbin Yates, Felix Aranda, Dana Whitcombe, Warren Sato, Iris Halvorsen) and **six C-Ranks** (Marcus Whitlow, Soraya Delgado, Grant Okwuosa, Theo Bannerman, Reyna Castillo, Owen Callahan). Section 9.4's legal minimum for a B-Rank Gate reads **`8 (B-Rank-capable, incl. ≥1 B)`** — and **nothing in the profile defined *capable*.** The prose above the table said only *combat-rated hunters of adequate rank* and never authored adequacy. Read strictly, the minimum wants eight carded B-Ranks and this crew is three short; read permissively, it wants eight hunters capable of B-Rank work with at least one carded B, and the crew clears it tonight. **The file chose neither, and the difference is the entire Rank ceiling of the campaign.**
+
+**The `≥1 B` clause is the evidence and it settles it.** Under the strict reading that clause is redundant — if all eight must be carded B, *including at least one B* adds nothing at all. It carries meaning only if the other seven need not be. The A-Rank row uses the identical construction (`16 (incl. at least one A-Rank)`), and the C-Rank row omits it because it needs no such protection. **The table was already written for the permissive reading; only the definition was missing.**
+
+**Ruled:** a hunter counts toward a Gate's legal minimum when their **card Rank is at the Gate's Rank or one Rank below it**, and nothing else. A C-Rank counts toward a B-Rank Gate's eight; a D-Rank counts toward a C-Rank Gate's four; an E-Rank counts toward neither.
+
+**Capability is a card threshold, not a judgment.** No board, regulator, or party leader assesses whether a given hunter is *really* ready — a legal minimum resting on opinion would be unenforceable at the mouth and unprovable in a hearing after, which is why the law counts cards and not competence, exactly as Section 19's re-assessment measures a Mana pool rather than asking anyone how good they are. **The `≥1` clauses are what prevent an all-lower-tier party:** eight C-Ranks cannot lawfully take a B-Rank Gate, seven plus one B can. **C-Rank carries no such clause deliberately**, so four D-Ranks may lawfully enter a C-Rank Gate — C is the trade's ordinary working tier and D-Ranks doing C-Rank work is the common career rather than the exception, which Section 9.4's own support-tier paragraph already describes. **One Rank and not two**, because Section 2 fixes Rank at Awakening and Section 4 makes Rank the whole of capability: a two-Rank gap is a different weight class, and a minimum permitting it would be a casualty report the law had signed in advance.
+
+**What it means for this campaign, stated plainly because it is the point.** The crew as it stands **clears a B-Rank Gate's legal minimum tonight** — eleven combat-rated hunters against a floor of eight, five of them carded B. It does not clear the **posting floor** of 14-18, which is a board rule rather than the law, and it does not change that **Alexander himself is barred from C-Rank-and-above contracts by his own E-Rank card** (Section 19.4) and would ride as support, as he did on Dale Pruitt's B-Rank harvest. **The crew is not muscle he lacks — it is the only lawful route to B-Rank content he has.** His System Rank is C, so Section 12.5 stocks him instant-dungeon keys at C and below and **will not sell him a B-Rank key until System Rank B at level 30**; alone, with unlimited gold, he is capped at C-Rank content for seven levels. A B-Rank Gate entered with the crew is also the only place a **B-Rank key can drop** (Section 11.2, roll 81-90), which is the one door he cannot buy.
+
+**It is a legal threshold and not a survival guarantee.** Section 9.7's population formula does not soften for a party that scraped its floor, and Section 20.4 is untouched. **Nothing retroactive:** no past entry is re-adjudicated, and this edge does not cure an under-strength entry that was short under the old ambiguity — Wade Bishop's four-against-eight remains exactly what `EVT-000384` records it as.
+
+`profile_version` advances 1.63 → **1.64**. Full transformation record at `worlds/gatefall/migrations/1.63_to_1.64.md`. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. No entity, record, or relationship minted. New high-water mark **EVT-000460**."
+```
+
+---
+
+## EVT-000461 - Profile 1.65: A Cover Story That Was Never Limited By Size
+
+```yaml
+id: EVT-000461
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-17 19:45 -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: profile-adoption
+importance: moderate
+game_date: "2026-08-17 19:45 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Adoption of **Gatefall World Rule Profile 1.65**, a compatibility treatment over frozen 1.64, at the same freight-yard anchor as `EVT-000460`. **No fictional time passes, no pool moves, no scene occurs, no skill changes Rank or mastery, and no past exchange is re-resolved.** It also carries one derived-record repair, folded in here rather than minted as its own Event.
+
+**Section 19.3 closed on a sentence that reads as a limit on size, and is not one.** The line was *'Reawakening explains one jump; it cannot explain a curve.'* Every word of it is defensible and the shape of it misleads: ***one jump*** invites the reading that the classification tolerates a **small** correction and refuses a large one — that an E-Rank card measuring at a D-Rank pool is admissible while the same card measuring at a **B-Rank pool** is too much to claim. **It was misread exactly that way in play**, which is why this edge exists; the wording did not merely permit the wrong reading, nothing else in the section contradicted it.
+
+**The rest of Section 19.3 already settles it, and settles it the other way.** The section calls reawakening *'a correction of a card mismeasured at Awakening, not a second Awakening and not a Rank that moved'*, and says *'the only admissible account of a changed number is that the original card was wrong all along.'* **A wrong measurement has no natural size.** If the claim is that the original appraiser got it wrong, a wider gap says he got it *more* wrong — a more embarrassing error, not a less believable correction. The instruments are held infallible about the present; nothing requires the past to have been off by only a little.
+
+**Ruled, and now stated in the section rather than left to be inferred.** The classification is **not magnitude-limited**: an E-Rank card that re-measures at a B-Rank pool is exactly as admissible a claim as one that re-measures at D, and there is no size at which a regulator refuses it *on size alone*. **What it cannot absorb is repetition** — one correction is a correction, a second on the same card is not, because two mismeasurements of one hunter stops being an appraiser's error and becomes a pattern the instruments are not permitted to have. **The constraint falls on the number of claims, never on the distance any one claim covers**, and the closing line now reads *reawakening explains a jump of any size; it cannot explain a series.*
+
+**A wide gap is not free, and its cost was already authored.** It buys **attention** — Section 19.1's four surfacing routes and the *how, when, witnessed by whom* scrutiny the section already names — and Section 19.4's trade is untouched. What it does not cost is **credibility**, and that distinction is the whole content of this edge. Section 19.2's mana-capacity re-measurement, its capacity table, and the voluntary/court-ordered split are unchanged.
+
+**What this means for Alexander, stated because it is the reason it came up, and the numbers are worse than the question assumed.** He is a **carded E-Rank** whose maximum Mana stands at **140/140**. Section 19.2's capacity table puts **120+ in the S-Rank band** — so a re-measurement taken as he stands right now would not classify him at B or even A, but at the top band the table has, five Ranks above his card. Under the misreading that reawakening tolerates only a modest correction, the only sanctioned cover the world has was unusable at exactly the magnitude he actually carries, and the entire Section 19 seam was closed to him. It is not closed: **the cover covers it, at the price of attention.**
+
+**The lever Section 19.2 already gives is the one that matters here.** The instrument reads *current maximum Mana*, which is `2 × effective Intelligence` (Section 5.1), and **equipped Intelligence moves the reading** — so what band he measures in is partly a choice made before he walks in, not a fixed property of him. That was always true and is unchanged by this edge; what changes is that he no longer needs to manage the reading down to keep the claim believable, only to decide how much attention he wants.
+
+**Nothing about his position changes mechanically.** He remains barred from C-Rank-and-above contracts by his own E-Rank card (Section 19.4), has claimed no reawakening, and has requested no re-assessment. What changes is that the option is known to be open at any gap.
+
+**Folded-in repair: `100_CHARACTER_SHEET.md`'s Field Command line contradicted itself.** Its body read *'relay one active Exploit Pattern … to **one ally** … before **the ally's** roll'* — the E-Rank Novice wording — while the same line recorded *'Currently 3 recipients, on the Adept rung.'* Field Command's mastery axis is **scope, simultaneous recipients 1→5** (Section 7.4), and it has stood at **Adept** since `EVT-000428`-`EVT-000435`. The prose was never carried forward when the count moved, so the line stated the skill's floor and its live value in the same sentence. Repaired to the rendering Silent Step and Resonance Extraction already use — the axis named, then the current rung's count. **`F-015`'s shape again:** rendered prose beside a stored figure, with no gate comparing them, since the counters it reconciles were all correct.
+
+`profile_version` advances 1.64 → **1.65**. Full transformation record at `worlds/gatefall/migrations/1.64_to_1.65.md`. **Nothing retroactive:** no re-assessment, claimed or withheld reawakening, or consequence promoted under 1.64 or earlier is reopened. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. No entity, record, or relationship minted. New high-water mark **EVT-000461**."
 ```

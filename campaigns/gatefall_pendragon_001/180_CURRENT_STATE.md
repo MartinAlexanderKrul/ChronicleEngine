@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000459
+  source: EVT-000461
   game_date: "2026-08-17T19:45:00-05:00"
   real_date: "2026-08-05"
 role: canonical ledger
@@ -27,7 +27,7 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.63
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.65
 - **Engine Rules:** 0.3.0
 - **Data Model:** 0.1.6
 - **Campaign time:** **2026-08-17 (Monday), 19:45 CDT (`-05:00`)** — freight yard off Ashland, training just closed. Next daily 2026-08-18 06:00. **Iris's supervised run owed this week; Reyna answers by 2026-08-19.**
@@ -153,7 +153,7 @@ At Halvard's (`ENT-000202`), **Alexander told him a version of the trial short i
 
 ## Promotion Status
 
-**Live canon is promoted through `EVT-000459`.** Since Checkpoint 0077 (canon through `EVT-000450`): **`EVT-000451`-`EVT-000459`, index only** — the first crew training (full detail `160_CAMPAIGN_CHRONICLE.md`), closing with `formation_instruction` reaching **`pending-ratification`** (3/3, no profile-authored result, owner ruling owed) and `gatefall.skill_credit` explicit `none`. No Mana, Health, XP, level, Stat, or gold movement. Cash **$2,574.00 → $2,174.00**. New: `REL-000098` (Alexander and Iris Halvorsen).
+**Live canon is promoted through `EVT-000461`.** Since Checkpoint 0077 (canon through `EVT-000450`): **`EVT-000451`-`EVT-000461`, index only** — the first crew training (full detail `160_CAMPAIGN_CHRONICLE.md`), closing with `formation_instruction` reaching **`pending-ratification`** (3/3, no profile-authored result, owner ruling owed) and `gatefall.skill_credit` explicit `none`. No Mana, Health, XP, level, Stat, or gold movement. Cash **$2,574.00 → $2,174.00**. New: `REL-000098` (Alexander and Iris Halvorsen).
 
 **Prior span — Checkpoint 0077 (canon through `EVT-000450`), index only.**
 

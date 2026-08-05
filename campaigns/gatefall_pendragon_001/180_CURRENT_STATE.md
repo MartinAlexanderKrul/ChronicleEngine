@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000440
+  source: EVT-000442
   game_date: "2026-08-16T17:00:00-05:00"
   real_date: "2026-08-05"
 role: canonical ledger
@@ -27,7 +27,7 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.60
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.62
 - **Engine Rules:** 0.3.0
 - **Data Model:** 0.1.6
 - **Campaign time:** **2026-08-16 (Sunday), 17:00 CDT (`-05:00`)** — just outside the second Crypt instant dungeon with Owen, both freshly showered-worthy after two full clears. The twenty-third daily completed, **streak 9**. Next daily issues 2026-08-17 06:00. **Tomorrow evening is the first crew training**, 18:00, freight yard off Ashland, ten people holding the date.
@@ -136,7 +136,11 @@ At Halvard's (`ENT-000202`), **Alexander told him a version of the trial short i
 
 ## Promotion Status
 
-**Live canon is promoted through `EVT-000440`.** Since Checkpoint 0075 (canon through `EVT-000427`): **`EVT-000428`-`EVT-000440`**, below.
+**Live canon is promoted through `EVT-000442`.** Since Checkpoint 0075 (canon through `EVT-000427`): **`EVT-000428`-`EVT-000442`**, below.
+
+**`EVT-000442` — Profile 1.62: the Flux Sight read bounded to news. Nothing granted; no NPC record gains a field.** The C rung reads any perceived awakened and his Flux Sight is B, so it fires on Owen, on Reyna, on a stranger in a bar — but 1.61's *full read at first perception in a scene* would have opened every domestic scene with a stat block on his partner. **New Section 14.5.6, *first meeting then on change*:** full read the first time he ever perceives someone, thereafter only when a value has **materially moved** since his last read of that person. The passive is untouched (Section 4.4; he always knows) — what is bounded is when the System *says so*, so **a rendered line always carries news.** With it: **a populated room renders one room line** (counts by Rank with colors, no pools) then a full read on anyone engaged, approached by, singled out, or fought; and **Section 14.5.3 states the bracketed head grammar** — fixed tuple inline, variable field set as labelled rows. Prospective, no backfill owed. **A non-awakened person renders nothing at all.**
+
+**`EVT-000441` — Profile 1.61 adopted: Flux Sight gets a trigger tier and a render template (`F-017` item 4).** The passive was withheld all session because **the rule as written withheld it** — Section 14.3's tiers are the whole authorization list, Tier 3 forbids firing with no declared precondition, and the D and C rungs sat in no tier. Beside it, nothing authored *how* the read renders: three shapes in one campaign, **Mana dropped in two of three.** Settled: every rung **Tier 1, on sight, no roll, no Mana**; read and designation color are **one line**; a Gate takes no color; Section 14.5 becomes one grammar and two weights; **the XP line names its award source** (item 3's missing audit trail); a target's pools re-render in any exchange the Bearer's action moved them; pools are `HP`/`MP`/`XP` everywhere. **Written after the profile it adopts, which is its own finding:** 1.61 landed world-side with no adoption Event, and **validation stayed green** — `profile_version` is a stored string with nothing to disagree with it, and a missing Event is not a value any gate compares. **`F-015` structurally, the fourth time this session.**
 
 **`EVT-000440` — Profile 1.60: `applied_analytical_reconstruction` rejected and First Principles retired; nothing granted, nothing unwound.** Closes a finding this session opened, against itself. Both evidence scenes resolved on the engine's standing **established-capability** step (`EVT-000372`: *"+1 step for the directly relevant established capability"*), which fires for competence a character already holds and needs no skill. Alexander is a university-trained mathematician and physicist — this *is* that training. Section 4.3 caps the net step at +1 and Section 7.2 forbids a second modifier from the same finding, so the skill would have changed **no roll and no outcome** on the very scenes that formed it: the **Rank Dominance Law failing at acquisition**. All three candidate mastery axes failed the same way — beneficiaries priced a solitary method as a group one, concurrent derivations rebuilt Multitask's unreached-ceiling defect, and scale starting at *one wall* sat beneath what he had already done with no skill. **`EVT-000405` was right after all**: no new method appeared because the method was never new. **Education is capability, not a skill** — no Rank, no Mana, no mastery, no ceiling, applying whenever directly relevant. Evidence preserved; First Principles never reached any ledger, so there is nothing to retire. Dimensional Projection untouched.
 

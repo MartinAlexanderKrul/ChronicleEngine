@@ -22,7 +22,7 @@ Generated rows are not edited directly. Update their owning startup, world/profi
 | World | Version | Status | Live campaigns |
 |---|---|---|---:|
 | `worlds/asterra/` | 0.9 | Workshop Draft | 0 |
-| `worlds/gatefall/` | World Rule Profile 1.61, frozen | Active | 1 |
+| `worlds/gatefall/` | World Rule Profile 1.62, frozen | Active | 1 |
 | `worlds/reikon/` | World Rule Profile 0.11, frozen | Active | 1 |
 | `worlds/verra/` | 0.1 (Prototype) | Active | 2 |
 

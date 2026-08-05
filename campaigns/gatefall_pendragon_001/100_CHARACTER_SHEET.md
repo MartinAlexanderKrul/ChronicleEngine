@@ -128,7 +128,9 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.61"
+    profile_version: "1.62"
+    profile_render_cadence_event: EVT-000442
+    profile_render_template_event: EVT-000441
     profile_candidate_rejection_event: EVT-000440
     profile_remote_storage_event: EVT-000438
     profile_magnitude_ladder_event: EVT-000391

@@ -332,17 +332,25 @@ surfaces:
       # `rejection_reason` field, which the validator requires of any rejected
       # candidate and which is the point of rejecting one in writing.
       #
-      # READ THIS BEFORE THE NEXT SESSION. 784 tokens of margin against the
-      # 40,000 ceiling. That is a countdown, not a margin -- an ordinary played
-      # session moves this surface by more than that, and unlike the ratchet the
-      # ceiling cannot be re-recorded past. The trimming named below is now the
-      # binding work and it is owner authoring (R14). Measured candidates, all
-      # historical prose sitting in live state with its reasoning already in the
-      # Events: `titles.earned` ~1,571 (provenance; keep slots/points and the
-      # equipped passives live, they are resolution inputs), the
-      # `temporal_state.settlement_note` superseded-anchor chain ~1,450, and the
-      # `progression_candidates` notes ~700. Any two clear it.
-      gatefall_pendragon_001: 39216
+      # Carried 39,216 -> 39,775 (+559) at `EVT-000441`/`EVT-000442`, the two
+      # profile adoptions. Both are Promotion Status entries and nothing else --
+      # no pool, counter, holding, or candidate moved. A first pass wrote them at
+      # chronicle length and cost 769, taking readiness to 39,985 and tripping
+      # the `/system log` ratchet; they were cut to the shape Current State is
+      # for, which is what this surface should have caught and did.
+      #
+      # READ THIS BEFORE THE NEXT SESSION. 225 tokens of margin against the
+      # 40,000 ceiling, down from 784. That is a countdown, not a margin -- an
+      # ordinary played session moves this surface by several times that, and
+      # unlike the ratchet the ceiling cannot be re-recorded past. **The trimming
+      # below is now blocking rather than advisable**, and it is owner authoring
+      # (R14). Measured candidates, all historical prose sitting in live state
+      # with its reasoning already in the Events: `titles.earned` ~1,571
+      # (provenance; keep slots/points and the equipped passives live, they are
+      # resolution inputs), the `temporal_state.settlement_note`
+      # superseded-anchor chain ~1,450, and the `progression_candidates` notes
+      # ~700. Any two clear it; one no longer reliably does.
+      gatefall_pendragon_001: 39775
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479
@@ -623,7 +631,16 @@ surfaces:
       # running. It is also the clearest illustration of why the ceiling moved
       # in the same pass: at the old 12,000, a panel that had just passed would
       # have had ~1,000 tokens left before a hard stop with no release.
-      gatefall_pendragon_001:/system log: 13055
+      # Re-recorded 2026-08-05, 13,055 -> 15,001 (+1,946), tracking the same
+      # Current State growth as the readiness surface above: `EVT-000436`
+      # through `EVT-000442`, of which the last two are the 1.61 and 1.62
+      # profile adoptions. The ratchet fired here first and it fired correctly —
+      # at chronicle-length entries this surface read 15,210 against an
+      # allowance of 15,013, and it is the reason those entries were cut before
+      # anything was re-recorded. 999 tokens now separate this panel from its
+      # 16,000 hard ceiling, and that ceiling *can* be raised where readiness's
+      # cannot, but the trimming named at the readiness baseline relieves both.
+      gatefall_pendragon_001:/system log: 15001
       reikon_awakening_001:/system: 8985
     subdivision_message: fetched operation requires a narrower selector
 

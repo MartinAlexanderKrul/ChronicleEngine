@@ -403,6 +403,8 @@ subjects:
   - EVT-000438
   - EVT-000439
   - EVT-000440
+  - EVT-000441
+  - EVT-000442
 ```
 
 ---
@@ -13349,4 +13351,76 @@ description: "Owner ruling **rejecting the `applied_analytical_reconstruction` c
 **Nothing is lost and nothing is unwound.** First Principles existed only as authored profile text between 1.58 and 1.60: **no Bearer ever held it**, no `skills_known` entry named it, and no `tracked_counters` row was ever created for it — so there is no counter to retire, no mastery to reverse, and no Mana, Rank, or scope value to recompute. **Dimensional Projection is untouched and remains ratified and live** (`EVT-000436`); this ruling reaches neither it nor its candidate.
 
 `profile_version` advances 1.59 → **1.60**. Full transformation record at `worlds/gatefall/migrations/1.59_to_1.60.md`. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. New high-water mark **EVT-000440**."
+```
+
+---
+
+## EVT-000441 - Profile 1.61: The Passive That Was Never Authorized to Speak
+
+```yaml
+id: EVT-000441
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: profile-adoption
+importance: major
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Adoption of **Gatefall World Rule Profile 1.61**, a compatibility treatment over frozen 1.60, at the same 2026-08-16 evening anchor as `EVT-000436` through `EVT-000440`. **No fictional time passes, no pool moves, no scene occurs, no skill changes Rank or mastery, and no past exchange is re-resolved.**
+
+**Raised by `F-017` item 4 — Flux Sight withheld across a whole combat session as though it needed an active check — and the finding is sharper than the report: the Runtime was following the rule that existed.** Section 14.3's trigger tiers are the entire authorization list for what the System says unprompted, and Tier 3 forbids firing *'with no declared precondition at all.'* Tier 1 named the **designation color**. Tier 2 named the **B-rung item appraisal**. The **D rung (monsters) and C rung (awakened humans) appeared in no tier whatsoever** — so a strict reading found no authorization to fire them and a standing prohibition against firing anyway. Naming exactly one rung, under *bounded discretion*, is also what made the whole passive read as conditional when its own text is *reads on sight*.
+
+**A second hole sat beside it.** Section 4.4 authored *what* Flux Sight reads and **nothing authored how it renders** — the only System output in the profile with no exact template, so it was re-invented at each use: three shapes in one campaign, the rule citation leaking into the fiction twice, and **Mana dropped in two of three**, against a D rung authoring *'Rank, current/maximum Health, and current/maximum Mana'* as one read. A rung's values are not a menu.
+
+**What 1.61 settles.** Every Flux Sight rung is **Tier 1, fires on sight, no roll and no Mana**, the item appraisal promoted out of Tier 2 to join them. **The read and the designation color render as one line**, the color computed from the very Rank the read states — where Flux Sight does not cover a creature whose Rank is resolved the color still fires alone, and a Gate takes no color at all, the palette comparing a *creature's* Rank and a Gate being a place. **Section 14.5 becomes the contract rather than three examples**: one grammar — subject, bracketed Rank, delta, `before → current/maximum`, parenthesized source — and two weights, the Bearer's own pools and XP rendering bare, anything carrying a subject taking `[SYSTEM]`. **The XP line names its award source**, which is exactly what `F-017`'s third item lacked when a whole dungeon's XP went unrendered and the total resumed from a figure matching no derivable sum. **A target's pools re-render in any exchange the Bearer's action moved them.** Pool labels are `HP`/`MP`/`XP` on every surface; the 2026-07-30 ruling that Mana is never abbreviated is **scoped** to the skills table's cost column rather than overturned — a cost is `Mana 8`, a pool is `MP 92/98`.
+
+**Why this Event is being written after the profile it adopts, and that is the finding worth keeping.** Profile 1.61 was authored and committed world-side at `e02bea9` — profile, migration record, INDEX, startup binding, README and `engine/004_DESIGN_FLAGS.md` — while the campaign side was never completed: no adoption Event, no changelog entry, no registry row, and `180_CURRENT_STATE.md` still reading Profile 1.60 against a character sheet already reading 1.61. **Repository validation was green throughout.** `profile_version` is a stored string with nothing to disagree with it, and an adoption Event's *absence* is not a value any gate compares — so the split passed every check while the sheet claimed a version no Event had ever adopted. **That is `F-015` in its structural form**, and it is the fourth time this session has hit it: an unclaimed value no arithmetic can contradict. Every prior profile edge in this campaign carries a canon-bearing adoption Event — `EVT-000437` for 1.58, `EVT-000438` for 1.59, `EVT-000440` for 1.60 — and 1.61 now carries one too.
+
+`profile_version` advances 1.60 → **1.61**. Full transformation record at `worlds/gatefall/migrations/1.60_to_1.61.md`. **Nothing stored moves and nothing is retroactive** — a Flux Sight read reveals information and settles nothing, granting no modifier step and costing no Mana, so no past roll, margin, or damage figure changes. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. New high-water mark **EVT-000441**."
+```
+
+---
+
+## EVT-000442 - Profile 1.62: A Stat Block on the Man He Lives With
+
+```yaml
+id: EVT-000442
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-16 evening -05:00"
+  real_date: "2026-08-05"
+type: Event
+kind: profile-adoption
+importance: moderate
+game_date: "2026-08-16 evening -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Adoption of **Gatefall World Rule Profile 1.62**, a compatibility treatment over frozen 1.61, at the same 2026-08-16 evening anchor as `EVT-000441`. **No fictional time passes, no pool moves, no scene occurs, no skill changes Rank or mastery, and no past exchange is re-resolved.**
+
+**1.61 authored the Flux Sight read for a Bearer meeting a monster, and then applied that cadence to everyone.** Player question the same day — *would it fire when I meet an awakened NPC too?* — and following it through exposed the gap. It fires: the **C rung reads any perceived awakened** and Alexander's Flux Sight stands at B, so the rung is reached. 1.61's cadence was *full read at first perception in a scene*, extended from Section 14.6's designation-color rule **without accounting for a familiar NPC standing in the Bearer's own kitchen.** Owen Callahan lives with him. Under 1.61 every domestic scene would have opened with a combat-style stat block on his partner, restating a number that had not moved in days — noise that flattens an intimate scene into an encounter.
+
+**Rule one, new Section 14.5.6: first meeting, then on change.** The full read fires the first time he ever perceives someone, wherever that happens — a Gate mouth, a guild hall, a kitchen. Afterwards it renders **only when a value has materially moved** since his last read of that person: Health or Mana away from where he last saw it, a changed Rank, a condition the pools carry. An unchanged subject renders nothing, across any number of scenes.
+
+**The passive is not narrowed and Section 4.4 is untouched.** Flux Sight remains always in effect and Alexander always knows. What is bounded is when the System *says so*, which is the same principle already governing the designation color (*'not repeated each exchange'*) and a target's pools in Section 14.5.5 (*rendered in the exchange that changed them*), now carried to people he lives among. **It is the more useful rule and not merely the quieter one:** a line restating an unchanged number carries no information, and a reader who learns to skip it is exactly the reader a real change slips past. Under this rule a rendered line always carries news, and an injured friend coming through the door is the case it fires on.
+
+**Rule two: a populated room renders one room line, then individuals on engagement.** Where he perceives many awakened at once — a guild hall, a staging floor, a bar — the read emits a single line giving the room's shape, counts by Rank with each Rank's color, then a **full individual read on anyone he engages, is approached by, singles out, or fights.** The room line carries no pools, a count of strangers having no single pool to state. This is 1.61's grouping rule applied to people rather than to monsters: compress the undifferentiated, name what matters.
+
+**Rule three, Section 14.5.3: the bracketed head grammar is stated rather than left to pattern-matching.** Every bracketed message shares `[SYSTEM] <EVENT NAME IN CAPS> — <subject>`, the subject omitted where there is none. What differs below the head now differs **by a stated rule**: a **fixed tuple renders inline on the head row**, `·`-separated in the Section 14.5.1 order, because the fields are always the same fields in the same order and naming them would be noise; a **variable field set renders as labelled rows**, because the reader cannot know which fields are present. A read is a fixed tuple and is one row; a quest carries objectives, rewards, deadlines and warnings in combinations that vary and is labelled rows. Neither shape is available to the other. The existing quest and title blocks already had these shapes — 1.62 writes down the reason they are consistent instead of leaving it to be inferred.
+
+**Nothing is granted and no NPC record gains a field.** *Has he read this person before* is answered from the campaign's existing record of who Alexander has met, not from new stored state, and the rules are **prospective**: no backfill of previously-read subjects is owed. Where the record does not establish a prior read, the first perception after adoption fires the full read and that subject is thereafter on the change cadence — correct behavior, needing no ruling per NPC.
+
+`profile_version` advances 1.61 → **1.62**. Full transformation record at `worlds/gatefall/migrations/1.61_to_1.62.md`. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. New high-water mark **EVT-000442**."
 ```

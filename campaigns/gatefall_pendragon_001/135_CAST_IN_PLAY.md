@@ -40,7 +40,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000136` | Priya Okafor | crew leader / striker | active | Chicago | `REL-000065` |
 | `ENT-000137` | Julian Boyd | striker (ranged) | active | Chicago | — |
 | `ENT-000138` | Renata Marchetti | sensor / reader | active | Chicago | — |
-| `ENT-000139` | Owen Callahan | mender | active | Halvard's | `REL-000066` |
+| `ENT-000139` | Owen Callahan | mender | active | **Just outside the second Crypt instant dungeon, 2026-08-16 eve… | `REL-000066` |
 | `ENT-000146` | Wade Bishop | guild recruiter | active | Red Line Corridor | `REL-000068` |
 | `ENT-000147` | Walt Adamik | pawnbroker / grey-market dealer | active | Chicago | `REL-000069` |
 | `ENT-000149` | the Cutting Edge proprietor | gear artisan / licensed vendor | active | Cutting Edge | — |

@@ -977,9 +977,27 @@ foreach ($file in $canonicalFiles) {
                         @{ Metric = 'mastery_progress'; Pattern = '\b(?:mastery progress|progress)[ \t]+(?<value>\d+)/3\b' },
                         @{ Metric = 'rank_ascensions'; Pattern = '\b(?:rank ascensions|ascensions)[ \t]+(?<value>\d+)\b' }
                     )
+                    # Section 7.4: "On the third qualifying scene the mastery level advances and
+                    # current progress resets to 0; AT MASTER IT RENDERS COMPLETE." A Master-level
+                    # skill therefore has no `N/3` to render, and demanding one makes the check
+                    # unsatisfiable for exactly the skills that finished their track.
+                    # `tools/test_gatefall_quest_contract.ps1` was given this exemption when it hit
+                    # the same wall; the production gate never was, and it went unnoticed because
+                    # no skill in the campaign had reached Master until `EVT-000419`. Same defect
+                    # class as `F-013` -- a guard lagging the profile it enforces.
+                    $skillMasteryLevel = $null
+                    if ($counterValues.ContainsKey("$skillKey|mastery_level")) {
+                        $skillMasteryLevel = $counterValues["$skillKey|mastery_level"]
+                    }
+
                     foreach ($renderCheck in $renderChecks) {
                         $counterKey = "$skillKey|$($renderCheck.Metric)"
                         if (-not $counterValues.ContainsKey($counterKey)) { continue }
+                        if ($renderCheck.Metric -eq 'mastery_progress' -and $skillMasteryLevel -eq 5) {
+                            if ($skillEntry -match '\b(?:mastery progress|progress)[ \t]+complete\b') { continue }
+                            Add-Failure "$relativePath`:$line skill '$($nameMatch.Groups['name'].Value.Trim())' is at Master but its skills_known rendering does not read 'mastery progress complete' (Gatefall Profile Section 7.4)."
+                            continue
+                        }
                         $renderMatch = [regex]::Match($skillEntry, $renderCheck.Pattern)
                         if (-not $renderMatch.Success) {
                             if ($renderCheck.Metric -eq 'rank_ascensions') { continue }

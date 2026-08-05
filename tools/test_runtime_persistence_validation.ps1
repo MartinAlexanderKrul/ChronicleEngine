@@ -416,19 +416,35 @@ New-Item -ItemType Directory -Path $tempRoot | Out-Null
 
 try {
     # P-01 through P-04: real validator runs against isolated repository copies.
+    #
+    # P-01 and P-02 match the protagonist's location by SHAPE, never by the
+    # entity he happens to be standing in. Both carried the literal ENT-000087
+    # and Checkpoint 0078 moved him to a freight yard (ENT-000200), so the
+    # mutation stopped matching and the suite failed on correct canon -- F-018's
+    # class, which is a fixture pinned to a value ordinary play is entitled to
+    # move. What these two assert is that a Character must declare exactly one
+    # location; which place that is has never been the point.
+    #
+    # P-02's duplicate must name a DIFFERENT entity than the live one, or it adds
+    # no second location at all. It is derived below for the same reason.
+    $liveSheet = Get-Text (Join-Path $root "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md")
+    $liveLocation = [regex]::Match($liveSheet, '(?m)^  location: (?<id>ENT-\d{6})[ \t]*$')
+    Assert-True $liveLocation.Success "The protagonist's canonical_state.location could not be read; P-01/P-02 have nothing to mutate."
+    $duplicateLocation = if ($liveLocation.Groups['id'].Value -eq 'ENT-000086') { 'ENT-000087' } else { 'ENT-000086' }
+
     $presenceCases = @(
         @{
             Id = "P-01"
             Path = "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md"
-            Pattern = '(?m)^  location: ENT-000087\r?\n'
+            Pattern = '(?m)^  location: ENT-\d{6}\r?\n'
             Replacement = ""
             Expected = "active Character ENT-000125 must declare exactly one canonical_state.location"
         },
         @{
             Id = "P-02"
             Path = "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md"
-            Pattern = '(?m)^(  location: ENT-000087\r?\n)'
-            Replacement = "`$1  location: ENT-000086`r`n"
+            Pattern = '(?m)^(  location: ENT-\d{6}\r?\n)'
+            Replacement = "`$1  location: $duplicateLocation`r`n"
             Expected = "object ENT-000125 declares more than one location"
         },
         @{

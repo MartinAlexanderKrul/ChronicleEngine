@@ -149,6 +149,36 @@ while ($queue.Count -gt 0 -or $running.Count -gt 0) {
 $total.Stop()
 Remove-Item -LiteralPath $streamRoot -Recurse -Force -ErrorAction SilentlyContinue
 
+# The OBSERVATION channel (F-018).
+#
+# A suite asserts invariants: things that must hold in every reachable state. It
+# also, sometimes, notices something true about the live campaign right now -- a
+# board with no postings, a dry supply of concealed records. Those are worth
+# saying and are NOT contract failures: an empty board is a state Section 9.10's
+# own settlement rules produce, and no edit to the suite or the repository can
+# clear it. Asserted as failures they made a green suite impossible for reasons
+# only play could fix, which is what F-018 recorded.
+#
+# Any suite may write `OBSERVATION: <text>` to stdout. They are collected here
+# from every suite, pass or fail, and reported apart from the verdict -- a
+# passing suite's output is otherwise discarded, so without this they would be
+# invisible in an aggregate run.
+$observations = @(
+    $results | Sort-Object Suite | ForEach-Object {
+        $suiteName = $_.Suite
+        [regex]::Matches($_.Output, '(?m)^OBSERVATION:[ \t]*(?<text>.+?)[ \t]*$') |
+            ForEach-Object { [pscustomobject]@{ Suite = $suiteName; Text = $_.Groups['text'].Value } }
+    }
+)
+
+if ($observations.Count -gt 0) {
+    Write-Host ""
+    Write-Host "Observations (live campaign state, not contract failures):" -ForegroundColor Yellow
+    foreach ($observation in $observations) {
+        Write-Host ("  [{0}] {1}" -f $observation.Suite, $observation.Text) -ForegroundColor Yellow
+    }
+}
+
 # Completion order is not name order once suites overlap, so the failure report
 # is sorted back into an order a reader can diff against a previous run.
 $failures = @($results | Where-Object { -not $_.Passed } | Sort-Object Suite)

@@ -80,6 +80,66 @@ function Get-RegistryHighWater {
     return [int]$m.Groups[1].Value
 }
 
+# Progression candidates, read out of the sheet rather than named by a literal.
+#
+# The candidate mutations below used to name a key AND pin its status and
+# evidence count: `twin_fang` at `ratified`, `dimensional_weapon_control` at
+# `tracking` with exactly two references. Both were true on the day they were
+# written and neither is an invariant -- ordinary play ratified the second one
+# at `EVT-000436` and added its third reference, the literal stopped matching,
+# and the suite failed on correct canon. That is `F-018`'s class, and it is the
+# same defect `F-013` recorded one layer down: a value copied out of something
+# that moves, with nothing comparing the two.
+#
+# What the assertions actually need is a candidate with a PROPERTY -- one at or
+# over the domain's evidence threshold, one whose key the profile declares
+# pre-authored. Select on the property and play may rename, re-rank, ratify or
+# re-evidence anything it likes.
+function Get-ProgressionCandidates {
+    param([string]$Path)
+    $pattern = '(?ms)^(?<block>      - domain: (?<domain>\S+)\r?\n' +
+               '        key: (?<key>\S+)\r?\n' +
+               '        signature: (?<signature>\S+)\r?\n' +
+               '        status: (?<status>\S+)\r?\n' +
+               '        evidence:\r?\n(?<evidence>(?:^          - \S+[^\r\n]*\r?\n)+))'
+    $found = @()
+    foreach ($m in [regex]::Matches((Get-Text $Path), $pattern)) {
+        $found += [pscustomobject]@{
+            Block    = $m.Groups['block'].Value
+            Domain   = $m.Groups['domain'].Value
+            Key      = $m.Groups['key'].Value
+            Status   = $m.Groups['status'].Value
+            Evidence = @([regex]::Matches($m.Groups['evidence'].Value, '(?m)^          - (?<ref>\S+)') |
+                         ForEach-Object { $_.Groups['ref'].Value })
+        }
+    }
+    return $found
+}
+
+function Set-CandidateStatus {
+    param([string]$Block, [string]$Status)
+    $rewritten = [regex]::Replace($Block, '(?m)^(        status: )\S+$', ('${1}' + $Status), 1)
+    Assert-True ($rewritten -ne $Block) "Could not rewrite a progression candidate's status line."
+    return $rewritten
+}
+
+# Parsed exactly the way validate_repository.ps1 parses it, from the same file:
+# the threshold and the pre-authored key set are the profile's to declare, and
+# restating either here would be the second copy that F-013 warns about.
+function Get-ProgressionRatificationPolicy {
+    param([string]$ProfilePath)
+    $text = Get-Text $ProfilePath
+    Assert-True ($text -match '(?m)^      evidence_threshold:\s*(\d+)\s*$') `
+        "The profile declares no progression evidence_threshold; the ratification mutations cannot be derived."
+    $threshold = [int]$Matches[1]
+    $preAuthored = @()
+    if ($text -match '(?ms)^      pre_authored_result_keys:\r?\n(?<keys>(?:^        - [^\r\n]*\r?\n)+)') {
+        $preAuthored = @([regex]::Matches($Matches['keys'], '(?m)^        - (?<key>\S+)\s*$') |
+                         ForEach-Object { $_.Groups['key'].Value })
+    }
+    return [pscustomobject]@{ Threshold = $threshold; PreAuthoredKeys = $preAuthored }
+}
+
 function Invoke-Validation {
     param([string]$RepositoryRoot)
     # -CoreOnly: every assertion here is about progression candidates, counters,
@@ -107,40 +167,17 @@ try {
     $profile = Join-Path $tempRoot "worlds/gatefall/206_WORLD_RULE_PROFILE.md"
     $runtime = Join-Path $root "docs/AI_GAMEPLAY_RUNTIME_PROFILE.md"
 
-    # The new production checks intentionally block the current live campaign
-    # until F-015 receives a corrective checkpoint. This suite needs a valid
-    # control before it can mutate one relationship at a time, so normalize
-    # only those already-diagnosed render/provenance defects in the isolated
-    # copy. Once live canon is repaired these replacements simply do nothing.
-    $fixtureCharacter = Get-Text $character
-    $fixtureCharacter = $fixtureCharacter.Replace(
-        '  game_date: "2026-08-15 ~16:30 -05:00"',
-        '  game_date: "2026-08-15 16:45 -05:00"')
-    $fixtureCharacter = $fixtureCharacter.Replace(
-        '**DMG 128 standard before reduction** at effective Strength 66',
-        '**DMG 129 standard before reduction** at effective Strength 67')
-    $fixtureCharacter = [regex]::Replace(
-        $fixtureCharacter,
-        '`\(66 \+ 22\)[^0-9]+1\.45 = 127\.6`',
-        '`(67 + 22) x 1.45 = 129.05`')
-    $fixtureCharacter = $fixtureCharacter.Replace(
-        '**DMG 112 standard before reduction** at effective Strength 66',
-        '**DMG 113 standard before reduction** at effective Strength 67')
-    $fixtureCharacter = [regex]::Replace(
-        $fixtureCharacter,
-        '`\(66 \+ 11\)[^0-9]+1\.45 = 111\.65`',
-        '`(67 + 11) x 1.45 = 113.1`')
-    $fixtureCharacter = $fixtureCharacter.Replace(
-        '**DMG 100 standard before reduction** at effective Intelligence 61',
-        '**DMG 99 standard before reduction** at effective Intelligence 61')
-    Set-Text $character $fixtureCharacter
-
-    $fixtureCurrent = Get-Text (Join-Path $tempRoot "campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md")
-    $fixtureCurrent = $fixtureCurrent.Replace(
-        '**Live canon is promoted through `EVT-000404`.**',
-        '**Live canon is promoted through `EVT-000406`.**')
-    Set-Text (Join-Path $tempRoot "campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md") $fixtureCurrent
-
+    # Live canon is taken as it stands, and is required to validate.
+    #
+    # Seven hardcoded repairs used to sit here, normalizing the F-015 render and
+    # provenance defects that were live when those gates were written, on the
+    # stated promise that "once live canon is repaired these replacements simply
+    # do nothing." Live canon was repaired and they do nothing: every one of the
+    # seven strings is now absent. A `.Replace` that no longer matches cannot say
+    # so -- it is a pinned live-state literal with the failure mode removed and
+    # the staleness kept, which is worse than the version that fails loudly.
+    # Removed under `F-018`; if a live defect ever needs suppressing again it
+    # belongs in the flag file with a repair owner, not silently in a fixture.
     $baseline = Invoke-Validation $tempRoot
     Assert-True ($baseline.ExitCode -eq 0) "Normalized Data Model 0.1.6 control repository did not validate:`n$($baseline.Output)"
 
@@ -156,11 +193,21 @@ try {
     $wrongKeenPattern = '("Keen Sense \[[EDCBAS]-Rank\][^\r\n]*?\*\*Uses )' + ($keenUses.Current + 1) + '(\s+)'
     Replace-RegexOnce $character $wrongKeenPattern ('${1}' + $keenUses.Current + '${2}')
 
-    Replace-Once $character "      mana_recovery_mode: resting" "      mana_recovery_mode: light"
+    # Whichever authorized mode the Bearer currently stands in, `light` is not one
+    # of them. Pinning the precondition to `resting` was the same F-018 literal:
+    # the mode moves with play between `active` and `resting` and neither value
+    # is the invariant under test -- the domain check is.
+    $manaMode = [regex]::Match((Get-Text $character), '(?m)^(?<indent>[ \t]+)mana_recovery_mode: (?<mode>\S+)[ \t]*$')
+    Assert-True $manaMode.Success "No mana_recovery_mode found on the character sheet; fixture precondition drifted."
+    Assert-True ($manaMode.Groups['mode'].Value -ne 'light') `
+        "Live canon already carries the Health-only mode this mutation introduces; the check would assert nothing."
+    $manaOriginal = $manaMode.Groups['indent'].Value + "mana_recovery_mode: " + $manaMode.Groups['mode'].Value
+    $manaInvalid = $manaMode.Groups['indent'].Value + "mana_recovery_mode: light"
+    Replace-Once $character $manaOriginal $manaInvalid
     $badRecoveryMode = Invoke-Validation $tempRoot
     Assert-True ($badRecoveryMode.ExitCode -ne 0 -and $badRecoveryMode.Output -like "*mana_recovery_mode must be active or resting*") `
         "A Health-only recovery mode was accepted for Mana:`n$($badRecoveryMode.Output)"
-    Replace-Once $character "      mana_recovery_mode: light" "      mana_recovery_mode: resting"
+    Replace-Once $character $manaInvalid $manaOriginal
 
     $weaponPreview = [regex]::Match((Get-Text $character), '(?<prefix>weapon power (?<power>\d+).*?effective chassis[^0-9]*(?<chassis>\d+(?:\.\d+)?).*?DMG )(?<damage>\d+)(?<suffix> standard before reduction.*?at effective Strength (?<stat>\d+))')
     Assert-True $weaponPreview.Success "No equipped weapon preview found; fixture precondition drifted."
@@ -200,27 +247,57 @@ try {
         "Counter arithmetic drift was not rejected:`n$($drift.Output)"
     Replace-Once $character (New-CounterLine $rupture ($rupture.Current + 1)) $rupture.Line
 
-    Replace-Once $character `
-        "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: ratified" `
-        "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: tracking"
-    $threshold = Invoke-Validation $tempRoot
-    # The count is the profile's declared evidence_threshold, so the message carries
-    # the number rather than the word "three".
-    Assert-True ($threshold.ExitCode -ne 0 -and $threshold.Output -like "*distinct evidence references but remains tracking*") `
-        "A three-scene candidate left in tracking was not rejected:`n$($threshold.Output)"
-    Replace-Once $character `
-        "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: tracking" `
-        "        key: twin_fang`n        signature: two-equipped-quickknives.same-target.separate-strikes`n        status: ratified"
+    $policy = Get-ProgressionRatificationPolicy $profile
+    $candidates = Get-ProgressionCandidates $character
+    Assert-True ($candidates.Count -gt 0) "No progression candidates could be read from the character sheet."
 
-    Replace-Once $character `
-        "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: tracking`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint" `
-        "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: pending-ratification`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint`n          - EVT-000120#fixture-third-dimensional-scene"
+    # A candidate carrying the threshold must not sit in `tracking`. Any resolved
+    # candidate at or over the threshold proves it; a pre-authored key is excluded
+    # so exactly one rule fires and the message names the candidate we moved.
+    $trackingTarget = @($candidates | Where-Object {
+        $_.Evidence.Count -ge $policy.Threshold -and
+        $_.Status -ne 'tracking' -and
+        $policy.PreAuthoredKeys -notcontains $_.Key
+    }) | Select-Object -First 1
+    Assert-True ($null -ne $trackingTarget) `
+        "No resolved, non-pre-authored candidate carries the domain's $($policy.Threshold)-reference threshold; the tracking-at-threshold mutation has nothing to target."
+    $trackingMutated = Set-CandidateStatus $trackingTarget.Block 'tracking'
+    Replace-Once $character $trackingTarget.Block $trackingMutated
+    $threshold = Invoke-Validation $tempRoot
+    Assert-True ($threshold.ExitCode -ne 0 -and $threshold.Output -like "*'$($trackingTarget.Domain)/$($trackingTarget.Key)' has at least $($policy.Threshold) distinct evidence references but remains tracking*") `
+        "A candidate at the $($policy.Threshold)-reference threshold left in tracking was not rejected:`n$($threshold.Output)"
+    Replace-Once $character $trackingMutated $trackingTarget.Block
+
+    # A pre-authored key at the threshold ratifies automatically; anything short of
+    # `ratified` is a defect. The key comes from the profile's own declaration, so
+    # adding or renaming one moves this mutation with it.
+    Assert-True ($policy.PreAuthoredKeys.Count -gt 0) `
+        "The profile declares no pre_authored_result_keys; the automatic-ratification mutation has nothing to target."
+    $preTarget = @($candidates | Where-Object { $policy.PreAuthoredKeys -contains $_.Key }) | Select-Object -First 1
+    Assert-True ($null -ne $preTarget) `
+        "The profile declares pre-authored result keys ($($policy.PreAuthoredKeys -join ', ')) but the character sheet carries no candidate with one."
+    $preMutated = Set-CandidateStatus $preTarget.Block 'pending-ratification'
+    if ($preTarget.Evidence.Count -lt $policy.Threshold) {
+        # Borrow Event ids already cited by other candidates in this same file, so
+        # the added references are guaranteed to resolve to defined Events.
+        $eol = if ($preTarget.Block -match "`r`n") { "`r`n" } else { "`n" }
+        $ownIds = @($preTarget.Evidence | ForEach-Object { ($_ -split '#')[0] })
+        $donorIds = @($candidates | ForEach-Object { $_.Evidence } |
+            ForEach-Object { ($_ -split '#')[0] } |
+            Where-Object { $ownIds -notcontains $_ } | Select-Object -Unique)
+        $needed = $policy.Threshold - $preTarget.Evidence.Count
+        Assert-True ($donorIds.Count -ge $needed) `
+            "Not enough distinct evidence Events in the sheet to raise '$($preTarget.Key)' to the $($policy.Threshold)-reference threshold."
+        $added = (($donorIds | Select-Object -First $needed |
+            ForEach-Object { "          - $_#fixture-threshold-scene" }) -join $eol) + $eol
+        $preMutated = [regex]::Replace($preMutated,
+            '(?ms)(^        evidence:\r?\n(?:^          - [^\r\n]*\r?\n)+)', ('${1}' + $added), 1)
+    }
+    Replace-Once $character $preTarget.Block $preMutated
     $authoredThreshold = Invoke-Validation $tempRoot
-    Assert-True ($authoredThreshold.ExitCode -ne 0 -and $authoredThreshold.Output -like "*is declared pre-authored*requires automatic ratification*") `
-        "A pre-authored three-scene candidate was allowed to remain pending:`n$($authoredThreshold.Output)"
-    Replace-Once $character `
-        "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: pending-ratification`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint`n          - EVT-000120#fixture-third-dimensional-scene" `
-        "        key: dimensional_weapon_control`n        signature: instant-withdrawal.mid-motion.weapon-line-change-or-release`n        status: tracking`n        evidence:`n          - EVT-000069#private-summon-and-grip-drill`n          - EVT-000070#ashfield-pocket-swap-feint"
+    Assert-True ($authoredThreshold.ExitCode -ne 0 -and $authoredThreshold.Output -like "*'$($preTarget.Domain)/$($preTarget.Key)' is declared pre-authored*requires automatic ratification*") `
+        "A pre-authored candidate at the threshold was allowed to remain unratified:`n$($authoredThreshold.Output)"
+    Replace-Once $character $preMutated $preTarget.Block
 
     # Allocate the fixture Event one past the live high-water mark, whatever it currently is.
     $highWater = Get-RegistryHighWater $registry

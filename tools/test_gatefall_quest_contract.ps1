@@ -434,13 +434,34 @@ $availableRecords = $worldRecords + $campaignRecords - $attachedPointers
 Assert-True ($recordedConcealed -eq $availableRecords) "trigger_telemetry.concealed_records_available is $recordedConcealed but the ledgers hold $availableRecords available ($worldRecords world + $campaignRecords campaign, less $attachedPointers attached)."
 Assert-True ($recordedPostings -eq $boardRows) "trigger_telemetry.tracked_postings is $recordedPostings but the Section 9.10 board holds $boardRows postings."
 
-# Cheap invariants on the recorded values. Note that an actually-exhausted supply
-# is caught earlier and more strictly by Assert-ConcealedRecords' minimum counts --
-# these two only catch a telemetry block that records zero while agreeing with
-# ledgers that somehow also hold zero. Kept as defence in depth, not as the
-# primary guard.
-Assert-True ($recordedConcealed -gt 0) "Concealed-discovery supply is exhausted: no Hidden quest can attach under Section 8.4.3 regardless of how correctly the audit runs. Author concealed canon under Section 8.4.5."
-Assert-True ($recordedPostings -gt 0) "The Section 9.10 board is empty: Section 8.4.2 has no Gate-sourced input stream. Let ordinary channels surface postings."
+# These two are OBSERVATIONS about this campaign right now, not invariants, and
+# `F-018` is the flag that separated the two kinds.
+#
+# An empty board is a legal, reachable state that Section 9.10's own settlement
+# rules produce: `GB-04` broke at midnight 2026-08-12 and was settled by owner
+# ruling at `EVT-000413`, emptying the board for the first time in the campaign.
+# Asserted as a contract failure, this suite failed on correct canon and there
+# was nothing the suite could do to fix it -- only play can put a posting back on
+# a board. The same argument applies to concealed supply. Both remain worth
+# saying out loud, because a dry input stream is a real thing for the owner to
+# act on; neither is a defect in the repository.
+#
+# So they are emitted on the OBSERVATION channel, which `test_all.ps1` collects
+# from every suite and reports separately from the pass/fail verdict. Whether the
+# board should be permitted to sit empty at all -- a supply floor -- is a world
+# design question the roadmap already assigns to a play session, and it is not
+# this suite's to decide.
+#
+# Note that an actually-exhausted concealed supply is still caught earlier and
+# more strictly by Assert-ConcealedRecords' minimum counts; these two only ever
+# spoke to a telemetry block recording zero while agreeing with ledgers that also
+# hold zero.
+if ($recordedConcealed -le 0) {
+    Write-Host "OBSERVATION: Concealed-discovery supply is exhausted: no Hidden quest can attach under Section 8.4.3 regardless of how correctly the audit runs. Author concealed canon under Section 8.4.5."
+}
+if ($recordedPostings -le 0) {
+    Write-Host "OBSERVATION: The Section 9.10 board is empty: Section 8.4.2 has no Gate-sourced input stream. Let ordinary channels surface postings."
+}
 
 # --- Profile 1.34: /system standard-hit damage previews (Sections 6.2 and 15) ---
 

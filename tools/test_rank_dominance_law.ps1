@@ -91,42 +91,204 @@ foreach ($header in [regex]::Matches($profile, '(?m)^\|[ \t]*Skill[ \t]*\|.*\|[ 
 }
 if ($ceilingIndex -lt 1) { throw "No Section 7.3 ladder table with Rank column headers could be read." }
 
-# Each skill's authored magnitude as a function of (Ranks above native, mastery
-# level 1-5), plus whether every reachable rung carries a category. `Categorised`
-# is what carries the law where the number is flat.
+# --- Each skill's authored magnitude, PARSED from the profile's own tables ---
+#
+# This block used to restate every increment as a PowerShell lambda -- `0.10 +
+# 0.25 * $r + 0.05 * ($m - 1)` and seven more -- above a comment claiming the
+# restatement "cannot be avoided ... a closed-form ladder written in prose is not
+# parseable into a function." That claim was wrong, and being wrong is what left
+# `F-014`'s residue open: the profile authors these numbers in two structured
+# tables, Section 7.3's `Rank's magnitude grant` column and Section 7.4's
+# per-skill `Novice -> Master` column, one cell per skill per parameter.
+#
+# Retuning `+0.25` to `+0.30` in the profile therefore used to leave this file
+# passing against the old figure. The presence checks further down narrowed that
+# -- they tie a few constants back to the sentence authoring them -- but they are
+# per-sentence and several parameters had none at all: Twin Fang's mastery step,
+# Dimensional Projection's `+3 m` and its whole 5/7/10/15/20 ladder, and every
+# skill's Novice value were unchecked in any form.
+#
+# Now the numbers come from the tables and nothing here restates one. What is
+# still declared below is SHAPE -- which of three forms a skill's magnitude takes
+# -- because that is a genuine design fact rather than a number, and it is
+# cross-checked against the profile where the profile states it.
+#
+# Patterns are ASCII-only for the encoding reason noted above: the profile writes
+# these cells with U+00D7 and U+2192, and a literal one here would silently never
+# match under Windows PowerShell 5.1's ANSI decode of a BOM-less script.
+
+function ConvertTo-Number {
+    param([string]$Text)
+    return [double]::Parse($Text, [Globalization.CultureInfo]::InvariantCulture)
+}
+
+# Every row of the first Markdown table whose header matches, as trimmed cells.
+function Get-TableRows {
+    param([string]$Text, [string]$HeaderPattern)
+    $header = [regex]::Match($Text, $HeaderPattern)
+    if (-not $header.Success) { return @() }
+    $rows = @()
+    foreach ($line in ($Text.Substring($header.Index) -split "\r?\n")) {
+        if ($line -notmatch '^\|') { break }
+        $rows += ,@($line.Trim().Trim('|').Split('|') | ForEach-Object { $_.Trim() })
+    }
+    return $rows
+}
+
+function Get-SkillRow {
+    param($Rows, [string]$Name)
+    foreach ($row in $Rows) {
+        if (($row[0] -replace '\*', '').Trim() -eq $Name) { return $row }
+    }
+    return $null
+}
+
+# Section 7.3: "+0.25 chassis", "+25 points reduction", "**+0.35** to its
+# follow-up multiplier per Rank", "**+3 m**", "**none**", or the marker that the
+# grant arrives through the Rank baseline table instead of as an increment.
+function Get-AuthoredRankGrant {
+    param([string]$Cell)
+    if ([string]::IsNullOrWhiteSpace($Cell)) { return $null }
+    if ($Cell -match 'per Rank on the baseline table') { return 'baseline' }
+    if ($Cell -match '\*\*none\*\*') { return 0.0 }
+    $m = [regex]::Match($Cell, '\+(?<v>\d+(?:\.\d+)?)')
+    if (-not $m.Success) { return $null }
+    return (ConvertTo-Number $m.Groups['v'].Value)
+}
+
+# Section 7.4: "(+0.15/level)", "(+5 points/level)", "+0.15/level over a base of".
+function Get-AuthoredMasteryStep {
+    param([string]$Cell)
+    if ([string]::IsNullOrWhiteSpace($Cell)) { return $null }
+    $m = [regex]::Match($Cell, '\+(?<v>\d+(?:\.\d+)?)\s*(?:points\s*)?/level')
+    if (-not $m.Success) { return $null }
+    return (ConvertTo-Number $m.Groups['v'].Value)
+}
+
+# Section 7.4's Novice value is the cell's first number once the per-level token
+# is removed. That single rule reads every shape the column uses: "x2.00 -> x2.60
+# (+0.15/level)" gives 2.00, "+0.10 -> +0.30 chassis" gives 0.10, "30% -> 50%"
+# gives 30, "5 m -> 20 m" gives 5, and Twin Fang's "+0.15/level over a base of
+# `1.00 + 0.35 x ranks above native`" gives 1.00 rather than its own step.
+function Get-AuthoredNovice {
+    param([string]$Cell)
+    if ([string]::IsNullOrWhiteSpace($Cell)) { return $null }
+    $stripped = [regex]::Replace($Cell, '\+?\d+(?:\.\d+)?\s*(?:points\s*)?/level', '')
+    $m = [regex]::Match($stripped, '(?<v>\d+(?:\.\d+)?)')
+    if (-not $m.Success) { return $null }
+    return (ConvertTo-Number $m.Groups['v'].Value)
+}
+
+$magnitudeRows = Get-TableRows $profile "(?m)^\| Skill \| Native \| Rank's magnitude grant \|"
+$masteryRows   = Get-TableRows $profile "(?m)^\| Skill \| Mastery axis \|"
+if ($magnitudeRows.Count -lt 3) { throw "Section 7.3's magnitude-axis ladder table is unreadable; the dominance check cannot run." }
+if ($masteryRows.Count -lt 3)   { throw "Section 7.4's per-skill mastery table is unreadable; the dominance check cannot run." }
+
+# The single-skill reduction cap, from the sentence that authors it.
+$capMatch = [regex]::Match($profile, 'reduction fraction never exceeds (?<v>\d+)%')
+if (-not $capMatch.Success) { throw "Section 7.2 no longer states the single-skill reduction cap; the capped skills cannot be checked." }
+$reductionCap = (ConvertTo-Number $capMatch.Groups['v'].Value)
+
+# Dimensional Projection is the one skill whose mastery track is an authored
+# ladder rather than a constant step, and Section 7.2 states it as a list.
+$dpMatch = [regex]::Match($profile, 'Mastery extends maximum deployment range to \*\*(?<ladder>[^*]+)\*\*')
+$dpLadder = $null
+if ($dpMatch.Success) {
+    $dpLadder = @([regex]::Matches($dpMatch.Groups['ladder'].Value, '\d+(?:\.\d+)?') |
+        ForEach-Object { ConvertTo-Number $_.Value })
+}
+
+# SHAPE is declared; every magnitude is read from the tables above.
+#   baseline - the Rank grant arrives by multiplying the Section 7.2 Rank
+#              baseline, so mastery is a multiplier over it (Rupture, Mend, Mana
+#              Bolt).
+#   additive - Novice value plus a per-Rank increment plus a per-level increment.
+#   ladder   - an authored per-level list plus a per-Rank increment. Dimensional
+#              Projection is unformed and checked anyway: its ladder was authored
+#              at 1.55 ahead of ratification precisely so the trap Twin Fang fell
+#              into is closed before the skill can exist. Without the per-Rank
+#              grant it reads x0.25 -- 20 m falling to 5 m -- the second case the
+#              magnitude ratchet exists for.
+# `Categorised` -- whether a flat rung is nonetheless an authored gain -- stays a
+# declared reading of the D/C/B/A cells and is cross-checked below.
 $skills = @(
-    @{ Name = "Rupture";              Native = "E"; Categorised = $true ; Capped = $false
-       F = { param($r, $m) $baseline[$ranks[[array]::IndexOf($ranks, "E") + $r]] * (2.00 + 0.15 * ($m - 1)) } },
-    @{ Name = "Mend";                 Native = "E"; Categorised = $false; Capped = $false
-       F = { param($r, $m) $baseline[$ranks[[array]::IndexOf($ranks, "E") + $r]] * (1.00 + 0.15 * ($m - 1)) } },
-    @{ Name = "Mana Bolt";            Native = "E"; Categorised = $true ; Capped = $false
-       F = { param($r, $m) $baseline[$ranks[[array]::IndexOf($ranks, "E") + $r]] * (1.00 + 0.15 * ($m - 1)) } },
-    @{ Name = "Dagger Mastery";       Native = "E"; Categorised = $true; Capped = $false
-       F = { param($r, $m) 0.10 + 0.25 * $r + 0.05 * ($m - 1) } },
-    @{ Name = "Stone Skin";           Native = "D"; Categorised = $true; Capped = $true
-       F = { param($r, $m) [math]::Min(90, 30 + 25 * $r + 5 * ($m - 1)) } },
-    @{ Name = "Bulwark";              Native = "E"; Categorised = $true; Capped = $true
-       F = { param($r, $m) [math]::Min(90, 60 + 25 * $r + 5 * ($m - 1)) } },
-    @{ Name = "Twin Fang";            Native = "E"; Categorised = $true; Capped = $false
-       F = { param($r, $m) 1.00 + 0.35 * $r + 0.15 * ($m - 1) } },
-    # Unformed candidate, checked anyway. Its ladder was authored at 1.55 ahead
-    # of ratification precisely so the trap Twin Fang fell into is closed before
-    # the skill can exist: range 5/7/10/15/20 m at native Rank, +3 m per Rank
-    # above it. Without the per-Rank grant this reads x0.25 -- 20 m falling to
-    # 5 m -- which is the second case the magnitude ratchet exists for.
-    @{ Name = "Dimensional Projection"; Native = "E"; Categorised = $true; Capped = $false
-       F = { param($r, $m) @(5, 7, 10, 15, 20)[$m - 1] + 3 * $r } }
+    @{ Name = "Rupture";                Mode = "baseline"; Categorised = $true  },
+    @{ Name = "Mend";                   Mode = "baseline"; Categorised = $false },
+    @{ Name = "Mana Bolt";              Mode = "baseline"; Categorised = $true  },
+    @{ Name = "Dagger Mastery";         Mode = "additive"; Categorised = $true  },
+    @{ Name = "Stone Skin";             Mode = "additive"; Categorised = $true  },
+    @{ Name = "Bulwark";                Mode = "additive"; Categorised = $true  },
+    @{ Name = "Twin Fang";              Mode = "additive"; Categorised = $true  },
+    @{ Name = "Dimensional Projection"; Mode = "ladder";   Categorised = $true  }
 )
+
+foreach ($skill in $skills) {
+    $magnitudeRow = Get-SkillRow $magnitudeRows $skill.Name
+    $masteryRow   = Get-SkillRow $masteryRows   $skill.Name
+    if ($null -eq $magnitudeRow) { throw "'$($skill.Name)' has no row in Section 7.3's magnitude-axis ladder; every mastery-tracked skill must have one (Decision 090 point 5)." }
+    if ($null -eq $masteryRow)   { throw "'$($skill.Name)' has no row in Section 7.4's per-skill mastery table; a closed-form rule with no coverage list cannot report a skill it does not cover (F-014)." }
+
+    $nativeMatch = [regex]::Match($magnitudeRow[1], '^\*{0,2}(?<rank>[EDCBAS])-Rank')
+    if (-not $nativeMatch.Success) { throw "'$($skill.Name)' declares no readable native Rank in Section 7.3." }
+    $skill.Native = $nativeMatch.Groups['rank'].Value
+
+    $grant = Get-AuthoredRankGrant $magnitudeRow[2]
+    if ($null -eq $grant) { throw "'$($skill.Name)' states no readable Rank magnitude grant in Section 7.3." }
+    if (($skill.Mode -eq 'baseline') -ne ($grant -is [string])) {
+        throw "'$($skill.Name)' is declared '$($skill.Mode)' here but Section 7.3's grant cell says otherwise; the shape and the profile disagree."
+    }
+    $skill.RankGrant = if ($grant -is [string]) { 0.0 } else { $grant }
+
+    $skill.MasteryStep = Get-AuthoredMasteryStep $masteryRow[2]
+    $skill.Novice = Get-AuthoredNovice $masteryRow[2]
+    if ($null -eq $skill.Novice) { throw "'$($skill.Name)' states no readable Novice value in Section 7.4." }
+    if ($skill.Mode -ne 'ladder' -and $null -eq $skill.MasteryStep) {
+        throw "'$($skill.Name)' states no readable per-level mastery step in Section 7.4."
+    }
+
+    # A reduction is the only axis the Section 7.2 cap reaches, and the axis is
+    # the profile's own word for it.
+    $skill.Capped = ($masteryRow[1] -match '(?i)^reduction$')
+
+    if ($skill.Mode -eq 'ladder') {
+        if ($null -eq $dpLadder -or $dpLadder.Count -ne 5) {
+            throw "'$($skill.Name)' is declared 'ladder' but Section 7.2 states no five-level mastery ladder for it."
+        }
+        $skill.MasteryLadder = $dpLadder
+    }
+
+    # The D/C/B/A cells behind the `Categorised` reading. A rung reading
+    # *Magnitude only* or *no grant above native* is a stated design position and
+    # not a category, which is the distinction Section 7.2's "recorded, never
+    # silent" rule exists to preserve.
+    $authoredRungs = @($magnitudeRow[3..($magnitudeRow.Count - 1)] |
+        Where-Object { -not [string]::IsNullOrWhiteSpace($_) -and $_ -notmatch '(?i)magnitude only|no grant above native' })
+    if ($skill.Categorised -ne ($authoredRungs.Count -gt 0)) {
+        throw "'$($skill.Name)' is declared Categorised=$($skill.Categorised) here, but Section 7.3 authors $($authoredRungs.Count) category rungs for it; the reading and the table disagree."
+    }
+}
+
+function Get-Magnitude {
+    param($Skill, [int]$R, [int]$M)
+    $value = switch ($Skill.Mode) {
+        'baseline' { $baseline[$ranks[[array]::IndexOf($ranks, $Skill.Native) + $R]] * ($Skill.Novice + $Skill.MasteryStep * ($M - 1)) }
+        'additive' { $Skill.Novice + $Skill.RankGrant * $R + $Skill.MasteryStep * ($M - 1) }
+        'ladder'   { $Skill.MasteryLadder[$M - 1] + $Skill.RankGrant * $R }
+        default    { throw "Unknown magnitude shape '$($Skill.Mode)' for '$($Skill.Name)'." }
+    }
+    if ($Skill.Capped) { $value = [math]::Min($reductionCap, $value) }
+    return $value
+}
 
 foreach ($skill in $skills) {
     $nativeIndex = [array]::IndexOf($ranks, $skill.Native)
     $floor = 0.0
     for ($r = 0; $nativeIndex + $r -lt $ceilingIndex; $r++) {
-        $atMaster = [math]::Max((& $skill.F $r 5), $floor)
+        $atMaster = [math]::Max((Get-Magnitude $skill $r 5), $floor)
         # The magnitude ratchet: neither road may land below the value held
         # immediately before the ascension.
-        $rune = [math]::Max((& $skill.F ($r + 1) 1), $atMaster)
-        $breakthrough = [math]::Max((& $skill.F ($r + 1) 3), $atMaster)
+        $rune = [math]::Max((Get-Magnitude $skill ($r + 1) 1), $atMaster)
+        $breakthrough = [math]::Max((Get-Magnitude $skill ($r + 1) 3), $atMaster)
         $step = "$($skill.Name) $($ranks[$nativeIndex + $r])-Rank Master -> $($ranks[$nativeIndex + $r + 1])-Rank"
 
         if ($rune -lt $atMaster) {
@@ -153,7 +315,7 @@ foreach ($skill in $skills) {
         # duration instead, so a flat Master value there is the authored
         # behaviour rather than a defect -- and mastery still buys Mana cost at
         # every level under Section 7.4's -10% rule.
-        $nextMaster = & $skill.F ($r + 1) 5
+        $nextMaster = Get-Magnitude $skill ($r + 1) 5
         if (-not $skill.Capped -and $nextMaster -le $atMaster) {
             $failures.Add("$step Master reaches only $nextMaster against a floor of $atMaster; the magnitude ratchet swallows the entire mastery track, so climbing Novice to Master at the new Rank buys nothing.") | Out-Null
         }
@@ -175,22 +337,34 @@ if ($profile -notmatch 'magnitude_floor := ') {
     $failures.Add("Section 7.2 declares no magnitude_floor; the ratchet that keeps ascension from reducing an authored value is absent.") | Out-Null
 }
 
-# The ladder constants above are RESTATED in this file, which is the F-013
-# pattern and cannot be avoided -- a closed-form ladder written in prose is not
-# parseable into a function. What can be avoided is the drift going unnoticed:
-# each constant is tied back to the sentence that authors it, so retuning the
-# profile without retuning this file fails here instead of passing vacuously.
-# The patterns are ASCII-only for the encoding reason noted above.
+# Section 7.2's prose must keep agreeing with the Section 7.3/7.4 tables the
+# magnitudes are now read from. These are the same increments stated a second
+# time in sentence form, and Section 7.2 is where the Runtime reads them during
+# play -- so the tables being authoritative does not make the prose free to
+# drift. The expected figure comes from the table parse above, never from a
+# literal here, which is the difference between this and the block it replaces.
+# `{N}` is substituted with the figure the tables author, never with a literal.
+$prose = @(
+    @{ What = 'Rank step, reduction';       Skill = 'Stone Skin';     Value = { $s.RankGrant };   Template = '\*\*\+{N} percentage points\*\*' }
+    @{ What = 'Rank step, passive chassis'; Skill = 'Dagger Mastery'; Value = { $s.RankGrant };   Template = '\*\*\+{N}\*\* to the multiplier' }
+    @{ What = 'Mastery step, damage';       Skill = 'Rupture';        Value = { $s.MasteryStep }; Template = 'multiplier rises \*\*\+{N}\*\*' }
+    @{ What = 'Mastery step, reduction';    Skill = 'Stone Skin';     Value = { $s.MasteryStep }; Template = 'fraction rises \*\*\+{N} points\*\*' }
+    @{ What = 'Mastery step, passive';      Skill = 'Dagger Mastery'; Value = { $s.MasteryStep }; Template = 'granted multiplier rises \*\*\+{N}\*\*' }
+)
+foreach ($claim in $prose) {
+    $s = $skills | Where-Object { $_.Name -eq $claim.Skill } | Select-Object -First 1
+    $expected = (& $claim.Value)
+    # Trailing zeroes differ between "0.25" in prose and 0.25 as a double, so the
+    # pattern allows the profile's own rendering of the same number.
+    $rendered = [regex]::Escape($expected.ToString([Globalization.CultureInfo]::InvariantCulture)) + '0?'
+    if ($profile -notmatch $claim.Template.Replace('{N}', $rendered)) {
+        $failures.Add("Section 7.2's prose for '$($claim.What)' no longer states +$expected, which is what the Section 7.3/7.4 tables author for $($claim.Skill); the Runtime reads the prose during play and the two must agree.") | Out-Null
+    }
+}
+
 $authored = @{
-    'Rank step, reduction (+25 points)'          = '\*\*\+25 percentage points\*\*'
-    'Rank step, passive multiplier (+0.25)'      = '\*\*\+0\.25\*\* to the multiplier'
-    'Mastery step, damage/healing (+0.15)'       = "multiplier rises \*\*\+0\.15\*\*"
-    'Mastery step, reduction (+5 points)'        = "fraction rises \*\*\+5 points\*\*"
-    'Mastery step, passive multiplier (+0.05)'   = "granted multiplier rises \*\*\+0\.05\*\*"
-    'Single-skill reduction cap (90%)'           = "reduction fraction never exceeds 90%"
-    'Rupture native multiplier band (2.00-2.60)' = "2\.00.{0,40}2\.60|x2\.00|E-Rank Master \(.2\.60"
-    'Mana skill damage reads Intelligence'       = 'skill_rank_baseline \+ effective Intelligence'
-    'Healing excluded from Intelligence'         = 'Bearer_skill_healing = \(skill_rank_baseline \+ equipped_focus_power\)'
+    'Mana skill damage reads Intelligence' = 'skill_rank_baseline \+ effective Intelligence'
+    'Healing excluded from Intelligence'   = 'Bearer_skill_healing = \(skill_rank_baseline \+ equipped_focus_power\)'
 }
 foreach ($name in $authored.Keys) {
     if ($profile -notmatch $authored[$name]) {

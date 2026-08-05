@@ -274,7 +274,60 @@ surfaces:
       # 2,430 tokens under the 35,000 hard failure. The levers are unchanged and
       # still owner authoring (R14): Current State, the startup file, and moving
       # `titles` into a deferred group.
-      gatefall_pendragon_001: 32570
+      #
+      # Re-recorded 2026-08-05, 32,570 -> 37,935 (+5,365), on owner ruling at
+      # `EVT-000436`/`EVT-000437`. The block above warned twice that a stale
+      # baseline breaks the ratchet in both directions, and it went stale again:
+      # roughly +4,165 of this was already on disk at HEAD before either Event --
+      # the checkpoint 0076 session's loot, gear and inventory growth, which the
+      # ratchet absorbed silently because each session's share sat inside the
+      # allowance. That is the same drift-then-trip pattern the 2026-08-04
+      # re-record documented, arriving one session later.
+      #
+      # The remaining ~1,200 is the Dimensional Projection ratification: a
+      # twenty-first `skills_known` entry, two `progression_candidates` notes,
+      # six new `tracked_counters` rows, and the Current State lines that carry
+      # them. That growth is legitimate and permanent -- a Bearer who learns a
+      # skill keeps it -- and it is the shape every future ratification will
+      # have, which is the argument for recording it rather than compressing
+      # canon to hide it. ~1,050 tokens of the first draft were trimmed back
+      # into `EVT-000436` before this figure was taken, which is where a
+      # settlement's reasoning belongs; the per-unit `gatefall_skills_known`
+      # gate is what forced that and it did its job (1,108 -> 1,072 bytes/entry
+      # against a 1,100 ceiling).
+      #
+      # Carried 37,935 -> 38,269 (+334) in the same session at `EVT-000438`,
+      # Profile 1.59's remote-storage ruling: Dimensional Projection's line
+      # re-rendered with its recovery terms, plus the Current State entry for
+      # the edge. Re-recorded rather than left to the ratchet's slack, because
+      # the block above documents twice that a baseline allowed to drift inside
+      # the allowance is how the ratchet stops detecting real growth.
+      #
+      # NOTE for whoever reads this next: the ratchet is not the only gate, and
+      # the other one had drifted. `tools/test_runtime_context_budget.ps1`
+      # asserts this surface against the hard ceiling and reads live state, not
+      # this baseline. Its comment claimed to follow `readiness.failure_tokens`
+      # while actually restating it as a literal 35,000 -- so when that key was
+      # raised to 40,000 the literal stayed behind, and for that whole window
+      # the measurement passed the surface (`fail=40000`) while the suite failed
+      # it. Fixed 2026-08-05: the test now PARSES this key. Do not add a second
+      # copy of this number anywhere; that divergence is exactly what it cost.
+      #
+      # What that does not settle: the surface sits at ~38,300 against 40,000.
+      # A raise deferred the trimming work a third time, and the note above this
+      # one already said so twice. The levers below are still the real answer.
+      #
+      # 1,731 tokens under the 40,000 hard failure. Levers unchanged and still
+      # owner authoring (R14): Current State, the startup file, and moving
+      # `titles` into a deferred group.
+      # Carried 38,269 -> 38,562 (+293) at `EVT-000439`, the Stat Passive
+      # figure correction and its Current State entry. The four skill rows
+      # themselves grew by four digits; the rest is the audit's record, and it
+      # lives in the Event where a settlement's reasoning belongs. A first pass
+      # put that reasoning in the rows instead and tripped the per-unit
+      # `gatefall_skills_known` ceiling (1,109 against 1,100) -- the same gate
+      # that caught the same mistake at `EVT-000436`, working twice in one day.
+      gatefall_pendragon_001: 38562
       prototype_alpha: 9155
       prototype_beta: 9668
       reikon_awakening_001: 13479

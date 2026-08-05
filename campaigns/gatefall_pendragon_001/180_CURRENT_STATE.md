@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000435
+  source: EVT-000439
   game_date: "2026-08-16T17:00:00-05:00"
   real_date: "2026-08-05"
 role: canonical ledger
@@ -27,17 +27,18 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall
-- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.57
+- **World Rule Profile:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, Profile 1.59
 - **Engine Rules:** 0.3.0
 - **Data Model:** 0.1.6
 - **Campaign time:** **2026-08-16 (Sunday), 17:00 CDT (`-05:00`)** — just outside the second Crypt instant dungeon with Owen, both freshly showered-worthy after two full clears. The twenty-third daily completed, **streak 9**. Next daily issues 2026-08-17 06:00. **Tomorrow evening is the first crew training**, 18:00, freight yard off Ashland, ten people holding the date.
 - **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0076/` — Two Crypt instant dungeons: level 23, eight masteries, Owen learns Mana Bolt.
 - **Level 23**, crossed mid-fight in the second Crypt instant dungeon (`EVT-000431`). **System Rank C**, unchanged — a System Rank crossing is its own threshold. Non-daily quest capacity **4**.
-- **All five Stat Passives sit at B**, still held at the System-Rank+1 ceiling; none crossed a new Rank this span.
+- **All five Stat Passives sit at B**, still held at the System-Rank+1 ceiling; none crossed a new Rank this span. **Four of their rendered Stat figures were stale and are corrected at `EVT-000439`** — Conduit 59→68, Pre-empt 55→61, Overpower 62→63, Shrug Off 101→102 (Flux Sight was already right). No Rank or grant moved, but Conduit's stale figure would have taken B (+20) rather than A (+25) at level 30.
 - **Inventory grouped by kind. 34 holdings: keys 1 · consumables 6 · special 4 · gear 18 · materials 5.** Keys 1 (E-Rank only — both C-Rank keys spent opening the two Crypts). Gear 16→18 (Horizon Gale Coif and Horizon Gale Gauntlets both retired this span). Materials round-tripped through a large crystal haul and sale, net unchanged at 5 lines.
 - **Titles: ten of twenty-one granted, both slots filled — Cartographer and Untouchable.** Next assessment level 30.
 - **Unspent stat points: 5** — the Level 23 grant, unallocated. Only **Status Recovery ×15** remains pending.
 - **Eight skill masteries advanced this span** (`EVT-000428`-`EVT-000435`): Silent Step→Practiced, Field Command→Adept, Dagger Mastery→Expert, Mend→Expert, Rupture→Master, Twin Fang→Expert, Exploit Pattern→Master, Mana Bolt→Practiced.
+- **New skill: Dimensional Projection [E-Rank] Novice** (`EVT-000436`) — 6 Mana, 5 m, Agility to hit; earned by doing, counters at zero, live forward only. A launched weapon comes straight back by Section 12.9 remote storage, but inside an exchange that spends the exchange's one inventory change, so **launch or recover, never both** at native Rank (`EVT-000438`). **Twenty-one skills known.** Open candidates: `applied_analytical_reconstruction` 2/3 (new), `formation_instruction` 2/3, `pretext_and_cover` 2/3, `nonvisual_combat_mapping` 1/3 — none eligible.
 - **Live leverage, now contractual.** Wade Bishop remains materially compromised — a confirmed B-Rank Gate staffed at 4 combat-rated hunters against a legal minimum of 8, filed on a roster forged to 8 — and **Alexander physically holds that unfiled report** (`EVT-000384`, `110_WORLD_LEDGER.md`, `OBJ-27`). **The Ironline decision is made** (`EVT-000404`): Alexander joins as a contractor, no salary, his own choice of jobs, Wade as supervisor of record — closing `OBJ-23`.
 
 ---
@@ -135,7 +136,15 @@ At Halvard's (`ENT-000202`), **Alexander told him a version of the trial short i
 
 ## Promotion Status
 
-**Live canon is promoted through `EVT-000435`.** Since Checkpoint 0075 (canon through `EVT-000427`): **`EVT-000428`-`EVT-000435`**, below.
+**Live canon is promoted through `EVT-000439`.** Since Checkpoint 0075 (canon through `EVT-000427`): **`EVT-000428`-`EVT-000439`**, below.
+
+**`EVT-000439` — four Stat Passive rows corrected against live base Stats; no Rank, grant, or played outcome moved.** Conduit **59→68**, Pre-empt **55→61** (both had missed `EVT-000426` and `EVT-000431`), Overpower **62→63**, Shrug Off **101→102** (both had missed the Level 23 grant); Flux Sight's Perception 62 was already correct. System Rank C clamps all five at B, and every held-rung clause was independently right. **Nothing caught it because Section 4.4 makes the Rank derived and never stored, and the figure lives in prose rather than `tracked_counters`** — an unclaimed delta with no stored value to contradict and a derived value with no way to contradict its own input, `F-015` with both defences absent. Conduit's was the costly one: 68 clears the A threshold of 66 and 59 does not, so at level 30 it would have taken +20 where it earns +25.
+
+**`EVT-000438` — Profile 1.59 adopted; required migration, nothing granted, no live value moves.** Authors the half of Section 12.9 that existed only by omission: **withdrawal was bounded in writing (*to his own hand*), storage never was**, while Section 7.2 asserted hand-delivery-only in both directions on a sentence 12.9 never wrote — and `EVT-000326`'s three-crates-and-a-workbench sweep had already contradicted it. **Storage now reaches what he perceives** (nothing a person holds, wears, or carries; nothing past a barrier he cannot perceive through; contested attempts resolve on the die — **nothing disarms anyone**); withdrawal still reaches only his hand. **Remote storage is free outside an exchange and spends the exchange's one inventory change inside one.** So a projected weapon is never lost and never an errand, but at native Rank Alexander may **launch or recover, never both** — and *Recall* (D) survives as a real grant, returning it without spending that change. The omission was load-bearing: without it the D rung sold something E-Rank could already do free, failing the Rank Dominance Law.
+
+**`EVT-000437` — Profile 1.58 adopted; nothing granted, `profile_version` the only stored value touched.** Pre-authors `applied_analytical_reconstruction`'s result as **First Principles [E-Rank]** (passive, +1 step reconstructing unobserved structure/coverage/reach from observed geometry and physical law; mastery is scope 1→5; ladder Inference from absence / Mechanism / From secondhand measure / Predictive) and adds the key to `pre_authored_result_keys`. The candidate stays at 2/3 — a third qualifying scene now **ratifies automatically** instead of halting play at Section 7.1's mandatory adjudication gate. Same ruling 1.55 made for Dimensional Projection: author the result before the skill can form.
+
+**`EVT-000436` — retroactive skill-formation audit; no fictional time, no scene, no die.** `dimensional_weapon_control` had stood at 3/3 since 2026-08-08 (`EVT-000195`/`EVT-000197`), unevaluated because both Events are filed `kind: promotion` rather than a settlement kind (`F-015`); ratified automatically as a declared `pre_authored_result_key`. `applied_analytical_reconstruction` opened at 2/3. Every other `none` held. New high-water mark **EVT-000436**.
 
 **`EVT-000428`-`EVT-000435` — two Crypt instant dungeons, back to back, both fought directly with Owen.** `428`: first dungeon opened, 5 commons killed across the ambush. `429`: elite and boss killed (legendary Keen Sense + legendary Rupture on the elite; Flash Step + legendary Rupture finished the boss), boss drop Gale Hunter's Gauntlets [C-Rank] equipped. `430`: three self-Mend casts between dungeons, second key bought. `431`: second dungeon opened, Silent Step's mastery crossing shared it with Owen for the first time, six-cluster commons killed, Level 22→23 crossed mid-fight. `432`: elite killed at range with Mana Bolt. `433`: boss ambush — an Exploit Pattern read and its follow-through were both under-modified in play (Cartographer's standing step dropped), corrected mid-scene; boss died from the corrected total rather than surviving as first narrated. `434`: the seven remaining commons hunted at range; Owen accepted and consumed the boss's second Mana Bolt rune. `435`: exit, 112 C-Rank crystals sold, promotion barrier — eight skill masteries reconciled, and a first attempt at re-summing the span's XP wrongly claimed a second level crossing; corrected against the full kill ledger to confirm the live session total (Level 23, 1,445/2,300) was right all along. New identifiers: none. New high-water mark **EVT-000435**.
 

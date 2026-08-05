@@ -113,6 +113,7 @@ try {
       evidence_threshold: 3
       pre_authored_result_keys:
         - dimensional_weapon_control
+        - applied_analytical_reconstruction
       settlement_event_kinds:
         - dangerous-scene-settlement
         - progression-batch-settlement

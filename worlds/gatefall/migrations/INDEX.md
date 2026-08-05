@@ -78,6 +78,8 @@ Each record is authoritative for its own edge. Where a record and the active pro
 | 1.54 → 1.55 | treatment | none | owner ruling | `1.54_to_1.55.md` |
 | 1.55 → 1.56 | required | none | owner ruling | `1.55_to_1.56.md` |
 | 1.56 → 1.57 | required | none | owner ruling | `1.56_to_1.57.md` |
+| 1.57 → 1.58 | compatibility | none | owner ruling | `1.57_to_1.58.md` |
+| 1.58 → 1.59 | required | none | owner ruling | `1.58_to_1.59.md` |
 
 `fictional time` reports what the record itself states. `unstated` means the source prose declares no cost and none may be inferred.
 

@@ -440,3 +440,29 @@ A second, independent hole sat beside it: Section 4.4 authored *what* Flux Sight
 **One cost, stated because it is not small.** `test_progression_audit_contract.ps1` was aborting early on the drifted mutation; running to completion it takes ~116s and is now the slowest single suite, which `test_all.ps1` reports against Recommendation R9's target. That is the true cost of the assertions, previously hidden by a failure.
 
 **Not closed:** the general rule is enforced by nothing. No gate detects a *new* fixture pinned to live state, and `F-013`'s residue-one-layer-out is the reason to expect one. Three instances in one file argue for a convention — fixtures select by property, never by value — and the convention is written into the file's own comments where the next reader of that file will meet it, which is the same enforcement class `F-005`–`F-007` and `F-009` already sit in.
+
+## F-019 — No ledger owns a protagonist figure, and `180_CURRENT_STATE.md` disagreed with itself three times
+
+**Raised:** 2026-08-06 · **Source:** `campaigns/gatefall_pendragon_001/`, found while sizing the readiness context surface after the Profile 1.64/1.65 adoptions (`EVT-000460`, `EVT-000461`)
+
+**Status:** Open. Three instances repaired in live canon; the design question is untouched and is deliberately not answered here.
+
+`180_CURRENT_STATE.md` stated three protagonist facts twice each, in different sections of the same file, and **two of the second copies were wrong**:
+
+| Fact | One section said | The other said | Authority |
+|---|---|---|---|
+| Cash | `$2,174.00` | `$45,074.00`, *"unchanged — nothing this span moved cash"* | `$2,174.00` — three Events stale |
+| Instant-Dungeon Keys | `E-Rank 1, C-Rank 0` | *"at C, D, and E-Rank, all unused"* | one `[E-Rank]` key on the sheet |
+| First crew training | closed, in Open Threads | closed again, in Immediate obligations | — |
+
+The cash figure was stale by `EVT-000446` (−$2,500), `EVT-000447` (−$40,000) and `EVT-000453` (−$400); `45,074 − 42,900 = 2,174` closes exactly. Separately the whole `## Protagonist` section was a snapshot from the **previous** anchor, opening *"TODAY, Sunday 2026-08-16"* against a Monday 19:45 campaign time — a **relative label is a derived value**, correct for exactly one session, and nothing recomputes it.
+
+**Nothing could have caught any of it.** Every figure is prose. `validate_repository.ps1` reconciles rendered `skills_known` against `tracked_counters` (added under `F-015`) and recomputes damage previews, but it has no rule for **a ledger disagreeing with itself**, because neither copy is declared authoritative. All three survived a checkpoint, nine gates, and 33 green suites.
+
+**The engine already forbids this, and applied the remedy to exactly one fact.** Decision 073 §2: *"No other ledger restates presence; they reference it. `180_CURRENT_STATE.md` **presents and points at** the protagonist's `canonical_state.location`; it does not own it or restate it as authoritative prose."* Its own diagnosis is the general case — *"too many fields with no designated owner … four representations of one fact, no owner … **this is the two-representations failure Decision 051 forbids generally**, left unaddressed for the one fact that changes every turn."* Presence got an owner and a gate. Cash, keys, titles, pending rewards, mastery levels and the rest did not.
+
+**The open design question:** which ledger owns each protagonist figure, and what a non-owning ledger is permitted to say about it — extending Decision 073 from presence to every tracked quantity, under Decision 051's general prohibition. Worth stating in the same shape 073 used: one structural owner, other ledgers *present and point at*, and the invariant made mechanical at the Repository Validation Barrier.
+
+**The naive answer is measured and does not work.** "Move everything to `100_CHARACTER_SHEET.md` and stop restating it" fails on the readiness budget, because the sheet stores records where Current State stores a compressed view. Promoting the fields that would be needed costs **10,676 tokens** to retire roughly **360** — `skills_known` 5,764, `inventory` 3,636, `equipment` 1,276 — taking the readiness surface from ~39,500 to about 50,000 against a 40,000 hard failure. Three fields are cheap enough to promote outright and should be (`stats` 28, `effective_stats` 206, `finances` 106); the rest have to stay a **derived view with a gate**, which is what Decision 051 already calls a derived view and what `F-015`'s `skills_known` reconciliation already implements for one case.
+
+**Two adjacent observations, recorded rather than actioned.** `canonical_state.situation` is now **10,382 tokens** and `condition` **13,152** — neither is in the readiness set, but `situation` is the field Decision 073 itself named as *"restates location narratively — the field that went stale at Checkpoint 0006,"* and it has since grown to a third of the sheet. And the readiness surface stood at **39,997 of 40,000** before this session's cleanup: the budget has been absorbing this duplication rather than reporting it, because a second copy costs tokens exactly like a first one.

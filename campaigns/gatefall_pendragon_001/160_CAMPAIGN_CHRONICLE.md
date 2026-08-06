@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000461
+  source: EVT-000462
   game_date: "2026-08-17T19:45:00-05:00"
   real_date: "2026-08-05"
 role: canonical ledger
@@ -424,6 +424,7 @@ subjects:
   - EVT-000459
   - EVT-000460
   - EVT-000461
+  - EVT-000462
 ```
 
 ---
@@ -14303,4 +14304,42 @@ description: "Adoption of **Gatefall World Rule Profile 1.65**, a compatibility 
 **Folded-in repair: `100_CHARACTER_SHEET.md`'s Field Command line contradicted itself.** Its body read *'relay one active Exploit Pattern … to **one ally** … before **the ally's** roll'* — the E-Rank Novice wording — while the same line recorded *'Currently 3 recipients, on the Adept rung.'* Field Command's mastery axis is **scope, simultaneous recipients 1→5** (Section 7.4), and it has stood at **Adept** since `EVT-000428`-`EVT-000435`. The prose was never carried forward when the count moved, so the line stated the skill's floor and its live value in the same sentence. Repaired to the rendering Silent Step and Resonance Extraction already use — the axis named, then the current rung's count. **`F-015`'s shape again:** rendered prose beside a stored figure, with no gate comparing them, since the counters it reconciles were all correct.
 
 `profile_version` advances 1.64 → **1.65**. Full transformation record at `worlds/gatefall/migrations/1.64_to_1.65.md`. **Nothing retroactive:** no re-assessment, claimed or withheld reawakening, or consequence promoted under 1.64 or earlier is reopened. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. No entity, record, or relationship minted. New high-water mark **EVT-000461**."
+```
+
+---
+
+## EVT-000462 - Profile 1.66: Three Annotations That Stopped Describing Their Own Ladders
+
+```yaml
+id: EVT-000462
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-17 19:45 -05:00"
+  real_date: "2026-08-06"
+type: Event
+kind: profile-adoption
+importance: minor
+game_date: "2026-08-17 19:45 -05:00"
+participants:
+  - ENT-000125
+counter_deltas: []
+progression_audits: []
+description: "Adoption of **Gatefall World Rule Profile 1.66**, a compatibility treatment over frozen 1.65, at the same freight-yard anchor as `EVT-000460` and `EVT-000461`. **No fictional time passes, no pool moves, no scene occurs, no skill changes Rank or mastery, and no past exchange is re-resolved.**
+
+**Three cells in Section 7.3's magnitude-axis ladder described their own arithmetic and had stopped matching it.** Each grant cell carries two hand-written annotations: the **dominance ratio** the grant produces at each Rank step, and a word - *thin* or *dominant* - classifying it against Decision 090 point 5's 1.15× threshold. Neither is a rule. Both are consequences of increments authored elsewhere in the same profile, written down for the reader.
+
+**`F-014` predicted this and named the mechanism**, though not the trigger: *'a future profile can retune `+0.25` or `+5 points` and leave this table's classification silently stale.'* What actually moved was not an increment but the ladder's **extent** - **1.53 authored A-Rank** across all three Section 7.3 tables, adding a fourth reachable step, and the annotations were never extended with it.
+
+**Dagger Mastery** stated three ratios where four steps exist, now `1.17× / 1.09× / 1.06× / 1.05×`. **Stone Skin** stated two where three exist, now `1.10× / 1.07× / 1.00×` - the last held flat by the Section 7.2 90% cap rather than by a failed grant, since B-Rank Master computes `30 + 50 + 20 = 100` and A-Rank Novice `30 + 75 = 105`, both clamped to 90. **Bulwark** stated no ratio at all and placed the cap a Rank late: it now reads `1.06× / 1.00× / 1.00× / 1.00×`, with the cap **first binding at D-Rank Master** (`60 + 25 + 20 = 105`) and holding at every level from C-Rank up, so only the E→D step gains magnitude at all.
+
+**Nothing about the ladders moved, and that is the whole character of this edge.** Every increment, native Rank, mastery step, reduction cap and authored category is exactly what 1.65 held. `tools/test_rank_dominance_law.ps1` verified the Rank Dominance Law before and after without a single computed value changing. No skill's rendered magnitude, damage preview, or reduction fraction moves, because no input to any of them moved.
+
+**What changes is that the annotations are now recomputed rather than trusted.** That suite computes each `Rank N Master → Rank N+1 Novice` step from the increments it parses out of Sections 7.3 and 7.4 and compares it to every ratio a cell states, naming the step and both figures on a mismatch. **Rupture and Mana Bolt are excluded by design** - both read `skill_rank_baseline + effective Intelligence` (Section 6.2, Profile 1.56), so their real ratio depends on the Bearer rather than the profile, and the gate instead requires that such a skill state no figure it cannot own. Mend is checked, healing being excluded from that fold.
+
+**Nothing retroactive.** No past ascension is re-adjudicated and none was ever resolved on a wrong number - the underlying arithmetic was correct throughout, and only its description was stale. No offer reopens, none is withdrawn, and no campaign owes a re-audit: nothing consumed these annotations at resolution time.
+
+`profile_version` advances 1.65 → **1.66**. Full transformation record at `worlds/gatefall/migrations/1.65_to_1.66.md`. No XP, level, Stat, Health, Mana, gold, cash, item, ownership, quest, title, skill, counter, or resolved die outcome changes. No entity, record, or relationship minted. New high-water mark **EVT-000462**."
 ```

@@ -485,6 +485,20 @@ This is the same failure shape `F-005`, `F-006`, and `F-007` already named and c
 
 **Status:** Open.
 
+## F-021 — Two more NPC-knowledge/OOC-leak violations landed back-to-back in one scene, after F-003/F-005–007/F-016/F-020 all named the same class
+
+**Raised:** 2026-08-06 · **Source:** `campaigns/gatefall_pendragon_001/`, 2026-08-18 in-fiction session (the Coalition-desk scene with Kesha Morrison, immediately following the Owen texting scene)
+
+**Status:** Open.
+
+Two distinct leaks landed in the same short scene, each caught and corrected by the player, neither caught by the Runtime first.
+
+1. **OOC text echoed into in-fiction NPC dialogue.** The player used a duck emoji as an out-of-character swear substitute in a `//`-prefixed line ("for 🦆 sake"). The next Owen text, narrated immediately after, closed with the same emoji as something Owen himself sent — content from the player's own OOC channel was copied into an NPC's in-fiction speech with no in-fiction source at all. Caught by the player ("wtf is that duck emoji"), acknowledged as ungrounded, removed.
+
+2. **An NPC asserted Bearer-only System state and a wholly unheard-of arrangement as her own knowledge.** Teased by the player ("you just don't want me to work"), Kesha Morrison was narrated replying that Alexander was "currently levelled up, geared up... and about to go spend your evening with an artificer." Two separate channel failures in one line: **level** is System state perceptible to the Bearer alone (Resident Core, Information Boundary; Profile Section 14.4) and no NPC has a channel to it under any circumstance short of the Bearer disclosing it; and **the Nakamura arrangement** has never been named to Kesha by anyone — not even Owen, the person closest to Alexander in the campaign, has been given her name (per `F-020`, raised in this same session one scene earlier). Caught by the player in unusually direct terms ("you're just giving NPC non character dialogs and informations, this metagaming is very hard for you").
+
+**The open design question:** this is nominally the same failure family as `F-003`, `F-005`–`F-007`, `F-016`, and `F-020` — an NPC line asserting knowledge the loaded record does not support — and each of those was actioned into the Resident Core's NPC Channel Check, *Load a Recorded NPC Before Playing It*, and the closed-channel-recording mechanism. Despite that accumulated fix surface, two fresh instances of the identical shape occurred within minutes of each other, one turn after `F-020` was raised for the same session. Worth asking directly, rather than filing this as one more instance to consolidate: **is the per-turn NPC Channel Check actually being executed as a discrete step before an NPC line is generated, or is it being applied post-hoc (i.e., only when the player objects)?** If the check were genuinely running before generation, a line combining "levelled up" (a category of fact the resident layer names explicitly as never NPC-visible) and a proper name never given to that NPC (checkable against `130_NPCS_AND_FACTIONS.md`'s Closed Channels table and the entity's own `situation` field, both already loaded at this point in the session) should not have been produced at all — this doesn't look like a hard judgment call at the boundary, it looks like the check not firing. Also worth asking whether banter/teasing exchanges specifically are where the check gets skipped, since both leaks in this scene occurred inside light, fast-paced dialogue rather than a mechanically weighty exchange.
+
 ## F-019 — No ledger owns a protagonist figure, and `180_CURRENT_STATE.md` disagreed with itself three times
 
 **Raised:** 2026-08-06 · **Source:** `campaigns/gatefall_pendragon_001/`, found while sizing the readiness context surface after the Profile 1.64/1.65 adoptions (`EVT-000460`, `EVT-000461`)

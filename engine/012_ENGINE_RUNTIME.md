@@ -239,6 +239,10 @@ The promotion barrier is mandatory. A Session must not close leaving canon-beari
 
 Checkpoints (Rules Section 13.2) are additional promotion barriers within a Session.
 
+**A settlement that declines a claim binds every derived record written in the same pass.** Where a canon-bearing Event's own settlement refuses a claim — recording it as corrected in play, retracted, or not carried into canon — no ledger derived from that Event may assert it. The Event governs, and the derived write is not a second opportunity to decide.
+
+This is stated because the opposite happened and nothing stopped it. In `F-016` a Runtime-authored disagreement between two characters was **identified as invention by the settlement and explicitly declined**, and the NPC ledger and Current State carried it anyway — one of them elevating it to a standing tension between the protagonist and his partner, against the very Event it derived from. The claim then survived a checkpoint and needed a forward repair Event of its own. **A derived record contradicting its own source is not a disagreement between two ledgers; it is one ledger overruling a barrier that had already ruled**, and no gate reads prose closely enough to catch it.
+
 The operational procedure for session close — including the session report — is defined by the active Runtime Profile.
 
 ## 2.3 Context-Preservation Barrier

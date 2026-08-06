@@ -74,7 +74,28 @@ Assert-Contains $runtime 'is Grounding applied to dialogue rather than a fifth i
 
 # --- The fetched layers still exist and are advertised, not replaced --------
 Assert-Contains $profile 'the NPC channel check' 'The Runtime Profile does not advertise the resident NPC channel guard, so a campaign boot need not load the layer that owns it.'
-Assert-Contains $resident 'Full channel test, rationalization table, and red flags: the `npc-knowledge` skill' 'The resident layer does not point at the fetched elaboration.'
+Assert-Contains $resident 'voice and independence discipline, rationalization table, and red flags: the `npc-knowledge` skill' 'The resident layer does not point at the fetched elaboration.'
+
+# --- F-016: the channel test governs facts, and nothing governed manner -------
+#
+# An NPC can pass every assertion above and still be wrong. Two NPCs with
+# explicitly different authored personalities produced structurally identical
+# beats on back-to-back turns -- a flat correction, a one-clause reframe, a wry
+# closing line -- in one register wearing two names.
+#
+# The independence half is the sharper one, because the obvious correction makes
+# it worse. Told an NPC "doesn't need to agree with your narration," the easy
+# repair is to have them disagree with the PLAYER instead; the NPC's position
+# never moves and only its target does. So the rule is written on whose read the
+# NPC carries, never on whom it agrees with -- and where no grounded basis for an
+# opinion exists, the correct output is that the NPC holds none.
+Assert-Contains $resident 'manner is what compression removes' 'The resident layer does not make an NPC voice a constraint to write against (F-016).'
+Assert-Contains $resident 'two loaded NPCs are never interchangeable' 'The resident layer does not forbid one register wearing two names (F-016).'
+Assert-Contains $resident 'An opinion is the NPC''s own' 'The resident layer does not source an NPC opinion to that NPC rather than to the Runtime (F-016).'
+Assert-Contains $resident 'flipping agreement into disagreement is not independence' 'The resident layer does not close the polarity trap, which is the repair that made F-016 worse rather than better.'
+Assert-Contains $skill 'whose read they are carrying' 'The skill does not state the independence test on whose read the NPC carries.'
+Assert-Contains $skill 'the correct output is that it holds none' 'The skill does not permit an NPC to hold no opinion, which is the branch the Runtime skips.'
+Assert-Contains $skill 'Read `personality` as a constraint to write against' 'The skill does not make the personality field a writing constraint.'
 Assert-Contains $skill 'The channel test \(run it before every NPC line\)' 'The npc-knowledge skill no longer carries the full channel test it elaborates.'
 
 # --- The load contract ------------------------------------------------------

@@ -161,7 +161,7 @@ A named campaign NPC has a record: an `ENT-` block, and often a `REL-` with the 
 
 So load the record before that NPC's first line in a scene — its entity block, plus any relationship with the protagonist. Once per scene, not once per line, and *before* narrating rather than after a line has already been written from recollection. Take the fields the campaign's declared entity dispatch names rather than the whole block: a long-running record runs to tens of kilobytes, and most of that is history the chronicle already holds.
 
-An NPC's manner, standing, last-known situation, and open threads are canon. Canon that was never loaded cannot govern narration, and a line that happens to come out right was still ungrounded (Invariant 1). Recollection is the failure mode here exactly as it is for state: what you remember of a character is a compressed role label, and the manner is what compression removes. If the record cannot be read, say the NPC is unloaded and narrate nothing resting on its history.
+An NPC's manner, standing, last-known situation, and open threads are canon. Canon that was never loaded cannot govern narration, and a line that happens to come out right was still ungrounded (Invariant 1). What you remember is a compressed role label, and **manner is what compression removes** — so write *against* the record, and two loaded NPCs are never interchangeable. **An opinion is the NPC's own**, from what it perceived and what its record values, never your read of a third party; lacking that basis it voices none, and **flipping agreement into disagreement is not independence**. If the record cannot be read, say the NPC is unloaded and narrate nothing resting on its history.
 
 This is not the channel check below. Loading asks what the record says; the channel check asks what the character may know. Passing one never satisfies the other.
 
@@ -173,13 +173,13 @@ An NPC knows a fact only if the fiction gave **that** NPC a channel to it. Your 
 
 **When it fires, it is one question:** was this NPC *present*, *told* through a channel that exists, does their *role* give records access, or is it *common knowledge*? If none holds, the NPC does not know it.
 
-**The correct branch is the cheap one.** The NPC asks, guesses wrong, or simply doesn't mention it — all less work than the failure, which is always *inventing* a channel to justify the line (a voicemail that was never sent, a notification that cannot exist, a "sheet" no one but the Bearer can see). If the honest answer is that they are reading him from behaviour, write it as a read or a guess, never as something observed or reported.
+**The correct branch is the cheap one.** The NPC asks, guesses wrong, or simply doesn't mention it — all less work than the failure, which is always *inventing* a channel to justify the line. If the honest answer is that they are reading him from behaviour, write it as a read or a guess, never as something observed or reported.
 
 **Every line, every time.** A correction earlier in the scene does not inoculate a later turn, and does not generalize to a different fact. The trap is not forgetting the rule — it is reaching for a plot-convenient hook, or for whatever detail is nearest to hand, to make a line feel informed. **"The Runtime knows it" is the trap, not the exemption**: mechanical counters, quest state, prior narration, and recent tool output are all things *you* hold, and none is a channel.
 
 When the player says an NPC could not know something, they are right by default. Accept it, re-narrate from that NPC's real knowledge, and record the closed channel in the campaign's NPC ledger so the ruling outlives the scene. Never invent a channel after the fact to justify the slip.
 
-Full channel test, rationalization table, and red flags: the `npc-knowledge` skill.
+Full channel test, voice and independence discipline, rationalization table, and red flags: the `npc-knowledge` skill.
 
 ---
 

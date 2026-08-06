@@ -328,6 +328,33 @@ negative-assertion discipline as an empty generation: a settled *nobody took it*
 is information, while an unsettled one is indistinguishable from an advance that
 never ran. Inquiry reads a settled claim and never triggers one.
 
+**A declared deadline settles at the same boundary, and it is the one obligation
+no dispatch can reach.** Where world-side state carries an authored deadline — a
+posting that expires, a window that closes, a countdown a profile makes
+deterministic — the advance that crosses it settles it, from the rule that
+authors it, recording the outcome whether or not the protagonist was present,
+told, or affected. This completes the set: commitments, needs, supply and
+contested openings all settle on elapsed time, and a deadline is the fourth thing
+time does to the world.
+
+**It needs saying separately because a deadline has no actor.** The others are
+reached by someone doing something — an owner owing a callback, a source
+producing, a claimant taking — so the exchange that settles them has an event to
+notice. **A deadline is reached by time alone, and elapsed time is the background
+against which settlement happens rather than a change anyone settles.** A
+dispatcher keyed to what an exchange *changed* therefore cannot see it: there is
+no delta, and the absence is not distinguishable from nothing having been due.
+Section 2.5's manifest is a dispatch index and must not be the only route to a
+deadline for exactly this reason:
+**a domain whose candidate deltas nothing produces never intersects anything**,
+and the posting breaks unobserved while every gate stays green. This is `F-002`'s recorded recurrence: a Gate posting
+reached its deadline, its profile made the settlement deterministic and
+discretion-free, its world declared a trigger domain for it, and it still went
+four days unsettled because the domain waited on a delta no document emits.
+
+**As with recovery and commitments, no status view, checkpoint, or session close
+may be the first operation that notices a deadline has passed.**
+
 ## 2.5 Profile-Declared Proactive Trigger Settlement
 
 When an active World Rule Profile declares a proactive trigger audit, the

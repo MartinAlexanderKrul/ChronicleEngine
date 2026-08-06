@@ -109,4 +109,28 @@ Assert-Contains $resident 'is waiting on nothing' 'The capability check is missi
 Assert-Contains $runtime 'Runtime uncertainty is never a world fact' 'The Runtime does not forbid discharging its own undecided question as an in-fiction delay.'
 Assert-Contains $runtime 'the scene that asks the question is the scene that answers it' 'The Runtime states no default that an available answer is due in the asking scene.'
 
+# --- A deadline settles on the clock, and no dispatch can reach it (F-002) ----
+#
+# The fourth thing elapsed time does to the world, and the only one with no
+# actor. A commitment has an owner who owes it, supply has a source that produces
+# it, a contested opening has claimants who take it -- so the exchange settling
+# each has an event to notice. A deadline is reached by time alone, so a
+# dispatcher keyed to what an exchange CHANGED sees nothing, and that absence is
+# indistinguishable from nothing having been due.
+#
+# F-002 is that failing twice on one board. Section 9.10 made the settlement
+# deterministic and discretion-free, Decision 084 gave the board its own trigger
+# domain, and GB-04 still broke four days unsettled -- because the domain waited
+# on candidate deltas (clock.advanced and three siblings) that appear nowhere in
+# the repository except the declaration consuming them. Nothing emits them, so
+# the intersection the resident dispatcher tests can never be non-empty.
+#
+# Both layers have to carry it: the resident card fires it per turn, and 012
+# explains why a manifest is not an alternative route.
+Assert-Contains $resident 'settle every authored deadline the span crossed' 'The resident layer does not settle deadlines on elapsed time, so a posting can pass its deadline unobserved (F-002).'
+Assert-Contains $resident 'A deadline has no actor and no delta announces it' 'The resident layer does not say why a deadline cannot be dispatched, which is why F-002 recurred after Decision 084 gave the board a domain.'
+Assert-Contains $runtime 'A declared deadline settles at the same boundary' 'The Engine Runtime does not place deadlines on the elapsed-time boundary alongside commitments, needs, supply, and contested openings.'
+Assert-Contains $runtime 'a domain whose candidate deltas nothing produces never intersects anything' 'The Engine Runtime does not rule out the trigger manifest as the sole route to a deadline, which is the defect F-002 recorded.'
+Assert-Contains $runtime 'may be the first operation that notices a deadline has passed' 'A status view, checkpoint, or session close may still be the first thing to notice a passed deadline.'
+
 Write-Host 'Pending world-side commitment contract PASSED'

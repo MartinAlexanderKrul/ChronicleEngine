@@ -337,6 +337,85 @@ if ($profile -notmatch 'magnitude_floor := ') {
     $failures.Add("Section 7.2 declares no magnitude_floor; the ratchet that keeps ascension from reducing an authored value is absent.") | Out-Null
 }
 
+# --- The stated dominance ratios, recomputed (F-014's residue) ---------------
+#
+# Section 7.3's grant cells annotate themselves with the ratio they produce --
+# "+0.25 chassis -- **thin** (1.17x / 1.09x / 1.06x)" -- and with a word, *thin*
+# or *dominant*, classifying it against Decision 090 point 5's 1.15x threshold.
+# Both were computed by hand and written into prose, and nothing recomputed them
+# when an increment moved. That is what `F-014` left open in its own words: a
+# retuned `+0.25` or `+5 points` now fails the law above loudly, while the
+# classification beside it goes silently wrong.
+#
+# The ratio is the raw Rank N Master -> Rank N+1 Novice step, BEFORE the
+# magnitude ratchet. That is deliberate and is what the cells state: the ratchet
+# is the repair (no axis may fall), the raw figure is the thing being classified,
+# and reading it post-ratchet would report 1.00x for every skill the ratchet
+# catches and hide exactly the case the classification exists to name.
+#
+# Two skills are deliberately NOT checked, and the reason is not laziness.
+# Rupture and Mana Bolt read `skill_rank_baseline + effective Intelligence`
+# (Section 6.2, Profile 1.56), so their real ratio depends on the Bearer's
+# Intelligence -- campaign state, not a profile constant -- which is why 1.56's
+# own note says the fold "flattens the ratio" and why both cells say *now thin*
+# against a baseline-only arithmetic of 1.9x and 1.5x. A profile-side check
+# cannot own that number. Mend IS checked: healing is explicitly excluded from
+# the Intelligence fold, so its figure is a profile constant.
+#
+# What is asserted, therefore: every ratio a cell STATES must equal the computed
+# figure for its step, in order from native upward; and a skill whose ratio is
+# Intelligence-dependent must not state one it cannot own.
+$intelligenceDependent = @()
+foreach ($skill in $skills) {
+    $masteryRow = Get-SkillRow $masteryRows $skill.Name
+    if ($skill.Mode -eq 'baseline' -and $masteryRow[1] -match '(?i)damage') {
+        $intelligenceDependent += $skill.Name
+    }
+}
+
+foreach ($skill in $skills) {
+    $magnitudeRow = Get-SkillRow $magnitudeRows $skill.Name
+    $grantCell = $magnitudeRow[2]
+    # "1.17x" or "1.17<U+00D7>". The multiplication sign is written as the escape
+    # \u00d7 and NEVER as a literal: this file is BOM-less UTF-8, Windows
+    # PowerShell 5.1 decodes it as ANSI, and a literal U+00D7 in the pattern
+    # matches nothing. That does not fail -- it makes $stated empty and the whole
+    # check `continue` past every skill, passing vacuously. Verified by corrupting
+    # a stated ratio and confirming this reports it.
+    # Version references like "(1.57)" carry no multiplier mark and are ignored.
+    $stated = @([regex]::Matches($grantCell, '(?<v>\d+\.\d+)(?:x|\u00d7)') |
+                ForEach-Object { $_.Groups['v'].Value })
+
+    if ($intelligenceDependent -contains $skill.Name) {
+        if ($stated.Count -gt 0) {
+            $failures.Add("'$($skill.Name)' states a dominance ratio ($($stated -join ', ')) but its magnitude reads effective Intelligence, so no profile-side figure can be correct for every Bearer. State the shape, not a number.") | Out-Null
+        }
+        continue
+    }
+    if ($stated.Count -eq 0) { continue }
+
+    $nativeIndex = [array]::IndexOf($ranks, $skill.Native)
+    $computed = @()
+    for ($r = 0; $nativeIndex + $r -lt $ceilingIndex; $r++) {
+        $atMaster = Get-Magnitude $skill $r 5
+        $nextNovice = Get-Magnitude $skill ($r + 1) 1
+        if ($atMaster -le 0) { continue }
+        $computed += [math]::Round($nextNovice / $atMaster, 2)
+    }
+
+    for ($i = 0; $i -lt $stated.Count; $i++) {
+        if ($i -ge $computed.Count) {
+            $failures.Add("'$($skill.Name)' states $($stated.Count) dominance ratios but only $($computed.Count) Rank steps are authored; the extra figures describe rungs that do not exist.") | Out-Null
+            break
+        }
+        $want = [math]::Round((ConvertTo-Number $stated[$i]), 2)
+        if ([math]::Abs($want - $computed[$i]) -ge 0.005) {
+            $step = "$($ranks[$nativeIndex + $i])-Rank Master -> $($ranks[$nativeIndex + $i + 1])-Rank Novice"
+            $failures.Add("'$($skill.Name)' states $($stated[$i])x for $step but the Section 7.3/7.4 increments give $($computed[$i])x; the annotation is a hand-computed consequence of numbers that moved without it.") | Out-Null
+        }
+    }
+}
+
 # Section 7.2's prose must keep agreeing with the Section 7.3/7.4 tables the
 # magnitudes are now read from. These are the same increments stated a second
 # time in sentence form, and Section 7.2 is where the Runtime reads them during

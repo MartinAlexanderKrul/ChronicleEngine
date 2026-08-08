@@ -503,7 +503,11 @@ Two distinct leaks landed in the same short scene, each caught and corrected by 
 
 **Raised:** 2026-08-06 · **Source:** `campaigns/gatefall_pendragon_001/`, 2026-08-18 in-fiction session, immediately after Alexander cleared the Level 25 Class Quest and chose Devourer
 
-**Status:** Open.
+**Status:** **Actioned (2026-08-08)** → Gatefall Profile **1.68**, Section 18.6; record at `worlds/gatefall/migrations/1.67_to_1.68.md`. **The catalog was the wrong size, not the cap.** The flag offered two remedies — an offset on the cap formula, or a smaller catalog with a kind reserved for the evolution — and both shrink the class. The ruling goes the other way: **the catalog doubles to ten kinds**, adding Rend, Roar, Spines, Burrow and Bloodfeast, so the cap rations a real choice instead of describing one. A held fragment may also now be **released** outside combat, so the standing question *"which five am I carrying"* stays live as the fights change rather than being settled once on the day the class is taken.
+
+**The flag's second half was right and is answered.** It asked whether the other four classes share the collision. They do not share *this* one — but auditing for it found worse, and the audit is `F-025`: Soulforged Armory's cap could not bind at all, and Echo Knight and Riftwalker had no authored growth of any kind. Devourer's cap was the most visible instance of a defect the section had in four of five places.
+
+**What replaced the level-scaled cap.** Fragment capacity is now `effective Vitality ÷ 20` rather than `level ÷ 5`. Digestion was already a Vitality-governed act, so the Stat was already in the mechanic; it now governs capacity too, under `F-025`'s one-Stat-per-class rule.
 
 Section 18.6 (Devourer) sets **fragment cap = 1 fragment per 5 levels (floor)**, and separately authors exactly **five** fragment kinds (Breath, Stone-Hide, Regeneration, Venom, Wings) — "which one a core yields is fixed by its source creature's signature." Devourer is only offered starting at the **Level 25 Class Quest** (Section 18.1), and `floor(25 ÷ 5) = 5`. The cap and the catalog size are therefore the same number at the class's own earliest possible acquisition point. In play, the player consumed five cores of five different signatures across two exchanges immediately after choosing the class and reached `5/5 held` — every fragment kind the class will ever offer, on day one, with no leveling gate ever having applied.
 
@@ -590,3 +594,31 @@ The cash figure was stale by `EVT-000446` (−$2,500), `EVT-000447` (−$40,000)
 **The naive answer is measured and does not work.** "Move everything to `100_CHARACTER_SHEET.md` and stop restating it" fails on the readiness budget, because the sheet stores records where Current State stores a compressed view. Promoting the fields that would be needed costs **10,676 tokens** to retire roughly **360** — `skills_known` 5,764, `inventory` 3,636, `equipment` 1,276 — taking the readiness surface from ~39,500 to about 50,000 against a 40,000 hard failure. Three fields are cheap enough to promote outright and should be (`stats` 28, `effective_stats` 206, `finances` 106); the rest have to stay a **derived view with a gate**, which is what Decision 051 already calls a derived view and what `F-015`'s `skills_known` reconciliation already implements for one case.
 
 **Two adjacent observations, recorded rather than actioned.** `canonical_state.situation` is now **10,382 tokens** and `condition` **13,152** — neither is in the readiness set, but `situation` is the field Decision 073 itself named as *"restates location narratively — the field that went stale at Checkpoint 0006,"* and it has since grown to a third of the sheet. And the readiness surface stood at **39,997 of 40,000** before this session's cleanup: the budget has been absorbing this duplication rather than reporting it, because a second copy costs tokens exactly like a first one.
+
+## F-025 — Four of the five classes could not progress, and one of them granted nothing for a beast core
+
+**Raised:** 2026-08-08 · **Source:** `worlds/gatefall/`, owner audit of Section 18 prompted by the observation that *"some classes are useless compared to others"*
+
+**Status:** **Actioned (2026-08-08)** → Gatefall Profile **1.68**, new Section 18.3.1 and Sections 18.5–18.8; record at `worlds/gatefall/migrations/1.67_to_1.68.md`. Recorded rather than merely fixed, because the **detection question** below is not closed.
+
+Section 18 grants exactly **one class per campaign, permanently, at level 25** — the most consequential irreversible choice the Bearer makes. Audited against its own text, the five were not within reach of one another:
+
+| Class | Acquisition track | Scales on | Growth authored? |
+|---|---|---|---|
+| **Shadowbinder** | elites + horde, both capped, both binding | **Intelligence** | yes |
+| **Devourer** | 5 fragments against a catalog of exactly 5 | level | cap never applies (`F-022`) |
+| **Soulforged Armory** | 5 weapons, 1–2 reachable | level | **cap grants nothing** |
+| **Echo Knight** | 3 fixed slots | — | **no** |
+| **Riftwalker** | none at all | — | **no** |
+
+**Shadowbinder was the only class with a working acquisition track**, and the only one whose growth read a Stat.
+
+**Two classes authored no growth.** Echo Knight: *"At authored thresholds a slot may capture a critical, the per-echo Mana cost falls, and echo durability rises"* — **no thresholds were authored.** Riftwalker: *"Rift-step range grows past line of sight at higher tiers; deflection strength and pocket capacity rise with allocation and level"* — **no tiers, no numbers.** Both were static across the twenty-five levels they exist to carry. This is `F-013`'s shape at the content layer: a growth path present as a promise with nothing behind it, and nothing anywhere comparing the promise to its own contents.
+
+**Soulforged Armory charged a beast core for nothing.** Its cap was `level ÷ 5`, but the Bearer has two hands, the draw was once per exchange, and a bound ability functioned **only while wielded** — so the fourth and fifth bindings each consumed a core (a real, sellable, Rank-priced asset) to grant precisely zero. The abilities were beneath his existing skills besides: the section's own worked examples read `×1.5` and `×1.25` against a Rupture already at `×2.45`. **A cap whose reachable set is smaller than the cap is not a cap**, and this is the second instance of that exact error in one section — `F-022` is the first, from the other direction, where the cap equalled the whole catalog.
+
+**Echo Knight contradicted the signal it is mapped to.** Section 18.3 offers it for **Endurance** — *"surviving sustained pressure at low resources."* The class contained no healing, no reduction, and no resource extension; it cost **8 Mana a deploy** to replay an attack. It made endurance strictly **worse**. The map and the class disagreed, and neither pointed at the other's error.
+
+**The repair** is Section 18.3.1: the three tracks every class owes (acquisition under a binding cap, magnitude, evolution), the rule that **a cap which cannot bind is not a cap**, and **one Stat per class with none shared** — Shadowbinder Intelligence, Devourer Vitality, Soulforged Strength, Echo Knight Perception, Riftwalker Agility. Devourer's catalog doubles to ten; Soulforged's arsenal grants a **standing edge** from every stored weapon and scales its abilities on the skill-rank baseline; Echo Knight's echoes **intercept attacks aimed at the Bearer** and cost less the lower his pools run; Riftwalker gains **rift anchors** as a real collection and the network its evolution runs on. Shadowbinder is untouched, having been correct throughout.
+
+**The open question is detection, and it is the same one `F-024` asked one layer down.** Nothing in the repository can tell that a class has no growth ladder, that a cap exceeds its own reachable set, or that a class contradicts the signal mapping to it. `tools/test_rank_dominance_law.ps1` verifies exactly this property — *"every reachable ascension gains, none loses"* — for **skills**, parsing Sections 7.3 and 7.4, and it is the reason skill ladders cannot rot silently. **Section 18 has no equivalent and is not parsed by anything.** So the section carrying the campaign's single permanent irreversible choice is the least verified content in the profile, and all four defects survived nine months and 33 green suites until a player said some classes felt useless. Worth asking whether the dominance suite's shape generalizes to class tracks — a cap compared against its reachable set, a growth column required to be non-empty, a signal-to-class map required to be answerable from the class's own text.

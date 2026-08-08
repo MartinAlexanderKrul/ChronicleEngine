@@ -129,9 +129,21 @@ def build_continue_plan(
     entry = config.get("canonical_entry_point")
     if isinstance(entry, str):
         add_whole_file(root, plan, entry, "live readiness and current situation", failures)
-    briefing = config.get("player_briefing")
-    if isinstance(briefing, str):
-        add_whole_file(root, plan, briefing, "spoiler-safe player briefing", failures)
+
+    # `player_briefing` is deliberately NOT a continue-plan read.
+    #
+    # The Runtime Profile splits the two audiences: a returning player gets a
+    # recap of what changed, and a new or takeover player gets the full
+    # spoiler-safe introduction. The briefing is the takeover document, written
+    # at campaign creation and describing the protagonist as he was on day one.
+    # Gatefall's still opens on an E-Rank with $4,000 and no crew, against a
+    # Level 25 Bearer with six figures in the bank -- correct for what it is,
+    # and actively misleading on a resume.
+    #
+    # It was pulled as a whole file on every `continue`, so each resume loaded a
+    # briefing the session would not use and could not trust. It stays declared
+    # in campaign startup for the paths that do want it; it is simply not part
+    # of restoring a campaign that is already under way.
 
     protagonist = config.get("default_protagonist")
     campaign = config.get("campaign")

@@ -473,6 +473,32 @@ A second, independent hole sat beside it: Section 4.4 authored *what* Flux Sight
 
 **Not closed:** the general rule is enforced by nothing. No gate detects a *new* fixture pinned to live state, and `F-013`'s residue-one-layer-out is the reason to expect one. Three instances in one file argue for a convention — fixtures select by property, never by value — and the convention is written into the file's own comments where the next reader of that file will meet it, which is the same enforcement class `F-005`–`F-007` and `F-009` already sit in.
 
+## F-019 — No ledger owns a protagonist figure, and `180_CURRENT_STATE.md` disagreed with itself three times
+
+**Raised:** 2026-08-06 · **Source:** `campaigns/gatefall_pendragon_001/`, found while sizing the readiness context surface after the Profile 1.64/1.65 adoptions (`EVT-000460`, `EVT-000461`)
+
+**Status:** Open. Three instances repaired in live canon; the design question is untouched and is deliberately not answered here.
+
+`180_CURRENT_STATE.md` stated three protagonist facts twice each, in different sections of the same file, and **two of the second copies were wrong**:
+
+| Fact | One section said | The other said | Authority |
+|---|---|---|---|
+| Cash | `$2,174.00` | `$45,074.00`, *"unchanged — nothing this span moved cash"* | `$2,174.00` — three Events stale |
+| Instant-Dungeon Keys | `E-Rank 1, C-Rank 0` | *"at C, D, and E-Rank, all unused"* | one `[E-Rank]` key on the sheet |
+| First crew training | closed, in Open Threads | closed again, in Immediate obligations | — |
+
+The cash figure was stale by `EVT-000446` (−$2,500), `EVT-000447` (−$40,000) and `EVT-000453` (−$400); `45,074 − 42,900 = 2,174` closes exactly. Separately the whole `## Protagonist` section was a snapshot from the **previous** anchor, opening *"TODAY, Sunday 2026-08-16"* against a Monday 19:45 campaign time — a **relative label is a derived value**, correct for exactly one session, and nothing recomputes it.
+
+**Nothing could have caught any of it.** Every figure is prose. `validate_repository.ps1` reconciles rendered `skills_known` against `tracked_counters` (added under `F-015`) and recomputes damage previews, but it has no rule for **a ledger disagreeing with itself**, because neither copy is declared authoritative. All three survived a checkpoint, nine gates, and 33 green suites.
+
+**The engine already forbids this, and applied the remedy to exactly one fact.** Decision 073 §2: *"No other ledger restates presence; they reference it. `180_CURRENT_STATE.md` **presents and points at** the protagonist's `canonical_state.location`; it does not own it or restate it as authoritative prose."* Its own diagnosis is the general case — *"too many fields with no designated owner … four representations of one fact, no owner … **this is the two-representations failure Decision 051 forbids generally**, left unaddressed for the one fact that changes every turn."* Presence got an owner and a gate. Cash, keys, titles, pending rewards, mastery levels and the rest did not.
+
+**The open design question:** which ledger owns each protagonist figure, and what a non-owning ledger is permitted to say about it — extending Decision 073 from presence to every tracked quantity, under Decision 051's general prohibition. Worth stating in the same shape 073 used: one structural owner, other ledgers *present and point at*, and the invariant made mechanical at the Repository Validation Barrier.
+
+**The naive answer is measured and does not work.** "Move everything to `100_CHARACTER_SHEET.md` and stop restating it" fails on the readiness budget, because the sheet stores records where Current State stores a compressed view. Promoting the fields that would be needed costs **10,676 tokens** to retire roughly **360** — `skills_known` 5,764, `inventory` 3,636, `equipment` 1,276 — taking the readiness surface from ~39,500 to about 50,000 against a 40,000 hard failure. Three fields are cheap enough to promote outright and should be (`stats` 28, `effective_stats` 206, `finances` 106); the rest have to stay a **derived view with a gate**, which is what Decision 051 already calls a derived view and what `F-015`'s `skills_known` reconciliation already implements for one case.
+
+**Two adjacent observations, recorded rather than actioned.** `canonical_state.situation` is now **10,382 tokens** and `condition` **13,152** — neither is in the readiness set, but `situation` is the field Decision 073 itself named as *"restates location narratively — the field that went stale at Checkpoint 0006,"* and it has since grown to a third of the sheet. And the readiness surface stood at **39,997 of 40,000** before this session's cleanup: the budget has been absorbing this duplication rather than reporting it, because a second copy costs tokens exactly like a first one.
+
 ## F-020 — Owen was narrated referencing a specific commitment that was never his and never told to him
 
 **Raised:** 2026-08-06 · **Source:** `campaigns/gatefall_pendragon_001/`, 2026-08-18 in-fiction session
@@ -537,24 +563,6 @@ The cap formula reads as though it should ration the toolkit out across a career
 
 **The normalization was the part that mattered, and it is not obvious.** Un-normalized, a Bearer who one-shots fourteen Phase-1 commons scores Kill Efficiency **fourteen times** against a Positioning ceiling of four, and **Devourer becomes near-inevitable for anybody** — which is exactly what the one played trial produced, and it would have survived the phase rewrite untouched. Once per phase, the same run scores efficiency once, and the tally measures a signal demonstrated *across* the trial rather than farmed inside the phase built for it. The full tally now renders with the offer: an examination shows its marking, and a Bearer told only the result cannot tell a reading of him from the only reading available.
 
-## F-026 — Section 18 promised hidden classes in its own title for sixty-three profile versions and contained none
-
-**Raised:** 2026-08-08 · **Source:** `worlds/gatefall/`, found while looking for somewhere to attach new classes at the owner's request
-
-**Status:** **Actioned (2026-08-08)** → Gatefall Profile **1.69**, new Section 18.3.3 and Sections 18.9–18.11; record at `worlds/gatefall/migrations/1.68_to_1.69.md`.
-
-Section 18 has been titled **"The Class Quest and Hidden Classes"** since Profile 1.6. It authored five classes, and Section 18.3 **publishes every one of them on the signal map**, each with its signal printed beside it. Nothing in the section was hidden by any reading of the word. `worlds/gatefall/README.md` propagated the error, describing the roster as *"the class quest and the five hidden classes."*
-
-This is a **title describing an absent feature**, and it is a quieter member of the family `F-024` named: there, a rule governed a subject nothing created; here, a heading named content that was never authored. Both are invisible to every gate in the repository, because nothing compares a section's own claims to its contents. It survived sixty-three versions and was found only because someone went looking for a place to put new classes and noticed the place was already promised.
-
-**What the tier turned out to mean is better than a gap being filled.** Bible Section 9 (owner-facing) names the class quest *"the specialization gate that shapes what kind of champion the candidate becomes,"* so the five signal classes are the **Assay's own catalogue** — the shapes the process was built to make. That gives a hidden class an exact definition rather than a vibe: **what the candidate becomes when he does something the instrumentation had no category for**, which is the same unbounded adaptation the process selected him for, returning on it. The tier is therefore reached by **conduct rather than degree**, is capped on a **Stat pair** because the five singles are the catalogued shapes, and renders **anomalous** — an instrument reporting a reading outside its own scale rather than clamping it silently.
-
-**One design rule came out of it and was promoted into Section 18.3.1: every class fights.** Two of the three began as knowledge-shaped concepts — reading dead worlds, working punctures — and the owner caught that neither offered fighting power. In a world where death is final and a class is held permanently, that is not a flavour choice but a **trap**, discovered too late to choose again, and it is the same defect class as `F-025`'s inert arsenal slots wearing different clothes. Each now takes its combat capability **from its own premise** rather than beside it.
-
-**Left open:** the hidden tier has three members and no rule for how many it should have, no criterion for what makes a candidate condition good, and — like the rest of Section 18 — **nothing that parses it.** `F-025`'s detection question now covers strictly more surface than when it was raised.
-
-**Not closed:** the consequence of that boundary is that the Bearer's *safest* content is the licensed work the world can see, while his dangerous content is what only he can open. That is a coherent world statement and it is deliberate, but it is a choice made here rather than a fact, and it is the seam to watch if public Gates start reading as trivial at high investment.
-
 ## F-024 — Section 17 authored a Rank rule for a key category nothing creates, and Section 6.6 contradicted Section 12.5 about it
 
 **Raised:** 2026-08-08 · **Source:** `worlds/gatefall/`, found while repointing the Section 6.6 combat consumers for `F-023`
@@ -586,32 +594,6 @@ Section 18.2 populates the Class Quest the same way a Gate populates: waves and 
 **What was worked out at the table, in case it's useful groundwork for a fix:** to produce real tension against this Bearer's actual output (Rupture standard ≈571, critical ≈2,283; Health 444 with ≈58% effective reduction most exchanges including the Warded Vambrace's extra −30%/exchange), the trial would need roughly **two full Ranks above his System Rank** in raw Health/damage terms (B-Rank commons/elites/boss surviving crits, B-Rank fixed damage — ≈150 raw before reduction — actually registering), **or** C-Rank-equivalent numbers large enough to force genuine Battlefield Control pressure (a crowd he cannot isolate or ambush cleanly, resources draining across a real grind rather than topped off by one Mend mid-fight), **or** enemy effects that route around Health entirely (Mana drain, a reduction-ignoring debuff) so the trial tests Endurance and Weapon Breadth rather than letting one overwhelming isolate-and-crit combo carry the whole thing.
 
 **The open design question:** should Section 18.2's population formula read from the Bearer's **Section 19 measured-output tier** (or an equivalent derived-strength figure) rather than his raw System Rank, the way a re-ranking appraisal would see him — and if so, is that a per-Bearer calculation authored once at the trigger (Section 18.1), or a living scale that could make the trial meaningfully harder for a Bearer who stalls on gear/Stats versus one who doesn't? Worth checking whether any other Rank-scaled content (public Gates, instant dungeons, the Section 8.3 penalty zone) shares the same System-Rank-not-measured-output scaling and the same latent triviality for a sufficiently invested Bearer, or whether the Class Quest is a special case because it is explicitly billed as the one trial meant to test him rather than merely occur near him.
-
-## F-019 — No ledger owns a protagonist figure, and `180_CURRENT_STATE.md` disagreed with itself three times
-
-**Raised:** 2026-08-06 · **Source:** `campaigns/gatefall_pendragon_001/`, found while sizing the readiness context surface after the Profile 1.64/1.65 adoptions (`EVT-000460`, `EVT-000461`)
-
-**Status:** Open. Three instances repaired in live canon; the design question is untouched and is deliberately not answered here.
-
-`180_CURRENT_STATE.md` stated three protagonist facts twice each, in different sections of the same file, and **two of the second copies were wrong**:
-
-| Fact | One section said | The other said | Authority |
-|---|---|---|---|
-| Cash | `$2,174.00` | `$45,074.00`, *"unchanged — nothing this span moved cash"* | `$2,174.00` — three Events stale |
-| Instant-Dungeon Keys | `E-Rank 1, C-Rank 0` | *"at C, D, and E-Rank, all unused"* | one `[E-Rank]` key on the sheet |
-| First crew training | closed, in Open Threads | closed again, in Immediate obligations | — |
-
-The cash figure was stale by `EVT-000446` (−$2,500), `EVT-000447` (−$40,000) and `EVT-000453` (−$400); `45,074 − 42,900 = 2,174` closes exactly. Separately the whole `## Protagonist` section was a snapshot from the **previous** anchor, opening *"TODAY, Sunday 2026-08-16"* against a Monday 19:45 campaign time — a **relative label is a derived value**, correct for exactly one session, and nothing recomputes it.
-
-**Nothing could have caught any of it.** Every figure is prose. `validate_repository.ps1` reconciles rendered `skills_known` against `tracked_counters` (added under `F-015`) and recomputes damage previews, but it has no rule for **a ledger disagreeing with itself**, because neither copy is declared authoritative. All three survived a checkpoint, nine gates, and 33 green suites.
-
-**The engine already forbids this, and applied the remedy to exactly one fact.** Decision 073 §2: *"No other ledger restates presence; they reference it. `180_CURRENT_STATE.md` **presents and points at** the protagonist's `canonical_state.location`; it does not own it or restate it as authoritative prose."* Its own diagnosis is the general case — *"too many fields with no designated owner … four representations of one fact, no owner … **this is the two-representations failure Decision 051 forbids generally**, left unaddressed for the one fact that changes every turn."* Presence got an owner and a gate. Cash, keys, titles, pending rewards, mastery levels and the rest did not.
-
-**The open design question:** which ledger owns each protagonist figure, and what a non-owning ledger is permitted to say about it — extending Decision 073 from presence to every tracked quantity, under Decision 051's general prohibition. Worth stating in the same shape 073 used: one structural owner, other ledgers *present and point at*, and the invariant made mechanical at the Repository Validation Barrier.
-
-**The naive answer is measured and does not work.** "Move everything to `100_CHARACTER_SHEET.md` and stop restating it" fails on the readiness budget, because the sheet stores records where Current State stores a compressed view. Promoting the fields that would be needed costs **10,676 tokens** to retire roughly **360** — `skills_known` 5,764, `inventory` 3,636, `equipment` 1,276 — taking the readiness surface from ~39,500 to about 50,000 against a 40,000 hard failure. Three fields are cheap enough to promote outright and should be (`stats` 28, `effective_stats` 206, `finances` 106); the rest have to stay a **derived view with a gate**, which is what Decision 051 already calls a derived view and what `F-015`'s `skills_known` reconciliation already implements for one case.
-
-**Two adjacent observations, recorded rather than actioned.** `canonical_state.situation` is now **10,382 tokens** and `condition` **13,152** — neither is in the readiness set, but `situation` is the field Decision 073 itself named as *"restates location narratively — the field that went stale at Checkpoint 0006,"* and it has since grown to a third of the sheet. And the readiness surface stood at **39,997 of 40,000** before this session's cleanup: the budget has been absorbing this duplication rather than reporting it, because a second copy costs tokens exactly like a first one.
 
 ## F-025 — Four of the five classes could not progress, and one of them granted nothing for a beast core
 
@@ -646,6 +628,24 @@ Section 18 grants exactly **one class per campaign, permanently, at level 25** �
 **It was verified by mutation rather than trusted.** Eight defects were injected one at a time and the suite rejected all eight — a magnitude track removed, a cap made level-derived, two classes bound to one Stat, a hidden class published on the map, the per-phase normalization dropped, an evolution removed, a phase deleted, a hidden class capped on a single Stat. The profile was restored byte-identical afterwards. This mattered: **the first version of the suite passed on correct input while silently reporting every class as level-capped**, because a capture class omitted `\r\n` and ran past its own line — a gate that reports a false positive on everything is as useless as one that reports nothing, and only mutation showed which it was.
 
 **Still open, and now the larger half:** `F-024`'s general question is untouched. This suite verifies Section 18 because Section 18 was where somebody looked. **No gate anywhere asks whether a profile section's claims match its contents** — a rule governing a subject nothing creates (`F-024`), a heading naming content nobody wrote (`F-026`), a growth path promised and never authored (here). Three instances, three hand-written suites, and no way to find the fourth except by reading.
+
+## F-026 — Section 18 promised hidden classes in its own title for sixty-three profile versions and contained none
+
+**Raised:** 2026-08-08 · **Source:** `worlds/gatefall/`, found while looking for somewhere to attach new classes at the owner's request
+
+**Status:** **Actioned (2026-08-08)** → Gatefall Profile **1.69**, new Section 18.3.3 and Sections 18.9–18.11; record at `worlds/gatefall/migrations/1.68_to_1.69.md`.
+
+Section 18 has been titled **"The Class Quest and Hidden Classes"** since Profile 1.6. It authored five classes, and Section 18.3 **publishes every one of them on the signal map**, each with its signal printed beside it. Nothing in the section was hidden by any reading of the word. `worlds/gatefall/README.md` propagated the error, describing the roster as *"the class quest and the five hidden classes."*
+
+This is a **title describing an absent feature**, and it is a quieter member of the family `F-024` named: there, a rule governed a subject nothing created; here, a heading named content that was never authored. Both are invisible to every gate in the repository, because nothing compares a section's own claims to its contents. It survived sixty-three versions and was found only because someone went looking for a place to put new classes and noticed the place was already promised.
+
+**What the tier turned out to mean is better than a gap being filled.** Bible Section 9 (owner-facing) names the class quest *"the specialization gate that shapes what kind of champion the candidate becomes,"* so the five signal classes are the **Assay's own catalogue** — the shapes the process was built to make. That gives a hidden class an exact definition rather than a vibe: **what the candidate becomes when he does something the instrumentation had no category for**, which is the same unbounded adaptation the process selected him for, returning on it. The tier is therefore reached by **conduct rather than degree**, is capped on a **Stat pair** because the five singles are the catalogued shapes, and renders **anomalous** — an instrument reporting a reading outside its own scale rather than clamping it silently.
+
+**One design rule came out of it and was promoted into Section 18.3.1: every class fights.** Two of the three began as knowledge-shaped concepts — reading dead worlds, working punctures — and the owner caught that neither offered fighting power. In a world where death is final and a class is held permanently, that is not a flavour choice but a **trap**, discovered too late to choose again, and it is the same defect class as `F-025`'s inert arsenal slots wearing different clothes. Each now takes its combat capability **from its own premise** rather than beside it.
+
+**Left open:** the hidden tier has three members and no rule for how many it should have, no criterion for what makes a candidate condition good, and — like the rest of Section 18 — **nothing that parses it.** `F-025`'s detection question now covers strictly more surface than when it was raised.
+
+**Not closed:** the consequence of that boundary is that the Bearer's *safest* content is the licensed work the world can see, while his dangerous content is what only he can open. That is a coherent world statement and it is deliberate, but it is a choice made here rather than a fact, and it is the seam to watch if public Gates start reading as trivial at high investment.
 
 ## F-027 — A ratified skill went a whole campaign without a single use, because every alternative beat it on every axis
 

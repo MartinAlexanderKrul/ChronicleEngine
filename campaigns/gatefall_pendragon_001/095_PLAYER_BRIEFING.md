@@ -1,8 +1,8 @@
 # Welcome to Gatefall: Pendragon
 
-**Status:** Derived player briefing; non-canonical
-**Audience:** New player starting Alexander Pendragon
-**Generated:** 2026-07-23
+**Status:** Derived player briefing; non-canonical. **Campaign-creation artifact — a snapshot of 2026-07-23, deliberately not maintained.**
+**Audience:** A player starting or taking over Alexander Pendragon. **Not for a returning player**, who gets a recap of current state instead (Runtime Profile, *Returning and Takeover Sessions*).
+**Generated:** 2026-07-23 · **Describes:** the protagonist as he was at campaign creation
 
 ---
 
@@ -19,8 +19,12 @@ generated_from:
   - campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 generated_at: 2026-07-23
 audience: new-player
-status: current
+status: creation-snapshot
+not_maintained: true
+superseded_for_resume_by: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 -->
+
+> **Read this only when starting or taking over this character.** Everything below is true of 2026-07-23 and of nothing since: it describes an E-Rank with $4,000, no gear, and no crew. Alexander is now far past all of it. A returning player wants `180_CURRENT_STATE.md`, which the Runtime reads on resume; this file is kept as the campaign's own creation record and is intentionally never updated.
 
 # Who You Are
 

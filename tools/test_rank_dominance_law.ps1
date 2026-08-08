@@ -191,7 +191,16 @@ $reductionCap = (ConvertTo-Number $capMatch.Groups['v'].Value)
 
 # Dimensional Projection is the one skill whose mastery track is an authored
 # ladder rather than a constant step, and Section 7.2 states it as a list.
-$dpMatch = [regex]::Match($profile, 'Mastery extends maximum deployment range to \*\*(?<ladder>[^*]+)\*\*')
+#
+# The list this reads is the PROJECTILE COUNT, not the range band. Through
+# Profile 1.69 range was the technique's only axis, so this parsed the range
+# ladder; 1.70 made projectile count the magnitude (`F-027`), and a dominance
+# check that kept reading range would verify the axis that no longer carries the
+# skill's magnitude while the one that does went unchecked. Both ladders still
+# exist and both drop at a Rank ascension's Novice rung -- which is what the
+# `magnitude_floor` ratchet is for, and what this suite exists to confirm is
+# still declared.
+$dpMatch = [regex]::Match($profile, 'Mastery launches \*\*(?<ladder>[^*]+)\*\* objects')
 $dpLadder = $null
 if ($dpMatch.Success) {
     $dpLadder = @([regex]::Matches($dpMatch.Groups['ladder'].Value, '\d+(?:\.\d+)?') |

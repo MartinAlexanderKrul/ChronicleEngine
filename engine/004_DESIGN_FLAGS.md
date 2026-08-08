@@ -646,3 +646,32 @@ Section 18 grants exactly **one class per campaign, permanently, at level 25** �
 **It was verified by mutation rather than trusted.** Eight defects were injected one at a time and the suite rejected all eight — a magnitude track removed, a cap made level-derived, two classes bound to one Stat, a hidden class published on the map, the per-phase normalization dropped, an evolution removed, a phase deleted, a hidden class capped on a single Stat. The profile was restored byte-identical afterwards. This mattered: **the first version of the suite passed on correct input while silently reporting every class as level-capped**, because a capture class omitted `\r\n` and ran past its own line — a gate that reports a false positive on everything is as useless as one that reports nothing, and only mutation showed which it was.
 
 **Still open, and now the larger half:** `F-024`'s general question is untouched. This suite verifies Section 18 because Section 18 was where somebody looked. **No gate anywhere asks whether a profile section's claims match its contents** — a rule governing a subject nothing creates (`F-024`), a heading naming content nobody wrote (`F-026`), a growth path promised and never authored (here). Three instances, three hand-written suites, and no way to find the fourth except by reading.
+
+## F-027 — A ratified skill went a whole campaign without a single use, because every alternative beat it on every axis
+
+**Raised:** 2026-08-08 · **Source:** `campaigns/gatefall_pendragon_001/`, owner audit of Dimensional Projection after the played sessions — *"I didn't see any meaning to use it"*
+
+**Status:** **Actioned (2026-08-08)** → Gatefall Profile **1.70**, Section 7.2's authored formation result and the Section 7.3/7.4 ladders; record at `worlds/gatefall/migrations/1.69_to_1.70.md`.
+
+**The counters are the evidence.** Dimensional Projection ratified at `EVT-000436` and its live record reads `successful_uses: 0` and `qualifying_scenes_total: 0` every checkpoint since. A formed, ratified, mastery-tracked technique was never once worth an action.
+
+**The arithmetic says why.** At effective Strength 87, a ×1.50 chassis from Dagger Mastery [C-Rank] Expert, and a banked C-Rank blade at weapon power 7:
+
+| Action | Damage | Mana | Range | Combines? |
+|---|---:|---:|---|---|
+| Ordinary main-hand strike | **164** | **0** | melee | yes |
+| Rupture | **571** | 9 | 5 m | it *is* the combo skill |
+| Mana Bolt | **167** | 5 | **unlimited** | no |
+| **Dimensional Projection** | **141** | 6 | **5 m** at Novice | **no** |
+
+Beaten by a **free** ordinary strike. Beaten by Mana Bolt at worse range for more Mana. A quarter of Rupture. The only offensive technique in the profile that **disarms its own user** and then bills him an exchange's inventory change to undo it. Its Novice range equalled Rupture's flat band, so it did not even buy reach. **There was no state in which it was the right action**, which is why it was never taken.
+
+**It is the third case of the 1.56 defect, and it survived that fix by classification.** Profile 1.56 recorded the identical finding — *"a signature offensive skill had become strictly worse than swinging the knife"* — and repaired it by folding effective Intelligence into `Bearer_skill_damage`. Dimensional Projection resolves on the ordinary **physical** damage formula by construction, so the fold could not reach it. Its damage *is* a weapon strike: same terms, worse weapon, no equipped bonuses, plus a Mana bill. It sat that way for fourteen versions.
+
+**And it had no damage axis at all.** Both mastery and Rank moved range and Mana cost and nothing else, so twelve qualifying scenes and four ascensions later the strike still hit for exactly what throwing that weapon by hand hits for.
+
+**The repair came from the owner and is better than a number change.** Projectile count becomes the technique's magnitude — mastery `1 / 2 / 2 / 3 / 3`, `+1` per Rank above native — with every projectile its own deployment point, object and resolution, splittable freely across targets. It becomes a **named multi-strike** (Section 6.2, the package Twin Fang already uses) and therefore the Bearer's **only true multi-target offensive action**, which is what stops it competing with Rupture on the single-target axis where it can only lose. Ammunition is governed by arithmetic rather than a permission list: junk carries weapon power 0 and the improvised chassis, ranked steel carries its own, so the technique quietly acquires the collection track it never had.
+
+**The general finding, and it is the part worth keeping.** §7.2's Rank Dominance Law verifies that **ascending** a skill gains. It has never asked whether the **native effect was worth taking in the first place**, and `tools/test_rank_dominance_law.ps1` inherits exactly that scope — it checked this skill's ladder happily for fourteen versions while the floor beneath the ladder was unusable. §7.1's formation test asks a related question (*"could the skill do nothing its own absence could not"*) and Dimensional Projection technically passed it: remote placement genuinely is new. **Both tests can pass on a skill nobody will ever spend an action on.**
+
+**Left open:** what a *floor* test would even assert. The honest version is comparative — a skill's own action must beat the Bearer's best free alternative at its own job — but "its own job" is not a machine-readable property, and a naive damage comparison would wrongly condemn every utility, mobility and setup skill in the profile. Recording the shape rather than guessing at the gate: **the dominance law guards the ladder, and nothing guards the floor.**

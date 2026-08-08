@@ -3711,6 +3711,7 @@ On defeating a foe, the Bearer may raise its shadow. Shadows come in **two class
 
 **Commanding the horde (closed-form, never per-shadow):** committed to a fight, the horde resolves as **one action per exchange**. It **automatically overruns** trash threats at or below the horde's dominant Rank (they are swarmed under, no roll), and against elites and bosses it grants the Bearer's side **+1 modifier step per 100 shadows committed, to the net ±3 cap** (Section 4.3) — the weight of numbers. A hard fight inflicts **attrition**: on a poor exchange, or against a boss, the horde loses a die-scaled fraction of the committed shadows, replenished by extracting the newly slain. Storing/re-summoning elites is free/½-cost as before; the horde is always "on call" and costs nothing at rest.
 
+- **Magnitude.** An elite's **band** is what grows: it advances on the clear count stated above, to the ceiling stated there, and its Rank Health and fixed-Rank damage (Sections 6.1 and 6.2) move with the band. The horde's magnitude is its **count**, which is why its cap is this class's real scaling axis rather than a storage limit.
 - **Evolution quest hook — the Sovereign's Trial (level 50):** extract a **boss-Rank** elite to unlock **Legion** — the horde cap becomes effectively unbounded (thousands), elite cap rises to Intelligence ÷ 3, and the horde in formation grants **+1 modifier step to one coordinated allied action per exchange** on top of its mass bonus.
 
 ```text

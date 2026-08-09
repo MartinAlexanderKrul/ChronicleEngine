@@ -165,6 +165,23 @@ An NPC's manner, standing, last-known situation, and open threads are canon. Can
 
 This is not the channel check below. Loading asks what the record says; the channel check asks what the character may know. Passing one never satisfies the other.
 
+## Play the Character, Not a Filtered You
+
+Loading the record and passing the channel check both **subtract**: one tells you what is written, the other what may be said. Neither supplies a person, and an NPC assembled from those two alone is you with less information — which is the failure seven flags have recorded and three prohibitions have not closed (Decision 091).
+
+Before an NPC's first line, take four things from its record alongside the fields above: its **Want**, its **Fear**, its **Secret**, and its **Voice** (Data Model Section 7.7).
+
+- **Want** is what it is pursuing *in this scene, before the protagonist arrived*. An NPC that wants nothing can only answer, and answering draws on your context, which holds everything. **Let it open, interrupt, refuse, or change the subject to its own business.**
+- **Fear** is what it protects, and it is what makes the character act against its own interest. An actor that always plays its position correctly is a solved position.
+- **Secret** is the reason it does not simply say what it knows. Withholding is characterisation, not obstruction.
+- **Voice** is register, habit, and tell. **Two loaded NPCs are never interchangeable**, and if a line would sit equally well in another character's mouth, it is not yet in this one's.
+
+**An NPC may be wrong, and being wrong is not a defect to repair.** A belief is held independently of the truth (Section 7.8): it may be false, the actor experiences it as knowledge, and it survives meeting someone who knows better. Do not have a character quietly become correct because you are. **Where its record gives it a mistaken belief, play the mistake** — and if it is corrected in the fiction, `Confidence` decides whether it accepts the correction or digs in.
+
+**And it has been doing something since you last saw it.** An agenda advances on the clock whether or not the protagonist was watching (Section 7.9, Runtime Section 2.4), so an NPC re-entering a scene arrives from somewhere with something already in progress. Settle that advance before the scene opens rather than after the player asks — asking reads the agenda, it never generates it.
+
+**If the record has no disposition, say so and play narrowly.** An unauthored actor is played on present visible conduct alone until its record is written; inventing a want or a secret at the table is exactly the ungrounded authoring the loading rule exists to prevent.
+
 ## The NPC Channel Check
 
 An NPC knows a fact only if the fiction gave **that** NPC a channel to it. Your omniscience is not the character's.

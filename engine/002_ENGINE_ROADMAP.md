@@ -668,6 +668,7 @@ Both remain **Accepted**. They are not reopened, reversed, or renumbered: accept
 | Decision 088 | Standing Need: Demand Advances on the World's Clock | **Foundational** — adds Data Model Section 7.6; owned by milestone 0.4.1 |
 | Decision 089 | Opportunity Claimants: A Finite Opening Is Contested | **Foundational** — extends Data Model Section 7.5; owned by milestone 0.4.2 |
 | Decision 090 | Skill Credit Is Asserted, Not Inferred; and Rank Must Land Somewhere on Every Skill | Refinement — reuses the existing `progression_audits` block for its existing meaning; adds no Data Model block, no Rules section, and no schema version bump. Owned by milestone 0.4.3 |
+| Decision 091 | An NPC Is a Character, Not a Filtered Narrator | **Foundational** — adds Data Model Sections 7.7 (Disposition, canonical state), 7.8 (Belief, tracked state) and 7.9 (Agenda, tracked state); extends Runtime Section 2.4's elapsed-time settlement series; owned by milestone 0.4.4 |
 
 Both accepted 2026-08-02, together, as the Version 0.4 Architecture Freeze (Decisions 048, 086). Neither advances the Data Model version and neither requires a migration: both are tracked state minting no identifier, held in records that already exist, on Decision 082's precedent. They are foundational under Decision 069 because they change `011`, and they were accepted at ADR Approval rather than admitted as freeze exceptions — which is the ordinary path the lifecycle describes and the one Version 0.3 departed from ten times.
 

@@ -433,6 +433,78 @@ A need is tracked state under Section 7.3 and mints no identifier. It is promote
 
 Rules Sections 1.8 and 3.4 own when a world actor plausibly needs something and how long fulfilment takes; a World Rule Profile owns its own actors' cadence. A world that declares no cadence still settles a need forward from its established canon by ordinary resolution (Rules Section 4; Decision 060) rather than assuming it lapsed. This section owns the structure.
 
+## 7.7 Disposition
+
+A **disposition** is the authored interiority of a Character: what it wants, what it protects, what it withholds, and how it behaves in a scene (Decision 091).
+
+It is **canonical state** under Section 7.1, held on the Character's own record. It is not tracked state and not description: it is a property of who the actor *is*, which the clock does not settle and narration may not contradict.
+
+```text
+Want         what the actor is pursuing, concrete enough to act on
+Fear         what it protects against, and the flaw that protection creates
+Secret       what it holds and will not volunteer, and who already knows
+Voice        how it behaves in a scene -- register, habit, tell, what it does under pressure
+```
+
+**Required for any Character a Runtime will play.** A Character that exists only as a referent — a name on a roster, the author of a document, a casualty in a record — needs no disposition until it speaks or acts. One that speaks needs all four.
+
+**The failure this exists to close is that the engine had only prohibitions.** A Runtime holds the whole world's truth and an actor holds a fraction of it, and every structure the engine offered for that gap was negative: the NPC channel test governs what an actor may *not* know, and a closed-channel record makes one such ruling outlive its scene. Those stop an actor saying wrong things. **They cannot produce a character, and an actor can pass every one of them while remaining the narrator with a name.**
+
+Each field answers a specific way that failure manifests:
+
+- **`Want` is what lets an actor open a scene instead of answering one.** An actor pursuing nothing can only react, and reacting means drawing its content from the Runtime's context — which is the narrator's context, holding everything.
+- **`Fear` is what makes it act against its own interest**, which is most of what distinguishes a person from an optimizer. An actor that always plays its position correctly is a solved position, not a character.
+- **`Secret` is the structural reason an actor does not simply say what it knows.** Without one, nothing stands between an actor's knowledge and its speech, and the shortest path from *the Runtime knows it* to *the NPC said it* runs directly through an actor with nothing to withhold.
+- **`Voice` is what makes two loaded actors non-interchangeable.** Manner is precisely what compression removes, so an actor recalled rather than read converges on one register regardless of what its record says.
+
+`Secret` names who already knows, because a secret with no holders but its owner cannot leak, be traded, or be discovered, and a secret nobody can reach is indistinguishable from an absent one.
+
+A world may specialise this — adding fields its own fiction requires — and a World Rule Profile owns whether a given class of actor is playable. This section owns the structure.
+
+## 7.8 Belief
+
+A **belief** is tracked state recording that an actor holds something to be true. **A belief may be false, and that is the entire reason the construct exists** (Decision 091).
+
+```text
+Holder       the Entity that holds it
+Claim        what it holds to be true
+Ground       how it came to hold it: seen, told, inferred, or assumed
+Confidence   certain | confident | suspects | doubts
+Accuracy     true | false | partly-true | unresolved
+Since        when it formed, with the Event or provenance that formed it
+```
+
+**Knowledge and belief are different constructs and a simulation needs both.** The channel test asks whether an actor *may* know a fact — was it present, was it told through a channel that exists, does its role give records access, is it common knowledge. That is a **filter on truth**: it decides which true facts an actor holds. It has no expression for something an actor holds that is *not* true, so an actor that satisfies it holds a strict subset of reality and nothing besides. Every belief such an actor has is correct. That is not a person; it is an instrument reading the world at reduced resolution — and it is why a correctly-filtered NPC still sounds like the narrator, only less informed.
+
+`Accuracy` is **owner-facing and never rendered**. The actor experiences a belief as knowledge; the distinction exists so the Runtime can play the actor honestly, not so it can signal to the player which of them are wrong.
+
+**A false belief is not an error queued for correction.** It is canon until the fiction changes it, it survives contact with someone who knows better, and an actor may well refuse the correction — `Confidence` is what governs whether it does. A world in which every mistaken actor is corrected on first contact has no rumour, no reputation, no misplaced trust and no grudge held for the wrong reason.
+
+A belief is tracked state under Section 7.3 and mints no identifier. It is promoted to an Event when it becomes campaign-durable — acted upon consequentially, disclosed, traded, or disproved in play.
+
+## 7.9 Agenda
+
+An **agenda** is tracked state recording what an actor is actively pursuing, and it **advances on the campaign clock whether or not anyone is watching** (Decision 091).
+
+```text
+Holder       the Entity or institution pursuing it
+Objective    what it is trying to bring about
+Method       how it goes about it, from its own capability, standing and reach
+Advanced     the campaign-clock anchor through which the agenda has been settled
+Status       active | achieved | abandoned | blocked | overtaken
+Outcome      what moved, or why nothing did, and when
+```
+
+`Advanced` carries exactly the weight it carries for a supply source (Section 7.5) and a standing need (Section 7.6): it records how far the agenda has been settled, so a later read cannot be mistaken for a first settlement and repeated enquiry inside one span cannot produce a second advance.
+
+**An agenda is a distinct thing from a commitment, and the difference is who it is owed to.** A commitment (Section 7.4) is owed *to someone*, carries a required `Due`, and is discharged. An agenda is owed to nobody, has no due time, and is *pursued* — it advances by degrees, stalls, gets overtaken, and may never conclude. An actor with commitments and no agenda does only what it has promised, which is an actor that exists exclusively in relation to the protagonist.
+
+**This is the thing elapsed time does to the world that nothing else covered.** Decisions 082, 083 and 088 settle what the world *owes*, *offers* and *wants*, and the Decision 084 line settles what falls *due*. None of them is an actor doing something on purpose. An agenda is the only construct here in which the world acts from its own intent rather than from an obligation, an inventory, or a clock — which is why a campaign without it has NPCs who exist only while on screen.
+
+**Settlement is from the holder's own state, standing and reach**, never from the protagonist's involvement, and an agenda that advanced while the player was elsewhere is the ordinary case rather than the exception. An `Outcome` recording that nothing moved, and why, is a settlement exactly as a positive one is (Decision 080).
+
+An agenda is tracked state under Section 7.3 and mints no identifier. It is promoted to an Event when it becomes campaign-durable, exactly as a commitment is under Section 7.4.
+
 ---
 
 # 8. Canonical Record

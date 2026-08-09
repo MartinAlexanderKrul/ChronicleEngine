@@ -284,6 +284,24 @@ An open commitment is never discharged by offering the player an action in its
 place. As with recovery, no status view, checkpoint, or session close may be the
 first operation that notices a commitment has come due.
 
+The same boundary advances an **agenda** (Decision 091;
+`011_ENGINE_DATA_MODEL.md` Section 7.9). Where a commitment is settled *at* its
+due time, an agenda has no due time and is advanced *through* the elapsed span
+from its `Advanced` anchor, from the holder's own capability, standing and
+reach. It may progress, stall, be blocked, or be overtaken by something else that
+happened in the span, and an `Outcome` recording that nothing moved is a
+settlement exactly as a positive one is. Advancement does not depend on the
+player being present, asking, or knowing the agenda exists — this is the one
+construct in which the world acts from its own intent rather than from an
+obligation it owes, an inventory it holds, or a clock it is subject to, and an
+agenda that moved while the protagonist was elsewhere is the ordinary case.
+
+**An agenda is advanced by the clock and read by the enquiry, and only the first
+may move it.** This is Decision 083's rule for supply, carried unchanged: asking
+what an actor has been doing settles the agenda *before* the answer and never
+generates the answer, so a protagonist who asks twice in one span learns the same
+thing twice rather than finding that the world advanced because he looked.
+
 **A commitment is recorded when it is made, not when it comes due.** Everything
 above is unreachable for an undertaking that was never written down, and
 narration is not a record: a promise that exists only as dialogue dispatches

@@ -4418,6 +4418,59 @@ The latter two **converge toward parity** — a fixed increment on a growing bas
 
 ---
 
+## Decision 091 — An NPC Is a Character, Not a Filtered Narrator
+
+**Status:** Accepted — 2026-08-09
+**Date:** 2026-08-09
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Sections 7.7, 7.8, 7.9; `012_ENGINE_RUNTIME.md` Section 2.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (*Load a Recorded NPC Before Playing It*, *The NPC Channel Check*, Turn-State Settlement); Rules Sections 1.8, 3.4; Decisions 076, 080, 082, 083, 084, 086, 088; design flags `F-003`, `F-005`, `F-006`, `F-007`, `F-016`, `F-020`, `F-021`, `F-028`
+
+### Context
+
+**Seven design flags across four months record the same failure, and every remedy applied to it has been a prohibition.**
+
+`F-003` (a leak repeated on one closed channel inside a single scene), `F-005`–`F-007` (three violations back-to-back, each caught by the player), `F-016` (dialogue converging on one register regardless of authored personality, and an NPC written agreeing with the Runtime's own read of a third party rather than forming its own), `F-020` (an NPC treating the protagonist's private appointment as a fixed point on its own schedule), and `F-021` (an NPC asserting Bearer-only System state and naming an arrangement nobody had told her). Each was actioned. The remedies were the **NPC channel check**, *Load a Recorded NPC Before Playing It*, and the **Closed Channels** ledger.
+
+All three are negative. They govern what an NPC may not know and may not say. `F-021` asked the sharp version of the question — *is the check running before generation, or only when the player objects?* — and the answer this decision gives is that **the check can run perfectly and still produce the narrator with a name**, because nothing in the engine ever asked an NPC to be someone.
+
+**The structural finding, from the ledgers themselves.** Gatefall's world figures are authored with **Want**, **Fear/Flaw**, **Secret**, **Agenda (this month)**, named **Relationships**, and a paragraph of scene behaviour. Its campaign NPC ledger — the one played every session, holding sixty entities — authors `personality` and `situation` and **nothing else**: zero wants, zero fears, zero secrets, zero agendas. The protagonist's own partner, the most-narrated NPC in the campaign and the source of `F-020` and half of `F-021`, has no authored want, fear, secret or agenda. The campaign's entity dispatch correctly fetches four fields before an NPC's first line. **The loading machinery works and there is nothing to load.**
+
+That is not a Gatefall fact. The engine had no character model at all, so every world will rediscover it.
+
+**Why prohibition cannot close it.** A Runtime holds the whole world's truth; an actor holds a fraction. An actor pursuing nothing can only react, and reacting means drawing content from the Runtime's context — which is the narrator's context, holding everything. An actor with nothing to withhold has nothing standing between its knowledge and its speech. An actor with no scene behaviour converges on one register, because manner is exactly what recall compresses away. **Each of the seven flags is one of these three defaults firing.**
+
+**And the channel test is a filter on truth.** It decides which *true* facts an actor holds. It has no expression for a thing an actor holds that is false, so a perfectly-filtered NPC believes a strict subset of reality and nothing else — an instrument reading the world at reduced resolution, which is why a correctly-filtered NPC still sounds like the narrator, only less informed.
+
+### Decision
+
+**An NPC is a first-class actor with authored interiority, its own beliefs, and its own agenda, and the engine carries structures for all three.**
+
+1. **Disposition** (Data Model Section 7.7) is **canonical state** on a Character: `Want`, `Fear`, `Secret`, `Voice`. All four are **required for any Character a Runtime will play**. A Character that exists only as a referent needs none until it speaks or acts.
+
+2. **Belief** (Section 7.8) is tracked state, and **a belief may be false**. `Accuracy` is owner-facing and never rendered: the actor experiences a belief as knowledge. A false belief is canon until the fiction changes it, survives contact with someone who knows better, and may be refused — `Confidence` governs whether it is.
+
+3. **Agenda** (Section 7.9) is tracked state carrying an `Advanced` anchor, and it **settles on the campaign clock** alongside commitments, supply, needs and deadlines (Runtime Section 2.4). It is advanced by the clock and read by the enquiry, and only the first may move it.
+
+4. **The channel test is unchanged and is not replaced.** It governs knowledge; this decision governs personhood. Passing one has never satisfied the other and still does not.
+
+5. **A commitment is owed to someone and is discharged; an agenda is owed to nobody and is pursued.** An actor with commitments and no agenda exists exclusively in relation to the protagonist.
+
+### Consequences
+
+- **Every playable Character gains four required canonical fields.** Existing records are incomplete until backfilled, which is a real migration cost paid per world and per campaign.
+- **NPCs act off-screen.** An agenda that advanced while the protagonist was elsewhere is the ordinary case, and a world where that never happens is one where NPCs exist only while observed.
+- **The world may now be wrong about itself.** Rumour, misplaced trust, reputation resting on a false belief, and a grudge held for the wrong reason all become expressible, and all of them are load-bearing for the kind of simulation Rules Section 1.8 describes.
+- **This does not make an NPC an antagonist.** An agenda is what an actor is doing, not what it is doing *to* the protagonist; most agendas never touch him.
+- **It is a foundational change under Decision 086** and qualifies on that decision's own terms: it comes from played evidence (seven flags across four months), is classified here, is versioned and migrated per world, and is revalidated.
+
+### Alternatives Considered
+
+- **Keep strengthening the channel check.** Rejected: seven flags, three prior remedies, and `F-021` landing two fresh instances one turn after `F-020` was raised for the same session. The remedy surface kept growing and the recurrence rate did not fall, because the defect is not that NPCs know too much — it is that they are nobody.
+- **Author the model in Gatefall only.** Rejected: the gap is that campaign NPCs have no positive structure *anywhere*, which is a property of the engine's data model rather than of a world. Reikon and Verra have it too, unexamined.
+- **Fold belief into knowledge with a truth flag.** Rejected: knowledge is filtered from world truth and belief is held independently of it. Collapsing them makes a false belief a corrupted fact rather than a legitimate state, and every gate downstream then treats a rumour as a defect to repair.
+- **Give agendas due times and settle them as commitments.** Rejected: a due time is what makes a commitment dischargeable, and an agenda that must conclude by a date is a commitment with the wrong name. Pursuit that stalls, gets overtaken, and may never conclude is the thing being modelled.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

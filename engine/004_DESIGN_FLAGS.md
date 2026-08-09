@@ -675,3 +675,33 @@ Beaten by a **free** ordinary strike. Beaten by Mana Bolt at worse range for mor
 **The general finding, and it is the part worth keeping.** §7.2's Rank Dominance Law verifies that **ascending** a skill gains. It has never asked whether the **native effect was worth taking in the first place**, and `tools/test_rank_dominance_law.ps1` inherits exactly that scope — it checked this skill's ladder happily for fourteen versions while the floor beneath the ladder was unusable. §7.1's formation test asks a related question (*"could the skill do nothing its own absence could not"*) and Dimensional Projection technically passed it: remote placement genuinely is new. **Both tests can pass on a skill nobody will ever spend an action on.**
 
 **Left open:** what a *floor* test would even assert. The honest version is comparative — a skill's own action must beat the Bearer's best free alternative at its own job — but "its own job" is not a machine-readable property, and a naive damage comparison would wrongly condemn every utility, mobility and setup skill in the profile. Recording the shape rather than guessing at the gate: **the dominance law guards the ladder, and nothing guards the floor.**
+
+## F-028 — NPCs had no positive structure anywhere in the engine, and every remedy for four months had been a prohibition
+
+**Raised:** 2026-08-09 · **Source:** owner observation — *"make NPCs their own character, from just repeating the narrator and the truth of the game"*
+
+**Status:** **Actioned (2026-08-09)** → **Decision 091**; `011_ENGINE_DATA_MODEL.md` Sections 7.7–7.9; `012_ENGINE_RUNTIME.md` Section 2.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (*Play the Character, Not a Filtered You*); Gatefall campaign entity dispatch. **The model is authored and one NPC is backfilled; the rest of the cast is not — see Left open.**
+
+**Seven flags, one failure, three remedies, all of them negative.** `F-003`, `F-005`–`F-007`, `F-016`, `F-020`, `F-021` record the same defect: an NPC speaking from the Runtime's knowledge rather than its own. Each was actioned into the **NPC channel check**, *Load a Recorded NPC Before Playing It*, or the **Closed Channels** ledger. All three govern what an NPC may *not* know or say. `F-021` asked whether the check was firing before generation or only on objection; the answer this flag gives is that **the check can run perfectly and still produce the narrator with a name.**
+
+**The structural evidence, from the ledgers.** Gatefall's *world* figures are authored with **Want**, **Fear/Flaw**, **Secret**, **Agenda (this month)**, named relationships and a paragraph of scene behaviour. Its *campaign* NPC ledger — 60 entities, played every session — authors `personality` and `situation` and nothing else:
+
+| Field | Campaign NPCs |
+|---|---:|
+| `personality` | 48 |
+| `situation` | 52 |
+| want / fear / secret / agenda | **0** |
+
+The protagonist's own partner — most-narrated NPC in the campaign, source of `F-020` and half of `F-021` — had no authored want, fear, secret or agenda. And the campaign's entity dispatch already fetched four fields before an NPC's first line: **the loading machinery was correct and there was nothing to load.**
+
+**Why prohibition could not close it.** An actor pursuing nothing can only react, and reacting draws content from the Runtime's context, which holds everything. An actor with nothing to withhold has nothing between its knowledge and its speech. An actor with no authored manner converges on one register, because manner is what recall compresses away. Separately, **the channel test is a filter on truth** — it selects which *true* facts an actor holds and has no expression for a false one, so a perfectly-filtered NPC believes a strict subset of reality and nothing else. That is an instrument at reduced resolution, which is why a correctly-filtered NPC still sounds like the narrator.
+
+**Left open, and the second half is a blocker.**
+
+**1. Fourteen or so NPCs in play are still unbackfilled** — Kesha, Wade, Walt, Priscilla, Iris, the crew leads, Fenn, Marnie, Sal. Until each is written they are played on present visible conduct alone, which the Resident Core now says explicitly rather than leaving to be discovered.
+
+**2. Owen's record cannot afford the model, and neither can the next thing added to it.** Backfilling him took `ENT-000139` to **88,557 bytes against a ratchet of 88,722 — 165 bytes of headroom**, and the fields were already cut roughly in half to get there. The cause is not the character model: the measurement manifest has been saying it for versions — *"`canonical_state.situation` alone is 36,624 bytes — a state field holding an accumulated history the campaign chronicle already records"*, with `REL-000066`'s `texture` at 26,723 and `state` at 17,008, so **loading that one NPC and its relationship costs roughly 29,000 tokens against a readiness ceiling of 30,000.**
+
+The rest of the cast is unaffected — the median block is **2,674 bytes**, so disposition lands comfortably on everyone else. **Owen is the one record where adding interiority is blocked by history stored in a state field**, which is `F-019`'s two-representations defect wearing a different hat: the chronicle already holds that narrative, and the entity record holds a second copy that the dispatch must load before he can speak. **Adding the character model is what made the cost legible** — the budget had been absorbing it silently, exactly as `F-019` recorded of the readiness surface at 39,997 of 40,000.
+
+Retiring `situation` to the chronicle for the heavy records is the unblock, and it is `F-019`'s open design question — which ledger owns each fact, and what a non-owning ledger may say about it — arriving with a concrete forcing case attached.

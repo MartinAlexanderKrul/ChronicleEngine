@@ -66,11 +66,17 @@ source_loading:
         - canonical_state.condition
         - canonical_state.personality
         - canonical_state.situation
+        - canonical_state.want
+        - canonical_state.fear
+        - canonical_state.secret
+        - canonical_state.voice
+        - canonical_state.beliefs
+        - canonical_state.agenda
       relationship_fields:
         - qualities
         - state
         - texture
-      reason: "fetch when a recorded NPC enters a scene, before its first line (Resident Core, Load a Recorded NPC Before Playing It)"
+      reason: "fetch when a recorded NPC enters a scene, before its first line (Resident Core, Load a Recorded NPC Before Playing It, and Play the Character, Not a Filtered You). The last six are Decision 091's character model: disposition is what the actor is, beliefs are what it holds true whether or not it is, and the agenda is what it has been doing since the protagonist last saw it. The first four fields alone produced an NPC that could only answer."
   entity_authoring_check:
     tool: tools/check_name_collision.ps1
     object_source: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md

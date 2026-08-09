@@ -705,3 +705,25 @@ The protagonist's own partner — most-narrated NPC in the campaign, source of `
 The rest of the cast is unaffected — the median block is **2,674 bytes**, so disposition lands comfortably on everyone else. **Owen is the one record where adding interiority is blocked by history stored in a state field**, which is `F-019`'s two-representations defect wearing a different hat: the chronicle already holds that narrative, and the entity record holds a second copy that the dispatch must load before he can speak. **Adding the character model is what made the cost legible** — the budget had been absorbing it silently, exactly as `F-019` recorded of the readiness surface at 39,997 of 40,000.
 
 Retiring `situation` to the chronicle for the heavy records is the unblock, and it is `F-019`'s open design question — which ledger owns each fact, and what a non-owning ledger may say about it — arriving with a concrete forcing case attached.
+
+## F-029 — A stale entity field carried a standing do-not-narrate instruction for seven in-fiction days after the thing happened
+
+**Raised:** 2026-08-09 · **Source:** `campaigns/gatefall_pendragon_001/`, owner correction of an authored disposition — *"He has not told Priya — that's not true"*
+
+**Status:** **Actioned (2026-08-09)** in live canon: `ENT-000139`'s `open_questions` entry for `OBJ-12` corrected, and the disposition authored from it rewritten. **The design question is open and is not the same as `F-019`'s.**
+
+**What happened.** Decision 091's disposition backfill authored Owen's `secret` as *"he has not told Priya, Julian, or Renata he is leaving to found a crew."* The owner caught it immediately: he told her. The chronicle is unambiguous — **`EVT-000291`, titled "Owen's Outcome With Priya, Relayed"**, 2026-08-11 ~15:15, on a real roll (🎲 19, major failure): she went quiet, asked whether it was already decided before he sat down, he could not honestly say no, and she told him he was not just leaving a crew but the only one that ever made room for a mender at all. `OBJ-12` moved to *'told; harder than hoped.'*
+
+**Why it was authored wrong, and this is the part worth keeping.** `ENT-000139`'s `open_questions` field still read:
+
+> **He has not told Priya, Julian, or Renata anything.** His own words: *"I still have to say it to her face."* … **Do not narrate this conversation with Priya as having happened until it is actually played.**
+
+That was written at the `EVT-000271` anchor (09:50) and **superseded by `EVT-000291` at 15:15 the same day**. Nothing revised it. It stood for seven in-fiction days, and the disposition was derived from the field rather than the chronicle.
+
+**This is not `F-019`'s defect.** `F-019` is one ledger disagreeing with another about a *value* — a cash figure, a key count — where neither copy is declared authoritative. Here a **canonical entity field disagreed with the chronicle about whether a scene had occurred**, and carried an **instruction to the Runtime to keep it from occurring.** A stale number renders a wrong figure; a stale instruction actively steers narration away from canon, and it does so most convincingly to whoever trusts the record they were told to load.
+
+**And the loading rule points the wrong way for this case.** The Resident Core requires reading an NPC's record before playing it, precisely so narration is grounded rather than recalled. That is correct and stays. But **the record is not the chronicle**, and where an entity field asserts the state of a *thread* rather than the state of the *actor*, the chronicle is what actually holds the answer. Nothing in the engine says which wins.
+
+**The open design question.** Should a `do-not-narrate` or `not-yet-happened` instruction be permitted in a canonical entity field at all? Every such instruction has an expiry condition — the thing happens — and nothing watches for it. The alternatives are to forbid them (a field describes state, and pending-ness lives in an Objective or a Section 7.4 commitment, both of which have settlement machinery), or to require every one of them to name the Event whose promotion retires it, so the promotion has something to check. **`OBJ-12` already existed and already tracked this**, and it moved correctly while the entity field did not — which is evidence that the first alternative is the right one.
+
+**Also recorded: the correction pass consumed most of a fresh ratchet.** `ENT-000139` was 88,557 bytes; correcting one field and its derived disposition took it to **91,254 against the 92,000 ratchet re-recorded hours earlier.** Trimming the Runtime's own additions first, as this repository requires, recovered ~700 bytes of that. **The 80,000 baseline bought approximately one maintenance pass**, which is the distribution problem stating its own terms.

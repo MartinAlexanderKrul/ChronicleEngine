@@ -840,16 +840,28 @@ per_object_budgets:
     # real figure would have produced. Read `baseline_worst_bytes` here as the
     # size this record is *permitted* to sit at, not the size it does.
     #
-    # **Two corrections to the `reason` below, which had gone stale.** It says
-    # `canonical_state.situation` is 36,624 bytes; it is **2,457** -- trimmed at
-    # some point since the note was written, and nothing recomputed the note. The
-    # bulk is not in any YAML field: it is **five markdown prose paragraphs in the
-    # entity's section totalling ~32 KB**. Those paragraphs cite 42 Events, every
-    # one verified present in `160_CAMPAIGN_CHRONICLE.md` -- but they are **not
-    # redundant retellings**. They carry Character Firsts, per-anchor knowledge
-    # boundaries, and behavioural tells the chronicle does not hold, which is why
-    # compressing them is judgment rather than cleanup and why this file reserves
-    # it for the owner.
+    # **A correction here was itself wrong, and is withdrawn (2026-08-09).** This
+    # comment briefly claimed `canonical_state.situation` was 2,457 bytes rather
+    # than the 36,624 the `reason` states. That measurement read only the field's
+    # **first line** and missed 52 continuation lines: `situation` is a multi-line
+    # YAML scalar, and it is **46,968 bytes** -- larger than the original note,
+    # not smaller. The `reason` below was correct in kind and merely out of date.
+    #
+    # **The distribution inside the object is the actionable finding.** Of the
+    # 100,177 bytes in `ENT-000139`, the entity dispatch fetches **57,941** before
+    # he speaks -- and **`situation` alone is 46,968 of that, roughly 81% of his
+    # scene cost**. Everything else the record holds (capabilities, knowledge,
+    # standing_terms, learned_techniques, life_outside_gates, equipment,
+    # relationship_to_alexander) totals 33,223 bytes and is **never fetched**: it
+    # costs block size, not load.
+    #
+    # `situation` is one field doing two jobs -- where he is *now*, which the
+    # Runtime needs, and a stack of dated spans going back weeks, which
+    # `011_ENGINE_DATA_MODEL.md` Section 7.1 says is not what canonical state is
+    # ("what is true now") and Section 7.2 says becomes historical evidence.
+    # Retiring the superseded spans and keeping the current one is the single
+    # change that would cut this object's load by roughly three quarters without
+    # deleting anything. It remains owner authoring work under the rule above.
     baseline_worst_bytes: 80000
     growth_allowance_percent: 15
     reason: >-

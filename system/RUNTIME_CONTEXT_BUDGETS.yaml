@@ -822,14 +822,44 @@ per_object_budgets:
     # `relationship_to_alexander` are where it lives, and both are genuinely
     # load-bearing for narration -- which is precisely why splitting Owen's
     # history out of his live record is authoring work rather than deletion.
-    baseline_worst_bytes: 77150
+    #
+    # ---
+    #
+    # **Re-recorded 2026-08-09 by owner ruling, 77,150 -> 80,000.** Decision 091
+    # gave Characters a disposition (Data Model 7.7-7.9), and backfilling it onto
+    # `ENT-000139` took the object to 90,013 -- over the 88,722 ratchet. The
+    # Runtime's own additions were trimmed first, as the note above requires and
+    # for the third time: the disposition draft was halved, landing at **88,557**.
+    # That left 165 bytes of headroom, which is not a place to leave a record that
+    # grows every session. The owner re-recorded rather than trim canon.
+    #
+    # **This baseline is a chosen ceiling, not the measured worst, and the field
+    # name overstates it.** The true worst is 88,557; 80,000 is recorded instead
+    # because it is deliberately tighter than the actual, giving a 92,000 ratchet
+    # and roughly 3.4 KB of headroom rather than the 101,840 that recording the
+    # real figure would have produced. Read `baseline_worst_bytes` here as the
+    # size this record is *permitted* to sit at, not the size it does.
+    #
+    # **Two corrections to the `reason` below, which had gone stale.** It says
+    # `canonical_state.situation` is 36,624 bytes; it is **2,457** -- trimmed at
+    # some point since the note was written, and nothing recomputed the note. The
+    # bulk is not in any YAML field: it is **five markdown prose paragraphs in the
+    # entity's section totalling ~32 KB**. Those paragraphs cite 42 Events, every
+    # one verified present in `160_CAMPAIGN_CHRONICLE.md` -- but they are **not
+    # redundant retellings**. They carry Character Firsts, per-anchor knowledge
+    # boundaries, and behavioural tells the chronicle does not hold, which is why
+    # compressing them is judgment rather than cleanup and why this file reserves
+    # it for the owner.
+    baseline_worst_bytes: 80000
     growth_allowance_percent: 15
     reason: >-
-      The distribution is the point: the median block is around 2 KB and the
-      largest is over sixty. `ENT-000139` is 65,504 bytes, of which
-      `canonical_state.situation` alone is 36,624 — a state field holding an
-      accumulated history the campaign chronicle already records. `REL-000066` is
-      51,904, of which `texture` is 26,723 and `state` is 17,008. Loading that one
-      NPC and its relationship costs roughly 29,000 tokens, against a readiness
+      The distribution is the point: the median block is around 2.7 KB across 79
+      objects and the largest is `ENT-000139` at roughly 88.5 KB — thirty times
+      the median. The bulk is not a YAML field but five markdown prose paragraphs
+      in that entity's section, together about 32 KB, carrying Character Firsts,
+      per-anchor knowledge boundaries and behavioural tells. `REL-000066` is
+      similarly heavy, with `texture` and `state` the largest parts. Loading that
+      one NPC and its relationship costs roughly 29,000 tokens against a readiness
       ceiling of 30,000 and a fetched-operation ceiling of 12,000. Every other
-      entity in the ledger is affordable.
+      entity in the ledger is affordable, and the Decision 091 disposition fields
+      land comfortably on all of them.

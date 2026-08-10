@@ -35,6 +35,37 @@ trim_policy:
     - channel_constraints    # anything a channel check reads
   on_exhaustion: report-budget-as-blocker
 
+# What a resident surface is FOR. Owner ruling, 2026-08-10.
+#
+# Readiness carries what a resolution reads and what a scene opens on. Reasoning,
+# provenance and settled history are fetched when something actually asks for
+# them. Stated as a rule because the drift is always the same shape and always
+# invisible: a field holds a value, someone explains the value beside it, the
+# explanation outlives the value, and the surface pays for it every session
+# thereafter. `ENT-000125.temporal_state` reached 12,565 bytes around 213 bytes
+# of clock -- 98.2% prose -- and its `settlement_note` described the `EVT-000492`
+# anchor while `campaign_time` beside it already read `EVT-000497`. It had been
+# stale in place and passed every gate.
+#
+# The carve-out is the part that matters, and it is not a compromise. Narration
+# needs an NPC's manner BEFORE its first line, so a fetch is already too late;
+# disposition and relationship texture are prose and stay resident. The rule
+# governs explanations of state, not the material a character is played from.
+resident_surface_policy:
+  version: "1.0"
+  resident:
+    - values-a-resolution-reads
+    - what-a-scene-opens-on
+    - character-needed-before-a-first-line   # disposition, relationship texture
+  fetched_on_demand:
+    - reasoning-and-provenance
+    - settled-history
+    - catalogues-a-panel-renders-on-request
+  # Citing an Event and narrating it are different obligations (Decision 085).
+  # A record satisfies the first with a `moved_by_events` index at ~14 bytes per
+  # Event; the chronicle satisfies the second, in full, where it is authoritative.
+  citation_not_narration: moved_by_events
+
 surfaces:
   resident:
     warning_tokens: 6350
@@ -702,7 +733,19 @@ surfaces:
       # about where the surface actually stands; it does not fix that, and the
       # ownership-ledger trimming remains owner authoring work.
       gatefall_pendragon_001:/system gear: 16563
-      gatefall_pendragon_001:/system titles: 4513
+      # Re-recorded UPWARD 2026-08-10, 4,513 -> 5,202 (+689), and this one is a
+      # deliberate trade rather than drift. `titles.earned` -- the full
+      # catalogue, ten titles each carrying its criterion and proving Event --
+      # moved out of `system_state.titles` into `titles_catalog`, which this
+      # panel fetches and readiness no longer carries. This file had named
+      # "moving `titles` into a deferred group" as the obvious structural win in
+      # five separate notes without acting on it; this is that.
+      #
+      # The trade is worth stating in both directions: readiness fell 39,917 ->
+      # 34,459 tokens, and the panel that actually renders the catalogue pays 689
+      # for it, comfortably inside a 16,000 ceiling. A surface that renders
+      # something on request is the right place for it to cost anything.
+      gatefall_pendragon_001:/system titles: 5202
       # Re-recorded 2026-08-04, 33,836 -> 62,654 (+28,818). **Almost none of
       # this is growth. It is the removal of a measurement artifact, and the
       # old figure was never a measurement of this surface at all.**

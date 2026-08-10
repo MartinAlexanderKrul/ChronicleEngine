@@ -54,6 +54,8 @@ source_loading:
     progression_settlement:
       - canonical_state.system_state.tracked_counters
       - canonical_state.system_state.progression_audit_baselines
+    titles_detail:
+      - canonical_state.system_state.titles_catalog
     system_shop:
       - canonical_state.system_state.gold
       - canonical_state.system_state.inventory
@@ -230,6 +232,7 @@ diegetic_commands:
     protagonist_fields:
       - canonical_state.system_state.title
       - canonical_state.system_state.titles
+      - canonical_state.system_state.titles_catalog
     render_policy: exact-template-only
   /system log:
     dispatch:

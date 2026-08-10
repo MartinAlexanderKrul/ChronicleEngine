@@ -590,7 +590,18 @@ surfaces:
       # growth is the frame, it is intended, and 2,628 tokens remain against the
       # 16,000 ceiling.
       gatefall_pendragon_001:/system shop: 13372
-      gatefall_pendragon_001:/system quests: 4158
+      # Re-recorded 2026-08-10 at Checkpoint 0084, 4,158 -> 4,996 (+838), and the
+      # attribution matters because almost none of it belongs to the session that
+      # tripped it. This span's only write to a field this surface reads is the
+      # daily-quest note, about 400 bytes / 100 tokens. Removing it entirely
+      # leaves 4,896 against a 4,781 ratchet -- still failing. The growth is the
+      # checkpoint 0083 session's `EVT-000490` findings appended to both Hidden
+      # quests' `objective_counters` (the storage unit, and Fenn's burned records
+      # channel), which sat inside the allowance at the time and crossed it now.
+      # Same drift-then-trip pattern the 2026-08-04 note records: a surface fails
+      # in the session after the one that grew it, and the session that trips it
+      # is the one asked to explain it.
+      gatefall_pendragon_001:/system quests: 4996
       # Left armed 2026-08-04 at 25,880 while the surface measured 29,655
       # against a 29,761 ratchet — 106 tokens of headroom — deliberately, so
       # that the next change would trip it and get read rather than being
@@ -615,7 +626,20 @@ surfaces:
       # current cash figure that is derived across dated history rather than
       # held in one block. Restoring three holdings does not change that; a
       # current-holdings block in that ledger would.
-      gatefall_pendragon_001:/system gear: 30649
+      # Re-recorded 2026-08-10 at Checkpoint 0084, 30,649 -> 36,171 (+5,522).
+      # This session's contribution is two purchased holdings -- a Restoration
+      # Draught and a Crystal Key [B-Rank] -- at roughly 1,150 bytes / 288
+      # tokens. Removing them leaves 35,883 against a 35,246 ratchet, so this
+      # session did not cause the failure either; it is accumulated equipment and
+      # inventory prose across several spans, absorbed silently each time.
+      #
+      # The standing diagnosis above is unchanged and is the real answer: about
+      # 13,000 tokens of this surface is `120_INVENTORY_AND_OWNERSHIP.md` read
+      # whole, because the FUNDS block needs a cash figure derived across dated
+      # history rather than held in one block. Re-recording keeps the gate honest
+      # about where the surface actually stands; it does not fix that, and the
+      # ownership-ledger trimming remains owner authoring work.
+      gatefall_pendragon_001:/system gear: 36171
       gatefall_pendragon_001:/system titles: 4513
       # Re-recorded 2026-08-04, 33,836 -> 62,654 (+28,818). **Almost none of
       # this is growth. It is the removal of a measurement artifact, and the

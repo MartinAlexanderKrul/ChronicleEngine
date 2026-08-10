@@ -40,7 +40,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000136` | Priya Okafor | crew leader / striker | active | Chicago | `REL-000065` |
 | `ENT-000137` | Julian Boyd | striker (ranged) | active | Chicago | — |
 | `ENT-000138` | Renata Marchetti | sensor / reader | active | Chicago | — |
-| `ENT-000139` | Owen Callahan | mender | active | **On his boat, afternoon 2026-08-18** | `REL-000066` |
+| `ENT-000139` | Owen Callahan | mender | active | **En route to Edgewater Hospital, 2026-08-19 07:50** | `REL-000066` |
 | `ENT-000146` | Wade Bishop | guild recruiter | active | Red Line Corridor | `REL-000068` |
 | `ENT-000147` | Walt Adamik | pawnbroker / grey-market dealer | active | Chicago | `REL-000069` |
 | `ENT-000206` | Sal Prykowski | salvage and surplus importer / grey-market supplier | active | Works out of a licensed salvage-and-surplus import operation in… | — |

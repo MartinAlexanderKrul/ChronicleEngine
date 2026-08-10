@@ -741,3 +741,42 @@ That was written at the `EVT-000271` anchor (09:50) and **superseded by `EVT-000
 Four in-fiction days after `EVT-000409`, the Loyola lakefront meeting — **which the prose in that same entity block describes, in bold, as `MET, 2026-08-15 19:00`.** The record disagreed with itself about whether a scene had happened, and the half that disagreed is the half the entity dispatch fetches. Her answer is due 2026-08-19, so a session resuming on that field would have played a first meeting that already happened, the day before a decision that depends on it.
 
 **Two instances in one afternoon, both found only because an owner corrected an authored disposition.** The pattern is now specific enough to state: **`situation` is where thread state goes to die.** It is prose, it is fetched, it is written at an anchor, and nothing revisits it when a later Event supersedes it — whereas the Objective (`OBJ-12`) and the relationship (`REL-000095`) both tracked their threads correctly. That is a third piece of evidence for the disposition this flag already proposes: **a state field describes the actor, and pending-ness belongs in a construct with settlement machinery** — an Objective, a Section 7.4 commitment, or now a Section 7.9 agenda, all of which have an `Advanced` or a `Status` that something is obliged to move.
+
+## F-030 — A normative render template hard-codes a value canonical state is allowed to change, and the Runtime copied it
+
+**Raised:** 2026-08-09 · **Source:** `campaigns/gatefall_pendragon_001/`, the daily-quest issue at the in-fiction 2026-08-19 06:00 boundary; owner correction — *"I have the title for the daily quest to be +4"*
+
+**Status:** Open
+
+**What happened.** At 06:00 the System issued the daily quest and the Runtime rendered Profile Section 8.1's `Q U E S T   I S S U E D` window. Section 8.1 states the template in full, and its `Reward` row reads, literally:
+
+> `     Reward          Ability Points +3 · Status Recovery · Daily Random Box`
+
+The Runtime copied it. But the Bearer holds **Ascetic**, and Section 16's title table states its entire effect as *"each daily-quest Ability Points reward grants +4 points instead of +3."* The correct render is **+4**. The owner caught it in the same turn.
+
+**Why this is an engine gap and not a narration slip.** Section 15.1 governs every panel and every unprompted window identically, and it is explicit: *"Every value is read live from canonical state… Nothing is invented, and nothing is carried forward from a previous render."* It also says the templates *"are normative: a Runtime fills the `<…>` slots from canonical state and changes nothing else."*
+
+Those two sentences are in tension for this template, because **Section 8.1's Reward row has no `<…>` slot in it.** Every other template in Sections 15.2–15.4 marks its state-derived values with angle brackets precisely so they cannot be rendered without being filled. Section 8.1 writes a bare `+3` — a *default* dressed as *layout*. A Runtime obeying "fill the slots and change nothing else" renders +3 and believes it has complied.
+
+**The precedent cuts the wrong way.** Section 15.1 already adjudicated one stated-rule-versus-template conflict, about whether an inner section rule closes on `╢`, and resolved it in the templates' favour with an explicit rationale: *"The templates are what a Runtime actually copies, so the templates win."* That is correct for frame geometry and actively harmful for values. This flag is the case where a template winning produces a wrong number, and nothing in the profile distinguishes the two situations.
+
+**Nothing could have caught it.** Panels are rendered into prose during play. No validator, contract test, or gate compares a rendered window against the canonical state it claims to have read — there is no artifact to compare, because the render is a conversational turn and not a file. `test_gatefall_class_contract.ps1` and its siblings check what the profile *says*; nothing checks what the Runtime *rendered*. So the failure is invisible from every direction except the Bearer's own, and the Bearer is the player.
+
+**Scope is wider than Ascetic.** The same Reward row carries `Status Recovery` and `Daily Random Box`, either of which a future title, class, or profile edge could modify; Section 8.1's streak-upgrade row is already conditional and lives *outside* the template, which is the shape the Reward row should have had. Section 18's class panels attach post-Class-Quest (15.5) and will introduce more state-derived rows into fired windows. Every one of them inherits this trap.
+
+**Family.** This is the same class as `F-024` (Section 17 authoring a Rank rule for a key category nothing creates), `F-026` (Section 18 promising hidden classes it did not contain) and `F-027`: **a document asserting something that quietly stopped being true elsewhere in the same document set, with no gate positioned to notice.** It is also another instance of `F-017`'s standing observation that the correction came from the player rather than from the engine.
+
+**The open design questions, which are two.**
+
+1. **May a normative render template contain a literal value in a position canonical state is permitted to modify?** The obvious remedy is that it may not — every state-derived value becomes an explicit slot (`Ability Points <n>`), so a Runtime cannot render the row without performing the read. That is a mechanical edit to Section 8.1 and a lint rule's worth of discipline across every template in Sections 15.2–15.5, and it should probably be applied wholesale rather than to the one row that was caught.
+2. **Is a rendered panel checkable at all?** Every mechanical defect this repository has caught was caught because it lived in a file. A panel does not. If the answer is no, that should be stated somewhere as a known limit of the validation model, because four flags now share the shape *"the gate could not see it,"* and this is the first where the reason is that **there is no artifact, not that the artifact was wrong.**
+
+**One adjacent fact worth recording.** The campaign already carries an open owner ruling at `100_CHARACTER_SHEET.md` `skill_rulings.ascetic_claim_timing_evt_000357` — whether Ascetic's +4 reaches a daily reward *issued before the title was equipped*. That ruling's existence proves the +4 was understood to apply to issued dailies all along. The engine knew; the template did not.
+
+**Second instance, found ninety minutes later in the same session, without looking for it.** The Bearer completed the daily and the Runtime went to render the completion window — **Section 3.9**, a different section from the one this flag was raised against, states it as:
+
+> `     Rewards         Ability Points +3 · Status Recovery · Daily Random Box`
+
+The same literal, the same reward, the same title overriding it, in the template a Runtime reaches for at the *other* end of the same quest. So the defect is not one stale row in Section 8.1: **the daily quest's reward value is hard-coded in at least two normative templates in two separate sections**, and a Runtime that corrected one has no reason to suspect the other. This also means the remedy in question 1 above cannot be a spot-fix — it has to be the wholesale audit, because the instances do not live where the flag was raised.
+
+**And a third, smaller thing the same render exposed.** Section 3.9's completion template carries **no blank interior rows at all** — no row below the top rule, none above the bottom rule — while Section 15.1 states that spacing is structural, required, and that *"a window that omits it is misrendered."* Section 15.1 also declares itself normative for every window identically. So the abbreviated templates disagree with the frame rule about blank rows exactly as they once disagreed about `╢`, and 15.1's existing "templates win" precedent would resolve it wrongly a second time. Whatever fixes question 1 should decide this too: **a template abbreviates the frame's *runs*, and must not be read as abbreviating the frame's *rows*.**

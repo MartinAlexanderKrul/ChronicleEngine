@@ -556,7 +556,38 @@ surfaces:
       # Fang's and Broken Rhythm's effects in full. This surface is exempt from
       # the shared 12,000 ceiling by design and governed by the ratchet alone,
       # which is what just fired.
-      gatefall_pendragon_001:/system: 36330
+      # Re-recorded DOWNWARD 2026-08-10, and this is the first entry in this file
+      # that reports a surface getting smaller. `/system` 36,330 -> 21,063,
+      # `/system gear` 36,171 -> 16,563, `/system all` 66,002 -> 51,650: a total
+      # of about 49,000 tokens removed from three surfaces by one authored block.
+      #
+      # What changed. The note above diagnosed this years' worth of pressure
+      # correctly and could not act on it: each of these panels read
+      # `120_INVENTORY_AND_OWNERSHIP.md` whole, because the cash figure they
+      # render was derived across dated history rather than held anywhere, and
+      # pointing `required_live_reads` at any existing heading would have
+      # rendered "a stale number with a plan that looks correct". That ledger now
+      # carries a `Current Funds` heading holding the authoritative figures, and
+      # the three panels read that heading instead of the file.
+      #
+      # The staleness hazard is not accepted, it is gated.
+      # `validate_repository.ps1` now requires any `current_funds` block to name
+      # the same Event and instant as its own ledger's Record provenance, so a
+      # span that moves the ledger without moving the figures fails at the save
+      # gate. The check was mutation-tested against a stale event, a stale date
+      # and a missing field; all three are caught.
+      #
+      # Recording the reduction rather than banking it is deliberate. Left at the
+      # old baselines these three would have carried roughly 20,000 tokens of
+      # unearned allowance apiece -- the proportional-ratchet flaw this file has
+      # documented from the other direction, where the largest surfaces get the
+      # largest free pass. A surface that shrinks should get a smaller allowance,
+      # not a windfall.
+      #
+      # `/system gear` at 16,563 is now within about 600 tokens of the 16,000
+      # failure ceiling it has been exempt from. If it comes inside, the
+      # exemption below should be withdrawn rather than left standing.
+      gatefall_pendragon_001:/system: 21063
       # Re-recorded 2026-08-04, 7,036 -> 8,097, on the same owner ruling that
       # raised the `gatefall_skills_known` per-entry budget 700 -> 1100. The
       # requirement is that a skill entry explain its effect well enough to
@@ -639,7 +670,7 @@ surfaces:
       # history rather than held in one block. Re-recording keeps the gate honest
       # about where the surface actually stands; it does not fix that, and the
       # ownership-ledger trimming remains owner authoring work.
-      gatefall_pendragon_001:/system gear: 36171
+      gatefall_pendragon_001:/system gear: 16563
       gatefall_pendragon_001:/system titles: 4513
       # Re-recorded 2026-08-04, 33,836 -> 62,654 (+28,818). **Almost none of
       # this is growth. It is the removal of a measurement artifact, and the
@@ -676,7 +707,7 @@ surfaces:
       # every panel, so it reads the whole Bearer plus the whole ownership
       # ledger plus eight render sections. It is exempt from the 16,000 ceiling
       # by design and governed by the ratchet alone, which is what just fired.
-      gatefall_pendragon_001:/system all: 66002
+      gatefall_pendragon_001:/system all: 51650
       #
       # ---- Five budgets re-recorded together 2026-08-05, `EVT-000418` ----
       #

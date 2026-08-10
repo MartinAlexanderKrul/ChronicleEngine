@@ -36,6 +36,27 @@ subjects: []
 
 ---
 
+## Current Funds
+
+**The authoritative current figures, held in one place.** Every other statement of cash, gold, or pending income in this repository — `180_CURRENT_STATE.md`'s Bindings, `100_CHARACTER_SHEET.md`'s `gold`, any panel's FUNDS block — is a restatement of this block and yields to it.
+
+This block exists because the alternative was worse. Before it, a panel needing the current cash figure had to read this entire ledger, because the figure was derived across dated history rather than held anywhere: roughly 13,000 tokens of `/system` and the same again of `/system gear`, on both of which the failure ceiling had to be waived. Pointing those panels at any narrower heading would have rendered a **stale number behind a plan that looked correct**, which is worse than being over budget, so the narrowing waited for a block that is guaranteed current.
+
+**What guarantees it.** `as_of_event` and `as_of_game_date` must equal this file's own Record provenance, and `validate_repository.ps1` enforces that on every save. A span that moves this ledger without moving this block fails the gate; the figures cannot silently go stale behind a panel that reads only this heading.
+
+```yaml
+current_funds:
+  as_of_event: EVT-000497
+  as_of_game_date: "2026-08-19T07:50:00-05:00"
+  cash_usd: 281155.22
+  gold: 60091
+  pending_payouts_usd: 0.00
+  pending_payout_count: 0
+  note: "USD and gold do not exchange (Profile Section 12.5). Cash moves only through world-side transactions; gold moves only inside the System shop. Nothing is pending from any source."
+```
+
+---
+
 ## Individually-Tracked Items
 
 ### The Prismatic Cycle: Two Premium Purchases (2026-08-19, `EVT-000494`, `EVT-000496`)

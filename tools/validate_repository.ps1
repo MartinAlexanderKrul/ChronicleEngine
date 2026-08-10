@@ -2260,6 +2260,71 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
     }
 }
 
+# --- A narrowed live read must not be able to go stale -----------------------
+#
+# A panel that needs one current figure used to read a whole ledger, because the
+# figure was derived across dated history rather than held anywhere: roughly
+# 13,000 tokens of `/system` and the same of `/system gear`, on both of which the
+# fetched-operation failure ceiling had to be waived outright.
+#
+# The narrow fix -- point `required_live_reads` at a heading -- was deliberately
+# NOT taken for years, and the reason is written into both
+# `system/RUNTIME_CONTEXT_BUDGETS.yaml` and `resolve_operation_plan.py`: pointing
+# a panel at a heading that does not carry the current value renders "a stale
+# number with a plan that looks correct". That is strictly worse than being over
+# budget. An over-budget surface is loud; a confidently wrong cash figure is
+# silent, and the player is the only party positioned to catch it.
+#
+# So the narrowing ships with its own precondition made mechanical. A ledger may
+# declare a `current_funds` block and be read by heading alone, and in exchange
+# that block must name the same Event and instant as the ledger's own Record
+# provenance. A span that moves the ledger without moving the block fails here,
+# at the save gate, instead of surfacing later as a wrong number in a panel.
+#
+# The check is deliberately shaped as a general rule rather than a Gatefall one:
+# any campaign ledger carrying a `current_funds` block earns the same guarantee.
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    foreach ($ledger in @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "*.md" -File)) {
+        $ledgerRelative = Get-RelativePath $ledger.FullName
+        $ledgerText = Get-Content -LiteralPath $ledger.FullName -Raw
+        if ($ledgerText -notmatch '(?m)^current_funds:[ \t]*$') { continue }
+
+        $fundsLine = Get-LineNumber (New-LineIndex $ledgerText) ([regex]::Match($ledgerText, '(?m)^current_funds:[ \t]*$').Index)
+
+        # The ledger's own Record provenance: the first `source:`/`game_date:`
+        # pair indented under `provenance:` at the top of the file.
+        $recordSource = [regex]::Match($ledgerText, '(?m)^  source:[ \t]*(?<value>[^\r\n]+?)[ \t]*$')
+        $recordDate = [regex]::Match($ledgerText, '(?m)^  game_date:[ \t]*"(?<value>[^"\r\n]+)"[ \t]*$')
+        if (-not $recordSource.Success -or -not $recordDate.Success) {
+            Add-Failure "$ledgerRelative`:$fundsLine declares current_funds but the ledger has no readable Record provenance to bind it to."
+            continue
+        }
+
+        $fundsEvent = [regex]::Match($ledgerText, '(?m)^[ \t]+as_of_event:[ \t]*(?<value>[^\r\n]+?)[ \t]*$')
+        $fundsDate = [regex]::Match($ledgerText, '(?m)^[ \t]+as_of_game_date:[ \t]*"(?<value>[^"\r\n]+)"[ \t]*$')
+        if (-not $fundsEvent.Success) {
+            Add-Failure "$ledgerRelative`:$fundsLine current_funds records no as_of_event; a block read in place of the whole ledger must name the Event that set it."
+            continue
+        }
+        if (-not $fundsDate.Success) {
+            Add-Failure "$ledgerRelative`:$fundsLine current_funds records no as_of_game_date; a block read in place of the whole ledger must name the instant it is current as of."
+            continue
+        }
+
+        if ($fundsEvent.Groups['value'].Value -ne $recordSource.Groups['value'].Value) {
+            Add-Failure "$ledgerRelative`:$fundsLine current_funds as_of_event '$($fundsEvent.Groups['value'].Value)' does not match the ledger's Record provenance source '$($recordSource.Groups['value'].Value)'; the ledger moved and the current figures did not, so a panel reading this heading alone would render a stale number."
+        }
+
+        $fundsInstant = [DateTimeOffset]::MinValue
+        $recordInstant = [DateTimeOffset]::MinValue
+        $fundsValid = [DateTimeOffset]::TryParse($fundsDate.Groups['value'].Value, [ref]$fundsInstant)
+        $recordValid = [DateTimeOffset]::TryParse(($recordDate.Groups['value'].Value -replace '[ \t]*~[ \t]*', ' '), [ref]$recordInstant)
+        if (-not $fundsValid -or -not $recordValid -or $fundsInstant -ne $recordInstant) {
+            Add-Failure "$ledgerRelative`:$fundsLine current_funds as_of_game_date '$($fundsDate.Groups['value'].Value)' disagrees with the ledger's Record provenance game_date '$($recordDate.Groups['value'].Value)'."
+        }
+    }
+}
+
 $evidenceGenerator = Join-Path $root "tools/generate_validation_evidence.py"
 if (-not $CoreOnly -and (Test-Path -LiteralPath $evidenceGenerator -PathType Leaf)) {
     $evidenceRunner = Join-Path $PSScriptRoot "generate_validation_evidence.ps1"

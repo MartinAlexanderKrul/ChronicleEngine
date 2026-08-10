@@ -141,7 +141,8 @@ diegetic_commands:
       - worlds/gatefall/206_WORLD_RULE_PROFILE.md#152-system-the-console
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
-      - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
+      - file: campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
+        heading: Current Funds
     protagonist_fields:
       - canonical_state.system_state.class
       - canonical_state.system_state.title
@@ -210,7 +211,8 @@ diegetic_commands:
       - worlds/gatefall/206_WORLD_RULE_PROFILE.md#1532-system-gear
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
-      - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
+      - file: campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
+        heading: Current Funds
     protagonist_fields:
       - canonical_state.system_state.equipment
       - canonical_state.system_state.inventory
@@ -258,7 +260,8 @@ diegetic_commands:
       - worlds/gatefall/206_WORLD_RULE_PROFILE.md#155-class-panels-attach-post-class-quest
     required_live_reads:
       - campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
-      - campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
+      - file: campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
+        heading: Current Funds
       - campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
     protagonist_fields:
       - canonical_state.system_state

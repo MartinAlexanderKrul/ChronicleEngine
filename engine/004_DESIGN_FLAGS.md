@@ -785,7 +785,22 @@ The same literal, the same reward, the same title overriding it, in the template
 
 **Raised:** 2026-08-10 · **Source:** `campaigns/gatefall_pendragon_001/`, Checkpoint 0084's save gate; owner-requested audit — *"every session there is problem with trimming"*, and then the correction that matters: *"not just loading. the narrating and remembering stuff also — which is actually more crucial"*
 
-**Status:** Open. **Partly actioned 2026-08-10** — see *What was fixed* below; the governing question is untouched.
+**Status:** **Actioned (2026-08-10)** on questions 1 and 2 below, by owner ruling, with the results measured. **Question 3 — categorised measurement — remains Open**, as does the proportional-allowance flaw and the attribution gap, both recorded under *Measurement flaws* below.
+
+**The owner rulings, 2026-08-10, and what they cost.** Four decisions were put and all four taken:
+
+1. **`situation` holds the current span only.** `ENT-000139` fell **91,979 → 42,522 bytes (−53.8%)**. The field itself went 47,487 → 1,950. Nothing that governs how he is played was touched; the six disposition fields cost 7% of the old record and were never the problem. They are now 15.2% of it.
+2. **The formative material stays where it already was** — `fear` carries the rocks and the three-day silence, `secret` the bar, `voice` the four written terms, `standing_terms` the operative ones, `life_outside_gates` the biography. All verified present before anything was cut.
+3. **`REL-000066` governs the relationship**; the entity's 6,276-byte second copy became a 568-byte pointer. That copy could drift out of sync with the record it summarised, which is the `F-024`/`F-029` family.
+4. **The trim precedence rule is now configuration, not prose** — `trim_policy` in `system/RUNTIME_CONTEXT_BUDGETS.yaml`, with `never_trim` naming disposition, relationship texture, standing terms, knowledge and channel constraints, and `on_exhaustion: report-budget-as-blocker`.
+
+**Two things the cut exposed that are worth more than the bytes.**
+
+**Decision 085 needs a citation, not a narrative.** Reducing `situation` immediately failed the gate: three Events claimed `record-updated` against `ENT-000139` and the record no longer referenced them. The fix is not to weaken the audit but to notice that **referencing and narrating are different obligations, and only the first is cheap** — a `moved_by_events` index costs about 14 bytes per Event. Building it surfaced **13 Events that claimed to have moved this record and were referenced nowhere in it at all**, a latent gap the old narrative had been hiding by accident rather than satisfying by design.
+
+**A channel constraint was buried in narrative history.** `situation` held the only statement that Owen has not been told about the $40,000 Walt partnership, Nadia Adamik, Sal Prykowski's name, or the Quickknife demonstration. Nothing reads `situation` as a channel source. It moved to `knowledge`, where the channel check actually looks. **A constraint that lives only in narrative history is one nothing will ever check** — `F-029`'s finding, arriving from the opposite direction: there the stale instruction was obeyed too long, here a live one was nearly discarded.
+
+**What this did not fix.** `readiness:gatefall_pendragon_001` sits at **39,917 against a 40,000 ceiling**, essentially unmoved, because readiness never loads an NPC record — it carries `180_CURRENT_STATE.md` whole (9,165 tokens), `ENT-000125`'s 21 readiness fields (10,561) and `090_CAMPAIGN_STARTUP.md` whole (4,463). **That surface is the next one to bite, and the same audit has not been run on it.** `180_CURRENT_STATE.md` in particular is a *current state* document carrying prior-span promotion history that `170_CHANGELOG.md` already holds in full — the identical disease, in the identical shape, one file over.
 
 **What happens, every session.** A save trips a context budget. The Runtime then trims live canon, at the save gate, under deadline, choosing what to cut by what looks cheapest at that moment. At Checkpoint 0084 this cost `ENT-000139` roughly 2,600 bytes of authored record and left it at **91,993 bytes against a 92,000 ratchet: seven bytes of headroom.** The readiness surface finished at **39,889 against a 40,000 ceiling: 111 tokens.** Both are coin flips on the next ordinary edit.
 

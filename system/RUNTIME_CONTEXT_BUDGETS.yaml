@@ -4,6 +4,37 @@ estimator:
   divisor: 4
   rounding: ceiling
 
+# What a tripped budget is allowed to cost. Owner ruling, 2026-08-10.
+#
+# A byte budget measures a LOADING cost, so a byte-driven remedy optimises
+# loading -- and the largest thing in an NPC record is its character prose,
+# which is precisely what the Resident Core's loading rule exists to protect
+# ("canon that was never loaded cannot govern narration"; "manner is what
+# compression removes"). Left unstated, the rule a Runtime infers under save
+# pressure is "cut whatever is biggest", which points it straight at the
+# campaign's memory. At Checkpoint 0084 that cost `ENT-000139` about 2,600
+# bytes of authored record to buy seven bytes of headroom.
+#
+# So the order is fixed, and the last line is the point of the whole block: a
+# surface that cannot be met without cutting character does not get cut. It
+# reports the budget as the blocker and the owner decides. A budget is a
+# statement about what the engine can afford to load, not a licence to forget.
+trim_policy:
+  version: "1.0"
+  # Cut in this order, and stop as soon as the surface is inside its budget.
+  order:
+    - duplicated-event-history   # the chronicle already holds it in full
+    - superseded-state           # explicitly replaced by a later value
+    - runtime-authored-verbosity # the Runtime's own additions, this span first
+  # Never cut to meet a budget, at any severity, without an owner ruling.
+  never_trim:
+    - disposition            # want, fear, secret, voice, beliefs, agenda
+    - relationship_texture   # the register two characters are played in
+    - standing_terms         # terms a character set and another accepted
+    - knowledge              # what a character may and may not know
+    - channel_constraints    # anything a channel check reads
+  on_exhaustion: report-budget-as-blocker
+
 surfaces:
   resident:
     warning_tokens: 6350
@@ -917,16 +948,37 @@ per_object_budgets:
     # Retiring the superseded spans and keeping the current one is the single
     # change that would cut this object's load by roughly three quarters without
     # deleting anything. It remains owner authoring work under the rule above.
-    baseline_worst_bytes: 80000
+    baseline_worst_bytes: 63743
     growth_allowance_percent: 15
     reason: >-
-      The distribution is the point: the median block is around 2.7 KB across 79
-      objects and the largest is `ENT-000139` at roughly 88.5 KB — thirty times
-      the median. The bulk is not a YAML field but five markdown prose paragraphs
-      in that entity's section, together about 32 KB, carrying Character Firsts,
-      per-anchor knowledge boundaries and behavioural tells. `REL-000066` is
-      similarly heavy, with `texture` and `state` the largest parts. Loading that
-      one NPC and its relationship costs roughly 29,000 tokens against a readiness
-      ceiling of 30,000 and a fetched-operation ceiling of 12,000. Every other
-      entity in the ledger is affordable, and the Decision 091 disposition fields
-      land comfortably on all of them.
+      The distribution is the point: the median block is about 2.7 KB across 79
+      objects and the largest is many times that, so an average describes
+      nothing and the worst case is the only figure that measures the cost of
+      the resident rule requiring an NPC's record to be loaded before it speaks.
+
+      Re-recorded DOWNWARD 2026-08-10, 80,000 -> 63,743, and the largest object
+      changed identity: `ENT-000139` fell from 91,979 bytes to 42,522 and
+      `REL-000066` is now the worst case at 63,743. Owen's record was audited
+      field by field and **51.6% of it was `situation`: 40 dated blocks
+      narrating spans `160_CAMPAIGN_CHRONICLE.md` already narrates in full.**
+      That field now holds the current span alone. Nothing that governs how he
+      is played was touched -- the six disposition fields cost 7% of the record
+      between them and were never the problem.
+
+      Two things had to ship with that cut, and both are the interesting part.
+      Decision 085 requires a record to REFERENCE every Event claiming to have
+      moved it, which reducing the narrative would have broken; a
+      `moved_by_events` citation index satisfies it at about 14 bytes per Event,
+      because citing and narrating are different obligations and only the first
+      is cheap. It also surfaced 13 Events that claimed `record-updated` and
+      were referenced nowhere in the record at all. And `situation` held one
+      live channel constraint -- what Owen has not been told about Walt's
+      operation -- which moved to `knowledge`, where something actually reads
+      it; a constraint that lives only in narrative history is one nothing will
+      ever check (`F-029`).
+
+      The prior reason text claimed the bulk was "five markdown prose paragraphs
+      in that entity's section, together about 32 KB". That was wrong about the
+      mechanism: `measure_runtime_context.py` iterates `OBJECT_FENCE`, so this
+      budget has only ever measured the fenced YAML blocks. The figure it
+      reports is the record, not the surrounding prose.

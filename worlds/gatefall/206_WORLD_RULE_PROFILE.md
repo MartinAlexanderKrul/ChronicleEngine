@@ -152,7 +152,7 @@ Clearing a Gate — killing its boss, which collapses the Gate — awards a one-
 
 ## 3.5 Daily XP
 
-The daily quest awards **no XP**. Its three independently claimable rewards are Ability Points +3, Status Recovery, and a Daily Random Box (Sections 3.9 and 8.1). XP comes from genuine resolved challenge: kills, clears, and authored quest awards that state an XP value. Training grows the Bearer through its direct rewards, not by also advancing the XP threshold.
+The daily quest awards **no XP**. Its three independently claimable rewards are Ability Points **<+n>** — **+3 by default and +4 while Ascetic is equipped** (Section 16.2), read live from canonical state at the moment the entry is **claimed** rather than issued — Status Recovery, and a Daily Random Box (Sections 3.9 and 8.1). XP comes from genuine resolved challenge: kills, clears, and authored quest awards that state an XP value. Training grows the Bearer through its direct rewards, not by also advancing the XP threshold.
 
 ## 3.6 Award Timing
 
@@ -203,7 +203,7 @@ Most clears are party clears, and the Bearer earns from them on the same genuine
 
 Level-up effects are immediate (Section 3.2). **Only daily-quest rewards may remain pending or stack for later acceptance.** Completing the daily quest creates three separate reward entries:
 
-1. **Ability Points +3** — claiming it adds three points to the unspent pool.
+1. **Ability Points <+n>** — claiming it adds that many points to the unspent pool. **The figure is canonical state, not a constant**: +3 by default, **+4 while Ascetic is equipped** (Section 16.2), evaluated at **claim** rather than at issue.
 2. **Status Recovery** — claiming it restores Health and Mana to their current maxima and clears ordinary fatigue; it clears no injury severity.
 3. **Daily Random Box** — opening it makes the real d100 contents roll in Section 8.1 and deposits the result into the dimensional inventory or System gold balance.
 
@@ -213,7 +213,7 @@ The completion prompt renders:
 
 ```text
 ╔══ ◈  D A I L Y   T R A I N I N G   C O M P L E T E ══…
-     Rewards         Ability Points +3 · Status Recovery · Daily Random Box
+     Rewards         Ability Points <+n> · Status Recovery · Daily Random Box
      Claim           separately, at any time
 ╚══…
 ```
@@ -1348,7 +1348,7 @@ Once per in-fiction day the System issues the quest, rendered as a Section 14.5.
      Daily Training
      Objective       100 push-ups 0/100 · 100 sit-ups 0/100 · 100 squats 0/100
                      10 km run 0/10
-     Reward          Ability Points +3 · Status Recovery · Daily Random Box
+     Reward          Ability Points <+n> · Status Recovery · Daily Random Box
      Deadline        00:00 local tonight
      Warning         incomplete at midnight transfers you to a penalty zone
 ╚══…
@@ -1356,7 +1356,7 @@ Once per in-fiction day the System issues the quest, rendered as a Section 14.5.
 
 - **Issue and deadline:** the quest issues at **06:00 local** every in-fiction day. Its deadline is **00:00 local immediately following that issue date**: the Bearer may make progress from 06:00 through 23:59, an 18-hour window. At midnight the issuing day's quest is closed before any later beat resolves. No daily quest is active from 00:00 through 05:59; the next one issues at 06:00.
 - **The regimen** is fixed: **100 push-ups, 100 sit-ups, 100 squats, and a 10 km run**, completed within that daily window.
-- **Rewards on completion:** three independent pending entries — Ability Points +3, Status Recovery, and one Daily Random Box (Section 3.9).
+- **Rewards on completion:** three independent pending entries — Ability Points **<+n>** (Section 3.9; +3 default, +4 with Ascetic equipped, read at claim), Status Recovery, and one Daily Random Box.
 - The quest awards **no XP**. It tracks a **consecutive-completion streak**: completion advances the streak by 1; failure resets it to 0.
 - **Seven-day streak upgrade:** when completion raises the streak to a **positive multiple of seven** (7, 14, 21, and so on), that completion's one Daily Random Box is recorded as **streak-upgraded**. It still creates exactly one pending box, but Section 8.1 resolves that box with two complete candidate rolls and lets the Bearer choose one result. There is no additional Weekly Cache, no multiplier on the other two daily rewards, and no separate 28-day benefit.
 
@@ -2899,7 +2899,7 @@ The worked onset block:
      Daily Training
      Objective       100 push-ups 0/100 · 100 sit-ups 0/100 · 100 squats 0/100
                      10 km run 0/10
-     Reward          Ability Points +3 · Status Recovery · Daily Random Box
+     Reward          Ability Points <+n> · Status Recovery · Daily Random Box
      Deadline        00:00 local tonight
      Warning         incomplete at midnight transfers you to a penalty zone
 ╚══…
@@ -2930,6 +2930,21 @@ Every panel is a **framed System window rendered in a monospaced code block**. T
 **It also governs every window the System fires unprompted** (Section 14.5.3). From 1.63 a summoned panel and a fired notification are the same render — same glyphs, same rules, same interior column, same gutter, same label vocabulary — differing only in the name carried in the top rule and in how much there is to say. A window the Bearer asked for and a window that arrived on its own should be recognisably one interface, because in the fiction they are one System.
 
 **The frame is horizontal rules only, and carries no vertical edges.** A panel opens on a top rule, closes on a bottom rule, and divides on inner section rules; **no row carries a `║` at either margin.** The rules keep their left corner glyph and run rightward in `═` or `─`: the title sits in the top rule as `╔══ ◈  S Y S T E M  ·  <PANEL> ══…`, a section rule carries its name at the left and may carry one count or status after its run, and the panel closes on `╚══…`. An interior row is its content alone, and a blank interior row is an empty line.
+
+**Templates win on geometry. Canonical state wins on values, always — and 1.73 is where that was separated (`F-030`).**
+
+The rule below resolves a template-versus-prose conflict in the templates' favour, on the reasoning that *the templates are what a Runtime actually copies, so the templates win*. **That is correct for frame geometry and actively harmful for values**, and the profile did not distinguish the two until a daily-quest window rendered `Ability Points +3` at a Bearer holding **Ascetic**, whose entire authored effect is *grants +4 points instead of +3*. The Runtime copied the template and believed it had complied, because Section 8.1's Reward row carried a bare `+3` — **a default dressed as layout**, with no `<…>` to mark it as state-derived. Nothing could have caught it: no counter disagreed, because no counter was consulted.
+
+```text
+     GEOMETRY   rules, corners, spacing, where a section closes
+                -> the template is normative and wins outright
+
+     VALUES     any number, name, Rank, count, cost or figure
+                -> canonical state wins outright, and a template that
+                   states one as a literal is a DEFECT, not a default
+```
+
+**Every state-derived value in every template carries angle brackets, without exception.** A bare literal in a value position is a profile defect to be repaired the moment it is found, and a Runtime encountering one **reads canonical state and renders that**, rather than copying the literal. *"Fill the slots and change nothing else"* has never licensed rendering a number the Bearer's own state contradicts.
 
 **Only an inner section rule is closed on the right, and it closes on `╢`.** The top and bottom rules run open. This is a correction rather than a change: through 1.62 this paragraph said *no* rule was closed on the right while every normative template in Sections 15.2–15.4 closed its section rules on `╢`, so the stated rule and the templates it governs disagreed on every panel in the profile. **The templates are what a Runtime actually copies, so the templates win** — and the asymmetry earns its keep, because a closed rule reads as a divider *between* two things while an open rule reads as an edge *of* something, which is exactly the difference between a section break and the start or end of a window.
 

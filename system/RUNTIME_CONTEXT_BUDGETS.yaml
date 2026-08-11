@@ -659,7 +659,20 @@ surfaces:
       # It tripped the +15% ratchet by 6 tokens against the old baseline, which
       # is the ratchet working — deliberate growth is re-recorded here, not
       # waived. The 12,000 ceiling is untouched and still 3,900 tokens away.
-      gatefall_pendragon_001:/system skills: 9597
+      # Re-recorded 2026-08-11 at Checkpoint 0092, and the attribution is the
+      # whole justification. The Riftwalker class added TWO genuinely new skill
+      # entries -- rift-step and micro-rift deflection -- to a list that held 21
+      # when this baseline was set, and four skills ascended a Rank and gained a
+      # new authored category apiece. That is new canon, not accumulated history.
+      # The F-031 q3 categoriser was run before deciding: the surface reports its
+      # Event citations as `duplicated-event-history`, but on inspection those are
+      # single-Event PROVENANCE anchors on each skill line, which are load-bearing
+      # and cheap, not narrative the chronicle duplicates. Everything that WAS
+      # duplicated history was cut first, across three passes this session, taking
+      # gatefall_skills_known from 1,246 bytes/entry to under 1,100 -- below where
+      # the span started. Cutting further would remove skill definitions to
+      # preserve a number set before those skills existed.
+      gatefall_pendragon_001:/system skills: 11348
       # Re-recorded 2026-08-04, 9,937 -> 11,488, on the same owner ruling that
       # raised `gatefall_skills_known` to 1,100 bytes/entry. `/system shop`
       # declares `skills_known` as a protagonist field — it has to, because the
@@ -682,7 +695,11 @@ surfaces:
       # The ratchet fired here (allowance 13,211) and it fired correctly; the
       # growth is the frame, it is intended, and 2,628 tokens remain against the
       # 16,000 ceiling.
-      gatefall_pendragon_001:/system shop: 13372
+      # Re-recorded 2026-08-11 at Checkpoint 0092. Same cause and same
+      # justification as `/system skills` above: this surface reads
+      # `skills_known`, so the two new class abilities and four ascensions
+      # land on it identically. Nothing about the shop itself grew.
+      gatefall_pendragon_001:/system shop: 15546
       # Re-recorded 2026-08-10 at Checkpoint 0084, 4,158 -> 4,996 (+838), and the
       # attribution matters because almost none of it belongs to the session that
       # tripped it. This span's only write to a field this surface reads is the

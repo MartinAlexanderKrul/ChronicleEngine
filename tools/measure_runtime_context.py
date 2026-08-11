@@ -42,6 +42,51 @@ class Contribution:
     def word_count(self) -> int:
         return len(re.findall(r"\S+", self.text))
 
+    @property
+    def categories(self) -> dict[str, int]:
+        """Split this contribution's bytes by trim_policy.order category.
+
+        F-031 question 3. The split is a mechanical proxy, not a semantic
+        classification: a paragraph citing Event identifiers is duplicated
+        event history the chronicle already holds in full, and one marked
+        prior/superseded/retained is superseded state. What is left is the
+        residue -- state a resolution reads and character a scene needs --
+        which is exactly what must not be cut to buy bytes.
+        """
+        return categorize_bytes(self.text)
+
+
+EVENT_CITATION = re.compile(r"EVT-\d{6}")
+SUPERSEDED_MARK = re.compile(
+    r"(?i)\b(prior (?:line|note|status|version|authoring|history)|superseded|"
+    r"historical, retained|prior, superseded|retained:)"
+)
+
+
+def categorize_bytes(text: str) -> dict[str, int]:
+    history = superseded = residue = 0
+    # Split per LINE, not per blank-line paragraph. Ledger content in this
+    # repository is predominantly one entry per line (YAML list items, table
+    # rows), so paragraph splitting lets a single marker bin an entire block --
+    # which reported 66% of skills_known as superseded and would have told an
+    # operator to cut the skill definitions themselves. Per-line under-counts a
+    # multi-line prose paragraph, which is the safe direction to be wrong in.
+    for para in text.splitlines():
+        size = len(para.encode("utf-8"))
+        if not size:
+            continue
+        if SUPERSEDED_MARK.search(para):
+            superseded += size
+        elif EVENT_CITATION.search(para):
+            history += size
+        else:
+            residue += size
+    return {
+        "duplicated-event-history": history,
+        "superseded-state": superseded,
+        "residue": residue,
+    }
+
 
 def load_yaml(path: Path) -> dict[str, Any]:
     try:
@@ -257,6 +302,10 @@ def measure_group(
         "ratchet_limit": limit,
         "ratcheted": ratcheted,
         "contributors": contributors,
+        "categories": {
+            key: sum(item.categories[key] for item in contributors)
+            for key in ("duplicated-event-history", "superseded-state", "residue")
+        },
     }
 
 
@@ -540,6 +589,30 @@ def render(groups: list[dict[str, Any]]) -> None:
             f"{group['words']} words ({comparison}; "
             f"warn={group['warning_tokens']}, {fail_text})"
         )
+        if group["status"] != "PASS":
+            cats = group.get("categories") or {}
+            total = sum(cats.values()) or 1
+            history = cats.get("duplicated-event-history", 0)
+            superseded = cats.get("superseded-state", 0)
+            residue = cats.get("residue", 0)
+            print(
+                f"       of {group['bytes']} bytes: "
+                f"{history} duplicated event history ({history * 100 // total}%), "
+                f"{superseded} superseded state ({superseded * 100 // total}%), "
+                f"{residue} residue ({residue * 100 // total}%)"
+            )
+            trimmable = history + superseded
+            if trimmable:
+                print(
+                    f"       trim_policy.order clears {trimmable} bytes "
+                    f"(~{estimate_tokens(trimmable, 4)} tokens) before anything in the "
+                    "residue is touched. The chronicle and changelog hold that content in full."
+                )
+            else:
+                print(
+                    "       nothing matches a trimmable category. Do NOT cut the residue to "
+                    "fit -- report the budget as the blocker (trim_policy.on_exhaustion)."
+                )
         if group.get("ratcheted"):
             print(
                 f"       growth ratchet: {group['estimated_tokens']} tokens exceeds "

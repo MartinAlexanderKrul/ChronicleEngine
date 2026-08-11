@@ -2260,6 +2260,60 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
     }
 }
 
+# --- A rendered multiplier is a derivation, and derivations drift ------------
+# EVT-000523 / F-015. A magnitude skill's multiplier is `native + 0.15 *
+# (mastery_level - 1)`, both terms stored. Nothing recomputed the rendered value
+# when mastery advanced, so three of four skill lines were stale against their
+# own counters -- Rupture by one rung, Mana Bolt by two -- and every gate passed,
+# because a stale rendered number has nothing mechanical to disagree with. It
+# does now.
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    $sheet = Join-Path $campaignDirectory.FullName "100_CHARACTER_SHEET.md"
+    if (-not (Test-Path -LiteralPath $sheet)) { continue }
+    $sheetText = Get-Content -LiteralPath $sheet -Raw -Encoding UTF8
+    if ($null -eq $sheetText) { continue }
+
+    foreach ($nativeMatch in [regex]::Matches($sheetText, '(?m)path:[ \t]*skills\.(?<skill>[a-z_]+)\.native_multiplier,[^}]*current_value:[ \t]*(?<native>\d+)')) {
+        $skillKey = $nativeMatch.Groups['skill'].Value
+        $nativeHundredths = [int]$nativeMatch.Groups['native'].Value
+
+        $levelMatch = [regex]::Match($sheetText, ('(?m)path:[ \t]*skills\.' + [regex]::Escape($skillKey) + '\.mastery_level,[^}]*current_value:[ \t]*(?<level>-?\d+)'))
+        if (-not $levelMatch.Success) {
+            Add-Failure ("100_CHARACTER_SHEET.md: skills.{0} stores native_multiplier but no mastery_level; the rendered multiplier cannot be checked against state." -f $skillKey)
+            continue
+        }
+        $level = [int]$levelMatch.Groups['level'].Value
+        $ladder = $nativeHundredths + (15 * ($level - 1))
+
+        # Section 7.2: magnitude = max(value authored at the current Rank and
+        # mastery level, magnitude_floor). The floor is what holds a skill
+        # harmless across an ascension that resets mastery, so it is part of the
+        # relation and not an exception to it -- Rupture sits at A-Rank Adept
+        # rendering x2.60 because floor 260 beats the ladder's 2.30, and that is
+        # the ratchet working rather than a drift.
+        $floorMatch = [regex]::Match($sheetText, ('(?m)path:[ \t]*skills\.' + [regex]::Escape($skillKey) + '\.magnitude_floor,[^}]*current_value:[ \t]*(?<floor>-?\d+)'))
+        $floor = 0
+        if ($floorMatch.Success) { $floor = [int]$floorMatch.Groups['floor'].Value }
+        $expected = [Math]::Max($ladder, $floor)
+
+        # The skill's rendered line: match its display name loosely from the key.
+        $displayPattern = ($skillKey -replace '_', '[ _]')
+        $lineMatch = [regex]::Match($sheetText, ('(?im)^\s*-\s*"' + $displayPattern + '\s*\[[A-Z]-Rank\].*$'))
+        if (-not $lineMatch.Success) { continue }
+
+        $rendered = [regex]::Match($lineMatch.Value, 'x(?<value>\d+\.\d\d)\s+of\s+(?:its|the)')
+        if (-not $rendered.Success) {
+            $rendered = [regex]::Match($lineMatch.Value, [char]0x00D7 + '(?<value>\d+\.\d\d)\s+of\s+(?:its|the)')
+        }
+        if (-not $rendered.Success) { continue }
+
+        $renderedHundredths = [int][Math]::Round([double]::Parse($rendered.Groups['value'].Value, [Globalization.CultureInfo]::InvariantCulture) * 100)
+        if ($renderedHundredths -ne $expected) {
+            Add-Failure ("100_CHARACTER_SHEET.md: skills.{0} renders a multiplier of {1:N2} but its stored state derives {2:N2} (native {3:N2} plus 0.15 per mastery level above Novice at mastery_level {4}, floored at {5:N2} by the Section 7.2 ratchet). The rendered value is a derivation of counters beside it and nothing recomputed it when mastery advanced (EVT-000523, F-015)." -f $skillKey, ($renderedHundredths / 100.0), ($expected / 100.0), ($nativeHundredths / 100.0), $level, ($floor / 100.0))
+        }
+    }
+}
+
 # --- A world that only moves when pushed is not running ----------------------
 # Gatefall Profile 1.73 (F-034) authors a daily world tick: at each 06:00
 # in-fiction boundary the Runtime rolls Gates, Ranks, rarity, breaks, postings

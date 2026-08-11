@@ -348,7 +348,7 @@ The file now parses both tables and restates no number. Three shapes are declare
 ## F-015 — A sibling delta masks a missing one, and prose the validator never reads
 
 **Raised:** 2026-08-04 · **Source:** `campaigns/gatefall_pendragon_001/`, audit of Checkpoint 0070 (`EVT-000406`)
-**Status:** Partially actioned — mechanically decidable relations gated; semantic completeness remains open
+**Status:** Partially actioned — mechanically decidable relations gated; semantic completeness remains open. **A further instance was closed 2026-08-11** (`EVT-000529`): a skill's rendered multiplier is `max(native + 0.15 x (mastery_level - 1), magnitude_floor)`, **both terms stored beside it**, and nothing recomputed it when mastery advanced — leaving **three of four skill lines stale against their own counters**, Rupture by one rung and Mana Bolt by two, with every gate passing because a stale rendered number has nothing mechanical to disagree with. `native_multiplier` is now a tracked counter for the three Rank-baseline magnitude skills and `tools/validate_repository.ps1` asserts the relation, ratchet included. Mutation-tested. **This is the shape worth generalising and the reason this flag stays open: a rendered value derived from counters beside it should be asserted, not trusted.**
 
 Checkpoint 0070 passed every gate: repository validation, runtime configuration, checkpoint contract, index synchronization, and the counter-arithmetic reconciliation of Decision 079. A player-instructed audit run minutes later found **nine defects**, four of them missing or wrong skill credit.
 
@@ -746,7 +746,7 @@ Four in-fiction days after `EVT-000409`, the Loyola lakefront meeting — **whic
 
 **Raised:** 2026-08-09 · **Source:** `campaigns/gatefall_pendragon_001/`, the daily-quest issue at the in-fiction 2026-08-19 06:00 boundary; owner correction — *"I have the title for the daily quest to be +4"*
 
-**Status:** Open
+**Status:** **ACTIONED (2026-08-11) → Gatefall Profile 1.73** (`EVT-000529`). **All three render sites now carry `<+n>`** instead of a bare `+3`, and the two prose statements say where the number comes from and that it is read **at claim** rather than at issue. **The generalising half is the Section 15.1 change**: geometry and values are now separated outright — *the template wins on frame, canonical state wins on every number, and a template stating a value as a literal is a defect rather than a default*. A Runtime meeting one reads state and renders that. The prior adjudication (*the templates are what a Runtime actually copies, so the templates win*) survives, scoped to geometry where it was always correct.
 
 **What happened.** At 06:00 the System issued the daily quest and the Runtime rendered Profile Section 8.1's `Q U E S T   I S S U E D` window. Section 8.1 states the template in full, and its `Reward` row reads, literally:
 
@@ -785,7 +785,7 @@ The same literal, the same reward, the same title overriding it, in the template
 
 **Raised:** 2026-08-10 · **Source:** `campaigns/gatefall_pendragon_001/`, Checkpoint 0084's save gate; owner-requested audit — *"every session there is problem with trimming"*, and then the correction that matters: *"not just loading. the narrating and remembering stuff also — which is actually more crucial"*
 
-**Status:** **Actioned (2026-08-10)** on questions 1 and 2 below, by owner ruling, with the results measured. **Question 3 — categorised measurement — remains Open**, as does the proportional-allowance flaw and the attribution gap, both recorded under *Measurement flaws* below.
+**Status:** **Actioned (2026-08-10)** on questions 1 and 2 below, by owner ruling, with the results measured. **Question 3 is ACTIONED (2026-08-11)** — `tools/measure_runtime_context.py` now splits every over-budget surface into **duplicated-event-history**, **superseded-state** and **residue**, and names how many bytes `trim_policy.order` clears before anything in the residue is touched (`EVT-000529`). The split is a **mechanical proxy and says so** — Event citations and prior/superseded markers, **per line rather than per paragraph**, after a per-paragraph first cut reported 66% of `skills_known` as superseded and would have told an operator to cut the skill definitions themselves. It was used in the same session it was written: it located the history in `180_CURRENT_STATE.md` that cleared `/system log`, and it is what justified re-recording two baselines with attribution rather than cutting further. **The proportional-allowance flaw and the attribution gap remain Open**, as does the proportional-allowance flaw and the attribution gap, both recorded under *Measurement flaws* below.
 
 **The owner rulings, 2026-08-10, and what they cost.** Four decisions were put and all four taken:
 

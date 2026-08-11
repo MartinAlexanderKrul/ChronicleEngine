@@ -736,6 +736,16 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/new_checkpoint.ps1 `
 
 For a campaign's first checkpoint, pass `-ExpectedParent none`; if no parent manifest or World Bible exposes a world version, also include `manifest.world_version` in the receipt. The helper prints each validator's exact output and finishes with one `CHECKPOINT_RECEIPT_JSON=` line. Only `"status":"created"` is success. A failed receipt names its phase and recoverable staging path; it is a Runtime Checkpoint Report input, never evidence that a save exists.
 
+## One Ledger Owns Each Protagonist Figure
+
+**One ledger owns each protagonist figure; every other mention cites it (`F-019`).**
+
+A figure is Health, Mana, XP, level, a Stat, gold, cash, a counter, a cap — anything a resolution reads as a number. **The character sheet owns all of them.** Current State, the changelog, the chronicle and every panel may *cite* a figure, and none of them may *restate* it as an independent value, because a second copy is a second thing to forget. `180_CURRENT_STATE.md` disagreed with itself three times over protagonist figures before this was written, and each disagreement passed every gate, because nothing said which copy was authoritative.
+
+**Citing is cheap and restating is not.** A cite says *292/520 (`100_CHARACTER_SHEET.md`)* and goes stale visibly; a restatement says *292/520* and goes stale silently. Where a derived ledger needs a figure to make its sentence readable, it carries the figure **and** the owner, and a save reconciles them rather than trusting them.
+
+This governs authoring, not saving. It sits outside the Save Algorithm deliberately: a rule every save has to load is a rule every save pays for, and the save plan is one of the tightest surfaces in the repository.
+
 ## Write-Side Failure Handling
 
 Distinguish these. Only the first four prevent persistence; the last never does:

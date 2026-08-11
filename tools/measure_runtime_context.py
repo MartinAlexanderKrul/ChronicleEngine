@@ -249,6 +249,18 @@ def status(tokens: int, warning: int, failure: int) -> str:
     return "PASS"
 
 
+MINIMUM_RATCHET_ALLOWANCE = 400
+"""Absolute floor on a growth ratchet's headroom, in estimated tokens.
+
+F-031's proportional-allowance flaw. A percentage allowance scales with the
+surface, so a 40,000-token readiness budget gets a 6,000-token cushion while a
+5,000-token panel gets 750 -- the small surfaces trip on ordinary editing noise
+while the large ones quietly absorb real bloat. The floor is the same for
+everyone, so a small surface is no longer held to a tighter standard than a
+large one purely for being small.
+"""
+
+
 def ratchet_limit(baseline: int | None, allowance_percent: Any) -> int | None:
     """The growth ceiling a surface may reach before its baseline must be re-recorded.
 
@@ -267,7 +279,11 @@ def ratchet_limit(baseline: int | None, allowance_percent: Any) -> int | None:
         return None
     if baseline <= 0:
         return None
-    return int(baseline * (1 + float(allowance_percent) / 100.0))
+    # F-031: the allowance is proportional, so a small surface is held to a
+    # tighter standard than a large one purely for being small. The floor
+    # gives every surface the same absolute headroom at minimum.
+    proportional = int(baseline * float(allowance_percent) / 100.0)
+    return baseline + max(proportional, MINIMUM_RATCHET_ALLOWANCE)
 
 
 def measure_group(

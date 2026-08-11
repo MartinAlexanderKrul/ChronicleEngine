@@ -2362,6 +2362,37 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
     }
 }
 
+# --- One ledger owns each protagonist figure ---------------------------------
+# F-019. 180_CURRENT_STATE.md disagreed with itself three times about the
+# protagonist's own figures, and every disagreement passed every gate, because
+# nothing said which copy was authoritative. The character sheet owns them. A
+# derived ledger may carry a figure to make its sentence readable, but it is
+# then reconciled rather than trusted. The pools are checked here because they
+# are the figures that actually drifted; the ownership rule covers the rest.
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    $sheet = Join-Path $campaignDirectory.FullName "100_CHARACTER_SHEET.md"
+    $state = Join-Path $campaignDirectory.FullName "180_CURRENT_STATE.md"
+    if (-not (Test-Path -LiteralPath $sheet)) { continue }
+    if (-not (Test-Path -LiteralPath $state)) { continue }
+    $sheetText = Get-Content -LiteralPath $sheet -Raw -Encoding UTF8
+    $stateText = Get-Content -LiteralPath $state -Raw -Encoding UTF8
+    if ($null -eq $sheetText -or $null -eq $stateText) { continue }
+
+    foreach ($pool in @("health", "mana")) {
+        $owned = [regex]::Match($sheetText, ('(?m)^\s*' + $pool + ':[ \t]*"(?<cur>\d+)/(?<max>\d+)"'))
+        if (-not $owned.Success) { continue }
+        $ownedText = $owned.Groups['cur'].Value + "/" + $owned.Groups['max'].Value
+
+        $label = (Get-Culture).TextInfo.ToTitleCase($pool)
+        foreach ($cited in [regex]::Matches($stateText, ('\*\*' + $label + ':[ \t]*(?<cur>\d+)[ \t]*/[ \t]*(?<max>\d+)'))) {
+            $citedText = $cited.Groups['cur'].Value + "/" + $cited.Groups['max'].Value
+            if ($citedText -ne $ownedText) {
+                Add-Failure ("180_CURRENT_STATE.md restates {0} as {1} while 100_CHARACTER_SHEET.md owns {2}. One ledger owns each protagonist figure; a second copy is a second thing to forget (F-019)." -f $label, $citedText, $ownedText)
+            }
+        }
+    }
+}
+
 # --- A world that only moves when pushed is not running ----------------------
 # Gatefall Profile 1.73 (F-034) authors a daily world tick: at each 06:00
 # in-fiction boundary the Runtime rolls Gates, Ranks, rarity, breaks, postings

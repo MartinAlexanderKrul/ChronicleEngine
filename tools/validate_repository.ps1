@@ -2260,6 +2260,54 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
     }
 }
 
+# --- A world that only moves when pushed is not running ----------------------
+# Gatefall Profile 1.73 (F-034) authors a daily world tick: at each 06:00
+# in-fiction boundary the Runtime rolls Gates, Ranks, rarity, breaks, postings
+# and agenda initiations independently of the Bearer. The tick is the whole
+# remedy for a campaign that ran ninety in-fiction days without a single world
+# event reaching the protagonist, and an obligation that lives only in prose is
+# one this engine has repeatedly failed to meet. So it is checked: a campaign
+# whose world_clock.last_ticked sits behind the most recent day boundary at or
+# before its campaign_time has an unrun world, and that is a finding.
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    foreach ($ledger in @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "*.md" -File -ErrorAction SilentlyContinue)) {
+        $ledgerText = Get-Content -LiteralPath $ledger.FullName -Raw -Encoding UTF8
+        if ($null -eq $ledgerText) { continue }
+        if ($ledgerText -notmatch '(?m)^\s*world_clock:\s*$') { continue }
+
+        $tick = [regex]::Match($ledgerText, '(?m)^\s*last_ticked:[ \t]*"(?<value>[^"]+)"')
+        if (-not $tick.Success) {
+            Add-Failure ("{0}: declares world_clock but no last_ticked; a clock that cannot be read cannot be shown to have run." -f $ledger.Name)
+            continue
+        }
+        $anchorMatch = [regex]::Match($ledgerText, '(?m)^\s*campaign_time:[ \t]*"(?<value>[^"]+)"')
+        if (-not $anchorMatch.Success) { continue }
+
+        $tickInstant = [DateTimeOffset]::MinValue
+        $anchorInstant = [DateTimeOffset]::MinValue
+        $tickOk = [DateTimeOffset]::TryParse($tick.Groups['value'].Value, [ref]$tickInstant)
+        $anchorOk = [DateTimeOffset]::TryParse($anchorMatch.Groups['value'].Value, [ref]$anchorInstant)
+        if (-not $tickOk -or -not $anchorOk) {
+            Add-Failure ("{0}: world_clock.last_ticked or campaign_time is not a parseable instant." -f $ledger.Name)
+            continue
+        }
+
+        if ($tickInstant -gt $anchorInstant) {
+            Add-Failure ("{0}: world_clock.last_ticked '{1}' is ahead of campaign_time '{2}'; the world was rolled for a day the campaign has not reached." -f $ledger.Name, $tick.Groups['value'].Value, $anchorMatch.Groups['value'].Value)
+            continue
+        }
+
+        # The most recent 06:00 boundary at or before the campaign anchor.
+        $boundary = New-Object DateTimeOffset ($anchorInstant.Year, $anchorInstant.Month, $anchorInstant.Day, 6, 0, 0, $anchorInstant.Offset)
+        if ($boundary -gt $anchorInstant) { $boundary = $boundary.AddDays(-1) }
+
+        if ($tickInstant -lt $boundary) {
+            $missed = [int][Math]::Floor(($boundary - $tickInstant).TotalDays) + 1
+            Add-Failure ("{0}: world_clock.last_ticked '{1}' is behind the {2:yyyy-MM-dd} 06:00 boundary, so roughly {3} day(s) of Section 9.1 world tick were never rolled. Gates, rarity, breaks, board postings and agenda initiations do not wait on the Bearer; a world that only moves when pushed is indistinguishable from one that is not running (F-034)." -f $ledger.Name, $tick.Groups['value'].Value, $boundary, $missed)
+        }
+    }
+}
+
 # --- A narrowed live read must not be able to go stale -----------------------
 #
 # A panel that needs one current figure used to read a whole ledger, because the

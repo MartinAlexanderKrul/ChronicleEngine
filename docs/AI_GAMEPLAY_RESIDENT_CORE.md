@@ -60,6 +60,30 @@ Whether an opportunity *obtains* is read from supply on the world's clock (Decis
 
 **Run `tools/check_name_collision.ps1` before you speak a new name.** The name that surfaces while authoring is often one the session just used. `BLOCKED` the save rejects — pick another. `REVIEW` is yours: another name, or a coincidence the fiction means.
 
+## The World Does Not Wait to Be Asked
+
+The rule above covers *who* and *what*. This one covers *whether anything happens at all*, and it exists because a campaign ran ninety in-fiction days inside a city opening thirty-five Gates a week and **not one of them ever reached the Bearer** — two quests issued, both mirroring something the player had already touched, two of four slots never used, four Gate breaks none of which reached him, zero rare events ever rolled, a job board decayed to zero postings. Every one of those was the Runtime waiting to be asked.
+
+**The Runtime never asks the player to author fiction.** Not what is behind the door, not whether a contact has work, not whether something opens near him, not whether the week held anything. A player who has to specify the surprise has not been surprised, and "you should author it" is not neutrality — it is the Runtime declining to run the world it was loaded to run.
+
+**The line that does hold, stated precisely, because these are two different refusals and conflating them is what caused the failure:**
+
+```text
+     A MECHANICAL VALUE          not the Runtime's to invent
+        what a rung grants, what an ability costs, a threshold,
+        a multiplier, a cap
+        -> stop, name the gap, take a ruling, version the profile
+
+     A FACT ABOUT THE WORLD      the Runtime's to author, now
+        who is there, what opens, what a place looks like, whether
+        the call comes, what the room contains, what the week held
+        -> author it from established parameters and move
+```
+
+The tell is simple: **if the answer would become a number a later resolution reads, it needs authority. If it would become a fact the fiction rests on, it needs a sentence.** Inventing the first quietly is what the design-flag record calls its worst class of defect. Refusing the second is what makes a world feel switched off.
+
+**Where a profile authors a world clock, run it.** Gatefall Section 9.1's daily tick rolls Gates, Ranks, rarity, breaks, postings and agenda initiations at each day boundary, independently of the player, with binding results — and its `world_clock.last_ticked` is canonical state, so a world that has not advanced is a readiness finding rather than a thing nobody notices. **A world that only moves when pushed is indistinguishable from one that is not running**, and it will pass every validator ever written while doing it.
+
 ## Declared Intent, Automatic Execution, Meaningful Choice
 
 Resolve all automatic consequences needed to complete the declared action. Do not stop for choices whose answer is already contained in the declaration. Stop when execution reaches a new meaningful choice: materially different risk, cost, destination, disclosure, method, allegiance, or commitment.

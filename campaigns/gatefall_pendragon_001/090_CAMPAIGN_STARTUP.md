@@ -9,11 +9,11 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.72"
+world_rule_profile: "Gatefall World Rule Profile 1.73"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0090
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0091
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 selection_caveat: "Active campaign; resumable from its latest checkpoint."

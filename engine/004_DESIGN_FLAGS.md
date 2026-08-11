@@ -867,7 +867,59 @@ This is not an exotic edge. It is the first question the player asked after choo
 
 **Raised:** 2026-08-11 · **Source:** `campaigns/gatefall_pendragon_001/`, immediately after Riftwalker was taken at `EVT-000519`; player observation — *"the cache is quite not useful, is it"*
 
-**Status:** Open
+**Status:** **ACTIONED (2026-08-11) -> Gatefall Profile 1.73, edge 5** (`EVT-000527`). The cache is replaced by the standing anchor sense authored below, with its lifecycle, firing obligation and reports-never-authors constraint written into Section 18.8. Questions 2 and 3 remain **Open** and are carried by the Section 18 sweep.
+
+**THE RULING: drop the pocket cache; anchors pay while merely set.** The owner took the option that mirrors §18.5's repair exactly rather than the one that patched the cache. The reasoning is the reasoning 1.67 already wrote down for the sibling class: **an armory is what a smith has, not what he happens to be holding** — and by the same logic an anchor that pays only when he steps to it is a place he can *go*, while an anchor that reaches him is a place he *holds*. It also declines the alternative that would have made the cache undeclarable, because that fix spends a live tension (the 50 B-Rank and 40 C-Rank crystals held back undeclared under §13.2) rather than deepening one.
+
+**Authored text, for the 1.73 edge.**
+
+```text
+Standing anchor sense. A set anchor is a place he remains connected to,
+not only a place he can return to. While an anchor is set, DISTURBANCE
+THERE REACHES HIM -- presence where there was none, violence, or a mana
+event -- at no cost, with no action, and whether or not he is attending
+to it. It returns the FACT and never the detail: no identity, no count,
+no intent. Knowing WHAT is Keen Sense's work, and Keen Sense requires
+being present. Bounded exactly as an anchored step is: the same
+instance, Gate, or contiguous stretch of the city, and never across
+that boundary.
+```
+
+**Ladder, as a fifth column on §18.8's existing System Rank table.** **C** — he may check an anchor deliberately and learn whether it has been disturbed. **B** — disturbance reaches him **as it happens**, unprompted, wherever he is. **A** — it resolves into **which kind**: presence, violence, or mana. **S** — one anchor at a time may be sensed **as though he stood at it**, for one exchange.
+
+**The sense reports; it never authors.** Confirmed by the owner on a second pass, against the objection that a standing sense hands the Runtime a lever to start scenes at the Bearer's anchors -- including his home. The constraint binds the **Runtime**, not the rule: **a disturbance may be reported at an anchor only where it would have occurred had no anchor been set there.** The Runtime may not author an event at a location *because* the location is anchored, may not use the sense to force a return, and may not treat it as a hook. It is a window onto a world already running, and Section 7.9's world-side agenda advances on its own clock whether or not he is watching. An anchor is a place he chose to know about; it is not a place the world starts happening to.
+
+**And the sense is rendered, not remembered.** The panel carries the rung and a per-anchor quiet/disturbed marker, so it is visible state rather than a passive the Runtime must recall to fire -- the failure mode `F-012` recorded, where mandatory offers went unsurfaced for an entire campaign because nothing rendered them.
+
+**Anchor disturbance is STATE with a lifecycle, not a narration beat — and the firing obligation is enforceable.** Added on the owner's objection, 2026-08-11, and it is the objection that mattered: *you actually need to fire it without me asking for it, and it shouldn't just disappear.* A render marker answers neither. A marker is only seen if someone renders the panel, and `/system` is not run every turn, so a disturbance could sit unseen for three scenes — which is the mechanic failing in precisely the way it exists to prevent. And a push that lives in prose is a push the Runtime can drop.
+
+**Storage.** A disturbance is written to the anchor when it occurs and persists there:
+
+```text
+anchors.set[n].disturbance:
+  occurred_at:  <game time>          written when it happens, never later
+  kind:         presence | violence | mana     (A-Rank and above only)
+  surfaced:     <bool>               has the Runtime told the Bearer
+  acknowledged: <bool>               has the Bearer answered it
+```
+
+It is **never aged out, decayed, overwritten, summarised away, or dropped**, and it is outside anything `trim_policy` may cut — it belongs with disposition and channel constraints in `never_trim`, for the same reason: a record that governs what the Bearer knows is not compressible.
+
+**Firing obligation, binding the Runtime.** At B-Rank and above the sense is a **push**. The Runtime surfaces a disturbance **in the exchange it occurs** — or at that exchange's close if the Bearer is mid-action — and never later than the scene's end. **Including mid-combat. Including when it is inconvenient.** Inconvenience is not a reason; the whole value of a push is that it arrives when he did not ask.
+
+**And an unsurfaced disturbance does not evaporate — it escalates.** It joins the **consolidated adjudication queue** and becomes a **mandatory readiness and next-scene gate**, which is the treatment Section 7.5's unanswered ascension offers already receive under the Save Algorithm: it does not fail a checkpoint and does not block session close, but nothing proceeds past readiness without it. So it survives a save, a session end, and a context compaction — the three places this engine has actually lost things. **If it was not surfaced when it happened, it opens the next Runtime turn, ahead of anything else.**
+
+**Silence is a defect, and it is checkable.** An anchor carrying `surfaced: false` past the scene in which the disturbance occurred is a validator finding, not a judgement call — the same move as `F-032` question 2's totality rule and `EVT-000523`'s multiplier assertion.
+
+**Acknowledgement does not delete the fact.** Once answered, the disturbance stops gating and stays recorded: the thing that happened, happened, and remains there to be found. He may always go and look later.
+
+**The pattern worth naming, because this is the third time in one session.** Asked *will the engine actually do this?*, the answer three separate times has been **make it state and gate it** — `F-031`'s trim precedence became configuration rather than prose; `EVT-000523`'s multiplier drift wants an assertion rather than vigilance; and this. `F-012`, `F-015` and `F-029` are all the same shape. **An obligation that lives only in prose is an obligation this engine has already demonstrated it will not meet.**
+
+**Panel change.** The `Pocket cache <contents>` line is struck from §18.8's render block and replaced with `Anchor sense <rung>`; each anchor row gains a quiet/disturbed marker.
+
+**Classification: required migration, not a compatibility treatment.** A grant is removed, so a capture taken under 1.72 does not read forward unchanged. The procedure is that **any pocket cache contents relocate to §12.9 remote storage**, which loses nothing because §12.9 is reachable from everywhere the cache was. **In `gatefall_pendragon_001` the application is trivial — the cache was granted empty at `EVT-000519` and was never used** — but the classification is set by what the edge does in general, not by what this campaign happens to hold.
+
+**Why this is a real fix and not a swap.** The cache was dead because it duplicated capability; the standing sense is dead-proof for the opposite reason — **it makes the anchor cap bind on something other than movement.** Before it, an anchor paid only when one of the two per-scene steps was spent on it, so anchors three through five were inert in any scene where he stepped twice. That is the identical arithmetic that made Soulforged's fourth and fifth bindings inert, one class over. **A cap that cannot bind is not a cap** (§18.3.1), and this is the second time that sentence has had to be applied to §18.
 
 **What was observed.** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` §18.8 grants the Riftwalker three things: **rift-step**, **micro-rift deflection**, and a **pocket cache** — *"a personal dimensional pocket, separate from the shop-linked inventory, for staging gear and ambush drops."*
 
@@ -887,3 +939,49 @@ So the third of three grants on a **permanent, irreversible class choice** retur
 1. **Should the pocket cache be authored as System-invisible, or replaced?** If invisible, it stops being a duplicate container and becomes a cover mechanic, which is the axis this class's other two grants already serve (a rift-step in public is a §19.1 event; a cache the System cannot read is the counterweight). If not, it should be replaced with something the Bearer does not already have — the Soulforged repair is the precedent for replacing rather than deleting.
 2. **Should a §18 class grant be required to return capability the Bearer does not already hold?** §18.3.1 states the cap version of this rule (*a cap that cannot bind is not a cap*) and §7.2's ascension-eligibility rule states the ascension version (*where a target Rank authors no grant, the offer is withheld rather than made*). There is no equivalent for class grants, and unlike an ascension a class cannot be re-chosen.
 3. **Do the other §18 classes carry the same defect, and can it be checked before a player is standing at the offer?** Herald's bond and Soulforged's arsenal have both been examined. §18.9 Reliquary, §18.11 Seam, and the remaining catalogue classes have not. This is cheap to audit now and expensive to discover the way this one was discovered — after the choice was permanent.
+
+
+---
+
+## F-034 — The world only rolls when the player pushes it, and the Runtime called that neutrality
+
+**Raised:** 2026-08-11 · **Source:** `campaigns/gatefall_pendragon_001/`, owner critique after ~90 in-fiction days of play — *"I should not author something I want to be surprised about — you should take more initiative"*
+
+**Status:** **ACTIONED (2026-08-11), all four questions** — the owner declined a flag and asked for the fix. **Q1 -> Gatefall Profile 1.73 edge 1**, Section 9.1's daily world tick. **Q2 -> edge 2**, siting rolled `d100` so proximity is an input rather than a veto. **Q3 -> edge 3**, a push channel on both quest triggers. **Q4 -> a new gate in `tools/validate_repository.ps1`**, which fails a campaign whose `world_clock.last_ticked` sits behind the most recent day boundary at or before its `campaign_time`; mutation-tested at three days back, reporting four unrolled ticks. Adopted at `EVT-000527`. **The Runtime-side half is in `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, *The World Does Not Wait to Be Asked*** — the Runtime never asks the player to author fiction, with the line between a *mechanical value* (needs authority) and a *fact about the world* (needs a sentence) stated explicitly, because conflating them is what caused this.
+
+**What was observed, in figures rather than impressions.**
+
+```text
+     Non-daily quests issued in ~90 in-fiction days     2
+        both hidden, both revealed: false
+        capacity 4, so two slots never used at all
+     Quests the world proposed unprompted               0
+     Gate breaks in the campaign                        4   (GB-01 to GB-04)
+     Gate breaks that reached the Bearer                0
+     Red gates rolled                                   0
+     Tracked board postings, currently                  0
+```
+
+`110_WORLD_LEDGER.md` states the shape directly: *"No break has reached Alexander. All three sites sit outside his proximity and route (Section 8.4.2), so this is news the city absorbs off-screen."* Two of the four broke in the **same corridor eleven days apart**, and the ledger itself notes that is not coincidence but a measurement of how thin coverage is there — and still neither reached him.
+
+Three catalogue titles are unearned for the same reason rather than for any reason about the Bearer: **Red Survivor** (no red gate has ever rolled), **Break-Breaker** (both tracked-board breaks resolved without him, `EVT-000270`), and **Executioner** at roughly 20-25 kills of 50, because he has spent almost his whole career clearing content *at* his own System Rank — the world never pushed above-Rank content at him. The Section 18.1 Class Quest trigger was **missed entirely** at the Level 25 crossing and had to be caught by the player and fired retroactively.
+
+**The structural finding: nothing in this campaign ticks unless the player pushes it.** Gates are rolled when he opens one. Breaks resolve against a proximity test that nothing ever moves him toward. The board decayed to zero postings and no mechanism regenerates them. And **both existing quests mirror the player rather than proposing to him** — one attached to a warehouse he had already investigated, the other to a person he had already asked about. There is no channel by which the world offers something he did not first touch. Section 7.9 authorises a world-side agenda advancing on its own clock; it has fired approximately **once** in the campaign (`EVT-000490`).
+
+**And the Runtime's own posture made it worse.** Asked for a quest, a lead, or an unprompted event, the Runtime repeatedly answered that it would not author content and that the owner should author it. That answer **conflated two different refusals**:
+
+- **Refusing to invent mechanical values** — what a rung grants, what an ability costs, what a threshold is. This is correct and should stay. These are versioned rules, and silent invention is precisely what `F-014` and `F-030` record; it is why the city anchored-step cost became Profile 1.72 with a migration record rather than a number asserted mid-scene.
+- **Refusing to invent fiction** — whether a red gate opens, whether a contact has work, whether a break lands on his route, what is behind a door. **This is not caution; it is the Runtime declining to run the world**, which is its actual job. The owner is explicit that he will not author what he wants to be surprised by, and he is right: authored surprise is not surprise.
+
+The second refusal was consistently mistaken and is the substance of this flag. `F-001` recorded an early instance of the same disease from the NPC side — *openings from established contacts default to uniform decline* — and it was Actioned into Decision 082, but the general case was never addressed.
+
+**Why "take more initiative" is not the fix on its own.** It is an obligation living in prose, and this session established twice over that such obligations are ones this engine does not meet — `F-012`'s mandatory offers went unsurfaced for an entire campaign, and `F-033`'s anchor sense had to be converted into stored state with a readiness gate before it could be trusted to fire. A resolution that amounts to the Runtime resolving to be more interesting will decay inside three sessions and leave no trace when it does.
+
+**The open design questions.**
+
+1. **Should there be a world tick that runs independently of the player's actions?** A fixed cadence — each in-fiction day, or each session start — at which the world's own tables are rolled whether or not the Bearer is doing anything: Gate spawns and their Ranks, breaks and where they land, board postings appearing and expiring, contacts initiating, and the rarity tables that have never come up because nothing ever rolls them. Results binding, including inconvenient ones, and surfaced rather than absorbed off-screen.
+2. **Should proximity be a thing the world can move, rather than only a filter the world fails?** Section 8.4.2 currently reads as a gate that off-screens everything not already near him. A world that only ever happens elsewhere is indistinguishable from a world that is not running. The question is whether events should be sited *with* the Bearer's position as an input rather than tested against it as a veto.
+3. **Should quest issuance have a push channel and not only a mirror channel?** Both current quests derive from the player's own prior actions. Nothing offers. And both are `hidden` with narrow reveal conditions, so even the mirrored ones stay invisible — which the owner names directly: *hidden quests are too narrow and to actually progress takes very detailed things, and some of them are not even finished.*
+4. **How is the obligation made checkable rather than remembered?** Following `F-033`'s resolution: the tick's results should be **stored state on a mandatory readiness gate**, so a world clock that has not advanced since the last checkpoint is a validator finding rather than something nobody notices. A tick that can be silently skipped is the same defect one level up.
+
+**Related:** `F-001` (contacts default to decline, Actioned but only for that surface), `F-004` (Section 9.5's true-Rank roll has no trigger for an unconfirmed Gate that breaks unentered — *dispositioned and deferred to a play session since 2026-08-01*, and the play session never produced one because breaks never reach him), `F-012` and `F-033` (obligations that must be state to be met).

@@ -839,7 +839,13 @@ They share fields, so pressure lands on whichever is biggest rather than whichev
 
 **Raised:** 2026-08-11 · **Source:** `campaigns/gatefall_pendragon_001/`, Class Quest resolution, 2026-08-19 in-fiction; player selected Riftwalker (§18.8) and asked the ordinary next question — what an anchored step costs from home
 
-**Status:** Open
+**Status:** **Actioned on question 1 (2026-08-11), by owner ruling.** Questions 2 and 3 remain **Open**.
+
+**THE RULING, 2026-08-11.** An anchored rift-step taken outside any instance -- the *contiguous stretch of the city* case -- costs **Rank-ladder Mana at E-Rank: 5**. The reasoning the owner chose it on: the ladder is the mechanism §18.8 already names, so this completes the sentence rather than replacing it, and **ordinary city ground is the bottom of that ladder** because crossing air nobody warded is not the same act as crossing a sealed B-Rank instance. It leaves the authored side untouched -- an anchored step out of a B-Rank instance still costs 40 -- and it deliberately makes city travel cheap, because the constraint on that half of the class is meant to be the **5-anchor cap, the two-steps-per-scene rung, and §19.1 exposure**, not the Mana price.
+
+**Explicitly rejected: the flat 6.** §18.8 names the flat 6 as what an anchored step costs *instead of*, so adopting it for the city would have overruled the sentence rather than completed it. Also rejected: pricing off the Bearer's own System Rank (40 now, 80 at A), and distance bands.
+
+**Not yet written.** The profile is **frozen at 1.71**, so this lands as **Profile 1.72** with a migration note and an adoption Event at the campaign's next `/save`. It is **additive**: it authors a value where the profile had none, moves no existing cost, and changes no resolved outcome, so it is a compatibility change rather than a required migration.
 
 **What was observed.** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` §18.8 defines the Riftwalker's anchored rift-step, and prices it: *"Rift-stepping to an anchor rather than a visible point costs the Rank-ladder Mana of the instance's Rank rather than a flat 6."* The same paragraph defines where anchors reach: *"from anywhere in the same instance, Gate, or contiguous stretch of the city."* §18.8's own worked example fills the panel with three anchors and two of them are outside any instance — a Rogers Park stairwell and a lot behind Ironline Region V.
 
@@ -854,3 +860,30 @@ This is not an exotic edge. It is the first question the player asked after choo
 1. **What does an anchored step cost outside an instance?** Candidates: the flat 6 (cheap, and makes city travel nearly free, which is a large power grant the section never priced); the Bearer's own System Rank on the ladder (self-scaling, and it makes the ability cost *more* as he grows, which is defensible for a travel power); a distance band; or a flat authored value. This one needs an owner ruling before the player's first city-to-city step and should land in §18.8 itself, not in campaign canon.
 2. **Should cost expressions be required to be total?** A rule that every authored cost naming a context-derived term (`instance's Rank`, `foe's Rank`, `Gate Rank`) must either state a fallback or state that the ability does not function without it. That is checkable by a human reviewer and possibly by a gate.
 3. **Is there a class of "written combat-first, offered everywhere" defects worth sweeping for?** §18 is the newest large section and the first whose contents are permanent player choices. A one-time read of every §18 cost and reach expression against the non-Gate case would establish whether this is one gap or a pattern — and unlike most flags, the cost of finding out later is a permanent class the player cannot trade back.
+
+---
+
+## F-033 — A permanent class spends one of its three grants on a container the Bearer has carried for twenty levels
+
+**Raised:** 2026-08-11 · **Source:** `campaigns/gatefall_pendragon_001/`, immediately after Riftwalker was taken at `EVT-000519`; player observation — *"the cache is quite not useful, is it"*
+
+**Status:** Open
+
+**What was observed.** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` §18.8 grants the Riftwalker three things: **rift-step**, **micro-rift deflection**, and a **pocket cache** — *"a personal dimensional pocket, separate from the shop-linked inventory, for staging gear and ambush drops."*
+
+The Bearer who just took this class already carries **two** containers that do that job:
+
+1. The **System shop-linked inventory**, which is a System interface rather than a place and therefore reachable anywhere. `EVT-000506` is the proof: it was opened from **inside a sealed §17 instance**, and the record says so explicitly.
+2. **§12.9 remote storage**, which already holds his weapons and is the mechanism Dimensional Projection launches from and recalls to (`EVT-000438`).
+
+So the third of three grants on a **permanent, irreversible class choice** returns capability he has held since well before the trial. The player identified this unprompted within minutes of the grant rendering, which is the tell that it is not a subtle problem.
+
+**This is the `F-014` / `F-027` family — and the profile has already fixed this exact defect once, in the sibling class.** §18.5's *"Why the arsenal grants from the shelf as well as the hand"* paragraph exists because Soulforged Armory's arsenal cap rationed nothing: through Profile 1.67 every bound weapon past the first two was inert, so the fourth and fifth bindings each cost a core to grant precisely nothing. The repair was the **standing edge**, and the reasoning was stated as a rule — *"A cap that cannot bind is not a cap"* (§18.3.1). **The same audit was never run on §18.8.** The pocket cache is the same shape of defect: a grant that reads as content and returns nothing, sitting in the class that was offered alongside the one already repaired for it.
+
+**The one reading that would rescue it is not claimed.** A cache that is genuinely **outside anything the System inventories** would be extremely valuable in this campaign specifically — the Bearer holds an S-Rank dagger he does not own, a Dormant Core in another party's custody, and an entire §19 exposure problem built on what can be measured about him. But §18.8 says only *"separate from the shop-linked inventory"*, which distinguishes it from one container without claiming it is unlogged, unmeasurable, or invisible to §19.2. As written, the difference is bookkeeping.
+
+**The open questions.**
+
+1. **Should the pocket cache be authored as System-invisible, or replaced?** If invisible, it stops being a duplicate container and becomes a cover mechanic, which is the axis this class's other two grants already serve (a rift-step in public is a §19.1 event; a cache the System cannot read is the counterweight). If not, it should be replaced with something the Bearer does not already have — the Soulforged repair is the precedent for replacing rather than deleting.
+2. **Should a §18 class grant be required to return capability the Bearer does not already hold?** §18.3.1 states the cap version of this rule (*a cap that cannot bind is not a cap*) and §7.2's ascension-eligibility rule states the ascension version (*where a target Rank authors no grant, the offer is withheld rather than made*). There is no equivalent for class grants, and unlike an ascension a class cannot be re-chosen.
+3. **Do the other §18 classes carry the same defect, and can it be checked before a player is standing at the offer?** Herald's bond and Soulforged's arsenal have both been examined. §18.9 Reliquary, §18.11 Seam, and the remaining catalogue classes have not. This is cheap to audit now and expensive to discover the way this one was discovered — after the choice was permanent.

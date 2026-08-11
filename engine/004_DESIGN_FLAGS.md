@@ -832,3 +832,25 @@ They share fields, so pressure lands on whichever is biggest rather than whichev
 1. **Should a budget failure ever be resolvable by cutting character prose?** The proposal is no, and that the resolution order be stated and enforced: **duplicated event-history first, then verbosity, and character never** — a surface that cannot be met without cutting character moves its budget and tells the owner, rather than silently trading memory for headroom at a save gate.
 2. **Should `situation` hold history at all?** It is a state field carrying a private chronicle. If it held only the current situation with a per-field cap in the shape of the `per_unit_budgets` — the only mechanism in this file that has never blocked a save, because it binds when a record is *written* rather than when it is *saved* — `ENT-000139` would fall by roughly 40 KB without losing a single thing that governs how he is played. This is authoring work and the judgment of what is character versus history is the owner's, but the rule can be set before the work is done.
 3. **Should the measurement report the three categories separately?** *"Owen is 92 KB, 45 KB of it duplicated chronicle"* is a mechanical fix anyone can make correctly. *"Owen is 92 KB"* is a judgment call made at 2 a.m. against a deadline, which is how this session cut character prose to buy seven bytes.
+
+---
+
+## F-032 — A class ability prices itself off a context that does not exist in half the places the same section says it works
+
+**Raised:** 2026-08-11 · **Source:** `campaigns/gatefall_pendragon_001/`, Class Quest resolution, 2026-08-19 in-fiction; player selected Riftwalker (§18.8) and asked the ordinary next question — what an anchored step costs from home
+
+**Status:** Open
+
+**What was observed.** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` §18.8 defines the Riftwalker's anchored rift-step, and prices it: *"Rift-stepping to an anchor rather than a visible point costs the Rank-ladder Mana of the instance's Rank rather than a flat 6."* The same paragraph defines where anchors reach: *"from anywhere in the same instance, Gate, or contiguous stretch of the city."* §18.8's own worked example fills the panel with three anchors and two of them are outside any instance — a Rogers Park stairwell and a lot behind Ironline Region V.
+
+So the section explicitly supports anchored travel in the city, and the cost rule for it reads a property only a Gate instance has. **Standing in his own apartment there is no instance and no instance Rank, so the ability has no price.** Nothing in §18.8, §5, or §6.1 supplies a fallback. The flat 6 belongs to the line-of-sight step, which the same sentence says this is explicitly *not*.
+
+This is not an exotic edge. It is the first question the player asked after choosing the class, and it is the class's advertised out-of-combat use — the city half of a campaign built on a hunter maintaining a civilian life. It would have been resolved mid-scene by inventing a number, which is how a ruling with no authority becomes canon.
+
+**Why this is engine-level and not a one-off ruling.** The shape is general: **an authored ability priced off a context-derived value, offered in contexts that do not have that value.** §18 was written combat-first, and every class in it that reaches outside a Gate can hit the same wall — Soulforged's binding Mana rides "the Rank ladder" against a foe's Rank, which is fine because binding needs a corpse, but Herald's lend is priced off the band an ally is raised *to*, which is well-defined anywhere, and Riftwalker's is not. Nothing in the engine detects the asymmetry: the validators check that identifiers resolve and counters reconcile, not that every cost expression is total over the situations its own section advertises.
+
+**The open questions.**
+
+1. **What does an anchored step cost outside an instance?** Candidates: the flat 6 (cheap, and makes city travel nearly free, which is a large power grant the section never priced); the Bearer's own System Rank on the ladder (self-scaling, and it makes the ability cost *more* as he grows, which is defensible for a travel power); a distance band; or a flat authored value. This one needs an owner ruling before the player's first city-to-city step and should land in §18.8 itself, not in campaign canon.
+2. **Should cost expressions be required to be total?** A rule that every authored cost naming a context-derived term (`instance's Rank`, `foe's Rank`, `Gate Rank`) must either state a fallback or state that the ability does not function without it. That is checkable by a human reviewer and possibly by a gate.
+3. **Is there a class of "written combat-first, offered everywhere" defects worth sweeping for?** §18 is the newest large section and the first whose contents are permanent player choices. A one-time read of every §18 cost and reach expression against the non-Gate case would establish whether this is one gap or a pattern — and unlike most flags, the cost of finding out later is a permanent class the player cannot trade back.

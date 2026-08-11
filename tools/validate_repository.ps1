@@ -2260,6 +2260,54 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
     }
 }
 
+# --- A rendered mastery label is a derivation too ----------------------------
+# F-017 item 8. A retroactive reconciliation mislabelled several skills as
+# "mastery complete" when they had only reached Expert or Adept, and nothing
+# disagreed, because the label is prose beside a counter rather than derived
+# from it. The star block and the level word are both functions of
+# mastery_level: 1 Novice, 2 Practiced, 3 Adept, 4 Expert, 5 Master. Asserting
+# them costs nothing and catches the whole class of stale-render drift that
+# EVT-000523 found by hand.
+$masteryWords = @{ 1 = "Novice"; 2 = "Practiced"; 3 = "Adept"; 4 = "Expert"; 5 = "Master" }
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    $sheet = Join-Path $campaignDirectory.FullName "100_CHARACTER_SHEET.md"
+    if (-not (Test-Path -LiteralPath $sheet)) { continue }
+    $sheetText = Get-Content -LiteralPath $sheet -Raw -Encoding UTF8
+    if ($null -eq $sheetText) { continue }
+
+    foreach ($levelMatch in [regex]::Matches($sheetText, '(?m)path:[ \t]*skills\.(?<skill>[a-z_]+)\.mastery_level,[^}]*current_value:[ \t]*(?<level>-?\d+)')) {
+        $skillKey = $levelMatch.Groups['skill'].Value
+        $level = [int]$levelMatch.Groups['level'].Value
+        if ($level -lt 1 -or $level -gt 5) {
+            Add-Failure ("100_CHARACTER_SHEET.md: skills.{0}.mastery_level is {1}; Section 7.4 bounds it at 1 to 5." -f $skillKey, $level)
+            continue
+        }
+        # The mastery WORD is already asserted elsewhere; only the star block
+        # was uncovered, so only the star block is asserted here.
+        $expectedWord = $masteryWords[$level]
+
+        $displayPattern = ($skillKey -replace '_', '[ _]')
+        $lineMatch = [regex]::Match($sheetText, ('(?im)^\s*-\s*"' + $displayPattern + '\s*\[[A-Z]-Rank\].*$'))
+        if (-not $lineMatch.Success) { continue }
+
+        # The rendered star block and level word sit immediately after the Rank tag.
+        $filled = [char]0x2605
+        $hollow = [char]0x2606
+        $render = [regex]::Match($lineMatch.Value, ('\[[A-Z]-Rank\]\s+(?<stars>[' + $filled + $hollow + ']{5})\s+(?<word>[A-Z][a-z]+)'))
+        if (-not $render.Success) { continue }
+
+        # @() forces an array: under StrictMode a single-item pipeline result
+        # is a scalar with no .Count, and a one-star skill (Stone Skin) crashed
+        # the whole validator rather than reporting anything at all.
+        $starCount = @($render.Groups['stars'].Value.ToCharArray() | Where-Object { $_ -eq $filled }).Count
+        $renderedWord = $render.Groups['word'].Value
+
+        if ($starCount -ne $level) {
+            Add-Failure ("100_CHARACTER_SHEET.md: skills.{0} renders {1} filled star(s) against a stored mastery_level of {2}. The star block is a derivation of the counter beside it (F-017 item 8)." -f $skillKey, $starCount, $level)
+        }
+    }
+}
+
 # --- A rendered multiplier is a derivation, and derivations drift ------------
 # EVT-000523 / F-015. A magnitude skill's multiplier is `native + 0.15 *
 # (mastery_level - 1)`, both terms stored. Nothing recomputed the rendered value

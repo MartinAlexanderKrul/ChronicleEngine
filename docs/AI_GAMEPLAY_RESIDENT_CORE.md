@@ -146,6 +146,25 @@ In ordinary play, expose only the compact roll tag and fictional consequences. D
 
 Establish one acting intent. Positive steps help that intent succeed; negative steps hinder it. Classify circumstances by effect, not ownership. Before rolling, restate each signed circumstance as making the acting intent more or less likely and correct any sign that disagrees.
 
+## A Roll Shows Its Arithmetic and Names Every Step
+
+`F-017` items 1 and 2. Across one extended session the Runtime treated a modifier step as `+1` to the d100 instead of **+20 percentile points**, for most of a combat; the player caught it, the correction was acknowledged, **and the next few rolls reverted to the wrong math and had to be caught a second time.** In the same session a standing title bonus was silently dropped from an ambush sequence, and the corrected arithmetic showed a boss dying in the exchange it had been narrated as surviving. Both are invisible when a roll renders only its endpoints.
+
+**Every resolved roll renders its own arithmetic, and every contributing step is named at the point it is applied:**
+
+```text
+     natural <n>  <+|-><k> step(s)  ->  effective <e>
+
+     effective = clamp(natural + 20 x net steps, 1, 100)
+
+     and the steps are itemised, each with its source:
+        skill / title / gear echo / position / Stat margin / circumstance
+```
+
+**Wrong arithmetic then fails on its face** rather than needing to be recomputed by the player. A step whose source cannot be named is not a step: **enumerate the equipped titles, the live scene-long effects and the material passives before the roll**, because a bonus nobody wrote down is a bonus that gets dropped, and the ones that get dropped are always the standing ones nobody had to declare that exchange.
+
+**The net cap binds the sum, not each term.** Itemising is for provenance; the profile's own cap still applies to the total.
+
 ## A Canvass Is N Resolutions, and Standing Is Read, Not Recalled
 
 One message to several actors is several uncertain world-facts, each with its own established modifiers. Resolve them separately from settled state and let them disagree; a uniform result across independent actors requires per-actor grounding.

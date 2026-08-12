@@ -7,6 +7,20 @@ description: Use when narrating any NPC's dialogue, action, or reaction in Chron
 
 **An NPC knows a fact only if the fiction gave that NPC a channel to it.** Your own omniscience as narrator is not the character's. Before an NPC says or does anything that rests on a piece of information, the information must have reached *that* character through the world — not through you knowing it.
 
+## Two lookups come first, because their answer never varies
+
+The channel test below is a judgment, and it is made at the worst possible moment — when a line needs a concrete detail to sound natural. Two classes never need it, and running them first is cheaper than running them well.
+
+**1. The Bearer-Only Register** (profile §14.4.1). Ten quantities no NPC holds under any circumstance, short of the Bearer saying so aloud:
+
+> level · XP · System Rank · skills · mastery · quest state · notifications and panels · pending grants · exact pool values · that he has a System at all
+
+Not a channel question — a **category**. Do not ask whether this NPC could have found out; nobody can. *"You levelled"* is barred exactly as *"you're at 9 of 40"* is, and it is not a stronger version of *"you're moving better than last week"* — that one is visible conduct and is correct play.
+
+**2. Out-of-character text is not a world source.** Nothing the player wrote outside the fiction — an aside, a ruling, a `//` line, an emoji standing in for a swear — may reappear as something a character said, sent, or did. It has no in-fiction origin, so no channel can carry it.
+
+The distinction that keeps this usable: narrating what an OOC instruction *asked for* is correct — *"// skip to the mining job"* is answered by narrating the mining job. Reusing its **text** as an in-fiction artifact is not. F-021 is the failure: a duck emoji the player typed as a swear substitute came back as something Owen himself sent.
+
 ## The channel test (run it before every NPC line)
 
 An NPC may use a fact only if at least one is true:
@@ -62,13 +76,28 @@ In F-016's own instance the NPC's position never moved: before the correction he
 | "I was corrected, so now they disagree instead" | Flipping the polarity keeps your read and repoints it. Ask what *this* NPC perceived and values; if that yields nothing, they hold no view. |
 | "That line is too good to cut" | It is too good for *this* character. A line that would fit any NPC in the scene belongs to none of them. |
 | "It's a tiny detail" | The player tracks every one. A small leak breaks the fiction's trust as surely as a large one — this exact detail got flagged twice. |
+| "The line needs something concrete or it sounds vague" | Vague is the grounded answer when the record is vague. "That artificer thing" is a complete line; the name is an invention wearing a detail's clothes. |
+| "They're only talking about their own evening" | The check reads content, not grammar. An NPC's own plans are the easiest place to smuggle in the protagonist's. |
 | "The NPC would plausibly figure it out" | Plausibility is not a channel. Infer only from what *this* NPC observed, not from what would be convenient for it to deduce. |
 | "I know it, so it's fair game" | You are omniscient; the character is not. Narrate from the character's knowledge set, never yours. |
 | "The player mentioned it this session" | The player telling *you* is not the player's character telling the *NPC*. Table talk is not in-world speech. |
 
+## Knowing a thing in outline is not a channel to its specifics
+
+The subtlest failure in this family, and the one that survives a correct record read. An NPC told *that* something exists has no channel to **which one, whose, or when** unless the record says those were given too.
+
+F-020: Owen had been told Alexander finally had an artificer contact — *"the fact of it, no name and no address, and he did not ask for either."* His record said exactly that, and was loaded. He was then narrated saying *"nothing until Nakamura's tonight"* — a name he was never given and an evening he was never told, because the line needed something concrete to sound natural.
+
+**Two tests, and the second is the one that gets skipped:**
+
+1. Does the record establish the **specific** — this name, this date, this figure — or only the outline? Outline licenses *"you've got that artificer thing going"*; it does not license the name.
+2. **Is this commitment even theirs?** Owen's line put Alexander's appointment on Owen's own calendar. An NPC's schedule is their record's, not a place to park the protagonist's plans.
+
+And the trigger this hides behind: a line about **the NPC's own business** is exempt from nothing. *"Nothing until Nakamura's tonight"* is grammatically Owen's evening and factually Alexander's fact. Check the line's **content**, never its grammatical subject.
+
 ## Special cases (all instances of the same rule)
 
-- **The System is invisible to everyone but its Bearer** (profile §14.4). No NPC knows his level, XP, stats, skills, pending grants, or that he has a System at all. An NPC reads him by his *visible conduct* — how he fights, what he carries — never his window.
+- **The System is invisible to everyone but its Bearer** (profile §14.4, register at §14.4.1). No NPC knows his level, XP, stats, skills, pending grants, or that he has a System at all. An NPC reads him by his *visible conduct* — how he fights, what he carries — never his window.
 - **Numbers are out-of-character** (profile §20.5). No NPC quotes HP, damage, a die result, or a Rank. A mender says "he can't take another hit like that," never "he's at 9 of 40."
 - **Inside an uncleared Gate there are no cameras or instruments** (profile §13.4). What happened in a Gate is known only to those who were in it and walked out to say so.
 
@@ -76,7 +105,10 @@ In F-016's own instance the NPC's position never moved: before the correction he
 
 - An NPC references a private conversation it was not part of
 - An NPC "conveniently" knows the exact thing that routes the player where you wanted them
-- An NPC states the player's level, System, inventory, or a number
+- An NPC states the player's level, System, inventory, or a number — anything on the §14.4.1 register
+- An NPC names a name, a date, or a time the record gave them only in outline
+- An NPC treats one of the protagonist's commitments as a fixed point on their own schedule
+- Text you first saw in a `//` line — an emoji, a phrase, a joke — turns up inside the fiction
 - You reached for a fact because it was *useful*, not because the NPC *has* it
 - The player says "she doesn't know that" — that is a real error, not an objection to overrule
 - Two NPCs in one scene sound like one voice wearing two names

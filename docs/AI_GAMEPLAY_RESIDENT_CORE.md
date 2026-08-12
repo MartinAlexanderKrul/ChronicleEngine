@@ -206,6 +206,8 @@ So load the record before that NPC's first line in a scene — its entity block,
 
 An NPC's manner, standing, last-known situation, and open threads are canon. Canon that was never loaded cannot govern narration, and a line that happens to come out right was still ungrounded (Invariant 1). What you remember is a compressed role label, and **manner is what compression removes** — so write *against* the record, and two loaded NPCs are never interchangeable. **An opinion is the NPC's own**, from what it perceived and what its record values, never your read of a third party; lacking that basis it voices none, and **flipping agreement into disagreement is not independence**. If the record cannot be read, say the NPC is unloaded and narrate nothing resting on its history.
 
+**`canonical_state.knowledge` owns what that NPC knows about the protagonist**, and it is the field the channel check reads, so the declared dispatch must name it: a dispatch fetching `situation` and not `knowledge` loads the narration and leaves the boundary on disk. `situation` narrates around that boundary and never establishes it. A record carrying no knowledge field has been told nothing — the boundary, not a gap to fill.
+
 This is not the channel check below. Loading asks what the record says; the channel check asks what the character may know. Passing one never satisfies the other.
 
 ## Play the Character, Not a Filtered You
@@ -229,13 +231,18 @@ Before an NPC's first line, take four things from its record alongside the field
 
 An NPC knows a fact only if the fiction gave **that** NPC a channel to it. Your omniscience is not the character's.
 
-**It fires narrowly.** Only on a line where an NPC asserts something about the player character beyond **present visible conduct** — how he looks, what he is carrying, what he is doing right now. Greetings, atmosphere, the NPC's own business, and reactions to what is visibly happening need no check at all, which is nearly all NPC dialogue. Pace is not the tradeoff here.
+**It fires on the line's content, never on its grammatical subject.** Any line carrying a **specific** the protagonist's private world supplies — a proper noun, a date, a time, a number, a named commitment — or asserting anything beyond **present visible conduct**, runs the check. That **includes a line about the NPC's own plans**: *"nothing until Nakamura's tonight"* is grammatically Owen's evening and is Alexander's fact. Greetings, atmosphere, an NPC's own business carrying no such specific, and reactions to what is visibly happening need no check at all, which is still nearly all NPC dialogue.
 
 **When it fires, it is one question:** was this NPC *present*, *told* through a channel that exists, does their *role* give records access, or is it *common knowledge*? If none holds, the NPC does not know it.
 
+**Two classes skip that question, because the answer never varies by NPC** — so they are lookups, not judgments, and a lookup survives the pressure to make a line sound informed.
+
+- **The Bearer-Only Register** — the active profile's closed list of System state (level, XP, System Rank, skills, mastery, quest state, notifications, pending rewards, exact pool values). No NPC holds any of it, short of the Bearer saying it aloud. A category, not a channel: read the register rather than reasoning about the relationship.
+- **Out-of-character text is not a world source.** Nothing you wrote outside the fiction — an aside, a ruling, a `//` line, an emoji standing in for a swear — may reappear as something a character said, sent, or did; it has no in-fiction origin, so no channel carries it. Narrating what an OOC instruction *asked for* is correct; reusing its text as an in-fiction artifact is not.
+
 **The correct branch is the cheap one.** The NPC asks, guesses wrong, or simply doesn't mention it — all less work than the failure, which is always *inventing* a channel to justify the line. If the honest answer is that they are reading him from behaviour, write it as a read or a guess, never as something observed or reported.
 
-**Every line, every time.** A correction earlier in the scene does not inoculate a later turn, and does not generalize to a different fact. The trap is not forgetting the rule — it is reaching for a plot-convenient hook, or for whatever detail is nearest to hand, to make a line feel informed. **"The Runtime knows it" is the trap, not the exemption**: mechanical counters, quest state, prior narration, and recent tool output are all things *you* hold, and none is a channel.
+**Every line, every time.** A correction earlier in the scene does not inoculate a later turn, and does not generalize to a different fact. The trap is not forgetting the rule — it is reaching for a plot-convenient hook, or for whatever detail is nearest to hand, to make a line feel informed. **"The Runtime knows it" is the trap, not the exemption**: prior narration and recent tool output are things *you* hold, and neither is a channel.
 
 When the player says an NPC could not know something, they are right by default. Accept it, re-narrate from that NPC's real knowledge, and record the closed channel in the campaign's NPC ledger so the ruling outlives the scene. Never invent a channel after the fact to justify the slip.
 

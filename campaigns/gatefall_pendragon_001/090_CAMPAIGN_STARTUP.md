@@ -9,7 +9,7 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.74"
+world_rule_profile: "Gatefall World Rule Profile 1.75"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
@@ -64,6 +64,7 @@ source_loading:
       file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
       object_source: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md
       entity_fields:
+        - canonical_state.knowledge
         - canonical_state.location
         - canonical_state.condition
         - canonical_state.personality
@@ -78,7 +79,7 @@ source_loading:
         - qualities
         - state
         - texture
-      reason: "fetch when a recorded NPC enters a scene, before its first line (Resident Core, Load a Recorded NPC Before Playing It, and Play the Character, Not a Filtered You). The last six are Decision 091's character model: disposition is what the actor is, beliefs are what it holds true whether or not it is, and the agenda is what it has been doing since the protagonist last saw it. The first four fields alone produced an NPC that could only answer."
+      reason: "fetch when a recorded NPC enters a scene, before its first line (Resident Core, Load a Recorded NPC Before Playing It, and Play the Character, Not a Filtered You). The last six are Decision 091's character model: disposition is what the actor is, beliefs are what it holds true whether or not it is, and the agenda is what it has been doing since the protagonist last saw it. The first four fields alone produced an NPC that could only answer. `knowledge` is listed first because it owns the NPC's knowledge boundary and is the field the channel check reads; it was absent from this list entirely until F-020, so the dispatch fetched the narration in `situation` and left the boundary on disk — including when 091 added six fields beside it."
   entity_authoring_check:
     tool: tools/check_name_collision.ps1
     object_source: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md

@@ -2,10 +2,20 @@
 
 ## F-003, F-005, F-006, F-007 — NPC Dialogue Is Generated From Recollection
 
-**Status:** Consolidated finding — one defect, four flags
+**Status:** Consolidated finding — one defect, four flags. **Partly superseded 2026-08-12; see the notice below before relying on the "not mechanizable" section.**
 **Milestone:** Version 0.3, Milestone 0.3.5 — Capability Validation and Prototype Campaign
 **Source:** `campaigns/gatefall_pendragon_001/`, 2026-08-11 in-fiction sessions
 **Authority:** Non-canonical validation record. Campaign ledgers remain canonical over any world or campaign fact named here.
+
+---
+
+> **Superseded in part by `441_F020_F021_NPC_CHANNEL_ANALYSIS.md` (2026-08-12).**
+>
+> This document concludes that `F-005`–`F-007` have *"no equivalent structural cause"* to `F-003`'s document conflict. **There was one, and it was one line wide:** the campaign's declared `npc_present` entity dispatch named `location`, `condition`, `personality` and `situation` — and **not `knowledge`** — so the field whose own first line reads *"check this before any scene where the System could surface"* was never in the fetch set the resident load rule points at. No field was declared to own the knowledge boundary either, so it was authored wherever it fitted. Both are fixed; `canonical_state.knowledge` now owns the boundary and the dispatch names it first.
+>
+> Two further claims below are narrowed rather than wrong. **"No gate is available"** holds for the *general* channel question and is unchanged — but it does not hold for the closed subclasses: Bearer-only System state is a category with the same answer for every NPC, and out-of-character text has no in-fiction origin at all, so both are lookups rather than judgments and are now stated as such. **"The failure leaves no repository trace"** is true today for a contingent reason, not a necessary one: `/export`'s Narrator register is defined to carry NPC action and the Runtime Profile requires it verbatim, yet the live exports summarize the Narrator side while quoting the Player side exactly, and `validate_repository.ps1` excludes `exports/` from validation. The corpus is missing, not impossible.
+>
+> The measurement in *"Narrowing the coverage set does not rescue the derived check"* stands entirely and is not disturbed.
 
 ---
 

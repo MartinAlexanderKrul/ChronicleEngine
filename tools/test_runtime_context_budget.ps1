@@ -46,14 +46,38 @@ Assert-True ($clean.ExitCode -eq 0) "The checked-in context plan exceeds a hard 
 # rules belong resident; the warning line was measuring the wrong thing when it
 # blocked them.
 #
-# The hard budget is unchanged at 8,000 and is still enforced two ways:
-# `$clean.ExitCode` above fails on any hard overage, and the bound below is
-# checked explicitly. WARN remains an accepted steady state and stays visible in
-# every report, which is the point of having a warning threshold at all — it is
-# a signal to trim, not a gate. Trimming the resident core is owner authoring
-# (Recommendation R14) and is not discharged by this ruling.
+# The hard budget is enforced two ways: `$clean.ExitCode` above fails on any hard
+# overage, and the bound below is checked explicitly. WARN remains an accepted
+# steady state and stays visible in every report, which is the point of having a
+# warning threshold at all — it is a signal to trim, not a gate. Trimming the
+# resident core is owner authoring (Recommendation R14) and is not discharged by
+# this ruling.
+#
+# The ceiling is PARSED from `system/RUNTIME_CONTEXT_BUDGETS.yaml`, never restated
+# here. It used to be the literal 8,000, with a comment asserting the budget was
+# "unchanged at 8,000" — and when an owner ruling moved it to 10,000 for F-020 /
+# F-021, this gate failed on a repository that was correct, because a hand-copied
+# constant went stale the moment its source moved. That is `F-013`'s exact defect
+# class ("a validator constant that encodes a value living elsewhere, updated by
+# hand"), landing on the file that measures the budget. `Get-LadderCeiling` in
+# validate_repository.ps1 already took the same lesson: parse the authority.
+$budgetFile = Join-Path (Split-Path -Parent $PSScriptRoot) 'system/RUNTIME_CONTEXT_BUDGETS.yaml'
+$budgetText = Get-Content -LiteralPath $budgetFile -Raw
+# Anchored under `surfaces:` deliberately. The file carries a second `resident:`
+# key elsewhere (a category list), and an unanchored match finds that one first,
+# yielding a block with no thresholds in it at all.
+$residentBlock = [regex]::Match($budgetText, '(?ms)^surfaces:\r?\n.*?^  resident:\r?\n(?<body>.*?)(?=^  \w)')
+Assert-True $residentBlock.Success "Cannot locate the resident surface under `surfaces:` in $budgetFile; the ceiling must be read from the file that owns it."
+$residentFailMatch = [regex]::Match($residentBlock.Groups['body'].Value, '(?m)^\s*failure_tokens:\s*(?<v>\d+)')
+Assert-True $residentFailMatch.Success "The resident surface declares no failure_tokens; the hard ceiling has no owner to read."
+$residentFail = [int]$residentFailMatch.Groups['v'].Value
+# A parse that silently yielded 0 or something absurd would make the assertion
+# below vacuous or unfailable, so the parsed value is sanity-bounded rather than
+# trusted.
+Assert-True ($residentFail -ge 4000 -and $residentFail -le 32000) "Parsed resident failure_tokens ($residentFail) is outside any plausible range; the parse is wrong, not the card."
+
 Assert-True ($clean.Output -match '(?:PASS|WARN) resident: (?<tokens>\d+) tokens') "Resident measurement is missing."
-Assert-True ([int]$Matches["tokens"] -lt 8000) "Resident core is not below 8,000 estimated tokens."
+Assert-True ([int]$Matches["tokens"] -lt $residentFail) "Resident core is not below its declared hard ceiling of $residentFail estimated tokens (system/RUNTIME_CONTEXT_BUDGETS.yaml)."
 Assert-True ($clean.Output -match 'PASS bootstrap: (?<tokens>\d+) tokens') "Bootstrap measurement is missing."
 Assert-True ([int]$Matches["tokens"] -lt 16000) "Bootstrap is not below 16,000 estimated tokens."
 # Gatefall readiness is asserted against the hard budget, not the warning line.

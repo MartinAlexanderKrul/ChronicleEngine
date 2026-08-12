@@ -77,7 +77,7 @@ An invariant is not upheld because it is documented; it is upheld only if a name
 | Invariant | Moment checked | Enforcement layer |
 |-----------|----------------|-------------------|
 | Grounding | Before asserting any state, each turn | Resident per-turn |
-| Grounding — NPC channel | Before any NPC line asserting a fact about the player character beyond present visible conduct | Resident per-turn |
+| Grounding — NPC channel | Before any NPC line carrying a protagonist-private specific, or asserting a fact about the player character beyond present visible conduct | Resident per-turn |
 | No silent canon | When durable canon is authored | Resident per-turn, backed by the mechanical barrier (Section 5.4) |
 | Promotion | At each durability boundary; obligation tracked per turn | Deferred barrier (Sections 2.2, 5.3), with resident promotion-obligation tracking |
 | Canon-determinism | When state is written | Resident per-turn, backed by the mechanical barrier (Section 5.4) |

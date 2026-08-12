@@ -45,6 +45,9 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000147` | Walt Adamik | pawnbroker / grey-market dealer | active | Chicago | `REL-000069` |
 | `ENT-000206` | Sal Prykowski | salvage and surplus importer / grey-market supplier | active | Works out of a licensed salvage-and-surplus import operation in… | — |
 | `ENT-000207` | Nadia Adamik | civilian; Gate-touched | active | Unestablished. Chicago is implied by Walt's account and by his… | — |
+| `ENT-000208` | Yusuf Baptiste | striker (declined Ironline) | active | Unestablished — Chicago is implied by working an Ironline pitch | — |
+| `ENT-000209` | Bettina Ochoa | striker (declined Ironline) | active | Unestablished — Chicago is implied by working an Ironline pitch | — |
+| `ENT-000210` | the old grain terminal, Bridgeport | confirmed Gate site | active | South end of Bridgeport, Chicago, river side — the loading pit… | — |
 | `ENT-000149` | the Cutting Edge proprietor | gear artisan / licensed vendor | active | Cutting Edge | — |
 | `ENT-000150` | Ferro's Reclamation | salvage dealer | active | Chicago | — |
 | `ENT-000168` | Milo Brandt | sensor-adjacent hunter | active | Windy City Hunters Coalition training grounds | — |
@@ -89,6 +92,6 @@ A blank relationship cell means no relationship with the protagonist is recorded
 # Maintenance
 
 - Generation schema: `1.0`.
-- Entities: 60. Protagonist relationships: 19.
+- Entities: 63. Protagonist relationships: 19.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

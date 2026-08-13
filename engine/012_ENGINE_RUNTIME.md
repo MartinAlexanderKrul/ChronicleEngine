@@ -520,6 +520,11 @@ When an event changes state, the Runtime:
 - **Causality.** A mutation must have a cause (Law II). State does not appear or disappear without an identifiable reason (Rules Section 7.11).
 - **Immutability.** Records defined as immutable must not be mutated: save checkpoints (Rules Section 13.2) and superseded decisions (`001_ENGINE_DECISIONS.md`, Revision Policy).
 - **Consistency.** A mutation must leave canon cross-reference-consistent. It must not leave a relationship, succession, or reference pointing at a record it did not also update.
+- **Supersession is retirement, not demotion.** When a mutation replaces a state field's value, the old value is **removed**, not kept beside the new one under a "prior" or "superseded" label. `011_ENGINE_DATA_MODEL.md` Section 7.1 makes canonical state *what is true now*; Section 7.2 makes everything else historical evidence, which the chronicle and the immutable checkpoints already own. A demoted copy is therefore a third copy, and it is the only one that grows.
+
+  **What this does not touch:** history is not being discarded. The narrative of every span is in the campaign chronicle by Event id, and the previous value is the previous checkpoint's own current state, byte-immutable under Rules Section 13.2. A field may still narrate *what changed to reach the present value* — that is a description of now, not a second value.
+
+  This is stated because it was never stated. No rule, skill, or profile authored the demotion habit anywhere in the repository, and it reached 97.7% of the largest object in it — twenty-eight stacked snapshots in one campaign's `canonical_state.condition`, unmeasured because no budget reads that field. Enforced at the Repository Validation Barrier (Section 5.4), which is what runs on every save; a rule carried only by instruction would refill between checks.
 
 ## 5.3 Promotion
 

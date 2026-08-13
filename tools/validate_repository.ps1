@@ -1561,6 +1561,26 @@ foreach ($file in $canonicalFiles) {
             Add-Failure "$relativePath`:$line active Character $id must declare exactly one canonical_state.location; presence is owned by the entity's own record (Decision 073)."
         }
 
+        # Runtime 5.2, Supersession is retirement, not demotion. A state field
+        # replaced by a mutation drops its old value; it does not keep it beside
+        # the new one under a "prior"/"superseded" label. Data Model 7.1 makes
+        # canonical state "what is true now" and 7.2 makes the rest historical
+        # evidence, which the chronicle and the immutable checkpoints own -- so a
+        # demoted copy is a third copy, and the only one that grows without
+        # bound. `canonical_state.condition` on ENT-000125 reached 58,445 bytes,
+        # 97.7% of it twenty-eight stacked snapshots, governed by nothing: no
+        # rule authored the habit and no budget read the field.
+        #
+        # The pattern matches the DEMOTION MARKER, never the bare word "anchor".
+        # Gatefall's Riftwalker class sets in-fiction "rift anchors" (Section 18,
+        # `AGI / 20`), and a looser pattern would reject a live game mechanic for
+        # sharing a noun with a bookkeeping habit.
+        if ($relativePath -match '^campaigns/' -and $relativePath -notmatch '/saves/') {
+            foreach ($demoted in [regex]::Matches($block, '(?im)^[ \t]*(prior [a-z ]*state, superseded|superseded [a-z ]*state:)')) {
+                Add-Failure "$relativePath`:$line object $id keeps a superseded state value beside the current one (`"$($demoted.Value.Trim())`"); supersession is retirement, not demotion (Runtime 5.2, Data Model 7.1). The previous value is the previous checkpoint's own current state and the span is narrated in the campaign chronicle."
+            }
+        }
+
         # Decision 085: the record-updated cross-check needs the moved object's
         # own text, which $definitions does not carry (it holds locations only).
         $objectBlocks[$id] = $block

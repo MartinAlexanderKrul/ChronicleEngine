@@ -509,7 +509,21 @@ $baselineCells = $Matches['row'].Split('|') | ForEach-Object { $_.Trim() } | Whe
 for ($ri = 0; $ri -lt $baselineCells.Count -and $ri -lt 6; $ri++) {
     $rankBaselines[@("E", "D", "C", "B", "A", "S")[$ri]] = [int]($baselineCells[$ri] -replace ',', '')
 }
-Assert-True ($character -match 'Rupture \[([EDCBAS])-Rank\].+\*\*×([0-9.]+) of its skill-rank baseline\*\*.+baseline (\d+)') "Rupture multiplier is unreadable."
+# The baseline capture is LAZY on purpose. It was greedy, and PowerShell's
+# `-match` is case-insensitive, so `.+baseline (\d+)` ran past the rendered
+# figure and matched the row's own ascension note -- "**Baseline 150 -> 375**",
+# recording the B-to-A transition -- taking 150 as the current baseline and
+# failing correct canon at A-Rank. The row was right both times: it renders
+# "(A-Rank baseline 375, Section 7.2)" and separately records what the value
+# rose from. `.+?` binds the capture to the first baseline after the multiplier,
+# which is the rendered one.
+#
+# This is `F-018`'s class from the other side: not a fixture pinned to live
+# state, but a pattern loose enough to match prose the rule was never about. A
+# guard that fails on canon its own rules generate is a false negative, and it
+# stayed hidden because an earlier assertion in this file aborted the suite
+# before reaching it.
+Assert-True ($character -match 'Rupture \[([EDCBAS])-Rank\].+\*\*×([0-9.]+) of its skill-rank baseline\*\*.+?baseline (\d+)') "Rupture multiplier is unreadable."
 $ruptureRank = $Matches[1]
 $ruptureRenderedBaseline = [int]$Matches[3]
 $ruptureMultiplier = [decimal]::Parse($Matches[2], [Globalization.CultureInfo]::InvariantCulture)

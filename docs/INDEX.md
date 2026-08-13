@@ -4,6 +4,10 @@
 
 Every new session should begin by reading the files below before proposing changes.
 
+**Two of them cannot be read in one pass, and asking for them whole gets you a truncated view with no error.** `system/RUNTIME_CONTEXT_BUDGETS.yaml` sets a **25,000-token read cap**; `engine/001_ENGINE_DECISIONS.md` is about 3× it and `engine/030_ENGINE_CHANGELOG.md` about 2.7×. Read both by heading — `## Decision NNN`, or the newest dated entry under the current version — never end to end. Enforced by `tools/test_read_cap.ps1`, which also fails if this list ever again names a file it cannot read.
+
+**Before proposing an engine change, run `git fetch` and compare against `origin/main` first.** A local checkout can sit many commits behind with nothing in the working tree hinting at it, and in this repository the divergence is measured in accepted Decisions and profile versions rather than lines. The ADR log being over the read cap is exactly why: the one document that records what has already been decided is the one a session is least likely to have read in full.
+
 ### Development
 
 1. docs/PROJECT_CONTEXT.md
@@ -30,7 +34,7 @@ Governance gate: `tools/test_decision_roadmap_sync.ps1` (Decision 069) — every
 ### Architecture
 
 5. engine/000_ENGINE_MANIFEST.md
-6. engine/001_ENGINE_DECISIONS.md
+6. engine/001_ENGINE_DECISIONS.md — **over the read cap (~3×); read by `## Decision NNN` heading, never whole**
 7. engine/002_ENGINE_ROADMAP.md
 8. engine/003_DESIGN_PRINCIPLES.md
 9. engine/010_ENGINE_RULES.md
@@ -40,7 +44,7 @@ Governance gate: `tools/test_decision_roadmap_sync.ps1` (Decision 069) — every
 ### Reference
 
 12. engine/020_ENGINE_GLOSSARY.md
-13. engine/030_ENGINE_CHANGELOG.md
+13. engine/030_ENGINE_CHANGELOG.md — **over the read cap (~2.7×); read the newest dated entry under the current version heading**
 
 ### Templates
 

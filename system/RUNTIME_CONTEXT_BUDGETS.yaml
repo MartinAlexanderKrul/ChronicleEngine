@@ -4,6 +4,73 @@ estimator:
   divisor: 4
   rounding: ceiling
 
+# THE READ CAP. Owner ruling, 2026-08-12: the cap applies to every file, because
+# the limit is the reader's and not the file's.
+#
+# Every budget below this block measures a LOAD -- what a declared operation
+# pulls into context on purpose. None of them measured a READ: one agent opening
+# one file to find something out. That is a different limit with a different
+# failure mode, and it fails silently. A reader over the cap gets a truncated
+# view and no error, so it does not know what it did not see.
+#
+# How this surfaced, which is the argument for gating it. `100_CHARACTER_SHEET.md`
+# reached 247,496 bytes -- about 48,800 tokens against a 25,000 cap -- and no
+# budget reported it, because readiness reads that file by field selector and
+# measured a flat ~10,000 tokens the whole time. It was found by a person trying
+# to open the sheet and being unable to.
+#
+# **The rule is not "every file stays small". It is "no file requires a read it
+# cannot survive".** A chronicle is append-only by design and will pass a million
+# bytes; that is correct. What is not correct is a chronicle nobody has declared
+# a bounded way to read. So an over-cap file is conforming only if something
+# declares how to read it in pieces -- a heading selector, an object fence, an id
+# lookup -- and that declaration is what `tools/test_read_cap.ps1` checks.
+read_cap:
+  tokens: 25000
+  # Measured against the reading tool's own reported figure rather than the
+  # divisor-4 estimator above: it reported 43,471 tokens for
+  # `engine/004_DESIGN_FLAGS.md` at 220,672 bytes, which is 0.197 tokens/byte.
+  # The estimator above over-reports by about 27% on this corpus, and using it
+  # here would fail files that read fine.
+  tokens_per_byte: 0.197
+  excluded_paths:
+    # Immutable by policy (Rules Section 13.3): a checkpoint's bytes may not be
+    # edited, so an over-cap snapshot is not a defect and cannot be one.
+    - "**/saves/**"
+    # Non-canonical derived artifacts; regenerated, never read for canon.
+    - "**/exports/**"
+    - "**/tmp/**"
+    # Any dot-prefixed segment is scratch: `.tmp/`, `.tmp/checkpoint-recovery/`,
+    # and the `.900_CHECKPOINT_*.staging-*` / `_RELAY` directories the rollback
+    # path leaves behind. Same convention `generate_validation_evidence.py`
+    # adopted after those directories broke a run (F-010).
+    - "**/.*/**"
+  bounded_read_required:
+    # Over cap and conforming: each declares a bounded read path, so no reader
+    # ever needs the whole file. `how` names the mechanism a reader must use.
+    - file: campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md
+      how: "Event id (`EVT-`) via the object fence; declared in 090_CAMPAIGN_STARTUP.md"
+    - file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
+      how: "entity id via the `npc_present` dispatch and the Closed Channels heading selector"
+    - file: campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+      how: "`canonical_state.system_state.*` field selectors; per-object ratchet below"
+    - file: worlds/gatefall/206_WORLD_RULE_PROFILE.md
+      how: "numbered section heading selectors declared in 090_CAMPAIGN_STARTUP.md"
+    - file: campaigns/gatefall_pendragon_001/140_OBJECTIVES.md
+      how: "objective id (`OBJ-`) via the object fence"
+    - file: campaigns/gatefall_pendragon_001/170_CHANGELOG.md
+      how: "dated entry, newest first; a reader wants the head, never the tail"
+    - file: engine/001_ENGINE_DECISIONS.md
+      how: "`## Decision NNN` heading; never read whole"
+    - file: engine/030_ENGINE_CHANGELOG.md
+      how: "dated entry under a version heading, newest first"
+    - file: engine/004_DESIGN_FLAGS.md
+      how: "`## F-NNN` heading"
+    - file: system/ID_REGISTRY.md
+      how: "identifier lookup by prefix; the high-water marks are in the footer"
+    - file: tools/validate_repository.ps1
+      how: "source; read by the check being changed, not end to end"
+
 # What a tripped budget is allowed to cost. Owner ruling, 2026-08-10.
 #
 # A byte budget measures a LOADING cost, so a byte-driven remedy optimises
@@ -543,7 +610,7 @@ surfaces:
       # the resident card is a contributor to it, so the ceiling ruling above
       # spent part of this campaign's remaining margin. F-019's ownership
       # question is still what actually moves it.
-      gatefall_pendragon_001: 38719
+      gatefall_pendragon_001: 35624
       prototype_alpha: 10442
       prototype_beta: 11087
       reikon_awakening_001: 15795
@@ -1101,3 +1168,82 @@ per_object_budgets:
       mechanism: `measure_runtime_context.py` iterates `OBJECT_FENCE`, so this
       budget has only ever measured the fenced YAML blocks. The figure it
       reports is the record, not the surrounding prose.
+
+  - name: gatefall_protagonist_object
+    file: campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
+    object_prefixes: [ENT-]
+    # Added 2026-08-12. `ENT-000125` is the largest single object in the
+    # repository and was governed by nothing.
+    #
+    # The NPC ledger got a per-object ratchet because `ENT-000139` grew
+    # pathologically, and that ratchet worked -- it caught the 2026-08-16
+    # session and forced the trim. The protagonist's own record, larger than
+    # every NPC record combined at its worst, had no equivalent. Two fields
+    # reached 39% of a 247,496-byte file with nothing measuring either:
+    # `condition` at 56,052 bytes of which **97.7% was self-labelled "Prior
+    # anchor state, superseded"** across eighteen blocks, and `situation` at
+    # 41,530 bytes narrating 2026-07-24 to 2026-08-04 and last extended at
+    # `EVT-000139` -- stale by 395 Events and fourteen in-fiction days.
+    #
+    # Both are retired here, which is the change the `gatefall_npc_ledger_objects`
+    # note above already prescribed and left undone: "retiring the superseded
+    # spans and keeping the current one is the single change that would cut this
+    # object's load by roughly three quarters without deleting anything." It
+    # deletes nothing: `160_CAMPAIGN_CHRONICLE.md` narrated every one of those
+    # spans in full the whole time, and Data Model Section 7.1 is explicit that
+    # canonical state is "what is true now" while 7.2 makes the rest historical
+    # evidence. A third field, `notes`, was the same thing again -- 16,073 bytes
+    # of the 2026-07-28 beast-den clear, last extended at `EVT-000080`, stale by
+    # 454 Events. **247,496 -> 137,411 bytes on the file, -44.5%; the object
+    # itself 150,725 -> 135,330.**
+    #
+    # The redundancy is now exhausted, and that is worth recording so the next
+    # reader does not go looking. What remains is typed state the readiness
+    # selectors actually take -- `skills_known`, `inventory`, `tracked_counters`,
+    # `equipment`, `titles_catalog`, `daily_premium`, quests, counters. Two were
+    # checked specifically and are NOT duplication: `titles_catalog` has no
+    # counterpart in the profile (which authors no catalogue), and
+    # `daily_premium` is named in the readiness selector directly.
+    #
+    # **The referencing gap had to close first, and this is the part worth
+    # keeping.** Decision 085 requires a record to reference every Event whose
+    # `participation_audits` claim it moved that record. 179 Events claim
+    # `record-updated` against `ENT-000125`; `moved_by_events` held 158. The
+    # missing 21 were referenced ONLY by the narrative about to be deleted --
+    # four of them (`EVT-000490`, `491`, `493`, `495`) postdate the stale
+    # narrative entirely, so the index was already incomplete before any cut.
+    # Extending it to 179 came before the trim, exactly as `7faf227` learned on
+    # Owen's record ("the old narrative had been hiding by accident rather than
+    # satisfying by design", 13 Events there, 21 here).
+    #
+    # What is left is typed state readiness actually selects -- skills_known,
+    # inventory, tracked_counters, equipment, quests -- and it is not
+    # redundancy. This ratchet exists so the next thing that grows here is
+    # reported rather than discovered when a read fails.
+    baseline_worst_bytes: 138561
+    growth_allowance_percent: 15
+    reason: >-
+      The protagonist's record is read by field selector, never whole-file: the
+      readiness plan takes `canonical_state.system_state.*` and measures about
+      10,000 tokens, while the object is many times that. That split is correct
+      and is why the file grew unnoticed -- no declared operation loads the
+      fields that were doing the growing, so no budget reported them and
+      readiness stayed flat at +0 through a 94,690-byte reduction.
+
+      The failure mode it leaves is a read, not a load. At 247,496 bytes the
+      file could no longer be opened in one pass by a reader with a token cap,
+      which is how this surfaced: not from a gate, but from a person trying to
+      read the sheet and being unable to. A worst-case object ratchet is the
+      cheapest thing that would have said so first.
+
+      **That failure mode is reduced and not closed, stated rather than
+      implied.** At roughly 0.197 tokens per byte -- the ratio the reading tool
+      itself reported on a comparable markdown file in this repository -- the
+      sheet went from about 48,800 tokens to about 27,100 against a 25,000 cap.
+      Still over, by around 2,000. Closing the rest would mean deleting typed
+      state that readiness reads, which is the wrong trade, so it is not done
+      here. The two honest options are to accept that this record is
+      selector-read and never whole-file -- which is the existing contract and
+      what readiness already does at about 10,000 tokens -- or to split the
+      object, which changes the Data Model and needs an owner ruling rather
+      than a budget note.

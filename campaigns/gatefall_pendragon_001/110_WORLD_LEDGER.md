@@ -117,6 +117,51 @@ Every `breaks` value below is **derived**, never authored — detection date plu
 
 ---
 
+## Supply Sources (Decision 083, Data Model Section 7.5)
+
+Actors that generate opportunity on their own schedule. Tracked state under Section 7.3: mints no identifier, bumps no provenance. An opening promotes to an Event when it becomes campaign-durable — taken, bid on, or refused.
+
+**Why these exist now, and why the cadences are derived rather than owner-authored.** Decision 083 and Decision 088 had **zero live instances** across the whole campaign while `tools/list_supply_and_need_candidates.ps1` listed 59 candidates. That is what `F-035` records: asked whether a contact had work, the Runtime answered *"nothing right now"* with nothing to read, no rule to apply and no die thrown — so "nothing" cost nothing to say and was always going to be the answer. **No opportunity could ever be populated by asking; only ever declined.**
+
+Every `cadence` below is **derived from that source's own canon**, which is what Data Model 7.5 authorises in its own words — *"how often, as its world declares, or derived from the source's canon"*. None is invented and none waits on an owner ruling: `F-008` ruled against exactly that deferral, and the Resident Core carries it — *"Do not defer, hedge, or have an NPC promise to look. The silence of the record is not a world fact."* Where a figure genuinely encodes a design choice rather than a read, it says so in its own note.
+
+`advanced` is the field that makes this honest (the recovery-anchor analogue, Decision 078): it records how far each source has been settled, so a later read cannot be mistaken for a first one. **An advance that yields nothing sets `advanced` forward with `available` unchanged** — a recorded settlement, not a skipped one, on Decision 080's negative-assertion discipline.
+
+```yaml
+supply_sources:
+  - owner: ENT-000134
+    kind: harvest-hire postings, C-Rank and below
+    cadence: "roughly every 3-5 days; derived from her own posting record — the Cicero Scar operation 2026-07-25 (`EVT-000063`), Alexander logged for the next posting 2026-08-04 (`EVT-000137`), and a working pattern of briefing hires on protocol and logging declared hauls against a manifest. She is a coordinator for a running contractor, not an occasional poster."
+    advanced: "2026-08-19T18:55:00-05:00"
+    available: []
+  - owner: ENT-000135
+    kind: harvest and mining postings, up to B-Rank leads
+    cadence: "roughly weekly, with B-Rank leads far rarer; derived from the B-Rank mining lead he carried across 2026-08-05 to 2026-08-13 without it moving (`EVT-000155`), and the same-evening reply pattern to direct asks (`EVT-000088`)."
+    advanced: "2026-08-19T18:55:00-05:00"
+    available: []
+  - owner: ENT-000130
+    kind: Coalition freelance board postings, all Ranks
+    cadence: "continuous — the desk is a board, not a person's pipeline. Postings arrive on the Coalition's own clock and she reads them off it; her role is access, not generation. Derived from the board's own history: `GB-01` through `GB-04` detected 2026-08-01, 03, 04 and 05."
+    advanced: "2026-08-19T18:55:00-05:00"
+    available: []
+  - owner: ENT-000145
+    kind: harvest-hire postings through the Coalition board
+    cadence: "sporadic, several weeks apart; derived from `EVT-000155` — nothing new posted since Halsted Depot, which is itself the evidence: a small two-partner outfit posting its first Coalition job, not a steady source."
+    advanced: "2026-08-19T18:55:00-05:00"
+    available: []
+  - owner: ENT-000148
+    kind: rail-corridor harvest crew places
+    cadence: "tied to her own contract cycle rather than a clock; derived from `EVT-000155` — her crew still on the rail-corridor paperwork, which is one job occupying the crew rather than a pipeline generating places."
+    advanced: "2026-08-19T18:55:00-05:00"
+    available: []
+```
+
+**All five are `advanced` to the current campaign anchor with `available: []`, and that is a real settlement rather than a convenience.** It records that as of 2026-08-19 18:55 each source has been read and none is holding an unclaimed opening — which is exactly the state the fiction has shown. What changes from here is that the next read advances from a recorded anchor instead of from nothing, and a source whose `advanced` falls behind the campaign clock is a finding rather than an absence.
+
+**Not wired yet, and named so it is not mistaken for done.** Fifty-four of the fifty-nine candidates remain undeclared. These five are the contacts play has actually asked for work; the rest are declared as they are touched, on the same derive-from-canon rule. The standing-need side (Decision 088, Section 7.6) is still at zero instances.
+
+---
+
 ## Campaign-Scope Concealed Discoveries (Profile Section 8.4.5)
 
 Campaign-scope `concealed-discovery` records, anchored on entities this campaign created. They carry the complete field contract Profile Section 8.4.5 requires and Section 8.4.3 consumes. World-scope discoveries live in `worlds/gatefall/230_KNOWLEDGE_SUBJECTS.md`; these three are promotions of threads this campaign's own fiction produced, authored at `EVT-000159` under the promotion ritual.

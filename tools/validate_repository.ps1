@@ -2229,7 +2229,11 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
 
     foreach ($ledger in @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "*.md" -File)) {
         $ledgerText = Get-Content -LiteralPath $ledger.FullName -Raw
-        if ($ledgerText -notmatch 'standing_needs:') { continue }
+        # Either construct keeps the ledger in scope. This guard used to name
+        # `standing_needs` alone, which made the supply-source check below
+        # unreachable in any ledger that declared sources and no needs -- the
+        # first ledger to do so was the one that exposed it.
+        if ($ledgerText -notmatch 'standing_needs:' -and $ledgerText -notmatch 'supply_sources:') { continue }
         $ledgerRelative = Get-RelativePath $ledger.FullName
         $ledgerIndex = New-LineIndex $ledgerText
 
@@ -2275,6 +2279,54 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
             if ($null -ne $anchor -and $status -eq 'open' -and
                 [datetimeoffset]::TryParse($due, [ref]$dueParsed) -and $dueParsed -lt $anchor) {
                 Add-Failure "$ledgerRelative`:$entryLine standing need held by $holder is still 'open' with a due time of $due, behind the campaign anchor $($anchor.ToString('o')); elapsed time reaching a need's due time must settle it from the holder's own state (Runtime Section 2.4, Decision 088)."
+            }
+        }
+
+        # Decision 083 / Data Model 7.5 -- the supply source, gated like its twin.
+        #
+        # `standing_needs` has had this check since Decision 088 landed;
+        # `supply_sources` had none, in any tool. The construct was defined in the
+        # Data Model, surfaced by list_supply_and_need_candidates.ps1, validated by
+        # nothing, and carried ZERO live instances across the whole campaign --
+        # which is why F-035 happened: asked whether a contact had work, there was
+        # nothing to read, so "nothing available" cost nothing to say and was
+        # always the answer. That is F-002's shape (a mechanism with nothing
+        # feeding it) on the supply surface.
+        #
+        # `advanced` is the field that makes supply honest (Data Model 7.5, the
+        # recovery-anchor analogue of Decision 078). An advance that yields
+        # nothing still moves it. So an `advanced` behind the campaign anchor is
+        # the same defect F-002 recorded for deadlines: elapsed time reached the
+        # source and nothing settled it.
+        if ($ledgerText -match 'supply_sources:') {
+            foreach ($entry in (Get-ListEntries (Get-IndentedSection $ledgerText "supply_sources"))) {
+                $sOwner = Get-EntryValue $entry "owner"
+                $sKind = Get-EntryValue $entry "kind"
+                $sCadence = Get-EntryValue $entry "cadence"
+                $sAdvanced = Get-EntryValue $entry "advanced"
+                $sLine = Get-LineNumber $ledgerIndex ($ledgerText.IndexOf($entry))
+
+                if ($sOwner -notmatch '^(ENT|REC)-\d{6}$') {
+                    Add-Failure "$ledgerRelative`:$sLine supply source names no defined owner; a source is a property of an actor already in canon (Data Model Section 7.5)."
+                    continue
+                }
+                if ([string]::IsNullOrWhiteSpace($sKind)) {
+                    Add-Failure "$ledgerRelative`:$sLine supply source owned by $sOwner records no kind; what it generates is required (Data Model Section 7.5)."
+                    continue
+                }
+                if ([string]::IsNullOrWhiteSpace($sCadence)) {
+                    Add-Failure "$ledgerRelative`:$sLine supply source owned by $sOwner records no cadence; a source with no rhythm cannot be advanced, and 'derived from the source's canon' is an authorised cadence (Data Model Section 7.5, F-008)."
+                    continue
+                }
+                if ([string]::IsNullOrWhiteSpace($sAdvanced)) {
+                    Add-Failure "$ledgerRelative`:$sLine supply source owned by $sOwner records no advanced anchor; without it a later read cannot be told from a first settlement (Data Model Section 7.5, Decision 078)."
+                    continue
+                }
+                $sParsed = [datetimeoffset]::MinValue
+                if ($null -ne $anchor -and
+                    [datetimeoffset]::TryParse($sAdvanced, [ref]$sParsed) -and $sParsed -lt $anchor) {
+                    Add-Failure "$ledgerRelative`:$sLine supply source owned by $sOwner is advanced only through $sAdvanced, behind the campaign anchor $($anchor.ToString('o')); elapsed time advances supply on the world's clock whether or not the player asked (Decision 083, Runtime Section 2.4). An advance that yields nothing still moves the anchor."
+                }
             }
         }
     }

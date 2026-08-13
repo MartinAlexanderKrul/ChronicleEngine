@@ -19,12 +19,29 @@ if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) {
 # supply source (Decision 083, Data Model 7.5) or a standing need (Decision 088,
 # Section 7.6). Both constructs exist, are gated, and have zero live instances.
 #
-# The rates are world authoring and belong to the owner -- how often a
-# contractor generates work, how fast a shortfall is filled, and what a quiet
-# week looks like are creative decisions about Gatefall, not derivable facts.
-# What IS derivable is the candidate set: canon already says who employs, who
-# contracts, who is short-handed and who is hiring, in prose nobody can dispatch
-# against.
+# CORRECTED 2026-08-13. This comment, and the closing message below, used to say
+# the rates "are world authoring and belong to the owner ... creative decisions
+# about Gatefall, not derivable facts". That is wrong on three counts, and it is
+# what a Runtime reads before deciding whether to author or defer -- so it
+# produced exactly the deferral it warned about.
+#
+# 1. Data Model 7.5 defines `Cadence` as "how often, as its world declares, OR
+#    DERIVED FROM THE SOURCE'S CANON". The schema anticipates derivation.
+# 2. `F-008` ruled against precisely this instinct and its disposition records
+#    the owner's own argument: "I can't as an author create a full world with
+#    every detail; that would make using AI obsolete", and "on-demand authoring
+#    within canon's constraints is the engine's function, not a concession it
+#    makes."
+# 3. The Resident Core carries it as *Unnamed Is Not Absent -- Author It*: "Do
+#    not defer, hedge, or have an NPC promise to look. The silence of the record
+#    is not a world fact."
+#
+# So the candidate set is derivable AND so is the cadence: a contractor whose
+# record shows a several-day posting rhythm across months of played evidence has
+# a cadence in canon already. Author it from that texture, the way any other
+# entailed-but-unnamed fact is authored. An owner ruling is owed only where a
+# rate is a genuine design choice with alternatives that matter -- global
+# opportunity pacing, say -- not for reading a rhythm the campaign already shows.
 #
 # So this is a WORKLIST, like list_commitment_candidates.ps1, and it is
 # deliberately not a gate. Prose matching for "this actor generates work" is
@@ -150,8 +167,16 @@ Write-Host ""
 Write-Host "  Each is a candidate, not a finding. For every one that genuinely"
 Write-Host "  generates work, declare a supply source (Data Model 7.5) with its"
 Write-Host "  cadence; for every one genuinely short of something, declare a"
-Write-Host "  standing need (7.6). The cadences are world authoring and belong"
-Write-Host "  to the owner - the engine owns the obligation, the profile owns"
-Write-Host "  the rates (Decision 083 point 5)."
+Write-Host "  standing need (7.6)."
+Write-Host ""
+Write-Host "  AUTHOR THE CADENCE, do not defer it. Data Model 7.5 defines it as"
+Write-Host "  'how often, as its world declares, or DERIVED FROM THE SOURCE'S"
+Write-Host "  CANON' - and a contact with months of played postings already has"
+Write-Host "  a rhythm in canon. F-008 ruled against deferring this and the"
+Write-Host "  Resident Core carries it: 'Do not defer, hedge, or have an NPC"
+Write-Host "  promise to look. The silence of the record is not a world fact.'"
+Write-Host "  An owner ruling is owed only where a rate is a real design choice"
+Write-Host "  with alternatives that matter, not for reading a rhythm the"
+Write-Host "  campaign already shows."
 Write-Host ""
 exit 0

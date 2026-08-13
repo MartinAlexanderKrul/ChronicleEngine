@@ -117,6 +117,22 @@ Every `breaks` value below is **derived**, never authored — detection date plu
 
 ---
 
+## World Ticks (Profile Section 9.1.1)
+
+What each daily 06:00 tick actually rolled. Tracked state: mints no identifier, bumps no provenance.
+
+**`world_clock.last_ticked` records that time passed; this records that the world ran.** They are different facts, and only the second is checkable. A tick that advances the anchor and rolls nothing is byte-identical to one that rolled and found nothing — which is the defect this engine has met three times now (`F-002`'s deadlines, `F-035`'s supply sources, and the tick itself). `none` is therefore a result and is written as one, on the same negative-assertion discipline Section 7.5's supply sources use.
+
+**No entry exists yet, and that is correct rather than a gap.** Profile 1.73 initialised `world_clock.last_ticked` to the adoption anchor and back-dated nothing for the ninety in-fiction days played before the tick existed. **The first tick falls 2026-08-20 06:00**, which the campaign has not reached — `campaign_time` stands at 2026-08-19 18:55. The first entry is written then, before the twenty-seventh daily quest issues.
+
+```yaml
+world_ticks: []
+```
+
+**The daily quest is bound to this.** Section 9.1.1 makes the tick and the daily one boundary event with a fixed order: the tick runs, its entry lands here, and only then does the daily issue. A daily rendered for a day with no entry above is the failure the coupling exists to make visible — the daily is player-facing and never forgotten, the tick is owed to nobody in the scene, so the reliable obligation now carries the unreliable one.
+
+---
+
 ## Supply Sources (Decision 083, Data Model Section 7.5)
 
 Actors that generate opportunity on their own schedule. Tracked state under Section 7.3: mints no identifier, bumps no provenance. An opening promotes to an Event when it becomes campaign-durable — taken, bid on, or refused.

@@ -129,6 +129,26 @@ What each daily 06:00 tick actually rolled. Tracked state: mints no identifier, 
 world_ticks: []
 ```
 
+### District Pressure (Profile Section 9.1.3)
+
+How close each district is to losing ground. Deterministic tracked state — breaks raise it, clear weeks lower it, thresholds are crossed without a roll.
+
+**Initialised from what the campaign already played.** The Red Line Corridor is not at zero: `GB-01` broke at midnight 2026-08-08 and `GB-04` at midnight 2026-08-12, and the world ledger already recorded that pattern as *"two E-Rank breaks in the Red Line Corridor inside eleven days… a measurement of how thin the freelance pool is."* Both were contained by the Section 9.8 response, and both are now more than a clear week behind the current anchor, so the decay has run.
+
+```yaml
+district_pressure:
+  - district: ENT-000090
+    name: Red Line Corridor
+    pressure: 0
+    note: "Two contained E-Rank breaks (`GB-01` 2026-08-08, `GB-04` 2026-08-12) at +1 each, then decayed to floor across the clear weeks since. Recorded rather than assumed: this district is the one with a demonstrated break history, and it starts at 0 because the city absorbed both."
+  - district: ENT-000089
+    name: Lakefront Gate Corridor
+    pressure: 0
+    note: "`GB-02` broke 2026-08-09 (+1); `GB-03` cleared and never broke. Decayed to floor."
+```
+
+**Only districts with a played history are listed.** A district with no entry is at 0; entries appear as breaks give them one. Thresholds: 4 strained, 7 cordon, **10 containment failure — the district is overrun and needs a joint raid** (Section 9.1.3).
+
 **The daily quest is bound to this.** Section 9.1.1 makes the tick and the daily one boundary event with a fixed order: the tick runs, its entry lands here, and only then does the daily issue. A daily rendered for a day with no entry above is the failure the coupling exists to make visible — the daily is player-facing and never forgotten, the tick is owed to nobody in the scene, so the reliable obligation now carries the unreliable one.
 
 ---

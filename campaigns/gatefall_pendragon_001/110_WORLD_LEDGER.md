@@ -194,7 +194,33 @@ supply_sources:
 
 **All five are `advanced` to the current campaign anchor with `available: []`, and that is a real settlement rather than a convenience.** It records that as of 2026-08-19 18:55 each source has been read and none is holding an unclaimed opening — which is exactly the state the fiction has shown. What changes from here is that the next read advances from a recorded anchor instead of from nothing, and a source whose `advanced` falls behind the campaign clock is a finding rather than an absence.
 
-**Not wired yet, and named so it is not mistaken for done.** Fifty-four of the fifty-nine candidates remain undeclared. These five are the contacts play has actually asked for work; the rest are declared as they are touched, on the same derive-from-canon rule. The standing-need side (Decision 088, Section 7.6) is still at zero instances.
+**Not wired yet, and named so it is not mistaken for done.** Fifty-four of the fifty-nine candidates remain undeclared. These five are the contacts play has actually asked for work; the rest are declared as they are touched, on the same derive-from-canon rule.
+
+---
+
+## Standing Needs (Decision 088, Data Model Section 7.6)
+
+What actors want, on their own clock. A need is a property of an actor already in canon, never of an aggregate. Settlement resolves from the holder's own state, standing and reach — **not from whether the protagonist got involved** — and an `unmet` need records why.
+
+**These are the first live instances of Decision 088 in the campaign.** Like the supply sources above, each is derived from something already played and cited, not invented to populate a table.
+
+```yaml
+standing_needs:
+  - holder: ENT-000135
+    subject: "eight-plus combat-rated hunters for a B-Rank lead a bigger-than-usual client will not sign off without"
+    due: "rolling; the lead came across his desk 2026-08-17 and is not postable until the roster clears"
+    status: open
+    advanced: "2026-08-19T18:55:00-05:00"
+    outcome: "Open. Named unprompted on the 2026-08-19 call (`EVT-000544`) and the same staffing constraint he had already named at `EVT-000415`: he runs C-Rank and begs for B when timing lines up, and A-Rank is guild territory. Alexander said he would ask around; `140_OBJECTIVES.md` `OBJ-31` opened on it. **It settles from Dale's own reach whether or not Alexander delivers** — a small contractor competing with Ironline and Horizon for the same bodies may simply fail to fill it."
+  - holder: ENT-000101
+    subject: "combat-rated hunters for volume strike contracts, continuously"
+    due: "continuous; recruiting is the guild's standing posture rather than an event"
+    status: open
+    advanced: "2026-08-19T18:55:00-05:00"
+    outcome: "Open and structural. Wade Bishop's whole role is talent acquisition for the volume-strike tier, and `EVT-000384` records the mechanism plainly: Brannigan's office pulls bench names whenever a job runs short, rosters are filed padded, and *nobody checks unless someone dies*. **This need is met badly rather than unmet**, which is the fiction's own point — the shortfall is answered by forgery instead of by hiring, and that is what Alexander holds over Wade."
+```
+
+**Only two, and deliberately.** These are the needs canon states in so many words with an Event behind them. The candidate tool lists more actors whose prose implies wanting something; those are declared as play establishes them, on the same rule. **Both are `advanced` to the current anchor**: each has been read, neither has been met, and that is a settlement rather than a silence.
 
 ---
 

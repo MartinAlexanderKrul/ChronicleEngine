@@ -1,6 +1,22 @@
 .tmp.driveupload/
 .tmp/
 .claude/worktrees/
+
+# tmp/ is scratch and must stay unreachable by a commit.
+#
+# test_progression_audit_contract.ps1 used to write its fixture to <repo>/tmp/,
+# and an interrupted run left the copied tree inside the working directory where
+# the next `git add -A` swept it in. That happened: 669 files of a
+# progression-audit fixture were committed under
+# tmp/progression-audit-6c5c3685... at 8dfe8f4, including a 155 KB copy of the
+# character sheet frozen at that date. The tool now writes to the system temp
+# directory, but the committed leftover outlived the fix and was untracked here.
+#
+# It was not merely dead weight. Those 669 files were 271 of the CRLF offenders
+# that test_line_endings.ps1 found, and a stale duplicate of live campaign state
+# sitting inside the tree is exactly the fixture-pinned-to-live-state defect
+# (F-018) that the audit tooling exists to catch.
+tmp/
 __pycache__/
 *.pyc
 integrations/open-webui/chronicle-open-webui/agents/openai.yaml

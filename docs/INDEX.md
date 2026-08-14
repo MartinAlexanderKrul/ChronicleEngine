@@ -31,6 +31,8 @@ Transactional checkpoint writer: `tools/new_checkpoint.ps1` (Recommendation R8).
 
 Governance gate: `tools/test_decision_roadmap_sync.ps1` (Decision 069) — every accepted decision must be claimed by a roadmap milestone. Change classification is defined in `docs/DEVELOPMENT_WORKFLOW.md`.
 
+Line-ending gate: `tools/test_line_endings.ps1` — enforces the `* text=auto eol=lf` policy `.gitattributes` declares, in the **working tree**, which is the half git cannot check for you. `text=auto` normalises on compare, so a CRLF working file whose index copy is LF is reported clean by `git status` while every raw-byte reader in `tools/` sees something else: a `$`-anchored pattern cannot match a line ending in CR, so the checks reading that file **stop firing and report success**. This is the one gate whose absence makes a green run of the others prove nothing — if a suite goes inexplicably green or a count reads zero against records you can see, run it first.
+
 ### Architecture
 
 5. engine/000_ENGINE_MANIFEST.md

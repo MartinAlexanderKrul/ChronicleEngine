@@ -86,8 +86,8 @@ canonical_state:
   claim: "Under one of the Scar's unreclaimed core blocks, a light-industrial sublevel was crushed shut in the break and logged afterward only as a structural footprint — never opened, never surveyed. The perimeter's periodic unexplained mana spikes originate below that footprint rather than in the warped blocks above it, which is why a decade of surface survey has never located them."
   anchor: ENT-000091
   concealment: "Entry to the core blocks is restricted to licensed BGM-escorted survey and containment teams, and the sublevel reads as solid fill on every floor plan BGM holds. Nobody has had cause to dig."
-  proximity_condition: "Standing inside the Scar's inner cordon, in the unreclaimed core blocks, on a BGM-contracted survey or containment posting — not the reclaimed edge blocks, and not the perimeter fence."
-  clue_condition: "A resolved Perception-based read of the ground inside the core blocks that returns a depth the surrounding structure does not account for."
+  proximity_condition: "Standing inside the Scar's inner cordon, in the unreclaimed core blocks — however reached. **Amended by owner ruling, 2026-08-20** (`campaigns/gatefall_pendragon_001`, `EVT-000555`): the original wording required a BGM-contracted survey or containment posting, which excluded a Bearer who reaches the core by stealth or rift-step rather than by badge — an access method this record predates. The posting requirement is dropped as bureaucratic detail on top of the actual gate, which was always physical presence."
+  clue_condition: "None required — proximity alone satisfies Section 8.4.3's criterion 2. **Amended in the same ruling**: the original depth-read clue is dropped alongside the posting requirement."
   reveal_condition: "The Bearer reaches the sublevel floor in person and gets a light source onto the far wall."
   objective: "Get into the sublevel and establish what is producing the spike."
   completion_condition: "The spike's source identified first-hand, at the sublevel floor."

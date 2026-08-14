@@ -1020,6 +1020,104 @@ foreach ($file in $canonicalFiles) {
                     }
                 }
 
+                # F-037: a stored prose claim about what an item would do FOR THE BEARER
+                # is a derivation over `skills_known`, not a fact, and nothing recomputed it.
+                #
+                # Twice in one sitting a line of the form "Alexander holds <skill> at
+                # <Rank>" was read as current and was wrong, because the Rank had moved
+                # since the line was written. The Sprint rune's consumables entry still
+                # promised "E-Rank, so consuming it offers a rune ascension E -> C, two
+                # Ranks in one consumption" after Sprint took the earned road to D at
+                # `EVT-000524` -- the real offer was one Rank, and the player declared
+                # consumption on the strength of the stored line. The Daily Premium rune
+                # offer still read "C-Rank Expert, so this reaches B-Rank Novice" after
+                # Dagger Mastery broke through to B at `EVT-000509`, which under Section
+                # 7.5 makes the rune INERT to him; it was priced at 112,500 g and the
+                # player asked whether to buy it.
+                #
+                # These are read at the moment they are load-bearing -- a purchase or a
+                # consumption -- and they are read BY THE PLAYER, who cannot check them.
+                # A stale note about history is inert; a stale note about "what this would
+                # do for you" is a recommendation.
+                #
+                # Profile Section 15.1 already says canonical state wins over a literal in
+                # a value position, and it did not catch either one: that rule is scoped to
+                # PROFILE TEMPLATES and does not reach campaign-stored prose, so a
+                # `/system shop` render pulled the stale claim straight into the panel.
+                # This is the check that reaches it. Both sides are structured and sit in
+                # the same file, so the comparison is mechanically decidable and was simply
+                # never made.
+                $bearerSkillRanks = @{}
+                foreach ($skillEntry in (Get-ListEntries $skillsSection)) {
+                    $skillHead = [regex]::Match($skillEntry, '^[ \t]*-[ \t]+"(?<name>[^\[]+?)[ \t]*\[(?<rank>[EDCBAS])-Rank\]')
+                    if (-not $skillHead.Success) { continue }
+                    $masteryHead = [regex]::Match($skillEntry, '\[[EDCBAS]-Rank\].*?\b(?<mastery>Novice|Practiced|Adept|Expert|Master)\b')
+                    $bearerSkillRanks[$skillHead.Groups['name'].Value.Trim().ToLowerInvariant()] = [pscustomobject]@{
+                        Rank = $skillHead.Groups['rank'].Value
+                        Mastery = if ($masteryHead.Success) { $masteryHead.Groups['mastery'].Value } else { $null }
+                    }
+                }
+
+                if ($bearerSkillRanks.Count -gt 0) {
+                    # Only the surfaces that make an offer: what he owns and what the shop
+                    # is selling him. A claim in the chronicle is a historical record and
+                    # was true when written; a claim in an inventory entry or a live shop
+                    # offer is presented as current.
+                    foreach ($surface in @('inventory', 'daily_premium')) {
+                        $surfaceSection = Get-IndentedSection $block $surface
+                        if ([string]::IsNullOrWhiteSpace($surfaceSection)) { continue }
+
+                        foreach ($proseLine in ($surfaceSection -split "\r?\n")) {
+                            # Anchored on the Bearer as the holder. An entry describing
+                            # what someone else holds is not a claim about this offer.
+                            $claim = [regex]::Match($proseLine, '(?:Alexander|he)[ \t]+(?:already[ \t]+)?holds[ \t]+(?<subject>it|[A-Z][A-Za-z'' ]*[A-Za-z])[ \t]+at[ \t]+\[?(?<rank>[EDCBAS])-Rank\]?(?:[ \t]+(?<mastery>Novice|Practiced|Adept|Expert|Master))?')
+                            if (-not $claim.Success) { continue }
+
+                            $subject = $claim.Groups['subject'].Value.Trim()
+                            if ($subject -eq 'it') {
+                                # "holds it at C-Rank Expert" -- the skill is named earlier
+                                # in the same entry, which is how the Daily Premium offer
+                                # was phrased and why nothing keyed on a name found it.
+                                $taught = [regex]::Match($proseLine, 'teaches[ \t]+\*\*(?<skill>[^*]+)\*\*')
+                                if (-not $taught.Success) { continue }
+                                $subject = $taught.Groups['skill'].Value.Trim()
+                            }
+
+                            $key = $subject.ToLowerInvariant()
+                            if (-not $bearerSkillRanks.ContainsKey($key)) {
+                                Add-Failure "$relativePath`:$line $surface claims Alexander holds '$subject' at $($claim.Groups['rank'].Value)-Rank, but no such skill is in skills_known (F-037: a stored comparison against Bearer state that no longer names a real skill)."
+                                continue
+                            }
+
+                            $held = $bearerSkillRanks[$key]
+                            if ($claim.Groups['rank'].Value -ne $held.Rank) {
+                                Add-Failure "$relativePath`:$line $surface claims Alexander holds '$subject' at $($claim.Groups['rank'].Value)-Rank, but skills_known has it at $($held.Rank)-Rank (F-037: a stored derivation over Bearer state, read by the player at a purchase or consumption decision)."
+                            } elseif ($claim.Groups['mastery'].Success -and $held.Mastery -and
+                                      $claim.Groups['mastery'].Value -ne $held.Mastery) {
+                                Add-Failure "$relativePath`:$line $surface claims Alexander holds '$subject' at $($held.Rank)-Rank $($claim.Groups['mastery'].Value), but skills_known has it at $($held.Mastery) (F-037)."
+                            }
+                        }
+                    }
+
+                    # F-037 Q3, the same defect on a second field of the same block: the
+                    # Daily Premium cycle's Rank rolls are made against System Rank, and
+                    # the stored cycle went on reading "against System Rank: C-Rank" while
+                    # the Bearer had stood at B since `EVT-000515`. The rolls themselves
+                    # are generated at rotation and must not move; the System Rank they
+                    # were rolled against is a fact that has to agree with the sheet.
+                    $premiumSection = Get-IndentedSection $block "daily_premium"
+                    $premiumRank = [regex]::Match($premiumSection, '(?i)against[ \t]+System[ \t]+Rank:?[ \t]*\*{0,2}(?<rank>[EDCBAS])(?:-Rank)?\*{0,2}')
+                    # Read locally rather than reusing the later Stat-Passive parse: that
+                    # one is derived further down this same function, and a check that
+                    # depends on a variable assigned after it is a check that silently
+                    # compares against nothing.
+                    $bearerSystemRank = [regex]::Match($block, '(?m)^[ \t]+system_rank:[ \t]*"?(?<rank>[EDCBAS])(?:-Rank)?"?[ \t]*$')
+                    if ($premiumRank.Success -and $bearerSystemRank.Success -and
+                        $premiumRank.Groups['rank'].Value -ne $bearerSystemRank.Groups['rank'].Value) {
+                        Add-Failure "$relativePath`:$line daily_premium cycle states its Rank rolls were made against System Rank $($premiumRank.Groups['rank'].Value) but the Bearer's system_rank is $($bearerSystemRank.Groups['rank'].Value) (F-037 Q3)."
+                    }
+                }
+
                 $effectiveSection = Get-IndentedSection $block "effective_stats"
                 $strengthMatch = [regex]::Match($effectiveSection, '(?m)^[ \t]+strength:[ \t]*"?(?<value>\d+)')
                 $intelligenceMatch = [regex]::Match($effectiveSection, '(?m)^[ \t]+intelligence:[ \t]*"?(?<value>\d+)')

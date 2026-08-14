@@ -12,6 +12,20 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-15 — 1.80 fixed two defects and gated neither
+
+**Engine tooling; refinement under Decision 069, owned by Version 0.4.** No Rules, Data Model, or Runtime mechanism change; a world-scoped contract test imposes nothing a world must satisfy that its own profile does not already declare.
+
+**Problem:** 1.80 closed the Bearer/hunter parity gap and the Section 19.2 band contradiction. **Both were found by hand, both were decidable from tables already in the profile, and nothing stopped either from being reintroduced by an ordinary edit.** A retuned rung gain, a moved level threshold, an edited pool or a redrawn band would each silently restore one of them with the suite fully green — which is the same shape as the line-ending gate's absence one layer down: the repository had the evidence and no mechanism reading it.
+
+**Change:** new `tools/test_gatefall_rank_parity.ps1`. It **asserts the property, not the sentence** — it does not check that Section 3.2 contains particular numbers, it recomputes the ladder from the profile's own tables and proves parity actually holds. Six tables are parsed and none is duplicated in the gate (F-013): Section 6.1 Rank Health, Section 5.1 Rank Mana, Section 3.2's rung gains, Section 6.6's level ladder, Section 19.2's bands, and Section 4.1's creation-array floor. It then proves that automatic growth alone, **from the weakest legal creation Stat**, clears `Rank Health ÷ 4` at every rung, and that Section 19.2 cards each Rank's own pool as that Rank with contiguous bands. A retune is free to move any number; it just cannot break the agreement between them.
+
+**The E rung is deliberately exempt from the parity assertion**, and the reason is recorded rather than left as a silent skip: Section 4.1 opens the Bearer on a **civilian-range** array, so a Stat of 8 against an E-Rank hunter's 10 is the premise of the fiction, not a defect. The ladder's obligation begins at the first rung it actually delivers.
+
+**Files:** `tools/test_gatefall_rank_parity.ps1` (new), `engine/030_ENGINE_CHANGELOG.md`.
+
+**Audit:** six legs verified by mutation against the live profile, each restored afterward — an A-rung gain cut from +63 to +40, **the flat `+1` restored** (the original defect), **Section 19.2's old linear bands restored** (the other original defect), an S pool raised without a matching ladder change, and the A rung pulled in to level 34. Each failed; the clean profile passes. **The mutation run also found two defects in the gate itself.** Its band parser read `1,225+` as the pair `(1, 225)` — a comma is a non-digit, so the range pattern split inside the number and produced a band of 1–225, which then reported the S pool as unclassified *and* the bands as non-contiguous: two wrong findings from one unstripped separator. Thousands separators are now stripped before matching and the open-ended form is matched first. Separately the row anchors required column-zero pipes, and Section 3.2's table is indented inside a numbered list item, so the gate could not see the very row it exists to check. Full suite **38 of 38**.
+
 ## 2026-08-15 — The Bearer's growth was linear and the ladder he was measured against was geometric
 
 **Gatefall world rule content and campaign canon; Profile 1.79 → 1.80, a required migration. Refinement under Decision 069, owned by Version 0.4.** No ADR. It touches no section of `010_ENGINE_RULES.md` and does not change `011_ENGINE_DATA_MODEL.md` at all; on the third leg it introduces no engine-general mechanism — a world's per-level Stat award is world rule content, and no other world is bound by it. **Owner-ruled before implementation** on all three axes: route, scope, and backfill treatment.

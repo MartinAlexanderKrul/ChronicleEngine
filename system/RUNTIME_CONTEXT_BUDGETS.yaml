@@ -837,7 +837,21 @@ surfaces:
       # Same drift-then-trip pattern the 2026-08-04 note records: a surface fails
       # in the session after the one that grew it, and the session that trips it
       # is the one asked to explain it.
-      gatefall_pendragon_001:/system quests: 4996
+      # Re-recorded 2026-08-17 on an EXPLICIT OWNER RULING given with the /save
+      # invocation: "make sure all new data about items are saved in detail, you can
+      # higher the budget limit". Both surfaces grew on real authored content rather
+      # than on narrative accumulating inside a field, and every per-unit budget
+      # passes with headroom (skills_known 941/1100), which is the check that
+      # distinguishes the two cases. `/system quests` 4,996 -> 5,909: OBJ-16 gained
+      # the EVT-000592 ceiling findings on Marnie's own work plus a recorded
+      # correction of a Runtime citation error (the Marnie thread is OBJ-16, not
+      # OBJ-27). `/system titles` 5,202 -> 6,077: a thirteenth title earned
+      # (Vanguard, on the all-Gates ruling) and THE UNMEASURED re-authored beyond-S
+      # at EVT-000591 rather than being allowed to go inert at System Rank A.
+      # This file's standing warning is that a stale baseline breaks the ratchet in
+      # both directions; these are re-recorded at the measured figures rather than
+      # padded, so the next drift is still detected.
+      gatefall_pendragon_001:/system quests: 5909
       # Left armed 2026-08-04 at 25,880 while the surface measured 29,655
       # against a 29,761 ratchet — 106 tokens of headroom — deliberately, so
       # that the next change would trip it and get read rather than being
@@ -888,7 +902,7 @@ surfaces:
       # 34,459 tokens, and the panel that actually renders the catalogue pays 689
       # for it, comfortably inside a 16,000 ceiling. A surface that renders
       # something on request is the right place for it to cost anything.
-      gatefall_pendragon_001:/system titles: 5202
+      gatefall_pendragon_001:/system titles: 6077
       # Re-recorded 2026-08-04, 33,836 -> 62,654 (+28,818). **Almost none of
       # this is growth. It is the removal of a measurement artifact, and the
       # old figure was never a measurement of this surface at all.**

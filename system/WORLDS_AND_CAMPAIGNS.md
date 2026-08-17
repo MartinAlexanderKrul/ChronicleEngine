@@ -30,7 +30,7 @@ Generated rows are not edited directly. Update their owning startup, world/profi
 
 | Campaign | World | Protagonist | Status | Latest checkpoint | Captured |
 |---|---|---|---|---|---|
-| `campaigns/gatefall_pendragon_001/` | `worlds/gatefall/` | Alexander Pendragon | In progress | `900_CHECKPOINT_0102` | 2026-08-17 |
+| `campaigns/gatefall_pendragon_001/` | `worlds/gatefall/` | Alexander Pendragon | In progress | `900_CHECKPOINT_0103` | 2026-08-18 |
 | `campaigns/prototype_alpha/` | `worlds/verra/` | Ilse Varn | Closed — terminal | `900_CHECKPOINT_0001` | 2026-07-23 |
 | `campaigns/prototype_beta/` | `worlds/verra/` | Kael Travis | In progress | `900_CHECKPOINT_0001` | 2026-07-13 |
 | `campaigns/reikon_awakening_001/` | `worlds/reikon/` | Daedalus | In progress | `900_CHECKPOINT_0017` | 2026-07-22 |

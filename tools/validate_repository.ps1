@@ -733,6 +733,73 @@ function Get-QuestRewardFacts {
 # with each other while both disagreed with the profile, which is exactly what
 # happened.
 $script:ladderCeilingCache = @{}
+$script:skillLadderCeilingCache = @{}
+
+# Per-skill authored ceiling, parsed from Section 7.3's own ladder tables.
+#
+# The world-wide Get-LadderCeiling below answers "how far does the FURTHEST
+# ladder reach", which was the right question while some column was always
+# unauthored. Profile 1.81 authored S-Rank -- the top of the Rank order -- for
+# every skill in all three tables, and a global ceiling of S can never be
+# exceeded by any Rank that exists, so that guard became incapable of failing.
+# A check that cannot fail is indistinguishable from one that works.
+#
+# The property the guard was always for is per-skill: a skill may not be held
+# above the highest Rank ITS OWN row authors. That question stays answerable no
+# matter how far the tables grow, and it catches the case the global form never
+# could -- a skill added to a table with some columns left blank.
+function Get-SkillLadderCeilings {
+    param([string]$Root, [string]$WorldName)
+
+    if (-not $WorldName) { return @{} }
+    if ($script:skillLadderCeilingCache.ContainsKey($WorldName)) {
+        return $script:skillLadderCeilingCache[$WorldName]
+    }
+
+    $ceilings = @{}
+    $profilePath = Join-Path $Root "worlds/$WorldName/206_WORLD_RULE_PROFILE.md"
+    if (Test-Path -LiteralPath $profilePath -PathType Leaf) {
+        $rankOrder = @("E", "D", "C", "B", "A", "S")
+        $lines = Get-Content -LiteralPath $profilePath -Encoding UTF8
+        $rankColumns = $null
+        foreach ($line in $lines) {
+            if ($line -notmatch '^\|') { $rankColumns = $null; continue }
+            $cells = $line.Trim().Trim('|').Split('|')
+            if ($line -match '^\|[ 	]*Skill[ 	]*\|') {
+                $rankColumns = @{}
+                for ($i = 0; $i -lt $cells.Count; $i++) {
+                    $rankCell = [regex]::Match($cells[$i].Trim(), '^(?<rank>[EDCBAS])(?:[ 	]*\(native\))?$')
+                    if ($rankCell.Success) { $rankColumns[$i] = $rankCell.Groups['rank'].Value }
+                }
+                if ($rankColumns.Count -eq 0) { $rankColumns = $null }
+                continue
+            }
+            if (-not $rankColumns) { continue }
+            if ($cells[0].Trim() -match '^-+$') { continue }
+            # "**Sprint** *(native E-Rank)*" and "**Keen Sense**" both name a skill.
+            $name = $cells[0] -replace '\*', '' -replace '\(native[^)]*\)', ''
+            $name = $name.Trim()
+            if (-not $name) { continue }
+            $best = -1
+            foreach ($i in $rankColumns.Keys) {
+                if ($i -ge $cells.Count) { continue }
+                $cell = $cells[$i].Trim()
+                if (-not $cell) { continue }
+                # A cell below the skill's own native Rank authors nothing, and
+                # says so in those words. Everything else -- including a stated
+                # "magnitude only" position -- is authored.
+                if ($cell -match 'no grant above native') { continue }
+                $index = [array]::IndexOf($rankOrder, $rankColumns[$i])
+                if ($index -gt $best) { $best = $index }
+            }
+            if ($best -ge 0) { $ceilings[$name] = $rankOrder[$best] }
+        }
+    }
+
+    $script:skillLadderCeilingCache[$WorldName] = $ceilings
+    return $ceilings
+}
+
 function Get-LadderCeiling {
     param([string]$Root, [string]$WorldName)
 
@@ -1223,17 +1290,35 @@ foreach ($file in $canonicalFiles) {
             $ladderVersionMatch = [regex]::Match($block, 'profile_version:[ \t]*"(\d+\.\d+)"')
             if ($id -eq "ENT-000125" -and $ladderVersionMatch.Success -and
                 [version]$ladderVersionMatch.Groups[1].Value -ge [version]"1.35") {
-                # Profile 1.52 adds the magnitude-axis ladder (Section 7.3,
-                # Decision 090), so the five skills that previously sat in no
-                # table are now authored through B-Rank like the rest and come
-                # under the same ceiling guard. Stone Skin is native D-Rank and
-                # Flash Step native D-Rank; the guard is a ceiling, not a floor,
-                # so a native Rank above E needs no special case here.
-                $ladderSkills = @(
-                    "Keen Sense", "Silent Step", "Exploit Pattern", "Field Command",
-                    "Resonance Extraction", "Sprint", "Flash Step",
-                    "Dagger Mastery", "Stone Skin", "Bulwark", "Twin Fang", "Broken Rhythm"
-                )
+                # The guarded set is READ FROM THE PROFILE, not listed here.
+                #
+                # It was a hand-maintained literal, and it went stale exactly the
+                # way F-013 predicts a copied fact does. Profile 1.52 added the
+                # magnitude-axis ladder with five new rows; four of them --
+                # Rupture, Mend, Mana Bolt and Dimensional Projection -- were
+                # never added to the literal, so for eight profile versions the
+                # guard covered twelve skills while Section 7.3 authored
+                # sixteen, and those four could stand at any Rank at all without
+                # complaint. The campaign's own record of the S-Rank gap
+                # (EVT-000590) says "the twelve skills they cover", which is
+                # this list's number rather than the tables'. A wrong count
+                # propagated into canon because a validator was the only thing
+                # anyone could count.
+                #
+                # Both halves of the guard now parse the same tables: the row
+                # names here, the per-skill ceilings in Get-SkillLadderCeilings.
+                # A skill added to Section 7.3 is guarded the moment its row
+                # exists, and no edit here is required or possible.
+                $ladderRankOrder = @("E", "D", "C", "B", "A", "S")
+                $skillCeilings = Get-SkillLadderCeilings $root (Resolve-WorldForPath $relativePath $campaignWorlds)
+                $ladderCeiling = Get-LadderCeiling $root (Resolve-WorldForPath $relativePath $campaignWorlds)
+                if (-not $ladderCeiling) {
+                    Add-Failure "$relativePath`:$line entity $id declares a Section 7.3 ladder profile, but no ladder table with Rank column headers could be read from it; the ceiling guard cannot run."
+                }
+                $ladderSkills = @($skillCeilings.Keys)
+                if ($ladderSkills.Count -eq 0) {
+                    Add-Failure "$relativePath`:$line entity $id declares a Section 7.3 ladder profile, but no skill rows could be read from its ladder tables; the ceiling guard cannot run."
+                }
                 # The ceiling is now PARSED from the profile's own ladder tables
                 # rather than carried as a constant here. F-013 recorded the
                 # constant going stale against the profile and left this exact
@@ -1250,19 +1335,21 @@ foreach ($file in $canonicalFiles) {
                 # Rank above native", which put one skill's A-Rank in a
                 # different column from another's. The authored extent is now
                 # simply the highest Rank appearing as a column header.
-                $ladderRankOrder = @("E", "D", "C", "B", "A", "S")
-                $ladderCeiling = Get-LadderCeiling $root (Resolve-WorldForPath $relativePath $campaignWorlds)
-                if (-not $ladderCeiling) {
-                    Add-Failure "$relativePath`:$line entity $id declares a Section 7.3 ladder profile, but no ladder table with Rank column headers could be read from it; the ceiling guard cannot run."
-                }
-                $highestAuthoredIndex = [array]::IndexOf($ladderRankOrder, $ladderCeiling)
+                # Profile 1.81 authored S-Rank for every skill, so the
+                # world-wide ceiling is now the top of the Rank order and can
+                # never be exceeded. The guard reads each skill's OWN authored
+                # ceiling instead, and falls back to the world-wide one only for
+                # a skill no table names.
                 $ladderSection = Get-IndentedSection $block "skills_known"
                 foreach ($ladderSkill in $ladderSkills) {
                     $ladderMatch = [regex]::Match($ladderSection, '"' + [regex]::Escape($ladderSkill) + ' \[([EDCBAS])-Rank\]')
                     if (-not $ladderMatch.Success) { continue }
                     $heldRank = $ladderMatch.Groups[1].Value
-                    if ([array]::IndexOf($ladderRankOrder, $heldRank) -gt $highestAuthoredIndex) {
-                        Add-Failure "$relativePath`:$line entity $id holds $ladderSkill at $heldRank-Rank, which exceeds its authored category ladder (Section 7.2; Section 7.3's tables author through $ladderCeiling-Rank)."
+                    $skillCeiling = $ladderCeiling
+                    if ($skillCeilings.ContainsKey($ladderSkill)) { $skillCeiling = $skillCeilings[$ladderSkill] }
+                    $authoredIndex = [array]::IndexOf($ladderRankOrder, $skillCeiling)
+                    if ([array]::IndexOf($ladderRankOrder, $heldRank) -gt $authoredIndex) {
+                        Add-Failure "$relativePath`:$line entity $id holds $ladderSkill at $heldRank-Rank, which exceeds its authored category ladder (Section 7.2; Section 7.3's tables author it through $skillCeiling-Rank)."
                     }
                 }
             }

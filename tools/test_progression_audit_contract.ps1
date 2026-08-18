@@ -632,31 +632,61 @@ game_date: "2026-08-04 06:01 -05:00"'
     # closing it as still-open work. Both sides now parse the same thing: the
     # highest Rank appearing as a column header across Section 7.3's ladder
     # tables. If the guard and the profile ever disagree, this leg fails.
+    # Profile 1.81 authored S-Rank -- the top of the Rank order -- for every
+    # skill in all three tables. "One rung above the authored ceiling" therefore
+    # names no Rank that exists, and this leg could no longer build a violation
+    # at all. It said so and failed rather than skipping, which is the only
+    # acceptable behaviour, and this is the repair.
+    #
+    # The violation is now CONSTRUCTED rather than found: blank one skill's
+    # top-Rank cell in the fixture profile, then hold that skill at the Rank the
+    # cell used to author. That tests the same property the old form did -- a
+    # skill standing above what its ladder authors is rejected -- and it cannot
+    # go stale as the ladders grow, because the leg makes its own gap instead of
+    # borrowing one the profile happened to leave open.
+    #
+    # It also tests the guard's per-skill reading, which is what replaced the
+    # world-wide ceiling in `validate_repository.ps1` for exactly this reason.
+    # Both sides still parse the profile rather than restating it; nothing here
+    # is a second copy of a fact the profile owns.
     $ladder = @("E", "D", "C", "B", "A", "S")
-    $profileText = Get-Text "worlds/gatefall/206_WORLD_RULE_PROFILE.md"
-    $authoredCeiling = $null
-    $bestIndex = -1
-    foreach ($header in [regex]::Matches($profileText, '(?m)^\|[ \t]*Skill[ \t]*\|.*\|[ \t]*$')) {
-        foreach ($cell in $header.Value.Trim('|').Split('|')) {
-            $rankCell = [regex]::Match($cell.Trim(), '^(?<rank>[EDCBAS])(?:[ \t]*\(native\))?$')
-            if (-not $rankCell.Success) { continue }
-            $index = [array]::IndexOf($ladder, $rankCell.Groups['rank'].Value)
-            if ($index -gt $bestIndex) { $bestIndex = $index; $authoredCeiling = $rankCell.Groups['rank'].Value }
-        }
-    }
-    Assert-True ($null -ne $authoredCeiling) "No Section 7.3 ladder table with Rank column headers could be read from the profile."
+    $flashRow = [regex]::Match((Get-Text $profile), '(?m)^\|[ \t]*\*\*Flash Step\*\*[ \t]*\*\(native.*\|[ \t]*$')
+    $flashCells = $flashRow.Value.TrimEnd().TrimEnd('|').Split('|')
+    $topCell = $flashCells[$flashCells.Count - 1].Trim()
+    Assert-True ($topCell -and $topCell -notmatch 'no grant above native') `
+        "Flash Step's top ladder cell authors nothing, so blanking it constructs no violation."
+
+    # The Rank that cell authors: the last Rank column header of the table it is
+    # in, read from the profile rather than written down.
+    $capabilityHeader = [regex]::Match((Get-Text $profile), '(?m)^\|[ 	]*Skill[ 	]*\|[ 	]*Native effect[ 	]*\|[^
+]*\|[ 	]*$')
+    Assert-True $capabilityHeader.Success "The Section 7.3 capability-axis table header could not be read from the profile."
+    $headerCells = $capabilityHeader.Value.TrimEnd().TrimEnd('|').Split('|')
+    $topRank = $headerCells[$headerCells.Count - 1].Trim()
+    Assert-True ($ladder -contains $topRank) "The capability table's last column is not a Rank column: '$topRank'."
+
     $liveFlashRank = [regex]::Match((Get-Text $character), '"Flash Step \[([EDCBAS])-Rank\]')
     Assert-True $liveFlashRank.Success "Flash Step renders no Rank in skills_known; fixture precondition drifted."
     $flashRank = $liveFlashRank.Groups[1].Value
-    $ceilingIndex = [array]::IndexOf($ladder, $authoredCeiling)
-    Assert-True ($ceilingIndex -lt $ladder.Count - 1) `
-        "The authored ladder reaches the top of the Rank order, so there is no unauthored Rank to test the ceiling with."
-    $aboveRank = $ladder[$ceilingIndex + 1]
-    Replace-Once $character "`"Flash Step [$flashRank-Rank]" "`"Flash Step [$aboveRank-Rank]"
+    Assert-True ($flashRank -ne $topRank) `
+        "Flash Step already stands at the ladder's top Rank, so blanking that cell would test a legal state."
+
+    Replace-RegexOnce $profile '(?m)^(\|[ \t]*\*\*Flash Step\*\*[ \t]*\*\(native.*\|)[^|]*\|[ \t]*$' '$1 |'
+    Replace-Once $character "`"Flash Step [$flashRank-Rank]" "`"Flash Step [$topRank-Rank]"
     $unauthoredRank = Invoke-Validation $tempRoot
     Assert-True ($unauthoredRank.ExitCode -ne 0 -and $unauthoredRank.Output -like "*exceeds its authored category ladder*") `
         "A skill standing above its authored ladder was accepted; Section 7.2 eligibility is unenforced:`n$($unauthoredRank.Output)"
-    Replace-Once $character "`"Flash Step [$aboveRank-Rank]" "`"Flash Step [$flashRank-Rank]"
+
+    # A skill restored to its own Rank while the cell is still blank must pass:
+    # the guard is a ceiling on what is HELD, not a completeness check on the
+    # table. Without this the leg would pass equally if the guard rejected every
+    # blank cell outright, which is a different rule.
+    Replace-Once $character "`"Flash Step [$topRank-Rank]" "`"Flash Step [$flashRank-Rank]"
+    $blankCellOnly = Invoke-Validation $tempRoot
+    Assert-True ($blankCellOnly.ExitCode -eq 0) `
+        "A blanked ladder cell was rejected on its own; the guard is not reading the Rank held:`n$($blankCellOnly.Output)"
+
+    Replace-RegexOnce $profile '(?m)^(\|[ \t]*\*\*Flash Step\*\*[ \t]*\*\(native.*\|)[ \t]*\|[ \t]*$' ('$1 ' + $topCell + ' |')
 
     $restoredLadder = Invoke-Validation $tempRoot
     Assert-True ($restoredLadder.ExitCode -eq 0) "A skill restored to its authored Rank did not validate:`n$($restoredLadder.Output)"

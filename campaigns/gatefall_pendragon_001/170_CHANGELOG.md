@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000596
+  source: EVT-000597
   game_date: "2026-08-21T17:26:00-05:00"
   real_date: "2026-08-15"
 role: canonical ledger
@@ -24,6 +24,16 @@ subjects: []
 ---
 
 ## Changes
+
+**2026-08-21 17:26 — Profile 1.82: the last ungated growth axis comes under Decision 079 (`EVT-000597`).**
+
+- **Three ledger corrections in a row were the same defect.** `EVT-000594` (twenty-five points allocated, fifteen recorded), `EVT-000595` (two baselines derived instead of read) and `EVT-000596` (a capacity that never moved when its source did) were all **numbers kept as prose**, and all three were found by hand rather than by a gate. **Ability points were the last growth axis without one** — XP and every skill counter have had one since 1.19 and 1.26.
+- **Six `tracked_counters` paths.** `progression.ability_points_earned` at **323**, and `stats.<stat>_allocated` at **52 / 27 / 113 / 29 / 102**, each derived as `base − creation − automatic(40)` from the creation array 11/12/8/11/8 and Section 3.2's ladder (`automatic(40) = 378`).
+- **`unspent_points` and the five base Stats stop being stored** and become renderings — `earned − Σ allocated`, and `creation + automatic(level) + allocated`.
+- **The whole check is one line.** Section 3.2 raises all five Stats by the same rung, so `base − creation − allocated` must be **the same integer for all five**. It is **378**, five times. **Had `EVT-000594`'s ten Intelligence points gone undeclared, Intelligence would read 368 against four Stats reading 378** — a failing gate at the settlement instead of an audit three days later.
+- **Earned is taken from the pool identity, not re-totalled from its sources**, and the reason is recorded: the daily Ability Point line lands **within one point** of closing on the unresolved Ascetic claim-timing question. Allocated and unspent are hard state, so 323 holds whichever way that ruling goes. **Gating does not settle the attribution and does not pretend to.**
+- **No stored value moves. Baselines are prospective** — no historical Event gains deltas, no past allocation is revisited. From here forward a settlement that moves a base Stat without a matching delta fails validation.
+- **Not closed:** the Ascetic question, and `titles.points_granted` disagreeing with its own `earned_names` grade payments — a title-ledger field these counters do not reach.
 
 **2026-08-21 17:26 — a quest slot the System Rank opened and nobody counted (`EVT-000596`).**
 

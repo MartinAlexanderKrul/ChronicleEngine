@@ -107,7 +107,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.81"
+    profile_version: "1.82"
     profile_party_minimum_event: EVT-000460
     profile_unified_render_event: EVT-000443
     profile_render_cadence_event: EVT-000442
@@ -292,7 +292,7 @@ canonical_state:
       health_recovery_mode: resting
       health_recovery_remainder_units: 0
       note: "Five scalars, by owner ruling 2026-08-10. How the anchor advanced is narrated by the promotion Event that moved it and by `170_CHANGELOG.md`, neither of which can drift from the clock the way a note sitting beside it can. Both pools closed this span at full; remainders zeroed accordingly."
-    unspent_points: 0
+    unspent_points: 0                      # rendering of `ability_points_earned - sum(allocated)` = 323 - 323 (Profile 1.82)
     pending_rewards:
       ability_points: 0
       ability_points_note: "**2026-08-21: TWENTY-FIVE points allocated, and the record said fifteen** (`EVT-000591`, reconciled at `EVT-000594`). Vitality took **fifteen across two passes** (+10 then +5) — base 484 → **499**, effective 485 → **500**, **max Health 1,940 → 2,000**. **This is a change of strategy and the reasoning is recorded because of it.** With System Rank A re-pinning every Stat Passive at [S] the instant it released them, points buy derived numbers only — and **Vitality is the axis that gates Combat Tier S**, which needs 2,700 max Health at 46% reduction. Fifteen points closed **60 of a 760-Health gap**, which is itself the argument that **allocation has stopped being the lever**: at the new **+63 per level** rung the remaining 175 effective Vitality is under three levels. Prior: **2026-08-21 (`EVT-000585`): nineteen points allocated — the counter read zero for the first time since Wednesday.** Fifteen banked across levels 34–36 plus four claimed from the twenty-eighth daily under Ascetic: **+12 Intelligence, +7 Strength**. The allocation followed a finding that **no allocation touches a Stat Passive any more** — all five sit at [A-Rank] held by the System Rank + 1 ceiling, their thresholds are 66 and 80 against his 326–393, so they are qualified for S on stat and blocked purely by System Rank, which is level-derived and next moves at 40. Perception is a dead stat for him; Agility buys one anchor slot at 380; Vitality cannot reach Combat Tier S (2,700 max Health needed). **Level 37 then paid a further 5, unspent.** Prior: **2026-08-20 (`EVT-000570`): the Level 34 → 35 crossing paid a further 5, unspent — `unspent_points` 5 → 10.** The `EVT-000564` finding still holds and nothing forces a shape on them: Section 4.3 margins are saturated at +200 and every Stat Passive is pinned by the System Rank ceiling until level 40, so Perception and Agility buy nothing. Prior: **2026-08-20 (`EVT-000564`): fifteen points banked across the level 30-33 crossings allocated in one pass** — +5 Strength (291→296), +5 Intelligence (323→328), +5 Vitality (341→346) — on the finding that Perception and Agility buy nothing: Section 4.3 margins saturate at +200 and every Stat Passive is pinned by the System Rank ceiling until level 40. **Level 34 (`EVT-000567`) paid a further 5, unspent.** Prior: **2026-08-20 (`EVT-000553`): the twenty-seventh daily's entry claimed at +4 and spent in the same exchange**, all four to Vitality (base 126→130, effective 131, `maximum_health` 508→524, filled from cap). `unspent_points` returns to 0."
@@ -360,6 +360,24 @@ canonical_state:
       dagger_mastery_evt_000210: "Profile 1.31 (`EVT-000210`) resolved the Checkpoint 0041 authoring gap; the +0.05-per-level ladder is authored end to end and needs nothing further."
       ascetic_claim_timing_evt_000357: "**RULED AT CLAIM (2026-08-11, `EVT-000522`).** *Grants* fires when the entry is **claimed**, not when it is issued — so the equipped state at the moment of collection is what pays. **This awards no retroactive point**: `EVT-000357`'s declared order was claim-then-equip, so Ascetic was still unequipped at the instant of claim and the issued +3 stands. What it changes is everything after: an entry issued at 06:00 with Ascetic out is no longer locked at +3, and the title slot becomes a decision made at collection rather than a 06:00 deadline. Settled at the **issued +3** because the declared order was claim-then-equip. Full prior reasoning: `160_CAMPAIGN_CHRONICLE.md`. From the twenty-second daily onward the +4 applies unambiguously and this ruling does not reach it."
     tracked_counters:
+      # Profile 1.82 (EVT-000597): ability points come under Decision 079. Six paths,
+      # baselines derived from present state and reconstructing nothing. `unspent_points`
+      # and the five base Stats are renderings from here forward:
+      #   base_stat = creation_array[stat] + automatic(level) + allocated[stat]
+      # with automatic(40) = 9x2 + 10x4 + 10x9 + 10x23 = 378 and the creation array
+      # 11/12/8/11/8 held in `latent_stat_array`. Automatic growth is uniform, so all five
+      # residuals must equal 378; EVT-000594's undeclared +10 Intelligence would have read
+      # 368 against four Stats reading 378.
+      # Earned is taken from the pool identity (sum allocated + unspent), not re-totalled
+      # from level-ups, dailies and title payments -- the daily line lands within one point
+      # of closing on the unresolved Ascetic claim-timing question, and the identity is
+      # exact regardless. See migrations/1.81_to_1.82.md step 3.
+      - { path: progression.ability_points_earned, baseline_value: 323, baseline_as_of: EVT-000597, current_value: 323 }
+      - { path: stats.strength_allocated, baseline_value: 52, baseline_as_of: EVT-000597, current_value: 52 }
+      - { path: stats.agility_allocated, baseline_value: 27, baseline_as_of: EVT-000597, current_value: 27 }
+      - { path: stats.vitality_allocated, baseline_value: 113, baseline_as_of: EVT-000597, current_value: 113 }
+      - { path: stats.perception_allocated, baseline_value: 29, baseline_as_of: EVT-000597, current_value: 29 }
+      - { path: stats.intelligence_allocated, baseline_value: 102, baseline_as_of: EVT-000597, current_value: 102 }
       - { path: skills.keen_sense.scope_floor, baseline_value: 0, baseline_as_of: EVT-000210, current_value: 8 }
       - { path: skills.exploit_pattern.scope_floor, baseline_value: 0, baseline_as_of: EVT-000210, current_value: 8 }
       - { path: skills.field_command.scope_floor, baseline_value: 0, baseline_as_of: EVT-000210, current_value: 0 }

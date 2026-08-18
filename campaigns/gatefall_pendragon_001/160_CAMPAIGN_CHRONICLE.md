@@ -13,13 +13,13 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000596
+  source: EVT-000597
   game_date: "2026-08-21T17:26:00-05:00"
   real_date: "2026-08-18"
 role: canonical ledger
 scope: campaign
-# Since Checkpoint 0102: EVT-000588 - EVT-000596 (two instances, SYSTEM RANK A, seven
-#   Rank movements, the level-40 assessment and two rulings, the ceiling sweep, barrier, an ability-point reconciliation, a rendering-drift correction and a quest-capacity re-derivation)
+# Since Checkpoint 0102: EVT-000588 - EVT-000597 (two instances, SYSTEM RANK A, seven
+#   Rank movements, the level-40 assessment and two rulings, the ceiling sweep, barrier, three ledger corrections and the Profile 1.82 ability-point counters)
 # Since Checkpoint 0101: EVT-000580 - EVT-000587 (Fenn's shell meets the fence, the alarm
 #   and the number, the tick, the grain terminal, the Ashfield, the box, the Crypt, barrier)
 # Since Checkpoint 0100: EVT-000574 - EVT-000579 (the retroactivity ruling, the mug and the
@@ -572,6 +572,7 @@ subjects:
   - EVT-000594
   - EVT-000595
   - EVT-000596
+  - EVT-000597
 ```
 
 ---
@@ -20198,4 +20199,55 @@ description: "**Non-daily quest capacity stood at 5 against a System Rank of A, 
   **The lesson is about the gate, not the sheet.** Three of these four sat behind one stale number for two days, and the suite reported one failure the whole time. A contract that aborts on first failure tells the truth about *a* defect and nothing about how many there are. **The suite now runs to completion and passes at 38 of 38.**
 
   **In fiction, nothing happened.** A capacity the Bearer has never reached rose by one. The System would have told him only if he had tried to hold a seventh thing at once."
+```
+
+## EVT-000597 - The Ability-Point Ledger Comes Under Decision 079
+
+```yaml
+id: EVT-000597
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: session-gameplay
+  game_date: "2026-08-21 17:26 -05:00"
+  real_date: "2026-08-18"
+type: Event
+kind: profile-adoption
+importance: pivotal
+game_date: "2026-08-21 17:26 -05:00"
+participants: []
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+description: "**Profile 1.81 → 1.82 adopted, a required migration, and the baseline Event for six new `tracked_counters` paths.** No fictional time, no scene, no die. **No stored value moves** — every counter's baseline is what its value already is.
+
+  **The reason is three Events old.** `EVT-000594` found twenty-five ability points allocated against a record of fifteen; `EVT-000595` found two skill baselines derived instead of read; `EVT-000596` found a quest capacity that never moved when the value it derives from did. **All three are the same defect** — a number kept as prose, with nothing able to disagree with it — and all three were found by reconciling state against the profile by hand, which is not a gate. Ability points were the last growth axis in this profile without one: XP and every skill counter had sat under Decision 079's `current_value = baseline_value + Σ(delta)` since 1.19 and 1.26.
+
+  **Six paths, and their baselines are derived rather than asserted.** Each `allocated` total is `base_stat − creation_array[stat] − automatic(40)`, where the creation array 11 / 12 / 8 / 11 / 8 is held in `latent_stat_array` and `automatic(40) = 9×2 + 10×4 + 10×9 + 10×23 = 378` under Section 3.2's rung ladder:
+
+  | Stat | Base | − creation | − automatic | **allocated** |
+  |---|---:|---:|---:|---:|
+  | Strength | 441 | 11 | 378 | **52** |
+  | Agility | 417 | 12 | 378 | **27** |
+  | Vitality | 499 | 8 | 378 | **113** |
+  | Perception | 418 | 11 | 378 | **29** |
+  | Intelligence | 488 | 8 | 378 | **102** |
+
+  **`progression.ability_points_earned` baselines at 323**, taken from the pool identity `Σ allocated + unspent_points` = 323 + 0 rather than re-totalled from level-ups, dailies and title payments. **That choice is deliberate and its reason is recorded**: the level-up and Title Assessment lines are exact, but the daily Ability Point line lands **within one point** of closing depending on the unresolved ruling about which daily first paid an Ascetic-boosted +4. Allocated and unspent are hard state, so the identity fixes earned at 323 whichever way that ruling goes. **Gating does not settle the attribution and does not pretend to.**
+
+  **Two values stop being stored.** `unspent_points` is now a rendering of `earned − Σ allocated`. **A base Stat is a rendering of `creation + automatic(level) + allocated`** — the five integers in `stats:` are what that formula returns, not an independent record of it.
+
+  **The whole check is one line, and it works because Section 3.2 is uniform.** Every level crossing raises *all five* base Stats by the same rung, so `base − creation − allocated` must be **the same integer for all five**. Today that integer is **378**, five times over. **Had `EVT-000594`'s ten Intelligence points gone undeclared, Intelligence would read 368 against four Stats reading 378** — a failing gate at the settlement rather than an audit finding three days later.
+
+  **What is guaranteed starts now.** Baselines are prospective: no historical Event gains `counter_deltas`, no past allocation is revisited, and nothing the ledger could not previously prove about its own past becomes provable. From this Event forward a level-up writes +5 to `ability_points_earned`, a daily reward and a grade payment write theirs, an allocation writes its points to the named Stat — and **a settlement that moves a base Stat without a matching delta fails validation.**
+
+  **Two things this does not close, said plainly.** The Ascetic claim-timing question is untouched and still open. And `titles.points_granted` disagreeing with the sum of its own `earned_names` grade payments — the `EVT-000594` half that was a title-ledger field rather than a pool — is a real defect of this class that these counters do not reach.
+
+  **In fiction, nothing whatever happened.** The System has never shown Alexander a counter. It has only ever shown him a number, and the number has not changed."
 ```

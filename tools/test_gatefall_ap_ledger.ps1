@@ -187,6 +187,64 @@ foreach ($startup in Get-ChildItem -Path $campaignRoot -Filter "090_CAMPAIGN_STA
         "plus unspent $unspent = $($spent + $unspent).")
     Assert-True ($unspent -ge 0) "$label renders a negative unspent pool ($unspent)."
 
+    # --- The title ledger, which is an ability-point SOURCE ------------------
+    #
+    # Section 16.1 pays a title's grade into the unspent pool the moment the
+    # Assessment grants it. `titles.points_granted` is the running total of
+    # those payments and it is maintained by hand beside a list that already
+    # names every grade, which is two statements of one fact -- F-013's shape.
+    #
+    # It drifted exactly as that shape predicts. Vanguard was granted at
+    # EVT-000591, paid +5 into the pool, and appeared in NEITHER
+    # `points_granted` NOR `earned_names`, while `earned_summary` and
+    # `slots_note` on the same block both said thirteen titles earned. The
+    # figure read 35 -- which verifies perfectly against the twelve titles that
+    # WERE listed, and is why nothing looked wrong. Corrected at EVT-000594.
+    #
+    # The grade ladder is parsed from the profile. It is the third copy of
+    # +2/+5/+10 in this repository if written down here, and the first two
+    # already disagreed with a live campaign once.
+    Assert-True ($profileText -match '\+(?<common>\d+) Common, \+(?<rare>\d+) Rare, \+(?<singular>\d+) Singular') `
+        "Section 16.1's title grade payments are unreadable; the title ledger cannot be checked."
+    $gradePayment = @{
+        "common"    = [int]$Matches['common']
+        "rare"      = [int]$Matches['rare']
+        "singular"  = [int]$Matches['singular']
+    }
+
+    if ($sheet -match '(?ms)^\s*earned_names:\s*$\r?\n(?<body>(?:\s*- ".*?"\s*$\r?\n?)+)') {
+        $earnedBody = $Matches['body']
+        $titleGrades = [regex]::Matches($earnedBody, '(?m)^\s*- "[^"\[]+\[(?<grade>[A-Za-z]+)[,\]]')
+        Assert-True ($titleGrades.Count -gt 0) "$label renders an earned_names list with no readable grades."
+
+        $gradeSum = 0
+        foreach ($g in $titleGrades) {
+            $grade = $g.Groups['grade'].Value.ToLowerInvariant()
+            Assert-True ($gradePayment.ContainsKey($grade)) (
+                "$label lists a title of grade '$grade', which Section 16.1 does not price. " +
+                "Either the grade is misspelled or the profile has gained a grade this gate cannot pay.")
+            $gradeSum += $gradePayment[$grade]
+        }
+
+        Assert-True ($sheet -match '(?m)^\s*points_granted:\s*(?<v>-?\d+)\s*$') `
+            "$label renders an earned_names list but no points_granted total."
+        $pointsGranted = [int]$Matches['v']
+        Assert-True ($pointsGranted -eq $gradeSum) (
+            "$label's title ledger does not close: points_granted $pointsGranted against " +
+            "$($titleGrades.Count) titles paying $gradeSum under Section 16.1's " +
+            "+$($gradePayment['common']) / +$($gradePayment['rare']) / +$($gradePayment['singular']) ladder. " +
+            "A title was granted and paid without being counted, or counted without being listed.")
+
+        # The count claimed in prose beside the list must match the list. This is
+        # the half that stayed correct while `points_granted` drifted, and it is
+        # what made the drift survivable rather than invisible.
+        if ($sheet -match '(?<claimed>\d+) titles earned') {
+            Assert-True ([int]$Matches['claimed'] -eq $titleGrades.Count) (
+                "$label claims $($Matches['claimed']) titles earned against an earned_names list of " +
+                "$($titleGrades.Count).")
+        }
+    }
+
     $checked++
 }
 

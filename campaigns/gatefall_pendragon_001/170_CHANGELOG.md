@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000597
+  source: EVT-000598
   game_date: "2026-08-21T17:26:00-05:00"
   real_date: "2026-08-15"
 role: canonical ledger
@@ -24,6 +24,15 @@ subjects: []
 ---
 
 ## Changes
+
+**2026-08-21 17:26 — the Ascetic sentence struck, and the ability-point history closes (`EVT-000598`).**
+
+- **Owner ruling. One sentence struck; no stored value moves and the profile is untouched.** Sections 8.1 and 16.2 already state the rule correctly: the daily Ability Points reward is **+3 by default, +4 while Ascetic is equipped**, read **at claim**.
+- **The sentence that closed `skill_rulings.ascetic_claim_timing_evt_000357` was the problem.** It claimed the +4 applied *from the twenty-second daily onward* — a blanket statement about every later daily, **contradicted by the equip record**: Ascetic sat in the `EVT-000357` loadout, was swapped out when it became Cartographer + Untouchable (uncarried until the `EVT-000444` correction), and was only restored at `EVT-000535`. There was no continuous run from the twenty-second.
+- **The arithmetic settles which reading is right.** The pool is fixed by hard state at **323**; level-ups are exact at **195** and title payments at **40** (gated at `EVT-000597`). So the daily line is **88** — twenty-eight dailies at +3 plus **exactly four** at +4. **The struck reading produced 91 and could not close**, requiring three points earned and never allocated that do not exist.
+- **Corroborated by the record**: `EVT-000487` names *the +8 from two claimed AP entries* — two +4 dailies while Ascetic sat in the early loadout — and the twenty-seventh paid +4 after `EVT-000535`.
+- **The exact four are deliberately not enumerated.** Reconstructing per-entry history from prose is what Profile 1.82's migration declines to do, and for the same reason. The total is what is proved and what the counter holds.
+- **The ability-point ledger is closed.** `EVT-000594` found the undeclared points, `EVT-000597` gated the axis forward, and this answers the one question the counters could not ask about the past. **Nothing further is owed on it.**
 
 **2026-08-21 17:26 — Profile 1.82: the last ungated growth axis comes under Decision 079 (`EVT-000597`).**
 

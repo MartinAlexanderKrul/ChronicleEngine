@@ -13,13 +13,13 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000597
+  source: EVT-000598
   game_date: "2026-08-21T17:26:00-05:00"
   real_date: "2026-08-18"
 role: canonical ledger
 scope: campaign
-# Since Checkpoint 0102: EVT-000588 - EVT-000597 (two instances, SYSTEM RANK A, seven
-#   Rank movements, the level-40 assessment and two rulings, the ceiling sweep, barrier, three ledger corrections and the Profile 1.82 ability-point counters)
+# Since Checkpoint 0102: EVT-000588 - EVT-000598 (two instances, SYSTEM RANK A, seven
+#   Rank movements, the level-40 assessment and two rulings, the ceiling sweep, barrier, three ledger corrections, the Profile 1.82 ability-point counters and the Ascetic ruling)
 # Since Checkpoint 0101: EVT-000580 - EVT-000587 (Fenn's shell meets the fence, the alarm
 #   and the number, the tick, the grain terminal, the Ashfield, the box, the Crypt, barrier)
 # Since Checkpoint 0100: EVT-000574 - EVT-000579 (the retroactivity ruling, the mug and the
@@ -573,6 +573,7 @@ subjects:
   - EVT-000595
   - EVT-000596
   - EVT-000597
+  - EVT-000598
 ```
 
 ---
@@ -20250,4 +20251,56 @@ description: "**Profile 1.81 → 1.82 adopted, a required migration, and the bas
   **Two things this does not close, said plainly.** The Ascetic claim-timing question is untouched and still open. And `titles.points_granted` disagreeing with the sum of its own `earned_names` grade payments — the `EVT-000594` half that was a title-ledger field rather than a pool — is a real defect of this class that these counters do not reach.
 
   **In fiction, nothing whatever happened.** The System has never shown Alexander a counter. It has only ever shown him a number, and the number has not changed."
+```
+
+## EVT-000598 - The Ascetic Sentence Is Struck, and the Ability-Point History Closes
+
+```yaml
+id: EVT-000598
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: session-gameplay
+  game_date: "2026-08-21 17:26 -05:00"
+  real_date: "2026-08-18"
+type: Event
+kind: owner-ruling
+importance: notable
+game_date: "2026-08-21 17:26 -05:00"
+participants: []
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+description: "**Owner ruling. One sentence struck from `skill_rulings.ascetic_claim_timing_evt_000357`, and the campaign's ability-point history closes with it.** No fictional time, no scene, no die, **no stored value moves**, and the profile is untouched — Sections 8.1 and 16.2 already say the right thing.
+
+  **The rule was never ambiguous.** The daily Ability Points reward is **+3 by default and +4 while Ascetic is equipped**, read from canonical state **at the moment the entry is claimed** rather than when it was issued. `EVT-000522` ruled that, and settled `EVT-000357`'s own entry at the issued +3 because the declared order was claim-then-equip.
+
+  **The sentence that closed that ruling was.** It read *from the twenty-second daily onward the +4 applies unambiguously and this ruling does not reach it* — a blanket claim about every later daily, written when the equip history looked simpler than it was. **The equip record contradicts it.** Ascetic sat in the `EVT-000357` loadout; it was swapped out when the loadout became Cartographer + Untouchable, a change this sheet did not carry until the `EVT-000444` correction; and it was only restored at `EVT-000535` on 2026-08-19, which is what made the twenty-seventh daily read +4. **There was no continuous run from the twenty-second, so nothing about that stretch is unambiguous and the sentence was asserting otherwise.**
+
+  **Struck. What governs is the rule the same ruling states**: +4 where Ascetic was equipped at claim, +3 where it was not, read off the equip record rather than off a date.
+
+  **The arithmetic settles which reading is right, rather than the other way round.** The pool is fixed by hard state — `Σ allocated + unspent` = **323** — and two of its three sources are exact: **195** from thirty-nine level crossings at +5, and **40** from thirteen title grade payments, now gated at `EVT-000597`. The daily line is therefore **88**, which is twenty-eight dailies at +3 plus **exactly four** that paid +4.
+
+  | Source | Points |
+  |---|---:|
+  | Level-ups, 39 crossings × 5 | 195 |
+  | Title grade payments, 13 titles | 40 |
+  | Daily Ability Point rewards, 28 dailies (24 at +3, 4 at +4) | 88 |
+  | **Earned** | **323** |
+  | Allocated | 323 |
+  | Unspent | 0 |
+
+  **The struck sentence produced 91 and could not close.** Seven dailies at +4 from the twenty-second onward overshoots the pool by three, and three points that were earned and never allocated would have to exist somewhere. **They do not.** Four +4 dailies is also what the record already shows: `EVT-000487` names *the +8 from two claimed AP entries*, two +4 dailies while Ascetic sat in the early loadout, and the twenty-seventh paid +4 after `EVT-000535`.
+
+  **The exact four are not enumerated here, deliberately.** Naming which dailies paid what would be reconstructing per-entry history from prose, which is the thing Profile 1.82's migration declines to do and for the same reason: the ledger cannot prove it, and a confident list would be an assertion dressed as a record. **What is proved is the total**, and the total is what the counter holds.
+
+  **This closes the ability-point ledger.** `EVT-000594` found the ten undeclared Intelligence points, `EVT-000597` put the axis under Decision 079 and gated it forward, and this closes the one question the counters could not answer about the past. **Nothing further is owed on it.**
+
+  **In fiction, nothing happened.** Alexander has claimed twenty-eight daily rewards and has never once been shown a running total of them."
 ```

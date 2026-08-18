@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000595
+  source: EVT-000596
   game_date: "2026-08-21T17:26:00-05:00"
   real_date: "2026-08-15"
 role: canonical ledger
@@ -24,6 +24,16 @@ subjects: []
 ---
 
 ## Changes
+
+**2026-08-21 17:26 — a quest slot the System Rank opened and nobody counted (`EVT-000596`).**
+
+- **`non_daily_quests.capacity_total` read 5 against a System Rank of A.** Section 8.4.1 derives it from System Rank alone — **2 / 3 / 4 / 5 / 6 / 7 at E / D / C / B / A / S** — and *no skill, allocation, item or title raises it*. **5 → 6.**
+- **The B → A crossing at `EVT-000589` settled six consequences and re-derived five.** Both ceilings to S, the growth rung +23 → +63, a fourth title slot, five Stat Passives re-pinned — and quest capacity, read off the identical value, did not move.
+- **No quest was affected.** Three attached against a ceiling the Bearer has never reached; nothing was refused, deferred or lost.
+- **The gate found it, not a reading.** `test_gatefall_quest_contract.ps1` derives the figure from the profile ladder and the sheet's own `system_rank`, and had been red since the crossing.
+- **Same shape as `EVT-000595`, one field over**: a value the profile derives from another value, stored as a rendered number, with the derivation done by hand at the moment the source moved.
+- **Fixing it uncovered four more, because a failing suite stops at its first failure.** The capacity leg had stood in front of everything after it since `EVT-000589`. **All five Stat Passive rows** broke §15.3.1's row contract — `EVT-000591` wrote each S-Rank grant *between* the Stat value and the threshold marker, crossing the bold markers — and all five still named a clamp that no longer binds (*[S-Rank] held: System Rank ceiling*; at System Rank A the ceiling **is** S, so the terminal is a plain **`S-Rank`**). **Flux Sight's tail was two Ranks stale** on a line already reading [S-Rank]. **Rupture's and Twin Fang's magnitude clauses** had been reworded out of the shape their contract reads. Every one a rendering, none a wrong value.
+- **The suite now runs to completion: 38 of 38 green**, the first fully passing run since the level-40 crossing.
 
 **2026-08-21 17:26 — two baselines derived instead of read, and three surfaces that never heard the correction (`EVT-000595`).**
 

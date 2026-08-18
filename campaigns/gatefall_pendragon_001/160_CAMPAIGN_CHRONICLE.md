@@ -13,13 +13,13 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000595
+  source: EVT-000596
   game_date: "2026-08-21T17:26:00-05:00"
   real_date: "2026-08-18"
 role: canonical ledger
 scope: campaign
-# Since Checkpoint 0102: EVT-000588 - EVT-000595 (two instances, SYSTEM RANK A, seven
-#   Rank movements, the level-40 assessment and two rulings, the ceiling sweep, barrier, an ability-point reconciliation and a rendering-drift correction)
+# Since Checkpoint 0102: EVT-000588 - EVT-000596 (two instances, SYSTEM RANK A, seven
+#   Rank movements, the level-40 assessment and two rulings, the ceiling sweep, barrier, an ability-point reconciliation, a rendering-drift correction and a quest-capacity re-derivation)
 # Since Checkpoint 0101: EVT-000580 - EVT-000587 (Fenn's shell meets the fence, the alarm
 #   and the number, the tick, the grain terminal, the Ashfield, the box, the Crypt, barrier)
 # Since Checkpoint 0100: EVT-000574 - EVT-000579 (the retroactivity ruling, the mug and the
@@ -571,6 +571,7 @@ subjects:
   - EVT-000593
   - EVT-000594
   - EVT-000595
+  - EVT-000596
 ```
 
 ---
@@ -20148,4 +20149,53 @@ description: "**Five rendering defects, found by reconciling every stored skill 
   **The corrections did not fit, and the budget was not raised to make them fit.** `/system gear` reads six fields of this sheet and stood at **19,010 tokens against a ratchet fail line of 19,047** before this Event — already on WARN, 37 tokens of headroom. Four correction notes added 125 and crossed it. **Three blocks of one-time history were displaced instead**, each already recorded in full in this chronicle and in `170_CHANGELOG.md`, and none of them current state that a loadout panel exists to show: Rupture's *the breakthrough paid +1,463 rather than costing anything*, Mana Bolt's *paid +149 rather than costing 21, the floor protects magnitude not cost*, and Flash Step's four-sentence ascension provenance, which ended by citing this chronicle anyway. **The surface closes at 18,988 — 22 tokens BELOW where it stood before the corrections**, and the correction rationale lives here, where a panel does not pay for it every time it is opened. `system/RUNTIME_CONTEXT_BUDGETS.yaml` is untouched: moving a warning because a number is inconvenient is an owner ruling, and this did not need one.
 
   **In fiction, nothing changed.** Rupture always hit as hard as Rupture hits. Alexander's read always reached the people it reached. The System never rendered these numbers to him at all."
+```
+
+## EVT-000596 - Quest Capacity: A Slot the System Rank Opened and Nobody Counted
+
+```yaml
+id: EVT-000596
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: session-gameplay
+  game_date: "2026-08-21 17:26 -05:00"
+  real_date: "2026-08-18"
+type: Event
+kind: ledger-correction
+importance: minor
+game_date: "2026-08-21 17:26 -05:00"
+participants: []
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+description: "**Non-daily quest capacity stood at 5 against a System Rank of A, which the profile derives at 6.**
+
+  Section 8.4.1 authors the ladder as **2 / 3 / 4 / 5 / 6 / 7 at E / D / C / B / A / S**, derived from the Bearer's System Rank under Section 6.6 and from nothing else — *not granted by any skill, and no allocation, item, or title raises it.* **System Rank crossed B → A at `EVT-000589`** on the level 40 crossing, and every other consequence of that crossing settled in the same exchange: both Section 7.5 and Section 4.4 ceilings moved to S, the Section 3.2 growth rung went +23 → +63, a fourth title slot opened, and all five Stat Passives released and re-pinned. **`capacity_total` did not move, and it is derived from exactly the same value.**
+
+  **Corrected: 5 → 6.** Nothing else changes. **Three quests are attached** — `warehouse-meridian-ownership` and two others — so the Bearer was never at his ceiling and no quest was refused, deferred or lost for want of the slot. What was wrong was the number, not an outcome it produced.
+
+  **The failing gate found this, not a reading.** `tools/test_gatefall_quest_contract.ps1` derives the expected figure from the profile's ladder and the sheet's own `system_rank`, and has been red since the level 40 crossing: *Live non-daily capacity does not derive 6 from System Rank A.* It was correct and it was the only thing that noticed.
+
+  **The same shape as `EVT-000595`, one field over.** A value the profile derives from another value, stored as a rendered number, with the derivation performed by hand at the moment the source moved — and the crossing at `EVT-000589` moved six things at once, of which five were re-derived and one was not. Section 6.6 calls System Rank *canonical derived state, read from level and never estimated*; the things read **from** it deserve the same treatment and do not have it.
+
+  **Fixing it uncovered four more, because a failing suite stops at its first failure.** `test_gatefall_quest_contract.ps1` runs its assertions in order and throws on the first, so the capacity leg had been standing in front of everything after it since `EVT-000589`. Each of the four below was already broken, none of them was visible, and every one is a **rendering drifting away from the shape a contract reads** rather than a wrong value:
+
+  **(a) All five Stat Passive rows broke Section 15.3.1's row contract.** `EVT-000591` wrote each skill's new S-Rank grant **between the Stat value and the next-threshold marker** — `Uses 89 · Perception 418 · **S-Rank grant: …** · [S-Rank] held: …` — which separates three fields the panel renders as one run, and crossed the bold markers while doing it. The grant now leads the row and the counters close it.
+
+  **(b) The same five rows named a clamp that no longer binds.** They read *[S-Rank] held: System Rank ceiling*, which was true while System Rank B held them one rung below their derived Rank. **At System Rank A the ceiling is S and they hold S**, so nothing is holding them at all — the row renders the plain terminal **`S-Rank`**, the top of Section 4.4's ladder with no rung above it to promise.
+
+  **(c) Flux Sight's tail was two Ranks stale on a line that already read [S-Rank].** It stated the skill *stands at A-Rank*, that the ceiling *rose with System Rank B*, and that S *needs* Perception 80 and System Rank A — conditions met at `EVT-000589` and named on the same line as unmet.
+
+  **(d) Rupture's and Twin Fang's magnitude clauses were reworded out of contract shape.** Rupture rendered `**×2.60** of its S-Rank skill-rank baseline (938, §7.2)` where the contract reads `**×N of its skill-rank baseline** (<Rank>-Rank baseline <N>, Section 7.2)`; Twin Fang lost the words *Twin Fang mastery multiplier* at `EVT-000590`. **Neither value was wrong** — Rupture's baseline was separately wrong and is fixed at `EVT-000595` — but a gate that reads prose can only read the prose it was written against, and canon had quietly stopped speaking it.
+
+  **The lesson is about the gate, not the sheet.** Three of these four sat behind one stale number for two days, and the suite reported one failure the whole time. A contract that aborts on first failure tells the truth about *a* defect and nothing about how many there are. **The suite now runs to completion and passes at 38 of 38.**
+
+  **In fiction, nothing happened.** A capacity the Bearer has never reached rose by one. The System would have told him only if he had tried to hold a seventh thing at once."
 ```

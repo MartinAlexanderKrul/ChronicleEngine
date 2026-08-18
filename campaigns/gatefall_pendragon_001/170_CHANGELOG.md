@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000593
+  source: EVT-000594
   game_date: "2026-08-21T17:26:00-05:00"
   real_date: "2026-08-15"
 role: canonical ledger
@@ -24,6 +24,15 @@ subjects: []
 ---
 
 ## Changes
+
+**2026-08-21 17:26 — the ledger was ten points short, and the Stats had been right the whole time (`EVT-000594`).**
+
+- **A record correction, not a grant.** No fictional time, no scene, no die, and **not one Stat, pool, derived figure or resolved outcome moves.**
+- **`EVT-000591` recorded fifteen ability points allocated, all to Vitality. Twenty-five were allocated — fifteen Vitality and TEN INTELLIGENCE.** Base Intelligence closes **488** where three level crossings at the B rung reach **478** on automatic growth alone. The ten-point gap has been in effective Intelligence 491, in `maximum_mana` 982, and in every damage figure this span since the moment it was written; **Rupture's 3,715 and Mana Bolt's 1,034 are unaffected** because both already read 491.
+- **The pool balances to the point.** 5 banked at level 37, +5 at each of levels 38/39/40, and **+5 from Vanguard's [Rare] grade payment** (Section 16.1: +2 Common / +5 Rare / +10 Singular) — **25 available, 25 allocated, 0 unspent.** Nothing was created and nothing lost.
+- **Vanguard's payment was spent but never counted.** `titles.points_granted` read **35**, which verifies exactly against the twelve titles in `earned_names` and omits the thirteenth — while `earned_summary` and `slots_note` both say thirteen earned. **35 → 40**, and **Vanguard [rare, assessment 40]** added to the list. No point is granted by the correction.
+- **Why nothing caught it, recorded because it will happen again.** Ability points, allocations, base Stats and the unspent pool are **prose on the sheet**. Only `progression.xp_total` and the `skills.*` paths are tracked counters under Decision 079, so the AP ledger is the one growth axis with **no arithmetic gate behind it** — `F-017`'s shape on a different axis, and its remedy there was making the value a counter. **Owed, not done here.**
+- **`EVT-000591` stands as recorded.** Prior Events are not rewritten; the correction lives in its own Event, as the `OBJ-27`/`OBJ-16` citation repair did in this same span.
 
 **2026-08-21 13:01 – 17:26 — SYSTEM RANK A, seven Rank movements, and a man looking at everything he owns (`EVT-000588`-`EVT-000593`).**
 

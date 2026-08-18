@@ -13,13 +13,13 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000593
+  source: EVT-000594
   game_date: "2026-08-21T17:26:00-05:00"
-  real_date: "2026-08-17"
+  real_date: "2026-08-18"
 role: canonical ledger
 scope: campaign
-# Since Checkpoint 0102: EVT-000588 - EVT-000593 (two instances, SYSTEM RANK A, seven
-#   Rank movements, the level-40 assessment and two rulings, the ceiling sweep, barrier)
+# Since Checkpoint 0102: EVT-000588 - EVT-000594 (two instances, SYSTEM RANK A, seven
+#   Rank movements, the level-40 assessment and two rulings, the ceiling sweep, barrier, and an ability-point reconciliation)
 # Since Checkpoint 0101: EVT-000580 - EVT-000587 (Fenn's shell meets the fence, the alarm
 #   and the number, the tick, the grain terminal, the Ashfield, the box, the Crypt, barrier)
 # Since Checkpoint 0100: EVT-000574 - EVT-000579 (the retroactivity ruling, the mug and the
@@ -569,6 +569,7 @@ subjects:
   - EVT-000591
   - EVT-000592
   - EVT-000593
+  - EVT-000594
 ```
 
 ---
@@ -20060,4 +20061,45 @@ description: "Batch settlement for `EVT-000588`-`EVT-000592`. **`gatefall.skill_
   **One Runtime imprecision corrected on challenge** (`EVT-000591`): Executioner's tally was described as losing kills retroactively when it does not. The count is historical and permanent; what changed is that it can never advance again below S-Rank content.
 
   **And a budget ruling, recorded because it changes a repository control rather than campaign state.** The player authorised raising the context budget so the ceiling sweep could be stored in full detail rather than compressed. `system/RUNTIME_CONTEXT_BUDGETS.yaml` is re-recorded accordingly, with the reason stated in that file - which is its own documented remedy for legitimate growth, used here deliberately rather than to make a failing gate pass."
+```
+
+## EVT-000594 - Ability-Point Reconciliation: Ten Points That Were Spent and Never Written Down
+
+```yaml
+id: EVT-000594
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: session-gameplay
+  game_date: "2026-08-21 17:26 -05:00"
+  real_date: "2026-08-18"
+type: Event
+kind: ledger-correction
+importance: notable
+game_date: "2026-08-21 17:26 -05:00"
+participants: []
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+description: "**A record correction, not a grant.** No fictional time, no scene, no die. **Not one Stat, pool, derived figure or resolved outcome moves** — every number on this sheet was already correct. What was wrong is the account of how it got there.
+
+  **`EVT-000591` records fifteen ability points allocated, all to Vitality. Twenty-five were allocated, and the tenth through twenty-fifth went to Intelligence.** The stored Stats have said so since the moment they were written and nothing read them back: base Intelligence closes **488** where automatic growth alone reaches **478**. The ten-point gap is allocation, it is already in effective Intelligence 491, already in `maximum_mana` 982, and already in every damage figure derived this span — Rupture's 3,715 and Mana Bolt's 1,034 both read 491 and are unaffected.
+
+  **Derived rather than asserted, from the two checkpoints either side.** At Checkpoint 0102 base Stats stood **372/348/415/349/409** with **5 points unspent** at level 37. At Checkpoint 0103 they stand **441/417/499/418/488** at level 40. Three level crossings at the Section 3.2 **B rung pay +23 to every Stat**, so automatic growth accounts for **+69 across the board** and no more. Strength, Agility and Perception close at exactly +69 and are pure automatic growth. **Vitality closes +84 (+15 allocated) and Intelligence +79 (+10 allocated)** — twenty-five points, against a stored `unspent_points` of **0**.
+
+  **The pool balances exactly, which is what makes this a bookkeeping failure rather than a missing grant.** Available across the span: **5** banked at level 37, **+5** at each of levels 38, 39 and 40 under Section 3.2, and **+5 from Vanguard's [Rare] grade payment** under Section 16.1's `+2 Common / +5 Rare / +10 Singular` ladder. **25 available, 25 allocated, 0 unspent.** Nothing was created and nothing was lost; the Bearer spent exactly what he was owed.
+
+  **The second half of the same defect: Vanguard's payment was spent but never counted.** `system_state.titles.points_granted` reads **35**, which verifies exactly against the twelve titles listed in `earned_names` — ten Common at +2, Cartographer [Rare] at +5, The Unmeasured [Singular] at +10. **Vanguard was granted at `EVT-000591`, paid its +5, and appears in neither figure**, while `earned_summary` and `slots_note` both say thirteen titles earned. Corrected here: **`points_granted` 35 → 40**, and **Vanguard [rare, assessment 40] added to `earned_names`**. No point is granted by this correction — the +5 was already in the pool and is already spent.
+
+  **Why nothing caught it.** Ability points, allocations, base Stats and the unspent pool are **prose on the sheet**. Only `progression.xp_total` and the `skills.*` paths are `tracked_counters` under Decision 079's `baseline + sum(counter_deltas) = current_value`, so the AP ledger is the one growth axis in this campaign with no arithmetic gate behind it — a rendered string, and a rendered string has nothing to disagree with. This is `F-017`'s shape on a different axis: XP went untracked across an entire instant dungeon until the player asked where it was, and the remedy there was making it a counter. **Recorded as owed rather than done: AP has no counter and this correction does not give it one.**
+
+  **`EVT-000591` stands as recorded.** Prior Events are not rewritten; the correction lives here, on the campaign's established practice for the `OBJ-27`/`OBJ-16` citation repair in the same span.
+
+  **In fiction, nothing happened at all.** Alexander allocated twenty-five points that afternoon and knows exactly where he put them. Only the ledger was short."
 ```

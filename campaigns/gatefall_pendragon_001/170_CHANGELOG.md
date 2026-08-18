@@ -13,7 +13,7 @@ canonical_record: REC-000080
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000594
+  source: EVT-000595
   game_date: "2026-08-21T17:26:00-05:00"
   real_date: "2026-08-15"
 role: canonical ledger
@@ -24,6 +24,17 @@ subjects: []
 ---
 
 ## Changes
+
+**2026-08-21 17:26 — two baselines derived instead of read, and three surfaces that never heard the correction (`EVT-000595`).**
+
+- **Five rendering defects**, found by reconciling every stored skill value against the profile it derives from. **No roll re-run, no past outcome altered**, and no counter, Rank, mastery level or floor moves.
+- **Rupture's S-Rank baseline read 938. §7.2 authors 1,000.** 938 is `375 × 2.5` — how the table was *built*, not what it *says*. **DMG 3,715 → 3,877.** `magnitude_floor` 260 still binds. The [S] rung was taken at `EVT-000590` after the span's last fight, so **3,715 was never used against anything.**
+- **Mana Bolt's B-Rank baseline read 155. §7.2 authors 150** — same cause, one row down (`62 × 2.5`). **The line was also a whole span stale**, carrying effective Intelligence 412 and DMG 907 while the Record beside it read 491 and 1,034. **DMG → 1,026** at effective Intelligence 491. Mana Bolt has resolved at the 155 baseline since `EVT-000586`, worth 8 damage on a strike near 1,000 — **those rolls stand.**
+- **Combat Tier unaffected — holds at A.** `offense_tier` was already S and cannot rise; `defense_tier` holds A; §6.7 takes the lower axis.
+- **Keen Sense read 10 subjects against a computed 9.** The line computed `5 + 4 = 9` and rendered it as *himself plus 9 allies*, counting the Bearer twice. **Himself plus 8, 9 subjects.** Right at [B], drifted on the A-Rank Master crossing at Checkpoint 0100. Counters untouched.
+- **Resonance Extraction rendered `scope_floor` 4 against a stored counter of 5**, which has read 5 since `EVT-000588`. **Four further miners → five.** The rung still bought the category rather than the count — at one higher number.
+- **This changelog, `180_CURRENT_STATE.md` and `system/ID_REGISTRY.md` each recorded `EVT-000590` as three breakthroughs into [S]**, naming `Across the seal` and `Standing Pattern` as granted. The Event **withdrew both and restored the skills to [A-Rank] Master**; the character sheet and chronicle were correct throughout, and three rolling views carried the withdrawn version for five checkpoints. All three corrected.
+- **The common cause.** Every one is a **rendered string with nothing to disagree with it** — counters are gated under Decision 079, but a baseline, a subject count and a damage preview are prose derived once by hand. Two were derived from the table's construction rather than read from the table, which gives the right answer at every rung except the ends. `F-037`'s shape, three more instances.
 
 **2026-08-21 17:26 — the ledger was ten points short, and the Stats had been right the whole time (`EVT-000594`).**
 
@@ -43,7 +54,7 @@ subjects: []
 - **The Beast Den** (`EVT-000589`), the archetype that got behind him at `EVT-000564` — and **this time he found the alpha first**, because Keen Sense at Master returned its **whole patrol loop**. Thirteen commons killed inside the rolling ninety-second window behind its circuit. **`Cold read` fired eleven minutes after purchase**, turning a landed hit into a clean evade. **`Follow-through` fired and found nothing** — 450 excess with no second body in reach, which is the honest shape of it. **Sixteen of sixteen, ZERO damage taken — the first instance in the campaign's history where nothing touched him at all.**
 - **His opening strike is now larger than a B-Rank boss.** A strong Rupture at 2,740 against 2,400 Health, from concealment, with `Return` loaded for a disengage that never became necessary.
 - **SYSTEM RANK B → A on the level 40 crossing.** Both ceilings to **S**, growth rung **+23 → +63**, a fourth title slot — and **all five Stat Passives release and re-pin one Rank higher at [S]**: Flux Sight reads what a thing is *for*, Overpower loses its Rank cap, Pre-empt's *first blade* runs against anything at any Rank, Conduit recovers **inside** a scene where the A-Rank line said in terms it could not, Shrug Off's threshold immunity reaches A-Rank.
-- **Four breakthroughs taken at once** (`EVT-000590`), **three into [S] — the first S-Rank anything this campaign has held.** Keen Sense with **`Across the seal`** (the read crosses a Gate boundary, a §9.6 seal or a §17 instance wall, which every other skill is forbidden from doing); Exploit Pattern with **`Standing Pattern`** (a Pattern on a *person or organisation* persists beyond the scene, which stops it being a combat skill); Rupture at **3,715** with **`Unmaking`** (ignores worn reduction entirely); Twin Fang to [B] with **`Both fangs`**, which retires its three-day-old credit problem.
+- **Four breakthroughs offered at once** (`EVT-000590`), **two taken and TWO WITHHELD.** Taken: **Rupture to [S]** with **`Unmaking`** (ignores worn reduction entirely) — the first S-Rank anything this campaign has held, at **3,877** as corrected at `EVT-000595` — and **Twin Fang to [B]** with **`Both fangs`**, which retires its three-day-old credit problem. **Withheld: Keen Sense's and Exploit Pattern's [S] offers**, both presented and resolved in play before the authoring was checked and then withdrawn — Section 7.3 authored those ladders through A-Rank and stopped, so the categories rendered for them (`Across the seal`, `Standing Pattern`) were invented rather than read. Both stand restored at **[A-Rank] Master**. Profile 1.81 has since authored the rung.
 - **The level 40 assessment** (`EVT-000591`). **Vanguard earned [Rare]** on an owner ruling that **all Gates count including §17 instances** — the recount landed on **10 of 10 exactly**, eight of them inside forty-eight hours. **The Unmeasured re-authored rather than allowed to go inert**: beyond-S, Flux Sight returns a subject's **ceiling**.
 - **A Runtime imprecision corrected on challenge**: Executioner's tally does **not** shrink retroactively. It is historical and permanent — but it has not moved in ten levels and can now only advance on **S-Rank kills**, and Combat Tier A means the world sizes imposed content to A. **Executioner and Godslayer are the same wall**, and it is the wall three skills just hit at [S]: nothing in reach is bigger than he is.
 - **Fifteen points to Vitality.** Effective Vitality **500**, max Health **2,000** — 133% of a fixed-Rank A hunter, on a card that reads **E**.

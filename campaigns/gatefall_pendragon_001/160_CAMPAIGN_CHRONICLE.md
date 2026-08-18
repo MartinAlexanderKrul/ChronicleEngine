@@ -13,13 +13,13 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000594
+  source: EVT-000595
   game_date: "2026-08-21T17:26:00-05:00"
   real_date: "2026-08-18"
 role: canonical ledger
 scope: campaign
-# Since Checkpoint 0102: EVT-000588 - EVT-000594 (two instances, SYSTEM RANK A, seven
-#   Rank movements, the level-40 assessment and two rulings, the ceiling sweep, barrier, and an ability-point reconciliation)
+# Since Checkpoint 0102: EVT-000588 - EVT-000595 (two instances, SYSTEM RANK A, seven
+#   Rank movements, the level-40 assessment and two rulings, the ceiling sweep, barrier, an ability-point reconciliation and a rendering-drift correction)
 # Since Checkpoint 0101: EVT-000580 - EVT-000587 (Fenn's shell meets the fence, the alarm
 #   and the number, the tick, the grain terminal, the Ashfield, the box, the Crypt, barrier)
 # Since Checkpoint 0100: EVT-000574 - EVT-000579 (the retroactivity ruling, the mug and the
@@ -570,6 +570,7 @@ subjects:
   - EVT-000592
   - EVT-000593
   - EVT-000594
+  - EVT-000595
 ```
 
 ---
@@ -20102,4 +20103,49 @@ description: "**A record correction, not a grant.** No fictional time, no scene,
   **`EVT-000591` stands as recorded.** Prior Events are not rewritten; the correction lives here, on the campaign's established practice for the `OBJ-27`/`OBJ-16` citation repair in the same span.
 
   **In fiction, nothing happened at all.** Alexander allocated twenty-five points that afternoon and knows exactly where he put them. Only the ledger was short."
+```
+
+## EVT-000595 - Rendering Drift: Two Baselines Derived Instead of Read, and Three Surfaces That Never Heard the Correction
+
+```yaml
+id: EVT-000595
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: session-gameplay
+  game_date: "2026-08-21 17:26 -05:00"
+  real_date: "2026-08-18"
+type: Event
+kind: ledger-correction
+importance: notable
+game_date: "2026-08-21 17:26 -05:00"
+participants: []
+counter_deltas: []
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+description: "**Five rendering defects, found by reconciling every stored skill value against the profile it derives from.** No roll is re-run, **no past outcome is altered**, and no counter, Rank, mastery level or floor moves. Two of the five change a standing damage figure going forward; three were prose disagreeing with something already correct beside it.
+
+  **1. Rupture's S-Rank baseline was 938. Section 7.2 authors 1,000.** 938 is `375 × 2.5` — the A-Rank row multiplied by the table's own step — which is how the table was *built* and not what it *says*. **DMG 3,715 → 3,877** at effective Intelligence 491 (`(1,000+491)×2.60 = 3,876.6`). `magnitude_floor` 260 still binds and does not move; the S-Rank Adept authored ×2.30 is still the losing side of it.
+
+  **2. Mana Bolt's B-Rank baseline was 155. Section 7.2 authors 150.** Same cause, one row lower: `62 × 2.5`. **The same skill line was also a whole span stale**, rendering effective Intelligence **412** and DMG **907** from the level-37 figures while the Record beside it carried 491 and 1,034. Both corrected together: **DMG 1,026** at effective Intelligence 491 (`(150+491)×1.60 = 1,025.6`).
+
+  **Every past outcome stands.** Mana Bolt has resolved against live bodies at the 155 baseline since `EVT-000586`, worth 8 damage on a strike near 1,000 — those rolls resolved under the figure in force and are not re-run, on the same rule the 1.80 backfill applied to a far larger change. Rupture's [S] rung was taken at `EVT-000590`, after the span's last fight, so **3,715 was never used against anything.** **Combat Tier is unaffected**: `offense_tier` was already S and cannot rise, `defense_tier` holds at A, and Section 6.7 takes the lower axis — **Combat Tier A**.
+
+  **3. Keen Sense read 10 subjects where the formula returns 9.** The line computed `5 + 4 = 9` correctly and then rendered it as *himself plus 9 allies*, counting the Bearer twice. Section 7.2's scope is a count of **subjects** and Section 7.4's ladder benefits *the Bearer alone* at Novice, so 9 is **himself plus 8**. The rendering was right at [B-Rank] — *himself plus 7, 8 subjects*, on `scope_floor` 8 — and drifted on the A-Rank Master crossing at Checkpoint 0100. **`scope_floor` 8, `rank_ascensions` 4 and every counter are untouched.**
+
+  **4. Resonance Extraction rendered a `scope_floor` of 4 against a stored counter of 5.** The counter has read **5** since the [D]→[C] breakthrough at `EVT-000588` — the count held at [D-Rank] Master immediately before it — and the prose still carried the pre-ascension floor. Section 7.4 is explicit that the prose line is a rendering of `current_value` and never an independent count. **Four further miners → five.** C-Rank Adept computes 4 on Section 7.4's authored *0 → 4 additional miners* ladder and the floor of 5 binds, so the reading that the rung bought the category rather than the count still holds — at one higher number.
+
+  **5. Three surfaces still record `EVT-000590` as three breakthroughs into [S].** `170_CHANGELOG.md`, `180_CURRENT_STATE.md` and `system/ID_REGISTRY.md` each name **Keen Sense with `Across the seal`** and **Exploit Pattern with `Standing Pattern`** as granted. `EVT-000590` **withdrew both offers as unauthored and restored both skills to [A-Rank] Master**, and the character sheet and this chronicle have said so throughout. Three rolling views kept the pre-correction rendering through five checkpoints. All three corrected here.
+
+  **The common cause, and it is not carelessness.** Every one of these five is a **rendered string with nothing to disagree with it.** A skill's Rank, mastery, uses, scenes and floors are `tracked_counters` under Decision 079 and cannot drift without a gate catching it; a *baseline*, a *subject count* and a *damage preview* are prose derived from them at write time, and a derivation done once by hand stays wrong until somebody redoes it by hand. Two of these were derived from the table's construction rather than read from the table — a shortcut that gives the right answer at every rung except the ones that matter, the ends. **`F-037`'s shape, three more instances.**
+
+  **The corrections did not fit, and the budget was not raised to make them fit.** `/system gear` reads six fields of this sheet and stood at **19,010 tokens against a ratchet fail line of 19,047** before this Event — already on WARN, 37 tokens of headroom. Four correction notes added 125 and crossed it. **Three blocks of one-time history were displaced instead**, each already recorded in full in this chronicle and in `170_CHANGELOG.md`, and none of them current state that a loadout panel exists to show: Rupture's *the breakthrough paid +1,463 rather than costing anything*, Mana Bolt's *paid +149 rather than costing 21, the floor protects magnitude not cost*, and Flash Step's four-sentence ascension provenance, which ended by citing this chronicle anyway. **The surface closes at 18,988 — 22 tokens BELOW where it stood before the corrections**, and the correction rationale lives here, where a panel does not pay for it every time it is opened. `system/RUNTIME_CONTEXT_BUDGETS.yaml` is untouched: moving a warning because a number is inconvenient is an owner ruling, and this did not need one.
+
+  **In fiction, nothing changed.** Rupture always hit as hard as Rupture hits. Alexander's read always reached the people it reached. The System never rendered these numbers to him at all."
 ```

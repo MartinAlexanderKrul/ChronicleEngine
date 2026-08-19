@@ -4,33 +4,30 @@
 
 **Engine Version:** 0.3.0 (Runtime & Persistence Hardening)
 **Development Target:** Version 0.4 — Economy & Opportunity
-**Status:** Version 0.3 released 2026-08-01; Version 0.4 is in **Planning**, scope drafted 2026-08-02 and awaiting owner approval
+**Data Model Version:** 0.1.7
+**Status:** Version 0.3 released 2026-08-01; Version 0.4 is in **Capability Validation and the Prototype Campaign** (milestone 0.4.3), Architecture Freeze 2026-08-02
 
 # Current Sprint
 
 Goal:
 
-**Version 0.3 — Runtime & Persistence Hardening — is complete and released.** Its full lifecycle is closed under Decision 048: ADR approval and Architecture Freeze (Decisions 072–075), implementation of milestones 0.3.1–0.3.3 with 0.3.4 closed by drop, the Consistency Audit, Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem.
+**Close Version 0.4's validation record so the Engine Postmortem can be written.** Version 0.3 is complete and released; its full lifecycle is closed under Decision 048. Version 0.4 — Economy & Opportunity — has passed Planning, ADR Design, the Architecture Freeze (Decisions 088 and 089), Implementation of milestones 0.4.1 and 0.4.2, and the Consistency Audit. What remains is evidence: `docs/440_ECONOMY_VALIDATION/441_CAPABILITY_MATRIX.md` and the play that fills it.
 
 Current Task:
 
-**Version 0.4 Planning is unblocked on numbering and open on scope.** Decision 087 resolved the collision by reclassifying Magic Framework and Historical Simulation as world-authoring backlog: their engine layers were closed by Decisions 037 and 038 and they were holding version numbers while waiting for work already done. Resolving it surfaced a third correction — **four of Governance & Society's eight domains were also already delivered** by Decision 036 and Rules Section 10 — so Version 0.4 is now **Population & Material Society**, and smaller than its old name implied.
+**Milestone 0.4.4 is sited, and the Data Model advances to 0.1.7.** Decision 091 (An NPC Is a Character, Not a Filtered Narrator) was accepted 2026-08-09 naming a milestone that did not exist; it now has one, with its capability, acceptance fixtures, exclusions and completion criteria. Disposition is canonical state on a Character and therefore advances the schema (contract at Data Model Section 12.4.5); Belief and Agenda are tracked state and do not. Coverage is prospective and declared per world, so no cast is backfilled by migration.
 
-**All three postmortem refinements are incorporated**, which clears Decision 048's remaining precondition: the settler-without-writer rule in `docs/DEVELOPMENT_WORKFLOW.md`, the measured NPC-grounding proxy, and the generated validation-evidence block.
+**`tools/test_decision_roadmap_sync.ps1` now checks that the milestone a decision names exists.** It previously string-matched the decision number anywhere in this file, which is why a foundational change sat for ten days claiming a heading that was never written while the gate reported it owned.
 
-**Version 0.4 has entered Planning.** The full scope draft is recorded below as **Economy & Opportunity**: vision, success statement, three capability milestones (demand advances like supply; a finite opportunity is contested; scarcity is state), acceptance fixtures, exclusions, completion criteria, and the likely ADR impact. It is Decision 048's Planning-stage output and **is not approved** — ADR Design does not begin until it is. Three open questions are listed at the end of that section, the first being whether Economy is the right first capability at all.
+**Next, and the reason the sprint goal is what it is: `441_CAPABILITY_MATRIX.md` has not been touched since 2026-08-02.** It still asserts that no actor in Gatefall declares a supply source or a standing need — false since 2026-08-14, when five sources and two needs were authored (`F-035`) — and V04-07 still reads *Vacuous*. That is Version 0.3's Finding 4 recurring inside the version that opened by saying it would apply the lesson at the start. Re-reading the live record against the matrix is the next development task.
 
-Separately, three items are a play session's business and belong to campaign canon rather than the engine: backfilling Gatefall's live commitments so the settlement gate stops being vacuous (`tools/list_commitment_candidates.ps1` produces the worklist), settling F-004 into the Gatefall profile, and deciding the tracked-board floor in `test_gatefall_quest_contract.ps1`.
+Separately, these items are a play session's business and belong to campaign canon rather than the engine: backfilling Gatefall's live commitments so the settlement gate stops being vacuous (`tools/list_commitment_candidates.ps1` produces the worklist), adopting disposition coverage in the Gatefall profile so milestone 0.4.4's gate stops being vacuous, backfilling the cast beneath that baseline, settling F-004 into the Gatefall profile, and deciding the tracked-board floor in `test_gatefall_quest_contract.ps1`.
 
-The Prototype Campaign continues as ordinary play. Gatefall: Pendragon is the natural Prototype Campaign for Version 0.4 when that version reaches the stage; no replacement campaign is created merely to repeat evidence.
-
-The prototype's terminology audit also normalized the worlds' E–S classification to the single term **Rank** (E-Rank through S-Rank). This is a world-authoring/consistency refinement under 0.3.5: Gatefall Profile 1.7 migrates persisted `system_tier` to `system_rank`, Profile 1.8 additively aligns the `/system` rendering contract, and Reikon Profile 0.11 is additive because its renamed Rank identifiers are derived rather than stored.
-
-The accepted scope replaced Governance & Society at 0.3 and moved it to Version 0.4. Its argument, its five capability milestones, and the recorded argument against it are in the Version 0.3 section below.
+The Prototype Campaign continues as ordinary play. Gatefall: Pendragon is the Prototype Campaign for Version 0.4; no replacement campaign is created merely to repeat evidence it already produces.
 
 Next Review:
 
-Capability Validation review. Evaluate the non-canonical fixtures and Gatefall prototype evidence against `docs/430_RUNTIME_PERSISTENCE_VALIDATION/431_CAPABILITY_MATRIX.md`. A failed case is recorded as a gap; it is not silently converted into new foundational work inside the frozen version.
+Capability Validation review against `docs/440_ECONOMY_VALIDATION/441_CAPABILITY_MATRIX.md`, re-read against live campaign state rather than against its own last revision. A failed case is recorded as a gap; it is not silently converted into new foundational work inside the frozen version.
 
 Completed since the 0.2.0 release:
 
@@ -840,13 +837,15 @@ Infrastructure and Logistics stay unscheduled. Version 0.2 excluded them as sepa
 
 # Version 0.4 — Economy & Opportunity
 
-Status: **Consistency Audit — 2026-08-02.** Milestones 0.4.1 and 0.4.2 are implemented; the audit reconciled terminology across the Glossary, which carried **none** of the tracked-state constructs — not the two this version added, and not Decisions 082 and 083's either. Next is Capability Validation and the Prototype Campaign (0.4.3).
+Status: **Capability Validation and Prototype Campaign — milestone 0.4.3, in progress; milestone 0.4.4 sited 2026-08-19.** Milestones 0.4.1 and 0.4.2 are implemented and the Consistency Audit is complete (2026-08-02); it reconciled terminology across the Glossary, which carried **none** of the tracked-state constructs — not the two this version added, and not Decisions 082 and 083's either. Two findings have since arrived from play and been accepted under Decision 086: **Decision 090** (refinement, owned by 0.4.3) and **Decision 091** (foundational, owned by 0.4.4, Data Model 0.1.6 → 0.1.7).
 
 Architecture Freeze 2026-08-02. The capability is settled (Economy & Opportunity), the scope below is the Planning-stage output, and **Decisions 088 and 089 are Accepted**. Their acceptance is the Version 0.4 Architecture Freeze under Decisions 048 and 086: the version's architectural basis is now fixed, and later work is implementation and refinement.
 
 **What the freeze now means here, precisely** (Decision 086). It binds Implementation and the Consistency Audit: no further foundational change lands in Version 0.4 during those stages. From Capability Validation onward a foundational change is permitted only where it arises from played evidence, is classified under Decision 069, is versioned and migrated, and is revalidated. Version 0.3 admitted ten such changes and Decision 086 exists so that this version's are checkable rather than merely ruled.
 
-**Standing constraint on every Version 0.4 ADR:** the resident card is at 5,976 tokens against a 6,000 warning. Any decision adding a per-turn obligation must name what it displaces. Decisions 088 and 089 both discharge this by extending clauses that already exist rather than adding new ones.
+**Standing constraint on every Version 0.4 ADR:** any decision adding a per-turn obligation must name what it displaces. Decisions 088 and 089 both discharge this by extending clauses that already exist rather than adding new ones. **Decision 091 does not, and it is recorded as unmet under milestone 0.4.4** rather than treated as satisfied after the fact.
+
+The figure this constraint was written against — *5,976 tokens against a 6,000 warning* — **is no longer the live number.** `system/RUNTIME_CONTEXT_BUDGETS.yaml` now sets the resident warning at 8,350 and failure at 10,000, moved by owner ruling after this section was written. The constraint stands as stated; only the headroom changed. **The authority is the budgets manifest, not this paragraph** — quoting a measured value into prose beside the file that owns it is `F-030`'s defect class, and it is left as a live reference here rather than re-copied.
 
 ## Version 0.4 Vision
 
@@ -920,6 +919,43 @@ Combined evidence must exercise: a need settling unobserved and being met by som
 **Decision 090 is this milestone's first finding, and it arrived from play rather than from review** — which is Decision 086's condition (a) satisfied in the ordinary way. The prototype surfaced two defects on the same axis: a mandatory ascension offer suppressed for up to eight promotion barriers because the counter that would have triggered it was never written (`F-012`), and eight mastery-tracked skills reaching Rank through no authored ladder at all, one of them permanently unable to ascend (`F-014`). Both are classed **Refinement** — the negative assertion reuses the existing `progression_audits` block for its existing meaning, so no Data Model block, Rules section, or schema version moves.
 
 It is worth recording what the milestone learned about its own instruments, because it generalizes past this version. **Three of the four detectors proposed for these findings failed on measurement**, and each was measured against the live record rather than argued about: keying coverage on `kind: combat` catches neither Event that raised the flag; scanning descriptions for a resolved-clear signature fires mostly on administrative records; and a hardcoded per-entry byte ceiling had been overtaken twice by legitimate growth. The surviving detector reads a **classification the writer declares**, and its residual exposure — a misfiled kind — is written into the decision rather than implied away. Separately, five contract tests were found pinning live campaign state as literals (profile version in three, skill Rank and a damage snapshot in a fourth, a padding constant in the fifth); all five were converted to read what they assert against. That is `F-013`'s defect class, and it was present in five more places than `F-013` recorded.
+
+### 0.4.4 NPCs Are Actors
+
+**Status: Sited 2026-08-19.** Decision 091 was accepted 2026-08-09 and named this milestone. **The milestone did not exist**, and that is the first thing this section records rather than quietly repairs: for ten days a foundational Data Model change sat inside a frozen version with no capability statement, no acceptance fixtures, no completion criteria, and no row in the validation matrix — while `tools/test_decision_roadmap_sync.ps1` reported the decision claimed. The gate string-matched `Decision 091` anywhere in this file and never asked whether `0.4.4` was a heading. That hole is closed in the same change as this section.
+
+**Why it is a second capability inside a one-capability version, and why that is accepted rather than argued away.** Cutting Material Scarcity and Price established the rule this version runs on: read the milestones back as capability statements, and if two sentences appear, it is two capabilities. 0.4.1 and 0.4.2 together say *opportunity is produced by others and contested by others*. This one says *the actors doing the producing and contesting are people*. That is plainly a second sentence, and by the standard applied to scarcity it should have been cut to a later version.
+
+It was not, and the reason is Decision 086 rather than preference. The finding arrived from played evidence — seven design flags across four months (`F-003`, `F-005`–`F-007`, `F-016`, `F-020`, `F-021`, consolidated as `F-028`) — and the deferral target does not exist: Version 0.5 is Persistence, whose subject is migration procedure, and parking a character model there would repeat exactly the adjacency reasoning that assembled the eight-domain focus list. The interval is also not neutral, which is the Decision 076 argument: every session played meanwhile narrates a cast with no interiority, and the defect is invisible at rest. **The honest record is that this version delivered one capability and absorbed one more**, and a future Planning stage should read that as evidence that the one-capability rule needs an exception clause rather than as a licence.
+
+Capability delivered:
+
+- A Character carries **Disposition** — `Want`, `Fear`, `Secret`, `Voice` — as canonical state, so an actor can open a scene rather than only answer one, act against its own interest, hold something back, and remain non-interchangeable with the next actor loaded.
+- An actor holds **Beliefs** that may be false, so the world may be wrong about itself: rumour, misplaced trust, and a grudge held for the wrong reason become expressible rather than being defects to repair.
+- An actor pursues an **Agenda** that advances on the campaign clock, settled from its own state, whether or not the protagonist is present.
+
+Dependencies: Decisions 076, 084, 085, 086, 088; Data Model Sections 7.3, 7.5, 7.6; Runtime Section 2.4; the Resident Core's NPC load and channel obligations.
+
+**Data Model 0.1.6 → 0.1.7, contract at Section 12.4.5.** Only Disposition moves the schema. Belief and Agenda are tracked state on the Decision 082/083/088/089 precedent and change no Persistent Object structure; Disposition is canonical state with required fields on an existing specialization, which is the Decision 076 `Texture` shape that advanced 0.1.2 → 0.1.3. Recording *which* of the three moved the version is the point — three sections from one decision and one schema advance is an asymmetry a later reader would otherwise read as an omission.
+
+**Coverage is prospective and declared per world**, on the Section 12.4.4 model. A World Rule Profile names the entity identifier its obligation begins at; Characters recorded before it are backlog. `disposition_class: referent` is the writer's declared opt-out, because *a Character a Runtime will play* is not decidable from a record — the detector reads a classification rather than guessing one, which is the only shape that survived measurement at 0.4.3.
+
+**The resident cost is not discharged, and Decision 091 does not discharge it.** This version's standing constraint requires any ADR adding a per-turn obligation to name what it displaces; Decisions 088 and 089 each did so explicitly in their own text. Decision 091 adds a whole resident section — *Play the Character, Not a Filtered You* — and is silent on it. The warning line has since moved from 6,000 to 8,350 tokens, so the card is not over budget and nothing is failing; but the constraint was to *name the displacement*, and naming it after the fact is not the same obligation. **Recorded as unmet rather than retroactively satisfied.**
+
+Acceptance fixtures:
+
+- A Character inside a declared coverage set that carries no disposition and no `referent` declaration is rejected by the Repository Validation Barrier; one carrying all four fields, and one declaring itself a referent, are accepted.
+- A world declaring no coverage carries no obligation and no entries — the gate is vacuous and says so.
+- An agenda advances across elapsed time with the protagonist absent, and records an `Outcome` when nothing moved.
+- A false belief survives contact with an actor who knows better, and is not silently corrected.
+
+Explicit exclusions: no emotion model, no relationship-score arithmetic, no disposition-driven modifier to any resolution (Law VII). Disposition governs how an actor is played, never what the dice do.
+
+Completion criteria:
+
+- The enforcement point exists, is proven by fixture, and its vacuity is stated wherever it is currently vacuous.
+- Disposition, Belief and Agenda each appear in `020_ENGINE_GLOSSARY.md` — the Consistency Audit found the Glossary carried none of this version's tracked-state constructs, and these three were added after that audit ran.
+- A world adopts coverage and the matrix rows stop being vacuous. **This is world authoring and belongs to a play session**, not to a development session, and the milestone is not complete until it happens.
 
 ---
 
@@ -1317,7 +1353,9 @@ Version 0.2 - Knowledge & Civilization is complete. Capability Validation, Proto
 
 **Version 0.3 — Runtime & Persistence Hardening is complete and released (2026-08-01).** Its ADRs — Decisions 072, 073, and 074 (foundational) and 075 (refinement; milestone 0.3.4 closed by drop) — were accepted on 2026-07-23 under the Architecture Freeze. Milestone 0.3.5 closed with the Engine Postmortem, and Decision 086 scoped the freeze so the exception path is falsifiable. The entries below record the ten prototype-driven decisions that arrived during validation; they are history now rather than open work, and remain here because Decision 069 requires every accepted decision to name the milestone that owns it.
 
-**Version 0.4 Planning has not begun.** It is blocked on the number collision recorded under Version 0.4 below, and Decision 048 requires the postmortem's refinements to be incorporated first.
+**Version 0.4 — Economy & Opportunity is in Capability Validation and the Prototype Campaign (milestone 0.4.3).** Planning closed 2026-08-02 with the number collision resolved (Decision 087) and the postmortem's refinements incorporated; the Architecture Freeze followed the same day with Decisions 088 and 089. Milestones 0.4.1 and 0.4.2 are implemented and the Consistency Audit is complete. Two post-freeze findings have arrived from play under Decision 086: **Decision 090** (refinement, milestone 0.4.3) and **Decision 091** (foundational, milestone 0.4.4, Data Model 0.1.6 → 0.1.7). The version's Engine Postmortem is blocked on `docs/440_ECONOMY_VALIDATION/441_CAPABILITY_MATRIX.md` completing.
+
+*(This paragraph asserted the opposite — that Planning had not begun and was blocked on the collision — for seventeen days after both were false. It is corrected rather than deleted, because a dependencies section that contradicted its own document's header is the clearest available instance of the staleness class this roadmap keeps recording.)*
 
 **Decision 076 — Relationship Texture (2026-07-25), admitted to Version 0.3 by owner ruling as an explicit exception to the Architecture Freeze.** It is foundational under Decision 069's structural test (it changes `011_ENGINE_DATA_MODEL.md`), and that classification stands unrevised — the ruling overrides a correct classification rather than reinterpreting it. Admitted on three grounds recorded in the decision: the defect is characterization failing to survive the promotion barrier, which is this version's declared domain; Version 0.4 currently holds Governance & Society at unapproved scope with an unresolved number collision, so the deferral target could not receive it; and the interval is not neutral, because every session played meanwhile promotes relationships through a schema with no slot for manner, undetectably.
 

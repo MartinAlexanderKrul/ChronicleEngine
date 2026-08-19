@@ -96,7 +96,7 @@ try {
 
     # A required field with the wrong type.
     Assert-Rejected -Name "a non-string schema_version" -Expected "field 'schema_version' is" `
-        -Content (Replace-First $original '^schema_version: "0\.1\.6"$' "schema_version:`n  - 0.1.6")
+        -Content (Replace-First $original '^schema_version: "0\.1\.7"$' "schema_version:`n  - 0.1.7")
 
     # An unknown status value.
     Assert-Rejected -Name "an unknown status" -Expected "unknown status" `

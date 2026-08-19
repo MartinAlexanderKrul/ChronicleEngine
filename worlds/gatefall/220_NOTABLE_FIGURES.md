@@ -18,7 +18,7 @@ All figures are original to Gatefall. No real person is depicted.
 ```yaml
 id: REC-000071
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -76,7 +76,7 @@ Okafor runs a meeting like a woman defusing something. She is unfailingly courte
 ```yaml
 id: ENT-000107
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -124,7 +124,7 @@ Vaughn is warm in the way of a man who has closed a great many deals across a gr
 ```yaml
 id: ENT-000108
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -167,7 +167,7 @@ Crane is quieter in a room than his press suggests — the public swagger is a c
 ```yaml
 id: ENT-000109
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -213,7 +213,7 @@ Brannigan talks like the shop floor she came off — fast, profane, funny, aller
 ```yaml
 id: ENT-000110
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -261,7 +261,7 @@ Foss is precise in a way that unnerves people — she notices the thing you were
 ```yaml
 id: ENT-000111
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -309,7 +309,7 @@ Deacon talks fast and low, all reassurance and hedged promises, a man who has ne
 ```yaml
 id: ENT-000112
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -355,7 +355,7 @@ Beran is courtly, anxious, and exhausting in his thoroughness — he answers a s
 ```yaml
 id: ENT-000113
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -403,7 +403,7 @@ Blažková is plain-spoken to the point of rudeness, because she is the one pers
 ```yaml
 id: ENT-000114
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -449,7 +449,7 @@ Karlov is old-world courteous and immovable, a man who receives you under the ph
 ```yaml
 id: ENT-000115
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -495,7 +495,7 @@ Ivana is quick, impatient, and better at the numbers than anyone else in Karlov 
 ```yaml
 id: ENT-000116
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -541,7 +541,7 @@ Dušek is polished in the American style his branch imported — first names, ea
 ```yaml
 id: ENT-000117
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -587,7 +587,7 @@ Sova is quiet, watchful, and almost impossible to read — she gives a meeting t
 ```yaml
 id: ENT-000118
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -633,7 +633,7 @@ Calloway is louder in public than in a room — the swagger is real on camera an
 ```yaml
 id: ENT-000123
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -679,7 +679,7 @@ Reinhardt is precise, courteous, and immovable in the way of an engineer who has
 ```yaml
 id: ENT-000124
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -711,7 +711,7 @@ Ten membership relationships bind the institution-affiliated figures to their in
 ```yaml
 id: REL-000052
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -725,7 +725,7 @@ qualities: "Rank: Regional Director (federal appointee leading BGM Region V over
 ```yaml
 id: REL-000053
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -739,7 +739,7 @@ qualities: "Rank: Guildmaster and CEO (executive leadership of Horizon Guild; no
 ```yaml
 id: REL-000054
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -753,7 +753,7 @@ qualities: "Rank: S-Rank ace (drafted; Horizon Guild's public face and its one i
 ```yaml
 id: REL-000055
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -767,7 +767,7 @@ qualities: "Rank: Guildmaster (elected off the shop floor; leads Ironline Guild 
 ```yaml
 id: REL-000056
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -781,7 +781,7 @@ qualities: "Rank: Senior licensed appraiser on the Ranking Bench (B-Rank Percept
 ```yaml
 id: REL-000057
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -795,7 +795,7 @@ qualities: "Rank: Director (career civil servant leading the Czech Gate Administ
 ```yaml
 id: REL-000058
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -809,7 +809,7 @@ qualities: "Rank: Contracted S-Rank hunter (Karlov Guild's marquee hunter; canno
 ```yaml
 id: REL-000059
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -823,7 +823,7 @@ qualities: "Rank: Guildmaster (head of the family-run Karlov Guild and its inner
 ```yaml
 id: REL-000060
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -837,7 +837,7 @@ qualities: "Rank: Heir and lead of the New Contracts Desk (C-Rank hunter; the gu
 ```yaml
 id: REL-000061
 canonical_record: REC-000071
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling

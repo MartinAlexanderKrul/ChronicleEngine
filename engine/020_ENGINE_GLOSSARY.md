@@ -50,6 +50,18 @@ Adoption may be partial, regional, delayed, resisted, or reversed.
 
 ---
 
+## Agenda
+
+Tracked state recording what an actor is actively pursuing, advanced on the campaign clock whether or not anyone is watching.
+
+**An agenda is owed to nobody and is pursued; a [Pending World-Side Commitment](#pending-world-side-commitment) is owed to someone and is discharged.** That is the whole difference: a commitment carries a required due time and concludes, while an agenda advances by degrees, stalls, is overtaken, and may never conclude. An actor holding commitments and no agenda does only what it has promised, which is an actor existing exclusively in relation to the protagonist.
+
+It is settled from the holder's own state, standing and reach, never from the protagonist's involvement, at the same clock boundary that advances supply, needs and commitments. An agenda that moved while the player was elsewhere is the ordinary case. An outcome recording that nothing moved, and why, is a settlement exactly as a positive one is.
+
+Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.9; settled at `012_ENGINE_RUNTIME.md`, Section 2.4; see Decision 091.
+
+---
+
 ## Alias
 
 A time-scoped, provenance-bearing name record on a Persistent Entity, carrying a quality such as current, former, cover, legal, mythic, or posthumous.
@@ -71,6 +83,18 @@ Archived events remain recoverable through documents, ledgers, orders, correspon
 The involuntary steps and micro-actions that carry out a declared player intent — such as walking, opening an unbarred door, crossing a room, or sitting when invited — which the Runtime performs without yielding control.
 
 Automatic execution is distinct from a Player Decision Point: it does not require the player to decide anything. Defined in `012_ENGINE_RUNTIME.md`, Section 1.6.
+
+---
+
+## Belief
+
+Tracked state recording that an actor holds something to be true — **and a belief may be false, which is the entire reason the construct exists.**
+
+Belief and [Character Knowledge](#character-knowledge) are different things. The channel test asks whether an actor *may* know a fact and is therefore a filter on truth: it selects which true facts an actor holds, and has no expression for something an actor holds that is not true. An actor satisfying it holds a strict subset of reality and nothing besides, which is an instrument reading the world at reduced resolution rather than a person.
+
+Accuracy is owner-facing and never rendered — the actor experiences a belief as knowledge. A false belief is not an error queued for correction: it is canon until the fiction changes it, it survives contact with someone who knows better, and confidence governs whether the correction is refused. A world in which every mistaken actor is corrected on first contact has no rumour, no reputation, no misplaced trust, and no grudge held for the wrong reason.
+
+Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.8; see Decision 091.
 
 ---
 
@@ -283,6 +307,20 @@ Distinct from a [Runtime Command](#runtime-command), which is out-of-character c
 A world-established, in-world-real leveling or experience system — for example a litRPG "System" — declared as a supernatural phenomenon under the Supernatural Phenomena Contract (Rules Section 11).
 
 Unlike the meta Derived Progression View, a Diegetic System's levels and numbers are real within the fiction and perceivable by characters. Decision 057 permits tracked canonical quantities and inline surfacing. A declared World Rule Profile may also make those quantities causally change capability or vitality (Decision 059; Reikon does this). Such causality still does not supply the outcome of an uncertain action: the world's declared resolution contract remains authoritative. World-authoring content. Defined in Decisions 051, 057, and 059.
+
+---
+
+## Disposition
+
+The authored interiority of a Character, held as canonical state on its own record: **Want**, **Fear**, **Secret**, and **Voice**.
+
+Each field closes a specific way an actor collapses into the narrator. `Want` is what lets an actor open a scene rather than only answer one — an actor pursuing nothing can only react, and reacting draws its content from the Runtime's context, which holds everything. `Fear` is what makes it act against its own interest, which is most of what separates a person from an optimizer. `Secret` is the structural reason it does not simply say what it knows. `Voice` is what makes two loaded actors non-interchangeable, because manner is precisely what recall compresses away.
+
+All four are **required for any Character a Runtime will play**. A Character that exists only as a referent declares `disposition_class: referent` and needs none until it speaks or acts; the classification is declared by the writer rather than inferred, because a name on a roster and a character who speaks next session are the same shape at rest. Coverage is prospective and declared per world.
+
+Disposition governs how an actor is played and never what the dice do. It is distinct from a character sheet's `personality` field, which describes how a character comes across; disposition is what the character is pursuing, protecting and withholding, which is what the Runtime needs before writing a line.
+
+Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.7; see Decision 091 and design flag `F-028`.
 
 ---
 

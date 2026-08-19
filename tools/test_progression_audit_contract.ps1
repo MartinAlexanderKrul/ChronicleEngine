@@ -179,7 +179,7 @@ try {
     # Removed under `F-018`; if a live defect ever needs suppressing again it
     # belongs in the flag file with a repair owner, not silently in a fixture.
     $baseline = Invoke-Validation $tempRoot
-    Assert-True ($baseline.ExitCode -eq 0) "Normalized Data Model 0.1.6 control repository did not validate:`n$($baseline.Output)"
+    Assert-True ($baseline.ExitCode -eq 0) "Normalized Data Model 0.1.7 control repository did not validate:`n$($baseline.Output)"
 
     # Checkpoint 0070's repair audit exposed values that were duplicated in a
     # prose rendering and structured state without any gate comparing them.
@@ -327,7 +327,7 @@ try {
 ``````yaml
 id: $fixtureId
 canonical_record: REC-000079
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: session-3-gameplay

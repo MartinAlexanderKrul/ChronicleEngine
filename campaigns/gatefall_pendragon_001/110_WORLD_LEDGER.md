@@ -12,7 +12,7 @@ This ledger records what is visible and accessible to the campaign. It reference
 ```yaml
 id: REC-000075
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000589
@@ -54,7 +54,7 @@ subjects:
 ```yaml
 id: REL-000062
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000056
@@ -312,7 +312,7 @@ These records are owner-facing. A Runtime never renders one, and an attached poi
 ```yaml
 id: ENT-000161
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000159
@@ -344,7 +344,7 @@ canonical_state:
 ```yaml
 id: ENT-000162
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000159
@@ -376,7 +376,7 @@ canonical_state:
 ```yaml
 id: ENT-000163
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000159
@@ -410,7 +410,7 @@ An unnamed painted-over storefront two blocks from the pawn shop, marked "CLOSED
 ```yaml
 id: ENT-000164
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000164
@@ -434,7 +434,7 @@ canonical_state:
 ```yaml
 id: ENT-000165
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000164
@@ -468,7 +468,7 @@ An unmarked warehouse in a row of small auto shops, distinguished by a recently-
 ```yaml
 id: ENT-000166
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000165
@@ -496,7 +496,7 @@ canonical_state:
 ```yaml
 id: ENT-000167
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000165
@@ -535,7 +535,7 @@ A small commercial access-control and security-hardware installer in Chicago's w
 ```yaml
 id: ENT-000171
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000188
@@ -559,7 +559,7 @@ canonical_state:
 ```yaml
 id: ENT-000190
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000321
@@ -596,7 +596,7 @@ An older woman running a coffee stall near the Metro rail yards off Cermak — M
 ```yaml
 id: ENT-000191
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000325
@@ -624,7 +624,7 @@ An active, professionally maintained staging space behind the coffee stall — t
 ```yaml
 id: ENT-000192
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000326
@@ -648,7 +648,7 @@ canonical_state:
 ```yaml
 id: ENT-000193
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000329
@@ -678,7 +678,7 @@ canonical_state:
 ```yaml
 id: REL-000089
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000325
@@ -694,7 +694,7 @@ qualities: "Formed 2026-08-13 when Alexander invoked Walt Adamik's name and genu
 ```yaml
 id: REL-000084
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000159
@@ -708,7 +708,7 @@ qualities: "Holder: the pawnbroker (principal). State: complete and deliberately
 ```yaml
 id: REL-000085
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000159
@@ -722,7 +722,7 @@ qualities: "Holder: the pawnbroker (relayer). State: secondhand and incurious. H
 ```yaml
 id: REL-000086
 canonical_record: REC-000075
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000159

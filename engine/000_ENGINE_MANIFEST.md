@@ -296,7 +296,7 @@ Changes to one component should not require version changes to unrelated compone
 | Component | Version |
 |-----------|---------|
 | Engine | 0.3.0 |
-| Data Model | 0.1.6 |
+| Data Model | 0.1.7 |
 | World | 0.9 |
 | Campaign | Not Created |
 | Save Format | 0.1.0 |

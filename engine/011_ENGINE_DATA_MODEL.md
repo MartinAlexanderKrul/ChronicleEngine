@@ -5,7 +5,7 @@
 **File:** `011_ENGINE_DATA_MODEL.md`
 **Status:** Workshop Draft
 **Engine Version:** 0.2.0
-**Data Model Version:** 0.1.6
+**Data Model Version:** 0.1.7
 **Layer:** Engine (000–099)
 
 ---
@@ -448,6 +448,16 @@ Voice        how it behaves in a scene -- register, habit, tell, what it does un
 
 **Required for any Character a Runtime will play.** A Character that exists only as a referent — a name on a roster, the author of a document, a casualty in a record — needs no disposition until it speaks or acts. One that speaks needs all four.
 
+**That distinction is declared, not inferred.** A Character carries `disposition_class`, one of `played` or `referent`, and its absence means `played`:
+
+```text
+disposition_class    played | referent    (absent means played)
+```
+
+The field exists because *a Character a Runtime will play* is not decidable from a record: a name on a roster and a character who speaks next session are the same shape at rest. The writer declares which one it is and the enforcement point reads the declaration — the only detector shape that survived measurement in this version (Decision 090). A `referent` that is then played escapes the check; that residue is real and is stated rather than designed around.
+
+Coverage is **prospective and declared per world**, on the Section 12.4.4 model: a World Rule Profile names the entity identifier its obligation begins at, and Characters recorded before it are backlog rather than defects. A world that declares nothing carries no obligation — an engine-general default would impose the authoring cost on every world from one world's evidence (Decision 069).
+
 **The failure this exists to close is that the engine had only prohibitions.** A Runtime holds the whole world's truth and an actor holds a fraction of it, and every structure the engine offered for that gap was negative: the NPC channel test governs what an actor may *not* know, and a closed-channel record makes one such ruling outlive its scene. Those stop an actor saying wrong things. **They cannot produce a character, and an actor can pass every one of them while remaining the narrator with a name.**
 
 Each field answers a specific way that failure manifests:
@@ -727,6 +737,34 @@ Migration of live mutable state:
 4. Update current manifests, templates, bindings, and compatibility declarations, then run the Repository Validation Barrier.
 
 Immutable checkpoints remain byte-unchanged at their captured schema. Restoration applies each migration in order as applicable, through 0.1.5 → 0.1.6. This migration consumes no fictional time, derives no historical evidence, creates no entity state, and **allocates no identifier**: the baseline is the campaign's existing Event high-water mark at adoption, not a newly minted migration Event.
+
+### 12.4.5 Data Model 0.1.6 → 0.1.7
+
+Decision 091 adds Disposition (Section 7.7), Belief (Section 7.8), and Agenda (Section 7.9). **Only the first of the three moves this version**, and the distinction is the whole content of this contract.
+
+- **Belief and Agenda are tracked state under Section 7.3.** They mint no identifier, are held in records that already exist, and change no Persistent Object's canonical structure. They land on the Decision 082 / 083 / 088 / 089 precedent, under which tracked state does not advance the schema.
+- **Disposition is canonical state on a Character**, and Section 7.7 says so in its own words. Four fields become **required** on an existing Persistent Object specialization. That is the Decision 076 shape — `Texture` on Relationship, Section 12.4.1 — which advanced 0.1.2 → 0.1.3 and authored a contract, and it is why this one exists.
+
+This is recorded because a reader arriving at Sections 7.7–7.9 will see three sections from one decision and one schema advance, and the asymmetry is deliberate rather than an omission.
+
+Migration of live mutable state:
+
+1. Retag every live Persistent Object and Canonical Record from schema 0.1.6 to 0.1.7.
+2. **Do not backfill dispositions.** Coverage is **prospective** and is declared per world, exactly as participation coverage is (Section 12.4.4): it begins at the entity identifier the active World Rule Profile names as its disposition baseline and binds only Characters recorded at or after it. A world that declares no disposition coverage carries no obligation.
+3. A Character within coverage carries `want`, `fear`, `secret` and `voice` in its `canonical_state`, **or declares itself a referent**:
+
+   ```yaml
+   canonical_state:
+     disposition_class: referent
+   ```
+
+   `disposition_class` is one of `played` or `referent`, and its absence means `played`. The opt-out exists because *"a Character a Runtime will play"* is not mechanically decidable — a name on a roster and a character who speaks next session are the same shape at rest. The writer declares the classification and the gate reads it, which is the only detector shape that survived measurement in this version (Decision 090). **The residue is a misfiled class**: a Character declared `referent` that is then played escapes the check, and that is written here rather than implied away.
+4. Existing Characters below a world's declared baseline are **backlog, not defects.** They are backfilled by play under save discipline, one record at a time, and no gate demands them.
+5. Update current manifests, templates, and bindings, then run the Repository Validation Barrier.
+
+**World-profile compatibility declarations are world authoring and are not moved by this contract.** A `206_WORLD_RULE_PROFILE.md` compatibility line advances with its own profile version, and nothing gates it against the current Data Model — Reikon has declared `Data Model 0.1.4` across two schema advances with every gate green, which is the standing evidence that this surface is documentation rather than a binding. Prior contracts listed it among the things to update; none of them did. Recording the gap is the accurate treatment, and closing it is a separate change against the surface itself.
+
+Immutable checkpoints remain byte-unchanged at their captured schema. Restoration applies each migration in order as applicable, through 0.1.6 → 0.1.7. This migration consumes no fictional time, derives no historical evidence, creates no entity state, and **allocates no identifier**: no Character gains a disposition by migrating, and the baseline is an entity high-water mark a world declares at adoption rather than a newly minted migration Event.
 
 ---
 

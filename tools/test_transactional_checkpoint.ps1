@@ -45,7 +45,7 @@ function New-Fixture {
 "@
     Write-Utf8 (Join-Path $fixture "engine/011_ENGINE_DATA_MODEL.md") @"
 # Engine Data Model
-**Data Model Version:** 0.1.6
+**Data Model Version:** 0.1.7
 "@
     Write-Utf8 (Join-Path $fixture "worlds/example/200_WORLD_BIBLE.md") @"
 # Example
@@ -89,7 +89,7 @@ canonical_entry_point: campaigns/example/180_CURRENT_STATE.md
 ``````yaml
 id: $record
 canonical_record: $record
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000001
@@ -130,7 +130,7 @@ versions:
     world: Example
     version: "1.0"
     freeze_status: frozen
-  campaign_schema: "0.1.6"
+  campaign_schema: "0.1.7"
   save_format: "0.1.0"
 ``````
 "@

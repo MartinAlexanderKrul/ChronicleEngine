@@ -14,7 +14,7 @@ The figures and institutions themselves are **world canon** (`worlds/verra/220_N
 ```yaml
 id: REC-000012
 canonical_record: REC-000012
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000008
@@ -48,7 +48,7 @@ subjects:
 ```yaml
 id: REL-000016
 canonical_record: REC-000012
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: terminated
 provenance:
   source: EVT-000009
@@ -71,7 +71,7 @@ texture: "**Not recorded, and now unrecoverable.** This relationship predates De
 ```yaml
 id: REL-000019
 canonical_record: REC-000012
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: terminated
 provenance:
   source: EVT-000009

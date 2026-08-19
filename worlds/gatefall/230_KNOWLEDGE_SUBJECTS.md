@@ -24,7 +24,7 @@ A Knowledge Subject persists as one subject; different holders keep divergent Kn
 ```yaml
 id: REC-000100
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -69,7 +69,7 @@ subjects:
 ```yaml
 id: ENT-000151
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -105,7 +105,7 @@ canonical_state:
 ```yaml
 id: ENT-000152
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -141,7 +141,7 @@ canonical_state:
 ```yaml
 id: ENT-000153
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -177,7 +177,7 @@ canonical_state:
 ```yaml
 id: ENT-000154
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -213,7 +213,7 @@ canonical_state:
 ```yaml
 id: ENT-000155
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000055
@@ -249,7 +249,7 @@ canonical_state:
 ```yaml
 id: ENT-000156
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -287,7 +287,7 @@ canonical_state:
 ```yaml
 id: ENT-000157
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000053
@@ -323,7 +323,7 @@ canonical_state:
 ```yaml
 id: ENT-000158
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -359,7 +359,7 @@ canonical_state:
 ```yaml
 id: ENT-000159
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000055
@@ -397,7 +397,7 @@ The connective subject. Four holders each possess a fragment of the same anomaly
 ```yaml
 id: ENT-000160
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -431,7 +431,7 @@ canonical_state:
 ```yaml
 id: REL-000071
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -445,7 +445,7 @@ qualities: "Holder: BGM Region V (custodian). State: instrumental and incurious.
 ```yaml
 id: REL-000072
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -459,7 +459,7 @@ qualities: "Holder: Deacon (handler). State: commercial and uncomprehending. He 
 ```yaml
 id: REL-000073
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -473,7 +473,7 @@ qualities: "Holder: Sova (far end). State: identical and separately held. She kn
 ```yaml
 id: REL-000074
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -487,7 +487,7 @@ qualities: "Holder: Eleanor Foss (author). State: complete and documented. She m
 ```yaml
 id: REL-000075
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -501,7 +501,7 @@ qualities: "Holder: Naomi Okafor (suppressor). State: aware and shelved. She rea
 ```yaml
 id: REL-000076
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -515,7 +515,7 @@ qualities: "Holder: BGM Region V (unassembled). State: fully documented and enti
 ```yaml
 id: REL-000077
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000055
@@ -529,7 +529,7 @@ qualities: "Holder: Naomi Okafor (custodian). State: deliberate and isolated. Sh
 ```yaml
 id: REL-000078
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -543,7 +543,7 @@ qualities: "Holder: Chicago's Lakefront Corridor veterans (practice without memo
 ```yaml
 id: REL-000079
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000053
@@ -557,7 +557,7 @@ qualities: "Holder: the Czech Gate Administration (measurer). State: documented 
 ```yaml
 id: REL-000080
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000053
@@ -571,7 +571,7 @@ qualities: "Holder: Karlov Guild (exposed party). State: partial and commercial.
 ```yaml
 id: REL-000081
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -585,7 +585,7 @@ qualities: "Holder: Sova (beneficiary). State: operationally complete, deliberat
 ```yaml
 id: REL-000082
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000055
@@ -599,7 +599,7 @@ qualities: "Holder: Miloš Beran (recipient). State: seen and unescalated. He ha
 ```yaml
 id: REL-000083
 canonical_record: REC-000100
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling

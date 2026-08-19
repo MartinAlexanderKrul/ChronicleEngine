@@ -22,7 +22,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 $failures = [System.Collections.Generic.List[string]]::new()
-$currentSchemaVersion = "0.1.6"
+$currentSchemaVersion = "0.1.7"
 # campaign name -> world name, read from the generated worlds/campaigns index so
 # a campaign-scoped block can be judged against its own world's rule profile.
 $campaignWorlds = @{}

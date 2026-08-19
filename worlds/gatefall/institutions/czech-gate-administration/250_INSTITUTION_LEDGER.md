@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000067
 canonical_record: REC-000067
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -52,7 +52,7 @@ Every CGA policy in Prague is downstream of the anxiety that the S-Rank hunter c
 ```yaml
 id: ENT-000103
 canonical_record: REC-000067
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling
@@ -81,7 +81,7 @@ canonical_state:
 ```yaml
 id: REL-000050
 canonical_record: REC-000067
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: ruling

@@ -12,7 +12,7 @@ This ledger records **what is visible and accessible to the campaign** — the w
 ```yaml
 id: REC-000010
 canonical_record: REC-000010
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000008
@@ -52,7 +52,7 @@ Not visible to Ilse at start: the Guild's tempering method itself (`ENT-000012` 
 ```yaml
 id: REL-000017
 canonical_record: REC-000010
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000009
@@ -73,7 +73,7 @@ state: "Physician's independent conclusion: witnessed pattern, tested for except
 ```yaml
 id: REL-000018
 canonical_record: REC-000010
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000008

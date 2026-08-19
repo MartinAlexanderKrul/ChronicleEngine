@@ -137,7 +137,7 @@ function Add-CoveredEvent {
 ``````yaml
 id: $identifier
 canonical_record: REC-000079
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: transcript

@@ -11,7 +11,7 @@
 ```yaml
 id: REC-000081
 canonical_record: REC-000081
-schema_version: "0.1.6"
+schema_version: "0.1.7"
 status: active
 provenance:
   source: EVT-000600
@@ -27,7 +27,7 @@ subjects: []
 ## Bindings and Versions
 
 - **World:** Gatefall · **Profile 1.80**, frozen. **FIVE owner rulings now await a world-side authoring pass** — passenger rift-step (§18.8), elixir stat timing (§12.5), qualifying-scene distinctness (§7.4), **Vanguard's entry criterion (§16.2)** and **The Unmeasured's beyond-ceiling grant (§16.2 / §4.4)**. The backlog is growing, not clearing.
-- **Engine Rules:** 0.3.0 · **Data Model:** 0.1.6
+- **Engine Rules:** 0.3.0 · **Data Model:** 0.1.7
 - **Campaign time:** **2026-08-21 (Friday), 17:26 CDT.** Rogers Park apartment. Health **1,980/2,000**, Mana **982/982**.
 - **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0104/` — the withheld [S] offers reopen under an authored ladder.
 - **This span (`EVT-000588`-`EVT-000593`):** two B-Rank instances; **SYSTEM RANK B → A**; **seven Rank movements** including **three skills into [S]**; six mastery crossings; the level-40 assessment with **two owner rulings**; and a full **ceiling sweep** of every holding.

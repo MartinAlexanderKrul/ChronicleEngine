@@ -13,7 +13,7 @@ canonical_record: REC-000079
 schema_version: "0.1.6"
 status: active
 provenance:
-  source: EVT-000600
+  source: EVT-000601
   game_date: "2026-08-21T17:30:00-05:00"
   real_date: "2026-08-18"
 role: canonical ledger
@@ -578,6 +578,7 @@ subjects:
   - EVT-000598
   - EVT-000599
   - EVT-000600
+  - EVT-000601
 ```
 
 ---
@@ -20404,4 +20405,76 @@ description: "Batch settlement for `EVT-000599`. **`gatefall.skill_formation` ex
   **Recorded for the next reader, because it is the campaign's live shape rather than a one-off:** `EVT-000591` established that Executioner and Godslayer both require kills above System Rank, that System Rank A leaves only S-Rank bodies qualifying, and that **Combat Tier A means the world sizes imposed content to A - equal, never above.** Two titles, three skills and five passives are now all blocked behind the same fact. **Nothing in reach is bigger than he is**, and no objective addresses that.
 
   **Also standing, and unchanged by this span:** the latest **restorable** checkpoint before this save was `900_CHECKPOINT_0103`, while live canon had advanced to `EVT-000598` across four commits that updated ledgers without producing snapshots. This save restores the invariant."
+```
+
+## EVT-000601 - Profile Adoption: Gatefall 1.82 -> 1.83, and a Mastery Level That Returns Something
+
+```yaml
+id: EVT-000601
+canonical_record: REC-000079
+schema_version: "0.1.6"
+status: active
+provenance:
+  source: session-gameplay
+  game_date: "2026-08-21 17:26 -05:00"
+  real_date: "2026-08-18"
+type: Event
+kind: profile-adoption
+importance: pivotal
+game_date: "2026-08-21 17:26 -05:00"
+participants: []
+counter_deltas:
+  - { subject: ENT-000125, counter: skills.silent_step.scope_floor, delta: 5 }
+  - { subject: ENT-000125, counter: skills.broken_rhythm.scope_floor, delta: 3 }
+  - { subject: ENT-000125, counter: skills.field_command.scope_floor, delta: 3 }
+  - { subject: ENT-000125, counter: skills.rupture.magnitude_floor, delta: 30 }
+  - { subject: ENT-000125, counter: skills.mana_bolt.magnitude_floor, delta: 15 }
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+description: "**Profile 1.82 -> 1.83 adopted, a required migration.** No fictional time, no scene, no die. Migration record `worlds/gatefall/migrations/1.82_to_1.83.md`.
+
+  **A mastery level costs three qualifying scenes, and nine of sixteen skills were charging that and returning nothing.** Section 7.4 has been amended for this twice already — `F-014` when Broken Rhythm had no axis at all, and 1.52 when the axis table was added so no skill's levelling would be undocumented again. **Both fixes gave every skill an axis and neither asked whether the axis could pay.**
+
+  **Three routes to nothing, measured rather than supposed.** A **magnitude pinned by its own floor**: a Rank-baseline skill's multiplier band is identical at every Rank, so `magnitude_floor` lands equal to the new Rank's *Master* value and every level up to Master authors a number already in force — Rupture at [S] Adept authoring ×2.30 under a floor of ×2.60. A **duration already saturated** one Rank above native, which is Sprint and Flash Step. And **a count of other people** — five skills whose mastery axis counted allies, beneficiaries, recipients or miners, in which a Bearer who clears content alone held **twenty-two slots and filled none**, at three qualifying scenes each.
+
+  **The rule: a mastery level must return something to the Bearer, in the play he is actually in.** Four clauses. A binding floor **ratchets** with mastery. A saturated duration pays elsewhere, applied consistently. A **shared count moves to Rank** — `+0/+1/+2/+3/+4` and **double at S-Rank** — so the level buys a five-rung self-facing **dividend** instead. Anything left pays Mana.
+
+  **Nothing is deleted and nobody loses reach.** Sharing survives everywhere it exists; it stops costing a mastery level. **Field Command becomes the profile's one sharing skill** and gains `Conduction`, which extends his own sustained effects to allies who could not otherwise receive them. Stone Skin, Bulwark, Twin Fang, Dagger Mastery, Mend, Exploit Pattern and Dimensional Projection keep every category and every axis they had, including every one that shares.
+
+  **Seven dividends authored, five rungs each, none longer than another**: `Resolution` (Keen Sense), `Composure` (Silent Step), `Tempo` (Broken Rhythm), `Yield` (Resonance Extraction), `Control` (Sprint), `Arrival` (Flash Step), `Conduction` (Field Command). They obey the division of labour the Rank ladders already follow — **Rank sells what a skill can reach; mastery sells how well it resolves** — and every rung was checked against that skill's own six Rank categories, because the first draft of them re-sold four rungs the skills already held.
+
+  **`Tempo` is the reaction economy, and nothing else in this profile governs it.** Reactions appear throughout — Bulwark's `Anticipated`, Twin Fang's `Answer`, Micro-rift deflection by definition — and no skill has ever said how many a Bearer gets. Cadence is the beat of an exchange rather than perception or armour, so the economy is Broken Rhythm's ground; it compounds with the defensive kit instead of duplicating it, and it pays hardest exactly where a solo Bearer suffers most.
+
+  **Exploit Pattern is excluded and unchanged.** Its count is *concurrent Patterns* — his own reads, not people — and it already pays him in full alone.
+
+  **Section 7.2 states retention once instead of three times**: *nothing a skill has earned is ever taken back* — a category earned by Rank, a dividend rung earned by mastery, a scope count and a magnitude, all permanent through every ascension on either road. The scope and magnitude ratchets become consequences of that rule rather than separate patches, and `dividend_level` is monotonic and given no floor because a dividend cannot fall.
+
+  **Broken Rhythm's `Cold read` and `Shared cadence` are ratified** under Section 7.1. This campaign has rendered them since its rune ascension while the profile authored *Unseen cadence* and *Read the room* — two pairs, neither aware of the other, with the Bearer holding the pair nobody wrote down. **Ratified as a choice rather than by survival**: `EVT-000590` withdrew improvised rungs of exactly this class three days earlier, and the difference is that this one was decided. Nothing he holds is withdrawn.
+
+  **Every dead level is repaid, capped at five rungs, overflow to Mana.** Thirty levels across nine skills, reconstructed from the checkpoint history:
+
+  | Skill | Dead | Lands at |
+  |---|---:|---|
+  | Keen Sense | 9 | `Resolution` **5/5**, Mana 2 -> **1**, three levels past the floor returning nothing |
+  | Silent Step | 5 | `Composure` **5/5** |
+  | Flash Step | 4 | `Arrival` 4/5 |
+  | Resonance Extraction | 4 | `Yield` 4/5 |
+  | Rupture | 2 | `magnitude_floor` ×2.60 -> **×2.90**, DMG 3,877 -> **4,324** |
+  | Broken Rhythm | 2 | `Tempo` 2/5 |
+  | Field Command | 2 | `Conduction` 2/5 |
+  | Mana Bolt | 1 | `magnitude_floor` ×1.60 -> **×1.75**, DMG 1,026 -> **1,122** |
+  | Sprint | 1 | `Control` 1/5 |
+
+  **Three floors are set so clause 3 takes nothing**: Silent Step `scope_floor` 0 -> 5, Broken Rhythm 0 -> 3, Field Command 0 -> 3. Keen Sense and Resonance Extraction already held theirs.
+
+  **Flash Step's follow-up window is corrected to whole scene.** Section 7.2 saturates duration at one Rank above native and this skill has stood three Ranks above native since C-Rank; the line had never rendered it. A rendering correction, not a grant.
+
+  **Keen Sense finishes, and it is recorded so it is not later mistaken for a defect.** Its dividend maxes, its Mana floors at 1, and it already stands at the Section 7.5 ceiling — so it holds no growth on any axis until System Rank S at level 50. That is the correct outcome for 85 successful uses and 57 qualifying scenes: the campaign's most-exercised skill is complete.
+
+  **In fiction, nothing announced itself.** The System does not narrate its own corrections. What changed is that the next three scenes Alexander spends on a skill will leave a mark on it, which has not reliably been true for nine of them."
 ```

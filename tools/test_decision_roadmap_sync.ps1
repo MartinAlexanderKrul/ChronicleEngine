@@ -78,6 +78,58 @@ reading 'Decisions owned: NNN-NNN', before claiming a release.
 "@
 }
 
+# A named milestone must exist.
+#
+# The ownership check above asks only whether a decision number appears
+# somewhere in the roadmap. That is not the same question as whether the
+# milestone it names was ever written, and the difference is not theoretical:
+# Decision 091 was accepted on 2026-08-09 claiming "milestone 0.4.4", the
+# roadmap's ownership table recorded that claim, and no such heading existed
+# for ten days. The gate reported the decision owned the entire time -- so a
+# foundational Data Model change sat inside a frozen version with no capability
+# statement, no acceptance fixtures and no completion criteria, and the one
+# mechanism built to make that impossible said everything was fine.
+#
+# The property checked here is the weakest one that would have caught it: a
+# milestone named in either governance document resolves to a heading in the
+# roadmap. It deliberately does not check that the milestone's CONTENT is
+# adequate -- that is the architecture review's job (Decision 069 point 5), and
+# a checker pretending otherwise would repeat the error this exists to name.
+$milestoneHeadings = New-Object System.Collections.Generic.HashSet[string]
+foreach ($heading in [regex]::Matches($roadmapText, '(?m)^#{2,4}[ \t]+(\d+\.\d+\.\d+)\b')) {
+    $milestoneHeadings.Add($heading.Groups[1].Value) | Out-Null
+}
+if ($milestoneHeadings.Count -eq 0) {
+    throw 'No milestone headings found in 002_ENGINE_ROADMAP.md; the heading format may have changed.'
+}
+
+$namedMilestones = [ordered]@{}
+foreach ($source in @(
+    @{ Path = 'engine/002_ENGINE_ROADMAP.md'; Text = $roadmapText },
+    @{ Path = 'engine/001_ENGINE_DECISIONS.md'; Text = $decisionsText })) {
+    foreach ($reference in [regex]::Matches($source.Text, 'milestone[ \t]+(\d+\.\d+\.\d+)\b')) {
+        $number = $reference.Groups[1].Value
+        if (-not $namedMilestones.Contains($number)) {
+            $namedMilestones[$number] = $source.Path
+        }
+    }
+}
+
+$phantom = @($namedMilestones.Keys | Where-Object { -not $milestoneHeadings.Contains($_) } | Sort-Object)
+if ($phantom.Count -gt 0) {
+    $list = ($phantom | ForEach-Object { "$_ (first named in $($namedMilestones[$_]))" }) -join ', '
+    throw @"
+$($phantom.Count) milestone(s) are named by a governance document but have no heading in the roadmap: $list
+
+A decision that names a milestone the roadmap never wrote is unowned in every
+sense that matters: it has no capability statement, no acceptance fixtures, no
+exclusions and no completion criteria, however plainly the ownership table
+records the claim. Author the milestone section in engine/002_ENGINE_ROADMAP.md,
+or correct the reference to the milestone that actually owns the work.
+"@
+}
+
 Write-Host "Decision/roadmap synchronization tests PASSED" -ForegroundColor Green
 Write-Host "  Accepted decisions: $($accepted.Count)"
 Write-Host "  Claimed by roadmap: $($accepted.Count) (individually or by block range)"
+Write-Host "  Milestones named: $($namedMilestones.Count); all resolve to a roadmap heading ($($milestoneHeadings.Count) authored)"

@@ -1085,3 +1085,34 @@ The second refusal was consistently mistaken and is the substance of this flag. 
 4. **Is Section 15.1's geometry/values split scoped too narrowly?** It currently governs the profile's own templates. If a panel may render campaign-stored prose verbatim, the "canonical state wins on values" rule needs to reach that prose too, or panels need to be forbidden from rendering derived claims that are not recomputed at render time.
 
 **Related:** `F-030` (the same defect on the profile's render templates — a value stored where it should be derived, copied by a Runtime that believed it was complying), `F-015` (a stored value with nothing mechanical to disagree with it), `F-013` (a rules file carrying a hand-maintained copy of live state), `F-012` (a delta never claimed can never disagree with a stored value).
+
+## F-038 — Five engine-layer documents have declared Engine Version 0.2.0 since the 0.3.0 release
+
+**Raised:** 2026-08-19 · **Source:** development session, milestone 0.4.4 architecture review
+**Status:** Open.
+
+`000_ENGINE_MANIFEST.md` and `002_ENGINE_ROADMAP.md` declare **Engine Version 0.3.0**. Five documents in the same layer declare **0.2.0**:
+
+| Document | Declared |
+|---|---|
+| `000_ENGINE_MANIFEST.md` | 0.3.0 |
+| `002_ENGINE_ROADMAP.md` | 0.3.0 |
+| `003_DESIGN_PRINCIPLES.md` | **0.2.0** |
+| `004_DESIGN_FLAGS.md` | **0.2.0** |
+| `010_ENGINE_RULES.md` | **0.2.0** |
+| `011_ENGINE_DATA_MODEL.md` | **0.2.0** |
+| `012_ENGINE_RUNTIME.md` | **0.2.0** |
+
+**Why this is a flag and not a typo.** `030_ENGINE_CHANGELOG.md` shows the field is deliberately tracked: forty-plus entries state *"Engine Version: Unchanged; remains 0.2.0"*, and one states *"Advanced to 0.2.0"* at the 0.2 release. The convention exists, it was maintained through the whole of Version 0.3's development, and **the 0.3.0 release itself did not carry it out** — which is more interesting than the wrong number, because it means the step that advances these five is not written down anywhere as part of a release and nothing checks it.
+
+Note what these five have in common: they are the documents whose *content* the version changed. The two that are current are the two that describe project state. So there is a plausible reading in which the field means *"the engine version at which this document was last substantively revised"* rather than *"the current engine version"* — under which four of the five are still wrong, since Version 0.3 amended the Rules, the Data Model and the Runtime.
+
+**Deliberately not repaired in the change that found it.** The uniformity is the diagnostic: five documents agreeing on a stale value is legible as one omission, while four repaired and one missed would look like a convention nobody could reconstruct. The `004` header was changed and reverted for exactly that reason. This is also the class `docs/DEVELOPMENT_WORKFLOW.md` warns about — operational metadata decaying wherever no gate reads it — and it is the Version 0.3 postmortem's carried Finding 4 in the engine's own header block.
+
+**The open questions:**
+
+1. **What does the field mean** — current engine version, or the version at which the document was last substantively revised? Both readings are consistent with the changelog and they imply different repairs.
+2. **What advances it, and when?** A release step that no document names is a step that will be missed again. If the answer is *"the release commit advances every engine-layer header"*, that belongs in `docs/DEVELOPMENT_WORKFLOW.md` beside the other release obligations.
+3. **Should it be gated?** A checker asserting that every engine-layer `**Engine Version:**` matches the Manifest's is trivial to write under the first reading and impossible under the second, which is why question 1 comes first. Note the precedent cuts both ways: `tools/test_transactional_checkpoint.ps1` carries `**Engine Version:** 0.2.0` in a fixture, and a gate would have to distinguish a fixture from a document.
+
+**Related:** `F-030` and `F-015` (a stored value nothing recomputes or asserts), `F-031` (operational metadata decaying where no gate reads it).

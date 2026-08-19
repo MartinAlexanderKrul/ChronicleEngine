@@ -12,6 +12,22 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-19 — The gate that reports a decision owned now checks the milestone exists
+
+**Engine governance tooling and project documentation; refinement under Decision 069, owned by Version 0.4.** No Rules, Data Model, or Runtime change and no mechanism a world may invoke.
+
+**Problem:** `tools/test_decision_roadmap_sync.ps1` enforced Decision 069's ownership rule by string-matching `Decision (\d{3})` anywhere in the roadmap. It never asked whether the milestone a decision *names* was ever written. Decision 091 claimed `milestone 0.4.4`, the ownership table recorded the claim, no such heading existed, and **the gate reported the decision owned for ten days** — which is how a foundational Data Model change came to sit inside a frozen version with no capability statement, no acceptance fixtures and no completion criteria. Decision 069 built this gate to make an unclassified decision impossible to leave unnoticed; the first foundational decision to test it walked through.
+
+**Change:** the gate now collects every `milestone N.N.N` named in either governance document and requires each to resolve to a milestone heading in the roadmap. It deliberately does **not** judge whether the milestone's content is adequate — that is the architecture review's job under Decision 069 point 5, and a checker pretending otherwise would repeat the error it exists to name.
+
+**Also corrected — four documents describing a version state that ended on 2026-08-02.** `README.md` and `000_ENGINE_MANIFEST.md` both read *"Version 0.4 — Planning not yet begun"* and *"blocked until the 0.4 number collision is settled"*, and the Manifest read *"Current Milestone: None"*. The Manifest gains a Version 0.4 section carrying its four milestones and their state. The roadmap's own Current Sprint and Current Dependencies blocks were corrected in the preceding change.
+
+**Raised rather than repaired: `F-038`.** Five engine-layer documents — `003`, `004`, `010`, `011`, `012` — have declared **Engine Version 0.2.0** since the 0.3.0 release, while the Manifest and Roadmap declare 0.3.0. The changelog shows the field is deliberately tracked, with forty-plus *"Unchanged; remains 0.2.0"* entries and one *"Advanced to 0.2.0"*, so the convention exists and **the 0.3.0 release did not carry it out** — the step that advances these five is written down nowhere and nothing reads it. The `004` header was changed and reverted deliberately: five documents agreeing on a stale value is legible as one omission, while four repaired and one missed is a convention nobody could reconstruct. Three open questions are recorded, the first being what the field means at all.
+
+**Files:** `tools/test_decision_roadmap_sync.ps1`, `README.md`, `engine/000_ENGINE_MANIFEST.md`, `engine/004_DESIGN_FLAGS.md`, `engine/030_ENGINE_CHANGELOG.md`.
+
+**Audit: the new leg is mutation-verified against the exact state that produced it.** Renaming `### 0.4.4 NPCs Are Actors` to `### NPCs Are Actors` — which is precisely how the roadmap stood between 2026-08-09 and 2026-08-19 — fails the gate by name: *"1 milestone(s) are named by a governance document but have no heading in the roadmap: 0.4.4."* The heading was restored and the file verified byte-identical. Clean run reports 9 milestones named, all resolving, against 14 authored headings.
+
 ## 2026-08-19 — The character model gets an enforcement point
 
 **Engine tooling and validation record; refinement under Decision 069, owned by Version 0.4, milestone 0.4.4.** It adds, removes and renumbers no section of `010_ENGINE_RULES.md`, changes `011_ENGINE_DATA_MODEL.md` in no way — 12.4.5 authored the `disposition_class` shape in the preceding change — and imposes nothing a world must satisfy that its own profile does not declare.

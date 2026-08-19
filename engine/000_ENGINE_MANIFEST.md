@@ -316,8 +316,8 @@ Changes to one component should not require version changes to unrelated compone
 Chronicle Engine develops one version at a time through the standard development lifecycle (`001_ENGINE_DECISIONS.md` Decision 048; `docs/DEVELOPMENT_WORKFLOW.md`). The Engine Version represents the most recent completed release, not work in progress.
 
 **Current Engine Version:** 0.3.0 (Runtime & Persistence Hardening)
-**Current Development Target:** Version 0.4 — Planning not yet begun
-**Current Milestone:** None; Version 0.3 is complete
+**Current Development Target:** Version 0.4 — Economy & Opportunity (Architecture Freeze 2026-08-02)
+**Current Milestone:** 0.4.3 — Capability Validation and Prototype Campaign; 0.4.4 — NPCs Are Actors
 
 The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 completed Knowledge & Civilization and all lifecycle validation gates. **Version 0.3.0 was released on 2026-08-01** after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem, per Decision 048.
 
@@ -330,7 +330,20 @@ What Version 0.3 delivered:
 5. **Capability Validation and the Prototype Campaign (0.3.5).** Fifty-six conforming checkpoints across six Data Model versions and forty-six profile versions, with exact named restoration, branch, restart, and registry preservation demonstrated. Ten foundational findings arrived from played evidence and were dispositioned as Decisions 076–085, advancing the Data Model to 0.1.6.
 6. **The Architecture Freeze is scoped (Decision 086).** It binds Implementation and the Consistency Audit; from Capability Validation onward a foundational change is permitted only on played evidence, classified, versioned and migrated, and revalidated.
 
-The Engine Postmortem is `docs/430_RUNTIME_PERSISTENCE_VALIDATION/440_ENGINE_POSTMORTEM.md`. Its carried findings — the enforcement class that has no mechanical proxy, the full resident card, and the Version 0.4 number collision — are required input to Version 0.4 Planning, which has not begun.
+The Engine Postmortem is `docs/430_RUNTIME_PERSISTENCE_VALIDATION/440_ENGINE_POSTMORTEM.md`. Its three carried findings were required input to Version 0.4 Planning and are each dispositioned: the number collision by Decision 087, the resident card as a standing constraint on every 0.4 ADR rather than as a milestone, and NPC grounding — the enforcement class with no mechanical proxy — left unscheduled at Planning and then answered from a different direction by Decision 091, which supplied the positive structure that four months of prohibitions could not.
+
+---
+
+# Version 0.4 — Economy & Opportunity
+
+**Status:** Capability Validation and the Prototype Campaign. Planning closed 2026-08-02; the Architecture Freeze (Decisions 088, 089) followed the same day.
+
+- **0.4.1 Demand Advances Like Supply Does** (Decision 088) — implemented. Data Model Section 7.6; an actor's need generates on its own schedule and settles on the campaign clock.
+- **0.4.2 A Finite Opportunity Is Contested** (Decision 089) — implemented. Data Model Section 7.5.1; an opening carries who else may take it, and settles to a claimant.
+- **0.4.3 Capability Validation and Prototype Campaign** — in progress. Record at `docs/440_ECONOMY_VALIDATION/`. Decision 090 is its first finding from play.
+- **0.4.4 NPCs Are Actors** (Decision 091) — the character model: Disposition as canonical state, Belief that may be false, and an Agenda that advances unobserved. **Data Model 0.1.6 → 0.1.7**, contract at Section 12.4.5.
+
+Two post-freeze foundational findings have been admitted under Decision 086, both from played evidence, classified, versioned and migrated, and revalidated. The version's Engine Postmortem is written only after `docs/440_ECONOMY_VALIDATION/441_CAPABILITY_MATRIX.md` is complete.
 
 ---
 

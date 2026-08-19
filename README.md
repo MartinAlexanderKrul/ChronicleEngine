@@ -288,7 +288,7 @@ Chronicle Engine prioritizes:
 
 **Current Engine Version:** 0.3.0 (Runtime & Persistence Hardening)
 
-**Current Development Target:** Version 0.4 — Planning not yet begun
+**Current Development Target:** Version 0.4 — Economy & Opportunity, in Capability Validation and the Prototype Campaign
 
 The Foundation line (0.1.0–0.1.5) is complete and frozen. Version 0.2.0 was the first completed simulation capability built on it. **Version 0.3.0 was released on 2026-08-01** after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem (Decision 048).
 
@@ -299,7 +299,9 @@ What 0.3 delivered:
 - **Ten findings from live play** (Decisions 076–085), each classified, versioned, migrated, and revalidated — Relationship Texture, distinct game and repository dates, exact clock settlement, reconcilable counters and progression candidates, pending world-side commitments, opportunity supply on the world's clock, world-state settlement dispatch, and the NPC participation audit.
 - **A scoped Architecture Freeze** (Decision 086): it binds Implementation and the Consistency Audit, and from Capability Validation onward a foundational change is permitted only when it comes from played evidence, is classified, is versioned and migrated, and is revalidated.
 
-The Engine Postmortem is `docs/430_RUNTIME_PERSISTENCE_VALIDATION/440_ENGINE_POSTMORTEM.md`. Its carried findings are required input to Version 0.4 Planning, which is blocked until the 0.4 number collision is settled (see `engine/002_ENGINE_ROADMAP.md`).
+The Engine Postmortem is `docs/430_RUNTIME_PERSISTENCE_VALIDATION/440_ENGINE_POSTMORTEM.md`. Its carried findings were required input to Version 0.4 Planning, which closed on 2026-08-02: Decision 087 resolved the number collision, and Decisions 088 and 089 formed the Architecture Freeze the same day.
+
+**Version 0.4 — Economy & Opportunity** is now in Capability Validation and the Prototype Campaign. Milestones 0.4.1 (a need advances on the world's clock) and 0.4.2 (a finite opening is contested) are implemented; 0.4.3 is the validation and play stage; 0.4.4 carries Decision 091's character model, which advanced the Data Model to 0.1.7. See `engine/002_ENGINE_ROADMAP.md` for milestone state and `docs/440_ECONOMY_VALIDATION/` for the validation record.
 
 See:
 

@@ -594,6 +594,55 @@ function Get-ParticipationPolicy {
     return $policy
 }
 
+function Get-DispositionPolicy {
+    param([string]$RepositoryRoot)
+
+    # Decision 091 / Data Model Sections 7.7 and 12.4.5. A Character a Runtime
+    # will play carries Want, Fear, Secret and Voice. Coverage is declared per
+    # world and is PROSPECTIVE: it begins at a baseline entity identifier, so
+    # adoption backfills nothing and an existing cast is backlog rather than a
+    # wall of failures. A world that declares nothing carries no obligation --
+    # the same reason participation and skill-credit coverage are declared
+    # rather than defaulted, since an engine-general default would impose one
+    # world's authoring cost on every world (Decision 069).
+    #
+    # The baseline is an ENTITY identifier, not an Event, because the obligation
+    # attaches to a record's existence rather than to something that happened.
+    $policy = @{}
+    $worldsRoot = Join-Path $RepositoryRoot "worlds"
+    if (-not (Test-Path -LiteralPath $worldsRoot -PathType Container)) {
+        return $policy
+    }
+    foreach ($worldDirectory in (Get-ChildItem -LiteralPath $worldsRoot -Directory | Sort-Object Name)) {
+        $profilePath = Join-Path $worldDirectory.FullName "206_WORLD_RULE_PROFILE.md"
+        if (-not (Test-Path -LiteralPath $profilePath -PathType Leaf)) {
+            continue
+        }
+        $profileText = Get-Content -LiteralPath $profilePath -Raw -Encoding UTF8
+        $fencePattern = '(?ms)^```ya?ml[ \t]*\r?\n(?<manifest>.*?)^```[ \t]*$'
+        foreach ($fence in [regex]::Matches($profileText, $fencePattern)) {
+            $manifest = $fence.Groups['manifest'].Value
+            if ($manifest -notmatch '(?m)^disposition_coverage_version:') {
+                continue
+            }
+            $baseline = $null
+            if ($manifest -match '(?m)^  baseline_as_of:\s*(ENT-\d{6})\s*$') {
+                $baseline = $Matches[1]
+            }
+            if ($null -eq $baseline) {
+                Add-Failure "worlds/$($worldDirectory.Name)/206_WORLD_RULE_PROFILE.md declares a disposition coverage manifest without a baseline_as_of entity identifier (Decision 091)."
+                continue
+            }
+            $policy[$worldDirectory.Name] = [pscustomobject]@{
+                Baseline = $baseline
+                BaselineNumber = [int]$baseline.Substring(4)
+                SourcePath = "worlds/$($worldDirectory.Name)/206_WORLD_RULE_PROFILE.md"
+            }
+        }
+    }
+    return $policy
+}
+
 function Get-SkillCreditPolicy {
     param([string]$RepositoryRoot)
 
@@ -660,6 +709,7 @@ function Get-SkillCreditPolicy {
 
 $progressionPolicy = Get-ProgressionRatificationPolicy -RepositoryRoot $root
 $participationPolicy = Get-ParticipationPolicy -RepositoryRoot $root
+$dispositionPolicy = Get-DispositionPolicy -RepositoryRoot $root
 $skillCreditPolicy = Get-SkillCreditPolicy -RepositoryRoot $root
 # Decision 090: the coverage obligation falls on the Bearer, who is the only
 # subject in these worlds carrying a mastery-tracked skill set. Read from the
@@ -1744,6 +1794,59 @@ foreach ($file in $canonicalFiles) {
             [regex]::IsMatch($block, '(?m)^[ \t]*status:[ \t]*active[ \t]*\r?$') -and
             $locationLines.Count -ne 1) {
             Add-Failure "$relativePath`:$line active Character $id must declare exactly one canonical_state.location; presence is owned by the entity's own record (Decision 073)."
+        }
+
+        # Disposition (Decision 091; Data Model Sections 7.7 and 12.4.5). A
+        # Character a Runtime will play carries Want, Fear, Secret and Voice.
+        #
+        # Two design choices are load-bearing and are stated here rather than
+        # left to be reverse-engineered from the regexes.
+        #
+        # 1. Coverage is PROSPECTIVE and declared per world. Without that, this
+        #    gate would open red against every cast in the repository, and a
+        #    gate that fails on day one against correct-but-unbackfilled canon
+        #    teaches the suite to be ignored. Backfill is play's work.
+        #
+        # 2. The played/referent split is DECLARED, never inferred. "A Character
+        #    a Runtime will play" is not decidable from a record -- a name on a
+        #    roster and a character who speaks next session are the same shape
+        #    at rest. Every inferring detector considered here fails the same
+        #    way the three rejected at milestone 0.4.3 did. The residue is a
+        #    misfiled class: a Character declared `referent` that is then played
+        #    escapes this check, and that is recorded in Decision 091 and Data
+        #    Model 12.4.5 rather than designed around.
+        if ($relativePath -match '^campaigns/' -and
+            [regex]::IsMatch($block, '(?m)^[ \t]*type:[ \t]*Character[ \t]*\r?$') -and
+            [regex]::IsMatch($block, '(?m)^[ \t]*status:[ \t]*active[ \t]*\r?$')) {
+
+            $dispositionClass = $null
+            if ($block -match '(?m)^[ \t]*disposition_class[ \t]*:[ \t]*"?(?<value>[A-Za-z-]+)"?[ \t]*\r?$') {
+                $dispositionClass = $Matches['value']
+                if (@("played", "referent") -notcontains $dispositionClass) {
+                    Add-Failure "$relativePath`:$line Character $id declares disposition_class '$dispositionClass'; it is one of played or referent (Decision 091)."
+                }
+            }
+
+            $blockWorldForDisposition = Resolve-WorldForPath $relativePath $campaignWorlds
+            if ($null -ne $blockWorldForDisposition -and
+                $dispositionPolicy.ContainsKey($blockWorldForDisposition) -and
+                $dispositionClass -ne "referent" -and
+                $id -match '^ENT-(\d{6})$') {
+
+                $dispositionCoverage = $dispositionPolicy[$blockWorldForDisposition]
+                if ([int]$Matches[1] -gt $dispositionCoverage.BaselineNumber) {
+                    $missing = @()
+                    foreach ($field in @("want", "fear", "secret", "voice")) {
+                        $fieldMatch = [regex]::Match($block, '(?m)^[ \t]*' + $field + '[ \t]*:[ \t]*(?<value>.*?)[ \t]*\r?$')
+                        if (-not $fieldMatch.Success -or [string]::IsNullOrWhiteSpace(($fieldMatch.Groups['value'].Value.Trim().Trim('"')))) {
+                            $missing += $field
+                        }
+                    }
+                    if ($missing.Count -gt 0) {
+                        Add-Failure ("{0}:{1} Character {2} is inside {3}'s disposition coverage and is missing {4}. A played Character carries want, fear, secret and voice; one that only exists as a referent declares disposition_class: referent (Decision 091 / {5})." -f $relativePath, $line, $id, $blockWorldForDisposition, ($missing -join ", "), $dispositionCoverage.SourcePath)
+                    }
+                }
+            }
         }
 
         # Runtime 5.2, Supersession is retirement, not demotion. A state field

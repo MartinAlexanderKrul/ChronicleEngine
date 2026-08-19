@@ -12,6 +12,28 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-19 — The character model gets an enforcement point
+
+**Engine tooling and validation record; refinement under Decision 069, owned by Version 0.4, milestone 0.4.4.** It adds, removes and renumbers no section of `010_ENGINE_RULES.md`, changes `011_ENGINE_DATA_MODEL.md` in no way — 12.4.5 authored the `disposition_class` shape in the preceding change — and imposes nothing a world must satisfy that its own profile does not declare.
+
+**Problem: Decision 091 made four fields required and nothing read the requirement.** `011_ENGINE_DATA_MODEL.md` Section 7.7 says *"Required for any Character a Runtime will play"*; `grep` over `tools/` found no reader. That is the shape `docs/DEVELOPMENT_WORKFLOW.md` names as this repository's most-repeated defect and Decision 055 sites structurally — an obligation with no enforcement point holds by assumption, and at rest is indistinguishable from a mechanism that is quiet. `F-028` had already recorded the same thing from the other side: *the loading machinery was correct and there was nothing to load*.
+
+**Change:** `Get-DispositionPolicy` and a coverage check in `tools/validate_repository.ps1`, plus `tools/test_disposition_contract.ps1`, ten cases against isolated copies of the real repository, asserting the real validator's verdict on durable message text.
+
+**The gate is built to be narrow, and half the cases test the narrowness.** Coverage is prospective and per-world declared, so it does not open red against 45 unbackfilled Characters — a gate that fails on day one against correct-but-unbackfilled canon teaches the suite to be ignored, and backfilling a cast is play's work under save discipline. D-07 proves a world declaring nothing owes nothing; **D-08 proves the below-baseline cast is not named while coverage is live**, which matters because a pass would otherwise look identical to the gate having stopped running. D-01, D-05, D-06 and D-09 prove it fires, and D-05 proves the message names *which* fields are missing rather than that something is wrong.
+
+**D-10 exists because of `F-002`.** A coverage manifest declaring an obligation and naming no baseline must fail loudly rather than parse to *no coverage*. Silent degradation to a null policy is `F-002`'s cause one layer down: `gatefall.board.deadline` was unreachable from the day it was authored because the intersection its dispatcher tested could never be non-empty, and an unreachable domain is indistinguishable from a quiet one.
+
+**The baseline is resolved, not pinned.** The suite reads the ledger's own active Characters and straddles the two ends, so a hardcoded identifier cannot rot into a false pass as the cast grows. That is `F-013`'s defect class, which milestone 0.4.3 found in five more places than `F-013` recorded.
+
+**`441_CAPABILITY_MATRIX.md` gains eight rows for milestone 0.4.4** — four passing on gate and fixture, one vacuous, three needing play. **V04-19 is a separate row from V04-15 on purpose**: the gate passing and a world using it are different claims, and V04-07 sits in the same matrix as the standing example of what happens when they are not separated.
+
+**Two things the matrix now says out loud rather than implying.** **(1)** It records that it went **seventeen days without a revision** while the campaign moved, and that its own *One Thing Blocking Every Pending Row* section has asserted since 2026-08-14 something that is false — five supply sources and two standing needs are authored in Gatefall (`F-035`). That is Version 0.3's Finding 4 recurring inside the version that opened by declaring it would apply the lesson at the start. It is **flagged, not repaired in passing**: re-statusing rows from a document rather than from the play record is how a validation record becomes decorative, and that read is the next task. **(2)** **V04-14 now reads as failed**, and is recorded rather than reworded. It asked that the version complete with no foundational change beyond Decisions 088 and 089; Decision 091 is one. The row was a proxy for a property Decision 086 states directly and checkably, and Decision 091 meets all four of its conditions — a version admitting one classified, versioned, migrated, revalidated finding from played evidence is the lifecycle working. A row that cannot say so is answered in the postmortem, not edited until it passes.
+
+**Files:** `tools/validate_repository.ps1`, `tools/test_disposition_contract.ps1` (new), `docs/440_ECONOMY_VALIDATION/441_CAPABILITY_MATRIX.md`, `engine/030_ENGINE_CHANGELOG.md`.
+
+**Audit:** ten cases pass, and the suite reports its own vacuity — **no world declares disposition coverage, so the gate currently checks nothing real**, printed on every run rather than left to be discovered. The fixture leak guard runs after the cases: both mutated files are asserted byte-identical to their restore point and the whole fixture is re-validated, so a broken restore cannot turn later cases into assertions about unknown state.
+
 ## 2026-08-19 — A decision that named a milestone nobody wrote
 
 **Engine architecture; Data Model 0.1.6 → 0.1.7, a required migration. Foundational under Decision 069, owned by Version 0.4, milestone 0.4.4.** It changes `011_ENGINE_DATA_MODEL.md`, which is leg 2 of the structural test and settles the class without argument. It lands after the Version 0.4 Architecture Freeze and qualifies under Decision 086 on all four conditions — played evidence (seven design flags across four months), classified here, versioned and migrated below, and revalidated at 0.4.3.

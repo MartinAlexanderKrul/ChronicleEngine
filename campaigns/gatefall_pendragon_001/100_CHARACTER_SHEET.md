@@ -107,7 +107,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.83"
+    profile_version: "1.84"
     profile_party_minimum_event: EVT-000460
     profile_unified_render_event: EVT-000443
     profile_render_cadence_event: EVT-000442
@@ -188,12 +188,13 @@ canonical_state:
       - Prospector
       - Loner
       - Ascetic
+      - The Unmeasured
     title_note: "**Cartographer swapped for Prospector at `EVT-000553`, 2026-08-20 06:00, before the Cicero Scar mining assignment** — free and instant per Section 16.3; Cartographer's archetype-reveal is inert outside a Gate, Prospector's +2-crystals-per-deposit is directly on-point for harvest work. Cartographer is earned and now unequipped. Prior history, retained: **Centurion swapped out for Ascetic at `EVT-000535`, 2026-08-19 ~14:06, on the player's declared instruction inside the trial instance before exit** — free and instant per Section 16.3. Ascetic was earned at the level-20 assessment and stood unequipped since Untouchable was swapped out for it on 2026-08-16 (below). Effective immediately: the twenty-seventh daily's Ability Points entry, issuing 2026-08-20 06:00, reads **+4** rather than +3. Centurion is earned and now unequipped — all three of the level-30 slots are full (Cartographer, Loner, Ascetic). Prior history, retained: **Corrected and then changed at `EVT-000444`.** This field had read `Ascetic, Prospector` — the `EVT-000357` first loadout — and was never rewritten when the loadout changed to **Cartographer + Untouchable** before the first Crypt instant dungeon (`EVT-000428` span), a swap `180_CURRENT_STATE.md` carried correctly for a whole session while this sheet rendered the superseded pair. Same `F-015` shape as `EVT-000439`'s four Stat Passive rows: a stored value with nothing mechanical to disagree with it. Live loadout repaired to Cartographer + Untouchable, then **Untouchable swapped out for Ascetic** on the player's declared instruction the evening of 2026-08-16, *before* the 2026-08-17 06:00 daily issue — which is why the twenty-fourth daily's Ability Points entry issued at **+4** rather than +3 and the `ascetic_claim_timing_evt_000357` seam never arose."
     titles:
-      last_assessment: 30
-      next_assessment: 40
+      last_assessment: 40
+      next_assessment: 50
       catalog_size: 21
-      slots: 3
+      slots: 4
       slots_note: "**FOUR passed — levels 10, 20, 30 and 40** (`EVT-000591`), so 4 slots against **13 earned titles**. The fourth opened on the System Rank A crossing and was filled with **The Unmeasured**, over Vanguard and Giantslayer, because nothing was scheduled to hit him before Nakamura's 19:30 bench and three unidentified objects were waiting on it. **The fifth slot arrives at level 50, which is also where System Rank S lands.** Prior: One slot per assessment passed, capped at five (Section 16). **Three passed — levels 10, 20 and 30 (`EVT-000515`) — so 3 slots against twelve earned titles.** The third opened at the Level 30 crossing and was filled the same exchange: Giantslayer equipped, then swapped for **Centurion** on the player's instruction once the trade was shown (a modifier step against a boss, against +1 Mana per common killed inside a trial with no refill). The fourth opens at level 40."
       points_granted: 40
       note: "Granted by the two retroactive Title Assessments (`EVT-000349`), run at Profile 1.47 adoption (`EVT-000348`) because Alexander crossed level 10 at `EVT-000150` and level 20 at `EVT-000341` under profiles that had no assessment to fire. Each rung was judged at the level it belongs to (migration step 3): **seven at level 10**, **three at level 20**. Ten of the twenty-one catalog entries (Section 16.2) are held — nine Common and one Rare (**Cartographer**), no Singular. Points by grade (+2 / +5 / +10): 6×2 + 5 = **17 at the level-10 rung**, 3×2 = **6 at level 20**, **23 banked unspent**, which is why `unspent_points` reads 53 rather than 30. `title` is `null` — the assessments grant and open slots, they never equip; both slots are Alexander's own free choice through `/system titles` (Section 15.3.4) and no passive is active until he makes it. The next assessment is the level-30 level-up, which also opens a third slot, and nothing fires before it (Section 16.1)."
@@ -656,7 +657,6 @@ canonical_state:
       # `160_CAMPAIGN_CHRONICLE.md`, disposal to `120_INVENTORY_AND_OWNERSHIP.md`.
       keys:
         - "**Instant-Dungeon Key [B-Rank] × 1** — the Beast Den boss's own drop (`EVT-000589`, 🎲 d100 84 → the 81-90 band, at the instance's Rank). **Free, off a body that cost 45,000 g to meet.** Banked, unused."
-        - "**Instant-Dungeon Key [B-Rank] × 1** — the Beast Den boss's own drop (`EVT-000589`, 🎲 d100 84 → the 81-90 band, at the instance's Rank). **Free, off a body that cost 45,000 g to meet.** Banked, unused."
         # Instant-dungeon keys (Section 17).
         - "**Instant-Dungeon Key [E-Rank] × 1 (second)** — the Overgrown Temple's own shrine bonus roll (`EVT-000327`, 🎲 d100 89). Banked, unused."
         # No B-Rank key banked. FOUR were turned on 2026-08-20 and all four are spent —
@@ -684,8 +684,6 @@ canonical_state:
         - "**Elixir of a stat x1** — +1 base stat permanent, max 3 lifetime per stat for the Bearer, uncapped on another awakened (Section 12.5.1) · bought 2026-08-19 for **5,000 g** (`EVT-000548`) · **owner ruling: the stat is fixed at consumption, not purchase** — banked unassigned"
       special:
         # Worth not mechanical, or function/Rank/provenance unresolved.
-        - "**Alpha-strain sinew [B-Rank] × 2 lots** — cabled tissue cut from the Beast Den's boss and its alpha (`EVT-000589`, harvests 🎲 95 Strong and 🎲 71 Success). **Flux Sight reads both completely.** The two lots are **the same material at different ages** — same species, same strain, the alpha simply older — and the System has a line item for that and prices it accordingly."
-        - "**Drowned mana nodule [B-Rank] × 1** — a natural mana concentration formed in still water and taken up by the thing living in it (`EVT-000588`, legendary harvest 🎲 61 → 100). **Flux Sight reads it completely**: Rank, formation class, catalogue line, market value. **It is the useful control** — a *catalogued* object that holds mana passively, to set beside a heartwood core-mass that does the same with no mechanism and no line item."
         - "**Alpha-strain sinew [B-Rank] × 2 lots** — cabled tissue cut from the Beast Den's boss and its alpha (`EVT-000589`, harvests 🎲 95 Strong and 🎲 71 Success). **Flux Sight reads both completely.** The two lots are **the same material at different ages** — same species, same strain, the alpha simply older — and the System has a line item for that and prices it accordingly."
         - "**Drowned mana nodule [B-Rank] × 1** — a natural mana concentration formed in still water and taken up by the thing living in it (`EVT-000588`, legendary harvest 🎲 61 → 100). **Flux Sight reads it completely**: Rank, formation class, catalogue line, market value. **It is the useful control** — a *catalogued* object that holds mana passively, to set beside a heartwood core-mass that does the same with no mechanism and no line item."
         - "**Bone-lattice plating [B-Rank] × 1 lot** — armour-grade, structurally sound, cut from the Crypt boss (`EVT-000586`, field harvest 🎲 33 → 73 Success). **Flux Sight reads it completely** — Rank, composition, catalogue line, market value. **Which is what makes the other two lots strange**: boss material categorises fine, so the frost-fused plating and the heartwood are anomalous specifically."

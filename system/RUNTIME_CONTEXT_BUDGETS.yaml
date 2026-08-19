@@ -727,15 +727,60 @@ surfaces:
     # the ownership-ledger trimming that would bring `/system` and
     # `/system gear` back under any ceiling is still owner authoring work, still
     # unstarted, and is not paid for by this raise.
+    # Raised 16,000 -> 20,000 by owner ruling, 2026-08-19, in the pass that took
+    # Gatefall Profile 1.83 -> 1.84 (every frame rule written at its full 78
+    # cells instead of abbreviated with an ellipsis).
+    #
+    # The ruling was taken on a projection that measurement then corrected, and
+    # the correction is recorded rather than quietly dropped. The projection said
+    # `/system shop` would land ~275 tokens under 16,000 and that the render
+    # change was spending 40% of its remaining headroom. **Both figures were
+    # wrong, because they were computed against the stored baselines rather than
+    # against a measurement.** Shop had drifted DOWN since its baseline was
+    # recorded and actually measures 14,676 — the render change moved it +178,
+    # and the cliff it was supposedly approaching was 1,324 tokens further off
+    # than reported. The raise is therefore not the emergency the projection
+    # described.
+    #
+    # It is still the right number, for the reason the 16,000 note itself gave.
+    # That figure was chosen to leave "~4,500 tokens of headroom over the largest
+    # non-exempt panel". The largest non-exempt panel is now `/system shop` at
+    # 14,676, which leaves 1,324 — the stated property has quietly stopped
+    # holding. 20,000 restores it (5,324 tokens of headroom) and keeps the
+    # ordering this file already runs: operations under the readiness group's
+    # 35,000, with the same 12,000 warning in front.
+    #
+    # The ratchet is untouched at 15% and remains the real governor, exactly as
+    # the 16,000 note insisted. This raise moves only the non-re-recordable stop.
     warning_tokens: 12000
-    failure_tokens: 16000
+    failure_tokens: 20000
     growth_allowance_percent: 15
+    # `/system gear` measures 19,880 and is therefore now INSIDE the raised
+    # ceiling — and its exemption is deliberately NOT withdrawn. The note above
+    # says an exemption should be withdrawn "if it comes inside", and that
+    # condition is not met here: gear came inside because the bar moved, not
+    # because gear shrank. It grew +3,317 this pass. Withdrawing the exemption
+    # would leave it 120 tokens under a hard stop with no release, which is the
+    # precise failure mode this file raised the ceiling to avoid.
     exempt_from_failure_ceiling:
       - gatefall_pendragon_001:/system
       - gatefall_pendragon_001:/system gear
       - gatefall_pendragon_001:/system all
     baseline_tokens_by_operation:
-      gatefall_pendragon_001:save: 2486
+      # Re-recorded 2026-08-19, Gatefall Profile 1.83 -> 1.84. Attribution is split
+      # and the split is the point. Profile 1.84 wrote every frame rule out at its
+      # full 78 cells instead of abbreviating it with an ellipsis, which is a
+      # source change with no effect on any rendered window. Its cost is exactly
+      # the profile sections an operation loads, and it is small and countable:
+      #   15.1 render grammar  +304    15.3.2 gear    +571
+      #   15.2 console         +547    15.3.1 skills  +171
+      #   15.3.3 quests        +129    15.3.4 titles  +126
+      #   15.3.5 shop          +178    15.3.6 log      +90
+      # Everything else in the deltas below is live-campaign drift that was
+      # already on disk and silent inside the 15% ratchet, and it is NOT folded
+      # into the render change's figure. Three surfaces measured SMALLER than
+      # their stored baselines despite the render change adding to all of them.
+      gatefall_pendragon_001:save: 2788
       # Re-recorded 2026-08-04, 26,991 -> 31,066, on the same owner ruling that
       # raised `gatefall_skills_known` to 1,100 bytes/entry. `/system` composes
       # the skills panel, so it carries that verbosity directly. Most of the
@@ -775,7 +820,9 @@ surfaces:
       # `/system gear` at 16,563 is now within about 600 tokens of the 16,000
       # failure ceiling it has been exempt from. If it comes inside, the
       # exemption below should be withdrawn rather than left standing.
-      gatefall_pendragon_001:/system: 21063
+      # 21,063 -> 19,356. DOWN 1,707 despite the render change adding 851
+      # (15.1 + 15.2), so ~2,558 of campaign shrink was sitting unrecorded.
+      gatefall_pendragon_001:/system: 19362
       # Re-recorded 2026-08-04, 7,036 -> 8,097, on the same owner ruling that
       # raised the `gatefall_skills_known` per-entry budget 700 -> 1100. The
       # requirement is that a skill entry explain its effect well enough to
@@ -798,7 +845,10 @@ surfaces:
       # gatefall_skills_known from 1,246 bytes/entry to under 1,100 -- below where
       # the span started. Cutting further would remove skill definitions to
       # preserve a number set before those skills existed.
-      gatefall_pendragon_001:/system skills: 11348
+      # 11,348 -> 13,043, of which the render change is 475 (15.1 + 15.3.1).
+      # The remaining 1,220 is skill-ledger growth. This surface crosses the
+      # 12,000 warning and would have crossed it without the render change.
+      gatefall_pendragon_001:/system skills: 13043
       # Re-recorded 2026-08-04, 9,937 -> 11,488, on the same owner ruling that
       # raised `gatefall_skills_known` to 1,100 bytes/entry. `/system shop`
       # declares `skills_known` as a protagonist field — it has to, because the
@@ -825,7 +875,10 @@ surfaces:
       # justification as `/system skills` above: this surface reads
       # `skills_known`, so the two new class abilities and four ascensions
       # land on it identically. Nothing about the shop itself grew.
-      gatefall_pendragon_001:/system shop: 15546
+      # 15,546 -> 14,676. DOWN 870 even after the render change added 482
+      # (15.1 + 15.3.5). This is the surface the ceiling raise was argued
+      # from, and it is 5,324 tokens under the new 20,000 stop.
+      gatefall_pendragon_001:/system shop: 14407
       # Re-recorded 2026-08-10 at Checkpoint 0084, 4,158 -> 4,996 (+838), and the
       # attribution matters because almost none of it belongs to the session that
       # tripped it. This span's only write to a field this surface reads is the
@@ -851,7 +904,7 @@ surfaces:
       # This file's standing warning is that a stale baseline breaks the ratchet in
       # both directions; these are re-recorded at the measured figures rather than
       # padded, so the next drift is still detected.
-      gatefall_pendragon_001:/system quests: 5909
+      gatefall_pendragon_001:/system quests: 6408
       # Left armed 2026-08-04 at 25,880 while the surface measured 29,655
       # against a 29,761 ratchet — 106 tokens of headroom — deliberately, so
       # that the next change would trip it and get read rather than being
@@ -889,7 +942,23 @@ surfaces:
       # history rather than held in one block. Re-recording keeps the gate honest
       # about where the surface actually stands; it does not fix that, and the
       # ownership-ledger trimming remains owner authoring work.
-      gatefall_pendragon_001:/system gear: 16563
+      # 16,563 -> 19,880, and this is the one surface that tripped its ratchet
+      # (19,047). The render change accounts for 875 of the +3,317; the other
+      # 2,442 is protagonist-object and ownership-ledger growth that had
+      # accumulated since the 2026-08-10 re-record. The ratchet fired on the
+      # sum, which is the ratchet working -- but the render change alone would
+      # have landed at 17,438, comfortably inside it. The ownership-ledger
+      # trimming named in the note above is still owner authoring work and is
+      # still unstarted; this re-record does not substitute for it.
+      # Re-recorded 2026-08-19 after a ledger repair on the Gatefall protagonist:
+      # three byte-identical duplicate holdings removed from `system_state.inventory`
+      # (one key line, one sinew line, one nodule line -- each a transcription copy
+      # citing the same Event and the same die roll, so the fix was a dedupe and
+      # never a sum), and The Unmeasured added to the equipped `title` list with the
+      # stale `slots`/`last_assessment`/`next_assessment` scalars corrected. The
+      # shrink is recorded rather than banked, on this file's own principle that a
+      # surface which shrinks should get a smaller allowance, not a windfall.
+      gatefall_pendragon_001:/system gear: 19611
       # Re-recorded UPWARD 2026-08-10, 4,513 -> 5,202 (+689), and this one is a
       # deliberate trade rather than drift. `titles.earned` -- the full
       # catalogue, ten titles each carrying its criterion and proving Event --
@@ -902,7 +971,7 @@ surfaces:
       # 34,459 tokens, and the panel that actually renders the catalogue pays 689
       # for it, comfortably inside a 16,000 ceiling. A surface that renders
       # something on request is the right place for it to cost anything.
-      gatefall_pendragon_001:/system titles: 6077
+      gatefall_pendragon_001:/system titles: 6525
       # Re-recorded 2026-08-04, 33,836 -> 62,654 (+28,818). **Almost none of
       # this is growth. It is the removal of a measurement artifact, and the
       # old figure was never a measurement of this surface at all.**
@@ -938,7 +1007,7 @@ surfaces:
       # every panel, so it reads the whole Bearer plus the whole ownership
       # ledger plus eight render sections. It is exempt from the 16,000 ceiling
       # by design and governed by the ratchet alone, which is what just fired.
-      gatefall_pendragon_001:/system all: 51650
+      gatefall_pendragon_001:/system all: 51648
       #
       # ---- Five budgets re-recorded together 2026-08-05, `EVT-000418` ----
       #
@@ -1004,7 +1073,9 @@ surfaces:
       # anything was re-recorded. 999 tokens now separate this panel from its
       # 16,000 hard ceiling, and that ceiling *can* be raised where readiness's
       # cannot, but the trimming named at the readiness baseline relieves both.
-      gatefall_pendragon_001:/system log: 15527
+      # 15,527 -> 12,354. DOWN 3,173, the largest inherited shrink in this
+      # pass, against a render-change contribution of 394 (15.1 + 15.3.6).
+      gatefall_pendragon_001:/system log: 12354
       reikon_awakening_001:/system: 8985
     subdivision_message: fetched operation requires a narrower selector
 

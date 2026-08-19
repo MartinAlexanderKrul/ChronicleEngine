@@ -158,5 +158,103 @@ Assert-True ($section -match '(?i)frame\*\*\s+survives') `
      "and donor are the section's whole structure; without the frame's guarantee the result of a " +
      "fusion is undefined.")
 
+# --- Seamwork (1.86): the Bearer holds the hands, never the signature ---------
+#
+# The owner reopened the artificing question after a Runtime-authored audit
+# closed it without a ruling (F-039), and authored Seamwork under exactly one
+# boundary: IT NEVER CREATES AN ITEM. It may read, open, seat into, lift from
+# and raise a piece the Bearer already owns -- what it may never do is
+# originate one.
+#
+# The first draft of this section got that wrong in the restrictive direction:
+# it read "cannot create something from nothing" as "cannot add anything," and
+# authored a ladder that improved nothing. That is recorded here because the
+# failure is instructive -- an over-tight boundary passes every gate just as
+# quietly as a loose one, and nothing in a test suite reports a rule that is
+# merely useless.
+#
+# What keeps Section 12.8's economy intact is NOT a ban on improvement. It is
+# three bounds that already existed: an item's authored ceiling, material spent
+# at the commissioning anchor, and the Bearer's own Seamwork Rank. Legs below
+# assert the origination ban and the ceiling bound, because those are the two
+# a generous future edit would quietly drop.
+
+$seamMatch = [regex]::Match($profileText,
+    '(?ms)^###\s+Seamwork\b.*?(?=^#{2,3}\s|\Z)')
+Assert-True ($seamMatch.Success) `
+    "Section 7.3's Seamwork block is absent; Profile 1.86 is not present."
+$seam = $seamMatch.Value
+
+Assert-True ($seam -match '(?i)never\s+creates\s+an\s+item') `
+    ("Seamwork no longer states that it never creates an item. Origination is the entire boundary the " +
+     "owner ruled -- the Bearer improves what he owns and conjures nothing -- and without it Section " +
+     "12.8's supply economy has no rule holding it up.")
+
+Assert-True ($seam -match '(?i)inert\s+to\s+it') `
+    ("Seamwork no longer states that matter carrying no mana line is inert to it. That clause is what " +
+     "makes the origination ban checkable at the table rather than an aspiration: no working present, " +
+     "no purchase, Mana refused.")
+
+Assert-True ($seam -match '(?i)ceiling' -and $seam -match '(?i)never\s+past\s+it') `
+    ("Seamwork no longer binds to an item's authored ceiling. The ceiling is why the Bearer still " +
+     "shops -- a higher ceiling is a higher-Rank object, and those are bought, commissioned or killed " +
+     "for. Remove the bound and one cheap piece becomes every piece he will ever need.")
+
+$seamRows = [regex]::Matches($seam,
+    '(?m)^\|\s*\*\*(?<rank>[ EDCBAS]+)\*\*[^|]*\|(?<grant>[^|]+)\|\s*$')
+Assert-True ($seamRows.Count -ge 4) (
+    "Seamwork's Rank ladder parsed $($seamRows.Count) rungs; it is native at C-Rank and authors C " +
+    "through S, and a missing rung is an unauthored grant the Runtime will improvise.")
+
+# The native rung must not sit below the evidence that earned the technique.
+Assert-True ($seam -match '(?i)native\s+\*\*C-Rank\*\*') (
+    "Seamwork is no longer native at C-Rank. It was authored there because Section 18.3.1 forbids a " +
+    "grant returning nothing the Bearer already lacks: the qualifying evidence shows reading a " +
+    "maker's mid-process corrections and opening a finished working intact, so an E- or D-Rank entry " +
+    "would author two rungs of nothing beneath capability already demonstrated.")
+Assert-True ($seam -match '(?i)grant\s+that\s+returns\s+nothing') (
+    "Seamwork no longer records why its native Rank is C. The calibration is the load-bearing part: " +
+    "an earned technique is authored from the evidence that earned it, and a later edit lowering the " +
+    "entry rung would look like caution while quietly re-creating the defect.")
+
+# No rung may originate. Improving is licensed; conjuring is not.
+foreach ($row in $seamRows) {
+    $grant = $row.Groups['grant'].Value
+    $rank = $row.Groups['rank'].Value.Trim()
+    Assert-True ($grant -notmatch '(?i)\b(create|forge|fabricate|originate)s?\b') (
+        "Seamwork's $rank rung authors creating a piece. Every rung acts on an object that already " +
+        "carries a working; origination requires an artificer's signature (Section 13.6) and no " +
+        "amount of Rank on this ladder confers one.")
+}
+
+# Section 12.8 must carry the origination/improvement distinction.
+Assert-True ($profileText -match '(?i)signature\s+originates;\s+the\s+hands\s+may\s+still\s+work') `
+    ("Section 12.8 no longer states the origination/improvement distinction. The blanket reading of " +
+     "'no player crafting subsystem' is what F-039's audit relied on to close a formation candidate " +
+     "without an owner ruling; leaving it unstated invites the same inference again.")
+Assert-True ($profileText -match '(?i)It\s+forbids\s+\*\*origination\*\*') `
+    ("Section 12.8 no longer names origination as the thing forbidden. Naming it is what stops the " +
+     "sentence being re-read as a ban on improving a piece the Bearer already owns.")
+
+# The fusion assist step reads the skill, not an impression.
+Assert-True ($section -match '(?i)holding\s+\*\*Seamwork\*\*') `
+    ("Section 12.10's assist step no longer names Seamwork. It previously read 'capability established " +
+     "in play', which is an impression rather than a state a gate or a Runtime can check.")
+
+# Seamwork's mastery axis must not re-sell what its native Rank rung grants. An
+# earlier draft authored "resolution of the read" starting at presence-and-Rank
+# while the native C rung already granted the maker's corrections -- so Novice
+# mastery withheld what acquisition had just sold. Section 7.4's division of
+# labour is the rule: Rank sells reach, mastery sells how well it resolves, and
+# neither may sell the other's goods.
+$axisRow = [regex]::Match($profileText,
+    '(?m)^\|\s*\*\*Seamwork\*\*\s*\|(?<axis>[^|]+)\|(?<band>[^|]+)\|')
+Assert-True ($axisRow.Success) `
+    "Section 7.4's axis table has no Seamwork row; a mastery-tracked skill with no declared axis is the F-014 defect."
+Assert-True (($axisRow.Groups['axis'].Value + $axisRow.Groups['band'].Value) -notmatch '(?i)correction') (
+    "Seamwork's mastery axis sells the maker's corrections, which its native C-Rank rung already " +
+    "grants. A mastery track starting below its own acquisition rung means the first levels return " +
+    "nothing -- the exact defect Profile 1.83 was written to end.")
+
 $bandCount = $bandRows.Count
-Write-Host "Gatefall fusion contract tests PASSED ($bandCount bands, $($eligibility.Count) eligibility clauses)" -ForegroundColor Green
+Write-Host "Gatefall fusion contract tests PASSED ($bandCount bands, $($eligibility.Count) eligibility clauses, $($seamRows.Count) Seamwork rungs)" -ForegroundColor Green

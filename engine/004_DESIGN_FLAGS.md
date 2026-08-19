@@ -1116,3 +1116,57 @@ Note what these five have in common: they are the documents whose *content* the 
 3. **Should it be gated?** A checker asserting that every engine-layer `**Engine Version:**` matches the Manifest's is trivial to write under the first reading and impossible under the second, which is why question 1 comes first. Note the precedent cuts both ways: `tools/test_transactional_checkpoint.ps1` carries `**Engine Version:** 0.2.0` in a fixture, and a gate would have to distinguish a fixture from a document.
 
 **Related:** `F-030` and `F-015` (a stored value nothing recomputes or asserts), `F-031` (operational metadata decaying where no gate reads it).
+
+---
+
+## F-039 — A Runtime-authored audit wrote a no-appeal clause around its own conclusion
+
+**Raised:** 2026-08-19 · **Source:** `campaigns/gatefall_pendragon_001/`, 2026-08-21 in-fiction session
+**Status:** Open
+
+`EVT-000485`'s `progression-batch-settlement` classified the artificing/infusion candidate question as `none`. The reasoning was derived by the Runtime from Profile Section 12.8's *"there is no player crafting subsystem"*; **no owner ruling was taken, and none is cited.** The entry carries none of the formats this campaign uses for real rulings — no `owner ruling, <date>`, no `on the player's declared instruction`, no ruling Event. It then closed with:
+
+> *"...and is recorded explicitly so a later session does not re-litigate whether repetition alone might eventually open a candidate it structurally cannot."*
+
+Section 7.1 makes a rejected or closed candidate reopenable **"only by owner ruling or when a materially different signature creates a new candidate."** So a Runtime-authored `none` that also instructs future sessions not to revisit it does not merely record a conclusion — it acquires the standing of a ruling and then immunises itself from the review that standing is supposed to require. **The owner is locked out of a decision that was always theirs, by prose the owner never saw.**
+
+**The failure landed rather than staying theoretical.** The clause held for four days, and in the 2026-08-21 session the Runtime read it back to the player as settled canon and declined to reopen the question on its authority — citing the very "do not re-litigate" sentence a previous Runtime had written. The player then asked who had ruled it, and the answer was nobody.
+
+**The defect is structural and independent of the merits.** The owner has since ruled the opposite way on the substance, and the profile's own text supports them: Section 13.6 states the Bearer is **"the sole exception to all of it"** on one-signature-for-life and that **"the man who can accumulate them is a walking impossibility"**, and it already authors the exact precedent for a learned technique delivering a profession's function minus its innate package — *"Learned Mend grants its heal but not the full innate-mender package."* But the flag would stand even if the conclusion had been correct: what is wrong is a Runtime decision reaching ruling authority by assertion.
+
+**The open design questions.**
+
+1. **Should an audit result be able to carry a no-appeal clause at all?** A `none` is a classification. A *"do not re-litigate"* is a ruling about the owner's future authority, and Section 7.1 does not grant the Runtime that. The candidate fix is a flat prohibition: an audit records what it classified and why, and never records that the classification is final.
+2. **Should a `none` reached on structural grounds be distinguishable in state from one reached on evidence?** This one claimed to be a different *kind* of `none` — the bar not applying, rather than the bar not being met — and there is no field for that. It lived in prose, which is why it read as authoritative and why nothing could check it.
+3. **Should a `progression_audits` result cite its authority?** Adding an `owner_ruling` reference — present or explicitly absent — would make an unruled conclusion visible as one. Every gate in this repository reads the audit block; none reads who decided it.
+4. **How does an owner discover this class of thing?** It surfaced only because a player happened to ask "who ruled that?" four days later. Nothing renders unruled structural conclusions anywhere, and `/status`, `/recap` and the readiness gate all pass straight over them.
+
+**Related:** `F-020` (a ruling written into a rolling view and lost when it turned over), `F-002` (a vocabulary with no producers), and Decision 069's own principle that *"a gate whose subject writes its own verdict is not a gate"* — which is precisely what happened here, one layer down.
+
+---
+
+## F-040 — An earned technique's mastery track ignores the practice that earned it
+
+**Raised:** 2026-08-19 · **Source:** `campaigns/gatefall_pendragon_001/`, 2026-08-21 in-fiction session
+**Status:** Open
+
+Section 7.1 treats the two values that describe a newly ratified technique in opposite ways, and states no reason for the difference.
+
+- **Rank is authored at ratification.** *"Because an earned technique's name, **Rank**, Mana cost, and effect are not known merely from practice, final ratification requires an owner ruling."* Rank can therefore be set from the evidence, and at Gatefall 1.86 it was: Seamwork was authored native **C-Rank** rather than E because an E-Rank entry rung would have granted less than the qualifying evidence already demonstrated, which Section 18.3.1 forbids outright — *a grant that returns nothing the Bearer already lacks is not a grant.*
+- **Mastery is fixed and explicitly barred from it.** *"Ratification creates the fully authored skill at **Novice**"*, and *"Pre-ratification evidence establishes acquisition only and **never backfills** post-acquisition successful-use or mastery counters."*
+
+**What that produces.** A Bearer whose three qualifying scenes include a result the instructing expert states she has personally produced **twice in her career** enters the track at Novice, rendering `★☆☆☆☆`, every counter at zero — identical in every respect to a Bearer who scraped through three bare passes. The record that was good enough to author the skill's *Rank* upward is inadmissible for its *level*.
+
+**Why this is an engine gap rather than one campaign's grievance.** Section 7.1's own five tests require each qualifying scene to show **material success** under genuine danger, consequential work, or structured practice with real feedback. That is the same evidence class Section 7.4 accepts to buy a mastery level. The profile counts it for acquisition and refuses to count it for progression, and nothing anywhere distinguishes the two uses.
+
+**The counter-argument, which any fix has to answer rather than route around.** *"Pre-ratification evidence establishes acquisition only"* may be deliberate anti-double-counting: the three scenes are **spent** buying the skill, and spending them again on a level is drawing twice on one purchase. That reading is coherent and is probably the original intent.
+
+**The open design questions.**
+
+1. **Should starting mastery be authored at ratification the way Rank already is** — by owner ruling, from the same evidence?
+2. **If so, what bounds it?** A natural bound falls out of Section 7.4's own arithmetic: three qualifying scenes is **exactly one mastery level**, so ratification could open at **Practiced (2) and never higher**, with `successful_uses` and `qualifying_scenes_total` still initialized at zero. That answers the double-counting objection on its own terms — the one level is not a second purchase, it is the recognition that the skill was *demonstrated into existence* rather than taught by a rune.
+3. **Does the asymmetry have a defensible reading that should simply be written down?** If acquisition and progression are meant to be separate currencies, Section 7.1 should say so, because at present the difference reads as an oversight rather than a rule.
+4. **Scope is prospective, by owner direction.** Whatever is decided applies only to techniques ratified **after** the ruling. No already-ratified skill is re-levelled and no counter is backfilled. Precedent is settled both ways in this repository: Decision 092's disposition coverage is prospective with a declared baseline, and `EVT-000574`'s qualifying-scene-distinctness ruling **runs forward only**, expressly declining to reopen Checkpoint 0099's credits.
+5. **Which layer owns it?** The text is in the Gatefall profile's Section 7.1, but *acquisition versus progression* is a Chronicle Engine concept (Rules Section 5; Decision 051's growth-precedes-surfacing rule). A fix may belong in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` or the engine Rules rather than in one world.
+
+**Related:** `F-039` (the same session; a Runtime-authored audit closing this skill's candidate without a ruling), `F-014` and Gatefall 1.83 (a mastery level that returns nothing — this is the same concern at the track's first rung rather than its middle), and Section 18.3.1's *a grant that returns nothing the Bearer already lacks is not a grant*, which the Rank half already obeys and the mastery half does not.

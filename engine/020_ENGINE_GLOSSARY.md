@@ -58,7 +58,9 @@ Tracked state recording what an actor is actively pursuing, advanced on the camp
 
 It is settled from the holder's own state, standing and reach, never from the protagonist's involvement, at the same clock boundary that advances supply, needs and commitments. An agenda that moved while the player was elsewhere is the ordinary case. An outcome recording that nothing moved, and why, is a settlement exactly as a positive one is.
 
-Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.9; settled at `012_ENGINE_RUNTIME.md`, Section 2.4; see Decision 091.
+**An agenda is written in the same act as the disposition it belongs to** (Decision 092), derived from the actor's `Want` and bounded by its own reach. A want with no pursuit is a preference. This is the only construct in the commitment/supply/need/agenda family whose *absence* a gate can see, precisely because its creation is bound to something else that is checkable.
+
+Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.9; settled at `012_ENGINE_RUNTIME.md`, Section 2.4; see Decisions 091 and 092.
 
 ---
 
@@ -316,11 +318,13 @@ The authored interiority of a Character, held as canonical state on its own reco
 
 Each field closes a specific way an actor collapses into the narrator. `Want` is what lets an actor open a scene rather than only answer one — an actor pursuing nothing can only react, and reacting draws its content from the Runtime's context, which holds everything. `Fear` is what makes it act against its own interest, which is most of what separates a person from an optimizer. `Secret` is the structural reason it does not simply say what it knows. `Voice` is what makes two loaded actors non-interchangeable, because manner is precisely what recall compresses away.
 
-All four are **required for any Character a Runtime will play**. A Character that exists only as a referent declares `disposition_class: referent` and needs none until it speaks or acts; the classification is declared by the writer rather than inferred, because a name on a roster and a character who speaks next session are the same shape at rest. Coverage is prospective and declared per world.
+All four are **required for any Character a Runtime will play**. A Character that exists only as a referent declares `disposition_class: referent` and needs none until it speaks or acts; the classification is declared by the writer rather than inferred, because a name on a roster and a character who speaks next session are the same shape at rest.
+
+**Coverage is engine-general and prospective** (Decision 092). Every campaign is covered and there is nothing to opt into — a world that declines the character model does not get simpler NPCs, it gets NPCs played from the Runtime's context. A campaign declares only where its obligation begins, and a missing declaration means fully covered rather than uncovered. **Where a record carries no disposition, the Runtime authors one** rather than playing narrowly: a want is *unnamed but entailed*, the class Runtime Section 1.4 authors rather than defers.
 
 Disposition governs how an actor is played and never what the dice do. It is distinct from a character sheet's `personality` field, which describes how a character comes across; disposition is what the character is pursuing, protecting and withholding, which is what the Runtime needs before writing a line.
 
-Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.7; see Decision 091 and design flag `F-028`.
+Defined in `011_ENGINE_DATA_MODEL.md`, Section 7.7; see Decisions 091 and 092, and design flag `F-028`.
 
 ---
 

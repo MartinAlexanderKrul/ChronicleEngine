@@ -597,47 +597,67 @@ function Get-ParticipationPolicy {
 function Get-DispositionPolicy {
     param([string]$RepositoryRoot)
 
-    # Decision 091 / Data Model Sections 7.7 and 12.4.5. A Character a Runtime
-    # will play carries Want, Fear, Secret and Voice. Coverage is declared per
-    # world and is PROSPECTIVE: it begins at a baseline entity identifier, so
-    # adoption backfills nothing and an existing cast is backlog rather than a
-    # wall of failures. A world that declares nothing carries no obligation --
-    # the same reason participation and skill-credit coverage are declared
-    # rather than defaulted, since an engine-general default would impose one
-    # world's authoring cost on every world (Decision 069).
+    # Decision 092 / Data Model Sections 7.7, 7.9 and 12.4.5. A Character a
+    # Runtime will play carries Want, Fear, Secret and Voice, and an agenda
+    # alongside them.
     #
-    # The baseline is an ENTITY identifier, not an Event, because the obligation
-    # attaches to a record's existence rather than to something that happened.
+    # Coverage is ENGINE-GENERAL. There is nothing to opt into: every campaign
+    # is covered, and what a campaign declares is only WHERE its obligation
+    # begins -- `disposition_baseline` in 090_CAMPAIGN_STARTUP.md -- so a cast
+    # written before the model existed is backlog rather than a wall of
+    # failures.
+    #
+    # This deliberately departs from participation and skill-credit coverage,
+    # which a world opts into. That shape is right for an obligation whose cost
+    # is a world's own authoring convention. It is wrong here: a world that
+    # declines the character model does not get simpler NPCs, it gets NPCs
+    # played from the Runtime's context, which is the behaviour seven design
+    # flags record. An opt-out from personhood is an opt-in to the defect.
+    #
+    # A MISSING BASELINE MEANS FULLY COVERED, never uncovered. Silence fails
+    # toward the obligation. The opposite convention is how a mechanism becomes
+    # unreachable while every gate stays green -- F-002, where the intersection
+    # a dispatcher tested could never be non-empty, so the absence was
+    # indistinguishable from nothing being due.
     $policy = @{}
-    $worldsRoot = Join-Path $RepositoryRoot "worlds"
-    if (-not (Test-Path -LiteralPath $worldsRoot -PathType Container)) {
+    $campaignsRoot = Join-Path $RepositoryRoot "campaigns"
+    if (-not (Test-Path -LiteralPath $campaignsRoot -PathType Container)) {
         return $policy
     }
-    foreach ($worldDirectory in (Get-ChildItem -LiteralPath $worldsRoot -Directory | Sort-Object Name)) {
-        $profilePath = Join-Path $worldDirectory.FullName "206_WORLD_RULE_PROFILE.md"
-        if (-not (Test-Path -LiteralPath $profilePath -PathType Leaf)) {
+    foreach ($campaignDirectory in (Get-ChildItem -LiteralPath $campaignsRoot -Directory | Sort-Object Name)) {
+        $startupPath = Join-Path $campaignDirectory.FullName "090_CAMPAIGN_STARTUP.md"
+        $baselineNumber = 0
+        $source = "engine default; campaigns/$($campaignDirectory.Name) declares no disposition_baseline"
+
+        # The obligation attaches to a CONFIGURED campaign -- one declaring a
+        # startup configuration. A directory holding ledgers and no
+        # 090_CAMPAIGN_STARTUP.md is a fragment or a fixture, not something the
+        # Runtime can boot: /continue reads that file, so a campaign without one
+        # is unplayable and has no NPCs to play badly.
+        #
+        # This is a boundary rather than a loophole, and the difference is worth
+        # stating. Deleting a startup file to escape this gate costs the whole
+        # campaign -- it stops being resumable at all -- so the escape is more
+        # expensive than the obligation. That is not true of the case one level
+        # in, which is why a configured campaign that declares NO BASELINE is
+        # read as fully covered rather than uncovered.
+        if (-not (Test-Path -LiteralPath $startupPath -PathType Leaf)) {
             continue
         }
-        $profileText = Get-Content -LiteralPath $profilePath -Raw -Encoding UTF8
-        $fencePattern = '(?ms)^```ya?ml[ \t]*\r?\n(?<manifest>.*?)^```[ \t]*$'
-        foreach ($fence in [regex]::Matches($profileText, $fencePattern)) {
-            $manifest = $fence.Groups['manifest'].Value
-            if ($manifest -notmatch '(?m)^disposition_coverage_version:') {
+
+        $startupText = Get-Content -LiteralPath $startupPath -Raw -Encoding UTF8
+        if ($startupText -match '(?m)^disposition_baseline:[ \t]*"?(?<value>[^"\r\n]+)"?[ \t]*$') {
+            $declared = $Matches['value'].Trim().Trim('"')
+            if ($declared -notmatch '^ENT-\d{6}$') {
+                Add-Failure "campaigns/$($campaignDirectory.Name)/090_CAMPAIGN_STARTUP.md declares disposition_baseline '$declared', which is not an entity identifier; it names where the obligation begins and must be an ENT- identifier (Decision 092)."
                 continue
             }
-            $baseline = $null
-            if ($manifest -match '(?m)^  baseline_as_of:\s*(ENT-\d{6})\s*$') {
-                $baseline = $Matches[1]
-            }
-            if ($null -eq $baseline) {
-                Add-Failure "worlds/$($worldDirectory.Name)/206_WORLD_RULE_PROFILE.md declares a disposition coverage manifest without a baseline_as_of entity identifier (Decision 091)."
-                continue
-            }
-            $policy[$worldDirectory.Name] = [pscustomobject]@{
-                Baseline = $baseline
-                BaselineNumber = [int]$baseline.Substring(4)
-                SourcePath = "worlds/$($worldDirectory.Name)/206_WORLD_RULE_PROFILE.md"
-            }
+            $baselineNumber = [int]$declared.Substring(4)
+            $source = "campaigns/$($campaignDirectory.Name)/090_CAMPAIGN_STARTUP.md"
+        }
+        $policy[$campaignDirectory.Name] = [pscustomobject]@{
+            BaselineNumber = $baselineNumber
+            SourcePath = $source
         }
     }
     return $policy
@@ -1827,13 +1847,16 @@ foreach ($file in $canonicalFiles) {
                 }
             }
 
-            $blockWorldForDisposition = Resolve-WorldForPath $relativePath $campaignWorlds
-            if ($null -ne $blockWorldForDisposition -and
-                $dispositionPolicy.ContainsKey($blockWorldForDisposition) -and
+            $dispositionCampaign = $null
+            if ($relativePath -match '^campaigns/(?<name>[^/]+)/') {
+                $dispositionCampaign = $Matches['name']
+            }
+            if ($null -ne $dispositionCampaign -and
+                $dispositionPolicy.ContainsKey($dispositionCampaign) -and
                 $dispositionClass -ne "referent" -and
                 $id -match '^ENT-(\d{6})$') {
 
-                $dispositionCoverage = $dispositionPolicy[$blockWorldForDisposition]
+                $dispositionCoverage = $dispositionPolicy[$dispositionCampaign]
                 if ([int]$Matches[1] -gt $dispositionCoverage.BaselineNumber) {
                     $missing = @()
                     foreach ($field in @("want", "fear", "secret", "voice")) {
@@ -1843,7 +1866,28 @@ foreach ($file in $canonicalFiles) {
                         }
                     }
                     if ($missing.Count -gt 0) {
-                        Add-Failure ("{0}:{1} Character {2} is inside {3}'s disposition coverage and is missing {4}. A played Character carries want, fear, secret and voice; one that only exists as a referent declares disposition_class: referent (Decision 091 / {5})." -f $relativePath, $line, $id, $blockWorldForDisposition, ($missing -join ", "), $dispositionCoverage.SourcePath)
+                        Add-Failure ("{0}:{1} Character {2} is inside {3}'s disposition coverage and is missing {4}. A played Character carries want, fear, secret and voice; one that only exists as a referent declares disposition_class: referent (Decision 092 / {5})." -f $relativePath, $line, $id, $dispositionCampaign, ($missing -join ", "), $dispositionCoverage.SourcePath)
+                    }
+
+                    # Decision 092 point 4: an agenda is written in the same act
+                    # as the disposition it belongs to. This is the half that
+                    # makes the construct falsifiable -- of commitments, supply,
+                    # needs and agendas, it is the only one whose absence a gate
+                    # can see, precisely because its creation is bound to
+                    # something else that is checkable. A want with no pursuit
+                    # is a preference.
+                    #
+                    # It fires only on a Character that HAS a disposition, so it
+                    # never doubles the message for a wholly unauthored record.
+                    # An empty value is not a present one, on the same reading
+                    # the four fields above use: `agenda: ""` is the shape a
+                    # writer leaves behind when the field was added and never
+                    # filled, and it must not read as satisfied.
+                    $agendaMatch = [regex]::Match($block, '(?m)^[ \t]*agendas?[ \t]*:[ \t]*(?<value>.*?)[ \t]*\r?$')
+                    $hasAgenda = $agendaMatch.Success -and
+                        -not [string]::IsNullOrWhiteSpace(($agendaMatch.Groups['value'].Value.Trim().Trim('"')))
+                    if ($missing.Count -eq 0 -and -not $hasAgenda) {
+                        Add-Failure ("{0}:{1} Character {2} carries a disposition and no agenda. An agenda is authored in the same act as the disposition it belongs to; an actor holding commitments and no agenda exists exclusively in relation to the protagonist (Decision 092 / {3})." -f $relativePath, $line, $id, $dispositionCoverage.SourcePath)
                     }
                 }
             }

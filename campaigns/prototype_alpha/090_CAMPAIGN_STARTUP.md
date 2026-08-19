@@ -12,6 +12,12 @@ world: worlds/verra
 protagonist_policy: either
 default_protagonist: ENT-000018
 initialization_state: terminal
+# Decision 092: disposition coverage is engine-general and prospective. This names
+# where this campaign's obligation begins -- its entity high-water mark at adoption --
+# so the cast written before the character model existed is backlog, not a wall of
+# failures. Characters recorded after it carry want, fear, secret, voice and an agenda.
+# Removing this line does not disable the check; it widens it to the whole cast.
+disposition_baseline: ENT-000020
 latest_restorable_checkpoint: campaigns/prototype_alpha/saves/900_CHECKPOINT_0001
 canonical_entry_point: campaigns/prototype_alpha/180_CURRENT_STATE.md
 player_briefing: campaigns/prototype_alpha/095_PLAYER_BRIEFING.md

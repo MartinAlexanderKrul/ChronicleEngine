@@ -4471,6 +4471,59 @@ That is not a Gatefall fact. The engine had no character model at all, so every 
 
 ---
 
+## Decision 092 — Personhood Is Not Opt-In, and the Character Model Names Its Writer
+
+**Status:** Accepted — 2026-08-19. Owned by Version 0.4, milestone 0.4.4. Foundational under Decision 069; admitted after the Version 0.4 Architecture Freeze under Decision 086, whose four conditions it meets.
+**Date:** 2026-08-19
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Sections 7.7, 7.9, 12.4.5; `012_ENGINE_RUNTIME.md` Sections 1.4, 2.4; `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (*Play the Character, Not a Filtered You*); `campaigns/<campaign>/090_CAMPAIGN_STARTUP.md`; Decisions 069, 082, 083, 086, 088, 091; design flags `F-002`, `F-008`, `F-028`
+
+### Context
+
+Decision 091 authored the character model and left it unreachable in two independent ways. Both were visible in the repository within ten days of its acceptance, and neither is a defect in what it decided — they are the two halves it did not reach.
+
+**First: the default path was the old behaviour.** The Resident Core's own closing clause read *"If the record has no disposition, say so and play narrowly… inventing a want or a secret at the table is exactly the ungrounded authoring the loading rule exists to prevent."* Against a live cast in which **45 of 63 recorded entities carry no disposition**, that clause is not an edge case — it is the path almost every NPC takes. An engine that authored a character model and then routed most characters around it has changed nothing that a player experiences.
+
+**And the clause is wrong on the engine's own terms**, which is what makes this correctable rather than a matter of taste. Runtime Section 1.4 classifies exactly this case: an actor's want is **unnamed but entailed**, not **unknown in-world**. Canon establishes that the person exists and acts; it has simply never named what they are after. Section 1.4 rules that the Interpreter *authors* an entailed subject, grounded in established texture, and says in terms that *"declining to author an entailed subject is not the conservative reading — it is a refusal to simulate."* It even names this misclassification as the common failure, because both classes present as *canon does not answer*. `F-008` settled the general question and the character model was written as though it had not.
+
+**Second: the settler had no writer.** Section 7.9 and Runtime Section 2.4 specify agenda settlement in full — advanced through the elapsed span, from the holder's own standing, recording an outcome when nothing moved. Nothing in the engine creates an agenda. This is the shape `docs/DEVELOPMENT_WORKFLOW.md` was amended to catch after it produced three separate defects inside Version 0.3, and Decision 091 did not answer its three questions. The result is the familiar one: **zero live instances**, and a construct that at rest is indistinguishable from a mechanism that is simply quiet.
+
+**Third, and the reason coverage is reconsidered at all:** disposition shipped opt-in per world, on the participation-coverage precedent. That precedent is sound for what it governs and does not transfer here, for a reason worth stating plainly. Participation auditing costs a world writer effort and buys the repository a verifiable claim; a world that declines it has a quieter record and nothing else. **A world that declines the character model does not get simpler NPCs. It gets NPCs played from the Runtime's context** — which is precisely the behaviour `F-003`, `F-005`–`F-007`, `F-016`, `F-020`, `F-021` and `F-028` record, and which three successive prohibitions failed to close. An opt-out from personhood is an opt-in to the defect.
+
+### Decision
+
+**1. Disposition coverage is engine-general.** Every campaign is covered and there is nothing to opt into. A campaign declares only where its obligation begins: `disposition_baseline`, an entity identifier recorded once in `090_CAMPAIGN_STARTUP.md` at adoption, so that a cast written before the model existed is backlog rather than a wall of failures.
+
+**2. A missing baseline means fully covered, never uncovered.** A campaign declaring none is read as baseline zero. Silence fails toward the obligation, not away from it — the opposite convention is how `gatefall.board.deadline` became unreachable from the day it was authored while every gate stayed green (`F-002`).
+
+**2a. The obligation attaches to a configured campaign**, one declaring a startup configuration. A directory of ledgers with no `090_CAMPAIGN_STARTUP.md` is a fragment or a fixture, not a bootable campaign. This is a boundary rather than a loophole, and the test is what the escape costs: deleting a startup file to dodge the gate makes the campaign unresumable, which is dearer than the obligation. Establishing it cost something real — the Version 0.3 persistence fork carries no startup file, and giving it one to satisfy this gate activated an entire runtime-configuration contract that fixture was never built to meet. The boundary was drawn where the escape is expensive rather than where the fixture was convenient.
+
+**3. The default for an unauthored actor is to author it, not to play narrowly.** When the Runtime is about to play a Character with no disposition, it authors `Want`, `Fear`, `Secret` and `Voice` from what canon already establishes about that actor — its recorded conduct, relationships, situation and role — under Section 1.4's existing limits for an entailed subject, and records them in the same response. This replaces the *play narrowly* clause rather than sitting beside it.
+
+**4. An agenda is written in the same act as the disposition it belongs to**, derived from the `Want` and bounded by the holder's own capability, standing and reach. A want with no pursuit is a preference.
+
+**5. Belief gets no writer, deliberately.** A belief requires a `Ground`, and minting one at authoring time would fabricate the ground with it. Beliefs are recorded as the fiction supplies them. The absence of a belief is **not** detectable and is not a defect; an actor that was told something and holds no record of it is.
+
+**6. Neither the Data Model version nor a migration advances.** No record structure changes and a record valid before is valid after: the fields, their names, and their required-ness are exactly as Decision 091 left them. What changes is who is bound. This is the Decision 084 precedent — a change to what is declarable, not to a shape.
+
+### Consequences
+
+- **The one behaviour a player would notice becomes the default.** An NPC entering a scene arrives from somewhere, wanting something, with something already in progress, in a voice that is not the narrator's — without a world having opted in and without waiting for a backfill pass that had covered 18 records in ten days.
+- **Authoring cost moves from a backlog to the turn that needs it.** This is `F-008`'s disposition applied to a second subject class, and it is the same trade: detail arrives as the subject becomes relevant to play (Rules Sections 1.4, 3.10) rather than in a sweep nobody schedules.
+- **The agenda construct becomes falsifiable.** A covered Character carrying a disposition and no agenda is a structural state a gate can see. Of the four constructs in this family — commitments, supply, needs, agendas — it is the first whose absence is detectable, and that is a direct consequence of binding its creation to something else that is checkable.
+- **The gate's vacuity ends.** It stops reporting that it checks nothing real, and begins binding every campaign prospectively from its recorded baseline.
+- **`F-029`'s risk is inherited and is not new.** An authored disposition is canonical state that can go stale like any other, and a want that outlives its fiction is the same defect `F-029` recorded on `open_questions`. Authoring more state means more state to keep current; that cost is real and is accepted rather than hidden.
+- **It admits a second post-freeze foundational change to Version 0.4.** Decision 086's conditions are met — played evidence (`F-028`'s seven flags, plus 45 of 63 records measured), classified here, ruled not to require a version advance or migration, and revalidated at milestone 0.4.3. The version now carries two, and that is recorded in the roadmap rather than smoothed over.
+
+### Alternatives Considered
+
+- **Keep coverage opt-in and fix only the Resident Core default.** Rejected, and it was the tempting option because it needs no ADR. It leaves a required field with an enforcement point that binds nobody, which is the exact defect this milestone was sited to close; the behaviour would be default while the record obligation stayed optional, and the two would drift immediately.
+- **Hard-require disposition on every played Character now.** Rejected. It is the truest reading of *required* and it turns the barrier red against four campaigns' casts until play backfills them. A gate that fails on day one against correct-but-unbackfilled canon teaches the suite to be ignored, which costs more than the coverage buys.
+- **Author an agenda only for recurring Characters.** Rejected. *Recurring* is not decidable at first play, so the rule fires late or never — structurally the same reason `F-002`'s dispatcher could not fire.
+- **Give Belief a writer too, for symmetry.** Rejected. Symmetry is not a reason, and a belief minted without a ground is a fabricated ground. The asymmetry is recorded in Section 7.9 so it reads as a ruling rather than an oversight.
+- **Let the Runtime author a disposition without recording it.** Rejected outright. An actor characterised in one scene and re-derived in the next is `F-016` — dialogue converging on one register regardless of authored personality — with extra steps.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

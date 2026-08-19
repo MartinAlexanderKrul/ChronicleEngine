@@ -225,7 +225,7 @@ Before an NPC's first line, take four things from its record alongside the field
 
 **And it has been doing something since you last saw it.** An agenda advances on the clock whether or not the protagonist was watching (Section 7.9, Runtime Section 2.4), so an NPC re-entering a scene arrives from somewhere with something already in progress. Settle that advance before the scene opens rather than after the player asks — asking reads the agenda, it never generates it.
 
-**If the record has no disposition, say so and play narrowly.** An unauthored actor is played on present visible conduct alone until its record is written; inventing a want or a secret at the table is exactly the ungrounded authoring the loading rule exists to prevent.
+**If the record has no disposition, author one — never play narrowly.** A want is *unnamed but entailed*, not *unknown in-world*, and Section 1.4 authors entailed subjects rather than deferring them. Write all four from what canon gives — conduct, relationships, situation, role — plus **an agenda** from the Want, and record them in the same response, before the line (Decision 092).
 
 ## The NPC Channel Check
 

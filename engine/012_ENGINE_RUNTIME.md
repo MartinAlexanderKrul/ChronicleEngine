@@ -180,6 +180,8 @@ When canon does not settle a question, the Interpreter first classifies the ambi
 
 **Absence from the record is evidence about the record, not about the world.** Where canon declares a population, capacity, trade, membership, or precedent in the aggregate, the unnamed remainder exists, and naming a member of it is authoring rather than invention. Authoring within these limits is not the fabrication the Rules forbid: fabrication asserts what canon does not support, and is already bounded by Section 1.3's consistency limit and Section 8.1's contradiction handling. Declining to author an entailed subject is not the conservative reading — it is a refusal to simulate, and Rules Sections 1.4 and 3.10 require the opposite, detail arriving as the subject becomes relevant to play.
 
+**A Character's interiority is an entailed subject of this class** (Decision 092). Canon that has a person acting entails that they want something, protect something, withhold something, and behave in some particular way; what is missing is the naming, not the fact. A Character the Runtime is about to play and whose record carries no disposition is therefore authored under this section — all four fields plus an agenda, grounded in the actor's own recorded conduct, relationships, situation and role, and written in the same response (Section 2.4; `011_ENGINE_DATA_MODEL.md` Sections 7.7, 7.9). The consistency limit above is the whole of the constraint: an authored want must be one the record supports, and the collision check below applies unchanged to any actor authored along with it.
+
 Misclassifying *unnamed but entailed* as *unknown in-world* is the common failure, because both present as "canon does not answer." They are distinguished by what is missing: the second is missing a fact, the first only a name. Deferral is correct only where a settled world fact withholds the subject; the silence of the record is not such a fact, and an in-fiction deferral offered in its place creates a pending world-side commitment that must then be recorded and settled (`011_ENGINE_DATA_MODEL.md` Section 7.4).
 
 Whether an opportunity *obtains* is a supply question, settled from the source's own clock and never generated at the point of asking (Rules Section 3.4.1; Decision 083). *Who or what it turns out to be*, once it obtains, is this class. Section 3.4.1 governs the generation of opportunity, not the naming of participants, and it is not grounds for withholding a name.
@@ -301,6 +303,24 @@ may move it.** This is Decision 083's rule for supply, carried unchanged: asking
 what an actor has been doing settles the agenda *before* the answer and never
 generates the answer, so a protagonist who asks twice in one span learns the same
 thing twice rather than finding that the world advanced because he looked.
+
+**An agenda is written when its actor is, not when the clock reaches it** (Decision 092;
+`011_ENGINE_DATA_MODEL.md` Sections 7.7, 7.9). Everything above advances an agenda and
+nothing above creates one, and for as long as that was the whole of it the construct had
+no live instances anywhere in the repository. An agenda is therefore authored in the same
+act as the disposition it belongs to: where the Runtime is about to play a Character with
+no disposition, it authors `Want`, `Fear`, `Secret` and `Voice` from what canon already
+establishes — conduct, relationships, situation, role — under Section 1.4's limits for an
+entailed subject, together with an agenda derived from that `Want` and bounded by the
+holder's own capability, standing and reach, and records all of it in the same response
+that first plays the actor. **A want with no pursuit is a preference**, and an actor
+holding commitments and no agenda exists exclusively in relation to the protagonist.
+
+Playing an actor narrowly for want of a written disposition is not the conservative
+reading. It is Section 1.4's named misclassification — *unnamed but entailed* mistaken for
+*unknown in-world* — applied to persons, and it returns the actor the character model
+exists to prevent: the Runtime's own voice, holding the Runtime's own knowledge, with a
+name attached.
 
 **A commitment is recorded when it is made, not when it comes due.** Everything
 above is unreachable for an undertaking that was never written down, and

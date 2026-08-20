@@ -4538,7 +4538,7 @@ Rules Sections 4.0 and 4.2 already require that a creative solution never be rej
 
 The draft proposes a third branch: grant the capability in the fiction, priced, and record it as a **provisional mechanic** (tracked state, on the Decision 082 precedent) owing a ruling at the next promotion barrier. The load-bearing constraint is that a grant concedes capability and consequence but **never a number a later resolution reads** — magnitude stays at the actor's established band until the owner ratifies — so the mechanical-value stop survives intact and rule drift stays bounded by a ledger rather than by refusal.
 
-**Foundational** under Decision 069. Not claimed by a milestone: which version should own it is argued in the draft and is an owner ruling, as is the conditional displacement the resident clause requires. `docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md` named this under *What Worked* as *"open action resolution"* and the *"Yes, but…"* philosophy; neither phrase occurs anywhere else in the repository.
+**Foundational** under Decision 069. **Owned by Version 0.6 — The Generative Layer, milestone 0.6.1** (owner ruling, 2026-08-20), and it stays Proposed until that version's ADR Design opens. The conditional displacement the draft records is discharged: the owner ruled Variant A, the settlement split landed 2026-08-20, and the card now carries 669 tokens of headroom against this clause's measured 327. `docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md` named this under *What Worked* as *"open action resolution"* and the *"Yes, but…"* philosophy; neither phrase occurs anywhere else in the repository.
 
 ---
 

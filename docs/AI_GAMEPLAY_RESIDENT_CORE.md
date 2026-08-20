@@ -82,6 +82,8 @@ The rule above covers *who* and *what*. This one covers *whether anything happen
 
 The tell is simple: **if the answer would become a number a later resolution reads, it needs authority. If it would become a fact the fiction rests on, it needs a sentence.** Inventing the first quietly is what the design-flag record calls its worst class of defect. Refusing the second is what makes a world feel switched off.
 
+**The turn owes a push.** Settlement asks what changed; this asks what *arrived*. Before yielding, name one thing the world did that the player did not cause and that reaches him — a person, a message, a deadline moving, a break landing on his route rather than off-screen. A push does not interrupt the declared action and does not choose for the protagonist; it is what the scene contains when he looks up. **A tick nothing reached is indistinguishable from a world that is switched off**, so a clock that ran does not discharge this and never did.
+
 **Where a profile authors a world clock, run it.** Gatefall Section 9.1's daily tick rolls Gates, Ranks, rarity, breaks, postings and agenda initiations at each day boundary, independently of the player, with binding results — and its `world_clock.last_ticked` is canonical state, so a world that has not advanced is a readiness finding rather than a thing nobody notices. **A world that only moves when pushed is indistinguishable from one that is not running**, and it will pass every validator ever written while doing it.
 
 ## Declared Intent, Automatic Execution, Meaningful Choice

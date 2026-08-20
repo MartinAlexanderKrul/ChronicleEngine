@@ -12,6 +12,28 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-20 — Variant A, the push obligation, and Version 0.6 gets a subject
+
+**Two owner rulings actioned. Refinements under Decision 069, owned by Version 0.4**, plus a planned-milestone siting that decides nothing and commits no work. No Rules section moves, `011_ENGINE_DATA_MODEL.md` is untouched, and nothing new is imposed on a world.
+
+**Ruling 1 — Variant A.** `Turn-State Settlement` now splits by **what reads the value**. Per exchange: resource costs, harm, conditions and items; elapsed-time settlement with its commitments, supply, needs and deadlines; skill and technique credit including at a track's ceiling; immediate rewards and level; in-flight session state. Moved to `AI_GAMEPLAY_RUNTIME_PROFILE.md` *Boundary Settlement*: qualitative training, the trigger and progression audits with their `none` results, and characterization at scene close; `counter_deltas` attachment and baseline reconciliation, participation coverage, and the progression batch at the barrier. `Characterization Settlement` moved whole.
+
+**It is a measurement rather than a relaxation**, and the moved text says so where it lands. `tools/test_settlement_enforcement_locus.ps1` pins it: rewriting the resident cadence changes zero of ten card-reading suites; deleting the section changes four, all string-presence assertions. Enforcement is at the Event (Decisions 085, 090) and the checkpoint pair. The moved obligations were resident and unenforced there.
+
+**Two figures worth recording because both were predictions this repository made about itself.** The saving is **656 against an estimate of ~1,111** — the estimate stands unedited in `450` with the shortfall noted. And **the displacement cost was zero suites against four predicted**: all eight literals those four suites pin live in the elapsed-time step, which is world-side settlement and stays resident on its own merits. The four-suite figure came from the *deletion* measurement, and deleting a section is not condensing one. `450` costed the wrong operation and says so rather than being corrected into agreement.
+
+**Ruling 2 — Version 0.6 — The Generative Layer is sited**, with three milestones: **0.6.1** the provisional grant (owning Decision P008, which stays **Proposed** until that version's ADR Design opens), **0.6.2** making the push checkable from stored state, **0.6.3** the `situation` retirement that makes an NPC affordable to play. It is **not** renumbered into an earlier slot: Persistence moving into 0.5 was settled by owner ruling on 2026-08-02, and Decision 087 records that renumbering as a side effect *"would be the drift Decision 069 exists to stop."*
+
+**The push obligation's resident half landed now rather than with 0.6.2,** as a Version 0.4 refinement, because it sites an obligation `F-034` already established and the failure happens at narration time (Decision 055). `F-034`'s gate proves the clock **ran** — `validate_repository.ps1` asks nothing about whether a result ever reached the Bearer, which was the measured finding: four Gate breaks none of which reached him, two quests both mirroring what he had already touched, zero unprompted offers in ninety in-fiction days. Four legs in `tools/test_world_authoring_default.ps1` pin it, and their own comment says plainly that pinning a sentence is **not** a substitute for 0.6.2's stored state and validator leg.
+
+**Cost: +138, not the +229 the standalone draft measured,** because it was sited inside *The World Does Not Wait to Be Asked* rather than appended as its own section — it reuses that section's framing instead of restating it. Card 8,337 -> 7,681 -> **7,819**, with P008's 327 still spoken for and roughly 204 uncommitted. All four readiness baselines re-recorded behind it; Gatefall now has **3,443 tokens against its hard failure, up from 1,281** — the first time that surface has gained margin from engine work rather than a session trimming Current State by hand.
+
+**Files:** `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md`, `engine/002_ENGINE_ROADMAP.md`, `engine/001_ENGINE_DECISIONS.md`, `system/RUNTIME_CONTEXT_BUDGETS.yaml`, `tools/test_world_authoring_default.ps1`, `tools/test_settlement_enforcement_locus.ps1`, `docs/450_GAMEPLAY_REDEFINITION/450_GENERATIVE_LAYER_ANALYSIS.md`, `engine/030_ENGINE_CHANGELOG.md`.
+
+**Audit.** The push legs are mutation-verified: removing the clause from the card fails `test_world_authoring_default.ps1` by name. The locus suite's own two mutation preconditions **fired on the changed text**, which is what they exist for; Contract 3 is re-anchored on the next top-level heading of any name rather than on the section that used to follow it, and re-measurement gives the same 0 and 4. Tier 3: **42 of 43**, the inherited `test_progression_audit_contract` failure unchanged.
+
+**Left open.** Decision P008 is Proposed and unowned by an open Planning stage; nothing in 0.6 is committed work. The push is enforced by a string assertion only until 0.6.2. The cast backfill, `disposition_baseline`, and the `situation` retirement remain play under save discipline.
+
 ## 2026-08-20 — The generative layer: the case study's other column, and where settlement is actually enforced
 
 **Analysis, engine tooling and a proposed decision; refinement under Decision 069, owned by Version 0.4 — the cast-roster half by milestone 0.4.4.** It adds, removes and renumbers no section of `010_ENGINE_RULES.md`, changes `011_ENGINE_DATA_MODEL.md` in no way, and imposes nothing a world must satisfy. The one foundational thing here is **proposed and not in force**.

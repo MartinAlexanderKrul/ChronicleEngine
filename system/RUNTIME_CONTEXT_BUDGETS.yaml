@@ -305,7 +305,18 @@ surfaces:
     # leaving 113 tokens. The surface is not reopened for appending -- it is
     # closed again the moment those two land, and the closed-surface rule above
     # applies to whatever comes after them exactly as before.
-    baseline_tokens: 7681
+    #
+    # 2026-08-20, same session: THE PUSH OBLIGATION LANDED, +138 rather than the
+    # +229 its standalone draft measured. It was placed inside *The World Does
+    # Not Wait to Be Asked* rather than appended as its own section, so it reuses
+    # that section's framing instead of restating it -- which is what the
+    # closed-surface rule asks for and is the second time in this file's history
+    # a rule cost less by being sited than by being added.
+    #
+    # 7,681 -> 7,819, and P008's 327 is still spoken for, leaving roughly 204
+    # tokens uncommitted. The Push's own checkable half (Version 0.6 milestone
+    # 0.6.2) is stored state and a validator leg, and costs this surface nothing.
+    baseline_tokens: 7819
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true
@@ -663,10 +674,15 @@ surfaces:
       # cast roster's new Disposition section is deliberately NOT on this
       # surface (`campaign_readiness_headings` selects `Cast` alone) precisely
       # because 3,443 tokens is not room for it.
-      gatefall_pendragon_001: 36557
-      prototype_alpha: 9930
-      prototype_beta: 10575
-      reikon_awakening_001: 15283
+      #
+      # Re-recorded again 2026-08-20 for the Push obligation's +138. All four
+      # move by the card's own figure and nothing else, which is what a clean
+      # engine change looks like on this surface -- contrast the -933/-512 split
+      # in the entry above, where Gatefall carried ~277 of campaign drift.
+      gatefall_pendragon_001: 36695
+      prototype_alpha: 10069
+      prototype_beta: 10714
+      reikon_awakening_001: 15422
     include_resident: true
     derive_operation: continue
 

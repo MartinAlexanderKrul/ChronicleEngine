@@ -51,6 +51,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000149` | the Cutting Edge proprietor | gear artisan / licensed vendor | active | Cutting Edge | — |
 | `ENT-000150` | Ferro's Reclamation | salvage dealer | active | Chicago | — |
 | `ENT-000168` | Milo Brandt | sensor-adjacent hunter | active | Windy City Hunters Coalition training grounds | — |
+| `ENT-000211` | The Sidecut | bar | active | 2211 W Cermak Road, Chicago — the industrial stretch of Lower W… | — |
 | `ENT-000141` | Sable | contractor co-owner | active | Chicago | — |
 | `ENT-000142` | Kern | contractor co-owner | active | Chicago | — |
 | `ENT-000143` | Ruth Kowalczyk | harvester | active | Chicago | — |
@@ -92,6 +93,6 @@ A blank relationship cell means no relationship with the protagonist is recorded
 # Maintenance
 
 - Generation schema: `1.0`.
-- Entities: 63. Protagonist relationships: 19.
+- Entities: 64. Protagonist relationships: 19.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000210 |
+| Entity | `ENT-` | Persistent Entity | ENT-000211 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000613 |
+| Event | `EVT-` | Event | EVT-000619 |
 | Relationship | `REL-` | Relationship | REL-000098 |
 
 ---
@@ -648,6 +648,13 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000611 | Event | Gatefall: Pendragon, **Walt Adamik: Bastion Torso reclaimed**, 2026-08-22 ~13:40. Free reclaim from `OBJ-29` partner stock; missing Guard-signature Echo reconstructed from `EVT-000265`. Mana-null disc $1,800 and 400-capacity mana cell $9,000 bought. |
 | EVT-000612 | Event | Gatefall: Pendragon, **fenced warehouse re-investigated**, 2026-08-22 ~13:50. Rift-step to anchor (5 Mana, quiet). Keen Sense (strong) finds a hidden second structure; Exploit Pattern (partial) finds a maintenance schedule. Owner/operator still unidentified. |
 | EVT-000613 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 14:00, span `EVT-000609`-`EVT-000612`. No formation, no skill_credit (no dangerous scene). Cash $287,587.22->$329,287.22, gold 367,341->313,341, Mana 972/990. No contradiction found. |
+| EVT-000614 | Event | Gatefall: Pendragon, **the beer moved earlier, and the answer that was not one**, 2026-08-22 14:00-14:26. Called Dale Pruitt (`ENT-000135`) to bring the owed drink forward; d100 14 at net 0 -> major failure. Four rings to voicemail, then *'can't. 1900 still good'*; at 14:26 the address he had promised that morning and not sent — The Sidecut (`ENT-000211`) — plus an unprompted line about eight hours of calls with nothing to show. Dale's `want`/`fear`/`secret`/`voice`/`beliefs`/`agenda` authored under Decision 092, his record predating `disposition_baseline: ENT-000210` |
+| ENT-000211 | Entity | Gatefall: Pendragon campaign-local Place (`130_NPCS_AND_FACTIONS.md`): **The Sidecut**, a bar at 2211 W Cermak chosen by Dale Pruitt for the single property that nobody in the hunting trade drinks there. Established at `EVT-000614`; never visited, the 19:00 having been cancelled at `EVT-000615` |
+| EVT-000615 | Event | Gatefall: Pendragon, **the nineteen hundred cancelled, and not rescheduled**, 2026-08-22 14:45. Alexander cancelled by text citing not having checked the calendar, offering no replacement; d100 56 at net -1 -> failure. Dale answered *'No problem at all'* after fifteen minutes and named no alternative night. `OBJ-33` open, scheduled -> open, unscheduled. Characterization first on `ENT-000135` under Decision 076 |
+| EVT-000616 | Event | Gatefall: Pendragon, **five D-Rank instant dungeons, and LEVEL 41**, 2026-08-22 14:45-16:00. Five keys at 2,250g (-11,250g). Archetypes d8 8/6/7/3/8; 60 D-Rank bodies, all automatic under Rules 4.2, no damage taken, no Mana spent. Take 186 D-Rank crystals, 13 cores, five boss drops (Mend rune [D], Seer's Lens [D] + imprint, Keen Sense rune [D], Elixir, Mana Bolt book [D]). XP 2,900 -> level 41: +63 every base Stat, +5 points, max Health 2,000->2,252, max Mana 990->1,116. Section 7.4: `successful_uses` credited (+60 Dagger Mastery, +5 Resonance Extraction), **`qualifying_scenes_total` zero** on trivial repetition and material indistinctness |
+| EVT-000617 | Event | Gatefall: Pendragon, **owner ruling: sub-Rank clear time runs on a halving ladder**, 2026-08-22 16:00. Raised because the Runtime invented an instance duration Section 17 does not author. Clear-and-loot time halves per Rank below the Bearer — 1 below 60 min, 2 below 30, 3 below 15, no floor — read from **Combat Tier (6.7)**, with at-Rank and above keeping the full two-hour window. A second gap named and deliberately left unruled: what a bystander perceives when an instance opens in public |
+| EVT-000618 | Event | Gatefall: Pendragon, **the shop, and a correction to what it buys**, 2026-08-22 16:00. `/system shop` rendered under the pre-render gate. Player-corrected Runtime error: Section 12.5's Resale paragraph repurchases catalogue equipment at 25% and unused consumables/runes/keys at 50%, refusing cores — the Runtime had twice asserted crystals-only. Sold 136 Mana Crystal [D] (+5,440g) and the Skill Rune — Keen Sense [C-Rank] (+10,000g); gold 302,091 -> 317,531. `F-037` repair on `daily_premium.offers.armor`; skill-book resale pricing flagged as unauthored |
+| EVT-000619 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 16:00, span `EVT-000614`-`EVT-000618`. `gatefall.skill_formation` none; `gatefall.skill_credit` discharged at `EVT-000616`. Anchor 14:00 -> 16:00, both pools restored to new maxima by the level award. Gold 313,341 -> 317,531, cash unchanged. Two rulings added to the world-side authoring backlog, now eight against a frozen Profile 1.86 |
 
 ---
 

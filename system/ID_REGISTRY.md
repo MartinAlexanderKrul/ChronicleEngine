@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000210 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000604 |
+| Event | `EVT-` | Event | EVT-000608 |
 | Relationship | `REL-` | Relationship | REL-000098 |
 
 ---
@@ -639,6 +639,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000602 | Event | Gatefall: Pendragon, **Profile 1.83 -> 1.86 adoption**, 2026-08-21 17:30 - three edges at one anchor, no stored value moved. 1.84 render geometry; **1.85 fusion** (Section 12.10 - an effect moves, a magnitude never does, the donor is consumed at every outcome, one fusion per piece); **1.86 Seamwork** (Section 7.3, native C-Rank, four rungs, **never creates an item**) with Section 12.8 narrowed to forbid origination rather than improvement. |
 | EVT-000603 | Event | Gatefall: Pendragon, **Nakamura's bench**, 2026-08-21 17:30-21:20 - asked her to fuse two Warded Vambraces and she refused to guess at a price for an operation she has never performed; bought two E-Rank Hunter's Bands at 80 g each as practice stock and she rejected them as having no named effect to move; **opened a finished working intact, d100 49 net +1 effective 69**. Personal library established. Health to full, **gold 367,501 -> 367,341**, Wednesday booked on her initiative. |
 | EVT-000604 | Event | Gatefall: Pendragon, **promotion barrier - SEAMWORK RATIFIED**, 2026-08-21 21:20. [C-Rank] Novice, Mana 3, on `EVT-000485`/`EVT-000550`/`EVT-000603`. **Native C not E** under Section 18.3.1 - the evidence already showed reading a maker's corrections and opening a working. Counters at zero per Section 7.1 (`F-040`). Reopens a candidate closed as `none` by a Runtime-authored audit that cited no owner ruling (`F-039`). |
+| EVT-000605 | Event | Gatefall: Pendragon, **the 2026-08-22 06:00 world tick and thirtieth daily**. Chicago 1d4+3->5, Prague 1d2->1; one within-reach D-Rank posted as `GB-08`; agenda check surfaced `GB-05`/`GB-06` to Alexander via Kesha's desk; no world event, no breaks, pressure at floor. Daily streak 14->15, three rewards pending unclaimed. |
+| EVT-000606 | Event | Gatefall: Pendragon, **Ashfield D-Rank crew clear**, 2026-08-22 08:04 - Iris Halvorsen's supervised run, Alexander in field command only, no strike role. One relay-assisted elite kill, clean boss kill on Iris's own read. Loot 28 D-Rank crystals, 2 cores, boss-imprinted Seer's Lens (bought back for $3,000). Standard Coalition split, Alexander net +$1,332 after buy-in. XP +200. **Iris commits to the crew, unconditionally.** |
+| EVT-000607 | Event | Gatefall: Pendragon, **Lakefront D-Rank solo clear, unsanctioned**, 2026-08-22 ~11:00 - Owen Callahan's own ask: completely unassisted, insurance void by choice, Alexander support-only (Keen Sense, Exploit Pattern, Field Command, two potion deliveries). Owen killed the full population himself - two natural-100 crits taken, two potions drunk, no assist on any kill. Two engine gaps owner-ruled and flagged: Resonance Extraction `Yield` tier-1 (+20% of a personally-worked deposit); NPC-held rune techniques reset per monster, not per Gate. Loot 22 D-Rank crystals, 2 cores split 50:50 ($8,100 each), boss-imprinted Channeling Focus kept. XP +350. |
+| EVT-000608 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 12:30, span `EVT-000605`-`EVT-000607`. No formation, skill_credit discharged per-Event. XP 1,347->1,897, cash $278,155.22->$287,587.22, Mana 982->970 (12 spent, unrecovered). No contradiction found. |
 
 ---
 

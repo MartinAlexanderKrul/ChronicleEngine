@@ -4528,6 +4528,20 @@ Decision 091 authored the character model and left it unreachable in two indepen
 
 The following topics have been identified but not yet finalized:
 
+## Decision P008 — A Proposed Capability Is Granted, Priced, and Owed
+
+**Status:** Proposed
+
+**Draft:** `docs/450_GAMEPLAY_REDEFINITION/451_PROVISIONAL_GRANT.md`
+
+Rules Sections 4.0 and 4.2 already require that a creative solution never be rejected for being unanticipated, and that an impossible action become an alternative outcome rather than a refusal. No layer that runs every turn carries either: the Resident Core cites Section 4 once, in the negative direction only. The line the Runtime does hold has two branches — a *mechanical value* to stop for, a *fact about the world* to author — and a player-proposed capability is both, so the whole class routes to `stop`. There is no yes-path in the engine.
+
+The draft proposes a third branch: grant the capability in the fiction, priced, and record it as a **provisional mechanic** (tracked state, on the Decision 082 precedent) owing a ruling at the next promotion barrier. The load-bearing constraint is that a grant concedes capability and consequence but **never a number a later resolution reads** — magnitude stays at the actor's established band until the owner ratifies — so the mechanical-value stop survives intact and rule drift stays bounded by a ledger rather than by refusal.
+
+**Foundational** under Decision 069. Not claimed by a milestone: which version should own it is argued in the draft and is an owner ruling, as is the conditional displacement the resident clause requires. `docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md` named this under *What Worked* as *"open action resolution"* and the *"Yes, but…"* philosophy; neither phrase occurs anywhere else in the repository.
+
+---
+
 # Superseded Proposed Decisions
 
 ## Decision P001 — Persistent Entity Abstraction

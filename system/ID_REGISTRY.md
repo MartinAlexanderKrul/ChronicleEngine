@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000211 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000619 |
+| Event | `EVT-` | Event | EVT-000622 |
 | Relationship | `REL-` | Relationship | REL-000098 |
 
 ---
@@ -655,6 +655,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000617 | Event | Gatefall: Pendragon, **owner ruling: sub-Rank clear time runs on a halving ladder**, 2026-08-22 16:00. Raised because the Runtime invented an instance duration Section 17 does not author. Clear-and-loot time halves per Rank below the Bearer — 1 below 60 min, 2 below 30, 3 below 15, no floor — read from **Combat Tier (6.7)**, with at-Rank and above keeping the full two-hour window. A second gap named and deliberately left unruled: what a bystander perceives when an instance opens in public |
 | EVT-000618 | Event | Gatefall: Pendragon, **the shop, and a correction to what it buys**, 2026-08-22 16:00. `/system shop` rendered under the pre-render gate. Player-corrected Runtime error: Section 12.5's Resale paragraph repurchases catalogue equipment at 25% and unused consumables/runes/keys at 50%, refusing cores — the Runtime had twice asserted crystals-only. Sold 136 Mana Crystal [D] (+5,440g) and the Skill Rune — Keen Sense [C-Rank] (+10,000g); gold 302,091 -> 317,531. `F-037` repair on `daily_premium.offers.armor`; skill-book resale pricing flagged as unauthored |
 | EVT-000619 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 16:00, span `EVT-000614`-`EVT-000618`. `gatefall.skill_formation` none; `gatefall.skill_credit` discharged at `EVT-000616`. Anchor 14:00 -> 16:00, both pools restored to new maxima by the level award. Gold 313,341 -> 317,531, cash unchanged. Two rulings added to the world-side authoring backlog, now eight against a frozen Profile 1.86 |
+| EVT-000620 | Event | Gatefall: Pendragon, **owner ruling: what a bystander sees**, 2026-08-22 16:00. Closes `EVT-000617`'s deliberately-unruled gap. Opening an instant dungeon is physically visible — a bystander sees him disappear and reappear; Section 14.4's Bearer-only perception hides the System, not the vacancy. **He never opens one where he can be seen**, which is protagonist discipline authored by the player and why the gap has never produced a consequence. This span's five openings clarified as out of sight; no consequence created or removed |
+| EVT-000621 | Event | Gatefall: Pendragon, **ledger repair: two composites derived, one Rank corrected**, 2026-08-22 16:00. Twin Fang second strike 2,157 -> **2,446** and package 3,087 -> **3,499** (off-hand 1,041 x the line's own authored x2.35); projected Quickknife 909 -> **1,032**, x4 = **4,128**. Both equations were already stored on their skill lines. `180_CURRENT_STATE.md`'s *Keen Sense and Exploit Pattern at [A-Rank] Master* corrected — both have stood at **[S-Rank] Adept** since `EVT-000599`-`EVT-000600`; live canon holds **three [S] skills, not one**. `F-037` shape, one instance written by the Runtime this session |
+| EVT-000622 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 16:00, span `EVT-000620`-`EVT-000621`. No formation, no skill credit, no fictional time, no counter movement. Anchor holds at 16:00; pools, gold, cash, XP and unspent points all unchanged. One ruling and one repair |
 
 ---
 

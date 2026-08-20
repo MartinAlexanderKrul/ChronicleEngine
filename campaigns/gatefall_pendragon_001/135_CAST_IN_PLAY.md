@@ -98,7 +98,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 
 | Entity | Name | Want | Fear | Secret | Voice |
 |---|---|---|---|---|---|
-| `ENT-000126` | Tanya Voss | — | — | — | — |
+| `ENT-000126` | Tanya Voss | To be right about the people she takes a chance on | A crew that does not all walk out, on a call she made | How thin the Red Line margin actually was | Short declaratives, no softening, no small talk before business |
 | `ENT-000127` | Marcus Aldridge | — | — | — | — |
 | `ENT-000128` | Elias Voss | — | — | — | — |
 | `ENT-000129` | Dr. Sarah Chen | — | — | — | — |
@@ -158,6 +158,6 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 
 - Generation schema: `1.1`.
 - Entities: 64. Protagonist relationships: 19.
-- Characters: 53. Disposition authored in full: 19; partial: 0; none: 34.
+- Characters: 53. Disposition authored in full: 20; partial: 0; none: 33.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

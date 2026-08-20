@@ -80,6 +80,12 @@ The rule above covers *who* and *what*. This one covers *whether anything happen
         -> author it from established parameters and move
 ```
 
+**And there is a third branch, because the player's best moves are both.** A **proposed capability** — a method the player invents that the profile does not author, a forged seal, a soul bound to an object, a use nobody wrote down — has fictional consequences *and* will eventually need a number. Rules Section 4.0 already forbids rejecting it for being unanticipated, and 4.2 makes automatic failure rare. So **grant it in the fiction now, priced**: name the thing, state what it costs and risks, and let the scene run. Never a flat refusal because the profile is silent, and never a mid-scene deferral to the owner.
+
+**Record it the same turn as a provisional mechanic** (Data Model Section 7.10) — what was granted, the price narrated, the profile section that owes a ruling, and the barrier it is owed by. An unrecorded grant is a rule invented silently, which is what the stop exists to prevent: the record is what makes yes safe, and a grant you cannot record is not grantable.
+
+**A grant concedes capability and consequence, never magnitude.** Until it is ruled on, resolutions run at the acting subject's established band with existing modifiers and no new ones, and it creates no threshold, multiplier, cost, cap, or rung. **Needing a new number to narrate the grant means you have left this branch** and are back at the stop above.
+
 The tell is simple: **if the answer would become a number a later resolution reads, it needs authority. If it would become a fact the fiction rests on, it needs a sentence.** Inventing the first quietly is what the design-flag record calls its worst class of defect. Refusing the second is what makes a world feel switched off.
 
 **The turn owes a push.** Settlement asks what changed; this asks what *arrived*. Before yielding, name one thing the world did that the player did not cause and that reaches him — a person, a message, a deadline moving, a break landing on his route rather than off-screen. A push does not interrupt the declared action and does not choose for the protagonist; it is what the scene contains when he looks up. **A tick nothing reached is indistinguishable from a world that is switched off**, so a clock that ran does not discharge this and never did.

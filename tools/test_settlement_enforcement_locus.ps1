@@ -85,7 +85,15 @@ $problems = New-Object System.Collections.Generic.List[string]
 # `Assert-NotContains` could go red on a reworded cadence while surviving the
 # deletion. If that suite ever gains a settlement assertion, drop it from here
 # rather than reasoning about it again.
-$heldOut = @('test_name_collision_check')
+#
+# `test_provisional_grant_contract` is held out on the same terms and by the same
+# method. It reads the card, but its assertions are on Decision 093's third
+# branch inside *The World Does Not Wait to Be Asked*, which neither mutation
+# reaches, and it builds a saves-bearing fixture costing ~90 seconds a run --
+# 180 across the two rounds, more than doubling this suite. Verified green under
+# Mutation B on 2026-08-20 and held out on that evidence rather than on the
+# argument. If it ever gains a settlement assertion, drop it from here.
+$heldOut = @('test_name_collision_check', 'test_provisional_grant_contract')
 
 # Measured 2026-08-20. These are the sets this test pins.
 $expectedReaders = @(
@@ -97,6 +105,7 @@ $expectedReaders = @(
     'test_npc_channel_contract'
     'test_opportunity_supply_contract'
     'test_player_agency_contract'
+    'test_provisional_grant_contract'
     'test_reikon_runtime_contract'
     'test_world_authoring_default'
     'validate_repository'

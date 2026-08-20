@@ -2845,6 +2845,72 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
     }
 }
 
+# --- A grant that owes a ruling must not outlive the barrier it owes it by ---
+#
+# Decision 093. The Runtime may grant a capability the profile does not author,
+# priced, and must record it as a provisional mechanic (Data Model Section 7.10)
+# owing a ruling at a named promotion barrier. The recording is the whole reason
+# the grant is a bounded debt rather than a silently invented rule, so an `open`
+# entry whose `due_checkpoint` the campaign has already passed is a finding.
+#
+# Without this leg the construct is the third iteration of a shape this engine
+# has already failed twice: F-012's mandatory offers went unsurfaced for an
+# entire campaign, and F-034 recorded that an obligation living in prose decays
+# inside three sessions. A yes-path with no gate would decay the same way, and
+# what it would leave behind is precisely the rule drift the founding case study
+# records as the reference campaign's real failure.
+#
+# It deliberately does NOT check that a ruling was correct, or that the profile
+# section named in `owes` exists. The first is an owner judgment and the second
+# would fail a campaign for a profile edit it does not control.
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    $savesRoot = Join-Path $campaignDirectory.FullName "saves"
+    $latestCheckpoint = 0
+    foreach ($checkpoint in @(Get-ChildItem -LiteralPath $savesRoot -Directory -ErrorAction SilentlyContinue)) {
+        $ordinal = [regex]::Match($checkpoint.Name, '^900_CHECKPOINT_(?<n>\d{4})$')
+        if ($ordinal.Success) {
+            $value = [int]$ordinal.Groups['n'].Value
+            if ($value -gt $latestCheckpoint) { $latestCheckpoint = $value }
+        }
+    }
+
+    foreach ($ledger in @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "*.md" -File -ErrorAction SilentlyContinue)) {
+        $ledgerText = Get-Content -LiteralPath $ledger.FullName -Raw -Encoding UTF8
+        if ($null -eq $ledgerText) { continue }
+        if ($ledgerText -notmatch '(?m)^\s*provisional_mechanics:\s*$') { continue }
+
+        # Each entry is a list item opening on `subject:`. Read the block that
+        # follows each one rather than the whole file, so two entries cannot
+        # borrow each other's fields.
+        foreach ($entry in [regex]::Matches($ledgerText, '(?ms)^(?<indent>\s*)-\s+subject:.*?(?=^\k<indent>-\s+subject:|^\S|\z)')) {
+            $body = $entry.Value
+            $status = [regex]::Match($body, '(?m)^\s*status:[ \t]*"?(?<value>[a-z-]+)"?')
+            if (-not $status.Success) {
+                Add-Failure ("{0}: a provisional mechanic has no status; an unsettled grant that cannot be read cannot be shown to be owed (Decision 093)." -f $ledger.Name)
+                continue
+            }
+            if ($status.Groups['value'].Value -ne 'open') { continue }
+
+            $owes = [regex]::Match($body, '(?m)^\s*owes:[ \t]*\S')
+            if (-not $owes.Success) {
+                Add-Failure ("{0}: an open provisional mechanic names no `owes` section. A debt with no named creditor cannot be settled and is indistinguishable from a rule somebody invented (Data Model Section 7.10)." -f $ledger.Name)
+            }
+
+            $due = [regex]::Match($body, '(?m)^\s*due_checkpoint:[ \t]*"?(?<n>\d{1,4})"?')
+            if (-not $due.Success) {
+                Add-Failure ("{0}: an open provisional mechanic names no due_checkpoint. A grant with no barrier it is owed by is one nothing will ever surface (Decision 093)." -f $ledger.Name)
+                continue
+            }
+            $dueOrdinal = [int]$due.Groups['n'].Value
+            if ($latestCheckpoint -gt $dueOrdinal) {
+                $subject = [regex]::Match($body, '(?m)^\s*-\s+subject:[ \t]*"?(?<value>[^"\r\n]{0,60})')
+                $label = if ($subject.Success) { $subject.Groups['value'].Value.Trim() } else { 'unnamed' }
+                Add-Failure ("{0}: provisional mechanic '{1}' is still open at checkpoint {2:D4} but was owed a ruling by {3:D4}. A grant is a bounded debt only while the barrier actually collects it; unruled, it is the silently invented rule the mechanical-value stop exists to prevent (Decision 093)." -f $ledger.Name, $label, $latestCheckpoint, $dueOrdinal)
+            }
+        }
+    }
+}
+
 # --- A narrowed live read must not be able to go stale -----------------------
 #
 # A panel that needs one current figure used to read a whole ledger, because the

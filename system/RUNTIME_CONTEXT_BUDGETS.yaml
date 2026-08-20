@@ -316,7 +316,25 @@ surfaces:
     # 7,681 -> 7,819, and P008's 327 is still spoken for, leaving roughly 204
     # tokens uncommitted. The Push's own checkable half (Version 0.6 milestone
     # 0.6.2) is stored state and a validator leg, and costs this surface nothing.
-    baseline_tokens: 7819
+    #
+    # 2026-08-20, third recording this session: DECISION 093'S THIRD BRANCH
+    # landed, +338 against the 327 its standalone draft measured -- the eleven is
+    # the cost of siting it inside the two-branch box it extends rather than
+    # restating that box. 7,819 -> 8,157.
+    #
+    # THE SURFACE IS NOW CLOSED AGAIN, at 193 tokens under the 8,350 warning.
+    # This is the margin the file has always run at deliberately (22, 24, 9, 44
+    # in earlier recordings), and the closed-surface rule above applies to
+    # whatever comes next exactly as it did before Variant A freed the room:
+    # displacement, or a ruling. Variant A was a one-off recovery of space that
+    # bookkeeping had been holding, not a change in how this surface is governed.
+    #
+    # Everything Variant A freed is now spent, and the ledger of it is complete:
+    # -656 recovered, +138 push, +338 grant, leaving -180 net against the
+    # pre-Variant-A figure of 8,337. Two whole capabilities for a card that is
+    # 180 tokens SMALLER than it was this morning is the argument for the split
+    # having been correct, and it is the only such argument this file can make.
+    baseline_tokens: 8157
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true
@@ -679,10 +697,19 @@ surfaces:
       # move by the card's own figure and nothing else, which is what a clean
       # engine change looks like on this surface -- contrast the -933/-512 split
       # in the entry above, where Gatefall carried ~277 of campaign drift.
-      gatefall_pendragon_001: 36695
-      prototype_alpha: 10069
-      prototype_beta: 10714
-      reikon_awakening_001: 15422
+      #
+      # Re-recorded 2026-08-20 for Decision 093's +338. All four move by +337 --
+      # the card's figure less a rounding boundary -- and nothing else, which is
+      # again what a clean engine change looks like here.
+      #
+      # Gatefall ends this session at 37,032 against its 40,000 hard failure:
+      # 2,968 tokens, against 1,281 before the day's work and 3,443 at its best
+      # point mid-session. It absorbed two whole capabilities and still sits
+      # better than it started, which is the whole practical case for Variant A.
+      gatefall_pendragon_001: 37032
+      prototype_alpha: 10406
+      prototype_beta: 11051
+      reikon_awakening_001: 15759
     include_resident: true
     derive_operation: continue
 

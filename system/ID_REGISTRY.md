@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000210 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000608 |
+| Event | `EVT-` | Event | EVT-000613 |
 | Relationship | `REL-` | Relationship | REL-000098 |
 
 ---
@@ -643,6 +643,11 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000606 | Event | Gatefall: Pendragon, **Ashfield D-Rank crew clear**, 2026-08-22 08:04 - Iris Halvorsen's supervised run, Alexander in field command only, no strike role. One relay-assisted elite kill, clean boss kill on Iris's own read. Loot 28 D-Rank crystals, 2 cores, boss-imprinted Seer's Lens (bought back for $3,000). Standard Coalition split, Alexander net +$1,332 after buy-in. XP +200. **Iris commits to the crew, unconditionally.** |
 | EVT-000607 | Event | Gatefall: Pendragon, **Lakefront D-Rank solo clear, unsanctioned**, 2026-08-22 ~11:00 - Owen Callahan's own ask: completely unassisted, insurance void by choice, Alexander support-only (Keen Sense, Exploit Pattern, Field Command, two potion deliveries). Owen killed the full population himself - two natural-100 crits taken, two potions drunk, no assist on any kill. Two engine gaps owner-ruled and flagged: Resonance Extraction `Yield` tier-1 (+20% of a personally-worked deposit); NPC-held rune techniques reset per monster, not per Gate. Loot 22 D-Rank crystals, 2 cores split 50:50 ($8,100 each), boss-imprinted Channeling Focus kept. XP +350. |
 | EVT-000608 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 12:30, span `EVT-000605`-`EVT-000607`. No formation, skill_credit discharged per-Event. XP 1,347->1,897, cash $278,155.22->$287,587.22, Mana 982->970 (12 spent, unrecovered). No contradiction found. |
+| EVT-000609 | Event | Gatefall: Pendragon, **errands - payout and gear**, 2026-08-22 ~13:00. Ada Reyes's $52,500 clears. Adaptive Gale Torso [A] 30,000g (banked) and Arcanist Feet [A] 24,000g (equipped) bought. Reduction 46.2%->51.5%, effective Intelligence 491->495, Mana max 982->990. |
+| EVT-000610 | Event | Gatefall: Pendragon, **Mend rune ascension**, 2026-08-22 ~13:10. Daily Random Box (d100 67 rune, d10 3 Mend) consumed: [E-Rank] Expert -> [A-Rank] Novice, baseline heal 14.5->375, mastery reset (rank_ascensions +1). |
+| EVT-000611 | Event | Gatefall: Pendragon, **Walt Adamik: Bastion Torso reclaimed**, 2026-08-22 ~13:40. Free reclaim from `OBJ-29` partner stock; missing Guard-signature Echo reconstructed from `EVT-000265`. Mana-null disc $1,800 and 400-capacity mana cell $9,000 bought. |
+| EVT-000612 | Event | Gatefall: Pendragon, **fenced warehouse re-investigated**, 2026-08-22 ~13:50. Rift-step to anchor (5 Mana, quiet). Keen Sense (strong) finds a hidden second structure; Exploit Pattern (partial) finds a maintenance schedule. Owner/operator still unidentified. |
+| EVT-000613 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 14:00, span `EVT-000609`-`EVT-000612`. No formation, no skill_credit (no dangerous scene). Cash $287,587.22->$329,287.22, gold 367,341->313,341, Mana 972/990. No contradiction found. |
 
 ---
 

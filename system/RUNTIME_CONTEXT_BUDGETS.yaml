@@ -878,7 +878,17 @@ surfaces:
       # 15,546 -> 14,676. DOWN 870 even after the render change added 482
       # (15.1 + 15.3.5). This is the surface the ceiling raise was argued
       # from, and it is 5,324 tokens under the new 20,000 stop.
-      gatefall_pendragon_001:/system shop: 14407
+      gatefall_pendragon_001:/system shop: 17000
+      # Re-recorded 2026-08-22 at Checkpoint 0111, 14,407 -> 17,000, on owner
+      # instruction. The growth ratchet failed three consecutive saves inside
+      # one session (checkpoints 0109-0111) on the same cause each time:
+      # genuine inventory expansion — sold runes, imprinted gear, boss-drop
+      # provenance from four C-Rank instant dungeons — not padding. The
+      # Runtime trimmed its own added prose twice to fit under the stale
+      # figure before flagging that a third round would mean deleting real
+      # record detail rather than bloat. Measured at 16,689 tokens against a
+      # 20,000 stop; 17,000 restores headroom without re-widening the ceiling
+      # itself.
       # Re-recorded 2026-08-10 at Checkpoint 0084, 4,158 -> 4,996 (+838), and the
       # attribution matters because almost none of it belongs to the session that
       # tripped it. This span's only write to a field this surface reads is the

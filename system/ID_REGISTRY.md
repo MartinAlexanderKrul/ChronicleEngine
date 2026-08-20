@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000211 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000628 |
+| Event | `EVT-` | Event | EVT-000632 |
 | Relationship | `REL-` | Relationship | REL-000098 |
 
 ---
@@ -664,6 +664,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000626 | Event | Gatefall: Pendragon, **two more instances, LEVEL 42, and the S-Rank capacity line**, 2026-08-22 16:30-17:30. Crypt and Flooded Mine; the Flooded Mine boss finished on a second graze by 52 points. XP 4,757 crosses 4,100: **+63 all Stats**, maximum Health 2,504, **maximum Mana 1,260**. **Section 19.2's S-Rank band is 1,225+ — an instrument would return S on a licence that reads E**, and re-assessment is voluntary, so nothing is issued and no one knows. **Five mastery advances, not the eight first narrated** — instance 1 was fought with plain daggers, so skills drilled only in instances 2-3 took two scenes, not three |
 | EVT-000627 | Event | Gatefall: Pendragon, **crystals sold and the chassis chosen**, 2026-08-22 17:30. 189 Mana Crystal [C-Rank] sold, +32,130 g, gold -> 319,661. The d20-20 player-choice drop taken as a second **Quickknife [C-Rank]**, its imprint fixed from the boss under 11.2.1 — **Serpentine** (+1 Agility) / **Control** Echo / Weathered. **Runtime error corrected: Section 12.10 fusion does NOT require identical pieces** — same chassis and within one Rank, so the banked [B-Rank] Quickknife is a legal frame and the Control Echo can migrate up one Rank |
 | EVT-000628 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 17:30, span `EVT-000623`-`EVT-000627`. No formation; skill credit discharged per-Event at `EVT-000624` and `EVT-000626`. Anchor 16:00 -> 17:30. Health 2,252 -> 42 taken -> Mended -> 2,504/2,504 on the level award; Mana -> 1,260/1,260. Gold 317,531 -> 319,661. Two Runtime errors corrected in play and recorded rather than buried |
+| EVT-000629 | Event | Gatefall: Pendragon, **the fourth key, and two boss-Rank threats**, 2026-08-22 17:30-18:00. Free C-Rank key, Beast Den (second boss-Rank alpha, Section 10). Resource trace reconstructed at the barrier: 119 Mana across nine drilled skills, 14 non-boss kills plus 3 boss/alpha exchanges. **Six mastery advances, three returning nothing** under Section 7.4's own dividend rule — Twin Fang and Flash Step to Expert/Master paying real magnitude, Keen Sense/Exploit Pattern/Rupture advancing at their ceiling for nothing. Arcanist Coif [C-Rank] boss drop, Edge Echo |
+| EVT-000630 | Event | Gatefall: Pendragon, **sixty-six crystals sold**, 2026-08-22 18:00. +11,220 g, gold -> 330,881. Net across all four C-Rank instances: +23,350 g |
+| EVT-000631 | Event | Gatefall: Pendragon, **home, and the walk to Nakamura's**, 2026-08-22 18:00-19:10. Rift-stepped to the apartment anchor — corrected in play: Section 18.8's anchor reach is distance-free within contiguous city, bounded by the anchor cap and Mana cost rather than the 100m line-of-sight range, which governs only the unanchored ability. Showered, then ordinary 60-minute transit to Nakamura's, no anchor at either end. **Resettled Mana/Health against a Runtime error** — an intermediate figure had dropped `EVT-000629`'s 119-Mana drilling cost entirely; the real formula returns Mana 1,260/1,260 full, Health 2,503/2,504 |
+| EVT-000632 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 19:10, span `EVT-000629`-`EVT-000631`. Skill credit discharged at `EVT-000629` from a reconstructed resource trace rather than an implicit one. Anchor 17:30 -> 19:10. Gold 319,661 -> 330,881. Arrived at Nakamura's workshop, twenty minutes early |
 
 ---
 

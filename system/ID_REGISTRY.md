@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000211 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000643 |
+| Event | `EVT-` | Event | EVT-000645 |
 | Relationship | `REL-` | Relationship | REL-000098 |
 
 ---
@@ -679,6 +679,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000641 | Event | Gatefall: Pendragon, **the working opens tonight, resolves Wednesday**, 2026-08-22 19:30. Player pushback on same-day deferral; Section 12.10 bars completing in one sitting, not spanning two. Opening phase run tonight, no roll (working incomplete); resolution carries to the next standing session with net `+1` established |
 | EVT-000642 | Event | Gatefall: Pendragon, **session close: the merged sitting settles**, 2026-08-22 20:35. Anchor 19:10 -> 20:35, both pools closed at/near cap. `gatefall.skill_credit` none, no dangerous scene. Fenn's Ironline delivery, due tonight since `EVT-000583`, still outstanding as he steps outside |
 | EVT-000643 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 20:35, span `EVT-000633`-`EVT-000642`. Written at the checkpoint because the sitting closed without one — five play Events naming the Bearer sat after the last settlement (Section 7.1). `gatefall.skill_formation` none; `gatefall.skill_credit` none, no dangerous scene. Reconciled two silent counter drifts (`flux_sight` 89 -> 90, `seamwork` 0/0/0 -> 1/1/1, the skill's first qualifying scene) and one older stored-value drift (`pending_rewards.ability_points` 4 -> 0, claimed at `EVT-000623`). Anchor 19:10 -> 20:35; five supply sources advanced with empty results |
+| EVT-000644 | Event | Gatefall: Pendragon, **Fenn delivers Ironline's ownership**, 2026-08-22 20:40. **Recovered from the 2026-08-20 session transcript at the checkpoint — played, narrated, never promoted**, while `180_CURRENT_STATE.md` still carried the commitment as owed tonight. Region V's office runs **three shells deep, the same architecture as the shell behind Marnie's storage unit**, different registered agent; she cannot pass the third layer and says whoever built it stopped one shell short of a licensed PI's reach on purpose. Volunteered the cross-thread pattern herself. **Refused payment** — a Decision 076 characterization break against a `want` that is explicitly to be paid on results |
+| EVT-000645 | Event | Gatefall: Pendragon, **promotion barrier - batch settlement**, 2026-08-22 20:40, span `EVT-000644`. Both audits none. Anchor 20:35 -> 20:40; pools, gold, cash and XP all unchanged; five supply sources advanced with empty results |
 
 ---
 

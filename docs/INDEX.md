@@ -82,3 +82,9 @@ For the current inventory of worlds and campaigns, read `system/WORLDS_AND_CAMPA
 
 28. docs/440_ECONOMY_VALIDATION/440_VALIDATION_OVERVIEW.md
 29. docs/440_ECONOMY_VALIDATION/441_CAPABILITY_MATRIX.md
+
+### Gameplay Redefinition
+
+Why the engine prevents its founding case study's defects without reproducing what made that campaign worth playing, and what it would cost to change. Read it before proposing work on the resident card, on world initiative, or on NPC disposition — it costs two variants against the measured budget rather than asserting a direction.
+
+30. docs/450_GAMEPLAY_REDEFINITION/450_GENERATIVE_LAYER_ANALYSIS.md

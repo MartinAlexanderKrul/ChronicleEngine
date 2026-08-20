@@ -275,7 +275,7 @@ Never invent a precondition so a trigger can fire. Automatic detection does not 
 
 For a progression domain, obey its declared boundary; the audits themselves are the Runtime Profile's *Boundary Settlement*. Skill-use and mastery counters still settle per exchange, and **a counter that moves no rendered value is still written** — at a track's ceiling crediting shows nothing, so the delta gets skipped, which holds the subject at the ceiling and keeps the reaction suppressed.
 
-Before yielding a scene opening, surface unresolved profile ratifications together. Settle an authored automatic result; otherwise stop for the owner ruling. Do not advance fiction while this gate is open.
+Before yielding a scene opening, surface unresolved profile ratifications and every open provisional mechanic together. Settle an authored automatic result; otherwise stop for the owner ruling. Do not advance fiction while this gate is open.
 
 ---
 

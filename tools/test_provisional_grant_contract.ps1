@@ -206,8 +206,24 @@ try {
     Assert-True ($dataModel -match 'It may not concede \*\*magnitude\*\*') "Section 7.10 does not carry the magnitude prohibition, so the card and the Data Model could drift on the one property that makes this safe."
     Assert-True ($dataModel -match 'tracked state under Section 7\.3') "Section 7.10 no longer declares a provisional mechanic as tracked state, which is what keeps it off a schema advance (Decision 093 condition (c))."
 
+    # --- P-10: the barrier surfaces it, and the validator is only the backstop -
+    #
+    # This case exists because the first version of Decision 093 shipped without
+    # it. The construct was defined, the branch was resident, and the validator
+    # leg fired -- but nothing told the owner a ruling was due. The validator
+    # catches an overdue grant one checkpoint AFTER the owner should have been
+    # asked, so the whole mechanism degraded into "play until a save fails."
+    #
+    # That is the F-012 shape exactly: a mandatory offer with no dispatch point,
+    # unsurfaced for an entire campaign. The gap was found by a player asking how
+    # they were supposed to rule on a grant, which is the same way F-012 was.
+    $runtimeProfile = Get-Text (Join-Path $root "docs/AI_GAMEPLAY_RUNTIME_PROFILE.md")
+    Assert-True ($runtimeProfile -match 'provisional mechanic \(Data Model Section 7\.10, Decision 093\) joins that same queue') "The Save Algorithm does not put open grants into the adjudication queue, so a ruling is never asked for and the validator becomes the only notice -- one checkpoint too late (F-012)."
+    Assert-True ($runtimeProfile -match 'Surfacing is the barrier''s job and the validator is the backstop') "The Runtime Profile does not distinguish surfacing from enforcement, which is what lets a barrier skip the ask and still pass."
+    Assert-True ($resident -match 'surface unresolved profile ratifications and every open provisional mechanic together') "The resident scene-opening gate does not surface open grants, so a ruling would wait for a save that may not come for many scenes."
+
     Write-Host "Provisional grant contract tests PASSED" -ForegroundColor Green
-    Write-Host "  9 cases; fixture campaign latest checkpoint $($latest.ToString('D4'))"
+    Write-Host "  10 cases; fixture campaign latest checkpoint $($latest.ToString('D4'))"
     Write-Host "  NOTE: no live campaign records a provisional mechanic yet, so the"
     Write-Host "  validator leg is vacuous against real canon. It is proven by fixture"
     Write-Host "  only until play makes the first grant (milestone 0.4.5)."

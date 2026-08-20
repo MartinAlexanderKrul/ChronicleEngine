@@ -334,7 +334,14 @@ surfaces:
     # pre-Variant-A figure of 8,337. Two whole capabilities for a card that is
     # 180 tokens SMALLER than it was this morning is the argument for the split
     # having been correct, and it is the only such argument this file can make.
-    baseline_tokens: 8157
+    #
+    # +9 the same day for the barrier-surfacing fix: the scene-opening gate now
+    # names open provisional mechanics alongside profile ratifications. Decision
+    # 093 shipped without it -- the construct existed, the branch was resident,
+    # the validator fired, and NOTHING TOLD THE OWNER A RULING WAS DUE, so the
+    # mechanism degraded to "play until a save fails." Found by the player asking
+    # how they were supposed to rule on a grant, which is how F-012 was found too.
+    baseline_tokens: 8166
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true
@@ -706,10 +713,10 @@ surfaces:
       # 2,968 tokens, against 1,281 before the day's work and 3,443 at its best
       # point mid-session. It absorbed two whole capabilities and still sits
       # better than it started, which is the whole practical case for Variant A.
-      gatefall_pendragon_001: 37032
-      prototype_alpha: 10406
-      prototype_beta: 11051
-      reikon_awakening_001: 15759
+      gatefall_pendragon_001: 37041
+      prototype_alpha: 10415
+      prototype_beta: 11060
+      reikon_awakening_001: 15768
     include_resident: true
     derive_operation: continue
 

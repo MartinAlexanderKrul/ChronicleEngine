@@ -89,6 +89,27 @@ Assert-Contains $resident 'Where canon states an aggregate and names a fraction,
 # two-copies-of-one-rule drift this repository keeps paying for. What stays
 # pinned here is the handoff and the Runtime-side consequence.
 Assert-Contains $resident 'Whether to defer at all is governed below' 'The authoring rule no longer hands off to the deferral rule, so the two can drift apart.'
+
+# --- The push obligation ----------------------------------------------------
+#
+# F-034's gate proves the world clock RAN. `validate_repository.ps1` fails a
+# campaign whose `world_clock.last_ticked` sits behind a day boundary and asks
+# nothing about whether a single result ever reached the Bearer -- which was the
+# measured finding: four Gate breaks, none reaching him, two quests both
+# mirroring what he had already touched, zero unprompted offers in ninety
+# in-fiction days. A world that ticks faithfully and absorbs every result
+# off-screen passes that gate forever.
+#
+# This pins the resident half only. The checkable half -- a recorded push and a
+# validator leg over it -- is Version 0.6 milestone 0.6.2, and pinning a
+# sentence is explicitly NOT a substitute for it. It is here because the failure
+# happens at narration time and Decision 055 puts narration-time guardrails on
+# the card, and because the alternative is that the obligation exists nowhere a
+# gate can see at all.
+Assert-Contains $resident 'The turn owes a push' 'The resident layer does not require the world to reach the protagonist unprompted; F-034 recorded ninety in-fiction days in which nothing did.'
+Assert-Contains $resident 'name one thing the world did that the player did not cause' 'The push obligation does not say what discharges it, so it reads as encouragement rather than a step.'
+Assert-Contains $resident 'A tick nothing reached is indistinguishable from a world that is switched off' 'The resident layer does not state that a clock which ran fails to discharge the obligation, which is the exact gap F-034 left open.'
+Assert-Contains $resident 'does not interrupt the declared action and does not choose for the protagonist' 'The push obligation is not bounded against the player-agency contract, so it reads as licence to author protagonist intent.'
 Assert-Contains $runtime 'creates a pending world-side commitment that must then be recorded and settled' 'The Runtime does not tie an in-fiction deferral to the Data Model Section 7.4 commitment it creates.'
 
 # --- The second site of the same default ------------------------------------

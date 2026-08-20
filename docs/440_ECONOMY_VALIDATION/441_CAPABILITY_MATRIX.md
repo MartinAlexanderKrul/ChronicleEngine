@@ -55,6 +55,22 @@ Carried unchanged from Version 0.3's matrix, because the classes proved worth di
 | V04-21 | A false belief survives contact | An actor holding a false belief meets someone who knows better and is not silently corrected | **Pending — needs play** | The row that proves Belief is not knowledge with a flag on it. If every mistaken actor is corrected on first contact, the construct delivered nothing |
 | V04-22 | Disposition changes who speaks | Play produces actors that open scenes, withhold, and remain non-interchangeable | **Pending — needs play, and it is a judgement** | The seven flags this milestone answers were all raised by a reader, not a gate. Whether the remedy worked is read the same way, and the postmortem records it in those terms |
 
+## Milestone 0.4.5 — The Engine Has a Yes (Decision 093)
+
+| ID | Capability | Acceptance | Status | Evidence |
+|---|---|---|---|---|
+| V04-23 | A grant that outlives its barrier is a finding | An `open` provisional mechanic whose `due_checkpoint` the campaign has passed fails the barrier | Passed — gate and fixture | `validate_repository.ps1`; `test_provisional_grant_contract.ps1` P-01. Mutation-verified: disabling the leg fails P-01 by name |
+| V04-24 | The gate is correctly narrow | A grant still inside its barrier, and a grant already ruled on, are both left alone | Passed — fixture | P-02, P-03. A gate that fired on correct canon would be routed around, which is the reasoning 0.4.4 recorded for the disposition gate |
+| V04-25 | A malformed grant fails loudly | A grant with no `due_checkpoint`, no `owes`, or no `status` is rejected rather than parsed as no obligation | Passed — fixture | P-04, P-05, P-06. `F-002`'s cause one layer down: an unreachable obligation is indistinguishable from a quiet one |
+| V04-26 | The yes is resident | The third branch, the recording obligation, and the magnitude prohibition are on the card the Runtime holds every turn | Passed — fixture | P-08. Decision 055: a fetched-only guardrail does not fire, and this failure happens at narration time. Mutation-verified on the magnitude line |
+| V04-27 | Magnitude is never conceded | A grant concedes capability and consequence; the Data Model and the card say so in the same terms | Passed — fixture | P-08, P-09. Asserted on both surfaces separately so weakening one cannot pass as editing the other. **This is the row that distinguishes Decision 093 from rule drift** |
+| V04-28 | The engine actually says yes in play | A player proposes a method the profile does not author and the scene continues, priced, instead of stopping | **Pending — needs play, and it is the whole point** | Vacuous today: no live campaign records a provisional mechanic, so every row above is fixture-only. The first grant made in a session is the first real evidence |
+| V04-29 | A grant is ruled on at a barrier | An open grant reaches a checkpoint and the owner moves it to `ratified`, `replaced`, `bounded` or `revoked` | **Pending — needs play** | The backlog half. If grants accumulate and are never ruled on, the construct has produced a debt ledger nobody reads — which is what Version 0.6 milestone 0.6.1 is now sited to answer |
+
+**V04-23 through V04-27 are fixture-only and the suite says so on every run.** The validator leg is vacuous against real canon until play makes the first grant. That is stated here and printed by the test rather than left for a reader to discover, because V04-07 is in this same matrix as the standing example of a shape that existed for a version with nothing exercising it.
+
+**V04-14 fails harder, and is again not reworded.** It asked that the version complete with no foundational change beyond Decisions 088 and 089; Decision 093 is the third. Its four Decision 086 conditions are addressed in the decision itself, including the explicit record that condition (a) — played evidence — is the arguable one. The row asked the wrong question and is answered in the postmortem rather than edited until it passes.
+
 **V04-19 is deliberately listed as its own row rather than folded into V04-15.** The gate passing and the world using it are different claims, and V04-07 is in this same matrix as the standing example of what happens when they are not separated: the claimant shape existed for a version with nothing exercising it.
 
 ---

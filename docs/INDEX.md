@@ -23,7 +23,9 @@ Setup manual and AI Project prompts: `docs/GAMEPLAY_START_GUIDE.md`.
 
 Repository inventory: `system/WORLDS_AND_CAMPAIGNS.md` (Decision 071) — the generated minimal table of every world and campaign, with status and latest checkpoint. It is the rendered source for the Engine Welcome Page listing; `tools/generate_runtime_index.ps1 -Check` enforces byte-for-byte synchronization.
 
-Campaign cast rosters: `campaigns/<campaign>/135_CAST_IN_PLAY.md` — the generated one-row-per-entity index of who exists in a campaign, derived from its `130_NPCS_AND_FACTIONS.md`. It is a readiness read, so a session knows the cast without preloading a ledger many times the readiness budget; the records themselves stay on demand and are loaded at the encounter (Resident Core, *Load a Recorded NPC Before Playing It*). `tools/generate_campaign_cast.ps1 -Check` enforces byte-for-byte synchronization.
+Campaign cast rosters: `campaigns/<campaign>/135_CAST_IN_PLAY.md` — the generated one-row-per-entity index of who exists in a campaign, derived from its `130_NPCS_AND_FACTIONS.md`. Its `Cast` section is a readiness read, so a session knows the cast without preloading a ledger many times the readiness budget; the records themselves stay on demand and are loaded at the encounter (Resident Core, *Load a Recorded NPC Before Playing It*). `tools/generate_campaign_cast.ps1 -Check` enforces byte-for-byte synchronization.
+
+Its `Disposition` section (generation schema 1.1) carries the lead of each Character's Want, Fear, Secret and Voice — Decision 091's character model, at one line per field instead of the paragraph the record holds. It is **not** on the readiness surface: `campaign_readiness_headings` selects `Cast` alone, so this section costs a session nothing until it is fetched, and fetching it costs one read for the whole cast against roughly 29,000 tokens to load a single NPC through the entity dispatch (`F-028`). Blank cells are printed rather than hidden, because below a campaign's prospective `disposition_baseline` they are the backfill worklist.
 
 Formal validation gates, tiered (Recommendation R9): **Tier 1** `tools/validate_live.ps1` — repository structure (Decision 054) plus runtime configuration, the single named live gate. **Tier 2** `tools/validate_checkpoint.ps1` — Tier 1 plus the checkpoint form, lineage, and index-synchronization contract. **Tier 3** `tools/test_all.ps1` — the development regression suite, never a save gate. The underlying `tools/validate_repository.ps1` also enforces index coverage: a live campaign or world with no row fails the build (Decision 071).
 
@@ -82,3 +84,10 @@ For the current inventory of worlds and campaigns, read `system/WORLDS_AND_CAMPA
 
 28. docs/440_ECONOMY_VALIDATION/440_VALIDATION_OVERVIEW.md
 29. docs/440_ECONOMY_VALIDATION/441_CAPABILITY_MATRIX.md
+
+### Gameplay Redefinition
+
+Why the engine prevents its founding case study's defects without reproducing what made that campaign worth playing, and what it would cost to change. Read it before proposing work on the resident card, on world initiative, or on NPC disposition — it costs two variants against the measured budget rather than asserting a direction.
+
+30. docs/450_GAMEPLAY_REDEFINITION/450_GENERATIVE_LAYER_ANALYSIS.md
+31. docs/450_GAMEPLAY_REDEFINITION/451_PROVISIONAL_GRANT.md — draft ADR for Decision P008, **Proposed and not in force**; the stub lives under *Pending Decisions* in `engine/001_ENGINE_DECISIONS.md`

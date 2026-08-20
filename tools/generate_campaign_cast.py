@@ -61,6 +61,22 @@ NPC_LEDGER = "130_NPCS_AND_FACTIONS.md"
 # location that runs to a paragraph belongs in the record the encounter fetches.
 LOCATION_LIMIT = 64
 
+# Decision 091's character model, in the order the Resident Core reads them.
+DISPOSITION_FIELDS = ("want", "fear", "secret", "voice")
+
+# A disposition field runs to a paragraph in the ledger -- Owen's `want` is four
+# sentences with two Event citations -- so the cell carries its LEAD, not the
+# field. Every authored disposition in the live corpus opens with a bolded
+# thesis: "**To be judged on what someone watched him do.**", "**Something for
+# Nadia.**", "**Unauthored.**". That opening is a hand-written precis and is
+# better than anything truncation produces, so it is what this reads.
+#
+# The fallback exists so an unbolded field still renders something, and it is
+# deliberately worse-looking: a machine-cut clause next to a column of authored
+# leads reads as unfinished, which is the correct signal about the record.
+DISPOSITION_LEAD = re.compile(r"^\s*\*\*(?P<lead>[^*].*?)\*\*", re.DOTALL)
+DISPOSITION_LIMIT = 96
+
 
 def parse_blocks(path: Path) -> list[dict[str, Any]]:
     """Every well-formed mapping block in a ledger, in file order.
@@ -149,6 +165,23 @@ def render_location(value: Any, names: dict[str, str]) -> str:
     return clause or "unrecorded"
 
 
+def render_disposition(value: Any) -> str:
+    """One disposition cell: the field's bolded lead, or a trimmed first clause."""
+    if value is None:
+        return ""
+    text = collapse(value)
+    if not text:
+        return ""
+    lead = DISPOSITION_LEAD.match(text)
+    clause = lead.group("lead").strip() if lead else re.split(r"(?<=[.!?]) ", text, maxsplit=1)[0].strip()
+    # Trailing punctuation is noise once the cell is the whole statement, but a
+    # lead ending in "?" or "!" is saying something and keeps it.
+    clause = clause.rstrip(".").strip()
+    if len(clause) > DISPOSITION_LIMIT:
+        clause = clause[: DISPOSITION_LIMIT - 1].rstrip() + "…"
+    return clause
+
+
 def escape_cell(value: str) -> str:
     return value.replace("|", "\\|")
 
@@ -178,7 +211,11 @@ def build_rows(
                 relationships.setdefault(endpoint, []).append(identifier)
 
     rows: list[str] = []
+    disposition_rows: list[str] = []
     entity_count = 0
+    characters = 0
+    fully_authored = 0
+    unauthored = 0
     for block in blocks:
         identifier = block.get("id")
         if not isinstance(identifier, str) or not identifier.startswith("ENT-"):
@@ -189,20 +226,56 @@ def build_rows(
         kind = collapse(block.get("subtype") or block.get("type") or "unrecorded")
         status = collapse(block.get("lifecycle") or block.get("status") or "unrecorded")
         tie = ", ".join(f"`{value}`" for value in sorted(relationships.get(identifier, [])))
+        name = escape_cell(display_name(block) or identifier)
         rows.append(
             "| `{id}` | {name} | {kind} | {status} | {location} | {tie} |".format(
                 id=identifier,
-                name=escape_cell(display_name(block) or identifier),
+                name=name,
                 kind=escape_cell(kind),
                 status=escape_cell(status),
                 location=escape_cell(render_location(state.get("location"), names)),
                 tie=tie or "—",
             )
         )
-    return rows, entity_count, relationship_count
+
+        # Characters only. A gear vendor, a Gate site and an institution are all
+        # ENT- entities with a legitimate place in the roster above, and none of
+        # them wants, fears or hides anything -- Decision 092 scopes disposition
+        # coverage to a Character a Runtime will play, and so does this table.
+        if collapse(block.get("type") or "") != "Character":
+            continue
+        characters += 1
+        cells = [render_disposition(state.get(field)) for field in DISPOSITION_FIELDS]
+        authored = sum(1 for cell in cells if cell)
+        if authored == len(DISPOSITION_FIELDS):
+            fully_authored += 1
+        elif authored == 0:
+            unauthored += 1
+        disposition_rows.append(
+            "| `{id}` | {name} | {cells} |".format(
+                id=identifier,
+                name=name,
+                cells=" | ".join(escape_cell(cell) if cell else "—" for cell in cells),
+            )
+        )
+
+    coverage = {
+        "characters": characters,
+        "full": fully_authored,
+        "none": unauthored,
+        "partial": characters - fully_authored - unauthored,
+    }
+    return rows, disposition_rows, entity_count, relationship_count, coverage
 
 
-def render(campaign: str, rows: list[str], entities: int, relationships: int) -> str:
+def render(
+    campaign: str,
+    rows: list[str],
+    disposition_rows: list[str],
+    entities: int,
+    relationships: int,
+    coverage: dict[str, int],
+) -> str:
     lines = [
         "# Chronicle Engine",
         "",
@@ -243,10 +316,38 @@ def render(campaign: str, rows: list[str], entities: int, relationships: int) ->
             "",
             "---",
             "",
+            "# Disposition",
+            "",
+            "What each Character wants, fears, hides, and sounds like: the lead of "
+            "each field, taken from the record (Data Model Section 7.7, Decision "
+            "091). **This is not the record** — load the entity block before the "
+            "NPC's first line, as *Play the Character, Not a Filtered You* requires. "
+            "It is the surface that makes the whole cast affordable to know at "
+            "once, against a per-NPC fetch that costs orders of magnitude more.",
+            "",
+            "A blank cell is a field the ledger does not author. Below the "
+            "campaign's declared `disposition_baseline` that is expected rather "
+            "than a defect — coverage is prospective (Decision 092) — but it is "
+            "still an NPC that can only answer, so the blanks are the backfill "
+            "worklist and are printed rather than hidden.",
+            "",
+            "| Entity | Name | Want | Fear | Secret | Voice |",
+            "|---|---|---|---|---|---|",
+        ]
+    )
+    lines.extend(disposition_rows)
+    lines.extend(
+        [
+            "",
+            "---",
+            "",
             "# Maintenance",
             "",
-            "- Generation schema: `1.0`.",
+            "- Generation schema: `1.1`.",
             f"- Entities: {entities}. Protagonist relationships: {relationships}.",
+            f"- Characters: {coverage['characters']}. Disposition authored in full: "
+            f"{coverage['full']}; partial: {coverage['partial']}; none: "
+            f"{coverage['none']}.",
             "- Run `tools/generate_campaign_cast.ps1` after any change to "
             f"`{NPC_LEDGER}`; the save operation plan runs it at every checkpoint.",
             "- Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte "
@@ -282,10 +383,12 @@ def generate(root: Path, requested: list[str] | None, check: bool) -> tuple[int,
             continue
         if not resolve_repo_path(root, f"{campaign}/{NPC_LEDGER}").is_file():
             continue
-        rows, entities, relationships = build_rows(
+        rows, disposition_rows, entities, relationships, coverage = build_rows(
             root, campaign, world, protagonist if isinstance(protagonist, str) else None
         )
-        expected = render(campaign, rows, entities, relationships)
+        expected = render(
+            campaign, rows, disposition_rows, entities, relationships, coverage
+        )
         output = resolve_repo_path(root, f"{campaign}/{CAST_FILE}")
         if check:
             actual = read_text(output) if output.is_file() else ""

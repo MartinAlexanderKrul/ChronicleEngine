@@ -268,7 +268,80 @@ surfaces:
     # warning still sits tight against the baseline, and the next resident
     # change still faces the same question. Do not read a moved ceiling as
     # permission to append.
-    baseline_tokens: 8306
+    #
+    # 2026-08-20 -- THE CARD SHRANK, for the first time in this file's history.
+    # 8,306 -> 7,681 recorded; measured 8,337 before the change, so the change's
+    # own share is -656 and 31 tokens of unrecorded drift are absorbed into it.
+    #
+    # This is Variant A of `docs/450_GAMEPLAY_REDEFINITION/450_GENERATIVE_LAYER_
+    # ANALYSIS.md`, on an owner ruling. Turn-State Settlement now splits by what
+    # reads the value: everything a later resolution reads stays resident, and
+    # the provenance and audit apparatus moved to the Runtime Profile's
+    # *Boundary Settlement*. Characterization Settlement moved whole. The trigger
+    # audit's progression paragraphs moved with it.
+    #
+    # It is a MEASUREMENT rather than a preference, and that matters because a
+    # relaxation would be the obvious reading. `tools/test_settlement_enforcement_
+    # locus.ps1` pins it: rewriting the cadence from *every resolved exchange* to
+    # *each Event boundary* changes ZERO of ten card-reading suites, and deleting
+    # the whole section changes four, every one a string-presence assertion on
+    # this card. Enforcement is at the Event (Decisions 085, 090) and at the
+    # checkpoint pair. The moved obligations were resident and unenforced there.
+    #
+    # THE DISPLACEMENT COST WAS ZERO SUITES, against four predicted. The analysis
+    # costed Variant A at four suites needing their assertions re-pointed, from
+    # the deletion measurement. All eight pinned literals turned out to live in
+    # the elapsed-time step -- commitments, supply, needs, deadlines, the exact
+    # anchor -- which is world-side settlement and stays resident on its own
+    # merits. Careful condensation paid none of the predicted cost, and the
+    # prediction is left in the analysis rather than edited to match.
+    #
+    # The realised saving is -656 against an estimate of ~1,111. The estimate was
+    # labelled an estimate and is not retconned; the shortfall is real and is why
+    # headroom below is 669 rather than the ~1,100 the analysis projected.
+    #
+    # What this buys, and it is spoken for: Decision P008's provisional-grant
+    # clause (+327 measured) and the Push obligation (+229 measured) come to 556,
+    # leaving 113 tokens. The surface is not reopened for appending -- it is
+    # closed again the moment those two land, and the closed-surface rule above
+    # applies to whatever comes after them exactly as before.
+    #
+    # 2026-08-20, same session: THE PUSH OBLIGATION LANDED, +138 rather than the
+    # +229 its standalone draft measured. It was placed inside *The World Does
+    # Not Wait to Be Asked* rather than appended as its own section, so it reuses
+    # that section's framing instead of restating it -- which is what the
+    # closed-surface rule asks for and is the second time in this file's history
+    # a rule cost less by being sited than by being added.
+    #
+    # 7,681 -> 7,819, and P008's 327 is still spoken for, leaving roughly 204
+    # tokens uncommitted. The Push's own checkable half (Version 0.6 milestone
+    # 0.6.2) is stored state and a validator leg, and costs this surface nothing.
+    #
+    # 2026-08-20, third recording this session: DECISION 093'S THIRD BRANCH
+    # landed, +338 against the 327 its standalone draft measured -- the eleven is
+    # the cost of siting it inside the two-branch box it extends rather than
+    # restating that box. 7,819 -> 8,157.
+    #
+    # THE SURFACE IS NOW CLOSED AGAIN, at 193 tokens under the 8,350 warning.
+    # This is the margin the file has always run at deliberately (22, 24, 9, 44
+    # in earlier recordings), and the closed-surface rule above applies to
+    # whatever comes next exactly as it did before Variant A freed the room:
+    # displacement, or a ruling. Variant A was a one-off recovery of space that
+    # bookkeeping had been holding, not a change in how this surface is governed.
+    #
+    # Everything Variant A freed is now spent, and the ledger of it is complete:
+    # -656 recovered, +138 push, +338 grant, leaving -180 net against the
+    # pre-Variant-A figure of 8,337. Two whole capabilities for a card that is
+    # 180 tokens SMALLER than it was this morning is the argument for the split
+    # having been correct, and it is the only such argument this file can make.
+    #
+    # +9 the same day for the barrier-surfacing fix: the scene-opening gate now
+    # names open provisional mechanics alongside profile ratifications. Decision
+    # 093 shipped without it -- the construct existed, the branch was resident,
+    # the validator fired, and NOTHING TOLD THE OWNER A RULING WAS DUE, so the
+    # mechanism degraded to "play until a save fails." Found by the player asking
+    # how they were supposed to rule on a grant, which is how F-012 was found too.
+    baseline_tokens: 8166
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true
@@ -610,10 +683,53 @@ surfaces:
       # the resident card is a contributor to it, so the ceiling ruling above
       # spent part of this campaign's remaining margin. F-019's ownership
       # question is still what actually moves it.
-      gatefall_pendragon_001: 35624
-      prototype_alpha: 10442
-      prototype_beta: 11087
-      reikon_awakening_001: 15795
+      #
+      # Re-recorded 2026-08-20 behind the resident card's -656. Every readiness
+      # surface includes the card, so all four move; three move by exactly -512
+      # and that difference is itself the check that nothing else drifted on them.
+      #
+      # Gatefall moves -933 net rather than -656, so roughly -277 is campaign
+      # movement already on disk and is recorded here rather than absorbed. It
+      # now stands at 36,557 with **3,443 tokens against the 40,000 hard
+      # failure**, up from 1,281 at the last recording. That is the first time
+      # this surface has gained margin from engine work rather than from a
+      # session trimming Current State by hand, and it does not change the
+      # standing finding: the card is a contributor to all four, F-019's
+      # ownership question is still what actually moves this number, and the
+      # cast roster's new Disposition section is deliberately NOT on this
+      # surface (`campaign_readiness_headings` selects `Cast` alone) precisely
+      # because 3,443 tokens is not room for it.
+      #
+      # Re-recorded again 2026-08-20 for the Push obligation's +138. All four
+      # move by the card's own figure and nothing else, which is what a clean
+      # engine change looks like on this surface -- contrast the -933/-512 split
+      # in the entry above, where Gatefall carried ~277 of campaign drift.
+      #
+      # Re-recorded 2026-08-20 for Decision 093's +338. All four move by +337 --
+      # the card's figure less a rounding boundary -- and nothing else, which is
+      # again what a clean engine change looks like here.
+      #
+      # Gatefall ends this session at 37,032 against its 40,000 hard failure:
+      # 2,968 tokens, against 1,281 before the day's work and 3,443 at its best
+      # point mid-session. It absorbed two whole capabilities and still sits
+      # better than it started, which is the whole practical case for Variant A.
+      #
+      # Re-recorded 2026-08-20 at the merge of the generative-layer work into
+      # main. **All of this one is play, none of it engine work**: the branch was
+      # cut at Checkpoint 0107 and main reached 0111 while it was open, so
+      # +491 is four checkpoints of campaign growth and the other three
+      # campaigns moved by exactly zero. Recorded separately from the engine
+      # figures above rather than folded into them, which is what this file asks
+      # for every time a mixed number appears.
+      #
+      # 37,532 against the 40,000 hard failure: 2,468 tokens. Ordinary play
+      # spends roughly 120 a checkpoint on this surface, so that is on the order
+      # of twenty more checkpoints before it binds. F-019's ownership question
+      # is still the thing that would actually move it.
+      gatefall_pendragon_001: 37532
+      prototype_alpha: 10415
+      prototype_beta: 11060
+      reikon_awakening_001: 15768
     include_resident: true
     derive_operation: continue
 

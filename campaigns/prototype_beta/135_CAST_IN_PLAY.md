@@ -33,9 +33,28 @@ A blank relationship cell means no relationship with the protagonist is recorded
 
 ---
 
+# Disposition
+
+What each Character wants, fears, hides, and sounds like: the lead of each field, taken from the record (Data Model Section 7.7, Decision 091). **This is not the record** — load the entity block before the NPC's first line, as *Play the Character, Not a Filtered You* requires. It is the surface that makes the whole cast affordable to know at once, against a per-NPC fetch that costs orders of magnitude more.
+
+A blank cell is a field the ledger does not author. Below the campaign's declared `disposition_baseline` that is expected rather than a defect — coverage is prospective (Decision 092) — but it is still an NPC that can only answer, so the blanks are the backfill worklist and are printed rather than hidden.
+
+| Entity | Name | Want | Fear | Secret | Voice |
+|---|---|---|---|---|---|
+| `ENT-000023` | Tollen Var | — | — | — | — |
+| `ENT-000024` | Sister Avel | — | — | — | — |
+| `ENT-000025` | Brant | — | — | — | — |
+| `ENT-000026` | Edrin Vale | — | — | — | — |
+| `ENT-000027` | Lysa Vale | — | — | — | — |
+| `ENT-000028` | Unidentified wrong-stair man | — | — | — | — |
+| `ENT-000029` | Caldus | — | — | — | — |
+
+---
+
 # Maintenance
 
-- Generation schema: `1.0`.
+- Generation schema: `1.1`.
 - Entities: 7. Protagonist relationships: 4.
+- Characters: 7. Disposition authored in full: 0; partial: 0; none: 7.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

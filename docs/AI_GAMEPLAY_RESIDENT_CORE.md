@@ -22,7 +22,7 @@ The resident layer governs:
 - loading a recorded NPC before playing it, and what that NPC may know;
 - uncertain-action resolution, actor-relative modifiers, world-side standing and obligation, and answering in the scene that asks rather than deferring;
 - profile-declared proactive triggers;
-- per-exchange state and characterization settlement; and
+- per-exchange settlement of every field a later resolution reads; and
 - automatic context preservation.
 
 World mechanics remain in the active World Rule Profile and engine law remains in `engine/010_ENGINE_RULES.md`. Load their bounded governing sections before applying a mechanic.
@@ -80,7 +80,15 @@ The rule above covers *who* and *what*. This one covers *whether anything happen
         -> author it from established parameters and move
 ```
 
+**And there is a third branch, because the player's best moves are both.** A **proposed capability** — a method the player invents that the profile does not author, a forged seal, a soul bound to an object, a use nobody wrote down — has fictional consequences *and* will eventually need a number. Rules Section 4.0 already forbids rejecting it for being unanticipated, and 4.2 makes automatic failure rare. So **grant it in the fiction now, priced**: name the thing, state what it costs and risks, and let the scene run. Never a flat refusal because the profile is silent, and never a mid-scene deferral to the owner.
+
+**Record it the same turn as a provisional mechanic** (Data Model Section 7.10) — what was granted, the price narrated, the profile section that owes a ruling, and the barrier it is owed by. An unrecorded grant is a rule invented silently, which is what the stop exists to prevent: the record is what makes yes safe, and a grant you cannot record is not grantable.
+
+**A grant concedes capability and consequence, never magnitude.** Until it is ruled on, resolutions run at the acting subject's established band with existing modifiers and no new ones, and it creates no threshold, multiplier, cost, cap, or rung. **Needing a new number to narrate the grant means you have left this branch** and are back at the stop above.
+
 The tell is simple: **if the answer would become a number a later resolution reads, it needs authority. If it would become a fact the fiction rests on, it needs a sentence.** Inventing the first quietly is what the design-flag record calls its worst class of defect. Refusing the second is what makes a world feel switched off.
+
+**The turn owes a push.** Settlement asks what changed; this asks what *arrived*. Before yielding, name one thing the world did that the player did not cause and that reaches him — a person, a message, a deadline moving, a break landing on his route rather than off-screen. A push does not interrupt the declared action and does not choose for the protagonist; it is what the scene contains when he looks up. **A tick nothing reached is indistinguishable from a world that is switched off**, so a clock that ran does not discharge this and never did.
 
 **Where a profile authors a world clock, run it.** Gatefall Section 9.1's daily tick rolls Gates, Ranks, rarity, breaks, postings and agenda initiations at each day boundary, independently of the player, with binding results — and its `world_clock.last_ticked` is canonical state, so a world that has not advanced is a readiness finding rather than a thing nobody notices. **A world that only moves when pushed is indistinguishable from one that is not running**, and it will pass every validator ever written while doing it.
 
@@ -265,44 +273,26 @@ Dispatch only domains whose declared `candidate_deltas` intersect the settled ch
 
 Never invent a precondition so a trigger can fire. Automatic detection does not choose for the protagonist: if the reaction presents a choice, stop there.
 
-For a progression domain, obey its declared boundary. Retain only bounded evidence notes during qualifying work or danger. At scene close, perform only the declared close audit; at the promotion barrier, reconcile the declared batch before write and validation. Existing skill-use and mastery counters still settle per exchange.
+For a progression domain, obey its declared boundary; the audits themselves are the Runtime Profile's *Boundary Settlement*. Skill-use and mastery counters still settle per exchange, and **a counter that moves no rendered value is still written** — at a track's ceiling crediting shows nothing, so the delta gets skipped, which holds the subject at the ceiling and keeps the reaction suppressed.
 
-**A progression domain is not the world's power system, and the two questions are independent.** Whether a demonstrated method is a *System* skill and whether it opens a profile-declared *formation candidate* are orthogonal; answering the first never answers the second. Writing "not a System skill, not mechanically tracked" as though the first clause established the second is a non-sequitur, and it is an easy one because the formation rule usually lives inside the profile's skills section. Ask the candidate question on its own terms, against the profile's own evidence criteria, for any repeatable method demonstrated under genuine feedback — including one that will never appear in a status panel.
-
-**A mandatory threshold is re-checked from stored state at every declared boundary**, not from what this span changed — the delta that would have dispatched it may be the one that went unwritten. That makes a missed reaction recoverable rather than lost.
-
-**A counter that moves no rendered value is still written.** At a track's ceiling crediting shows nothing, so the delta gets skipped, which holds the subject at the ceiling and keeps the reaction suppressed.
-
-**The barrier writes its settlement, or the deferral was a discard.** Where a profile defers non-combat classification to the promotion barrier, the barrier must actually produce the settlement Event the profile names, carrying its audit result including an explicit `none`. A sealed note with no Event to land in is indistinguishable from a note never taken, and a qualifying practice scene becomes indistinguishable from a non-qualifying one. Deferral is a promise to classify later, not permission to classify never.
-
-Before yielding a scene opening, surface unresolved profile ratifications together. Settle an authored automatic result; otherwise stop for the owner ruling. Do not advance fiction while this gate is open.
+Before yielding a scene opening, surface unresolved profile ratifications and every open provisional mechanic together. Settle an authored automatic result; otherwise stop for the owner ruling. Do not advance fiction while this gate is open.
 
 ---
 
 # Turn-State Settlement
 
-After every resolved exchange and before yielding, settle every changed field. This is not deferred to `/system`, `/save`, session close, or later correction.
+**Settlement splits by what reads the value, never by what is convenient.** After every resolved exchange and before yielding, settle every field a later resolution reads. That is not deferred to `/system`, `/save`, session close, or later correction.
 
 1. Apply immediate resource costs, harm, conditions, and item use.
 2. Account for elapsed fictional time. For deterministic time rules, read the exact last-settled campaign-time anchor, establish the exact endpoint, apply recovery or other time effects with every declared fractional remainder, then advance the anchor. Equivalent fictional spans must settle identically across response partitions. Never invent an unauthored recovery rate. Settle every pending world-side commitment the span reached, from its owner's own knowledge; advance every established need and opportunity source through the span, settling who met or took each; and settle every authored deadline the span crossed, from the rule that authors it. Record a lapse with its reason, an unmet need, or an empty result as readily as a positive one. **A deadline has no actor and no delta announces it** — the span crossing it is the whole trigger, so nothing dispatches it and a domain keyed to what changed will never see it. The world acts whether or not the player asked: an open commitment is never discharged by offering the player an action instead, and an inquiry reads settled supply rather than generating it.
-3. Record qualitative training or demonstrated capability at the level actually established.
-4. Advance counters for every world-declared skill, ability, passive, or tracked technique that materially applied. Reconcile activation counts against the exchange's resource trace. Ordinary combat and first use count. **Credit a subject already at its track's ceiling on the same terms as any other** — its lifetime counts still move even though its rendered progress cannot.
-5. Attach required `counter_deltas` to the canon-bearing Event and reconcile each owning entity's `current_value` from its baseline. Under declared skill-credit coverage, a covered Event carries either a skill delta for the acting subject or the profile's **explicit negative assertion** — an empty `counter_deltas` on a resolved dangerous scene asserts nothing. Classify an Event by what it resolved; coverage reads that classification, and one wrong kind disables every gate keyed to it.
-6. Apply completed-challenge rewards and every immediate level reward now. Defer only rewards the active profile explicitly marks deferrable.
-7. Run only trigger and progression audits whose declared boundary occurred, recording required `none` results as well as positive results.
-7b. Where a profile declares participation coverage, record a result for every Character the Event names: `record-updated` naming the object you actually moved, or an explicit `no-change`. Write it from what the promotion did, not from what the scene felt like — a `record-updated` claim is checked against the named object and fails the barrier when that object does not cite the Event.
-8. Update in-flight session state. The next response and `/system` read settled state, not checkpoint-opening values.
-9. Record characterization changes described below, then narrate fictional outcomes and declared compact notifications.
+3. Credit every world-declared skill, ability, passive, or tracked technique that materially applied, against the exchange's resource trace; ordinary combat and first use count. **Credit a subject already at its track's ceiling on the same terms as any other.** Then apply completed-challenge rewards and every immediate level reward, deferring only what the active profile marks deferrable. A crossed threshold changes a value the next roll reads, which is why crediting is here and not at the boundary.
+4. Update in-flight session state, then narrate. The next response and `/system` read settled state, not checkpoint-opening values.
+
+**The provenance and audit apparatus settles at the boundary it is due at**, and the Runtime Profile's *Boundary Settlement* owns the procedure: qualitative training, the declared trigger and progression audits with their required `none` results, and characterization at scene close; `counter_deltas` attachment and baseline reconciliation, participation coverage, and the progression batch at the promotion barrier. This is where the engine's gates already read them — a measurement, recorded in `450_GENERATIVE_LAYER_ANALYSIS.md` and pinned by `tools/test_settlement_enforcement_locus.ps1`, not a relaxation.
+
+**The barrier writes its settlement, or the deferral was a discard.** A sealed note with no Event to land in is indistinguishable from a note never taken. Deferral is a promise to classify later, not permission to classify never.
 
 Checkpointing promotes already-settled state. A written ledger is not necessarily settled: verify every changed field, especially skill counters that can remain well-formed but stale. If the player must ask whether a known deterministic change occurred, correct settlement before play continues.
-
----
-
-# Characterization Settlement
-
-When an exchange establishes observable character behavior—a verbal pattern, form of address, gesture, physical tell, volunteered limit, apology, fear, refusal, initiation of contact, or break from an established pattern—record it immediately as a pending promotion target under Decision 076. Record observable behavior, not an invented interior state.
-
-Character firsts are named triggers. Notice and settle the first laugh or joke, first visible disarming, first initiated or refused contact, first unasked personal disclosure, and first action against an established pattern. Store directed texture on the relationship and general behavior on the character record.
 
 ---
 

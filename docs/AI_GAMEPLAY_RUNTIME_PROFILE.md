@@ -609,6 +609,36 @@ A Chat Debug Export is diagnostic and non-canonical. It has no opening/closing c
 
 ---
 
+# Boundary Settlement
+
+The Resident Core's *Turn-State Settlement* splits by what reads the value. Everything a later resolution reads settles in the exchange that changed it and stays resident. This is the other half: the provenance and audit apparatus, fetched at the boundary where it is due.
+
+**Why the split is here rather than on the card**, recorded so it is not read as a relaxation. `docs/450_GAMEPLAY_REDEFINITION/450_GENERATIVE_LAYER_ANALYSIS.md` measured the enforcement locus and `tools/test_settlement_enforcement_locus.ps1` pins it: rewriting the resident cadence from *every resolved exchange* to *each Event boundary* changes **zero** of ten card-reading suites, and deleting the entire section changes four, all of them string-presence assertions. The engine's real enforcement is at the Event — Decision 090's skill-credit coverage and Decision 085's participation audit both key on one — and at the checkpoint pair, in `tools/test_checkpoint_contract.ps1`'s stale-counter check. The obligations below were resident and unenforced there. They are now fetched and enforced where they were always enforced.
+
+**What did not move.** Resource costs, harm, conditions and item use; elapsed-time settlement with its commitments, supply, needs and deadlines; skill and technique credit, including at a track's ceiling; completed-challenge and immediate level rewards; and in-flight session state. All of those change values the next resolution reads, and all of them stay on the card.
+
+## At the scene boundary
+
+1. **Record qualitative training or demonstrated capability** at the level actually established.
+2. **Run the trigger and progression audits whose declared boundary occurred**, recording required `none` results as well as positive ones. For a progression domain, obey its declared boundary: retain only bounded evidence notes during qualifying work or danger, and at scene close perform only the declared close audit.
+3. **Settle characterization.** When an exchange established observable character behavior — a verbal pattern, form of address, gesture, physical tell, volunteered limit, apology, fear, refusal, initiation of contact, or break from an established pattern — record it as a pending promotion target under Decision 076. Record observable behavior, not an invented interior state. Character firsts are named triggers: the first laugh or joke, first visible disarming, first initiated or refused contact, first unasked personal disclosure, and first action against an established pattern. Store directed texture on the relationship and general behavior on the character record.
+
+A boundary that resolved nothing records that, rather than recording nothing.
+
+## At the promotion barrier
+
+1. **Attach required `counter_deltas` to the canon-bearing Event** and reconcile each owning entity's `current_value` from its baseline. Under declared skill-credit coverage a covered Event carries either a skill delta for the acting subject or the profile's **explicit negative assertion** — an empty `counter_deltas` on a resolved dangerous scene asserts nothing (`F-012`). Classify an Event by what it resolved; coverage reads that classification, and one wrong kind disables every gate keyed to it.
+2. **Where a profile declares participation coverage**, record a result for every Character the Event names: `record-updated` naming the object you actually moved, or an explicit `no-change`. Write it from what the promotion did, not from what the scene felt like — a `record-updated` claim is checked against the named object and fails the barrier when that object does not cite the Event.
+3. **Reconcile the declared progression batch** before write and validation.
+
+**A mandatory threshold is re-checked from stored state at every declared boundary**, not from what this span changed — the delta that would have dispatched it may be the one that went unwritten. That makes a missed reaction recoverable rather than lost.
+
+**The barrier writes its settlement, or the deferral was a discard.** Where a profile defers non-combat classification to the promotion barrier, the barrier must produce the settlement Event the profile names, carrying its audit result including an explicit `none`. A sealed note with no Event to land in is indistinguishable from a note never taken, and a qualifying practice scene becomes indistinguishable from a non-qualifying one. Deferral is a promise to classify later, not permission to classify never.
+
+**A progression domain is not the world's power system, and the two questions are independent.** Whether a demonstrated method is a *System* skill and whether it opens a profile-declared *formation candidate* are orthogonal; answering the first never answers the second. Writing "not a System skill, not mechanically tracked" as though the first clause established the second is a non-sequitur, and it is an easy one because the formation rule usually lives inside the profile's skills section. Ask the candidate question on its own terms, against the profile's own evidence criteria, for any repeatable method demonstrated under genuine feedback — including one that will never appear in a status panel.
+
+---
+
 # Canon Reconciliation at Promotion
 
 Promotion is not all-or-nothing, and **not established is not the same as contradiction.** At each promotion barrier, classify every not-yet-canon fact and handle it accordingly:
@@ -670,6 +700,8 @@ On a checkpoint request, session close, or Context-Preservation Barrier, in this
    When an active profile defers progression classification to promotion, execute that bounded batch here. For Gatefall Sections 7.1 and 7.4, first re-count every known combat skill activation and material passive application in the unpromoted span from resolved actions and the Mana/resource trace, reconciling uses, qualifying scenes, mastery progress, and Event `counter_deltas`. Then classify all sealed consequential-work and structured-practice note sets since the prior successful barrier into one `progression-batch-settlement` Event, preserving each original stable scene key; finally reconcile every dangerous-scene formation settlement since that barrier against its retained compact notes, its `progression_audits` entry (including `none`), and resulting candidate state. Repair a missed use, duplicate count, missing or mismatched formation audit, or stale candidate threshold before target derivation. This double-check is limited to the current unpromoted span and never scans older chronicles or immutable checkpoints.
 
    When that classification reaches a ratification threshold, automatically include any fully pre-authored grant in the same settlement. Persist every unauthored result as `pending-ratification` and include it in the consolidated adjudication queue. The queue does not make the checkpoint fail and does not prevent session close; it becomes a mandatory readiness and next-scene gate.
+
+   **Every `open` provisional mechanic (Data Model Section 7.10, Decision 093) joins that same queue here**, with its `subject`, what was `granted`, the `price` already narrated, and the profile section it `owes` — so the owner rules `ratified`, `replaced`, `bounded` or `revoked` against the fiction that produced it rather than against a bare identifier. A grant whose `due_checkpoint` this barrier reaches is surfaced whether or not the classification above produced anything, because a grant is not a progression result and nothing else would dispatch it. **Surfacing is the barrier's job and the validator is the backstop, not the notice**: `validate_repository.ps1` fails a campaign still holding an open grant past its due barrier, which is one checkpoint *after* the owner should have been asked, so a barrier that does not surface turns a ruling into a validation failure.
 2. **Ensure capability.** If write capability is Unestablished, run a capability check (the canary) now.
 3. **Derive the complete live target set, then attempt the canonical update.** A checkpoint is not a single-ledger write. The target set is **derived from the session's events, never judged from memory of what the session felt like it touched.** For every event promoted this session, take every identifier that event references — its subjects, the objects it moved, harmed, consumed, created, or relocated — and add **the owning ledger of each** to the target set. Then add the ledgers that always carry a played session: Current State, chronicle, changelog, and `system/ID_REGISTRY.md` for new identifiers. Objectives, relationships, inventory, knowledge, and world promotion enter the set by the same derivation, not by recollection.
 

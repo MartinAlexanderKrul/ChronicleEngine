@@ -184,13 +184,26 @@ try {
     # Checkpoint 0070's repair audit exposed values that were duplicated in a
     # prose rendering and structured state without any gate comparing them.
     # These mutations prove the production validator rejects that class now.
+    # The render label is NOT part of the property under test. `validate_repository.ps1`
+    # matches the rendered count as `(?:Successful uses|Uses)` -- both spellings
+    # are authorised and both are live in the same sheet, six skills using one
+    # and fourteen the other. This mutation cares only that a rendered value
+    # disagreeing with its authoritative counter is rejected.
+    #
+    # Pinning the label broke exactly as pinning any incidental literal does:
+    # Keen Sense renders `**Successful uses`, the pattern demanded `**Uses`, and
+    # the precondition failed with "found 0" long after the fact. The sibling
+    # Twin Fang pattern below carried the mirror-image of the same latent bug.
+    # Reuse the validator's own alternation so the test tracks the contract
+    # rather than one skill's current wording.
+    $renderLabel = '\*\*(?:Successful uses|Uses) '
     $keenUses = Get-CounterLine $character 'skills.keen_sense.successful_uses'
-    $keenPattern = '("Keen Sense \[[EDCBAS]-Rank\][^\r\n]*?\*\*Uses )' + $keenUses.Current + '(\s+)'
+    $keenPattern = '("Keen Sense \[[EDCBAS]-Rank\][^\r\n]*?' + $renderLabel + ')' + $keenUses.Current + '(\s+)'
     Replace-RegexOnce $character $keenPattern ('${1}' + ($keenUses.Current + 1) + '${2}')
     $renderDrift = Invoke-Validation $tempRoot
     Assert-True ($renderDrift.ExitCode -ne 0 -and $renderDrift.Output -like "*Keen Sense*renders successful_uses $($keenUses.Current + 1)*tracked current_value is $($keenUses.Current)*") `
         "A skills_known rendering that disagrees with its authoritative counter was accepted:`n$($renderDrift.Output)"
-    $wrongKeenPattern = '("Keen Sense \[[EDCBAS]-Rank\][^\r\n]*?\*\*Uses )' + ($keenUses.Current + 1) + '(\s+)'
+    $wrongKeenPattern = '("Keen Sense \[[EDCBAS]-Rank\][^\r\n]*?' + $renderLabel + ')' + ($keenUses.Current + 1) + '(\s+)'
     Replace-RegexOnce $character $wrongKeenPattern ('${1}' + $keenUses.Current + '${2}')
 
     # Whichever authorized mode the Bearer currently stands in, `light` is not one
@@ -494,7 +507,7 @@ description: "Fixture exchange."'
         "An Event counter delta without the stored update was not rejected:`n$($unappliedDelta.Output)"
 
     Replace-Once $character $twinFang.Line (New-CounterLine $twinFang ($twinFang.Current + 1))
-    $twinRenderPattern = '("Twin Fang \[[EDCBAS]-Rank\][^\r\n]*?\*\*Successful uses )' + $twinFang.Current + '(\s+)'
+    $twinRenderPattern = '("Twin Fang \[[EDCBAS]-Rank\][^\r\n]*?' + $renderLabel + ')' + $twinFang.Current + '(\s+)'
     Replace-RegexOnce $character $twinRenderPattern ('${1}' + ($twinFang.Current + 1) + '${2}')
     $reconciled = Invoke-Validation $tempRoot
     Assert-True ($reconciled.ExitCode -eq 0) "A reconciled Event delta and stored counter did not validate:`n$($reconciled.Output)"

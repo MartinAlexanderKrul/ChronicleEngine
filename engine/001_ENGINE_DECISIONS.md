@@ -4524,9 +4524,80 @@ Decision 091 authored the character model and left it unreachable in two indepen
 
 ---
 
+## Decision 093 — A Proposed Capability Is Granted, Priced, and Owed
+
+**Status:** Accepted — 2026-08-20. Owned by Version 0.4, milestone 0.4.5. Foundational under Decision 069; admitted after the Version 0.4 Architecture Freeze under Decision 086, whose four conditions are addressed below — including the one that is arguable.
+**Date:** 2026-08-20
+**Related Sections:** `010_ENGINE_RULES.md` Sections 4.0, 4.2; `011_ENGINE_DATA_MODEL.md` Sections 7.3, 7.4, 7.10; `docs/AI_GAMEPLAY_RESIDENT_CORE.md`; `AGENTS.md` §2; Decisions 069, 082, 084, 086, 090, 092; `docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md`; `docs/450_GAMEPLAY_REDEFINITION/450_GENERATIVE_LAYER_ANALYSIS.md`, `451_PROVISIONAL_GRANT.md`
+
+### Context
+
+**The engine's law already says yes and no layer that runs carries it.** Rules Section 4.0: *"The engine must never reject a creative solution solely because it differs from an anticipated approach"*, and a failed roll *"should rarely invalidate the player's intent completely"* — with seven named alternative outcomes. Section 4.2: *"Automatic failure should be rare. Whenever possible, impossible actions should instead become alternative outcomes."* That is the "Yes, but…" table, in engine law, at line 1284 of a 121,549-byte fetched file. **The Resident Core cited Section 4 exactly once**, in the negative direction only. The law said yes-but, the per-turn layer said stop, and only one of them runs.
+
+**The line the Runtime does hold has two branches and the player's best moves fall between them.** A *mechanical value* is not the Runtime's to invent; a *fact about the world* is the Runtime's to author now. `F-034` drew that line correctly. What it does not cover is a **proposed capability** — a method the player invents that the profile does not author. It is both: it has fictional consequences, and it will eventually need a number. The whole class therefore routed to `stop`, because `AGENTS.md` §2 offers no third exit.
+
+**The founding case study named this and it was never built.** `401_MICTIAN_CAMPAIGN.md` lists *Creative Problem Solving* under **What Worked** with three declared Engine Impacts. `"Intent before method"` is built as Decision 009 and Rules Section 4.0. `"Open action resolution"` occurs **once in the repository — in the case study naming it**. `"Yes, but"` occurs nowhere else at all. `450_GENERATIVE_LAYER_ANALYSIS.md` generalises the finding: every architectural response the engine built came from that document's *What Failed* column, which is why `F-028` could observe that *"every remedy for four months had been a prohibition"* and be describing the architecture's founding shape rather than a four-month drift.
+
+**And rule drift is why the remedy must be a record rather than a licence.** Rule drift was the reference campaign's real failure — magic changing behaviour without explanation, soul vessels becoming inconsistent, rituals gaining and losing limitations. The rules-fidelity contract is the correct answer to it and is not weakened here. What it lacked was a way to say yes *now* and settle the number *later* without the number being invented in the scene, so the safe answer and the correct answer had diverged and a Runtime facing the choice took the safe one every time.
+
+### Decision
+
+**1. There are three branches, not two.** A *mechanical value* stops for a ruling. A *fact about the world* is authored now. A **proposed capability** is granted in the fiction, priced, and recorded as owing a ruling.
+
+**2. Granting is naming, pricing, and continuing.** Name the thing the player invented, state what it costs and risks, let the scene run. Never a flat refusal on the grounds that the profile is silent, and never a mid-scene deferral to the owner.
+
+**3. A grant is recorded in the turn it is made**, as a **provisional mechanic** (Data Model Section 7.10). An unrecorded grant is a rule invented silently, which is what the stop exists to prevent. A grant that cannot be recorded is not grantable, on the same shape as Section 7.4's rule that an undertaking with no reachable `Due` is not sayable.
+
+**4. A grant never concedes a number a later resolution reads.** It concedes capability and consequence. Until ruled, resolutions run at the acting subject's established band with existing modifiers and no new ones, and it may not create a threshold, multiplier, cost, cap, or rung. **A Runtime that needs a new number to narrate the grant has left this branch and is back at the stop.** This is what keeps Section 4.0 from becoming rule drift.
+
+**5. Ratification is at the promotion barrier, by the owner, never in the scene**, into `ratified`, `replaced`, `bounded`, or `revoked`. A revocation costs something in-fiction: a grant the player acted on cannot be un-happened for free, and a free revocation is a refusal delivered late.
+
+**6. An `open` provisional mechanic past its `Due` barrier is a validation finding.** This is the leg that makes the decision foundational and the leg that makes it trustworthy. `F-012`'s mandatory offers went unsurfaced for a whole campaign, and `F-034` recorded that an obligation living in prose decays inside three sessions; a yes-path with no gate would be the same construct a third time.
+
+### Decision 086 conditions
+
+- **(a) Played evidence — met, and this is the arguable leg, recorded as such rather than asserted clean.** The finding arises from the owner's play across sessions, a 490,697-byte export of the reference campaign supplied as evidence, and the case-study trace above. It is not a validation execution surfacing a defect; it is the owner's judgment about what play does and does not produce. That is the same route `F-028` and `F-034` took and it is how a prototype campaign is supposed to report, but a reader who wants to contest one condition should contest this one. **If the owner later rules (a) unmet, the decision belongs to Version 0.6 milestone 0.6.1**, where it was sited earlier the same day, and nothing in its text changes.
+- **(b) Classified — met.** Foundational under Decision 069: it adds Data Model Section 7.10 and introduces an engine-general construct a Runtime must satisfy. Recorded as it stands and not reinterpreted to fit.
+- **(c) Versioned and migrated — met, and no advance is owed.** A provisional mechanic is tracked state under Section 7.3. No record structure changes, a record valid before is valid after, and the Data Model version does not move. This is the Decision 084 precedent applied as Decision 092 applied it, and it is stated here rather than left to be inferred from the absence of a migration file.
+- **(d) Revalidated — met.** `tools/test_provisional_grant_contract.ps1` and a leg in `tools/validate_repository.ps1`, with the repository's gates green apart from an inherited failure recorded in the changelog.
+
+### Consequences
+
+- **The engine gains a yes**, for the class of move that previously always stopped, and it reaches play in Version 0.4 rather than two versions out.
+- **Rule drift is bounded by a ledger rather than by refusal**, which is strictly more traceable than the current alternative — a player arguing a Runtime out of a refusal, with the outcome living in prose.
+- **Version 0.4 carries a third post-freeze foundational admission**, and this enlarges `441_CAPABILITY_MATRIX.md`, which is the document currently blocking the version's postmortem. That cost is real, was stated before the ruling, and is accepted rather than minimised.
+- **A new backlog exists and can be ignored.** Open grants accumulate against an owner who does not rule on them. The due-barrier gate is the answer and is not optional.
+- **It inherits `F-029`'s staleness risk.** A provisional mechanic is state that can outlive its fiction.
+- **The resident cost is named, which Decision 091 is on record as not having done.** The clause measures 327 tokens. It is paid for by the Variant A settlement condensation that landed the same day (`450_GENERATIVE_LAYER_ANALYSIS.md`), which freed 656; the card stands at 7,819 before this clause against an 8,350 warning.
+
+### Alternatives Considered
+
+- **Keep the stop and reword it warmly.** Rejected. The defect is that there is no exit, not that the exit is curt.
+- **Let the Runtime author mechanics freely when the profile is silent.** Rejected outright. That is rule drift, the reference campaign's actual recorded failure, and the class `F-014` and `F-030` call the worst defect in the flag record.
+- **A resident maxim with no construct.** Rejected on measured evidence rather than taste: `tools/test_settlement_enforcement_locus.ps1` established that deleting an entire 887-token resident procedure changes no behavioural verdict anywhere in the repository. A maxim is what has already been tried.
+- **Ask the owner in-scene and continue once ruled.** Rejected. That is the stop wearing a question mark, and it taxes precisely the play the engine wants to encourage.
+- **Grant magnitude too and reconcile later.** Rejected. It collapses the third branch into the first. Capability is recoverable at a barrier; a magnitude the player has already built on is not.
+- **Land the resident clause alone as a refinement, deferring the construct to 0.6.** Considered seriously and rejected by owner ruling. It would have been live a day earlier with no governance cost, and it is the exact shape this analysis spent its argument on — a grant with nowhere defined to be recorded is prose, and prose obligations decay leaving no trace.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:
+
+## Decision P008 — A Proposed Capability Is Granted, Priced, and Owed
+
+**Status:** Superseded
+
+Accepted as **Decision 093** on 2026-08-20 and admitted to Version 0.4, milestone 0.4.5, under Decision 086. The summary below is left as it stood when the proposal was raised. Its long-form argument — the alternatives, the construct, and the three candidate version homes with the case for and against each — remains at `docs/450_GAMEPLAY_REDEFINITION/451_PROVISIONAL_GRANT.md`.
+
+Rules Sections 4.0 and 4.2 already require that a creative solution never be rejected for being unanticipated, and that an impossible action become an alternative outcome rather than a refusal. No layer that runs every turn carries either: the Resident Core cites Section 4 once, in the negative direction only. The line the Runtime does hold has two branches — a *mechanical value* to stop for, a *fact about the world* to author — and a player-proposed capability is both, so the whole class routes to `stop`. There is no yes-path in the engine.
+
+The draft proposes a third branch: grant the capability in the fiction, priced, and record it as a **provisional mechanic** (tracked state, on the Decision 082 precedent) owing a ruling at the next promotion barrier. The load-bearing constraint is that a grant concedes capability and consequence but **never a number a later resolution reads** — magnitude stays at the actor's established band until the owner ratifies — so the mechanical-value stop survives intact and rule drift stays bounded by a ledger rather than by refusal.
+
+**Foundational** under Decision 069. Sited to Version 0.6 milestone 0.6.1 on an owner ruling earlier the same day, then pulled forward to Version 0.4 milestone 0.4.5 on a second ruling once the consequence of the first was concrete: 0.6 sits behind 0.5 — Persistence, so the complaint the owner led with would have been the last of the three to reach play. See Decision 093. `docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md` named this under *What Worked* as *"open action resolution"* and the *"Yes, but…"* philosophy; neither phrase occurs anywhere else in the repository.
+
+---
 
 # Superseded Proposed Decisions
 

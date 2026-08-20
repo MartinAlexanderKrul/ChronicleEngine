@@ -427,23 +427,37 @@ try {
     #
     # P-02's duplicate must name a DIFFERENT entity than the live one, or it adds
     # no second location at all. It is derived below for the same reason.
+    # `location` is HETEROGENEOUS BY DESIGN and this read must accept both forms.
+    # Canon records either a bare entity reference or prose naming a place the
+    # world has not made an entity -- `tools/generate_campaign_cast.py` states
+    # that explicitly and renders both. This assertion accepted only the bare
+    # reference, and it failed the day play put the protagonist on "the street
+    # outside Priscilla Nakamura's workshop", which is a perfectly legal value.
+    #
+    # That is the third time this pair has been narrowed by an incidental
+    # property rather than the one under test: it first carried the literal
+    # ENT-000087 (F-018), was widened to any bare ENT- reference, and is widened
+    # again here. What P-01 and P-02 assert is that a Character declares EXACTLY
+    # ONE location. The value's shape has never been the point.
     $liveSheet = Get-Text (Join-Path $root "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md")
-    $liveLocation = [regex]::Match($liveSheet, '(?m)^  location: (?<id>ENT-\d{6})[ \t]*$')
-    Assert-True $liveLocation.Success "The protagonist's canonical_state.location could not be read; P-01/P-02 have nothing to mutate."
-    $duplicateLocation = if ($liveLocation.Groups['id'].Value -eq 'ENT-000086') { 'ENT-000087' } else { 'ENT-000086' }
+    $liveLocation = [regex]::Match($liveSheet, '(?m)^  location: (?<value>.+?)[ \t]*$')
+    Assert-True $liveLocation.Success "The protagonist declares no canonical_state.location at all; P-01/P-02 have nothing to mutate."
+    # The duplicate must differ from the live value or it adds no second location.
+    # A bare reference is the cheapest thing to add that the validator will parse.
+    $duplicateLocation = if ($liveLocation.Groups['value'].Value -eq 'ENT-000086') { 'ENT-000087' } else { 'ENT-000086' }
 
     $presenceCases = @(
         @{
             Id = "P-01"
             Path = "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md"
-            Pattern = '(?m)^  location: ENT-\d{6}\r?\n'
+            Pattern = '(?m)^  location: .+\r?\n'
             Replacement = ""
             Expected = "active Character ENT-000125 must declare exactly one canonical_state.location"
         },
         @{
             Id = "P-02"
             Path = "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md"
-            Pattern = '(?m)^(  location: ENT-\d{6}\r?\n)'
+            Pattern = '(?m)^(  location: .+\r?\n)'
             Replacement = "`$1  location: $duplicateLocation`r`n"
             Expected = "object ENT-000125 declares more than one location"
         },

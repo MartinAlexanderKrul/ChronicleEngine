@@ -667,6 +667,7 @@ Both remain **Accepted**. They are not reopened, reversed, or renumbered: accept
 | Decision 090 | Skill Credit Is Asserted, Not Inferred; and Rank Must Land Somewhere on Every Skill | Refinement — reuses the existing `progression_audits` block for its existing meaning; adds no Data Model block, no Rules section, and no schema version bump. Owned by milestone 0.4.3 |
 | Decision 091 | An NPC Is a Character, Not a Filtered Narrator | **Foundational** — adds Data Model Sections 7.7 (Disposition, canonical state), 7.8 (Belief, tracked state) and 7.9 (Agenda, tracked state); extends Runtime Section 2.4's elapsed-time settlement series; owned by milestone 0.4.4 |
 | Decision 092 | Personhood Is Not Opt-In, and the Character Model Names Its Writer | **Foundational** — changes `011` Sections 7.7 and 7.9, and makes disposition an obligation every campaign must satisfy rather than one a world opts into. No schema advance and no migration: no record structure changes and a record valid before is valid after, on the Decision 084 precedent. Owned by milestone 0.4.4 |
+| Decision 093 | A Proposed Capability Is Granted, Priced, and Owed | **Foundational** — adds `011` Section 7.10 (Provisional Mechanic, tracked state) and an obligation a Runtime must satisfy. No schema advance and no migration, on the same Decision 084 precedent Decision 092 used. Admitted post-freeze under Decision 086, whose condition (a) the decision itself records as the arguable one. Owned by milestone 0.4.5 |
 
 Both accepted 2026-08-02, together, as the Version 0.4 Architecture Freeze (Decisions 048, 086). Neither advances the Data Model version and neither requires a migration: both are tracked state minting no identifier, held in records that already exist, on Decision 082's precedent. They are foundational under Decision 069 because they change `011`, and they were accepted at ADR Approval rather than admitted as freeze exceptions — which is the ordinary path the lifecycle describes and the one Version 0.3 departed from ten times.
 
@@ -962,6 +963,28 @@ Completion criteria:
 
 ---
 
+### 0.4.5 The Engine Has a Yes
+
+**Status: Sited 2026-08-20**, owning **Decision 093**, admitted post-freeze under Decision 086. This is Version 0.4's **third** such admission, and the cost is stated first rather than last: it enlarges `docs/440_ECONOMY_VALIDATION/441_CAPABILITY_MATRIX.md`, which is the document currently blocking this version's Engine Postmortem, and row V04-14 — *complete with no foundational change beyond Decisions 088 and 089* — was already recorded as failed. That was on the table before the ruling and was taken deliberately.
+
+**Capability:** a player who proposes a method the active profile does not author gets it **granted in the fiction, priced, and recorded as owing a ruling**, instead of a stop. Rules Sections 4.0 and 4.2 have required this since the Foundation — *never reject a creative solution solely because it differs from an anticipated approach*; *impossible actions should instead become alternative outcomes* — and no layer that runs every turn has ever carried either. The Resident Core cited Section 4 once, in the negative direction.
+
+**Why it is here rather than in Version 0.6.** It was sited to milestone 0.6.1 earlier the same day and pulled forward on a second owner ruling once the consequence was concrete: Version 0.6 sits behind 0.5 — Persistence, so the complaint the owner led with would have been the last of the three to reach play, and the two cheaper fixes for the other two complaints had already landed. The alternative considered and rejected was landing the resident clause alone as a refinement — live a day earlier at no governance cost, but a grant with nowhere defined to be recorded is prose, and `tools/test_settlement_enforcement_locus.ps1` had just finished measuring what this repository's prose obligations are worth.
+
+**The load-bearing constraint, which is the whole reason this is not rule drift:** a grant concedes **capability and consequence**, never **magnitude**. Until ruled, resolutions run at the acting subject's established band with no new modifiers, and no threshold, multiplier, cost, cap or rung is created. A Runtime needing a new number to narrate the grant has left the branch and is back at the mechanical-value stop. Rule drift is what the founding case study records as the reference campaign's actual failure; the rules-fidelity contract answering it is not weakened.
+
+Acceptance fixtures: `tools/test_provisional_grant_contract.ps1`, against isolated copies of the real repository, proving the validator fires on an `open` grant past its `Due` barrier, stays silent on one within it and on a settled one, and that the resident branch and the magnitude prohibition are both on the card.
+
+Explicit exclusions: no magnitude, ever; no automatic ratification; no in-scene owner ruling. A grant is not a mechanism for pricing anything, and `Status` moves only at a barrier and only by owner ruling.
+
+Completion criteria:
+
+- The construct exists in `011_ENGINE_DATA_MODEL.md` Section 7.10, the branch is on the resident card, and the due-barrier leg is proven by fixture to fail when its subject is removed.
+- **A grant is made in play and ruled on at a barrier.** This is world and campaign work and belongs to a play session; the milestone is not complete until one has gone through all four `Status` outcomes' worth of judgment at least once.
+- The version's validation record carries its rows, and their vacuity is stated wherever they are vacuous.
+
+---
+
 ## Material Scarcity and Price — cut from Version 0.4, unscheduled
 
 **Cut during Planning, 2026-08-02, before ADR Design.** Recorded here rather than deleted so the reasoning survives.
@@ -1069,6 +1092,56 @@ Remaining genuinely new focus:
 Goal:
 
 Support multiple campaigns within one persistent world.
+
+---
+
+## Version 0.6 — The Generative Layer
+
+Status: **Sited 2026-08-20 on an owner ruling. Scope drafted; Planning has not begun.** It follows Version 0.5.
+
+**Not renumbered into an earlier slot, deliberately.** Persistence moving into the vacated 0.5 was settled by owner ruling on 2026-08-02, and Decision 087 records that renumbering versions as a side effect *"would be the drift Decision 069 exists to stop."* This version takes the next free number rather than reopening that.
+
+### Why it exists
+
+`docs/450_GAMEPLAY_REDEFINITION/450_GENERATIVE_LAYER_ANALYSIS.md` traced three standing owner complaints — the world refuses rather than gives, produces nothing unprompted, and speaks every NPC in the narrator's voice — and found they share a cause that is not a defect list.
+
+`docs/400_CASE_STUDIES/401_MICTIAN_CAMPAIGN.md`, this engine's founding case study, is organised as **What Failed** and **What Worked**. Every architectural response the engine actually built came from the first column: inventory drift produced the ledgers, NPC memory drift produced the channel check, rule drift produced the rules-fidelity contract — the three heaviest and most-gated mechanisms in the repository, all of them corrections. Of the three responses the case study named under *Creative Problem Solving*, one is built; `"open action resolution"` occurs **once in the repository, in the case study naming it**, and `"Yes, but"` occurs nowhere else at all.
+
+Measured on the resident card the same day: **5,058 tokens of constraint and book-keeping against 2,388 generative**, and only the constraint half carried numbered steps. `F-028`'s *"every remedy for four months had been a prohibition"* is not a four-month pattern — it is the architecture's founding shape, and it is why three separately-actioned flags kept recurring.
+
+This version is the other column. It is scoped as one Planning pass rather than three post-freeze admissions because the three changes share a cause; splitting them is how Version 0.4 came to carry two admissions it documents as notable.
+
+### 0.6.1 The Ratification Backlog Is Governed
+
+**Vacated and re-scoped 2026-08-20.** This milestone was sited to own Decision P008; that decision was pulled forward to Version 0.4 milestone 0.4.5 on a second owner ruling the same day, because 0.6 sits behind 0.5 — Persistence and the complaint it answers is the one the owner led with. The number is re-scoped rather than deleted, and the reason is recorded rather than smoothed over.
+
+**What is left here is the half 0.4.5 does not answer.** Decision 093 makes an open grant past its due barrier a validation finding. It does not say what happens to a campaign that accrues them faster than an owner rules on them, and it does not give the profile a way to declare which sections are cheap to rule on and which are not. That is a governance question about the backlog rather than about the grant, it has no played evidence yet, and it needs a campaign to have run on 0.4.5 for a while before it can be scoped honestly.
+
+### 0.6.2 The World Reaches the Protagonist
+
+**Capability:** the world's own clock produces results that arrive, and a session can tell that it did.
+
+`F-034` is Actioned and its gate proves only that the clock **ran**: `tools/validate_repository.ps1` fails a campaign whose `world_clock.last_ticked` sits behind a day boundary, and says nothing about whether any result reached the Bearer. The measured record is four Gate breaks with none reaching him, two quests both mirroring something he had already touched, and zero unprompted offers in ninety in-fiction days. A world that ticks faithfully and absorbs every result off-screen passes that gate forever.
+
+Scope: the recording half of the Push obligation, and a validator leg over it. The leg is what makes this foundational rather than a refinement, and designing it is the milestone's real work — a counter the Runtime can satisfy by writing `none` repeats `F-012`, and a floor set too high manufactures events the fiction does not support. **The resident half lands earlier, as a Version 0.4 refinement**, because it sites an obligation `F-034` already established; this milestone owns making it checkable.
+
+### 0.6.3 An NPC Is Affordable to Play
+
+**Capability:** the character model reaches every played Character rather than the ones a backfill happened to reach.
+
+Decision 091 authored Want/Fear/Secret/Voice and Decision 092 made coverage engine-general; `F-028` measured why neither reached play — one backfill took an NPC record to 165 bytes under its ratchet, and the entity dispatch fetches roughly 29,000 tokens before that NPC speaks once. Cast roster schema 1.1 delivered the cheap read (2026-08-20). What remains is the cause: `canonical_state.situation` holding an accumulated history the chronicle already records, which is `F-019`'s ownership question with a forcing case attached.
+
+Scope: retiring superseded state-field history to the chronicle, and the ledger-ownership rule that keeps it retired.
+
+### Exclusions
+
+- The settlement split. Variant A landed 2026-08-20 as a Version 0.4 refinement and is not this version's work.
+- Cast backfill, `disposition_baseline` lowering, and any campaign-canon write. Those are play under save discipline, not engine work.
+- Anything about *how much* a granted capability does. Magnitude stays a mechanical value and a versioned profile rule, here as everywhere.
+
+### Completion criteria
+
+Each milestone's obligation is checkable from stored state rather than resident prose, on `F-033`'s standard — the standard this version exists because the engine has repeatedly failed to meet. A capability whose only enforcement is a sentence on the resident card is not complete, and `tools/test_settlement_enforcement_locus.ps1` is the instrument that says so.
 
 ---
 

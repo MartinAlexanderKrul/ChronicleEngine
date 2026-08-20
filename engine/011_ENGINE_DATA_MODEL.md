@@ -527,6 +527,43 @@ This clause exists because Section 7.9 and Runtime Section 2.4 specified settlem
 
 **Belief has no equivalent writer, and that is a ruling rather than an omission.** A belief requires a `Ground` — seen, told, inferred, or assumed — and minting one at authoring time would fabricate the ground along with it. Beliefs are recorded as the fiction supplies them: when an actor is told something, infers something, or assumes something material, and most usefully when what it then holds is **not** true. The absence of a belief is therefore **not** detectable and is not treated as a defect; what would be a defect is an actor that has been told something and holds no record of it.
 
+## 7.10 Provisional Mechanic
+
+A **provisional mechanic** is tracked state recording that the Runtime granted a capability the active profile does not author, and that a ruling is owed on it (Decision 093).
+
+```text
+Subject      what the player proposed, in the fiction's own words
+Granted      the capability conceded, and its stated limits
+Price        the cost and risk narrated when it was granted
+Owes         the profile section that must rule on it
+Due          the promotion barrier by which the ruling is owed
+Status       open | ratified | replaced | bounded | revoked
+Provenance   the Event that granted it
+```
+
+**`Owes` is required, for the reason `Due` is required on a commitment (Section 7.4).** A debt with no named creditor cannot be settled and is therefore indistinguishable from a rule somebody invented. A grant whose owing section cannot be named is the signal that the move was a mechanical value all along, and belongs to the stop rather than to this construct.
+
+**What a grant may concede, and what it may never.** It concedes **capability and consequence**: the thing the player proposed happens, and it costs and risks what the narration said. It may not concede **magnitude**. Until the ruling lands, every resolution involving it runs at the acting subject's already-established band with existing modifiers and no new ones, and it may not create a threshold, a multiplier, a cost, a cap, or a rung.
+
+This is the line that keeps Rules Section 4.0's *"never reject a creative solution solely because it differs from an anticipated approach"* from becoming the rule drift the founding case study records. **A Runtime that needs a new number in order to narrate the grant has left this construct** and is back at the mechanical-value stop, where it belongs. Capability is recoverable at a barrier; a magnitude the player has already built on is not.
+
+**`Status` moves only at the barrier and only by owner ruling**, into one of four:
+
+```text
+   ratified    the profile authors it; version bump and migration record
+   replaced    the profile authors something else that covers the fiction
+   bounded     it stands as fiction, with an explicit no-mechanical-effect ruling
+   revoked     it is withdrawn, and the withdrawal costs something in-fiction
+```
+
+`revoked` carries an in-fiction cost deliberately. A grant the player acted on cannot be un-happened for free, and a free revocation is a refusal delivered late — which is the behaviour this construct exists to replace.
+
+**An unrecorded grant is not a lesser grant; it is the defect.** The recording is what distinguishes a bounded debt from a silently invented rule, so a grant that cannot be recorded is not grantable — the same shape as Section 7.4's rule that an undertaking with no reachable `Due` is not recordable and therefore not sayable.
+
+A provisional mechanic is tracked state under Section 7.3 and mints no identifier. Its settlement is promoted to an Event when the ruling lands, exactly as a commitment is.
+
+**What creates one, what enforces the creation, and how absence is detectable** — the three questions `docs/DEVELOPMENT_WORKFLOW.md` requires of any decision introducing settled state, answered here because Sections 7.4, 7.5, 7.6 and 7.9 each produced zero live instances before Decision 092 bound agenda creation to something checkable. **Creation** is the act of granting: the Runtime writes it in the turn the grant is narrated. **Enforcement** is the barrier, which surfaces every `open` instance for ruling, and the validator, which fails a campaign holding one past its `Due`. **Absence** is detectable in the one direction that matters — an `open` instance that outlived its barrier is a structural state a gate can see. A grant never made is not detectable, and is not a defect.
+
 ---
 
 # 8. Canonical Record

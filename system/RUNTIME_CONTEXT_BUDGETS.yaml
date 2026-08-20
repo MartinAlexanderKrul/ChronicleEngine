@@ -268,7 +268,44 @@ surfaces:
     # warning still sits tight against the baseline, and the next resident
     # change still faces the same question. Do not read a moved ceiling as
     # permission to append.
-    baseline_tokens: 8306
+    #
+    # 2026-08-20 -- THE CARD SHRANK, for the first time in this file's history.
+    # 8,306 -> 7,681 recorded; measured 8,337 before the change, so the change's
+    # own share is -656 and 31 tokens of unrecorded drift are absorbed into it.
+    #
+    # This is Variant A of `docs/450_GAMEPLAY_REDEFINITION/450_GENERATIVE_LAYER_
+    # ANALYSIS.md`, on an owner ruling. Turn-State Settlement now splits by what
+    # reads the value: everything a later resolution reads stays resident, and
+    # the provenance and audit apparatus moved to the Runtime Profile's
+    # *Boundary Settlement*. Characterization Settlement moved whole. The trigger
+    # audit's progression paragraphs moved with it.
+    #
+    # It is a MEASUREMENT rather than a preference, and that matters because a
+    # relaxation would be the obvious reading. `tools/test_settlement_enforcement_
+    # locus.ps1` pins it: rewriting the cadence from *every resolved exchange* to
+    # *each Event boundary* changes ZERO of ten card-reading suites, and deleting
+    # the whole section changes four, every one a string-presence assertion on
+    # this card. Enforcement is at the Event (Decisions 085, 090) and at the
+    # checkpoint pair. The moved obligations were resident and unenforced there.
+    #
+    # THE DISPLACEMENT COST WAS ZERO SUITES, against four predicted. The analysis
+    # costed Variant A at four suites needing their assertions re-pointed, from
+    # the deletion measurement. All eight pinned literals turned out to live in
+    # the elapsed-time step -- commitments, supply, needs, deadlines, the exact
+    # anchor -- which is world-side settlement and stays resident on its own
+    # merits. Careful condensation paid none of the predicted cost, and the
+    # prediction is left in the analysis rather than edited to match.
+    #
+    # The realised saving is -656 against an estimate of ~1,111. The estimate was
+    # labelled an estimate and is not retconned; the shortfall is real and is why
+    # headroom below is 669 rather than the ~1,100 the analysis projected.
+    #
+    # What this buys, and it is spoken for: Decision P008's provisional-grant
+    # clause (+327 measured) and the Push obligation (+229 measured) come to 556,
+    # leaving 113 tokens. The surface is not reopened for appending -- it is
+    # closed again the moment those two land, and the closed-surface rule above
+    # applies to whatever comes after them exactly as before.
+    baseline_tokens: 7681
     contributors:
       - file: docs/AI_GAMEPLAY_RESIDENT_CORE.md
         whole_file: true
@@ -610,10 +647,26 @@ surfaces:
       # the resident card is a contributor to it, so the ceiling ruling above
       # spent part of this campaign's remaining margin. F-019's ownership
       # question is still what actually moves it.
-      gatefall_pendragon_001: 35624
-      prototype_alpha: 10442
-      prototype_beta: 11087
-      reikon_awakening_001: 15795
+      #
+      # Re-recorded 2026-08-20 behind the resident card's -656. Every readiness
+      # surface includes the card, so all four move; three move by exactly -512
+      # and that difference is itself the check that nothing else drifted on them.
+      #
+      # Gatefall moves -933 net rather than -656, so roughly -277 is campaign
+      # movement already on disk and is recorded here rather than absorbed. It
+      # now stands at 36,557 with **3,443 tokens against the 40,000 hard
+      # failure**, up from 1,281 at the last recording. That is the first time
+      # this surface has gained margin from engine work rather than from a
+      # session trimming Current State by hand, and it does not change the
+      # standing finding: the card is a contributor to all four, F-019's
+      # ownership question is still what actually moves this number, and the
+      # cast roster's new Disposition section is deliberately NOT on this
+      # surface (`campaign_readiness_headings` selects `Cast` alone) precisely
+      # because 3,443 tokens is not room for it.
+      gatefall_pendragon_001: 36557
+      prototype_alpha: 9930
+      prototype_beta: 10575
+      reikon_awakening_001: 15283
     include_resident: true
     derive_operation: continue
 

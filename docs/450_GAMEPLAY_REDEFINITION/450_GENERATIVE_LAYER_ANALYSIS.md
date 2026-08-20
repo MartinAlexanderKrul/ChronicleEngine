@@ -240,6 +240,20 @@ Measured baseline, 2026-08-20: **8,337 tokens**. Warning **8,350** (13 tokens of
 
 ## Variant A — settle at scene boundaries
 
+> **Ruled and implemented, 2026-08-20.** The owner ruled Variant A. What actually happened, against what this section projected — both figures kept, because the estimate was labelled an estimate and editing it to match would destroy the only record of how good the estimate was:
+>
+> | | Projected | Realised |
+> |---|---:|---:|
+> | Card after the change | ~7,782 | **7,681** |
+> | Freed by condensation | ~1,111 | **656** |
+> | Suites needing re-pointing | 4 | **0** |
+>
+> **The saving is 455 tokens short of the estimate**, which is why headroom is 669 rather than ~1,100. It still covers both remaining clauses (+556 measured) with 113 to spare and needs no warning move, so the ruling holds on the realised number and not only on the projected one.
+>
+> **The displacement cost was zero, against four predicted, and the prediction was wrong for an instructive reason.** The four-suite figure came from the *deletion* measurement. All eight literals those suites pin turned out to live in the elapsed-time step — commitments, supply, needs, deadlines, the exact anchor — which is world-side settlement and stays resident on its own merits. Condensing around them cost nothing. **Deleting a section and condensing it are different operations, and this document costed the wrong one.**
+>
+> The moved material lives in `AI_GAMEPLAY_RUNTIME_PROFILE.md`, *Boundary Settlement*. Baselines re-recorded in `system/RUNTIME_CONTEXT_BUDGETS.yaml`; Gatefall's readiness surface gained margin for the first time from engine work rather than a hand trim, 1,281 -> 3,443 tokens against its hard failure.
+
 Per-exchange settlement retains only what the *next resolution reads*: immediate costs, harm, conditions, item use, the campaign-time anchor with its commitments and deadlines, and in-flight session state. Counters, `counter_deltas` reconciliation, participation coverage, characterization settlement and the progression half of the trigger audit move to the scene boundary and to `/save`, with a boundary pointer left resident and the full procedure fetched from `AI_GAMEPLAY_RUNTIME_PROFILE.md`.
 
 | Line | Tokens |

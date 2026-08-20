@@ -263,7 +263,7 @@ try {
     # Rewriting WHEN settlement happens while leaving every step, every field and
     # every obligation in place. If any gate enforced the exchange as the
     # settlement boundary, this is the mutation it would object to.
-    $cadence = 'After every resolved exchange and before yielding, settle every changed field.'
+    $cadence = 'After every resolved exchange and before yielding, settle every field a later resolution reads.'
     if ($text -notlike "*$cadence*") {
         $problems.Add("Contract 2 PRECONDITION: the cadence sentence is not in the card, so the mutation could not be applied and its result would be meaningless. If it was deliberately reworded, update this test with the new wording and re-measure both sets.") | Out-Null
     } elseif ($sweep.Count -gt 0) {
@@ -280,9 +280,15 @@ try {
     # Anchored on both ends and required to match exactly once, so a card
     # reorganisation fails the precondition rather than silently deleting the
     # wrong span.
-    $pattern = '(?ms)^# Turn-State Settlement\r?\n.*?(?=^# Characterization Settlement)'
+    # Anchored on its own heading and on the next top-level heading of any name,
+    # rather than on the specific section that used to follow it. The first
+    # version named `# Characterization Settlement` as the closer; Variant A's
+    # condensation retired that section to the Runtime Profile and the
+    # precondition fired -- correctly, and it is a maintenance cost worth not
+    # paying twice for a heading this test has no stake in.
+    $pattern = '(?ms)^# Turn-State Settlement\r?\n.*?(?=^# )'
     if ([regex]::Matches($text, $pattern).Count -ne 1) {
-        $problems.Add("Contract 3 PRECONDITION: '# Turn-State Settlement' through '# Characterization Settlement' did not match exactly once. The card was reorganised; re-anchor this mutation and re-measure.") | Out-Null
+        $problems.Add("Contract 3 PRECONDITION: '# Turn-State Settlement' through the next top-level heading did not match exactly once. The card was reorganised; re-anchor this mutation and re-measure.") | Out-Null
     } elseif ($sweep.Count -gt 0) {
         [System.IO.File]::WriteAllText($card, [regex]::Replace($text, $pattern, ''), $utf8)
         Compare-Set -Observed (Get-RedSet -Suites $sweep -FromTools $fixtureTools) -Expected $expectedRedSection `

@@ -89,9 +89,74 @@ A blank relationship cell means no relationship with the protagonist is recorded
 
 ---
 
+# Disposition
+
+What each Character wants, fears, hides, and sounds like: the lead of each field, taken from the record (Data Model Section 7.7, Decision 091). **This is not the record** — load the entity block before the NPC's first line, as *Play the Character, Not a Filtered You* requires. It is the surface that makes the whole cast affordable to know at once, against a per-NPC fetch that costs orders of magnitude more.
+
+A blank cell is a field the ledger does not author. Below the campaign's declared `disposition_baseline` that is expected rather than a defect — coverage is prospective (Decision 092) — but it is still an NPC that can only answer, so the blanks are the backfill worklist and are printed rather than hidden.
+
+| Entity | Name | Want | Fear | Secret | Voice |
+|---|---|---|---|---|---|
+| `ENT-000126` | Tanya Voss | — | — | — | — |
+| `ENT-000127` | Marcus Aldridge | — | — | — | — |
+| `ENT-000128` | Elias Voss | — | — | — | — |
+| `ENT-000129` | Dr. Sarah Chen | — | — | — | — |
+| `ENT-000130` | Kesha Morrison | Her hunters come back, and the co-op desk keeps mattering against the guilds | Filing the posting that kills someone | She has been quietly routing good work toward Alexander since Red Line, and has never said so | Talks in board terms |
+| `ENT-000131` | Diane Halloran | — | — | — | — |
+| `ENT-000134` | Ada Reyes | — | — | — | — |
+| `ENT-000135` | Dale Pruitt | — | — | — | — |
+| `ENT-000178` | Tomas Alvarez | — | — | — | — |
+| `ENT-000179` | Denny Osei | — | — | — | — |
+| `ENT-000180` | Marisol Ruiz | — | — | — | — |
+| `ENT-000136` | Priya Okafor | — | — | — | — |
+| `ENT-000137` | Julian Boyd | — | — | — | — |
+| `ENT-000138` | Renata Marchetti | — | — | — | — |
+| `ENT-000139` | Owen Callahan | More time where Alexander is, and the version of that is the crew | The four seconds | He knows Alexander is something the world has no explanation for, and carries it alone | Leads with the rule, not the feeling |
+| `ENT-000146` | Wade Bishop | To make his numbers and keep his standing | The fourth funeral, and the file that would make it his | The roster padding is routine, and the bench names come from Brannigan's office | Says the bad thing first, in the flattest available words |
+| `ENT-000147` | Walt Adamik | Something for Nadia | Whatever frightened a man who does not frighten | Nadia, and what the money is actually for | Narrates his own inventory like it's a bedtime story |
+| `ENT-000206` | Sal Prykowski | Unauthored | Established, and it is the whole of what canon holds about him | He knows what CONSULT means | Unestablished |
+| `ENT-000207` | Nadia Adamik | — | — | — | — |
+| `ENT-000208` | Yusuf Baptiste | — | — | — | — |
+| `ENT-000209` | Bettina Ochoa | — | — | — | — |
+| `ENT-000149` | the Cutting Edge proprietor | — | — | — | — |
+| `ENT-000168` | Milo Brandt | — | — | — | — |
+| `ENT-000141` | Sable | — | — | — | — |
+| `ENT-000142` | Kern | — | — | — | — |
+| `ENT-000143` | Ruth Kowalczyk | — | — | — | — |
+| `ENT-000144` | Denny Prosser | — | — | — | — |
+| `ENT-000148` | Denise Ferro | — | — | — | — |
+| `ENT-000169` | Voula Stamatis | — | — | — | — |
+| `ENT-000172` | Curtis Marsh | — | — | — | — |
+| `ENT-000173` | Reggie Calloway | — | — | — | — |
+| `ENT-000174` | Bhavna Iyer | — | — | — | — |
+| `ENT-000175` | Foster Nakashima | — | — | — | — |
+| `ENT-000176` | Callie Dunmore | — | — | — | — |
+| `ENT-000177` | Elias Ward | — | — | — | — |
+| `ENT-000181` | Corinne Whitlock | — | — | — | — |
+| `ENT-000182` | Reyna Castillo | A plan she can see before she is inside it | Trusting another lead's plan she never saw | Her own part in the pull that broke her crew | Brief, businesslike, no small talk |
+| `ENT-000183` | Petra Nowak | — | — | — | — |
+| `ENT-000184` | Marcus Whitlow | Work that asks something of him | Stagnation — being skilled enough to coast, and that coasting being the whole of his career | How badly the read landed | Wary first, then **direct without ceremony** |
+| `ENT-000185` | Soraya Delgado | To have the read behind the shooting actually used | Being promised real training again and watching it not materialise | Not established, and her one unanswered question is the live thread instead | Pointed, specific, and willing to wait for the whole answer |
+| `ENT-000186` | Grant Okwuosa | To be judged on what someone watched him do | Another two years of being steady and willing and nobody looking | How much the element lead mattered | Steady and willing on the surface |
+| `ENT-000187` | Iris Halvorsen | To be acted on | That this is the same thing again | How much she wants this to be real | Concrete and verifiable, never rhetorical |
+| `ENT-000188` | Theo Bannerman | Structure, from someone who has actually watched him fight | That the thing he does well is the thing he will be told to stop doing | Not established | Too fast and too much punctuation, and every word of it meant |
+| `ENT-000189` | Marnie | Unauthored | Unauthored, and the record deliberately does not guess | Held elsewhere on purpose | Secondhand only, from Walt |
+| `ENT-000194` | Corbin Yates | A line worth holding, and someone competent calling it | That 'just Tuesday' is the whole trade | He counted, too | Flat, dry, unhurried. States facts, not opinions |
+| `ENT-000195` | Felix Aranda | To be told the truth about what he is walking into | Getting to someone too late | Unusually little | Wry and quick |
+| `ENT-000196` | Dana Whitcombe | To know what she is actually in | Dying to something nobody told her about | Not established, and the record leaves it that way | Says what she means without padding it |
+| `ENT-000197` | Warren Sato | Not to be the one cut off again | Being isolated and having to hold | Why he has not committed | Quiet, and not the type to commit loudly |
+| `ENT-000198` | Rosalind Fenn | To be paid on results and to keep the Walt Adamik referral channel clean | Being treated as a breach specialist | Discharged at `EVT-000490` and replaced by what it was hiding | Asks only what she needs to start, then asks pointedly |
+| `ENT-000199` | Duane | — | — | — | — |
+| `ENT-000203` | Priscilla Nakamura | To build something she has not built before | Being wrong about an object in front of the person paying for the answer | She works for guilds without an invoice trail | Economical to the point of bluntness, and comfortable with silence |
+| `ENT-000204` | Marisela Kwan | — | — | — | — |
+| `ENT-000205` | Reston | — | — | — | — |
+
+---
+
 # Maintenance
 
-- Generation schema: `1.0`.
+- Generation schema: `1.1`.
 - Entities: 63. Protagonist relationships: 19.
+- Characters: 53. Disposition authored in full: 18; partial: 0; none: 35.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

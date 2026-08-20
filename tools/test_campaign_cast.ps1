@@ -88,9 +88,68 @@ try {
     # A bound, not a preference: the roster is an index. If it ever grows past a
     # few hundred bytes per entity it has stopped indexing and started copying,
     # and it is sitting on a readiness surface that is already over its warning.
+    #
+    # Scoped to the `# Cast` section, which is the part the readiness surface
+    # actually loads -- `campaign_readiness_headings` in the campaign startup
+    # names that heading and nothing else in the file. The bound previously
+    # measured the whole file, which was the same thing until schema 1.1 added a
+    # `# Disposition` section that readiness does not carry. Left file-wide it
+    # would have been charging the readiness budget for bytes readiness never
+    # sees, and it was 20 bytes per entity from failing on that basis.
     $entityCount = $declared.Count
-    $castBytes = [System.Text.Encoding]::UTF8.GetByteCount($cast)
-    Assert-True (($castBytes / $entityCount) -lt 250) "Cast roster costs $([int]($castBytes / $entityCount)) bytes per entity; it is copying the ledger rather than indexing it."
+    $castSection = [regex]::Match($cast, '(?ms)^# Cast$.*?(?=^# )')
+    Assert-True $castSection.Success "Test precondition failed: the roster has no '# Cast' section to bound."
+    $castBytes = [System.Text.Encoding]::UTF8.GetByteCount($castSection.Value)
+    Assert-True (($castBytes / $entityCount) -lt 250) "Cast index costs $([int]($castBytes / $entityCount)) bytes per entity; it is copying the ledger rather than indexing it."
+
+    # --- Schema 1.1: the disposition surface -------------------------------
+    #
+    # F-028: Decision 091 made Want/Fear/Secret/Voice canonical state and the
+    # loading machinery was already correct -- what blocked it reaching play was
+    # cost. Backfilling one NPC took his record to 165 bytes under its ratchet,
+    # and the entity dispatch fetches ~29,000 tokens to let him speak once. This
+    # section is the affordable read: the lead of each field, for the whole cast,
+    # in one file that readiness does not even have to carry.
+    #
+    # So the assertion is that it EXISTS and is POPULATED. `-Check` cannot see
+    # this: it compares the file against the generator's own output, so a render
+    # that stopped emitting disposition entirely would agree with itself and pass.
+    $dispositionSection = [regex]::Match($cast, '(?ms)^# Disposition$.*?(?=^# )')
+    Assert-True $dispositionSection.Success "The roster has no '# Disposition' section; the character model has no affordable read (F-028, Decision 091)."
+    Assert-True ($dispositionSection.Value -match '(?m)^\| Entity \| Name \| Want \| Fear \| Secret \| Voice \|') "The disposition table does not carry Decision 091's four fields."
+
+    # A known-covered Character renders authored leads, and a known-uncovered one
+    # renders blanks. Both directions matter: a table that rendered every cell as
+    # authored, or every cell as blank, would satisfy a presence check and tell a
+    # Runtime nothing. Selected by property from the file rather than by name, so
+    # ordinary backfill does not fail this.
+    #
+    # A populated cell is detected as "contains a letter", never as "is not an
+    # em-dash". This file is BOM-less UTF-8 and Windows PowerShell 5.1 decodes a
+    # .ps1 without a BOM as ANSI, so a literal em-dash in the pattern is mojibake
+    # that matches nothing -- and the first draft of this leg used one, which made
+    # the authored-row check count every row as authored and pass vacuously. The
+    # repository's own gate convention says keep patterns ASCII; this is why.
+    $dispositionRows = [regex]::Matches($dispositionSection.Value, '(?m)^\| `(ENT-\d{6})` \|(?<cells>.*)\|[ \t]*$')
+    $populated = {
+        param($match)
+        # Drop the Name column; what remains is Want, Fear, Secret, Voice.
+        $cells = @($match.Groups['cells'].Value -split '\|')
+        @($cells[1..($cells.Count - 1)] | Where-Object { $_ -match '[A-Za-z]' }).Count
+    }
+    $authoredRows = @($dispositionRows | Where-Object { (& $populated $_) -eq 4 })
+    $blankRows = @($dispositionRows | Where-Object { (& $populated $_) -eq 0 })
+    Assert-True ($authoredRows.Count -gt 0) "No Character in the disposition table carries all four fields; the extractor is reading the wrong shape."
+    Assert-True ($blankRows.Count -gt 0) "No Character in the disposition table is blank, so an unauthored record is indistinguishable from an authored one and the backfill worklist is invisible."
+
+    # The disposition surface gets its own bound, looser than the index because
+    # it carries a sentence per field rather than a label -- but still a bound,
+    # because a cell that grew to the whole field would recreate the cost this
+    # section exists to avoid.
+    $characterCount = ([regex]::Matches($ledger, '(?m)^type:[ \t]*Character[ \t]*$')).Count
+    Assert-True ($characterCount -gt 0) "Test precondition failed: the ledger declares no Characters."
+    $dispositionBytes = [System.Text.Encoding]::UTF8.GetByteCount($dispositionSection.Value)
+    Assert-True (($dispositionBytes / $characterCount) -lt 200) "Disposition costs $([int]($dispositionBytes / $characterCount)) bytes per Character; it is carrying the field rather than its lead."
 
     # Currency: a new entity in the ledger must make the checked-in roster stale.
     $newEntity = @"

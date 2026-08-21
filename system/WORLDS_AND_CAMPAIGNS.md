@@ -22,7 +22,7 @@ Generated rows are not edited directly. Update their owning startup, world/profi
 | World | Version | Status | Live campaigns |
 |---|---|---|---:|
 | `worlds/asterra/` | 0.9 | Workshop Draft | 0 |
-| `worlds/gatefall/` | World Rule Profile 1.89, frozen | Active | 1 |
+| `worlds/gatefall/` | World Rule Profile 1.90, frozen | Active | 1 |
 | `worlds/reikon/` | World Rule Profile 0.11, frozen | Active | 1 |
 | `worlds/verra/` | 0.1 (Prototype) | Active | 2 |
 
@@ -30,7 +30,7 @@ Generated rows are not edited directly. Update their owning startup, world/profi
 
 | Campaign | World | Protagonist | Status | Latest checkpoint | Captured |
 |---|---|---|---|---|---|
-| `campaigns/gatefall_pendragon_001/` | `worlds/gatefall/` | Alexander Pendragon | In progress | `900_CHECKPOINT_0116` | 2026-08-21 |
+| `campaigns/gatefall_pendragon_001/` | `worlds/gatefall/` | Alexander Pendragon | In progress | `900_CHECKPOINT_0117` | 2026-08-21 |
 | `campaigns/prototype_alpha/` | `worlds/verra/` | Ilse Varn | Closed — terminal | `900_CHECKPOINT_0001` | 2026-07-23 |
 | `campaigns/prototype_beta/` | `worlds/verra/` | Kael Travis | In progress | `900_CHECKPOINT_0001` | 2026-07-13 |
 | `campaigns/reikon_awakening_001/` | `worlds/reikon/` | Daedalus | In progress | `900_CHECKPOINT_0017` | 2026-07-22 |

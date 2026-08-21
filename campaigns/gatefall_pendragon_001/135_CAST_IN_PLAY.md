@@ -90,6 +90,9 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000212` | Hollis Rennard | containment monitor | active | **Outside the fenced warehouse's perimeter fence, on the cracke… | `REL-000099` |
 | `ENT-000213` | Junia Okonkwo | containment specialist | active | the fenced warehouse | — |
 | `ENT-000214` | Emmett Hargrave | unawakened; role unestablished | active | the fenced warehouse | — |
+| `ENT-000215` | the warp-heart emplacement | emplaced monitoring instrument | active | Anchored to the slab at the heart of the Cicero Scar's innermos… | — |
+| `ENT-000216` | what never finished arriving | unfinished arrival | active | The far end of a light-industrial sublevel crushed shut in the… | — |
+| `ENT-000217` | the volume behind the face | non-city volume | active | what never finished arriving | — |
 
 ---
 
@@ -163,7 +166,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 67. Protagonist relationships: 20.
+- Entities: 70. Protagonist relationships: 20.
 - Characters: 56. Disposition authored in full: 25; partial: 24; none: 7. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

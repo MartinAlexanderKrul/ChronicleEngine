@@ -361,9 +361,14 @@ Assert-True ($profile -match 'the threat is a Gate creature, an active Gate brea
 Assert-True ($profile -match 'the Bearer has a physically actionable route to intervene before the threat resolves') "Section 8.4.2 criterion 3 changed."
 Assert-True ($profile -match 'the objective, success condition, failure condition, and causal deadline can be stated from facts the Bearer already perceives') "Section 8.4.2 criterion 4 changed."
 
-# Criterion 1 excludes the Bearer himself.
-Assert-True ($profile -match 'non-hostile person \*\*other than the Bearer himself\*\*') "Section 8.4.2 criterion 1 does not exclude the Bearer."
-Assert-True ($profile -match '\*\*The Bearer is never the imperilled person\.\*\*') "Section 8.4.2 lacks the Bearer-exclusion clarification."
+# Criterion 1 excludes the Bearer himself, but only inside an instance (Profile 1.90).
+# The property under test is the SCOPE of the exclusion, not the sentence that carried it
+# when the exclusion was unconditional.
+Assert-True ($profile -match 'other than the Bearer himself only where the crisis is inside a Gate') "Section 8.4.2 criterion 1 does not scope the Bearer-exclusion to a Gate."
+Assert-True ($profile -match 'red gate, or a Section 17 instant dungeon, the Bearer is never the imperilled person') "Section 8.4.2 lacks the in-instance Bearer-exclusion clarification."
+Assert-True ($profile -match 'Outside one, in the ordinary world, he counts as a person') "Section 8.4.2 does not admit the Bearer as the imperilled person outside an instance."
+Assert-True ($profile -match 'an awakened human acting to kill him') "Section 8.4.2 criterion 2 does not widen for the Bearer-as-subject case."
+Assert-True ($profile -match 'Self-created danger still disqualifies') "Section 8.4.2 drops the self-created-danger guard that bounds Profile 1.90."
 Assert-True ($profile -match 'is combat, resolved under Sections 6 and 20\.4') "Section 8.4.2 does not route danger to the Bearer to combat resolution."
 
 # The contract exclusion is scoped, and the blanket phrasing is gone.

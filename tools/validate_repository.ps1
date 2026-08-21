@@ -1155,12 +1155,70 @@ foreach ($file in $canonicalFiles) {
                         }
                     }
 
+                    # Mastery renders in THREE places on one line and this check
+                    # used to read only the first of them:
+                    #
+                    #   headline   "Twin Fang [B-Rank] * * * * o Expert"
+                    #   tail       "mastery level ADEPT (3)"
+                    #   next level "mastery progress 0/3 toward Master"
+                    #
+                    # The old pattern was non-greedy from the Rank tag, so it
+                    # matched the HEADLINE name and stopped. F-045: nine skill
+                    # lines carried a tail exactly one level behind the headline,
+                    # and this gate passed every one of them because the render it
+                    # happened to read was the correct one. Dagger Mastery was the
+                    # worst case -- its stale tail and its stale `toward` string
+                    # agreed with each other, so the line looked internally
+                    # consistent while disagreeing with stored state.
+                    #
+                    # Every render is checked now. Checking one of three is
+                    # indistinguishable from checking none the moment the one you
+                    # read is the one nobody edited.
                     $masteryKey = "$skillKey|mastery_level"
                     if ($counterValues.ContainsKey($masteryKey)) {
-                        $masteryMatch = [regex]::Match($skillEntry, '\[[EDCBAS]-Rank\].*?\b(Novice|Practiced|Adept|Expert|Master)\b')
-                        if (-not $masteryMatch.Success -or $masteryLevels[$masteryMatch.Groups[1].Value] -ne $counterValues[$masteryKey]) {
-                            $renderedMastery = if ($masteryMatch.Success) { $masteryMatch.Groups[1].Value } else { 'missing' }
-                            Add-Failure "$relativePath`:$line skill '$($nameMatch.Groups['name'].Value.Trim())' renders mastery $renderedMastery but tracked mastery_level is $($counterValues[$masteryKey]) (Gatefall Profile Section 7.4)."
+                        $trackedLevel = $counterValues[$masteryKey]
+                        $levelNames = @{}
+                        foreach ($pair in $masteryLevels.GetEnumerator()) { $levelNames[$pair.Value] = $pair.Key }
+                        $skillLabel = $nameMatch.Groups['name'].Value.Trim()
+
+                        $headline = [regex]::Match($skillEntry, '\[[EDCBAS]-Rank\][^"]*?\b(Novice|Practiced|Adept|Expert|Master)\b')
+                        if (-not $headline.Success -or $masteryLevels[$headline.Groups[1].Value] -ne $trackedLevel) {
+                            $renderedMastery = if ($headline.Success) { $headline.Groups[1].Value } else { 'missing' }
+                            Add-Failure "$relativePath`:$line skill '$skillLabel' renders headline mastery $renderedMastery but tracked mastery_level is $trackedLevel (Gatefall Profile Section 7.4)."
+                        }
+
+                        # The tail carries the name and the ordinal, and either can
+                        # go stale on its own, so both are compared.
+                        $tail = [regex]::Match($skillEntry, '(?i)\bmastery level[ \t]+(?<name>Novice|Practiced|Adept|Expert|Master)[ \t]*\((?<n>\d)\)')
+                        if ($tail.Success) {
+                            $tailName = $tail.Groups['name'].Value
+                            $tailOrdinal = [int]$tail.Groups['n'].Value
+                            $culture = [System.Globalization.CultureInfo]::InvariantCulture
+                            $tailTitle = $culture.TextInfo.ToTitleCase($tailName.ToLowerInvariant())
+                            if ($masteryLevels[$tailTitle] -ne $trackedLevel -or $tailOrdinal -ne $trackedLevel) {
+                                Add-Failure "$relativePath`:$line skill '$skillLabel' renders tail 'mastery level $tailName ($tailOrdinal)' but tracked mastery_level is $trackedLevel (F-045; Gatefall Profile Section 7.4)."
+                            }
+                        }
+
+                        # `toward <name>` must name the NEXT level, and a skill at
+                        # the Master ceiling has no next one to name.
+                        #
+                        # Anchored to the LIVE progress render rather than to a bare
+                        # `toward`, because a line may legitimately recount history:
+                        # Mend carries "Expert-level history (28 uses, 2/3 toward
+                        # Master) surrendered" beside a live Novice, and a bare match
+                        # failed it on the first run. The live figure is the one
+                        # attached to `mastery progress N/3`; anything else on the
+                        # line is prose about the past.
+                        $toward = [regex]::Match($skillEntry, '(?i)\b(?:mastery progress|progress)[ \t]+\d+/3[ \t]+toward[ \t]+(?<name>Novice|Practiced|Adept|Expert|Master)\b')
+                        if ($toward.Success) {
+                            $culture = [System.Globalization.CultureInfo]::InvariantCulture
+                            $towardTitle = $culture.TextInfo.ToTitleCase($toward.Groups['name'].Value.ToLowerInvariant())
+                            if ($trackedLevel -ge 5) {
+                                Add-Failure "$relativePath`:$line skill '$skillLabel' is at Master but its rendering still points 'toward $($toward.Groups['name'].Value)' (F-045; Gatefall Profile Section 7.4)."
+                            } elseif ($masteryLevels[$towardTitle] -ne ($trackedLevel + 1)) {
+                                Add-Failure "$relativePath`:$line skill '$skillLabel' renders 'toward $($toward.Groups['name'].Value)' but at tracked mastery_level $trackedLevel the next level is $($levelNames[$trackedLevel + 1]) (F-045; Gatefall Profile Section 7.4)."
+                            }
                         }
                     }
                 }

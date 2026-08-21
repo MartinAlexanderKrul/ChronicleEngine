@@ -67,8 +67,22 @@ Assert-True ($profile -match '\| \*\*Stat Passive Rank\*\* \| \*\*E\*\* \| \*\*D
 Assert-True ($profile -match '\*\*Rank-Sight\*\* and \*\*Deep Sight\*\* are both retired names for Flux Sight') "Flux Sight deprecation does not retire both prior names."
 Assert-True ($profile -match 'The `\[DAILY\]` quest has its own reserved slot') "Daily quests do not have an explicit reserved slot."
 Assert-True ($profile -match 'Class Quest and later class-evolution quest.*reserved class slot') "Class quests do not have an explicit reserved slot."
-Assert-True ($profile -match 'four times the common-kill XP') "Urgent quest reward formula is missing."
-Assert-True ($profile -match 'Gate-clear milestone XP for the Bearer''s System Rank') "Hidden quest reward formula is missing."
+# Profile 1.89. Both quest classes read Section 3.4's ladder one rung above the
+# Bearer's Rank; 1.88 paid Urgent at four times common-kill and Hidden at the
+# Bearer's own milestone, which made a quest running in-fiction weeks pay less
+# than a Gate cleared in two hours -- and Urgent, the class defined by someone
+# else's life being in danger, pay least of all.
+#
+# Asserted as the rule rather than as one ladder row: the figures live in the
+# profile and `validate_repository.ps1` reads them from there deliberately, so
+# restating a number here would make this a second copy of the value the rule
+# exists to keep in one place.
+Assert-True ($profile -match "An Urgent quest's reward is the \*\*Gate-clear milestone XP for one Rank above") "Urgent quest reward formula is missing or no longer reads Section 3.4 one Rank up."
+Assert-True ($profile -match "A Hidden quest's reward is the \*\*Gate-clear milestone XP for one Rank above") "Hidden quest reward formula is missing or no longer reads Section 3.4 one Rank up."
+# Superseded by the two Profile 1.89 assertions above, which pin both quest
+# classes rather than only Hidden. Left as a comment rather than deleted so the
+# 1.88 wording -- `Gate-clear milestone XP for the Bearer's System Rank` -- is
+# still findable from here by anyone tracing why a 1.88 capture reads differently.
 Assert-True ($profile -match 'A quest cannot complete from conduct that occurred before') "Pre-attachment retroactive completion is not prohibited."
 Assert-True ($profile -match 'The Runtime may not create `\[HIDDEN\] \?\?\?` merely for atmosphere') "Decorative Hidden pointers are not prohibited."
 
@@ -378,7 +392,15 @@ Assert-True ($profile -match 'Using a key opens a sealed instance for the Bearer
 Assert-True ($profile -match '\*\*Red gate\*\* — the Gate seals on entry and cannot be exited until its boss dies') "Section 9.6's red gate no longer seals on entry; Section 8.4.2's sealed-instance rule depends on it."
 
 # Reward and lifecycle untouched.
-Assert-True ($profile -match 'E-Rank 40, D-Rank 100, C-Rank 240, B-Rank 600, A-Rank 1,600, S-Rank 4,000') "Urgent reward ladder changed."
+# Profile 1.89's shared quest ladder, which is Section 3.4's rungs shifted one
+# Rank up. 1.88's Urgent row was `E-Rank 40, D-Rank 100, C-Rank 240, B-Rank 600,
+# A-Rank 1,600, S-Rank 4,000` -- four times common-kill, and below A-Rank the
+# lowest reward the System paid for anything.
+#
+# Pinned as one literal because that is what the row IS: every figure except
+# S-Rank is a Section 3.4 value, so a drift here means either that ladder moved
+# or the shift stopped being a shift, and both are worth failing on.
+Assert-True ($profile -match 'E-Rank 150, D-Rank 320, C-Rank 700, B-Rank 1,500, A-Rank 3,200, S-Rank 6,800') "Quest reward ladder changed; 1.89 pays the Section 3.4 milestone one Rank above the Bearer's."
 
 # --- Profile 1.30: trigger telemetry (Section 8.4.6) ---
 

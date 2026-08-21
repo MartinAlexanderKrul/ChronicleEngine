@@ -112,8 +112,8 @@ function Edit-FixtureFile {
     }
     # -First is for a leg whose claim is "SOME record of this shape is invalid"
     # rather than "this particular one is". The campaign legitimately holds many
-    # quests of the same Rank paying the same XP -- two D-Rank Hidden quests at
-    # 150 as of Checkpoint 0116 -- so requiring a unique anchor there would pin
+    # quests of the same Rank paying the same XP -- two D-Rank Hidden quests, at
+    # 150 under Profile 1.88 and 320 under 1.89 -- so a unique anchor would pin
     # the leg to how many of them exist, which is a number ordinary play moves.
     # Mutating exactly the first is deterministic and satisfies the claim.
     if ($First) {
@@ -168,7 +168,7 @@ try {
     $wrongXpRoot = $legRoot
     Edit-FixtureFile -Path (Join-Path $wrongXpRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
         -First `
-        -Find "          reward_rank: D-Rank`n          reward_xp: 150" `
+        -Find "          reward_rank: D-Rank`n          reward_xp: 320" `
         -Replace "          reward_rank: D-Rank`n          reward_xp: 999"
     $wrongXp = Invoke-Validator -Root $wrongXpRoot
     if ($wrongXp.ExitCode -eq 0) {
@@ -176,7 +176,7 @@ try {
     }
     Assert-Contains -Text $wrongXp.Output -Expected "pays 999 XP at D-Rank" `
         -Because "The gate must name the wrong figure and the Rank it was paid at."
-    Assert-Contains -Text $wrongXp.Output -Expected "at 150" `
+    Assert-Contains -Text $wrongXp.Output -Expected "at 320" `
         -Because "The gate must name the milestone it derived from the profile, proving it read the ladder rather than a constant."
 
     # Leg 3: an attached Hidden quest must carry the reward Rank at all. Section
@@ -185,8 +185,8 @@ try {
     $missingRankRoot = $legRoot
     Edit-FixtureFile -Path (Join-Path $missingRankRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
         -First `
-        -Find "          reward_rank: D-Rank`n          reward_xp: 150" `
-        -Replace "          reward_xp: 150"
+        -Find "          reward_rank: D-Rank`n          reward_xp: 320" `
+        -Replace "          reward_xp: 320"
     $missingRank = Invoke-Validator -Root $missingRankRoot
     if ($missingRank.ExitCode -eq 0) {
         throw "Expected an attached Hidden quest with no reward_rank to fail validation."

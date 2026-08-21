@@ -1214,6 +1214,24 @@ The player asked whether he could knock two people unconscious rather than kill 
 
 ---
 
+## F-044 — A quest running in-fiction weeks paid less than a Gate cleared in two hours, and the most urgent class paid least of all
+
+**Raised:** 2026-08-21 · **Source:** `campaigns/gatefall_pendragon_001/`, owner observation — *"hidden and urgent quests should grant more XP than just a normal gate — normal gate is 2 hours, quest is through a lot of time"*
+
+**Status:** **Actioned (2026-08-21)** into Gatefall Profile 1.89 — Sections 8.4.2 and 8.4.3 now read the Section 3.4 milestone **one Rank above** the Bearer's. Pinned by `tools/test_gatefall_quest_contract.ps1`. See `worlds/gatefall/migrations/1.88_to_1.89.md`.
+
+**The arithmetic, which is worse than the observation.** Section 3.4 awards its milestone for clearing a Gate — roughly two hours — **and awards it on top of every kill fought through to reach the boss.** Under 1.88 a Hidden quest's reward was that same milestone figure **flat, with no kill XP beside it**, so a Hidden quest paid *strictly less* than clearing a Gate of its own Rank. An Urgent quest paid four times common-kill, which is lower again at every Rank below A: **100 against 150 at D-Rank**, for the one class Section 8.4.2 defines by somebody else's life being in immediate danger.
+
+**Measured against the live record at campaign time 2026-08-23 04:15:** `warehouse-meridian-ownership` attached **16.5 in-fiction days**, `marnie-disappearance` **9**, `the-sublevel-under-the-cicero-scar` **3**. Two weeks of standing investigation paid 150; an afternoon in a D-Rank Gate paid 150 and every kill inside it.
+
+**Why the Rank+1 form was chosen over a multiplier.** It invents no figures. Every value in the new ladder except one is a row Section 3.4 already authors, so the reprice cannot drift from the milestone table it derives from. **S-Rank is the single derived value** — Section 3.4's rungs double and round up by a step that itself doubles, giving 3,200 → 6,400 → **6,800** — and it is named in the profile and the migration rather than left implicit, because it is the one number a reader cannot check against an existing row.
+
+**What the fix cost in gates, recorded because it is the interesting part.** Six suites went red on the version bump and the reprice, and **every one of them was a check pinned to wording or to a live figure rather than to a property**: the profile's H1 title carries the active version that four suites derive from (the `**Profile Version:**` field below it does not); `test_gatefall_quest_contract` pinned both the old Urgent ladder and the old Hidden sentence as literals; `validate_repository.ps1`'s quest-XP fixture anchored on `reward_xp: 150`; and the validator's own ladder reader anchored on the phrase *"Gate-clear milestone XP for the Bearer"* — the exact wording a reprice changes. That reader's comment says it reads the ladder from the profile so it *"would not drift silently the first time a world repriced a Rank"*, and it was right about the ladder and wrong about its own anchor. It is now anchored on the sentence's subject.
+
+**Left open — the completed quest was not repriced, and that is a ruling rather than an omission.** The owner ruled that attached quests be repriced. `uncontained` had already **completed** at 2026-08-22 21:10 with its 1,600 XP settled under Section 3.6. Repricing it would grant 1,600 retroactively against 3,017/4,300, crossing into **level 44** — and every resolution between that completion and 04:15 was made at level 43, on pools and thresholds derived from it. It was left at 1,600 and the limit is written into the migration procedure. Recovering that XP is a separate deliberate act with its own recomputation, and belongs to a play session.
+
+---
+
 ## F-043 — An item the Bearer still owns had nowhere to be, so the ledger deleted it
 
 **Raised:** 2026-08-21 - **Source:** `campaigns/gatefall_pendragon_001/`, player instruction during 2026-08-23 in-fiction play, after a `/system gear` render omitted six holdings he had not stopped owning

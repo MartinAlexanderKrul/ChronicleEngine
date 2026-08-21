@@ -154,7 +154,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.88"
+    profile_version: "1.89"
     profile_party_minimum_event: EVT-000460
     profile_unified_render_event: EVT-000443
     profile_render_cadence_event: EVT-000442
@@ -894,7 +894,7 @@ canonical_state:
           completion_condition: "The owner or operator identified first-hand, with the warehouse's true use established."
           failure_or_expiry: "No expiry. A standing, low-visibility lead."
           reward_rank: D-Rank
-          reward_xp: 150
+          reward_xp: 320
           deadline: "none"
           reveal_condition: "The Bearer establishes who owns or operates the warehouse and what it is actually used for."
           revealed: false
@@ -909,7 +909,7 @@ canonical_state:
           completion_condition: "The cause of her silence established, and her status (safe, in danger, or otherwise) confirmed."
           failure_or_expiry: "No expiry authored. A standing concern rather than a deadline."
           reward_rank: D-Rank
-          reward_xp: 150
+          reward_xp: 320
           deadline: "none"
           reveal_condition: "Alexander learns, first-hand or through a resolved investigative action, what actually happened to Marnie."
           revealed: false
@@ -924,7 +924,7 @@ canonical_state:
           completion_condition: "???"
           failure_or_expiry: "None authored (Section 9.1's stable concealment)."
           reward_rank: B-Rank
-          reward_xp: 700
+          reward_xp: 1500
           deadline: "none"
           reveal_condition: "The Bearer reaches the sublevel floor in person and gets a light source onto the far wall (world-authored; unrendered)."
           revealed: false

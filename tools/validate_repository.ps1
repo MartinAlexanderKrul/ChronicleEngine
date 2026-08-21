@@ -752,8 +752,10 @@ $objectBlockPattern = '(?ms)^```ya?ml[ \t]*\r?\n(.*?)^```[ \t]*\r?$'
 
 # Hidden quest reward siting. A world's own profile owns both halves of this:
 # a concealed-discovery record never stores a reward, and the reward a Hidden
-# quest does carry is the Gate-clear milestone XP for the Bearer's System Rank
-# at attachment. Both facts are read out of the profile rather than restated
+# quest does carry is a Gate-clear milestone figure fixed at attachment --
+# Gatefall 1.89 reads the rung one Rank above the Bearer's, 1.88 read his own,
+# and this check is indifferent to which. Both facts are read out of the profile
+# rather than restated
 # here -- a validator that hardcoded the ladder would become a second copy of
 # the exact derived value the rule exists to keep in one place, and would drift
 # silently the first time a world repriced a Rank. A world whose profile does
@@ -776,8 +778,14 @@ function Get-QuestRewardFacts {
     if (Test-Path -LiteralPath $profilePath -PathType Leaf) {
         $profileText = Get-Content -LiteralPath $profilePath -Raw -Encoding UTF8
         $facts.ForbidsStoredReward = $profileText -match 'never stores a reward'
+        # Anchored on what the sentence IS -- the Hidden quest's reward -- rather
+        # than on a phrase inside it. The anchor was `Gate-clear milestone XP for
+        # the Bearer`, which broke the moment Profile 1.89 repriced the reward to
+        # the milestone one Rank above the Bearer's, because the wording that
+        # states the rule is exactly the wording a reprice changes. The subject
+        # of the sentence is the stable part.
         $ladderSentence = [regex]::Match(
-            $profileText, 'Gate-clear milestone XP for the Bearer[^.]*')
+            $profileText, "A Hidden quest's reward is[^.]*")
         if ($ladderSentence.Success) {
             foreach ($pair in [regex]::Matches(
                 $ladderSentence.Value, '([EDCBAS])-Rank[ \t]+([\d,]+)')) {

@@ -1214,6 +1214,32 @@ The player asked whether he could knock two people unconscious rather than kill 
 
 ---
 
+## F-045 — Mastery is rendered twice on every skill line and nine of them disagreed, with the stale half looking authoritative
+
+**Raised:** 2026-08-21 · **Source:** `campaigns/gatefall_pendragon_001/`, out-of-character report during 2026-08-23 in-fiction play — nine skill lines whose headline star string and tail `mastery level NAME (n)` differed, the headline exactly one level above the tail in all nine.
+
+**Status:** **The nine lines are reconciled (2026-08-21)** against the chronicle: every one settled on the headline, and the tail prose was stale on all nine. **The shape that produced it is not fixed** and is the substance of this flag — see *What is not done*.
+
+**Mastery is stored once and rendered twice, and the two renders are prose.** A skill line carries a headline (`★★★★☆ Expert`) and a tail (`mastery level ADEPT (3)`), both hand-written into the same quoted string, against one authoritative `tracked_counters` entry. Nothing renders either from that counter, so a session that updates one and not the other leaves a line that disagrees with itself and passes every gate — `validate_repository.ps1` reconciles the **counter** against summed Event deltas (Decision 079) and never reads the prose beside it.
+
+**Why the direction of staleness was not obvious, which is the part worth keeping.** The original report could not pick a side, and its reasoning was sound on the evidence it had:
+
+- **Dagger Mastery** read *"progress 2/3 toward Expert"* beside its `ADEPT (3)` tail — internally consistent, so the tail looked live and the headline stale.
+- **Twin Fang** recorded a crossing to *[B-Rank] Expert, ×2.35 → ×2.50* at `EVT-000629`, **later** than the `EVT-000590` breakthrough its tail was anchored to — so there the headline looked live.
+- Four lines carried strings fitting neither reading: *"0/3 toward Master Practiced"*, and Sprint's *"0/3 toward Expert Adept"*.
+
+**The third representation settled it.** `tracked_counters.mastery_level` agreed with the **headline on all nine**, and reconciles against summed chronicle deltas for every one of them — verified independently of the validator, counting **both** `counter_deltas` syntaxes. That last detail is its own small trap: a first pass counting only the inline `{ subject: …, counter: …, delta: N }` form and missing the multi-line one reported six false mismatches and would have argued for exactly the wrong answer.
+
+So Dagger Mastery's apparent internal consistency was **two stale fields agreeing with each other** — its `2/3` is progress toward Master, not Expert — and the garbled strings were fragments of a next-level name edited in place without the old one being removed.
+
+**What was corrected.** Nine tails moved to the stored level, and every `toward` string to the correct next level: Rupture, Keen Sense, Twin Fang, Exploit Pattern and Dagger Mastery to `EXPERT (4)`; Flash Step and Silent Step to `MASTER (5)`; Broken Rhythm to `PRACTICED (2)`; Sprint to `ADEPT (3)`. Twin Fang's effect line now states ×2.50 at B-Rank Expert, which its own formula gives — `1.00 + 0.35 × 3 + 0.15 × 3`, the mastery term being `0.15 × (level − 1)`.
+
+**What is not done, and it is the flag.** **Nothing prevents the next divergence.** The render is still prose in three places per line and the counter is still the only thing checked. `F-037` recorded the same class — stored prose drifting against its own counters — and it was one line then and nine now. The candidate remedies, none of them taken here: render the mastery cells from `tracked_counters` at panel time rather than storing them; or gate the prose against the counter the way `validate_repository.ps1` already gates rendered `successful_uses`, which is the cheaper of the two and would have caught all nine on the day each drifted.
+
+**Also left open: Twin Fang's damage figures.** **2,985** and package **4,191** were computed at the pre-crossing ×2.35 and are marked stale in the sheet rather than recomputed — re-deriving them needs Section 6.2 against live Stats, which is play's work and not a repair. Rendered previews resting on them stay withheld.
+
+---
+
 ## F-044 — A quest running in-fiction weeks paid less than a Gate cleared in two hours, and the most urgent class paid least of all
 
 **Raised:** 2026-08-21 · **Source:** `campaigns/gatefall_pendragon_001/`, owner observation — *"hidden and urgent quests should grant more XP than just a normal gate — normal gate is 2 hours, quest is through a lot of time"*

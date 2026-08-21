@@ -137,19 +137,57 @@ try {
         $cells = @($match.Groups['cells'].Value -split '\|')
         @($cells[1..($cells.Count - 1)] | Where-Object { $_ -match '[A-Za-z]' }).Count
     }
-    $authoredRows = @($dispositionRows | Where-Object { (& $populated $_) -eq 4 })
-    $blankRows = @($dispositionRows | Where-Object { (& $populated $_) -eq 0 })
+    # A record canon does not establish is DECLARED, not left blank. The ledger's
+    # own convention for it is an explicit `**Unauthored.**` / `**Unestablished.**`
+    # value -- which is strictly better than an empty field, because it says the
+    # gap is canon's rather than an author's oversight and tells a Runtime to
+    # author at the turn (Decision 092).
+    #
+    # This leg first asserted that some row was EMPTY, and went red the moment the
+    # cast was backfilled that way: every cell was populated, and a check meant to
+    # prove unauthored records stay visible failed because they had been made
+    # visible in the better of the two forms. The property is "an unestablished
+    # record is distinguishable from an established one", and the em-dash was only
+    # ever one way of carrying it.
+    $declaredUnestablished = '^\s*(\*\*)?(Unauthored|Unestablished|Not established|Barely established)'
+    $authoredRows = @($dispositionRows | Where-Object {
+        (& $populated $_) -eq 4 -and $_.Groups['cells'].Value -notmatch $declaredUnestablished
+    })
+    $blankRows = @($dispositionRows | Where-Object {
+        $cells = @($_.Groups['cells'].Value -split '\|')
+        $fields = @($cells[1..($cells.Count - 1)])
+        @($fields | Where-Object { $_ -notmatch '[A-Za-z]' -or $_ -match $declaredUnestablished }).Count -eq $fields.Count
+    })
     Assert-True ($authoredRows.Count -gt 0) "No Character in the disposition table carries all four fields; the extractor is reading the wrong shape."
-    Assert-True ($blankRows.Count -gt 0) "No Character in the disposition table is blank, so an unauthored record is indistinguishable from an authored one and the backfill worklist is invisible."
+    Assert-True ($blankRows.Count -gt 0) "No Character in the disposition table is blank or declared unestablished, so a record canon does not establish is indistinguishable from one it does. Either the cast is genuinely fully authored -- in which case this leg has outlived its subject and should be retired deliberately -- or a walk-on has been given invented interiority."
 
-    # The disposition surface gets its own bound, looser than the index because
-    # it carries a sentence per field rather than a label -- but still a bound,
-    # because a cell that grew to the whole field would recreate the cost this
-    # section exists to avoid.
-    $characterCount = ([regex]::Matches($ledger, '(?m)^type:[ \t]*Character[ \t]*$')).Count
-    Assert-True ($characterCount -gt 0) "Test precondition failed: the ledger declares no Characters."
-    $dispositionBytes = [System.Text.Encoding]::UTF8.GetByteCount($dispositionSection.Value)
-    Assert-True (($dispositionBytes / $characterCount) -lt 200) "Disposition costs $([int]($dispositionBytes / $characterCount)) bytes per Character; it is carrying the field rather than its lead."
+    # The disposition surface gets its own bound, and it is measured PER CELL
+    # rather than per Character.
+    #
+    # It was per Character first, at 200 bytes, and that was the wrong quantity:
+    # it moves with how much of the cast is authored, not with what the bound is
+    # protecting against. A cast that is two-thirds blank costs almost nothing
+    # per Character and one that is fully authored costs three times as much,
+    # with identical cells. Backfilling the cast took it from 158 to 213 and
+    # failed a check that had nothing to say about the change.
+    #
+    # What the bound is actually for is that a cell carries a LEAD and not the
+    # whole field, and that is a property of the cell. The generator caps a lead
+    # at DISPOSITION_LIMIT (96) plus an ellipsis, so a cell materially over that
+    # means the extractor stopped extracting -- which is precisely the mutation
+    # this suite verifies against, and which produced ~600-byte cells.
+    $cellLengths = @()
+    foreach ($row in $dispositionRows) {
+        $cells = @($row.Groups['cells'].Value -split '\|')
+        foreach ($cell in @($cells[1..($cells.Count - 1)])) {
+            $cellLengths += [System.Text.Encoding]::UTF8.GetByteCount($cell.Trim())
+        }
+    }
+    Assert-True ($cellLengths.Count -gt 0) "Test precondition failed: no disposition cells were parsed."
+    $longest = ($cellLengths | Measure-Object -Maximum).Maximum
+    $mean = [int](($cellLengths | Measure-Object -Average).Average)
+    Assert-True ($longest -le 140) "A disposition cell runs to $longest bytes; the generator caps a lead at 96 plus an ellipsis, so the extractor is carrying the field rather than its lead."
+    Assert-True ($mean -le 90) "Disposition cells average $mean bytes; individually short enough but collectively long enough that this has stopped being an index."
 
     # Currency: a new entity in the ledger must make the checked-in roster stale.
     $newEntity = @"

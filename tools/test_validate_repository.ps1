@@ -94,11 +94,35 @@ function New-RepositoryCopy {
 }
 
 function Edit-FixtureFile {
-    param([string]$Path, [string]$Find, [string]$Replace)
+    param([string]$Path, [string]$Find, [string]$Replace, [switch]$First)
 
     $text = [System.IO.File]::ReadAllText($Path)
     if (-not $text.Contains($Find)) {
         throw "Fixture anchor not found in $Path -- the live file moved and this leg is no longer testing what it claims."
+    }
+    # String.Replace below rewrites EVERY occurrence, so a non-unique anchor
+    # mutates more of the fixture than the leg describes and the validator then
+    # fails for a reason the assertion does not name. Anchors here are chosen to
+    # be structural (a YAML key) rather than prose, and prose is exactly what
+    # ordinary play rewrites -- so the risk this guards is an anchor that becomes
+    # ambiguous later, not one that goes missing.
+    $occurrences = ([regex]::Matches($text, [regex]::Escape($Find))).Count
+    if (-not $First -and $occurrences -ne 1) {
+        throw "Fixture anchor matches $occurrences times in $Path -- it must match exactly once, or this leg mutates more than it claims to."
+    }
+    # -First is for a leg whose claim is "SOME record of this shape is invalid"
+    # rather than "this particular one is". The campaign legitimately holds many
+    # quests of the same Rank paying the same XP -- two D-Rank Hidden quests at
+    # 150 as of Checkpoint 0116 -- so requiring a unique anchor there would pin
+    # the leg to how many of them exist, which is a number ordinary play moves.
+    # Mutating exactly the first is deterministic and satisfies the claim.
+    if ($First) {
+        $index = $text.IndexOf($Find)
+        [System.IO.File]::WriteAllText(
+            $Path,
+            $text.Remove($index, $Find.Length).Insert($index, $Replace),
+            [System.Text.UTF8Encoding]::new($false))
+        return
     }
     # ReadAllText/WriteAllText round-trips line endings untouched. A whole-file
     # rewrite that flips LF to CRLF silently disables the anchored regexes in the
@@ -143,6 +167,7 @@ try {
     Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
     $wrongXpRoot = $legRoot
     Edit-FixtureFile -Path (Join-Path $wrongXpRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
+        -First `
         -Find "          reward_rank: D-Rank`n          reward_xp: 150" `
         -Replace "          reward_rank: D-Rank`n          reward_xp: 999"
     $wrongXp = Invoke-Validator -Root $wrongXpRoot
@@ -159,6 +184,7 @@ try {
     Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
     $missingRankRoot = $legRoot
     Edit-FixtureFile -Path (Join-Path $missingRankRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
+        -First `
         -Find "          reward_rank: D-Rank`n          reward_xp: 150" `
         -Replace "          reward_xp: 150"
     $missingRank = Invoke-Validator -Root $missingRankRoot
@@ -175,8 +201,8 @@ try {
     Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
     $unknownKindRoot = $legRoot
     Edit-FixtureFile -Path (Join-Path $unknownKindRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
-        -Find "      materials:`n        # Crystals, cores" `
-        -Replace "      trinkets:`n        # Crystals, cores"
+        -Find "      materials:" `
+        -Replace "      trinkets:"
     $unknownKind = Invoke-Validator -Root $unknownKindRoot
     if ($unknownKind.ExitCode -eq 0) {
         throw "Expected an inventory declaring a kind Section 15.3.2 does not name to fail validation."
@@ -209,8 +235,8 @@ try {
     Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
     $duplicateKindRoot = $legRoot
     Edit-FixtureFile -Path (Join-Path $duplicateKindRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
-        -Find "      special:`n        # Worth not mechanical" `
-        -Replace "      gear:`n        # Worth not mechanical"
+        -Find "      special:" `
+        -Replace "      gear:"
     $duplicateKind = Invoke-Validator -Root $duplicateKindRoot
     if ($duplicateKind.ExitCode -eq 0) {
         throw "Expected an inventory declaring one kind twice and omitting another to fail validation."

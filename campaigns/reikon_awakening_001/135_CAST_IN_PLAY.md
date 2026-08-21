@@ -55,6 +55,6 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 
 - Generation schema: `1.1`.
 - Entities: 7. Protagonist relationships: 9.
-- Characters: 7. Disposition authored in full: 0; partial: 0; none: 7.
+- Characters: 7. Disposition authored in full: 0; partial: 0; none: 7. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

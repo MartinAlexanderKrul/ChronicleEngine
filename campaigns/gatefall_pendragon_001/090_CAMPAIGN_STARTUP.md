@@ -9,7 +9,7 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.87"
+world_rule_profile: "Gatefall World Rule Profile 1.88"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
@@ -19,7 +19,7 @@ initialization_state: resumable
 # failures. Characters recorded after it carry want, fear, secret, voice and an agenda.
 # Removing this line does not disable the check; it widens it to the whole cast.
 disposition_baseline: ENT-000210
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0115
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0116
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 selection_caveat: "Active campaign; resumable from its latest checkpoint."

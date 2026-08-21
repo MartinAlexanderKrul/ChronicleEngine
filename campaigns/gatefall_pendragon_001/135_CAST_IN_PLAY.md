@@ -88,6 +88,8 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000204` | Marisela Kwan | strike captain | active | Chicago | `REL-000097` |
 | `ENT-000205` | Reston | harvest-element miner | active | Chicago | — |
 | `ENT-000212` | Hollis Rennard | containment monitor | active | **Outside the fenced warehouse's perimeter fence, on the cracke… | `REL-000099` |
+| `ENT-000213` | Junia Okonkwo | containment specialist | active | the fenced warehouse | — |
+| `ENT-000214` | Emmett Hargrave | unawakened; role unestablished | active | the fenced warehouse | — |
 
 ---
 
@@ -100,43 +102,43 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | Entity | Name | Want | Fear | Secret | Voice |
 |---|---|---|---|---|---|
 | `ENT-000126` | Tanya Voss | To be right about the people she takes a chance on | A crew that does not all walk out, on a call she made | How thin the Red Line margin actually was | Short declaratives, no softening, no small talk before business |
-| `ENT-000127` | Marcus Aldridge | — | — | — | — |
-| `ENT-000128` | Elias Voss | — | — | — | — |
-| `ENT-000129` | Dr. Sarah Chen | — | — | — | — |
+| `ENT-000127` | Marcus Aldridge | To be believed on a read before it is confirmed | Being right and disregarded | He noticed something sitting unresolved behind Alexander's eyes at the walk-out and has never a… | Says the read once, in as few words as it takes, and does not repeat it |
+| `ENT-000128` | Elias Voss | To be the reason the new ones come back out | The line going while his sister is behind it | How much of the reassurance is his own nerves, spent outward | Warm and immediate — **first to introduce himself**, first to tell a stranger they will be cove… |
+| `ENT-000129` | Dr. Sarah Chen | To stay independent and still have enough to spend | The one she banked being the one that was needed | She knows the exact order and count of everyone she has ever spent a touch on, and everyone she… | Calm, unhurried, and **states her limits as numbers rather than as feelings** — how many touche… |
 | `ENT-000130` | Kesha Morrison | Her hunters come back, and the co-op desk keeps mattering against the guilds | Filing the posting that kills someone | She has been quietly routing good work toward Alexander since Red Line, and has never said so | Talks in board terms |
-| `ENT-000131` | Diane Halloran | — | — | — | — |
-| `ENT-000134` | Ada Reyes | — | — | — | — |
+| `ENT-000131` | Diane Halloran | The people she fits to come back through the door | Kit she fitted failing on someone | She keeps track of who comes back | Plainspoken and unhurried, **sizing you while she talks** and saying what a piece is for rather… |
+| `ENT-000134` | Ada Reyes | Her manifests to be right and her word to be worth something | Vouching for someone who then costs the contractor | She knows the payout estimate she gave Alexander off the cuff was too low | Briefs in protocol, not in prose |
 | `ENT-000135` | Dale Pruitt | Eight combat-rated bodies, before the client stops waiting | That his operation is one lost client from being a name other people post under | The bigger client has let him understand that the eight-body requirement is about the filing, n… | Dry, unhurried, and deflationary about his own position before anyone else can be |
-| `ENT-000178` | Tomas Alvarez | — | — | — | — |
-| `ENT-000179` | Denny Osei | — | — | — | — |
-| `ENT-000180` | Marisol Ruiz | — | — | — | — |
-| `ENT-000136` | Priya Okafor | — | — | — | — |
-| `ENT-000137` | Julian Boyd | — | — | — | — |
-| `ENT-000138` | Renata Marchetti | — | — | — | — |
+| `ENT-000178` | Tomas Alvarez | A clear that stays boring | Something reaching the harvest line behind him | Unauthored | The once-over before the greeting |
+| `ENT-000179` | Denny Osei | Unauthored | Unauthored | Unauthored | Barely established |
+| `ENT-000180` | Marisol Ruiz | Unauthored | Unauthored | Unauthored | Barely established |
+| `ENT-000136` | Priya Okafor | A crew that makes room for the people other crews will not | That the room she makes is the reason people can afford to leave | What the fumbled intercept cost her | Owns the error before anyone else reaches it |
+| `ENT-000137` | Julian Boyd | To be trusted to hold fire | Not being told in time | Unauthored | A lazy half-salute instead of a sentence |
+| `ENT-000138` | Renata Marchetti | To be listened to when she says something is wrong | Being right and late | Unauthored | Lays out the live options and does not choose between them |
 | `ENT-000139` | Owen Callahan | More time where Alexander is, and the version of that is the crew | The four seconds | He knows Alexander is something the world has no explanation for, and carries it alone | Leads with the rule, not the feeling |
 | `ENT-000146` | Wade Bishop | To make his numbers and keep his standing | The fourth funeral, and the file that would make it his | The roster padding is routine, and the bench names come from Brannigan's office | Says the bad thing first, in the flattest available words |
 | `ENT-000147` | Walt Adamik | Something for Nadia | Whatever frightened a man who does not frighten | Nadia, and what the money is actually for | Narrates his own inventory like it's a bedtime story |
 | `ENT-000206` | Sal Prykowski | Unauthored | Established, and it is the whole of what canon holds about him | He knows what CONSULT means | Unestablished |
-| `ENT-000207` | Nadia Adamik | — | — | — | — |
-| `ENT-000208` | Yusuf Baptiste | — | — | — | — |
-| `ENT-000209` | Bettina Ochoa | — | — | — | — |
-| `ENT-000149` | the Cutting Edge proprietor | — | — | — | — |
-| `ENT-000168` | Milo Brandt | — | — | — | — |
-| `ENT-000141` | Sable | — | — | — | — |
-| `ENT-000142` | Kern | — | — | — | — |
-| `ENT-000143` | Ruth Kowalczyk | — | — | — | — |
-| `ENT-000144` | Denny Prosser | — | — | — | — |
-| `ENT-000148` | Denise Ferro | — | — | — | — |
-| `ENT-000169` | Voula Stamatis | — | — | — | — |
-| `ENT-000172` | Curtis Marsh | — | — | — | — |
-| `ENT-000173` | Reggie Calloway | — | — | — | — |
-| `ENT-000174` | Bhavna Iyer | — | — | — | — |
-| `ENT-000175` | Foster Nakashima | — | — | — | — |
-| `ENT-000176` | Callie Dunmore | — | — | — | — |
-| `ENT-000177` | Elias Ward | — | — | — | — |
-| `ENT-000181` | Corinne Whitlock | — | — | — | — |
+| `ENT-000207` | Nadia Adamik | Unauthored, and deliberately so | Unauthored | Unauthored | Unestablished by contact, and a Runtime should not supply it |
+| `ENT-000208` | Yusuf Baptiste | To know the roster before he signs it | Unauthored | Unauthored | Unestablished by direct contact |
+| `ENT-000209` | Bettina Ochoa | Not to be a body again | Unauthored | Unauthored | Unestablished by direct contact |
+| `ENT-000149` | the Cutting Edge proprietor | To keep his mark meaning something | Work of his turning up attached to material he cannot account for | Whether he forges the mana work himself or subcontracts it | Explains the rule and its reason, once, then stops |
+| `ENT-000168` | Milo Brandt | A way to be useful in a fight without the gift for it | That the substitute does not actually substitute | Unauthored | Easy and unguarded, comfortable being watched |
+| `ENT-000141` | Sable | Sable & Kern to become a contractor the Coalition posts to by default | A job going wrong while the firm is still new enough to be defined by it | How thin the operation's margin is | Works from a paper map and points at it |
+| `ENT-000142` | Kern | The numbers to come out even | Unauthored | Unauthored | One useful sentence, offered once |
+| `ENT-000143` | Ruth Kowalczyk | The technique to survive her | Unauthored | Unauthored | A short nod or an unremarked silence in place of praise |
+| `ENT-000144` | Denny Prosser | Unauthored | Unauthored | Unauthored | Unestablished |
+| `ENT-000148` | Denise Ferro | Unauthored | Unauthored | Unauthored | Unestablished by contact |
+| `ENT-000169` | Voula Stamatis | People fed, on her terms | Unauthored | Unauthored | Decides for people rather than asking them |
+| `ENT-000172` | Curtis Marsh | To finish the call | Unauthored | Unauthored | Corrects the premise before answering the question |
+| `ENT-000173` | Reggie Calloway | To take doors first and have it mean something | Walking into another one unwarned | Unauthored | Dry deflection the instant the adrenaline spikes |
+| `ENT-000174` | Bhavna Iyer | A line to shoot down | Being blamed for the angle she was not given | Unauthored | Reports the read as a count |
+| `ENT-000175` | Foster Nakashima | Nothing to come from behind | Unauthored | Unauthored | Says little and holds position |
+| `ENT-000176` | Callie Dunmore | To be where the fight opens | Arriving after it is over again | Unauthored | Openly impressed and unembarrassed about it |
+| `ENT-000177` | Elias Ward | Unauthored | Unauthored | Unauthored | Unestablished by contact |
+| `ENT-000181` | Corinne Whitlock | A signed lease, and the viewing to go well for the people in it | Unauthored | Unauthored | Brisk, professional and tactful |
 | `ENT-000182` | Reyna Castillo | A plan she can see before she is inside it | Trusting another lead's plan she never saw | Her own part in the pull that broke her crew | Brief, businesslike, no small talk |
-| `ENT-000183` | Petra Nowak | — | — | — | — |
+| `ENT-000183` | Petra Nowak | To stay the person both sides come to | Being owned by one side of it | What she has traded in the other direction, and to whom | Calls the cover story rather than letting it run |
 | `ENT-000184` | Marcus Whitlow | Work that asks something of him | Stagnation — being skilled enough to coast, and that coasting being the whole of his career | How badly the read landed | Wary first, then **direct without ceremony** |
 | `ENT-000185` | Soraya Delgado | To have the read behind the shooting actually used | Being promised real training again and watching it not materialise | Not established, and her one unanswered question is the live thread instead | Pointed, specific, and willing to wait for the whole answer |
 | `ENT-000186` | Grant Okwuosa | To be judged on what someone watched him do | Another two years of being steady and willing and nobody looking | How much the element lead mattered | Steady and willing on the surface |
@@ -148,18 +150,20 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000196` | Dana Whitcombe | To know what she is actually in | Dying to something nobody told her about | Not established, and the record leaves it that way | Says what she means without padding it |
 | `ENT-000197` | Warren Sato | Not to be the one cut off again | Being isolated and having to hold | Why he has not committed | Quiet, and not the type to commit loudly |
 | `ENT-000198` | Rosalind Fenn | To be paid on results and to keep the Walt Adamik referral channel clean | Being treated as a breach specialist | Discharged at `EVT-000490` and replaced by what it was hiding | Asks only what she needs to start, then asks pointedly |
-| `ENT-000199` | Duane | — | — | — | — |
+| `ENT-000199` | Duane | To be paid without learning anything | Unauthored | What he has already not asked about | No small talk, no questions past the day and the rate |
 | `ENT-000203` | Priscilla Nakamura | To build something she has not built before | Being wrong about an object in front of the person paying for the answer | She works for guilds without an invoice trail | Economical to the point of bluntness, and comfortable with silence |
-| `ENT-000204` | Marisela Kwan | — | — | — | — |
-| `ENT-000205` | Reston | — | — | — | — |
+| `ENT-000204` | Marisela Kwan | To keep the floor she puts under a job | Being priced into running at the minimum | Unauthored | A single confident handshake and no sizing-up theater |
+| `ENT-000205` | Reston | Unauthored | Unauthored | Unauthored | Not established — no dialogue exchanged |
 | `ENT-000212` | Hollis Rennard | A reading that says the thing is stable, so she can go home | That the numbers she has been filing for eleven weeks are wrong, and that her name is on every… | Spent at `EVT-000647`, and spent as a trade rather than a collapse | Talks to equipment more easily than to people, and states readings aloud like she is dictating… |
+| `ENT-000213` | Junia Okonkwo | To find out what the site is actually doing and to be the one who says so first - she was sent… | Being the specialist of record on a containment that was already failing before she arrived | Unestablished | Barely established, and honestly so |
+| `ENT-000214` | Emmett Hargrave | To hear the finding himself rather than read it in a filing | Whatever put his hands on top of his head when she said her sentence | Unestablished | Unestablished |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 65. Protagonist relationships: 20.
-- Characters: 54. Disposition authored in full: 21; partial: 0; none: 33.
+- Entities: 67. Protagonist relationships: 20.
+- Characters: 56. Disposition authored in full: 25; partial: 24; none: 7. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

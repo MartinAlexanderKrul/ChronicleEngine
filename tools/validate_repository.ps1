@@ -1585,7 +1585,11 @@ foreach ($file in $canonicalFiles) {
                 if ([string]::IsNullOrWhiteSpace($inventorySection)) {
                     Add-Failure "$relativePath`:$line Gatefall Profile 1.50 Bearer has no system_state.inventory section."
                 } else {
-                    $allowedKinds = @("keys", "consumables", "special", "gear", "materials")
+                    # Profile 1.88 adds "custody" -- a LOCATION group rather than a sixth kind
+                    # (Section 15.3.2). A custodied holding keeps its kind and renders in the
+                    # custody group instead of its kind group, so the list is what may appear
+                    # as a key under system_state.inventory, not what a holding may BE.
+                    $allowedKinds = @("keys", "consumables", "special", "gear", "materials", "custody")
                     $declaredKinds = @([regex]::Matches($inventorySection, '(?m)^[ \t]{6}([a-z_]+):[ \t]*$') |
                         ForEach-Object { $_.Groups[1].Value })
 

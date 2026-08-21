@@ -1211,3 +1211,25 @@ The player asked whether he could knock two people unconscious rather than kill 
 **Left open by the fix.** Profile 1.87 authors the attacker-side declaration and its resolution, and a contract suite now pins it. **The adoption Event is owed to play** — the campaign's live `profile_version` and startup pin were advanced because four version statements must agree for the gates to pass, but the narrative record of adopting 1.87 does not exist yet and belongs in a session rather than an engine change. It does **not** author a *defender*-side or third-party subdual (grapples, holds, restraints resolved as opposed actions), and it does not author what happens when a pulled strike is used against a monster - Section 6.5's finality is deliberately untouched and a Gate beast remains something you kill. Both are new rulings if they are ever asked for.
 
 **Related:** `F-040` (an earned technique's Rank authored from evidence while its mastery track was not) is the nearest neighbour in shape - a resolution surface that existed for one axis and silently not for another.
+
+---
+
+## F-043 — An item the Bearer still owns had nowhere to be, so the ledger deleted it
+
+**Raised:** 2026-08-21 - **Source:** `campaigns/gatefall_pendragon_001/`, player instruction during 2026-08-23 in-fiction play, after a `/system gear` render omitted six holdings he had not stopped owning
+
+**Status:** Actioned into Gatefall Profile 1.88 - Section 12.9's custody clause and Section 15.3.2's `IN CUSTODY` group. Pinned by `tools/test_gatefall_custody_contract.ps1`. See `worlds/gatefall/migrations/1.87_to_1.88.md`.
+
+**The sentence that caused it.** Section 12.9 opened: *"Every item he owns lives there **unless he has chosen to hold or wear it**."* That is exhaustive by construction and admits exactly two dispositions - **stored** or **carried**. The world routinely produces a third: an object the Bearer still owns that is physically in a named party's hands.
+
+**So the ledger deleted it, and the deletion is on the record.** `EVT-000636` removed the heartwood core-mass and the frost-fused carapace plating from `100_CHARACTER_SHEET.md` because both had gone into an artificer's custody at `EVT-000578`. **That repair was correct given the model** - the sheet had been rendering them as held inventory, which was also false, and one had already misrendered in a `/system gear` panel. The model offered two answers and both were wrong.
+
+**What the panel was omitting by 1.87.** A **Dormant Core [S-Rank]**, the highest-Rank object in the campaign; a **heartwood core-mass**; a **frost-fused carapace plating [B-Rank]**; **three C-Rank Mana Crystals** left as project stock; and a **Seer's Lens [D-Rank] pair** taken out of play by an open fusion. Six holdings, none sold, none given away, all still his - and none of them visible to him.
+
+**Why this is a defect class rather than one missing feature.** It is the same shape as `F-002`: a state the fiction produces constantly, with no representation, so its absence is indistinguishable from nothing being due. Nothing disagreed and no gate fired, because there was no field for a gate to read. It surfaced only when a human read a panel and noticed what was not on it - which is exactly how `F-037`'s stale-value class surfaces, one level down.
+
+**The load-bearing part of the fix, and the reason it is not merely a display change.** A custodied item is **not a legal target for Section 12.9 remote storage**, *despite* satisfying that clause's bare wording - a core on a bench is genuinely "not held, worn, or carried" by anyone. Without that exclusion the Bearer could silently recall anything he had ever handed over, and **a custody a Bearer can reverse by thinking about it is not a custody.** The clause names consent as the reason and makes recovery an act in the fiction.
+
+**Left open by the fix.** Custody **in the other direction** - an item someone else owns that the Bearer is holding - has the same shape and is not authored. The Ironline roster folder he physically carries is the live example and is still modelled as ordinary Special inventory. Also unauthored: what happens when a holder refuses to return, sells, or denies holding a custodied item; and any notion of escrow, insurance, or a holding fee. **And the six existing Nakamura holdings are not restored by the migration** - reconstructing them needs holder, since, and end condition from campaign canon, which is play and is owed at the next session.
+
+**Related:** `F-002` (a mechanism unreachable while every gate stayed green), `F-037` (a stored value drifting from its own rule with nothing to disagree with it).

@@ -77,6 +77,21 @@ DISPOSITION_FIELDS = ("want", "fear", "secret", "voice")
 DISPOSITION_LEAD = re.compile(r"^\s*\*\*(?P<lead>[^*].*?)\*\*", re.DOTALL)
 DISPOSITION_LIMIT = 96
 
+# A field may be authored and still say that canon establishes nothing -- the
+# ledger's convention is an explicit `**Unauthored.**` or `**Unestablished.**`,
+# which is better than an empty field because it distinguishes a gap canon owns
+# from one an author overlooked, and tells a Runtime to author at the turn
+# (Decision 092).
+#
+# The coverage counters below are the BACKFILL WORKLIST, so they must not count
+# those as covered. Doing so reported a cast as fully authored when a third of it
+# had been deliberately marked as having nothing to author from, which is exactly
+# the reading the worklist exists to prevent.
+DISPOSITION_UNESTABLISHED = re.compile(
+    r"^\s*(?:\*\*)?(?:Unauthored|Unestablished|Not established|Barely established)",
+    re.IGNORECASE,
+)
+
 
 def parse_blocks(path: Path) -> list[dict[str, Any]]:
     """Every well-formed mapping block in a ledger, in file order.
@@ -246,7 +261,10 @@ def build_rows(
             continue
         characters += 1
         cells = [render_disposition(state.get(field)) for field in DISPOSITION_FIELDS]
-        authored = sum(1 for cell in cells if cell)
+        authored = sum(
+            1 for cell in cells
+            if cell and not DISPOSITION_UNESTABLISHED.match(cell)
+        )
         if authored == len(DISPOSITION_FIELDS):
             fully_authored += 1
         elif authored == 0:
@@ -347,7 +365,9 @@ def render(
             f"- Entities: {entities}. Protagonist relationships: {relationships}.",
             f"- Characters: {coverage['characters']}. Disposition authored in full: "
             f"{coverage['full']}; partial: {coverage['partial']}; none: "
-            f"{coverage['none']}.",
+            f"{coverage['none']}. A field declaring itself unauthored or "
+            "unestablished counts as not authored here — the count is the "
+            "backfill worklist, not a completeness score.",
             "- Run `tools/generate_campaign_cast.ps1` after any change to "
             f"`{NPC_LEDGER}`; the save operation plan runs it at every checkpoint.",
             "- Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte "

@@ -3647,7 +3647,7 @@ canonical_state:
   mechanism: "**One arrival event, delivered in pulses.** Each spike the Scar's perimeter has logged for a decade is an increment of it crossing. Standing in the room during one, the Bearer watched the absent part of the outline BE there for the length of the pulse, and the mass end fractionally larger."
   scale: "**What has arrived is a fraction of it.** From the far side its leading face is a cross-section: the bulk goes back past the range a phone torch reaches (`EVT-000668`)."
   contact_points: "**More than one.** A second, smaller face — about two metres — presses out of the same bulk at an unrelated angle, ninety-one paces along the volume, with **wet worked stone** caught in its edge and cold air coming through where the seal is imperfect. Consistent with the flooded gallery inside the Meridian warehouse's A-Rank Gate; **consistent, not confirmed** — nothing has crossed it and Flux Sight returns nothing from that side."
-  disposition: "**It has never reacted to the Bearer.** Whether it perceives at all is unestablished, and the record does not guess."
+  reaction: "**It has never reacted to the Bearer.** Whether it perceives at all is unestablished, and the record does not guess."
   magnitude: "**Deliberately unauthored.** No Rank, threshold, damage figure, pool or cost exists for this subject, because nothing has resolved against it. The first resolution that does requires an owner ruling before it is rolled."
   bearer_knowledge: "He has stood on the floor with it, read it three ways, and holds a live instrument figure for it. **Nobody else knows he was there.**"
 ```

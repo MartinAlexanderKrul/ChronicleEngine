@@ -131,11 +131,11 @@ trigger_telemetry:
   urgent_offers_issued: 1
   urgent_last_offered: "2026-08-22T21:08:00-05:00"
   urgent_dry_days: 0
-  concealed_records_available: 13
+  concealed_records_available: 15
   tracked_postings: 3
 ```
 
-**Reading it, 2026-08-23 04:42. The first Hidden quest this campaign has ever completed.** `hidden_pointers_attached` holds at 3 — nothing new attached — but one of the three **revealed and completed in the same action** (`EVT-000667`), which is what §8.4.3 does when the completion condition is met by the act that reveals it, and `concealed_records_available` falls **14 → 13** as `ENT-000151` leaves the pool. It paid **1,500 XP** and a level, against a figure of 700 at attachment: **Profile 1.89's repricing landed three days after that pointer attached and hours before it settled.**
+**Reading it, 2026-08-23 04:42. The first Hidden quest this campaign has ever completed.** `hidden_pointers_attached` holds at 3 — nothing new attached — but one of the three **revealed and completed in the same action** (`EVT-000667`), which is what §8.4.3 does when the completion condition is met by the act that reveals it, and `concealed_records_available` reads **15** — the count is total authored records less those currently attached, so a pointer completing and releasing its slot *raises* it (14 with three attached, 15 with two). It paid **1,500 XP** and a level, against a figure of 700 at attachment: **Profile 1.89's repricing landed three days after that pointer attached and hours before it settled.**
 
 **Nothing was attached this span, and one candidate was deliberately left standing.** `ENT-000217` — a volume behind an arrival, contacting the world at more than one point — is exactly the kind of unresolved thread §8.4.5's promotion ritual converts, and its time-separation rule bars a record authored and attached in the exchange that produced it. **It is available to a later scene.**
 

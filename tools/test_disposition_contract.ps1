@@ -107,6 +107,28 @@ function Add-CanonicalStateLines {
     return $inserted
 }
 
+# Strip any disposition the subject's LIVE record already carries, so each case
+# below asserts a CONSTRUCTED state rather than inheriting one. Without this the
+# suite silently depends on the newest Character in the ledger happening to be
+# backlog -- which stopped being true the moment Decision 092 coverage was
+# authored for a freshly created NPC, and turned D-01, D-05, D-07 and D-10 into
+# false failures against a ledger that had just become MORE correct. A fixture
+# selects by property, never by live value.
+function Remove-CanonicalStateDisposition {
+    param([string]$Text, [string]$EntityId)
+
+    $pattern = '(?ms)(^id: ' + [regex]::Escape($EntityId) + '?$.*?)(?=^```)'
+    return [regex]::Replace($Text, $pattern, {
+        param($m)
+        $block = $m.Groups[1].Value
+        foreach ($field in @('want','fear','secret','voice','agenda','beliefs','disposition_class')) {
+            # A field line plus any folded continuation lines beneath it.
+            $block = [regex]::Replace($block, '(?ms)^[ 	]{2}' + $field + ':.*?(?=^[ 	]{2}[A-Za-z_]+:|^[A-Za-z_]+:)', '')
+        }
+        return $block
+    }, 1)
+}
+
 $agenda = @(
     '  agenda: "Working her way back onto a licensed roster on her own terms — trading on the Ironline refusal as evidence of judgement rather than hiding it."'
 )
@@ -200,11 +222,13 @@ try {
         Restore-FixtureFiles -Root $fixture -RestorePoint $restorePoint
         try {
             Set-CampaignBaseline -FixtureRoot $fixture -BaselineId $case.Baseline
+            $ledgerPath = Join-Path $fixture $ledgerRelative
+            $text = Get-Content -LiteralPath $ledgerPath -Raw
+            $text = Remove-CanonicalStateDisposition $text $case.Target
             if ($case.Lines.Count -gt 0) {
-                $ledgerPath = Join-Path $fixture $ledgerRelative
-                $text = Get-Content -LiteralPath $ledgerPath -Raw
-                [System.IO.File]::WriteAllText($ledgerPath, (Add-CanonicalStateLines $text $case.Target $case.Lines))
+                $text = Add-CanonicalStateLines $text $case.Target $case.Lines
             }
+            [System.IO.File]::WriteAllText($ledgerPath, $text)
             $result = Invoke-Validator $fixture
         } finally {
             Restore-FixtureFiles -Root $fixture -RestorePoint $restorePoint

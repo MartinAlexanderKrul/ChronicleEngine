@@ -733,7 +733,20 @@ def create_checkpoint(args: argparse.Namespace) -> int:
             ledger_ids,
         )
         manifest_path = staging / "900_SAVE_MANIFEST.md"
-        manifest_path.write_text(manifest_text, encoding="utf-8")
+        # write_bytes, not write_text. `Path.write_text` opens in text mode with
+        # newline=None, which translates every "\n" to os.linesep -- CRLF on
+        # Windows -- and this was the one call site in this file not going
+        # through `atomic_write_text`, which encodes first for exactly that
+        # reason. Every ledger the helper copies was LF-clean and every manifest
+        # it has ever generated was CRLF.
+        #
+        # That is not cosmetic here. `.gitattributes` declares `* text=auto
+        # eol=lf`, so the index held LF while the working tree held CRLF, and
+        # `git status` calls that clean -- the divergence is invisible until
+        # `test_line_endings.ps1` reads raw bytes. Meanwhile a `$`-anchored
+        # pattern cannot match a line ending in CR, so any check reading a
+        # manifest stops firing and reports success.
+        manifest_path.write_bytes(manifest_text.encode("utf-8"))
         manifest_hash = sha256(manifest_path)
 
         phase = "pointer-promotion"

@@ -302,6 +302,20 @@ try {
     $checkpoint = Join-Path $successRoot "campaigns/example/saves/900_CHECKPOINT_0002"
     Assert-True (Test-Path -LiteralPath $checkpoint -PathType Container) "Checkpoint 0002 was not promoted."
     Assert-True ((Get-ChildItem -LiteralPath $checkpoint -File).Count -eq 9) "Checkpoint does not contain eight ledgers plus manifest."
+
+    # The manifest is the one file the helper GENERATES rather than copies, and
+    # it was the one file it wrote through `Path.write_text` -- text mode, so
+    # every "\n" became CRLF on Windows. Every manifest the helper ever produced
+    # was CRLF while every ledger it copied was LF, and `.gitattributes` declares
+    # `* text=auto eol=lf`, so the index held LF, `git status` reported clean,
+    # and the divergence was invisible until something read raw bytes.
+    #
+    # It is checked here rather than only in `test_line_endings.ps1` because that
+    # suite reads the working tree: it can only see this AFTER a real checkpoint
+    # has been written into the repository, which is one save too late. This
+    # catches it at the point of generation.
+    $manifestBytes = [System.IO.File]::ReadAllBytes((Join-Path $checkpoint "900_SAVE_MANIFEST.md"))
+    Assert-True (-not ($manifestBytes -contains [byte]13)) "The generated manifest contains CR bytes. `.gitattributes` declares LF, so the index and the working tree will disagree while git reports clean, and a `$`-anchored pattern cannot match a line ending in CR -- every check reading a manifest stops firing and reports success."
     $largeCopyHash = (Get-FileHash -LiteralPath (Join-Path $checkpoint "130_NPCS_AND_FACTIONS.md") -Algorithm SHA256).Hash
     Assert-True ($largeHash -eq $largeCopyHash) "Large unchanged ledger was not copied byte-for-byte."
     Assert-True ((Get-Content -LiteralPath (Join-Path $successRoot "campaigns/example/090_CAMPAIGN_STARTUP.md") -Raw) -match '900_CHECKPOINT_0002') "Startup pointer was not updated."

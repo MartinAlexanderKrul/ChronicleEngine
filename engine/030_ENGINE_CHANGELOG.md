@@ -52,6 +52,28 @@ Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototy
 **Left open.** **No contract test asserts Section 6.2.1** — the existing combat and quest suites pass because they assert other properties, and a rule with no gate is a rule that can be deleted silently. Writing one, with a leg that provably fails when the section is removed, is owed. **The adoption Event is owed to play** and is deliberately not written here: minting `EVT-`, touching `160_CAMPAIGN_CHRONICLE.md`, `170_CHANGELOG.md` or `system/ID_REGISTRY.md` is canon under save discipline and belongs in a session, not an engine change. The campaign's live `profile_version` and startup pin are advanced because the gates require the four version statements to agree; **the narrative record of adopting 1.87 does not exist yet.**
 
 
+## 2026-08-21 — Every save manifest ever generated was CRLF
+
+**Engine tooling; refinement under Decision 069, owned by Version 0.4.** No Rules section, no Data Model change, nothing a world must satisfy.
+
+**Problem: one call site out of the file's own convention.** `tools/new_checkpoint.py` writes every ledger through `atomic_write_text`, which encodes to bytes before writing and therefore performs no newline translation. The manifest — the only file the helper **generates** rather than copies — went through `Path.write_text` instead, which opens in text mode with `newline=None` and translates every `\n` to `os.linesep`. On Windows that is CRLF.
+
+**So every checkpoint the helper has ever written carries a CRLF manifest beside eight LF ledgers**, and nothing noticed for as long as the helper has existed. `.gitattributes` declares `* text=auto eol=lf`, so the index held LF while the working tree held CRLF, `git status` called it clean, and the divergence was invisible to everything except a raw-byte reader. `test_line_endings.ps1` is that reader and it did eventually catch it — seven manifests at once, `0105` through `0111`, during an unrelated merge — but the finding was recorded there as checkout drift rather than traced to its cause. It recurred immediately on `0116`, which is what identified the writer.
+
+**Why it is not cosmetic.** A `$`-anchored pattern cannot match a line ending in CR, so any check reading a manifest silently stops firing and reports success. That is the failure mode `test_line_endings.ps1`'s own message names, and manifests are read by the checkpoint contract, the lineage checks and the index-synchronisation gate.
+
+**Change:** `manifest_path.write_bytes(manifest_text.encode("utf-8"))`, matching `atomic_write_text`'s approach, with the reason recorded at the call site so the next reader does not re-introduce text mode for tidiness.
+
+**A leg in `tools/test_transactional_checkpoint.ps1` asserts the generated manifest carries no CR byte.** It is sited there rather than left to `test_line_endings.ps1` because that suite reads the working tree — it can only see this *after* a real checkpoint has been written into the repository, which is one save too late. This catches it at the point of generation.
+
+**Files:** `tools/new_checkpoint.py`, `tools/test_transactional_checkpoint.ps1`, `engine/030_ENGINE_CHANGELOG.md`.
+
+**Audit:** mutation-verified — reverting the call site to `write_text` fails the new leg by name. Tier 3 green.
+
+**Nothing is left open, and the residue is smaller than it first looked.** Checked rather than assumed: `git ls-files --eol` reports **all 99 manifests in the index as `i/lf`**, and the eight ever observed as CRLF are `w/lf` again. `text=auto eol=lf` normalised on every `git add`, so the CRLF existed only in the working tree, between the helper writing a manifest and nothing in particular — it never reached committed canon, and a fresh checkout was always LF.
+
+So no promoted checkpoint was ever damaged and Rules Section 13.3 is not engaged. What the defect actually cost was a class of silent check failure on a live working tree, for as long as the helper has existed.
+
 ## 2026-08-20 — Decision 093: the engine gets a yes, and it reaches play now
 
 **Foundational under Decision 069, owned by Version 0.4 milestone 0.4.5, admitted post-freeze under Decision 086.** This is Version 0.4's **third** such admission and it enlarges `441_CAPABILITY_MATRIX.md`, the document blocking the version's postmortem. That cost was stated before the ruling and taken deliberately.

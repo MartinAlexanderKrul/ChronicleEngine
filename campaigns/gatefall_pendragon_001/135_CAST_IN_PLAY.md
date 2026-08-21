@@ -87,6 +87,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000203` | Priscilla Nakamura | artificer | active | **Her workshop — a flat brick front on a side street off LaSall… | `REL-000096` |
 | `ENT-000204` | Marisela Kwan | strike captain | active | Chicago | `REL-000097` |
 | `ENT-000205` | Reston | harvest-element miner | active | Chicago | — |
+| `ENT-000212` | Hollis Rennard | containment monitor | active | **Outside the fenced warehouse's perimeter fence, on the cracke… | `REL-000099` |
 
 ---
 
@@ -151,13 +152,14 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000203` | Priscilla Nakamura | To build something she has not built before | Being wrong about an object in front of the person paying for the answer | She works for guilds without an invoice trail | Economical to the point of bluntness, and comfortable with silence |
 | `ENT-000204` | Marisela Kwan | — | — | — | — |
 | `ENT-000205` | Reston | — | — | — | — |
+| `ENT-000212` | Hollis Rennard | A reading that says the thing is stable, so she can go home | That the numbers she has been filing for eleven weeks are wrong, and that her name is on every… | Spent at `EVT-000647`, and spent as a trade rather than a collapse | Talks to equipment more easily than to people, and states readings aloud like she is dictating… |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 64. Protagonist relationships: 19.
-- Characters: 53. Disposition authored in full: 20; partial: 0; none: 33.
+- Entities: 65. Protagonist relationships: 20.
+- Characters: 54. Disposition authored in full: 21; partial: 0; none: 33.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

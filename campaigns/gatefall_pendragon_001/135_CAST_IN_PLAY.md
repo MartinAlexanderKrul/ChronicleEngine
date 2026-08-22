@@ -99,6 +99,8 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000221` | the eleven correlation logbooks | evidence — documents | active | the correlated-face monitoring room | — |
 | `ENT-000222` | Laurel Bianchi | BGM Region V liaison | active | BGM Region V Field Office | — |
 | `ENT-000223` | Desmond Farraday | BGM Region V official | active | BGM Region V Field Office | — |
+| `ENT-000224` | Teresa Vance | journalist - trade beat | active | Unestablished - worked entirely by phone. Chicago is implied by… | — |
+| `ENT-000225` | Marguerite | media liaison - independent | active | Unestablished. Chicago is implied by Kesha Morrison's ability t… | — |
 
 ---
 
@@ -168,13 +170,15 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000214` | Emmett Hargrave | To hear the finding himself rather than read it in a filing | Whatever put his hands on top of his head when she said her sentence | Unestablished | Unestablished |
 | `ENT-000222` | Laurel Bianchi | To be the one who starts the relationship with a newly-confirmed, unaffiliated S-Rank well — ge… | Unstated; not yet tested in play | Knew the Director was off-site before admitting it, and caught herself rather than pretending o… | Polished, direct once pressed, allergic to overselling |
 | `ENT-000223` | Desmond Farraday | A cooperative, non-adversarial relationship with a free-agent S-Rank rather than an unaccountab… | An S-Rank deciding BGM is irrelevant and acting alone — named this fear to Alexander directly r… | None surfaced directly; a Legendary Keen Sense read found his rapport-building posture (sitting… | Plain, names walls directly rather than softening them, doesn't fill silence |
+| `ENT-000224` | Teresa Vance | The story confirmed in his own words before she runs it | Running it wrong | Who inside Region V gave her the name | States the awkward thing first and then explains why she is saying it |
+| `ENT-000225` | Marguerite | Unauthored | Unauthored | Unauthored | Unestablished by contact - no line of hers has been narrated |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 76. Protagonist relationships: 20.
-- Characters: 58. Disposition authored in full: 27; partial: 24; none: 7. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 78. Protagonist relationships: 20.
+- Characters: 60. Disposition authored in full: 28; partial: 24; none: 8. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

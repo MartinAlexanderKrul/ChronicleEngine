@@ -99,18 +99,23 @@ Assert-True ($s188 -match '(?i)only ground he can arrive at knowing|never blind'
 
 # --- distance is containers, never metres -----------------------------------
 
-Assert-True ($s188 -match '(?i)never in metres|not in metres') `
+Assert-True ($s188 -match '(?i)not asked to invent metres|never in metres|not in metres') `
     "Section 18.8 prices the travelling step in metres. Gatefall tracks no coordinates and the Runtime must not be asked to invent any."
-# Scoped to the ladder itself. A bare 'district' is satisfied by the prose
-# around it -- the instance-mouth clause and the Section 9.1.3 reference -- and
-# proves nothing about the ladder having a district rung.
+
+# Scoped to the ladder block itself. A bare band name is satisfied by the prose
+# around it and proves nothing about the ladder carrying that rung.
 $manaLadder = [regex]::Match($s188, '(?s)```text.*?```')
 Assert-True $manaLadder.Success "Section 18.8 has no Mana ladder block; the travelling step is unpriced."
 if ($manaLadder.Success) {
-    foreach ($rung in @('line of sight', 'place entity', 'district', 'metro')) {
-        Assert-True ($manaLadder.Value -match [regex]::Escape($rung)) `
-            "Section 18.8's Mana ladder has no '$rung' rung, so that container scale is unpriced and the Runtime has to invent one."
+    # Anchored to the label column. 'further' also occurs in the doubling
+    # sentence beneath the ladder, which satisfied this leg while the BAND had
+    # been renamed away.
+    foreach ($rung in @('line of sight', 'close by', 'further', 'the city')) {
+        Assert-True ($manaLadder.Value -match ('(?m)^\s{2,}' + [regex]::Escape($rung) + '\s{2,}')) `
+            "Section 18.8's Mana ladder has no '$rung' band in its label column, so that scale is unpriced and the Runtime has to invent one."
     }
+    Assert-True ($manaLadder.Value -match '(?i)doubl') `
+        "Section 18.8's Mana ladder does not escalate past the metro. A flat ladder makes crossing a continent cost the same as crossing a street."
 }
 Assert-True ($s188 -match '(?i)ambiguity resolves \*against\* the Bearer|resolves against the Bearer') `
     "Section 18.8 does not say which way an unplaceable destination resolves, so a vague destination becomes the cheap one."
@@ -123,14 +128,14 @@ Assert-True ($s188 -match '(?i)ambiguity resolves \*against\* the Bearer|resolve
 # Scoped to the boundary rule's own paragraph. Naming a sealed-instance type
 # anywhere in a 60-line section proves nothing about the boundary rule listing
 # it, and 'red gate' occurs in the section's own prose regardless.
-$boundary = [regex]::Match($s188, '(?m)^- \*\*No rift-step crosses an instance boundary.*?(?=\r?\n- \*\*|\r?\n\r?\n\|)', 'Singleline')
+$boundary = [regex]::Match($s188, '(?m)^- \*\*The ordinary travelling step is bound by the world.s own walls.*?(?=\r?\n- \*\*)', 'Singleline')
 Assert-True $boundary.Success `
-    "Section 18.8 has no instance-boundary rule. A red gate seals until its boss dies, a penalty zone has 'no other exit and no retreat', and Section 13.2's loot declaration presumes the clear window -- all three are repealed by a class that can step out."
+    "Section 18.8 has no instance-boundary rule on the ordinary travelling step. A red gate seals until its boss dies, a penalty zone has 'no other exit and no retreat', and Section 13.2's loot declaration presumes the clear window."
 if ($boundary.Success) {
     # The enumeration itself, not the paragraph. The rationale sentence beneath
     # it also names a red gate, and satisfied this leg while the LIST had lost
     # it -- which is exactly the omission that would open the hole.
-    $sealedList = [regex]::Match($boundary.Value, '(?s)Not out of a Gate.*?not into one')
+    $sealedList = [regex]::Match($boundary.Value, '(?s)not out of a Gate.*?not into one')
     Assert-True $sealedList.Success `
         "Section 18.8's boundary rule states no enumeration of what it covers."
     foreach ($sealed in @('red gate', 'instant dungeon', 'penalty zone', 'trial')) {
@@ -139,6 +144,29 @@ if ($boundary.Success) {
     }
     Assert-True ($boundary.Value -match '(?i)either direction|not into one') `
         "Section 18.8's boundary rule is one-way; stepping INTO a sealed instance bypasses the mouth just as badly as stepping out."
+}
+
+# --- the anchored step: unrestricted and flat, with exactly two exceptions ---
+#
+# 1.97's ruling. The anchor is the free half and the ordinary step is the bound
+# half; the two System-built instances are the only walls an anchor respects,
+# because a penalty zone with a back door is not a penalty and it is the
+# campaign's last imposed danger source (F-046).
+
+$anchored = [regex]::Match($s188, '(?m)^- \*\*An anchored step is unrestricted.*?(?=\r?\n- \*\*)', 'Singleline')
+Assert-True $anchored.Success `
+    "Section 18.8 authors no unrestricted anchored step, so an anchor is once again just a cheaper destination."
+if ($anchored.Success) {
+    Assert-True ($anchored.Value -match '(?i)flat') `
+        "The anchored step is not flat-priced; distance bands on it would make a far anchor worse than a near one and defeat the point of holding it."
+    Assert-True ($anchored.Value -match '(?i)not bound by the walls|unbound by the instance walls|crosses out of a Gate') `
+        "The anchored step does not state that it ignores the instance walls, which is the whole of what 1.97 gave it."
+    foreach ($exception in @('8.3', '18.2')) {
+        Assert-True ($anchored.Value -match [regex]::Escape($exception)) `
+            "The anchored step's exception list does not name Section $exception. Both System-built instances must be excepted or the imposed content becomes opt-out."
+    }
+    Assert-True ($anchored.Value -match '(?i)only these two|two exceptions') `
+        "The anchored step's exceptions are not closed. An open-ended exception list lets any section claim one and the grant erodes."
 }
 
 # --- anchors are held ground, not a shortcut --------------------------------

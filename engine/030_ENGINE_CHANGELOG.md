@@ -12,6 +12,26 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-24 — Gatefall Profile 1.97: the anchor is the free half, the ordinary step is the bound half
+
+**World content under Decision 069 point 4 and Decision 062.** Legs 1 and 2 clean, `011_ENGINE_DATA_MODEL.md` untouched, no new state. Leg 3 not engaged — this retunes one Gatefall class's costs and relocates one restriction.
+
+**Problem: 1.96 put the restriction on the wrong half.** It priced every rift-step by which ledgered container held both ends (6/8/12/20/40) and laid one blanket instance-boundary rule across all steps, anchors included. The owner's ruling is the better split, and the argument is the class fantasy: **an anchor should be reachable from anywhere, flat; an ordinary step should carry both the distance cost and the walls.**
+
+**Change: three, and none touches anything outside Section 18.8.**
+
+- **Cost is soft described bands, not measured containers** — `1` in line of sight, `3` close by, `4` further, `5` anywhere in the metro, **doubling at each step past it** (10 / 20 / 40). Container pricing was precise and the wrong kind of precision: it turned every step into a lookup and made the cheapest possible step cost 6. Where two bands could both fit, the more expensive governs — ambiguity still resolves against the Bearer.
+- **The in-scene step drops from Mana 6 to 1.** Its price was never the Mana; at four figures of Intelligence a 6-Mana signature move is rationed by nothing, and **the once-per-exchange line is the constraint** and always was.
+- **An anchored step is unrestricted and flat at 5 from any distance**, and **it ignores the instance walls** — out of a Gate, out of a red gate, out of an instant dungeon, and back in. **Two exceptions and only two: the Section 8.3 penalty zone and the Section 18.2 class trial**, the two instances the System itself builds and which Section 6.7 already names as the content it picks *for* him. The forge has no back door — a penalty zone he could anchor out of is not a penalty, and it is the campaign's last imposed danger source (`F-046`). The ordinary travelling step keeps every wall it had.
+
+**Cost and what the gate proves.** `tools/test_gatefall_riftwalker_contract.ps1` gains the anchored-step legs and reshapes the boundary legs onto the ordinary step. **34 mutations, none vacuous** — after one leg proved vacuous because `further` occurs in the doubling sentence beneath the ladder as well as in its label column, and is now anchored to the column.
+
+**A defect this pass caught in the 1.96 edit itself:** the *"distance is measured in containers, never in metres"* bullet had survived a failed replacement, so 1.96 shipped a container framing above a band ladder that no longer matched it. The bullet is rewritten and the mismatch is gone; it was live only between this entry's two commits.
+
+**Left open.** Unchanged from `F-049`: the campaign-side Flash Step repair, the stale `cap_formula`, and the absence of any gate comparing a rendered skill line to its authored row. `EVT-`-level adoption of 1.96 and 1.97 is play.
+
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` (H1, version field, Compatibility Status, Section 18.8 core mechanic, cost bands, boundary rule, anchored step, both render blocks), `worlds/gatefall/migrations/1.96_to_1.97.md` (new), `migrations/INDEX.md`, `worlds/gatefall/README.md`, `campaigns/gatefall_pendragon_001/090_CAMPAIGN_STARTUP.md` (pin only), `system/WORLDS_AND_CAMPAIGNS.md`, `tools/test_gatefall_riftwalker_contract.ps1`.
+
 ## 2026-08-24 — Gatefall Profile 1.96: Riftwalker stops being a rune the Bearer already owned
 
 **World content under Decision 069 point 4 and Decision 062.** Legs 1 and 2 clean; `011_ENGINE_DATA_MODEL.md` untouched and no new stored state — anchors, cap formula and counters are all as 1.95 left them. Leg 3 is not engaged: every clause is a Gatefall skill or a Gatefall class ability, and no other world is bound.

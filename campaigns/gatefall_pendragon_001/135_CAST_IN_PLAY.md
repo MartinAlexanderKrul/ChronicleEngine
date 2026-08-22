@@ -40,7 +40,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000136` | Priya Okafor | crew leader / striker | active | Chicago | `REL-000065` |
 | `ENT-000137` | Julian Boyd | striker (ranged) | active | Chicago | — |
 | `ENT-000138` | Renata Marchetti | sensor / reader | active | Chicago | — |
-| `ENT-000139` | Owen Callahan | mender | active | **En route to Edgewater Hospital, 2026-08-19 07:50** | `REL-000066` |
+| `ENT-000139` | Owen Callahan | mender | active | Chicago | `REL-000066` |
 | `ENT-000146` | Wade Bishop | guild recruiter | active | Red Line Corridor | `REL-000068` |
 | `ENT-000147` | Walt Adamik | pawnbroker / grey-market dealer | active | Chicago | `REL-000069` |
 | `ENT-000206` | Sal Prykowski | salvage and surplus importer / grey-market supplier | active | Works out of a licensed salvage-and-surplus import operation in… | — |
@@ -97,6 +97,8 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000219` | the correlated-face monitoring room | monitoring facility | active | the second gallery | — |
 | `ENT-000220` | the unclassified warm object | unclassified artifact | active | the second gallery | — |
 | `ENT-000221` | the eleven correlation logbooks | evidence — documents | active | the correlated-face monitoring room | — |
+| `ENT-000222` | Laurel Bianchi | BGM Region V liaison | active | BGM Region V Field Office | — |
+| `ENT-000223` | Desmond Farraday | BGM Region V official | active | BGM Region V Field Office | — |
 
 ---
 
@@ -164,13 +166,15 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000212` | Hollis Rennard | A reading that says the thing is stable, so she can go home | That the numbers she has been filing for eleven weeks are wrong, and that her name is on every… | Spent at `EVT-000647`, and spent as a trade rather than a collapse | Talks to equipment more easily than to people, and states readings aloud like she is dictating… |
 | `ENT-000213` | Junia Okonkwo | To find out what the site is actually doing and to be the one who says so first - she was sent… | Being the specialist of record on a containment that was already failing before she arrived | Unestablished | Barely established, and honestly so |
 | `ENT-000214` | Emmett Hargrave | To hear the finding himself rather than read it in a filing | Whatever put his hands on top of his head when she said her sentence | Unestablished | Unestablished |
+| `ENT-000222` | Laurel Bianchi | To be the one who starts the relationship with a newly-confirmed, unaffiliated S-Rank well — ge… | Unstated; not yet tested in play | Knew the Director was off-site before admitting it, and caught herself rather than pretending o… | Polished, direct once pressed, allergic to overselling |
+| `ENT-000223` | Desmond Farraday | A cooperative, non-adversarial relationship with a free-agent S-Rank rather than an unaccountab… | An S-Rank deciding BGM is irrelevant and acting alone — named this fear to Alexander directly r… | None surfaced directly; a Legendary Keen Sense read found his rapport-building posture (sitting… | Plain, names walls directly rather than softening them, doesn't fill silence |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 74. Protagonist relationships: 20.
-- Characters: 56. Disposition authored in full: 25; partial: 24; none: 7. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 76. Protagonist relationships: 20.
+- Characters: 58. Disposition authored in full: 27; partial: 24; none: 7. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

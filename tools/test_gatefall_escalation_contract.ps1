@@ -70,12 +70,39 @@ Assert-True ($s92 -match 'escalation_tier') `
     "Section 9.2 names no tracked tier, so nothing records which distribution is live."
 Assert-True ($s92 -match 'escalation_credit') `
     "Section 9.2 names no credit accumulator, so pressure has no route into the ramp."
-Assert-True ($s92 -match '2027-02-24') `
-    "Section 9.2's schedule has no dated tier IV; a clock floor with no date is not a floor."
-Assert-True ($s92 -match '2027-05-24') `
-    "Section 9.2's schedule has no dated tier V."
+# The schedule is asserted as a shape, not as three literal dates, so retuning
+# the cadence does not turn this red -- but the shape has to hold.
+$scheduleDates = [regex]::Matches($s92, '\b(20\d\d-\d\d-\d\d)\b') |
+    ForEach-Object { [datetime]::ParseExact($_.Groups[1].Value, 'yyyy-MM-dd', $null) }
+Assert-True ($scheduleDates.Count -ge 3) `
+    "Section 9.2's schedule carries fewer than three dated rungs; a clock floor with no dates is not a floor."
+if ($scheduleDates.Count -ge 3) {
+    $gapOne = ($scheduleDates[1] - $scheduleDates[0]).Days
+    $gapTwo = ($scheduleDates[2] - $scheduleDates[1]).Days
+    Assert-True ($gapOne -gt 0 -and $gapTwo -gt 0) `
+        "Section 9.2's schedule dates are not in ascending order; the ramp must run forward."
+    Assert-True ($gapTwo -lt $gapOne) `
+        "Section 9.2's schedule intervals do not shorten. The Bible's curve is geometric with an asymptote, so each rung must arrive sooner than the last."
+}
+
+# The defect 1.94 fixed: a first rung further out than the campaign will ever
+# run is a table, not a clock. gatefall_pendragon_001 covered its whole System
+# Rank ladder in 33 in-fiction days.
+$firstRung = [regex]::Match($s92, '(?i)(\d+)\s+in-fiction days')
+Assert-True $firstRung.Success `
+    "Section 9.2's schedule does not state its first rung in in-fiction days, so nothing can check it is reachable."
+if ($firstRung.Success) {
+    Assert-True ([int]$firstRung.Groups[1].Value -le 60) `
+        "Section 9.2's first rung is more than 60 in-fiction days out. A campaign reached carded S-Rank in 33; a ramp slower than the story it runs inside never fires."
+}
 Assert-True ($s92 -match '(?m)^\s*\+8\s') `
     "Section 9.2's credit table does not price a new Scar, which is the largest thing a city can lose."
+
+# 1.94: the ordinary break is the series the Bible's clue-line charts, and a
+# credit table that only prices catastrophes reads everything except it. The
+# A-Rank-break line it replaced fired about once per seven thousand days.
+Assert-True ($s92 -match '(?mi)^\s*\+1\s+any break') `
+    "Section 9.2's credit table does not credit an ordinary break. The Bible's planted clue-line is a chart of break FREQUENCY; a table pricing only losses cannot produce that curve, and the pressure route goes dead."
 # In context. A bare \b20\b is satisfied by tier V's 20% C-Rank cell and by the
 # cross-reference to Section 20.5, and passed vacuously until it was scoped.
 Assert-True ($s92 -match '(?i)at \*\*20 the next tier|credit (?:reaches|reached) 20|threshold of 20') `
@@ -133,8 +160,16 @@ Assert-True ($s912 -match '(?i)on-route|ON HIS ROUTE|on his route') `
     "Section 9.12 does not restrict auditions to the on-route siting band."
 Assert-True ($s912 -match '(?i)ordinary distribution') `
     "Section 9.12 does not assess the audition normally, so nothing mislabels and the board carries a true number."
-Assert-True ($s912 -match '(?i)regardless of confidence') `
+Assert-True ($s912 -match '(?i)regardless of confidence|confidence is no protection') `
     "Section 9.12 does not make the audition anomaly-eligible when confirmed, which is the only red-gate route for a Bearer who avoids unconfirmed postings."
+
+# 1.94: eligibility is not enough. Rolling the tier's ordinary band put a red
+# gate ~150 days out in a campaign that had run 33. The Bible names red-gate
+# anomalies as what an audition IS, so it always rolls.
+Assert-True ($s912 -match '(?i)always rolls Section 9\.6|\*\*every\*\* audition rolls') `
+    "Section 9.12 does not make the anomaly roll unconditional. An audition that is merely anomaly-ELIGIBLE is a Gate that might be strange; the Bible defines the category as red-gate anomalies and crucibles built to look survivable and not be."
+Assert-True ($s912 -match '(?i)doubled population') `
+    "Section 9.12 does not resolve a Section 9.6 Rank bump that has no rung left. An audition already at S has nowhere to climb and the anomaly table would stall."
 Assert-True ($s912 -match '(?i)legal minimum') `
     "Section 9.12 has no switch-off, so a Bearer can never bring anyone anywhere safely."
 Assert-True ($s912 -match '(?i)does not fire|switches it off') `

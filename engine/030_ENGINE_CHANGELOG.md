@@ -12,6 +12,24 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-24 — Gatefall Profile 1.94: 1.93's countdown, set to the speed the campaign is actually played at
+
+**World content under Decision 069 point 4 and Decision 062.** Legs 1 and 2 clean, `011_ENGINE_DATA_MODEL.md` untouched, no new state. Leg 3 is not engaged: this retimes three rates 1.93 already authored and introduces no mechanism.
+
+**Problem: every rate in 1.93 was calibrated against the wrong clock, and the player said so.** 1.93 took its intervals from the Bible's decade-scale 2016–2026 timeline. The campaign it governs has run **33 in-fiction days** — level 1 to 48, an unawakened E-Rank card to a carded S-Rank, the entire System Rank ladder — and the player's report was direct: *"in one month of play I become S Rank hunter but the world didn't produce anything dangerous or interesting… the tier should move much quicker."* They were right on all three counts, and the arithmetic is not close:
+
+- **The ramp's first rung sat 184 in-fiction days out**, more than five times the campaign's total length. A countdown that expires after the story does is a table, not a clock.
+- **Escalation credit priced only catastrophes**, and the largest line — an A-Rank break — is reachable about **once per seven thousand days**, because an A-Rank posting is taken at 90% a day against a three-day timer. That is `F-002`'s shape: a clause whose trigger cannot fire. Worse, it meant the ramp read everything *except* break frequency, which is the one series the Bible's own planted clue-line charts.
+- **An audition rolled the tier's anomaly band**, 8% at tier III, putting a red gate ~150 days out. The Bible does not describe an audition as a Gate that might be strange; it names *"red-gate anomalies"* and *"crucibles built to look survivable and not be"* as what an audition **is**.
+
+**Change: three retunings, no new mechanism, no distribution touched.** The schedule's halving structure is unchanged and its unit is not — tier IV moves from 184 days to **14**, then 7, then 4. Credit now accrues `+1` on **any** break with `+2` more at C-Rank or above, and Cordon rises to +5; at Chicago's own take rates that is ~1.1 breaks a day, ~+1.2 credit a day, and 20 credit in ~17 days against a 14-day floor — **the clock and the pressure route are finally the same order of magnitude**, which is what 1.93 claimed and did not deliver. And a Section 9.12 audition **always** rolls Section 9.6, moving a red gate from one per ~150 days to one per ~12, with one new clause resolving a Rank bump that has no rung left (`01-50` at true Rank S becomes doubled population at S).
+
+**Cost and what the gate proves.** `tools/test_gatefall_escalation_contract.ps1` gains four legs and **its date legs were rewritten from literals to a shape** — three ascending dates with shortening gaps, plus a first rung asserted at **≤ 60 in-fiction days**. That last one is the defect itself made checkable: a schedule slower than the story it runs inside now fails the suite rather than reading well and doing nothing. Pinning literal dates would have made the gate red on exactly this retuning, which is the failure mode the house rule about asserting properties exists to prevent. **42 mutations, none vacuous.**
+
+**Left open.** Nothing past tier V is authored, and the ramp's end is now **2026-09-18** — close enough that the owner-authored endgame is a live obligation rather than a horizon. `escalation_tier` and `escalation_credit` remain uninitialised pending play. Credit is still not backdated over the campaign's existing break history.
+
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` (H1, version field, Compatibility Status, Sections 9.2.2 and 9.12), `worlds/gatefall/migrations/1.93_to_1.94.md` (new), `migrations/INDEX.md`, `worlds/gatefall/README.md`, `campaigns/gatefall_pendragon_001/090_CAMPAIGN_STARTUP.md` and `100_CHARACTER_SHEET.md` (`profile_version` pin only), `system/WORLDS_AND_CAMPAIGNS.md` (regenerated), `tools/test_gatefall_escalation_contract.ps1`.
+
 ## 2026-08-24 — Gatefall Profile 1.93: the countdown the World Bible has always described, finally running
 
 **World content under Decision 069 point 4 and Decision 062 — no ADR, no decision number, no roadmap milestone.** Legs 1 and 2 are clean and not arguable: `010_ENGINE_RULES.md` renumbers nothing and `011_ENGINE_DATA_MODEL.md` is untouched. The two new tracked values (`escalation_tier`, `escalation_credit`) live on the campaign's world ledger exactly as Section 9.1.3's district `pressure` already does, which needed no schema change and neither does this.

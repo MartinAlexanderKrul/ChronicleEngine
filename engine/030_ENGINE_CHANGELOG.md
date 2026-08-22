@@ -12,6 +12,30 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-24 — Gatefall Profile 1.95: the escalation stops being something to wait for
+
+**World content under Decision 069 point 4 and Decision 062.** Legs 1 and 2 clean; `011_ENGINE_DATA_MODEL.md` untouched. One new tracked Bearer counter (`quiet_days`) on the pattern Section 9.1.3's district `pressure` already set. Leg 3 is not engaged: every clause implements `200_WORLD_BIBLE.md` Section 9 and binds no other world.
+
+**Problem, reported directly by the player after 1.94 landed:** *"I am not waiting 14 more days for something to happen. There should be some middle tier before tier V. And I still want the world to produce more quests. And as I said when reaching A level the world should produce more red gates and anomalies."* Four distinct findings, all correct:
+
+- **Nothing changed on adoption.** 1.94 opened the ramp at tier III, the pre-ramp constant, so the first thing the escalation did was certify that 33 in-fiction days of a world the Bible calls *"climbing"* had produced no climb.
+- **Three rungs to the shoulder is a cliff.** The world's character would change twice in a campaign's life, each time by a large jump.
+- **Nothing obliged the world to feed the quest criteria.** Sections 8.4.2 and 8.4.3 state what a quest *is*; nothing stated what happens when the world produces no crisis, and the answer was silence.
+- **His own standing bought no strangeness.** Section 9.12 sized *content* to him; nothing made anomalies find him, which is what the Bible's *"audition mill"* describes.
+
+**Change: four, none touching a Rank, reward, timer or population.**
+
+- **Adoption opens at tier IV.** Run the ramp's own arithmetic over the elapsed 33 days — ~1.1 breaks a day at Chicago's authored take rates — and accrued credit is past a rung. Nothing is recomputed to get there; a forward-looking counter is initialised where the elapsed clock already put it.
+- **Four forward rungs (IV, V, VI, VII) replace two.** The endpoint is unchanged — **VII carries exactly the old tier V distribution** — and the two new rungs interpolate. **Tier IV deliberately does not raise the Gate count**, moving composition only: A-Rank 2.5% → 3.5%, S-Rank 0.5% → 1%, anomaly band 93 → 91. Rungs at 5, 4, 3 and 2 in-fiction days, and the credit threshold drops 20 → 6 so pressure stays competitive with a clock now measured in days.
+- **New Section 9.5.1** gives the Bearer his own anomaly band from System Rank — **21% at A, 31% at S against the world's 8%** — on any Gate he personally enters, taking the wider of the two. Invisible: another crew rolls the world band. It reads **System Rank** where Section 9.12 reads Combat Tier, and the split is stated: 9.12 is *sizing content* and needs the honest measure; this is *how much attention the process is paying*, which tracks a candidate's progression. **Explicitly fenced off from Section 9.2's ramp**, which still never reads him — keying what the world *produces* to the Bearer makes levelling worsen the world, keying what he *walks into* does not.
+- **New Section 8.4.7, the crucible floor**, authors the Bible's *"it will not waste a candidate on a slow week."* `quiet_days` counts consecutive days with no Section 7.4-qualifying contested scene: at **2** the next tick owes a guaranteed audition, at **3** also a sited Section 8.4.2-qualifying crisis, at **4** the audition rolls Section 9.6 twice and takes the worse. **It creates conditions, never a quest** — criteria 2 and 4 still hold on their own terms and a dry audit is still recorded dry. Not farmable, because what it pays out is danger. **A day in a Section 17 instance beneath his tier counts as quiet**, which is the coasting `F-046` was raised on.
+
+**Cost and what the gate proves.** `tools/test_gatefall_escalation_contract.ps1` gains twelve legs. **59 mutations, none vacuous** — and the pass caught four real weaknesses in the gate itself: the tier and schedule tables both carry rows labelled `**IV**`–`**VII**`, so the forward-rung count was double-counting across the whole of Section 9.2 and survived cutting two rungs; the credit-threshold leg was pinned to the literal `20` and would have gone red on this retuning; and Section 9.5.1's System-Rank leg was satisfied by a table header with no band values behind it. All four are now scoped or bounded rather than literal.
+
+**Left open.** The ramp's end is now **2026-09-07**, thirteen in-fiction days out, and nothing past tier VII is authored — the owner-authored endgame is a near-term obligation. `escalation_tier: IV`, `escalation_credit: 0` and `quiet_days` all need initialising in play; the migration's step 3 states how `quiet_days` is read from the existing record rather than judged.
+
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` (H1, version field, Compatibility Status, Sections 8.4.7 new, 9.1 tick step 2, 9.2.1, 9.2.2, 9.5.1 new, 9.12), `worlds/gatefall/migrations/1.94_to_1.95.md` (new), `migrations/INDEX.md`, `worlds/gatefall/README.md`, `campaigns/gatefall_pendragon_001/090_CAMPAIGN_STARTUP.md` and `100_CHARACTER_SHEET.md` (`profile_version` pin only), `system/WORLDS_AND_CAMPAIGNS.md` (regenerated), `tools/test_gatefall_escalation_contract.ps1`.
+
 ## 2026-08-24 — Gatefall Profile 1.94: 1.93's countdown, set to the speed the campaign is actually played at
 
 **World content under Decision 069 point 4 and Decision 062.** Legs 1 and 2 clean, `011_ENGINE_DATA_MODEL.md` untouched, no new state. Leg 3 is not engaged: this retimes three rates 1.93 already authored and introduces no mechanism.

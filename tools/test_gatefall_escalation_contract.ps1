@@ -39,22 +39,53 @@ $profile = Get-Content -Raw $profilePath
 $s92 = Get-Section $profile '(?m)^## 9\.2 .*?(?=^## 9\.3)'
 Assert-True ($s92 -ne '') "Section 9.2 could not be delimited; Rank frequency is not present."
 
-Assert-True ($s92 -match '(?m)^\| \*\*I\*\* \|') `
-    "Section 9.2 has no tier I row; the distribution is not on a curve."
-Assert-True ($s92 -match '(?m)^\| \*\*V\*\* \|') `
-    "Section 9.2 has no tier V row; the ramp has no shoulder to reach."
+# The tier table and the schedule table both carry rows labelled **IV**..**VII**,
+# so every row-shaped leg is scoped to its own subsection. Counting across the
+# whole of 9.2 double-counts and passed vacuously until it was split.
+$s921 = Get-Section $profile '(?m)^### 9\.2\.1 .*?(?=^### 9\.2\.2)'
+$s922 = Get-Section $profile '(?m)^### 9\.2\.2 .*?(?=^## 9\.3)'
+Assert-True ($s921 -ne '') "Section 9.2.1 could not be delimited; the tier table is not present."
+Assert-True ($s922 -ne '') "Section 9.2.2 could not be delimited; nothing states what advances the ramp."
 
-# Tier III must be byte-identical to the pre-1.93 constant, or adopting this
-# silently re-rolled the present. These are the exact 1.92 figures.
-$tierThree = [regex]::Match($s92, '(?m)^\|\s*\*\*III\*\*\s*\|[^\r\n]*$')
-Assert-True $tierThree.Success "Section 9.2 has no tier III row; the present has no home on the ramp."
+Assert-True ($s921 -match '(?m)^\| \*\*I\*\* \|') `
+    "Section 9.2.1 has no tier I row; the distribution is not on a curve."
+Assert-True ($s921 -match '(?m)^\| \*\*V\*\* \|') `
+    "Section 9.2.1 has no tier V row."
+
+# 1.95: three steps to the shoulder was a cliff. The forward half needs enough
+# rungs that the world's character changes in stages, not twice per campaign.
+$forwardRungs = ([regex]::Matches($s921, '(?m)^\| \*\*(IV|V|VI|VII|VIII)\*\* \|')).Count
+Assert-True ($forwardRungs -ge 4) `
+    "Section 9.2.1's forward ramp has $forwardRungs rung(s) past tier III. Fewer than four means the world's character changes in large jumps with nothing in between to notice."
+
+# Adoption must not open on the pre-ramp constant: 33 in-fiction days ran under
+# a profile that called the rate climbing and implemented it flat.
+Assert-True ($s922 -match '(?i)on adoption|opens at \*\*IV\*\*|adoption therefore opens') `
+    "Section 9.2.2 does not open the ramp above the pre-ramp constant, so its first act is to certify that nothing has happened yet."
+
+# Tier III must still be byte-identical to the pre-1.93 constant: it is the
+# baseline every later rung is measured against and the proof no past roll moved.
+$tierThree = [regex]::Match($s921, '(?m)^\|\s*\*\*III\*\*\s*\|[^\r\n]*$')
+Assert-True $tierThree.Success "Section 9.2.1 has no tier III row; the pre-ramp constant has no home on the ramp."
 if ($tierThree.Success) {
     # '93' alone is satisfied by any cell merely containing it, so the anomaly
     # band is matched as a band: 93, any dash byte, 00.
     foreach ($figure in @('1d4\+3', '1d2', '50%', '25%', '15%', '7%', '2\.5%', '0\.5%', '93.{1,3}00')) {
         Assert-True ($tierThree.Value -match $figure) `
-            "Section 9.2's tier III row no longer carries $($figure -replace '\\','') -- tier III must reproduce the pre-ramp distribution exactly or adoption changes the present."
+            "Section 9.2.1's tier III row no longer carries $($figure -replace '\\','') -- tier III must reproduce the pre-ramp distribution exactly, or the ramp's own baseline has moved."
     }
+}
+
+# Tier IV is the adoption tier from 1.95, so its figures are load-bearing too.
+# It must raise the Ranks without raising the count -- that is the rung the
+# trade argues about rather than reports.
+$tierFour = [regex]::Match($s921, '(?m)^\|\s*\*\*IV\*\*\s*\|[^\r\n]*$')
+Assert-True $tierFour.Success "Section 9.2.1 has no tier IV row, which is where adoption opens."
+if ($tierFour.Success) {
+    Assert-True ($tierFour.Value -match '1d4\+3') `
+        "Section 9.2.1's tier IV raises the Gate count. Tier IV is meant to move composition, not volume; raising both makes the first rung a visible surge rather than a change in character."
+    Assert-True ($tierFour.Value -match '3\.5%') `
+        "Section 9.2.1's tier IV no longer lifts A-Rank frequency, which is the whole of what that rung does."
 }
 
 # --- the ramp only rises, and is not keyed to the Bearer --------------------
@@ -103,10 +134,18 @@ Assert-True ($s92 -match '(?m)^\s*\+8\s') `
 # A-Rank-break line it replaced fired about once per seven thousand days.
 Assert-True ($s92 -match '(?mi)^\s*\+1\s+any break') `
     "Section 9.2's credit table does not credit an ordinary break. The Bible's planted clue-line is a chart of break FREQUENCY; a table pricing only losses cannot produce that curve, and the pressure route goes dead."
-# In context. A bare \b20\b is satisfied by tier V's 20% C-Rank cell and by the
-# cross-reference to Section 20.5, and passed vacuously until it was scoped.
-Assert-True ($s92 -match '(?i)at \*\*20 the next tier|credit (?:reaches|reached) 20|threshold of 20') `
+# In context, and as a bound rather than a literal. A bare \b20\b was satisfied
+# by a 20% C-Rank cell and by the cross-reference to Section 20.5; a literal
+# threshold goes red the moment the bar is retuned, which it has been twice.
+$creditBar = [regex]::Match($s92, '(?i)at \*\*(\d+) the next tier|credit (?:reaches|reached) (\d+)|threshold of (\d+)')
+Assert-True $creditBar.Success `
     "Section 9.2 states no credit threshold, so accrued pressure never advances anything."
+if ($creditBar.Success) {
+    $bar = ($creditBar.Groups[1], $creditBar.Groups[2], $creditBar.Groups[3] |
+        Where-Object { $_.Success } | Select-Object -First 1).Value
+    Assert-True ([int]$bar -le 12) `
+        "Section 9.2's credit threshold is $bar. At the section's own ~1.2 credit a day that is more than ten days of accrual, which is slower than its own schedule rungs -- the pressure route is decorative again."
+}
 Assert-True ($s92 -match '(?i)whichever comes first|still applies independently') `
     "Section 9.2 does not state that clock and pressure run independently; one silently replacing the other is a different rule."
 
@@ -136,6 +175,53 @@ Assert-True ($s95 -match '(?i)anomaly band of the world|current escalation tier'
     "Section 9.5's anomaly threshold is not read from the tier, so the tail never thickens."
 Assert-True ($s95 -match '(?i)tier III it is \*\*93\*\*|it is \*\*93\*\*') `
     "Section 9.5 does not pin the present tier's threshold at 93; without it, adoption changes today's odds."
+
+# --- 1.95: the Bearer's own anomaly band ------------------------------------
+
+Assert-True ($profile -match '(?m)^### 9\.5\.1 ') `
+    "Section 9.5.1 is absent; the Bearer's own standing does not affect how often what he walks into is strange."
+$s951 = Get-Section $profile '(?m)^### 9\.5\.1 .*?(?=^\*\*Why the tail|^## 9\.6)'
+Assert-True ($s951 -ne '') "Section 9.5.1 could not be delimited for scoped checks."
+
+Assert-True ($s951 -match '(?i)System Rank') `
+    "Section 9.5.1 does not key the Bearer's band to System Rank."
+# The keying is only real if the bands themselves are stated. A section header
+# naming System Rank with no values behind it is a label.
+Assert-True ($s951 -match '80.{1,3}00') `
+    "Section 9.5.1 states no band for System Rank A, which is where the live Bearer stands and the rung the owner asked for."
+Assert-True ($s951 -match '70.{1,3}00') `
+    "Section 9.5.1 states no band for System Rank S, so the uplift stops before the ladder does."
+Assert-True ($s951 -match '(?i)personally enters|Gate he enters') `
+    "Section 9.5.1 does not restrict the uplift to Gates the Bearer himself enters, which is what keeps it invisible to the world."
+Assert-True ($s951 -match '(?i)wider of') `
+    "Section 9.5.1 does not take the wider of the two bands, so a low tier could narrow his odds below the world's."
+Assert-True ($s951 -match '(?i)audition mill') `
+    "Section 9.5.1 does not cite the authored cause; without it the uplift reads as difficulty tuning rather than the process paying attention."
+# The ramp must stay fenced off from the Bearer even though this clause is not.
+Assert-True ($s951 -match '(?i)does not touch Section 9\.2|still never reads him|never reads the Bearer') `
+    "Section 9.5.1 does not fence itself off from Section 9.2's ramp. Keying what the WORLD PRODUCES to the Bearer makes levelling worsen the world; keying what he WALKS INTO does not, and the two must not be confused by a later editor."
+
+# --- 1.95: the crucible floor -----------------------------------------------
+
+Assert-True ($profile -match '(?m)^### 8\.4\.7 ') `
+    "Section 8.4.7 is absent; nothing obliges the world to put anything in front of the quest criteria on a quiet stretch."
+$s847 = Get-Section $profile '(?m)^### 8\.4\.7 .*?(?=^---|^# 9\.)'
+Assert-True ($s847 -ne '') "Section 8.4.7 could not be delimited for scoped checks."
+
+Assert-True ($s847 -match 'quiet_days') `
+    "Section 8.4.7 names no tracked counter, so nothing measures a slow week."
+Assert-True ($s847 -match '(?i)guaranteed') `
+    "Section 8.4.7 guarantees nothing, which makes it a suggestion."
+Assert-True ($s847 -match '(?i)creates conditions, never a quest|never a quest') `
+    "Section 8.4.7 does not forbid itself creating a quest. It may only put a real thing in real reach; Sections 8.4.2 criteria 2 and 4 still have to hold on their own terms."
+Assert-True ($s847 -match '(?i)not farmable|what it pays out is danger') `
+    "Section 8.4.7 does not address farming. A floor that rewards staying quiet is an exploit."
+Assert-True ($s847 -match '(?i)beneath his tier is a \*\*quiet day\*\*|is a \*\*quiet day\*\*') `
+    "Section 8.4.7 does not count a below-tier instant dungeon as quiet, so the exact coasting F-046 was raised on would reset the counter."
+
+$s91Floor = Get-Section $profile '(?m)^## 9\.1 .*?(?=^## 9\.2)'
+Assert-True ($s91Floor -match '8\.4\.7') `
+    "Section 9.1's tick never applies the crucible floor; a floor nothing dispatches to is absent, not patient."
 
 $s96 = Get-Section $profile '(?m)^## 9\.6 .*?(?=^## 9\.7)'
 Assert-True ($s96 -match '(?i)tier V') `

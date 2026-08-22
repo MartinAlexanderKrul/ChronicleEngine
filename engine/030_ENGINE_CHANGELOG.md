@@ -12,6 +12,20 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-24 — Gatefall Profile 1.98: distance starts costing something
+
+**World content under Decision 069 point 4 and Decision 062.** Legs 1 and 2 clean, `011_ENGINE_DATA_MODEL.md` untouched, no new state, no new mechanism. Leg 3 not engaged — eight numbers in one Gatefall class.
+
+**Problem.** 1.97's travelling step doubled past the metro — 10, 20, 40. Against the live Bearer's **2,016 maximum Mana** that put an intercontinental step at **2% of his pool** and the far side of the world at the price of five city hops. It was not a distance cost, it was a rounding error, and it made the class's whole reach free in practice — which also collapsed the value of the anchored step's flat 5, the thing 1.97 had just made the class's centrepiece.
+
+**Change.** Inside the city nothing moves — 1, 3, 4, 5, because a positioning class should position freely. **Past the city every further step out costs five times the last**: **25** another city in the same country or state, **125** another country, **625** another continent, and **1,000** as a deliberate terminal cap rather than a sixth multiplication, since there is nowhere further than the far side of the world. An intercontinental step is now **31% of the Bearer's pool** and the last rung is **half**, so an unanchored crossing is a decision he plans a day around. **The anchored step stays flat at 5 from any range**, making it a two-hundredfold saving at the top of the ladder where 1.97's version was eightfold — which is what turns `Agility ÷ 20` into the class's real strategic decision.
+
+**On 625 rather than 635.** The owner's ruling named 635. The same ruling's first three rungs — 5, 25, 125 — are an exact ×5 ladder whose fourth term is 625; 635 continues no pattern and matches no figure anywhere in this profile. It is recorded in the migration as read to be a slip and authored at **625**, so the series stays derived rather than invented, with the correction named as a one-character change if it was deliberate. **Stated rather than assumed away**, because a number nobody can re-derive is how a table becomes folklore.
+
+**Cost and what the gate proves.** The ladder leg was pinned to the word `doubl` and would have gone red on exactly this retuning — the same failure mode as 1.94's literal dates. It is now a **shape**: at least seven priced rungs, monotonically rising, with a top-to-bottom ratio of at least 50, plus label coverage for every scale from line of sight to the world. **37 mutations, none vacuous** — after one proved vacuous when cutting two middle rungs still left six priced rows and a climbing ladder, which the scale-coverage legs now catch as the gap it is.
+
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` (H1, version field, Compatibility Status, Section 18.8 cost bands and both render blocks), `worlds/gatefall/migrations/1.97_to_1.98.md` (new), `migrations/INDEX.md`, `worlds/gatefall/README.md`, `campaigns/gatefall_pendragon_001/090_CAMPAIGN_STARTUP.md` (pin only), `system/WORLDS_AND_CAMPAIGNS.md`, `tools/test_gatefall_riftwalker_contract.ps1`.
+
 ## 2026-08-24 — Gatefall Profile 1.97: the anchor is the free half, the ordinary step is the bound half
 
 **World content under Decision 069 point 4 and Decision 062.** Legs 1 and 2 clean, `011_ENGINE_DATA_MODEL.md` untouched, no new state. Leg 3 not engaged — this retunes one Gatefall class's costs and relocates one restriction.

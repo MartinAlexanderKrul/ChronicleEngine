@@ -114,8 +114,28 @@ if ($manaLadder.Success) {
         Assert-True ($manaLadder.Value -match ('(?m)^\s{2,}' + [regex]::Escape($rung) + '\s{2,}')) `
             "Section 18.8's Mana ladder has no '$rung' band in its label column, so that scale is unpriced and the Runtime has to invent one."
     }
-    Assert-True ($manaLadder.Value -match '(?i)doubl') `
-        "Section 18.8's Mana ladder does not escalate past the metro. A flat ladder makes crossing a continent cost the same as crossing a street."
+    # The far half, by scale rather than by label column -- these rungs are
+    # written as prose rows. A rung count alone does not catch a MISSING scale:
+    # cutting 'another country' left six priced rows and passed vacuously.
+    foreach ($scale in @('country', 'continent', 'world')) {
+        Assert-True ($manaLadder.Value -match "(?i)$scale") `
+            "Section 18.8's Mana ladder never prices the '$scale' scale, so the ladder has a gap and the Runtime must interpolate a cost that was never authored."
+    }
+    # Asserted as a shape, not a multiplier word: 1.97 doubled, 1.98 goes x5,
+    # and a leg pinned to either goes red on the next retuning. What must hold
+    # is that the ladder climbs and that its top is a real cost.
+    $costs = [regex]::Matches($manaLadder.Value, '(?m)\s(\d{1,3}(?:,\d{3})?)\s*$') |
+        ForEach-Object { [int](($_.Groups[1].Value) -replace ',', '') }
+    Assert-True ($costs.Count -ge 7) `
+        "Section 18.8's Mana ladder has only $($costs.Count) priced rungs; the authored ladder runs from line of sight to the far side of the world and a missing rung is a scale the Runtime has to invent."
+    if ($costs.Count -ge 5) {
+        $climbs = $true
+        for ($i = 1; $i -lt $costs.Count; $i++) { if ($costs[$i] -lt $costs[$i - 1]) { $climbs = $false } }
+        Assert-True $climbs `
+            "Section 18.8's Mana ladder does not rise monotonically; a rung cheaper than the one below it makes a farther destination the bargain."
+        Assert-True (($costs[-1] / [double]$costs[0]) -ge 50) `
+            "Section 18.8's Mana ladder tops out at $($costs[-1]) against a first rung of $($costs[0]). Against a four-figure Mana pool that is a rounding error rather than a distance cost, and it makes the anchored step's flat price worthless."
+    }
 }
 Assert-True ($s188 -match '(?i)ambiguity resolves \*against\* the Bearer|resolves against the Bearer') `
     "Section 18.8 does not say which way an unplaceable destination resolves, so a vague destination becomes the cheap one."

@@ -1557,7 +1557,7 @@ foreach ($file in $canonicalFiles) {
                 [version]$profileVersionMatch.Groups[1].Value -ge [version]"1.33") {
                 $statSection = Get-IndentedSection $block "stats"
                 $skillsSection = Get-IndentedSection $block "skills_known"
-                $systemRankMatch = [regex]::Match($block, '(?m)^[ \t]+system_rank:[ \t]*([EDCBAS])(?:-Rank)?[ \t]*$')
+                $systemRankMatch = [regex]::Match($block, '(?m)^[ \t]+system_rank:[ \t]*([EDCBAS])(?:-Rank)?[ \t]*\r?$')
                 if ([string]::IsNullOrWhiteSpace($statSection) -or
                     [string]::IsNullOrWhiteSpace($skillsSection) -or
                     -not $systemRankMatch.Success) {

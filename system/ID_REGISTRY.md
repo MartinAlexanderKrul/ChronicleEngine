@@ -26,8 +26,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000230 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000721 |
-| Relationship | `REL-` | Relationship | REL-000099 |
+| Event | `EVT-` | Event | EVT-000735 |
+| Relationship | `REL-` | Relationship | REL-000100 |
 
 ---
 
@@ -777,6 +777,21 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000719 | Event | Gatefall: Pendragon, **the S-Rank instant dungeon, Shattered City**, 2026-08-25 ~12:00 — the first key bought at his own System Rank. An elite's counter landed for 170 damage, the first hit to connect all session. Boss killed by a critical Rupture (25,484 vs 16,000 Health) before it acted. 363 S-Rank crystals (11+352 deposit), 3 S-Rank cores, a second S-Rank instant-dungeon key (boss drop, unspent). 19,200 XP crossed LEVEL 51 -> 54. `gatefall.skill_credit`: none — real contact, but no opponent capable of taking his health from full |
 | EVT-000720 | Event | Gatefall: Pendragon, **263 S-Rank crystals sold; Profile 1.99**. Found the System shop's crystal-buy table had no S-Rank row against every other Section 12.5 table having one. Ruled: derive from the weapon chassis table's own A->S x4.5 step applied to the 3,400 g A-Rank crystal price -> **15,300 g**. +4,023,900 g; 100 S-Rank crystals held back. Promoted into `worlds/gatefall/206_WORLD_RULE_PROFILE.md` as Version 1.99 the same session (`worlds/gatefall/migrations/1.98_to_1.99.md`) |
 | EVT-000721 | Event | Gatefall: Pendragon, **promotion barrier — batch settlement**, 2026-08-25 12:30, span `EVT-000713`-`EVT-000720`. **`gatefall.skill_credit`: none, ninth and tenth consecutive.** **`gatefall.skill_formation`: no new evidence**, `dimensional_theft` unchanged at 1/3. No trigger reached eligibility. Anchor 10:40 -> 12:30, no tick due; Health left cap for the first time this session (170 damage) and closed full after the level-ups that followed. Gold 1,030,081 -> 5,124,181. No canonical contradiction found |
+| EVT-000722 | Event | Gatefall: Pendragon, self-opened S-Rank instant dungeon (Hive), LEVEL 54 -> 59. `gatefall.skill_credit`: none, eleventh consecutive |
+| EVT-000723 | Event | Gatefall: Pendragon, 403 S-Rank crystals sold, +6,165,900 g |
+| EVT-000724 | Event | Gatefall: Pendragon, Teresa Vance called, given the account on the record, story held to end of week. `REL-000100` minted |
+| EVT-000725 | Event | Gatefall: Pendragon, Laurel Bianchi called, incident review declined for today |
+| EVT-000726 | Event | Gatefall: Pendragon, S-Rank key bought; self-opened instant dungeon (Overgrown Temple), LEVEL 59 -> 63, level-60 Title Assessment: Godslayer granted [Singular, +10]. `gatefall.skill_credit`: none, twelfth |
+| EVT-000727 | Event | Gatefall: Pendragon, 336 crystals sold, 3 S-Rank keys bought; three self-opened instant dungeons (Flooded Mine, Overgrown Temple, Frozen Gallery), LEVEL 63 -> 71. `gatefall.skill_credit`: none x3, thirteenth-fifteenth |
+| EVT-000728 | Event | Gatefall: Pendragon, 1,245 crystals sold, +19,048,500 g |
+| EVT-000729 | Event | Gatefall: Pendragon, thirteen S-Rank skill runes bought and consumed plus the looted Mana Bolt book; fourteen skills ascended to [S-Rank] Novice, magnitude re-derivation flagged |
+| EVT-000730 | Event | Gatefall: Pendragon, off-hand/head/legs bought and equipped at S-Rank; Gale Feet [S] equipped from storage. Physical reduction 51.45% -> 63.04% |
+| EVT-000731 | Event | Gatefall: Pendragon, eight S-Rank keys bought (a forty-A-Rank-key draft was a misspelling, retracted, not canon); eight self-opened instant dungeons, LEVEL 71 -> 93, Title Assessments at 80 and 90 granting nothing. `gatefall.skill_credit`: none x3, sixteenth-eighteenth |
+| EVT-000732 | Event | Gatefall: Pendragon, 2,961 crystals sold, +45,303,300 g |
+| EVT-000733 | Event | Gatefall: Pendragon, off-hand dagger swapped to the looted Predator/Edge Quickknife [S] |
+| EVT-000734 | Event | Gatefall: Pendragon, the eleven correlation logbooks (`ENT-000221`) read in full — a decade-long unsigned watch on `ENT-000216`, final entry interrupted mid-sentence |
+| EVT-000735 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-25 23:10, span `EVT-000722`-`EVT-000734`. 455 unspent points allocated (Strength +273, Intelligence +182). `gatefall.skill_credit`: none across the whole span, nineteen consecutive. `gatefall.skill_formation`: no new evidence, `dimensional_theft` unchanged at 1/3. Anchor 12:30 -> 23:10, no tick due. Gold 5,124,181 -> 46,186,681. No canonical contradiction found |
+| REL-000100 | Relationship | Gatefall: Pendragon: Alexander and Teresa Vance (`ENT-000224`), working-source relationship — on-record account delivered, story held to end of week, first live contact |
 
 ---
 

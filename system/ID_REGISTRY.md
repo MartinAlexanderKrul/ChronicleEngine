@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000232 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000747 |
+| Event | `EVT-` | Event | EVT-000748 |
 | Relationship | `REL-` | Relationship | REL-000100 |
 
 ---
@@ -791,6 +791,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000733 | Event | Gatefall: Pendragon, off-hand dagger swapped to the looted Predator/Edge Quickknife [S] |
 | EVT-000734 | Event | Gatefall: Pendragon, the eleven correlation logbooks (`ENT-000221`) read in full — a decade-long unsigned watch on `ENT-000216`, final entry interrupted mid-sentence |
 | EVT-000735 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-25 23:10, span `EVT-000722`-`EVT-000734`. 455 unspent points allocated (Strength +273, Intelligence +182). `gatefall.skill_credit`: none across the whole span, nineteen consecutive. `gatefall.skill_formation`: no new evidence, `dimensional_theft` unchanged at 1/3. Anchor 12:30 -> 23:10, no tick due. Gold 5,124,181 -> 46,186,681. No canonical contradiction found |
+| EVT-000748 | Event | Gatefall: Pendragon, **ledger repair**, 2026-08-26 13:30, immediately after the checkpoint 0124 barrier. Two defects that barrier recorded, repaired on instruction: **`skills.dimensional_projection.magnitude_floor` 0 -> 21**, read verbatim off checkpoint 0122's pre-ascension line ([C-Rank] Expert, 5 projectiles, 21 m) rather than inferred, which makes the floor bind and holds the skill at **21 m** rather than the authored 17 m — its `EVT-000729` ascension cost no reach after all; and **`skills.exploit_pattern.mastery_progress` 0 -> 1**, an increment dropped at `EVT-000742` while that scene's qualifying-scene and use counts were both credited — the `F-012` shape, caught by the player asking whether progression had been counted. No mastery level advanced: Mana Bolt and Dimensional Projection both stand at 2/3, and equipping the dormant Proven title would advance both at once |
 | REL-000100 | Relationship | Gatefall: Pendragon: Alexander and Teresa Vance (`ENT-000224`), working-source relationship — on-record account delivered, story held to end of week, first live contact |
 | ENT-000231 | Entity | Gatefall: Pendragon: **Marta Ilić**, C-Rank hunter, Ironline GB-14 contract crew. Survived unfound inside a Gate assessed C, true S; healed to full by Mend and extracted by rift-step to BGM medical custody |
 | ENT-000232 | Entity | Gatefall: Pendragon: **Devon Achebe**, C-Rank hunter, Ironline GB-14 contract crew. Survived unfound alongside Marta Ilić; same outcome |

@@ -106,6 +106,8 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000228` | D | unidentified - CONSULT decision-maker | active | Peter Kwiatkowski | — |
 | `ENT-000229` | Delphine | CONSULT associate - scheduling | active | Unestablished. | — |
 | `ENT-000230` | Ironclad Self Storage | self-storage facility | active | Near west side, Chicago. Keypad gate, rows of identical roll-up… | — |
+| `ENT-000231` | Marta Ilić | striker | active | BGM Region V medical custody, Chicago — handed to staged medics… | — |
+| `ENT-000232` | Devon Achebe | striker | active | BGM Region V medical custody, Chicago — handed to staged medics… | — |
 
 ---
 
@@ -180,13 +182,15 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000226` | Peter Kwiatkowski | To be told he is safe, by someone who would actually know | That `COMPLETE` is about to have his name beside it | He is now missing a satchel and a wallet he cannot explain, and has reported only the satchel | Talks too fast under pressure and over-explains, the rhythm of someone trying to sound more cer… |
 | `ENT-000228` | D | Unauthored - no direct contact has occurred | Unauthored | What `COMPLETE` actually resolves to | Established only in text: short, flat, faintly dismissive, signs with a single initial |
 | `ENT-000229` | Delphine | Unauthored - no contact has occurred | Unauthored | Unauthored | Unestablished - no line of hers has been narrated |
+| `ENT-000231` | Marta Ilić | Unestablished — not yet tested in play | Unestablished | Unestablished | Unestablished — she has not spoken in a resolved scene |
+| `ENT-000232` | Devon Achebe | Unestablished — not yet tested in play | Unestablished | Unestablished | Unestablished — he has not spoken in a resolved scene |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 83. Protagonist relationships: 21.
-- Characters: 63. Disposition authored in full: 30; partial: 25; none: 8. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 85. Protagonist relationships: 21.
+- Characters: 65. Disposition authored in full: 30; partial: 25; none: 10. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

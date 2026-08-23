@@ -194,7 +194,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.99"
+    profile_version: "1.100"
     profile_loner_scope_event: EVT-000672
     profile_party_minimum_event: EVT-000460
     profile_unified_render_event: EVT-000443

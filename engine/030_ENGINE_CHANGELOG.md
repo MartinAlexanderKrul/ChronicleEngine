@@ -12,6 +12,26 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-08-24 — Gatefall Profile 1.103: the examination forbade the apparatus it examines
+
+**World content under Decision 069 point 4 and Decision 062.** Legs 1 and 2 clean; `011_ENGINE_DATA_MODEL.md` untouched, no stored field added or moved — a trial-local anchor is instance-scoped by construction and never enters campaign state. Leg 3 not engaged: every clause is a Gatefall Section 18 rule.
+
+**Found at the mouth of the trial it governs, and two of the four repairs are 1.102's own defects.** The Bearer stood at the entrance to the Section 18.13 Gate Walker trial in its six-phase form and **Phase 1 could not be opened as written.** The Runtime stopped and raised it rather than narrating past it, which is the behaviour Section 18.13.2 and the standing rule against inventing mechanical values both ask for.
+
+**Defect 1 — a live rule keyed to retired vocabulary.** 1.102 wrote the Threshold Trial deed as *"from another ledgered container."* `ledgered container` is **Profile 1.96 pricing**, replaced by 1.97's soft distance bands; its only other surviving use in the profile is the 1.97 line that exists to forbid it — *"not metres, and not a table of containers to look up."* **This is the `F-049` shape, authored one commit after `F-049` was cited in this session's own flag roadmap**, and it is recorded that way rather than quietly corrected: `F-049`'s open residue is that *nothing checks a rendered line against its authored ladder*, and that missing check is exactly what would have caught this at authoring time. Repaired to **another city or further**, naming a scale the 1.98 bands actually author.
+
+**Defect 2 — the deed was unperformable where 1.102 asked for it.** Section 18.8 barred the anchored step inside a Section 18.2 class trial as *"unusable from within,"* so an examination built to test the anchor apparatus **forbade the anchor apparatus**. The exception is restated as **scoped to crossing the seal**, which is all its own reasoning ever claimed — *the forge does not have a back door*, *a trial he could leave would measure nothing*, none of which reaches a step beginning and ending inside. A **trial-local anchor** is now legal within a trial, costs no slot against `effective Agility ÷ 20`, and dies with the instance. **The penalty zone keeps the absolute bar** and the asymmetry is stated: it examines nothing, and Section 8.3's whole content is that he is in it.
+
+**Two further repairs.** *"The sense reports; it never authors"* gains a trial carve-out — inside a System-built examination a manufactured disturbance **is** the examination, while the constraint continues to govern the world unchanged. And Section 18.3.4 now states the distinction underneath all of it: **a folded-in phase is an examination, not the unlock deed replayed.** The condition opens the standalone trial; the phase is what stands inside it; a Bearer on the six-phase route has not satisfied his condition and is never asked to. That was left implicit at 1.102 and misread at the table, which is a fair reading of what 1.102 actually said.
+
+**Nothing moves.** No Rank, cost, timer, cap, grant or class ability changes; the anchored step still costs a flat 5 Mana and still cannot cross a trial or penalty-zone wall. 18.3.4's six-phase ruling and its grant of both lines on passing are untouched, and the live campaign's Threshold Trial stays **locked** — the deed's distance clause changed vocabulary, not scale.
+
+**Left open.** `F-049`'s missing check — nothing compares an authored line against the ladder or vocabulary it derives from — is unclosed and is the direct cause of defect 1. The 1.103 adoption Event and the evolution-trial state block the sheet still lacks are both owed to a play session, as 1.102's entry already records.
+
+**Files:** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` (H1, version field, Compatibility Status, 18.3.4 phase/deed distinction, 18.8 hook, 18.8 two-exceptions rule, 18.8 anchor-sense constraint), `worlds/gatefall/migrations/1.102_to_1.103.md` (new), `migrations/INDEX.md`, `worlds/gatefall/README.md`, `campaigns/gatefall_pendragon_001/090_CAMPAIGN_STARTUP.md` (pin only), `system/WORLDS_AND_CAMPAIGNS.md`, `engine/004_DESIGN_FLAGS.md`.
+
+---
+
 ## 2026-08-24 — Gatefall Profile 1.102: the class ladder had no middle
 
 **World content under Decision 069 point 4 and Decision 062.** Legs 1 and 2 clean; `011_ENGINE_DATA_MODEL.md` untouched, no stored field added or moved. Leg 3 not engaged: every clause is a Gatefall class hook, a Gatefall trial rule, or a cross-reference inside Section 18.

@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000232 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000771 |
+| Event | `EVT-` | Event | EVT-000780 |
 | Relationship | `REL-` | Relationship | REL-000100 |
 
 ---
@@ -830,6 +830,15 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000769 | Event | Gatefall: Pendragon, the Riftwalker anchor cap corrected for the eighth recorded time, 2026-08-27 09:50. Stored 67 (disagreeing with its own note's stale 190) re-derived off live effective Agility 4,394 to 219 |
 | EVT-000770 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-27 09:15, span `EVT-000756`-`EVT-000769`. No combat this span. `gatefall.skill_formation`: none. `gatefall.skill_credit`: none, correctly empty. Two Stat allocations settled (Strength +20, Intelligence +67), one full world tick, two NPC agenda advances, two pre-existing defects repaired on sight (the anchor cap, `GB-14`'s board status). No canonical contradiction found |
 | EVT-000771 | Event | Gatefall: Pendragon, **progression batch settlement**, 2026-08-27 09:15, span `EVT-000756`-`EVT-000769`. Section 7.1's required batch classification: all fifteen play Events classify `none`, individually justified — conversation, a deterministic transfer, a world tick, routine daily completion, table-lookup box openings, mechanical Stat/gear allocation, two contacts, one data correction. No Event presents a declared objective under uncertain execution with a material result |
+| EVT-000772 | Event | Gatefall: Pendragon, title loadout review (Godslayer equipped, Centurion -> Vanguard) and two NPC-Rank rulings (Priscilla Nakamura B-Rank awakened, Marnie A-Rank), 2026-08-27 09:15. No fictional time elapsed |
+| EVT-000773 | Event | Gatefall: Pendragon, Profile 1.101 confirmed live — title passive rebase, Godslayer replaced, `Grounded` added to the catalog |
+| EVT-000774 | Event | Gatefall: Pendragon, Profile 1.102 adopted (`F-052` actioned); Gate Walker trial entered; Phase 1 (folded-in evolution examination, trial-local anchor apparatus proven) and Phase 2 (The Converging, 10 A-Rank commons, 4,000 XP) cleared; LEVEL 102->103 |
+| EVT-000775 | Event | Gatefall: Pendragon, Profile 1.103 adopted mid-trial — two defects in 1.102's own fix repaired (retired pricing vocabulary; the anchor-apparatus bar scoped to crossing the seal); `F-053` raised, `Open` |
+| EVT-000776 | Event | Gatefall: Pendragon, Phase 3 (The Grind) cleared, 2 S-Rank elites, 4,000 XP |
+| EVT-000777 | Event | Gatefall: Pendragon, Phase 4 (The Refusal) cleared — class suppressed, lethal force barred; one S-Rank elite incapacitated (not killed) by a pulled Mana Bolt under Section 18.13's carve-out, 2,000 XP |
+| EVT-000778 | Event | Gatefall: Pendragon, Phase 5 (The Ground, 1 S-Rank elite, 2,000 XP) and Phase 6 (The Clock, 7 S-Rank commons, cleared in 1 of 6 exchanges, 7,000 XP) cleared; LEVEL 103->104 |
+| EVT-000779 | Event | Gatefall: Pendragon, final foe cleared (S-Rank boss, 16,000 Health, one ambushed Rupture strike, 4,000 XP); Riftwalker Threshold Trial evolution and Gate Walker terminal line both granted in one settlement |
+| EVT-000780 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-27 09:15, span `EVT-000772`-`EVT-000779`. `gatefall.skill_credit`: real — whole trial as one continuous-danger scene, five skills crossed a mastery tier (Bulwark, Flash Step Novice->Practiced; Twin Fang, Silent Step, Mana Bolt Practiced->Adept). `gatefall.skill_formation`: none. Two level-up crossings settled immediately, both pools restored in full both times. Both class lines granted. No fictional time elapsed. No canonical contradiction found |
 
 ---
 

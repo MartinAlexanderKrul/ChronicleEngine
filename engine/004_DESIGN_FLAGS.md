@@ -1431,3 +1431,34 @@ The line also omitted the `Through the barrier` (C) and `Through the ward` (B) c
 **The open design question:** does Section 12.8 (or a new subsection) owe an explicit statement of whether ceiling-raising work is (a) exclusively a Bearer-only technique by design, on the same "he remains no artificer" logic that already bars origination, or (b) a rare-but-real fifth trade some licensed artificers hold, gated by the same rarity Section 12.8 already applies to the signature ability itself — and if (b), what Nakamura's specific standing is (she's established as *not* having built from scratch, *not* having fused before this session; whether she's ever attempted ceiling-work is simply unauthored, not established either way). This is the same shape as `F-050` one level up: a capability's *existence and population* left ambiguous rather than its *cost*, and it's worth checking whether other Seamwork rungs (Read and open, Seat, Lift) have the same silent boundary, or whether only Raise does.
 
 **Related:** `F-050` (fusion's outcome not surfaced before commitment — same family, one layer earlier: what a capability is worth vs. whether it exists), `F-039` (the procedural defect from Seamwork's own reopening, where "no player crafting subsystem" was over-read once already).
+
+---
+
+## F-052 — The class trials are authored at both ends and unauthored in between: no entry condition for Riftwalker's level-50 evolution, and no stated relationship between it and the level-100 terminal trial
+
+**Raised:** 2026-08-24 · **Source:** `campaigns/gatefall_pendragon_001/`, out-of-character question at session open, 2026-08-26 in-fiction
+
+The Bearer is level 102 with **both** class trials standing open and unentered — the level-50 Threshold Trial (Gatefall Profile Section 18.8) and the level-100 Gate Walker trial (Section 18.13). The player asked, out of character, what the difference between them is. Answering it surfaced three separate gaps, all in the same seam of Section 18, and none of them answerable from the profile.
+
+**1. Riftwalker's level-50 hook is the only one of eight that names no entry condition.** Every other class's evolution hook states a deed that unlocks it, and states it in the same clause as the grant:
+
+- Shadowbinder — *"extract a **boss-Rank** elite to unlock **Legion**"* (18.4)
+- Soulforged Armory — *"bind a **boss** essence to unlock **Living Edge**"* (18.5)
+- Devourer — *"consume a **boss** core to unlock **Apex Predator**"* (18.6)
+- Echo Knight — the Chorus Trial, *"unlock **Simultaneity**"* (18.7) — **also conditionless**
+- Reliquary — *"recover a relic from a **boss** to unlock **The Long Museum**"* (18.9)
+- Herald — *"lend to an ally who then survives a Gate two Ranks above their own card"* (18.10)
+- Seam — *"close a puncture while it is actively widening"* (18.11)
+- **Riftwalker — *"unlock the **personal gate**"* (18.8), with no condition at all**
+
+So it is two of eight, not one, and the two conditionless ones (Riftwalker, Echo Knight) are the two whose grants are about *reach and timing* rather than about consuming something taken off a boss. That may be deliberate — there is no obvious "boss part" for a portal — but the profile does not say so, and the campaign's own state has consequently recorded the trial as "unlocked and unentered" for **fifty-two levels** without anything ever establishing what entering it would involve. A Runtime asked to open it right now would have to invent the trial's premise, which is precisely the class of invention Section 18.13.2 stops for on the terminal lines.
+
+**2. Nothing states whether the level-50 evolution is a prerequisite for the level-100 terminal trial.** Section 18.13 describes the terminal line as *"the same shape as the Section 18.3 evolution, one rung further out"* and says *"what he chose at the class quest is what he finishes as"* — but its **Trigger** paragraph keys the trial solely to the level-100 assessment and never mentions the level-50 evolution as a gate on it. The live campaign is the case that makes this load-bearing rather than theoretical: **the Bearer skipped level 50 entirely and reached the level-100 trigger anyway**, and Section 18.13's grants read as though they build on the personal gate (a scene-duration two-way portal between two of his own anchors becomes a permanent two-way tunnel between any two places he has stood, anyone crossing). Whether an un-evolved Riftwalker can take the terminal trial, takes it at a penalty, or must clear the Threshold Trial first is simply not written.
+
+**3. A stale cross-reference from the 1.100 split.** Section 18.3 says the class quest is followed by *"a **second and final permanent choice at level 100**, the subclass of Section 18.12."* Under 1.100, **18.12 is what the *world* does about him and explicitly grants him nothing**; **18.13 is the class line**. The pointer should read 18.13. Low-stakes on its own, but it is the sentence a Runtime lands on when tracing the class ladder forward, and it routes to the section that opens by saying it gives the Bearer nothing.
+
+**The open design question:** does Section 18 owe (a) an entry condition for the Riftwalker and Echo Knight evolution hooks — or an explicit statement that those two lines unlock on the level-50 assessment alone, with the reason; (b) a stated relationship between the level-50 evolution and the Section 18.13 terminal trial, covering the skipped-evolution case the live campaign has already produced; and (c) the 18.3 → 18.13 cross-reference repair. Worth checking at the same time whether the *other* six evolution hooks state what happens when their named deed is satisfied but the trial is never entered, since the campaign's handling of a fifty-two-level-old open trial has no precedent to read from.
+
+**Related:** `F-046` (the board could never reach a high-Rank hunter — same family: a ladder authored at both ends with the route between them missing), Section 18.13.2's own named gap (seven terminal lines owed and declared owed rather than improvised, which is the correct handling this flag asks for one rung down).
+
+**Status:** Open.

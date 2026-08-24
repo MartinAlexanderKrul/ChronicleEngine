@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000232 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000755 |
+| Event | `EVT-` | Event | EVT-000771 |
 | Relationship | `REL-` | Relationship | REL-000100 |
 
 ---
@@ -814,6 +814,22 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000753 | Event | Gatefall: Pendragon: sold 1,000 S-Rank crystals at 15,300 g/each, 2026-08-26 16:10. +15,300,000 g (45,061,681->60,361,681), entirely out of unencumbered stock; the 300 earmarked to OBJ-40 untouched |
 | EVT-000754 | Event | Gatefall: Pendragon, **Nakamura's Wednesday session**, 2026-08-26 16:10-20:15. The Seer's Lens [D-Rank] fusion resolved (🎲 51, net +1, effective 71, success) — one fused Lens, Mobility Echo carried but functionally inert under the one-Echo-per-scene wearer cap. $600 fee, one D-Rank core spent. A second fusion (both Warded Vambraces [A-Rank]) commissioned and both pieces placed in her custody, fee not yet quoted, two days' bench time. An initial hourly-teaching mischarge was caught and reversed in play — nothing was taught this session |
 | EVT-000755 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-26 20:15, span `EVT-000749`-`EVT-000754`. Nine skill-mastery crossings re-counted and confirmed, two fumbles credited nothing, four level-ups, one Title Assessment, Section 18.12 world reorganization recorded, one Gate Walker trial opened. `gatefall.skill_formation`: none. `gatefall.skill_credit`: explicit per-Event results, none empty by omission. One provisional mechanic (the S-Rank/Red-gate contest-test amendment) remains open, carried to the next readiness gate. No canonical contradiction found |
+| EVT-000756 | Event | Gatefall: Pendragon, Nakamura's workshop closes and Farraday's written GB-14 terms land, 2026-08-26 20:15-20:52. $2,050,000 compensation determination and a contact-authorization amendment, both inside the promised window; the National introduction escalated above Farraday's office, answer promised the next day |
+| EVT-000757 | Event | Gatefall: Pendragon, dinner at Halvard's with Owen Callahan, 2026-08-26 20:52-~22:00. GB-14's substance told without the Bearer-only register; corrected in play that the pledged crystals were Alexander's own, personally mined, not Ironline's |
+| EVT-000758 | Event | Gatefall: Pendragon, home and the reservoirs charged, 2026-08-26 23:10. 508 Mana transferred deliberately into the Mana Reservoir (17/125 -> 125/125) and Mana-storage cell (0/400 -> 400/400); a Tribune article on GB-14 surfaces unprompted |
+| EVT-000759 | Event | Gatefall: Pendragon, the 2026-08-27 06:00 world tick and Daily Premium rotation, real dice throughout. Six Chicago Gates, two Prague; one new posting (`GB-17`); a rolled S-Rank Gate's directed assignment resolved NOT THIS ONE; one anomalous Red gate elsewhere; `quiet_days` 0->1. Daily Premium rotated (Umbral series) |
+| EVT-000760 | Event | Gatefall: Pendragon, morning with Owen Callahan, 2026-08-27 06:05-~08:00. Two player-caught corrections: an impossible NPC-knowledge leak (Owen claiming to feel System activity) closed with a new Closed Channels row, and an overstated four-hour sleep figure corrected to a full night |
+| EVT-000761 | Event | Gatefall: Pendragon, breakfast; Owen Callahan leaves for his Edgewater shift, 2026-08-27 08:00-~08:45. No mechanical content |
+| EVT-000762 | Event | Gatefall: Pendragon, thirty-second daily quest completed, 2026-08-27 09:00. Streak 19->20, no roll (routine). Ability Points +4, Status Recovery +1, one Daily Random Box created, all pending |
+| EVT-000763 | Event | Gatefall: Pendragon, both pending Daily Random Boxes opened, 2026-08-27 09:05. Box 1: Elixir of a Stat (unconsumed). Box 2: ranked gear -> Quickstep Charm [S-Rank] |
+| EVT-000764 | Event | Gatefall: Pendragon, 20 Ability Points claimed and spent on Strength, 2026-08-27 09:10. Base Strength 4,634->4,654; unspent pool 67->87->67 |
+| EVT-000765 | Event | Gatefall: Pendragon, Hunter's Band [S-Rank] and Quickstep Charm [S-Rank] equipped to both accessory slots, 2026-08-27 09:20, temporary while the Warded Vambraces are in Nakamura's custody |
+| EVT-000766 | Event | Gatefall: Pendragon, the standing 67-point unspent pool spent entirely on Intelligence, 2026-08-27 09:30. Base Intelligence 4,585->4,652; Rupture ~17,034->~17,239, Mana Bolt ~10,612->~10,739, both daggers re-derive to 8,710 |
+| EVT-000767 | Event | Gatefall: Pendragon, Walt Adamik called and pressed for speed on `OBJ-29`, 2026-08-27 09:40. Agenda advanced from resolved conduct; committed to the stalled second vouch starting inside 2-3 days |
+| EVT-000768 | Event | Gatefall: Pendragon, Priscilla Nakamura's Thursday slot cancelled by text, 2026-08-27 09:45. Friday 19:30 now carries the standing session plus the Vambrace fusion's resolution |
+| EVT-000769 | Event | Gatefall: Pendragon, the Riftwalker anchor cap corrected for the eighth recorded time, 2026-08-27 09:50. Stored 67 (disagreeing with its own note's stale 190) re-derived off live effective Agility 4,394 to 219 |
+| EVT-000770 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-27 09:15, span `EVT-000756`-`EVT-000769`. No combat this span. `gatefall.skill_formation`: none. `gatefall.skill_credit`: none, correctly empty. Two Stat allocations settled (Strength +20, Intelligence +67), one full world tick, two NPC agenda advances, two pre-existing defects repaired on sight (the anchor cap, `GB-14`'s board status). No canonical contradiction found |
+| EVT-000771 | Event | Gatefall: Pendragon, **progression batch settlement**, 2026-08-27 09:15, span `EVT-000756`-`EVT-000769`. Section 7.1's required batch classification: all fifteen play Events classify `none`, individually justified — conversation, a deterministic transfer, a world tick, routine daily completion, table-lookup box openings, mechanical Stat/gear allocation, two contacts, one data correction. No Event presents a declared objective under uncertain execution with a material result |
 
 ---
 

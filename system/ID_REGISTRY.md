@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000232 |
+| Entity | `ENT-` | Persistent Entity | ENT-000242 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000780 |
-| Relationship | `REL-` | Relationship | REL-000100 |
+| Event | `EVT-` | Event | EVT-000788 |
+| Relationship | `REL-` | Relationship | REL-000101 |
 
 ---
 
@@ -839,6 +839,13 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000778 | Event | Gatefall: Pendragon, Phase 5 (The Ground, 1 S-Rank elite, 2,000 XP) and Phase 6 (The Clock, 7 S-Rank commons, cleared in 1 of 6 exchanges, 7,000 XP) cleared; LEVEL 103->104 |
 | EVT-000779 | Event | Gatefall: Pendragon, final foe cleared (S-Rank boss, 16,000 Health, one ambushed Rupture strike, 4,000 XP); Riftwalker Threshold Trial evolution and Gate Walker terminal line both granted in one settlement |
 | EVT-000780 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-27 09:15, span `EVT-000772`-`EVT-000779`. `gatefall.skill_credit`: real — whole trial as one continuous-danger scene, five skills crossed a mastery tier (Bulwark, Flash Step Novice->Practiced; Twin Fang, Silent Step, Mana Bolt Practiced->Adept). `gatefall.skill_formation`: none. Two level-up crossings settled immediately, both pools restored in full both times. Both class lines granted. No fictional time elapsed. No canonical contradiction found |
+| EVT-000781 - EVT-000785 | Event | Gatefall: Pendragon: the far door's first use — opened onto the Landing (781); the Mill entered, a ~14-15 strong pack killed, five mastery crossings (782); the seam crossed to the Ninth Quiet, an entire alien library stored whole (783); a worn path read by Exploit Pattern and followed to a long-inhabited dwelling, thirteenth real anchor set (784); the anchored return and the far door closed from the Earth side, ~2 hours real elapsed time corrected mid-session (785) |
+| EVT-000786 - EVT-000787 | Event | Gatefall: Pendragon: Farraday's promised National introduction delivered by text (786); Renata Okonkwo-Vance called directly, Thursday 2026-08-27 meeting agreed, venue owed by Alexander 2026-08-26 EOD (787) |
+| ENT-000233 | Entity | Gatefall: Pendragon: **Renata Okonkwo-Vance**, BGM National S-Rank Liaison — first contact by phone, `130_NPCS_AND_FACTIONS.md` |
+| REL-000101 | Relationship | Gatefall: Pendragon: Alexander and Renata Okonkwo-Vance (`ENT-000233`), working-source relationship — Thursday meeting agreed, one call |
+| ENT-000234 - ENT-000241 | Entity | Gatefall world-ranked figures appended to `worlds/gatefall/220_NOTABLE_FIGURES.md` (REC-000071), researched off the national S-Rank roster: Isabel Chandrasekaran (234, Denver), Marcus Webb (235, Houston), Jonas Whitfield (236, Seattle), Camille Duforest (237, New Orleans), Griffin Ashcombe (238, Boston), Nadia Farrow (239, unaffiliated, Los Angeles), Terrence Kowalczyk (240, Detroit), Odalys Ferreira (241, Miami). None yet met in play; disposition authored prospectively per Decision 092 |
+| ENT-000242 | Entity | Gatefall world-ranked figure appended to `worlds/gatefall/220_NOTABLE_FIGURES.md` (REC-000071): **Elias Kane**, BGM federal asset, the other Chicago-resident S-Rank, previously named only in `200_WORLD_BIBLE.md` prose |
+| EVT-000788 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-27 12:15, span `EVT-000781`-`EVT-000787`. `gatefall.skill_credit`: real — one continuous expedition-scene, four skills crossed a mastery tier (Flash Step, Mana Bolt, Sprint, Exploit Pattern; Dimensional Projection progressed but did not cross). `gatefall.skill_formation`: none. Mana/Health fully reconciled across a two-hour active and one-hour resting/light span. Two items flagged, not resolved: an Exploit Pattern capacity conflict (tenth concurrent Pattern against a nine-Pattern ceiling) and untracked gray-sleep mana-saturation exposure. No canonical contradiction found |
 
 ---
 

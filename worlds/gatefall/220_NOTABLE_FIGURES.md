@@ -3,7 +3,7 @@
 **Ledger:** Canonical Record (`011` Section 8) holding Gatefall's notable Character entities and their institutional memberships.
 **Status:** Active — instantiated as canonical world content (2026-07-22).
 
-Fourteen figures — twelve city figures (six in Chicago, six in Prague) and two **world-ranked S-ranks** appended below (the highest-ranked American and Brandhof's German ace) — each authored under the character depth law: every figure is a person mid-story, sitting inside a standing institutional tension and on a side of it, not a role-holder waiting to be queried. Each carries a **Want**, a **Fear/Flaw**, a **Secret**, an **Agenda (this month)**, and **Relationships** by identifier; a paragraph of voice and presence; and an Object Block. Secrets are written to be load-bearing: most connect to the standing tensions play can detonate — the three-way foreign siege of Karlov (the Karlov bid), the unpublished break-rate curve (the clock), the exposure and re-ranking pipeline, the black-market flow of cores and artifacts westward out of Prague, and the contested politics of the World Ranking (Bible Section 3).
+Twenty-three figures — twelve city figures (six in Chicago, six in Prague), two **world-ranked S-ranks** (the highest-ranked American and Brandhof's German ace), and nine further **US S-Ranks** appended 2026-08-27 (Elias Kane, Chicago's federal asset, plus eight researched off the national roster) — each authored under the character depth law: every figure is a person mid-story, sitting inside a standing institutional tension and on a side of it, not a role-holder waiting to be queried. Each carries a **Want**, a **Fear/Flaw**, a **Secret**, an **Agenda (this month)**, and **Relationships** by identifier; a paragraph of voice and presence; and an Object Block. Secrets are written to be load-bearing: most connect to the standing tensions play can detonate — the three-way foreign siege of Karlov (the Karlov bid), the unpublished break-rate curve (the clock), the exposure and re-ranking pipeline, the black-market flow of cores and artifacts westward out of Prague, and the contested politics of the World Ranking (Bible Section 3).
 
 Clue-adjacent knowledge is carried only at the level of the World Bible's three planted clue-lines (the graveyard brand, the doubling break-rate chart, the audition's second mana signature). No figure holds or hints at the owner-only explanation beneath those clues.
 
@@ -41,6 +41,15 @@ subjects:
   - ENT-000118
   - ENT-000123
   - ENT-000124
+  - ENT-000234
+  - ENT-000235
+  - ENT-000236
+  - ENT-000237
+  - ENT-000238
+  - ENT-000239
+  - ENT-000240
+  - ENT-000241
+  - ENT-000242
   - REL-000052
   - REL-000053
   - REL-000054
@@ -700,6 +709,277 @@ canonical_state:
   signature_ability: "Bastion — a fortress-summoning barrier-and-siege discipline that walls a break and grinds it down (Bible Section 3, World Ranking; Profile Section 13.6)."
   personality: "Precise, courteous, immovable; a siege-everything caution that is half doctrine and half trauma."
   knowledge: "Knows Brandhof's true Prague objective is the acquisition of Karlov Guild itself, not the S-Rank the three internationals appear to be bidding for; is running the Blažková courtship as a feint."
+```
+
+---
+
+## Elias Kane — BGM Federal Asset, Chicago
+
+**Name / rank / role:** Elias Kane, S-Rank, the second of Chicago's two resident S-Ranks (`200_WORLD_BIBLE.md` Section on regional populations) — unlike Dominic Crane, he carries no guild membership at all. He is a **federal asset**, answering to BGM National in Washington rather than to Region V or to any guild's chain of command, and his public profile is deliberately thin: no press relationship, no marquee clears attributed to him by name, a man the city knows exists without knowing what he does.
+
+**Want:** To stay useful enough to Washington that his arrangement is never reconsidered — a federal asset's leash is also his insulation from every other pressure a Chicago hunter carries (guild politics, sponsorship, public billing), and he has no interest in trading it for visibility.
+
+**Fear/Flaw:** That a second Chicago S-Rank — Alexander, unaffiliated, publicly carded — changes the calculus that's kept him quiet and useful for years. His flaw is a reflexive institutional caution: he reads any newly visible S-Rank as a variable that could get his own arrangement re-examined, before he's read anything else about them.
+
+**Secret:** The exact nature of his federal tasking has never been stated to anyone in Chicago's guild ecosystem, including Region V's own Farraday — "answers to Washington before the city" is the entirety of what's public. What that actually means in practice is owner-facing, unauthored beyond that line.
+
+**Agenda (this month):** Unestablished in play — no scene has reached him yet. Alexander has his name and public profile from research (`campaigns/gatefall_pendragon_001/`, 2026-08-27) but no channel to him.
+
+Kane has not appeared in scene. This entry authors his disposition prospectively, per Decision 092, so a future encounter is never played from a blank record.
+
+```yaml
+id: ENT-000242
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-27"
+  real_date: "2026-08-25T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Elias Kane"
+    quality: current
+canonical_state:
+  rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  role: "BGM federal asset, Chicago — no guild membership, reports to Washington rather than Region V or any guild chain (`200_WORLD_BIBLE.md`)."
+  capabilities: "S-Rank combat; specific signature unestablished — no scene has reached him."
+  personality: "Deliberately low-profile; institutionally cautious about any change to Chicago's S-Rank visibility."
+  knowledge: "No channel to Alexander directly. Public awareness only, the same as anyone else in Chicago's hunter community — a second resident S-Rank now exists and is publicly carded."
+```
+
+---
+
+## Isabel Chandrasekaran — Ashwood Collective, Denver
+
+S-Rank, area-control specialist. Regional press only; no national profile. Unmet in play; disposition unauthored beyond public record pending a scene that reaches her.
+
+```yaml
+id: ENT-000234
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-27"
+  real_date: "2026-08-25T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Isabel Chandrasekaran"
+    quality: current
+canonical_state:
+  rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  role: "S-Rank ace, Ashwood Collective (Denver)."
+  capabilities: "S-Rank combat; area-control specialization, signature unestablished."
+  personality: "Unestablished — no scene has reached her."
+  knowledge: "No channel to Alexander. Aware, if at all, only through Renata Okonkwo-Vance's national-roster outreach (`EVT-000787`) — whether she was reached and whether she responds is undetermined."
+```
+
+---
+
+## Marcus Webb — Redline Guild, Houston
+
+S-Rank, front-line breaker with several Gulf Coast Gate-break interventions on record. Unmet in play.
+
+```yaml
+id: ENT-000235
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-27"
+  real_date: "2026-08-25T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Marcus Webb"
+    quality: current
+canonical_state:
+  rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  role: "S-Rank ace, Redline Guild (Houston)."
+  capabilities: "S-Rank combat; front-line break intervention, signature unestablished."
+  personality: "Unestablished — no scene has reached him."
+  knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
+```
+
+---
+
+## Jonas Whitfield — Cascade Guild, Seattle
+
+S-Rank, reclusive by guild policy — almost no photographs exist. Unmet in play.
+
+```yaml
+id: ENT-000236
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-27"
+  real_date: "2026-08-25T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Jonas Whitfield"
+    quality: current
+canonical_state:
+  rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  role: "S-Rank ace, Cascade Guild (Seattle) — guild policy keeps his public profile deliberately thin."
+  capabilities: "S-Rank combat; signature unestablished."
+  personality: "Unestablished — no scene has reached him."
+  knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
+```
+
+---
+
+## Camille Duforest — Delta Watch, New Orleans
+
+S-Rank, flood-and-storm specialist. Regional press, minimal national coverage. Unmet in play.
+
+```yaml
+id: ENT-000237
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-27"
+  real_date: "2026-08-25T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Camille Duforest"
+    quality: current
+canonical_state:
+  rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  role: "S-Rank ace, Delta Watch (New Orleans)."
+  capabilities: "S-Rank combat; flood/storm-environment specialization, signature unestablished."
+  personality: "Unestablished — no scene has reached her."
+  knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
+```
+
+---
+
+## Griffin Ashcombe — Sterling Guild, Boston
+
+S-Rank, an old-money guild's flagship with heavy East Coast press presence. Unmet in play.
+
+```yaml
+id: ENT-000238
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-27"
+  real_date: "2026-08-25T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Griffin Ashcombe"
+    quality: current
+canonical_state:
+  rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  role: "S-Rank ace, Sterling Guild (Boston) — heavily press-managed."
+  capabilities: "S-Rank combat; signature unestablished."
+  personality: "Unestablished — no scene has reached him."
+  knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
+```
+
+---
+
+## Nadia Farrow — unaffiliated, Los Angeles
+
+S-Rank, independent contractor — the only other unaffiliated American S-Rank on the researched list, genuinely hard to find further public information on. Unmet in play.
+
+```yaml
+id: ENT-000239
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-27"
+  real_date: "2026-08-25T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Nadia Farrow"
+    quality: current
+canonical_state:
+  rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  role: "Unaffiliated, independent contractor, Los Angeles — no guild membership, mirroring Alexander's own standing."
+  capabilities: "S-Rank combat; signature unestablished."
+  personality: "Unestablished — no scene has reached her."
+  knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach — flagged in play as the researched name most likely to actually understand his position."
+```
+
+---
+
+## Terrence Kowalczyk — Anchor Guild, Detroit
+
+S-Rank, industrial-Gate specialist with local hero status. Unmet in play.
+
+```yaml
+id: ENT-000240
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-27"
+  real_date: "2026-08-25T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Terrence Kowalczyk"
+    quality: current
+canonical_state:
+  rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  role: "S-Rank ace, Anchor Guild (Detroit)."
+  capabilities: "S-Rank combat; industrial-Gate specialization, signature unestablished."
+  personality: "Unestablished — no scene has reached him."
+  knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
+```
+
+---
+
+## Odalys Ferreira — Vanguard Collective, Miami
+
+S-Rank, the youngest of the eleven, recently promoted, with her guild actively building her public profile. Unmet in play.
+
+```yaml
+id: ENT-000241
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: ruling
+  game_date: "2026-08-27"
+  real_date: "2026-08-25T00:00:00Z"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Odalys Ferreira"
+    quality: current
+canonical_state:
+  rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  role: "S-Rank ace, Vanguard Collective (Miami) — youngest of the eleven, recently promoted."
+  capabilities: "S-Rank combat; signature unestablished."
+  personality: "Unestablished — no scene has reached her."
+  knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
 ```
 
 ---

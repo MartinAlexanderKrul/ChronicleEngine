@@ -45,8 +45,15 @@ $profile = Get-Content -Raw $profilePath
 
 Assert-True ($profile -match '(?m)^### 9\.1\.6 ') `
     "Section 9.1.6 is absent; everywhere that is not Chicago or Prague has no clock at all, which is the F-056 gap."
-$s916 = Get-Section $profile '(?m)^### 9\.1\.6 .*?(?=^## 9\.2)'
+# Delimited at 9.1.7 rather than at 9.2. When 1.107 added Section 9.1.7 between
+# them this span silently grew to cover both, and every 9.1.6-scoped leg below
+# started accepting text that lives in 9.1.7 -- including the handoff leg, which
+# was then satisfied by 9.1.7's own heading and could not fail. Scope a presence
+# check to the section it belongs to, or a later insertion widens it for free.
+$s916 = Get-Section $profile '(?m)^### 9\.1\.6 .*?(?=^### 9\.1\.7|^## 9\.2)'
 Assert-True ($s916 -ne '') "Section 9.1.6 could not be delimited for scoped checks."
+Assert-True ($s916 -notmatch '(?m)^### 9\.1\.7 ') `
+    "Section 9.1.6's span has swallowed Section 9.1.7. Every scoped leg below is now satisfiable by text in the wrong section."
 
 # A section nothing dispatches to is absent, not patient -- the F-002 defect
 # this profile has already met three times. The tick's numbered list must carry
@@ -223,6 +230,95 @@ Assert-True ($s916 -match '(?i)no regional market factor') `
 $s914 = Get-Section $profile '(?m)^### 9\.1\.4 .*?(?=^### 9\.1\.5)'
 Assert-True ($s914 -match '9\.1\.6') `
     "Section 9.1.4's escalation-elsewhere row does not distinguish itself from Section 9.1.6, so a Runtime rolling both double-counts one event as two."
+
+# --- 1.107: the world outside the United States -----------------------------
+# 1.106's light tick stops at the border because that is what a BGM National
+# agreement covers. Section 9.1.7 carries the other 96% of the world's Gates.
+
+Assert-True ($profile -match '(?m)^### 9\.1\.7 ') `
+    "Section 9.1.7 is absent; everything outside the United States has no clock, in a world whose break rate is global and whose catastrophe is Romanian."
+$s917 = Get-Section $profile '(?m)^### 9\.1\.7 .*?(?=^## 9\.2)'
+Assert-True ($s917 -ne '') "Section 9.1.7 could not be delimited for scoped checks."
+Assert-True ($s916 -match '9\.1\.7') `
+    "Section 9.1.6 does not hand off to Section 9.1.7, so its own United States scope reads as the whole world."
+Assert-True ($s91 -match '9\.1\.7') `
+    "Section 9.1's tick never dispatches to Section 9.1.7; a region table nothing rolls is absent, not patient."
+
+# The weekly clock is the whole reason this is affordable. A daily world roll
+# is a second Section 9.1.6 for six extra continents.
+Assert-True ($s917 -match "(?i)week's first tick|once a week") `
+    "Section 9.1.7 does not run on the weekly clock. A daily world roll costs as much as the domestic one and produces news the Bearer cannot act on."
+
+# --- every region the user's map has, and the two columns that must close ----
+
+foreach ($region in @('Asia', 'Africa', 'Europe', 'North America', 'Middle East', 'South America', 'Oceania')) {
+    Assert-True ($s917 -match "(?m)^\| \*\*$([regex]::Escape($region))\*\* \|") `
+        "Section 9.1.7's region table has no $region row, so a world event siting there has nothing to read."
+}
+# Oceania must name Australia, or the region the owner asked for by name is
+# reachable only by someone who already knows the synonym.
+Assert-True ($s917 -match '(?i)Australia') `
+    "Section 9.1.7's Oceania row never names Australia, so the region is unfindable by the name most readers would search."
+# The World row is the check, not a row: it is what proves the regions compose
+# to the Bible's own totals rather than being seven independent guesses.
+Assert-True ($s917 -match '(?m)^\| \*\*World\*\* \|') `
+    "Section 9.1.7 has no World row. Without the total, nothing shows the regions sum to the Bible's ~200 S-Ranks and the one authored Gate rate."
+Assert-True ($s917 -match '(?i)Both columns close|sum to the Bible') `
+    "Section 9.1.7 does not assert that its columns close against the Bible's own figures, which is the only thing separating a derived table from seven preferences."
+
+# --- flow must switch proxy at the border ------------------------------------
+# This is the leg most likely to be lost to a well-meaning simplification, and
+# losing it authors a world where poor countries have fewer Gates.
+
+Assert-True ($s917 -match '(?i)tracks population here, not licensed hunters|not licensed hunters') `
+    "Section 9.1.7 does not switch its flow proxy at the border. Reading licensed hunters as flow across borders makes a weak state produce fewer Gates -- the exact inversion of the setting."
+Assert-True ($s917 -match '(?i)symptom of coverage') `
+    "Section 9.1.7 does not state why the proxy switches, so the next editor will 'fix' the inconsistency by unifying it the wrong way."
+Assert-True ($s917 -match '0\.34') `
+    "Section 9.1.7 states no per-population Gate rate, so the region counts rest on nothing and cannot be rechecked."
+Assert-True ($s917 -match '(?i)days of S-Rank cover') `
+    "Section 9.1.7 states no coverage measure. Flow alone says nothing about whether a region's Gates get answered, which is the whole subject."
+
+# --- the border rule: an ask, never an assignment ----------------------------
+
+Assert-True ($s917 -match '(?i)draft never does|never crosses a border|no regulator.s call crosses') `
+    "Section 9.1.7 does not forbid the draft crossing a border. Section 9.11's emergency mobilization is a licensing power, and no authority can compel a foreign S-Rank."
+Assert-True ($s917 -match '(?i)arrives as an \*\*ask\*\*|as an \*\*ask\*\*') `
+    "Section 9.1.7 does not restrict a foreign request to an ask, so a world roll could compel the Bearer abroad."
+Assert-True ($s917 -match '(?i)IGR') `
+    "Section 9.1.7 names no international clearinghouse, so a foreign ask has no authored route and a Runtime invents one."
+Assert-True ($s917 -match '(?i)European Gate Council') `
+    "Section 9.1.7 omits the European Gate Council, which is the authored route a member state short of capacity actually uses."
+$doorRows = ([regex]::Matches($s917, '(?m)^\| \*\*(The IGR|The European Gate Council|BGM National|A state buying capacity)\*\* \|')).Count
+Assert-True ($doorRows -ge 4) `
+    "Section 9.1.7's door table has $doorRows row(s). Fewer than four leaves a foreign request arriving through a channel nobody authored."
+Assert-True ($s917 -match '(?i)emergency-mobilization tier is unavailable|never the draft') `
+    "Section 9.1.7 does not disable the emergency-mobilization refusal tier abroad, so declining a foreign Gate could become a licensing offense."
+Assert-True ($s917 -match '\+20') `
+    "Section 9.1.7 applies no penalty to a foreign ask, so a request from Jakarta reaches him as readily as one from Boston."
+Assert-True ($s917 -match '18\.8') `
+    "Section 9.1.7 does not read the Bearer's anchors, so the one thing that genuinely shortens a foreign response window counts for nothing."
+
+# --- the fences carry across ------------------------------------------------
+
+Assert-True ($s917 -match '(?i)authors no city') `
+    "Section 9.1.7 does not forbid authoring a foreign city, so a single world roll can spawn a metro the world must then keep running."
+Assert-True ($s917 -match '(?i)rolls no Gates') `
+    "Section 9.1.7 does not carry Section 9.1.6's no-Gates fence, so the region table reads as a simulation of 2,760 daily Gates."
+Assert-True ($s917 -match '9\.2\.2') `
+    "Section 9.1.7 does not fence itself off from the escalation ramp; a foreign break advancing Chicago's tier is the roster-length defect at world scale."
+Assert-True ($s917 -match '(?i)never produces a System quest|no System quest') `
+    "Section 9.1.7 does not restate Section 9.1.5's quest boundary, which is where a world-fact table would otherwise start issuing objectives."
+
+# The Jiu Valley must survive the arithmetic. A table producing ~13.8 S-Rank
+# Gates a day worldwide could easily read as demoting the setting's one named
+# catastrophe, and the section has to say why it does not.
+Assert-True ($s917 -match '(?i)Jiu Valley') `
+    "Section 9.1.7 never reconciles its rate with the Jiu Valley. A world opening S-Rank Gates daily needs to say why the Exclusion is still the one the trade means."
+
+$s911Schema = Get-Section $profile '(?m)^### 9\.1\.1 .*?(?=^### 9\.1\.2)'
+Assert-True ($s911Schema -match '(?m)^world\s') `
+    "Section 9.1.1's world_ticks schema has no line for the weekly region roll, so Section 9.1.7's result has nowhere to be written."
 
 # --- the version statements agree -------------------------------------------
 # Derived, never pinned: a test that must be hand-edited on every adoption is

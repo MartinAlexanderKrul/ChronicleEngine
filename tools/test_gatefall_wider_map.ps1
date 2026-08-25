@@ -165,11 +165,58 @@ Assert-True ($s916 -match '(?i)escalat') `
 Assert-True ($s916 -match '9\.3') `
     "Section 9.1.6 does not read Section 9.3's timer, which is the only thing that makes 'nobody could reach it' a fact rather than a mood."
 # The stream must be a composed figure, not a chosen one. A section stating a
-# rate with no arithmetic behind it is the F-054 residue on a new axis.
-Assert-True ($s916 -match '0\.30|0\.3 a day') `
-    "Section 9.1.6 states no composed daily stream, so the 30-in-100 roll rests on nothing and cannot be rechecked when the tier moves."
-Assert-True ($s916 -match '(?m)^\s*01-70\s') `
-    "Section 9.1.6's roll table does not open on the holding band. Without it the wider map produces an incident most days."
+# rate with no arithmetic behind it is the F-054 residue on a new axis. Read as
+# a shape, not as a literal: the figure moves whenever the ceiling or the tier
+# is retuned, and a leg pinned to today's number goes red when it should not.
+# The cell reads "**~ 0.23**" with a non-ASCII approximation sign, which
+# PowerShell 5.1 decodes from this BOM-less UTF-8 file as two ANSI bytes. Match
+# a bounded run of non-digits rather than a single character, or the leg reads
+# green against a table it never parsed.
+$streamFigure = [regex]::Match($s916, '(?m)\*\*Total\*\* \| \*\*[^0-9|]{0,6}(?<v>0\.\d+)\*\*')
+Assert-True $streamFigure.Success `
+    "Section 9.1.6's escalation table states no composed daily total, so its roll rests on nothing and cannot be rechecked when the tier or the Rank ceiling moves."
+if ($streamFigure.Success) {
+    $stream = [double]$streamFigure.Groups['v'].Value
+    Assert-True ($stream -gt 0.05 -and $stream -lt 1.0) `
+        "Section 9.1.6's composed stream is $stream a day. Below ~0.05 the national channel never fires in a campaign's length; at or above 1.0 the wider map produces an incident every day and stops being wider-map news."
+    # The holding band must be the arithmetic complement of the stream, or the
+    # table and the roll have drifted apart -- which is exactly how a retuned
+    # rate ends up stated in one place and rolled at another.
+    $hold = [regex]::Match($s916, '(?m)^\s*01-(?<h>\d\d)\s+THE WIDER MAP HOLDS')
+    Assert-True $hold.Success `
+        "Section 9.1.6's roll table does not open on the holding band. Without it the wider map produces an incident most days."
+    if ($hold.Success) {
+        $rolled = (100 - [int]$hold.Groups['h'].Value) / 100.0
+        Assert-True ([Math]::Abs($rolled - $stream) -le 0.02) `
+            "Section 9.1.6 composes $stream a day but its roll table fires $rolled of the time. The stated arithmetic and the rolled table have drifted apart."
+    }
+}
+
+# --- 1.108: mana density sets the ceiling, not just the count ----------------
+# Owner ruling. Without it a metro under 150 licensed hunters and a continent
+# with the thinnest agency reach on Earth both roll the world's full 0.5%
+# S-Rank share, which put 2.55 S-Rank Gates a day into a region holding fifteen
+# S-Ranks and made one Jiu Valley impossible to explain.
+
+Assert-True ($s916 -match '(?i)Rank ceiling') `
+    "Section 9.1.6's band table has no Rank ceiling column, so the thinnest metros in the country open S-Rank Gates at the same share as Chicago."
+$bandFour = [regex]::Match($s916, '(?m)^\| \*\*IV .{0,3} Minor\*\* \|(?<row>[^\r\n]*)$')
+Assert-True $bandFour.Success "Section 9.1.6 has no Band IV row to carry a ceiling."
+if ($bandFour.Success) {
+    Assert-True ($bandFour.Groups['row'].Value -match '(?i)no S-Rank') `
+        "Section 9.1.6's Band IV row does not forbid an S-Rank Gate. Under 150 licensed hunters is thin ground and the pressure behind an S-Rank interior is not there."
+}
+# The redistribution must preserve the C-and-above mass, or the break-escalation
+# arithmetic one table down silently stops holding.
+Assert-True ($s916 -match '(?i)C-and-above mass is unchanged|unchanged at 25%') `
+    "Section 9.1.6 does not state that its ceiling preserves the C-and-above mass. Without it the break line's 25% is asserted against a distribution that no longer produces it."
+# No authored city may move. This is the leg that keeps a modelling device for
+# unauthored places from rewriting Chicago's and Prague's resolved law.
+Assert-True ($s916 -match '(?i)no authored city changes|Bands I to III are untouched') `
+    "Section 9.1.6 does not fence its ceiling off from the authored cities. Chicago and Prague roll Section 9.2.1 directly, and a band rule reaching them would change resolved law from a derivation those cities supplied."
+# A ceiling that can be worked around by siting is not a ceiling.
+Assert-True ($s916 -match '(?i)site among Bands I.{1,4}III only|no S-Rank Gates to site') `
+    "Section 9.1.6 does not restrict where an S-Rank result may site. A ceiling forbidding S-Rank Gates in Band IV, with a siting table that can still land one there, is not a rule."
 
 # --- siting, and the band that is authored rather than left over -------------
 
@@ -278,6 +325,36 @@ Assert-True ($s917 -match '0\.34') `
     "Section 9.1.7 states no per-population Gate rate, so the region counts rest on nothing and cannot be rechecked."
 Assert-True ($s917 -match '(?i)days of S-Rank cover') `
     "Section 9.1.7 states no coverage measure. Flow alone says nothing about whether a region's Gates get answered, which is the whole subject."
+
+# --- 1.108: the same ceiling rule, at region scale ---------------------------
+
+Assert-True ($s917 -match '(?i)sets the ceiling, not just the count|not only how many') `
+    "Section 9.1.7 does not state the mana-depth principle, so a region's Rank distribution is flat and thin ground opens S-Rank Gates it has no pressure for."
+Assert-True ($s917 -match '(?i)mana pressure') `
+    "Section 9.1.7 grounds the ceiling in nothing. Section 9.3 already reads a Gate's timer off its mana pressure, and without that citation the rule reads as difficulty tuning."
+foreach ($depth in @('Deep', 'Ordinary', 'Shallow')) {
+    Assert-True ($s917 -match "(?m)^\| \*\*$depth\*\* \|") `
+        "Section 9.1.7's depth table has no $depth row, so the ceiling has fewer than the three steps the ruling needs."
+}
+Assert-True ($s917 -match '(?i)No S-Rank Gate at all') `
+    "Section 9.1.7's shallow depth does not forbid an S-Rank Gate outright. Halving is not the ruling: thin ground has no pressure to open one."
+# Depth must scale the count too. The ruling is 'less mana means fewer AND
+# lower Gates', and a ceiling alone leaves a shallow region opening a deep
+# region's volume.
+Assert-True ($s917 -match '(?i)scales the count as well as the ceiling|as well as the ceiling') `
+    "Section 9.1.7's depth changes the Rank ladder but not the Gate count, so thin ground still opens as many punctures as deep ground."
+# The measured proxy must be named, and its one dishonest case with it.
+Assert-True ($s917 -match '(?i)cannot license anyone into S-Rank') `
+    "Section 9.1.7 does not say why the S-Rank count is an honest measure of depth where a licence count is not."
+Assert-True ($s917 -match '(?i)Gulf') `
+    "Section 9.1.7 does not except the imported-roster case. A bought S-Rank roster measures what a state can pay, not what its ground carries."
+# A shallow region must not be sited an S-Rank event, or the ceiling is advice.
+Assert-True ($s917 -match "(?i)shallow region's event is never an S-Rank Gate|never an S-Rank Gate") `
+    "Section 9.1.7 does not stop a shallow region being sited an S-Rank event, so the weekly roll can produce the exact Gate the depth table forbids."
+# The Jiu Valley has to survive the new arithmetic too, and for a better reason
+# than before: it now happens on DEEP ground, which is why there is only one.
+Assert-True ($s917 -match '(?i)deep ground') `
+    "Section 9.1.7 does not reconcile the Exclusion with the ceiling rule. An S-Rank Gate opens where the S-Ranks are, which is what makes one uncontained Exclusion explicable rather than routine."
 
 # --- the border rule: an ask, never an assignment ----------------------------
 

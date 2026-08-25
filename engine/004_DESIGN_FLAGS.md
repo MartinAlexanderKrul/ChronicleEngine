@@ -1521,3 +1521,33 @@ Section 3.2's rungs are **derived, not chosen**: each is the per-level growth ca
 **Related:** `F-049` (nothing compares an authored line against the ladder it derives from — same missing check, different axis), `F-013` (fixtures pinning live state; the AP ledger's baselines are prospective for exactly this reason).
 
 **Status:** Actioned into Gatefall Profile 1.105 (`worlds/gatefall/migrations/1.104_to_1.105.md`). The curve is repaired; the missing derivation check named above is **left open**.
+
+---
+
+## F-055 — `/system all` composes a class panel that was never authored
+
+**Raised:** 2026-08-25 · **Source:** `campaigns/gatefall_pendragon_001/`, surfaced rendering `/system all` for Alexander Pendragon (Riftwalker, class quest completed `EVT-000519`)
+
+Section 15.5 states that on completing the class quest, "a class panel attaches and a focused command comes with it — `/system shadows`, `/system arsenal`, `/system fragments`, `/system echoes`, or `/system rifts`," and that `/system all` (Section 15.4) "composes... the class panel where one exists." `090_CAMPAIGN_STARTUP.md`'s own `diegetic_commands./system all.dispatch` list — the bounded plan a Runtime actually reads before rendering — carries only Sections 15.1, 15.2, 15.3.1–15.3.6, 15.4, and 15.5. There is no dispatched section for a Riftwalker panel template anywhere in the profile.
+
+Section 18.8 (Riftwalker) fully authors the class's mechanics — rift-step's three actions, micro-rift deflection, standing anchor sense, the anchor cap and its held-ground rungs — but never authors how any of it renders as a framed System window under Section 15.1's grammar. The same gap presumably exists for every other class (`/system shadows`, `/system arsenal`, `/system fragments`, `/system echoes`) since none has a Section-18 render template either, though only Riftwalker is live in this campaign to have surfaced it.
+
+**What this produced in play:** a `/system all` render that had to skip the class panel and flag the gap out of character rather than compose it, because inventing a template would have been rendering a mechanic Section 18 never authored as a window — exactly what the Resident Core's render-grammar rules (Section 15.1: "canonical state wins on values... a bare literal in a value position is a profile defect") exist to prevent one level up, applied here to a missing template rather than a missing value.
+
+**The open design question:** does each class in Section 18 owe its own `/system <class>` render template (grammar, fields, gutter marks) the way every focused panel in Section 15.3 already has one, and does `090_CAMPAIGN_STARTUP.md`'s dispatch list need a mechanism to pick up a class panel's section once a campaign's protagonist actually holds one — since the static dispatch list written at campaign creation predates any class being taken?
+
+**Status:** Open.
+
+---
+
+## F-056 — The world clock only ticks Chicago and Prague; a National-scope protagonist has nowhere else authored
+
+**Raised:** 2026-08-25 · **Source:** `campaigns/gatefall_pendragon_001/`, surfaced negotiating a BGM National standing incident-response agreement — national travel, a national S-Rank roster, a national artificer/collector network — for a protagonist whose only mechanically live geography is Chicago (`worlds/gatefall/`'s Section 9.1 daily tick) plus Prague as the world's second seeded city.
+
+Section 9.1's world clock — Gates rolled, Ranks assessed, rarity, breaks, postings, agenda initiations — runs once per day boundary and is authored against Chicago specifically (with Prague carrying its own parallel instance as the world's other established city). Everywhere else in the US, and everywhere else on Earth, has no equivalent tick: no Gate population, no break clock, no posting board, nothing a Runtime can read when play reaches there.
+
+**What this produced in play:** the protagonist, now S-Rank and carded, signed a National-level incident-response contract explicitly because BGM's own national office is trying to cover exactly the geography Chicago's tick doesn't model — and separately committed to a multi-city chartered-flight tour specifically to expand his own personal-teleport reach (Section 18.8's "has personally stood") into cities the world has never simulated. The campaign is about to need Gate state, break timers, and incident texture in cities `worlds/gatefall/` has never authored a tick for, with nothing to read and nothing to roll against — the same shape of gap Section 9.1's own text names for *why the tick exists at all* (an un-run world is a readiness finding, not something nobody notices), just one level up: not a city whose tick went stale, but cities that were never given one.
+
+**The open design question:** does `worlds/gatefall/` owe a lighter-weight, generic world-tick procedure for any city the protagonist actually visits or responds to — something short of Chicago's full Section 9.1 apparatus, but enough to answer "is there a Gate here, and what's its state" without a Runtime having to invent city-specific content unguided the first time play reaches Boston, Miami, Seattle, or wherever the fly-list eventually sends him? Or is the intended shape that a city gets authored on first real contact, the way Prague was seeded as the second city, and this flag is really asking whether that authoring-on-contact process itself needs a documented procedure rather than being done ad hoc per city?
+
+**Status:** Open.

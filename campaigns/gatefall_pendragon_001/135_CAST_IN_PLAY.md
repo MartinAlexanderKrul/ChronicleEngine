@@ -99,7 +99,11 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000221` | the eleven correlation logbooks | evidence — documents | active | the correlated-face monitoring room | — |
 | `ENT-000222` | Laurel Bianchi | BGM Region V liaison | active | BGM Region V Field Office | — |
 | `ENT-000223` | Desmond Farraday | BGM Region V official | active | BGM Region V Field Office | — |
-| `ENT-000233` | Renata Okonkwo-Vance | BGM National official | active | Unestablished this call — worked entirely by phone. Confirmed s… | `REL-000101` |
+| `ENT-000233` | Renata Okonkwo-Vance | BGM National official | active | **The Averlon Room, 200 N Michigan Ave, Chicago — 2026-08-27 19… | `REL-000101` |
+| `ENT-000243` | the Rockwell Street bay | private leased storage bay | active | 4417 South Rockwell, second bay from the street end, Chicago. | — |
+| `ENT-000244` | Priest | landlord / grey-market-adjacent | active | The Rockwell Street yard, Chicago | — |
+| `ENT-000245` | Praetorian Facility Security | licensed commercial security contractor | active | Chicago | — |
+| `ENT-000246` | the Argyle Street Gate | Gate, unconfirmed | active | 5140 N Argyle, Uptown, Chicago — a closed self-storage facility… | — |
 | `ENT-000224` | Teresa Vance | journalist - trade beat | active | Unestablished - worked entirely by phone. Chicago is implied by… | `REL-000100` |
 | `ENT-000225` | Marguerite | media liaison - independent | active | Unestablished. Chicago is implied by Kesha Morrison's ability t… | — |
 | `ENT-000226` | Peter Kwiatkowski | artificer - CONSULT-controlled | active | Ironclad Self Storage | — |
@@ -179,6 +183,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000222` | Laurel Bianchi | To be the one who starts the relationship with a newly-confirmed, unaffiliated S-Rank well — ge… | Unstated; not yet tested in play | Knew the Director was off-site before admitting it, and caught herself rather than pretending o… | Polished, direct once pressed, allergic to overselling |
 | `ENT-000223` | Desmond Farraday | A cooperative, non-adversarial relationship with a free-agent S-Rank rather than an unaccountab… | An S-Rank deciding BGM is irrelevant and acting alone — named this fear to Alexander directly r… | None surfaced directly; a Legendary Keen Sense read found his rapport-building posture (sitting… | Plain, names walls directly rather than softening them, doesn't fill silence |
 | `ENT-000233` | Renata Okonkwo-Vance | An actual working line to a solo S-Rank the National office has never had leverage over — not t… | That this goes the way it's gone with every prior unaffiliated S-Rank the office has tried to r… | She's read his Region V file closer than Farraday's summary would suggest, and already knows mo… | Precise, unhurried, no filler — warmer than Farraday's register but no less deliberate |
+| `ENT-000244` | Priest | Unestablished — a live thread if his own reasons for running a no-questions yard ever become re… | Unestablished — nothing in the one transaction touched it | Unestablished — nothing in the one transaction touched it | Terse, transactional, incurious |
 | `ENT-000224` | Teresa Vance | The story confirmed in his own words before she runs it — now satisfied | Running it wrong | Who inside Region V gave her the name | States the awkward thing first and then explains why she is saying it |
 | `ENT-000225` | Marguerite | To get ahead of whatever story is already forming before it breaks somewhere she doesn't contro… | A client who goes quiet exactly when the story breaks, leaving her defending a silence she can'… | She took this work after a hunter she liaised for early in her career went to ground during a b… | Leads with logistics and timelines, not reassurance |
 | `ENT-000226` | Peter Kwiatkowski | To be told he is safe, by someone who would actually know | That `COMPLETE` is about to have his name beside it | He is now missing a satchel and a wallet he cannot explain, and has reported only the satchel | Talks too fast under pressure and over-explains, the rhythm of someone trying to sound more cer… |
@@ -192,7 +197,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 86. Protagonist relationships: 22.
-- Characters: 66. Disposition authored in full: 31; partial: 25; none: 10. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 90. Protagonist relationships: 22.
+- Characters: 67. Disposition authored in full: 31; partial: 26; none: 10. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

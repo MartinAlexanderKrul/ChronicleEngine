@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000242 |
+| Entity | `ENT-` | Persistent Entity | ENT-000246 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000788 |
+| Event | `EVT-` | Event | EVT-000801 |
 | Relationship | `REL-` | Relationship | REL-000101 |
 
 ---
@@ -846,6 +846,23 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000234 - ENT-000241 | Entity | Gatefall world-ranked figures appended to `worlds/gatefall/220_NOTABLE_FIGURES.md` (REC-000071), researched off the national S-Rank roster: Isabel Chandrasekaran (234, Denver), Marcus Webb (235, Houston), Jonas Whitfield (236, Seattle), Camille Duforest (237, New Orleans), Griffin Ashcombe (238, Boston), Nadia Farrow (239, unaffiliated, Los Angeles), Terrence Kowalczyk (240, Detroit), Odalys Ferreira (241, Miami). None yet met in play; disposition authored prospectively per Decision 092 |
 | ENT-000242 | Entity | Gatefall world-ranked figure appended to `worlds/gatefall/220_NOTABLE_FIGURES.md` (REC-000071): **Elias Kane**, BGM federal asset, the other Chicago-resident S-Rank, previously named only in `200_WORLD_BIBLE.md` prose |
 | EVT-000788 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-27 12:15, span `EVT-000781`-`EVT-000787`. `gatefall.skill_credit`: real — one continuous expedition-scene, four skills crossed a mastery tier (Flash Step, Mana Bolt, Sprint, Exploit Pattern; Dimensional Projection progressed but did not cross). `gatefall.skill_formation`: none. Mana/Health fully reconciled across a two-hour active and one-hour resting/light span. Two items flagged, not resolved: an Exploit Pattern capacity conflict (tenth concurrent Pattern against a nine-Pattern ceiling) and untracked gray-sleep mana-saturation exposure. No canonical contradiction found |
+| EVT-000789 | Event | Gatefall: Pendragon: Profile 1.104 and 1.105 migrations executed live on the character sheet — six ability-point counters rebased on the owner's 339:293 ratio, all five base Stats and both pools re-derived under the corrected post-S-Rank curve, gray-sleep note retired |
+| EVT-000790 | Event | Gatefall: Pendragon: overdue Daily Premium cycle rotated live, Crimson -> Umbral, twelve real draws |
+| EVT-000791 | Event | Gatefall: Pendragon: first self-opened S-Rank instant dungeon, Hive archetype, 16 commons/1 elite/1 boss cleared solo, LEVEL 104 -> 107, Longsword [S] boss drop |
+| EVT-000792 | Event | Gatefall: Pendragon: 492 S-Rank crystals sold +7,527,600 g; Daily Premium Armory Key bought -1,125,000 g |
+| EVT-000793 | Event | Gatefall: Pendragon: second self-opened S-Rank instant dungeon, Ashfield archetype, LEVEL 107 -> 110, level-110 Title Assessment grants nothing (Executioner and The Ledger's End now permanently unreachable), eight mastery crossings across this span's clears settled here, Silent Step rune duplicate and plain Quickknife [S] drops |
+| EVT-000794 | Event | Gatefall: Pendragon: third self-opened S-Rank instant dungeon, Shattered City archetype, LEVEL 110 -> 112, Rupture opener a natural critical failure against the pack (no damage, Mana spent), recovered the same exchange, boss cleared at standard band; Dagger Mastery crosses Practiced->Adept; 3 Greater Mana Potions |
+| EVT-000795 | Event | Gatefall: Pendragon: 50 unspent points allocated to Intelligence, unspent 50 -> 0 |
+| EVT-000796 | Event | Gatefall: Pendragon: `OBJ-42`'s venue deadline corrected 2026-08-26 -> 2026-08-27 (data error, predated the call that created it); The Averlon Room booked 19:00, -$400.00; Renata texted the confirmation and replied in transit from Washington |
+| EVT-000797 | Event | Gatefall: Pendragon: Walt Adamik called — `OBJ-29` status given; asked about the partnership's warehouse origin and use; referred to Priest for a private unit, `ENT-000244` minted |
+| ENT-000244 | Entity | Gatefall: Pendragon: **Priest**, landlord contact referred by Walt Adamik, runs a private storage yard, `130_NPCS_AND_FACTIONS.md` |
+| EVT-000798 | Event | Gatefall: Pendragon: the Rockwell Street bay leased from Priest, -$9,000.00 (first and last month), `ENT-000243` minted; fourteenth real anchor set, cap re-derived 219 -> 131 |
+| ENT-000243 | Entity | Gatefall: Pendragon: **the Rockwell Street bay**, 4417 South Rockwell, private leased storage, `130_NPCS_AND_FACTIONS.md` |
+| EVT-000799 | Event | Gatefall: Pendragon: Praetorian Facility Security researched and called under the alias Arthur Peverell, `ENT-000245` minted; Friday 2026-08-28 10:00 site assessment booked, uncharged |
+| ENT-000245 | Entity | Gatefall: Pendragon: **Praetorian Facility Security**, licensed Chicago commercial security contractor, `130_NPCS_AND_FACTIONS.md` |
+| EVT-000800 | Event | Gatefall: Pendragon: a bounded portion of the Ninth Quiet library materialized at the Rockwell bay for study; the afternoon's pattern-analysis attempt a natural critical failure — an unverified, possibly-mistaken decoding theory recorded, not confirmed canon |
+| EVT-000801 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-27 19:00, span `EVT-000789`-`EVT-000801`. Dinner with Renata Okonkwo-Vance at The Averlon Room; the BGM National standing incident-response agreement negotiated and signed (`OBJ-43` opened, `OBJ-42` closed); solo-recovered-loot filing terms agreed; Alexander's teleportation capability disclosed to Renata directly; the National fly list commissioned (`OBJ-44`); the Argyle Street Gate disclosed, `ENT-000246` minted, `OBJ-45` opened, break timer ~1 day. `gatefall.skill_credit`: real — three full instant-dungeon clears across the span, eight mastery tiers crossed. `gatefall.skill_formation`: none. No canonical contradiction found |
+| ENT-000246 | Entity | Gatefall: Pendragon: **the Argyle Street Gate**, 5140 N Argyle, unconfirmed Gate, survey drone lost, `130_NPCS_AND_FACTIONS.md` |
 
 ---
 

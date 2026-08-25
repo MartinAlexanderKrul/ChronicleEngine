@@ -138,4 +138,25 @@ Assert-Contains $profile 'Section 6\.2.s standard-hit baseline reads' 'Section 6
 Assert-Contains $profile '\*\*Boss-tier\*\* ability \| 50% \| 10 \| 25 \| 62 \| 150 \| 375 \| 1,000 \|' 'Section 5.2 does not carry the boss-tier cost row.'
 Assert-True ($profile -notmatch 'or a Mana curve') "Section 13.1 still denies NPC hunters a Mana pool."
 
+# Profile 1.104: the far side is a draining environment and the Mana pool is the clock on
+# every expedition. These legs assert the properties that make the drain unescapable -- if any
+# one of them silently reverts, the Stacks become survivable indefinitely and Section 18.13.1's
+# "the reason the place cannot be lived in" stops being true of the mechanics under it.
+# Patterns stay ASCII: this file is BOM-less UTF-8 and PowerShell 5.1 reads it as ANSI, so a
+# literal em dash in a pattern never matches and the assertion passes vacuously.
+Assert-Contains $profile '## 5\.2\.1 Draining Environments' 'Section 5.2.1 (draining environments) is missing from the profile.'
+Assert-Contains $profile 'Section 5\.2 recovery does not accrue at all' 'Section 5.2.1 no longer suspends Mana recovery on the far side.'
+Assert-Contains $profile 'the pool falls by 10% of maximum Mana per hour' 'Section 5.2.1 does not carry the far-side Mana drain rate.'
+Assert-Contains $profile 'rate_units = -20' 'Section 5.2.1 does not state the drain in Section 5.2 settlement units.'
+Assert-Contains $profile 'drain continues against Health at 10% of maximum Health per hour' 'Section 5.3 no longer carries the drain past an empty pool into Health.'
+Assert-Contains $profile 'injury of type .exhaustion.' 'Section 5.3 does not inflict the authored exhaustion injury under drain.'
+
+# The drain is only a hazard while the shop cannot refill it. A Greater mana potion restores
+# *to full* for 480 g, which at a level-100 pool would buy roughly five hours of drain per
+# purchase -- so the degrade rule below is load-bearing, not flavour. Assert both halves: the
+# Greater potions still restore to full everywhere else, and they degrade off-world.
+Assert-Contains $profile '\| \*\*Greater mana potion\*\* \| Restores Mana to full\. \|' 'Section 12.5 no longer carries the Greater mana potion effect the degrade rule acts on.'
+Assert-Contains $profile 'functions as its Standard counterpart' 'Section 12.5 no longer degrades Greater potions to their Standard form off-world.'
+Assert-True ($profile -match 'level-up restoration and a claimed Status Recovery') "Section 12.5 does not scope the off-world degrade away from Section 3.2 restoration."
+
 Write-Host "Gatefall recovery contract tests PASSED" -ForegroundColor Green

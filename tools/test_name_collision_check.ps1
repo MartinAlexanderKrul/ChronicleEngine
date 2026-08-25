@@ -227,11 +227,33 @@ try {
     # if the quality filter were dropped, this would come back BLOCKED.
     Restore-FixtureFiles -Root $fixture -RestorePoint $fixturePoint
     $former = $fixture
+
+    # The alias name must share no SURNAME with any live entity, or the check returns
+    # REVIEW for the shared-surname reason and this leg fails for something that is not
+    # the exemption under test. It previously read "Adalyn Vance" and went stale the
+    # session the campaign authored Teresa Vance (ENT-000224) -- a fixture pinned to a
+    # name is pinned to live state. Guard it instead of trusting it: if this surname is
+    # ever authored, the assertion below says so in one line rather than surfacing as a
+    # confusing REVIEW verdict.
+    $formerAliasName = 'Adalyn Thistlewaite'
+    $formerAliasSurname = $formerAliasName.Split(' ')[-1]
+    $liveLedgers = @(
+        (Join-Path $former "campaigns/$campaign/130_NPCS_AND_FACTIONS.md"),
+        (Join-Path $former "campaigns/$campaign/135_CAST_IN_PLAY.md"),
+        (Join-Path $former "worlds/gatefall/220_NOTABLE_FIGURES.md")
+    ) | Where-Object { Test-Path $_ }
+    foreach ($ledger in $liveLedgers) {
+        if ((Get-Content -LiteralPath $ledger -Raw) -match [regex]::Escape($formerAliasSurname)) {
+            throw ("Leg N-J's fixture surname '$formerAliasSurname' is now live in $ledger. " +
+                   "Pick a surname no entity uses; the leg tests the former-alias exemption, not collision.")
+        }
+    }
+
     Edit-Ledger -RepositoryRoot $former `
         -Find "aliases:`n  - name: `"Dale Pruitt`"`n    quality: current" `
-        -Replace "aliases:`n  - name: `"Dale Pruitt`"`n    quality: current`n  - name: `"Adalyn Vance`"`n    quality: former"
+        -Replace "aliases:`n  - name: `"Dale Pruitt`"`n    quality: current`n  - name: `"$formerAliasName`"`n    quality: former"
 
-    Assert-Verdict -Leg 'N-J former alias is not live' -Name 'Adalyn Vance' `
+    Assert-Verdict -Leg 'N-J former alias is not live' -Name $formerAliasName `
         -Verdict 'OK' -ExitCode 0 -RepositoryRoot $former
 
     # --- Leg 10: a retired entity is not a live name ------------------------

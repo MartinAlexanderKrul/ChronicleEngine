@@ -126,8 +126,8 @@ trigger_telemetry:
   urgent_offers_issued: 2
   urgent_last_offered: "2026-08-26T09:30:00-05:00"
   urgent_dry_days: 1
-  concealed_records_available: 15
-  tracked_postings: 6
+  concealed_records_available: 14
+  tracked_postings: 10
 ```
 
 **Reading it, 2026-08-27 12:15.** Unchanged this span — the far door is Gate Walker-authored content on its own terms (`worlds/gatefall/206_WORLD_RULE_PROFILE.md` Section 18.13), not a Section 8.4 trigger domain, and nothing about the expedition moves these counters.

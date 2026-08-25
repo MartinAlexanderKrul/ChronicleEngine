@@ -681,8 +681,21 @@ game_date: "2026-08-04 06:01 -05:00"'
     $liveFlashRank = [regex]::Match((Get-Text $character), '"Flash Step \[([EDCBAS])-Rank\]')
     Assert-True $liveFlashRank.Success "Flash Step renders no Rank in skills_known; fixture precondition drifted."
     $flashRank = $liveFlashRank.Groups[1].Value
-    Assert-True ($flashRank -ne $topRank) `
-        "Flash Step already stands at the ladder's top Rank, so blanking that cell would test a legal state."
+
+    # The leg needs a skill standing BELOW the capability table's top Rank: blanking the
+    # top cell for a skill already at the top would assert a legal state and prove nothing.
+    # This used to require live state to supply that, and went stale the session Flash Step
+    # reached S -- as did Sprint, so no live skill in the Section 7.3 table can supply it any
+    # more, and picking a different name only defers the same failure. Synthesise the
+    # precondition in the fixture instead: the fixture is a throwaway copy under the system
+    # temp directory and mutating it is what every other leg here already does.
+    if ($flashRank -eq $topRank) {
+        $topIndex = $ladder.IndexOf($topRank)
+        Assert-True ($topIndex -gt 0) "The capability ladder's top Rank '$topRank' has no rung beneath it."
+        $demotedRank = $ladder[$topIndex - 1]
+        Replace-Once $character "`"Flash Step [$topRank-Rank]" "`"Flash Step [$demotedRank-Rank]"
+        $flashRank = $demotedRank
+    }
 
     Replace-RegexOnce $profile '(?m)^(\|[ \t]*\*\*Flash Step\*\*[ \t]*\*\(native.*\|)[^|]*\|[ \t]*$' '$1 |'
     Replace-Once $character "`"Flash Step [$flashRank-Rank]" "`"Flash Step [$topRank-Rank]"

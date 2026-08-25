@@ -75,11 +75,21 @@ Assert-True ($rankAtLevel.Count -ge 6) `
 # choice: Profile 1.80's own worked figure of 148 automatic Stat points at
 # level 30 is only reproducible this way, and the level-40 span records the
 # crossing to 40 paying the B rung of +23 while +63 applies from 41 onward.
+# Profile 1.105 adds a LEVEL-keyed rung above the Rank-keyed table: past level 100 every
+# crossing gains the same small figure whatever Rank is held. It cannot be expressed in the
+# six-cell row above, because 51-100 and 101+ are both S-Rank, so it is parsed separately
+# and overrides the table when it applies.
+Assert-True ($profileText -match '(?m)^> \*\*Past level (?<from>\d+) the rung is \+(?<gain>\d+), for every System Rank\.\*\*') `
+    "Section 3.2 authors no past-parity rung; the ladder above level 100 cannot be recomputed."
+$pastParityFrom = [int]$Matches['from']
+$pastParityRung = [int]$Matches['gain']
+
 function Get-AutomaticGrowth {
-    param([int]$Level, [hashtable]$Rung, [hashtable]$RankAtLevel)
+    param([int]$Level, [hashtable]$Rung, [hashtable]$RankAtLevel, [int]$PastFrom, [int]$PastRung)
     $total = 0
     for ($target = 2; $target -le $Level; $target++) {
         $prior = $target - 1
+        if ($PastFrom -gt 0 -and $prior -ge $PastFrom) { $total += $PastRung; continue }
         $held = "E"
         foreach ($threshold in ($RankAtLevel.Keys | Sort-Object)) {
             if ($prior -ge $threshold) { $held = $RankAtLevel[$threshold] }
@@ -109,7 +119,7 @@ Assert-True ($anchors.Count -ge 3) `
 foreach ($a in $anchors) {
     $anchorLevel = [int]$a.Groups['level'].Value
     $anchorValue = [int]($a.Groups['value'].Value -replace ',', '')
-    $derived = $floorStat + (Get-AutomaticGrowth -Level $anchorLevel -Rung $rung -RankAtLevel $rankAtLevel)
+    $derived = $floorStat + (Get-AutomaticGrowth -Level $anchorLevel -Rung $rung -RankAtLevel $rankAtLevel -PastFrom $pastParityFrom -PastRung $pastParityRung)
     Assert-True ($derived -eq $anchorValue) (
         "Automatic growth disagrees with Section 3.2's own worked example: from a Stat of " +
         "$floorStat the ladder recomputes to $derived at level $anchorLevel, and the profile " +
@@ -165,7 +175,7 @@ foreach ($startup in Get-ChildItem -Path $campaignRoot -Filter "090_CAMPAIGN_STA
     Assert-True ($sheet -match '(?m)^\s*unspent_points:\s*(?<v>-?\d+)') "$label renders no unspent_points."
     $unspent = [int]$Matches['v']
 
-    $automatic = Get-AutomaticGrowth -Level $level -Rung $rung -RankAtLevel $rankAtLevel
+    $automatic = Get-AutomaticGrowth -Level $level -Rung $rung -RankAtLevel $rankAtLevel -PastFrom $pastParityFrom -PastRung $pastParityRung
 
     # THE ASSERTION. Automatic growth is uniform across all five Stats, so every
     # residual must equal it. A Stat that moved without a declared allocation

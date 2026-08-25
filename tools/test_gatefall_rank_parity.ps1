@@ -103,7 +103,29 @@ $weakestCreationStat = [int]$arrayRange.Groups['low'].Value
 for ($i = 1; $i -lt 6; $i++) {
     if ($rankHealth[$i] -le $rankHealth[$i - 1]) { Fail "Rank Health parsed as non-increasing at $($ranks[$i]): $($rankHealth -join ', '). The parse is wrong." }
     if ($rankMana[$i]   -le $rankMana[$i - 1])   { Fail "Rank Mana parsed as non-increasing at $($ranks[$i]): $($rankMana -join ', '). The parse is wrong." }
-    if ($rungGain[$i]   -lt $rungGain[$i - 1])   { Fail "Rung gain parsed as decreasing at $($ranks[$i]): $($rungGain -join ', '). The parse is wrong." }
+
+    # The rung bound stops at A, and that is a rule rather than a loosened guard.
+    # Rungs E..A each close the gap to the NEXT Rank's parity, so they climb with the
+    # x2.5 scale and a decrease among them really would mean a bad parse. The S rung
+    # closes nothing: Profile 1.105 (`F-054`) re-authored it as the POST-parity rate,
+    # applying only to crossings past level 50, where parity is already reached and
+    # there is no further target. It is deliberately far below A's, so asserting the
+    # old monotonic bound here would fail the profile for being correct. Note the
+    # parity proof below never reads index 5 -- it gains the PREVIOUS rung at each
+    # step, so S's own value is untested by it either way.
+    if ($i -lt 5 -and $rungGain[$i] -lt $rungGain[$i - 1]) { Fail "Rung gain parsed as decreasing at $($ranks[$i]): $($rungGain -join ', '). The parse is wrong." }
+}
+
+# S is exempt from the climb above, so it gets its own bound rather than none: it must
+# still parse as a positive number, and it must sit BELOW A's. A post-parity rung at or
+# above the rung that closed the last real gap would mean 1.105 was reverted, or the
+# cell was misread -- either way the ladder is back to authoring growth against a
+# horizon the world does not have (Section 18.13.2, `F-054`).
+if ($rungGain[5] -le 0) {
+    Fail "S-Rank rung parsed as $($rungGain[5]); the post-parity rung must be a positive number. The parse is wrong."
+}
+if ($rungGain[5] -ge $rungGain[4]) {
+    Fail "S-Rank rung is $($rungGain[5]) against A's $($rungGain[4]). The post-parity rung must sit below the last parity-closing rung, or the ladder is closing a gap that is already closed (F-054)."
 }
 
 # Section 5.1 states Rank Mana applies the Bearer's own Health:Mana ratio to the

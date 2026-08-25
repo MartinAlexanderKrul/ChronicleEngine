@@ -178,8 +178,13 @@ Assert-True ($s1813 -match '(?i)cannot be shut') `
     "Section 18.13 lets him shut a far door with something coming through it. That condition is the only thing standing between this grant and a free escape hatch."
 Assert-True ($s1813 -match '(?i)single break that does not close') `
     "Section 18.13 does not name what a far door is a miniature of. The setting's terminal event is exactly this, and the profile should not pretend otherwise."
-Assert-True ($s1813 -match '4,000') `
-    "Section 18.13 states no price for a far door."
+# Pinned to '4,000' through Profile 1.104, which 1.105 re-priced to 2,500 -- and the
+# literal kept matching, because the re-pricing paragraph cites the old figure as
+# history. A leg that passes off a sentence describing what a rule USED to say is
+# not reading the rule. Assert the property instead: Section 18.13 must state an
+# opening price, whatever that price currently is.
+Assert-True ($s1813 -match 'Opening one costs \*\*[\d,]+ Mana\*\*') `
+    "Section 18.13 states no opening price for a far door."
 
 # The destination is authored, owner-facing, and its two binding facts are here.
 Assert-True ($s1813 -match '270_THE_FAR_SIDE\.md') `

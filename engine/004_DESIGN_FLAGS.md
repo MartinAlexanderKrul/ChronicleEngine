@@ -1499,3 +1499,25 @@ Immediately after Profile 1.103 made the folded-in evolution examination perform
 **Related:** `F-052` (this phase's authoring gaps, actioned into 1.102/1.103 — this flag is the residue 1.103 didn't reach), `F-034` (the world only rolls when the player pushes it — same family: a system that technically permits the right outcome but supplies no push toward it).
 
 **Status:** Open.
+
+---
+
+## F-054 — The stat ladder kept climbing after it arrived: S repeated A's rung against a parity already reached
+
+**Raised:** 2026-08-25 · **Source:** `campaigns/gatefall_pendragon_001/`, surfaced by `tools/test_gatefall_ap_ledger.ps1` failing on the live sheet at level 104, then by the owner asking what the +63 rung was actually for
+
+Section 3.2's rungs are **derived, not chosen**: each is the per-level growth carrying a Stat from one Rank's parity value to the next across the ten levels between them, parity being `Vitality = Rank Health / 4` and `Intelligence = Rank Mana / 2`. The ladder lands within 2% at every decade, and at level 50 the Bearer stands **at S parity** — automatic 1,008 plus the weakest legal creation Stat of 8, against a target of 1,000. The ladder had done its whole job.
+
+**Above S there is no parity target, and the profile filled the gap by repeating A's +63.** Its stated reason was thin and pointed the other way: *"level 50 is the ladder's last rung and there is no further parity target above it; growth past S continues at the A rate rather than stopping."* An absent target is an argument for stopping, not for continuing — and Section 18.13.2 was already reasoning that way about a different ladder, declining to author rungs *"against a horizon the world does not have."*
+
+**What fifty-four unjustified crossings produced.** At level 104 the live Bearer stood at **4.4× S parity** (Vitality 4,407 against 1,000), with a standard, uncritical Rupture at **17,245 against an S-Rank boss pool of 16,000**. He one-shot the largest thing his own Rank contains, which is verbatim the failure Section 6.7 exists to name: *"when one skill critical exceeds a Rank's boss Health pool outright, a sealed instance billed as fully lethal, with no retreat delivers no danger at all, and the trial measures nothing."* Section 6.7 named the condition and nothing measured whether the growth curve was producing it.
+
+**The second-order damage is that allocation stopped mattering.** At +63 automatic against the level-up's +5 ability-point award, the automatic axis outweighed player choice **63:1**, and Section 4.2's *"allocation is permanent canonical capability"* was true on paper and meaningless at the table.
+
+**Actioned into Profile 1.105.** Levels 51–100 gain **+30** — one more notch of the world's own ×2.5 Rank scale, `(2,500 − 1,000) / 50` — and every crossing entered at level 100 or above gains **+1**, five Stats of which equals the +5 award exactly, putting the two axes at parity. The far door is re-priced 4,000 → 2,500 in the same edge, because its flat price was set against the fixed-Rank table while the pool it is paid from was still inflating.
+
+**What is not closed.** **Nothing checks a derived curve against the claim it was sized to make.** The rungs carry their own derivation in prose — parity targets, ×2.5, ten levels — and no gate recomputes it or asks whether the curve still lands where the prose says. `test_gatefall_ap_ledger.ps1` verifies that the *sheet* derives from the *ladder*; it has no opinion on whether the ladder is sane. That is the same residue `F-049` records on a different axis — a rendered line and its authored ladder drifting with nothing comparing them — and it is why this took a failing arithmetic gate plus an owner's question to surface, rather than a check.
+
+**Related:** `F-049` (nothing compares an authored line against the ladder it derives from — same missing check, different axis), `F-013` (fixtures pinning live state; the AP ledger's baselines are prospective for exactly this reason).
+
+**Status:** Actioned into Gatefall Profile 1.105 (`worlds/gatefall/migrations/1.104_to_1.105.md`). The curve is repaired; the missing derivation check named above is **left open**.

@@ -268,7 +268,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.108"
+    profile_version: "1.109"
     profile_loner_scope_event: EVT-000672
     profile_party_minimum_event: EVT-000460
     profile_unified_render_event: EVT-000443
@@ -373,6 +373,10 @@ canonical_state:
             place: "Ironclad Self Storage (`ENT-000230`), near west side, Chicago — the CONSULT operation's storage unit, tailed from Loomis Street"
             set_event: EVT-000709
             note: "Twelfth anchor. Set standing the exchange while `ENT-000226` searched the open ledger, Silent Step concealment holding. Unauthorized ground — no BGM posting, no ownership established. The ledger's 'COMPLETE' entry, dated within days of Marnie's silence, is the reason this ground is worth holding; the shelf it stands in is on a quarterly reassessment cadence and is now five pieces lighter. No disturbance fired here this session."
+          - name: "The worn-path dwelling"
+            place: "a small built structure down through the terraces, the Ninth Quiet (the far side stratum) — scavenged material, layered repairs, worn organic bedding replaced many times over"
+            set_event: EVT-000784
+            note: "Thirteenth anchor. **Repaired into this list `EVT-000814` — a pre-existing gap, missing from the structured record since it was set and caught rendering `/system all` this session.** Free, uncontested, no roll. Set following the worn path Exploit Pattern read out to its end; no one home, Keen Sense confirmed nothing nearby. Links within the far side (to the stratum's entry seam), same as any two places he's stood; confirmed the same span that it does **not** bridge back to Earth — the far door remains the sole authored crossing."
           - name: "The Rockwell bay"
             place: "4417 South Rockwell, second bay from the street end — a private leased storage bay, Chicago"
             set_event: EVT-000798

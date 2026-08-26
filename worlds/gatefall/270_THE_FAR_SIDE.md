@@ -2,7 +2,7 @@
 
 **Ledger:** World content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Status:** Active — instantiated as canonical world content (2026-08-25). **Extended 2026-08-26** with Sections 2.1 (anchors and tunnels reach within the Stacks and never bridge to Earth, honouring the `EVT-000814` play ruling), 2.2 (authored traversal legs against Section 2's clock), and 4.3 (the notice counter that fires Section 4's agendas). No Rank, reward, magnitude, or Section 18.13.1 grant moves.
+**Status:** Active — instantiated as canonical world content (2026-08-25). **Extended 2026-08-26** with Sections 2.1 (anchors and tunnels reach within the Stacks and never bridge to Earth, honouring the `EVT-000814` play ruling), 2.2 (authored traversal legs against Section 2's clock), and 4.3 (the notice counter that fires Section 4's agendas). **Section 4.2 re-authored under Profile 1.109's Section 13.1.1**: every named figure is a System-bearer stated as a sheet rather than on the Combat Tier scale, all four Section 4.1 positions now have a holder, and Aumry, Orenne and Tolo are added. No Rank, reward, drop table, or Section 18.13.1 grant moves, and **every authored figure is smaller than the Bearer.**
 **Reachable by:** `206_WORLD_RULE_PROFILE.md` Section 18.13's **far door** (Riftwalker → Gate Walker, level 100), and by nothing else authored.
 
 > **OWNER EYES ONLY. The Runtime must never reveal, quote, or paraphrase this file in play except through what the Bearer physically perceives while standing in it.** It is the destination Section 18.13 declines to specify, and it exists because that section forbids a Runtime improvising a world. It is written to be consistent with `200_WORLD_BIBLE.md` Section 9 and never to restate it: nothing here explains the Assay to anyone, and no inhabitant of this place is permitted to hand the Bearer the cosmology in a speech.
@@ -25,7 +25,7 @@
 
 **Nothing here carries a Rank, and that is not an oversight.** Section 18.13 states it: the System has never seen these things and does not price them. Rank is the Assay's *grading of a sample*, applied when a slice is cut and seeded. In the library, before the cut, nothing has been graded. A creature that would be an E-Rank common in a Gate stands here at whatever it actually was, and so does the thing that ate it.
 
-**Resolution, therefore, is authored and never improvised.** Every entity in this file carries a stated magnitude expressed as a **Combat Tier equivalent** (`206_WORLD_RULE_PROFILE.md` Section 6.7) and a statement of what it does. **A Runtime that meets something not authored here stops and asks the owner** — Section 18.13 already binds it to that, and this file does not relax it. There is no population formula, no d8 archetype, no anomaly table, and no boss.
+**Resolution, therefore, is authored and never improvised.** Every entity in this file carries a stated magnitude and a statement of what it does, in **one of two forms and never a third.** A thing that is not a person — a stratum's wildlife, whatever the Mill has awake, whatever the Weir has bred — states a **Combat Tier equivalent** (`206_WORLD_RULE_PROFILE.md` Section 6.7), the same handle a Runtime uses for graded content. A **System-bearer** states a **sheet** instead (Section 13.1.1): five Stats, `4 x Vitality` and `2 x Intelligence` pools, mastery, and no Rank of any kind. **The failed champions of Section 4 are bearers and take the second form**, because the Combat Tier scale caps at S and the Bearer passed that rung sixty-three levels before he ever opened a door here — pricing the only people in existence who can teach him on a ruler pinned at its stop is how a teacher ends up one-shot mid-lesson. **A Runtime that meets something not authored here stops and asks the owner** — Section 18.13 already binds it to that, and this file does not relax it. There is no population formula, no d8 archetype, no anomaly table, and no boss.
 
 **Mana density is the first hazard and it is not survivable indefinitely.** The gray sleep (`200_WORLD_BIBLE.md` Section 5) is chronic mana saturation contracted over years of ordinary exposure near Gates. Here the exposure is total. **An awakened human accumulates a day of ordinary Gate-work's saturation roughly every hour**, and an unawakened one cannot survive a visit at all. This is the clock on every expedition and it is the reason nobody could ever have colonised the place even if they had the door.
 
@@ -151,7 +151,15 @@ Four positions are authored. They are not factions with banners — the populati
 
 **That last row is the point of this whole file.** The Bearer has spent a hundred levels assuming that winning is good. There are people here who have watched worlds win.
 
-## 4.2 Three named figures
+**All four positions now have a face, and that is deliberate (1.109).** Through the first authoring only *Stop it* and *Out* did, which left the two that matter most to a campaign — the one that exists to **help him** and the one that exists to **stop him** — as paragraphs with nobody standing in them. **Stop it** is Sevrin. **Out** is Ilith. **Reach the next one** is Aumry. **Let it finish** is Orenne. Tolo holds none of them on purpose, and Section 4.2 says why that is itself an answer.
+
+**The word *teach* in the third row is now a mechanism (1.109).** `206_WORLD_RULE_PROFILE.md` Section 7.1 authors a fifth acquisition route — instruction passed directly between System-bearers, with no instructional item — and **the Standing are the only beings in existence who can use it.** Section 2 puts one System on Earth and Section 13.1 gives an ordinary awakened nothing underneath their Rank to hand over; these are the others, and their instrumentation has run without a teacher for tens of thousands of years.
+
+**What a given champion can teach is authored on that champion**, on this file's ordinary Section 2 discipline: a Runtime that reaches an unauthored technique stops and asks the owner rather than inventing one. **Nothing is taught for free and nothing is taught quickly** — the route runs on Section 7.1's existing three-qualifying-scene threshold, so instruction is a relationship across expeditions rather than a transaction, and each of the four positions above will price it differently. **Stop it** will teach him gladly and stop the moment teaching him diverges from stopping the process. **Reach the next one** has been waiting to do exactly this. **Out** will teach him anything at all, for a door. And **Let it finish** will not teach him, because making the candidate stronger is the thing they are trying to prevent.
+
+**A technique learned this way is the only kind he can pass on.** Section 7.1 records it `transmissible`, and everything else he holds came off a drop table as an inscription he was never shown. What he carries back from the Long Shelf is therefore not loot — Section 18.13.1 still pays him nothing here — but it is the first thing he has ever been able to give another awakened without handing over an object.
+
+## 4.2 The named figures
 
 Authored on the Decision 091 character model (want, fear, secret, voice, agenda) like every other Gatefall NPC. **Entity identifiers are not minted here** — that is campaign canon and belongs to a play session under save discipline.
 
@@ -162,7 +170,26 @@ Authored on the Decision 091 character model (want, fear, secret, voice, agenda)
 - **Secret:** she has been to the Weir's deepest seam and seen what is on the other side of it. She will not say what, and it is not the Adjudicator.
 - **Voice:** short sentences. Long pauses. She asks a question and then waits past the point of comfort for the answer.
 - **Agenda:** she has been mapping seams toward something for longer than human history and is roughly two-thirds done.
-- **Combat Tier equivalent: S**, and she fights like someone who has had forty centuries to practise one thing.
+
+**She is a System-bearer and resolves as one** (`206_WORLD_RULE_PROFILE.md` Section 13.1.1). No Rank, no Rank Health, no ledger entry — a sheet, because the thing in her works the way the thing in him does.
+
+```yaml
+stats:      { strength: 1450, agility: 2240, vitality: 1900, perception: 2050, intelligence: 1780 }
+maximum_health: 7600      # 4 x Vitality, the Section 6.1 Bearer formula
+maximum_mana:   3560      # 2 x Intelligence
+equipment: none           # no shop, no artificer, no cores worth the name in four thousand years
+mastery:   Master on everything she still uses; she stopped acquiring and started refining
+```
+
+**Read those numbers against his and the point is immediate: she is smaller.** Lower Stats, a third less Health, no equipment line at all, and no elixir, rune, fusion or catalogue behind her — four thousand years of scraps off the Mill against thirty-three days of S-Rank instant dungeons. **She is not a bigger monster and she is not meant to be one.** A single clean Rupture kills her. She has had forty centuries to make sure it is not clean.
+
+**Her axis is denial, and it is the one thing he has no answer to.** She held a bridge. What she has spent an unimaginable span perfecting is **closing a way through** — a seam, a rift, a step, a door. Against a Bearer whose entire survivability is that he can leave any room he is standing in, a woman who can make a rift refuse to open is not a damage problem.
+
+- **She can bar an anchored step.** Section 18.8 calls it unrestricted and unbound by instance walls, and it is — against the world. It is not unbound against her.
+- **She does not need to out-damage him and does not try.** On the far side Section 2's drain is 10% of maximum Mana an hour with no recovery, and the way home is a step she can close. **Keeping him somewhere is the lethal outcome, and no blow needs to land for it.**
+- **Both of them can end an exchange with one connection**, hers included, and a Runtime softens that in neither direction (Section 13.1.1).
+
+**What she can teach, and it is exactly the thing that makes her dangerous.** The seam-closing technique itself — the counter to the apparatus that has made him unkillable, in the hands of the only person who has ever built one. **She will teach it gladly, and she is position `Stop it`**, which means she teaches him right up to the point where teaching him stops serving the end of the process, and not one scene further. The complete authored entry is owed at ratification under `206_WORLD_RULE_PROFILE.md` Section 7.1's taught route; **what it is called, costs, and does is an owner ruling at that moment**, and this file does not pre-empt it.
 
 ### Ilith of no second name — Standing, position **Out**
 
@@ -171,7 +198,24 @@ Authored on the Decision 091 character model (want, fear, secret, voice, agenda)
 - **Secret:** her world did not fail the exam. **It refused it** — and she was the one who advised the refusal. She has never told anyone here that the harvest was, in a sense, her doing.
 - **Voice:** warm, fast, extremely good company, and she will lie without hesitating.
 - **Agenda:** she watches the Landing. She has watched it for a long time, on the theory that a door will one day open where doors used to.
-- **Combat Tier equivalent: S.** **She is the campaign's sharpest danger and she is not a monster** — she is a person who will do something catastrophic for an entirely comprehensible reason.
+
+**Also a System-bearer, and built nothing like Sevrin** (`206_WORLD_RULE_PROFILE.md` Section 13.1.1).
+
+```yaml
+stats:      { strength: 980, agility: 2610, vitality: 1240, perception: 2380, intelligence: 1520 }
+maximum_health: 4960      # 4 x Vitality
+maximum_mana:   3040      # 2 x Intelligence
+equipment: none
+mastery:   Master on movement, concealment and reading people; unremarkable at everything else
+```
+
+**She is the frailest thing in this file and the most dangerous, and those are the same fact.** Under five thousand Health, almost no Strength, and she has stayed alive here longer than agriculture by never once being where the blow was. **She will not fight him.** She has nothing to gain from it and everything to lose, and she knows the arithmetic better than he does.
+
+**Her threat is that she is faster than he is and wants the one thing he can give away by accident.** Section 4.1's **Out** position is not an opinion she holds; it is the whole content of four thousand years. A far door standing open on the Landing, an anchored step taken while she is touching him under Section 18.8's S-Rank rung, a tunnel he builds within the Stacks that she watches him build — **any of them is her way through, and none of them requires her to beat him at anything.**
+
+- **She lies without hesitating**, and the file says so in her voice line. Nothing she says about the Stacks, the process, her own world, or what she wants is reliable, and she is **extremely good company** while it is happening.
+- **She is worth more as a teacher than as a fight**, and she knows that too — Master-level movement, concealment and read-the-person, taught freely, in exchange for a door she will phrase as something else.
+- **She is the campaign's sharpest danger and she is not a monster.** She is a person who will do something catastrophic for an entirely comprehensible reason, and the catastrophe is `200_WORLD_BIBLE.md` Section 9's ending arriving through a door he left open.
 
 ### The thing that was Corrin Hale — Continued
 
@@ -180,6 +224,70 @@ Authored on the Decision 091 character model (want, fear, secret, voice, agenda)
 - **Voice:** it does not speak. It occasionally does something that is unmistakably a courtesy, and that is worse.
 - **Agenda:** none that anyone has identified. It walks a route. The route has not changed in living memory.
 - **Combat Tier equivalent: beyond the ladder.** **A Runtime never resolves an engagement with it as combat**; what happens when it is engaged is an owner ruling, once, and it is not a fight the Bearer wins.
+
+### Aumry, who taught nine — Standing, position **Reach the next one**
+
+**The position that exists to reach him had no face until now, which made it the emptiest sentence in this file.**
+
+- **Want:** to change one outcome. Aumry's own System went sideways at the class trial and came back as something that makes *other people* better — no reach, no edge, nothing that kills. He was his world's champion the way a quartermaster is an army.
+- **Fear:** that teaching him is what kills him. **Nine candidates have been reached before this one.** Aumry got to each of them, taught what he had, and watched all nine worlds harvested anyway. He has a private theory that the teaching is what marks a candidate for the Assay's attention, and no way at all to test it.
+- **Secret:** it was ten, not nine. **The tenth passed.** Aumry has met what that candidate became, once, and will not describe it — and the thing he cannot say out loud is that the nine who died got the better end. He has never told Orenne, who would be vindicated, or Sevrin, who would be devastated.
+- **Voice:** warm, practical, and relentlessly specific. He talks about grip and footing and where the weight goes. He will not discuss the process, and deflects to the work every time — which reads as modesty and is fear.
+- **Agenda:** he is waiting to be asked. He will not push, because pushing is what he did with the fourth one.
+
+```yaml
+stats:      { strength: 720, agility: 1180, vitality: 2050, perception: 2460, intelligence: 2210 }
+maximum_health: 8200      # 4 x Vitality
+maximum_mana:   4420      # 2 x Intelligence
+equipment: none
+mastery:   Master on everything that improves someone else; he has never had a technique that hurts anyone
+```
+
+**He is the worst fighter in this file and the most valuable person in it.** Strength 720 against the Bearer's 2,826 — Aumry cannot meaningfully hurt him, cannot stop him leaving, and knows it. **He is the only figure here who is safe to be alone with, and he is the reason `206_WORLD_RULE_PROFILE.md` Section 7.1's fifth route is worth having.** What he teaches is the whole transmission half of that route: not a strike, but how instruction is passed between bearers at all, which is the thing that turns the Bearer's twenty inscribed skills into something he can put in other hands.
+
+### Orenne, who keeps the count — Standing, position **Let it finish**
+
+**Section 4.1 calls this the strongest moral pressure in the campaign, and a pressure with nobody applying it is a paragraph.**
+
+- **Want:** for Earth to fail, cleanly and soon. She has counted the harvested worlds and the passed ones for longer than she can now justify, and the count is the argument: **a world that fails is eaten once; a world that passes becomes a thing that eats.** She is not trying to kill him. She is trying to make him stop.
+- **Fear:** that she is wrong. She has spent an unmeasurable span arguing for the deaths of billions on a conclusion she cannot check, and she knows exactly what that makes her if the conclusion is bad.
+- **Secret:** she has begun to doubt it. Something in the last two centuries of the count does not fit her model, and she has not recounted, because she is frightened of what a recount would oblige her to have done differently.
+- **Voice:** unhurried, courteous, and genuinely willing to lose the argument. She asks what he thinks and waits for the answer. **She never raises her voice and never threatens**, which is what makes her frightening when she finally moves.
+- **Agenda:** she talks first, for as long as talking might work. What she does when it stops working is an owner ruling and it is not a bluff.
+
+```yaml
+stats:      { strength: 2380, agility: 1960, vitality: 1010, perception: 1740, intelligence: 2540 }
+maximum_health: 4040      # 4 x Vitality -- the smallest pool authored here
+maximum_mana:   5080      # 2 x Intelligence
+equipment: none
+mastery:   Master on a single offensive line she has refined for an age and used perhaps forty times
+```
+
+**She is the sharpest exchange in this file and she carries 4,040 Health.** That is not an oversight: she can end him in one connection and he can end her in one, and **neither of them has a pool that makes a second exchange likely.** Section 13.1.1's rule that a bearer fight turns on whether a strike lands is at its purest here — this is a duel where the first clean touch decides it, and both of them know the arithmetic before it starts. **Which is exactly why she would rather talk**, and why a Runtime should let her.
+
+### Tolo, who reads what is left — Standing, no position
+
+- **Want:** to finish the Ninth Quiet's archive. He has been reading it for centuries, and the people who wrote it got further with the curve than anyone else the process has harvested.
+- **Fear:** being made to choose. He has heard all four answers, thinks each of them is held by someone he respects, and believes that picking one is how you stop reading.
+- **Secret:** he has understood a good deal more of the diagrams than he admits, and has been sitting on it because the only people who would act on it are the three he trusts least to act.
+- **Voice:** dry, precise, easily amused, and completely unimpressed by anyone's importance including his own.
+- **Agenda:** none beyond the next volume — which is itself a position, and the reason he lives four seams from everyone who would tell him so.
+
+```yaml
+stats:      { strength: 1120, agility: 1340, vitality: 1680, perception: 2890, intelligence: 2620 }
+maximum_health: 6720      # 4 x Vitality
+maximum_mana:   5240      # 2 x Intelligence
+equipment: none
+mastery:   Master on perception, concealment and the reading of written systems
+```
+
+**He is why Section 3.3 says the Ninth Quiet is contested, and the Bearer has already met his house.** `EVT-000783` records the entire archive taken into a dimensional inventory. `EVT-000784` records a worn path followed to a **long-inhabited dwelling** — scavenged material, layered repairs, bedding replaced many times over — and a **thirteenth anchor set inside it.** Nobody was home.
+
+**Nobody was home because his Perception is 2,890 against the Bearer's 2,561**, the only stat on the far side that exceeds him, and he watched a stranger cross his stratum from a long way off. **He has since come back to a robbed library and a rift-anchor in his bedroom**, and what he makes of that is a scene the campaign owes rather than a disposition this file sets. He is the one figure here the Bearer has already wronged without knowing it.
+
+### The Spent, who are not named
+
+Section 4's third state is a population rather than a person: alive, uninterested, sitting where they sat down, **and some of them will answer questions.** They are the far side's only reference source that is neither a diagram nor an interested party — a Spent has no position, wants nothing, and will not lie because lying is effort. **A Runtime may author one at need under Section 2's discipline**, with a sheet, no position, no agenda, and no willingness to move, help, follow, or care. None of them teaches: teaching is effort too.
 
 ## 4.3 Notice — how they find him, and why they have not yet
 
@@ -224,7 +332,7 @@ Stated so nobody discovers a hole mid-session, on the same discipline `206_WORLD
 - **What is past the Weir's deepest seam.** Sevrin has seen it and the file does not say what it is, on purpose.
 - **Any stratum beyond the five above.** The Stacks are indefinitely large; a Runtime authors a sixth before running it and **never improvises one mid-scene**.
 - **Whether a champion can cross and stay.** See Section 5.
-- **What the Long Shelf's society is past its four positions and three named figures.** Section 3.5 authors a valley with shelters, cultivation and worn paths, and Section 4 authors who matters in it. Its size, its arrangement, and anyone else living in it are unauthored, and Section 4.3's contacts draw on the named figures rather than on a population.
+- **What the Long Shelf's society is past its five named figures.** Section 3.5 authors a valley with shelters, cultivation and worn paths; Section 4.2 authors all four positions, a figure who refuses them, and the Spent as a population a Runtime may draw one from at need. **Its size, its arrangement, its history and anyone else living in it remain unauthored**, and Section 4.3's contacts draw on the named figures first.
 - **Travel on any leg not in Section 2.2's table**, including every route inside an unauthored stratum. The table is the whole of what is authored; a Runtime that needs a leg it does not list asks the owner rather than estimating one.
 - **What the far side pays, because the answer is nothing and it is authored elsewhere.** `206_WORLD_RULE_PROFILE.md` Section 18.13.1 governs: no Rank, no kill XP row, no clear milestone, no drop table. Nothing in Sections 2.1, 2.2 or 4.3 changes that — they make the place **reachable**, not profitable, and a Runtime never invents a reward here to justify the trip.
 - **Entity, Event and Record identifiers.** Minting `ENT-`, `EVT-` or `REC-` for anything here is canon under save discipline and belongs to a play session, not to this file.

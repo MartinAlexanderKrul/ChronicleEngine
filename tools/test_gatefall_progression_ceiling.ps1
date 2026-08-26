@@ -260,7 +260,95 @@ if (Test-Path $farSidePath) {
     # Reachability must not become a reward. Section 18.13.1 owns that answer.
     Assert-True ($farSide -match '(?i)reachable\*\*, not profitable|not profitable') `
         "The far-side file does not restate that reaching the place pays nothing. Sections making it reachable are exactly where a Runtime would be tempted to invent a drop table to justify the trip."
+
+    Assert-True ($farSide -match '(?i)only beings in existence who can use it') `
+        "The far-side file does not connect its inhabitants to Section 7.1's taught route. 'Warn, teach, arm, or hijack' stays a sentence about intent unless this file names the Standing as the route's only possible teachers."
 }
+
+# --- Section 7.1 route 5: the only acquisition route needing a second person ---
+# Four routes were solitary and the fifth was never authored, so a Bearer whose
+# tables are exhausted had nowhere left to learn from. Properties, not prose.
+
+$s71 = Get-Section $profile '(?m)^## 7\.1 Acquisition\b.*?(?=^## 7\.2 )'
+Assert-True ($s71.Length -gt 0) "Section 7.1 could not be isolated; every taught-route leg below would pass vacuously."
+if ($s71.Length -gt 0) {
+    Assert-True ($s71 -match '(?i)one of five routes, and only these') `
+        "Section 7.1 does not declare five acquisition routes. The closed-list wording is what makes a new route an authoring decision rather than a Runtime improvisation."
+    Assert-True ($s71 -match '(?i)only route requiring a second person') `
+        "Section 7.1 does not distinguish the taught route by needing another person, which is the whole of what separates it from a rune."
+    Assert-True ($s71 -match '(?i)Only a holder of a System may teach') `
+        "Section 7.1 does not restrict teaching to System-bearers. Without it an ordinary awakened becomes a teacher and Section 13.1's no-skill-sheet rule is contradicted from a section that never mentions it."
+    Assert-True ($s71 -match '(?i)Tests 4 and 5 stand entirely unchanged') `
+        "Section 7.1's taught route does not preserve the three-qualifying-scene threshold, which turns a teacher into a rune that walks."
+    Assert-True ($s71 -match '(?i)does not hand over the hands') `
+        "Section 7.1's taught route does not state that mastery is unmoved. Section 12.5 sells width and refuses hands at any price, and a teaching route granting mastery silently repeals that."
+    Assert-True ($s71 -match 'transmissible') `
+        "Section 7.1 records no transmissibility on a taught skill, which is the route's only actual grant -- without it a taught technique is a rune with extra steps."
+    Assert-True ($s71 -match '(?i)never granted retroactively') `
+        "Section 7.1 does not bar retroactive transmissibility, so every skill learned off a drop table becomes teachable the day the route lands."
+    Assert-True ($s71 -match '(?i)no item consumed') `
+        "Section 7.1 does not state that teaching an awakened consumes no item, which is the entire difference from the instructional-item route beside it."
+}
+
+# --- Section 13.1.1: another System's bearer is not a Rank ---------------------
+# A teacher the Bearer one-shots is not a teacher. The fix is that a bearer was
+# never a Section 13.1 hunter, not that the content table grew.
+
+$s131 = Get-Section $profile '(?m)^### 13\.1\.1 .*?(?=^## 13\.2 )'
+Assert-True ($s131.Length -gt 0) "Section 13.1.1 could not be isolated; the bearer-resolution legs would pass vacuously."
+if ($s131.Length -gt 0) {
+    # The multiplication sign is multi-byte in UTF-8 and decodes to two or three
+    # characters under PowerShell 5.1's ANSI read, so the operator is matched as
+    # a bounded run of anything rather than as a literal.
+    Assert-True ($s131 -match '(?i)4 .{1,3}effective Vitality') `
+        "Section 13.1.1 does not derive a bearer's Health from Vitality. Without it a champion falls back to a Rank Health pool and the Bearer deletes the only teachers in the setting in one resolution."
+    Assert-True ($s131 -match '(?i)No Rank, no Rank Health') `
+        "Section 13.1.1 does not deny a bearer a Rank. A graded body is exactly what these entities are not, and a Rank is what caps them at S."
+    Assert-True ($s131 -match '(?i)whether a strike lands') `
+        "Section 13.1.1 does not state that a bearer exchange turns on connection rather than attrition, which is the whole reason a smaller pool is still lethal."
+    Assert-True ($s131 -match '(?i)Nothing in the world qualifies') `
+        "Section 13.1.1 does not close its population. An open bearer clause lets a Runtime promote a licensed S-Rank into one and repeals Section 13.1 by the back door."
+    Assert-True ($s131 -match '(?i)rarely damage') `
+        "Section 13.1.1 does not say the threat is usually something other than damage, which is what stops this becoming the magnitude fix it was authored to avoid."
+}
+
+# The two named figures must be sheets, not Ranks, and must not be inflated.
+if (Test-Path $farSidePath) {
+    Assert-True ($farSide -match '(?i)maximum_health: 7600') `
+        "Sevrin carries no derived Health pool. Priced as Combat Tier equivalent S she is a 4,000-point body the Bearer removes in one standard resolution, which is F-059's unactioned half."
+    Assert-True ($farSide -match '(?i)she is smaller') `
+        "The far-side file does not state that its strongest teacher is smaller than the Bearer. If she reads as a bigger monster the file has taken the inflation route the owner rejected."
+    Assert-True ($farSide -match '(?i)bar an anchored step') `
+        "Sevrin cannot deny the anchored step. Her danger is denial rather than damage, and without it a lower-Health entity is simply weaker."
+    Assert-True ($farSide -match '(?i)maximum_health: 4960') `
+        "Ilith carries no derived Health pool, so the file states one figure as a sheet and leaves the other on the capped scale."
+    # Scoped to the named figures. The strata above them legitimately still read
+    # on the Combat Tier scale -- a stratum is content, not a person, and 'S and
+    # above' there is a description of what wanders through it.
+    # Bounded at 4.3 rather than at the next rule, so inserting a section after
+    # this one cannot silently widen the span -- the 1.107 defect, one file over.
+    $figures = Get-Section $farSide '(?m)^## 4\.2 .*?(?=^## 4\.3 )'
+    Assert-True ($figures.Length -gt 0) "Far-side Section 4.2 could not be isolated; the pricing leg below would pass vacuously."
+    Assert-True ($figures -notmatch '(?i)Combat Tier equivalent: S') `
+        "A named far-side figure is still priced at Combat Tier equivalent S -- a scale that caps at the rung the Bearer passed sixty-three levels ago, which is exactly F-059's third question."
+
+    # All four Section 4.1 positions need a holder. The two that matter most to a
+    # campaign -- the one that helps him and the one that opposes him -- were
+    # paragraphs with nobody standing in them.
+    foreach ($holder in @('Sevrin', 'Ilith', 'Aumry', 'Orenne')) {
+        Assert-True ($figures -match "(?i)\b$holder\b") `
+            "Section 4.1 authors four positions and '$holder' is not among the named figures, so at least one position is a stated intent with nobody to act on it."
+    }
+    $sheets = ([regex]::Matches($figures, '(?i)maximum_health:\s*\d+')).Count
+    Assert-True ($sheets -ge 4) `
+        "Fewer than four named far-side figures carry a derived Health pool ($sheets found). A figure without a sheet falls back to a Rank the file says nothing here has."
+    # Nobody here is a bigger monster. The Bearer's own pool is the bar.
+    $tooBig = [regex]::Matches($figures, '(?i)maximum_health:\s*(\d+)') |
+        Where-Object { [int]$_.Groups[1].Value -gt 10620 }
+    Assert-True ($tooBig.Count -eq 0) `
+        "A named far-side figure carries more Health than the Bearer. The owner rejected inflation as a fix ('it is just fighting'); these entities are dangerous through denial, speed and one-connection lethality, never through a larger pool."
+}
+
 Assert-True ($s1813 -match '(?i)named as owed') `
     "Section 18.13 does not declare the seven unauthored class lines as owed."
 Assert-True ($s1813 -match '(?i)does not improvise one') `

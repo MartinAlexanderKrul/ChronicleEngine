@@ -220,6 +220,46 @@ if (Test-Path $farSidePath) {
         "The far-side file declares no gaps. An indefinitely large place with no stated edges invites a Runtime to invent one mid-scene."
     Assert-True ($farSide -match '(?i)belongs to a play session|under save discipline') `
         "The far-side file does not reserve identifier minting to play. Writing ENT- or EVT- here is canon written outside a session."
+
+    # --- reachability: the three connective rulings ---------------------------
+    # The file authored a clock with no distances and agendas with no firing
+    # condition, so the place was unreachable in one direction and unpopulated
+    # in the other. Assert the properties, never the sentences carrying them.
+
+    Assert-True ($farSide -match '(?i)cannot be formed at all') `
+        "The far-side file does not close the tunnel network at the Earth boundary. Section 18.13.1 joins 'any two places he has stood' permanently and two-way, a stratum qualifies on its face, and the Out position then holds a standing exit that nobody has to open and nobody can shut."
+    Assert-True ($farSide -match '(?i)sole authored crossing') `
+        "The far-side file does not name the far door the only way in, so a closeable door and an uncloseable tunnel read as interchangeable routes."
+    Assert-True ($farSide -match '(?i)instantaneous and costs nothing') `
+        "The far-side file does not state that crossing a standing tunnel costs no clock, which is the entire reason to set an internal anchor rather than walk the leg again."
+
+    # Travel must be a table a Runtime reads, with the unstable stratum rolled.
+    Assert-True ($farSide -match '(?i)never estimates one') `
+        "The far-side file does not forbid estimating a travel time. A clock with improvised distances is a clock that means whatever the narrator needs."
+    Assert-True ($farSide -match '1d4 x 15') `
+        "The far-side file does not roll the Weir's crossing. Section 3.4 says its ground is not reliable, and a fixed cost there makes the one leg that should be uncertain the safest to plan around."
+    Assert-True ($farSide -match '(?i)not survivable and is not close') `
+        "The far-side file does not state that the deepest stratum cannot be walked to and back on one pool. Without it the clock has no stated consequence and an anchor is a convenience rather than the thing the trip depends on."
+    # Section 18.8 calls the anchored step "unrestricted" and frees it from
+    # instance walls. If this file does not bar it at the Earth boundary, the
+    # tunnel ruling above is closed and the same exit stands open beside it --
+    # at System Rank S, carrying one ally per step.
+    Assert-True ($farSide -match '(?i)anchored step, a travelling step') `
+        "The far-side file bars tunnels at the Earth boundary and does not name the anchored step, which Section 18.8 calls unrestricted and unbound by instance walls. A five-Mana step home from the Long Shelf reopens the exit the tunnel ruling just closed, and the S-Rank rung sends an ally along with it."
+    Assert-True ($farSide -match '(?i)flat 5 Mana from any distance') `
+        "The far-side file does not carry the anchored step's own cost, so a Runtime must reconstruct from Section 18.8 whether the class ability the Bearer has held since level 25 functions here at all."
+
+    # An authored agenda needs a firing condition or it is scenery.
+    Assert-True ($farSide -match '(?i)far_side_notice') `
+        "The far-side file names no counter for the Bearer's presence, so Section 4's inhabitants have nothing that ever brings them to him."
+    Assert-True ($farSide -match '(?i)At notice 6') `
+        "The far-side file states no contact threshold. Section 4.1 says they have been trying to reach the candidate for a long time, and without a threshold that sentence never resolves into anyone appearing."
+    Assert-True ($farSide -match '(?i)left standing open') `
+        "The far-side file does not charge notice for a far door left open. The door is the exact thing Ilith's authored agenda watches for, and an unattended one goes on announcing him while he is on Earth."
+
+    # Reachability must not become a reward. Section 18.13.1 owns that answer.
+    Assert-True ($farSide -match '(?i)reachable\*\*, not profitable|not profitable') `
+        "The far-side file does not restate that reaching the place pays nothing. Sections making it reachable are exactly where a Runtime would be tempted to invent a drop table to justify the trip."
 }
 Assert-True ($s1813 -match '(?i)named as owed') `
     "Section 18.13 does not declare the seven unauthored class lines as owed."

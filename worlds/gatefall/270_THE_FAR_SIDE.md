@@ -2,7 +2,7 @@
 
 **Ledger:** World content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Status:** Active — instantiated as canonical world content (2026-08-25).
+**Status:** Active — instantiated as canonical world content (2026-08-25). **Extended 2026-08-26** with Sections 2.1 (anchors and tunnels reach within the Stacks and never bridge to Earth, honouring the `EVT-000814` play ruling), 2.2 (authored traversal legs against Section 2's clock), and 4.3 (the notice counter that fires Section 4's agendas). No Rank, reward, magnitude, or Section 18.13.1 grant moves.
 **Reachable by:** `206_WORLD_RULE_PROFILE.md` Section 18.13's **far door** (Riftwalker → Gate Walker, level 100), and by nothing else authored.
 
 > **OWNER EYES ONLY. The Runtime must never reveal, quote, or paraphrase this file in play except through what the Bearer physically perceives while standing in it.** It is the destination Section 18.13 declines to specify, and it exists because that section forbids a Runtime improvising a world. It is written to be consistent with `200_WORLD_BIBLE.md` Section 9 and never to restate it: nothing here explains the Assay to anyone, and no inhabitant of this place is permitted to hand the Bearer the cosmology in a speech.
@@ -36,6 +36,51 @@ A Runtime narrates this as the body reports it — a cold that gets into him, a 
 **Time runs, but the strata are not synchronised with each other or with Earth.** Two slices adjacent at a seam may be ten thousand years apart in their own reckoning. Time inside a stratum runs at Earth's rate for anyone standing in it — **there is no relativistic trick here and a Runtime must not invent one.** What is desynchronised is the *held moment*, not the clock.
 
 **Crossing a seam is the only navigation.** Seams are where slices meet, and they are thin in places and welded in others. A thin seam can be walked through — it reads as a wall of grey static a few metres deep, and the far side is another world's ground. **Gate Walker's far door opens onto exactly one stratum**, chosen or not, and everything past the first seam is walking.
+
+## 2.1 Anchors, tunnels, and the door — the rule is that the door is the only way in
+
+Riftwalker anchors and the Gate Walker tunnel network (`206_WORLD_RULE_PROFILE.md` Section 18.13.1) both function here, and the Bearer has already proved it: an anchor was set on the Ninth Quiet and an anchored rift-step made from it (`EVT-000784`, `EVT-000785`). The question Section 18.13.1 never asked is what *"any two places he has stood"* means once one of those places is a stratum, and this section answers it.
+
+**A tunnel joins two far-side places. It never bridges to Earth.** Anchors set in the Stacks link to other anchors in the Stacks on the ordinary Section 18.13.1 terms — permanent, two-way, crossed freely by anyone, holding whether or not he is standing in either end. **A tunnel with one end on Earth and one end in the Stacks cannot be formed at all.** The far door remains the sole authored crossing between the two, exactly as Section 18.13 states it, and this is a ruling recorded in play (`EVT-000814`) rather than a new restriction.
+
+**The reason is the thing on the other side of it.** A far door is *closeable* — Section 18.13.1 gives the Bearer a stated price to shut one and one condition that stops him. A tunnel has neither. A permanent, unattended, two-way passage standing open between the Long Shelf and a city on Earth is precisely and completely what Section 4.1's **Out** position has been waiting for since before there were doors, and it would be handed over as a side effect of logistics, while he slept. **The door is a decision he makes every time. A tunnel would be a decision he makes once.**
+
+**The anchored step is the road, and it works here exactly as Section 18.8 writes it.** A step to one of his own set anchors is a **flat 5 Mana from any distance**, and inside the Stacks that is the whole of what it costs — the Bearer has already taken one (`EVT-000785`). **An anchor he holds in a stratum is reachable from any stratum**, so an expedition does not walk the ground it has already walked: he opens the door onto the Landing, steps to the deepest anchor he holds, and starts from there. **This is not a new grant and nothing here rations it.** It is the class ability he has carried since level 25, and the far side is one of the few places its flat cost is the difference between an expedition and an impossibility.
+
+**Setting an anchor here is the ordinary Section 18.8 act** — an exchange spent standing on ground he has reason to hold, one slot against `effective Agility ÷ 20`, released freely. **The Landing is the anchor a Runtime should expect him to want**, because it is where the door is and he has never set one there.
+
+**No step of any kind crosses between Earth and the Stacks, and the anchored step is named here because Section 18.8 calls it unrestricted.** That section frees it from *instance walls* — a Gate, a red gate, an instant dungeon — and the Stacks are not an instance; they are a place, on the far side of the one crossing this world authors. **An anchored step, a travelling step, an answering step, a personal gate and a tunnel all stop at that boundary in both directions.** The far door is the sole authored crossing, and a Bearer standing on the Long Shelf does not step home for 5 Mana.
+
+**The reason is the thing on the other side of it, and it is sharper for the anchored step than for the tunnel.** At System Rank S the Section 18.8 table grants that *"an ally he touches may be sent with him on any step."* A five-Mana step out of the Stacks is therefore not only a way home; it is a way to bring one of Section 4.1's **Out** position with him, on a reaction, from anywhere, for pocket change. **The door is a decision he makes every time, with a price and a condition that can stop him. Everything barred above is a decision he would make once, or in an exchange, without meaning to.**
+
+**A far door always opens onto the Landing (Section 3.1), and no anchor changes that.** He cannot open a door onto a stratum he has anchored, and holding an anchor deeper in confers no shorter way *in* from Earth — only a shorter way onward once he is through, and a shorter way back to the door before he leaves.
+
+**Tunnels remain available and are a different tool.** A standing tunnel is permanent, needs nobody present, and **anyone may cross it** — which an anchored step never allows, since the step is his. Within the Stacks that is worth building where he wants a route someone else can use; **crossing a standing tunnel is instantaneous and costs nothing**, and it is the only movement in this file that costs no clock at all. Each occupies a slot from the same cap as any anchor.
+
+## 2.2 Distance, and what it costs
+
+Section 2 authors a clock and, through Profile 1.108, authored no distances for it to run against — which made every expedition either free or impossible depending on who narrated it. **These are the authored legs.** A Runtime reads travel time from this table and never estimates one; a route not on it is unauthored ground and Section 2's stop-and-ask rule governs.
+
+The costs assume the Bearer's own mobility — Sprint, Flash Step and rift-step, at the ranks a Gate Walker holds — and are what a hundred-level Bearer covers, not what a person covers. **They are traversal only.** Fighting, searching, reading, mining, and talking are additional and are counted at the table's own scale.
+
+| Leg | Clock |
+|---|---|
+| **The Landing** — the door to its seam | 15 min |
+| **Any seam crossing** | 15 min |
+| **The Mill** — seam to seam | 25 min |
+| **The Ninth Quiet** — seam to seam | 20 min |
+| **The Weir** — seam to seam | **2 hours**, plus `1d4 x 15 min` |
+| **The Long Shelf** — seam to the valley | 15 min |
+| **An anchored step** (Section 2.1) | none, at its Section 18.8 flat 5 Mana |
+| **Any standing tunnel** (Section 2.1) | none |
+
+**The Weir is the only leg a Runtime rolls, and it is rolled because the ground is not reliable** (Section 3.4) — the route found on the way in is not necessarily there on the way out, and the die is rolled again for the return. Every other leg is fixed; a stratum's geography is a held moment and does not move.
+
+**What this composes to, and it is the point of the section.** Walked end to end, the Landing to the Long Shelf is **4h30m to 5h15m** one way — 135 minutes of fixed legs either side of the Weir's rolled 135 to 180. Against Section 2's drain of 10% of maximum Mana an hour, a Bearer who pays Section 18.13.1's door price out of a full pool has a little over five and a half hours before the drain crosses into Health. **Walked in both directions the trip is not survivable and is not close**, and no amount of planning makes it so.
+
+**What makes it possible is the anchored step, and this is why Section 2.1 matters more than the table does.** An anchor already held deep in cuts the legs that are merely repetition. Starting from the Ninth Quiet — the one anchor the Bearer actually holds (`EVT-000784`) — the outbound run is **3h20m to 4h05m**, the return is one 5-Mana step back to that anchor and **1h15m** of walking to the door, and the round trip lands at **4h35m to 5h20m against a budget of about 5h34m.** He makes it, by somewhere between fourteen minutes and an hour, and the Weir's die decides which.
+
+**That margin is the intended shape and is not to be widened by narration.** A Bearer who spends an hour fighting, reading, or negotiating on the Long Shelf has spent his way out of it, and Section 6.5's finality applies to running out of pool exactly as it applies to anything else. **The way to buy margin is another anchor, not another hour** — an anchor set on the Landing turns the whole return into a single step and a walk through the door, and one set past the Weir removes the campaign's only rolled leg from the outbound run. **The expedition that reaches the bottom of the Stacks comfortably is the third one**, and each of the two before it is a trip whose whole purpose is to stand somewhere long enough to hold it.
 
 ---
 
@@ -136,6 +181,28 @@ Authored on the Decision 091 character model (want, fear, secret, voice, agenda)
 - **Agenda:** none that anyone has identified. It walks a route. The route has not changed in living memory.
 - **Combat Tier equivalent: beyond the ladder.** **A Runtime never resolves an engagement with it as combat**; what happens when it is engaged is an owner ruling, once, and it is not a fight the Bearer wins.
 
+## 4.3 Notice — how they find him, and why they have not yet
+
+Section 4.1 says the **Reach the next one** position has been trying to find the current candidate for a long time and that *"he is the first they have been able to touch."* Section 4.2 gives Ilith an agenda that is, in plain words, **watching the exact ground a far door arrives on**. Through Profile 1.108 neither statement had a trigger: the file authored who is here and what they want, and nothing that ever puts one of them in front of the Bearer. **An agenda with no firing condition is scenery**, and the first two expeditions correctly produced no one — which is the defect, not the play.
+
+**Notice is a counter on the world ledger, in the Section 9.1.3 pattern: a value the world carries, never a roll.** It only ever rises, and nothing the Bearer does lowers it.
+
+```text
+     +1   per hour of the Bearer's presence anywhere in the Stacks
+     +3   a far door opening onto the Landing
+     +1   per hour a far door is left standing open, present or not
+```
+
+**The door is weighted because it is the thing they are watching for.** Ilith's stated theory is *that a door will one day open where doors used to* — a puncture on the Landing is not a man walking about, it is her hypothesis being confirmed, and it is visible across a stratum with no weather and no night. A door left open goes on confirming it while he is in Chicago.
+
+**At notice 6, the first contact happens.** Not a roll, not an encounter, not combat: someone has come to look at him, and which someone is read from where he is standing. **On the Landing it is Ilith**, because that is the ground she watches and this section exists so that her authored agenda fires. Deeper in, a Runtime selects the figure from Section 4.2 whose position the situation actually engages, and **authors the meeting before running it** under Section 2.
+
+**After the first contact the counter keeps running and the threshold moves to every further 6.** The Long Shelf is small and old; a living man from a living world is the loudest thing that has happened there in an age, and word of him does not need a mechanism beyond that. **Nothing here makes them hostile.** Section 4.1's four positions govern what a given figure does about him, and two of the four want to help.
+
+**The threshold is calibrated against this campaign's clock and not against the Stacks' own timescale**, on the lesson `F-046`'s second addendum states outright — *"a rate borrowed from a world's in-fiction history is not a rate calibrated to the campaign's clock,"* and the two can differ by orders of magnitude without anything looking wrong on the page. People who have waited forty thousand years would plausibly take another decade to notice him. **A threshold written on that reasoning would mean the file's entire population never appears**, which is the failure this section is repairing rather than a flavour it should preserve.
+
+**Applied to the record as it stands**, `EVT-000781`–`EVT-000785` are one far door opened onto the Landing and roughly two hours of presence, for a notice of **5** — and the door was closed from the Earth side, so nothing has accrued since. **The Bearer is one hour of far-side presence away from the first contact**, and the two expeditions that produced no one produced no one correctly. Initialising `far_side_notice` on `110_WORLD_LEDGER.md` is campaign canon and belongs to play.
+
 ---
 
 # 5. What Comes Back
@@ -157,4 +224,7 @@ Stated so nobody discovers a hole mid-session, on the same discipline `206_WORLD
 - **What is past the Weir's deepest seam.** Sevrin has seen it and the file does not say what it is, on purpose.
 - **Any stratum beyond the five above.** The Stacks are indefinitely large; a Runtime authors a sixth before running it and **never improvises one mid-scene**.
 - **Whether a champion can cross and stay.** See Section 5.
+- **What the Long Shelf's society is past its four positions and three named figures.** Section 3.5 authors a valley with shelters, cultivation and worn paths, and Section 4 authors who matters in it. Its size, its arrangement, and anyone else living in it are unauthored, and Section 4.3's contacts draw on the named figures rather than on a population.
+- **Travel on any leg not in Section 2.2's table**, including every route inside an unauthored stratum. The table is the whole of what is authored; a Runtime that needs a leg it does not list asks the owner rather than estimating one.
+- **What the far side pays, because the answer is nothing and it is authored elsewhere.** `206_WORLD_RULE_PROFILE.md` Section 18.13.1 governs: no Rank, no kill XP row, no clear milestone, no drop table. Nothing in Sections 2.1, 2.2 or 4.3 changes that — they make the place **reachable**, not profitable, and a Runtime never invents a reward here to justify the trip.
 - **Entity, Event and Record identifiers.** Minting `ENT-`, `EVT-` or `REC-` for anything here is canon under save discipline and belongs to a play session, not to this file.

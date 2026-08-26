@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000250 |
+| Entity | `ENT-` | Persistent Entity | ENT-000256 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000814 |
-| Relationship | `REL-` | Relationship | REL-000103 |
+| Event | `EVT-` | Event | EVT-000826 |
+| Relationship | `REL-` | Relationship | REL-000105 |
 
 ---
 
@@ -882,6 +882,15 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000102 | Relationship | Gatefall: Pendragon: Alexander and Corwin Ashvale (`ENT-000247`), working-source relationship — the fusion arc, ongoing custody of the Heartwood core-mass and a Quickknife [S] |
 | EVT-000813 | Event | Gatefall: Pendragon, **the Corwin fusion arc**, 2026-08-29. Warlord's Loop [A] forged from the consumed Warded Vambrace pair; Arcanist Torso/Gauntlets [S] forged from the consumed Watcher Torso/Gale Gauntlets, both Echoes carried forward; Heartward Sigil [S] equipped free; the main-hand dagger fused with a consumed Reacharm's Projection Echo; a failed power-ceiling experiment destroyed a plain Quickknife [S] and 2 S-Rank cores; a second Quickknife [S] left in custody, `OBJ-47` opened due 2026-08-31 |
 | EVT-000814 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-29 20:30, span `EVT-000802`-`EVT-000813`. `gatefall.skill_credit`: real, two Gate clears, no new mastery crossings. `gatefall.skill_formation`: none. Cash $319,090.22->$11,259,590.22; gold unchanged. Anchors 14->17. No canonical contradiction found |
+| EVT-000815 - EVT-000826 | Event | Gatefall: Pendragon, this span: home return; the 2026-08-30/31, 2026-09-01, 2026-09-02 06:00 world ticks (Escalation Tier V held, then Tier V->VI on the fixed 2026-09-02 schedule date); four daily quests (streak 22->26); the Houston B-Rank Gate cleared solo (LEVEL 113->114); the National tour's remaining six anchors set; a relationship conflict with Owen Callahan; a fresh study pass on the correlation logbooks and the Ninth Quiet library; Corwin Ashvale's Heartwood/Mana-battery work; Silas Grech's and Sorcha Bellweather's introductions; three new BGM/private-sector objectives opened; 22 unspent points allocated to Vitality; the Rockwell bay furnished |
+| ENT-000251 | Entity | Gatefall: Pendragon: **Cormac Deveraux**, unlicensed submerged-salvage dealer, Houston ship channel, `130_NPCS_AND_FACTIONS.md` |
+| ENT-000252 | Entity | Gatefall: Pendragon: **Adaeze Nwosu**, BGM Region VI field liaison, Houston, `130_NPCS_AND_FACTIONS.md` |
+| ENT-000253 | Entity | Gatefall: Pendragon: **Bram Castillo**, BGM Region II field liaison, Miami, `130_NPCS_AND_FACTIONS.md` |
+| ENT-000254 | Entity | Gatefall: Pendragon: **Sorcha Bellweather**, BGM National containment doctrine & infrastructure, Washington DC, `130_NPCS_AND_FACTIONS.md` |
+| ENT-000255 | Entity | Gatefall: Pendragon: **Kian Ferris**, BGM Dallas field liaison, `130_NPCS_AND_FACTIONS.md` |
+| ENT-000256 | Entity | Gatefall: Pendragon: **Naomi Reyes**, BGM Los Angeles field liaison, `130_NPCS_AND_FACTIONS.md` |
+| REL-000104 | Relationship | Gatefall: Pendragon: Alexander and Cormac Deveraux (`ENT-000251`), working-source relationship — first-look standing arrangement, `OBJ-48` |
+| REL-000105 | Relationship | Gatefall: Pendragon: Alexander and Sorcha Bellweather (`ENT-000254`), working-source relationship — containment doctrine, `OBJ-49`/`OBJ-50`/`OBJ-51` |
 
 ---
 

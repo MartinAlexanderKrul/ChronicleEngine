@@ -107,6 +107,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000247` | Corwin Ashvale | artificer / fusion specialist | active | His workshop, Boston. | `REL-000102` |
 | `ENT-000224` | Teresa Vance | journalist - trade beat | active | Unestablished - worked entirely by phone. Chicago is implied by… | `REL-000100` |
 | `ENT-000225` | Marguerite | media liaison - independent | active | Unestablished. Chicago is implied by Kesha Morrison's ability t… | — |
+| `ENT-000257` | Jitka Novotná | national Gate-ranking clerk | active | CGA Headquarters, central Prague, the public Ranking Corps coun… | — |
 | `ENT-000226` | Peter Kwiatkowski | artificer - CONSULT-controlled | active | Ironclad Self Storage | — |
 | `ENT-000227` | CONSULT | unregistered artificer-control operation | active | Ironclad Self Storage | — |
 | `ENT-000228` | D | unidentified - CONSULT decision-maker | active | Peter Kwiatkowski | — |
@@ -194,9 +195,10 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000223` | Desmond Farraday | A cooperative, non-adversarial relationship with a free-agent S-Rank rather than an unaccountab… | An S-Rank deciding BGM is irrelevant and acting alone — named this fear to Alexander directly r… | None surfaced directly; a Legendary Keen Sense read found his rapport-building posture (sitting… | Plain, names walls directly rather than softening them, doesn't fill silence |
 | `ENT-000233` | Renata Okonkwo-Vance | An actual working line to a solo S-Rank the National office has never had leverage over — not t… | That this goes the way it's gone with every prior unaffiliated S-Rank the office has tried to r… | She's read his Region V file closer than Farraday's summary would suggest, and already knows mo… | Precise, unhurried, no filler — warmer than Farraday's register but no less deliberate |
 | `ENT-000244` | Priest | Unestablished — a live thread if his own reasons for running a no-questions yard ever become re… | Unestablished — nothing in the one transaction touched it | Unestablished — nothing in the one transaction touched it | Terse, transactional, incurious |
-| `ENT-000247` | Corwin Ashvale | Not yet established beyond the ordinary artificer's want for interesting, well-supplied materia… | Not yet established | Not yet established | Not yet established beyond the texted approach — a 'quick chat' opportunity, low-pressure, busi… |
+| `ENT-000247` | Corwin Ashvale | The edge of what's actually known | Being the man who missed something in his own shop | The private notes toward his own unpublished theory of fusion/re-coring | Exact and technical, never padded |
 | `ENT-000224` | Teresa Vance | The story confirmed in his own words before she runs it — now satisfied | Running it wrong | Who inside Region V gave her the name | States the awkward thing first and then explains why she is saying it |
 | `ENT-000225` | Marguerite | To get ahead of whatever story is already forming before it breaks somewhere she doesn't contro… | A client who goes quiet exactly when the story breaks, leaving her defending a silence she can'… | She took this work after a hunter she liaised for early in her career went to ground during a b… | Leads with logistics and timelines, not reassurance |
+| `ENT-000257` | Jitka Novotná | For her own careful, correct work to matter to someone above her counter — the agency's money a… | A Ranking error on her own signature that gets someone killed | She keeps a private tally — never shown a superior — of the hours and budget she believes get d… | Efficient, a little clipped; warms for professional treatment; dry specifically about the Reten… |
 | `ENT-000226` | Peter Kwiatkowski | To be told he is safe, by someone who would actually know | That `COMPLETE` is about to have his name beside it | He is now missing a satchel and a wallet he cannot explain, and has reported only the satchel | Talks too fast under pressure and over-explains, the rhythm of someone trying to sound more cer… |
 | `ENT-000228` | D | Unauthored - no direct contact has occurred | Unauthored | What `COMPLETE` actually resolves to | Established only in text: short, flat, faintly dismissive, signs with a single initial |
 | `ENT-000229` | Delphine | Unauthored - no contact has occurred | Unauthored | Unauthored | Unestablished - no line of hers has been narrated |
@@ -217,7 +219,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 100. Protagonist relationships: 26.
-- Characters: 77. Disposition authored in full: 35; partial: 31; none: 11. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 101. Protagonist relationships: 26.
+- Characters: 78. Disposition authored in full: 36; partial: 31; none: 11. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

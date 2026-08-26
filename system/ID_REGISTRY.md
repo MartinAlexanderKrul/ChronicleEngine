@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000256 |
+| Entity | `ENT-` | Persistent Entity | ENT-000257 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000826 |
+| Event | `EVT-` | Event | EVT-000831 |
 | Relationship | `REL-` | Relationship | REL-000105 |
 
 ---
@@ -891,6 +891,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000256 | Entity | Gatefall: Pendragon: **Naomi Reyes**, BGM Los Angeles field liaison, `130_NPCS_AND_FACTIONS.md` |
 | REL-000104 | Relationship | Gatefall: Pendragon: Alexander and Cormac Deveraux (`ENT-000251`), working-source relationship — first-look standing arrangement, `OBJ-48` |
 | REL-000105 | Relationship | Gatefall: Pendragon: Alexander and Sorcha Bellweather (`ENT-000254`), working-source relationship — containment doctrine, `OBJ-49`/`OBJ-50`/`OBJ-51` |
+| EVT-000827 - EVT-000831 | Event | Gatefall: Pendragon, this span: reconciliation with Owen Callahan at the apartment (the S-Rank-gear disagreement and `OBJ-18` named plainly, neither resolved; `OBJ-12` revealed as succession); the 2026-09-03 06:00 world tick (Tier VI held) and the thirty-ninth daily (streak 26->27); Boston — the second plain Quickknife [S] collected (`OBJ-47` deliverable closed), an Ascension attempt discussed and abandoned, a re-coring attempt on the homebrew Mana-storage cell commissioned (`OBJ-53`); Corwin's Heartwood pulse confirmed shrinking; a commercial flight to Prague and first, unresolved contact with the Czech Gate Administration; promotion-barrier settlement |
+| ENT-000257 | Entity | Gatefall: Pendragon: **Jitka Novotná**, Ranking Corps night-desk clerk, Czech Gate Administration, Prague, `130_NPCS_AND_FACTIONS.md` |
 
 ---
 

@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000246 |
+| Entity | `ENT-` | Persistent Entity | ENT-000250 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000801 |
-| Relationship | `REL-` | Relationship | REL-000101 |
+| Event | `EVT-` | Event | EVT-000814 |
+| Relationship | `REL-` | Relationship | REL-000103 |
 
 ---
 
@@ -863,6 +863,25 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000800 | Event | Gatefall: Pendragon: a bounded portion of the Ninth Quiet library materialized at the Rockwell bay for study; the afternoon's pattern-analysis attempt a natural critical failure — an unverified, possibly-mistaken decoding theory recorded, not confirmed canon |
 | EVT-000801 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-27 19:00, span `EVT-000789`-`EVT-000801`. Dinner with Renata Okonkwo-Vance at The Averlon Room; the BGM National standing incident-response agreement negotiated and signed (`OBJ-43` opened, `OBJ-42` closed); solo-recovered-loot filing terms agreed; Alexander's teleportation capability disclosed to Renata directly; the National fly list commissioned (`OBJ-44`); the Argyle Street Gate disclosed, `ENT-000246` minted, `OBJ-45` opened, break timer ~1 day. `gatefall.skill_credit`: real — three full instant-dungeon clears across the span, eight mastery tiers crossed. `gatefall.skill_formation`: none. No canonical contradiction found |
 | ENT-000246 | Entity | Gatefall: Pendragon: **the Argyle Street Gate**, 5140 N Argyle, unconfirmed Gate, survey drone lost, `130_NPCS_AND_FACTIONS.md` |
+| EVT-000802 | Event | Gatefall: Pendragon, **the Argyle Street Gate entered and cleared**, 2026-08-27 20:00-21:30. True Rank A against a B-Rank assessment (§9.5.1 widened anomaly band, 🎲 87/32), Overgrown Temple, 15 commons/1 elite/1 boss, cleared solo, no Health lost. 207 A-Rank crystals, 2 A-Rank cores, a duplicate Silent Step [B] book. LEVEL 112->113, +5 unspent. `OBJ-45` closed |
+| EVT-000803 | Event | Gatefall: Pendragon, **filed to Renata with a deliberate crystal overstatement**, 2026-08-27 21:30-22:00. 217 reported vs. 207 true (10 kept, 197 sold) — a permanent secret, not an open thread. 197 crystals sold licensed USD, +$9,850,000 |
+| EVT-000804 | Event | Gatefall: Pendragon, **the 2026-08-28 06:00 world tick**. GB-06 breaks (Red Line Corridor pressure 0->1); GB-18 posted; Walt Adamik's OBJ-29 agenda ticks; Corwin Ashvale texts about Boston |
+| EVT-000805 | Event | Gatefall: Pendragon, **the 2026-08-29 06:00 world tick**. GB-08 breaks (Lakefront Gate Corridor pressure 0->1), crossing Escalation Tier IV->V; GB-09/GB-11/GB-17/GB-18 all staffed off-screen; only GB-12 remains live |
+| EVT-000806 | Event | Gatefall: Pendragon: 33rd daily via a workout, streak 20->21, a duplicate Mana Bolt [S] book from the doubled Random Box |
+| EVT-000807 | Event | Gatefall: Pendragon: 34th daily via a 20km run with Owen Callahan, streak 21->22 |
+| EVT-000808 | Event | Gatefall: Pendragon, **Milwaukee**, 2026-08-28. Delia Okonjo (`ENT-000248`) and Danielle (`ENT-000249`) minted; two listings sourced, Praetorian's Rockwell quote declined, a Keen Sense door test paid $40,000 compensation, no purchase |
+| ENT-000248 | Entity | Gatefall: Pendragon: **Delia Okonjo**, real-estate broker, `130_NPCS_AND_FACTIONS.md` |
+| ENT-000249 | Entity | Gatefall: Pendragon: **Danielle**, Praetorian Security engineer, thin/minor, `130_NPCS_AND_FACTIONS.md` |
+| EVT-000809 | Event | Gatefall: Pendragon, **New York and the Newark Gate**, 2026-08-28. Silas Grech (`ENT-000250`) minted, fifteenth anchor; Newark Gate true Rank confirmed B as assessed, 5 commons/2 elites/1 boss, cleared solo. No level crossing |
+| ENT-000250 | Entity | Gatefall: Pendragon: **Silas Grech**, BGM Region I coordinator, New York, `130_NPCS_AND_FACTIONS.md` |
+| REL-000103 | Relationship | Gatefall: Pendragon: Alexander and Silas Grech (`ENT-000250`), working-source relationship — one assignment, one favor owed |
+| EVT-000810 | Event | Gatefall: Pendragon: 104 B-Rank crystals sold licensed USD +$1,144,000; filed clean to Silas Grech; `OBJ-46` opened; `OBJ-44` closed |
+| EVT-000811 | Event | Gatefall: Pendragon: Washington DC (sixteenth anchor) and Boston (seventeenth anchor), both standing auto-anchors |
+| EVT-000812 | Event | Gatefall: Pendragon, **Boston, Corwin Ashvale met**, 2026-08-29. `ENT-000247` minted; Nakamura's custody closed -- Dormant Core and Frost-fused plating returned to Alexander, Heartwood core-mass to Corwin's custody, read "alive, on a slow timescale" |
+| ENT-000247 | Entity | Gatefall: Pendragon: **Corwin Ashvale**, independent artificer/fusion specialist, Boston, `130_NPCS_AND_FACTIONS.md` |
+| REL-000102 | Relationship | Gatefall: Pendragon: Alexander and Corwin Ashvale (`ENT-000247`), working-source relationship — the fusion arc, ongoing custody of the Heartwood core-mass and a Quickknife [S] |
+| EVT-000813 | Event | Gatefall: Pendragon, **the Corwin fusion arc**, 2026-08-29. Warlord's Loop [A] forged from the consumed Warded Vambrace pair; Arcanist Torso/Gauntlets [S] forged from the consumed Watcher Torso/Gale Gauntlets, both Echoes carried forward; Heartward Sigil [S] equipped free; the main-hand dagger fused with a consumed Reacharm's Projection Echo; a failed power-ceiling experiment destroyed a plain Quickknife [S] and 2 S-Rank cores; a second Quickknife [S] left in custody, `OBJ-47` opened due 2026-08-31 |
+| EVT-000814 | Event | Gatefall: Pendragon, **promotion barrier**, 2026-08-29 20:30, span `EVT-000802`-`EVT-000813`. `gatefall.skill_credit`: real, two Gate clears, no new mastery crossings. `gatefall.skill_formation`: none. Cash $319,090.22->$11,259,590.22; gold unchanged. Anchors 14->17. No canonical contradiction found |
 
 ---
 

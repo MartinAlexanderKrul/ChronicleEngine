@@ -349,6 +349,43 @@ if (Test-Path $farSidePath) {
         "A named far-side figure carries more Health than the Bearer. The owner rejected inflation as a fix ('it is just fighting'); these entities are dangerous through denial, speed and one-connection lethality, never through a larger pool."
 }
 
+# --- Section 12.11: the ceiling was a bound on one skill, not on the world ----
+# F-058. Seamwork's clause read "cannot be raised by him or by anyone", and the
+# second half was never a design position anybody wrote down.
+
+$s1211 = Get-Section $profile '(?m)^## 12\.11 .*?(?=^# 13\. )'
+Assert-True ($s1211.Length -gt 0) "Section 12.11 could not be isolated; every re-coring leg below would pass vacuously."
+if ($s1211.Length -gt 0) {
+    Assert-True ($s1211 -match '(?i)sets a new ceiling|core sets a ceiling') `
+        "Section 12.11 does not restate that a core sets a ceiling, which is the Section 12.8 rule this whole operation is an application of rather than a new grant."
+    Assert-True ($s1211 -match '(?i)raises the ceiling. It does not raise the piece|ceiling and never the piece') `
+        "Section 12.11 does not separate lifting a ceiling from climbing to it. Collapsed into one step, re-coring pays for a Rank rather than for the room to earn one."
+    Assert-True ($s1211 -match '(?i)four at the Rank below') `
+        "Section 12.11 does not accept lower-Rank cores as material, which is the only outlet a mature campaign's banked cores have -- Section 12.5 refuses them outright."
+    Assert-True ($s1211 -match '(?i)standing at its current ceiling|stands at its current ceiling') `
+        "Section 12.11 does not require a piece to be at its ceiling before re-coring, so the operation becomes a way to skip Seamwork's ladder rather than to extend it."
+    # The destroy band is what makes this a decision rather than a habit.
+    Assert-True ($s1211 -match '(?i)01.{1,3}05') `
+        "Section 12.11 states no catastrophic band. Fusion's 01-05 stays live at every modifier and a working that can never destroy the piece is a purchase, not a risk."
+    # S stays the top. The Ascension must not be a rank in disguise.
+    Assert-True ($s1211 -match '(?i)no equipment Rank above S exists') `
+        "Section 12.11.1 does not deny an equipment Rank above S. Without that sentence the Ascension reads as the tier the owner refused."
+    Assert-True ($s1211 -match '(?i)Every number stays put|numbers? on an S-Rank piece exactly where|stat budget, weapon power') `
+        "Section 12.11.1 does not state that an Ascension moves no number, which is the entire difference between naming a piece and inflating one."
+    Assert-True ($s1211 -match '(?i)It is not rolled') `
+        "Section 12.11.1 does not forbid rolling an Ascension. Section 11.6 states a named unique is never generated at random, and a d100 route repeals that."
+    Assert-True ($s1211 -match '(?i)re-corable') `
+        "Section 12.11.1 does not extend the Flux Sight ceiling read to say whether a ceiling can be moved -- F-058's second question, and what would have stopped EVT-000813 before the cores were spent."
+}
+
+# Seamwork's own clause must no longer claim to speak for the world. The old
+# wording is deliberately still present as a quoted supersession, so this asserts
+# the live scoping rather than the absence of the retired phrase.
+Assert-True ($profile -match '(?i)authored ceiling binds this skill absolutely') `
+    "Seamwork's ceiling clause is not scoped to the skill. Written as an absolute it speaks for the whole world, which is the half of F-058 that was never a design position anybody recorded."
+Assert-True ($profile -match '(?i)finished business \*to his own hands\*') `
+    "Seamwork does not limit a reached ceiling to his own hands, so the clause still reads as a bound on everyone including the artificer Section 12.11 now authorises."
+
 Assert-True ($s1813 -match '(?i)named as owed') `
     "Section 18.13 does not declare the seven unauthored class lines as owed."
 Assert-True ($s1813 -match '(?i)does not improvise one') `

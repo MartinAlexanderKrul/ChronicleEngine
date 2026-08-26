@@ -1084,7 +1084,30 @@ surfaces:
       # stale `slots`/`last_assessment`/`next_assessment` scalars corrected. The
       # shrink is recorded rather than banked, on this file's own principle that a
       # surface which shrinks should get a smaller allowance, not a windfall.
-      gatefall_pendragon_001:/system gear: 19611
+      # Re-recorded UPWARD 2026-08-26, 19,611 -> 23,001 (+3,390), on an explicit
+      # owner ruling. The growth is campaign play, not an engine or profile
+      # change: Checkpoint 0132 (`EVT-000815`-`EVT-000826`) advanced the campaign
+      # 2026-08-29 -> 2026-09-02, took level 113 -> 114, set anchors 18-23 across
+      # six cities, cleared a B-Rank Gate, and minted new NPCs and objectives --
+      # 857 lines across seven campaign ledgers. This panel reads the character
+      # sheet's gear fields at 14,408 tokens, 63% of the surface, so a session of
+      # that size moves it and nothing in Profile 1.109 or 1.110 does.
+      #
+      # ATTRIBUTED, NOT ASSUMED. Profile 1.110's Section 12.11 is not read by this
+      # panel at all; compressing it moved the number by exactly zero. Sections
+      # 15.1 and 15.3.2, which this panel does read, were compared byte-for-byte
+      # against the prior commit and are identical. A HEAD worktree measured the
+      # same surface at 22,315 with 1.110 absent, which is 237 tokens under the
+      # old ratchet -- so the profile work is not what crossed it.
+      #
+      # This does not pay for the trimming this file has named five times. The
+      # tool still reports 55% of the surface as duplicated event history and 9%
+      # as superseded state, with the trim policy clearing ~14,941 tokens before
+      # touching real residue; the chronicle and changelog hold that content in
+      # full. Compacting the sheet's gear fields is a save-time decision and it
+      # remains unstarted. The raise records where the surface actually is; it is
+      # not an argument that it belongs there.
+      gatefall_pendragon_001:/system gear: 23001
       # Re-recorded UPWARD 2026-08-10, 4,513 -> 5,202 (+689), and this one is a
       # deliberate trade rather than drift. `titles.earned` -- the full
       # catalogue, ten titles each carrying its criterion and proving Event --

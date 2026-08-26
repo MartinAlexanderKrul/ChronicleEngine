@@ -1592,7 +1592,17 @@ The player's objection, raised directly in play: if this is genuinely a wall wit
 
 **The open design question:** should S remain an absolute, no-exception ceiling on equipment/artificer power for every world and every class, or does the profile owe an authored path past it for a Bearer who has already maxed the ordinary ladder — a new tier, a named-artifact-only forging route, a class-specific unlock analogous to Riftwalker's evolution, or some other explicitly gated mechanism? If S is meant to stay a hard wall by design, does Flux Sight's ceiling-read grant owe a stronger integration (a mandatory or strongly-signposted check before an artificer commits material) so a campaign stops burning cores discovering the wall the hard way?
 
-**Status:** Open.
+**Status: Actioned (2026-08-26)** → Gatefall Profile 1.110 (`worlds/gatefall/migrations/1.109_to_1.110.md`), pinned by `tools/test_gatefall_progression_ceiling.ps1`. **Both questions answered, and the second remedy was taken over the first deliberately.**
+
+**The wall was a bound on one skill, written as a bound on the world.** Seamwork's clause read *"a [C-Rank] piece whose ceiling is reached cannot be raised by him or by anyone"* — and *or by anyone* was never a design position anybody recorded. Section 12.8 has always said the opposite half out loud: *"the commissioner supplies the core — the core's Rank sets the ceiling of the piece's Rank."* **A core sets a ceiling. Nothing ever explained why that happens once, at forging, and never again.**
+
+**New Section 12.11 authors re-coring.** An artificer reseats an existing piece around a higher-Rank core and the ceiling moves; ordinary Seamwork then carries the piece up to it. **One core at the target Rank or four at the Rank below** — which is the first outlet the campaign's banked low-Rank cores have ever had, Section 12.5 refusing cores outright. It resolves on the Section 12.10 fusion pattern with a **live 01–05 destroy band**, and Seamwork's own bound is unchanged: he still cannot lift a ceiling with his own hands, because that is the signature's half of the trade (Section 12.8).
+
+**The flag's first remedy — a new tier — was refused.** A rung above S inflates one side of every equation the world is balanced on, against the owner's standing ruling that bigger numbers are not progression. **Section 12.11.1 takes the second remedy instead: the named-artifact route.** At an S ceiling there is no higher Rank, so an **Ascension** gives the piece a *name* — every number stays exactly where it is, and what it gains is one named effect and a recorded provenance, which is what a Section 11.6 named unique *is*. It is **not rolled**, because Section 11.6 forbids generating one at random; it resolves on an owner ruling, and the artificer names and marks the work.
+
+**The flag's second question is answered too.** Section 4.4's ceiling read now returns whether a ceiling is **re-corable and at what Rank a core would have to stand** — which is precisely what would have stopped `EVT-000813` before two S-Rank cores and a Quickknife [S] were spent on a working that had nothing to reach.
+
+**Left open.** `EVT-000813` is **not re-settled** — the cores are spent and stay spent, on Section 9.5's precedent for a rule that governs forward. Whether Priscilla Nakamura or Corwin Ashvale has ever completed a re-core is campaign canon and belongs to play; the `-1` step for an artificer who has not is the ordinary case for everyone on adoption. **`F-047` remains open** on whether the engine owes a general principle here.
 
 ## F-059 — Every content-sizing instrument in Gatefall terminates at S, including the one the far side uses to price things that were never Ranked
 

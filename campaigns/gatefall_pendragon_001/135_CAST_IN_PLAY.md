@@ -124,6 +124,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000254` | Sorcha Bellweather | BGM National containment doctrine official | active | BGM National HQ, Washington DC. | `REL-000105` |
 | `ENT-000255` | Kian Ferris | BGM Dallas field liaison | active | BGM's Dallas field office. | — |
 | `ENT-000256` | Naomi Reyes | BGM Los Angeles field liaison | active | BGM's Los Angeles field office. | — |
+| `ENT-000258` | Margit Lindqvist | European Gate Council official | active | Karlov Guild headquarters, Old Town, Prague — met at the 16:00… | — |
 
 ---
 
@@ -213,13 +214,14 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000254` | Sorcha Bellweather | To see real containment doctrine actually built and implemented, not another crisis response bo… | That a design gets treated as a gesture instead of done properly, or repeats Jiu Valley's failu… | Carries real personal weight from her Jiu Valley rotation — watched people she trained with go… | Precise, honest about limits, doesn't oversell — states the real caveat even when it undercuts… |
 | `ENT-000255` | Kian Ferris | Not established | Not established | Not established | Plain, direct |
 | `ENT-000256` | Naomi Reyes | Not established | Not established | Not established | Casual, low-key |
+| `ENT-000258` | Margit Lindqvist | A real, working cross-border information-sharing mechanism she can actually stand behind to her… | Endorsing something that looks good in a meeting and collapses the first time two national bure… | None surfaced | Measured, asks the practical question under the impressive one — who maintains it, who pays for… |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 101. Protagonist relationships: 26.
-- Characters: 78. Disposition authored in full: 36; partial: 31; none: 11. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 102. Protagonist relationships: 27.
+- Characters: 79. Disposition authored in full: 37; partial: 31; none: 11. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

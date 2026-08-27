@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000257 |
+| Entity | `ENT-` | Persistent Entity | ENT-000258 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000831 |
-| Relationship | `REL-` | Relationship | REL-000105 |
+| Event | `EVT-` | Event | EVT-000852 |
+| Relationship | `REL-` | Relationship | REL-000106 |
 
 ---
 
@@ -893,6 +893,9 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000105 | Relationship | Gatefall: Pendragon: Alexander and Sorcha Bellweather (`ENT-000254`), working-source relationship — containment doctrine, `OBJ-49`/`OBJ-50`/`OBJ-51` |
 | EVT-000827 - EVT-000831 | Event | Gatefall: Pendragon, this span: reconciliation with Owen Callahan at the apartment (the S-Rank-gear disagreement and `OBJ-18` named plainly, neither resolved; `OBJ-12` revealed as succession); the 2026-09-03 06:00 world tick (Tier VI held) and the thirty-ninth daily (streak 26->27); Boston — the second plain Quickknife [S] collected (`OBJ-47` deliverable closed), an Ascension attempt discussed and abandoned, a re-coring attempt on the homebrew Mana-storage cell commissioned (`OBJ-53`); Corwin's Heartwood pulse confirmed shrinking; a commercial flight to Prague and first, unresolved contact with the Czech Gate Administration; promotion-barrier settlement |
 | ENT-000257 | Entity | Gatefall: Pendragon: **Jitka Novotná**, Ranking Corps night-desk clerk, Czech Gate Administration, Prague, `130_NPCS_AND_FACTIONS.md` |
+| EVT-000832 - EVT-000852 | Event | Gatefall: Pendragon, this span: Jitka Novotná routes to Director Beran, a 16:00 meeting arranged at Karlov Guild; the 2026-09-04 tick's guaranteed crucible-floor route-crossing sites in Prague as the Vltavská Break, cleared solo, `OBJ-40` closed (the GB-14 auction clears), Wade Bishop's statutory filing completes (BGM opens a formal case against Ironline), two S-Rank instant-dungeon batches (5+2), first contact with Tereza Blažková (`OBJ-54` opened), the 16:00 Karlov Guild meeting, three world ticks (Escalation Tier VI->VII on schedule), Marguerite's and Renata's threads advance, Sorcha's Jiu Valley snag resolved, Walt Adamik's `OBJ-29` resolved in full, the A-Rank directed-assignment Gate clear; promotion-barrier settlement |
+| ENT-000258 | Entity | Gatefall: Pendragon: **Margit Lindqvist**, European Gate Council Prague liaison, `130_NPCS_AND_FACTIONS.md` |
+| REL-000106 | Relationship | Gatefall: Pendragon: Alexander and Tereza Blažková (`ENT-000114`), working-source relationship — `OBJ-54`, an independent private S-Rank network |
 
 ---
 

@@ -26,8 +26,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000258 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000852 |
-| Relationship | `REL-` | Relationship | REL-000106 |
+| Event | `EVT-` | Event | EVT-000858 |
+| Relationship | `REL-` | Relationship | REL-000107 |
 
 ---
 
@@ -896,6 +896,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000832 - EVT-000852 | Event | Gatefall: Pendragon, this span: Jitka Novotná routes to Director Beran, a 16:00 meeting arranged at Karlov Guild; the 2026-09-04 tick's guaranteed crucible-floor route-crossing sites in Prague as the Vltavská Break, cleared solo, `OBJ-40` closed (the GB-14 auction clears), Wade Bishop's statutory filing completes (BGM opens a formal case against Ironline), two S-Rank instant-dungeon batches (5+2), first contact with Tereza Blažková (`OBJ-54` opened), the 16:00 Karlov Guild meeting, three world ticks (Escalation Tier VI->VII on schedule), Marguerite's and Renata's threads advance, Sorcha's Jiu Valley snag resolved, Walt Adamik's `OBJ-29` resolved in full, the A-Rank directed-assignment Gate clear; promotion-barrier settlement |
 | ENT-000258 | Entity | Gatefall: Pendragon: **Margit Lindqvist**, European Gate Council Prague liaison, `130_NPCS_AND_FACTIONS.md` |
 | REL-000106 | Relationship | Gatefall: Pendragon: Alexander and Tereza Blažková (`ENT-000114`), working-source relationship — `OBJ-54`, an independent private S-Rank network |
+| EVT-000853 - EVT-000858 | Event | Gatefall: Pendragon, this span: Wade Bishop's owed callback resolved (`OBJ-36`/`OBJ-38` sub-thread closed, a new forward-looking commitment opened); Elias Kane texted and a meeting arranged at The Sidecut; three S-Rank instant dungeons run solo (the last three of ten purchased keys); a four-threshold XP cascade (Level 129->133) crossing the level-130 Title Assessment, granting **Before the Confluence** [Absolute]; Elias Kane met in person at The Sidecut — Flux Sight/Keen Sense read, the GB-14 account disclosed, the independent S-Rank network pitched and joined for real, the teleportation/passenger-transport capability disclosed, a comedic Prague-balcony demonstration, an evening of drinking; `ENT-000242` (Elias Kane, world-layer figure) given his first authored disposition and a campaign-tracking entry opened, no new identifier; `REL-000107` minted; promotion-barrier settlement |
+| REL-000107 | Relationship | Gatefall: Pendragon: Alexander and Elias Kane (`ENT-000242`), working-source relationship — `OBJ-54`, a real personal connection formed the same evening he joined the independent S-Rank network |
 
 ---
 

@@ -717,15 +717,17 @@ canonical_state:
 
 **Name / rank / role:** Elias Kane, S-Rank, the second of Chicago's two resident S-Ranks (`200_WORLD_BIBLE.md` Section on regional populations) — unlike Dominic Crane, he carries no guild membership at all. He is a **federal asset**, answering to BGM National in Washington rather than to Region V or to any guild's chain of command, and his public profile is deliberately thin: no press relationship, no marquee clears attributed to him by name, a man the city knows exists without knowing what he does.
 
-**Want:** To stay useful enough to Washington that his arrangement is never reconsidered — a federal asset's leash is also his insulation from every other pressure a Chicago hunter carries (guild politics, sponsorship, public billing), and he has no interest in trading it for visibility.
+**Want:** To actually be used for something, rather than held in institutional reserve — a federal asset's leash was insulation from Chicago's ordinary pressures (guild politics, sponsorship, public billing) for as long as he believed it would eventually be spent on something. He no longer entirely believes that.
 
-**Fear/Flaw:** That a second Chicago S-Rank — Alexander, unaffiliated, publicly carded — changes the calculus that's kept him quiet and useful for years. His flaw is a reflexive institutional caution: he reads any newly visible S-Rank as a variable that could get his own arrangement re-examined, before he's read anything else about them.
+**Fear/Flaw:** Being activated too late for something that costs real people, and Washington deciding afterward the cost was acceptable — the specific loneliness of being someone else's contingency plan. His flaw is a reflexive institutional caution, now visibly cracking: he reads any newly visible S-Rank as a variable that could get his own arrangement re-examined, before he's read anything else about them.
 
-**Secret:** The exact nature of his federal tasking has never been stated to anyone in Chicago's guild ecosystem, including Region V's own Farraday — "answers to Washington before the city" is the entirety of what's public. What that actually means in practice is owner-facing, unauthored beyond that line.
+**Secret:** He has been quietly, mostly idle in Chicago for longer than his file suggests — a maintained asset, not an exercised one, and he'd stopped expecting that to change before Alexander called. The exact nature of his federal tasking has never been stated to anyone in Chicago's guild ecosystem, including Region V's own Farraday — "answers to Washington before the city" is the entirety of what's public.
 
-**Agenda (this month):** Unestablished in play — no scene has reached him yet. Alexander has his name and public profile from research (`campaigns/gatefall_pendragon_001/`, 2026-08-27) but no channel to him.
+**Voice:** Flat, unhurried, doesn't dress up an ugly truth; dry humor surfaces once he's comfortable.
 
-Kane has not appeared in scene. This entry authors his disposition prospectively, per Decision 092, so a future encounter is never played from a blank record.
+**Agenda (this month):** Met Alexander in person for the first time 2026-09-06, at The Sidecut, Chicago (`campaigns/gatefall_pendragon_001/`) — joined his independent, private S-Rank network (`OBJ-54`) as a real committed member, not merely a contact, and volunteered to personally vet two further domestic S-Rank contacts plus follow up on a West Coast lead. Full account: `campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md`.
+
+This entry's disposition was authored prospectively, per Decision 092, so Kane's first scene was never played from a blank record; it is now updated against what that scene actually established.
 
 ```yaml
 id: ENT-000242
@@ -733,21 +735,27 @@ canonical_record: REC-000071
 schema_version: "0.1.7"
 status: active
 provenance:
-  source: ruling
-  game_date: "2026-08-27"
-  real_date: "2026-08-25T00:00:00Z"
+  source: EVT-000857
+  game_date: "2026-09-06T19:00:00-05:00"
+  real_date: "2026-08-27"
 type: Character
 scope: world
 lifecycle: active
+moved_by_events: "`EVT-000854` `EVT-000857`"
 aliases:
   - name: "Elias Kane"
     quality: current
 canonical_state:
-  rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — stated in his entry, 'the other Chicago S-Rank.' Resolved by that Rank under Section 13.1."
   role: "BGM federal asset, Chicago — no guild membership, reports to Washington rather than Region V or any guild chain (`200_WORLD_BIBLE.md`)."
-  capabilities: "S-Rank combat; specific signature unestablished — no scene has reached him."
-  personality: "Deliberately low-profile; institutionally cautious about any change to Chicago's S-Rank visibility."
-  knowledge: "No channel to Alexander directly. Public awareness only, the same as anyone else in Chicago's hunter community — a second resident S-Rank now exists and is publicly carded."
+  location: "Chicago; no fixed established address. Met Alexander at The Sidecut, 2211 W Cermak Road, 2026-09-06."
+  pool_variance: "**+5%** — authored in play under Profile Section 6.1.2's ±10% band, read directly by Flux Sight (`campaigns/gatefall_pendragon_001/`, `EVT-000857`)."
+  pools: "**Maximum Health 4,200, maximum Mana 2,100** — Section 6.1 table (4,000/2,000) × 1.05. Read full, uninjured, at the meeting's start (Health 4,200/4,200, Mana 2,100/2,100)."
+  capabilities: "S-Rank combat; signature ability **Standfast** (below)."
+  signature_ability: "Standfast — a chosen-radius zone around him that locally stabilizes and resists change: a collapsing structure stays up, spreading fire stops spreading, people caught inside a break get a window of protection. Purely defensive/containment; no offensive application (Profile Section 13.6)."
+  appearance: "Mid-thirties, solid build, short practical haircut, a few days' stubble. Dresses like he's always slightly on-call — a plain dark jacket, nothing uniform-like but nothing fully off-duty either. Tired eyes worn smooth from years of waiting on a phone that rarely rings; something younger shows through when he's genuinely relaxed."
+  personality: "Brief, unceremonious, no small talk on the surface — but genuinely warm and unguarded once actually engaged rather than managed, not merely low-profile by habit."
+  knowledge: "Knows Alexander is a confirmed unaffiliated S-Rank. Knows the GB-14 incident and Alexander's own account of it — ten hunters dead, Alexander arrived carrying two survivors — told directly, 2026-09-06. Knows Alexander's teleportation capability including passenger transport, told directly the same evening; reacted with real professional weight about the value and danger of that information, advised discretion, did not push for mechanism detail. No channel to anything about the far side, the Ninth Quiet, the Rockwell bay, Owen, or any of Alexander's other private threads — nothing beyond what this one evening's conversation actually covered."
 ```
 
 ---

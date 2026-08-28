@@ -19,7 +19,7 @@ initialization_state: resumable
 # failures. Characters recorded after it carry want, fear, secret, voice and an agenda.
 # Removing this line does not disable the check; it widens it to the whole cast.
 disposition_baseline: ENT-000210
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0136
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0137
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 selection_caveat: "Active campaign; resumable from its latest checkpoint."

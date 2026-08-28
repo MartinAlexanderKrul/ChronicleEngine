@@ -125,6 +125,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000255` | Kian Ferris | BGM Dallas field liaison | active | BGM's Dallas field office. | — |
 | `ENT-000256` | Naomi Reyes | BGM Los Angeles field liaison | active | BGM's Los Angeles field office. | — |
 | `ENT-000258` | Margit Lindqvist | European Gate Council official | active | Karlov Guild headquarters, Old Town, Prague — met at the 16:00… | — |
+| `ENT-000259` | Ilith | Standing (far side) — position Out | active | The Landing | `REL-000108` |
 
 ---
 
@@ -215,13 +216,14 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000255` | Kian Ferris | Not established | Not established | Not established | Plain, direct |
 | `ENT-000256` | Naomi Reyes | Not established | Not established | Not established | Casual, low-key |
 | `ENT-000258` | Margit Lindqvist | A real, working cross-border information-sharing mechanism she can actually stand behind to her… | Endorsing something that looks good in a meeting and collapses the first time two national bure… | None surfaced | Measured, asks the practical question under the impressive one — who maintains it, who pays for… |
+| `ENT-000259` | Ilith | Through. Anywhere | That a door will open and close before she reaches it | Her world did not fail the exam — it refused it, and she was the one who advised the refusal | States a truth so plainly it reads as confession, then reveals nothing further; a rehearsed ges… |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 102. Protagonist relationships: 28.
-- Characters: 79. Disposition authored in full: 37; partial: 31; none: 11. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 103. Protagonist relationships: 29.
+- Characters: 80. Disposition authored in full: 38; partial: 31; none: 11. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

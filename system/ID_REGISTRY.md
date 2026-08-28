@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000258 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000858 |
+| Event | `EVT-` | Event | EVT-000868 |
 | Relationship | `REL-` | Relationship | REL-000107 |
 
 ---
@@ -898,6 +898,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000106 | Relationship | Gatefall: Pendragon: Alexander and Tereza Blažková (`ENT-000114`), working-source relationship — `OBJ-54`, an independent private S-Rank network |
 | EVT-000853 - EVT-000858 | Event | Gatefall: Pendragon, this span: Wade Bishop's owed callback resolved (`OBJ-36`/`OBJ-38` sub-thread closed, a new forward-looking commitment opened); Elias Kane texted and a meeting arranged at The Sidecut; three S-Rank instant dungeons run solo (the last three of ten purchased keys); a four-threshold XP cascade (Level 129->133) crossing the level-130 Title Assessment, granting **Before the Confluence** [Absolute]; Elias Kane met in person at The Sidecut — Flux Sight/Keen Sense read, the GB-14 account disclosed, the independent S-Rank network pitched and joined for real, the teleportation/passenger-transport capability disclosed, a comedic Prague-balcony demonstration, an evening of drinking; `ENT-000242` (Elias Kane, world-layer figure) given his first authored disposition and a campaign-tracking entry opened, no new identifier; `REL-000107` minted; promotion-barrier settlement |
 | REL-000107 | Relationship | Gatefall: Pendragon: Alexander and Elias Kane (`ENT-000242`), working-source relationship — `OBJ-54`, a real personal connection formed the same evening he joined the independent S-Rank network |
+| EVT-000859 - EVT-000868 | Event | Gatefall: Pendragon, this span: the 2026-09-07 06:00 world tick (Tier VII held, credit 0; Chicago gate 3 on-route, gates 2/6/7/8 within reach, gate 7 directed-assignment NAMED via Farraday, an aftermath world event on-route, the wider-map break-already-loose escalation NAMED under emergency mobilization in Indianapolis); two calls at dawn (Farraday's ordinary A-Rank ask accepted; Renata Okonkwo-Vance's National draft call, the fly-list gap challenged, a new standing-jet request opened); travel to Midway and the flight; the Indianapolis break cleared solo (Pre-empt-opened Rupture kill on an A-Rank Hive boss, the swarm cleared, Urgent quest "Contain the Indianapolis Break" offered/accepted/completed, two further pockets cleared, the wounded operative Mended, Level 133->134); filing and settlement with Renata (loot sold, both `OBJ-43` severity bonuses resolved, a new $500,000 flat fee filed); teleport home and the argument with Owen (the shared lakefront apartment's rented-together history corrected against stale early-campaign record; `ENT-000087` description repaired); the run and the forty-third daily quest completed (streak 30->31); Ability Points claimed and allocated (+10 Strength/+40 Vitality/+41 Intelligence), three Daily Random Boxes opened; the Status Recovery stockpile audit-corrected to 36 and left banked; Sorcha's Jiu Valley date (2026-09-10 09:00, `OBJ-50`) and Tereza's four-way-meeting commitment (`OBJ-54`) confirmed; promotion-barrier settlement |
 
 ---
 

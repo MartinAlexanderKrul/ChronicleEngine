@@ -272,8 +272,8 @@ if (Test-Path $farSidePath) {
 $s71 = Get-Section $profile '(?m)^## 7\.1 Acquisition\b.*?(?=^## 7\.2 )'
 Assert-True ($s71.Length -gt 0) "Section 7.1 could not be isolated; every taught-route leg below would pass vacuously."
 if ($s71.Length -gt 0) {
-    Assert-True ($s71 -match '(?i)one of five routes, and only these') `
-        "Section 7.1 does not declare five acquisition routes. The closed-list wording is what makes a new route an authoring decision rather than a Runtime improvisation."
+    Assert-True ($s71 -match '(?i)one of six routes, and only these') `
+        "Section 7.1 does not declare six acquisition routes. The closed-list wording is what makes a new route an authoring decision rather than a Runtime improvisation. Profile 1.111 added Succession as route 6; through 1.110 this list said five while Section 7.6 authored a route it did not contain."
     Assert-True ($s71 -match '(?i)only route requiring a second person') `
         "Section 7.1 does not distinguish the taught route by needing another person, which is the whole of what separates it from a rune."
     Assert-True ($s71 -match '(?i)Only a holder of a System may teach') `
@@ -314,14 +314,14 @@ if ($s131.Length -gt 0) {
 
 # The two named figures must be sheets, not Ranks, and must not be inflated.
 if (Test-Path $farSidePath) {
-    Assert-True ($farSide -match '(?i)maximum_health: 7600') `
-        "Sevrin carries no derived Health pool. Priced as Combat Tier equivalent S she is a 4,000-point body the Bearer removes in one standard resolution, which is F-059's unactioned half."
+    # Derived, never pinned. The literal 7600 stood here until Profile 1.111
+    # rescaled every sheet, at which point a correct edit would have turned this
+    # red -- the F-013 shape. Assert the FORMULA instead: Section 6.1's Bearer
+    # pool is 4 x Vitality, and that holds whatever the Stats become.
     Assert-True ($farSide -match '(?i)she is smaller') `
         "The far-side file does not state that its strongest teacher is smaller than the Bearer. If she reads as a bigger monster the file has taken the inflation route the owner rejected."
     Assert-True ($farSide -match '(?i)bar an anchored step') `
         "Sevrin cannot deny the anchored step. Her danger is denial rather than damage, and without it a lower-Health entity is simply weaker."
-    Assert-True ($farSide -match '(?i)maximum_health: 4960') `
-        "Ilith carries no derived Health pool, so the file states one figure as a sheet and leaves the other on the capped scale."
     # Scoped to the named figures. The strata above them legitimately still read
     # on the Combat Tier scale -- a stratum is content, not a person, and 'S and
     # above' there is a description of what wanders through it.
@@ -342,11 +342,68 @@ if (Test-Path $farSidePath) {
     $sheets = ([regex]::Matches($figures, '(?i)maximum_health:\s*\d+')).Count
     Assert-True ($sheets -ge 4) `
         "Fewer than four named far-side figures carry a derived Health pool ($sheets found). A figure without a sheet falls back to a Rank the file says nothing here has."
-    # Nobody here is a bigger monster. The Bearer's own pool is the bar.
-    $tooBig = [regex]::Matches($figures, '(?i)maximum_health:\s*(\d+)') |
-        Where-Object { [int]$_.Groups[1].Value -gt 10620 }
-    Assert-True ($tooBig.Count -eq 0) `
-        "A named far-side figure carries more Health than the Bearer. The owner rejected inflation as a fix ('it is just fighting'); these entities are dangerous through denial, speed and one-connection lethality, never through a larger pool."
+
+    # Every sheet's pool must actually derive from its own Vitality on Section
+    # 6.1's Bearer formula. A hand-typed pool that agrees with nothing is the
+    # defect a pinned literal could never catch.
+    $blocks = [regex]::Split($figures, '(?m)^### ') | Where-Object { $_ -match 'maximum_health' }
+    foreach ($b in $blocks) {
+        $who = ($b -split "`n")[0].Trim()
+        $vit = [regex]::Match($b, '(?i)vitality:\s*(\d+)')
+        $hp  = [regex]::Match($b, '(?i)maximum_health:\s*(\d+)')
+        $int = [regex]::Match($b, '(?i)intelligence:\s*(\d+)')
+        $mp  = [regex]::Match($b, '(?i)maximum_mana:\s*(\d+)')
+        if ($vit.Success -and $hp.Success) {
+            $expected = 4 * [int]$vit.Groups[1].Value
+            Assert-True ([int]$hp.Groups[1].Value -eq $expected) `
+                "$who declares maximum_health $($hp.Groups[1].Value) against 4 x Vitality = $expected. Section 13.1.1 says a bearer resolves on the Section 6.1 Bearer formula whoever they are."
+        }
+        if ($int.Success -and $mp.Success) {
+            $expected = 2 * [int]$int.Groups[1].Value
+            Assert-True ([int]$mp.Groups[1].Value -eq $expected) `
+                "$who declares maximum_mana $($mp.Groups[1].Value) against 2 x Intelligence = $expected."
+        }
+    }
+
+    # Nobody here is a bigger monster. The Bearer's own pool is the bar -- read
+    # from the live sheet, never pinned. The literal that used to sit here read
+    # 10620 while the Bearer stood at 10948, so the bound it enforced was one
+    # the campaign had already passed.
+    $sheetPath = Join-Path $repoRoot 'campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md'
+    $bearerPool = 0
+    if (Test-Path $sheetPath) {
+        $sheetText = Get-Content -Raw $sheetPath
+        $bv = [regex]::Match($sheetText, '(?m)^\s*vitality:\s*"(\d+) \(base')
+        if ($bv.Success) { $bearerPool = 4 * [int]$bv.Groups[1].Value }
+    }
+    Assert-True ($bearerPool -gt 0) `
+        "The Bearer's own pool could not be read from the live character sheet, so the inflation bound below would compare against nothing."
+    if ($bearerPool -gt 0) {
+        $tooBig = [regex]::Matches($figures, '(?i)maximum_health:\s*(\d+)') |
+            Where-Object { [int]$_.Groups[1].Value -gt $bearerPool }
+        Assert-True ($tooBig.Count -eq 0) `
+            "A named far-side figure carries more Health than the Bearer's $bearerPool. The owner rejected inflation as a fix ('it is just fighting'); these entities are dangerous through denial, speed and one-connection lethality, never through a larger pool."
+    }
+
+    # --- Profile 1.111: every champion is a full technique set ----------------
+    # A bearer with three named tricks is a Rank in disguise, and Section 7.6.2
+    # enters a taken skill at the Rank authored on that champion -- so an
+    # unauthored set is both a characterisation gap and a Succession stop.
+    Assert-True ($farSide -match '(?i)between 85% and 90% of the Bearer') `
+        "The far-side file states no derivation for its sheets, so five figures carry five hand-typed Stat blocks with nothing saying where any of them came from."
+    Assert-True ($farSide -match '(?i)fixed permanently from that moment|first contact') `
+        "The far-side file does not fix a champion's sheet at first contact, so every figure silently rescales whenever the protagonist levels."
+    Assert-True ($farSide -match '(?i)budget is a sum, never a per-Stat scale') `
+        "The far-side file does not state that the 85-90% is a sum rather than a per-Stat scale, which is the only thing keeping the five figures from being one figure at five sizes."
+    foreach ($who in @('Sevrin', 'Ilith', 'Aumry', 'Orenne', 'Tolo')) {
+        $b = [regex]::Match($figures, "(?s)### $who.*?(?=(?m)^### |\z)")
+        Assert-True $b.Success "Named figure '$who' could not be isolated; its technique-set leg would pass vacuously."
+        if ($b.Success) {
+            $rows = ([regex]::Matches($b.Value, '(?m)^\| \*\*[^|]+\| [ESABCD] \|')).Count
+            Assert-True ($rows -ge 19) `
+                "$who carries $rows authored techniques. Profile 1.111 sizes a champion's set against the Bearer's own; below about twenty this figure is a sheet with nothing on it, and Section 7.6.2 has nothing to transcribe at the body."
+        }
+    }
 }
 
 # --- Section 12.11: the ceiling was a bound on one skill, not on the world ----

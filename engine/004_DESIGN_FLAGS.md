@@ -1707,3 +1707,40 @@ While preparing checkpoint 0136, the Runtime attempted to mint a missing Object 
 **The open design question:** does identifier allocation need a declared boundary between world-scope and campaign-scope ranges — e.g., a world reserves a stated block of its own Entity numbers at creation, visible to every campaign built on it, so a campaign author (or the Runtime narrating for one) can tell at a glance that a low ENT number might already be spoken for at world scope before citing it as campaign-local? Or is the fix procedural — a check the campaign-creation or session-startup flow should run once, comparing every identifier a campaign's own files reference against the world's allocated ranges, so a collision like this surfaces in the first session rather than the thirtieth? Worth checking whether `tools/check_name_collision.ps1` (built for authored *names*) has a natural sibling for authored *identifiers*, or whether this is squarely `validate_repository.ps1`'s territory and simply needs to run earlier/more often than at save time.
 
 **Status:** Open.
+
+## F-065 — Full absorption on a kill makes the teacher worth more dead than alive, and route 5 was authored two versions earlier to make the opposite true
+
+**Raised:** 2026-08-29 · **Source:** authoring Gatefall Profile 1.111, Section 7.6 — surfaced by the change itself rather than by play
+
+Profile **1.109** authored the fifth acquisition route, instruction passed directly between System-bearers, and built it around a sentence this profile states twice: mastery is never bought, and *"gold buys width, never hands."* A taught technique costs **three qualifying scenes**, enters at the Section 7.5 ceiling, and enters at **Novice**. The route exists because the failed champions of `270_THE_FAR_SIDE.md` Section 4 are the only beings who can use it, and Section 4.1's **Reach the next one** position — Aumry, *who taught nine* — was given a face specifically so the route had somebody to run through.
+
+Profile **1.111** rules that killing a System-touched human absorbs what they held **fully**, and against a Section 13.1.1 bearer that includes **the victim's own mastery level**. The two rules are now in the same profile, reaching the same closed population, at wildly different prices:
+
+| Route | Cost | Arrives at | Available against |
+|---|---|---|---|
+| **5 — Taught** | three qualifying scenes, per technique, plus the relationship | Novice | a willing champion only |
+| **6 — Succession** | one kill | **the victim's own mastery**, every technique at once | any champion, willing or not |
+
+**Route 5 is strictly dominated wherever both are available**, and the figures were authored on the assumption that it was not. `270_THE_FAR_SIDE.md` states that every champion is **smaller than the Bearer and none carries an equipment line**, and that Ilith *"is worth more as a teacher than as a fight"* — a sentence that was arithmetically true when a corpse yielded one technique at Novice and is arithmetically false now. Aumry is the clearest case: he cannot meaningfully hurt the Bearer, he is *"the only figure here who is safe to be alone with,"* and he holds the transmission method the whole route depends on. **The change makes him the most efficient kill in the file.**
+
+**Why this is a flag rather than a repair.** Three readings are defensible and they lead to different worlds.
+
+1. **It is working as intended.** A protagonist who can take a dead man's mastery *should* find murder efficient, and the correct answer is that Sections 19 and 20.4 price it — but those sections price **exposure on Earth**, and Section 18.13.1 already establishes that the far side pays him nothing and nobody there is carded, witnessed, or investigable. **The far side has no exposure surface at all**, which means route 6 is currently unpriced exactly where it is strongest. That is the sharpest half of this flag.
+2. **Route 5 needs something route 6 cannot take.** The obvious candidate already exists in the profile: a taught technique is `transmissible` and a taken one is not. That is a real asymmetry and it may simply need to be worth more than it currently is.
+3. **Rung two's mastery grant is the thing to narrow.** Arriving at Adept rather than at the victim's level would preserve the ordering without retracting the ruling, at the cost of no longer being "fully."
+
+**What was done, and what was not.** 1.111 authors the rule as ruled and **states the cost in three places rather than hiding it**: Section 7.6.2 names it, `worlds/gatefall/migrations/1.110_to_1.111.md` records it under *What this costs*, and Ilith's superseded line in `270_THE_FAR_SIDE.md` is annotated in place rather than deleted, because it remains true of her even where it is false of the numbers. **No figure's sheet, position, or agenda was changed**, and route 5 was not narrowed, retracted, or repriced. A Runtime plays the figures as authored until this is ruled.
+
+**The open design question:** should the far side carry a price for a killed champion at all — a Section 4.1 position that hardens, a Notice consequence under Section 4.3, or something the Standing do collectively when a candidate starts harvesting them — given that Section 19's whole apparatus is Earth-side and reaches none of it? And is the answer to this flag a price on route 6, a raise on route 5, or an acceptance that the Bearer is now the most dangerous thing in a file written about people who cannot stop him?
+
+**Status:** **Actioned (2026-08-29) on both halves** → Gatefall Profile **1.112** (`worlds/gatefall/migrations/1.111_to_1.112.md`), pinned by `tools/test_gatefall_succession_contract.ps1`.
+
+**The owner took remedies 1 and 2 together and refused remedy 3.** Narrowing rung two's mastery grant to Adept would have repaired a pricing gap by retracting a ruling made deliberately one version earlier, and **nothing in 1.111 is walked back** — full absorption, both rungs, the victim's own mastery, the Stat Passive floor, the class ability without the class, the ceiling clamping with the excess lost.
+
+**The far side is priced, and the price is not law.** `270_THE_FAR_SIDE.md` Section 4.4: notice moves **+12**, two Section 4.3 thresholds at once; the bearer population is **closed and finite** and has gone tens of thousands of years without a death; **each of the four positions hardens on an authored line**, tabled rather than improvised, with **Reach the next one closing outright** because Aumry's authored fear is that teaching marks a candidate and a candidate who kills teachers is that fear with evidence.
+
+**The price is quantified in the currency 1.111 devalued.** The first killed champion **buys twenty techniques and forecloses eighty**, because no remaining champion teaches a candidate who has killed one. Nothing else is charged: no authority pursues him, nothing is confiscated, a killed champion still drops nothing under Section 18.13.1, and **a Runtime never assembles the Standing into a response** — Section 4.1's positions disagree about everything, and both of those are gated.
+
+**Route 5 is raised in the same edge**, because a slower route needs something the fast one structurally cannot have and a taken technique is `transmissible: false` permanently. **Teaching credits the teacher** one qualifying scene toward his own mastery, once per recipient — not mastery bought or taught, but Section 7.1's own *structured practice with real feedback* test satisfied by the hardest version of it. And **only a `transmissible` technique may be a component of a Section 7.1 test-3 combination candidate**: a skill he was shown can be taken apart, an inscription cannot. **Route 5 becomes the only road to a technique that does not yet exist**, which is a thing route 6 cannot reach at any body count.
+
+**Left open.** Whether the four hardened positions are correctly calibrated is a play question and cannot be settled from the page — none of them has fired. The `far_side_notice` counter itself is still uninitialised in campaign canon, which Section 4.3 already says belongs to a play session.

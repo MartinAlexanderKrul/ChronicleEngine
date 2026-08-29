@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000259 |
+| Entity | `ENT-` | Persistent Entity | ENT-000263 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000872 |
-| Relationship | `REL-` | Relationship | REL-000108 |
+| Event | `EVT-` | Event | EVT-000884 |
+| Relationship | `REL-` | Relationship | REL-000112 |
 
 ---
 
@@ -902,6 +902,15 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000869 - EVT-000872 | Event | Gatefall: Pendragon, this span: Corwin Ashvale's early re-coring diagnostic (`OBJ-53`) — a travelling rift-step to Boston, a combined Keen Sense/Exploit Pattern/physics-background read confirming the cell's failure mode and the Heartwood's pulse as one converging phenomenon (`OBJ-52`), a new Standing Pattern established, a 26th anchor set at Corwin's workshop; an anchored step to the Rockwell bay, phone left; the far door reopened at the corrected live price (2,500 Mana, Section 18.13.1 — the character sheet's stale 4,000 note repaired), `far_side_notice` initialised and its threshold crossed on arrival, first contact fired — **Ilith** (`ENT-000259`) encountered on the Landing; an extended, read-heavy negotiation (one strong success, one clean failure, one critical failure yielding an unverified claim, one failure catching an oversold claim) closing with an unresolved instruction-for-a-door trade offer, `OBJ-55` opened; `REL-000108` minted; scene left open at `/save`; promotion-barrier settlement |
 | ENT-000259 | Entity | Gatefall: Pendragon: **Ilith of no second name**, a Standing of the far side (`worlds/gatefall/270_THE_FAR_SIDE.md` Section 4.2, position `Out`), first campaign entity block minted for a figure the world file authors but never mints an identifier for itself, `130_NPCS_AND_FACTIONS.md` |
 | REL-000108 | Relationship | Gatefall: Pendragon: Alexander and Ilith (`ENT-000259`), adversarial-negotiation relationship — `OBJ-55`, first contact and an unresolved instruction-for-a-door trade offer |
+| EVT-000873 - EVT-000884 | Event | Gatefall: Pendragon, this span: migration to Profile 1.112 (Section 7.6 Succession now live law); the Standing gathering — Ilith's Taught-route practice begun, Aumry/Orenne/Tolo met at the Long Shelf, Tolo's robbed library returned in full, the whole group traveling to Sevrin over her own objection to Ilith, a group honesty read (roll 53->93), deep questions on each world's fall and the far side's own nature, Tolo's book request answered, four other questions deliberately deferred; far-side notice 8->14, second threshold satisfied by the meeting itself; return to Earth, a Status Recovery claimed to afford closing the door; two ten-dungeon S-Rank training batches (Level 134->162, three null Title Assessments, 140 points allocated +70 Int/+70 Vit, two crystal sell-downs); promotion-barrier settlement |
+| ENT-000260 | Entity | Gatefall: Pendragon: **Aumry, who taught nine**, a Standing of the far side (`worlds/gatefall/270_THE_FAR_SIDE.md` Section 4.2, position `Reach the next one`), `130_NPCS_AND_FACTIONS.md` |
+| REL-000109 | Relationship | Gatefall: Pendragon: Alexander and Aumry (`ENT-000260`), mentor-offered relationship — unconditional instruction offer |
+| ENT-000261 | Entity | Gatefall: Pendragon: **Orenne, who keeps the count**, a Standing of the far side (Section 4.2, position `Let it finish`), `130_NPCS_AND_FACTIONS.md` |
+| REL-000110 | Relationship | Gatefall: Pendragon: Alexander and Orenne (`ENT-000261`), adversarial-negotiation relationship — wants Earth to fail, refuses to teach |
+| ENT-000262 | Entity | Gatefall: Pendragon: **Tolo, who reads what is left**, a Standing of the far side (Section 4.2, no position), `130_NPCS_AND_FACTIONS.md` |
+| REL-000111 | Relationship | Gatefall: Pendragon: Alexander and Tolo (`ENT-000262`), reconciled-harm relationship — the robbed library returned in full |
+| ENT-000263 | Entity | Gatefall: Pendragon: **Sevrin, who held the last bridge**, a Standing of the far side (Section 4.2, position `Stop it`), `130_NPCS_AND_FACTIONS.md` |
+| REL-000112 | Relationship | Gatefall: Pendragon: Alexander and Sevrin (`ENT-000263`), adversarial-negotiation relationship — a bounded instruction offer, a deferred question |
 
 ---
 

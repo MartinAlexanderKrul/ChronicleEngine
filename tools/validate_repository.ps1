@@ -1335,15 +1335,15 @@ foreach ($file in $canonicalFiles) {
                     }
                 }
                 foreach ($equipmentLine in ($equipmentSection -split "\r?\n")) {
-                    $weapon = [regex]::Match($equipmentLine, '(?i)weapon power[ \t]+(?<power>\d+).*?effective chassis[^0-9]*(?<chassis>\d+(?:\.\d+)?).*?DMG[ \t]+(?<damage>\d+)[ \t]+standard before reduction.*?at effective Strength[ \t]+(?<stat>\d+)')
+                    $weapon = [regex]::Match($equipmentLine, '(?i)weapon power[ \t]+(?<power>\d+).*?(?:effective[ \t]+)?chassis[^0-9]*(?<chassis>\d+(?:\.\d+)?).*?DMG[ \t]*[^0-9]{0,4}(?<damage>[\d,]+)(?:[ \t]+standard before reduction)?.*?at[ \t]+eff(?:ective|\.)[ \t]+Strength[ \t]+(?<stat>[\d,]+)')
                     if (-not $weapon.Success -or $null -eq $effectiveStrength) { continue }
-                    $shownStrength = [int]$weapon.Groups['stat'].Value
+                    $shownStrength = [int]($weapon.Groups['stat'].Value -replace ',', '')
                     if ($shownStrength -ne $effectiveStrength) {
                         Add-Failure "$relativePath`:$line equipped weapon preview uses effective Strength $shownStrength but live effective Strength is $effectiveStrength (Gatefall Profile Sections 6.2 and 15.1)."
                     }
                     $rawDamage = ($effectiveStrength + [int]$weapon.Groups['power'].Value) * [double]$weapon.Groups['chassis'].Value
                     $expectedDamage = [int][math]::Round($rawDamage, 0, [System.MidpointRounding]::AwayFromZero)
-                    $shownDamage = [int]$weapon.Groups['damage'].Value
+                    $shownDamage = [int]($weapon.Groups['damage'].Value -replace ',', '')
                     if ($shownDamage -ne $expectedDamage) {
                         Add-Failure "$relativePath`:$line equipped weapon renders DMG $shownDamage but Section 6.2 derives $expectedDamage from effective Strength $effectiveStrength, weapon power $($weapon.Groups['power'].Value), and chassis $($weapon.Groups['chassis'].Value)."
                     }

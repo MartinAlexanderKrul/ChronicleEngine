@@ -123,7 +123,7 @@ function Remove-CanonicalStateDisposition {
         $block = $m.Groups[1].Value
         foreach ($field in @('want','fear','secret','voice','agenda','beliefs','disposition_class')) {
             # A field line plus any folded continuation lines beneath it.
-            $block = [regex]::Replace($block, '(?ms)^[ 	]{2}' + $field + ':.*?(?=^[ 	]{2}[A-Za-z_]+:|^[A-Za-z_]+:)', '')
+            $block = [regex]::Replace($block, '(?ms)^[ 	]{2}' + $field + ':.*?(?=^[ 	]{2}[A-Za-z_]+:|^[A-Za-z_]+:|\z)', '')
         }
         return $block
     }, 1)

@@ -60,6 +60,15 @@ read_cap:
       how: "objective id (`OBJ-`) via the object fence"
     - file: campaigns/gatefall_pendragon_001/170_CHANGELOG.md
       how: "dated entry, newest first; a reader wants the head, never the tail"
+    # Both crossed the cap on Checkpoint 0137's play, and both were already being
+    # read by selector before they crossed it -- `measure_runtime_context.ps1`
+    # reads `120_INVENTORY_AND_OWNERSHIP.md#Current Funds` as a named surface
+    # today. Declaring the path records how they are already read; it does not
+    # licence a whole-file read that nothing was doing.
+    - file: campaigns/gatefall_pendragon_001/120_INVENTORY_AND_OWNERSHIP.md
+      how: "object id (ENT-, OBJ-) via the object fence, or a named section heading such as Current Funds"
+    - file: campaigns/gatefall_pendragon_001/110_WORLD_LEDGER.md
+      how: "entity id (ENT-, REL-) via the object fence, or a named section heading such as the Section 9.10 board"
     - file: engine/001_ENGINE_DECISIONS.md
       how: "`## Decision NNN` heading; never read whole"
     - file: engine/030_ENGINE_CHANGELOG.md

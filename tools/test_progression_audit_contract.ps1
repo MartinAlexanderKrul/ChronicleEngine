@@ -222,9 +222,9 @@ try {
         "A Health-only recovery mode was accepted for Mana:`n$($badRecoveryMode.Output)"
     Replace-Once $character $manaInvalid $manaOriginal
 
-    $weaponPreview = [regex]::Match((Get-Text $character), '(?<prefix>weapon power (?<power>\d+).*?effective chassis[^0-9]*(?<chassis>\d+(?:\.\d+)?).*?DMG )(?<damage>\d+)(?<suffix> standard before reduction.*?at effective Strength (?<stat>\d+))')
+    $weaponPreview = [regex]::Match((Get-Text $character), '(?<prefix>weapon power (?<power>\d+).*?(?:effective[ \t]+)?chassis[^0-9]*(?<chassis>\d+(?:\.\d+)?).*?DMG[ \t]*[^0-9]{0,4})(?<damage>[\d,]+)(?<suffix>(?:[ \t]+standard before reduction)?.*?at[ \t]+eff(?:ective|\.)[ \t]+Strength[ \t]+(?<stat>[\d,]+))')
     Assert-True $weaponPreview.Success "No equipped weapon preview found; fixture precondition drifted."
-    $wrongDamage = [int]$weaponPreview.Groups['damage'].Value + 1
+    $wrongDamage = [int]($weaponPreview.Groups['damage'].Value -replace ',', '') + 1
     Replace-Once $character $weaponPreview.Value ($weaponPreview.Groups['prefix'].Value + $wrongDamage + $weaponPreview.Groups['suffix'].Value)
     $badDamage = Invoke-Validation $tempRoot
     Assert-True ($badDamage.ExitCode -ne 0 -and $badDamage.Output -like "*equipped weapon renders DMG $wrongDamage but Section 6.2 derives*") `

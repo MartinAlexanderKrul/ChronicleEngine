@@ -442,10 +442,17 @@ $campaignRecords = ([regex]::Matches($worldLedger, '(?m)^subtype: concealed-disc
 # only GB-04 remains `posted`. Counting rows therefore reported 4 against a
 # correct telemetry value of 1 and failed on a board that is right.
 #
-# A settled row is identified by its own settlement marker rather than by the
-# presentational bolding of its deadline, which is a rendering convention and
-# not a contract.
-$boardRows = ([regex]::Matches($worldLedger, '(?m)^\| `GB-\d+` \|(?![^\r\n]*settled `EVT-)')).Count
+# A live row is identified by the one status Section 9.10 calls live: `posted`.
+#
+# This counted "rows carrying no `settled EVT-` marker" until 2026-08-29, on
+# the belief that every retired row carries one. Only `broken` and `cleared`
+# rows ever have -- all six of them -- because a `staffed` posting clears
+# off-screen and its retirement is recorded in the ledger's own prose
+# paragraph, never on the row. Fifteen retired `staffed` rows were therefore
+# counted as live and the suite reported 23 against a board holding a
+# handful, which named nothing a reader could act on. Section 9.10's own
+# status vocabulary is the property; the marker was a convention.
+$boardRows = ([regex]::Matches($worldLedger, '(?m)^\| `GB-\d+` \|[^\r\n]*\| `posted` \|')).Count
 
 Assert-True ($currentState -match '(?m)^\s+concealed_records_available:\s*(\d+)') "trigger_telemetry.concealed_records_available is unreadable."
 $recordedConcealed = [int]$Matches[1]

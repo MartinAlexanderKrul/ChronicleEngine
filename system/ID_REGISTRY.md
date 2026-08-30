@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000263 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000884 |
+| Event | `EVT-` | Event | EVT-000891 |
 | Relationship | `REL-` | Relationship | REL-000112 |
 
 ---
@@ -911,6 +911,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000111 | Relationship | Gatefall: Pendragon: Alexander and Tolo (`ENT-000262`), reconciled-harm relationship — the robbed library returned in full |
 | ENT-000263 | Entity | Gatefall: Pendragon: **Sevrin, who held the last bridge**, a Standing of the far side (Section 4.2, position `Stop it`), `130_NPCS_AND_FACTIONS.md` |
 | REL-000112 | Relationship | Gatefall: Pendragon: Alexander and Sevrin (`ENT-000263`), adversarial-negotiation relationship — a bounded instruction offer, a deferred question |
+| EVT-000885 - EVT-000891 | Event | Gatefall: Pendragon, this span: a library bought for Tolo and the far side's truth told to Owen short of the System's name; the 2026-09-08 06:00 world tick (`OBJ-56` opened); the Gate-7 A-Rank directed assignment cleared solo (a fabricated commander/strike-team narration retracted against established precedent), Level 162->163, the boss-drop table rolled retroactively, loot filed and sold, all pending payouts settled instantly; the far door reopened (2,500 Mana) — Tolo's library delivered and his own limit-theory on "the curve" disclosed, Diagram Sense taught; Sevrin's honest account of his objection to Ilith, Seamseal and Stillwater taught; a player ruling correcting Sevrin and Orenne to he/him throughout `130_NPCS_AND_FACTIONS.md` and `worlds/gatefall/270_THE_FAR_SIDE.md`, prospective only; appearances authored for all five Standing figures for the first time; Orenne's teaching refusal held even as the encounter turned physically intimate (`REL-000110` updated, no channel for Owen); Aumry taught Grip and Footing and Second Wind; Ilith advanced Unremarked Movement to 2/3 and opened Read the Want and Unwatched; the door closed, home, Sorcha's containment design (`OBJ-49`) landed complete; `F-066` filed; promotion-barrier settlement. No new ENT/REL identifiers minted this span |
 
 ---
 

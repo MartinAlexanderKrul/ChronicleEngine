@@ -48,6 +48,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000208` | Yusuf Baptiste | striker (declined Ironline) | active | Unestablished — Chicago is implied by working an Ironline pitch | — |
 | `ENT-000209` | Bettina Ochoa | striker (declined Ironline) | active | Unestablished — Chicago is implied by working an Ironline pitch | — |
 | `ENT-000210` | the old grain terminal, Bridgeport | confirmed Gate site | active | South end of Bridgeport, Chicago, river side — the loading pit… | — |
+| `ENT-000264` | the Denver facility | containment facility, purchased | active | Outside Denver, Colorado — exact site address not yet establish… | — |
 | `ENT-000149` | the Cutting Edge proprietor | gear artisan / licensed vendor | active | Cutting Edge | — |
 | `ENT-000150` | Ferro's Reclamation | salvage dealer | active | Chicago | — |
 | `ENT-000168` | Milo Brandt | sensor-adjacent hunter | active | Windy City Hunters Coalition training grounds | — |
@@ -231,7 +232,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 107. Protagonist relationships: 33.
+- Entities: 108. Protagonist relationships: 33.
 - Characters: 84. Disposition authored in full: 42; partial: 31; none: 11. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

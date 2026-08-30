@@ -187,58 +187,60 @@ Authored on the Decision 091 character model (want, fear, secret, voice, agenda)
 
 ### Sevrin, who held the last bridge — Standing, position **Stop it**
 
-- **Want:** to end the process, and to do it before the next world is cut.
-- **Fear:** that the plan she has carried for four thousand years is wrong, and that she will never find out.
-- **Secret:** she has been to the Weir's deepest seam and seen what is on the other side of it. She will not say what, and it is not the Adjudicator.
-- **Voice:** short sentences. Long pauses. She asks a question and then waits past the point of comfort for the answer.
-- **Agenda:** she has been mapping seams toward something for longer than human history and is roughly two-thirds done.
+**Player ruling, 2026-09-08: Sevrin is he/him, not she/her.** Corrected below; prior promoted chronicle entries using she/her are not rewritten (checkpoint discipline), but this is the standing pronoun from here forward.
 
-**She is a System-bearer and resolves as one** (`206_WORLD_RULE_PROFILE.md` Section 13.1.1). No Rank, no Rank Health, no ledger entry — a sheet, because the thing in her works the way the thing in him does.
+- **Want:** to end the process, and to do it before the next world is cut.
+- **Fear:** that the plan he has carried for four thousand years is wrong, and that he will never find out.
+- **Secret:** he has been to the Weir's deepest seam and seen what is on the other side of it. He will not say what, and it is not the Adjudicator.
+- **Voice:** short sentences. Long pauses. He asks a question and then waits past the point of comfort for the answer.
+- **Agenda:** he has been mapping seams toward something for longer than human history and is roughly two-thirds done.
+
+**He is a System-bearer and resolves as one** (`206_WORLD_RULE_PROFILE.md` Section 13.1.1). No Rank, no Rank Health, no ledger entry — a sheet, because the thing in him works the way the thing in the Bearer does.
 
 ```yaml
 stats:      { strength: 2150, agility: 2200, vitality: 2300, perception: 2650, intelligence: 2700 }
 maximum_health: 9200      # 4 x Vitality, the Section 6.1 Bearer formula
 maximum_mana:   5400      # 2 x Intelligence
 equipment: none           # no shop, no artificer, no cores worth the name in four thousand years
-mastery:   Master on everything she still uses; she stopped acquiring and started refining
+mastery:   Master on everything he still uses; he stopped acquiring and started refining
 ```
 
-**Read those numbers against his and the point is immediate: she is smaller.** A smaller pool, no equipment line at all, and no elixir, rune, fusion or catalogue behind her — four thousand years of scraps off the Mill against thirty-three days of S-Rank instant dungeons. **She is not a bigger monster and she is not meant to be one.** A single clean Rupture kills her. She has had forty centuries to make sure it is not clean.
+**Read those numbers against his and the point is immediate: he is smaller.** A smaller pool, no equipment line at all, and no elixir, rune, fusion or catalogue behind him — four thousand years of scraps off the Mill against thirty-three days of S-Rank instant dungeons. **He is not a bigger monster and he is not meant to be one.** A single clean Rupture kills him. He has had forty centuries to make sure it is not clean.
 
-**Her axis is denial, and it is the one thing he has no answer to.** She held a bridge. What she has spent an unimaginable span perfecting is **closing a way through** — a seam, a rift, a step, a door. Against a Bearer whose entire survivability is that he can leave any room he is standing in, a woman who can make a rift refuse to open is not a damage problem.
+**His axis is denial, and it is the one thing the Bearer has no answer to.** He held a bridge. What he has spent an unimaginable span perfecting is **closing a way through** — a seam, a rift, a step, a door. Against a Bearer whose entire survivability is that he can leave any room he is standing in, a man who can make a rift refuse to open is not a damage problem.
 
-- **She can bar an anchored step.** Section 18.8 calls it unrestricted and unbound by instance walls, and it is — against the world. It is not unbound against her.
-- **She does not need to out-damage him and does not try.** On the far side Section 2's drain is 10% of maximum Mana an hour with no recovery, and the way home is a step she can close. **Keeping him somewhere is the lethal outcome, and no blow needs to land for it.**
-- **Both of them can end an exchange with one connection**, hers included, and a Runtime softens that in neither direction (Section 13.1.1).
+- **He can bar an anchored step.** Section 18.8 calls it unrestricted and unbound by instance walls, and it is — against the world. It is not unbound against him.
+- **He does not need to out-damage the Bearer and does not try.** On the far side Section 2's drain is 10% of maximum Mana an hour with no recovery, and the way home is a step he can close. **Keeping him somewhere is the lethal outcome, and no blow needs to land for it.**
+- **Both of them can end an exchange with one connection**, his included, and a Runtime softens that in neither direction (Section 13.1.1).
 
-**What she can teach, and it is exactly the thing that makes her dangerous.** The seam-closing technique itself — the counter to the apparatus that has made him unkillable, in the hands of the only person who has ever built one. **She will teach it gladly, and she is position `Stop it`**, which means she teaches him right up to the point where teaching him stops serving the end of the process, and not one scene further. The complete authored entry is owed at ratification under `206_WORLD_RULE_PROFILE.md` Section 7.1's taught route; **what it is called, costs, and does is an owner ruling at that moment**, and this file does not pre-empt it.
+**What he can teach, and it is exactly the thing that makes him dangerous.** The seam-closing technique itself — the counter to the apparatus that has made the Bearer unkillable, in the hands of the only person who has ever built one. **He will teach it gladly, and he is position `Stop it`**, which means he teaches right up to the point where teaching stops serving the end of the process, and not one scene further. The complete authored entry is owed at ratification under `206_WORLD_RULE_PROFILE.md` Section 7.1's taught route; **what it is called, costs, and does is an owner ruling at that moment**, and this file does not pre-empt it.
 
-**What Sevrin holds — twenty techniques, every one of them about closing a way through.** She stopped acquiring and started refining, and the set shows it: there is nothing here that kills quickly and nothing here he can walk away from.
+**What Sevrin holds — twenty techniques, every one of them about closing a way through.** He stopped acquiring and started refining, and the set shows it: there is nothing here that kills quickly and nothing here the Bearer can walk away from.
 
 | Technique | Rank | Mana | Effect |
 |---|---|---:|---|
 | **Seamseal** | S | 30 | Closes one seam, rift, step destination or door for the scene. A rift-step targeting it fails and refunds nothing. |
-| **Bridgehold** | S | 25 | Declares a line. No creature crosses it without winning effective Strength against her effective Intelligence. |
-| **Anchor Denial** | S | 20 | One anchor she has perceived cannot be stepped to for twenty-four hours. |
-| **The Long Refusal** | S | passive | Any technique whose effect is *leaving* costs its user double while she is present. |
+| **Bridgehold** | S | 25 | Declares a line. No creature crosses it without winning effective Strength against his effective Intelligence. |
+| **Anchor Denial** | S | 20 | One anchor he has perceived cannot be stepped to for twenty-four hours. |
+| **The Long Refusal** | S | passive | Any technique whose effect is *leaving* costs its user double while he is present. |
 | **Closing Word** | S | 40 | One target cannot leave the stratum for one hour by any means, including a class ability. |
-| **The Bridge Stance** | S | 18 | She takes at most one hit's worth of damage per exchange regardless of how many land. |
-| **Counterseam** | S | passive | A seam opened within her perception may be closed by her as a reaction. |
+| **The Bridge Stance** | S | 18 | He takes at most one hit's worth of damage per exchange regardless of how many land. |
+| **Counterseam** | S | passive | A seam opened within his perception may be closed by him as a reaction. |
 | **Shutter** | S | 12 | Ends one channelled or sustained effect within sight. |
-| **Four Thousand Years' Patience** | S | passive | Each exchange she spends without attacking adds +1 to her next contested result, to a maximum of +5. |
-| **The Last Span** | S | 22 | A held barrier over herself and four others: 85% reduction, five exchanges. |
+| **Four Thousand Years' Patience** | S | passive | Each exchange he spends without attacking adds +1 to his next contested result, to a maximum of +5. |
+| **The Last Span** | S | 22 | A held barrier over himself and four others: 85% reduction, five exchanges. |
 | **Stillwater** | A | 10 | Twenty metres in which no teleport, blink or step resolves. Three exchanges. |
-| **Doorward** | A | 15 | A doorway she stands in admits nobody but her. |
+| **Doorward** | A | 15 | A doorway he stands in admits nobody but him. |
 | **Held Breath** | A | 8 | Suspends one hostile effect's timer for one exchange. |
 | **Refuse the Opening** | A | 6 | Negates one ambush, surprise or first-blade effect outright. |
-| **Grip on the Rail** | A | passive | She cannot be disarmed, unfooted, or made to release what she holds. |
-| **Weight of the Span** | B | passive | She cannot be moved, thrown, pushed or repositioned by any effect below S-Rank. |
-| **Every Seam She Has Walked** | B | passive | She perceives every seam, anchor and rift within her current stratum. |
-| **The Question She Waits On** | B | 4 | A target that lies to her carries −2 modifier steps for the scene. |
-| **Mapwork** | C | passive | She knows the route between any two places she has been. Never lost, never misdirected. |
-| **What She Saw at the Weir** | S | — | **Once ever, and it is an owner ruling.** She has one thing she has never used and will not describe. Not rolled, not priced, and not pre-empted here. |
+| **Grip on the Rail** | A | passive | He cannot be disarmed, unfooted, or made to release what he holds. |
+| **Weight of the Span** | B | passive | He cannot be moved, thrown, pushed or repositioned by any effect below S-Rank. |
+| **Every Seam He Has Walked** | B | passive | He perceives every seam, anchor and rift within his current stratum. |
+| **The Question He Waits On** | B | 4 | A target that lies to him carries −2 modifier steps for the scene. |
+| **Mapwork** | C | passive | He knows the route between any two places he has been. Never lost, never misdirected. |
+| **What He Saw at the Weir** | S | — | **Once ever, and it is an owner ruling.** He has one thing he has never used and will not describe. Not rolled, not priced, and not pre-empted here. |
 
-**Read the set and her threat is legible without a single damage figure.** Ten of the twenty do nothing but stop something. **Closing Word** is the one to notice: an hour is longer than Section 2's drain gives him, which means she does not have to beat him, only to be right about the clock.
+**Read the set and his threat is legible without a single damage figure.** Ten of the twenty do nothing but stop something. **Closing Word** is the one to notice: an hour is longer than Section 2's drain gives the Bearer, which means he does not have to beat him, only to be right about the clock.
 
 ### Ilith of no second name — Standing, position **Out**
 
@@ -350,50 +352,52 @@ mastery:   Master on everything that improves someone else; he has never had a t
 
 ### Orenne, who keeps the count — Standing, position **Let it finish**
 
+**Player ruling, 2026-09-08: Orenne is he/him, not she/her.** Corrected below; prior promoted chronicle entries using she/her are not rewritten (checkpoint discipline), but this is the standing pronoun from here forward.
+
 **Section 4.1 calls this the strongest moral pressure in the campaign, and a pressure with nobody applying it is a paragraph.**
 
-- **Want:** for Earth to fail, cleanly and soon. She has counted the harvested worlds and the passed ones for longer than she can now justify, and the count is the argument: **a world that fails is eaten once; a world that passes becomes a thing that eats.** She is not trying to kill him. She is trying to make him stop.
-- **Fear:** that she is wrong. She has spent an unmeasurable span arguing for the deaths of billions on a conclusion she cannot check, and she knows exactly what that makes her if the conclusion is bad.
-- **Secret:** she has begun to doubt it. Something in the last two centuries of the count does not fit her model, and she has not recounted, because she is frightened of what a recount would oblige her to have done differently.
-- **Voice:** unhurried, courteous, and genuinely willing to lose the argument. She asks what he thinks and waits for the answer. **She never raises her voice and never threatens**, which is what makes her frightening when she finally moves.
-- **Agenda:** she talks first, for as long as talking might work. What she does when it stops working is an owner ruling and it is not a bluff.
+- **Want:** for Earth to fail, cleanly and soon. He has counted the harvested worlds and the passed ones for longer than he can now justify, and the count is the argument: **a world that fails is eaten once; a world that passes becomes a thing that eats.** He is not trying to kill him. He is trying to make him stop.
+- **Fear:** that he is wrong. He has spent an unmeasurable span arguing for the deaths of billions on a conclusion he cannot check, and he knows exactly what that makes him if the conclusion is bad.
+- **Secret:** he has begun to doubt it. Something in the last two centuries of the count does not fit his model, and he has not recounted, because he is frightened of what a recount would oblige him to have done differently.
+- **Voice:** unhurried, courteous, and genuinely willing to lose the argument. He asks what the other thinks and waits for the answer. **He never raises his voice and never threatens**, which is what makes him frightening when he finally moves.
+- **Agenda:** he talks first, for as long as talking might work. What he does when it stops working is an owner ruling and it is not a bluff.
 
 ```yaml
 stats:      { strength: 3400, agility: 2350, vitality: 1150, perception: 2100, intelligence: 3050 }
 maximum_health: 4600      # 4 x Vitality -- the smallest pool authored here
 maximum_mana:   6100      # 2 x Intelligence
 equipment: none
-mastery:   Master on a single offensive line she has refined for an age and used perhaps forty times
+mastery:   Master on a single offensive line he has refined for an age and used perhaps forty times
 ```
 
-**She is the sharpest exchange in this file and she carries 4,040 Health.** That is not an oversight: she can end him in one connection and he can end her in one, and **neither of them has a pool that makes a second exchange likely.** Section 13.1.1's rule that a bearer fight turns on whether a strike lands is at its purest here — this is a duel where the first clean touch decides it, and both of them know the arithmetic before it starts. **Which is exactly why she would rather talk**, and why a Runtime should let her.
+**He is the sharpest exchange in this file and he carries 4,040 Health.** That is not an oversight: he can end the Bearer in one connection and the Bearer can end him in one, and **neither of them has a pool that makes a second exchange likely.** Section 13.1.1's rule that a bearer fight turns on whether a strike lands is at its purest here — this is a duel where the first clean touch decides it, and both of them know the arithmetic before it starts. **Which is exactly why he would rather talk**, and why a Runtime should let him.
 
-**What Orenne holds — twenty techniques built on a single idea, which is that time is on her side.** She has one offensive line and has used it perhaps forty times. The other nineteen are about making sure that when she uses it, it lands.
+**What Orenne holds — twenty techniques built on a single idea, which is that time is on his side.** He has one offensive line and has used it perhaps forty times. The other nineteen are about making sure that when he uses it, it lands.
 
 | Technique | Rank | Mana | Effect |
 |---|---|---:|---|
-| **One Line, Refined** | S | 25 | Her single offensive technique: 4.00x of a Strength-read baseline, one target. Forty uses in an age, and every one of them counted. |
-| **The Count** | S | passive | Every exchange of a fight adds +1 to her damage step. **Uncapped.** |
-| **Recount** | S | 40 | Once per scene she re-resolves one roll that has already happened — hers or anyone's. |
+| **One Line, Refined** | S | 25 | His single offensive technique: 4.00x of a Strength-read baseline, one target. Forty uses in an age, and every one of them counted. |
+| **The Count** | S | passive | Every exchange of a fight adds +1 to his damage step. **Uncapped.** |
+| **Recount** | S | 40 | Once per scene he re-resolves one roll that has already happened — his or anyone's. |
 | **Closing Argument** | S | 35 | Against a target below half Health, **One Line cannot miss.** |
 | **The Clean Failure** | S | 20 | Denies a target one resolution entirely. It simply does not happen. |
 | **Let It Finish** | S | 18 | An effect already running on a target cannot be ended, dispelled or interrupted for five exchanges. |
-| **The Argument** | S | 6 | A target that has heard her case carries -2 steps on any action against her for the scene. |
-| **Tally** | S | passive | She knows exactly how many of anything she has ever counted. Exchanges, wounds, and worlds. |
-| **Weight of Precedent** | S | passive | +2 steps against a creature of a kind she has fought before. |
-| **Ninety-One Worlds** | S | passive | She cannot be moved by an argument she has already heard, which is most of them. |
-| **Arithmetic** | A | passive | She computes a resolution one exchange in advance: +2 steps on any prediction. |
-| **Attrition** | A | passive | A creature that has exchanged with her for three exchanges loses 10% of maximum Health per exchange thereafter. |
-| **Course of Nature** | A | 10 | A wound she inflicts does not heal by any means for one day. |
+| **The Argument** | S | 6 | A target that has heard his case carries -2 steps on any action against him for the scene. |
+| **Tally** | S | passive | He knows exactly how many of anything he has ever counted. Exchanges, wounds, and worlds. |
+| **Weight of Precedent** | S | passive | +2 steps against a creature of a kind he has fought before. |
+| **Ninety-One Worlds** | S | passive | He cannot be moved by an argument he has already heard, which is most of them. |
+| **Arithmetic** | A | passive | He computes a resolution one exchange in advance: +2 steps on any prediction. |
+| **Attrition** | A | passive | A creature that has exchanged with him for three exchanges loses 10% of maximum Health per exchange thereafter. |
+| **Course of Nature** | A | 10 | A wound he inflicts does not heal by any means for one day. |
 | **Patience of the Ledger** | A | passive | No penalty for any delay, wait or postponement, of any length. |
-| **Nothing Is Wasted** | B | passive | A technique of hers that fails refunds its Mana. |
-| **Unhurried** | B | passive | She never acts first, and never needs to. |
-| **Ledgerhand** | B | 2 | Records anything she has perceived, permanently and exactly. |
-| **Never Raised** | C | passive | Nothing she says registers as a threat, because none of it is. |
-| **What She Is Trying to Make Him Do** | S | passive | She is never obliged to attack to win a scene, and **a Runtime never makes her.** |
-| **The Doubt** | S | — | **Once ever, and it is an owner ruling.** What a recount would oblige her to have done differently. |
+| **Nothing Is Wasted** | B | passive | A technique of his that fails refunds its Mana. |
+| **Unhurried** | B | passive | He never acts first, and never needs to. |
+| **Ledgerhand** | B | 2 | Records anything he has perceived, permanently and exactly. |
+| **Never Raised** | C | passive | Nothing he says registers as a threat, because none of it is. |
+| **What He Is Trying to Make Him Do** | S | passive | He is never obliged to attack to win a scene, and **a Runtime never makes him.** |
+| **The Doubt** | S | — | **Once ever, and it is an owner ruling.** What a recount would oblige him to have done differently. |
 
-**She carries 4,600 Health and Strength 3,400, and both of those are the same design.** She out-hits him and cannot survive being hit. **The Count** means every exchange she survives makes the next one worse for him, so a long fight is hers and a short one is his — and she would still rather talk, which a Runtime should let her do.
+**He carries 4,600 Health and Strength 3,400, and both of those are the same design.** He out-hits and cannot survive being hit. **The Count** means every exchange he survives makes the next one worse for the Bearer, so a long fight is his and a short one is the Bearer's — and he would still rather talk, which a Runtime should let him do.
 
 ### Tolo, who reads what is left — Standing, no position
 
@@ -493,8 +497,8 @@ Section 4.1 governs what a figure does about him, and a killed champion is new i
 | Position | Held by | What a killed champion changes |
 |---|---|---|
 | **Reach the next one** | Aumry | **Closes.** His authored fear is that *teaching him is what kills him*, and his private theory is that the teaching marks a candidate. A candidate who kills teachers is that fear arriving with evidence. **He stops teaching, and he is the transmission half of route 5.** |
-| **Stop it** | Sevrin | **Engages.** She teaches him *"right up to the point where teaching him stops serving the end of the process, and not one scene further"*, and this is that point. Her axis is closing a way through, and on the far side Section 2's drain makes **keeping him somewhere the lethal outcome with no blow struck.** |
-| **Let it finish** | Orenne | **Stops talking.** Her whole argument is that *a world that passes becomes a thing that eats*, held on a conclusion she cannot check. A candidate harvesting the harvested is her conclusion arriving in person, and Section 4.2 says what she does when talking stops working is an owner ruling and not a bluff. |
+| **Stop it** | Sevrin | **Engages.** He teaches him *"right up to the point where teaching him stops serving the end of the process, and not one scene further"*, and this is that point. His axis is closing a way through, and on the far side Section 2's drain makes **keeping him somewhere the lethal outcome with no blow struck.** |
+| **Let it finish** | Orenne | **Stops talking.** His whole argument is that *a world that passes becomes a thing that eats*, held on a conclusion he cannot check. A candidate harvesting the harvested is his conclusion arriving in person, and Section 4.2 says what he does when talking stops working is an owner ruling and not a bluff. |
 | **Out** | Ilith | **Accelerates.** She does not harden into hostility — she has nothing to gain from a fight and knows the arithmetic. She hardens into **urgency**: she takes a worse deal sooner, and she lies better, because a man who kills bearers is a door that may not be there next week. |
 | *(no position)* | Tolo | His authored fear is **being made to choose**, and a death is what makes him. Which way he goes is an owner ruling, once, and this file does not pre-empt it. |
 

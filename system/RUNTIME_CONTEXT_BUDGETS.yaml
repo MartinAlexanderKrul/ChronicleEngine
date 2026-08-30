@@ -1463,7 +1463,19 @@ per_object_budgets:
     # inventory, tracked_counters, equipment, quests -- and it is not
     # redundancy. This ratchet exists so the next thing that grows here is
     # reported rather than discovered when a read fails.
-    baseline_worst_bytes: 138561
+    # Re-recorded 2026-08-30, 138,561 -> 165,157 (`EVT-000891`). Eight new
+    # `progression_candidates` entries opened this span (Taught-route evidence
+    # across Ilith, Tolo, Sevrin, and Aumry, each with real dice citations and
+    # §7.1 test 4 evidence-crediting notes), five `tracked_counters` values
+    # advanced, and `skills_known` prose re-derived for four terminal skills at
+    # the new Level 163 Stat line. This is exactly the typed state the reason
+    # below says is the wrong trade to delete -- `progression_candidates` is
+    # read by the same skill-formation selectors as `skills_known`. No
+    # narrative field grew; the redundancy this ratchet exists to catch was
+    # already exhausted at the prior re-record. Re-recorded rather than left to
+    # the ratchet's slack, per this file's own repeated warning that a stale
+    # baseline breaks the ratchet in both directions.
+    baseline_worst_bytes: 165157
     growth_allowance_percent: 15
     reason: >-
       The protagonist's record is read by field selector, never whole-file: the

@@ -129,7 +129,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000260` | Aumry | Standing (far side) — position Reach the next one | active | The Long Shelf | `REL-000109` |
 | `ENT-000261` | Orenne | Standing (far side) — position Let it finish | active | The Long Shelf. | `REL-000110` |
 | `ENT-000262` | Tolo | Standing (far side) — no position | active | The Ninth Quiet stratum, near his rebuilt archive. | `REL-000111` |
-| `ENT-000263` | Sevrin | Standing (far side) — position Stop it | active | Her own ground, deep in the Stacks. | `REL-000112` |
+| `ENT-000263` | Sevrin | Standing (far side) — position Stop it | active | His own ground, deep in the Stacks. | `REL-000112` |
 
 ---
 
@@ -222,9 +222,9 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000258` | Margit Lindqvist | A real, working cross-border information-sharing mechanism she can actually stand behind to her… | Endorsing something that looks good in a meeting and collapses the first time two national bure… | None surfaced | Measured, asks the practical question under the impressive one — who maintains it, who pays for… |
 | `ENT-000259` | Ilith | Through. Anywhere | That a door will open and close before she reaches it | Her world did not fail the exam — it refused it, and she was the one who advised the refusal | States a truth so plainly it reads as confession, then reveals nothing further; a rehearsed ges… |
 | `ENT-000260` | Aumry | To change one outcome | That teaching a candidate is what marks him for the Assay's attention | It was ten, not nine — the tenth passed | Warm, practical, specific about mechanics; deflects from the deeper question to the work at han… |
-| `ENT-000261` | Orenne | For Earth to fail, cleanly and soon — not from hatred, but from a count: a failed world is eate… | That she is wrong | She has begun to doubt her own count; something in the last two centuries doesn't fit, and she… | Unhurried, courteous; asks what he thinks and waits for the answer |
+| `ENT-000261` | Orenne | For Earth to fail, cleanly and soon — not from hatred, but from a count: a failed world is eate… | That he is wrong | He has begun to doubt his own count; something in the last two centuries doesn't fit, and he ha… | Unhurried, courteous; asks what he thinks and waits for the answer |
 | `ENT-000262` | Tolo | To finish the Ninth Quiet archive — reading it for centuries, further along the curve than anyo… | Being made to choose between the four positions; believes picking one is how you stop reading | Understands more of the diagrams than he admits — sitting on it because the only people who'd a… | Dry, precise; states an inconvenient truth plainly and moves on |
-| `ENT-000263` | Sevrin | To end the entire process that made her and all five of them what they are — not Alexander's wi… | That the plan she's carried four thousand years is wrong, and she'll never find out | She has been to the Weir's deepest seam and seen what's on the other side | Short sentences, long pauses; asks and waits |
+| `ENT-000263` | Sevrin | To end the entire process that made him and all five of them what they are — not Alexander's wi… | That the plan he's carried four thousand years is wrong, and he'll never find out | He has been to the Weir's deepest seam and seen what's on the other side | Short sentences, long pauses; asks and waits |
 
 ---
 

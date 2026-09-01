@@ -109,7 +109,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000224` | Teresa Vance | journalist - trade beat | active | Unestablished - worked entirely by phone. Chicago is implied by… | `REL-000100` |
 | `ENT-000225` | Marguerite | media liaison - independent | active | Unestablished. Chicago is implied by Kesha Morrison's ability t… | — |
 | `ENT-000257` | Jitka Novotná | national Gate-ranking clerk | active | CGA Headquarters, central Prague, the public Ranking Corps coun… | — |
-| `ENT-000226` | Peter Kwiatkowski | artificer - CONSULT-controlled | active | Ironclad Self Storage | — |
+| `ENT-000226` | Peter Kwiatkowski | artificer - CONSULT-controlled | active | Ironclad Self Storage | `REL-000114` |
 | `ENT-000227` | CONSULT | unregistered artificer-control operation | active | Ironclad Self Storage | — |
 | `ENT-000228` | D | unidentified - CONSULT decision-maker | active | Peter Kwiatkowski | — |
 | `ENT-000229` | Delphine | CONSULT associate - scheduling | active | Unestablished. | — |
@@ -131,6 +131,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000261` | Orenne | Standing (far side) — position Let it finish | active | The Long Shelf. | `REL-000110` |
 | `ENT-000262` | Tolo | Standing (far side) — no position | active | The Ninth Quiet stratum, near his rebuilt archive. | `REL-000111` |
 | `ENT-000263` | Sevrin | Standing (far side) — position Stop it | active | His own ground, deep in the Stacks. | `REL-000112` |
+| `ENT-000265` | Dario Wexler | S-Rank hunter — West Coast, USA | active | Unestablished beyond 'West Coast' — Renata's own filing places… | `REL-000113` |
 
 ---
 
@@ -206,7 +207,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000224` | Teresa Vance | The story confirmed in his own words before she runs it — now satisfied | Running it wrong | Who inside Region V gave her the name | States the awkward thing first and then explains why she is saying it |
 | `ENT-000225` | Marguerite | To get ahead of whatever story is already forming before it breaks somewhere she doesn't contro… | A client who goes quiet exactly when the story breaks, leaving her defending a silence she can'… | She took this work after a hunter she liaised for early in her career went to ground during a b… | Leads with logistics and timelines, not reassurance |
 | `ENT-000257` | Jitka Novotná | For her own careful, correct work to matter to someone above her counter — the agency's money a… | A Ranking error on her own signature that gets someone killed | She keeps a private tally — never shown a superior — of the hours and budget she believes get d… | Efficient, a little clipped; warms for professional treatment; dry specifically about the Reten… |
-| `ENT-000226` | Peter Kwiatkowski | To be told he is safe, by someone who would actually know | That `COMPLETE` is about to have his name beside it | He is now missing a satchel and a wallet he cannot explain, and has reported only the satchel | Talks too fast under pressure and over-explains, the rhythm of someone trying to sound more cer… |
+| `ENT-000226` | Peter Kwiatkowski | To be told he is safe, by someone who would actually know | That `COMPLETE` is about to have his name beside it | He is now missing a wallet he cannot explain, and has never reported it | Talks too fast under pressure and over-explains, the rhythm of someone trying to sound more cer… |
 | `ENT-000228` | D | Unauthored - no direct contact has occurred | Unauthored | What `COMPLETE` actually resolves to | Established only in text: short, flat, faintly dismissive, signs with a single initial |
 | `ENT-000229` | Delphine | Unauthored - no contact has occurred | Unauthored | Unauthored | Unestablished - no line of hers has been narrated |
 | `ENT-000231` | Marta Ilić | Unestablished — not yet tested in play | Unestablished | Unestablished | Unestablished — she has not spoken in a resolved scene |
@@ -226,13 +227,14 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000261` | Orenne | For Earth to fail, cleanly and soon — not from hatred, but from a count: a failed world is eate… | That he is wrong | He has begun to doubt his own count; something in the last two centuries doesn't fit, and he ha… | Unhurried, courteous; asks what he thinks and waits for the answer |
 | `ENT-000262` | Tolo | To finish the Ninth Quiet archive — reading it for centuries, further along the curve than anyo… | Being made to choose between the four positions; believes picking one is how you stop reading | Understands more of the diagrams than he admits — sitting on it because the only people who'd a… | Dry, precise; states an inconvenient truth plainly and moves on |
 | `ENT-000263` | Sevrin | To end the entire process that made him and all five of them what they are — not Alexander's wi… | That the plan he's carried four thousand years is wrong, and he'll never find out | He has been to the Weir's deepest seam and seen what's on the other side | Short sentences, long pauses; asks and waits |
+| `ENT-000265` | Dario Wexler | A real peer connection outside guild or federal chain of command — Renata's introduction reache… | That being independent on the West Coast, the way Alexander is in Chicago, is a slower version… | Not established | Writes the way he'd probably talk — a little self-deprecating about his own lateness, no guild-… |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 108. Protagonist relationships: 33.
-- Characters: 84. Disposition authored in full: 42; partial: 31; none: 11. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 109. Protagonist relationships: 35.
+- Characters: 85. Disposition authored in full: 42; partial: 32; none: 11. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000265 |
+| Entity | `ENT-` | Persistent Entity | ENT-000267 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000911 |
+| Event | `EVT-` | Event | EVT-000913 |
 | Relationship | `REL-` | Relationship | REL-000114 |
 
 ---
@@ -919,7 +919,11 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000265 | Entity | Gatefall: Pendragon: **Dario Wexler**, an independent West Coast S-Rank hunter, introduced via Renata Okonkwo-Vance (`EVT-000847`), first direct contact `EVT-000909`, `130_NPCS_AND_FACTIONS.md` |
 | REL-000113 | Relationship | Gatefall: Pendragon: Alexander and Dario Wexler (`ENT-000265`), working-source, new and unscheduled |
 | REL-000114 | Relationship | Gatefall: Pendragon: Alexander and Peter Kwiatkowski (`ENT-000226`), working-source — protector/asset, formed under pressure. Alexander concealed, voice-disguised contact at Peter's storage unit; satchel returned anonymously, rendezvous anchor set (the campaign's 29th, `130_NPCS_AND_FACTIONS.md`) |
-| EVT-000911 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-000909`-`EVT-000910`, run at the player's `/save` request. No dangerous scene this span; Mana/cash/anchor/entity accounting reconciled in full, see `160_CAMPAIGN_CHRONICLE.md`. No new ENT/REL identifiers |
+| EVT-000911 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-000909`-`EVT-000910`, run at the player's `/save` request (checkpoint 0142). No dangerous scene this span; Mana/cash/anchor/entity accounting reconciled in full, see `160_CAMPAIGN_CHRONICLE.md`. No new ENT/REL identifiers |
+| EVT-000912 | Event | Gatefall: Pendragon: the 2026-09-11 06:00 world tick; the 47th daily quest; a call from Preston Vaughn (Horizon Guild), missed; the Jiu Valley story escalates to saturation coverage; a small but real investigative suspicion opens on Sorcha's own platform access; watching the Friday CONSULT assessment at Loomis Street, concealed — Ingrid Solberg (`ENT-000266`) and Daniel Pruett (`ENT-000267`) minted, both read (Flux Sight, Keen Sense, Read the Want); tailed Ingrid to a downtown formation-mill office (Suite 411), infiltrated on a courier's window, found Meridian Cold Storage LLC and Cormant Holdings sharing the same registered-agent suite, and overheard D named aloud for the first time |
+| ENT-000266 | Entity | Gatefall: Pendragon: **Ingrid Solberg**, CONSULT's own quality assessor, observed at Loomis Street's Friday assessment window, `130_NPCS_AND_FACTIONS.md` |
+| ENT-000267 | Entity | Gatefall: Pendragon: **Daniel Pruett**, a second CONSULT-controlled artificer, observed at the same assessment, `130_NPCS_AND_FACTIONS.md` |
+| EVT-000913 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-000912`, run at the player's `/save` request. No dangerous scene this span; Mana/anchor/entity accounting reconciled in full, see `160_CAMPAIGN_CHRONICLE.md`. No new ENT/REL identifiers |
 | EVT-000910 | Event | Gatefall: Pendragon: at the fenced warehouse — Flux Sight reads the binding's accelerated decay; Read the Want on the bound entity itself (success, subject noticed); Sorcha Bellweather told off-channel, containment plant returned to the slab; a legendary-success facility search finds Corvexlogistics-mgmt.com (the real filing intake) and a Cormant Holdings service invoice confirming the name from `EVT-000287`, plus four other unnamed site codes and a Friday technician visit; a follow-up search confirms the pattern. Three-hour-plus wait for Sorcha, Mana recovers to full. No new ENT/REL identifiers minted |
 
 ---

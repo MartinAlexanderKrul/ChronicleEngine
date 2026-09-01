@@ -132,8 +132,9 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000262` | Tolo | Standing (far side) — no position | active | The Ninth Quiet stratum, near his rebuilt archive. | `REL-000111` |
 | `ENT-000263` | Sevrin | Standing (far side) — position Stop it | active | His own ground, deep in the Stacks. | `REL-000112` |
 | `ENT-000265` | Dario Wexler | S-Rank hunter — West Coast, USA | active | Unestablished beyond 'West Coast' — Renata's own filing places… | `REL-000113` |
-| `ENT-000266` | Ingrid Solberg | artificer — CONSULT quality assessor | active | The CONSULT building's fourth floor, Loomis Street, Chicago — t… | — |
-| `ENT-000267` | Daniel Pruett | artificer — CONSULT-controlled | active | The CONSULT building's fourth floor, Loomis Street, Chicago — t… | — |
+| `ENT-000266` | Ingrid Solberg | artificer — CONSULT quality assessor | active | Suite 411, the downtown Chicago formation-mill office — returne… | — |
+| `ENT-000267` | Daniel Pruett | artificer — CONSULT-controlled | active | Suite 411, the downtown Chicago formation-mill office — returne… | — |
+| `ENT-000268` | Aldric Renn | CONSULT — administrative handler | active | A small unmarked office, Suite 3C, West Fulton Market, Chicago… | — |
 
 ---
 
@@ -230,15 +231,16 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000262` | Tolo | To finish the Ninth Quiet archive — reading it for centuries, further along the curve than anyo… | Being made to choose between the four positions; believes picking one is how you stop reading | Understands more of the diagrams than he admits — sitting on it because the only people who'd a… | Dry, precise; states an inconvenient truth plainly and moves on |
 | `ENT-000263` | Sevrin | To end the entire process that made him and all five of them what they are — not Alexander's wi… | That the plan he's carried four thousand years is wrong, and he'll never find out | He has been to the Weir's deepest seam and seen what's on the other side | Short sentences, long pauses; asks and waits |
 | `ENT-000265` | Dario Wexler | A real peer connection outside guild or federal chain of command — Renata's introduction reache… | That being independent on the West Coast, the way Alexander is in Chicago, is a slower version… | Not established | Writes the way he'd probably talk — a little self-deprecating about his own lateness, no guild-… |
-| `ENT-000266` | Ingrid Solberg | Partial read (🎲 40, net +1, effective 60) — incomplete | Not established — the partial read didn't reach it | Not established | Calm, precise, a working professional's cadence — states a finding plainly, doesn't dress it up |
+| `ENT-000266` | Ingrid Solberg | Partial read (🎲 40, net +1, effective 60) — incomplete | Not established before this session; **plausibly sharpened** by an unexplained abduction and in… | Not established | Calm, precise, a working professional's cadence — states a finding plainly, doesn't dress it up |
 | `ENT-000267` | Daniel Pruett | Full read (🎲 45, net +1, effective 65) — success | That it already has, or is about to — Ingrid's own warning (*'whatever's going on with you pers… | Not established — the read reached want and fear, not further | Says little; a short nod does most of his talking |
+| `ENT-000268` | Aldric Renn | Not established | Not established | Not established | Not established — never heard directly |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 111. Protagonist relationships: 35.
-- Characters: 87. Disposition authored in full: 42; partial: 34; none: 11. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 112. Protagonist relationships: 35.
+- Characters: 88. Disposition authored in full: 42; partial: 34; none: 12. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

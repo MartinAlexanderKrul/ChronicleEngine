@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000267 |
+| Entity | `ENT-` | Persistent Entity | ENT-000268 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000913 |
+| Event | `EVT-` | Event | EVT-000916 |
 | Relationship | `REL-` | Relationship | REL-000114 |
 
 ---
@@ -924,6 +924,10 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000266 | Entity | Gatefall: Pendragon: **Ingrid Solberg**, CONSULT's own quality assessor, observed at Loomis Street's Friday assessment window, `130_NPCS_AND_FACTIONS.md` |
 | ENT-000267 | Entity | Gatefall: Pendragon: **Daniel Pruett**, a second CONSULT-controlled artificer, observed at the same assessment, `130_NPCS_AND_FACTIONS.md` |
 | EVT-000913 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-000912`, run at the player's `/save` request. No dangerous scene this span; Mana/anchor/entity accounting reconciled in full, see `160_CAMPAIGN_CHRONICLE.md`. No new ENT/REL identifiers |
+| EVT-000914 | Event | Gatefall: Pendragon: Ingrid Solberg and Daniel Pruett seized from Suite 411 under S-Rank Overpower and Pre-empt, travelling-stepped to the Denver facility, interrogated concealed and voice-disguised with Keen Sense live; COMPLETE's mechanism, CONSULT's structure, and Aldric Renn (`ENT-000268`) named and confirmed truthful; a novel Overpower/Mend/Silent Step combination granted and attempted as first evidence toward a new candidate technique; both subjects returned unharmed to Suite 411 |
+| ENT-000268 | Entity | Gatefall: Pendragon: **Aldric Renn**, Ingrid Solberg's own CONSULT contact, named under interrogation but not yet met in person, `130_NPCS_AND_FACTIONS.md` |
+| EVT-000915 | Event | Gatefall: Pendragon: the far door opened a third time (terminus: the Denver facility), 2,500 Mana; structured practice across four far-side teachers (Tolo, Sevrin, Aumry, Ilith) — Diagram Sense, Grip and Footing, and Second Wind ratify; Appraise, Trace, The Bridge Stance, Read the Learner, Reading the Room, and Slip advance; Backread, What Is Left, Closing Word, The Last Span, Bridgehold, Counterseam, Nobody Falls Alone, Ten Thousand Repetitions, and Second Skin open as new candidates; far-side drain settled in full; door closed, 2,500 Mana; anchored step home |
+| EVT-000916 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-000914`-`EVT-000915`, run at the player's `/save` request. No dangerous scene this span; full skill-formation batch, Mana, anchor, and entity accounting reconciled, see `160_CAMPAIGN_CHRONICLE.md`. One new entity (`ENT-000268`); no new relationship |
 | EVT-000910 | Event | Gatefall: Pendragon: at the fenced warehouse — Flux Sight reads the binding's accelerated decay; Read the Want on the bound entity itself (success, subject noticed); Sorcha Bellweather told off-channel, containment plant returned to the slab; a legendary-success facility search finds Corvexlogistics-mgmt.com (the real filing intake) and a Cormant Holdings service invoice confirming the name from `EVT-000287`, plus four other unnamed site codes and a Friday technician visit; a follow-up search confirms the pattern. Three-hour-plus wait for Sorcha, Mana recovers to full. No new ENT/REL identifiers minted |
 
 ---

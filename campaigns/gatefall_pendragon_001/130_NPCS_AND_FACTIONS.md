@@ -3243,7 +3243,6 @@ canonical_state:
   secret: "**What he has already not asked about.** A man who rents that yard on those terms has done it before, and canon establishes none of it. This records that the history exists and is unauthored — **do not fill it in**; author it at the turn something forces him to care."
   voice: "**No small talk, no questions past the day and the rate.** Confirms availability without hesitating. Terms stated once, in full, and then nothing. Where another vendor would fill a silence he simply stops talking."
   agenda: "**Active; advances on the clock.** `Advanced` through **2026-08-17** (`EVT-000453`), the last span this record settles; it has not been advanced since.\n\n  - **Renting the Ashland freight yard by the day** to whoever pays cash and asks nothing back.\n  - **The arrangement with Alexander is open-ended rather than concluded.** It was booked by phone, paid on arrival, and nothing closed it; he is available on the same terms."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Fifties, plain and incurious, dressed for a freight yard rather than an office. The specific blankness of a man who has made a business model out of not asking questions."
   personality: "Terse and incurious by design — that's presented as the actual value of what he offers. No small talk, no questions past the day and the rate."
   situation: "Referred by Walt Adamik. Booked by phone, 2026-08-14 ~15:40 (`EVT-000373`): the freight yard off Ashland for Monday 2026-08-17, day rate $400 cash due on arrival, gate code to be texted the same morning. Confirmed open that day without hesitation. No questions asked about headcount, purpose, or names.
 
@@ -3494,7 +3493,6 @@ canonical_state:
   location: ENT-000087
   condition: "Healthy; not established as combat-active. Held behind the strike line for the whole clear, as harvest protocol requires."
   capabilities: "Harvest-element cutter. **Logged 12 crystals** on the 2026-08-16 B-Rank job against Alexander's declared 19 — an ordinary solid haul on a job where the harvest line ran two hands short."
-  appearance: "Not established."
   want: "**Unauthored.** His own record says it plainly: no dialogue exchanged, no conversation recorded, and he is not established as knowing anything about Alexander beyond having worked the same job. Twelve crystals on one B-Rank clear. **Author this at the turn he is next played** (Decision 092) — there is nothing here to derive one from, and inventing it would be exactly the ungrounded authoring the loading rule exists to prevent."
   fear: "**Unauthored.** See above."
   secret: "**Unauthored.** See above."

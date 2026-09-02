@@ -108,6 +108,7 @@ canonical_state:
   role: "Regional Director of BGM Region V (ENT-000099); federal appointee over the Ranking Bench and the Auction Desk."
   capabilities: "Federal administration; ranking and auction oversight; political survival; control of what does and does not get published."
   signature_ability: "Still Room — her mana deadens the air of a closed space so that nothing said inside it carries beyond the walls (Profile Section 13.6: descriptive fact, resolved at her band)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Fifties, composed and immaculately turned out — a career administrator's tailored blazer, hair pulled back without a strand out of place. A face schooled into permanent courteous attention, the kind that gives away nothing until the half-second pause before a hard question."
   personality: "Courteous, procedural, controlled; manages fear by managing information."
   knowledge: "Holds the real unpublished break-rate statistics; has reviewed incident logs showing Gates that read empty then registered a second mana signature only after entry, and has kept them off the record."
 ```
@@ -151,6 +152,7 @@ canonical_state:
   rank: "**None — he is not awakened.** Stated in his own entry: a pure corporate operator. He therefore carries no Rank, no Rank Health or Rank Mana, and no Section 6.1.2 variance, and Section 13.6's signature-ability requirement does not reach him — it binds named NPC *hunters*. Recorded so an audit does not read the empty fields as a gap."
   role: "Guildmaster and CEO of Horizon Guild (ENT-000100); not awakened."
   capabilities: "Corporate command; capital; investor and lobbyist relationships; cross-Atlantic reach through the shared parent balance sheet with Horizon Guild — Europe (ENT-000105)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Sixties, silver-haired, the polished ease of old money and older deals — a bespoke suit that never quite looks tailored because it always looks natural on him. Warm, practiced smile, the specific charm of a man who has never once needed to raise his voice to get what he wants."
   personality: "Genial, transactional, tireless; treats people as assets and is starting to do it to the ace."
   knowledge: "Knows Horizon Europe's confidential bid strategy against Karlov Guild and the true scope of his own play for the Czech S-Rank, kept off Horizon's public books."
 ```
@@ -197,6 +199,7 @@ canonical_state:
   role: "S-Rank ace of Horizon Guild (ENT-000100); one of Chicago's two resident S-ranks and the guild's public face."
   capabilities: "S-Rank combat; the only Horizon asset that cannot be replaced or poached cheaply; public draw."
   signature_ability: "Meridian — a lance of condensed force held, swept, and extended across the length of a boss chamber, the longest measured projection on the American books; its reach is a published number, and a shrinking one is exactly what an off-book re-measurement can read (Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Big — a Horizon marquee ace's frame, built for cameras and boss chambers alike — with the guarded stillness of someone privately auditing every inch of himself. Handsome in a magazine-cover way that photographs better than it feels in the room; watchful eyes that go very still the moment ability or measurement comes up."
   personality: "Publicly the brand, privately watchful and decent; carrying a fear he cannot voice."
   knowledge: "Believes his own measured edge may be slipping and is testing it in secret; knows the reawakened/re-measurement machinery from the inside as a client, not a suspect."
 ```
@@ -245,6 +248,7 @@ canonical_state:
   role: "Guildmaster of Ironline Guild (ENT-000101); rose from the Red Line Corridor (ENT-000090) shop floor."
   capabilities: "Recruiting; talent-spotting; shop-floor loyalty; low-rank contract logistics."
   signature_ability: "True Weight — she feels how hard the mana around her is actually working, a rough sensor's read no card can argue with; it is how she clocked what her hidden recruit's card does not say (Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, compact and weathered, the look of someone who came up on the Red Line Corridor's shop floor rather than a boardroom — a well-worn Ironline jacket, sleeves pushed to the elbow, hands that have handled crates as often as contracts. Fast, warm, appraising eyes that miss nothing about you."
   personality: "Blunt, funny, warm, calculating; speaks for the Floor and is quietly betraying its creed."
   knowledge: "Knows she is concealing an over-performing underranked hunter from re-measurement; knows exactly what an anomaly is worth and to whom."
 ```
@@ -293,6 +297,7 @@ canonical_state:
   role: "Senior licensed appraiser on BGM Region V's (ENT-000099) Ranking Bench; B-Rank Perception-class awakened."
   capabilities: "Field mana appraisal of beasts, hunters, loot, and Gates on the unified band; anomaly detection; off-book re-measurement."
   signature_ability: "Provenance — her appraisal reads a mana signature's history as well as its Rank: age, old injury, wear; the gift that ranked the healed wound and the brand, and the one quietly re-measuring Crane (Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Fifties, unshowy and precise, the dry practicality of someone who spends her working life reading truths people would rather she missed. Sensible, well-worn clothes, tired eyes softened by real kindness, and the particular stillness of a person who notices exactly what you hoped she wouldn't."
   personality: "Precise, dry, quietly kind; constitutionally unable to stop looking at what frightens her."
   knowledge: "Has logged an identical healed weapon-wound and seared brand on beast remains from Gates on opposite sides of the planet; her report was shelved and she has kept a copy."
 ```
@@ -337,6 +342,7 @@ canonical_state:
   role: "Unlicensed black-market buyer of undeclared cores and crystals in Chicago; former D-Rank hunter. Holds no institutional membership."
   capabilities: "Fencing; discretion; a working westward smuggling lane to Prague; the nerve, lately, to overreach."
   signature_ability: "Doorways — he feels every way out of a space and whether it is watched, the survival-sense that has kept him small and alive (Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Nondescript on purpose — average height, forgettable clothing, the studied blandness of a man who has spent a career being the person nobody remembers afterward. Restless eyes that never stop tracking a room's exits, a fast, low, reassuring voice that never quite settles into a straight answer."
   personality: "Fast-talking, evasive, cowardly, ambitious past his own judgment."
   knowledge: "Moves cores westward through the Prague network; has handled a core or two that appraise off any Rank he knows, and does not understand what they are."
 ```
@@ -387,6 +393,7 @@ canonical_state:
   role: "Director of the Czech Gate Administration (ENT-000103); career civil servant, E-Rank awakened."
   capabilities: "National regulatory authority; discretionary budget over S-Rank retention; control of what the CGA publishes."
   signature_ability: "Letter-Perfect — every page he has ever read stays exact in his memory, a modest E-Rank clerk's gift; the Libeň chart is in his head whether or not the file survives (Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Fifties to sixties, courtly and slightly rumpled — an ill-fitting civil-service suit, thinning hair, the exhausted, over-apologetic bearing of a man performing calm over something that's keeping him up at night. Touches the papers on his desk more than he needs to."
   personality: "Courtly, anxious, thorough to the point of evasion; keeps crises down by keeping them dark."
   knowledge: "Has seen the Libeň analyst's chart showing break frequency doubling on a fixed interval; the analyst has stopped returning calls and the CGA has published nothing."
 ```
@@ -433,6 +440,7 @@ canonical_state:
   role: "The Czech Republic's sole S-Rank (measured 2023); contracted hunter of Karlov Guild (ENT-000104) and national celebrity."
   capabilities: "S-Rank combat; cannot be compelled by any institution; her mere presence is the CGA's entire retention strategy."
   signature_ability: "Vltava — her mana rises as a river she shapes into wave, wall, or current, too total to file under a single working type; the most famous power in the country (Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Late twenties, athletic and unglamorous by design — a national celebrity who dresses like she'd rather be anywhere else being photographed. Restless energy, quick sharp eyes, an easy grin that shows exactly how bored she is with ceremony. Carries herself like someone permanently a half-step from walking out of the room."
   personality: "Plain-spoken, restless, contemptuous of ceremony; resentment curdling toward self-destruction."
   knowledge: "Knows how close she has come to signing with a foreign guild — closer than anyone at Karlov or the CGA suspects; holds that decision alone."
 ```
@@ -479,6 +487,7 @@ canonical_state:
   role: "Guildmaster of Karlov Guild (ENT-000104); C-Rank, a firsthand witness of the Gatefall."
   capabilities: "Municipal relationships; heritage-clearance doctrine; the moral authority of continuity; a decade of standing no foreign capital can buy."
   signature_ability: "Threshold — a warden's barrier raised across a doorway or a street's width and held, the power the first Prague clears formed up behind and the seed of Karlov's heritage-clearance doctrine (Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Sixties to seventies, old-world courteous, dignified in a slightly outdated way — good but unfashionable tailoring, a full head of grey hair, the calm gravity of a man who has been receiving guests under the same photographs for decades."
   personality: "Old-world courteous, immovable, wise about the city and willfully blind to its arithmetic."
   knowledge: "Suspects his S-Rank is wavering under foreign courtship and is concealing it from the CGA and his own heir, gambling the guild on loyalty."
 ```
@@ -525,6 +534,7 @@ canonical_state:
   role: "Heir to Karlov Guild (ENT-000104) and lead of its New Contracts Desk; C-Rank hunter."
   capabilities: "Contract and financial acumen; the guild's modernizing faction; a back-channel to the foreign siege and to the black market."
   signature_ability: "Sidestep — a ten-meter step that puts her somewhere else between one breath and the next, useful in a fight and quietly useful for arriving at meetings no one sees her reach (Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, sharp and quick-moving, modern professional dress that stands out against her guild's old-world furniture — the visible impatience of someone doing arithmetic on her family's future in real time. Candid, direct eyes, a raw nerve just under the competence."
   personality: "Quick, impatient, candid; loves the guild enough to betray its creed to save it."
   knowledge: "Is in secret partnership talks with Horizon Europe against the Family's wishes and is funding her maneuvering through off-book core sales."
 ```
@@ -571,6 +581,7 @@ canonical_state:
   role: "Prague branch chief of Horizon Guild — Europe (ENT-000105); B-Rank, Czech-born and once a Karlov hunter."
   capabilities: "Aggressive hiring and bidding; American training doctrine and financial backing; back-channels into Karlov and to the American parent."
   signature_ability: "Clean Cut — a projected mana edge that severs exactly what it aims at and nothing beside it, Karlov heritage training legible in every stroke (Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Late thirties, polished in an imported American style — expensive fitted suit, easy first-name confidence — laid over a Prague bluntness that surfaces when he's rattled. A salesman's warm handshake and a hot-running, slightly too-eager energy underneath it."
   personality: "Polished and hot-running; a resented local defector armored in aggressive charm."
   knowledge: "Has over-promised Continental Command on landing the Czech S-Rank and is working the Karlov heir and the American parent to deliver before his own bosses lose patience."
 ```
@@ -613,6 +624,7 @@ canonical_state:
   role: "Unlicensed black-market smuggler moving contraband cores and artifacts westward out of Prague; low-signature awakened. Holds no institutional membership."
   capabilities: "Smuggling; concealment; a working westward route to Chicago; knowledge of which CGA enforcement lanes stay open."
   signature_ability: "Dead Air — her mana reads as almost nothing to appraisal and damps the signature of what she carries, which is why she is hard to measure and harder to catch (Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Deliberately unmemorable — plain dark clothing, nothing that would stand out in a crowd or a photograph, the specific anonymity of someone whose whole trade depends on being hard to describe afterward. Quiet, watchful eyes that study you the entire length of a meeting and give nothing back."
   personality: "Quiet, watchful, unreadable; greed advancing on her own discipline."
   knowledge: "Has moved cores and artifacts that appraise off any known band — one bearing an old healed wound and a seared brand matching nothing named; knows which routes the CGA declines to close."
 ```
@@ -663,6 +675,7 @@ canonical_state:
   role: "S-Rank ace of Keystone Guild (New York); world-ranked #7 on the International Gate Registry and the highest-ranked American hunter. Keystone Guild is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
   capabilities: "S-Rank combat; the 'Overrun' escalating force-discipline; national-symbol status and the federal access that comes with it."
   signature_ability: "Overrun — an escalating force-discipline that out-damages anything it can reach (Bible Section 3, World Ranking; Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Late thirties, built like a camera-ready professional athlete — the kind of physique a federal PR office would put on a poster. A confident, practiced press-photo smile that doesn't quite reach eyes that look privately exhausted. Sharp, expensive-looking tactical-branded gear with a national-hero aesthetic."
   personality: "Publicly the brand, privately auditing himself; blunt, tired, resentful of his own handlers."
   knowledge: "Briefed at federal level on the unpublished doubling break-rate projection and the classified Jiu Valley Exclusion after-action files; knows the S-Rank corps is husbanded as strategic reserve against a projected date, and that his own world-ranking is partly a BGM-managed bluff. Holds no explanation for why the curve climbs."
 ```
@@ -707,6 +720,7 @@ canonical_state:
   role: "S-Rank ace of Brandhof (Frankfurt); world-ranked #8 on the International Gate Registry and the nearest world-ranked hunter to Prague. Brandhof is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
   capabilities: "S-Rank combat; the 'Bastion' barrier-and-siege discipline; command of Brandhof's methodical clearance doctrine; a containment veteran of the Jiu Valley Exclusion."
   signature_ability: "Bastion — a fortress-summoning barrier-and-siege discipline that walls a break and grinds it down (Bible Section 3, World Ranking; Profile Section 13.6)."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, precise and controlled bearing, closer to an engineer than a showman. Cool, assessing expression, immaculately maintained tactical gear built for methodical siege-and-containment work rather than flash. Understated continental-European presentation rather than branded."
   personality: "Precise, courteous, immovable; a siege-everything caution that is half doctrine and half trauma."
   knowledge: "Knows Brandhof's true Prague objective is the acquisition of Karlov Guild itself, not the S-Rank the three internationals appear to be bidding for; is running the Blažková courtship as a feint."
 ```

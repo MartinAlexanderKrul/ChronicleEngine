@@ -193,6 +193,7 @@ aliases:
 relationships:
   - REL-000054
 canonical_state:
+  portrait: "assets/portraits/Dominic_Crane_ENT-000109.png"
   rank: "**S-Rank** — stated in his entry: Horizon Guild's drafted ace, one of Chicago's two resident S-Ranks. Resolved by that Rank under Section 13.1."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A drafted ace is selected for being measurably more than the median S, and the whole brand is built on his being it."
   pools: "**Maximum Health 4200, maximum Mana 2100** — Section 6.1 table (4000 / 2000) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 210, Signature 525, Boss-tier 1050**. Section 5.3 running-dry threshold **525**."
@@ -434,6 +435,7 @@ aliases:
 relationships:
   - REL-000058
 canonical_state:
+  portrait: "assets/portraits/Tereza_Blazkova_ENT-000114.png"
   rank: "**S-Rank** — stated in her entry: S-Rank, the Czech Republic's first and only, measured in 2023. Resolved by that Rank under Section 13.1."
   pool_variance: "**+10%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A nation's sole S-Rank and a national celebrity. If any pool in this file should sit at the top of its bracket, it is hers."
   pools: "**Maximum Health 4400, maximum Mana 2200** — Section 6.1 table (4000 / 2000) × 1.10, floored. Section 5.2 tier costs, read from their own maximum: **Minor 220, Signature 550, Boss-tier 1100**. Section 5.3 running-dry threshold **550**."
@@ -669,13 +671,14 @@ aliases:
   - name: "the American #1"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Reid_Calloway_ENT-000123.png"
   rank: "**S-Rank** — stated in his entry: S-Rank, world-ranked #7 on the International Gate Registry list. Resolved by that Rank under Section 13.1."
   pool_variance: "**+10%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. World-ranked seventh on Earth and the highest-ranked American. The list is the justification."
   pools: "**Maximum Health 4400, maximum Mana 2200** — Section 6.1 table (4000 / 2000) × 1.10, floored. Section 5.2 tier costs, read from their own maximum: **Minor 220, Signature 550, Boss-tier 1100**. Section 5.3 running-dry threshold **550**."
   role: "S-Rank ace of Keystone Guild (New York); world-ranked #7 on the International Gate Registry and the highest-ranked American hunter. Keystone Guild is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
   capabilities: "S-Rank combat; the 'Overrun' escalating force-discipline; national-symbol status and the federal access that comes with it."
   signature_ability: "Overrun — an escalating force-discipline that out-damages anything it can reach (Bible Section 3, World Ranking; Profile Section 13.6)."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Late thirties, built like a camera-ready professional athlete — the kind of physique a federal PR office would put on a poster. A confident, practiced press-photo smile that doesn't quite reach eyes that look privately exhausted. Sharp, expensive-looking tactical-branded gear with a national-hero aesthetic."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note; revised the same day at the player's direction to specify a Black man, a deliberate authorial choice.** Late thirties, a Black man built like a camera-ready professional athlete — the kind of physique a federal PR office would put on a poster. A confident, practiced press-photo smile that doesn't quite reach eyes that look privately exhausted. Sharp, expensive-looking tactical-branded gear with a national-hero aesthetic."
   personality: "Publicly the brand, privately auditing himself; blunt, tired, resentful of his own handlers."
   knowledge: "Briefed at federal level on the unpublished doubling break-rate projection and the classified Jiu Valley Exclusion after-action files; knows the S-Rank corps is husbanded as strategic reserve against a projected date, and that his own world-ranking is partly a BGM-managed bluff. Holds no explanation for why the curve climbs."
 ```
@@ -714,6 +717,7 @@ aliases:
   - name: "Lukas Reinhardt"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Lukas_Reinhardt_ENT-000124.png"
   rank: "**S-Rank** — stated in his entry: S-Rank, world-ranked #8 on the International Gate Registry list. Resolved by that Rank under Section 13.1."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. World-ranked eighth, one rung below Calloway, and the number should say so."
   pools: "**Maximum Health 4200, maximum Mana 2100** — Section 6.1 table (4000 / 2000) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 210, Signature 525, Boss-tier 1050**. Section 5.3 running-dry threshold **525**."
@@ -760,6 +764,7 @@ aliases:
   - name: "Elias Kane"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Elias_Kane_ENT-000242.png"
   rank: "**S-Rank** — stated in his entry, 'the other Chicago S-Rank.' Resolved by that Rank under Section 13.1."
   role: "BGM federal asset, Chicago — no guild membership, reports to Washington rather than Region V or any guild chain (`200_WORLD_BIBLE.md`)."
   location: "Chicago; no fixed established address. Met Alexander at The Sidecut, 2211 W Cermak Road, 2026-09-06."

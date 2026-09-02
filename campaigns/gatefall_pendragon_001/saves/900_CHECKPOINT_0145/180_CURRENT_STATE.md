@@ -94,6 +94,7 @@ subjects: []
 - **THE UNREAD CRYSTALS/HIDE-CLAW SAMPLE.** Unchanged.
 - **THE PERSONAL GATE REMAINS UNOPENED.** Unchanged.
 - **A NEW A-RANK GREATARM, BANKED, OFF-BUILD.** No use identified yet — sell, fuse, or hold.
+- **THE ORENNE PORTRAIT IS STALE** — generated against the pre-revision description; needs regenerating against the current canon (a heavily muscled Black man).
 - **`OBJ-41` items 1-2**, THE CORRELATED-FACE MONITORING ROOM'S OPERATOR, A BREAK LOOSE OFF DEVON AVENUE, WHO RUNS CONSULT — all unchanged this span; see `170_CHANGELOG.md`.
 - **Resolved threads are not carried here.**
 

@@ -1003,7 +1003,18 @@ surfaces:
       # 15,546 -> 14,676. DOWN 870 even after the render change added 482
       # (15.1 + 15.3.5). This is the surface the ceiling raise was argued
       # from, and it is 5,324 tokens under the new 20,000 stop.
-      gatefall_pendragon_001:/system shop: 17000
+      gatefall_pendragon_001:/system shop: 19852
+      # Re-recorded 2026-09-13 at Checkpoint 0146, 17,000 -> 19,852. One
+      # unusually dense session (checkpoint 0145 -> 0146): all fourteen
+      # remaining far-side taught-route candidates ratified across four
+      # teachers (this surface reads skills_known), the Brno S-Rank Gate plus
+      # ten S-Rank instant dungeons landed 26 more banked cores and a crystal
+      # sell-down note, and level 172->185 crossed two Title Assessments.
+      # Substantial trimming already applied first (duplicated event-history
+      # chains cut from the rift-step line, potion/gear entries, and the
+      # daily-premium block) before re-recording; the remainder is current
+      # holdable state the surface is declared to carry, not restatable
+      # history. 148 tokens remain against the 20,000 flat fail.
       # Re-recorded 2026-08-22 at Checkpoint 0111, 14,407 -> 17,000, on owner
       # instruction. The growth ratchet failed three consecutive saves inside
       # one session (checkpoints 0109-0111) on the same cause each time:

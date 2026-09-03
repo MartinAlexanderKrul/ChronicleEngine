@@ -19,7 +19,7 @@ initialization_state: resumable
 # failures. Characters recorded after it carry want, fear, secret, voice and an agenda.
 # Removing this line does not disable the check; it widens it to the whole cast.
 disposition_baseline: ENT-000210
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0145
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0146
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 selection_caveat: "Active campaign; resumable from its latest checkpoint."
@@ -332,3 +332,4 @@ Non-canonical operational preferences, imported 2026-08-30 from the player's acc
 **Superseded, not carried forward:** an earlier item in the same export ("defer all campaign-file writes to `/save`, never write mid-turn") is explicitly dropped — confirmed with the player 2026-08-30 that the Resident Core's own per-turn Turn-State Settlement governs instead, matching this session's actual practice throughout.
 
 10. **Re-confirmed 2026-09-08, directly against the `save` skill's own text.** The `.claude/skills/save/SKILL.md` file separately claims the campaign already reversed to defer-only writes, citing this campaign's own history of "repeated 'live, unpromoted-to-checkpoint' edits" as the practice being retired. Asked the player directly which governs going forward; the answer was explicit: **keep per-turn writes**, treat the skill file's reversal claim as stale/incorrect for this campaign. `/save` remains the periodic snapshot-and-commit step (Object Blocks, checkpoint folder, manifest, ID registry, validation gate, `main` commit) layered on top of files that are already current — not the first time state actually reaches disk.
+11. **Classify skill-formation progress live, never wait for `/save`.** Confirmed 2026-09-12. Overrides §7.1's default deferred-classification boundary for structured practice — ratify a `tracking` candidate the same turn its qualifying scene resolves, same as the danger boundary already does.

@@ -2,7 +2,7 @@
 
 **Ledger:** World content (Decision 062): authoritative on behavior in its declared scope; owns no Persistent Object.
 **World:** Gatefall
-**Status:** Active — instantiated as canonical world content (2026-08-25). **Extended 2026-08-26** with Sections 2.1 (anchors and tunnels reach within the Stacks and never bridge to Earth, honouring the `EVT-000814` play ruling), 2.2 (authored traversal legs against Section 2's clock), and 4.3 (the notice counter that fires Section 4's agendas). **Section 4.2 re-authored under Profile 1.109's Section 13.1.1**: every named figure is a System-bearer stated as a sheet rather than on the Combat Tier scale, all four Section 4.1 positions now have a holder, and Aumry, Orenne and Tolo are added. No Rank, reward, drop table, or Section 18.13.1 grant moves, and **every authored figure is smaller than the Bearer.**
+**Status:** Active — instantiated as canonical world content (2026-08-25). **Extended 2026-08-26** with Sections 2.1 (anchors and tunnels reach within the Stacks and never bridge to Earth, honouring the `EVT-000814` play ruling), 2.2 (authored traversal legs against Section 2's clock), and 4.3 (the notice counter that fires Section 4's agendas). **Section 4.2 re-authored under Profile 1.109's Section 13.1.1**: every named figure is a System-bearer stated as a sheet rather than on the Combat Tier scale, all four Section 4.1 positions now have a holder, and Aumry, Orenne and Tolo are added. No Rank, reward, drop table, or Section 18.13.1 grant moves, and **every authored figure is smaller than the Bearer.** **Extended 2026-09-14 with Section 4.5**, an owner ruling: a fourth state (**the Passed**) beyond Standing/Continued/Spent, populated with the campaign's first named Assay agent, and a first concrete answer to Section 5's open question of whether a champion who crosses to Earth can remain there.
 **Reachable by:** `206_WORLD_RULE_PROFILE.md` Section 18.13's **far door** (Riftwalker → Gate Walker, level 100), and by nothing else authored.
 
 > **OWNER EYES ONLY. The Runtime must never reveal, quote, or paraphrase this file in play except through what the Bearer physically perceives while standing in it.** It is the destination Section 18.13 declines to specify, and it exists because that section forbids a Runtime improvising a world. It is written to be consistent with `200_WORLD_BIBLE.md` Section 9 and never to restate it: nothing here explains the Assay to anyone, and no inhabitant of this place is permitted to hand the Bearer the cosmology in a speech.
@@ -516,6 +516,61 @@ Section 4.1 governs what a figure does about him, and a killed champion is new i
 
 **A Runtime never assembles them into a response.** Section 4.1 is four positions that disagree with each other about everything, and the disagreement is the point — **they do not organise, they do not hunt as a group, and nothing here authors a party.** Each of the five acts on their own line, and the most dangerous of those lines does not involve a blow being struck.
 
+## 4.5 The Passed — a fourth state, now witnessed
+
+**Section 4 authored three states for a reason: Standing, Continued, and Spent are what happens to a candidate whose world failed.** They are all still in the Stacks because failure is what puts a biosphere on the shelf. None of the three says anything about the other outcome Section 4.1's **Let it finish** position exists to fear — a world that **passes** and is *"spared and absorbed into the Assay's network."* That candidate does not go on the shelf. Nobody here has ever been in a position to have met one. **This section is that meeting, authored on an owner ruling rather than improvised at the table** (Section 2's own discipline), because Orenne's argument has stood as a belief with no confirmation for as long as this file has existed, and a campaign that keeps circling the question without ever answering it is not building tension, it is stalling.
+
+**The Passed are not shelved with the failures because they are not failures — they work for the thing that runs the shelf.** What Orenne calls *"a thing that eats"* has a staff, and this is the first member of it the campaign has ever put a name to.
+
+### The Auditor, filed as `RQ-004` — once Wren Solane
+
+**Her world's name, in the record that still uses it, renders close enough to a Midwestern American county that the coincidence is not one — the same implication Aumry's tenth candidate already planted, confirmed a second time.** She does not volunteer this. She has been asked, exactly once, by someone who worked out enough to ask, and answered plainly, because lying about it would cost her nothing and the truth costs her nothing either. That is most of what four thousand years in the Assay's employ has done to what she used to feel about her own name.
+
+- **Want:** to close every uncut sample she finds, cleanly, before anyone above her has to know it existed. Not cruelty — housekeeping. An unfiled world is a line item someone will eventually ask her about, and she has not had to explain a discrepancy to the Assay in longer than Sevrin has been trying to end it.
+- **Fear:** being asked why a sample stayed uncut as long as this one did. She found the Libeň seam eleven years ago, on schedule, and instead of closing it cleanly she cost it a death and left it half-sealed — her own failure, not the dying man's — and has been managing that gap quietly ever since rather than reporting it. **A live crossing attempt from the Earth side is the discrepancy she has spent eleven years hoping nobody ever finds.**
+- **Secret:** she remembers passing. Every other authored figure in this file lost, was harvested, and either kept fighting or stopped being a person about it. She won, and winning felt like nothing — no reward, no homecoming, no meaning conferred, just new instructions from a channel that had graded her world adequate stock and moved on. **She has never once, since, been able to tell whether serving the Assay is loyalty, habit, or the only shape left for a mind the exam already finished with.**
+- **Voice:** courteous in the specific way of someone reciting a procedure she no longer has to think about. She answers exactly the question asked, no more, and she is never once cruel about it — cruelty would require caring what happens to the thing she's cataloguing, and grading isn't caring.
+- **Agenda:** the seam she cut short eleven years ago just reopened from the wrong side, tested by a hand that isn't hers. She's here to find out who did it, whether it's a new problem or an old one waking up, and whether it can be closed again quietly enough that it never becomes a conversation she has to have.
+
+**She is a System-bearer and resolves as one** (`206_WORLD_RULE_PROFILE.md` Section 13.1.1) — sized on the same rule as Section 4.2's five, base-Stat sum fixed at first contact and never re-derived, no figure's `maximum_health` permitted past the Bearer's own.
+
+```yaml
+stats:      { strength: 1734, agility: 2200, vitality: 1400, perception: 3600, intelligence: 3400 }
+maximum_health: 5600      # 4 x Vitality
+maximum_mana:   6800      # 2 x Intelligence
+equipment: none           # nothing the Assay issues has ever been catalogued as gear
+mastery:   Master on grading, tracking and reporting; unremarkable in a straight fight and untroubled by that
+```
+
+**Read those numbers next to his and she is not the threat in the room — what she can call is.** She is built to find and file, not to win. She has never needed to win. What makes her the most consequential thing this campaign has met on the far side isn't her Strength, it's the channel she stands at the end of.
+
+| Technique | Rank | Mana | Effect |
+|---|---|---:|---|
+| **Grading Touch** | S | 20 | A touch reads a creature's true capability against the Assay's own scale, permanently, whether or not the target consents or resists. |
+| **Shelf-Mark** | S | passive | Anyone she has graded, she can locate anywhere the Assay's reach extends — which this file does not bound. |
+| **File the Report** | S | 40 | Sends what she has learned up the channel. **What answers, if anything does, is an owner ruling, not rolled here.** |
+| **Uncut Sample** | S | passive | She perceives any place within her current stratum the Assay has not yet formally graded — which is why she found the Libeň seam, and why she found this one. |
+| **Closed Quietly** | S | 30 | Attempts to reseal an open seam or door from the far side, on Assay authority rather than Sevrin's craft — a different working aimed at the same kind of gap. |
+| **Adequate Stock** | S | passive | Immune to any effect that would compel, persuade, or provoke her — she has been told what she is for and does not need to be told again. |
+| **Standing Instructions** | S | passive | Cannot be surprised by anything already logged in a report she has filed. |
+| **The Long Audit** | S | 8 | Learns everything a target has done since she last graded it, read off the change in what it now is. |
+| **Nothing Personal** | S | passive | Takes no morale, fear, or intimidation penalty from any source — grading is not a position she can be argued out of. |
+| **Correction** | S | 25 | Forces one already-resolved effect back to its state before it resolved. Once per scene. |
+| **What Eleven Years Bought** | S | 15 | Erases evidence of her own presence from a scene after the fact — the reason nobody has connected her to Libeň until now. |
+| **Field Containment** | A | 12 | A bounded volume in which nothing may cross a threshold she has drawn, for one hour. |
+| **Sample Handling** | A | 6 | Carries an unconscious or restrained creature through a seam without waking it. |
+| **Cold Read** | A | 3 | Learns a target's current pool state and standing capabilities at a glance. |
+| **Filed Precedent** | A | passive | +2 modifier steps against any creature or effect type she has previously graded. |
+| **No Discrepancy** | A | passive | Any record she alters to cover a gap holds against ordinary scrutiny — not against Section 4.2's own Tolo, whose techniques read past this one outright. |
+| **Procedural Calm** | B | passive | Cannot be rushed, provoked into haste, or made to act before she judges the moment adequate. |
+| **The Old Instructions** | B | passive | Knows exactly what the Assay's standard procedure calls for in any situation she recognizes as a category. |
+| **Plain Answer** | C | passive | Cannot lie about a fact she has already been asked directly and plainly — the specific mercy left over from being a person once. |
+| **What Passing Actually Felt Like** | S | — | **Once ever, and it is an owner ruling.** What was on the other side of her own exam, and what it did to her the moment she realized nothing was coming after. |
+
+**Ten of the twenty file, catalogue, or report; only a handful do anything to a person directly, and that is the actual shape of the danger.** She does not need to beat Alexander to make this catastrophic. She needs to send **File the Report** once, cleanly, before the scene ends — and unlike every other figure in Section 4.2, what answers that call is not authored anywhere in this file, on purpose.
+
+**This is the owner ruling Section 5 flagged as the single most consequential thing in this file, given a first concrete answer.** A champion who crosses to Earth and remains is no longer hypothetical: the Libeň Scar, eleven years old, is what her first attempt already cost the world she found it in, and the seam she left half-sealed is the reason anything is possible at Sevrin's ground today at all. Whether she personally can cross and stay a second time is a live question this scene may answer rather than one this file pre-empts further.
+
 ---
 
 # 5. What Comes Back
@@ -536,7 +591,7 @@ Stated so nobody discovers a hole mid-session, on the same discipline `206_WORLD
 - **Whether the process can be stopped**, and whether Sevrin's plan is correct. The plan exists; its correctness is an owner ruling.
 - **What is past the Weir's deepest seam.** Sevrin has seen it and the file does not say what it is, on purpose.
 - **Any stratum beyond the five above.** The Stacks are indefinitely large; a Runtime authors a sixth before running it and **never improvises one mid-scene**.
-- **Whether a champion can cross and stay.** See Section 5.
+- **Whether a champion can cross and stay, in general.** Section 4.5 gives one concrete instance (the Auditor, evidenced by the Libeň Scar) rather than a general rule — whether that instance generalizes to every figure in this file remains an owner ruling.
 - **What the Long Shelf's society is past its five named figures.** Section 3.5 authors a valley with shelters, cultivation and worn paths; Section 4.2 authors all four positions, a figure who refuses them, and the Spent as a population a Runtime may draw one from at need. **Its size, its arrangement, its history and anyone else living in it remain unauthored**, and Section 4.3's contacts draw on the named figures first.
 - **Travel on any leg not in Section 2.2's table**, including every route inside an unauthored stratum. The table is the whole of what is authored; a Runtime that needs a leg it does not list asks the owner rather than estimating one.
 - **What the far side pays, because the answer is nothing and it is authored elsewhere.** `206_WORLD_RULE_PROFILE.md` Section 18.13.1 governs: no Rank, no kill XP row, no clear milestone, no drop table. Nothing in Sections 2.1, 2.2 or 4.3 changes that — they make the place **reachable**, not profitable, and a Runtime never invents a reward here to justify the trip.

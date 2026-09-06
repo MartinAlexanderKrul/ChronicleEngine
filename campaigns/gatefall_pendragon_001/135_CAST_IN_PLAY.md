@@ -139,6 +139,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000267` | Daniel Pruett | artificer — CONSULT-controlled | active | Suite 411, the downtown Chicago formation-mill office — returne… | — |
 | `ENT-000268` | Aldric Renn | CONSULT — administrative handler | active | A small unmarked office, Suite 3C, West Fulton Market, Chicago… | — |
 | `ENT-000269` | the Pilsen Gate | Gate, confirmed | active | Pilsen, Chicago — exact address not yet sent | — |
+| `ENT-000273` | the Auditor | System-bearer, Assay grader | deceased | Deceased, 'the cut chamber' — the sealed stone room beyond the… | — |
 
 ---
 
@@ -238,13 +239,14 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000266` | Ingrid Solberg | Partial read (🎲 40, net +1, effective 60) — incomplete | Not established before this session; **plausibly sharpened** by an unexplained abduction and in… | Not established | Calm, precise, a working professional's cadence — states a finding plainly, doesn't dress it up |
 | `ENT-000267` | Daniel Pruett | Full read (🎲 45, net +1, effective 65) — success | That it already has, or is about to — Ingrid's own warning (*'whatever's going on with you pers… | Not established — the read reached want and fear, not further | Says little; a short nod does most of his talking |
 | `ENT-000268` | Aldric Renn | Not established | Not established | Not established | Not established — never heard directly |
+| `ENT-000273` | the Auditor | To finish grading every uncut sample she finds, firsthand, in person, before anyone above her a… | Being asked why the Libeň sample was never filed — the dying man's sacrifice, not her own failu… | She remembers passing her own exam | Courteous in the specific way of someone reciting a procedure she no longer has to think about |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 116. Protagonist relationships: 35.
-- Characters: 88. Disposition authored in full: 42; partial: 34; none: 12. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 117. Protagonist relationships: 35.
+- Characters: 89. Disposition authored in full: 43; partial: 34; none: 12. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

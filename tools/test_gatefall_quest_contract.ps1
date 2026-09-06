@@ -216,10 +216,19 @@ Assert-True ($startup -match '"14\.3 Trigger Tiers') "Gatefall startup does not 
 Assert-True ($startup -match 'migration_index: worlds/gatefall/migrations/INDEX\.md') "Gatefall startup does not point restoration at the migration index."
 Assert-True ($startup -match 'require_profile_trigger_audit: true') "Gatefall startup does not require the proactive trigger audit."
 Assert-True ($index -match "World Rule Profile $activeVersionPattern, frozen") "World index does not advertise frozen Profile $activeVersion."
-Assert-True ($profile -match 'SKILLS[^\r\n]+ACTIVE') "Gatefall /system template does not render an ACTIVE skills group."
-Assert-True ($profile -match 'SKILLS[^\r\n]+PASSIVE') "Gatefall /system template does not render a PASSIVE skills group."
-Assert-True ($profile -match 'contains every skill whose ledger entry carries a Mana cost') "Gatefall /system skills do not classify ACTIVE entries from canonical Mana cost."
-Assert-True ($profile -match 'contains every skill whose cost is `passive`') "Gatefall /system skills do not classify PASSIVE entries from canonical cost."
+# Profile 1.113 replaced the mechanical ACTIVE / PASSIVE / STAT PASSIVE triad with
+# a categorical Offense / Defense / Utility order, subdivided by acquisition source.
+# These assertions previously pinned the 1.112 grammar and went red the moment the
+# owner ruled the new one in -- the F-013 shape, a guard lagging the profile that
+# authors what it guards. They assert the 1.113 properties instead: the three
+# category bands exist in the template, the classification is made from the skill's
+# authored effect rather than its name, and the second level is fixed by ledger
+# provenance rather than guessed.
+Assert-True ($profile -match 'OFFENSE') "Gatefall /system skills template does not render an OFFENSE category band."
+Assert-True ($profile -match 'DEFENSE') "Gatefall /system skills template does not render a DEFENSE category band."
+Assert-True ($profile -match 'UTILITY') "Gatefall /system skills template does not render a UTILITY category band."
+Assert-True ($profile -match "Classify by the skill.s primary authored effect, never by name or flavor") "Gatefall /system skills do not classify categories from the authored effect."
+Assert-True ($profile -match 'acquisition_route') "Gatefall /system skills do not fix their source subheading from ledger provenance."
 # Two stored shapes are legal and both must pass, because checkpoints are immutable:
 # every capture through Profile 1.48 carries `base_capacity` + `multitask_bonus` +
 # `capacity_total` and must still agree with itself, while 1.49 and later carry

@@ -97,23 +97,64 @@ function Get-RegistryHighWater {
 # re-evidence anything it likes.
 function Get-ProgressionCandidates {
     param([string]$Path)
-    $pattern = '(?ms)^(?<block>      - domain: (?<domain>\S+)\r?\n' +
-               '        key: (?<key>\S+)\r?\n' +
-               '        signature: (?<signature>\S+)\r?\n' +
-               '        status: (?<status>\S+)\r?\n' +
-               '        evidence:\r?\n(?<evidence>(?:^          - \S+[^\r\n]*\r?\n)+))'
+    # The block shape moved underneath this parser and it matched nothing for a
+    # whole span, which is worse than failing: `$found` came back empty, PowerShell
+    # unrolled the empty array to $null on return, and `$candidates.Count` threw a
+    # property-not-found error that named neither the sheet nor the shape. Two
+    # changes caused it, both legitimate authoring:
+    #
+    #   1. `evidence:` became an INLINE list -- `evidence: [EVT-1#a, EVT-2#b]` --
+    #      where this required a nested block list. All 36 live candidates are
+    #      inline; none is block-form.
+    #   2. The taught acquisition route (Profile 1.109) added `taught_by:` and
+    #      `acquisition_route:` between `status:` and `evidence:`. 24 of 36
+    #      candidates carry them.
+    #
+    # Both forms are accepted now, and intervening keys are skipped rather than
+    # assumed absent. This is the F-013 shape: a guard pinned to the layout of the
+    # data instead of to the property it exists to assert.
+    $pattern = '(?ms)^(?<block>      - domain: (?<domain>\S+)?
+' +
+               '        key: (?<key>\S+)?
+' +
+               '        signature: (?<signature>\S+)?
+' +
+               '        status: (?<status>\S+)?
+' +
+               '(?:        (?!evidence:)[a-z_]+:[^
+]*?
+)*' +
+               '        evidence:(?<evidence>' +
+                   '[ ]*\[[^\]]*\]?
+' +
+                   '|?
+(?:^          - \S+[^
+]*?
+)+' +
+               '))'
     $found = @()
     foreach ($m in [regex]::Matches((Get-Text $Path), $pattern)) {
+        $raw = $m.Groups['evidence'].Value
+        $refs = @()
+        if ($raw -match '\[(?<items>[^\]]*)\]') {
+            $refs = @($Matches['items'] -split ',' |
+                      ForEach-Object { $_.Trim() } |
+                      Where-Object { $_ -ne '' })
+        } else {
+            $refs = @([regex]::Matches($raw, '(?m)^          - (?<ref>\S+)') |
+                      ForEach-Object { $_.Groups['ref'].Value })
+        }
         $found += [pscustomobject]@{
             Block    = $m.Groups['block'].Value
             Domain   = $m.Groups['domain'].Value
             Key      = $m.Groups['key'].Value
             Status   = $m.Groups['status'].Value
-            Evidence = @([regex]::Matches($m.Groups['evidence'].Value, '(?m)^          - (?<ref>\S+)') |
-                         ForEach-Object { $_.Groups['ref'].Value })
+            Evidence = $refs
         }
     }
-    return $found
+    # Comma-wrapped: returning a bare empty array unrolls to $null, and the caller
+    # then dies on .Count instead of reporting "no candidates could be read".
+    return ,$found
 }
 
 function Set-CandidateStatus {

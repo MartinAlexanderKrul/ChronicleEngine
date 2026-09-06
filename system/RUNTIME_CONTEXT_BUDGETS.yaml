@@ -735,7 +735,23 @@ surfaces:
       # spends roughly 120 a checkpoint on this surface, so that is on the order
       # of twenty more checkpoints before it binds. F-019's ownership question
       # is still the thing that would actually move it.
-      gatefall_pendragon_001: 37532
+      # Carried 37,532 -> 39,933 (+2,401) on 2026-09-14, out of character. The
+      # growth is checkpoint 0149's: nineteen Succession techniques entering
+      # `skills_known` (eighteen after the elective-Succession ruling struck
+      # `Plain Answer`), plus that ruling's own line on Current State. Real play,
+      # correctly recorded rather than absorbed.
+      #
+      # READ THIS BEFORE THE NEXT RE-RECORD. The surface now sits 67 tokens under
+      # the 40,000 hard failure. Not 1,731 as the note above records, not 2,041 as
+      # the one above that does -- SIXTY-SEVEN. The levers those notes name are
+      # unchanged and have now been deferred a fourth time, and the margin has
+      # gone from a thousand-token cushion to less than one paragraph. The next
+      # ordinary checkpoint breaches it, and a breached readiness surface is not a
+      # red suite, it is a campaign that cannot load. `failure_tokens` is
+      # deliberately NOT raised here; raising it is the move every one of those
+      # notes warned against, and it is the reason the margin is what it is.
+      # Raised as `F-071`.
+      gatefall_pendragon_001: 39933
       prototype_alpha: 10415
       prototype_beta: 11060
       reikon_awakening_001: 15768

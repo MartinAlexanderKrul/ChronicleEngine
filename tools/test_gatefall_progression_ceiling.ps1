@@ -318,8 +318,14 @@ if (Test-Path $farSidePath) {
     # rescaled every sheet, at which point a correct edit would have turned this
     # red -- the F-013 shape. Assert the FORMULA instead: Section 6.1's Bearer
     # pool is 4 x Vitality, and that holds whatever the Stats become.
-    Assert-True ($farSide -match '(?i)she is smaller') `
-        "The far-side file does not state that its strongest teacher is smaller than the Bearer. If she reads as a bigger monster the file has taken the inflation route the owner rejected."
+    # The pronoun was pinned here and a player ruling on 2026-09-08 corrected
+    # Sevrin to he/him, turning a correct canon edit red -- the same F-013 shape
+    # the comment above warns about, one field over. A character's pronoun is
+    # exactly the kind of thing play is allowed to change; the property under
+    # test is that the file says a champion is SMALLER than the Bearer, which is
+    # the inflation route the owner rejected. Match the claim, not the person.
+    Assert-True ($farSide -match '(?i)(?:he|she|they)\s+is\s+smaller') `
+        "The far-side file does not state that its strongest teacher is smaller than the Bearer. If a champion reads as a bigger monster the file has taken the inflation route the owner rejected."
     Assert-True ($farSide -match '(?i)bar an anchored step') `
         "Sevrin cannot deny the anchored step. Her danger is denial rather than damage, and without it a lower-Health entity is simply weaker."
     # Scoped to the named figures. The strata above them legitimately still read

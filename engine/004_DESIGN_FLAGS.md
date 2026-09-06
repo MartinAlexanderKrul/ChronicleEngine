@@ -1755,7 +1755,9 @@ Profile **1.111** rules that killing a System-touched human absorbs what they he
 
 **The open design question:** does `docs/AI_GAMEPLAY_RESIDENT_CORE.md` or the relevant world-authoring section of `engine/012_ENGINE_RUNTIME.md` owe a general rule — something like "an Event whose own narration asserts world-historic scale mints a standing, tick-advanced reaction thread, the same way a pending world-side commitment mints a due-time obligation" — so that this doesn't have to be independently reinvented per world, or worse, per campaign, every time a Runtime produces something big enough to matter? Or is this properly scoped to a World Rule Profile's own Section 9-equivalent (each world defines what "major" means and how its own public reacts), with only the *requirement that some such table exist and be checked every tick* belonging at the engine layer? A related, narrower question: should `district_pressure`-style "mandatory tracked state checked every tick, no roll, no discretion" be named in the engine layer as a general pattern for standing consequences, rather than something each world profile independently discovers it needs (Gatefall alone now has this shape three times — district pressure, escalation state, and this).
 
-**Status:** Open.
+**Status: ACTIONED (2026-09-14)** — both halves. **The world side**: `campaigns/gatefall_pendragon_001/110_WORLD_LEDGER.md` now carries five reaction keys rather than one. `jiu_valley_public_reaction` was advanced 3 -> 4 (it had missed the 2026-09-14 tick, exactly the decay this flag describes, one session after the flag was raised) and re-authored out to day 18 with an explicit frame: the Exclusion's death lands as an *indictment* rather than a triumph. Four keys were added and backfilled from played canon only — `pendragon_public_profile` from the 2026-08-23 reclassification, and `the_unnecessary_trade`, `beyond_scale_classification` and `the_thinning` from the level-100 crossing on 2026-08-26 (`EVT-000751`), whose own chronicle text closes *"None of this has surfaced in fiction yet"* and was still true nineteen in-fiction days later. **The enforcement side, which is the half the flag says actually matters**: `tools/validate_repository.ps1` gains a gate asserting every entry's `day` counter equals the whole days between its own `started` date and `campaign_time`, in both directions, and `tools/test_standing_world_reactions.ps1` mutation-tests it across four legs — stale counter, counter ahead of the clock, missing `day`, unparseable `started` — on a copied tree, never a live file. **The flag's own prediction is what forced this:** it said a campaign-level table is *"a workaround, not a mechanism"* because nothing checked it, and the table then missed its very next scheduled advance. It is a mechanism now.
+
+**Left open, and it is the flag's own second question:** whether `012_ENGINE_RUNTIME.md` or the Resident Core owes a *general* rule — an Event asserting world-historic scale mints a standing, tick-advanced reaction thread — so this is not reinvented per world. Gatefall now has this shape four times (district pressure, escalation state, far-side notice, and standing reactions), which is the evidence the flag asked for and did not have. Raising that is foundational against a released version under Decision 069 leg 3 and needs an ADR rather than a paragraph.
 
 ## F-066 — Owen played as a question-generator across a whole scene, not a person, and the player named it as exhaustion rather than a single bad line
 
@@ -1795,3 +1797,115 @@ At `EVT-000959` that assumption broke on contact. Nineteen of the Auditor's twen
 4. **Does anything else in the profile hand the Bearer an undeclinable clause?** Section 16's titles are the obvious place to check — they are granted by assessment, not chosen, and nobody has audited the catalog against the option-removal test above.
 
 **Related:** `F-065` (Succession's economics, where the yield was priced and the imposition was not), `F-047` (an engine-general principle extracted from one world's break), `F-027` (a ratified skill nothing ever used, the same family of "authored without checking what it composes into").
+
+## F-069 — Twin Fang's multiplier table terminates at A-Rank while the live skill is S, and the character sheet silently dropped the value when it reached Master
+
+**Raised:** 2026-09-14 · **Source:** `campaigns/gatefall_pendragon_001/`, found by `tools/test_gatefall_quest_contract.ps1` during an out-of-character sweep of the seven red Tier 3 suites
+
+**Status:** Open. **Deliberately not actioned** — actioning it means writing a mechanical value nobody authored, which is precisely what `F-014` and `F-030` record as the thing a Runtime must not do on its own.
+
+**Two defects, and the second is what made the first invisible.**
+
+**One: the table stops a rung below the live skill.** Section 7.4's Twin Fang follow-up multiplier is authored as a Rank x mastery grid running E through **A**, ending at `A / Master = x3.00`. The live skill is **`Twin Fang [S-Rank] Master`**. There is no S row, so the multiplier the skill actually applies is not readable anywhere in the profile.
+
+The prose does carry an authoring rule — Section 7.3's skill table gives Twin Fang **`+0.35` to its follow-up multiplier per Rank**, and the grid's own internal step is `+0.15` per mastery level — so a value *is* derivable (S Novice `x2.75`, S Master `x3.35`). **Deriving it is not the same as reading it**, and the difference matters here: this skill's whole progression is the multiplier, Section 7.5's ceiling is `System Rank + 1`, and `F-054` already records this world adding a rung that repeated the one below it. An owner ruling should say whether the S row is the arithmetic continuation or something else, and then the grid should carry the row so nobody re-derives it at a table.
+
+**Two: the character sheet dropped the value when the skill hit Master.** Through checkpoint 0135 the entry read *"The second strike has a **x2.55** Twin Fang follow-up multiplier at Practiced; Expert's own rate applies from the next resolution."* When mastery completed and the entry was rewritten to *"Terminal — no further mastery movement possible (Decision 079)"*, the sentence carrying the multiplier went with it. **The skill's single most load-bearing number now appears nowhere on the sheet**, and the only reason anyone noticed is that a contract test asserts the render.
+
+That is the `F-037` shape — a field storing a derived comparison, going stale unnoticed — with a twist worth stating: the value was not corrupted, it was **deleted by a rewrite that was otherwise correct**. Mastery genuinely was terminal; the rewrite genuinely did describe that; and the edit removed a canonical figure as collateral. A render assertion caught it and nothing else would have.
+
+**Why the suite stays red rather than being made green.** The honest options are (a) author the S row on an owner ruling and restore the sheet line from it, or (b) relax the assertion. (b) is wrong: the assertion is correct and is the only thing that noticed. (a) needs the ruling this flag exists to ask for. `tools/test_gatefall_quest_contract.ps1` therefore stays red on this one assertion until the row exists, and that redness is the flag doing its job rather than a defect in the suite.
+
+**The open design questions.**
+
+1. **Does the S row continue the arithmetic (`x2.75` / `x3.35`), or does Section 7.5's ceiling mean an S-Rank Twin Fang is authored differently?** `F-054` is the precedent for not assuming continuation.
+2. **Should a mastery-terminal rewrite be forbidden from removing a mechanical field?** The Master render legitimately drops *progress* counters; it should not be able to drop a *magnitude*. This looks like a general rule about which fields a render may retire.
+3. **Do any other skills carry a magnitude only in prose that a terminal rewrite could delete?** Nobody has swept `skills_known` for it, and the sweep is mechanical: any entry whose effect text carries a number the profile does not also carry.
+
+**Related:** `F-014` (a skill Rank cannot reach, and inventing what a rung grants), `F-030` (a render template hard-coding a value canonical state may change), `F-037` (a stored comparison against Bearer state going stale), `F-054` (a ladder that kept climbing after it arrived), `F-013` (a guard lagging the profile it guards).
+
+## F-070 — The protagonist's Stat ledger does not reconcile in two independent directions, and two of the five Stats prove the arithmetic is right
+
+**Raised:** 2026-09-14 · **Source:** `campaigns/gatefall_pendragon_001/`, `tools/test_gatefall_ap_ledger.ps1` red at HEAD during an out-of-character sweep of the Tier 3 suite
+
+**Status:** Open. **Deliberately not repaired.** These are the numbers Health, damage, Stat Passive Ranks, the Combat Tier and every damage figure in the campaign derive from. Choosing which side to move is an owner ruling, not a cleanup.
+
+**The first discrepancy: three Stats carry more than their own history accounts for.** Profile Section 3.2 makes the derivation exact — `base_stat - creation_array[stat] - allocated[stat]` must equal automatic growth, which is uniform across all five Stats. At level 186 that figure is **2,594**:
+
+| Stat | base | creation | allocated | residual | vs 2,594 |
+|---|---:|---:|---:|---:|---:|
+| Agility | 2,633 | 12 | 27 | **2,594** | exact |
+| Perception | 2,634 | 11 | 29 | **2,594** | exact |
+| Strength | 2,908 | 11 | 258 | 2,639 | **+45** |
+| Vitality | 2,887 | 8 | 175 | 2,704 | **+110** |
+| Intelligence | 3,115 | 8 | 372 | 2,735 | **+141** |
+
+**Two of the five landing exactly on 2,594 is the finding.** It rules out a wrong growth formula, a mis-parsed creation array, and a bad level: those would move all five. Three Stats drifted and two did not, so something reached Strength, Vitality and Intelligence that did not reach Agility or Perception, and reached them **without a counter recording it** — `+296` in total.
+
+**The second discrepancy is separate and points the other way.** The points ledger does not close either:
+
+```text
+    ability_points_earned      803
+    sum of the five allocated  861
+    unspent_points              13
+    allocated + unspent        874
+    874 - 803 =                +71   more points spent than the ledger says were earned
+```
+
+**A 71-point over-spend and a 296-point under-count are not the same error**, and neither explains the other. If the allocations were simply never counted the first table would be short, not long. If the base Stats were inflated the second table would be unaffected.
+
+**The most likely single cause, stated as a lead rather than a conclusion.** The decade Title Assessment grants Stat points — `170_CHANGELOG.md` records the level-130 assessment as *"+4 all base Stats from leveling, +20 further points from leveling, +30 from the title grant — 50 new unspent points"* — so a title-granted point is spendable and must appear in `ability_points_earned`. If title grants were credited to `unspent_points` and spent into `stats.*_allocated` without ever incrementing `ability_points_earned`, the second table breaks exactly the way it has. That accounts for the `+71`. It does **not** account for the `+296`, which has to be a direct write to three base Stats.
+
+**Why it must not be repaired by moving the numbers that are wrong.** Both repairs are destructive in opposite directions:
+
+- **Trust the counters** and Strength, Vitality and Intelligence fall by 45, 110 and 141. `maximum_health` is `4 x Vitality`, so Health drops by 440; every damage figure re-derives; Stat Passive Ranks re-read their thresholds; the Combat Tier re-computes. Dozens of promoted Events carry the old figures.
+- **Trust the Stats** and `+296` of allocation has to be invented across three counters with no Event behind it, which is the write that caused this.
+
+`160_CAMPAIGN_CHRONICLE.md` is the only place the answer exists. The audit is mechanical and long: every level-up crossing, every Title Assessment, and every allocation Event, against the three drifted Stats.
+
+**The open design questions.**
+
+1. **Which side is authoritative when a base Stat and its own counters disagree?** The profile derives one from the other and never says which wins when they diverge. That is the general rule this flag is really asking for.
+2. **Are title-granted Stat points required to increment `ability_points_earned`?** If yes, the `+71` is a counter defect. If no, the assertion tying earned to allocated-plus-unspent is wrong and should be relaxed. Nothing states it either way.
+3. **Should a promoted checkpoint be allowed to close with this suite red?** It has been red for at least the life of checkpoints 0148 and 0149. Tier 3 is not the save gate — Tier 2 (`validate_checkpoint.ps1`) is — and this is the second flag in a fortnight found only because someone ran Tier 3 by hand (`F-069` is the other). Whether the save gate should include the derivations is worth deciding on purpose.
+
+**Related:** `F-011` (a mastery ascension narrated but never written to its counters), `F-012` (empty `counter_deltas` on completed scenes), `F-015` (a sibling delta masking a missing one), `F-019` (no ledger owning a protagonist figure, and `180_CURRENT_STATE.md` disagreeing with itself), `F-069` (a magnitude deleted by an otherwise-correct rewrite).
+
+## F-071 — The Gatefall readiness surface is 67 tokens from a hard failure, after a fourth deferral of trimming that three prior notes each warned against
+
+**Raised:** 2026-09-14 · **Source:** `campaigns/gatefall_pendragon_001/`, `tools/test_growth_budgets.ps1` red at HEAD; found during an out-of-character sweep of the Tier 3 suite
+
+**Status:** Open, and this is the most time-critical entry in this file.
+
+**The number.** `readiness:gatefall_pendragon_001` measures **39,933 tokens** against `readiness.failure_tokens: 40000`. The margin is **67 tokens** — roughly one sentence. A readiness surface that breaches its hard failure is not a red suite; it is a campaign that cannot be loaded to play.
+
+**How it got here, in the budgets file's own words.** `system/RUNTIME_CONTEXT_BUDGETS.yaml` carries a chain of notes on this exact surface, each recording a raise and each saying the raise was the wrong answer:
+
+- *"At 27,959 against a 30,000 hard failure the margin is 2,041"*
+- *"1,731 tokens under the 40,000 hard failure. Levers unchanged and still owner authoring (R14): Current State, the startup file, and moving `titles` into a deferred group."*
+- *"A raise deferred the trimming work a third time, and the note above this one already said so twice. The levers below are still the real answer."*
+
+The baseline has now been re-recorded a fourth time, to 39,933, in the same commit as this flag. **`failure_tokens` was deliberately left at 40,000** — raising the ceiling is the move every one of those notes warned against and is why the margin is what it is. Re-recording the baseline is not the same act: the baseline had gone stale against real play (checkpoint 0149's nineteen Succession techniques), and a stale baseline makes `test_growth_budgets.ps1`'s tolerance leg red for a reason unrelated to the ratchet's health, which masks the next real regression.
+
+**Why the trimming has never happened.** Every lever the notes name is **owner authoring** under R14 — `180_CURRENT_STATE.md`, `090_CAMPAIGN_STARTUP.md`, and moving `titles` into a deferred group. None can be taken by a Runtime mid-session, and none is urgent on any single day, which is precisely how a surface crosses four warnings and arrives at 67 tokens.
+
+**What the surface is actually made of**, so the next pass starts from measurement rather than instinct:
+
+| Contributor | Tokens |
+|---|---:|
+| `100_CHARACTER_SHEET.md[object:ENT-000125][fields:21]` — live protagonist state | 9,989 |
+| `docs/AI_GAMEPLAY_RESIDENT_CORE.md` — per-turn invariant card | 8,166 |
+| `090_CAMPAIGN_STARTUP.md` — campaign operational policy | 6,204 |
+| `135_CAST_IN_PLAY.md#Cast` | 3,300 |
+| `180_CURRENT_STATE.md` | 3,006 |
+| Profile readiness selectors (five headings) | ~5,400 |
+
+The measurement also reports the surface as **83% residue** — only 16% is duplicated event history the trim policy can clear — so the ~6,534 tokens `trim_policy.order` would free do not reach the part that is actually large. **The protagonist object is the surface**, and it grows every time play adds a skill, a title, or an anchor. That is not a defect; it is what a campaign at level 186 weighs. The defect is that nothing sized the container for it.
+
+**The open design questions.**
+
+1. **Is the 40,000 ceiling the right number, or is the readiness selector list the wrong shape?** Five profile headings are pulled in whole as readiness selectors. If those became on-demand fetches the surface drops by roughly 5,400 tokens at a stroke, and the question is what a Runtime genuinely needs *before* the first turn versus what it can fetch when a rule actually fires.
+2. **Should the protagonist object be split by read-purpose?** `fields:21` is a projection already; the readiness projection and the `/system` projection are different needs wearing one object.
+3. **Should a campaign be allowed to reach a hard readiness ceiling at all, or should the ceiling scale with campaign age?** A world whose protagonist is designed to grow for two hundred levels has no fixed-size readiness surface available to it, and this is the second Gatefall ceiling to arrive by growth after `F-046`/`F-059`.
+
+**Related:** `F-031` (the context budget buys bytes with memory, and the trim is made by the party least able to judge the cost — the same surface, from the other side), `F-047` (a rule that only breaks once the content it reads gets rich enough), `F-059` (an instrument terminating below where the campaign arrived).

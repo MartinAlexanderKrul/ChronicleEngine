@@ -22,6 +22,52 @@ A flag is not a Decision and not a Roadmap commitment. It becomes one of those o
 
 ---
 
+# Open-flag triage (2026-09-14)
+
+**A reading pass over every open flag, made out of character, changing none of them.** It exists because the queue reached twenty-two open entries with no ordering, and "work the open flags" is not actionable against a flat list where some entries need one line of YAML and others need an ADR against a released version. **This section is navigation, not authority** — each flag's own text governs, and nothing here rules on anything.
+
+**Three of these were closed or measured on the day this table was written.** `F-067` is Actioned. `F-064` is measured and scoped. `F-069`, `F-070` and `F-071` are new and came out of the same sweep.
+
+## Group A — blocked on one owner ruling, otherwise small
+
+These are not hard. Each needs a single decision that nobody but the owner can make, and each is a bounded write afterwards.
+
+| Flag | The one question | Blast radius once answered |
+|---|---|---|
+| `F-038` | Does `**Engine Version:**` mean *current engine* or *version at last substantive revision*? | Five header lines, or a documented convention. |
+| `F-064` | Mint a campaign-scope Entity for the Rogers Park apartment? | **Three live fields** — measured 2026-09-14, see the flag. |
+| `F-069` | Does Twin Fang's S row continue the arithmetic (`x3.35` at Master), or is it authored differently? | One profile row, one sheet line, one red suite goes green. |
+| `F-050` | Is fusion's no-stacking rule kept as written, or restated? | Wording only; the mechanic is not in dispute. |
+| `F-051` | Can an ordinary artificer carry a piece to its ceiling, or only the Bearer? | One clause in Section 12.8/12.11. |
+| `F-055` | Does each Section 18 class owe a `/system <class>` render template? | One template per class, presentation-only, the shape Profile 1.113 already used. |
+
+## Group B — needs an audit before it can be ruled on
+
+The decision is cheap; the evidence to make it safely is not, and gathering it is ordinary work rather than an owner call.
+
+| Flag | What has to be established first |
+|---|---|
+| `F-070` | Which side of the Stat ledger is authoritative — the audit is every level-up, Title Assessment and allocation Event against three drifted Stats. |
+| `F-071` | What the readiness surface can actually shed. The levers are named; nobody has measured what each would save. **Time-critical: 67 tokens of headroom.** |
+| `F-048` | Whether any live ledger's rendered Combat Tier disagrees with the Section 6.7 derivation right now. |
+| `F-040` | Which earned techniques have mastery tracks that ignore the practice that earned them, and how many. |
+
+## Group C — Runtime behaviour, and the reason this group keeps growing
+
+**Eight open flags describe the same failure from different angles**, and it is worth saying plainly: they are all *me*, not the schema. `F-036` (authoring the protagonist's speech), `F-041` (NPC-knowledge fabrication, a third recurrence), `F-057` (dialogue as itemised exposition), `F-060` (fixing a channel slip in character instead of re-narrating), `F-061` (voice convergence, a third recurrence), `F-062` (contesting a player's canon claim on a partial search), `F-063` (the world's answer not landing live and in full), `F-066` (an NPC played as a question-generator).
+
+**Every one of them has been "actioned" before by adding a prohibition to the Resident Core, and every one has recurred.** `F-028` says this outright — *"every remedy for four months had been a prohibition."* The pattern in this group is not that the rules are missing; it is that a rule which lives as prose in a per-turn card does not survive contact with a long scene. `F-012`, `F-033` and `F-034` each learned the same thing about mechanical obligations and each was fixed the same way: **convert the obligation into state that something reads.** No equivalent exists for narration, and inventing one is the real design question this group is asking. Until someone answers it, expect a fourth recurrence.
+
+## Group D — foundational, needs an ADR against a released version
+
+`F-047` (an advancement axis gated on danger prices itself out of the campaign that succeeds) and the engine-general half of `F-067` (an Event of world-historic scale should mint a standing, tick-advanced reaction thread in *any* world, not just Gatefall). Both meet Decision 069 leg 3 and land against milestone 0.4.3, so both need classification, migration and revalidation rather than a paragraph. `F-067`'s half now has the evidence it lacked when raised: Gatefall has independently discovered this shape **four times** — district pressure, escalation state, far-side notice, and standing world reactions.
+
+## Group E — superseded in substance by later work
+
+`F-059` asked how a Bearer who has outgrown every S-terminating instrument is supposed to find either danger or reward. Its danger half was answered at 1.109 (instruction between System-bearers) and its reward half was left open with the note that *"the reward axis at this level has to come from techniques, authored artifacts, elixirs spent on other people, and Section 18.12's world-state consequences, none of which is a number."* **`EVT-000961` changed the terms of that question rather than answering it**: Earth's grading case reads 94% with the metric stated as *System-integration*, which makes the Bearer's own growth the thing that advances the campaign's terminal clock. `110_WORLD_LEDGER.md`'s new `grading_state` tracks it. The flag should be re-read against that before anyone spends more effort on the reward axis as originally framed — the pressure it was looking for may already exist and simply point the other way.
+
+---
+
 # Format
 
 Each flag gets a stable ID (`F-001`, `F-002`, ...), never reused. New flags append at the end; existing entries are only ever amended for a status change, never deleted.
@@ -1706,7 +1752,25 @@ While preparing checkpoint 0136, the Runtime attempted to mint a missing Object 
 
 **The open design question:** does identifier allocation need a declared boundary between world-scope and campaign-scope ranges — e.g., a world reserves a stated block of its own Entity numbers at creation, visible to every campaign built on it, so a campaign author (or the Runtime narrating for one) can tell at a glance that a low ENT number might already be spoken for at world scope before citing it as campaign-local? Or is the fix procedural — a check the campaign-creation or session-startup flow should run once, comparing every identifier a campaign's own files reference against the world's allocated ranges, so a collision like this surfaces in the first session rather than the thirtieth? Worth checking whether `tools/check_name_collision.ps1` (built for authored *names*) has a natural sibling for authored *identifiers*, or whether this is squarely `validate_repository.ps1`'s territory and simply needs to run earlier/more often than at save time.
 
-**Status:** Open.
+**Status:** Open — **but measured now, and the repair is far smaller than this flag assumed.** A reference audit run 2026-09-14 (out of character, no files changed) settles the scope:
+
+| Usage | Where | Count |
+|---|---|---:|
+| **Chicago, correctly** | `130_NPCS_AND_FACTIONS.md`, bare `location: ENT-000087` on NPC blocks | **28** |
+| **Chicago, correctly** | prose citations of the form *"Chicago's warehouse district (`worlds/gatefall/`, `ENT-000087`)"* | ~14 |
+| **the apartment, wrongly** | `100_CHARACTER_SHEET.md:445` — `place: "the Rogers Park apartment, ENT-000087, home"`, inside a standing rift-anchor entry | **1** |
+| **the apartment, wrongly** | `130_NPCS_AND_FACTIONS.md:1019` and `:1603` | **2** |
+| **the apartment** | promoted `160_CAMPAIGN_CHRONICLE.md` / `170_CHANGELOG.md` narration | ~8 |
+
+**The flag's own framing is what was wrong, and correcting it is the useful part.** It reads *"campaign canon has cited the wrong one for the life of the campaign,"* which implies the city identifier was widely misused. The opposite is true: **the overwhelming majority of references use `ENT-000087` correctly for Chicago** — 28 NPC location fields plus roughly fourteen prose citations — and the apartment meaning appears in **three live fields**. `130_NPCS_AND_FACTIONS.md:1603` already says so out loud: *"No campaign-scope Object Block is minted for 'the Rogers Park apartment' here."* The gap is acknowledged in canon; it was simply never filled.
+
+**The one reference that actually matters is mechanical, not prose.** `100_CHARACTER_SHEET.md:445` binds a **standing rift anchor** named *"The apartment"* to `ENT-000087`. Anchors are mechanical state with a cap (`effective Agility / 20`) and a Section 7.3 destination; an anchor pointing at a city rather than a room is the only place this ambiguity can produce a wrong resolution at a table, and it is one line.
+
+**So the scoped repair is:** mint one campaign-scope Entity for the Rogers Park apartment, repoint those **three live fields**, and leave promoted chronicle and changelog narration untouched under checkpoint discipline (the `270` Sevrin-pronoun precedent). That is a small, bounded write — not the campaign-wide re-citation the flag's wording implies.
+
+**It is still not done here**, and the reason is unchanged and good: minting an Entity advances `system/ID_REGISTRY.md`'s high-water mark, which is canon allocation and belongs to a save under owner authority, not to an out-of-character sweep. **What has changed is that it is now a ten-minute job with a known blast radius rather than an unbounded one.**
+
+**The general design question the flag raises is untouched by this and remains the real ask:** whether identifier allocation needs a declared boundary between world-scope and campaign-scope ranges, so a campaign cannot cite a world Entity for a campaign-scope thing without something noticing. Nothing in the startup or resident layer currently reads scope when resolving an identifier.
 
 ## F-065 — Full absorption on a kill makes the teacher worth more dead than alive, and route 5 was authored two versions earlier to make the opposite true
 

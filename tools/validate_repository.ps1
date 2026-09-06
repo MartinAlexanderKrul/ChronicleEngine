@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [string]$RepositoryRoot,
     [switch]$Quiet,
@@ -2911,6 +2911,73 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
         if ($tickInstant -lt $boundary) {
             $missed = [int][Math]::Floor(($boundary - $tickInstant).TotalDays) + 1
             Add-Failure ("{0}: world_clock.last_ticked '{1}' is behind the {2:yyyy-MM-dd} 06:00 boundary, so roughly {3} day(s) of Section 9.1 world tick were never rolled. Gates, rarity, breaks, board postings and agenda initiations do not wait on the Bearer; a world that only moves when pushed is indistinguishable from one that is not running (F-034)." -f $ledger.Name, $tick.Groups['value'].Value, $boundary, $missed)
+        }
+    }
+}
+
+# --- A standing consequence that stops advancing is a world that stopped reacting -
+#
+# F-067. An Event whose own narration asserts world-historic scale mints a
+# standing, tick-advanced reaction thread, and the Gatefall campaign's own table
+# was authored at one tick and then not advanced at the next -- the same
+# prose-obligation decay F-012, F-033 and F-034 each recorded one level down.
+# The remedy is only real if something checks it, so it is checked: every
+# standing_world_reactions entry's day counter must equal the whole days elapsed
+# between its own started date and campaign_time. A key that has stopped
+# advancing is a world that has stopped reacting to something it already
+# decided mattered.
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    $campaignFiles = @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "*.md" -File -ErrorAction SilentlyContinue)
+
+    $anchorValue = $null
+    foreach ($sibling in $campaignFiles) {
+        $siblingText = Get-Content -LiteralPath $sibling.FullName -Raw -Encoding UTF8
+        if ($null -eq $siblingText) { continue }
+        $anchorHit = [regex]::Match($siblingText, '(?m)^\s*campaign_time:[ \t]*"(?<value>[^"]+)"')
+        if ($anchorHit.Success) { $anchorValue = $anchorHit.Groups['value'].Value; break }
+    }
+    if ($null -eq $anchorValue) { continue }
+
+    $anchorInstant = [DateTimeOffset]::MinValue
+    if (-not [DateTimeOffset]::TryParse($anchorValue, [ref]$anchorInstant)) { continue }
+
+    foreach ($ledger in $campaignFiles) {
+        if ($ledger.FullName -like "*\saves\*") { continue }
+        $ledgerText = Get-Content -LiteralPath $ledger.FullName -Raw -Encoding UTF8
+        if ($null -eq $ledgerText) { continue }
+        if ($ledgerText -notmatch '(?m)^\s*standing_world_reactions:\s*$') { continue }
+
+        $entryPattern = '(?ms)^[ \t]*-[ \t]+key:[ \t]*(?<key>[A-Za-z0-9_.-]+)(?<body>.*?)(?=^[ \t]*-[ \t]+key:|^```)'
+        foreach ($entry in [regex]::Matches($ledgerText, $entryPattern)) {
+            $keyName = $entry.Groups['key'].Value
+            $body = $entry.Groups['body'].Value
+
+            $startedHit = [regex]::Match($body, '(?m)^\s*started:[ \t]*"(?<value>\d{4}-\d{2}-\d{2})')
+            $dayHit = [regex]::Match($body, '(?m)^\s*day:[ \t]*(?<value>\d+)\s*$')
+            if (-not $startedHit.Success) {
+                Add-Failure ("{0}: standing_world_reactions entry '{1}' has no leading yyyy-MM-dd on its started field; a thread with no start cannot be shown to have advanced (F-067)." -f $ledger.Name, $keyName)
+                continue
+            }
+            if (-not $dayHit.Success) {
+                Add-Failure ("{0}: standing_world_reactions entry '{1}' declares no day counter; the counter is the whole mechanism (F-067)." -f $ledger.Name, $keyName)
+                continue
+            }
+
+            $startedDate = [datetime]::MinValue
+            if (-not [datetime]::TryParse($startedHit.Groups['value'].Value, [ref]$startedDate)) {
+                Add-Failure ("{0}: standing_world_reactions entry '{1}' has an unparseable started date." -f $ledger.Name, $keyName)
+                continue
+            }
+
+            $expected = [int][Math]::Floor(($anchorInstant.Date - $startedDate.Date).TotalDays)
+            $actual = [int]$dayHit.Groups['value'].Value
+
+            if ($actual -lt $expected) {
+                Add-Failure ("{0}: standing_world_reactions '{1}' reads day {2} against campaign_time '{3}', which is day {4} from its own start of {5:yyyy-MM-dd} -- {6} tick advance(s) were never made. A standing reaction that stops advancing is a world that stopped reacting to something it already decided mattered (F-067)." -f $ledger.Name, $keyName, $actual, $anchorValue, $expected, $startedDate, ($expected - $actual))
+            }
+            elseif ($actual -gt $expected) {
+                Add-Failure ("{0}: standing_world_reactions '{1}' reads day {2} but is only day {3} from its own start of {4:yyyy-MM-dd} against campaign_time '{5}'; the thread was advanced past a day the campaign has not reached (F-067)." -f $ledger.Name, $keyName, $actual, $expected, $startedDate, $anchorValue)
+            }
         }
     }
 }

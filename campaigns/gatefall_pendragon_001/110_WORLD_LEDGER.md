@@ -1026,26 +1026,135 @@ district_pressure:
 
 ## Standing World Reactions (owner-tracked, mandatory per tick)
 
-**Opened 2026-09-13, player-caught (`EVT-000931`).** A world event of real scale does not surface once and then wait to be asked about again — it has its own momentum, distinct from the Section 9.1.2 non-Gate roll (which governs *fresh* daily events, not the ongoing life of one already in motion). This section exists so a standing reaction is **read and advanced every tick as its own step**, mandatory, independent of what that tick's dice produce elsewhere — the same discipline `district_pressure` and `escalation_state` already get, extended to public reaction and narrative consequence. A tick that advances `last_ticked` without checking this table has not fully run, on the same footing as Section 9.1.1's own rule for a tick that writes nothing.
+**Opened 2026-09-13, player-caught (`EVT-000931`); extended to five keys 2026-09-14, player-caught again.** A world event of real scale does not surface once and then wait to be asked about again — it has its own momentum, distinct from the Section 9.1.2 roll, and competing at ordinary odds against "a vendor gets a shipment" is what let the biggest story in the setting go inert. `engine/004_DESIGN_FLAGS.md` `F-067` is the flag; this table is the mechanism.
 
-**Procedure.** At every 06:00 tick, for each live entry below: advance its `day` counter by 1, read off its authored stage list for the new day, and surface that stage's texture the next time the Runtime narrates a scene where it would plausibly reach the Bearer (a TV on, a phone, a conversation with anyone who'd have an opinion) — not held for a later prompt. An entry with no stage authored for its current day continues its last stage rather than going silent. A stage may name a mechanical consequence (an OBJ escalation, a new contact, a threshold); where it does, that consequence is applied the same tick, not deferred.
+**Procedure.** At every 06:00 tick, for each live entry below: advance its `day` counter by 1, read off its authored stage list for the new day, and surface that stage's texture the next time the Runtime would plausibly reach it — a scene, a screen, a passing remark — rather than holding it for a prompt. **A day with no authored stage surfaces nothing and is not a miss**; the slower keys are deliberately sparse, because a world does not deliver a beat every morning. **Advance every key every tick regardless**, in the same mandatory block as `district_pressure` and `escalation_state`. A `day` counter sitting behind `campaign_time` is a defect, not a quiet span — that is exactly what happened between the 2026-09-13 and 2026-09-14 ticks, when the Jiu key was authored and then not advanced.
+
+**Why four of the five open retroactively, and why that is not backdating.** Three of them (`the_unnecessary_trade`, `beyond_scale_classification`, `the_thinning`) deliver Profile Section 18.12, which became standing canon at the **level-100 crossing on 2026-08-26** (`EVT-000751`) — whose own chronicle text ends *"None of this has surfaced in fiction yet."* Nineteen in-fiction days later that sentence was still true. The fourth (`pendragon_public_profile`) starts at the **2026-08-23 reclassification**, whose story ran and syndicated internationally on 2026-09-01 and produced, across thirteen further days, one CGA desk clerk recognising his face. None of this is new world content: it is consequence the profile already mandated, given a counter so it stops evaporating.
 
 ```yaml
 standing_world_reactions:
+
   - key: jiu_valley_public_reaction
     subject: "The Jiu Valley Exclusion's death — global public/media/political reaction"
     started: "2026-09-10 (the kill itself, EVT-000905)"
-    day: 3
+    day: 4
     interacts_with: OBJ-58
+    frame: "**It is not landing as a triumph and the Runtime must not play it as one.** Six years, ~31,000 dead, six S-Ranks spent holding a line — ended by one person in three strikes. That is an indictment of every agency on Earth, and every institutional reaction to it is defensive rather than grateful. The question underneath every stage below, which nobody wants asked on camera: *if one person could always have done this, why did thirty-one thousand people die waiting?*"
     stages:
       1: "2026-09-11. Signature-loss detected and reported as unattributed global news — confusion, no scale yet assigned."
       2: "2026-09-12. Rescaled to true magnitude: global saturation coverage, markets moving. The biggest unexplained event in the field in years."
-      3: "2026-09-13 (today). Reinsurance premiums up ~15% across three continents overnight. CGA holds an unprepared, near-content-free press conference. Guild chat is thick with competing theories (nation-state black project, natural death from attrition) — none of them naming a solo S-Rank kill; that possibility isn't on anyone's board yet. Ordinary civilian reaction visible on the ground in Prague and elsewhere — crowds at bar TVs, grief, disbelief. Kane raises it in person, unprompted (EVT-000930)."
-      4: "First political questions — a European Gate Council member or a US Congressional committee staffer asks BGM/CGA on the record whether either agency has a working theory, on camera. No answer given. Guild-side speculation starts converging on 'a hunter, not a phenomenon' as the more credible read, still with no name attached."
-      5: "An independent journalist or analyst publicly floats the platform-access angle in general terms (who had clearance that morning) without naming Alexander or Sorcha specifically — the first public thread that could plausibly connect toward OBJ-58 if pulled."
-      6+: "Not yet authored past this point — author the next stage from where the fiction actually is when day 6 arrives, rather than pre-writing outcomes this far ahead. This line itself is the reminder to do it, not a placeholder to fill mechanically."
-    note: "Days 1-2 already happened off-panel before this table existed; backfilled from established chronicle text (`160_CAMPAIGN_CHRONICLE.md` EVT-000909/EVT-000912) rather than invented fresh. Day 3 is being played live starting this tick."
+      3: "2026-09-13. Reinsurance premiums up ~15% across three continents overnight. CGA holds an unprepared, near-content-free press conference. Guild chat thick with competing theories (nation-state black project, natural death from attrition) — none naming a solo S-Rank kill; that possibility is not on anyone's board. Ordinary civilian reaction visible on the ground in Prague and elsewhere. Kane raises it in person, unprompted (EVT-000930)."
+      4: "2026-09-14 (today, owed and not yet surfaced). Guild-side speculation converges on **'a hunter, not a phenomenon'** — still no name. The Romanian containment rotation due to deploy on the 15th is stood down and nobody has told the crews what to do instead. **Praetorian Continuity's perimeter contract enters termination review**; six years of guaranteed revenue ends for want of a valley."
+      5: "First hostile framing. An op-ed asks why the agencies never tried; a Council spokesperson answers badly. **Jiu Valley survivor associations** — six years of displaced families — make their first public statement, and it is not gratitude, it is a demand to know."
+      6: "Money moves. Reinsurance repricing reaches premiums. The valley is now legally re-openable, so mineral rights, reconstruction contracts and resettlement funds all go live at once — the bidding starts before the recovery does. People begin arriving at the fence."
+      8: "Political. A European Gate Council member and a US committee staffer ask BGM/CGA on the record for a working theory, on camera. No answer given. **The Council's Actuarial Secretariat requests the platform-access file under reciprocity** — arriving as ordinary paperwork, and the first move of the Quorum thread if the owner takes it."
+      10: "An independent journalist or analyst publicly floats the platform-access angle in general terms — who held clearance that morning — without naming Alexander or Sorcha. First public thread that could reach OBJ-58 if pulled. **Sorcha Bellweather is contacted before Alexander is**: she has a career, no protection, and holds the falsified half of a favour nobody asked whether she wanted to do."
+      14: "The families of hunters who died on containment rotations organise. Their position is simple and unanswerable: **somebody could have done this in 2020.** A guild that lost people to the Jiu now has a bench asking its guildmaster why they went."
+      18+: "Author forward from where the fiction actually is. This thread should not resolve — it should become permanent background pressure that any Romania-, Council- or Praetorian-facing scene inherits. This line is the reminder to do it, not a placeholder to fill mechanically."
+    note: "Days 1-2 happened off-panel before this table existed; backfilled from `160_CAMPAIGN_CHRONICLE.md` EVT-000909/EVT-000912 rather than invented. **Day 3->4 was missed at the 2026-09-14 06:00 tick (EVT-000951) and is corrected here**; stage 4 is owed and unsurfaced. Stages past 4 re-authored 2026-09-14 with the `frame` above, which the original five-stage ladder did not carry."
+
+  - key: pendragon_public_profile
+    subject: "The world's read of a solo unaffiliated carded S-Rank who clears A-Ranks alone"
+    started: "2026-08-23 (the E-Rank -> S-Rank reclassification at BGM Region V)"
+    day: 22
+    interacts_with: OBJ-39, OBJ-61, OBJ-56
+    frame: "**He does not get to decide whether he has a public profile — only what it is made of.** Stages 1-3 are backfill from played canon and are not re-run. The live problem is stages 4-7, which are **late**: the story went to the wires thirteen days ago and produced almost nothing, and that silence has a cause (see `the_unnecessary_trade` day 19 and the Actuarial Secretariat thread). Play the suppression, not fame arriving on schedule."
+    stages:
+      1: "2026-08-24 (backfill, played). A name in Region V paperwork and Coalition desk chatter. Teresa Vance's voicemail; Marguerite's three drafted lines; the callback and the on-record account (EVT-000724), held to end of week on a natural 100."
+      9: "2026-09-01 (backfill, played). **The Ledger piece runs and begins syndicating.** No undisclosed fact printed. He confirmed it could run as-is on 2026-08-30."
+      12: "2026-09-04 (backfill, played). Wire pickup crosses the Atlantic: Jitka Novotná recognises his face at the CGA night desk in Prague before catching herself (EVT-000841 span)."
+      22: "2026-09-14 (today, owed). **The trade has given him a name he did not choose** — not heroic; working hunters name each other for what they do to a shift, dry and faintly resentful and unshakeable. Chicago and Prague arrive at different ones. He hears it secondhand, in public, from people who have no idea he is there. Author both names once and use them consistently thereafter."
+      24: "Recognised in public without warning — coffee shops, the gym, the street outside the Winnetka house. **Owen is photographed**: his life changed by proximity, without being consulted. A doorstep interview attempt."
+      27: "Imitators. A D-Rank crew posts above their card because 'one guy does it' and dies for it. The trade blames him for the culture rather than the deaths, and the blame is not entirely unfair."
+      31: "Commercial. An agent, a sponsorship approach, a magazine cover offer, a cable segment that gets everything wrong. Refusing each is a decision with a consequence; refusing all of them is a personality the press will assign him anyway."
+      36: "Political. A committee wants him to testify about A-Rank response times. Cities write to Region V asking for him by name. **He is a policy input now**, and Section 18.12.1 means nobody can write a contract against what the instrument returns."
+      40+: "Author forward. The end state is not fame — it is that no room he walks into is neutral, and there is no version of himself that is off duty."
+    note: "Opened 2026-09-14 out of character, backfilled from played canon only (EVT-000691, EVT-000724, the 2026-09-01 tick, the 2026-09-04 Prague arrival). **Nothing in stages 1-12 is invented**; they are dated markers so the counter is honest about where the thread actually stands. Day 22 is today and is owed."
+
+  - key: the_unnecessary_trade
+    subject: "Profile Section 18.12.2 — the trade's top-end economics collapsing around one man"
+    started: "2026-08-26 (the level-100 crossing, EVT-000751)"
+    day: 19
+    interacts_with: OBJ-60, OBJ-61
+    frame: "**The profile mandates this and it has never surfaced.** A-Rank take rates fell to 25%/day and S-Rank work stopped being tendered at all on 2026-08-27; Section 9.1.4's *a guild falls* row (64-71) has been rolled at **double weight** ever since, with the attribution stated in the profile's own words — *the guild did not fail, it was made unnecessary.* `EVT-000751`'s chronicle text closes with *'None of this has surfaced in fiction yet.'* Nineteen days later it still had not."
+    stages:
+      1: "2026-08-27 (backfill, mechanical). Take rates change at the tick. Invisible to everyone; the effects are downstream."
+      19: "2026-09-14 (today, owed). **Top-end revenue misses become visible.** A guild's quarterly call blames 'an unusual competitive dynamic in the A-Rank segment' without naming him, and everyone on the call knows. Hiring freezes at the B/A tier follow: the path a mid-tier hunter spent a decade climbing has stopped paying at the top, so it stops being worth climbing."
+      23: "**A guild folds.** Forty to sixty people who were making a living last month are not. Attributed honestly per Section 18.12.2. One of them finds him — not to threaten him, which would be easy to dismiss, but to ask what he thinks they should do now. He has no answer."
+      26: "Zenith Group buys the wreckage at book value. The corporate predator arrives **as a consequence of his success**, which is the cleanest antagonist entrance available and costs no setup."
+      30: "Ironline Capital moves on Denise Brannigan — a clean sacrifice to BGM's open case (EVT-000836), a reform narrative, a preserved charter, and a guildmaster who takes instructions. Alexander's own OBJ-36 victory arrives with a bill attached."
+      34+: "Author forward. OBJ-60's fifth guild should have stopped being an ambition and become a debt by here."
+    note: "Opened 2026-09-14 out of character. Days 2-18 are deliberately unauthored: the economics were compounding off-screen and no single day owed a beat. Day 19 is today and is owed. **The weekly Section 9.1.4 roll must actually be made** — it has fired roughly twice in the campaign, landing `none` both times, which is the delivery half of the same defect."
+
+  - key: beyond_scale_classification
+    subject: "Profile Section 18.12.1 — the instrument returns no Rank for him, and the law has nothing to say"
+    started: "2026-08-26 (the level-100 crossing, EVT-000751)"
+    day: 19
+    interacts_with: OBJ-61, OBJ-56, OBJ-39
+    frame: "The profile calls this *'a political problem for BGM and the European Gate Council long before it is a convenience for him'* and hands the answer to play. **This is also where the 'too many restrictions' complaint resolves**: stop narrating compliance procedure at him and narrate the institution failing to have a category instead. Same rule, played as story."
+    stages:
+      1: "2026-08-27 (backfill, mechanical). A re-assessment on him would now return **beyond scale** — not a classification, a refusal, with the needle at the stop. Nobody has measured him since."
+      19: "2026-09-14 (today, owed). An appraiser's report comes back with a field left blank and a supervisor's note asking what to do with it. **This is the seed of Nell Foss's approach** — she has eleven years in and has never seen a blank one."
+      23: "A contract cannot be written. Legal at Region V discovers the standard terms are keyed to a card value that no longer exists for him, and the standing BGM National agreement (REL-000101) has been operating outside its own template for weeks."
+      27: "Insurance refuses. No underwriter will price an operation whose principal has no classification — which turns OBJ-61's institutional standing from an ambition into a necessity."
+      32: "The Council convenes on **whether a category should exist at all**. Creating one admits publicly that the fixed ladder has an exception, which is the load-bearing fiction of the entire post-Gatefall order."
+      38: "The worse reading arrives: if the instrument can be wrong about him, what else is it wrong about? **Every 'reawakened' file in every agency gets pulled** — and `200_WORLD_BIBLE.md` Section 9's engineered auditions mean some of those are real."
+      42+: "Author forward."
+    note: "Opened 2026-09-14 out of character. Days 2-18 unauthored — nobody had cause to measure him. Day 19 is today and is owed."
+
+  - key: the_thinning
+    subject: "Profile Section 18.12.5 — where he does not go is worse than before he existed"
+    started: "2026-08-26 (the level-100 crossing, EVT-000751)"
+    day: 19
+    interacts_with: district_pressure
+    frame: "The quietest of the five and the one that should land hardest. The profile's own words: *'Where he goes, the world is safer than it has ever been. Where he does not, it is worse than before he existed — because what used to be there is gone.'* District pressure already decays one slower in every district he did not work that week; this key gives that arithmetic a face. **He cannot be in two places.** Nothing else in the campaign prices that."
+    stages:
+      1: "2026-08-27 (backfill, mechanical). Decay slows in every district he did not work. Invisible."
+      19: "2026-09-14 (today, owed). Response times have lengthened in two districts he has never worked. Nobody connects it to him, including him."
+      24: "A neighbourhood crew disbands — not killed, just unable to make rent on the work left over after the good contracts stopped being contested."
+      29: "A break in a thinned district resolves badly and slowly. The after-action names the staffing shortfall and does not name a cause."
+      35: "**Somebody works it out.** An analyst, a guildmaster, or Kesha Morrison at her own desk, mapping response degradation against his own route history. She tells him, because she likes him."
+      40+: "Author forward. He can fix any single district by being in it, and he can be in one."
+    note: "Opened 2026-09-14 out of character. Days 2-18 unauthored; the decay was accumulating with nothing owed on any particular morning. Day 19 is today and is owed. **The playable form of this key is two crises in reach at once** — a within-reach break and a live personal obligation inside the same two hours, with one rift-step available."
 ```
+
+---
+
+## Grading State (owner-facing; `200_WORLD_BIBLE.md` Section 9)
+
+**Opened 2026-09-14 on an owner ruling, out of character.** `EVT-000961` read Earth's own case marker inside the Assay's channel: `GRADING: IN PROGRESS — 94% READ`, with Diagram Sense establishing that **the tracked metric is System-integration, not survival**, correlating with the Bible's own leaked break-frequency curve, and the file stating plainly `ON COMPLETION: CONFLUENCE PROTOCOL INITIATES`.
+
+**This is tracked state and nothing else.** It mints no identifier, bumps no provenance, is **never rendered in any `/system` panel**, is outside `system_state`, and is **never a trigger**. Alexander read the figure once, off a case marker, and holds no instrument that reads it again — the number below is the owner's, not his.
+
+**Why it is denominated in milestones rather than levels.** At 18,600 XP a level and roughly a level per A-Rank clear, a per-level rate ends the world inside a week of play; a time-based rate reproduces `F-046`'s second addendum in the opposite direction. Six points across six major moves is a campaign's back half, and it makes each of those moves a decision with a stated price rather than a reward with none. **The calibration is the whole risk of this construct and it is an owner ruling, not a derived figure** — revise it in play if it reads wrong, on the same footing as any other tracked counter.
+
+```yaml
+grading_state:
+  case: "Earth — the case marker carries a sterile Assay designation, never the word 'Earth'"
+  read_pct: 94
+  metric: "System-integration"
+  on_completion: "CONFLUENCE PROTOCOL"
+  last_read_by_bearer: "EVT-000961, 2026-09-14 — 94%. He has no way to check it again."
+  known_to: "Alexander alone, and only as a single remembered figure. No NPC on Earth holds it."
+  advances_on:            # +1 each, and never on time alone
+    - "a whole technique set absorbed by Succession from a killed System-bearer"
+    - "a terminal-line or class-tier acquisition (Section 18.13's Gate Walker line is the live one)"
+    - "an escalation-tier crossing past VII, if the ramp is ever extended"
+    - "a permanent Section 18.13.1 tunnel opened and held"
+    - "a transmissible technique taught to another awakened (Section 7.1 route 5)"
+    - "File the Report used, at all, for any reason"
+  never_advances_on:
+    - "elapsed time"
+    - "ordinary Gate clears, levels, XP, gold, or currency"
+    - "anything resolved on the far side or inside the Assay channel that does not appear above"
+  history:
+    - "94 at EVT-000961 (2026-09-14). The Auditor's set was already absorbed at EVT-000959 in the same span; whether that absorption is what moved it from 93 to 94 is deliberately unauthored and not resolvable from inside the fiction."
+```
+
+**Nothing past 100% resolves here.** The Adjudicator, the Confluence's actual mechanics and Earth's ultimate outcome remain reserved to `200_WORLD_BIBLE.md` Section 9 and `worlds/gatefall/270_THE_FAR_SIDE.md`'s own reserved list. This counter says only how far the exam has been read, and `OBJ-65` is the campaign's live route toward the rest.
+
+**The design consequence, stated plainly so a Runtime does not miss it.** Every instrument in Gatefall terminates at S and the Bearer passed it long ago (`F-046`, `F-058`, `F-059`), which read for a hundred levels like a campaign that had run out of difficulty. It is the opposite: **advancing is how the exam completes.** A Runtime should not soften trivial content to compensate, and should not inflate Rank Health to manufacture danger — the pressure this counter supplies is that the protagonist's own growth is the antagonist's win condition, and the six moves left are each worth a scene.
 
 ---
 

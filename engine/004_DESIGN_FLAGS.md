@@ -1768,3 +1768,30 @@ This is the same family as **F-057** (open) — NPC dialogue shaped like exposit
 **The open design question:** does the Resident Core or `npc-knowledge` skill owe a scene-level (not just turn-level) discipline — something like "count an NPC's own unprompted contributions against their questions across a scene; a character who only ever asks is not yet a character" — general enough to catch this regardless of how well the individual line is grounded in `want`/`fear`/`voice`? Or is the actual gap that disposition authoring (Decision 091/092) describes *content* (what an NPC wants, fears, hides) without ever constraining *initiative shape* (how often that content surfaces as a question aimed at the protagonist versus the NPC's own unprompted business), the same blind spot F-057 found one level down at the single-turn scale?
 
 **Status:** Open.
+
+## F-068 — Succession absorbs a killed bearer's set in full, with no way to decline a technique that binds the Bearer against himself
+
+**Raised:** 2026-09-14 · **Source:** `campaigns/gatefall_pendragon_001/`, player pushback out of character after `EVT-000959` — *"the skills he got from a kill shouldn't be a burden for him. he should be able to refuse the skill"*
+
+**Status:** **Actioned campaign-side (2026-09-14) as an owner ruling on `180_CURRENT_STATE.md`. Open at the profile layer** — `worlds/gatefall/206_WORLD_RULE_PROFILE.md` Section 7.6 still reads as automatic and total, and owes the elective rule a proper migration and version bump before it binds any other campaign.
+
+**The observation.** Section 7.6.2 absorbs **fully** from a Section 13.1.1 System-bearer the Bearer personally kills: every skill at the victim's own mastery, their Stat Passives as a Rank floor, class abilities without the class. The section is written entirely as a *yield* — `F-065` prices what the kill forecloses (the Section 7.1 instruction route, eighty techniques across four remaining teachers) and nothing anywhere prices what the kill **imposes**. Every clause assumes a taken technique is a gain.
+
+At `EVT-000959` that assumption broke on contact. Nineteen of the Auditor's twenty entered the sheet automatically, and one of them was **`Plain Answer` [C-Rank] ★★★★★ Master · Passive · *cannot lie about a fact already asked directly and plainly.*** A permanent, undeclinable compulsion on the protagonist's own speech, at Master mastery, with no cost, no duration and no off-switch — acquired as a reward for winning a fight. It is a capability on the victim, who was an auditor and wanted honest answers on the record. On a protagonist whose entire Section 19 exposure economy runs on **not** confirming what he is, it is a weapon handed to every NPC who thinks to ask a straight question, and the campaign had no way to refuse it.
+
+**Two shapes, and only the first is the defect.** `Adequate Stock` (*immune to compel/persuade/provoke*), `Standing Instructions` (*cannot be surprised by anything already filed*) and `Nothing Personal` (*no morale, fear or intimidation penalty*) all read as `cannot` clauses and are all pure protection — the `cannot` binds the world, not the Bearer. `Plain Answer` and, ambiguously, `Procedural Calm` (*cannot be rushed or made to act early*) bind **the Bearer's own choice**. The test that separates them is not the wording; it is *who loses an option*.
+
+> **A technique that removes an option from its holder is not a grant, and an acquisition route that cannot refuse one is not a reward.**
+
+**What was ruled, campaign-side.** Succession is **elective**: the Bearer takes what he chooses, technique by technique, and a declined technique is simply not acquired — not banked, not stored, not recoverable later. `Plain Answer` is struck from `100_CHARACTER_SHEET.md`; `Procedural Calm` is retained with its clause restated one-directionally so it protects him from outside pressure and never binds his own timing, preserving its recorded `EVT-000961` use. The live total is **eighteen**. Promoted narration in `160_CAMPAIGN_CHRONICLE.md` and `170_CHANGELOG.md` is not rewritten and keeps its count of nineteen, on the checkpoint discipline `worlds/gatefall/270_THE_FAR_SIDE.md` Section 4.2 already applies to the Sevrin pronoun correction.
+
+**Section 7.6's economics are deliberately unchanged.** The kill still forecloses route 5 exactly as `270_THE_FAR_SIDE.md` Section 4.4 prices it — electing fewer techniques buys back nothing, and `F-065`'s finding that a teacher is worth more dead than alive is untouched by this flag. This is only about whether the yield can be poison.
+
+**The open design questions.**
+
+1. **Does the elective rule belong in Section 7.6, or one layer up?** Any world under this engine with an acquisition route that copies an authored ability set from a defeated character can hand the protagonist a self-binding clause. This looks like `F-047`'s shape again — a rule whose failure only appears once the content it reads gets rich enough — and the same question applies: profile, or `012_ENGINE_RUNTIME.md`.
+2. **Is election made at the kill, or on a window?** Taking it at the moment of Succession is cleanest and forces a decision under pressure. A stated window lets the Bearer test a technique before keeping it, which is friendlier and much harder to adjudicate.
+3. **What does the Runtime owe at the moment of election?** A declined technique's text is information the Bearer arguably should not have without taking it — but he cannot elect blind. The likely answer is that Succession renders the full set once, and the render is itself the only look he gets.
+4. **Does anything else in the profile hand the Bearer an undeclinable clause?** Section 16's titles are the obvious place to check — they are granted by assessment, not chosen, and nobody has audited the catalog against the option-removal test above.
+
+**Related:** `F-065` (Succession's economics, where the yield was priced and the imposition was not), `F-047` (an engine-general principle extracted from one world's break), `F-027` (a ratified skill nothing ever used, the same family of "authored without checking what it composes into").

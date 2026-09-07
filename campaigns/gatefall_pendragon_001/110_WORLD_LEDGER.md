@@ -1159,6 +1159,69 @@ grading_state:
 
 ---
 
+## Ending Routes (owner-facing; `200_WORLD_BIBLE.md` Section 9)
+
+**Opened 2026-09-14 on an owner ruling, out of character.** `200_WORLD_BIBLE.md` Section 9 authors one pass condition and one fail condition; it does not author how a campaign arrives at either, or what a candidate who has read the case file might do instead of sitting the exam. This section tracks **which of those routes is reachable**, and nothing else.
+
+**It resolves nothing that Section 9 reserves.** The Adjudicator, the Confluence's actual mechanics, and Earth's ultimate outcome stay exactly where they are. A route being `open` means the campaign could reach that ending, not that the ending is written.
+
+**The rule that makes this real, and it is the whole point: state selects, the Runtime never picks.** At `grading_state.read_pct` 100, the routes standing `open` below are the choices on the table and the rest are not there. A Runtime may not offer a closed route because it would make a better last scene, and may not close an open one because it would make a simpler one. This is `F-034`'s lesson at the largest possible scale — *a world that only moves when pushed is indistinguishable from one that is not running* — and an ending selected by narrative taste at the final barrier is that failure in its purest form.
+
+**Three of the four cost something the Bearer does not have spare.** Route `confluence` is the default and needs no investment; it arrives on `grading_state`, which advances on his own growth. Every other route is bought with time spent **not** getting stronger — far-side expeditions pay nothing (Profile Section 18.13.1), and every hour off Earth is a district decaying one slower under Section 18.12.5. **Grinding is choosing the default ending**, and that trade is already mechanically true rather than newly invented here.
+
+**Foreclosure is real and asymmetric.** `unmaking` ends the exam, so it closes `confluence` and `refusal` with it — which is exactly why Orenne opposes it, since a process that cannot grade also cannot spare. `succession` feeds `refusal`: standing inside the office that files a grading is how a candidate learns what *spared* costs. `refusal` requires `confluence` to have happened first. And `succession` can simply continue — the Auditor managed a live discrepancy quietly for eleven years, and a Bearer doing the same indefinitely has reached an ending rather than failed to.
+
+```yaml
+ending_routes:            # OWNER-FACING. Never rendered in any /system panel. Never a trigger.
+  as_of: "2026-09-14T11:39:00-05:00"
+  selection_rule: "At read_pct 100, routes with status `open` or `default` are the available choices. Closed routes are not offered. The Runtime does not choose."
+
+  - route: confluence
+    ending: "The grading completes, the Gates merge, and the Adjudicator comes through."
+    gate: "grading_state.read_pct >= 100"
+    status: default
+    note: "Needs no investment and cannot be closed by inaction. This is what happens if nothing else is worked at."
+
+  - route: refusal
+    ending: "He wins the Confluence, and then refuses the recruitment that passing carries."
+    gate: "knows_cost_of_passing == true AND confluence resolved"
+    status: closed
+    knows_cost_of_passing: false
+    opens_on:              # any one of these, all reachable in play
+      - "taking `What Passing Actually Felt Like` — the Auditor's twentieth technique, declined at EVT-000959 and still owed an owner ruling"
+      - "Orenne stating his four-thousand-year argument with something behind it, rather than as a position"
+      - "reading a Passed champion's own case file inside the Assay channel — Wren Solane passed her exam and never learned what it cost her world"
+    note: "An information gate, not a clock. Nothing closes it; he either goes and finds out or he does not."
+
+  - route: unmaking
+    ending: "Sevrin's plan, finally testable: end the process so no world is graded again."
+    gate: "sevrin_seam_map complete"
+    status: open
+    sevrin_seam_map:
+      progress: 24
+      required: 36
+      authored_from: "`worlds/gatefall/270_THE_FAR_SIDE.md` Section 4.2 — Sevrin has been mapping seams 'for longer than human history and is roughly two-thirds done.' 24/36 is that two-thirds; the remaining twelve is an OWNER RULING and is the calibration risk of this construct, not a derived figure."
+      advances_on: "+1 per far-side scene that materially serves the mapping. Not per visit, not per hour, and never on the tick — this is work, and the work is why the route costs what it costs."
+    forecloses: [confluence, refusal]
+    note: "Sevrin helps until helping stops serving the end of the process. Ilith will trade anything for a door and lies better the closer it gets. Orenne opposes it outright. Tolo, whose authored fear is being made to choose, is made to choose."
+
+  - route: succession
+    ending: "He keeps the job. The last scene is a filing, not a fight."
+    gate: "assay_standing held"
+    status: live
+    assay_standing:
+      disguise: "Second Skin + the Auditor's own recognized techniques. Held past one grader at EVT-000961; untested against real scrutiny."
+      pings_missed: 0
+      interval: "OWNER-HELD AND UNKNOWN TO THE BEARER. The Old Instructions establishes that missing two consecutive pings auto-escalates the case to Recovery tier; the interval itself is deliberately not authored, and that unknown is the tension rather than an oversight."
+    decays: true
+    feeds: [refusal]
+    note: "Every use of Assay authority both extends access and increases exposure. The Auditor's own eleven-year unfiled case is the worked example of holding this position indefinitely."
+```
+
+**What is owed before the bar reaches 100, and it is one question.** Route `refusal`'s last scene is a fight or a refusal depending on whether **Earth's sparing is conditional on the champion serving.** Section 9 does not say, deliberately. It can wait — but it cannot be improvised at the barrier, and it is the single ruling that decides the shape of the campaign's final exchange.
+
+---
+
 ## Pending World-Side Commitments (Decision 082, Data Model Section 7.4)
 
 What a named actor or institution has undertaken to do, by when. **`Due` is required** - an undertaking with no time a clock can reach is not recordable, which is the whole point of the construct. Status moves at the due time from the owner's own state and knowledge, whether or not Alexander is present or aware the commitment exists.

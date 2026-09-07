@@ -2927,6 +2927,78 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
     }
 }
 
+# --- An ending selected by taste is an ending nothing was working toward -------
+#
+# `ending_routes` exists so the campaign's final choice is decided by state the
+# player moved rather than by whichever last scene reads best at the barrier --
+# F-034's lesson at the largest possible scale. That only holds if the block
+# itself cannot rot: a route silently retyped to an unknown status, a progress
+# counter that passes its own requirement without the route opening, or a
+# grading percentage outside 0-100 would each turn the construct back into
+# narration wearing YAML. So each is checked.
+#
+# This is deliberately NOT a tick gate. These counters advance on work and on
+# events, never on the clock, so "behind campaign_time" is meaningless for them.
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    foreach ($ledger in @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "*.md" -File -ErrorAction SilentlyContinue)) {
+        if ($ledger.FullName -like "*\saves\*") { continue }
+        $ledgerText = Get-Content -LiteralPath $ledger.FullName -Raw -Encoding UTF8
+        if ($null -eq $ledgerText) { continue }
+
+        if ($ledgerText -match '(?m)^\s*read_pct:[ \t]*(?<value>-?\d+)') {
+            $readPct = [int]$Matches['value']
+            if ($readPct -lt 0 -or $readPct -gt 100) {
+                Add-Failure ("{0}: grading_state.read_pct is {1}; a grading percentage outside 0-100 is not a reading." -f $ledger.Name, $readPct)
+            }
+        }
+
+        # The key carries a trailing owner-facing comment, so anchoring on
+        # end-of-line skipped every check below and the whole gate passed
+        # vacuously -- caught by tools/test_ending_routes.ps1 on its first run.
+        if ($ledgerText -notmatch '(?m)^\s*ending_routes:\s*(#.*)?$') { continue }
+
+        $allowed = @("default", "open", "closed", "live", "reached", "foreclosed")
+        $routePattern = '(?ms)^[ \t]*-[ \t]+route:[ \t]*(?<route>[a-z_]+)(?<body>.*?)(?=^[ \t]*-[ \t]+route:|^```)'
+        $routesSeen = @()
+        foreach ($entry in [regex]::Matches($ledgerText, $routePattern)) {
+            $routeName = $entry.Groups['route'].Value
+            $body = $entry.Groups['body'].Value
+            $routesSeen += $routeName
+
+            $statusHit = [regex]::Match($body, '(?m)^\s*status:[ \t]*(?<value>[a-z_]+)\s*$')
+            if (-not $statusHit.Success) {
+                Add-Failure ("{0}: ending route '{1}' declares no status; a route nothing can read is not a route." -f $ledger.Name, $routeName)
+            }
+            elseif ($allowed -notcontains $statusHit.Groups['value'].Value) {
+                Add-Failure ("{0}: ending route '{1}' has status '{2}', which is not one of {3}." -f $ledger.Name, $routeName, $statusHit.Groups['value'].Value, ($allowed -join ", "))
+            }
+
+            if (-not ($body -match '(?m)^\s*gate:')) {
+                Add-Failure ("{0}: ending route '{1}' declares no gate; a route with no condition is available always, which is the defect this block exists to prevent." -f $ledger.Name, $routeName)
+            }
+
+            # A progress counter that has met its own requirement while its route
+            # still reads closed or open is the exact silent-drift case: the work
+            # was done and the ending never became reachable.
+            $progressHit = [regex]::Match($body, '(?ms)progress:[ \t]*(?<progress>\d+).*?required:[ \t]*(?<required>\d+)')
+            if ($progressHit.Success) {
+                $progress = [int]$progressHit.Groups['progress'].Value
+                $required = [int]$progressHit.Groups['required'].Value
+                if ($progress -gt $required) {
+                    Add-Failure ("{0}: ending route '{1}' records progress {2} against a requirement of {3}; a counter past its own gate was never settled." -f $ledger.Name, $routeName, $progress, $required)
+                }
+            }
+        }
+
+        if (@($routesSeen | Select-Object -Unique).Count -ne @($routesSeen).Count) {
+            Add-Failure ("{0}: ending_routes repeats a route name; each ending is tracked once." -f $ledger.Name)
+        }
+        if (-not ($ledgerText -match '(?m)^\s*selection_rule:')) {
+            Add-Failure ("{0}: ending_routes declares no selection_rule; without it nothing states that state selects rather than the Runtime." -f $ledger.Name)
+        }
+    }
+}
+
 # --- A standing consequence that stops advancing is a world that stopped reacting -
 #
 # F-067. An Event whose own narration asserts world-historic scale mints a

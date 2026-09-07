@@ -36,7 +36,7 @@ These are not hard. Each needs a single decision that nobody but the owner can m
 |---|---|---|
 | `F-038` | Does `**Engine Version:**` mean *current engine* or *version at last substantive revision*? | Five header lines, or a documented convention. |
 | `F-064` | Mint a campaign-scope Entity for the Rogers Park apartment? | **Three live fields** — measured 2026-09-14, see the flag. |
-| `F-069` | Does Twin Fang's S row continue the arithmetic (`x3.35` at Master), or is it authored differently? | One profile row, one sheet line, one red suite goes green. |
+| ~~`F-069`~~ | **Ruled 2026-09-14: continuation.** Actioned as Profile 1.114. | Done. |
 | `F-050` | Is fusion's no-stacking rule kept as written, or restated? | Wording only; the mechanic is not in dispute. |
 | `F-051` | Can an ordinary artificer carry a piece to its ceiling, or only the Bearer? | One clause in Section 12.8/12.11. |
 | `F-055` | Does each Section 18 class owe a `/system <class>` render template? | One template per class, presentation-only, the shape Profile 1.113 already used. |
@@ -47,7 +47,7 @@ The decision is cheap; the evidence to make it safely is not, and gathering it i
 
 | Flag | What has to be established first |
 |---|---|
-| `F-070` | Which side of the Stat ledger is authoritative — the audit is every level-up, Title Assessment and allocation Event against three drifted Stats. |
+| `F-070` | **Ruled 2026-09-14: leave it be.** No audit, no repair, suite red on purpose. |
 | `F-071` | What the readiness surface can actually shed. The levers are named; nobody has measured what each would save. **Time-critical: 67 tokens of headroom.** |
 | `F-048` | Whether any live ledger's rendered Combat Tier disagrees with the Section 6.7 derivation right now. |
 | `F-040` | Which earned techniques have mastery tracks that ignore the practice that earned them, and how many. |
@@ -1866,7 +1866,17 @@ At `EVT-000959` that assumption broke on contact. Nineteen of the Auditor's twen
 
 **Raised:** 2026-09-14 · **Source:** `campaigns/gatefall_pendragon_001/`, found by `tools/test_gatefall_quest_contract.ps1` during an out-of-character sweep of the seven red Tier 3 suites
 
-**Status:** Open. **Deliberately not actioned** — actioning it means writing a mechanical value nobody authored, which is precisely what `F-014` and `F-030` record as the thing a Runtime must not do on its own.
+**Status: ACTIONED (2026-09-14)** -> Gatefall Profile **1.114** (`worlds/gatefall/migrations/1.113_to_1.114.md`), on an owner ruling. **Both halves closed.**
+
+**Question 1 was answered: continuation.** Section 7.4's grid gains its S row -- `x2.75 / x2.90 / x3.05 / x3.20 / x3.35` -- built exactly as every other row is, A Novice `+0.35` and `+0.15` per mastery step. The owner ruled against the `F-054` reading (a rung that repeats the one below it) and for the arithmetic the Section 7.3 rule already implied.
+
+**Question 2, the deleted magnitude, is repaired.** The live entry carries its multiplier again: *"The second strike has a x3.35 Twin Fang multiplier (Section 7.4, S row, 1.114)."* `tools/test_gatefall_quest_contract.ps1` is green, and it is the only reason anyone knew the value was gone.
+
+**One thing this cost is worth recording, because it is `F-071` arriving in real time.** The first restoration sentence was 142 bytes of ordinary prose and it pushed `operation:/system shop` to **20,009 tokens against a 20,000 hard ceiling** -- nine tokens over. Repository validation failed on a one-sentence canonical repair. The sentence was rewritten to 84 bytes carrying the same magnitude and the same citation, and it fits. **Readiness is not the only surface at its wall**, which `F-071` understates: `/system shop` is a second, independent ceiling with single-digit headroom.
+
+**Question 3 is left open deliberately** -- nobody has swept `skills_known` for other entries whose effect text carries a magnitude the profile does not also carry, and that sweep is the general form of this defect. **The original disposition follows.**
+
+**Originally: Open, deliberately not actioned** — actioning it means writing a mechanical value nobody authored, which is precisely what `F-014` and `F-030` record as the thing a Runtime must not do on its own.
 
 **Two defects, and the second is what made the first invisible.**
 
@@ -1892,7 +1902,9 @@ That is the `F-037` shape — a field storing a derived comparison, going stale 
 
 **Raised:** 2026-09-14 · **Source:** `campaigns/gatefall_pendragon_001/`, `tools/test_gatefall_ap_ledger.ps1` red at HEAD during an out-of-character sweep of the Tier 3 suite
 
-**Status:** Open. **Deliberately not repaired.** These are the numbers Health, damage, Stat Passive Ranks, the Combat Tier and every damage figure in the campaign derive from. Choosing which side to move is an owner ruling, not a cleanup.
+**Status: OPEN — owner ruled 2026-09-14 to LEAVE IT.** Asked directly which side to move, the owner answered *"leave it be."* Recorded here so nobody re-litigates it and so the red suite is understood as accepted rather than unnoticed: **`tools/test_gatefall_ap_ledger.ps1` is the one remaining Tier 3 failure of fifty-three, and it is red on purpose.** Nothing below is withdrawn -- the arithmetic stands and the audit is still the only way to close it -- but no repair should be attempted without a fresh ruling. **The original disposition follows.**
+
+**Originally: Open, deliberately not repaired.** These are the numbers Health, damage, Stat Passive Ranks, the Combat Tier and every damage figure in the campaign derive from. Choosing which side to move is an owner ruling, not a cleanup.
 
 **The first discrepancy: three Stats carry more than their own history accounts for.** Profile Section 3.2 makes the derivation exact — `base_stat - creation_array[stat] - allocated[stat]` must equal automatic growth, which is uniform across all five Stats. At level 186 that figure is **2,594**:
 
@@ -1973,3 +1985,60 @@ The measurement also reports the surface as **83% residue** — only 16% is dupl
 3. **Should a campaign be allowed to reach a hard readiness ceiling at all, or should the ceiling scale with campaign age?** A world whose protagonist is designed to grow for two hundred levels has no fixed-size readiness surface available to it, and this is the second Gatefall ceiling to arrive by growth after `F-046`/`F-059`.
 
 **Related:** `F-031` (the context budget buys bytes with memory, and the trim is made by the party least able to judge the cost — the same surface, from the other side), `F-047` (a rule that only breaks once the content it reads gets rich enough), `F-059` (an instrument terminating below where the campaign arrived).
+
+### F-071 addendum (2026-09-14) — measured, and it is one field rather than a file
+
+**The owner asked the right question — *where exactly is readiness, what file, and can it be split* — and the answer is that readiness is not a file at all, so splitting one was never the lever.**
+
+**What readiness actually is.** It is the operation plan for `/continue`, composed by `tools/measure_runtime_context.py` (`readiness_groups` -> `campaign_plan(root, campaign, "continue")`) from selectors declared in **`campaigns/gatefall_pendragon_001/090_CAMPAIGN_STARTUP.md`** under `source_loading:`. Its thirteen contributors:
+
+| Contributor | Declared by | Tokens |
+|---|---|---:|
+| `100_CHARACTER_SHEET.md` ENT-000125, 21 fields | `protagonist_readiness_fields` | 9,989 |
+| `docs/AI_GAMEPLAY_RESIDENT_CORE.md` (whole) | `include_resident: true` | 8,166 |
+| `090_CAMPAIGN_STARTUP.md` (whole) | the plan itself | 6,204 |
+| Five profile headings | `world_rule_profile.readiness_headings` | 6,431 |
+| `135_CAST_IN_PLAY.md#Cast` | `campaign_readiness_headings` | 3,300 |
+| `180_CURRENT_STATE.md` (whole) | the plan itself | 3,006 |
+| `130_NPCS_AND_FACTIONS.md#Closed Channels` | `campaign_readiness_headings` | 2,543 |
+| checkpoint manifest + profile-version metadata | the plan itself | 301 |
+
+**The splitting mechanism already exists and is already in use.** `protagonist_deferred_field_groups` moves a protagonist field off readiness and onto the operation that needs it; four groups are declared today — `action_resolution`, `progression_settlement`, `titles_detail`, `system_shop`. So the question is not *can a file be split* but **which readiness field should have been deferred and never was.**
+
+**Measuring the 21 readiness fields answers it immediately.**
+
+| Readiness field | Tokens | Share of the protagonist load |
+|---|---:|---:|
+| `system_state.progression_candidates` | **5,586** | **55.8%** |
+| `system_state.non_daily_quests` | 2,092 | 20.9% |
+| `system_state.titles` | 835 | 8.3% |
+| `system_state.daily_quest` | 325 | 3.3% |
+| `system_state.pending_rewards` | 270 | 2.7% |
+| the other sixteen fields, combined | 899 | 9.0% |
+
+**One field is more than half the protagonist's readiness cost, and two are more than three quarters.** `progression_candidates` alone is **14% of the entire 39,933-token readiness surface**.
+
+**And most of that field is settled history.** Broken down by status across its 36 blocks:
+
+```text
+    ratified    31 blocks   3,996 tokens   71.6%
+    tracking     3 blocks     798 tokens   14.3%
+    rejected     2 blocks     784 tokens   14.1%
+```
+
+**A readiness load is what a Runtime needs before the first turn.** Three `tracking` candidates are exactly that — they are the open formation audits Section 7.1 acts on. Thirty-one `ratified` ones are closed business that belongs to `progression_settlement`, the deferred group that already holds `tracked_counters` and `progression_audit_baselines` and already fires at exactly the moment a settled candidate matters.
+
+**Three options, measured rather than guessed:**
+
+| Option | Readiness after | Headroom under 40,000 |
+|---|---:|---:|
+| Do nothing | 39,933 | **67** |
+| Defer `progression_candidates` whole | ~34,347 | 5,653 |
+| Defer only closed candidates (`ratified` + `rejected`) | ~35,152 | 4,848 |
+| Defer closed candidates **and** `non_daily_quests` | ~33,060 | 6,940 |
+
+**Option 2 is a config-only change** — one line moved between `protagonist_readiness_fields` and `protagonist_deferred_field_groups.progression_settlement` — and it costs the Runtime sight of the three open candidates at session start, which is a real behavioural loss.
+
+**Option 3 is the right shape and is not config-only.** The selector is field-level, not row-level, so "carry the open ones, defer the closed ones" needs the sheet to hold them as **two fields** — `progression_candidates` (open) and something like `progression_candidates_settled` (closed) — with only the second in the deferred group. That is a Data Model shape change and needs an owner ruling, which is what this addendum is asking for.
+
+**The general finding, which outlives this campaign.** A readiness selector list names *fields*, and a field can grow without bound while its name stays the same size. `progression_candidates` was a reasonable readiness field when it held two entries; it holds thirty-six now and thirty-one are closed. **Nothing anywhere distinguishes a field that carries live state from one that accumulates history**, and that is why this surface arrived at 67 tokens with four warnings behind it rather than one loud one.

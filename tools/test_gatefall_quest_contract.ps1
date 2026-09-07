@@ -653,10 +653,25 @@ $mainFollowUp = Round-HalfUp (($effectiveStrength + $mainPower) * $quickknifeCha
 # to nearest with .5 up. A pinned snapshot could not have caught that, because
 # the snapshot and the sheet were both hand-written from the same arithmetic.
 # Corrected to 128 and 112 at `EVT-000391`.
-Assert-True ($character -match 'main_hand: ".+?DMG (\d+) standard') "Main-hand rendered DMG preview is unreadable."
-$mainRendered = [int]$Matches[1]
-Assert-True ($character -match 'off_hand: ".+?DMG (\d+) standard') "Off-hand rendered DMG preview is unreadable."
-$offRendered = [int]$Matches[1]
+# The render form moved and this parse did not follow it. It required
+# `DMG <digits> standard`; the sheet has read `**DMG 5,487** at eff. Strength ...`
+# since at least checkpoint 0135, so both assertions had been failing on the
+# READ rather than on the arithmetic -- and the arithmetic below, which is the
+# part actually worth guarding, never ran. Two things had to change:
+#
+#   1. The preview is bolded and thousands-separated now, so the digits are not
+#      a bare \d+ run.
+#   2. The figure may carry an approximation mark before it. That character is
+#      non-ASCII, and this file is decoded as ANSI by Windows PowerShell 5.1, so
+#      matching it literally would silently never fire -- the trap this file's
+#      own header warns about. `[^0-9]{0,4}` skips it without naming it.
+#
+# The Section 6.2 cross-check that follows is unchanged and is the whole point:
+# the rendered preview must equal the derivation from the sheet's own inputs.
+Assert-True ($character -match 'main_hand: ".+?DMG[^0-9]{0,4}([\d,]+)') "Main-hand rendered DMG preview is unreadable."
+$mainRendered = [int](($Matches[1]) -replace ',', '')
+Assert-True ($character -match 'off_hand: ".+?DMG[^0-9]{0,4}([\d,]+)') "Off-hand rendered DMG preview is unreadable."
+$offRendered = [int](($Matches[1]) -replace ',', '')
 Assert-True ($mainRendered -eq $mainDamage) "Main-hand sheet renders DMG $mainRendered; Section 6.2 on the sheet's own inputs (Strength $effectiveStrength + power $mainPower, chassis x$quickknifeChassis) derives $mainDamage."
 Assert-True ($offRendered -eq $offDamage) "Off-hand sheet renders DMG $offRendered; Section 6.2 on the sheet's own inputs (Strength $effectiveStrength + power $offPower, chassis x$quickknifeChassis) derives $offDamage."
 # Rupture takes no weapon input, so its preview is the Rank baseline times its

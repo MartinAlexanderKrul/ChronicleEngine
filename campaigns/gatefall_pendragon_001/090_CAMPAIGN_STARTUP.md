@@ -19,7 +19,7 @@ initialization_state: resumable
 # failures. Characters recorded after it carry want, fear, secret, voice and an agenda.
 # Removing this line does not disable the check; it widens it to the whole cast.
 disposition_baseline: ENT-000210
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0149
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0150
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 selection_caveat: "Active campaign; resumable from its latest checkpoint."
@@ -332,5 +332,5 @@ Non-canonical operational preferences, imported 2026-08-30 from the player's acc
 
 **Superseded, not carried forward:** an earlier item in the same export ("defer all campaign-file writes to `/save`, never write mid-turn") is explicitly dropped — confirmed with the player 2026-08-30 that the Resident Core's own per-turn Turn-State Settlement governs instead, matching this session's actual practice throughout.
 
-10. **Re-confirmed 2026-09-08, directly against the `save` skill's own text.** The `.claude/skills/save/SKILL.md` file separately claims the campaign already reversed to defer-only writes, citing this campaign's own history of "repeated 'live, unpromoted-to-checkpoint' edits" as the practice being retired. Asked the player directly which governs going forward; the answer was explicit: **keep per-turn writes**, treat the skill file's reversal claim as stale/incorrect for this campaign. `/save` remains the periodic snapshot-and-commit step (Object Blocks, checkpoint folder, manifest, ID registry, validation gate, `main` commit) layered on top of files that are already current — not the first time state actually reaches disk.
+10. **Superseded again 2026-09-14.** Item 10 as written (2026-09-08) said the opposite of this line and is now known wrong: mid-scene per-turn writes cost real pacing during a fast-moving exchange (several tool calls of file edits between each in-fiction beat), and the player corrected it back to defer-only, live, in almost the original 2026-08-03 wording: *"stop editing files mid scene, I need to wait for your response forever."* **Governing rule, current as of 2026-09-14: hold settled state in-session, narrate and track it without touching `100_CHARACTER_SHEET.md`, `120_INVENTORY_AND_OWNERSHIP.md`, `130_NPCS_AND_FACTIONS.md`, `140_OBJECTIVES.md`, `180_CURRENT_STATE.md`, or `system/ID_REGISTRY.md` mid-scene, and write everything in one pass at `/save` (or `/end`).** Do not re-flip this back to per-turn writes on the strength of the 2026-09-08 note above — that note is exactly the stale claim this correction is against. If the player's preference changes again, a live correction in the session governs over either historical note.
 11. **Classify skill-formation progress live, never wait for `/save`.** Confirmed 2026-09-12. Overrides §7.1's default deferred-classification boundary for structured practice — ratify a `tracking` candidate the same turn its qualifying scene resolves, same as the danger boundary already does.

@@ -140,6 +140,13 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000268` | Aldric Renn | CONSULT — administrative handler | active | A small unmarked office, Suite 3C, West Fulton Market, Chicago… | — |
 | `ENT-000269` | the Pilsen Gate | Gate, confirmed | active | Pilsen, Chicago — exact address not yet sent | — |
 | `ENT-000273` | the Auditor | System-bearer, Assay grader | deceased | Deceased, 'the cut chamber' — the sealed stone room beyond the… | — |
+| `ENT-000274` | R-7 | Assay reviewer — a rank above an individual grader's own casework | deceased | The Assay's channel, at the shelf holding the Libeň case file —… | — |
+| `ENT-000275` | ENT-000275 | Assay enforcer — recruited champion, combat-built | deceased | The Assay's channel, the same stretch of shelving as the Libeň… | — |
+| `ENT-000276` | ENT-000276 | Assay response-group coordinator — recruited champion, Mana-built | deceased | The Assay's channel, separated from its group of four by Lockdo… | — |
+| `ENT-000277` | ENT-000277 | Assay enforcer — recruited champion, close-quarters/durability build | deceased | The Assay's channel, split from the coordinator's group of four. | — |
+| `ENT-000278` | ENT-000278 | Assay enforcer — recruited champion, speed/reach build | deceased | The Assay's channel, sealed inside the recast Lockdown Field un… | — |
+| `ENT-000279` | ENT-000279 | Assay enforcer — recruited champion, area/durability build | deceased | The Assay's channel, sealed inside the recast Lockdown Field un… | — |
+| `ENT-000280` | ENT-000280 | Assay enforcer — recruited champion, binding/warding build | deceased | The Assay's channel, sealed alone from the moment of the uneven… | — |
 
 ---
 
@@ -240,13 +247,20 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000267` | Daniel Pruett | Full read (🎲 45, net +1, effective 65) — success | That it already has, or is about to — Ingrid's own warning (*'whatever's going on with you pers… | Not established — the read reached want and fear, not further | Says little; a short nod does most of his talking |
 | `ENT-000268` | Aldric Renn | Not established | Not established | Not established | Not established — never heard directly |
 | `ENT-000273` | the Auditor | To finish grading every uncut sample she finds, firsthand, in person, before anyone above her a… | Being asked why the Libeň sample was never filed — the dying man's sacrifice, not her own failu… | She remembers passing her own exam | Courteous in the specific way of someone reciting a procedure she no longer has to think about |
+| `ENT-000274` | R-7 | To close a reviewed case correctly rather than quickly — the same procedural completion every A… | Signing off on a compromised case that fails further up the chain than she can see, and being t… | This is not the first case her tier has had to flag this cycle, and the pattern across them is… | Colder and more clipped than the Auditor's own courteous register — a senior reviewer's impatie… |
+| `ENT-000275` | ENT-000275 | Unestablished beyond the reflex any enforcer answering an alarm would carry — close on the trou… | Unestablished — killed before any dialogue or resolved fictional beat could surface one | Unestablished | Unestablished — no line spoken; read only through movement, urgent and low rather than the admi… |
+| `ENT-000276` | ENT-000276 | Coordinate its group correctly and report accurately — same procedural throughline as every Ass… | Unestablished — killed before demonstrating one beyond the implication of Alarm Pulse's existen… | Unestablished | Unestablished — no line spoken |
+| `ENT-000277` | ENT-000277 | Unestablished | Unestablished | Unestablished | One audible cry under the second hit — raw, undirected, not a chosen signal |
+| `ENT-000278` | ENT-000278 | Unestablished | Unestablished | Unestablished | Unestablished — never spoke; died alert but unable to locate the attacker |
+| `ENT-000279` | ENT-000279 | Unestablished | Unestablished | Unestablished | Unestablished — never spoke |
+| `ENT-000280` | ENT-000280 | Unestablished | Unestablished | Unestablished | Unestablished — never spoke, never saw its own death coming |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 117. Protagonist relationships: 35.
-- Characters: 89. Disposition authored in full: 43; partial: 34; none: 12. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 124. Protagonist relationships: 35.
+- Characters: 96. Disposition authored in full: 44; partial: 36; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

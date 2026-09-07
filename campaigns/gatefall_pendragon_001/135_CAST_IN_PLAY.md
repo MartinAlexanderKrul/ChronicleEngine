@@ -27,7 +27,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000127` | Marcus Aldridge | sensor | active | Chicago | — |
 | `ENT-000128` | Elias Voss | striker | active | Chicago | — |
 | `ENT-000129` | Dr. Sarah Chen | mender | active | Chicago | — |
-| `ENT-000130` | Kesha Morrison | Coalition coordinator | active | Chicago | — |
+| `ENT-000130` | Kesha Morrison | Coalition coordinator | active | Chicago | `REL-000115` |
 | `ENT-000131` | Diane Halloran | gear-shop owner | active | Chicago | — |
 | `ENT-000132` | Cutting Edge | gear vendor | active | Chicago | — |
 | `ENT-000133` | Horizon's Outfitter | gear vendor | active | Chicago | — |
@@ -260,7 +260,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 124. Protagonist relationships: 35.
+- Entities: 124. Protagonist relationships: 36.
 - Characters: 96. Disposition authored in full: 44; partial: 36; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

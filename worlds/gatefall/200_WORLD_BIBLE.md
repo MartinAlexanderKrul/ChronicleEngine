@@ -254,6 +254,26 @@ The System is the Assay's **single active candidate-channel for this world-line.
 
 The break rate is not a trend. It is a **countdown.** The Assay escalates on a fixed schedule keyed to how long a world has resisted producing a viable champion: Gates get denser, Ranks climb, breaks grow more frequent — all on a **geometric curve with an asymptote**, a date the process is walking the world toward. Near the end of the ramp the punctures stop closing on boss-kill and begin to **merge**. The terminal event — owner term, the **Confluence** — is a single break that does not close, a wide permanent Gate from which the Assay's final examiner emerges: a terminal boss (owner term, the **Adjudicator**) whose defeat by the world's champion is the pass condition and whose victory is the harvest. This is what no agency can explain, because it has no local cause: the break rate is a clock they cannot see the face of. Somewhere a statistician has already fit the curve and gone quiet, because extended, it goes vertical in a specific and not-distant year.
 
+## What "spared" is conditional on (explicit ruling)
+
+**Owner ruling, 2026-09-14.** The pass condition above says a world that produces a viable champion is *"spared and absorbed into the Assay's network."* It does not say for how long, or on what terms. This is the terms.
+
+**Passing does not spare a world. It makes a world sparable, and the sparing is held against the champion's service.** The Assay does not reward; it acquires. A world that passes is not released from the process — it is moved from the harvest queue onto the staff roster, and the entry on that roster is the champion. **The world's continued existence is the retainer.**
+
+So the recruitment Section 9 already describes is not an honour extended to a victor. It is the collateral being named out loud. A champion who serves keeps his world; a champion who stops serving does not.
+
+**On refusal, the grading reverts.** It does not fail, and it is not re-run — it returns to unfiled, which is the state the process treats as unfinished business rather than as a verdict. The harvest resumes from where it was interrupted, on a world that has just spent its champion. **There is exactly one thing that stops it: the champion destroying the party sent to collect, and whatever that party escalates to.**
+
+That is the whole of the exception, and it is deliberately not a loophole. The Assay is a process rather than an authority — it has no pride, issues no ultimatum, and does not negotiate. It sends something to close an open file. If the thing sent does not come back, the file stays open. **A candidate can, in principle, keep his world by being permanently more expensive to file than the file is worth.** Nothing in the process forbids that. Nothing in it anticipates it either.
+
+**A Runtime never states these terms as a rule.** They surface the way everything in this section surfaces — in what a Passed champion says, in what a case marker reads, in what the thing that comes to collect assumes it does not have to explain.
+
+**The worked example is already in play and already met.** The Auditor, once Wren Solane, **passed her own exam and has never learned what it cost her world.** Read against this ruling, her file reads differently: her world was spared *because she took the job*, and it stays spared for exactly as long as she keeps it. Her authored fear — being asked why one sample was never filed — is not a career anxiety. **She has been managing an eleven-year discrepancy to protect her own retainer.** She was never told what her service buys, and she has never once let herself ask.
+
+**And it sharpens the Long Shelf's fourth position past where its holder can currently take it.** Orenne argues that a candidate who wins is not a rescuer but a recruit, and he holds that on a conclusion he cannot check. He is understating it. A candidate who wins is an employee whose world is the bond, and every world already inside the network is another hostage held the same way. **The thing Orenne fears is not that a winner joins the machinery. It is that the machinery is made of winners who could not afford to leave.**
+
+---
+
 ## Three planted clue-lines early play may surface
 
 1. **The graveyard.** In a red-gate or anomaly clear the protagonist survives, the alpha bears an old, *healed* weapon-wound and a brand seared into its hide that matches nothing in the BGM bestiary — and an appraiser later notes the identical brand on a beast pulled from a Gate on the other side of the planet. The beasts had lives before these Gates. (Foreshadows: the library of harvested worlds.)

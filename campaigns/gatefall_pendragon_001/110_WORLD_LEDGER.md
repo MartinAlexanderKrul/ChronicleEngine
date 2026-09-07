@@ -1183,9 +1183,11 @@ ending_routes:            # OWNER-FACING. Never rendered in any /system panel. N
     note: "Needs no investment and cannot be closed by inaction. This is what happens if nothing else is worked at."
 
   - route: refusal
-    ending: "He wins the Confluence, and then refuses the recruitment that passing carries."
+    ending: "He wins the Confluence, refuses the recruitment that passing carries, and fights what comes to collect."
     gate: "knows_cost_of_passing == true AND confluence resolved"
     status: closed
+    stakes: "OWNER RULING 2026-09-14, authored to `200_WORLD_BIBLE.md` Section 9: **sparing is conditional on his service.** Passing does not spare Earth; it moves Earth from the harvest queue onto the staff roster, and the world's continued existence is the retainer. On refusal the grading reverts to unfiled and the harvest resumes -- **unless he destroys the party sent to collect, and whatever it escalates to.** So this route's last scene is a fight, and losing it costs the world he just won. The Assay does not negotiate and issues no ultimatum; it sends something to close an open file, and a file whose closer does not come back stays open."
+    note: "Wren Solane is the worked example and is already met: she passed, she serves, and she has never learned what it cost her world -- because her world was spared FOR her service and stays spared exactly as long as she keeps it. Her eleven-year unfiled discrepancy was her protecting her own retainer. And Orenne is understating his own position: the machinery is not made of winners who joined, it is made of winners who could not afford to leave."
     knows_cost_of_passing: false
     opens_on:              # any one of these, all reachable in play
       - "taking `What Passing Actually Felt Like` — the Auditor's twentieth technique, declined at EVT-000959 and still owed an owner ruling"

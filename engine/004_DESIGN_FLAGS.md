@@ -48,7 +48,7 @@ The decision is cheap; the evidence to make it safely is not, and gathering it i
 | Flag | What has to be established first |
 |---|---|
 | `F-070` | **Ruled 2026-09-14: leave it be.** No audit, no repair, suite red on purpose. |
-| `F-071` | What the readiness surface can actually shed. The levers are named; nobody has measured what each would save. **Time-critical: 67 tokens of headroom.** |
+| ~~`F-071`~~ | **Ruled 2026-09-14: two-path split.** Actioned as Profile 1.115; readiness 39,933 -> 35,162, headroom 4,838. Other levers untouched. |
 | `F-048` | Whether any live ledger's rendered Combat Tier disagrees with the Section 6.7 derivation right now. |
 | `F-040` | Which earned techniques have mastery tracks that ignore the practice that earned them, and how many. |
 
@@ -1951,7 +1951,19 @@ That is the `F-037` shape — a field storing a derived comparison, going stale 
 
 **Raised:** 2026-09-14 · **Source:** `campaigns/gatefall_pendragon_001/`, `tools/test_growth_budgets.ps1` red at HEAD; found during an out-of-character sweep of the Tier 3 suite
 
-**Status:** Open, and this is the most time-critical entry in this file.
+**Status: ACTIONED (2026-09-14)** -> Gatefall Profile **1.115** (`worlds/gatefall/migrations/1.114_to_1.115.md`), on an owner ruling. **Readiness 39,933 -> 35,162 tokens. Headroom under the 40,000 hard failure: 4,838, from 67. `failure_tokens` was never raised.**
+
+The addendum below measured the cause down to one field; the owner ruled the two-path split over the cheaper whole-field deferral, on the grounds that the three open candidates must stay visible at readiness. Terminal candidates (`ratified`, `rejected`) now live on `canonical_state.system_state.progression_candidates_settled`, fetched with `progression_settlement`; the open ones stay where Section 7.1's mandatory ratification gate reads them. **No engine-layer change was needed** — `011_ENGINE_DATA_MODEL.md` Section 4.3 already says a world *"opts into and names their paths,"* so the reserved extension shape is untouched and this is world content under Decision 069 point 4.
+
+**All 36 records survive byte-for-byte**; 33 are in a different field. `tools/validate_repository.ps1` reads both sections into one list so every invariant — malformed shape, duplicate evidence, the `ratified`/`rejected` required fields, and `domain`+`key` uniqueness — spans the union. Splitting the field without splitting the checks was the failure mode that guards against, and it is verified: 36 seen, 0 collisions.
+
+**The budgets baseline was re-recorded DOWNWARD to 35,162**, not left at 39,933. Leaving it would hand the surface 4,771 tokens of silent allowance, and a baseline drifting inside its own allowance is exactly how the ratchet stops detecting growth — the failure this file's own notes describe three times.
+
+**What is not fixed, and should not be forgotten.** The other levers are untouched and still real: the startup file (6,204), the resident card (8,166), and the five profile readiness headings (6,431). And `F-069`'s disposition found a **second** surface at its wall — `operation:/system shop` failed at 20,009 against 20,000 on a single restored sentence. This flag was written as though readiness were the only ceiling in trouble. It is not.
+
+**The general finding stands and is the part worth keeping:** a readiness selector names a **field**, and a field that accumulates settled history grows without bound while its name stays the same size. Nothing anywhere distinguished live state from accumulated history. That distinction is what 1.115 adds; the tokens are its consequence, not its purpose. **The original entry follows.**
+
+**Originally: Open, and the most time-critical entry in this file.**
 
 **The number.** `readiness:gatefall_pendragon_001` measures **39,933 tokens** against `readiness.failure_tokens: 40000`. The margin is **67 tokens** — roughly one sentence. A readiness surface that breaches its hard failure is not a red suite; it is a campaign that cannot be loaded to play.
 

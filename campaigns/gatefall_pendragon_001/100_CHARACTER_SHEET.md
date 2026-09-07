@@ -380,7 +380,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.114"
+    profile_version: "1.115"
     profile_loner_scope_event: EVT-000672
     profile_party_minimum_event: EVT-000460
     profile_unified_render_event: EVT-000443
@@ -1057,6 +1057,24 @@ canonical_state:
       - { domain: gatefall.skill_formation, baseline_as_of: EVT-000482 }
     progression_candidates:
       - domain: gatefall.skill_formation
+        key: nonvisual_combat_mapping
+        signature: replace-sight-with-air-and-sound.map-movement.commit-to-mapped-position
+        status: tracking
+        evidence: [EVT-000109#crypt-air-pressure-and-auditory-map]
+      - domain: gatefall.skill_formation
+        key: pretext_and_cover
+        signature: fabricate-plausible-identity-or-story-under-direct-real-time-scrutiny.adapt-to-pushback.sustain-to-resolved-outcome
+        status: tracking
+        evidence: [EVT-000190#suite-14-vence-bluff-and-hold, EVT-000191#disguised-voicemail-and-callback-bait]
+        note: "**Classified at the promotion barrier (`EVT-000192`), Section 7.1's deferred non-combat batch — sealed at the time, no formation message rendered mid-scene.** First scene (`EVT-000190`): held a fabricated identity ('Vence') under a building guard's direct, real-time verification attempt — 🎲 55 then 🎲 71, both landing — and adapted the story without contradiction when pressed for a surname. Second scene (`EVT-000191`): a disguised voice and a deliberately vague insider phrase ('Is it still on?') left as a voicemail, 🎲 98, exceptional and a natural critical, provoking an immediate callback — a materially different application of the same signature (identity fabrication under scrutiny) in a different medium. **A third scene, holding the ruse live under direct questioning, failed catastrophically the same night** (`EVT-000191`, 🎲 15, net −1, effective 1) — Section 7.1 test 4 requires material success, so this failure contributes no evidence toward the candidate; it neither counts for nor against the 2/3 already banked. **2/3 qualifying scenes; not yet ratification-eligible.** A third *successful* qualifying scene would open the mandatory Section 7.1 adjudication queue, since no complete name/Rank/effect is authored here for this profile to ratify automatically."
+      - domain: gatefall.skill_formation
+        key: dimensional_theft
+        signature: withdraw-a-carried-object-from-another-person.into-the-dimensional-inventory.under-concealment.without-contact-registering
+        status: tracking
+        evidence: [EVT-000708#satchel-from-the-grip]
+        note: "**Opened at `EVT-000712` on the player's own proposal**, Section 7.1's deferred non-combat batch. Two Legendary takes against an unaware `ENT-000226` — the satchel from his grip mid-stride (`EVT-000708`) and the wallet from his pocket (`EVT-000709`), Silent Step recast between them.\n\n  **All five tests pass, and test 3 is flagged rather than assumed**: Section 12.9 governs storing **his own** items and Dimensional Projection launches **his own** objects, so neither part authors taking a thing out of another person's grip. **Test 5 credits one scene, not two** — a single continuous pursuit. **A future owner ruling may want to revisit test 3**, since this could reasonably read as an application of the dimensional inventory rather than a technique distinct from it.\n\n  **1/3. No profile-authored result exists**, so 3/3 opens the mandatory Section 7.1 adjudication queue rather than resolving automatically (`formation_instruction`, `reactive_pattern_anticipation` precedent)."
+    progression_candidates_settled:
+      - domain: gatefall.skill_formation
         key: ilith_unremarked_movement
         signature: move-without-drawing-attention.correct-own-lapses-mid-walk.no-mana-no-activation
         status: ratified
@@ -1326,11 +1344,6 @@ canonical_state:
         resolution_event: EVT-000132
         result_ref: skills.field_command
       - domain: gatefall.skill_formation
-        key: nonvisual_combat_mapping
-        signature: replace-sight-with-air-and-sound.map-movement.commit-to-mapped-position
-        status: tracking
-        evidence: [EVT-000109#crypt-air-pressure-and-auditory-map]
-      - domain: gatefall.skill_formation
         key: resonance_extraction
         signature: read-vein-resonance-before-impact.adapt-strike-to-live-seam
         status: ratified
@@ -1369,18 +1382,6 @@ canonical_state:
         resolution_event: EVT-000440
         rejection_reason: "Generic competence, excluded by Section 7.1 test 3. Both evidence scenes resolved on the engine's standing established-capability step (`EVT-000372`: '+1 step for the directly relevant established capability'), which fires for competence a character already holds and needs no skill. Alexander's university physics and mathematics training is that competence. Section 4.3 caps the net step at +1 and Section 7.2 forbids a second modifier from the same finding, so the skill would have changed no roll on the very scenes that formed it — the Rank Dominance Law failing at acquisition. All three candidate mastery axes failed the same way: beneficiaries priced a solitary method as a group one, concurrent derivations rebuilt Multitask's retired unreached-ceiling defect, and a scale ladder starting at one wall sat beneath what he had already demonstrated with no skill. Education is capability, not a skill."
         note: "Opened at `EVT-000436` on two scenes where Alexander resolved a problem on his physics-and-mathematics training rather than a System skill — `EVT-000372` (Loomis Street sweep-cone geometry) and `EVT-000398` (Cicero Scar core blocks). **Rejected at `EVT-000440`**, which withdraws that finding; reason in `rejection_reason`, full argument at the Event."
-      - domain: gatefall.skill_formation
-        key: pretext_and_cover
-        signature: fabricate-plausible-identity-or-story-under-direct-real-time-scrutiny.adapt-to-pushback.sustain-to-resolved-outcome
-        status: tracking
-        evidence: [EVT-000190#suite-14-vence-bluff-and-hold, EVT-000191#disguised-voicemail-and-callback-bait]
-        note: "**Classified at the promotion barrier (`EVT-000192`), Section 7.1's deferred non-combat batch — sealed at the time, no formation message rendered mid-scene.** First scene (`EVT-000190`): held a fabricated identity ('Vence') under a building guard's direct, real-time verification attempt — 🎲 55 then 🎲 71, both landing — and adapted the story without contradiction when pressed for a surname. Second scene (`EVT-000191`): a disguised voice and a deliberately vague insider phrase ('Is it still on?') left as a voicemail, 🎲 98, exceptional and a natural critical, provoking an immediate callback — a materially different application of the same signature (identity fabrication under scrutiny) in a different medium. **A third scene, holding the ruse live under direct questioning, failed catastrophically the same night** (`EVT-000191`, 🎲 15, net −1, effective 1) — Section 7.1 test 4 requires material success, so this failure contributes no evidence toward the candidate; it neither counts for nor against the 2/3 already banked. **2/3 qualifying scenes; not yet ratification-eligible.** A third *successful* qualifying scene would open the mandatory Section 7.1 adjudication queue, since no complete name/Rank/effect is authored here for this profile to ratify automatically."
-      - domain: gatefall.skill_formation
-        key: dimensional_theft
-        signature: withdraw-a-carried-object-from-another-person.into-the-dimensional-inventory.under-concealment.without-contact-registering
-        status: tracking
-        evidence: [EVT-000708#satchel-from-the-grip]
-        note: "**Opened at `EVT-000712` on the player's own proposal**, Section 7.1's deferred non-combat batch. Two Legendary takes against an unaware `ENT-000226` — the satchel from his grip mid-stride (`EVT-000708`) and the wallet from his pocket (`EVT-000709`), Silent Step recast between them.\n\n  **All five tests pass, and test 3 is flagged rather than assumed**: Section 12.9 governs storing **his own** items and Dimensional Projection launches **his own** objects, so neither part authors taking a thing out of another person's grip. **Test 5 credits one scene, not two** — a single continuous pursuit. **A future owner ruling may want to revisit test 3**, since this could reasonably read as an application of the dimensional inventory rather than a technique distinct from it.\n\n  **1/3. No profile-authored result exists**, so 3/3 opens the mandatory Section 7.1 adjudication queue rather than resolving automatically (`formation_instruction`, `reactive_pattern_anticipation` precedent)."
     gold: 300356081  # citation, 120_INVENTORY_AND_OWNERSHIP.md authoritative. -9,000,000 (10 S-Rank Instant-Dungeon Keys, 900,000g each) +53,687,700 (crystal sell-down) this span, EVT-000944.
     inventory:
       # The dimensional inventory (Profile Section 12.9): every item Alexander owns

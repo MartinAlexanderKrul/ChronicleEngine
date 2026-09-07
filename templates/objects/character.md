@@ -51,4 +51,19 @@ progression_candidates:
     resolution_event: <optional: EVT-XXXXXX; required when ratified>
     result_ref: <optional: world-owned result path; required when ratified>
     rejection_reason: <optional: profile-owned reason; required when rejected>
+
+# Terminal candidates (`ratified` / `rejected`) live here instead, same shape and
+# same required fields. A world that opts into the split names both paths; a world
+# that does not carries every candidate in `progression_candidates` as before.
+# `domain` plus `key` stays unique across the two paths together.
+progression_candidates_settled:
+  - domain: <optional: profile-owned domain>
+    key: <optional: stable candidate key, unique with domain across both paths>
+    signature: <optional: stable method/tools/sequence/payoff signature>
+    status: <optional: ratified | rejected>
+    evidence:
+      - <optional: EVT-XXXXXX#scene-key>
+    resolution_event: <optional: EVT-XXXXXX; required when ratified>
+    result_ref: <optional: world-owned result path; required when ratified>
+    rejection_reason: <optional: profile-owned reason; required when rejected>
 ```

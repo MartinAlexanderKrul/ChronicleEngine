@@ -751,7 +751,26 @@ surfaces:
       # deliberately NOT raised here; raising it is the move every one of those
       # notes warned against, and it is the reason the margin is what it is.
       # Raised as `F-071`.
-      gatefall_pendragon_001: 39933
+      # Carried 39,933 -> 35,162 (-4,771) on 2026-09-14: Gatefall Profile 1.115
+      # moved terminal progression candidates off readiness onto their own path
+      # (`worlds/gatefall/migrations/1.114_to_1.115.md`, `F-071`). Re-recorded
+      # DOWNWARD on purpose. Leaving it at 39,933 would hand the surface 4,771
+      # tokens of silent allowance, and a baseline drifting inside its own
+      # allowance is precisely how the ratchet stops detecting real growth --
+      # the failure the notes above this one describe three times over.
+      #
+      # Headroom under the 40,000 hard failure is 4,838, from 67. `failure_tokens`
+      # was never raised to get here and is not raised now.
+      #
+      # The lever that did it, for whoever needs the next one: a readiness
+      # selector names a FIELD, and `progression_candidates` had grown to 36
+      # entries of which 33 were settled -- 55.8% of the protagonist's readiness
+      # load and 14% of this whole surface, carrying an audit trail whose result
+      # already lives in `skills_known`, whose counters already live in
+      # `tracked_counters`, and whose reasoning already lives in an Event. The
+      # remaining levers named above (the startup file, the resident card, the
+      # five profile readiness headings) are untouched and still real.
+      gatefall_pendragon_001: 35162
       prototype_alpha: 10415
       prototype_beta: 11060
       reikon_awakening_001: 15768

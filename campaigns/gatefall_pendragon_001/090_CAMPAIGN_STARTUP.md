@@ -9,7 +9,7 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.114"
+world_rule_profile: "Gatefall World Rule Profile 1.115"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
@@ -60,6 +60,7 @@ source_loading:
     progression_settlement:
       - canonical_state.system_state.tracked_counters
       - canonical_state.system_state.progression_audit_baselines
+      - canonical_state.system_state.progression_candidates_settled
     titles_detail:
       - canonical_state.system_state.titles_catalog
     system_shop:

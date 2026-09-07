@@ -1696,7 +1696,19 @@ foreach ($file in $canonicalFiles) {
                 })
             }
 
-            foreach ($entry in (Get-ListEntries (Get-IndentedSection $block "progression_candidates"))) {
+            # Gatefall Profile 1.115 splits terminal candidates onto a second path so
+            # readiness stops carrying settled history (F-071). Both are read into the
+            # same list here on purpose: every invariant below -- malformed shape,
+            # duplicate evidence, ratified/rejected required fields, and the
+            # domain-plus-key uniqueness enforced downstream -- must span the two
+            # paths together, or splitting the field would silently split the checks.
+            # A world that has not opted into the split has no second section and the
+            # extra Get-IndentedSection simply returns nothing.
+            $candidateSections = @(
+                (Get-IndentedSection $block "progression_candidates"),
+                (Get-IndentedSection $block "progression_candidates_settled")
+            )
+            foreach ($entry in @($candidateSections | ForEach-Object { Get-ListEntries $_ })) {
                 $domain = Get-EntryValue $entry "domain"
                 $candidateKey = Get-EntryValue $entry "key"
                 $signature = Get-EntryValue $entry "signature"

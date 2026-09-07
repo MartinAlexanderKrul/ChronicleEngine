@@ -52,11 +52,13 @@ The decision is cheap; the evidence to make it safely is not, and gathering it i
 | `F-048` | Whether any live ledger's rendered Combat Tier disagrees with the Section 6.7 derivation right now. |
 | `F-040` | Which earned techniques have mastery tracks that ignore the practice that earned them, and how many. |
 
-## Group C — Runtime behaviour, and the reason this group keeps growing
+## Group C — Runtime behaviour · DISPOSITIONED 2026-09-14 under `F-072`
 
 **Eight open flags describe the same failure from different angles**, and it is worth saying plainly: they are all *me*, not the schema. `F-036` (authoring the protagonist's speech), `F-041` (NPC-knowledge fabrication, a third recurrence), `F-057` (dialogue as itemised exposition), `F-060` (fixing a channel slip in character instead of re-narrating), `F-061` (voice convergence, a third recurrence), `F-062` (contesting a player's canon claim on a partial search), `F-063` (the world's answer not landing live and in full), `F-066` (an NPC played as a question-generator).
 
-**Every one of them has been "actioned" before by adding a prohibition to the Resident Core, and every one has recurred.** `F-028` says this outright — *"every remedy for four months had been a prohibition."* The pattern in this group is not that the rules are missing; it is that a rule which lives as prose in a per-turn card does not survive contact with a long scene. `F-012`, `F-033` and `F-034` each learned the same thing about mechanical obligations and each was fixed the same way: **convert the obligation into state that something reads.** No equivalent exists for narration, and inventing one is the real design question this group is asking. Until someone answers it, expect a fourth recurrence.
+**Every one of them has been "actioned" before by adding a prohibition to the Resident Core, and every one has recurred.** `F-028` says this outright — *"every remedy for four months had been a prohibition."* The pattern in this group is not that the rules are missing; it is that a rule which lives as prose in a per-turn card does not survive contact with a long scene. `F-012`, `F-033` and `F-034` each learned the same thing about mechanical obligations and each was fixed the same way: **convert the obligation into state that something reads.**
+
+**That conversion was the answer, and it was built on 2026-09-14 — see `F-072`.** `narration_telemetry` counts per span what the prohibitions kept asking the Runtime to remember: per speaking NPC, whether its record was loaded, its lines, how many were questions aimed at the protagonist, how many were beats of its own, and the one voice tell from its record that showed up. Five rules are machine-enforced and seven mutation legs prove they fire. **The nine stay open on purpose** — the mechanism makes recurrence visible rather than impossible, and they close when a span's numbers show it stopped, not when the gate was built.
 
 ## Group D — foundational, needs an ADR against a released version
 
@@ -1102,6 +1104,8 @@ The second refusal was consistently mistaken and is the substance of this flag. 
 
 **Related:** `F-035` (the same session, one exchange earlier — Runtime supplying content under momentum rather than checking authorization first, on the world-fact surface instead of the protagonist-speech surface), `F-020`/`F-021` (NPC-knowledge leaks — the mirror-image failure, where an NPC was given knowledge it had no channel to; this flag is an NPC being given a *line to react to* that the protagonist never spoke), `F-016` (NPC dialogue and independence failures under the same Resident Core section).
 
+**Dispositioned 2026-09-14 under `F-072`, with the rest of the narration cluster.** This flag's remedy had been a prohibition in `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, like the other eight, and prohibitions are what recurred. It is now **counted** instead: `narration_telemetry` on `180_CURRENT_STATE.md`, written at every checkpoint, gated by `tools/validate_repository.ps1`, mutation-tested across seven legs, and loaded with readiness so the next scene opens knowing how the last one went. **Left open deliberately** — the mechanism makes recurrence visible rather than impossible, and this entry closes when a span's numbers show it stopped happening, not when the gate was built.
+
 ## F-037 — A shop offer and an inventory line each store a comparison against Bearer state, and both went stale and misled inside one session
 
 **Raised:** 2026-08-13 · **Source:** `campaigns/gatefall_pendragon_001/`, resumed session at Checkpoint 0096, player asking whether two runes were worth consuming
@@ -1191,6 +1195,8 @@ Section 7.1 makes a rejected or closed candidate reopenable **"only by owner rul
 
 ---
 
+**Dispositioned 2026-09-14 under `F-072`, with the rest of the narration cluster.** This flag's remedy had been a prohibition in `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, like the other eight, and prohibitions are what recurred. It is now **counted** instead: `narration_telemetry` on `180_CURRENT_STATE.md`, written at every checkpoint, gated by `tools/validate_repository.ps1`, mutation-tested across seven legs, and loaded with readiness so the next scene opens knowing how the last one went. **Left open deliberately** — the mechanism makes recurrence visible rather than impossible, and this entry closes when a span's numbers show it stopped happening, not when the gate was built.
+
 ## F-040 — An earned technique's mastery track ignores the practice that earned it
 
 **Raised:** 2026-08-19 · **Source:** `campaigns/gatefall_pendragon_001/`, 2026-08-21 in-fiction session
@@ -1237,6 +1243,8 @@ Caught immediately by the player ("I never said anything to her over the phone a
 **Related:** `F-020`, `F-021` (both actioned into the mechanism this defect passed through), `F-003`/`F-005`–`F-007`/`F-016` (the original consolidated finding).
 
 ---
+
+**Dispositioned 2026-09-14 under `F-072`, with the rest of the narration cluster.** This flag's remedy had been a prohibition in `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, like the other eight, and prohibitions are what recurred. It is now **counted** instead: `narration_telemetry` on `180_CURRENT_STATE.md`, written at every checkpoint, gated by `tools/validate_repository.ps1`, mutation-tested across seven legs, and loaded with readiness so the next scene opens knowing how the last one went. **Left open deliberately** — the mechanism makes recurrence visible rather than impossible, and this entry closes when a span's numbers show it stopped happening, not when the gate was built.
 
 ## F-042 — Every landed blow resolves toward death; the profile authors no way to pull one
 
@@ -1628,6 +1636,8 @@ Across one extended session, NPC speeches ran long and structured — several re
 
 **Status:** Open.
 
+**Dispositioned 2026-09-14 under `F-072`, with the rest of the narration cluster.** This flag's remedy had been a prohibition in `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, like the other eight, and prohibitions are what recurred. It is now **counted** instead: `narration_telemetry` on `180_CURRENT_STATE.md`, written at every checkpoint, gated by `tools/validate_repository.ps1`, mutation-tested across seven legs, and loaded with readiness so the next scene opens knowing how the last one went. **Left open deliberately** — the mechanism makes recurrence visible rather than impossible, and this entry closes when a span's numbers show it stopped happening, not when the gate was built.
+
 ## F-058 — S-Rank is a hard ceiling on equipment and artificer-work power with no authored path past it, once a Bearer's gear and Rank both reach S
 
 **Raised:** 2026-08-31 · **Source:** `campaigns/gatefall_pendragon_001/`, surfaced when the player attempted to raise a plain S-Rank Quickknife's power ceiling via an artificer (Corwin Ashvale) a second time, after an in-fiction failed attempt the prior span had already burned two S-Rank Beast Cores and destroyed a plain S-Rank dagger for "no result."
@@ -1696,6 +1706,8 @@ The player's objection: this pattern recurred across multiple NPCs in the same s
 
 **Both named figures came out smaller than the Bearer and that is the design.** Sevrin holds 7,600 Health against his 10,620, Ilith 4,960, neither with an equipment line — four thousand years of scraps off the Mill against thirty-three days of S-Rank instant dungeons. **A single clean Rupture kills either of them.** What makes them dangerous is that two bearers each carry strikes exceeding the other's pool, so **an exchange turns on whether a strike lands rather than on how many are traded**, and that Sevrin's axis is *denial* — she held a bridge, she can bar an anchored step, and on the far side where §2 drains 10% of maximum Mana an hour and the way home is a 5-Mana step, **keeping him somewhere is the lethal outcome with no blow struck.** The scale that capped at S is gone from §4.2 entirely, asserted by a gate leg scoped to the named figures.
 
+**Dispositioned 2026-09-14 under `F-072`, with the rest of the narration cluster.** This flag's remedy had been a prohibition in `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, like the other eight, and prohibitions are what recurred. It is now **counted** instead: `narration_telemetry` on `180_CURRENT_STATE.md`, written at every checkpoint, gated by `tools/validate_repository.ps1`, mutation-tested across seven legs, and loaded with readiness so the next scene opens knowing how the last one went. **Left open deliberately** — the mechanism makes recurrence visible rather than impossible, and this entry closes when a span's numbers show it stopped happening, not when the gate was built.
+
 ## F-061 — A third recurrence of NPC-voice convergence, this time across three NPCs in one scene, after F-016 (actioned) and F-057 (open) both already named it
 
 **Raised:** 2026-08-27 · **Source:** `campaigns/gatefall_pendragon_001/`, Indianapolis-break-aftermath session, player pushback out of character: "why cannot you remember to play NPC not flat and not engine related? they should have their own voice, their own reasoning and not world/system reasonings. you are playing all NPCs the same and it is getting very annoying"
@@ -1714,6 +1726,8 @@ Across one continuous stretch of play, three separately loaded NPCs with distinc
 
 **`F-058` remains open and untouched by design** — the equipment ceiling still has no path past it, and 1.109 deliberately did not open one.
 
+**Dispositioned 2026-09-14 under `F-072`, with the rest of the narration cluster.** This flag's remedy had been a prohibition in `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, like the other eight, and prohibitions are what recurred. It is now **counted** instead: `narration_telemetry` on `180_CURRENT_STATE.md`, written at every checkpoint, gated by `tools/validate_repository.ps1`, mutation-tested across seven legs, and loaded with readiness so the next scene opens knowing how the last one went. **Left open deliberately** — the mechanism makes recurrence visible rather than impossible, and this entry closes when a span's numbers show it stopped happening, not when the gate was built.
+
 ## F-062 — The Runtime contested a player's canon claim using a partial search, arguing stale data as settled fact instead of searching further or defaulting to the player
 
 **Raised:** 2026-08-27 · **Source:** `campaigns/gatefall_pendragon_001/`, same Indianapolis-break-aftermath session as F-061, player pushback out of character: "this is serious error and you were even fighting your wrong data against me"
@@ -1725,6 +1739,8 @@ Mid-scene, the player stated that Alexander and Owen had each had their own apar
 **The open design question:** does the Resident Core's *Intent Is Authored; Facts Are Grounded* section need an explicit asymmetry — when a player's stated canon claim conflicts with a grounding search, the Runtime should (a) search exhaustively for a later/superseding record before treating any hit as settled, (b) weight recency (a later Event supersedes an earlier one by default, the same principle Section 8.4.5 already applies to concealed-canon records), and (c) where genuine contradiction survives a real search, present it as an open question rather than an argued position — never contest a player's account of their own campaign from a search that turned out to be incomplete. Worth checking whether this belongs beside the existing NPC-knowledge "the player is right by default" default (which already exists for a different axis — what an NPC may know — and could plausibly be generalized here), or needs its own clause since this is about Runtime-vs-player grounding disputes rather than NPC channel disputes.
 
 **Status:** Open.
+
+**Dispositioned 2026-09-14 under `F-072`, with the rest of the narration cluster.** This flag's remedy had been a prohibition in `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, like the other eight, and prohibitions are what recurred. It is now **counted** instead: `narration_telemetry` on `180_CURRENT_STATE.md`, written at every checkpoint, gated by `tools/validate_repository.ps1`, mutation-tested across seven legs, and loaded with readiness so the next scene opens knowing how the last one went. **Left open deliberately** — the mechanism makes recurrence visible rather than impossible, and this entry closes when a span's numbers show it stopped happening, not when the gate was built.
 
 ## F-063 — Three related "the world's answer lands live and in full" lapses, observed across sessions, none individually flagged before now
 
@@ -1739,6 +1755,8 @@ Three distinct but thematically related corrections the player has given, none p
 **The open design question:** do these three share a single underlying gap — that "the world's answer is due in the scene that asks" is currently framed around the *protagonist's* questions and *NPC-narrated* delays, and needs a parallel clause covering **Runtime-owed** answers (renders in progress, urgent world-state pushes, uncertain numbers) that should resolve fully and promptly on their own timeline rather than the player's — or are these three separate, smaller gaps in three different sections (Interaction Cadence, the `/system` Pre-Render Gate, and Turn-State Settlement respectively) that each want their own narrow fix? Worth a pass to determine whether one Resident Core clause ("the Runtime's own owed answers — a push, a render, a figure — are delivered complete and on time, the same discipline already required of NPC-narrated delays") would close all three at once.
 
 **Status:** Open.
+
+**Dispositioned 2026-09-14 under `F-072`, with the rest of the narration cluster.** This flag's remedy had been a prohibition in `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, like the other eight, and prohibitions are what recurred. It is now **counted** instead: `narration_telemetry` on `180_CURRENT_STATE.md`, written at every checkpoint, gated by `tools/validate_repository.ps1`, mutation-tested across seven legs, and loaded with readiness so the next scene opens knowing how the last one went. **Left open deliberately** — the mechanism makes recurrence visible rather than impossible, and this entry closes when a span's numbers show it stopped happening, not when the gate was built.
 
 ## F-064 — `ENT-000087` names Chicago at world scope and "the apartment" at campaign scope, and campaign canon has cited the wrong one for the life of the campaign
 
@@ -1834,6 +1852,8 @@ This is the same family as **F-057** (open) — NPC dialogue shaped like exposit
 **The open design question:** does the Resident Core or `npc-knowledge` skill owe a scene-level (not just turn-level) discipline — something like "count an NPC's own unprompted contributions against their questions across a scene; a character who only ever asks is not yet a character" — general enough to catch this regardless of how well the individual line is grounded in `want`/`fear`/`voice`? Or is the actual gap that disposition authoring (Decision 091/092) describes *content* (what an NPC wants, fears, hides) without ever constraining *initiative shape* (how often that content surfaces as a question aimed at the protagonist versus the NPC's own unprompted business), the same blind spot F-057 found one level down at the single-turn scale?
 
 **Status:** Open.
+
+**Dispositioned 2026-09-14 under `F-072`, with the rest of the narration cluster.** This flag's remedy had been a prohibition in `docs/AI_GAMEPLAY_RESIDENT_CORE.md`, like the other eight, and prohibitions are what recurred. It is now **counted** instead: `narration_telemetry` on `180_CURRENT_STATE.md`, written at every checkpoint, gated by `tools/validate_repository.ps1`, mutation-tested across seven legs, and loaded with readiness so the next scene opens knowing how the last one went. **Left open deliberately** — the mechanism makes recurrence visible rather than impossible, and this entry closes when a span's numbers show it stopped happening, not when the gate was built.
 
 ## F-068 — Succession absorbs a killed bearer's set in full, with no way to decline a technique that binds the Bearer against himself
 
@@ -2054,3 +2074,49 @@ The measurement also reports the surface as **83% residue** — only 16% is dupl
 **Option 3 is the right shape and is not config-only.** The selector is field-level, not row-level, so "carry the open ones, defer the closed ones" needs the sheet to hold them as **two fields** — `progression_candidates` (open) and something like `progression_candidates_settled` (closed) — with only the second in the deferred group. That is a Data Model shape change and needs an owner ruling, which is what this addendum is asking for.
 
 **The general finding, which outlives this campaign.** A readiness selector list names *fields*, and a field can grow without bound while its name stays the same size. `progression_candidates` was a reasonable readiness field when it held two entries; it holds thirty-six now and thirty-one are closed. **Nothing anywhere distinguishes a field that carries live state from one that accumulates history**, and that is why this surface arrived at 67 tokens with four warnings behind it rather than one loud one.
+
+## F-072 — Nine narration flags, one failure, and nine prohibitions that each recurred
+
+**Raised and actioned:** 2026-09-14 · **Source:** cross-flag; extracted while working the open queue at the owner's direction
+
+**Status: ACTIONED (2026-09-14).** The mechanism is `narration_telemetry` on `campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md`, gated by `tools/validate_repository.ps1` and mutation-tested by `tools/test_narration_telemetry.ps1` across seven legs. **This flag is the shared disposition for `F-036`, `F-039`, `F-041`, `F-057`, `F-060`, `F-061`, `F-062`, `F-063` and `F-066`**, which stay open individually and are re-read against it below.
+
+**The observation that made these one flag rather than nine.** Every entry in the cluster describes the Runtime occupying a position that is not its to occupy, or failing to check something because checking is more expensive than not:
+
+- **the Runtime speaks for someone else** — the protagonist (`F-036`), an NPC covering the Runtime's own slip (`F-060`), its own audit sealing its own conclusion (`F-039`)
+- **the Runtime asserts what an NPC knows without checking** (`F-041`, and `F-003`/`F-005`/`F-006`/`F-007`/`F-020`/`F-021` before it)
+- **the Runtime's NPCs sound like the Runtime** — itemised exposition (`F-057`), voice convergence (`F-061`), a person reduced to a query loop (`F-066`)
+- **the Runtime defends itself against the player** — contesting a canon claim on a partial search (`F-062`)
+- **the world's answer does not land in the scene that asked** (`F-063`)
+
+**And the fix has been the same nine times: a prohibition added to `docs/AI_GAMEPLAY_RESIDENT_CORE.md`.** `F-028` names it outright — *"every remedy for four months had been a prohibition."* `F-041` is a *third* recurrence after `F-020` and `F-021` were both actioned. `F-061` is a *third* recurrence after `F-016` and `F-057`. **A rule that lives as prose in a per-turn card does not survive a long scene**, and the Resident Core already says every correct thing about NPCs; the failures happen anyway.
+
+**This repository already solved the same shape three times, and never for narration.** `F-012` (mandatory offers unsurfaced for a campaign), `F-033` (an anchor sense that had to become stored state with a readiness gate), and `F-034` (a world that only moved when pushed) are all *mechanical* obligations that decayed as prose and were each fixed the same way: **convert the obligation into state something reads.** Narration had no equivalent. It does now.
+
+### What it counts, and why those things
+
+**Per span, per speaking NPC:** whether its record was loaded before its first line, its line count, how many were questions aimed at the protagonist, how many were beats of its own, and **the one voice tell from its record that actually showed up in the lines.** Per span overall: runtime voice breaches, player disputes and how many were contested after a forward search, and world answers deferred out of the scene that asked.
+
+**Five rules are machine-enforced**, each the mechanical form of a flag that kept recurring:
+
+| Rejected | Flag | Why this is the checkable core of it |
+|---|---|---|
+| A speaking NPC with **three or more lines and no beat of its own** | `F-066` | The complaint was never one bad line. It was accumulation across a scene that nothing counted. *An NPC that only ever asks is an interface, not a person.* |
+| **Two NPCs sharing a `voice_tell`** in one span | `F-061`, `F-016` | Convergence caught at the point it happens. Naming the tell from the record is the act that stops two characters sounding alike. |
+| `record_loaded_before_first_line: false` | `F-041` | The check that keeps being skipped because skipping is cheaper. |
+| An `as_of` behind `campaign_time` | all | A span played and never audited. |
+| A non-zero breach count with no `breach_note` | `F-036`, `F-039`, `F-060` | A breach with no account of it is a number nobody can act on. |
+
+**What it deliberately does not do, stated so nobody later mistakes the gap for an oversight.** No script can read a line and judge whether it sounded like exposition, so **`F-057` gets a count and a mirror rather than a gate**, and the question-to-initiative ratio is recorded for the owner to read while only the zero case fails. **A gate that pretended to measure quality would be worse than none, because it would be trusted.** `F-062` and `F-063` likewise get counts: a dispute contested without a forward search is now a number on the record rather than a thing to remember not to do.
+
+### The two halves, and where each lives
+
+**Writing it** is Save Algorithm step 1a in `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` — fetched at save, where the counting actually happens. **Reading it** is a four-line pointer in the Resident Core, because *last span's numbers load with readiness*, so a session opens knowing how the last one went. The Resident Core addition was deliberately cut to the reading half: `system/RUNTIME_CONTEXT_BUDGETS.yaml` declares that surface **closed** — *"the next resident rule displaces text, or the warning moves as a deliberate owner ruling"* — and a first draft at +188 tokens tipped it past its warning. It sits at +104.
+
+### Honesty about what this can and cannot fix
+
+**It cannot make me play Owen well.** It can make the span in which I played him badly produce a number, at save, in a file that loads before the next scene. `F-066`'s own text says the accumulation was the defect and that citing `want`/`fear`/`voice` correctly still produced a question-heavy scene — so the intervention has to sit *after* the scene and *before* the next one, which is exactly where a checkpoint sits.
+
+**And it can be gamed by writing zeros.** Nothing stops that, and no gate could. What the construct buys is that the zeros are *written down*, dated, and read back at the next readiness gate — which is the difference between a standard nobody measured and a standard somebody can hold me to. `F-062` was open, described precisely what I did, and did not stop me from doing it in the session that actioned it. **A number on the record is a weaker instrument than a rule that worked, and a stronger one than a rule that did not.**
+
+**Related:** `F-028` (NPCs had no positive structure, and every remedy was a prohibition), `F-012`/`F-033`/`F-034` (the same conversion, for mechanical obligations), `F-015` (a sibling value standing in for the one under test — the scoping bug this gate hit and fixed), `F-002` (a rule whose evaluation point never fires — two of the three gates written this session passed vacuously until a mutation leg caught them).

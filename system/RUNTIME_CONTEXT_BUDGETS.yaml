@@ -1211,7 +1211,27 @@ surfaces:
       # every panel, so it reads the whole Bearer plus the whole ownership
       # ledger plus eight render sections. It is exempt from the 16,000 ceiling
       # by design and governed by the ratchet alone, which is what just fired.
-      gatefall_pendragon_001:/system all: 51648
+      # Carried 51,648 -> 59,935 (+8,287) on 2026-09-14. Most of it is not this
+      # session's: checkpoint 0149 added nineteen Succession techniques to the
+      # protagonist object, and this surface renders that object whole, so it had
+      # already drifted to 59,232 against a 59,395 ratchet -- 163 tokens -- before
+      # anything was added today. The remainder is `narration_telemetry` on Current
+      # State (F-072), which this surface loads because it loads that file whole.
+      #
+      # Re-recorded rather than worked around. This surface is in
+      # `exempt_from_failure_ceiling`, so it is governed by baseline-plus-ratchet
+      # and there is no hard wall being breached here -- but a ratchet measuring
+      # from a stale baseline stops detecting growth, which is the failure the
+      # readiness notes above describe three times over.
+      #
+      # Worth stating once, because F-071 was written as though readiness were the
+      # only surface in trouble and it is not: `/system all` renders the whole
+      # protagonist object at ~42,000 tokens, and that object grows every time play
+      # adds a skill, a title or an anchor. It has no field-level trim available to
+      # it the way readiness did -- there is no `progression_candidates` here to
+      # split, because the panel's whole job is to render everything. If this
+      # surface needs relief the lever is the render grammar, not the state.
+      gatefall_pendragon_001:/system all: 59935
       #
       # ---- Five budgets re-recorded together 2026-08-05, `EVT-000418` ----
       #

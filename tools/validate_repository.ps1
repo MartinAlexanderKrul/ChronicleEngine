@@ -2927,6 +2927,123 @@ foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "ca
     }
 }
 
+# --- A narration obligation that lives in prose does not survive a long scene -
+#
+# Nine open flags describe one failure: an NPC played as a query loop (F-066),
+# voices converging in a scene (F-057, F-061), a channel fabricated (F-041), the
+# protagonist spoken for (F-036), a slip patched in character rather than
+# re-narrated (F-060), a player's canon claim contested on a partial search
+# (F-062), an audit sealing its own conclusion (F-039), the world's answer not
+# landing in the scene that asked (F-063).
+#
+# Every prior remedy was a prohibition added to the Resident Core, and every one
+# recurred -- F-028 records that plainly. F-012, F-033 and F-034 each learned the
+# same lesson about MECHANICAL obligations, and each was fixed by converting the
+# obligation into state something reads. This is that, for narration.
+#
+# What follows checks completeness and the failures that are machine-visible. It
+# does not judge whether a line sounded like exposition and must never pretend
+# to: a gate that fakes measuring quality is worse than none, because it gets
+# trusted.
+foreach ($campaignDirectory in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Directory -ErrorAction SilentlyContinue)) {
+    $campaignFiles = @(Get-ChildItem -LiteralPath $campaignDirectory.FullName -Filter "*.md" -File -ErrorAction SilentlyContinue)
+
+    $anchorValue = $null
+    foreach ($sibling in $campaignFiles) {
+        $siblingText = Get-Content -LiteralPath $sibling.FullName -Raw -Encoding UTF8
+        if ($null -eq $siblingText) { continue }
+        $anchorHit = [regex]::Match($siblingText, '(?m)^\s*campaign_time:[ \t]*"(?<value>[^"]+)"')
+        if ($anchorHit.Success) { $anchorValue = $anchorHit.Groups['value'].Value; break }
+    }
+
+    foreach ($ledger in $campaignFiles) {
+        $ledgerText = Get-Content -LiteralPath $ledger.FullName -Raw -Encoding UTF8
+        if ($null -eq $ledgerText) { continue }
+        if ($ledgerText -notmatch '(?m)^\s*narration_telemetry:\s*(#.*)?$') { continue }
+
+        # Scope every check below to the block itself. Current State also carries
+        # `trigger_telemetry`, which has its own `as_of` at the same timestamp, so
+        # a whole-file search reads whichever block comes first in the file --
+        # correct today by accident of ordering, wrong the moment either moves.
+        # That is the F-015 shape: a sibling value standing in for the one under
+        # test. Caught by tools/test_narration_telemetry.ps1 before it could bite.
+        $blockHit = [regex]::Match($ledgerText, '(?ms)^\s*narration_telemetry:.*?^```')
+        $block = if ($blockHit.Success) { $blockHit.Value } else { '' }
+        if ([string]::IsNullOrWhiteSpace($block)) {
+            Add-Failure ("{0}: narration_telemetry is declared but its block could not be read." -f $ledger.Name)
+            continue
+        }
+
+        # Staleness first. A span that was played and never audited is the exact
+        # case this block exists to make impossible.
+        $asOfHit = [regex]::Match($block, '(?m)^\s*as_of:[ \t]*"(?<value>[^"]+)"')
+        if (-not $asOfHit.Success) {
+            Add-Failure ("{0}: narration_telemetry declares no as_of; an audit with no anchor cannot be shown to have run." -f $ledger.Name)
+        }
+        elseif ($null -ne $anchorValue) {
+            $asOfInstant = [DateTimeOffset]::MinValue
+            $anchorInstant = [DateTimeOffset]::MinValue
+            if ([DateTimeOffset]::TryParse($asOfHit.Groups['value'].Value, [ref]$asOfInstant) -and
+                [DateTimeOffset]::TryParse($anchorValue, [ref]$anchorInstant)) {
+                if ($asOfInstant -lt $anchorInstant) {
+                    Add-Failure ("{0}: narration_telemetry.as_of '{1}' is behind campaign_time '{2}'; a span was played and its narration never audited (F-066, F-061, F-041)." -f $ledger.Name, $asOfHit.Groups['value'].Value, $anchorValue)
+                }
+            }
+        }
+
+        foreach ($field in @("runtime_voice_breaches", "player_disputes", "world_answers_deferred")) {
+            if ($block -notmatch ('(?m)^\s*' + $field + ':[ \t]*\d+[ \t]*(#.*)?$')) {
+                Add-Failure ("{0}: narration_telemetry declares no integer {1}; the count is the intervention." -f $ledger.Name, $field)
+            }
+        }
+
+        $breachHit = [regex]::Match($block, '(?m)^\s*runtime_voice_breaches:[ \t]*(?<value>\d+)')
+        if ($breachHit.Success -and [int]$breachHit.Groups['value'].Value -gt 0 -and
+            $block -notmatch '(?m)^\s*breach_note:') {
+            Add-Failure ("{0}: narration_telemetry records {1} runtime voice breach(es) and no breach_note; a breach with no account of it is a number nobody can act on (F-036, F-039, F-060)." -f $ledger.Name, $breachHit.Groups['value'].Value)
+        }
+
+        $rowPattern = '(?ms)^[ \t]*-[ \t]+ent:[ \t]*(?<ent>\S+)(?<body>.*?)(?=^[ \t]*-[ \t]+ent:|^```)'
+        $tells = @()
+        foreach ($row in [regex]::Matches($block, $rowPattern)) {
+            $body = $row.Groups['body'].Value
+            $nameHit = [regex]::Match($body, '(?m)^\s*name:[ \t]*"(?<value>[^"]*)"')
+            $label = if ($nameHit.Success) { $nameHit.Groups['value'].Value } else { $row.Groups['ent'].Value }
+
+            foreach ($field in @("lines", "questions_at_protagonist", "own_initiative")) {
+                if ($body -notmatch ('(?m)^\s*' + $field + ':[ \t]*\d+[ \t]*(#.*)?$')) {
+                    Add-Failure ("{0}: narration_telemetry row '{1}' declares no {2}." -f $ledger.Name, $label, $field)
+                }
+            }
+
+            $tellHit = [regex]::Match($body, '(?m)^\s*voice_tell:[ \t]*"(?<value>[^"]+)"')
+            if (-not $tellHit.Success -or [string]::IsNullOrWhiteSpace($tellHit.Groups['value'].Value)) {
+                Add-Failure ("{0}: narration_telemetry row '{1}' names no voice_tell; naming the tell from the record is what stops two characters sounding alike (F-061)." -f $ledger.Name, $label)
+            }
+            else { $tells += $tellHit.Groups['value'].Value.Trim() }
+
+            if ($body -match '(?m)^\s*record_loaded_before_first_line:[ \t]*false') {
+                Add-Failure ("{0}: narration_telemetry row '{1}' was played without its record loaded; that check keeps being skipped because skipping is cheaper (F-041)." -f $ledger.Name, $label)
+            }
+
+            # F-066 made mechanical. The complaint was never one bad line -- it was
+            # accumulation across a scene that nothing counted.
+            $linesHit = [regex]::Match($body, '(?m)^\s*lines:[ \t]*(?<value>\d+)')
+            $initHit = [regex]::Match($body, '(?m)^\s*own_initiative:[ \t]*(?<value>\d+)')
+            if ($linesHit.Success -and $initHit.Success -and
+                [int]$linesHit.Groups['value'].Value -ge 3 -and
+                [int]$initHit.Groups['value'].Value -eq 0) {
+                Add-Failure ("{0}: narration_telemetry row '{1}' spoke {2} lines with no beat of its own; an NPC that only ever asks is an interface, not a person (F-066)." -f $ledger.Name, $label, $linesHit.Groups['value'].Value)
+            }
+        }
+
+        $duplicateTells = @($tells | Group-Object | Where-Object { $_.Count -gt 1 })
+        foreach ($duplicate in $duplicateTells) {
+            Add-Failure ("{0}: narration_telemetry reports the same voice_tell for {1} characters in one span -- '{2}'. Two loaded NPCs are never interchangeable (F-061, F-016)." -f $ledger.Name, $duplicate.Count, $duplicate.Name)
+        }
+    }
+}
+
 # --- An ending selected by taste is an ending nothing was working toward -------
 #
 # `ending_routes` exists so the campaign's final choice is decided by state the

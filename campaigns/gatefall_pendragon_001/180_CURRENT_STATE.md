@@ -109,6 +109,47 @@ subjects: []
 
 ---
 
+## Narration Telemetry (owner-facing diagnostics)
+
+**Opened 2026-09-14, out of character.** Nine open flags in `engine/004_DESIGN_FLAGS.md` describe one failure, every prior remedy was a prohibition, and every one recurred. This is the `F-012`/`F-033`/`F-034` pattern applied to narration: **the obligation becomes state something reads.** Full rationale and the list of flags: `F-072`.
+
+**Diagnostics, not a trigger.** Outside `system_state`, never rendered, invisible to Alexander, never consulted by a resolution. **Written every checkpoint**, loaded with readiness, so a session opens knowing how the last one went. **The count is the intervention.**
+
+```yaml
+narration_telemetry:
+  as_of: "2026-09-14T11:39:00-05:00"
+  span: "EVT-000959 - EVT-000962"
+  source: backfilled           # observed | backfilled -- this span predates the block
+  runtime_voice_breaches: 0    # F-036 protagonist spoken for; F-060 slip fixed in character; F-039 self-sealing audit
+  player_disputes: 0           # F-062 -- claims the player made about canon
+  disputes_contested: 0        #   of those, contested by the Runtime rather than accepted
+  disputes_searched_first: 0   #   of those contested, preceded by a forward search of the chronicle
+  world_answers_deferred: 0    # F-063 -- answers owed in the scene that asked, delivered later
+  npc_play:
+    - ent: ENT-000273
+      name: "the Auditor, once Wren Solane"
+      record_loaded_before_first_line: true
+      channel_checks_fired: 4
+      lines: 22
+      questions_at_protagonist: 5
+      own_initiative: 9
+      voice_tell: "answers procedurally, in the register of someone filing rather than arguing; never defends the work, never raises her voice"
+    - ent: unminted
+      name: "a passing Assay grader"
+      record_loaded_before_first_line: true
+      channel_checks_fired: 1
+      lines: 1
+      questions_at_protagonist: 0
+      own_initiative: 1
+      voice_tell: "managerial and incurious; speaks near him rather than to him, and does not wait for an answer"
+```
+
+**Backfilled from `160_CAMPAIGN_CHRONICLE.md`, not observed** — this span predates the block, and reconstructing it from the record is honest where inventing an observation would not be.
+
+**Repository validation rejects:** an `as_of` behind `campaign_time`; a speaking NPC with three or more lines and no own-initiative beat (`F-066`); `record_loaded_before_first_line: false` (`F-041`); two NPCs sharing a `voice_tell` in one span (`F-061`); a non-zero `runtime_voice_breaches` with no `breach_note`. **No gate judges whether a line read as exposition** — `F-057` gets a count and a mirror, because a gate that faked measuring quality would be trusted.
+
+---
+
 ## Trigger Telemetry (Profile Section 8.4.6)
 
 Owner-facing diagnostics, written at each checkpoint. **Not System state** - outside `system_state`, never rendered in any `/system` panel, invisible to Alexander. **Never a trigger.**

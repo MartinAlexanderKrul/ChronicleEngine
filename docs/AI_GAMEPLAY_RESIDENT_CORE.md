@@ -258,6 +258,12 @@ Full channel test, voice and independence discipline, rationalization table, and
 
 ---
 
+## The Narration Audit Is Counted, Not Promised
+
+Nine flags record one failure here and every prior remedy was a prohibition in this file. `narration_telemetry` on Current State counts it instead -- per speaking NPC: lines, questions aimed at the protagonist, beats of its own, and its voice tell. **Last span's numbers load with readiness. Read them before the first line.** Writing it is a Save Algorithm step.
+
+---
+
 # Profile-Declared Proactive Trigger Audit
 
 This audit is resident and automatic. When startup sets `require_profile_trigger_audit`, load the active profile's bounded trigger dispatch manifest during readiness and retain it in the working set. The Runtime must execute it even when the player did not ask about the mechanic.

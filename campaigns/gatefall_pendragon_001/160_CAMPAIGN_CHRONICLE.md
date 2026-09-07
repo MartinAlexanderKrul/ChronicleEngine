@@ -13,12 +13,15 @@ canonical_record: REC-000079
 schema_version: "0.1.7"
 status: active
 provenance:
-  source: EVT-000984
+  source: EVT-000985
   game_date: "2026-09-14T12:09:00-05:00"
   real_date: "2026-09-07"
 role: canonical ledger
 scope: campaign
-# This save (session-save): EVT-000963-EVT-000984 (R-7's case file escalated to an in-person
+# This ruling (session-save): EVT-000985 (post-session Consolidation ruling -- Profile
+#   1.115 -> 1.116, Section 7.7; five Succession techniques merged administratively,
+#   no played scene, 96 known techniques -> 88; no fictional time).
+# Prior save (session-save): EVT-000963-EVT-000984 (R-7's case file escalated to an in-person
 #   identity-verification demand and Alexander struck first rather than submit, killing R-7 and
 #   authoring its Succession on the player's own request; a botched Reviewer's Voice mass-summons
 #   drew a solo enforcer then a five-figure response group, all six killed across a sustained
@@ -1131,6 +1134,7 @@ subjects:
   - EVT-000982
   - EVT-000983
   - EVT-000984
+  - EVT-000985
 ```
 
 ---
@@ -35054,4 +35058,45 @@ description: "**Promotion barrier for `EVT-000963`-`EVT-000983`, run at the play
   Registry allocation this span: ENT-000274 through ENT-000280; EVT-000963 through EVT-000984. New high-water marks: ENT-000280, EVT-000984.
 
   Checkpoint follows."
+```
+
+## EVT-000985 - Consolidation: Profile 1.116, Five Merged Techniques
+
+```yaml
+id: EVT-000985
+canonical_record: REC-000081
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: session-gameplay
+  game_date: "2026-09-14T12:09:00-05:00"
+  real_date: "2026-09-07"
+type: Event
+kind: ruling
+importance: major
+game_date: "2026-09-14T12:09:00-05:00"
+participants:
+  - ENT-000125
+participation_audits:
+  - subject: ENT-000125
+    result: record-updated
+    record: REC-000074
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "**Post-session owner ruling, no fictional time.** The player asked for a way to fold clearly redundant Succession techniques into single entries and explicitly ruled out a roll — a Bearer consolidating what he already holds and fully understands meets Rules Section 4.2's automatic-success standard. Gatefall World Rule Profile bumped **1.115 → 1.116**, new **Section 7.7, Consolidation**: two or more held techniques sharing a functional role (same Section 15.3.1 category, either identical mechanical shape or a close family the merge can hold as selectable tiers/modes without erasing a distinction) may fold into one. No Mana/gold/action cost and no Section 7.6-style exposure price — compression of existing capability, not acquisition of new capability. Stat Passives are never eligible (Section 4.4's Stat-derivation cannot fold into a flat grant). A completeness test binds every merge: no constituent's distinct behavior may be silently dropped.
+
+  **Applied immediately and administratively — no played downtime scene, per the player's explicit instruction that no further session was continuing this checkpoint.** Five consolidations on `ENT-000125`'s own sheet, all `transmissible: false`:
+
+  - **Iron Frame** [S-Rank] Master, Passive — merges Unbreaking (`ENT-000275`), Iron Hide (`ENT-000277`), Granite Hide (`ENT-000279`), none of which ever carried a quantified magnitude; this is the first time the grant gets one, not a loss of three different numbers.
+  - **Full Assessment** [S-Rank] Master, tiered (Passive / Mana 3 / Mana 4) — merges Threat Assessment (`ENT-000276`, free/ranged/single-target), Cold Read (`ENT-000273`, cheap/close, 1 prior use at `EVT-000961`), and Reading the Room (taught, Ilith `ENT-000259`, multi-target whole-room). All three behaviors survive as separate tiers rather than being flattened into one.
+  - **Bounding Seal** [S-Rank] Master, two modes (Mana 35 area / 20 single-target) — merges Lockdown Field (`ENT-000275`, 3 prior uses, all area mode, including its load-bearing self-blocking clause) and Restraining Field (`ENT-000280`).
+  - **Binding Grip** [A-Rank] Master, three modes (Mana 16 Root / 18 Bind / 20 Subdue) — merges Chain Lash (`ENT-000280`), Earthbind (`ENT-000279`), and Subdue (`ENT-000275`), preserving the movement-only, full-immobilize, and non-lethal-takedown distinction as three modes rather than one generic restrain.
+  - **Field Sense** [B-Rank] Master, Passive — merges Tremor Sense (`ENT-000279`) and Echo Sense (`ENT-000280`), the two passives in the prior span's fight that could have actually detected Unwatched.
+
+  **Ninety-six known techniques become eighty-eight** (Offense 22→19, Defense 20→18, Utility 54→51). Merged `successful_uses` sum their constituents' counts (Full Assessment carries 1, Bounding Seal carries 3, the rest carry 0). Mastery is the highest constituent's. Every struck constituent's `taken_from` history is preserved in its merged entry's provenance note rather than discarded. No XP, level, Mana, Health, gold, or cash moved — this is a ledger-shape change on the skills list alone. Migration record: `worlds/gatefall/migrations/1.115_to_1.116.md`. Registry allocation: EVT-000985. New high-water mark: EVT-000985."
 ```

@@ -13,11 +13,16 @@ canonical_record: REC-000074
 schema_version: "0.1.7"
 status: active
 provenance:
-  source: EVT-000984
+  source: EVT-000985
   game_date: "2026-09-14T12:09:00-05:00"
   real_date: "2026-09-07"
 role: canonical ledger
 scope: campaign
+# This ruling (EVT-000985, post-session, no fictional time): Profile 1.115 -> 1.116,
+#   new Section 7.7 (Consolidation), applied administratively, no roll, no played scene.
+#   Five merges (Iron Frame, Full Assessment, Bounding Seal, Binding Grip, Field Sense)
+#   replace eleven struck constituents. 96 known techniques -> 88. Full table:
+#   worlds/gatefall/migrations/1.115_to_1.116.md.
 # This save (EVT-000963-EVT-000984): R-7's case file escalated to an in-person identity check;
 #   struck first instead, killing R-7 and authoring its Succession live (6 techniques). A botched
 #   Reviewer's Voice summons drew a solo enforcer then a five-figure response group -- all seven
@@ -388,7 +393,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.115"
+    profile_version: "1.116"
     profile_loner_scope_event: EVT-000672
     profile_party_minimum_event: EVT-000460
     profile_unified_render_event: EVT-000443
@@ -825,7 +830,7 @@ canonical_state:
       - "Diagram Sense [S-Rank] ★☆☆☆☆ Novice · Mana 12 · understands any written, drawn or inscribed system, given a scene with it. **Taught route, Tolo (`ENT-000262`), `transmissible: true`.** Ratified `EVT-000915`, third qualifying scene. **Successful uses 1 · qualifying scenes total 4 · mastery progress 1/3.** `EVT-000961`, Legendary — Earth's Assay case file."
       - "Grip and Footing [S-Rank] ★☆☆☆☆ Novice · Mana 5 · one ally gains +1 modifier step on every physical action for the scene. **Taught route, Aumry (`ENT-000260`), `transmissible: true`.** Ratified `EVT-000915`, third qualifying scene. **Successful uses 0 · qualifying scenes total 3 · mastery progress 0/3.**"
       - "Second Wind [A-Rank] ★☆☆☆☆ Novice · Mana 6 · one ally acts again immediately. **Taught route, Aumry (`ENT-000260`), `transmissible: true`.** Ratified `EVT-000915`, third qualifying scene. **Successful uses 0 · qualifying scenes total 3 · mastery progress 0/3.**"
-      - "Reading the Room [S-Rank] ★☆☆☆☆ Novice · Mana 4 · learns every present creature's relative capability and current pool state. **Taught route, Ilith (`ENT-000259`), `transmissible: true`.** Ratified `EVT-000927`, third qualifying scene. **Successful uses 0 · qualifying scenes total 3 · mastery progress 0/3.**"
+      - "**Merged into Full Assessment `EVT-000985`** — was Reading the Room, taught Ilith, 0 uses."
       - "Slip [S-Rank] ★☆☆☆☆ Novice · Mana 2 · reposition anywhere within thirty metres as a reaction, once per exchange. **Taught route, Ilith (`ENT-000259`), `transmissible: true`.** Ratified `EVT-000927`, third qualifying scene. **Successful uses 0 · qualifying scenes total 3 · mastery progress 0/3.**"
       - "Appraise [S-Rank] ★☆☆☆☆ Novice · Mana 4 · full effect, provenance and history of any object, item or core. **Taught route, Tolo (`ENT-000262`), `transmissible: true`.** Ratified `EVT-000927`, third qualifying scene. **Successful uses 1 · qualifying scenes total 4 · mastery progress 1/3.** `EVT-000960`, partial — the Assay relay."
       - "Trace [S-Rank] ★☆☆☆☆ Novice · Mana 15 · follows any creature's path, however old, wherever it went. **Taught route, Tolo (`ENT-000262`), `transmissible: true`.** Ratified `EVT-000927`, third qualifying scene. **Successful uses 1 · qualifying scenes total 4 · mastery progress 1/3.** `EVT-000960`, the Auditor's path to the Assay relay."
@@ -853,13 +858,19 @@ canonical_state:
       - "What Eleven Years Bought [S-Rank] ★★★★★ Master · Mana 15 · erases evidence of his own presence after the fact. Succession `EVT-000959`, `transmissible: false`."
       - "Field Containment [A-Rank] ★★★★★ Master · Mana 12 · a bounded volume nothing crosses, one hour. Succession `EVT-000959`, `transmissible: false`."
       - "Sample Handling [A-Rank] ★★★★★ Master · Mana 6 · carries an unconscious/restrained creature through a seam unwaking. Succession `EVT-000959`, `transmissible: false`."
-      - "Cold Read [A-Rank] ★★★★★ Master · Mana 3 · learns a target's current pool state and standing capabilities at a glance. Succession `EVT-000959`, `transmissible: false`. **Uses 0→1** (`EVT-000961`, read the Assay grader — her own rough band, no threat)."
+      - "**Merged into Full Assessment `EVT-000985`** — was Cold Read, Succession `EVT-000959`, 1 use."
       - "Filed Precedent [A-Rank] ★★★★★ Master · Passive · +2 steps vs. any previously-graded creature/effect. Succession `EVT-000959`, `transmissible: false`."
       - "No Discrepancy [A-Rank] ★★★★★ Master · Passive · an altered record holds vs. ordinary scrutiny, not Tolo. Succession `EVT-000959`, `transmissible: false`."
       - "Procedural Calm [B-Rank] ★★★★★ Master · Passive · no outside pressure, threat, deadline or urgency can hurry him into acting before he chooses to. **One-directional: it protects him and never binds him** — he may always act as fast as he likes (owner ruling, see `180_CURRENT_STATE.md`). Succession `EVT-000959`, `transmissible: false`. Uses 0→1 (`EVT-000961`)."
       - "The Old Instructions [B-Rank] ★★★★★ Master · Passive · knows the Assay's procedure for any recognized category. Succession `EVT-000959`, `transmissible: false`. Uses 0→1 (`EVT-000960`)."
       - "**Not transcribed:** 'What Passing Actually Felt Like' [S-Rank] — her own record marks it a once-ever owner ruling. Flagged, not auto-granted."
-      - "This span's Succession (`EVT-000973`/`975`/`977`/`978`/`979`×2/`980`), 31 techniques across 7 kills, all Master, `transmissible: false`. Names, Ranks, Mana, and effects in full: `160_CAMPAIGN_CHRONICLE.md`, `130_NPCS_AND_FACTIONS.md`. **R-7**: Case Override [S], Pattern Audit [S], Emergency Seal [A], Reviewer's Voice [B] (Uses 0→1, `974` overreach), Cross-File Recall [A], Standing Ledger [S]. **Solo enforcer**: Lockdown Field [S] (Uses 3), Unbreaking [S], Subdue [A], Rapid Response [B], Champion's Endurance [A]. **Coordinator**: Squad Link [S], Alarm Pulse [A] (unused), Focused Bolt [A] (`(400+effInt)×1.35`≈4,774, combos with Threat Assessment), Threat Assessment [B]. **Enforcers A-D**: Crushing Grip/Iron Hide/Ground Slam/Relentless Pursuit; Phase Step/Razor Edge/Predator's Instinct/Bone Crusher; Shockwave/Granite Hide/Tremor Sense/Earthbind; Chain Lash/Warding Skin/Echo Sense/Restraining Field."
+      - "This span's Succession (`EVT-000973`/`975`/`977`/`978`/`979`×2/`980`), 31 techniques across 7 kills, all Master, `transmissible: false`. **Eleven consolidated `EVT-000985`** into the five merged entries below; twenty standalone. Detail: `160_CAMPAIGN_CHRONICLE.md`, `130_NPCS_AND_FACTIONS.md`. **R-7**: Case Override [S], Pattern Audit [S], Emergency Seal [A], Reviewer's Voice [B] (Uses 0→1, `974`), Cross-File Recall [A], Standing Ledger [S]. **Solo enforcer**: Rapid Response [B], Champion's Endurance [A]. **Coordinator**: Squad Link [S], Alarm Pulse [A] (unused), Focused Bolt [A] (`(400+effInt)×1.35`≈4,774, combos with Full Assessment). **Enforcer A**: Crushing Grip [S], Ground Slam [A], Relentless Pursuit [B]. **Enforcer B**: Phase Step [A], Razor Edge [S], Predator's Instinct [B], Bone Crusher [A]. **Enforcer C**: Shockwave [S]. **Enforcer D**: Warding Skin [S]."
+      - "**Consolidation `EVT-000985` (Profile 1.116 §7.7, no roll).** Five entries below replace eleven constituents. Table: `worlds/gatefall/migrations/1.115_to_1.116.md`."
+      - "Iron Frame [S-Rank] Master · Passive · flat physical damage reduction. Merged: Unbreaking/Iron Hide/Granite Hide. Uses 0."
+      - "Full Assessment [S-Rank] Master · Passive/Mana 3/Mana 4 tiers · reads capability/pool state: free ranged single-target, paid close read, or paid whole-room. Merged: Threat Assessment/Cold Read/Reading the Room. Uses 1."
+      - "Bounding Seal [S-Rank] Master · Mana 35 area / 20 single-target · area blocks all crossing incl. own attacks. Merged: Lockdown Field/Restraining Field. Uses 3."
+      - "Binding Grip [A-Rank] Master · Mana 16 Root / 18 Bind / 20 Subdue · movement-only, full immobilize, or non-lethal takedown. Merged: Chain Lash/Earthbind/Subdue. Uses 0."
+      - "Field Sense [B-Rank] Master · Passive · reads movement/vibration and ability-residue nearby. Merged: Tremor Sense/Echo Sense. Uses 0."
     skill_rulings:
       qualifying_scene_distinctness_evt_000571: "**CLOSED at `EVT-000574` (owner ruling): the Section 7.4 test runs FORWARD ONLY.** Qualifying scenes count per SCENE, not per approach - a separate scene with real stakes qualifies on its face, and *the three scenes must be materially distinct* is **not** read to require a different method or tool (`EVT-000571`). Section 7.4's other limits still bind: one continuous danger, work task or practice session contributes at most once (Section 7.1 test 5); a failed use credits nothing; a trivial test adds a use and no scene. Checkpoint 0099's credits stand and the roughly two further scenes per skill the new reading would have paid are **not** awarded. **Still owed to the world**: this amends the test campaign-wide and belongs in the profile. Full history in `160_CAMPAIGN_CHRONICLE.md`."
       support_role_kill_xp_contribution_evt_000264: "**STANDING RULING (2026-08-11, player instruction, `EVT-000264`).** Active patrol-and-intel support from Alexander counts as live contribution toward his own Kill XP under Rules Section 3.3's 'live-die actions materially contributed' clause, even without a separate rolled setup action per engagement — so long as he is genuinely engaged (watching, ready to call a warning) rather than idle. Supersedes the default reading that only a separately-rolled setup or control action counts. Governs all future support-only encounters the same way, not just this one."
@@ -1432,30 +1443,30 @@ canonical_state:
       special:
         # Skill runes/books — Section 15.3.2's worked example classes instructional items
         # as SPECIAL, not Keys or Gear. All `unbound-awakened` unless noted.
-        - "**Skill Rune — Mend [C-Rank]** — boss drop `EVT-000624`. NPC-eligible, inert to Alexander. Resale 10,000 g."
-        - "**Skill Rune — Keen Sense [D-Rank]** — boss drop `EVT-000616`. NPC-eligible, inert. Resale 2,250 g; unsold."
-        - "**Skill Book — Mana Bolt [D-Rank]** — boss drop `EVT-000616`. NPC-eligible, inert. Unsold."
+        - "**Skill Rune — Mend [C-Rank]** — boss drop. NPC-eligible, inert. Resale 10,000 g."
+        - "**Skill Rune — Keen Sense [D-Rank]** — boss drop. NPC-eligible, inert. Resale 2,250 g; unsold."
+        - "**Skill Book — Mana Bolt [D-Rank]** — boss drop. NPC-eligible, inert. Unsold."
         - "**Skill Rune — Sprint [S-Rank] × 2** — boss drops (`EVT-000731`, `EVT-000906`). Duplicate — Sprint already S-Rank Expert. Banked intact."
         - "**Skill Book — Silent Step [S-Rank]** — boss drop (`EVT-000731`). Duplicate — Silent Step already S-Rank Expert. Banked intact."
-        - "**Skill Book — Rupture [A-Rank]** — boss drop `EVT-000694`. Duplicate, banked."
-        - "**Skill Rune — Keen Sense [A-Rank]** — Runic Key extra `EVT-000694`. Duplicate, banked."
+        - "**Skill Book — Rupture [A-Rank]** — boss drop. Duplicate, banked."
+        - "**Skill Rune — Keen Sense [A-Rank]** — Runic Key extra. Duplicate, banked."
         - "**Skill Book — Mend [A-Rank]** — boss drop, `OBJ-62` (🎲 93, 🎲 d10 3). Duplicate — Mend already A-Rank. Banked intact."
         - "**Skill Rune — Mend [E-Rank]** — boss drop `EVT-000714`. Inert, unsold."
         - "**Skill Book — Flash Step [A-Rank]** — boss drop `EVT-000714`. Inert, unsold."
         - "**Skill Rune — Silent Step [E-Rank]** — boss drop `EVT-000716`. Inert, unsold."
-        - "**Skill Rune/Book — Stone Skin [S-Rank] × 2** — boss drop `EVT-000744`; 50th daily's box (🎲 94/d10 4). Duplicates, banked intact."
-        - "**Skill Book — Keen Sense [S-Rank]** — `EVT-000750` boss drop. Duplicate. Banked."
-        - "**Skill Rune — Silent Step [S-Rank] × 3** — boss drops (`EVT-000751`, `EVT-000793`, `EVT-000935`). Duplicates, banked intact."
+        - "**Skill Rune/Book — Stone Skin [S-Rank] × 2** — boss drop `EVT-000744`; 50th daily's box. Duplicates, banked."
+        - "**Skill Book — Keen Sense [S-Rank]** — boss drop. Duplicate, banked."
+        - "**Skill Rune — Silent Step [S-Rank] × 3** — boss drops. Duplicates, banked."
         - "**Skill Rune — Dagger Mastery [S-Rank]** — boss drop, `EVT-000855`. NPC-giftable. Duplicate (already S-Rank Adept). Banked intact."
         - "**Skill Book — Mana Bolt [S-Rank]** — Daily Random Box drop (`EVT-000806`). Duplicate — Mana Bolt already S-Rank Master. Banked intact, a fourteenth such duplicate."
         - "**Skill Book — Silent Step [B-Rank]** — boss drop (`EVT-000802`). Duplicate. Banked intact, a fifteenth such duplicate."
-        - "**The Assay's local archive** — taken whole `EVT-000983` (Ninth Quiet-library precedent). Unread, illegible, unresolved value; includes Earth's own case file. No shop path. Full account: `120_INVENTORY_AND_OWNERSHIP.md`."
+        - "**The Assay's local archive** — taken whole `EVT-000983`. Unread, unresolved value; includes Earth's case file. Full account: `120_INVENTORY_AND_OWNERSHIP.md`."
         - "**Dormant Core [S-Rank]** — returned by Nakamura this span (`EVT-000812`), no next-step finding. Back in the dimensional inventory, unbound, highest-Rank object held."
         - "**Frost-fused carapace plating [B-Rank]** — returned by Nakamura this span (`EVT-000812`). Corwin Ashvale examined but did not fuse it; new finding: **'deliberately worked/tooled,' not natural.** Function still unresolved."
         - "**`ENT-000220`** -- unclassified warm object, `ENT-000218`'s wall (`EVT-000674`). Flux Sight and ownership-transfer auto-identify both return nothing. Filed `UNCLASSIFIED — SPECIAL`, `active`. Full account: `130_NPCS_AND_FACTIONS.md`."
         - "**`ENT-000221`** -- eleven correlation logbooks, `ENT-000219`'s shelf (`EVT-000676`). Unread beyond the top volume's open page. Full account: `130_NPCS_AND_FACTIONS.md`."
-        - "**Hand-instrument (unresolved)** -- anomaly/Gate-signature reader, taken `EVT-000660` from `ENT-000213`. Pinned reading overwritten `EVT-000666` by a fresh cycle; now carries a live, climbing figure for `ENT-000216`. Function/provenance unresolved. Full account: `120_INVENTORY_AND_OWNERSHIP.md`."
-        - "**Containment plant (unresolved)** -- the fenced warehouse's suppression apparatus, taken whole `EVT-000648`. Flux Sight reads it as suppression apparatus disguised as building services. No Rank line, no slot. Nobody shown it. Full account: `120_INVENTORY_AND_OWNERSHIP.md`."
+        - "**Hand-instrument (unresolved)** -- anomaly/Gate-signature reader. Function/provenance unresolved. Full account: `120_INVENTORY_AND_OWNERSHIP.md`."
+        - "**Containment plant (unresolved)** -- the fenced warehouse's suppression apparatus. No Rank line, no slot. Full account: `120_INVENTORY_AND_OWNERSHIP.md`."
         # Worth not mechanical, or function/Rank/provenance unresolved.
         - "**Alpha-strain sinew [B-Rank] × 2 lots** — cabled tissue cut from the Beast Den's boss and its alpha (`EVT-000589`, harvests 🎲 95 Strong and 🎲 71 Success). **Flux Sight reads both completely.** The two lots are **the same material at different ages** — same species, same strain, the alpha simply older — and the System has a line item for that and prices it accordingly."
         - "**Drowned mana nodule [B-Rank] × 1** — a natural mana concentration formed in still water and taken up by the thing living in it (`EVT-000588`, legendary harvest 🎲 61 → 100). **Flux Sight reads it completely**: Rank, formation class, catalogue line, market value. **It is the useful control** — a *catalogued* object that holds mana passively, to set beside a heartwood core-mass that does the same with no mechanism and no line item."

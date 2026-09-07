@@ -13,13 +13,21 @@ canonical_record: REC-000080
 schema_version: "0.1.7"
 status: active
 provenance:
-  source: EVT-000984
+  source: EVT-000985
   game_date: "2026-09-14T12:09:00-05:00"
   real_date: "2026-09-07"
 role: canonical ledger
 scope: campaign
 subjects: []
 ```
+
+---
+
+## Post-session (`EVT-000985`) — Consolidation: Profile 1.116, Five Merged Techniques
+
+**No fictional time, no played scene.** Ruled at the player's request: redundant Succession techniques can fold into one entry, no roll required since a Bearer consolidating what he already fully holds meets the automatic-success standard. New Section 7.7 on the World Rule Profile (1.115 → 1.116) — every constituent's distinct behavior survives as a selectable tier or mode, nothing flattened away, Stat Passives never eligible.
+
+**Five merges landed on the sheet immediately:** Iron Frame (Unbreaking + Iron Hide + Granite Hide — the first time this grant got an actual number, not a loss of three), Full Assessment (Threat Assessment + Cold Read + Reading the Room, tiered free/3/4 Mana), Bounding Seal (Lockdown Field + Restraining Field, area/single-target modes), Binding Grip (Chain Lash + Earthbind + Subdue, Root/Bind/Subdue modes), Field Sense (Tremor Sense + Echo Sense). **Ninety-six known techniques become eighty-eight.**
 
 ---
 

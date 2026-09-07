@@ -14,7 +14,7 @@ canonical_record: REC-000081
 schema_version: "0.1.7"
 status: active
 provenance:
-  source: EVT-000984
+  source: EVT-000985
   game_date: "2026-09-14T12:09:00-05:00"
   real_date: "2026-09-07"
 role: canonical ledger
@@ -26,7 +26,7 @@ subjects: []
 
 ## Bindings and Versions
 
-- **World:** Gatefall - **Profile 1.113** (unchanged this span; no world-layer rule amendment).
+- **World:** Gatefall - **Profile 1.116** (post-session owner ruling, `EVT-000985`: new Section 7.7, Consolidation — see below).
 - **Engine Rules:** 0.3.0 - **Data Model:** 0.1.7
 - **Campaign time:** **2026-09-14 (Monday), ~12:09 local (Chicago clock; physically at the Denver facility, Colorado).** Health **11,596/11,596** (full, untouched all span). Mana **5,703/6,272** (full reset mid-span on a Greater Mana Potion, then heavy action spend and ~30 minutes of far-side-rules environmental drain inside the Assay's channel; ordinary Earth recovery resumes now that he's out). Figures owned by `100_CHARACTER_SHEET.md`.
 - **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0150/` — Seven Kills, Thirty-One Techniques, and a Confluence Protocol Signature.
@@ -37,6 +37,7 @@ subjects: []
 - **Combat line:** Base 2908/2633/2887/2634/3115; effective 2944/2689/2899/2634/3136. Max Health 11,596, Max Mana 6,272. No equipment moved.
 - **Gold 300,356,081** (unchanged). **Cash $402,358,490.22** (unchanged this span — no transactions). **Pending: ≈$125,000,000, 1 payout** — the Brno haul, unchanged, still uncleared.
 - **Skills: thirty-one new entries this span** — six from R-7 (Succession, authored live: Case Override, Pattern Audit, Emergency Seal, Reviewer's Voice, Cross-File Recall, Standing Ledger) and twenty-five from the five-figure response group and the earlier solo enforcer, full list in `100_CHARACTER_SHEET.md`. **Successful-use counters updated**: Rupture 173→181, Flash Step 91→92, Rift-step 92→96, Unwatched 4→10, Silent Step 63→67, Dimensional Projection 35→37.
+- **Post-session, `EVT-000985`: Consolidation (Profile 1.116, Section 7.7).** Eleven redundant Succession techniques (plus taught-route Reading the Room) folded into five merged entries — Iron Frame, Full Assessment, Bounding Seal, Binding Grip, Field Sense — no roll, no played scene, every constituent's distinct behavior preserved as a tier or mode. **96 known techniques → 88.**
 
 ## Protagonist
 
@@ -94,7 +95,7 @@ subjects: []
 
 ## Promotion Status
 
-**Live canon is promoted through `EVT-000984`.** This span runs `EVT-000963` through `EVT-000983` (the case-file escalation, R-7's death, the botched mass-summons, the solo enforcer, the five-figure response group, the archive search and haul, extraction), closing with `EVT-000984` (promotion barrier) — seven kills, thirty-one techniques transcribed, zero XP (the Assay channel authors none), no currency movement, one Greater Mana Potion consumed.
+**Live canon is promoted through `EVT-000985`.** This span runs `EVT-000963` through `EVT-000983` (the case-file escalation, R-7's death, the botched mass-summons, the solo enforcer, the five-figure response group, the archive search and haul, extraction), closing with `EVT-000984` (promotion barrier) — seven kills, thirty-one techniques transcribed, zero XP (the Assay channel authors none), no currency movement, one Greater Mana Potion consumed.
 
 **`gatefall.skill_formation`: none this span** — no new tracking candidate opened; every activation this span was terminal, Passive, Succession-sourced (no mastery track), or a failed/zero-credit attempt.
 
@@ -106,7 +107,7 @@ subjects: []
 
 **No world-layer amendment this span.** The Confluence Protocol signature finding is campaign-scope (`ENT-000276`'s own record, `140_OBJECTIVES.md`), not a world-file promotion — `270_THE_FAR_SIDE.md` and `200_WORLD_BIBLE.md` Section 9 deliberately reserve that material.
 
-**No profile version change this span.**
+**One profile version bump, post-session (`EVT-000985`):** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` 1.115 → **1.116** — new Section 7.7, Consolidation (owner ruling, no fictional time; `worlds/gatefall/migrations/1.115_to_1.116.md` filed, `migrations/INDEX.md` updated). Five techniques merged on `ENT-000125`'s own sheet under it; 96 known techniques → 88.
 
 **Provisional mechanics open, unchanged:** Standfast's Overpower-worked redirect branch, still owed a real ruling against Section 13.6. Whether Succession carries "What Passing Actually Felt Like" at all, still flagged, not ruled.
 

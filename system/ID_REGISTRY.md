@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000280 |
+| Entity | `ENT-` | Persistent Entity | ENT-000281 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000998 |
-| Relationship | `REL-` | Relationship | REL-000115 |
+| Event | `EVT-` | Event | EVT-001012 |
+| Relationship | `REL-` | Relationship | REL-000116 |
 
 ---
 
@@ -989,6 +989,22 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000996 | Event | Gatefall: Pendragon: a second circuit with Sevrin, Ilith, Aumry, and Orenne — eight new candidates, fifteen advanced to 2/3, Aumry's failed Call the Turn redeemed |
 | EVT-000997 | Event | Gatefall: Pendragon: returned to Denver and closed the far door a second time (2,500 Mana); no anchor set at the Landing-side terminus |
 | EVT-000998 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-000993`-`EVT-000997`, run at the player's `/save` request (checkpoint 0152). Mana net 3,373 -> 418. `gatefall.skill_formation`: tracking (29 candidates open). No new ENT/REL identifiers |
+| EVT-000999 | Event | Gatefall: Pendragon: Owen Callahan relationship dissolution finalized — lease transferred, deposit forfeited, belongings withdrawn. `ENT-000087` now Owen's alone. No new ENT/REL identifiers |
+| EVT-001000 | Event | Gatefall: Pendragon: unpacking at the Winnetka house, sauna, natural Mana recovery (418 -> 4,864/6,272) |
+| EVT-001001 | Event | Gatefall: Pendragon: ten self-opened S-Rank instant dungeons, solo. +208,000 XP, Level 186->197 (eleven crossings). Gold -9,000,000 (keys). Six gear pieces, four duplicate runes, one skill book, two potion caches, 3,684 S-Rank crystals + 26 S-Rank cores banked |
+| EVT-001002 | Event | Gatefall: Pendragon: Kane's evening visit — BGM Field Liaison terms disclosed, `OBJ-60` (the Pendragon Guild) pitched aloud for the first time, Kane accepts an independent board seat |
+| EVT-001003 | Event | Gatefall: Pendragon: the 2026-09-16 06:00 world tick. `quiet_days` 3->4, crucible floor: a forced on-route audition (Red Gate, S true Rank, Hive) and a sited B-Rank containment crisis, both unentered. `GB-38` posted |
+| EVT-001004 | Event | Gatefall: Pendragon: 52nd daily complete, streak 40. Ability Points +4 claimed and allocated in full (38 Vitality/38 Intelligence), unspent 76 -> 0. Daily Random Box +650,000 g |
+| EVT-001005 | Event | Gatefall: Pendragon: every held Mana Crystal sold to the System shop across every Rank (+58,317,200 g), including the never-before-sold S-Rank floor. Brno pending payout cleared (+$125,000,000, pending 1 -> 0) |
+| EVT-001006 | Event | Gatefall: Pendragon: Dario/Tereza confirmations; first BGM National Office of Incident Review contact on `OBJ-58`, logged, not escalated |
+| EVT-001007 | Event | Gatefall: Pendragon: a teaching circuit with Tolo and Orenne — six ratifications (Read the Hand, Quiet House, Arithmetic, Patience of the Ledger, Weight of Precedent, Nothing Is Wasted), one new candidate opened (The Long Read) |
+| EVT-001008 | Event | Gatefall: Pendragon: far door closed (Greater Mana Potion consumed to cover the shortfall); continuity correction restoring a real prior visit to Kane's apartment (coffee, the BGM/Renata call) to `REL-000107` |
+| EVT-001009 | Event | Gatefall: Pendragon: Marisol Cade minted (`ENT-000281`), met in person, Denver. Accepts an independent Pendragon Guild board seat and the Thursday Prague invitation. `REL-000116` minted |
+| EVT-001010 | Event | Gatefall: Pendragon: Palos Preserves visit with Kane, personal, no mechanical effect beyond two anchored Rift-steps |
+| EVT-001011 | Event | Gatefall: Pendragon: a second teaching circuit with Sevrin, Ilith, and Aumry — eleven ratifications (Every Seam He Has Walked, Mapwork, Grip on the Rail, Refuse the Opening, Weight of the Span, The Question He Waits On, Fourfold Step, Sightline, Hold Together, Quartermaster, Set the Line). Greater Mana Potion consumed again to cover the door-close shortfall |
+| ENT-000281 | Entity | Gatefall: Pendragon: Marisol Cade, independent S-Rank hunter, Denver — one of Kane's two vetted domestic leads. Met `EVT-001009` |
+| REL-000116 | Relationship | Gatefall: Pendragon: Alexander and Marisol Cade (`ENT-000281`) — independent Pendragon Guild board seat accepted, formed `EVT-001009` |
+| EVT-001012 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-000999`-`EVT-001011`, run at the player's `/save` request (checkpoint 0153). Mana net 418 -> 3,870/6,370. `gatefall.skill_formation`: tracking, seventeen ratifications this span, twelve candidates remain. One ENT (`ENT-000281`), one REL (`REL-000116`) minted |
 | EVT-000953 | Event | Gatefall: Pendragon: `OBJ-64` (second A-Rank Chicago directed assignment) cleared with Elias Kane at the south-side site — Frozen Gallery archetype, 10 commons/2 elites/1 boss, Kane's own kills, XP credited to Alexander under Section 3.8's Kingmaker precedent. Loot: 221 A-Rank crystals + 3 cores sold through Renata ($11,425,000 net incl. flat/severity — see 160 for exact split), Titan Coif [A-Rank] Boss-Imprinted banked. XP +8,700, 1,042/18,600 -> 9,742/18,600. Cash $387,933,490.22 -> $402,358,490.22. No new ENT/REL identifiers |
 | EVT-000955 | Event | Gatefall: Pendragon: at Kane's apartment, `OBJ-64` offered to him and declined as a handout; reframed as leverage for Renata to open a direct BGM National line for Kane specifically. Kane accepted on the spot, terms expected next day. `OBJ-64` separately accepted by text, Kane joining unofficially. No new ENT/REL identifiers |
 | EVT-000952 | Event | Gatefall: Pendragon: Standfast retrained and reshaped at the Winnetka house — a repeat redirect attempt failed the same structural way, a legendary Flux Sight read (The Unmeasured active) confirmed the failure was categorical under Profile Section 13.6's general signature-fixity rule, and Alexander's Overpower, aimed directly at Kane's own live field (400 Mana, real risk of breaking it outright), reshaped it successfully — Standfast now redirects, natively Kane's own. First known exception to Section 13.6. `ENT-000242`'s `signature_ability` updated in place. No new ENT/REL identifiers |

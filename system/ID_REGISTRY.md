@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000280 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-000992 |
+| Event | `EVT-` | Event | EVT-000998 |
 | Relationship | `REL-` | Relationship | REL-000115 |
 
 ---
@@ -983,6 +983,12 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-000990 | Event | Gatefall: Pendragon: a second intimate encounter with Orenne; separately, he reversed his own teaching refusal on the argument's merits (individual strength doesn't move his world-integration count). Four technique candidates opened |
 | EVT-000991 | Event | Gatefall: Pendragon: returned to the Landing and closed the far door from the Earth side (2,500 Mana, fixed); rift-stepped home to Winnetka |
 | EVT-000992 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-000986`-`EVT-000991`, run at the player's `/save` request (checkpoint 0151). Full per-Event audit matrix in `160_CAMPAIGN_CHRONICLE.md`. Mana net 5,703 -> 3,373. `gatefall.skill_formation`: tracking (seventeen new candidates, all 1/3); `gatefall.skill_credit`: none. No new ENT identifiers; one REL (`REL-000115`) |
+| EVT-000993 | Event | Gatefall: Pendragon: the 51st daily (streak 39) and the 2026-09-15 06:00 world tick — quiet_days 2->3, crucible floor (guaranteed audition + West Garfield Park break), GB-34 breaks, GB-37 posted |
+| EVT-000994 | Event | Gatefall: Pendragon: Renata's roster-forward mistake corrected (already national since August); Kane authorized to forward Alexander's contact to Cade and Renner |
+| EVT-000995 | Event | Gatefall: Pendragon: Tolo's rate-of-change finding on Earth's grading file; the rest of the stolen archive read clean (Earth alone anomalous); three technique candidates opened, two advanced to 2/3 |
+| EVT-000996 | Event | Gatefall: Pendragon: a second circuit with Sevrin, Ilith, Aumry, and Orenne — eight new candidates, fifteen advanced to 2/3, Aumry's failed Call the Turn redeemed |
+| EVT-000997 | Event | Gatefall: Pendragon: returned to Denver and closed the far door a second time (2,500 Mana); no anchor set at the Landing-side terminus |
+| EVT-000998 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-000993`-`EVT-000997`, run at the player's `/save` request (checkpoint 0152). Mana net 3,373 -> 418. `gatefall.skill_formation`: tracking (29 candidates open). No new ENT/REL identifiers |
 | EVT-000953 | Event | Gatefall: Pendragon: `OBJ-64` (second A-Rank Chicago directed assignment) cleared with Elias Kane at the south-side site — Frozen Gallery archetype, 10 commons/2 elites/1 boss, Kane's own kills, XP credited to Alexander under Section 3.8's Kingmaker precedent. Loot: 221 A-Rank crystals + 3 cores sold through Renata ($11,425,000 net incl. flat/severity — see 160 for exact split), Titan Coif [A-Rank] Boss-Imprinted banked. XP +8,700, 1,042/18,600 -> 9,742/18,600. Cash $387,933,490.22 -> $402,358,490.22. No new ENT/REL identifiers |
 | EVT-000955 | Event | Gatefall: Pendragon: at Kane's apartment, `OBJ-64` offered to him and declined as a handout; reframed as leverage for Renata to open a direct BGM National line for Kane specifically. Kane accepted on the spot, terms expected next day. `OBJ-64` separately accepted by text, Kane joining unofficially. No new ENT/REL identifiers |
 | EVT-000952 | Event | Gatefall: Pendragon: Standfast retrained and reshaped at the Winnetka house — a repeat redirect attempt failed the same structural way, a legendary Flux Sight read (The Unmeasured active) confirmed the failure was categorical under Profile Section 13.6's general signature-fixity rule, and Alexander's Overpower, aimed directly at Kane's own live field (400 Mana, real risk of breaking it outright), reshaped it successfully — Standfast now redirects, natively Kane's own. First known exception to Section 13.6. `ENT-000242`'s `signature_ability` updated in place. No new ENT/REL identifiers |

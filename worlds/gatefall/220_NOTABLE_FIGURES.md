@@ -195,6 +195,7 @@ relationships:
 canonical_state:
   portrait: "assets/portraits/Dominic_Crane_ENT-000109.png"
   rank: "**S-Rank** — stated in his entry: Horizon Guild's drafted ace, one of Chicago's two resident S-Ranks. Resolved by that Rank under Section 13.1."
+  age: "**41** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A drafted ace is selected for being measurably more than the median S, and the whole brand is built on his being it."
   pools: "**Maximum Health 4200, maximum Mana 2100** — Section 6.1 table (4000 / 2000) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 210, Signature 525, Boss-tier 1050**. Section 5.3 running-dry threshold **525**."
   role: "S-Rank ace of Horizon Guild (ENT-000100); one of Chicago's two resident S-ranks and the guild's public face."
@@ -437,6 +438,7 @@ relationships:
 canonical_state:
   portrait: "assets/portraits/Tereza_Blazkova_ENT-000114.png"
   rank: "**S-Rank** — stated in her entry: S-Rank, the Czech Republic's first and only, measured in 2023. Resolved by that Rank under Section 13.1."
+  age: "**28** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   pool_variance: "**+10%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A nation's sole S-Rank and a national celebrity. If any pool in this file should sit at the top of its bracket, it is hers."
   pools: "**Maximum Health 4400, maximum Mana 2200** — Section 6.1 table (4000 / 2000) × 1.10, floored. Section 5.2 tier costs, read from their own maximum: **Minor 220, Signature 550, Boss-tier 1100**. Section 5.3 running-dry threshold **550**."
   role: "The Czech Republic's sole S-Rank (measured 2023); contracted hunter of Karlov Guild (ENT-000104) and national celebrity."
@@ -673,6 +675,7 @@ aliases:
 canonical_state:
   portrait: "assets/portraits/Reid_Calloway_ENT-000123.png"
   rank: "**S-Rank** — stated in his entry: S-Rank, world-ranked #7 on the International Gate Registry list. Resolved by that Rank under Section 13.1."
+  age: "**37** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   pool_variance: "**+10%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. World-ranked seventh on Earth and the highest-ranked American. The list is the justification."
   pools: "**Maximum Health 4400, maximum Mana 2200** — Section 6.1 table (4000 / 2000) × 1.10, floored. Section 5.2 tier costs, read from their own maximum: **Minor 220, Signature 550, Boss-tier 1100**. Section 5.3 running-dry threshold **550**."
   role: "S-Rank ace of Keystone Guild (New York); world-ranked #7 on the International Gate Registry and the highest-ranked American hunter. Keystone Guild is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
@@ -719,6 +722,7 @@ aliases:
 canonical_state:
   portrait: "assets/portraits/Lukas_Reinhardt_ENT-000124.png"
   rank: "**S-Rank** — stated in his entry: S-Rank, world-ranked #8 on the International Gate Registry list. Resolved by that Rank under Section 13.1."
+  age: "**44** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. World-ranked eighth, one rung below Calloway, and the number should say so."
   pools: "**Maximum Health 4200, maximum Mana 2100** — Section 6.1 table (4000 / 2000) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 210, Signature 525, Boss-tier 1050**. Section 5.3 running-dry threshold **525**."
   role: "S-Rank ace of Brandhof (Frankfurt); world-ranked #8 on the International Gate Registry and the nearest world-ranked hunter to Prague. Brandhof is a bible-level institution with no entity, so his membership is expressed here in canonical_state and prose only and mints no relationship."
@@ -753,25 +757,26 @@ canonical_record: REC-000071
 schema_version: "0.1.7"
 status: active
 provenance:
-  source: EVT-000857
-  game_date: "2026-09-06T19:00:00-05:00"
-  real_date: "2026-08-27"
+  source: EVT-001014
+  game_date: "2026-09-16T17:00:00-05:00"
+  real_date: "2026-09-09"
 type: Character
 scope: world
 lifecycle: active
-moved_by_events: "`EVT-000854` `EVT-000857`"
+moved_by_events: "`EVT-000854` `EVT-000857` `EVT-001013` `EVT-001014`"
 aliases:
   - name: "Elias Kane"
     quality: current
 canonical_state:
   portrait: "assets/portraits/Elias_Kane_ENT-000242.png"
   rank: "**S-Rank** — stated in his entry, 'the other Chicago S-Rank.' Resolved by that Rank under Section 13.1."
+  age: "**32** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "BGM federal asset, Chicago — no guild membership, reports to Washington rather than Region V or any guild chain (`200_WORLD_BIBLE.md`)."
   location: "Chicago; no fixed established address. Met Alexander at The Sidecut, 2211 W Cermak Road, 2026-09-06."
   pool_variance: "**+5%** — authored in play under Profile Section 6.1.2's ±10% band, read directly by Flux Sight (`campaigns/gatefall_pendragon_001/`, `EVT-000857`)."
-  pools: "**Maximum Health 4,200, maximum Mana 2,100** — Section 6.1 table (4,000/2,000) × 1.05. Read full, uninjured, at the meeting's start (Health 4,200/4,200, Mana 2,100/2,100)."
+  pools: "**Maximum Health 4,200, maximum Mana 2,300** — Section 6.1 table (4,000/2,000) × 1.05, Mana raised past the flat table ceiling by 100 Elixirs of Intelligence (`campaigns/gatefall_pendragon_001/`, `EVT-001013`, +2 Mana/point, the one thing Section 12.5.1 permits a non-Bearer). Read full, uninjured, at the meeting's start (Health 4,200/4,200, Mana 2,100/2,100 as of `EVT-000857`; Mana 2,300/2,300 as of `EVT-001013`)."
   capabilities: "S-Rank combat; signature ability **Standfast** (below)."
-  signature_ability: "Standfast — a chosen-radius zone around him that locally stabilizes and resists change: a collapsing structure stays up, spreading fire stops spreading, people caught inside a break get a window of protection. **Reshaped 2026-09-14** (`campaigns/gatefall_pendragon_001/`, Alexander's Overpower worked directly on the live field, 🎲 94, net −1 unprecedented-application step, effective 74 — clear success): now carries a genuine redirect branch, natively his own, no longer purely defensive/containment. **Exception to the general Section 13.6 signature-fixity rule** (signatures normally grow only in magnitude with Rank, never in kind) — provisional grant, owed a real profile ruling before it is standing law rather than this one proven working. Full account: `campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md`."
+  signature_ability: "Standfast — a chosen-radius zone around him that locally stabilizes and resists change: a collapsing structure stays up, spreading fire stops spreading, people caught inside a break get a window of protection. **Reshaped 2026-09-14** (`campaigns/gatefall_pendragon_001/`, Alexander's Overpower worked directly on the live field, 🎲 94, net −1 unprecedented-application step, effective 74 — clear success): carries a genuine forced-redirect branch, natively his own, no longer purely defensive/containment. **A second provisional branch developed `EVT-001014` (2026-09-16):** a genuine voluntary-discharge exception, aimed and collapsed at will on a consenting target rather than only breaking under an attacker's own force — two of four real attempts landed, each read as roughly A-Rank-devastating force against Alexander's own scale, both trivial to him and both healed by ordinary overnight rest. Kane took up informal ongoing practice toward a one-shot A-Rank-lethal threshold. **Both branches are exceptions to the general Section 13.6 signature-fixity rule** (signatures normally grow only in magnitude with Rank, never in kind) — provisional grants, owed a real profile ruling before either is standing law rather than proven working. Full account: `campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md`."
   appearance: "Mid-thirties, short practical haircut, a few days' stubble. **Authored in full 2026-09-12, first physical scene to actually call for it:** solid rather than lean — a thick, sturdy build carried on a S-Rank body's baseline conditioning, broader through the chest and shoulders than Alexander's cut athleticism, a soft layer over real muscle rather than a gym physique chiseled down to definition. Reads as a man built for absorbing a hit and staying upright, not for looking like it in a mirror. Dresses like he's always slightly on-call — a plain dark jacket, nothing uniform-like but nothing fully off-duty either. Tired eyes worn smooth from years of waiting on a phone that rarely rings; something younger shows through when he's genuinely relaxed."
   personality: "Brief, unceremonious, no small talk on the surface — but genuinely warm and unguarded once actually engaged rather than managed, not merely low-profile by habit."
   knowledge: "Knows Alexander is a confirmed unaffiliated S-Rank. Knows the GB-14 incident and Alexander's own account of it — ten hunters dead, Alexander arrived carrying two survivors — told directly, 2026-09-06. Knows Alexander's teleportation capability including passenger transport, told directly the same evening; reacted with real professional weight about the value and danger of that information, advised discretion, did not push for mechanism detail. **Told directly 2026-09-12** that Alexander has been sitting on a large stockpile of money for some time, that his first personal purchase from it is the Winnetka house (bought the same day, no place else to sleep that night was the actual trigger), and — offered in a joking tone that didn't land as a joke to either of them — that money was previously spent running black-market-adjacent operations: building containment cages for S-Rank-class threats, overpaying artificers for off-book work. No specifics (no names, no locations, no amounts) were given; Kane filed it without alarm rather than pressing for detail, and shared in return that his own government salary has never made his apartment feel like his. **Told/confirmed 2026-09-13** that Alexander is the one who ended the Jiu Valley Exclusion — no method, no numbers, no names given; confirmed by tone and a half-joke rather than a flat statement, but Kane read it correctly and Alexander did not deny it. Kane's own reaction: not alarm, but real recalibration — the first time the scale of what Alexander actually is has landed on him personally rather than as an abstract fact. **Told 2026-09-13 (same morning) that Alexander has a boyfriend — Owen, not named by surname — that they fought seriously the night before (2026-09-12), and that Alexander does not currently see a future in it.** This is the first Kane has heard of Owen's existence at all. No detail beyond that given — no name beyond 'Owen', no specifics of the fight, no channel to Owen himself, the shared apartment, or anything else about that relationship. **Also told, same conversation:** the Jiu Valley kill was 'almost no challenge' for Alexander personally — no method, no numbers, just that scale of casual understatement. Kane's read: darkly amused, genuinely recalibrating Alexander's actual ceiling upward again. No channel to anything about the far side, the Ninth Quiet, the Rockwell bay, or any of Alexander's other private threads — nothing beyond what these three conversations have actually covered."
@@ -800,6 +805,7 @@ aliases:
     quality: current
 canonical_state:
   rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  age: "**36** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Ashwood Collective (Denver)."
   capabilities: "S-Rank combat; area-control specialization, signature unestablished."
   personality: "Unestablished — no scene has reached her."
@@ -829,6 +835,7 @@ aliases:
     quality: current
 canonical_state:
   rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  age: "**39** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Redline Guild (Houston)."
   capabilities: "S-Rank combat; front-line break intervention, signature unestablished."
   personality: "Unestablished — no scene has reached him."
@@ -858,6 +865,7 @@ aliases:
     quality: current
 canonical_state:
   rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  age: "**45** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Cascade Guild (Seattle) — guild policy keeps his public profile deliberately thin."
   capabilities: "S-Rank combat; signature unestablished."
   personality: "Unestablished — no scene has reached him."
@@ -887,6 +895,7 @@ aliases:
     quality: current
 canonical_state:
   rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  age: "**34** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Delta Watch (New Orleans)."
   capabilities: "S-Rank combat; flood/storm-environment specialization, signature unestablished."
   personality: "Unestablished — no scene has reached her."
@@ -916,6 +925,7 @@ aliases:
     quality: current
 canonical_state:
   rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  age: "**32** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Sterling Guild (Boston) — heavily press-managed."
   capabilities: "S-Rank combat; signature unestablished."
   personality: "Unestablished — no scene has reached him."
@@ -945,6 +955,7 @@ aliases:
     quality: current
 canonical_state:
   rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  age: "**38** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "Unaffiliated, independent contractor, Los Angeles — no guild membership, mirroring Alexander's own standing."
   capabilities: "S-Rank combat; signature unestablished."
   personality: "Unestablished — no scene has reached her."
@@ -974,6 +985,7 @@ aliases:
     quality: current
 canonical_state:
   rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  age: "**43** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Anchor Guild (Detroit)."
   capabilities: "S-Rank combat; industrial-Gate specialization, signature unestablished."
   personality: "Unestablished — no scene has reached him."
@@ -1003,6 +1015,7 @@ aliases:
     quality: current
 canonical_state:
   rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  age: "**24** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Vanguard Collective (Miami) — youngest of the eleven, recently promoted."
   capabilities: "S-Rank combat; signature unestablished."
   personality: "Unestablished — no scene has reached her."

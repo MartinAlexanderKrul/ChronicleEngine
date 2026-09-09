@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000281 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001012 |
+| Event | `EVT-` | Event | EVT-001020 |
 | Relationship | `REL-` | Relationship | REL-000116 |
 
 ---
@@ -1005,6 +1005,14 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | ENT-000281 | Entity | Gatefall: Pendragon: Marisol Cade, independent S-Rank hunter, Denver — one of Kane's two vetted domestic leads. Met `EVT-001009` |
 | REL-000116 | Relationship | Gatefall: Pendragon: Alexander and Marisol Cade (`ENT-000281`) — independent Pendragon Guild board seat accepted, formed `EVT-001009` |
 | EVT-001012 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-000999`-`EVT-001011`, run at the player's `/save` request (checkpoint 0153). Mana net 418 -> 3,870/6,370. `gatefall.skill_formation`: tracking, seventeen ratifications this span, twelve candidates remain. One ENT (`ENT-000281`), one REL (`REL-000116`) minted |
+| EVT-001013 | Event | Gatefall: Pendragon: 100 Elixirs of Intelligence bought and given to Kane (-500,000 g); his Mana 2,100 -> 2,300/2,300, past the flat S-Rank ceiling |
+| EVT-001014 | Event | Gatefall: Pendragon: Standfast voluntary-discharge branch developed with Kane, four real attempts, two Health hits on Alexander (-818 each), healed overnight |
+| EVT-001015 | Event | Gatefall: Pendragon: Dario Wexler met in person, network pitched, teleportation disclosed (4th holder), Prague pickup arranged |
+| EVT-001016 | Event | Gatefall: Pendragon: Tereza Blažková told Alexander ended the Jiu Valley Exclusion (2nd holder); accepted the Pendragon Guild's third board seat; anchor 39 set |
+| EVT-001017 | Event | Gatefall: Pendragon: home, intimacy with Kane, overnight recovery scheduled |
+| EVT-001018 | Event | Gatefall: Pendragon: the 2026-09-17 06:00 world tick — `quiet_days` 4->5, on-route S-Rank red gate Section 9.11-routed to Kane instead of Alexander, `GB-39` posted |
+| EVT-001019 | Event | Gatefall: Pendragon: the 53rd daily quest, streak 41, all rewards left pending |
+| EVT-001020 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001013`-`EVT-001019`, run at the player's `/save` request (checkpoint 0154). `skills.rift_step.successful_uses` 104 -> 106. No entities or relationships minted |
 | EVT-000953 | Event | Gatefall: Pendragon: `OBJ-64` (second A-Rank Chicago directed assignment) cleared with Elias Kane at the south-side site — Frozen Gallery archetype, 10 commons/2 elites/1 boss, Kane's own kills, XP credited to Alexander under Section 3.8's Kingmaker precedent. Loot: 221 A-Rank crystals + 3 cores sold through Renata ($11,425,000 net incl. flat/severity — see 160 for exact split), Titan Coif [A-Rank] Boss-Imprinted banked. XP +8,700, 1,042/18,600 -> 9,742/18,600. Cash $387,933,490.22 -> $402,358,490.22. No new ENT/REL identifiers |
 | EVT-000955 | Event | Gatefall: Pendragon: at Kane's apartment, `OBJ-64` offered to him and declined as a handout; reframed as leverage for Renata to open a direct BGM National line for Kane specifically. Kane accepted on the spot, terms expected next day. `OBJ-64` separately accepted by text, Kane joining unofficially. No new ENT/REL identifiers |
 | EVT-000952 | Event | Gatefall: Pendragon: Standfast retrained and reshaped at the Winnetka house — a repeat redirect attempt failed the same structural way, a legendary Flux Sight read (The Unmeasured active) confirmed the failure was categorical under Profile Section 13.6's general signature-fixity rule, and Alexander's Overpower, aimed directly at Kane's own live field (400 Mana, real risk of breaking it outright), reshaped it successfully — Standfast now redirects, natively Kane's own. First known exception to Section 13.6. `ENT-000242`'s `signature_ability` updated in place. No new ENT/REL identifiers |

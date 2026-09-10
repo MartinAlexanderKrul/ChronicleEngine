@@ -710,12 +710,13 @@ canonical_record: REC-000071
 schema_version: "0.1.7"
 status: active
 provenance:
-  source: ruling
-  game_date: "2026-07-22"
-  real_date: "2026-07-22T00:00:00Z"
+  source: EVT-001027
+  game_date: "2026-09-18T12:00:00+02:00"
+  real_date: "2026-09-09"
 type: Character
 scope: world
 lifecycle: active
+moved_by_events: "`EVT-001021` `EVT-001027`"
 aliases:
   - name: "Lukas Reinhardt"
     quality: current
@@ -730,7 +731,7 @@ canonical_state:
   signature_ability: "Bastion — a fortress-summoning barrier-and-siege discipline that walls a break and grinds it down (Bible Section 3, World Ranking; Profile Section 13.6)."
   appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, precise and controlled bearing, closer to an engineer than a showman. Cool, assessing expression, immaculately maintained tactical gear built for methodical siege-and-containment work rather than flash. Understated continental-European presentation rather than branded."
   personality: "Precise, courteous, immovable; a siege-everything caution that is half doctrine and half trauma."
-  knowledge: "Knows Brandhof's true Prague objective is the acquisition of Karlov Guild itself, not the S-Rank the three internationals appear to be bidding for; is running the Blažková courtship as a feint."
+  knowledge: "Knows Brandhof's true Prague objective is the acquisition of Karlov Guild itself, not the S-Rank the three internationals appear to be bidding for; is running the Blažková courtship as a feint. **Met Alexander in person 2026-09-17** (`EVT-001021`): told directly about teleportation including passenger transport (the fifth confirmed holder), the Pendragon Guild pitch, and offered/accepted a provisional independent board seat. **Concluded independently, without being told, that Alexander personally ended the Jiu Valley Exclusion** — read from the timeline, the scale, and Alexander's own lack of reaction to Cade naming it — and has not asked for confirmation. **Told directly, 2026-09-18 (Frankfurt), that Alexander's parents died in the Damen Avenue Break** when Alexander was fifteen. Confirmation of the Jiu Valley kill offered but deferred to a quieter venue, undated. First anchor in Germany set at Brandhof's own courtyard the same visit."
 ```
 
 ---
@@ -1020,6 +1021,44 @@ canonical_state:
   capabilities: "S-Rank combat; signature unestablished."
   personality: "Unestablished — no scene has reached her."
   knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
+```
+
+---
+
+## Camille Aubrac — Lumière Guild, Paris (world-ranked, IGR #6)
+
+S-Rank, France. Signature **Prism Veil** — light-refraction that blinds and scatters a whole pack at once. A telegenic hunter who turned a world ranking into an endorsement empire, admired by the public and resented inside the trade (`200_WORLD_BIBLE.md`). **Met in person 2026-09-17** (`campaigns/gatefall_pendragon_001/`, `EVT-001021`), the network pitched to her directly for the first time — this entity block is minted now, on that meeting, rather than authored prospectively.
+
+```yaml
+id: ENT-000282
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: EVT-001021
+  game_date: "2026-09-17T19:00:00+02:00"
+  real_date: "2026-09-09"
+type: Character
+scope: world
+lifecycle: active
+moved_by_events: "`EVT-001021` `EVT-001027` `EVT-001028`"
+aliases:
+  - name: "Camille Aubrac"
+    quality: current
+canonical_state:
+  rank: "**S-Rank** — world-ranked IGR #6 (`200_WORLD_BIBLE.md`). Resolved by that Rank under Section 13.1."
+  age: "**41** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
+  role: "Lumière Guild, Paris — the guild's own flagship name, more publicly recognized than the guild itself in most markets."
+  location: "Paris, France; also present in Prague and Frankfurt this span for the network's own founding dinner."
+  capabilities: "S-Rank combat; signature ability **Prism Veil** — light-refraction that blinds and scatters a crowd of beasts at once, crowd-control rather than single-target."
+  appearance: "Camera-composed even off-duty — the specific practiced ease of someone who has spent years being photographed and has stopped fighting it. Warm rather than cold in person, more so than her public packaging suggests."
+  personality: "Sharp, quick to test a pitch for hidden strings before accepting it, but genuinely warm once past that filter. Carries real fatigue about being managed and packaged by other people's structures, held mostly in check rather than performed."
+  knowledge: "Met Alexander in person 2026-09-17, Prague. Told about the independent S-Rank network and the Pendragon Guild the same evening; accepted a provisional board seat, reserving the right to withdraw if it reads as image management rather than real judgment. **Told directly that Alexander can teleport, including passenger transport** — the sixth confirmed holder. Witnessed the five-passenger demonstration to Winnetka firsthand. **Told, 2026-09-18 (Paris), that Alexander and Owen Callahan recently ended their relationship** — no other detail about Owen given. No channel to the Jiu Valley Exclusion disclosure, the far side, or anything about Alexander's own combat history beyond GB-14's public account."
+  want: "To be trusted for her actual judgment rather than her image — the specific thing her own fame structurally denies her most of the time."
+  fear: "Not yet established beyond the general fatigue of being managed."
+  secret: "Not yet established."
+  voice: "Warm, quick, given to dry observation rather than performance once she drops the camera-ready register. Tests a pitch honestly rather than accepting flattery."
+  agenda: "Provisional Pendragon Guild board seat, reserving withdrawal rights. An anchor set at a café near her own Paris apartment (`EVT-001028`), the first anchor in France."
 ```
 
 ---

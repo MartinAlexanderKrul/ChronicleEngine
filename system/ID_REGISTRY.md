@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000281 |
+| Entity | `ENT-` | Persistent Entity | ENT-000282 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001020 |
-| Relationship | `REL-` | Relationship | REL-000116 |
+| Event | `EVT-` | Event | EVT-001032 |
+| Relationship | `REL-` | Relationship | REL-000118 |
 
 ---
 
@@ -1013,6 +1013,21 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-001018 | Event | Gatefall: Pendragon: the 2026-09-17 06:00 world tick — `quiet_days` 4->5, on-route S-Rank red gate Section 9.11-routed to Kane instead of Alexander, `GB-39` posted |
 | EVT-001019 | Event | Gatefall: Pendragon: the 53rd daily quest, streak 41, all rewards left pending |
 | EVT-001020 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001013`-`EVT-001019`, run at the player's `/save` request (checkpoint 0154). `skills.rift_step.successful_uses` 104 -> 106. No entities or relationships minted |
+| EVT-001021 | Event | Gatefall: Pendragon: Dario/Kane/Marisol transported to the Prague dinner; Reinhardt and Aubrac met, teleportation disclosed (5th/6th holders), both accept provisional Pendragon Guild board seats -- five total |
+| EVT-001022 | Event | Gatefall: Pendragon: a five-passenger demonstration teleport to Winnetka; anchor-setting logistics agreed for Frankfurt and Paris |
+| EVT-001023 | Event | Gatefall: Pendragon: farewell teleports home; overnight guest arrangements; private conversations with Dario, Aubrac, Kane |
+| EVT-001024 | Event | Gatefall: Pendragon: the 2026-09-18 06:00 world tick -- quiet_days 5->6, a NAMED A-Rank Gate, GB-40 posted, the unnecessary_trade day-19 beat delivered |
+| EVT-001025 | Event | Gatefall: Pendragon: the 54th daily; REL-000101 gains a written solo-clear term after Renata briefly misapplied a full-team default |
+| EVT-001026 | Event | Gatefall: Pendragon: the NAMED A-Rank Gate cleared solo (+$12,900,000); Dario dropped at San Francisco |
+| EVT-001027 | Event | Gatefall: Pendragon: Frankfurt, anchor 40 set; Reinhardt's own suspicion about the Jiu Valley kill surfaced; Alexander discloses his parents' deaths |
+| EVT-001028 | Event | Gatefall: Pendragon: Paris, anchor 41 set; Alexander discloses the Owen breakup to Aubrac |
+| EVT-001029 | Event | Gatefall: Pendragon: Kesha told the board's real size (five); international counsel authorized; national-scope charter question raised |
+| EVT-001030 | Event | Gatefall: Pendragon: Renata engaged on national-scope chartering; the two institutional threads left open |
+| EVT-001031 | Event | Gatefall: Pendragon: the Pendragon Guild charters nationally, five seats, Region V's stamp -- compressed two days at the player's request |
+| ENT-000282 | Entity | Gatefall: Pendragon: Camille Aubrac, S-Rank, Lumière Guild Paris (IGR #6) -- world scope. Met `EVT-001021` |
+| REL-000117 | Relationship | Gatefall: Pendragon: Alexander and Lukas Reinhardt -- provisional Pendragon Guild board seat, formed `EVT-001021` |
+| REL-000118 | Relationship | Gatefall: Pendragon: Alexander and Camille Aubrac (`ENT-000282`) -- provisional Pendragon Guild board seat, formed `EVT-001021` |
+| EVT-001032 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001021`-`EVT-001031`, run at the player's `/save` request (checkpoint 0155). `skills.rift_step.successful_uses` 106 -> 120 (self-caught correction). One ENT (`ENT-000282`), two REL (`REL-000117`, `REL-000118`) minted |
 | EVT-000953 | Event | Gatefall: Pendragon: `OBJ-64` (second A-Rank Chicago directed assignment) cleared with Elias Kane at the south-side site — Frozen Gallery archetype, 10 commons/2 elites/1 boss, Kane's own kills, XP credited to Alexander under Section 3.8's Kingmaker precedent. Loot: 221 A-Rank crystals + 3 cores sold through Renata ($11,425,000 net incl. flat/severity — see 160 for exact split), Titan Coif [A-Rank] Boss-Imprinted banked. XP +8,700, 1,042/18,600 -> 9,742/18,600. Cash $387,933,490.22 -> $402,358,490.22. No new ENT/REL identifiers |
 | EVT-000955 | Event | Gatefall: Pendragon: at Kane's apartment, `OBJ-64` offered to him and declined as a handout; reframed as leverage for Renata to open a direct BGM National line for Kane specifically. Kane accepted on the spot, terms expected next day. `OBJ-64` separately accepted by text, Kane joining unofficially. No new ENT/REL identifiers |
 | EVT-000952 | Event | Gatefall: Pendragon: Standfast retrained and reshaped at the Winnetka house — a repeat redirect attempt failed the same structural way, a legendary Flux Sight read (The Unmeasured active) confirmed the failure was categorical under Profile Section 13.6's general signature-fixity rule, and Alexander's Overpower, aimed directly at Kane's own live field (400 Mana, real risk of breaking it outright), reshaped it successfully — Standfast now redirects, natively Kane's own. First known exception to Section 13.6. `ENT-000242`'s `signature_ability` updated in place. No new ENT/REL identifiers |

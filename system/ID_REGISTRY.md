@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000283 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001042 |
+| Event | `EVT-` | Event | EVT-001052 |
 | Relationship | `REL-` | Relationship | REL-000119 |
 
 ---
@@ -1040,6 +1040,16 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-001040 | Event | Gatefall: Pendragon: the Pendragon Guild's first board meeting at Winnetka -- 5-0 to air, targeting 2026-09-22 (`OBJ-67`) |
 | EVT-001041 | Event | Gatefall: Pendragon: the board sent home; Kane stays at Alexander's ask; asleep at Winnetka |
 | EVT-001042 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001033`-`EVT-001041`, reconstructed from session 069's transcript at the player's `/save` request, cut before the 6 AM wake (checkpoint 0156). One ENT (`ENT-000283`), one REL (`REL-000119`) minted |
+| EVT-001043 | Event | Gatefall: Pendragon: readiness adjudication -- Sprint 850 km/h ratified, candidates merged (Backread 2/3, Ninth Lesson 1/3), The Count +10%/exchange, EUR:USD 1:1, dailies 55/56 found |
+| EVT-001044 | Event | Gatefall: Pendragon: the 2026-09-21 06:00 world tick -- missed contests rolled (GB-38 broke, credit 8->11), GB-41 posted, lakefront Gate on his route, quiet_days 8->9 |
+| EVT-001045 | Event | Gatefall: Pendragon: Mercer's newsletter; the broadcast moved to today; Czech Television confirmed; the cut sent to Tereza |
+| EVT-001046 | Event | Gatefall: Pendragon: Sorcha called first -- refuses his cover, files her own account |
+| EVT-001047 | Event | Gatefall: Pendragon: Kane's three ways; France 2 (Aubrac); @PendragonGuild premiere scheduled; ZDF (Reinhardt) |
+| EVT-001048 | Event | Gatefall: Pendragon: the morning run -- a lakefront Gate carded E, read S; Renata OFFERED and hold; drone confirms S; 57th daily |
+| EVT-001049 | Event | Gatefall: Pendragon: the Winnetka lakefront S-Rank Gate cleared solo -- +37,200 XP, Level 198 -> 200, Title Assessments 190 (retroactive) and 200, none granted |
+| EVT-001050 | Event | Gatefall: Pendragon: loot (313 S crystals, 5 S cores, Stone Skin rune) filed to Renata -- $6.5M due, federal lot ~$130.2M |
+| EVT-001051 | Event | Gatefall: Pendragon: noon -- Sorcha filed; National's platform hold withdrawn ('handled'); aired on ČT, ZDF and @PendragonGuild |
+| EVT-001052 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001043`-`EVT-001051` at the player's `/save` (checkpoint 0157). No ENT/REL minted |
 | EVT-000953 | Event | Gatefall: Pendragon: `OBJ-64` (second A-Rank Chicago directed assignment) cleared with Elias Kane at the south-side site — Frozen Gallery archetype, 10 commons/2 elites/1 boss, Kane's own kills, XP credited to Alexander under Section 3.8's Kingmaker precedent. Loot: 221 A-Rank crystals + 3 cores sold through Renata ($11,425,000 net incl. flat/severity — see 160 for exact split), Titan Coif [A-Rank] Boss-Imprinted banked. XP +8,700, 1,042/18,600 -> 9,742/18,600. Cash $387,933,490.22 -> $402,358,490.22. No new ENT/REL identifiers |
 | EVT-000955 | Event | Gatefall: Pendragon: at Kane's apartment, `OBJ-64` offered to him and declined as a handout; reframed as leverage for Renata to open a direct BGM National line for Kane specifically. Kane accepted on the spot, terms expected next day. `OBJ-64` separately accepted by text, Kane joining unofficially. No new ENT/REL identifiers |
 | EVT-000952 | Event | Gatefall: Pendragon: Standfast retrained and reshaped at the Winnetka house — a repeat redirect attempt failed the same structural way, a legendary Flux Sight read (The Unmeasured active) confirmed the failure was categorical under Profile Section 13.6's general signature-fixity rule, and Alexander's Overpower, aimed directly at Kane's own live field (400 Mana, real risk of breaking it outright), reshaped it successfully — Standfast now redirects, natively Kane's own. First known exception to Section 13.6. `ENT-000242`'s `signature_ability` updated in place. No new ENT/REL identifiers |

@@ -148,6 +148,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000279` | ENT-000279 | Assay enforcer — recruited champion, area/durability build | deceased | The Assay's channel, sealed inside the recast Lockdown Field un… | — |
 | `ENT-000280` | ENT-000280 | Assay enforcer — recruited champion, binding/warding build | deceased | The Assay's channel, sealed alone from the moment of the uneven… | — |
 | `ENT-000281` | Marisol Cade | independent S-Rank hunter | active | Denver, Colorado — independent, unaffiliated with any guild. | `REL-000116` |
+| `ENT-000283` | Sanne Verhoeven | independent film producer and fixer, unawakened | active | Her own studio — a converted light-industrial unit off a reside… | `REL-000119` |
 
 ---
 
@@ -256,13 +257,14 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000279` | ENT-000279 | Unestablished | Unestablished | Unestablished | Unestablished — never spoke |
 | `ENT-000280` | ENT-000280 | Unestablished | Unestablished | Unestablished | Unestablished — never spoke, never saw its own death coming |
 | `ENT-000281` | Marisol Cade | A real, working independent network of S-Ranks who answer to each other, not to institutions —… | That an offer of real independence turns out to be a nicer-looking cage than the ones she's alr… | Unestablished — not disclosed this session | Short, direct sentences; tests a claim with a pointed question rather than accepting it on its… |
+| `ENT-000283` | Sanne Verhoeven | Jobs that are real, on a clock that works, run her way — full control of the rig and paper on e… | Unestablished — not disclosed | Unestablished — not disclosed | Short declaratives, numbered questions, 'take it or don't'; states a price and a condition in t… |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 125. Protagonist relationships: 39.
-- Characters: 97. Disposition authored in full: 44; partial: 37; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 126. Protagonist relationships: 40.
+- Characters: 98. Disposition authored in full: 44; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

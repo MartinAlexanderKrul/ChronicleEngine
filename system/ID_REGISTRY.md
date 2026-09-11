@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000282 |
+| Entity | `ENT-` | Persistent Entity | ENT-000283 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001032 |
-| Relationship | `REL-` | Relationship | REL-000118 |
+| Event | `EVT-` | Event | EVT-001042 |
+| Relationship | `REL-` | Relationship | REL-000119 |
 
 ---
 
@@ -1028,6 +1028,18 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | REL-000117 | Relationship | Gatefall: Pendragon: Alexander and Lukas Reinhardt -- provisional Pendragon Guild board seat, formed `EVT-001021` |
 | REL-000118 | Relationship | Gatefall: Pendragon: Alexander and Camille Aubrac (`ENT-000282`) -- provisional Pendragon Guild board seat, formed `EVT-001021` |
 | EVT-001032 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001021`-`EVT-001031`, run at the player's `/save` request (checkpoint 0155). `skills.rift_step.successful_uses` 106 -> 120 (self-caught correction). One ENT (`ENT-000282`), two REL (`REL-000117`, `REL-000118`) minted |
+| EVT-001033 | Event | Gatefall: Pendragon: Tereza refers Sanne Verhoeven; the call; EUR 80,000 premium tier agreed; Kane's BGM-silence text |
+| ENT-000283 | Entity | Gatefall: Pendragon: Sanne Verhoeven, independent film producer/fixer, Amstelveen -- campaign scope. Met `EVT-001033` |
+| REL-000119 | Relationship | Gatefall: Pendragon: Alexander and Sanne Verhoeven (`ENT-000283`) -- paid shoot, NDA plus method clause, formed `EVT-001033` |
+| EVT-001034 | Event | Gatefall: Pendragon: Paris to Amstelveen on foot (open provisional travel-speed grant); anchor 42 set; home and back |
+| EVT-001035 | Event | Gatefall: Pendragon: Sanne's studio -- NDA signed, the Jiu Valley statement and guild pitch in one take, the method clause |
+| EVT-001036 | Event | Gatefall: Pendragon: S-Rank instant dungeon on camera (Frozen Gallery), +17,200 XP, Level 197 -> 198; 394 crystals sold; Sanne paid |
+| EVT-001037 | Event | Gatefall: Pendragon: far door opened; Tolo's second read (96% quarantined); the fifth teaching circuit, twelve taught ratifications (option B), four unauthored candidates opened |
+| EVT-001038 | Event | Gatefall: Pendragon: Greater Mana Potion, far door closed; the final cut opened |
+| EVT-001039 | Event | Gatefall: Pendragon: Frankfurt -- the full Jiu Valley account told to Reinhardt, Sorcha's part included |
+| EVT-001040 | Event | Gatefall: Pendragon: the Pendragon Guild's first board meeting at Winnetka -- 5-0 to air, targeting 2026-09-22 (`OBJ-67`) |
+| EVT-001041 | Event | Gatefall: Pendragon: the board sent home; Kane stays at Alexander's ask; asleep at Winnetka |
+| EVT-001042 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001033`-`EVT-001041`, reconstructed from session 069's transcript at the player's `/save` request, cut before the 6 AM wake (checkpoint 0156). One ENT (`ENT-000283`), one REL (`REL-000119`) minted |
 | EVT-000953 | Event | Gatefall: Pendragon: `OBJ-64` (second A-Rank Chicago directed assignment) cleared with Elias Kane at the south-side site — Frozen Gallery archetype, 10 commons/2 elites/1 boss, Kane's own kills, XP credited to Alexander under Section 3.8's Kingmaker precedent. Loot: 221 A-Rank crystals + 3 cores sold through Renata ($11,425,000 net incl. flat/severity — see 160 for exact split), Titan Coif [A-Rank] Boss-Imprinted banked. XP +8,700, 1,042/18,600 -> 9,742/18,600. Cash $387,933,490.22 -> $402,358,490.22. No new ENT/REL identifiers |
 | EVT-000955 | Event | Gatefall: Pendragon: at Kane's apartment, `OBJ-64` offered to him and declined as a handout; reframed as leverage for Renata to open a direct BGM National line for Kane specifically. Kane accepted on the spot, terms expected next day. `OBJ-64` separately accepted by text, Kane joining unofficially. No new ENT/REL identifiers |
 | EVT-000952 | Event | Gatefall: Pendragon: Standfast retrained and reshaped at the Winnetka house — a repeat redirect attempt failed the same structural way, a legendary Flux Sight read (The Unmeasured active) confirmed the failure was categorical under Profile Section 13.6's general signature-fixity rule, and Alexander's Overpower, aimed directly at Kane's own live field (400 Mana, real risk of breaking it outright), reshaped it successfully — Standfast now redirects, natively Kane's own. First known exception to Section 13.6. `ENT-000242`'s `signature_ability` updated in place. No new ENT/REL identifiers |

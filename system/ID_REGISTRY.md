@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000283 |
+| Entity | `ENT-` | Persistent Entity | ENT-000284 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001052 |
-| Relationship | `REL-` | Relationship | REL-000119 |
+| Event | `EVT-` | Event | EVT-001055 |
+| Relationship | `REL-` | Relationship | REL-000120 |
 
 ---
 
@@ -1050,6 +1050,11 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-001050 | Event | Gatefall: Pendragon: loot (313 S crystals, 5 S cores, Stone Skin rune) filed to Renata -- $6.5M due, federal lot ~$130.2M |
 | EVT-001051 | Event | Gatefall: Pendragon: noon -- Sorcha filed; National's platform hold withdrawn ('handled'); aired on ČT, ZDF and @PendragonGuild |
 | EVT-001052 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001043`-`EVT-001051` at the player's `/save` (checkpoint 0157). No ENT/REL minted |
+| EVT-001053 | Event | Gatefall: Pendragon: Renata's call (footage correction striking `EVT-001048`/`EVT-001050`'s follow-mode error per `F-075`; Incident Review's Strand-signed instrument-record request; Washington outreach); Cass Orlov (`ENT-000284`, minted) at the gate; France 2 airs whole |
+| ENT-000284 | Entity | Gatefall: Pendragon: Cass Orlov, host of *Past the Cordon* (61M subscribers) -- world scope. Met `EVT-001053` |
+| REL-000120 | Relationship | Gatefall: Pendragon: Alexander and Cass Orlov (`ENT-000284`) -- one doorstep meeting, contact given, formed `EVT-001053` |
+| EVT-001054 | Event | Gatefall: Pendragon: the Pendragon Guild recruitment intake framework (registry check, roster math, confirm-reply, entry ping, app project) built with Kesha Morrison; ten-day fifteen-city recruitment tour set. No new ENT/REL beyond `EVT-001053`'s |
+| EVT-001055 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001053`-`EVT-001054` at the player's `/save` (checkpoint 0158). No ENT/REL minted |
 | EVT-000953 | Event | Gatefall: Pendragon: `OBJ-64` (second A-Rank Chicago directed assignment) cleared with Elias Kane at the south-side site — Frozen Gallery archetype, 10 commons/2 elites/1 boss, Kane's own kills, XP credited to Alexander under Section 3.8's Kingmaker precedent. Loot: 221 A-Rank crystals + 3 cores sold through Renata ($11,425,000 net incl. flat/severity — see 160 for exact split), Titan Coif [A-Rank] Boss-Imprinted banked. XP +8,700, 1,042/18,600 -> 9,742/18,600. Cash $387,933,490.22 -> $402,358,490.22. No new ENT/REL identifiers |
 | EVT-000955 | Event | Gatefall: Pendragon: at Kane's apartment, `OBJ-64` offered to him and declined as a handout; reframed as leverage for Renata to open a direct BGM National line for Kane specifically. Kane accepted on the spot, terms expected next day. `OBJ-64` separately accepted by text, Kane joining unofficially. No new ENT/REL identifiers |
 | EVT-000952 | Event | Gatefall: Pendragon: Standfast retrained and reshaped at the Winnetka house — a repeat redirect attempt failed the same structural way, a legendary Flux Sight read (The Unmeasured active) confirmed the failure was categorical under Profile Section 13.6's general signature-fixity rule, and Alexander's Overpower, aimed directly at Kane's own live field (400 Mana, real risk of breaking it outright), reshaped it successfully — Standfast now redirects, natively Kane's own. First known exception to Section 13.6. `ENT-000242`'s `signature_ability` updated in place. No new ENT/REL identifiers |

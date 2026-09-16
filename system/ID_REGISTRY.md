@@ -24,10 +24,10 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000284 |
+| Entity | `ENT-` | Persistent Entity | ENT-000285 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001059 |
-| Relationship | `REL-` | Relationship | REL-000120 |
+| Event | `EVT-` | Event | EVT-001064 |
+| Relationship | `REL-` | Relationship | REL-000121 |
 
 ---
 
@@ -1059,6 +1059,13 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-001057 | Event | Gatefall: Pendragon: anchored step to the Denver facility; Sorcha Bellweather call separates future guild HQ from the Denver cage (a fully separate building recommended); Renata Okonkwo-Vance call resolves the Incident Review exposure — she commits to filing the drone card and her own routing reasoning ahead of Strand's 17:00 deadline. No new ENT/REL identifiers |
 | EVT-001058 | Event | Gatefall: Pendragon: far door opened at Denver, full five-Standing circuit (Tolo, Aumry, Ilith, Sevrin, Orenne) run in one day for the first time; anchors 43 (the Landing) and 44 (Orenne's ground) set; one Greater Mana Potion consumed; far door closed. Closed-channel ruling: no far-side figure has a channel to Alexander setting an anchor. Promotion-time correction reclassifies narrated fresh technique grants as four Novice->Apprentice mastery crossings (Diagram Sense, Read the Learner, Read the Want, Closing Word) plus one use increment (Tally) on already-ratified entries. No new ENT/REL identifiers |
 | EVT-001059 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001056`-`EVT-001058` at the player's `/save` (checkpoint 0159). No ENT/REL minted |
+| EVT-001060 | Event | Gatefall: Pendragon: far door reopened at Denver into the Assay's own channel; three rotation workers detected (Diagram Sense catching an independent interval-check on Earth's file, external corroboration of Tolo's finding) and captured, five Binding Grip Subdue rolls, all successful. No new ENT/REL identifiers |
+| EVT-001061 | Event | Gatefall: Pendragon: Anton Drury interrogated at length; an in-session language-barrier premise played out then corrected and struck; confirmed the Adjudicator exists above Reviewer rank; chose far-side isolation over death after Alexander's stated conviction. `ENT-000285` (Anton Drury) minted |
+| ENT-000285 | Entity | Gatefall: Pendragon: Anton Drury, an Assay interval-check rotation worker -- campaign scope. Captured `EVT-001060`, resolved `EVT-001061` |
+| REL-000121 | Relationship | Gatefall: Pendragon: Alexander and Anton Drury (`ENT-000285`) -- capture, interrogation, and a chosen fate, formed `EVT-001060` |
+| EVT-001062 | Event | Gatefall: Pendragon: Anton Drury and his two unconscious coworkers delivered to the Landing via Ilith; far door closed from Denver. No new ENT/REL identifiers |
+| EVT-001063 | Event | Gatefall: Pendragon: Delia Okonjo engaged for a fast guild-HQ purchase and a twenty-city office-lease rollout; home to Winnetka; the tunnel-network plan and a real guild role discussed with Kane; relationship terms restated. No new ENT/REL identifiers |
+| EVT-001064 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001060`-`EVT-001063` at the player's `/save` (checkpoint 0160). `ENT-000285`/`REL-000121` confirmed minted |
 | EVT-000953 | Event | Gatefall: Pendragon: `OBJ-64` (second A-Rank Chicago directed assignment) cleared with Elias Kane at the south-side site — Frozen Gallery archetype, 10 commons/2 elites/1 boss, Kane's own kills, XP credited to Alexander under Section 3.8's Kingmaker precedent. Loot: 221 A-Rank crystals + 3 cores sold through Renata ($11,425,000 net incl. flat/severity — see 160 for exact split), Titan Coif [A-Rank] Boss-Imprinted banked. XP +8,700, 1,042/18,600 -> 9,742/18,600. Cash $387,933,490.22 -> $402,358,490.22. No new ENT/REL identifiers |
 | EVT-000955 | Event | Gatefall: Pendragon: at Kane's apartment, `OBJ-64` offered to him and declined as a handout; reframed as leverage for Renata to open a direct BGM National line for Kane specifically. Kane accepted on the spot, terms expected next day. `OBJ-64` separately accepted by text, Kane joining unofficially. No new ENT/REL identifiers |
 | EVT-000952 | Event | Gatefall: Pendragon: Standfast retrained and reshaped at the Winnetka house — a repeat redirect attempt failed the same structural way, a legendary Flux Sight read (The Unmeasured active) confirmed the failure was categorical under Profile Section 13.6's general signature-fixity rule, and Alexander's Overpower, aimed directly at Kane's own live field (400 Mana, real risk of breaking it outright), reshaped it successfully — Standfast now redirects, natively Kane's own. First known exception to Section 13.6. `ENT-000242`'s `signature_ability` updated in place. No new ENT/REL identifiers |

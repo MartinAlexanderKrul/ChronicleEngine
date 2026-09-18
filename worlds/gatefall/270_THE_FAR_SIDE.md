@@ -377,7 +377,7 @@ mastery:   Master on a single offensive line he has refined for an age and used 
 | Technique | Rank | Mana | Effect |
 |---|---|---:|---|
 | **One Line, Refined** | S | 25 | His single offensive technique: 4.00x of a Strength-read baseline, one target. Forty uses in an age, and every one of them counted. |
-| **The Count** | S | passive | Every exchange of a fight adds +1 to his damage step. **Uncapped.** |
+| **The Count** | S | passive | **+10% damage per exchange already fought**, as its own multiplier in the Section 6.2 damage product (never a modifier step, so outside the net ±3 cap). **Uncapped**, and it resets when the fight ends. Applies identically to whoever holds it. Defined at `EVT-001043`; before 1.121 this row read *+1 to his damage step*, and "damage step" was never defined. |
 | **Recount** | S | 40 | Once per scene he re-resolves one roll that has already happened — his or anyone's. |
 | **Closing Argument** | S | 35 | Against a target below half Health, **One Line cannot miss.** |
 | **The Clean Failure** | S | 20 | Denies a target one resolution entirely. It simply does not happen. |

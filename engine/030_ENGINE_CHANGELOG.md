@@ -12,6 +12,18 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-09-18 — Gatefall Profile 1.121: five owed rulings transcribed into profile text
+
+**World content under Decision 069 point 4 and Decision 062** — no ADR, no decision number. Legs 1 and 2 clean: `010_ENGINE_RULES.md` and `011_ENGINE_DATA_MODEL.md` untouched. Leg 3 is not in play: nothing here is an engine-general mechanism, and every clause is scoped to Gatefall.
+
+**Problem.** Five rulings had been ratified in play and were still recorded as *owed profile text* in the campaign's own Current State: Sprint's 850 km/h, The Count's per-exchange rate, Flux Sight reading a Gate's true Rank from outside, Standfast's branch count, and the unbound-rune pricing convention. Until transcribed they bind only the one campaign that made them, and a restore under a different session has no text to read them from. The Count was the sharpest case: its row said *+1 to his damage step*, and "damage step" was never defined.
+
+**Change.** Transcription only. Sprint's S rung gains its figure; Section 4.4 states the Gate read fires from outside; Section 6.2 admits a named per-exchange multiplier as its own factor outside the net +/-3 cap; Section 13.6 lets a signature carry any number of earned branches without compounding; new Section 12.1.1 prices an unbound-awakened rune at 1x or 1.5x the haul of a Gate two Ranks above. `270_THE_FAR_SIDE.md`'s Count row is rewritten to the ruled +10%/exchange.
+
+**Files.** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` (title, `**Profile Version:**`, Compatibility Status, Sections 4.4 / 6.2 / 7.2 / 12.1.1 / 13.6); `worlds/gatefall/270_THE_FAR_SIDE.md`; `worlds/gatefall/migrations/1.120_to_1.121.md` (new); `migrations/INDEX.md` (active 1.121, chain 120 edges, edge row); `worlds/gatefall/README.md`; `campaigns/gatefall_pendragon_001/090_CAMPAIGN_STARTUP.md` (re-pin); `100_CHARACTER_SHEET.md` (`profile_version`); `system/WORLDS_AND_CAMPAIGNS.md` (regenerated).
+
+**Owed and not done here.** The **adoption Event is campaign canon and belongs to play**; `gatefall_pendragon_001` owes one at its next save, and its `provisional_mechanics` rune-pricing entry keeps its `owes:` line until then. **Left open on purpose:** rune pricing above A-Rank has no Gate two Ranks up to read against and the ratification never addressed it, so 12.1.1 stops a Runtime at that edge instead of extending the ladder.
+
 ## 2026-09-18 — Gatefall Profile 1.120: a panel may serve its listing from the campaign's derived ledger
 
 **World content under Decision 069 point 4 and Decision 062** — no ADR, no decision number. Legs 1 and 2 clean: `010_ENGINE_RULES.md` and `011_ENGINE_DATA_MODEL.md` untouched. Leg 3 is Gatefall's own render grammar, which is world content by definition.

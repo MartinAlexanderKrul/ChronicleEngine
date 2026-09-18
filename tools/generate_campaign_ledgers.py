@@ -169,6 +169,103 @@ def parse_skill(row, ents):
     return rec
 
 
+# ---------------------------------------------------------------- inventory --
+# Canon files items under six storage lists (keys, consumables, special, gear,
+# custody, materials). The view splits `gear` into Weapon/Armor/Accessory/Tool,
+# which canon does not carry and should not -- that mapping is taxonomy, exactly
+# as the skill function grouping is.
+SLOT_LABEL = {"main_hand": "Main Hand", "off_hand": "Off Hand", "head": "Head",
+              "torso": "Torso", "legs": "Legs", "feet": "Feet", "hands": "Hands",
+              "ring": "Ring", "neck": "Neck", "back": "Back", "waist": "Waist",
+              "accessory": "Accessory"}
+GROUP_CAT = {"keys": "Key", "consumables": "Consumable", "special": "Special",
+             "custody": "Custody", "materials": "Material"}
+QTY = re.compile("(?:" + chr(0xD7) + "|x)\s?([0-9][0-9,]*)", re.I)
+RANKED = re.compile(r"\[([SABCDE])-Rank\]")
+
+
+def strip_bold_name(row):
+    """An item row opens with its name, usually bolded, then an em/double dash."""
+    text = row.strip()
+    if text.startswith("**"):
+        end = text.find("**", 2)
+        if end > 0:
+            return text[2:end].strip(), text[end + 2:].lstrip(" " + chr(0x2014) + "-").strip()
+    for sep in (" " + chr(0x2014) + " ", " -- "):
+        if sep in text:
+            head, tail = text.split(sep, 1)
+            return head.strip().strip("*"), tail.strip()
+    return text.strip().strip("*"), ""
+
+
+def parse_item(row, group, cat_of):
+    name, body = strip_bold_name(row)
+    rank_m = RANKED.search(name)
+    rank = rank_m.group(1) if rank_m else ""
+    qty_m = QTY.search(name)
+    qty = qty_m.group(1) if qty_m else ""
+    clean = QTY.sub("", name).replace("**", "").strip(" " + chr(0x2014) + ",")
+
+    cat = GROUP_CAT.get(group)
+    missing = None
+    if cat is None:                      # gear: needs a taxonomy row
+        cat = cat_of.get(clean)
+        if cat is None:
+            missing = clean
+
+    stats, desc = [], []
+    for sent in split_sentences(body):
+        (stats if FIG_PAT.search(sent.replace("**", "")) and not stats else desc).append(sent)
+    low = body.lower()
+    tag = ("equipped" if "equipped" in low and "unequipped" not in low else
+           "custody" if group == "custody" or "held by" in low else
+           "earmarked" if "earmark" in low else
+           "banked" if "banked" in low or "unequipped" in low else "")
+
+    rec = {"cat": cat, "name": clean + ((" " + chr(0xD7) + " " + qty) if qty else ""),
+           "rank": rank, "stats": md(" ".join(stats).strip()),
+           "desc": md(" ".join(desc).strip()), "tag": tag}
+    kept = len(re.sub(r"\s+", "", rec["stats"] + rec["desc"]))
+    total = len(re.sub(r"\s+", "", body))
+    rec["_loss"] = total - kept
+    rec["_missing"] = missing
+    return rec
+
+
+def build_inventory(state, assets, taxonomy, campaign):
+    cat_of = taxonomy.get("items", {}) or {}
+    inv = state.get("inventory", {}) or {}
+    items, missing = [], []
+    for group, rows in inv.items():
+        for row in (rows if isinstance(rows, list) else []):
+            rec = parse_item(row, group, cat_of)
+            if rec["_missing"]:
+                missing.append(rec["_missing"])
+            items.append(rec)
+    if missing:
+        print("Ledger generation FAILED: %d gear item(s) have no ledger_taxonomy.yaml "
+              "row, so they would silently vanish from the view:" % len(missing), file=sys.stderr)
+        for n in missing:
+            print("  - " + n, file=sys.stderr)
+        return None, None, missing, ""
+
+    equipped = []
+    equip = dict(state.get("equipment", {}) or {})
+    total_reduction = equip.pop("total_physical_reduction", "")
+    for slot, text in equip.items():
+        nm, body = strip_bold_name(text)
+        rm = RANKED.search(nm)
+        stats, desc = [], []
+        for sent in split_sentences(body):
+            (stats if FIG_PAT.search(sent.replace("**", "")) and not stats else desc).append(sent)
+        equipped.append({"slot": SLOT_LABEL.get(slot, slot.replace("_", " ").title()),
+                         "name": RANKED.sub("", nm).replace("**", "").strip(" ,"),
+                         "rank": rm.group(1) if rm else "",
+                         "stats": md(" ".join(stats).strip()),
+                         "desc": md(" ".join(desc).strip())})
+    return items, equipped, [], md(strip_bold_name(total_reduction)[0] + " " + strip_bold_name(total_reduction)[1]).strip()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--campaign", required=True)
@@ -226,17 +323,57 @@ def main():
     html = re.sub(r"/\*__SKILLS_DATA__\*/.*?/\*__END__\*/",
                   lambda _: "/*__SKILLS_DATA__*/[\n%s\n]/*__END__*/" % data, tpl, flags=re.S)
 
-    out = os.path.join(assets, "alexander_pendragon_skill_ledger.html")
-    print("skills_known rows: %d  ->  techniques: %d, annotation rows: %d"
-          % (len(state.get("skills_known", [])), len(parsed), len(notes)))
-    if args.check:
-        current = io.open(out, encoding="utf-8", newline="").read() if os.path.exists(out) else ""
-        if current != html:
-            sys.stderr.write("DRIFT: %s is not what canon regenerates.\n" % out); return 1
-        print("check: ledger matches canon"); return 0
-    io.open(out, "w", encoding="utf-8", newline="").write(html)
-    print("wrote %s (%d bytes)" % (out, len(html.encode("utf-8"))))
-    return 0
+    written = []
+
+    def emit(name, template, replacements):
+        tpl_file = os.path.join(assets, "templates", template)
+        page = io.open(tpl_file, encoding="utf-8", newline="").read()
+        for marker, payload in replacements.items():
+            token = "/*__%s__*/" % marker
+            head, _, rest = page.partition(token)
+            _, _, rest = rest.partition("/*__END__*/")
+            page = head + token + payload + "/*__END__*/" + rest
+        target = os.path.join(assets, name)
+        if args.check:
+            have = io.open(target, encoding="utf-8", newline="").read() if os.path.exists(target) else ""
+            if have != page:
+                print("DRIFT: %s is not what canon regenerates." % target, file=sys.stderr)
+                return False
+            print("check: %s matches canon" % name)
+            return True
+        io.open(target, "w", encoding="utf-8", newline="").write(page)
+        written.append((name, len(page.encode("utf-8"))))
+        return True
+
+    ok = emit("alexander_pendragon_skill_ledger.html", "skill_ledger.template.html",
+              {"SKILLS_DATA": "[" + chr(10) + data + chr(10) + "]"})
+
+    items, equipped, missing, total_reduction = build_inventory(state, assets, taxonomy, args.campaign)
+    if missing:
+        return 1
+    lost_items = [(r["name"], r.pop("_loss")) for r in items]
+    for r in items:
+        r.pop("_missing", None)
+    dropped_items = [(n, c) for n, c in lost_items if c > 0]
+    if dropped_items:
+        print("Ledger generation FAILED: canon text was dropped for %d item(s):" % len(dropped_items), file=sys.stderr)
+        for n, c in dropped_items[:20]:
+            print("  - %s (%d characters unaccounted for)" % (n, c), file=sys.stderr)
+        return 1
+    order = taxonomy.get("item_groups", [])
+    items.sort(key=lambda r: (order.index(r["cat"]) if r["cat"] in order else 99, r["name"]))
+    print("inventory: %d items across %d storage lists, %d equipped slots, none dropped"
+          % (len(items), len(state.get("inventory", {}) or {}), len(equipped)))
+    idata = ("," + chr(10)).join(json.dumps(r, ensure_ascii=False) for r in items)
+    edata = ("," + chr(10)).join(json.dumps(r, ensure_ascii=False) for r in equipped)
+    ok = emit("alexander_pendragon_inventory_ledger.html", "inventory_ledger.template.html",
+              {"EQUIPPED_DATA": "[" + chr(10) + edata + chr(10) + "]",
+               "ITEMS_DATA": "[" + chr(10) + idata + chr(10) + "]",
+               "TOTAL_REDUCTION": json.dumps(total_reduction, ensure_ascii=False)}) and ok
+
+    for name, size in written:
+        print("wrote %s (%d bytes)" % (name, size))
+    return 0 if ok else 1
 
 
 if __name__ == "__main__":

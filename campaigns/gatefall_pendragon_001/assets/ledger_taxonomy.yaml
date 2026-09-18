@@ -149,3 +149,72 @@ skills:
   "Personal gate": Mobility
   "The far door": Mobility
   "Tunnel network": Mobility
+
+# ---------------------------------------------------------------- inventory --
+# Canon files all gear under one `gear` list; the view splits it. Keys are the
+# item name exactly as the sheet writes it, JSON-quoted so a long name cannot wrap.
+item_groups:
+  - Weapon
+  - Armor
+  - Accessory
+  - Consumable
+  - Key
+  - Special
+  - Tool
+  - Material
+  - Custody
+
+items:
+  "Adaptive Gale Torso [A-Rank]": Armor
+  "Adaptive Titan Coif [B-Rank]": Armor
+  "Adaptive Titan Legs [B-Rank]": Armor
+  "Arcanist Boots [S-Rank]": Armor
+  "Arcanist Coif [C-Rank]": Armor
+  "Arcanist Feet [A-Rank]": Armor
+  "Arcanist Feet [C-Rank]": Armor
+  "Arcanist Torso [S-Rank] (second)": Armor
+  "Ascendant Hunter's Band [D-Rank]": Accessory
+  "Ascendant Mindspun Loop [C-Rank]": Accessory
+  "Ascendant Warlord's Loop [A-Rank]": Accessory
+  "Bastion Torso [E-Rank]": Armor
+  "Bastion Torso [E-Rank] (second, Boss-Imprinted)": Armor
+  "Channeling Focus [D-Rank]": Weapon
+  "Channeling Focus [S-Rank], Boss-Imprinted (Serpentine/Control)": Weapon
+  "Directional listening rig": Tool
+  "Gate Direction Finder [E-Rank]": Tool
+  "Ghost Quickknife [A-Rank]": Weapon
+  "Ghost Quickknife [B-Rank]": Weapon
+  "Greatarm [A-Rank]": Weapon
+  "Greatarm [S-Rank] (second)": Weapon
+  "Guard Shield [S-Rank]": Armor
+  "Heartward Sigil [S-Rank], Boss-Imprinted (Arcane/Affliction)": Accessory
+  "Hunter's Band [S-Rank], Boss-Imprinted": Accessory
+  "Hunter’s Band [E-Rank]  (opened)": Accessory
+  "Hunter’s Band [E-Rank]  (untouched)": Accessory
+  "Keyed document wallet [C-Rank]": Tool
+  "Longsword [B-Rank]": Weapon
+  "Longsword [S-Rank]": Weapon
+  "Longsword [S-Rank] (fourth)": Weapon
+  "Longsword [S-Rank], Boss-Imprinted (Brute/Impact)": Weapon
+  "Longsword [S-Rank], Boss-Imprinted (Carapaced/Guard)": Weapon
+  "Mana Reservoir [C-Rank]": Tool
+  "Mana-null disc [E-Rank]": Tool
+  "Mana-storage cell [capacity 750, ceiling reached]": Tool
+  "Mindspun Loop [S-Rank]": Accessory
+  "Quickknife [A-Rank]": Weapon
+  "Quickknife [B-Rank]": Weapon
+  "Quickknife [C-Rank]": Weapon
+  "Quickknife [C-Rank] (second)": Weapon
+  "Quickknife [S-Rank] (Red Gate)": Weapon
+  "Quickknife [S-Rank], Boss-Imprinted (Carapaced/Projection)": Weapon
+  "Quickstep Charm [S-Rank]": Accessory
+  "Reacharm [B-Rank]": Weapon
+  "Reacharm [S-Rank] (third)": Weapon
+  "Rune — Dagger Mastery [S-Rank], unbound-awakened": Weapon
+  "Rune — Stone Skin [A-Rank], unbound-awakened": Armor
+  "Seer's Lens [D-Rank], fused": Accessory
+  "Suppression Emitter [E-Rank]": Tool
+  "Titan Coif [A-Rank], Boss-Imprinted (Brute/Impact)": Armor
+  "Unlicensed Lockpick Set [B-Rank]": Tool
+  "Unmarked motion-sensor rig [D-Rank]": Tool
+  "Watcher Gauntlets [S-Rank]": Armor

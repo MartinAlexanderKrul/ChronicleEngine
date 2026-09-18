@@ -25,6 +25,7 @@ This reverses the campaign's earlier practice of writing `100_CHARACTER_SHEET.md
    - `system/ID_REGISTRY.md` high-water marks and allocation log cover every identifier minted this session.
    - `system/WORLDS_AND_CAMPAIGNS.md` campaign row: latest checkpoint and Captured updated.
    - `180_CURRENT_STATE.md` declares the latest restorable checkpoint.
+   - **Derived assets the loaded campaign declares** in its `090_CAMPAIGN_STARTUP.md` are regenerated and agree with the ledgers being snapshotted, so the checkpoint does not freeze a view that already disagrees with canon. The campaign's own declaration names the command and when it runs; a campaign that declares none has nothing to do here. This adds no obligation the save did not already carry — an asset derived from the character sheet is part of the derived target set the algorithm writes.
 3. **Hand mechanical checkpointing to the transaction helper.** After live read-back and the live Repository Validation Gate, write the Version 1.0 hash-bound mutation receipt specified under the Runtime Profile's Save Algorithm. Then invoke:
    ```
    powershell -NoProfile -ExecutionPolicy Bypass -File tools\new_checkpoint.ps1 -Campaign <campaign-path> -CheckpointType <type> -Label "<label>" -ExpectedParent <checkpoint-or-none> -MutationReceipt <receipt.json>

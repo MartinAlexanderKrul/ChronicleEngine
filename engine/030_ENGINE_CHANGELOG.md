@@ -12,6 +12,38 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-09-18 — Gatefall Profile 1.120: a panel may serve its listing from the campaign's derived ledger
+
+**World content under Decision 069 point 4 and Decision 062** — no ADR, no decision number. Legs 1 and 2 clean: `010_ENGINE_RULES.md` and `011_ENGINE_DATA_MODEL.md` untouched. Leg 3 is Gatefall's own render grammar, which is world content by definition.
+
+**Problem.** The player reported `/system` panels showing *"half data"*. The cause is measured, not stylistic: `/system gear` is this campaign's largest declared operation at ~26,800 tokens against a 26,451 ratchet, `/system shop` is over its own, and `ENT-000125` exceeds its per-object ratchet — the budget file states the failure mode is *"a read, not a load"*. A panel whose source cannot be read in one pass renders partially, and a half-filled frame is indistinguishable from a complete one, which is the Section 20.2 defect.
+
+**Change.** Section 15.3 gains one general clause: where a campaign declares a derived ledger for a panel's surface in its own `090_CAMPAIGN_STARTUP.md`, the panel renders **summary and totals inline** and serves the **per-item listing** as that ledger's link. Section 15.3.1 keeps its header, per-category counts and the Offense/Defense/Utility classification (the ledger groups by those same categories); Section 15.3.2 keeps `WORN` and `WORN · TOTALS` in full and serves `STORED`'s per-item rows from the ledger, retaining each kind's live line count.
+
+**Nothing interactive moves.** Equipping, unequipping, withdrawing, buying, selling and title changes still resolve through the panel. `WORN` stayed inline deliberately — it is the interaction surface and nine lines rather than a hundred. **The clause is inert without a declaration**: a campaign that declares no ledger renders every panel exactly as 1.119 did, so no other campaign or world is affected.
+
+**Files.** `worlds/gatefall/206_WORLD_RULE_PROFILE.md` (title, `**Profile Version:**`, Compatibility Status, Sections 15.3 / 15.3.1 / 15.3.2); `worlds/gatefall/migrations/1.119_to_1.120.md` (new); `migrations/INDEX.md` (active profile 1.120, chain 119 edges, edge row); `worlds/gatefall/README.md`; `campaigns/gatefall_pendragon_001/090_CAMPAIGN_STARTUP.md` (re-pin); `100_CHARACTER_SHEET.md` (`profile_version`); `system/WORLDS_AND_CAMPAIGNS.md` regenerated.
+
+**Audit.** Migration chain, Gatefall render contract, runtime index generation (and `-Check`), world-authoring default, operation plan, and repository validation all pass. Compatibility Status markup balance unchanged at 11 `*(` / 13 `)*`.
+
+**Owed and not done here.** The **adoption Event is campaign canon and belongs to play**, as every prior profile adoption does; `gatefall_pendragon_001` owes one at its next save. The panels' measured sizes do not drop until a session actually renders under 1.120, so the two over-ratchet surfaces stay red in the meantime, and the `ENT-000125` trim is still owed regardless.
+
+## 2026-09-18 — Campaign ledgers are generated from canon, and a save regenerates the ones a campaign declares
+
+**Refinement under Decision 069, milestone 0.4.3 (Capability Validation and Prototype Campaign).** Legs 1 and 2 clean: `010_ENGINE_RULES.md` untouched, `011_ENGINE_DATA_MODEL.md` untouched. **Leg 3** is the arguable one and the owner ruled it: the save step is written **campaign-scoped**, reading a declaration the campaign makes in its own `090_CAMPAIGN_STARTUP.md`, rather than engine-general as *"a save regenerates the campaign's declared derived assets."* Written the second way it would have imposed an obligation every world must satisfy and been foundational, which may not land against a released version. A campaign that declares nothing has nothing to run, and no other world is touched.
+
+**Problem.** `gatefall_pendragon_001` carried two browsable HTML ledgers under `assets/`, both authored by hand. Hand-authoring meant they could disagree with `100_CHARACTER_SHEET.md` and nothing would say so — and they did. The inventory ledger showed **103 of 111** held items; its `GROUP_ORDER` omitted `Custody` outright, so every item held by another person rendered nowhere. The skill ledger dropped Reviewer's Voice, which canon carried inside a prose row rather than as an entry. The player's own report was that `/system` panels showed *"half data"*; the runtime context measurement gives the mechanism — `ENT-000125` exceeds its per-object ratchet, and the budget file records that the failure mode "is a read, not a load."
+
+**Change.** `tools/generate_campaign_ledgers.py` parses the sheet's own fenced YAML, joins it to `campaigns/<c>/assets/ledger_taxonomy.yaml`, and fills a template that holds the page design, so only data regenerates. Three properties make it a gate rather than a convenience: an entry with no taxonomy row **fails the run by name** (verified by deleting Twin Fang's row); every sentence of canon is placed in exactly one rendered field with characters counted in against out, so partial loss fails; and `--check` regenerates and diffs without writing. The taxonomy file holds the function and item-category grouping, which is presentation and which canon deliberately does not carry.
+
+**Files.** `tools/generate_campaign_ledgers.py` (new); `campaigns/gatefall_pendragon_001/assets/ledger_taxonomy.yaml` (new, 119 skill and 53 gear rows); `assets/templates/{skill,inventory}_ledger.template.html` (new); both generated ledgers; `090_CAMPAIGN_STARTUP.md` gains a **Derived Assets** section naming the command and when it runs; `.claude/skills/save/SKILL.md` and `.agents/skills/save/SKILL.md` gain one conditional bullet in the completion contract, mirrored byte-identically.
+
+**Audit.** Skills 114 of 114 with 37 figure boxes against the hand-built 36; inventory 103 → **111** items and 9 worn slots, recovering Material 7→11, Custody 2→3, Weapon 20→21, Armor 13→14, Accessory 9→10. Both regenerate byte-identically on a second run. Repository validation and the checkpoint contract pass.
+
+**Cost.** `ENT-000125` grew by the Reviewer's Voice promotion (+298 bytes) and remains over its per-object ratchet, which it already exceeded before this work; the trim under `trim_policy` is still owed and is not done here.
+
+**Left open.** `/system skills` and `/system inventory` still render inline rather than returning the artifact link — that is Gatefall world content (Section 15.3.1) and needs its own profile bump and migration record. Publishing a regenerated ledger to its artifact URL remains a manual step. Eleven skill cards state an absolute effect in prose with no figure keyword and so render it as description rather than in a figure box; nothing is hidden and the classifier was not over-fitted to eleven phrasings.
+
 ## 2026-09-18 — Gatefall Profile 1.119: general guild institutional economics
 
 **World content under Decision 069 point 4 and Decision 062.** Legs 1 and 2 clean: `010_ENGINE_RULES.md` untouched, `011_ENGINE_DATA_MODEL.md` untouched. **Leg 3** is Gatefall-only — the change is scoped entirely to new Section 13.7 and an amended row in Section 12.3 of `worlds/gatefall/206_WORLD_RULE_PROFILE.md`, exposes no engine-general hook, and touches no other world.

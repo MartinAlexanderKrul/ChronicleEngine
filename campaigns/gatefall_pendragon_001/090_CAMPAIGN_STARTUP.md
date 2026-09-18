@@ -9,7 +9,7 @@
 startup_version: "1.0"
 campaign: campaigns/gatefall_pendragon_001
 world: worlds/gatefall
-world_rule_profile: "Gatefall World Rule Profile 1.119"
+world_rule_profile: "Gatefall World Rule Profile 1.120"
 protagonist_policy: custom
 default_protagonist: ENT-000125
 initialization_state: resumable
@@ -299,6 +299,23 @@ This gate is resident after campaign load and fires whenever the player's comple
 5. **A draft that fails step 4 is discarded and rendered again from the template** — never patched, never sent with an apology, never replaced by a prose summary of what the panel would have said. Sending a partial window is the failure this gate exists to prevent, and it is invisible to the player, who has no copy of the template to check it against.
 
 If a required source cannot be read, say so out of character, name the file, and render nothing. A partial `/system` is worse than a reported read failure: the player cannot tell one from a complete one.
+
+---
+
+# Derived Assets
+
+`assets/alexander_pendragon_skill_ledger.html` and `assets/alexander_pendragon_inventory_ledger.html`
+are **views, never canon** — every fact is read from `100_CHARACTER_SHEET.md`, which is the only
+place one is edited. An edit made on the published artifact does not travel back and is overwritten.
+
+`/save` rebuilds both after the live ledgers are written and before the snapshot is taken:
+
+```
+python tools/generate_campaign_ledgers.py --campaign gatefall_pendragon_001
+```
+
+It fails loudly and by name on an entry missing from `assets/ledger_taxonomy.yaml` or on text it
+cannot place; `--check` diffs without writing. Publishing a rebuilt ledger stays manual.
 
 ---
 

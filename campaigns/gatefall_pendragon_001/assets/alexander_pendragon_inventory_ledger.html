@@ -1,0 +1,458 @@
+<title>Pendragon Ledger</title>
+<meta name="description" content="Alexander Pendragon's complete System inventory — worn loadout, banked gear, consumables, keys, and materials, grouped by how each is used.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eef2f1; --surface:#ffffff; --surface2:#f4f7f6; --border:#d7dfdd;
+    --text:#0f1a1c; --text-dim:#556166; --accent:#0e8f83; --accent-soft:#0e8f831a;
+    --amber:#a5730f; --amber-soft:#a5730f1a;
+    --rank-s:#a5730f; --rank-a:#7440c4; --rank-b:#0e8f83; --rank-c:#2f7d32; --rank-d:#5c6b72; --rank-e:#8a939a;
+    --shadow:0 1px 2px rgba(15,26,28,.06), 0 8px 24px -12px rgba(15,26,28,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0b1414; --surface:#101b1b; --surface2:#152322; --border:#223231;
+      --text:#e7efee; --text-dim:#93a6a3; --accent:#3fd6c3; --accent-soft:#3fd6c31a;
+      --amber:#f0b429; --amber-soft:#f0b4291a;
+      --rank-s:#f0b429; --rank-a:#b78cf0; --rank-b:#3fd6c3; --rank-c:#6fcf73; --rank-d:#93a6a3; --rank-e:#6c7a78;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b1414; --surface:#101b1b; --surface2:#152322; --border:#223231;
+    --text:#e7efee; --text-dim:#93a6a3; --accent:#3fd6c3; --accent-soft:#3fd6c31a;
+    --amber:#f0b429; --amber-soft:#f0b4291a;
+    --rank-s:#f0b429; --rank-a:#b78cf0; --rank-b:#3fd6c3; --rank-c:#6fcf73; --rank-d:#93a6a3; --rank-e:#6c7a78;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--text); margin:0;
+    font-family:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+    padding-inline:16px;
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding-block:28px 60px;}
+  header.top{
+    display:flex; flex-wrap:wrap; gap:18px 28px; align-items:flex-end; justify-content:space-between;
+    padding-bottom:18px; border-bottom:1px solid var(--border); margin-bottom:22px;
+  }
+  .id-block{display:flex; flex-direction:column; gap:4px;}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent);
+  }
+  h1{
+    font-family:"Chakra Petch",ui-sans-serif,sans-serif; font-weight:700; font-size:clamp(1.7rem,4vw,2.5rem);
+    margin:0; letter-spacing:.01em; text-wrap:balance;
+  }
+  .sub{color:var(--text-dim); font-size:.9rem; max-width:56ch;}
+  .stat-strip{display:flex; gap:22px; flex-wrap:wrap; font-family:"IBM Plex Mono",monospace;}
+  .stat-strip div{display:flex; flex-direction:column; gap:2px; min-width:84px;}
+  .stat-strip .n{font-size:1.25rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums;}
+  .stat-strip .l{font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+
+  .controls{
+    position:sticky; top:0; z-index:5; background:var(--bg); padding-block:12px;
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:20px;
+    border-bottom:1px solid var(--border);
+  }
+  #search{
+    flex:1 1 220px; background:var(--surface); border:1px solid var(--border); color:var(--text);
+    padding:9px 12px; border-radius:8px; font-family:"IBM Plex Sans",sans-serif; font-size:.92rem;
+  }
+  #search:focus{outline:2px solid var(--accent); outline-offset:1px;}
+  .chip{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.03em; padding:6px 11px;
+    border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--text-dim);
+    cursor:pointer; user-select:none;
+  }
+  .chip[aria-pressed="true"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+  .chip:focus-visible{outline:2px solid var(--accent);}
+  #printBtn{
+    margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.04em;
+    padding:8px 14px; border-radius:8px; border:1px solid var(--accent); background:var(--accent);
+    color:var(--bg); cursor:pointer; font-weight:600;
+  }
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #printBtn{color:#08120f;}}
+  :root[data-theme="dark"] #printBtn{color:#08120f;}
+
+  .catnav{
+    display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;
+  }
+  .catnav button{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.02em; padding:7px 12px;
+    border-radius:8px; border:1px solid var(--border); background:var(--surface); color:var(--text);
+    cursor:pointer; display:flex; align-items:center; gap:7px; transition:border-color .12s, transform .12s;
+  }
+  .catnav button:hover{border-color:var(--accent); transform:translateY(-1px);}
+  .catnav button:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
+  .catnav button .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); flex:none;}
+  .catnav button .n{color:var(--text-dim); font-variant-numeric:tabular-nums;}
+  section.group{scroll-margin-top:16px;}
+  #loadout{scroll-margin-top:16px;}
+
+  .loadout{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:10px; margin-bottom:36px;
+  }
+  .slot{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:13px 14px;
+    box-shadow:var(--shadow); position:relative; overflow:hidden;
+  }
+  .slot::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--amber);}
+  .slot .slotname{font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim);}
+  .slot .itemname{font-family:"Chakra Petch",sans-serif; font-weight:600; font-size:.98rem; margin:3px 0 6px; line-height:1.25;}
+  .slot .stats{font-family:"IBM Plex Mono",monospace; font-size:.76rem; color:var(--accent); line-height:1.5;}
+  .slot .desc{font-size:.78rem; color:var(--text-dim); margin-top:6px; line-height:1.45;}
+
+  section.group{margin-bottom:30px;}
+  .grouphead{
+    display:flex; align-items:baseline; gap:10px; margin-bottom:12px; cursor:pointer;
+  }
+  .grouphead h2{
+    font-family:"Chakra Petch",sans-serif; font-size:1.05rem; font-weight:600; margin:0; letter-spacing:.02em;
+  }
+  .grouphead .count{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--text-dim); background:var(--surface2);
+    border:1px solid var(--border); border-radius:999px; padding:2px 9px;
+  }
+  .grouphead .line{flex:1; height:1px; background:var(--border);}
+  .grouphead .chev{color:var(--text-dim); font-size:.8rem; transition:transform .15s;}
+  .group.collapsed .chev{transform:rotate(-90deg);}
+  .group.collapsed .cards{display:none;}
+
+  .cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px;}
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:13px 14px;
+    display:flex; flex-direction:column; gap:6px; box-shadow:var(--shadow);
+  }
+  .card .head{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+  .card .name{font-weight:600; font-size:.92rem; line-height:1.3;}
+  .rank{
+    font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600; letter-spacing:.04em;
+    padding:2px 7px; border-radius:5px; white-space:nowrap; flex:none;
+    color:var(--rk); background:color-mix(in srgb, var(--rk) 16%, transparent);
+    border:1px solid color-mix(in srgb, var(--rk) 45%, transparent);
+  }
+  .card .stats{font-family:"IBM Plex Mono",monospace; font-size:.74rem; color:var(--accent); line-height:1.5;}
+  .card .desc{font-size:.78rem; color:var(--text-dim); line-height:1.45;}
+  .card .tag{
+    align-self:flex-start; font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--text-dim); border:1px dashed var(--border); border-radius:5px; padding:1px 6px;
+  }
+  .qty{
+    font-family:"IBM Plex Mono",monospace; font-size:.68rem; font-weight:600; color:var(--bg);
+    background:var(--accent); border-radius:5px; padding:1px 6px; white-space:nowrap; flex:none;
+  }
+  .empty{color:var(--text-dim); font-size:.85rem; padding:18px 0;}
+
+  footer{margin-top:40px; padding-top:16px; border-top:1px solid var(--border); color:var(--text-dim); font-size:.76rem; font-family:"IBM Plex Mono",monospace;}
+
+  @media print{
+    .controls{display:none;}
+    body{background:#fff; color:#000;}
+    .card,.slot{box-shadow:none; break-inside:avoid;}
+    .group.collapsed .cards{display:grid !important;}
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="id-block">
+      <div class="eyebrow">Bearer Ledger · System Rank S</div>
+      <h1>Alexander Pendragon</h1>
+      <div class="sub">Every held item — worn, banked, or in custody — grouped by how it's used. Search or filter by category and Rank; the counts update live.</div>
+    </div>
+    <div class="stat-strip">
+      <div><span class="n" id="statPieces">0</span><span class="l">Pieces held</span></div>
+      <div><span class="n" id="statTotal">0</span><span class="l">Distinct holdings</span></div>
+      <div><span class="n">9</span><span class="l">Worn</span></div>
+      <div><span class="n" id="statCustody">0</span><span class="l">In custody</span></div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <input id="search" type="text" placeholder="Search items, effects, Ranks…" autocomplete="off">
+    <button class="chip" data-rank="all" aria-pressed="true">All Ranks</button>
+    <button class="chip" data-rank="S">S</button>
+    <button class="chip" data-rank="A">A</button>
+    <button class="chip" data-rank="B">B</button>
+    <button class="chip" data-rank="C">C</button>
+    <button class="chip" data-rank="D">D</button>
+    <button class="chip" data-rank="E">E</button>
+    <button id="printBtn" type="button">Print / Save as PDF</button>
+  </div>
+
+  <nav class="catnav" id="catnav" aria-label="Jump to category"></nav>
+
+  <section class="loadout" id="loadout" aria-label="Current worn loadout"></section>
+
+  <main id="groups"></main>
+
+  <footer>Gatefall: Pendragon &middot; Canonical Record REC-000076 &middot; as of EVT-001063, 2026-09-21</footer>
+</div>
+
+<script>
+// ---- Data -------------------------------------------------------------
+const EQUIPPED = [
+  {slot:"Main Hand", name:"Finished Dagger", rank:"S", stats:"Agility +22 · power 22 · ×1.85 chassis · DMG 5,513", desc:"All-Agility Quickknife chassis, fused with a consumed Reacharm's Projection Echo (crit, +1 step holding distance). Held, not owned — Section 19 exposure risk."},
+  {slot:"Off Hand", name:"Quickknife, Boss-Imprinted (Predator/Edge)", rank:"S", stats:"Agility +23 · power 22 · ×1.85 chassis · DMG 5,513", desc:"Edge Echo once per scene."},
+  {slot:"Head", name:"Titan Coif", rank:"S", stats:"Strength +10 · reduction 23%", desc:"Plain, bought 108,000g."},
+  {slot:"Torso", name:"Arcanist Torso", rank:"S", stats:"Intelligence +10 · reduction 23%", desc:"Impact Echo/scene, forged from a consumed Watcher Torso + 2 S-Rank cores."},
+  {slot:"Hands", name:"Arcanist Gauntlets", rank:"S", stats:"Intelligence +10 · reduction 23%", desc:"Edge Echo/scene, forged from consumed Gale Hunter's Gauntlets."},
+  {slot:"Legs", name:"Titan Legs", rank:"S", stats:"Strength +10 · reduction 23%", desc:"Plain, bought 108,000g."},
+  {slot:"Feet", name:"Gale Feet, Boss-Imprinted (Carapaced/Guard)", rank:"S", stats:"Agility +11 · reduction 23%", desc:"Guard Echo/scene. Overgrown Temple boss drop."},
+  {slot:"Accessory 1", name:"Heartward Sigil, Boss-Imprinted (Arcane/Affliction)", rank:"S", stats:"Vitality +12 · Intelligence +1", desc:"Affliction Echo, unused. Equipped free."},
+  {slot:"Accessory 2", name:"Warlord's Loop", rank:"A", stats:"Strength +16 · −60% dmg taken/exchange", desc:"Forged from a consumed Warded Vambrace pair + 1 A-Rank core."},
+];
+const TOTAL_REDUCTION = "≈72.93% total physical reduction across worn pieces (multiplicative).";
+
+// category: Weapon | Armor | Accessory | Consumable | Key | Special | Tool | Material | Custody
+const ITEMS = [
+// ---- Weapons (banked) ----
+{cat:"Weapon", name:"Greatarm [A-Rank]", rank:"A", stats:"Str +12 / Vit +4 · power 16 · ×1.0, two-handed", desc:"Pilsen Gate boss drop. Off-build — costs Twin Fang and the off-hand.", tag:"banked"},
+{cat:"Weapon", name:"Greatarm [A-Rank] (second)", rank:"A", stats:"Str +12 / Vit +4 · power 16 · ×1.0, two-handed", desc:"Boss drop. Off-build, unequipped.", tag:"banked"},
+{cat:"Weapon", name:"Greatarm [S-Rank]", rank:"S", stats:"Str +17 / Vit +5 · power 22 · ×1.0, two-handed", desc:"Shattered City boss drop. Off-build.", tag:"banked"},
+{cat:"Weapon", name:"Channeling Focus [D-Rank]", rank:"D", stats:"Intelligence +4 (+1 Agility) · Edge Echo/scene", desc:"Lakefront Gate Corridor boss drop, main-hand chassis. Doesn't fit the dagger/Mana Bolt build.", tag:"banked"},
+{cat:"Weapon", name:"Channeling Focus [S-Rank], Boss-Imprinted (Serpentine/Control)", rank:"S", stats:"Intelligence +23 · power 22 · Control Echo", desc:"Flooded Mine boss drop. Off-build — displaces the dagger.", tag:"banked"},
+{cat:"Weapon", name:"Longsword [B-Rank]", rank:"B", stats:"Strength +11 · power 11 · ×0.85", desc:"Crypt boss drop, Excellent condition, unbound.", tag:"banked"},
+{cat:"Weapon", name:"Longsword [S-Rank], Boss-Imprinted (Carapaced/Guard)", rank:"S", stats:"Strength +23 · power 22 · ×0.85 · Guard Echo", desc:"Overgrown Temple boss drop. Off-build, no Dagger Mastery behind it.", tag:"banked"},
+{cat:"Weapon", name:"Longsword [S-Rank], Boss-Imprinted (Brute/Impact)", rank:"S", stats:"Strength +23 · power 22 · ×0.85 · Impact Echo", desc:"Eight-dungeon batch boss drop. Second distinct Longsword.", tag:"banked"},
+{cat:"Weapon", name:"Longsword [S-Rank], plain", rank:"S", stats:"Strength +22 · power 22 · ×0.85", desc:"Hive instant-dungeon boss drop, no effect. Off-build.", tag:"banked"},
+{cat:"Weapon", name:"Longsword [S-Rank] (fourth)", rank:"S", stats:"power 22 · ×0.85", desc:"Boss drop, off-build duplicate.", tag:"banked"},
+{cat:"Weapon", name:"Reacharm [B-Rank] × 2", rank:"B", stats:"Perception +7 / Strength +4 · power 11", desc:"Polearm, two-handed. Beast Den + Houston Gate boss drops, quantity-collapsed. Off-build.", tag:"banked"},
+{cat:"Weapon", name:"Reacharm [S-Rank] (third)", rank:"S", stats:"Perception +13 / Strength +9 · power 22 · ×0.85", desc:"Polearm, two-handed. Red Gate bonus loot roll. Off-build.", tag:"banked"},
+{cat:"Weapon", name:"Quickknife [C-Rank]", rank:"C", stats:"Agility +7 · power 7 · ×0.75", desc:"First bought Quickknife, main hand until the S-Rank dagger took the slot.", tag:"banked"},
+{cat:"Weapon", name:"Quickknife [C-Rank], Boss-Imprinted (Serpentine)", rank:"C", stats:"Agility +8 · power 7 · ×0.75 · Control Echo/scene", desc:"Player-choice drop; fusion-eligible with the other banked Quickknives.", tag:"banked"},
+{cat:"Weapon", name:"Quickknife [B-Rank]", rank:"B", stats:"Agility +11 · power 11 · ×0.75", desc:"Daily Random Box drop, Excellent, unbound.", tag:"banked"},
+{cat:"Weapon", name:"Quickknife [A-Rank]", rank:"A", stats:"Agility +7 · power 7 · ×0.75", desc:"Ashworth's A-Rank Gate boss drop. Off-build.", tag:"banked"},
+{cat:"Weapon", name:"Quickknife [S-Rank] (Red Gate)", rank:"S", stats:"Agility +22 · power 22 · ×0.75", desc:"Red Gate boss drop, Rank-bumped from assessed A. Second S-Rank Quickknife held.", tag:"banked"},
+{cat:"Weapon", name:"Ghost Quickknife [B-Rank]", rank:"B", stats:"Agility +13 · power 11", desc:"Premium, +1 step on the first attack made unseen. Retired for the A-Rank model.", tag:"banked"},
+{cat:"Weapon", name:"Ghost Quickknife [A-Rank]", rank:"A", stats:"Agility +18 · power 16", desc:"Unseen-opener perk. Retired from off-hand.", tag:"banked"},
+// ---- Weapon held by another party ----
+{cat:"Weapon", name:"Quickknife [S-Rank]", rank:"S", stats:"—", desc:"Plain dagger, 2 more days of artificer research. Held by Corwin Ashvale, Boston (OBJ-47, due 2026-08-31).", tag:"custody"},
+
+// ---- Armor (banked) ----
+{cat:"Armor", name:"Adaptive Gale Torso [A-Rank]", rank:"A", stats:"Agility +9 · reduction 20%", desc:"Daily Premium Cobalt purchase, 30,000g.", tag:"banked"},
+{cat:"Armor", name:"Arcanist Feet [C-Rank] (retired)", rank:"C", stats:"Intelligence +3 · reduction 8%", desc:"Displaced by the bought [A-Rank] pair.", tag:"banked"},
+{cat:"Armor", name:"Bastion Torso [E-Rank]", rank:"E", stats:"Vitality +2 · reduction 3%", desc:"Carapaced Imprint (+1 Vit), Guard Echo. Fusion-donor candidate.", tag:"banked"},
+{cat:"Armor", name:"Bastion Torso [E-Rank] (second, Boss-Imprinted)", rank:"E", stats:"—", desc:"Boss drop duplicate.", tag:"banked"},
+{cat:"Armor", name:"Arcanist Coif [C-Rank], Boss-Imprinted", rank:"C", stats:"Intelligence +3 (+1 Agility) · reduction 8%", desc:"Edge Echo once/scene on a close attack vs. an injured target. Segmented finish.", tag:"banked"},
+{cat:"Armor", name:"Arcanist Boots [S-Rank]", rank:"S", stats:"Intelligence +10 · reduction 23%", desc:"Daily Random Box drop, Excellent, unbound.", tag:"banked"},
+{cat:"Armor", name:"Adaptive Titan Coif [B-Rank]", rank:"B", stats:"Strength +7 · reduction 15%", desc:"Retired in favor of the S-Rank head slot.", tag:"banked"},
+{cat:"Armor", name:"Adaptive Titan Legs [B-Rank]", rank:"B", stats:"Strength +7 · reduction 15%", desc:"Retired in favor of the S-Rank legs slot.", tag:"banked"},
+{cat:"Armor", name:"Arcanist Feet [A-Rank]", rank:"A", stats:"Intelligence +7 · reduction 17%", desc:"Retired spare.", tag:"banked"},
+{cat:"Armor", name:"Watcher Gauntlets [S-Rank]", rank:"S", stats:"Perception +10 · reduction 23%", desc:"Five-dungeon batch boss drop. Unequipped — hands slot already filled.", tag:"banked"},
+{cat:"Armor", name:"Titan Coif [A-Rank], Boss-Imprinted (Brute/Impact)", rank:"A", stats:"Strength +7 · reduction 20% · Impact Echo/scene", desc:"Off-build — head slot already holds the S-Rank Titan Coif.", tag:"banked"},
+{cat:"Armor", name:"Arcanist Torso [S-Rank] (second)", rank:"S", stats:"—", desc:"Duplicate boss drop.", tag:"banked"},
+{cat:"Armor", name:"Guard Shield [S-Rank]", rank:"S", stats:"—", desc:"Off-build boss drop shield.", tag:"banked"},
+
+// ---- Accessories (banked) ----
+{cat:"Accessory", name:"Hunter's Band [E-Rank] (opened)", rank:"E", stats:"Strength +1", desc:"Catalogue disposable practice stock; its working was opened and closed intact, mechanically unchanged.", tag:"banked"},
+{cat:"Accessory", name:"Hunter's Band [E-Rank] (untouched)", rank:"E", stats:"Strength +1", desc:"Held back as a clean spare.", tag:"banked"},
+{cat:"Accessory", name:"Ascendant Warlord's Loop [A-Rank]", rank:"A", stats:"Strength +16", desc:"Overgrown Temple boss drop, top band. Undecided — both slots hold stat-less Vambraces.", tag:"banked"},
+{cat:"Accessory", name:"Ascendant Hunter's Band [D-Rank]", rank:"D", stats:"Strength +5", desc:"Worn until retired for the second Warded Vambrace.", tag:"banked"},
+{cat:"Accessory", name:"Ascendant Mindspun Loop [C-Rank]", rank:"C", stats:"Intelligence +4", desc:"Daily Random Box drop. Competes with the Warlord's Loop for a slot.", tag:"banked"},
+{cat:"Accessory", name:"Seer's Lens [D-Rank], fused", rank:"D", stats:"Perception +2", desc:"Carries a fused Mobility Echo as a second (inert) instance. Condition Good.", tag:"banked"},
+{cat:"Accessory", name:"Hunter's Band [S-Rank], Boss-Imprinted", rank:"S", stats:"Strength +12 · Affliction Echo", desc:"Displaced from accessory slot 1 when the Heartward Sigil was equipped free.", tag:"banked"},
+{cat:"Accessory", name:"Quickstep Charm [S-Rank]", rank:"S", stats:"Agility +12", desc:"Displaced from accessory slot 2 by the Warlord's Loop.", tag:"banked"},
+{cat:"Accessory", name:"Mindspun Loop [S-Rank]", rank:"S", stats:"—", desc:"Boss drop, unassigned stats.", tag:"banked"},
+
+// ---- Tools & instruments ----
+{cat:"Tool", name:"Mana-null Disc", rank:"E", stats:"one-time use", desc:"Blinds passive mana-signature scanning through the surface it's pressed to. Its one window is spent; reusability unestablished.", tag:"banked"},
+{cat:"Tool", name:"Mana-storage Cell", rank:"—", stats:"Capacity 750 (ceiling reached)", desc:"Unbound passive Mana battery, 1:1 transfer. Homebrew, seamwork-raised to its Flux Sight-confirmed ceiling.", tag:"banked"},
+{cat:"Tool", name:"Mana Reservoir [C-Rank]", rank:"C", stats:"Capacity 125, charged 125/125", desc:"Small dense stone, unbound passive Mana battery — usable by anyone, not just Alexander.", tag:"banked"},
+{cat:"Tool", name:"Gate Direction Finder [E-Rank]", rank:"E", stats:"—", desc:"Points toward the strongest nearby active Gate signature. No distance, identity, or Rank reading.", tag:"banked"},
+{cat:"Tool", name:"Suppression Emitter [E-Rank]", rank:"E", stats:"20 min continuous / 1 min recharge per 5 idle", desc:"Blinds instrument-based anomaly/Gate-signature detection in a 3 m radius. Stripped decommissioned hardware — illegal to hold.", tag:"banked"},
+{cat:"Tool", name:"Unlicensed Lockpick Set [B-Rank]", rank:"B", stats:"Effective up to B-Rank", desc:"Awakened-made; reads a lock's mechanism and reshapes to fit. Detects ordinary traps, no combat use.", tag:"banked"},
+{cat:"Tool", name:"Directional Listening Rig", rank:"—", stats:"—", desc:"Mundane, no awakened function. Picks a conversation out of ambient noise at range with a clean line on the source. Untested.", tag:"banked"},
+{cat:"Tool", name:"Keyed Document Wallet [C-Rank]", rank:"C", stats:"—", desc:"Empty inside; hidden lining seam carries a maker's stamp tentatively linked to Marnie's own hand.", tag:"banked"},
+{cat:"Tool", name:"Unmarked Motion-sensor Rig [D-Rank]", rank:"D", stats:"—", desc:"Battery-powered, logs detected movement to a remote destination rather than displaying locally. Where the log goes is unread.", tag:"banked"},
+
+// ---- Keys ----
+{cat:"Key", name:"Instant-Dungeon Key [B-Rank] (second)", rank:"B", stats:"—", desc:"Newark Gate boss drop, free off a solo body. Unused."},
+{cat:"Key", name:"Instant-Dungeon Key [C-Rank]", rank:"C", stats:"—", desc:"Second C-Rank instance's boss drop, free off a body. Unused."},
+{cat:"Key", name:"Instant-Dungeon Key [B-Rank]", rank:"B", stats:"—", desc:"Beast Den boss drop, off a body that cost 45,000g to meet. Unused."},
+{cat:"Key", name:"Instant-Dungeon Key [E-Rank] (second)", rank:"E", stats:"—", desc:"Overgrown Temple shrine bonus roll. Unused."},
+{cat:"Key", name:"Instant-Dungeon Key [A-Rank]", rank:"A", stats:"—", desc:"Ashworth's confirmed A-Rank Gate's Overgrown Temple shrine bonus. Unused."},
+
+// ---- Consumables ----
+{cat:"Consumable", name:"Lesser Healing Potion × 20", rank:"—", stats:"restores Health", desc:"Standard banked stock."},
+{cat:"Consumable", name:"Lesser Mana Potion × 8", rank:"—", stats:"restores Mana", desc:"Standard banked stock."},
+{cat:"Consumable", name:"Standard Mana Potion × 9", rank:"—", stats:"restores Mana", desc:"From potion caches; one drunk in play."},
+{cat:"Consumable", name:"Standard Healing Potion × 4", rank:"—", stats:"restores Health", desc:"Banked, unused."},
+{cat:"Consumable", name:"Greater Healing Potion × 33", rank:"—", stats:"full Health restore", desc:"Steady accrual from Daily Random Boxes."},
+{cat:"Consumable", name:"Greater Mana Potion × 37", rank:"—", stats:"full Mana restore", desc:"The standing on-call full-reset potion; drawn on whenever a far-door or long step needs paying for."},
+{cat:"Consumable", name:"Mana Potion × 5", rank:"—", stats:"restores Mana", desc:"Bonus loot, EVT-001001 — merged with the 2 from the same drop's mixed cache."},
+{cat:"Consumable", name:"Healing Potion × 1", rank:"—", stats:"restores Health", desc:"Bonus loot, EVT-001001, same mixed cache as the Mana Potions above."},
+{cat:"Consumable", name:"Antidote × 2", rank:"—", stats:"—", desc:"Banked, unwithdrawn."},
+{cat:"Consumable", name:"Mender's Seal", rank:"—", stats:"clears one Minor injury or a Moderate to Minor", desc:"No Health restore. Daily Premium purchase, 1,200g."},
+{cat:"Consumable", name:"Stabilization Seal × 4", rank:"—", stats:"suspends a Critical injury's death risk 24h", desc:"No Health, no severity change. Daily Premium purchase."},
+{cat:"Consumable", name:"Restoration Draught × 1", rank:"—", stats:"full Health + Mana in one action", desc:"Clears no injury severity. Daily Premium, Prismatic series, 900g. Works in anyone's hand once withdrawn."},
+{cat:"Consumable", name:"Elixir of a Stat × 3", rank:"—", stats:"+1 to a chosen base Stat", desc:"Banked, stat choice deferred. Resale 2,500g each."},
+
+// ---- Special: runes, books, evidence, anomalies ----
+{cat:"Special", name:"Mend × 3", rank:"S", stats:"teaches Mend", desc:"Rune [C], Rune [E], Book [A] — one holding merged by skill. NPC-eligible/inert; Mend already known S-Rank. Rune [C] resale 10,000g.", qty:3},
+{cat:"Special", name:"Keen Sense × 3", rank:"S", stats:"teaches Keen Sense", desc:"Rune [D], Rune [A] (Runic Key extra), Book [S] — merged by skill. All duplicates; Keen Sense already S-Rank Master. Rune [D] resale 2,250g.", qty:3},
+{cat:"Special", name:"Mana Bolt × 2", rank:"S", stats:"teaches Mana Bolt", desc:"Book [D], Book [S] (a fourteenth such duplicate) — merged by skill. Mana Bolt already S-Rank Master.", qty:2},
+{cat:"Special", name:"Sprint × 2", rank:"S", stats:"teaches Sprint", desc:"Rune [S] × 2 — boss drops. Duplicate; Sprint already S-Rank Expert.", qty:2},
+{cat:"Special", name:"Silent Step × 6", rank:"S", stats:"teaches Silent Step", desc:"Book [S], Rune [E], Rune [S] × 3, Book [B] (a fifteenth such duplicate) — merged by skill. Silent Step already S-Rank Expert.", qty:6},
+{cat:"Special", name:"Rupture", rank:"A", stats:"teaches Rupture", desc:"Book [A], boss drop. Duplicate, banked."},
+{cat:"Special", name:"Flash Step × 2", rank:"S", stats:"teaches Flash Step", desc:"Book [A], Rune [S] — merged by skill. Flash Step already S-Rank Adept.", qty:2},
+{cat:"Special", name:"Stone Skin × 3", rank:"S", stats:"teaches Stone Skin", desc:"Rune/Book [S] × 2, Rune [S] (Winnetka lakefront Gate, giftable) — merged by skill. Stone Skin already known S-Rank.", qty:3},
+{cat:"Special", name:"Dagger Mastery", rank:"S", stats:"teaches Dagger Mastery", desc:"Rune [S], boss drop, NPC-giftable. Duplicate (already S-Rank Adept)."},
+{cat:"Special", name:"[NEEDS ROLL] Skill Rune × 5, taught skill not yet recorded", rank:"S", stats:"owed: roll 5×d10 next session", desc:"Boss drops, EVT-001001 (ten self-opened S-Rank instant dungeons), unconsumed. Rank is S, fixed by the source, not a guess. Flux Sight (S-Rank, on-sight) already tells Alexander what each teaches — the ledger just never rolled/wrote the specific results down. Remainder after the Flash Step and Stone Skin runes from the same span were rolled and folded into their skill lines.", qty:5},
+{cat:"Special", name:"Dormant Core, origin unclassified [S-Rank]", rank:"S", stats:"—", desc:"Not a natural Gate-drop core — a made housing holding at least two fused mana signatures. Function, activation, maker unknown. Highest-Rank object held."},
+{cat:"Special", name:"Frost-fused Carapace Plating [B-Rank]", rank:"B", stats:"—", desc:"Deliberately worked/tooled, not natural. Function still unresolved."},
+{cat:"Special", name:"Worked Bracer [B-Rank], unbound, unidentified maker", rank:"B", stats:"Agility +9", desc:"No combat multiplier line. Ceiling A-Rank — a second, never-activated passive is built in but unread. Confirmed a second controlled artificer's mark."},
+{cat:"Special", name:"The Assay's Local Archive", rank:"—", stats:"—", desc:"Taken whole from the Assay channel; entrusted to Tolo's library for joint study. No licensed-market path — evidence and leverage, not loot."},
+{cat:"Special", name:"Half-finished Leather Piece", rank:"—", stats:"substantial headroom, incomplete", desc:"An incomplete A-Rank armour piece, stopped partway — could still be finished by a good enough hand. Carried as evidence."},
+{cat:"Special", name:"Alpha-strain Sinew [B-Rank] × 2 lots", rank:"B", stats:"—", desc:"Cabled tissue cut from the Beast Den's boss and its alpha. Same species/strain at different ages."},
+{cat:"Special", name:"Drowned Mana Nodule [B-Rank]", rank:"B", stats:"—", desc:"Natural mana concentration formed in still water. Fully catalogued — a control specimen beside the frost-fused plating and the heartwood."},
+{cat:"Special", name:"Bone-lattice Plating [B-Rank]", rank:"B", stats:"—", desc:"Armour-grade, structurally sound, cut from a Crypt boss. Fully catalogued."},
+{cat:"Special", name:"Crumpled Work Order", rank:"—", stats:"—", desc:"Handwritten, references 'the consultation' moved to an unnamed street. No address number — an unresolved lead."},
+{cat:"Special", name:"Torn Visitor-badge Fragment", rank:"—", stats:"—", desc:"Printed 'CONSULT — TEMP,' no logo or name. An unresolved lead."},
+{cat:"Special", name:"Wallet — Peter Kwiatkowski", rank:"—", stats:"—", desc:"BGM ID, a residential address, cash, receipts, an expired Coalition card. Only the satchel went back to him — the wallet is still held."},
+{cat:"Special", name:"CONSULT Pieces × 5", rank:"A/B/C", stats:"earrings [A], pendant [A], bracer [B], blade [B], ring [C]", desc:"Ironclad unit; one shared teacher confirmed. Evidence, unequipped."},
+{cat:"Special", name:"Unclassified Warm Object (ENT-000220)", rank:"—", stats:"—", desc:"Flux Sight and ownership-transfer auto-identify both return nothing. Filed UNCLASSIFIED — SPECIAL."},
+{cat:"Special", name:"Eleven Correlation Logbooks (ENT-000221)", rank:"—", stats:"—", desc:"Unread beyond the top volume's open page."},
+{cat:"Special", name:"Hand-instrument (unresolved)", rank:"—", stats:"—", desc:"Anomaly/Gate-signature reader of unresolved function and provenance."},
+
+// ---- Materials ----
+{cat:"Material", name:"Mana Crystal [S-Rank] × 313", rank:"S", stats:"~$400,000 ea. est.", desc:"Winnetka lakefront Gate haul, earmarked for the federal lot closing 2026-09-24."},
+{cat:"Material", name:"Beast Core [S-Rank] × 207", rank:"S", stats:"shop refuses cores", desc:"5 newest earmarked for the federal lot; artificer stock."},
+{cat:"Material", name:"Beast Core [A-Rank] × 13", rank:"A", stats:"shop refuses cores", desc:"Artificer stock, banked."},
+{cat:"Material", name:"Beast Core [B-Rank] × 13", rank:"B", stats:"shop refuses cores", desc:"Artificer stock, banked."},
+{cat:"Material", name:"Beast Core [D-Rank] × 34", rank:"D", stats:"shop refuses cores", desc:"Artificer stock, banked."},
+{cat:"Material", name:"Beast Core [C-Rank] × 38", rank:"C", stats:"shop refuses cores", desc:"Artificer stock — not gold, forging material."},
+{cat:"Material", name:"Loose Tool Components / Raw Salvage", rank:"—", stats:"—", desc:"Hides, cured leather offcuts, unworked beast-part components. Unfinished stock."},
+];
+
+// ---- Custody (held by others, not on-person) ----
+CUSTODY_EXTRA = [
+  {cat:"Custody", name:"Mana Crystal [C-Rank] × 3", rank:"C", stats:"—", desc:"Held by Priscilla Nakamura — project stock since the identification working began.", tag:"custody"},
+  {cat:"Custody", name:"Heartwood Core-mass", rank:"—", stats:"$500/day storage fee", desc:"Held by Corwin Ashvale, Boston. His read: 'alive, on a slow timescale.'", tag:"custody"},
+];
+ITEMS.push(...CUSTODY_EXTRA);
+
+const GROUP_ORDER = ["Weapon","Armor","Accessory","Consumable","Key","Special","Tool","Material"];
+const GROUP_LABEL = {Weapon:"Weapons",Armor:"Armor",Accessory:"Accessories",Consumable:"Consumables",Key:"Instant-Dungeon Keys",Special:"Runes, Books & Evidence",Tool:"Tools & Instruments",Material:"Materials & Stock"};
+
+// ---- Render -------------------------------------------------------------
+const loadoutEl = document.getElementById("loadout");
+loadoutEl.innerHTML = EQUIPPED.map(i => `
+  <div class="slot">
+    <div class="slotname">${i.slot}</div>
+    <div class="itemname">${i.name} <span class="rank" style="--rk:var(--rank-${i.rank.toLowerCase()})">${i.rank}</span></div>
+    <div class="stats">${i.stats}</div>
+    <div class="desc">${i.desc}</div>
+  </div>`).join("") + `<div class="slot" style="border-style:dashed;"><div class="slotname">Total reduction</div><div class="itemname">${TOTAL_REDUCTION}</div></div>`;
+
+const groupsEl = document.getElementById("groups");
+function rankOf(r){ const m = (r||"").match(/[SABCDE]/); return m ? m[0] : null; }
+
+// Piece count per holding: an explicit item.qty wins; otherwise read the
+// "× N" the name already carries (e.g. "Reacharm [B-Rank] × 2"); one held
+// piece per entry as the floor for anything the ledger never gave a count.
+function qtyOf(i){
+  if (typeof i.qty === "number") return i.qty;
+  const m = i.name.match(/[×xX]\s*(\d+)/);
+  return m ? parseInt(m[1], 10) : 1;
+}
+
+function render(filterText, filterRank){
+  const q = filterText.trim().toLowerCase();
+  groupsEl.innerHTML = "";
+  let shown = 0;
+  GROUP_ORDER.forEach(cat => {
+    const items = ITEMS.filter(i => i.cat === cat).filter(i => {
+      if (filterRank !== "all" && rankOf(i.rank) !== filterRank) return false;
+      if (!q) return true;
+      return (i.name + " " + i.desc + " " + i.stats + " " + i.rank).toLowerCase().includes(q);
+    });
+    if (!items.length) return;
+    shown += items.length;
+    const piecesInGroup = items.reduce((sum, i) => sum + qtyOf(i), 0);
+    const sec = document.createElement("section");
+    sec.className = "group";
+    sec.id = `group-${cat}`;
+    sec.innerHTML = `
+      <div class="grouphead">
+        <span class="chev">▾</span>
+        <h2>${GROUP_LABEL[cat]}</h2>
+        <span class="count">${items.length} holding${items.length===1?"":"s"}${piecesInGroup!==items.length ? ` · ${piecesInGroup} pcs` : ""}</span>
+        <span class="line"></span>
+      </div>
+      <div class="cards">
+        ${items.map(i => { const qty = qtyOf(i); return `
+          <div class="card">
+            <div class="head">
+              <div class="name">${i.name}</div>
+              <div style="display:flex; gap:6px; flex:none;">
+                ${qty > 1 ? `<span class="qty">×${qty}</span>` : ""}
+                ${i.rank && i.rank !== "—" ? `<span class="rank" style="--rk:var(--rank-${(rankOf(i.rank)||'d').toLowerCase()})">${i.rank}</span>` : ""}
+              </div>
+            </div>
+            ${i.stats && i.stats !== "—" ? `<div class="stats">${i.stats}</div>` : ""}
+            <div class="desc">${i.desc}</div>
+            ${i.tag ? `<span class="tag">${i.tag}</span>` : ""}
+          </div>`; }).join("")}
+      </div>`;
+    sec.querySelector(".grouphead").addEventListener("click", () => sec.classList.toggle("collapsed"));
+    groupsEl.appendChild(sec);
+  });
+  if (!shown){
+    groupsEl.innerHTML = `<div class="empty">No items match that search.</div>`;
+  }
+  const custodyPieces = ITEMS.filter(i => i.tag === "custody").reduce((s,i) => s + qtyOf(i), 0);
+  const bankedPieces = ITEMS.filter(i => i.tag !== "custody").reduce((s,i) => s + qtyOf(i), 0);
+  document.getElementById("statTotal").textContent = EQUIPPED.length + ITEMS.length;
+  document.getElementById("statPieces").textContent = EQUIPPED.length + bankedPieces + custodyPieces;
+  document.getElementById("statCustody").textContent = custodyPieces;
+}
+
+let currentRank = "all";
+render("", currentRank);
+
+// Category nav: one chip per section (plus Loadout), each showing its
+// current holding count and jumping straight to that section — clearing
+// any active search/Rank filter first so the target is guaranteed visible.
+const catnavEl = document.getElementById("catnav");
+function buildCatnav(){
+  const loadoutChip = `<button type="button" data-jump="loadout"><span class="dot" style="background:var(--amber)"></span>Loadout<span class="n">${EQUIPPED.length}</span></button>`;
+  const groupChips = GROUP_ORDER.map(cat => {
+    const count = ITEMS.filter(i => i.cat === cat).length;
+    if (!count) return "";
+    return `<button type="button" data-jump="group-${cat}"><span class="dot"></span>${GROUP_LABEL[cat]}<span class="n">${count}</span></button>`;
+  }).join("");
+  catnavEl.innerHTML = loadoutChip + groupChips;
+  catnavEl.querySelectorAll("button[data-jump]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.dataset.jump;
+      if (targetId !== "loadout") {
+        document.getElementById("search").value = "";
+        document.querySelectorAll(".chip[data-rank]").forEach(c => c.setAttribute("aria-pressed", c.dataset.rank === "all"));
+        currentRank = "all";
+        render("", currentRank);
+      }
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      target.classList.remove("collapsed");
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+buildCatnav();
+
+document.getElementById("search").addEventListener("input", e => render(e.target.value, currentRank));
+document.querySelectorAll(".chip[data-rank]").forEach(chip => {
+  chip.addEventListener("click", () => {
+    document.querySelectorAll(".chip[data-rank]").forEach(c => c.setAttribute("aria-pressed","false"));
+    chip.setAttribute("aria-pressed","true");
+    currentRank = chip.dataset.rank;
+    render(document.getElementById("search").value, currentRank);
+  });
+});
+document.getElementById("printBtn").addEventListener("click", () => window.print());
+</script>

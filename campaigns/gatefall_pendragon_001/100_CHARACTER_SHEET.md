@@ -480,7 +480,7 @@ canonical_state:
     intelligence: 8
   system_state:
     bearer: true
-    profile_version: "1.117"
+    profile_version: "1.118"
     profile_loner_scope_event: EVT-000672
     profile_party_minimum_event: EVT-000460
     profile_unified_render_event: EVT-000443
@@ -1029,6 +1029,7 @@ canonical_state:
       - "Tally [S-Rank] Novice · Passive · knows exactly how many of anything he has ever counted — exchanges, wounds, and worlds. Taught, Orenne. Uses 1 (`EVT-001058`, a practice count run during training)."
       - "**Corrections (player-caught), full detail in `160_CAMPAIGN_CHRONICLE.md`/`180_CURRENT_STATE.md`:** `EVT-001058` — no new far-side techniques granted; reclassified as practice (Diagram Sense/Read the Learner/Read the Want/Closing Word Novice->Apprentice; Tally +1). `EVT-001061` — a language-barrier premise voided, inconsistent with convention; its rolls carry no weight."
     skill_rulings:
+      instructional_item_naming_evt_001063: "**STANDING RULING (2026-09-18, player instruction).** Every instructional item — Rune or Book alike (Section 11.3 keeps them a real mechanical distinction: a Rune teaches at the Gate's E/D-Rank floor, a Book teaches at the dropping Gate's own Rank) — is recorded in `inventory.special` as ONE merged holding per taught SKILL NAME going forward, not one line per Rune/Book type. A new Rune or Book drop for a skill already held here is folded into that skill's existing line (bump its `× N` count, append the new instance's type/Rank/Event to the parenthetical list) rather than appended as a new line. A drop for a skill with no existing line opens one new line, named for the skill. **Supersedes the default one-holding-per-drop habit** that produced the Checkpoint 0159/0160 cleanup (seventeen Rune/Book lines merged to nine skill lines, `EVT-001063`). Does not touch Section 15.3.2's one-kind-per-holding rule for ordinary stacked goods (potions, crystals, cores) — this ruling is scoped to instructional items alone, where the 'kind' that matters to the player is the skill taught, not the Rune/Book vessel."
       qualifying_scene_distinctness_evt_000571: "**CLOSED at `EVT-000574` (owner ruling): the Section 7.4 test runs FORWARD ONLY.** Qualifying scenes count per SCENE, not per approach - a separate scene with real stakes qualifies on its face, and *the three scenes must be materially distinct* is **not** read to require a different method or tool (`EVT-000571`). Section 7.4's other limits still bind: one continuous danger, work task or practice session contributes at most once (Section 7.1 test 5); a failed use credits nothing; a trivial test adds a use and no scene. Checkpoint 0099's credits stand and the roughly two further scenes per skill the new reading would have paid are **not** awarded. **Still owed to the world**: this amends the test campaign-wide and belongs in the profile. Full history in `160_CAMPAIGN_CHRONICLE.md`."
       support_role_kill_xp_contribution_evt_000264: "**STANDING RULING (2026-08-11, player instruction, `EVT-000264`).** Active patrol-and-intel support from Alexander counts as live contribution toward his own Kill XP under Rules Section 3.3's 'live-die actions materially contributed' clause, even without a separate rolled setup action per engagement — so long as he is genuinely engaged (watching, ready to call a warning) rather than idle. Supersedes the default reading that only a separately-rolled setup or control action counts. Governs all future support-only encounters the same way, not just this one."
       keen_sense_evt_000212: "Promotion-barrier correction at EVT-000214: the legendary D-Rank Keen Sense result validly established both items' operating intent and method, but not either item's Rank, origin, or full appraisal. Those details remain unconfirmed; reliable item Rank/full appraisal requires Flux Sight at B-Rank (Profile Sections 4.4 and 7.3). This ruling supersedes the earlier overbroad phrase in the historical skills_known trace without changing the successful use, qualifying-scene credit, purchase, or observed functions."
@@ -1896,28 +1897,25 @@ canonical_state:
         - "**Greater Healing Potion x33** — was 30 (checkpoint 0146); **+3 this turn** (49th daily's Daily Random Box, 🎲 27 potion cache, 🎲 d4 1). Restores Health to full. Full history: `160_CAMPAIGN_CHRONICLE.md`."
         - "**Elixir of a stat x3** — was 2; **+1 this span**, a Frozen Gallery boss drop (`EVT-000855`). Banked, stat choice deferred. Resale 2,500 g each."
         - "**Greater Mana Potion x37** — was 38; **-1 consumed `EVT-001062`**, drunk at the Denver facility (off-world rule inapplicable on Earth, full restore) to afford closing the far door a second time after the Assay-archive circuit. Prior: 42 -> 40 (`EVT-001008`, `EVT-001011`), 40->39 (`EVT-001038`), 39->38 (`EVT-001058`). Restores Mana to full · banked. Full history: `160_CAMPAIGN_CHRONICLE.md`."
-        - "**Mana Potion x3** — bonus loot, `EVT-001001`."
-        - "**Healing Potion x1, Mana Potion x2** — bonus loot, `EVT-001001`."
+        - "**Mana Potion x5** — bonus loot, `EVT-001001` (3 from one cache, +2 from a second mixed cache the same drop; the two lines this collapses violated Section 15.3.2's one-kind-per-holding rule)."
+        - "**Healing Potion x1** — bonus loot, `EVT-001001`, split from the mixed-kind line above onto its own holding."
       special:
         # Skill runes/books — Section 15.3.2's worked example classes instructional items
         # as SPECIAL, not Keys or Gear. All `unbound-awakened` unless noted.
-        - "**Skill Rune — Mend [C-Rank]** — boss drop. NPC-eligible, inert. Resale 10,000 g."
-        - "**Skill Rune — Keen Sense [D-Rank]** — boss drop. NPC-eligible, inert. Resale 2,250 g; unsold."
-        - "**Skill Book — Mana Bolt [D-Rank]** — boss drop. NPC-eligible, inert. Unsold."
-        - "**Skill Rune — Sprint [S-Rank] × 2** — boss drops (`EVT-000731`, `EVT-000906`). Duplicate — Sprint already S-Rank Expert. Banked intact."
-        - "**Skill Book — Silent Step [S-Rank]** — boss drop (`EVT-000731`). Duplicate — Silent Step already S-Rank Expert. Banked intact."
-        - "**Skill Book — Rupture [A-Rank]** — boss drop. Duplicate, banked."
-        - "**Skill Rune — Keen Sense [A-Rank]** — Runic Key extra. Duplicate, banked."
-        - "**Skill Book — Mend [A-Rank]** — boss drop, `OBJ-62` (🎲 93, 🎲 d10 3). Duplicate — Mend already A-Rank. Banked intact."
-        - "**Skill Rune — Mend [E-Rank]** — boss drop `EVT-000714`. Inert, unsold."
-        - "**Skill Book — Flash Step [A-Rank]** — boss drop `EVT-000714`. Inert, unsold."
-        - "**Skill Rune — Silent Step [E-Rank]** — boss drop `EVT-000716`. Inert, unsold."
-        - "**Skill Rune/Book — Stone Skin [S-Rank] × 2** — boss drop `EVT-000744`; 50th daily's box. Duplicates, banked."
-        - "**Skill Book — Keen Sense [S-Rank]** — boss drop. Duplicate, banked."
-        - "**Skill Rune — Silent Step [S-Rank] × 3** — boss drops. Duplicates, banked."
-        - "**Skill Rune — Dagger Mastery [S-Rank]** — boss drop, `EVT-000855`. NPC-giftable. Duplicate (already S-Rank Adept). Banked intact."
-        - "**Skill Book — Mana Bolt [S-Rank]** — Daily Random Box drop (`EVT-000806`). Duplicate — Mana Bolt already S-Rank Master. Banked intact, a fourteenth such duplicate."
-        - "**Skill Book — Silent Step [B-Rank]** — boss drop (`EVT-000802`). Duplicate. Banked intact, a fifteenth such duplicate."
+        # Merged one holding per SKILL NAME rather than one per Rune/Book type, per the
+        # standing ruling at `skill_rulings.instructional_item_naming_evt_001063` — a
+        # future Rune/Book drop for a skill already listed here folds into that skill's
+        # line instead of adding a new one. Section 11.3 still makes Rune vs. Book, and
+        # each instance's own Rank, a real mechanical fact, so both stay in the parenthetical.
+        - "**Mend, instructional duplicates × 3** — Rune [C-Rank] (resale 10,000 g), Rune [E-Rank] (`EVT-000714`), Book [A-Rank] (`OBJ-62`, 🎲 93/d10 3). All NPC-eligible/inert to him — Mend already known at S-Rank. Banked intact."
+        - "**Keen Sense, instructional duplicates × 3** — Rune [D-Rank] (resale 2,250 g, unsold), Rune [A-Rank] (Runic Key extra), Book [S-Rank] (boss drop). All duplicates — Keen Sense already S-Rank Master. Banked."
+        - "**Mana Bolt, instructional duplicates × 2** — Book [D-Rank] (boss drop, unsold), Book [S-Rank] (Daily Random Box, `EVT-000806`, a fourteenth such duplicate). Duplicates — Mana Bolt already S-Rank Master. Banked intact."
+        - "**Sprint — Rune [S-Rank] × 2** — boss drops (`EVT-000731`, `EVT-000906`). Duplicate — Sprint already S-Rank Expert. Banked intact."
+        - "**Silent Step, instructional duplicates × 6** — Book [S-Rank] (`EVT-000731`), Rune [E-Rank] (`EVT-000716`, unsold), Rune [S-Rank] × 3, Book [B-Rank] (`EVT-000802`, a fifteenth such duplicate). All duplicates — Silent Step already S-Rank Expert. Banked intact."
+        - "**Rupture — Book [A-Rank]** — boss drop. Duplicate, banked."
+        - "**Flash Step, instructional duplicates × 2** — Book [A-Rank] (`EVT-000714`, unsold), Rune [S-Rank] (`EVT-001036`). Duplicates — Flash Step already S-Rank Adept. Banked."
+        - "**Stone Skin, instructional duplicates × 3** — Rune/Book [S-Rank] × 2 (`EVT-000744`, 50th daily's box), Rune [S-Rank] (`EVT-001050`, 🎲 61/d8 4, giftable). All duplicates — Stone Skin already known at S-Rank. Banked."
+        - "**Dagger Mastery — Rune [S-Rank]** — boss drop, `EVT-000855`. NPC-giftable. Duplicate (already S-Rank Adept). Banked intact."
         - "**The Assay's local archive** — taken whole `EVT-000983`; **entrusted to Tolo's library, `EVT-000989`**. Account: `OBJ-65`."
         - "**Dormant Core [S-Rank]** — returned by Nakamura this span (`EVT-000812`), no next-step finding. Back in the dimensional inventory, unbound, highest-Rank object held."
         - "**Frost-fused carapace plating [B-Rank]** — returned by Nakamura this span (`EVT-000812`). Corwin Ashvale examined but did not fuse it; new finding: **'deliberately worked/tooled,' not natural.** Function still unresolved."
@@ -1935,10 +1933,7 @@ canonical_state:
         - "**Worked bracer [B-Rank] (unbound, unidentified maker)** — found inside the satchel above, wrapped in oilcloth. **Agility +9** — no combat multiplier or reduction line. **Ceiling A-Rank per Flux Sight/The Unmeasured**: a second property is built into the metalwork but never activated — a latent passive, dormant until the piece is carried to its A-Rank ceiling; nobody's finished it, so what it actually does is unread. Maker's mark stamped inside, confirmed **not Marnie's hand** — a second controlled artificer, physical proof rather than inference."
         - "**Wallet — Peter Kwiatkowski** — taken `EVT-000700`. BGM ID (licensed D-Rank, no combat rating), a residential address near the northwest side, cash, receipts, an expired Coalition card. Nothing pointing at CONSULT or at who 'D' is."
         - "**Backfilled: five CONSULT pieces** — earrings [A] (Marnie's mark), pendant [A], bracer [B], blade [B], ring [C, nested working] — Ironclad unit (`EVT-000710`); missed from checkpoint 0121, corrected here. Nakamura read pendant/blade/ring (`EVT-000713`): one shared teacher. Evidence, unequipped."
-        - "**Skill Rune × 4, duplicates** — boss drops, `EVT-001001`."
-        - "**Skill Rune — Flash Step [S-Rank]** — boss drop, `EVT-001036`. Duplicate, banked."
-        - "**Skill Rune — Stone Skin [S-Rank]** — boss drop, `EVT-001050` (🎲 61, d8 4). Duplicate, giftable, banked."
-        - "**Skill Book, unopened** — boss drop, `EVT-001001`."
+        - "**[NEEDS ROLL] Skill Rune × 5 [S-Rank], taught skill not yet recorded** — boss drops, `EVT-001001`, unconsumed. `EVT-001001` was ten self-opened **S-Rank** instant dungeons, so all five carry S-Rank per Section 11.3 (a rune teaches at its source's own Rank) — the Rank is fixed, not a guess. Flux Sight [S-Rank] reads on sight, so Alexander already knows what each teaches; the ledger simply never rolled/wrote down which five specific d10 results these were. **Owed: roll five d10s on the Section 11.3 table next session** and fold each into its matching skill's duplicate line (or open a new one). (The Flash Step [S-Rank] and Stone Skin [S-Rank] runes drawn from this same span were rolled and are already folded into the Flash Step and Stone Skin duplicate lines above; these five are the unrolled remainder.)"
         # The Ironline trial roster report LEFT this inventory at `EVT-000583`,
         # withdrawn in a grain yard and handed to Wade Bishop to put in front of
         # whoever really sits above Region V. Three pages, letterhead, eight filed

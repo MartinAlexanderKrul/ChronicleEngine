@@ -26,7 +26,7 @@ subjects: []
 
 ## Bindings and Versions
 
-- **World:** Gatefall - **Profile 1.117**. **Owed: Profile 1.118** carrying three owner rulings from a prior span (Sprint 850 km/h; The Count +10%/exchange; Flux Sight reads a Gate's true Rank from outside). Unchanged this span. **Also owed:** the new rune market-pricing ruling from this span (defensive/offensive rune value against a Gate two Ranks higher, `EVT-001076`).
+- **World:** Gatefall - **Profile 1.118**. **Owed: Profile 1.119** carrying three owner rulings from a prior span (Sprint 850 km/h; The Count +10%/exchange; Flux Sight reads a Gate's true Rank from outside), still unchanged this span, plus the new rune market-pricing ruling from this span (defensive/offensive rune value against a Gate two Ranks higher, `EVT-001076`). Renumbered from 1.118 to 1.119: `migrations/1.117_to_1.118.md` claimed 1.118 first for the unrelated Rune/Skill Book unification.
 - **Engine Rules:** 0.3.0 - **Data Model:** 0.1.7
 - **Campaign time:** **2026-09-23 (Wednesday), 20:00 local (Chicago clock)**, the Winnetka house. Health full; Mana resting/climbing, approximate 3,780/6,380. The 2026-09-23 06:00 tick ran (`EVT-001071`); next 2026-09-24 06:00, still ahead — the week's first tick, so Sections 9.1.4/9.1.6/9.1.7 all owed.
 - **Latest restorable checkpoint:** `saves/900_CHECKPOINT_0161/` — Two Cards That Lied, and One That Didn't.
@@ -74,6 +74,7 @@ subjects: []
 - **`OBJ-61`, `OBJ-57`, `OBJ-55`, `OBJ-52`, `OBJ-47`, `OBJ-48`, `OBJ-56`** and the rest of the standing list — unchanged; see `170_CHANGELOG.md`.
 - **STANDFAST'S PROVISIONAL BRANCHES** — now three (forced-redirect, voluntary-discharge, and this span's narrowed-margin fix), all owed a real ruling against Profile Section 13.6.
 - **THE STANDING WORLD REACTIONS.** Unchanged this span.
+- **FIVE UNROLLED S-RANK RUNES (`EVT-001001`).** Five Skill Rune [S-Rank] boss drops from the ten-instant-dungeon span never got their d10 rolled — see `100_CHARACTER_SHEET.md`'s `inventory.special`. Roll five d10s on Profile Section 11.3 next session and fold each into its skill's line.
 
 ---
 

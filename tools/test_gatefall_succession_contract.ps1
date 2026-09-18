@@ -43,19 +43,22 @@ $section = if ($sectionMatch.Success) { $sectionMatch.Value } else { '' }
 # Every remaining leg reads the SECTION, not the 4,000-line profile, so a
 # stray match elsewhere cannot stand in for the rule being present here.
 
-# --- Section 7.1's closed list actually contains this route (1.111) -----------
+# --- Section 7.1's closed list actually contains this route (1.111, renumbered 1.118) ---
 # Through 1.110 Section 7.1 declared five routes "and only these" while Section
 # 7.6 called itself "the third acquisition route in this profile". Both could
-# not be true. This leg is scoped to 7.1 so a stray "six" elsewhere is no proof.
+# not be true. This leg is scoped to 7.1 so a stray count elsewhere is no proof.
+# 1.118 merged the former Rune and Skill Book routes into one, so the list runs
+# five deep now (was six through 1.117) and Succession is the fifth route (was
+# sixth) -- see migrations/1.117_to_1.118.md.
 
 $acquisitionMatch = [regex]::Match($profile, '(?s)^## 7\.1 .*?(?=^## |^# )', 'Multiline')
 Assert-True $acquisitionMatch.Success "Section 7.1 could not be delimited for scoped checks."
 $acquisition = if ($acquisitionMatch.Success) { $acquisitionMatch.Value } else { '' }
 
-Assert-True ($acquisition -match '(?i)one of six routes') `
-    "Section 7.1's closed route list does not declare six routes."
-Assert-True ($acquisition -match '(?m)^6\. \*\*Succession\.\*\*') `
-    "Section 7.1's list does not name Succession as the sixth route."
+Assert-True ($acquisition -match '(?i)one of five routes') `
+    "Section 7.1's closed route list does not declare five routes."
+Assert-True ($acquisition -match '(?m)^5\. \*\*Succession\.\*\*') `
+    "Section 7.1's list does not name Succession as the fifth route."
 Assert-True ($acquisition -match '7\.6') `
     "Section 7.1's Succession route does not point at the section authoring it."
 

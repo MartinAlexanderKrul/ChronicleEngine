@@ -265,15 +265,18 @@ if (Test-Path $farSidePath) {
         "The far-side file does not connect its inhabitants to Section 7.1's taught route. 'Warn, teach, arm, or hijack' stays a sentence about intent unless this file names the Standing as the route's only possible teachers."
 }
 
-# --- Section 7.1 route 5: the only acquisition route needing a second person ---
-# Four routes were solitary and the fifth was never authored, so a Bearer whose
+# --- Section 7.1 route 4: the only acquisition route needing a second person ---
+# Three routes were solitary and the fourth was never authored, so a Bearer whose
 # tables are exhausted had nowhere left to learn from. Properties, not prose.
+# 1.118 merged the Rune and Skill Book routes into one, so the list runs five
+# deep now (was six through 1.117) and Taught is route 4 (was 5) -- see
+# migrations/1.117_to_1.118.md.
 
 $s71 = Get-Section $profile '(?m)^## 7\.1 Acquisition\b.*?(?=^## 7\.2 )'
 Assert-True ($s71.Length -gt 0) "Section 7.1 could not be isolated; every taught-route leg below would pass vacuously."
 if ($s71.Length -gt 0) {
-    Assert-True ($s71 -match '(?i)one of six routes, and only these') `
-        "Section 7.1 does not declare six acquisition routes. The closed-list wording is what makes a new route an authoring decision rather than a Runtime improvisation. Profile 1.111 added Succession as route 6; through 1.110 this list said five while Section 7.6 authored a route it did not contain."
+    Assert-True ($s71 -match '(?i)one of five routes, and only these') `
+        "Section 7.1 does not declare five acquisition routes. The closed-list wording is what makes a new route an authoring decision rather than a Runtime improvisation. Profile 1.118 merged Rune and Skill Book into route 1, leaving Succession as route 5; through 1.117 this list said six."
     Assert-True ($s71 -match '(?i)only route requiring a second person') `
         "Section 7.1 does not distinguish the taught route by needing another person, which is the whole of what separates it from a rune."
     Assert-True ($s71 -match '(?i)Only a holder of a System may teach') `

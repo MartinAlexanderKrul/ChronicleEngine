@@ -13,13 +13,31 @@ canonical_record: REC-000080
 schema_version: "0.1.7"
 status: active
 provenance:
-  source: EVT-001077
+  source: EVT-001078
   game_date: "2026-09-23T20:00:00-05:00"
-  real_date: "2026-09-17"
+  real_date: "2026-09-18"
 role: canonical ledger
 scope: campaign
 subjects: []
 ```
+
+---
+
+## Post-session (`EVT-001078`) — Consolidation: Eleven More Techniques, and a Dormancy Ruling
+
+**No fictional time, no played scene.** A ledger audit found thirty-four skills showing no Mana cost. **Fourteen were a display loss only** — the values were already on this sheet (Weight of Precedent 15, Stone Skin 4, Twin Fang, and eleven Passives) and had been dropped from a compact view. **One was authored in play and never carried back**: Reviewer's Voice, Passive, one grader unable to refuse a command (`EVT-000974`). **Nineteen were a real gap** — Section 7.6.2 authored R-7's six and the champions' kits as names only, and Section 7.4's *Rank never changes a skill's Mana cost* leaves nothing to derive from.
+
+**Eleven constituents struck under Section 7.7.** Three new entries: **Case File Authority** (Case Override + Pattern Audit + Standing Ledger + Cross-File Recall, Passive, four modes), **Squad Net** (Squad Link + Alarm Pulse, Passive), **Champion's Chassis** (Champion's Endurance + Rapid Response, Passive). Three folds into existing merges: **Crushing Grip** becomes Binding Grip's fourth mode at Mana 22; **Predator's Instinct** becomes Field Sense's third read; **Warding Skin** becomes Iron Frame's second mode. Every constituent stays reachable as a named mode, every `taken_from` is preserved, `transmissible: false` holds, mastery is the highest constituent's throughout (Master), and all eleven were Uses 0.
+
+**Two offense merges were proposed and refused.** Concussive Force (Ground Slam + Shockwave) and Killing Edge (Razor Edge + Bone Crusher) failed Section 7.7's own eligibility bar — *two actives with genuinely different ranges, costs, or tactical roles are not eligible merely for sharing a category* — on the player's reading, before application.
+
+**Eight authored on the owner's ruling.** Section 7.6.2 sends a missing mechanic to the owner; asked, the owner ruled to author all eight. Focused Bolt **Mana 4** (anchored to Mana Bolt, also Master), Emergency Seal **30** (Seamseal / Quiet House / Closed Quietly, all 30), Ground Slam **18** and Shockwave **18** (Focused Bolt's ×1.35, and Rupture's 10 across Bounding Seal's 35:20 area premium), Razor Edge **4** and Bone Crusher **4** (Twin Fang's Master row), Phase Step **3** (Rift-step's close band), Relentless Pursuit **Passive**. No value was picked from feel — every one names the authored skill it reads from. None of the eight had ever been used, so nothing played is disturbed.
+
+**Twin Fang corrected, Mana 5 → 4.** Section 7.4 authors its ladder as 6 / 5 / 5 / 4 / 4 and it sits at Master; the profile governs and the sheet was stale.
+
+**No XP, level, Mana, Health, gold, or cash moved.** Known techniques **122 → 114**.
+
+**Repository allocation.** `EVT-001078`; nothing minted. New high-water mark: **EVT-001078**. Updated live targets: `100`, `160`, `170`, `system/ID_REGISTRY.md`.
 
 ---
 

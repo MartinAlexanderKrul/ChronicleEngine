@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000285 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001077 |
+| Event | `EVT-` | Event | EVT-001078 |
 | Relationship | `REL-` | Relationship | REL-000121 |
 
 ---
@@ -1067,6 +1067,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 | EVT-001063 | Event | Gatefall: Pendragon: Delia Okonjo engaged for a fast guild-HQ purchase and a twenty-city office-lease rollout; home to Winnetka; the tunnel-network plan and a real guild role discussed with Kane; relationship terms restated. No new ENT/REL identifiers |
 | EVT-001064 | Event | Gatefall: Pendragon: promotion-barrier settlement for `EVT-001060`-`EVT-001063` at the player's `/save` (checkpoint 0160). `ENT-000285`/`REL-000121` confirmed minted |
 | EVT-001065 - EVT-001077 | Event | Gatefall: Pendragon: two-day recruitment-tour span (checkpoint 0161) -- two 06:00 ticks, three directed-assignment Gate clears (West Loop, Pilsen, Gary), the Chicago/DC/Prague/Frankfurt recruitment stops, the Denver HQ purchase, a full far-side training circuit, Walt Adamik business, and the promotion-barrier settlement at `EVT-001077`. No entity or relationship identifiers consumed this span |
+| EVT-001078 | Event | Gatefall: Pendragon: post-session Consolidation ruling -- eleven Succession constituents struck into three new entries (Case File Authority, Squad Net, Champion's Chassis) and three existing merges (Binding Grip, Field Sense, Iron Frame); eight standalone techniques ruled dormant until first use per Section 7.6.2; Twin Fang cost corrected 5 -> 4. No ENT/REL identifiers consumed |
 | EVT-000953 | Event | Gatefall: Pendragon: `OBJ-64` (second A-Rank Chicago directed assignment) cleared with Elias Kane at the south-side site — Frozen Gallery archetype, 10 commons/2 elites/1 boss, Kane's own kills, XP credited to Alexander under Section 3.8's Kingmaker precedent. Loot: 221 A-Rank crystals + 3 cores sold through Renata ($11,425,000 net incl. flat/severity — see 160 for exact split), Titan Coif [A-Rank] Boss-Imprinted banked. XP +8,700, 1,042/18,600 -> 9,742/18,600. Cash $387,933,490.22 -> $402,358,490.22. No new ENT/REL identifiers |
 | EVT-000955 | Event | Gatefall: Pendragon: at Kane's apartment, `OBJ-64` offered to him and declined as a handout; reframed as leverage for Renata to open a direct BGM National line for Kane specifically. Kane accepted on the spot, terms expected next day. `OBJ-64` separately accepted by text, Kane joining unofficially. No new ENT/REL identifiers |
 | EVT-000952 | Event | Gatefall: Pendragon: Standfast retrained and reshaped at the Winnetka house — a repeat redirect attempt failed the same structural way, a legendary Flux Sight read (The Unmeasured active) confirmed the failure was categorical under Profile Section 13.6's general signature-fixity rule, and Alexander's Overpower, aimed directly at Kane's own live field (400 Mana, real risk of breaking it outright), reshaped it successfully — Standfast now redirects, natively Kane's own. First known exception to Section 13.6. `ENT-000242`'s `signature_ability` updated in place. No new ENT/REL identifiers |

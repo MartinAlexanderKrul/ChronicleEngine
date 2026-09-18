@@ -39765,3 +39765,44 @@ description: "**Promotion barrier for `EVT-001065`-`EVT-001076`, at the player's
 
   **A durable campaign ruling adopted this span, not merely narrated**: unbound-awakened rune market pricing (`EVT-001076`) — 1x/1.5x a two-Ranks-higher Gate's combined crystal/core haul, defensive/offensive — supersedes any prior ad hoc rune valuation and governs going forward."
 ```
+
+## EVT-001078 - Consolidation: Eleven More Techniques, and a Dormancy Ruling
+
+```yaml
+id: EVT-001078
+canonical_record: REC-000079
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: session-gameplay
+  game_date: "2026-09-23T20:00:00-05:00"
+  real_date: "2026-09-18"
+type: Event
+kind: ruling
+importance: major
+game_date: "2026-09-23T20:00:00-05:00"
+participants:
+  - ENT-000125
+participation_audits:
+  - subject: ENT-000125
+    result: record-updated
+    record: REC-000074
+progression_audits:
+  - subject: ENT-000125
+    domain: gatefall.skill_credit
+    result: none
+  - subject: ENT-000125
+    domain: gatefall.skill_formation
+    result: none
+description: "**Post-session owner ruling, no fictional time.** An audit of the protagonist ledger found thirty-four skills rendering no Mana cost. Fourteen were a summarization loss only -- the values were already authored on this sheet and had been dropped from a compact view -- and one, Reviewer's Voice, was authored in play at `EVT-000974` (Passive; one grader cannot refuse a command) and never carried back. The remaining nineteen were a real gap: Section 7.6.2 authored R-7's six techniques and the champions' kits as **names only**, and Section 7.4's rule that *Rank never changes a skill's Mana cost* means nothing can be derived from Rank. The player ruled Section 7.7 Consolidation for what is eligible, and dormancy for what is not.
+
+  **Eleven constituents struck, into three new entries and three existing ones.** New: **Case File Authority** [S-Rank] Master, Passive, four modes (Case Override / Pattern Audit / Standing Ledger / Cross-File Recall, all `ENT-000274`); **Squad Net** [S-Rank] Master, Passive, two modes (Squad Link / Alarm Pulse, `ENT-000276`); **Champion's Chassis** [A-Rank] Master, Passive, two modes (Champion's Endurance / Rapid Response, `ENT-000275`). Folded into existing merged entries: **Crushing Grip** (`ENT-000277`) becomes Binding Grip's fourth mode at Mana 22, beside Root 16 / Bind 18 / Subdue 20; **Predator's Instinct** (`ENT-000278`) becomes Field Sense's third read; **Warding Skin** (`ENT-000280`) becomes Iron Frame's second mode. Per Section 7.7 every constituent is still reachable as its own named mode, every `taken_from` is preserved in the merged entry, `transmissible: false` holds throughout, mastery is the highest constituent's (Master in every case), and summed `successful_uses` carry: all eleven were Uses 0, so only Binding Grip's own 5 survive in its entry.
+
+  **The offense merges were refused on the player's own reading, and the section agrees.** A proposed Concussive Force (Ground Slam / Shockwave) and Killing Edge (Razor Edge / Bone Crusher) were dropped before application: Section 7.7 holds that *two actives with genuinely different ranges, costs, or tactical roles are not eligible merely for sharing a category*, and a radial shockwave, a ground-transmitted slam, a cutting amplifier and a crushing amplifier are four distinct tactical tools.
+
+  **Eight authored on the owner's ruling, rather than left dormant.** Section 7.6.2 requires the Runtime to stop and ask the owner rather than invent a missing mechanic; asked, the owner ruled to author all eight outright. Every cost is anchored to a skill this profile already prices, and no anchor is silent: **Focused Bolt** [A] Mana 4, anchored to Mana Bolt, the profile's other ranged bolt and also Master — its lower ×1.35 multiplier is what separates them, not its price; keeps its authored damage, `(400 + effective Intelligence) x 1.35` ~= 4,844. **Emergency Seal** [A] Mana 30, anchored to Seamseal, Quiet House and Closed Quietly, every sealing skill on this sheet and all three priced at 30 — seals one bounded space against ordinary passage for the scene, declared openly and leaving a record on the Assay's own file, a stop rather than a concealment. **Ground Slam** [A] Mana 18: the multiplier is Focused Bolt's own authored ×1.35 rather than a new number, and the cost is Rupture's 10 carried across Bounding Seal's authored area-to-single premium (35:20 = 1.75); reaches every target in contact with the struck ground and nothing that is not. **Shockwave** [S] Mana 18, same anchors, radial through air rather than ground, with a −1 modifier step on a struck target's next action — where the profile gave no basis to price the two apart they were left equal rather than separated by an invented difference. **Razor Edge** [S] Mana 4, authored beneath Rupture's own Unmaking clause, which ignores worn physical reduction *entirely* at S-Rank: Razor Edge halves it for one strike, deliberately under the skill he already owns; cost anchored to Twin Fang's Master row. **Bone Crusher** [A] Mana 4, same cost anchor — a strike crossing the injury threshold costs the target −1 modifier step on its next action. **Phase Step** [A] Mana 3, anchored to Rift-step's own authored *close* band — through one intervening solid into a seen space, never a sealed instance boundary, and distinct from Rift-step in crossing matter rather than distance. **Relentless Pursuit** [B] Passive — it answers another creature's action rather than being spent as one; a target he has struck this scene cannot break contact, one matched reposition per exchange free of his own movement. None of the eight has ever been used: each appears exactly once in this chronicle, at the moment it was taken, so no played result is disturbed by authoring them now.
+
+  **One correction carried in the same ruling.** Twin Fang read Mana 5 at Master against Section 7.4's own authored ladder for it, **6 / 5 / 5 / 4 / 4** across Novice through Master. The profile governs and the sheet was stale: corrected to **Mana 4**.
+
+  **No XP, level, Mana, Health, gold, or cash moved** -- a ledger-shape change on the skills list alone, plus one corrected cost. Known techniques **122 -> 114**. Registry allocation: EVT-001078. New high-water mark: EVT-001078."
+```

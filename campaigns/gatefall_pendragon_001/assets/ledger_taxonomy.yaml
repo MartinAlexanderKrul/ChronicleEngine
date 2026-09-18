@@ -1,0 +1,151 @@
+# Ledger taxonomy - Gatefall: Pendragon
+#
+# Function grouping for the derived skill ledger. This is a VIEW concern, not canon:
+# 100_CHARACTER_SHEET.md is the source of every fact below except the grouping itself,
+# which the sheet does not carry and should not. The generator joins the two.
+#
+# A skill in the sheet with no row here is a generator ERROR, not a silent omission --
+# that is what keeps a new skill from falling out of the view unnoticed.
+
+groups:
+  - Offense
+  - Defense
+  - Control
+  - Mobility
+  - Stealth
+  - Detection
+  - Support
+  - Crafting
+
+skills:
+  # Offense (16)
+  "Bone Crusher": Offense
+  "Dagger Mastery": Offense
+  "Dimensional Projection": Offense
+  "Exploit Pattern": Offense
+  "Filed Precedent": Offense
+  "Focused Bolt": Offense
+  "Four Thousand Years' Patience": Offense
+  "Ground Slam": Offense
+  "Mana Bolt": Offense
+  "Pre-empt": Offense
+  "Razor Edge": Offense
+  "Rupture": Offense
+  "Shockwave": Offense
+  "The Count": Offense
+  "Twin Fang": Offense
+  "Weight of Precedent": Offense
+  # Defense (16)
+  "Adequate Stock": Defense
+  "Broken Rhythm": Defense
+  "Bulwark": Defense
+  "Champion's Chassis": Defense
+  "Grip on the Rail": Defense
+  "Iron Frame": Defense
+  "Micro-rift Deflection": Defense
+  "Not There": Defense
+  "Nothing Personal": Defense
+  "Procedural Calm": Defense
+  "Refuse the Opening": Defense
+  "Shrug Off": Defense
+  "Stone Skin": Defense
+  "The Bridge Stance": Defense
+  "The Last Span": Defense
+  "Weight of the Span": Defense
+  # Control (14)
+  "Binding Grip": Control
+  "Bounding Seal": Control
+  "Bridgehold": Control
+  "Closed Quietly": Control
+  "Closing Word": Control
+  "Counterseam": Control
+  "Doorward": Control
+  "Emergency Seal": Control
+  "Field Containment": Control
+  "Held Breath": Control
+  "Overpower": Control
+  "Reviewer's Voice": Control
+  "Seamseal": Control
+  "Stillwater": Control
+  # Mobility (11)
+  "Away": Mobility
+  "Flash Step": Mobility
+  "Fourfold Step": Mobility
+  "Personal Gate": Mobility
+  "Phase Step": Mobility
+  "Relentless Pursuit": Mobility
+  "Rift-step": Mobility
+  "Slip": Mobility
+  "Sprint": Mobility
+  "The Far Door": Mobility
+  "Tunnel Network": Mobility
+  # Stealth (7)
+  "No Discrepancy": Stealth
+  "Quiet House": Stealth
+  "Second Skin": Stealth
+  "Silent Step": Stealth
+  "Unremarked Movement": Stealth
+  "Unwatched": Stealth
+  "What Eleven Years Bought": Stealth
+  # Detection (29)
+  "Appraise": Detection
+  "Arithmetic": Detection
+  "Backread": Detection
+  "Case File Authority": Detection
+  "Cross-Reference": Detection
+  "Diagram Sense": Detection
+  "Every Seam He Has Walked": Detection
+  "Field Sense": Detection
+  "Flux Sight": Detection
+  "Four Seams Away": Detection
+  "Full Assessment": Detection
+  "Grading Touch": Detection
+  "Keen Sense": Detection
+  "Mapwork": Detection
+  "Read the Hand": Detection
+  "Read the Learner": Detection
+  "Read the Want": Detection
+  "Shelf-Mark": Detection
+  "Sightline": Detection
+  "Standing Anchor Sense": Detection
+  "Standing Instructions": Detection
+  "Tally": Detection
+  "The Long Audit": Detection
+  "The Old Instructions": Detection
+  "The Question He Waits On": Detection
+  "The Robbed Library": Detection
+  "Trace": Detection
+  "Uncut Sample": Detection
+  "What Is Left": Detection
+  # Support (13)
+  "Call the Turn": Support
+  "Field Command": Support
+  "Grip and Footing": Support
+  "Handover": Support
+  "Hold Together": Support
+  "Mend": Support
+  "Nobody Falls Alone": Support
+  "Quartermaster": Support
+  "Second Wind": Support
+  "Set the Line": Support
+  "Squad Net": Support
+  "Ten Thousand Repetitions": Support
+  "Where the Weight Goes": Support
+  # Crafting (8)
+  "Conduit": Crafting
+  "Correction": Crafting
+  "File the Report": Crafting
+  "Nothing Is Wasted": Crafting
+  "Patience of the Ledger": Crafting
+  "Resonance Extraction": Crafting
+  "Sample Handling": Crafting
+  "Seamwork": Crafting
+
+  # Class abilities, keyed on the sheet's own spelling.
+  # Canon writes these five in sentence case while every other skill is title case;
+  # the view follows canon rather than correcting it, since canon is the source.
+  "Micro-rift deflection": Defense
+  "Standing anchor sense": Detection
+  "Personal gate": Mobility
+  "The far door": Mobility
+  "Tunnel network": Mobility

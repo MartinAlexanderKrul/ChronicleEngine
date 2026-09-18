@@ -13,9 +13,9 @@ canonical_record: REC-000079
 schema_version: "0.1.7"
 status: active
 provenance:
-  source: EVT-001077
+  source: EVT-001078
   game_date: "2026-09-23T20:00:00-05:00"
-  real_date: "2026-09-17"
+  real_date: "2026-09-18"
 role: canonical ledger
 scope: campaign
 # This save (`EVT-001065`-`EVT-001077`): a two-day recruitment-tour span. Day 1 -- the 09-22
@@ -1282,6 +1282,7 @@ subjects:
   - EVT-001075
   - EVT-001076
   - EVT-001077
+  - EVT-001078
 ```
 
 ---

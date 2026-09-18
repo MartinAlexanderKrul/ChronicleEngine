@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000291 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001088 |
+| Event | `EVT-` | Event | EVT-001096 |
 | Relationship | `REL-` | Relationship | REL-000124 |
 
 ---
@@ -37,6 +37,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 
 | Range | Kind | Consumed by |
 |-------|------|-------------|
+| EVT-001089 – EVT-001096 | Event | Gatefall: Pendragon, the night of 2026-09-24 and the morning of 2026-09-25: the Profile 1.120/1.121 adoption (`001089`); Boston to Sacramento and a forty-fifth anchor (`001090`); Elena Cho met and her signature named (`001091`); the Winnetka arrival, Kane, and the hall held (`001092`); Kane, the plan for tomorrow and the night (`001093`); the 2026-09-25 world tick with the Thursday repair (`001094`); Region V redirected, Tulsa offered, Prague's B referred (`001095`); the promotion-barrier settlement (`001096`) |
 | EVT-001079 – EVT-001088 | Event | Gatefall: Pendragon, day 3 of the recruitment tour and its owner rulings: Standfast's three branches ratified standing (`001079`); the `EVT-001001` remainder's five rune rolls plus the Godslayer XP backfill, +84,000 XP, Level 202->206 (`001079`); five backlogged Daily Random Boxes opened plus 65 unspent points to Intelligence (`001080`); the 2026-09-24 06:00 world tick (`001081`); the 58th daily regimen and its own box (`001082`); New York/Boston recruitment stops, the auction and federal-lot settlements, and the guild's 1,126-member rank breakdown (`001083`); Prague's first guild-dispatched Gate response and its crew's gear (`001084`); the Prague office's secure-room policy (`001085`); the Detroit HQ's security/IT buildout, corrected from an earlier Denver misidentification (`001086`); Elena Cho's contact call, a twelfth US S-Rank (`001087`) |
 | ENT-000286 – ENT-000291 | Entity | Gatefall: Pendragon: Milena Horáková (Prague office coordination, `130_NPCS_AND_FACTIONS.md`), Nathaniel Cole (Detroit HQ security head), Anjali Desai (Detroit HQ front office head), Tomas Prochazka (Prague guild striker), Klara Nováková (Prague guild sensor), Elena Cho (a twelfth known US S-Rank, `worlds/gatefall/220_NOTABLE_FIGURES.md`, world-scope — privately confirmed, not yet publicly known) |
 | REL-000122 – REL-000124 | Relationship | Gatefall: Pendragon: Alexander and Elena Cho (first contact, working-source), Alexander and Tomas Prochazka, Alexander and Klara Nováková (both Prague guild crew, first meeting) |

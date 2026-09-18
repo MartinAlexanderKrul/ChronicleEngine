@@ -26,6 +26,8 @@ provenance:
   real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: world
+# This save: EVT-001079 (Kane ENT-000242, Standfast ratified standing), EVT-001084 (Kane
+#   ENT-000242, resigned BGM/accepted second-in-command), EVT-001087 (Elena Cho ENT-000291, minted).
 subjects:
   - ENT-000107
   - ENT-000108
@@ -50,6 +52,7 @@ subjects:
   - ENT-000240
   - ENT-000241
   - ENT-000242
+  - ENT-000291
   - REL-000052
   - REL-000053
   - REL-000054
@@ -764,7 +767,7 @@ provenance:
 type: Character
 scope: world
 lifecycle: active
-moved_by_events: "`EVT-000854` `EVT-000857` `EVT-001013` `EVT-001014` `EVT-001045` `EVT-001047` `EVT-001048` `EVT-001050` `EVT-001051`"
+moved_by_events: "`EVT-000854` `EVT-000857` `EVT-001013` `EVT-001014` `EVT-001045` `EVT-001047` `EVT-001048` `EVT-001050` `EVT-001051` `EVT-001079` `EVT-001084`"
 aliases:
   - name: "Elias Kane"
     quality: current
@@ -772,12 +775,12 @@ canonical_state:
   portrait: "assets/portraits/Elias_Kane_ENT-000242.png"
   rank: "**S-Rank** — stated in his entry, 'the other Chicago S-Rank.' Resolved by that Rank under Section 13.1."
   age: "**32** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
-  role: "BGM federal asset, Chicago — no guild membership, reports to Washington rather than Region V or any guild chain (`200_WORLD_BIBLE.md`)."
+  role: "**Second in command, the Pendragon Guild, effective 2026-09-24 — resigned from BGM the same day** (campaign, `EVT-001084`). Prior: BGM federal asset, Chicago — no guild membership, reported to Washington rather than Region V or any guild chain (`200_WORLD_BIBLE.md`)."
   location: "Chicago; no fixed established address. Met Alexander at The Sidecut, 2211 W Cermak Road, 2026-09-06."
   pool_variance: "**+5%** — authored in play under Profile Section 6.1.2's ±10% band, read directly by Flux Sight (`campaigns/gatefall_pendragon_001/`, `EVT-000857`)."
   pools: "**Maximum Health 4,200, maximum Mana 2,300** — Section 6.1 table (4,000/2,000) × 1.05, Mana raised past the flat table ceiling by 100 Elixirs of Intelligence (`campaigns/gatefall_pendragon_001/`, `EVT-001013`, +2 Mana/point, the one thing Section 12.5.1 permits a non-Bearer). Read full, uninjured, at the meeting's start (Health 4,200/4,200, Mana 2,100/2,100 as of `EVT-000857`; Mana 2,300/2,300 as of `EVT-001013`)."
   capabilities: "S-Rank combat; signature ability **Standfast** (below)."
-  signature_ability: "Standfast — a chosen-radius zone around him that locally stabilizes and resists change: a collapsing structure stays up, spreading fire stops spreading, people caught inside a break get a window of protection. **Reshaped 2026-09-14** (`campaigns/gatefall_pendragon_001/`, Alexander's Overpower worked directly on the live field, 🎲 94, net −1 unprecedented-application step, effective 74 — clear success): carries a genuine forced-redirect branch, natively his own, no longer purely defensive/containment. **A second provisional branch developed `EVT-001014` (2026-09-16):** a genuine voluntary-discharge exception, aimed and collapsed at will on a consenting target rather than only breaking under an attacker's own force — two of four real attempts landed, each read as roughly A-Rank-devastating force against Alexander's own scale, both trivial to him and both healed by ordinary overnight rest. Kane took up informal ongoing practice toward a one-shot A-Rank-lethal threshold. **Both branches are exceptions to the general Section 13.6 signature-fixity rule** (signatures normally grow only in magnitude with Rank, never in kind) — provisional grants, owed a real profile ruling before either is standing law rather than proven working. Full account: `campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md`."
+  signature_ability: "Standfast — a chosen-radius zone around him that locally stabilizes and resists change: a collapsing structure stays up, spreading fire stops spreading, people caught inside a break get a window of protection. **Reshaped 2026-09-14** (`campaigns/gatefall_pendragon_001/`, Alexander's Overpower worked directly on the live field, 🎲 94, net −1 unprecedented-application step, effective 74 — clear success): carries a genuine forced-redirect branch, natively his own. **A second branch developed `EVT-001014` (2026-09-16):** a genuine voluntary-discharge exception, aimed and collapsed at will on a consenting target rather than only breaking under an attacker's own force. **A third branch, a narrowed-margin structural fix, `EVT-001070` (2026-09-23).** **All three branches ratified as standing, permanent law 2026-09-24** (`EVT-001079`) under a Section 13.6 ruling: a signature may carry any number of earned branches, each gained only through demonstrated in-fiction work (diagnosis, real Mana cost, real risk of failure), with no fixed cap and no compounding risk between branches — no longer provisional grants. Formal general profile text for the ruling is still owed (`campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md`, Owner Questions). Full account: `campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md`."
   appearance: "Mid-thirties, short practical haircut, a few days' stubble. **Authored in full 2026-09-12, first physical scene to actually call for it:** solid rather than lean — a thick, sturdy build carried on a S-Rank body's baseline conditioning, broader through the chest and shoulders than Alexander's cut athleticism, a soft layer over real muscle rather than a gym physique chiseled down to definition. Reads as a man built for absorbing a hit and staying upright, not for looking like it in a mirror. Dresses like he's always slightly on-call — a plain dark jacket, nothing uniform-like but nothing fully off-duty either. Tired eyes worn smooth from years of waiting on a phone that rarely rings; something younger shows through when he's genuinely relaxed."
   personality: "Brief, unceremonious, no small talk on the surface — but genuinely warm and unguarded once actually engaged rather than managed, not merely low-profile by habit."
   knowledge: "Knows Alexander is a confirmed unaffiliated S-Rank. Knows the GB-14 incident and Alexander's own account of it — ten hunters dead, Alexander arrived carrying two survivors — told directly, 2026-09-06. Knows Alexander's teleportation capability including passenger transport, told directly the same evening; reacted with real professional weight about the value and danger of that information, advised discretion, did not push for mechanism detail. **Told directly 2026-09-12** that Alexander has been sitting on a large stockpile of money for some time, that his first personal purchase from it is the Winnetka house (bought the same day, no place else to sleep that night was the actual trigger), and — offered in a joking tone that didn't land as a joke to either of them — that money was previously spent running black-market-adjacent operations: building containment cages for S-Rank-class threats, overpaying artificers for off-book work. No specifics (no names, no locations, no amounts) were given; Kane filed it without alarm rather than pressing for detail, and shared in return that his own government salary has never made his apartment feel like his. **Told/confirmed 2026-09-13** that Alexander is the one who ended the Jiu Valley Exclusion — no method, no numbers, no names given; confirmed by tone and a half-joke rather than a flat statement, but Kane read it correctly and Alexander did not deny it. Kane's own reaction: not alarm, but real recalibration — the first time the scale of what Alexander actually is has landed on him personally rather than as an abstract fact. **Told 2026-09-13 (same morning) that Alexander has a boyfriend — Owen, not named by surname — that they fought seriously the night before (2026-09-12), and that Alexander does not currently see a future in it.** This is the first Kane has heard of Owen's existence at all. No detail beyond that given — no name beyond 'Owen', no specifics of the fight, no channel to Owen himself, the shared apartment, or anything else about that relationship. **Also told, same conversation:** the Jiu Valley kill was 'almost no challenge' for Alexander personally — no method, no numbers, just that scale of casual understatement. Kane's read: darkly amused, genuinely recalibrating Alexander's actual ceiling upward again. No channel to anything about the far side, the Ninth Quiet, the Rockwell bay, or any of Alexander's other private threads — nothing beyond what these three conversations have actually covered. **2026-09-20 (`EVT-001040`, `EVT-001041`):** has seen the finished broadcast cut (the Jiu Valley statement he already knew the fact behind, the guild pitch, the silent instant-dungeon footage — no channel to what the place was, and still none to the 2026-09-15 dungeons or the far-side circuits). Voted yes to air it; knows it targets 2026-09-22 and that Alexander will talk to Sorcha first. Stayed the night at Alexander's ask. **2026-09-21 (`EVT-001045`-`EVT-001051`):** read Mercer's newsletter himself; heard Alexander's side of Tereza's call (moved to today, Europe if need be); was on the balcony during the Sorcha call and has no channel to what was said in it; advised the self-published US release; ran with him, stood at the lakefront Gate, heard the tech read the drone's S, saw him walk out unhurt; watched it air beside him."
@@ -1037,6 +1040,44 @@ canonical_state:
   capabilities: "S-Rank combat; signature unestablished."
   personality: "Unestablished — no scene has reached her."
   knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
+```
+
+---
+
+## Elena Cho — a twelfth S-Rank, unconfirmed publicly
+
+A fresh cold awakening — no prior hunter history at all — confirmed S-Rank eleven days before first contact with Alexander. Not yet part of the "eleven known US S-Ranks" public count (`EVT-000788`): her own testing office is the only institution aware, and she has told no one outside it. Contacted Alexander directly, by phone, out of overwhelmed necessity rather than any established channel.
+
+```yaml
+id: ENT-000291
+canonical_record: REC-000071
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: EVT-001087
+  game_date: "2026-09-24T15:15:00-04:00"
+  real_date: "2026-09-24"
+type: Character
+scope: world
+lifecycle: active
+aliases:
+  - name: "Elena Cho"
+    quality: current
+relationships:
+  - REL-000124
+canonical_state:
+  rank: "**S-Rank** — confirmed eleven days before first contact (roughly 2026-09-13). A cold awakening: no prior hunter history, licence, or Rank of any kind before this."
+  age: "Early twenties — a graduate student at the time of her awakening. Exact age not yet stated."
+  role: "Unaffiliated, unregistered publicly as S-Rank. Was a grad student with zero hunter background before a Gate opened two blocks from her apartment in Sacramento and awakened her directly at S-Rank."
+  location: "Sacramento. Meeting arranged at her own apartment, 2026-09-24 19:00 Pacific (22:00 Central), for privacy — nobody in her life, including her own roommate, knows what happened to her yet."
+  capabilities: "S-Rank, entirely untested and unexplored — no known signature, no known technique, no combat history of any kind. As green as an S-Rank can be."
+  personality: "Careful, visibly rehearsed before the call, relieved once it was actually answered. Direct about her own lack of a reference point rather than pretending otherwise."
+  want: "Guidance, from the only other S-Rank she could find who wasn't already famous before it happened to them."
+  fear: "Not yet established — implicit throughout: being overwhelmed, alone, with no institutional or peer support."
+  secret: "Not yet established."
+  voice: "Careful, a little nervous, honest rather than performative — apologizes for the call being strange, thanks him twice unprompted."
+  agenda: "Arranged an in-person meeting with Alexander, 2026-09-24 19:00 her time, at her own apartment."
+  knowledge: "Knows Alexander is the other unaffiliated, non-celebrity-before-the-fact S-Rank she could find. No further channel to anything about him beyond public information."
 ```
 
 ---

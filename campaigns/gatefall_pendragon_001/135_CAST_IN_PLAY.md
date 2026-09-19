@@ -156,6 +156,29 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000286` | Milena Horáková | guild office staff | active | The Pendragon Guild's Prague office. | — |
 | `ENT-000289` | Tomas Prochazka | guild striker | active | Prague, guild dispatch crew. | `REL-000122` |
 | `ENT-000290` | Klara Nováková | guild sensor | active | Prague, guild dispatch crew. | `REL-000123` |
+| `ENT-000292` | Ottilie 'Doc' Haldane | guild hunter — A-Rank mender | active | Pendragon Guild A-Rank response pool | — |
+| `ENT-000293` | Tobias Keane | guild hunter — A-Rank striker | active | Pendragon Guild A-Rank response pool | — |
+| `ENT-000294` | Anneliese Rourke | guild hunter — A-Rank striker | active | Pendragon Guild A-Rank response pool | — |
+| `ENT-000295` | Kwame Adjei | guild hunter — A-Rank striker | active | Pendragon Guild A-Rank response pool | — |
+| `ENT-000296` | Sofia Delacroix | guild hunter — A-Rank striker | active | Pendragon Guild A-Rank response pool | — |
+| `ENT-000297` | Jun-seo Baek | guild hunter — A-Rank striker | active | Pendragon Guild A-Rank response pool | — |
+| `ENT-000298` | Idris Cavanaugh | guild hunter — A-Rank striker | active | Pendragon Guild A-Rank response pool | — |
+| `ENT-000299` | Priyanka Nair | guild hunter — A-Rank striker | active | Pendragon Guild A-Rank response pool | — |
+| `ENT-000300` | Marek Sobczak | guild hunter — A-Rank striker | active | Pendragon Guild A-Rank response pool | — |
+| `ENT-000301` | Imani Whitaker | guild office staff — day manager | active | The Pendragon Guild Chicago office, front desk. | — |
+| `ENT-000303` | Verity Achebe-Lund | guild office staff — day manager | active | The Pendragon Guild Washington DC office, front desk. | — |
+| `ENT-000304` | Anselm Kowalczyk-Boateng | guild office staff — day manager | active | The Pendragon Guild Frankfurt office, front desk. | — |
+| `ENT-000305` | Ramona Ostrowski | guild office staff — day manager | active | The Pendragon Guild New York office, front desk. | — |
+| `ENT-000306` | Callum Idowu | guild office staff — day manager | active | The Pendragon Guild Boston office, front desk. | — |
+| `ENT-000307` | Cecilia Duarte-Voss | guild office staff — day manager | active | The Pendragon Guild Miami office, front desk. | — |
+| `ENT-000308` | Emeka Saltonstall | guild office staff — day manager | active | The Pendragon Guild Houston office, front desk. | — |
+| `ENT-000309` | Odile Prendergast | guild office staff — day manager | active | The Pendragon Guild Paris office, front desk. | — |
+| `ENT-000310` | Noor Vandermeulen | guild office staff — day manager | active | The Pendragon Guild Amsterdam office, front desk. | — |
+| `ENT-000311` | Hyun-woo Delacroix-Park | guild office staff — day manager | active | The Pendragon Guild Dallas office, front desk. | — |
+| `ENT-000312` | Tomasz Okafor-Lindqvist | guild office staff — day manager | active | The Pendragon Guild Los Angeles office, front desk. | — |
+| `ENT-000313` | Lenka Baranyi | guild office staff — day manager | active | The Pendragon Guild Seattle office, front desk. | — |
+| `ENT-000314` | Bertil Nakamura-Reyes | guild office staff — day manager | active | The Pendragon Guild San Francisco office, front desk. | — |
+| `ENT-000302` | Wendell Osei-Brandt | guild HQ staff — porter | active | The Pendragon Guild HQ campus, Detroit | — |
 
 ---
 
@@ -272,13 +295,36 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000286` | Milena Horáková | To do the job well enough that the placeholder framing resolves in her favor | Not yet established | Not yet established | Composed, professional, states the honest state of things rather than a managed version of it w… |
 | `ENT-000289` | Tomas Prochazka | Not yet established beyond ordinary steady work | Not yet established | Not yet established | Plain, says what he means without dressing it up — first line to Alexander was genuine surprise… |
 | `ENT-000290` | Klara Nováková | Not yet established | Not yet established — Kane's read was that she hadn't been saying anything about her own thin k… | Not yet established | Quiet, direct — checks a new thing is real rather than commenting on it |
+| `ENT-000292` | Ottilie 'Doc' Haldane | To be somewhere her hands are the difference, and to stop being the only one who can do it | Arriving with nothing left in her when the person in front of her still needs a touch | Not yet established | Dry, understated, counts out loud while she works |
+| `ENT-000293` | Tobias Keane | A clear he led, not one he was carried through | Being told he is not ready for the thing he thinks he is ready for | Not yet established | Fast, slightly over-eager, trails off when he realises he is talking too much |
+| `ENT-000294` | Anneliese Rourke | A roster she trusts, so she can stop double-checking everyone else's gear | Losing someone to a gap she could have caught on a walk-round | Not yet established | Flat delivery, jokes told without a smile, swears cheerfully |
+| `ENT-000295` | Kwame Adjei | To be read as the professional he is rather than the size he is | Being the reason a plan he did not argue against went wrong | Not yet established | Low, unhurried, uses fewer words than the sentence needs |
+| `ENT-000296` | Sofia Delacroix | To be taken seriously at an age nobody takes seriously | That the speed she is proud of is the thing that gets her killed | Not yet established | Quick, questioning, ends statements slightly up as if inviting the correction |
+| `ENT-000297` | Jun-seo Baek | A guild that still exists in ten years | Signing on to something built on one man's goodwill | Not yet established | Precise, slightly formal, pauses before answering rather than after |
+| `ENT-000298` | Idris Cavanaugh | Work that pays without a federal desk attached to it | Another guild that promises a floor and then moves it | Not yet established | Even, wry, answers a question with the history behind it |
+| `ENT-000299` | Priyanka Nair | To be given the roster rather than end up holding it by default | Being useful enough to be needed and never enough to be promoted | Not yet established | Warm, talkative, asks people's names twice until she has them |
+| `ENT-000300` | Marek Sobczak | Not yet established beyond doing the job and being left alone about it | Not yet established | Not yet established | Dry, minimal, answers in the fewest words that are still polite |
+| `ENT-000301` | Imani Whitaker | To run an office that never needs the founder to step in | That the office is a courtesy posting and the real work happens elsewhere | Not yet established | Steady, direct, leaves a question in the air rather than pressing it |
+| `ENT-000303` | Verity Achebe-Lund | A guild that survives its first federal audit | Being caught unready in front of the one person she wants to impress | Not yet established | Crisp, formal, finishes other people's sentences with the correct version |
+| `ENT-000304` | Anselm Kowalczyk-Boateng | Not yet established beyond a well-run office | Not yet established | Not yet established | Dry and precise; notes the time out loud when someone arrives |
+| `ENT-000305` | Ramona Ostrowski | The biggest office on the board, and to be the reason it is | That fast reads as careless | Not yet established | Rapid, half-finishes sentences, talks with her hands |
+| `ENT-000306` | Callum Idowu | Not yet established | Not yet established | Not yet established | Level, unhurried, delivers a joke as if it were an item of business |
+| `ENT-000307` | Cecilia Duarte-Voss | Not yet established | Not yet established | Not yet established | Easy laugh, long vowels, asks after the person before the business |
+| `ENT-000308` | Emeka Saltonstall | Not yet established | Not yet established | Not yet established | Big, digressive, circles back to the point and lands it |
+| `ENT-000309` | Odile Prendergast | Not yet established | Not yet established | Not yet established | Clipped, faintly amused, answers before the question is fully asked |
+| `ENT-000310` | Noor Vandermeulen | Not yet established | Not yet established | Not yet established | Short, flat, states the constraint and then the fix |
+| `ENT-000311` | Hyun-woo Delacroix-Park | Not yet established | Not yet established | Not yet established | Careful, leaves silences, never interrupts |
+| `ENT-000312` | Tomasz Okafor-Lindqvist | Not yet established | Not yet established | Not yet established | Hurried, apologetic, one hand over the phone |
+| `ENT-000313` | Lenka Baranyi | Not yet established | Not yet established | Not yet established | Exact, lightly wry, corrects a figure and then softens it |
+| `ENT-000314` | Bertil Nakamura-Reyes | Not yet established | Not yet established | Not yet established | Enthusiastic, over-explains, checks that he has been understood |
+| `ENT-000302` | Wendell Osei-Brandt | Steady, meaningful work again, and to be the person who knows where everyone is meant to be | Being the one weak point in a place whose whole purpose is moving people | Not yet established — the record does not say what he did before this, and he has not volunteer… | Measured, formal, faintly dry; a handshake a fraction too careful |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 133. Protagonist relationships: 45.
-- Characters: 105. Disposition authored in full: 51; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 156. Protagonist relationships: 45.
+- Characters: 128. Disposition authored in full: 74; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

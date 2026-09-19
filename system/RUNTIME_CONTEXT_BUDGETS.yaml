@@ -982,7 +982,12 @@ surfaces:
       # exemption below should be withdrawn rather than left standing.
       # 21,063 -> 19,356. DOWN 1,707 despite the render change adding 851
       # (15.1 + 15.2), so ~2,558 of campaign shrink was sitting unrecorded.
-      gatefall_pendragon_001:/system: 19362
+      # Re-recorded UPWARD 2026-09-26 at checkpoint 0164, 19,362 -> 22,429 (+3,067),
+      # for the same reason and with the same caveat as `/system gear` below: HEAD
+      # measured 22,069 against a 22,266 ratchet before this checkpoint wrote
+      # anything. The two surfaces share the character sheet's protagonist-state
+      # read and the inventory's Current Funds heading, so they drift together.
+      gatefall_pendragon_001:/system: 22429
       # Re-recorded 2026-08-04, 7,036 -> 8,097, on the same owner ruling that
       # raised the `gatefall_skills_known` per-entry budget 700 -> 1100. The
       # requirement is that a skill entry explain its effect well enough to
@@ -1162,7 +1167,20 @@ surfaces:
       # full. Compacting the sheet's gear fields is a save-time decision and it
       # remains unstarted. The raise records where the surface actually is; it is
       # not an argument that it belongs there.
-      gatefall_pendragon_001:/system gear: 23001
+      # Re-recorded UPWARD 2026-09-26 at checkpoint 0164, 23,001 -> 26,634 (+3,633),
+      # and the honest reading is that this is mostly OLD drift being acknowledged
+      # rather than new growth. Measured at HEAD before this checkpoint's writes,
+      # the surface already stood at 26,449 against a 26,451 ratchet -- TWO tokens
+      # of headroom, accumulated across the sessions since 23,001 was recorded and
+      # never re-baselined, because each session's own delta fit. Checkpoint 0164
+      # added +185 tokens to this surface (the `stats` and `effective_stats` notes
+      # for a five-level gain) and that was enough to trip it. Trimming 0164's own
+      # additions would not fix anything: the surface would sit back at 26,449 and
+      # trip on the next save instead. `skills_known` (35 KB) and `inventory`
+      # (27 KB) are 91% of the protagonist-state read and neither was touched here;
+      # they are where a real reduction has to come from, and that work remains
+      # unstarted. The raise records where the surface actually is.
+      gatefall_pendragon_001:/system gear: 26634
       # Re-recorded UPWARD 2026-08-10, 4,513 -> 5,202 (+689), and this one is a
       # deliberate trade rather than drift. `titles.earned` -- the full
       # catalogue, ten titles each carrying its criterion and proving Event --

@@ -117,7 +117,7 @@ skills:
   "Trace": Detection
   "Uncut Sample": Detection
   "What Is Left": Detection
-  # Support (13)
+  # Support (14)
   "Call the Turn": Support
   "Field Command": Support
   "Grip and Footing": Support
@@ -131,6 +131,7 @@ skills:
   "Squad Net": Support
   "Ten Thousand Repetitions": Support
   "Where the Weight Goes": Support
+  "Wrought Hand": Support
   # Crafting (8)
   "Conduit": Crafting
   "Correction": Crafting

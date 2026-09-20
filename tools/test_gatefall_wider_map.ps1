@@ -284,8 +284,13 @@ Assert-True ($s914 -match '9\.1\.6') `
 
 Assert-True ($profile -match '(?m)^### 9\.1\.7 ') `
     "Section 9.1.7 is absent; everything outside the United States has no clock, in a world whose break rate is global and whose catastrophe is Romanian."
-$s917 = Get-Section $profile '(?m)^### 9\.1\.7 .*?(?=^## 9\.2)'
+# Delimited at 9.1.8 as well as 9.2. When 1.123 added Section 9.1.8 between
+# them this span silently grew to cover both -- the identical defect the
+# 9.1.6 block above already records, arriving a second time by the same road.
+$s917 = Get-Section $profile '(?m)^### 9\.1\.7 .*?(?=^### 9\.1\.8|^## 9\.2)'
 Assert-True ($s917 -ne '') "Section 9.1.7 could not be delimited for scoped checks."
+Assert-True ($s917 -notmatch '(?m)^### 9\.1\.8 ') `
+    "Section 9.1.7's span has swallowed Section 9.1.8. Every scoped leg below is now satisfiable by text in the wrong section."
 Assert-True ($s916 -match '9\.1\.7') `
     "Section 9.1.6 does not hand off to Section 9.1.7, so its own United States scope reads as the whole world."
 Assert-True ($s91 -match '9\.1\.7') `
@@ -411,6 +416,104 @@ if ($headerMatch.Success) {
     Assert-True ($index -match "\*\*Active Profile:\*\* $v") `
         "Migration index does not declare the profile header's version active."
 }
+
+# --- Section 9.1.8, Reach (Profile 1.123) -----------------------------------
+#
+# 1.122 gave a guild's branches a throughput and said an A/S in a branch's
+# catchment "surfaces" -- and authored no generator, so the promise had no
+# source. 1.123 supplies it, and replaces both wider-map filters' shared
+# question (does this escalate to BGM National?) with a reach test.
+#
+# The two failures this block exists to catch are opposite, as in 9.1.6's own:
+# a later editor letting reach grow into a worldwide Gate simulation, and a
+# later editor pruning the S-Rank surfacing guarantee back into a budget.
+# Patterns are ASCII, and figure-agnostic wherever the invariant is not a number.
+
+Assert-True ($profile -match '(?m)^### 9\.1\.8 ') `
+    "Section 9.1.8 is absent; an A-Rank or S-Rank Gate can only reach the fiction through Chicago, Prague, or a national escalation."
+$s918 = Get-Section $profile '(?m)^### 9\.1\.8 .*?(?=^## 9\.2)'
+Assert-True ($s918 -ne '') "Section 9.1.8 could not be delimited for scoped checks."
+
+# The tick must dispatch to it, or it is authored and never rolled -- the F-002
+# defect this profile has already met three times.
+Assert-True ($s91 -match 'reach pass runs here') `
+    "Section 9.1's tick never dispatches to Section 9.1.8, so reach is authored and never rolled."
+
+# The reach zones. An anchor buying a PLACE and a branch buying a REGION is the
+# distinction that stops sixty anchors from silently becoming sixty regions.
+Assert-True ($s918 -match '(?i)operational branch') `
+    "Section 9.1.8 does not make an operational branch a reach zone, so 13.7.5's catchments still have no A/S source."
+Assert-True ($s918 -match '(?i)standing anchor') `
+    "Section 9.1.8 does not make a standing anchor a reach zone."
+Assert-True ($s918 -match '(?i)standing agreement') `
+    "Section 9.1.8 does not make a standing agreement a reach zone."
+Assert-True ($s918 -match '(?i)an anchor buys a place and a branch buys a region') `
+    "Section 9.1.8 does not distinguish an anchor's reach from a branch's, so every anchor silently buys a whole jurisdiction."
+
+# S-Rank surfaces without a budget. This is the owner's explicit exception to
+# the A-Rank scene cap and is the single most likely thing to be tuned away.
+Assert-True ($s918 -match '(?i)Every S-Rank Gate inside a reach zone is named and reported') `
+    "Section 9.1.8 does not guarantee that every S-Rank Gate in reach surfaces."
+Assert-True ($s918 -match '(?i)no daily budget') `
+    "Section 9.1.8 has placed a daily budget on S-Rank surfacing, which is the one thing the owner ruled against."
+
+# A-Rank is capped at one scene, or the day becomes a dispatch queue.
+Assert-True ($s918 -match '(?i)At most one A-Rank Gate becomes a scene') `
+    "Section 9.1.8 does not cap A-Rank scenes, so roughly twenty A-Rank Gates a day each demand play."
+
+# The standing posture, and the cost that stops it being a free upgrade.
+Assert-True ($s918 -match '(?i)declare a standing commitment for its A-Rank response pool') `
+    "Section 9.1.8 does not let a guild's A-Rank pool answer on a declared posture."
+Assert-True ($s918 -match '(?i)Strained') `
+    "Section 9.1.8 does not charge the A-Rank posture against Section 13.7.5's duty rate, so answering every A-Rank Gate costs nothing."
+Assert-True ($s918 -match '19 concurrent') `
+    "Section 9.1.8 does not derive the A-Rank pool's capacity from Section 9.4's minimum, so the posture has no ceiling."
+
+# 9.11 is composed with, never replaced.
+Assert-True ($s918 -match '9\.11') `
+    "Section 9.1.8 does not route through Section 9.11, so it has invented a second channel to the Bearer."
+Assert-True ($s918 -match '(?i)Section 9\.11 is unchanged') `
+    "Section 9.1.8 does not state that Section 9.11 is unchanged, so a reader cannot tell whether the directed-assignment bands moved."
+
+# The border rule binds. A foreign S-Rank is an ask, never a draft.
+Assert-True ($s918 -match '(?i)never as a draft') `
+    "Section 9.1.8 lets a foreign S-Rank Gate arrive as a draft, which Section 9.1.7's border rule forbids outright."
+
+# Concurrent calls are triage, and the loss is allowed to land.
+Assert-True ($s918 -match '(?i)triage') `
+    "Section 9.1.8 does not treat concurrent S-Rank calls as a choice, so the Bearer is assumed to answer all of them."
+Assert-True ($s918 -match '(?i)must not be routed around') `
+    "Section 9.1.8 does not protect the outcome where a Gate he could not reach becomes a Scar."
+
+# The finding the version exists for: cover has collapsed under the ramp.
+Assert-True ($s918 -match '3\.6 days') `
+    "Section 9.1.8 does not state the world's tier VII S-Rank cover, which is the measurement this section is built on."
+Assert-True ($s918 -match '(?i)tier III') `
+    "Section 9.1.8 does not record that Section 9.1.7's region table is authored at tier III, so its figures read four times low at the top of the ladder."
+
+# The ledger must be able to write what the pass rolled, INCLUDING nothing.
+$s911 = Get-Section $profile '(?m)^### 9\.1\.1 .*?(?=^### 9\.1\.2 )'
+Assert-True ($s911 -ne '') "Section 9.1.1 could not be delimited for the tick ledger check."
+Assert-True ($s911 -match '(?m)^reach\s+') `
+    "The Section 9.1.1 tick ledger carries no reach line, so the day's A/S counts are unrecorded."
+
+# Inertness. A world or campaign that has built none of this must be untouched.
+Assert-True ($s918 -match '(?i)is unaffected by this section entirely') `
+    "Section 9.1.8 does not state that a campaign with no reach zones is unaffected, so it imposes itself on every world."
+
+# The fences that keep reach from becoming a worldwide Gate simulation.
+Assert-True ($s918 -match '(?i)It creates no Gate') `
+    "Section 9.1.8 does not state that it creates no Gate, so it reads as a second supply."
+Assert-True ($s918 -match '(?i)It authors no city') `
+    "Section 9.1.8 does not preserve Section 9.1.6's promotion bar, so a reach zone quietly becomes a simulated city."
+Assert-True ($s918 -match '(?i)ramp nothing') `
+    "Section 9.1.8 does not keep Section 9.2.2's ramp fed only by tracked districts."
+Assert-True ($s918 -match '(?i)does not make him the world') `
+    "Section 9.1.8 does not state what stays out of reach, so the unreachable majority of the world reads as an oversight rather than a design."
+
+# 9.1.6's own filter must tell its reader it has been narrowed.
+Assert-True ($s916 -match '(?i)Superseded in part') `
+    "Section 9.1.6 does not tell its reader that 1.123 narrowed its filter, so anyone reading it still believes escalation is the only road."
 
 if ($failures -gt 0) {
     Write-Output "Gatefall wider-map contract FAILED ($failures finding(s))"

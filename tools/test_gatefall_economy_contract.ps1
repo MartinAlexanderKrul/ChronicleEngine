@@ -183,6 +183,109 @@ Assert-Contains $character 'Keen Sense \[[EDCBAS]-Rank\] \S+ (Novice|Practiced|A
 Assert-Contains $character 'skills\.rupture\.mastery_level' 'Live character lacks the stored mastery_level counter.'
 Assert-Contains $character 'skills\.rupture\.rank_ascensions' 'Live character lacks the rank_ascensions counter.'
 
+# ---------------------------------------------------------------------------
+# Profile 1.122 -- Section 13.7.5, Standing Branch Operations.
+#
+# Every pattern here is ASCII. These files are BOM-less UTF-8 and Windows
+# PowerShell 5.1 decodes them as ANSI, so a literal em dash never matches and
+# the assertion passes vacuously. Patterns are also die-agnostic and figure-
+# agnostic wherever the invariant is not the number: a leg that fails when its
+# subject is STRENGTHENED teaches its reader to route around it.
+$branchOps = [regex]::Match($profile, '(?s)### 13\.7\.5 .*?(?=\r?\n# 14\. )').Value
+if (-not $branchOps) {
+    $failures.Add('Profile carries no Section 13.7.5, so a guild larger than one bench has no throughput.') | Out-Null
+}
+
+# An office is a scene until it clears a stated bar, and the bar includes a bench
+# the law would let it crew. Without this a lease becomes a dispatch centre.
+Assert-Contains $branchOps 'standing up' 'Section 13.7.5 does not hold an unqualified branch below the operational bar.'
+Assert-Contains $branchOps 'legally crew from' 'Section 13.7.5 does not require a branch to be able to crew what it dispatches.'
+Assert-Contains $branchOps 'Section 9\.4' 'Section 13.7.5 does not read its crewing bar off Section 9.4 minimums.'
+
+# The catchment is CONDITIONAL on the transport network. Strip the condition and
+# every guild in the world silently inherits a region.
+Assert-Contains $branchOps 'without one reads its own metro' 'Section 13.7.5 grants a regional catchment unconditionally, so the transport network buys nothing.'
+
+# E and D carry an every-day floor; C and B deliberately do not. Matched without
+# pinning the dice, so raising the volume does not fail the leg.
+Assert-Contains $branchOps '(?m)^\s*E-Rank\s+\S.*every operational branch, every day' 'Section 13.7.5 does not floor E-Rank dispatch at every branch every day.'
+Assert-Contains $branchOps '(?m)^\s*D-Rank\s+\S.*every operational branch, every day' 'Section 13.7.5 does not floor D-Rank dispatch at every branch every day.'
+Assert-NotContains $branchOps '(?m)^\s*C-Rank\s+\S.*every operational branch, every day' 'Section 13.7.5 floors C-Rank dispatch, which makes the contested middle uncontested.'
+
+# The A/S fence. This is the whole reason the section is safe to run unattended.
+Assert-Contains $branchOps 'resolves an A-Rank or S-Rank Gate' 'Section 13.7.5 does not forbid background resolution of A-Rank and S-Rank Gates.'
+Assert-Contains $branchOps 'surfaces' 'Section 13.7.5 does not surface A-Rank and S-Rank Gates into play.'
+
+# Attrition is answerable before it is fatal, and the ceiling is a stated cap.
+Assert-Contains $branchOps 'It is not a death' 'Section 13.7.5 turns a distress roll straight into a casualty with no call to answer.'
+Assert-Contains $branchOps 'Answered in time, nobody dies' 'Section 13.7.5 does not let an answered distress call save the crew.'
+Assert-Contains $branchOps '150 days' 'Section 13.7.5 lacks its fatality ceiling, so a run of rolls can bury a member a week.'
+Assert-Contains $branchOps 'ceiling does not protect a branch' 'Section 13.7.5 extends its fatality ceiling to a branch that filed a roster it could not staff.'
+
+# Over-committed benches must cost something, or duty rate is decoration.
+Assert-Contains $branchOps 'refuse Gates' 'Section 13.7.5 does not force an overcommitted branch to refuse work.'
+
+# Background volume mints no canon and pays the Bearer nothing. Drop either and
+# the section becomes an XP faucet or an identifier flood.
+Assert-Contains $branchOps 'No `EVT-`, no `ENT-`, no `REC-`' 'Section 13.7.5 does not forbid a background clear from minting identifiers.'
+Assert-Contains $branchOps 'pays the Bearer nothing' 'Section 13.7.5 does not deny the Bearer progression for work he was not present for.'
+
+# The section must actually be reachable from the daily tick, or it is orphaned
+# text that nothing runs. Scoped to step 4, not matched file-wide.
+$tickContest = [regex]::Match($profile, '(?s)4\. \*\*The trade takes the job first.*?(?=\r?\n5\. \*\*Breaks\.)').Value
+if (-not $tickContest) {
+    $failures.Add('Section 9.1 step 4 could not be located, so the guild dispatch wiring cannot be checked.') | Out-Null
+}
+Assert-Contains $tickContest "rolls Section 13\.7\.5's daily dispatch" 'Section 9.1 step 4 does not run Section 13.7.5, so branch operations never execute.'
+Assert-Contains $tickContest 'never resolves an A-Rank or S-Rank Gate' 'Section 9.1 step 4 does not carry the A/S fence into the tick itself.'
+
+# A tick that rolled branch operations must be able to write that it rolled them.
+$tickLedger = [regex]::Match($profile, '(?s)### 9\.1\.1 .*?(?=\r?\n### 9\.1\.2 )').Value
+if (-not $tickLedger) {
+    $failures.Add('Section 9.1.1 could not be located, so the tick ledger cannot be checked.') | Out-Null
+}
+Assert-Contains $tickLedger '(?m)^guild_ops\s+' 'The Section 9.1.1 tick ledger carries no guild_ops line, so branch operations are unrecorded.'
+
+# Section 13.7.3's D-Rank per-clear cell was blank through 1.121. Asserted as a
+# property -- the row carries a price -- not as the literal figure.
+$salariedRosters = [regex]::Match($profile, '(?s)### 13\.7\.3 .*?(?=\r?\n### 13\.7\.4 )').Value
+Assert-Contains $salariedRosters '(?m)^\| D \| \$[\d,]+ \|' 'Section 13.7.3 leaves its D-Rank per-clear pool blank while pricing E, C and B from the same Section 12.3 bands.'
+
+# The superseded-in-part notice lives on the superseded text, not only in the
+# migration record. This is the obligation that gets forgotten.
+Assert-Contains $salariedRosters 'superseded in part' 'Section 13.7.3 worked example does not tell its reader it has been superseded in part.'
+Assert-Contains $salariedRosters 'stands untouched' 'Section 13.7.3 does not distinguish what 1.122 overturned from what still stands.'
+
+Assert-Contains (Get-MigrationRecord '1.121' '1.122') '(?m)^\s+classification: compatibility-treatment' 'The 1.121 to 1.122 migration record does not declare its classification.'
+Assert-Contains (Get-MigrationRecord '1.121' '1.122') 'No branch is promoted by this migration' 'The 1.121 to 1.122 migration record does not state that declaring a branch operational is campaign canon.'
+
+# Profile 1.123 -- Section 13.7.5's A/S clauses, amended.
+#
+# 1.122 said an A/S in a branch's catchment surfaces and "becomes a scene",
+# and authored no generator for one. 1.123 supplies the source (Section 9.1.8)
+# and bounds the promise. These legs guard the amendment in both directions:
+# the fence must survive, and the unbounded scene promise must not come back.
+
+# The section must hand off to its generator, or the promise has no source again.
+Assert-Contains $branchOps 'Which of them becomes a scene is Section 9\.1\.8' 'Section 13.7.5 promises A/S surfacing and names no source for it, which is the gap 1.123 exists to close.'
+
+# The owner's S/A asymmetry. S always surfaces; A is budgeted.
+Assert-Contains $branchOps 'An S-Rank always surfaces and carries no daily budget' 'Section 13.7.5 does not carry the S-Rank surfacing guarantee, so S-Rank Gates can be budgeted away like A-Rank ones.'
+Assert-Contains $branchOps 'At most one A-Rank becomes a scene' 'Section 13.7.5 does not bound A-Rank scenes, so a branch catchment can demand twenty scenes a day.'
+
+# The standing posture replaced a per-Gate commitment. Both the new rule and
+# the notice that it superseded the old one must be present.
+Assert-Contains $branchOps 'standing posture' 'Section 13.7.5 still requires a fresh on-screen commitment per A-Rank Gate, which is unrunnable at a region catchment.'
+Assert-Contains $branchOps 'Through 1\.122 this paragraph required a fresh on-screen commitment' 'Section 13.7.5 does not tell its reader that its A-Rank pool clause was superseded, or what it was superseded from.'
+
+# Regression guard: the amendment must not have loosened the fence itself.
+# A standing posture is a declaration; it is not a roll resolving an A/S Gate.
+Assert-Contains $branchOps 'resolves an A-Rank or S-Rank Gate' 'The 1.123 amendment has removed Section 13.7.5 A/S fence, so a background pass may now clear an A-Rank or S-Rank Gate.'
+
+Assert-Contains (Get-MigrationRecord '1.122' '1.123') '(?m)^\s+classification: compatibility-treatment' 'The 1.122 to 1.123 migration record does not declare its classification.'
+Assert-Contains (Get-MigrationRecord '1.122' '1.123') 'No reach zone is declared by this migration' 'The 1.122 to 1.123 migration record does not state that declaring reach zones and a posture is campaign canon.'
+Assert-Contains (Get-MigrationRecord '1.122' '1.123') '(?i)3\.6 days' 'The 1.122 to 1.123 migration record does not carry the S-Rank cover finding the version exists for.'
+
 if ($failures.Count -gt 0) {
     Write-Host "Gatefall economy contract: FAIL"
     foreach ($failure in $failures) {

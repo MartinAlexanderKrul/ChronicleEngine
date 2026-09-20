@@ -42,7 +42,7 @@ What is **not** generated: verdicts, evidence classes, and every assessment in t
 
 *Derived by `tools/generate_validation_evidence.ps1` from the campaign's own save manifests. Do not edit inside the markers; edit the manifests and regenerate. Verdicts, evidence classes and assessment prose are deliberately not generated — they are judgment and live in the hand-written sections.*
 
-**Checkpoints:** 164 (`900_CHECKPOINT_0001`–`900_CHECKPOINT_0164`)
+**Checkpoints:** 165 (`900_CHECKPOINT_0001`–`900_CHECKPOINT_0165`)
 
 **Data Model schema by capture**
 
@@ -53,16 +53,16 @@ What is **not** generated: verdicts, evidence classes, and every assessment in t
 | 0.1.4 | 0024–0029 | 6 |
 | 0.1.5 | 0030–0050 | 21 |
 | 0.1.6 | 0051–0104 | 54 |
-| 0.1.7 | 0105–0164 | 60 |
+| 0.1.7 | 0105–0165 | 61 |
 
 **World Rule Profile freeze status by capture**
 
 | Freeze status | Checkpoints | Count |
 |---|---|---:|
 | workshop-draft | 0001–0008 | 8 |
-| frozen | 0009–0164 | 156 |
+| frozen | 0009–0165 | 157 |
 
-**Latest capture:** `900_CHECKPOINT_0164` — kind `manual`, profile 1.121 (frozen), schema 0.1.7, parent `900_CHECKPOINT_0163`, source `EVT-001108`.
+**Latest capture:** `900_CHECKPOINT_0165` — kind `manual`, profile 1.123 (frozen), schema 0.1.7, parent `900_CHECKPOINT_0164`, source `EVT-001120`.
 
 <!-- END GENERATED: evidence-state -->
 

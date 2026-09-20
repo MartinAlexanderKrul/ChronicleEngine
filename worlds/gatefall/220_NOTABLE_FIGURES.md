@@ -26,7 +26,8 @@ provenance:
   real_date: "2026-07-22T00:00:00Z"
 role: canonical ledger
 scope: world
-# This save: EVT-001079 (Kane ENT-000242, Standfast ratified standing), EVT-001084 (Kane
+# This save: EVT-001111, EVT-001112, EVT-001114, EVT-001117 (Elena Cho ENT-000291 and Kane ENT-000242, lessons, the night, the errands).
+# Prior save: EVT-001079 (Kane ENT-000242, Standfast ratified standing), EVT-001084 (Kane
 #   ENT-000242, resigned BGM/accepted second-in-command), EVT-001087 (Elena Cho ENT-000291, minted).
 # This save: EVT-001090/EVT-001091/EVT-001092 (Elena Cho ENT-000291: signature authored as telekinesis, pools, fear, secret,
 #   knowledge), EVT-001092/EVT-001093/EVT-001095 (Kane ENT-000242: knowledge, agenda, location).
@@ -769,7 +770,7 @@ provenance:
 type: Character
 scope: world
 lifecycle: active
-moved_by_events: "`EVT-000854` `EVT-000857` `EVT-001013` `EVT-001014` `EVT-001045` `EVT-001047` `EVT-001048` `EVT-001050` `EVT-001051` `EVT-001079` `EVT-001084` `EVT-001092` `EVT-001093` `EVT-001095`"
+moved_by_events: "`EVT-000854` `EVT-000857` `EVT-001013` `EVT-001014` `EVT-001045` `EVT-001047` `EVT-001048` `EVT-001050` `EVT-001051` `EVT-001079` `EVT-001084` `EVT-001092` `EVT-001093` `EVT-001095` `EVT-001111` `EVT-001112` `EVT-001114` `EVT-001117`"
 aliases:
   - name: "Elias Kane"
     quality: current
@@ -801,7 +802,7 @@ canonical_state:
       confidence: certain
       accuracy: unknown
       since: EVT-001040
-  agenda: "**2026-09-25 (`EVT-001095`):** commands the guild element on Region V's Calumet A-Rank Gate - name and roster to the duty desk by 10:00, a drone read of the mouth first, on the line by 09:00 and inside by 09:30, out and a call to Alexander if the read changes; rings Renata's roster office at 07:00 Central (general terms, no name); then the region-by-region Gate registrations, New York first through Silas Grech, Boston through the same office. **Prior, superseded:** **2026-09-21 (`EVT-001051`):** National legal asked the video platform to hold the premiere for review; by 11:46 it was withdrawn, and Kane told Alexander only 'It's handled.' What it cost him is his secret's to carry. Prior: from the 2026-09-20 board vote he took BGM interference as his. From 07:00 Chicago on 2026-09-21 he works his own National contacts quietly, from his phone rather than anyone's office, to learn who will move against the broadcast and when; he reports only if asked. Authored 2026-09-21 06:00 ahead of his first line (Decision 092; this record sits past the campaign's `disposition_baseline`)."
+  agenda: "**2026-09-26/27 (`EVT-001111`, `EVT-001112`, `EVT-001114`, `EVT-001117`).** Spent the night with Alexander and asked him to stay; told him about school (the quiet one handed the key to the supply cupboard). Took the errands on Istanbul, Tel Aviv and Canada and a Canadian broker by 14:00 (met at 14:04); called the glazier for Elena's window. Standfast homework hour still owed. Second in command over operations, with the edge cases owed as a table. **2026-09-25 (`EVT-001095`):** commands the guild element on Region V's Calumet A-Rank Gate - name and roster to the duty desk by 10:00, a drone read of the mouth first, on the line by 09:00 and inside by 09:30, out and a call to Alexander if the read changes; rings Renata's roster office at 07:00 Central (general terms, no name); then the region-by-region Gate registrations, New York first through Silas Grech, Boston through the same office. **Prior, superseded:** **2026-09-21 (`EVT-001051`):** National legal asked the video platform to hold the premiere for review; by 11:46 it was withdrawn, and Kane told Alexander only 'It's handled.' What it cost him is his secret's to carry. Prior: from the 2026-09-20 board vote he took BGM interference as his. From 07:00 Chicago on 2026-09-21 he works his own National contacts quietly, from his phone rather than anyone's office, to learn who will move against the broadcast and when; he reports only if asked. Authored 2026-09-21 06:00 ahead of his first line (Decision 092; this record sits past the campaign's `disposition_baseline`)."
 ```
 
 ---
@@ -1062,7 +1063,7 @@ provenance:
 type: Character
 scope: world
 lifecycle: active
-moved_by_events: "`EVT-001090` `EVT-001091` `EVT-001092` `EVT-001093` `EVT-001095`"
+moved_by_events: "`EVT-001090` `EVT-001091` `EVT-001092` `EVT-001093` `EVT-001095` `EVT-001109` `EVT-001111` `EVT-001112` `EVT-001114` `EVT-001118`"
 aliases:
   - name: "Elena Cho"
     quality: current
@@ -1088,7 +1089,7 @@ canonical_state:
       confidence: suspects
       accuracy: unknown
       since: EVT-001091
-  agenda: "**2026-09-24 (`EVT-001090`-`EVT-001092`).** Left a note for her roommate and went to Winnetka as Alexander's guest. Wants to read the associate agreement before signing and will not sign tonight; wants the lessons to start tomorrow. Prior, superseded: arranged the meeting for 19:00 her time at her own apartment."
+  agenda: "**2026-09-26/27 (`EVT-001111`, `EVT-001112`, `EVT-001114`).** Two coaching days: hold-the-keys and walk-them-to-the-hook, a bag that hung and a ceiling chipped on the first day, a phone set down short, a whole guest room's belongings through the lake window on the second, then a mug she does not own lifted and set down on a retry (player-stated: she had moved a non-owned object at an earlier practice, so *lands only on her own things* is superseded). Her night without a barrier was quiet. Reading filed at 13:50 on 2026-09-27 under the affiliation courtesy. Counts her thank-yous aloud (seven by the morning). **2026-09-24 (`EVT-001090`-`EVT-001092`).** Left a note for her roommate and went to Winnetka as Alexander's guest. Wants to read the associate agreement before signing and will not sign tonight; wants the lessons to start tomorrow. Prior, superseded: arranged the meeting for 19:00 her time at her own apartment."
   knowledge: "Knows Alexander is an unaffiliated S-Rank and founded the Pendragon Guild (she has watched his video twice); that he moves people by touch (she was carried to Chicago); that Kane is his second-in-command and an S-Rank; that the National register files her reading Sunday 2026-09-27 whatever she does, and that guild affiliation changes how it files, not whether (Kane, told directly). Was told *I think your power is telekinesis* as a guess. **No channel to the System, Flux Sight, or anything Bearer-only.** She has told nobody else, and her testing office knows only the reading."
 ```
 

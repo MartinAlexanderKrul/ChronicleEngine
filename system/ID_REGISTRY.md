@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000314 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001108 |
+| Event | `EVT-` | Event | EVT-001120 |
 | Relationship | `REL-` | Relationship | REL-000124 |
 
 ---
@@ -37,6 +37,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 
 | Range | Kind | Consumed by |
 |-------|------|-------------|
+| EVT-001109 – EVT-001120 | Event | Gatefall: Pendragon, 2026-09-26/27: the Detroit corridor, the standing memo and the tunnel log (`001109`); Amsterdam, 390 signed (`001110`); Elena Cho's first recorded lesson (`001111`); the evening, a night with Kane and the 60th daily (`001112`); the 2026-09-27 world tick (`001113`); Prague's B cleared, Elena's second session and Kane's errands (`001114`); the far door opened and Orenne's lesson (`001115`); Ilith's lesson and the door closed (`001116`); Dallas, 184 signed (`001117`); the afternoon calls (`001118`); Profiles 1.122 and 1.123 adopted (`001119`); promotion-barrier settlement (`001120`) |
 | EVT-001097 – EVT-001108 | Event | Gatefall: Pendragon, 2026-09-25/26: Tulsa cleared solo (`001097`); Elena Cho's associate agreement signed with a separate-consent amendment (`001098`); the Calumet A-Rank cleared by the guild under Kane and nine A-Rank hunters named (`001099`); Miami and Houston (`001100`); the office circuit, the 24/7 rule and sixteen anchors (`001101`); Owen's Bridgeport question answered (`001102`); the 2026-09-26 world tick (`001103`); the Karlín A/S Gate cleared alone and stripped clean (`001104`); Paris (`001105`); the S-Rank auction filing and Karlín's payout (`001106`); the Detroit travel hub, fourteen tunnels and its access policy (`001107`); promotion-barrier settlement, Level 202 → 207 (`001108`) |
 | ENT-000292 – ENT-000314 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): nine named A-Rank guild hunters (`000292`–`000300`, Haldane, Keane, Rourke, Adjei, Delacroix, Baek, Cavanaugh, Nair, Sobczak); Imani Whitaker, Chicago day manager (`000301`); Wendell Osei-Brandt, Detroit HQ porter (`000302`); twelve guild office day managers (`000303`–`000314`: Washington DC, Frankfurt, New York, Boston, Miami, Houston, Paris, Amsterdam, Dallas, Los Angeles, Seattle, San Francisco). Every name cleared through `tools/check_name_collision.ps1` before it was spoken in play |
 | EVT-001089 – EVT-001096 | Event | Gatefall: Pendragon, the night of 2026-09-24 and the morning of 2026-09-25: the Profile 1.120/1.121 adoption (`001089`); Boston to Sacramento and a forty-fifth anchor (`001090`); Elena Cho met and her signature named (`001091`); the Winnetka arrival, Kane, and the hall held (`001092`); Kane, the plan for tomorrow and the night (`001093`); the 2026-09-25 world tick with the Thursday repair (`001094`); Region V redirected, Tulsa offered, Prague's B referred (`001095`); the promotion-barrier settlement (`001096`) |

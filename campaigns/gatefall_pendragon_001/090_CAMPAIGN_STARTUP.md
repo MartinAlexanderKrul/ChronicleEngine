@@ -19,7 +19,7 @@ initialization_state: resumable
 # failures. Characters recorded after it carry want, fear, secret, voice and an agenda.
 # Removing this line does not disable the check; it widens it to the whole cast.
 disposition_baseline: ENT-000210
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0166
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0167
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 selection_caveat: "Active campaign; resumable from its latest checkpoint."
@@ -359,3 +359,7 @@ Non-canonical operational preferences, imported 2026-08-30 from the player's acc
 14. **Offices on the confirmed recruitment route are finished and fully functional by their tour date, and the front desk manager meets him on every arrival.** Confirmed 2026-09-26. Do not carry "pending scanner", "issues found" or "lease in negotiation" marks into a city he is touring, and do not roll fresh problems for one unless the player asks. On any office arrival, that office's **day manager comes to meet him at reception** — Imani Whitaker (Chicago), Anjali Desai (Detroit HQ), Milena Horáková (Prague), and the twelve minted at `EVT-001107` elsewhere. An office without a named manager gets one authored on first arrival, collision-checked before the name is spoken.
 
 15. **Describing an intention is not ordering it.** Confirmed 2026-09-26, after the Runtime executed a Frankfurt-to-Prague troop movement the player had only described ("I just need to pull hunters from Frankfurt to join them") and was told **"wait. Wtf are you doing I didn't say to do any of it."** Authoring unauthored *world* facts remains the Runtime's job and must not stop the scene (item 2). **Deciding what the protagonist does is not.** When a message states a plan, a need or a direction of travel without an action, reflect it and stop; do not spend his Mana, move him, author the staff he would meet, or resolve the operation.
+
+16. **Assignment is guild-wide and rosters run at the Gate's Rank.** Confirmed 2026-09-28, after the Runtime first said Prague had no A-Rank of its own and then wrote a roster as "at least one A". One guild, one pool: hunters are assigned from the nearest offices outward, and where a member signed is not where the guild may send them. A roster is the BGM or CGA legal minimum of combat-rated strikers **plus one**, every striker **at the Gate's own Rank or above**, plus one mender and one sensor outside that count (the standing memo, `EVT-001109`). Do not state what an office "has" or "lacks" as a fact the record does not hold.
+
+17. **The named dispatching officer of every branch is the head of the office.** Confirmed 2026-09-28 (`EVT-001130`). Offices are lightly staffed on purpose: everything is coordinated from HQ through the tunnel network, with a night officer and two custodians in each office. A branch becomes operational the day its regulator accepts a filed standing relationship (Section 13.7.5); that is the HQ front office's job end to end (item 13).

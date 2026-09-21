@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000314 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001128 |
+| Event | `EVT-` | Event | EVT-001131 |
 | Relationship | `REL-` | Relationship | REL-000124 |
 
 ---
@@ -37,6 +37,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 
 | Range | Kind | Consumed by |
 |-------|------|-------------|
+| EVT-001129 – EVT-001131 | Event | Gatefall: Pendragon, 2026-09-28 06:04-06:47: the Prague A-Rank taken by the guild, the roster rule corrected and the offices' Rank split authored (`001129`); branch operations and the regulators' filings (`001130`); promotion-barrier settlement (`001131`) |
 | EVT-001121 – EVT-001128 | Event | Gatefall: Pendragon, 2026-09-27/28, from checkpoint 0165: the Ironline notice, the 61st daily, three boxes and 37 points, the families' letter and the video, Los Angeles (189 signed) and the invitation, the 2026-09-28 tick, and the promotion barrier (`001123`-`001128`); and, earlier in the span, resuming from checkpoint 0165: Wrought Hand ratified (coaching merged with the Kane reshaping) and Profile 1.124 adopted (`001121`); the Calumet debrief at Winnetka and Doc's mender doctrine restored to the record retroactively (`001122`) |
 | EVT-001109 – EVT-001120 | Event | Gatefall: Pendragon, 2026-09-26/27: the Detroit corridor, the standing memo and the tunnel log (`001109`); Amsterdam, 390 signed (`001110`); Elena Cho's first recorded lesson (`001111`); the evening, a night with Kane and the 60th daily (`001112`); the 2026-09-27 world tick (`001113`); Prague's B cleared, Elena's second session and Kane's errands (`001114`); the far door opened and Orenne's lesson (`001115`); Ilith's lesson and the door closed (`001116`); Dallas, 184 signed (`001117`); the afternoon calls (`001118`); Profiles 1.122 and 1.123 adopted (`001119`); promotion-barrier settlement (`001120`) |
 | EVT-001097 – EVT-001108 | Event | Gatefall: Pendragon, 2026-09-25/26: Tulsa cleared solo (`001097`); Elena Cho's associate agreement signed with a separate-consent amendment (`001098`); the Calumet A-Rank cleared by the guild under Kane and nine A-Rank hunters named (`001099`); Miami and Houston (`001100`); the office circuit, the 24/7 rule and sixteen anchors (`001101`); Owen's Bridgeport question answered (`001102`); the 2026-09-26 world tick (`001103`); the Karlín A/S Gate cleared alone and stripped clean (`001104`); Paris (`001105`); the S-Rank auction filing and Karlín's payout (`001106`); the Detroit travel hub, fourteen tunnels and its access policy (`001107`); promotion-barrier settlement, Level 202 → 207 (`001108`) |

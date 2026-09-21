@@ -2,7 +2,17 @@
 param(
     [Parameter(Mandatory = $true)][string]$Campaign,
     [Parameter(Mandatory = $true)][string]$Name,
-    [string]$Root
+    [string]$Root,
+    # Opt-in, per invocation: a campaign that wants no two unrelated characters to
+    # share a surname passes this switch. It is off by default because the engine's
+    # own ruling is that a shared surname is a judgment, never a failure (F-009,
+    # and the sibling Vosses). Each half of a hyphenated surname is compared on its
+    # own, so "Nakamura-Reyes" meets both "Nakamura" and "Reyes". Exit 4, never 2:
+    # exit 2 means the repository barrier will reject the name, and it will not.
+    [switch]$StrictSurnames,
+    # Entity ids the candidate is deliberately related to (siblings, spouse, parent),
+    # which are the only ones permitted to share a surname under -StrictSurnames.
+    [string[]]$RelatedTo = @()
 )
 
 Set-StrictMode -Version Latest
@@ -168,6 +178,36 @@ if ($campaignExact.Count -gt 0) {
     Write-Host "  Two live entities in one campaign may not answer to the same full name (F-009)."
     Write-Host "  The Repository Validation Barrier rejects this. Choose another name."
     exit 2
+}
+
+# -StrictSurnames: no two unrelated characters share a surname. Exact matches were
+# already refused above. The surname is the last word of the name and each part of
+# a hyphenated surname counts separately.
+function Get-SurnameParts {
+    param([string]$Value)
+    $words = @($Value -split '\s+' | Where-Object { $_ -and ($titleTokens -notcontains $_.Trim('.').ToLowerInvariant()) })
+    if ($words.Count -lt 2) { return @() }   # a mononym has no surname to share
+    return @($words[-1] -split '-' | ForEach-Object { $_.Trim("'").ToLowerInvariant() } | Where-Object { $_.Length -ge 2 })
+}
+
+if ($StrictSurnames) {
+    $candidateSurnames = Get-SurnameParts $candidate
+    $surnameHits = @()
+    foreach ($entry in ($live | Where-Object { $_.Type -eq 'Character' -and $RelatedTo -notcontains $_.Id })) {
+        $shared = @(Get-SurnameParts $entry.Name | Where-Object { $candidateSurnames -contains $_ } | Select-Object -Unique)
+        if ($shared.Count -gt 0) {
+            $surnameHits += [pscustomobject]@{ Id = $entry.Id; Name = $entry.Name; Source = $entry.Source; Shared = ($shared -join ', ') }
+        }
+    }
+    if ($surnameHits.Count -gt 0) {
+        Write-Host "SURNAME: `"$candidate`""
+        foreach ($hit in $surnameHits) {
+            Write-Host "  shares surname $($hit.Shared): $($hit.Id) `"$($hit.Name)`" in $($hit.Source)"
+        }
+        Write-Host "  -StrictSurnames: unrelated characters do not share a surname."
+        Write-Host "  Pick another surname, or pass -RelatedTo <ENT-id> if they are meant to be family."
+        exit 4
+    }
 }
 
 # Token comparison is restricted to Character entities. An organization's name

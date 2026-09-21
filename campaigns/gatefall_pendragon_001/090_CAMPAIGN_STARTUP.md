@@ -19,7 +19,7 @@ initialization_state: resumable
 # failures. Characters recorded after it carry want, fear, secret, voice and an agenda.
 # Removing this line does not disable the check; it widens it to the whole cast.
 disposition_baseline: ENT-000210
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0167
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0168
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 selection_caveat: "Active campaign; resumable from its latest checkpoint."
@@ -92,7 +92,7 @@ source_loading:
     object_source: campaigns/gatefall_pendragon_001/135_CAST_IN_PLAY.md
     ledger: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
     world_ledger: worlds/gatefall/220_NOTABLE_FIGURES.md
-    reason: "run before a freshly authored NPC's name is spoken, not after the save (F-009). BLOCKED is what the Repository Validation Barrier will reject; REVIEW is the author's own call in the turn."
+    reason: "run before a freshly authored NPC's name is spoken, not after the save (F-009). BLOCKED is what the Repository Validation Barrier will reject; REVIEW is the author's own call in the turn. This campaign also passes -StrictSurnames (exit 4): no two unrelated characters share a surname (item 20 below)."
   campaign_readiness_headings:
     - file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
       heading: "Closed Channels"
@@ -363,3 +363,8 @@ Non-canonical operational preferences, imported 2026-08-30 from the player's acc
 16. **Assignment is guild-wide and rosters run at the Gate's Rank.** Confirmed 2026-09-28, after the Runtime first said Prague had no A-Rank of its own and then wrote a roster as "at least one A". One guild, one pool: hunters are assigned from the nearest offices outward, and where a member signed is not where the guild may send them. A roster is the BGM or CGA legal minimum of combat-rated strikers **plus one**, every striker **at the Gate's own Rank or above**, plus one mender and one sensor outside that count (the standing memo, `EVT-001109`). Do not state what an office "has" or "lacks" as a fact the record does not hold.
 
 17. **The named dispatching officer of every branch is the head of the office.** Confirmed 2026-09-28 (`EVT-001130`). Offices are lightly staffed on purpose: everything is coordinated from HQ through the tunnel network, with a night officer and two custodians in each office. A branch becomes operational the day its regulator accepts a filed standing relationship (Section 13.7.5); that is the HQ front office's job end to end (item 13).
+
+18. **Every time in another zone carries its Chicago equivalent** ("10:00 Eastern (09:00 Chicago)"), in narration and out of character. Confirmed 2026-09-28.
+19. **Run his reading skills on every significant NPC and notable object without being told** (Keen Sense fresh each scene, Flux Sight, Appraise, Read the Learner, Read the Want, Read the Hand where the subject could be awakened), each a real d100 with its steps, Mana and counter shown. Confirmed 2026-09-28.
+20. **No two unrelated characters share a surname; every name fits its place.** Run `tools/check_name_collision.ps1 ... -StrictSurnames` (exit 4 = taken; `-RelatedTo ENT-...` for family) before a name is spoken. Local names for each city. Confirmed 2026-09-28.
+21. **Elapsed time comes from his actions, not from when replies arrive.** Confirmed 2026-09-28.

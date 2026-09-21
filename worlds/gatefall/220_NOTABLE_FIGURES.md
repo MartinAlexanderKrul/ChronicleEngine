@@ -1004,8 +1004,10 @@ type: Character
 scope: world
 lifecycle: active
 aliases:
-  - name: "Terrence Kowalczyk"
+  - name: "Terrence Mahoney"
     quality: current
+  - name: "Terrence Kowalczyk"
+    quality: former
 canonical_state:
   rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
   age: "**43** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."

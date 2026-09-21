@@ -37,7 +37,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000178` | Tomas Alvarez | strike captain | active | Chicago | — |
 | `ENT-000179` | Denny Osei | harvest-element miner | active | Chicago | — |
 | `ENT-000180` | Marisol Ruiz | harvest-element miner | active | Chicago | — |
-| `ENT-000136` | Priya Okafor | crew leader / striker | active | Chicago | `REL-000065` |
+| `ENT-000136` | Priya Menon | crew leader / striker | active | Chicago | `REL-000065` |
 | `ENT-000137` | Julian Boyd | striker (ranged) | active | Chicago | — |
 | `ENT-000138` | Renata Marchetti | sensor / reader | active | Chicago | — |
 | `ENT-000139` | Owen Callahan | mender | active | Chicago | `REL-000066` |
@@ -62,7 +62,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000169` | Voula Stamatis | Character | active | Chicago | — |
 | `ENT-000170` | Nikitas | Place | active | Chicago | — |
 | `ENT-000172` | Curtis Marsh | security-company employee | active | Chicago | — |
-| `ENT-000173` | Reggie Calloway | D-Rank hunter, point element | active | 4110 W Fullerton, Chicago — the confirmed D-Rank Gate site | — |
+| `ENT-000173` | Reggie Sutton | D-Rank hunter, point element | active | 4110 W Fullerton, Chicago — the confirmed D-Rank Gate site | — |
 | `ENT-000174` | Bhavna Iyer | D-Rank hunter, ranged/sensor element | active | 4110 W Fullerton, Chicago — the confirmed D-Rank Gate site | — |
 | `ENT-000175` | Foster Nakashima | D-Rank hunter, overwatch/perimeter element | active | 4110 W Fullerton, Chicago — the confirmed D-Rank Gate site | — |
 | `ENT-000176` | Callie Dunmore | D-Rank hunter, flex striker | active | 4110 W Fullerton, Chicago — the confirmed D-Rank Gate site | — |
@@ -89,7 +89,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000204` | Marisela Kwan | strike captain | active | Chicago | `REL-000097` |
 | `ENT-000205` | Reston | harvest-element miner | active | Chicago | — |
 | `ENT-000212` | Hollis Rennard | containment monitor | active | **Outside the fenced warehouse's perimeter fence, on the cracke… | `REL-000099` |
-| `ENT-000213` | Junia Okonkwo | containment specialist | active | the fenced warehouse | — |
+| `ENT-000213` | Junia Marlowe | containment specialist | active | the fenced warehouse | — |
 | `ENT-000214` | Emmett Hargrave | unawakened; role unestablished | active | the fenced warehouse | — |
 | `ENT-000215` | the warp-heart emplacement | emplaced monitoring instrument | active | Anchored to the slab at the heart of the Cicero Scar's innermos… | — |
 | `ENT-000216` | what never finished arriving | unfinished arrival | active | The far end of a light-industrial sublevel crushed shut in the… | — |
@@ -109,7 +109,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000245` | Praetorian Facility Security | licensed commercial security contractor | active | Chicago | — |
 | `ENT-000246` | the Argyle Street Gate | Gate, cleared | closed | 5140 N Argyle, Uptown, Chicago — a closed self-storage facility… | — |
 | `ENT-000247` | Corwin Ashvale | artificer / fusion specialist | active | His workshop, Boston. | `REL-000102` |
-| `ENT-000224` | Teresa Vance | journalist - trade beat | active | Unestablished - worked entirely by phone. Chicago is implied by… | `REL-000100` |
+| `ENT-000224` | Teresa Holloway | journalist - trade beat | active | Unestablished - worked entirely by phone. Chicago is implied by… | `REL-000100` |
 | `ENT-000225` | Marguerite | media liaison - independent | active | Unestablished. Chicago is implied by Kesha Morrison's ability t… | — |
 | `ENT-000257` | Jitka Novotná | national Gate-ranking clerk | active | CGA Headquarters, central Prague, the public Ranking Corps coun… | — |
 | `ENT-000226` | Peter Kwiatkowski | artificer - CONSULT-controlled | active | Ironclad Self Storage | `REL-000114` |
@@ -124,10 +124,10 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000250` | Silas Grech | BGM Region I coordinator | active | BGM Region I's New York office. | `REL-000103` |
 | `ENT-000251` | Cormac Deveraux | unlicensed salvage dealer | active | A lockup near the ship channel, Houston. | `REL-000104` |
 | `ENT-000252` | Adaeze Nwosu | BGM Region VI field liaison | active | BGM Region VI's Houston field office. | — |
-| `ENT-000253` | Bram Castillo | BGM Region II field liaison | active | BGM Region II's Miami field office. | — |
+| `ENT-000253` | Ramón Ortega | BGM Region II field liaison | active | BGM Region II's Miami field office. | — |
 | `ENT-000254` | Sorcha Bellweather | BGM National containment doctrine official | active | BGM National HQ, Washington DC. | `REL-000105` |
 | `ENT-000255` | Kian Ferris | BGM Dallas field liaison | active | BGM's Dallas field office. | — |
-| `ENT-000256` | Naomi Reyes | BGM Los Angeles field liaison | active | BGM's Los Angeles field office. | — |
+| `ENT-000256` | Naomi Whitcomb | BGM Los Angeles field liaison | active | BGM's Los Angeles field office. | — |
 | `ENT-000258` | Margit Lindqvist | European Gate Council official | active | Karlov Guild headquarters, Old Town, Prague — met at the 16:00… | — |
 | `ENT-000259` | Ilith | Standing (far side) — position Out | active | The Landing | `REL-000108` |
 | `ENT-000260` | Aumry | Standing (far side) — position Reach the next one | active | The Long Shelf | `REL-000109` |
@@ -166,19 +166,25 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000299` | Priyanka Nair | guild hunter — A-Rank striker | active | Pendragon Guild A-Rank response pool | — |
 | `ENT-000300` | Marek Sobczak | guild hunter — A-Rank striker | active | Pendragon Guild A-Rank response pool | — |
 | `ENT-000301` | Imani Whitaker | guild office staff — day manager | active | The Pendragon Guild Chicago office, front desk. | — |
-| `ENT-000303` | Verity Achebe-Lund | guild office staff — day manager | active | The Pendragon Guild Washington DC office, front desk. | — |
-| `ENT-000304` | Anselm Kowalczyk-Boateng | guild office staff — day manager | active | The Pendragon Guild Frankfurt office, front desk. | — |
+| `ENT-000303` | Verity Prescott | guild office staff — day manager | active | The Pendragon Guild Washington DC office, front desk. | — |
+| `ENT-000304` | Anselm Kretschmer | guild office staff — day manager | active | The Pendragon Guild Frankfurt office, front desk. | — |
 | `ENT-000305` | Ramona Ostrowski | guild office staff — day manager | active | The Pendragon Guild New York office, front desk. | — |
-| `ENT-000306` | Callum Idowu | guild office staff — day manager | active | The Pendragon Guild Boston office, front desk. | — |
-| `ENT-000307` | Cecilia Duarte-Voss | guild office staff — day manager | active | The Pendragon Guild Miami office, front desk. | — |
-| `ENT-000308` | Emeka Saltonstall | guild office staff — day manager | active | The Pendragon Guild Houston office, front desk. | — |
-| `ENT-000309` | Odile Prendergast | guild office staff — day manager | active | The Pendragon Guild Paris office, front desk. | — |
+| `ENT-000306` | Callum Doherty | guild office staff — day manager | active | The Pendragon Guild Boston office, front desk. | — |
+| `ENT-000307` | Cecilia Duarte | guild office staff — day manager | active | The Pendragon Guild Miami office, front desk. | — |
+| `ENT-000308` | Roy Rawlins | guild office staff — day manager | active | The Pendragon Guild Houston office, front desk. | — |
+| `ENT-000309` | Odile Fontaine | guild office staff — day manager | active | The Pendragon Guild Paris office, front desk. | — |
 | `ENT-000310` | Noor Vandermeulen | guild office staff — day manager | active | The Pendragon Guild Amsterdam office, front desk. | — |
-| `ENT-000311` | Hyun-woo Delacroix-Park | guild office staff — day manager | active | The Pendragon Guild Dallas office, front desk. | — |
-| `ENT-000312` | Tomasz Okafor-Lindqvist | guild office staff — day manager | active | The Pendragon Guild Los Angeles office, front desk. | — |
-| `ENT-000313` | Lenka Baranyi | guild office staff — day manager | active | The Pendragon Guild Seattle office, front desk. | — |
-| `ENT-000314` | Bertil Nakamura-Reyes | guild office staff — day manager | active | The Pendragon Guild San Francisco office, front desk. | — |
-| `ENT-000302` | Wendell Osei-Brandt | guild HQ staff — porter | active | The Pendragon Guild HQ campus, Detroit | — |
+| `ENT-000311` | Wyatt Delaney | guild office staff — day manager | active | The Pendragon Guild Dallas office, front desk. | — |
+| `ENT-000312` | Diego Villarreal | guild office staff — day manager | active | The Pendragon Guild Los Angeles office, front desk. | — |
+| `ENT-000313` | Lena Petersen | guild office staff — day manager | active | The Pendragon Guild Seattle office, front desk. | — |
+| `ENT-000314` | Benjamin Tran | guild office staff — day manager | active | The Pendragon Guild San Francisco office, front desk. | — |
+| `ENT-000302` | Wendell Brooks | guild HQ staff — porter | active | The Pendragon Guild HQ campus, Detroit | — |
+| `ENT-000315` | Graciela Corrales | artificer, guild member (licence pending) | active | The Pendragon Guild Miami office, reception floor, 2026-09-28. | — |
+| `ENT-000316` | Tobiah Rennick | artificer, guild member (licence pending) | active | His workshop, a cinder-block unit off a service road backed ont… | — |
+| `ENT-000317` | Harlan Dorsett | core broker, grey market | active | A machine-shop unit on Harrisburg Boulevard, Houston, Unit 4, b… | — |
+| `ENT-000318` | Imogen Hartley | guild office staff — day manager | active | The Pendragon Guild London office, front desk. | — |
+| `ENT-000319` | Linnea Bergström | guild office staff — day manager | active | The Pendragon Guild Stockholm office, front desk. | — |
+| `ENT-000320` | Gunnar Ekström | guild office staff — night officer | active | The Pendragon Guild Stockholm office, night post. | — |
 
 ---
 
@@ -201,7 +207,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000178` | Tomas Alvarez | A clear that stays boring | Something reaching the harvest line behind him | Unauthored | The once-over before the greeting |
 | `ENT-000179` | Denny Osei | Unauthored | Unauthored | Unauthored | Barely established |
 | `ENT-000180` | Marisol Ruiz | Unauthored | Unauthored | Unauthored | Barely established |
-| `ENT-000136` | Priya Okafor | A crew that makes room for the people other crews will not | That the room she makes is the reason people can afford to leave | What the fumbled intercept cost her | Owns the error before anyone else reaches it |
+| `ENT-000136` | Priya Menon | A crew that makes room for the people other crews will not | That the room she makes is the reason people can afford to leave | What the fumbled intercept cost her | Owns the error before anyone else reaches it |
 | `ENT-000137` | Julian Boyd | To be trusted to hold fire | Not being told in time | Unauthored | A lazy half-salute instead of a sentence |
 | `ENT-000138` | Renata Marchetti | To be listened to when she says something is wrong | Being right and late | Unauthored | Lays out the live options and does not choose between them |
 | `ENT-000139` | Owen Callahan | More time where Alexander is, and the version of that is the crew | The four seconds | He knows Alexander is something the world has no explanation for, and carries it alone | Leads with the rule, not the feeling |
@@ -220,7 +226,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000148` | Denise Ferro | Unauthored | Unauthored | Unauthored | Unestablished by contact |
 | `ENT-000169` | Voula Stamatis | People fed, on her terms | Unauthored | Unauthored | Decides for people rather than asking them |
 | `ENT-000172` | Curtis Marsh | To finish the call | Unauthored | Unauthored | Corrects the premise before answering the question |
-| `ENT-000173` | Reggie Calloway | To take doors first and have it mean something | Walking into another one unwarned | Unauthored | Dry deflection the instant the adrenaline spikes |
+| `ENT-000173` | Reggie Sutton | To take doors first and have it mean something | Walking into another one unwarned | Unauthored | Dry deflection the instant the adrenaline spikes |
 | `ENT-000174` | Bhavna Iyer | A line to shoot down | Being blamed for the angle she was not given | Unauthored | Reports the read as a count |
 | `ENT-000175` | Foster Nakashima | Nothing to come from behind | Unauthored | Unauthored | Says little and holds position |
 | `ENT-000176` | Callie Dunmore | To be where the fight opens | Arriving after it is over again | Unauthored | Openly impressed and unembarrassed about it |
@@ -244,14 +250,14 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000204` | Marisela Kwan | To keep the floor she puts under a job | Being priced into running at the minimum | Unauthored | A single confident handshake and no sizing-up theater |
 | `ENT-000205` | Reston | Unauthored | Unauthored | Unauthored | Not established — no dialogue exchanged |
 | `ENT-000212` | Hollis Rennard | A reading that says the thing is stable, so she can go home | That the numbers she has been filing for eleven weeks are wrong, and that her name is on every… | Spent at `EVT-000647`, and spent as a trade rather than a collapse | Talks to equipment more easily than to people, and states readings aloud like she is dictating… |
-| `ENT-000213` | Junia Okonkwo | To find out what the site is actually doing and to be the one who says so first - she was sent… | Being the specialist of record on a containment that was already failing before she arrived | Unestablished | Barely established, and honestly so |
+| `ENT-000213` | Junia Marlowe | To find out what the site is actually doing and to be the one who says so first - she was sent… | Being the specialist of record on a containment that was already failing before she arrived | Unestablished | Barely established, and honestly so |
 | `ENT-000214` | Emmett Hargrave | To hear the finding himself rather than read it in a filing | Whatever put his hands on top of his head when she said her sentence | Unestablished | Unestablished |
 | `ENT-000222` | Laurel Bianchi | To be the one who starts the relationship with a newly-confirmed, unaffiliated S-Rank well — ge… | Unstated; not yet tested in play | Knew the Director was off-site before admitting it, and caught herself rather than pretending o… | Polished, direct once pressed, allergic to overselling |
 | `ENT-000223` | Desmond Farraday | A cooperative, non-adversarial relationship with a free-agent S-Rank rather than an unaccountab… | An S-Rank deciding BGM is irrelevant and acting alone — named this fear to Alexander directly r… | None surfaced directly; a Legendary Keen Sense read found his rapport-building posture (sitting… | Plain, names walls directly rather than softening them, doesn't fill silence |
 | `ENT-000233` | Renata Okonkwo-Vance | An actual working line to a solo S-Rank the National office has never had leverage over — not t… | That this goes the way it's gone with every prior unaffiliated S-Rank the office has tried to r… | She's read his Region V file closer than Farraday's summary would suggest, and already knows mo… | Precise, unhurried, no filler — warmer than Farraday's register but no less deliberate |
 | `ENT-000244` | Priest | Unestablished — a live thread if his own reasons for running a no-questions yard ever become re… | Unestablished — nothing in the one transaction touched it | Unestablished — nothing in the one transaction touched it | Terse, transactional, incurious |
 | `ENT-000247` | Corwin Ashvale | The edge of what's actually known | Being the man who missed something in his own shop | The private notes toward his own unpublished theory of fusion/re-coring | Exact and technical, never padded |
-| `ENT-000224` | Teresa Vance | The story confirmed in his own words before she runs it — now satisfied | Running it wrong | Who inside Region V gave her the name | States the awkward thing first and then explains why she is saying it |
+| `ENT-000224` | Teresa Holloway | The story confirmed in his own words before she runs it — now satisfied | Running it wrong | Who inside Region V gave her the name | States the awkward thing first and then explains why she is saying it |
 | `ENT-000225` | Marguerite | To get ahead of whatever story is already forming before it breaks somewhere she doesn't contro… | A client who goes quiet exactly when the story breaks, leaving her defending a silence she can'… | She took this work after a hunter she liaised for early in her career went to ground during a b… | Leads with logistics and timelines, not reassurance |
 | `ENT-000257` | Jitka Novotná | For her own careful, correct work to matter to someone above her counter — the agency's money a… | A Ranking error on her own signature that gets someone killed | She keeps a private tally — never shown a superior — of the hours and budget she believes get d… | Efficient, a little clipped; warms for professional treatment; dry specifically about the Reten… |
 | `ENT-000226` | Peter Kwiatkowski | To be told he is safe, by someone who would actually know | That `COMPLETE` is about to have his name beside it | He is now missing a wallet he cannot explain, and has never reported it | Talks too fast under pressure and over-explains, the rhythm of someone trying to sound more cer… |
@@ -264,10 +270,10 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000250` | Silas Grech | A working responder inside Region I's own jurisdiction — met immediately by handing Alexander t… | Not yet established | Not yet established | Not yet established beyond businesslike coordination |
 | `ENT-000251` | Cormac Deveraux | To be taken seriously as someone who's found things BGM's own instruments never caught, not wri… | That Region VI's tolerance for him is one bad afternoon from ending, and any stranger walking i… | Not established beyond the professional pride he leads with | Direct, unhurried, tests a stranger's real intent before opening up |
 | `ENT-000252` | Adaeze Nwosu | To move through her list efficiently and get real value out of every National-asset visit, not… | Not established beyond professional pressure | Not established | Brisk, leads with the practical items, self-aware and dryly funny when caught out |
-| `ENT-000253` | Bram Castillo | Not established beyond ordinary professional competence | Not established | Not established | Calm, brief, doesn't reference anything about Alexander's abilities — no channel to them |
+| `ENT-000253` | Ramón Ortega | Not established beyond ordinary professional competence | Not established | Not established | Calm, brief, doesn't reference anything about Alexander's abilities — no channel to them |
 | `ENT-000254` | Sorcha Bellweather | To see real containment doctrine actually built and implemented, not another crisis response bo… | That a design gets treated as a gesture instead of done properly, or repeats Jiu Valley's failu… | Carries real personal weight from her Jiu Valley rotation — watched people she trained with go… | Precise, honest about limits, doesn't oversell — states the real caveat even when it undercuts… |
 | `ENT-000255` | Kian Ferris | Not established | Not established | Not established | Plain, direct |
-| `ENT-000256` | Naomi Reyes | Not established | Not established | Not established | Casual, low-key |
+| `ENT-000256` | Naomi Whitcomb | Not established | Not established | Not established | Casual, low-key |
 | `ENT-000258` | Margit Lindqvist | A real, working cross-border information-sharing mechanism she can actually stand behind to her… | Endorsing something that looks good in a meeting and collapses the first time two national bure… | None surfaced | Measured, asks the practical question under the impressive one — who maintains it, who pays for… |
 | `ENT-000259` | Ilith | Through. Anywhere | That a door will open and close before she reaches it | Her world did not fail the exam — it refused it, and she was the one who advised the refusal | States a truth so plainly it reads as confession, then reveals nothing further; a rehearsed ges… |
 | `ENT-000260` | Aumry | To change one outcome | That teaching a candidate is what marks him for the Assay's attention | It was ten, not nine — the tenth passed | Warm, practical, specific about mechanics; deflects from the deeper question to the work at han… |
@@ -305,26 +311,32 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000299` | Priyanka Nair | To be given the roster rather than end up holding it by default | Being useful enough to be needed and never enough to be promoted | Not yet established | Warm, talkative, asks people's names twice until she has them |
 | `ENT-000300` | Marek Sobczak | Not yet established beyond doing the job and being left alone about it | Not yet established | Not yet established | Dry, minimal, answers in the fewest words that are still polite |
 | `ENT-000301` | Imani Whitaker | To run an office that never needs the founder to step in | That the office is a courtesy posting and the real work happens elsewhere | Not yet established | Steady, direct, leaves a question in the air rather than pressing it |
-| `ENT-000303` | Verity Achebe-Lund | A guild that survives its first federal audit | Being caught unready in front of the one person she wants to impress | Not yet established | Crisp, formal, finishes other people's sentences with the correct version |
-| `ENT-000304` | Anselm Kowalczyk-Boateng | Not yet established beyond a well-run office | Not yet established | Not yet established | Dry and precise; notes the time out loud when someone arrives |
+| `ENT-000303` | Verity Prescott | A guild that survives its first federal audit | Being caught unready in front of the one person she wants to impress | Not yet established | Crisp, formal, finishes other people's sentences with the correct version |
+| `ENT-000304` | Anselm Kretschmer | Not yet established beyond a well-run office | Not yet established | Not yet established | Dry and precise; notes the time out loud when someone arrives |
 | `ENT-000305` | Ramona Ostrowski | The biggest office on the board, and to be the reason it is | That fast reads as careless | Not yet established | Rapid, half-finishes sentences, talks with her hands |
-| `ENT-000306` | Callum Idowu | Not yet established | Not yet established | Not yet established | Level, unhurried, delivers a joke as if it were an item of business |
-| `ENT-000307` | Cecilia Duarte-Voss | Not yet established | Not yet established | Not yet established | Easy laugh, long vowels, asks after the person before the business |
-| `ENT-000308` | Emeka Saltonstall | Not yet established | Not yet established | Not yet established | Big, digressive, circles back to the point and lands it |
-| `ENT-000309` | Odile Prendergast | Not yet established | Not yet established | Not yet established | Clipped, faintly amused, answers before the question is fully asked |
+| `ENT-000306` | Callum Doherty | Not yet established | Not yet established | Not yet established | Level, unhurried, delivers a joke as if it were an item of business |
+| `ENT-000307` | Cecilia Duarte | The Miami office to be the one where nothing goes wrong | That *easy* gets read as *not serious* | She keeps a paper log of every visitor alongside the reader's server log | Easy laugh, long vowels, asks after the person before the business |
+| `ENT-000308` | Roy Rawlins | Not yet established | Not yet established | Not yet established | Big, digressive, circles back to the point and lands it |
+| `ENT-000309` | Odile Fontaine | Not yet established | Not yet established | Not yet established | Clipped, faintly amused, answers before the question is fully asked |
 | `ENT-000310` | Noor Vandermeulen | Not yet established | Not yet established | Not yet established | Short, flat, states the constraint and then the fix |
-| `ENT-000311` | Hyun-woo Delacroix-Park | Not yet established | Not yet established | Not yet established | Careful, leaves silences, never interrupts |
-| `ENT-000312` | Tomasz Okafor-Lindqvist | Not yet established | Not yet established | Not yet established | Hurried, apologetic, one hand over the phone |
-| `ENT-000313` | Lenka Baranyi | Not yet established | Not yet established | Not yet established | Exact, lightly wry, corrects a figure and then softens it |
-| `ENT-000314` | Bertil Nakamura-Reyes | Not yet established | Not yet established | Not yet established | Enthusiastic, over-explains, checks that he has been understood |
-| `ENT-000302` | Wendell Osei-Brandt | Steady, meaningful work again, and to be the person who knows where everyone is meant to be | Being the one weak point in a place whose whole purpose is moving people | Not yet established — the record does not say what he did before this, and he has not volunteer… | Measured, formal, faintly dry; a handshake a fraction too careful |
+| `ENT-000311` | Wyatt Delaney | Not yet established | Not yet established | Not yet established | Careful, leaves silences, never interrupts |
+| `ENT-000312` | Diego Villarreal | Not yet established | Not yet established | Not yet established | Hurried, apologetic, one hand over the phone |
+| `ENT-000313` | Lena Petersen | Not yet established | Not yet established | Not yet established | Exact, lightly wry, corrects a figure and then softens it |
+| `ENT-000314` | Benjamin Tran | Not yet established | Not yet established | Not yet established | Enthusiastic, over-explains, checks that he has been understood |
+| `ENT-000302` | Wendell Brooks | Steady, meaningful work again, and to be the person who knows where everyone is meant to be | Being the one weak point in a place whose whole purpose is moving people | Not yet established — the record does not say what he did before this, and he has not volunteer… | Measured, formal, faintly dry; a handshake a fraction too careful |
+| `ENT-000315` | Graciela Corrales | To put her own mark on a piece again, under her own name, and to have it stay hers; to work in… | That a piece from the batch she stopped was left keyed with her line, and the state buyer's end… | She left the house under terms she did not fully honour, and she knows one keyed piece may stil… | Formal, measured, one beat after each sentence; says *as a matter of record* |
+| `ENT-000316` | Tobiah Rennick | His name on his work, and to be paid what it is worth | That a licensing review will expose the B-Rank work he sold unlicensed, and that the broker who… | His B-Rank work went through the Houston broker, who kept most of the money | Chatty and bench-minded, jokes about paperwork; over-explains and then catches himself |
+| `ENT-000317` | Harlan Dorsett | To stay invisible and keep the book safe; underneath, an exit: to hand the ledger to someone wh… | A buyer with power coming for the book if he tries to leave; the Tuesday man asked him weeks ag… | He keeps every core's provenance in a book whatever he tells buyers | Soft, courteous, unhurried; folds his hands; never raises his voice |
+| `ENT-000318` | Imogen Hartley | Not yet established | Not yet established | Not yet established | Understated, delivers bad news as good manners, never raises her voice, treats tea as punctuati… |
+| `ENT-000319` | Linnea Bergström | Not yet established | Not yet established | Not yet established | Plain and unadorned; states a fact the way she would state a coat size |
+| `ENT-000320` | Gunnar Ekström | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 156. Protagonist relationships: 45.
-- Characters: 128. Disposition authored in full: 74; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 162. Protagonist relationships: 45.
+- Characters: 134. Disposition authored in full: 80; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

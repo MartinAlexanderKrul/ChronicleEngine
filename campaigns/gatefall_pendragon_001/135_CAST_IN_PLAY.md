@@ -134,7 +134,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000261` | Orenne | Standing (far side) — position Let it finish | active | The Long Shelf. | `REL-000110` |
 | `ENT-000262` | Tolo | Standing (far side) — no position | active | The Ninth Quiet stratum, near his rebuilt archive. | `REL-000111` |
 | `ENT-000263` | Sevrin | Standing (far side) — position Stop it | active | His own ground, deep in the Stacks. | `REL-000112` |
-| `ENT-000265` | Dario Wexler | S-Rank hunter — West Coast, USA | active | Unestablished beyond 'West Coast' — Renata's own filing places… | `REL-000113` |
+| `ENT-000265` | Dario Wexler | S-Rank hunter — West Coast, USA; guild member, senior combat lead | active | Unestablished beyond 'West Coast' — Renata's own filing places… | `REL-000113` |
 | `ENT-000266` | Ingrid Solberg | artificer — CONSULT quality assessor | active | Suite 411, the downtown Chicago formation-mill office — returne… | — |
 | `ENT-000267` | Daniel Pruett | artificer — CONSULT-controlled | active | Suite 411, the downtown Chicago formation-mill office — returne… | — |
 | `ENT-000268` | Aldric Renn | CONSULT — administrative handler | active | A small unmarked office, Suite 3C, West Fulton Market, Chicago… | — |
@@ -185,6 +185,27 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000318` | Imogen Hartley | guild office staff — day manager | active | The Pendragon Guild London office, front desk. | — |
 | `ENT-000319` | Linnea Bergström | guild office staff — day manager | active | The Pendragon Guild Stockholm office, front desk. | — |
 | `ENT-000320` | Gunnar Ekström | guild office staff — night officer | active | The Pendragon Guild Stockholm office, night post. | — |
+| `ENT-000321` | Kerem Aydoğan | guild office staff — night officer | active | The Pendragon Guild Istanbul office, front desk. | — |
+| `ENT-000322` | Elif Demir | guild office staff — day manager | active | The Pendragon Guild Istanbul office, front desk. | — |
+| `ENT-000323` | Itai Barak | S-Rank hunter — Israel; guild member | active | Tel Aviv, Israel. | — |
+| `ENT-000324` | Noa Shapira | guild office staff — day manager | active | The Pendragon Guild Tel Aviv office, front desk. | — |
+| `ENT-000325` | Marcus Feldspar | guild office staff — night officer | active | The Pendragon Guild Chicago office, night post. | — |
+| `ENT-000326` | Dana Whitcross | guild office staff — night officer | active | The Pendragon Guild Washington DC office, night post. | — |
+| `ENT-000327` | Pavel Nový | guild office staff — night officer | active | The Pendragon Guild Prague office, night post. | — |
+| `ENT-000328` | Stefan Wendt | guild office staff — night officer | active | The Pendragon Guild Frankfurt office, night post. | — |
+| `ENT-000329` | Rosa Delfino | guild office staff — night officer | active | The Pendragon Guild New York office, night post. | — |
+| `ENT-000330` | Theo Bramfield | guild office staff — night officer | active | The Pendragon Guild Boston office, night post. | — |
+| `ENT-000331` | Yvette Solano | guild office staff — night officer | active | The Pendragon Guild Miami office, night post. | — |
+| `ENT-000332` | Cole Ashworth | guild office staff — night officer | active | The Pendragon Guild Houston office, night post. | — |
+| `ENT-000333` | Julien Moreau | guild office staff — night officer | active | The Pendragon Guild Paris office, night post. | — |
+| `ENT-000334` | Bram Voskuijlen | guild office staff — night officer | active | The Pendragon Guild Amsterdam office, night post. | — |
+| `ENT-000335` | Colby Fenwick | guild office staff — night officer | active | The Pendragon Guild Dallas office, night post. | — |
+| `ENT-000336` | Priya Sandal | guild office staff — night officer | active | The Pendragon Guild Los Angeles office, night post. | — |
+| `ENT-000337` | Ronan Blakely | guild office staff — night officer | active | The Pendragon Guild Seattle office, night post. | — |
+| `ENT-000338` | Marisol Ontario | guild office staff — night officer | active | The Pendragon Guild San Francisco office, night post. | — |
+| `ENT-000339` | Tamar Golan | guild office staff — night officer | active | The Pendragon Guild Tel Aviv office, night post. | — |
+| `ENT-000340` | Baran Yılmaz | guild office staff — night officer | active | The Pendragon Guild Istanbul office, night post. | — |
+| `ENT-000341` | Nigel Harcourt | guild office staff — night officer | active | The Pendragon Guild London office, night post. | — |
 
 ---
 
@@ -330,13 +351,34 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000318` | Imogen Hartley | Not yet established | Not yet established | Not yet established | Understated, delivers bad news as good manners, never raises her voice, treats tea as punctuati… |
 | `ENT-000319` | Linnea Bergström | Not yet established | Not yet established | Not yet established | Plain and unadorned; states a fact the way she would state a coat size |
 | `ENT-000320` | Gunnar Ekström | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000321` | Kerem Aydoğan | To be seen as more than the one who happened to be there when the founder arrived | Being blamed for the office not being ready, though it was | Not yet established | Quick, a little breathless, over-apologizes and then over-corrects |
+| `ENT-000322` | Elif Demir | Not yet established | Not yet established | Not yet established | Warm, direct, a knowing look when she's aware more happened than the log shows |
+| `ENT-000323` | Itai Barak | Somewhere his Rank isn't a burden managed alone; to matter to people who chose him, not people… | Not yet established beyond the isolation itself | Not yet established | Measured, a little formal, chooses words carefully; dry understatement rather than open emotion |
+| `ENT-000324` | Noa Shapira | Not yet established | Not yet established | Not yet established | Even and matter-of-fact; states things without embellishment |
+| `ENT-000325` | Marcus Feldspar | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000326` | Dana Whitcross | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000327` | Pavel Nový | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000328` | Stefan Wendt | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000329` | Rosa Delfino | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000330` | Theo Bramfield | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000331` | Yvette Solano | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000332` | Cole Ashworth | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000333` | Julien Moreau | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000334` | Bram Voskuijlen | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000335` | Colby Fenwick | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000336` | Priya Sandal | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000337` | Ronan Blakely | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000338` | Marisol Ontario | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000339` | Tamar Golan | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000340` | Baran Yılmaz | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000341` | Nigel Harcourt | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 162. Protagonist relationships: 45.
-- Characters: 134. Disposition authored in full: 80; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 183. Protagonist relationships: 45.
+- Characters: 155. Disposition authored in full: 101; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

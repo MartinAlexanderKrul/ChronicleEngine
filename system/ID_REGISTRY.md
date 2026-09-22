@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000320 |
+| Entity | `ENT-` | Persistent Entity | ENT-000341 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001139 |
+| Event | `EVT-` | Event | EVT-001147 |
 | Relationship | `REL-` | Relationship | REL-000124 |
 
 ---
@@ -37,6 +37,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 
 | Range | Kind | Consumed by |
 |-------|------|-------------|
+| EVT-001140 – EVT-001147 | Event | Gatefall: Pendragon, 2026-09-28/29, from checkpoint 0168: Dario Wexler joins as senior combat lead, San Francisco 209 signed (`001140`); Istanbul and Tel Aviv found, anchored, tunnelled (`001141`); Tel Aviv 288 signed, Itai Barak recruited (`001142`); Istanbul 168 signed, tunnelled (`001143`); Stockholm tunnelled, 232 signed (`001144`); the Tuesday 06:00 tick run retroactively, GB-58/GB-59 (`001145`); office qualification review, seventeen night officers named, the regulator-gap escalation (`001146`); promotion-barrier settlement (`001147`) |
+| ENT-000321 – ENT-000341 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): Kerem Aydogan, Istanbul night officer (`000321`); Elif Demir, Istanbul day manager (`000322`); Itai Barak, Israel's S-Rank, guild member (`000323`); Noa Shapira, Tel Aviv day manager (`000324`); seventeen named night officers across every remaining office (`000325`-`000341`). Every name cleared through `tools/check_name_collision.ps1 -StrictSurnames` |
 | EVT-001132 – EVT-001139 | Event | Gatefall: Pendragon, 2026-09-28, from checkpoint 0167: the Monday inbox, replies and the city contracts (`001132`); the 62nd daily (`001133`); Kesha's call, Daily Random Box #69 and the guild registry (`001134`); Miami, Graciela Corrales and Tobiah Rennick's call (`001135`); Houston, Rennick and the core broker Harlan Dorsett, and `OBJ-80` (`001136`); the tour reset, London and Stockholm anchors (`001137`); Seattle, 240 signed, and Dario Wexler (`001138`); promotion-barrier settlement (`001139`) |
 | ENT-000315 – ENT-000320 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): Graciela Corrales, Miami artificer, guild member (`000315`); Tobiah Rennick, Houston artificer, guild member (`000316`); Harlan Dorsett, Houston core broker (`000317`); Imogen Hartley, London day manager (`000318`); Linnea Bergström, Stockholm day manager (`000319`); Gunnar Ekström, Stockholm night officer (`000320`). Every name cleared through `tools/check_name_collision.ps1` (with `-StrictSurnames` for `000315`-`000320` after the first three were renamed) |
 | EVT-001129 – EVT-001131 | Event | Gatefall: Pendragon, 2026-09-28 06:04-06:47: the Prague A-Rank taken by the guild, the roster rule corrected and the offices' Rank split authored (`001129`); branch operations and the regulators' filings (`001130`); promotion-barrier settlement (`001131`) |

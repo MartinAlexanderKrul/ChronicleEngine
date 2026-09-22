@@ -831,6 +831,7 @@ canonical_state:
   age: "**36** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Ashwood Collective (Denver)."
   capabilities: "S-Rank combat; area-control specialization, signature unestablished."
+  appearance: "Authored 2026-09-22 (real date), for portrait reference — no physical description existed in canon prior to this note, and no scene has reached her yet to ground it further. Mid-30s, South Asian, medium height and compactly built — the settled, no-wasted-motion physique of an area-control specialist who wins fights by holding ground rather than outrunning it. Dark hair kept short and practical, a level, assessing gaze. Plain reinforced Ashwood Collective field gear, unbranded beyond a small collective patch, built for standing still under pressure rather than moving fast."
   personality: "Unestablished — no scene has reached her."
   knowledge: "No channel to Alexander. Aware, if at all, only through Renata Okonkwo-Vance's national-roster outreach (`EVT-000787`) — whether she was reached and whether she responds is undetermined."
 ```
@@ -861,6 +862,7 @@ canonical_state:
   age: "**39** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Redline Guild (Houston)."
   capabilities: "S-Rank combat; front-line break intervention, signature unestablished."
+  appearance: "Authored 2026-09-22 (real date), for portrait reference — no physical description existed in canon prior to this note, and no scene has reached him yet to ground it further. Late 30s, white, big and heavily built — a front-line breaker's frame, made for absorbing a Gate-break's opening shock and holding a line rather than for finesse. A weathered, sun-worn face from Gulf Coast heat, a permanent squint. Cropped hair, a thick neck and forearms, Redline Guild's heavy-duty gear scuffed and clearly well used rather than for show."
   personality: "Unestablished — no scene has reached him."
   knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
 ```
@@ -891,6 +893,7 @@ canonical_state:
   age: "**45** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Cascade Guild (Seattle) — guild policy keeps his public profile deliberately thin."
   capabilities: "S-Rank combat; signature unestablished."
+  appearance: "Authored 2026-09-22 (real date), for portrait reference — no physical description existed in canon prior to this note, and no scene has reached him yet to ground it further. Mid-40s, white, lean and deliberately unremarkable-looking — guild policy keeps him camera-shy, so he dresses to disappear into a crowd rather than stand out in one: plain outdoor layers, a ballcap pulled low, nothing marking him as Cascade Guild at all. Graying hair, a quiet, watchful face that gives away nothing to a lens."
   personality: "Unestablished — no scene has reached him."
   knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
 ```
@@ -921,6 +924,7 @@ canonical_state:
   age: "**34** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Delta Watch (New Orleans)."
   capabilities: "S-Rank combat; flood/storm-environment specialization, signature unestablished."
+  appearance: "Authored 2026-09-22 (real date), for portrait reference — no physical description existed in canon prior to this note, and no scene has reached her yet to ground it further. Mid-30s, Black, medium height, wiry and weather-toughened — built for standing waist-deep in floodwater for hours rather than for a boss chamber. Locs pulled back off her face, quick dark eyes used to reading a rising water line at a glance. Delta Watch's practical waterproofed gear, a battered rain jacket that has clearly seen real storms rather than press events."
   personality: "Unestablished — no scene has reached her."
   knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
 ```
@@ -951,6 +955,7 @@ canonical_state:
   age: "**32** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Sterling Guild (Boston) — heavily press-managed."
   capabilities: "S-Rank combat; signature unestablished."
+  appearance: "Authored 2026-09-22 (real date), for portrait reference — no physical description existed in canon prior to this note, and no scene has reached him yet to ground it further. Early 30s, white, tall and conventionally handsome in the deliberate way an old-money guild grooms its flagship — an expensive haircut, tailored practice gear that still reads as gear rather than fashion. A practiced camera-ready smile that doesn't quite reach eyes doing their own separate, more careful calculation."
   personality: "Unestablished — no scene has reached him."
   knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
 ```
@@ -981,6 +986,7 @@ canonical_state:
   age: "**38** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "Unaffiliated, independent contractor, Los Angeles — no guild membership, mirroring Alexander's own standing."
   capabilities: "S-Rank combat; signature unestablished."
+  appearance: "Authored 2026-09-22 (real date), for portrait reference — no physical description existed in canon prior to this note, and no scene has reached her yet to ground it further. Late 30s, white, medium height, deliberately hard to place — nondescript clothing, no gear branding, the practiced anonymity of someone who has spent years staying off a searchable public record on purpose. Sharp, guarded eyes, sun-weathered LA skin, hair kept short and low-maintenance. Nothing about her reads as S-Rank at a glance, which is evidently the point."
   personality: "Unestablished — no scene has reached her."
   knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach — flagged in play as the researched name most likely to actually understand his position."
 ```
@@ -1013,6 +1019,7 @@ canonical_state:
   age: "**43** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Anchor Guild (Detroit)."
   capabilities: "S-Rank combat; industrial-Gate specialization, signature unestablished."
+  appearance: "Authored 2026-09-22 (real date), for portrait reference — no physical description existed in canon prior to this note, and no scene has reached him yet to ground it further. Early 40s, white, a working-class Detroit build — thick through the shoulders and forearms from years of industrial-Gate clears, a face lined and weathered rather than camera-groomed. Close-cropped greying hair, a steady, unbothered expression, Anchor Guild's heavy industrial-rated gear worn like a work uniform rather than a costume."
   personality: "Unestablished — no scene has reached him."
   knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
 ```
@@ -1043,6 +1050,7 @@ canonical_state:
   age: "**24** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Vanguard Collective (Miami) — youngest of the eleven, recently promoted."
   capabilities: "S-Rank combat; signature unestablished."
+  appearance: "Authored 2026-09-22 (real date), for portrait reference — no physical description existed in canon prior to this note, and no scene has reached her yet to ground it further. Mid-20s, Latina, compact and athletic, visibly younger than the company she's newly keeping. Long dark hair often worn in a practical braid for cameras, an easy camera-friendly smile her guild is clearly leaning on, though something more uncertain shows through in unguarded moments. Vanguard Collective's newer, sleeker gear, still looking slightly too new on her."
   personality: "Unestablished — no scene has reached her."
   knowledge: "No channel to Alexander. Aware, if at all, only through Renata's national-roster outreach."
 ```
@@ -1080,6 +1088,7 @@ canonical_state:
   location: "**The Winnetka lakefront house, guest room (second door on the right, lake window), since 2026-09-24 21:33 Chicago** (`EVT-001092`), asleep behind Kane's Standfast at the 06:22 close. Otherwise her Sacramento apartment (2C, second floor front); her roommate returns 21:30 Pacific tonight to a note on the fridge (*last-minute thing, back tomorrow*)."
   capabilities: "S-Rank, untrained, no combat history. **Signature: telekinesis** (below). No other known technique."
   signature_ability: "**Telekinesis** — moves objects at range, about 40 m. A method and a reach, never a magnitude beyond her Rank (Section 13.6): an S-Rank standard effect. **Untrained and unfocused:** it currently lands only on what she already claims as her own (her keys, laptop, bag, the bookshelf in her room; the roommate's mug has never so much as rattled) and it fires unbidden when she is frightened, including in sleep. A signature use costs 25% of her own pool, **480 MP**; four uses on a full pool. Read by Flux Sight at the S rung (`EVT-001091`); she has no name for it and had not typed the word into a phone without closing the tab."
+  appearance: "Authored 2026-09-22 (real date), for portrait reference — no physical description existed in canon prior to this note. Early 20s, Korean-American, slight build, still dresses like a grad student rather than a hunter — a hoodie, jeans, a laptop bag she hasn't swapped out. Straight dark hair often pulled back in a rush rather than styled; tired eyes from a life recently upended; an expressive face that telegraphs nerves before she catches it. Nothing about her reads as S-Rank at a glance, which is exactly the disconnect the people around her keep noticing."
   personality: "Careful, visibly rehearsed before the call, relieved once it was actually answered. Direct about her own lack of a reference point rather than pretending otherwise."
   want: "**Sleep, control, and her life mostly unchanged** — her apartment, her roommate not knowing, Monday's seminar — and **someone to show her what this can do**; she is curious as well as afraid and says so. Not to be a poster. Not to join anything yet."
   fear: "**That it will hurt someone while she sleeps** — her roommate, eight feet and a wall away, is the case she names — and that the person who lived in that apartment before the night of 2026-09-12 is gone and something else is wearing her. Underneath it, being alone with it."

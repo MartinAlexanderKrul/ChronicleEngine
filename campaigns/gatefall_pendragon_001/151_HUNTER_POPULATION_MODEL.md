@@ -44,8 +44,8 @@ Use each city's own metro area, not a wider multi-city conurbation (e.g., Amster
 | Tel Aviv | 116 | 81 | 58 | 27 | 6 | 1 (Itai Barak) | 289 | 460K | 4.0M | 609 | 47% |
 | Istanbul | 174 | 110 | 112 | 56 | 20 | 0 | 472 | — | 15.5M | 2,359 | 20% |
 | Stockholm | 25 | 20 | 12 | 7 | 5 | 0 | 69 | 980K | 2.4M | 365 | 19% |
-| London | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 9.0M | 14.9M | 2,267 | 0% (event not yet held) |
-| **Guild Total** | **1,380** | **1,102** | **801** | **494** | **170** | **3** | **3,950** | — | **~141.6M** | **~19,400** | **~20%** |
+| London | 151 | 120 | 86 | 52 | 22 | 0 | **431** | 9.0M | 14.9M | 2,267 | 19% |
+| **Guild Total** | **1,531** | **1,222** | **887** | **546** | **192** | **3** | **4,381** | — | **~141.6M** | **~21,667** | **~20%** |
 
 This table is authoritative. It replaces the `140_OBJECTIVES.md` OBJ-60 per-office numbers and the "Guild membership: 3,716" figure wherever cited in `180_CURRENT_STATE.md` and elsewhere in the live record. Kane (Chicago, S-Rank) is now counted as a member — he is second-in-command over operations, not a co-founder exempted from headcount.
 

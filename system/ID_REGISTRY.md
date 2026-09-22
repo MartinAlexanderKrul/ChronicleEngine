@@ -26,8 +26,8 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000341 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001154 |
-| Relationship | `REL-` | Relationship | REL-000124 |
+| Event | `EVT-` | Event | EVT-001161 |
+| Relationship | `REL-` | Relationship | REL-000125 |
 
 ---
 
@@ -37,6 +37,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 
 | Range | Kind | Consumed by |
 |-------|------|-------------|
+| EVT-001155 – EVT-001161 | Event | Gatefall: Pendragon, 2026-09-29/30, from checkpoint 0170: beer night continues, games and a horror movie (`001155`-`001156`); a relationship deepens with both Kane and Dario, REL-000125 minted (Kane/Dario) (`001156`); the night together, off-page (`001157`); overnight to 06:00 Wednesday, the world tick runs -- quiet_days 2 -> 3, an on-route audition Gate, GB-60/GB-61/GB-62 -- the 63rd daily lapses (streak 52 -> 0), the 64th issues (`001158`); morning (`001159`); Kane tasked with the regulator permits, Dario tasked with a Chicago training announcement, departure for the menders' meeting (`001160`); promotion-barrier settlement (`001161`) |
+| REL-000125 | Relationship | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): Elias Kane and Dario Wexler -- their own relationship, formed the same night both became involved with Alexander |
 | EVT-001148 – EVT-001154 | Event | Gatefall: Pendragon, 2026-09-29, from checkpoint 0169: Kane's report, GB-58/GB-59 introduced (`001148`); sleep to 12:30, Anjali's 09:16 status, GB-58/GB-59 cleared (`001149`); London — Imogen Hartley, the sharp exchange, the tunnel-access call (`001150`); London recruitment event, 431 signed (`001151`); home, Paris snack boards, Prague Pilsner (`001152`); downtime, beer night begins (`001153`); promotion-barrier settlement (`001154`). No entity, relationship, or record identifier consumed — a Runtime error briefly authored a duplicate NPC for London's day manager before being corrected to the already-existing Imogen Hartley (`ENT-000318`); entity high-water mark unchanged at `ENT-000341` |
 | EVT-001140 – EVT-001147 | Event | Gatefall: Pendragon, 2026-09-28/29, from checkpoint 0168: Dario Wexler joins as senior combat lead, San Francisco 209 signed (`001140`); Istanbul and Tel Aviv found, anchored, tunnelled (`001141`); Tel Aviv 288 signed, Itai Barak recruited (`001142`); Istanbul 168 signed, tunnelled (`001143`); Stockholm tunnelled, 232 signed (`001144`); the Tuesday 06:00 tick run retroactively, GB-58/GB-59 (`001145`); office qualification review, seventeen night officers named, the regulator-gap escalation (`001146`); promotion-barrier settlement (`001147`) |
 | ENT-000321 – ENT-000341 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): Kerem Aydogan, Istanbul night officer (`000321`); Elif Demir, Istanbul day manager (`000322`); Itai Barak, Israel's S-Rank, guild member (`000323`); Noa Shapira, Tel Aviv day manager (`000324`); seventeen named night officers across every remaining office (`000325`-`000341`). Every name cleared through `tools/check_name_collision.ps1 -StrictSurnames` |

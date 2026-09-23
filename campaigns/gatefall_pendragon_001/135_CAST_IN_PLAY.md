@@ -152,6 +152,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000284` | Cass Orlov | independent media — Gate-site content | active | Chicago | `REL-000120` |
 | `ENT-000285` | Anton Drury | System-bearer, Assay rotation worker (interval-check) | active | The Landing, the far side — delivered `EVT-001062`, alongside t… | `REL-000121` |
 | `ENT-000287` | Nathaniel Cole | guild HQ staff — security | active | The Pendragon Guild HQ campus, Detroit. | — |
+| `ENT-000342` | Trevor Yamashita | guild member — striker, B-Rank | active | Detroit HQ, on a training rotation. | — |
 | `ENT-000288` | Anjali Desai | guild HQ staff — front office | active | The Pendragon Guild HQ campus, Detroit. | — |
 | `ENT-000286` | Milena Horáková | guild office staff | active | The Pendragon Guild's Prague office. | — |
 | `ENT-000289` | Tomas Prochazka | guild striker | active | Prague, guild dispatch crew. | `REL-000122` |
@@ -317,7 +318,8 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000283` | Sanne Verhoeven | Jobs that are real, on a clock that works, run her way — full control of the rig and paper on e… | Unestablished — not disclosed | Unestablished — not disclosed | Short declaratives, numbered questions, 'take it or don't'; states a price and a condition in t… |
 | `ENT-000284` | Cass Orlov | The one interview nobody else got, today, before the news cycle sets on its own account of the… | That Kane's unspoken read of her — someone who turns other people's worst days into a thumbnail… | The lakefront photo is already cut into a piece running tonight with or without Alexander's coo… | Quick, plainspoken, self-aware; drops the pitch register the moment she's actually being honest… |
 | `ENT-000285` | Anton Drury | Structure, and something to do with a life that was supposed to have ended on a specific day an… | Being asked to justify his own participation in the process — voiced directly, unprompted, once… | None disclosed beyond the fear above — he was notably forthcoming rather than withholding once… | Flat and procedural under pressure, cracking into something rawer and more honest the longer un… |
-| `ENT-000287` | Nathaniel Cole | Not yet established beyond doing the job well | Not yet established | Not yet established | Plain, competent, names a real constraint rather than overpromising |
+| `ENT-000287` | Nathaniel Cole | To run the one part of this whole operation that never has to be explained twice — the thing th… | Being handed scope creep with no matching authority — Anjali's own list keeps landing partly on… | He over-ordered on security hardware in the first week, expecting the roster to double faster t… | Plain, competent, names a real constraint rather than overpromising |
+| `ENT-000342` | Trevor Yamashita | Not yet established beyond ordinary competence and being properly equipped for the work | Not yet established | Not yet established | Plain, warm, says what he means without much filter once relaxed |
 | `ENT-000288` | Anjali Desai | Not yet established beyond running a clean, accountable operation | Not yet established | Not yet established | Efficient, states what she can and can't promise plainly |
 | `ENT-000286` | Milena Horáková | To do the job well enough that the placeholder framing resolves in her favor | Not yet established | Not yet established | Composed, professional, states the honest state of things rather than a managed version of it w… |
 | `ENT-000289` | Tomas Prochazka | Not yet established beyond ordinary steady work | Not yet established | Not yet established | Plain, says what he means without dressing it up — first line to Alexander was genuine surprise… |
@@ -378,7 +380,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 183. Protagonist relationships: 45.
-- Characters: 155. Disposition authored in full: 101; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 184. Protagonist relationships: 45.
+- Characters: 156. Disposition authored in full: 102; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

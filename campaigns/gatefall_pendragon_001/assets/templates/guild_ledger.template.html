@@ -170,13 +170,7 @@
 
 <div class="wrap">
   <header class="top">
-    <nav class="ledgers" aria-label="Pendragon ledgers">
-      <a href="index.html">All ledgers</a>
-      <a href="alexander_pendragon_inventory_ledger.html">Inventory</a>
-      <a href="alexander_pendragon_skill_ledger.html">Skills</a>
-      <a href="alexander_pendragon_npc_ledger.html">NPCs</a>
-      <a href="alexander_pendragon_guild_ledger.html" aria-current="page">Guild</a>
-    </nav>
+    <nav class="ledgers" aria-label="Pendragon ledgers"><!--{{ledger-nav}}--></nav>
     <div class="id-block">
       <div class="eyebrow">Pendragon Ledger 04 · Guild</div>
       <h1>Guild Ledger</h1>
@@ -194,7 +188,7 @@
 
   <section class="section" aria-labelledby="h-lead">
     <div class="sechead"><h2 id="h-lead">Leadership &amp; Board</h2><span class="line"></span>
-      <a href="alexander_pendragon_npc_ledger.html?org=Pendragon%20Guild">Every member in the NPC ledger &rarr;</a></div>
+      <a href="{{ledger:npc}}?org=Pendragon%20Guild">Every member in the NPC ledger &rarr;</a></div>
     <div class="people" id="leadership"></div>
     <div class="sechead" style="margin-top:18px"><h2 style="font-size:.95rem">Board</h2><span class="count" id="boardCount"></span><span class="line"></span></div>
     <div class="people" id="board"></div>
@@ -230,7 +224,7 @@
 // ---- Data -------------------------------------------------------------
 const G = /*__GUILD_DATA__*/{}/*__END__*/;
 const RANKS = ["E","D","C","B","A","S"];
-const NPC_LEDGER = "alexander_pendragon_npc_ledger.html";
+const NPC_LEDGER = "{{ledger:npc}}";
 
 // ---- Render -------------------------------------------------------------
 const fmt = n => Number(n).toLocaleString("en-US");
@@ -244,7 +238,7 @@ function face(p){
 function rankBadge(r){ return r ? `<span class="rank" style="--rk:var(--rank-${r.toLowerCase()})">${r}</span>` : ""; }
 // Every named person links to their full record in the NPC ledger; the founder
 // has no NPC record, so his card links to his medallion on the index instead.
-function hrefOf(p){ return p.id === "ENT-000125" ? "index.html#profile" : `${NPC_LEDGER}?open=${p.id}`; }
+function hrefOf(p){ return p.id === "ENT-000125" ? "{{ledger:index}}#profile" : `${NPC_LEDGER}?open=${p.id}`; }
 function person(p){
   return `<a class="person" href="${hrefOf(p)}">${face(p)}<span class="who">
     <span class="nm">${p.name}${rankBadge(p.rank)}</span><span class="post">${p.post || ""}</span></span></a>`;

@@ -280,6 +280,29 @@ NPC_ORDER = ["affiliation", "home", "age", "role", "rank", "pools", "pool_varian
 NPC_RANK = re.compile(r"(?<![A-Za-z])([SABCDE])-Rank")
 PROTAGONIST = "ENT-000125"
 
+# Every page this generator writes, keyed. Templates never spell a filename:
+# they write {{ledger:<key>}} where they link to one, and <!--{{ledger-nav}}-->
+# where the switcher goes, and both are filled from here as relative links --
+# so the pages work from any folder or host, and a rename is one line.
+LEDGERS = {
+    "index": ("index.html", "All ledgers"),
+    "inventory": ("alexander_pendragon_inventory_ledger.html", "Inventory"),
+    "skills": ("alexander_pendragon_skill_ledger.html", "Skills"),
+    "npc": ("alexander_pendragon_npc_ledger.html", "NPCs"),
+    "guild": ("alexander_pendragon_guild_ledger.html", "Guild"),
+}
+
+
+def link_ledgers(page, current):
+    nav = "\n".join('      <a href="%s"%s>%s</a>' % (f, ' aria-current="page"' if k == current else "", label)
+                    for k, (f, label) in LEDGERS.items())
+    page = page.replace("<!--{{ledger-nav}}-->", "\n" + nav + "\n    ")
+    page = re.sub(r"\{\{ledger:(\w+)\}\}", lambda m: LEDGERS[m.group(1)][0] if m.group(1) in LEDGERS else m.group(0), page)
+    left = re.findall(r"\{\{ledger[^}]*\}\}", page)
+    if left:
+        raise SystemExit("unresolved ledger link(s) in the %s template: %s" % (current, ", ".join(left)))
+    return page
+
 
 def fenced_records(path):
     text = io.open(path, encoding="utf-8").read()
@@ -624,9 +647,10 @@ def main():
 
     written = []
 
-    def emit(name, template, replacements):
+    def emit(key, template, replacements):
+        name = LEDGERS[key][0]
         tpl_file = os.path.join(assets, "templates", template)
-        page = io.open(tpl_file, encoding="utf-8", newline="").read()
+        page = link_ledgers(io.open(tpl_file, encoding="utf-8", newline="").read(), key)
         for marker, payload in replacements.items():
             token = "/*__%s__*/" % marker
             head, _, rest = page.partition(token)
@@ -644,7 +668,7 @@ def main():
         written.append((name, len(page.encode("utf-8"))))
         return True
 
-    ok = emit("alexander_pendragon_skill_ledger.html", "skill_ledger.template.html",
+    ok = emit("skills", "skill_ledger.template.html",
               {"SKILLS_DATA": "[" + chr(10) + data + chr(10) + "]"})
 
     items, equipped, missing, total_reduction = build_inventory(state, assets, taxonomy, args.campaign)
@@ -665,7 +689,7 @@ def main():
           % (len(items), len(state.get("inventory", {}) or {}), len(equipped)))
     idata = ("," + chr(10)).join(json.dumps(r, ensure_ascii=False) for r in items)
     edata = ("," + chr(10)).join(json.dumps(r, ensure_ascii=False) for r in equipped)
-    ok = emit("alexander_pendragon_inventory_ledger.html", "inventory_ledger.template.html",
+    ok = emit("inventory", "inventory_ledger.template.html",
               {"EQUIPPED_DATA": "[" + chr(10) + edata + chr(10) + "]",
                "ITEMS_DATA": "[" + chr(10) + idata + chr(10) + "]",
                "TOTAL_REDUCTION": json.dumps(total_reduction, ensure_ascii=False)}) and ok
@@ -684,7 +708,7 @@ def main():
     print("npcs: %d characters, %d with a portrait, %d tied to the protagonist"
           % (len(npcs), sum(1 for r in npcs if r["portrait"]), sum(1 for r in npcs if r["rels"])))
     ndata = ("," + chr(10)).join(json.dumps(r, ensure_ascii=False).replace("</", "<\\/") for r in npcs)
-    ok = emit("alexander_pendragon_npc_ledger.html", "npc_ledger.template.html",
+    ok = emit("npc", "npc_ledger.template.html",
               {"NPC_DATA": "[" + chr(10) + ndata + chr(10) + "]"}) and ok
     sheet_text = io.open(os.path.join(camp, "100_CHARACTER_SHEET.md"), encoding="utf-8").read()
     founder_pic = re.search(r'^\s*portrait:\s*"assets/(.+?)"', sheet_text, re.M)
@@ -697,7 +721,7 @@ def main():
         return 1
     print("guild: %d members across %d offices, %d named people, %d clearances"
           % (guild["total"], len(guild["offices"]), guild["roster"] + 1, len(guild["cleared"])))
-    ok = emit("alexander_pendragon_guild_ledger.html", "guild_ledger.template.html",
+    ok = emit("guild", "guild_ledger.template.html",
               {"GUILD_DATA": json.dumps(guild, ensure_ascii=False).replace("</", "<\\/")}) and ok
 
     # The index opens on the bearer's medallion, read from the same sheet, so
@@ -725,7 +749,7 @@ def main():
         "now": summary_line(bearer.get("location")), "appearance": summary_line(bearer.get("appearance")),
         "personality": summary_line(bearer.get("personality")), "aspiration": summary_line(bearer.get("aspiration")),
     }
-    ok = emit("index.html", "index.template.html",
+    ok = emit("index", "index.template.html",
               {"PROFILE_DATA": json.dumps(profile, ensure_ascii=False).replace("</", "<\\/")}) and ok
 
     synced, copied, removed = sync_portraits(assets, mirror, args.check)

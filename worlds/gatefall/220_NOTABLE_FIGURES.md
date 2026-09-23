@@ -780,6 +780,7 @@ aliases:
     quality: current
 canonical_state:
   portrait: "assets/portraits/Elias_Kane_ENT-000242.png"
+  portrait_guild: "assets/portraits/Elias_Kane_ENT-000242_guild.png"
   rank: "**S-Rank** — stated in his entry, 'the other Chicago S-Rank.' Resolved by that Rank under Section 13.1."
   age: "**32** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "**Second in command, the Pendragon Guild, effective 2026-09-24 — resigned from BGM the same day** (campaign, `EVT-001084`). Prior: BGM federal asset, Chicago — no guild membership, reported to Washington rather than Region V or any guild chain (`200_WORLD_BIBLE.md`)."
@@ -831,6 +832,7 @@ aliases:
   - name: "Isabel Chandrasekaran"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Isabel_Chandrasekaran_ENT-000234.png"
   rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
   age: "**36** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Ashwood Collective (Denver)."
@@ -862,6 +864,7 @@ aliases:
   - name: "Marcus Webb"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Marcus_Webb_ENT-000235.png"
   rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
   age: "**39** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Redline Guild (Houston)."
@@ -893,6 +896,7 @@ aliases:
   - name: "Jonas Whitfield"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Jonas_Whitfield_ENT-000236.png"
   rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
   age: "**45** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Cascade Guild (Seattle) — guild policy keeps his public profile deliberately thin."
@@ -924,6 +928,7 @@ aliases:
   - name: "Camille Duforest"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Camille_Duforest_ENT-000237.png"
   rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
   age: "**34** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Delta Watch (New Orleans)."
@@ -955,6 +960,7 @@ aliases:
   - name: "Griffin Ashcombe"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Griffin_Ashcombe_ENT-000238.png"
   rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
   age: "**32** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Sterling Guild (Boston) — heavily press-managed."
@@ -986,6 +992,7 @@ aliases:
   - name: "Nadia Farrow"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Nadia_Farrow_ENT-000239.png"
   rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
   age: "**38** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "Unaffiliated, independent contractor, Los Angeles — no guild membership, mirroring Alexander's own standing."
@@ -1019,6 +1026,7 @@ aliases:
   - name: "Terrence Kowalczyk"
     quality: former
 canonical_state:
+  portrait: "assets/portraits/Terrence_Kowalczyk_ENT-000240.png"
   rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
   age: "**43** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Anchor Guild (Detroit)."
@@ -1050,6 +1058,7 @@ aliases:
   - name: "Odalys Ferreira"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Odalys_Ferreira_ENT-000241.png"
   rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
   age: "**24** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Vanguard Collective (Miami) — youngest of the eleven, recently promoted."
@@ -1084,6 +1093,7 @@ aliases:
 relationships:
   - REL-000124
 canonical_state:
+  portrait: "assets/portraits/Elena_Cho_ENT-000291.png"
   rank: "**S-Rank** — confirmed eleven days before first contact (roughly 2026-09-13). A cold awakening: no prior hunter history, licence, or Rank of any kind before this."
   pool_variance: "**-4%** — authored in play under Profile Section 6.1.2's +/-10% band and read by Flux Sight (`EVT-001091`). Permanent and never rerolled."
   pools: "**Maximum Health 3,840, maximum Mana 1,920** — Section 6.1 S-Rank table (4,000 / 2,000) x 0.96. Section 5.2 tier costs, read from her own maximum: **Minor 192, Signature 480**."
@@ -1131,6 +1141,7 @@ aliases:
   - name: "Camille Aubrac"
     quality: current
 canonical_state:
+  portrait: "assets/portraits/Camille_Aubrac_ENT-000282.png"
   rank: "**S-Rank** — world-ranked IGR #6 (`200_WORLD_BIBLE.md`). Resolved by that Rank under Section 13.1."
   age: "**41** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "Lumière Guild, Paris — the guild's own flagship name, more publicly recognized than the guild itself in most markets."

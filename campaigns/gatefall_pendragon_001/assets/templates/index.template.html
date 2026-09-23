@@ -165,12 +165,32 @@
   .fund span{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
   .props{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px;}
   .prop{background:var(--surface2); border:1px solid var(--border); border-radius:10px; overflow:hidden; display:flex; flex-direction:column; min-width:0;}
-  .prop .photo{aspect-ratio:16 / 9; background:var(--bg); display:grid; place-items:center; position:relative; overflow:hidden;}
-  .prop .photo img{width:100%; height:100%; object-fit:cover; display:block;}
-  .prop .photo .none{font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
-  .prop .photo .alt{position:absolute; right:8px; bottom:8px; display:flex; gap:4px;}
-  .prop .photo .alt button{width:10px; height:10px; border-radius:50%; border:1px solid #fff; background:rgba(255,255,255,.35); padding:0; cursor:pointer;}
-  .prop .photo .alt button[aria-pressed="true"]{background:#fff;}
+  /* Photo carousel: native scroll-snap, so touch swipe and trackpad drag work
+     without script; the arrows, keys and counter drive the same scroller. */
+  .prop .photo{aspect-ratio:16 / 9; background:var(--bg); position:relative; overflow:hidden;}
+  .prop .photo .none{position:absolute; inset:0; display:grid; place-items:center; font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+  .prop .slides{display:flex; width:100%; height:100%; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory;
+    scroll-behavior:smooth; scrollbar-width:none; overscroll-behavior-x:contain; touch-action:pan-x pan-y;}
+  .prop .slides::-webkit-scrollbar{display:none;}
+  .prop .slides:focus-visible{outline:2px solid var(--accent); outline-offset:-2px;}
+  .prop .slide{flex:0 0 100%; height:100%; scroll-snap-align:start; scroll-snap-stop:always; position:relative; margin:0;}
+  .prop .slide a{display:block; width:100%; height:100%;}
+  .prop .slide img{width:100%; height:100%; object-fit:cover; display:block; -webkit-user-drag:none; user-select:none;}
+  .prop .slide figcaption{position:absolute; left:10px; bottom:10px; font-family:"IBM Plex Mono",monospace; font-size:.62rem;
+    letter-spacing:.06em; text-transform:uppercase; color:#fff; background:rgba(0,0,0,.55); padding:3px 8px; border-radius:5px; pointer-events:none;}
+  .prop .nav{position:absolute; top:50%; transform:translateY(-50%); width:34px; height:34px; border-radius:50%; border:0;
+    background:rgba(0,0,0,.5); color:#fff; font-size:1.1rem; line-height:1; cursor:pointer; display:grid; place-items:center;
+    opacity:0; transition:opacity .15s;}
+  .prop .nav.prev{left:8px;} .prop .nav.next{right:8px;}
+  .prop .photo:hover .nav, .prop .nav:focus-visible{opacity:1;}
+  .prop .nav:disabled{opacity:0 !important; pointer-events:none;}
+  .prop .nav:focus-visible{outline:2px solid #fff; outline-offset:1px;}
+  @media (hover:none){ .prop .nav{display:none;} }
+  .prop .count{position:absolute; right:10px; bottom:10px; font-family:"IBM Plex Mono",monospace; font-size:.62rem;
+    color:#fff; background:rgba(0,0,0,.55); padding:3px 8px; border-radius:5px; pointer-events:none;}
+  .prop .dots{position:absolute; left:0; right:0; top:10px; display:flex; justify-content:center; gap:5px; pointer-events:none;}
+  .prop .dots i{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.45);}
+  .prop .dots i.on{background:#fff;}
   .prop .body{padding:12px 14px; display:flex; flex-direction:column; gap:7px;}
   .prop .top{display:flex; justify-content:space-between; gap:8px; align-items:baseline;}
   .prop h4{font-family:"Chakra Petch",sans-serif; font-size:1rem; margin:0;}
@@ -251,9 +271,16 @@ function wealthOf(W){
   if (!W) return "";
   const props = (W.properties || []).map((p, i) => `
     <article class="prop">
-      <div class="photo" data-prop="${i}">${p.photos.length
-        ? `<a href="${p.photos[0]}" target="_blank" rel="noopener"><img src="${p.photos[0]}" alt="${p.name}" loading="lazy"></a>` +
-          (p.photos.length > 1 ? `<div class="alt">${p.photos.map((s, k) => `<button type="button" aria-label="Photo ${k + 1}" aria-pressed="${k === 0}" data-src="${s}"></button>`).join("")}</div>` : "")
+      <div class="photo">${p.photos.length ? `
+        <div class="slides" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Photos of ${p.name}">
+          ${p.photos.map((ph, k) => `<figure class="slide" aria-label="${k + 1} of ${p.photos.length}: ${ph.caption}">
+            <a href="${ph.src}" target="_blank" rel="noopener" draggable="false"><img src="${ph.src}" alt="${p.name}, ${ph.caption}" loading="lazy" draggable="false"></a>
+            <figcaption>${ph.caption}</figcaption></figure>`).join("")}
+        </div>
+        ${p.photos.length > 1 ? `<button class="nav prev" type="button" aria-label="Previous photo" disabled>&#x2039;</button>
+          <button class="nav next" type="button" aria-label="Next photo">&#x203A;</button>
+          <span class="count">1 / ${p.photos.length}</span>
+          ${p.photos.length <= 12 ? `<span class="dots" aria-hidden="true">${p.photos.map((_, k) => `<i class="${k ? "" : "on"}"></i>`).join("")}</span>` : ""}` : ""}`
         : `<span class="none">No photo yet</span>`}</div>
       <div class="body">
         <div class="top"><h4>${p.name}</h4><span class="tenure ${p.tenure.toLowerCase()}">${p.tenure}</span></div>
@@ -311,12 +338,50 @@ function wealthOf(W){
     document.getElementById("medLink").href = src;
     el.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x === b));
   }));
-  el.querySelectorAll(".prop .alt button").forEach(b => b.addEventListener("click", () => {
-    const box = b.closest(".photo");
-    box.querySelector("img").src = b.dataset.src;
-    box.querySelector("a").href = b.dataset.src;
-    box.querySelectorAll(".alt button").forEach(x => x.setAttribute("aria-pressed", x === b));
-  }));
+  // Carousels: the scroller is the source of truth; swiping, dragging, the
+  // arrows and the arrow keys all move it, and the counter follows it.
+  el.querySelectorAll(".prop .photo").forEach(box => {
+    const track = box.querySelector(".slides");
+    if (!track) return;
+    const n = track.children.length, prev = box.querySelector(".prev"), next = box.querySelector(".next");
+    const count = box.querySelector(".count"), dots = [...box.querySelectorAll(".dots i")];
+    const at = () => Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+    // Smooth where the browser animates it; if it has not arrived shortly (reduced
+    // motion, a throttled tab), land it outright so a tap is never lost.
+    const calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const go = i => {
+      const left = Math.max(0, Math.min(n - 1, i)) * track.clientWidth;
+      track.scrollTo({left, behavior: calm ? "instant" : "smooth"});
+      setTimeout(() => { if (Math.abs(track.scrollLeft - left) > 2) track.scrollTo({left, behavior: "instant"}); sync(); }, 450);
+    };
+    const sync = () => {
+      const i = at();
+      if (count) count.textContent = `${i + 1} / ${n}`;
+      dots.forEach((d, k) => d.classList.toggle("on", k === i));
+      if (prev) prev.disabled = i <= 0;
+      if (next) next.disabled = i >= n - 1;
+    };
+    let raf = 0;
+    track.addEventListener("scroll", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(sync); }, {passive: true});
+    if (prev) prev.addEventListener("click", () => go(at() - 1));
+    if (next) next.addEventListener("click", () => go(at() + 1));
+    track.addEventListener("keydown", e => {
+      if (e.key === "ArrowLeft") { e.preventDefault(); go(at() - 1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); go(at() + 1); }
+    });
+    // Mouse drag for desktop without a trackpad; a drag never opens the photo.
+    let down = null, moved = false;
+    track.addEventListener("pointerdown", e => { if (e.pointerType === "mouse") { down = {x: e.clientX, left: track.scrollLeft}; moved = false; track.style.scrollSnapType = "none"; track.style.scrollBehavior = "auto"; } });
+    window.addEventListener("pointermove", e => { if (!down) return; const dx = e.clientX - down.x; if (Math.abs(dx) > 4) moved = true; track.scrollLeft = down.left - dx; });
+    window.addEventListener("pointerup", e => {
+      if (!down) return;
+      const dx = e.clientX - down.x, i = Math.round(down.left / track.clientWidth);
+      down = null; track.style.scrollSnapType = ""; track.style.scrollBehavior = "";
+      go(Math.abs(dx) > track.clientWidth * 0.15 ? i + (dx < 0 ? 1 : -1) : i);
+    });
+    track.addEventListener("click", e => { if (moved) { e.preventDefault(); moved = false; } }, true);
+    sync();
+  });
 })();
 </script>
 </body></html>

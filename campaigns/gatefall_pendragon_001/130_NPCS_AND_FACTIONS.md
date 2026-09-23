@@ -4502,7 +4502,7 @@ canonical_state:
 
 ### ENT-000343 — the Detroit HQ campus
 
-The Pendragon Guild's headquarters in Detroit, bought with Alexander's own cash and home to the travel hub that joins every office.
+The Pendragon Guild's headquarters in Detroit: a converted logistics campus, brick main building and glass wing, bought with Alexander's own cash and home to the travel hub that joins every office.
 
 ```yaml
 id: ENT-000343
@@ -4524,10 +4524,27 @@ aliases:
     quality: current
 canonical_state:
   location: "Detroit, Michigan — the Pendragon Guild's headquarters campus; exact street address not yet established."
-  condition: "A multi-floor headquarters campus. The restricted third floor, an abandoned office buildout, is the guild's travel hub: 20 rooms live, one per current or near-term office, with capacity for 40, access keyed through reception, and camera coverage with night vision and audio on every room and common area. Fourteen standing Gate Walker tunnels join it to the branch offices (`EVT-001107`). A basement server room; sitewide fingerprint-only access, no cards (`EVT-001086`)."
-  ownership: "Bought outright for $90,000,000 from Alexander's own cash — the guild has no treasury yet — found and closed through Delia Okonjo (`ENT-000248`, `EVT-001068`), closing 2026-09-23 (`EVT-001073`). Held as the Pendragon Guild's headquarters."
+  condition: "A converted logistics campus with 1,100-person capacity, move-in ready — Delia Okonjo's front-runner of three candidates on price-to-size (`EVT-001068`). Walked by Alexander before purchase: structurally sound, no hidden defects. **Authored 2026-09-23 (real date) at the player's direction, matching the campus photos:** a four-storey main building with a restored early-twentieth-century brick facade, joined to a newer glass wing; a small landscaped forecourt and a secured glass main entrance; access gates at the drive; a walled yard and the old loading-dock hall behind. Sitewide fingerprint-only access, no cards (`EVT-001086`)."
+  layout: "Basement: the server room, fingerprint plus retina, a private in-house cloud (`EVT-001086`). Ground floor: reception inside the fingerprint line, the cafeteria (`EVT-001109`), lockers and changing rooms, and a soundproofed quiet-zone lounge off the cafeteria (`EVT-001165`). Second floor: the kitchen, a commercial dual-boiler machine (`EVT-001109`). Third floor, restricted, the frosted windows: the travel hub — 20 rooms live of 40, the standing tunnels to every office, the porter's desk, sealable at the stairwell and the lift (`EVT-001086`, `EVT-001107`, `EVT-001109`). Fourth floor: the artificer floor, ordered (`EVT-001164`) — the top floor of the brick building, so fume and heat extraction vent straight through the roof and the workshops sit above the restricted hub, away from the public ground floor. Glass wing: the dispatch floor and the administrative wing under Anjali Desai (`EVT-001086`). Yard and loading-dock hall: the training yard and indoor bay, being upgraded to a training floor and gym with free weights only (`EVT-001164`) — home of the weekly training, menders included (`EVT-001163`). The artificer floor's placement, the glass wing's use and the yard hall's use were authored 2026-09-23 (real date); every use is canon from the cited Events."
+  ownership: "Bought outright for $90,000,000 against a $92,000,000 ask, from Alexander's own cash — the guild has no treasury yet — found and closed through Delia Okonjo (`ENT-000248`, `EVT-001068`), closing 2026-09-23 (`EVT-001073`). Held as the Pendragon Guild's headquarters."
   photo: "assets/places/Detroit_HQ_Campus_ENT-000343.png"
   photo_alt: "assets/places/Detroit_HQ_Campus_ENT-000343_dusk.png"
+  gallery:
+    - {path: "assets/places/Detroit_HQ_aerial_ENT-000343.png", caption: "The campus from above"}
+    - {path: "assets/places/Detroit_HQ_main_building_ENT-000343.png", caption: "Main building · brick"}
+    - {path: "assets/places/Detroit_HQ_glass_wing_ENT-000343.png", caption: "Glass wing"}
+    - {path: "assets/places/Detroit_HQ_yard_ENT-000343.png", caption: "Training yard"}
+    - {path: "assets/places/Detroit_HQ_training_hall_ENT-000343.png", caption: "Training hall · loading-dock hall"}
+    - {path: "assets/places/Detroit_HQ_lobby_ENT-000343.png", caption: "Reception · ground floor"}
+    - {path: "assets/places/Detroit_HQ_cafeteria_ENT-000343.png", caption: "Cafeteria · ground floor"}
+    - {path: "assets/places/Detroit_HQ_quiet_lounge_ENT-000343.png", caption: "Quiet lounge · ground floor"}
+    - {path: "assets/places/Detroit_HQ_lockers_ENT-000343.png", caption: "Lockers · ground floor"}
+    - {path: "assets/places/Detroit_HQ_server_room_ENT-000343.png", caption: "Server room · basement"}
+    - {path: "assets/places/Detroit_HQ_travel_hub_ENT-000343.png", caption: "Travel hub · 3rd floor"}
+    - {path: "assets/places/Detroit_HQ_tunnel_room_ENT-000343.png", caption: "Tunnel room · 3rd floor"}
+    - {path: "assets/places/Detroit_HQ_artificer_floor_ENT-000343.png", caption: "Artificer floor · 4th floor"}
+    - {path: "assets/places/Detroit_HQ_dispatch_floor_ENT-000343.png", caption: "Dispatch floor · glass wing"}
+    - {path: "assets/places/Detroit_HQ_admin_wing_ENT-000343.png", caption: "Administrative wing · glass wing"}
   situation: "Staffed: Nathaniel Cole (`ENT-000287`) heads security, Anjali Desai (`ENT-000288`) the front office, and Wendell Brooks (`ENT-000302`) is the travel hub's porter. Security and IT buildout ordered 2026-09-24 (`EVT-001086`); the menders' meeting held here 2026-09-30 (`EVT-001162`)."
   note: "An earlier session misidentified the campus as Denver; it has been Detroit throughout, and the Denver site is Alexander's own containment facility (`ENT-000264`), corrected at `EVT-001086`. The HQ lobby is a rift anchor. Minted 2026-09-23 (real date), outside play, at the player's direction, so the holding renders on the ledger index; every fact above is restated from the cited Events."
 ```

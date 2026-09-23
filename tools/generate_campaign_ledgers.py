@@ -657,13 +657,27 @@ def build_wealth(camp, assets):
         if d.get("type") != "Place" or not state.get("ownership"):
             continue
         own = str(state["ownership"])
-        photos = []
-        for key in ("photo", "photo_alt"):
-            if state.get(key):
-                disk = os.path.join(camp, state[key])
-                if not os.path.exists(disk):
-                    failures.append("%s %s points at a missing file: %s" % (d["id"], key, state[key]))
-                photos.append(os.path.relpath(disk, assets).replace(os.sep, "/"))
+        # photo, photo_alt, then any `gallery` entries: each a path, or a
+        # {path, caption} mapping. A caption not given is read off the
+        # filename -- what sets it apart from the first photo's name.
+        entries = [(state.get(k), None) for k in ("photo", "photo_alt") if state.get(k)]
+        for g in state.get("gallery") or []:
+            entries.append((g.get("path"), g.get("caption")) if isinstance(g, dict) else (g, None))
+        photos, first = [], None
+        for path, caption in entries:
+            disk = os.path.join(camp, str(path))
+            if not os.path.exists(disk):
+                failures.append("%s photo points at a missing file: %s" % (d["id"], path))
+            stem = re.sub(r"_?ENT-\d{6}", "", os.path.splitext(os.path.basename(str(path)))[0])
+            first = first if first is not None else stem
+            if caption is None:
+                a, b = first.split("_"), stem.split("_")
+                n = 0
+                while n < min(len(a), len(b)) and a[n] == b[n]:
+                    n += 1
+                tail = " ".join(b[n:]) if stem != first else ""
+                caption = tail.capitalize() if tail else "Main view"
+            photos.append({"src": os.path.relpath(disk, assets).replace(os.sep, "/"), "caption": escape(str(caption))})
         price = re.search(r"\$[0-9]{1,3}(?:,[0-9]{3})*(?:\.[0-9]+)?", own)
         properties.append({
             "id": d["id"], "name": escape(str((d.get("aliases") or [{}])[0].get("name") or d["id"])),
@@ -674,7 +688,7 @@ def build_wealth(camp, assets):
             "ownership": mdi(escape(own)),
             "summary": summary_line(state.get("condition"), 320),
             "details": [[k.replace("_", " "), npc_value(state[k])] for k in
-                        ("condition", "furnishing", "contents", "situation", "note") if state.get(k)],
+                        ("condition", "layout", "furnishing", "contents", "situation", "note") if state.get(k)],
             "photos": photos,
         })
     properties.sort(key=lambda p: (p["tenure"] != "Owned", -float(p["price"].strip("$").replace(",", "") or 0)))

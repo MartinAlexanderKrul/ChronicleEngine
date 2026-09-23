@@ -1281,7 +1281,7 @@ canonical_state:
   condition: "Healthy; not established as combat-active."
   capabilities: "Talent-acquisition recruiter for Ironline Guild (`ENT-000101`), working the Red Line Corridor specifically — Ironline's established recruiting ground (`worlds/gatefall/210_PLACES.md`). Not a combatant; his job is identifying and pitching hunters the guild's volume-strike-contract tier wants."
   knowledge: "**What he knows about Alexander — read this before any line where he asserts something about him.** Every entry cites the Event that established it; anything not listed here he has not been told, which is the boundary rather than a gap (Resident Core, *Load a Recorded NPC Before Playing It*).\n\n  - **His card Rank, file and recruiting history**, as the recruiter who pitched him. Role access, ongoing since `EVT-000138`.\n  - **His conduct at the D-Rank trial** — that the crew had never worked together, that no field lead was assigned, and that Alexander took command unassigned (`EVT-000193`, `EVT-000201`-`EVT-000207`).\n  - **The terms Alexander demanded and what Ironline returned** — the 50% ask, the 35% counter with full lead credit on the contract record, and Alexander's refusal to decide before the trial moved (`EVT-000284`).\n  - **That Alexander wanted C-Rank-and-above names outside Ironline**, which he supplied as a lead list: Soraya Delgado, Grant Okwuosa, Iris Halvorsen, Theo Bannerman (`EVT-000293`).\n  - **The B-Rank harvest trial in full**, including that Alexander walked the Gate mouth alone over his stated objection (`EVT-000338`-`EVT-000346`).\n  - **That Alexander identified the legal-minimum violation** — four combat-rated hunters against a floor of eight — and the terms taken in exchange for discretion (`EVT-000345`), with the harvest-pool and combat-contribution figures delivered by text the same evening (`EVT-000371`).\n  - **That Alexander physically holds the unfiled forged report**, and that he disclosed the roster padding and the three dead recruits himself before being asked (`EVT-000380`, `EVT-000384`).\n  - **The Priscilla Nakamura arrangement — he brokered it.** He made the introduction as one of two standing commitments (`EVT-000384`) and delivered her window himself: tonight, 9:00 PM, her workshop, address given (`EVT-000404`). **This is the one place the Nakamura thread is legitimately known** — Owen and Kesha both carry Closed Channels rows against it, and Wade does not, because he is its source.\n  - **The contractor arrangement** he negotiated and is point of contact for (`EVT-000404`).\n\n  **What he does not have.** Any Bearer-only quantity on the Profile §14.4.1 register — no NPC has a channel to it short of Alexander saying so. His `beliefs` block holds his own account of Alexander's rise; that is a belief under Decision 091 and is played as held, not corrected into knowledge."
-  appearance: "Well-cut jacket that reads out of place in the Red Line Corridor's unpolished district; small, deliberately unshowy Ironline recruiting pin on the lapel. Easy, professional manner."
+  appearance: "Well-cut jacket that reads out of place in the Red Line Corridor's unpolished district; small, deliberately unshowy Ironline recruiting pin on the lapel. Easy, professional manner. **Extended 2026-09-23 (real date), for portrait reference:** Mid-forties, white, lean and upright, the posture of a man who spends his days standing on other people's shop floors. Salt-and-pepper hair cut short and neat; grey eyes; clean-shaven, with deep lines bracketing the mouth from years of saying the hard thing politely. A charcoal wool jacket over an open-collared light-blue shirt, the small Ironline pin on the lapel. Reference setting: the Red Line Corridor at street level, rail girders and weathered brick behind him, flat overcast Chicago light."
   personality: "Direct and unhurried; leads with the honest version of a pitch rather than the polished one, states plainly what he can't promise, and doesn't pressure a decision. Genuinely engaged rather than performing interest when a prospect negotiates back at him."
   want: "**To make his numbers and keep his standing**, and — underneath it and unadmitted — to believe he is not the reason three of his recruits are dead. He went to two of the three funerals (`EVT-000384`). Asked directly whether he would keep sending unprepared strangers into high-Rank Gates, he said **probably**: not his call, and he has never once refused a thin roster."
   fear: "**The fourth funeral, and the file that would make it his.** Since `EVT-000384` there is a nearer one: Alexander physically holds the unfiled report on a confirmed B-Rank Gate staffed at four combat-rated hunters against a legal minimum of eight, filed on a roster forged to eight. **Both of them named the relationship out loud as leverage rather than partnership**, which is the flaw — he manages exposure by conceding to whoever holds it rather than by changing what he signs. **2026-08-20 (`EVT-000566`): Alexander used the word 'partnership' for the first time and Wade noted it flatly rather than seizing it** — *'For what it's worth, I'd rather it was a partnership. I've just not been in a position to ask for that, and I'm still not.'* Told plainly that maybe in the future but for now they both know where they stand, he took it as the flattest available version of the truth and said he would come whatever the meeting turned out to be. **He no longer has to ask, and the report no longer exists as leverage over him** — Alexander handed it to him at `EVT-000583` without renegotiating a single term, and Wade said so out loud: *'that's the single most generous thing anyone's done for me in six years, and I don't think you meant it to be. You could have asked for more.'* His `fear` block should now be read against the fact that **the file that would make the fourth funeral his is in his own jacket.** Prior: **He wants the word and will not ask for it while the report exists — and as of `EVT-000576` he has stopped asking altogether.** Three offers in one day (12:24 call, 14:58 text, 17:54 call), answered with a thumbs up and then with *'nothing much important'* about a conversation Alexander himself had opened as *our partnership*. He said the discrepancy out loud once, flatly, refused to make it a demand, hung up first for the first time in the relationship, and set 06:30 at the grain terminal with attendance explicitly optional. **The next move is Alexander's and Wade will not prompt it.** He tried once more in writing at `EVT-000572` and was answered with an emoji, which he absorbed without complaint — his exposure-management reflex applied to his own feelings, and the same reflex his `fear` block already names."
@@ -1363,7 +1363,7 @@ canonical_state:
   condition: "Healthy; not established as combat-active."
   knowledge: "**What he knows about Alexander — read this before any line where he asserts something about him.** Every entry cites the Event that established it; anything not listed here he has not been told, which is the boundary rather than a gap (Resident Core, *Load a Recorded NPC Before Playing It*). Walt is the sharpest case in the campaign: **he has been shown something no one else has, and has a standing habit of not asking about it.**\n\n  - **That Alexander stores and retrieves objects from nowhere.** First-hand, deliberate, unhideable — Alexander withdrew a Quickknife [C-Rank] into the air above his counter and caught it falling, in front of him. He did not flinch and asked no follow-up, saying only that it answered a question he had been too polite to ask for weeks. Before that, the half-second sleight he caught and let go at `EVT-000139`. **This is a live Section 19 exposure thread, entered knowingly.**\n  - **That Alexander can vanish from a standing position outright.** `EVT-000700`, 2026-08-24 ~10:51 — Alexander stepped away mid-goodbye and was simply gone, no warning given and none asked for this time. Unlike the dagger demonstration, this one wasn't offered as proof of anything; it read as Alexander no longer bothering to manage what Walt sees. **No channel to how, to a destination, or to why the caution dropped.**\n  - **His grey-market dealings with the shop** — every transaction across the visits from `EVT-000157` onward: unprovenanced cores sold, gear handled, Cicero's Quiet inspected at $35,000 with scavenger provenance.\n  - **That Alexander funds the Marnie operation and supplied the material**, and that he holds the pieces connecting Sal Prykowski, Marnie, and the money — Walt's own `secret` records that **nobody has been told they connect.**\n  - **The CONSULT enquiry and what it cost him** — he ran it at Alexander's ask and a thirty-year contact told him to lose the number (`EVT-000352`), which he reported back.\n  - **That the arrangement was not working as it stood**, told to him plainly and taken without argument.\n\n  **What he does not have, and it is narrow and specific.** **No channel to the System by name, to Flux Sight, or to anything Alexander read off his counter** — nothing beyond what he physically watched happen. He has no Bearer-only quantity on the Profile §14.4.1 register: not the level, not a skill name, not a number. **The distinction that matters for playing him:** he has seen an impossible thing and knows it is impossible, and he still has no word for it and has never asked. Write the not-asking as characterisation, not as ignorance."
   capabilities: "Runs a shop stocking mundane salvage, licensed small goods with appraisal certificates, and a locked case of higher-value items of ambiguous origin. Competent at reading condition and wear on ranked gear and artifacts by handling alone; not a licensed BGM appraiser and does not claim to be. Willing to buy unprovenanced goods (including at least one E-Rank core) at a discount reflecting his own risk in moving them — a real black-market transaction under Profile Section 12.2."
-  appearance: "Older, apron, reading glasses pushed up into thinning hair. Unhurried, watchful in the way of someone who has dealt with every kind of customer and stopped being surprised by most of them."
+  appearance: "Older, apron, reading glasses pushed up into thinning hair. Unhurried, watchful in the way of someone who has dealt with every kind of customer and stopped being surprised by most of them. **Extended 2026-09-23 (real date), for portrait reference:** Early seventies, white, Polish-American, stocky and a little stooped. Thinning white hair, reading glasses pushed up into it; watery pale-blue eyes behind heavy brows; a broad, lined face with a nose that has been broken once, long ago. A worn canvas shop apron over a flannel shirt with the sleeves rolled. Reference setting: behind the counter of his pawnshop, shelves of tagged oddments and a glass case of awakened-adjacent gear softly blurred behind him, warm tungsten light."
   personality: "Careful and fair rather than grasping — quotes an honest number and explains his reasoning rather than padding it, doesn't chase a declined price, and doesn't ask more about a good's origin than he needs to know to move it safely. Discreet: noticed something uncanny about Alexander's handling of his own gear and chose, visibly and deliberately, not to pursue it."
   want: "**Something for Nadia.** His granddaughter (`ENT-000207`) is Gate-touched, and it is the reason a careful thirty-year fence started brokering an introduction to an unlicensed artificer and then took $40,000 of a hunter's money to fund an operation (`OBJ-29`). He has not said so in those words. **He gave Alexander his real phone number — a first in thirty years of business**, which is the size of the bet stated in the only currency he has."
   fear: "**Whatever frightened a man who does not frighten.** Asked to run the CONSULT enquiry, he did — and a contact of three decades told him to lose his number if he ever said the word again (🎲 3, `EVT-000352`). **Frightened rather than annoyed**, which Walt understood immediately as the worse of the two findings. He now knows there is something in this city that scares people in his trade, and he has a granddaughter in it. The flaw: he keeps asking anyway."
@@ -1455,7 +1455,7 @@ canonical_state:
   condition: "Healthy so far as anyone knows. **Frightened** — see `situation`. Not established as awakened, and no Flux Sight read has ever been taken of him."
   knowledge: "**Nothing established, and the asymmetry is the point.** Unmet. Alexander was given his name on 2026-08-17, and Walt Adamik ran the CONSULT enquiry through him at Alexander's ask — but the enquiry went through **Walt**, not from Alexander, and what came back was a thirty-year contact telling Walt to lose his number if he ever said the word again (`EVT-000352`).\n\n  So: **he knows someone asked about CONSULT through Walt. He has not been told who, and there is no record that Alexander's name reached him.** Default to not-known on every specific — the name, the reason, that a hunter is behind it — until a played scene or an owner ruling establishes otherwise.\n\n  Written rather than left absent because this record is a live thread with a real risk of the boundary being assumed away: it is easy to narrate him as having connected the enquiry to Alexander, and nothing in canon supports it."
   capabilities: "Runs a real, licensed importer of salvage and surplus on the surface — the clean paperwork a careful man in the grey trade keeps. Thirty years supplying Walt Adamik with stock of mixed provenance. **His actual reach, his other customers, and whether he handles mana-touched material himself are all unestablished.**"
-  appearance: "Unestablished — never seen. Walt has described only how he sounded on a phone call."
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early sixties, white, Polish-American, heavyset and slow-moving, a man who has run the same licensed business for thirty years. Thin grey hair combed straight back; small, wary brown eyes under heavy lids; a jowly, clean-shaven face. A navy work jacket with a faded company name stitched over the pocket. Expression guarded and tired, a man who has just been frightened and is trying not to show it. Reference setting: a salvage-and-surplus import warehouse in light-industrial Chicago, pallets and steel racking blurred behind him, overhead sodium light."
   personality: "Unestablished by direct contact. Two secondhand data points, both Walt's: thirty years of ordinary business dealing without incident, and one call in which he was **frightened rather than annoyed** — a distinction Walt named explicitly and said he had never heard from the man before."
   disposition_status: "**Partially authored — never met, never read.** Decision 091 requires the full set only of a Character a Runtime will play. The one real datum is the phone call, and it is a large one; everything else is unauthored and should stay that way until he is met. **He is an unopened door and the record keeps him one.**"
   want: "**Unauthored.** Thirty years of supplying Walt with mixed-provenance stock establishes a trade, not a motive. His actual reach, his other customers, and whether he handles mana-touched material himself are all explicitly unestablished."
@@ -1506,7 +1506,7 @@ canonical_state:
   condition: "**Gate-touched, not awakened** — Walt's own words, distinguishing the two deliberately. Wrong place, wrong time, roughly three years ago (≈2023). **Nothing licensed medicine offers has fixed it**, and BGM does not cover it because their books do not classify it as a combat injury. **What her condition actually is — symptoms, severity, whether it is stable or degenerative, whether she is independent — is entirely unestablished.** Walt gave the shape of the problem and none of its detail, and nobody asked."
   knowledge: "**Nothing. She does not know Alexander exists.** Unmet, and **no one but Walt Adamik has ever mentioned her** — the channel runs entirely in the other direction. Nothing Alexander has done, funded, or supplied has been attributed to him in her hearing, and Walt's own `secret` records that nobody has been told the pieces connect.\n\n  Written rather than left absent so the emptiness reads as established. If a scene ever puts them in a room, **everything she knows will have to come from that scene or from Walt deciding to say it** — there is no prior channel to draw on."
   capabilities: "Unestablished. Not awakened; no Rank, no System, no combat relevance."
-  appearance: "Unestablished — never seen or described. Her age is not established either, though 'granddaughter' plus a three-year-old injury bounds nothing usefully."
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early twenties, white, Polish-American, slight and quiet. Straight light-brown hair to the shoulders, tucked behind one ear; grey-green eyes a little too still, as if listening for something; a faint pale mark at the hairline from a three-year-old injury. A soft oversized cardigan over a plain T-shirt. Expression reserved, not unhappy, turned slightly inward. Reference setting: a small, lamp-lit Chicago apartment kitchen, evening light through a rain-streaked window."
   want: "**Unauthored, and deliberately so.** She has never spoken on the page. Everything canon holds about her is **Walt's account of her circumstances**, not of her — and what she wants for herself is exactly the thing his account cannot supply. **Author this at the turn she is first played**, from that scene. She is the most load-bearing unauthored actor in the campaign and the easiest to fill in wrongly, because her situation is so heavily written that a Runtime will be tempted to derive a person from it."
   fear: "**Unauthored.** See above. Do not derive one from her condition — a person is not their diagnosis, and canon has never let her speak to the difference."
   secret: "**Unauthored.** What her condition actually is remains unestablished in canon, which is a gap in the record rather than something she is keeping."
@@ -1551,7 +1551,7 @@ canonical_state:
   condition: "Healthy so far as anyone knows. Never seen; the only datum is Wade's account of the call."
   knowledge: "**Nothing about Alexander is established.** He has never heard the name; the pipeline delivery ran through Wade to Alexander, not the reverse."
   capabilities: "C-Rank striker, six years carded. No further detail established."
-  appearance: "Unestablished — never seen."
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early thirties, Haitian-American, tall and long-limbed with a striker's reach. Short twisted black hair; dark, measuring eyes; a trimmed beard along the jaw. A dark-olive field jacket over a black T-shirt, a worn duffel strap across one shoulder. Expression skeptical and direct, a man waiting for the honest number. Reference setting: a Chicago street corner outside a hunters' café, blurred traffic and brick behind him, overcast afternoon light."
   want: "**To know the roster before he signs it.** He asked Wade directly how Ironline's average roster runs against the legal floor, and the pause before the answer was the answer. Six years carded and he walked on arithmetic rather than on a feeling. That is the one thing canon establishes about him and it should not be extended past it."
   fear: "**Unauthored.** He checks numbers before signing; what he is afraid of behind that is not established and must not be assumed to be death or injury specifically."
   secret: "**Unauthored.** Never met. One secondhand account of one phone call."
@@ -1591,7 +1591,7 @@ canonical_state:
   condition: "**Injured, per Wade's secondhand account** — a shoulder that healed wrong, eleven months off the boards as of this call. Never seen directly."
   knowledge: "**Nothing about Alexander is established.** He has never heard the name; the pipeline delivery ran through Wade to Alexander, not the reverse."
   capabilities: "C-Rank, breach and heavy work. No further detail established."
-  appearance: "Unestablished — never seen."
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-thirties, Mexican-American, compact and muscular, the build of a striker coming back after a long layoff. Dark-brown hair in a thick braid; deep-brown eyes with a steady, slightly wary set; a small gold stud in one ear. A faded maroon hoodie under a scuffed leather jacket, hands in the pockets. Expression reserved and self-possessed. Reference setting: an empty municipal gym in Chicago, folded bleachers and high windows blurred behind her, late-day light."
   want: "**Not to be a body again.** Wade's read of why she declined Ironline, and the only motive canon supplies: eleven months off the boards after a shoulder that healed wrong, and a pitch that would have used her rather than accommodated her. It is secondhand and it is Wade's framing, which the record should carry as such rather than as her own words."
   fear: "**Unauthored.** Distinct from the want above and not derivable from it; an injured hunter refusing bad terms is not the same as one afraid of the work."
   secret: "**Unauthored.** Never seen directly. Nothing established."
@@ -1752,7 +1752,7 @@ canonical_state:
   condition: "Healthy; athletic build, no notable combat capability by his own account."
   knowledge: "**What he knows about Alexander — read this before any line where he asserts something about him.** Anything not listed here he has not been told, which is the boundary rather than a gap (Resident Core, *Load a Recorded NPC Before Playing It*). **This record is nearly empty on purpose, and it is the cleanest example of the boundary in the campaign.**\n\n  - **His first name, and nothing else of his identity.** A Closed Channels row records that Milo has no channel to the surname *Pendragon*; their only contact was a first-name exchange over training drills on 2026-08-05, and nothing since gave it to him. **`Brandt` is on this ledger as world-canon and Alexander has never been given it either** — the two of them know each other as *Milo* and *Alexander*, and the ledger knowing more is not the characters knowing more.\n  - **That Alexander read his drill correctly on the first attempt**, which he noticed and deliberately did not press (`EVT-000309`).\n  - **Reaction-footwork training talk**, and that is the whole of the acquaintance.\n\n  **What he does not have.** Everything else: no file access, no crew history, no Bearer-only quantity on the Profile §14.4.1 register. **He is the test case for the default:** when a line needs Milo to know something, the answer is almost always that he does not, and his own `personality` — not curious enough to press when something does not add up — is what makes that playable rather than awkward."
   capabilities: "Minor perception-adjacent ability, unspecified. No combat skill worth naming, by his own admission. Trains reaction footwork — reading a partner's weight shift and calling pattern to react before the movement completes — as a deliberate substitute for the striking ability he lacks."
-  appearance: "Roughly Alexander's age, wiry build, clearly conditioned for agility rather than bulk."
+  appearance: "Roughly Alexander's age, wiry build, clearly conditioned for agility rather than bulk. **Extended 2026-09-23 (real date), for portrait reference:** Mid-twenties, Black, wiry and light on his feet, the lean definition of someone who trains agility daily. Close-cropped black hair with a clean line-up; warm dark-brown eyes; an easy, open grin. A sleeveless grey training top, taped wrists, a Coalition-issue sweat towel over one shoulder. Reference setting: the Coalition training grounds at the Lakefront Gate Corridor, marked footwork cones and lake haze behind him, bright morning light."
   personality: "Direct, easygoing, comfortable being watched and asked about his training. Not curious enough to press when something doesn't add up — noticed Alexander's uncanny first-attempt read of his drill and let the deflection ('I like running') stand without pushing."
   want: "**A way to be useful in a fight without the gift for it.** He is awakened with a minor perception-adjacent ability and, by his own account, no combat skill worth naming — and he has answered that by training reaction footwork as a deliberate substitute. Inviting Alexander back to the cones anytime is the same impulse: he would rather have people on the drill than be the only one on it."
   fear: "**That the substitute does not actually substitute.** He has built his usefulness on a workaround and has never tested it where it would matter. He does not say this and it does not make him anxious; it makes him keep drilling."
@@ -2487,7 +2487,7 @@ canonical_state:
   location: "Chicago's warehouse district (`worlds/gatefall/`, `ENT-000087`); reached by phone only, exact location unestablished"
   condition: "Healthy; voice only, never met in person"
   capabilities: "Ordinary employee of Titan Secure, handles phone inquiries. Not established as combat-active or otherwise notable."
-  appearance: "**Never seen — voice only.** The single contact was a phone call (`EVT-000188`), so no physical description is established and none is authored here; inventing one would record as canon something the fiction has never shown. What *is* established is the voice: a flat, mid-range, faintly nasal Chicago delivery, unhurried, with the practiced patience of someone who answers this phone all day and has heard a confused pretext before. Keyboard audible under the call throughout."
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late twenties, Black, average height and slightly soft around the middle, a desk worker in a security company. Short neat hair with a low fade; calm brown eyes behind rectangular black glasses; a headset pushed down around his neck. A navy Titan Secure polo with the company logo on the chest. Expression bored-professional, polite and unbothered. Reference setting: a Titan Secure call-centre cubicle in Chicago, monitors and grey partition walls blurred behind him, flat office light."
   personality: "Bored-professional, helpful within limits, genuinely unbothered by a stranger's confused pretext. Holds a clean line on client confidentiality without needing to be pressed twice."
   want: "**To finish the call.** He is an ordinary employee handling phone inquiries, and everything canon records him doing is the efficient disposal of one: correcting the caller's premise, volunteering the harmless general answer, refusing the specific one, and hanging up first."
   fear: "**Unauthored.** Nothing establishes what he is protecting beyond the client line, which he holds as policy rather than as stake."
@@ -2833,7 +2833,7 @@ canonical_state:
   location: ENT-000150
   condition: "Healthy; not established as combat-active."
   capabilities: "Runs Ferro's Reclamation's mundane scrap and salvage business on the surface. Trades information for information or favors, not for cash — corroborated Walt Adamik's and Elias Ward's independent warnings that she also trades favors both directions with Coalition compliance staff, and disclosed this herself unprompted rather than let Alexander find out later. Reads people quickly and undersells her own attentiveness with a deliberately ordinary shopkeeper manner."
-  appearance: "Fifties, reading glasses pushed into greying hair, works from a converted shipping-container office cluttered with ledgers rather than digitized records."
+  appearance: "Fifties, reading glasses pushed into greying hair, works from a converted shipping-container office cluttered with ledgers rather than digitized records. **Extended 2026-09-23 (real date), for portrait reference:** Late fifties, white, Polish-American, solid and square-shouldered. Greying dark-blonde hair cut to the jaw, reading glasses pushed up into it; sharp light-green eyes that are already reading you; a faint web of smile lines she rarely uses. A quilted work vest over a heavy knit sweater, a pencil behind one ear. Reference setting: her converted shipping-container office at Ferro's Reclamation, ledgers stacked on steel shelving behind her, a work lamp's yellow light."
   want: "**To stay the person both sides come to.** She trades information for information or favors and never for cash, and she trades favors **both directions** with Coalition compliance staff — which only works while neither side decides she belongs to the other. Disclosing that herself, unprompted, rather than letting Alexander discover it, is that position being maintained rather than a confession."
   fear: "**Being owned by one side of it.** A dealer who is understood to be compliance's is no longer useful to anyone else, and the reverse is worse. The exposure is not legal; it is that the whole trade rests on a balance she cannot fully control."
   secret: "**What she has traded in the other direction, and to whom.** Walt Adamik and Elias Ward independently warned about it and she confirmed the shape of it herself — the contents she has never named. **Known to:** the compliance staff concerned."
@@ -3106,6 +3106,7 @@ aliases:
 canonical_state:
   affiliation: "Independent — unlicensed artificer"
   home: "No fixed address, by design"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late forties, white, Irish-American, lean and self-contained, with an artificer's careful hands. Dark-auburn hair going grey at the temples, worn in a loose low ponytail; pale, watchful blue-grey eyes; fine burn freckles across the backs of her hands from years of hot work. A worn canvas work shirt with rolled sleeves under a plain dark coat. Expression private, assessing, giving nothing away. Reference setting: a quiet corner booth of a Chicago pub, dark wood and amber light, the room softly blurred behind her."
   rank: "**A-Rank, awakened — ruled `EVT-000772`.** Derived from the same Rank+1-crafts-ceiling heuristic applied to Nakamura: the finished dagger she completed and never returned for is confirmed at its absolute ceiling (`EVT-000592`) — S-Rank, no remaining headroom, nothing further can be added by any hand — and is described as the best work Priscilla Nakamura has held in a decade, consistent with a rare, one-Rank-above-normal result from an A-Rank artificer rather than routine A-Rank-artificer output. Still never met; still never directly read by Flux Sight or otherwise."
   location: "Unknown. No fixed address by her own deliberate design across fifteen years of dealing with Walt Adamik."
   condition: "Unknown as of `EVT-000320`. Six messages from Walt unanswered, against an established responsive pattern — genuinely uneasy, not routine."
@@ -3437,7 +3438,7 @@ canonical_state:
   location: "Unestablished — worked entirely by phone this call."
   condition: "No injury or impairment established."
   capabilities: "Skip-tracing and quiet background/records work — permits, ownership, financials, shell-company structures, patterns in who comes and goes. Not a breach specialist and explicitly declines to be treated as one. Bills on results, not hours, for a first job referred by Walt Adamik."
-  appearance: "Unestablished beyond voice — brisk, businesslike, no wasted warmth."
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early fifties, Black, trim and composed, a private investigator who dresses to be taken seriously. Close-cropped natural grey hair; sharp dark-brown eyes; small gold stud earrings and reading glasses on a cord. A tailored charcoal blazer over a cream blouse. Expression businesslike, attentive, no wasted warmth. Reference setting: a small Chicago office with filing cabinets and a window blind half-drawn, soft afternoon light."
   personality: "Direct and professional. Doesn't ask more than she needs to start; asks pointed clarifying questions when she does. Flags her own limits and real risks plainly rather than overpromising (told Alexander outright that the contact who made him already has his real number, and that's his exposure to manage, not hers)."
   want: "**To be paid on results and to keep the Walt Adamik referral channel clean.** This is a first job off that referral and she is being measured as much as measuring; a PI who bills on results rather than hours lives on the next recommendation. She wants a clean finding she can hand over and invoice."
   fear: "**Being treated as a breach specialist**, which she explicitly declines to be. Her whole practice is records, permits, ownership, financials and shell structures — legal work that survives being asked about. A client who mistakes her for someone who picks locks is a client who ends her licence. The flaw: she states the limit once, plainly, and does not repeat it, so a client who ignores it will not be warned twice."
@@ -3495,7 +3496,7 @@ canonical_state:
   location: ENT-000200
   condition: "No injury or impairment established."
   capabilities: "Holds the lease on a decommissioned freight yard off Ashland (`ENT-000200`) and rents it by the day, cash, handshake terms, no paperwork. Doesn't ask what a renter is doing out there."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Fifties, plain and incurious, dressed for a freight yard rather than an office. The specific blankness of a man who has made a business model out of not asking questions."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Fifties, plain and incurious, dressed for a freight yard rather than an office. The specific blankness of a man who has made a business model out of not asking questions. **Extended 2026-09-23 (real date), for portrait reference:** White, Chicagoan, heavyset and slow-moving. Thinning brown hair under a faded feed-store cap; flat, incurious grey eyes; a jowly face with a few days' grey stubble. A quilted canvas work jacket over a thermal, a ring of padlock keys on his belt. Reference setting: the gate of a decommissioned freight yard off Ashland, rusted rail and chain-link blurred behind him, overcast afternoon light."
   want: "**To be paid without learning anything.** He rents a decommissioned freight yard by the day, cash, handshake terms, no paperwork, and does not ask what a renter is doing out there. Ten-plus people gathered in his yard and he took the four hundred, retreated to his truck, and did not return. The incuriosity is the product."
   fear: "**Unauthored.** Nothing establishes what would make him start asking. Whatever it is, it is not ten strangers and a day rate."
   secret: "**What he has already not asked about.** A man who rents that yard on those terms has done it before, and canon establishes none of it. This records that the history exists and is unauthored — **do not fill it in**; author it at the turn something forces him to care."
@@ -3714,7 +3715,7 @@ canonical_state:
   location: ENT-000087
   condition: "Healthy, unmarked at introduction. Took a few ordinary scrapes running the boss fight at `EVT-000415` and nothing worse; her crew came out intact."
   capabilities: "Strike captain of an **independent eight-hunter crew-for-hire** — nine combat-rated bodies including herself. Works mostly B-Rank, takes C when the money is good enough, and contracts to whoever pays first rather than carrying a guild retainer. Ran the 2026-08-16 B-Rank Crypt clear to completion: nine commons, one elite and the boss, with the harvest line held safely behind a secured perimeter the entire time. No signature ability established — she has not been asked and nothing in play has surfaced one."
-  appearance: "Broad-shouldered, unhurried, gear checked and re-checked before anything else. Runs her final preparation in low voices with two of her own rather than addressing the site at large."
+  appearance: "Broad-shouldered, unhurried, gear checked and re-checked before anything else. Runs her final preparation in low voices with two of her own rather than addressing the site at large. **Extended 2026-09-23 (real date), for portrait reference:** Early forties, Filipino-American, broad-shouldered and compact, carrying herself like a strike captain rather than a showpiece. Black hair pulled into a tight low bun; dark, steady eyes; a small silver hoop in one ear. A matte-black tactical jacket with her crew's plain callsign patch on the shoulder, gear straps checked and squared. Reference setting: a Gate staging area on a Chicago lot, crew and cordon tape blurred behind her, late-afternoon light."
   want: "**To keep the floor she puts under a job.** Nine combat-rated against a legal minimum of eight, on a B-Rank clear, contracting to whoever pays first rather than carrying a guild retainer. Running one over the floor instead of at it is the entire product she sells, and it is what makes her independent rather than cheap."
   fear: "**Being priced into running at the minimum.** She takes C-Rank work when the money is good enough, which is the pressure operating on her already. A crew-for-hire that starts shaving the roster becomes Wade Bishop's four-against-eight, and she knows exactly what that looks like because the contrast is why Dale's contractor brought her in."
   secret: "**Unauthored.** She answered a direct question about her business model with the whole of it in three sentences, unprompted, which is the opposite of a withholding actor. Do not invent one to fill the field — Section 7.7 does not require every actor to be hiding something."
@@ -3757,7 +3758,7 @@ canonical_state:
   location: ENT-000087
   condition: "Healthy; not established as combat-active. Held behind the strike line for the whole clear, as harvest protocol requires."
   capabilities: "Harvest-element cutter. **Logged 12 crystals** on the 2026-08-16 B-Rank job against Alexander's declared 19 — an ordinary solid haul on a job where the harvest line ran two hands short."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, an ordinary harvest cutter's practical kit, present and functional but easy to overlook in a crew — no distinguishing feature the record has bothered to note beyond that he was there and did the work."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, an ordinary harvest cutter's practical kit, present and functional but easy to overlook in a crew — no distinguishing feature the record has bothered to note beyond that he was there and did the work. **Extended 2026-09-23 (real date), for portrait reference:** Black, lean and wiry, a cutter's forearms. Short twisted hair under a scuffed hard hat; tired, steady brown eyes; a thin moustache. A dust-greyed canvas harvest jacket, knee pads and heavy gloves tucked under one arm. Reference setting: the edge of a Gate harvest site in Chicago, crystal veins and work lights blurred behind him."
   want: "**Unauthored.** His own record says it plainly: no dialogue exchanged, no conversation recorded, and he is not established as knowing anything about Alexander beyond having worked the same job. Twelve crystals on one B-Rank clear. **Author this at the turn he is next played** (Decision 092) — there is nothing here to derive one from, and inventing it would be exactly the ungrounded authoring the loading rule exists to prevent."
   fear: "**Unauthored.** See above."
   secret: "**Unauthored.** See above."
@@ -3880,7 +3881,7 @@ canonical_state:
   location: "**Outside the fenced warehouse's perimeter fence, on the cracked asphalt of the approach, 2026-08-22 21:10** (`EVT-000649`) — carried there by Alexander's passenger rift-step, clear of the containment structure. Prior: inside the containment room, seated against the wall with the overheads killed, from roughly 18:00 that evening."
   condition: "Physically unhurt. Went down on one knee on arrival outside — disorientation from the step, not injury — and got up on her own. Holding a site tablet that went dark the moment it left the site network, with a twelve-minute plant-history pull that never started."
   knowledge: "**What she knows about Alexander — read this before any line where she asserts something about him.** Anything not listed here she has not been told, which is the boundary rather than a gap (Resident Core, *Load a Recorded NPC Before Playing It*). **This record is almost entirely empty about him on purpose.**\n\n  - **That he exists, is male, appeared out of nothing in a sealed room, and moves people the same way.** Directly witnessed (`EVT-000647`, `EVT-000649`). She has no name for him — **he never gave one and she never asked.**\n  - **That the Gate her employer calls C-Rank is actually A-Rank.** He told her outright at `EVT-000647`, on her direct question, and declined to soften it. **This is the single largest thing anyone has ever told her**, and it is the only fact about the world he has given her.\n  - **That he came in through a locked door**, which she said aloud.\n  - **That her own anomaly instrument returned nothing on him** while he stood three metres away. She read that as data rather than malfunction, and it is the basis of her `beliefs` block below.\n\n  **What she does not have, and has no channel to.** His name, his surname, his licence, his Rank, his employer, his reason for being on the site, and every Bearer-only quantity on the Profile §14.4.1 register — level, XP, System Rank, skills, mastery, quest state, pool values, or that a System exists at all. She has **never** been told any of it, and no instrument she carries can reach it. She is a clean test case for the default: when a line needs Hollis to know something about him, the answer is almost always that she does not."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, neat and precise in a plain containment-monitor's jumpsuit, the posture of someone who talks to instruments more easily than people. A flat, exact expression that gets more controlled, not less, as things get worse around her."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, neat and precise in a plain containment-monitor's jumpsuit, the posture of someone who talks to instruments more easily than people. A flat, exact expression that gets more controlled, not less, as things get worse around her. **Extended 2026-09-23 (real date), for portrait reference:** White, slim and upright. Straight dark-blonde hair in a tight low bun; pale, exact grey eyes; a narrow face with a faint crease between the brows. A navy containment-monitor's jumpsuit with a company patch and a tablet in hand. Reference setting: outside a fenced warehouse at night, cracked asphalt and security lights blurred behind her."
   personality: "Precise under pressure and more procedural the worse things get — where another person would raise their voice she gets flatter and more exact. Not timid: she pointed a hand-instrument at a man who materialised in front of her rather than running, and she has spent four weeks quietly building a case against her own employer's instruments without saying a word to anyone. What she is not is confrontational; her instinct is to gather, verify, and hold, and it has taken eleven weeks and an outside corroboration to get her to say any of it out loud."
   situation: "Standing outside a fence she is contractually responsible for the inside of, at 21:10 on a Saturday, having just filed a report she now knows was false, with the only copy of the evidence that anyone noticed sitting on her personal phone. Her employer expects nothing further from her until the next scheduled check-in. Nobody in the operation knows she has spoken to anyone."
   want: "A reading that says the thing is stable, so she can go home. She has been trying to get one all evening and has now been told, by the only source she trusts, that she never will. **This want is dead as of `EVT-000647`** and has not been replaced — she is a character in the gap between an objective that just ended and one that has not formed, which is exactly where she should be played."
@@ -4006,7 +4007,7 @@ canonical_state:
   rank: "**None. Unawakened.** Flux Sight at [S] returned **nothing at all** on him at `EVT-000657` - the passive reads mana-bearing subjects and he is not one. Health derives at **40** from Section 4.3's ordinary-adult rating of 10 and the 4 x Vitality formula, which is also the bottom of Section 6.1's Rank ladder."
   condition: "**Incapacitated, not dead** (`EVT-000659`). Took a fist-sized A-Rank mana crystal behind the ear on a natural 82 - **322 pulled damage against a body holding 40**, eight times his whole pool. Section 6.2.1 governs regardless of magnitude: reduced to 0 by pulled damage alone, so he is unconscious, **stabilises on his own**, and carries a Section 6.3 injury that will be severe. Left where he fell."
   knowledge: "**Nothing about Alexander at all.** He was facing away, unawakened, and unconscious inside two seconds. He has no channel to anything - not the System, not a person, not a method. **He is the cleanest case of the default in the campaign:** when a line needs him to know something, he does not."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties to forties, plain practical work clothes, an ordinary unremarkable build. Alert but visibly out of his depth — the look of someone standing somewhere far stranger than his job description ever prepared him for."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties to forties, plain practical work clothes, an ordinary unremarkable build. Alert but visibly out of his depth — the look of someone standing somewhere far stranger than his job description ever prepared him for. **Extended 2026-09-23 (real date), for portrait reference:** White, average height and build. Short dark-brown hair going grey at the sides; wary hazel eyes; a clean-shaven, ordinary face gone pale with shock. A plain grey work jacket over a checked shirt. Reference setting: a dim containment room in a Chicago warehouse, instrument panels and a strange light blurred behind him."
   personality: "Came to hear a number in person, at four in the morning, in a room he had been told not to look at - and then stood facing the door until she was ready to say it. That is either responsibility or accountability, and which one is unestablished."
   situation: "Unconscious beside a specialist he brought to a site he had reason to visit at four in the morning. **Why an unawakened man is inside this operation's containment room at all is the live question about him** - he is not staff who reads instruments, and he is not muscle."
   want: "To hear the finding himself rather than read it in a filing. **Unestablished beyond that**, and the record does not guess: everything known about him comes from twenty seconds of posture watched across a Gate boundary."
@@ -4311,7 +4312,7 @@ canonical_state:
 
 **2026-09-07, 06:00 (`EVT-000860`): an ordinary ask, answered plainly.** An A-Rank Gate came up within reach overnight under the standing cooperation arrangement — called it in himself rather than letting it sit for the board, plain as ever: *'Your call. No pressure attached — but I'd rather you heard about it from me than the board.'* Alexander accepted for entry by tomorrow at the latest; Farraday confirmed the location would be sent inside the hour and closed the call without further small talk."
   knowledge: "Knows Alexander wants to 'break apart the guild system' and has a specific Ironline source in mind. No channel to `ENT-000216`, `ENT-000217`, the second gallery, or anything about tonight's earlier events — the conversation never touched them."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Early fifties, greying at the temples, plain official BGM attire worn like a uniform even without insignia. A flat, direct face that names hard things without dressing them up."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Early fifties, greying at the temples, plain official BGM attire worn like a uniform even without insignia. A flat, direct face that names hard things without dressing them up. **Extended 2026-09-23 (real date), for portrait reference:** White, tall and spare. Dark hair greying at the temples, cut short and conservative; level grey-blue eyes; deep lines around a firm mouth. A charcoal suit and plain navy tie, a BGM identification badge clipped at the belt. Reference setting: his carpeted office in the BGM Region V Field Office, Chicago, a window onto the Loop blurred behind him."
 ```
 
 ### ENT-000233 — Renata Okonkwo-Vance
@@ -4339,6 +4340,7 @@ aliases:
 canonical_state:
   affiliation: "BGM National — S-Rank Liaison"
   home: "Washington DC, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early fifties, Nigerian-American, tall and poised, carrying federal authority without needing to announce it. Short natural hair, silvering at the front; deep-brown eyes, calm and precise; small pearl earrings. A well-cut navy suit with a BGM National lapel badge, a leather folio under one arm. Expression measured and warm-but-exact. Reference setting: a private dining room in downtown Chicago, dark panelling and low lamplight softly blurred behind her."
   location: "**The Averlon Room, 200 N Michigan Ave, Chicago — 2026-08-27 19:00-onward (`EVT-000801`).** Flew in from Washington same day, wheels-down by 18:00, dinner in person for the first time. Returns 06:40 tomorrow, commercial, unless the fly list changes that."
   rank: "Not established. No channel has tested it; a National-office administrator need not be awakened."
   role: "S-Rank Liaison, BGM National — the office Farraday's regional standing arrangement escalated to. Owns the national relationship with unaffiliated/solo S-Ranks specifically, distinct from guild-facing coordination."
@@ -4534,7 +4536,7 @@ canonical_state:
   condition: "Healthy; not established as combat-active."
   knowledge: "Knows Alexander (given as 'Arthur Peverell' was not given to him — the real transaction used the real referral name from Walt) rented a bay same-day, cash, no lease. No channel to anything about the System, the far door, or the library. Referred by Walt Adamik; treats a referral as sufficient vetting on its own."
   capabilities: "Rents bay space cash, month-to-month, no credit check, no corporate paperwork, on a personal relationship with the landlord rather than a business one."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Middle-aged, unremarkable on purpose — plain work clothes, a face built for being forgotten, the watchful economy of a man who has spent years renting space to people who don't want to be asked questions."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Middle-aged, unremarkable on purpose — plain work clothes, a face built for being forgotten, the watchful economy of a man who has spent years renting space to people who don't want to be asked questions. **Extended 2026-09-23 (real date), for portrait reference:** White, lean and weathered, of no particular age between forty and sixty. Close-cropped greying hair; pale, watchful blue eyes; a long, forgettable face with a faint cleft chin. A brown canvas work coat over a plain T-shirt. Reference setting: the Rockwell Street yard in Chicago, a roll-up bay door and stacked pallets blurred behind him, flat grey light."
   personality: "Unhurried, doesn't ask what a client wants privacy for. Walks a door up himself, hands over keys, and leaves — genuinely hands-off rather than performing discretion."
   want: "Unestablished — a live thread if his own reasons for running a no-questions yard ever become relevant."
   fear: "Unestablished — nothing in the one transaction touched it."
@@ -4633,7 +4635,7 @@ canonical_state:
   rank: "**A-Rank**, per Alexander's own unnoticed Flux Sight + Keen Sense read on first meeting — Corwin never disclosed it himself and has no channel to knowing he was read."
   condition: "Healthy; working his own bench when Alexander arrived."
   capabilities: "Independent artificer specializing in fusion work beyond what an ordinary licensed shop offers — the player's standing house rule governs the outcome: fusion is **additive**, both source items' bonuses and abilities carry into the result, never one overwriting the other. First attempt at reading the Heartwood core-mass fumbled; the second, with Alexander assisting via his own skills, succeeded and determined it is **'alive, on a slow timescale.'** Took custody of it for further study, $500/day ongoing storage fee. Also examined the Frost-fused carapace plating (did not fuse it — new finding: 'deliberately worked/tooled' origin, not natural) before returning it."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, sleeves rolled, precise workshop bearing — the exacting stillness of a fusion specialist mid-calculation. Speaks in numbers and looks like he thinks in them too."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, sleeves rolled, precise workshop bearing — the exacting stillness of a fusion specialist mid-calculation. Speaks in numbers and looks like he thinks in them too. **Extended 2026-09-23 (real date), for portrait reference:** White, New Englander, spare and precise. Neatly trimmed dark hair with a grey streak at the front; sharp dark-brown eyes behind steel-rimmed glasses; a close-cut beard. A heavy leather work apron over a rolled-sleeve oxford shirt, a fine scribe tucked behind one ear. Reference setting: his Boston workshop, a crowded bench of half-fused gear and hanging tools blurred behind him, warm lamp light."
   personality: "Professional, unhurried, comfortable working ambitious material. Ran one power-ceiling experiment at Alexander's own request that failed outright — destroyed a plain Quickknife [S] and consumed 2 S-Rank Beast Cores with no result — and was straightforward about the failure rather than reframing it."
   want: "**The edge of what's actually known** — not the money, though he takes it. A find like the Heartwood is the kind his whole career waits for, and he's quietly building his own private notes toward a theory the licensed trade hasn't caught up to yet, one he's never said aloud to a client. Authored `EVT-000829`."
   fear: "**Being the man who missed something in his own shop** — misjudging a piece that then goes wrong on someone else's hands, exactly the shape of risk a living, slow-timescale object represents. Authored `EVT-000829`."
@@ -4693,7 +4695,7 @@ canonical_state:
   location: "Unestablished - worked entirely by phone. Chicago is implied by the beat and the 312 number."
   condition: "Healthy; no adverse condition established."
   capabilities: "Working trade-beat journalist, Chicago. Covers Gates, guilds, and BGM Region V. Holds at least one source inside Region V willing to leak a card reclassification within sixteen hours of it being filed. Kesha Morrison's read, given to Alexander unprompted: she has called the Coalition desk before on background, has never quoted Morrison, and has not burned a source Morrison has heard of - **straight, as reporters covering this trade go**."
-  appearance: "Unestablished - voice only. Unhurried on the phone; read her callback number once, clearly, without repeating it."
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early forties, white, Irish-American, medium height, a working reporter rather than a camera face. Shoulder-length dark-brown hair with a grey streak she doesn't hide; alert hazel eyes; a faint crease of concentration between the brows. A rumpled olive trench coat over a striped shirt, a press lanyard tucked in a pocket. Expression wry, deliberate, about to say the awkward thing first. Reference setting: a Chicago newsroom corner at night, blurred desks and monitors behind her, cool screen light."
   personality: "Unestablished beyond conduct. What the voicemail demonstrates: she named her own uncertainty out loud (*I know how that sentence sounds if it is wrong*), offered the interview through a lawyer or the Coalition rather than insisting on direct contact, and did not set a deadline or apply pressure."
   knowledge: "**What she knows about Alexander, now including his own words.** The Region V source's account (S-Rank carding, 2026-08-23) stands, now corroborated in his own voice at `EVT-000724`: a voluntary re-assessment, framed as his own idea, an on-record quote given proactively rather than dug for. She holds all four of Marguerite's lines verbatim, attributed and locked.\n\n  **What she does not have.** Still no channel to the System, to any Bearer-only quantity on the Profile 14.4.1 register, to the Nakamura arrangement, to the fenced warehouse, `ENT-000216`-`ENT-000221`, the BGM cooperation arrangement, Wade Bishop, or the Ironline roster. **She does not know why Region V actually pulled the file** — Alexander's Section 19 exposure risk, the real reason behind the re-assessment, was never disclosed and she has no channel to it; 'voluntary' is what she was told and what she has no grounds to doubt."
   want: "**The story confirmed in his own words before she runs it — now satisfied.** Underneath it, the professional version: to be the reporter who had the first unaffiliated S-Rank in the country on the record rather than the one who printed a rumour. Both delivered at `EVT-000724`."
@@ -4737,7 +4739,7 @@ canonical_state:
   location: "Unestablished. Chicago is implied by Kesha Morrison's ability to reach her the same day."
   condition: "Healthy; no adverse condition established."
   capabilities: "Independent media liaison. Per Kesha Morrison, she **works for hunters rather than for institutions** - not BGM's press office, not a guild's - and has handled press contact for **two prior card reclassifications**. That is the whole of what canon establishes about her competence, and it is secondhand."
-  appearance: "Unestablished by contact."
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-forties, French-Canadian, slim and quick, a media liaison who lives on her phone. Sleek dark-brown bob; bright, appraising brown eyes; minimal makeup and a thin gold chain at the throat. A structured black blazer over a grey silk top, phone in hand. Expression brisk and efficient, already three steps into the logistics. Reference setting: a hotel lobby in downtown Chicago, blurred marble and brass behind her, warm interior light."
   personality: "Authored 2026-08-24 (Decision 092, above `disposition_baseline`), ahead of her first line rather than after. Brisk and efficient in a way that reads as respect rather than coldness — she treats a client's time as real, so she doesn't spend it on comfort talk before the substance."
   knowledge: "**Nothing established, and the asymmetry is deliberate.** Kesha Morrison undertook to have her call Alexander by end of day 2026-08-24 and to pass his contact details; whether that call has been made, and what Morrison told her, is **not yet established in the fiction**. Default to not-known on every specific - the S-Rank carding, Teresa Vance's name, the *Ledger*, the BGM cooperation arrangement - until a played scene establishes otherwise. She has certainly not been told anything on the Profile 14.4.1 register, which Morrison has no channel to herself."
   want: "To get ahead of whatever story is already forming before it breaks somewhere she doesn't control — a client's own account, on record, before anyone else's version sets first. Two prior reclassifications taught her the same lesson: the hunter who waits to react has already lost the frame."
@@ -4778,7 +4780,7 @@ canonical_state:
   location: "CGA Headquarters, central Prague, the public Ranking Corps counter, night desk."
   condition: "Healthy; on shift, alone at the public desk this late."
   capabilities: "Ranking Corps staff — licenses and appraises the country's roughly 800 licensed hunters and Ranks its detected Gates. Ordinary counter authority only; no access to the Retention Office's restricted S-Rank liaison work."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, neat and efficient, plain Central European office attire. A clipped, slightly formal manner written into her posture as much as her voice."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, neat and efficient, plain Central European office attire. A clipped, slightly formal manner written into her posture as much as her voice. **Extended 2026-09-23 (real date), for portrait reference:** Czech, slim and composed. Straight brown hair cut in a neat bob; clear grey-green eyes; a small silver pendant at the throat. A grey cardigan over a white collared blouse, a CGA staff lanyard. Reference setting: the public Ranking Corps counter at CGA Headquarters in Prague at night, the counter and waiting benches blurred behind her."
   personality: "Authored 2026-09-03 (Decision 092, ahead of her first line, past `disposition_baseline`). Efficient, a little clipped from years of an understaffed counter; warms fast for anyone who treats her like a professional rather than a bureaucracy to get past."
   want: "For her own careful, correct work to matter to someone above her counter — the agency's money and attention go upstairs to the Retention Office, and she wants to be more than the person who processes forms while the real budget fights happen elsewhere."
   fear: "A Ranking error on her own signature that gets someone killed."
@@ -4820,7 +4822,7 @@ canonical_state:
   location: "**Own storage unit, Ironclad Self Storage, near west side, Chicago — 2026-09-10 ~14:40, badly shaken, alone, satchel in hand.** Last seen walking north from Ironclad Self Storage (`ENT-000230`) on foot, 2026-08-25 ~09:20, on his way home to a residential address on the near northwest side, on his BGM ID, in Alexander's possession."
   condition: "Physically unharmed. Badly frightened, still, though the immediate Thursday crisis over the satchel is answered. Cautiously, disbelievingly hopeful for the first time since this thread opened."
   capabilities: "A working artificer good enough that CONSULT bothered to control him. The bracer taken off him reads **[B-Rank] with an A-Rank ceiling** and carries a latent passive built into the metalwork - competent, ambitious work, not yet finished to what it could hold. **Whether the bracer is his own hand is not established**: the mark stamped inside is confirmed *not* Marnie's, and no reading has tied it to him personally rather than to a piece he was carrying."
-  appearance: "Early thirties. Carried a worked-leather satchel held close against one side. Nothing else established - he was observed under concealment throughout and never seen face to face in good light."
+  appearance: "Early thirties. Carried a worked-leather satchel held close against one side. Nothing else established - he was observed under concealment throughout and never seen face to face in good light. **Extended 2026-09-23 (real date), for portrait reference:** Early thirties, white, Polish-American, narrow-shouldered and slightly hunched, as if bracing for a blow. Untidy dark-brown hair falling over his forehead; tired hazel eyes behind thin wire-rimmed glasses; stubble he forgot about. A worn corduroy jacket over a grey henley, the worked-leather satchel strap across his chest. Reference setting: a dim fourth-floor workshop corridor, a keypad door softly out of focus behind him, cold fluorescent light."
   personality: "Authored under Decision 092, above `disposition_baseline`, before his first line rather than after. **A man whose competence outruns his nerve.** He knows his work is good and has no confidence at all in his position, and the gap between the two is the whole of how he behaves under pressure."
   knowledge: "**Still does not know Alexander's name or face — only a disguised, concealed voice, first heard 2026-09-10.** He knows the voice found him inside his own storage unit without being seen or heard arriving, offered protection in exchange for help identifying D and CONSULT, and made the satchel reappear in his own hand out of nothing. **He does not know how any of that was done** — no channel to Unwatched, Silent Step, rift-step, or the System by name. He knows there is a rendezvous point now (his own unit) and believes he can 'activate' it with his own Mana to summon the voice back, though he does not understand the mechanism.\n\n  What he knows from his own position inside CONSULT, unchanged: that the arrangement requires clients to believe the work is his hand start to finish; that the ledger's `COMPLETE` entries mark a pattern; that a margin note reads `2nd time this qtr. Flag for D.`; and that D communicates only by text, never a call, never a name. He has no channel to anything on the Profile 14.4.1 register, to Marnie by name, or to what the earrings on that shelf were."
   want: "**To be told he is safe, by someone who would actually know** — and now, cautiously, hope that the voice might actually be that someone. Underneath it, unchanged: to keep the work, because the work is the only thing about his position that is genuinely his."
@@ -4934,7 +4936,7 @@ canonical_state:
   rank: "Unestablished."
   location: "Unestablished."
   role: "**Named once, in a single overheard line** - the conductor closing an assessment with *'Next piece, same terms. I'll have Delphine call about timing.'* **Scheduling or coordination for the CONSULT operation is the whole of what that implies**, and nothing further is authored."
-  appearance: "Unestablished by contact."
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late thirties, white, French-American, neat and forgettable by design, the kind of scheduler nobody looks at twice. Dark-blonde hair in a low, tidy chignon; cool grey eyes; a small beauty mark near one eye. A plain charcoal cardigan over a white collared blouse. Expression pleasant and closed. Reference setting: a nondescript Chicago office corridor, frosted-glass doors blurred behind her, flat fluorescent light."
   personality: "Unestablished by contact. A Runtime should not supply one before she speaks."
   knowledge: "Nothing established. Default to not-known on every specific."
   want: "Unauthored - no contact has occurred."
@@ -5005,7 +5007,7 @@ canonical_state:
   beliefs: []
   agenda: "**Not yet advanced.** Created at `EVT-000740`, extracted at `EVT-000743`, in medical custody since. Post-`disposition_baseline` (ENT-000210), so a want, fear, secret, voice and agenda are owed before she speaks a line in any scene (Decision 092)."
   situation: "Survivor of the GB-14 mass-casualty clear, 2026-08-26. Ten of twelve on her crew died; she and Devon Achebe lived by being out of the boss's line and staying still. Extracted alive by Alexander Pendragon acting as BGM's incident responder. **A named beneficiary of the 60% auction pledge** recorded at `EVT-000743` — an estimated share of $73.8 million split across ten families and the two survivors."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Twenties, a C-Rank striker's practical field kit, alert and steady after a hard clear survived. Composed rather than shaken — the specific calm of someone still processing what just happened."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Twenties, a C-Rank striker's practical field kit, alert and steady after a hard clear survived. Composed rather than shaken — the specific calm of someone still processing what just happened. **Extended 2026-09-23 (real date), for portrait reference:** White, Croatian-American, athletic and compact. Dark-brown hair pulled back in a practical braid; steady grey eyes with the stillness of someone still processing a very bad day; a faint bruise fading on one cheekbone. A dark field jacket over a grey compression top. Reference setting: a BGM medical bay in Chicago, curtains and monitors softly blurred behind her."
 ```
 
 ### ENT-000232 — Devon Achebe
@@ -5043,7 +5045,7 @@ canonical_state:
   beliefs: []
   agenda: "**Not yet advanced.** Created at `EVT-000740`. Post-`disposition_baseline`, so the full Decision 092 character model is owed before he speaks a line."
   situation: "The second survivor of the GB-14 mass-casualty clear. **A named beneficiary of the 60% auction pledge** (`EVT-000743`)."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Twenties, Black, a C-Rank striker's practical field kit, alert and steady after a hard clear survived. Composed rather than shaken, mirroring Marta Ilić's own hard-won calm."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Twenties, Black, a C-Rank striker's practical field kit, alert and steady after a hard clear survived. Composed rather than shaken, mirroring Marta Ilić's own hard-won calm. **Extended 2026-09-23 (real date), for portrait reference:** Tall and lean, a striker's build. Short black hair with a sharp line-up; calm dark-brown eyes; a small silver stud in one ear. A dark field jacket over a black compression top. Reference setting: a BGM medical bay in Chicago, curtains and monitors softly blurred behind him."
 ```
 
 ### ENT-000248 — Delia Okonjo
@@ -5072,7 +5074,7 @@ canonical_state:
   location: "Chicago, working a Milwaukee/Chicago corridor."
   condition: "Healthy; professional manner throughout."
   capabilities: "Sources private industrial and warehouse listings suited to unusual, high-security use cases without asking why. Produced two candidates on short notice: a Halsted Street property in Chicago and a Milwaukee data-center building."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, brisk real-estate-broker polish — a good blazer, a folder of listings always in hand, the practiced friendliness of someone closing deals for a living."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, brisk real-estate-broker polish — a good blazer, a folder of listings always in hand, the practiced friendliness of someone closing deals for a living. **Extended 2026-09-23 (real date), for portrait reference:** Nigerian-American, tall and poised. Black hair in sleek shoulder-length braids; warm, shrewd dark-brown eyes; gold stud earrings. A camel blazer over a black top, a leather folio of listings in hand. Reference setting: an empty industrial property in Chicago, high windows and bare concrete blurred behind her, bright afternoon light."
   personality: "Efficient, low-friction, asks only what she needs to move a listing — the same discretion Walt Adamik's referrals tend to carry."
   want: "A closed deal and a repeat client — this is early-stage prospecting, not yet a completed sale."
   fear: "Not yet established."
@@ -5108,7 +5110,7 @@ canonical_state:
   location: "Milwaukee, at the data-center property listing during the site visit."
   condition: "Healthy."
   capabilities: "A Praetorian Security engineer, present for a technical assessment of the property's existing systems. Role and scope of her involvement thin — she appeared during the thread rather than being separately engaged."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, a Praetorian Security engineer's plain work uniform, practical and unglamorous, present and useful without drawing attention to herself."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, a Praetorian Security engineer's plain work uniform, practical and unglamorous, present and useful without drawing attention to herself. **Extended 2026-09-23 (real date), for portrait reference:** White, Midwestern, compact and practical. Short auburn hair tucked behind her ears; alert green eyes; a light scatter of freckles. A navy Praetorian Security work shirt with the company patch, a tablet and a small tool pouch. Reference setting: a data-centre building in Milwaukee, server racks and cable trays blurred behind her, cool white light."
   personality: "Not established beyond ordinary professional competence."
   want: "Not established."
   fear: "Not established."
@@ -5209,7 +5211,7 @@ canonical_state:
   rank: "Not authored — unestablished, works entirely off-license."
   condition: "Healthy, mid-fifties, forearms and hands marked from a life spent in standing water."
   capabilities: "Unlicensed submerged-corridor salvage; has twice turned up finds BGM's own instruments never caught, including a mana-density read that predicted a Gate three weeks before it opened. No BGM record."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Mid-fifties, forearms and hands visibly marked from a life spent working in standing water. Gruff, guarded, rough practical clothing that has never once been laundered for an occasion."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Mid-fifties, forearms and hands visibly marked from a life spent working in standing water. Gruff, guarded, rough practical clothing that has never once been laundered for an occasion. **Extended 2026-09-23 (real date), for portrait reference:** White, Cajun Louisianan, heavyset and sun-burnt. Wiry grey hair under a stained ball cap; narrow, suspicious blue eyes; a salt-and-pepper beard. A faded fishing shirt with the sleeves rolled, wader straps over his shoulders. Reference setting: a lockup near the Houston ship channel, brackish water and rusted cranes blurred behind him, humid haze."
   personality: "Gruff, practical, guarded — reads a stranger's intent before reading anything else they say."
   want: "To be taken seriously as someone who's found things BGM's own instruments never caught, not written off as a scavenger working outside the license."
   fear: "That Region VI's tolerance for him is one bad afternoon from ending, and any stranger walking in could be the one who ends it."
@@ -5245,7 +5247,7 @@ canonical_state:
   rank: "Not authored — unestablished, administrative role."
   condition: "Healthy, visibly pressed for time on a compressed schedule."
   capabilities: "Regional coordination and posting authority within Region VI."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, tidy BGM regional-liaison attire with a small agency insignia, composed and businesslike bearing typical of the outreach desk she runs."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, tidy BGM regional-liaison attire with a small agency insignia, composed and businesslike bearing typical of the outreach desk she runs. **Extended 2026-09-23 (real date), for portrait reference:** Nigerian-American, composed and warm. Short natural hair; calm, attentive dark-brown eyes; small gold earrings. A tailored navy blazer with the BGM regional insignia over a white blouse. Reference setting: the BGM Region VI field office in Houston, glass partitions and a flag blurred behind her, bright even light."
   personality: "Direct, fast, genuinely efficient rather than performing busyness. Owns being caught softening a pitch without defensiveness."
   want: "To move through her list efficiently and get real value out of every National-asset visit, not just perform hospitality."
   fear: "Not established beyond professional pressure."
@@ -5283,7 +5285,7 @@ canonical_state:
   rank: "Not authored — unestablished, administrative role."
   condition: "Healthy, mid-forties, unhurried."
   capabilities: "Regional coordination within Region II."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, tidy BGM regional-liaison attire with a small agency insignia, composed and businesslike bearing, the same outreach-desk professionalism as his counterparts in other regions."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, tidy BGM regional-liaison attire with a small agency insignia, composed and businesslike bearing, the same outreach-desk professionalism as his counterparts in other regions. **Extended 2026-09-23 (real date), for portrait reference:** Cuban-American, solid and good-humoured. Black hair combed back with grey at the temples; warm brown eyes; a neatly trimmed moustache. A light-grey suit with the BGM regional insignia, open collar. Reference setting: the BGM Region II field office in Miami, palms and bright light blurred through the window behind him."
   personality: "Unhurried, professional, has done this handoff before and doesn't perform urgency he doesn't feel."
   want: "Not established beyond ordinary professional competence."
   fear: "Not established."
@@ -5321,7 +5323,7 @@ canonical_state:
   rank: "Not authored — unestablished, administrative/engineering role."
   condition: "Healthy, mid-thirties, tired in the way of someone who cares about work the budget doesn't prioritize."
   capabilities: "Containment doctrine and infrastructure design across BGM National. Personally served a containment rotation at the Jiu Valley Exclusion in its second year."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Mid-thirties, tired in the particular way of someone who cares about underfunded work. Plain official attire, precise and honest bearing, the visible strain of doing containment doctrine on a budget that doesn't match the job."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Mid-thirties, tired in the particular way of someone who cares about underfunded work. Plain official attire, precise and honest bearing, the visible strain of doing containment doctrine on a budget that doesn't match the job. **Extended 2026-09-23 (real date), for portrait reference:** White, Irish-American, slight and tired-eyed. Auburn hair in a messy low knot; earnest grey-blue eyes with dark circles beneath them; freckles. A plain navy suit jacket over a cream blouse, a BGM National badge on a lanyard. Reference setting: a cramped office at BGM National HQ in Washington DC, stacks of containment reports blurred behind her, fluorescent light."
   personality: "Direct, technical, leads with logistics. Drops the businesslike register when asked something genuinely personal."
   want: "To see real containment doctrine actually built and implemented, not another crisis response bolted together after the fact."
   fear: "That a design gets treated as a gesture instead of done properly, or repeats Jiu Valley's failure pattern."
@@ -5358,7 +5360,7 @@ canonical_state:
   rank: "Not authored — unestablished."
   condition: "Healthy."
   capabilities: "Regional coordination, Dallas office."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, tidy BGM regional-liaison attire with a small agency insignia, composed and businesslike, another outreach-desk professional cut from the same cloth as his colleagues."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, tidy BGM regional-liaison attire with a small agency insignia, composed and businesslike, another outreach-desk professional cut from the same cloth as his colleagues. **Extended 2026-09-23 (real date), for portrait reference:** White, Texan, broad-shouldered and even-tempered. Short sandy-brown hair; steady blue eyes; a clean-shaven square jaw. A navy blazer with the BGM regional insignia over a pale-blue shirt, no tie. Reference setting: BGM's Dallas field office, a glass lobby and bright plaza light blurred behind him."
   personality: "Functional, corrects course cleanly when caught being brusque; no channel to Alexander's teleportation."
   want: "Not established."
   fear: "Not established."
@@ -5396,7 +5398,7 @@ canonical_state:
   rank: "Not authored — unestablished."
   condition: "Healthy."
   capabilities: "Regional coordination, LA office."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, tidy BGM regional-liaison attire with a small agency insignia, composed and businesslike, the LA outreach desk's version of the same professional bearing."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Thirties, tidy BGM regional-liaison attire with a small agency insignia, composed and businesslike, the LA outreach desk's version of the same professional bearing. **Extended 2026-09-23 (real date), for portrait reference:** Black, Californian, slim and poised. Long box braids tied back; bright, direct dark eyes; a small nose stud. A tailored charcoal blazer with the BGM regional insignia over a white top. Reference setting: BGM's Los Angeles field office, palms and hard sunlight blurred through the windows behind her."
   personality: "Easy small talk, doesn't push."
   want: "Not established."
   fear: "Not established."
@@ -5480,7 +5482,7 @@ canonical_state:
   condition: "Healthy; no adverse condition established."
   role: "European Gate Council liaison for Prague and the Czech Republic — the standing regional-coordination office between national Gate administrations across the continent. Invited by Director Beran specifically because Alexander's cross-border pitch (Gate-alert sharing, a posting-matching tool) is squarely her office's remit rather than the CGA's own."
   capabilities: "Institutional and diplomatic — drafts and shepherds cross-border coordination agreements between national Gate authorities; no combat or field capability established."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, careful and procedural European civil-service bearing, neat professional attire. Genuinely engaged rather than merely polite — the look of someone who actually reads the file before the meeting."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, careful and procedural European civil-service bearing, neat professional attire. Genuinely engaged rather than merely polite — the look of someone who actually reads the file before the meeting. **Extended 2026-09-23 (real date), for portrait reference:** Swedish, tall and composed. Silver-blonde hair in a neat chin-length bob; clear pale-blue eyes behind thin-framed glasses; a small pearl at each ear. A charcoal wool suit with a European Gate Council lapel pin. Reference setting: a meeting room at Karlov Guild headquarters in Prague's Old Town, dark panelling and old photographs blurred behind her."
   personality: "Authored 2026-09-04, ahead of her first line (Decision 092). Careful, procedural, and genuinely interested rather than merely polite — she has watched national Gate authorities fail to share information for years and recognizes a workable mechanism when she sees one."
   want: "A real, working cross-border information-sharing mechanism she can actually stand behind to her own council — not another memorandum that dies in a drawer."
   fear: "Endorsing something that looks good in a meeting and collapses the first time two national bureaucracies have to actually share real-time data under it."
@@ -6035,7 +6037,7 @@ canonical_state:
   condition: "Healthy; no adverse condition established. Physically unmarked — Overpower's restraint and a follow-up Mend left nothing to show for either."
   role: "Runs CONSULT's Tuesday/Friday quality assessments personally, 09:00-11:00. Reads a maker's work with real expertise and something close to respect, even while working for an operation that owns the people she's assessing."
   capabilities: "A working artificer's eye — reads seating, finish, and quality on sight, the same kind of read Priscilla Nakamura or Marnie would give. No combat rating."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, unhurried and exacting, plain practical dress suited to close inspection work. A warmth in her expression when she approves of something that sits oddly against the strictness of the rest of her manner."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Forties, unhurried and exacting, plain practical dress suited to close inspection work. A warmth in her expression when she approves of something that sits oddly against the strictness of the rest of her manner. **Extended 2026-09-23 (real date), for portrait reference:** Norwegian-American, tall and exacting. Straight ash-blonde hair cut to the jaw; clear light-grey eyes with a jeweller's loupe on a cord around her neck; fine lines at the corners of the mouth. A plain dark smock over a grey sweater. Reference setting: Suite 411, a downtown Chicago office converted to an assessment room, inspection lamps and a steel table blurred behind her."
   personality: "Authored on first read (Decision 092). Unhurried, exacting, genuinely invested in the craft rather than merely policing it — the warmth in her voice when she approves of work is real, which sits strangely against what she's actually part of."
   knowledge: "**Still no channel to Alexander's identity** — seized and questioned by an unseen, voice-disguised captor (`EVT-000914`); Silent Step's Unremembered category means no usable witness-account of him exists once that scene closed. What she does retain, fully: Aldric Renn's name and description, the Suite 411/Fulton Market meeting pattern, and everything she said aloud about CONSULT and COMPLETE during the interrogation. Does not know why she was taken or by whom. No channel to D's identity beyond whatever she's been told through ordinary channels — unestablished."
   want: "**Partial read (🎲 40, net +1, effective 60) — incomplete.** Something like wanting the work itself to matter, to be genuinely good rather than merely adequate — but the read didn't resolve whether that's about the craft, about the makers, or about her own standing inside CONSULT. Flagged as unresolved rather than guessed at."
@@ -6073,7 +6075,7 @@ canonical_state:
   condition: "Physically unharmed — Overpower's restraint and a follow-up Mend left nothing to show for either. Visibly tired — the specific exhaustion of someone who hasn't slept well in longer than a few days — now compounded by an unexplained abduction."
   role: "A controlled artificer under the same arrangement as Peter Kwiatkowski, assessed on the same Tuesday/Friday schedule."
   capabilities: "Good enough at the work that Ingrid Solberg's read this session was genuinely approving. Beyond that, unestablished."
-  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Late twenties to thirties, licensed-hunter practical gear, unremarkable and unshowy — the look of an ordinary working D-Rank going about ordinary work."
+  appearance: "**Authored 2026-09-13, for portrait reference — no physical description existed in canon prior to this note.** Late twenties to thirties, licensed-hunter practical gear, unremarkable and unshowy — the look of an ordinary working D-Rank going about ordinary work. **Extended 2026-09-23 (real date), for portrait reference:** White, average height and slightly soft-bodied. Mousy brown hair in need of a cut; anxious pale-blue eyes; a patchy beard. A worn canvas field jacket over a hoodie. Reference setting: Suite 411, a downtown Chicago office converted to an assessment room, a steel table blurred behind him, flat fluorescent light."
   personality: "Authored on first read (Decision 092). Says little; lets his hands do the talking. A short nod rather than words when addressed — not sullen, just spent."
   knowledge: "**Still no channel to Alexander's identity** — seized and questioned by an unseen, voice-disguised captor (`EVT-000914`); Silent Step's Unremembered category means no usable witness-account of him exists once that scene closed. Retains everything he said aloud about CONSULT and COMPLETE, and that Ingrid named someone called Aldric Renn — a name he'd never heard before this session. Has no established knowledge of Peter Kwiatkowski or of D's identity beyond his own dealings."
   want: "**Full read (🎲 45, net +1, effective 65) — success.** To keep whatever is going on in his personal life from ever touching the work — the one thing under his control right now is that the bench stays clean, whatever else is falling apart."
@@ -6106,6 +6108,7 @@ aliases:
 canonical_state:
   affiliation: "CONSULT — administrative handler"
   home: "Chicago, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-forties, white, of average build and deliberately ordinary in every respect. Thinning sandy hair cut short; mild grey-blue eyes behind frameless glasses; a clean-shaven, forgettable face. A beige cardigan over a pale-blue shirt and a lanyard with no visible name. Expression procedural and unreadable. Reference setting: a small unmarked office in West Fulton Market, Chicago, a filing cabinet and a bare wall calendar behind him, flat overhead light."
   rank: "Not established — never perceived directly by Alexander. Described secondhand only."
   location: "A small unmarked office, Suite 3C, West Fulton Market, Chicago — per Ingrid's account, the only place she has ever met him, always by appointment."
   condition: "Not established."
@@ -6568,7 +6571,7 @@ canonical_state:
   home: "Amstelveen, Netherlands"
   location: "Her own studio — a converted light-industrial unit off a residential street in Amstelveen, outside Amsterdam, twenty minutes from Schiphol. No sign; keypad and door camera. A soundproofed three-camera set."
   condition: "Unhurt. Walked into and out of an S-Rank instant dungeon under The Last Span, Bulwark and Silent Step (`EVT-001036`); nothing reached her."
-  appearance: "Thirties, younger than her voice; hair pulled back for function, not style; a nod instead of a handshake; always already moving."
+  appearance: "Thirties, younger than her voice; hair pulled back for function, not style; a nod instead of a handshake; always already moving. **Extended 2026-09-23 (real date), for portrait reference:** Mid-thirties, white, Dutch, tall and angular. Ash-blonde hair scraped back into a practical knot; pale grey-blue eyes; a sharp jaw and a faint crease between the brows from squinting at monitors. A black utility jacket over a plain white T-shirt, a lanyard of production passes around her neck. Reference setting: her converted light-industrial studio in Amstelveen, editing monitors and flight cases softly blurred behind her, cool daylight from high windows."
   personality: "Clipped and exact, no pleasantries, accurate about what she doesn't know rather than curious about it. Business first, then — rarely — something true said plainly."
   want: "Jobs that are real, on a clock that works, run her way — full control of the rig and paper on every hand."
   fear: "Unestablished — not disclosed."
@@ -6623,6 +6626,7 @@ aliases:
 canonical_state:
   affiliation: "Past the Cordon — host and owner"
   home: "Chicago, USA (mobile)"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early thirties, white, Russian-American, lean and restless, a creator who films her own life for sixty-one million people. Bleached platinum hair cut in a sharp asymmetric bob; bright ice-blue eyes; a small silver ring through one eyebrow. A cropped black bomber jacket over a graphic T-shirt, a compact camera rig on a strap. Expression quick, self-aware, halfway through a candid aside. Reference setting: the edge of a Gate cordon in Chicago, police tape and emergency lights blurred behind her, dusk."
   role: "Host and owner, *Past the Cordon* — 61 million subscribers, raid footage and same-day drops from Gate sites and cordons."
   location: "Chicago; presumed mobile, no fixed base established beyond the channel's own reach."
   personality: "Fast, disarmingly candid about her own leverage — narrates the transaction out loud while making it. Not cruel; aware of exactly what she looks like doing this job and says so before anyone else can."
@@ -6685,7 +6689,7 @@ canonical_state:
   location: "The Landing, the far side — delivered `EVT-001062`, alongside two unconscious coworkers, received by Ilith. Present whereabouts past that point unknown to Alexander."
   condition: "Healthy, unhurt physically. Emotionally unraveled by the encounter — real fear, real moral reckoning, a genuine break from the procedural composure his rotation trained into him."
   capabilities: "A System-bearer per Section 13.1.1, sheet-based, no Rank. Assigned to interval-check rotation on Earth's own grading file specifically — eight cycles at the time of capture. No combat build; a filing/monitoring specialist, not a fighter. Stats and full sheet not read (Flux Sight was corrected mid-scene to return pools rather than a Rank; exact figures not recorded)."
-  appearance: "Not physically described in the scene — encountered and interrogated entirely while Alexander remained under Unwatched/Silent Step concealment; no visual account exists in canon."
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late thirties, white, of average height and slightly underfed, a filing worker rather than a fighter. Lank brown hair grown past his collar; tired grey eyes rimmed red from lack of sleep; a thin, anxious face with several days of patchy stubble. A drab grey work tunic of no recognizable make, sleeves frayed at the cuffs. Expression frightened and honest, braced for the next question. Reference setting: the Landing on the far side — a grey dead-world plain under a colourless sky, faint and out of focus behind him."
   personality: "Careful, procedural, honest to the point of self-incrimination once pressed. Breaks under sustained silence rather than direct interrogation. Genuinely grapples with complicity rather than deflecting it."
   want: "Structure, and something to do with a life that was supposed to have ended on a specific day and didn't. Openly uncertain, by the encounter's end, whether that want is still the right one."
   fear: "Being asked to justify his own participation in the process — voiced directly, unprompted, once pressed: 'yes, it bothers me,' the first time he'd said so aloud to anyone."
@@ -6741,6 +6745,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — HQ, head of security"
   home: "Detroit, USA (HQ campus)"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early fifties, Black, big and solid, a career security man who looks it. Shaved head; steady dark-brown eyes; a neatly trimmed grey goatee. A charcoal Pendragon Guild security jacket with the small angular dragon-head mark on the chest, an earpiece coiled at the collar. Expression level and appraising, weighing the request properly. Reference setting: the Pendragon Guild HQ campus in Detroit, a secured glass entrance and access gates blurred behind him, cool daylight."
   location: "The Pendragon Guild HQ campus, Detroit."
   role: "Head of security for the HQ site."
   condition: "Healthy, competent, ex-military bearing."
@@ -6779,6 +6784,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — HQ, head of front office"
   home: "Detroit, USA (HQ campus)"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late thirties, Indian-American, medium height and brisk, the person who keeps an entire front office running. Long black hair in a sleek low ponytail; warm brown eyes behind tortoiseshell glasses; a small nose stud. A tailored teal blazer over a white shell top, a guild lanyard and a tablet held against her chest. Expression practical and focused, recalibrating mid-thought. Reference setting: the Pendragon Guild HQ front office in Detroit, a reception desk and glass partitions blurred behind her, bright even light."
   location: "The Pendragon Guild HQ campus, Detroit."
   role: "Head of front office operations for the HQ site."
   condition: "Healthy, sharp, rarely without her own tablet."
@@ -6817,6 +6823,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Prague office, front desk"
   home: "Prague, Czech Republic"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early thirties, Czech, slim and composed. Chestnut-brown hair in a neat shoulder-length cut; clear grey eyes; light freckles across the nose. A dark-green knit sweater over a collared shirt, a Pendragon Guild visitor lanyard she has turned into her own. Expression composed and candid, telling you the honest state of things. Reference setting: the Pendragon Guild Prague office front desk, an old stone-framed window and a street in Prague's centre blurred behind her, soft grey daylight."
   location: "The Pendragon Guild's Prague office."
   role: "Front desk and general office coordination — self-described as a placeholder role pending founder/second-in-command decision on whether it becomes permanent."
   condition: "Healthy, composed, professionally prepared for a first meeting with the founder."
@@ -6855,6 +6862,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Prague dispatch crew, striker"
   home: "Prague, Czech Republic"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late twenties, Czech, broad and solid, a D-Rank striker with a plain, honest face. Short-cropped fair hair; light-blue eyes; a slightly crooked nose and a day's stubble. A new dark guild field jacket over a grey hoodie, a longsword's hilt visible over one shoulder. Expression openly surprised, halfway to a grin. Reference setting: a Prague street at the edge of a cleared Gate site, tram wires and baroque façades blurred behind him, overcast light."
   location: "Prague, guild dispatch crew."
   role: "Striker, D-rank card."
   condition: "Healthy. Weapon replaced this span — old D-Rank Longsword past a fusion-holding condition, refit with a fresh C-Rank Longsword, guild-funded (personal funds, not guild treasury — none yet exists), `EVT-001084`."
@@ -6893,6 +6901,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Prague dispatch crew, sensor"
   home: "Prague, Czech Republic"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-twenties, Czech, slight and quiet, a sensor who watches before she speaks. Straight dark-blonde hair in a low braid; large grey-blue eyes; a small silver stud in one ear. A navy guild field jacket zipped to the collar, a plain black scarf. Expression quiet and sincere. Reference setting: a Prague side street near the guild office, cobbles and warm shopfront light blurred behind her, early evening."
   location: "Prague, guild dispatch crew."
   role: "Sensor, D-rank card."
   condition: "Healthy. Was running on a single borrowed D-Rank accessory with no torso or leg pieces at all; outfitted this span with a full guild-funded D-Rank set (head, torso, hands, legs, feet) plus a standing office A-Rank sensor piece assigned to her directly, `EVT-001084`."
@@ -6952,6 +6961,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — A-Rank response pool, mender"
   home: "No fixed office"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early sixties, white, Scottish-American, small and wiry, a mender who has worked more crises than anyone in the room. Short silver hair cut practically; shrewd pale-blue eyes behind half-moon reading glasses; deep laugh lines. A dark-green guild field jacket over a grey henley, a medical satchel across her body. Expression unflappable and faintly amused. Reference setting: a staging tent at a Gate response, field cots and cordon lights blurred behind her, cool night light."
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank mender, carded at A."
   condition: "Healthy. Age 33."
@@ -6991,6 +7001,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — A-Rank response pool, striker"
   home: "No fixed office"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-twenties, white, American, tall and rangy with the loose energy of someone new to the A-Rank pool. Messy light-brown hair; bright green eyes; a light scatter of freckles. A charcoal guild strike jacket, straps a little too tight. Expression eager, mid-question. Reference setting: the Pendragon Guild HQ briefing room in Detroit, a wall screen and chairs blurred behind him, bright overhead light."
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 27."
@@ -7029,6 +7040,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — A-Rank response pool, striker"
   home: "No fixed office"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-thirties, white, Irish-American, broad-shouldered and sturdy. Copper-red hair buzzed on the sides and longer on top; sharp blue eyes; a wide mouth that looks ready to swear. A battered charcoal guild strike jacket over a black tank top, fingerless gloves. Expression flat, with a joke she will not smile at. Reference setting: a Gate staging lot at dusk, response vehicles and floodlights blurred behind her."
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 33."
@@ -7067,6 +7079,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — A-Rank response pool, striker"
   home: "No fixed office"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early forties, Ghanaian, tall and composed, the quiet centre of any briefing. Close-cropped black hair with grey at the temples; watchful dark-brown eyes; a neatly kept short beard. A charcoal guild strike jacket buttoned to the collar. Expression still and attentive, about to name the real problem. Reference setting: the Pendragon Guild HQ briefing room in Detroit, a map wall softly blurred behind him, even light."
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 30."
@@ -7105,6 +7118,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — A-Rank response pool, striker"
   home: "No fixed office"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late twenties, French-American, slim and quick, with the bright energy of someone who treats every rule as a hypothesis. Dark curly hair cut to the jaw; lively hazel eyes; a small gap between her front teeth. A charcoal guild strike jacket with the sleeves pushed up. Expression curious, eyebrows raised, a question already forming. Reference setting: a guild training yard, sparring rings and chain-link blurred behind her, bright afternoon light."
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 24."
@@ -7143,6 +7157,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — A-Rank response pool, striker"
   home: "No fixed office"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early thirties, Korean-American, lean and precise. Straight black hair cut short and neatly parted; calm dark-brown eyes; a small notebook tucked in his breast pocket. A charcoal guild strike jacket, every strap aligned. Expression thoughtful, a pause before answering. Reference setting: a quiet guild ready room, lockers and a whiteboard of roster notes blurred behind him, cool light."
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 26."
@@ -7181,6 +7196,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — A-Rank response pool, striker"
   home: "No fixed office"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late forties, Irish-Welsh-American, weathered and settled. Dark hair gone mostly grey, cut short; dry grey-green eyes with crow's feet; a salt-and-pepper beard. A well-worn charcoal guild strike jacket over an old band T-shirt. Expression wry, with a story behind it. Reference setting: the Pendragon Guild HQ canteen in Detroit, long tables and windows blurred behind him, warm late-day light."
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 35."
@@ -7219,6 +7235,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — A-Rank response pool, striker"
   home: "No fixed office"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early thirties, Indian-American (Keralite), medium height and animated. Long dark wavy hair in a high ponytail; warm brown eyes; a wide, welcoming smile. A charcoal guild strike jacket over a maroon top, a guild radio clipped at the shoulder. Expression sociable and organizing, mid-introduction. Reference setting: a busy guild staging area, hunters and gear crates blurred behind her, bright daylight."
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 27."
@@ -7257,6 +7274,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — A-Rank response pool, striker"
   home: "No fixed office"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late thirties, Polish, heavyset and immovable. Dark-blond hair buzzed short; pale-grey deadpan eyes; a thick jaw and a flattened nose. A charcoal guild strike jacket over a black thermal. Expression dry and unreadable, deflecting praise before it arrives. Reference setting: a Gate cordon line at night, barricades and floodlights blurred behind him."
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 29."
@@ -7295,6 +7313,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Chicago office, day manager"
   home: "Chicago, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early forties, Black, composed and elegant, the first face of the guild's home office. Natural hair in a short, shaped afro; steady dark-brown eyes; small gold hoop earrings. A charcoal blazer with the small angular Pendragon dragon-head pin, over a cream blouse. Expression composed, holding back a question she has not yet decided she is owed. Reference setting: the Pendragon Guild Chicago office front desk, a glass entrance and the Loop's towers blurred behind her, clear morning light."
   location: "The Pendragon Guild Chicago office, front desk."
   role: "Day manager of the Chicago office front desk."
   condition: "Healthy."
@@ -7335,6 +7354,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Washington DC office, day manager"
   home: "Washington DC, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late thirties, white, American, crisp and immaculate. Blonde hair in a sleek low chignon; clear blue eyes; pearl stud earrings. A navy suit jacket with the Pendragon dragon-head pin, an open file folder in one hand. Expression prepared and precise. Reference setting: the Pendragon Guild Washington DC office reception, federal-style stonework through a window softly blurred behind her, cool daylight."
   location: "The Pendragon Guild Washington DC office, front desk."
   role: "Day manager of the Washington DC office front desk."
   condition: "Healthy."
@@ -7375,6 +7395,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Frankfurt office, day manager"
   home: "Frankfurt, Germany"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early fifties, German, tall and exact. Neatly combed grey hair; pale-blue eyes behind rimless glasses; a precise grey moustache. A dark-grey suit with a Pendragon dragon-head pin, a wristwatch he checks. Expression dry and punctual. Reference setting: the Pendragon Guild Frankfurt office front desk, a glass-and-steel lobby and the skyline blurred behind him, clean daylight."
   location: "The Pendragon Guild Frankfurt office, front desk."
   role: "Day manager of the Frankfurt office front desk."
   condition: "Healthy."
@@ -7413,6 +7434,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — New York office, day manager"
   home: "New York, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-forties, Polish-American, quick and warm, three things in motion at once. Curly dark-brown hair piled up with a pencil through it; bright brown eyes; red lipstick. A burgundy cardigan over a black top, a Pendragon lanyard and a phone in one hand. Expression warm, mid-sentence, hands moving. Reference setting: the Pendragon Guild New York office reception, Manhattan street bustle blurred through the glass behind her, bright daylight."
   location: "The Pendragon Guild New York office, front desk."
   role: "Day manager of the New York office front desk."
   condition: "Healthy."
@@ -7453,6 +7475,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Boston office, day manager"
   home: "Boston, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early forties, Irish-American, lanky and deadpan. Short ginger hair and a trimmed ginger beard; pale-blue eyes with a trace of amusement; freckles. A grey tweed jacket with the Pendragon dragon-head pin over a navy knit tie. Expression level, the joke already delivered. Reference setting: the Pendragon Guild Boston office front desk, red brick and a bare tree blurred through the window behind him, soft autumn light."
   location: "The Pendragon Guild Boston office, front desk."
   role: "Day manager of the Boston office front desk."
   condition: "Healthy."
@@ -7493,6 +7516,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Miami office, day manager"
   home: "Miami, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early fifties, Cuban-American, generous-figured and relaxed. Dark wavy hair with a streak of silver, worn loose; warm brown eyes; a bright, easy laugh line. A coral linen blouse with the Pendragon dragon-head pin, gold bangles. Expression unhurried and friendly, asking after you first. Reference setting: the Pendragon Guild Miami office reception, palms and bright street light blurred through the glass behind her."
   location: "The Pendragon Guild Miami office, front desk."
   role: "Day manager of the Miami office front desk."
   condition: "Healthy."
@@ -7533,6 +7557,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Houston office, day manager"
   home: "Houston, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late fifties, white, Texan, big-framed and expansive. Thick grey hair swept back; twinkling blue eyes; a broad, sun-lined face and a grey moustache. A western-cut tan sport coat over an open-collared shirt, the Pendragon dragon-head pin on the lapel. Expression mid-story, about to land the point. Reference setting: the Pendragon Guild Houston office front desk, a sunlit lobby with a potted palm blurred behind him."
   location: "The Pendragon Guild Houston office, front desk."
   role: "Day manager of the Houston office front desk."
   condition: "Healthy."
@@ -7573,6 +7598,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Paris office, day manager"
   home: "Paris, France"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late thirties, French, slim and cool. Dark hair in a sleek short pixie cut; knowing grey eyes; a precise red lip. A tailored black blazer over a striped Breton top, the Pendragon dragon-head pin at the collar. Expression faintly amused, approval by absence of objection. Reference setting: the Pendragon Guild Paris office reception, a Haussmann window and a Paris street blurred behind her, soft grey light."
   location: "The Pendragon Guild Paris office, front desk."
   role: "Day manager of the Paris office front desk."
   condition: "Healthy."
@@ -7611,6 +7637,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Amsterdam office, day manager"
   home: "Amsterdam, Netherlands"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-thirties, Dutch-Moroccan, tall and practical. Dark hair under a simple charcoal headscarf; direct brown eyes; no-nonsense expression. A navy knit sweater with the Pendragon dragon-head pin, sleeves pushed up. Expression terse and solution-first. Reference setting: the Pendragon Guild Amsterdam office front desk, a canal-house window and bicycles blurred behind her, cool daylight."
   location: "The Pendragon Guild Amsterdam office, front desk."
   role: "Day manager of the Amsterdam office front desk."
   condition: "Healthy."
@@ -7651,6 +7678,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Dallas office, day manager"
   home: "Dallas, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late forties, white, Texan, lean and courteous. Short sandy-grey hair; patient hazel eyes; a neatly trimmed short beard. A pressed light-blue oxford shirt and a dark tie with the Pendragon dragon-head pin, sleeves rolled once. Expression measured, leaving a pause for you to fill. Reference setting: the Pendragon Guild Dallas office reception, a modern glass lobby and bright plaza light blurred behind him."
   location: "The Pendragon Guild Dallas office, front desk."
   role: "Day manager of the Dallas office front desk."
   condition: "Healthy."
@@ -7691,6 +7719,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Los Angeles office, day manager"
   home: "Los Angeles, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early thirties, Mexican-American, medium build and permanently mid-task. Short black hair slightly mussed; apologetic dark-brown eyes; a thin moustache. A dark-green bomber jacket over a white T-shirt, a Pendragon lanyard, a phone pressed to his shoulder. Expression harried but friendly. Reference setting: the Pendragon Guild Los Angeles office front desk, palms and hard California sun blurred through the windows behind him."
   location: "The Pendragon Guild Los Angeles office, front desk."
   role: "Day manager of the Los Angeles office front desk."
   condition: "Healthy."
@@ -7731,6 +7760,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Seattle office, day manager"
   home: "Seattle, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early forties, Danish-American, tall and quietly precise. Straight white-blonde hair cut to the collarbone; clear pale-blue eyes; a faint wry smile. A charcoal wool cardigan over a grey turtleneck, the Pendragon dragon-head pin at the chest. Expression exact and lightly amused. Reference setting: the Pendragon Guild Seattle office reception, rain on the glass and evergreen hills blurred behind her, soft grey light."
   location: "The Pendragon Guild Seattle office, front desk."
   role: "Day manager of the Seattle office front desk."
   condition: "Healthy."
@@ -7771,6 +7801,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — San Francisco office, day manager"
   home: "San Francisco, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late twenties, Vietnamese-American, slim and earnest. Neat black hair with a side part; bright, eager dark eyes behind round glasses; a wide smile. A navy fleece vest over a checked shirt, a Pendragon lanyard. Expression enthusiastic, mid-explanation. Reference setting: the Pendragon Guild San Francisco office front desk, a bay window with fog over the hills blurred behind him, cool daylight."
   location: "The Pendragon Guild San Francisco office, front desk."
   role: "Day manager of the San Francisco office front desk."
   condition: "Healthy."
@@ -7811,6 +7842,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — HQ, porter of the travel hub"
   home: "Detroit, USA (HQ campus)"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late sixties, Black, tall and very upright, a porter's formal bearing. Short white hair and a neat white moustache; dry, kind dark-brown eyes; deep lines at the mouth. A dark charcoal porter's uniform coat with brass buttons and the Pendragon dragon-head mark on the collar, white gloves. Expression formal, the dry remark kept to himself. Reference setting: the HQ travel hub in Detroit, a restricted third-floor corridor with a heavy steel door blurred behind him, cool even light."
   location: "The Pendragon Guild HQ campus, Detroit; restricted third floor, the travel hub."
   role: "Porter of the HQ travel hub: moving hunters in and out between branch offices to fill rosters on ongoing Gates."
   condition: "Healthy. Age about 42. Newly in a pressed grey jacket he has not settled into."
@@ -7894,6 +7926,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — artificer (licence pending)"
   home: "Miami, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Fifties, Colombian-American, small and dignified. Dark hair with grey streaks, pinned up neatly; warm, careful brown eyes; fine lines around the mouth. A pressed white work coat over a dark blouse, a jeweller's loupe on a cord. Expression formal and eager, one beat behind each sentence. Reference setting: the Pendragon Guild Miami office reception floor, bright tropical light blurred behind her."
   rank: "**[A-Rank] awakened**, card lapsed. Flux Sight `EVT-001135`: Health 1,500/1,500, Mana 750/750, ceiling [A-Rank]. **Working Rank A** (provisional mechanic: the card Rank is fixed, the working Rank is earned at the bench and capped at it)."
   age: "Fifties."
   location: "The Pendragon Guild Miami office, reception floor, 2026-09-28."
@@ -7938,6 +7971,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — artificer (licence pending)"
   home: "Houston, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-forties, white, Texan, burly and cheerful. Shaggy brown hair and a thick brown beard with grey at the chin; friendly blue eyes; forearms marked with small old burns from the bench. A grease-streaked canvas apron over a faded T-shirt, safety glasses pushed up on his head. Expression warm, mid-apology, still working with his hands. Reference setting: his cinder-block workshop in north Houston, a cluttered bench and a rail spur through the roll-up door blurred behind him."
   rank: "**[B-Rank] awakened** (card B, always). Flux Sight `EVT-001136`: Health 600/600, Mana 300/300, ceiling [B-Rank]. Working Rank B."
   location: "His workshop, a cinder-block unit off a service road backed onto a rail spur, north Houston (sign: REPAIRS & FITTINGS)."
   condition: "Healthy."
@@ -7975,6 +8009,7 @@ aliases:
 canonical_state:
   affiliation: "Independent — grey-market core broker"
   home: "Houston, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Sixties, white, Southern, soft-bodied and soft-spoken. Thin combed-over grey hair; mild pale-grey eyes; a smooth, pleasant, closely shaved face. A pale linen suit jacket over a pastel shirt, hands folded. Expression courteous and unreadable. Reference setting: a machine-shop unit on Harrisburg Boulevard, Houston, a metal desk and tool racks blurred behind him, dim morning light."
   rank: "Unawakened, an ordinary adult (Flux Sight `EVT-001136`: ordinary Health, no Mana pool, no techniques)."
   age: "Sixties."
   location: "A machine-shop unit on Harrisburg Boulevard, Houston, Unit 4, behind a tire-and-wheel shop; there most mornings, never the same afternoon twice."
@@ -8013,6 +8048,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — London office, day manager"
   home: "London, UK"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late thirties, English, slight and neat. Mouse-brown hair in a tidy low bun; mild grey-blue eyes; a faintly apologetic half-smile. A navy cardigan over a white collared blouse with the Pendragon dragon-head pin, a mug of tea at her elbow. Expression understated, about to deliver bad news as good manners. Reference setting: the Pendragon Guild London office front desk, a narrow glass front on a side street blurred behind her, soft rainy light."
   location: "The Pendragon Guild London office, front desk."
   role: "Day manager of the London office front desk."
   condition: "Healthy; unawakened (Flux Sight `EVT-001137`)."
@@ -8049,6 +8085,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Stockholm office, day manager"
   home: "Stockholm, Sweden"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early forties, Swedish, tall and plain-spoken. Straight light-brown hair cut to the chin; direct blue eyes; no makeup. A grey wool sweater with the Pendragon dragon-head pin. Expression plain and unadorned. Reference setting: the Pendragon Guild Stockholm office, a low brick building with water and moored boats blurred through the window behind her, pale northern light."
   location: "The Pendragon Guild Stockholm office, front desk."
   role: "Day manager of the Stockholm office front desk."
   condition: "Healthy; unawakened (Flux Sight `EVT-001137`)."
@@ -8085,6 +8122,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Stockholm office, night officer"
   home: "Stockholm, Sweden"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early sixties, Swedish, big and weathered, a retired policeman on night post. Grey hair cut very short; heavy-lidded pale-blue eyes; a broad face with a thick grey moustache. A dark wool watch coat over a guild night-officer shirt, a torch on his belt. Expression calm and self-directed. Reference setting: the Stockholm office entrance at night, a streetlamp and dark water blurred behind him."
   location: "The Pendragon Guild Stockholm office, night post."
   role: "Night officer of the Stockholm office; retired from the Stockholm police after twenty-six years."
   condition: "Healthy."
@@ -8121,6 +8159,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Istanbul office, night officer"
   home: "Istanbul, Turkey"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late twenties, Turkish, slim and a little breathless. Thick black hair, slightly tousled; eager dark-brown eyes; a thin, neatly trimmed beard. A dark guild night-officer jacket over a white shirt, a radio at his hip. Expression flustered and helpful. Reference setting: the Pendragon Guild Istanbul office in Levent at night, glass towers and city lights blurred behind him."
   location: "The Pendragon Guild Istanbul office, front desk."
   role: "Night officer of the Istanbul office."
   condition: "Healthy; unawakened."
@@ -8157,6 +8196,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Istanbul office, day manager"
   home: "Istanbul, Turkey"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-thirties, Turkish, composed and warm. Dark-brown hair in soft waves to the shoulders; knowing brown eyes; a quick smile. A cream silk blouse under a camel blazer with the Pendragon dragon-head pin. Expression warm, with a look that says she knows more happened than the log shows. Reference setting: the Pendragon Guild Istanbul office, fourth floor, a Levent skyline blurred through the windows behind her, bright daylight."
   location: "The Pendragon Guild Istanbul office, front desk."
   role: "Day manager of the Istanbul office front desk."
   condition: "Healthy; unawakened."
@@ -8234,6 +8274,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Tel Aviv office, day manager"
   home: "Tel Aviv, Israel"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early forties, Israeli, compact and even-tempered. Dark curly hair cut short; steady hazel eyes; a strong, unfussy face. A plain olive button-down shirt with the Pendragon dragon-head pin, sleeves rolled. Expression matter-of-fact. Reference setting: the Pendragon Guild Tel Aviv office front desk near the Azrieli Center, hard Mediterranean light and glass towers blurred behind her."
   location: "The Pendragon Guild Tel Aviv office, front desk."
   role: "Day manager of the Tel Aviv office front desk."
   condition: "Healthy; unawakened."
@@ -8270,6 +8311,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Chicago office, night officer"
   home: "Chicago, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-fifties, white, Chicagoan, heavyset and watchful, an ex-cop on night post. Grey hair in a short flat-top; tired blue eyes; a heavy jaw with evening stubble. A dark guild night-officer jacket over a navy shirt, a thermos on the desk. Expression patient and alert. Reference setting: the Pendragon Guild Chicago office lobby at night, the Loop's lit towers blurred through the glass behind him."
   location: "The Pendragon Guild Chicago office, night post."
   role: "Night officer of the Chicago office."
   condition: "Healthy; unawakened."
@@ -8306,6 +8348,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Washington DC office, night officer"
   home: "Washington DC, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early forties, Black, American, tall and composed, a former military policewoman. Short relaxed hair tucked behind her ears; alert dark-brown eyes; a strong, unsmiling face. A dark guild night-officer blazer over a white shirt, an earpiece. Expression watchful and professional. Reference setting: the Pendragon Guild Washington DC office at night, a stone façade and streetlights blurred behind her."
   location: "The Pendragon Guild Washington DC office, night post."
   role: "Night officer of the Washington DC office."
   condition: "Healthy; unawakened."
@@ -8342,6 +8385,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Prague office, night officer"
   home: "Prague, Czech Republic"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late fifties, Czech, lean and quiet. Thinning grey hair combed back; deep-set grey eyes; a long, lined face. A heavy dark wool coat over a guild night-officer sweater, a ring of keys at his belt. Expression reserved and steady. Reference setting: the Pendragon Guild Prague office doorway at night, lamplit cobbles and old stone blurred behind him."
   location: "The Pendragon Guild Prague office, night post."
   role: "Night officer of the Prague office."
   condition: "Healthy; unawakened."
@@ -8378,6 +8422,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Frankfurt office, night officer"
   home: "Frankfurt, Germany"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late forties, German, solidly built and precise. Short dark-blond hair with grey at the temples; level grey eyes; clean-shaven. A dark guild night-officer jacket zipped to the collar, a clipboard under one arm. Expression correct and unhurried. Reference setting: the Pendragon Guild Frankfurt office lobby at night, the lit skyline blurred behind him."
   location: "The Pendragon Guild Frankfurt office, night post."
   role: "Night officer of the Frankfurt office."
   condition: "Healthy; unawakened."
@@ -8414,6 +8459,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — New York office, night officer"
   home: "New York, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early fifties, Italian-American, sturdy and street-wise. Dark hair with grey threads, pulled into a practical bun; sharp brown eyes; laugh lines. A dark guild night-officer jacket over a black turtleneck, a radio on her shoulder. Expression wry and alert. Reference setting: the Pendragon Guild New York office at night, yellow cabs and neon blurred through the glass behind her."
   location: "The Pendragon Guild New York office, night post."
   role: "Night officer of the New York office."
   condition: "Healthy; unawakened."
@@ -8450,6 +8496,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Boston office, night officer"
   home: "Boston, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-thirties, white, New Englander, tall and quiet. Short brown hair; steady blue-grey eyes; a clean jaw and a small notch in one eyebrow. A dark wool guild night-officer peacoat. Expression reserved and polite. Reference setting: the Pendragon Guild Boston office front steps at night, red brick and gas-style streetlamps blurred behind him."
   location: "The Pendragon Guild Boston office, night post."
   role: "Night officer of the Boston office."
   condition: "Healthy; unawakened."
@@ -8486,6 +8533,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Miami office, night officer"
   home: "Miami, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-forties, Puerto Rican-American, compact and energetic. Dark hair in a sleek ponytail; bright brown eyes; small gold hoops. A dark guild night-officer polo with the dragon-head mark, a radio at her hip. Expression alert and good-humoured. Reference setting: the Pendragon Guild Miami office at night, palm silhouettes and neon blurred through the glass behind her."
   location: "The Pendragon Guild Miami office, night post."
   role: "Night officer of the Miami office."
   condition: "Healthy; unawakened."
@@ -8522,6 +8570,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Houston office, night officer"
   home: "Houston, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early forties, white, Texan, lanky and laconic. Short brown hair under a plain dark cap; slow, watchful hazel eyes; a sandy moustache. A dark guild night-officer jacket over a pressed shirt, cowboy boots. Expression laconic and steady. Reference setting: the Pendragon Guild Houston office entrance at night, a humid parking lot and sodium lights blurred behind him."
   location: "The Pendragon Guild Houston office, night post."
   role: "Night officer of the Houston office."
   condition: "Healthy; unawakened."
@@ -8558,6 +8607,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Paris office, night officer"
   home: "Paris, France"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late twenties, French, slim and composed. Dark wavy hair cut short at the sides; attentive brown eyes; a light stubble. A dark guild night-officer coat over a charcoal sweater. Expression polite and a little reserved. Reference setting: the Pendragon Guild Paris office doorway at night, a lamplit Haussmann street blurred behind him."
   location: "The Pendragon Guild Paris office, night post."
   role: "Night officer of the Paris office."
   condition: "Healthy; unawakened."
@@ -8594,6 +8644,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Amsterdam office, night officer"
   home: "Amsterdam, Netherlands"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-fifties, Dutch, tall and broad. Grey-blond hair cropped close; mild blue eyes; a weathered, ruddy face. A dark guild night-officer jacket, a bicycle helmet hooked at his belt. Expression calm and unhurried. Reference setting: the Pendragon Guild Amsterdam office at night, a canal and lit windows blurred behind him."
   location: "The Pendragon Guild Amsterdam office, night post."
   role: "Night officer of the Amsterdam office."
   condition: "Healthy; unawakened."
@@ -8630,6 +8681,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Dallas office, night officer"
   home: "Dallas, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early thirties, white, Texan, athletic and clean-cut. Short brown hair; friendly blue eyes; a square jaw. A dark guild night-officer polo with the dragon-head mark, a duty belt. Expression polite and alert. Reference setting: the Pendragon Guild Dallas office entrance at night, a lit plaza blurred behind him."
   location: "The Pendragon Guild Dallas office, night post."
   role: "Night officer of the Dallas office."
   condition: "Healthy; unawakened."
@@ -8666,6 +8718,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Los Angeles office, night officer"
   home: "Los Angeles, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late twenties, Indian-American, slim and poised. Long black hair in a sleek braid; alert dark eyes; a small nose stud. A dark guild night-officer jacket over a grey top, an earpiece. Expression cool and attentive. Reference setting: the Pendragon Guild Los Angeles office at night, palm silhouettes and city glow blurred behind her."
   location: "The Pendragon Guild Los Angeles office, night post."
   role: "Night officer of the Los Angeles office."
   condition: "Healthy; unawakened."
@@ -8702,6 +8755,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Seattle office, night officer"
   home: "Seattle, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late forties, white, Pacific Northwesterner, rugged and quiet. Shaggy greying brown hair; steady green eyes; a short greying beard. A dark waxed-canvas guild night-officer jacket, rain on the shoulders. Expression calm and reserved. Reference setting: the Pendragon Guild Seattle office entrance on a rainy night, wet pavement reflecting streetlights behind him."
   location: "The Pendragon Guild Seattle office, night post."
   role: "Night officer of the Seattle office."
   condition: "Healthy; unawakened."
@@ -8738,6 +8792,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — San Francisco office, night officer"
   home: "San Francisco, USA"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late thirties, Filipina-American, compact and steady. Black hair cut in a blunt bob; calm dark eyes; a small mole on one cheek. A dark guild night-officer jacket over a grey hoodie. Expression composed and watchful. Reference setting: the Pendragon Guild San Francisco office at night, fog-softened streetlights and a hill street blurred behind her."
   location: "The Pendragon Guild San Francisco office, night post."
   role: "Night officer of the San Francisco office."
   condition: "Healthy; unawakened."
@@ -8774,6 +8829,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Tel Aviv office, night officer"
   home: "Tel Aviv, Israel"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Mid-thirties, Israeli, athletic and direct. Dark hair in a short practical ponytail; sharp green eyes; sun-browned skin. A dark guild night-officer jacket over an olive T-shirt. Expression direct and unimpressed. Reference setting: the Pendragon Guild Tel Aviv office entrance at night, lit towers and palm silhouettes blurred behind her."
   location: "The Pendragon Guild Tel Aviv office, night post."
   role: "Night officer of the Tel Aviv office."
   condition: "Healthy; unawakened."
@@ -8810,6 +8866,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Istanbul office, second night officer"
   home: "Istanbul, Turkey"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early fifties, Kurdish-Turkish, heavyset and calm. Thick black hair greying at the sides; patient dark eyes; a full dark moustache. A dark guild night-officer jacket over a knitted vest, a tulip glass of tea in hand. Expression calm and patient. Reference setting: the Pendragon Guild Istanbul office front desk at night, city lights blurred behind him."
   location: "The Pendragon Guild Istanbul office, night post."
   role: "Second night officer of the Istanbul office, alongside Kerem Aydoğan."
   condition: "Healthy; unawakened."
@@ -8846,6 +8903,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — London office, night officer"
   home: "London, UK"
+  appearance: "**Authored 2026-09-23 (real date), for portrait reference — no physical description existed in canon prior to this note.** Early sixties, English, tall and gaunt, a retired soldier on night post. Short white hair; sharp pale-blue eyes; a clipped white moustache. A dark guild night-officer overcoat buttoned high, polished shoes. Expression dry and correct. Reference setting: the Pendragon Guild London office doorway at night, a wet side street and a red phone box blurred behind him."
   location: "The Pendragon Guild London office, night post."
   role: "Night officer of the London office."
   condition: "Healthy; unawakened."

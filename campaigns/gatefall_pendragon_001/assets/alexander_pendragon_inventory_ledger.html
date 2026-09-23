@@ -1,4 +1,6 @@
-<title>Pendragon Ledger</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pendragon Ledger — Inventory</title>
 <meta name="description" content="Alexander Pendragon's complete System inventory — worn loadout, banked gear, consumables, keys, and materials, grouped by how each is used.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,25 +35,30 @@
     font-family:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
     padding-inline:16px;
   }
-  .wrap{max-width:1100px;margin:0 auto;padding-block:28px 60px;}
+  .wrap{max-width:1160px;margin:0 auto;padding-block:28px 60px;}
+  /* Shared ledger header: identical in every Pendragon ledger template. */
   header.top{
     display:flex; flex-wrap:wrap; gap:18px 28px; align-items:flex-end; justify-content:space-between;
     padding-bottom:18px; border-bottom:1px solid var(--border); margin-bottom:22px;
   }
+  .ledgers{flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px;}
+  .ledgers a{
+    font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
+    padding:5px 11px; border-radius:999px; border:1px solid var(--border); background:var(--surface);
+    color:var(--text-dim); text-decoration:none;
+  }
+  .ledgers a:hover{border-color:var(--accent); color:var(--text);}
+  .ledgers a[aria-current="page"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+  .ledgers a:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
   .id-block{display:flex; flex-direction:column; gap:4px;}
-  .eyebrow{
-    font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--accent);
-  }
-  h1{
-    font-family:"Chakra Petch",ui-sans-serif,sans-serif; font-weight:700; font-size:clamp(1.7rem,4vw,2.5rem);
-    margin:0; letter-spacing:.01em; text-wrap:balance;
-  }
-  .sub{color:var(--text-dim); font-size:.9rem; max-width:56ch;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent);}
+  h1{font-family:"Chakra Petch",ui-sans-serif,sans-serif; font-weight:700; font-size:clamp(1.7rem,4vw,2.5rem); margin:0; letter-spacing:.01em; text-wrap:balance;}
+  .sub{color:var(--text-dim); font-size:.9rem; max-width:60ch; line-height:1.5;}
   .stat-strip{display:flex; gap:22px; flex-wrap:wrap; font-family:"IBM Plex Mono",monospace;}
   .stat-strip div{display:flex; flex-direction:column; gap:2px; min-width:84px;}
   .stat-strip .n{font-size:1.25rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums;}
   .stat-strip .l{font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+  @media print{.ledgers{display:none;}}
 
   .controls{
     position:sticky; top:0; z-index:5; background:var(--bg); padding-block:12px;
@@ -159,15 +166,21 @@
 
 <div class="wrap">
   <header class="top">
+    <nav class="ledgers" aria-label="Pendragon ledgers">
+      <a href="index.html">All ledgers</a>
+      <a href="alexander_pendragon_inventory_ledger.html" aria-current="page">Inventory</a>
+      <a href="alexander_pendragon_skill_ledger.html">Skills</a>
+      <a href="alexander_pendragon_npc_ledger.html">NPCs</a>
+    </nav>
     <div class="id-block">
-      <div class="eyebrow">Bearer Ledger · System Rank S</div>
-      <h1>Alexander Pendragon</h1>
-      <div class="sub">Every held item — worn, banked, or in custody — grouped by how it's used. Search or filter by category and Rank; the counts update live.</div>
+      <div class="eyebrow">Pendragon Ledger 01 · Materiel</div>
+      <h1>Inventory Ledger</h1>
+      <div class="sub">Every item Alexander holds — worn, banked, or in custody — grouped by how it's used. Search or filter by category and Rank; the counts update live.</div>
     </div>
     <div class="stat-strip">
       <div><span class="n" id="statPieces">0</span><span class="l">Pieces held</span></div>
       <div><span class="n" id="statTotal">0</span><span class="l">Distinct holdings</span></div>
-      <div><span class="n">9</span><span class="l">Worn</span></div>
+      <div><span class="n" id="statWorn">0</span><span class="l">Worn</span></div>
       <div><span class="n" id="statCustody">0</span><span class="l">In custody</span></div>
     </div>
   </header>
@@ -396,6 +409,7 @@ function render(filterText, filterRank){
   document.getElementById("statTotal").textContent = EQUIPPED.length + ITEMS.length;
   document.getElementById("statPieces").textContent = EQUIPPED.length + bankedPieces + custodyPieces;
   document.getElementById("statCustody").textContent = custodyPieces;
+  document.getElementById("statWorn").textContent = EQUIPPED.length;
 }
 
 let currentRank = "all";

@@ -1026,7 +1026,7 @@ aliases:
   - name: "Terrence Kowalczyk"
     quality: former
 canonical_state:
-  portrait: "assets/portraits/Terrence_Kowalczyk_ENT-000240.png"
+  portrait: "assets/portraits/Terrence_Mahoney_ENT-000240.png"
   rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
   age: "**43** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   role: "S-Rank ace, Anchor Guild (Detroit)."

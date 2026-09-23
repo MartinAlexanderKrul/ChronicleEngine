@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pendragon Ledgers</title>
-<meta name="description" content="Index of Alexander Pendragon's System ledgers — the full inventory of held gear and the complete list of techniques, each searchable and filterable by Rank.">
+<meta name="description" content="Index of Alexander Pendragon's ledgers — the full inventory of held gear, the complete list of techniques, and every named character he shares the world with, each searchable and filterable by Rank.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -10,7 +10,7 @@
   :root{
     --bg:#eef2f1; --surface:#ffffff; --surface2:#f4f7f6; --border:#d7dfdd;
     --text:#0f1a1c; --text-dim:#556166; --accent:#0e8f83; --accent-soft:#0e8f831a;
-    --amber:#a5730f; --amber-soft:#a5730f1a;
+    --amber:#a5730f; --amber-soft:#a5730f1a; --violet:#7440c4; --violet-soft:#7440c41a;
     --shadow:0 1px 2px rgba(15,26,28,.06), 0 8px 24px -12px rgba(15,26,28,.12);
     --shadow-lift:0 2px 4px rgba(15,26,28,.07), 0 18px 40px -18px rgba(15,26,28,.22);
   }
@@ -18,7 +18,7 @@
     :root:not([data-theme="light"]){
       --bg:#0b1414; --surface:#101b1b; --surface2:#152322; --border:#223231;
       --text:#e7efee; --text-dim:#93a6a3; --accent:#3fd6c3; --accent-soft:#3fd6c31a;
-      --amber:#f0b429; --amber-soft:#f0b4291a;
+      --amber:#f0b429; --amber-soft:#f0b4291a; --violet:#b78cf0; --violet-soft:#b78cf01a;
       --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
       --shadow-lift:0 2px 6px rgba(0,0,0,.4), 0 22px 48px -20px rgba(0,0,0,.75);
     }
@@ -26,7 +26,7 @@
   :root[data-theme="dark"]{
     --bg:#0b1414; --surface:#101b1b; --surface2:#152322; --border:#223231;
     --text:#e7efee; --text-dim:#93a6a3; --accent:#3fd6c3; --accent-soft:#3fd6c31a;
-    --amber:#f0b429; --amber-soft:#f0b4291a;
+    --amber:#f0b429; --amber-soft:#f0b4291a; --violet:#b78cf0; --violet-soft:#b78cf01a;
     --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
     --shadow-lift:0 2px 6px rgba(0,0,0,.4), 0 22px 48px -20px rgba(0,0,0,.75);
   }
@@ -52,10 +52,6 @@
     margin:0; letter-spacing:.01em; text-wrap:balance;
   }
   .sub{color:var(--text-dim); font-size:.9rem; max-width:56ch; line-height:1.5;}
-  .stat-strip{display:flex; gap:22px; flex-wrap:wrap; font-family:"IBM Plex Mono",monospace;}
-  .stat-strip div{display:flex; flex-direction:column; gap:2px; min-width:84px;}
-  .stat-strip .n{font-size:1.25rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums;}
-  .stat-strip .l{font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
 
   .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px;}
   a.card{
@@ -69,6 +65,7 @@
   a.card:focus-visible{outline:2px solid var(--tint); outline-offset:2px;}
   a.card.inv{--tint:var(--amber); --tint-soft:var(--amber-soft);}
   a.card.skl{--tint:var(--accent); --tint-soft:var(--accent-soft);}
+  a.card.npc{--tint:var(--violet); --tint-soft:var(--violet-soft);}
 
   .card .kicker{
     font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
@@ -80,21 +77,6 @@
   }
   .card .desc{font-size:.85rem; color:var(--text-dim); line-height:1.5; margin:0;}
 
-  .card .figures{
-    display:flex; gap:20px; flex-wrap:wrap; font-family:"IBM Plex Mono",monospace;
-    padding:13px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-  }
-  .card .figures div{display:flex; flex-direction:column; gap:2px;}
-  .card .figures .n{font-size:1.1rem; font-weight:600; color:var(--tint); font-variant-numeric:tabular-nums;}
-  .card .figures .l{font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
-
-  .card .tags{display:flex; flex-wrap:wrap; gap:6px; margin:0; padding:0; list-style:none;}
-  .card .tags li{
-    font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.02em;
-    background:var(--surface2); border:1px solid var(--border); border-radius:999px;
-    padding:3px 10px; color:var(--text-dim); display:flex; gap:6px; align-items:baseline;
-  }
-  .card .tags li .c{color:var(--tint); font-variant-numeric:tabular-nums;}
 
   .card .open{
     margin-top:auto; display:flex; align-items:center; gap:8px;
@@ -126,14 +108,9 @@
 <div class="wrap">
   <header class="top">
     <div class="id-block">
-      <div class="eyebrow">Bearer Ledgers · System Rank S</div>
+      <div class="eyebrow">Pendragon Ledgers</div>
       <h1>Alexander Pendragon</h1>
-      <p class="sub">Two live ledgers kept against the same bearer record: everything he holds, and everything he can do. Both are searchable, filterable by Rank, and printable to PDF.</p>
-    </div>
-    <div class="stat-strip">
-      <div><span class="n">109</span><span class="l">Holdings</span></div>
-      <div><span class="n">115</span><span class="l">Techniques</span></div>
-      <div><span class="n">2</span><span class="l">Ledgers</span></div>
+      <p class="sub">Three live ledgers regenerated from canon: everything Alexander holds, everything he can do, and everyone he shares the world with. Each is searchable, filterable by Rank, and printable to PDF.</p>
     </div>
   </header>
 
@@ -144,22 +121,6 @@
         <h2>Inventory Ledger</h2>
       </div>
       <p class="desc">Every held item — worn, banked, or in someone else's custody — grouped by how it's used, with stats, effects and Rank on each entry. Includes the worn loadout and its stacked damage reduction.</p>
-      <div class="figures">
-        <div><span class="n">109</span><span class="l">Distinct holdings</span></div>
-        <div><span class="n">9</span><span class="l">Worn</span></div>
-        <div><span class="n">24</span><span class="l">S-Rank</span></div>
-        <div><span class="n">3</span><span class="l">In custody</span></div>
-      </div>
-      <ul class="tags">
-        <li>Weapons <span class="c">21</span></li>
-        <li>Armor <span class="c">14</span></li>
-        <li>Accessories <span class="c">10</span></li>
-        <li>Consumables <span class="c">13</span></li>
-        <li>Keys <span class="c">4</span></li>
-        <li>Runes, Books &amp; Evidence <span class="c">24</span></li>
-        <li>Tools <span class="c">9</span></li>
-        <li>Materials <span class="c">11</span></li>
-      </ul>
       <span class="open">Open inventory ledger <span class="arrow" aria-hidden="true">→</span></span>
     </a>
 
@@ -169,28 +130,21 @@
         <h2>Skills Ledger</h2>
       </div>
       <p class="desc">Every technique he holds, grouped by what it does, with full effect, Mana cost and damage. How each was acquired — drop and practice, a named far-side teacher, or Succession — stays tagged on the card.</p>
-      <div class="figures">
-        <div><span class="n">115</span><span class="l">Techniques</span></div>
-        <div><span class="n">87</span><span class="l">S-Rank</span></div>
-        <div><span class="n">52</span><span class="l">Taught</span></div>
-        <div><span class="n">26</span><span class="l">Succession</span></div>
-      </div>
-      <ul class="tags">
-        <li>Offense <span class="c">16</span></li>
-        <li>Defense <span class="c">16</span></li>
-        <li>Control <span class="c">14</span></li>
-        <li>Mobility <span class="c">11</span></li>
-        <li>Stealth <span class="c">7</span></li>
-        <li>Detection <span class="c">29</span></li>
-        <li>Support <span class="c">14</span></li>
-        <li>Crafting <span class="c">8</span></li>
-      </ul>
       <span class="open">Open skills ledger <span class="arrow" aria-hidden="true">→</span></span>
+    </a>
+
+    <a class="card npc" href="https://chronicle-pendragon.netlify.app/alexander_pendragon_npc_ledger.html">
+      <div>
+        <div class="kicker">Ledger 03 · People</div>
+        <h2>NPC Ledger</h2>
+      </div>
+      <p class="desc">Every named character in the campaign and the world's notable figures, grouped by Rank, with portrait, role, whereabouts and condition. Each record opens to appearance, personality, capabilities and where they stand with Alexander.</p>
+      <span class="open">Open NPC ledger <span class="arrow" aria-hidden="true">→</span></span>
     </a>
   </div>
 
   <footer class="note">
-    Counts reflect the ledgers as currently published. Each ledger carries its own live totals, Rank filters and search.
+    Each ledger is regenerated from canon and carries its own live totals, Rank filters and search.
   </footer>
 </div>
 </body></html>

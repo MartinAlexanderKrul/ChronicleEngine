@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Regenerate a campaign's derived asset ledgers from its character sheet.
+"""Regenerate a campaign's derived asset ledgers from its canonical records.
 
-Canon is the source; the ledger is a view. Every fact rendered comes from
-`100_CHARACTER_SHEET.md`. The one thing the sheet does not carry -- and should
+Canon is the source; the ledger is a view. Every skill and item rendered comes
+from `100_CHARACTER_SHEET.md`; every NPC from `130_NPCS_AND_FACTIONS.md` and the
+world ledger the campaign's startup declares. The one thing the sheet does not carry -- and should
 not, because it is presentation -- is the function grouping, which lives in the
 campaign's own `assets/ledger_taxonomy.yaml`.
 
@@ -10,7 +11,7 @@ A skill present in the sheet with no taxonomy row is an ERROR, never a silent
 omission: that is what stops a newly acquired skill from falling out of the
 view unnoticed, which is the failure this generator exists to make impossible.
 """
-import argparse, io, json, os, re, sys
+import argparse, io, json, os, re, shutil, sys
 
 try:
     import yaml
@@ -266,6 +267,154 @@ def build_inventory(state, assets, taxonomy, campaign):
     return items, equipped, [], md(strip_bold_name(total_reduction)[0] + " " + strip_bold_name(total_reduction)[1]).strip()
 
 
+# The NPC ledger reads every Character record in the campaign's NPC ledger and
+# in the world ledger its startup declares. Fields that carry what the player
+# has not been told -- an NPC's secret, its off-screen agenda, the knowledge
+# boundary the channel check reads -- stay out of a page meant to be browsed.
+NPC_HIDDEN = {"secret", "prior_secret", "agenda", "agenda_at_death", "knowledge",
+              "beliefs", "open_questions", "moved_by_events",
+              "portrait", "portrait_guild", "portrait_full", "portrait_mundane"}
+NPC_ORDER = ["age", "role", "rank", "pools", "pool_variance", "location", "condition",
+             "situation", "appearance", "personality", "voice", "capabilities",
+             "signature_ability", "want", "fear"]
+NPC_RANK = re.compile(r"(?<![A-Za-z])([SABCDE])-Rank")
+PROTAGONIST = "ENT-000125"
+
+
+def fenced_records(path):
+    text = io.open(path, encoding="utf-8").read()
+    docs = []
+    for block in re.findall(r"```yaml\n(.*?)\n```", text, re.S):
+        doc = yaml.safe_load(block)
+        if isinstance(doc, dict):
+            docs.append(doc)
+    return text, docs
+
+
+def escape(text):
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def npc_value(value):
+    if isinstance(value, dict):
+        return "<br>".join("<b>%s</b>: %s" % (escape(str(k)), npc_value(v)) for k, v in value.items())
+    if isinstance(value, list):
+        return "<br>".join(npc_value(v) for v in value)
+    return md(escape(str(value).strip())).replace("\n", "<br>")
+
+
+def summary_line(value, limit=240):
+    if not isinstance(value, str) or not value.strip():
+        return ""
+    first = (split_sentences(value.strip()) or [value.strip()])[0].rstrip(";")
+    if len(first) > limit:
+        first = first[:limit].rsplit(" ", 1)[0] + chr(0x2026)
+    return md(escape(first))
+
+
+# A published ledger is the `assets/` folder on its own, so a world figure's
+# portrait -- which lives with the world, not the campaign -- is mirrored into
+# this folder. The generator owns it outright: a copy nothing references is
+# removed, and --check reports a stale or missing one as drift.
+WORLD_PORTRAITS = os.path.join("portraits", "world")
+
+
+def build_npcs(root, camp, assets):
+    startup = io.open(os.path.join(camp, "090_CAMPAIGN_STARTUP.md"), encoding="utf-8").read()
+    world_m = re.search(r"^\s*world_ledger:\s*(\S+)", startup, re.M)
+    sources = [("campaign", os.path.join(camp, "130_NPCS_AND_FACTIONS.md"))]
+    if world_m:
+        sources.append(("world", os.path.join(root, world_m.group(1))))
+
+    npcs, rels, failures, mirror = {}, {}, [], {}
+    for scope, path in sources:
+        text, docs = fenced_records(path)
+        declared = len(re.findall(r"^type: Character\s*$", text, re.M))
+        chars = [d for d in docs if d.get("type") == "Character"]
+        if len(chars) != declared:
+            failures.append("%s declares %d Character records but %d parsed"
+                            % (os.path.relpath(path, root), declared, len(chars)))
+        for d in docs:
+            ends = d.get("endpoints") or []
+            if str(d.get("id", "")).startswith("REL-") and PROTAGONIST in ends:
+                for other in ends:
+                    if other != PROTAGONIST:
+                        rels.setdefault(other, []).append(d)
+        base = os.path.dirname(path)
+        headings = entity_names(path)
+        for d in chars:
+            ent = d.get("id")
+            if ent == PROTAGONIST or ent in npcs:
+                continue
+            names = [a.get("name") for a in d.get("aliases") or [] if isinstance(a, dict)]
+            current = [a.get("name") for a in d.get("aliases") or []
+                       if isinstance(a, dict) and a.get("quality") == "current"]
+            name = (current or names or [headings.get(ent)])[0]
+            if not name:
+                failures.append("%s has no name" % ent)
+                continue
+            state = d.get("canonical_state") or {}
+            pics = {}
+            for key in ("portrait", "portrait_guild"):
+                if state.get(key):
+                    disk = os.path.join(base, state[key])
+                    if not os.path.exists(disk):
+                        failures.append("%s (%s) %s points at a missing file: %s"
+                                        % (name, ent, key, state[key]))
+                    if scope == "world":
+                        dest = os.path.join(WORLD_PORTRAITS, os.path.basename(disk))
+                        mirror[dest] = disk
+                    else:
+                        dest = os.path.relpath(disk, assets)
+                    pics[key] = dest.replace(os.sep, "/")
+            # The Rank line decides. Only a record with no Rank line at all falls
+            # back to a hunter's subtype ("guild hunter -- A-Rank striker") -- a
+            # role that merely mentions a Rank ("S-Rank Liaison") is about other
+            # people, and an unawakened fixer's condition is about a dungeon.
+            subtype = str(d.get("subtype", ""))
+            rank_m = (NPC_RANK.search(str(state["rank"])) if "rank" in state else
+                      NPC_RANK.search(subtype) if re.search("hunter", subtype, re.I) else None)
+            keys = [k for k in NPC_ORDER if k in state] + \
+                   [k for k in state if k not in NPC_ORDER and k not in NPC_HIDDEN]
+            npcs[ent] = {
+                "id": ent, "name": escape(str(name)), "rank": rank_m.group(1) if rank_m else "",
+                "role": md(escape(str(d.get("subtype") or state.get("role") or ""))),
+                "status": d.get("lifecycle") or d.get("status") or "active",
+                "source": scope,
+                "portrait": pics.get("portrait", ""), "portraitGuild": pics.get("portrait_guild", ""),
+                "loc": summary_line(state.get("location")),
+                "cond": summary_line(state.get("condition")),
+                "fields": [[k.replace("_", " "), npc_value(state[k])] for k in keys
+                           if state[k] not in (None, "")],
+            }
+    for ent, rec in npcs.items():
+        rec["rels"] = [{"type": str(r.get("type", "")).replace("-", " "),
+                        "text": npc_value(r.get("qualities", ""))} for r in rels.get(ent, [])]
+    return sorted(npcs.values(), key=lambda r: r["name"].lower()), failures, mirror
+
+
+def sync_portraits(assets, mirror, check):
+    """Mirror the world portraits the NPC ledger links. Returns (ok, copied, removed)."""
+    folder = os.path.join(assets, WORLD_PORTRAITS)
+    have = set(os.listdir(folder)) if os.path.isdir(folder) else set()
+    want = {os.path.basename(d): s for d, s in mirror.items()}
+    stale = [n for n, src in want.items()
+             if n not in have or io.open(os.path.join(folder, n), "rb").read() != io.open(src, "rb").read()]
+    extra = sorted(have - set(want))
+    if check:
+        for n in stale:
+            print("DRIFT: portraits/world/%s is missing or out of date." % n, file=sys.stderr)
+        for n in extra:
+            print("DRIFT: portraits/world/%s is no longer referenced." % n, file=sys.stderr)
+        return not (stale or extra), 0, 0
+    os.makedirs(folder, exist_ok=True)
+    for n in stale:
+        shutil.copyfile(want[n], os.path.join(folder, n))
+    for n in extra:
+        os.remove(os.path.join(folder, n))
+    return True, len(stale), len(extra)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--campaign", required=True)
@@ -370,6 +519,25 @@ def main():
               {"EQUIPPED_DATA": "[" + chr(10) + edata + chr(10) + "]",
                "ITEMS_DATA": "[" + chr(10) + idata + chr(10) + "]",
                "TOTAL_REDUCTION": json.dumps(total_reduction, ensure_ascii=False)}) and ok
+
+    npcs, failures, mirror = build_npcs(root, camp, assets)
+    if failures:
+        print("Ledger generation FAILED: %d NPC record(s) cannot be rendered faithfully:"
+              % len(failures), file=sys.stderr)
+        for f in failures:
+            print("  - " + f, file=sys.stderr)
+        return 1
+    print("npcs: %d characters, %d with a portrait, %d tied to the protagonist"
+          % (len(npcs), sum(1 for r in npcs if r["portrait"]), sum(1 for r in npcs if r["rels"])))
+    ndata = ("," + chr(10)).join(json.dumps(r, ensure_ascii=False).replace("</", "<\\/") for r in npcs)
+    ok = emit("alexander_pendragon_npc_ledger.html", "npc_ledger.template.html",
+              {"NPC_DATA": "[" + chr(10) + ndata + chr(10) + "]"}) and ok
+    synced, copied, removed = sync_portraits(assets, mirror, args.check)
+    ok = synced and ok
+    if args.check and synced:
+        print("check: portraits/world holds the %d world portraits the NPC ledger links" % len(mirror))
+    elif not args.check:
+        print("portraits/world: %d linked, %d copied, %d removed" % (len(mirror), copied, removed))
 
     for name, size in written:
         print("wrote %s (%d bytes)" % (name, size))

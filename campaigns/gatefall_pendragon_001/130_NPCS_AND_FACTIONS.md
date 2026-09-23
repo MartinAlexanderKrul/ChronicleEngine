@@ -320,6 +320,31 @@ Deliberately lightweight — a row, not a Persistent Object. Add one the moment 
 
 ---
 
+## The Pendragon Guild — Visual Identity
+
+**Authored 2026-09-23 (real date), for visual reference — no logo or branding existed in canon prior to this note.** No entity ID minted; this is a documentation note on the guild's mark, not a game entity, and carries no mechanical weight.
+
+The guild takes its name from Alexander's own surname, not a chosen brand (`170_CHANGELOG.md`, Checkpoint 0153 — "the guild finds its name," `EVT` context: Kane told first, the guild plan named the Pendragon Guild the same evening). "Pendragon" itself, per its Arthurian root (Welsh *pen* "head" + *dragon*), was a war-leader title — "chief dragon" — rather than a royal crest, which shaped the mark chosen: a reduced, geometric dragon head rather than an ornate heraldic shield. The design deliberately breaks from Horizon Guild's polished, press-managed marquee branding (Preston Vaughn's trophy-wall aesthetic, `worlds/gatefall/220_NOTABLE_FIGURES.md`) — Pendragon's own S-Ranks mostly dress plainly and avoid cameras (Kane, Dario Wexler, Marisol Cade, Itai Barak), and its board runs on equal votes rather than a owned hierarchy (Kane, Cade, Blažková, Reinhardt, Aubrac each holding a full, no-obligation seat). The mark is built to match: understated, angular, closer to a modern tactical emblem than fantasy heraldry.
+
+**Design:** A dragon head in profile, built from sharp angular facets and straight edges rather than scales or ornate detail. Facing left, mouth closed, one small angular horn, a faceted eye as the only curved element. No wings, no fire, no shield, no lettering — flat, single-color fill only.
+
+**Generation prompt used:**
+> A minimalist vector logo of a dragon head in profile, built entirely from sharp angular facets and straight edges rather than scales or ornate detail — closer to a modern tactical or esports emblem than fantasy heraldry. Single dragon head facing left, mouth closed, one small angular horn, a faceted eye as the only curved element. Flat charcoal-black fill on a plain white background, no gradients, no outline glow, no color accent, no text. Clean vector logo design, high contrast, scalable icon, centered composition.
+> Negative: ornate scales, medieval crest, shield shape, wings, fire, color gradient, 3D rendering, photorealism, text or lettering.
+
+**Variants:**
+- `logo` — flat charcoal-black on white, for documents, letterhead, and light backgrounds.
+- `logo_reversed` — flat off-white/steel-grey on solid charcoal-black, for office signage, gear patches, and dark backgrounds.
+
+```yaml
+guild_identity:
+  logo: "assets/guild/pendragon_logo.png"
+  logo_reversed: "assets/guild/pendragon_logo_reversed.png"
+  status: "final — both PNGs landed 2026-09-23"
+```
+
+---
+
 ## Campaign-Local Figures — Session 1
 
 ### ENT-000126 — Tanya Voss

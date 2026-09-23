@@ -1,0 +1,321 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pendragon Ledger — Guild</title>
+<meta name="description" content="The Pendragon Guild in one place: its mark, leadership and board, every office with membership, Rank split and staff, and every Gate it has answered.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eef2f1; --surface:#ffffff; --surface2:#f4f7f6; --border:#d7dfdd;
+    --text:#0f1a1c; --text-dim:#556166; --accent:#0e8f83; --accent-soft:#0e8f831a;
+    --amber:#a5730f; --amber-soft:#a5730f1a; --blood:#a5340f; --blood-soft:#a5340f1a;
+    --rank-s:#a5730f; --rank-a:#7440c4; --rank-b:#0e8f83; --rank-c:#2f7d32; --rank-d:#5c6b72; --rank-e:#8a939a;
+    --shadow:0 1px 2px rgba(15,26,28,.06), 0 8px 24px -12px rgba(15,26,28,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0b1414; --surface:#101b1b; --surface2:#152322; --border:#223231;
+      --text:#e7efee; --text-dim:#93a6a3; --accent:#3fd6c3; --accent-soft:#3fd6c31a;
+      --amber:#f0b429; --amber-soft:#f0b4291a; --blood:#ef6a4c; --blood-soft:#ef6a4c1a;
+      --rank-s:#f0b429; --rank-a:#b78cf0; --rank-b:#3fd6c3; --rank-c:#6fcf73; --rank-d:#93a6a3; --rank-e:#6c7a78;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b1414; --surface:#101b1b; --surface2:#152322; --border:#223231;
+    --text:#e7efee; --text-dim:#93a6a3; --accent:#3fd6c3; --accent-soft:#3fd6c31a;
+    --amber:#f0b429; --amber-soft:#f0b4291a; --blood:#ef6a4c; --blood-soft:#ef6a4c1a;
+    --rank-s:#f0b429; --rank-a:#b78cf0; --rank-b:#3fd6c3; --rank-c:#6fcf73; --rank-d:#93a6a3; --rank-e:#6c7a78;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--text); margin:0;
+    font-family:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+    padding-inline:16px;
+  }
+  .wrap{max-width:1160px;margin:0 auto;padding-block:28px 60px;}
+  /* Shared ledger header: identical in every Pendragon ledger template. */
+  header.top{
+    display:flex; flex-wrap:wrap; gap:18px 28px; align-items:flex-end; justify-content:space-between;
+    padding-bottom:18px; border-bottom:1px solid var(--border); margin-bottom:22px;
+  }
+  .ledgers{flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px;}
+  .ledgers a{
+    font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
+    padding:5px 11px; border-radius:999px; border:1px solid var(--border); background:var(--surface);
+    color:var(--text-dim); text-decoration:none;
+  }
+  .ledgers a:hover{border-color:var(--accent); color:var(--text);}
+  .ledgers a[aria-current="page"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+  .ledgers a:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
+  .id-block{display:flex; flex-direction:column; gap:4px;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent);}
+  h1{font-family:"Chakra Petch",ui-sans-serif,sans-serif; font-weight:700; font-size:clamp(1.7rem,4vw,2.5rem); margin:0; letter-spacing:.01em; text-wrap:balance;}
+  .sub{color:var(--text-dim); font-size:.9rem; max-width:60ch; line-height:1.5;}
+  .stat-strip{display:flex; gap:22px; flex-wrap:wrap; font-family:"IBM Plex Mono",monospace;}
+  .stat-strip div{display:flex; flex-direction:column; gap:2px; min-width:84px;}
+  .stat-strip .n{font-size:1.25rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums;}
+  .stat-strip .l{font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+  @media print{.ledgers{display:none;}}
+  .section{margin:34px 0 0;}
+  .sechead{display:flex; align-items:baseline; gap:10px; margin-bottom:14px;}
+  .sechead h2{font-family:"Chakra Petch",sans-serif; font-size:1.15rem; font-weight:600; margin:0; letter-spacing:.02em;}
+  .sechead .count{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--text-dim); background:var(--surface2);
+    border:1px solid var(--border); border-radius:999px; padding:2px 9px;
+  }
+  .sechead .line{flex:1; height:1px; background:var(--border);}
+  .sechead a{font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); text-decoration:none;}
+  .sechead a:hover{text-decoration:underline;}
+  .note{color:var(--text-dim); font-size:.8rem; line-height:1.5; margin:0 0 12px; max-width:80ch;}
+
+  /* identity */
+  .identity{
+    display:grid; grid-template-columns:132px 1fr; gap:22px; align-items:center;
+    background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; box-shadow:var(--shadow);
+  }
+  .identity .mark{width:132px; height:132px; border-radius:10px; overflow:hidden; background:var(--surface2); border:1px solid var(--border); display:grid; place-items:center;}
+  .identity .mark img{width:100%; height:100%; object-fit:contain; display:block;}
+  .identity h3{font-family:"Chakra Petch",sans-serif; font-size:1.25rem; margin:0 0 6px;}
+  .identity p{margin:0; font-size:.86rem; line-height:1.55; color:var(--text-dim); max-width:72ch;}
+  .identity .links{margin-top:10px; display:flex; gap:12px; flex-wrap:wrap; font-family:"IBM Plex Mono",monospace; font-size:.68rem;}
+  .identity .links a{color:var(--accent);}
+
+  /* people */
+  .people{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:10px;}
+  .person{
+    display:flex; gap:11px; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:10px 12px; box-shadow:var(--shadow); color:inherit; text-decoration:none; min-width:0;
+    transition:border-color .12s, transform .12s;
+  }
+  a.person:hover{border-color:var(--accent); transform:translateY(-1px);}
+  a.person:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .face{width:48px; height:48px; flex:none; border-radius:8px; overflow:hidden; background:var(--surface2); border:1px solid var(--border); display:grid; place-items:center;}
+  .face img{width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block;}
+  .initials{font-family:"Chakra Petch",sans-serif; font-weight:600; font-size:.95rem; color:var(--text-dim);}
+  .person .who{min-width:0; display:flex; flex-direction:column; gap:2px;}
+  .person .nm{font-weight:600; font-size:.9rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:flex; gap:6px; align-items:center;}
+  .person .post{font-size:.74rem; color:var(--text-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .rank{
+    font-family:"IBM Plex Mono",monospace; font-size:.6rem; font-weight:600; letter-spacing:.04em;
+    padding:1px 6px; border-radius:5px; white-space:nowrap; flex:none;
+    color:var(--rk); background:color-mix(in srgb, var(--rk) 16%, transparent);
+    border:1px solid color-mix(in srgb, var(--rk) 45%, transparent);
+  }
+
+  /* offices */
+  .officebar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px;}
+  .chip{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.03em; padding:6px 11px;
+    border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--text-dim);
+    cursor:pointer; user-select:none;
+  }
+  .chip[aria-pressed="true"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+  .chip:focus-visible{outline:2px solid var(--accent);}
+  .legend{display:flex; gap:10px; flex-wrap:wrap; margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:.64rem; color:var(--text-dim);}
+  .legend span{display:flex; align-items:center; gap:5px;}
+  .legend i{width:9px; height:9px; border-radius:2px; background:var(--rk); display:inline-block;}
+  .offices{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px;}
+  .office{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 15px;
+    display:flex; flex-direction:column; gap:10px; box-shadow:var(--shadow); min-width:0;
+  }
+  .office .top{display:flex; justify-content:space-between; align-items:baseline; gap:10px;}
+  .office h3{font-family:"Chakra Petch",sans-serif; font-size:1.08rem; font-weight:600; margin:0;}
+  .office .big{font-family:"IBM Plex Mono",monospace; font-size:1.2rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums;}
+  .office .big small{font-size:.62rem; color:var(--text-dim); font-weight:400; letter-spacing:.06em; text-transform:uppercase; margin-left:4px;}
+  .split{display:flex; height:9px; border-radius:5px; overflow:hidden; background:var(--surface2); gap:1px;}
+  .split i{background:var(--rk); display:block; min-width:2px;}
+  .office .nums{display:grid; grid-template-columns:repeat(3,1fr); gap:6px; font-family:"IBM Plex Mono",monospace;}
+  .office .nums div{display:flex; flex-direction:column; gap:1px;}
+  .office .nums b{font-size:.84rem; font-weight:600; font-variant-numeric:tabular-nums;}
+  .office .nums span{font-size:.58rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-dim);}
+  .office .ranks{display:flex; gap:8px; flex-wrap:wrap; font-family:"IBM Plex Mono",monospace; font-size:.68rem; color:var(--text-dim);}
+  .office .ranks b{color:var(--rk); font-weight:600;}
+  .staff{display:flex; flex-direction:column; gap:4px; border-top:1px solid var(--border); padding-top:9px;}
+  .staff a, .staff div{display:grid; grid-template-columns:118px 1fr; gap:8px; font-size:.78rem; color:inherit; text-decoration:none; line-height:1.35;}
+  .staff a:hover .n{color:var(--accent); text-decoration:underline;}
+  .staff .p{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dim); padding-top:2px;}
+  .staff .none{color:var(--text-dim); font-size:.76rem;}
+
+  /* log tables */
+  .tablewrap{overflow-x:auto; border:1px solid var(--border); border-radius:10px; background:var(--surface); box-shadow:var(--shadow);}
+  table{border-collapse:collapse; width:100%; font-size:.8rem; line-height:1.45;}
+  th{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-dim); font-weight:600; text-align:left; background:var(--surface2);}
+  th, td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+  tr:last-child td{border-bottom:0;}
+  td code{font-family:"IBM Plex Mono",monospace; font-size:.72rem;}
+  td.min{white-space:nowrap;}
+  .rules{margin:12px 0 0; padding-left:20px; font-size:.84rem; line-height:1.55; display:flex; flex-direction:column; gap:6px;}
+  .warn{
+    font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--amber); border:1px solid color-mix(in srgb, var(--amber) 45%, transparent); background:var(--amber-soft);
+    border-radius:5px; padding:2px 7px;
+  }
+  footer{margin-top:40px; padding-top:16px; border-top:1px solid var(--border); color:var(--text-dim); font-size:.76rem; font-family:"IBM Plex Mono",monospace; line-height:1.6;}
+  @media (max-width:560px){
+    .identity{grid-template-columns:1fr;}
+    .identity .mark{width:110px; height:110px;}
+    .legend{margin-left:0;}
+  }
+  @media print{
+    body{background:#fff; color:#000;}
+    .office,.person,.identity,.tablewrap{box-shadow:none; break-inside:avoid;}
+    .officebar{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){ .person{transition:none;} a.person:hover{transform:none;} }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <nav class="ledgers" aria-label="Pendragon ledgers">
+      <a href="index.html">All ledgers</a>
+      <a href="alexander_pendragon_inventory_ledger.html">Inventory</a>
+      <a href="alexander_pendragon_skill_ledger.html">Skills</a>
+      <a href="alexander_pendragon_npc_ledger.html">NPCs</a>
+      <a href="alexander_pendragon_guild_ledger.html" aria-current="page">Guild</a>
+    </nav>
+    <div class="id-block">
+      <div class="eyebrow">Pendragon Ledger 04 · Guild</div>
+      <h1>Guild Ledger</h1>
+      <div class="sub">The Pendragon Guild in one place: its mark, its leadership and board, every office with its membership and Rank split and the people who run it, and every Gate it has answered.</div>
+    </div>
+    <div class="stat-strip">
+      <div><span class="n" id="statMembers">0</span><span class="l">Members</span></div>
+      <div><span class="n" id="statOffices">0</span><span class="l">Offices</span></div>
+      <div><span class="n" id="statNamed">0</span><span class="l">Named people</span></div>
+      <div><span class="n" id="statCleared">0</span><span class="l">Gates cleared</span></div>
+    </div>
+  </header>
+
+  <section class="identity" id="identity" aria-label="The guild's mark"></section>
+
+  <section class="section" aria-labelledby="h-lead">
+    <div class="sechead"><h2 id="h-lead">Leadership &amp; Board</h2><span class="line"></span>
+      <a href="alexander_pendragon_npc_ledger.html?org=Pendragon%20Guild">Every member in the NPC ledger &rarr;</a></div>
+    <div class="people" id="leadership"></div>
+    <div class="sechead" style="margin-top:18px"><h2 style="font-size:.95rem">Board</h2><span class="count" id="boardCount"></span><span class="line"></span></div>
+    <div class="people" id="board"></div>
+  </section>
+
+  <section class="section" aria-labelledby="h-off">
+    <div class="sechead"><h2 id="h-off">Offices</h2><span class="count" id="officeCount"></span><span class="line"></span></div>
+    <div class="officebar">
+      <button class="chip" type="button" data-sort="members" aria-pressed="true">By members</button>
+      <button class="chip" type="button" data-sort="capture" aria-pressed="false">By capture</button>
+      <button class="chip" type="button" data-sort="name" aria-pressed="false">A&ndash;Z</button>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="offices" id="offices"></div>
+  </section>
+
+  <section class="section" id="groupsWrap"></section>
+
+  <section class="section" aria-labelledby="h-log">
+    <div class="sechead"><h2 id="h-log">Gate Clearances</h2><span class="count" id="clearCount"></span><span class="line"></span><span class="warn">Operational log &middot; the chronicle governs</span></div>
+    <div class="tablewrap"><table id="cleared"></table></div>
+    <div id="clearedNotes"></div>
+    <div class="sechead" style="margin-top:22px"><h2 style="font-size:.95rem">Open and assigned</h2><span class="count" id="openCount"></span><span class="line"></span></div>
+    <div class="tablewrap"><table id="open"></table></div>
+    <div class="sechead" style="margin-top:22px"><h2 style="font-size:.95rem">Standing rules</h2><span class="line"></span></div>
+    <ol class="rules" id="rules"></ol>
+  </section>
+
+  <footer>Gatefall: Pendragon &middot; offices from 151_HUNTER_POPULATION_MODEL.md &middot; people from each NPC's affiliation in 130_NPCS_AND_FACTIONS.md and worlds/gatefall/220_NOTABLE_FIGURES.md &middot; clearances from 096_GUILD_CLEARANCE_LOG.md, an operational log the chronicle overrides</footer>
+</div>
+
+<script>
+// ---- Data -------------------------------------------------------------
+const G = /*__GUILD_DATA__*/{}/*__END__*/;
+const RANKS = ["E","D","C","B","A","S"];
+const NPC_LEDGER = "alexander_pendragon_npc_ledger.html";
+
+// ---- Render -------------------------------------------------------------
+const fmt = n => Number(n).toLocaleString("en-US");
+function initials(name){ return name.replace(/<[^>]+>/g, "").replace(/["'(].*?["')]/g, "").split(/\s+/).filter(Boolean).map(w => w[0]).slice(0, 2).join("").toUpperCase(); }
+function face(p){
+  const fall = `<span class="initials">${initials(p.name)}</span>`;
+  return `<div class="face">${p.portrait
+    ? `<img src="${p.portrait}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'initials',textContent:'${initials(p.name)}'}))">`
+    : fall}</div>`;
+}
+function rankBadge(r){ return r ? `<span class="rank" style="--rk:var(--rank-${r.toLowerCase()})">${r}</span>` : ""; }
+// Every named person links to their full record in the NPC ledger; the founder
+// has no NPC record, so his card links to his skill ledger instead.
+function hrefOf(p){ return p.id === "ENT-000125" ? "alexander_pendragon_skill_ledger.html" : `${NPC_LEDGER}?open=${p.id}`; }
+function person(p){
+  return `<a class="person" href="${hrefOf(p)}">${face(p)}<span class="who">
+    <span class="nm">${p.name}${rankBadge(p.rank)}</span><span class="post">${p.post || ""}</span></span></a>`;
+}
+
+document.getElementById("identity").innerHTML = `
+  <div class="mark">${G.logo ? `<picture>${G.logoReversed ? `<source srcset="${G.logoReversed}" media="(prefers-color-scheme: dark)">` : ""}<img src="${G.logo}" alt="The Pendragon Guild's mark: an angular dragon head in profile"></picture>` : ""}</div>
+  <div><h3>The Pendragon Guild</h3><p>${G.design || ""}</p>
+    <div class="links">${G.logo ? `<a href="${G.logo}" target="_blank" rel="noopener">Logo (light)</a>` : ""}${G.logoReversed ? `<a href="${G.logoReversed}" target="_blank" rel="noopener">Logo (reversed)</a>` : ""}</div></div>`;
+
+document.getElementById("leadership").innerHTML = G.groups.leadership.map(person).join("");
+document.getElementById("board").innerHTML = G.groups.board.map(person).join("");
+document.getElementById("boardCount").textContent = `${G.groups.board.length} seats`;
+
+document.getElementById("legend").innerHTML = RANKS.map(r => `<span style="--rk:var(--rank-${r.toLowerCase()})"><i></i>${r}</span>`).join("");
+const POST_ORDER = ["day manager","front desk","night officer","second night officer"];
+function postRank(p){ const i = POST_ORDER.indexOf(p.post); return i < 0 ? 9 : i; }
+function office(o){
+  const staff = [...o.staff].sort((a, b) => postRank(a) - postRank(b) || a.name.localeCompare(b.name));
+  const staffIds = new Set(staff.map(s => s.name));
+  const sOnly = o.sNames.filter(s => !staffIds.has(s.name));
+  const rows = staff.map(s => `<a href="${hrefOf(s)}"><span class="p">${s.post}</span><span class="n">${s.name}</span></a>`)
+    .concat(sOnly.map(s => s.id
+      ? `<a href="${hrefOf(s)}"><span class="p">S-Rank</span><span class="n">${s.name}</span></a>`
+      : `<div><span class="p">S-Rank</span><span class="n">${s.name}</span></div>`));
+  return `<article class="office">
+    <div class="top"><h3>${o.name}</h3><span class="big">${fmt(o.members)}<small>members</small></span></div>
+    <div class="split" role="img" aria-label="Rank split: ${RANKS.map(r => `${r} ${o.ranks[r]}`).join(", ")}">
+      ${RANKS.map(r => o.ranks[r] ? `<i style="--rk:var(--rank-${r.toLowerCase()}); flex:${o.ranks[r]}"></i>` : "").join("")}</div>
+    <div class="ranks">${RANKS.map(r => `<span style="--rk:var(--rank-${r.toLowerCase()})">${r} <b>${o.ranks[r]}</b></span>`).join("")}</div>
+    <div class="nums">
+      <div><b>${o.capture || "—"}</b><span>Capture</span></div>
+      <div><b>${o.est || "—"}</b><span>Est. hunters</span></div>
+      <div><b>${o.metroPop || "—"}</b><span>Metro pop.</span></div>
+    </div>
+    <div class="staff">${rows.length ? rows.join("") : `<span class="none">No named staff yet.</span>`}</div>
+  </article>`;
+}
+const pct = o => parseFloat(String(o.capture).replace(/[^0-9.]/g, "")) || 0;
+const SORTS = {members:(a, b) => b.members - a.members, capture:(a, b) => pct(b) - pct(a), name:(a, b) => a.name.localeCompare(b.name)};
+function renderOffices(key){
+  document.getElementById("offices").innerHTML = [...G.offices].sort(SORTS[key]).map(office).join("");
+}
+document.querySelectorAll("[data-sort]").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("[data-sort]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  renderOffices(b.dataset.sort);
+}));
+renderOffices("members");
+document.getElementById("officeCount").textContent = `${G.offices.length} offices · ${fmt(G.total)} members · ${G.captureTotal} capture of ${G.estTotal}`;
+
+const GROUPS = [["hq","Headquarters"],["pool","A-Rank Response Pool"],["founding","Founding Members — the pre-guild crew"],
+                ["artificers","Artificers"],["advisers","Advisers"],["members","Other Members"]];
+document.getElementById("groupsWrap").innerHTML = GROUPS.filter(([k]) => G.groups[k] && G.groups[k].length).map(([k, label]) => `
+  <div class="sechead" style="margin-top:22px"><h2>${label}</h2><span class="count">${G.groups[k].length}</span><span class="line"></span></div>
+  <div class="people">${G.groups[k].map(person).join("")}</div>`).join("");
+
+function table(el, rows){
+  if (!rows.length){ el.innerHTML = `<tr><td>Nothing recorded.</td></tr>`; return; }
+  const cols = Object.keys(rows[0]);
+  el.innerHTML = `<thead><tr>${cols.map(c => `<th scope="col">${c}</th>`).join("")}</tr></thead><tbody>${
+    rows.map(r => `<tr>${cols.map(c => `<td${/^(#|Date|Rank|Population|Event)$/.test(c) ? ' class="min"' : ""}>${r[c] || ""}</td>`).join("")}</tr>`).join("")}</tbody>`;
+}
+table(document.getElementById("cleared"), G.cleared);
+table(document.getElementById("open"), G.open);
+document.getElementById("clearedNotes").innerHTML = G.clearedNotes.map(n => `<p class="note" style="margin-top:10px">${n}</p>`).join("");
+document.getElementById("rules").innerHTML = G.rules.map(r => `<li>${r}</li>`).join("");
+document.getElementById("clearCount").textContent = G.cleared.length;
+document.getElementById("openCount").textContent = G.open.length;
+
+document.getElementById("statMembers").textContent = fmt(G.total);
+document.getElementById("statOffices").textContent = G.offices.length;
+document.getElementById("statNamed").textContent = G.roster + 1;
+document.getElementById("statCleared").textContent = G.cleared.length;
+</script>

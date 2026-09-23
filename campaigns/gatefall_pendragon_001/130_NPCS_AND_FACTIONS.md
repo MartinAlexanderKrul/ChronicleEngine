@@ -370,6 +370,8 @@ aliases:
 relationships:
   - REL-000063
 canonical_state:
+  affiliation: "Windy City Hunters Coalition — crew leader, Red Line Corridor crew"
+  home: "Chicago, USA"
   rank: "**D-Rank** — **Authored at the 1.41 follow-up from what canon already had her do.** She is an experienced licensed hunter and crew leader who led a five-hunter crew into the Red Line Corridor on an **unconfirmed-D assessment** — a job she accepted before its true E-Rank was known (`EVT-000059`) — and her kit is recorded as heavier than an E-Rank starter's. Taking a possible D as the lead of an under-strength-waiver crew (Section 9.4, absolute floor five) is D-Rank work. Resolved by that Rank under Section 13.1."
   pool_variance: "**None** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. Steady, competent, three-plus prior clears with the same partner, no casualty on the job we watched. Median D."
   pools: "**Maximum Health 100, maximum Mana 50** — the flat Section 6.1 table value at D-Rank. Section 5.2 tier costs, read from their own maximum: **Minor 5, Signature 12, Boss-tier 25**. Section 5.3 running-dry threshold **12**."
@@ -411,6 +413,8 @@ aliases:
   - name: "Marcus"
     quality: current
 canonical_state:
+  affiliation: "Windy City Hunters Coalition — Tanya Voss's crew"
+  home: "Chicago, USA"
   rank: "**E-Rank** — **Authored at the NPC audit from what canon already had him do**, on the same reasoning the 1.41 follow-up used for `ENT-000126`. Canon is explicit that he is **better at field triage-by-read than at combat**, and records him carrying **minimal gear and no visible weapon at all** — the inverse of the heavier-than-starter kit that resolved Tanya Voss to D. Section 9.4 sets **no legal combat minimum** at an E–D Gate, so nothing in the Red Line Corridor contract required him to be combat-rated, and the crew ran the **waiver floor of five** rather than a full strike element. An unarmed reader riding a waiver-floor crew is E-Rank work. Resolved by that Rank under Section 13.1; pools are supplied by Rank under the same section and are not separately authored here. **His `Deep Read` signature stands regardless** — Section 13.6 withholds an *authored* signature at E-Rank but expressly permits one to be named where the fiction needs it, and this crew's entire entry procedure depends on his."
   location: ENT-000087
   condition: "Healthy; no adverse condition established"
@@ -448,6 +452,8 @@ aliases:
   - name: "Elias Voss"
     quality: current
 canonical_state:
+  affiliation: "Windy City Hunters Coalition — Tanya Voss's crew"
+  home: "Chicago, USA"
   rank: "**D-Rank** — **Authored at the NPC audit from what canon already had him do**, on the identical reasoning the 1.41 follow-up used for his sister `ENT-000126`. That ruling turned on kit: Tanya resolved to D because her gear is *recorded as heavier than an E-Rank starter's*. Elias's is recorded heavier still — a **reinforced plated jacket** and a **heavy reinforced steel warhammer**, carried as the crew's dedicated close-combat line-holder on a contract accepted as an **unconfirmed D** (`EVT-000059`). Granting Tanya D on kit and withholding it from the better-equipped striker beside her would be inconsistent, so it is not withheld. Two-plus years licensed argues for the **bottom** of D, not against D. Resolved by that Rank under Section 13.1; pools are supplied by Rank under the same section and are not separately authored here.\n\n  **Held at D and no higher.** Section 9.4 sets no legal combat minimum at an E–D Gate, the crew ran the **waiver floor of five** rather than a full strike element, and the Gate proved true **E-Rank** — nothing in the record reaches above D, and `Groundbreak` is resolved at D-Rank magnitude accordingly."
   location: ENT-000087
   condition: "Healthy; equipped with a reinforced steel hammer"
@@ -486,6 +492,8 @@ aliases:
   - name: "Dr. Sarah Chen"
     quality: current
 canonical_state:
+  affiliation: "Independent — licensed mender, twice declined Horizon Guild"
+  home: "Chicago, USA"
   rank: "**E-Rank** — **not authored here but transcribed from resolved play.** The Red Line Corridor clear records her field-touch on Alexander explicitly as **`E-Rank baseline, +10` (Health 10→20)**, and Section 13.5 fixes a field-touch at one standard-hit baseline of the *mender's own Rank* — ¼ of Rank Health, which is 10 only at E-Rank's 40. Her Rank was therefore settled by a resolved outcome long before this audit; the field was simply never written down. Six months licensed at the time, consistent with it. Resolved by that Rank under Section 13.1; pools are supplied by Rank under the same section.\n\n  **What E-Rank means for her Section 13.5 effects, since they are magnitude-bearing:** three field-touches per Gate clear at **+10 Health each**, and the party's one-tier post-fight injury conversion applies only to injuries at **E-Rank or below**. This is already how the clear resolved — she spent two touches restoring Health and did not clear the severity of Alexander's Severe wound. **Her `Mending Touch` signature stands at E-Rank**: Section 13.6 withholds an *authored* signature at E-Rank but expressly permits one to be named where the fiction needs it, and a mender's whole function is that gift."
   location: ENT-000087
   condition: "Healthy; carries a field medical kit"
@@ -523,6 +531,8 @@ aliases:
   - name: "Kesha Morrison"
     quality: current
 canonical_state:
+  affiliation: "Windy City Hunters Coalition — coordinator; Pendragon Guild — retained consultant"
+  home: "Chicago, USA"
   rank: "**Not authored — awakened status is not established.** Kesha Morrison manages or brokers Gate work without any record of being awakened, and Section 9.4's support tier plus Preston Vaughn (`ENT-000108`, a guild chief executive who is explicitly not awakened) both show that a senior operator in this trade need not be. Assigning a Rank here would be inventing canon, so none is: no Rank, no pools, no Section 6.1.2 variance, and Section 13.6 does not reach a non-hunter. **Flagged for a ruling** rather than filled in."
   location: ENT-000087
   condition: "Healthy; no adverse condition established"
@@ -623,6 +633,8 @@ aliases:
   - name: "Diane"
     quality: current
 canonical_state:
+  affiliation: "Ironbound — owner"
+  home: "Chicago, USA (Milwaukee Avenue)"
   location: ENT-000087
   condition: "Healthy; no adverse condition established"
   capabilities: "Owner/operator of Ironbound gear shop (Milwaukee Avenue, Chicago); stocks E- and D-Rank gear and performs custom fittings. Gate-experienced; gives practical, function-first equipment advice."
@@ -736,6 +748,8 @@ aliases:
   - name: "Ada Reyes"
     quality: current
 canonical_state:
+  affiliation: "Corporate-adjacent contractor — logistics coordinator"
+  home: "Chicago, USA"
   location: ENT-000087
   condition: "Healthy; not established as combat-active"
   knowledge: "**What she knows about Alexander — read this before any line where she asserts something about him.** Anything not listed here she has not been told, which is the boundary rather than a gap (Resident Core, *Load a Recorded NPC Before Playing It*).\n\n  - **That he worked the Cicero Scar harvest-hire on 2026-07-25**, his first job under this contractor, and that she briefed him on protocol herself.\n  - **His declared haul on that job** — 7 C-Rank crystals, logged against her manifest tablet, which she complimented as better than a typical first-timer's. This is `Records` access to her own operation, not disclosure.\n  - **That she vouched for him afterwards**, independently of Dale Pruitt, in terms that reached Kesha Morrison's desk as *'good hire, real work'* (`EVT-000137`).\n  - **That he called her on 2026-08-19 asking after open work**, and that he took the staging she had — **Cicero Scar, Thursday 2026-08-20, 06:00**, on her contractor's standing BGM extraction permit rather than an open-market posting. **She owes him a manifest text once the count is confirmed** (`EVT-000543`). She knows he is available and actively looking; she does not know why.\n\n  **What she does not have.** Everything beyond two jobs and their manifests: no crew history, no knowledge of his Gate conduct outside the secured line, and no Bearer-only quantity on the Profile §14.4.1 register. **`F-006` is this record's cautionary note** — an Event's summary prose once had her and Dale Pruitt cited *by name to Owen* as vouching sources, and the player ruled that a summary naming several people in aggregate is not proof any one of them was individually named to anyone. Her vouching is real; who was told the names is a separate question."
@@ -788,6 +802,8 @@ aliases:
   - name: "Dale"
     quality: current
 canonical_state:
+  affiliation: "Corporate-adjacent contractor — logistics coordinator"
+  home: "Chicago, USA"
   location: ENT-000087
   condition: "Healthy; not established as combat-active"
   capabilities: "Runs support-side logistics for the same corporate-adjacent contractor as Ada Reyes, on a different confirmed C-Rank Gate clear."
@@ -838,6 +854,8 @@ aliases:
   - name: "Tomas Alvarez"
     quality: current
 canonical_state:
+  affiliation: "Corporate-adjacent contractor — strike captain"
+  home: "Chicago, USA"
   rank: "**C-Rank** — **Authored at the 1.41 follow-up from what canon already had him do.** He is the strike captain who clears and secures a **C-Rank** Gate's interior so the harvest element can work behind the line (`EVT-000224`). Section 9.4's legal minimum for a C-Rank Gate is four C-Rank-capable hunters; running its point element is C-Rank work by definition. Resolved by that Rank under Section 13.1."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. He does this for a living, job after job, and calls the fall-back signal for everyone behind him."
   pools: "**Maximum Health 262, maximum Mana 131** — Section 6.1 table (250 / 125) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 13, Signature 32, Boss-tier 65**. Section 5.3 running-dry threshold **32**."
@@ -876,6 +894,8 @@ aliases:
   - name: "Denny Osei"
     quality: current
 canonical_state:
+  affiliation: "Corporate-adjacent contractor — harvest hire"
+  home: "Chicago, USA"
   signature_ability: "**None — correctly.** Under Profile Section 13.6 (1.42) a signature ability is authored for named NPC hunters at **D-Rank or above**. Denny Osei is E-Rank: the gift is not absent, but too slight to name, file, or build a reputation on, which is why the boards record hunters at this Rank by working type and licence number instead. An empty field here is correct, not a gap. It may be named later if the fiction ever needs it, under the same no-magnitude limit as any other signature."
   rank: "**E-Rank** — **Authored at the 1.41 follow-up.** An ordinary harvest-hire miner on the contractor's C-Rank jobs, explicitly not combat-active. Section 9.4 is direct about this tier: support crew may be any Rank far below the Gate's, and **most E- and D-Ranks make their living as miners and harvesters on higher-Rank clears** — which is exactly what Alexander does on the same job with an E-Rank card. Resolved by that Rank under Section 13.1."
   pool_variance: "**None** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A solid, ordinary haul (11 C-Rank crystals) and nothing in the record that distinguishes him."
@@ -914,6 +934,8 @@ aliases:
   - name: "Marisol Ruiz"
     quality: current
 canonical_state:
+  affiliation: "Corporate-adjacent contractor — harvest hire"
+  home: "Chicago, USA"
   signature_ability: "**None — correctly.** Under Profile Section 13.6 (1.42) a signature ability is authored for named NPC hunters at **D-Rank or above**. Marisol Ruiz is E-Rank: the gift is not absent, but too slight to name, file, or build a reputation on, which is why the boards record hunters at this Rank by working type and licence number instead. An empty field here is correct, not a gap. It may be named later if the fiction ever needs it, under the same no-magnitude limit as any other signature."
   rank: "**E-Rank** — **Authored at the 1.41 follow-up.** An ordinary harvest-hire miner on the contractor's C-Rank jobs, explicitly not combat-active — the Section 9.4 support tier, the same footing Alexander works it on. Resolved by that Rank under Section 13.1."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. She out-hauled the rest of the support element on 2026-08-09 (14 C-Rank crystals against Denny Osei's 11) and drew an approving nod from Ada Reyes for it. Endurance at the face is the whole of her characterisation."
@@ -956,6 +978,8 @@ aliases:
 relationships:
   - REL-000065
 canonical_state:
+  affiliation: "Windy City Hunters Coalition — crew leader"
+  home: "Chicago, USA"
   rank: "**D-Rank** — carded D at her Awakening and unmoved since (Section 2), resolved by that Rank under Section 13.1."
   pool_variance: "**None** — authored under Profile Section 6.1.2 at the 1.41 adoption (`EVT-000248`). Deliberate rather than a default: solid, workmanlike, nothing flashy is her entire characterisation and has been confirmed by direct observation. She is the median D on purpose."
   pools: "**Maximum Health 100, maximum Mana 50** — the flat Section 6.1 table value at D-Rank. Section 5.2 tier costs: **Minor 5, Signature 12, Boss-tier 25**. Section 5.3 running-dry threshold **12**."
@@ -999,6 +1023,8 @@ aliases:
   - name: "Julian"
     quality: current
 canonical_state:
+  affiliation: "Windy City Hunters Coalition — Priya Menon's crew"
+  home: "Chicago, USA"
   rank: "**E-Rank** — fixed at Awakening, confirmed by Priya (`EVT-000077`); resolved by that Rank under Section 13.1."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 at the 1.41 adoption (`EVT-000248`). He knew the shotgun before he awakened and punching above his Rank is his established mode; a shallow well would contradict the man the crew actually fields."
   pools: "**Maximum Health 42, maximum Mana 21** — Section 6.1 table (40 / 20) × 1.05, floored. Section 5.2 tier costs: **Minor 2, Signature 5, Boss-tier 10**. Section 5.3 running-dry threshold **5**."
@@ -1041,6 +1067,8 @@ aliases:
   - name: "Renata"
     quality: current
 canonical_state:
+  affiliation: "Windy City Hunters Coalition — Priya Menon's crew"
+  home: "Chicago, USA"
   rank: "**E-Rank** — fixed at Awakening, confirmed by Priya (`EVT-000077`); resolved by that Rank under Section 13.1."
   pool_variance: "**−5%** — authored under Profile Section 6.1.2 at the 1.41 adoption (`EVT-000248`). She is the crews read-first element rather than a combat one, and the thinnest body on the line; the shallower well is the cost of the role, not a slight."
   pools: "**Maximum Health 38, maximum Mana 19** — Section 6.1 table (40 / 20) × 0.95, floored. Section 5.2 tier costs: **Minor 1, Signature 4, Boss-tier 9**. Section 5.3 running-dry threshold **4**."
@@ -1156,6 +1184,8 @@ aliases:
 relationships:
   - REL-000066
 canonical_state:
+  affiliation: "Independent — leads his own Bridgeport crew"
+  home: "Chicago, USA (Rogers Park)"
   rank: "**C-Rank** — fixed at his Awakening at twenty-two, resolved by that Rank under Section 13.1. Confirmed directly by Priya Okafor (`EVT-000077`)."
   pool_variance: "**+10%** — authored under Profile Section 6.1.2 at the 1.41 adoption (`EVT-000248`). Permanent and never rerolled. Deliberate: his mending capacity is repeatedly established as genuinely deep for his Rank — a real mender worth the whole cost to a waiver-tier crew, four to five ordinary patients per clear — and the gift outran the body it landed in."
   pools: "**Maximum Health 275, maximum Mana 137** — Section 6.1 table (250 / 125) × 1.10, floored. Section 5.2 tier costs, read from *his own* maximum: **Minor 13, Signature 34, Boss-tier 68**. Section 5.3 running-dry threshold **34** (25% of 137); below it he takes −1 modifier step on all actions until he recovers above it. **The one number that does not vary:** Section 13.5s mender field-touch reads the **flat** table and restores **62** (¼ of 250), not 68 — the deeper well buys him more touches, never a stronger one."
@@ -1244,6 +1274,8 @@ aliases:
 relationships:
   - REL-000068
 canonical_state:
+  affiliation: "Ironline Guild — recruiter, Red Line Corridor"
+  home: "Chicago, USA"
   rank: "**Not authored — awakened status is not established.** Wade Bishop manages or brokers Gate work without any record of being awakened, and Section 9.4's support tier plus Preston Vaughn (`ENT-000108`, a guild chief executive who is explicitly not awakened) both show that a senior operator in this trade need not be. Assigning a Rank here would be inventing canon, so none is: no Rank, no pools, no Section 6.1.2 variance, and Section 13.6 does not reach a non-hunter. **Flagged for a ruling** rather than filled in."
   location: ENT-000090
   condition: "Healthy; not established as combat-active."
@@ -1325,6 +1357,8 @@ aliases:
 relationships:
   - REL-000069
 canonical_state:
+  affiliation: "Independent — pawnbroker, Alexander's business partner"
+  home: "Chicago, USA (warehouse district)"
   location: "His shop, Chicago's warehouse district (`worlds/gatefall/`, `ENT-000087`); exact address unestablished"
   condition: "Healthy; not established as combat-active."
   knowledge: "**What he knows about Alexander — read this before any line where he asserts something about him.** Every entry cites the Event that established it; anything not listed here he has not been told, which is the boundary rather than a gap (Resident Core, *Load a Recorded NPC Before Playing It*). Walt is the sharpest case in the campaign: **he has been shown something no one else has, and has a standing habit of not asking about it.**\n\n  - **That Alexander stores and retrieves objects from nowhere.** First-hand, deliberate, unhideable — Alexander withdrew a Quickknife [C-Rank] into the air above his counter and caught it falling, in front of him. He did not flinch and asked no follow-up, saying only that it answered a question he had been too polite to ask for weeks. Before that, the half-second sleight he caught and let go at `EVT-000139`. **This is a live Section 19 exposure thread, entered knowingly.**\n  - **That Alexander can vanish from a standing position outright.** `EVT-000700`, 2026-08-24 ~10:51 — Alexander stepped away mid-goodbye and was simply gone, no warning given and none asked for this time. Unlike the dagger demonstration, this one wasn't offered as proof of anything; it read as Alexander no longer bothering to manage what Walt sees. **No channel to how, to a destination, or to why the caution dropped.**\n  - **His grey-market dealings with the shop** — every transaction across the visits from `EVT-000157` onward: unprovenanced cores sold, gear handled, Cicero's Quiet inspected at $35,000 with scavenger provenance.\n  - **That Alexander funds the Marnie operation and supplied the material**, and that he holds the pieces connecting Sal Prykowski, Marnie, and the money — Walt's own `secret` records that **nobody has been told they connect.**\n  - **The CONSULT enquiry and what it cost him** — he ran it at Alexander's ask and a thirty-year contact told him to lose the number (`EVT-000352`), which he reported back.\n  - **That the arrangement was not working as it stood**, told to him plainly and taken without argument.\n\n  **What he does not have, and it is narrow and specific.** **No channel to the System by name, to Flux Sight, or to anything Alexander read off his counter** — nothing beyond what he physically watched happen. He has no Bearer-only quantity on the Profile §14.4.1 register: not the level, not a skill name, not a number. **The distinction that matters for playing him:** he has seen an impossible thing and knows it is impossible, and he still has no word for it and has never asked. Write the not-asking as characterisation, not as ignorance."
@@ -1415,6 +1449,8 @@ aliases:
     quality: current
 relationships: []
 canonical_state:
+  affiliation: "Independent — licensed salvage and surplus importer"
+  home: "Chicago, USA"
   location: "Works out of a licensed salvage-and-surplus import operation in a light-industrial stretch of Chicago, two neighborhoods over from Walt Adamik's shop. **Street-level address established by public business registry (`EVT-000448`); Alexander has it and has not gone there.**"
   condition: "Healthy so far as anyone knows. **Frightened** — see `situation`. Not established as awakened, and no Flux Sight read has ever been taken of him."
   knowledge: "**Nothing established, and the asymmetry is the point.** Unmet. Alexander was given his name on 2026-08-17, and Walt Adamik ran the CONSULT enquiry through him at Alexander's ask — but the enquiry went through **Walt**, not from Alexander, and what came back was a thirty-year contact telling Walt to lose his number if he ever said the word again (`EVT-000352`).\n\n  So: **he knows someone asked about CONSULT through Walt. He has not been told who, and there is no record that Alexander's name reached him.** Default to not-known on every specific — the name, the reason, that a hunter is behind it — until a played scene or an owner ruling establishes otherwise.\n\n  Written rather than left absent because this record is a live thread with a real risk of the boundary being assumed away: it is easy to narrate him as having connected the enquiry to Alexander, and nothing in canon supports it."
@@ -1464,6 +1500,8 @@ aliases:
 name_note: "Shares a surname with `ENT-000147` Walt Adamik. `tools/check_name_collision.ps1` returns REVIEW on that overlap by design; here the coincidence is the point — she is his granddaughter — so the shared name is deliberate rather than a collision to avoid."
 relationships: []
 canonical_state:
+  affiliation: "Unaffiliated — civilian"
+  home: "Chicago, USA (implied)"
   location: "Unestablished. Chicago is implied by Walt's account and by his own presence; nothing narrower has been said, and no address, facility, or household has been named."
   condition: "**Gate-touched, not awakened** — Walt's own words, distinguishing the two deliberately. Wrong place, wrong time, roughly three years ago (≈2023). **Nothing licensed medicine offers has fixed it**, and BGM does not cover it because their books do not classify it as a combat injury. **What her condition actually is — symptoms, severity, whether it is stable or degenerative, whether she is independent — is entirely unestablished.** Walt gave the shape of the problem and none of its detail, and nobody asked."
   knowledge: "**Nothing. She does not know Alexander exists.** Unmet, and **no one but Walt Adamik has ever mentioned her** — the channel runs entirely in the other direction. Nothing Alexander has done, funded, or supplied has been attributed to him in her hearing, and Walt's own `secret` records that nobody has been told the pieces connect.\n\n  Written rather than left absent so the emptiness reads as established. If a scene ever puts them in a room, **everything she knows will have to come from that scene or from Walt deciding to say it** — there is no prior channel to draw on."
@@ -1507,6 +1545,8 @@ aliases:
     quality: current
 relationships: []
 canonical_state:
+  affiliation: "Unaffiliated — declined Ironline Guild"
+  home: "Chicago, USA (implied)"
   location: "Unestablished — Chicago is implied by working an Ironline pitch; nothing narrower is known."
   condition: "Healthy so far as anyone knows. Never seen; the only datum is Wade's account of the call."
   knowledge: "**Nothing about Alexander is established.** He has never heard the name; the pipeline delivery ran through Wade to Alexander, not the reverse."
@@ -1545,6 +1585,8 @@ aliases:
     quality: current
 relationships: []
 canonical_state:
+  affiliation: "Unaffiliated — declined Ironline Guild"
+  home: "Chicago, USA (implied)"
   location: "Unestablished — Chicago is implied by working an Ironline pitch; nothing narrower is known."
   condition: "**Injured, per Wade's secondhand account** — a shoulder that healed wrong, eleven months off the boards as of this call. Never seen directly."
   knowledge: "**Nothing about Alexander is established.** He has never heard the name; the pipeline delivery ran through Wade to Alexander, not the reverse."
@@ -1634,6 +1676,8 @@ aliases:
   - name: "the Cutting Edge proprietor"
     quality: current
 canonical_state:
+  affiliation: "Cutting Edge — proprietor"
+  home: "Chicago, USA (warehouse district)"
   location: "Cutting Edge (`ENT-000132`), Chicago's warehouse district (`worlds/gatefall/`, `ENT-000087`); exact address unestablished"
   condition: "Healthy; not established as combat-active."
   capabilities: "Builds and fits custom E-Rank and D-Rank hunter gear on commission (Profile Section 12.8). Reads a hunter's loadout accurately at a glance — identified Alexander's mixed Ghost Quickknife / Gale coif / Bastion gauntlets kit on sight as assembled fast rather than planned. Not established as an artificer himself; whether he forges or subcontracts the mana work is unestablished."
@@ -1698,6 +1742,8 @@ aliases:
   - name: "Milo"
     quality: current
 canonical_state:
+  affiliation: "Windy City Hunters Coalition — training grounds"
+  home: "Chicago, USA"
   signature_ability: "**None — correctly.** Under Profile Section 13.6 (1.42) a signature ability is authored for named NPC hunters at **D-Rank or above**. Milo is E-Rank: the gift is not absent, but too slight to name, file, or build a reputation on, which is why the boards record hunters at this Rank by working type and licence number instead. An empty field here is correct, not a gap. It may be named later if the fiction ever needs it, under the same no-magnitude limit as any other signature."
   rank: "**E-Rank** — **Authored at the 1.41 follow-up.** Awakened — he carries a minor perception-adjacent ability — but by his own account has no combat skill worth naming, and trains reaction footwork as a deliberate substitute for the striking gift he lacks. Resolved by that Rank under Section 13.1."
   pool_variance: "**−5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A small gift, honestly described by its owner as small. The shallow well is the character."
@@ -2005,6 +2051,8 @@ aliases:
   - name: "Sable"
     quality: current
 canonical_state:
+  affiliation: "Sable & Kern — co-owner"
+  home: "Chicago, USA"
   rank: "**Not authored — awakened status is not established.** Sable manages or brokers Gate work without any record of being awakened, and Section 9.4's support tier plus Preston Vaughn (`ENT-000108`, a guild chief executive who is explicitly not awakened) both show that a senior operator in this trade need not be. Assigning a Rank here would be inventing canon, so none is: no Rank, no pools, no Section 6.1.2 variance, and Section 13.6 does not reach a non-hunter. **Flagged for a ruling** rather than filled in."
   location: "Halsted Depot site, Chicago (ENT-000087); departed by car after the job"
   condition: "Healthy; not established as combat-active"
@@ -2041,6 +2089,8 @@ aliases:
   - name: "Kern"
     quality: current
 canonical_state:
+  affiliation: "Sable & Kern — co-owner"
+  home: "Chicago, USA"
   location: "Halsted Depot site, Chicago (ENT-000087); departed after the job"
   condition: "Healthy; not established as combat-active"
   capabilities: "Handles logistics and the portable scale for declared hauls; opened and sealed the aperture from the gray box truck."
@@ -2078,6 +2128,8 @@ aliases:
   - name: "Ruth"
     quality: current
 canonical_state:
+  affiliation: "Sable & Kern — harvest hire"
+  home: "Chicago, USA"
   rank: "**C-Rank** — stated in her own entry as a highly experienced C-Rank harvester; resolved by that Rank under Section 13.1."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 at the 1.41 adoption (`EVT-000248`). Her characterisation is endurance and read: she works a shifting heat vein rather than waiting for it to settle, which is a long-pool discipline."
   pools: "**Maximum Health 262, maximum Mana 131** — Section 6.1 table (250 / 125) × 1.05, floored. Section 5.2 tier costs: **Minor 13, Signature 32, Boss-tier 65**. Section 5.3 running-dry threshold **32**."
@@ -2119,6 +2171,8 @@ aliases:
   - name: "Denny"
     quality: current
 canonical_state:
+  affiliation: "Sable & Kern — harvest hire"
+  home: "Chicago, USA"
   location: "Halsted Depot site, Chicago (ENT-000087); departed after the job"
   condition: "Healthy; not established as combat-active"
   capabilities: "Harvester, unspecified specialty; worked the second vein alongside Kern."
@@ -2288,6 +2342,8 @@ aliases:
 relationships:
   - REL-000070
 canonical_state:
+  affiliation: "Ferro's Reclamation — runs Coalition-posted harvest crews"
+  home: "Chicago, USA"
   rank: "**Not authored — awakened status is not established.** Denise Ferro manages or brokers Gate work without any record of being awakened, and Section 9.4's support tier plus Preston Vaughn (`ENT-000108`, a guild chief executive who is explicitly not awakened) both show that a senior operator in this trade need not be. Assigning a Rank here would be inventing canon, so none is: no Rank, no pools, no Section 6.1.2 variance, and Section 13.6 does not reach a non-hunter. **Flagged for a ruling** rather than filled in."
   location: ENT-000087
   condition: "Healthy; hard hat and Coalition-branded harvest vest, clipboard and tablet manifest"
@@ -2358,6 +2414,8 @@ aliases:
     quality: current
 relationships: []
 canonical_state:
+  affiliation: "Unaffiliated — civilian, runs a Greek diner"
+  home: "Chicago, USA (Sheridan Road)"
   location: ENT-000087
   condition: "Healthy; working the counter at Nikitas (`ENT-000170`), Rogers Park"
   capabilities: "Unawakened civilian. Runs a Greek diner on Sheridan Road four blocks from the Loyola Park lakefront, and has for at least twelve years. Reads people fast and does not soften the reading."
@@ -2424,6 +2482,8 @@ aliases:
   - name: "Marsh"
     quality: current
 canonical_state:
+  affiliation: "Titan Secure — employee"
+  home: "Chicago, USA"
   location: "Chicago's warehouse district (`worlds/gatefall/`, `ENT-000087`); reached by phone only, exact location unestablished"
   condition: "Healthy; voice only, never met in person"
   capabilities: "Ordinary employee of Titan Secure, handles phone inquiries. Not established as combat-active or otherwise notable."
@@ -2460,6 +2520,8 @@ aliases:
   - name: "Reggie Calloway"
     quality: former
 canonical_state:
+  affiliation: "Ironline Guild — trial crew"
+  home: "Chicago, USA"
   rank: "**D-Rank** — licensed D-Rank hunter on Ironlines 2026-08-08 trial crew; resolved by that Rank under Section 13.1."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 at the 1.41 adoption (`EVT-000248`). Point element — he reads and takes doors first, which makes him the man who absorbs first contact for the crew."
   pools: "**Maximum Health 105, maximum Mana 52** — Section 6.1 table (100 / 50) × 1.05, floored. Section 5.2 tier costs: **Minor 5, Signature 13, Boss-tier 26**. Section 5.3 running-dry threshold **13**."
@@ -2498,6 +2560,8 @@ aliases:
   - name: "Bhavna Iyer"
     quality: current
 canonical_state:
+  affiliation: "Ironline Guild — trial crew"
+  home: "Chicago, USA"
   rank: "**D-Rank** — licensed D-Rank hunter on Ironlines 2026-08-08 trial crew; resolved by that Rank under Section 13.1."
   pool_variance: "**None** — authored under Profile Section 6.1.2 at the 1.41 adoption (`EVT-000248`). Ranged support and sensor-rig operator; nothing in her record pulls her off the median in either direction."
   pools: "**Maximum Health 100, maximum Mana 50** — Section 6.1 table (100 / 50), flat. Section 5.2 tier costs: **Minor 5, Signature 12, Boss-tier 25**. Section 5.3 running-dry threshold **12**."
@@ -2536,6 +2600,8 @@ aliases:
   - name: "Foster Nakashima"
     quality: current
 canonical_state:
+  affiliation: "Ironline Guild — trial crew"
+  home: "Chicago, USA"
   rank: "**D-Rank** — licensed D-Rank hunter on Ironlines 2026-08-08 trial crew; resolved by that Rank under Section 13.1."
   pool_variance: "**−5%** — authored under Profile Section 6.1.2 at the 1.41 adoption (`EVT-000248`). Perimeter and rear-guard, with a faded self-stitched BGM sensor-training patch — the least front-line of the four, and the one whose role has never asked for depth."
   pools: "**Maximum Health 95, maximum Mana 47** — Section 6.1 table (100 / 50) × 0.95, floored. Section 5.2 tier costs: **Minor 4, Signature 11, Boss-tier 23**. Section 5.3 running-dry threshold **11**."
@@ -2574,6 +2640,8 @@ aliases:
   - name: "Callie Dunmore"
     quality: current
 canonical_state:
+  affiliation: "Ironline Guild — trial crew"
+  home: "Chicago, USA"
   rank: "**D-Rank** — licensed D-Rank hunter on Ironlines 2026-08-08 trial crew; resolved by that Rank under Section 13.1."
   pool_variance: "**None** — authored under Profile Section 6.1.2 at the 1.41 adoption (`EVT-000248`). Flex striker who goes wherever the fight opens; a median pool is what lets her be everywhere rather than decisive anywhere."
   pools: "**Maximum Health 100, maximum Mana 50** — Section 6.1 table (100 / 50), flat. Section 5.2 tier costs: **Minor 5, Signature 12, Boss-tier 25**. Section 5.3 running-dry threshold **12**."
@@ -2614,6 +2682,8 @@ aliases:
   - name: "Elias Ward"
     quality: current
 canonical_state:
+  affiliation: "Independent — surplus and pawn seller"
+  home: "Chicago, USA (warehouse district)"
   location: "an unnamed surplus/pawn shop in Chicago's warehouse district"
   condition: "No injury or impairment established."
   want: "**Unauthored.** Canon records two transactions and a standing informal offer, and states outright that his motives remain unestablished. **Author this at the turn he is next played**, from that scene, rather than inferring a motive from having sold a device."
@@ -2651,6 +2721,8 @@ aliases:
   - name: "Corinne Whitlock"
     quality: current
 canonical_state:
+  affiliation: "Lakeline Residential — leasing agent"
+  home: "Chicago, USA"
   location: "the Rogers Park two-bedroom listing, second-floor front"
   condition: "No injury or impairment established."
   want: "**A signed lease, and the viewing to go well for the people in it.** She gave Alexander and Owen room on the balcony and in the second bedroom without being asked, which is a leasing agent reading a decision being made and getting out of its way. That is the only motive canon supports and it should not be deepened past it."
@@ -2686,6 +2758,8 @@ aliases:
 relationships:
   - REL-000095
 canonical_state:
+  affiliation: "Pendragon Guild — member, from the pre-guild crew"
+  home: "Chicago, USA"
   rank: "**C-Rank**, Coalition-registered — one of the Coalition's 22 (`worlds/gatefall/institutions/windy-city-coalition/250_INSTITUTION_LEDGER.md`, `membership_rank_distribution`). Resolved by that Rank under Profile Section 13.1."
   signature_ability: "**Measure.** Her mana runs down the blade into whatever it touches and comes back with what is left in the thing — how much fight is still standing in front of her, read through the weapon at the moment of contact. A striker's gift that is really an assessor's, and the reason her insistence on seeing a plan before she signs onto it reads as professional judgment rather than nerves: she is the member of a crew who knows *first*, and by the hit rather than the guess, that a pull has gone wrong. Method and reach only; no magnitude beyond a C-Rank standard hit and no Section 13.5 effect attaches."
   location: ENT-000087
@@ -2754,6 +2828,8 @@ aliases:
 relationships:
   - REL-000087
 canonical_state:
+  affiliation: "Ferro's Reclamation — salvage, and an independent informant"
+  home: "Chicago, USA"
   location: ENT-000150
   condition: "Healthy; not established as combat-active."
   capabilities: "Runs Ferro's Reclamation's mundane scrap and salvage business on the surface. Trades information for information or favors, not for cash — corroborated Walt Adamik's and Elias Ward's independent warnings that she also trades favors both directions with Coalition compliance staff, and disclosed this herself unprompted rather than let Alexander find out later. Reads people quickly and undersells her own attentiveness with a deliberately ordinary shopkeeper manner."
@@ -2790,6 +2866,8 @@ aliases:
 relationships:
   - REL-000088
 canonical_state:
+  affiliation: "Pendragon Guild — member, from the pre-guild crew"
+  home: "Chicago, USA"
   rank: "**C-Rank**, confirmed directly by Flux Sight (`EVT-000289`). Resolved by that Rank under Section 13.1."
   pool_variance: "**None** — Flux Sight (`EVT-000289`) read the Section 6.1 table values exactly (250 / 125), which is what a variance of none looks like on the card. Permanent, never rerolled."
   pools: "**Maximum Health 250, maximum Mana 125** — Section 6.1 table (250 / 125), flat, as directly confirmed by Flux Sight (`EVT-000289`). Section 5.2 tier costs: **Minor 12, Signature 31, Boss-tier 62**. Section 5.3 running-dry threshold **31**."
@@ -2828,6 +2906,8 @@ aliases:
   - name: "Soraya Delgado"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — member, from the pre-guild crew"
+  home: "Chicago, USA"
   rank: "**C-Rank** — Wade Bishop's secondhand referral, since **independently confirmed by Flux Sight** (`EVT-000319`). Resolved by that Rank under Section 13.1."
   pool_variance: "**None** — Flux Sight (`EVT-000319`) read the Section 6.1 table values exactly (250 / 125). Permanent, never rerolled."
   pools: "**Maximum Health 250, maximum Mana 125** — Section 6.1 table (250 / 125), flat, as directly confirmed by Flux Sight (`EVT-000319`). Section 5.2 tier costs: **Minor 12, Signature 31, Boss-tier 62**. Section 5.3 running-dry threshold **31**."
@@ -2873,6 +2953,8 @@ aliases:
   - name: "Grant Okwuosa"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — member, from the pre-guild crew"
+  home: "Chicago, USA"
   rank: "**C-Rank** — Wade Bishop's secondhand referral, since **confirmed directly by Flux Sight** (`EVT-000317`). Resolved by that Rank under Section 13.1. Exact pool figures were not recorded at the read; Section 13.1 supplies them from Rank until they are."
   signature_ability: "**Pry.** His mana turns a blow into leverage: what he hits does not merely take the hit, it comes *open* — guard broken, flank turned, footing spoiled — for whoever arrives next. The wound is an ordinary C-Rank standard hit; the opening it leaves behind is the point of him, and it is a frontline gift that only pays if someone else is there to use it. It is why he could answer without hesitating that letting a better-placed crewmate take the killing blow costs him nothing (`EVT-000317`): his gift has never drawn a line between his opening and somebody else's. Method only; no magnitude beyond his Rank and no Section 13.5 effect attaches."
   location: ENT-000087
@@ -2919,6 +3001,8 @@ aliases:
 relationships:
   - REL-000098
 canonical_state:
+  affiliation: "Pendragon Guild — member, from the pre-guild crew"
+  home: "Chicago, USA"
   rank: "**B-Rank** — Wade Bishop's secondhand referral, since **independently confirmed by Flux Sight** (`EVT-000308`). Resolved by that Rank under Section 13.1. The highest-Ranked hunter on the crew's candidate list."
   pool_variance: "**None** — Flux Sight (`EVT-000308`) read the Section 6.1 table values exactly (600 / 300). Permanent, never rerolled."
   pools: "**Maximum Health 600, maximum Mana 300** — Section 6.1 table (600 / 300), flat, as directly confirmed by Flux Sight (`EVT-000308`). Section 5.2 tier costs: **Minor 30, Signature 75, Boss-tier 150**. Section 5.3 running-dry threshold **75**."
@@ -2974,6 +3058,8 @@ aliases:
   - name: "Theo Bannerman"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — member, from the pre-guild crew"
+  home: "Chicago, USA"
   rank: "**C-Rank** — Wade Bishop's secondhand referral, since **independently confirmed by Flux Sight** (`EVT-000311`). Resolved by that Rank under Section 13.1."
   pool_variance: "**None** — Flux Sight (`EVT-000311`) read the Section 6.1 table values exactly (250 / 125). Permanent, never rerolled."
   pools: "**Maximum Health 250, maximum Mana 125** — Section 6.1 table (250 / 125), flat, as directly confirmed by Flux Sight (`EVT-000311`). Section 5.2 tier costs: **Minor 12, Signature 31, Boss-tier 62**. Section 5.3 running-dry threshold **31**."
@@ -3018,6 +3104,8 @@ aliases:
   - name: "Marnie"
     quality: current
 canonical_state:
+  affiliation: "Independent — unlicensed artificer"
+  home: "No fixed address, by design"
   rank: "**A-Rank, awakened — ruled `EVT-000772`.** Derived from the same Rank+1-crafts-ceiling heuristic applied to Nakamura: the finished dagger she completed and never returned for is confirmed at its absolute ceiling (`EVT-000592`) — S-Rank, no remaining headroom, nothing further can be added by any hand — and is described as the best work Priscilla Nakamura has held in a decade, consistent with a rare, one-Rank-above-normal result from an A-Rank artificer rather than routine A-Rank-artificer output. Still never met; still never directly read by Flux Sight or otherwise."
   location: "Unknown. No fixed address by her own deliberate design across fifteen years of dealing with Walt Adamik."
   condition: "Unknown as of `EVT-000320`. Six messages from Walt unanswered, against an established responsive pattern — genuinely uneasy, not routine."
@@ -3097,6 +3185,8 @@ aliases:
 relationships:
   - REL-000090
 canonical_state:
+  affiliation: "Unestablished"
+  home: "Chicago, USA"
   rank: "B-Rank, combat-rated — part of the legal minimum roster for the confirmed B-Rank Gate (Section 9.4), though the roster itself ran short at 4 against the required 8."
   signature_ability: "**Deadweight.** His mana pours down into the blade at the instant of contact, so a strike lands with the shock of a far heavier weapon than the one he is actually holding — the wound is an ordinary B-Rank standard hit, but what the blow does to footing and posture is out of all proportion to the steel. It is why the things that reached him at the chokepoint went down and stayed down, and why so few of them reached him twice. Method only. It raises no barrier and holds no line for the party, and **deliberately does not trigger Section 13.5's warden effect**: the funnel was terrain Alexander read and relayed (`EVT-000340`), not anything Corbin projected, and the party's defensive actions that day drew no step from him."
   location: ENT-000087
@@ -3136,6 +3226,8 @@ aliases:
 relationships:
   - REL-000091
 canonical_state:
+  affiliation: "Unestablished"
+  home: "Chicago, USA"
   rank: "B-Rank, combat-rated — part of the same undersized roster as `ENT-000194`."
   signature_ability: "**Throughline.** Once he commits to a path his mana carries him down it, shouldering aside contact that should have stopped him — he does not slip a crowd, he goes through it and the crowd gives. It is how he crossed a pressing swarm to reach Warren Sato and arrived in time to matter (`EVT-000340`), and it is of a piece with having a weapon up before he had finished processing the noise of Alexander's entry (`EVT-000339`). Movement, reach, and method only; it batters nothing down on its own, adds no magnitude to his B-Rank standard hits, and triggers no Section 13.5 effect."
   location: ENT-000087
@@ -3175,6 +3267,8 @@ aliases:
 relationships:
   - REL-000092
 canonical_state:
+  affiliation: "Unestablished"
+  home: "Chicago, USA"
   rank: "B-Rank, combat-rated — part of the same undersized roster."
   signature_ability: "**Second Edge.** Her mana trails a half-beat behind her weapon and arrives after it, so a cut lands and then the edge of it lands again — not a second strike (the blow resolves as a single B-Rank standard hit) but a stroke that opens a guard which had already closed in time. It is what turned a half-heard warning and a relayed weak-point into the coordinated killing blow on the burrower boss (`EVT-000341`). Method only; no magnitude beyond her Rank and no Section 13.5 effect attaches."
   location: ENT-000087
@@ -3215,6 +3309,8 @@ aliases:
 relationships:
   - REL-000093
 canonical_state:
+  affiliation: "Unestablished"
+  home: "Chicago, USA"
   rank: "B-Rank, combat-rated — part of the same undersized roster."
   signature_ability: "**Sweep.** His mana carries the blade's edge a hand's breadth past the steel and all the way around him, so his reach is a closed circle and being surrounded is the shape his gift works best in. It is why being flanked and cut off early in the swarm fight did not finish him before Felix Aranda broke through (`EVT-000340`) — the press had no side of him that was not already covered. Reach and method only: it stops nothing and reduces nothing, adds no magnitude to his B-Rank standard hits, and triggers no Section 13.5 effect."
   location: ENT-000087
@@ -3336,6 +3432,8 @@ aliases:
 relationships:
   - REL-000094
 canonical_state:
+  affiliation: "Independent — private investigator"
+  home: "Unestablished"
   location: "Unestablished — worked entirely by phone this call."
   condition: "No injury or impairment established."
   capabilities: "Skip-tracing and quiet background/records work — permits, ownership, financials, shell-company structures, patterns in who comes and goes. Not a breach specialist and explicitly declines to be treated as one. Bills on results, not hours, for a first job referred by Walt Adamik."
@@ -3392,6 +3490,8 @@ aliases:
   - name: "Duane"
     quality: current
 canonical_state:
+  affiliation: "Independent — yard lessor"
+  home: "Chicago, USA (freight yard off Ashland)"
   location: ENT-000200
   condition: "No injury or impairment established."
   capabilities: "Holds the lease on a decommissioned freight yard off Ashland (`ENT-000200`) and rents it by the day, cash, handshake terms, no paperwork. Doesn't ask what a renter is doing out there."
@@ -3513,6 +3613,8 @@ aliases:
 relationships:
   - REL-000096
 canonical_state:
+  affiliation: "Independent — licensed artificer, retained informally by Ironline Guild and others"
+  home: "Chicago, USA (off LaSalle)"
   rank: "**B-Rank, awakened — ruled `EVT-000772`.** Her prior hedge borrowed Wade Bishop's unconfirmed status as precedent, but the comparison doesn't hold: Wade is a guild recruiter who does no mana-work at all, while an artificer's entire craft *is* a mana-working signature ability (Section 13.6/`206_WORLD_RULE_PROFILE.md` line 2947 — 'the forging is done by artificers: awakened whose signature ability works mana into matter'). She couldn't do the work otherwise. **Rank derived from a Rank+1-crafts-ceiling heuristic** (player-proposed, checked against the record and held): her established working ceiling is A-Rank material (the open Vambrace fusion commission, Section 12.10's A-Rank-core fusion price), and Marnie's confirmed S-Rank finished dagger — 'the best work Priscilla Nakamura has held in a decade' — is one Rank above what Nakamura herself produces. A-Rank ceiling / B-Rank artificer, S-Rank ceiling / A-Rank artificer, consistently. Pools and Section 6.1.2 variance remain unauthored — nothing in play has needed them yet."
   location: "**Her workshop — a flat brick front on a side street off LaSalle, north of the river, Chicago** (`EVT-000410`). One unmarked steel door between a shuttered auto shop and a chain-link lot; a unit number by the buzzer, no name. Single long workbench, tools racked in real order, back half of the room curtained off. Exact street number established in play but not advertised anywhere on the building."
   condition: "Healthy; working late at her own bench when Alexander arrived, apron still tied. Not established as combat-active or awakened."
@@ -3605,6 +3707,8 @@ aliases:
 relationships:
   - REL-000097
 canonical_state:
+  affiliation: "Independent — eight-hunter crew-for-hire, strike captain"
+  home: "Chicago, USA"
   rank: "**B-Rank**, resolved by Flux Sight on introduction (`EVT-000415`) rather than by report — Section 4.4's C rung reads awakened humans directly and needs no roll. Section 13.1 makes the Rank her complete mechanical description."
   pools: "Health **600/600**, Mana **300/300** — the Section 6.1 B-Rank table values, read live and unmarked at introduction. No `pool_variance` established."
   location: ENT-000087
@@ -3647,6 +3751,8 @@ aliases:
   - name: "Reston"
     quality: current
 canonical_state:
+  affiliation: "Corporate-adjacent contractor — harvest hire"
+  home: "Chicago, USA"
   rank: "Not established. Section 11.1 permits a miner of any Rank to work a Gate above their own under the strike team's protection, and nothing in play has resolved his."
   location: ENT-000087
   condition: "Healthy; not established as combat-active. Held behind the strike line for the whole clear, as harvest protocol requires."
@@ -3768,6 +3874,8 @@ aliases:
 relationships:
   - REL-000099
 canonical_state:
+  affiliation: "Unestablished — contracted containment monitor"
+  home: "Chicago, USA"
   rank: "**D-Rank**, awakened. Read directly by Flux Sight at `EVT-000647`. Enough of a card to hold a clearance and a clipboard; nowhere near enough to be the only body in a room with an A-Rank aperture in it, which is the fact the whole record turns on."
   location: "**Outside the fenced warehouse's perimeter fence, on the cracked asphalt of the approach, 2026-08-22 21:10** (`EVT-000649`) — carried there by Alexander's passenger rift-step, clear of the containment structure. Prior: inside the containment room, seated against the wall with the overheads killed, from roughly 18:00 that evening."
   condition: "Physically unhurt. Went down on one knee on arrival outside — disorientation from the step, not injury — and got up on her own. Holding a site tablet that went dark the moment it left the site network, with a twelve-minute plant-history pull that never started."
@@ -3849,6 +3957,8 @@ aliases:
   - name: "Junia Okonkwo"
     quality: former
 canonical_state:
+  affiliation: "Unestablished — containment specialist"
+  home: "Chicago, USA"
   location: "**Unconscious on the containment-room floor of the fenced warehouse (`ENT-000166`), Chicago warehouse district, since 2026-08-23 03:59** (`EVT-000659`). Nobody outside the operation knows she is there, and nobody inside it knows either until whoever sent her expects a report."
   rank: "**B-Rank**, awakened. Read directly by Flux Sight at `EVT-000657` - Rank, pools and abilities in one [S]-rung read across an open Gate mouth."
   pools: "**Health 600/600, Mana 288/300** at the moment of the read. Twelve Mana down, spent on a Resonance Survey of the sheared manifold before Alexander reached the mouth."
@@ -3890,6 +4000,8 @@ aliases:
   - name: "Emmett Hargrave"
     quality: current
 canonical_state:
+  affiliation: "Unestablished"
+  home: "Unestablished"
   location: "**Unconscious on the containment-room floor of the fenced warehouse (`ENT-000166`), Chicago warehouse district, since 2026-08-23 03:59** (`EVT-000659`), a few metres from Junia Okonkwo (`ENT-000213`)."
   rank: "**None. Unawakened.** Flux Sight at [S] returned **nothing at all** on him at `EVT-000657` - the passive reads mana-bearing subjects and he is not one. Health derives at **40** from Section 4.3's ordinary-adult rating of 10 and the 4 x Vitality formula, which is also the bottom of Section 6.1's Rank ladder."
   condition: "**Incapacitated, not dead** (`EVT-000659`). Took a fist-sized A-Rank mana crystal behind the ear on a natural 82 - **322 pulled damage against a body holding 40**, eight times his whole pool. Section 6.2.1 governs regardless of magnitude: reduced to 0 by pulled damage alone, so he is unconscious, **stabilises on his own**, and carries a Section 6.3 injury that will be severe. Left where he fell."
@@ -4151,6 +4263,8 @@ aliases:
   - name: "Laurel Bianchi"
     quality: current
 canonical_state:
+  affiliation: "BGM Region V — Deputy Director's office, external liaison"
+  home: "Chicago, USA"
   location: "BGM Region V Field Office (`ENT-000093`), a federal building near the Loop, Chicago — Deputy Director's office."
   rank: "C-Rank per Flux Sight, unprompted. Ordinary administrative capability, nothing combat-relevant equipped — her authority is entirely institutional."
   role: "Deputy Director's office, external liaison. Intercepted Alexander in the appraisal wing minutes after his second measurement confirmed, before he could leave with only a printed slip."
@@ -4184,6 +4298,8 @@ aliases:
   - name: "Desmond Farraday"
     quality: current
 canonical_state:
+  affiliation: "BGM Region V — Assistant Director, External Coordination"
+  home: "Chicago, USA"
   location: "BGM Region V Field Office (`ENT-000093`), a federal building near the Loop, Chicago — his own office, carpeted floor."
   rank: "D-Rank per Flux Sight, unprompted. Ordinary administrative capability; his authority is institutional, not personal."
   role: "Assistant Director, External Coordination — owns guild relations and interagency cooperation for BGM Region V. Cleared his afternoon on Laurel Bianchi's word alone."
@@ -4221,6 +4337,8 @@ aliases:
   - name: "Renata Okonkwo-Vance"
     quality: current
 canonical_state:
+  affiliation: "BGM National — S-Rank Liaison"
+  home: "Washington DC, USA"
   location: "**The Averlon Room, 200 N Michigan Ave, Chicago — 2026-08-27 19:00-onward (`EVT-000801`).** Flew in from Washington same day, wheels-down by 18:00, dinner in person for the first time. Returns 06:40 tomorrow, commercial, unless the fly list changes that."
   rank: "Not established. No channel has tested it; a National-office administrator need not be awakened."
   role: "S-Rank Liaison, BGM National — the office Farraday's regional standing arrangement escalated to. Owns the national relationship with unaffiliated/solo S-Ranks specifically, distinct from guild-facing coordination."
@@ -4410,6 +4528,8 @@ aliases:
     quality: current
 relationships: []
 canonical_state:
+  affiliation: "Independent — landlord"
+  home: "Chicago, USA (Rockwell Street yard)"
   location: "The Rockwell Street yard, Chicago; not present outside business hours, evenings and weekends by call-ahead only."
   condition: "Healthy; not established as combat-active."
   knowledge: "Knows Alexander (given as 'Arthur Peverell' was not given to him — the real transaction used the real referral name from Walt) rented a bay same-day, cash, no lease. No channel to anything about the System, the far door, or the library. Referred by Walt Adamik; treats a referral as sufficient vetting on its own."
@@ -4507,6 +4627,8 @@ aliases:
 relationships:
   - REL-000102
 canonical_state:
+  affiliation: "Independent — artificer, fusion specialist"
+  home: "Boston, USA"
   location: "His workshop, Boston."
   rank: "**A-Rank**, per Alexander's own unnoticed Flux Sight + Keen Sense read on first meeting — Corwin never disclosed it himself and has no channel to knowing he was read."
   condition: "Healthy; working his own bench when Alexander arrived."
@@ -4565,6 +4687,8 @@ aliases:
   - name: "Teresa Vance"
     quality: former
 canonical_state:
+  affiliation: "Independent — trade-beat journalist"
+  home: "Chicago, USA (implied)"
   rank: "**Not authored - awakened status is not established.** Nothing in the fiction has tested it and a reporter covering the trade need not be awakened; assigning a Rank here would be inventing canon. No Rank, no pools, no Section 6.1.2 variance."
   location: "Unestablished - worked entirely by phone. Chicago is implied by the beat and the 312 number."
   condition: "Healthy; no adverse condition established."
@@ -4607,6 +4731,8 @@ aliases:
   - name: "Marguerite"
     quality: current
 canonical_state:
+  affiliation: "Independent — media liaison for hunters"
+  home: "Chicago, USA (implied)"
   rank: "**Not authored - awakened status is not established**, and nothing about the role requires it."
   location: "Unestablished. Chicago is implied by Kesha Morrison's ability to reach her the same day."
   condition: "Healthy; no adverse condition established."
@@ -4646,6 +4772,8 @@ aliases:
     quality: current
 relationships: []
 canonical_state:
+  affiliation: "Czech Gate Administration — Ranking Corps clerk"
+  home: "Prague, Czech Republic"
   rank: "**Not authored — awakened status is not established**, and nothing about the role requires it."
   location: "CGA Headquarters, central Prague, the public Ranking Corps counter, night desk."
   condition: "Healthy; on shift, alone at the public desk this late."
@@ -4686,6 +4814,8 @@ aliases:
 relationships:
   - REL-000114
 canonical_state:
+  affiliation: "CONSULT — controlled artificer"
+  home: "Chicago, USA"
   rank: "**D-Rank per his own BGM card, read again by Keen Sense at `EVT-000909`.** No combat rating on file. Health and Mana both intact, no injury - whatever CONSULT does to makers who cross its threshold has left no mark on this one."
   location: "**Own storage unit, Ironclad Self Storage, near west side, Chicago — 2026-09-10 ~14:40, badly shaken, alone, satchel in hand.** Last seen walking north from Ironclad Self Storage (`ENT-000230`) on foot, 2026-08-25 ~09:20, on his way home to a residential address on the near northwest side, on his BGM ID, in Alexander's possession."
   condition: "Physically unharmed. Badly frightened, still, though the immediate Thursday crisis over the satchel is answered. Cautiously, disbelievingly hopeful for the first time since this thread opened."
@@ -4764,6 +4894,8 @@ aliases:
   - name: "D"
     quality: current
 canonical_state:
+  affiliation: "CONSULT — decision-maker"
+  home: "Unestablished"
   rank: "**Unestablished.** No sighting, no reading, no instrument has been near them."
   location: "**Unestablished.** Reachable by text at a number held on `ENT-000226`'s phone; not observed anywhere."
   identity: "**Unknown, and this is `ENT-000193`'s reveal condition.** A single initial in a ledger margin and a text signature. **Whether D is the conductor heard behind the keypad door at `EVT-000707` is not established** - the voices were never connected, and the assumption is deliberately not made."
@@ -4797,6 +4929,8 @@ aliases:
   - name: "Delphine"
     quality: current
 canonical_state:
+  affiliation: "CONSULT — scheduling"
+  home: "Unestablished"
   rank: "Unestablished."
   location: "Unestablished."
   role: "**Named once, in a single overheard line** - the conductor closing an assessment with *'Next piece, same terms. I'll have Delphine call about timing.'* **Scheduling or coordination for the CONSULT operation is the whole of what that implies**, and nothing further is authored."
@@ -4857,6 +4991,8 @@ aliases:
   - name: "Marta Ilić"
     quality: current
 canonical_state:
+  affiliation: "Unestablished — licensed C-Rank striker"
+  home: "Chicago, USA"
   rank: "**C-Rank** per Flux Sight, read on entry. Pools 250/250 Health, 125/125 Mana at the §6.1 table; read at 61/250 and 40/125 when found."
   location: "BGM Region V medical custody, Chicago — handed to staged medics at the Lakefront boathouse cordon 2026-08-26 ~10:15 (`EVT-000743`). Prior: a collapsed side-tunnel roughly sixty yards inside GB-14."
   condition: "**Health 250/250, full.** Restored outright by a single Mend cast at the S-Rank baseline (`EVT-000740`) — a wound closing under torn, blood-stiff clothing with no mender's hands and no explanation offered. Physically unhurt; what fifteen hours in that tunnel cost her is not established and is hers rather than the record's."
@@ -4893,6 +5029,8 @@ aliases:
   - name: "Devon Achebe"
     quality: current
 canonical_state:
+  affiliation: "Unestablished — licensed striker"
+  home: "Chicago, USA"
   rank: "**C-Rank** per Flux Sight, read on entry. Pools 250/250 Health, 125/125 Mana at the §6.1 table; read at 118/250 and 22/125 when found — his Mana nearly spent, which is its own account of the fifteen hours."
   location: "BGM Region V medical custody, Chicago — handed to staged medics at the Lakefront boathouse cordon 2026-08-26 ~10:15 (`EVT-000743`). Prior: the same collapsed side-tunnel inside GB-14."
   condition: "**Health 250/250, full.** Restored by a single Mend cast at `EVT-000740`; came up out of a half-conscious state with a full breath, disoriented rather than hurt. Mana not restored by that cast and not separately settled."
@@ -4929,6 +5067,8 @@ aliases:
   - name: "Delia Okonjo"
     quality: current
 canonical_state:
+  affiliation: "Independent — real-estate broker"
+  home: "Chicago, USA"
   location: "Chicago, working a Milwaukee/Chicago corridor."
   condition: "Healthy; professional manner throughout."
   capabilities: "Sources private industrial and warehouse listings suited to unusual, high-security use cases without asking why. Produced two candidates on short notice: a Halsted Street property in Chicago and a Milwaukee data-center building."
@@ -4963,6 +5103,8 @@ aliases:
   - name: "Danielle"
     quality: current
 canonical_state:
+  affiliation: "Praetorian Facility Security — engineer"
+  home: "Milwaukee, USA"
   location: "Milwaukee, at the data-center property listing during the site visit."
   condition: "Healthy."
   capabilities: "A Praetorian Security engineer, present for a technical assessment of the property's existing systems. Role and scope of her involvement thin — she appeared during the thread rather than being separately engaged."
@@ -5001,6 +5143,8 @@ aliases:
 relationships:
   - REL-000103
 canonical_state:
+  affiliation: "BGM Region I — coordinator"
+  home: "New York, USA"
   location: "BGM Region I's New York office."
   role: "Region I coordinator — the office's counterpart to Farraday's Region V and Renata's National desk."
   condition: "Healthy; professional, businesslike first meeting."
@@ -5059,6 +5203,8 @@ aliases:
 relationships:
   - REL-000104
 canonical_state:
+  affiliation: "Independent — unlicensed salvage dealer"
+  home: "Houston, USA"
   location: "A lockup near the ship channel, Houston."
   rank: "Not authored — unestablished, works entirely off-license."
   condition: "Healthy, mid-fifties, forearms and hands marked from a life spent in standing water."
@@ -5093,6 +5239,8 @@ aliases:
   - name: "Adaeze Nwosu"
     quality: current
 canonical_state:
+  affiliation: "BGM Region VI — field liaison"
+  home: "Houston, USA"
   location: "BGM Region VI's Houston field office."
   rank: "Not authored — unestablished, administrative role."
   condition: "Healthy, visibly pressed for time on a compressed schedule."
@@ -5129,6 +5277,8 @@ aliases:
   - name: "Bram Castillo"
     quality: former
 canonical_state:
+  affiliation: "BGM Region II — field liaison"
+  home: "Miami, USA"
   location: "BGM Region II's Miami field office."
   rank: "Not authored — unestablished, administrative role."
   condition: "Healthy, mid-forties, unhurried."
@@ -5165,6 +5315,8 @@ aliases:
 relationships:
   - REL-000105
 canonical_state:
+  affiliation: "BGM National — containment doctrine"
+  home: "Washington DC, USA"
   location: "BGM National HQ, Washington DC."
   rank: "Not authored — unestablished, administrative/engineering role."
   condition: "Healthy, mid-thirties, tired in the way of someone who cares about work the budget doesn't prioritize."
@@ -5200,6 +5352,8 @@ aliases:
   - name: "Kian Ferris"
     quality: current
 canonical_state:
+  affiliation: "BGM — Dallas field liaison"
+  home: "Dallas, USA"
   location: "BGM's Dallas field office."
   rank: "Not authored — unestablished."
   condition: "Healthy."
@@ -5236,6 +5390,8 @@ aliases:
   - name: "Naomi Reyes"
     quality: former
 canonical_state:
+  affiliation: "BGM — Los Angeles field liaison"
+  home: "Los Angeles, USA"
   location: "BGM's Los Angeles field office."
   rank: "Not authored — unestablished."
   condition: "Healthy."
@@ -5317,6 +5473,8 @@ aliases:
     quality: current
 relationships: []
 canonical_state:
+  affiliation: "European Gate Council — liaison for Prague and the Czech Republic"
+  home: "Prague, Czech Republic"
   rank: "**Not authored — awakened status is not established**, and nothing about her role requires it."
   location: "Karlov Guild headquarters, Old Town, Prague — met at the 16:00 2026-09-04 meeting; based out of the European Gate Council's Prague liaison office day to day."
   condition: "Healthy; no adverse condition established."
@@ -5470,6 +5628,8 @@ aliases:
 relationships:
   - REL-000108
 canonical_state:
+  affiliation: "The Standing (far side) — position: Out"
+  home: "The far side — the Landing"
   rank: "**No Rank — a System-bearer, resolved as one** (`worlds/gatefall/206_WORLD_RULE_PROFILE.md` Section 13.1.1, `270_THE_FAR_SIDE.md` Section 4.2). Read clean by Flux Sight this session: maximum Health 4,960, maximum Mana 3,040, both full. Stats per her authored sheet: Strength 980, Agility 2,610, Vitality 1,240, Perception 2,380, Intelligence 1,520. Master mastery on movement, concealment, and reading people; unremarkable at everything else. No equipment."
   location: "The Landing (`270_THE_FAR_SIDE.md` Section 3.1) — she watches this exact ground, on the authored theory that a door will one day open where doors used to."
   condition: "Healthy, unhurt, four thousand years alive in a place with no exit. Frailest thing on record in this file by raw Health, and has stayed alive here longer than agriculture by never once being where a blow was aimed."
@@ -5529,6 +5689,8 @@ aliases:
 relationships:
   - REL-000109
 canonical_state:
+  affiliation: "The Standing (far side) — position: Reach the next one"
+  home: "The far side — the Long Shelf"
   rank: "No Rank — a System-bearer. Stats per his authored sheet: Strength 760, Agility 1450, Vitality 2400, Perception 3300, Intelligence 3800. Health 9,600, Mana 7,600, both full. Master on everything that improves someone else; no technique that hurts anyone."
   location: "The Long Shelf (`270_THE_FAR_SIDE.md` §3.5)."
   condition: "Healthy, unhurt. Worst fighter on the far side by Strength, safe to be alone with."
@@ -5590,6 +5752,8 @@ aliases:
 relationships:
   - REL-000110
 canonical_state:
+  affiliation: "The Standing (far side) — position: Let it finish"
+  home: "The far side — the Long Shelf"
   rank: "No Rank — a System-bearer. Stats: Strength 3400, Agility 2350, Vitality 1150, Perception 2100, Intelligence 3050. Health 4,600 (smallest pool on the far side), Mana 6,100, both full. Master on one offensive line, refined an age, used perhaps forty times."
   location: "The Long Shelf."
   condition: "Healthy, unhurt. Can end a Bearer in one connection and be ended in one — a duel neither wants a second exchange of."
@@ -5649,6 +5813,8 @@ aliases:
 relationships:
   - REL-000111
 canonical_state:
+  affiliation: "The Standing (far side) — no position"
+  home: "The far side — the Ninth Quiet"
   rank: "No Rank — a System-bearer. Stats: Strength 1150, Agility 1700, Vitality 2000, Perception 3900 (highest on the far side), Intelligence 3350. Health 8,000, Mana 6,700. Master on perception, concealment, and reading written systems."
   location: "The Ninth Quiet stratum, near his rebuilt archive."
   condition: "Healthy, unhurt."
@@ -5710,6 +5876,8 @@ aliases:
 relationships:
   - REL-000112
 canonical_state:
+  affiliation: "The Standing (far side) — position: Stop it"
+  home: "The far side — the Stacks"
   rank: "No Rank — a System-bearer. Stats: Strength 1450, Agility 2240, Vitality 1900, Perception 2050, Intelligence 1780 (pre-1.111 baseline; base-Stat sum re-derived at 88% of Alexander's own at first contact under the 1.111 migration, ~12,000). Health ~9,200, Mana ~5,560 by that derivation. No offensive technique on her sheet at all — denial, barriers, doorway locks, patience."
   location: "His own ground, deep in the Stacks."
   condition: "Healthy, unhurt. Cannot out-damage Alexander and knows it; his real threat is Closing Word — a lockdown that outlasts his far-side Mana pool, not a fight he could win directly."
@@ -5769,6 +5937,8 @@ aliases:
 relationships:
   - REL-000113
 canonical_state:
+  affiliation: "Pendragon Guild — senior combat lead"
+  home: "San Francisco, USA"
   rank: "**S-Rank** — confirmed, licensed. Flux Sight `EVT-001138`: Health 4,000/4,000, Mana 2,000/2,000."
   age: "**27** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`), consistent with how he plays."
   location: "Unestablished beyond 'West Coast' — Renata's own filing places him working out of a Bay Area/LA corridor, unconfirmed in his own words."
@@ -5858,6 +6028,8 @@ aliases:
   - name: "Ingrid Solberg"
     quality: current
 canonical_state:
+  affiliation: "CONSULT — quality assessor"
+  home: "Chicago, USA"
   rank: "**Not awakened, per Flux Sight.** No Rank, no Rank Health or Mana line — a pure technical expert, not a hunter."
   location: "Suite 411, the downtown Chicago formation-mill office — returned there `EVT-000914`, same spot she was taken from."
   condition: "Healthy; no adverse condition established. Physically unmarked — Overpower's restraint and a follow-up Mend left nothing to show for either."
@@ -5894,6 +6066,8 @@ aliases:
   - name: "Daniel Pruett"
     quality: current
 canonical_state:
+  affiliation: "CONSULT — controlled artificer"
+  home: "Chicago, USA"
   rank: "**D-Rank, awakened, per Flux Sight.** Licensed, no combat rating on file — the same shape as Peter Kwiatkowski's own card. Artificer work requires being awakened; Flux Sight resolves this automatically, no gap left unread."
   location: "Suite 411, the downtown Chicago formation-mill office — returned there `EVT-000914`, same spot he was taken from."
   condition: "Physically unharmed — Overpower's restraint and a follow-up Mend left nothing to show for either. Visibly tired — the specific exhaustion of someone who hasn't slept well in longer than a few days — now compounded by an unexplained abduction."
@@ -5930,6 +6104,8 @@ aliases:
   - name: "Aldric Renn"
     quality: current
 canonical_state:
+  affiliation: "CONSULT — administrative handler"
+  home: "Chicago, USA"
   rank: "Not established — never perceived directly by Alexander. Described secondhand only."
   location: "A small unmarked office, Suite 3C, West Fulton Market, Chicago — per Ingrid's account, the only place she has ever met him, always by appointment."
   condition: "Not established."
@@ -6015,6 +6191,8 @@ aliases:
     quality: former, rarely used even by herself
 relationships: []
 canonical_state:
+  affiliation: "The Assay — grader"
+  home: "The far side — the Assay's channel"
   location: "Deceased, 'the cut chamber' — the sealed stone room beyond the reopened Libeň seam, a dead-world stratum on the far side, reached only by the route Alexander walked (now his 33rd rift anchor). Remains left where she fell; no disposal action taken."
   condition: "Deceased, `EVT-000959`, Rupture (DMG ≈12,612 standard, no equipment, no reduction — overwhelming against a stated maximum Health of 5,600). First Blade (Pre-empt) removed any window for her to act."
   capabilities_at_death: "System-bearer per Profile Section 13.1.1: Strength 1,734, Agility 2,200, Vitality 1,400, Perception 3,600, Intelligence 3,400; maximum Health 5,600 (4x Vitality), maximum Mana 6,800 (2x Intelligence); no equipment ever catalogued. Twenty authored techniques (`270_THE_FAR_SIDE.md` Section 4.5), Master mastery on grading/tracking/reporting, unremarkable in a straight fight and untroubled by that. Nineteen transcribed to Alexander via Succession; the twentieth ('What Passing Actually Felt Like') was explicitly not transcribed, flagged for a future owner ruling."
@@ -6048,6 +6226,8 @@ aliases:
     quality: current — a routing designation, not a personal name; whether it has another is unestablished
 relationships: []
 canonical_state:
+  affiliation: "The Assay — reviewer"
+  home: "The far side — the Assay's channel"
   location: "The Assay's channel, at the shelf holding the Libeň case file — closed to touching range before Alexander struck first."
   condition: "**Deceased, `EVT-000972`.** Survived one Rupture (`EVT-000971`) that would have ended the Auditor outright, gravely wounded rather than killed; tried to flee or seal itself away rather than fight back and was caught by a second Rupture before it could. Real death — Alexander's own damage crossed the threshold."
   want: "To close a reviewed case correctly rather than quickly — the same procedural completion every Assay figure encountered so far has valued, aimed here at determining whether the Libeň file is what it claims to be."
@@ -6078,6 +6258,8 @@ lifecycle: deceased
 aliases: []
 relationships: []
 canonical_state:
+  affiliation: "The Assay — enforcer"
+  home: "The far side — the Assay's channel"
   location: "The Assay's channel, the same stretch of shelving as the Libeň file."
   condition: "**Deceased, `EVT-000975`.** Max Health 18,000 — first Rupture (ambush, effective 70) staggered it to 5,388; second Rupture (flank, effective 100) finished it. Never landed a hit on Alexander."
   want: "Unestablished beyond the reflex any enforcer answering an alarm would carry — close on the trouble, fast."
@@ -6108,6 +6290,8 @@ lifecycle: deceased
 aliases: []
 relationships: []
 canonical_state:
+  affiliation: "The Assay — response-group coordinator"
+  home: "The far side — the Assay's channel"
   location: "The Assay's channel, separated from its group of four by Lockdown Field before the kill."
   condition: "**Deceased, `EVT-000977`.** Max Health 14,000, lighter-built than the enforcers. Ambush Rupture (effective 82, strong success) dropped it to 1,388; a second, uncontested strike finished it before it could use Alarm Pulse."
   want: "Coordinate its group correctly and report accurately — same procedural throughline as every Assay figure met so far."
@@ -6138,6 +6322,8 @@ lifecycle: deceased
 aliases: []
 relationships: []
 canonical_state:
+  affiliation: "The Assay — enforcer"
+  home: "The far side — the Assay's channel"
   location: "The Assay's channel, split from the coordinator's group of four."
   condition: "**Deceased, `EVT-000978`.** Max Health 18,000. Braced rather than surprised (watched a companion sealed first) — Rupture still connected (effective 67) for 12,612, staggering it to 5,388 with one audible cry; a second Rupture finished it."
   want: "Unestablished."
@@ -6168,6 +6354,8 @@ lifecycle: deceased
 aliases: []
 relationships: []
 canonical_state:
+  affiliation: "The Assay — enforcer"
+  home: "The far side — the Assay's channel"
   location: "The Assay's channel, sealed inside the recast Lockdown Field until released and killed."
   condition: "**Deceased, `EVT-000979`.** Max Health 18,000. First volley (surprise, effective 100, 3 hits): 18,000 → 3,801. Second volley (alert/braced, effective 59, 2 hits): dead, overkill."
   want: "Unestablished."
@@ -6198,6 +6386,8 @@ lifecycle: deceased
 aliases: []
 relationships: []
 canonical_state:
+  affiliation: "The Assay — enforcer"
+  home: "The far side — the Assay's channel"
   location: "The Assay's channel, sealed inside the recast Lockdown Field until released and killed."
   condition: "**Deceased, `EVT-000979`.** Max Health 18,000, same volley pattern as `ENT-000278`: 18,000 → 3,801 (surprise) → dead (alert, overkill)."
   want: "Unestablished."
@@ -6228,6 +6418,8 @@ lifecycle: deceased
 aliases: []
 relationships: []
 canonical_state:
+  affiliation: "The Assay — enforcer"
+  home: "The far side — the Assay's channel"
   location: "The Assay's channel, sealed alone from the moment of the uneven split until the kill."
   condition: "**Deceased, `EVT-000980`.** Max Health 18,000, untouched until located again. Total surprise (effective 78, still fully sealed and unaware): Rupture staggered it to 5,388; a second, uncontested Rupture finished it."
   want: "Unestablished."
@@ -6261,6 +6453,8 @@ aliases:
 relationships:
   - REL-000116
 canonical_state:
+  affiliation: "Pendragon Guild — independent board seat, otherwise unaffiliated"
+  home: "Denver, USA"
   age: "**33** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."
   location: "Denver, Colorado — independent, unaffiliated with any guild."
   condition: "Healthy, unhurt. Combat capability unresolved in play; carded S-Rank, Denver-based."
@@ -6370,6 +6564,8 @@ aliases:
 relationships:
   - REL-000119
 canonical_state:
+  affiliation: "Independent — film producer and fixer"
+  home: "Amstelveen, Netherlands"
   location: "Her own studio — a converted light-industrial unit off a residential street in Amstelveen, outside Amsterdam, twenty minutes from Schiphol. No sign; keypad and door camera. A soundproofed three-camera set."
   condition: "Unhurt. Walked into and out of an S-Rank instant dungeon under The Last Span, Bulwark and Silent Step (`EVT-001036`); nothing reached her."
   appearance: "Thirties, younger than her voice; hair pulled back for function, not style; a nod instead of a handshake; always already moving."
@@ -6425,6 +6621,8 @@ aliases:
   - name: "Cass Orlov"
     quality: current
 canonical_state:
+  affiliation: "Past the Cordon — host and owner"
+  home: "Chicago, USA (mobile)"
   role: "Host and owner, *Past the Cordon* — 61 million subscribers, raid footage and same-day drops from Gate sites and cordons."
   location: "Chicago; presumed mobile, no fixed base established beyond the channel's own reach."
   personality: "Fast, disarmingly candid about her own leverage — narrates the transaction out loud while making it. Not cruel; aware of exactly what she looks like doing this job and says so before anyone else can."
@@ -6482,6 +6680,8 @@ aliases:
 relationships:
   - REL-000121
 canonical_state:
+  affiliation: "The Assay — rotation worker (defected)"
+  home: "The far side — the Landing"
   location: "The Landing, the far side — delivered `EVT-001062`, alongside two unconscious coworkers, received by Ilith. Present whereabouts past that point unknown to Alexander."
   condition: "Healthy, unhurt physically. Emotionally unraveled by the encounter — real fear, real moral reckoning, a genuine break from the procedural composure his rotation trained into him."
   capabilities: "A System-bearer per Section 13.1.1, sheet-based, no Rank. Assigned to interval-check rotation on Earth's own grading file specifically — eight cycles at the time of capture. No combat build; a filing/monitoring specialist, not a fighter. Stats and full sheet not read (Flux Sight was corrected mid-scene to return pools rather than a Rank; exact figures not recorded)."
@@ -6539,6 +6739,8 @@ aliases:
   - name: "Nathaniel Cole"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — HQ, head of security"
+  home: "Detroit, USA (HQ campus)"
   location: "The Pendragon Guild HQ campus, Detroit."
   role: "Head of security for the HQ site."
   condition: "Healthy, competent, ex-military bearing."
@@ -6575,6 +6777,8 @@ aliases:
   - name: "Anjali Desai"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — HQ, head of front office"
+  home: "Detroit, USA (HQ campus)"
   location: "The Pendragon Guild HQ campus, Detroit."
   role: "Head of front office operations for the HQ site."
   condition: "Healthy, sharp, rarely without her own tablet."
@@ -6611,6 +6815,8 @@ aliases:
   - name: "Milena Horáková"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Prague office, front desk"
+  home: "Prague, Czech Republic"
   location: "The Pendragon Guild's Prague office."
   role: "Front desk and general office coordination — self-described as a placeholder role pending founder/second-in-command decision on whether it becomes permanent."
   condition: "Healthy, composed, professionally prepared for a first meeting with the founder."
@@ -6647,6 +6853,8 @@ aliases:
   - name: "Tomas Prochazka"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Prague dispatch crew, striker"
+  home: "Prague, Czech Republic"
   location: "Prague, guild dispatch crew."
   role: "Striker, D-rank card."
   condition: "Healthy. Weapon replaced this span — old D-Rank Longsword past a fusion-holding condition, refit with a fresh C-Rank Longsword, guild-funded (personal funds, not guild treasury — none yet exists), `EVT-001084`."
@@ -6683,6 +6891,8 @@ aliases:
   - name: "Klara Nováková"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Prague dispatch crew, sensor"
+  home: "Prague, Czech Republic"
   location: "Prague, guild dispatch crew."
   role: "Sensor, D-rank card."
   condition: "Healthy. Was running on a single borrowed D-Rank accessory with no torso or leg pieces at all; outfitted this span with a full guild-funded D-Rank set (head, torso, hands, legs, feet) plus a standing office A-Rank sensor piece assigned to her directly, `EVT-001084`."
@@ -6740,6 +6950,8 @@ aliases:
   - name: "Ottilie 'Doc' Haldane"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — A-Rank response pool, mender"
+  home: "No fixed office"
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank mender, carded at A."
   condition: "Healthy. Age 33."
@@ -6777,6 +6989,8 @@ aliases:
   - name: "Tobias Keane"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — A-Rank response pool, striker"
+  home: "No fixed office"
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 27."
@@ -6813,6 +7027,8 @@ aliases:
   - name: "Anneliese Rourke"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — A-Rank response pool, striker"
+  home: "No fixed office"
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 33."
@@ -6849,6 +7065,8 @@ aliases:
   - name: "Kwame Adjei"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — A-Rank response pool, striker"
+  home: "No fixed office"
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 30."
@@ -6885,6 +7103,8 @@ aliases:
   - name: "Sofia Delacroix"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — A-Rank response pool, striker"
+  home: "No fixed office"
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 24."
@@ -6921,6 +7141,8 @@ aliases:
   - name: "Jun-seo Baek"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — A-Rank response pool, striker"
+  home: "No fixed office"
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 26."
@@ -6957,6 +7179,8 @@ aliases:
   - name: "Idris Cavanaugh"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — A-Rank response pool, striker"
+  home: "No fixed office"
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 35."
@@ -6993,6 +7217,8 @@ aliases:
   - name: "Priyanka Nair"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — A-Rank response pool, striker"
+  home: "No fixed office"
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 27."
@@ -7029,6 +7255,8 @@ aliases:
   - name: "Marek Sobczak"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — A-Rank response pool, striker"
+  home: "No fixed office"
   location: "Pendragon Guild A-Rank response pool; no fixed office."
   role: "A-Rank striker, carded at A."
   condition: "Healthy. Age 29."
@@ -7065,6 +7293,8 @@ aliases:
   - name: "Imani Whitaker"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Chicago office, day manager"
+  home: "Chicago, USA"
   location: "The Pendragon Guild Chicago office, front desk."
   role: "Day manager of the Chicago office front desk."
   condition: "Healthy."
@@ -7103,6 +7333,8 @@ aliases:
   - name: "Verity Achebe-Lund"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — Washington DC office, day manager"
+  home: "Washington DC, USA"
   location: "The Pendragon Guild Washington DC office, front desk."
   role: "Day manager of the Washington DC office front desk."
   condition: "Healthy."
@@ -7141,6 +7373,8 @@ aliases:
   - name: "Anselm Kowalczyk-Boateng"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — Frankfurt office, day manager"
+  home: "Frankfurt, Germany"
   location: "The Pendragon Guild Frankfurt office, front desk."
   role: "Day manager of the Frankfurt office front desk."
   condition: "Healthy."
@@ -7177,6 +7411,8 @@ aliases:
   - name: "Ramona Ostrowski"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — New York office, day manager"
+  home: "New York, USA"
   location: "The Pendragon Guild New York office, front desk."
   role: "Day manager of the New York office front desk."
   condition: "Healthy."
@@ -7215,6 +7451,8 @@ aliases:
   - name: "Callum Idowu"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — Boston office, day manager"
+  home: "Boston, USA"
   location: "The Pendragon Guild Boston office, front desk."
   role: "Day manager of the Boston office front desk."
   condition: "Healthy."
@@ -7253,6 +7491,8 @@ aliases:
   - name: "Cecilia Duarte-Voss"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — Miami office, day manager"
+  home: "Miami, USA"
   location: "The Pendragon Guild Miami office, front desk."
   role: "Day manager of the Miami office front desk."
   condition: "Healthy."
@@ -7291,6 +7531,8 @@ aliases:
   - name: "Emeka Saltonstall"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — Houston office, day manager"
+  home: "Houston, USA"
   location: "The Pendragon Guild Houston office, front desk."
   role: "Day manager of the Houston office front desk."
   condition: "Healthy."
@@ -7329,6 +7571,8 @@ aliases:
   - name: "Odile Prendergast"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — Paris office, day manager"
+  home: "Paris, France"
   location: "The Pendragon Guild Paris office, front desk."
   role: "Day manager of the Paris office front desk."
   condition: "Healthy."
@@ -7365,6 +7609,8 @@ aliases:
   - name: "Noor Vandermeulen"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Amsterdam office, day manager"
+  home: "Amsterdam, Netherlands"
   location: "The Pendragon Guild Amsterdam office, front desk."
   role: "Day manager of the Amsterdam office front desk."
   condition: "Healthy."
@@ -7403,6 +7649,8 @@ aliases:
   - name: "Hyun-woo Delacroix-Park"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — Dallas office, day manager"
+  home: "Dallas, USA"
   location: "The Pendragon Guild Dallas office, front desk."
   role: "Day manager of the Dallas office front desk."
   condition: "Healthy."
@@ -7441,6 +7689,8 @@ aliases:
   - name: "Tomasz Okafor-Lindqvist"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — Los Angeles office, day manager"
+  home: "Los Angeles, USA"
   location: "The Pendragon Guild Los Angeles office, front desk."
   role: "Day manager of the Los Angeles office front desk."
   condition: "Healthy."
@@ -7479,6 +7729,8 @@ aliases:
   - name: "Lenka Baranyi"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — Seattle office, day manager"
+  home: "Seattle, USA"
   location: "The Pendragon Guild Seattle office, front desk."
   role: "Day manager of the Seattle office front desk."
   condition: "Healthy."
@@ -7517,6 +7769,8 @@ aliases:
   - name: "Bertil Nakamura-Reyes"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — San Francisco office, day manager"
+  home: "San Francisco, USA"
   location: "The Pendragon Guild San Francisco office, front desk."
   role: "Day manager of the San Francisco office front desk."
   condition: "Healthy."
@@ -7555,6 +7809,8 @@ aliases:
   - name: "Wendell Osei-Brandt"
     quality: former
 canonical_state:
+  affiliation: "Pendragon Guild — HQ, porter of the travel hub"
+  home: "Detroit, USA (HQ campus)"
   location: "The Pendragon Guild HQ campus, Detroit; restricted third floor, the travel hub."
   role: "Porter of the HQ travel hub: moving hunters in and out between branch offices to fill rosters on ongoing Gates."
   condition: "Healthy. Age about 42. Newly in a pressed grey jacket he has not settled into."
@@ -7636,6 +7892,8 @@ aliases:
   - name: "Graciela Corrales"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — artificer (licence pending)"
+  home: "Miami, USA"
   rank: "**[A-Rank] awakened**, card lapsed. Flux Sight `EVT-001135`: Health 1,500/1,500, Mana 750/750, ceiling [A-Rank]. **Working Rank A** (provisional mechanic: the card Rank is fixed, the working Rank is earned at the bench and capped at it)."
   age: "Fifties."
   location: "The Pendragon Guild Miami office, reception floor, 2026-09-28."
@@ -7678,6 +7936,8 @@ aliases:
   - name: "Tobiah Rennick"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — artificer (licence pending)"
+  home: "Houston, USA"
   rank: "**[B-Rank] awakened** (card B, always). Flux Sight `EVT-001136`: Health 600/600, Mana 300/300, ceiling [B-Rank]. Working Rank B."
   location: "His workshop, a cinder-block unit off a service road backed onto a rail spur, north Houston (sign: REPAIRS & FITTINGS)."
   condition: "Healthy."
@@ -7713,6 +7973,8 @@ aliases:
   - name: "Harlan Dorsett"
     quality: current
 canonical_state:
+  affiliation: "Independent — grey-market core broker"
+  home: "Houston, USA"
   rank: "Unawakened, an ordinary adult (Flux Sight `EVT-001136`: ordinary Health, no Mana pool, no techniques)."
   age: "Sixties."
   location: "A machine-shop unit on Harrisburg Boulevard, Houston, Unit 4, behind a tire-and-wheel shop; there most mornings, never the same afternoon twice."
@@ -7749,6 +8011,8 @@ aliases:
   - name: "Imogen Hartley"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — London office, day manager"
+  home: "London, UK"
   location: "The Pendragon Guild London office, front desk."
   role: "Day manager of the London office front desk."
   condition: "Healthy; unawakened (Flux Sight `EVT-001137`)."
@@ -7783,6 +8047,8 @@ aliases:
   - name: "Linnea Bergström"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Stockholm office, day manager"
+  home: "Stockholm, Sweden"
   location: "The Pendragon Guild Stockholm office, front desk."
   role: "Day manager of the Stockholm office front desk."
   condition: "Healthy; unawakened (Flux Sight `EVT-001137`)."
@@ -7817,6 +8083,8 @@ aliases:
   - name: "Gunnar Ekström"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Stockholm office, night officer"
+  home: "Stockholm, Sweden"
   location: "The Pendragon Guild Stockholm office, night post."
   role: "Night officer of the Stockholm office; retired from the Stockholm police after twenty-six years."
   condition: "Healthy."
@@ -7851,6 +8119,8 @@ aliases:
   - name: "Kerem Aydoğan"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Istanbul office, night officer"
+  home: "Istanbul, Turkey"
   location: "The Pendragon Guild Istanbul office, front desk."
   role: "Night officer of the Istanbul office."
   condition: "Healthy; unawakened."
@@ -7885,6 +8155,8 @@ aliases:
   - name: "Elif Demir"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Istanbul office, day manager"
+  home: "Istanbul, Turkey"
   location: "The Pendragon Guild Istanbul office, front desk."
   role: "Day manager of the Istanbul office front desk."
   condition: "Healthy; unawakened."
@@ -7919,6 +8191,8 @@ aliases:
   - name: "Itai Barak"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — member, Tel Aviv office"
+  home: "Tel Aviv, Israel"
   rank: "**[S-Rank]** — Flux Sight `EVT-001142` (legendary, natural 100): Health 4,000/4,000, Mana 2,000/2,000, ceiling exactly S. Israel's sole S-Rank; six years the country's only reliable response, called as a volunteer rather than under contract."
   age: "Thirties."
   location: "Tel Aviv, Israel."
@@ -7958,6 +8232,8 @@ aliases:
   - name: "Noa Shapira"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Tel Aviv office, day manager"
+  home: "Tel Aviv, Israel"
   location: "The Pendragon Guild Tel Aviv office, front desk."
   role: "Day manager of the Tel Aviv office front desk."
   condition: "Healthy; unawakened."
@@ -7992,6 +8268,8 @@ aliases:
   - name: "Marcus Feldspar"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Chicago office, night officer"
+  home: "Chicago, USA"
   location: "The Pendragon Guild Chicago office, night post."
   role: "Night officer of the Chicago office."
   condition: "Healthy; unawakened."
@@ -8026,6 +8304,8 @@ aliases:
   - name: "Dana Whitcross"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Washington DC office, night officer"
+  home: "Washington DC, USA"
   location: "The Pendragon Guild Washington DC office, night post."
   role: "Night officer of the Washington DC office."
   condition: "Healthy; unawakened."
@@ -8060,6 +8340,8 @@ aliases:
   - name: "Pavel Nový"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Prague office, night officer"
+  home: "Prague, Czech Republic"
   location: "The Pendragon Guild Prague office, night post."
   role: "Night officer of the Prague office."
   condition: "Healthy; unawakened."
@@ -8094,6 +8376,8 @@ aliases:
   - name: "Stefan Wendt"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Frankfurt office, night officer"
+  home: "Frankfurt, Germany"
   location: "The Pendragon Guild Frankfurt office, night post."
   role: "Night officer of the Frankfurt office."
   condition: "Healthy; unawakened."
@@ -8128,6 +8412,8 @@ aliases:
   - name: "Rosa Delfino"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — New York office, night officer"
+  home: "New York, USA"
   location: "The Pendragon Guild New York office, night post."
   role: "Night officer of the New York office."
   condition: "Healthy; unawakened."
@@ -8162,6 +8448,8 @@ aliases:
   - name: "Theo Bramfield"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Boston office, night officer"
+  home: "Boston, USA"
   location: "The Pendragon Guild Boston office, night post."
   role: "Night officer of the Boston office."
   condition: "Healthy; unawakened."
@@ -8196,6 +8484,8 @@ aliases:
   - name: "Yvette Solano"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Miami office, night officer"
+  home: "Miami, USA"
   location: "The Pendragon Guild Miami office, night post."
   role: "Night officer of the Miami office."
   condition: "Healthy; unawakened."
@@ -8230,6 +8520,8 @@ aliases:
   - name: "Cole Ashworth"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Houston office, night officer"
+  home: "Houston, USA"
   location: "The Pendragon Guild Houston office, night post."
   role: "Night officer of the Houston office."
   condition: "Healthy; unawakened."
@@ -8264,6 +8556,8 @@ aliases:
   - name: "Julien Moreau"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Paris office, night officer"
+  home: "Paris, France"
   location: "The Pendragon Guild Paris office, night post."
   role: "Night officer of the Paris office."
   condition: "Healthy; unawakened."
@@ -8298,6 +8592,8 @@ aliases:
   - name: "Bram Voskuijlen"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Amsterdam office, night officer"
+  home: "Amsterdam, Netherlands"
   location: "The Pendragon Guild Amsterdam office, night post."
   role: "Night officer of the Amsterdam office."
   condition: "Healthy; unawakened."
@@ -8332,6 +8628,8 @@ aliases:
   - name: "Colby Fenwick"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Dallas office, night officer"
+  home: "Dallas, USA"
   location: "The Pendragon Guild Dallas office, night post."
   role: "Night officer of the Dallas office."
   condition: "Healthy; unawakened."
@@ -8366,6 +8664,8 @@ aliases:
   - name: "Priya Sandal"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Los Angeles office, night officer"
+  home: "Los Angeles, USA"
   location: "The Pendragon Guild Los Angeles office, night post."
   role: "Night officer of the Los Angeles office."
   condition: "Healthy; unawakened."
@@ -8400,6 +8700,8 @@ aliases:
   - name: "Ronan Blakely"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Seattle office, night officer"
+  home: "Seattle, USA"
   location: "The Pendragon Guild Seattle office, night post."
   role: "Night officer of the Seattle office."
   condition: "Healthy; unawakened."
@@ -8434,6 +8736,8 @@ aliases:
   - name: "Marisol Ontario"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — San Francisco office, night officer"
+  home: "San Francisco, USA"
   location: "The Pendragon Guild San Francisco office, night post."
   role: "Night officer of the San Francisco office."
   condition: "Healthy; unawakened."
@@ -8468,6 +8772,8 @@ aliases:
   - name: "Tamar Golan"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Tel Aviv office, night officer"
+  home: "Tel Aviv, Israel"
   location: "The Pendragon Guild Tel Aviv office, night post."
   role: "Night officer of the Tel Aviv office."
   condition: "Healthy; unawakened."
@@ -8502,6 +8808,8 @@ aliases:
   - name: "Baran Yılmaz"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — Istanbul office, second night officer"
+  home: "Istanbul, Turkey"
   location: "The Pendragon Guild Istanbul office, night post."
   role: "Second night officer of the Istanbul office, alongside Kerem Aydoğan."
   condition: "Healthy; unawakened."
@@ -8536,6 +8844,8 @@ aliases:
   - name: "Nigel Harcourt"
     quality: current
 canonical_state:
+  affiliation: "Pendragon Guild — London office, night officer"
+  home: "London, UK"
   location: "The Pendragon Guild London office, night post."
   role: "Night officer of the London office."
   condition: "Healthy; unawakened."

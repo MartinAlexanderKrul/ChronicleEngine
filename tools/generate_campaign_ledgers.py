@@ -274,7 +274,7 @@ def build_inventory(state, assets, taxonomy, campaign):
 NPC_HIDDEN = {"secret", "prior_secret", "agenda", "agenda_at_death", "knowledge",
               "beliefs", "open_questions", "moved_by_events",
               "portrait", "portrait_guild", "portrait_full", "portrait_mundane"}
-NPC_ORDER = ["age", "role", "rank", "pools", "pool_variance", "location", "condition",
+NPC_ORDER = ["affiliation", "home", "age", "role", "rank", "pools", "pool_variance", "location", "condition",
              "situation", "appearance", "personality", "voice", "capabilities",
              "signature_ability", "want", "fear"]
 NPC_RANK = re.compile(r"(?<![A-Za-z])([SABCDE])-Rank")
@@ -291,6 +291,16 @@ def fenced_records(path):
     return text, docs
 
 
+ITALIC = re.compile(r"(?<![*\w])\*(?![*\s])([^*\n]+?)(?<![*\s])\*(?![*\w])")
+
+
+def mdi(text):
+    """md() plus single-star italics. The NPC and guild views need it -- canon
+    quotes speech as *this* -- and the skill and inventory views keep md() alone
+    so their output does not move."""
+    return ITALIC.sub(r"<i>\1</i>", md(text))
+
+
 def escape(text):
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
@@ -300,7 +310,22 @@ def npc_value(value):
         return "<br>".join("<b>%s</b>: %s" % (escape(str(k)), npc_value(v)) for k, v in value.items())
     if isinstance(value, list):
         return "<br>".join(npc_value(v) for v in value)
-    return md(escape(str(value).strip())).replace("\n", "<br>")
+    return mdi(escape(str(value).strip())).replace("\n", "<br>")
+
+
+def affiliation_orgs(value):
+    """`affiliation` reads "Org — detail; Org — detail". The organisation is what
+    precedes the last dash of each part, so a name that itself carries one
+    ("Horizon Guild — Europe — Prague branch chief") keeps it."""
+    orgs = []
+    for part in str(value or "").split(";"):
+        part = part.strip()
+        if not part:
+            continue
+        org = part.rsplit(" " + chr(0x2014) + " ", 1)[0].strip() if (" " + chr(0x2014) + " ") in part else part
+        if org and org not in orgs:
+            orgs.append(org)
+    return orgs
 
 
 def summary_line(value, limit=240):
@@ -309,7 +334,7 @@ def summary_line(value, limit=240):
     first = (split_sentences(value.strip()) or [value.strip()])[0].rstrip(";")
     if len(first) > limit:
         first = first[:limit].rsplit(" ", 1)[0] + chr(0x2026)
-    return md(escape(first))
+    return mdi(escape(first))
 
 
 # A published ledger is the `assets/` folder on its own, so a world figure's
@@ -378,10 +403,13 @@ def build_npcs(root, camp, assets):
                    [k for k in state if k not in NPC_ORDER and k not in NPC_HIDDEN]
             npcs[ent] = {
                 "id": ent, "name": escape(str(name)), "rank": rank_m.group(1) if rank_m else "",
-                "role": md(escape(str(d.get("subtype") or state.get("role") or ""))),
+                "role": mdi(escape(str(d.get("subtype") or state.get("role") or ""))),
                 "status": d.get("lifecycle") or d.get("status") or "active",
                 "source": scope,
                 "portrait": pics.get("portrait", ""), "portraitGuild": pics.get("portrait_guild", ""),
+                "aff": mdi(escape(str(state.get("affiliation") or ""))),
+                "orgs": affiliation_orgs(state.get("affiliation")),
+                "home": mdi(escape(str(state.get("home") or ""))),
                 "loc": summary_line(state.get("location")),
                 "cond": summary_line(state.get("condition")),
                 "fields": [[k.replace("_", " "), npc_value(state[k])] for k in keys
@@ -413,6 +441,123 @@ def sync_portraits(assets, mirror, check):
     for n in extra:
         os.remove(os.path.join(folder, n))
     return True, len(stale), len(extra)
+
+
+# ---------------------------------------------------------------- guild --
+# The guild has no record of its own. Its offices come from the hunter
+# population model, its people from each NPC's `affiliation`, its mark from the
+# identity note in the NPC ledger, and its Gate history from the operational
+# clearance log -- which is not canon, and the page says so.
+GUILD = "Pendragon Guild"
+DASH = " " + chr(0x2014) + " "
+
+
+def md_tables(text, heading):
+    """Rows of every pipe table under `## heading`, as dicts, plus the prose
+    paragraphs between them."""
+    m = re.search(r"^## %s\s*$(.*?)(?=^## |\Z)" % re.escape(heading), text, re.M | re.S)
+    if not m:
+        return None, []
+    rows, notes, head = [], [], None
+    for block in re.split(r"\n\s*\n", m.group(1).strip()):
+        lines = [l for l in block.strip().split("\n") if l.strip()]
+        if lines and lines[0].startswith("|"):
+            head = [c.strip() for c in lines[0].strip("|").split("|")]
+            for line in lines[2:]:
+                cells = [c.strip() for c in line.strip().strip("|").split("|")]
+                rows.append(dict(zip(head, cells)))
+        elif lines and not lines[0].startswith("---"):
+            notes.append(" ".join(lines))
+    return rows, notes
+
+
+def plain_int(cell):
+    digits = re.sub(r"[^0-9]", "", cell.split("(")[0])
+    return int(digits) if digits else 0
+
+
+def build_guild(camp, npcs, protagonist):
+    failures = []
+    model = io.open(os.path.join(camp, "151_HUNTER_POPULATION_MODEL.md"), encoding="utf-8").read()
+    table, _ = md_tables(model, "3. Canonical office table (supersedes OBJ-60's per-office splits)")
+    if not table:
+        return None, ["151_HUNTER_POPULATION_MODEL.md has no canonical office table"]
+    total = next((r for r in table if "Total" in r.get("Office", "")), None)
+    offices = []
+    for r in table:
+        if r is total:
+            continue
+        name = r["Office"].replace("**", "").strip()
+        ranks = {k: plain_int(r.get(k, "")) for k in "EDCBAS"}
+        s_names = re.findall(r"\(([^)]+)\)", r.get("S", ""))
+        offices.append({"name": name, "ranks": ranks, "sNames": s_names,
+                        "members": plain_int(r["Guild Members"]),
+                        "cityPop": r.get("City Pop.", ""), "metroPop": r.get("Metro Pop.", ""),
+                        "est": r.get("Est. Licensed Hunters", ""), "capture": r.get("Capture %", ""),
+                        "staff": []})
+    summed = sum(o["members"] for o in offices)
+    stated = plain_int(total["Guild Members"]) if total else summed
+    if summed != stated:
+        failures.append("151's office table sums to %d members but states a total of %d" % (summed, stated))
+
+    by_office = {o["name"]: o for o in offices}
+    by_name = {re.sub(r"<[^>]+>", "", n["name"]): n for n in npcs}
+    for o in offices:
+        o["sNames"] = [{"name": s, "id": by_name[s]["id"] if s in by_name else ""} for s in o["sNames"]]
+    groups = {k: [] for k in ("leadership", "board", "hq", "pool", "advisers", "artificers", "founding", "members")}
+    groups["leadership"].append(dict(protagonist, post="Founder"))
+    groups["board"].append(dict(protagonist, post="Founder's seat"))
+    roster = 0
+    for n in npcs:
+        if GUILD not in n["orgs"]:
+            continue
+        roster += 1
+        raw = [p.strip() for p in re.sub(r"<[^>]+>", "", n["aff"]).split(";")]
+        detail = next((p.split(DASH, 1)[1] for p in raw if p.startswith(GUILD + DASH)), "")
+        who = {"id": n["id"], "name": n["name"], "rank": n["rank"], "portrait": n["portrait"], "post": detail}
+        office = re.match(r"(?:member, )?(.+?) (?:office|dispatch crew)\b,? ?(.*)", detail)
+        low = detail.lower()
+        if "second in command" in low or "senior combat lead" in low:
+            groups["leadership"].append(who)
+        elif "board seat" in low:
+            groups["board"].append(who)
+        elif low.startswith("hq"):
+            groups["hq"].append(dict(who, post=detail.split(",", 1)[-1].strip()))
+        elif office and office.group(1) in by_office:
+            by_office[office.group(1)]["staff"].append(dict(who, post=office.group(2) or "member"))
+        elif "response pool" in low:
+            groups["pool"].append(dict(who, post=detail.split(",", 1)[-1].strip()))
+        elif "consultant" in low:
+            groups["advisers"].append(who)
+        elif "artificer" in low:
+            groups["artificers"].append(who)
+        elif "pre-guild crew" in low:
+            groups["founding"].append(who)
+        else:
+            groups["members"].append(who)
+
+    log = io.open(os.path.join(camp, "096_GUILD_CLEARANCE_LOG.md"), encoding="utf-8").read()
+    cleared, cleared_notes = md_tables(log, "Clearances")
+    open_, open_notes = md_tables(log, "Open and assigned, not yet cleared")
+    rules_m = re.search(r"^## Standing rules this log records\s*$(.*?)(?=^## |\Z)", log, re.M | re.S)
+    rules = [mdi(escape(x.strip())) for x in re.findall(r"^\d+\.\s+(.*)$", rules_m.group(1), re.M)] if rules_m else []
+    cell = lambda rows: [{k: mdi(escape(v)) for k, v in r.items()} for r in rows or []]
+
+    identity = io.open(os.path.join(camp, "130_NPCS_AND_FACTIONS.md"), encoding="utf-8").read()
+    idm = re.search(r"^## The Pendragon Guild " + chr(0x2014) + r" Visual Identity\s*$(.*?)(?=^## )", identity, re.M | re.S)
+    design = re.search(r"^\*\*Design:\*\*\s*(.+)$", idm.group(1), re.M) if idm else None
+    logo = re.search(r'^\s*logo:\s*"assets/(.+?)"', idm.group(1), re.M) if idm else None
+    logo_rev = re.search(r'^\s*logo_reversed:\s*"assets/(.+?)"', idm.group(1), re.M) if idm else None
+
+    return {
+        "offices": offices, "total": stated, "estTotal": total.get("Est. Licensed Hunters", "").replace("**", "") if total else "",
+        "captureTotal": total.get("Capture %", "").replace("**", "") if total else "",
+        "roster": roster, "groups": groups,
+        "cleared": cell(cleared), "clearedNotes": [mdi(escape(x)) for x in cleared_notes],
+        "open": cell(open_), "rules": rules,
+        "logo": logo.group(1) if logo else "", "logoReversed": logo_rev.group(1) if logo_rev else "",
+        "design": mdi(escape(design.group(1))) if design else "",
+    }, failures
 
 
 def main():
@@ -527,11 +672,29 @@ def main():
         for f in failures:
             print("  - " + f, file=sys.stderr)
         return 1
+    unplaced = [r["name"] for r in npcs if not r["aff"] or not r["home"]]
+    if unplaced:
+        print("warning: %d NPC(s) have no `affiliation` or `home`, so their cards show a dash "
+              "and no affiliation filter finds them: %s" % (len(unplaced), ", ".join(unplaced)), file=sys.stderr)
     print("npcs: %d characters, %d with a portrait, %d tied to the protagonist"
           % (len(npcs), sum(1 for r in npcs if r["portrait"]), sum(1 for r in npcs if r["rels"])))
     ndata = ("," + chr(10)).join(json.dumps(r, ensure_ascii=False).replace("</", "<\\/") for r in npcs)
     ok = emit("alexander_pendragon_npc_ledger.html", "npc_ledger.template.html",
               {"NPC_DATA": "[" + chr(10) + ndata + chr(10) + "]"}) and ok
+    sheet_text = io.open(os.path.join(camp, "100_CHARACTER_SHEET.md"), encoding="utf-8").read()
+    founder_pic = re.search(r'^\s*portrait:\s*"assets/(.+?)"', sheet_text, re.M)
+    guild, failures = build_guild(camp, npcs, {"id": PROTAGONIST, "name": "Alexander Pendragon", "rank": "S",
+                                                "portrait": founder_pic.group(1) if founder_pic else ""})
+    if failures:
+        print("Ledger generation FAILED: the guild ledger cannot be rendered faithfully:", file=sys.stderr)
+        for f in failures:
+            print("  - " + f, file=sys.stderr)
+        return 1
+    print("guild: %d members across %d offices, %d named people, %d clearances"
+          % (guild["total"], len(guild["offices"]), guild["roster"] + 1, len(guild["cleared"])))
+    ok = emit("alexander_pendragon_guild_ledger.html", "guild_ledger.template.html",
+              {"GUILD_DATA": json.dumps(guild, ensure_ascii=False).replace("</", "<\\/")}) and ok
+
     synced, copied, removed = sync_portraits(assets, mirror, args.check)
     ok = synced and ok
     if args.check and synced:

@@ -304,12 +304,12 @@ If a required source cannot be read, say so out of character, name the file, and
 
 # Derived Assets
 
-`assets/alexander_pendragon_{skill,inventory,npc}_ledger.html` are **views, never canon** — skills
-and items are read from `100_CHARACTER_SHEET.md`, NPCs from `130` and the `world_ledger:` above
-(secrets, agendas and knowledge left out). An edit made on the published artifact does not
-travel back and is overwritten.
+`assets/alexander_pendragon_{skill,inventory,npc,guild}_ledger.html` are **views, never canon** —
+skills and items are read from `100_CHARACTER_SHEET.md`, NPCs from `130` and the `world_ledger:` above
+(secrets, agendas and knowledge left out), the guild from `151`, `096` and each NPC's `affiliation`.
+An edit made on the published artifact does not travel back and is overwritten.
 
-`/save` rebuilds all three after the live ledgers are written and before the snapshot is taken:
+`/save` rebuilds all four after the live ledgers are written and before the snapshot is taken:
 
 ```
 python tools/generate_campaign_ledgers.py --campaign gatefall_pendragon_001

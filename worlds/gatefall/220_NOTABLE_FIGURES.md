@@ -112,9 +112,10 @@ aliases:
 relationships:
   - REL-000052
 canonical_state:
+  portrait: "assets/portraits/Naomi_Okafor_ENT-000107.png"
   affiliation: "BGM Region V — Regional Director"
   home: "Chicago, USA"
-  rank: "**C-Rank** — stated in her entry: C-Rank awakened, long deskbound. Resolved by that Rank under Section 13.1."
+  rank: "**C-Rank** — per her entry: C-Rank awakened, long deskbound. Resolved under Section 13.1."
   pool_variance: "**−5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A decade behind a desk. Her signature is a social utility — Still Room deadens a closed room — and the well behind it has not been worked in years."
   pools: "**Maximum Health 237, maximum Mana 118** — Section 6.1 table (250 / 125) × 0.95, floored. Section 5.2 tier costs, read from their own maximum: **Minor 11, Signature 29, Boss-tier 59**. Section 5.3 running-dry threshold **29**."
   role: "Regional Director of BGM Region V (ENT-000099); federal appointee over the Ranking Bench and the Auction Desk."
@@ -161,6 +162,7 @@ aliases:
 relationships:
   - REL-000053
 canonical_state:
+  portrait: "assets/portraits/Preston_Vaughn_ENT-000108.png"
   affiliation: "Horizon Guild — Guildmaster and CEO"
   home: "Chicago, USA"
   rank: "**None — he is not awakened.** Stated in his own entry: a pure corporate operator. He therefore carries no Rank, no Rank Health or Rank Mana, and no Section 6.1.2 variance, and Section 13.6's signature-ability requirement does not reach him — it binds named NPC *hunters*. Recorded so an audit does not read the empty fields as a gap."
@@ -210,7 +212,7 @@ canonical_state:
   portrait: "assets/portraits/Dominic_Crane_ENT-000109.png"
   affiliation: "Horizon Guild — S-Rank ace"
   home: "Chicago, USA"
-  rank: "**S-Rank** — stated in his entry: Horizon Guild's drafted ace, one of Chicago's two resident S-Ranks. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per his entry: Horizon Guild's drafted ace, one of Chicago's two resident S-Ranks. Resolved under Section 13.1."
   age: "**41** (`EVT-001020`)."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A drafted ace is selected for being measurably more than the median S, and the whole brand is built on his being it."
   pools: "**Maximum Health 4200, maximum Mana 2100** — Section 6.1 table (4000 / 2000) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 210, Signature 525, Boss-tier 1050**. Section 5.3 running-dry threshold **525**."
@@ -260,9 +262,10 @@ aliases:
 relationships:
   - REL-000055
 canonical_state:
+  portrait: "assets/portraits/Denise_Brannigan_ENT-000110.png"
   affiliation: "Ironline Guild — Guildmaster"
   home: "Chicago, USA"
-  rank: "**D-Rank** — stated in her entry: D-Rank, who came up clearing E-Rank Gates herself along the Red Line Corridor. Resolved by that Rank under Section 13.1."
+  rank: "**D-Rank** — per her entry: D-Rank, who came up clearing E-Rank Gates herself along the Red Line Corridor. Resolved under Section 13.1."
   pool_variance: "**None** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. She is the guildmaster who did it the hard way from the bottom rung; the median D is exactly the point of her."
   pools: "**Maximum Health 100, maximum Mana 50** — the flat Section 6.1 table value at D-Rank. Section 5.2 tier costs, read from their own maximum: **Minor 5, Signature 12, Boss-tier 25**. Section 5.3 running-dry threshold **12**."
   role: "Guildmaster of Ironline Guild (ENT-000101); rose from the Red Line Corridor (ENT-000090) shop floor."
@@ -311,9 +314,10 @@ aliases:
 relationships:
   - REL-000056
 canonical_state:
+  portrait: "assets/portraits/Eleanor_Foss_ENT-000111.png"
   affiliation: "BGM Region V — senior appraiser, Ranking Bench"
   home: "Chicago, USA"
-  rank: "**B-Rank** — stated in her entry: B-Rank Perception-class awakened, non-combatant. Resolved by that Rank under Section 13.1."
+  rank: "**B-Rank** — per her entry: B-Rank Perception-class awakened, non-combatant. Resolved under Section 13.1."
   pool_variance: "**−5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A sensing rank held by an appraiser who has never spent it in a fight."
   pools: "**Maximum Health 570, maximum Mana 285** — Section 6.1 table (600 / 300) × 0.95, floored. Section 5.2 tier costs, read from their own maximum: **Minor 28, Signature 71, Boss-tier 142**. Section 5.3 running-dry threshold **71**."
   role: "Senior licensed appraiser on BGM Region V's (ENT-000099) Ranking Bench; B-Rank Perception-class awakened."
@@ -358,9 +362,10 @@ aliases:
   - name: "Deacon"
     quality: cover
 canonical_state:
+  portrait: "assets/portraits/Deacon_ENT-000112.png"
   affiliation: "Independent — unlicensed core buyer, no institutional membership"
   home: "Chicago, USA"
-  rank: "**D-Rank** — stated in his entry: a former D-Rank hunter, now an unlicensed core fence. Resolved by that Rank under Section 13.1."
+  rank: "**D-Rank** — per his entry: a former D-Rank hunter, now an unlicensed core fence. Resolved under Section 13.1."
   pool_variance: "**None** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. Nothing in the record pulls a retired D off the median in either direction."
   pools: "**Maximum Health 100, maximum Mana 50** — the flat Section 6.1 table value at D-Rank. Section 5.2 tier costs, read from their own maximum: **Minor 5, Signature 12, Boss-tier 25**. Section 5.3 running-dry threshold **12**."
   role: "Unlicensed black-market buyer of undeclared cores and crystals in Chicago; former D-Rank hunter. Holds no institutional membership."
@@ -411,9 +416,10 @@ aliases:
 relationships:
   - REL-000057
 canonical_state:
+  portrait: "assets/portraits/Milos_Beran_ENT-000113.png"
   affiliation: "Czech Gate Administration — Director"
   home: "Prague, Czech Republic"
-  rank: "**E-Rank** — stated in his entry: E-Rank awakened, career civil servant. Resolved by that Rank under Section 13.1."
+  rank: "**E-Rank** — per his entry: E-Rank awakened, career civil servant. Resolved under Section 13.1."
   pool_variance: "**−10%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. An administrator's card. He has held a directorship rather than a line, and the pool shows it."
   pools: "**Maximum Health 36, maximum Mana 18** — Section 6.1 table (40 / 20) × 0.90, floored. Section 5.2 tier costs, read from their own maximum: **Minor 1, Signature 4, Boss-tier 9**. Section 5.3 running-dry threshold **4**."
   role: "Director of the Czech Gate Administration (ENT-000103); career civil servant, E-Rank awakened."
@@ -463,7 +469,7 @@ canonical_state:
   portrait: "assets/portraits/Tereza_Blazkova_ENT-000114.png"
   affiliation: "Karlov Guild — contracted hunter; Pendragon Guild — board seat"
   home: "Prague, Czech Republic"
-  rank: "**S-Rank** — stated in her entry: S-Rank, the Czech Republic's first and only, measured in 2023. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per her entry: S-Rank, the Czech Republic's first and only, measured in 2023. Resolved under Section 13.1."
   age: "**28** (`EVT-001020`)."
   pool_variance: "**+10%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A nation's sole S-Rank and a national celebrity. If any pool in this file should sit at the top of its bracket, it is hers."
   pools: "**Maximum Health 4400, maximum Mana 2200** — Section 6.1 table (4000 / 2000) × 1.10, floored. Section 5.2 tier costs, read from their own maximum: **Minor 220, Signature 550, Boss-tier 1100**. Section 5.3 running-dry threshold **550**."
@@ -511,9 +517,10 @@ aliases:
 relationships:
   - REL-000059
 canonical_state:
+  portrait: "assets/portraits/Vlastimil_Karlov_ENT-000115.png"
   affiliation: "Karlov Guild — Guildmaster"
   home: "Prague, Czech Republic"
-  rank: "**C-Rank** — stated in his entry: C-Rank, one of the first Czechs to clear a Gate. Resolved by that Rank under Section 13.1."
+  rank: "**C-Rank** — per his entry: C-Rank, one of the first Czechs to clear a Gate. Resolved under Section 13.1."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. Decades on Prague's hardest heritage-site ground, which is long-pool work."
   pools: "**Maximum Health 262, maximum Mana 131** — Section 6.1 table (250 / 125) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 13, Signature 32, Boss-tier 65**. Section 5.3 running-dry threshold **32**."
   role: "Guildmaster of Karlov Guild (ENT-000104); C-Rank, a firsthand witness of the Gatefall."
@@ -560,9 +567,10 @@ aliases:
 relationships:
   - REL-000060
 canonical_state:
+  portrait: "assets/portraits/Ivana_Karlova_ENT-000116.png"
   affiliation: "Karlov Guild — heir, New Contracts Desk"
   home: "Prague, Czech Republic"
-  rank: "**C-Rank** — stated in her entry: C-Rank hunter and heir to Karlov Guild. Resolved by that Rank under Section 13.1."
+  rank: "**C-Rank** — per her entry: C-Rank hunter and heir to Karlov Guild. Resolved under Section 13.1."
   pool_variance: "**None** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. Running the New Contracts Desk rather than the hard ground; no evidence pulls her off the median."
   pools: "**Maximum Health 250, maximum Mana 125** — the flat Section 6.1 table value at C-Rank. Section 5.2 tier costs, read from their own maximum: **Minor 12, Signature 31, Boss-tier 62**. Section 5.3 running-dry threshold **31**."
   role: "Heir to Karlov Guild (ENT-000104) and lead of its New Contracts Desk; C-Rank hunter."
@@ -609,9 +617,10 @@ aliases:
 relationships:
   - REL-000061
 canonical_state:
+  portrait: "assets/portraits/Ondrej_Dusek_ENT-000117.png"
   affiliation: "Horizon Guild — Europe — Prague branch chief"
   home: "Prague, Czech Republic"
-  rank: "**B-Rank** — stated in his entry: B-Rank, Czech-born, once a Karlov hunter himself. Resolved by that Rank under Section 13.1."
+  rank: "**B-Rank** — per his entry: B-Rank, Czech-born, once a Karlov hunter himself. Resolved under Section 13.1."
   pool_variance: "**None** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. A branch chief now, a working B before that; the median is the honest reading."
   pools: "**Maximum Health 600, maximum Mana 300** — the flat Section 6.1 table value at B-Rank. Section 5.2 tier costs, read from their own maximum: **Minor 30, Signature 75, Boss-tier 150**. Section 5.3 running-dry threshold **75**."
   role: "Prague branch chief of Horizon Guild — Europe (ENT-000105); B-Rank, Czech-born and once a Karlov hunter."
@@ -656,6 +665,7 @@ aliases:
   - name: "Sova"
     quality: cover
 canonical_state:
+  portrait: "assets/portraits/Sova_ENT-000118.png"
   affiliation: "Independent — unlicensed smuggler, no institutional membership"
   home: "Prague, Czech Republic"
   rank: "**Deliberately unestablished.** His entry describes him as a low-signature awakened who is hard to appraise, which is characterisation rather than an omission: not knowing what he is is the point of him. No Rank is authored here, so no pools and no Section 6.1.2 variance are derived. If a Rank is ever fixed in play, variance is authored at that point and is not retroactive."
@@ -710,7 +720,7 @@ canonical_state:
   portrait: "assets/portraits/Reid_Calloway_ENT-000123.png"
   affiliation: "Keystone Guild — S-Rank ace"
   home: "New York, USA"
-  rank: "**S-Rank** — stated in his entry: S-Rank, world-ranked #7 on the International Gate Registry list. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per his entry: S-Rank, world-ranked #7 on the International Gate Registry list. Resolved under Section 13.1."
   age: "**37** (`EVT-001020`)."
   pool_variance: "**+10%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. World-ranked seventh on Earth and the highest-ranked American. The list is the justification."
   pools: "**Maximum Health 4400, maximum Mana 2200** — Section 6.1 table (4000 / 2000) × 1.10, floored. Section 5.2 tier costs, read from their own maximum: **Minor 220, Signature 550, Boss-tier 1100**. Section 5.3 running-dry threshold **550**."
@@ -760,7 +770,7 @@ canonical_state:
   portrait: "assets/portraits/Lukas_Reinhardt_ENT-000124.png"
   affiliation: "Brandhof — S-Rank ace; Pendragon Guild — board seat"
   home: "Frankfurt, Germany"
-  rank: "**S-Rank** — stated in his entry: S-Rank, world-ranked #8 on the International Gate Registry list. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per his entry: S-Rank, world-ranked #8 on the International Gate Registry list. Resolved under Section 13.1."
   age: "**44** (`EVT-001020`)."
   pool_variance: "**+5%** — authored under Profile Section 6.1.2 (`EVT-000249`). Permanent, never rerolled. World-ranked eighth, one rung below Calloway, and the number should say so."
   pools: "**Maximum Health 4200, maximum Mana 2100** — Section 6.1 table (4000 / 2000) × 1.05, floored. Section 5.2 tier costs, read from their own maximum: **Minor 210, Signature 525, Boss-tier 1050**. Section 5.3 running-dry threshold **525**."
@@ -811,7 +821,7 @@ canonical_state:
   portrait_guild: "assets/portraits/Elias_Kane_ENT-000242_guild.png"
   affiliation: "Pendragon Guild — second in command, board seat"
   home: "Chicago, USA"
-  rank: "**S-Rank** — stated in his entry, 'the other Chicago S-Rank.' Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per his entry, 'the other Chicago S-Rank.' Resolved under Section 13.1."
   age: "**32** (`EVT-001020`)."
   role: "**Second in command, the Pendragon Guild, effective 2026-09-24 — resigned from BGM the same day** (campaign, `EVT-001084`). Prior: BGM federal asset, Chicago — no guild membership, reported to Washington rather than Region V or any guild chain (`200_WORLD_BIBLE.md`)."
   location: "**2026-09-29 evening: the Winnetka house**, arrived by car for beer night with Dario Wexler (`EVT-001153`). Prior: Guild HQ, Chicago office, third floor, since 06:00 that morning, countersigning Renata's regional filings. Prior: 2026-09-25 ~06:20, left Winnetka for the far South Side, the Calumet corridor (`EVT-001095`); had been a guest there since 2026-09-21. Met Alexander at The Sidecut, 2211 W Cermak Road, 2026-09-06."
@@ -865,7 +875,7 @@ canonical_state:
   portrait: "assets/portraits/Isabel_Chandrasekaran_ENT-000234.png"
   affiliation: "Ashwood Collective — S-Rank ace"
   home: "Denver, USA"
-  rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per her entry. Resolved under Section 13.1."
   age: "**36** (`EVT-001020`)."
   role: "S-Rank ace, Ashwood Collective (Denver)."
   capabilities: "S-Rank combat; area-control specialization, signature unestablished."
@@ -899,7 +909,7 @@ canonical_state:
   portrait: "assets/portraits/Marcus_Webb_ENT-000235.png"
   affiliation: "Redline Guild — S-Rank ace"
   home: "Houston, USA"
-  rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per his entry. Resolved under Section 13.1."
   age: "**39** (`EVT-001020`)."
   role: "S-Rank ace, Redline Guild (Houston)."
   capabilities: "S-Rank combat; front-line break intervention, signature unestablished."
@@ -933,7 +943,7 @@ canonical_state:
   portrait: "assets/portraits/Jonas_Whitfield_ENT-000236.png"
   affiliation: "Cascade Guild — S-Rank ace"
   home: "Seattle, USA"
-  rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per his entry. Resolved under Section 13.1."
   age: "**45** (`EVT-001020`)."
   role: "S-Rank ace, Cascade Guild (Seattle) — guild policy keeps his public profile deliberately thin."
   capabilities: "S-Rank combat; signature unestablished."
@@ -967,7 +977,7 @@ canonical_state:
   portrait: "assets/portraits/Camille_Duforest_ENT-000237.png"
   affiliation: "Delta Watch — S-Rank ace"
   home: "New Orleans, USA"
-  rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per her entry. Resolved under Section 13.1."
   age: "**34** (`EVT-001020`)."
   role: "S-Rank ace, Delta Watch (New Orleans)."
   capabilities: "S-Rank combat; flood/storm-environment specialization, signature unestablished."
@@ -1001,7 +1011,7 @@ canonical_state:
   portrait: "assets/portraits/Griffin_Ashcombe_ENT-000238.png"
   affiliation: "Sterling Guild — S-Rank ace"
   home: "Boston, USA"
-  rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per his entry. Resolved under Section 13.1."
   age: "**32** (`EVT-001020`)."
   role: "S-Rank ace, Sterling Guild (Boston) — heavily press-managed."
   capabilities: "S-Rank combat; signature unestablished."
@@ -1035,7 +1045,7 @@ canonical_state:
   portrait: "assets/portraits/Nadia_Farrow_ENT-000239.png"
   affiliation: "Independent — unaffiliated contractor"
   home: "Los Angeles, USA"
-  rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per her entry. Resolved under Section 13.1."
   age: "**38** (`EVT-001020`)."
   role: "Unaffiliated, independent contractor, Los Angeles — no guild membership, mirroring Alexander's own standing."
   capabilities: "S-Rank combat; signature unestablished."
@@ -1071,7 +1081,7 @@ canonical_state:
   portrait: "assets/portraits/Terrence_Mahoney_ENT-000240.png"
   affiliation: "Anchor Guild — S-Rank ace"
   home: "Detroit, USA"
-  rank: "**S-Rank** — stated in his entry. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per his entry. Resolved under Section 13.1."
   age: "**43** (`EVT-001020`)."
   role: "S-Rank ace, Anchor Guild (Detroit)."
   capabilities: "S-Rank combat; industrial-Gate specialization, signature unestablished."
@@ -1105,7 +1115,7 @@ canonical_state:
   portrait: "assets/portraits/Odalys_Ferreira_ENT-000241.png"
   affiliation: "Vanguard Collective — S-Rank ace"
   home: "Miami, USA"
-  rank: "**S-Rank** — stated in her entry. Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — per her entry. Resolved under Section 13.1."
   age: "**24** (`EVT-001020`)."
   role: "S-Rank ace, Vanguard Collective (Miami) — youngest of the eleven, recently promoted."
   capabilities: "S-Rank combat; signature unestablished."
@@ -1192,7 +1202,7 @@ canonical_state:
   portrait: "assets/portraits/Camille_Aubrac_ENT-000282.png"
   affiliation: "Lumière Guild — flagship; Pendragon Guild — board seat"
   home: "Paris, France"
-  rank: "**S-Rank** — world-ranked IGR #6 (`200_WORLD_BIBLE.md`). Resolved by that Rank under Section 13.1."
+  rank: "**S-Rank** — world-ranked IGR #6 (`200_WORLD_BIBLE.md`). Resolved under Section 13.1."
   age: "**41** (`EVT-001020`)."
   role: "Lumière Guild, Paris — the guild's own flagship name, more publicly recognized than the guild itself in most markets."
   location: "Paris, France; also present in Prague and Frankfurt this span for the network's own founding dinner."

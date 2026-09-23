@@ -153,6 +153,39 @@
     .lines div{grid-template-columns:1fr; gap:2px;}
     .vitals{grid-template-columns:repeat(2,minmax(0,1fr));}
   }
+
+  /* ---- Wealth: funds from 120's current_funds, holdings from Place records ---- */
+  .wealth{grid-column:1 / -1; border-top:1px solid var(--border); padding-top:18px; display:flex; flex-direction:column; gap:14px; min-width:0;}
+  .wealth h3{font-family:"Chakra Petch",sans-serif; font-size:1.05rem; margin:0; display:flex; align-items:baseline; gap:10px;}
+  .wealth h3 small{font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.06em; color:var(--text-dim); font-weight:400;}
+  .funds{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px;}
+  .fund{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; flex-direction:column; gap:3px; min-width:0;}
+  .fund b{font-family:"IBM Plex Mono",monospace; font-size:1.15rem; font-weight:600; font-variant-numeric:tabular-nums; overflow-wrap:anywhere;}
+  .fund.gold b{color:var(--amber);} .fund.cash b{color:var(--accent);}
+  .fund span{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+  .props{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px;}
+  .prop{background:var(--surface2); border:1px solid var(--border); border-radius:10px; overflow:hidden; display:flex; flex-direction:column; min-width:0;}
+  .prop .photo{aspect-ratio:16 / 9; background:var(--bg); display:grid; place-items:center; position:relative; overflow:hidden;}
+  .prop .photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .prop .photo .none{font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+  .prop .photo .alt{position:absolute; right:8px; bottom:8px; display:flex; gap:4px;}
+  .prop .photo .alt button{width:10px; height:10px; border-radius:50%; border:1px solid #fff; background:rgba(255,255,255,.35); padding:0; cursor:pointer;}
+  .prop .photo .alt button[aria-pressed="true"]{background:#fff;}
+  .prop .body{padding:12px 14px; display:flex; flex-direction:column; gap:7px;}
+  .prop .top{display:flex; justify-content:space-between; gap:8px; align-items:baseline;}
+  .prop h4{font-family:"Chakra Petch",sans-serif; font-size:1rem; margin:0;}
+  .prop .tenure{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:5px; white-space:nowrap;
+    color:var(--accent); background:var(--accent-soft); border:1px solid color-mix(in srgb, var(--accent) 40%, transparent);}
+  .prop .tenure.leased{color:var(--text-dim); background:transparent; border-color:var(--border);}
+  .prop .where{font-size:.78rem; color:var(--text-dim); line-height:1.45;}
+  .prop .price{font-family:"IBM Plex Mono",monospace; font-size:.8rem; color:var(--amber); font-weight:600;}
+  .prop .sum{font-size:.8rem; line-height:1.5;}
+  .prop details summary{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; color:var(--accent);}
+  .prop details .f{margin-top:8px; display:flex; flex-direction:column; gap:2px;}
+  .prop details .l{font-family:"IBM Plex Mono",monospace; font-size:.58rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-dim);}
+  .prop details .v{font-size:.78rem; line-height:1.5; overflow-wrap:anywhere;}
+  .prop code{font-family:"IBM Plex Mono",monospace; font-size:.72rem;}
+  @media (max-width:640px){ .funds{grid-template-columns:1fr;} .wealth{text-align:left;} }
 </style>
 </head>
 <body>
@@ -211,7 +244,39 @@
 </div>
 <script>
 // Generated from 100_CHARACTER_SHEET.md on every ledger run; nothing here is typed by hand.
-const P = /*__PROFILE_DATA__*/{"name": "Alexander Pendragon", "rank": "S", "cls": "Riftwalker", "level": 207, "age": 25, "health": "11,832 / 11,832", "mana": "6,562 / 6,562", "xp": "6,642 / 20,700", "role": "Founder, Pendragon Guild", "portraits": {"portrait": "portraits/Alexander_Pendragon_ENT-000125.png", "full": "portraits/Alexander_Pendragon_ENT-000125_full.png", "mundane": "portraits/Alexander_Pendragon_ENT-000125_mundane.png"}, "titles": ["Prospector", "Loner", "Ascetic", "The Unmeasured", "Giantslayer", "Proven", "Godslayer", "Vanguard"], "now": "<b>The Denver facility, Wednesday 2026-09-30, 10:16 Chicago<\/b> (<code>EVT-001167<\/code>).", "appearance": "Twenty-five, 183cm, built like what he is — a krav maga instructor who trains daily and means it.", "personality": "Coldly analytical", "aspiration": "Become powerful and discover new things."}/*__END__*/;
+const P = /*__PROFILE_DATA__*/{"name": "Alexander Pendragon", "rank": "S", "cls": "Riftwalker", "level": 207, "age": 25, "health": "11,832 / 11,832", "mana": "6,562 / 6,562", "xp": "6,642 / 20,700", "role": "Founder, Pendragon Guild", "portraits": {"portrait": "portraits/Alexander_Pendragon_ENT-000125.png", "full": "portraits/Alexander_Pendragon_ENT-000125_full.png", "mundane": "portraits/Alexander_Pendragon_ENT-000125_mundane.png"}, "titles": ["Prospector", "Loner", "Ascetic", "The Unmeasured", "Giantslayer", "Proven", "Godslayer", "Vanguard"], "now": "<b>The Denver facility, Wednesday 2026-09-30, 10:16 Chicago<\/b> (<code>EVT-001167<\/code>).", "appearance": "Twenty-five, 183cm, built like what he is — a krav maga instructor who trains daily and means it.", "personality": "Coldly analytical", "aspiration": "Become powerful and discover new things.", "wealth": {"cash": 811158490.22, "gold": 356808131, "pending": 0.0, "pendingCount": 0, "asOf": "2026-09-30", "properties": [{"id": "ENT-000343", "name": "the Detroit HQ campus", "kind": "guild headquarters campus, purchased", "status": "active", "tenure": "Owned", "price": "$90,000,000", "location": "Detroit, Michigan — the Pendragon Guild's headquarters campus; exact street address not yet established.", "ownership": "Bought outright for $90,000,000 from Alexander's own cash — the guild has no treasury yet — found and closed through Delia Okonjo (<code>ENT-000248<\/code>, <code>EVT-001068<\/code>), closing 2026-09-23 (<code>EVT-001073<\/code>). Held as the Pendragon Guild's headquarters.", "summary": "A multi-floor headquarters campus.", "details": [["condition", "A multi-floor headquarters campus. The restricted third floor, an abandoned office buildout, is the guild's travel hub: 20 rooms live, one per current or near-term office, with capacity for 40, access keyed through reception, and camera coverage with night vision and audio on every room and common area. Fourteen standing Gate Walker tunnels join it to the branch offices (<code>EVT-001107<\/code>). A basement server room; sitewide fingerprint-only access, no cards (<code>EVT-001086<\/code>)."], ["situation", "Staffed: Nathaniel Cole (<code>ENT-000287<\/code>) heads security, Anjali Desai (<code>ENT-000288<\/code>) the front office, and Wendell Brooks (<code>ENT-000302<\/code>) is the travel hub's porter. Security and IT buildout ordered 2026-09-24 (<code>EVT-001086<\/code>); the menders' meeting held here 2026-09-30 (<code>EVT-001162<\/code>)."], ["note", "An earlier session misidentified the campus as Denver; it has been Detroit throughout, and the Denver site is Alexander's own containment facility (<code>ENT-000264<\/code>), corrected at <code>EVT-001086<\/code>. The HQ lobby is a rift anchor. Minted 2026-09-23 (real date), outside play, at the player's direction, so the holding renders on the ledger index; every fact above is restated from the cited Events."]], "photos": []}, {"id": "ENT-000270", "name": "Lakeside Mansion", "kind": "private residence, owned", "status": "active", "tenure": "Owned", "price": "$17,100,000", "location": "Winnetka, Illinois — direct Lake Michigan frontage, North Shore corridor, ~18 miles/25-35 min from downtown Chicago.", "ownership": "Bought outright, cash, $17,100,000 (negotiated down from $17,500,000 ask), closed same-day (<code>EVT-000923<\/code>). Under Alexander Pendragon's own name — no alias used this purchase, unlike the Rockwell bay.", "summary": "A large cedar-shingle Shingle-style house set into wooded bluff-top grounds, multiple gables and prominent stone chimneys, tall black-framed windows, ivy climbing sections of the facade.", "details": [["condition", "A large cedar-shingle Shingle-style house set into wooded bluff-top grounds, multiple gables and prominent stone chimneys, tall black-framed windows, ivy climbing sections of the facade. A covered outdoor kitchen and dining pavilion (dark standing-seam roof) sits beside a stone-decked infinity-edge pool built right to the bluff's drop, lounge chairs along one side and a sunken stone fire-pit lounge with built-in bench seating at the other. Terraced stone steps switchback down the bluff face through dense plantings to a private dock and a separate cedar-shingled boathouse at the water's edge — stone chimney, its own sauna inside, smoke visible from the chimney when running. Five bedrooms, a study, a finished lower level, wide-plank floors, kitchen recently renovated. Move-in ready, currently unfurnished beyond what's already fixed to the property."], ["furnishing", "<b>Rush same-day order and install, <code>EVT-000925<\/code>, paid and completed in full 2026-09-12.<\/b> Alexander rejected Thornquist's standard bespoke lead time outright and paid for immediate turnaround instead: Thornquist pulled every matching piece it could from its own showroom/warehouse floor and two subcontracted premium retailers across the city, freighted everything in same-day, and ran a full multi-crew install through the day into the evening. Room designations: the primary bedroom furnished as the master; a second of the five bedrooms as a standing guest bedroom; a third converted to a home gym (flooring, rack, free weights, bench, cardio — functional equipment, not wood-furniture styled); the study furnished; the room adjoining the study converted into a library — not custom built-in millwork (physically impossible same-day) but floor-to-ceiling massive-oak modular shelving units, stacked and anchored on site, a rolling ladder, reading furniture, one large central table. General living space furnished to match. Two of the five bedrooms remain undesignated, empty. <b>Trade-off, stated plainly rather than hidden: sourced from in-stock inventory across three vendors rather than one bespoke commission, so finish and grain match closely but not perfectly piece to piece — Alexander was told this up front and didn't care.<\/b> Fully furnished and installed by tonight, <b>2026-09-12.<\/b> Total <b>$748,000, paid in full same-day<\/b> — no deposit/balance split; the premium over the original $420,000 custom quote is entirely the cost of buying out available stock and paying overtime/rush freight instead of waiting on a build."], ["note", "<b>Set as rift anchor thirty-one, <code>EVT-000926<\/code><\/b> — uncontested, free, no roll (Section 6.2's no-roll zone for unambiguous ground he owns outright). <b>The library is no longer empty (<code>EVT-000946<\/code>, 2026-09-13).<\/b> A nine-city book-buying circuit — Chicago, Boston, New York, DC, Miami, Houston, Dallas, Seattle, San Francisco, each reached by anchored rift-step — filled the modular oak shelving floor to ceiling: history, Gate/dungeon/monster field literature, hunter-trade texts, astrology, spaceflight, physics, mathematics, fantasy and science fiction, and a run of genuine rarities picked up along the way (a handful of true first editions and out-of-print scholarly volumes, the best finds in Boston and San Francisco). Total <b>≈$340,000<\/b>, cash. Kane's line about the room being 'the saddest one' until there were books in it no longer applies."]], "photos": ["places/Winnetka_House_ENT-000270.png", "places/Winnetka_House_ENT-000270_dusk.png"]}, {"id": "ENT-000264", "name": "the Denver facility", "kind": "containment facility, purchased", "status": "active", "tenure": "Owned", "price": "$2,800,000", "location": "Outside Denver, Colorado — exact site address not yet established. Decommissioned BGM regional holding facility, empty since a budget cut roughly two years prior to purchase.", "ownership": "Bought outright, $2,800,000, by internal federal transfer through Sorcha Bellweather's office, 2026-09-09 (<code>EVT-000900<\/code>). A retrofit to the <code>OBJ-49<\/code> no-interior-access spec was commissioned the same day for $9,200,000, estimated 6-8 weeks. Restated here from this record's own condition and situation, 2026-09-23 (real date), so the ownership reads in one field like the other holdings.", "summary": "Structural shell and power intact, built for staffed access (doors, interior monitoring already installed).", "details": [["condition", "Structural shell and power intact, built for staffed access (doors, interior monitoring already installed). Purchase price $2,800,000 (internal federal transfer via Sorcha Bellweather's office, <code>EVT-000900<\/code>). Usable immediately in its current staffed-facility-grade form; not yet fail-closed. <b>Furnished 2026-09-11 (<code>EVT-000918<\/code>)<\/b> — a bed, space heater, and desk carried in from the Rockwell bay via the dimensional inventory, the first personal furnishing the site has had."], ["situation", "<b>Purchased 2026-09-09 (<code>EVT-000900<\/code>), retrofit commissioned same day.<\/b> Sorcha Bellweather is retrofitting it to the <code>OBJ-49<\/code> no-interior-access spec — sealing existing access points, rebuilding the seal array — for $9,200,000, estimated <b>6-8 weeks<\/b>. <b>Existing on-site interior monitoring (self-contained servers) is being retained rather than stripped<\/b>, pending Sorcha's verification that it is genuinely air-gapped with no external network dependency. Alexander may use the facility as-is during the retrofit; Sorcha will flag which parts are safe to rely on as fail-closed and which aren't while work is ongoing. Title expected to clear within the week per Sorcha's own estimate."]], "photos": []}, {"id": "ENT-000243", "name": "the Rockwell Street bay", "kind": "private leased storage bay", "status": "active", "tenure": "Leased", "price": "$9,000.00", "location": "4417 South Rockwell, second bay from the street end, Chicago.", "ownership": "Leased by Alexander, cash, month-to-month, no name on any paperwork beyond the alias <code>Arthur Peverell<\/code> given to the security consultation, not to Priest. First and last month paid, <code>EVT-000798<\/code>, $9,000.00.", "summary": "Empty concrete, 223 m² (40 ft × 60 ft), 4.", "details": [["condition", "Empty concrete, 223 m² (40 ft × 60 ft), 4.9 m (16 ft) ceiling, one bare outlet, no water, no office space. Roll-up door, two keys and a gate code held by Alexander."], ["contents", "<b>Corrected <code>EVT-000918<\/code> — a stale field, repaired on sight.<\/b> Furnished for Alexander's own use since 2026-09-02 (<code>EVT-000826<\/code>): a bed, a space heater, and a desk, $3,000, bought the last time this disagreement with Owen sent him here. The bounded portion of the Ninth Quiet library once materialized here for study (<code>EVT-000800<\/code>) has since been fully returned to Tolo's own care on the far side — he was genuinely reading it, not merely holding it (per his own account, <code>160_CAMPAIGN_CHRONICLE.md<\/code>) — so nothing of it remains banked here. <b>2026-09-11 21:00 (<code>EVT-000918<\/code>): the furniture withdrawn into the dimensional inventory and carried on to the Denver facility.<\/b> Empty concrete again as of this Event, by Alexander's own choice rather than a gap in the record."], ["note", "Rift anchor fourteen, set <code>EVT-000798<\/code>, free and uncontested — a place he unambiguously has reason to hold. Praetorian Facility Security site assessment booked Friday 2026-08-28, 10:00, for a physical hardening retrofit (no monitoring, no remote lockdown, mechanical/electromagnetic self-contained sealing only, per Alexander's own terms)."]], "photos": []}]}}/*__END__*/;
+// Wealth: the three fund figures, then every holding with its photos, terms and record.
+function money(n, cents){ return Number(n).toLocaleString("en-US", {minimumFractionDigits: cents ? 2 : 0, maximumFractionDigits: cents ? 2 : 0}); }
+function wealthOf(W){
+  if (!W) return "";
+  const props = (W.properties || []).map((p, i) => `
+    <article class="prop">
+      <div class="photo" data-prop="${i}">${p.photos.length
+        ? `<a href="${p.photos[0]}" target="_blank" rel="noopener"><img src="${p.photos[0]}" alt="${p.name}" loading="lazy"></a>` +
+          (p.photos.length > 1 ? `<div class="alt">${p.photos.map((s, k) => `<button type="button" aria-label="Photo ${k + 1}" aria-pressed="${k === 0}" data-src="${s}"></button>`).join("")}</div>` : "")
+        : `<span class="none">No photo yet</span>`}</div>
+      <div class="body">
+        <div class="top"><h4>${p.name}</h4><span class="tenure ${p.tenure.toLowerCase()}">${p.tenure}</span></div>
+        <div class="where">${p.kind ? p.kind + " · " : ""}${p.location}</div>
+        ${p.price ? `<div class="price">${p.tenure === "Leased" ? "Lease paid" : "Bought for"} ${p.price}</div>` : ""}
+        <div class="sum">${p.summary}</div>
+        <details><summary>Terms and full record</summary>
+          <div class="f"><span class="l">Ownership</span><span class="v">${p.ownership}</span></div>
+          ${p.details.map(([k, v]) => `<div class="f"><span class="l">${k}</span><span class="v">${v}</span></div>`).join("")}
+        </details>
+      </div>
+    </article>`).join("");
+  return `<div class="wealth">
+    <h3>Wealth <small>as of ${W.asOf}</small></h3>
+    <div class="funds">
+      <div class="fund gold"><b>${money(W.gold)} g</b><span>System gold</span></div>
+      <div class="fund cash"><b>$${money(W.cash, true)}</b><span>Cash in the bank</span></div>
+      <div class="fund"><b>$${money(W.pending, true)}</b><span>Pending payouts · ${W.pendingCount}</span></div>
+    </div>
+    ${props ? `<h3>Properties <small>${W.properties.length}</small></h3><div class="props">${props}</div>` : ""}
+  </div>`;
+}
+
 (function(){
   const el = document.getElementById("profile");
   if (!P.name) { el.remove(); return; }
@@ -238,12 +303,19 @@ const P = /*__PROFILE_DATA__*/{"name": "Alexander Pendragon", "rank": "S", "cls"
         ${P.aspiration ? `<div><span class="l">Aspiration</span><span>${P.aspiration}</span></div>` : ""}
         ${P.titles.length ? `<div><span class="l">Titles</span><span class="titles">${P.titles.map(x => `<span>${x}</span>`).join("")}</span></div>` : ""}
       </div>
-    </div>`;
+    </div>
+    ${wealthOf(P.wealth)}`;
   el.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => {
     const src = P.portraits[b.dataset.view];
     document.getElementById("medImg").src = src;
     document.getElementById("medLink").href = src;
     el.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  }));
+  el.querySelectorAll(".prop .alt button").forEach(b => b.addEventListener("click", () => {
+    const box = b.closest(".photo");
+    box.querySelector("img").src = b.dataset.src;
+    box.querySelector("a").href = b.dataset.src;
+    box.querySelectorAll(".alt button").forEach(x => x.setAttribute("aria-pressed", x === b));
   }));
 })();
 </script>

@@ -18,6 +18,7 @@ provenance:
   real_date: "2026-09-23"
 role: canonical ledger
 scope: campaign
+# Out of play, 2026-09-23 (real date): ENT-000343 minted, the Detroit HQ campus (Place), at the player's direction; facts restated from EVT-001068/001073/001086/001107/001162. No Event moved.
 # This save: EVT-001162, EVT-001163, EVT-001164, EVT-001165, EVT-001166, EVT-001167, EVT-001168 (Doc Haldane
 #   ENT-000292 -- the meeting, the three-point rule, mandatory mender training; Anjali Desai ENT-000288 --
 #   the growing list; Nathaniel Cole ENT-000287, disposition authored, first in-person meeting; Trevor
@@ -1656,6 +1657,7 @@ aliases:
 canonical_state:
   location: "Outside Denver, Colorado — exact site address not yet established. Decommissioned BGM regional holding facility, empty since a budget cut roughly two years prior to purchase."
   condition: "Structural shell and power intact, built for staffed access (doors, interior monitoring already installed). Purchase price $2,800,000 (internal federal transfer via Sorcha Bellweather's office, `EVT-000900`). Usable immediately in its current staffed-facility-grade form; not yet fail-closed. **Furnished 2026-09-11 (`EVT-000918`)** — a bed, space heater, and desk carried in from the Rockwell bay via the dimensional inventory, the first personal furnishing the site has had."
+  ownership: "Bought outright, $2,800,000, by internal federal transfer through Sorcha Bellweather's office, 2026-09-09 (`EVT-000900`). A retrofit to the `OBJ-49` no-interior-access spec was commissioned the same day for $9,200,000, estimated 6-8 weeks. Restated here from this record's own condition and situation, 2026-09-23 (real date), so the ownership reads in one field like the other holdings."
   situation: "**Purchased 2026-09-09 (`EVT-000900`), retrofit commissioned same day.** Sorcha Bellweather is retrofitting it to the `OBJ-49` no-interior-access spec — sealing existing access points, rebuilding the seal array — for $9,200,000, estimated **6-8 weeks**. **Existing on-site interior monitoring (self-contained servers) is being retained rather than stripped**, pending Sorcha's verification that it is genuinely air-gapped with no external network dependency. Alexander may use the facility as-is during the retrofit; Sorcha will flag which parts are safe to rely on as fail-closed and which aren't while work is ongoing. Title expected to clear within the week per Sorcha's own estimate."
 ```
 
@@ -4450,6 +4452,36 @@ canonical_state:
   photo_alt: "assets/places/Winnetka_House_ENT-000270_dusk.png"
   furnishing: "**Rush same-day order and install, `EVT-000925`, paid and completed in full 2026-09-12.** Alexander rejected Thornquist's standard bespoke lead time outright and paid for immediate turnaround instead: Thornquist pulled every matching piece it could from its own showroom/warehouse floor and two subcontracted premium retailers across the city, freighted everything in same-day, and ran a full multi-crew install through the day into the evening. Room designations: the primary bedroom furnished as the master; a second of the five bedrooms as a standing guest bedroom; a third converted to a home gym (flooring, rack, free weights, bench, cardio — functional equipment, not wood-furniture styled); the study furnished; the room adjoining the study converted into a library — not custom built-in millwork (physically impossible same-day) but floor-to-ceiling massive-oak modular shelving units, stacked and anchored on site, a rolling ladder, reading furniture, one large central table. General living space furnished to match. Two of the five bedrooms remain undesignated, empty. **Trade-off, stated plainly rather than hidden: sourced from in-stock inventory across three vendors rather than one bespoke commission, so finish and grain match closely but not perfectly piece to piece — Alexander was told this up front and didn't care.** Fully furnished and installed by tonight, **2026-09-12.** Total **$748,000, paid in full same-day** — no deposit/balance split; the premium over the original $420,000 custom quote is entirely the cost of buying out available stock and paying overtime/rush freight instead of waiting on a build."
   note: "**Set as rift anchor thirty-one, `EVT-000926`** — uncontested, free, no roll (Section 6.2's no-roll zone for unambiguous ground he owns outright). **The library is no longer empty (`EVT-000946`, 2026-09-13).** A nine-city book-buying circuit — Chicago, Boston, New York, DC, Miami, Houston, Dallas, Seattle, San Francisco, each reached by anchored rift-step — filled the modular oak shelving floor to ceiling: history, Gate/dungeon/monster field literature, hunter-trade texts, astrology, spaceflight, physics, mathematics, fantasy and science fiction, and a run of genuine rarities picked up along the way (a handful of true first editions and out-of-print scholarly volumes, the best finds in Boston and San Francisco). Total **≈$340,000**, cash. Kane's line about the room being 'the saddest one' until there were books in it no longer applies."
+```
+
+### ENT-000343 — the Detroit HQ campus
+
+The Pendragon Guild's headquarters in Detroit, bought with Alexander's own cash and home to the travel hub that joins every office.
+
+```yaml
+id: ENT-000343
+canonical_record: REC-000077
+schema_version: "0.1.7"
+status: active
+provenance:
+  source: EVT-001073
+  game_date: "2026-09-23T16:00:00-05:00"
+  real_date: "2026-09-23"
+type: Place
+subtype: guild headquarters campus, purchased
+scope: campaign
+lifecycle: active
+aliases:
+  - name: "the Detroit HQ campus"
+    quality: current
+  - name: "Detroit HQ"
+    quality: current
+canonical_state:
+  location: "Detroit, Michigan — the Pendragon Guild's headquarters campus; exact street address not yet established."
+  condition: "A multi-floor headquarters campus. The restricted third floor, an abandoned office buildout, is the guild's travel hub: 20 rooms live, one per current or near-term office, with capacity for 40, access keyed through reception, and camera coverage with night vision and audio on every room and common area. Fourteen standing Gate Walker tunnels join it to the branch offices (`EVT-001107`). A basement server room; sitewide fingerprint-only access, no cards (`EVT-001086`)."
+  ownership: "Bought outright for $90,000,000 from Alexander's own cash — the guild has no treasury yet — found and closed through Delia Okonjo (`ENT-000248`, `EVT-001068`), closing 2026-09-23 (`EVT-001073`). Held as the Pendragon Guild's headquarters."
+  situation: "Staffed: Nathaniel Cole (`ENT-000287`) heads security, Anjali Desai (`ENT-000288`) the front office, and Wendell Brooks (`ENT-000302`) is the travel hub's porter. Security and IT buildout ordered 2026-09-24 (`EVT-001086`); the menders' meeting held here 2026-09-30 (`EVT-001162`)."
+  note: "An earlier session misidentified the campus as Denver; it has been Detroit throughout, and the Denver site is Alexander's own containment facility (`ENT-000264`), corrected at `EVT-001086`. The HQ lobby is a rift anchor. Minted 2026-09-23 (real date), outside play, at the player's direction, so the holding renders on the ledger index; every fact above is restated from the cited Events."
 ```
 
 ### ENT-000271 — Thornquist Bespoke Interiors

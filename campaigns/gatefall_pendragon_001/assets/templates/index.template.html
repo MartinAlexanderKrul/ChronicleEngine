@@ -153,6 +153,39 @@
     .lines div{grid-template-columns:1fr; gap:2px;}
     .vitals{grid-template-columns:repeat(2,minmax(0,1fr));}
   }
+
+  /* ---- Wealth: funds from 120's current_funds, holdings from Place records ---- */
+  .wealth{grid-column:1 / -1; border-top:1px solid var(--border); padding-top:18px; display:flex; flex-direction:column; gap:14px; min-width:0;}
+  .wealth h3{font-family:"Chakra Petch",sans-serif; font-size:1.05rem; margin:0; display:flex; align-items:baseline; gap:10px;}
+  .wealth h3 small{font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.06em; color:var(--text-dim); font-weight:400;}
+  .funds{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px;}
+  .fund{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; flex-direction:column; gap:3px; min-width:0;}
+  .fund b{font-family:"IBM Plex Mono",monospace; font-size:1.15rem; font-weight:600; font-variant-numeric:tabular-nums; overflow-wrap:anywhere;}
+  .fund.gold b{color:var(--amber);} .fund.cash b{color:var(--accent);}
+  .fund span{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+  .props{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px;}
+  .prop{background:var(--surface2); border:1px solid var(--border); border-radius:10px; overflow:hidden; display:flex; flex-direction:column; min-width:0;}
+  .prop .photo{aspect-ratio:16 / 9; background:var(--bg); display:grid; place-items:center; position:relative; overflow:hidden;}
+  .prop .photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .prop .photo .none{font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+  .prop .photo .alt{position:absolute; right:8px; bottom:8px; display:flex; gap:4px;}
+  .prop .photo .alt button{width:10px; height:10px; border-radius:50%; border:1px solid #fff; background:rgba(255,255,255,.35); padding:0; cursor:pointer;}
+  .prop .photo .alt button[aria-pressed="true"]{background:#fff;}
+  .prop .body{padding:12px 14px; display:flex; flex-direction:column; gap:7px;}
+  .prop .top{display:flex; justify-content:space-between; gap:8px; align-items:baseline;}
+  .prop h4{font-family:"Chakra Petch",sans-serif; font-size:1rem; margin:0;}
+  .prop .tenure{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:5px; white-space:nowrap;
+    color:var(--accent); background:var(--accent-soft); border:1px solid color-mix(in srgb, var(--accent) 40%, transparent);}
+  .prop .tenure.leased{color:var(--text-dim); background:transparent; border-color:var(--border);}
+  .prop .where{font-size:.78rem; color:var(--text-dim); line-height:1.45;}
+  .prop .price{font-family:"IBM Plex Mono",monospace; font-size:.8rem; color:var(--amber); font-weight:600;}
+  .prop .sum{font-size:.8rem; line-height:1.5;}
+  .prop details summary{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; color:var(--accent);}
+  .prop details .f{margin-top:8px; display:flex; flex-direction:column; gap:2px;}
+  .prop details .l{font-family:"IBM Plex Mono",monospace; font-size:.58rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-dim);}
+  .prop details .v{font-size:.78rem; line-height:1.5; overflow-wrap:anywhere;}
+  .prop code{font-family:"IBM Plex Mono",monospace; font-size:.72rem;}
+  @media (max-width:640px){ .funds{grid-template-columns:1fr;} .wealth{text-align:left;} }
 </style>
 </head>
 <body>
@@ -212,6 +245,38 @@
 <script>
 // Generated from 100_CHARACTER_SHEET.md on every ledger run; nothing here is typed by hand.
 const P = /*__PROFILE_DATA__*/{}/*__END__*/;
+// Wealth: the three fund figures, then every holding with its photos, terms and record.
+function money(n, cents){ return Number(n).toLocaleString("en-US", {minimumFractionDigits: cents ? 2 : 0, maximumFractionDigits: cents ? 2 : 0}); }
+function wealthOf(W){
+  if (!W) return "";
+  const props = (W.properties || []).map((p, i) => `
+    <article class="prop">
+      <div class="photo" data-prop="${i}">${p.photos.length
+        ? `<a href="${p.photos[0]}" target="_blank" rel="noopener"><img src="${p.photos[0]}" alt="${p.name}" loading="lazy"></a>` +
+          (p.photos.length > 1 ? `<div class="alt">${p.photos.map((s, k) => `<button type="button" aria-label="Photo ${k + 1}" aria-pressed="${k === 0}" data-src="${s}"></button>`).join("")}</div>` : "")
+        : `<span class="none">No photo yet</span>`}</div>
+      <div class="body">
+        <div class="top"><h4>${p.name}</h4><span class="tenure ${p.tenure.toLowerCase()}">${p.tenure}</span></div>
+        <div class="where">${p.kind ? p.kind + " · " : ""}${p.location}</div>
+        ${p.price ? `<div class="price">${p.tenure === "Leased" ? "Lease paid" : "Bought for"} ${p.price}</div>` : ""}
+        <div class="sum">${p.summary}</div>
+        <details><summary>Terms and full record</summary>
+          <div class="f"><span class="l">Ownership</span><span class="v">${p.ownership}</span></div>
+          ${p.details.map(([k, v]) => `<div class="f"><span class="l">${k}</span><span class="v">${v}</span></div>`).join("")}
+        </details>
+      </div>
+    </article>`).join("");
+  return `<div class="wealth">
+    <h3>Wealth <small>as of ${W.asOf}</small></h3>
+    <div class="funds">
+      <div class="fund gold"><b>${money(W.gold)} g</b><span>System gold</span></div>
+      <div class="fund cash"><b>$${money(W.cash, true)}</b><span>Cash in the bank</span></div>
+      <div class="fund"><b>$${money(W.pending, true)}</b><span>Pending payouts · ${W.pendingCount}</span></div>
+    </div>
+    ${props ? `<h3>Properties <small>${W.properties.length}</small></h3><div class="props">${props}</div>` : ""}
+  </div>`;
+}
+
 (function(){
   const el = document.getElementById("profile");
   if (!P.name) { el.remove(); return; }
@@ -238,12 +303,19 @@ const P = /*__PROFILE_DATA__*/{}/*__END__*/;
         ${P.aspiration ? `<div><span class="l">Aspiration</span><span>${P.aspiration}</span></div>` : ""}
         ${P.titles.length ? `<div><span class="l">Titles</span><span class="titles">${P.titles.map(x => `<span>${x}</span>`).join("")}</span></div>` : ""}
       </div>
-    </div>`;
+    </div>
+    ${wealthOf(P.wealth)}`;
   el.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => {
     const src = P.portraits[b.dataset.view];
     document.getElementById("medImg").src = src;
     document.getElementById("medLink").href = src;
     el.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  }));
+  el.querySelectorAll(".prop .alt button").forEach(b => b.addEventListener("click", () => {
+    const box = b.closest(".photo");
+    box.querySelector("img").src = b.dataset.src;
+    box.querySelector("a").href = b.dataset.src;
+    box.querySelectorAll(".alt button").forEach(x => x.setAttribute("aria-pressed", x === b));
   }));
 })();
 </script>

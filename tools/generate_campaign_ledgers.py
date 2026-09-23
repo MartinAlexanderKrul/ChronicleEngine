@@ -170,6 +170,39 @@ def parse_skill(row, ents):
     return rec
 
 
+# Mastery (Profile Section 7.4): five levels, three qualifying scenes each. The
+# structured tracked_counters are authoritative where a skill has them; the
+# skill's own "mastery progress N/3" is read where it does not; a skill that
+# states neither shows its level alone rather than an invented fraction.
+MASTERY_LEVELS = ["Novice", "Practiced", "Adept", "Expert", "Master"]
+PROGRESS_TEXT = re.compile(r"mastery progress\**\s*([0-2])\s*/\s*3", re.I)
+
+
+def mastery_track(row, name, counters):
+    slug = re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
+    level = counters.get("skills.%s.mastery_level" % slug)
+    if not isinstance(level, int):
+        # The stars decide; the word beside them is not always the profile's own
+        # ("Apprentice" sits beside two stars on taught skills).
+        head = " · ".join(row.split(" · ")[:2])
+        stars = re.search("([" + chr(0x2605) + "]+)[" + chr(0x2606) + "]*", head)
+        word = re.search(_B + "(" + "|".join(MASTERY_LEVELS) + ")" + _E, head)
+        level = (len(stars.group(1)) if stars else
+                 MASTERY_LEVELS.index(word.group(1)) + 1 if word else None)
+    if level is None:
+        return {"lvl": 0}
+    prog = counters.get("skills.%s.mastery_progress" % slug)
+    if not isinstance(prog, int):
+        m = PROGRESS_TEXT.search(row)
+        prog = int(m.group(1)) if m else None
+    out = {"lvl": level, "prog": 3 if level >= 5 else prog}
+    for key, field in (("uses", "successful_uses"), ("scenes", "qualifying_scenes_total")):
+        value = counters.get("skills.%s.%s" % (slug, field))
+        if isinstance(value, int):
+            out[key] = value
+    return out
+
+
 # ---------------------------------------------------------------- inventory --
 # Canon files items under six storage lists (keys, consumables, special, gear,
 # custody, materials). The view splits `gear` into Weapon/Armor/Accessory/Tool,
@@ -588,6 +621,66 @@ def build_guild(camp, npcs, protagonist):
     }, failures
 
 
+# ---------------------------------------------------------------- wealth --
+# Funds come from 120's `current_funds` block, which the repository validator
+# holds to the ledger's own provenance on every save. Its prose notes are not
+# YAML-safe as a whole, so the four figures are read by name. Properties are the
+# Place records in the NPC ledger that carry an `ownership` field.
+FUND_FIELDS = {"cash": "cash_usd", "gold": "gold", "pending": "pending_payouts_usd",
+               "pendingCount": "pending_payout_count"}
+
+
+def build_wealth(camp, assets):
+    failures = []
+    ledger = io.open(os.path.join(camp, "120_INVENTORY_AND_OWNERSHIP.md"), encoding="utf-8").read()
+    block = re.search(r"^## Current Funds\s*$.*?```yaml\ncurrent_funds:\n(.*?)\n```", ledger, re.M | re.S)
+    funds = {}
+    if not block:
+        failures.append("120_INVENTORY_AND_OWNERSHIP.md has no Current Funds block")
+    else:
+        for key, field in FUND_FIELDS.items():
+            m = re.search(r"^  %s:\s*([0-9.]+)\s*$" % field, block.group(1), re.M)
+            if not m:
+                failures.append("current_funds has no %s" % field)
+                continue
+            funds[key] = float(m.group(1)) if "." in m.group(1) else int(m.group(1))
+        asof = re.search(r'^  as_of_game_date:\s*"?([^"\n]+)"?', block.group(1), re.M)
+        funds["asOf"] = asof.group(1)[:10] if asof else ""
+
+    properties = []
+    text = io.open(os.path.join(camp, "130_NPCS_AND_FACTIONS.md"), encoding="utf-8").read()
+    for raw in re.findall(r"```yaml\n(.*?)\n```", text, re.S):
+        if "\n  ownership:" not in raw:
+            continue
+        d = yaml.safe_load(raw)
+        state = d.get("canonical_state") or {}
+        if d.get("type") != "Place" or not state.get("ownership"):
+            continue
+        own = str(state["ownership"])
+        photos = []
+        for key in ("photo", "photo_alt"):
+            if state.get(key):
+                disk = os.path.join(camp, state[key])
+                if not os.path.exists(disk):
+                    failures.append("%s %s points at a missing file: %s" % (d["id"], key, state[key]))
+                photos.append(os.path.relpath(disk, assets).replace(os.sep, "/"))
+        price = re.search(r"\$[0-9]{1,3}(?:,[0-9]{3})*(?:\.[0-9]+)?", own)
+        properties.append({
+            "id": d["id"], "name": escape(str((d.get("aliases") or [{}])[0].get("name") or d["id"])),
+            "kind": escape(str(d.get("subtype") or "")), "status": d.get("lifecycle") or "",
+            "tenure": "Leased" if re.search(r"(?i)\blease", own) else "Owned",
+            "price": price.group(0) if price else "",
+            "location": mdi(escape(str(state.get("location") or ""))),
+            "ownership": mdi(escape(own)),
+            "summary": summary_line(state.get("condition"), 320),
+            "details": [[k.replace("_", " "), npc_value(state[k])] for k in
+                        ("condition", "furnishing", "contents", "situation", "note") if state.get(k)],
+            "photos": photos,
+        })
+    properties.sort(key=lambda p: (p["tenure"] != "Owned", -float(p["price"].strip("$").replace(",", "") or 0)))
+    return dict(funds, properties=properties), failures
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--campaign", required=True)
@@ -606,9 +699,12 @@ def main():
 
     ents = entity_names(os.path.join(camp, "130_NPCS_AND_FACTIONS.md"))
     skills_rows, notes = split_rows(state.get("skills_known", []))
+    counters = {c["path"]: c.get("current_value") for c in state.get("tracked_counters", []) or []
+                if isinstance(c, dict) and "path" in c}
     parsed, missing = [], []
     for row in skills_rows:
         rec = parse_skill(row, ents)
+        rec.update(mastery_track(row, rec["name"], counters))
         fn = fn_of.get(rec["name"])
         if fn is None:
             missing.append(rec["name"]); continue
@@ -738,6 +834,14 @@ def main():
                       % (field, bearer[field]), file=sys.stderr)
                 return 1
             pics[key] = os.path.relpath(disk, assets).replace(os.sep, "/")
+    wealth, failures = build_wealth(camp, assets)
+    if failures:
+        print("Ledger generation FAILED: the medallion's wealth cannot be rendered faithfully:", file=sys.stderr)
+        for f in failures:
+            print("  - " + f, file=sys.stderr)
+        return 1
+    print("wealth: $%s cash, %s gold, %d properties"
+          % ("{:,.2f}".format(wealth["cash"]), "{:,}".format(wealth["gold"]), len(wealth["properties"])))
     titles = sysst.get("title") or []
     profile = {
         "name": (doc.get("aliases") or [{}])[0].get("name", "Alexander Pendragon"),
@@ -748,6 +852,7 @@ def main():
         "titles": [mdi(escape(str(x))) for x in (titles if isinstance(titles, list) else [titles])],
         "now": summary_line(bearer.get("location")), "appearance": summary_line(bearer.get("appearance")),
         "personality": summary_line(bearer.get("personality")), "aspiration": summary_line(bearer.get("aspiration")),
+        "wealth": wealth,
     }
     ok = emit("index", "index.template.html",
               {"PROFILE_DATA": json.dumps(profile, ensure_ascii=False).replace("</", "<\\/")}) and ok

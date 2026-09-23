@@ -118,6 +118,17 @@
     border:1px solid color-mix(in srgb, var(--rk) 45%, transparent);
   }
   .card .mastery{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--text-dim);}
+  /* Mastery track (Profile Section 7.4): five levels, three qualifying scenes each. */
+  .track{display:flex; flex-direction:column; gap:5px;}
+  .track .row{display:flex; justify-content:space-between; gap:8px; font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--text-dim);}
+  .track .row b{color:var(--text); font-weight:600;}
+  .track .row .next{color:var(--accent);}
+  .track .segs{display:grid; grid-template-columns:repeat(5,1fr); gap:3px;}
+  .track .seg{height:7px; border-radius:3px; background:var(--surface2); border:1px solid var(--border); overflow:hidden;}
+  .track .seg i{display:block; height:100%; background:var(--accent);}
+  .card.master .track .seg i{background:var(--amber);}
+  .track .counts{font-family:"IBM Plex Mono",monospace; font-size:.62rem; color:var(--text-dim);}
+  .track.none .row{font-style:italic;}
   .card .desc{font-size:.8rem; color:var(--text); line-height:1.5;}
   .card .figures{
     display:flex; flex-direction:column; gap:6px;
@@ -230,6 +241,25 @@ const groupsEl = document.getElementById("groups");
 function rankOf(r){ const m = (r||"").match(/[SABCDE]/); return m ? m[0] : null; }
 function isMaster(s){ return /Master/i.test(s.mastery||""); }
 
+// A mastery-tracked skill fills one segment per level; the segment it is
+// working on fills a third per qualifying scene. Progress the record does not
+// state is not guessed: the bar then shows the level alone.
+const LEVELS = ["Novice","Practiced","Adept","Expert","Master"];
+function trackOf(s){
+  if (!s.lvl) return `<div class="track none"><div class="row"><span>${s.mastery && s.mastery !== "—" ? s.mastery : "No mastery track"}</span></div></div>`;
+  const known = typeof s.prog === "number";
+  const segs = LEVELS.map((_, k) => {
+    const fill = k < s.lvl - 1 || s.lvl >= 5 ? 100 : (k === s.lvl - 1 ? 100 : (k === s.lvl && known ? Math.round(s.prog / 3 * 100) : 0));
+    return `<span class="seg"><i style="width:${fill}%"></i></span>`;
+  }).join("");
+  const next = s.lvl >= 5 ? `<span class="next">complete</span>`
+    : known ? `<span class="next">${s.prog} / 3 → ${LEVELS[s.lvl]}</span>` : `<span>next: ${LEVELS[s.lvl]}</span>`;
+  const counts = [typeof s.uses === "number" ? `${s.uses} uses` : "", typeof s.scenes === "number" ? `${s.scenes} qualifying scenes` : ""].filter(Boolean).join(" · ");
+  return `<div class="track" title="${s.mastery}"><div class="row"><span><b>${LEVELS[s.lvl - 1]}</b> · level ${s.lvl} of 5</span>${next}</div>
+    <div class="segs" role="img" aria-label="Mastery level ${s.lvl} of 5${known && s.lvl < 5 ? `, ${s.prog} of 3 scenes toward ${LEVELS[s.lvl]}` : ""}">${segs}</div>
+    ${counts ? `<div class="counts">${counts}</div>` : ""}</div>`;
+}
+
 // Mana is shown on every card. An explicit s.mana wins (multi-tier costs,
 // class abilities priced outside the Mana-N pattern); otherwise it is read
 // straight off the effect text; a skill that says "Passive" pays nothing;
@@ -311,7 +341,7 @@ function render(filterText, filterRank, filterProv){
               <span class="badge kind ${kindOf(i)}">${KIND_LABEL[kindOf(i)]}</span>
               ${isMaster(i) ? `<span class="badge terminal">Master</span>` : ""}
             </div>
-            <div class="mastery">${i.mastery}</div>
+            ${trackOf(i)}
             <div class="desc">${i.desc}</div>
             <div class="figures">
               <div class="box mana"><span class="lbl">Mana</span><span class="val">${manaOf(i)}</span></div>

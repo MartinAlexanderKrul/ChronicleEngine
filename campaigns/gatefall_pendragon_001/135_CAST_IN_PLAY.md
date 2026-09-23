@@ -103,6 +103,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000233` | Renata Okonkwo-Vance | BGM National official | active | **The Averlon Room, 200 N Michigan Ave, Chicago — 2026-08-27 19… | `REL-000101` |
 | `ENT-000243` | the Rockwell Street bay | private leased storage bay | active | 4417 South Rockwell, second bay from the street end, Chicago. | — |
 | `ENT-000270` | Lakeside Mansion | private residence, owned | active | Winnetka, Illinois — direct Lake Michigan frontage, North Shore… | — |
+| `ENT-000343` | the Detroit HQ campus | guild headquarters campus, purchased | active | Detroit, Michigan — the Pendragon Guild's headquarters campus | — |
 | `ENT-000271` | Thornquist Bespoke Interiors | custom furniture / interior build firm | active | Chicago | — |
 | `ENT-000272` | the Libeň object | unidentified artifact | active | **Left in Sevrin's custody, the far side | — |
 | `ENT-000244` | Priest | landlord / grey-market-adjacent | active | The Rockwell Street yard, Chicago | — |
@@ -380,7 +381,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 184. Protagonist relationships: 45.
+- Entities: 185. Protagonist relationships: 45.
 - Characters: 156. Disposition authored in full: 102; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

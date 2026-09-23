@@ -309,7 +309,7 @@ skills and items are read from `100_CHARACTER_SHEET.md`, NPCs from `130` and the
 (secrets, agendas and knowledge left out), the guild from `151`, `096` and each NPC's `affiliation`.
 An edit made on the published artifact does not travel back and is overwritten.
 
-`/save` rebuilds all four after the live ledgers are written and before the snapshot is taken:
+`/save` rebuilds all four, and `index.html`, after the live ledgers are written and before the snapshot is taken:
 
 ```
 python tools/generate_campaign_ledgers.py --campaign gatefall_pendragon_001

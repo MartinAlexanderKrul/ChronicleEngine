@@ -12,6 +12,10 @@
 
 Released 2026-08-01 after Capability Validation, the Gatefall: Pendragon Prototype Campaign, and the Engine Postmortem completed under Decision 048.
 
+## 2026-09-23 — The index is generated and opens on the bearer's medallion; print buttons retired
+
+**Refinement under Decision 069, milestone 0.4.3.** Legs 1 and 2 clean; leg 3 not met, as for the entries below — the same campaign-scoped generator, one more output. **At the player's direction:** `index.html` moves to `assets/templates/index.template.html` and is now emitted by the generator, opening on a profile of Alexander read from `100_CHARACTER_SHEET.md` (portrait, full and mundane views in a round medallion; Rank, class, level, age, Health, Mana, XP; where he is now; the first line of appearance, personality and aspiration; his titles). The page therefore carries no hand-typed figure, and a missing portrait fails the run by name. `ENT-000125` gains no field — it sits at its context-budget ceiling. Elias Kane's `affiliation` gains the board seat the chronicle already records (he "accompanied both stops as board"), and a board seat now sits beside a person's role rather than replacing it. The Print / Save as PDF button, its style and its handler are removed from the three ledgers that had one; print styling stays for the browser's own print. `090` **Derived Assets** names the index.
+
 ## 2026-09-23 — Every NPC gains an affiliation and a home, and the guild gets its own ledger
 
 **Refinement under Decision 069, milestone 0.4.3 (Capability Validation and Prototype Campaign).** Legs 1 and 2 clean: `010_ENGINE_RULES.md` and `011_ENGINE_DATA_MODEL.md` untouched. `affiliation` and `home` are two more `canonical_state` keys on one campaign's Character records, among the dozens that vary record to record; they are not a Data Model field and no other campaign owes them. **Leg 3**, as for the NPC ledger below, read as not met: a fourth campaign-scoped view, declared in `090`. If the owner reads the two keys as a schema change, they belong in `011` and this becomes foundational.

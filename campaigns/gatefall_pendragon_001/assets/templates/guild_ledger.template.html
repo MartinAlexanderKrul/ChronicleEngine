@@ -243,8 +243,8 @@ function face(p){
 }
 function rankBadge(r){ return r ? `<span class="rank" style="--rk:var(--rank-${r.toLowerCase()})">${r}</span>` : ""; }
 // Every named person links to their full record in the NPC ledger; the founder
-// has no NPC record, so his card links to his skill ledger instead.
-function hrefOf(p){ return p.id === "ENT-000125" ? "alexander_pendragon_skill_ledger.html" : `${NPC_LEDGER}?open=${p.id}`; }
+// has no NPC record, so his card links to his medallion on the index instead.
+function hrefOf(p){ return p.id === "ENT-000125" ? "index.html#profile" : `${NPC_LEDGER}?open=${p.id}`; }
 function person(p){
   return `<a class="person" href="${hrefOf(p)}">${face(p)}<span class="who">
     <span class="nm">${p.name}${rankBadge(p.rank)}</span><span class="post">${p.post || ""}</span></span></a>`;

@@ -809,7 +809,7 @@ aliases:
 canonical_state:
   portrait: "assets/portraits/Elias_Kane_ENT-000242.png"
   portrait_guild: "assets/portraits/Elias_Kane_ENT-000242_guild.png"
-  affiliation: "Pendragon Guild — second in command"
+  affiliation: "Pendragon Guild — second in command, board seat"
   home: "Chicago, USA"
   rank: "**S-Rank** — stated in his entry, 'the other Chicago S-Rank.' Resolved by that Rank under Section 13.1."
   age: "**32** — authored 2026-09-17, per the player's exact-age worldbuilding pass (`EVT-001020`)."

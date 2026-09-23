@@ -77,13 +77,6 @@
   }
   .chip[aria-pressed="true"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
   .chip:focus-visible{outline:2px solid var(--accent);}
-  #printBtn{
-    margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.04em;
-    padding:8px 14px; border-radius:8px; border:1px solid var(--accent); background:var(--accent);
-    color:var(--bg); cursor:pointer; font-weight:600;
-  }
-  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #printBtn{color:#08120f;}}
-  :root[data-theme="dark"] #printBtn{color:#08120f;}
   .filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; align-items:center;}
   #orgSelect{
     font-family:"IBM Plex Mono",monospace; font-size:.72rem; padding:6px 30px 6px 11px; border-radius:999px;
@@ -256,7 +249,6 @@
     <button class="chip" data-rank="C">C</button>
     <button class="chip" data-rank="D">D</button>
     <button class="chip" data-rank="E">E</button>
-    <button id="printBtn" type="button">Print / Save as PDF</button>
   </div>
 
   <div class="filters">
@@ -527,5 +519,4 @@ document.querySelectorAll(".chip[data-show]").forEach(chip => {
     render(document.getElementById("search").value, currentRank, currentShow);
   });
 });
-document.getElementById("printBtn").addEventListener("click", () => window.print());
 </script>

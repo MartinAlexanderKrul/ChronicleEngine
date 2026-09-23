@@ -517,10 +517,15 @@ def build_guild(camp, npcs, protagonist):
         who = {"id": n["id"], "name": n["name"], "rank": n["rank"], "portrait": n["portrait"], "post": detail}
         office = re.match(r"(?:member, )?(.+?) (?:office|dispatch crew)\b,? ?(.*)", detail)
         low = detail.lower()
-        if "second in command" in low or "senior combat lead" in low:
-            groups["leadership"].append(who)
+        # A board seat sits beside a person's role rather than replacing it:
+        # the second in command also holds one.
+        lead = "second in command" in low or "senior combat lead" in low
+        if "board seat" in low:
+            groups["board"].append(dict(who, post="board seat") if lead else who)
+        if lead:
+            groups["leadership"].append(dict(who, post=re.sub(r",? ?board seat", "", detail).strip(", ")))
         elif "board seat" in low:
-            groups["board"].append(who)
+            pass
         elif low.startswith("hq"):
             groups["hq"].append(dict(who, post=detail.split(",", 1)[-1].strip()))
         elif office and office.group(1) in by_office:
@@ -694,6 +699,34 @@ def main():
           % (guild["total"], len(guild["offices"]), guild["roster"] + 1, len(guild["cleared"])))
     ok = emit("alexander_pendragon_guild_ledger.html", "guild_ledger.template.html",
               {"GUILD_DATA": json.dumps(guild, ensure_ascii=False).replace("</", "<\\/")}) and ok
+
+    # The index opens on the bearer's medallion, read from the same sheet, so
+    # the one page that introduces the ledgers carries no hand-typed figure.
+    doc = yaml.safe_load(max(re.findall(r"```yaml\n(.*?)\n```", sheet_text, re.S), key=len))
+    bearer, sysst = doc["canonical_state"], doc["canonical_state"]["system_state"]
+    pool = lambda v: " / ".join("{:,}".format(int(x)) for x in str(v).split("/")) if v else ""
+    pics = {}
+    for key, field in (("portrait", "portrait"), ("full", "portrait_full"), ("mundane", "portrait_mundane")):
+        if bearer.get(field):
+            disk = os.path.join(camp, bearer[field])
+            if not os.path.exists(disk):
+                print("Ledger generation FAILED: the protagonist's %s points at a missing file: %s"
+                      % (field, bearer[field]), file=sys.stderr)
+                return 1
+            pics[key] = os.path.relpath(disk, assets).replace(os.sep, "/")
+    titles = sysst.get("title") or []
+    profile = {
+        "name": (doc.get("aliases") or [{}])[0].get("name", "Alexander Pendragon"),
+        "rank": sysst.get("system_rank", ""), "cls": sysst.get("class", ""),
+        "level": sysst.get("level", ""), "age": bearer.get("age", ""),
+        "health": pool(sysst.get("health")), "mana": pool(sysst.get("mana")), "xp": pool(sysst.get("xp")),
+        "role": "Founder, " + GUILD, "portraits": pics,
+        "titles": [mdi(escape(str(x))) for x in (titles if isinstance(titles, list) else [titles])],
+        "now": summary_line(bearer.get("location")), "appearance": summary_line(bearer.get("appearance")),
+        "personality": summary_line(bearer.get("personality")), "aspiration": summary_line(bearer.get("aspiration")),
+    }
+    ok = emit("index.html", "index.template.html",
+              {"PROFILE_DATA": json.dumps(profile, ensure_ascii=False).replace("</", "<\\/")}) and ok
 
     synced, copied, removed = sync_portraits(assets, mirror, args.check)
     ok = synced and ok

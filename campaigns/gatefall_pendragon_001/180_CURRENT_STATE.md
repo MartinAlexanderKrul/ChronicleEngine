@@ -78,7 +78,7 @@ subjects: []
 10. **Mender, artificer and sensor counts for Ranks E to B — RULED 2026-09-24 (real date).** `151_HUNTER_POPULATION_MODEL.md` Section 5 applies the `EVT-001134` per-Rank rates to current membership, with sensors at the A-Rank rate. Section 6 sets team composition: strikers are 5 at E and D and the legal minimum +1 at C, B and A (5, 9, 17), plus a mender and a sensor at every Rank; miners go with C, B and A teams only. Section 7 gives each office's Section 13.7.5 status. Closed.
 11. **The 63rd daily's penalty zone never fired.** It lapsed at midnight 2026-09-29/30 during beer night and no Section 8.3 transfer was run. Nothing is applied retroactively without a ruling.
 12. **Riftwalker's S rung, *an ally he touches may be sent with him*, read as each ally touched** (`EVT-001191`: Kane and Dario on one travelling step). A reading, not a new mechanic.
-13. **Do E and D teams carry miners?** `151` Section 6 says no; the player directed in play (`EVT-001188`) that every Gate is mined and every crew carries its miners. The five contract Gates were run with miners.
+13. **Do E and D teams carry miners? — RULED 2026-09-24 (real date).** Every Gate is mined. E and D teams mine it themselves and carry no extra miners; C, B and A teams always bring a mining team. Recorded in `151_HUNTER_POPULATION_MODEL.md` Section 6. Closed.
 14. **Artificer throughput.** Section 12.8 says only *days* at E-C and nothing above; the gear plan used 2/2/3/5/7 days a piece as a planning figure (`EVT-001191`).
 
 ```yaml

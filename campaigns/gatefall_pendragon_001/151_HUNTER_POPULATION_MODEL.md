@@ -78,7 +78,7 @@ Closes the open owner question on mender, artificer and sensor counts for Ranks 
 
 ## 6. Standing team composition (owner ruling, `2026-09-24` real date)
 
-This is the standing memo (`EVT-001109`) applied at each Rank. Strikers must be carded **at the team's Rank**. Every team has one mender and one sensor at its Rank, counted outside the strike count, and artificers never sit on a team. **A team counts as full only when its strikers, mender and sensor all come from cards at its own Rank.** **Miners go with C-, B- and A-Rank teams only** (support crew, not counted here); E- and D-Rank teams carry none.
+This is the standing memo (`EVT-001109`) applied at each Rank. Strikers must be carded **at the team's Rank**. Every team has one mender and one sensor at its Rank, counted outside the strike count, and artificers never sit on a team. **A team counts as full only when its strikers, mender and sensor all come from cards at its own Rank.** **Miners go with C-, B- and A-Rank teams only** (support crew, not counted here); E- and D-Rank teams carry none. **Every Gate is still mined (owner ruling, 2026-09-24 real date, after `EVT-001194`): an E or D team mines the Gate itself; a C, B or A team always brings its mining team.**
 
 | Rank | Strikers | Mender + sensor | Full teams, guild-wide |
 |---|---|---|---|

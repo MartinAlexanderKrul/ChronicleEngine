@@ -23,6 +23,10 @@ subjects: []
 
 ---
 
+## Out of play, 2026-09-24 — Every Gate Is Mined
+
+Owner ruling after checkpoint 0175, with no Event moved and no fictional time passing. **E- and D-Rank teams mine the Gate themselves and carry no extra miners; C-, B- and A-Rank teams always bring a mining team.** Recorded in `151_HUNTER_POPULATION_MODEL.md` Section 6. The two contract-town D crews at `EVT-001181`/`EVT-001188` read seven in all (five strikers, a mender, a sensor) and mined their own Gates. Owner question 13 closed.
+
 ## Session (`EVT-001180`-`EVT-001194`) — Region V, the Contract Towns, and the Hive
 
 **The roster and London (`EVT-001180`).** The A-Rank roster sent to the nine commanders (`OBJ-85` closed). London's rear-door lock fitted; the tunnel is Alexander's. Anjali Desai's want, fear and secret authored.

@@ -23,6 +23,13 @@ subjects: []
 
 ---
 
+## Out of play, 2026-09-24 — Two Owner Questions Closed
+
+With no Event moved and no fictional time passing.
+
+- **Riftwalker's passengers:** *an ally he touches may be sent with him* means **every ally he is touching**, on one step at that step's single cost. Consistent with earlier group steps in play. Campaign-scoped; the profile is unchanged. Written onto the Rift-step line in `100_CHARACTER_SHEET.md`.
+- **The 63rd daily's missed penalty zone** (midnight 2026-09-29/30) is left as it stands; nothing is applied retroactively.
+
 ## Out of play, 2026-09-24 — Every Gate Is Mined
 
 Owner ruling after checkpoint 0175, with no Event moved and no fictional time passing. **E- and D-Rank teams mine the Gate themselves and carry no extra miners; C-, B- and A-Rank teams always bring a mining team.** Recorded in `151_HUNTER_POPULATION_MODEL.md` Section 6. The two contract-town D crews at `EVT-001181`/`EVT-001188` read seven in all (five strikers, a mender, a sensor) and mined their own Gates. Owner question 13 closed.

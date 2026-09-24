@@ -73,10 +73,14 @@ function New-LineIndex {
     param([string]$Text)
 
     $offsets = [System.Collections.Generic.List[int]]::new()
-    $index = $Text.IndexOf("`n")
+    # A [char], not a string: String.IndexOf(string) is culture-sensitive, and
+    # on ICU (PowerShell on Linux) it cost 7 s per run on the 2.6 MB sealed
+    # chronicle alone. The char overload is ordinal, and about 100x faster.
+    $newline = [char]10
+    $index = $Text.IndexOf($newline)
     while ($index -ge 0) {
         $offsets.Add($index)
-        $index = $Text.IndexOf("`n", $index + 1)
+        $index = $Text.IndexOf($newline, $index + 1)
     }
     return , $offsets.ToArray()
 }
@@ -113,29 +117,36 @@ function Get-IndentedSection {
         [string]$Name
     )
 
-    $lines = $Block -split "\r?\n"
-    for ($index = 0; $index -lt $lines.Count; $index++) {
-        if ($lines[$index] -notmatch "^([ \t]*)$([regex]::Escape($Name)):[ \t]*$") {
+    # Find the header with one regex over the block, then walk only the lines
+    # after it. Walking every line of every block with -match cost about 3 s a
+    # run: each Event is asked for four sections most Events do not have.
+    # IgnoreCase keeps the -match semantics this replaced.
+    $header = [regex]::Match(
+        $Block,
+        "(?m)^([ \t]*)$([regex]::Escape($Name)):[ \t]*\r?$",
+        [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+    if (-not $header.Success) {
+        return $null
+    }
+
+    $baseIndent = $header.Groups[1].Length
+    # The remainder starts at the newline that ends the header line, so its
+    # first element is empty and the children begin at index 1.
+    $lines = $Block.Substring($header.Index + $header.Length) -split "\r?\n"
+    $captured = [System.Collections.Generic.List[string]]::new()
+    for ($child = 1; $child -lt $lines.Count; $child++) {
+        $line = $lines[$child]
+        if ([string]::IsNullOrWhiteSpace($line)) {
+            $captured.Add($line)
             continue
         }
-
-        $baseIndent = $Matches[1].Length
-        $captured = [System.Collections.Generic.List[string]]::new()
-        for ($child = $index + 1; $child -lt $lines.Count; $child++) {
-            $line = $lines[$child]
-            if ([string]::IsNullOrWhiteSpace($line)) {
-                $captured.Add($line)
-                continue
-            }
-            $indent = ([regex]::Match($line, '^[ \t]*')).Value.Length
-            if ($indent -le $baseIndent) {
-                break
-            }
-            $captured.Add($line)
+        $indent = ([regex]::Match($line, '^[ \t]*')).Value.Length
+        if ($indent -le $baseIndent) {
+            break
         }
-        return ($captured -join "`n")
+        $captured.Add($line)
     }
-    return $null
+    return ($captured -join "`n")
 }
 
 function Get-ListEntries {
@@ -2188,6 +2199,14 @@ foreach ($worldName in $participationPolicy.Keys) {
 # the work. What it converts is a SILENT omission into an ASSERTED one, which
 # is the whole distinction F-012 turned on -- what was missing was never
 # claimed, so nothing could disagree with it.
+# Which (Event, subject) pairs credit a skills.* counter, indexed once: scanning
+# every counter delta per participant made this check quadratic.
+$skillCreditedPairs = @{}
+foreach ($delta in $counterDeltas) {
+    if ($delta.Counter -like "skills.*") {
+        $skillCreditedPairs["$($delta.Event)|$($delta.Subject)"] = $true
+    }
+}
 foreach ($worldName in $skillCreditPolicy.Keys) {
     $policy = $skillCreditPolicy[$worldName]
     foreach ($eventData in $eventAuditData) {
@@ -2197,12 +2216,7 @@ foreach ($worldName in $skillCreditPolicy.Keys) {
         }
         foreach ($participant in $eventData.Participants) {
             if (-not $bearerEntities.ContainsKey($participant)) { continue }
-            $credited = @($counterDeltas | Where-Object {
-                $_.Event -eq $eventData.Event -and
-                $_.Subject -eq $participant -and
-                $_.Counter -like "skills.*"
-            })
-            if ($credited.Count -gt 0) { continue }
+            if ($skillCreditedPairs.ContainsKey("$($eventData.Event)|$participant")) { continue }
             $asserted = @($eventData.Audits | Where-Object {
                 $_.Subject -eq $participant -and
                 $_.Domain -eq $policy.Domain -and

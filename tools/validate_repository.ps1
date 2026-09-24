@@ -993,7 +993,10 @@ foreach ($file in $canonicalFiles) {
         # well formed, so the old gate accepted their contradiction.
         if ($relativePath -match '/180_CURRENT_STATE\.md$') {
             $sourceMatch = [regex]::Match($block, '(?m)^[ \t]+source:[ \t]*(EVT-\d{6})[ \t]*$')
-            $promotionMatch = [regex]::Match($text, '(?m)^\*\*Live canon is promoted through `(EVT-\d{6})`\.\*\*')
+            # Either form the save has written: the period inside the bold, or the
+            # bold closed on the identifier with a parenthetical after it. Matching
+            # only the first let the second pass silently, unchecked.
+            $promotionMatch = [regex]::Match($text, '(?m)^\*\*Live canon is promoted through `(EVT-\d{6})`(?:\.\*\*|\*\*)')
             if ($sourceMatch.Success -and $promotionMatch.Success -and
                 $sourceMatch.Groups[1].Value -ne $promotionMatch.Groups[1].Value) {
                 Add-Failure "$relativePath`:$line says live canon is promoted through $($promotionMatch.Groups[1].Value) but record provenance source is $($sourceMatch.Groups[1].Value)."

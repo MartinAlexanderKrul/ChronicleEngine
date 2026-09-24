@@ -221,6 +221,14 @@ foreach ($startup in Get-ChildItem -Path $campaignRoot -Filter "090_CAMPAIGN_STA
         "rare"      = [int]$Matches['rare']
         "singular"  = [int]$Matches['singular']
     }
+    # Section 16.4's second catalog (Profile 1.101) adds its own grades, priced
+    # in its own table. Read from the profile like the first ladder, so a grade
+    # the profile prices is never reported as one it does not.
+    foreach ($row in [regex]::Matches($profileText, '(?m)^\|\s*\*\*(?<grade>[A-Za-z]+)\*\*\s*\|\s*\d+\s*\|\s*\*\*\+(?<points>\d+)\*\*\s*\|')) {
+        $gradePayment[$row.Groups['grade'].Value.ToLowerInvariant()] = [int]$row.Groups['points'].Value
+    }
+    Assert-True ($gradePayment.ContainsKey("ascendant") -and $gradePayment.ContainsKey("absolute")) `
+        "Section 16.4's second-catalog grade table is unreadable; its titles cannot be priced."
 
     if ($sheet -match '(?ms)^\s*earned_names:\s*$\r?\n(?<body>(?:\s*- ".*?"\s*$\r?\n?)+)') {
         $earnedBody = $Matches['body']

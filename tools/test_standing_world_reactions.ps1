@@ -103,14 +103,26 @@ if ($live.Output -like '*standing_world_reactions*') {
     $failures++
 }
 
+# Each leg picks an entry by its key -- a stable identity -- and reads that
+# entry's CURRENT `started`/`day` lines from the live ledger before mutating
+# them. The legs used to pin literal day counts, and every daily tick broke them.
+$liveLedger = [System.IO.File]::ReadAllText((Join-Path $repositoryRoot $ledgerRelative)).Replace("`r`n", "`n")
+function Get-EntryLines {
+    param([string]$Key)
+    $m = [regex]::Match($liveLedger, "(?ms)^  - key: $([regex]::Escape($Key))\n.*?^    (?<started>started: `"[^`"]*`")\n    day: (?<day>\d+)\n(?<next>    [a-z0-9_]+:[^\n]*)")
+    if (-not $m.Success) { throw "Test precondition failed: standing reaction '$Key' has no started/day lines." }
+    return $m
+}
+
 # --- Leg 1: a counter that stopped advancing -------------------------------
 # The exact defect this gate exists for. jiu_valley_public_reaction started
 # 2026-09-10 and campaign_time is 2026-09-14, so day 4 is correct and day 3 is
 # the tick that was never run.
 $behindRoot = New-RepositoryCopy
+$jiu = Get-EntryLines "jiu_valley_public_reaction"
 Edit-FixtureFile -Path (Join-Path $behindRoot $ledgerRelative) `
-    -Find "started: `"2026-09-10 (the kill itself, EVT-000905)`"`n    day: 4" `
-    -Replace "started: `"2026-09-10 (the kill itself, EVT-000905)`"`n    day: 3"
+    -Find "$($jiu.Groups['started'].Value)`n    day: $($jiu.Groups['day'].Value)`n" `
+    -Replace "$($jiu.Groups['started'].Value)`n    day: $([int]$jiu.Groups['day'].Value - 1)`n"
 $behind = Invoke-Validator -Root $behindRoot
 if ($behind.ExitCode -eq 0) {
     Write-Output "  - Expected a stale day counter to fail validation, and it passed."
@@ -125,9 +137,10 @@ Assert-Contains -Haystack $behind.Output -Needle 'tick advance(s) were never mad
 # The opposite error, and a real one: a Runtime catching up a backlog by writing
 # the number it wishes were true rather than running the ticks.
 $aheadRoot = New-RepositoryCopy
+$profile = Get-EntryLines "pendragon_public_profile"
 Edit-FixtureFile -Path (Join-Path $aheadRoot $ledgerRelative) `
-    -Find "started: `"2026-08-23 (the E-Rank -> S-Rank reclassification at BGM Region V)`"`n    day: 22" `
-    -Replace "started: `"2026-08-23 (the E-Rank -> S-Rank reclassification at BGM Region V)`"`n    day: 40"
+    -Find "$($profile.Groups['started'].Value)`n    day: $($profile.Groups['day'].Value)`n" `
+    -Replace "$($profile.Groups['started'].Value)`n    day: $([int]$profile.Groups['day'].Value + 20)`n"
 $ahead = Invoke-Validator -Root $aheadRoot
 if ($ahead.ExitCode -eq 0) {
     Write-Output "  - Expected a counter ahead of campaign_time to fail validation, and it passed."
@@ -141,9 +154,10 @@ Assert-Contains -Haystack $ahead.Output -Needle 'has not reached' `
 # --- Leg 3: an entry with no day counter ------------------------------------
 # The counter is the whole mechanism; an entry without one is scenery.
 $noDayRoot = New-RepositoryCopy
+$trade = Get-EntryLines "the_unnecessary_trade"
 Edit-FixtureFile -Path (Join-Path $noDayRoot $ledgerRelative) `
-    -Find "started: `"2026-08-26 (the level-100 crossing, EVT-000751)`"`n    day: 19`n    interacts_with: OBJ-60, OBJ-61" `
-    -Replace "started: `"2026-08-26 (the level-100 crossing, EVT-000751)`"`n    interacts_with: OBJ-60, OBJ-61"
+    -Find "$($trade.Groups['started'].Value)`n    day: $($trade.Groups['day'].Value)`n$($trade.Groups['next'].Value)" `
+    -Replace "$($trade.Groups['started'].Value)`n$($trade.Groups['next'].Value)"
 $noDay = Invoke-Validator -Root $noDayRoot
 if ($noDay.ExitCode -eq 0) {
     Write-Output "  - Expected an entry with no day counter to fail validation, and it passed."
@@ -155,9 +169,10 @@ Assert-Contains -Haystack $noDay.Output -Needle 'the_unnecessary_trade' `
 # --- Leg 4: an entry with no started date -----------------------------------
 # A thread with no start cannot be shown to have advanced.
 $noStartRoot = New-RepositoryCopy
+$thinning = Get-EntryLines "the_thinning"
 Edit-FixtureFile -Path (Join-Path $noStartRoot $ledgerRelative) `
-    -Find "started: `"2026-08-26 (the level-100 crossing, EVT-000751)`"`n    day: 19`n    interacts_with: district_pressure" `
-    -Replace "started: `"the level-100 crossing, EVT-000751`"`n    day: 19`n    interacts_with: district_pressure"
+    -Find "$($thinning.Groups['started'].Value)`n    day: $($thinning.Groups['day'].Value)`n$($thinning.Groups['next'].Value)" `
+    -Replace "started: `"no date given`"`n    day: $($thinning.Groups['day'].Value)`n$($thinning.Groups['next'].Value)"
 $noStart = Invoke-Validator -Root $noStartRoot
 if ($noStart.ExitCode -eq 0) {
     Write-Output "  - Expected an entry with no parseable started date to fail validation, and it passed."

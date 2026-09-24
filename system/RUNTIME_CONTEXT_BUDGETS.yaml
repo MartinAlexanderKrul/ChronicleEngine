@@ -786,7 +786,23 @@ surfaces:
       # `tracked_counters`, and whose reasoning already lives in an Event. The
       # remaining levers named above (the startup file, the resident card, the
       # five profile readiness headings) are untouched and still real.
-      gatefall_pendragon_001: 35162
+      # Re-recorded 2026-09-24, 35,162 -> 39,844, as a recording of drift already
+      # on disk rather than of any one change. The surface had grown +4,682
+      # (13.3%) unrecorded across ordinary play through Checkpoint 0173, which
+      # left it inside the 15% allowance but put the allowance itself out of
+      # reach of `test_growth_budgets.ps1`'s within-allowance leg. None of it is
+      # the seal pass's: readiness loads `180_CURRENT_STATE.md`, the startup file
+      # and `ENT-000125`'s readiness fields, which Decision 094 did not shorten
+      # (the stripped asides there were a few dozen bytes). It includes the
+      # resident card's own +104 since its last recording, left unattributed
+      # here as it is on the card's own entry. 156 tokens under the 40,000
+      # ceiling: R14's levers are still the only ones, and still owner work.
+      # Then, the same day, one of them was pulled on the owner's direction:
+      # `180_CURRENT_STATE.md` lost its five settled provisional mechanics, two
+      # closed owner questions and two duplicated lines to its sealed volume,
+      # 15,380 -> ~11,600 bytes, and the surface fell 39,844 -> 38,986 (-858).
+      # Recorded at the lower figure so the next climb is read from the floor.
+      gatefall_pendragon_001: 38986
       prototype_alpha: 10415
       prototype_beta: 11060
       reikon_awakening_001: 15768

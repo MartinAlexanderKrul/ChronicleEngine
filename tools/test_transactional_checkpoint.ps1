@@ -328,7 +328,7 @@ try {
     $badHash = Invoke-Checkpoint $hashRoot $badReceipt
     Assert-True ($badHash.ExitCode -ne 0) "A stale mutation receipt hash was accepted."
     Assert-True ($badHash.Output -match 'changed after read-back') "Stale receipt failed without the hash diagnosis."
-    Assert-True (@(Get-ChildItem -LiteralPath (Join-Path $hashRoot "campaigns/example/saves") -Directory -Filter "*.staging-*").Count -eq 0) "Receipt failure allocated staging."
+    Assert-True (@(Get-ChildItem -LiteralPath (Join-Path $hashRoot "campaigns/example/saves") -Directory -Force -Filter "*.staging-*").Count -eq 0) "Receipt failure allocated staging."
 
     # Receipt time drift: the helper binds manifest identity to canonical time
     # before allocating an ordinal. Checkpoint 0070 carried a 16:30 character
@@ -341,7 +341,7 @@ try {
     $badTime = Invoke-Checkpoint $timeRoot $timeReceipt
     Assert-True ($badTime.ExitCode -ne 0) "A manifest game_date that disagrees with canonical campaign_time was accepted."
     Assert-True ($badTime.Output -match 'manifest.game_date does not match canonical campaign_time') "Time drift failed without the anchor diagnosis."
-    Assert-True (@(Get-ChildItem -LiteralPath (Join-Path $timeRoot "campaigns/example/saves") -Directory -Filter "*.staging-*").Count -eq 0) "Time drift allocated staging."
+    Assert-True (@(Get-ChildItem -LiteralPath (Join-Path $timeRoot "campaigns/example/saves") -Directory -Force -Filter "*.staging-*").Count -eq 0) "Time drift allocated staging."
 
     $sourceRoot = New-Fixture
     $sourceChronicle = Join-Path $sourceRoot "campaigns/example/160_CAMPAIGN_CHRONICLE.md"
@@ -380,7 +380,10 @@ try {
     Assert-True ($rollback.ExitCode -ne 0) "A failing final checkpoint gate was reported as success."
     Assert-True ($rollback.Output -match '"status":"failed"') "Failure emitted no machine receipt."
     Assert-True (-not (Test-Path -LiteralPath (Join-Path $rollbackRoot "campaigns/example/saves/900_CHECKPOINT_0002"))) "Failed transaction left a canonical checkpoint directory."
-    $staging = @(Get-ChildItem -LiteralPath (Join-Path $rollbackRoot "campaigns/example/saves") -Directory | Where-Object { $_.Name -like ".900_CHECKPOINT_0002.staging-*" })
+    # -Force: PowerShell on Linux and macOS treats a dot-prefixed name as hidden,
+    # and the staging directory is dot-prefixed on purpose. Without it this leg
+    # (and the two "allocated staging" legs above) cannot see what it counts.
+    $staging = @(Get-ChildItem -LiteralPath (Join-Path $rollbackRoot "campaigns/example/saves") -Directory -Force | Where-Object { $_.Name -like ".900_CHECKPOINT_0002.staging-*" })
     Assert-True ($staging.Count -eq 1) "Failed transaction did not retain exactly one recoverable staging directory."
     Assert-True ($startupHash -eq (Get-FileHash -LiteralPath (Join-Path $rollbackRoot "campaigns/example/090_CAMPAIGN_STARTUP.md") -Algorithm SHA256).Hash) "Startup pointer did not roll back byte-for-byte."
     Assert-True ($currentHash -eq (Get-FileHash -LiteralPath (Join-Path $rollbackRoot "campaigns/example/180_CURRENT_STATE.md") -Algorithm SHA256).Hash) "Current State did not roll back byte-for-byte."

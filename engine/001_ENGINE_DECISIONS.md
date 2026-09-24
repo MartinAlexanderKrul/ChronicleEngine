@@ -4595,7 +4595,7 @@ Decision 091 authored the character model and left it unreachable in two indepen
 - `REL-000066`, the largest object in the NPC ledger at 73 KB, described a live relationship in `state` and carried 27 KB of dated `state_updates` for a relationship that had ended.
 - `ENT-000147.situation` stopped five weeks of fiction early while its present lived in `agenda`.
 - *Active Objectives* held objectives marked Met, Closed and Superseded.
-- Every ledger's Record block carried a comment note per save, 291 in all.
+- Every ledger's Record block carried a comment note per save, 297 by Checkpoint 0173.
 
 All of it passed every gate. The budget file already records the shape twice (`ENT-000125.temporal_state`, *"stale in place and passed every gate"*; `ENT-000139`, *"a private second copy of the chronicle"*). Each time it was cured one record at a time, by deleting text the chronicle also held, under deadline.
 

@@ -277,11 +277,15 @@ try {
     Assert-True $currentSource.Success "Current State provenance source is missing; fixture precondition drifted."
     $wrongPromotionNumber = [int]$currentSource.Groups[1].Value.Substring(4) - 1
     $wrongPromotion = "EVT-{0:D6}" -f $wrongPromotionNumber
-    Replace-Once $currentState "**Live canon is promoted through ``$($currentSource.Groups[1].Value)``.**" "**Live canon is promoted through ``$wrongPromotion``.**"
+    # The promotion line is read in whichever form the last save wrote it.
+    $promotionLine = [regex]::Match((Get-Text $currentState), '(?m)^\*\*Live canon is promoted through `EVT-\d{6}`(?:\.\*\*|\*\*)')
+    Assert-True $promotionLine.Success "Current State has no promotion line; fixture precondition drifted."
+    $goodPromotionLine = $promotionLine.Value
+    Replace-Once $currentState $goodPromotionLine $goodPromotionLine.Replace($currentSource.Groups[1].Value, $wrongPromotion)
     $badPromotion = Invoke-Validation $tempRoot
     Assert-True ($badPromotion.ExitCode -ne 0 -and $badPromotion.Output -like "*says live canon is promoted through $wrongPromotion*provenance source is $($currentSource.Groups[1].Value)*") `
         "A stale Current State promotion boundary was accepted:`n$($badPromotion.Output)"
-    Replace-Once $currentState "**Live canon is promoted through ``$wrongPromotion``.**" "**Live canon is promoted through ``$($currentSource.Groups[1].Value)``.**"
+    Replace-Once $currentState $goodPromotionLine.Replace($currentSource.Groups[1].Value, $wrongPromotion) $goodPromotionLine
 
     Assert-True ((Get-Text $profile).Contains('progression-batch-settlement')) `
         "Gatefall Profile 1.26 does not preserve promotion-time non-combat progression batching."
@@ -313,9 +317,30 @@ try {
         $_.Status -ne 'tracking' -and
         $policy.PreAuthoredKeys -notcontains $_.Key
     }) | Select-Object -First 1
-    Assert-True ($null -ne $trackingTarget) `
-        "No resolved, non-pre-authored candidate carries the domain's $($policy.Threshold)-reference threshold; the tracking-at-threshold mutation has nothing to target."
-    $trackingMutated = Set-CandidateStatus $trackingTarget.Block 'tracking'
+    if ($null -ne $trackingTarget) {
+        $trackingMutated = Set-CandidateStatus $trackingTarget.Block 'tracking'
+    } else {
+        # Resolved candidates leave the live list for `progression_candidates_settled`
+        # in compact form, so the live sheet may hold none at the threshold. Build the
+        # state instead: a live `tracking` candidate raised to the threshold with Event
+        # ids other candidates already cite, so every reference resolves.
+        $trackingTarget = @($candidates | Where-Object {
+            $_.Status -eq 'tracking' -and
+            $_.Evidence.Count -lt $policy.Threshold -and
+            $policy.PreAuthoredKeys -notcontains $_.Key -and
+            $_.Block -match '(?m)^        evidence: \['
+        }) | Select-Object -First 1
+        Assert-True ($null -ne $trackingTarget) `
+            "No live candidate, resolved or tracking, can be brought to the $($policy.Threshold)-reference threshold; the tracking-at-threshold mutation has nothing to target."
+        $ownIds = @($trackingTarget.Evidence | ForEach-Object { ($_ -split '#')[0] })
+        $donorIds = @($candidates | ForEach-Object { $_.Evidence } |
+            ForEach-Object { ($_ -split '#')[0] } |
+            Where-Object { $ownIds -notcontains $_ } | Select-Object -Unique)
+        $needed = $policy.Threshold - $trackingTarget.Evidence.Count
+        Assert-True ($donorIds.Count -ge $needed) "Not enough distinct evidence Events in the sheet to raise '$($trackingTarget.Key)' to the threshold."
+        $added = ($donorIds | Select-Object -First $needed | ForEach-Object { ", $_#fixture-threshold-scene" }) -join ''
+        $trackingMutated = [regex]::Replace($trackingTarget.Block, '(?m)^(        evidence: \[[^\]\r\n]*)\]', ('${1}' + $added + ']'), 1)
+    }
     Replace-Once $character $trackingTarget.Block $trackingMutated
     $threshold = Invoke-Validation $tempRoot
     Assert-True ($threshold.ExitCode -ne 0 -and $threshold.Output -like "*'$($trackingTarget.Domain)/$($trackingTarget.Key)' has at least $($policy.Threshold) distinct evidence references but remains tracking*") `
@@ -328,8 +353,19 @@ try {
     Assert-True ($policy.PreAuthoredKeys.Count -gt 0) `
         "The profile declares no pre_authored_result_keys; the automatic-ratification mutation has nothing to target."
     $preTarget = @($candidates | Where-Object { $policy.PreAuthoredKeys -contains $_.Key }) | Select-Object -First 1
-    Assert-True ($null -ne $preTarget) `
-        "The profile declares pre-authored result keys ($($policy.PreAuthoredKeys -join ', ')) but the character sheet carries no candidate with one."
+    $rekeyedSource = $null
+    if ($null -eq $preTarget) {
+        # A pre-authored candidate ratifies automatically and then leaves the live
+        # list, so once every one has, the sheet carries none. Build one in the
+        # fixture: a live tracking candidate re-keyed to the declared key.
+        $rekeyedSource = @($candidates | Where-Object { $_.Status -eq 'tracking' }) | Select-Object -First 1
+        Assert-True ($null -ne $rekeyedSource) `
+            "The profile declares pre-authored result keys ($($policy.PreAuthoredKeys -join ', ')) and the sheet has no candidate to carry one."
+        $preKey = $policy.PreAuthoredKeys[0]
+        $rekeyed = [regex]::Replace($rekeyedSource.Block, '(?m)^        key: \S+', "        key: $preKey", 1)
+        Replace-Once $character $rekeyedSource.Block $rekeyed
+        $preTarget = [pscustomobject]@{ Block = $rekeyed; Key = $preKey; Domain = $rekeyedSource.Domain; Evidence = $rekeyedSource.Evidence }
+    }
     $preMutated = Set-CandidateStatus $preTarget.Block 'pending-ratification'
     if ($preTarget.Evidence.Count -lt $policy.Threshold) {
         # Borrow Event ids already cited by other candidates in this same file, so
@@ -344,14 +380,21 @@ try {
             "Not enough distinct evidence Events in the sheet to raise '$($preTarget.Key)' to the $($policy.Threshold)-reference threshold."
         $added = (($donorIds | Select-Object -First $needed |
             ForEach-Object { "          - $_#fixture-threshold-scene" }) -join $eol) + $eol
-        $preMutated = [regex]::Replace($preMutated,
-            '(?ms)(^        evidence:\r?\n(?:^          - [^\r\n]*\r?\n)+)', ('${1}' + $added), 1)
+        if ($preMutated -match '(?m)^        evidence: \[') {
+            # Inline form, which every live candidate uses.
+            $inline = ($donorIds | Select-Object -First $needed | ForEach-Object { ", $_#fixture-threshold-scene" }) -join ''
+            $preMutated = [regex]::Replace($preMutated, '(?m)^(        evidence: \[[^\]\r\n]*)\]', ('${1}' + $inline + ']'), 1)
+        } else {
+            $preMutated = [regex]::Replace($preMutated,
+                '(?ms)(^        evidence:\r?\n(?:^          - [^\r\n]*\r?\n)+)', ('${1}' + $added), 1)
+        }
     }
     Replace-Once $character $preTarget.Block $preMutated
     $authoredThreshold = Invoke-Validation $tempRoot
     Assert-True ($authoredThreshold.ExitCode -ne 0 -and $authoredThreshold.Output -like "*'$($preTarget.Domain)/$($preTarget.Key)' is declared pre-authored*requires automatic ratification*") `
         "A pre-authored candidate at the threshold was allowed to remain unratified:`n$($authoredThreshold.Output)"
     Replace-Once $character $preMutated $preTarget.Block
+    if ($null -ne $rekeyedSource) { Replace-Once $character $preTarget.Block $rekeyedSource.Block }
 
     # Allocate the fixture Event one past the live high-water mark, whatever it currently is.
     $highWater = Get-RegistryHighWater $registry

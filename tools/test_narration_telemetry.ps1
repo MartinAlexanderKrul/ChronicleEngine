@@ -83,62 +83,86 @@ if ($live.Output -like '*narration_telemetry*') {
     $failures++
 }
 
+# Every leg below finds its anchor in the live telemetry block BY PROPERTY and
+# mutates that. They were pinned to literal values -- a 2026-09-14 timestamp,
+# two named NPCs and a count of 5/9 -- and each save that re-audited the block
+# broke them, which is the "fixtures select by property, never by live value"
+# rule this suite now follows.
+$liveState = [System.IO.File]::ReadAllText((Join-Path $repositoryRoot $state)).Replace("`r`n", "`n")
+$block = [regex]::Match($liveState, '(?ms)^narration_telemetry:\n.*?(?=^\S|\z)').Value
+if ([string]::IsNullOrEmpty($block)) { throw "Test precondition failed: no narration_telemetry block in $state." }
+function Get-Anchor {
+    param([string]$Pattern, [string]$What)
+    $m = [regex]::Match($block, $Pattern)
+    if (-not $m.Success) { throw "Test precondition failed: the live narration_telemetry block has no $What." }
+    return $m
+}
+$rows = @([regex]::Matches($block, '(?ms)^    - ent: .*?(?=^    - ent: |\z)'))
+if ($rows.Count -lt 2) { throw "Test precondition failed: fewer than two npc_play rows; the convergence leg needs two." }
+
 # --- Leg 1: a span played and never audited ---------------------------------
-# The case the whole block exists to make impossible.
+# The case the whole block exists to make impossible. `as_of` is not unique in
+# this file -- trigger_telemetry carries one too -- so the anchor includes the
+# key above it. That non-uniqueness is also why the gate scopes itself to the
+# block rather than searching the file.
+$asOf = Get-Anchor '^narration_telemetry:\n  as_of: "[^"]+"' "as_of"
 $stale = New-RepositoryCopy
 Edit-FixtureFile -Path (Join-Path $stale $state) `
-    -Find "narration_telemetry:`n  as_of: `"2026-09-14T11:39:00-05:00`"" `
-    -Replace "narration_telemetry:`n  as_of: `"2026-09-01T06:00:00-05:00`""
-# `as_of` is not unique in this file -- trigger_telemetry carries one at the same
-# timestamp -- so the anchor includes the key above it. That non-uniqueness is
-# also why the gate scopes itself to the block rather than searching the file.
+    -Find $asOf.Value `
+    -Replace "narration_telemetry:`n  as_of: `"2026-07-01T06:00:00-05:00`""
 Assert-Rejected -Name "narration telemetry behind campaign_time" -Needle "never audited" -Result (Invoke-Validator -Root $stale)
 
 # --- Leg 2: F-066 made mechanical -------------------------------------------
 # An NPC that only ever asks is an interface, not a person. The original
 # complaint was accumulation across a scene that nothing counted.
+$asking = Get-Anchor '(?m)^      questions_at_protagonist: [1-9]\d*\n      own_initiative: [1-9]\d*$' "row that both asks and initiates"
 $noInitiative = New-RepositoryCopy
 Edit-FixtureFile -Path (Join-Path $noInitiative $state) `
-    -Find "      questions_at_protagonist: 5`n      own_initiative: 9" `
-    -Replace "      questions_at_protagonist: 5`n      own_initiative: 0"
+    -Find $asking.Value `
+    -Replace ($asking.Value -replace 'own_initiative: \d+$', 'own_initiative: 0')
 Assert-Rejected -Name "a speaking NPC with no beat of its own" -Needle "not a person" -Result (Invoke-Validator -Root $noInitiative)
 
 # --- Leg 3: F-061 made mechanical -------------------------------------------
-# Two loaded NPCs are never interchangeable. Convergence caught where it happens.
+# Two loaded NPCs are never interchangeable. Convergence caught where it happens:
+# the second row is given the first row's own tell.
+$firstTell = [regex]::Match($rows[0].Value, '(?m)^      voice_tell: ".*"$').Value
+$secondTell = [regex]::Match($rows[1].Value, '(?m)^      voice_tell: ".*"$').Value
+if (-not $firstTell -or -not $secondTell -or $firstTell -eq $secondTell) { throw "Test precondition failed: the first two npc_play rows do not carry two distinct voice tells." }
 $sameTell = New-RepositoryCopy
-Edit-FixtureFile -Path (Join-Path $sameTell $state) `
-    -Find '      voice_tell: "managerial and incurious; speaks near him rather than to him, and does not wait for an answer"' `
-    -Replace '      voice_tell: "answers procedurally, in the register of someone filing rather than arguing; never defends the work, never raises her voice"'
+Edit-FixtureFile -Path (Join-Path $sameTell $state) -Find $rows[1].Value -Replace $rows[1].Value.Replace($secondTell, $firstTell)
 Assert-Rejected -Name "two NPCs sharing one voice tell" -Needle "never interchangeable" -Result (Invoke-Validator -Root $sameTell)
 
 # --- Leg 4: F-041 made mechanical -------------------------------------------
 # The check that keeps being skipped because skipping is cheaper.
+$loaded = Get-Anchor '(?m)^      name: ".*"\n      record_loaded_before_first_line: true$' "row recorded as loaded"
 $notLoaded = New-RepositoryCopy
 Edit-FixtureFile -Path (Join-Path $notLoaded $state) `
-    -Find "      name: `"the Auditor, once Wren Solane`"`n      record_loaded_before_first_line: true" `
-    -Replace "      name: `"the Auditor, once Wren Solane`"`n      record_loaded_before_first_line: false"
+    -Find $loaded.Value `
+    -Replace ($loaded.Value -replace 'true$', 'false')
 Assert-Rejected -Name "an NPC played without its record loaded" -Needle "without its record loaded" -Result (Invoke-Validator -Root $notLoaded)
 
 # --- Leg 5: a breach recorded with no account of it -------------------------
+# The live block's breach_note is replaced along with the count, so the gate
+# sees breaches and nothing that accounts for them.
+$breaches = Get-Anchor '(?m)^  runtime_voice_breaches: \d+[^\n]*\n  breach_note: "[^\n]*"$' "breach count with its note"
 $noNote = New-RepositoryCopy
 Edit-FixtureFile -Path (Join-Path $noNote $state) `
-    -Find '  runtime_voice_breaches: 0 ' `
-    -Replace '  runtime_voice_breaches: 2 '
+    -Find $breaches.Value `
+    -Replace "  runtime_voice_breaches: 2"
 Assert-Rejected -Name "a voice breach with no breach_note" -Needle "no account of it" -Result (Invoke-Validator -Root $noNote)
 
 # --- Leg 6: a required count deleted ----------------------------------------
 # The count IS the intervention, so its absence has to fail.
+$deferred = Get-Anchor '(?m)^  world_answers_deferred: \d+' "world_answers_deferred count"
 $noCount = New-RepositoryCopy
 Edit-FixtureFile -Path (Join-Path $noCount $state) `
-    -Find '  world_answers_deferred: 0' `
-    -Replace '  world_answers_noted: 0'
+    -Find $deferred.Value `
+    -Replace ($deferred.Value -replace 'world_answers_deferred', 'world_answers_noted')
 Assert-Rejected -Name "a missing required count" -Needle "the count is the intervention" -Result (Invoke-Validator -Root $noCount)
 
 # --- Leg 7: a row with no voice tell ----------------------------------------
 $noTell = New-RepositoryCopy
-Edit-FixtureFile -Path (Join-Path $noTell $state) `
-    -Find '      voice_tell: "managerial and incurious; speaks near him rather than to him, and does not wait for an answer"' `
-    -Replace '      voice_note: "managerial and incurious"'
+Edit-FixtureFile -Path (Join-Path $noTell $state) -Find $rows[0].Value -Replace $rows[0].Value.Replace($firstTell, '      voice_note: "no tell recorded"')
 Assert-Rejected -Name "a row naming no voice tell" -Needle "names no voice_tell" -Result (Invoke-Validator -Root $noTell)
 
 foreach ($path in $temporaryRoots) {

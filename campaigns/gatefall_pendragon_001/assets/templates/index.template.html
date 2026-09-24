@@ -206,6 +206,17 @@
   .prop details .v{font-size:.78rem; line-height:1.5; overflow-wrap:anywhere;}
   .prop code{font-family:"IBM Plex Mono",monospace; font-size:.72rem;}
   @media (max-width:640px){ .funds{grid-template-columns:1fr;} .wealth{text-align:left;} }
+  .build{
+    display:grid; grid-template-columns:auto 1fr; gap:3px 12px; align-items:baseline;
+    font-family:"IBM Plex Mono",monospace; font-size:.7rem; line-height:1.4;
+    padding:10px 12px; border:1px solid var(--border); border-radius:8px; background:var(--surface);
+  }
+  .build dt{letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); font-size:.62rem;}
+  .build dd{margin:0; color:var(--text); font-variant-numeric:tabular-nums;}
+  .build dd a{color:var(--accent); text-decoration:none;}
+  .build dd a:hover{text-decoration:underline;}
+  .build dd.muted{color:var(--text-dim);}
+  @media (max-width:640px){ .build{width:100%;} }
 </style>
 </head>
 <body>
@@ -216,6 +227,11 @@
       <h1>Pendragon Ledgers</h1>
       <p class="sub">Four live ledgers regenerated from canon: everything Alexander holds, everything he can do, everyone he shares the world with, and the guild he founded. Each is searchable and filterable by Rank.</p>
     </div>
+    <dl class="build" id="build" aria-label="Which version this is">
+      <dt>Built</dt><dd id="buildTime"></dd>
+      <dt>Canon</dt><dd id="buildCanon"></dd>
+      <dt>Main</dt><dd id="buildMain" class="muted">checking&hellip;</dd>
+    </dl>
   </header>
 
   <section class="profile" id="profile" aria-label="Alexander Pendragon"></section>
@@ -265,6 +281,28 @@
 <script>
 // Generated from 100_CHARACTER_SHEET.md on every ledger run; nothing here is typed by hand.
 const P = /*__PROFILE_DATA__*/{}/*__END__*/;
+// Which build this page is: written by the generator when it ran, and the canon
+// position it was read from. The last push to main is asked of GitHub live, so
+// an open page can be compared against it; offline, it says so.
+const B = /*__BUILD_DATA__*/{}/*__END__*/;
+(function(){
+  const box = document.getElementById("build");
+  if (!B.built) { box.remove(); return; }
+  const when = iso => new Date(iso).toLocaleString(undefined, {dateStyle: "medium", timeStyle: "short"});
+  document.getElementById("buildTime").textContent = when(B.built);
+  document.getElementById("buildCanon").textContent =
+    [B.event, B.gameDate ? B.gameDate.slice(0, 16).replace("T", " ") + " in-game" : "", B.checkpoint ? "Checkpoint " + B.checkpoint : ""]
+      .filter(Boolean).join(" \u00b7 ");
+  const main = document.getElementById("buildMain");
+  fetch(`https://api.github.com/repos/${B.repo}/commits/main`, {headers: {Accept: "application/vnd.github+json"}})
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(c => {
+      const sha = c.sha.slice(0, 7);
+      main.className = "";
+      main.innerHTML = `${when(c.commit.committer.date)} \u00b7 <a href="${c.html_url}" target="_blank" rel="noopener" title="${c.commit.message.split("\n")[0].replace(/"/g, "&quot;")}">${sha}</a>`;
+    })
+    .catch(() => { main.textContent = "unavailable (offline or rate-limited)"; });
+})();
 // Wealth: the three fund figures, then every holding with its photos, terms and record.
 function money(n, cents){ return Number(n).toLocaleString("en-US", {minimumFractionDigits: cents ? 2 : 0, maximumFractionDigits: cents ? 2 : 0}); }
 function wealthOf(W){

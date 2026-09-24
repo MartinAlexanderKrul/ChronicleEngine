@@ -22,3 +22,8 @@ __pycache__/
 integrations/open-webui/chronicle-open-webui/agents/openai.yaml
 integrations/open-webui/chronicle-open-webui/assets/open-webui-slash-prompt.txt
 integrations/open-webui/chronicle-open-webui/SKILL.md
+.idea/ChronicleEngine.iml
+.idea/libraries/origin_main_check.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml

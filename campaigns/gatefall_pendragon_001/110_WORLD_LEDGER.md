@@ -1444,7 +1444,7 @@ grading_state:
 ending_routes:            # OWNER-FACING. Never rendered in any /system panel. Never a trigger.
   as_of: "2026-09-14T11:39:00-05:00"
   selection_rule: "At read_pct 100, routes with status `open` or `default` are the available choices. Closed routes are not offered. The Runtime does not choose."
-
+  routes:
   - route: confluence
     ending: "The grading completes, the Gates merge, and the Adjudicator comes through."
     gate: "grading_state.read_pct >= 100"

@@ -130,7 +130,9 @@ def parse_skill(row, ents):
     if segs and re.match("^[" + chr(0x2605) + chr(0x2606) + "]{1,10}|""^(?:Master|Novice|Adept|Competent|Practiced|Expert)" + _E, segs[0]):
         mastery, segs = segs[0], segs[1:]
     mana = ""
-    if segs and re.match("^(?:Mana|Passive)" + _E, segs[0]) and len(segs[0]) < 120:
+    if segs and segs[0] == "Stat Passive":   # no Mana, no mastery: it rises with its Stat
+        mana, segs = "Stat Passive — rises with its Stat", segs[1:]
+    elif segs and re.match("^(?:Mana|Passive)" + _E, segs[0]) and len(segs[0]) < 120:
         head = segs[0]; segs = segs[1:]
         mm = re.match(r"^Mana ([\d,]+(?:/scene|/exchange)?)", head)
         mana = mm.group(1) if mm else ("Passive — no Mana cost" if head.startswith("Passive") else head)

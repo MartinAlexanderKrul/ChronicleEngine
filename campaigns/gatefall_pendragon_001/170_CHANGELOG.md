@@ -44,6 +44,7 @@ At the player's direction, with no Event moved and no fictional time passing.
 - **Elixir of a stat x3 -> x4:** the Karlín boss drop (`EVT-001104`, `OBJ-75`) had never been added.
 - **Plain Quickknife [S-Rank]:** back in gear. It was collected from Corwin at `EVT-000829`, but the sheet still listed it in custody.
 - **The Assay's local archive:** moved from special to custody, held by Tolo in his library since `EVT-000989`.
+- **Exploit Pattern is unlimited (owner ruling):** it holds any number of Patterns, Standing ones included; the nine-slot cap no longer binds, which settles the twelve-against-nine question. Campaign-scoped; the profile is unchanged.
 - **Skills:** Course of Nature, Closing Argument, Recount, Let It Finish and Ledgerhand now read as `270_THE_FAR_SIDE.md` authors them. Course of Nature: a wound he inflicts does not heal by any means for one day. Closing Argument: against a target below half Health, not while he is.
 
 ## Session (`EVT-001169`-`EVT-001179`) — Orenne: The Slates, the Cities, and the Cage Room

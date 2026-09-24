@@ -700,7 +700,7 @@ Status: **Open, postponed, and now the player's move rather than Wade's.** Inter
 - The Heartwood core-mass, in Corwin Ashvale's custody, Boston — Flux Sight and Exploit Pattern read it as storage-purpose with a genuine **~40-minute** pulse, matching the library's own starting figure exactly.
 - **New (`EVT-000869`): a homebrew Mana-storage cell, also in Corwin's custody, mid a re-coring attempt (`OBJ-53`).** Its bench failure mode read as unclassifiable noise to Corwin's own instruments. Alexander's combined read (Keen Sense + Exploit Pattern + his own physics and mathematics background, roll 55, effective 95, strong success) established the interval between drops isn't random — **it's converging on a curve, and it's the same curve as the Heartwood's own pulse.** Not two coincidences. One mathematical signature in two unrelated pieces of matter. Both curves are now logged together on Corwin's instruments, timestamped.
 
-**Confirmed, not yet explained.** What is producing the convergence, what it converges *toward*, and whether it connects to the correlation logbooks or the Ninth Quiet library's own reading remain open. Exploit Pattern holds this as a Standing Pattern — the tenth against a nine-slot cap, an unresolved capacity question carried on `100_CHARACTER_SHEET.md`.
+**Confirmed, not yet explained.** What is producing the convergence, what it converges *toward*, and whether it connects to the correlation logbooks or the Ninth Quiet library's own reading remain open. Exploit Pattern holds this as a Standing Pattern; the skill has no Pattern cap by owner ruling (2026-09-24).
 
 ## OBJ-56 — BGM Region V's Roster Audit
 

@@ -226,8 +226,8 @@ try {
     Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
     $ungroupedRoot = $legRoot
     Edit-FixtureFile -Path (Join-Path $ungroupedRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `
-        -Find "        - `"Antidote x2 (banked, unwithdrawn)`"" `
-        -Replace "      - `"Antidote x2 (banked, unwithdrawn)`""
+        -Find "        - `"**Antidote" `
+        -Replace "      - `"**Antidote"
     $ungrouped = Invoke-Validator -Root $ungroupedRoot
     if ($ungrouped.ExitCode -eq 0) {
         throw "Expected a holding stored outside every kind to fail validation."

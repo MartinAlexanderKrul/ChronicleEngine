@@ -1197,6 +1197,7 @@ canonical_state:
       gear:
         # Section 11.5 item lines while stored, plus tools and instruments used repeatedly.
         # A stored item applies nothing; it is listed for what it would do if worn.
+        # The EVT-000722-731 span (the Hive through the eight-dungeon batch) supplied several S-Rank lines here.
         - "**Arcanist Torso [S-Rank] (second)** — Intelligence +10 · reduction 23% · boss drop, imprint not recorded (`EVT-001001`)."
         - "**Watcher Gauntlets [S-Rank]** — Perception +10 · reduction 23% · five-dungeon batch boss drop (`EVT-000898`)."
         - "**Arcanist Boots [S-Rank]** — Intelligence +10 · reduction 23% · Daily Random Box, Excellent, unbound (`EVT-000816`)."

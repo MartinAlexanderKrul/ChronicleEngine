@@ -137,6 +137,8 @@
   .card .facts{font-size:.76rem; line-height:1.45; display:flex; flex-direction:column; gap:4px; min-height:0;}
   .card .facts div{display:grid; grid-template-columns:74px 1fr; gap:8px;}
   .card .facts .v{-webkit-line-clamp:1; line-clamp:1;}
+  .card .facts .lines{display:flex; flex-direction:column; min-width:0;}
+  .val .lines{display:flex; flex-direction:column; gap:2px;}
   .card .open{
     margin-top:auto; font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.08em;
     text-transform:uppercase; color:var(--text-dim); display:flex; justify-content:space-between;
@@ -178,6 +180,11 @@
   .rec-head{padding:18px 20px 14px; border-bottom:1px solid var(--border); display:flex; flex-direction:column; gap:8px;}
   .rec-head .row{display:flex; align-items:flex-start; gap:10px;}
   .rec-head h2{font-family:"Chakra Petch",sans-serif; font-size:1.55rem; font-weight:700; margin:0; line-height:1.15; flex:1;}
+  /* The Rank badge and the close button share the name's first line: both sit
+     in 32px boxes centred on it, with clear space between them. */
+  .rec-head h2{padding-top:2px;}
+  #recRank{flex:none; height:32px; display:flex; align-items:center; margin-right:8px;}
+  #recRank:empty{display:none;}
   .rec-head .role{color:var(--text-dim); font-size:.86rem; line-height:1.45;}
   .iconbtn{
     flex:none; width:32px; height:32px; border-radius:8px; border:1px solid var(--border); background:var(--surface2);
@@ -299,6 +306,12 @@ const NPCS = /*__NPC_DATA__*/[]/*__END__*/;
 const GROUP_ORDER = ["S","A","B","C","D","E","none","deceased"];
 const GROUP_LABEL = {S:"S-Rank", A:"A-Rank", B:"B-Rank", C:"C-Rank", D:"D-Rank", E:"E-Rank",
   none:"Unranked, Unawakened & Unstated", deceased:"Deceased"};
+// Canon separates several affiliations with "; ". Each gets its own line.
+// A semicolon that closes an escaped entity ("Sable &amp; Kern") is not one.
+function affLines(a){
+  if (!a) return `<span class="v">—</span>`;
+  return `<span class="lines">${a.split(/(?<!&#?\w+);\s+/).map(x => `<span class="v clamp">${x}</span>`).join("")}</span>`;
+}
 function groupOf(n){ return n.status === "deceased" ? "deceased" : (n.rank || "none"); }
 
 // ---- Render -------------------------------------------------------------
@@ -343,7 +356,7 @@ function card(n){
         </div>
       </div>
       <div class="facts">
-        <div><span class="lbl">Affiliation</span><span class="v clamp">${n.aff || "—"}</span></div>
+        <div><span class="lbl">Affiliation</span>${affLines(n.aff)}</div>
         <div><span class="lbl">Home</span><span class="v clamp">${n.home || "—"}</span></div>
         ${n.loc ? `<div><span class="lbl">Now</span><span class="v clamp">${n.loc}</span></div>` : ""}
         ${n.cond ? `<div><span class="lbl">Condition</span><span class="v clamp">${n.cond}</span></div>` : ""}
@@ -376,7 +389,7 @@ function openRecord(id){
   showView(n, "portrait");
   const rels = n.rels.map(r => `<div class="f relbox"><span class="lbl">With Alexander &middot; ${r.type}</span><span class="val">${r.text}</span></div>`).join("");
   const body = document.getElementById("recFields");
-  body.innerHTML = (rels + n.fields.map(f => `<div class="f"><span class="lbl">${f[0]}</span><span class="val">${f[1]}</span></div>`).join(""))
+  body.innerHTML = (rels + n.fields.map(f => `<div class="f"><span class="lbl">${f[0]}</span><span class="val">${f[0] === "affiliation" ? affLines(f[1]) : f[1]}</span></div>`).join(""))
     || `<div class="val">No further record.</div>`;
   body.scrollTop = 0;
   const i = shownIds.indexOf(id);
@@ -395,6 +408,11 @@ groupsEl.addEventListener("keydown", e => {
   if (c && (e.key === "Enter" || e.key === " ")){ e.preventDefault(); openRecord(c.dataset.id); }
 });
 document.getElementById("recClose").addEventListener("click", () => dlg.close());
+// A person named inside a record opens their record in place.
+document.getElementById("recFields").addEventListener("click", e => {
+  const a = e.target.closest("a[data-open]");
+  if (a && byId[a.dataset.open]){ e.preventDefault(); openRecord(a.dataset.open); }
+});
 document.getElementById("recPrev").addEventListener("click", () => step(-1));
 document.getElementById("recNext").addEventListener("click", () => step(1));
 document.querySelectorAll("#recViews .chip").forEach(c => c.addEventListener("click", () => showView(byId[openId], c.dataset.view)));
@@ -465,8 +483,15 @@ try {
 } catch (e) {}
 render("", currentRank, currentShow);
 try {
-  const openParam = new URLSearchParams(location.search).get("open");
+  const params = new URLSearchParams(location.search);
+  const openParam = params.get("open");
   if (openParam && byId[openParam]) openRecord(openParam);
+  // A record opened from another ledger closes back to it. Only known ledger
+  // keys are honoured, so the parameter can never send the page anywhere else.
+  const back = {guild: "{{ledger:guild}}"}[params.get("from")];
+  if (back && dlg.open) dlg.addEventListener("close", () => {
+    if (history.length > 1) history.back(); else location.href = back;
+  }, {once: true});
 } catch (e) {}
 
 // Group nav: one chip per group, jumps straight to it, clearing any active

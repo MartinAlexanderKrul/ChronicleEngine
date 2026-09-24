@@ -4161,7 +4161,6 @@ canonical_state:
   photo: "assets/places/Detroit_HQ_Campus_ENT-000343.png"
   photo_alt: "assets/places/Detroit_HQ_Campus_ENT-000343_dusk.png"
   gallery:
-    - {path: "assets/places/Detroit_HQ_aerial_ENT-000343.png", caption: "The campus from above"}
     - {path: "assets/places/Detroit_HQ_main_building_ENT-000343.png", caption: "Main building · brick"}
     - {path: "assets/places/Detroit_HQ_glass_wing_ENT-000343.png", caption: "Glass wing"}
     - {path: "assets/places/Detroit_HQ_yard_ENT-000343.png", caption: "Training yard"}
@@ -6528,6 +6527,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Chicago office, striker"
   home: "Chicago, USA"
+  appearance: "**Authored 2026-09-24 (real date), for portrait reference — no physical description existed in canon prior to this note.** Late twenties, Japanese-American, medium height and athletic, a striker's build kept honest by work rather than a gym. Black hair short at the sides and longer on top; dark-brown eyes; an open, boyish face that shows gratitude before he thinks to hide it. A guild training top with the Pendragon dragon-head pin, a new B-Rank vest over it still stiff from the box. Expression warm and a little starstruck. Reference setting: the Pendragon Guild HQ in Detroit, a gear room with steel lockers blurred behind him, bright even light."
   location: "Detroit HQ, on a training rotation."
   rank: "[B-Rank] — Flux Sight, `EVT-001166`."
   role: "Striker, Chicago office, on a training rotation at HQ."
@@ -6567,7 +6567,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — New York office, A-Rank crew commander"
   home: "New York, USA"
-  appearance: "Mid-forties, Black, broad through the chest and shoulders, heavy forearms. Close-cut hair gone grey at the temples, a neat moustache. A pressed guild work jacket worn over a plain T-shirt, sleeves pushed up; a steel watch he checks more than he needs to."
+  appearance: "Mid-forties, Black, broad through the chest and shoulders, heavy forearms. Close-cut hair gone grey at the temples, a neat moustache. A pressed guild work jacket worn over a plain T-shirt, sleeves pushed up; a steel watch he checks more than he needs to. **Extended 2026-09-24 (real date), for portrait reference:** Dark-brown eyes set in a steady, lined face. The Pendragon dragon-head pin on the jacket's chest. Reference setting: the Pendragon Guild New York office, a crew briefing room with a wall screen blurred behind him, cool overhead light."
   location: "The Pendragon Guild New York office."
   rank: "[A-Rank] — card on the guild registry; not read by Flux Sight."
   role: "Commander of the New York A-Rank crew; goes in with it."
@@ -6609,7 +6609,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Houston office, A-Rank crew commander"
   home: "Houston, USA"
-  appearance: "Late thirties, Mexican-American, compact and quick. Dark hair in a tight braid, a scar through the left eyebrow, laugh lines she doesn't hide. Guild jacket open over a work vest bristling with pockets; scuffed boots."
+  appearance: "Late thirties, Mexican-American, compact and quick. Dark hair in a tight braid, a scar through the left eyebrow, laugh lines she doesn't hide. Guild jacket open over a work vest bristling with pockets; scuffed boots. **Extended 2026-09-24 (real date), for portrait reference:** Warm dark-brown eyes. The Pendragon dragon-head pin on the open jacket. Reference setting: the Pendragon Guild Houston office, a loading bay with gear crates blurred behind her, hazy Gulf daylight."
   location: "The Pendragon Guild Houston office."
   rank: "[A-Rank] — card on the guild registry; not read by Flux Sight."
   role: "Commander of the Houston A-Rank crew; goes in with it."
@@ -6651,7 +6651,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — London office, A-Rank crew commander"
   home: "London, United Kingdom"
-  appearance: "Early forties, white, tall and angular, fair hair pinned back without fuss. Grey eyes, a long face that settles into polite scepticism. A tailored dark waxed jacket over the guild shirt; reading glasses on a cord she uses as a pointer."
+  appearance: "Early forties, white, tall and angular, fair hair pinned back without fuss. Grey eyes, a long face that settles into polite scepticism. A tailored dark waxed jacket over the guild shirt; reading glasses on a cord she uses as a pointer. **Extended 2026-09-24 (real date), for portrait reference:** The Pendragon dragon-head pin on the jacket's lapel. Reference setting: the Pendragon Guild London office, a brick-walled operations room blurred behind her, soft grey London daylight."
   location: "The Pendragon Guild London office."
   rank: "[A-Rank] — card on the guild registry; not read by Flux Sight."
   role: "Commander of the London A-Rank crew; goes in with it."
@@ -6693,7 +6693,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Amsterdam office, A-Rank crew commander"
   home: "Amsterdam, the Netherlands"
-  appearance: "Mid-thirties, white, very tall and rangy, sandy hair cropped close, a sunburned nose. Pale blue eyes that go to the exits first. Plain dark rain shell over the guild shirt, a bicycle clip still on one trouser leg."
+  appearance: "Mid-thirties, white, very tall and rangy, sandy hair cropped close, a sunburned nose. Pale blue eyes that go to the exits first. Plain dark rain shell over the guild shirt, a bicycle clip still on one trouser leg. **Extended 2026-09-24 (real date), for portrait reference:** The Pendragon dragon-head pin on the rain shell's collar. Reference setting: the Pendragon Guild Amsterdam office, a canal-side street with parked bicycles blurred behind him, cool wet overcast light."
   location: "The Pendragon Guild Amsterdam office."
   rank: "[A-Rank] — card on the guild registry; not read by Flux Sight."
   role: "Commander of the Amsterdam A-Rank crew; goes in with it."
@@ -6735,7 +6735,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Miami office, A-Rank crew commander"
   home: "Miami, USA"
-  appearance: "About forty, Cuban-American, sturdy and sun-dark, curly black hair tied up under a cap. Gold hoops, a chipped front tooth, forearms mapped with old burn scars. Guild jacket tied round her waist in the heat."
+  appearance: "About forty, Cuban-American, sturdy and sun-dark, curly black hair tied up under a cap. Gold hoops, a chipped front tooth, forearms mapped with old burn scars. Guild jacket tied round her waist in the heat. **Extended 2026-09-24 (real date), for portrait reference:** Dark-brown eyes and a direct, amused stare. The Pendragon dragon-head pin on the guild shirt. Reference setting: the Pendragon Guild Miami office, a sunlit equipment yard with palms blurred behind her, bright hard Florida light."
   location: "The Pendragon Guild Miami office."
   rank: "[A-Rank] — card on the guild registry; not read by Flux Sight."
   role: "Commander of the Miami A-Rank crew; goes in with it."
@@ -6777,7 +6777,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Seattle office, A-Rank crew commander (the West Coast crew)"
   home: "Seattle, USA"
-  appearance: "Mid-thirties, Japanese-American, lean and weathered, black hair grown out and tied back. A thin beard, a permanent squint from years outdoors. Faded flannel over the guild shirt, a battered thermos always in hand."
+  appearance: "Mid-thirties, Japanese-American, lean and weathered, black hair grown out and tied back. A thin beard, a permanent squint from years outdoors. Faded flannel over the guild shirt, a battered thermos always in hand. **Extended 2026-09-24 (real date), for portrait reference:** Dark-brown eyes. The Pendragon dragon-head pin on the guild shirt's collar. Reference setting: the Pendragon Guild Seattle office, rain-streaked windows over a grey harbour blurred behind him, soft overcast Pacific Northwest light."
   location: "The Pendragon Guild Seattle office."
   rank: "[A-Rank] — card on the guild registry; not read by Flux Sight."
   role: "Commander of the West Coast A-Rank crew; goes in with it."
@@ -6819,7 +6819,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Tel Aviv office, A-Rank crew commander"
   home: "Tel Aviv, Israel"
-  appearance: "Mid-forties, Israeli, thickset and bald by choice, a salt-and-pepper beard. Heavy-lidded eyes that miss nothing. Olive field jacket over the guild shirt, sleeves rolled, sandals off-duty."
+  appearance: "Mid-forties, Israeli, thickset and bald by choice, a salt-and-pepper beard. Heavy-lidded eyes that miss nothing. Olive field jacket over the guild shirt, sleeves rolled, sandals off-duty. **Extended 2026-09-24 (real date), for portrait reference:** Dark eyes. The Pendragon dragon-head pin on the field jacket. Reference setting: the Pendragon Guild Tel Aviv office, a pale stone briefing room blurred behind him, bright Mediterranean daylight."
   location: "The Pendragon Guild Tel Aviv office."
   rank: "[A-Rank] — card on the guild registry; not read by Flux Sight."
   role: "Commander of the Tel Aviv A-Rank crew; goes in with it."
@@ -6861,7 +6861,7 @@ aliases:
 canonical_state:
   affiliation: "Pendragon Guild — Paris office, A-Rank crew commander (the Continental Europe crew)"
   home: "Paris, France"
-  appearance: "Late thirties, white, slight and upright, dark bob cut sharp at the jaw. Brown eyes, a thin old scar across the knuckles of her right hand. A fitted navy coat over the guild shirt, a scarf even in September."
+  appearance: "Late thirties, white, slight and upright, dark bob cut sharp at the jaw. Brown eyes, a thin old scar across the knuckles of her right hand. A fitted navy coat over the guild shirt, a scarf even in September. **Extended 2026-09-24 (real date), for portrait reference:** The Pendragon dragon-head pin on the coat's lapel. Reference setting: the Pendragon Guild Paris office, tall windows and Haussmann stone blurred behind her, soft Paris daylight."
   location: "The Pendragon Guild Paris office."
   rank: "[A-Rank] — card on the guild registry; not read by Flux Sight."
   role: "Commander of the Continental Europe A-Rank crew; goes in with it."

@@ -73,7 +73,7 @@ subjects: []
 7. **Partial successes open taught candidates.** This span applied the `EVT-000988` precedent (a partial qualifies) after a first narration had held partials back; if you want partials not to open candidates, that is a ruling, not the default.
 8. **A champion who crosses to Earth** (ruled `EVT-001170`: may cross, 10% of maximum Mana an hour, no recovery). **Open:** what happens when that pool reaches zero; and a transcription into `270_THE_FAR_SIDE.md` Section 5 is owed.
 9. **A champion killed on Earth is outside the Long Shelf's channel** (`EVT-001174`). A transcription into `270_THE_FAR_SIDE.md` Section 4.4 is owed.
-10. **Mender, artificer and sensor counts for Ranks E to B.** The A-Rank split is ruled (`EVT-001177`: 12 / 12 / 14, sensors combat-capable); the rest of the registry is still the stale `EVT-001134` read at 2,817 members.
+10. **Mender, artificer and sensor counts for Ranks E to B — RULED 2026-09-24 (real date).** `151_HUNTER_POPULATION_MODEL.md` Section 5 applies the `EVT-001134` per-Rank rates to current membership, with sensors at the A-Rank rate. Section 6 sets team composition: strikers are 5 at E and D and the legal minimum +1 at C, B and A (5, 9, 17), plus a mender and a sensor at every Rank; miners go with C, B and A teams only. Section 7 gives each office's Section 13.7.5 status. Closed.
 
 ```yaml
 provisional_mechanics: []

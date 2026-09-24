@@ -203,8 +203,8 @@ items:
   "Heartward Sigil [S-Rank], Boss-Imprinted (Arcane/Affliction)": Accessory
   "Hunter's Band [S-Rank], Boss-Imprinted": Accessory
   "Hunter’s Band [A-Rank]": Accessory
-  "Hunter’s Band [E-Rank]  (opened)": Accessory
-  "Hunter’s Band [E-Rank]  (untouched)": Accessory
+  "Hunter’s Band [E-Rank] (opened)": Accessory
+  "Hunter’s Band [E-Rank] (untouched)": Accessory
   "Keyed document wallet [C-Rank]": Tool
   "Longsword [B-Rank]": Weapon
   "Longsword [S-Rank]": Weapon
@@ -213,7 +213,7 @@ items:
   "Longsword [S-Rank], Boss-Imprinted (Carapaced/Guard)": Weapon
   "Mana Reservoir [C-Rank]": Tool
   "Mana-null disc [E-Rank]": Tool
-  "Mana-storage cell [capacity 750, ceiling reached]": Tool
+  "Mana-storage cell": Tool
   "Mindspun Loop [S-Rank]": Accessory
   "Quickknife [A-Rank]": Weapon
   "Quickknife [B-Rank]": Weapon
@@ -224,8 +224,6 @@ items:
   "Quickstep Charm [S-Rank]": Accessory
   "Reacharm [B-Rank]": Weapon
   "Reacharm [S-Rank] (third)": Weapon
-  "Rune — Dagger Mastery [S-Rank], unbound-awakened": Weapon
-  "Rune — Stone Skin [A-Rank], unbound-awakened": Armor
   "Seer's Lens [D-Rank], fused": Accessory
   "Suppression Emitter [E-Rank]": Tool
   "Titan Coif [A-Rank], Boss-Imprinted (Brute/Impact)": Armor

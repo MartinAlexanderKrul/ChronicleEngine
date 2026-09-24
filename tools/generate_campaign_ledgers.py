@@ -111,6 +111,8 @@ def split_sentences(text):
         elif ch == ")" and not tick:
             depth = max(0, depth - 1)
         buf += ch; i += 1
+        if ch == "." and (text[i:i + 1].isdigit() or re.search(r"(?<![A-Za-z])(?:eff|approx|vs|e\.g|i\.e)\.$", buf)):
+            continue                     # a decimal point ("×1.85") or an abbreviation ("at eff.")
         if ch in ".;" and depth == 0 and not tick and not bold:
             parts.append(buf.strip()); buf = ""
     if buf.strip():
@@ -214,7 +216,7 @@ SLOT_LABEL = {"main_hand": "Main Hand", "off_hand": "Off Hand", "head": "Head",
               "accessory": "Accessory"}
 GROUP_CAT = {"keys": "Key", "consumables": "Consumable", "special": "Special",
              "custody": "Custody", "materials": "Material"}
-QTY = re.compile("(?:" + chr(0xD7) + "|x)\s?([0-9][0-9,]*)", re.I)
+QTY = re.compile("(?:" + chr(0xD7) + r"|x)\s?([0-9][0-9,]*)", re.I)
 RANKED = re.compile(r"\[([SABCDE])-Rank\]")
 
 
@@ -232,47 +234,148 @@ def strip_bold_name(row):
     return text.strip().strip("*"), ""
 
 
-def parse_item(row, group, cat_of):
-    name, body = strip_bold_name(row)
-    rank_m = RANKED.search(name)
-    rank = rank_m.group(1) if rank_m else ""
-    qty_m = QTY.search(name)
-    qty = qty_m.group(1) if qty_m else ""
-    clean = QTY.sub("", name).replace("**", "").strip(" " + chr(0x2014) + ",")
+# An item row is canon prose: bonuses, where it came from, what it is, and
+# whether it is banked, run together. The card separates them, the way the skill
+# ledger does: STAT segments become chips, HISTORY segments (where it came from,
+# with their Event ids) a small footer line, a STATUS-only segment the tag, and
+# everything else the description. Nothing is dropped: the character count is
+# checked exactly as for skills.
+STAT_PAT = re.compile(
+    r"(?:Strength|Agility|Intelligence|Vitality|Perception|Sense|Mana|Health)\s*[+" + chr(0x2212) + r"-]\s*\d"
+    r"|\d+%\s*reduction|reduction\s*\d+%|power\s*\d+|DMG\s*[\d,]+|strike\s*" + chr(0xD7) +
+    r"|chassis\s*" + chr(0xD7) + r"|capacity\s*\d+|^two-handed$", re.I)
+HIST_PAT = re.compile(
+    r"EVT-\d|OBJ-\d|F-\d{3}|\bbought\b|\bdrop\b|\bdropped\b|\brecovered\b|\breclaimed\b|\bforged\b|\bfused\b|\bmerged\b"
+    r"|\bwas \d|this span|\btaken\b|\breturned\b|\bfound\b|bonus loot|\bharvest|Daily (?:Random|Premium)|Box #"
+    r"|\$[\d,]+|[\d,]+ g\b|\bfrom (?:the|a|an|two|Graciela|Walt)\b|Walt Adamik|_CHRONICLE|_CHANGELOG|_INVENTORY|_NPCS"
+    r"|Full (?:account|provenance)|Account:|Chains:|[Bb]ackfilled|corrected here|shrine bonus|cache", re.I)
+STATUS_WORDS = r"(?:banked|held|unused|intact|unequipped|unsold|unbound|equipped|retained|unwithdrawn|retired|spent|undecided)"
+STATUS_ONLY = re.compile(r"^(?:%s[\s,]*)+(?:\(?EVT-\d+\)?)?\.?$" % STATUS_WORDS, re.I)
+LEAD_PAREN = re.compile(r"^\(([^()]{1,40})\)\s*[" + chr(0x2014) + r"-]*\s*")
 
+
+def plain_len(text):
+    return len(re.sub(r"[^\w%+" + chr(0xD7) + chr(0x2248) + "]", "", re.sub(r"<[^>]+>", "", text)))
+
+
+def item_parts(body, names):
+    """Split an item's canon body into chips, description, history and status."""
+    chips, desc, hist, status = [], [], [], []
+    sentence = []
+    lead = LEAD_PAREN.match(body)
+    if lead:
+        status.append(lead.group(1))
+        body = body[lead.end():]
+    for sent in split_sentences(body):
+        if sentence:
+            desc.append((" " + chr(0xB7) + " ").join(sentence))
+            sentence = []
+        for seg in [x.strip() for x in sent.split(" " + chr(0xB7) + " ") if x.strip()]:
+            plain = re.sub(r"[*`]", "", seg).strip()
+            # "DMG 5,526 at eff. Strength 2,965 (re-derived, EVT-001108)": the
+            # figure is a chip, and only its citation is history.
+            cited = re.match(r"^(.*?)\s*\(([^()]*EVT-\d+[^()]*)\)\s*\.?$", plain)
+            if cited and STAT_PAT.search(cited.group(1)) and not HIST_PAT.search(cited.group(1)):
+                head = re.match(r"^(.*?)\s*\((?:[^()]*EVT-\d+[^()]*)\)\s*\.?$", seg).group(1)
+                chips.append(head)
+                hist.append("%s: %s" % (re.sub(r"<[^>]+>|[*]", "", head).split(" at ")[0], cited.group(2)))
+                continue
+            if STATUS_ONLY.match(plain):
+                status.append(plain.rstrip("."))
+            elif STAT_PAT.search(plain) and not HIST_PAT.search(plain) and len(plain) < 110:
+                parts = [x.strip() for x in re.split(r",\s+|;\s+", seg.rstrip(".;")) if x.strip()]
+                chips += parts if all(len(x) < 44 for x in parts) else [seg.rstrip(".;")]
+            elif HIST_PAT.search(plain):
+                hist.append(seg)
+            else:
+                sentence.append(seg)
+    if sentence:
+        desc.append((" " + chr(0xB7) + " ").join(sentence))
+    desc = [d.rstrip(";,") + ("" if d.rstrip(";,").endswith((".", "!", "?", ".'", ".)")) else ".") for d in desc]
+    desc = [d[:1].upper() + d[1:] for d in desc]
+    hist = [h.rstrip(";,.") for h in hist]
+    fix = lambda t: resolve_ents(mdi(t), names)
+    return {"chips": [fix(c) for c in chips], "desc": fix(" ".join(desc).strip()),
+            "hist": fix((" " + chr(0xB7) + " ").join(hist) + ("." if hist else "")), "status": " ".join(status)}
+
+
+def clean_name(name, names):
+    rank_m = RANKED.search(name)
+    qty_m = QTY.search(name)
+    extra = []
+    clean = QTY.sub("", RANKED.sub("", name)).replace("**", "")
+    zero = re.search(r"\s*" + chr(0x2014) + r"\s*0\.?\s*$", clean)
+    if zero:
+        clean = clean[:zero.start()]
+    for m in re.finditer(r"\(([^()]*)\)", clean):
+        if re.fullmatch(r"(?:%s[\s,]*)+" % STATUS_WORDS, m.group(1).strip(), re.I):
+            extra.append(m.group(1).strip())
+            clean = clean.replace(m.group(0), "")
+    clean = re.sub(r"\s+", " ", clean).replace(" ,", ",").strip(" " + chr(0x2014) + ",")
+    if qty_m:
+        clean = re.sub(r"\s*\blots?\b\s*$", "", clean).strip()
+    clean = ENT_BARE.sub(lambda m: names.get(m.group(1), m.group(1)), clean.replace("`", ""))
+    return (clean, rank_m.group(1) if rank_m else "",
+            0 if zero else int(qty_m.group(1).replace(",", "")) if qty_m else 1, " ".join(extra))
+
+
+def item_tag(text, group):
+    low = text.lower()
+    return ("equipped" if group == "equipped" or ("equipped" in low and "unequipped" not in low) else
+            "custody" if group == "custody" or "held by" in low else
+            "earmarked" if "earmark" in low else
+            "spent" if re.search(r"\bspent\b", low) else
+            "retired" if "retired" in low else
+            "banked" if "banked" in low or "unequipped" in low else "")
+
+
+def parse_item(row, group, cat_of, names):
+    name, body = strip_bold_name(row)
+    clean, rank, qty, name_status = clean_name(name, names)
     cat = GROUP_CAT.get(group)
     missing = None
     if cat is None:                      # gear: needs a taxonomy row
-        cat = cat_of.get(clean)
+        lookup = QTY.sub("", name).replace("**", "").strip(" " + chr(0x2014) + ",")
+        cat = cat_of.get(lookup)
         if cat is None:
-            missing = clean
-
-    stats, desc = [], []
-    for sent in split_sentences(body):
-        (stats if FIG_PAT.search(sent.replace("**", "")) and not stats else desc).append(sent)
-    low = body.lower()
-    tag = ("equipped" if "equipped" in low and "unequipped" not in low else
-           "custody" if group == "custody" or "held by" in low else
-           "earmarked" if "earmark" in low else
-           "banked" if "banked" in low or "unequipped" in low else "")
-
-    rec = {"cat": cat, "name": clean + ((" " + chr(0xD7) + " " + qty) if qty else ""),
-           "rank": rank, "stats": md(" ".join(stats).strip()),
-           "desc": md(" ".join(desc).strip()), "tag": tag}
-    kept = len(re.sub(r"\s+", "", rec["stats"] + rec["desc"]))
-    total = len(re.sub(r"\s+", "", body))
-    rec["_loss"] = total - kept
+            missing = lookup
+    parts = item_parts(body, names)
+    status = (name_status + " " + parts.pop("status")).strip()
+    rec = dict(parts, cat=cat, name=clean, rank=rank, qty=qty,
+               tag="sold" if qty == 0 else item_tag(row + " " + status, group))
+    kept = sum(plain_len(x) for x in [rec["desc"], rec["hist"], status] + rec["chips"])
+    rec["_loss"] = plain_len(resolve_ents(md(body), names)) - kept
     rec["_missing"] = missing
     return rec
 
 
-def build_inventory(state, assets, taxonomy, campaign):
+def reduction_panel(text, names):
+    """The worn-reduction line is a summary, not an item: its figure, what it
+    rests on, the Echoes it carries, and the rest as notes."""
+    raw = strip_bold_name(text)
+    whole = (raw[0] + " " + raw[1]).strip()
+    m = re.match(r"^\*{0,2}(" + chr(0x2248) + r"?[\d.]+%)\*{0,2}\s*(?:\(([^()]*)\))?\s*", whole)
+    value, basis, rest = (m.group(1), m.group(2) or "", whole[m.end():]) if m else ("", "", whole)
+    echoes = []
+    echo_note = ""
+    em = re.search(r"Echoes:\s*(.+?)\s+" + chr(0x2014) + r"\s+([^.]*)\.?", rest)
+    if em:
+        echoes = [x.strip() for x in em.group(1).split(",")]
+        echo_note = em.group(2).strip()
+        rest = rest[:em.start()] + rest[em.end():]
+    rest = re.sub(r"\s{2,}", " ", rest)
+    return {"value": value, "basis": resolve_ents(md(basis), names), "echoes": [md(e) for e in echoes],
+            "echoNote": md(echo_note[:1].upper() + echo_note[1:]),
+            "notes": resolve_ents(md(rest.strip(" " + chr(0x2014) + ".")), names)}
+
+
+def build_inventory(state, assets, taxonomy, campaign, names):
     cat_of = taxonomy.get("items", {}) or {}
     inv = state.get("inventory", {}) or {}
     items, missing = [], []
     for group, rows in inv.items():
         for row in (rows if isinstance(rows, list) else []):
-            rec = parse_item(row, group, cat_of)
+            rec = parse_item(row, group, cat_of, names)
             if rec["_missing"]:
                 missing.append(rec["_missing"])
             items.append(rec)
@@ -287,17 +390,12 @@ def build_inventory(state, assets, taxonomy, campaign):
     equip = dict(state.get("equipment", {}) or {})
     total_reduction = equip.pop("total_physical_reduction", "")
     for slot, text in equip.items():
-        nm, body = strip_bold_name(text)
-        rm = RANKED.search(nm)
-        stats, desc = [], []
-        for sent in split_sentences(body):
-            (stats if FIG_PAT.search(sent.replace("**", "")) and not stats else desc).append(sent)
-        equipped.append({"slot": SLOT_LABEL.get(slot, slot.replace("_", " ").title()),
-                         "name": RANKED.sub("", nm).replace("**", "").strip(" ,"),
-                         "rank": rm.group(1) if rm else "",
-                         "stats": md(" ".join(stats).strip()),
-                         "desc": md(" ".join(desc).strip())})
-    return items, equipped, [], md(strip_bold_name(total_reduction)[0] + " " + strip_bold_name(total_reduction)[1]).strip()
+        rec = parse_item(text, "equipped", {}, names)
+        rec.pop("_missing")
+        rec.pop("cat")
+        rec["slot"] = SLOT_LABEL.get(slot, slot.replace("_", " ").title())
+        equipped.append(rec)
+    return items, equipped, [], reduction_panel(total_reduction, names)
 
 
 # The NPC ledger reads every Character record in the campaign's NPC ledger and
@@ -395,6 +493,50 @@ def summary_line(value, limit=240):
     return mdi(escape(first))
 
 
+# Canon cites people and places by id ("Chicago (ENT-000087)", or a bare
+# `ENT-000087`). A page is read by a person, so every id is shown as its name:
+# a citation that follows the name it cites is dropped, anything else becomes
+# the name, and a Character's name in a full record links to that record.
+ENT_CITE = re.compile(r"\s*\((?:<code>)?(ENT-\d{6})(?:</code>)?\)")
+ENT_BARE = re.compile(r"(?:<code>)?(ENT-\d{6})(?:</code>)?")
+
+
+def entity_index(root, camp):
+    """ENT id -> current name, over every live record in the world and campaign."""
+    paths = [os.path.join(camp, f) for f in os.listdir(camp) if f.endswith(".md")]
+    for base, _, files in os.walk(os.path.join(root, "worlds", "gatefall")):
+        paths += [os.path.join(base, f) for f in files if f.endswith(".md") and "migrations" not in base]
+    names = {}
+    for path in paths:
+        for block in re.findall(r"```yaml\n(.*?)\n```", io.open(path, encoding="utf-8").read(), re.S):
+            m = re.search(r"^id: (ENT-\d{6})\s*$", block, re.M)
+            if not m or m.group(1) in names:
+                continue
+            alias = (re.search(r'^\s*- name: "?([^"\n]+?)"?\s*\n\s*quality: current', block, re.M)
+                     or re.search(r'^\s*- name: "?([^"\n]+?)"?\s*$', block, re.M))
+            if alias:
+                names[m.group(1)] = alias.group(1).strip()
+    # A record with no alias ("unnamed Assay enforcer") is known by its heading.
+    for path in paths:
+        for m in re.finditer(r"^### (ENT-\d{6}) [-" + chr(0x2014) + r"] (.+)$", io.open(path, encoding="utf-8").read(), re.M):
+            names.setdefault(m.group(1), m.group(2).strip())
+    return names
+
+
+def resolve_ents(html, names, chars=None):
+    def label(ent):
+        name = escape(names[ent])
+        return '<a href="?open=%s" data-open="%s">%s</a>' % (ent, ent, name) if chars and ent in chars else name
+
+    def cite(m):
+        ent = m.group(1)
+        if ent not in names:
+            return m.group(0)
+        return "" if escape(names[ent]) in m.string[max(0, m.start() - 160):m.start()] else " (%s)" % label(ent)
+    html = ENT_CITE.sub(cite, html)
+    return ENT_BARE.sub(lambda m: label(m.group(1)) if m.group(1) in names else m.group(0), html)
+
+
 # A published ledger is the `assets/` folder on its own, so a world figure's
 # portrait -- which lives with the world, not the campaign -- is mirrored into
 # this folder. The generator owns it outright: a copy nothing references is
@@ -473,9 +615,13 @@ def build_npcs(root, camp, assets):
                 "fields": [[k.replace("_", " "), npc_value(state[k])] for k in keys
                            if state[k] not in (None, "")],
             }
+    names = entity_index(root, camp)
     for ent, rec in npcs.items():
         rec["rels"] = [{"type": str(r.get("type", "")).replace("-", " "),
-                        "text": npc_value(r.get("qualities", ""))} for r in rels.get(ent, [])]
+                        "text": resolve_ents(npc_value(r.get("qualities", "")), names, npcs)} for r in rels.get(ent, [])]
+        for key in ("aff", "home", "loc", "cond", "role"):
+            rec[key] = resolve_ents(rec[key], names)
+        rec["fields"] = [[k, resolve_ents(v, names, npcs)] for k, v in rec["fields"]]
     return sorted(npcs.values(), key=lambda r: r["name"].lower()), failures, mirror
 
 
@@ -510,10 +656,12 @@ GUILD = "Pendragon Guild"
 DASH = " " + chr(0x2014) + " "
 
 
-def md_tables(text, heading):
+def md_tables(text, heading, prefix=False):
     """Rows of every pipe table under `## heading`, as dicts, plus the prose
-    paragraphs between them."""
-    m = re.search(r"^## %s\s*$(.*?)(?=^## |\Z)" % re.escape(heading), text, re.M | re.S)
+    paragraphs between them. With `prefix`, the heading need only start so --
+    151's ruled sections carry their ruling date in the heading itself."""
+    m = re.search(r"^## %s%s$(.*?)(?=^## |\Z)" % (re.escape(heading), r".*?" if prefix else r"\s*"),
+                  text, re.M | re.S)
     if not m:
         return None, []
     rows, notes, head = [], [], None
@@ -532,6 +680,121 @@ def md_tables(text, heading):
 def plain_int(cell):
     digits = re.sub(r"[^0-9]", "", cell.split("(")[0])
     return int(digits) if digits else 0
+
+
+# The roles, the teams and each branch's 13.7.5 status are 151's Sections 5-7.
+# Only the guild-wide role counts are canon; the per-office split is spread by
+# largest remainder over each office's cards at that Rank, and the page says so.
+ROLES = ("strikers", "menders", "sensors", "artificers")
+
+
+def spread(total, weights):
+    """Largest-remainder apportionment of `total` over `weights`, ties to the
+    earlier office, so the split is stable and always sums to the canon count."""
+    whole = sum(weights)
+    if not whole:
+        return [0] * len(weights)
+    exact = [total * w / whole for w in weights]
+    out = [int(x) for x in exact]
+    for i in sorted(range(len(weights)), key=lambda i: (-(exact[i] - out[i]), i))[:total - sum(out)]:
+        out[i] += 1
+    return out
+
+
+def teams_of(rule, roles):
+    """Full teams a set of cards at one Rank fields under one composition row."""
+    if not rule["strikers"]:
+        return 0
+    n = roles["strikers"] // rule["strikers"]
+    if rule["support"] == "both":
+        n = min(n, roles["menders"], roles["sensors"])
+    return n
+
+
+def build_strength(model, offices, by_name, failures):
+    reg, _ = md_tables(model, "5. Role registry by Rank", prefix=True)
+    comp, _ = md_tables(model, "6. Standing team composition", prefix=True)
+    ops, _ = md_tables(model, "7. Branch operations", prefix=True)
+    if not reg or not comp or not ops:
+        failures.append("151_HUNTER_POPULATION_MODEL.md lacks Section 5, 6 or 7 (roles, teams, branch operations)")
+        return None
+    registry = {}
+    for r in reg:
+        rank = r["Rank"].replace("*", "").strip()
+        if rank not in "EDCBAS" or len(rank) != 1:
+            continue
+        row = {k: plain_int(r[k.capitalize()]) for k in ROLES}
+        cards = plain_int(r["Cards"])
+        if sum(row.values()) != cards:
+            failures.append("151 Section 5: Rank %s roles sum to %d but the row states %d cards" % (rank, sum(row.values()), cards))
+        stated = sum(o["ranks"][rank] for o in offices)
+        if cards != stated:
+            failures.append("151 Section 5: Rank %s holds %d cards but Section 3's offices hold %d" % (rank, cards, stated))
+        registry[rank] = dict(row, cards=cards)
+
+    rules = {}
+    for r in comp:
+        rank = r["Rank"].replace("*", "").strip()
+        if rank not in registry:
+            continue
+        rules[rank] = {"strikers": plain_int(r["Strikers"]) if r["Strikers"][:1].isdigit() else 0,
+                       "support": "both" if r["Mender + sensor"].startswith("1") else "none",
+                       "text": mdi(escape(r["Strikers"]))}
+        stated = plain_int(r["Full teams, guild-wide"]) if r["Full teams, guild-wide"][:1].isdigit() else 0
+        got = teams_of(rules[rank], registry[rank])
+        if got != stated:
+            failures.append("151 Section 6: Rank %s composition fields %d teams from Section 5, but the row states %d" % (rank, got, stated))
+        rules[rank]["teams"] = got
+
+    names = [o["name"] for o in offices]
+    split = {o["name"]: {} for o in offices}
+    for rank, row in registry.items():
+        weights = [o["ranks"][rank] for o in offices]
+        parts = {k: spread(row[k], weights) for k in ("menders", "sensors", "artificers")}
+        for i, name in enumerate(names):
+            cell = {k: parts[k][i] for k in parts}
+            cell["strikers"] = weights[i] - sum(cell.values())
+            if cell["strikers"] < 0:
+                failures.append("derived split leaves %s with negative %s-Rank strikers" % (name, rank))
+            split[name][rank] = cell
+
+    by_office = {o["name"]: o for o in offices}
+    rows = []
+    for r in ops:
+        name = r["Office"].replace("*", "").strip()
+        if name not in by_office:
+            failures.append("151 Section 7 names an office Section 3 does not hold: %s" % name)
+            continue
+        crews = []
+        for c in [x.strip() for x in r["A-Rank crew based here"].split(";")]:
+            if c and c not in ("—", "-"):
+                who = c.split(" (")[0].strip()
+                crews.append({"name": who, "note": c[len(who):].strip(" ()"), "id": by_name[who]["id"] if who in by_name else "",
+                              "portrait": by_name[who]["portrait"] if who in by_name else ""})
+        cond = [r[k].lower().startswith("yes") for k in ("1", "2", "3")] + [r["4 — regulator"].lower().startswith("accepted")]
+        tunnel = r["Tunnel"].lower().startswith("open")
+        by_office[name]["ops"] = {
+            "officer": escape(r["Dispatching officer"]),
+            "officerId": by_name[r["Dispatching officer"]]["id"] if r["Dispatching officer"] in by_name else "",
+            "cond": cond, "regulator": mdi(escape(r["4 — regulator"])), "tunnel": tunnel,
+            "tunnelText": mdi(escape(r["Tunnel"])), "operational": all(cond),
+            "missing": [label for ok, label in zip(cond, ("a dispatching officer", "round-the-clock cover",
+                                                          "a legal bench", "regulator acceptance")) if not ok],
+            "crews": crews,
+        }
+    for o in offices:
+        if "ops" not in o:
+            failures.append("151 Section 7 has no row for the %s office" % o["name"])
+            continue
+        o["roles"] = split[o["name"]]
+        o["teams"] = {rank: teams_of(rules[rank], split[o["name"]][rank]) for rank in "EDCB" if rank in rules}
+        o["teams"]["A"] = len(o["ops"]["crews"])
+    crews = sum(len(o.get("ops", {}).get("crews", [])) for o in offices)
+    if "A" in rules and crews != rules["A"]["teams"]:
+        failures.append("151 Section 7 bases %d A-Rank crews but Section 6 fields %d" % (crews, rules["A"]["teams"]))
+    # 151's prose is written for whoever maintains the model, not for the page:
+    # the cards carry the numbers and the status, so no paragraph is copied over.
+    return {"registry": registry, "rules": rules}
 
 
 def build_guild(camp, npcs, protagonist):
@@ -562,6 +825,7 @@ def build_guild(camp, npcs, protagonist):
     by_name = {re.sub(r"<[^>]+>", "", n["name"]): n for n in npcs}
     for o in offices:
         o["sNames"] = [{"name": s, "id": by_name[s]["id"] if s in by_name else ""} for s in o["sNames"]]
+    strength = build_strength(model, offices, by_name, failures)
     groups = {k: [] for k in ("leadership", "board", "hq", "pool", "advisers", "artificers", "founding", "members")}
     groups["leadership"].append(dict(protagonist, post="Founder"))
     groups["board"].append(dict(protagonist, post="Founder's seat"))
@@ -612,10 +876,22 @@ def build_guild(camp, npcs, protagonist):
     logo = re.search(r'^\s*logo:\s*"assets/(.+?)"', idm.group(1), re.M) if idm else None
     logo_rev = re.search(r'^\s*logo_reversed:\s*"assets/(.+?)"', idm.group(1), re.M) if idm else None
 
+    # Each office's named people -- staff, S-Ranks and commanders -- are tagged
+    # as an affiliation of their own, so the NPC ledger's filter and a card's
+    # link reach exactly them.
+    by_id = {n["id"]: n for n in npcs}
+    for o in offices:
+        ids = [x["id"] for x in o["staff"] + o["sNames"] + o.get("ops", {}).get("crews", []) if x.get("id")]
+        ids = [i for i in dict.fromkeys(ids) if i in by_id]
+        o["orgTag"] = "%s " % GUILD + chr(0xB7) + " %s" % o["name"]
+        o["named"] = len(ids)
+        for i in ids:
+            by_id[i]["orgs"].append(o["orgTag"])
+
     return {
         "offices": offices, "total": stated, "estTotal": total.get("Est. Licensed Hunters", "").replace("**", "") if total else "",
         "captureTotal": total.get("Capture %", "").replace("**", "") if total else "",
-        "roster": roster, "groups": groups,
+        "roster": roster, "groups": groups, "strength": strength,
         "cleared": cell(cleared), "clearedNotes": [mdi(escape(x)) for x in cleared_notes],
         "open": cell(open_), "rules": rules,
         "logo": logo.group(1) if logo else "", "logoReversed": logo_rev.group(1) if logo_rev else "",
@@ -695,6 +971,44 @@ def build_wealth(camp, assets):
         })
     properties.sort(key=lambda p: (p["tenure"] != "Owned", -float(p["price"].strip("$").replace(",", "") or 0)))
     return dict(funds, properties=properties), failures
+
+
+# Titles: which are earned and which are equipped is the sheet's; what each one
+# does and what earns it is the world profile's title tables (Sections 16.2 and
+# 16.4), which carry every rebase the sheet's own catalogue has not caught up with.
+# The design history in a passive ("(rebased at 1.101 ...)") stays in the profile.
+TITLE_HISTORY = re.compile(r"\s*\((?:rebased|widened|replaced|renamed|added)\b(?:[^()]|\([^()]*\))*\)", re.I)
+
+
+def title_catalog(profile_path):
+    text = io.open(profile_path, encoding="utf-8").read()
+    out = {}
+    for grade, body in re.findall(r"^### (\w+) titles\s*$(.*?)(?=^#{2,3} |\Z)", text, re.M | re.S):
+        for row in re.findall(r"^\| \*\*(.+?)\*\* \|(.+)$", body, re.M):
+            cells = [c.strip() for c in row[1].strip().strip("|").split(" | ")]
+            if len(cells) >= 2:
+                out[row[0]] = {"grade": grade, "earned": cells[0], "passive": TITLE_HISTORY.sub("", cells[1]).strip()}
+    return out
+
+
+def build_titles(sysst, profile_path):
+    catalog = title_catalog(profile_path)
+    equipped = [str(t) for t in (sysst.get("title") or [])]
+    earned = []
+    for row in (sysst.get("titles") or {}).get("earned_names") or []:
+        m = re.match(r"^(.+?) \[(\w+)", str(row))
+        if m:
+            earned.append(m.group(1))
+    missing = [t for t in dict.fromkeys(earned + equipped) if t not in catalog]
+    if missing:
+        return None, ["title(s) not defined in the world profile's title tables: %s" % ", ".join(missing)]
+    unheld = [t for t in equipped if t not in earned]
+    if unheld:
+        return None, ["title(s) equipped but not earned: %s" % ", ".join(unheld)]
+    card = lambda t: {"name": escape(t), "grade": catalog[t]["grade"],
+                      "passive": mdi(escape(catalog[t]["passive"])), "earned": mdi(escape(catalog[t]["earned"])),
+                      "equipped": t in equipped}
+    return [card(t) for t in equipped] + [card(t) for t in earned if t not in equipped], []
 
 
 # The index states which build it is, so a page open in a browser can be told
@@ -809,10 +1123,11 @@ def main():
     ok = emit("skills", "skill_ledger.template.html",
               {"SKILLS_DATA": "[" + chr(10) + data + chr(10) + "]"})
 
-    items, equipped, missing, total_reduction = build_inventory(state, assets, taxonomy, args.campaign)
+    names = entity_index(root, camp)
+    items, equipped, missing, total_reduction = build_inventory(state, assets, taxonomy, args.campaign, names)
     if missing:
         return 1
-    lost_items = [(r["name"], r.pop("_loss")) for r in items]
+    lost_items = [(r["name"], r.pop("_loss")) for r in items + equipped]
     for r in items:
         r.pop("_missing", None)
     dropped_items = [(n, c) for n, c in lost_items if c > 0]
@@ -845,9 +1160,6 @@ def main():
               "and no affiliation filter finds them: %s" % (len(unplaced), ", ".join(unplaced)), file=sys.stderr)
     print("npcs: %d characters, %d with a portrait, %d tied to the protagonist"
           % (len(npcs), sum(1 for r in npcs if r["portrait"]), sum(1 for r in npcs if r["rels"])))
-    ndata = ("," + chr(10)).join(json.dumps(r, ensure_ascii=False).replace("</", "<\\/") for r in npcs)
-    ok = emit("npc", "npc_ledger.template.html",
-              {"NPC_DATA": "[" + chr(10) + ndata + chr(10) + "]"}) and ok
     sheet_text = io.open(os.path.join(camp, "100_CHARACTER_SHEET.md"), encoding="utf-8").read()
     founder_pic = re.search(r'^\s*portrait:\s*"assets/(.+?)"', sheet_text, re.M)
     guild, failures = build_guild(camp, npcs, {"id": PROTAGONIST, "name": "Alexander Pendragon", "rank": "S",
@@ -861,6 +1173,9 @@ def main():
           % (guild["total"], len(guild["offices"]), guild["roster"] + 1, len(guild["cleared"])))
     ok = emit("guild", "guild_ledger.template.html",
               {"GUILD_DATA": json.dumps(guild, ensure_ascii=False).replace("</", "<\\/")}) and ok
+    ndata = ("," + chr(10)).join(json.dumps(r, ensure_ascii=False).replace("</", "<\\/") for r in npcs)
+    ok = emit("npc", "npc_ledger.template.html",
+              {"NPC_DATA": "[" + chr(10) + ndata + chr(10) + "]"}) and ok
 
     # The index opens on the bearer's medallion, read from the same sheet, so
     # the one page that introduces the ledgers carries no hand-typed figure.
@@ -884,17 +1199,47 @@ def main():
         return 1
     print("wealth: $%s cash, %s gold, %d properties"
           % ("{:,.2f}".format(wealth["cash"]), "{:,}".format(wealth["gold"]), len(wealth["properties"])))
-    titles = sysst.get("title") or []
+    world_dir = os.path.dirname(os.path.join(root, re.search(r"^\s*world_ledger:\s*(\S+)",
+        io.open(os.path.join(camp, "090_CAMPAIGN_STARTUP.md"), encoding="utf-8").read(), re.M).group(1)))
+    title_cards, failures = build_titles(sysst, os.path.join(world_dir, "206_WORLD_RULE_PROFILE.md"))
+    if failures:
+        print("Ledger generation FAILED: the titles cannot be rendered faithfully:", file=sys.stderr)
+        for f in failures:
+            print("  - " + f, file=sys.stderr)
+        return 1
     profile = {
         "name": (doc.get("aliases") or [{}])[0].get("name", "Alexander Pendragon"),
         "rank": sysst.get("system_rank", ""), "cls": sysst.get("class", ""),
         "level": sysst.get("level", ""), "age": bearer.get("age", ""),
         "health": pool(sysst.get("health")), "mana": pool(sysst.get("mana")), "xp": pool(sysst.get("xp")),
         "role": "Founder, " + GUILD, "portraits": pics,
-        "titles": [mdi(escape(str(x))) for x in (titles if isinstance(titles, list) else [titles])],
+        "titles": title_cards,
         "now": summary_line(bearer.get("location")), "appearance": summary_line(bearer.get("appearance")),
         "personality": summary_line(bearer.get("personality")), "aspiration": summary_line(bearer.get("aspiration")),
         "wealth": wealth,
+    }
+    # Ability Points: the Decision 079 counters are the ledger (earned, and each
+    # Stat's allocation); unspent and pending are the sheet's own fields. The
+    # counters' identity -- earned = allocated + unspent -- is held here too, so a
+    # page never shows a pool that does not close.
+    STATS = ("strength", "agility", "vitality", "perception", "intelligence")
+    base, eff = sysst.get("stats") or {}, sysst.get("effective_stats") or {}
+    alloc = {k: counters.get("stats.%s_allocated" % k) for k in STATS}
+    earned = counters.get("progression.ability_points_earned")
+    unspent = int(sysst.get("unspent_points") or 0)
+    if earned is None or None in alloc.values():
+        print("Ledger generation FAILED: the Ability Points counters are missing from tracked_counters", file=sys.stderr)
+        return 1
+    if sum(alloc.values()) + unspent != earned:
+        print("Ledger generation FAILED: Ability Points do not close: %d allocated + %d unspent != %d earned"
+              % (sum(alloc.values()), unspent, earned), file=sys.stderr)
+        return 1
+    profile["ap"] = {
+        "earned": earned, "unspent": unspent,
+        "pending": int((sysst.get("pending_rewards") or {}).get("ability_points") or 0),
+        "stats": [{"name": k.capitalize(), "base": int(base.get(k) or 0), "allocated": alloc[k],
+                   "effective": int(re.match(r"\s*(\d+)", str(eff.get(k, base.get(k, 0)))).group(1))}
+                  for k in STATS],
     }
     stamp = build_stamp(camp, os.path.join(assets, LEDGERS["index"][0]), args.check)
     ok = emit("index", "index.template.html",

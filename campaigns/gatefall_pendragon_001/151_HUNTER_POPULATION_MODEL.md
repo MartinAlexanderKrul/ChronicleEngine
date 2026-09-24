@@ -56,5 +56,69 @@ This table is authoritative. It replaces the `140_OBJECTIVES.md` OBJ-60 per-offi
 3. Roll or narrate the event's turnout/signing as usual.
 4. Before accepting the signed total as canon, check it against Section 2's bounds relative to the office's **cumulative** membership (this event plus any prior signings there). Scale the Rank split proportionally if it falls outside bounds.
 5. Update this file's table and the guild total in `180_CURRENT_STATE.md`.
+6. Re-apply Section 5's per-Rank rates to the new Rank totals and update Section 5's table; Section 6's team counts follow from it.
 
-**Not covered by this model:** raw awakened counts (non-hunters), artificer/mender sub-registries (`140_OBJECTIVES.md` already tracks these separately at `EVT-001134`), and any city outside this office list — extend Section 1's method to a new city only once its region and population are established in play.
+**Not covered by this model:** raw awakened counts (non-hunters), the nine unlicensed artificers held in the counsel queue (`EVT-001134` — no card, so no Rank), and any city outside this office list — extend Section 1's method to a new city only once its region and population are established in play.
+
+## 5. Role registry by Rank (owner ruling, `2026-09-24` real date)
+
+Closes the open owner question on mender, artificer and sensor counts for Ranks E to B. **A-Rank is the `EVT-001177` ruling unchanged.** For E to B the per-Rank rates are the ones the `EVT-001134` registry read (menders E 75/974, D 61/790, C 42/559, B 27/371; artificers E 60/974, D 48/790, C 34/559, B 22/371), applied to Section 3's current Rank totals. That read never counted sensors, so sensors take the A-Rank rate, 14 in 192. Anyone who is not a mender, sensor or artificer is a striker. The three S-Ranks are strikers. This supersedes the `EVT-001134` absolute counts (menders 215, artificers 172), which were read at an earlier membership.
+
+| Rank | Cards | Strikers | Menders | Sensors | Artificers |
+|---|---|---|---|---|---|
+| E | 1,531 | 1,207 | 118 | 112 | 94 |
+| D | 1,222 | 965 | 94 | 89 | 74 |
+| C | 887 | 701 | 67 | 65 | 54 |
+| B | 546 | 434 | 40 | 40 | 32 |
+| A | 192 | 154 | 12 | 14 | 12 |
+| S | 3 | 3 | 0 | 0 | 0 |
+| **Total** | **4,381** | **3,464** | **331** | **320** | **266** |
+
+**Per office there is no registry.** Any per-office role split is derived by spreading each Rank's counts over the offices by their cards at that Rank (largest remainder). A view that shows one must label it as derived and not as a count anyone has taken.
+
+## 6. Standing team composition (owner ruling, `2026-09-24` real date)
+
+This is the standing memo (`EVT-001109`) applied at each Rank. Strikers must be carded **at the team's Rank**. Every team has one mender and one sensor at its Rank, counted outside the strike count, and artificers never sit on a team. **A team counts as full only when its strikers, mender and sensor all come from cards at its own Rank.** **Miners go with C-, B- and A-Rank teams only** (support crew, not counted here); E- and D-Rank teams carry none.
+
+| Rank | Strikers | Mender + sensor | Full teams, guild-wide |
+|---|---|---|---|
+| E | 5 (the posting floor's strike element) | 1 + 1 | 112 |
+| D | 5 | 1 + 1 | 89 |
+| C | 5 (legal minimum 4, plus one) | 1 + 1 | 65 |
+| B | 9 (legal minimum 8, plus one) | 1 + 1 | 40 |
+| A | 17 (legal minimum 16, plus one) | 1 + 1 | 9 (`EVT-001177`) |
+| S | — (national-asset operations, not crewed) | — | — |
+| **Total** | | | **315** |
+
+At every Rank the mender and sensor seats limit the team count, not the strikers. **Only the nine A-Rank crews have named commanders** (Section 7). No commander is named for any E-to-B team.
+
+## 7. Branch operations — Section 13.7.5 status by office
+
+A branch runs as a **rate** (the daily E/D/C/B dispatch, no longer narrated Gate by Gate) once all four of Section 13.7.5's conditions hold: (1) a named dispatching officer, (2) round-the-clock cover, (3) a bench it can legally crew from, and (4) a **regulator's acceptance** of its filed standing relationship. The dispatching officer is the office head (`EVT-001130`). Night officers were named for every office at `EVT-001146`. The bench test is guild-wide over the tunnels, at 4,381 cards and ~243 per office, so every office qualifies for the full daily table once operational.
+
+**As of `EVT-001179`, no office is operational, and every office is missing condition 4 alone.** All eighteen have filed (the original fourteen by `EVT-001146`, the four newer ones on 2026-09-29 at 18:00). No regulator has accepted anything in writing. Anjali Desai has cited **$95,870** in Gates lost to the gap (`EVT-001146`).
+
+| Office | Dispatching officer | 1 | 2 | 3 | 4 — regulator | Tunnel | A-Rank crew based here |
+|---|---|---|---|---|---|---|---|
+| Chicago | Imani Whitaker | yes | yes | yes | filed; Region V has not moved, and Kane is calling himself with an answer owed the evening of 2026-09-30 | open | Jun-seo Baek (the response pool) |
+| Washington DC | Verity Prescott | yes | yes | yes | filed, not accepted | open | — |
+| Prague | Milena Horáková | yes | yes | yes | filed with the CGA, not accepted | open | — |
+| Frankfurt | Anselm Kretschmer | yes | yes | yes | filed; Region III confirmed processing verbally, nothing in writing | open | — |
+| New York | Ramona Ostrowski | yes | yes | yes | filed, not accepted | open | Delroy Hutchins |
+| Boston | Callum Doherty | yes | yes | yes | filed, not accepted | open | — |
+| Miami | Cecilia Duarte | yes | yes | yes | filed, not accepted | open | Yolanda Arriaga |
+| Houston | Roy Rawlins | yes | yes | yes | filed, not accepted | open | Mercedes Salinas |
+| Paris | Odile Fontaine | yes | yes | yes | filed; Region III confirmed processing verbally, nothing in writing | open | Céline Marchand (Continental Europe) |
+| Amsterdam | Noor Vandermeulen | yes | yes | yes | filed, not accepted | open | Joost van Rijn |
+| Dallas | Wyatt Delaney | yes | yes | yes | filed, not accepted | open | — |
+| Los Angeles | Diego Villarreal | yes | yes | yes | filed, not accepted | open | — |
+| Seattle | Lena Petersen | yes | yes | yes | filed, not accepted | open | Garrett Ishida (the West Coast) |
+| San Francisco | Benjamin Tran | yes | yes | yes | filed, not accepted | open | — |
+| Tel Aviv | Noa Shapira | yes | yes | yes | filed, not accepted | open | Noam Friedman (with Istanbul) |
+| Istanbul | Elif Demir | yes | yes | yes | filed, not accepted | open | — |
+| Stockholm | Linnea Bergström | yes | yes | yes | filed, not accepted | open | — |
+| London | Imogen Hartley | yes | yes | yes | filed, not accepted | **not open**: the rear-door lock was due on 2026-09-30, and Imogen rings Detroit when it is fitted | Harriet Pembroke |
+
+**What becomes automatic on acceptance (per branch, per day):** E-Rank 1d4+1, D-Rank 1d3, C-Rank 1d3−1, B-Rank 1d2−1. That comes to about 7 clears a branch a day and ≈126 across eighteen. **A and S never become automatic.** They surface through Section 9.11 and Section 9.1.8, and the A-Rank response pool answers on a standing posture the guild has not yet declared (`OBJ-79`). **Until London's tunnel opens, its catchment is its own jurisdiction read from its own bench.**
+
+**Not offices:** Milwaukee and Toledo. Their city contracts count as regulator approval (`EVT-001132`), which covers condition 4 only. Neither has a lease, an officer, cover or a bench. They are run from Chicago and Detroit through the tunnels.

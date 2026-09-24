@@ -53,11 +53,13 @@
   }
   .sub{color:var(--text-dim); font-size:.9rem; max-width:56ch; line-height:1.5;}
 
-  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px;}
+  /* The four ledgers sit in one row above the character: compact tiles. */
+  .cards{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:22px;}
+  @media (max-width:860px){ .cards{grid-template-columns:repeat(2,minmax(0,1fr));} }
   a.card{
-    position:relative; overflow:hidden; display:flex; flex-direction:column; gap:14px;
+    position:relative; overflow:hidden; display:flex; flex-direction:column; gap:8px; min-width:0;
     background:var(--surface); border:1px solid var(--border); border-radius:12px;
-    padding:22px 22px 18px; box-shadow:var(--shadow); color:inherit; text-decoration:none;
+    padding:14px 14px 12px 16px; box-shadow:var(--shadow); color:inherit; text-decoration:none;
     transition:border-color .14s ease, transform .14s ease, box-shadow .14s ease;
   }
   a.card::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--tint);}
@@ -73,10 +75,11 @@
     color:var(--tint);
   }
   .card h2{
-    font-family:"Chakra Petch",sans-serif; font-weight:600; font-size:1.35rem; margin:2px 0 0;
+    font-family:"Chakra Petch",sans-serif; font-weight:600; font-size:1.08rem; margin:2px 0 0;
     letter-spacing:.01em; line-height:1.2;
   }
-  .card .desc{font-size:.85rem; color:var(--text-dim); line-height:1.5; margin:0;}
+  .card .desc{font-size:.76rem; color:var(--text-dim); line-height:1.45; margin:0;
+    display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; line-clamp:3; overflow:hidden;}
 
 
   .card .open{
@@ -138,6 +141,58 @@
   .vitals div{display:flex; flex-direction:column; gap:2px; min-width:0;}
   .vitals b{font-size:1rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums; white-space:nowrap;}
   .vitals span{font-size:.58rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+  /* Ability Points open in their own window from a vitals cell. */
+  .vitals button.apbtn{
+    all:unset; cursor:pointer; display:flex; flex-direction:column; gap:2px; min-width:0; border-radius:6px;
+  }
+  .vitals button.apbtn b{text-decoration:underline dotted color-mix(in srgb, var(--accent) 60%, transparent); text-underline-offset:4px;}
+  .vitals button.apbtn:hover b{text-decoration-style:solid;}
+  .vitals button.apbtn:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .vitals button.apbtn em{font-style:normal; color:var(--amber);}
+  dialog.win{
+    width:min(480px, calc(100vw - 32px)); padding:0; border:1px solid var(--border); border-radius:14px;
+    background:var(--surface); color:var(--text); box-shadow:0 24px 60px -20px rgba(0,0,0,.55);
+  }
+  dialog.win::backdrop{background:rgba(6,12,12,.62); backdrop-filter:blur(3px);}
+  .win .hd{display:flex; align-items:center; gap:10px; padding:16px 18px 12px; border-bottom:1px solid var(--border);}
+  .win h3{font-family:"Chakra Petch",sans-serif; font-size:1.15rem; font-weight:600; margin:0; flex:1;}
+  .win .x{
+    width:32px; height:32px; flex:none; border-radius:8px; border:1px solid var(--border); background:var(--surface2);
+    color:var(--text-dim); cursor:pointer; font-size:1rem; display:grid; place-items:center;
+  }
+  .win .x:hover{border-color:var(--accent); color:var(--accent);}
+  .win .bd{padding:14px 18px 18px; display:flex; flex-direction:column; gap:14px;}
+  .win .tot{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px;}
+  .win .tot div{background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; gap:2px;}
+  .win .tot b{font-family:"IBM Plex Mono",monospace; font-size:1rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums;}
+  .win .tot span{font-family:"IBM Plex Mono",monospace; font-size:.56rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+  .win .tot .pending b{color:var(--amber);}
+  .win table{border-collapse:collapse; width:100%; font-family:"IBM Plex Mono",monospace; font-size:.78rem;}
+  .win th{font-size:.56rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); font-weight:600; text-align:right; padding:0 0 6px 10px;}
+  .win th:first-child, .win td:first-child{text-align:left; padding-left:0;}
+  .win td{padding:7px 0 7px 10px; text-align:right; font-variant-numeric:tabular-nums; border-top:1px solid var(--border); white-space:nowrap;}
+  .win td.bar{width:30%;}
+  .win .bar i{display:block; height:6px; border-radius:3px; background:var(--accent); min-width:2px;}
+  .win td.alloc{color:var(--accent); font-weight:600;}
+  @media (max-width:420px){ .win .tot{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  .win{max-height:calc(100dvh - 32px);}
+  .win[open]{display:flex; flex-direction:column;}
+  .win .bd{overflow-y:auto; overscroll-behavior:contain;}
+  .win h4{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); font-weight:600; margin:0; display:flex; gap:8px; align-items:center;}
+  .win h4::after{content:""; flex:1; height:1px; background:var(--border);}
+  .tlist{display:flex; flex-direction:column; gap:8px;}
+  .tcard{border:1px solid var(--border); border-radius:10px; padding:10px 12px; background:var(--surface2); display:flex; flex-direction:column; gap:5px;}
+  .tcard .th{display:flex; align-items:center; gap:8px;}
+  .tcard .tn{font-family:"Chakra Petch",sans-serif; font-weight:600; font-size:.95rem; flex:1; min-width:0;}
+  .tcard .tg{font-family:"IBM Plex Mono",monospace; font-size:.56rem; letter-spacing:.08em; text-transform:uppercase; padding:2px 7px; border-radius:999px; border:1px solid var(--gc); color:var(--gc); flex:none;}
+  .tcard .tp{font-size:.82rem; line-height:1.5;}
+  .tcard .te{font-size:.72rem; line-height:1.45; color:var(--text-dim);}
+  .tcard .te b{font-weight:600;}
+  .tcard.equipped{border-color:color-mix(in srgb, var(--amber) 40%, var(--border));}
+  /* Earned but not in a slot: present, legible, and plainly asleep. */
+  .tcard.dormant{background:transparent; border-style:dashed; opacity:.55; filter:grayscale(1);}
+  .tcard.dormant:hover{opacity:.85;}
+  .vitals .titlesbtn b{color:var(--amber);}
   .lines{display:flex; flex-direction:column; gap:6px; font-size:.84rem; line-height:1.5;}
   .lines div{display:grid; grid-template-columns:92px 1fr; gap:10px;}
   .lines .l{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-dim); padding-top:3px;}
@@ -234,16 +289,14 @@
     </dl>
   </header>
 
-  <section class="profile" id="profile" aria-label="Alexander Pendragon"></section>
-
-  <div class="cards">
+  <nav class="cards" aria-label="The ledgers">
     <a class="card inv" href="{{ledger:inventory}}">
       <div>
         <div class="kicker">Ledger 01 · Materiel</div>
         <h2>Inventory Ledger</h2>
       </div>
       <p class="desc">Every held item — worn, banked, or in someone else's custody — grouped by how it's used, with stats, effects and Rank on each entry. Includes the worn loadout and its stacked damage reduction.</p>
-      <span class="open">Open inventory ledger <span class="arrow" aria-hidden="true">→</span></span>
+      <span class="open">Open <span class="arrow" aria-hidden="true">→</span></span>
     </a>
 
     <a class="card skl" href="{{ledger:skills}}">
@@ -252,7 +305,7 @@
         <h2>Skills Ledger</h2>
       </div>
       <p class="desc">Every technique he holds, grouped by what it does, with full effect, Mana cost and damage. How each was acquired — drop and practice, a named far-side teacher, or Succession — stays tagged on the card.</p>
-      <span class="open">Open skills ledger <span class="arrow" aria-hidden="true">→</span></span>
+      <span class="open">Open <span class="arrow" aria-hidden="true">→</span></span>
     </a>
 
     <a class="card npc" href="{{ledger:npc}}">
@@ -261,7 +314,7 @@
         <h2>NPC Ledger</h2>
       </div>
       <p class="desc">Every named character in the campaign and the world's notable figures, grouped by Rank, with portrait, role, whereabouts and condition. Each record opens to appearance, personality, capabilities and where they stand with Alexander.</p>
-      <span class="open">Open NPC ledger <span class="arrow" aria-hidden="true">→</span></span>
+      <span class="open">Open <span class="arrow" aria-hidden="true">→</span></span>
     </a>
 
     <a class="card gld" href="{{ledger:guild}}">
@@ -270,9 +323,11 @@
         <h2>Guild Ledger</h2>
       </div>
       <p class="desc">The Pendragon Guild in one place: its mark, leadership and board, every office with its membership, Rank split and the people who run it, and every Gate it has answered.</p>
-      <span class="open">Open guild ledger <span class="arrow" aria-hidden="true">→</span></span>
+      <span class="open">Open <span class="arrow" aria-hidden="true">→</span></span>
     </a>
-  </div>
+  </nav>
+
+  <section class="profile" id="profile" aria-label="Alexander Pendragon"></section>
 
   <footer class="note">
     Each ledger is regenerated from canon and carries its own live totals, Rank filters and search.
@@ -342,6 +397,50 @@ function wealthOf(W){
   </div>`;
 }
 
+// A window over the page: header, close button, scrolling body. Closes on the
+// button, Esc, or a click on the backdrop.
+function makeWindow(id, title, body){
+  const d = document.createElement("dialog");
+  d.className = "win";
+  d.setAttribute("aria-labelledby", id);
+  d.innerHTML = `<div class="hd"><h3 id="${id}">${title}</h3><button type="button" class="x" aria-label="Close">&#x2715;</button></div>
+    <div class="bd">${body}</div>`;
+  d.querySelector(".x").addEventListener("click", () => d.close());
+  d.addEventListener("click", e => { if (e.target === d) d.close(); });
+  document.body.appendChild(d);
+  return d;
+}
+const num = x => Number(x).toLocaleString("en-US");
+function apWindow(A){
+  const top = Math.max(...A.stats.map(s => s.allocated), 1);
+  return makeWindow("apTitle", "Ability Points", `
+    <div class="tot">
+      <div><b>${num(A.earned)}</b><span>Earned</span></div>
+      <div><b>${num(A.earned - A.unspent)}</b><span>Allocated</span></div>
+      <div><b>${num(A.unspent)}</b><span>Unspent</span></div>
+      <div class="pending"><b>${A.pending ? "+" + num(A.pending) : "0"}</b><span>Pending</span></div>
+    </div>
+    <table><thead><tr><th scope="col">Stat</th><th scope="col">AP in</th><th scope="col"></th><th scope="col">Base</th><th scope="col">Effective</th></tr></thead>
+      <tbody>${A.stats.map(s => `<tr><td>${s.name}</td><td class="alloc">${num(s.allocated)}</td>
+        <td class="bar" aria-hidden="true"><i style="width:${Math.round(100 * s.allocated / top)}%"></i></td>
+        <td>${num(s.base)}</td><td>${num(s.effective)}</td></tr>`).join("")}</tbody></table>`);
+}
+const GRADE_COLOUR = {Common:"var(--text-dim)", Rare:"var(--accent)", Singular:"var(--amber)", Ascendant:"#b78cf0", Absolute:"#ef6a4c"};
+const cap = t => t ? t[0].toUpperCase() + t.slice(1) : "";
+function titleCard(t){
+  return `<div class="tcard ${t.equipped ? "equipped" : "dormant"}">
+    <div class="th"><span class="tn">${t.name}</span><span class="tg" style="--gc:${GRADE_COLOUR[t.grade] || "var(--text-dim)"}">${t.grade}</span></div>
+    <div class="tp">${cap(t.passive)}.</div>
+    <div class="te"><b>Earned for:</b> ${t.earned.replace(/\.$/, "")}.</div>
+  </div>`;
+}
+function titlesWindow(T){
+  const on = T.filter(t => t.equipped), off = T.filter(t => !t.equipped);
+  return makeWindow("titlesTitle", "Titles", `
+    <h4>Equipped &middot; ${on.length}</h4><div class="tlist">${on.map(titleCard).join("")}</div>
+    ${off.length ? `<h4>Earned, not equipped &middot; ${off.length}</h4><div class="tlist">${off.map(titleCard).join("")}</div>` : ""}`);
+}
+
 (function(){
   const el = document.getElementById("profile");
   if (!P.name) { el.remove(); return; }
@@ -360,16 +459,25 @@ function wealthOf(W){
         <div><b>${P.health}</b><span>Health</span></div>
         <div><b>${P.mana}</b><span>Mana</span></div>
         <div><b>${P.xp}</b><span>XP</span></div>
+        ${P.titles.length ? `<button type="button" class="apbtn titlesbtn" id="titlesOpen" aria-haspopup="dialog"><b>${P.titles.filter(t => t.equipped).length} / ${P.titles.length}</b><span>Titles equipped</span></button>` : ""}
+        ${P.ap ? `<button type="button" class="apbtn" id="apOpen" aria-haspopup="dialog"><b>${Number(P.ap.earned).toLocaleString("en-US")}${P.ap.pending ? ` <em>+${P.ap.pending}</em>` : ""}</b><span>Ability Points</span></button>` : ""}
       </div>
       <div class="lines">
         ${P.now ? `<div><span class="l">Now</span><span>${P.now}</span></div>` : ""}
         ${P.appearance ? `<div><span class="l">Appearance</span><span>${P.appearance}</span></div>` : ""}
         ${P.personality ? `<div><span class="l">Personality</span><span>${P.personality}</span></div>` : ""}
         ${P.aspiration ? `<div><span class="l">Aspiration</span><span>${P.aspiration}</span></div>` : ""}
-        ${P.titles.length ? `<div><span class="l">Titles</span><span class="titles">${P.titles.map(x => `<span>${x}</span>`).join("")}</span></div>` : ""}
       </div>
     </div>
     ${wealthOf(P.wealth)}`;
+  if (P.ap){
+    const w = apWindow(P.ap);
+    document.getElementById("apOpen").addEventListener("click", () => w.showModal());
+  }
+  if (P.titles.length){
+    const w = titlesWindow(P.titles);
+    document.getElementById("titlesOpen").addEventListener("click", () => w.showModal());
+  }
   el.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => {
     const src = P.portraits[b.dataset.view];
     document.getElementById("medImg").src = src;

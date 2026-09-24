@@ -622,16 +622,16 @@ canonical_state:
       note: "Level 207. Max HP 11,832 (4x effective Vitality); max MP 6,562 (2x effective Intelligence). Anchor cap re-derived: effective Agility 2,710 / 20 = 135, unchanged."
     system_rank: S
     equipment:
-      main_hand: "Finished dagger [S-Rank] — Quickknife chassis, all-Agility · Agility +22, weapon power 22 · chassis ×1.85 · **DMG 5,526** at eff. Strength 2,965 (re-derived, `EVT-001108`) · armed strike ×0.75 · **fused `EVT-000813` with a consumed Reacharm's Projection Echo** (critical, +1 modifier step holding distance) · recovered `EVT-000326`. Held, not owned — Section 19 exposure risk."
-      off_hand: "**Quickknife [S-Rank], Boss-Imprinted (Predator/Edge)** — Agility +23, weapon power 22 · chassis ×1.85 · DMG 5,526 at eff. Strength 2,965 (re-derived, `EVT-001108`) · Edge Echo/scene · eight-dungeon batch boss 4 (`EVT-000731`). EQUIPPED `EVT-000733`."
-      head: "**Titan Coif [S-Rank]** — Strength +10 · reduction 23% · plain · bought 108,000 g (`EVT-000730`)."
-      torso: "**Arcanist Torso [S-Rank]** — Intelligence +10 · reduction 23% · Impact Echo/scene (carried from donor) · forged `EVT-000813` (strong) from the consumed Watcher Torso [B], 2 S-Rank cores + $8,000 shared with the hands below. Replaces the Watcher Torso — gone."
-      hands: "**Arcanist Gauntlets [S-Rank]** — Intelligence +10 · reduction 23% · Edge Echo/scene (carried from donor) · forged `EVT-000813` (strong) from the consumed Gale Hunter's Gauntlets [C], same cost as the torso. Replaces them — gone."
-      legs: "**Titan Legs [S-Rank]** — Strength +10 · reduction 23% · plain · bought 108,000 g (`EVT-000730`)."
-      feet: "**Gale Feet [S-Rank], Boss-Imprinted (Carapaced/Guard)** — Agility +11 · reduction 23% · Guard Echo/scene · Overgrown Temple boss drop (`EVT-000726`). EQUIPPED `EVT-000730`."
-      accessory_1: "**Heartward Sigil [S-Rank], Boss-Imprinted (Arcane/Affliction)** — Vitality +12, Intelligence +1, Affliction Echo (unused) · eight-dungeon batch boss 5 (`EVT-000731`). **Equipped free `EVT-000813`**, no fee/fusion, displacing the Hunter's Band [S] (banked unsold)."
-      accessory_2: "**Warlord's Loop [A-Rank]** — Strength +16, -60% damage taken/exchange · forged `EVT-000813` (critical) from the consumed Warded Vambrace pair [A] (ex-Nakamura custody), 1 A-Rank core + $2,500. Displaces the Quickstep Charm [S] (banked unsold)."
-      total_physical_reduction: "**≈72.93%** (all five worn pieces at S-Rank 23%, multiplicative) as of `EVT-000813` — the full sweep, up from ≈63.04%, **both Echoes preserved** (fusion is additive, never overwrites — standing house rule). Echoes: Impact (torso), Edge (hands/off-hand), Guard (feet), Projection (main hand) — one/scene across worn Boss-Imprint pieces. Accessories stay outside worn reduction — Warlord's Loop's -60%/exchange composes separately."
+      main_hand: "**Finished dagger [S-Rank]** — Agility +22 · weapon power 22 · chassis ×1.85 · **DMG 5,526** at eff. Strength 2,965 (re-derived, `EVT-001108`) · Projection Echo (from fusion): +1 step to hold distance, once per scene · Held, not owned: an exposure risk if recognised · Quickknife chassis, recovered from the dock sweep (`EVT-000326`); Echo fused in from a consumed Reacharm (`EVT-000813`, critical)."
+      off_hand: "**Quickknife [S-Rank], Boss-Imprinted (Predator/Edge)** — Agility +23 · weapon power 22 · chassis ×1.85 · DMG 5,526 at eff. Strength 2,965 (re-derived, `EVT-001108`) · Edge Echo: +1 step on a close attack against an injured target, once per scene · eight-dungeon batch boss drop (`EVT-000731`); equipped `EVT-000733`."
+      head: "**Titan Coif [S-Rank]** — Strength +10 · reduction 23% · bought 108,000 g (`EVT-000730`)."
+      torso: "**Arcanist Torso [S-Rank]** — Intelligence +10 · reduction 23% · Impact Echo: +1 step to break, shove, or resist knockdown or forced movement, once per scene · forged from the consumed Watcher Torso [B-Rank], 2 S-Rank cores and $8,000 shared with the gauntlets (`EVT-000813`, strong)."
+      hands: "**Arcanist Gauntlets [S-Rank]** — Intelligence +10 · reduction 23% · Edge Echo: +1 step on a close attack against an injured target, once per scene · forged from the consumed Gale Hunter's Gauntlets [C-Rank], cost shared with the torso (`EVT-000813`, strong)."
+      legs: "**Titan Legs [S-Rank]** — Strength +10 · reduction 23% · bought 108,000 g (`EVT-000730`)."
+      feet: "**Gale Feet [S-Rank], Boss-Imprinted (Carapaced/Guard)** — Agility +11 · reduction 23% · Guard Echo: +1 step on a physical defense, once per scene · Overgrown Temple boss drop (`EVT-000726`); equipped `EVT-000730`."
+      accessory_1: "**Heartward Sigil [S-Rank], Boss-Imprinted (Arcane/Affliction)** — Vitality +12, Intelligence +1 · Affliction Echo: +1 step to resist poison, venom, disease or drain, once per scene · eight-dungeon batch boss drop (`EVT-000731`); equipped `EVT-000813`."
+      accessory_2: "**Warlord's Loop [A-Rank]** — Strength +16 · reduction 60% · Multiplies with the worn armour's reduction · forged from the consumed Warded Vambrace pair [A-Rank], 1 A-Rank core and $2,500 (`EVT-000813`, critical)."
+      total_physical_reduction: "**≈72.93%** (five S-Rank pieces at 23% each, multiplicative, `EVT-000813`) — Echoes: Impact (torso), Edge (hands/off hand), Guard (feet), Projection (main hand), Affliction (accessory 1) — only one Echo can be used per scene across everything worn. The Warlord's Loop's 60% multiplies on top: ≈89.2% in total. Fusion adds an Echo and never overwrites one (house rule)."
     skills_known:
       - "Stone Skin [S-Rank] ★☆☆☆☆ Novice · Mana 4 (native D-Rank base, mastery reset removes the Master discount) · reduction **90%** (30 + 25×4 = 130, capped at Section 7.2's 90%; converted excess to **+2 exchanges duration**) · Categories held through S: native D; **Impact spread** (C); **Shared skin** (B); **Against the unphysical** (A); **`Carried`** (S) — persists one exchange past the sustain dropping. **Successful uses 11 · qualifying scenes total 8 · rank ascensions 2 · mastery progress 0/3.**"
       - "Rupture [S-Rank] ★★★★★ Master · Mana 10 (10% Master reduction off 11) · **reach 5 m** · a heavy strike at **×3.05 of its skill-rank baseline** (S-Rank baseline 1000, Section 7.2), resolving as `(1000 + effInt + focus power) × 3.05 × result` under Section 6.2 — **DMG ≈12,773 standard before reduction** at eff. Int 3,188. **`magnitude_floor` 305 binds.** Categories unchanged through **`Unmaking`** (S) — ignores worn physical reduction entirely. **Successful uses 237 · qualifying scenes total 55 · mastery progress complete · mastery level MASTER (5).** Terminal both axes."
@@ -1136,168 +1136,140 @@ canonical_state:
     gold: 356808131  # 120_INVENTORY_AND_OWNERSHIP.md authoritative; history in the chronicle.
     inventory:
       # The dimensional inventory (Profile Section 12.9): every item Alexander owns
-      # that is not in an equipment slot. Renamed from `shop_holdings` at `EVT-000366`;
-      # grouped into Section 15.3.2's five kinds at `EVT-000367` (Profile 1.50).
+      # that is not in an equipment slot, one list per Section 15.3.2 kind, one holding
+      # per entry. `/system gear` takes each group's line count from its list's length.
       #
-      # ONE HOLDING PER ENTRY, ONE KIND PER HOLDING. `/system gear` renders one STORED
-      # group per list below and takes each group's line count from that list's length,
-      # so nothing about the grouping is inferred at render time. Kinds are assigned by
-      # Section 15.3.2's precedence order: Keys, Consumables, Special, Gear, Materials.
-      #
-      # No session narrative and no disposed lines. Event history belongs to
-      # `160_CAMPAIGN_CHRONICLE.md`, disposal to `120_INVENTORY_AND_OWNERSHIP.md`.
+      # LINE STYLE (every entry): **Name [Rank] × n** — what it does first (stats,
+      # power/reduction, effect, limits), then one short source clause with its Event.
+      # No narrative, no dice, no stored comparisons against the sheet, no "banked"
+      # (being on this list is banked). History belongs to `160_CAMPAIGN_CHRONICLE.md`,
+      # disposal to `120_INVENTORY_AND_OWNERSHIP.md`.
       keys:
-        # Instant-dungeon keys only (Section 17). Consumed keys' lines are removed on use;
-        # disposal tracked in 120_INVENTORY_AND_OWNERSHIP.md.
-        - "**Instant-Dungeon Key [B-Rank] × 2** — one from the Newark Gate boss (`EVT-000809`), one from the Beast Den boss (`EVT-000589`). Banked, unused."
-        - "**Instant-Dungeon Key [C-Rank] × 1** — the second C-Rank instance's boss drop (`EVT-000626`). Banked, unused."
-        - "**Instant-Dungeon Key [E-Rank] × 1 (second)** — Overgrown Temple shrine bonus (`EVT-000327`). Banked, unused."
-        - "**Instant-Dungeon Key [A-Rank] × 1** — Ashworth's Overgrown Temple shrine bonus (`EVT-000895`). Banked, unused."
+        # Instant-dungeon keys only (Section 17). A used key's line is removed.
+        - "**Instant-Dungeon Key [A-Rank] × 1** — opens a private two-hour A-Rank instance · Overgrown Temple shrine bonus (`EVT-000895`)."
+        - "**Instant-Dungeon Key [B-Rank] × 2** — opens a private two-hour B-Rank instance · boss drops: Newark Gate (`EVT-000809`), Beast Den (`EVT-000589`)."
+        - "**Instant-Dungeon Key [C-Rank] × 1** — opens a private two-hour C-Rank instance · boss drop, second C-Rank instance (`EVT-000626`)."
+        - "**Instant-Dungeon Key [E-Rank] × 1** — opens a private two-hour E-Rank instance · Overgrown Temple shrine bonus (`EVT-000327`)."
       consumables:
         # Spent on use and gone (Sections 12.5, 12.7).
-        - "**Lesser Healing Potion x20** — merged from two duplicate-holding lines at `EVT-000670`. Chains: `170_CHANGELOG.md`."
-        - "**Lesser Mana Potion x8** — was 7; +1 from the Ashfield boss cache."
-        - "Mender's Seal — clears one Minor injury or reduces a Moderate to Minor; no Health · Daily Premium 1,200 g · banked"
-        - "**Stabilization Seal x4** — suspends a Critical injury's untreated death risk 24 hours · banked"
-        - "**Standard Mana Potion x9** — banked, from potion caches and one drunk in play."
-        - "Antidote x2 (banked, unwithdrawn)"
-        - "**Standard Healing Potion x4** — was 3; +1 from the fourth C-Rank instance's potion cache. Banked, unused."
-        - "**Restoration Draught x1** — restores Health and Mana to full in one action, no severity cleared · Daily Premium Prismatic series, 900 g · banked, unused"
-        - "**Greater Healing Potion x36** — +2 this span (Box #68, `EVT-001123`). Restores Health to full."
-        - "**Elixir of a stat x3** — was 2; **+1 this span**, a Frozen Gallery boss drop (`EVT-000855`). Banked, stat choice deferred. Resale 2,500 g each."
-        - "**Greater Mana Potion x42** — restores Mana to full · banked (+1 Box #68, `EVT-001123`)."
-        - "**Mana Potion x5** — bonus loot, `EVT-001001` (3 from one cache, +2 from a second mixed cache the same drop; the two lines this collapses violated Section 15.3.2's one-kind-per-holding rule)."
-        - "**Healing Potion x1** — bonus loot, `EVT-001001`, split from the mixed-kind line above onto its own holding."
+        - "**Greater Healing Potion × 36** — restores Health to full."
+        - "**Standard Healing Potion × 4** — restores 90 Health."
+        - "**Lesser Healing Potion × 20** — restores 30 Health."
+        - "**Healing Potion × 1** — restores Health; the cache did not record its grade · bonus loot (`EVT-001001`)."
+        - "**Greater Mana Potion × 42** — restores Mana to full."
+        - "**Standard Mana Potion × 9** — restores 40 Mana."
+        - "**Lesser Mana Potion × 8** — restores 20 Mana."
+        - "**Mana Potion × 5** — restores Mana; the caches did not record its grade · bonus loot (`EVT-001001`)."
+        - "**Restoration Draught × 1** — restores Health and Mana to full in one action; clears no injury · Daily Premium Prismatic series, 900 g."
+        - "**Mender's Seal × 1** — clears one Minor injury, or reduces a Moderate to Minor; restores no Health · Daily Premium, 1,200 g."
+        - "**Stabilization Seal × 4** — suspends one Critical injury's death risk for 24 hours; restores no Health, clears no severity."
+        - "**Antidote × 2** — clears poisons and venoms of the drinker's Rank or below."
+        - "**Elixir of a stat × 3** — +1 to one base Stat of choice, permanently; at most 3 per Stat for Alexander · given to another awakened it raises Vitality or Intelligence only, uncapped · resale 2,500 g each; latest a Frozen Gallery boss drop (`EVT-000855`)."
       special:
-        # Skill runes/books — Section 15.3.2's worked example classes instructional items
-        # as SPECIAL, not Keys or Gear. All `unbound-awakened` unless noted.
-        # Merged one holding per SKILL NAME rather than one per Rune/Book type, per the
-        # standing ruling at `skill_rulings.instructional_item_naming_evt_001063` — a
-        # future Rune/Book drop for a skill already listed here folds into that skill's
-        # line instead of adding a new one. Section 11.3 still makes Rune vs. Book, and
-        # each instance's own Rank, a real mechanical fact, so both stay in the parenthetical.
-        - "**Mend, instructional duplicates × 5** — was 3, +2 this span (`EVT-001079`/`EVT-001080`). NPC-eligible/inert — Mend already known at S-Rank. Banked intact."
-        - "**Keen Sense, instructional duplicates × 4** — was 3, +1 this span (`EVT-001079`). Duplicates — Keen Sense already S-Rank Master. Banked."
-        - "**Mana Bolt, instructional duplicates × 3** — was 2, +1 this span (`EVT-001080`). Duplicates — Mana Bolt already S-Rank Master. Banked."
-        - "**Sprint — Rune [S-Rank] × 4** — was 2, +2 this span (`EVT-001079`/`EVT-001080`). Duplicate — Sprint already S-Rank Expert. Banked."
-        - "**Silent Step, instructional duplicates × 6** — assorted Ranks/vessels, banked intact. Duplicates — Silent Step already S-Rank Expert. Full provenance: `160_CAMPAIGN_CHRONICLE.md`."
-        - "**Rupture — Book [A-Rank]** — boss drop. Duplicate, banked."
-        - "**Flash Step, instructional duplicates × 2** — banked. Duplicates — Flash Step already S-Rank Adept."
-        - "**Stone Skin, instructional duplicates × 3** — S-Rank, giftable, banked. Duplicates — Stone Skin already known at S-Rank."
-        - "**Dagger Mastery — Rune [S-Rank] × 3** — was 1, +2 this span (`EVT-001079`). NPC-giftable. Duplicate (already S-Rank Adept). Banked."
-        - "**The Assay's local archive** — taken whole `EVT-000983`; **entrusted to Tolo's library, `EVT-000989`**. Account: `OBJ-65`."
-        - "**Dormant Core [S-Rank]** — returned by Nakamura this span (`EVT-000812`), no next-step finding. Back in the dimensional inventory, unbound, highest-Rank object held."
-        - "**Frost-fused carapace plating [B-Rank]** — returned by Nakamura this span (`EVT-000812`). Corwin Ashvale examined but did not fuse it; new finding: **'deliberately worked/tooled,' not natural.** Function still unresolved."
-        - "**`ENT-000220`** -- unclassified warm object, `ENT-000218`'s wall (`EVT-000674`). Flux Sight and ownership-transfer auto-identify both return nothing. Filed `UNCLASSIFIED — SPECIAL`, `active`. Full account: `130_NPCS_AND_FACTIONS.md`."
-        - "**`ENT-000221`** -- eleven correlation logbooks, `ENT-000219`'s shelf (`EVT-000676`). Unread beyond the top volume's open page. Full account: `130_NPCS_AND_FACTIONS.md`."
-        - "**Hand-instrument (unresolved)** -- anomaly/Gate-signature reader. Function/provenance unresolved. Full account: `120_INVENTORY_AND_OWNERSHIP.md`."
-        - "**Sealed container, Orenne's remains** (`EVT-001175`) — ash and bone fragments. Unranked. Held."
-        # Containment plant LEFT this inventory at `EVT-000909` -- returned to the
-        # fenced warehouse's slab, decay rate having climbed before it went back on.
-        # No longer a held asset (see this file's sixth-anchor note, `EVT-000909`).
-        # Worth not mechanical, or function/Rank/provenance unresolved.
-        - "**Alpha-strain sinew [B-Rank] × 2 lots** — cabled tissue cut from the Beast Den's boss and its alpha (`EVT-000589`, harvests 🎲 95 Strong and 🎲 71 Success). **Flux Sight reads both completely.** The two lots are **the same material at different ages** — same species, same strain, the alpha simply older — and the System has a line item for that and prices it accordingly."
-        - "**Drowned mana nodule [B-Rank] × 1** — a natural mana concentration formed in still water and taken up by the thing living in it (`EVT-000588`, legendary harvest 🎲 61 → 100). **Flux Sight reads it completely**: Rank, formation class, catalogue line, market value. **It is the useful control** — a *catalogued* object that holds mana passively, to set beside a heartwood core-mass that does the same with no mechanism and no line item."
-        - "**Bone-lattice plating [B-Rank] × 1 lot** — armour-grade, structurally sound, cut from the Crypt boss (`EVT-000586`, field harvest 🎲 33 → 73 Success). **Flux Sight reads it completely** — Rank, composition, catalogue line, market value. **Which is what makes the other two lots strange**: boss material categorises fine, so the frost-fused plating and the heartwood are anomalous specifically."
-        - "**Half-finished leather piece** — recovered from the same dock sweep (`EVT-000326`), same maker's stamp as the wallet and the dagger, mid-work when abandoned. No combat stats — unfinished. Banked."
-        - "**Crumpled work order** — recovered from the dock's manual search (`EVT-000326`, strong success), handwritten, references 'the consultation' moved to an unnamed street after Tuesday. No address number. A real, unresolved lead."
-        - "**Torn visitor-badge fragment** — recovered alongside the work order (`EVT-000326`), printed 'CONSULT — TEMP,' no logo, no name. A real, unresolved lead."
-        - "**Worked bracer [B-Rank] (unbound, unidentified maker)** — found inside the satchel above, wrapped in oilcloth. **Agility +9** — no combat multiplier or reduction line. **Ceiling A-Rank per Flux Sight/The Unmeasured**: a second property is built into the metalwork but never activated — a latent passive, dormant until the piece is carried to its A-Rank ceiling; nobody's finished it, so what it actually does is unread. Maker's mark stamped inside, confirmed **not Marnie's hand** — a second controlled artificer, physical proof rather than inference."
-        - "**Wallet — Peter Kwiatkowski** — taken `EVT-000700`. BGM ID (licensed D-Rank, no combat rating), a residential address near the northwest side, cash, receipts, an expired Coalition card. Nothing pointing at CONSULT or at who 'D' is. **Retained** — only the worked-leather satchel went back to him (`EVT-000909`); the wallet is still Alexander's, confirmed 2026-09-18 against an earlier over-correction."
-        - "**Backfilled: five CONSULT pieces** — earrings [A] (Marnie's mark), pendant [A], bracer [B], blade [B], ring [C, nested working] — Ironclad unit (`EVT-000710`); missed from checkpoint 0121, corrected here. Nakamura read pendant/blade/ring (`EVT-000713`): one shared teacher. Evidence, unequipped."
-        # The Ironline trial roster report LEFT this inventory at `EVT-000583`,
-        # withdrawn in a grain yard and handed to Wade Bishop to put in front of
-        # whoever really sits above Region V. Three pages, letterhead, eight filed
-        # against five present, padded with Osei, Delray and Fenwick. It had
-        # underwritten `OBJ-27`'s leverage since 2026-08-14; Alexander gave it away
-        # and kept the terms the same. Disposal: `120_INVENTORY_AND_OWNERSHIP.md`.
+        # Evidence, documents, unresolved objects, and skill instruction (Section 15.3.2).
+        # Instruction is ONE holding per taught skill (`skill_rulings.instructional_item_naming_evt_001063`):
+        # a new Rune for a listed skill bumps that line's count and adds its Event.
+        - "**Skill Rune: Dagger Mastery [S-Rank] × 4** — teaches Dagger Mastery · Unbound: any awakened can learn it; already known · West Loop drop (`EVT-001066`), three more `EVT-001079`."
+        - "**Skill Rune: Flash Step × 2** — teaches Flash Step · Unbound: any awakened can learn it; already known · dropped by bosses."
+        - "**Skill Rune: Keen Sense × 4** — teaches Keen Sense · Unbound: any awakened can learn it; already known · latest drop `EVT-001079`."
+        - "**Skill Rune: Mana Bolt × 3** — teaches Mana Bolt · Unbound: any awakened can learn it; already known · latest drop `EVT-001080`."
+        - "**Skill Rune: Mend × 5** — teaches Mend · Unbound: any awakened can learn it; already known · latest drops `EVT-001079`/`EVT-001080`."
+        - "**Skill Rune: Rupture [A-Rank] × 1** — teaches Rupture · Unbound: any awakened can learn it; already known · boss drop."
+        - "**Skill Rune: Silent Step × 6** — teaches Silent Step, assorted Ranks · Unbound: any awakened can learn it; already known · sources in `160_CAMPAIGN_CHRONICLE.md`."
+        - "**Skill Rune: Sprint [S-Rank] × 4** — teaches Sprint · Unbound: any awakened can learn it; already known · latest drops `EVT-001079`/`EVT-001080`."
+        - "**Skill Rune: Stone Skin × 4** — teaches Stone Skin, three at S-Rank and one at A-Rank · Unbound: any awakened can learn it; already known · the A-Rank one a Pilsen drop (`EVT-001067`)."
+        - "**Dormant Core [S-Rank]** — an unbound S-Rank core with no known function; no reading has found a use · returned by Nakamura (`EVT-000812`)."
+        - "**Frost-fused carapace plating [B-Rank]** — deliberately worked, not natural, per Corwin Ashvale; function unknown · returned by Nakamura (`EVT-000812`)."
+        - "**`ENT-000220`** — an unclassified warm object; Flux Sight and ownership auto-identify both return nothing · taken from `ENT-000218`'s wall (`EVT-000674`); account in `130_NPCS_AND_FACTIONS.md`."
+        - "**`ENT-000221`** — eleven correlation logbooks, unread beyond the top volume's open page · taken from `ENT-000219`'s shelf (`EVT-000676`); account in `130_NPCS_AND_FACTIONS.md`."
+        - "**Hand-instrument** — a handheld anomaly and Gate-signature reader; how it works and who made it are unresolved · taken from `ENT-000213` (`EVT-000659`); account in `120_INVENTORY_AND_OWNERSHIP.md`."
+        - "**The Assay's local archive** — the Assay's local records, carried off whole · Kept at Tolo's library · taken `EVT-000983`, entrusted `EVT-000989`; see `OBJ-65`."
+        - "**Sealed container, Orenne's remains** — ash and bone fragments, unranked · `EVT-001175`."
+        - "**Alpha-strain sinew [B-Rank] × 2 lots** — fully catalogued by Flux Sight: one strain at two ages, which the System prices apart · harvested from the Beast Den boss and its alpha (`EVT-000589`)."
+        - "**Drowned mana nodule [B-Rank] × 1** — a natural mana concentration that holds mana passively, fully catalogued by Flux Sight · The control sample against the heartwood core-mass, which does the same with no mechanism and no catalogue line · legendary harvest (`EVT-000588`)."
+        - "**Bone-lattice plating [B-Rank] × 1 lot** — armour-grade boss material, fully catalogued by Flux Sight · Proof that boss material reads normally, so the frost-fused plating and the heartwood are the anomalies · Crypt boss harvest (`EVT-000586`)."
+        - "**Worked bracer [B-Rank]** — Agility +9 · A latent second property, dormant until the piece is raised to its A-Rank ceiling; what it does is unread · Its maker's mark is not Marnie's: physical proof of a second controlled artificer · found in the worked-leather satchel, wrapped in oilcloth."
+        - "**CONSULT pieces × 5** — earrings [A-Rank] (Marnie's mark), pendant [A-Rank], bracer [B-Rank], blade [B-Rank], ring [C-Rank, nested working]; evidence, not for wear · Nakamura's read of pendant, blade and ring: one shared teacher (`EVT-000713`) · taken from the Ironclad unit (`EVT-000710`)."
+        - "**Wallet — Peter Kwiatkowski** — evidence: a licensed D-Rank BGM ID, a northwest-side address, cash, receipts, an expired Coalition card; nothing on CONSULT or on 'D' · taken `EVT-000700`; the satchel went back, the wallet did not (`EVT-000909`)."
+        - "**Crumpled work order** — a lead: handwritten, moves 'the consultation' to an unnamed street after Tuesday; no address number · dock search (`EVT-000326`)."
+        - "**Torn visitor-badge fragment** — a lead: printed 'CONSULT — TEMP', no logo, no name · found with the work order (`EVT-000326`)."
+        - "**Half-finished leather piece** — unfinished work bearing the same maker's stamp as the document wallet and the dagger; no stats · dock sweep (`EVT-000326`)."
       gear:
-        # The Seer's Lens [D-Rank] pair left this list at `EVT-000670`: it renders under
-        # IN CUSTODY instead (Section 15.3.2) and was counted twice.
-        # Section 11.5 item lines while stored, plus tools and instruments.
-        - "**Greatarm [S-Rank] (third)** — Strength +17, Vitality +5, power 22, armed strike ×1.0, two-handed; Excellent, unbound; Daily Random Box #69 (`EVT-001134`). Banked."
-        - "**Hunter’s Band [A-Rank]** — accessory · Strength +9; Excellent, unbound; from Graciela Corrales (`EVT-001135`). Banked."
-        - "**Greatarm [A-Rank]** — 75% Strength/25% Vitality, weapon power 16, armed strike ×1.0, two-handed. The Pilsen Gate's boss drop (`EVT-000920`, 🎲 34 -> Equipment, chassis 🎲 34). Off-build — he runs dual Quickknives — banked, unequipped."
-        - "**Adaptive Gale Torso [A-Rank]** — Premium · Agility +9 · reduction 20% · Daily Premium Cobalt, 30,000 g (`EVT-000609`). Banked, unequipped."
-        - "**Arcanist Feet [C-Rank]** (retired) — Intelligence +3 · 8% reduction · displaced by the bought [A-Rank] pair (`EVT-000609`). Banked, unsold."
-        - "**Bastion Torso [E-Rank]** — Vitality +2, 3% reduction, Carapaced Imprint (+1 Vitality), **Guard Echo** (+1 modifier step, once/scene, one physical defense action — reconstructed from `EVT-000265`'s 'Carapaced, Guard signature'). Overgrown Temple bonus loot. Reclaimed free from Walt's `OBJ-29` stock (`EVT-000611`). Banked — fusion-donor candidate."
-        - "**Mana-null disc [E-Rank]** — spent (its one ten-minute window used), reusability unestablished. Blinds passive mana-signature scanning through the surface it's pressed to. Walt Adamik, $1,800."
-        - "**Mana-storage cell [capacity 750, ceiling reached]** — unbound passive Mana battery, 1:1 transfer. Walt Adamik, $9,000 (`EVT-000611`). **Seamwork-raised this span** (`EVT-000820`): 400→700→750, Flux Sight-confirmed ceiling. No further growth possible (`F-058`). Homebrew, not Section 11.5-classed. Banked."
-        - "**Arcanist Coif [C-Rank]** — Boss Imprint · Intelligence +3 base **+1 further Agility** (Predator body family) · reduction 8% · **Edge Echo — +1 modifier step, once per scene, on one close attack against an already-injured target.** Segmented finish. The fourth C-Rank instance's boss drop (`EVT-000629`). Worse than the worn Gale Hunter's Gauntlets on every axis but the Echo, which nothing currently worn grants. Banked, unequipped."
-        - "**Channeling Focus [D-Rank]** — weapon chassis, main hand · Boss Imprint · Intelligence +4 (base weapon budget) · Agility +1 (Predator body-family imprint) · Edge Echo — +1 modifier step, once/scene, on a close attack against an already-injured target · Lakefront Gate Corridor boss drop, the unsanctioned D-Rank solo clear (`EVT-000607`, 🎲 d100 2 → equipment, d20 8 → Channeling Focus). Etched finish, cinder-steel/ember-red Ashfield palette. Kept rather than sold — does not fit the current dagger/Mana Bolt build. Banked, unequipped."
-        - "**Hunter’s Band [E-Rank] × 1 (opened)** — accessory · Strength +1 · bought from the standard System shop catalogue for 80 g at `EVT-000603` as disposable practice stock. **Its working was opened and closed intact** in the Seamwork practical; still Strength +1, and no fusion donor (no second passive, Section 11.5). Banked."
-        - "**Hunter’s Band [E-Rank] × 1 (untouched)** — accessory · Strength +1 · the second of the pair bought at `EVT-000603`, 80 g, held back so the first attempt had a clean spare. Unworked, banked."
-        - "**Longsword [B-Rank]** — Strength +11 · weapon power 11 · armed strike ×0.85 · the Crypt boss's drop (`EVT-000586`, 🎲 d100 27 → equipment, d3 1 → weapon, d7 3). Excellent, unbound. Off-build: Twin Fang requires two Quickknives. Banked."
-        - "**Ascendant Warlord's Loop [A-Rank]** — accessory · **Strength +16** · Excellent, unbound · Overgrown Temple boss drop, top band, one Rank above the instance (`EVT-000570`). **Banked, unequipped.**"
-        - "**Reacharm [B-Rank] x2** — polearm · Perception +7 / Strength +4 · power 11 · Excellent, unbound. Beast Den drop plus a second, identical, from the Houston Gate boss (`EVT-000817`), quantity-collapsed. Two-handed, off-build. Banked, unsold."
-        - "**Arcanist Boots [S-Rank]** — Intelligence +10 · reduction 23% · Daily Random Box (`EVT-000816`). Excellent, unbound. Banked, unequipped."
-        - "**Ascendant Hunter's Band [D-Rank]** — accessory · Strength +5 · Daily Premium, 720 g (`EVT-000088`) · worn in accessory slot 2 from `EVT-000094` until **retired at `EVT-000565`**, when the second Warded Vambrace [A-Rank] took the slot. Banked, unequipped, unsold."
-        - "**Keyed document wallet [C-Rank]** — bought from Elias Ward 2026-08-13, bundled with the sensor rig below for $800 cash total (`EVT-000323`), negotiated past his stated one-item-or-the-other policy (legendary success). Rank auto-identified on banking (real d6 roll: 3 → C-Rank, `EVT-000323`). Beaten at `EVT-000324` via an Exploit Pattern read plus the lockpick set. Empty inside; a hidden lining seam carries a maker's stamp tentatively linked (unconfirmed) by Walt Adamik to Marnie's own hand. Open, no key, banked."
-        - "**Unmarked motion-sensor rig [D-Rank]** — bundled with the wallet, same purchase (`EVT-000323`). Battery-powered, unbranded. A Keen Sense read (`EVT-000323`) established its intent: it logs detected movement to a remote destination rather than displaying locally — surveillance, not security. Where the log goes is unread. Banked."
-        - "Gate Direction Finder [E-Rank] — handheld directional instrument, Elias Ward (`ENT-000177`), $800 (`EVT-000216`). Points toward the strongest nearby active Gate signature; no distance, identity or Rank. Carried."
-        - "Suppression Emitter [E-Rank] — unmarked matte-black cylinder, stripped decommissioned surveillance-suppression hardware; blinds instrument-based anomaly/Gate-signature detection in a 3-meter radius. Does not affect personal perception, awakened senses, or System-side detection. Max continuous operation 20 minutes; recharges 1 minute per 5 inactive. Illegal to hold given its origin. Bought from Walt Adamik for 15 E-Rank cores. **Activated at `EVT-000541`** at the fenced warehouse (`ENT-000166`) — its field reacted to something instrument-based reaching for it, confirming an undisclosed anomaly-sensing layer there."
-        - "Unlicensed Lockpick Set [B-Rank] — awakened-made, unlicensed; reads a lock's mechanism and reshapes to fit, guiding tension/pin work by feel; detects ordinary traps. Effective up to B-Rank; cannot open electronics, bypass passwords/biometrics, or beat an actively-opposed lock. No combat application. Bought from Walt Adamik (`EVT-000216`)."
-        - "**Directional listening rig** — mundane, no awakened function. Walt Adamik, $650 (`EVT-000373`). Picks a conversation out of ambient noise at range with a clean line on the source. Untested, banked."
-        - "**Quickknife [C-Rank]** — Good · Agility +7 · weapon power 7 · armed strike ×0.75. Bought 2026-07-27 for 2,000 g (`EVT-000069`), carried as main hand until the S-Rank dagger took the slot at `EVT-000339`. Banked, unequipped."
-        - "**Quickknife [C-Rank] (second)** — **Boss Imprint** · Agility +7 base **+1 Serpentine resonance = +8** · weapon power 7 · ×0.75 · **Control Echo — +1 modifier step, once per scene, to establish or break a grapple, restraint, fear hold or forced position.** Weathered (🎲 d6 6). The 🎲 d20 20 player-choice drop (`EVT-000626`/`EVT-000627`). **One Boss-Imprint Echo per scene across all worn imprinted pieces (11.2.1); he carries five.** Fusion-eligible with the Quickknife above and the banked [B-Rank] — same chassis, within one Rank (12.10)."
-        - "**Mana Reservoir [C-Rank]** — a small dense stone, faintly warm. Walt Adamik, $2,500 (`EVT-000446`); a **passive Mana battery, unbound to any Bearer**. **Capacity 125**, charged to **full, 125/125** (`EVT-000758`, +108 from 17/125, deliberate transfer from Alexander's own pool). Transfer 1:1 both directions. `unbound` — usable by someone other than Alexander (`OBJ-18`). Banked."
-        - "**Ascendant Mindspun Loop [C-Rank]** — accessory · Intelligence +4. Daily Random Box drop, `EVT-000487`. Banked — both slots hold Warded Vambraces, so this now competes with a second −30% proc as well as with the Warlord's Loop."
-        - "**Quickknife [B-Rank]** — Agility +11 · power 11 · ×0.75 · Daily Random Box drop, `EVT-000553`. Excellent, unbound. Banked."
-        - "**Greatarm [A-Rank]** — Excellent, unbound · two-handed · Strength +12, Vitality +4 (75/25 of the A-Rank 16-point budget) · weapon power 16 · armed strike x1.00 · boss drop (`EVT-000696`, d100 8, d20 5). **Banked unequipped** — a two-handed line costs him Twin Fang, Dagger Mastery's multiplier and the off-hand."
-        - "**Greatarm [S-Rank] (second)** — Excellent, unbound · two-handed · Strength +17, Vitality +5 (75/25 of the S-Rank 22 budget) · power 22 · armed strike ×1.00 · `EVT-000751` boss drop (Shattered City). Banked unequipped, off-build."
-        - "**Seer's Lens [D-Rank], fused** — accessory · Perception +2 · Boss Imprint (Predator/Mobility) · `fused` (Section 12.10, `EVT-000754`, 🎲 51→effective 71, success): carries the donor's Mobility Echo as a second instance — inert while worn, Section 11.2.1 caps one Echo/scene per wearer regardless of pieces. Condition Good. Cost: donor Lens consumed, 1 D-Rank core (35→34), $600. Banked, unequipped."
-        - "**Ghost Quickknife [B-Rank]** — Premium, Good · Agility +13 · power 11 · +1 modifier step on the first attack made unseen · retired at `EVT-000557` for the [A-Rank] model. Banked, unsold."
-        # This span's additions (EVT-000722-731): boss drops plus two EVT-000730 retirements
-        # and one EVT-000733 retirement. Full narrative: 160_CAMPAIGN_CHRONICLE.md.
-        - "**Ghost Quickknife [A-Rank]** — Agility +18 · power 16 · unseen-opener perk · retired `EVT-000730`. Banked, unsold."
-        - "**Hunter's Band [S-Rank], Boss-Imprinted** — Strength +12, Affliction Echo. Displaced from accessory_1 at `EVT-000813`. Banked, unsold."
-        - "**Quickstep Charm [S-Rank]** — Agility +12. Displaced from accessory_2 at `EVT-000813`. Banked, unsold."
-        - "**Adaptive Titan Coif [B-Rank]** — Strength +7 · 15% · retired `EVT-000730`. Banked, unsold."
-        - "**Adaptive Titan Legs [B-Rank]** — Strength +7 · 15% · retired `EVT-000730`. Banked, unsold."
-        - "**Arcanist Feet [A-Rank]** — Intelligence +7 · 17% · retired `EVT-000730`. Banked, unsold."
-        - "**Channeling Focus [S-Rank], Boss-Imprinted (Serpentine/Control)** — main hand · Intelligence +22+1 · power 22 as focus power · Control Echo · Segmented finish · Flooded Mine boss drop (`EVT-000727`, 🎲 d100 26→equip, 🎲 d20 8). Off-build — displaces the dagger. Banked."
-        # Hunter's Band [S-Rank] EQUIPPED EVT-000765; see equipment.accessory_1.
-        - "**Longsword [S-Rank], Boss-Imprinted (Carapaced/Guard)** — Strength +22+1 · power 22 · ×0.85 · Guard Echo · Weathered finish · Overgrown Temple boss drop (`EVT-000726`, 🎲 d100 24→equip, 🎲 d20 3). Off-build, no Dagger Mastery behind it. Banked."
-        - "**Longsword [S-Rank], Boss-Imprinted (Brute/Impact)** — Strength +22+1 · power 22 · ×0.85 · Impact Echo · Crystalline finish · eight-dungeon batch, boss 1 (`EVT-000731`, 🎲 d100 26→equip, 🎲 d20 3). Same off-build reasoning, a distinct second Longsword. Banked."
-        # Reacharm [S-Rank] (Winged/Projection) (EVT-000731) CONSUMED as fusion donor at
-        # EVT-000813 -- its Projection Echo fused into the main-hand dagger. Line removed.
-        - "**Heartward Sigil [S-Rank], Boss-Imprinted (Arcane/Affliction)** — accessory · Vitality +12, Intelligence +1 · Affliction Echo · Segmented finish · eight-dungeon batch, boss 5 (`EVT-000731`, 🎲 d100 22→equip, 🎲 d20 17). Same accessory-slot reasoning as the Hunter's Band. Banked."
-        - "**Longsword [S-Rank]** — Strength +22 · power 22 · ×0.85 · plain, no effect · Hive instant-dungeon boss drop (`EVT-000791`, 🎲 d100 13→equip, 🎲 d20 4). Off-build. Banked, unsold."
-        # The plain Ashfield-drop Quickknife [S-Rank] (EVT-000793) was DESTROYED at
-        # EVT-000813 in a failed fusion experiment (2 S-Rank cores also lost). Line removed.
-        - "**Quickknife [A-Rank]** — Agility +7 · power 7 · ×0.75 · Ashworth's confirmed A-Rank Gate boss drop (`EVT-000895`, 🎲 d100 40→equip, 🎲 d20 1). Off-build. Banked, unsold."
-        - "**Quickknife [S-Rank] (Red Gate)** — Agility +22 · power 22 · ×0.75 · the Red Gate boss drop, Rank-bumped from assessed A (`EVT-000896`, 🎲 d100 34→equip, 🎲 d20 1). Off-build, second S-Rank Quickknife held. Banked, unsold."
-        - "**Reacharm [S-Rank] (third)** — polearm · Perception +13, Strength +9 (60/40 of the S-Rank 22 budget) · power 22 · armed strike ×0.85 · the Red Gate's bonus loot roll (`EVT-000896`, 🎲 d100 12→equip, 🎲 d20 6). Two-handed, off-build. Banked, unequipped."
-        - "**Quickknife [S-Rank], Boss-Imprinted (Carapaced/Projection)** — Gary drop (`EVT-001074`), +1 further Vitality, Projection Echo/scene. Banked, undecided."
-        - "**Rune — Dagger Mastery [S-Rank], unbound-awakened** — West Loop drop (`EVT-001066`). Duplicate, giftable. Banked."
-        - "**Rune — Stone Skin [A-Rank], unbound-awakened** — Pilsen drop (`EVT-001067`), Gate-Rank taught. Duplicate, giftable. Banked."
-        - "**Watcher Gauntlets [S-Rank]** — Perception +10 · reduction 23% · five-dungeon batch boss drop (`EVT-000898`, 🎲 d100 28→equip, 🎲 d20 12, 🎲 d5/d5 hands/Watcher). Banked, unequipped."
-        - "**Titan Coif [A-Rank], Boss-Imprinted (Brute/Impact)** — Strength +7 · reduction 20% · Impact Echo/scene · `OBJ-64` boss drop (🎲 39→equip, 🎲 d20 13→armor, 🎲 d5 1/d5 2→head/Titan, 🎲 d5 3→Brute/Impact). Off-build — head slot already holds the [S-Rank] Titan Coif. Banked, unequipped."
-        - "**Arcanist Torso [S-Rank] (second)** — duplicate. Boss drop, `EVT-001001`. Banked."
-        - "**Bastion Torso [E-Rank] (second, Boss-Imprinted)** — boss drop, `EVT-001001`. Banked."
-        - "**Longsword [S-Rank] (fourth)** — off-build. Boss drop, `EVT-001001`. Banked."
-        - "**Mindspun Loop [S-Rank]** — boss drop, `EVT-001001`. Banked."
-        - "**Guard Shield [S-Rank]** — off-build. Boss drop, `EVT-001001`. Banked."
-      # Profile 1.88 (EVT-000662): owned, physically held by a named party. Reconstructed
-      # from campaign canon at EVT-000663, never by migration -- only the campaign holds
-      # holder, since, and end condition. NONE of these is a legal target for Section 12.9
-      # remote storage while its custody stands; recovery is an act in the fiction.
+        # Section 11.5 item lines while stored, plus tools and instruments used repeatedly.
+        # A stored item applies nothing; it is listed for what it would do if worn.
+        - "**Arcanist Torso [S-Rank] (second)** — Intelligence +10 · reduction 23% · boss drop, imprint not recorded (`EVT-001001`)."
+        - "**Watcher Gauntlets [S-Rank]** — Perception +10 · reduction 23% · five-dungeon batch boss drop (`EVT-000898`)."
+        - "**Arcanist Boots [S-Rank]** — Intelligence +10 · reduction 23% · Daily Random Box, Excellent, unbound (`EVT-000816`)."
+        - "**Titan Coif [A-Rank], Boss-Imprinted (Brute/Impact)** — Strength +7 · reduction 20% · Impact Echo: +1 step to break, shove, or resist knockdown or forced movement, once per scene · boss drop (`OBJ-64`)."
+        - "**Adaptive Gale Torso [A-Rank]** — Agility +9 · reduction 20% · Daily Premium Cobalt series, 30,000 g (`EVT-000609`)."
+        - "**Arcanist Feet [A-Rank]** — Intelligence +7 · reduction 17% · worn until `EVT-000730`."
+        - "**Adaptive Titan Coif [B-Rank]** — Strength +7 · reduction 15% · worn until `EVT-000730`."
+        - "**Adaptive Titan Legs [B-Rank]** — Strength +7 · reduction 15% · worn until `EVT-000730`."
+        - "**Arcanist Coif [C-Rank]** — Intelligence +3, Agility +1 (Predator imprint) · reduction 8% · Edge Echo: +1 step on a close attack against an injured target, once per scene · boss drop, fourth C-Rank instance, Segmented (`EVT-000629`)."
+        - "**Arcanist Feet [C-Rank]** — Intelligence +3 · reduction 8% · worn until `EVT-000609`."
+        - "**Bastion Torso [E-Rank]** — Vitality +2 (+1 Carapaced imprint) · reduction 3% · Guard Echo: +1 step on a physical defense, once per scene · Overgrown Temple bonus loot, reclaimed from Walt Adamik's stock (`EVT-000611`)."
+        - "**Bastion Torso [E-Rank] (second, Boss-Imprinted)** — Vitality +1 · reduction 3% · boss drop, imprint not recorded (`EVT-001001`)."
+        - "**Guard Shield [S-Rank]** — Vitality +22 · reduction 23% · Takes the off hand; no weapon power · boss drop, imprint not recorded (`EVT-001001`)."
+        - "**Quickknife [S-Rank], Boss-Imprinted (Carapaced/Projection)** — Agility +22, Vitality +1 (imprint) · power 22 · strike ×0.75 · Projection Echo: +1 step on a ranged attack or on a defense against a ranged or area attack, once per scene · Gary Gate boss drop (`EVT-001074`)."
+        - "**Quickknife [S-Rank] (Red Gate)** — Agility +22 · power 22 · strike ×0.75 · Red Gate boss drop, Rank-bumped from A (`EVT-000896`)."
+        - "**Quickknife [A-Rank]** — Agility +7 · power 7 · strike ×0.75 · Ashworth's A-Rank Gate boss drop (`EVT-000895`)."
+        - "**Ghost Quickknife [A-Rank]** — Agility +18 · power 16 · strike ×0.75 · +1 step on the first attack made unseen · worn until `EVT-000730`."
+        - "**Ghost Quickknife [B-Rank]** — Agility +13 · power 11 · strike ×0.75 · +1 step on the first attack made unseen · Daily Premium, Good, worn until `EVT-000557`."
+        - "**Quickknife [B-Rank]** — Agility +11 · power 11 · strike ×0.75 · Daily Random Box, Excellent, unbound (`EVT-000553`)."
+        - "**Quickknife [C-Rank] (second)** — Agility +8 (+1 Serpentine imprint) · power 7 · strike ×0.75 · Control Echo: +1 step to make or break a grapple, restraint, fear hold or forced position, once per scene · player-choice boss drop, Weathered (`EVT-000626`/`EVT-000627`)."
+        - "**Quickknife [C-Rank]** — Agility +7 · power 7 · strike ×0.75 · bought 2,000 g, Good (`EVT-000069`); main hand until `EVT-000339`."
+        - "**Longsword [S-Rank], Boss-Imprinted (Brute/Impact)** — Strength +23 (+1 Brute imprint) · power 22 · strike ×0.85 · Impact Echo: +1 step to break, shove, or resist knockdown or forced movement, once per scene · eight-dungeon batch boss drop, Crystalline (`EVT-000731`)."
+        - "**Longsword [S-Rank], Boss-Imprinted (Carapaced/Guard)** — Strength +22, Vitality +1 (Carapaced imprint) · power 22 · strike ×0.85 · Guard Echo: +1 step on a physical defense, once per scene · Overgrown Temple boss drop, Weathered (`EVT-000726`)."
+        - "**Longsword [S-Rank]** — Strength +22 · power 22 · strike ×0.85 · Hive instant-dungeon boss drop (`EVT-000791`)."
+        - "**Longsword [S-Rank] (fourth)** — Strength +22 · power 22 · strike ×0.85 · boss drop, imprint not recorded (`EVT-001001`)."
+        - "**Longsword [B-Rank]** — Strength +11 · power 11 · strike ×0.85 · Crypt boss drop, Excellent, unbound (`EVT-000586`)."
+        - "**Greatarm [S-Rank] (second)** — Strength +17, Vitality +5 · power 22 · strike ×1.0 · two-handed · Shattered City boss drop, Excellent, unbound (`EVT-000751`)."
+        - "**Greatarm [S-Rank] (third)** — Strength +17, Vitality +5 · power 22 · strike ×1.0 · two-handed · Daily Random Box #69, Excellent, unbound (`EVT-001134`)."
+        - "**Greatarm [A-Rank]** — Strength +12, Vitality +4 · power 16 · strike ×1.0 · two-handed · Pilsen Gate boss drop (`EVT-000920`)."
+        - "**Greatarm [A-Rank]** — Strength +12, Vitality +4 · power 16 · strike ×1.0 · two-handed · boss drop, Excellent, unbound (`EVT-000696`)."
+        - "**Reacharm [S-Rank] (third)** — Perception +13, Strength +9 · power 22 · strike ×0.85 · two-handed · +1 step to hold distance against a closing foe · Red Gate bonus loot (`EVT-000896`)."
+        - "**Reacharm [B-Rank] × 2** — Perception +7, Strength +4 · power 11 · strike ×0.85 · two-handed · +1 step to hold distance against a closing foe · Beast Den boss drop and a Houston Gate boss drop (`EVT-000817`), Excellent, unbound."
+        - "**Channeling Focus [S-Rank], Boss-Imprinted (Serpentine/Control)** — Intelligence +22, Agility +1 (Serpentine imprint) · focus power 22 · Adds its power to damage and healing skills; no strike bonus · Control Echo: +1 step to make or break a grapple, restraint, fear hold or forced position, once per scene · Flooded Mine boss drop, Segmented (`EVT-000727`)."
+        - "**Channeling Focus [D-Rank]** — Intelligence +4, Agility +1 (Predator imprint) · focus power 4 · Adds its power to damage and healing skills; no strike bonus · Edge Echo: +1 step on a close attack against an injured target, once per scene · Lakefront Gate Corridor boss drop, Etched (`EVT-000607`)."
+        - "**Heartward Sigil [S-Rank], Boss-Imprinted (Arcane/Affliction)** — Vitality +12, Intelligence +1 · Affliction Echo: +1 step to resist poison, venom, disease or drain, once per scene · eight-dungeon batch boss drop, Segmented (`EVT-000731`)."
+        - "**Hunter's Band [S-Rank], Boss-Imprinted** — Strength +12 · Affliction Echo: +1 step to resist poison, venom, disease or drain, once per scene · worn until `EVT-000813`."
+        - "**Quickstep Charm [S-Rank]** — Agility +12 · worn until `EVT-000813`."
+        - "**Mindspun Loop [S-Rank]** — Intelligence +12 · boss drop, imprint not recorded (`EVT-001001`)."
+        - "**Ascendant Warlord's Loop [A-Rank]** — Strength +16 · Overgrown Temple boss drop, one Rank above the instance, Excellent, unbound (`EVT-000570`)."
+        - "**Hunter’s Band [A-Rank]** — Strength +9 · from Graciela Corrales, Excellent, unbound (`EVT-001135`)."
+        - "**Ascendant Hunter's Band [D-Rank]** — Strength +5 · Daily Premium, 720 g (`EVT-000088`); worn `EVT-000094` to `EVT-000565`."
+        - "**Ascendant Mindspun Loop [C-Rank]** — Intelligence +4 · Daily Random Box (`EVT-000487`)."
+        - "**Seer's Lens [D-Rank], fused** — Perception +2 · Mobility Echo: +1 step on a movement, pursuit, escape or evasion action, once per scene · fused from a second Lens (Predator/Mobility imprint), 1 D-Rank core and $600, Good (`EVT-000754`)."
+        - "**Hunter’s Band [E-Rank] (opened)** — Strength +1 · Its working was opened and closed intact in the Seamwork practical · shop, 80 g (`EVT-000603`)."
+        - "**Hunter’s Band [E-Rank] (untouched)** — Strength +1 · the unworked spare of the pair · shop, 80 g (`EVT-000603`)."
+        - "**Mana Reservoir [C-Rank]** — capacity 125, full (125/125) · Stores Mana for anyone, 1:1 transfer both ways · Walt Adamik, $2,500 (`EVT-000446`, `OBJ-18`); charged `EVT-000758`."
+        - "**Mana-storage cell** — capacity 750, its maximum · Stores Mana for anyone, 1:1 transfer both ways · Walt Adamik, $9,000 (`EVT-000611`); raised from 400 by Seamwork (`EVT-000820`, `F-058`)."
+        - "**Suppression Emitter [E-Rank]** — blinds instrument-based anomaly and Gate-signature detection within 3 metres; personal perception, awakened senses and System detection are unaffected · Runs 20 minutes, recharges 1 minute per 5 off · Illegal to hold · Walt Adamik, 15 E-Rank cores; first used at the fenced warehouse (`EVT-000541`)."
+        - "**Mana-null disc [E-Rank]** — pressed to a surface, blinds passive mana-signature scanning through it for ten minutes · spent: its one window is used, reuse unestablished · Walt Adamik, $1,800."
+        - "**Gate Direction Finder [E-Rank]** — points toward the strongest nearby active Gate signature; no distance, identity or Rank · Elias Ward, $800 (`EVT-000216`)."
+        - "**Unlicensed Lockpick Set [B-Rank]** — reshapes to fit a lock and guides the pick by feel; detects ordinary traps · Works on locks up to B-Rank; not electronics, passwords, biometrics or an actively opposed lock · bought from Walt Adamik (`EVT-000216`)."
+        - "**Directional listening rig** — picks one conversation out of ambient noise at range, given a clean line to the source · Mundane, untested · Walt Adamik, $650 (`EVT-000373`)."
+        - "**Unmarked motion-sensor rig [D-Rank]** — logs detected movement to a remote destination instead of showing it: surveillance, not security; where the log goes is unread · bundled with the document wallet (`EVT-000323`)."
+        - "**Keyed document wallet [C-Rank]** — empty; its lock is beaten and it stays open with no key · A lining seam carries a maker's stamp Walt Adamik tentatively ties to Marnie · bought from Elias Ward with the sensor rig, $800 the pair (`EVT-000323`); opened `EVT-000324`."
+      # Profile 1.88 (EVT-000662): owned, physically held by a named party. NONE of these
+      # is a legal target for Section 12.9 remote storage while its custody stands;
+      # recovery is an act in the fiction. Each records holder, since, and end condition.
       custody:
-        - "**Mana Crystal [C-Rank] x3** -- held by **Priscilla Nakamura**, project stock since `EVT-000410`. **The only item still in her custody** — the Dormant Core, Frost-fused plating, and Warded Vambrace pair all left this span (`EVT-000812`/`EVT-000813`)."
-        - "**Heartwood core-mass** -- held by **Corwin Ashvale** (`ENT-000247`), Boston, since `EVT-000812`. His read: **'alive, on a slow timescale.'** $500/day ongoing storage fee."
-        - "**Quickknife [S-Rank]** -- held by **Corwin Ashvale**, Boston, since `EVT-000813` — the plain dagger from `EVT-000730`/`EVT-000733`, 2 more days of research. Due `OBJ-47`, 2026-08-31."
+        - "**Mana Crystal [C-Rank] × 3** — held by **Priscilla Nakamura** as project stock since `EVT-000410`."
+        - "**Heartwood core-mass** — Corwin's read: 'alive, on a slow timescale' · held by **Corwin Ashvale** (`ENT-000247`), Boston, since `EVT-000812` · storage fee $500/day."
+        - "**Quickknife [S-Rank]** — Agility +22 · power 22 · strike ×0.75 · held by **Corwin Ashvale**, Boston, since `EVT-000813` for research; due back 2026-08-31 (`OBJ-47`)."
       materials:
-        - "**Mana Crystal [S-Rank] — 0.** The federal lot (313, Winnetka lakefront Gate) closed and sold this span (`EVT-001083`), $130,200,000."
-        - "**Beast Core [S-Rank] — 0.** The federal lot's 5 cores sold alongside the crystals this span (`EVT-001083`); 202 non-lot cores remain — shop refuses cores, banked."
-        - "**Mana Crystal [A-Rank] — 0.** Sold `EVT-001005`."
-        - "**Beast Core [A-Rank] x 13** — shop refuses cores; banked."
-        - "**Beast Core [B-Rank] × 13** — shop refuses cores; banked."
-        - "**Mana Crystal [B-Rank] — 0.** Sold `EVT-001005`."
-        - "**Loose tool components / raw salvage** — dock sweep (`EVT-000326`). No combat application. Banked."
-        - "**Mana Crystal [D-Rank] — 0.** Sold `EVT-001005`."
-        - "Beast Core [D-Rank] x34 — shop refuses cores. Banked, unsold."
-        - "**Mana Crystal [C-Rank] — 0.** Sold `EVT-001005`."
-        - "**Beast Core [C-Rank] × 38** — shop refuses cores (Section 12.5); artificer stock, not gold. Banked, unsold."
+        - "**Beast Core [S-Rank] × 202** — the System shop will not buy cores; auction only, or artificer work · the federal lot's 5 sold (`EVT-001083`)."
+        - "**Beast Core [A-Rank] × 13** — the System shop will not buy cores; licensed market ≈$125,000 each, or artificer work."
+        - "**Beast Core [B-Rank] × 13** — the System shop will not buy cores; licensed market ≈$27,500 each, or artificer work."
+        - "**Beast Core [C-Rank] × 38** — the System shop will not buy cores; licensed market ≈$6,250 each, or artificer work."
+        - "**Beast Core [D-Rank] × 34** — the System shop will not buy cores; licensed market ≈$1,500 each, or artificer work."
+        - "**Loose tool components / raw salvage** — no combat use · dock sweep (`EVT-000326`)."
+        - "**Mana Crystal [S-Rank] — 0** — the federal lot of 313 sold (`EVT-001083`)."
+        - "**Mana Crystal [A-Rank] — 0** — all sold (`EVT-001005`)."
+        - "**Mana Crystal [B-Rank] — 0** — all sold (`EVT-001005`)."
+        - "**Mana Crystal [C-Rank] — 0** — all sold (`EVT-001005`)."
+        - "**Mana Crystal [D-Rank] — 0** — all sold (`EVT-001005`)."
     daily_premium:
       cycle: "**Ivory** (🎲 d8 2), live since 2026-09-14. All Rank-bearing offers cap at [S-Rank]."
       model_bags:

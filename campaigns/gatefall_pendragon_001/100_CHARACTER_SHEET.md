@@ -189,7 +189,7 @@ canonical_state:
       system_rank_rungs: "Section 18.8 grows this class on authored rungs read against System Rank (Section 6.6), never on a mastery track. **Reach column dropped at Profile 1.96** — travel is now governed by rift-step's own in-scene/travelling/anchored split; this table governs deflection and anchors only. **Deflection: B** 60%, **A** 70%, **S** may return the attack to its source. **Anchors (held ground, not reach): C** arrival never blind; **B** the answering step (reaction, from anywhere, no scene exit); **A** warded ground (deflection free at an anchor); **S** answering step unlimited, warded ground covers one ally, an ally he touches is sent with him."
       anchors:
         cap: 135
-        cap_formula: "effective Agility 2,710 / 20, floor = **135** (re-derived `EVT-001108` at Level 207; the stated basis had trailed at 2,701) (re-derived `EVT-001036`; had trailed at 131). Nowhere near binding."
+        cap_formula: "effective Agility 2,709 / 20, floor = **135** (re-derived `EVT-001108` at Level 207; the stated basis had trailed at 2,701) (re-derived `EVT-001036`; had trailed at 131). Nowhere near binding."
         set:
           - name: "The fence line"
             place: "the fenced warehouse, ENT-000166, Chicago warehouse district"
@@ -580,7 +580,7 @@ canonical_state:
     level: 207
     xp: "6642/20700"
     xp_note: "**Level 202 -> 207 this span** (`EVT-001108`). Godslayer's dropped double boss Kill XP (+84,000, `EVT-000944`/`EVT-001036`/`EVT-001001`) finally applies here - combat resolved - alongside Tulsa's kills (+2,700, `EVT-001097`) and Karlin's +12,000 (`EVT-001104`, 8 commons + 2 elites at 1,000 each, the boss at 1,000 doubled by Godslayer). 9,942 + 98,700 = 108,642 against thresholds 20,200/20,300/20,400/20,500/20,600, closing at 6,642/20,700. No Gate-clear milestone: a break spends the Gate. Prior breakdown: `160_CAMPAIGN_CHRONICLE.md`."
-    health: "11832/11832"
+    health: "11836/11836"
     mana: "6562/6562"
     mana_note: "Full at 6,562/6,562 at 14:22 on 09-30. The far door twice (-2,500 each) and the far side's drain took it to 1,445 at 10:27; Conduit's continuous Earth recovery had it full again by about 12:42 (`EVT-001179`'s audit matrix)."
     world_clock:
@@ -615,11 +615,11 @@ canonical_state:
       note: "**Intelligence 3,223 -> 3,260 this span**: 37 points (25 unspent + 12 pending Ability Points claimed) all allocated to Intelligence (`EVT-001123`). The other four Stats are unchanged. Unspent 0. Godslayer's level-up stat rungs stay deferred (`EVT-001079`)."
     effective_stats:
       strength: "2965 (base 2929 + equipment 36)"
-      agility: "2710 (base 2654 + equipment 56)"
-      vitality: "2958 (base 2946 + equipment 12)"
+      agility: "2709 (base 2654 + equipment 55)"
+      vitality: "2959 (base 2946 + equipment 13)"
       perception: "2655 (base 2655 + equipment 0)"
       intelligence: "3281 (base 3260 + equipment 21)"
-      note: "Level 207. Max HP 11,832 (4x effective Vitality); max MP 6,562 (2x effective Intelligence). Anchor cap re-derived: effective Agility 2,710 / 20 = 135, unchanged."
+      note: "Level 207. Max HP 11,836 (4x effective Vitality); max MP 6,562 (2x effective Intelligence). Anchor cap: effective Agility 2,709 / 20 = 135, unchanged. Gale Feet re-read to its Carapaced imprint out of play 2026-09-24: Agility -1, Vitality +1."
     system_rank: S
     equipment:
       main_hand: "**Finished dagger [S-Rank]** — Agility +22 · weapon power 22 · chassis ×1.85 · **DMG 5,526** at eff. Strength 2,965 (re-derived, `EVT-001108`) · Projection Echo (from fusion): +1 step to hold distance, once per scene · Held, not owned: an exposure risk if recognised · Quickknife chassis, recovered from the dock sweep (`EVT-000326`); Echo fused in from a consumed Reacharm (`EVT-000813`, critical)."
@@ -628,7 +628,7 @@ canonical_state:
       torso: "**Arcanist Torso [S-Rank]** — Intelligence +10 · reduction 23% · Impact Echo: +1 step to break, shove, or resist knockdown or forced movement, once per scene · forged from the consumed Watcher Torso [B-Rank], 2 S-Rank cores and $8,000 shared with the gauntlets (`EVT-000813`, strong)."
       hands: "**Arcanist Gauntlets [S-Rank]** — Intelligence +10 · reduction 23% · Edge Echo: +1 step on a close attack against an injured target, once per scene · forged from the consumed Gale Hunter's Gauntlets [C-Rank], cost shared with the torso (`EVT-000813`, strong)."
       legs: "**Titan Legs [S-Rank]** — Strength +10 · reduction 23% · bought 108,000 g (`EVT-000730`)."
-      feet: "**Gale Feet [S-Rank], Boss-Imprinted (Carapaced/Guard)** — Agility +11 · reduction 23% · Guard Echo: +1 step on a physical defense, once per scene · Overgrown Temple boss drop (`EVT-000726`); equipped `EVT-000730`."
+      feet: "**Gale Feet [S-Rank], Boss-Imprinted (Carapaced/Guard)** — Agility +10, Vitality +1 (Carapaced imprint) · reduction 23% · Guard Echo: +1 step on a physical defense, once per scene · Overgrown Temple boss drop (`EVT-000726`); equipped `EVT-000730`."
       accessory_1: "**Heartward Sigil [S-Rank], Boss-Imprinted (Arcane/Affliction)** — Vitality +12, Intelligence +1 · Affliction Echo: +1 step to resist poison, venom, disease or drain, once per scene · eight-dungeon batch boss drop (`EVT-000731`); equipped `EVT-000813`."
       accessory_2: "**Warlord's Loop [A-Rank]** — Strength +16 · reduction 60% · Multiplies with the worn armour's reduction · forged from the consumed Warded Vambrace pair [A-Rank], 1 A-Rank core and $2,500 (`EVT-000813`, critical)."
       total_physical_reduction: "**≈72.93%** (five S-Rank pieces at 23% each, multiplicative, `EVT-000813`) — Echoes: Impact (torso), Edge (hands/off hand), Guard (feet), Projection (main hand), Affliction (accessory 1) — only one Echo can be used per scene across everything worn. The Warlord's Loop's 60% multiplies on top: ≈89.2% in total. Fusion adds an Echo and never overwrites one (house rule)."
@@ -757,15 +757,15 @@ canonical_state:
       - "The Count [S-Rank] ★★★★★ Master · Passive · +10% damage for each exchange already fought, as its own multiplier outside the ±3 cap, resets when the fight ends. Taught, Orenne (`ENT-000261`), `transmissible: true`, Master by ruling (`EVT-001174`). **Successful uses 1.**"
       - "Tally [S-Rank] ★★★★★ Master · Passive · knows exactly how many of anything he has ever counted: exchanges, wounds, worlds. Taught, Orenne (`ENT-000261`), `transmissible: true`, Master by ruling (`EVT-001174`). **Successful uses 1.**"
       - "One Line, Refined [S-Rank] ★★★★★ Master · Mana 25 · a heavy strike on one target at ×4.00 of a Strength-read baseline. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
-      - "Recount [S-Rank] ★★★★★ Master · Mana 40 · once per scene, re-resolves any roll already made. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
-      - "Closing Argument [S-Rank] ★★★★★ Master · Mana 35 · while he is below half Health, One Line, Refined cannot miss. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
+      - "Recount [S-Rank] ★★★★★ Master · Mana 40 · once per scene, re-resolves one roll that has already happened, his or anyone's. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
+      - "Closing Argument [S-Rank] ★★★★★ Master · Mana 35 · against a target below half Health, One Line, Refined cannot miss. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
       - "The Clean Failure [S-Rank] ★★★★★ Master · Mana 20 · denies a target one resolution entirely. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
-      - "Let It Finish [S-Rank] ★★★★★ Master · Mana 18 · a running effect cannot be ended for five exchanges. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
+      - "Let It Finish [S-Rank] ★★★★★ Master · Mana 18 · an effect already running on a target cannot be ended, dispelled or interrupted for five exchanges. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
       - "The Argument [S-Rank] ★★★★★ Master · Mana 6 · a target who has heard his case takes −2 modifier steps against him for the scene. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
       - "Attrition [S-Rank] ★★★★★ Master · Passive · after three exchanges, a foe loses 10% of its maximum Health each exchange. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
-      - "Course of Nature [S-Rank] ★★★★★ Master · Mana 10 · a target's wounds do not heal for one day. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
+      - "Course of Nature [S-Rank] ★★★★★ Master · Mana 10 · a wound he inflicts does not heal by any means for one day. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
       - "Unhurried [S-Rank] ★★★★★ Master · Passive · takes no penalty for acting second. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
-      - "Ledgerhand [S-Rank] ★★★★★ Master · Mana 2 · records anything he perceives, exactly. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
+      - "Ledgerhand [S-Rank] ★★★★★ Master · Mana 2 · records anything he has perceived, permanently and exactly. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
       - "What He Is Trying to Make Him Do [S-Rank] ★★★★★ Master · Passive · is never obliged to attack in order to win a scene. Succession, Orenne (`ENT-000261`, `EVT-001174`), `transmissible: false`. **Successful uses 0.**"
     skill_rulings:
       instructional_item_naming_evt_001063: "**STANDING RULING (2026-09-18, player instruction).** Every instructional item — Rune or Book alike (Section 11.3 keeps them a real mechanical distinction: a Rune teaches at the Gate's E/D-Rank floor, a Book teaches at the dropping Gate's own Rank) — is recorded in `inventory.special` as ONE merged holding per taught SKILL NAME going forward, not one line per Rune/Book type. A new Rune or Book drop for a skill already held here is folded into that skill's existing line (bump its `× N` count, append the new instance's type/Rank/Event to the parenthetical list) rather than appended as a new line. A drop for a skill with no existing line opens one new line, named for the skill. **Supersedes the default one-holding-per-drop habit** that produced the Checkpoint 0159/0160 cleanup (seventeen Rune/Book lines merged to nine skill lines, `EVT-001063`). Does not touch Section 15.3.2's one-kind-per-holding rule for ordinary stacked goods (potions, crystals, cores) — this ruling is scoped to instructional items alone, where the 'kind' that matters to the player is the skill taught, not the Rune/Book vessel."
@@ -1165,7 +1165,7 @@ canonical_state:
         - "**Mender's Seal × 1** — clears one Minor injury, or reduces a Moderate to Minor; restores no Health · Daily Premium, 1,200 g."
         - "**Stabilization Seal × 4** — suspends one Critical injury's death risk for 24 hours; restores no Health, clears no severity."
         - "**Antidote × 2** — clears poisons and venoms of the drinker's Rank or below."
-        - "**Elixir of a stat × 3** — +1 to one base Stat of choice, permanently; at most 3 per Stat for Alexander · given to another awakened it raises Vitality or Intelligence only, uncapped · resale 2,500 g each; latest a Frozen Gallery boss drop (`EVT-000855`)."
+        - "**Elixir of a stat × 4** — +1 to one base Stat of choice, permanently; at most 3 per Stat for Alexander · given to another awakened it raises Vitality or Intelligence only, uncapped · resale 2,500 g each; boss drops at the Frozen Gallery (`EVT-000855`) and Karlín (`EVT-001104`, `OBJ-75`), the latter restored out of play 2026-09-24."
       special:
         # Evidence, documents, unresolved objects, and skill instruction (Section 15.3.2).
         # Instruction is ONE holding per taught skill (`skill_rulings.instructional_item_naming_evt_001063`):
@@ -1184,7 +1184,6 @@ canonical_state:
         - "**`ENT-000220`** — an unclassified warm object; Flux Sight and ownership auto-identify both return nothing · taken from `ENT-000218`'s wall (`EVT-000674`); account in `130_NPCS_AND_FACTIONS.md`."
         - "**`ENT-000221`** — eleven correlation logbooks, unread beyond the top volume's open page · taken from `ENT-000219`'s shelf (`EVT-000676`); account in `130_NPCS_AND_FACTIONS.md`."
         - "**Hand-instrument** — a handheld anomaly and Gate-signature reader; how it works and who made it are unresolved · taken from `ENT-000213` (`EVT-000659`); account in `120_INVENTORY_AND_OWNERSHIP.md`."
-        - "**The Assay's local archive** — the Assay's local records, carried off whole · Kept at Tolo's library · taken `EVT-000983`, entrusted `EVT-000989`; see `OBJ-65`."
         - "**Sealed container, Orenne's remains** — ash and bone fragments, unranked · `EVT-001175`."
         - "**Alpha-strain sinew [B-Rank] × 2 lots** — fully catalogued by Flux Sight: one strain at two ages, which the System prices apart · harvested from the Beast Den boss and its alpha (`EVT-000589`)."
         - "**Drowned mana nodule [B-Rank] × 1** — a natural mana concentration that holds mana passively, fully catalogued by Flux Sight · The control sample against the heartwood core-mass, which does the same with no mechanism and no catalogue line · legendary harvest (`EVT-000588`)."
@@ -1199,10 +1198,10 @@ canonical_state:
         # Section 11.5 item lines while stored, plus tools and instruments used repeatedly.
         # A stored item applies nothing; it is listed for what it would do if worn.
         # The EVT-000722-731 span (the Hive through the eight-dungeon batch) supplied several S-Rank lines here.
-        - "**Arcanist Torso [S-Rank] (second)** — Intelligence +10 · reduction 23% · boss drop, imprint not recorded (`EVT-001001`)."
+        - "**Arcanist Torso [S-Rank], Boss-Imprinted (Serpentine/Impact)** — Intelligence +10, Agility +1 (Serpentine imprint) · reduction 23% · Impact Echo: +1 step to break, shove, or resist knockdown or forced movement, once per scene · Overgrown Temple instant-dungeon boss drop, Bound or wrapped: root-grained metal, jade stone, gold sap-lines (`EVT-001001`; imprint rolled out of play 2026-09-24)."
         - "**Watcher Gauntlets [S-Rank]** — Perception +10 · reduction 23% · five-dungeon batch boss drop (`EVT-000898`)."
         - "**Arcanist Boots [S-Rank]** — Intelligence +10 · reduction 23% · Daily Random Box, Excellent, unbound (`EVT-000816`)."
-        - "**Titan Coif [A-Rank], Boss-Imprinted (Brute/Impact)** — Strength +7 · reduction 20% · Impact Echo: +1 step to break, shove, or resist knockdown or forced movement, once per scene · boss drop (`OBJ-64`)."
+        - "**Titan Coif [A-Rank], Boss-Imprinted (Brute/Impact)** — Strength +8 (+1 Brute imprint) · reduction 17% · Impact Echo: +1 step to break, shove, or resist knockdown or forced movement, once per scene · boss drop (`OBJ-64`)."
         - "**Adaptive Gale Torso [A-Rank]** — Agility +9 · reduction 20% · Daily Premium Cobalt series, 30,000 g (`EVT-000609`)."
         - "**Arcanist Feet [A-Rank]** — Intelligence +7 · reduction 17% · worn until `EVT-000730`."
         - "**Adaptive Titan Coif [B-Rank]** — Strength +7 · reduction 15% · worn until `EVT-000730`."
@@ -1210,11 +1209,12 @@ canonical_state:
         - "**Arcanist Coif [C-Rank]** — Intelligence +3, Agility +1 (Predator imprint) · reduction 8% · Edge Echo: +1 step on a close attack against an injured target, once per scene · boss drop, fourth C-Rank instance, Segmented (`EVT-000629`)."
         - "**Arcanist Feet [C-Rank]** — Intelligence +3 · reduction 8% · worn until `EVT-000609`."
         - "**Bastion Torso [E-Rank]** — Vitality +2 (+1 Carapaced imprint) · reduction 3% · Guard Echo: +1 step on a physical defense, once per scene · Overgrown Temple bonus loot, reclaimed from Walt Adamik's stock (`EVT-000611`)."
-        - "**Bastion Torso [E-Rank] (second, Boss-Imprinted)** — Vitality +1 · reduction 3% · boss drop, imprint not recorded (`EVT-001001`)."
-        - "**Guard Shield [S-Rank]** — Vitality +22 · reduction 23% · Takes the off hand; no weapon power · boss drop, imprint not recorded (`EVT-001001`)."
+        - "**Bastion Torso [E-Rank], Boss-Imprinted (Winged/Edge)** — Vitality +1, Perception +1 (Winged imprint) · reduction 3% · Edge Echo: +1 step on a close attack against an injured target, once per scene · Flooded Mine instant-dungeon boss drop, Crystalline: green-black alloy, pearl accents, blue current-lines (`EVT-001001`; imprint rolled out of play 2026-09-24)."
+        - "**Guard Shield [S-Rank], Boss-Imprinted (Carapaced/Control)** — Vitality +23 (+1 Carapaced imprint) · reduction 23% · Takes the off hand, no weapon power · Control Echo: +1 step to make or break a grapple, restraint, fear hold or forced position, once per scene · Ashfield instant-dungeon boss drop, Bound or wrapped: cinder steel, charred grip, ember-red fissures (`EVT-001001`; imprint rolled out of play 2026-09-24)."
         - "**Quickknife [S-Rank], Boss-Imprinted (Carapaced/Projection)** — Agility +22, Vitality +1 (imprint) · power 22 · strike ×0.75 · Projection Echo: +1 step on a ranged attack or on a defense against a ranged or area attack, once per scene · Gary Gate boss drop (`EVT-001074`)."
+        - "**Quickknife [S-Rank]** — Agility +22 · power 22 · strike ×0.75 · plain boss drop (`EVT-000730`), left with Corwin Ashvale for research (`EVT-000813`) and collected unchanged (`EVT-000829`)."
         - "**Quickknife [S-Rank] (Red Gate)** — Agility +22 · power 22 · strike ×0.75 · Red Gate boss drop, Rank-bumped from A (`EVT-000896`)."
-        - "**Quickknife [A-Rank]** — Agility +7 · power 7 · strike ×0.75 · Ashworth's A-Rank Gate boss drop (`EVT-000895`)."
+        - "**Quickknife [A-Rank]** — Agility +16 · power 16 · strike ×0.75 · Ashworth's A-Rank Gate boss drop (`EVT-000895`)."
         - "**Ghost Quickknife [A-Rank]** — Agility +18 · power 16 · strike ×0.75 · +1 step on the first attack made unseen · worn until `EVT-000730`."
         - "**Ghost Quickknife [B-Rank]** — Agility +13 · power 11 · strike ×0.75 · +1 step on the first attack made unseen · Daily Premium, Good, worn until `EVT-000557`."
         - "**Quickknife [B-Rank]** — Agility +11 · power 11 · strike ×0.75 · Daily Random Box, Excellent, unbound (`EVT-000553`)."
@@ -1223,7 +1223,8 @@ canonical_state:
         - "**Longsword [S-Rank], Boss-Imprinted (Brute/Impact)** — Strength +23 (+1 Brute imprint) · power 22 · strike ×0.85 · Impact Echo: +1 step to break, shove, or resist knockdown or forced movement, once per scene · eight-dungeon batch boss drop, Crystalline (`EVT-000731`)."
         - "**Longsword [S-Rank], Boss-Imprinted (Carapaced/Guard)** — Strength +22, Vitality +1 (Carapaced imprint) · power 22 · strike ×0.85 · Guard Echo: +1 step on a physical defense, once per scene · Overgrown Temple boss drop, Weathered (`EVT-000726`)."
         - "**Longsword [S-Rank]** — Strength +22 · power 22 · strike ×0.85 · Hive instant-dungeon boss drop (`EVT-000791`)."
-        - "**Longsword [S-Rank] (fourth)** — Strength +22 · power 22 · strike ×0.85 · boss drop, imprint not recorded (`EVT-001001`)."
+        - "**Longsword [S-Rank], Boss-Imprinted (Carapaced/Edge)** — Strength +22, Vitality +1 (Carapaced imprint) · power 22 · strike ×0.85 · Edge Echo: +1 step on a close attack against an injured target, once per scene · Overgrown Temple instant-dungeon boss drop, Crystalline: root-grained metal, jade stone, gold sap-lines (`EVT-001001`; imprint rolled out of play 2026-09-24)."
+        - "**Longsword [S-Rank], Boss-Imprinted (Predator/Impact)** — Strength +22, Agility +1 (Predator imprint) · power 22 · strike ×0.85 · Impact Echo: +1 step to break, shove, or resist knockdown or forced movement, once per scene · Ashfield instant-dungeon boss drop, Seamless: cinder steel, charred grip, ember-red fissures (`EVT-001001`, the second of its two Longswords; restored to this list and imprint rolled out of play 2026-09-24)."
         - "**Longsword [B-Rank]** — Strength +11 · power 11 · strike ×0.85 · Crypt boss drop, Excellent, unbound (`EVT-000586`)."
         - "**Greatarm [S-Rank] (second)** — Strength +17, Vitality +5 · power 22 · strike ×1.0 · two-handed · Shattered City boss drop, Excellent, unbound (`EVT-000751`)."
         - "**Greatarm [S-Rank] (third)** — Strength +17, Vitality +5 · power 22 · strike ×1.0 · two-handed · Daily Random Box #69, Excellent, unbound (`EVT-001134`)."
@@ -1233,10 +1234,9 @@ canonical_state:
         - "**Reacharm [B-Rank] × 2** — Perception +7, Strength +4 · power 11 · strike ×0.85 · two-handed · +1 step to hold distance against a closing foe · Beast Den boss drop and a Houston Gate boss drop (`EVT-000817`), Excellent, unbound."
         - "**Channeling Focus [S-Rank], Boss-Imprinted (Serpentine/Control)** — Intelligence +22, Agility +1 (Serpentine imprint) · focus power 22 · Adds its power to damage and healing skills; no strike bonus · Control Echo: +1 step to make or break a grapple, restraint, fear hold or forced position, once per scene · Flooded Mine boss drop, Segmented (`EVT-000727`)."
         - "**Channeling Focus [D-Rank]** — Intelligence +4, Agility +1 (Predator imprint) · focus power 4 · Adds its power to damage and healing skills; no strike bonus · Edge Echo: +1 step on a close attack against an injured target, once per scene · Lakefront Gate Corridor boss drop, Etched (`EVT-000607`)."
-        - "**Heartward Sigil [S-Rank], Boss-Imprinted (Arcane/Affliction)** — Vitality +12, Intelligence +1 · Affliction Echo: +1 step to resist poison, venom, disease or drain, once per scene · eight-dungeon batch boss drop, Segmented (`EVT-000731`)."
         - "**Hunter's Band [S-Rank], Boss-Imprinted** — Strength +12 · Affliction Echo: +1 step to resist poison, venom, disease or drain, once per scene · worn until `EVT-000813`."
         - "**Quickstep Charm [S-Rank]** — Agility +12 · worn until `EVT-000813`."
-        - "**Mindspun Loop [S-Rank]** — Intelligence +12 · boss drop, imprint not recorded (`EVT-001001`)."
+        - "**Mindspun Loop [S-Rank], Boss-Imprinted (Carapaced/Edge)** — Intelligence +12, Vitality +1 (Carapaced imprint) · Edge Echo: +1 step on a close attack against an injured target, once per scene · Hive instant-dungeon boss drop, Etched: lacquered chitin, amber resin, hexagonal seams (`EVT-001001`; imprint rolled out of play 2026-09-24)."
         - "**Ascendant Warlord's Loop [A-Rank]** — Strength +16 · Overgrown Temple boss drop, one Rank above the instance, Excellent, unbound (`EVT-000570`)."
         - "**Hunter’s Band [A-Rank]** — Strength +9 · from Graciela Corrales, Excellent, unbound (`EVT-001135`)."
         - "**Ascendant Hunter's Band [D-Rank]** — Strength +5 · Daily Premium, 720 g (`EVT-000088`); worn `EVT-000094` to `EVT-000565`."
@@ -1257,9 +1257,9 @@ canonical_state:
       # is a legal target for Section 12.9 remote storage while its custody stands;
       # recovery is an act in the fiction. Each records holder, since, and end condition.
       custody:
+        - "**The Assay's local archive** — the Assay's local records, Earth's file included, carried off whole (`EVT-000983`) · held by **Tolo** (`ENT-000262`) in his library since `EVT-000989`, for joint study · returns when Alexander reclaims it (`OBJ-65`)."
         - "**Mana Crystal [C-Rank] × 3** — held by **Priscilla Nakamura** as project stock since `EVT-000410`."
         - "**Heartwood core-mass** — Corwin's read: 'alive, on a slow timescale' · held by **Corwin Ashvale** (`ENT-000247`), Boston, since `EVT-000812` · storage fee $500/day."
-        - "**Quickknife [S-Rank]** — Agility +22 · power 22 · strike ×0.75 · held by **Corwin Ashvale**, Boston, since `EVT-000813` for research; due back 2026-08-31 (`OBJ-47`)."
       materials:
         - "**Beast Core [S-Rank] × 202** — the System shop will not buy cores; auction only, or artificer work · the federal lot's 5 sold (`EVT-001083`)."
         - "**Beast Core [A-Rank] × 13** — the System shop will not buy cores; licensed market ≈$125,000 each, or artificer work."

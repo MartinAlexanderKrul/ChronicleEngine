@@ -23,6 +23,29 @@ subjects: []
 
 ---
 
+## Out of play, 2026-09-24 — Holdings Corrected to Their Own Events
+
+At the player's direction, with no Event moved and no fictional time passing.
+
+- **Struck:** the banked Heartward Sigil [S-Rank]. It was the worn one listed twice (`EVT-000731`, equipped `EVT-000813`).
+- **A-Rank figures:** Quickknife [A-Rank] now reads Agility +16, power 16 (it carried C-Rank numbers). Titan Coif [A-Rank] (Brute/Impact) reads Strength +8 with its imprint and reduction 17%.
+- **Gale Feet [S-Rank] (Carapaced/Guard):** Agility +10, Vitality +1, the Carapaced imprint's stat. Effective Agility 2,710 -> 2,709, effective Vitality 2,958 -> 2,959, max Health 11,832 -> 11,836. The anchor cap stays 135.
+- **`EVT-001001`'s boss drops:** the second Longsword [S-Rank] is restored. All six drops now carry imprints, rolled for real: dungeon d10, body family d6, signature d8, finish d6. The Bastion Torso's first dungeon roll (key 5) was rerolled because key 5 had one boss and already had a drop; the reroll went 8, 7, and key 7 was free.
+
+| Drop | Dungeon (key) | Body family | Signature | Finish |
+|---|---|---|---|---|
+| Arcanist Torso [S] | Overgrown Temple (5) | Serpentine, +1 Agility | Impact | Bound or wrapped |
+| Bastion Torso [E] | Flooded Mine (7) | Winged, +1 Perception | Edge | Crystalline |
+| Longsword [S] | Overgrown Temple (1) | Carapaced, +1 Vitality | Edge | Crystalline |
+| Longsword [S] | Ashfield (3) | Predator, +1 Agility | Impact | Seamless |
+| Mindspun Loop [S] | Hive (8) | Carapaced, +1 Vitality | Edge | Etched |
+| Guard Shield [S] | Ashfield (9) | Carapaced, +1 Vitality | Control | Bound or wrapped |
+
+- **Elixir of a stat x3 -> x4:** the Karlín boss drop (`EVT-001104`, `OBJ-75`) had never been added.
+- **Plain Quickknife [S-Rank]:** back in gear. It was collected from Corwin at `EVT-000829`, but the sheet still listed it in custody.
+- **The Assay's local archive:** moved from special to custody, held by Tolo in his library since `EVT-000989`.
+- **Skills:** Course of Nature, Closing Argument, Recount, Let It Finish and Ledgerhand now read as `270_THE_FAR_SIDE.md` authors them. Course of Nature: a wound he inflicts does not heal by any means for one day. Closing Argument: against a target below half Health, not while he is.
+
 ## Session (`EVT-001169`-`EVT-001179`) — Orenne: The Slates, the Cities, and the Cage Room
 
 **The far door and the slates (`EVT-001169`).** The far door opened at Denver (-2,500 Mana); an anchored step to Orenne's ground. Notice 100 -> 103; the 102 threshold was satisfied by the contact with Orenne. Every reading skill was run on Orenne and on the slates, each rolled: Flux Sight legendary (ceiling reached); Read the Learner legendary (he cannot undo a mark); Read the Want strong (he wants the slates read, and fears what will be found); Appraise legendary on the slates (one row scraped and re-marked twice). Orenne asked Alexander to read the count and admitted *a crack*: three worlds he is no longer sure of. Alexander invited him to see Earth.

@@ -184,12 +184,12 @@ items:
   "Arcanist Coif [C-Rank]": Armor
   "Arcanist Feet [A-Rank]": Armor
   "Arcanist Feet [C-Rank]": Armor
-  "Arcanist Torso [S-Rank] (second)": Armor
+  "Arcanist Torso [S-Rank], Boss-Imprinted (Serpentine/Impact)": Armor
   "Ascendant Hunter's Band [D-Rank]": Accessory
   "Ascendant Mindspun Loop [C-Rank]": Accessory
   "Ascendant Warlord's Loop [A-Rank]": Accessory
   "Bastion Torso [E-Rank]": Armor
-  "Bastion Torso [E-Rank] (second, Boss-Imprinted)": Armor
+  "Bastion Torso [E-Rank], Boss-Imprinted (Winged/Edge)": Armor
   "Channeling Focus [D-Rank]": Weapon
   "Channeling Focus [S-Rank], Boss-Imprinted (Serpentine/Control)": Weapon
   "Directional listening rig": Tool
@@ -199,7 +199,7 @@ items:
   "Greatarm [A-Rank]": Weapon
   "Greatarm [S-Rank] (second)": Weapon
   "Greatarm [S-Rank] (third)": Weapon
-  "Guard Shield [S-Rank]": Armor
+  "Guard Shield [S-Rank], Boss-Imprinted (Carapaced/Control)": Armor
   "Heartward Sigil [S-Rank], Boss-Imprinted (Arcane/Affliction)": Accessory
   "Hunter's Band [S-Rank], Boss-Imprinted": Accessory
   "Hunter’s Band [A-Rank]": Accessory
@@ -208,17 +208,19 @@ items:
   "Keyed document wallet [C-Rank]": Tool
   "Longsword [B-Rank]": Weapon
   "Longsword [S-Rank]": Weapon
-  "Longsword [S-Rank] (fourth)": Weapon
+  "Longsword [S-Rank], Boss-Imprinted (Carapaced/Edge)": Weapon
+  "Longsword [S-Rank], Boss-Imprinted (Predator/Impact)": Weapon
   "Longsword [S-Rank], Boss-Imprinted (Brute/Impact)": Weapon
   "Longsword [S-Rank], Boss-Imprinted (Carapaced/Guard)": Weapon
   "Mana Reservoir [C-Rank]": Tool
   "Mana-null disc [E-Rank]": Tool
   "Mana-storage cell": Tool
-  "Mindspun Loop [S-Rank]": Accessory
+  "Mindspun Loop [S-Rank], Boss-Imprinted (Carapaced/Edge)": Accessory
   "Quickknife [A-Rank]": Weapon
   "Quickknife [B-Rank]": Weapon
   "Quickknife [C-Rank]": Weapon
   "Quickknife [C-Rank] (second)": Weapon
+  "Quickknife [S-Rank]": Weapon
   "Quickknife [S-Rank] (Red Gate)": Weapon
   "Quickknife [S-Rank], Boss-Imprinted (Carapaced/Projection)": Weapon
   "Quickstep Charm [S-Rank]": Accessory

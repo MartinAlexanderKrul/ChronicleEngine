@@ -19,7 +19,7 @@ initialization_state: resumable
 # failures. Characters recorded after it carry want, fear, secret, voice and an agenda.
 # Removing this line does not disable the check; it widens it to the whole cast.
 disposition_baseline: ENT-000210
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0174
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0175
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 selection_caveat: "Active campaign; resumable from its latest checkpoint."
@@ -369,3 +369,4 @@ Non-canonical operational preferences, imported 2026-08-30 from the player's acc
 19. **Run his reading skills on every significant NPC and notable object without being told** (Keen Sense fresh each scene, Flux Sight, Appraise, Read the Learner, Read the Want, Read the Hand where the subject could be awakened), each a real d100 with its steps, Mana and counter shown. Confirmed 2026-09-28.
 20. **No two unrelated characters share a surname; every name fits its place.** Run `tools/check_name_collision.ps1 ... -StrictSurnames` (exit 4 = taken; `-RelatedTo ENT-...` for family) before a name is spoken. Local names for each city. Confirmed 2026-09-28.
 21. **Elapsed time comes from his actions, not from when replies arrive.** Confirmed 2026-09-28.
+22. **Show the per-turn "Settled this turn" block only when asked.** Confirmed 2026-09-30 (in play). Settlement still happens every turn; only its display is on request. Rolls, Mana/Health lines and read results stay inline under item 3.

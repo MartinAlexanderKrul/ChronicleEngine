@@ -96,19 +96,19 @@ At every Rank the mender and sensor seats limit the team count, not the strikers
 
 A branch runs as a **rate** (the daily E/D/C/B dispatch, no longer narrated Gate by Gate) once all four of Section 13.7.5's conditions hold: (1) a named dispatching officer, (2) round-the-clock cover, (3) a bench it can legally crew from, and (4) a **regulator's acceptance** of its filed standing relationship. The dispatching officer is the office head (`EVT-001130`). Night officers were named for every office at `EVT-001146`. The bench test is guild-wide over the tunnels, at 4,381 cards and ~243 per office, so every office qualifies for the full daily table once operational.
 
-**As of `EVT-001179`, no office is operational, and every office is missing condition 4 alone.** All eighteen have filed (the original fourteen by `EVT-001146`, the four newer ones on 2026-09-29 at 18:00). No regulator has accepted anything in writing. Anjali Desai has cited **$95,870** in Gates lost to the gap (`EVT-001146`).
+**As of `EVT-001194`, Chicago's regulator has accepted (Region V, 2026-09-30 15:24, `EVT-001186`) and Chicago runs as a rate from the 2026-10-01 06:00 tick; every other office is missing condition 4 alone.** All eighteen have filed (the original fourteen by `EVT-001146`, the four newer ones on 2026-09-29 at 18:00). No regulator has accepted anything in writing. Anjali Desai has cited **$95,870** in Gates lost to the gap (`EVT-001146`).
 
 | Office | Dispatching officer | 1 | 2 | 3 | 4 — regulator | Tunnel | A-Rank crew based here |
 |---|---|---|---|---|---|---|---|
-| Chicago | Imani Whitaker | yes | yes | yes | filed; Region V has not moved, and Kane is calling himself with an answer owed the evening of 2026-09-30 | open | Jun-seo Baek (the response pool) |
+| Chicago | Imani Whitaker | yes | yes | yes | **accepted 2026-09-30 15:24** on a modified dispatch annex (`EVT-001184`-`EVT-001186`); operational from the 10-01 06:00 tick | open | Jun-seo Baek (the response pool) |
 | Washington DC | Verity Prescott | yes | yes | yes | filed, not accepted | open | — |
 | Prague | Milena Horáková | yes | yes | yes | filed with the CGA, not accepted | open | — |
-| Frankfurt | Anselm Kretschmer | yes | yes | yes | filed; Region III confirmed processing verbally, nothing in writing | open | — |
+| Frankfurt | Anselm Kretschmer | yes | yes | yes | filed; Region III missed its verbal end-of-day, certified credentials sent, decision owed 10-01 05:00 Chicago (`EVT-001181`) | open | — |
 | New York | Ramona Ostrowski | yes | yes | yes | filed, not accepted | open | Delroy Hutchins |
 | Boston | Callum Doherty | yes | yes | yes | filed, not accepted | open | — |
 | Miami | Cecilia Duarte | yes | yes | yes | filed, not accepted | open | Yolanda Arriaga |
 | Houston | Roy Rawlins | yes | yes | yes | filed, not accepted | open | Mercedes Salinas |
-| Paris | Odile Fontaine | yes | yes | yes | filed; Region III confirmed processing verbally, nothing in writing | open | Céline Marchand (Continental Europe) |
+| Paris | Odile Fontaine | yes | yes | yes | filed; Region III missed its verbal end-of-day, certified credentials sent, decision owed 10-01 05:00 Chicago (`EVT-001181`) | open | Céline Marchand (Continental Europe) |
 | Amsterdam | Noor Vandermeulen | yes | yes | yes | filed, not accepted | open | Joost van Rijn |
 | Dallas | Wyatt Delaney | yes | yes | yes | filed, not accepted | open | — |
 | Los Angeles | Diego Villarreal | yes | yes | yes | filed, not accepted | open | — |
@@ -117,7 +117,7 @@ A branch runs as a **rate** (the daily E/D/C/B dispatch, no longer narrated Gate
 | Tel Aviv | Noa Shapira | yes | yes | yes | filed, not accepted | open | Noam Friedman (with Istanbul) |
 | Istanbul | Elif Demir | yes | yes | yes | filed, not accepted | open | — |
 | Stockholm | Linnea Bergström | yes | yes | yes | filed, not accepted | open | — |
-| London | Imogen Hartley | yes | yes | yes | filed, not accepted | **not open**: the rear-door lock was due on 2026-09-30, and Imogen rings Detroit when it is fitted | Harriet Pembroke |
+| London | Imogen Hartley | yes | yes | yes | filed, not accepted | **not open**: the rear-door lock was fitted on 2026-09-30 (`EVT-001180`); the tunnel waits on Alexander | Harriet Pembroke |
 
 **What becomes automatic on acceptance (per branch, per day):** E-Rank 1d4+1, D-Rank 1d3, C-Rank 1d3−1, B-Rank 1d2−1. That comes to about 7 clears a branch a day and ≈126 across eighteen. **A and S never become automatic.** They surface through Section 9.11 and Section 9.1.8, and the A-Rank response pool answers on a standing posture the guild has not yet declared (`OBJ-79`). **Until London's tunnel opens, its catchment is its own jurisdiction read from its own bench.**
 

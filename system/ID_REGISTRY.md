@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000351 |
+| Entity | `ENT-` | Persistent Entity | ENT-000352 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001179 |
+| Event | `EVT-` | Event | EVT-001194 |
 | Relationship | `REL-` | Relationship | REL-000125 |
 
 ---
@@ -37,6 +37,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 
 | Range | Kind | Consumed by |
 |-------|------|-------------|
+| EVT-001180 – EVT-001194 | Event | Gatefall: Pendragon, 2026-09-30/10-01, from checkpoint 0174: the roster sent and London's lock (`001180`); the regulators and the contract towns dispatched (`001181`); the Region V lobby (`001182`); Harlan Boyce and a signed statement (`001183`); Farraday and the annex (`001184`); Director Okafor (`001185`); the acceptance and home (`001186`); the sauna and the connector (`001187`); five contract Gates cleared (`001188`); Kesha's map and the tunnel floor (`001189`); Kane and Dario, the training plan (`001190`); the gear backlog, dinner and a film (`001191`); the 64th daily fails, the Hive penalty zone, Level 209 (`001192`); back to bed, the families write (`001193`); the `/save` barrier (`001194`). |
+| ENT-000352 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): Harlan Boyce, BGM Region V Incident Review line reviewer, named in canon at `OBJ-68` and first met `EVT-001183`. Checked with `tools/check_name_collision.ps1 -StrictSurnames`: REVIEW on the shared first name with Harlan Dorsett (`ENT-000317`), accepted as a coincidence. |
 | EVT-001169 – EVT-001179 | Event | Gatefall: Pendragon, 2026-09-30, from checkpoint 0172: the far door opened and Orenne's slates (`001169`); owner ruling, a champion may cross to Earth (`001170`); Orenne crosses, the door closed (`001171`); the cities -- Prague, London, Chicago, Tel Aviv, Abisko (`001172`); the cage room, Orenne killed (`001173`); Succession and its owner rulings (`001174`); the body burned, the remains stored (`001175`); home, a text, the sauna (`001176`); Anjali's call, nine A-Rank crews and their commanders, the A-Rank registry ruling (`001177`); owner ruling, the artificer's working Rank revoked (`001178`); promotion-barrier settlement (`001179`) |
 | ENT-000344 – ENT-000351 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): the eight A-Rank crew commanders named on Anjali Desai's roster (`EVT-001177`) -- Delroy Hutchins, New York (`000344`); Mercedes Salinas, Houston (`000345`); Harriet Pembroke, London (`000346`); Joost van Rijn, Amsterdam (`000347`); Yolanda Arriaga, Miami (`000348`); Garrett Ishida, Seattle (`000349`); Noam Friedman, Tel Aviv (`000350`); Céline Marchand, Paris (`000351`). Every name cleared through `tools/check_name_collision.ps1 -StrictSurnames` |
 | ENT-000343 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): the Detroit HQ campus, a Place, minted 2026-09-23 (real date) outside play at the player's direction so the holding renders on the ledger index; facts restated from `EVT-001068`, `EVT-001073`, `EVT-001086`, `EVT-001107`, `EVT-001162`. |

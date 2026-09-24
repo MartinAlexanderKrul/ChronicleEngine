@@ -216,6 +216,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000339` | Tamar Golan | guild office staff — night officer | active | The Pendragon Guild Tel Aviv office, night post. | — |
 | `ENT-000340` | Baran Yılmaz | guild office staff — night officer | active | The Pendragon Guild Istanbul office, night post. | — |
 | `ENT-000341` | Nigel Harcourt | guild office staff — night officer | active | The Pendragon Guild London office, night post. | — |
+| `ENT-000352` | Harlan Boyce | BGM Region V official — Incident Review line reviewer | active | BGM Region V Field Office | — |
 
 ---
 
@@ -337,7 +338,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000349` | Garrett Ishida | A West Coast crew Dario Wexler respects | That he leads only until Dario decides he wants the job | He ran one clear alongside Dario years ago, before either was known; Dario has never mentioned… | Laconic, flat calm, never swears; answers a question with 'yeah, no' or 'no, yeah' and means bo… |
 | `ENT-000350` | Noam Friedman | A crew that doesn't need him to shout | Cross-border politics pulling his crew off a Gate halfway through a clear | He served alongside Itai Barak years ago, and he signed because Itai did | Blunt and rapid; closes every plan with 'yalla' and a hand on the table |
 | `ENT-000351` | Céline Marchand | Four offices' A-Ranks made into one crew rather than four cliques | Language and national pride splitting the line under pressure | She has never commanded a full A-Rank crew; she ran B-Rank crews and was pushed up because no o… | Formal, precise English with a French lilt; switches to French only to swear |
-| `ENT-000288` | Anjali Desai | Not yet established beyond running a clean, accountable operation | Not yet established | Not yet established | Efficient, states what she can and can't promise plainly |
+| `ENT-000288` | Anjali Desai | To be handed whole problems rather than pieces, and trusted to carry them to the end (authored… | Being the bottleneck the guild's growth snags on -- grounded in `EVT-001146`'s correction and t… | She readies the next step before she is told to -- the roster sat addressed in her drafts befor… | Efficient, states what she can and can't promise plainly |
 | `ENT-000286` | Milena Horáková | To do the job well enough that the placeholder framing resolves in her favor | Not yet established | Not yet established | Composed, professional, states the honest state of things rather than a managed version of it w… |
 | `ENT-000289` | Tomas Prochazka | Not yet established beyond ordinary steady work | Not yet established | Not yet established | Plain, says what he means without dressing it up — first line to Alexander was genuine surprise… |
 | `ENT-000290` | Klara Nováková | Not yet established | Not yet established — Kane's read was that she hadn't been saying anything about her own thin k… | Not yet established | Quiet, direct — checks a new thing is real rather than commenting on it |
@@ -391,13 +392,14 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000339` | Tamar Golan | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
 | `ENT-000340` | Baran Yılmaz | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
 | `ENT-000341` | Nigel Harcourt | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
+| `ENT-000352` | Harlan Boyce | The lakefront finding closed honestly, with his name on it -- why a certified instrument carded… | That the finding is being written over his head: Deputy Director Strand signed the request he h… | Two sheets were taken from his review folder upstairs on 09-24 and never returned; he knows, an… | Reads dates and times from memory; glasses down to read and up to look at a person; apologises… |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 193. Protagonist relationships: 45.
-- Characters: 164. Disposition authored in full: 110; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 194. Protagonist relationships: 45.
+- Characters: 165. Disposition authored in full: 111; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

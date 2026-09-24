@@ -11,7 +11,7 @@ A skill present in the sheet with no taxonomy row is an ERROR, never a silent
 omission: that is what stops a newly acquired skill from falling out of the
 view unnoticed, which is the failure this generator exists to make impossible.
 """
-import argparse, io, json, os, re, shutil, sys
+import argparse, datetime, io, json, os, re, shutil, sys
 
 try:
     import yaml
@@ -312,6 +312,8 @@ NPC_ORDER = ["affiliation", "home", "age", "role", "rank", "pools", "pool_varian
              "signature_ability", "want", "fear"]
 NPC_RANK = re.compile(r"(?<![A-Za-z])([SABCDE])-Rank")
 PROTAGONIST = "ENT-000125"
+# The public repository the index asks for main's latest push.
+REPOSITORY = "MartinAlexanderKrul/ChronicleEngine"
 
 # Every page this generator writes, keyed. Templates never spell a filename:
 # they write {{ledger:<key>}} where they link to one, and <!--{{ledger-nav}}-->
@@ -695,6 +697,32 @@ def build_wealth(camp, assets):
     return dict(funds, properties=properties), failures
 
 
+# The index states which build it is, so a page open in a browser can be told
+# apart from the one on main. `built` is the only field not read from canon; a
+# --check run keeps the built time already on disk, so a check never drifts on
+# the clock alone. The canon position is read from 180's Record provenance and
+# its latest-checkpoint line, the same two the save writes.
+def build_stamp(camp, target, keep_built):
+    text = io.open(os.path.join(camp, "180_CURRENT_STATE.md"), encoding="utf-8").read()
+    record = yaml.safe_load(re.search(r"```yaml\n(.*?)\n```", text, re.S).group(1)) or {}
+    prov = record.get("provenance") or {}
+    checkpoint = re.search(r"Latest restorable checkpoint:\*\*\s*`saves/900_CHECKPOINT_(\d+)/`", text)
+    built = None
+    if keep_built and os.path.exists(target):
+        old = re.search(r"/\*__BUILD_DATA__\*/(.*?)/\*__END__\*/", io.open(target, encoding="utf-8").read(), re.S)
+        if old:
+            built = (json.loads(old.group(1)) or {}).get("built")
+    if not built:
+        built = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    return {
+        "built": built,
+        "event": str(prov.get("source", "")),
+        "gameDate": str(prov.get("game_date", "")),
+        "checkpoint": checkpoint.group(1) if checkpoint else "",
+        "repo": REPOSITORY,
+    }
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--campaign", required=True)
@@ -868,8 +896,10 @@ def main():
         "personality": summary_line(bearer.get("personality")), "aspiration": summary_line(bearer.get("aspiration")),
         "wealth": wealth,
     }
+    stamp = build_stamp(camp, os.path.join(assets, LEDGERS["index"][0]), args.check)
     ok = emit("index", "index.template.html",
-              {"PROFILE_DATA": json.dumps(profile, ensure_ascii=False).replace("</", "<\\/")}) and ok
+              {"PROFILE_DATA": json.dumps(profile, ensure_ascii=False).replace("</", "<\\/"),
+               "BUILD_DATA": json.dumps(stamp, ensure_ascii=False)}) and ok
 
     synced, copied, removed = sync_portraits(assets, mirror, args.check)
     ok = synced and ok

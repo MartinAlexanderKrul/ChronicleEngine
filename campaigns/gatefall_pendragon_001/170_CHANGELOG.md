@@ -23,6 +23,12 @@ subjects: []
 
 ---
 
+## Out of play, 2026-09-24 — The BGM Regions Fixed to the Real Federal Map
+
+Owner ruling, with no Event moved and no fictional time passing. `worlds/gatefall/200_WORLD_BIBLE.md` Section 4 now holds the ten BGM regions on the real US federal map: I Boston, II New York, III Philadelphia (incl. Washington DC), IV Atlanta (incl. Florida), V Chicago, VI Denton (Texas, Oklahoma), VII Kansas City, VIII Denver, IX Oakland (California, Arizona), X Seattle. Europe has no BGM regions; each state regulates through its own national authority.
+
+**Live records renumbered to match:** New York Region I -> **II** (Silas Grech, the fifteenth anchor); Miami Region II -> **IV** (Ramón Ortega, the eighteenth anchor); San Francisco Region II -> **IX** (the twenty-third anchor); the Indianapolis break's chokepoint and S-Rank, Region VII -> **V**. Houston and Tulsa stay Region VI. **"Region III" in `EVT-001149`-`EVT-001181` meant the German and French national authorities** for Frankfurt and Paris, and is re-read so. Sealed volumes keep their original wording as history; read their region numbers through this entry.
+
 ## Out of play, 2026-09-24 — Two Owner Questions Closed
 
 With no Event moved and no fictional time passing.
@@ -38,7 +44,7 @@ Owner ruling after checkpoint 0175, with no Event moved and no fictional time pa
 
 **The roster and London (`EVT-001180`).** The A-Rank roster sent to the nine commanders (`OBJ-85` closed). London's rear-door lock fitted; the tunnel is Alexander's. Anjali Desai's want, fear and secret authored.
 
-**The regulators and the contract towns (`EVT-001181`).** Region III missed its verbal end-of-day (d100 35 against 51+); its decision is due 10-01 05:00 Chicago. HQ dispatch now confirms and staffs contract-town tickets without the founder. Five Gates dispatched to Milwaukee (C, D) and Toledo (B, C, D), rosters per `151` Section 6 with miners on every Gate.
+**The regulators and the contract towns (`EVT-001181`).** The German and French authorities (Frankfurt, Paris; mislabelled *Region III* in play) missed their verbal end-of-day (d100 35 against 51+); its decision is due 10-01 05:00 Chicago. HQ dispatch now confirms and staffs contract-town tickets without the founder. Five Gates dispatched to Milwaukee (C, D) and Toledo (B, C, D), rosters per `151` Section 6 with miners on every Gate.
 
 **Region V (`EVT-001182`-`EVT-001186`).**
 - **Boyce:** the lobby desk rang Harlan Boyce (`ENT-000352`, minted). Alexander signed a witness statement for the lakefront review: read as S from outside, unaided. Boyce's finding turns to the remote-instrument carding.

@@ -122,10 +122,10 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000232` | Devon Achebe | striker | active | BGM Region V medical custody, Chicago — handed to staged medics… | — |
 | `ENT-000248` | Delia Okonjo | real-estate broker | active | Chicago, working a Milwaukee/Chicago corridor. | — |
 | `ENT-000249` | Danielle | security engineer | active | Milwaukee, at the data-center property listing during the site… | — |
-| `ENT-000250` | Silas Grech | BGM Region I coordinator | active | BGM Region I's New York office. | `REL-000103` |
+| `ENT-000250` | Silas Grech | BGM Region II coordinator | active | BGM Region II's New York office. | `REL-000103` |
 | `ENT-000251` | Cormac Deveraux | unlicensed salvage dealer | active | A lockup near the ship channel, Houston. | `REL-000104` |
 | `ENT-000252` | Adaeze Nwosu | BGM Region VI field liaison | active | BGM Region VI's Houston field office. | — |
-| `ENT-000253` | Ramón Ortega | BGM Region II field liaison | active | BGM Region II's Miami field office. | — |
+| `ENT-000253` | Ramón Ortega | BGM Region IV field liaison | active | BGM Region IV's Miami field office. | — |
 | `ENT-000254` | Sorcha Bellweather | BGM National containment doctrine official | active | BGM National HQ, Washington DC. | `REL-000105` |
 | `ENT-000255` | Kian Ferris | BGM Dallas field liaison | active | BGM's Dallas field office. | — |
 | `ENT-000256` | Naomi Whitcomb | BGM Los Angeles field liaison | active | BGM's Los Angeles field office. | — |
@@ -299,7 +299,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000232` | Devon Achebe | Unestablished — not yet tested in play | Unestablished | Unestablished | Unestablished — he has not spoken in a resolved scene |
 | `ENT-000248` | Delia Okonjo | A closed deal and a repeat client — this is early-stage prospecting, not yet a completed sale | Not yet established | Not yet established | Not yet established beyond brisk, businesslike listing pitches |
 | `ENT-000249` | Danielle | Not established | Not established | Not established | Not established — minimal dialogue in the scene |
-| `ENT-000250` | Silas Grech | A working responder inside Region I's own jurisdiction — met immediately by handing Alexander t… | Not yet established | Not yet established | Not yet established beyond businesslike coordination |
+| `ENT-000250` | Silas Grech | A working responder inside Region II's own jurisdiction — met immediately by handing Alexander… | Not yet established | Not yet established | Not yet established beyond businesslike coordination |
 | `ENT-000251` | Cormac Deveraux | To be taken seriously as someone who's found things BGM's own instruments never caught, not wri… | That Region VI's tolerance for him is one bad afternoon from ending, and any stranger walking i… | Not established beyond the professional pride he leads with | Direct, unhurried, tests a stranger's real intent before opening up |
 | `ENT-000252` | Adaeze Nwosu | To move through her list efficiently and get real value out of every National-asset visit, not… | Not established beyond professional pressure | Not established | Brisk, leads with the practical items, self-aware and dryly funny when caught out |
 | `ENT-000253` | Ramón Ortega | Not established beyond ordinary professional competence | Not established | Not established | Calm, brief, doesn't reference anything about Alexander's abilities — no channel to them |

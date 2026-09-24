@@ -1661,7 +1661,7 @@ pending_commitments:
     status: met
     settled: "2026-09-29T09:16:00-05:00"
     settled_by: EVT-001149
-    settle_note: "Delivered on schedule: Region III verbally confirmed processing by end of day, nothing written yet; Region V (Chicago's own) still unmoved; Kane's National contact produced a real name for the provisional-dispatch question, callback expected that afternoon."
+    settle_note: "Delivered on schedule: the German and French authorities verbally confirmed processing by end of day, nothing written yet; Region V (Chicago's own) still unmoved; Kane's National contact produced a real name for the provisional-dispatch question, callback expected that afternoon."
     provenance: EVT-001146
     note: "Committed after Alexander cited $95,870 already cost in Gates not taken through official channels."
   - owner: ENT-000242          # Elias Kane

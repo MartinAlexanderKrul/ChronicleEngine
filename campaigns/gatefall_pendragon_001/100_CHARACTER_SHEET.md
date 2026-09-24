@@ -248,10 +248,10 @@ canonical_state:
             place: "4417 South Rockwell, second bay from the street end — a private leased storage bay, Chicago"
             set_event: EVT-000798
             note: "Fourteenth anchor. Set standing the exchange alone in the empty bay, uncontested, free, no roll (Section 6.2's no-roll zone) — a privately leased space he unambiguously has reason to hold. No disturbance fired here this session."
-          - name: "BGM Region I, New York"
-            place: "BGM Region I's New York office"
+          - name: "BGM Region II, New York"
+            place: "BGM Region II's New York office"
             set_event: EVT-000809
-            note: "Fifteenth anchor. Set meeting Silas Grech, Region I coordinator, on the standing auto-anchor rule (every BGM office visited in person is anchored on arrival, per the player's own earlier ruling). Free, no roll. No disturbance fired here."
+            note: "Fifteenth anchor. Set meeting Silas Grech, Region II coordinator, on the standing auto-anchor rule (every BGM office visited in person is anchored on arrival, per the player's own earlier ruling). Free, no roll. No disturbance fired here."
           - name: "BGM National HQ, Washington DC"
             place: "BGM National Headquarters, Washington DC"
             set_event: EVT-000811
@@ -260,8 +260,8 @@ canonical_state:
             place: "BGM's Boston regional office"
             set_event: EVT-000811
             note: "Seventeenth anchor. Standing auto-anchor rule, same terms as New York and DC. Free, no roll. No disturbance fired here."
-          - name: "BGM Region II, Miami"
-            place: "BGM Region II's Miami field office"
+          - name: "BGM Region IV, Miami"
+            place: "BGM Region IV's Miami field office"
             set_event: EVT-000817
             note: "Eighteenth anchor. Standing auto-anchor rule. Bram Castillo (`ENT-000251`) met on arrival. Free, no roll. No disturbance fired here."
           - name: "BGM Region VI, Houston"
@@ -280,8 +280,8 @@ canonical_state:
             place: "BGM's Seattle field office"
             set_event: EVT-000817
             note: "Twenty-second anchor. Standing auto-anchor rule. Board ordinary, no request. Free, no roll."
-          - name: "BGM Region II, San Francisco"
-            place: "BGM Region II's San Francisco field office"
+          - name: "BGM Region IX, San Francisco"
+            place: "BGM Region IX's San Francisco field office"
             set_event: EVT-000817
             note: "Twenty-third anchor. Standing auto-anchor rule, at Renata Okonkwo-Vance's own suggestion — the last stop added to the National tour. Board ordinary, no request. Free, no roll."
           - name: "The CGA break room"
@@ -603,7 +603,7 @@ canonical_state:
       status_recovery: 45                  # +1 from the 62nd daily, unclaimed
       daily_random_box: 0                  # Boxes #66-#68 opened `EVT-001123`; #69 opened `EVT-001134` (a Greatarm [S-Rank])
       unresolved_gate_loot: "**Fully resolved.**"
-      latest_settlement: "**64th daily FAILED at 00:00 2026-10-01** (`EVT-001192`), penalty zone run and cleared; no reward entries. **63rd lapsed 2026-09-29** with no penalty transfer fired (owner question). PRIOR: **62nd daily completed 2026-09-28 08:10; streak 51 -> 52** (`EVT-001133`); its Ability Points (+4) and Status Recovery are pending, and its Box #69 was opened at 08:24 (`EVT-001134`). **The 63rd issued 2026-09-29 06:00 and is open** (`EVT-001145`). Daily Premium rotation not drawn: state unchanged since 2026-09-14 (Ivory)."
+      latest_settlement: "**64th daily FAILED at 00:00 2026-10-01** (`EVT-001192`), penalty zone run and cleared; no reward entries. **63rd lapsed 2026-09-29** with no penalty transfer fired (owner question)."
     # Profile 1.80 backfill: +119 to every base Stat (new automatic 148 vs old 29 at
     # level 30). Uniform because allocation is unchanged -- all 264 allocated points
     # stay where Alexander put them. See `migrations/1.79_to_1.80.md`.
@@ -1305,7 +1305,7 @@ canonical_state:
     # which any comment line between the two keys defeats.
     non_daily_quests:
       capacity_total: 7
-      closed_this_span: "**[URGENT] Contain the Indianapolis Break — COMPLETE**, `EVT-000862`. Offered and accepted the instant Alexander committed to the Hive swarm at the Region VII chokepoint (Section 8.4.2 criteria: a wounded operative and civilians in immediate danger from a Gate break already loose, a physically actionable route, objective/deadline statable from perceived facts). Completed the same exchange — zero further casualties, Pre-empt's first-blade grant meaning the boss never acted. Reward 6,800 XP, settled. Never occupied a non-daily slot — accepted and completed within the same unpromoted span. Prior: **[URGENT] A Way Out of the Flood — COMPLETE**, `EVT-000743`. Full render: `/system log`."
+      closed_this_span: "**[URGENT] Contain the Indianapolis Break — COMPLETE**, `EVT-000862`. Offered and accepted the instant Alexander committed to the Hive swarm at the Region V chokepoint (Section 8.4.2 criteria: a wounded operative and civilians in immediate danger from a Gate break already loose, a physically actionable route, objective/deadline statable from perceived facts). Completed the same exchange — zero further casualties, Pre-empt's first-blade grant meaning the boss never acted. Reward 6,800 XP, settled. Never occupied a non-daily slot — accepted and completed within the same unpromoted span. Prior: **[URGENT] A Way Out of the Flood — COMPLETE**, `EVT-000743`. Full render: `/system log`."
       active:
         - quest_key: "warehouse-meridian-ownership"
           type: hidden
@@ -1384,7 +1384,7 @@ canonical_state:
       last_completed: "2026-09-28"
       last_failed: "2026-09-30"
       active: true
-      note: "**64th daily FAILED at 00:00 2026-10-01**, never attempted; the Section 8.3 penalty zone fired (Hive, Combat Tier S) and was cleared by the Queen's kill at about 00:03 (`EVT-001192`). Streak 0 -> 0. **65th issues 2026-10-01 06:00.** PRIOR: **63rd daily LAPSED, never attempted before its 23:59 2026-09-29 deadline** (`EVT-001158`) — streak 52 -> **0**, first miss since 2026-08-07. **64th issued 2026-09-30 06:00 (`EVT-001158`), open,** not yet attempted."
+      note: "**64th daily FAILED at 00:00 2026-10-01**, never attempted; the Section 8.3 penalty zone fired (Hive, Combat Tier S) and was cleared by the Queen's kill at about 00:03 (`EVT-001192`). Streak 0 -> 0. **65th issues 2026-10-01 06:00.** The 63rd lapsed 2026-09-29 (`EVT-001158`), streak 52 -> 0."
       current_quest: "None active 00:00-05:59; the 65th issues 2026-10-01 06:00 and expires 23:59 2026-10-01."
       next_issue: "2026-10-01T06:00:00"
       # unchanged — matches world_clock.next_tick

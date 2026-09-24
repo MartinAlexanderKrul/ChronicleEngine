@@ -103,12 +103,12 @@ A branch runs as a **rate** (the daily E/D/C/B dispatch, no longer narrated Gate
 | Chicago | Imani Whitaker | yes | yes | yes | **accepted 2026-09-30 15:24** on a modified dispatch annex (`EVT-001184`-`EVT-001186`); operational from the 10-01 06:00 tick | open | Jun-seo Baek (the response pool) |
 | Washington DC | Verity Prescott | yes | yes | yes | filed, not accepted | open | — |
 | Prague | Milena Horáková | yes | yes | yes | filed with the CGA, not accepted | open | — |
-| Frankfurt | Anselm Kretschmer | yes | yes | yes | filed; Region III missed its verbal end-of-day, certified credentials sent, decision owed 10-01 05:00 Chicago (`EVT-001181`) | open | — |
+| Frankfurt | Anselm Kretschmer | yes | yes | yes | filed with its national authority; missed its verbal end-of-day, certified credentials sent, decision owed 10-01 05:00 Chicago (`EVT-001181`) | open | — |
 | New York | Ramona Ostrowski | yes | yes | yes | filed, not accepted | open | Delroy Hutchins |
 | Boston | Callum Doherty | yes | yes | yes | filed, not accepted | open | — |
 | Miami | Cecilia Duarte | yes | yes | yes | filed, not accepted | open | Yolanda Arriaga |
 | Houston | Roy Rawlins | yes | yes | yes | filed, not accepted | open | Mercedes Salinas |
-| Paris | Odile Fontaine | yes | yes | yes | filed; Region III missed its verbal end-of-day, certified credentials sent, decision owed 10-01 05:00 Chicago (`EVT-001181`) | open | Céline Marchand (Continental Europe) |
+| Paris | Odile Fontaine | yes | yes | yes | filed with its national authority; missed its verbal end-of-day, certified credentials sent, decision owed 10-01 05:00 Chicago (`EVT-001181`) | open | Céline Marchand (Continental Europe) |
 | Amsterdam | Noor Vandermeulen | yes | yes | yes | filed, not accepted | open | Joost van Rijn |
 | Dallas | Wyatt Delaney | yes | yes | yes | filed, not accepted | open | — |
 | Los Angeles | Diego Villarreal | yes | yes | yes | filed, not accepted | open | — |

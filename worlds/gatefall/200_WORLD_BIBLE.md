@@ -118,6 +118,23 @@ Gate affairs are federally regulated by the **Bureau of Gate Management (BGM)**,
 - **Contract auctions.** The BGM does not clear Gates. It **auctions the clearance contract** — the right and the obligation to close a given Gate before its timer — to licensed guilds and freelancers. Auction cadence, payout by Rank, and loot-declaration rules are all federal; Region V runs its clearance auction **every business day**.
 - **Enforcement.** Undeclared loot, black-market core sales, and unlicensed entry are the BGM's to prosecute. It is chronically overstretched and picks its battles.
 
+**The ten BGM regions.** The Bureau is organised into ten numbered regions on the federal emergency-management map, each with a regional field office. Other cities hold BGM field offices too, answering to their region. *(Owner ruling 2026-09-24, real date: numbering fixed to the real US federal regions so it cannot drift.)*
+
+| Region | Regional office | Territory |
+|---|---|---|
+| I | Boston | Connecticut, Maine, Massachusetts, New Hampshire, Rhode Island, Vermont |
+| II | New York | New Jersey, New York, Puerto Rico, US Virgin Islands |
+| III | Philadelphia | Delaware, Washington DC, Maryland, Pennsylvania, Virginia, West Virginia |
+| IV | Atlanta | Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, Tennessee |
+| V | Chicago | Illinois, Indiana, Michigan, Minnesota, Ohio, Wisconsin |
+| VI | Denton (Dallas-Fort Worth) | Arkansas, Louisiana, New Mexico, Oklahoma, Texas |
+| VII | Kansas City | Iowa, Kansas, Missouri, Nebraska |
+| VIII | Denver | Colorado, Montana, North Dakota, South Dakota, Utah, Wyoming |
+| IX | Oakland | Arizona, California, Hawaii, Nevada, the Pacific territories |
+| X | Seattle | Alaska, Idaho, Oregon, Washington |
+
+Europe has no BGM regions. Each European state regulates through its own national Gate authority (the Czech Gate Administration for Prague; the German and French national authorities for Frankfurt and Paris), coordinated through the European Gate Council.
+
 **Guild capitalism.** Clearing is private industry. The **majors are publicly traded corporations** with balance sheets, investor calls, and **drafted S-Ranks** whose contracts are reported like sports trades. Below them, thousands of freelance E- and D-Ranks work the small contracts the majors don't bother with. The world adapted the way the real world always adapts: there are Gate-risk insurance markets, a crystal commodities exchange, cable-news raid coverage, guild sponsorship deals, and hunter agents who take a percentage.
 
 **Who buys the loot, and why.** The crystal-and-core economy has a real industrial demand side, not just a speculative one — the loot is priced because industry needs it. **Mana crystals are feedstock.** They are refined into power storage and generation and into the mana-active materials that the whole **mana-tech** sector is built from: appraisal cells, cordon and detection gear, field instruments, and high-end medical hardware all begin as refined crystal. Two corporate refiners dominate the licensed buy-side and set the floor under every posted crystal price — the American **Cindermark Refining** and the European multinational **Halcyon Mana-Industrial** — and their appetite is what the commodities exchange actually trades on. **Beast cores are the enchanting input, worked by **artificer** awakened — the rare signature that forges mana into matter, the smiths of the trade (profile Section 12.8)**: the ranked gear the trade fights with is forged from cores, so an armory's supply of B-Rank weapons is exactly the elites and bosses hunters bring down, and the enchanting industry lives or dies by core flow. Refined **B-and-above crystal is a strategic commodity** — the BGM and the European agencies run **export controls** on B+ Ranks, treating high-Rank mana-tech feedstock as the dual-use material it is, and the running fight over who may ship it where is one of the quieter but sharper axes of Gate-era politics.

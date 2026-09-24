@@ -132,7 +132,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000258` | Margit Lindqvist | European Gate Council official | active | Karlov Guild headquarters, Old Town, Prague — met at the 16:00… | — |
 | `ENT-000259` | Ilith | Standing (far side) — position Out | active | The Landing | `REL-000108` |
 | `ENT-000260` | Aumry | Standing (far side) — position Reach the next one | active | The Long Shelf | `REL-000109` |
-| `ENT-000261` | Orenne | Standing (far side) — position Let it finish | active | The Long Shelf. | `REL-000110` |
+| `ENT-000261` | Orenne | Standing (far side) — position Let it finish | deceased | **Deceased, 2026-09-30 12:21 Chicago | `REL-000110` |
 | `ENT-000262` | Tolo | Standing (far side) — no position | active | The Ninth Quiet stratum, near his rebuilt archive. | `REL-000111` |
 | `ENT-000263` | Sevrin | Standing (far side) — position Stop it | active | His own ground, deep in the Stacks. | `REL-000112` |
 | `ENT-000265` | Dario Wexler | S-Rank hunter — West Coast, USA; guild member, senior combat lead | active | Unestablished beyond 'West Coast' — Renata's own filing places… | `REL-000113` |
@@ -154,6 +154,14 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000285` | Anton Drury | System-bearer, Assay rotation worker (interval-check) | active | The Landing, the far side — delivered `EVT-001062`, alongside t… | `REL-000121` |
 | `ENT-000287` | Nathaniel Cole | guild HQ staff — security | active | The Pendragon Guild HQ campus, Detroit. | — |
 | `ENT-000342` | Trevor Yamashita | guild member — striker, B-Rank | active | Detroit HQ, on a training rotation. | — |
+| `ENT-000344` | Delroy Hutchins | guild hunter — A-Rank crew commander | active | The Pendragon Guild New York office. | — |
+| `ENT-000345` | Mercedes Salinas | guild hunter — A-Rank crew commander | active | The Pendragon Guild Houston office. | — |
+| `ENT-000346` | Harriet Pembroke | guild hunter — A-Rank crew commander | active | The Pendragon Guild London office. | — |
+| `ENT-000347` | Joost van Rijn | guild hunter — A-Rank crew commander | active | The Pendragon Guild Amsterdam office. | — |
+| `ENT-000348` | Yolanda Arriaga | guild hunter — A-Rank crew commander | active | The Pendragon Guild Miami office. | — |
+| `ENT-000349` | Garrett Ishida | guild hunter — A-Rank crew commander | active | The Pendragon Guild Seattle office. | — |
+| `ENT-000350` | Noam Friedman | guild hunter — A-Rank crew commander | active | The Pendragon Guild Tel Aviv office. | — |
+| `ENT-000351` | Céline Marchand | guild hunter — A-Rank crew commander | active | The Pendragon Guild Paris office. | — |
 | `ENT-000288` | Anjali Desai | guild HQ staff — front office | active | The Pendragon Guild HQ campus, Detroit. | — |
 | `ENT-000286` | Milena Horáková | guild office staff | active | The Pendragon Guild's Prague office. | — |
 | `ENT-000289` | Tomas Prochazka | guild striker | active | Prague, guild dispatch crew. | `REL-000122` |
@@ -321,6 +329,14 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000285` | Anton Drury | Structure, and something to do with a life that was supposed to have ended on a specific day an… | Being asked to justify his own participation in the process — voiced directly, unprompted, once… | None disclosed beyond the fear above — he was notably forthcoming rather than withholding once… | Flat and procedural under pressure, cracking into something rawer and more honest the longer un… |
 | `ENT-000287` | Nathaniel Cole | To run the one part of this whole operation that never has to be explained twice — the thing th… | Being handed scope creep with no matching authority — Anjali's own list keeps landing partly on… | He over-ordered on security hardware in the first week, expecting the roster to double faster t… | Plain, competent, names a real constraint rather than overpromising |
 | `ENT-000342` | Trevor Yamashita | Not yet established beyond ordinary competence and being properly equipped for the work | Not yet established | Not yet established | Plain, warm, says what he means without much filter once relaxed |
+| `ENT-000344` | Delroy Hutchins | A crew paid what it is worth without a marquee name on the jersey | That he brought the New York A-Ranks across on his word and the guild folds under them | He left Horizon after a clear where his crew was billed as support to cut the payout, and never… | Slow Brooklyn cadence; calls everyone by surname; ends an order with 'we good?' |
+| `ENT-000345` | Mercedes Salinas | Houston treated as a first floor of the building, not a satellite office | A block that signed together can fail together; one bad call of hers costs all of them | She shopped the block to two other guilds first and used the Pendragon offer as leverage; she c… | Quick, code-switches Spanish and English mid-sentence, laughs right before she delivers bad news |
+| `ENT-000346` | Harriet Pembroke | To be proven wrong about her doubts, on the record | An American guild that treats London as a flag on a map | She kept a written list of every promise made at the London event, and she means to read it back | Dry, clipped English; asks her questions in threes and waits for all three answers |
+| `ENT-000347` | Joost van Rijn | An unremarkable record: nobody lost, nobody in the papers | A break in a dense city, where there is nowhere to pull a line back to | He lost a crewmate years ago in a Dutch guild on a clear he had signed off as safe; counting ex… | Few words, Dutch-direct; says the way out aloud before the way in |
+| `ENT-000348` | Yolanda Arriaga | Miami's A-Ranks sent the big Gates, not the leftovers | Being topped up from other offices until the crew is not hers any more | She keeps her crew's light injuries off the books when she can patch them herself, so Miami's r… | Fast Miami Spanglish, blunt, calls everyone 'mi amor' including people she's angry with |
+| `ENT-000349` | Garrett Ishida | A West Coast crew Dario Wexler respects | That he leads only until Dario decides he wants the job | He ran one clear alongside Dario years ago, before either was known; Dario has never mentioned… | Laconic, flat calm, never swears; answers a question with 'yeah, no' or 'no, yeah' and means bo… |
+| `ENT-000350` | Noam Friedman | A crew that doesn't need him to shout | Cross-border politics pulling his crew off a Gate halfway through a clear | He served alongside Itai Barak years ago, and he signed because Itai did | Blunt and rapid; closes every plan with 'yalla' and a hand on the table |
+| `ENT-000351` | Céline Marchand | Four offices' A-Ranks made into one crew rather than four cliques | Language and national pride splitting the line under pressure | She has never commanded a full A-Rank crew; she ran B-Rank crews and was pushed up because no o… | Formal, precise English with a French lilt; switches to French only to swear |
 | `ENT-000288` | Anjali Desai | Not yet established beyond running a clean, accountable operation | Not yet established | Not yet established | Efficient, states what she can and can't promise plainly |
 | `ENT-000286` | Milena Horáková | To do the job well enough that the placeholder framing resolves in her favor | Not yet established | Not yet established | Composed, professional, states the honest state of things rather than a managed version of it w… |
 | `ENT-000289` | Tomas Prochazka | Not yet established beyond ordinary steady work | Not yet established | Not yet established | Plain, says what he means without dressing it up — first line to Alexander was genuine surprise… |
@@ -381,7 +397,7 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 185. Protagonist relationships: 45.
-- Characters: 156. Disposition authored in full: 102; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 193. Protagonist relationships: 45.
+- Characters: 164. Disposition authored in full: 110; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

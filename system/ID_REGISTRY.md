@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000343 |
+| Entity | `ENT-` | Persistent Entity | ENT-000351 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001168 |
+| Event | `EVT-` | Event | EVT-001179 |
 | Relationship | `REL-` | Relationship | REL-000125 |
 
 ---
@@ -37,6 +37,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 
 | Range | Kind | Consumed by |
 |-------|------|-------------|
+| EVT-001169 – EVT-001179 | Event | Gatefall: Pendragon, 2026-09-30, from checkpoint 0172: the far door opened and Orenne's slates (`001169`); owner ruling, a champion may cross to Earth (`001170`); Orenne crosses, the door closed (`001171`); the cities -- Prague, London, Chicago, Tel Aviv, Abisko (`001172`); the cage room, Orenne killed (`001173`); Succession and its owner rulings (`001174`); the body burned, the remains stored (`001175`); home, a text, the sauna (`001176`); Anjali's call, nine A-Rank crews and their commanders, the A-Rank registry ruling (`001177`); owner ruling, the artificer's working Rank revoked (`001178`); promotion-barrier settlement (`001179`) |
+| ENT-000344 – ENT-000351 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): the eight A-Rank crew commanders named on Anjali Desai's roster (`EVT-001177`) -- Delroy Hutchins, New York (`000344`); Mercedes Salinas, Houston (`000345`); Harriet Pembroke, London (`000346`); Joost van Rijn, Amsterdam (`000347`); Yolanda Arriaga, Miami (`000348`); Garrett Ishida, Seattle (`000349`); Noam Friedman, Tel Aviv (`000350`); Céline Marchand, Paris (`000351`). Every name cleared through `tools/check_name_collision.ps1 -StrictSurnames` |
 | ENT-000343 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): the Detroit HQ campus, a Place, minted 2026-09-23 (real date) outside play at the player's direction so the holding renders on the ledger index; facts restated from `EVT-001068`, `EVT-001073`, `EVT-001086`, `EVT-001107`, `EVT-001162`. |
 | EVT-001162 – EVT-001168 | Event | Gatefall: Pendragon, 2026-09-30, from checkpoint 0171: the menders' meeting and the three-point mender-usage rule, mandatory mender combat training announced (`001162`-`001163`); Anjali's growing list -- team-commander roster, training floor/gym, artificer floor, gear backlog, conduct process (`001164`); the HQ walkthrough, Cole met in person, disposition authored (`001165`); Trevor Yamashita (`ENT-000342`) named and gifted a B-Rank Torso (`001166`); anchored to Denver (`001167`); promotion-barrier settlement (`001168`) |
 | ENT-000342 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): Trevor Yamashita, Chicago-transfer B-Rank striker, Detroit HQ. Cleared through `tools/check_name_collision.ps1 -StrictSurnames` |

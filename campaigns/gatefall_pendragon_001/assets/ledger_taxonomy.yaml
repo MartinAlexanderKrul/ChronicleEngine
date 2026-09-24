@@ -18,8 +18,11 @@ groups:
   - Crafting
 
 skills:
-  # Offense (16)
+  # Offense (20)
+  "Attrition": Offense
   "Bone Crusher": Offense
+  "Closing Argument": Offense
+  "Course of Nature": Offense
   "Dagger Mastery": Offense
   "Dimensional Projection": Offense
   "Exploit Pattern": Offense
@@ -28,6 +31,7 @@ skills:
   "Four Thousand Years' Patience": Offense
   "Ground Slam": Offense
   "Mana Bolt": Offense
+  "One Line, Refined": Offense
   "Pre-empt": Offense
   "Razor Edge": Offense
   "Rupture": Offense
@@ -35,7 +39,7 @@ skills:
   "The Count": Offense
   "Twin Fang": Offense
   "Weight of Precedent": Offense
-  # Defense (16)
+  # Defense (18)
   "Adequate Stock": Defense
   "Broken Rhythm": Defense
   "Bulwark": Defense
@@ -51,8 +55,10 @@ skills:
   "Stone Skin": Defense
   "The Bridge Stance": Defense
   "The Last Span": Defense
+  "Unhurried": Defense
   "Weight of the Span": Defense
-  # Control (14)
+  "What He Is Trying to Make Him Do": Defense
+  # Control (18)
   "Binding Grip": Control
   "Bounding Seal": Control
   "Bridgehold": Control
@@ -62,11 +68,15 @@ skills:
   "Doorward": Control
   "Emergency Seal": Control
   "Field Containment": Control
+  "Let It Finish": Control
   "Held Breath": Control
   "Overpower": Control
+  "Recount": Control
   "Reviewer's Voice": Control
   "Seamseal": Control
   "Stillwater": Control
+  "The Argument": Control
+  "The Clean Failure": Control
   # Mobility (11)
   "Away": Mobility
   "Flash Step": Mobility
@@ -87,7 +97,7 @@ skills:
   "Unremarked Movement": Stealth
   "Unwatched": Stealth
   "What Eleven Years Bought": Stealth
-  # Detection (29)
+  # Detection (30)
   "Appraise": Detection
   "Arithmetic": Detection
   "Backread": Detection
@@ -101,6 +111,7 @@ skills:
   "Full Assessment": Detection
   "Grading Touch": Detection
   "Keen Sense": Detection
+  "Ledgerhand": Detection
   "Mapwork": Detection
   "Read the Hand": Detection
   "Read the Learner": Detection

@@ -668,6 +668,7 @@ Both remain **Accepted**. They are not reopened, reversed, or renumbered: accept
 | Decision 091 | An NPC Is a Character, Not a Filtered Narrator | **Foundational** — adds Data Model Sections 7.7 (Disposition, canonical state), 7.8 (Belief, tracked state) and 7.9 (Agenda, tracked state); extends Runtime Section 2.4's elapsed-time settlement series; owned by milestone 0.4.4 |
 | Decision 092 | Personhood Is Not Opt-In, and the Character Model Names Its Writer | **Foundational** — changes `011` Sections 7.7 and 7.9, and makes disposition an obligation every campaign must satisfy rather than one a world opts into. No schema advance and no migration: no record structure changes and a record valid before is valid after, on the Decision 084 precedent. Owned by milestone 0.4.4 |
 | Decision 093 | A Proposed Capability Is Granted, Priced, and Owed | **Foundational** — adds `011` Section 7.10 (Provisional Mechanic, tracked state) and an obligation a Runtime must satisfy. No schema advance and no migration, on the same Decision 084 precedent Decision 092 used. Admitted post-freeze under Decision 086, whose condition (a) the decision itself records as the arguable one. Owned by milestone 0.4.5 |
+| Decision 094 | Settled History Is Sealed, and Live State Says What Is True Now | **Foundational** — introduces an engine-general mechanism (sealed volumes, byte-frozen and validator-enforced) a campaign may invoke and every run must satisfy; adds paragraphs, not sections, to Rules 13.1 and 13.4; `011` untouched. No schema advance, on the Decision 084 precedent; the save-format reading is recorded in the decision as the arguable leg. Admitted post-freeze under Decision 086. Owned by milestone 0.4.6 |
 
 Both accepted 2026-08-02, together, as the Version 0.4 Architecture Freeze (Decisions 048, 086). Neither advances the Data Model version and neither requires a migration: both are tracked state minting no identifier, held in records that already exist, on Decision 082's precedent. They are foundational under Decision 069 because they change `011`, and they were accepted at ADR Approval rather than admitted as freeze exceptions — which is the ordinary path the lifecycle describes and the one Version 0.3 departed from ten times.
 
@@ -983,6 +984,25 @@ Completion criteria:
 - **A grant is made in play and ruled on at a barrier.** This is world and campaign work and belongs to a play session; the milestone is not complete until one has gone through all four `Status` outcomes' worth of judgment at least once.
 - The version's validation record carries its rows, and their vacuity is stated wherever they are vacuous.
 
+
+### 0.4.6 The Live Record Says What Is True Now
+
+**Status: Sited 2026-09-24**, owning **Decision 094**, admitted post-freeze under Decision 086. This is Version 0.4's **fourth** such admission, and it enlarges `docs/440_ECONOMY_VALIDATION/441_CAPABILITY_MATRIX.md` again. That was known before the ruling and was accepted.
+
+**Capability:** a campaign can move settled history out of its live ledgers into byte-frozen sealed volumes, verbatim and restorable, and rewrite stale fields to what is true now without losing a single Event citation.
+
+**Why it is here rather than in Version 0.5 or 0.6.** It was asked for by the owner from the prototype campaign's own files: the question was whether the engine keeps reading records that are no longer true. The measured answer was yes, inside the live records rather than the checkpoints. It draws on two later milestones and pre-empts neither. Version 0.5's *"long-term continuity across many campaigns and checkpoints"* gets a volume format. Milestone 0.6.3's *"retiring superseded state-field history"* gets the cure applied once, across one campaign, with a tool. 0.6.3's other half, *"the ledger-ownership rule that keeps it retired"*, is **not** delivered here and stays owed.
+
+Acceptance fixtures: `tools/test_sealed_volume_contract.ps1`. It proves the freeze fails on an edited, stray, gapped, orphaned or deleted volume, and that `tools/seal_campaign.py` keeps a retired value's citations in `moved_by_events` and opens a new volume once a checkpoint holds the old one.
+
+Explicit exclusions: no checkpoint is retired, by owner ruling. Nothing under `trim_policy.never_trim` is rebased. No checksum is introduced (Rules 13.6).
+
+Completion criteria:
+
+- The freeze is enforced by `validate_repository.ps1` and proven by fixture to fail when its subject is removed.
+- **The first seal pass is applied and captured**: Gatefall: Pendragon rebased and sealed, and a checkpoint taken that holds the volumes. Its figures are in `docs/460_LEDGER_SEALING/460_SEAL_AND_REBASE.md`.
+- The version's validation record carries the row.
+
 ---
 
 ## Material Scarcity and Price — cut from Version 0.4, unscheduled
@@ -1132,6 +1152,8 @@ Scope: the recording half of the Push obligation, and a validator leg over it. T
 Decision 091 authored Want/Fear/Secret/Voice and Decision 092 made coverage engine-general; `F-028` measured why neither reached play — one backfill took an NPC record to 165 bytes under its ratchet, and the entity dispatch fetches roughly 29,000 tokens before that NPC speaks once. Cast roster schema 1.1 delivered the cheap read (2026-08-20). What remains is the cause: `canonical_state.situation` holding an accumulated history the chronicle already records, which is `F-019`'s ownership question with a forcing case attached.
 
 Scope: retiring superseded state-field history to the chronicle, and the ledger-ownership rule that keeps it retired.
+
+**Partly pre-empted 2026-09-24 by milestone 0.4.6 (Decision 094).** The retiring was applied once, to Gatefall: Pendragon, with a tool (`tools/seal_campaign.py`) and a sealed volume to receive it. The rule that keeps it retired is still this milestone's, and so is the question of `agenda` and relationship `texture`, which `trim_policy.never_trim` puts beyond any pass.
 
 ### Exclusions
 

@@ -327,7 +327,7 @@ When a valid checkpoint exists:
 
 1. Generate the bounded `continue` operation plan with `tools/resolve_operation_plan.ps1`, then perform its whole-file reads and exact selectors. `available_on_demand` declares authority and must not be preloaded.
 2. Verify Engine, World, World Rule Profile, Campaign Schema, and Save Format compatibility from the selected manifest and active-profile metadata.
-3. Load additional checkpoint ledgers only when the restoration entry, current situation, or a dispatched selector makes them relevant.
+3. Load additional checkpoint ledgers only when the restoration entry, current situation, or a dispatched selector makes them relevant. A campaign's `sealed/` volumes are never loaded at restoration. They are settled history, opened by identifier or heading only when a question needs the past (Decision 094). Restoring a non-latest checkpoint restores its own `sealed/` set, and a volume it does not hold is set aside, not read.
 4. Reconcile the restored checkpoint with the live campaign continuation.
 5. When the active World Rule Profile declares deterministic elapsed-time rules, load or migrate its exact campaign-time anchor, recovery modes, and fractional carry before any time-dependent action. Restoration itself advances no fictional time and grants no recovery.
 6. When the active World Rule Profile declares proactive triggers, load their governing sections and execute the resident Profile-Declared Proactive Trigger Audit before the first scene opens. If the profile declares a mandatory ratification gate, consolidate every pending candidate, automatically settle complete pre-authored results, and obtain owner rulings for the rest before readiness can open gameplay.

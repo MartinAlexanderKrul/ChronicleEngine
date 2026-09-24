@@ -51,6 +51,10 @@ ALWAYS_PROMOTED = {
     "180_CURRENT_STATE.md",
 }
 CHECKPOINT_NAME = re.compile(r"^900_CHECKPOINT_(\d{4})$")
+# Decision 094: sealed volumes are canonical ledgers the campaign owns (Rules
+# Section 13.1), so every checkpoint captures them beside the eight above.
+SEALED_DIRECTORY = "sealed"
+SEALED_VOLUME = re.compile(r"^\d{3}_[A-Z0-9_]+\.vol\d{2}\.md$")
 CURRENT_LATEST = re.compile(
     r"^(?P<prefix>\s*-\s*\*\*Latest restorable checkpoint:\*\*\s*)"
     r"`saves/(?P<name>[^/`]+)/?`(?P<suffix>[^\r\n]*)$",
@@ -354,6 +358,23 @@ def validate_mutation_receipt(
         is_campaign_ledger = (
             target.parent == campaign_root and target.name in REQUIRED_LEDGERS
         )
+        # Decision 094: a seal pass writes a volume under sealed/. It is a
+        # campaign ledger like any other until a checkpoint captures it, and
+        # frozen from then on, so only an OPEN volume may be a target.
+        if (
+            target.parent == campaign_root / SEALED_DIRECTORY
+            and SEALED_VOLUME.match(target.name)
+        ):
+            holders = sorted(
+                child.name
+                for child in (campaign_root / "saves").glob("900_CHECKPOINT_*")
+                if (child / SEALED_DIRECTORY / target.name).is_file()
+            )
+            if holders:
+                raise CheckpointFailure(
+                    f"sealed volume {relative} is held by {holders[0]} and is frozen"
+                )
+            is_campaign_ledger = True
         is_world_record = inside(target, world_root) and target.suffix.lower() == ".md"
         if not (is_campaign_ledger or is_world_record or target == registry):
             raise CheckpointFailure(
@@ -717,6 +738,31 @@ def create_checkpoint(args: argparse.Namespace) -> int:
             )
             ledger_ids.append(ledger_record_id(source))
 
+        # Sealed volumes carry no Record of their own -- each is part of its
+        # parent ledger's record, already in `ledger_ids` -- so they are copied
+        # and byte-verified but add nothing to the manifest.
+        sealed_source = campaign_root / SEALED_DIRECTORY
+        if sealed_source.is_dir():
+            (staging / SEALED_DIRECTORY).mkdir()
+            for source in sorted(sealed_source.iterdir()):
+                if not (source.is_file() and SEALED_VOLUME.match(source.name)):
+                    raise CheckpointFailure(
+                        f"{SEALED_DIRECTORY}/{source.name} is not a sealed volume"
+                    )
+                target = staging / SEALED_DIRECTORY / source.name
+                shutil.copyfile(source, target)
+                if sha256(source) != sha256(target):
+                    raise CheckpointFailure(
+                        f"byte verification failed for {SEALED_DIRECTORY}/{source.name}"
+                    )
+                copied.append(
+                    {
+                        "file": f"{SEALED_DIRECTORY}/{source.name}",
+                        "sha256": sha256(target),
+                        "bytes": target.stat().st_size,
+                    }
+                )
+
         character = single_line(
             startup.get("default_protagonist"), "startup.default_protagonist"
         )
@@ -756,7 +802,13 @@ def create_checkpoint(args: argparse.Namespace) -> int:
         update_startup_pointer(startup_path, campaign, checkpoint, token)
         update_current_pointer(current_state, checkpoint, label, token)
         shutil.copyfile(current_state, staging / "180_CURRENT_STATE.md")
-        copied[-1] = {
+        # Located by name: sealed volumes follow the eight ledgers in `copied`,
+        # so the current-state entry is no longer necessarily the last one.
+        current_index = next(
+            index for index, entry in enumerate(copied)
+            if entry["file"] == "180_CURRENT_STATE.md"
+        )
+        copied[current_index] = {
             "file": "180_CURRENT_STATE.md",
             "sha256": sha256(staging / "180_CURRENT_STATE.md"),
             "bytes": (staging / "180_CURRENT_STATE.md").stat().st_size,

@@ -103,7 +103,7 @@ source_loading:
   required_sources:
     semantics: "Authoritative and available; not an instruction to preload every source in full."
     restoration_entry: "Read the manifest, canonical entry point, current state, and situation-relevant objects/events."
-    large_ledger_policy: "Search identifiers or headings first; read bounded, non-overlapping blocks. Historical chronicle and changelog content is fetched only when relevant."
+    large_ledger_policy: "Search identifiers or headings first; read bounded, non-overlapping blocks. Historical chronicle and changelog content, and every `sealed/` volume (Decision 094), is fetched only when relevant."
     failure_policy: "A single-call size limit is not a source-read failure while the required bounded blocks remain readable."
   world_rule_profile:
     path: worlds/gatefall/206_WORLD_RULE_PROFILE.md

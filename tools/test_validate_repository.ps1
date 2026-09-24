@@ -7,6 +7,7 @@ $ErrorActionPreference = "Stop"
 $repositoryRoot = Split-Path -Parent $PSScriptRoot
 $validator = Join-Path $PSScriptRoot "validate_repository.ps1"
 . (Join-Path $PSScriptRoot "lib/FixtureRepository.ps1")
+. (Join-Path $PSScriptRoot "lib/Chronicle.ps1")
 $fixtureRoot = Join-Path $PSScriptRoot "tests/fixtures"
 
 function Invoke-Validator {
@@ -138,11 +139,17 @@ try {
     # between legs. Eight copies of an 84 MB tree bought nothing the restore does
     # not, and the guard after the legs is what keeps that true.
     $legRoot = New-RepositoryCopy
+    # Legs 7 and 8 break EVT-000341's Correction note. Where that Event lives is
+    # a fact about the last seal pass (Decision 094), not about this suite, so
+    # the chronicle file holding it is looked up rather than named.
+    $bossKillAnchor = "omitted the boss's core and Section 11.2 boss-drop roll entirely"
+    $bossKillFile = Get-ChronicleFileContaining -CampaignRoot (Join-Path $legRoot "campaigns/gatefall_pendragon_001") -Text $bossKillAnchor
+    $bossKillRelative = $bossKillFile.Substring($legRoot.Length).TrimStart([char[]]"\/").Replace('\', '/')
     $legFiles = @(
         "campaigns/gatefall_pendragon_001/110_WORLD_LEDGER.md",
         "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md",
-        "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md"
-    )
+        $bossKillRelative
+    ) | Select-Object -Unique
     $legPoint = New-FixtureRestorePoint -Root $legRoot -Paths $legFiles
 
     # Leg 1: a concealed-discovery record may not store a reward at all. The
@@ -253,10 +260,10 @@ try {
     # Break that note's wording and both halves must fire again.
     Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
     $noDropRoot = $legRoot
-    Edit-FixtureFile -Path (Join-Path $noDropRoot "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md") `
+    Edit-FixtureFile -Path (Join-Path $noDropRoot $bossKillRelative) `
         -Find "omitted the boss's core and Section 11.2 boss-drop roll entirely" `
         -Replace "omitted what the kill yielded entirely"
-    Edit-FixtureFile -Path (Join-Path $noDropRoot "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md") `
+    Edit-FixtureFile -Path (Join-Path $noDropRoot $bossKillRelative) `
         -Find "the core and the boss-drop d100 belong to this kill" `
         -Replace "what it yielded belongs to this kill"
     $noDrop = Invoke-Validator -Root $noDropRoot
@@ -278,10 +285,10 @@ try {
     # still fire, because an acknowledgement only covers the Event it names.
     Restore-FixtureFiles -Root $legRoot -RestorePoint $legPoint
     $wrongEventRoot = $legRoot
-    Edit-FixtureFile -Path (Join-Path $wrongEventRoot "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md") `
+    Edit-FixtureFile -Path (Join-Path $wrongEventRoot $bossKillRelative) `
         -Find "omitted the boss's core and Section 11.2 boss-drop roll entirely" `
         -Replace "omitted what the kill yielded entirely"
-    Edit-FixtureFile -Path (Join-Path $wrongEventRoot "campaigns/gatefall_pendragon_001/160_CAMPAIGN_CHRONICLE.md") `
+    Edit-FixtureFile -Path (Join-Path $wrongEventRoot $bossKillRelative) `
         -Find "the core and the boss-drop d100 belong to this kill" `
         -Replace "what it yielded belongs to this kill"
     Edit-FixtureFile -Path (Join-Path $wrongEventRoot "campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md") `

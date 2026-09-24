@@ -50,7 +50,9 @@ $patterns = @(
     'promised to', 'agreed to', 'owes', 'due back'
 )
 
-$text = Get-Content -LiteralPath $chronicle -Raw
+# The live chronicle and its sealed volumes, oldest first (Decision 094).
+. (Join-Path $PSScriptRoot "lib/Chronicle.ps1")
+$text = Get-ChronicleText -CampaignRoot $campaignRoot
 
 # Already-recorded commitments are excluded so a second pass after a partial
 # backfill shows only what is still outstanding.

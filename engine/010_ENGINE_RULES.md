@@ -4085,6 +4085,8 @@ A save contains no compiled or derived representation of state. It preserves the
 
 **Canonical checkpoint form (Decision 072).** The one canonical checkpoint form is the directory `saves/900_CHECKPOINT_<NNNN>/` within the owning campaign: a complete copy of every canonical ledger the campaign owns plus exactly one `900_SAVE_MANIFEST.md` conforming to Section 13.3. `<NNNN>` is a four-digit, zero-padded, monotonically increasing ordinal, one sequence per campaign. Manifest-only files, bare placeholder directories, and any other shape are not checkpoints; a conforming Runtime writes only this form. A nonconforming historical snapshot is retained immutably as evidence, re-issued as a conforming checkpoint carrying its reconstructed state where evidence permits, and marked superseded by its re-issue in the campaign's save index — never edited in place, and never abandoned while a restorable re-issue can carry its save-point.
 
+**Sealed volumes (Decision 094).** A campaign may move settled history out of a live ledger, verbatim, into `sealed/<ledger-stem>.volNN.md` within the campaign. A sealed volume is a canonical ledger the campaign owns, so a checkpoint captures it under `sealed/` beside the ledgers above. It belongs to its parent ledger's Canonical Record and adds nothing to the manifest. A volume is byte-frozen from the first checkpoint that captures it: history is corrected by a new Event in the live ledger, never by editing a volume. Readiness never loads one; it is read by the identifier or heading its parent ledger used.
+
 ---
 
 ## 13.2 Checkpoints and Current State
@@ -4128,6 +4130,8 @@ Resuming a campaign follows a defined procedure:
 7. Present a restoration summary before continuing gameplay.
 
 Restoration does not require reading every campaign file in full. The manifest and current-state ledger identify what is relevant; other ledgers are consulted as the situation requires.
+
+Restoring a checkpoint restores exactly the ledger set it captured, its sealed volumes included (Section 13.1). A sealed volume the restored checkpoint does not hold is not part of that save's canon. When continuing from such a checkpoint, the volume is set aside rather than read, and it stays preserved in every checkpoint that holds it.
 
 ---
 

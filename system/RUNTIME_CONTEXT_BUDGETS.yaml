@@ -60,6 +60,22 @@ read_cap:
       how: "objective id (`OBJ-`) via the object fence"
     - file: campaigns/gatefall_pendragon_001/170_CHANGELOG.md
       how: "dated entry, newest first; a reader wants the head, never the tail"
+      # The first seal pass (Decision 094) took this from 885,236 bytes to under
+      # the cap; Checkpoint 0173's entry put it back over by about 700 tokens.
+      # It is append-only, so this declaration stays until the next seal pass
+      # moves its tail into `sealed/170_CHANGELOG.vol02.md`.
+    # Sealed volumes (Decision 094), 2026-09-24. Settled history moved out of
+    # the live ledgers verbatim; read only when a question needs the past, and
+    # then by the same heading or identifier the live ledger used. Nothing at
+    # readiness or in any operation loads one.
+    - file: campaigns/gatefall_pendragon_001/sealed/160_CAMPAIGN_CHRONICLE.vol01.md
+      how: "Event id (`EVT-`) via the object fence or its `## EVT-` heading; the same lookup the live chronicle takes"
+    - file: campaigns/gatefall_pendragon_001/sealed/170_CHANGELOG.vol01.md
+      how: "dated or `EVT-` range `## ` heading, newest first, as the live changelog held them"
+    - file: campaigns/gatefall_pendragon_001/sealed/130_NPCS_AND_FACTIONS.vol01.md
+      how: "`## <record id> - <field>` heading per retired value; the Record-notes section by its own heading"
+    - file: campaigns/gatefall_pendragon_001/sealed/140_OBJECTIVES.vol01.md
+      how: "objective id (`OBJ-`) via its `## OBJ-` heading or `**OBJ-` paragraph"
     # Both crossed the cap on Checkpoint 0137's play, and both were already being
     # read by selector before they crossed it -- `measure_runtime_context.ps1`
     # reads `120_INVENTORY_AND_OWNERSHIP.md#Current Funds` as a named surface
@@ -1361,16 +1377,14 @@ per_unit_budgets:
       trips this at 1,100 as readily as at 700. What changed is the floor under
       legitimate effect prose, not the detector.
 
-  - name: gatefall_relationship_state_updates
-    file: campaigns/gatefall_pendragon_001/130_NPCS_AND_FACTIONS.md
-    field: state_updates
-    max_bytes_per_entry: 2400
-    reason: >-
-      A state update is what changed in the relationship and the Event that
-      changed it. The narrative of the scene it came from belongs in the
-      chronicle, which already holds it. Only `REL-000066` uses the field today,
-      at three entries; the budget exists so the fourth is a sentence and not
-      another essay.
+  # `gatefall_relationship_state_updates` retired 2026-09-24 with its subject.
+  # Only `REL-000066` ever carried `state_updates`, and by then it held sixteen
+  # dated entries (22,626 bytes) for a relationship that ended on 2026-09-15.
+  # The first seal pass (Decision 094) moved the log verbatim to
+  # `sealed/130_NPCS_AND_FACTIONS.vol01.md` and left `state` holding what is
+  # true now, with every cited Event kept in `moved_by_events`. A budget over a
+  # field no record carries measures nothing; a relationship that wants a dated
+  # log again should keep it in the chronicle, which is the point of the seal.
 
   - name: gatefall_tracked_counters
     file: campaigns/gatefall_pendragon_001/100_CHARACTER_SHEET.md
@@ -1461,7 +1475,18 @@ per_object_budgets:
     # Retiring the superseded spans and keeping the current one is the single
     # change that would cut this object's load by roughly three quarters without
     # deleting anything. It remains owner authoring work under the rule above.
-    baseline_worst_bytes: 63743
+    # Re-recorded DOWNWARD 2026-09-24, 63,743 -> 39,460, by the first seal pass
+    # (Decision 094), and the worst case changed identity again: `REL-000066`
+    # fell from 73,293 bytes to about 29,000, and `ENT-000139` is the largest at
+    # 39,460. Twenty-five narrative fields on twenty records were rewritten to
+    # what is true now and their old values moved verbatim to
+    # `sealed/130_NPCS_AND_FACTIONS.vol01.md`; the ledger went 1,080,093 ->
+    # about 913,000 bytes. Nothing in `trim_policy.never_trim` was touched --
+    # `REL-000066.texture` (about 27 KB) and every `agenda` stay as they were,
+    # which is why Owen's record, not the relationship, is now the ceiling.
+    # Recorded down rather than left under the old figure so the next climb is
+    # read against the real floor, the same reason given for 2026-08-10.
+    baseline_worst_bytes: 39460
     growth_allowance_percent: 15
     reason: >-
       The distribution is the point: the median block is about 2.7 KB across 79

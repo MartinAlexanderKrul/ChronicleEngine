@@ -39,7 +39,9 @@ $profile = Get-Content -LiteralPath $profilePath -Raw -Encoding UTF8
 $character = Get-Content -LiteralPath $characterPath -Raw -Encoding UTF8
 $checkpoint = Get-Content -LiteralPath $checkpointPath -Raw -Encoding UTF8
 $startup = Get-Content -LiteralPath $startupPath -Raw -Encoding UTF8
-$chronicle = Get-Content -LiteralPath $chroniclePath -Raw -Encoding UTF8
+# The live chronicle and its sealed volumes (Decision 094), oldest first.
+. (Join-Path $PSScriptRoot "lib/Chronicle.ps1")
+$chronicle = Get-ChronicleText -CampaignRoot (Split-Path -Parent $chroniclePath)
 $index = Get-Content -LiteralPath $indexPath -Raw -Encoding UTF8
 $resident = Get-Content -LiteralPath $residentPath -Raw -Encoding UTF8
 $runtime = Get-Content -LiteralPath $runtimePath -Raw -Encoding UTF8

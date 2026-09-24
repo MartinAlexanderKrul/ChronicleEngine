@@ -4581,6 +4581,62 @@ Decision 091 authored the character model and left it unreachable in two indepen
 
 ---
 
+## Decision 094 — Settled History Is Sealed, and Live State Says What Is True Now
+
+**Status:** Accepted — 2026-09-24. Owned by Version 0.4, milestone 0.4.6. Foundational under Decision 069; admitted after the Version 0.4 Architecture Freeze under Decision 086, whose four conditions are addressed below — including the one that is arguable.
+**Date:** 2026-09-24
+**Related Sections:** `010_ENGINE_RULES.md` Sections 13.1, 13.2, 13.4, 13.6; `011_ENGINE_DATA_MODEL.md` Sections 7.1, 7.2, 8; `012_ENGINE_RUNTIME.md` Sections 3.1, 6.1; Decisions 069, 072, 085, 086; `system/RUNTIME_CONTEXT_BUDGETS.yaml` (`trim_policy`, `resident_surface_policy`, `read_cap`); `docs/460_LEDGER_SEALING/460_SEAL_AND_REBASE.md`; `tools/seal_campaign.py`, `tools/lib/SealedVolumes.ps1`
+
+### Context
+
+**Append-only authoring makes a live record a history of itself.** Gatefall: Pendragon at Checkpoint 0172 is the evidence:
+
+- `ENT-000139.location` placed Owen *asleep beside Alexander* on 2026-08-23. The relationship had ended on 2026-09-15 (`EVT-000999`).
+- `REL-000066`, the largest object in the NPC ledger at 73 KB, described a live relationship in `state` and carried 27 KB of dated `state_updates` for a relationship that had ended.
+- `ENT-000147.situation` stopped five weeks of fiction early while its present lived in `agenda`.
+- *Active Objectives* held objectives marked Met, Closed and Superseded.
+- Every ledger's Record block carried a comment note per save, 291 in all.
+
+All of it passed every gate. The budget file already records the shape twice (`ENT-000125.temporal_state`, *"stale in place and passed every gate"*; `ENT-000139`, *"a private second copy of the chronicle"*). Each time it was cured one record at a time, by deleting text the chronicle also held, under deadline.
+
+**The owner's question was whether to fold everything into one export and seal the rest.** One export was declined, because a multi-megabyte file defeats the bounded, identifier-addressed reads the engine is built on (`read_cap`). Sealing was accepted, with one exception by owner ruling: **no checkpoint is retired.**
+
+### Decision
+
+**1. Settled history may be sealed into volumes.** A campaign may move settled material out of a live ledger, verbatim, into `campaigns/<campaign>/sealed/<ledger-stem>.volNN.md`. The material is: a contiguous run of an append-only ledger's sections, a Record block's per-save notes, closed prose sections, and a record field's superseded values. Nothing is paraphrased on the way in and nothing is deleted.
+
+**2. A sealed volume is a canonical ledger the campaign owns** (Rules 13.1). Checkpoints capture it, restoration restores it, and every object in it keeps every obligation it had. An Event in a chronicle volume is still the only definition of its identifier and is still validated wherever its audits point. Retired field values are held in `text` fences, so they define no object.
+
+**3. A sealed volume is byte-frozen from the first checkpoint that captures it.** Before that it is open and the seal pass may write it. After that, correcting anything in it is a new Event in the live ledger. `validate_repository.ps1` compares every live volume against every checkpoint copy, and fails on a difference, a gap in numbering, a stray file, or a volume the latest checkpoint holds that the live tree has lost. There is no checksum: checkpoint immutability (13.2) is the reference, and Rules 13.6's deferral stands.
+
+**4. A live field holds what is true now** (Data Model 7.1). Rebasing a stale field rewrites it to what its own cited Events establish and seals the old value. Every Event the old value cited that the new record does not is added to `moved_by_events`, or to a Record block's citation index, so Decision 085's reference obligation holds by construction. `trim_policy.never_trim` is untouched by a rebase. Rewriting a record is authoring: done by owner ruling or in play, never by a script alone.
+
+**5. Nothing at readiness loads a sealed volume.** A Runtime opens one only when a question needs the past, by the same identifier or heading the live ledger used, under `read_cap`.
+
+### Decision 086 conditions
+
+- **(a) Played evidence — met.** Every finding above is measured on the prototype campaign at Checkpoint 0172, and the owner raised it from play. Nothing here comes from design review.
+- **(b) Classified — met, and recorded as it stands.** Foundational under Decision 069 leg 3: it introduces an engine-general mechanism any campaign may invoke and every validator run must satisfy. Legs 1 and 2 are not met. Rules Sections 13.1 and 13.4 gain paragraphs, not sections, and `011` is untouched, because a volume holds existing objects unchanged and 7.1/7.2 already state the rule this rebase applies.
+- **(c) Versioned and migrated — met, and this is the arguable leg.** No Data Model advance is owed, on the Decision 084 precedent: no record changes structure, and a record valid before is valid after. The contestable part is the save format. A checkpoint now contains a `sealed/` directory beside its eight ledgers. The reading here is that Rules 13.1 already requires *"a complete copy of every canonical ledger the campaign owns"*, so capturing volumes applies the existing form rather than changing it. The manifest is unchanged, because a volume is part of its parent ledger's record, which the manifest already lists. **If the owner rules the other way**, `save_format` advances to 0.1.1 with a migration note stating that pre-seal checkpoints carry no `sealed/` directory and restore exactly as before. No existing checkpoint changes under either reading.
+- **(d) Revalidated — met.** `tools/test_sealed_volume_contract.ps1` proves each leg fails when its subject is removed, on a fixture of a few hundred bytes, and that `seal_campaign.py` keeps citations and opens a new volume after capture. Core validation reports the same 1,696 object blocks before and after the first pass. The regression suite's verdict is recorded in the changelog entry.
+
+### Consequences
+
+- **The live layer is a present, not a diary.** Gatefall's thirteen live ledgers went from 6.2 MB to about 2.4 MB, and the NPC ledger's worst object from 73 KB to 39 KB.
+- **Checkpoint size is not what this reduces, and was not asked to be.** Checkpoints still copy everything, sealed volumes included. Git stores a byte-identical volume once, however many checkpoints hold it, which is cheaper than the full-chronicle copies it replaces.
+- **Readiness is not reduced.** It never loaded these records. Recommendation R14's levers are unchanged.
+- **The cure is applied once, not made permanent.** Nothing yet stops the next accretion. Milestone 0.6.3's *"ledger-ownership rule that keeps it retired"* is still owed. What this adds is a tool that makes the next pass cheap and a volume to put its output in.
+- **`agenda` and relationship `texture` still accrete**, and are out of reach of any pass until the owner rules on them.
+
+### Alternatives Considered
+
+- **One consolidated export for the engine to read.** Rejected. A single file several megabytes long is the worst case for the read cap and for identifier-addressed reads, and it would become a second representation of state, which Rules 13.1 exists to avoid.
+- **Retire the old checkpoints.** Proposed and declined by owner ruling. Nothing here needs it: play never reads them.
+- **Delete superseded text, as the 2026-08 trims did.** Rejected as the general remedy. It is correct on the evidence, since the chronicle narrates it, but it asks a reader to trust that claim, and twice the deleted text turned out to hold the only copy of something (a channel constraint in `situation`, 13 uncited Events). Sealing keeps the evidence and costs only repository bytes.
+- **A checksum per volume in the manifest.** Rejected. Rules 13.6 defers checksums, and immutable checkpoints already give a byte reference to compare against.
+
+---
+
 # Pending Decisions
 
 The following topics have been identified but not yet finalized:

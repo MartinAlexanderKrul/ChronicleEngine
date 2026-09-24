@@ -91,3 +91,9 @@ Why the engine prevents its founding case study's defects without reproducing wh
 
 30. docs/450_GAMEPLAY_REDEFINITION/450_GENERATIVE_LAYER_ANALYSIS.md
 31. docs/450_GAMEPLAY_REDEFINITION/451_PROVISIONAL_GRANT.md — draft ADR for Decision P008, **Proposed and not in force**; the stub lives under *Pending Decisions* in `engine/001_ENGINE_DECISIONS.md`
+
+### Ledger Sealing
+
+Why a live record should say what is true now, and where its history goes instead. Read it before rewriting a stale record or sealing a ledger. It holds the Pendragon measurements behind Decision 094 and what the first seal pass left open.
+
+32. docs/460_LEDGER_SEALING/460_SEAL_AND_REBASE.md

@@ -74,7 +74,7 @@ subjects: []
 8. **Partial successes open taught candidates.** This span applied the `EVT-000988` precedent (a partial qualifies) after a first narration had held partials back; if you want partials not to open candidates, that is a ruling, not the default.
 9. **Ruled at `EVT-001178`:** the artificer's working Rank is revoked. Closed.
 10. **A champion who crosses to Earth** (ruled `EVT-001170`: may cross, 10% of maximum Mana an hour, no recovery). **Open:** what happens when that pool reaches zero; and a transcription into `270_THE_FAR_SIDE.md` Section 5 is owed.
-11. **A champion killed on Earth is outside the Long Shelf's channel** (ruled `EVT-001174`). A transcription into `270_THE_FAR_SIDE.md` Section 4.4 is owed.
+11. **A champion killed on Earth is outside the Long Shelf's channel** (`EVT-001174`). A transcription into `270_THE_FAR_SIDE.md` Section 4.4 is owed.
 12. **Mender, artificer and sensor counts for Ranks E to B.** The A-Rank split is ruled (`EVT-001177`: 12 / 12 / 14, sensors combat-capable); the rest of the registry is still the stale `EVT-001134` read at 2,817 members.
 
 ```yaml
@@ -208,4 +208,4 @@ trigger_telemetry:
   far_side_third_contact_fired: true
 ```
 
-**Reading it, 2026-09-30 14:22.** No day boundary crossed this span (last tick 06:00 today); `hidden_dry_days`/`urgent_dry_days` hold at 36/23. **`far_side_notice` 100 -> 103**: the door onto the Landing (+3) and about ten minutes of presence and open door; the 102 threshold fell and was satisfied by the contact with Orenne. His death on Earth adds nothing (owner ruling, `EVT-001174`). No Urgent or Hidden trigger fired: no crisis reached him, and neither the slates nor the cities touch a concealed-discovery record. Next notice threshold 108.
+**Reading it, 2026-09-30 14:22.** No day boundary crossed this span (last tick 06:00 today); `hidden_dry_days`/`urgent_dry_days` hold at 36/23. **`far_side_notice` 100 -> 103**: the door onto the Landing (+3) and about ten minutes of presence and open door; the 102 threshold fell and was satisfied by the contact with Orenne. His death on Earth adds nothing (`EVT-001174`). No Urgent or Hidden trigger fired: no crisis reached him, and neither the slates nor the cities touch a concealed-discovery record. Next notice threshold 108.

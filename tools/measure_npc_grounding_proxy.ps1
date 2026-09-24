@@ -87,7 +87,10 @@ $adminKinds = @(
 )
 
 $rows = [System.Collections.Generic.List[object]]::new()
-foreach ($b in (Get-Blocks (Join-Path $campaignRoot "160_CAMPAIGN_CHRONICLE.md"))) {
+# Every chronicle file, sealed volumes first (Decision 094).
+. (Join-Path $PSScriptRoot "lib/Chronicle.ps1")
+$chronicleBlocks = foreach ($chronicleFile in (Get-ChronicleFiles -CampaignRoot $campaignRoot)) { Get-Blocks $chronicleFile }
+foreach ($b in $chronicleBlocks) {
     $id = Get-Field $b "id"
     if ($id -notmatch '^EVT-\d{6}$') { continue }
     $kind = Get-Field $b "kind"

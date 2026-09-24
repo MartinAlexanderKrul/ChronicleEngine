@@ -340,6 +340,14 @@ if (Test-Path -LiteralPath $campaignsRoot -PathType Container) {
     }
 }
 
+# Decision 094: a sealed volume is byte-frozen from the first checkpoint that
+# captures it. The comparison lives in a shared library so its own suite can
+# prove it fails on a tiny fixture without copying the repository.
+. (Join-Path $PSScriptRoot "lib/SealedVolumes.ps1")
+foreach ($sealedFailure in (Get-SealedVolumeFailures -Root $root)) {
+    Add-Failure $sealedFailure
+}
+
 # The Engine Welcome Page renders its worlds-and-campaigns listing from
 # system/WORLDS_AND_CAMPAIGNS.md. A campaign missing from that index is invisible
 # at startup even when it is complete and committed, so coverage is mechanical.
@@ -2402,8 +2410,15 @@ if (-not $CoreOnly -and (Test-Path -LiteralPath $blockValidator -PathType Leaf))
 $bossKillPattern = 'kill(s|ed|ing) the boss|killing the boss|\bboss killed\b|\bboss kill xp\b|the boss[^.\r\n]{0,60}\b(dies|died|is dead)\b'
 $bossDropPattern = 'boss[- ]drop|boss loot'
 
-foreach ($chronicleFile in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Recurse -File -Filter "160_CAMPAIGN_CHRONICLE.md" -ErrorAction SilentlyContinue |
-    Where-Object { $_.FullName -notmatch '[\\/]\.?saves[\\/]' })) {
+# Sealed chronicle volumes are read too (Decision 094): an Event keeps every
+# obligation it had when a seal pass moves it, and a fixture that breaks a
+# sealed Event must still be caught. `-Filter` takes one wildcard, so the live
+# name and the volume names are matched by regex instead.
+foreach ($chronicleFile in @(Get-ChildItem -LiteralPath (Join-Path $root "campaigns") -Recurse -File -Filter "160_CAMPAIGN_CHRONICLE*.md" -ErrorAction SilentlyContinue |
+    Where-Object {
+        $_.FullName -notmatch '[\\/]\.?saves[\\/]' -and
+        $_.Name -match '^160_CAMPAIGN_CHRONICLE(\.vol\d{2})?\.md$'
+    })) {
 
     $chronicleText = Get-Content -LiteralPath $chronicleFile.FullName -Raw
     $chronicleRelative = $chronicleFile.FullName.Substring($root.Length + 1).Replace('\', '/')
@@ -2426,7 +2441,8 @@ foreach ($chronicleFile in @(Get-ChildItem -LiteralPath (Join-Path $root "campai
         # announcing itself instead of going quiet the moment it is catalogued.
         # The acknowledgement must name the Event, so it cannot be a blanket
         # waiver for whatever else goes missing later.
-        $sheetPath = Join-Path $chronicleFile.DirectoryName "100_CHARACTER_SHEET.md"
+        $chronicleCampaign = if ($chronicleFile.Directory.Name -eq "sealed") { $chronicleFile.Directory.Parent.FullName } else { $chronicleFile.DirectoryName }
+        $sheetPath = Join-Path $chronicleCampaign "100_CHARACTER_SHEET.md"
         $acknowledged = $false
         if (Test-Path -LiteralPath $sheetPath -PathType Leaf) {
             $sheetText = Get-Content -LiteralPath $sheetPath -Raw

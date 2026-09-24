@@ -480,6 +480,8 @@ The working set is assembled from:
 
 Which ledgers to load, and how much, is guided by Simulation Priority (Rules Section 3.12): the same relevance that governs how much of the world is simulated also governs how much is loaded into Context. The save manifest (Rules Section 13.3) identifies what is relevant on restoration.
 
+A campaign's **sealed volumes** (Rules Section 13.1; Decision 094) are canon but never part of a working set by default. They hold settled history moved out of the live ledgers, and a Runtime opens one only when a question needs the past, by the same identifier or heading the live ledger used. What a live record says is what is true now; its history is the chronicle's and the volumes'.
+
 The specific loading strategy is operational and defined by the active Runtime Profile.
 
 ## 3.2 Minimal and Missing Context
@@ -610,7 +612,7 @@ The repository is the sole system of record. All durable canon lives here. A fac
 
 A save is an immutable checkpoint of canonical ledgers (Rules Section 13). Persistence aligns with the Save State Architecture:
 
-- checkpoints are immutable once written (Rules Section 13.2),
+- checkpoints are immutable once written (Rules Section 13.2), and a sealed volume is byte-frozen from the first checkpoint that captures it (Rules Section 13.1; Decision 094),
 - the save manifest carries metadata only, not duplicated ledger content (Rules Section 13.3),
 - restoration reads from Persistence to reconstruct Context (Section 3), following Rules Section 13.4.
 

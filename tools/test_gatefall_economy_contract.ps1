@@ -11,7 +11,10 @@ $profile = Get-Content -Raw $profilePath
 $readme = Get-Content -Raw $readmePath
 $resources = Get-Content -Raw $resourcesPath
 $character = Get-Content -Raw $characterPath
-$chronicle = Get-Content -Raw $chroniclePath
+# The chronicle is the live file and its sealed volumes (Decision 094); the
+# adoption Events this suite pins were sealed at the first pass.
+. (Join-Path $PSScriptRoot "lib/Chronicle.ps1")
+$chronicle = Get-ChronicleText -CampaignRoot (Split-Path -Parent $chroniclePath)
 $failures = [System.Collections.Generic.List[string]]::new()
 
 function Assert-Contains {

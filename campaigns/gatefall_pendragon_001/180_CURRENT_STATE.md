@@ -79,7 +79,7 @@ subjects: []
 11. **The 63rd daily's penalty zone never fired — RULED 2026-09-24 (real date): left as it stands.** It lapsed at midnight 2026-09-29/30 during beer night; no transfer is applied retroactively. Closed.
 12. **Riftwalker's S rung, *an ally he touches may be sent with him* — RULED 2026-09-24 (real date): every ally he is touching goes with him on one step, at that step's single cost.** Consistent with earlier group steps in play (`EVT-001191`: Kane and Dario). Campaign-scoped; the profile is unchanged. Closed.
 13. **Do E and D teams carry miners? — RULED 2026-09-24 (real date).** Every Gate is mined. E and D teams mine it themselves and carry no extra miners; C, B and A teams always bring a mining team. Recorded in `151_HUNTER_POPULATION_MODEL.md` Section 6. Closed.
-14. **Artificer throughput.** Section 12.8 says only *days* at E-C and nothing above; the gear plan used 2/2/3/5/7 days a piece as a planning figure (`EVT-001191`).
+14. **Artificer throughput — RULED 2026-09-24 (real date): the gear plan runs on the guild ledger's artificer table** (`151_HUNTER_POPULATION_MODEL.md` Section 5: E 94, D 74, C 54, B 32, A 12). The 2/2/3/5/7 days a piece stays a planning estimate, not a rule; Section 12.8 authors none. Everyone below A kitted by about 10-07; A about four weeks. Closed.
 
 ```yaml
 provisional_mechanics: []

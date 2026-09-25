@@ -309,14 +309,20 @@ skills and items are read from `100_CHARACTER_SHEET.md`, NPCs from `130` and the
 (secrets, agendas and knowledge left out), the guild from `151`, `096` and each NPC's `affiliation`.
 An edit made on the published artifact does not travel back and is overwritten.
 
-`/save` rebuilds all four, and `index.html`, after the live ledgers are written and before the snapshot is taken:
+`index.html`'s agenda is read from **`097_AGENDA.md`**, a non-canonical view of every dated commitment
+in `180`'s Immediate obligations and `140`'s status lines. **Update it first, by its own Save Procedure:**
+remove every row that has passed at the save's campaign time (a missed deadline still open stays, marked
+*overdue*), add every dated commitment the span made, keep the rows in date and time order.
+
+`/save` then rebuilds all four, and `index.html`, after the live ledgers and 097 are written and before the snapshot is taken:
 
 ```
 python tools/generate_campaign_ledgers.py --campaign gatefall_pendragon_001
 ```
 
-It fails loudly and by name on an entry missing from `assets/ledger_taxonomy.yaml` or on text it
-cannot place; `--check` diffs without writing. Publishing a rebuilt ledger stays manual.
+It fails loudly and by name on an entry missing from `assets/ledger_taxonomy.yaml`, on text it
+cannot place, or on an agenda row already past `180`'s campaign time; `--check` diffs without writing.
+Publishing a rebuilt ledger stays manual.
 
 **Regenerating is not updating.** Before the rebuild, a `/save` that touches the guild writes `096` and `151` Section 7 by the procedure at the top of `096_GUILD_CLEARANCE_LOG.md`; every `/save` updates the index agenda by the one atop `097_AGENDA.md`.
 

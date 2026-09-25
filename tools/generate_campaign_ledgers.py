@@ -1261,6 +1261,24 @@ def main():
             return 1
         now = re.search(r'^\s*game_date:\s*"?([0-9T:+-]+)"?', io.open(os.path.join(camp, "180_CURRENT_STATE.md"),
                         encoding="utf-8").read(), re.M)
+        # 097's own save procedure removes every row that has passed at the save's
+        # campaign time; a stale row means that step was skipped, and rendering it
+        # would show a finished commitment as still ahead. A missed deadline that is
+        # still open stays, marked *overdue* in its event.
+        if now:
+            now_date, now_hm = now.group(1)[:10], now.group(1)[11:16]
+            stale = [r.get("Date", "") + " " + (r.get("Chicago", "") or "--:--") + " " + r.get("Event", "?")[:60]
+                     for r in rows or []
+                     if "overdue" not in r.get("Event", "").lower()
+                     and (r.get("Date", "") < now_date
+                          or (r.get("Date", "") == now_date and r.get("Chicago", "")
+                              and r.get("Chicago", "").lstrip("~") < now_hm))]
+            if stale:
+                print("Ledger generation FAILED: agenda rows already past the campaign's time (%s); "
+                      "remove them or mark them *overdue* in 097_AGENDA.md:" % now.group(1), file=sys.stderr)
+                for f in stale:
+                    print("  - " + f, file=sys.stderr)
+                return 1
         profile["agenda"] = {"now": now.group(1) if now else "",
                              "rows": [{k: (mdi(escape(v)) if k in ("Event", "Place", "Source") else v) for k, v in r.items()}
                                       for r in rows]}

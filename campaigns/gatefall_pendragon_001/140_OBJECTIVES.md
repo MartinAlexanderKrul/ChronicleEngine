@@ -20,7 +20,8 @@ provenance:
   real_date: "2026-09-25"
 role: canonical ledger
 scope: campaign
-# This save (`EVT-001195`-`EVT-001206`): OBJ-77 closed (the fence); OBJ-78 closed (Prague A-Rank cleared); OBJ-79 four branches live; OBJ-68 Incident Review withdrew its request; OBJ-60 Europe (five cities), Seoul, Asia, Australia; OBJ-87 opened (Seoul); OBJ-83 Saturday confirmed.
+# This save (`EVT-001207`-`EVT-001212`): OBJ-88 opened (BGM National, the Director, tonight 18:30 Chicago); OBJ-79 Houston in, New York wants writing, eight to go; OBJ-83 nine of nine for Saturday.
+# Prior save (`EVT-001195`-`EVT-001206`): OBJ-77 closed (the fence); OBJ-78 closed (Prague A-Rank cleared); OBJ-79 four branches live; OBJ-68 Incident Review withdrew its request; OBJ-60 Europe (five cities), Seoul, Asia, Australia; OBJ-87 opened (Seoul); OBJ-83 Saturday confirmed.
 # Prior save (`EVT-001180`-`EVT-001194`): OBJ-85 closed (roster sent); OBJ-79 Chicago accepted by Region V, on the 06:00 rotation, Frankfurt/Paris due 05:00, Milwaukee/Toledo dispatched and cleared; OBJ-68 a signed statement, Okafor told it exists; OBJ-83 the training plan; OBJ-84 tunnel rooms, gear backlog and purchases; OBJ-60 five new US cities; OBJ-77 the families named.
 # Prior save (`EVT-001169`-`EVT-001179`): OBJ-85 delivered (nine A-Rank crews and their commanders, `EVT-001177`), open only on Alexander's word to send it; OBJ-55 -- Orenne killed on Earth (`EVT-001173`), his techniques taken by Succession, the Long Shelf unaware (`EVT-001174`).
 # Earlier per-save notes: sealed (Decision 094), see `sealed/`.
@@ -1023,7 +1024,7 @@ Section 13.7.5 makes a branch a *rate* once it holds a named dispatching officer
 
 **Update 2026-10-01 (`EVT-001199`, `EVT-001201`, `EVT-001203`).** **Four branches live from the 06:00 tick: Chicago (Region V), Washington (Region III, accepted 05:06 on Okafor's letter), Frankfurt and Paris (German and French national authorities, 05:03).** First automatic day: 20 clears. The Chicago branch answered its first emergency contract at Evanston (`EVT-001202`). **Kane** calls every other US regional director today; the national authorities go to Anjali with Tereza's names; **status on all fourteen filed offices by Friday 10-02 17:00**.
 
-**Update 2026-10-01 (`EVT-001210`, `EVT-001211`).** Kane's regional calls: **Houston in; New York wants it in writing today; eight to go.** BGM National's Director's office has seen Okafor's letter and wants to meet Alexander in person before any regional director signs; asked for Friday 10:00 Eastern, moved on his word to **tonight, Thu 10-01, 19:30 Eastern (18:30 Chicago), at National, the Director in person.**
+**Update 2026-10-01 (`EVT-001210`, `EVT-001211`).** Kane's regional calls: **Houston in; New York wants it in writing today; eight to go.** BGM National's Director's office has seen Okafor's letter and wants to meet Alexander in person before any regional director signs; asked for Friday 10:00 Eastern, moved on his word to **tonight, Thu 10-01, 19:30 Eastern (18:30 Chicago), at National, the Director in person** — tracked as `OBJ-88`.
 
 ## OBJ-77 - The Jiu Valley Families: Thursday at the Fence
 
@@ -1160,3 +1161,11 @@ Settled; each is held verbatim in [`sealed/140_OBJECTIVES.vol01.md`](sealed/140_
 Han Seung-woo (`ENT-000358`), an A-Rank guildmaster with about 300 hunters whose corporate sponsor withdrew in August, offered his whole guild through Kane. **Alexander: yes, take the whole guild; meet him before naming him Seoul office manager.** Han cannot leave Seoul while the former sponsor's lawyers are there; the whole guild will be in the hall. Alexander has never stood in Korea, so the first trip is a flight. **Korea's national Gate authority must approve the transfer**; Anjali starts the paperwork 10-01.
 
 **Open:** the meeting; the naming; the regulator; what the sponsor's lawyers want.
+
+## OBJ-88 - BGM National: The Director, in Person
+
+**Status:** open - **tonight, Thu 10-01, 19:30 Eastern (18:30 Chicago), BGM National headquarters, Washington** · **Opened:** 2026-10-01 09:30 (`EVT-001211`)
+
+BGM National's Director's office has seen Director Okafor's letter (`OBJ-79`) and wants to meet the man it is about **in person, before any regional director signs off on anything**. Their ask was Friday 10:00 Eastern, answer by noon; Kane told them he would ask Alexander, not that he would come. Alexander, flying to Seoul Friday (`OBJ-87`), offered this evening instead; Kane set it after the menders' track and before his own Europe map, and National accepted on the spot (🎲 68 +1 -> 88): **the Director takes it herself, not a deputy.** The room number is to follow. Friday stays clear.
+
+**Open:** what the Director wants from the meeting; what it does to the regional sign-offs Kane is still calling for (Houston in, New York wants it in writing, eight to go); who goes with him.

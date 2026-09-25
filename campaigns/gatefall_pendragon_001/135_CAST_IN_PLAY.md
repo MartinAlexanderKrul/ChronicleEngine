@@ -217,6 +217,12 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000340` | Baran Yılmaz | guild office staff — night officer | active | The Pendragon Guild Istanbul office, night post. | — |
 | `ENT-000341` | Nigel Harcourt | guild office staff — night officer | active | The Pendragon Guild London office, night post. | — |
 | `ENT-000352` | Harlan Boyce | BGM Region V official — Incident Review line reviewer | active | BGM Region V Field Office | — |
+| `ENT-000353` | Andrei Bratu | civilian organiser, awakened C-Rank | active | The Jiu Valley fence, 2026-10-01. | — |
+| `ENT-000354` | Viorica Bratu | civilian, unawakened | active | The Jiu Valley fence, 2026-10-01. | — |
+| `ENT-000355` | Gheorghe Dincă | civilian, unawakened | active | The Jiu Valley fence, 2026-10-01. | — |
+| `ENT-000356` | Ioana Stoica | awakened D-Rank, prospective guild member | active | The Jiu Valley fence, 2026-10-01. | — |
+| `ENT-000357` | Tamsin Okoro | guild hunter — C-Rank team lead | active | Evanston, Central Street, handing over to Region V. | — |
+| `ENT-000358` | Han Seung-woo | guildmaster, awakened A-Rank | active | Seoul. | — |
 
 ---
 
@@ -393,13 +399,19 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000340` | Baran Yılmaz | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
 | `ENT-000341` | Nigel Harcourt | Not yet established | Not yet established | Not yet established | Not yet established; not met in a scene |
 | `ENT-000352` | Harlan Boyce | The lakefront finding closed honestly, with his name on it -- why a certified instrument carded… | That the finding is being written over his head: Deputy Director Strand signed the request he h… | Two sheets were taken from his review folder upstairs on 09-24 and never returned; he knows, an… | Reads dates and times from memory; glasses down to read and up to look at a person; apologises… |
+| `ENT-000353` | Andrei Bratu | The names read aloud and heard; now, an answer to who signed the rotations | That his brother becomes a number in the story of how it ended | Not yet established | Careful English with a Romanian cadence; sets each word down; translates for others a half-beat… |
+| `ENT-000354` | Viorica Bratu | To put Ionuț's photograph in the hands of the man who ended it, so he is one face and not a nam… | That her gratitude betrays her son | Not yet established | Romanian only, slow, looking straight up at whoever she addresses; *mulțumesc* |
+| `ENT-000355` | Gheorghe Dincă | To be told it could have been done sooner; underneath, that it was not his fault (Read the Want… | That if he stops being angry he will have to grieve | He drove Ionuț to the rotation sign-up office the second winter and told him it was good money | Loud, cracked Romanian; jabs a finger; argues with the answer he expected |
+| `ENT-000356` | Ioana Stoica | A way off the fence that is not the rotation | That next spring she says yes to double pay anyway, because her mother cannot work | Not yet established | Schoolroom-good English, blunt; numbers first; *what is the clause?* |
+| `ENT-000357` | Tamsin Okoro | To prove the branch can answer without the founder | That arriving second is how he will see her team | Not yet established | Brisk South Side cadence; calls him *boss*; turns praise into a list of what she would do faster |
+| `ENT-000358` | Han Seung-woo | His people kept together under someone who will not sell them | That his guild ends up a nameplate on someone else's balance sheet | Not yet established | Formal written English; *honoured*; his people should see who they work for, not only read it |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 194. Protagonist relationships: 45.
-- Characters: 165. Disposition authored in full: 111; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 200. Protagonist relationships: 45.
+- Characters: 171. Disposition authored in full: 117; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

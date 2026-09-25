@@ -24,9 +24,9 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 
 | Kind | Prefix | Referent | Last Allocated |
 |------|--------|----------|----------------|
-| Entity | `ENT-` | Persistent Entity | ENT-000352 |
+| Entity | `ENT-` | Persistent Entity | ENT-000358 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001194 |
+| Event | `EVT-` | Event | EVT-001206 |
 | Relationship | `REL-` | Relationship | REL-000125 |
 
 ---
@@ -37,6 +37,8 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 
 | Range | Kind | Consumed by |
 |-------|------|-------------|
+| EVT-001195 – EVT-001206 | Event | Gatefall: Pendragon, 2026-10-01, from checkpoint 0175: to the Jiu Valley (`001195`); the names at the fence (`001196`); Ionuț's photograph and Gheorghe (`001197`); five young awakened and the clause (`001198`); home, Frankfurt, Paris and Washington accepted (`001199`); the nap and the alert (`001200`); the 10-01 06:00 world tick (`001201`); Central Street (`001202`); the kitchen -- Renata, Seoul, Europe (`001203`); the 65th daily and GB-63 sighted (`001204`); GB-63, the Kilnfather, Level 210 (`001205`); the `/save` barrier (`001206`). |
+| ENT-000353 – ENT-000358 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): Andrei Bratu (`000353`), Viorica Bratu (`000354`), Gheorghe Dincă (`000355`), Ioana Stoica (`000356`), Tamsin Okoro (`000357`), Han Seung-woo (`000358`); each cleared through `tools/check_name_collision.ps1 -StrictSurnames`. |
 | EVT-001180 – EVT-001194 | Event | Gatefall: Pendragon, 2026-09-30/10-01, from checkpoint 0174: the roster sent and London's lock (`001180`); the regulators and the contract towns dispatched (`001181`); the Region V lobby (`001182`); Harlan Boyce and a signed statement (`001183`); Farraday and the annex (`001184`); Director Okafor (`001185`); the acceptance and home (`001186`); the sauna and the connector (`001187`); five contract Gates cleared (`001188`); Kesha's map and the tunnel floor (`001189`); Kane and Dario, the training plan (`001190`); the gear backlog, dinner and a film (`001191`); the 64th daily fails, the Hive penalty zone, Level 209 (`001192`); back to bed, the families write (`001193`); the `/save` barrier (`001194`). |
 | ENT-000352 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): Harlan Boyce, BGM Region V Incident Review line reviewer, named in canon at `OBJ-68` and first met `EVT-001183`. Checked with `tools/check_name_collision.ps1 -StrictSurnames`: REVIEW on the shared first name with Harlan Dorsett (`ENT-000317`), accepted as a coincidence. |
 | EVT-001169 – EVT-001179 | Event | Gatefall: Pendragon, 2026-09-30, from checkpoint 0172: the far door opened and Orenne's slates (`001169`); owner ruling, a champion may cross to Earth (`001170`); Orenne crosses, the door closed (`001171`); the cities -- Prague, London, Chicago, Tel Aviv, Abisko (`001172`); the cage room, Orenne killed (`001173`); Succession and its owner rulings (`001174`); the body burned, the remains stored (`001175`); home, a text, the sauna (`001176`); Anjali's call, nine A-Rank crews and their commanders, the A-Rank registry ruling (`001177`); owner ruling, the artificer's working Rank revoked (`001178`); promotion-barrier settlement (`001179`) |

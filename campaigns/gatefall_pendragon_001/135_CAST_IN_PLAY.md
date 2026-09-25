@@ -135,7 +135,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000261` | Orenne | Standing (far side) — position Let it finish | deceased | **Deceased, 2026-09-30 12:21 Chicago | `REL-000110` |
 | `ENT-000262` | Tolo | Standing (far side) — no position | active | The Ninth Quiet stratum, near his rebuilt archive. | `REL-000111` |
 | `ENT-000263` | Sevrin | Standing (far side) — position Stop it | active | His own ground, deep in the Stacks. | `REL-000112` |
-| `ENT-000265` | Dario Wexler | S-Rank hunter — West Coast, USA; guild member, senior combat lead | active | Unestablished beyond 'West Coast' — Renata's own filing places… | `REL-000113` |
+| `ENT-000265` | Dario Wexler | S-Rank hunter — West Coast, USA; guild member, senior combat lead | active | **The Winnetka house, 2026-10-01 morning** | `REL-000113` |
 | `ENT-000266` | Ingrid Solberg | artificer — CONSULT quality assessor | active | Suite 411, the downtown Chicago formation-mill office — returne… | — |
 | `ENT-000267` | Daniel Pruett | artificer — CONSULT-controlled | active | Suite 411, the downtown Chicago formation-mill office — returne… | — |
 | `ENT-000268` | Aldric Renn | CONSULT — administrative handler | active | A small unmarked office, Suite 3C, West Fulton Market, Chicago… | — |

@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000358 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001206 |
+| Event | `EVT-` | Event | EVT-001212 |
 | Relationship | `REL-` | Relationship | REL-000125 |
 
 ---
@@ -37,6 +37,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 
 | Range | Kind | Consumed by |
 |-------|------|-------------|
+| EVT-001207 – EVT-001212 | Event | Gatefall: Pendragon, 2026-10-01, from checkpoint 0176: GB-63's Thralls and Warden, Level 211 (`001207`); the loot and the strip (`001208`); the filing to Renata and the lot (`001209`); home, the morning nobody scheduled (`001210`); Dario's disclosure and the Director moved to tonight (`001211`); the `/save` barrier (`001212`). |
 | EVT-001195 – EVT-001206 | Event | Gatefall: Pendragon, 2026-10-01, from checkpoint 0175: to the Jiu Valley (`001195`); the names at the fence (`001196`); Ionuț's photograph and Gheorghe (`001197`); five young awakened and the clause (`001198`); home, Frankfurt, Paris and Washington accepted (`001199`); the nap and the alert (`001200`); the 10-01 06:00 world tick (`001201`); Central Street (`001202`); the kitchen -- Renata, Seoul, Europe (`001203`); the 65th daily and GB-63 sighted (`001204`); GB-63, the Kilnfather, Level 210 (`001205`); the `/save` barrier (`001206`). |
 | ENT-000353 – ENT-000358 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): Andrei Bratu (`000353`), Viorica Bratu (`000354`), Gheorghe Dincă (`000355`), Ioana Stoica (`000356`), Tamsin Okoro (`000357`), Han Seung-woo (`000358`); each cleared through `tools/check_name_collision.ps1 -StrictSurnames`. |
 | EVT-001180 – EVT-001194 | Event | Gatefall: Pendragon, 2026-09-30/10-01, from checkpoint 0174: the roster sent and London's lock (`001180`); the regulators and the contract towns dispatched (`001181`); the Region V lobby (`001182`); Harlan Boyce and a signed statement (`001183`); Farraday and the annex (`001184`); Director Okafor (`001185`); the acceptance and home (`001186`); the sauna and the connector (`001187`); five contract Gates cleared (`001188`); Kesha's map and the tunnel floor (`001189`); Kane and Dario, the training plan (`001190`); the gear backlog, dinner and a film (`001191`); the 64th daily fails, the Hive penalty zone, Level 209 (`001192`); back to bed, the families write (`001193`); the `/save` barrier (`001194`). |

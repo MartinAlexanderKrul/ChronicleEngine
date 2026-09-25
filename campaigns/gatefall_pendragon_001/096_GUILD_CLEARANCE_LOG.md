@@ -53,6 +53,7 @@ is a write that did not happen.
 | Spent to date | $2,200,000.00 |
 | Receivable | $14,702,500.00 |
 | Committed, not yet spent | $3,190,000.00 (58 B-Rank pieces, by 17:00 10-01) |
+| **Payroll, monthly from October** | **$53,514,583.33** (E-A members at Section 13.7.3 rates; first payment due 2026-10-31) |
 
 | Date | Movement | In | Out | Balance | Source |
 |---|---|---|---|---|---|
@@ -63,6 +64,8 @@ is a write that did not happen.
 | 2026-09-29 | GB-59, D (#7) | $13,225.00 | | $3,751,950.00 | `EVT-001154` |
 | 2026-09-30 | Winnetka lakefront B (#8) | $212,750.00 | | $3,964,700.00 | `OBJ-73` |
 | 2026-10-01 | 176 C-Rank pieces for members, licensed anchor | | $2,200,000.00 | $1,764,700.00 | `EVT-001191` |
+
+**Payroll.** From 2026-10-01 member salaries are the guild's (owner ruling, 2026-09-25 real date), paid monthly: E $60,000, D $95,000, C $175,000, B $300,000 a year (Section 13.7.3), and **A $600,000 a year** (authored: 13.7.3 says only *negotiated*; the ladder continued). Across 4,378 E-A members that is **$642,175,000 a year**. The three S-Ranks' pay is individual and unrecorded. Against a $1,764,700 balance and $14,702,500 receivable, **October's payroll is not yet covered**: the four live branches earn roughly $580,000 a day on automatic dispatch, so it depends on more branches going live and receivables being paid.
 
 **Receivable at 2026-10-01 07:41:** Milwaukee $64,975 and Toledo $277,725 (#9-#13); the CGA $13,725,000 (#14); Region V $51,750 (#15); the first automatic day $583,050 (#17-#20). A receivable becomes a movement the day it is paid.
 
@@ -80,8 +83,9 @@ is a write that did not happen.
 | 2026-09-21 onward | Office leases: nine US and European leases closed, the rest in negotiation, eighteen offices open | *not priced* | | `EVT-001073` |
 | 2026-09-21 onward | The recruitment tour: venues ("whatever it costs"), staff and travel | *not priced* | | `EVT-001056` |
 | 2026-09-30 onward | HQ buildout: training floor, artificer floor, lounge, lockers, medical restock, eight tunnel rooms (rush freight and overtime) | *not priced* | | `EVT-001164`, `EVT-001189` |
-| 2026-09-21 onward | Member salaries under Section 13.7.3 (4,381 members) | *not priced* | | `151_HUNTER_POPULATION_MODEL.md` |
-| **Total priced** | | **$90,005,000.00** | **90,000 g** | |
+| 2026-09-30 | Member salaries, each office from its signing day to 30 September, prorated by day (E-A at the payroll rates above): Chicago and Washington 9 days, Prague and Frankfurt 8, New York and Boston 7, Miami and Houston 6, Paris and Amsterdam 5, Dallas and Los Angeles 4, Seattle and San Francisco 3, Tel Aviv, Istanbul, Stockholm and London 2 | $9,082,849.29 | | `151_HUNTER_POPULATION_MODEL.md`, `140_OBJECTIVES.md` OBJ-60 |
+| 2026-09-30 | The three S-Ranks' September pay (Kane, Dario Wexler, Itai Barak) | *not priced* | | individual contracts, unrecorded |
+| **Total priced** | | **$99,087,849.29** | **90,000 g** | |
 
 ---
 
@@ -135,3 +139,4 @@ is a write that did not happen.
 6. **Every Gate is mined.** E- and D-Rank teams mine it themselves; C-, B- and A-Rank teams bring a mining team. *(Owner ruling, 2026-09-24 real date.)*
 7. **Automatic dispatch from acceptance.** A branch whose regulator has accepted runs as a rate from the next 06:00 tick: Chicago, Washington, Frankfurt and Paris from 2026-10-01. *(Section 13.7.5; `EVT-001186`, `EVT-001199`.)*
 8. **Chicago US rates everywhere.** Every guild clearance, receivable and payout is priced at Chicago rates wherever the Gate is. *(Owner ruling, 2026-09-25 real date.)*
+9. **Salaries: Alexander pays September, the guild pays from October.** Every member is paid from their signing day; Alexander covers every salary through 30 September out of his own pocket, and the guild carries payroll from 1 October. Salaries are paid monthly. *(Owner ruling, 2026-09-25 real date.)*

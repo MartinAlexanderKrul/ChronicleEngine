@@ -56,6 +56,39 @@
   }
   .sub{color:var(--text-dim); font-size:.9rem; max-width:56ch; line-height:1.5;}
 
+  /* The agenda: what Alexander is holding, by day, in Chicago time and the local time where it happens. */
+  .agenda{border:1px solid var(--border); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); margin-bottom:22px; overflow:hidden;}
+  .agenda .ahead{display:flex; flex-wrap:wrap; gap:6px 14px; align-items:baseline; justify-content:space-between; padding:14px 18px 12px; border-bottom:1px solid var(--border);}
+  .agenda h2{font-family:"Chakra Petch",ui-sans-serif,sans-serif; font-size:1.15rem; margin:0;}
+  .agenda .nowline{font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.06em; color:var(--text-dim);}
+  .agenda .nowline b{color:var(--accent); font-weight:600;}
+  .agenda .day{padding:0 18px;}
+  .agenda .day + .day{border-top:1px solid var(--border);}
+  .agenda .dayname{font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); padding:12px 0 4px;}
+  .agenda .dayname b{color:var(--accent); font-weight:600;}
+  .agenda .item{display:grid; grid-template-columns:5.2rem 8.4rem minmax(0,1fr); gap:4px 14px; padding:9px 0; border-top:1px dashed var(--border); align-items:baseline;}
+  .agenda .dayname + .item{border-top:0;}
+  .agenda .chi{font-family:"IBM Plex Mono",monospace; font-size:.9rem; font-weight:600; font-variant-numeric:tabular-nums;}
+  .agenda .chi small, .agenda .loc small{display:block; font-size:.58rem; font-weight:400; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dim);}
+  .agenda .loc{font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--text-dim); font-variant-numeric:tabular-nums;}
+  .agenda .loc.away{color:var(--violet); font-weight:600;}
+  .agenda .what{font-size:.86rem; line-height:1.5;}
+  .agenda .what .where{display:block; font-size:.74rem; color:var(--text-dim); margin-top:2px;}
+  .agenda .what code{font-family:"IBM Plex Mono",monospace; font-size:.68rem;}
+  .agenda .soon{display:inline-block; margin-left:6px; padding:1px 7px; border-radius:999px; font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.04em; color:var(--amber); background:var(--amber-soft); vertical-align:1px; white-space:nowrap;}
+  .agenda .item.past{opacity:.5;}
+  .agenda details.later > summary{list-style:none; cursor:pointer; padding:11px 18px; font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.06em; color:var(--accent); border-top:1px solid var(--border);}
+  .agenda details.later > summary::-webkit-details-marker{display:none;}
+  .agenda details.later > summary:focus-visible{outline:2px solid var(--accent); outline-offset:-2px;}
+  .agenda details.later[open] > summary{color:var(--text-dim);}
+  @media (max-width:640px){
+    .agenda .ahead, .agenda .day{padding-inline:14px;}
+    .agenda .item{grid-template-columns:4.6rem minmax(0,1fr); gap:2px 12px;}
+    .agenda .chi{grid-column:1; grid-row:1;}
+    .agenda .loc{grid-column:1; grid-row:2; font-size:.7rem;}
+    .agenda .what{grid-column:2; grid-row:1 / span 2;}
+  }
+
   /* The four ledgers sit in one row above the character: compact tiles. */
   .cards{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:22px;}
   @media (max-width:860px){ .cards{grid-template-columns:repeat(2,minmax(0,1fr));} }
@@ -330,6 +363,8 @@
     </a>
   </nav>
 
+  <section class="agenda" id="agenda" aria-labelledby="h-agenda" hidden></section>
+
   <section class="profile" id="profile" aria-label="Alexander Pendragon"></section>
 
   <footer class="note">
@@ -343,6 +378,67 @@ const P = /*__PROFILE_DATA__*/{}/*__END__*/;
 // position it was read from. The last push to main is asked of GitHub live, so
 // an open page can be compared against it; offline, it says so.
 const B = /*__BUILD_DATA__*/{}/*__END__*/;
+
+// The agenda: every row is written in Chicago time; the local time is worked out
+// here from the row's IANA zone, so the page needs no time-zone table of its own.
+(function(){
+  const A = P.agenda, box = document.getElementById("agenda");
+  if (!A || !A.rows || !A.rows.length) return;
+  const CHI = "America/Chicago";
+  const offset = (zone, ms) => {           // minutes the zone is ahead of UTC at that instant
+    const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", {timeZone: zone, hourCycle: "h23",
+      year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit"})
+      .formatToParts(new Date(ms)).map(x => [x.type, x.value]));
+    return (Date.UTC(+p.year, p.month - 1, +p.day, +p.hour % 24, +p.minute) - ms) / 60000;
+  };
+  const chicago = (date, hm) => {          // a Chicago wall-clock time as an instant
+    const [y, m, d] = date.split("-").map(Number), [H, M] = (hm || "12:00").split(":").map(Number);
+    let ms = Date.UTC(y, m - 1, d, H, M) + 5 * 3600000;
+    for (let i = 0; i < 2; i++) ms = Date.UTC(y, m - 1, d, H, M) - offset(CHI, ms) * 60000;
+    return ms;
+  };
+  const fmt = (ms, zone, o) => new Intl.DateTimeFormat("en-GB", Object.assign({timeZone: zone}, o)).format(new Date(ms));
+  const clock = (ms, zone) => fmt(ms, zone, {hour: "2-digit", minute: "2-digit", hourCycle: "h23"});
+  const ymd = (ms, zone) => { const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", {timeZone: zone,
+      year: "numeric", month: "2-digit", day: "2-digit"}).formatToParts(new Date(ms)).map(x => [x.type, x.value]));
+    return `${p.year}-${p.month}-${p.day}`; };
+  const city = z => z.split("/").pop().replace(/_/g, " ");
+  const now = A.now ? Date.parse(A.now) : NaN;
+  const nowDay = isNaN(now) ? "" : ymd(now, CHI);
+  const span = m => m < 60 ? `${m}m` : m < 1440 ? `${Math.floor(m / 60)}h${m % 60 ? " " + (m % 60) + "m" : ""}` : `${Math.round(m / 1440)}d`;
+
+  const rows = A.rows.map(r => {
+    const approx = /^~/.test(r.Chicago || ""), hm = (r.Chicago || "").replace(/^~/, "");
+    return Object.assign({}, r, {hm, approx, ms: chicago(r.Date, hm), allDay: !hm});
+  });
+  const days = [];
+  rows.forEach(r => { let d = days.find(x => x.date === r.Date); if (!d) days.push(d = {date: r.Date, items: []}); d.items.push(r); });
+
+  const item = r => {
+    const away = r.Zone !== CHI, tilde = r.approx ? "~" : "";
+    const shifted = away && !r.allDay && ymd(r.ms, r.Zone) !== r.Date;
+    const chi = r.allDay ? `<span class="chi">&mdash;<small>any time</small></span>`
+                         : `<span class="chi">${tilde}${r.hm}<small>Chicago</small></span>`;
+    const loc = !away ? `<span class="loc"></span>`
+      : `<span class="loc away">${r.allDay ? "" : tilde + clock(r.ms, r.Zone) + (shifted ? " " + fmt(r.ms, r.Zone, {weekday: "short"}) : "")}<small>${city(r.Zone)} time</small></span>`;
+    const mins = r.allDay || isNaN(now) ? null : Math.round((r.ms - now) / 60000);
+    const past = mins !== null && mins < 0;
+    const soon = mins !== null && mins >= 0 && mins <= 1440 ? `<span class="soon">in ${span(mins)}</span>` : "";
+    return `<div class="item${past ? " past" : ""}">${chi}${loc}<div class="what">${r.Event}${soon}<span class="where">${r.Place}${r.Source ? " &middot; " + r.Source : ""}</span></div></div>`;
+  };
+  const dayBlock = d => {
+    const label = fmt(chicago(d.date, "12:00"), CHI, {weekday: "long", day: "numeric", month: "long"});
+    return `<div class="day"><div class="dayname">${label}${d.date === nowDay ? " &middot; <b>today</b>" : ""}</div>${d.items.map(item).join("")}</div>`;
+  };
+  // The next three days stay open; everything after folds under one line.
+  const first = days.slice(0, 3), later = days.slice(3);
+  const laterCount = later.reduce((s, d) => s + d.items.length, 0);
+  box.innerHTML = `<div class="ahead"><h2 id="h-agenda">Agenda</h2>${isNaN(now) ? "" :
+      `<span class="nowline">Campaign time <b>${fmt(now, CHI, {weekday: "short", day: "numeric", month: "short"})}, ${clock(now, CHI)}</b> Chicago</span>`}</div>` +
+    first.map(dayBlock).join("") +
+    (later.length ? `<details class="later"><summary>Later: ${laterCount} more, to ${fmt(chicago(later[later.length - 1].date, "12:00"), CHI, {day: "numeric", month: "long"})} &rarr;</summary>${later.map(dayBlock).join("")}</details>` : "");
+  box.hidden = false;
+})();
 (function(){
   const box = document.getElementById("build");
   if (!B.built) { box.remove(); return; }

@@ -1245,6 +1245,26 @@ def main():
                    "effective": int(re.match(r"\s*(\d+)", str(eff.get(k, base.get(k, 0)))).group(1))}
                   for k in STATS],
     }
+    # The agenda: 097's rows, dated and zoned, with the campaign's own "now" from
+    # 180's record, so the page can mark what is next without a clock of its own.
+    agenda_path = os.path.join(camp, "097_AGENDA.md")
+    if os.path.exists(agenda_path):
+        rows, _anotes = md_tables(io.open(agenda_path, encoding="utf-8").read(), "Agenda")
+        bad = [r.get("Event", "?")[:60] for r in rows or []
+               if not re.match(r"^\d{4}-\d{2}-\d{2}$", r.get("Date", ""))
+               or not re.match(r"^(~?\d{2}:\d{2})?$", r.get("Chicago", ""))
+               or not re.match(r"^[A-Za-z_]+/[A-Za-z_]+$", r.get("Zone", ""))]
+        if bad:
+            print("Ledger generation FAILED: agenda rows need a date, a Chicago HH:MM (or none) and an IANA zone:", file=sys.stderr)
+            for f in bad:
+                print("  - " + f, file=sys.stderr)
+            return 1
+        now = re.search(r'^\s*game_date:\s*"?([0-9T:+-]+)"?', io.open(os.path.join(camp, "180_CURRENT_STATE.md"),
+                        encoding="utf-8").read(), re.M)
+        profile["agenda"] = {"now": now.group(1) if now else "",
+                             "rows": [{k: (mdi(escape(v)) if k in ("Event", "Place", "Source") else v) for k, v in r.items()}
+                                      for r in rows]}
+        print("agenda: %d entries" % len(rows))
     stamp = build_stamp(camp, os.path.join(assets, LEDGERS["index"][0]), args.check)
     ok = emit("index", "index.template.html",
               {"PROFILE_DATA": json.dumps(profile, ensure_ascii=False).replace("</", "<\\/"),

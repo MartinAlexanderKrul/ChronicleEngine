@@ -318,7 +318,7 @@ python tools/generate_campaign_ledgers.py --campaign gatefall_pendragon_001
 It fails loudly and by name on an entry missing from `assets/ledger_taxonomy.yaml` or on text it
 cannot place; `--check` diffs without writing. Publishing a rebuilt ledger stays manual.
 
-**Regenerating is not updating.** Before the rebuild, a `/save` that touches the guild writes `096` and `151` Section 7 by the procedure at the top of `096_GUILD_CLEARANCE_LOG.md`.
+**Regenerating is not updating.** Before the rebuild, a `/save` that touches the guild writes `096` and `151` Section 7 by the procedure at the top of `096_GUILD_CLEARANCE_LOG.md`; every `/save` updates the index agenda by the one atop `097_AGENDA.md`.
 
 ---
 

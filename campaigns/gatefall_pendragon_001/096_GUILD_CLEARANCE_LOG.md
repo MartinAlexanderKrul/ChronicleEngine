@@ -17,17 +17,24 @@
 re-renders whatever `096` and `151` hold, so a save that did not write them publishes a stale guild page
 that looks fresh. Before the rebuild, every `/save` that touches the guild writes both:
 
-- **`096_GUILD_CLEARANCE_LOG.md`, `## Clearances`:** one row for **every** Gate the guild answered in the
+- **`096_GUILD_CLEARANCE_LOG.md`, the Clearances table:** one row for **every** Gate the guild answered in the
   span: dispatched crews, contract towns, regulator-offered or named Gates, Alexander's own solo clears
   and emergency responses, and an office's job taken as met under standing preference 13. It also takes
   **one row per operational branch per day** for Section 13.7.5's automatic dispatch (the counts by Rank
   from that tick's `guild_ops`), and a row for a Gate still in its clear window, updated when it closes.
-  `## Open and assigned` loses every row that closed and gains every Gate assigned but not yet cleared.
-  New player rulings about how the guild works go under `## Standing rules`.
+  the Open and assigned table loses every row that closed and gains every Gate assigned but not yet cleared.
+  New player rulings about how the guild works go under Standing rules.
 - **`151_HUNTER_POPULATION_MODEL.md` Section 7:** every regulator decision in the span. The generator
   counts an office as operational **only when its regulator cell begins with the plain word `accepted`**,
   with no bold and no prefix, followed by the date and the regulator. Update the tunnel cell and the
   section's opening status sentence in the same pass.
+
+- **Payouts and the Guild Treasury:** every clearance row carries its **exact payout and who receives it**,
+  priced by the profile (a salaried crew keeps the whole clear at the Section 12.3 midpoint with the 15% guild
+  premium; A-Rank is its operation fee plus the declared haul; Prague at 0.70; a solo clear pays Alexander on
+  its filed terms). Never write "not recorded". Every guild payment received, every guild spend and every new
+  receivable goes into the Guild Treasury section: a movement row with its running balance, and the position table
+  (balance, received, spent, receivable, committed) recomputed. Alexander's personal money stays in `120`.
 
 Then rebuild, and confirm from the generator's own summary line (`N clearances`, and the operational
 count in the guild page) that the numbers moved as the span says they should. A figure that did not move
@@ -35,30 +42,56 @@ is a write that did not happen.
 
 ---
 
+## Guild Treasury
+
+**The guild's own money, tracked from its first recorded income.** Before this ledger the guild had no treasury on record (`EVT-001084`): the Detroit HQ campus ($90,000,000), the offices and the tour were paid from Alexander's personal cash (`120_INVENTORY_AND_OWNERSHIP.md`), and those stay founder-funded, not guild debt. Clear values follow the profile, not estimates: a salaried guild crew keeps its whole clear (Section 13.7.3) at Section 12.3's midpoint with the 15% guild premium (Section 13.7.5); an A-Rank clear is its operation fee plus its declared haul (the Pilsen precedent); Prague reads 0.70. **Receivable** is earned and not yet paid.
+
+| Position | USD |
+|---|---|
+| **Balance** | **$1,696,907.50** |
+| Received to date | $3,896,907.50 |
+| Spent to date | $2,200,000.00 |
+| Receivable | $10,585,000.00 |
+| Committed, not yet spent | $3,190,000.00 (58 B-Rank pieces, by 17:00 10-01) |
+
+| Date | Movement | In | Out | Balance | Source |
+|---|---|---|---|---|---|
+| 2026-09-24 | Prague D clear (#1) | $9,257.50 | | $9,257.50 | `EVT-001084` |
+| 2026-09-25 | Calumet A clear (#2) | $3,300,000.00 | | $3,309,257.50 | `EVT-001099` |
+| 2026-09-27 | Prague B clear (#5) | $148,925.00 | | $3,458,182.50 | `EVT-001114` |
+| 2026-09-29 | GB-58, B (#6) | $212,750.00 | | $3,670,932.50 | `EVT-001154` |
+| 2026-09-29 | GB-59, D (#7) | $13,225.00 | | $3,684,157.50 | `EVT-001154` |
+| 2026-09-30 | Winnetka lakefront B (#8) | $212,750.00 | | $3,896,907.50 | `OBJ-73` |
+| 2026-10-01 | 176 C-Rank pieces for members, licensed anchor | | $2,200,000.00 | $1,696,907.50 | `EVT-001191` |
+
+**Receivable at 2026-10-01 07:41:** Milwaukee $64,975 and Toledo $277,725 (#9-#13); the CGA $9,607,500 (#14); Region V $51,750 (#15); the first automatic day $583,050 (#17-#20). A receivable becomes a movement the day it is paid. **Open ruling:** Section 13.7.5 authors a market factor only for Prague, so Frankfurt and Paris are at the Chicago rate until the owner sets theirs.
+
+---
+
 ## Clearances
 
 | # | Date | Gate | Rank | Population | Responded by | Outcome | Payout | Event |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 2026-09-24 | Prague (district unspecified) | D | D | Prague office crew — Milena Horáková dispatching; Tomas Prochazka, Klara Nováková | Cleared. The guild's first dispatched Gate response anywhere. Crew gear-audited by Kane before entry and re-equipped at guild cost. | not recorded | `EVT-001084` |
+| 1 | 2026-09-24 | Prague (district unspecified) | D | D | Prague office crew — Milena Horáková dispatching; Tomas Prochazka, Klara Nováková | Cleared. The guild's first dispatched Gate response anywhere. Crew gear-audited by Kane before entry and re-equipped at guild cost. | **$9,257.50 → guild account** (D: $11,500 midpoint × 1.15 guild premium × 0.70 Prague) | `EVT-001084` |
 | 2 | 2026-09-25 | Calumet corridor, far South Side, Chicago | A | **S** | Guild element of ten, **Elias Kane commanding** | Cleared. Region V had the commanding name and roster inside its 10:00 deadline. The guild's first A-Rank without Alexander inside it. | **$3,300,000 → guild account** | `EVT-001099` |
 | 3 | 2026-09-25 | Tulsa, east side, Oklahoma | B (broken 03:10 local) | B | **Alexander Pendragon, solo** | Cleared, ten kills (8 commons, 1 elite, 1 boss). Cordon held; the evacuation did not widen past the third block. | **$1,650,000 → Alexander personally** | `EVT-001097` |
 | 4 | 2026-09-26 | Karlín tram depot, Prague | A (as assessed) | **S** | **Alexander Pendragon, solo** | Cleared in ten exchanges; 595 damage taken. Archetype Flooded Mine. Stripped clean inside the two-hour window: 267 S-Rank crystals, 3 cores, 1 Elixir. | **≈$2,310,000 → Alexander personally**, due Monday 2026-09-28 | `EVT-001104` |
-| 5 | 2026-09-27 | Prague (district unspecified) | B | B | Prague office crew, fed from Frankfurt through the tunnel — Milena Horáková dispatching | Cleared 00:41 Prague local, fifteen in and fifteen out. | not recorded | `EVT-001114` |
-| 6 | 2026-09-29 | GB-58, on his route, Chicago | B | B | Priya Menon's crew, ordinary guild dispatch | Cleared clean inside its window. | not recorded | `EVT-001148`, `EVT-001154` |
-| 7 | 2026-09-29 | GB-59, on his route, Chicago | D | D | A D-Rank pair, ordinary guild dispatch | Cleared clean inside its window. | not recorded | `EVT-001148`, `EVT-001154` |
-| 8 | 2026-09-30 | Winnetka lakefront path, Chicago | B | B | Chicago office — Imani Whitaker dispatching | Cleared before its timer: the office's job end to end, taken as met under the standing rule; no break recorded and no report on file. | not recorded | `OBJ-73` |
-| 9 | 2026-09-30 | Milwaukee, Menomonee Valley | C | C | Chicago crew, 11 in (5 strikers, mender, sensor, miners) | Cleared clean, fast (natural 75, Legendary). | owed by the city of Milwaukee | `EVT-001188` |
-| 10 | 2026-09-30 | Milwaukee, Jones Island | D | D | Chicago crew, 7 in (5 strikers, mender, sensor; mined its own Gate) | Cleared; one striker's forearm broken, off rotation two days (natural 16, Partial). | owed by the city of Milwaukee | `EVT-001188` |
-| 11 | 2026-09-30 | Toledo, the old rail yard on the Maumee | B | B | Crew through the HQ tunnel, 16 in (9 strikers, mender, sensor, miners) | Cleared, no injuries, twelve minutes under plan; its 10-01 21:00 break averted (natural 96, Legendary). The city manager rang HQ to thank the guild. | owed by the city of Toledo | `EVT-001188` |
-| 12 | 2026-09-30 | Toledo, near the port | C | C | Crew through the HQ tunnel, 11 in | Cleared clean; a crystal vein cut by the miners (natural 57, Exceptional). | owed by the city of Toledo | `EVT-001188` |
-| 13 | 2026-09-30 | Toledo, downtown | D | D | Crew through the HQ tunnel, 7 in | Cleared; one striker concussed with two ribs broken, overnight in hospital (natural 1, Partial). | owed by the city of Toledo | `EVT-001188` |
-| 14 | 2026-10-01 | Prague (CGA-named) | A | A | Céline Marchand's Continental A-Rank crew | Cleared before the 13:00 Prague window; 17 in, 17 out, two light injuries. | not recorded | `EVT-001201`, `EVT-001203` |
-| 15 | 2026-10-01 | Evanston, Central Street at the Metra (a break in progress) | C | C | **Alexander Pendragon, solo**; the Chicago branch (Tamsin Okoro's team) arrived second on Region V's emergency contract | Cleared in five exchanges: 12 Stalkers, 2 Hounds, the Tiler. Eighteen civilians unhurt. The branch's first emergency contract. | **harvest to the Chicago branch** (Alexander waived his kills) | `EVT-001202` |
-| 16 | 2026-10-01 | GB-63, Sheridan Road, Chicago (carded C) | C (as assessed) | **S, red gate** | **Alexander Pendragon, solo**, held for him by BGM National on his read | Boss (the Kilnfather) dead in one exchange; the seal open, the clear window running to 09:41. | **pending → Alexander personally** (Renata files it) | `EVT-001205` |
-| 17 | 2026-10-01 | Automatic dispatch — Chicago branch, catchment Region V | E ×2 · D ×2 · C ×1 | as rolled | Chicago branch rota (Imani Whitaker dispatching) | 5 cleared, first automatic day (Section 13.7.5 daily dispatch). | branch revenue (Section 13.7.5) | `EVT-001201` |
-| 18 | 2026-10-01 | Automatic dispatch — Washington branch, catchment Region III | E ×2 · D ×1 · C ×1 | as rolled | Washington branch rota (Verity Prescott dispatching) | 4 cleared, first automatic day. | branch revenue (Section 13.7.5) | `EVT-001201` |
-| 19 | 2026-10-01 | Automatic dispatch — Frankfurt branch | E ×2 · D ×2 · C ×1 | as rolled | Frankfurt branch rota (Anselm Kretschmer dispatching) | 5 cleared, first automatic day. | branch revenue (Section 13.7.5) | `EVT-001201` |
-| 20 | 2026-10-01 | Automatic dispatch — Paris branch | E ×2 · D ×1 · C ×2 · B ×1 | as rolled | Paris branch rota (Odile Fontaine dispatching) | 6 cleared, first automatic day. | branch revenue (Section 13.7.5) | `EVT-001201` |
+| 5 | 2026-09-27 | Prague (district unspecified) | B | B | Prague office crew, fed from Frankfurt through the tunnel — Milena Horáková dispatching | Cleared 00:41 Prague local, fifteen in and fifteen out. | **$148,925 → guild account** (B: $185,000 × 1.15 × 0.70 Prague) | `EVT-001114` |
+| 6 | 2026-09-29 | GB-58, on his route, Chicago | B | B | Priya Menon's crew, ordinary guild dispatch | Cleared clean inside its window. | **$212,750 → guild account** (B: $185,000 × 1.15) | `EVT-001148`, `EVT-001154` |
+| 7 | 2026-09-29 | GB-59, on his route, Chicago | D | D | A D-Rank pair, ordinary guild dispatch | Cleared clean inside its window. | **$13,225 → guild account** (D: $11,500 × 1.15) | `EVT-001148`, `EVT-001154` |
+| 8 | 2026-09-30 | Winnetka lakefront path, Chicago | B | B | Chicago office — Imani Whitaker dispatching | Cleared before its timer: the office's job end to end, taken as met under the standing rule; no break recorded and no report on file. | **$212,750 → guild account** (B: $185,000 × 1.15) | `OBJ-73` |
+| 9 | 2026-09-30 | Milwaukee, Menomonee Valley | C | C | Chicago crew, 11 in (5 strikers, mender, sensor, miners) | Cleared clean, fast (natural 75, Legendary). | **$51,750 → guild, owed by Milwaukee** (C: $45,000 × 1.15) | `EVT-001188` |
+| 10 | 2026-09-30 | Milwaukee, Jones Island | D | D | Chicago crew, 7 in (5 strikers, mender, sensor; mined its own Gate) | Cleared; one striker's forearm broken, off rotation two days (natural 16, Partial). | **$13,225 → guild, owed by Milwaukee** (D) | `EVT-001188` |
+| 11 | 2026-09-30 | Toledo, the old rail yard on the Maumee | B | B | Crew through the HQ tunnel, 16 in (9 strikers, mender, sensor, miners) | Cleared, no injuries, twelve minutes under plan; its 10-01 21:00 break averted (natural 96, Legendary). The city manager rang HQ to thank the guild. | **$212,750 → guild, owed by Toledo** (B) | `EVT-001188` |
+| 12 | 2026-09-30 | Toledo, near the port | C | C | Crew through the HQ tunnel, 11 in | Cleared clean; a crystal vein cut by the miners (natural 57, Exceptional). | **$51,750 → guild, owed by Toledo** (C) | `EVT-001188` |
+| 13 | 2026-09-30 | Toledo, downtown | D | D | Crew through the HQ tunnel, 7 in | Cleared; one striker concussed with two ribs broken, overnight in hospital (natural 1, Partial). | **$13,225 → guild, owed by Toledo** (D) | `EVT-001188` |
+| 14 | 2026-10-01 | Prague (CGA-named) | A | A | Céline Marchand's Continental A-Rank crew | Cleared before the 13:00 Prague window; 17 in, 17 out, two light injuries. | **$9,607,500 → guild, owed by the CGA** (A: $3,200,000 operation fee + 203 A-Rank crystals × $50,000 + 3 cores × $125,000 = $13,725,000, × 0.70 Prague) | `EVT-001201`, `EVT-001203` |
+| 15 | 2026-10-01 | Evanston, Central Street at the Metra (a break in progress) | C | C | **Alexander Pendragon, solo**; the Chicago branch (Tamsin Okoro's team) arrived second on Region V's emergency contract | Cleared in five exchanges: 12 Stalkers, 2 Hounds, the Tiler. Eighteen civilians unhurt. The branch's first emergency contract. | **$51,750 → guild (Chicago branch), owed by Region V** (C emergency contract; the harvest is inside it) | `EVT-001202` |
+| 16 | 2026-10-01 | GB-63, Sheridan Road, Chicago (carded C) | C (as assessed) | **S, red gate** | **Alexander Pendragon, solo**, held for him by BGM National on his read | Boss (the Kilnfather) dead in one exchange; the seal open, the clear window running to 09:41. | **≥ $6,500,000 → Alexander personally**, on filing ($500,000 flat + $6,000,000 severity, the lakefront terms), plus the haul at auction when taken | `EVT-001205` |
+| 17 | 2026-10-01 | Automatic dispatch — Chicago branch, catchment Region V | E ×2 · D ×2 · C ×1 | as rolled | Chicago branch rota (Imani Whitaker dispatching) | 5 cleared, first automatic day (Section 13.7.5 daily dispatch). | **$86,250 → guild, receivable** (2 × $4,025 + 2 × $13,225 + $51,750) | `EVT-001201` |
+| 18 | 2026-10-01 | Automatic dispatch — Washington branch, catchment Region III | E ×2 · D ×1 · C ×1 | as rolled | Washington branch rota (Verity Prescott dispatching) | 4 cleared, first automatic day. | **$73,025 → guild, receivable** (2 × $4,025 + $13,225 + $51,750) | `EVT-001201` |
+| 19 | 2026-10-01 | Automatic dispatch — Frankfurt branch | E ×2 · D ×2 · C ×1 | as rolled | Frankfurt branch rota (Anselm Kretschmer dispatching) | 5 cleared, first automatic day. | **$86,250 → guild, receivable**, at the Chicago rate pending a German factor | `EVT-001201` |
+| 20 | 2026-10-01 | Automatic dispatch — Paris branch | E ×2 · D ×1 · C ×2 · B ×1 | as rolled | Paris branch rota (Odile Fontaine dispatching) | 6 cleared, first automatic day. | **$337,525 → guild, receivable** (2 × $4,025 + $13,225 + 2 × $51,750 + $212,750), at the Chicago rate pending a French factor | `EVT-001201` |
 
 **Automatic dispatch is one row per branch per day.** From the 2026-10-01 06:00 tick, operational branches run Section 13.7.5's daily dispatch as a rate: counts by Rank, not individual Gates, so each branch-day is one row. Day one (`EVT-001201`): **E 8, D 6, C 5, B 1 — 20 clears** across the four live branches.
 

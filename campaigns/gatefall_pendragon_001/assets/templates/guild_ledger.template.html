@@ -213,6 +213,7 @@
       <div><span class="n" id="statOps">0</span><span class="l">Operational</span></div>
       <div><span class="n" id="statNamed">0</span><span class="l">Named people</span></div>
       <div><span class="n" id="statCleared">0</span><span class="l">Logged clearances</span></div>
+      <div><span class="n" id="statTreasury">&mdash;</span><span class="l">Treasury</span></div>
     </div>
   </header>
 
@@ -243,6 +244,9 @@
 
   <section class="section" aria-labelledby="h-log">
     <div class="sechead"><h2 id="h-log">Gate Clearances</h2><span class="count" id="clearCount"></span><span class="line"></span><span class="warn">Operational log &middot; the chronicle governs</span></div>
+    <div class="sechead"><h2 style="font-size:.95rem">Guild treasury</h2><span class="line"></span></div>
+    <div class="tablewrap"><table id="treasury"></table></div>
+    <div class="sechead" style="margin-top:22px"><h2 style="font-size:.95rem">Clearances</h2><span class="line"></span></div>
     <div class="tablewrap"><table id="cleared"></table></div>
     <div class="sechead" style="margin-top:22px"><h2 style="font-size:.95rem">Open and assigned</h2><span class="count" id="openCount"></span><span class="line"></span></div>
     <div class="tablewrap"><table id="open"></table></div>
@@ -417,6 +421,12 @@ function table(el, rows){
   el.innerHTML = `<thead><tr>${cols.map(c => `<th scope="col">${c}</th>`).join("")}</tr></thead><tbody>${
     rows.map(r => `<tr>${cols.map(c => `<td${/^(#|Date|Rank|Population|Event)$/.test(c) ? ' class="min"' : ""}>${r[c] || ""}</td>`).join("")}</tr>`).join("")}</tbody>`;
 }
+const TREAS = G.treasury || [];
+const posRows = TREAS.filter(r => "Position" in r), moveRows = TREAS.filter(r => "Movement" in r);
+table(document.getElementById("treasury"), posRows.concat([]));
+if (moveRows.length){ const t2 = document.createElement("table"); document.getElementById("treasury").parentNode.appendChild(t2); table(t2, moveRows); }
+const bal = posRows.find(r => /Balance/.test(r.Position));
+if (bal) document.getElementById("statTreasury").innerHTML = bal.USD.replace(/<[^>]+>/g, "").replace(/\.\d\d$/, "");
 table(document.getElementById("cleared"), G.cleared);
 table(document.getElementById("open"), G.open);
 document.getElementById("rules").innerHTML = G.rules.map(r => `<li>${r}</li>`).join("");

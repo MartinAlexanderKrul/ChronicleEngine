@@ -11,6 +11,30 @@
 
 ---
 
+## Save Procedure
+
+**Regenerating is not updating: the guild view is only as current as its two inputs.** Rebuilding
+re-renders whatever `096` and `151` hold, so a save that did not write them publishes a stale guild page
+that looks fresh. Before the rebuild, every `/save` that touches the guild writes both:
+
+- **`096_GUILD_CLEARANCE_LOG.md`, `## Clearances`:** one row for **every** Gate the guild answered in the
+  span: dispatched crews, contract towns, regulator-offered or named Gates, Alexander's own solo clears
+  and emergency responses, and an office's job taken as met under standing preference 13. It also takes
+  **one row per operational branch per day** for Section 13.7.5's automatic dispatch (the counts by Rank
+  from that tick's `guild_ops`), and a row for a Gate still in its clear window, updated when it closes.
+  `## Open and assigned` loses every row that closed and gains every Gate assigned but not yet cleared.
+  New player rulings about how the guild works go under `## Standing rules`.
+- **`151_HUNTER_POPULATION_MODEL.md` Section 7:** every regulator decision in the span. The generator
+  counts an office as operational **only when its regulator cell begins with the plain word `accepted`**,
+  with no bold and no prefix, followed by the date and the regulator. Update the tunnel cell and the
+  section's opening status sentence in the same pass.
+
+Then rebuild, and confirm from the generator's own summary line (`N clearances`, and the operational
+count in the guild page) that the numbers moved as the span says they should. A figure that did not move
+is a write that did not happen.
+
+---
+
 ## Clearances
 
 | # | Date | Gate | Rank | Population | Responded by | Outcome | Payout | Event |

@@ -23,6 +23,10 @@ subjects: []
 
 ---
 
+## Out of play, 2026-09-25 — The Guild's Money
+
+Owner rulings and records, with no Event moved. **Chicago US rates everywhere:** every guild clearance, receivable and payout is priced at Chicago rates wherever the Gate is; Prague's 0.70 no longer applies to the guild, and no German or French factor is needed. **The guild treasury** is tracked in `096_GUILD_CLEARANCE_LOG.md` from its first income: balance $1,764,700, receivable $14,702,500. **Founder spending** is listed beside it: $90,005,000 and 90,000 gold priced (the HQ campus, Kesha's retainer, Trevor's Torso); leases, the tour, the HQ buildout and member salaries are recorded as ordered but not yet priced.
+
 ## Session (`EVT-001195`-`EVT-001206`) — The Fence, Central Street, and the Kilnfather
 
 **The fence (`EVT-001195`-`EVT-001199`).** Seventy-one at the Jiu Valley fence. Andrei Bratu read 211 names at noon; Viorica Bratu put Ionuț's photograph in Alexander's hands; Gheorghe Dincă broke. *Who signed the rotations* is the families' next question. Five young awakened go to Prague Monday; an office in Romania is promised. **Owner rulings in play:** by 2026 the Exclusion held only its alpha; the rotations were mixed crews under high-Rank leads, and the low Ranks died on the line to its ground-wave. `OBJ-77` closed.

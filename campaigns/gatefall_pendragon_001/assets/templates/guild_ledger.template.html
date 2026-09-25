@@ -58,7 +58,7 @@
   h1{font-family:"Chakra Petch",ui-sans-serif,sans-serif; font-weight:700; font-size:clamp(1.7rem,4vw,2.5rem); margin:0; letter-spacing:.01em; text-wrap:balance;}
   .sub{color:var(--text-dim); font-size:.9rem; max-width:60ch; line-height:1.5;}
   .stat-strip{display:flex; gap:22px; flex-wrap:wrap; font-family:"IBM Plex Mono",monospace;}
-  .stat-strip div{display:flex; flex-direction:column; gap:2px; min-width:84px;}
+  .stat-strip div, .stat-strip a{display:flex; flex-direction:column; gap:2px; min-width:84px;}
   .stat-strip .n{font-size:1.25rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums;}
   .stat-strip .l{font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
   @media print{.ledgers{display:none;}}
@@ -178,6 +178,10 @@
   tr:last-child td{border-bottom:0;}
   td code{font-family:"IBM Plex Mono",monospace; font-size:.72rem;}
   td.min{white-space:nowrap;}
+  .statlink{color:inherit; text-decoration:none; cursor:pointer; display:block;}
+  .statlink:hover .l, .statlink:focus-visible .l{text-decoration:underline;}
+  html{scroll-behavior:smooth;}
+  [id^="h-"], #groupsWrap{scroll-margin-top:16px;}
   .rules{margin:12px 0 0; padding-left:20px; font-size:.84rem; line-height:1.55; display:flex; flex-direction:column; gap:6px;}
   .warn{
     font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.06em; text-transform:uppercase;
@@ -207,13 +211,13 @@
       <div class="sub">The Pendragon Guild in one place: its mark, its leadership and board, its hunters by Rank and role, its full operational teams and their commanders, every office with its membership, Rank split, branch status and the people who run it, and every Gate it has answered.</div>
     </div>
     <div class="stat-strip">
-      <div><span class="n" id="statMembers">0</span><span class="l">Members</span></div>
-      <div><span class="n" id="statOffices">0</span><span class="l">Offices</span></div>
-      <div><span class="n" id="statTeams">0</span><span class="l">Full teams</span></div>
-      <div><span class="n" id="statOps">0</span><span class="l">Operational</span></div>
-      <div><span class="n" id="statNamed">0</span><span class="l">Named people</span></div>
-      <div><span class="n" id="statCleared">0</span><span class="l">Logged clearances</span></div>
-      <div><span class="n" id="statTreasury">&mdash;</span><span class="l">Treasury</span></div>
+      <a class="statlink" href="#h-off"><span class="n" id="statMembers">0</span><span class="l">Members</span></a>
+      <a class="statlink" href="#h-off"><span class="n" id="statOffices">0</span><span class="l">Offices</span></a>
+      <a class="statlink" href="#h-off"><span class="n" id="statTeams">0</span><span class="l">Full teams</span></a>
+      <a class="statlink" href="#h-off"><span class="n" id="statOps">0</span><span class="l">Operational</span></a>
+      <a class="statlink" href="#groupsWrap"><span class="n" id="statNamed">0</span><span class="l">Named people</span></a>
+      <a class="statlink" href="#h-log"><span class="n" id="statCleared">0</span><span class="l">Logged clearances</span></a>
+      <a class="statlink" href="#h-treasury"><span class="n" id="statTreasury">&mdash;</span><span class="l">Treasury</span></a>
     </div>
   </header>
 
@@ -243,8 +247,10 @@
   <section class="section" id="groupsWrap"></section>
 
   <section class="section" aria-labelledby="h-treasury">
-    <div class="sechead"><h2 id="h-treasury">Guild Treasury</h2><span class="line"></span><span class="warn">Guild money only &middot; founder spending is in the inventory ledger</span></div>
+    <div class="sechead"><h2 id="h-treasury">Guild Treasury</h2><span class="line"></span><span class="warn">Chicago US rates</span></div>
     <div class="tablewrap"><table id="treasury"></table></div>
+    <div class="sechead" style="margin-top:22px"><h2 id="h-founder" style="font-size:.95rem">Paid by Alexander</h2><span class="line"></span><span class="warn">Out of his own pocket</span></div>
+    <div class="tablewrap"><table id="founder"></table></div>
   </section>
 
   <section class="section" aria-labelledby="h-log">
@@ -424,6 +430,7 @@ function table(el, rows){
     rows.map(r => `<tr>${cols.map(c => `<td${/^(#|Date|Rank|Population|Event)$/.test(c) ? ' class="min"' : ""}>${r[c] || ""}</td>`).join("")}</tr>`).join("")}</tbody>`;
 }
 const TREAS = G.treasury || [];
+table(document.getElementById("founder"), G.founder || []);
 const posRows = TREAS.filter(r => "Position" in r), moveRows = TREAS.filter(r => "Movement" in r);
 table(document.getElementById("treasury"), posRows.concat([]));
 if (moveRows.length){ const t2 = document.createElement("table"); document.getElementById("treasury").parentNode.appendChild(t2); table(t2, moveRows); }

@@ -869,6 +869,7 @@ def build_guild(camp, npcs, protagonist):
     cleared, cleared_notes = md_tables(log, "Clearances")
     open_, open_notes = md_tables(log, "Open and assigned, not yet cleared")
     treasury, _tnotes = md_tables(log, "Guild Treasury")
+    founder, _fnotes = md_tables(log, "Founder Spending")
     rules_m = re.search(r"^## Standing rules this log records\s*$(.*?)(?=^## |\Z)", log, re.M | re.S)
     rules = [mdi(escape(x.strip())) for x in re.findall(r"^\d+\.\s+(.*)$", rules_m.group(1), re.M)] if rules_m else []
     cell = lambda rows: [{k: mdi(escape(v)) for k, v in r.items()} for r in rows or []]
@@ -896,7 +897,7 @@ def build_guild(camp, npcs, protagonist):
         "captureTotal": total.get("Capture %", "").replace("**", "") if total else "",
         "roster": roster, "groups": groups, "strength": strength,
         "cleared": cell(cleared), "clearedNotes": [mdi(escape(x)) for x in cleared_notes],
-        "open": cell(open_), "rules": rules, "treasury": cell(treasury),
+        "open": cell(open_), "rules": rules, "treasury": cell(treasury), "founder": cell(founder or []),
         "logo": logo.group(1) if logo else "", "logoReversed": logo_rev.group(1) if logo_rev else "",
         "design": mdi(escape(design.group(1))) if design else "",
     }, failures

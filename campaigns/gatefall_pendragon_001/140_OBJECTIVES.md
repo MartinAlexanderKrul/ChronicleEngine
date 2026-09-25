@@ -956,7 +956,7 @@ An unrecognized number resolved through a shared BGM directory listing: **Elena 
 
 ## OBJ-73 — The Winnetka Lakefront B-Rank: the Chicago Office's Job
 
-**Status:** open — **owned by the Chicago office, not by Alexander** · **Opened:** 2026-09-26 06:00 tick (`EVT-001103`)
+**Status:** **closed** — cleared by the Chicago office before its timer, taken as met under the standing rule (no break recorded) · **Opened:** 2026-09-26 06:00 tick (`EVT-001103`)
 
 A Gate sited on the lakefront path at the 2026-09-26 tick. Its true Rank rolled 🎲 2 → **B-Rank**, confirmed by Flux Sight from the path (Section 18.9 reads a Gate's Rank from outside, 1.121). Region V was told it is B and that the guild takes it. **It was forwarded to the Chicago office; Imani Whitaker (`ENT-000301`) staffs it.** Roster due 08:00, commander's name and roster to Region V by 10:00.
 
@@ -1147,6 +1147,7 @@ Settled; each is held verbatim in [`sealed/140_OBJECTIVES.vol01.md`](sealed/140_
 - `OBJ-85` - The Guild-Wide Team-Commander Roster (sent `EVT-001180`)
 - `OBJ-77` - The Jiu Valley Families: Thursday at the Fence (met `EVT-001196`-`EVT-001199`)
 - `OBJ-78` - The Prague A-Rank (cleared `EVT-001201`)
+- `OBJ-73` - The Winnetka Lakefront B-Rank (the Chicago office, taken as met)
 
 ## OBJ-87 - Seoul: A Whole Guild
 

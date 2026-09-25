@@ -96,19 +96,19 @@ At every Rank the mender and sensor seats limit the team count, not the strikers
 
 A branch runs as a **rate** (the daily E/D/C/B dispatch, no longer narrated Gate by Gate) once all four of Section 13.7.5's conditions hold: (1) a named dispatching officer, (2) round-the-clock cover, (3) a bench it can legally crew from, and (4) a **regulator's acceptance** of its filed standing relationship. The dispatching officer is the office head (`EVT-001130`). Night officers were named for every office at `EVT-001146`. The bench test is guild-wide over the tunnels, at 4,381 cards and ~243 per office, so every office qualifies for the full daily table once operational.
 
-**As of `EVT-001194`, Chicago's regulator has accepted (Region V, 2026-09-30 15:24, `EVT-001186`) and Chicago runs as a rate from the 2026-10-01 06:00 tick; every other office is missing condition 4 alone.** All eighteen have filed (the original fourteen by `EVT-001146`, the four newer ones on 2026-09-29 at 18:00). No regulator has accepted anything in writing. Anjali Desai has cited **$95,870** in Gates lost to the gap (`EVT-001146`).
+**As of `EVT-001206`, four offices are operational and run as a rate from the 2026-10-01 06:00 tick: Chicago (Region V), Washington (Region III), Frankfurt and Paris (their national authorities).** Every other office is missing condition 4 alone; Kane is calling the US regions and Anjali the national authorities, with status on all fourteen by Friday 10-02 17:00. All eighteen have filed (the original fourteen by `EVT-001146`, the four newer ones on 2026-09-29 at 18:00). No regulator has accepted anything in writing. Anjali Desai has cited **$95,870** in Gates lost to the gap (`EVT-001146`).
 
 | Office | Dispatching officer | 1 | 2 | 3 | 4 — regulator | Tunnel | A-Rank crew based here |
 |---|---|---|---|---|---|---|---|
-| Chicago | Imani Whitaker | yes | yes | yes | **accepted 2026-09-30 15:24** on a modified dispatch annex (`EVT-001184`-`EVT-001186`); operational from the 10-01 06:00 tick | open | Jun-seo Baek (the response pool) |
-| Washington DC | Verity Prescott | yes | yes | yes | filed, not accepted | open | — |
+| Chicago | Imani Whitaker | yes | yes | yes | accepted 2026-09-30 15:24 by BGM Region V, on a modified dispatch annex (`EVT-001184`-`EVT-001186`); operational from the 10-01 06:00 tick | open | Jun-seo Baek (the response pool) |
+| Washington DC | Verity Prescott | yes | yes | yes | accepted 2026-10-01 05:06 by BGM Region III (Philadelphia), on the same annex terms (`EVT-001199`); operational from the 10-01 06:00 tick | open | — |
 | Prague | Milena Horáková | yes | yes | yes | filed with the CGA, not accepted | open | — |
-| Frankfurt | Anselm Kretschmer | yes | yes | yes | filed with its national authority; missed its verbal end-of-day, certified credentials sent, decision owed 10-01 05:00 Chicago (`EVT-001181`) | open | — |
+| Frankfurt | Anselm Kretschmer | yes | yes | yes | accepted 2026-10-01 05:03 by the German national Gate authority (`EVT-001199`); operational from the 10-01 06:00 tick | open | — |
 | New York | Ramona Ostrowski | yes | yes | yes | filed, not accepted | open | Delroy Hutchins |
 | Boston | Callum Doherty | yes | yes | yes | filed, not accepted | open | — |
 | Miami | Cecilia Duarte | yes | yes | yes | filed, not accepted | open | Yolanda Arriaga |
 | Houston | Roy Rawlins | yes | yes | yes | filed, not accepted | open | Mercedes Salinas |
-| Paris | Odile Fontaine | yes | yes | yes | filed with its national authority; missed its verbal end-of-day, certified credentials sent, decision owed 10-01 05:00 Chicago (`EVT-001181`) | open | Céline Marchand (Continental Europe) |
+| Paris | Odile Fontaine | yes | yes | yes | accepted 2026-10-01 05:03 by the French national Gate authority (`EVT-001199`); operational from the 10-01 06:00 tick | open | Céline Marchand (Continental Europe) |
 | Amsterdam | Noor Vandermeulen | yes | yes | yes | filed, not accepted | open | Joost van Rijn |
 | Dallas | Wyatt Delaney | yes | yes | yes | filed, not accepted | open | — |
 | Los Angeles | Diego Villarreal | yes | yes | yes | filed, not accepted | open | — |

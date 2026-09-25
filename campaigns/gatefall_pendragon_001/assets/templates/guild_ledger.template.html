@@ -170,14 +170,44 @@
   .ck.ok{color:var(--accent); background:var(--accent-soft); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent);}
   .ck.no{color:var(--amber); background:var(--amber-soft); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--amber) 45%, transparent);}
 
-  /* log tables */
-  .tablewrap{overflow-x:auto; border:1px solid var(--border); border-radius:10px; background:var(--surface); box-shadow:var(--shadow);}
-  table{border-collapse:collapse; width:100%; font-size:.8rem; line-height:1.45;}
+  /* log tables: one fitted table on desktop, a tap-to-open list on phones */
+  .tablewrap{border:1px solid var(--border); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); overflow:hidden;}
+  .tablewrap + .tablewrap{margin-top:14px;}
+  table{border-collapse:separate; border-spacing:0; width:100%; table-layout:fixed; font-size:.8rem; line-height:1.5;}
   th{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-dim); font-weight:600; text-align:left; background:var(--surface2);}
-  th, td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+  th, td{padding:10px 10px; border-bottom:1px solid var(--border); vertical-align:top; overflow-wrap:anywhere;}
+  tbody tr:nth-child(even) td{background:color-mix(in srgb, var(--surface2) 55%, transparent);}
+  tbody tr:hover td{background:var(--accent-soft);}
   tr:last-child td{border-bottom:0;}
-  td code{font-family:"IBM Plex Mono",monospace; font-size:.72rem;}
-  td.min{white-space:nowrap;}
+  td code{font-family:"IBM Plex Mono",monospace; font-size:.7rem; color:var(--text-dim);}
+  td.num, th.num{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums;}
+  td.key{font-weight:600;}
+  td.payout{color:var(--text-dim); font-size:.74rem;}
+  td.payout strong{display:block; color:var(--text); font-size:.8rem; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; margin-bottom:2px;}
+  table.kv{table-layout:auto;}
+  table.kv td:first-child{color:var(--text-dim); width:40%;}
+  table.kv td:last-child{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums;}
+  table.kv tr.total td{font-weight:600; color:var(--text);}
+
+  /* phones: a compact list, one line per entry, details on tap */
+  .rowlist{display:flex; flex-direction:column;}
+  .rowlist details{border-bottom:1px solid var(--border);}
+  .rowlist details:last-child{border-bottom:0;}
+  .rowlist summary{list-style:none; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:2px 12px; padding:10px 12px; cursor:pointer;}
+  .rowlist summary::-webkit-details-marker{display:none;}
+  .rowlist summary:focus-visible{outline:2px solid var(--accent); outline-offset:-2px;}
+  .rowlist .t{font-weight:600; font-size:.86rem; line-height:1.35; min-width:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+  .rowlist .m{grid-column:1; font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.04em; color:var(--text-dim);}
+  .rowlist .a{grid-row:1 / span 2; grid-column:2; align-self:center; text-align:right; font-family:"IBM Plex Mono",monospace; font-size:.8rem; font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .rowlist .a small{display:block; font-size:.62rem; font-weight:400; color:var(--text-dim);}
+  .rowlist .a.out{color:var(--amber);}
+  .rowlist .a.in{color:var(--accent);}
+  .rowlist details[open] summary{background:var(--accent-soft);}
+  .rowlist dl{margin:0; padding:4px 12px 12px; display:grid; grid-template-columns:5.6rem minmax(0,1fr); gap:6px 10px; font-size:.78rem; line-height:1.45;}
+  .rowlist dt{font-family:"IBM Plex Mono",monospace; font-size:.58rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-dim); padding-top:2px;}
+  .rowlist dd{margin:0; overflow-wrap:anywhere;}
+  .rowlist dd strong{font-family:"IBM Plex Mono",monospace;}
+  .rowlist .hint{padding:6px 12px 8px; font-size:.64rem; color:var(--text-dim); font-family:"IBM Plex Mono",monospace; border-bottom:1px solid var(--border);}
   .statlink{color:inherit; text-decoration:none; cursor:pointer; display:block;}
   .statlink:hover .l, .statlink:focus-visible .l{text-decoration:underline;}
   html{scroll-behavior:smooth;}
@@ -423,17 +453,63 @@ document.getElementById("groupsWrap").innerHTML = GROUPS.map(([k, label]) => [la
   <div class="sechead" style="margin-top:22px"><h2>${label}</h2><span class="count">${xs.length}</span><span class="line"></span></div>
   <div class="people">${xs.map(person).join("")}</div>`).join("");
 
+const PHONE = window.matchMedia ? matchMedia("(max-width:720px)") : {matches:false};
+// Column weights for the desktop table: every table fits its box, nothing scrolls sideways.
+const WEIGHT = {"#":3, "Date":8, "Gate":15, "Rank":7, "Population":7, "Responded by":15, "Outcome":24, "Payout":15, "Event":8,
+                "Movement":36, "In":14, "Out":14, "Balance":16, "Source":14, "Spend":52, "USD":15, "Gold":10,
+                "Assigned to":20, "Objective":10};
+const strip = s => (s || "").replace(/<[^>]+>/g, "").trim();
 function table(el, rows){
   if (!rows.length){ el.innerHTML = `<tr><td>Nothing recorded.</td></tr>`; return; }
   const cols = Object.keys(rows[0]);
-  el.innerHTML = `<thead><tr>${cols.map(c => `<th scope="col">${c}</th>`).join("")}</tr></thead><tbody>${
-    rows.map(r => `<tr>${cols.map(c => `<td${/^(#|Date|Rank|Population|Event)$/.test(c) ? ' class="min"' : ""}>${r[c] || ""}</td>`).join("")}</tr>`).join("")}</tbody>`;
+  const NUM = /^(In|Out|Balance|USD|Gold)$/;
+  const kv = cols.length === 2 && cols[0] === "Position";
+  const KEY = kv ? null : cols.find(c => /^(Gate|Movement|Spend)$/.test(c));
+  const cls = c => [NUM.test(c) ? "num" : "", c === KEY ? "key" : "", c === "Payout" ? "payout" : ""].filter(Boolean).join(" ");
+  const box = el.parentNode;
+  const draw = () => {
+    box.querySelectorAll(".rowlist").forEach(n => n.remove());
+    el.style.display = "";
+    if (PHONE.matches && !kv){
+      // Phone: one compact line per entry -- title, a meta line, the money -- and everything else on tap.
+      const moneyOf = r => {
+        if ("Payout" in r){ const m = (r.Payout || "").match(/<strong>(.*?)<\/strong>/); return {v: strip(m ? m[1] : r.Payout).split(" → ")[0], c: ""}; }
+        if (r.In) return {v: "+" + strip(r.In), c: "in", sub: strip(r.Balance)};
+        if (r.Out) return {v: "−" + strip(r.Out), c: "out", sub: strip(r.Balance)};
+        if ("USD" in r) return {v: strip(r.USD) || strip(r.Gold), c: ""};
+        return {v: "", c: ""};
+      };
+      const metaOf = r => [r["#"] ? "#" + strip(r["#"]) : "", strip(r.Date), r.Rank ? strip(r.Rank) : ""].filter(Boolean).join(" · ");
+      const shown = new Set([KEY, "#", "Date", "Rank", "In", "Out", "Balance"]);
+      const list = document.createElement("div"); list.className = "rowlist";
+      list.innerHTML = `<div class="hint">Tap a line for details</div>` + rows.map(r => {
+        const mo = moneyOf(r), title = r[KEY] || r.Date || "";
+        const rest = cols.filter(c => (!shown.has(c) || (c === KEY && strip(r[c]).length > 60)) && r[c]);
+        return `<details><summary><span class="t">${title}</span><span class="a ${mo.c}">${mo.v}${mo.sub ? `<small>bal ${mo.sub}</small>` : ""}</span><span class="m">${metaOf(r)}</span></summary>${
+          rest.length ? `<dl>${rest.map(c => `<dt>${c}</dt><dd>${r[c]}</dd>`).join("")}</dl>` : ""}</details>`;
+      }).join("");
+      el.style.display = "none"; box.appendChild(list);
+      return;
+    }
+    const total = cols.reduce((s, c) => s + (WEIGHT[c] || 10), 0);
+    el.className = kv ? "kv" : "";
+    el.innerHTML = (kv ? "" : `<colgroup>${cols.map(c => `<col style="width:${((WEIGHT[c] || 10) / total * 100).toFixed(2)}%">`).join("")}</colgroup>`) +
+      `<thead><tr>${cols.map(c => `<th scope="col"${NUM.test(c) ? ' class="num"' : ""}>${c}</th>`).join("")}</tr></thead><tbody>${
+      rows.map(r => `<tr${kv && /Balance/.test(r[cols[0]] || "") ? ' class="total"' : ""}>${
+        cols.map(c => `<td class="${cls(c)}">${r[c] || ""}</td>`).join("")}</tr>`).join("")}</tbody>`;
+  };
+  draw();
+  if (PHONE.addEventListener) PHONE.addEventListener("change", draw);
 }
 const TREAS = G.treasury || [];
-table(document.getElementById("founder"), G.founder || []);
 const posRows = TREAS.filter(r => "Position" in r), moveRows = TREAS.filter(r => "Movement" in r);
-table(document.getElementById("treasury"), posRows.concat([]));
-if (moveRows.length){ const t2 = document.createElement("table"); document.getElementById("treasury").parentNode.appendChild(t2); table(t2, moveRows); }
+table(document.getElementById("treasury"), posRows);
+if (moveRows.length){
+  const wrap = document.createElement("div"); wrap.className = "tablewrap";
+  const t2 = document.createElement("table"); wrap.appendChild(t2);
+  document.getElementById("treasury").parentNode.after(wrap); table(t2, moveRows);
+}
+table(document.getElementById("founder"), G.founder || []);
 const bal = posRows.find(r => /Balance/.test(r.Position));
 if (bal) document.getElementById("statTreasury").innerHTML = bal.USD.replace(/<[^>]+>/g, "").replace(/\.\d\d$/, "");
 table(document.getElementById("cleared"), G.cleared);

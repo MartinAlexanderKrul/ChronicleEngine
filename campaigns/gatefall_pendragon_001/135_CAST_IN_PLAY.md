@@ -100,7 +100,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000221` | the eleven correlation logbooks | evidence — documents | active | the correlated-face monitoring room | — |
 | `ENT-000222` | Laurel Bianchi | BGM Region V liaison | active | BGM Region V Field Office | — |
 | `ENT-000223` | Desmond Farraday | BGM Region V official | active | BGM Region V Field Office | — |
-| `ENT-000233` | Renata Okonkwo-Vance | BGM National official | active | **The Averlon Room, 200 N Michigan Ave, Chicago — 2026-08-27 19… | `REL-000101` |
+| `ENT-000233` | Renata Okonkwo-Vance | BGM National official | active | **BGM National, Washington, DC — in contact by text and phone o… | `REL-000101` |
 | `ENT-000243` | the Rockwell Street bay | private leased storage bay | active | 4417 South Rockwell, second bay from the street end, Chicago. | — |
 | `ENT-000270` | Lakeside Mansion | private residence, owned | active | Winnetka, Illinois — direct Lake Michigan frontage, North Shore… | — |
 | `ENT-000343` | the Detroit HQ campus | guild headquarters campus, purchased | active | Detroit, Michigan — the Pendragon Guild's headquarters campus | — |

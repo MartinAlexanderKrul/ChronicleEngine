@@ -18,6 +18,8 @@ initialization_state: terminal
 # failures. Characters recorded after it carry want, fear, secret, voice and an agenda.
 # Removing this line does not disable the check; it widens it to the whole cast.
 disposition_baseline: ENT-000020
+# Decision 095: Event high-water mark at adoption. Removing it widens coverage, never disables it.
+relationship_standing_baseline: EVT-000013
 latest_restorable_checkpoint: campaigns/prototype_alpha/saves/900_CHECKPOINT_0001
 canonical_entry_point: campaigns/prototype_alpha/180_CURRENT_STATE.md
 player_briefing: campaigns/prototype_alpha/095_PLAYER_BRIEFING.md

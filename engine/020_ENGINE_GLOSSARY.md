@@ -934,6 +934,14 @@ Public Knowledge may still be false, outdated, incomplete, or propagandized.
 
 ---
 
+## Qualities as of
+
+The Event through which a Relationship's Qualities and type were last re-read against its State (`qualities_as_of`). Qualities are the standing now, not the reading at formation, and this field dates that standing.
+
+It may not be older than the latest Event the relationship record cites anywhere. A writer who moves State re-reads the standing in the same write and advances the date. Coverage begins at each campaign's `relationship_standing_baseline`. The gate compares Event numbers only and cannot see whether the re-read happened. Defined in `011_ENGINE_DATA_MODEL.md`, Section 10 (Decision 095).
+
+---
+
 ## Regional Simulation
 
 The mid-detail simulation layer.

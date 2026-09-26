@@ -4605,7 +4605,7 @@ All of it passed every gate. The budget file already records the shape twice (`E
 
 **1. Settled history may be sealed into volumes.** A campaign may move settled material out of a live ledger, verbatim, into `campaigns/<campaign>/sealed/<ledger-stem>.volNN.md`. The material is: a contiguous run of an append-only ledger's sections, a Record block's per-save notes, closed prose sections, and a record field's superseded values. Nothing is paraphrased on the way in and nothing is deleted.
 
-**2. A sealed volume is a canonical ledger the campaign owns** (Rules 13.1). Checkpoints capture it, restoration restores it, and every object in it keeps every obligation it had. An Event in a chronicle volume is still the only definition of its identifier and is still validated wherever its audits point. Retired field values are held in `text` fences, so they define no object.
+**2. A sealed volume is a canonical ledger the campaign owns** (Rules 13.1). Checkpoints capture it, restoration restores it, and every object in it keeps every obligation it had. *Narrowed by Decision 095 (2026-09-26): an object in a sealed volume keeps the schema it was sealed under, and is excluded from the live schema-tag check as a checkpoint is. Every other obligation stands, and nothing else in this decision changes.* An Event in a chronicle volume is still the only definition of its identifier and is still validated wherever its audits point. Retired field values are held in `text` fences, so they define no object.
 
 **3. A sealed volume is byte-frozen from the first checkpoint that captures it.** Before that it is open and the seal pass may write it. After that, correcting anything in it is a new Event in the live ledger. `validate_repository.ps1` compares every live volume against every checkpoint copy, and fails on a difference, a gap in numbering, a stray file, or a volume the latest checkpoint holds that the live tree has lost. There is no checksum: checkpoint immutability (13.2) is the reference, and Rules 13.6's deferral stands.
 
@@ -4634,6 +4634,66 @@ All of it passed every gate. The budget file already records the shape twice (`E
 - **Retire the old checkpoints.** Proposed and declined by owner ruling. Nothing here needs it: play never reads them.
 - **Delete superseded text, as the 2026-08 trims did.** Rejected as the general remedy. It is correct on the evidence, since the chronicle narrates it, but it asks a reader to trust that claim, and twice the deleted text turned out to hold the only copy of something (a channel constraint in `situation`, 13 uncited Events). Sealing keeps the evidence and costs only repository bytes.
 - **A checksum per volume in the manifest.** Rejected. Rules 13.6 defers checksums, and immutable checkpoints already give a byte reference to compare against.
+
+---
+
+## Decision 095 — A Relationship's Standing Is Dated, and the Save Re-reads It
+
+**Status:** Accepted — 2026-09-26. Owned by Version 0.4, milestone 0.4.6. Foundational under Decision 069; admitted after the Version 0.4 Architecture Freeze under Decision 086, whose four conditions are addressed below. The arguable part is the milestone, and it is named.
+**Date:** 2026-09-26
+**Related Sections:** `011_ENGINE_DATA_MODEL.md` Sections 10, 12.3, 12.4.6; `docs/AI_GAMEPLAY_RUNTIME_PROFILE.md` (Gameplay Close step 3, Save Algorithm step 3); `docs/AI_GAMEPLAY_RESIDENT_CORE.md`; Decisions 069, 071, 076, 085, 086, 092, 094; `tools/validate_repository.ps1`, `tools/validate_object_blocks.py`, `tools/test_relationship_standing_contract.ps1`
+
+### Context
+
+**Gameplay Close step 3 already said it.** *"The relationship's `qualities` and `state` fields should advance to reflect it, with updated provenance and event ID."* Data Model Section 10 already said `Qualities` is *what this relationship is*. Nothing read either sentence.
+
+Gatefall: Pendragon at Checkpoint 0178 is the evidence. The owner opened the published NPC ledger and found relationships with the protagonist still describing a first meeting:
+
+- `REL-000107` (Elias Kane) was typed `working-source`, with qualities of *"first direct contact"* and *"flirtation"*. Its `state` recorded a second-in-command, a board seat, and a romantic relationship.
+- `REL-000098` (Iris Halvorsen) was typed `recruitment-candidate`, and its state opened *"Not committed"*. She had been a guild member since `EVT-001073`.
+- `REL-000066` (Owen Callahan) was typed `personal`, with the qualities of the night it formed. It had ended on 2026-09-15.
+- `REL-000110` (Orenne) described a courteous adversary. He was dead.
+
+**36 of the ledger's 46 relationships had a `state` citing a later Event than their own `provenance.source`.** Each save moved `state`, the field it was writing, and did not reopen the one-line standing beside it. All of it passed every gate. The published ledger renders `qualities`, so the stale field was the one a reader saw.
+
+The same session found three Character fields stale on the same pattern: a `location` five weeks behind, a `condition` still describing a July wound, and a `location` waiting on a *"tonight"* a week gone. Save Algorithm step 3 derives its target set from *the owning ledger of each* identifier an Event references. For an NPC that is the NPC ledger, which the save does open. Nothing sends it to the relationship between that NPC and the Bearer, or to the NPC's own presence fields.
+
+### Decision
+
+**1. A Relationship's standing is dated.** Relationship structure gains `qualities_as_of`: the Event through which `Qualities` and `Type` were last re-read against `State`. It may not be older than the latest Event the relationship record cites anywhere — `provenance`, `state`, `history`, `texture` or `moved_by_events`. A writer who moves `State` re-reads the standing in the same write, rewrites it if the standing moved, and advances the date either way.
+
+**2. Coverage is engine-general and prospective, on the Decision 092 shape.** A configured campaign declares `relationship_standing_baseline` in `090_CAMPAIGN_STARTUP.md`, its Event high-water mark at adoption. A relationship is bound once its record cites a later Event. A missing baseline means fully covered, never uncovered.
+
+**3. The check compares Event numbers and nothing else** (Decision 071). `validate_repository.ps1` reads the latest Event cited anywhere in the relationship record and the Event `qualities_as_of` names. **It reads the whole record, not `state` alone.** A save that moves a relationship does not always cite the moving Event in `state`, and a check that read only `state` could never reach those relationships: 32 at adoption. Decision 085 already requires a moved record to reference the Event that moved it, somewhere, and the whole record is where that reference lands. It does not judge whether the standing is right. That judgement is the writer's, and the Save Algorithm is where the writer is sent to make it.
+
+**4. The Save Algorithm derives the Bearer relationship and the presence fields.** Step 3 adds: for every Character an Event references, its Relationship with the Bearer (standing, type and date) and its own `location` and `condition` are opened and re-read. This reaches what point 3 cannot: a presence field has no Event to compare against.
+
+**5. The rule is resident.** That `qualities` is the standing now, and moves with `state`, joins the Resident Core's settlement obligations, so it is in force at every write rather than only at close.
+
+**6. A sealed volume keeps its captured schema.** This is the first schema advance since Decision 094 sealed a volume. A volume is byte-frozen from first capture, so it can be neither retagged nor left failing the live schema-tag check. It is excluded from that one check, as an immutable checkpoint is (Data Model Section 12.3). **This narrows Decision 094 point 2**, *"every object in it keeps every obligation it had"*, by exactly one obligation, and the notice is written on Decision 094.
+
+### Decision 086 conditions
+
+- **(a) Played evidence — met.** Every finding above was measured on the prototype campaign at Checkpoint 0178, and the owner raised it from the published ledger. Nothing here comes from design review.
+- **(b) Classified — met, and recorded as it stands.** Foundational under Decision 069 leg 2, because `011_ENGINE_DATA_MODEL.md` changes. Leg 3 is also met: every configured campaign must satisfy a new invariant. Leg 1 is not met; no section of `010_ENGINE_RULES.md` changes.
+- **(c) Versioned and migrated — met.** Data Model 0.1.7 → 0.1.8, contract at Section 12.4.6. 837 live objects are retagged; the sealed chronicle volume is not.
+- **(d) Revalidated — met.** `tools/test_relationship_standing_contract.ps1` runs eight cases against the real validator and was shown to fail with the check disabled. S-08, an Event cited outside `state` with `state` untouched, was shown to fail under the state-only reading and pass under this one. The regression suite's verdict is in the changelog entry.
+
+**The arguable part is the milestone, not a condition.** Milestone 0.4.6 delivered the rebase and said plainly that 0.6.3's *"ledger-ownership rule that keeps it retired"* was still owed. This is a piece of that rule, for one field class, admitted to 0.4.6 because the same prototype that motivated 0.4.6 produced the evidence. **If the owner rules it belongs to 0.6.3**, this decision moves there. The field is additive, so reverting means dropping `qualities_as_of` and the baselines and retagging back to 0.1.7. No stored standing moves either way.
+
+### Consequences
+
+- **The published ledger stops lagging silently.** A save that moves a relationship's state and not its standing fails the gate, and is told which field to re-read.
+- **Presence fields are reached by procedure only.** Point 4 sends the writer there; nothing checks the result. That is the honest limit for a field with no Event to compare against.
+- **No relationship is out of reach at adoption.** A move with no Event cited anywhere in the record is still invisible to this gate, and Decision 085 already fails it under participation coverage.
+- **0.6.3's ownership rule is still owed** for `agenda`, `texture`, and every other accreting field. This covers one.
+
+### Alternatives Considered
+
+- **Check `provenance.source` against `state` instead of adding a field.** Rejected. Provenance can be advanced without reopening `qualities`, which is exactly how `state` moved while `qualities` stood still. The field has to name the thing whose re-read it attests.
+- **Date the standing against `state` alone.** Implemented first and replaced before landing. It left 32 relationships permanently out of reach, including six of the protagonist's, because their `state` cites no Event. Minting a new Event to give them something to cite was also rejected: an Event is play, and one written so that a gate can see it attests to nothing that happened.
+- **Render `state` in the ledger instead of `qualities`.** Tried and reverted in the same session. It hides the defect from the reader without curing it, and contradicts Section 10, which makes `qualities` the standing.
+- **Backfill every relationship at migration.** Rejected on the Decision 092 precedent. A standing date the writer did not earn by re-reading is a false attestation, and a gate that opens red across four campaigns gets switched off. The relationships actually re-read in the session that raised this were stamped; the rest are backlog.
 
 ---
 

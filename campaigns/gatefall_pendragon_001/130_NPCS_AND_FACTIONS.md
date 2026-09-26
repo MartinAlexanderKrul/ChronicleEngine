@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000077
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001218
@@ -221,7 +221,7 @@ Crew lead and striker; mid-30s, an experienced Gate clearer with three-plus clea
 ```yaml
 id: ENT-000126
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000058
@@ -264,7 +264,7 @@ The crew's sensor: an awakened whose gift reads Gate interiors — layout, popul
 ```yaml
 id: ENT-000127
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000058
@@ -305,7 +305,7 @@ Striker and Tanya's brother; broad-shouldered, blunt-force fighter carrying a re
 ```yaml
 id: ENT-000128
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000058
@@ -345,7 +345,7 @@ The crew's mender — the rare awakened who heals by touch, closing wounds mid-f
 ```yaml
 id: ENT-000129
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000058
@@ -384,7 +384,7 @@ Senior coordinator at the Windy City Hunters Coalition desk; about fifty, solid 
 ```yaml
 id: ENT-000130
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000058
@@ -437,7 +437,7 @@ moved_by_events: "`EVT-000061` `EVT-000062` `EVT-000063` `EVT-000253`"
 ```yaml
 id: REL-000115
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000986
@@ -448,6 +448,7 @@ endpoints:
   - ENT-000130
 type: professional-consulting
 qualities: "Alexander's retained consultant ($5,000 a month) and the working hand behind the guild's build-out, while still the Coalition's coordinator. She designed the five-seat board framework, saw the national charter land (`EVT-001031`), sorted the press requests, and on 2026-09-30 delivered the first US office map two minutes early; she is now working the five new cities (`EVT-001189`). Trusted, direct, and honest about her own price."
+qualities_as_of: EVT-001189
 state: "Live, active. Retainer $5,000/month, drafting the guild-founding framework. **`EVT-001029` (2026-09-18):** told the board's real size for the first time — five, not the three she'd been designing around, with three names she never expected (Blažková, Reinhardt, Aubrac). Genuinely startled, distinct from her usual clipped competence. Framework now being rewritten around five independent seats; flagged a real open legal question (whether a non-US-carded hunter can hold a US guild board seat) and was authorized to hire international hunter-law counsel at double rate for same-day starts, no hesitation on cost. Also engaged seriously with, and had no settled answer for, whether the guild needed to charter in Region V at all or could charter with national scope from founding — undertook to check quietly rather than raise it as a formal ask. **`EVT-001031` (2026-09-20, compressed): the charter lands** — national scope, five seats, Region V's own stamp — inside the accelerated timeline Alexander pushed for.
 
   **`EVT-001056` (2026-09-21, 14:02-14:17): tiering and venue set by text.** Given tier guidance — a combination of confirmed Rank and verified field experience, with staged intake windows rather than any outright rejection ('scale the schedule, not the door'). Flagged the Coalition's overflow hall as likely too small for day-one Chicago against 11,400+ applicants; Alexander authorized booking the Wacker convention center at whatever it costs. She confirmed she'd have it locked within the hour and the overflow release out to the applicant list by end of day.
@@ -464,7 +465,7 @@ Owner and operator of **Ironbound**, the independent gear shop on Milwaukee Aven
 ```yaml
 id: ENT-000131
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000058
@@ -503,7 +504,7 @@ A custom E-Rank/D-Rank gear shop in Chicago's warehouse district, one of three v
 ```yaml
 id: ENT-000132
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000058
@@ -529,7 +530,7 @@ Horizon Guild's affiliated gear outfitter on Michigan Avenue, the third vendor o
 ```yaml
 id: ENT-000133
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000094
@@ -555,7 +556,7 @@ A larger licensed hunter outfitter than Ironbound — a proper storefront with c
 ```yaml
 id: ENT-000140
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000083
@@ -581,7 +582,7 @@ Logistics coordinator for a corporate-adjacent contractor running harvest-hire C
 ```yaml
 id: ENT-000134
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-1-gameplay
@@ -623,7 +624,7 @@ Logistics coordinator for the same corporate-adjacent contractor, running a sepa
 ```yaml
 id: ENT-000135
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-1-gameplay
@@ -669,7 +670,7 @@ Strike captain running point on Ada Reyes's 2026-08-09 C-Rank harvest job. Lean,
 ```yaml
 id: ENT-000178
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000224
@@ -710,7 +711,7 @@ Harvest-element miner on Ada Reyes's 2026-08-09 C-Rank harvest job, alongside Al
 ```yaml
 id: ENT-000179
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000224
@@ -751,7 +752,7 @@ Harvest-element miner on Ada Reyes's 2026-08-09 C-Rank harvest job, alongside Al
 ```yaml
 id: ENT-000180
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000224
@@ -792,7 +793,7 @@ Striker and crew lead running her own undersubscribed five-hunter crew. Not rela
 ```yaml
 id: ENT-000136
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000069
@@ -842,7 +843,7 @@ Striker on Priya Menon's crew; broad-shouldered, economical with words, carries 
 ```yaml
 id: ENT-000137
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000070
@@ -886,7 +887,7 @@ Sensor/reader on Priya Menon's crew; reads a room and its threats before anyone 
 ```yaml
 id: ENT-000138
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000070
@@ -989,7 +990,7 @@ Together since the Ashfield clear. First mutual *I love you* 2026-08-05; *Marry 
 ```yaml
 id: ENT-000139
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 # EVT-001095 (2026-09-25 06:41): texted Alexander first that the Bridgeport crew called and he took a Sunday C-Rank job.
 # EVT-000864 (2026-09-07): the response-window grievance aired and dropped; the shared
@@ -1096,7 +1097,7 @@ Ironline Guild recruiter ("talent side"), met at the Red Line Corridor on 2026-0
 ```yaml
 id: ENT-000146
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000138
@@ -1154,7 +1155,7 @@ Owner of an unnamed pawn-adjacent shop in Chicago's warehouse district, dealing 
 ```yaml
 id: ENT-000147
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 # EVT-000611 (2026-08-22): returned the Bastion Torso free from OBJ-29 partner stock;
 #   sold a mana-null disc and a 400-capacity mana reservoir from his own upgraded stock.
@@ -1226,7 +1227,7 @@ Salvage-and-surplus importer in Chicago's light-industrial belt; Walt Adamik's s
 ```yaml
 id: ENT-000206
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000446
@@ -1269,7 +1270,7 @@ Walt Adamik's granddaughter; Gate-touched three years ago and not helped since. 
 ```yaml
 id: ENT-000207
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000446
@@ -1316,7 +1317,7 @@ A C-Rank striker Wade Bishop pitched for Ironline and who turned it down. Named 
 ```yaml
 id: ENT-000208
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000537
@@ -1357,7 +1358,7 @@ A C-Rank breach/heavy hunter Wade Bishop pitched for Ironline and who turned it 
 ```yaml
 id: ENT-000209
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000537
@@ -1398,7 +1399,7 @@ A confirmed B-Rank Gate site, Brannigan's office's own posting for Friday 2026-0
 ```yaml
 id: ENT-000210
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000537
@@ -1424,7 +1425,7 @@ A decommissioned BGM-surplus regional holding facility outside Denver, bought ou
 ```yaml
 id: ENT-000264
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000900
@@ -1453,7 +1454,7 @@ Owner-operator of Cutting Edge (`ENT-000132`), the custom gear shop in Chicago's
 ```yaml
 id: ENT-000149
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000156
@@ -1489,7 +1490,7 @@ A salvage and scrap dealer two blocks north of the pawn shop in Chicago's wareho
 ```yaml
 id: ENT-000150
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000157
@@ -1517,7 +1518,7 @@ A hunter met at the Windy City Hunters Coalition's training grounds, 2026-08-05.
 ```yaml
 id: ENT-000168
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000167
@@ -1564,7 +1565,7 @@ A narrow bar on Cermak Road, chosen by Dale Pruitt (`ENT-000135`) for exactly on
 ```yaml
 id: ENT-000211
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000614
@@ -1603,7 +1604,7 @@ Defined in `110_WORLD_LEDGER.md` (`REC-000075`). Alexander's freelancer registra
 ```yaml
 id: REL-000063
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000058
@@ -1614,6 +1615,7 @@ endpoints:
   - ENT-000126
 type: former-crew
 qualities: "Closed. Alexander's first Gate crew, for one contract: the Red Line Corridor clear of 2026-07-24 (`EVT-000060`), paid on the standard split. Tanya parted with genuine respect and an open invitation onto her next posting, never taken up."
+qualities_as_of: EVT-000060
 state: "Contract closed 2026-07-24 (`EVT-000060`): full clear, loot declared at exit, standard split applied ($10,000 contract + ≈$2,850 crystal/core value, Alexander's equal-fifth ≈$2,313), filed with Kesha Morrison at the Coalition on 2026-07-25 and pending payment (1–2 business days). The crew dispersed the evening of the clear; Tanya told Alexander he's welcome on the next posting whenever the crew looks at the boards again, expected in a few days. Her regard for him remains genuine respect, reinforced by his sincere goodbye and candor about being new to hunter income."
 history: "Formed at the Coalition case table on 2026-07-23 when Alexander, directed by Kesha Morrison, committed to Voss's undersubscribed crew and signed the standard five-hunter contract (EVT-000058). Proved out on 2026-07-24 in the crew's first Gate together, the Red Line Corridor clear (EVT-000059)."
 ```
@@ -1623,7 +1625,7 @@ history: "Formed at the Coalition case table on 2026-07-23 when Alexander, direc
 ```yaml
 id: REL-000064
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000063
@@ -1634,6 +1636,7 @@ endpoints:
   - ENT-000134
 type: harvest-hire
 qualities: "Lapsed. Two C-Rank harvest jobs for the contractor Ada coordinates, Cicero Scar and the Frozen Gallery (July 2026), taken per job through the Coalition with no standing contract. The Frozen Gallery pool was short of the crystals he sold privately and undeclared, which nobody on her side knows. No contact since."
+qualities_as_of: EVT-000068
 state: "Two jobs completed: the Cicero Scar C-Rank clear (2026-07-25, `EVT-000063`) — 7 declared C-Rank crystals, ≈$5,700 harvest share pending — and the Frozen Gallery C-Rank clear (2026-07-26, complete, `EVT-000065`–`EVT-000068`), staffed by a different site coordinator (Dale, `ENT-000135`) who already knew Alexander by reputation from Ada Reyes. Three vein assignments worked at the Frozen Gallery, the third to genuine exhaustion: **41 C-Rank crystals formally declared**, the highest single total of the crew, yielding a computed harvest-share payout of ≈$24,663 (Section 13.2, `EVT-000068`) — his largest to date. Six separate private sales (98 crystals, four of 12 and two of 50) were sold through the System shop across the job and never entered this contract's declared pool — undeclared theft under the standard support-contract terms, unknown to Dale or the contractor despite two close calls, both deflected. Dale confirmed the contractor occasionally posts B-Rank harvest work and named Alexander a strong future candidate. No standing contract beyond a per-job basis; each job is taken individually through Kesha Morrison at the Coalition desk."
 history: "Formed 2026-07-25 when Kesha Morrison surfaced the Cicero Scar harvest slot after Alexander asked specifically about C-Rank mining work, following the correction that his E-Rank card does not bar harvest work at any Rank (`EVT-000062`)."
 ```
@@ -1643,7 +1646,7 @@ history: "Formed 2026-07-25 when Kesha Morrison surfaced the Cicero Scar harvest
 ```yaml
 id: REL-000065
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000069
@@ -1654,6 +1657,7 @@ endpoints:
   - ENT-000136
 type: former-crew
 qualities: "Outgrown. One contract together, the mis-posted Ashfield clear of 2026-07-28, where field command passed to Alexander by Priya's own ruling while she kept the lead and the signature. He left to found his own crew and has not worked with hers since; the Pendragon Guild flagged her five-hunter crew for priority intake (`EVT-001069`), and she reconnected with him at the Chicago open house."
+qualities_as_of: EVT-001069
 state: |-
   **Complete, and outgrown.** The one contract this tie was made for, the Ashfield clear of 2026-07-28, was mis-posted a full Rank low. Alexander killed the elite and the boss and went from Level 3 to 7. The crew settled it on 2026-07-29 under the agreed "no hero" account (`EVT-000076`-`EVT-000083`): $9,450 each and $14,700 to Priya, and the Longshot [C-Rank] to be sold and split. By Priya's own ruling, field command passed to Alexander while she kept the contractual lead, the signature and the leader's share. He trained the crew once, on 2026-08-02 (`EVT-000116`). He fixed the call form as *who, what, where* and the spend-call rule, and gave each member a personal correction: Priya's late third beat, Julian's missing second answer, Renata's stop-don't-end reflex, and Owen's four-inch flinch.
 
@@ -1667,7 +1671,7 @@ moved_by_events: "`EVT-000080` `EVT-000111` `EVT-000112`"
 ```yaml
 id: REL-000066
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000147
@@ -1678,6 +1682,7 @@ endpoints:
   - ENT-000139
 type: former-partner
 qualities: "Ended 2026-09-15 (`EVT-000999`): no longer together, no longer living together, and Owen did not accept the offered friendship on the day. Since then civil, sparse, and his to open: a proud text after the broadcast, and a real question about running his Bridgeport crew, answered (`EVT-001102`). He still knows the System by name and has watched Alexander rift-step; the break took none of that back."
+qualities_as_of: EVT-001102
 state: |-
   **Ended, 2026-09-15 (`EVT-000999`).** Alexander and Owen are no longer together and no longer live together. The break followed an unresolved fight on 2026-09-11 (`EVT-000918`): Alexander misstated the history of Owen's crew thread (`OBJ-12`), Owen named it plainly and would not be baited, and Alexander left for the Rockwell bay and Denver. He bought the Winnetka house (`ENT-000270`, `EVT-000923`) and the two exchanged one practical text about a charger (`EVT-000957`). At the Rogers Park apartment on 2026-09-15 Alexander proposed "just friends", said he still loved him and that living together had been the wrong call, and declined to give any cause: *"there is no rest of it."* Owen did not accept the friendship on the spot: *"Then I guess that's that... not today, not five minutes after there's no rest of it."* The lease passed to Owen alone, Alexander's deposit share forfeited, and Alexander withdrew every personal holding. No reconciliation was offered or attempted by either of them.
 
@@ -1772,7 +1777,7 @@ Co-owner of Sable & Kern, a small two-partner harvest contractor posting its fir
 ```yaml
 id: ENT-000141
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000093
@@ -1810,7 +1815,7 @@ Co-owner of Sable & Kern; older than Sable, handles logistics, scale, and the nu
 ```yaml
 id: ENT-000142
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000093
@@ -1847,7 +1852,7 @@ Experienced harvester on the Sable & Kern crew; more C-Rank vein experience than
 ```yaml
 id: ENT-000143
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000093
@@ -1890,7 +1895,7 @@ Harvester on the Sable & Kern crew; younger, wiry, worked the second assigned ve
 ```yaml
 id: ENT-000144
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000093
@@ -1929,7 +1934,7 @@ A small, two-partner harvest-hire contractor, its first job posted through the W
 ```yaml
 id: ENT-000145
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000093
@@ -1957,7 +1962,7 @@ canonical_state:
 ```yaml
 id: REL-000067
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000095
@@ -1968,6 +1973,7 @@ endpoints:
   - ENT-000145
 type: harvest-hire
 qualities: "Lapsed. One C-Rank harvest job for Sable & Kern (Halsted Depot, 2026-07-31), with four crystals sold privately and undeclared. Sable said she would likely call on him again; nothing stands between them beyond per-job work."
+qualities_as_of: EVT-000095
 state: "One job completed: the Halsted Depot C-Rank harvest job (2026-07-31, `EVT-000093`, `EVT-000095`) — 6 crystals formally declared to the crew pool (10 mined solo, 4 sold privately and undeclared, unknown to Sable, Kern, Ruth, or Denny), ≈$9,000 even-fourth share pending 1–2 business days. Ruth vouched for Alexander to Sable afterward; Sable indicated she would likely post again and call on him. No standing contract beyond a per-job basis."
 history: "Formed 2026-07-31 when Kesha Morrison referred Alexander to Sable & Kern's first-time Coalition posting after he asked about immediate same-day work."
 ```
@@ -1977,7 +1983,7 @@ history: "Formed 2026-07-31 when Kesha Morrison referred Alexander to Sable & Ke
 ```yaml
 id: REL-000068
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000138
@@ -1988,6 +1994,7 @@ endpoints:
   - ENT-000146
 type: cooperating-source
 qualities: "No longer a recruitment overture. Alexander held Ironline's forged-roster violation, handed the report back, and turned Wade toward Brannigan's chair; Wade is now a BGM cooperating source with immunity on record while BGM runs a formal case against Ironline (`EVT-000836`). Since 2026-09-06, in his own words: *clean sheet starting now, ready to move when there's an actual opening* (`EVT-000853`)."
+qualities_as_of: EVT-000853
 state: |-
   **Resolved into leverage, then into a cooperating source.** The overture itself closed on 2026-08-15 (`EVT-000404`, `OBJ-23`): Alexander works with Ironline only as a contractor, with no salary and no card, and Wade is his point of contact and nominal supervisor of record. What made it more than an overture was the 2026-08-14 B-Rank trial, run with four combat-rated hunters against a legal floor of eight, and the forged roster report Wade disclosed unprompted (`EVT-000345`, `EVT-000384`). Both said out loud what the arrangement was: not a partnership, but a man holding a filed violation over Ironline who wants things Wade can supply, useful exactly as long as that stays true on both sides.
 
@@ -2001,7 +2008,7 @@ moved_by_events: "`EVT-000201` `EVT-000207` `EVT-000284` `EVT-000338` `EVT-00034
 ```yaml
 id: REL-000069
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000447
@@ -2012,6 +2019,7 @@ endpoints:
   - ENT-000147
 type: business-partnership
 qualities: "A funded partnership on stated terms (partners, no undercuts, no secrets): Alexander supplies capital and holds first refusal, Walt runs the floor (`OBJ-29`). Running and honestly accounted. It moved real volume once ($3,581,700 on 2026-09-06), and at the 18-day check Walt conceded the monopoly is a longer build and owned a first-refusal lapse (`EVT-001076`-`EVT-001077`). Both are exposed to felony risk together, and Nadia (`ENT-000207`) sits unspoken under it."
+qualities_as_of: EVT-001077
 state: |-
   **A funded partnership, running and honestly accounted (`OBJ-29`).** Made 2026-08-17 (`EVT-000446`-`EVT-000447`) out of a confrontation rather than a negotiation. Alexander gave a C-Rank Beast Core first, with no price attached. Walt disclosed why he wants high-Rank cores: Nadia (`ENT-000207`). He then handed over Sal Prykowski's name, three days late, and owned the delay as fear. Alexander told him the arrangement as it stood was not working and offered a stake instead of a favour.
 
@@ -2029,7 +2037,7 @@ Harvest-crew lead running a Coalition-posted C-Rank job at a warehouse-district 
 ```yaml
 id: ENT-000148
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000140
@@ -2068,7 +2076,7 @@ situation: "Ran the 2026-08-04 C-Rank harvest posting near the old rail corridor
 ```yaml
 id: REL-000070
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000140
@@ -2079,6 +2087,7 @@ endpoints:
   - ENT-000148
 type: harvest-hire
 qualities: "Lapsed but warm. One C-Rank harvest job (2026-08-04); Denise put him at the top of her list and promised to call him herself when work came in (`EVT-000257`, `EVT-000283`). No job has come since."
+qualities_as_of: EVT-000283
 state: "One completed C-Rank job (2026-08-04): twenty C-Rank crystals declared from Alexander's own marked section, standard 80/20 split, ≈$40,000 net pending Coalition processing (still processing as of 2026-08-05, under 24 hours old). No standing arrangement for future postings. **2026-08-05 follow-up (`EVT-000148`):** Alexander texted asking to be kept in mind for further work; Denise replied briskly that nothing is confirmed yet but two leads might firm up this week, and she'd ping him first if either does. **2026-08-05 in person (`EVT-000167`):** met by chance at the Coalition; her crew is between jobs, chasing paperwork on the last one, nothing to offer today, but she named him near the top of the list for a future job needing 'a hitter who doesn't need his hand held.' **2026-08-10, text follow-up (`EVT-000257`):** nothing on her board today, same as the others he checked, but her reply escalated past the earlier brisk warmth — *'You're still top of my list when something comes in. I'll call you myself, don't wait on a posting.'* The closest thing to an explicit standing promise she has made him yet. **2026-08-11, text follow-up (`EVT-000283`):** still nothing to report — *'still sorting the next one out, promise I haven't forgotten you'* — the same standing promise reaffirmed, no new information."
 history: "Formed 2026-08-04 when Kesha Morrison booked Alexander onto Denise Ferro's Coalition-posted C-Rank harvest job near the old rail corridor."
 ```
@@ -2102,7 +2111,7 @@ history: "Formed 2026-08-04 when Kesha Morrison booked Alexander onto Denise Fer
 ```yaml
 id: ENT-000169
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000177
@@ -2141,7 +2150,7 @@ canonical_state:
 ```yaml
 id: ENT-000170
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000177
@@ -2169,7 +2178,7 @@ An employee of Titan Secure (`ENT-000171`), reached by phone during Alexander's 
 ```yaml
 id: ENT-000172
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000188
@@ -2210,7 +2219,7 @@ Point man on Wade Bishop's borrowed four-hunter D-Rank trial crew, 2026-08-08. N
 ```yaml
 id: ENT-000173
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000201
@@ -2253,7 +2262,7 @@ Support gunner and sensor operator on Wade Bishop's borrowed D-Rank trial crew, 
 ```yaml
 id: ENT-000174
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000201
@@ -2294,7 +2303,7 @@ Perimeter/overwatch element on Wade Bishop's borrowed D-Rank trial crew, 2026-08
 ```yaml
 id: ENT-000175
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000201
@@ -2335,7 +2344,7 @@ Floater/flex striker on Wade Bishop's borrowed D-Rank trial crew, 2026-08-08. Na
 ```yaml
 id: ENT-000176
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000201
@@ -2378,7 +2387,7 @@ Seller at an unnamed surplus/pawn shop in Chicago's warehouse district. The shop
 ```yaml
 id: ENT-000177
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000216
@@ -2418,7 +2427,7 @@ Leasing agent for Lakeline Residential, handling the Rogers Park two-bedroom lis
 ```yaml
 id: ENT-000181
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000256
@@ -2454,7 +2463,7 @@ C-Rank striker, currently without a crew. Kesha Morrison named her on the spot a
 ```yaml
 id: ENT-000182
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000273
@@ -2507,7 +2516,7 @@ Owner-operator of Ferro's Reclamation (`ENT-000150`), the salvage yard two block
 ```yaml
 id: ENT-000183
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000286
@@ -2548,7 +2557,7 @@ C-Rank striker, first candidate for Alexander and Owen's new crew, recruited thr
 ```yaml
 id: ENT-000184
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000289
@@ -2591,7 +2600,7 @@ C-Rank ranged support hunter, named by Wade Bishop as a crew candidate. Not yet 
 ```yaml
 id: ENT-000185
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000293
@@ -2639,7 +2648,7 @@ C-Rank striker/frontline hunter, named by Wade Bishop as a crew candidate. Not y
 ```yaml
 id: ENT-000186
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000293
@@ -2686,7 +2695,7 @@ B-Rank sensor, named by Wade Bishop as a crew candidate — the strongest of the
 ```yaml
 id: ENT-000187
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000293
@@ -2740,7 +2749,7 @@ C-Rank striker, named by Wade Bishop as a crew candidate — youngest and rawest
 ```yaml
 id: ENT-000188
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000293
@@ -2787,7 +2796,7 @@ Unlicensed artificer, working alias only — real quality work, brokered by Walt
 ```yaml
 id: ENT-000189
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000280
@@ -2826,7 +2835,7 @@ canonical_state:
 ```yaml
 id: REL-000087
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000286
@@ -2837,6 +2846,7 @@ endpoints:
   - ENT-000183
 type: informal-informant
 qualities: "A working information trade, one exchange done (`EVT-000286`): the fenced-warehouse findings for a real hunter referral, Marcus Whitlow. Standing terms: he brings warehouse developments, she watches for off-book C-Rank-and-above hunters, and no Coalition names pass either way. No contact since."
+qualities_as_of: EVT-000286
 state: "**Formed 2026-08-11 (`EVT-000286`).** First meeting at Ferro's Reclamation. Alexander traded the complete fenced-warehouse investigation for a real hunter referral (Marcus Whitlow, `ENT-000184`); Petra disclosed her own Coalition compliance ties unprompted as a condition of the trade being honest. Standing arrangement: Alexander brings further warehouse developments, she keeps an ear out for C-Rank-and-above hunters looking for something off-book. No Coalition names passed either direction by explicit agreement. Active, one exchange completed; no further contact yet."
 history: "Formed 2026-08-11 when Alexander visited Ferro's Reclamation on Elias Ward's and Walt Adamik's shared recommendation."
 ```
@@ -2846,7 +2856,7 @@ history: "Formed 2026-08-11 when Alexander visited Ferro's Reclamation on Elias 
 ```yaml
 id: REL-000088
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000289
@@ -2857,6 +2867,7 @@ endpoints:
   - ENT-000184
 type: guild-member
 qualities: "A Pendragon Guild member, folded in with the pre-guild crew (`EVT-001073`). The crew's first recruit (`EVT-000288`): committed on the spot at Dobek's Diner and ran its first real contract, the D-Rank Ashfield of 2026-08-22. Professional and plain; he has never asked how Alexander read him so precisely."
+qualities_as_of: EVT-001073
 state: "**Current: a Pendragon Guild member since the pre-guild crew was folded in (`EVT-001073`).** Prior: **Formed 2026-08-11 (`EVT-000288`-`EVT-000289`).** Cold-called on Petra and Wade Bishop's shared referral; met for lunch at Dobek's Diner the same hour. Alexander read him (Keen Sense, Flux Sight, undisclosed) and pitched the new crew directly; Marcus committed on the spot. A sparring session is agreed in principle, not yet scheduled. **2026-08-18 (`EVT-000483`): texted about a real, filed D-Rank contract for Saturday 2026-08-22 — his first actual Gate with this crew.** Same three words as the diner: 'I'm in.'"
 history: "Formed 2026-08-11 through a same-day double referral from Petra (Ferro's Reclamation) and Wade Bishop (Ironline)."
 ```
@@ -2868,7 +2879,7 @@ B-Rank-contract strike hunter, one of Wade Bishop's borrowed crew for the 2026-0
 ```yaml
 id: ENT-000194
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000340
@@ -2910,7 +2921,7 @@ B-Rank-contract strike hunter, same borrowed crew. Wry, observant, quick to size
 ```yaml
 id: ENT-000195
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000339
@@ -2952,7 +2963,7 @@ B-Rank-contract strike hunter, same borrowed crew. The one Alexander's reads twi
 ```yaml
 id: ENT-000196
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000341
@@ -2995,7 +3006,7 @@ B-Rank-contract strike hunter, same borrowed crew. Quieter than the other three,
 ```yaml
 id: ENT-000197
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000340
@@ -3035,7 +3046,7 @@ canonical_state:
 ```yaml
 id: REL-000090
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000344
@@ -3046,6 +3057,7 @@ endpoints:
   - ENT-000194
 type: crew-recruitment
 qualities: "Still open, never formally committed (`EVT-001073`). He led an element at the first crew training, invented the nod set-signal the crew adopted (`EVT-000455`), and said yes to the 2026-08-22 contract, but was not folded into the Pendragon Guild with the pre-guild crew. Flat, exacting regard, earned rather than given."
+qualities_as_of: EVT-001073
 state: "**Attended and led one of the three elements at the first crew training, 2026-08-17.** Set his three cleanly on both sequencing attempts; when the second attempt stalled on an undefined signal, **invented the nod set-signal on the spot**, adopted as the crew's standing doctrine (`EVT-000455`). On the live unbriefed gap test, his own hold-the-line instinct cost a visible half-second before he moved to close a flank — named by Alexander as a doctrine gap, not a fault in him, and Corbin did not contest the framing (`EVT-000457`). Closed the night with the closest thing to unprompted praise he's given Alexander yet: 'Ninety seconds old and it already found the seam. Not bad for a first cut.' **2026-08-18 (`EVT-000483`), texted about a real D-Rank contract, Saturday.** Answered his own stated condition ('this actually happening, or the talking-about-it version') by confirming the filed contract, then committed: 'Saturday. Confirmed. Good. I'm in.'"
 history: "Formed 2026-08-14, the same day Corbin held the swarm's chokepoint off Alexander's relayed tactical read. First crew training attended and element led 2026-08-17 (`EVT-000453`-`EVT-000458`)."
 ```
@@ -3055,7 +3067,7 @@ history: "Formed 2026-08-14, the same day Corbin held the swarm's chokepoint off
 ```yaml
 id: REL-000091
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000344
@@ -3066,6 +3078,7 @@ endpoints:
   - ENT-000195
 type: crew-recruitment
 qualities: "Still open, never formally committed (`EVT-001073`). Recruited in front of Wade, amused and already sold; he vouched in front of the whole yard for Alexander's account of the B-Rank trial's botched entry (`EVT-000453`) and said yes to the 2026-08-22 contract, but was not folded into the Pendragon Guild with the pre-guild crew."
+qualities_as_of: EVT-001073
 state: "**Attended the first crew training, 2026-08-17, in Corbin's element alongside Reyna Castillo.** Opened the session by corroborating Alexander's own self-critical account of the B-Rank trial's stealth-entry failure without softening it. No individual drill failure attributed to him this session; present throughout, shared a genuine laugh with Dana at the close. **2026-08-18 (`EVT-000483`), texted about the Saturday D-Rank contract.** Replied same as always, unsurprised: 'Figured it'd be soon. Saturday works.'"
 history: "Formed 2026-08-14, the same day Felix pulled Warren Sato clear of a flank and later closed on the boss with Dana. First crew training attended 2026-08-17 (`EVT-000453`-`EVT-000458`)."
 ```
@@ -3075,7 +3088,7 @@ history: "Formed 2026-08-14, the same day Felix pulled Warren Sato clear of a fl
 ```yaml
 id: REL-000092
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000344
@@ -3086,6 +3099,7 @@ endpoints:
   - ENT-000196
 type: crew-recruitment
 qualities: "Still open, never formally committed (`EVT-001073`), and the warmest of the trial hunters: she owes her survival twice to his reads and says so. She closed the flank ahead of her own lead's read at the first training (`EVT-000457`) and said yes to the 2026-08-22 contract, but was not folded into the Pendragon Guild with the pre-guild crew."
+qualities_as_of: EVT-001073
 state: "Formed 2026-08-14, no hesitation on her side ('After today? Absolutely.'). **Attended the first crew training, 2026-08-17, in Corbin's element.** Reacted first and fastest on the live gap-coverage test — 'Didn't feel like a point. Felt like the gap was there and I was closer to done thinking about it.' Shared a genuine laugh with Felix at the session's close. **2026-08-18 (`EVT-000483`), texted about the Saturday D-Rank contract.** Immediate, no hesitation, same pattern as her recruitment: 'After today? Absolutely. Tell me where and when.'"
 history: "Formed 2026-08-14, the same day Dana dodged the boss's opening sweep and later landed its killing blow with Felix. First crew training attended 2026-08-17 (`EVT-000453`-`EVT-000458`)."
 ```
@@ -3095,7 +3109,7 @@ history: "Formed 2026-08-14, the same day Dana dodged the boss's opening sweep a
 ```yaml
 id: REL-000093
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000344
@@ -3106,6 +3120,7 @@ endpoints:
   - ENT-000197
 type: crew-recruitment
 qualities: "Never formally committed; the quietest of the trial hunters. He held silent under the live gap test exactly as told (`EVT-000457`) and was thanked for it in front of everyone. At the Chicago recruitment open house he engaged for real for the first time since, persuaded rather than pressured."
+qualities_as_of: EVT-000483
 state: "Formed 2026-08-14. **Attended the first crew training, 2026-08-17, positioned at Grant's element edge.** Held silently under the live unbriefed gap test exactly as instructed — no shout, no bolt, no self-rescue — until Dana reached him. Publicly and specifically thanked by Alexander afterward for doing the one thing nobody could verify in advance would work; answered with the smallest possible nod, the most visible reaction he's given all campaign. **2026-08-18 (`EVT-000483`), texted about the Saturday D-Rank contract.** Same brevity as always: 'I'm in.'"
 history: "Formed 2026-08-14, the same day Warren was flanked and rescued by Felix during the swarm fight. First crew training attended 2026-08-17 (`EVT-000453`-`EVT-000458`), the closing live test built directly around him."
 ```
@@ -3119,7 +3134,7 @@ Private investigator, Walt Adamik's referral. Does discreet skip-tracing and bac
 ```yaml
 id: ENT-000198
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000373
@@ -3168,7 +3183,7 @@ Holds the lease on a decommissioned freight yard off Ashland, rents it by the da
 ```yaml
 id: ENT-000199
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000373
@@ -3207,7 +3222,7 @@ A decommissioned freight yard, leased and rented out by the day by Duane (`ENT-0
 ```yaml
 id: ENT-000200
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000373
@@ -3234,7 +3249,7 @@ A narrow, long-established garden and feed storefront on Glenwood Avenue in Roge
 ```yaml
 id: ENT-000201
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000379
@@ -3261,7 +3276,7 @@ A narrow Scandinavian-American diner three blocks west of Edgewater Hospital. Ow
 ```yaml
 id: ENT-000202
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000382
@@ -3288,7 +3303,7 @@ An independent licensed artificer who does identification and commission work of
 ```yaml
 id: ENT-000203
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000812
@@ -3348,7 +3363,7 @@ canonical_state:
 ```yaml
 id: REL-000094
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000373
@@ -3359,6 +3374,7 @@ endpoints:
   - ENT-000198
 type: professional-services
 qualities: "A standing mandate: off the invoice where she chooses, never off the law (`EVT-000580`, `EVT-000583`). Professional with an edge. She took one cold correction from him and conceded it, and her one fixed limit is the Meridian fence, which he has never asked her to move. Her shell-company work on the Marnie unit and on Ironline's Region V office is delivered."
+qualities_as_of: EVT-000706
 state: |-
   **A standing mandate, off the invoice where she chooses and never off the law (from 2026-08-21, `EVT-000580`, `EVT-000583`).** Alexander asked, with no obligations attached, whether she would work off record. She separated *off the invoice* (yes, and she wants to) from *off the law* (no), named the Walt Adamik referral as his exposure to manage, and recommended finding the people behind the shells. He corrected her coldly for pre-warning a man who had not pressed, and she conceded it entirely: *"that's not you misreading me, that's me answering a question you didn't ask."* Her mandate went from per-task to standing. Her one fixed limit is the Meridian fence, which he has never asked her to move.
 
@@ -3374,7 +3390,7 @@ Independent B-Rank strike captain running her own eight-hunter crew-for-hire. Ra
 ```yaml
 id: ENT-000204
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000415
@@ -3421,7 +3437,7 @@ The second harvest cutter on Dale Pruitt's 2026-08-16 B-Rank job. Named, present
 ```yaml
 id: ENT-000205
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000415
@@ -3457,7 +3473,7 @@ canonical_state:
 ```yaml
 id: REL-000097
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000415
@@ -3468,6 +3484,7 @@ endpoints:
   - ENT-000204
 type: professional-acquaintance
 qualities: "One job together (2026-08-16) and no contact since; no numbers exchanged, and the channel runs through Dale Pruitt's contractor. Correct and thin: no warmth, no friction, nothing tested either way."
+qualities_as_of: EVT-000415
 state: "**Worked one job together, 2026-08-16, with no contact since.** She has not seen him fight and holds no opinion on his combat capability; he has seen her run a nine-strong line against a B-Rank boss cleanly and competently, from thirty meters away and by sound. No further work is arranged, and the channel between them runs entirely through Dale Pruitt's contractor rather than directly — no numbers exchanged."
 history: "Formed 2026-08-16 (`EVT-000415`) at the staging lot for Dale Pruitt's confirmed B-Rank harvest job, the first correctly-staffed B-Rank Gate Alexander has worked."
 ```
@@ -3477,7 +3494,7 @@ history: "Formed 2026-08-16 (`EVT-000415`) at the staging lot for Dale Pruitt's 
 ```yaml
 id: REL-000098
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000456
@@ -3488,6 +3505,7 @@ endpoints:
   - ENT-000187
 type: guild-member
 qualities: "A Pendragon Guild member, folded in with the pre-guild crew (`EVT-001073`), after committing unconditionally on her supervised D-Rank Ashfield run of 2026-08-22 (`EVT-000606`). The crew's stop-call and gap read are hers by standing authority; she told him it is the first crew in three years to use her read as more than a formality."
+qualities_as_of: EVT-001073
 state: "**Current: committed unconditionally on 2026-08-22 (`EVT-000606`), and a Pendragon Guild member since the pre-guild crew was folded in (`EVT-001073`).** Prior: **Not committed; the supervised low-stakes run promised at her recruitment is now scheduled — the last open condition has a date.** Her stop-call fired live for the first time on 2026-08-17 and held without hesitation or second-guessing; her structural read of the crew's gap-coverage defect was immediate and unprompted, and she was given standing authority over it on the spot. Told Alexander directly that this is the first time in three years a crew has used her read as more than a formality. **2026-08-18: the run itself booked for Saturday 2026-08-22**, confirmed D-Rank Ashfield, ten-slot roster. Replied with unprompted thanks for it actually being booked rather than left to drift."
 history: "Named by Wade Bishop 2026-08-11 (`EVT-000293`); met in person 2026-08-12 (`EVT-000308`), negotiating her absolute stop-call and a training-before-blind-run condition before agreeing to attend. Attended the first crew training 2026-08-17 and was given a second standing authority — gap-coverage calls binding on any lead — in the same session (`EVT-000454`-`EVT-000458`)."
 ```
@@ -3497,7 +3515,7 @@ history: "Named by Wade Bishop 2026-08-11 (`EVT-000293`); met in person 2026-08-
 ```yaml
 id: REL-000095
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000552
@@ -3508,6 +3526,7 @@ endpoints:
   - ENT-000182
 type: guild-member
 qualities: "A Pendragon Guild member, folded in with the pre-guild crew (`EVT-001073`), after a considered yes a day late on 2026-08-20 (`EVT-000552`). Professional and candid: she trusts his manner more than his answers, and his own early 'not sure about her' read was never voiced to her."
+qualities_as_of: EVT-001073
 state: "**Current: a Pendragon Guild member since the pre-guild crew was folded in (`EVT-001073`).** Prior: **Answered, 2026-08-20 05:52, by text — one day late, and she said why: wanted to sit with it properly rather than give a fast answer she'd have to walk back.** 'I'm in. Corbin and Felix both good with it too, for what it's worth.' The first unambiguous yes since Kesha first said the name to him; resolved by the world's first daily tick (`EVT-000552`) rather than deferred further. Nothing scheduled yet beyond the next training session. **Prior:** Attended the first crew training, 2026-08-17, 18:00, as an active evaluator, embedded in Corbin's element rather than watching from outside (`EVT-000453`-`EVT-000458`). The 'sunup' scheduling confusion was resolved directly by text before the session (`EVT-000451`) — she held the correct 18:00 hour from Alexander himself, not secondhand. Watched Alexander name his own botched-entry failure unprompted and confirmed by Felix as the direct answer to the exact standard she spent Saturday's meeting pressing for; visibly registered it. Said little during the drills themselves, watching rather than participating in judgment. **Closed the night with unprompted warmth for the first time in the relationship** — 'good session, I mean that.' **Still unresolved on Alexander's side:** his 'not sure about her' read, never voiced to her directly."
 history: "Named by Kesha Morrison 2026-08-11 (`EVT-000273`) as the first real candidate for the crew; contacted by text the same evening (`EVT-000298`); declined a faster solo meeting in favour of waiting five days to see both crew leads together (`EVT-000306`). First met in person 2026-08-15 at the Loyola lakefront (`EVT-000409`), a location chosen deliberately over a café, which she approved of unprompted. Attended and evaluated the first crew training 2026-08-17 (`EVT-000453`-`EVT-000458`); accepted 2026-08-20 (`EVT-000552`)."
 ```
@@ -3517,7 +3536,7 @@ history: "Named by Kesha Morrison 2026-08-11 (`EVT-000273`) as the first real ca
 ```yaml
 id: REL-000096
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000410
@@ -3528,6 +3547,7 @@ endpoints:
   - ENT-000203
 type: professional-services
 qualities: "Dormant since 2026-08-29 (`EVT-000812`), intact and unused. His artificer teacher (crystal-seating, infusion, unmaking, her first fusion) on her own terms: identification is solo work, anything toward his goal is joint, teaching is $200 an hour. She holds only the C-Rank crystal project stock; contact is direct, not through Wade."
+qualities_as_of: EVT-000812
 state: |-
   **Dormant since 2026-08-29 (`EVT-000812`): her bench cleared before the National tour, the working relationship intact and unused.** The Dormant Core and the frost-fused plating came back to Alexander. The two Warded Vambraces [A-Rank] she had taken in to fuse left her custody and were later consumed as the donor in the Warlord's Loop fusion. Only the standing Mana Crystal [C-Rank] x3 project stock is still with her. The last message between them, on 2026-08-27, was hers: *"Understood. Tomorrow, 19:30. - P"* (`EVT-000768`).
 
@@ -3543,7 +3563,7 @@ Containment monitor at the fenced warehouse (`ENT-000166`), employed through Mer
 ```yaml
 id: ENT-000212
 canonical_record: REC-000075
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000647
@@ -3587,7 +3607,7 @@ canonical_state:
 ```yaml
 id: REL-000099
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000647
@@ -3598,6 +3618,7 @@ endpoints:
   - ENT-000212
 type: unexpected-alliance
 qualities: "Met once, for eleven minutes on 2026-08-22 (`EVT-000647`-`EVT-000649`). He told her the Gate's real Rank, took the containment plant, which she does not know he did, and carried her out by rift-step. Her last words were a warning, not thanks. Left at the fence line; no contact since."
+qualities_as_of: EVT-000652
 state: "**Met once, 2026-08-22 21:03-21:10** (`EVT-000647`-`EVT-000649`), inside the containment room and then outside the fence. He appeared in front of her by Flash Step, told her the truth about the Rank, asked what the plant was and why she was sitting there, and received her full unlogged duty-cycle case in return. He then removed the containment plant into his dimensional inventory — **destroying the site's only suppression, which she does not know he did** — accepted an Urgent quest premised on her survival, and carried her out by passenger rift-step without asking. **Her last words to him were a warning, not a thank-you:** *'No entry. That's the only thing underlined in the whole file. I'm not telling you not to. I'm telling you it's the one line somebody thought was worth underlining, and in eleven weeks nobody ever told me why.'* He stepped back inside anyway. **She was left at the fence line and has not been contacted since.**"
 texture: "She reaches for an instrument before she reaches for a person — it is the first thing she did when he materialised, and the last thing she looked at before she gave up her secret. The register between them is **readings, not reassurance**: he answered her in single words (*'A Rank'*, *'No'*) and she took each one as data rather than comfort, which is the only reason the exchange worked at all. Neither has raised their voice. Neither has offered the other anything they were not asked for, except the two facts that mattered."
 history: "**No prior contact of any kind.** She is not a referral, not a contact of Walt Adamik's or Wade Bishop's, and not connected to any thread Alexander was already running — she is simply the person who happened to be in the room. **She is also, as of `EVT-000652`, the closest thing to a first-hand route to the fenced warehouse's owner or operator that this campaign has ever produced**, which is the remaining half of the `warehouse-meridian-ownership` Hidden quest's completion condition. He has not asked her who she files to."
@@ -3607,7 +3628,7 @@ history: "**No prior contact of any kind.** She is not a referral, not a contact
 ```yaml
 id: REL-000100
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000724
@@ -3618,6 +3639,7 @@ endpoints:
   - ENT-000224
 type: working-source
 qualities: "One call (2026-08-25, `EVT-000724`): she held the story to the end of that week on his straight ask, and promised unprompted to warn him if a competing source surfaced first. Warmer than a transaction; they have never met in person and there has been no contact since."
+qualities_as_of: EVT-000724
 state: "**One call, 2026-08-25 ~13:15** (`EVT-000724`). He delivered Marguerite's three drafted lines verbatim, answered her direct challenge on 'voluntary' plainly (*'It was my idea'*), and asked her to hold the story a few days. She agreed on the spot — held to end of week (2026-08-29) — and offered a reciprocal courtesy unprompted: she will warn him before running anything if a competing source surfaces first. He owes Marguerite a call back on how it went; not yet made."
 texture: "Business-first on both sides, no small talk attempted or wanted. She reads a request back to him in full before accepting it, the same care she uses reading a callback number once and trusting it lands. He gives her exactly what was prepared, no more, no less — the discipline of a man following someone else's script and following it well."
 history: "**No prior contact.** She reached him first, sixteen-plus hours before this call, through a voicemail (`EVT-000691`) after a Region V leak. Marguerite (`ENT-000225`) is the actual author of what he told her; this relationship is between Alexander and Vance directly, not routed through Marguerite going forward."
@@ -3629,7 +3651,7 @@ Containment specialist for the operation behind Meridian Cold Storage LLC. B-Ran
 ```yaml
 id: ENT-000213
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000659
@@ -3675,7 +3697,7 @@ The man who came with her. **Unawakened** - Flux Sight returned nothing at all o
 ```yaml
 id: ENT-000214
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000659
@@ -3720,7 +3742,7 @@ A deliberate, structured instrument anchored to the slab at the heart of the Cic
 ```yaml
 id: ENT-000215
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000666
@@ -3752,7 +3774,7 @@ The source of the Cicero Scar's periodic mana spikes, reached in person on 2026-
 ```yaml
 id: ENT-000216
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000667
@@ -3786,7 +3808,7 @@ The space on the other side of `ENT-000216`'s leading face. Entered on 2026-08-2
 ```yaml
 id: ENT-000217
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000668
@@ -3818,7 +3840,7 @@ The flooded stonework chamber reached by crossing `ENT-000217`'s second face on 
 ```yaml
 id: ENT-000218
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000673
@@ -3849,7 +3871,7 @@ An unbranded, human-built facility behind `ENT-000218`'s third door. Entered und
 ```yaml
 id: ENT-000219
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000675
@@ -3881,7 +3903,7 @@ Recovered mid-transit from `ENT-000218`'s wall, 2026-08-23 (`EVT-000674`). Neith
 ```yaml
 id: ENT-000220
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000674
@@ -3911,7 +3933,7 @@ Bound paper records taken from `ENT-000219`'s concealed shelf, 2026-08-23 (`EVT-
 ```yaml
 id: ENT-000221
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000676
@@ -3941,7 +3963,7 @@ BGM Region V Deputy Director's office. Met 2026-08-23 (`EVT-000684`), minutes af
 ```yaml
 id: ENT-000222
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000684
@@ -3977,7 +3999,7 @@ BGM Region V Assistant Director, External Coordination. Met 2026-08-23 (`EVT-000
 ```yaml
 id: ENT-000223
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000684
@@ -4015,7 +4037,7 @@ BGM National, S-Rank Liaison Office. First contact 2026-08-27 (`EVT-000787`), by
 ```yaml
 id: ENT-000233
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000810
@@ -4058,7 +4080,7 @@ canonical_state:
 ```yaml
 id: REL-000101
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000810
@@ -4069,6 +4091,7 @@ endpoints:
   - ENT-000233
 type: federal-liaison
 qualities: "His BGM National liaison, and an ally who has taken risks for him in writing. The standing agreement (`EVT-000801`: incident response, $500,000 flat plus severity, solo loot his against a same-day filing) runs every clearance. She filed her own reasoning with her name on it for Incident Review (`EVT-001057`), which withdrew its interview request on 2026-09-30 (`EVT-001203`). On 2026-10-01 she held GB-63 at National on his read and countersigned its clearance (`EVT-001209`)."
+qualities_as_of: EVT-001209
 state: |-
   **A signed standing agreement, and an ally who took a risk for him in writing (as of 2026-09-21).** The agreement, signed 2026-08-27 at The Averlon Room (`EVT-000801`): National incident response, $500,000 flat plus an uncapped severity bonus, a direct line, and solo loot his outright against a same-day filing. The solo-clear term was written down explicitly at the player's request on 2026-09-18 (`EVT-001025`) after she briefly defaulted to a full strike team for a NAMED A-Rank. Filings under it include Argyle Street, which carries a 10-crystal overstatement she does not know about (`EVT-000803`), Newark (`EVT-000810`), Pilsen (`OBJ-59`) and the Winnetka lakefront S. She routed Winnetka on his word, put a National hold on it and sent a drone that confirmed S, and paid $500,000 plus $6,000,000 severity (*"I'm not making you chase it"*) before he went public (`EVT-001048`, `EVT-001050`, `EVT-001053`).
 
@@ -4084,7 +4107,7 @@ A private leased storage bay, 4417 South Rockwell, second bay from the street en
 ```yaml
 id: ENT-000243
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000798
@@ -4116,7 +4139,7 @@ A private lakefront estate on Lake Michigan, Winnetka — cedar-shingled, direct
 ```yaml
 id: ENT-000270
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000923
@@ -4148,7 +4171,7 @@ The Pendragon Guild's headquarters in Detroit: a converted logistics campus, bri
 ```yaml
 id: ENT-000343
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001073
@@ -4196,7 +4219,7 @@ A high-end custom furniture and interior-build firm, Chicago — solid-wood cons
 ```yaml
 id: ENT-000271
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000925
@@ -4224,7 +4247,7 @@ An unidentified, unranked artifact — dark worked material, faintly warm to the
 ```yaml
 id: ENT-000272
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000935
@@ -4256,7 +4279,7 @@ Runs three storage bays off a light-industrial yard near the rail cut, Chicago �
 ```yaml
 id: ENT-000244
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000798
@@ -4294,7 +4317,7 @@ A licensed Chicago commercial security contractor, no awakened angle — server 
 ```yaml
 id: ENT-000245
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000799
@@ -4322,7 +4345,7 @@ An unconfirmed Gate inside a closed self-storage facility, 5140 N Argyle, Uptown
 ```yaml
 id: ENT-000246
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: completed
 provenance:
   source: EVT-000803
@@ -4353,7 +4376,7 @@ Independent artificer and fusion specialist, Boston. A-Rank by Alexander's own r
 ```yaml
 id: ENT-000247
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000813
@@ -4393,7 +4416,7 @@ canonical_state:
 ```yaml
 id: REL-000102
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000813
@@ -4404,6 +4427,7 @@ endpoints:
   - ENT-000247
 type: working-source
 qualities: "A standing artificer relationship on real money and real material, with Alexander's anchor in the workshop. Corwin holds the Heartwood core-mass at $500 a day and read it as alive on a slow timescale; the Mana-storage cell's failure and the Heartwood's pulse are logged together as one converging phenomenon (`EVT-000869`)."
+qualities_as_of: EVT-000869
 state: "**Active, standing.** Holds the Heartwood core-mass ($500/day), plus a homebrew Mana-storage cell and one S-Rank Beast Core mid a five-day re-coring attempt (`OBJ-53`, due 2026-09-08). Total spent to date: $13,550 in fees plus 1 A-Rank Beast Core and 6 S-Rank Beast Cores consumed as material, against three successful fusions/forges, one outright failure, and one re-coring result pending. **New this span (`EVT-000869`):** the two curves — the cell's failure mode and the Heartwood's pulse — confirmed as one converging phenomenon, now logged together. Alexander holds a standing anchor in the workshop."
 texture: "Businesslike, material-first — the relationship formed around what he could do with what Alexander brought him rather than around personal rapport. Widened this span for the second time: he asked directly for a fast way to reach Alexander if either curve hits zero, and got one, without being told what it actually was."
 history: "Reached by unprompted text during the 2026-08-28 world tick (`EVT-000804`); met in person and worked with the same day/next (`EVT-000812`-`EVT-000813`). **2026-09-03 (`EVT-000829`):** Quickknife collected, Ascension discussed and declined, a re-coring attempt commissioned on the Mana-storage cell. **2026-09-07 (`EVT-000869`):** an early diagnostic read confirmed the cell's failure mode and the Heartwood's pulse are the same shrinking-interval phenomenon; a standing anchor set."
@@ -4416,7 +4440,7 @@ Trade-beat reporter for the *Chicago Ledger*, occasionally stringing for the wir
 ```yaml
 id: ENT-000224
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000691
@@ -4463,7 +4487,7 @@ A media liaison who handles press contact for hunters rather than for institutio
 ```yaml
 id: ENT-000225
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000692
@@ -4502,7 +4526,7 @@ Ranking Corps night-desk clerk, Czech Gate Administration headquarters, central 
 ```yaml
 id: ENT-000257
 canonical_record: REC-000081
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000830
@@ -4546,7 +4570,7 @@ A CONSULT-controlled artificer, tailed from Loomis Street's fourth floor to a st
 ```yaml
 id: ENT-000226
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000909
@@ -4601,7 +4625,7 @@ canonical_state:
 ```yaml
 id: ENT-000227
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000709
@@ -4629,7 +4653,7 @@ canonical_state:
 ```yaml
 id: ENT-000228
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000709
@@ -4664,7 +4688,7 @@ canonical_state:
 ```yaml
 id: ENT-000229
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000707
@@ -4700,7 +4724,7 @@ canonical_state:
 ```yaml
 id: ENT-000230
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000708
@@ -4727,7 +4751,7 @@ C-Rank striker, Ironline contract crew. One of two survivors of the GB-14 clear 
 ```yaml
 id: ENT-000231
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000740
@@ -4766,7 +4790,7 @@ C-Rank striker, Ironline contract crew. The second GB-14 survivor. He was semi-c
 ```yaml
 id: ENT-000232
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000740
@@ -4805,7 +4829,7 @@ Real-estate broker sourcing private industrial/warehouse space for Alexander —
 ```yaml
 id: ENT-000248
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000808
@@ -4842,7 +4866,7 @@ Praetorian Security engineer who appeared during the Milwaukee property thread �
 ```yaml
 id: ENT-000249
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000808
@@ -4879,7 +4903,7 @@ BGM Region II coordinator, New York. Met in person setting the fifteenth rift an
 ```yaml
 id: ENT-000250
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000809
@@ -4919,7 +4943,7 @@ canonical_state:
 ```yaml
 id: REL-000103
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000810
@@ -4930,6 +4954,7 @@ endpoints:
   - ENT-000250
 type: working-source
 qualities: "Closed and square. The Newark Gate, cleared at Silas's assignment, earned a favour (`OBJ-46`), spent on 2026-09-01 on the introduction to Sorcha Bellweather (`EVT-000822`). Nothing owed either way."
+qualities_as_of: EVT-000822
 state: "**`OBJ-46` spent, closed.** Silas's favor was called in 2026-09-01 (`EVT-000822`) — an introduction to Sorcha Bellweather, BGM National containment doctrine, in response to Alexander asking about building genuine S-Rank containment capacity. Silas made the connection within his own promised day. Nothing further owed."
 texture: "Brisk and procedural — a regional coordinator meeting a National-endorsed asset for the first time and putting him straight to work."
 history: "Formed 2026-08-28 (`EVT-000809`) at the New York Region II office, the same visit as the fifteenth anchor."
@@ -4942,7 +4967,7 @@ Unlicensed submerged-salvage dealer, works out of a lockup near the Houston ship
 ```yaml
 id: ENT-000251
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000817
@@ -4981,7 +5006,7 @@ BGM Region VI field liaison, Houston. Met on the National tour, 2026-08-30.
 ```yaml
 id: ENT-000252
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000817
@@ -5018,7 +5043,7 @@ BGM Region IV field liaison, Miami. Met on the National tour, 2026-08-30.
 ```yaml
 id: ENT-000253
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000817
@@ -5057,7 +5082,7 @@ BGM National, containment doctrine & infrastructure. Referred by Silas Grech; me
 ```yaml
 id: ENT-000254
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000825
@@ -5097,7 +5122,7 @@ BGM Dallas field liaison. Met on the National tour, 2026-08-30.
 ```yaml
 id: ENT-000255
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000817
@@ -5134,7 +5159,7 @@ BGM Los Angeles field liaison. Met on the National tour, 2026-08-30.
 ```yaml
 id: ENT-000256
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000817
@@ -5171,7 +5196,7 @@ canonical_state:
 ```yaml
 id: REL-000104
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000817
@@ -5182,6 +5207,7 @@ endpoints:
   - ENT-000251
 type: working-source
 qualities: "A first-look arrangement (`OBJ-48`): Cormac calls Alexander first on any real find before shopping it to licensed buyers, and Alexander pays market or better. It came as a bonus for answering Nwosu's mender-group ask."
+qualities_as_of: EVT-000817
 state: "**`OBJ-48` open.** First-look standing arrangement: Cormac calls Alexander first on any real find, before shopping it to licensed buyers; Alexander still pays market or better. No BGM attention on Cormac's methods in return. Closed channel: Cormac has no channel to Renata's or Nwosu's names, or to Alexander's onward itinerary."
 texture: "Wary professional respect, earned rather than assumed."
 history: "Formed 2026-08-30 (`EVT-000817`) at Cormac's lockup near the Houston ship channel."
@@ -5192,7 +5218,7 @@ history: "Formed 2026-08-30 (`EVT-000817`) at Cormac's lockup near the Houston s
 ```yaml
 id: REL-000105
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000825
@@ -5203,6 +5229,7 @@ endpoints:
   - ENT-000254
 type: working-source
 qualities: "Engaged and trusted. She designed the Denver containment facility and walked him onto the Jiu Valley platform. When he went public she refused his offer to say he tricked her and filed her own account on the record (`EVT-001046`, `EVT-001051`). Asked about the guild HQ, she advised a fully separate building so Denver stays invisible (`EVT-001057`)."
+qualities_as_of: EVT-001057
 state: "**`OBJ-49` reshaped, `OBJ-51` closed, `OBJ-50` unchanged (2026-09-09, `EVT-000900`).** Design complete; the Denver facility bought outright rather than leased, retrofit underway (6-8 weeks). Dinner in Bucharest ahead of tomorrow's Jiu Valley visit — she raised her own Jiu Valley history unprompted a second time, the professional register dropping further and staying dropped longer than either prior meeting. **`OBJ-21` opened to her, 2026-09-10 18:00 (`EVT-000910`).** Told directly, off her normal channel, about the fenced warehouse's bound entity and its accelerating decay; came in person, quietly, same posture as Jiu Valley. Traced Cormant Holdings to a funding trail her own office had wrongly closed eighteen months ago. Advised against killing the bound entity now; Alexander agreed. She's pulling Cormant Holdings quietly on her own authority.
 
   **2026-09-21 (`EVT-001046`, `EVT-001051`).** Called first, as promised. He offered to say he tricked her; she refused the cover and filed her own account with her director instead, an hour before air. 'Some of them are mine to carry.' 'Thank you for calling me first.' Texted at 11:04: 'Filed. In person, on the record, all of it.'"
@@ -5217,7 +5244,7 @@ European Gate Council Prague liaison. Named collision-checked clean (`tools/chec
 ```yaml
 id: ENT-000258
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000832
@@ -5265,7 +5292,7 @@ canonical_state:
 ```yaml
 id: REL-000106
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000841
@@ -5276,6 +5303,7 @@ endpoints:
   - ENT-000114
 type: board-member
 qualities: "A friend and a Pendragon Guild board member: she took the third independent seat on 2026-09-17 (`EVT-001016`) and was the second person told he ended Jiu Valley. She voted to air the disclosure and secured Czech national airtime for it (`EVT-001040`, `EVT-001045`). The warmest of the European ties."
+qualities_as_of: EVT-001051
 state: "**`OBJ-54` open and active.** She is reaching out to Lukas Reinhardt (in, engaged) and Camille Aubrac (interested, wants in-person contact first) on Alexander's behalf. **The four-way Prague meeting is confirmed for Thursday 2026-09-17**, venue now fixed — a café two blocks off Wenceslas Square, not affiliated with any guild on either side of the table (address surfaced `EVT-000957`).
 
   **2026-09-16 late/2026-09-17 pre-dawn Prague time (`EVT-001016`).** Called ahead of the Thursday meeting; Alexander Rift-stepped to the CGA break room (anchor 24) at her direction. Offered and **she accepted, on the spot, the Pendragon Guild's third independent board seat** — full vote, no membership required. **Alexander disclosed that he personally ended the Jiu Valley Exclusion** — a second real holder of that specific fact alongside Kane. Her reaction: genuine shock giving way to real warmth, no jealousy, explicit gladness. Asked her counsel on whether to go public with it; she advised controlling the frame and timing rather than either staying silent indefinitely or disclosing impulsively, drawing on her own experience as the most-managed public S-Rank in her country — **left genuinely undecided.** Walked together to tomorrow's meeting venue so Alexander could set an anchor ahead of the actual meeting (**anchor 39 set: the café**); stayed for a beer and unhurried personal conversation afterward, the first time between them with no schedule pressing on it.
@@ -5314,7 +5342,7 @@ history: "Formed 2026-09-04 (`EVT-000841`), a phone call ahead of the Karlov Gui
 ```yaml
 id: REL-000107
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000906
@@ -5324,7 +5352,8 @@ endpoints:
   - ENT-000125
   - ENT-000242
 type: romantic
-qualities: "Romantic in feeling, not exclusive or binding on either side (restated `EVT-001063`), and intimate since 2026-09-13. Since beer night on 2026-09-29 Dario is part of it too, which Kane is glad of (`REL-000125`). He is also the Pendragon Guild's second in command and a board member, having resigned from BGM on 2026-09-24 (`EVT-001084`). He never asks Alexander to account for his time."
+qualities: "Romantic in feeling, not exclusive or binding on either side (restated `EVT-001063`), and intimate since 2026-09-13. Since beer night on 2026-09-29 Dario is part of it too, which Kane is glad of (`REL-000125`). He is also the Pendragon Guild's second in command and a board member, having resigned from BGM on 2026-09-24 (`EVT-001084`). He never asks Alexander to account for his time. On 2026-10-01 Alexander told them both *you're mine now*, and Kane answered *yours*, plainly. That changed no terms: it stays not exclusive, with Dario and with Alexander (owner ruling, 2026-09-26). Asked whether he wanted to attend the Director's meeting, he said yes, for himself (`EVT-001213`)."
+qualities_as_of: EVT-001213
 state: |-
   **Second-in-command of the Pendragon Guild, and romantic in feeling, not exclusive (as of 2026-09-30, `EVT-001160`).** He resigned from BGM on 2026-09-24 rather than accept reassignment, after his own chain learned he had worked against them for Alexander: the platform review went nowhere because of the multi-country simultaneous release he advised. He accepted second-in-command the same day, as a clean choice made after the call rather than under its pressure (`EVT-001079`, `EVT-001084`). He also holds an independent board seat, accepted 2026-09-15 with a full vote and the power to overrule Alexander (`EVT-001002`). He voted to air the Jiu Valley broadcast (`EVT-001040`) and quietly handled the platform thing himself: *"That was ours... It's handled"* (`EVT-001047`). He runs guild operations in person. He commanded the guild element on the Calumet A-Rank (`EVT-001095`, `OBJ-70`), supervised Prague's first guild-dispatched response, and on 2026-09-30 was pushing the stuck Chicago regulator filing himself through Region V and his National contact, promising something concrete by evening.
 
@@ -5360,7 +5389,7 @@ Also present in the same world file, tied to the Prague/Blažková courtship thr
 ```yaml
 id: ENT-000259
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000870
@@ -5398,7 +5427,7 @@ canonical_state:
 ```yaml
 id: REL-000108
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000870
@@ -5409,6 +5438,7 @@ endpoints:
   - ENT-000259
 type: adversarial-negotiation
 qualities: "Adversarial on the door, generous in everything else. Her want is out, and the door trade is still unstruck on Alexander's timeline; she teaches freely anyway, six techniques on 2026-09-27 (`EVT-001116`). She received Anton Drury from him (`EVT-001062`) and asked for the door to stay open longer, unanswered and not pressed."
+qualities_as_of: EVT-001116
 state: "**Live, unresolved on the door trade** — still unstruck, on Alexander's own timeline, same as every prior visit. Continues teaching freely regardless, on her own stated indulgence. `EVT-000988` (2026-09-14): two candidates opened, Fourfold Step and Sightline, both 1/3. `EVT-000996` (2026-09-15): both advanced to 2/3; two new opened, Not There and Away, both 1/3."
 texture: "She reads as genuinely likeable and genuinely dangerous at once, by design — extremely good company, freely admits she'll lie about everything except her one want, and has had four thousand years to get the performance exactly right. Alexander's own reads caught her overselling once (the invisibility claim) and got a real retraction rather than a deeper lie."
 history: "Formed this session (`EVT-000870`-`EVT-000871`): first contact on the reopened far door, an extended exchange establishing her want, testing her honesty across several direct questions (one clean strong-success read, one clean failure, one critical failure that handed Alexander false confidence in an unverified answer, one failure that caught her overselling), and an unresolved trade offer."
@@ -5421,7 +5451,7 @@ history: "Formed this session (`EVT-000870`-`EVT-000871`): first contact on the 
 ```yaml
 id: ENT-000260
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000874
@@ -5459,7 +5489,7 @@ canonical_state:
 ```yaml
 id: REL-000109
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000874
@@ -5470,6 +5500,7 @@ endpoints:
   - ENT-000260
 type: mentorship
 qualities: "A mentor in fact, not only on offer, and the one far-side figure who wants him simply to live. He teaches (Read the Learner crossed to Apprentice, `EVT-001058`) and warned him bluntly to spend down no further, citing his own nine dead candidates. His question whether anyone waits for Alexander at home is still unanswered."
+qualities_as_of: EVT-001058
 state: "Instruction offer open, unconditional. Guided the group this session; asked a real personal question (whether someone waits for Alexander at home) still unanswered."
 texture: "Coach-and-student register from the first exchange — footing, correction, warmth that costs him something to give given what teaching has meant for him before."
 history: "Formed this session (`EVT-000874`), met at the Long Shelf, guided the group onward."
@@ -5484,7 +5515,7 @@ history: "Formed this session (`EVT-000874`), met at the Long Shelf, guided the 
 ```yaml
 id: ENT-000261
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: deceased
 provenance:
   source: EVT-001175
@@ -5522,7 +5553,7 @@ canonical_state:
 ```yaml
 id: REL-000110
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: terminated
 provenance:
   source: EVT-001173
@@ -5533,6 +5564,7 @@ endpoints:
   - ENT-000261
 type: adversarial-negotiation
 qualities: "Ended by his death, `EVT-001173` (2026-09-30). Alexander brought him through the far door to see Earth, was intimate with him a third time in the Denver cage room, and killed him there with Rupture, unannounced. Nothing on the far side knows (`EVT-001174`). Before that, a courteous adversary who wanted Earth to fail and said so, yet taught freely after 2026-09-14."
+qualities_as_of: EVT-001175
 state: "**Ended by his death, `EVT-001173` (2026-09-30).** Alexander brought him through the far door to see Earth (`EVT-001171`-`EVT-001172`), was intimate with him a third time in the cage room at Denver, and killed him there with Rupture, unannounced. Nothing on the far side knows (`EVT-001174`). PRIOR STATE: **Teaching question resolved, `EVT-000990` (2026-09-14).** Orenne reversed his own refusal on the merits — strengthening one Bearer doesn't move his world-integration count, so the refusal was never really protecting what it claimed to. Now teaches freely; four candidates opened the same visit. **The count itself (Earth should fail) is unchanged** — only the teaching-refusal's rationale collapsed, not his underlying position. Second physical intimacy the same visit, mutual; explicitly not the reason his position moved."
 texture: "Two people who each recognize the other is arguing honestly, even from opposed premises — and, as of `EVT-000990`, an adversary who updates his own position when the argument actually earns it, which he named as more important to him than being consistent. **Owen has no channel to any of this.**"
 history: "**2026-09-30 (`EVT-001169`-`EVT-001175`):** the slates and the crack; the invitation; the cities; the third intimacy; killed; burned; remains stored. Formed this session (`EVT-000875`), met at the Long Shelf; deepened at the group gathering (`EVT-000878`). **2026-09-08:** Alexander returned alone, the encounter turned physical and became sexual — mutual, Orenne reciprocating fully once no trade was being asked for. **2026-09-14 (`EVT-000990`):** teaching refusal reversed on its own logic; second intimacy, mutual; four candidates opened."
@@ -5545,7 +5577,7 @@ history: "**2026-09-30 (`EVT-001169`-`EVT-001175`):** the slates and the crack; 
 ```yaml
 id: ENT-000262
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000876
@@ -5583,7 +5615,7 @@ canonical_state:
 ```yaml
 id: REL-000111
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000876
@@ -5594,6 +5626,7 @@ endpoints:
   - ENT-000262
 type: collaboration
 qualities: "Reconciled and collaborative. What was stolen went back in full, and the whole stolen Assay archive now sits in Tolo's library for joint study (`EVT-000989`). On 2026-09-21 his grading records showed Earth's check-interval compressing early, an anomaly; he guessed Alexander may be the variable but refused to advise a course, afraid of being made to choose (`EVT-001058`)."
+qualities_as_of: EVT-001058
 state: "Reconciled and now genuinely collaborative. The archive returned in full (`EVT-000876`); as of `EVT-000989` (2026-09-14), the entire stolen Assay archive is entrusted to Tolo's own library for joint study, with Alexander committed to daily visits. Anchor set at his ground (thirty-sixth), uncontested."
 texture: "Started as confrontation, cooled into something like the beginning of a real exchange, and has become the campaign's most productive research partnership — the first far-side figure whose interest in Alexander runs toward what Earth itself holds, not toward the door or the process, now given the best evidence either of them has ever had to work with."
 history: "Formed this session (`EVT-000876`): first contact was already a wrong to repair; resolved the same conversation."
@@ -5608,7 +5641,7 @@ history: "Formed this session (`EVT-000876`): first contact was already a wrong 
 ```yaml
 id: ENT-000263
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000878
@@ -5646,7 +5679,7 @@ canonical_state:
 ```yaml
 id: REL-000112
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000878
@@ -5657,6 +5690,7 @@ endpoints:
   - ENT-000263
 type: adversarial-negotiation
 qualities: "Damaged and partly repaired. A broken-timing promise cost trust (`EVT-000987`) and Sevrin owned it; he teaches on a widened but bounded basis (Closing Word crossed to Apprentice, `EVT-001058`), and Alexander keeps his Assay findings back in fair exchange. His standing question, end the process or a passed Earth, is still deferred, and he accepts that."
+qualities_as_of: EVT-001058
 state: "Live, damaged and partially repaired. A broken-timing promise (`EVT-000987`) cost real trust; Sevrin owned the failure fully rather than arguing his own technical compliance. Teaching now proceeds on a widened but still-bounded basis (everything except what works against ending the process, and his one held-back secret). Alexander withholds his own Assay-channel findings in fair exchange, accepted without argument."
 texture: "Adversarial in position, not in conduct — he tested him once (bringing Ilith) and, having voiced the objection, did not relitigate it. As of `EVT-000987`, also the first time Alexander has had real cause to doubt him, and the first time Sevrin has had to actually repair rather than simply state a boundary."
 history: "Formed this session (`EVT-000878`), first contact at her own ground, the whole group present."
@@ -5669,7 +5703,7 @@ West Coast S-Rank. Named collision-checked clean (`tools/check_name_collision.ps
 ```yaml
 id: ENT-000265
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000909
@@ -5710,7 +5744,7 @@ canonical_state:
 ```yaml
 id: REL-000113
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000917
@@ -5720,7 +5754,8 @@ endpoints:
   - ENT-000125
   - ENT-000265
 type: romantic
-qualities: "Romantic since beer night on 2026-09-29 (`EVT-001155`-`EVT-001160`): Alexander kissed him first, he kissed Kane too, and he stayed the night with both by his own choice. He is also the Pendragon Guild's senior combat lead, registered 2026-09-28 (`EVT-001140`), and was asked to build the guild's hunter training starting in Chicago, the first time anyone has asked him to teach."
+qualities: "Romantic since beer night on 2026-09-29 (`EVT-001155`-`EVT-001160`): Alexander kissed him first, he kissed Kane too, and he stayed the night with both by his own choice. He is also the Pendragon Guild's senior combat lead, registered 2026-09-28 (`EVT-001140`), and was asked to build the guild's hunter training starting in Chicago, the first time anyone has asked him to teach. On 2026-10-01 Alexander told them both *you're mine now*, and Dario answered *yeah, okay, yeah* (`EVT-001213`). Not exclusive, with Alexander or with Kane (owner ruling, 2026-09-26)."
+qualities_as_of: EVT-001213
 state: "**First in-person meeting held, `EVT-001015` (2026-09-16, ~20:00-21:15, The Sidecut, Chicago).** Immediately warm — Dario's own want (a real peer connection outside any chain of command) met directly. Alexander pitched the independent S-Rank network in the same terms given to Kane and Cade; Dario did not commit on the spot, naming honestly that he'd only known Alexander two hours and wanted to see the network in person first — accepted an invitation to Thursday's Prague meeting instead. The Pendragon Guild pitch was also raised; Dario engaged seriously, no board seat offered or discussed for him yet. **Rift-step, including passenger transport, disclosed to him — the fourth confirmed holder** (after Owen, demonstrated; Kane and Tereza, told), deliberately raised only after the network pitch had landed on its own merits. Reaction: genuine shock, recalibration, no request for mechanism detail. **Arranged: pickup from the Winnetka house 2026-09-17 at noon Chicago / 10:45 Mountain, for the Prague meeting; return drop-off at San Francisco after, via the standing BGM Region IX anchor (23rd).**
 
   **2026-09-17, Prague and Winnetka (`EVT-001021`-`EVT-001023`).** Pickup landed exactly on time, deliberately, so Marisol Cade's own earlier slot would wait as little as possible. Witnessed the network's board expand to five and the five-passenger demonstration teleport. Stayed the night in the second guest room; a private conversation with Alexander afterward — admitted the evening had outpaced what he expected walking in, willing to commit to the network outright, still watching before deciding on the guild board itself. **2026-09-18 morning (`EVT-001026`):** named his own actual home for the first time — an Oakland apartment, more time spent there than anywhere else despite the West Coast reach. Dropped there directly via the standing San Francisco anchor, genuinely delighted to skip TSA.
@@ -5739,7 +5774,7 @@ history: "Introduction via Renata Okonkwo-Vance, `EVT-000847` (2026-09-05). Firs
 ```yaml
 id: REL-000125
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001156
@@ -5762,7 +5797,7 @@ CONSULT's own quality assessor, observed running the Friday assessment window at
 ```yaml
 id: ENT-000266
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000912
@@ -5801,7 +5836,7 @@ A second CONSULT-controlled artificer, observed at the same Friday assessment. N
 ```yaml
 id: ENT-000267
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000912
@@ -5840,7 +5875,7 @@ Ingrid Solberg's direct CONSULT contact, named by her under interrogation (`EVT-
 ```yaml
 id: ENT-000268
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000914
@@ -5879,7 +5914,7 @@ A confirmed A-Rank Chicago Gate, rolled at the 2026-09-12 06:00 world tick (`110
 ```yaml
 id: ENT-000269
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000919
@@ -5903,7 +5938,7 @@ canonical_state:
 ```yaml
 id: REL-000114
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-000909
@@ -5914,6 +5949,7 @@ endpoints:
   - ENT-000226
 type: working-source
 qualities: "Protector and asset: Alexander protects him in exchange for help against D and CONSULT. Peter knows only a disguised voice that answers at the anchor in his storage unit, not Alexander's name, face, or anything System-related."
+qualities_as_of: EVT-000909
 state: "**Live, active.** Alexander offered protection in exchange for help identifying D and CONSULT; Peter agreed and disclosed what he knows of the operation's rhythms. The satchel CONSULT is demanding Thursday was returned to him anonymously. A rendezvous anchor is set at Peter's own storage unit; Peter believes spending his own Mana there summons the voice, mechanism unexplained to him. Closed channel: Peter has no channel to Alexander's name, face, or anything System-related."
 texture: "New and asymmetric — Peter is exposed and grateful; Alexander remains entirely unknown to him."
 history: "First direct contact `EVT-000909` (2026-09-10), following two prior indirect encounters (`EVT-000700`/`EVT-000709`, the satchel and wallet thefts) that never registered to Peter as anything but bad luck."
@@ -5926,7 +5962,7 @@ A System-bearer in the Assay's employ, filed internally as `RQ-004`, first autho
 ```yaml
 id: ENT-000273
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: deceased
 provenance:
   source: EVT-000959
@@ -5963,7 +5999,7 @@ A designation, not a name — consistent with the Assay's own impersonal registe
 ```yaml
 id: ENT-000274
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: deceased
 provenance:
   source: EVT-000963
@@ -5997,7 +6033,7 @@ A recruited champion in Assay enforcement duty — corrected mid-session from an
 ```yaml
 id: ENT-000275
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: deceased
 provenance:
   source: EVT-000975
@@ -6029,7 +6065,7 @@ The Mana-signature member of a five-figure response group, distinct from its fou
 ```yaml
 id: ENT-000276
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: deceased
 provenance:
   source: EVT-000977
@@ -6061,7 +6097,7 @@ One of the coordinator's four escorts — confirmed a distinct champion from `EN
 ```yaml
 id: ENT-000277
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: deceased
 provenance:
   source: EVT-000978
@@ -6093,7 +6129,7 @@ A second of the coordinator's escorts, killed alongside `ENT-000279` by a single
 ```yaml
 id: ENT-000278
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: deceased
 provenance:
   source: EVT-000979
@@ -6125,7 +6161,7 @@ The fourth of the coordinator's escorts, killed in the same paired volley as `EN
 ```yaml
 id: ENT-000279
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: deceased
 provenance:
   source: EVT-000979
@@ -6157,7 +6193,7 @@ The last of the coordinator's five-figure group — sealed alone in its own Lock
 ```yaml
 id: ENT-000280
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: deceased
 provenance:
   source: EVT-000980
@@ -6189,7 +6225,7 @@ First entity block minted for her; met in person `EVT-001009`, one of Elias Kane
 ```yaml
 id: ENT-000281
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001009
@@ -6227,7 +6263,7 @@ canonical_state:
 ```yaml
 id: REL-000116
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001009
@@ -6238,6 +6274,7 @@ endpoints:
   - ENT-000281
 type: board-member
 qualities: "A Pendragon Guild board member in an independent seat, taken only after testing that it could really overrule him (`EVT-001009`). Professional and direct rather than personal. She learned of Jiu Valley from the cut itself, tested whether its anger was real, and voted yes to air it (`EVT-001040`)."
+qualities_as_of: EVT-001040
 state: "Independent board seat on the Pendragon Guild accepted, `EVT-001009` — full vote, no guild membership, tested on whether it could really overrule Alexander before she said yes. Accepted the Thursday Prague meeting invitation. **2026-09-17 (`EVT-001021`):** picked up for the Prague dinner slightly later than her own arranged slot (a scheduling gap of minutes, not the near-hour first assumed), unbothered about it. Opted out of the five-passenger demonstration, having already made one crossing that night. **2026-09-18 (`EVT-001024`):** confirmed she has never actually seen the inside of the Denver facility she now co-owns board-level responsibility for — first visit still owed, expected at next week's sparring. **2026-09-20 (`EVT-001040`):** rift-stepped from Denver to the Pendragon Guild's first board meeting at Winnetka; **learned for the first time, from the cut itself, that Alexander ended the Jiu Valley Exclusion.** Tested it for whether the anger in it was real, found it was, and **voted yes** — somebody should have to answer for the silence. No media contacts to offer; offered muscle if he needs it before it airs. Returned to Denver."
 texture: "Two people who've each spent years being deployed by institutions rather than asked; she tests offers of independence hard because she's been burned by ones that weren't real."
 history: "Formed 2026-09-16 (`EVT-001009`), first meeting, Denver, arranged same-day via Kane's phone call. Prague dinner, `EVT-001021` (2026-09-17)."
@@ -6248,7 +6285,7 @@ history: "Formed 2026-09-16 (`EVT-001009`), first meeting, Denver, arranged same
 ```yaml
 id: REL-000117
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001021
@@ -6259,6 +6296,7 @@ endpoints:
   - ENT-000124
 type: board-member
 qualities: "A Pendragon Guild board member, advisory rather than a second employer, and trusted further than almost anyone. He is the first person Alexander told that his parents died in the Damen Avenue Break (`EVT-001027`), and he heard the whole of Jiu Valley, Sorcha's part included, which Sorcha does not know he knows (`EVT-001034`-`EVT-001040`)."
+qualities_as_of: EVT-001051
 state: "**Met in person, `EVT-001021`, the Prague dinner.** Teleportation disclosed (fifth confirmed holder); the guild pitched and a provisional independent board seat accepted, conditional on it staying advisory rather than becoming a second employer. **`EVT-001027` (2026-09-18, Frankfurt):** anchor 40 set at Brandhof's own courtyard, first in Germany. Over coffee, Reinhardt named that he'd noticed Alexander's restraint the prior night around the Jiu Valley subject and admitted, unprompted, he'd already concluded Alexander was the one who ended it — the timeline, the scale, and Alexander's own non-reaction to Cade's line all read as confirmation. Did not ask for it to be said aloud. **Alexander disclosed, for the first time to anyone outside established history, that his own parents died in the Damen Avenue Break at fifteen.** Offered to confirm the Jiu Valley kill directly; both agreed the café was the wrong venue and deferred it, undated. Sparring agreed for next week at the Denver facility.
 
   **2026-09-20/21 (`EVT-001034`, `EVT-001039`, `EVT-001040`).** Texted that he'd found the venue — his own apartment, Frankfurt. Alexander arrived ~05:00 Frankfurt time; Kölsch at the kitchen counter. **The deferred confirmation, closed: 'It was me who ended it there' — then the real account**, told honestly and in full: Sorcha Bellweather walking him to the platform, her three lost trainees, the twenty-eighth anchor, the concealed approach, the ~45,000-Health read, three Ruptures. **Reinhardt is now the only person told Sorcha's part**, and Sorcha does not know he knows. He named the cost Alexander is choosing: Sorcha stays three phone calls from exposure even if the video never names her. Watched the cut first ('a declaration with a recruitment pitch attached to it'), then **voted yes** at the board meeting, his caveat about Sorcha standing. **German broadcast: people adjacent to it, an answer by tomorrow.** Returned home at his desk.
@@ -6273,7 +6311,7 @@ history: "Formed 2026-09-17 (`EVT-001021`), Prague dinner. Frankfurt visit and a
 ```yaml
 id: REL-000118
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001021
@@ -6284,6 +6322,7 @@ endpoints:
   - ENT-000282
 type: board-member
 qualities: "A Pendragon Guild board member who keeps the right to withdraw if the seat turns into image management. Guarded at first, then open: told of the breakup with Owen, she offered space rather than advice (`EVT-001028`). She learned of Jiu Valley from the cut, voted yes, and looked at the final edit again before putting her name behind its French placement (`EVT-001040`, `EVT-001047`)."
+qualities_as_of: EVT-001051
 state: "**Met in person, `EVT-001021`, the Prague dinner.** Teleportation disclosed (sixth confirmed holder); a provisional independent board seat accepted, reserving the right to withdraw if it reads as image management. **`EVT-001028` (2026-09-18, Paris):** anchor 41 set near her own apartment, first in France. A long, unhurried conversation followed — Alexander named wanting somewhere slower-paced in Europe (the Azores, specifically), and Aubrac shared her own real favorite place, a village in Provence tied to her grandmother, one of the only places she isn't managed. **Alexander disclosed the recent breakup with Owen Callahan**, genuinely uncertain how he feels about it — met with space rather than advice, and an open, undated invitation to talk further. Sparring agreed for next week at the Denver facility.
 
   **2026-09-20/21 (`EVT-001040`).** Cut a morning interview short in Paris to join the Pendragon Guild's first board meeting at Winnetka. **Learned for the first time, live, from the cut, that Alexander ended the Jiu Valley Exclusion** — 'devastatingly well-shot,' then, register gone, that he went in alone after six S-Ranks died trying; she looks at him differently now. **Voted yes.** Offered French placement — France 2, TF1 with patience, or a streaming exclusive for speed, favours owed twice over — **pending her own second look at the final edit** before her name goes behind it. Told him that he asked the board to vote when he didn't have to is why she said yes to the seat.
@@ -6300,7 +6339,7 @@ First entity block minted for her; referred by Tereza Blažková and met by phon
 ```yaml
 id: ENT-000283
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001033
@@ -6337,7 +6376,7 @@ canonical_state:
 ```yaml
 id: REL-000119
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001033
@@ -6348,6 +6387,7 @@ endpoints:
   - ENT-000283
 type: professional-services
 qualities: "A paid job, done: €80,000, and one encrypted final cut delivered the same night (`EVT-001033`-`EVT-001038`). She and her crew are bound by an NDA and a separate method clause covering what they saw of how he kept them safe. Open to more work on the same terms; none booked."
+qualities_as_of: EVT-001038
 state: "**Engaged 2026-09-20 (`EVT-001033`), paid in full (`EVT-001036`).** €80,000 wired, booked at $80,000.00. **Standing obligations on her side:** the NDA (six-figure liquidated damages per breach — Sanne, two camera techs, the editor) and the separate 'method' clause covering anything she or her crew saw of how he kept them safe; raw files never leave a drive she controls. **Delivered (`EVT-001035`, `EVT-001038`):** one encrypted final cut, same night. No broadcaster named to her. Open to further work on the same terms; no further job booked."
 texture: "Mutual professional respect with no warmth performed on either side — which is why the one unprofessional line she allowed herself ('I don't usually feel anything watching the monitor') landed."
 history: "Formed 2026-09-20 (`EVT-001033`), referred by Tereza Blažková. Studio shoot and instant-dungeon footage, `EVT-001035`-`EVT-001036`. Cut delivered, `EVT-001038`."
@@ -6360,7 +6400,7 @@ Host of *Past the Cordon* (61 million subscribers), built on raid footage and sa
 ```yaml
 id: ENT-000284
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001053
@@ -6394,7 +6434,7 @@ canonical_state:
 ```yaml
 id: REL-000120
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001053
@@ -6405,6 +6445,7 @@ endpoints:
   - ENT-000284
 type: contact
 qualities: "One doorstep meeting (`EVT-001053`): an honestly priced interview offer, declined, and she left without pressing. Her cell number is given and unused, and the lakefront photo of him and Kane stays unpublished at her discretion, not his. No trust established either way."
+qualities_as_of: EVT-001053
 state: "**Opened 2026-09-21 (`EVT-001053`).** Her personal cell number given, unused. No interview granted, none refused outright. The lakefront photo of Alexander and Kane remains unpublished, held at her discretion, not his."
 texture: "Transactional and openly named as such by her; no warmth performed on either side, but no hostility either."
 history: "Formed 2026-09-21, at the Winnetka gate intercom, off a photo taken that morning at the lakefront police tape."
@@ -6417,7 +6458,7 @@ An Assay worker — interval-check rotation, the Assay's own channel — capture
 ```yaml
 id: ENT-000285
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001060
@@ -6456,7 +6497,7 @@ canonical_state:
 ```yaml
 id: REL-000121
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001060
@@ -6467,6 +6508,7 @@ endpoints:
   - ENT-000285
 type: adversarial-then-negotiated
 qualities: "Resolved (`EVT-001061`-`EVT-001062`). Captured, then talked to rather than acted on; moved by Alexander's conviction, Drury chose far-side isolation over death and was handed to Ilith at the Landing. His two coworkers went with him unconscious and without a say, which he named before the door closed. No contact since."
+qualities_as_of: EVT-001062
 state: "**Resolved, `EVT-001061`-`EVT-001062`.** Drury chose far-side isolation over death, informed and consenting. Delivered to the Landing, received by Ilith. No further contact as of this checkpoint. His two coworkers were delivered alongside him unconscious, with no say in their own fate — a fact Drury himself flagged before the door closed."
 texture: "Not friendship, not mercy performed for its own sake — a real moral conversation between a captor holding total power and a captive who chose honesty over either pleading or defiance, and got a genuine answer to the hardest question he asked in return."
 history: "Formed 2026-09-21 (`EVT-001060`), the Assay's own channel — captured mid-interval-check alongside two coworkers. Interrogated at length at the Denver facility (`EVT-001061`), including a corrected-premise language exchange (no real barrier ever existed, struck at promotion). Resolved and delivered to the far side (`EVT-001062`)."
@@ -6481,7 +6523,7 @@ Ex-military bearing, heading up security for the newly-closed Guild HQ campus.
 ```yaml
 id: ENT-000287
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001086
@@ -6521,7 +6563,7 @@ B-Rank striker, transferred out from Chicago for a training rotation.
 ```yaml
 id: ENT-000342
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001166
@@ -6562,7 +6604,7 @@ Commander of the New York A-Rank crew, named on Anjali Desai's call (`EVT-001177
 ```yaml
 id: ENT-000344
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001177
@@ -6605,7 +6647,7 @@ Commander of the Houston A-Rank crew, named on Anjali Desai's call (`EVT-001177`
 ```yaml
 id: ENT-000345
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001177
@@ -6648,7 +6690,7 @@ Commander of the London A-Rank crew, named on Anjali Desai's call (`EVT-001177`)
 ```yaml
 id: ENT-000346
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001177
@@ -6691,7 +6733,7 @@ Commander of the Amsterdam A-Rank crew, named on Anjali Desai's call (`EVT-00117
 ```yaml
 id: ENT-000347
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001177
@@ -6734,7 +6776,7 @@ Commander of the Miami A-Rank crew, named on Anjali Desai's call (`EVT-001177`).
 ```yaml
 id: ENT-000348
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001177
@@ -6777,7 +6819,7 @@ Commander of the West Coast A-Rank crew, based in Seattle and pulling from Los A
 ```yaml
 id: ENT-000349
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001177
@@ -6820,7 +6862,7 @@ Commander of the Tel Aviv A-Rank crew, pulling from Istanbul, named on Anjali De
 ```yaml
 id: ENT-000350
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001177
@@ -6863,7 +6905,7 @@ Commander of the Continental Europe A-Rank crew, based in Paris and pulling from
 ```yaml
 id: ENT-000351
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001177
@@ -6906,7 +6948,7 @@ Sharp, direct, running front-office operations for the new HQ.
 ```yaml
 id: ENT-000288
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001086
@@ -6946,7 +6988,7 @@ Local hire running the Prague guild office's front desk and general coordination
 ```yaml
 id: ENT-000286
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001085
@@ -6986,7 +7028,7 @@ D-rank-capable striker, part of the crew Kane assembled for the guild's first Pr
 ```yaml
 id: ENT-000289
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001084
@@ -7026,7 +7068,7 @@ D-rank-capable sensor, part of the same crew; flagged by Kane's gear audit as un
 ```yaml
 id: ENT-000290
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001084
@@ -7062,7 +7104,7 @@ canonical_state:
 ```yaml
 id: REL-000122
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001084
@@ -7073,6 +7115,7 @@ endpoints:
   - ENT-000289
 type: guild-member
 qualities: "A Pendragon Guild member on the Prague dispatch crew, a striker. Welcomed in person by the founder, brief and warm on both sides, with the open-door gear-replacement policy stated in front of him (`EVT-001084`)."
+qualities_as_of: EVT-001084
 state: "Welcomed to the guild in person. Open-door gear-replacement policy declared in front of him."
 texture: "A founder who shows up in person for a D-rank response and personally hands over gear rather than delegating it entirely."
 history: "Formed 2026-09-24 (`EVT-001084`)."
@@ -7087,7 +7130,7 @@ Named to Alexander among the guild's nine A-Rank hunters during the Calumet corr
 ```yaml
 id: ENT-000292
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001099
@@ -7128,7 +7171,7 @@ Named to Alexander among the guild's nine A-Rank hunters during the Calumet corr
 ```yaml
 id: ENT-000293
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001099
@@ -7168,7 +7211,7 @@ Named to Alexander among the guild's nine A-Rank hunters during the Calumet corr
 ```yaml
 id: ENT-000294
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001099
@@ -7208,7 +7251,7 @@ Named to Alexander among the guild's nine A-Rank hunters during the Calumet corr
 ```yaml
 id: ENT-000295
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001099
@@ -7248,7 +7291,7 @@ Named to Alexander among the guild's nine A-Rank hunters during the Calumet corr
 ```yaml
 id: ENT-000296
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001099
@@ -7288,7 +7331,7 @@ Named to Alexander among the guild's nine A-Rank hunters during the Calumet corr
 ```yaml
 id: ENT-000297
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001099
@@ -7328,7 +7371,7 @@ Named to Alexander among the guild's nine A-Rank hunters during the Calumet corr
 ```yaml
 id: ENT-000298
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001099
@@ -7368,7 +7411,7 @@ Named to Alexander among the guild's nine A-Rank hunters during the Calumet corr
 ```yaml
 id: ENT-000299
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001099
@@ -7408,7 +7451,7 @@ Named to Alexander among the guild's nine A-Rank hunters during the Calumet corr
 ```yaml
 id: ENT-000300
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001099
@@ -7448,7 +7491,7 @@ Met Alexander in person when he opened the Chicago travel-hub tunnel, 2026-09-26
 ```yaml
 id: ENT-000301
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001101
@@ -7488,7 +7531,7 @@ Met Alexander in person when he opened the Washington DC travel-hub tunnel, 2026
 ```yaml
 id: ENT-000303
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7530,7 +7573,7 @@ Met Alexander in person when he opened the Frankfurt travel-hub tunnel, 2026-09-
 ```yaml
 id: ENT-000304
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7572,7 +7615,7 @@ Met Alexander in person when he opened the New York travel-hub tunnel, 2026-09-2
 ```yaml
 id: ENT-000305
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7612,7 +7655,7 @@ Met Alexander in person when he opened the Boston travel-hub tunnel, 2026-09-26 
 ```yaml
 id: ENT-000306
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7654,7 +7697,7 @@ Met Alexander in person when he opened the Miami travel-hub tunnel, 2026-09-26 (
 ```yaml
 id: ENT-000307
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7696,7 +7739,7 @@ Met Alexander in person when he opened the Houston travel-hub tunnel, 2026-09-26
 ```yaml
 id: ENT-000308
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7738,7 +7781,7 @@ Met Alexander in person when he opened the Paris travel-hub tunnel, 2026-09-26 (
 ```yaml
 id: ENT-000309
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7780,7 +7823,7 @@ Met Alexander in person when he opened the Amsterdam travel-hub tunnel, 2026-09-
 ```yaml
 id: ENT-000310
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7820,7 +7863,7 @@ Met Alexander in person when he opened the Dallas travel-hub tunnel, 2026-09-26 
 ```yaml
 id: ENT-000311
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7862,7 +7905,7 @@ Met Alexander in person when he opened the Los Angeles travel-hub tunnel, 2026-0
 ```yaml
 id: ENT-000312
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7904,7 +7947,7 @@ Met Alexander in person when he opened the Seattle travel-hub tunnel, 2026-09-26
 ```yaml
 id: ENT-000313
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7946,7 +7989,7 @@ Met Alexander in person when he opened the San Francisco travel-hub tunnel, 2026
 ```yaml
 id: ENT-000314
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -7988,7 +8031,7 @@ Met Alexander on the HQ third floor, 2026-09-26 (`EVT-001107`), and heard the po
 ```yaml
 id: ENT-000302
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001107
@@ -8026,7 +8069,7 @@ canonical_state:
 ```yaml
 id: REL-000124
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001087
@@ -8037,6 +8080,7 @@ endpoints:
   - ENT-000291
 type: protege
 qualities: "His telekinesis student, and a guest at the Winnetka house since 2026-09-24 (`EVT-001092`). Two coaching days of real progress (`EVT-001111`-`EVT-001114`), and her reading is filed under the affiliation courtesy. The $1 associate agreement is still unsigned: she wants to read it and does not want to join anything yet. She counts her thank-yous aloud."
+qualities_as_of: EVT-001114
 state: "**Met 2026-09-24 20:49-21:33 (`EVT-001091`), and now a guest at the Winnetka house (`EVT-001092`).** She told Alexander everything, including what she had told no one: it fires in her sleep. He named it (telekinesis) and offered lessons starting tomorrow between his two recruitment events, the guest room with Kane on the hall, and a 1 USD non-exclusive associate agreement with no obligations and a walk-out at will. **She wants to read it before signing and will not sign tonight; she does not want to join anything yet.** Asleep behind Standfast at the last report. She asked him to tell her straight if she gets worse, and he said he could try."
 texture: "Two S-Ranks who each became one without the celebrity build-up the other nine had — the first real point of comparison either of them has."
 history: "Formed 2026-09-24 (`EVT-001087`), an unsolicited phone call. Met in person `EVT-001091`; Kane introduced `EVT-001092`."
@@ -8047,7 +8091,7 @@ history: "Formed 2026-09-24 (`EVT-001087`), an unsolicited phone call. Met in pe
 ```yaml
 id: REL-000123
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001084
@@ -8058,6 +8102,7 @@ endpoints:
   - ENT-000290
 type: guild-member
 qualities: "A Pendragon Guild member on the Prague dispatch crew, a sensor. Welcomed in person, quieter than Tomas, and outfitted properly for the first time in a while (`EVT-001084`)."
+qualities_as_of: EVT-001084
 state: "Welcomed to the guild in person; outfitted properly for the first time in an unstated while."
 texture: "Simple, direct gratitude rather than a performance of it."
 history: "Formed 2026-09-24 (`EVT-001084`)."
@@ -8075,7 +8120,7 @@ Miami artificer, [A-Rank] awakened (Flux Sight read, `EVT-001135`), her licence 
 ```yaml
 id: ENT-000315
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001135
@@ -8121,7 +8166,7 @@ Houston artificer, [B-Rank] card, no artificer's licence, a **guild member, lice
 ```yaml
 id: ENT-000316
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001135
@@ -8160,7 +8205,7 @@ Houston core broker to unlicensed artificers; **unawakened**. First written as D
 ```yaml
 id: ENT-000317
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001136
@@ -8200,7 +8245,7 @@ London office day manager.
 ```yaml
 id: ENT-000318
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001137
@@ -8238,7 +8283,7 @@ Stockholm office day manager.
 ```yaml
 id: ENT-000319
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001137
@@ -8276,7 +8321,7 @@ Stockholm office night officer.
 ```yaml
 id: ENT-000320
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001137
@@ -8314,7 +8359,7 @@ Istanbul office night officer, met the office's first morning.
 ```yaml
 id: ENT-000321
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001141
@@ -8352,7 +8397,7 @@ Istanbul office day manager.
 ```yaml
 id: ENT-000322
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001143
@@ -8390,7 +8435,7 @@ Israel's sole S-Rank; guild member, based in Tel Aviv, standing to be dispatched
 ```yaml
 id: ENT-000323
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001142
@@ -8431,7 +8476,7 @@ Tel Aviv office day manager.
 ```yaml
 id: ENT-000324
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001142
@@ -8469,7 +8514,7 @@ Chicago office night officer.
 ```yaml
 id: ENT-000325
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8507,7 +8552,7 @@ Washington DC office night officer.
 ```yaml
 id: ENT-000326
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8545,7 +8590,7 @@ Prague office night officer.
 ```yaml
 id: ENT-000327
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8583,7 +8628,7 @@ Frankfurt office night officer.
 ```yaml
 id: ENT-000328
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8621,7 +8666,7 @@ New York office night officer.
 ```yaml
 id: ENT-000329
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8659,7 +8704,7 @@ Boston office night officer.
 ```yaml
 id: ENT-000330
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8697,7 +8742,7 @@ Miami office night officer.
 ```yaml
 id: ENT-000331
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8735,7 +8780,7 @@ Houston office night officer.
 ```yaml
 id: ENT-000332
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8773,7 +8818,7 @@ Paris office night officer.
 ```yaml
 id: ENT-000333
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8811,7 +8856,7 @@ Amsterdam office night officer.
 ```yaml
 id: ENT-000334
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8849,7 +8894,7 @@ Dallas office night officer.
 ```yaml
 id: ENT-000335
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8887,7 +8932,7 @@ Los Angeles office night officer.
 ```yaml
 id: ENT-000336
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8925,7 +8970,7 @@ Seattle office night officer.
 ```yaml
 id: ENT-000337
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -8963,7 +9008,7 @@ San Francisco office night officer.
 ```yaml
 id: ENT-000338
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -9001,7 +9046,7 @@ Tel Aviv office night officer.
 ```yaml
 id: ENT-000339
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -9039,7 +9084,7 @@ Istanbul office night officer.
 ```yaml
 id: ENT-000340
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -9077,7 +9122,7 @@ London office night officer.
 ```yaml
 id: ENT-000341
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001146
@@ -9117,7 +9162,7 @@ Line reviewer on the Winnetka lakefront instrument review (`OBJ-68`); named in c
 ```yaml
 id: ENT-000352
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001183
@@ -9160,7 +9205,7 @@ Author of the families' letter; C-Rank; brother of Ionuț Bratu, a rotation hunt
 ```yaml
 id: ENT-000353
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001196
@@ -9202,7 +9247,7 @@ Mother of Andrei and of Ionuț Bratu. Unawakened. First met `EVT-001197`.
 ```yaml
 id: ENT-000354
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001197
@@ -9244,7 +9289,7 @@ Ionuț's uncle, a miner. Unawakened. First met `EVT-001197`.
 ```yaml
 id: ENT-000355
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001197
@@ -9286,7 +9331,7 @@ One of the valley's five young awakened; the one who asks. First met `EVT-001198
 ```yaml
 id: ENT-000356
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001198
@@ -9328,7 +9373,7 @@ C-Rank team lead at the Pendragon Guild's Chicago branch; ran its first emergenc
 ```yaml
 id: ENT-000357
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001202
@@ -9370,7 +9415,7 @@ A-Rank guildmaster in Seoul, about 300 hunters, whose corporate sponsor withdrew
 ```yaml
 id: ENT-000358
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001203

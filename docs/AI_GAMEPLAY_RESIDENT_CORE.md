@@ -296,9 +296,9 @@ Before yielding a scene opening, surface unresolved profile ratifications and ev
 
 **The provenance and audit apparatus settles at the boundary it is due at**, and the Runtime Profile's *Boundary Settlement* owns the procedure: qualitative training, the declared trigger and progression audits with their required `none` results, and characterization at scene close; `counter_deltas` attachment and baseline reconciliation, participation coverage, and the progression batch at the promotion barrier. This is where the engine's gates already read them — a measurement, recorded in `450_GENERATIVE_LAYER_ANALYSIS.md` and pinned by `tools/test_settlement_enforcement_locus.ps1`, not a relaxation.
 
-**The barrier writes its settlement, or the deferral was a discard.** A sealed note with no Event to land in is indistinguishable from a note never taken. Deferral is a promise to classify later, not permission to classify never.
+**The barrier writes its settlement, or the deferral was a discard.** A sealed note with no Event to land in is indistinguishable from a note never taken.
 
-Checkpointing promotes already-settled state. A written ledger is not necessarily settled: verify every changed field, especially skill counters that can remain well-formed but stale. If the player must ask whether a known deterministic change occurred, correct settlement before play continues.
+Checkpointing promotes already-settled state. A written ledger is not necessarily settled: verify every changed field, especially skill counters and a relationship's `qualities`, which stay well-formed but stale. `qualities` is the standing now; when `state` moves, re-read it and `type`, and advance `qualities_as_of` (Decision 095). If the player must ask whether a known deterministic change occurred, correct settlement before play continues.
 
 ---
 

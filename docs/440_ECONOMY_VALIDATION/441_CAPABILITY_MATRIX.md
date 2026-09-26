@@ -73,6 +73,19 @@ Carried unchanged from Version 0.3's matrix, because the classes proved worth di
 
 **V04-19 is deliberately listed as its own row rather than folded into V04-15.** The gate passing and the world using it are different claims, and V04-07 is in this same matrix as the standing example of what happens when they are not separated: the claimant shape existed for a version with nothing exercising it.
 
+## Milestone 0.4.6 — The Live Record Says What Is True Now (Decisions 094, 095)
+
+Decision 094's own rows were never written into this matrix; that gap is recorded here, not supplied by this section. The rows below are Decision 095's.
+
+| ID | Capability | Acceptance | Status | Evidence |
+|---|---|---|---|---|
+| V04-30 | A relationship's standing cannot fall behind its state | A covered relationship whose record cites a later Event than its `qualities_as_of`, or that has none, is rejected, including when that Event lands outside `state` | Passed — gate and fixture | `validate_repository.ps1`; `test_relationship_standing_contract.ps1` S-01, S-02, S-03, S-08. Shown to fail with the check disabled; S-08 also fails under the first, state-only reading, which is why it was replaced. It compares Event numbers only: a date advanced without a re-read passes, and Data Model 12.4.6 says so. |
+| V04-31 | The gate is correctly narrow, and silence widens it | A relationship whose state has not moved past the baseline owes nothing; no declared baseline covers every relationship | Passed — fixture | S-04, S-05, S-06. The Decision 092 shape: a gate that opened red across four campaigns would be switched off, and one that read silence as "nothing due" would be unreachable (`F-002`). |
+| V04-32 | A sealed volume survives a schema advance | The sealed chronicle volume keeps schema 0.1.7 and validates at 0.1.8; a live object at 0.1.7 does not | Passed — gate and fixture | S-07, and the unmodified fixture validating with one sealed volume at 0.1.7. Narrows Decision 094 point 2 by one obligation; the notice is on Decision 094. |
+| V04-33 | A save keeps a relationship's standing current in play | The next checkpoint that moves a covered relationship's state re-reads its standing, and the published ledger shows it | **Pending — needs play** | The gate proves a stale standing cannot pass; only a save shows whether the Save Algorithm's step 3 sends the writer there first, or the gate catches it after. Either is a pass. A standing rewritten to satisfy the date without being re-read is the failure, and only the player can see it. |
+
+**V04-14 fails harder again, and is again not reworded.** Decision 095 is the fifth post-freeze admission. Its Decision 086 conditions are addressed in the decision, and its milestone is named there as the arguable part.
+
 ---
 
 # Current Assessment

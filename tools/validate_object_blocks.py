@@ -158,8 +158,11 @@ def validate_block(
             f"known values are {sorted(KNOWN_STATUSES)}"
         )
 
+    # Decision 095: a sealed volume keeps the schema it was sealed under, as a
+    # checkpoint does -- it is byte-frozen (Decision 094), so it cannot be retagged.
     declared_schema = data.get("schema_version")
-    if isinstance(declared_schema, str) and declared_schema != schema_version:
+    sealed = re.match(r"^campaigns/[^/]+/sealed/", display) is not None
+    if isinstance(declared_schema, str) and declared_schema != schema_version and not sealed:
         failures.append(
             f"{where} object {identifier} declares schema_version {declared_schema!r} "
             f"but live canon must conform to Data Model {schema_version}"
@@ -212,7 +215,7 @@ def validate(root: Path, schema_version: str) -> tuple[list[str], int]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repository-root", default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--schema-version", default="0.1.7")
+    parser.add_argument("--schema-version", default="0.1.8")
     parser.add_argument("--quiet", action="store_true")
     args = parser.parse_args()
 

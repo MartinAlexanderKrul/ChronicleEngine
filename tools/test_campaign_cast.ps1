@@ -197,7 +197,7 @@ try {
 ``````yaml
 id: ENT-999999
 canonical_record: REC-000077
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 type: Character
 subtype: fixture

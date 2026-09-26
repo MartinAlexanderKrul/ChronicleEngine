@@ -22,7 +22,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 $failures = [System.Collections.Generic.List[string]]::new()
-$currentSchemaVersion = "0.1.7"
+$currentSchemaVersion = "0.1.8"
 # campaign name -> world name, read from the generated worlds/campaigns index so
 # a campaign-scoped block can be judged against its own world's rule profile.
 $campaignWorlds = @{}
@@ -682,6 +682,52 @@ function Get-DispositionPolicy {
     return $policy
 }
 
+function Get-RelationshipStandingPolicy {
+    param([string]$RepositoryRoot)
+
+    # Decision 095 / Data Model Sections 10 and 12.4.6. A Relationship's
+    # `qualities` is its standing now, and `qualities_as_of` names the Event
+    # through which a writer last re-read it against `state`.
+    #
+    # Coverage is engine-general on the Decision 092 shape, and for the same
+    # reason: a standing that stops moving is not a world's authoring taste but
+    # a relationship played from a first impression. What a campaign declares is
+    # only WHERE the obligation begins -- `relationship_standing_baseline` in
+    # 090_CAMPAIGN_STARTUP.md, an Event identifier -- so relationships whose
+    # state has not moved since adoption are backlog rather than failures.
+    #
+    # A MISSING BASELINE MEANS FULLY COVERED. Silence fails toward the
+    # obligation, as it does for disposition coverage.
+    $policy = @{}
+    $campaignsRoot = Join-Path $RepositoryRoot "campaigns"
+    if (-not (Test-Path -LiteralPath $campaignsRoot -PathType Container)) {
+        return $policy
+    }
+    foreach ($campaignDirectory in (Get-ChildItem -LiteralPath $campaignsRoot -Directory | Sort-Object Name)) {
+        $startupPath = Join-Path $campaignDirectory.FullName "090_CAMPAIGN_STARTUP.md"
+        if (-not (Test-Path -LiteralPath $startupPath -PathType Leaf)) {
+            continue
+        }
+        $baselineNumber = 0
+        $source = "engine default; campaigns/$($campaignDirectory.Name) declares no relationship_standing_baseline"
+        $startupText = Get-Content -LiteralPath $startupPath -Raw -Encoding UTF8
+        if ($startupText -match '(?m)^relationship_standing_baseline:[ \t]*"?(?<value>[^"\r\n]+)"?[ \t]*$') {
+            $declared = $Matches['value'].Trim().Trim('"')
+            if ($declared -notmatch '^EVT-\d{6}$') {
+                Add-Failure "campaigns/$($campaignDirectory.Name)/090_CAMPAIGN_STARTUP.md declares relationship_standing_baseline '$declared', which is not an Event identifier; it names the Event after which a relationship's state may not move without its standing being re-read (Decision 095)."
+                continue
+            }
+            $baselineNumber = [int]$declared.Substring(4)
+            $source = "campaigns/$($campaignDirectory.Name)/090_CAMPAIGN_STARTUP.md"
+        }
+        $policy[$campaignDirectory.Name] = [pscustomobject]@{
+            BaselineNumber = $baselineNumber
+            SourcePath = $source
+        }
+    }
+    return $policy
+}
+
 function Get-SkillCreditPolicy {
     param([string]$RepositoryRoot)
 
@@ -749,6 +795,7 @@ function Get-SkillCreditPolicy {
 $progressionPolicy = Get-ProgressionRatificationPolicy -RepositoryRoot $root
 $participationPolicy = Get-ParticipationPolicy -RepositoryRoot $root
 $dispositionPolicy = Get-DispositionPolicy -RepositoryRoot $root
+$relationshipStandingPolicy = Get-RelationshipStandingPolicy -RepositoryRoot $root
 $skillCreditPolicy = Get-SkillCreditPolicy -RepositoryRoot $root
 # Decision 090: the coverage obligation falls on the Bearer, who is the only
 # subject in these worlds carrying a mastery-tracked skill set. Read from the
@@ -1019,8 +1066,14 @@ foreach ($file in $canonicalFiles) {
             }
         }
 
+        # Decision 095: a sealed volume keeps the schema it was sealed under, as a
+        # checkpoint does. It is byte-frozen from its first capture (Decision 094),
+        # so the first schema advance after a seal pass could otherwise never pass:
+        # retagging it breaks the freeze, and not retagging it breaks this check.
+        # Every other obligation on a sealed object still applies.
         $schemaVersion = [regex]::Match($block, '(?m)^[ \t]*schema_version:[ \t]*"?([^"\s#]+)"?[ \t]*(?:#.*)?\r?$')
-        if ($schemaVersion.Success -and $schemaVersion.Groups[1].Value -ne $currentSchemaVersion) {
+        if ($schemaVersion.Success -and $schemaVersion.Groups[1].Value -ne $currentSchemaVersion -and
+            $relativePath -notmatch '^campaigns/[^/]+/sealed/') {
             Add-Failure "$relativePath`:$line object $id declares schema_version '$($schemaVersion.Groups[1].Value)' but live canon must conform to current Data Model $currentSchemaVersion. Immutable checkpoints are excluded; restore and migrate older schemas explicitly before play."
         }
 
@@ -2327,6 +2380,50 @@ foreach ($relationship in $relationshipBlocks) {
 
     if (-not [regex]::IsMatch($relationship.Block, '(?m)^[ \t]*texture[ \t]*:[ \t]*\S')) {
         Add-Failure "$($relationship.Path)`:$($relationship.Line) Relationship $($relationship.Id) is type '$relationshipType' between two Characters, so it must record a non-empty 'texture' - how these two behave toward one another (Decision 076; 011_ENGINE_DATA_MODEL.md Section 10). If the manner was never captured, say so in the field rather than inventing it."
+    }
+}
+
+# Decision 095 -- a Relationship's standing is dated.
+# `qualities` is what the relationship is NOW. A save that moves `state` and
+# leaves `qualities` is how 36 of 46 Gatefall relationships came to show a
+# first-meeting impression while `state` recorded a second-in-command, a board
+# seat, an ending and a death -- every one of them passing every gate.
+#
+# This compares Event numbers only, never content (Decision 071): the latest
+# Event the relationship record cites ANYWHERE -- provenance, state, history,
+# texture, moved_by_events -- against the Event `qualities_as_of` names. Reading
+# `state` alone left every relationship whose state cites no Event permanently
+# out of reach, 32 of them at adoption; the whole record is reachable because
+# Decision 085 already requires a moved record to reference the Event that
+# moved it. What remains is a claim the gate cannot test: that the writer
+# actually re-read the standing (Data Model Section 12.4.6).
+foreach ($relationship in $relationshipBlocks) {
+    $standingPath = [regex]::Match($relationship.Path, '^campaigns/(?<campaign>[^/]+)/[^/]+$')
+    if (-not $standingPath.Success) {
+        continue
+    }
+    $standingCampaign = $standingPath.Groups['campaign'].Value
+    if (-not $relationshipStandingPolicy.ContainsKey($standingCampaign)) {
+        continue
+    }
+    $standingCoverage = $relationshipStandingPolicy[$standingCampaign]
+
+    $recordBody = [regex]::Replace($relationship.Block, '(?m)^qualities_as_of:[^\r\n]*', '')
+    $recordEvents = @([regex]::Matches($recordBody, 'EVT-(\d{6})') | ForEach-Object { [int]$_.Groups[1].Value })
+    if ($recordEvents.Count -eq 0) {
+        continue
+    }
+    $recordLatest = ($recordEvents | Measure-Object -Maximum).Maximum
+    if ($recordLatest -le $standingCoverage.BaselineNumber) {
+        continue
+    }
+    $recordLatestId = "EVT-{0:D6}" -f [int]$recordLatest
+
+    $asOf = [regex]::Match($relationship.Block, '(?m)^qualities_as_of:[ \t]*"?(EVT-(?<n>\d{6}))"?[ \t]*\r?$')
+    if (-not $asOf.Success) {
+        Add-Failure "$($relationship.Path)`:$($relationship.Line) Relationship $($relationship.Id) cites $recordLatestId, after its campaign's relationship-standing baseline ($($standingCoverage.SourcePath)), but records no 'qualities_as_of'. Re-read 'qualities' and 'type' against the record you wrote, rewrite them if the standing moved, then set qualities_as_of to $recordLatestId or later (Decision 095; 011_ENGINE_DATA_MODEL.md Section 10)."
+    } elseif ([int]$asOf.Groups['n'].Value -lt $recordLatest) {
+        Add-Failure "$($relationship.Path)`:$($relationship.Line) Relationship $($relationship.Id) has qualities_as_of $($asOf.Groups[1].Value), older than $recordLatestId, the latest Event the record cites. Its standing was last read before the relationship moved. Re-read 'qualities' and 'type', rewrite them if the standing moved, then advance qualities_as_of (Decision 095; 011_ENGINE_DATA_MODEL.md Section 10)."
     }
 }
 

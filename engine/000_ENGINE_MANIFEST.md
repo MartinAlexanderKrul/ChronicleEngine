@@ -296,7 +296,7 @@ Changes to one component should not require version changes to unrelated compone
 | Component | Version |
 |-----------|---------|
 | Engine | 0.3.0 |
-| Data Model | 0.1.7 |
+| Data Model | 0.1.8 |
 | World | 0.9 |
 | Campaign | Not Created |
 | Save Format | 0.1.0 |
@@ -342,6 +342,7 @@ The Engine Postmortem is `docs/430_RUNTIME_PERSISTENCE_VALIDATION/440_ENGINE_POS
 - **0.4.2 A Finite Opportunity Is Contested** (Decision 089) — implemented. Data Model Section 7.5.1; an opening carries who else may take it, and settles to a claimant.
 - **0.4.3 Capability Validation and Prototype Campaign** — in progress. Record at `docs/440_ECONOMY_VALIDATION/`. Decision 090 is its first finding from play.
 - **0.4.4 NPCs Are Actors** (Decision 091) — the character model: Disposition as canonical state, Belief that may be false, and an Agenda that advances unobserved. **Data Model 0.1.6 → 0.1.7**, contract at Section 12.4.5.
+- **0.4.6 The Live Record Says What Is True Now** (Decisions 094, 095) — settled history sealed into byte-frozen volumes, and a Relationship's standing dated so a save cannot move its state past it. **Data Model 0.1.7 → 0.1.8**, contract at Section 12.4.6.
 
 Two post-freeze foundational findings have been admitted under Decision 086, both from played evidence, classified, versioned and migrated, and revalidated. The version's Engine Postmortem is written only after `docs/440_ECONOMY_VALIDATION/441_CAPABILITY_MATRIX.md` is complete.
 

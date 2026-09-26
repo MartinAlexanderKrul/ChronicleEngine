@@ -5,7 +5,7 @@
 **File:** `011_ENGINE_DATA_MODEL.md`
 **Status:** Workshop Draft
 **Engine Version:** 0.2.0
-**Data Model Version:** 0.1.7
+**Data Model Version:** 0.1.8
 **Layer:** Engine (000–099)
 
 ---
@@ -640,11 +640,16 @@ Qualities    e.g. trust, rivalry, obligation (Rules §5.6); governance quality
              and legitimacy band (Rules §10.2, §10.3); diplomatic quality (Rules §10.5);
              membership rank (Rules §9.4)
 State        the relationship's own current state and history
+Qualities as of
+             the Event through which Qualities and Type were last re-read
+             against State (Decision 095)
 Texture      how these two behave toward one another — the manner a reader of
              Type, Qualities, and State alone would get wrong (Decision 076)
 ```
 
-`Qualities` answers *what this relationship is* — its standing, direction, and rank. `Texture` answers *how it is expressed*. The two are not interchangeable: standing is a scalar the simulation reads structurally, while manner is the observable behavior that makes a restored relationship recognizable as the same one.
+`Qualities` answers *what this relationship is* — its standing, direction, and rank. `Texture` answers *how it is expressed*.
+
+**`Qualities` is the standing now, not the reading at formation.** A relationship's `State` moves with play, and a `Qualities` left at its first meeting describes a relationship that no longer exists while the record stays well-formed. `qualities_as_of` dates the standing: it names the Event through which a writer last re-read `Qualities` and `Type` against `State`, and it may not be older than the latest Event the relationship record cites anywhere — `provenance`, `state`, `history`, `texture` or `moved_by_events`. A writer who moves `State` re-reads the standing in the same write, rewrites it if the standing moved, and advances the date either way. `tools/validate_repository.ps1` compares the two Event numbers and nothing else; it cannot tell whether the re-read happened, only that it was claimed no earlier than the state it answers for (Decision 095). The two are not interchangeable: standing is a scalar the simulation reads structurally, while manner is the observable behavior that makes a restored relationship recognizable as the same one.
 
 **`Texture` is required for a relationship whose endpoints are both Characters and whose type is not institutional, once play has established any.** It is optional and normally empty for membership, governance, jurisdiction, and diplomatic links, which have standing but no manner. `tools/validate_repository.ps1` checks presence only — that the field exists where required — and never adjudicates its content, for the reason Decision 071 gives when it declines to check whether an index row is still true.
 
@@ -693,6 +698,10 @@ A conforming repository satisfies the referential-integrity invariants (Section 
 Every Persistent Object in live mutable canon declares the current Data Model version in `schema_version`. The Repository Validation Barrier rejects a stale live schema tag. Immutable checkpoints are excluded from this live-state check and retain their captured schema; their mismatch is handled explicitly through restoration and migration (Section 12.4).
 
 A conforming repository also satisfies the presence invariants (Section 9.2; Decision 073): every entity holds at most one `canonical_state.location`; a Character entity in a live campaign ledger declares exactly one; and a carried Resource's location uses the `carried by <ENT->` form alone, naming a defined possessor and asserting no additional place.
+
+**A sealed volume keeps the schema it was sealed under** (Decision 095). It is byte-frozen from its first capture (Decision 094), so it is excluded from the live schema-tag check exactly as an immutable checkpoint is. Every other obligation on an object inside it still applies.
+
+A conforming repository also satisfies the **relationship standing invariant** (Section 10; Decision 095): a Relationship in a live campaign ledger whose record cites an Event later than its campaign's `relationship_standing_baseline` carries `qualities_as_of`, and that Event is no older than the latest Event the record cites, `qualities_as_of` itself excepted.
 
 A conforming canonical file also contains **no unresolved template placeholder tokens**. A filled world or campaign file holds real identifiers and values only; the placeholder tokens used by templates (`ENT-XXXXXX`, `REC-XXXXXX`, `EVT-XXXXXX`, `REL-XXXXXX`, `<required: …>`, `<optional: …>`, `<generated: …>`) must not appear in a canonical file. The template conventions are defined in `templates/000_TEMPLATE_CONVENTIONS.md`.
 
@@ -814,6 +823,21 @@ Migration of live mutable state:
 **World-profile compatibility declarations are world authoring and are not moved by this contract.** A `206_WORLD_RULE_PROFILE.md` compatibility line advances with its own profile version, and nothing gates it against the current Data Model — Reikon has declared `Data Model 0.1.4` across two schema advances with every gate green, which is the standing evidence that this surface is documentation rather than a binding. Prior contracts listed it among the things to update; none of them did. Recording the gap is the accurate treatment, and closing it is a separate change against the surface itself.
 
 Immutable checkpoints remain byte-unchanged at their captured schema. Restoration applies each migration in order as applicable, through 0.1.6 → 0.1.7. This migration consumes no fictional time, derives no historical evidence, creates no entity state, and **allocates no identifier**: no Character gains a disposition by migrating, and the baseline is an entity high-water mark a world declares at adoption rather than a newly minted migration Event.
+
+### 12.4.6 Data Model 0.1.7 → 0.1.8
+
+Decision 095 adds `qualities_as_of` to Relationship structure (Section 10). It is the Decision 076 shape again, a field on an existing specialization, required once coverage reaches the record, so it advances the schema and authors a contract.
+
+Migration of live mutable state:
+
+1. Retag every live Persistent Object and Canonical Record from schema 0.1.7 to 0.1.8. **A sealed volume is not retagged.** It is byte-frozen (Decision 094) and keeps its captured schema, as a checkpoint does (Section 12.3).
+2. **Do not backfill standing dates.** Coverage is engine-general and prospective, on the Decision 092 shape: each configured campaign declares `relationship_standing_baseline` in `090_CAMPAIGN_STARTUP.md`, its Event high-water mark at adoption, and the obligation binds a relationship only once its record cites a later Event. **A missing baseline means fully covered.**
+3. A writer may stamp `qualities_as_of` on a relationship whose standing they have actually re-read against its state. It is set to the latest Event the record cites, never to a later Event the writer did not read the record through. A relationship that has not been re-read is backlog, not a defect, and gains its date the next time play moves it.
+4. Update current manifests, templates, and bindings, then run the Repository Validation Barrier.
+
+**The residue, recorded rather than implied away.** The check reads Event numbers only (Decision 071), so it cannot see a date advanced without a re-read. It reads the whole record rather than `state` alone. The first reading, `state` alone, left every relationship whose state cites no Event out of reach for good: 32 at adoption across four campaigns, four of them with no `state` field at all and six of them Gatefall: Pendragon's with its protagonist. It was corrected before landing. A relationship moved with no Event cited anywhere in its record is still invisible, and for a campaign under participation coverage that move already fails Decision 085, which requires a moved record to reference the Event that moved it.
+
+Immutable checkpoints remain byte-unchanged at their captured schema. Restoration applies each migration in order as applicable, through 0.1.7 → 0.1.8. This migration consumes no fictional time, derives no historical evidence, changes no standing, and **allocates no identifier**: the baseline is an Event high-water mark a campaign declares at adoption, not a newly minted migration Event.
 
 ---
 

@@ -10,7 +10,7 @@
 ```yaml
 id: REC-000079
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001218
@@ -1196,7 +1196,7 @@ subjects:
 ```yaml
 id: EVT-001001
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1241,7 +1241,7 @@ description: "**Ordinary combat only — ten trivial S-Rank clears, ordinary att
 ```yaml
 id: EVT-001002
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1274,7 +1274,7 @@ description: "Elias Kane visited the Winnetka house that evening as planned, bee
 ```yaml
 id: EVT-001003
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1310,7 +1310,7 @@ description: "**`quiet_days` 3 → 4** — 2026-09-15 read as a quiet day (ten i
 ```yaml
 id: EVT-001004
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1350,7 +1350,7 @@ description: "Full regimen at the lakefront, Kane joining again — no roll, est
 ```yaml
 id: EVT-001005
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1392,7 +1392,7 @@ description: "**Every Mana Crystal in the dimensional inventory sold to the Syst
 ```yaml
 id: EVT-001006
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1424,7 +1424,7 @@ description: "Texted confirmations exchanged with Dario Wexler (tonight, 20:00, 
 ```yaml
 id: EVT-001007
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1529,7 +1529,7 @@ description: "Far door reopened at the Denver facility (2,500 Mana, fixed). Full
 ```yaml
 id: EVT-001008
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1566,7 +1566,7 @@ description: "Walk to the Landing (-106 Mana, 2,277→2,171). Door-close cost (2
 ```yaml
 id: EVT-001009
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1600,7 +1600,7 @@ description: "**Marisol Cade minted (`ENT-000281`), first meeting.** Kane called
 ```yaml
 id: EVT-001010
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1630,7 +1630,7 @@ description: "Alexander Rift-stepped Kane to Palos Preserves, a personally signi
 ```yaml
 id: EVT-001011
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1776,7 +1776,7 @@ description: "Rift-stepped back to Denver, reopened the far door (2,500 Mana). F
 ```yaml
 id: EVT-001012
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1850,7 +1850,7 @@ description: "**Promotion barrier for `EVT-000999`-`EVT-001011`, run at the play
 ```yaml
 id: EVT-001013
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1889,7 +1889,7 @@ description: "Alexander called Kane back, retrieved him from his apartment (a re
 ```yaml
 id: EVT-001014
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1928,7 +1928,7 @@ description: "**Kane attempted, at Alexander's request, to voluntarily collapse 
 ```yaml
 id: EVT-001015
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -1967,7 +1967,7 @@ description: "First in-person meeting with Dario Wexler (`ENT-000265`), The Side
 ```yaml
 id: EVT-001016
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2007,7 +2007,7 @@ description: "Called Tereza ahead of tomorrow's meeting; Rift-stepped to the CGA
 ```yaml
 id: EVT-001017
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2045,7 +2045,7 @@ description: "Returned home from Prague. Kane still awake, had eaten and used th
 ```yaml
 id: EVT-001018
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2084,7 +2084,7 @@ description: "**`quiet_days` 4 → 5** — 2026-09-16 read as quiet again (coope
 ```yaml
 id: EVT-001019
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2112,7 +2112,7 @@ description: "Full regimen at the lakefront, solo — Kane still recovering Mana
 ```yaml
 id: EVT-001020
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2170,7 +2170,7 @@ description: "**Promotion barrier for `EVT-001013`-`EVT-001019`, run at the play
 ```yaml
 id: EVT-001021
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2218,7 +2218,7 @@ description: "Dario Wexler arrived at the Winnetka house exactly at noon Chicago
 ```yaml
 id: EVT-001022
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2255,7 +2255,7 @@ description: "At Reinhardt's request, a real demonstration: an anchored step fro
 ```yaml
 id: EVT-001023
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2300,7 +2300,7 @@ description: "Sparring agreed for 'next week' at the Denver facility, once the n
 ```yaml
 id: EVT-001024
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2338,7 +2338,7 @@ description: "**`quiet_days` 5 → 6** — 2026-09-17 read as quiet again (an in
 ```yaml
 id: EVT-001025
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2375,7 +2375,7 @@ description: "**54th daily, streak 41 → 42.** Morning regimen completed; AP +4
 ```yaml
 id: EVT-001026
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2415,7 +2415,7 @@ description: "Breakfast for four at the Winnetka house before the day's logistic
 ```yaml
 id: EVT-001027
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2452,7 +2452,7 @@ description: "Reinhardt's own jet, Prague to Frankfurt — ordinary flight, no a
 ```yaml
 id: EVT-001028
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2492,7 +2492,7 @@ description: "Called Aubrac from outside Brandhof's courtyard; stepped back to t
 ```yaml
 id: EVT-001029
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2526,7 +2526,7 @@ description: "Called Kesha Morrison with the board's real size — five S-Rank h
 ```yaml
 id: EVT-001030
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2566,7 +2566,7 @@ description: "Rift-stepped to BGM National HQ (anchor 16) for a requested thirty
 ```yaml
 id: EVT-001031
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2603,7 +2603,7 @@ description: "**Compressed at the player's own request** — two in-fiction days
 ```yaml
 id: EVT-001032
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2670,7 +2670,7 @@ description: "**Promotion barrier for `EVT-001021`-`EVT-001031`, run at the play
 ```yaml
 id: EVT-001033
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2721,7 +2721,7 @@ description: "**Reconstructed at promotion from the surviving transcript of sess
 ```yaml
 id: EVT-001034
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2765,7 +2765,7 @@ description: "Anchored rift-step to the Paris café (anchor 41), then **Sprint a
 ```yaml
 id: EVT-001035
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2824,7 +2824,7 @@ description: "A converted light-industrial unit off a residential street, no sig
 ```yaml
 id: EVT-001036
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -2881,7 +2881,7 @@ description: "**System shop: Instant-Dungeon Key [S-Rank], 900,000 g** (Profile 
 ```yaml
 id: EVT-001037
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3043,7 +3043,7 @@ description: "Anchored rift-step to the Denver facility (5 Mana). **The far door
 ```yaml
 id: EVT-001038
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3077,7 +3077,7 @@ description: "Back through to Denver, nothing standing in the doorway. The far d
 ```yaml
 id: EVT-001039
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3120,7 +3120,7 @@ description: "Called Reinhardt — 'Now works. I'm home.' — and, on the thread
 ```yaml
 id: EVT-001040
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3184,7 +3184,7 @@ description: "Alexander called all four others himself; Kane picked up fast, Cad
 ```yaml
 id: EVT-001041
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3227,7 +3227,7 @@ description: "**Returns, reconciled at promotion to five anchored steps (25 Mana
 ```yaml
 id: EVT-001042
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3276,7 +3276,7 @@ description: "**Promotion barrier for `EVT-001033`-`EVT-001041`, run at the play
 ```yaml
 id: EVT-001043
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3317,7 +3317,7 @@ description: "**The owner adjudication queue `EVT-001042` left as a mandatory re
 ```yaml
 id: EVT-001044
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3357,7 +3357,7 @@ description: "**`quiet_days` 8 → 9.** The night passed asleep at Winnetka, 23:
 ```yaml
 id: EVT-001045
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3400,7 +3400,7 @@ description: "Woke at the 06:00 window. Kane was already up with two coffees, an
 ```yaml
 id: EVT-001046
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3437,7 +3437,7 @@ description: "**Alexander called Sorcha Bellweather before it aired, as he had p
 ```yaml
 id: EVT-001047
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3486,7 +3486,7 @@ description: "Kane came in from the balcony ('Bureau's up early for a Monday') a
 ```yaml
 id: EVT-001048
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3531,7 +3531,7 @@ description: "Breakfast with Kane; nobody mentioned the broadcast. **07:35, the 
 ```yaml
 id: EVT-001049
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3587,7 +3587,7 @@ description: "**Entry: true Rank S** (read from outside). Anomaly rolled twice w
 ```yaml
 id: EVT-001050
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3629,7 +3629,7 @@ description: "**Loot (Sections 11.1-11.2):** beast drops, one crystal per beast 
 ```yaml
 id: EVT-001051
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3685,7 +3685,7 @@ description: "**Home to wait, ~2h45m skipped at the player's instruction; what r
 ```yaml
 id: EVT-001052
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -3731,7 +3731,7 @@ description: "**Promotion barrier for `EVT-001043`-`EVT-001051`, at the player's
 ```yaml
 id: EVT-001053
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 kind: social
 provenance:
@@ -3777,7 +3777,7 @@ description: "**12:06-12:33, the Winnetka house, the broadcast still live on thr
 ```yaml
 id: EVT-001054
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 kind: work
 provenance:
@@ -3816,7 +3816,7 @@ description: "**13:20-14:19, the Winnetka house.** The `@PendragonGuild` inbox, 
 ```yaml
 id: EVT-001055
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -3853,7 +3853,7 @@ description: "**Promotion barrier for `EVT-001053`-`EVT-001054`, at the player's
 ```yaml
 id: EVT-001056
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -3892,7 +3892,7 @@ description: "**14:19-14:44, the Winnetka house then the lakefront.** Kane staye
 ```yaml
 id: EVT-001057
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -3937,7 +3937,7 @@ description: "**14:44-14:52, the Denver containment facility.** Anchored step fr
 ```yaml
 id: EVT-001058
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4008,7 +4008,7 @@ description: "**14:52-18:52, the far side.** Far door opened at the Denver facil
 ```yaml
 id: EVT-001059
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4048,7 +4048,7 @@ description: "**Promotion barrier for `EVT-001056`-`EVT-001058`, at the player's
 ```yaml
 id: EVT-001060
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4101,7 +4101,7 @@ description: "**18:52-19:10, the Denver facility then the Assay's own channel.**
 ```yaml
 id: EVT-001061
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4146,7 +4146,7 @@ description: "**19:10-19:45, the Denver facility.** Woke all three captives with
 ```yaml
 id: EVT-001062
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4192,7 +4192,7 @@ description: "**19:45-20:15, Denver then the Landing.** Drank a Greater Mana Pot
 ```yaml
 id: EVT-001063
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4242,7 +4242,7 @@ description: "**20:15-21:17, Denver then Winnetka.** Called Delia Okonjo: a fast
 ```yaml
 id: EVT-001064
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4283,7 +4283,7 @@ description: "**Promotion barrier for `EVT-001060`-`EVT-001063`, at the player's
 ```yaml
 id: EVT-001065
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4316,7 +4316,7 @@ description: "The 06:00 tick (full mechanical detail: `110_WORLD_LEDGER.md`). 58
 ```yaml
 id: EVT-001066
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4361,7 +4361,7 @@ description: "Confirmed-A directed assignment, West Loop freight building. True 
 ```yaml
 id: EVT-001067
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4406,7 +4406,7 @@ description: "Confirmed-A directed assignment, Pilsen rail yard. Rarity 🎲59, 
 ```yaml
 id: EVT-001068
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4443,7 +4443,7 @@ description: "**Delia Okonjo** named the HQ front-runner: a converted Denver log
 ```yaml
 id: EVT-001069
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4494,7 +4494,7 @@ description: "**Chicago, the Loop, 1PM.** Public recruitment open house, honest 
 ```yaml
 id: EVT-001070
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4531,7 +4531,7 @@ description: "Winnetka backyard. Full-force Standfast forced-redirect drills: �
 ```yaml
 id: EVT-001071
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4564,7 +4564,7 @@ description: "The 06:00 tick (full mechanical detail: `110_WORLD_LEDGER.md`). 59
 ```yaml
 id: EVT-001072
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4607,7 +4607,7 @@ description: "Confirmed-S, NAMED directed assignment, Gary IN industrial belt. R
 ```yaml
 id: EVT-001073
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4648,7 +4648,7 @@ description: "**Prague, 2PM local.** Same honest pitch; pressed hard on pay pari
 ```yaml
 id: EVT-001074
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4685,7 +4685,7 @@ description: "Gary's op determination initially settled at the flat A-Rank rate 
 ```yaml
 id: EVT-001075
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4738,7 +4738,7 @@ description: "Denver facility, far door opened fresh (2,500 Mana), solo — no g
 ```yaml
 id: EVT-001076
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4775,7 +4775,7 @@ description: "Full account: `130_NPCS_AND_FACTIONS.md` (`ENT-000147`). Walt's `O
 ```yaml
 id: EVT-001077
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -4810,7 +4810,7 @@ description: "**Promotion barrier for `EVT-001065`-`EVT-001076`, at the player's
 ```yaml
 id: EVT-001078
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -4851,7 +4851,7 @@ description: "**Post-session owner ruling, no fictional time.** An audit of the 
 ```yaml
 id: EVT-001079
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -4891,7 +4891,7 @@ description: "**Three owner rulings settled on resuming, before the scene opened
 ```yaml
 id: EVT-001080
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -4927,7 +4927,7 @@ description: "**Five backlogged Daily Random Boxes opened** (dailies #60-64, one
 ```yaml
 id: EVT-001081
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -4950,7 +4950,7 @@ description: "Full roll and result: `110_WORLD_LEDGER.md`, `world_ticks` boundar
 ```yaml
 id: EVT-001082
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -4980,7 +4980,7 @@ description: "**58th daily regimen completed**, established routine, no roll -- 
 ```yaml
 id: EVT-001083
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5017,7 +5017,7 @@ description: "**New York, 10:00 Eastern.** BGM Region II's own building, the fif
 ```yaml
 id: EVT-001084
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5056,7 +5056,7 @@ description: "The Prague D-Rank Gate Jitka Novotná forwarded as a courtesy (nea
 ```yaml
 id: EVT-001085
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5085,7 +5085,7 @@ description: "The Prague office, mid-buildout -- desks in, dispatch board half-b
 ```yaml
 id: EVT-001086
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5120,7 +5120,7 @@ description: "**Correction, not a new fact.** The Guild HQ campus Delia Okonjo f
 ```yaml
 id: EVT-001087
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5149,7 +5149,7 @@ description: "An unrecognized number, resolved through a shared BGM directory li
 ```yaml
 id: EVT-001088
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-resume
@@ -5188,7 +5188,7 @@ description: "**Promotion barrier for `EVT-001079`-`EVT-001087`, at the player's
 ```yaml
 id: EVT-001089
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5219,7 +5219,7 @@ description: "**Adoption recorded at the campaign's current anchor, 2026-09-24 1
 ```yaml
 id: EVT-001090
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5257,7 +5257,7 @@ description: "**19:04-20:49 Chicago clock (20:04-21:49 Boston, 17:04-18:49 Sacra
 ```yaml
 id: EVT-001091
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5294,7 +5294,7 @@ description: "**20:49-21:33 Chicago (18:49-19:33 Sacramento), apartment 2C.** **
 ```yaml
 id: EVT-001092
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5335,7 +5335,7 @@ description: "**21:33-22:15 Chicago.** **Anchored step to the Winnetka house wit
 ```yaml
 id: EVT-001093
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5374,7 +5374,7 @@ description: "**22:15-06:00 Chicago; the 7h40m span was skipped at the player's 
 ```yaml
 id: EVT-001094
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5405,7 +5405,7 @@ description: "Full roll and result: `110_WORLD_LEDGER.md`, `world_ticks` boundar
 ```yaml
 id: EVT-001095
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5444,7 +5444,7 @@ description: "**06:00-06:22 Chicago.** Six items on the phone. **Region V duty d
 ```yaml
 id: EVT-001096
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5479,7 +5479,7 @@ description: "**Promotion barrier for `EVT-001089`-`EVT-001095`, at the player's
 ```yaml
 id: EVT-001097
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5510,7 +5510,7 @@ description: "**The Tulsa B-Rank break, taken and cleared solo, 2026-09-25 ~06:5
 ```yaml
 id: EVT-001098
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5548,7 +5548,7 @@ description: "**Elena Cho (`ENT-000291`) signs associate agreement A-1, with an 
 ```yaml
 id: EVT-001099
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5585,7 +5585,7 @@ description: "**The Calumet corridor A-Rank Gate, cleared by the guild element u
 ```yaml
 id: EVT-001100
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5607,7 +5607,7 @@ description: "**Day 4 of the ten-day tour. Miami +174 signed, Houston +350 signe
 ```yaml
 id: EVT-001101
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5638,7 +5638,7 @@ description: "**A full circuit of the guild's standing offices in one evening**,
 ```yaml
 id: EVT-001102
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5664,7 +5664,7 @@ description: "**Owen Callahan's (`ENT-000139`) Friday 06:41 text about his Bridg
 ```yaml
 id: EVT-001103
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5696,7 +5696,7 @@ description: "**The 2026-09-26 06:00 tick, Section 9.1 steps 1-11.** Real dice t
 ```yaml
 id: EVT-001104
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5738,7 +5738,7 @@ description: "**The Karlin tram-depot Gate, Prague, entered and cleared solo at 
 ```yaml
 id: EVT-001105
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5765,7 +5765,7 @@ description: "**The Paris recruitment event, 14:00 local / 07:00 Chicago**, ente
 ```yaml
 id: EVT-001106
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5788,7 +5788,7 @@ description: "**267 S-Rank crystals and 3 S-Rank cores filed for auction through
 ```yaml
 id: EVT-001107
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5837,7 +5837,7 @@ description: "**The Detroit HQ's restricted third floor put into operation as th
 ```yaml
 id: EVT-001108
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5878,7 +5878,7 @@ description: "**Promotion barrier for `EVT-001097`-`EVT-001107`, at the player's
 ```yaml
 id: EVT-001109
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5911,7 +5911,7 @@ description: "**2026-09-26 10:05-11:52 Chicago (11:05-12:52 Detroit), the HQ thi
 ```yaml
 id: EVT-001110
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5936,7 +5936,7 @@ description: "**The Amsterdam recruitment event, 19:00 local / 12:00 Chicago**, 
 ```yaml
 id: EVT-001111
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -5972,7 +5972,7 @@ description: "**14:34-18:00 Chicago, the Winnetka house.** Anchored step home fr
 ```yaml
 id: EVT-001112
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6006,7 +6006,7 @@ description: "**18:00-05:58 Chicago, the Winnetka house.** Dinner. **Kane** (`EN
 ```yaml
 id: EVT-001113
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6028,7 +6028,7 @@ description: "**The Sunday 2026-09-27 06:00 world tick, run under Profile 1.121 
 ```yaml
 id: EVT-001114
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6072,7 +6072,7 @@ description: "**06:02-08:22 Chicago.** **Prague's B-Rank (`OBJ-72`) resolved.** 
 ```yaml
 id: EVT-001115
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6104,7 +6104,7 @@ description: "**08:24-10:36 Chicago.** Anchored step to the Denver facility (5 M
 ```yaml
 id: EVT-001116
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6136,7 +6136,7 @@ description: "**10:38-12:07 Chicago.** Anchored step to the Landing (5 Mana, 2,6
 ```yaml
 id: EVT-001117
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6162,7 +6162,7 @@ description: "**12:14-14:24 Chicago.** A green-chile burrito on Colfax in Denver
 ```yaml
 id: EVT-001118
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6199,7 +6199,7 @@ description: "**14:31-15:30 Chicago.** **Renata Okonkwo-Vance** (`ENT-000233`) c
 ```yaml
 id: EVT-001119
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6230,7 +6230,7 @@ description: "**Adoption recorded at the campaign's current anchor, 2026-09-27 1
 ```yaml
 id: EVT-001120
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6354,7 +6354,7 @@ description: "**Promotion barrier for `EVT-001109`-`EVT-001119`, at the player's
 ```yaml
 id: EVT-001121
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6391,7 +6391,7 @@ description: "**Owner ruling on resuming, before the scene opened; no fictional 
 ```yaml
 id: EVT-001122
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6470,7 +6470,7 @@ description: "**Restored to the record retroactively, on the player's account, a
 ```yaml
 id: EVT-001123
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6516,7 +6516,7 @@ description: "**15:30 Dallas.** The trade wire announced that Ironline Capital h
 ```yaml
 id: EVT-001124
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6568,7 +6568,7 @@ description: "**The board asked, in one line: *Should I answer that?*** Kane, Ma
 ```yaml
 id: EVT-001125
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6608,7 +6608,7 @@ description: "**Anjali Desai** (`ENT-000288`) delivered the office-limits table 
 ```yaml
 id: EVT-001126
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6649,7 +6649,7 @@ description: "**Anchored step to the Los Angeles office, MP 6,562 -> 6,557 (5)**
 ```yaml
 id: EVT-001127
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6685,7 +6685,7 @@ description: "**The Monday 2026-09-28 06:00 world tick, the first run under Prof
 ```yaml
 id: EVT-001128
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6724,7 +6724,7 @@ description: "**Automatic context-preservation checkpoint** for `EVT-001121`-`EV
 ```yaml
 id: EVT-001129
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6763,7 +6763,7 @@ description: "**The Prague A-Rank, NAMED via the CGA at the 06:00 tick (`EVT-001
 ```yaml
 id: EVT-001130
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6806,7 +6806,7 @@ description: "**Why other branches were not resolving automatically.** Section 1
 ```yaml
 id: EVT-001131
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6843,7 +6843,7 @@ description: "**Promotion barrier for `EVT-001129`-`EVT-001130`, at the player's
 ```yaml
 id: EVT-001132
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6878,7 +6878,7 @@ description: "**He opened the phone at 06:47 and read the whole stack in eight m
 ```yaml
 id: EVT-001133
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6910,7 +6910,7 @@ description: "**The 62nd daily completed at 08:10 Chicago**: 100 push-ups, 100 s
 ```yaml
 id: EVT-001134
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -6950,7 +6950,7 @@ description: "**He called Kesha Morrison (`ENT-000130`)** about the interview re
 ```yaml
 id: EVT-001135
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7003,7 +7003,7 @@ description: "**He called the two who applied with only a city and a P.O. box, t
 ```yaml
 id: EVT-001136
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7059,7 +7059,7 @@ description: "**Anchored step to the Houston office**, MP 6,557 -> 6,552 (-5), r
 ```yaml
 id: EVT-001137
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7129,7 +7129,7 @@ description: "**Kesha delivered at 11:56 Chicago** (her noon commitment): the 34
 ```yaml
 id: EVT-001138
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7178,7 +7178,7 @@ description: "**The Seattle event, Day 7 (`OBJ-60`), 12:00 Pacific / 14:00 Chica
 ```yaml
 id: EVT-001139
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7217,7 +7217,7 @@ description: "**Promotion barrier for `EVT-001132`-`EVT-001138`, at the player's
 ```yaml
 id: EVT-001140
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7261,7 +7261,7 @@ description: "**Offered Dario the guild** (I need good people, and I'm the only 
 ```yaml
 id: EVT-001141
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7300,7 +7300,7 @@ description: "**Said goodbyes to Dario; anchored step to Prague** (nearest groun
 ```yaml
 id: EVT-001142
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7346,7 +7346,7 @@ description: "**Sprint to the venue**, last block walked. **The Tel Aviv event.*
 ```yaml
 id: EVT-001143
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7389,7 +7389,7 @@ description: "Gave Noa Shapira the broker's mail-box address and Fulton Market d
 ```yaml
 id: EVT-001144
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7432,7 +7432,7 @@ description: "**Anchored step to Stockholm.** Linnea Bergström confirmed her Mo
 ```yaml
 id: EVT-001145
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7471,7 +7471,7 @@ description: "**Run retroactively at 08:03 Chicago, flagged by the player** — 
 ```yaml
 id: EVT-001146
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7510,7 +7510,7 @@ description: "**Reviewed Section 13.7.5's four conditions office by office** at 
 ```yaml
 id: EVT-001147
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7547,7 +7547,7 @@ description: "**Promotion barrier for `EVT-001140`-`EVT-001146`, at the player's
 ```yaml
 id: EVT-001148
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7585,7 +7585,7 @@ description: "**Texted Kane on waking**: location and morning's focus. Kane, at 
 ```yaml
 id: EVT-001149
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7620,7 +7620,7 @@ description: "**Confirmed span, player-requested nap before London**, four hours
 ```yaml
 id: EVT-001150
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7661,7 +7661,7 @@ description: "Quick meal, shower, **anchored step to London** (flat 5 Mana, repa
 ```yaml
 id: EVT-001151
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7693,7 +7693,7 @@ description: "**Worked the floor personally this time** — handshakes, names, a
 ```yaml
 id: EVT-001152
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7725,7 +7725,7 @@ description: "**Anchored home to Winnetka** (flat 5 Mana, repaid) — the return
 ```yaml
 id: EVT-001153
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7764,7 +7764,7 @@ description: "Sauna 15 minutes, pool swim 15, sauna 20, a cold twenty-minute swi
 ```yaml
 id: EVT-001154
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7807,7 +7807,7 @@ description: "**Promotion barrier for `EVT-001148`-`EVT-001153`, at the player's
 ```yaml
 id: EVT-001155
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7844,7 +7844,7 @@ description: "Prague/Owen-story mixup caught and corrected mid-scene (Kane and D
 ```yaml
 id: EVT-001156
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7883,7 +7883,7 @@ description: "A horror movie, watched close together under one blanket — genui
 ```yaml
 id: EVT-001157
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7920,7 +7920,7 @@ description: "Off-page, at the player's own framing. Sleep followed. No pool cos
 ```yaml
 id: EVT-001158
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7960,7 +7960,7 @@ description: "**The 63rd daily quest lapsed, never attempted before its 23:59 20
 ```yaml
 id: EVT-001159
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -7997,7 +7997,7 @@ description: "Woke tangled together, unhurried. Continued intimacy, off-page at 
 ```yaml
 id: EVT-001160
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8036,7 +8036,7 @@ description: "**Kane tasked with personally pushing Chicago's own stuck regulato
 ```yaml
 id: EVT-001161
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8075,7 +8075,7 @@ description: "**Promotion barrier for `EVT-001155`-`EVT-001160`, at the player's
 ```yaml
 id: EVT-001162
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8117,7 +8117,7 @@ description: "**Anchored step to Detroit HQ** (flat 5 Mana, repaid) opens the sp
 ```yaml
 id: EVT-001163
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8156,7 +8156,7 @@ description: "**Announced mandatory weekly combat training for menders, starting
 ```yaml
 id: EVT-001164
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8198,7 +8198,7 @@ description: "**A long list built in one conversation with Anjali Desai:**
 ```yaml
 id: EVT-001165
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8237,7 +8237,7 @@ description: "**Keen Sense re-activated** (Mana 1, repaid) for a walkthrough of 
 ```yaml
 id: EVT-001166
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8273,7 +8273,7 @@ description: "**System shop, B-Rank Torso — 90,000 gold.** Gold 356,898,131 ->
 ```yaml
 id: EVT-001167
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8305,7 +8305,7 @@ description: "**Anchored step to the Denver facility** (flat 5 Mana, repaid). Co
 ```yaml
 id: EVT-001168
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8344,7 +8344,7 @@ description: "**Promotion barrier for `EVT-001162`-`EVT-001167`, at the player's
 ```yaml
 id: EVT-001169
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8388,7 +8388,7 @@ description: "**10:17-10:24 Chicago.** **The far door opened at the Denver facil
 ```yaml
 id: EVT-001170
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8418,7 +8418,7 @@ description: "**Owner ruling, given out of character at the point `worlds/gatefa
 ```yaml
 id: EVT-001171
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8455,7 +8455,7 @@ description: "**10:24-10:27.** Orenne stood and agreed — *I'll see it. I won't
 ```yaml
 id: EVT-001172
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8509,7 +8509,7 @@ description: "**10:28-12:14 Chicago.** Five anchored steps (5 Mana each) and one
 ```yaml
 id: EVT-001173
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8549,7 +8549,7 @@ description: "**12:16-12:21.** Anchored step back to the Denver facility with Or
 ```yaml
 id: EVT-001174
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8589,7 +8589,7 @@ description: "**Succession fired** (Profile Section 7.6.2, rung two: a System-be
 ```yaml
 id: EVT-001175
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8624,7 +8624,7 @@ description: "**12:22-12:56.** The body was not moved. Fuel from the dimensional
 ```yaml
 id: EVT-001176
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8661,7 +8661,7 @@ description: "**12:58-14:15.** Anchored step to the **Winnetka house** (5 Mana, 
 ```yaml
 id: EVT-001177
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8699,7 +8699,7 @@ description: "**14:15-14:22, Anjali Desai by phone.** She opened with a leadersh
 ```yaml
 id: EVT-001178
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8729,7 +8729,7 @@ description: "**Owner ruling at the promotion barrier, on the provisional mechan
 ```yaml
 id: EVT-001179
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8780,7 +8780,7 @@ description: "**Promotion barrier for `EVT-001169`-`EVT-001178`, at the player's
 ```yaml
 id: EVT-001180
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8815,7 +8815,7 @@ description: "**14:22-14:24, the same call.** Alexander: *Send it.* Anjali Desai
 ```yaml
 id: EVT-001181
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8854,7 +8854,7 @@ description: "**14:24-14:31.** Asked how the regulators stood, Anjali said it be
 ```yaml
 id: EVT-001182
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8887,7 +8887,7 @@ description: "**14:31-14:33.** Anchored step to **the BGM lobby** (anchor 9, 5 M
 ```yaml
 id: EVT-001183
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8923,7 +8923,7 @@ description: "**Harlan Boyce (`ENT-000352`, minted, `OBJ-68`'s line reviewer) ca
 ```yaml
 id: EVT-001184
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8957,7 +8957,7 @@ description: "**Boyce walked him up to Desmond Farraday.** Record loaded before 
 ```yaml
 id: EVT-001185
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -8997,7 +8997,7 @@ description: "**First meeting with Director Naomi Okafor (`ENT-000107`)**, Farra
 ```yaml
 id: EVT-001186
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9038,7 +9038,7 @@ description: "Anchored step home from the Director's office (5 Mana). **Farraday
 ```yaml
 id: EVT-001187
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9073,7 +9073,7 @@ description: "Recycled the twenty Oakland empties and the six Urquell empties. S
 ```yaml
 id: EVT-001188
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9116,7 +9116,7 @@ description: "**The guild's first contract-town clears, reported by Anjali as ea
 ```yaml
 id: EVT-001189
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9157,7 +9157,7 @@ description: "**Kesha Morrison's US map, 16:58**, two minutes early: gaps measur
 ```yaml
 id: EVT-001190
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9203,7 +9203,7 @@ description: "**Kane and Dario arrived by car, 18:53**, early; Alexander on the 
 ```yaml
 id: EVT-001191
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9252,7 +9252,7 @@ description: "**Anjali, 19:51-19:52:** the connector live since 18:06, tested on
 ```yaml
 id: EVT-001192
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9290,7 +9290,7 @@ description: "**The 64th daily lapsed incomplete at 00:00** (streak 0 -> 0). Bef
 ```yaml
 id: EVT-001193
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9328,7 +9328,7 @@ description: "Kane, dry: *the bathroom is eleven feet away*; he did not press, a
 ```yaml
 id: EVT-001194
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9371,7 +9371,7 @@ description: "**Promotion barrier for `EVT-001180`-`EVT-001193`, at the player's
 ```yaml
 id: EVT-001195
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9404,7 +9404,7 @@ description: "A kiss on each cheek for Kane and Dario, who did not wake; at 03:3
 ```yaml
 id: EVT-001196
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9438,7 +9438,7 @@ description: "**Andrei Bratu** (`ENT-000353`, minted, collision-checked), C-Rank
 ```yaml
 id: EVT-001197
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9478,7 +9478,7 @@ description: "**Viorica Bratu** (`ENT-000354`, minted), Andrei's mother, unawake
 ```yaml
 id: EVT-001198
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9520,7 +9520,7 @@ description: "Asked whether the guild would take the valley's young awakened: **
 ```yaml
 id: EVT-001199
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9557,7 +9557,7 @@ description: "Twenty minutes more at the fence, answering what he was asked and 
 ```yaml
 id: EVT-001200
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9596,7 +9596,7 @@ description: "Back into bed beside them, the duvet over all three; Kane, half aw
 ```yaml
 id: EVT-001201
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9628,7 +9628,7 @@ description: "**Tier VII. `quiet_days` 3 -> 4** (no contested scene on 09-30; th
 ```yaml
 id: EVT-001202
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9668,7 +9668,7 @@ description: "*I will take care of it.* Kit from the pocket dimension; a **trave
 ```yaml
 id: EVT-001203
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9725,7 +9725,7 @@ description: "Anchored home (5 Mana). Kane timed it at eight minutes. **Milena:*
 ```yaml
 id: EVT-001204
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9758,7 +9758,7 @@ description: "The regimen on the back lawn and a 10 km run south along Sheridan 
 ```yaml
 id: EVT-001205
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9797,7 +9797,7 @@ description: "**Renata**, called: GB-63 pulled from the Region V board on his re
 ```yaml
 id: EVT-001206
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9838,7 +9838,7 @@ description: "**Promotion barrier for `EVT-001195`-`EVT-001205`, at the player's
 ```yaml
 id: EVT-001207
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9871,7 +9871,7 @@ description: "**Three exchanges after the boss (The Count x1.10, x1.20, x1.30).*
 ```yaml
 id: EVT-001208
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9902,7 +9902,7 @@ description: "**The Guard Shield read.** Flux Sight's B rung on sight (Tier 1): 
 ```yaml
 id: EVT-001209
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9930,7 +9930,7 @@ description: "Renata's 08:06 text waiting at the mouth: Region V's duty desk had
 ```yaml
 id: EVT-001210
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -9968,7 +9968,7 @@ description: "Ran home up the bluff, 08:35-08:38. **Keen Sense** (1 Mana) at Per
 ```yaml
 id: EVT-001211
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -10005,7 +10005,7 @@ description: "**Mercedes Salinas answered at about 09:27** (relayed on Dario's p
 ```yaml
 id: EVT-001212
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -10046,7 +10046,7 @@ description: "**Promotion barrier for `EVT-001207`-`EVT-001211`, at the player's
 ```yaml
 id: EVT-001213
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -10080,7 +10080,7 @@ description: "The tickle fight: *never*, an in-scene step above the bed and down
 ```yaml
 id: EVT-001214
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -10118,7 +10118,7 @@ description: "**Kane's twenty-minute read on the Director:** she has read Okafor
 ```yaml
 id: EVT-001215
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -10151,7 +10151,7 @@ description: "**Anchored step to London** (5 Mana). Imogen Hartley at reception:
 ```yaml
 id: EVT-001216
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -10177,7 +10177,7 @@ description: "**Anchored step to Denver** (5 Mana). The retrofit read at the doo
 ```yaml
 id: EVT-001217
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay
@@ -10207,7 +10207,7 @@ description: "**Anchored step to HQ** (5 Mana). Past reception to the **basement
 ```yaml
 id: EVT-001218
 canonical_record: REC-000079
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: session-gameplay

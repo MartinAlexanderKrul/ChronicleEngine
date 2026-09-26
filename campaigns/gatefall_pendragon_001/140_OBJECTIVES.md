@@ -12,7 +12,7 @@ Objectives are tracked concerns, not a quest system. They are campaign content, 
 ```yaml
 id: REC-000078
 canonical_record: REC-000078
-schema_version: "0.1.7"
+schema_version: "0.1.8"
 status: active
 provenance:
   source: EVT-001218

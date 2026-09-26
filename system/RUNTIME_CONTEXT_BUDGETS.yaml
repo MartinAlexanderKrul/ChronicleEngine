@@ -972,7 +972,18 @@ surfaces:
       # already on disk and silent inside the 15% ratchet, and it is NOT folded
       # into the render change's figure. Three surfaces measured SMALLER than
       # their stored baselines despite the render change adding to all of them.
-      gatefall_pendragon_001:save: 2788
+      #
+      # `save` re-recorded 2026-09-26, 2788 -> 3259, for Decision 095. The save
+      # surface is the Save Algorithm section alone, so the split is exact:
+      #   already on disk, silent inside the ratchet at 3179    +391
+      #   Decision 095: step 3 derives the Bearer relationship
+      #   and presence fields of every referenced Character       +80
+      # The +391 is not this change's and is not attributed further here: it is
+      # Save Algorithm text added since the baseline was stored, measured at
+      # b737d40 before this change began, and recorded only because
+      # re-recording the baseline cannot leave it out. The paragraph was
+      # cut from ~194 tokens to 80 before this was re-recorded.
+      gatefall_pendragon_001:save: 3259
       # Re-recorded 2026-08-04, 26,991 -> 31,066, on the same owner ruling that
       # raised `gatefall_skills_known` to 1,100 bytes/entry. `/system` composes
       # the skills panel, so it carries that verbosity directly. Most of the

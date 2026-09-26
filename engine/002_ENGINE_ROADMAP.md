@@ -4,7 +4,7 @@
 
 **Engine Version:** 0.3.0 (Runtime & Persistence Hardening)
 **Development Target:** Version 0.4 — Economy & Opportunity
-**Data Model Version:** 0.1.7
+**Data Model Version:** 0.1.8
 **Status:** Version 0.3 released 2026-08-01; Version 0.4 is in **Capability Validation and the Prototype Campaign** (milestone 0.4.3), Architecture Freeze 2026-08-02
 
 # Current Sprint
@@ -993,7 +993,9 @@ Completion criteria:
 
 **Why it is here rather than in Version 0.5 or 0.6.** It was asked for by the owner from the prototype campaign's own files: the question was whether the engine keeps reading records that are no longer true. The measured answer was yes, inside the live records rather than the checkpoints. It draws on two later milestones and pre-empts neither. Version 0.5's *"long-term continuity across many campaigns and checkpoints"* gets a volume format. Milestone 0.6.3's *"retiring superseded state-field history"* gets the cure applied once, across one campaign, with a tool. 0.6.3's other half, *"the ledger-ownership rule that keeps it retired"*, is **not** delivered here and stays owed.
 
-Acceptance fixtures: `tools/test_sealed_volume_contract.ps1`. It proves the freeze fails on an edited, stray, gapped, orphaned or deleted volume, and that `tools/seal_campaign.py` keeps a retired value's citations in `moved_by_events` and opens a new volume once a checkpoint holds the old one.
+**Decision 095 admitted 2026-09-26**, the fifth post-freeze admission under Decision 086, from the same prototype. The rebase cured stale fields once; this keeps one class of them from going stale again. A Relationship's `qualities` is dated by `qualities_as_of`, and the gate fails a relationship whose record has moved past it. **Data Model 0.1.7 → 0.1.8**, contract at Section 12.4.6. It is a first piece of 0.6.3's *"ledger-ownership rule that keeps it retired"*, for one field class; the rest of that rule stays owed. If the owner rules it belongs to 0.6.3, Decision 095 records how it moves.
+
+Acceptance fixtures: `tools/test_sealed_volume_contract.ps1`. Decision 095: `tools/test_relationship_standing_contract.ps1`, eight cases, shown to fail with the check disabled. It proves the freeze fails on an edited, stray, gapped, orphaned or deleted volume, and that `tools/seal_campaign.py` keeps a retired value's citations in `moved_by_events` and opens a new volume once a checkpoint holds the old one.
 
 Explicit exclusions: no checkpoint is retired, by owner ruling. Nothing under `trim_policy.never_trim` is rebased. No checksum is introduced (Rules 13.6).
 

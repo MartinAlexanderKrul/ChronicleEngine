@@ -53,6 +53,7 @@ is a write that did not happen.
 | Spent to date | $2,200,000.00 |
 | Receivable | $14,702,500.00 |
 | Committed, not yet spent | $3,190,000.00 (58 B-Rank pieces, by 17:00 10-01) |
+| *Flag* | The 58 B-Rank pieces ($3,190,000) fell due 10-01 17:00 against a $1,764,700 balance; how they were paid is unrecorded (owner question, `180_CURRENT_STATE.md`). |
 | **Payroll, monthly from October** | **$53,514,583.33** (E-A members at Section 13.7.3 rates; first payment due 2026-10-31) |
 
 | Date | Movement | In | Out | Balance | Source |
@@ -85,7 +86,8 @@ is a write that did not happen.
 | 2026-09-30 onward | HQ buildout: training floor, artificer floor, lounge, lockers, medical restock, eight tunnel rooms (rush freight and overtime) | *not priced* | | `EVT-001164`, `EVT-001189` |
 | 2026-09-30 | Member salaries, each office from its signing day to 30 September, prorated by day (E-A at the payroll rates above): Chicago and Washington 9 days, Prague and Frankfurt 8, New York and Boston 7, Miami and Houston 6, Paris and Amsterdam 5, Dallas and Los Angeles 4, Seattle and San Francisco 3, Tel Aviv, Istanbul, Stockholm and London 2 | $9,082,849.29 | | `151_HUNTER_POPULATION_MODEL.md`, `140_OBJECTIVES.md` OBJ-60 |
 | 2026-09-30 | The three S-Ranks' September pay (Kane, Dario Wexler, Itai Barak) | *not priced* | | individual contracts, unrecorded |
-| **Total priced** | | **$99,087,849.29** | **90,000 g** | |
+| 2026-10-01 | 38 A-Rank pieces from the System shop for every A-Rank member (14 weapons, 16 armor, 8 accessories), left in HQ storage | | 1,200,000 g | `EVT-001216`, `EVT-001217` |
+| **Total priced** | | **$99,087,849.29** | **1,290,000 g** | |
 
 ---
 
@@ -108,7 +110,7 @@ is a write that did not happen.
 | 13 | 2026-09-30 | Toledo, downtown | D | D | Crew through the HQ tunnel, 7 in | Cleared; one striker concussed with two ribs broken, overnight in hospital (natural 1, Partial). | **$13,225 → guild, owed by Toledo** (D) | `EVT-001188` |
 | 14 | 2026-10-01 | Prague (CGA-named) | A | A | Céline Marchand's Continental A-Rank crew | Cleared before the 13:00 Prague window; 17 in, 17 out, two light injuries. | **$13,725,000 → guild, owed by the CGA** (A: $3,200,000 operation fee + 203 A-Rank crystals × $50,000 + 3 cores × $125,000) | `EVT-001201`, `EVT-001203` |
 | 15 | 2026-10-01 | Evanston, Central Street at the Metra (a break in progress) | C | C | **Alexander Pendragon, solo**; the Chicago branch (Tamsin Okoro's team) arrived second on Region V's emergency contract | Cleared in five exchanges: 12 Stalkers, 2 Hounds, the Tiler. Eighteen civilians unhurt. The branch's first emergency contract. | **$51,750 → guild (Chicago branch), owed by Region V** (C emergency contract; the harvest is inside it) | `EVT-001202` |
-| 16 | 2026-10-01 | GB-63, Sheridan Road, Chicago (carded C) | C (as assessed) | **S, red gate** | **Alexander Pendragon, solo**, held for him by BGM National on his read | Boss (the Kilnfather) dead in one exchange; the seal open, the clear window running to 09:41. | **≥ $6,500,000 → Alexander personally**, on filing ($500,000 flat + $6,000,000 severity, the lakefront terms), plus the haul at auction when taken | `EVT-001205` |
+| 16 | 2026-10-01 | GB-63, Sheridan Road, Chicago (carded C) | C (as assessed) | **S, red gate** | **Alexander Pendragon, solo**, held for him by BGM National on his read | The Kilnfather dead in one exchange (`EVT-001205`); nine Cinder Thralls and the Ember Warden in three more (`EVT-001207`); stripped clean, 384 mined, exited 08:30, closed 09:41 (`EVT-001208`). | **≥ $6,500,000 → Alexander personally**, on filing ($500,000 flat + $6,000,000 severity, the lakefront terms), **paid on countersignature 08:33** (`EVT-001209`); the haul (394 S crystals, 2 S cores) to auction: **unsold 10-01** under the reserve, relisted Mon 10-05 13:00 Chicago (`EVT-001222`) | `EVT-001205` |
 | 17 | 2026-10-01 | Automatic dispatch — Chicago branch, catchment Region V | E ×2 · D ×2 · C ×1 | as rolled | Chicago branch rota (Imani Whitaker dispatching) | 5 cleared, first automatic day (Section 13.7.5 daily dispatch). | **$86,250 → guild, receivable** (2 × $4,025 + 2 × $13,225 + $51,750) | `EVT-001201` |
 | 18 | 2026-10-01 | Automatic dispatch — Washington branch, catchment Region III | E ×2 · D ×1 · C ×1 | as rolled | Washington branch rota (Verity Prescott dispatching) | 4 cleared, first automatic day. | **$73,025 → guild, receivable** (2 × $4,025 + $13,225 + $51,750) | `EVT-001201` |
 | 19 | 2026-10-01 | Automatic dispatch — Frankfurt branch | E ×2 · D ×2 · C ×1 | as rolled | Frankfurt branch rota (Anselm Kretschmer dispatching) | 5 cleared, first automatic day. | **$86,250 → guild, receivable** (2 × $4,025 + 2 × $13,225 + $51,750) | `EVT-001201` |
@@ -125,7 +127,6 @@ is a write that did not happen.
 | Gate | Rank | Assigned to | Standing at 2026-10-01 07:41 | Objective |
 |---|---|---|---|---|
 | Holešovice, Prague (CGA-offered) | A | Joost van Rijn's Amsterdam crew, through the tunnel — Milena Horáková dispatching | Taken for the guild on the standing rule (*offered means taken*); commander and roster to the CGA by 14:00 Prague 10-01. | `OBJ-78` |
-| GB-63, Sheridan Road, Chicago | S (red gate, as run) | **Alexander Pendragon, solo** | Boss dead; nine Thralls and the Warden alive inside; loot and 384 S-Rank crystals in deposits unclaimed; window to 09:41. | `OBJ-68` |
 
 ---
 
@@ -140,3 +141,6 @@ is a write that did not happen.
 7. **Automatic dispatch from acceptance.** A branch whose regulator has accepted runs as a rate from the next 06:00 tick: Chicago, Washington, Frankfurt and Paris from 2026-10-01. *(Section 13.7.5; `EVT-001186`, `EVT-001199`.)*
 8. **Chicago US rates everywhere.** Every guild clearance, receivable and payout is priced at Chicago rates wherever the Gate is. *(Owner ruling, 2026-09-25 real date.)*
 9. **Salaries: Alexander pays September, the guild pays from October.** Every member is paid from their signing day; Alexander covers every salary through 30 September out of his own pocket, and the guild carries payroll from 1 October. Salaries are paid monthly, **in full to every member whether or not their office is live yet** or they have been dispatched. *(Owner rulings, 2026-09-25 real date.)*
+10. **The Director's memorandum.** The guild takes Bureau-assigned Gates in every region where it holds a standing arrangement and answers Bureau emergency contracts as nearest capable responder; its dispatch annex goes to the Bureau nationally; HQ's front office is the national point of contact; **Bureau emergency contracts are paid on the Chicago schedule in every region** (E-B midpoint +15% with the harvest, A and S at their determinations plus the declared haul), within five business days. *(Signed by Director Hale, `EVT-001223`.)*
+11. **EU establishment.** Accepted in Germany and France, the guild may operate in every EU member state; a host agency is entitled to notification only. *(Owner ruling, 2026-09-26 real date; `EVT-001224`.)*
+12. **A founder-dated answer is waited on until that day ends.** HQ's front office does not chase it before; it says once, with why, if a fact outside its control makes the date impossible. *(Player instruction, `EVT-001217`.)*

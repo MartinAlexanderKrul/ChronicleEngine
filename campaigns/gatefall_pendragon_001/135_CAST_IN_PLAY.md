@@ -100,7 +100,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000221` | the eleven correlation logbooks | evidence — documents | active | the correlated-face monitoring room | — |
 | `ENT-000222` | Laurel Bianchi | BGM Region V liaison | active | BGM Region V Field Office | — |
 | `ENT-000223` | Desmond Farraday | BGM Region V official | active | BGM Region V Field Office | — |
-| `ENT-000233` | Renata Okonkwo-Vance | BGM National official | active | **BGM National, Washington, DC — in contact by text and phone o… | `REL-000101` |
+| `ENT-000233` | Renata Okonkwo-Vance | BGM National official | active | **BGM National Headquarters, Washington DC, 2026-10-01 evening** | `REL-000101` |
 | `ENT-000243` | the Rockwell Street bay | private leased storage bay | active | 4417 South Rockwell, second bay from the street end, Chicago. | — |
 | `ENT-000270` | Lakeside Mansion | private residence, owned | active | Winnetka, Illinois — direct Lake Michigan frontage, North Shore… | — |
 | `ENT-000343` | the Detroit HQ campus | guild headquarters campus, purchased | active | Detroit, Michigan — the Pendragon Guild's headquarters campus | — |
@@ -135,7 +135,7 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000261` | Orenne | Standing (far side) — position Let it finish | deceased | **Deceased, 2026-09-30 12:21 Chicago | `REL-000110` |
 | `ENT-000262` | Tolo | Standing (far side) — no position | active | The Ninth Quiet stratum, near his rebuilt archive. | `REL-000111` |
 | `ENT-000263` | Sevrin | Standing (far side) — position Stop it | active | His own ground, deep in the Stacks. | `REL-000112` |
-| `ENT-000265` | Dario Wexler | S-Rank hunter — West Coast, USA; guild member, senior combat lead | active | **The Pendragon Guild HQ, Detroit, 2026-10-01 afternoon** | `REL-000113` |
+| `ENT-000265` | Dario Wexler | S-Rank hunter — West Coast, USA; guild member, senior combat lead | active | **The Winnetka house, 2026-10-01 evening** | `REL-000113` |
 | `ENT-000266` | Ingrid Solberg | artificer — CONSULT quality assessor | active | Suite 411, the downtown Chicago formation-mill office — returne… | — |
 | `ENT-000267` | Daniel Pruett | artificer — CONSULT-controlled | active | Suite 411, the downtown Chicago formation-mill office — returne… | — |
 | `ENT-000268` | Aldric Renn | CONSULT — administrative handler | active | A small unmarked office, Suite 3C, West Fulton Market, Chicago… | — |
@@ -223,6 +223,8 @@ A blank relationship cell means no relationship with the protagonist is recorded
 | `ENT-000356` | Ioana Stoica | awakened D-Rank, prospective guild member | active | The Jiu Valley fence, 2026-10-01. | — |
 | `ENT-000357` | Tamsin Okoro | guild hunter — C-Rank team lead | active | Evanston, Central Street, handing over to Region V. | — |
 | `ENT-000358` | Han Seung-woo | guildmaster, awakened A-Rank | active | Seoul. | — |
+| `ENT-000359` | Margaret Hale | Director, Bureau of Gate Management | active | BGM National Headquarters, Washington DC, room 7C, 2026-10-01 e… | — |
+| `ENT-000360` | Gideon Pike | Assistant Director, Field Coordination, BGM National | active | BGM National Headquarters, Washington DC, 2026-10-01 evening | — |
 
 ---
 
@@ -405,13 +407,15 @@ A blank cell is a field the ledger does not author. Below the campaign's declare
 | `ENT-000356` | Ioana Stoica | A way off the fence that is not the rotation | That next spring she says yes to double pay anyway, because her mother cannot work | Not yet established | Schoolroom-good English, blunt; numbers first; *what is the clause?* |
 | `ENT-000357` | Tamsin Okoro | To prove the branch can answer without the founder | That arriving second is how he will see her team | Not yet established | Brisk South Side cadence; calls him *boss*; turns praise into a list of what she would do faster |
 | `ENT-000358` | Han Seung-woo | His people kept together under someone who will not sell them | That his guild ends up a nameplate on someone else's balance sheet | Not yet established | Formal written English; *honoured*; his people should see who they work for, not only read it |
+| `ENT-000359` | Margaret Hale | To walk out with the guild inside a national framework she signed, not one that happened to her | Being the Director under whom the Bureau's strongest simply routed around it | Can't let a meeting end without something in writing: a verbal yes once got a crew killed at a… | One short question at a time, then she waits; writes the agreement herself while she talks |
+| `ENT-000360` | Gideon Pike | A named channel telling the Bureau where the one man who can be anywhere is; he believes it is… | An unaccountable S-Rank: the next Jiu Valley decided by one person nobody can reach | Can't hear *no* as an answer, only *not yet, rephrase* -- twenty years of drafting policy (Read… | *We'd simply like to...*; pleasant constructions, never a raised word |
 
 ---
 
 # Maintenance
 
 - Generation schema: `1.1`.
-- Entities: 200. Protagonist relationships: 45.
-- Characters: 171. Disposition authored in full: 117; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
+- Entities: 202. Protagonist relationships: 45.
+- Characters: 173. Disposition authored in full: 119; partial: 38; none: 16. A field declaring itself unauthored or unestablished counts as not authored here — the count is the backfill worklist, not a completeness score.
 - Run `tools/generate_campaign_cast.ps1` after any change to `130_NPCS_AND_FACTIONS.md`; the save operation plan runs it at every checkpoint.
 - Run `tools/generate_campaign_cast.ps1 -Check` to verify byte-for-byte synchronization. Repository validation runs the same check.

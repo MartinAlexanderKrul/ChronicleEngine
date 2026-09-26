@@ -1390,6 +1390,207 @@ image: The_Bound_Entity_MON-047.png
 image_prompt: Photorealistic cinematic photograph, 3:4 vertical, low-key lighting, shallow depth of field, realistic textures, sense of enormous scale. A flooded lightless alien gallery, black still water, a single hard work-light beam reaching into the dark and stopping short of an enormous indistinct shape at the far end, its form lost in shadow, faint pale restraint lines of light pulsing slowly through the walls and water around it as if holding it in place, ominous and quiet.
 ```
 
+### MON-048 — The Kilnfather
+
+```yaml
+entry: MON-048
+name: The Kilnfather
+canon_name: true
+group: named
+rank: S
+tier: Boss
+archetype: Ashfield
+body: Carapaced (fixed at promotion, EVT-001208)
+signature: Kiln-mouth heat blast (Projection)
+site: GB-63, Sheridan Road, Chicago (carded C; true S, red gate)
+date: '2026-10-01'
+events:
+- EVT-001205
+- EVT-001208
+count: '1'
+summary: 'The boss of GB-63, dead in one exchange before its blast ever landed.'
+record: 'GB-63 carded C, read S from outside; red gate, Ashfield. Rupture after one in-scene step: 21,482 against 16,000, Unmaking through the plate; dead in one exchange, the two attacks in motion evaded. Its plate cooling on the rise, glassed ash around it. Imprint fixed at promotion (EVT-001208): Carapaced; a kiln-mouth heat blast (Projection).'
+description: 'A kiln-bodied giant in fused cinder plate, split and cooling, a furnace mouth set in its chest.'
+behaviour: 'Held the rise while its population closed.'
+weakness: 'Never got to use the blast.'
+fate: 'Killed, EVT-001205.'
+loot: 'S-Rank core and crystal; Guard Shield [S] (Carapaced/Projection, Bound); 384 S-Rank crystals mined.'
+image: Kilnfather_MON-048.png
+image_prompt: 'Photorealistic creature photograph, 3:4 vertical, full body in frame, cinematic low-key lighting, shallow depth of field, telephoto compression, wet realistic textures, sharp focus on the creature''s head, sense of enormous scale and weight. Not an Earth animal: an alien magic beast from another world. A towering kiln-bodied giant plated in fused cinder steel, cracks glowing ember-red, an open furnace mouth in its chest, heavy and slow. Setting: an alien ash plain under a banked-forge sky, cinder steel ground, ember-red fissures, drifting ash.'
+```
+
+### MON-049 — Ember Warden
+
+```yaml
+entry: MON-049
+name: Ember Warden
+canon_name: true
+group: named
+rank: S
+tier: Elite
+archetype: Ashfield
+body: Brute (unrecorded — read from form)
+signature: —
+site: GB-63, Sheridan Road, Chicago
+date: '2026-10-01'
+events:
+- EVT-001205
+- EVT-001207
+count: '1'
+summary: 'GB-63''s elite, which stopped when the boss fell and breathed fire from a spur.'
+record: 'Taller than the Thralls, its chest open like a furnace door; halted on a basalt spur when the Kilnfather fell and tracked him alone. Two breaths (Mana 2,000 -> 1,000), both caught by Not There. Rupture at arm''s length, 97, critical: 67,954 against 8,000.'
+description: 'A tall ash-grey figure whose chest opens like a furnace door, brightening before it breathes.'
+behaviour: 'Hangs back; breathes from range.'
+weakness: 'Its breath telegraphs by brightening.'
+fate: 'Killed, EVT-001207.'
+loot: 'S-Rank core.'
+image: Ember_Warden_MON-049.png
+image_prompt: 'Photorealistic creature photograph, 3:4 vertical, full body in frame, cinematic low-key lighting, shallow depth of field, telephoto compression, wet realistic textures, sharp focus on the creature''s head, sense of enormous scale and weight. Not an Earth animal: an alien magic beast from another world. A tall ash-grey humanoid beast on a basalt spur, its chest opening like a furnace door with fire brightening inside. Setting: an alien ash plain under a banked-forge sky, cinder steel ground, ember-red fissures, drifting ash.'
+```
+
+### MON-050 — Cinder Thrall
+
+```yaml
+entry: MON-050
+name: Cinder Thrall
+canon_name: true
+group: named
+rank: S
+tier: Common
+archetype: Ashfield
+body: Brute (unrecorded — read from form)
+signature: —
+site: GB-63, Sheridan Road, Chicago
+date: '2026-10-01'
+events:
+- EVT-001205
+- EVT-001207
+count: '9'
+summary: 'GB-63''s commons, packed clinker with coals for joints, killed by two split bolts.'
+record: 'Humanoid shapes of packed clinker with coals where the joints should be; came up the slope in a loose crescent, unhurried, spreading to cover the mouth. Two Mana Bolt Splits down their lines: five, then four.'
+description: 'Packed-clinker humanoids, coals glowing at every joint, moving slow and sure.'
+behaviour: 'Encircle; cut off the exit.'
+weakness: 'Line up when they converge.'
+fate: 'Nine killed, EVT-001207.'
+loot: 'Nine S-Rank crystals.'
+image: Cinder_Thrall_MON-050.png
+image_prompt: 'Photorealistic creature photograph, 3:4 vertical, full body in frame, cinematic low-key lighting, shallow depth of field, telephoto compression, wet realistic textures, sharp focus on the creature''s head, sense of enormous scale and weight. Not an Earth animal: an alien magic beast from another world. A crescent of humanoid creatures made of packed black clinker with glowing coals at every joint, advancing slowly. Setting: an alien ash plain under a banked-forge sky, cinder steel ground, ember-red fissures, drifting ash.'
+```
+
+### MON-051 — The Glass Magistrate
+
+```yaml
+entry: MON-051
+name: The Glass Magistrate
+canon_name: true
+group: named
+rank: S
+tier: Boss
+archetype: Shattered City
+body: Arcane (unrecorded — read from form)
+signature: —
+site: Instant dungeon (S-Rank key), opened in the Denver facility's cage room
+date: '2026-10-01'
+events:
+- EVT-001220
+count: '1'
+summary: 'The boss of a Shattered City instance, dead before it finished turning.'
+record: 'Flux Sight name the Glass Magistrate, [S-Rank]. A tall shape of fused black glass seamed in bright metal, a face like a cracked mask, on the highest terrace. Rupture at 86, strong: 42,965 against 16,000 with Vanguard, Giantslayer and Godslayer; it came apart in a ringing cascade of black glass.'
+description: 'Tall fused black glass seamed with bright metal, a cracked-mask face.'
+behaviour: 'Holds the high terrace.'
+weakness: 'Slow to turn.'
+fate: 'Killed, EVT-001220.'
+loot: 'S-Rank core; Rune — Bulwark [S].'
+image: Glass_Magistrate_MON-051.png
+image_prompt: 'Photorealistic creature photograph, 3:4 vertical, full body in frame, cinematic low-key lighting, shallow depth of field, telephoto compression, wet realistic textures, sharp focus on the creature''s head, sense of enormous scale and weight. Not an Earth animal: an alien magic beast from another world. A towering figure of fused black glass shards joined by bright metal seams, a cracked mask for a face, on a high ceramic terrace. Setting: a System-made instance, cut-stone geometry too regular to be natural, sourceless even light, terraces of fractured ceramic over a black-glass drop, bright metal seams.'
+```
+
+### MON-052 — Seam Knight
+
+```yaml
+entry: MON-052
+name: Seam Knight
+canon_name: true
+group: named
+rank: S
+tier: Elite
+archetype: Shattered City
+body: Carapaced (unrecorded — read from form)
+signature: —
+site: Instant dungeon (S-Rank key)
+date: '2026-10-01'
+events:
+- EVT-001220
+count: '1'
+summary: 'The instance''s elite, armoured, with metal seams for joints.'
+record: 'Flux Sight name Seam Knight, [S-Rank]. A lean armoured thing with metal seams for joints; lunged from the terrace below; three strikes, each caught by Not There. Rupture, 97, critical: 67,954 against 8,000.'
+description: 'Lean ceramic armour, bright metal seams at every joint.'
+behaviour: 'Closes and strikes every exchange.'
+weakness: 'All reach, no range.'
+fate: 'Killed, EVT-001220.'
+loot: 'S-Rank core.'
+image: Seam_Knight_MON-052.png
+image_prompt: 'Photorealistic creature photograph, 3:4 vertical, full body in frame, cinematic low-key lighting, shallow depth of field, telephoto compression, wet realistic textures, sharp focus on the creature''s head, sense of enormous scale and weight. Not an Earth animal: an alien magic beast from another world. A lean armoured creature of fractured ceramic plate with bright metal seams at every joint, lunging. Setting: a System-made instance, cut-stone geometry too regular to be natural, sourceless even light, terraces of fractured ceramic over a black-glass drop, bright metal seams.'
+```
+
+### MON-053 — Glasswalker
+
+```yaml
+entry: MON-053
+name: Glasswalker
+canon_name: true
+group: named
+rank: S
+tier: Common
+archetype: Shattered City
+body: Predator (unrecorded — read from form)
+signature: —
+site: Instant dungeon (S-Rank key)
+date: '2026-10-01'
+events:
+- EVT-001220
+- EVT-001221
+count: '10'
+summary: 'Lanky faceted commons; nine killed, one spared and carried out.'
+record: 'Flux Sight name Glasswalker, [S-Rank], ten. Lanky, faceted, a ceramic shell with bright metal seams at knees and elbows, a blank glass face; climbed the terraces from the drop. Split bolts took four, then four (one strand fumbled); one bolt the ninth. The tenth spared.'
+description: 'Lanky and faceted, a ceramic shell, bright metal seams at the knees and elbows, a blank glass face.'
+behaviour: 'Climbs in numbers; swings, because that is all it knows.'
+weakness: 'Lines up on the terraces.'
+fate: 'Nine killed, EVT-001220; one carried out alive, EVT-001221 (MON-054).'
+loot: 'Nine S-Rank crystals.'
+image: Glasswalker_MON-053.png
+image_prompt: 'Photorealistic creature photograph, 3:4 vertical, full body in frame, cinematic low-key lighting, shallow depth of field, telephoto compression, wet realistic textures, sharp focus on the creature''s head, sense of enormous scale and weight. Not an Earth animal: an alien magic beast from another world. A lanky faceted creature with a ceramic shell, bright metal seams at knees and elbows, and a blank glass face, climbing a terrace. Setting: a System-made instance, cut-stone geometry too regular to be natural, sourceless even light, terraces of fractured ceramic over a black-glass drop, bright metal seams.'
+```
+
+### MON-054 — The Denver Glasswalker
+
+```yaml
+entry: MON-054
+health: held under Binding Grip
+name: The Denver Glasswalker
+canon_name: true
+group: beyond
+rank: S
+tier: Bound
+archetype: Bound
+body: Predator (unrecorded — read from form)
+signature: —
+site: The Denver containment facility, the cage room (ENT-000264)
+date: '2026-10-01'
+events:
+- EVT-001221
+count: '1 — alive'
+summary: 'The one Glasswalker he spared, carried out of the instance and bound in Denver.'
+record: 'Taken down with Binding Grip (Subdue, partial: down, held, awake); carried through the instance boundary by Sample Handling (99), a provisional mechanic. In the cage room it stopped fighting the grip in the first minute and maps the exits: the camera, the door, the light under the door. The console flagged an unregistered S-Rank signature, locally only.'
+description: 'The same lanky ceramic shape, lying bound on bare concrete, its blank face turning toward every way out.'
+behaviour: 'Waits; watches the exits.'
+weakness: 'Unknown.'
+fate: 'Alive, bound, EVT-001221.'
+loot: '—'
+image: Denver_Glasswalker_MON-054.png
+image_prompt: 'Photorealistic cinematic photograph, 3:4 vertical, low-key lighting, grainy security-camera angle from a high corner. A lanky faceted creature with a ceramic shell and bright metal seams lies bound on a bare concrete floor in a sealed containment room, its blank glass face turned toward the door.'
+```
+
 ## Encounter index
 
 Every other Gate clear in the record. These populations were rolled and killed, but the record fixes no creature's form.
@@ -1459,3 +1660,4 @@ Every other Gate clear in the record. These populations were rolled and killed, 
 | `EVT-001104` | 2026-09-26 | Karlín tram depot, Prague | 8 · 2 · 1, S | Flooded Mine; Elixir drop. |
 | `EVT-001114` | 2026-09-27 | Prague B-Rank, fed from Frankfurt | 9 · 3 · 1, B | Overgrown Temple. |
 | `EVT-001188` | 2026-09-30 | Milwaukee and Toledo contract Gates | C–D–B | Five crew clears. |
+| `EVT-001202` | 2026-10-01 | Evanston, Central Street (a break in progress) | 12 Stalkers · 2 Hounds · the Tiler, C | Named in play; entries owed from the Event's record. |

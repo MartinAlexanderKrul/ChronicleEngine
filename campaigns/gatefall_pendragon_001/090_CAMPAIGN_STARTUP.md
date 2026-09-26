@@ -21,7 +21,7 @@ initialization_state: resumable
 disposition_baseline: ENT-000210
 # Decision 095: Event high-water mark at adoption. Removing it widens coverage, never disables it.
 relationship_standing_baseline: EVT-001218
-latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0178
+latest_restorable_checkpoint: campaigns/gatefall_pendragon_001/saves/900_CHECKPOINT_0179
 canonical_entry_point: campaigns/gatefall_pendragon_001/180_CURRENT_STATE.md
 player_briefing: campaigns/gatefall_pendragon_001/095_PLAYER_BRIEFING.md
 selection_caveat: "Active campaign; resumable from its latest checkpoint."

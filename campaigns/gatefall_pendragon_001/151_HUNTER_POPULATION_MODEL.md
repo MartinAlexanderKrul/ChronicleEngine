@@ -96,27 +96,27 @@ At every Rank the mender and sensor seats limit the team count, not the strikers
 
 A branch runs as a **rate** (the daily E/D/C/B dispatch, no longer narrated Gate by Gate) once all four of Section 13.7.5's conditions hold: (1) a named dispatching officer, (2) round-the-clock cover, (3) a bench it can legally crew from, and (4) a **regulator's acceptance** of its filed standing relationship. The dispatching officer is the office head (`EVT-001130`). Night officers were named for every office at `EVT-001146`. The bench test is guild-wide over the tunnels, at 4,381 cards and ~243 per office, so every office qualifies for the full daily table once operational.
 
-**As of `EVT-001206`, four offices are operational and run as a rate from the 2026-10-01 06:00 tick: Chicago (Region V), Washington (Region III), Frankfurt and Paris (their national authorities).** Every other office is missing condition 4 alone; Kane is calling the US regions and Anjali the national authorities, with status on all fourteen by Friday 10-02 17:00. All eighteen have filed (the original fourteen by `EVT-001146`, the four newer ones on 2026-09-29 at 18:00). No regulator has accepted anything in writing. Anjali Desai has cited **$95,870** in Gates lost to the gap (`EVT-001146`).
+**As of `EVT-001224`, four offices run as a rate (Chicago, Washington, Frankfurt, Paris, from the 2026-10-01 06:00 tick) and eight more are accepted to run from the 2026-10-02 06:00 tick: New York, Boston, Miami, Houston, Dallas, and, on notification under the EU ruling, Prague, Amsterdam and Stockholm. Los Angeles, San Francisco and Seattle await Regions IX and X on the Director's advice (by 21:00 10-01); Istanbul and Tel Aviv are filed with their national authorities; London's filing was returned (Monday).** PRIOR: **As of `EVT-001206`, four offices were operational from the 2026-10-01 06:00 tick: Chicago (Region V), Washington (Region III), Frankfurt and Paris (their national authorities).** Every other office is missing condition 4 alone; Kane is calling the US regions and Anjali the national authorities, with status on all fourteen by Friday 10-02 17:00. All eighteen have filed (the original fourteen by `EVT-001146`, the four newer ones on 2026-09-29 at 18:00). No regulator has accepted anything in writing. Anjali Desai has cited **$95,870** in Gates lost to the gap (`EVT-001146`).
 
 | Office | Dispatching officer | 1 | 2 | 3 | 4 — regulator | Tunnel | A-Rank crew based here |
 |---|---|---|---|---|---|---|---|
 | Chicago | Imani Whitaker | yes | yes | yes | accepted 2026-09-30 15:24 by BGM Region V, on a modified dispatch annex (`EVT-001184`-`EVT-001186`); operational from the 10-01 06:00 tick | open | Jun-seo Baek (the response pool) |
 | Washington DC | Verity Prescott | yes | yes | yes | accepted 2026-10-01 05:06 by BGM Region III (Philadelphia), on the same annex terms (`EVT-001199`); operational from the 10-01 06:00 tick | open | — |
-| Prague | Milena Horáková | yes | yes | yes | filed with the CGA, not accepted | open | — |
+| Prague | Milena Horáková | yes | yes | yes | accepted 2026-10-01 on notification to the Czech Gate Administration, 19:43 Chicago, as an operator accepted in Germany and France (EU establishment, owner ruling 2026-09-26; `EVT-001224`); operational from the 10-02 06:00 tick | open | — |
 | Frankfurt | Anselm Kretschmer | yes | yes | yes | accepted 2026-10-01 05:03 by the German national Gate authority (`EVT-001199`); operational from the 10-01 06:00 tick | open | — |
-| New York | Ramona Ostrowski | yes | yes | yes | filed, not accepted | open | Delroy Hutchins |
-| Boston | Callum Doherty | yes | yes | yes | filed, not accepted | open | — |
-| Miami | Cecilia Duarte | yes | yes | yes | filed, not accepted | open | Yolanda Arriaga |
-| Houston | Roy Rawlins | yes | yes | yes | filed, not accepted | open | Mercedes Salinas |
+| New York | Ramona Ostrowski | yes | yes | yes | accepted 2026-10-01 by BGM Region II (New York), in writing at 11:00 (`EVT-001213`); operational from the 10-02 06:00 tick | open | Delroy Hutchins |
+| Boston | Callum Doherty | yes | yes | yes | accepted 2026-10-01 by BGM Region I (Boston), afternoon (`EVT-001222`); operational from the 10-02 06:00 tick | open | — |
+| Miami | Cecilia Duarte | yes | yes | yes | accepted 2026-10-01 by BGM Region IV (Atlanta), afternoon (`EVT-001222`); operational from the 10-02 06:00 tick | open | Yolanda Arriaga |
+| Houston | Roy Rawlins | yes | yes | yes | accepted 2026-10-01 by BGM Region VI (Denton), morning (`EVT-001210`); operational from the 10-02 06:00 tick | open | Mercedes Salinas |
 | Paris | Odile Fontaine | yes | yes | yes | accepted 2026-10-01 05:03 by the French national Gate authority (`EVT-001199`); operational from the 10-01 06:00 tick | open | Céline Marchand (Continental Europe) |
-| Amsterdam | Noor Vandermeulen | yes | yes | yes | filed, not accepted | open | Joost van Rijn |
-| Dallas | Wyatt Delaney | yes | yes | yes | filed, not accepted | open | — |
-| Los Angeles | Diego Villarreal | yes | yes | yes | filed, not accepted | open | — |
-| Seattle | Lena Petersen | yes | yes | yes | filed, not accepted | open | Garrett Ishida (the West Coast) |
-| San Francisco | Benjamin Tran | yes | yes | yes | filed, not accepted | open | — |
+| Amsterdam | Noor Vandermeulen | yes | yes | yes | accepted 2026-10-01 on notification to the Dutch national Gate agency, 19:43 Chicago (EU establishment, owner ruling 2026-09-26; `EVT-001224`); operational from the 10-02 06:00 tick | open | Joost van Rijn |
+| Dallas | Wyatt Delaney | yes | yes | yes | accepted 2026-10-01 by BGM Region VI (Denton), with Houston (`EVT-001210`); operational from the 10-02 06:00 tick | open | — |
+| Los Angeles | Diego Villarreal | yes | yes | yes | filed; BGM Region IX to act on the Director's advice, due 21:00 10-01 under the memorandum (`EVT-001223`) | open | — |
+| Seattle | Lena Petersen | yes | yes | yes | filed; BGM Region X to act on the Director's advice, due 21:00 10-01 under the memorandum (`EVT-001223`) | open | Garrett Ishida (the West Coast) |
+| San Francisco | Benjamin Tran | yes | yes | yes | filed; BGM Region IX to act on the Director's advice, due 21:00 10-01 under the memorandum (`EVT-001223`) | open | — |
 | Tel Aviv | Noa Shapira | yes | yes | yes | filed, not accepted | open | Noam Friedman (with Istanbul) |
 | Istanbul | Elif Demir | yes | yes | yes | filed, not accepted | open | — |
-| Stockholm | Linnea Bergström | yes | yes | yes | filed, not accepted | open | — |
+| Stockholm | Linnea Bergström | yes | yes | yes | accepted 2026-10-01 on notification to the Swedish national Gate agency, 19:43 Chicago (EU establishment, owner ruling 2026-09-26; `EVT-001224`); operational from the 10-02 06:00 tick | open | — |
 | London | Imogen Hartley | yes | yes | yes | **returned incomplete** 2026-10-01 (`EVT-001215`): certified credentials and a UK-resident responsible officer; Monday 10-05 in person | **open** 2026-10-01 19:00 London (`EVT-001215`) | Harriet Pembroke |
 
 **What becomes automatic on acceptance (per branch, per day):** E-Rank 1d4+1, D-Rank 1d3, C-Rank 1d3−1, B-Rank 1d2−1. That comes to about 7 clears a branch a day and ≈126 across eighteen. **A and S never become automatic.** They surface through Section 9.11 and Section 9.1.8, and the A-Rank response pool answers on a standing posture the guild has not yet declared (`OBJ-79`). **Until London's tunnel opens, its catchment is its own jurisdiction read from its own bench.**

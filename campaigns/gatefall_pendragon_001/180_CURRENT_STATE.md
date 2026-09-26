@@ -71,7 +71,8 @@ subjects: []
 13. **The Kilnfather's Boss Imprint** was not recorded at `EVT-001205`; it was fixed at `EVT-001208` from the recorded plate as Carapaced, a kiln-mouth heat blast (Projection), finish rolled 5 (Bound). Re-rule the body family or signature and the shield line is re-derived.
 14. **Effective 96-100 read as critical x4** for damage (`EVT-001207`); Section 6.2 names *critical success* without saying natural or effective. No outcome depended on it.
 15. **The standing-agreement payout settled on countersignature** (`EVT-001209`), after the Pilsen same-day precedent; the lakefront payout had instead *landed on schedule* later.
-16. **Rift-step passengers are whom he chooses** among those he touches (read in play at `EVT-001213` from the original *may be sent with him*); the 2026-09-24 ruling's *every ally he is touching* stood for scope. Confirm or overrule.
+
+**Closed (owner ruling, 2026-09-26 real date):** 16, rift-step passengers: **whomever he chooses among those he is touching, the choice reaching through a chain to anyone touching them**, at the step's one cost (`100_CHARACTER_SHEET.md`, Rift-step).
 
 **Closed (owner rulings, 2026-09-24 real date):** 10, role counts and team composition (`151` Sections 5-7); 11, the 63rd daily's missed penalty zone, left as it stands; 12, every ally Alexander touches goes on one rift-step; 13, every Gate is mined -- E and D teams mine it themselves, C, B and A bring a mining team; 14, the gear plan runs on the guild ledger's artificer table (per-piece days a planning estimate). BGM regions fixed to the real federal map (`200_WORLD_BIBLE.md` Section 4).
 

@@ -29,6 +29,10 @@ subjects: []
 
 Owner rulings and records, with no Event moved. **Chicago US rates everywhere:** every guild clearance, receivable and payout is priced at Chicago rates wherever the Gate is; Prague's 0.70 no longer applies to the guild, and no German or French factor is needed. **The guild treasury** is tracked in `096_GUILD_CLEARANCE_LOG.md` from its first income: balance $1,764,700, receivable $14,702,500. **Founder spending** is listed beside it: $90,005,000 and 90,000 gold priced (the HQ campus, Kesha's retainer, Trevor's Torso); leases, the tour, the HQ buildout and member salaries are recorded as ordered but not yet priced.
 
+## Out of play, 2026-09-26 — Rift-Step Passengers, by Choice and by Chain
+
+Owner ruling, with no Event moved and no fictional time passing. A rift-step takes **whomever Alexander chooses among the allies he is touching**, and **the same choice reaches through a chain** to anyone touching one of those, all at the step's one cost. Confirms the reading taken in play at `EVT-001213` and extends the 2026-09-24 ruling. Campaign-scoped; the profile is unchanged. Written onto the Rift-step line in `100_CHARACTER_SHEET.md`; owner question 16 closed.
+
 ## Session (`EVT-001213`-`EVT-001218`) — London Tunnelled, and the Guild's A-Ranks Kitted
 
 **The morning (`EVT-001213`).** The pool (unheated) and the sauna (unlit); *you're mine now*, and *yours*. Kane asked whether he wanted to go to National, and said yes for himself; the Director asked him to attend; room 7C. Kane watched his shirt vanish and asked nothing. New York's letter in writing. Owner reading in play: rift-step passengers are whom he chooses.

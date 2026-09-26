@@ -117,7 +117,7 @@ A branch runs as a **rate** (the daily E/D/C/B dispatch, no longer narrated Gate
 | Tel Aviv | Noa Shapira | yes | yes | yes | filed, not accepted | open | Noam Friedman (with Istanbul) |
 | Istanbul | Elif Demir | yes | yes | yes | filed, not accepted | open | — |
 | Stockholm | Linnea Bergström | yes | yes | yes | filed, not accepted | open | — |
-| London | Imogen Hartley | yes | yes | yes | filed, not accepted | **not open**: the rear-door lock was fitted on 2026-09-30 (`EVT-001180`); the tunnel waits on Alexander | Harriet Pembroke |
+| London | Imogen Hartley | yes | yes | yes | **returned incomplete** 2026-10-01 (`EVT-001215`): certified credentials and a UK-resident responsible officer; Monday 10-05 in person | **open** 2026-10-01 19:00 London (`EVT-001215`) | Harriet Pembroke |
 
 **What becomes automatic on acceptance (per branch, per day):** E-Rank 1d4+1, D-Rank 1d3, C-Rank 1d3−1, B-Rank 1d2−1. That comes to about 7 clears a branch a day and ≈126 across eighteen. **A and S never become automatic.** They surface through Section 9.11 and Section 9.1.8, and the A-Rank response pool answers on a standing posture the guild has not yet declared (`OBJ-79`). **Until London's tunnel opens, its catchment is its own jurisdiction read from its own bench.**
 

@@ -26,7 +26,7 @@ The last allocated identifier per kind. The next allocation for a kind is the hi
 |------|--------|----------|----------------|
 | Entity | `ENT-` | Persistent Entity | ENT-000358 |
 | Record | `REC-` | Canonical Record | REC-000101 |
-| Event | `EVT-` | Event | EVT-001212 |
+| Event | `EVT-` | Event | EVT-001218 |
 | Relationship | `REL-` | Relationship | REL-000125 |
 
 ---
@@ -37,6 +37,7 @@ Allocations are recorded per unit of work for traceability. The high-water marks
 
 | Range | Kind | Consumed by |
 |-------|------|-------------|
+| EVT-001213 – EVT-001218 | Event | Gatefall: Pendragon, 2026-10-01, from checkpoint 0177: the pool, the sauna and the morning (`001213`); Kane's briefing and Dario to HQ (`001214`); London tunnelled and its filing returned (`001215`); 38 A-Rank pieces from the shop (`001216`); the pieces to storage and a standing instruction (`001217`); the `/save` barrier (`001218`). |
 | EVT-001207 – EVT-001212 | Event | Gatefall: Pendragon, 2026-10-01, from checkpoint 0176: GB-63's Thralls and Warden, Level 211 (`001207`); the loot and the strip (`001208`); the filing to Renata and the lot (`001209`); home, the morning nobody scheduled (`001210`); Dario's disclosure and the Director moved to tonight (`001211`); the `/save` barrier (`001212`). |
 | EVT-001195 – EVT-001206 | Event | Gatefall: Pendragon, 2026-10-01, from checkpoint 0175: to the Jiu Valley (`001195`); the names at the fence (`001196`); Ionuț's photograph and Gheorghe (`001197`); five young awakened and the clause (`001198`); home, Frankfurt, Paris and Washington accepted (`001199`); the nap and the alert (`001200`); the 10-01 06:00 world tick (`001201`); Central Street (`001202`); the kitchen -- Renata, Seoul, Europe (`001203`); the 65th daily and GB-63 sighted (`001204`); GB-63, the Kilnfather, Level 210 (`001205`); the `/save` barrier (`001206`). |
 | ENT-000353 – ENT-000358 | Entity | Gatefall: Pendragon (`130_NPCS_AND_FACTIONS.md`): Andrei Bratu (`000353`), Viorica Bratu (`000354`), Gheorghe Dincă (`000355`), Ioana Stoica (`000356`), Tamsin Okoro (`000357`), Han Seung-woo (`000358`); each cleared through `tools/check_name_collision.ps1 -StrictSurnames`. |

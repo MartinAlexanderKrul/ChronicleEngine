@@ -425,6 +425,7 @@ LEDGERS = {
     "skills": ("alexander_pendragon_skill_ledger.html", "Skills"),
     "npc": ("alexander_pendragon_npc_ledger.html", "NPCs"),
     "guild": ("alexander_pendragon_guild_ledger.html", "Guild"),
+    "bestiary": ("alexander_pendragon_bestiary_ledger.html", "Bestiary"),
 }
 
 
@@ -1015,6 +1016,86 @@ def build_titles(sysst, profile_path):
     return [card(t) for t in equipped] + [card(t) for t in earned if t not in equipped], []
 
 
+# The bestiary is a reference view kept in 155_BESTIARY.md by its own save
+# procedure. Health is derived here from the Section 9.7 multipliers rather than
+# stored, so an entry cannot carry a pool that disagrees with its Rank and tier.
+BESTIARY_RANK_HEALTH = {"E": 40, "D": 100, "C": 250, "B": 600, "A": 1500, "S": 4000}
+BESTIARY_TIERS = {"Common": 1, "Elite": 2, "Boss": 4, "Alpha": 4, "Bound": None, "Unranked": None}
+BESTIARY_FIELDS = ("entry", "name", "canon_name", "group", "rank", "tier", "archetype", "body", "signature",
+                   "site", "date", "events", "count", "summary", "record", "description", "behaviour",
+                   "weakness", "fate", "loot", "image", "image_prompt")
+
+
+def build_bestiary(camp, assets):
+    """Entries, index rows and settings from 155_BESTIARY.md, or (None, failures)
+    when the file is absent or any entry cannot be rendered faithfully."""
+    path = os.path.join(camp, "155_BESTIARY.md")
+    if not os.path.exists(path):
+        return None, [], []
+    text = io.open(path, encoding="utf-8").read()
+    settings = yaml.safe_load(re.search(r"^## Settings\s*```yaml\n(.*?)\n```", text, re.M | re.S).group(1))
+    groups = [g["id"] for g in settings.get("groups") or []]
+    body = re.search(r"^## Creatures$(.*?)(?=^## |\Z)", text, re.M | re.S).group(1)
+    heads = re.findall(r"^### (MON-\d{3}) " + chr(0x2014) + r" (.+)$", body, re.M)
+    blocks = [yaml.safe_load(b) for b in re.findall(r"```yaml\n(.*?)\n```", body, re.S)]
+    failures, warnings = [], []
+    if len(heads) != len(blocks):
+        failures.append("155: %d creature headings but %d YAML records, so an entry stopped parsing" % (len(heads), len(blocks)))
+    # A cited Event must exist, in the live chronicle or its sealed volumes.
+    chron = [os.path.join(camp, "160_CAMPAIGN_CHRONICLE.md")]
+    sealed = os.path.join(camp, "sealed")
+    if os.path.isdir(sealed):
+        chron += [os.path.join(sealed, f) for f in sorted(os.listdir(sealed)) if f.startswith("160_CAMPAIGN_CHRONICLE")]
+    known = set()
+    for f in chron:
+        known.update(re.findall(r"^## (EVT-\d{6})", io.open(f, encoding="utf-8").read(), re.M))
+    out, last = [], 0
+    for (hid, hname), rec in zip(heads, blocks):
+        where = "155 %s" % hid
+        if not isinstance(rec, dict):
+            failures.append("%s: the record is not a mapping" % where); continue
+        absent = [k for k in BESTIARY_FIELDS if k not in rec or rec[k] in (None, "")]
+        absent = [k for k in absent if not (k == "events" and rec.get("events") == [])]
+        if absent:
+            failures.append("%s: missing %s" % (where, ", ".join(absent))); continue
+        if rec["entry"] != hid or rec["name"] != hname.strip():
+            failures.append("%s: heading says %s / %s, record says %s / %s" % (where, hid, hname, rec["entry"], rec["name"]))
+        num = int(hid[4:])
+        if num <= last:
+            failures.append("%s: ids must rise in file order (after MON-%03d)" % (where, last))
+        last = num
+        if rec["group"] not in groups:
+            failures.append("%s: group %r is not one of the Settings groups" % (where, rec["group"]))
+        if rec["tier"] not in BESTIARY_TIERS:
+            failures.append("%s: tier %r is not one of %s" % (where, rec["tier"], ", ".join(BESTIARY_TIERS)))
+        if rec["rank"] not in BESTIARY_RANK_HEALTH and rec["rank"] != "Unranked":
+            failures.append("%s: rank %r is not E-S or Unranked" % (where, rec["rank"]))
+        unknown = [e for e in rec["events"] or [] if e not in known]
+        if unknown:
+            failures.append("%s: cites Event(s) in no chronicle volume: %s" % (where, ", ".join(unknown)))
+        if not re.match(r"^[A-Za-z0-9_]+_%s\.png$" % hid, rec["image"]):
+            failures.append("%s: image %r should be Name_%s.png" % (where, rec["image"], hid))
+        elif not os.path.exists(os.path.join(assets, "monsters", rec["image"])):
+            warnings.append(rec["image"])
+        mult = BESTIARY_TIERS.get(rec["tier"])
+        health = ("{:,}".format(BESTIARY_RANK_HEALTH[rec["rank"]] * mult)
+                  if mult and rec["rank"] in BESTIARY_RANK_HEALTH else rec.get("health") or chr(0x2014))
+        row = {k: (str(rec[k]) if k not in ("events", "canon_name") else rec[k]) for k in BESTIARY_FIELDS}
+        row["events"] = [str(e) for e in rec["events"] or []]
+        row["id"], row["filename"], row["full_prompt"] = row.pop("entry"), row.pop("image"), row.pop("image_prompt")
+        row["health"] = health
+        out.append(row)
+    index, _notes = md_tables(text, "Encounter index")
+    rows = [{"evt": r.get("Event", "").strip("`"), "date": r.get("Date", ""), "gate": r.get("Gate", ""),
+             "pop": r.get("Population", ""), "note": r.get("Note", "")} for r in index or []]
+    bad = [r["evt"] for r in rows if r["evt"] not in known]
+    if bad:
+        failures.append("155 Encounter index: Event(s) in no chronicle volume: %s" % ", ".join(bad))
+    data = {"groups": settings.get("groups") or [], "monsters": out, "index": rows,
+            "negative": settings.get("negative_prompt", "")}
+    return data, failures, warnings
+
+
 # The index states which build it is, so a page open in a browser can be told
 # apart from the one on main. `built` is the only field not read from canon; a
 # --check run keeps the built time already on disk, so a check never drifts on
@@ -1180,6 +1261,22 @@ def main():
     ndata = ("," + chr(10)).join(json.dumps(r, ensure_ascii=False).replace("</", "<\\/") for r in npcs)
     ok = emit("npc", "npc_ledger.template.html",
               {"NPC_DATA": "[" + chr(10) + ndata + chr(10) + "]"}) and ok
+
+    bestiary, failures, unpictured = build_bestiary(camp, assets)
+    if failures:
+        print("Ledger generation FAILED: the bestiary cannot be rendered faithfully:", file=sys.stderr)
+        for f in failures:
+            print("  - " + f, file=sys.stderr)
+        return 1
+    if bestiary:
+        if unpictured:
+            print("warning: %d bestiary image(s) not yet in assets/monsters/, so those cards show their Rank glyph"
+                  % len(unpictured), file=sys.stderr)
+        print("bestiary: %d creatures, %d with a canon name, %d encounters indexed"
+              % (len(bestiary["monsters"]), sum(1 for m in bestiary["monsters"] if m["canon_name"]),
+                 len(bestiary["index"])))
+        ok = emit("bestiary", "bestiary_ledger.template.html",
+                  {"BESTIARY_DATA": json.dumps(bestiary, ensure_ascii=False).replace("</", "<\\/")}) and ok
 
     # The index opens on the bearer's medallion, read from the same sheet, so
     # the one page that introduces the ledgers carries no hand-typed figure.

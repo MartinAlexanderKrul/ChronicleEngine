@@ -1,0 +1,323 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pendragon Ledger — Bestiary</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Every monster in Gatefall: Pendragon with a recorded form — named species, bosses and alphas, rank-and-file beasts, and what lies beyond the Gates — with Rank, archetype, record, field description and image prompt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eef2f1; --surface:#ffffff; --surface2:#f4f7f6; --border:#d7dfdd;
+    --text:#0f1a1c; --text-dim:#556166; --accent:#0e8f83; --accent-soft:#0e8f831a;
+    --amber:#a5730f; --amber-soft:#a5730f1a; --blood:#a5340f; --blood-soft:#a5340f1a;
+    --rank-s:#a5730f; --rank-a:#7440c4; --rank-b:#0e8f83; --rank-c:#2f7d32; --rank-d:#5c6b72; --rank-e:#8a939a; --rank-u:#a5340f;
+    --shadow:0 1px 2px rgba(15,26,28,.06), 0 8px 24px -12px rgba(15,26,28,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0b1414; --surface:#101b1b; --surface2:#152322; --border:#223231;
+      --text:#e7efee; --text-dim:#93a6a3; --accent:#3fd6c3; --accent-soft:#3fd6c31a;
+      --amber:#f0b429; --amber-soft:#f0b4291a; --blood:#ef6a4c; --blood-soft:#ef6a4c1a;
+      --rank-s:#f0b429; --rank-a:#b78cf0; --rank-b:#3fd6c3; --rank-c:#6fcf73; --rank-d:#93a6a3; --rank-e:#6c7a78; --rank-u:#ef6a4c;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b1414; --surface:#101b1b; --surface2:#152322; --border:#223231;
+    --text:#e7efee; --text-dim:#93a6a3; --accent:#3fd6c3; --accent-soft:#3fd6c31a;
+    --amber:#f0b429; --amber-soft:#f0b4291a; --blood:#ef6a4c; --blood-soft:#ef6a4c1a;
+    --rank-s:#f0b429; --rank-a:#b78cf0; --rank-b:#3fd6c3; --rank-c:#6fcf73; --rank-d:#93a6a3; --rank-e:#6c7a78; --rank-u:#ef6a4c;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--text); margin:0; font-family:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif; padding-inline:16px;}
+  .wrap{max-width:1160px; margin:0 auto; padding-block:28px 60px;}
+  header.top{display:flex; flex-wrap:wrap; gap:18px 28px; align-items:flex-end; justify-content:space-between; padding-bottom:18px; border-bottom:1px solid var(--border); margin-bottom:22px;}
+  .ledgers{flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px;}
+  .ledgers a{font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; padding:5px 11px; border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--text-dim); text-decoration:none;}
+  .ledgers a:hover{border-color:var(--accent); color:var(--text);}
+  .ledgers a[aria-current="page"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+  .id-block{display:flex; flex-direction:column; gap:4px;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent);}
+  h1{font-family:"Chakra Petch",ui-sans-serif,sans-serif; font-weight:700; font-size:clamp(1.7rem,4vw,2.5rem); margin:0; letter-spacing:.01em; text-wrap:balance;}
+  .sub{color:var(--text-dim); font-size:.9rem; max-width:62ch; line-height:1.5;}
+  .stat-strip{display:flex; gap:22px; flex-wrap:wrap; font-family:"IBM Plex Mono",monospace;}
+  .stat-strip div{display:flex; flex-direction:column; gap:2px; min-width:84px;}
+  .stat-strip .n{font-size:1.25rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums;}
+  .stat-strip .l{font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+
+  .note{border:1px solid var(--border); background:var(--surface); border-radius:10px; padding:12px 14px; font-size:.82rem; line-height:1.55; color:var(--text-dim); margin-bottom:18px;}
+  .note b{color:var(--text); font-weight:600;}
+
+  .controls{position:sticky; top:0; z-index:5; background:var(--bg); padding-block:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:10px; border-bottom:1px solid var(--border);}
+  #search{flex:1 1 220px; min-width:0; background:var(--surface); border:1px solid var(--border); color:var(--text); padding:9px 12px; border-radius:8px; font-family:"IBM Plex Sans",sans-serif; font-size:.92rem;}
+  #search:focus{outline:2px solid var(--accent); outline-offset:1px;}
+  select{font-family:"IBM Plex Mono",monospace; font-size:.72rem; padding:6px 11px; border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--text); cursor:pointer; max-width:100%;}
+  select.active{border-color:var(--accent); color:var(--accent); background:var(--accent-soft);}
+  .filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; align-items:center;}
+  .chip{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.03em; padding:6px 11px; border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--text-dim); cursor:pointer; user-select:none;}
+  .chip[aria-pressed="true"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+  .chip:focus-visible, select:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
+  .sep{width:1px; height:20px; background:var(--border);}
+
+  section.group{scroll-margin-top:70px; margin-bottom:32px;}
+  .grouphead{display:flex; align-items:baseline; gap:10px; margin-bottom:4px;}
+  .grouphead h2{font-family:"Chakra Petch",sans-serif; font-size:1.05rem; font-weight:600; margin:0; letter-spacing:.02em;}
+  .grouphead .count{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--text-dim); background:var(--surface2); border:1px solid var(--border); border-radius:999px; padding:2px 9px;}
+  .grouphead .line{flex:1; height:1px; background:var(--border);}
+  .gblurb{color:var(--text-dim); font-size:.8rem; line-height:1.5; margin:0 0 12px; max-width:80ch;}
+
+  .cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px;}
+  .card{height:236px; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 15px; display:flex; flex-direction:column; gap:10px; box-shadow:var(--shadow); position:relative; overflow:hidden; min-width:0; cursor:pointer; text-align:left; color:inherit; font:inherit; transition:border-color .12s, transform .12s;}
+  .card:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .card:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .card::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--rk);}
+  .card .top{display:flex; gap:12px; align-items:flex-start; min-width:0;}
+  .avatar{width:76px; height:76px; flex:none; border-radius:9px; overflow:hidden; background:var(--surface2); border:1px solid var(--border); display:grid; place-items:center;}
+  .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+  .glyph{font-family:"Chakra Petch",sans-serif; font-weight:700; font-size:1.3rem; color:var(--rk);}
+  .card .ident{display:flex; flex-direction:column; gap:5px; min-width:0; flex:1;}
+  .card .head{display:flex; justify-content:space-between; align-items:flex-start; gap:8px; min-width:0;}
+  .card .name{font-family:"Chakra Petch",sans-serif; font-weight:600; font-size:1.02rem; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0;}
+  .clamp{display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden;}
+  .card .sum{font-size:.78rem; color:var(--text-dim); line-height:1.45; -webkit-line-clamp:3; line-clamp:3;}
+  .card .facts{font-size:.74rem; line-height:1.45; display:flex; flex-direction:column; gap:3px;}
+  .card .facts div{display:grid; grid-template-columns:64px 1fr; gap:8px;}
+  .card .facts .v{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .card .open{margin-top:auto; font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); display:flex; justify-content:space-between;}
+  .card:hover .open .go{color:var(--accent);}
+  .rank{font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600; letter-spacing:.04em; padding:2px 7px; border-radius:5px; white-space:nowrap; flex:none; color:var(--rk); background:color-mix(in srgb, var(--rk) 16%, transparent); border:1px solid color-mix(in srgb, var(--rk) 45%, transparent);}
+  .badges{display:flex; gap:6px; flex-wrap:wrap; align-items:center;}
+  .card .badges{flex-wrap:nowrap; overflow:hidden;}
+  .badge{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.06em; text-transform:uppercase; border-radius:5px; padding:2px 7px; white-space:nowrap; border:1px solid var(--border); color:var(--text-dim);}
+  .badge.canon{color:var(--accent); border-color:color-mix(in srgb, var(--accent) 45%, transparent); background:var(--accent-soft);}
+  .badge.boss{color:var(--blood); border-color:color-mix(in srgb, var(--blood) 45%, transparent); background:var(--blood-soft);}
+  .badge.elite{color:var(--amber); border-color:color-mix(in srgb, var(--amber) 45%, transparent); background:var(--amber-soft);}
+  .lbl{font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dim); padding-top:2px;}
+
+  dialog.record{width:min(980px, calc(100vw - 32px)); max-height:calc(100dvh - 48px); padding:0; overflow:hidden; background:var(--surface); color:var(--text); border:1px solid var(--border); border-radius:14px; box-shadow:0 30px 80px -20px rgba(0,0,0,.55);}
+  dialog.record::backdrop{background:rgba(6,12,12,.62); backdrop-filter:blur(3px);}
+  dialog.record[open]{display:grid; grid-template-columns:330px 1fr; animation:pop .16s ease-out;}
+  @keyframes pop{from{opacity:0; transform:scale(.97);} to{opacity:1; transform:none;}}
+  .rec-media{background:var(--surface2); border-right:1px solid var(--border); display:flex; flex-direction:column; min-height:0;}
+  .rec-media .frame{flex:1; min-height:380px; display:grid; place-items:center; overflow:hidden; position:relative;}
+  .rec-media .frame img{width:100%; height:100%; object-fit:cover; display:block;}
+  .rec-media .frame .glyph{font-size:4rem;}
+  .rec-media .frame .missing{position:absolute; bottom:12px; left:12px; right:12px; font-family:"IBM Plex Mono",monospace; font-size:.62rem; color:var(--text-dim); text-align:center; overflow-wrap:anywhere;}
+  .rec-media .facet{padding:12px 14px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:6px; font-size:.78rem;}
+  .rec-media .facet div{display:grid; grid-template-columns:76px 1fr; gap:8px;}
+  .rec-body{display:flex; flex-direction:column; min-height:0; max-height:calc(100dvh - 48px);}
+  .rec-head{padding:18px 20px 14px; border-bottom:1px solid var(--border); display:flex; flex-direction:column; gap:8px;}
+  .rec-head .row{display:flex; align-items:flex-start; gap:10px;}
+  .rec-head h2{font-family:"Chakra Petch",sans-serif; font-size:1.55rem; font-weight:700; margin:0; line-height:1.15; flex:1; padding-top:2px;}
+  .rec-head .sum{color:var(--text-dim); font-size:.86rem; line-height:1.45;}
+  .iconbtn{flex:none; width:32px; height:32px; border-radius:8px; border:1px solid var(--border); background:var(--surface2); color:var(--text-dim); cursor:pointer; font-size:1rem; line-height:1; display:grid; place-items:center;}
+  .iconbtn:hover{border-color:var(--accent); color:var(--accent);}
+  .iconbtn:disabled{opacity:.35; cursor:default;}
+  .rec-scroll{overflow-y:auto; padding:16px 20px 22px; display:flex; flex-direction:column; gap:14px; overscroll-behavior:contain;}
+  .rec-scroll .f{display:flex; flex-direction:column; gap:3px;}
+  .rec-scroll .val{font-size:.85rem; line-height:1.6; overflow-wrap:anywhere;}
+  .rec-scroll .recbox{background:var(--accent-soft); border:1px solid color-mix(in srgb, var(--accent) 30%, var(--border)); border-radius:8px; padding:9px 11px;}
+  .rec-scroll .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px 18px;}
+  .rec-scroll code{font-family:"IBM Plex Mono",monospace; font-size:.74rem;}
+  .prompt{font-family:"IBM Plex Mono",monospace; font-size:.72rem; line-height:1.55; background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:9px 11px; color:var(--text-dim); white-space:pre-wrap;}
+  .copy{align-self:flex-start; font-family:"IBM Plex Mono",monospace; font-size:.66rem; padding:4px 10px; border-radius:6px; border:1px solid var(--border); background:var(--surface); color:var(--text-dim); cursor:pointer;}
+  .copy:hover{border-color:var(--accent); color:var(--accent);}
+  .rec-foot{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 20px; border-top:1px solid var(--border); font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--text-dim);}
+  .rec-foot .nav{display:flex; gap:6px;}
+  @media (max-width:760px){
+    dialog.record[open]{grid-template-columns:1fr; overflow-y:auto;}
+    .rec-media{border-right:0; border-bottom:1px solid var(--border);}
+    .rec-media .frame{min-height:0; height:320px; flex:none;}
+    .rec-body{max-height:none;}
+    .rec-head{position:sticky; top:0; z-index:1; background:var(--surface);}
+    .rec-scroll{overflow:visible;}
+    .rec-scroll .grid2{grid-template-columns:1fr;}
+  }
+
+  .tablewrap{overflow-x:auto; border:1px solid var(--border); border-radius:10px; background:var(--surface);}
+  table{border-collapse:collapse; width:100%; font-size:.78rem; min-width:640px;}
+  th, td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top;}
+  th{font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); font-weight:500; background:var(--surface2);}
+  tr:last-child td{border-bottom:0;}
+  td code{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--accent);}
+  td.dim{color:var(--text-dim);}
+
+  .empty{color:var(--text-dim); font-size:.85rem; padding:18px 0;}
+  footer{margin-top:40px; padding-top:16px; border-top:1px solid var(--border); color:var(--text-dim); font-size:.74rem; font-family:"IBM Plex Mono",monospace; line-height:1.6;}
+  @media (prefers-reduced-motion: reduce){ .card{transition:none;} .card:hover{transform:none;} dialog.record[open]{animation:none;} }
+  @media print{ .controls,.filters,dialog,.ledgers{display:none;} body{background:#fff; color:#000;} .card{box-shadow:none; break-inside:avoid;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <nav class="ledgers" aria-label="Pendragon ledgers"><!--{{ledger-nav}}--></nav>
+    <div class="id-block">
+      <div class="eyebrow">Pendragon Ledger 05 · Bestiary</div>
+      <h1>The Bestiary</h1>
+      <div class="sub">Every monster in Gatefall: Pendragon that the record gives a form, from the Red Line corridor to GB-63. Click a card for the full entry: what the record says, a field description, how it fought, what killed it, and the prompt for its image.</div>
+    </div>
+    <div class="stat-strip">
+      <div><span class="n" id="stTotal">0</span><span class="l">Entries</span></div>
+      <div><span class="n" id="stNamed">0</span><span class="l">Named species</span></div>
+      <div><span class="n" id="stBoss">0</span><span class="l">Bosses · alphas</span></div>
+      <div><span class="n" id="stIndex">0</span><span class="l">Other encounters</span></div>
+    </div>
+  </header>
+
+  <div class="note"><b>Reading an entry.</b> <b>From the record</b> is canon, drawn from the cited Events. The <b>field description</b> is written for this bestiary to make each creature picturable; it builds on the record and never contradicts it. Names without the <span class="badge canon">canon name</span> badge are ledger designations for creatures the fiction left unnamed. Rank Health follows Section 9.7: × 1 for a common, × 2 for an elite, × 4 for a boss or alpha. This is a static reference and changes no rule.</div>
+
+  <div class="controls">
+    <input id="search" type="search" placeholder="Search name, place, archetype, event…" aria-label="Search the bestiary">
+    <select id="archSelect" aria-label="Filter by archetype"><option value="">All archetypes</option></select>
+  </div>
+  <div class="filters" id="filters"></div>
+
+  <main id="groups"></main>
+
+  <section class="group" id="index">
+    <div class="grouphead"><h2>Encounter index</h2><span class="count" id="idxCount">0</span><span class="line"></span></div>
+    <p class="gblurb">Every other Gate clear in the record. These populations were rolled and killed, but the record fixes no creature's form, so none has an entry above. Population is commons · elites · bosses where the record states it.</p>
+    <div class="tablewrap"><table><thead><tr><th>Event</th><th>Date</th><th>Gate</th><th>Population, Rank</th><th>Note</th></tr></thead><tbody id="idxBody"></tbody></table></div>
+  </section>
+
+  <footer>Gatefall: Pendragon · bestiary. Generated from <code>155_BESTIARY.md</code> by <code>tools/generate_campaign_ledgers.py</code>; an edit made here does not travel back. Images go in <code>assets/monsters/</code> under each entry's filename; an entry without its image shows its Rank glyph.</footer>
+</div>
+
+<dialog class="record" id="rec" aria-labelledby="recName">
+  <div class="rec-media">
+    <div class="frame" id="recFrame"></div>
+    <div class="facet" id="recFacet"></div>
+  </div>
+  <div class="rec-body">
+    <div class="rec-head">
+      <div class="row"><h2 id="recName"></h2><span id="recRank"></span><button class="iconbtn" id="recClose" aria-label="Close">✕</button></div>
+      <div class="badges" id="recBadges"></div>
+      <div class="sum" id="recSum"></div>
+    </div>
+    <div class="rec-scroll" id="recScroll"></div>
+    <div class="rec-foot"><span id="recPos"></span><span class="nav"><button class="iconbtn" id="recPrev" aria-label="Previous">‹</button><button class="iconbtn" id="recNext" aria-label="Next">›</button></span></div>
+  </div>
+</dialog>
+
+<script>
+const DATA = /*__BESTIARY_DATA__*/null/*__END__*/;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const rkVar = r => `var(--rank-${/^[EDCBAS]$/.test(r) ? r.toLowerCase() : "u"})`;
+const rankLabel = r => /^[EDCBAS]$/.test(r) ? `${r}-Rank` : r;
+const glyph = m => `<span class="glyph">${/^[EDCBAS]$/.test(m.rank) ? m.rank : "?"}</span>`;
+const img = (m, eager) => `<img src="monsters/${esc(m.filename)}" alt="${esc(m.name)}" loading="${eager ? "eager" : "lazy"}" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'glyph',textContent:'${/^[EDCBAS]$/.test(m.rank) ? m.rank : "?"}'}))">`;
+const tierBadge = t => `<span class="badge ${t === "Boss" || t === "Alpha" || t === "Bound" ? "boss" : t === "Elite" ? "elite" : ""}">${esc(t)}</span>`;
+
+const RANKS = ["S","A","B","C","D","E","Unranked"];
+const TIERS = ["Common","Elite","Boss","Alpha","Bound","Unranked"];
+const state = { q:"", ranks:new Set(), tiers:new Set(), arch:"", canon:false };
+let visible = [], cur = -1;
+
+function filtersUI(){
+  const f = $("#filters");
+  const chips = (vals, set, label) => vals.filter(v => DATA.monsters.some(m => (label === "rank" ? m.rank : m.tier) === v))
+    .map(v => `<button class="chip" data-${label}="${v}" aria-pressed="false">${label === "rank" ? rankLabel(v) : v}</button>`).join("");
+  f.innerHTML = chips(RANKS, state.ranks, "rank") + `<span class="sep"></span>` + chips(TIERS, state.tiers, "tier") +
+    `<span class="sep"></span><button class="chip" data-canon="1" aria-pressed="false">Canon names only</button>`;
+  f.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    if (b.dataset.canon){ state.canon = !state.canon; b.setAttribute("aria-pressed", state.canon); }
+    else {
+      const set = b.dataset.rank ? state.ranks : state.tiers, v = b.dataset.rank || b.dataset.tier;
+      set.has(v) ? set.delete(v) : set.add(v); b.setAttribute("aria-pressed", set.has(v));
+    }
+    render();
+  });
+  const archs = [...new Set(DATA.monsters.map(m => m.archetype))].sort();
+  $("#archSelect").insertAdjacentHTML("beforeend", archs.map(a => `<option>${esc(a)}</option>`).join(""));
+  $("#archSelect").addEventListener("change", e => { state.arch = e.target.value; e.target.classList.toggle("active", !!state.arch); render(); });
+  $("#search").addEventListener("input", e => { state.q = e.target.value.trim().toLowerCase(); render(); });
+}
+
+function match(m){
+  if (state.ranks.size && !state.ranks.has(m.rank)) return false;
+  if (state.tiers.size && !state.tiers.has(m.tier)) return false;
+  if (state.arch && m.archetype !== state.arch) return false;
+  if (state.canon && !m.canon_name) return false;
+  if (state.q){
+    const hay = [m.id,m.name,m.site,m.archetype,m.body,m.signature,m.summary,m.record,m.description,m.events.join(" "),m.date].join(" ").toLowerCase();
+    if (!state.q.split(/\s+/).every(w => hay.includes(w))) return false;
+  }
+  return true;
+}
+
+function card(m, i){
+  return `<button class="card" style="--rk:${rkVar(m.rank)}" data-i="${i}">
+    <div class="top"><div class="avatar" style="--rk:${rkVar(m.rank)}">${img(m)}</div>
+      <div class="ident"><div class="head"><span class="name" title="${esc(m.name)}">${esc(m.name)}</span><span class="rank" style="--rk:${rkVar(m.rank)}">${esc(rankLabel(m.rank))}</span></div>
+        <div class="badges">${tierBadge(m.tier)}${m.canon_name ? `<span class="badge canon">canon name</span>` : ""}</div>
+        <div class="sum clamp">${esc(m.summary)}</div></div></div>
+    <div class="facts"><div><span class="lbl">Archetype</span><span class="v">${esc(m.archetype)}</span></div>
+      <div><span class="lbl">Met</span><span class="v">${esc(m.date)} · ${esc(m.site)}</span></div></div>
+    <div class="open"><span>${esc(m.id)} · ${esc(m.count)}</span><span class="go">Open →</span></div></button>`;
+}
+
+function render(){
+  visible = DATA.monsters.filter(match);
+  const out = DATA.groups.map(g => {
+    const items = visible.filter(m => m.group === g.id); if (!items.length) return "";
+    return `<section class="group" id="g-${g.id}"><div class="grouphead"><h2>${esc(g.title)}</h2><span class="count">${items.length}</span><span class="line"></span></div>
+      <p class="gblurb">${esc(g.blurb)}</p><div class="cards">${items.map(m => card(m, visible.indexOf(m))).join("")}</div></section>`;
+  }).join("");
+  $("#groups").innerHTML = out || `<div class="empty">Nothing matches these filters.</div>`;
+}
+
+function field(label, val, cls = ""){ return val ? `<div class="f"><span class="lbl">${label}</span><div class="val ${cls}">${val}</div></div>` : ""; }
+
+function open(i){
+  cur = i; const m = visible[i]; if (!m) return;
+  $("#rec").style.setProperty("--rk", rkVar(m.rank));
+  $("#recFrame").innerHTML = `<a href="monsters/${esc(m.filename)}" target="_blank" rel="noopener" style="display:contents">${img(m, true)}</a><span class="missing">monsters/${esc(m.filename)}</span>`;
+  $("#recFrame").querySelector("img")?.addEventListener("load", () => $("#recFrame .missing")?.remove());
+  $("#recFacet").innerHTML = [["Rank Health", m.health], ["Body", m.body], ["Signature", m.signature], ["Count", m.count]]
+    .map(([k,v]) => `<div><span class="lbl">${k}</span><span>${esc(v)}</span></div>`).join("");
+  $("#recName").textContent = m.name;
+  $("#recRank").innerHTML = `<span class="rank" style="--rk:${rkVar(m.rank)}">${esc(rankLabel(m.rank))}</span>`;
+  $("#recBadges").innerHTML = tierBadge(m.tier) + `<span class="badge">${esc(m.archetype)}</span>` + (m.canon_name ? `<span class="badge canon">canon name</span>` : `<span class="badge">ledger designation</span>`);
+  $("#recSum").textContent = m.summary;
+  $("#recScroll").innerHTML =
+    field("Encounter", `${esc(m.site)} · ${esc(m.date)}${m.events.length ? `<br>${m.events.map(e => `<code>${esc(e)}</code>`).join(" · ")}` : ""}`) +
+    field("From the record", esc(m.record), "recbox") +
+    field("Field description", esc(m.description)) +
+    `<div class="grid2">${field("Behaviour", esc(m.behaviour))}${field("Known weakness", esc(m.weakness))}${field("Fate", esc(m.fate))}${field("Loot", esc(m.loot))}</div>` +
+    `<div class="f"><span class="lbl">Image prompt · ${esc(m.filename)}</span><div class="prompt" id="pText">${esc(m.full_prompt)}</div>
+      <div class="prompt">Negative: ${esc(DATA.negative)}</div><button class="copy" id="pCopy">Copy prompt</button></div>`;
+  $("#pCopy").onclick = () => { navigator.clipboard?.writeText(m.full_prompt).then(() => { $("#pCopy").textContent = "Copied"; }).catch(() => {}); };
+  $("#recPos").textContent = `${m.id} · ${i + 1} of ${visible.length}`;
+  $("#recPrev").disabled = i <= 0; $("#recNext").disabled = i >= visible.length - 1;
+  $("#recScroll").scrollTop = 0;
+  if (!$("#rec").open) $("#rec").showModal();
+}
+
+document.addEventListener("click", e => { const c = e.target.closest(".card"); if (c) open(+c.dataset.i); });
+$("#recClose").onclick = () => $("#rec").close();
+$("#recPrev").onclick = () => open(cur - 1);
+$("#recNext").onclick = () => open(cur + 1);
+$("#rec").addEventListener("click", e => { if (e.target === $("#rec")) $("#rec").close(); });
+document.addEventListener("keydown", e => {
+  if (!$("#rec").open) return;
+  if (e.key === "ArrowLeft" && cur > 0) open(cur - 1);
+  if (e.key === "ArrowRight" && cur < visible.length - 1) open(cur + 1);
+});
+
+$("#stTotal").textContent = DATA.monsters.length;
+$("#stNamed").textContent = DATA.monsters.filter(m => m.canon_name).length;
+$("#stBoss").textContent = DATA.monsters.filter(m => ["Boss","Alpha","Bound"].includes(m.tier)).length;
+$("#stIndex").textContent = DATA.index.length;
+$("#idxCount").textContent = DATA.index.length;
+$("#idxBody").innerHTML = DATA.index.map(r => `<tr><td><code>${esc(r.evt)}</code></td><td>${esc(r.date)}</td><td>${esc(r.gate)}</td><td>${esc(r.pop)}</td><td class="dim">${esc(r.note)}</td></tr>`).join("");
+filtersUI(); render();
+</script>
+</body></html>

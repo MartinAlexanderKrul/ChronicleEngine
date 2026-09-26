@@ -13,7 +13,7 @@
   :root{
     --bg:#eef2f1; --surface:#ffffff; --surface2:#f4f7f6; --border:#d7dfdd;
     --text:#0f1a1c; --text-dim:#556166; --accent:#0e8f83; --accent-soft:#0e8f831a;
-    --amber:#a5730f; --amber-soft:#a5730f1a; --violet:#7440c4; --violet-soft:#7440c41a;
+    --amber:#a5730f; --amber-soft:#a5730f1a; --violet:#7440c4; --violet-soft:#7440c41a; --blood:#a5340f; --blood-soft:#a5340f1a;
     --shadow:0 1px 2px rgba(15,26,28,.06), 0 8px 24px -12px rgba(15,26,28,.12);
     --shadow-lift:0 2px 4px rgba(15,26,28,.07), 0 18px 40px -18px rgba(15,26,28,.22);
   }
@@ -21,7 +21,7 @@
     :root:not([data-theme="light"]){
       --bg:#0b1414; --surface:#101b1b; --surface2:#152322; --border:#223231;
       --text:#e7efee; --text-dim:#93a6a3; --accent:#3fd6c3; --accent-soft:#3fd6c31a;
-      --amber:#f0b429; --amber-soft:#f0b4291a; --violet:#b78cf0; --violet-soft:#b78cf01a;
+      --amber:#f0b429; --amber-soft:#f0b4291a; --violet:#b78cf0; --violet-soft:#b78cf01a; --blood:#ef6a4c; --blood-soft:#ef6a4c1a;
       --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
       --shadow-lift:0 2px 6px rgba(0,0,0,.4), 0 22px 48px -20px rgba(0,0,0,.75);
     }
@@ -29,7 +29,7 @@
   :root[data-theme="dark"]{
     --bg:#0b1414; --surface:#101b1b; --surface2:#152322; --border:#223231;
     --text:#e7efee; --text-dim:#93a6a3; --accent:#3fd6c3; --accent-soft:#3fd6c31a;
-    --amber:#f0b429; --amber-soft:#f0b4291a; --violet:#b78cf0; --violet-soft:#b78cf01a;
+    --amber:#f0b429; --amber-soft:#f0b4291a; --violet:#b78cf0; --violet-soft:#b78cf01a; --blood:#ef6a4c; --blood-soft:#ef6a4c1a;
     --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
     --shadow-lift:0 2px 6px rgba(0,0,0,.4), 0 22px 48px -20px rgba(0,0,0,.75);
   }
@@ -89,8 +89,9 @@
     .agenda .what{grid-column:2; grid-row:1 / span 2;}
   }
 
-  /* The four ledgers sit in one row above the character: compact tiles. */
-  .cards{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:22px;}
+  /* The five ledgers sit in one row above the character: compact tiles. */
+  .cards{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; margin-bottom:22px;}
+  @media (max-width:1040px){ .cards{grid-template-columns:repeat(3,minmax(0,1fr));} }
   @media (max-width:860px){ .cards{grid-template-columns:repeat(2,minmax(0,1fr));} }
   a.card{
     position:relative; overflow:hidden; display:flex; flex-direction:column; gap:8px; min-width:0;
@@ -105,6 +106,7 @@
   a.card.skl{--tint:var(--accent); --tint-soft:var(--accent-soft);}
   a.card.npc{--tint:var(--violet); --tint-soft:var(--violet-soft);}
   a.card.gld{--tint:var(--accent); --tint-soft:var(--accent-soft);}
+  a.card.bst{--tint:var(--blood); --tint-soft:var(--blood-soft);}
 
   .card .kicker{
     font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
@@ -361,6 +363,15 @@
       <p class="desc">The Pendragon Guild in one place: its mark, leadership and board, every office with its membership, Rank split and the people who run it, and every Gate it has answered.</p>
       <span class="open">Open <span class="arrow" aria-hidden="true">→</span></span>
     </a>
+
+    <a class="card bst" href="alexander_pendragon_bestiary_ledger.html">
+      <div>
+        <div class="kicker">Ledger 05 · Bestiary</div>
+        <h2>Bestiary</h2>
+      </div>
+      <p class="desc">Every monster the record gives a form: named species, bosses and alphas, rank-and-file beasts and what lies beyond the Gates, each with its record, a field description, how it fought and what killed it, and an index of every other Gate cleared.</p>
+      <span class="open">Open <span class="arrow" aria-hidden="true">→</span></span>
+    </a>
   </nav>
 
   <section class="agenda" id="agenda" aria-labelledby="h-agenda" hidden></section>
@@ -377,7 +388,7 @@ const P = /*__PROFILE_DATA__*/{"name": "Alexander Pendragon", "rank": "S", "cls"
 // Which build this page is: written by the generator when it ran, and the canon
 // position it was read from. The last push to main is asked of GitHub live, so
 // an open page can be compared against it; offline, it says so.
-const B = /*__BUILD_DATA__*/{"built": "2026-09-26T09:59:02Z", "event": "EVT-001218", "gameDate": "2026-10-01T13:20:00-05:00", "checkpoint": "0178", "repo": "MartinAlexanderKrul/ChronicleEngine"}/*__END__*/;
+const B = /*__BUILD_DATA__*/{"built": "2026-09-26T14:23:17Z", "event": "EVT-001218", "gameDate": "2026-10-01T13:20:00-05:00", "checkpoint": "0178", "repo": "MartinAlexanderKrul/ChronicleEngine"}/*__END__*/;
 
 // The agenda: every row is written in Chicago time; the local time is worked out
 // here from the row's IANA zone, so the page needs no time-zone table of its own.
